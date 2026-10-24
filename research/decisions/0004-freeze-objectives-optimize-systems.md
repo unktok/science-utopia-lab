@@ -32,12 +32,12 @@ system design θ
 
 現行 baseline 2 seed は aggregate objective を測定できるが、protected slice が `unknown` で、最低 5 run にも達していない。そのため `authorized_for_ranking` は `false` である。残りの smoke runs は感度と実装検証には利用できるが、このまま最適制度を主張する証拠にはしない。
 
-次の measurement-complete revision では、outcome より前に定義された resource band と review-action event を記録する。
+次の measurement-complete revision では、outcome より前に定義された resource band と review-action event を記録する。この境界は evaluator 1.1 と `study-v1-smoke.json` で実装した。v0 artifact は evaluator 1.0 の履歴として保持し、異なる evaluator version で再ランキングしない。
 
 ## Validation
 
-- optimization tests: 22 passed
-- full suite: 595 passed, 6 skipped, 6 known upstream failures
+- optimization tests: 26 passed
+- full suite: 600 passed, 6 skipped, 6 known upstream failures
 - actual baseline report: evaluator errors 0、ranking authorization false
 
 ## Evidence

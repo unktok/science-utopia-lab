@@ -104,6 +104,19 @@ def test_blueprint_different_seed_differs():
                for x, y in zip(a, b))
 
 
+def test_balanced_resource_bands_are_ex_ante_deterministic_and_budget_neutral():
+    blueprint = build_population_blueprint(
+        2, 5, seed=101, resource_profile='balanced_two_band', base_funding=100,
+    )
+    assert [row['resource_band'] for row in blueprint].count('lower-band') == 5
+    assert [row['resource_band'] for row in blueprint].count('upper-band') == 5
+    assert sum(row['initial_funding'] for row in blueprint) == 1000
+    assert {row['initial_funding'] for row in blueprint} == {50.0, 150.0}
+    assert blueprint == build_population_blueprint(
+        2, 5, seed=101, resource_profile='balanced_two_band', base_funding=100,
+    )
+
+
 # --------------------------------- 4: candidate/prompt/validation consistency
 
 def test_direction_validation_uses_shown_candidates():

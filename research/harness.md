@@ -83,6 +83,8 @@ objective evaluatorは、固定されたMetric Constitutionからhard constraint
 
 現在の成果物はaggregate metricを計算できるが、protected sliceであるlow-resource researchersのmembershipとreview actionを結果から独立に結合できない。end-of-run funding quantileからsliceを作るとoutcome-conditioned selectionになるため採用しない。sliceは`unknown`とし、aggregateの参加率がfloorを超えてもcapability stateをpassにしない。また、各objective metric cardが要求するminimum 5 runsをdesign単位で満たすまで`authorized_for_ranking=false`とする。
 
+measurement-complete v1では、`balanced_two_band` population profileが開始時に固定したresource bandを`agent_year`へ、個々の査読行為を`review_action`へ記録する。evaluator 1.1は両tableをagent IDで結合し、slice supportとaction総数のreconciliationを検査する。新しいcampaignは`research/specs/study-v1-smoke.json`で定義し、v0 artifactを異なるevaluator versionで再評価しない。
+
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。

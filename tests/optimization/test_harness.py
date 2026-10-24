@@ -19,6 +19,7 @@ from utopia.optimization.harness import (
 
 ROOT = Path(__file__).resolve().parents[2]
 STUDY = ROOT / "research/specs/study-v0-smoke.json"
+STUDY_V1 = ROOT / "research/specs/study-v1-smoke.json"
 
 
 def test_seed_roles_are_disjoint_and_revision_is_deterministic():
@@ -55,6 +56,19 @@ def test_command_maps_to_safe_explicit_run_id(tmp_path):
     assert args.experiment_id == identity
     assert args.output_dir == str(tmp_path / "checkpoints" / identity)
     assert args.acceptance_rate_schedule == [0.3]
+
+
+def test_command_carries_measurement_context_resource_profile(tmp_path):
+    study, space, baseline = load_study(STUDY_V1)
+    command = build_command(
+        study, space, baseline, run="measurement-ready", fidelity="smoke", seed=101,
+        output_root=tmp_path,
+    )
+
+    args = parse_arguments(command[4:], create_dirs=False)
+
+    assert args.population_resource_profile == "balanced_two_band"
+    assert len(study["seed_sets"]["exploration"]) == 5
 
 
 def test_registry_is_idempotent_and_recovers_interrupted(tmp_path):

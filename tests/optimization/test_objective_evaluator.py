@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from utopia.optimization.metric_constitution import load_metric_constitution
 from utopia.optimization.objective_evaluator import (
@@ -12,10 +13,10 @@ from utopia.optimization.objective_evaluator import (
 
 
 ROOT = Path(__file__).resolve().parents[2]
-CONSTITUTION = ROOT / "research/specs/example-metric-constitution-v1.json"
+CONSTITUTION = ROOT / "research/specs/example-metric-constitution-v1.1.json"
 
 
-def _artifacts(tmp_path, *, native_passed=True):
+def _artifacts(tmp_path, *, native_passed=True, measurement_complete=False):
     run_id = "run-1"
     docs = tmp_path / "docs" / run_id
     checkpoints = tmp_path / "checkpoints" / run_id
@@ -24,10 +25,14 @@ def _artifacts(tmp_path, *, native_passed=True):
     agents = []
     for year in (1, 2):
         for index in range(10):
-            agents.append({
+            row = {
                 "agent_id": f"r{index}", "year": year,
                 "is_active": not (year == 2 and index == 9),
-            })
+            }
+            if measurement_complete:
+                row["resource_band"] = "lower-band" if index < 5 else "upper-band"
+                row["initial_funding"] = 50.0 if index < 5 else 150.0
+            agents.append(row)
     pd.DataFrame(agents).to_parquet(docs / "agent_year.parquet", index=False)
     pd.DataFrame([
         {"year": 1, "topic_entropy": 0.5, "occupied_directions": 2},
@@ -45,6 +50,19 @@ def _artifacts(tmp_path, *, native_passed=True):
             {"peer_review": {"score_metrics": {"total_reviews": 6}}},
         ]
     }))
+    if measurement_complete:
+        pd.DataFrame([
+            {
+                "event_id": f"review:2:conf:p{index}:r{index}",
+                "year": 2,
+                "reviewer_id": f"r{index}",
+                "reviewer_resource_band": "lower-band" if index < 5 else "upper-band",
+                "paper_id": f"p{index}",
+                "conference_id": "conf",
+                "overall_score": 5,
+            }
+            for index in range(10)
+        ]).to_parquet(docs / "review_action.parquet", index=False)
     return run_id
 
 
@@ -98,6 +116,47 @@ def test_known_capability_failure_is_not_masked_by_unknown_slice(tmp_path):
     assert result["comparison_eligibility"] == "infeasible"
 
 
+def test_ex_ante_resource_band_and_review_actions_complete_slice_measurement(tmp_path):
+    run_id = _artifacts(tmp_path, measurement_complete=True)
+    result = evaluate_run(
+        run_id=run_id, output_root=tmp_path,
+        constitution=load_metric_constitution(CONSTITUTION),
+    )
+
+    active = result["metrics"]["active-researcher-fraction"]
+    burden = result["metrics"]["review-burden-per-active-researcher"]
+    assert active["slice_results"]["low-resource-researchers"] == {
+        "status": "measured", "value": 1.0, "support": 5,
+    }
+    assert burden["slice_results"]["low-resource-researchers"]["value"] == 5 / 10
+    assert result["capabilities"][0]["state"] == "pass"
+    assert result["comparison_eligibility"] == "feasible"
+    assert result["objective_vector"][0]["status"] == "measured"
+
+
+def test_protected_slice_failure_is_not_masked_by_aggregate(tmp_path):
+    run_id = _artifacts(tmp_path, measurement_complete=True)
+    docs = tmp_path / "docs" / run_id
+    agents = pd.read_parquet(docs / "agent_year.parquet")
+    agents.loc[
+        (agents["year"] == 2) & agents["agent_id"].isin({"r0", "r1", "r2"}),
+        "is_active",
+    ] = False
+    agents.to_parquet(docs / "agent_year.parquet", index=False)
+
+    result = evaluate_run(
+        run_id=run_id, output_root=tmp_path,
+        constitution=load_metric_constitution(CONSTITUTION),
+    )
+
+    assert result["metrics"]["active-researcher-fraction"]["value"] == 0.6
+    assert result["metrics"]["active-researcher-fraction"]["slice_results"][
+        "low-resource-researchers"
+    ]["value"] == 0.4
+    assert result["capabilities"][0]["state"] == "fail"
+    assert result["comparison_eligibility"] == "infeasible"
+
+
 def test_design_readiness_enforces_minimum_runs_and_unknown_capability(tmp_path):
     run_id = _artifacts(tmp_path)
     constitution = load_metric_constitution(CONSTITUTION)
@@ -112,3 +171,13 @@ def test_design_readiness_enforces_minimum_runs_and_unknown_capability(tmp_path)
     assert summary["metric_summaries"]["active-researcher-fraction"]["mean"] == 0.9
     assert any("at least 5" in reason for reason in summary["blocking_reasons"])
     assert any("unknown" in reason for reason in summary["blocking_reasons"])
+
+
+def test_evaluator_rejects_constitution_bound_to_another_version(tmp_path):
+    run_id = _artifacts(tmp_path)
+    old_constitution = load_metric_constitution(
+        ROOT / "research/specs/example-metric-constitution-v1.json"
+    )
+
+    with pytest.raises(ValueError, match="does not match implementation"):
+        evaluate_run(run_id=run_id, output_root=tmp_path, constitution=old_constitution)

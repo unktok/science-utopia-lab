@@ -1,0 +1,87 @@
+{
+  "id": "evaluation-v1",
+  "version": 1,
+  "purpose": "measurement_complete_system_optimization",
+  "objective_policy": {
+    "status": "frozen_metric_constitution",
+    "authorized_use": "synthetic_system_comparison_after_constraints_and_uncertainty_checks",
+    "not_authorized_as": "real_world_scientific_value_or_policy_ranking",
+    "replacement": "new_versioned_metric_constitution_only"
+  },
+  "variables": {
+    "acceptance_rate": {
+      "type": "float",
+      "minimum": 0.1,
+      "maximum": 0.5
+    },
+    "reviews_per_paper": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "reviewer_capacity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8
+    },
+    "reviewer_matching": {
+      "type": "categorical",
+      "choices": ["random", "topic"]
+    },
+    "review_policy": {
+      "type": "categorical",
+      "choices": ["persona", "standardized"]
+    },
+    "funding_budget_slots_frac": {
+      "type": "float",
+      "minimum": 0.1,
+      "maximum": 0.5
+    },
+    "funding_application_cost": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 20
+    },
+    "resubmission_cost": {
+      "type": "float",
+      "minimum": 0.0,
+      "maximum": 20.0
+    }
+  },
+  "fixed_arguments": {
+    "experiment_name": "exploration_vs_exploitation",
+    "population_mode": "university_only",
+    "population_resource_profile": "balanced_two_band",
+    "researchers_per_institution": 5,
+    "funding_allocation_mode": "fixed",
+    "funding_budget_mode": "fixed",
+    "acceptance_tiebreak": "seeded",
+    "acceptance_mode": "rate",
+    "rag_device": "cpu",
+    "log_funding_applications": true,
+    "log_resource_ledger": true
+  },
+  "fidelities": {
+    "smoke": {
+      "num_institutions": 2,
+      "num_years": 1,
+      "num_conferences": 1
+    },
+    "screen": {
+      "num_institutions": 4,
+      "num_years": 2,
+      "num_conferences": 2
+    },
+    "confirm": {
+      "num_institutions": 12,
+      "num_years": 5,
+      "num_conferences": 6
+    }
+  },
+  "signals": [
+    {"id": "active-researcher-fraction", "direction": "maximize", "role": "objective", "slices": ["low-resource-researchers"]},
+    {"id": "review-burden-per-active-researcher", "direction": "minimize", "role": "objective", "slices": ["low-resource-researchers"]},
+    {"id": "topic-entropy", "direction": "portfolio", "role": "diagnostic"},
+    {"id": "integrity-checks-pass", "direction": "target", "role": "constraint"}
+  ]
+}

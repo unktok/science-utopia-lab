@@ -123,6 +123,10 @@ class MultiAgentEcosystem:
                 'project_end_year': agent.project_end_year,
                 'newest_direction': newest_direction,
             }
+            if hasattr(agent, 'resource_band'):
+                agent_dict['resource_band'] = agent.resource_band
+            if hasattr(agent, 'initial_funding'):
+                agent_dict['initial_funding'] = agent.initial_funding
             if getattr(agent, 'production_cost_entries', None):
                 agent_dict['production_cost_entries'] = agent.production_cost_entries
 
@@ -272,6 +276,12 @@ class MultiAgentEcosystem:
                 agent.research_priorities = set(agent_data.get('research_priorities', []))
                 agent.conflict_of_interest = set(agent_data.get('conflict_of_interest', []))
                 agent.funding_success_history = agent_data.get('funding_success_history', {})
+
+            if agent_type in {'university', 'industry'}:
+                if 'resource_band' in agent_data:
+                    agent.resource_band = agent_data['resource_band']
+                if 'initial_funding' in agent_data:
+                    agent.initial_funding = agent_data['initial_funding']
 
             elif agent_type == 'funding_agency':
                 agent = FundingAgency(

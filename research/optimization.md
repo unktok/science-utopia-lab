@@ -103,5 +103,5 @@ subject to: budget, capacity, participation, safety, minimum field coverage
 
 ## 現在の実装境界
 
-v1 objective evaluator は aggregate の参加継続率、topic entropy、review burden と technical integrity を計算する。protected resource slice は outcome より前の membership が未記録なので `unknown` を保持する。次は resource-band attribute と review-action event を追加し、measurement-complete な revision で design ごとに最低 5 exploration seeds を使う。
+evaluator 1.0で評価したv0 artifactは、aggregateの参加継続率、topic entropy、review burdenとtechnical integrityを計算できるが、protected resource sliceは`unknown`のまま凍結する。measurement-complete v1では、outcomeより前に固定したresource bandとreview-action eventを記録し、evaluator 1.1でslice-level objectiveを計算する。`study-v1-smoke.json`はdesignごとに最低5 exploration seedsを使い、v0とv1を同じ探索系列として順位付けしない。
 

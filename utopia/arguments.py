@@ -212,6 +212,13 @@ def parse_arguments(argv=None, *, create_dirs=True):
         help='Equal initial funding per researcher in university_only mode (default: config value)'
     )
     parser.add_argument(
+        '--population_resource_profile',
+        choices=['equal', 'balanced_two_band'],
+        default='equal',
+        help='Ex-ante resource assignment in university_only mode. balanced_two_band '
+             'assigns a seeded lower/upper band while preserving total initial resources.'
+    )
+    parser.add_argument(
         '--num_conferences',
         type=int,
         default=None,

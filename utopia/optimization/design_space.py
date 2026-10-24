@@ -18,7 +18,7 @@ def _load_json(path: str | Path) -> dict[str, Any]:
 
 def load_space(path: str | Path) -> dict[str, Any]:
     space = _load_json(path)
-    if space.get("id") != "evaluation-v0" or space.get("version") != 1:
+    if space.get("id") not in {"evaluation-v0", "evaluation-v1"} or space.get("version") != 1:
         raise ValueError("Unsupported design-space id or version")
     variables = space.get("variables")
     if not isinstance(variables, dict) or not variables:
@@ -98,6 +98,10 @@ def candidate_to_cli(space: Mapping[str, Any], candidate: Mapping[str, Any], *, 
         "--funding_application_cost", str(candidate["funding_application_cost"]),
         "--resubmission_cost", str(candidate["resubmission_cost"]),
     ]
+    if fixed.get("population_resource_profile"):
+        flags.extend([
+            "--population_resource_profile", str(fixed["population_resource_profile"])
+        ])
     for name in ("log_funding_applications", "log_resource_ledger"):
         if fixed.get(name):
             flags.append("--" + name)

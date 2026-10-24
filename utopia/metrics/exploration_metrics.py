@@ -9,7 +9,10 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 # Structured analysis tables written per year (plan 8.9). Keys = filenames.
-TABLE_NAMES = ('agent_year', 'paper', 'paper_age', 'strategy_year', 'ecosystem_year')
+TABLE_NAMES = (
+    'agent_year', 'paper', 'paper_age', 'strategy_year', 'ecosystem_year',
+    'review_action',
+)
 
 
 class ExplorationMetrics:

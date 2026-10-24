@@ -18,7 +18,7 @@ from utopia.optimization.metric_constitution import constitution_sha256
 
 SCHEMA = "scienceutopia.objective_evaluation.v1"
 EVALUATOR_ID = "harness-metric-evaluator"
-EVALUATOR_VERSION = "1.0.0"
+EVALUATOR_VERSION = "1.1.0"
 
 
 def _file_sha256(path: Path) -> str:
@@ -58,7 +58,9 @@ def _unknown_slices(metric: Mapping[str, Any], reason: str) -> dict[str, Any]:
 
 def _measured(
     metric: Mapping[str, Any], value: float | bool, sources: Iterable[str], *,
-    slice_reason: str | None = None, details: Mapping[str, Any] | None = None,
+    slice_reason: str | None = None,
+    slice_results: Mapping[str, Any] | None = None,
+    details: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     result = {
         "metric_id": metric["id"],
@@ -71,6 +73,8 @@ def _measured(
     }
     if slice_reason:
         result["slice_results"] = _unknown_slices(metric, slice_reason)
+    if slice_results is not None:
+        result["slice_results"] = dict(slice_results)
     if details:
         result["details"] = dict(details)
     return result
@@ -110,7 +114,35 @@ def _load_tables(docs: Path):
     )
 
 
-def _active_fraction(metric: Mapping[str, Any], docs: Path) -> dict[str, Any]:
+def _minimum_slice_support(
+    metric: Mapping[str, Any], slice_requirements: Mapping[str, Mapping[str, Any]]
+) -> int:
+    return max(
+        (
+            int(slice_requirements[slice_id]["minimum_support"])
+            for slice_id in metric.get("stakeholder_slice_refs", [])
+            if slice_id in slice_requirements
+        ),
+        default=1,
+    )
+
+
+def _lower_band_ids(agents, first_year: Any) -> tuple[set[str] | None, str | None]:
+    if "resource_band" not in agents.columns:
+        return None, "outcome-independent resource-band membership is not recorded"
+    initial = agents.loc[agents["year"] == first_year, ["agent_id", "resource_band"]]
+    if initial["resource_band"].isna().any() or initial["agent_id"].duplicated().any():
+        return None, "initial resource-band membership is missing or duplicated"
+    band_counts = agents.groupby("agent_id")["resource_band"].nunique(dropna=False)
+    if (band_counts != 1).any():
+        return None, "resource-band membership changes during the run"
+    return set(initial.loc[initial["resource_band"] == "lower-band", "agent_id"]), None
+
+
+def _active_fraction(
+    metric: Mapping[str, Any], docs: Path,
+    slice_requirements: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
     source = "agent_year.parquet"
     slice_reason = (
         "Protected resource-band membership was not recorded independently of outcomes; "
@@ -130,8 +162,27 @@ def _active_fraction(metric: Mapping[str, Any], docs: Path) -> dict[str, Any]:
         if not initial_ids or set(final["agent_id"]) != initial_ids:
             return _unknown(metric, "final status is missing for one or more initial researchers", [source])
         value = float(final.drop_duplicates("agent_id")["is_active"].astype(bool).sum()) / len(initial_ids)
+        lower_ids, slice_error = _lower_band_ids(agents, first_year)
+        slice_results = None
+        if not slice_error:
+            minimum_support = _minimum_slice_support(metric, slice_requirements)
+            if len(lower_ids) < minimum_support:
+                slice_error = (
+                    f"lower resource band has support {len(lower_ids)} below required "
+                    f"{minimum_support}"
+                )
+            else:
+                lower_final = final.loc[final["agent_id"].isin(lower_ids)]
+                slice_results = {
+                    "low-resource-researchers": {
+                        "status": "measured",
+                        "value": float(lower_final["is_active"].astype(bool).sum()) / len(lower_ids),
+                        "support": len(lower_ids),
+                    }
+                }
         return _measured(
-            metric, value, [source], slice_reason=slice_reason,
+            metric, value, [source], slice_reason=slice_error or slice_reason,
+            slice_results=slice_results,
             details={
                 "initial_researchers": len(initial_ids),
                 "active_initial_researchers_at_end": int(round(value * len(initial_ids))),
@@ -161,7 +212,10 @@ def _topic_entropy(metric: Mapping[str, Any], docs: Path) -> dict[str, Any]:
         return _unknown(metric, f"topic entropy could not be evaluated: {error}", [source])
 
 
-def _review_burden(metric: Mapping[str, Any], docs: Path, checkpoints: Path) -> dict[str, Any]:
+def _review_burden(
+    metric: Mapping[str, Any], docs: Path, checkpoints: Path,
+    slice_requirements: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
     agent_source = "agent_year.parquet"
     checkpoint_paths = sorted(checkpoints.glob("checkpoint_year_*.json"), key=_checkpoint_year)
     sources = [agent_source, *(path.name for path in checkpoint_paths[-1:])]
@@ -184,8 +238,62 @@ def _review_burden(metric: Mapping[str, Any], docs: Path, checkpoints: Path) -> 
         )
         if active_steps <= 0:
             return _unknown(metric, "active researcher-time is zero", sources)
+        slice_results = None
+        slice_error = None
+        first_year = agents["year"].min() if "year" in agents else None
+        lower_ids, slice_error = _lower_band_ids(agents, first_year)
+        action_path = docs / "review_action.parquet"
+        if not slice_error:
+            minimum_support = _minimum_slice_support(metric, slice_requirements)
+            if len(lower_ids) < minimum_support:
+                slice_error = (
+                    f"lower resource band has support {len(lower_ids)} below required "
+                    f"{minimum_support}"
+                )
+            elif action_path.exists():
+                import pandas as pd
+
+                actions = pd.read_parquet(action_path)
+                if not {"event_id", "reviewer_id"}.issubset(actions.columns):
+                    slice_error = "review-action fields are missing"
+                elif actions["event_id"].duplicated().any() or len(actions) != reviews:
+                    slice_error = "review-action events do not reconcile with aggregate reviews"
+                else:
+                    lower_steps = int(
+                        agents.loc[agents["agent_id"].isin(lower_ids), "is_active"]
+                        .astype(bool).sum()
+                    )
+                    if lower_steps <= 0:
+                        slice_error = "active lower-resource researcher-time is zero"
+                    else:
+                        lower_reviews = int(actions["reviewer_id"].isin(lower_ids).sum())
+                        slice_results = {
+                            "low-resource-researchers": {
+                                "status": "measured",
+                                "value": lower_reviews / lower_steps,
+                                "support": len(lower_ids),
+                                "review_actions": lower_reviews,
+                                "active_researcher_steps": lower_steps,
+                            }
+                        }
+                        sources.append(action_path.name)
+            elif reviews == 0:
+                lower_steps = int(
+                    agents.loc[agents["agent_id"].isin(lower_ids), "is_active"]
+                    .astype(bool).sum()
+                )
+                slice_results = {
+                    "low-resource-researchers": {
+                        "status": "measured", "value": 0.0,
+                        "support": len(lower_ids), "review_actions": 0,
+                        "active_researcher_steps": lower_steps,
+                    }
+                }
+            else:
+                slice_error = "review-action table is missing"
         return _measured(
-            metric, reviews / active_steps, sources, slice_reason=slice_reason,
+            metric, reviews / active_steps, sources,
+            slice_reason=slice_error or slice_reason, slice_results=slice_results,
             details={"review_actions": reviews, "active_researcher_steps": active_steps},
         )
     except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError, ImportError) as error:
@@ -215,7 +323,12 @@ def _state_for_rule(rule: Mapping[str, Any], metrics: Mapping[str, Mapping[str, 
             for item in referenced
         )
         slices = [slice_result for item in referenced for slice_result in item["slice_results"].values()]
-        if not aggregate_pass:
+        slice_fail = any(
+            item["status"] == "measured"
+            and not _compare(item["value"], threshold["comparator"], threshold["value"])
+            for item in slices
+        )
+        if not aggregate_pass or slice_fail:
             state, reason = "fail", "threshold failed"
         elif any(item["status"] == "unknown" for item in slices):
             state, reason = "unknown", "a required protected slice is unknown"
@@ -227,6 +340,16 @@ def _state_for_rule(rule: Mapping[str, Any], metrics: Mapping[str, Mapping[str, 
 def evaluate_run(
     *, run_id: str, output_root: str | Path, constitution: Mapping[str, Any]
 ) -> dict[str, Any]:
+    declared = [
+        item for item in constitution["layers"]["evaluator_governance"]["evaluators"]
+        if item["id"] == EVALUATOR_ID
+    ]
+    if len(declared) != 1 or declared[0]["version"] != EVALUATOR_VERSION:
+        declared_versions = [item.get("version") for item in declared]
+        raise ValueError(
+            f"constitution evaluator version {declared_versions!r} does not match "
+            f"implementation {EVALUATOR_VERSION}"
+        )
     root = Path(output_root)
     docs, checkpoints = root / "docs" / run_id, root / "checkpoints" / run_id
     manifest_path = docs / "run_manifest.json"
@@ -235,12 +358,17 @@ def evaluate_run(
     except (OSError, json.JSONDecodeError):
         manifest = {}
     registry = {metric["id"]: metric for metric in constitution["metric_registry"]}
+    slice_requirements = {
+        item["id"]: item for item in constitution.get("stakeholder_slices", [])
+    }
     implementations = {
         "integrity-checks-pass": lambda metric: _integrity_metric(metric, docs, checkpoints),
-        "active-researcher-fraction": lambda metric: _active_fraction(metric, docs),
+        "active-researcher-fraction": lambda metric: _active_fraction(
+            metric, docs, slice_requirements
+        ),
         "topic-entropy": lambda metric: _topic_entropy(metric, docs),
         "review-burden-per-active-researcher": lambda metric: _review_burden(
-            metric, docs, checkpoints
+            metric, docs, checkpoints, slice_requirements
         ),
     }
     metrics = {

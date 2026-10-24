@@ -155,7 +155,9 @@ NORMAL_COMPANY_FUNDING = 160
 
 def build_population_blueprint(num_institutions: int, researchers_per_institution: int,
                                seed: int, num_expertise: int = 3,
-                               strategy_mix: List[str] = None) -> List[Dict]:
+                               strategy_mix: List[str] = None, *,
+                               resource_profile: str = 'equal',
+                               base_funding: float = None) -> List[Dict]:
     """Build a deterministic balanced university-only population blueprint.
 
     Within every institution the strategy mix is exactly the configured list
@@ -165,8 +167,8 @@ def build_population_blueprint(num_institutions: int, researchers_per_institutio
     without any Simulation or LLM.
 
     Returns:
-        List of rows: {institution, researcher_name, strategy, expertise_topics,
-        expertise_indices, initial_funding_placeholder}
+        List of rows including an outcome-independent resource_band and the
+        assigned initial_funding when base_funding is provided.
     """
     exp_config = SIMULATION_CONFIG['exploration_experiment']
     # E4b composition intervention passes an explicit mix; the seeded RNG stream
@@ -178,6 +180,24 @@ def build_population_blueprint(num_institutions: int, researchers_per_institutio
         f"researchers_per_institution={researchers_per_institution}")
 
     rng = random.Random(derive_seed(seed, 'population'))
+    if resource_profile not in {'equal', 'balanced_two_band'}:
+        raise ValueError(f'Unsupported population resource profile: {resource_profile}')
+    if resource_profile == 'balanced_two_band' and base_funding is None:
+        raise ValueError('balanced_two_band requires base_funding')
+    population_size = num_institutions * researchers_per_institution
+    lower_indices = set()
+    if resource_profile == 'balanced_two_band':
+        band_order = list(range(population_size))
+        random.Random(derive_seed(seed, 'resource_bands')).shuffle(band_order)
+        lower_indices = set(band_order[:population_size // 2])
+    lower_count = len(lower_indices)
+    upper_count = population_size - lower_count
+    lower_multiplier = 0.5
+    upper_multiplier = (
+        (population_size - lower_multiplier * lower_count) / upper_count
+        if upper_count else 1.0
+    )
+
     blueprint = []
     for inst_idx in range(num_institutions):
         institution = f"institution_{inst_idx:04d}"
@@ -186,13 +206,22 @@ def build_population_blueprint(num_institutions: int, researchers_per_institutio
         for r_idx, strategy in enumerate(strategies):
             expertise_indices = rng.sample(
                 range(len(AVAILABLE_DIRECTIONS)), min(num_expertise, len(AVAILABLE_DIRECTIONS)))
-            blueprint.append({
+            population_index = len(blueprint)
+            resource_band = (
+                'lower-band' if population_index in lower_indices else 'upper-band'
+            ) if resource_profile == 'balanced_two_band' else 'equal'
+            multiplier = lower_multiplier if resource_band == 'lower-band' else upper_multiplier
+            row = {
                 'institution': institution,
                 'researcher_name': f"{institution}_researcher_{r_idx}",
                 'strategy': strategy,
                 'expertise_indices': expertise_indices,
                 'expertise_topics': [AVAILABLE_DIRECTIONS[i].topic for i in expertise_indices],
-            })
+            }
+            if base_funding is not None:
+                row['resource_band'] = resource_band
+                row['initial_funding'] = float(base_funding) * multiplier
+            blueprint.append(row)
     return blueprint
 
 
@@ -544,7 +573,8 @@ class Simulation:
                   'papers_per_project', 'cost_policy', 'funding_budget_mode',
                   'funding_budget_slots_frac', 'reviewer_capacity', 'reviews_per_paper',
                   'reviewer_matching', 'review_policy', 'review_score_mode',
-                  'acceptance_tiebreak', 'acceptance_mode', 'start_year')
+                  'acceptance_tiebreak', 'acceptance_mode', 'start_year',
+                  'population_resource_profile')
         return json.loads(canonical_json({
             'binding': self._portable_binding,
             'simulation': {name: getattr(self, name, None) for name in fields},
@@ -766,7 +796,7 @@ class Simulation:
     def _initialize_university_only_population(self):
         """Balanced university-only population for the exploration experiment (plan 4.2).
 
-        Equal initial funding, synthetic institutions, and exactly the configured
+        Synthetic institutions and exactly the configured
         within-institution strategy mix, all derived deterministically from the
         run seed via build_population_blueprint(). The blueprint is written to
         the checkpoint directory as population_blueprint.csv for audit/balance checks.
@@ -781,18 +811,22 @@ class Simulation:
 
         blueprint = build_population_blueprint(
             num_institutions, per_institution, run_seed,
-            strategy_mix=getattr(self.args, 'strategy_mix_list', None))
+            strategy_mix=getattr(self.args, 'strategy_mix_list', None),
+            resource_profile=getattr(self.args, 'population_resource_profile', 'equal'),
+            base_funding=initial_funding)
 
         for row in blueprint:
             researcher = UniversityResearcher(
                 researcher_name=row['researcher_name'],
                 university_name=row['institution'],
-                funding_level=initial_funding,
+                funding_level=row['initial_funding'],
                 expertise=[AVAILABLE_DIRECTIONS[i] for i in row['expertise_indices']],
                 llm=self.llm,
                 generate_research_proposal=True,
                 exploration_strategy=row['strategy'],
             )
+            researcher.resource_band = row['resource_band']
+            researcher.initial_funding = row['initial_funding']
             self.ecosystem.add_agent(researcher)
 
         # Within-institution conflicts of interest
@@ -807,7 +841,9 @@ class Simulation:
         blueprint_path = os.path.join(self.output_dir, 'population_blueprint.csv')
         pd.DataFrame(blueprint).to_csv(blueprint_path, index=False)
         logger.info(f"University-only population: {len(blueprint)} researchers at "
-                    f"{num_institutions} institutions (equal funding {initial_funding}); "
+                    f"{num_institutions} institutions (resource profile "
+                    f"{getattr(self.args, 'population_resource_profile', 'equal')}, "
+                    f"base funding {initial_funding}); "
                     f"blueprint saved to {blueprint_path}")
 
         self._record_initial_university_count()
@@ -1120,6 +1156,8 @@ class Simulation:
                 self.exploration_metrics.add_row('agent_year', {
                     'agent_id': a.id, 'year': year,
                     'institution': getattr(a, 'university_name', None) or getattr(a, 'company_name', None),
+                    'resource_band': getattr(a, 'resource_band', None),
+                    'initial_funding': getattr(a, 'initial_funding', None),
                     'is_active': getattr(a, 'is_active', True),
                     'direction_topic': dir_record.get('topic'),
                     'direction_distance': dir_record.get('distance'),
@@ -3010,6 +3048,16 @@ class Simulation:
                         }
                         conference.add_review(paper['id'], review)
                         reviews_by_reviewer[reviewer.id].append(review['overall_score'])
+                        if self.is_exploration_experiment:
+                            self.exploration_metrics.add_row('review_action', {
+                                'event_id': f"review:{year}:{conference.conference_id}:{paper['id']}:{reviewer.id}",
+                                'year': year,
+                                'reviewer_id': reviewer.id,
+                                'reviewer_resource_band': getattr(reviewer, 'resource_band', None),
+                                'paper_id': paper['id'],
+                                'conference_id': conference.conference_id,
+                                'overall_score': review['overall_score'],
+                            })
 
                         # Record distance-score pair for preferential attachment analysis
                         if self.experiment_name == 'preferential_attachment' and self.network_metrics:
@@ -3068,6 +3116,16 @@ class Simulation:
                                 review = reviewer.review_paper(paper, author_info=author_info)
                                 conference.add_review(paper['id'], review)
                                 reviews_by_reviewer[reviewer.id].append(review['overall_score'])
+                                if self.is_exploration_experiment:
+                                    self.exploration_metrics.add_row('review_action', {
+                                        'event_id': f"review:{year}:{conference.conference_id}:{paper['id']}:{reviewer.id}",
+                                        'year': year,
+                                        'reviewer_id': reviewer.id,
+                                        'reviewer_resource_band': getattr(reviewer, 'resource_band', None),
+                                        'paper_id': paper['id'],
+                                        'conference_id': conference.conference_id,
+                                        'overall_score': review['overall_score'],
+                                    })
 
                                 # Record distance-score pair for preferential attachment analysis
                                 if self.experiment_name == 'preferential_attachment' and self.network_metrics:
