@@ -518,6 +518,9 @@ Respond in JSON format with all applications ranked from most preferred (rank 1)
             norm = dict(entry)
             norm['application_id'] = app_id
             norm['applicant_id'] = expected[app_id]
+            trace_id = apps[app_id].get('_application_trace_id')
+            if trace_id is not None:
+                norm['application_trace_id'] = trace_id
             rank = norm.get('rank')
             valid_rank = isinstance(rank, (int, float)) and not isinstance(rank, bool)
             sort_key = (rank if valid_rank else float('inf'), pos)
@@ -543,13 +546,17 @@ Respond in JSON format with all applications ranked from most preferred (rank 1)
         for app_id in range(n):
             if app_id not in kept:
                 tail_rank += 1
-                normalized.append({
+                imputed = {
                     'application_id': app_id,
                     'applicant_id': expected[app_id],
                     'rank': tail_rank,
                     'reason': '',
                     'imputed_tail': True,
-                })
+                }
+                trace_id = apps[app_id].get('_application_trace_id')
+                if trace_id is not None:
+                    imputed['application_trace_id'] = trace_id
+                normalized.append(imputed)
         return normalized, rejects
 
     @staticmethod
@@ -683,7 +690,7 @@ Respond in JSON format with all applications ranked from most preferred (rank 1)
             # funding-rate cut; funded == (position <= num_winners) exactly.
             if application_log is not None:
                 for pos, app in enumerate(ranked_apps_sorted):
-                    application_log.append({
+                    record = {
                         'program_id': program_id,
                         'panel_index': metadata_list[idx]['panel_index'],
                         'applicant_id': app['applicant_id'],
@@ -698,7 +705,10 @@ Respond in JSON format with all applications ranked from most preferred (rank 1)
                         'funding_rate': program.funding_rate,
                         'num_winners': num_winners,
                         'funded': pos < num_winners,
-                    })
+                    }
+                    if app.get('application_trace_id') is not None:
+                        record['application_trace_id'] = app['application_trace_id']
+                    application_log.append(record)
 
         return winners_all_programs
 

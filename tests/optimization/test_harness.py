@@ -10,6 +10,7 @@ from utopia.optimization.harness import (
     build_report,
     design_id,
     load_study,
+    manifest_status,
     run_id,
     sample_designs,
     study_revision,
@@ -25,6 +26,7 @@ def test_seed_roles_are_disjoint_and_revision_is_deterministic():
     assert set(study["seed_sets"]["exploration"]).isdisjoint(study["seed_sets"]["selection"])
     assert study_revision(study, space) == study_revision(study, space)
     assert design_id(baseline).startswith("d")
+    assert len(study["metric_constitution_sha256"]) == 64
 
 
 @pytest.mark.parametrize("kind", ["random", "sobol"])
@@ -76,11 +78,25 @@ def test_registry_is_idempotent_and_recovers_interrupted(tmp_path):
         row = registry.start("run-1")
         assert row["attempt"] == 2
         registry.finish("run-1", status="complete", returncode=0, wall_seconds=12.5, error=None)
+        trace_dir = tmp_path / "checkpoints" / "run-1"
+        trace_dir.mkdir(parents=True)
+        (trace_dir / "funding_application_trace_year_1.summary.json").write_text(json.dumps({
+            "counts": {
+                "targets": 3, "validated": 3, "submitted": 2,
+                "declined_by_agent": 1, "dropped": 0,
+                "evaluated": 2, "decided": 2, "funded": 1,
+                "allocations_recorded": 1, "allocations_applied": 1,
+                "generation_attempts": 4, "semantic_invalid_attempts": 1,
+                "request_error_attempts": 0,
+            }
+        }))
         report = build_report(registry)
         assert report["status_counts"] == {"complete": 1}
         assert report["attempt_status_counts"] == {"failed": 1, "complete": 1}
         assert report["attempt_failure_rate"] == 0.5
         assert report["completed_run_wall_seconds"]["mean"] == 12.5
+        assert report["funding_application_diagnostics"][0]["targets"] == 3
+        assert report["funding_application_distributions"]["generation_attempts"]["mean"] == 4
         assert report["report_errors"]
     finally:
         registry.close()
@@ -89,4 +105,26 @@ def test_registry_is_idempotent_and_recovers_interrupted(tmp_path):
 def test_run_id_rejects_unsafe_override():
     with pytest.raises(SystemExit):
         parse_arguments(["--experiment_stage", "smoke", "--run-id", "../escape"], create_dirs=False)
+
+
+def test_manifest_status_rejects_failed_application_conservation(tmp_path):
+    run_id_value = "run-1"
+    docs = tmp_path / "docs" / run_id_value
+    output = tmp_path / "checkpoints" / run_id_value
+    docs.mkdir(parents=True)
+    output.mkdir(parents=True)
+    (docs / "run_manifest.json").write_text(json.dumps({
+        "status": "complete", "args": {"output_dir": str(output)}
+    }))
+    (docs / "integrity_checks.json").write_text(json.dumps([
+        {"year": 1, "passed": True, "failures": []}
+    ]))
+    summary = output / "funding_application_trace_year_1.summary.json"
+    summary.write_text(json.dumps({"passed": False, "failures": ["unexplained"]}))
+    row = {"output_root": str(tmp_path), "run_id": run_id_value}
+
+    status, error = manifest_status(row)
+
+    assert status == "invalid"
+    assert error == "funding application trace failed: funding_application_trace_year_1.summary.json"
 

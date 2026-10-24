@@ -1,0 +1,939 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/metric-constitution-v1.schema.json",
+  "title": "ScienceUtopia Metric Constitution v1",
+  "description": "A governed, multi-stakeholder objective contract for institutional-design experiments. Validation establishes structural conformance, not empirical validity or normative legitimacy.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "constitution_id",
+    "version",
+    "status",
+    "title",
+    "purpose",
+    "authorized_uses",
+    "prohibited_uses",
+    "validity",
+    "lineage",
+    "stakeholders",
+    "stakeholder_slices",
+    "time_horizons",
+    "metric_registry",
+    "layers",
+    "aggregation_boundary",
+    "reporting_contract"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "constitution_id": {
+      "$ref": "#/$defs/id"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "enum": ["draft", "active", "suspended", "retired"]
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "purpose": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "authorized_uses": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "prohibited_uses": {
+      "allOf": [
+        { "$ref": "#/$defs/nonEmptyStringArray" },
+        { "minItems": 1 }
+      ]
+    },
+    "validity": {
+      "$ref": "#/$defs/validityWindow"
+    },
+    "lineage": {
+      "$ref": "#/$defs/constitutionLineage"
+    },
+    "stakeholders": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/stakeholder" }
+    },
+    "stakeholder_slices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/stakeholderSlice" }
+    },
+    "time_horizons": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/timeHorizon" }
+    },
+    "metric_registry": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/metric" }
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hard_constraints",
+        "capability_preservation",
+        "commitments",
+        "evaluator_governance"
+      ],
+      "properties": {
+        "hard_constraints": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/hardConstraint" }
+        },
+        "capability_preservation": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/capability" }
+        },
+        "commitments": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/commitment" }
+        },
+        "evaluator_governance": {
+          "$ref": "#/$defs/evaluatorGovernance"
+        }
+      }
+    },
+    "aggregation_boundary": {
+      "$ref": "#/$defs/aggregationBoundary"
+    },
+    "reporting_contract": {
+      "$ref": "#/$defs/reportingContract"
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/nonEmptyString" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "idArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/id" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "optionalIdArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/id" },
+      "uniqueItems": true
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "validityWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["effective_from", "review_by"],
+      "properties": {
+        "effective_from": { "$ref": "#/$defs/date" },
+        "review_by": { "$ref": "#/$defs/date" },
+        "expires_on": { "$ref": "#/$defs/date" },
+        "valid_scenarios": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "invalid_scenarios": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "constitutionLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created_at", "proposed_by", "approved_by", "change_summary", "supersedes"],
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "proposed_by": { "$ref": "#/$defs/idArray" },
+        "approved_by": { "$ref": "#/$defs/optionalIdArray" },
+        "change_summary": { "$ref": "#/$defs/nonEmptyString" },
+        "supersedes": {
+          "type": ["string", "null"],
+          "minLength": 1
+        },
+        "source_documents": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "stakeholderKind": {
+      "enum": [
+        "researchers",
+        "research_institutions",
+        "funders",
+        "governments",
+        "mission_beneficiaries",
+        "affected_communities",
+        "firms",
+        "infrastructure_providers",
+        "public",
+        "international_knowledge_commons",
+        "future_generations",
+        "environment",
+        "other"
+      ]
+    },
+    "standingRole": {
+      "enum": [
+        "beneficiary",
+        "burden_bearer",
+        "voice",
+        "proposer",
+        "approver",
+        "appellant",
+        "auditor",
+        "metric_subject"
+      ]
+    },
+    "stakeholder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "label", "standing", "protected", "rationale"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "$ref": "#/$defs/stakeholderKind" },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "standing": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/standingRole" }
+        },
+        "protected": { "type": "boolean" },
+        "rationale": { "$ref": "#/$defs/nonEmptyString" },
+        "representation": {
+          "enum": ["direct", "representative", "proxy", "not_yet_represented"]
+        },
+        "representation_notes": { "type": "string" }
+      }
+    },
+    "sliceDimension": {
+      "enum": [
+        "institution",
+        "career_stage",
+        "resource_quantile",
+        "topic",
+        "agent_type",
+        "geography",
+        "demographic",
+        "exposure",
+        "generation",
+        "other"
+      ]
+    },
+    "stakeholderSlice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "stakeholder_ids", "dimension", "values", "rationale", "protected"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "dimension": { "$ref": "#/$defs/sliceDimension" },
+        "values": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "rationale": { "$ref": "#/$defs/nonEmptyString" },
+        "protected": { "type": "boolean" },
+        "minimum_support": { "type": "integer", "minimum": 1 },
+        "maximum_missing_fraction": { "type": "number", "minimum": 0, "maximum": 1 },
+        "privacy_notes": { "type": "string" }
+      }
+    },
+    "timeHorizon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "kind", "censoring_policy"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "kind": {
+          "enum": ["immediate", "short", "medium", "long", "shock", "event", "intergenerational"]
+        },
+        "years": { "type": "number", "exclusiveMinimum": 0 },
+        "censoring_policy": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "uncertaintyModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "reporting"],
+      "properties": {
+        "method": { "$ref": "#/$defs/nonEmptyString" },
+        "reporting": { "$ref": "#/$defs/nonEmptyString" },
+        "minimum_runs": { "type": "integer", "minimum": 1 },
+        "decision_rule": { "type": "string" }
+      }
+    },
+    "metricValidity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "claim", "evidence", "population", "review_trigger"],
+      "properties": {
+        "status": {
+          "enum": [
+            "unvalidated",
+            "provisional",
+            "construct_validated",
+            "predictively_validated",
+            "causally_validated",
+            "invalidated"
+          ]
+        },
+        "claim": { "$ref": "#/$defs/nonEmptyString" },
+        "evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        },
+        "population": { "$ref": "#/$defs/nonEmptyString" },
+        "review_trigger": { "$ref": "#/$defs/nonEmptyString" },
+        "expires_on": { "$ref": "#/$defs/date" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "label",
+        "construct",
+        "role",
+        "observable",
+        "formula",
+        "unit",
+        "direction",
+        "data_sources",
+        "evaluator_ref",
+        "time_horizon_refs",
+        "stakeholder_slice_refs",
+        "uncertainty",
+        "validity",
+        "authorized_uses",
+        "prohibited_uses",
+        "known_proxy_risks",
+        "gaming_hypotheses",
+        "shadow_metric_refs",
+        "owner_stakeholder_ids",
+        "derived_from_metric_versions"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "version": { "$ref": "#/$defs/semver" },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "construct": { "$ref": "#/$defs/nonEmptyString" },
+        "role": {
+          "enum": ["constraint", "objective", "diagnostic", "shadow", "governance"]
+        },
+        "observable": { "$ref": "#/$defs/nonEmptyString" },
+        "formula": { "$ref": "#/$defs/nonEmptyString" },
+        "unit": { "$ref": "#/$defs/nonEmptyString" },
+        "direction": {
+          "enum": ["maximize", "minimize", "target", "portfolio", "observe_only"]
+        },
+        "data_sources": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "evaluator_ref": { "$ref": "#/$defs/id" },
+        "time_horizon_refs": { "$ref": "#/$defs/idArray" },
+        "stakeholder_slice_refs": { "$ref": "#/$defs/optionalIdArray" },
+        "uncertainty": { "$ref": "#/$defs/uncertaintyModel" },
+        "validity": { "$ref": "#/$defs/metricValidity" },
+        "authorized_uses": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "prohibited_uses": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "known_proxy_risks": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "gaming_hypotheses": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "shadow_metric_refs": { "$ref": "#/$defs/optionalIdArray" },
+        "owner_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "derived_from_metric_versions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "measurementState": {
+      "enum": ["measurable", "partially_measurable", "not_yet_measurable"]
+    },
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["comparator", "value"],
+      "properties": {
+        "comparator": { "enum": [">", ">=", "<", "<=", "==", "in", "not_in"] },
+        "value": {}
+      }
+    },
+    "hardConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "claim",
+        "protected_stakeholder_ids",
+        "protected_slice_refs",
+        "metric_refs",
+        "measurement_state",
+        "evaluation_scope",
+        "threshold",
+        "uncertainty_policy",
+        "failure_action",
+        "compensable",
+        "rationale"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "claim": { "$ref": "#/$defs/nonEmptyString" },
+        "protected_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "protected_slice_refs": { "$ref": "#/$defs/optionalIdArray" },
+        "metric_refs": { "$ref": "#/$defs/optionalIdArray" },
+        "measurement_state": { "$ref": "#/$defs/measurementState" },
+        "measurement_gap": { "type": "string" },
+        "evaluation_scope": { "$ref": "#/$defs/nonEmptyString" },
+        "threshold": { "$ref": "#/$defs/threshold" },
+        "uncertainty_policy": { "$ref": "#/$defs/nonEmptyString" },
+        "failure_action": { "enum": ["infeasible", "stop", "quarantine", "investigate"] },
+        "compensable": { "const": false },
+        "rationale": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "measurement_state": { "const": "not_yet_measurable" } },
+            "required": ["measurement_state"]
+          },
+          "then": { "required": ["measurement_gap"] }
+        },
+        {
+          "if": {
+            "properties": { "measurement_state": { "const": "measurable" } },
+            "required": ["measurement_state"]
+          },
+          "then": {
+            "properties": { "metric_refs": { "minItems": 1 } }
+          }
+        }
+      ]
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "capability",
+        "mode",
+        "protected_stakeholder_ids",
+        "metric_refs",
+        "measurement_state",
+        "time_horizon_refs",
+        "stress_tests",
+        "recovery_expectation",
+        "rationale"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "capability": { "$ref": "#/$defs/nonEmptyString" },
+        "mode": { "enum": ["floor", "reserve", "objective", "stress_test"] },
+        "protected_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "metric_refs": { "$ref": "#/$defs/optionalIdArray" },
+        "measurement_state": { "$ref": "#/$defs/measurementState" },
+        "measurement_gap": { "type": "string" },
+        "minimum_or_reserve": { "$ref": "#/$defs/threshold" },
+        "time_horizon_refs": { "$ref": "#/$defs/idArray" },
+        "stress_tests": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "recovery_expectation": { "$ref": "#/$defs/nonEmptyString" },
+        "rollback_action": { "type": "string" },
+        "rationale": { "$ref": "#/$defs/nonEmptyString" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "measurement_state": { "const": "not_yet_measurable" } },
+            "required": ["measurement_state"]
+          },
+          "then": { "required": ["measurement_gap"] }
+        },
+        {
+          "if": {
+            "properties": { "measurement_state": { "const": "measurable" } },
+            "required": ["measurement_state"]
+          },
+          "then": {
+            "properties": { "metric_refs": { "minItems": 1 } }
+          }
+        }
+      ]
+    },
+    "commitmentObjective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "construct", "metric_refs", "direction", "time_horizon_refs", "stakeholder_slice_refs", "priority_class"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "construct": { "$ref": "#/$defs/nonEmptyString" },
+        "metric_refs": { "$ref": "#/$defs/idArray" },
+        "direction": { "enum": ["maximize", "minimize", "target", "portfolio"] },
+        "time_horizon_refs": { "$ref": "#/$defs/idArray" },
+        "stakeholder_slice_refs": { "$ref": "#/$defs/optionalIdArray" },
+        "priority_class": { "enum": ["primary", "secondary", "diagnostic"] },
+        "target": { "$ref": "#/$defs/threshold" }
+      }
+    },
+    "commitment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "purpose",
+        "owner_stakeholder_ids",
+        "beneficiary_stakeholder_ids",
+        "burden_bearer_stakeholder_ids",
+        "objectives",
+        "hard_constraint_refs",
+        "capability_refs",
+        "valid_scenarios",
+        "review_by",
+        "non_transferability_statement"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": {
+          "enum": ["exploratory", "confirmatory", "formal_software", "mission", "commons", "capability", "custom"]
+        },
+        "purpose": { "$ref": "#/$defs/nonEmptyString" },
+        "owner_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "beneficiary_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "burden_bearer_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "objectives": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/commitmentObjective" }
+        },
+        "hard_constraint_refs": { "$ref": "#/$defs/idArray" },
+        "capability_refs": { "$ref": "#/$defs/idArray" },
+        "valid_scenarios": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "review_by": { "$ref": "#/$defs/date" },
+        "expires_on": { "$ref": "#/$defs/date" },
+        "non_transferability_statement": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "evaluatorRelation": {
+      "enum": ["self", "same_producer", "external", "independent", "instrument", "formal_kernel"]
+    },
+    "evaluatorLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["producer", "implementation_id", "implementation_version"],
+      "properties": {
+        "producer": { "$ref": "#/$defs/nonEmptyString" },
+        "implementation_id": { "$ref": "#/$defs/nonEmptyString" },
+        "implementation_version": { "$ref": "#/$defs/nonEmptyString" },
+        "model_id": { "type": "string" },
+        "model_version": { "type": "string" },
+        "prompt_id": { "type": "string" },
+        "prompt_version": { "type": "string" },
+        "data_version": { "type": "string" },
+        "tool_versions": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "type",
+        "relation",
+        "target_constructs",
+        "inputs",
+        "outputs",
+        "known_blind_spots",
+        "calibration_evidence",
+        "authorized_decisions",
+        "prohibited_decisions",
+        "lineage"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "version": { "$ref": "#/$defs/semver" },
+        "type": {
+          "enum": [
+            "model_judge",
+            "peer_review",
+            "expert_review",
+            "formal_verifier",
+            "executable_test",
+            "instrument",
+            "simulation_oracle",
+            "aggregate_metric",
+            "human_coded",
+            "other"
+          ]
+        },
+        "relation": { "$ref": "#/$defs/evaluatorRelation" },
+        "target_constructs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "inputs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "outputs": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "known_blind_spots": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "calibration_evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        },
+        "authorized_decisions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "prohibited_decisions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "expires_on": { "$ref": "#/$defs/date" },
+        "lineage": { "$ref": "#/$defs/evaluatorLineage" }
+      }
+    },
+    "decisionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "evaluator_refs",
+        "allowed_actions",
+        "authorized_uses",
+        "prohibited_uses",
+        "conflict_policy",
+        "appeal_route"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "version": { "$ref": "#/$defs/semver" },
+        "evaluator_refs": { "$ref": "#/$defs/idArray" },
+        "allowed_actions": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "authorized_uses": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "prohibited_uses": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "conflict_policy": { "$ref": "#/$defs/nonEmptyString" },
+        "appeal_route": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "requiredLineageFields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject_id",
+        "claim_id",
+        "artifact_id",
+        "artifact_version",
+        "run_id",
+        "autonomy_slice",
+        "evaluator_id",
+        "evaluator_version",
+        "evaluator_relation",
+        "decision_policy_id",
+        "decision_policy_version",
+        "constitution_version",
+        "metric_version",
+        "timestamp"
+      ],
+      "properties": {
+        "subject_id": { "const": true },
+        "claim_id": { "const": true },
+        "artifact_id": { "const": true },
+        "artifact_version": { "const": true },
+        "run_id": { "const": true },
+        "autonomy_slice": { "const": true },
+        "evaluator_id": { "const": true },
+        "evaluator_version": { "const": true },
+        "evaluator_relation": { "const": true },
+        "decision_policy_id": { "const": true },
+        "decision_policy_version": { "const": true },
+        "constitution_version": { "const": true },
+        "metric_version": { "const": true },
+        "timestamp": { "const": true },
+        "parent_or_supersession_links": { "type": "boolean" }
+      }
+    },
+    "goalCustody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generate", "select", "revise", "stop", "release"],
+      "properties": {
+        "generate": { "const": true },
+        "select": { "const": true },
+        "revise": { "const": true },
+        "stop": { "const": true },
+        "release": { "const": true }
+      }
+    },
+    "separationOfFunctions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluation_from_decision",
+        "decision_from_allocation",
+        "independent_appeal_route",
+        "correction_propagates_downstream"
+      ],
+      "properties": {
+        "evaluation_from_decision": { "const": true },
+        "decision_from_allocation": { "const": true },
+        "independent_appeal_route": { "const": true },
+        "correction_propagates_downstream": { "const": true },
+        "declared_role_overlaps": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonEmptyString" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "changeControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposer_stakeholder_ids",
+        "approver_stakeholder_ids",
+        "auditor_stakeholder_ids",
+        "appeal_routes",
+        "conflict_disclosure_required",
+        "reauthorization_triggers",
+        "rollback_procedure"
+      ],
+      "properties": {
+        "proposer_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "approver_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "auditor_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "appeal_routes": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "conflict_disclosure_required": { "const": true },
+        "reauthorization_triggers": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "rollback_procedure": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "goodhartAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "metric_refs", "tests", "cadence", "triggers", "responsible_stakeholder_ids", "response_actions"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "metric_refs": { "$ref": "#/$defs/idArray" },
+        "tests": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "proxy_construct_drift",
+              "gaming_elasticity",
+              "target_substitution_lag",
+              "metric_half_life",
+              "evaluator_error_correlation",
+              "holdout_degradation",
+              "subgroup_harm",
+              "decision_concentration",
+              "allocation_diversity",
+              "rule_authority_concentration",
+              "manipulation_search",
+              "counterfactual_shadow_evaluation",
+              "recovery_time"
+            ]
+          }
+        },
+        "cadence": { "$ref": "#/$defs/nonEmptyString" },
+        "triggers": { "$ref": "#/$defs/nonEmptyStringArray" },
+        "responsible_stakeholder_ids": { "$ref": "#/$defs/idArray" },
+        "response_actions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["warn", "investigate", "quarantine", "suspend_optimization", "recalibrate", "retire_metric", "rollback"] }
+        }
+      }
+    },
+    "evaluatorGovernance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_lineage_fields",
+        "allowed_evaluator_relations",
+        "goal_custody",
+        "evaluators",
+        "decision_policies",
+        "separation_of_functions",
+        "change_control",
+        "goodhart_audits"
+      ],
+      "properties": {
+        "required_lineage_fields": { "$ref": "#/$defs/requiredLineageFields" },
+        "allowed_evaluator_relations": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/evaluatorRelation" }
+        },
+        "goal_custody": { "$ref": "#/$defs/goalCustody" },
+        "evaluators": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/evaluator" }
+        },
+        "decision_policies": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/decisionPolicy" }
+        },
+        "separation_of_functions": { "$ref": "#/$defs/separationOfFunctions" },
+        "change_control": { "$ref": "#/$defs/changeControl" },
+        "goodhart_audits": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/goodhartAudit" }
+        }
+      }
+    },
+    "evaluationUnit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject_id",
+        "claim_id",
+        "artifact_version",
+        "autonomy_slice",
+        "evaluator_id",
+        "evaluator_version",
+        "evaluator_relation",
+        "decision_policy_version"
+      ],
+      "properties": {
+        "subject_id": { "const": true },
+        "claim_id": { "const": true },
+        "artifact_version": { "const": true },
+        "autonomy_slice": { "const": true },
+        "evaluator_id": { "const": true },
+        "evaluator_version": { "const": true },
+        "evaluator_relation": { "const": true },
+        "decision_policy_version": { "const": true }
+      }
+    },
+    "transientScalarization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed",
+        "purpose",
+        "underlying_vector_retained",
+        "weights_and_provenance_declared",
+        "sensitivity_reported",
+        "expires_with_run",
+        "scientific_value_label_prohibited"
+      ],
+      "properties": {
+        "allowed": { "type": "boolean" },
+        "purpose": { "const": "candidate_acquisition_only" },
+        "underlying_vector_retained": { "const": true },
+        "weights_and_provenance_declared": { "const": true },
+        "sensitivity_reported": { "const": true },
+        "expires_with_run": { "const": true },
+        "scientific_value_label_prohibited": { "const": true }
+      }
+    },
+    "aggregationBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "default_mode",
+        "evaluation_unit",
+        "global_scalarization_prohibited",
+        "permitted_methods",
+        "transient_scalarization",
+        "noncompensable_layers",
+        "protected_slice_harm_not_offset_by_average_gain",
+        "cross_stakeholder_compensation",
+        "cross_time_compensation",
+        "missing_evidence_policy"
+      ],
+      "properties": {
+        "default_mode": { "const": "constrained_vector" },
+        "evaluation_unit": { "$ref": "#/$defs/evaluationUnit" },
+        "global_scalarization_prohibited": { "const": true },
+        "permitted_methods": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["pareto", "epsilon_constraint", "lexicographic", "scenario_dominance", "transient_scalarization"] }
+        },
+        "transient_scalarization": { "$ref": "#/$defs/transientScalarization" },
+        "noncompensable_layers": {
+          "type": "array",
+          "contains": { "const": "hard_constraints" },
+          "minContains": 1,
+          "items": { "enum": ["hard_constraints", "capability_preservation"] },
+          "uniqueItems": true
+        },
+        "protected_slice_harm_not_offset_by_average_gain": { "const": true },
+        "cross_stakeholder_compensation": { "enum": ["prohibited", "commitment_specific_explicit_authorization_only"] },
+        "cross_time_compensation": { "enum": ["prohibited", "commitment_specific_explicit_authorization_only"] },
+        "missing_evidence_policy": { "const": "unknown_not_pass" }
+      }
+    },
+    "reportingContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "constraint_states",
+        "capability_states",
+        "objective_vector",
+        "stakeholder_slices",
+        "uncertainty",
+        "time_horizons",
+        "seed_distribution",
+        "shadow_metrics",
+        "evaluator_disagreement",
+        "goodhart_findings",
+        "measurement_gaps",
+        "constitution_snapshot_and_hash",
+        "unknown_distinct_from_pass"
+      ],
+      "properties": {
+        "constraint_states": { "const": true },
+        "capability_states": { "const": true },
+        "objective_vector": { "const": true },
+        "stakeholder_slices": { "const": true },
+        "uncertainty": { "const": true },
+        "time_horizons": { "const": true },
+        "seed_distribution": { "const": true },
+        "shadow_metrics": { "const": true },
+        "evaluator_disagreement": { "const": true },
+        "goodhart_findings": { "const": true },
+        "measurement_gaps": { "const": true },
+        "constitution_snapshot_and_hash": { "const": true },
+        "unknown_distinct_from_pass": { "const": true }
+      }
+    }
+  }
+}

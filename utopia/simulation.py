@@ -401,6 +401,8 @@ class Simulation:
         self.industry_funding_system = IndustryFundingSystem(
             base_budget=SIMULATION_CONFIG['funding']['industry_base_budget'])
         self.yearly_results: List[Dict] = []
+        self._funding_application_traces = {}
+        self._funding_application_trace_summaries = {}
         self.paper_tracker = PaperTracker(output_dir=output_dir)  # Track all submitted papers
         self.submitted_paper_ids: Set[str] = set()  # Track all submitted papers across years
 
@@ -1242,6 +1244,12 @@ class Simulation:
         """
         checks = {'year': year, 'passed': True, 'failures': []}
         failures = check_citation_integrity(self.paper_tracker, self.citation_tracker)
+        funding_trace = self._funding_application_trace_summaries.get(year)
+        if funding_trace and not funding_trace['passed']:
+            failures.extend(
+                f"funding application trace: {message}"
+                for message in funding_trace['failures']
+            )
 
         # No duplicate paper submissions across conferences in the same year
         seen = set()
@@ -3356,6 +3364,11 @@ class Simulation:
         winners = self._evaluate_funding_applications(year, applications, funding_agencies, year_results)
         funding_per_unit = self._allocate_university_funding(year, winners, active_papers)
         self._record_funding_costs(year, cost_events, winners, funding_per_unit)
+        trace = self._funding_application_traces.get(year)
+        if trace is not None:
+            summary = trace.summary()
+            self._funding_application_trace_summaries[year] = summary
+            year_results['funding_application_pipeline'] = summary
         self._finish_funding_cycle(year, year_results, winners, applications)
 
     def _allocate_industry_funding(self, year, active_papers_dataframe, year_results):
@@ -3401,6 +3414,13 @@ class Simulation:
 
     def _collect_funding_applications(self, year, funding_agencies):
         """Prepare each selected program and group successful proposals by applicant."""
+        from utopia.funding.application_trace import FundingApplicationTrace
+        if not hasattr(self, '_funding_application_traces'):
+            self._funding_application_traces = {}
+        if not hasattr(self, '_funding_application_trace_summaries'):
+            self._funding_application_trace_summaries = {}
+        trace = FundingApplicationTrace(year, self.output_dir)
+        self._funding_application_traces[year] = trace
         # Batch process university researcher funding applications
         all_programs = {pid: program for funding_agent in funding_agencies for pid, program in funding_agent.funding_programs.items()}
         university_researchers = [
@@ -3431,6 +3451,7 @@ class Simulation:
                     continue
                 batch_prompts.append(prompt)
                 batch_metadata.append(metadata)
+                trace.target(metadata, len(batch_metadata))
                 if funding_response_format is None:
                     funding_response_format = response_format
 
@@ -3440,17 +3461,22 @@ class Simulation:
             successful_items = self._generate_funding_applications_batch(
                 year, all_programs, batch_prompts, batch_metadata, funding_response_format)
         else:
-            successful_items = self._generate_funding_applications_sequential(batch_prompts, batch_metadata)
+            successful_items = self._generate_funding_applications_sequential(
+                year, batch_prompts, batch_metadata)
 
         agent_applications = {}
         for agent_id, program_id, app_data, agent in successful_items:
             app_data['author'] = agent
+            if program_id in agent_applications.setdefault(agent_id, {}):
+                trace.duplicate(app_data)
+                continue
             agent_applications.setdefault(agent_id, {})[program_id] = app_data
         return list(agent_applications.values())
 
     def _generate_funding_applications_batch(self, year, all_programs, batch_prompts, batch_metadata, funding_response_format):
         """Retry failed proposal requests while retaining successful proposals in arrival order."""
         MAX_FUNDING_RETRIES = 5
+        trace = self._funding_application_traces[year]
         # Collect successful (agent_id, program_id, app_data) tuples
         successful_items = []
 
@@ -3466,23 +3492,32 @@ class Simulation:
                     seed_ctx=('phase5_funding_apps', year, attempt),
                 )
             except Exception as e:
+                reason = f"batch_exception:{type(e).__name__}"
+                for meta in batch_metadata:
+                    trace.generation_attempt(meta, attempt + 1, "request_error", reason)
+                    meta['_funding_last_failure'] = reason
                 logger.warning(f"Batch funding generation failed on attempt {attempt+1}: {e}")
                 if attempt < MAX_FUNDING_RETRIES - 1:
                     time.sleep(1)
                 continue
 
             items_needing_retry = []
-            for j, (proposal, _) in enumerate(batch_results):
-                meta = batch_metadata[j]
+            batch_results = list(batch_results)
+            for j, meta in enumerate(batch_metadata):
+                proposal = batch_results[j][0] if j < len(batch_results) else None
                 agent = meta['agent']
                 program_id = meta['program_id']
 
                 is_valid, cleaned, reason = self._validate_single_funding_proposal(proposal, meta)
                 if not is_valid:
+                    trace.generation_attempt(meta, attempt + 1, "invalid", reason)
+                    meta['_funding_last_failure'] = reason
                     logger.warning(f"Funding proposal invalid for agent {agent.id} program {program_id} (attempt {attempt+1}): {reason}")
                     items_needing_retry.append(meta)
                     continue
 
+                trace.generation_attempt(meta, attempt + 1, "valid")
+                trace.validated(meta, cleaned, attempt + 1)
                 successful_items.append((agent.id, program_id, cleaned, agent))
 
             if not items_needing_retry:
@@ -3501,18 +3536,23 @@ class Simulation:
                     past_rejected_papers=self.conference_system.authors_to_rejected_papers.get(agent.id, []),
                 )
                 assert prompt
+                new_meta['_application_trace_id'] = meta['_application_trace_id']
+                new_meta['_funding_last_failure'] = meta.get('_funding_last_failure')
                 batch_prompts.append(prompt)
                 batch_metadata.append(new_meta)
 
         # Log items that failed all retries
         if batch_prompts:
             for meta in batch_metadata:
+                trace.dropped(meta, MAX_FUNDING_RETRIES,
+                              meta.get('_funding_last_failure') or 'generation_failed')
                 logger.warning(f"Agent {meta['agent'].id} program {meta['program_id']} funding application failed all {MAX_FUNDING_RETRIES} retries, skipping")
 
         return successful_items
 
-    def _generate_funding_applications_sequential(self, batch_prompts, batch_metadata):
+    def _generate_funding_applications_sequential(self, year, batch_prompts, batch_metadata):
         """Generate proposals with the existing single-request retry behavior."""
+        trace = self._funding_application_traces[year]
         sequential_items = []
         for i, prompt in enumerate(tqdm(batch_prompts, desc="Generating funding applications")):
             metadata = batch_metadata[i]
@@ -3520,21 +3560,36 @@ class Simulation:
             program_id = metadata['program_id']
             num_retries = 0
             while True:
+                attempt_recorded = False
                 try:
                     proposal, _ = self.llm.generate(prompt=prompt)
 
                     is_valid, cleaned, reason = self._validate_single_funding_proposal(proposal, metadata)
                     if not is_valid:
+                        trace.generation_attempt(metadata, num_retries + 1, "invalid", reason)
+                        metadata['_funding_last_failure'] = reason
+                        attempt_recorded = True
                         raise ValueError(f"Invalid proposal: {reason}")
 
+                    trace.generation_attempt(metadata, num_retries + 1, "valid")
+                    attempt_recorded = True
+                    trace.validated(metadata, cleaned, num_retries + 1)
                     sequential_items.append((agent.id, program_id, cleaned, agent))
                     break
 
                 except Exception as e:
+                    if not attempt_recorded:
+                        reason = f"request_exception:{type(e).__name__}"
+                        trace.generation_attempt(
+                            metadata, num_retries + 1, "request_error", reason)
+                        metadata['_funding_last_failure'] = reason
                     logger.warning(f"Error preparing funding application: {e}")
                     traceback.print_exc()
                     num_retries += 1
                     if num_retries >= self.max_retries:
+                        trace.dropped(
+                            metadata, num_retries,
+                            metadata.get('_funding_last_failure') or 'generation_failed')
                         raise Exception("Failed to prepare funding application after retries")
                     time.sleep(1)
 
@@ -3630,6 +3685,11 @@ class Simulation:
             return {}
         final_eval_results, final_eval_metadata = self._rank_funding_applications(
             year, all_funding_proposal_eval_prompts, all_eval_metadata, eval_response_format)
+        trace = self._funding_application_traces.get(year)
+        if trace is not None:
+            for metadata in final_eval_metadata:
+                for application in metadata['apps']:
+                    trace.evaluation(application)
         # Step 3: Process all results (valid + any final failures with fallback).
         # Funding-conservatism intervention: novelty penalties are applied to
         # scores BEFORE winner selection (plan 4.4); neutral mode passes none.
@@ -3644,7 +3704,8 @@ class Simulation:
         # Matthew-RD experiment: persist full pre-decision rankings so the
         # funding cutoff is reconstructable for winners AND losers.
         # Default-off flag; no behavior change for any other experiment.
-        application_log = [] if getattr(self.args, 'log_funding_applications', False) else None
+        persist_application_log = getattr(self.args, 'log_funding_applications', False)
+        application_log = []
         # Fixed agency budget (factor R): slots anchored to N0 replace the
         # per-program int(n x rate) rule; 'track' (default) passes None.
         slot_override = None
@@ -3658,7 +3719,10 @@ class Simulation:
             novelty_penalties=novelty_penalties, lambda_funding=lambda_funding,
             application_log=application_log, slot_override=slot_override,
         )
-        if application_log is not None:
+        if trace is not None:
+            for record in application_log:
+                trace.decision(record)
+        if persist_application_log:
             app_log_path = os.path.join(self.output_dir,
                                         f'funding_applications_year_{year}.jsonl')
             with open(app_log_path, 'w') as f:
@@ -3701,6 +3765,9 @@ class Simulation:
 
                 applied = self._account_resources(agent, funding_to_researcher, category='grant_income',
                                                   year=year, program=program_id)
+                trace = self._funding_application_traces.get(year)
+                if trace is not None:
+                    trace.allocation(winner.get('application_trace_id'), applied)
                 if not applied:
                     continue
                 self.funding_tracker.record_funding_allocation(year, funding_to_researcher, 'university')

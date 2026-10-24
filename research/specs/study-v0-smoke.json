@@ -3,6 +3,7 @@
   "version": 1,
   "design_space": "research/specs/design-space-v0.json",
   "baseline_design": "research/specs/example-design-v0.json",
+  "metric_constitution": "research/specs/example-metric-constitution-v1.json",
   "sampler": {
     "kind": "sobol",
     "count": 4,

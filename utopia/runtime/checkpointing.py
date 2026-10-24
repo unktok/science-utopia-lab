@@ -213,9 +213,12 @@ def simulation_replay_paths(output_dir, docs_dir, num_years, *, table_names=()):
     for filename in ("initial_world.json", "integrity_checks.json"):
         paths["docs/" + filename] = docs / filename
     for year in range(1, num_years + 1):
-        for stem in ("funding_applications", "funding_costs"):
+        for stem in ("funding_applications", "funding_costs",
+                     "funding_application_trace"):
             filename = f"{stem}_year_{year}.jsonl"
             paths["output/" + filename] = output / filename
+        filename = f"funding_application_trace_year_{year}.summary.json"
+        paths["output/" + filename] = output / filename
         filename = f"mechanisms_year_{year}.json"
         paths["docs/" + filename] = docs / filename
     for table in table_names:

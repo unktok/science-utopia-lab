@@ -22,6 +22,10 @@ from utopia.optimization.design_space import (
     load_space,
     validate_candidate,
 )
+from utopia.optimization.metric_constitution import (
+    constitution_sha256,
+    load_metric_constitution,
+)
 from utopia.utils.paths import project_root
 
 
@@ -90,6 +94,11 @@ def load_study(path: str | Path) -> tuple[dict[str, Any], dict[str, Any], dict[s
     space = load_space(_resolve_repo_path(study["design_space"]))
     baseline = load_candidate(_resolve_repo_path(study["baseline_design"]))
     validate_candidate(space, baseline)
+    constitution_path = study.get("metric_constitution")
+    if not isinstance(constitution_path, str) or not constitution_path:
+        raise ValueError("metric_constitution is required")
+    constitution = load_metric_constitution(_resolve_repo_path(constitution_path))
+    study["metric_constitution_sha256"] = constitution_sha256(constitution)
     sampler = study.get("sampler", {})
     if sampler.get("kind") not in {"random", "sobol"}:
         raise ValueError("sampler.kind must be random or sobol")
@@ -319,7 +328,13 @@ def plan_study(
     seeds = study["seed_sets"].get(seed_role)
     if not seeds:
         raise ValueError(f"Unknown or empty seed role {seed_role!r}")
-    snapshot = {"study": study, "space": space, "study_revision": revision}
+    constitution = load_metric_constitution(_resolve_repo_path(study["metric_constitution"]))
+    snapshot = {
+        "study": study,
+        "space": space,
+        "metric_constitution": constitution,
+        "study_revision": revision,
+    }
     snapshot_path = root / "study-snapshot.json"
     encoded = json.dumps(snapshot, indent=2, sort_keys=True) + "\n"
     if snapshot_path.exists() and snapshot_path.read_text() != encoded:
@@ -367,6 +382,31 @@ def manifest_status(row: Mapping[str, Any]) -> tuple[str, str | None]:
     except (OSError, json.JSONDecodeError) as error:
         return "invalid", str(error)
     if manifest.get("status") == "complete":
+        integrity_path = path.parent / "integrity_checks.json"
+        if integrity_path.exists():
+            try:
+                checks = json.loads(integrity_path.read_text())
+            except (OSError, json.JSONDecodeError) as error:
+                return "invalid", f"invalid integrity report: {error}"
+            if not isinstance(checks, list) or any(not isinstance(check, dict) for check in checks):
+                return "invalid", "invalid integrity report: expected a list of objects"
+            failed = [check for check in checks if check.get("passed") is not True]
+            if failed:
+                return "invalid", f"integrity checks failed for years: " + ",".join(
+                    str(check.get("year", "unknown")) for check in failed
+                )
+
+        args = manifest.get("args")
+        output_dir = args.get("output_dir") if isinstance(args, dict) else None
+        if isinstance(output_dir, str):
+            for summary_path in sorted(Path(output_dir).glob(
+                    "funding_application_trace_year_*.summary.json")):
+                try:
+                    summary = json.loads(summary_path.read_text())
+                except (OSError, json.JSONDecodeError) as error:
+                    return "invalid", f"invalid funding application trace: {error}"
+                if summary.get("passed") is not True:
+                    return "invalid", f"funding application trace failed: {summary_path.name}"
         return "complete", None
     return str(manifest.get("status", "unknown")), manifest.get("wrapper_error")
 
@@ -430,8 +470,33 @@ def build_report(registry: RunRegistry) -> dict[str, Any]:
     for row in rows:
         by_status[row["status"]] = by_status.get(row["status"], 0) + 1
     completed = [row for row in rows if row["status"] == "complete"]
-    activity, report_errors = [], []
+    activity, pipeline_diagnostics, report_errors = [], [], []
     for row in completed:
+        trace_root = Path(row["output_root"]) / "checkpoints" / row["run_id"]
+        trace_summaries = []
+        for trace_path in sorted(trace_root.glob(
+                "funding_application_trace_year_*.summary.json")):
+            try:
+                trace_summaries.append(json.loads(trace_path.read_text()))
+            except (OSError, json.JSONDecodeError) as error:
+                report_errors.append({
+                    "run_id": row["run_id"],
+                    "error": f"invalid funding trace summary {trace_path.name}: {error}",
+                })
+        if trace_summaries:
+            count_fields = (
+                "targets", "validated", "submitted", "declined_by_agent", "dropped", "evaluated",
+                "decided", "funded", "allocations_recorded", "allocations_applied",
+                "generation_attempts", "semantic_invalid_attempts", "request_error_attempts",
+            )
+            pipeline_diagnostics.append({
+                "run_id": row["run_id"],
+                **{
+                    field: sum(summary.get("counts", {}).get(field, 0)
+                               for summary in trace_summaries)
+                    for field in count_fields
+                },
+            })
         try:
             from utopia.analysis.release import summarize_run
 
@@ -473,6 +538,15 @@ def build_report(registry: RunRegistry) -> dict[str, Any]:
             field: numeric_summary(item[field] for item in activity) for field in fields
         },
         "completed_runs": activity,
+        "funding_application_diagnostics": pipeline_diagnostics,
+        "funding_application_distributions": {
+            field: numeric_summary(item[field] for item in pipeline_diagnostics)
+            for field in (
+                "targets", "validated", "submitted", "declined_by_agent", "dropped", "evaluated",
+                "decided", "funded", "allocations_recorded", "allocations_applied",
+                "generation_attempts", "semantic_invalid_attempts", "request_error_attempts",
+            )
+        },
         "report_errors": report_errors,
         "note": "Activity fields are diagnostics, not optimization objectives.",
     }

@@ -25,6 +25,7 @@
 - [最適化研究計画](research/optimization.md): 目的関数、ブラックボックス最適化、微分可能化
 - [Design Space v0](research/design-space-v0.md): 最初の8変数とfidelity
 - [Metric Cards v0](research/metric-cards-v0.md): 指標の定義、集約、攻略リスク
+- [Metric Constitution v1](research/metric-constitution-v1.md): 制約、能力、commitment、評価器統治の実験契約
 - [現行パラメータ棚卸し](research/parameter-inventory.md): 採用、固定、延期、実行設定の分類
 - [複数seed実験harness](research/harness.md): 計画、registry、再試行、基本集計
 - [ゲーム構想](research/game.md): 研究基盤とゲーム体験の接続
@@ -47,5 +48,5 @@
 
 ## 現在地
 
-2026-10-24 に、Apple M5 Pro / 64 GB 環境上で Ollama と Qwen3-8B を使うローカル実行経路を追加し、10研究者・2機関・1年のシミュレーションを完走した。これは最適化研究の性能・再現性ベースラインであり、論文本番条件の再現ではない。詳細は[ベースライン実行記録](research/runs/2026-10-24-qwen3-8b-baseline.md)を参照する。
+2026-10-24 に、Apple M5 Pro / 64 GB 環境上で Ollama と Qwen3-8B を使うローカル実行経路を追加し、10研究者・2機関・1年のシミュレーションを完走した。seed反復harness、Metric Constitution v1、資金申請の段階間conservation traceまで実装し、新constitutionに拘束された10 runをrevision `6fcbf8bae1`として計画済みである。まだ1 seedの旧revisionしか実行しておらず、制度効果の推定は開始していない。詳細は[ベースライン実行記録](research/runs/2026-10-24-qwen3-8b-baseline.md)と[harness検証記録](research/runs/2026-10-24-harness-baseline-seed101.md)を参照する。
 

@@ -1,0 +1,557 @@
+{
+  "$schema": "./metric-constitution-v1.schema.json",
+  "constitution_id": "science-utopia-example",
+  "version": "1.0.0-draft.1",
+  "status": "draft",
+  "title": "Minimal sustainable-exploration constitution",
+  "purpose": "Exercise the Metric Constitution v1 structure without claiming that current harness proxies measure scientific or social value.",
+  "authorized_uses": [
+    "Smoke-test schema validation and reporting boundaries",
+    "Compare simulated institutional designs within the declared exploratory commitment"
+  ],
+  "prohibited_uses": [
+    "Ranking real researchers, institutions, countries, or fields",
+    "Interpreting any scalar or proxy as universal scientific value or national welfare",
+    "Making deployment, funding, or employment decisions"
+  ],
+  "validity": {
+    "effective_from": "2026-10-24",
+    "review_by": "2027-01-31",
+    "expires_on": "2027-04-30",
+    "valid_scenarios": [
+      "ScienceUtopia synthetic runs using the v0 harness and declared seeds"
+    ],
+    "invalid_scenarios": [
+      "Inference about real-world causal effects",
+      "Comparison across unversioned evaluator or simulator changes"
+    ]
+  },
+  "lineage": {
+    "created_at": "2026-10-24T00:00:00+09:00",
+    "proposed_by": ["research-community"],
+    "approved_by": [],
+    "change_summary": "Initial minimal example for structural validation.",
+    "supersedes": null,
+    "source_documents": [
+      "research/metric-constitution-v1.md",
+      "research/decisions/0002-objective-architecture.md",
+      "research/metric-cards-v0.md"
+    ]
+  },
+  "stakeholders": [
+    {
+      "id": "research-community",
+      "kind": "researchers",
+      "label": "Researchers represented in the simulation",
+      "standing": [
+        "beneficiary",
+        "burden_bearer",
+        "voice",
+        "proposer",
+        "metric_subject"
+      ],
+      "protected": true,
+      "rationale": "Researchers produce and evaluate work while bearing review load, exclusion risk, and capability loss.",
+      "representation": "proxy",
+      "representation_notes": "The v0 simulator represents stylized agents rather than actual researchers."
+    },
+    {
+      "id": "publics-and-affected",
+      "kind": "affected_communities",
+      "label": "Publics and communities affected by scientific institutions",
+      "standing": [
+        "beneficiary",
+        "burden_bearer",
+        "voice",
+        "appellant"
+      ],
+      "protected": true,
+      "rationale": "Public benefit and harm cannot be inferred solely from researcher activity or publication-like outputs.",
+      "representation": "not_yet_represented",
+      "representation_notes": "The current simulator has no validated public-outcome model."
+    },
+    {
+      "id": "knowledge-commons",
+      "kind": "international_knowledge_commons",
+      "label": "International knowledge commons",
+      "standing": [
+        "beneficiary",
+        "burden_bearer",
+        "auditor"
+      ],
+      "protected": true,
+      "rationale": "Scientific capability and access extend beyond any single organization or state.",
+      "representation": "proxy",
+      "representation_notes": "Topic coverage is only a weak proxy for a healthy knowledge commons."
+    },
+    {
+      "id": "future-generations",
+      "kind": "future_generations",
+      "label": "Future generations",
+      "standing": [
+        "beneficiary",
+        "burden_bearer"
+      ],
+      "protected": true,
+      "rationale": "Short-run throughput must not erase long-run capacity to inquire, criticize, and correct.",
+      "representation": "proxy",
+      "representation_notes": "Long-horizon capability is represented only through explicit preservation constraints."
+    }
+  ],
+  "stakeholder_slices": [
+    {
+      "id": "low-resource-researchers",
+      "label": "Researchers in the lower resource band",
+      "stakeholder_ids": ["research-community"],
+      "dimension": "resource_quantile",
+      "values": ["lower-band"],
+      "rationale": "An acceptable average can conceal exclusion or burden concentration among low-resource agents.",
+      "protected": true,
+      "minimum_support": 5,
+      "maximum_missing_fraction": 0.1,
+      "privacy_notes": "Synthetic attribute only; no real identity data are collected."
+    }
+  ],
+  "time_horizons": [
+    {
+      "id": "run-end",
+      "label": "End of one declared simulation run",
+      "kind": "immediate",
+      "censoring_policy": "Report run length and do not compare runs with mismatched horizons without normalization."
+    },
+    {
+      "id": "multi-run",
+      "label": "Distribution across repeated seeded runs",
+      "kind": "medium",
+      "censoring_policy": "Retain every seed and report uncertainty rather than only the pooled mean."
+    },
+    {
+      "id": "shock-recovery",
+      "label": "Recovery after an evaluation-capacity shock",
+      "kind": "shock",
+      "censoring_policy": "Right-censored non-recovery is reported as non-recovery, not imputed as eventual success."
+    }
+  ],
+  "metric_registry": [
+    {
+      "id": "integrity-checks-pass",
+      "version": "1.0.0",
+      "label": "Harness integrity checks pass",
+      "construct": "Minimum technical integrity of a simulation result",
+      "role": "constraint",
+      "observable": "All configured invariant and consistency checks return true",
+      "formula": "logical_all(configured_integrity_checks)",
+      "unit": "boolean",
+      "direction": "target",
+      "data_sources": ["run artifact integrity_checks"],
+      "evaluator_ref": "harness-metric-evaluator",
+      "time_horizon_refs": ["run-end"],
+      "stakeholder_slice_refs": [],
+      "uncertainty": {
+        "method": "Deterministic check over one versioned artifact",
+        "reporting": "Report each check and the aggregate boolean",
+        "minimum_runs": 1,
+        "decision_rule": "Any false or missing required check is not a pass."
+      },
+      "validity": {
+        "status": "construct_validated",
+        "claim": "The metric detects only the configured technical inconsistencies; it does not establish scientific truth or absence of deception.",
+        "evidence": ["Executable harness checks with versioned implementation"],
+        "population": "ScienceUtopia v0 run artifacts",
+        "review_trigger": "Any change to event schema, invariants, or simulator version",
+        "expires_on": "2027-04-30"
+      },
+      "authorized_uses": ["Reject technically malformed or internally inconsistent run artifacts"],
+      "prohibited_uses": ["Claim that outputs are true, reproducible, safe, or socially valuable"],
+      "known_proxy_risks": ["Only anticipated and implemented invariants can be checked"],
+      "gaming_hypotheses": ["A system may satisfy formal checks while producing semantically meaningless events"],
+      "shadow_metric_refs": [],
+      "owner_stakeholder_ids": ["research-community"],
+      "derived_from_metric_versions": []
+    },
+    {
+      "id": "active-researcher-fraction",
+      "version": "1.0.0",
+      "label": "Active researcher fraction",
+      "construct": "Retention of simulated participation capacity",
+      "role": "objective",
+      "observable": "Share of initialized researcher agents remaining active at run end",
+      "formula": "active_researchers_at_end / initialized_researchers",
+      "unit": "fraction",
+      "direction": "maximize",
+      "data_sources": ["agent initialization events", "agent status events"],
+      "evaluator_ref": "harness-metric-evaluator",
+      "time_horizon_refs": ["run-end", "multi-run", "shock-recovery"],
+      "stakeholder_slice_refs": ["low-resource-researchers"],
+      "uncertainty": {
+        "method": "Seeded run distribution with slice-level intervals",
+        "reporting": "Report per-seed values, median, interval, and slice gaps",
+        "minimum_runs": 5,
+        "decision_rule": "A slice below its declared floor cannot be masked by the aggregate."
+      },
+      "validity": {
+        "status": "provisional",
+        "claim": "Agent survival is a proxy for simulated participation continuity, not researcher wellbeing or real scientific capacity.",
+        "evidence": ["Directly derived from versioned agent-state events"],
+        "population": "Synthetic researcher agents under the declared scenario",
+        "review_trigger": "Changes to survival, resources, entry, exit, or agent definitions",
+        "expires_on": "2027-04-30"
+      },
+      "authorized_uses": ["Detect simulated participation collapse and distributional differences"],
+      "prohibited_uses": ["Infer real researcher wellbeing, job quality, or national research capacity"],
+      "known_proxy_risks": ["Inactive agents may represent productive exit while active agents may be trapped in low-value activity"],
+      "gaming_hypotheses": ["A policy may keep agents nominally active while reducing meaningful autonomy or output"],
+      "shadow_metric_refs": ["review-burden-per-active-researcher"],
+      "owner_stakeholder_ids": ["research-community", "future-generations"],
+      "derived_from_metric_versions": []
+    },
+    {
+      "id": "topic-entropy",
+      "version": "1.0.0",
+      "label": "Topic entropy",
+      "construct": "Breadth of simulated topic activity",
+      "role": "diagnostic",
+      "observable": "Entropy of activity counts over simulator topic labels",
+      "formula": "-sum_t p_t * log(p_t)",
+      "unit": "nats",
+      "direction": "portfolio",
+      "data_sources": ["versioned topic labels", "research activity events"],
+      "evaluator_ref": "harness-metric-evaluator",
+      "time_horizon_refs": ["run-end", "multi-run"],
+      "stakeholder_slice_refs": [],
+      "uncertainty": {
+        "method": "Seeded run distribution",
+        "reporting": "Report per-seed entropy together with number and definition of topic bins",
+        "minimum_runs": 5,
+        "decision_rule": "Treat as diagnostic; neither monotonic maximization nor a universal target is authorized."
+      },
+      "validity": {
+        "status": "provisional",
+        "claim": "Entropy measures spread over simulator labels, not epistemic diversity, novelty, usefulness, or quality.",
+        "evidence": ["Formula is transparent and reproducible for fixed labels"],
+        "population": "ScienceUtopia runs with an unchanged topic ontology",
+        "review_trigger": "Any change in topic ontology, granularity, or assignment process",
+        "expires_on": "2027-04-30"
+      },
+      "authorized_uses": ["Diagnose topic concentration within a fixed simulator ontology"],
+      "prohibited_uses": ["Use as a monotonic target or claim epistemic diversity or novelty"],
+      "known_proxy_risks": ["Label proliferation mechanically raises entropy without adding meaningful diversity"],
+      "gaming_hypotheses": ["Agents or designers may split topics into superficial sublabels to raise the metric"],
+      "shadow_metric_refs": [],
+      "owner_stakeholder_ids": ["research-community", "knowledge-commons"],
+      "derived_from_metric_versions": []
+    },
+    {
+      "id": "review-burden-per-active-researcher",
+      "version": "1.0.0",
+      "label": "Review burden per active researcher",
+      "construct": "Concentrated evaluation workload in the simulated system",
+      "role": "shadow",
+      "observable": "Review actions divided by active researcher-time",
+      "formula": "review_actions / active_researcher_steps",
+      "unit": "reviews per active researcher-step",
+      "direction": "minimize",
+      "data_sources": ["review events", "agent status events"],
+      "evaluator_ref": "harness-metric-evaluator",
+      "time_horizon_refs": ["run-end", "multi-run"],
+      "stakeholder_slice_refs": ["low-resource-researchers"],
+      "uncertainty": {
+        "method": "Seeded run and slice distribution",
+        "reporting": "Report median, upper tail, and protected-slice burden",
+        "minimum_runs": 5,
+        "decision_rule": "Lower burden is not automatically better if evaluation coverage or integrity falls."
+      },
+      "validity": {
+        "status": "provisional",
+        "claim": "Event counts approximate simulated review load but not cognitive effort or review quality.",
+        "evidence": ["Direct event-count provenance"],
+        "population": "Synthetic agents in the declared simulator version",
+        "review_trigger": "Changes to review action granularity or agent time model",
+        "expires_on": "2027-04-30"
+      },
+      "authorized_uses": ["Audit whether apparent retention is purchased with concentrated review load"],
+      "prohibited_uses": ["Infer human working hours, stress, or review quality"],
+      "known_proxy_risks": ["One logged action can represent unequal effort across policies"],
+      "gaming_hypotheses": ["A policy may bundle multiple evaluations into one logged action"],
+      "shadow_metric_refs": ["active-researcher-fraction"],
+      "owner_stakeholder_ids": ["research-community"],
+      "derived_from_metric_versions": []
+    }
+  ],
+  "layers": {
+    "hard_constraints": [
+      {
+        "id": "valid-run-integrity",
+        "claim": "A candidate cannot be evaluated when required technical integrity checks fail or are missing.",
+        "protected_stakeholder_ids": [
+          "research-community",
+          "publics-and-affected",
+          "knowledge-commons"
+        ],
+        "protected_slice_refs": [],
+        "metric_refs": ["integrity-checks-pass"],
+        "measurement_state": "measurable",
+        "evaluation_scope": "Every run artifact before cross-design comparison",
+        "threshold": {
+          "comparator": "==",
+          "value": true
+        },
+        "uncertainty_policy": "Missing or indeterminate checks produce unknown and quarantine; only explicit true is a pass.",
+        "failure_action": "quarantine",
+        "compensable": false,
+        "rationale": "Performance elsewhere cannot compensate for a malformed or internally inconsistent run artifact."
+      }
+    ],
+    "capability_preservation": [
+      {
+        "id": "participation-continuity",
+        "capability": "Retain a plural population of simulated researchers able to continue inquiry and evaluation.",
+        "mode": "floor",
+        "protected_stakeholder_ids": [
+          "research-community",
+          "knowledge-commons",
+          "future-generations"
+        ],
+        "metric_refs": ["active-researcher-fraction"],
+        "measurement_state": "partially_measurable",
+        "measurement_gap": "The simulator does not yet measure expertise, genuine independence, correction competence, or researcher wellbeing.",
+        "minimum_or_reserve": {
+          "comparator": ">=",
+          "value": 0.5
+        },
+        "time_horizon_refs": ["run-end", "multi-run", "shock-recovery"],
+        "stress_tests": [
+          "Temporarily reduce evaluation capacity and measure recovery",
+          "Repeat under resource inequality and inspect the protected slice"
+        ],
+        "recovery_expectation": "Return above the declared participation floor within the shock-recovery window in most declared seeds.",
+        "rollback_action": "Reject or roll back a candidate policy that persistently collapses participation or the protected slice.",
+        "rationale": "Short-run output gains are not sufficient if the system consumes its future participation capacity."
+      }
+    ],
+    "commitments": [
+      {
+        "id": "sustainable-exploration",
+        "type": "exploratory",
+        "purpose": "Explore institutional designs that sustain participation while avoiding pathological topic concentration and excessive evaluation burden.",
+        "owner_stakeholder_ids": ["research-community"],
+        "beneficiary_stakeholder_ids": [
+          "research-community",
+          "knowledge-commons",
+          "future-generations"
+        ],
+        "burden_bearer_stakeholder_ids": [
+          "research-community",
+          "publics-and-affected"
+        ],
+        "objectives": [
+          {
+            "id": "sustain-participation",
+            "construct": "Simulated participation continuity above the capability floor",
+            "metric_refs": ["active-researcher-fraction"],
+            "direction": "maximize",
+            "time_horizon_refs": ["run-end", "multi-run", "shock-recovery"],
+            "stakeholder_slice_refs": ["low-resource-researchers"],
+            "priority_class": "primary"
+          },
+          {
+            "id": "inspect-topic-breadth",
+            "construct": "Non-pathological spread of activity over the fixed topic ontology",
+            "metric_refs": ["topic-entropy"],
+            "direction": "portfolio",
+            "time_horizon_refs": ["run-end", "multi-run"],
+            "stakeholder_slice_refs": [],
+            "priority_class": "diagnostic"
+          },
+          {
+            "id": "limit-review-burden",
+            "construct": "Evaluation workload compatible with sustained participation",
+            "metric_refs": ["review-burden-per-active-researcher"],
+            "direction": "minimize",
+            "time_horizon_refs": ["run-end", "multi-run"],
+            "stakeholder_slice_refs": ["low-resource-researchers"],
+            "priority_class": "secondary"
+          }
+        ],
+        "hard_constraint_refs": ["valid-run-integrity"],
+        "capability_refs": ["participation-continuity"],
+        "valid_scenarios": ["Synthetic v0 harness design comparison"],
+        "review_by": "2027-01-31",
+        "expires_on": "2027-04-30",
+        "non_transferability_statement": "These objectives and their relative priority apply only to this exploratory simulation commitment; they are not a national policy objective or a definition of good science."
+      }
+    ],
+    "evaluator_governance": {
+      "required_lineage_fields": {
+        "subject_id": true,
+        "claim_id": true,
+        "artifact_id": true,
+        "artifact_version": true,
+        "run_id": true,
+        "autonomy_slice": true,
+        "evaluator_id": true,
+        "evaluator_version": true,
+        "evaluator_relation": true,
+        "decision_policy_id": true,
+        "decision_policy_version": true,
+        "constitution_version": true,
+        "metric_version": true,
+        "timestamp": true,
+        "parent_or_supersession_links": true
+      },
+      "allowed_evaluator_relations": [
+        "self",
+        "same_producer",
+        "external",
+        "independent",
+        "instrument",
+        "formal_kernel"
+      ],
+      "goal_custody": {
+        "generate": true,
+        "select": true,
+        "revise": true,
+        "stop": true,
+        "release": true
+      },
+      "evaluators": [
+        {
+          "id": "harness-metric-evaluator",
+          "version": "1.0.0",
+          "type": "aggregate_metric",
+          "relation": "same_producer",
+          "target_constructs": [
+            "Technical run integrity",
+            "Simulated participation continuity",
+            "Topic-label concentration",
+            "Logged review burden"
+          ],
+          "inputs": ["Versioned run event log", "Versioned design and study specifications"],
+          "outputs": ["Metric value", "slice values", "uncertainty summary", "lineage record"],
+          "known_blind_spots": [
+            "No ground-truth scientific correctness",
+            "No validated reproducibility or public-outcome measure",
+            "Same-producer implementation is not independent evaluation"
+          ],
+          "calibration_evidence": ["Deterministic fixtures and hand-computed metric cases"],
+          "authorized_decisions": ["Mark a run technically eligible for exploratory comparison"],
+          "prohibited_decisions": ["Declare a design scientifically or socially optimal", "Rank real people or institutions"],
+          "expires_on": "2027-04-30",
+          "lineage": {
+            "producer": "ScienceUtopia project",
+            "implementation_id": "science-utopia-harness",
+            "implementation_version": "v0",
+            "tool_versions": {
+              "metric_constitution": "1.0.0-draft.1"
+            }
+          }
+        }
+      ],
+      "decision_policies": [
+        {
+          "id": "exploratory-feasibility-policy",
+          "version": "1.0.0",
+          "evaluator_refs": ["harness-metric-evaluator"],
+          "allowed_actions": ["quarantine invalid runs", "mark a candidate feasible for exploratory comparison", "request additional seeded runs"],
+          "authorized_uses": ["Apply the declared hard constraint and capability floor before vector comparison"],
+          "prohibited_uses": ["Collapse the objective vector into universal value", "Override protected-slice failures with aggregate gains"],
+          "conflict_policy": "Disclose that the project authors also implement the harness and retain evaluator disagreement and raw event logs.",
+          "appeal_route": "A separate reviewer can recompute metrics from the immutable event log and challenge eligibility without using the original aggregate output."
+        }
+      ],
+      "separation_of_functions": {
+        "evaluation_from_decision": true,
+        "decision_from_allocation": true,
+        "independent_appeal_route": true,
+        "correction_propagates_downstream": true,
+        "declared_role_overlaps": ["Project authors currently implement both simulator and metric evaluator; this is logged as same_producer and is not independent validation."]
+      },
+      "change_control": {
+        "proposer_stakeholder_ids": ["research-community"],
+        "approver_stakeholder_ids": ["research-community", "publics-and-affected"],
+        "auditor_stakeholder_ids": ["knowledge-commons"],
+        "appeal_routes": ["Independent recomputation from immutable event logs", "Documented objection attached to the run report"],
+        "conflict_disclosure_required": true,
+        "reauthorization_triggers": [
+          "Metric becomes an optimization target",
+          "Simulator, event schema, evaluator, or decision policy changes",
+          "Protected-slice harm or proxy drift is detected"
+        ],
+        "rollback_procedure": "Suspend affected comparisons, restore the last valid constitution and evaluator versions, recompute when possible, and mark superseded reports."
+      },
+      "goodhart_audits": [
+        {
+          "id": "harness-proxy-audit",
+          "metric_refs": [
+            "active-researcher-fraction",
+            "topic-entropy",
+            "review-burden-per-active-researcher"
+          ],
+          "tests": [
+            "proxy_construct_drift",
+            "gaming_elasticity",
+            "subgroup_harm",
+            "manipulation_search",
+            "counterfactual_shadow_evaluation"
+          ],
+          "cadence": "Before each optimizer campaign and after every material simulator or policy change",
+          "triggers": [
+            "A metric becomes a direct search target",
+            "Unusual frontier improvement without corroborating metrics",
+            "Protected-slice reversal or evaluator disagreement"
+          ],
+          "responsible_stakeholder_ids": ["research-community", "knowledge-commons"],
+          "response_actions": ["warn", "investigate", "quarantine", "suspend_optimization", "recalibrate", "retire_metric", "rollback"]
+        }
+      ]
+    }
+  },
+  "aggregation_boundary": {
+    "default_mode": "constrained_vector",
+    "evaluation_unit": {
+      "subject_id": true,
+      "claim_id": true,
+      "artifact_version": true,
+      "autonomy_slice": true,
+      "evaluator_id": true,
+      "evaluator_version": true,
+      "evaluator_relation": true,
+      "decision_policy_version": true
+    },
+    "global_scalarization_prohibited": true,
+    "permitted_methods": ["pareto", "epsilon_constraint", "lexicographic", "scenario_dominance", "transient_scalarization"],
+    "transient_scalarization": {
+      "allowed": true,
+      "purpose": "candidate_acquisition_only",
+      "underlying_vector_retained": true,
+      "weights_and_provenance_declared": true,
+      "sensitivity_reported": true,
+      "expires_with_run": true,
+      "scientific_value_label_prohibited": true
+    },
+    "noncompensable_layers": ["hard_constraints", "capability_preservation"],
+    "protected_slice_harm_not_offset_by_average_gain": true,
+    "cross_stakeholder_compensation": "commitment_specific_explicit_authorization_only",
+    "cross_time_compensation": "commitment_specific_explicit_authorization_only",
+    "missing_evidence_policy": "unknown_not_pass"
+  },
+  "reporting_contract": {
+    "constraint_states": true,
+    "capability_states": true,
+    "objective_vector": true,
+    "stakeholder_slices": true,
+    "uncertainty": true,
+    "time_horizons": true,
+    "seed_distribution": true,
+    "shadow_metrics": true,
+    "evaluator_disagreement": true,
+    "goodhart_findings": true,
+    "measurement_gaps": true,
+    "constitution_snapshot_and_hash": true,
+    "unknown_distinct_from_pass": true
+  },
+  "notes": [
+    "This example is structurally complete but empirically provisional.",
+    "Schema validation does not establish referential integrity, construct validity, evaluator independence, or normative legitimacy."
+  ]
+}

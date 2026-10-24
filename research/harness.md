@@ -9,12 +9,13 @@
 最初の仕様は [`specs/study-v0-smoke.json`](specs/study-v0-smoke.json)。以下を明示する。
 
 - design-spaceとbaseline design
+- Metric Constitutionとその内容hash
 - sampler種別、候補数、sampler seed
 - exploration / selection / confirmationの互いに素なseed集合
 - model、backend、endpoint、batch size
 - output root、cache、最大attempt数
 
-study specificationとdesign-space全体のhashがstudy revisionになる。出力は次へ分離される。
+study specification、design-space、Metric Constitution内容hashがstudy revisionになる。`study-snapshot.json`にはconstitution本体も固定する。出力は次へ分離される。
 
 ```text
 outputs/optimization/<study-id>/<study-revision>/
@@ -69,17 +70,26 @@ outputs/optimization/<study-id>/<study-revision>/
 - attempt上限内のfailed runは同じrun IDと出力先で再実行する。
 - `--always_rerun`は付けないため、ScienceUtopiaは利用可能な年次checkpointから再開する。
 - process exit 0だけで成功にせず、run manifestの`status=complete`も要求する。
+- integrity reportとfunding application conservation traceの全checkがpassであることも要求する。
 - attemptごとのcombined stdout/stderrを別ファイルへ保存する。
 - final run状態とは別にattempt tableを保持し、復旧後も一時的失敗、attempt単位の失敗率、消費時間を失わない。
 - v0 harnessは一台のOllama endpointと共有cacheを使うため逐次実行する。並列化時はcache writerとmodel capacityの分離が別途必要。
 
 ## Report boundary
 
-registry reportはwall-clock、failure rate、paper/review/active researcher/resourceの分布だけを出す。これらは運用・活動診断であり、最適化目的ではない。Science of Science調査を反映したobjective evaluatorは別moduleとして接続する。
+registry reportはwall-clock、failure rate、paper/review/active researcher/resourceに加え、資金申請のtarget、semantic retry、request error、drop、decision、allocationの分布を出す。これらは運用・活動診断であり、最適化目的ではない。Science of Science調査を反映したobjective evaluatorは別moduleとして接続する。
 
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。
 
 詳細とevidence hashは [`runs/2026-10-24-harness-baseline-seed101.md`](runs/2026-10-24-harness-baseline-seed101.md) に固定した。これはharnessの実行可能性を示すだけで、複数seed推定や制度の優劣を示さない。
+
+## Constitution-bound revision
+
+Metric Constitution v1をstudyの必須入力にし、schema、format、ID重複、全cross-referenceをplan前に検証する。constitutionのcanonical SHA-256をrevisionへ含めるため、目的・評価器・decision policyの変更は既存campaignへ混入しない。
+
+最初のconstitution-bound planはrevision `6fcbf8bae1`で、baseline + Sobol 4 designs × exploration 2 seedsの10 runである。全件plannedであり、LLM runはまだ開始していない。旧revision `eadef0bb5a`の1 complete / 9 plannedとは別campaignとして保持する。
+
+各runでは資金申請をtrace IDで追跡し、generation request error、semantic invalid、`submit=false`、terminal drop、evaluation、decision、allocationを区別する。説明不能なattritionはintegrity failureとなり、exit code 0でもregistry上のcompleteにはしない。
 
