@@ -79,6 +79,10 @@ outputs/optimization/<study-id>/<study-revision>/
 
 registry reportはwall-clock、failure rate、paper/review/active researcher/resourceに加え、資金申請のtarget、semantic retry、request error、drop、decision、allocationの分布を出す。これらは運用・活動診断であり、最適化目的ではない。Science of Science調査を反映したobjective evaluatorは別moduleとして接続する。
 
+objective evaluatorは、固定されたMetric Constitutionからhard constraint、capability state、commitment-specific objective vectorをrunごとに生成する。v1で実装するmetricは`integrity-checks-pass`、`active-researcher-fraction`、`topic-entropy`、`review-burden-per-active-researcher`である。結果は各runの`objective_evaluation.json`とaggregate reportの`design_objective_readiness`へ保存する。
+
+現在の成果物はaggregate metricを計算できるが、protected sliceであるlow-resource researchersのmembershipとreview actionを結果から独立に結合できない。end-of-run funding quantileからsliceを作るとoutcome-conditioned selectionになるため採用しない。sliceは`unknown`とし、aggregateの参加率がfloorを超えてもcapability stateをpassにしない。また、各objective metric cardが要求するminimum 5 runsをdesign単位で満たすまで`authorized_for_ranking=false`とする。
+
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。

@@ -26,6 +26,11 @@ from utopia.optimization.metric_constitution import (
     constitution_sha256,
     load_metric_constitution,
 )
+from utopia.optimization.objective_evaluator import (
+    evaluate_run,
+    summarize_evaluations,
+    write_evaluation,
+)
 from utopia.utils.paths import project_root
 
 
@@ -463,14 +468,16 @@ def numeric_summary(values: Iterable[float]) -> dict[str, float | int | None]:
             "median": statistics.median(finite), "min": min(finite), "max": max(finite)}
 
 
-def build_report(registry: RunRegistry) -> dict[str, Any]:
+def build_report(
+    registry: RunRegistry, constitution: Mapping[str, Any] | None = None
+) -> dict[str, Any]:
     rows = registry.rows()
     attempts = registry.attempt_rows()
     by_status: dict[str, int] = {}
     for row in rows:
         by_status[row["status"]] = by_status.get(row["status"], 0) + 1
     completed = [row for row in rows if row["status"] == "complete"]
-    activity, pipeline_diagnostics, report_errors = [], [], []
+    activity, pipeline_diagnostics, objective_evaluations, report_errors = [], [], [], []
     for row in completed:
         trace_root = Path(row["output_root"]) / "checkpoints" / row["run_id"]
         trace_summaries = []
@@ -497,6 +504,18 @@ def build_report(registry: RunRegistry) -> dict[str, Any]:
                     for field in count_fields
                 },
             })
+        if constitution is not None:
+            try:
+                evaluation = evaluate_run(
+                    run_id=row["run_id"], output_root=row["output_root"],
+                    constitution=constitution,
+                )
+                write_evaluation(evaluation, row["output_root"])
+                objective_evaluations.append(evaluation)
+            except Exception as error:
+                report_errors.append({
+                    "run_id": row["run_id"], "error": f"objective evaluation failed: {error}"
+                })
         try:
             from utopia.analysis.release import summarize_run
 
@@ -518,7 +537,7 @@ def build_report(registry: RunRegistry) -> dict[str, Any]:
     for attempt in attempts:
         attempt_status[attempt["status"]] = attempt_status.get(attempt["status"], 0) + 1
     finished_attempts = [attempt for attempt in attempts if attempt["status"] != "running"]
-    return {
+    result = {
         "generated_utc": utc_now(),
         "total_runs": len(rows),
         "status_counts": by_status,
@@ -547,9 +566,18 @@ def build_report(registry: RunRegistry) -> dict[str, Any]:
                 "generation_attempts", "semantic_invalid_attempts", "request_error_attempts",
             )
         },
+        "objective_evaluations": objective_evaluations,
+        "design_objective_readiness": (
+            summarize_evaluations(objective_evaluations, completed, constitution)
+            if constitution is not None else []
+        ),
         "report_errors": report_errors,
-        "note": "Activity fields are diagnostics, not optimization objectives.",
+        "note": (
+            "Activity and funding-pipeline fields are diagnostics. Only the versioned "
+            "objective evaluations are governed by the Metric Constitution."
+        ),
     }
+    return result
 
 
 def _context(study_path: Path):
@@ -594,7 +622,10 @@ def main(argv: list[str] | None = None) -> int:
                 rows = registry.rows()
                 result = {"study_revision": revision, "root": str(root), "runs": [dict(r) for r in rows]}
             else:
-                result = build_report(registry)
+                constitution = load_metric_constitution(
+                    _resolve_repo_path(study["metric_constitution"])
+                )
+                result = build_report(registry, constitution)
                 report_path = root / "registry-report.json"
                 report_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
                 result["report_path"] = str(report_path)

@@ -10,6 +10,8 @@
 
 ただし、初期段階では単一損失へ固定せず、目的ベクトルと制約を保持する。
 
+一つの optimization campaign 内では目的、制約、evaluator を固定し、変化させるのは科学システム design `θ` だけとする。目的定義を変更する場合は別 revision とし、変更前後の結果を同じ探索系列として順位付けしない。
+
 ```text
 maximize: epistemic progress, robustness, diversity, useful novelty
 minimize: resource waste, delay, inequality, reviewer burden, lock-in
@@ -98,4 +100,8 @@ subject to: budget, capacity, participation, safety, minimum field coverage
 ## 最初の具体的課題
 
 最初は「構造を固定した5〜8個の制度パラメータ」と「3〜5個の未集約指標」に限定する。現行査読と funding のうち、挙動が明確で実行時に変更可能なパラメータを registry 化し、random/Sobol baseline を作る。ここで測定、cache、run registry、失敗回復を固めてから、評価機構の交換へ進む。
+
+## 現在の実装境界
+
+v1 objective evaluator は aggregate の参加継続率、topic entropy、review burden と technical integrity を計算する。protected resource slice は outcome より前の membership が未記録なので `unknown` を保持する。次は resource-band attribute と review-action event を追加し、measurement-complete な revision で design ごとに最低 5 exploration seeds を使う。
 
