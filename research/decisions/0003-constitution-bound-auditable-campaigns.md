@@ -31,10 +31,12 @@
 - Metric Constitution / harness / trace targeted tests: 17 passed
 - full suite: 591 passed, 6 skipped, 6 known upstream fixture failures
 - new study plan: 5 designs × 2 exploration seeds = 10 planned runs under revision `6fcbf8bae1`
+- real Qwen3-8B validation: 1 complete / 9 planned; application conservation passed with 26 targets, 1 explicit agent decline, 25 decisions, 3 applied allocations, and 0 unexplained drops
 
 ## Evidence
 
 - [Metric Constitution v1](../metric-constitution-v1.md)
 - [Harness](../harness.md)
 - [First harness validation](../runs/2026-10-24-harness-baseline-seed101.md)
+- [Constitution-bound trace validation](../runs/2026-10-24-constitution-trace-baseline-seed101.md)
 

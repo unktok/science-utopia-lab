@@ -71,6 +71,18 @@ difference. Before comparing funding institutions, the simulator should expose
 semantic attempt counts, terminal validation outcomes, and explicit reasons for
 every dropped application.
 
+### Resolution from the constitution-bound replay
+
+The same baseline design and seed were replayed under study revision
+`6fcbf8bae1` after application-level tracing was added. The apparent 26-to-25
+attrition was resolved as one explicit `submit=false` decision by an agent, not
+an unexplained drop. All 26 targets reached a valid terminal state; 25 were
+submitted, evaluated, and decided, while one was recorded as
+`declined_by_agent`. See
+[the replay note](2026-10-24-constitution-trace-baseline-seed101.md). This does
+not retroactively add trace evidence to the old run, but it resolves the
+mechanism in the instrumented replay.
+
 ## Evidence hashes
 
 - Run manifest SHA-256: `abe1cb5581445c038fb139ee48f7c5ed576ae387e8946ef599aee438bbf1e55f`
