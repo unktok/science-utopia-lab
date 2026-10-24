@@ -94,7 +94,8 @@ multiprocess==0.70.19
 networkx==3.4.2
 ninja==1.13.2
 numba==0.61.2
-numpy==2.2.6
+numpy==2.2.6; sys_platform != "darwin"
+numpy==2.4.6; sys_platform == "darwin"
 nvidia-cublas-cu12==12.8.4.1
 nvidia-cuda-cupti-cu12==12.8.90
 nvidia-cuda-nvrtc-cu12==12.8.93
@@ -166,7 +167,8 @@ rignore==0.8.1
 rpds-py==2026.6.3
 safetensors==0.8.0
 scikit-learn==1.7.2
-scipy==1.15.3
+scipy==1.15.3; sys_platform != "darwin"
+scipy==1.17.1; sys_platform == "darwin"
 sentence-transformers==5.1.2
 sentencepiece==0.2.2
 sentry-sdk==2.70.0

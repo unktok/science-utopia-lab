@@ -265,7 +265,8 @@ class TransportFixture(unittest.TestCase):
         replacement.start()
         self.addCleanup(replacement.stop)
 
-    def make_client(self, recorder=None, *, thinking=True, seed=42, thinking_override=None):
+    def make_client(self, recorder=None, *, thinking=True, seed=42,
+                    thinking_override=None, server_backend="vllm"):
         recorder = recorder or WireRecorder()
         http = httpx.Client(transport=httpx.MockTransport(recorder.handle))
         self.addCleanup(http.close)
@@ -283,6 +284,7 @@ class TransportFixture(unittest.TestCase):
                     max_concurrent_requests=2,
                     run_seed=seed,
                     thinking_override=thinking_override,
+                    server_backend=server_backend,
                 )
         client.enable_thinking = thinking if thinking_override is None else thinking_override
         return client, recorder

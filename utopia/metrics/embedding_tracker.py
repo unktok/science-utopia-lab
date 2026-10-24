@@ -10,7 +10,8 @@ from typing import Dict, List, Optional
 class EmbeddingTracker:
     """Track and compare paper embeddings to measure topic distances"""
 
-    def __init__(self, model_name: str = 'all-MiniLM-L6-v2', cache_dir: Optional[str] = None, model_revision: Optional[str] = None):
+    def __init__(self, model_name: str = 'all-MiniLM-L6-v2', cache_dir: Optional[str] = None,
+                 model_revision: Optional[str] = None, device: Optional[str] = None):
         self.model_name = model_name
         known = {
             'all-MiniLM-L6-v2': '1110a243fdf4706b3f48f1d95db1a4f5529b4d41',
@@ -18,7 +19,10 @@ class EmbeddingTracker:
         }
         revision = model_revision or known.get(model_name)
         self.identity = {'model': model_name, 'revision': revision}
-        self.model = SentenceTransformer(model_name, **({'revision': revision} if revision else {}))
+        model_options = {'revision': revision} if revision else {}
+        if device:
+            model_options['device'] = device
+        self.model = SentenceTransformer(model_name, **model_options)
         self.embeddings: Dict[str, np.ndarray] = {}  # paper_id -> embedding
         self.paper_metadata: Dict[str, Dict] = {}  # paper_id -> {author_id, year}
         self.expertise_centroids: Dict[str, np.ndarray] = {}  # agent_id -> initial expertise centroid
@@ -289,9 +293,10 @@ class EmbeddingTracker:
         }
 
     @classmethod
-    def from_dict(cls, data: Dict, model_name: str = 'all-MiniLM-L6-v2', cache_dir: Optional[str] = None):
+    def from_dict(cls, data: Dict, model_name: str = 'all-MiniLM-L6-v2',
+                  cache_dir: Optional[str] = None, device: Optional[str] = None):
         """Deserialize from checkpoint"""
-        tracker = cls(model_name, cache_dir=cache_dir)
+        tracker = cls(model_name, cache_dir=cache_dir, device=device)
         if data.get('model_identity') and data['model_identity'] != tracker.identity:
             raise ValueError('Checkpoint metric embedding model/revision mismatch')
         tracker.embeddings = {k: np.array(v) for k, v in data['embeddings'].items()}

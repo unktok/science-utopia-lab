@@ -1,8 +1,14 @@
 -c constraints-linux-py311.txt
 # Python 3.11. Local inference server dependencies are in requirements-vllm.txt.
-numpy==2.2.6
+numpy==2.2.6; sys_platform != "darwin"
+# NumPy 2.2.x emits spurious/wrong float32 matmul results through macOS BLAS
+# on newer Apple Silicon; the fix is present in the 2.4 line.
+numpy==2.4.6; sys_platform == "darwin"
 pandas==2.2.3
-scipy==1.15.3
+scipy==1.15.3; sys_platform != "darwin"
+# SciPy 1.15.3's PROPACK wheel is rejected by newer macOS dyld. 1.17.1
+# ports PROPACK to C and supports Python 3.11 on Apple Silicon.
+scipy==1.17.1; sys_platform == "darwin"
 scikit-learn==1.7.2
 networkx==3.4.2
 torch==2.9.0

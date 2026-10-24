@@ -526,7 +526,7 @@ class VLLMModel(BaseLLM):
 
 
 class VLLMServerModel(BaseLLM):
-    """Connects to an external vLLM server via OpenAI-compatible API.
+    """Connects to an external vLLM or Ollama server via OpenAI-compatible API.
 
     This avoids in-process model loading (30-300s) by connecting to a
     persistent vLLM server started separately (e.g., `vllm serve Qwen/Qwen3-0.6B`).
@@ -545,10 +545,14 @@ class VLLMServerModel(BaseLLM):
         sdk_max_retries: int = 5,
         request_timeout: float = 600.0,
         thinking_override: Optional[bool] = None,
+        server_backend: str = "vllm",
     ):
+        if server_backend not in {"vllm", "ollama"}:
+            raise ValueError("server_backend must be 'vllm' or 'ollama'")
         if thinking_override is not None and type(thinking_override) is not bool:
             raise ValueError("thinking_override must be None or a bool")
         super().__init__(model_name)
+        self.server_backend = server_backend
         self.thinking_override = thinking_override
         self.model_revision = model_revision
         self.max_tokens_override = max_tokens_override
@@ -620,6 +624,34 @@ class VLLMServerModel(BaseLLM):
             extra["chat_template_kwargs"] = {"enable_thinking": override}
         return extra
 
+    def _build_transport_fields(
+        self,
+        response_format: Optional[Dict] = None,
+        request_seed: Optional[int] = None,
+    ) -> dict:
+        """Build provider-specific OpenAI chat-completion request fields."""
+        if getattr(self, "server_backend", "vllm") == "ollama":
+            fields = {}
+            if request_seed is not None:
+                fields["seed"] = request_seed
+            if response_format and response_format.get("type") == "json_schema":
+                json_object = response_format.get("json_object", {})
+                schema = json_object.get("schema")
+                if schema:
+                    name = re.sub(
+                        r"[^a-zA-Z0-9_-]+", "_", json_object.get("name") or "utopia_response"
+                    ).strip("_") or "utopia_response"
+                    fields["response_format"] = {
+                        "type": "json_schema",
+                        "json_schema": {"name": name, "strict": True, "schema": schema},
+                    }
+            return fields
+
+        extra_body = self._build_extra_body(response_format)
+        if request_seed is not None:
+            extra_body["seed"] = request_seed
+        return {"extra_body": extra_body} if extra_body else {}
+
     def _create_completion(self, *, seed_ctx=None, item_index=0, attempt=0, **payload):
         audit = self.request_audit
         cache = getattr(self, 'response_cache', None)
@@ -669,19 +701,26 @@ class VLLMServerModel(BaseLLM):
 
         if getattr(self, 'max_tokens_override', None) is not None:
             max_tokens = self.max_tokens_override
-        extra_body = self._build_extra_body(response_format)
         request_seed = self._request_seed(seed_ctx, 0, 0)
-        if request_seed is not None:
-            extra_body['seed'] = request_seed
-
-        response = self._create_completion(
+        payload = dict(
             seed_ctx=seed_ctx,
             model=self.model_name,
             messages=messages,
             temperature=temperature,
             max_tokens=max_tokens,
-            extra_body=extra_body if extra_body else None,
         )
+        transport_builder = getattr(self, "_build_transport_fields", None)
+        if transport_builder is None:
+            # Backward compatibility for portable/scripted test clients that
+            # intentionally compile only the historical transport methods.
+            extra_body = self._build_extra_body(response_format)
+            if request_seed is not None:
+                extra_body["seed"] = request_seed
+            if extra_body:
+                payload["extra_body"] = extra_body
+        else:
+            payload.update(transport_builder(response_format, request_seed))
+        response = self._create_completion(**payload)
 
         try:
             response_text = response.choices[0].message.content.strip()
@@ -784,7 +823,6 @@ class VLLMServerModel(BaseLLM):
             return []
         if getattr(self, 'max_tokens_override', None) is not None:
             max_tokens = self.max_tokens_override
-        base_extra_body = self._build_extra_body(response_format)
         results = [None] * len(prompts)
         label = desc or f"batch of {len(prompts)} prompts"
         start_time = time.time()
@@ -798,13 +836,21 @@ class VLLMServerModel(BaseLLM):
                         msgs = ([{"role": "system", "content": system_prompt}] if system_prompt else [])
                         msgs.append({"role": "user", "content": f"{IMPORTANT_NOTES}\n\n{prompts[idx]}"})
                         messages[idx] = msgs
-                        extra = dict(base_extra_body)
                         seed = self._request_seed(seed_ctx, idx, attempt)
-                        if seed is not None:
-                            extra['seed'] = seed
-                        requests.append((idx, dict(model=self.model_name, messages=msgs,
-                            temperature=temperature, max_tokens=max_tokens,
-                            extra_body=extra if extra else None)))
+                        payload = dict(model=self.model_name, messages=msgs,
+                                       temperature=temperature, max_tokens=max_tokens)
+                        transport_builder = getattr(self, "_build_transport_fields", None)
+                        if transport_builder is None:
+                            # See the single-request path above. Some portable
+                            # fixtures deliberately expose only the legacy API.
+                            extra_body = self._build_extra_body(response_format)
+                            if seed is not None:
+                                extra_body["seed"] = seed
+                            if extra_body:
+                                payload["extra_body"] = extra_body
+                        else:
+                            payload.update(transport_builder(response_format, seed))
+                        requests.append((idx, payload))
                     replies = self.batch_completions(
                         executor, requests, seed_ctx=seed_ctx, attempt=attempt)
                     retry = []

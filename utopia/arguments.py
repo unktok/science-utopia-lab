@@ -1,5 +1,6 @@
 import argparse
 import os
+import re
 
 
 def parse_arguments(argv=None, *, create_dirs=True):
@@ -87,6 +88,13 @@ def parse_arguments(argv=None, *, create_dirs=True):
         default=None,
         help='URL of external vLLM server (e.g., http://localhost:8000/v1). '
              'Start server with: vllm serve <model> --gpu-memory-utilization 0.8'
+    )
+    parser.add_argument(
+        '--api-backend', '--api_backend',
+        choices=['vllm', 'ollama'],
+        default='vllm',
+        help='OpenAI-compatible server dialect used by --vllm_url. '
+             'Use ollama for a local Ollama server (default: vllm).'
     )
 
     parser.add_argument(
@@ -446,7 +454,7 @@ def parse_arguments(argv=None, *, create_dirs=True):
         if args.num_conferences is None:
             args.num_conferences = exp_config['num_conferences']
 
-        model_tag = args.model.split('/')[-1].lower().replace('-', '_').replace('.', '_')
+        model_tag = re.sub(r'[^a-z0-9]+', '_', args.model.split('/')[-1].lower()).strip('_')
         if args.funding_intervention or args.citation_intervention:
             mechanism = (f"fund{'015' if args.funding_intervention else '0'}_"
                          f"cite{'on' if args.citation_intervention else 'off'}")

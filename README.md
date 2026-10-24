@@ -22,6 +22,12 @@ ScienceUtopia models researchers choosing projects, submitting papers, reviewing
 
 This release supports **new experiments**. It contains the simulator, scientific prompts, experiment definitions, numerical estimators, and regression tests. Historical campaign artifacts and their original results are not distributed. Simulation outputs are checkpoints, request audits, manifests, and numerical tables. Optional manuscript renderers live separately in `scripts/figures/`.
 
+> **Research fork:** this checkout is also the working repository for the
+> [Science Utopia Lab research program](RESEARCH.md): optimization of scientific
+> institutions, modular evaluation mechanisms, differentiable mechanism design,
+> and an interactive ScienceUtopia game. Upstream remains
+> [`Ahren09/ScienceUtopia`](https://github.com/Ahren09/ScienceUtopia).
+
 The [project website](https://ahren09.github.io/ScienceUtopia/) is a static page in `index.html`, with styles in `assets/css/style.css` and the copy-button script in `assets/js/main.js`. Open `index.html` directly in a browser, or view the GitHub Pages site. No backend, package installation, or frontend build is required. GitHub Pages publishes the root of `main`; `.nojekyll` keeps the files static.
 
 ## Highlights
@@ -105,6 +111,20 @@ Expected versions are PyTorch `2.9.0` (possibly with a CUDA suffix), vLLM `0.12.
 ## Quick start
 
 Run these commands from the repository root with the environment activated. This is a genuine **Qwen3-8B simulation with ten researchers, three years, and seed 42**.
+
+### macOS Apple Silicon (Ollama)
+
+vLLM requires Linux/CUDA, but the simulator can use Ollama's OpenAI-compatible API on Apple Silicon. The supplied runner uses Qwen3-8B on Metal, CPU retrieval to avoid unified-memory contention, two institutions, ten researchers, and one simulated year for a local smoke run. Two institutions are the minimum useful topology because reviewers cannot review papers from their own institution.
+
+```bash
+/opt/homebrew/bin/uv venv --python 3.11 --seed .venv
+.venv/bin/pip --version  # must be 26.2.2 or newer on this machine
+/opt/homebrew/bin/uv pip install --python .venv/bin/python -r requirements-test.txt
+ollama pull qwen3:8b
+scripts/run_macos_ollama.sh
+```
+
+The first run downloads the pinned SciEvo data and embedding models. Override the scale with `SCIENCEUTOPIA_YEARS`, `SCIENCEUTOPIA_INSTITUTIONS`, `SCIENCEUTOPIA_CONFERENCES`, and `SCIENCEUTOPIA_BATCH_SIZE`. Ollama runs keep normal manifests and call statistics, but omit the vLLM-specific exact-token request audit because an Ollama tag is not an immutable Hugging Face tokenizer revision. These runs exercise the published simulation mechanics but are not numerically identical to the paper's Linux/vLLM campaigns.
 
 ```bash
 # 1) Select an available GPU and unused local port.

@@ -831,7 +831,8 @@ class Simulation:
             exp_config = SIMULATION_CONFIG['exploration_experiment']
             self.embedding_tracker = EmbeddingTracker(
                 model_name=exp_config['embedding_model'],
-                cache_dir=os.path.join(cache_root, 'embeddings'))
+                cache_dir=os.path.join(cache_root, 'embeddings'),
+                device=getattr(self.args, 'rag_device', None))
             logger.info("Initialized EmbeddingTracker")
 
         # Empirical near/far thresholds from the direction-pair distance
@@ -4380,7 +4381,8 @@ class Simulation:
                     model_name=SIMULATION_CONFIG['exploration_experiment']['embedding_model'],
                     cache_dir=os.path.join(
                         getattr(self.args, 'data_cache_dir', os.path.join('data', 'cache')),
-                        'embeddings'))
+                        'embeddings'),
+                    device=getattr(self.args, 'rag_device', None))
                 logger.info(f"  Loaded EmbeddingTracker with {len(self.embedding_tracker.embeddings)} embeddings")
 
             if exp_data.get('exploration_metrics'):
@@ -4471,8 +4473,12 @@ def main():
     audit_path = Path(args.docs_dir).resolve() / 'llm_request_audit.jsonl'
     if audit_path.exists() or audit_path.with_suffix('.summary.json').exists():
         audit_path = audit_path.with_name(f'llm_request_audit_resume_{time.time_ns()}.jsonl')
+    # The exact-token audit is tied to immutable Hugging Face tokenizer revisions.
+    # Ollama model tags identify local artifacts instead, so those runs retain the
+    # normal call statistics and manifests but do not claim exact request auditing.
     scope = (request_audit_scope(audit_path, model_name=args.model,
-                                revision=args.model_revision) if args.vllm_url else nullcontext())
+                                revision=args.model_revision)
+             if args.vllm_url and args.api_backend == 'vllm' else nullcontext())
     try:
         with scope as audit:
             run_from_args(args)
@@ -4507,6 +4513,7 @@ def run_from_args(args):
             base_url=args.vllm_url,
             max_concurrent_requests=args.batch_size,
             run_seed=args.seed,
+            server_backend=args.api_backend,
         )
     else:
         # Any non-OpenAI model uses vLLM (e.g., "Qwen/Qwen3-8B", "meta-llama/Llama-3-8B")

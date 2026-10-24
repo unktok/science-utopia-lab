@@ -169,6 +169,31 @@ print(json.dumps(value))
         self.assertEqual(wire.payloads[0]["messages"], before + [
             {"role": "user", "content": "follow-up"}])
 
+    def test_ollama_uses_openai_response_format_and_top_level_seed(self):
+        client, wire = self.make_client(server_backend="ollama")
+        fmt = next(iter(FORMATS.values()))
+        original = deepcopy(fmt)
+        client.generate(
+            prompt="ollama fixture",
+            response_format=fmt,
+            seed_ctx=("ollama", 1),
+            temperature=0.2,
+            max_tokens=99,
+        )
+        self.assertEqual(fmt, original)
+        body = wire.payloads[0]
+        self.assertEqual(body["response_format"], {
+            "type": "json_schema",
+            "json_schema": {
+                "name": fmt["json_object"]["name"],
+                "strict": True,
+                "schema": fmt["json_object"]["schema"],
+            },
+        })
+        self.assertEqual(body["seed"], SEED_MODULE.derive_seed(42, "ollama", 1, 0, 0))
+        self.assertNotIn("structured_outputs", body)
+        self.assertNotIn("chat_template_kwargs", body)
+
     def test_thinking_toggle_leaves_schema_and_other_request_fields_unchanged(self):
         bodies = []
         for thinking in (True, False):
