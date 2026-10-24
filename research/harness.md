@@ -85,6 +85,8 @@ objective evaluatorは、固定されたMetric Constitutionからhard constraint
 
 measurement-complete v1では、`balanced_two_band` population profileが開始時に固定したresource bandを`agent_year`へ、個々の査読行為を`review_action`へ記録する。evaluator 1.1は両tableをagent IDで結合し、slice supportとaction総数のreconciliationを検査する。新しいcampaignは`research/specs/study-v1-smoke.json`で定義し、v0 artifactを異なるevaluator versionで再評価しない。
 
+v1 revision `1cc1b68161` のbaseline seed 101でend-to-end validationを完了した。6 review actionsは6 unique event IDsとしてcheckpoint aggregateと一致し、measurement gapは0になった。aggregate burden 0.6に対してlow-resource slice burdenは1.2で、平均では隠れる負担集中を検出した。runはfeasibleだが1/5 seedsのためranking authorizationはfalseである。
+
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。
