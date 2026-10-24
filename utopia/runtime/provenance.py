@@ -242,6 +242,49 @@ def _git(cmd):
     import subprocess
     try:
         result = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=10)
-        return result.stdout.strip() if result.returncode == 0 else None
+        if result.returncode == 0:
+            return result.stdout.strip()
     except (OSError, subprocess.TimeoutExpired):
+        pass
+    if cmd == ["git", "rev-parse", "HEAD"]:
+        return _head_from_git_metadata(ROOT)
+    return None
+
+
+def _head_from_git_metadata(root):
+    """Resolve HEAD without executing Git (useful when the system Git is unavailable)."""
+    root = Path(root)
+    marker = root / ".git"
+    if marker.is_dir():
+        git_dir = marker
+    elif marker.is_file():
+        line = marker.read_text().strip()
+        if not line.startswith("gitdir: "):
+            return None
+        git_dir = (root / line.removeprefix("gitdir: ")).resolve()
+    else:
         return None
+    try:
+        head = (git_dir / "HEAD").read_text().strip()
+    except OSError:
+        return None
+    if not head.startswith("ref: "):
+        return head if len(head) == 40 else None
+    reference = head.removeprefix("ref: ")
+    candidates = [git_dir]
+    common = git_dir / "commondir"
+    if common.is_file():
+        candidates.append((git_dir / common.read_text().strip()).resolve())
+    for directory in candidates:
+        path = directory / reference
+        if path.is_file():
+            value = path.read_text().strip()
+            return value if len(value) == 40 else None
+        packed = directory / "packed-refs"
+        if packed.is_file():
+            for line in packed.read_text().splitlines():
+                if line and not line.startswith(("#", "^")):
+                    value, name = line.split(" ", 1)
+                    if name == reference:
+                        return value if len(value) == 40 else None
+    return None

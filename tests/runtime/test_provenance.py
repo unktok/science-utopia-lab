@@ -4,7 +4,7 @@ from utopia.utils.paths import project_root
 import json
 from types import SimpleNamespace
 
-from utopia.runtime.provenance import write_run_manifest
+from utopia.runtime.provenance import _head_from_git_metadata, write_run_manifest
 from utopia.utils.data_utils import json_sha256
 
 
@@ -99,3 +99,21 @@ def test_manifest_mode_uses_persisted_args_when_final_call_omits_them(tmp_path, 
     write_run_manifest(str(tmp_path), "complete", extra={"llm_call_stats": restored})
     expected = restored if portable else {"n_prompts": 6, "prompt_tokens": 18, "old_only": 7}
     assert json.loads(path.read_text())["llm_call_stats"] == expected
+
+
+def test_head_can_be_resolved_without_executing_git(tmp_path):
+    commit = "a" * 40
+    git_dir = tmp_path / ".git"
+    ref = git_dir / "refs/heads/main"
+    ref.parent.mkdir(parents=True)
+    (git_dir / "HEAD").write_text("ref: refs/heads/main\n")
+    ref.write_text(commit + "\n")
+    assert _head_from_git_metadata(tmp_path) == commit
+
+
+def test_detached_head_can_be_resolved_without_executing_git(tmp_path):
+    commit = "b" * 40
+    git_dir = tmp_path / ".git"
+    git_dir.mkdir()
+    (git_dir / "HEAD").write_text(commit + "\n")
+    assert _head_from_git_metadata(tmp_path) == commit
