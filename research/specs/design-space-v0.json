@@ -2,6 +2,12 @@
   "id": "evaluation-v0",
   "version": 1,
   "purpose": "instrumentation_and_optimizer_validation",
+  "objective_policy": {
+    "status": "provisional_pipeline_signals",
+    "authorized_use": "harness_validation_only",
+    "not_authorized_as": "scientific_value_or_policy_ranking",
+    "replacement": "metric_constitution_v1"
+  },
   "variables": {
     "acceptance_rate": {
       "type": "float",
@@ -71,12 +77,12 @@
       "num_conferences": 6
     }
   },
-  "objectives": [
-    {"id": "topic_breadth_auc", "direction": "maximize"},
-    {"id": "submission_novelty_median", "direction": "maximize"},
-    {"id": "active_researcher_retention", "direction": "maximize"},
-    {"id": "resource_equity_auc", "direction": "maximize"},
-    {"id": "review_burden", "direction": "minimize"}
+  "signals": [
+    {"id": "topic_breadth_auc", "pipeline_direction": "maximize", "role": "diagnostic"},
+    {"id": "submission_novelty_distribution", "pipeline_direction": "observe", "role": "portfolio_diagnostic"},
+    {"id": "active_researcher_retention", "pipeline_direction": "maximize", "role": "conditional_proxy"},
+    {"id": "resource_distribution", "pipeline_direction": "observe", "role": "floor_and_distribution"},
+    {"id": "review_burden", "pipeline_direction": "minimize", "role": "constrained_cost"}
   ]
 }
 

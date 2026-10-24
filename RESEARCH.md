@@ -20,15 +20,19 @@
 ## ノート体系
 
 - [研究憲章](research/charter.md): 目的、問い、原則、成功条件
+- [科学政策としての目的設定](research/science-policy-frame.md): stakeholder、公共価値、能力、自律性
 - [科学システムの抽象モデル](research/system-model.md): 機構、状態、インターフェース、設計空間
 - [最適化研究計画](research/optimization.md): 目的関数、ブラックボックス最適化、微分可能化
 - [Design Space v0](research/design-space-v0.md): 最初の8変数とfidelity
 - [Metric Cards v0](research/metric-cards-v0.md): 指標の定義、集約、攻略リスク
 - [現行パラメータ棚卸し](research/parameter-inventory.md): 採用、固定、延期、実行設定の分類
+- [複数seed実験harness](research/harness.md): 計画、registry、再試行、基本集計
 - [ゲーム構想](research/game.md): 研究基盤とゲーム体験の接続
 - [ロードマップ](research/roadmap.md): 段階、成果物、ゲート
 - [実験テンプレート](research/protocols/experiment-template.md): 実験前後に必ず残す項目
 - [意思決定ログ](research/decisions/): 長期的に効く設計判断
+- [Science of Science 調査](research/literature/science-of-science-objectives.md): 外部文献に基づく目的関数候補
+- [`ai-scientist-survey` 調査](research/literature/ai-scientist-survey-objectives.md): 既存内部議論との接続
 - [日次ログ](research/logbook/): 作業、観察、疑問、次の一手
 - [実行記録](research/runs/): 再現可能なベースラインと実験結果
 

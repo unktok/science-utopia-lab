@@ -42,17 +42,19 @@ v0 は、最良の科学制度を結論するための探索空間ではない�
 
 実行時間を測定してから規模を再決定する。fidelity間の順位相関が低い場合、smoke結果による早期打ち切りは行わない。
 
-## v0 の目的ポートフォリオ
+## v0 の暫定signal portfolio
 
-単一の重み付き和はまだ定義しない。次を別々の目的として保持する。
+単一の重み付き和は定義しない。次はoptimizer pipelineを検証する暫定signalであり、科学的価値の最終目的ではない。Science of Science調査を受け、noveltyとresource equalityは無条件の単調最大化から外す。
 
-1. topic breadth AUC — maximize
-2. submission novelty median — maximize
-3. active researcher retention — maximize
-4. resource equity AUC — maximize
-5. review burden — minimize
+1. topic breadth AUC — provisional maximize / diagnostic
+2. submission novelty distribution — observe as portfolio, not monotonic
+3. active researcher retention — maximize subject to activity and autonomy diagnostics
+4. resource distribution — minimum floor + diagnostic, not equality maximization
+5. review burden — minimize subject to evaluation coverage
 
 採択数・採択率・review score は診断値に留める。これらを直接最大化すると、制度変数自身で容易に操作できるためである。定義と弱点は[Metric Cards v0](metric-cards-v0.md)に記録する。
+
+目的アーキテクチャの正式な判断は[ADR-0002](decisions/0002-objective-architecture.md)、根拠は[Science of Science調査](literature/science-of-science-objectives.md)と[`ai-scientist-survey`調査](literature/ai-scientist-survey-objectives.md)を参照する。
 
 ## 必須制約
 

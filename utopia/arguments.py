@@ -180,6 +180,12 @@ def parse_arguments(argv=None, *, create_dirs=True):
              'paths are used and an experiment_id is derived. When absent, legacy layout is preserved.'
     )
     parser.add_argument(
+        '--run-id', '--run_id',
+        default=None,
+        help='Explicit safe run identifier for an external experiment registry. '
+             'Requires --experiment_stage and overrides the derived experiment_id.'
+    )
+    parser.add_argument(
         '--population_mode',
         type=str,
         default='default',
@@ -403,6 +409,11 @@ def parse_arguments(argv=None, *, create_dirs=True):
                         help='Immutable SciEvo Hugging Face dataset revision.')
     parser.add_argument('--wandb', action='store_true', help='Enable optional scalar W&B logging.')
     args = parser.parse_args(argv)
+    if args.run_id is not None:
+        if args.experiment_stage is None:
+            parser.error('--run-id requires --experiment_stage')
+        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,159}', args.run_id):
+            parser.error('--run-id must be 1-160 safe filename characters')
     for field in ('num_years', 'batch_size', 'num_institutions', 'researchers_per_institution', 'num_conferences'):
         if getattr(args, field) is not None and getattr(args, field) < 1:
             parser.error(f'--{field} must be positive')
@@ -510,6 +521,8 @@ def parse_arguments(argv=None, *, create_dirs=True):
                 f"i{args.num_institutions}_n{n_researchers}_y{args.num_years}_seed{args.seed}{mix_tag}"
             )
         args.experiment_id += cost_tag
+        if args.run_id is not None:
+            args.experiment_id = args.run_id
         base = args.output_dir  # repository-relative 'outputs'
         args.log_dir = os.path.join(base, 'logs', args.experiment_id)
         args.checkpoint_dir = os.path.join(base, 'checkpoints', args.experiment_id)
