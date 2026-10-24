@@ -1,0 +1,82 @@
+{
+  "id": "evaluation-v0",
+  "version": 1,
+  "purpose": "instrumentation_and_optimizer_validation",
+  "variables": {
+    "acceptance_rate": {
+      "type": "float",
+      "minimum": 0.1,
+      "maximum": 0.5
+    },
+    "reviews_per_paper": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "reviewer_capacity": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 8
+    },
+    "reviewer_matching": {
+      "type": "categorical",
+      "choices": ["random", "topic"]
+    },
+    "review_policy": {
+      "type": "categorical",
+      "choices": ["persona", "standardized"]
+    },
+    "funding_budget_slots_frac": {
+      "type": "float",
+      "minimum": 0.1,
+      "maximum": 0.5
+    },
+    "funding_application_cost": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 20
+    },
+    "resubmission_cost": {
+      "type": "float",
+      "minimum": 0.0,
+      "maximum": 20.0
+    }
+  },
+  "fixed_arguments": {
+    "experiment_name": "exploration_vs_exploitation",
+    "population_mode": "university_only",
+    "researchers_per_institution": 5,
+    "funding_allocation_mode": "fixed",
+    "funding_budget_mode": "fixed",
+    "acceptance_tiebreak": "seeded",
+    "acceptance_mode": "rate",
+    "rag_device": "cpu",
+    "log_funding_applications": true,
+    "log_resource_ledger": true
+  },
+  "fidelities": {
+    "smoke": {
+      "num_institutions": 2,
+      "num_years": 1,
+      "num_conferences": 1
+    },
+    "screen": {
+      "num_institutions": 4,
+      "num_years": 2,
+      "num_conferences": 2
+    },
+    "confirm": {
+      "num_institutions": 12,
+      "num_years": 5,
+      "num_conferences": 6
+    }
+  },
+  "objectives": [
+    {"id": "topic_breadth_auc", "direction": "maximize"},
+    {"id": "submission_novelty_median", "direction": "maximize"},
+    {"id": "active_researcher_retention", "direction": "maximize"},
+    {"id": "resource_equity_auc", "direction": "maximize"},
+    {"id": "review_burden", "direction": "minimize"}
+  ]
+}
+

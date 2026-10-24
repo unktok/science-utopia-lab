@@ -22,6 +22,9 @@
 - [研究憲章](research/charter.md): 目的、問い、原則、成功条件
 - [科学システムの抽象モデル](research/system-model.md): 機構、状態、インターフェース、設計空間
 - [最適化研究計画](research/optimization.md): 目的関数、ブラックボックス最適化、微分可能化
+- [Design Space v0](research/design-space-v0.md): 最初の8変数とfidelity
+- [Metric Cards v0](research/metric-cards-v0.md): 指標の定義、集約、攻略リスク
+- [現行パラメータ棚卸し](research/parameter-inventory.md): 採用、固定、延期、実行設定の分類
 - [ゲーム構想](research/game.md): 研究基盤とゲーム体験の接続
 - [ロードマップ](research/roadmap.md): 段階、成果物、ゲート
 - [実験テンプレート](research/protocols/experiment-template.md): 実験前後に必ず残す項目
