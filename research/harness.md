@@ -77,3 +77,9 @@ outputs/optimization/<study-id>/<study-revision>/
 
 registry reportはwall-clock、failure rate、paper/review/active researcher/resourceの分布だけを出す。これらは運用・活動診断であり、最適化目的ではない。Science of Science調査を反映したobjective evaluatorは別moduleとして接続する。
 
+## First end-to-end validation
+
+2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。
+
+詳細とevidence hashは [`runs/2026-10-24-harness-baseline-seed101.md`](runs/2026-10-24-harness-baseline-seed101.md) に固定した。これはharnessの実行可能性を示すだけで、複数seed推定や制度の優劣を示さない。
+
