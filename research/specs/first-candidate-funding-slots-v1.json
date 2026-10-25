@@ -1,0 +1,10 @@
+{
+  "acceptance_rate": 0.3,
+  "reviews_per_paper": 3,
+  "reviewer_capacity": 4,
+  "reviewer_matching": "random",
+  "review_policy": "persona",
+  "funding_budget_slots_frac": 0.5,
+  "funding_application_cost": 0,
+  "resubmission_cost": 5.0
+}
