@@ -298,6 +298,59 @@ def test_capacity_assignment_fails_fast_when_one_review_impossible():
         Simulation._assign_reviewers_with_capacity(sim, 1, {})
 
 
+def test_capacity_assignment_solves_constrained_global_matching():
+    """Flexible papers cannot consume reviewers needed by constrained papers."""
+    eco = MultiAgentEcosystem(agent_configs={})
+    reviewers = [make_agent(name=f'r{i}', institution=f'reviewer_{i}') for i in range(3)]
+    authors = [make_agent(name=f'a{i}', institution=f'author_{i}') for i in range(3)]
+    for reviewer in reviewers:
+        eco.add_agent(reviewer)
+    for author in authors:
+        author.can_review = False
+        eco.add_agent(author)
+    authors[0].conflict_of_interest = {'r1', 'r2'}  # p0 must use r0
+    authors[1].conflict_of_interest = {'r0', 'r2'}  # p1 must use r1
+    authors[2].conflict_of_interest = set()          # p2 is flexible
+    conf = Conference(conference_id='C', name='C', topics=['cs.AI'])
+    conf.submitted_papers = [
+        {'id': 'p2', 'author_id': 'a2', 'tags': ['cs.AI']},
+        {'id': 'p0', 'author_id': 'a0', 'tags': ['cs.AI']},
+        {'id': 'p1', 'author_id': 'a1', 'tags': ['cs.AI']},
+    ]
+    sim = stub_sim(
+        reviewer_capacity=1,
+        reviews_per_paper=1,
+        ecosystem=eco,
+        conference_system=SimpleNamespace(conferences=[conf]),
+    )
+    result = {}
+    assignment = Simulation._assign_reviewers_with_capacity(sim, 1, result)
+    assert {paper: [reviewer.id for reviewer in chosen]
+            for paper, chosen in assignment.items()} == {
+                'p2': ['r2'], 'p0': ['r0'], 'p1': ['r1']
+            }
+    assert result['review_assignment']['papers_below_target'] == 0
+
+
+def test_capacity_assignment_preserves_one_review_when_coi_limits_full_target():
+    """The observed 10-reviewer/13-paper case must degrade coverage, not crash."""
+    eco, cs = _capacity_world(n_reviewers=10, n_papers=13, institutions=2)
+    sim = stub_sim(
+        reviewer_capacity=4,
+        reviews_per_paper=3,
+        ecosystem=eco,
+        conference_system=cs,
+    )
+    result = {}
+    assignment = Simulation._assign_reviewers_with_capacity(sim, 3, result)
+    loads = Counter(reviewer.id for chosen in assignment.values() for reviewer in chosen)
+    assert all(len(chosen) >= 1 for chosen in assignment.values())
+    assert max(loads.values()) <= 4
+    assert result['review_assignment']['reviews_per_paper_target'] == 3
+    assert result['review_assignment']['reviews_assigned'] == 38
+    assert result['review_assignment']['papers_below_target'] == 1
+
+
 def test_capacity_assignment_unlimited_cap_uses_target():
     eco, cs = _capacity_world()
     sim = stub_sim(reviews_per_paper=2, ecosystem=eco, conference_system=cs)

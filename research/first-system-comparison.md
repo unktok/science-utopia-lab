@@ -42,6 +42,39 @@ Candidate file:
 - Retry policy: at most two harness attempts; resumed checkpoints retain the
   same design and seed identity.
 
+## Prospective operational amendment: global reviewer assignment
+
+The initial replication batch exposed the same order-dependent reviewer
+assignment failure in baseline seeds 101 and 107. Seed 101 reached year 4 with
+12 submissions; seed 107 reached year 3 with 13. In both cases total capacity
+was sufficient to give every paper at least one review, but the greedy seeded
+order exhausted all reviewers eligible for a late paper. Seed 103 completed,
+and seed 109 was deliberately interrupted after the repeated mechanism was
+identified. These artifacts remain diagnostic and are not mixed into the
+comparison.
+
+Before any candidate run, reviewer assignment policy
+`global-capacitated-review-assignment` version `1.0.0` replaces the greedy
+order with a deterministic minimum-cost capacitated bipartite flow. It:
+
+- gives every paper at least one review or fails only when no global matching
+  exists;
+- maximizes the number of reviews up to the configured per-paper target;
+- preserves authorship, conflict-of-interest, reviewer-capacity, topic
+  preference, and seeded tie-breaking rules;
+- records any paper below the target rather than silently dropping it.
+
+The exact observed 10-reviewer, 13-paper, capacity-4 case is a regression
+fixture: 38 of 39 target reviews are globally feasible and every paper receives
+at least one. This amendment changes no objective, threshold, design parameter,
+candidate, seed, or fidelity. Because it can change trajectories, all five
+baseline and all five candidate runs are restarted under one clean source
+commit rather than combining pre- and post-fix results.
+
+The replacement registries are `longitudinal-comparison-baseline-v1` and
+`first-candidate-funding-slots-v2`; their revisions are frozen by planning
+after the repair commit.
+
 The remaining baseline runs are executed first, but their results do not alter
 the candidate or analysis rules. Candidate execution begins only after all five
 baseline runs pass integrity and funding reliability.

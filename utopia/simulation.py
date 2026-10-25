@@ -3196,11 +3196,13 @@ class Simulation:
 
         reviews per paper r = min(reviews_per_paper, floor(c * N_reviewers / N_submissions))
         with a hard floor of 1 when a per-reviewer annual cap c is set (r = reviews_per_paper
-        when c is None). Papers are visited in a seeded random order; each takes up to r
-        eligible reviewers (no author, no conflict of interest, remaining capacity). With
-        --reviewer_matching topic, reviewers whose expertise category overlaps the paper's
-        arXiv tags are drawn first. Fails fast (RuntimeError) if any paper would receive
-        zero reviews, so the preregistered capacity range must guarantee >= 1 review.
+        when c is None). A global capacitated bipartite flow assigns up to r eligible
+        reviewers per paper (no author or conflict of interest) while imposing a lower
+        bound of one review on every paper. This avoids order-dependent dead ends from a
+        greedy assignment even when a feasible global matching exists. With
+        --reviewer_matching topic, overlapping expertise receives lower flow cost.
+        Fails fast (RuntimeError) only when no global assignment can give every paper one
+        review, so the preregistered capacity range must guarantee >= 1 review.
 
         Uses a dedicated random.Random so the global RNG stream is never consumed.
         Returns paper_id -> [reviewer agents]; assignment stats go to year_results.
@@ -3242,42 +3244,99 @@ class Simulation:
                     TOPIC_TO_CATEGORY_MAPPING.get(d.topic, 'Interdisciplinary')
                     for d in getattr(a, 'expertise', [])}
 
-        load = defaultdict(int)
-        assignment = {}
-        for idx in order:
+        import networkx as nx
+
+        # Edge costs preserve seeded random tie-breaking and, in topic mode,
+        # lexicographically prefer matched reviewers. The flow formulation gives each
+        # paper one unit of supply, then routes optional source flow for reviews 2..r.
+        # Trying totals from the target downward maximizes coverage subject to COI.
+        source, sink = ('review-flow', 'source'), ('review-flow', 'sink')
+        graph = nx.DiGraph()
+        graph.add_node(source)
+        graph.add_node(sink)
+        paper_nodes = {}
+        reviewer_nodes = {a.id: ('reviewer', a.id) for a in reviewers_all}
+        edge_cost = {}
+        topic_penalty = n_sub * r * max(n_rev, 1) + 1
+        for position, idx in enumerate(order):
             paper = papers[idx]
+            paper_node = ('paper', position, paper['id'])
+            paper_nodes[paper['id']] = paper_node
+            graph.add_node(paper_node)
             author_ids = self._get_all_author_ids(paper)
             all_coi = set(author_ids)
             for aid in author_ids:
                 author = self.ecosystem.get_agent_by_id(aid)
                 if author is not None:
                     all_coi.update(author.conflict_of_interest)
-            eligible = [a for a in reviewers_all
-                        if a.id not in all_coi and (c is None or load[a.id] < c)]
+            eligible = [a for a in reviewers_all if a.id not in all_coi]
+            randomized = list(eligible)
+            rng.shuffle(randomized)
+            random_rank = {a.id: rank for rank, a in enumerate(randomized)}
+            paper_cats = set()
             if tag_to_categories is not None:
-                paper_cats = set()
                 for tag in paper.get('tags', []):
                     paper_cats |= tag_to_categories.get(str(tag).lower(), set())
-                matched = [a for a in eligible if reviewer_categories.get(a.id, set()) & paper_cats]
-                matched_ids = {a.id for a in matched}
-                unmatched = [a for a in eligible if a.id not in matched_ids]
-                chosen = rng.sample(matched, min(r, len(matched)))
-                if len(chosen) < r and unmatched:
-                    chosen += rng.sample(unmatched, min(r - len(chosen), len(unmatched)))
-            else:
-                chosen = rng.sample(eligible, min(r, len(eligible)))
-            if not chosen:
-                raise RuntimeError(f"Year {year}: paper {paper['id']} has no eligible reviewer "
-                                   f"with remaining capacity (c={c}, n_rev={n_rev}, n_sub={n_sub})")
-            for a in chosen:
-                load[a.id] += 1
-            assignment[paper['id']] = chosen
+            for reviewer in eligible:
+                matched = bool(
+                    tag_to_categories is not None
+                    and reviewer_categories.get(reviewer.id, set()) & paper_cats
+                )
+                cost = random_rank[reviewer.id]
+                if tag_to_categories is not None and not matched:
+                    cost += topic_penalty
+                reviewer_node = reviewer_nodes[reviewer.id]
+                graph.add_edge(paper_node, reviewer_node, capacity=1, weight=cost)
+                edge_cost[(paper['id'], reviewer.id)] = cost
+
+        capacity = c if c is not None else n_sub * r
+        for reviewer_node in reviewer_nodes.values():
+            graph.add_node(reviewer_node)
+            graph.add_edge(reviewer_node, sink, capacity=capacity, weight=0)
+        for paper_node in paper_nodes.values():
+            graph.add_edge(source, paper_node, capacity=max(0, r - 1), weight=0)
+
+        target_total = n_sub * r
+        flow = None
+        assigned_total = None
+        for total in range(target_total, n_sub - 1, -1):
+            for node in graph.nodes:
+                graph.nodes[node]['demand'] = 0
+            graph.nodes[source]['demand'] = -(total - n_sub)
+            graph.nodes[sink]['demand'] = total
+            for paper_node in paper_nodes.values():
+                graph.nodes[paper_node]['demand'] = -1
+            try:
+                flow = nx.min_cost_flow(graph)
+                assigned_total = total
+                break
+            except nx.NetworkXUnfeasible:
+                continue
+        if flow is None:
+            raise RuntimeError(
+                f"Year {year}: no eligible reviewer assignment can globally give every "
+                f"paper one review (c={c}, n_rev={n_rev}, n_sub={n_sub})"
+            )
+
+        reviewers_by_id = {a.id: a for a in reviewers_all}
+        assignment = {}
+        load = defaultdict(int)
+        for paper in papers:
+            paper_node = paper_nodes[paper['id']]
+            chosen_ids = [
+                reviewer_id for reviewer_id, reviewer_node in reviewer_nodes.items()
+                if flow.get(paper_node, {}).get(reviewer_node, 0)
+            ]
+            chosen_ids.sort(key=lambda reviewer_id: edge_cost[(paper['id'], reviewer_id)])
+            assignment[paper['id']] = [reviewers_by_id[reviewer_id] for reviewer_id in chosen_ids]
+            for reviewer_id in chosen_ids:
+                load[reviewer_id] += 1
 
         loads = [load[a.id] for a in reviewers_all]
         year_results['review_assignment'] = {
             'n_submissions': n_sub, 'n_reviewers': n_rev, 'reviewer_capacity': c,
             'reviews_per_paper_target': r, 'reviewer_matching': self.reviewer_matching,
-            'reviews_assigned': int(sum(loads)), 'max_load': int(max(loads)),
+            'reviews_assigned': int(assigned_total), 'max_load': int(max(loads)),
             'mean_load': float(np.mean(loads)),
             'papers_below_target': int(sum(1 for v in assignment.values() if len(v) < r)),
         }
