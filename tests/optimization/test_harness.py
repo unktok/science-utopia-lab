@@ -7,10 +7,12 @@ from utopia.arguments import parse_arguments
 from utopia.optimization.harness import (
     RunRegistry,
     apply_funding_reliability_to_readiness,
+    apply_participation_suitability_to_readiness,
     build_command,
     build_report,
     design_id,
     evaluate_funding_reliability,
+    evaluate_participation_measurement_suitability,
     load_study,
     manifest_status,
     run_id,
@@ -23,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[2]
 STUDY = ROOT / "research/specs/study-v0-smoke.json"
 STUDY_V1 = ROOT / "research/specs/study-v1-smoke.json"
 STUDY_V2 = ROOT / "research/specs/study-v2-smoke.json"
+LONGITUDINAL_STUDY = ROOT / "research/specs/study-v3-longitudinal-pilot.json"
 
 RELIABILITY_POLICY = {
     "id": "funding-pipeline-reliability",
@@ -33,6 +36,20 @@ RELIABILITY_POLICY = {
     "maximum_sanitized_reference_attempt_rate": 0.25,
     "maximum_request_error_attempt_rate": 0.0,
     "maximum_terminal_drop_rate": 0.0,
+}
+
+PARTICIPATION_POLICY = {
+    "id": "participation-longitudinal-suitability",
+    "version": "1.0.0",
+    "failure_action": "recalibrate_fidelity",
+    "minimum_years": 4,
+    "minimum_initial_researchers": 10,
+    "minimum_protected_slice_support": 5,
+    "minimum_distinct_annual_active_counts": 2,
+    "aggregate_minimum_exclusive": 0.0,
+    "aggregate_maximum_exclusive": 1.0,
+    "protected_slice_minimum_exclusive": 0.0,
+    "protected_slice_maximum_exclusive": 1.0,
 }
 
 
@@ -59,6 +76,12 @@ def test_sobol_requires_power_of_two():
         sample_designs(space, kind="sobol", count=3, seed=7)
 
 
+def test_zero_samples_supports_baseline_only_calibration():
+    _, space, _ = load_study(LONGITUDINAL_STUDY)
+
+    assert sample_designs(space, kind="sobol", count=0, seed=7) == []
+
+
 def test_command_maps_to_safe_explicit_run_id(tmp_path):
     study, space, baseline = load_study(STUDY)
     revision = study_revision(study, space)
@@ -83,6 +106,23 @@ def test_command_carries_measurement_context_resource_profile(tmp_path):
 
     assert args.population_resource_profile == "balanced_two_band"
     assert len(study["seed_sets"]["exploration"]) == 5
+
+
+def test_longitudinal_fidelity_is_small_four_year_pilot(tmp_path):
+    study, space, baseline = load_study(LONGITUDINAL_STUDY)
+    command = build_command(
+        study, space, baseline, run="longitudinal-pilot", fidelity="longitudinal",
+        seed=113, output_root=tmp_path,
+    )
+
+    args = parse_arguments(command[4:], create_dirs=False)
+
+    assert study["sampler"]["count"] == 0
+    assert args.experiment_stage == "pilot"
+    assert args.num_years == 4
+    assert args.num_institutions == 2
+    assert args.num_conferences == 1
+    assert args.acceptance_rate_schedule == [0.3, 0.3, 0.3, 0.3]
 
 
 def test_v2_study_versions_funding_reliability_gate():
@@ -204,5 +244,93 @@ def test_funding_reliability_failure_blocks_objective_readiness():
     assert readiness[0]["funding_reliability_states"] == ["fail"]
     assert readiness[0]["blocking_reasons"] == [
         "one or more runs did not pass the funding reliability gate"
+    ]
+
+
+def test_participation_measurement_gate_accepts_interior_trajectory(tmp_path):
+    import pandas as pd
+
+    docs = tmp_path / "run-1"
+    docs.mkdir()
+    rows = []
+    for year, active_count in ((1, 10), (2, 10), (3, 9), (4, 7)):
+        for agent in range(10):
+            inactive_count = 10 - active_count
+            rows.append({
+                "agent_id": f"r{agent}",
+                "year": year,
+                "is_active": agent >= inactive_count,
+                "resource_band": "lower-band" if agent < 5 else "upper-band",
+            })
+    pd.DataFrame(rows).to_parquet(docs / "agent_year.parquet", index=False)
+    evaluation = {
+        "run_id": "run-1",
+        "metrics": {"active-researcher-fraction": {"status": "measured"}},
+    }
+
+    result = evaluate_participation_measurement_suitability(
+        evaluation, docs, PARTICIPATION_POLICY
+    )
+
+    assert result["state"] == "pass"
+    assert result["comparison_eligible"] is True
+    assert result["observations"]["annual_active_counts"] == [
+        {"year": 1, "active": 10},
+        {"year": 2, "active": 10},
+        {"year": 3, "active": 9},
+        {"year": 4, "active": 7},
+    ]
+    assert result["observations"]["aggregate_final_active_fraction"] == 0.7
+    assert result["observations"]["protected_slice_final_active_fraction"] == 0.4
+
+
+@pytest.mark.parametrize("final_lower_active", [0, 5])
+def test_participation_measurement_gate_rejects_slice_floor_or_ceiling(
+    tmp_path, final_lower_active
+):
+    import pandas as pd
+
+    docs = tmp_path / f"run-{final_lower_active}"
+    docs.mkdir()
+    rows = []
+    for year in range(1, 5):
+        for agent in range(10):
+            lower_active = final_lower_active if year == 4 else 5
+            rows.append({
+                "agent_id": f"r{agent}",
+                "year": year,
+                "is_active": agent >= 5 or agent < lower_active,
+                "resource_band": "lower-band" if agent < 5 else "upper-band",
+            })
+    pd.DataFrame(rows).to_parquet(docs / "agent_year.parquet", index=False)
+    evaluation = {
+        "run_id": docs.name,
+        "metrics": {"active-researcher-fraction": {"status": "measured"}},
+    }
+
+    result = evaluate_participation_measurement_suitability(
+        evaluation, docs, PARTICIPATION_POLICY
+    )
+
+    assert result["state"] == "fail"
+    assert result["disposition"] == "recalibrate_fidelity"
+    assert any("protected_slice_final_active_fraction" in reason for reason in result["reasons"])
+
+
+def test_participation_measurement_failure_blocks_readiness():
+    readiness = [{
+        "design_id": "d1", "authorized_for_ranking": True, "blocking_reasons": []
+    }]
+    completed = [{"run_id": "run-1", "design_id": "d1"}]
+    suitability = [{"run_id": "run-1", "state": "fail"}]
+
+    apply_participation_suitability_to_readiness(
+        readiness, completed, suitability
+    )
+
+    assert readiness[0]["authorized_for_ranking"] is False
+    assert readiness[0]["participation_measurement_states"] == ["fail"]
+    assert readiness[0]["blocking_reasons"] == [
+        "one or more runs did not pass the participation measurement gate"
     ]
 

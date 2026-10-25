@@ -113,6 +113,38 @@ def validate_funding_reliability_policy(policy: Mapping[str, Any]) -> None:
             raise ValueError(f"funding_reliability_policy.{key} must be between 0 and 1")
 
 
+def validate_participation_measurement_policy(policy: Mapping[str, Any]) -> None:
+    """Validate the pre-registered gate for an informative longitudinal fidelity."""
+    for key in ("id", "version"):
+        if not isinstance(policy.get(key), str) or not policy[key]:
+            raise ValueError(f"participation_measurement_policy.{key} is required")
+    if policy.get("failure_action") != "recalibrate_fidelity":
+        raise ValueError(
+            "participation_measurement_policy.failure_action must be recalibrate_fidelity"
+        )
+    for key in (
+        "minimum_years",
+        "minimum_initial_researchers",
+        "minimum_protected_slice_support",
+        "minimum_distinct_annual_active_counts",
+    ):
+        value = policy.get(key)
+        if type(value) is not int or value < 1:
+            raise ValueError(f"participation_measurement_policy.{key} must be positive")
+    for prefix in ("aggregate", "protected_slice"):
+        lower = policy.get(f"{prefix}_minimum_exclusive")
+        upper = policy.get(f"{prefix}_maximum_exclusive")
+        if (
+            type(lower) not in {int, float}
+            or type(upper) not in {int, float}
+            or not 0 <= lower < upper <= 1
+        ):
+            raise ValueError(
+                f"participation_measurement_policy {prefix} bounds must satisfy "
+                "0 <= minimum < maximum <= 1"
+            )
+
+
 def load_study(path: str | Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     study_path = Path(path).resolve()
     study = json.loads(study_path.read_text(encoding="utf-8"))
@@ -129,8 +161,10 @@ def load_study(path: str | Path) -> tuple[dict[str, Any], dict[str, Any], dict[s
     sampler = study.get("sampler", {})
     if sampler.get("kind") not in {"random", "sobol"}:
         raise ValueError("sampler.kind must be random or sobol")
-    if type(sampler.get("count")) is not int or sampler["count"] < 1:
-        raise ValueError("sampler.count must be a positive integer")
+    if type(sampler.get("count")) is not int or sampler["count"] < 0:
+        raise ValueError("sampler.count must be a nonnegative integer")
+    if sampler["count"] == 0 and sampler.get("include_baseline") is not True:
+        raise ValueError("sampler.count=0 requires include_baseline=true")
     if type(sampler.get("seed")) is not int:
         raise ValueError("sampler.seed must be an integer")
     for role in ("exploration", "selection", "confirmation"):
@@ -155,6 +189,11 @@ def load_study(path: str | Path) -> tuple[dict[str, Any], dict[str, Any], dict[s
         if not isinstance(reliability_policy, dict):
             raise ValueError("funding_reliability_policy must be an object")
         validate_funding_reliability_policy(reliability_policy)
+    participation_policy = study.get("participation_measurement_policy")
+    if participation_policy is not None:
+        if not isinstance(participation_policy, dict):
+            raise ValueError("participation_measurement_policy must be an object")
+        validate_participation_measurement_policy(participation_policy)
     return study, space, baseline
 
 
@@ -182,6 +221,10 @@ def _unit_to_candidate(space: Mapping[str, Any], point: Iterable[float]) -> dict
 def sample_designs(
     space: Mapping[str, Any], *, kind: str, count: int, seed: int
 ) -> list[dict[str, Any]]:
+    if count < 0:
+        raise ValueError("sample count must be nonnegative")
+    if count == 0:
+        return []
     dimensions = len(space["variables"])
     if kind == "random":
         rng = random.Random(seed)
@@ -232,7 +275,15 @@ def build_command(
     if fidelity not in space["fidelities"]:
         raise ValueError(f"Unknown fidelity {fidelity!r}")
     level = space["fidelities"][fidelity]
-    stage = {"smoke": "smoke", "screen": "pilot", "confirm": "confirmatory"}[fidelity]
+    stage = level.get("experiment_stage")
+    if stage is None:
+        stage = {"smoke": "smoke", "screen": "pilot", "confirm": "confirmatory"}.get(
+            fidelity
+        )
+    if stage not in {"smoke", "pilot", "confirmatory"}:
+        raise ValueError(
+            f"Fidelity {fidelity!r} must define a valid experiment_stage"
+        )
     execution = study["execution"]
     command = [
         sys.executable, "-B", "-m", "utopia",
@@ -352,7 +403,9 @@ def plan_study(
     root.mkdir(parents=True, exist_ok=True)
     sampler = study["sampler"]
     kind = sampler_kind or sampler["kind"]
-    sample_count = count or sampler["count"]
+    sample_count = sampler["count"] if count is None else count
+    if sample_count == 0 and sampler.get("include_baseline") is not True:
+        raise ValueError("sample count 0 requires include_baseline=true")
     designs = sample_designs(space, kind=kind, count=sample_count, seed=sampler["seed"])
     if sampler.get("include_baseline"):
         designs.insert(0, dict(baseline))
@@ -584,9 +637,156 @@ def apply_funding_reliability_to_readiness(
                 readiness["blocking_reasons"].append(reason)
 
 
+def evaluate_participation_measurement_suitability(
+    evaluation: Mapping[str, Any] | None,
+    docs: Path,
+    policy: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Test whether a completed longitudinal run escapes floor/ceiling saturation."""
+    validate_participation_measurement_policy(policy)
+    run = evaluation.get("run_id") if evaluation else docs.name
+    reasons: list[str] = []
+    evidence_errors: list[str] = []
+    observations: dict[str, Any] = {}
+
+    metric = (evaluation or {}).get("metrics", {}).get("active-researcher-fraction")
+    if not isinstance(metric, dict) or metric.get("status") != "measured":
+        evidence_errors.append("active-researcher-fraction is not measured")
+
+    try:
+        import pandas as pd
+
+        agents = pd.read_parquet(docs / "agent_year.parquet")
+        required = {"agent_id", "year", "is_active", "resource_band"}
+        if agents.empty or not required.issubset(agents.columns):
+            evidence_errors.append("agent-year longitudinal fields are missing")
+        else:
+            years = sorted(int(year) for year in agents["year"].unique())
+            first_year, final_year = years[0], years[-1]
+            initial = agents.loc[agents["year"] == first_year].copy()
+            final = agents.loc[agents["year"] == final_year].copy()
+            if initial["agent_id"].duplicated().any() or final["agent_id"].duplicated().any():
+                evidence_errors.append("initial or final agent status is duplicated")
+            initial_ids = set(initial["agent_id"])
+            if not initial_ids or set(final["agent_id"]) != initial_ids:
+                evidence_errors.append("final status is missing for initial researchers")
+            band_counts = agents.groupby("agent_id")["resource_band"].nunique(dropna=False)
+            if agents["resource_band"].isna().any() or (band_counts != 1).any():
+                evidence_errors.append("protected resource-band membership is not stable")
+
+            lower_ids = set(
+                initial.loc[initial["resource_band"] == "lower-band", "agent_id"]
+            )
+            final_by_id = final.set_index("agent_id")
+            aggregate_fraction = (
+                float(final["is_active"].astype(bool).sum()) / len(initial_ids)
+                if initial_ids else None
+            )
+            protected_fraction = (
+                float(final_by_id.loc[list(lower_ids), "is_active"].astype(bool).sum())
+                / len(lower_ids)
+                if lower_ids and lower_ids <= set(final_by_id.index) else None
+            )
+            annual_counts = [
+                {
+                    "year": year,
+                    "active": int(
+                        agents.loc[agents["year"] == year, "is_active"].astype(bool).sum()
+                    ),
+                }
+                for year in years
+            ]
+            observations = {
+                "years_observed": len(years),
+                "first_year": first_year,
+                "final_year": final_year,
+                "initial_researchers": len(initial_ids),
+                "protected_slice_support": len(lower_ids),
+                "aggregate_final_active_fraction": aggregate_fraction,
+                "protected_slice_final_active_fraction": protected_fraction,
+                "annual_active_counts": annual_counts,
+                "distinct_annual_active_counts": len(
+                    {row["active"] for row in annual_counts}
+                ),
+            }
+    except (OSError, ValueError, KeyError, ImportError) as error:
+        evidence_errors.append(f"longitudinal evidence is unreadable: {error}")
+
+    if not evidence_errors:
+        checks = (
+            ("years_observed", "minimum_years"),
+            ("initial_researchers", "minimum_initial_researchers"),
+            ("protected_slice_support", "minimum_protected_slice_support"),
+            (
+                "distinct_annual_active_counts",
+                "minimum_distinct_annual_active_counts",
+            ),
+        )
+        for observation, threshold in checks:
+            if observations[observation] < policy[threshold]:
+                reasons.append(
+                    f"{observation}={observations[observation]} is below "
+                    f"{threshold}={policy[threshold]}"
+                )
+        for prefix, observation in (
+            ("aggregate", "aggregate_final_active_fraction"),
+            ("protected_slice", "protected_slice_final_active_fraction"),
+        ):
+            value = observations[observation]
+            lower = policy[f"{prefix}_minimum_exclusive"]
+            upper = policy[f"{prefix}_maximum_exclusive"]
+            if value is None or not lower < value < upper:
+                reasons.append(
+                    f"{observation}={value!r} is not inside ({lower}, {upper})"
+                )
+
+    state = "insufficient_evidence" if evidence_errors else ("fail" if reasons else "pass")
+    return {
+        "run_id": run,
+        "policy_id": policy["id"],
+        "policy_version": policy["version"],
+        "policy_sha256": hashlib.sha256(
+            canonical_json(policy).encode("utf-8")
+        ).hexdigest(),
+        "state": state,
+        "comparison_eligible": state == "pass",
+        "disposition": "eligible" if state == "pass" else policy["failure_action"],
+        "observations": observations,
+        "reasons": evidence_errors + reasons,
+    }
+
+
+def apply_participation_suitability_to_readiness(
+    objective_readiness: list[dict[str, Any]],
+    completed: Iterable[Mapping[str, Any]],
+    suitability_evaluations: Iterable[Mapping[str, Any]],
+) -> None:
+    """Block ranking when the study's primary participation signal is saturated."""
+    suitability_by_run = {
+        item["run_id"]: item for item in suitability_evaluations
+    }
+    runs_by_design: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    for row in completed:
+        runs_by_design[row["design_id"]].append(row)
+    for readiness in objective_readiness:
+        states = [
+            suitability_by_run.get(
+                row["run_id"], {"state": "insufficient_evidence"}
+            )["state"]
+            for row in runs_by_design[readiness["design_id"]]
+        ]
+        readiness["participation_measurement_states"] = states
+        if any(state != "pass" for state in states):
+            readiness["authorized_for_ranking"] = False
+            reason = "one or more runs did not pass the participation measurement gate"
+            if reason not in readiness["blocking_reasons"]:
+                readiness["blocking_reasons"].append(reason)
+
+
 def build_report(
     registry: RunRegistry, constitution: Mapping[str, Any] | None = None,
     funding_reliability_policy: Mapping[str, Any] | None = None,
+    participation_measurement_policy: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     rows = registry.rows()
     attempts = registry.attempt_rows()
@@ -673,6 +873,22 @@ def build_report(
         apply_funding_reliability_to_readiness(
             objective_readiness, completed, reliability_evaluations
         )
+    participation_suitability = []
+    if participation_measurement_policy is not None:
+        evaluations_by_run = {
+            item["run_id"]: item for item in objective_evaluations
+        }
+        participation_suitability = [
+            evaluate_participation_measurement_suitability(
+                evaluations_by_run.get(row["run_id"]),
+                Path(row["output_root"]) / "docs" / row["run_id"],
+                participation_measurement_policy,
+            )
+            for row in completed
+        ]
+        apply_participation_suitability_to_readiness(
+            objective_readiness, completed, participation_suitability
+        )
     result = {
         "generated_utc": utc_now(),
         "total_runs": len(rows),
@@ -698,6 +914,11 @@ def build_report(
         "funding_reliability_policy": (
             dict(funding_reliability_policy)
             if funding_reliability_policy is not None else None
+        ),
+        "participation_measurement_suitability": participation_suitability,
+        "participation_measurement_policy": (
+            dict(participation_measurement_policy)
+            if participation_measurement_policy is not None else None
         ),
         "funding_application_distributions": {
             field: numeric_summary(item[field] for item in pipeline_diagnostics)
@@ -731,7 +952,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--study", required=True, type=Path)
     commands = parser.add_subparsers(dest="command", required=True)
     plan = commands.add_parser("plan")
-    plan.add_argument("--fidelity", choices=["smoke", "screen", "confirm"], default="smoke")
+    plan.add_argument("--fidelity", default="smoke")
     plan.add_argument("--seed-role", choices=["exploration", "selection", "confirmation"], default="exploration")
     plan.add_argument("--sampler", choices=["random", "sobol"])
     plan.add_argument("--count", type=int)
@@ -765,7 +986,10 @@ def main(argv: list[str] | None = None) -> int:
                     _resolve_repo_path(study["metric_constitution"])
                 )
                 result = build_report(
-                    registry, constitution, study.get("funding_reliability_policy")
+                    registry,
+                    constitution,
+                    study.get("funding_reliability_policy"),
+                    study.get("participation_measurement_policy"),
                 )
                 report_path = root / "registry-report.json"
                 report_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")

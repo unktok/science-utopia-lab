@@ -18,7 +18,9 @@ def _load_json(path: str | Path) -> dict[str, Any]:
 
 def load_space(path: str | Path) -> dict[str, Any]:
     space = _load_json(path)
-    if space.get("id") not in {"evaluation-v0", "evaluation-v1"} or space.get("version") != 1:
+    if space.get("id") not in {
+        "evaluation-v0", "evaluation-v1", "evaluation-v2-longitudinal"
+    } or space.get("version") != 1:
         raise ValueError("Unsupported design-space id or version")
     variables = space.get("variables")
     if not isinstance(variables, dict) or not variables:

@@ -118,6 +118,22 @@ run自体はdiagnostic artifactとしてcompleteになり得るが、design-leve
 遡及適用せず、trace schema v2と新しいstudy revisionだけで使用する。設計根拠と
 閾値は[`funding-reliability.md`](funding-reliability.md)に記録する。
 
+## Longitudinal measurement gate
+
+`study-v3-longitudinal-pilot.json`は制度候補を生成しないbaseline-only calibration
+を表現する。`sampler.count=0`は`include_baseline=true`の場合だけ許可され、未実行の
+候補designをregistryへ混ぜない。fidelity名はdesign-spaceで拡張でき、各fidelityが
+`experiment_stage`を明示するため、`longitudinal`のような研究目的に即した名前を
+使える。
+
+4年・10人のlongitudinal fidelityにはversioned participation measurement gateを
+適用する。`agent_year`から年別active数、最終aggregate参加率、開始時に固定した
+low-resource slice参加率を再構成し、期間・support・時系列変化・floor/ceilingを
+検査する。pass以外は`recalibrate_fidelity`となり、objective値が良くても
+`authorized_for_ranking`を閉じる。これは制度性能ではなく、主要目的を測れる実験
+条件かどうかの検査である。事前基準と選択根拠は
+[`longitudinal-fidelity.md`](longitudinal-fidelity.md)に固定する。
+
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。
