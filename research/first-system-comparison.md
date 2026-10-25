@@ -71,9 +71,10 @@ candidate, seed, or fidelity. Because it can change trajectories, all five
 baseline and all five candidate runs are restarted under one clean source
 commit rather than combining pre- and post-fix results.
 
-The replacement registries are `longitudinal-comparison-baseline-v1` and
-`first-candidate-funding-slots-v2`; their revisions are frozen by planning
-after the repair commit.
+The replacement registries are `longitudinal-comparison-baseline-v1` revision
+`fb38800d92` and `first-candidate-funding-slots-v2` revision `5e2b4d9e2f`.
+They were planned after repair commit `33a3de8`; each contains exactly one
+design over the same five exploration seeds.
 
 The remaining baseline runs are executed first, but their results do not alter
 the candidate or analysis rules. Candidate execution begins only after all five
