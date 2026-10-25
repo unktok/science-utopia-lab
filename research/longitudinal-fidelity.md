@@ -67,3 +67,17 @@ but only the prospectively selected stress seed 113 is authorized initially.
 5. If all integrity and reliability checks pass and participation suitability
    passes, retain this fidelity for baseline replication. Otherwise record the
    failure and create a new versioned calibration proposal.
+
+## Pilot result
+
+Baseline seed 113 completed on its first attempt from source commit `1d86239`.
+The policy was evaluated unchanged and passed: annual active counts were
+10, 10, 10, and 8; final aggregate participation was 0.8; and final
+low-resource participation was 0.6 with support 5. Native integrity and all
+four annual funding traces passed, with no terminal funding drops.
+
+This establishes measurement suitability for one realization, not a design
+effect or adequate statistical power. The other four planned baseline seeds
+remain unrun, and design-level ranking remains blocked at 1 / 5 repetitions.
+Detailed results and evidence hashes are in
+[`runs/2026-10-25-longitudinal-baseline-seed113.md`](runs/2026-10-25-longitudinal-baseline-seed113.md).
