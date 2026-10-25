@@ -103,6 +103,21 @@ cross-design comparisonのengineering reliability gateを通さない。詳細�
 を参照する。`authorized_for_ranking=true`は反復・測定・制約上の比較参加資格で
 あり、他design未実行の現時点では順位や最適性を意味しない。
 
+## Engineering reliability gate
+
+`study-v2-smoke.json`から、funding proposal pipelineを目的ベクトルと分離した
+versioned gateで検査する。per-runのsemantic-invalid、sanitized reference、
+request error、terminal dropを分母付きrateとして計算し、policy ID/version/hash
+とともにreportへ保存する。最低target数に届かないrunは
+`insufficient_evidence`、閾値違反は`fail`となり、どちらも`quarantine`される。
+run自体はdiagnostic artifactとしてcompleteになり得るが、design-levelの
+`authorized_for_ranking`はfalseになる。
+
+このgateは良い制度を選ぶ指標ではない。シミュレータの故障やLLM出力不良を
+制度効果として最適化しないためのadmissibility conditionである。v1 artifactへ
+遡及適用せず、trace schema v2と新しいstudy revisionだけで使用する。設計根拠と
+閾値は[`funding-reliability.md`](funding-reliability.md)に記録する。
+
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。

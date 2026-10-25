@@ -2,6 +2,7 @@ import json
 from types import SimpleNamespace
 
 from utopia.agents.funding_agents import FundingAgency
+from utopia.agents.researcher_agents import UniversityResearcher
 from utopia.funding.application_trace import FundingApplicationTrace
 from utopia.runtime.checkpointing import simulation_replay_paths
 from utopia.simulation import Simulation
@@ -46,6 +47,7 @@ def test_complete_trace_conserves_targets_without_recording_content(tmp_path):
         "allocations_applied": 1,
         "generation_attempts": 3,
         "semantic_invalid_attempts": 1,
+        "sanitized_reference_attempts": 0,
         "request_error_attempts": 0,
     }
     audit = trace.events_path.read_text()
@@ -113,6 +115,54 @@ class Applicant:
         }
 
 
+def test_zero_paper_prompt_has_empty_valid_example():
+    researcher = SimpleNamespace(
+        generate_research_proposal=True,
+        expertise=[SimpleNamespace(topic="machine_learning")],
+        university_name="Fixture University",
+        resources=50,
+    )
+    program = SimpleNamespace(
+        program_id="program-a", name="Program A",
+        research_directions=[SimpleNamespace(topic="machine_learning")],
+    )
+
+    prompt, _, metadata_row = UniversityResearcher.funding_application_prompt(
+        researcher, program, [], []
+    )
+
+    assert '"relevant_projects": []' in prompt
+    assert "No past papers are listed" in prompt
+    assert "between 0 and -1" not in prompt
+    assert "[0, 2, 1]" not in prompt
+    assert metadata_row["all_papers"] == []
+
+
+def test_funding_prompt_example_never_exceeds_available_papers():
+    researcher = SimpleNamespace(
+        generate_research_proposal=True,
+        expertise=[SimpleNamespace(topic="machine_learning")],
+        university_name="Fixture University",
+        resources=50,
+    )
+    program = SimpleNamespace(
+        program_id="program-a", name="Program A",
+        research_directions=[SimpleNamespace(topic="machine_learning")],
+    )
+    papers = [
+        {"id": f"paper-{index}", "status": "accept", "title": "T", "abstract": "A"}
+        for index in range(2)
+    ]
+
+    prompt, _, _ = UniversityResearcher.funding_application_prompt(
+        researcher, program, papers, []
+    )
+
+    assert '"relevant_projects": [0, 1]' in prompt
+    assert "between 0 and 1" in prompt
+    assert "[0, 2, 1]" not in prompt
+
+
 def batch_simulation(tmp_path, batches):
     simulation = Simulation.__new__(Simulation)
     simulation.llm = BatchModel(batches)
@@ -163,3 +213,25 @@ def test_batch_generation_records_terminal_semantic_drop(tmp_path):
     assert summary["passed"] is True
     assert summary["counts"]["dropped"] == 1
     assert summary["counts"]["generation_attempts"] == 5
+
+
+def test_zero_paper_invalid_references_are_sanitized_without_retry(tmp_path):
+    proposal = {"submit": True, "research_proposal": "x", "relevant_projects": [0, 2, 1]}
+    simulation = batch_simulation(tmp_path, [[proposal]])
+    agent = Applicant("researcher-1")
+    metadata_row = {"agent": agent, "program_id": "program-a", "all_papers": []}
+    trace = simulation._funding_application_traces[1]
+    trace.target(metadata_row, 1)
+
+    results = simulation._generate_funding_applications_batch(
+        1, {"program-a": "program-a"}, ["prompt"], [metadata_row], {}
+    )
+
+    assert len(results) == 1
+    assert results[0][2]["relevant_projects"] == []
+    summary = trace.summary()
+    assert summary["counts"]["generation_attempts"] == 1
+    assert summary["counts"]["semantic_invalid_attempts"] == 0
+    assert summary["counts"]["sanitized_reference_attempts"] == 1
+    assert summary["counts"]["dropped"] == 0
+    assert summary["reason_counts"] == {"invalid_paper_indices_removed": 1}

@@ -9,7 +9,7 @@ from pathlib import Path
 from utopia.utils.data_utils import write_json_atomic
 
 
-SCHEMA = "scienceutopia.funding_application_trace.v1"
+SCHEMA = "scienceutopia.funding_application_trace.v2"
 
 
 class FundingApplicationTrace:
@@ -177,6 +177,7 @@ class FundingApplicationTrace:
                 "allocations_applied": sum(state["allocation_applied"] for state in states),
                 "generation_attempts": self._event_counts["generation_attempt"],
                 "semantic_invalid_attempts": self._generation_outcomes["invalid"],
+                "sanitized_reference_attempts": self._generation_outcomes["valid_sanitized"],
                 "request_error_attempts": self._generation_outcomes["request_error"],
             },
             "reason_counts": dict(sorted(self._reason_counts.items())),

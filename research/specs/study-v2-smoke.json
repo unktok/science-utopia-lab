@@ -1,0 +1,37 @@
+{
+  "id": "evaluation-v2",
+  "version": 1,
+  "design_space": "research/specs/design-space-v1.json",
+  "baseline_design": "research/specs/example-design-v0.json",
+  "metric_constitution": "research/specs/example-metric-constitution-v1.1.json",
+  "funding_reliability_policy": {
+    "id": "funding-pipeline-reliability",
+    "version": "1.0.0",
+    "failure_action": "quarantine",
+    "minimum_targets": 10,
+    "maximum_semantic_invalid_attempt_rate": 0.1,
+    "maximum_sanitized_reference_attempt_rate": 0.1,
+    "maximum_request_error_attempt_rate": 0.05,
+    "maximum_terminal_drop_rate": 0.0
+  },
+  "sampler": {
+    "kind": "sobol",
+    "count": 4,
+    "seed": 20261025,
+    "include_baseline": true
+  },
+  "seed_sets": {
+    "exploration": [101, 103, 107, 109, 113],
+    "selection": [211, 223, 227],
+    "confirmation": [401, 409, 419, 421, 431]
+  },
+  "execution": {
+    "model": "qwen3:8b",
+    "api_backend": "ollama",
+    "endpoint": "http://127.0.0.1:11434/v1",
+    "batch_size": 2,
+    "output_root": "outputs/optimization",
+    "data_cache_dir": ".cache/utopia",
+    "max_attempts": 2
+  }
+}

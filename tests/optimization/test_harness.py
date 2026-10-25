@@ -6,9 +6,11 @@ import pytest
 from utopia.arguments import parse_arguments
 from utopia.optimization.harness import (
     RunRegistry,
+    apply_funding_reliability_to_readiness,
     build_command,
     build_report,
     design_id,
+    evaluate_funding_reliability,
     load_study,
     manifest_status,
     run_id,
@@ -20,6 +22,18 @@ from utopia.optimization.harness import (
 ROOT = Path(__file__).resolve().parents[2]
 STUDY = ROOT / "research/specs/study-v0-smoke.json"
 STUDY_V1 = ROOT / "research/specs/study-v1-smoke.json"
+STUDY_V2 = ROOT / "research/specs/study-v2-smoke.json"
+
+RELIABILITY_POLICY = {
+    "id": "funding-pipeline-reliability",
+    "version": "1.0.0",
+    "failure_action": "quarantine",
+    "minimum_targets": 2,
+    "maximum_semantic_invalid_attempt_rate": 0.25,
+    "maximum_sanitized_reference_attempt_rate": 0.25,
+    "maximum_request_error_attempt_rate": 0.0,
+    "maximum_terminal_drop_rate": 0.0,
+}
 
 
 def test_seed_roles_are_disjoint_and_revision_is_deterministic():
@@ -71,6 +85,15 @@ def test_command_carries_measurement_context_resource_profile(tmp_path):
     assert len(study["seed_sets"]["exploration"]) == 5
 
 
+def test_v2_study_versions_funding_reliability_gate():
+    study, space, _ = load_study(STUDY_V2)
+
+    assert study["funding_reliability_policy"]["failure_action"] == "quarantine"
+    assert study["funding_reliability_policy"]["maximum_terminal_drop_rate"] == 0.0
+    old_study, old_space, _ = load_study(STUDY_V1)
+    assert study_revision(study, space) != study_revision(old_study, old_space)
+
+
 def test_registry_is_idempotent_and_recovers_interrupted(tmp_path):
     registry = RunRegistry(tmp_path / "registry.sqlite3")
     record = {
@@ -104,13 +127,16 @@ def test_registry_is_idempotent_and_recovers_interrupted(tmp_path):
                 "request_error_attempts": 0,
             }
         }))
-        report = build_report(registry)
+        report = build_report(
+            registry, funding_reliability_policy=RELIABILITY_POLICY
+        )
         assert report["status_counts"] == {"complete": 1}
         assert report["attempt_status_counts"] == {"failed": 1, "complete": 1}
         assert report["attempt_failure_rate"] == 0.5
         assert report["completed_run_wall_seconds"]["mean"] == 12.5
         assert report["funding_application_diagnostics"][0]["targets"] == 3
         assert report["funding_application_distributions"]["generation_attempts"]["mean"] == 4
+        assert report["funding_application_reliability"][0]["state"] == "pass"
         assert report["report_errors"]
     finally:
         registry.close()
@@ -141,4 +167,42 @@ def test_manifest_status_rejects_failed_application_conservation(tmp_path):
 
     assert status == "invalid"
     assert error == "funding application trace failed: funding_application_trace_year_1.summary.json"
+
+
+def test_funding_reliability_gate_quarantines_bad_and_small_runs():
+    bad = evaluate_funding_reliability({
+        "run_id": "bad", "targets": 10, "dropped": 1,
+        "generation_attempts": 10, "semantic_invalid_attempts": 3,
+        "sanitized_reference_attempts": 0, "request_error_attempts": 0,
+    }, RELIABILITY_POLICY)
+    small = evaluate_funding_reliability({
+        "run_id": "small", "targets": 1, "dropped": 0,
+        "generation_attempts": 1, "semantic_invalid_attempts": 0,
+        "sanitized_reference_attempts": 0, "request_error_attempts": 0,
+    }, RELIABILITY_POLICY)
+
+    assert bad["state"] == "fail"
+    assert bad["comparison_eligible"] is False
+    assert bad["disposition"] == "quarantine"
+    assert len(bad["policy_sha256"]) == 64
+    assert any("semantic_invalid" in reason for reason in bad["reasons"])
+    assert any("terminal_drop" in reason for reason in bad["reasons"])
+    assert small["state"] == "insufficient_evidence"
+    assert small["comparison_eligible"] is False
+
+
+def test_funding_reliability_failure_blocks_objective_readiness():
+    readiness = [{
+        "design_id": "d1", "authorized_for_ranking": True, "blocking_reasons": []
+    }]
+    completed = [{"run_id": "run-1", "design_id": "d1"}]
+    reliability = [{"run_id": "run-1", "state": "fail"}]
+
+    apply_funding_reliability_to_readiness(readiness, completed, reliability)
+
+    assert readiness[0]["authorized_for_ranking"] is False
+    assert readiness[0]["funding_reliability_states"] == ["fail"]
+    assert readiness[0]["blocking_reasons"] == [
+        "one or more runs did not pass the funding reliability gate"
+    ]
 

@@ -221,7 +221,18 @@ Abstract: {paper['abstract']}
                 paper_idx += 1
 
         num_papers = len(all_papers)
-        citation_prompt = f"A ranked list of paper indices (most relevant first). Each value must be an integer between 0 and {num_papers - 1}."
+        if num_papers:
+            example_projects = list(range(min(num_papers, 3)))
+            citation_prompt = (
+                "Use only indices shown in the paper lists above. Each value must be an "
+                f"integer between 0 and {num_papers - 1}; never invent an index."
+            )
+        else:
+            example_projects = []
+            citation_prompt = (
+                "No past papers are listed. You may still apply based on your expertise, but "
+                '"relevant_projects" must be an empty list.'
+            )
 
         prompt += f"""## Response Format
 Respond in JSON format. Set "submit" to true with a proposal and relevant projects to apply, or false with null proposal and empty list to skip.
@@ -231,9 +242,10 @@ If you choose to submit, An example response (DO NOT directly copy the exact res
 {{
     "submit": true,
     "research_proposal": "Your 100-word proposal here.",
-    "relevant_projects": [0, 2, 1] <- {citation_prompt}
+    "relevant_projects": {example_projects}
 }}
 ```
+{citation_prompt}
 If you choose not to submit, respond with the following JSON format:
 ```json
 {{

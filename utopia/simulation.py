@@ -3364,7 +3364,9 @@ class Simulation:
         """Validate a single-program funding proposal from batch generation.
 
         Returns:
-            (is_valid, cleaned_proposal_or_None, reason)
+            (is_valid, cleaned_proposal_or_None, reason). Invalid optional paper
+            references are removed deterministically; structural proposal errors
+            remain invalid and are retried.
         """
         
         if proposal is None:
@@ -3391,16 +3393,21 @@ class Simulation:
             valid_papers = []
             invalid_count = 0
             for idx in indices:
-                if isinstance(idx, int) and 0 <= idx < num_papers:
+                if type(idx) is int and 0 <= idx < num_papers:
                     p = all_papers[idx]
                     valid_papers.append({"arxiv_id": p['id'], "status": p['status']})
                 else:
                     invalid_count += 1
-            if indices and invalid_count > len(indices) * 0.5:
+            if num_papers and indices and invalid_count > len(indices) * 0.5:
                 return False, None, f">50% invalid paper indices ({invalid_count}/{len(indices)})"
             if invalid_count > 0:
-                logger.warning(f"Agent {metadata['agent'].id} program {metadata['program_id']}: filtered {invalid_count} invalid paper indices")
+                logger.warning(
+                    f"Agent {metadata['agent'].id} program {metadata['program_id']}: "
+                    f"removed {invalid_count} invalid optional paper indices"
+                )
             proposal['relevant_projects'] = valid_papers
+            if invalid_count:
+                return True, proposal, "invalid_paper_indices_removed"
 
         return True, proposal, "ok"
 
@@ -3574,7 +3581,13 @@ class Simulation:
                     items_needing_retry.append(meta)
                     continue
 
-                trace.generation_attempt(meta, attempt + 1, "valid")
+                generation_outcome = (
+                    "valid_sanitized" if reason == "invalid_paper_indices_removed" else "valid"
+                )
+                trace.generation_attempt(
+                    meta, attempt + 1, generation_outcome,
+                    reason if generation_outcome == "valid_sanitized" else None,
+                )
                 trace.validated(meta, cleaned, attempt + 1)
                 successful_items.append((agent.id, program_id, cleaned, agent))
 
@@ -3629,7 +3642,14 @@ class Simulation:
                         attempt_recorded = True
                         raise ValueError(f"Invalid proposal: {reason}")
 
-                    trace.generation_attempt(metadata, num_retries + 1, "valid")
+                    generation_outcome = (
+                        "valid_sanitized"
+                        if reason == "invalid_paper_indices_removed" else "valid"
+                    )
+                    trace.generation_attempt(
+                        metadata, num_retries + 1, generation_outcome,
+                        reason if generation_outcome == "valid_sanitized" else None,
+                    )
                     attempt_recorded = True
                     trace.validated(metadata, cleaned, num_retries + 1)
                     sequential_items.append((agent.id, program_id, cleaned, agent))

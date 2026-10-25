@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 from contextlib import closing
 from datetime import datetime, timezone
 import hashlib
@@ -91,6 +92,27 @@ def _resolve_repo_path(value: str | Path) -> Path:
     return path if path.is_absolute() else ROOT / path
 
 
+def validate_funding_reliability_policy(policy: Mapping[str, Any]) -> None:
+    """Validate the versioned, non-objective funding pipeline gate."""
+    for key in ("id", "version"):
+        if not isinstance(policy.get(key), str) or not policy[key]:
+            raise ValueError(f"funding_reliability_policy.{key} is required")
+    if policy.get("failure_action") != "quarantine":
+        raise ValueError("funding_reliability_policy.failure_action must be quarantine")
+    minimum_targets = policy.get("minimum_targets")
+    if type(minimum_targets) is not int or minimum_targets < 1:
+        raise ValueError("funding_reliability_policy.minimum_targets must be positive")
+    for key in (
+        "maximum_semantic_invalid_attempt_rate",
+        "maximum_sanitized_reference_attempt_rate",
+        "maximum_request_error_attempt_rate",
+        "maximum_terminal_drop_rate",
+    ):
+        value = policy.get(key)
+        if type(value) not in {int, float} or not 0 <= value <= 1:
+            raise ValueError(f"funding_reliability_policy.{key} must be between 0 and 1")
+
+
 def load_study(path: str | Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     study_path = Path(path).resolve()
     study = json.loads(study_path.read_text(encoding="utf-8"))
@@ -128,6 +150,11 @@ def load_study(path: str | Path) -> tuple[dict[str, Any], dict[str, Any], dict[s
         raise ValueError("Unsupported API backend")
     if type(execution.get("max_attempts")) is not int or execution["max_attempts"] < 1:
         raise ValueError("execution.max_attempts must be positive")
+    reliability_policy = study.get("funding_reliability_policy")
+    if reliability_policy is not None:
+        if not isinstance(reliability_policy, dict):
+            raise ValueError("funding_reliability_policy must be an object")
+        validate_funding_reliability_policy(reliability_policy)
     return study, space, baseline
 
 
@@ -468,8 +495,98 @@ def numeric_summary(values: Iterable[float]) -> dict[str, float | int | None]:
             "median": statistics.median(finite), "min": min(finite), "max": max(finite)}
 
 
+def evaluate_funding_reliability(
+    diagnostic: Mapping[str, Any], policy: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Apply an engineering gate without turning reliability into an objective."""
+    validate_funding_reliability_policy(policy)
+    targets = int(diagnostic.get("targets", 0))
+    attempts = int(diagnostic.get("generation_attempts", 0))
+    rates = {
+        "semantic_invalid_attempt_rate": (
+            int(diagnostic.get("semantic_invalid_attempts", 0)) / attempts
+            if attempts else None
+        ),
+        "sanitized_reference_attempt_rate": (
+            int(diagnostic.get("sanitized_reference_attempts", 0)) / attempts
+            if attempts else None
+        ),
+        "request_error_attempt_rate": (
+            int(diagnostic.get("request_error_attempts", 0)) / attempts
+            if attempts else None
+        ),
+        "terminal_drop_rate": (
+            int(diagnostic.get("dropped", 0)) / targets if targets else None
+        ),
+    }
+    reasons = []
+    if targets < int(policy["minimum_targets"]):
+        state = "insufficient_evidence"
+        reasons.append(
+            f"requires at least {policy['minimum_targets']} funding application targets"
+        )
+    else:
+        thresholds = {
+            "semantic_invalid_attempt_rate": policy[
+                "maximum_semantic_invalid_attempt_rate"
+            ],
+            "sanitized_reference_attempt_rate": policy[
+                "maximum_sanitized_reference_attempt_rate"
+            ],
+            "request_error_attempt_rate": policy["maximum_request_error_attempt_rate"],
+            "terminal_drop_rate": policy["maximum_terminal_drop_rate"],
+        }
+        for metric, threshold in thresholds.items():
+            value = rates[metric]
+            if value is None or value > threshold:
+                reasons.append(f"{metric}={value!r} exceeds maximum {threshold}")
+        state = "pass" if not reasons else "fail"
+    return {
+        "run_id": diagnostic.get("run_id"),
+        "policy_id": policy["id"],
+        "policy_version": policy["version"],
+        "failure_action": policy["failure_action"],
+        "state": state,
+        "comparison_eligible": state == "pass",
+        "disposition": "eligible" if state == "pass" else policy["failure_action"],
+        "policy_sha256": hashlib.sha256(
+            canonical_json(policy).encode("utf-8")
+        ).hexdigest(),
+        "rates": rates,
+        "reasons": reasons,
+    }
+
+
+def apply_funding_reliability_to_readiness(
+    objective_readiness: list[dict[str, Any]],
+    completed: Iterable[Mapping[str, Any]],
+    reliability_evaluations: Iterable[Mapping[str, Any]],
+) -> None:
+    """Quarantine unreliable runs from comparison without changing objectives."""
+    reliability_by_run = {
+        item["run_id"]: item for item in reliability_evaluations
+    }
+    runs_by_design: dict[str, list[Mapping[str, Any]]] = defaultdict(list)
+    for row in completed:
+        runs_by_design[row["design_id"]].append(row)
+    for readiness in objective_readiness:
+        states = [
+            reliability_by_run.get(row["run_id"], {"state": "insufficient_evidence"})[
+                "state"
+            ]
+            for row in runs_by_design[readiness["design_id"]]
+        ]
+        readiness["funding_reliability_states"] = states
+        if any(state != "pass" for state in states):
+            readiness["authorized_for_ranking"] = False
+            reason = "one or more runs did not pass the funding reliability gate"
+            if reason not in readiness["blocking_reasons"]:
+                readiness["blocking_reasons"].append(reason)
+
+
 def build_report(
-    registry: RunRegistry, constitution: Mapping[str, Any] | None = None
+    registry: RunRegistry, constitution: Mapping[str, Any] | None = None,
+    funding_reliability_policy: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     rows = registry.rows()
     attempts = registry.attempt_rows()
@@ -494,7 +611,8 @@ def build_report(
             count_fields = (
                 "targets", "validated", "submitted", "declined_by_agent", "dropped", "evaluated",
                 "decided", "funded", "allocations_recorded", "allocations_applied",
-                "generation_attempts", "semantic_invalid_attempts", "request_error_attempts",
+                "generation_attempts", "semantic_invalid_attempts",
+                "sanitized_reference_attempts", "request_error_attempts",
             )
             pipeline_diagnostics.append({
                 "run_id": row["run_id"],
@@ -537,6 +655,24 @@ def build_report(
     for attempt in attempts:
         attempt_status[attempt["status"]] = attempt_status.get(attempt["status"], 0) + 1
     finished_attempts = [attempt for attempt in attempts if attempt["status"] != "running"]
+    reliability_evaluations = []
+    if funding_reliability_policy is not None:
+        diagnostic_by_run = {item["run_id"]: item for item in pipeline_diagnostics}
+        reliability_evaluations = [
+            evaluate_funding_reliability(
+                diagnostic_by_run.get(row["run_id"], {"run_id": row["run_id"]}),
+                funding_reliability_policy,
+            )
+            for row in completed
+        ]
+    objective_readiness = (
+        summarize_evaluations(objective_evaluations, completed, constitution)
+        if constitution is not None else []
+    )
+    if funding_reliability_policy is not None:
+        apply_funding_reliability_to_readiness(
+            objective_readiness, completed, reliability_evaluations
+        )
     result = {
         "generated_utc": utc_now(),
         "total_runs": len(rows),
@@ -558,19 +694,22 @@ def build_report(
         },
         "completed_runs": activity,
         "funding_application_diagnostics": pipeline_diagnostics,
+        "funding_application_reliability": reliability_evaluations,
+        "funding_reliability_policy": (
+            dict(funding_reliability_policy)
+            if funding_reliability_policy is not None else None
+        ),
         "funding_application_distributions": {
             field: numeric_summary(item[field] for item in pipeline_diagnostics)
             for field in (
                 "targets", "validated", "submitted", "declined_by_agent", "dropped", "evaluated",
                 "decided", "funded", "allocations_recorded", "allocations_applied",
-                "generation_attempts", "semantic_invalid_attempts", "request_error_attempts",
+                "generation_attempts", "semantic_invalid_attempts",
+                "sanitized_reference_attempts", "request_error_attempts",
             )
         },
         "objective_evaluations": objective_evaluations,
-        "design_objective_readiness": (
-            summarize_evaluations(objective_evaluations, completed, constitution)
-            if constitution is not None else []
-        ),
+        "design_objective_readiness": objective_readiness,
         "report_errors": report_errors,
         "note": (
             "Activity and funding-pipeline fields are diagnostics. Only the versioned "
@@ -625,7 +764,9 @@ def main(argv: list[str] | None = None) -> int:
                 constitution = load_metric_constitution(
                     _resolve_repo_path(study["metric_constitution"])
                 )
-                result = build_report(registry, constitution)
+                result = build_report(
+                    registry, constitution, study.get("funding_reliability_policy")
+                )
                 report_path = root / "registry-report.json"
                 report_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
                 result["report_path"] = str(report_path)
