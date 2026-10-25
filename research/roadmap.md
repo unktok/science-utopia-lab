@@ -91,7 +91,7 @@ Phase 1 の canonical event schema を利用し、read-only replay viewer を作
 
 ## 直近の次の3項目
 
-1. v1で最大のstress caseだったbaseline seed 113をv2で1本だけfull実行し、funding conservation・objective・reliability gateをend-to-end検証する。
-2. 参加継続率のceiling effectを解消するlonger-horizon fidelityを定義し、baselineで測定可能性を検証する。
-3. v2 baselineの反復を揃えた後、候補designを同じseed束で比較し、slice分布を保持したPareto/lexicographic analysisへ進む。
+1. **完了:** v1で最大のstress caseだったbaseline seed 113をv2で1本だけfull実行し、funding conservation・objective・reliability gateをend-to-end検証した。
+2. **次:** 参加継続率のceiling effectを解消するlonger-horizon fidelityを事前定義し、baselineで測定可能性を検証する。
+3. longer-horizon gate通過後にv2 baselineの反復を揃え、候補designを同じseed束で比較し、slice分布を保持したPareto/lexicographic analysisへ進む。
 

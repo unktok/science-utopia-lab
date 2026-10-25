@@ -81,3 +81,14 @@ Before running institutional candidates:
    pass the declared policy;
 4. the first full baseline v2 run must pass conservation, objective evaluation
    and the reliability gate before the remaining candidate runs are authorized.
+
+All four conditions were satisfied on 2026-10-25. The full baseline seed 113
+run produced 30 targets, 30 first-attempt validations, 30 evaluations and
+decisions, 3 funded/recorded/applied allocations, and zero invalid, sanitized,
+request-error, or dropped outcomes. Native integrity and objective evaluation
+also passed with no measurement gaps. See
+[`runs/2026-10-25-v2-baseline-seed113.md`](runs/2026-10-25-v2-baseline-seed113.md).
+
+This acceptance removes the funding-interface block on candidate execution. It
+does not itself authorize ranking: the v2 baseline has 1 of 5 required seeds,
+and the one-year participation objective remains ceiling-saturated.
