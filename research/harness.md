@@ -87,6 +87,22 @@ measurement-complete v1では、`balanced_two_band` population profileが開始�
 
 v1 revision `1cc1b68161` のbaseline seed 101でend-to-end validationを完了した。6 review actionsは6 unique event IDsとしてcheckpoint aggregateと一致し、measurement gapは0になった。aggregate burden 0.6に対してlow-resource slice burdenは1.2で、平均では隠れる負担集中を検出した。runはfeasibleだが1/5 seedsのためranking authorizationはfalseである。
 
+同revisionのbaseline exploration seeds 101, 103, 107, 109, 113はすべて
+first attemptで完走した。全runがfeasibleかつmeasurement gap 0で、最低5反復を
+満たしたためbaselineのranking authorization gateはopenになった。aggregate
+review burdenはmean 0.78、median 0.60、range 0.30–1.50、low-resource sliceは
+mean 0.76、median 1.00、range 0.00–1.20だった。slice−aggregate差は
+−0.50から+0.60まで符号反転し、pooled meanだけでは負担集中を判断できない。
+参加率はaggregate/sliceとも全run 1.0であり、1年smokeのceiling effectとして
+扱う。
+
+funding生成は260 attempts中134 semantic-invalid（51.5%）、6 terminal drops、
+request error 0だった。trace conservationは全runでpassしたが、この不正率は
+cross-design comparisonのengineering reliability gateを通さない。詳細は
+[`runs/2026-10-25-v1-baseline-five-seed.md`](runs/2026-10-25-v1-baseline-five-seed.md)
+を参照する。`authorized_for_ranking=true`は反復・測定・制約上の比較参加資格で
+あり、他design未実行の現時点では順位や最適性を意味しない。
+
 ## First end-to-end validation
 
 2026-10-24にbaseline design / exploration seed 101を実モデルで完走した。registry上の1 attempt、native manifest、checkpoint、integrity report、attempt log、aggregate reportが同じ決定的run IDへ結びつくことを確認した。実行時間は約23分44秒で、report生成時点では1 complete / 9 plannedである。

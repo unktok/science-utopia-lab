@@ -91,7 +91,7 @@ Phase 1 の canonical event schema を利用し、read-only replay viewer を作
 
 ## 直近の次の3項目
 
-1. 現行設定から最初の設計変数候補を棚卸しする。
-2. 指標候補を metric card へ落とし、測れるものと新規実装が必要なものを分ける。
-3. 同一 `θ` の seed 反復を自動化し、ノイズ床と計算費用を測る。
+1. funding proposalのinvalid paper indexを修正し、semantic-invalid率とterminal-drop率に定量的なreliability gateを設ける。
+2. 参加継続率のceiling effectを解消するlonger-horizon fidelityを定義し、baselineで測定可能性を検証する。
+3. 新しいversioned campaignで候補designを同じseed束により比較し、slice分布を保持したPareto/lexicographic analysisへ進む。
 
