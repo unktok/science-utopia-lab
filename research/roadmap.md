@@ -93,5 +93,9 @@ Phase 1 の canonical event schema を利用し、read-only replay viewer を作
 
 1. **完了:** v1で最大のstress caseだったbaseline seed 113をv2で1本だけfull実行し、funding conservation・objective・reliability gateをend-to-end検証した。
 2. **完了:** 4年・10人のlongitudinal baseline seed 113は、参加人数10→10→10→8、最終aggregate 0.8、lower slice 0.6で、事前登録した測定可能性gateを通過した。
-3. **進行中:** longitudinal baselineの残り4 seedsを完了し、資金枠を0.3→0.5へ変える事前固定の一因子候補を同じ5-seed束でpaired比較する。投入資源をshadow metricとして保持し、1 / 5 repetitionsの現時点ではrankingしない。
+3. **完了:** repaired source commit上でbaseline/candidate各5 seedsを完走した。候補は参加率をaggregate +0.08、lower slice +0.16改善したがgrant input +160を要した。baseline seed 107が固定capability floorを下回ったためformal comparisonはincomplete、5-pair vectorはdiagnostic evidenceとして保持した。
+
+次は、capability violationを制度のoutcome distributionとしてどう扱うかを事前に
+定義し、未使用confirmation seeds 401, 409, 419, 421, 431で確認する。観測済みの
+seed 107を理由に閾値や候補を調整してはならない。
 

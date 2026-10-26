@@ -134,3 +134,47 @@ with the full vector and protected slice visible. “Optimal science policy,”
   candidate may be called exploratory Pareto-improving inside this simulator.
 - Otherwise retain both systems or reject the candidate according to the
   observed trade-off; do not tune this rule after seeing results.
+
+## Result — 2026-10-26
+
+Both campaigns completed all five preregistered seeds on first harness attempt
+from clean source commit `c9667d7`. All 10 runs passed native integrity,
+funding reliability, and complete aggregate/protected-slice measurement. The
+candidate was feasible in all five seeds. Baseline seed 107 was technically
+valid but institutionally infeasible: aggregate participation was 0.7 while
+the fixed low-resource slice was 0.4, below the Constitution's 0.5 capability
+floor.
+
+The threshold was not relaxed and seed 107 was neither discarded nor replaced.
+Consequently, the preregistered formal comparison is **incomplete** and no
+candidate promotion or ranking claim is authorized. The complete five-pair
+bundle remains useful as diagnostic evidence:
+
+| Metric | Baseline mean | Candidate mean | Mean paired delta | Descriptive 95% bootstrap interval | Signs (+ / 0 / −) |
+|---|---:|---:|---:|---:|---:|
+| active researcher fraction | 0.800 | 0.880 | +0.080 | [+0.040, +0.100] | 4 / 1 / 0 |
+| low-resource active fraction | 0.600 | 0.760 | +0.160 | [+0.080, +0.200] | 4 / 1 / 0 |
+| review burden / active researcher-step | 2.351 | 2.229 | −0.122 | [−0.197, −0.047] | 0 / 1 / 4 |
+| low-resource review burden | 2.674 | 2.466 | −0.208 | [−0.349, −0.067] | 0 / 1 / 4 |
+| topic entropy (portfolio diagnostic) | 1.779 | 1.766 | −0.012 | [−0.165, +0.162] | 1 / 2 / 2 |
+
+Funding capacity did exactly what the intervention encoded: every candidate
+world issued 20 rather than 12 awards over four years, adding 160 grant units.
+Mean final resources increased from 783 to 941 (+158). Papers changed by −0.4,
+reviews by −2.2, and acceptances by −0.2 per world on average; these are shadow
+diagnostics rather than objectives. Candidate execution used 26,515 seconds
+versus 25,339 seconds for baseline (+235 seconds per pair on average), with no
+failed harness attempts.
+
+Thus the observed pattern is a resource-for-continuity trade-off, not
+dominance: the candidate preserved more researchers, including the protected
+slice, and reduced burden per active researcher-step in four pairs, but did so
+with eight additional awards and 160 additional grant units per world. Topic
+breadth had mixed signs and essentially no mean shift. Five simulator seeds do
+not support a real-world causal, significance, or optimal-policy claim.
+
+The reproducible analysis is implemented in
+`utopia.optimization.paired_comparison`. Machine-readable evidence is
+[`results/first-paired-system-comparison-v1.json`](results/first-paired-system-comparison-v1.json),
+and the full run note is
+[`runs/2026-10-26-first-paired-system-comparison.md`](runs/2026-10-26-first-paired-system-comparison.md).

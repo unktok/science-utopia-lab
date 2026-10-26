@@ -1,0 +1,904 @@
+{
+  "audit": {
+    "pairs": [
+      {
+        "fidelity": "longitudinal",
+        "invariants_match": true,
+        "only_design_change": "funding_budget_slots_frac",
+        "ordered_documents_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "seed": 101,
+        "source_commit": "c9667d722e40935e5c963bab2037885bf72d8b34"
+      },
+      {
+        "fidelity": "longitudinal",
+        "invariants_match": true,
+        "only_design_change": "funding_budget_slots_frac",
+        "ordered_documents_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "seed": 103,
+        "source_commit": "c9667d722e40935e5c963bab2037885bf72d8b34"
+      },
+      {
+        "fidelity": "longitudinal",
+        "invariants_match": true,
+        "only_design_change": "funding_budget_slots_frac",
+        "ordered_documents_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "seed": 107,
+        "source_commit": "c9667d722e40935e5c963bab2037885bf72d8b34"
+      },
+      {
+        "fidelity": "longitudinal",
+        "invariants_match": true,
+        "only_design_change": "funding_budget_slots_frac",
+        "ordered_documents_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "seed": 109,
+        "source_commit": "c9667d722e40935e5c963bab2037885bf72d8b34"
+      },
+      {
+        "fidelity": "longitudinal",
+        "invariants_match": true,
+        "only_design_change": "funding_budget_slots_frac",
+        "ordered_documents_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "seed": 113,
+        "source_commit": "c9667d722e40935e5c963bab2037885bf72d8b34"
+      }
+    ],
+    "technical_admissibility_pass": true
+  },
+  "comparison": {
+    "baseline": {
+      "design_id": "dce5399cf6d0b",
+      "study_id": "longitudinal-comparison-baseline-v1",
+      "study_revision": "fb38800d92"
+    },
+    "candidate": {
+      "design_id": "dd6ee5effe4b1",
+      "study_id": "first-candidate-funding-slots-v2",
+      "study_revision": "5e2b4d9e2f"
+    },
+    "intervention": {
+      "baseline": 0.3,
+      "candidate": 0.5,
+      "parameter": "funding_budget_slots_frac"
+    },
+    "n_pairs": 5,
+    "pairing_key": "exploration_seed",
+    "scalar_welfare_score": null,
+    "seeds": [
+      101,
+      103,
+      107,
+      109,
+      113
+    ]
+  },
+  "formal_comparison": {
+    "authorized_for_ranking": false,
+    "inadmissible_runs": [
+      {
+        "design": "baseline",
+        "seed": 107,
+        "state": "infeasible"
+      }
+    ],
+    "reason": "At least one preregistered run is infeasible; paired effects remain diagnostic.",
+    "status": "incomplete"
+  },
+  "interpretation_limits": [
+    "The bootstrap interval is descriptive for five simulator seeds.",
+    "No null-hypothesis significance claim is authorized.",
+    "Higher resource input prevents a cost-free dominance claim.",
+    "No real-world causal or optimal-science-policy claim is authorized."
+  ],
+  "paired_metric_summaries": {
+    "active_researcher_fraction": {
+      "max": 0.10000000000000009,
+      "mean": 0.08,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 0.039999999999999994,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 0.10000000000000005
+      },
+      "median": 0.09999999999999998,
+      "min": 0.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 4,
+      "preferred_direction": "higher",
+      "sample_sd": 0.044721359549995794,
+      "zero": 1
+    },
+    "low_resource_active_fraction": {
+      "max": 0.20000000000000007,
+      "mean": 0.16,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 0.08,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 0.20000000000000004
+      },
+      "median": 0.19999999999999996,
+      "min": 0.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 4,
+      "preferred_direction": "higher",
+      "sample_sd": 0.08944271909999159,
+      "zero": 1
+    },
+    "low_resource_review_burden": {
+      "max": 0.0,
+      "mean": -0.20795923632610935,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -0.34866701066391464,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": -0.06725146198830405
+      },
+      "median": -0.16081871345029208,
+      "min": -0.43014705882352944,
+      "n": 5,
+      "negative": 4,
+      "positive": 0,
+      "preferred_direction": "lower",
+      "sample_sd": 0.18217425778375723,
+      "zero": 1
+    },
+    "review_burden": {
+      "max": 0.0,
+      "mean": -0.12183797157481373,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -0.19698228592965447,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": -0.046693657219972984
+      },
+      "median": -0.13630229419703133,
+      "min": -0.21246246246246248,
+      "n": 5,
+      "negative": 4,
+      "positive": 0,
+      "preferred_direction": "lower",
+      "sample_sd": 0.09582998203798757,
+      "zero": 1
+    },
+    "topic_entropy": {
+      "max": 0.32844875471261537,
+      "mean": -0.012395783850108089,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -0.16494188632189893,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 0.16241189379957194
+      },
+      "median": 0.0,
+      "min": -0.21714087882316946,
+      "n": 5,
+      "negative": 2,
+      "positive": 1,
+      "preferred_direction": "portfolio",
+      "sample_sd": 0.21464434642680477,
+      "zero": 2
+    }
+  },
+  "paired_runs": [
+    {
+      "baseline_eligibility": "feasible",
+      "baseline_run_id": "opt-longitudinal-comparison-baseline-v1-fb38800d92-longitudinal-exploration-dce5399cf6d0b-s101",
+      "candidate_eligibility": "feasible",
+      "candidate_run_id": "opt-first-candidate-funding-slots-v2-5e2b4d9e2f-longitudinal-exploration-dd6ee5effe4b1-s101",
+      "metrics": {
+        "active_researcher_fraction": {
+          "baseline": 0.8,
+          "candidate": 0.9,
+          "delta_candidate_minus_baseline": 0.09999999999999998,
+          "preferred_direction": "higher"
+        },
+        "low_resource_active_fraction": {
+          "baseline": 0.6,
+          "candidate": 0.8,
+          "delta_candidate_minus_baseline": 0.20000000000000007,
+          "preferred_direction": "higher"
+        },
+        "low_resource_review_burden": {
+          "baseline": 3.0555555555555554,
+          "candidate": 2.8947368421052633,
+          "delta_candidate_minus_baseline": -0.16081871345029208,
+          "preferred_direction": "lower"
+        },
+        "review_burden": {
+          "baseline": 2.3157894736842106,
+          "candidate": 2.1794871794871793,
+          "delta_candidate_minus_baseline": -0.13630229419703133,
+          "preferred_direction": "lower"
+        },
+        "topic_entropy": {
+          "baseline": 1.8891591637540217,
+          "candidate": 1.8891591637540217,
+          "delta_candidate_minus_baseline": 0.0,
+          "preferred_direction": "portfolio"
+        }
+      },
+      "seed": 101,
+      "shadows": {
+        "acceptances": {
+          "baseline": 10,
+          "candidate": 10,
+          "delta_candidate_minus_baseline": 0
+        },
+        "failed_attempts": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta_candidate_minus_baseline": 0
+        },
+        "final_total_resources": {
+          "baseline": 780.0,
+          "candidate": 940.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "funding_allocations_applied": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_applications": {
+          "baseline": 106,
+          "candidate": 102,
+          "delta_candidate_minus_baseline": -4
+        },
+        "funding_awards": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_targets": {
+          "baseline": 109,
+          "candidate": 106,
+          "delta_candidate_minus_baseline": -3
+        },
+        "grant_income": {
+          "baseline": 240.0,
+          "candidate": 400.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "papers": {
+          "baseline": 18,
+          "candidate": 18,
+          "delta_candidate_minus_baseline": 0
+        },
+        "reviews": {
+          "baseline": 88,
+          "candidate": 85,
+          "delta_candidate_minus_baseline": -3
+        },
+        "wall_seconds": {
+          "baseline": 5248.84999787499,
+          "candidate": 5056.526325540966,
+          "delta_candidate_minus_baseline": -192.32367233402329
+        }
+      }
+    },
+    {
+      "baseline_eligibility": "feasible",
+      "baseline_run_id": "opt-longitudinal-comparison-baseline-v1-fb38800d92-longitudinal-exploration-dce5399cf6d0b-s103",
+      "candidate_eligibility": "feasible",
+      "candidate_run_id": "opt-first-candidate-funding-slots-v2-5e2b4d9e2f-longitudinal-exploration-dd6ee5effe4b1-s103",
+      "metrics": {
+        "active_researcher_fraction": {
+          "baseline": 0.9,
+          "candidate": 1.0,
+          "delta_candidate_minus_baseline": 0.09999999999999998,
+          "preferred_direction": "higher"
+        },
+        "low_resource_active_fraction": {
+          "baseline": 0.8,
+          "candidate": 1.0,
+          "delta_candidate_minus_baseline": 0.19999999999999996,
+          "preferred_direction": "higher"
+        },
+        "low_resource_review_burden": {
+          "baseline": 3.111111111111111,
+          "candidate": 2.75,
+          "delta_candidate_minus_baseline": -0.36111111111111116,
+          "preferred_direction": "lower"
+        },
+        "review_burden": {
+          "baseline": 2.736842105263158,
+          "candidate": 2.525,
+          "delta_candidate_minus_baseline": -0.21184210526315805,
+          "preferred_direction": "lower"
+        },
+        "topic_entropy": {
+          "baseline": 1.5607104090414063,
+          "candidate": 1.8891591637540217,
+          "delta_candidate_minus_baseline": 0.32844875471261537,
+          "preferred_direction": "portfolio"
+        }
+      },
+      "seed": 103,
+      "shadows": {
+        "acceptances": {
+          "baseline": 11,
+          "candidate": 11,
+          "delta_candidate_minus_baseline": 0
+        },
+        "failed_attempts": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta_candidate_minus_baseline": 0
+        },
+        "final_total_resources": {
+          "baseline": 775.0,
+          "candidate": 920.0,
+          "delta_candidate_minus_baseline": 145.0
+        },
+        "funding_allocations_applied": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_applications": {
+          "baseline": 108,
+          "candidate": 110,
+          "delta_candidate_minus_baseline": 2
+        },
+        "funding_awards": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_targets": {
+          "baseline": 111,
+          "candidate": 112,
+          "delta_candidate_minus_baseline": 1
+        },
+        "grant_income": {
+          "baseline": 240.0,
+          "candidate": 400.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "papers": {
+          "baseline": 20,
+          "candidate": 19,
+          "delta_candidate_minus_baseline": -1
+        },
+        "reviews": {
+          "baseline": 104,
+          "candidate": 101,
+          "delta_candidate_minus_baseline": -3
+        },
+        "wall_seconds": {
+          "baseline": 5775.803803374991,
+          "candidate": 5839.768667624972,
+          "delta_candidate_minus_baseline": 63.964864249981474
+        }
+      }
+    },
+    {
+      "baseline_eligibility": "infeasible",
+      "baseline_run_id": "opt-longitudinal-comparison-baseline-v1-fb38800d92-longitudinal-exploration-dce5399cf6d0b-s107",
+      "candidate_eligibility": "feasible",
+      "candidate_run_id": "opt-first-candidate-funding-slots-v2-5e2b4d9e2f-longitudinal-exploration-dd6ee5effe4b1-s107",
+      "metrics": {
+        "active_researcher_fraction": {
+          "baseline": 0.7,
+          "candidate": 0.8,
+          "delta_candidate_minus_baseline": 0.10000000000000009,
+          "preferred_direction": "higher"
+        },
+        "low_resource_active_fraction": {
+          "baseline": 0.4,
+          "candidate": 0.6,
+          "delta_candidate_minus_baseline": 0.19999999999999996,
+          "preferred_direction": "higher"
+        },
+        "low_resource_review_burden": {
+          "baseline": 3.3125,
+          "candidate": 2.8823529411764706,
+          "delta_candidate_minus_baseline": -0.43014705882352944,
+          "preferred_direction": "lower"
+        },
+        "review_burden": {
+          "baseline": 2.861111111111111,
+          "candidate": 2.6486486486486487,
+          "delta_candidate_minus_baseline": -0.21246246246246248,
+          "preferred_direction": "lower"
+        },
+        "topic_entropy": {
+          "baseline": 1.4941751382893085,
+          "candidate": 1.277034259466139,
+          "delta_candidate_minus_baseline": -0.21714087882316946,
+          "preferred_direction": "portfolio"
+        }
+      },
+      "seed": 107,
+      "shadows": {
+        "acceptances": {
+          "baseline": 12,
+          "candidate": 11,
+          "delta_candidate_minus_baseline": -1
+        },
+        "failed_attempts": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta_candidate_minus_baseline": 0
+        },
+        "final_total_resources": {
+          "baseline": 780.0,
+          "candidate": 945.0,
+          "delta_candidate_minus_baseline": 165.0
+        },
+        "funding_allocations_applied": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_applications": {
+          "baseline": 103,
+          "candidate": 99,
+          "delta_candidate_minus_baseline": -4
+        },
+        "funding_awards": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_targets": {
+          "baseline": 104,
+          "candidate": 102,
+          "delta_candidate_minus_baseline": -2
+        },
+        "grant_income": {
+          "baseline": 240.0,
+          "candidate": 400.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "papers": {
+          "baseline": 22,
+          "candidate": 21,
+          "delta_candidate_minus_baseline": -1
+        },
+        "reviews": {
+          "baseline": 103,
+          "candidate": 98,
+          "delta_candidate_minus_baseline": -5
+        },
+        "wall_seconds": {
+          "baseline": 5569.046729082998,
+          "candidate": 6214.8003201659885,
+          "delta_candidate_minus_baseline": 645.7535910829902
+        }
+      }
+    },
+    {
+      "baseline_eligibility": "feasible",
+      "baseline_run_id": "opt-longitudinal-comparison-baseline-v1-fb38800d92-longitudinal-exploration-dce5399cf6d0b-s109",
+      "candidate_eligibility": "feasible",
+      "candidate_run_id": "opt-first-candidate-funding-slots-v2-5e2b4d9e2f-longitudinal-exploration-dd6ee5effe4b1-s109",
+      "metrics": {
+        "active_researcher_fraction": {
+          "baseline": 0.8,
+          "candidate": 0.9,
+          "delta_candidate_minus_baseline": 0.09999999999999998,
+          "preferred_direction": "higher"
+        },
+        "low_resource_active_fraction": {
+          "baseline": 0.6,
+          "candidate": 0.8,
+          "delta_candidate_minus_baseline": 0.20000000000000007,
+          "preferred_direction": "higher"
+        },
+        "low_resource_review_burden": {
+          "baseline": 1.6666666666666667,
+          "candidate": 1.5789473684210527,
+          "delta_candidate_minus_baseline": -0.08771929824561409,
+          "preferred_direction": "lower"
+        },
+        "review_burden": {
+          "baseline": 1.894736842105263,
+          "candidate": 1.8461538461538463,
+          "delta_candidate_minus_baseline": -0.048582995951416796,
+          "preferred_direction": "lower"
+        },
+        "topic_entropy": {
+          "baseline": 1.9061547465398496,
+          "candidate": 1.7328679513998633,
+          "delta_candidate_minus_baseline": -0.17328679513998635,
+          "preferred_direction": "portfolio"
+        }
+      },
+      "seed": 109,
+      "shadows": {
+        "acceptances": {
+          "baseline": 8,
+          "candidate": 8,
+          "delta_candidate_minus_baseline": 0
+        },
+        "failed_attempts": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta_candidate_minus_baseline": 0
+        },
+        "final_total_resources": {
+          "baseline": 795.0,
+          "candidate": 955.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "funding_allocations_applied": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_applications": {
+          "baseline": 92,
+          "candidate": 91,
+          "delta_candidate_minus_baseline": -1
+        },
+        "funding_awards": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_targets": {
+          "baseline": 93,
+          "candidate": 91,
+          "delta_candidate_minus_baseline": -2
+        },
+        "grant_income": {
+          "baseline": 240.0,
+          "candidate": 400.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "papers": {
+          "baseline": 15,
+          "candidate": 15,
+          "delta_candidate_minus_baseline": 0
+        },
+        "reviews": {
+          "baseline": 72,
+          "candidate": 72,
+          "delta_candidate_minus_baseline": 0
+        },
+        "wall_seconds": {
+          "baseline": 4176.072127832973,
+          "candidate": 4393.799097582989,
+          "delta_candidate_minus_baseline": 217.726969750016
+        }
+      }
+    },
+    {
+      "baseline_eligibility": "feasible",
+      "baseline_run_id": "opt-longitudinal-comparison-baseline-v1-fb38800d92-longitudinal-exploration-dce5399cf6d0b-s113",
+      "candidate_eligibility": "feasible",
+      "candidate_run_id": "opt-first-candidate-funding-slots-v2-5e2b4d9e2f-longitudinal-exploration-dd6ee5effe4b1-s113",
+      "metrics": {
+        "active_researcher_fraction": {
+          "baseline": 0.8,
+          "candidate": 0.8,
+          "delta_candidate_minus_baseline": 0.0,
+          "preferred_direction": "higher"
+        },
+        "low_resource_active_fraction": {
+          "baseline": 0.6,
+          "candidate": 0.6,
+          "delta_candidate_minus_baseline": 0.0,
+          "preferred_direction": "higher"
+        },
+        "low_resource_review_burden": {
+          "baseline": 2.2222222222222223,
+          "candidate": 2.2222222222222223,
+          "delta_candidate_minus_baseline": 0.0,
+          "preferred_direction": "lower"
+        },
+        "review_burden": {
+          "baseline": 1.9473684210526316,
+          "candidate": 1.9473684210526316,
+          "delta_candidate_minus_baseline": 0.0,
+          "preferred_direction": "lower"
+        },
+        "topic_entropy": {
+          "baseline": 2.0431918705451206,
+          "candidate": 2.0431918705451206,
+          "delta_candidate_minus_baseline": 0.0,
+          "preferred_direction": "portfolio"
+        }
+      },
+      "seed": 113,
+      "shadows": {
+        "acceptances": {
+          "baseline": 8,
+          "candidate": 8,
+          "delta_candidate_minus_baseline": 0
+        },
+        "failed_attempts": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta_candidate_minus_baseline": 0
+        },
+        "final_total_resources": {
+          "baseline": 785.0,
+          "candidate": 945.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "funding_allocations_applied": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_applications": {
+          "baseline": 108,
+          "candidate": 111,
+          "delta_candidate_minus_baseline": 3
+        },
+        "funding_awards": {
+          "baseline": 12,
+          "candidate": 20,
+          "delta_candidate_minus_baseline": 8
+        },
+        "funding_targets": {
+          "baseline": 113,
+          "candidate": 115,
+          "delta_candidate_minus_baseline": 2
+        },
+        "grant_income": {
+          "baseline": 240.0,
+          "candidate": 400.0,
+          "delta_candidate_minus_baseline": 160.0
+        },
+        "papers": {
+          "baseline": 15,
+          "candidate": 15,
+          "delta_candidate_minus_baseline": 0
+        },
+        "reviews": {
+          "baseline": 74,
+          "candidate": 74,
+          "delta_candidate_minus_baseline": 0
+        },
+        "wall_seconds": {
+          "baseline": 4569.3311991659575,
+          "candidate": 5010.513471416954,
+          "delta_candidate_minus_baseline": 441.1822722509969
+        }
+      }
+    }
+  ],
+  "paired_shadow_summaries": {
+    "acceptances": {
+      "max": 0.0,
+      "mean": -0.2,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -0.6,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 0.0
+      },
+      "median": 0.0,
+      "min": -1.0,
+      "n": 5,
+      "negative": 1,
+      "positive": 0,
+      "sample_sd": 0.4472135954999579,
+      "zero": 4
+    },
+    "failed_attempts": {
+      "max": 0.0,
+      "mean": 0.0,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 0.0,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 0.0
+      },
+      "median": 0.0,
+      "min": 0.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 0,
+      "sample_sd": 0.0,
+      "zero": 5
+    },
+    "final_total_resources": {
+      "max": 165.0,
+      "mean": 158.0,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 151.0,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 163.0
+      },
+      "median": 160.0,
+      "min": 145.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 5,
+      "sample_sd": 7.582875444051551,
+      "zero": 0
+    },
+    "funding_allocations_applied": {
+      "max": 8.0,
+      "mean": 8.0,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 8.0,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 8.0
+      },
+      "median": 8.0,
+      "min": 8.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 5,
+      "sample_sd": 0.0,
+      "zero": 0
+    },
+    "funding_applications": {
+      "max": 3.0,
+      "mean": -0.8,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -3.4,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 1.8
+      },
+      "median": -1.0,
+      "min": -4.0,
+      "n": 5,
+      "negative": 3,
+      "positive": 2,
+      "sample_sd": 3.2710854467592254,
+      "zero": 0
+    },
+    "funding_awards": {
+      "max": 8.0,
+      "mean": 8.0,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 8.0,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 8.0
+      },
+      "median": 8.0,
+      "min": 8.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 5,
+      "sample_sd": 0.0,
+      "zero": 0
+    },
+    "funding_targets": {
+      "max": 2.0,
+      "mean": -0.8,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -2.4,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 1.0
+      },
+      "median": -2.0,
+      "min": -3.0,
+      "n": 5,
+      "negative": 3,
+      "positive": 2,
+      "sample_sd": 2.16794833886788,
+      "zero": 0
+    },
+    "grant_income": {
+      "max": 160.0,
+      "mean": 160.0,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": 160.0,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 160.0
+      },
+      "median": 160.0,
+      "min": 160.0,
+      "n": 5,
+      "negative": 0,
+      "positive": 5,
+      "sample_sd": 0.0,
+      "zero": 0
+    },
+    "papers": {
+      "max": 0.0,
+      "mean": -0.4,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -0.8,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 0.0
+      },
+      "median": 0.0,
+      "min": -1.0,
+      "n": 5,
+      "negative": 2,
+      "positive": 0,
+      "sample_sd": 0.5477225575051661,
+      "zero": 3
+    },
+    "reviews": {
+      "max": 0.0,
+      "mean": -2.2,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -3.8,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": -0.6
+      },
+      "median": -3.0,
+      "min": -5.0,
+      "n": 5,
+      "negative": 3,
+      "positive": 0,
+      "sample_sd": 2.16794833886788,
+      "zero": 2
+    },
+    "wall_seconds": {
+      "max": 645.7535910829902,
+      "mean": 235.26080499999225,
+      "mean_interval": {
+        "confidence_level": 0.95,
+        "interpretation": "descriptive",
+        "lower": -14.364776100218297,
+        "method": "paired-percentile-bootstrap",
+        "resamples": 10000,
+        "seed": 20261025,
+        "upper": 488.4815819499898
+      },
+      "median": 217.726969750016,
+      "min": -192.32367233402329,
+      "n": 5,
+      "negative": 1,
+      "positive": 4,
+      "sample_sd": 325.3406668609061,
+      "zero": 0
+    }
+  },
+  "schema": "scienceutopia.paired_system_comparison.v1"
+}

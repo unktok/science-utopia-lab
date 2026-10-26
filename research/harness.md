@@ -63,6 +63,22 @@ outputs/optimization/<study-id>/<study-revision>/
   --study research/specs/study-v0-smoke.json report
 ```
 
+固定した二つの5-seed campaignをprovenance監査付きでpaired比較する。
+
+```bash
+.venv/bin/python -m utopia.optimization.paired_comparison \
+  --baseline-root outputs/optimization/longitudinal-comparison-baseline-v1/fb38800d92 \
+  --candidate-root outputs/optimization/first-candidate-funding-slots-v2/5e2b4d9e2f \
+  --json-output research/results/first-paired-system-comparison-v1.json \
+  --markdown-output research/runs/2026-10-26-first-paired-system-comparison.generated.md
+```
+
+この比較器はseedをexact joinし、design差分が許可された一変数だけであること、
+source/model/dataset/evaluator/embedding/configが一致すること、全runのintegrity、
+funding reliability、測定完全性を検査する。capability infeasibleなrunはtechnical
+failureとして除外せず、formal statusを`incomplete`にした上でpaired diagnosticを
+保持する。
+
 ## Failure and resume semantics
 
 - run IDはstudy revision、fidelity、seed role、design hash、seedから決定的に作る。
