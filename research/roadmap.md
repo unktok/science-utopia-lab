@@ -89,6 +89,11 @@
 
 Phase 1 の canonical event schema を利用し、read-only replay viewer を作る。その後、checkpoint から制度を変更して branch できる interactive prototype へ進む。研究 core とUIの二重実装は禁止する。
 
+長時間run中の並行開発は、凍結した実験worktreeとtrack別の開発worktreeを分離して
+行う。GPU貸出機の要件、実測runtime換算、event/replay・UI・Evaluation API・
+mechanism graphの並行境界は
+[`compute-and-parallelization-plan.md`](compute-and-parallelization-plan.md) に固定する。
+
 ## 直近の次の3項目
 
 1. **完了:** v1で最大のstress caseだったbaseline seed 113をv2で1本だけfull実行し、funding conservation・objective・reliability gateをend-to-end検証した。
