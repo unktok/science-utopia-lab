@@ -11,7 +11,10 @@ from utopia.optimization.paired_comparison import (
 )
 
 
-def _write_campaign(root, *, label, funding_fraction, eligibility):
+def _write_campaign(
+    root, *, label, funding_fraction, eligibility, seed_role="exploration",
+    confirmation_policy=None,
+):
     root.mkdir()
     run_id = f"{label}-s1"
     design = {
@@ -28,7 +31,7 @@ def _write_campaign(root, *, label, funding_fraction, eligibility):
     """)
     connection.execute(
         "INSERT INTO runs VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-        (run_id, 1, "complete", "longitudinal", "exploration", label,
+        (run_id, 1, "complete", "longitudinal", seed_role, label,
          json.dumps(design), 12.0),
     )
     connection.commit()
@@ -37,6 +40,11 @@ def _write_campaign(root, *, label, funding_fraction, eligibility):
     evaluation = {
         "run_id": run_id,
         "comparison_eligibility": eligibility,
+        "hard_constraints": [{"id": "integrity", "state": "pass"}],
+        "capabilities": [{
+            "id": "participation-continuity",
+            "state": "fail" if eligibility == "infeasible" else "pass",
+        }],
         "measurement_gaps": [],
         "constitution": {"id": "constitution", "version": "1"},
         "evaluator": {"id": "evaluator", "version": "1"},
@@ -74,8 +82,11 @@ def _write_campaign(root, *, label, funding_fraction, eligibility):
         "funding_application_reliability": [{"run_id": run_id, "state": "pass"}],
     }
     (root / "registry-report.json").write_text(json.dumps(report))
+    study = {"id": label, "seed_sets": {seed_role: [1]}}
+    if confirmation_policy is not None:
+        study["paired_confirmation_policy"] = confirmation_policy
     (root / "study-snapshot.json").write_text(json.dumps({
-        "study": {"id": label, "seed_sets": {"exploration": [1]}},
+        "study": study,
         "study_revision": f"{label}-revision",
     }))
 
@@ -117,7 +128,7 @@ def _write_campaign(root, *, label, funding_fraction, eligibility):
         }})
     )
     (checkpoint / "resource_balances.jsonl").write_text(
-        json.dumps({"grant_income": 20.0}) + "\n"
+        json.dumps({"grant_income": 100.0 * funding_fraction}) + "\n"
     )
 
 
@@ -151,6 +162,46 @@ def test_build_comparison_keeps_infeasible_pair_as_diagnostic(tmp_path):
         == pytest.approx(0.2)
     assert report["paired_runs"][0]["baseline_eligibility"] == "infeasible"
     assert "diagnostic evidence" in render_markdown(report)
+
+
+def test_confirmation_treats_capability_failure_as_outcome_distribution(tmp_path):
+    baseline = tmp_path / "baseline"
+    candidate = tmp_path / "candidate"
+    policy = {
+        "id": "confirmation-capability-outcomes",
+        "version": "1.0.0",
+        "capability_treatment": "outcome_distribution",
+        "candidate_gates": {
+            "require_zero_candidate_capability_failures": True,
+            "require_no_pass_to_fail_transition": True,
+            "require_no_negative_protected_slice_pairs": True,
+            "minimum_primary_mean_delta": 0.0,
+        },
+    }
+    _write_campaign(
+        baseline, label="baseline", funding_fraction=0.3,
+        eligibility="infeasible", seed_role="confirmation",
+        confirmation_policy=policy,
+    )
+    _write_campaign(
+        candidate, label="candidate", funding_fraction=0.5,
+        eligibility="feasible", seed_role="confirmation",
+        confirmation_policy=policy,
+    )
+
+    report = build_paired_comparison(
+        baseline, candidate, seeds=[1], seed_role="confirmation",
+    )
+
+    assert report["schema"] == "scienceutopia.paired_system_comparison.v2"
+    assert report["formal_comparison"]["status"] == "complete"
+    assert report["formal_comparison"]["authorized_for_ranking"] is False
+    assert report["formal_comparison"]["authorized_for_confirmatory_interpretation"] is True
+    assert report["capability_outcome_distribution"]["baseline"]["fail"] == 1
+    assert report["capability_outcome_distribution"]["candidate"]["pass"] == 1
+    assert report["capability_outcome_distribution"]["paired_transitions"]["fail_to_pass"] == 1
+    assert report["candidate_confirmation_decision"]["status"] == "confirmed_tradeoff"
+    assert "Confirmation capability outcome" in render_markdown(report)
 
 
 def test_build_comparison_rejects_unregistered_design_change(tmp_path):

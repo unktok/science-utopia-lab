@@ -1,0 +1,63 @@
+{
+  "id": "longitudinal-confirmation-baseline-v1",
+  "version": 1,
+  "design_space": "research/specs/design-space-v2.json",
+  "baseline_design": "research/specs/example-design-v0.json",
+  "metric_constitution": "research/specs/example-metric-constitution-v1.1.json",
+  "calibrated_against": {
+    "study_id": "participation-fidelity-v1",
+    "study_revision": "79ec3468cf",
+    "pilot_run_id": "opt-participation-fidelity-v1-79ec3468cf-longitudinal-exploration-dce5399cf6d0b-s113",
+    "participation_policy_sha256": "aaea214f16c4ce7365634a83c9cd9286be76bb9f95d0854f5f5fbc855bdbdf8a",
+    "result": "pass"
+  },
+  "review_assignment_policy": {
+    "id": "global-capacitated-review-assignment",
+    "version": "1.0.0",
+    "minimum_reviews_per_paper": 1,
+    "maximize_reviews_up_to_target": true,
+    "respect_authorship_and_conflicts": true,
+    "seeded_tie_break": true
+  },
+  "funding_reliability_policy": {
+    "id": "funding-pipeline-reliability",
+    "version": "1.0.0",
+    "failure_action": "quarantine",
+    "minimum_targets": 10,
+    "maximum_semantic_invalid_attempt_rate": 0.1,
+    "maximum_sanitized_reference_attempt_rate": 0.1,
+    "maximum_request_error_attempt_rate": 0.05,
+    "maximum_terminal_drop_rate": 0.0
+  },
+  "paired_confirmation_policy": {
+    "id": "confirmation-capability-outcomes",
+    "version": "1.0.0",
+    "capability_treatment": "outcome_distribution",
+    "candidate_gates": {
+      "require_zero_candidate_capability_failures": true,
+      "require_no_pass_to_fail_transition": true,
+      "require_no_negative_protected_slice_pairs": true,
+      "minimum_primary_mean_delta": 0.0
+    }
+  },
+  "sampler": {
+    "kind": "sobol",
+    "count": 0,
+    "seed": 20261025,
+    "include_baseline": true
+  },
+  "seed_sets": {
+    "exploration": [101, 103, 107, 109, 113],
+    "selection": [211, 223, 227],
+    "confirmation": [401, 409, 419, 421, 431]
+  },
+  "execution": {
+    "model": "qwen3:8b",
+    "api_backend": "ollama",
+    "endpoint": "http://127.0.0.1:11434/v1",
+    "batch_size": 2,
+    "output_root": "outputs/optimization",
+    "data_cache_dir": ".cache/utopia",
+    "max_attempts": 2
+  }
+}

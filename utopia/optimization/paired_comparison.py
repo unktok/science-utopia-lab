@@ -11,6 +11,7 @@ from typing import Any, Iterable, Mapping
 
 
 DEFAULT_SEEDS = (101, 103, 107, 109, 113)
+DEFAULT_SEED_ROLE = "exploration"
 BOOTSTRAP_SEED = 20261025
 BOOTSTRAP_RESAMPLES = 10_000
 ALLOWED_DESIGN_CHANGE = "funding_budget_slots_frac"
@@ -223,13 +224,15 @@ def _run_shadows(campaign: Mapping[str, Any], seed: int) -> dict[str, float | in
     }
 
 
-def _validate_campaign(campaign: Mapping[str, Any], seeds: tuple[int, ...]) -> None:
+def _validate_campaign(
+    campaign: Mapping[str, Any], seeds: tuple[int, ...], seed_role: str,
+) -> None:
     report = campaign["report"]
     study_seeds = campaign["snapshot"].get("study", {}).get("seed_sets", {}).get(
-        "exploration"
+        seed_role
     )
     if study_seeds != list(seeds):
-        raise ValueError("study snapshot exploration seeds do not match the paired bundle")
+        raise ValueError(f"study snapshot {seed_role} seeds do not match the paired bundle")
     if report.get("report_errors"):
         raise ValueError(f"campaign report has errors: {report['report_errors']}")
     if report.get("status_counts") != {"complete": len(seeds)}:
@@ -240,8 +243,8 @@ def _validate_campaign(campaign: Mapping[str, Any], seeds: tuple[int, ...]) -> N
     for seed in seeds:
         row = campaign["rows"][seed]
         evaluation = campaign["evaluations"][seed]
-        if row["status"] != "complete" or row["seed_role"] != "exploration":
-            raise ValueError(f"seed {seed} is not a completed exploration run")
+        if row["status"] != "complete" or row["seed_role"] != seed_role:
+            raise ValueError(f"seed {seed} is not a completed {seed_role} run")
         if evaluation.get("measurement_gaps"):
             raise ValueError(f"seed {seed} has measurement gaps")
         integrity = evaluation["metrics"]["integrity-checks-pass"]
@@ -249,6 +252,27 @@ def _validate_campaign(campaign: Mapping[str, Any], seeds: tuple[int, ...]) -> N
             raise ValueError(f"seed {seed} failed integrity")
         if campaign["reliability"][seed].get("state") != "pass":
             raise ValueError(f"seed {seed} failed funding reliability")
+
+
+def _layer_state(evaluation: Mapping[str, Any], layer: str) -> str:
+    states = [item.get("state") for item in evaluation.get(layer, [])]
+    if not states or any(state not in {"pass", "fail", "unknown"} for state in states):
+        return "unknown"
+    if "fail" in states:
+        return "fail"
+    if "unknown" in states:
+        return "unknown"
+    return "pass"
+
+
+def _confirmation_policy(
+    baseline: Mapping[str, Any], candidate: Mapping[str, Any]
+) -> Mapping[str, Any] | None:
+    baseline_policy = baseline["snapshot"]["study"].get("paired_confirmation_policy")
+    candidate_policy = candidate["snapshot"]["study"].get("paired_confirmation_policy")
+    if baseline_policy != candidate_policy:
+        raise ValueError("paired confirmation policy differs between campaigns")
+    return baseline_policy
 
 
 def build_paired_comparison(
@@ -259,6 +283,7 @@ def build_paired_comparison(
     allowed_change: str = ALLOWED_DESIGN_CHANGE,
     expected_baseline: float = 0.3,
     expected_candidate: float = 0.5,
+    seed_role: str = DEFAULT_SEED_ROLE,
 ) -> dict[str, Any]:
     """Build an audited diagnostic report without overriding formal eligibility."""
     paired_seeds = tuple(int(seed) for seed in seeds)
@@ -266,8 +291,13 @@ def build_paired_comparison(
         raise ValueError("paired seeds must be non-empty and unique")
     baseline = _campaign(baseline_root)
     candidate = _campaign(candidate_root)
-    _validate_campaign(baseline, paired_seeds)
-    _validate_campaign(candidate, paired_seeds)
+    _validate_campaign(baseline, paired_seeds, seed_role)
+    _validate_campaign(candidate, paired_seeds, seed_role)
+    confirmation_policy = _confirmation_policy(baseline, candidate)
+    outcome_distribution = (
+        confirmation_policy is not None
+        and confirmation_policy.get("capability_treatment") == "outcome_distribution"
+    )
 
     audit_pairs = []
     pair_records = []
@@ -331,7 +361,7 @@ def build_paired_comparison(
                 "candidate": candidate_shadows[name],
                 "delta_candidate_minus_baseline": candidate_shadows[name] - base_shadows[name],
             }
-        pair_records.append({
+        pair_record = {
             "seed": seed,
             "baseline_run_id": base_row["run_id"],
             "candidate_run_id": candidate_row["run_id"],
@@ -339,7 +369,19 @@ def build_paired_comparison(
             "candidate_eligibility": candidate_eval["comparison_eligibility"],
             "metrics": metrics,
             "shadows": shadows,
-        })
+        }
+        if outcome_distribution:
+            pair_record.update({
+                "baseline_hard_constraint_state": _layer_state(
+                    base_eval, "hard_constraints"
+                ),
+                "candidate_hard_constraint_state": _layer_state(
+                    candidate_eval, "hard_constraints"
+                ),
+                "baseline_capability_state": _layer_state(base_eval, "capabilities"),
+                "candidate_capability_state": _layer_state(candidate_eval, "capabilities"),
+            })
+        pair_records.append(pair_record)
         audit_pairs.append({
             "seed": seed,
             "fidelity": base_row["fidelity"],
@@ -367,14 +409,84 @@ def build_paired_comparison(
         )
         for name in shadow_names
     }
-    inadmissible = [
+    legacy_inadmissible = [
         {"seed": pair["seed"], "design": design, "state": pair[f"{design}_eligibility"]}
         for pair in pair_records
         for design in ("baseline", "candidate")
         if pair[f"{design}_eligibility"] != "feasible"
     ]
+    technical_inadmissible = []
+    if outcome_distribution:
+        technical_inadmissible = [
+            {"seed": pair["seed"], "design": design,
+             "state": pair[f"{design}_hard_constraint_state"]}
+            for pair in pair_records
+            for design in ("baseline", "candidate")
+            if pair[f"{design}_hard_constraint_state"] != "pass"
+        ]
+    inadmissible = technical_inadmissible if outcome_distribution else legacy_inadmissible
     formal_complete = not inadmissible
-    return {
+
+    capability_summary = None
+    candidate_decision = None
+    if outcome_distribution:
+        transitions = {key: 0 for key in ("pass_to_pass", "pass_to_fail", "fail_to_pass", "fail_to_fail", "unknown")}
+        for pair in pair_records:
+            before = pair["baseline_capability_state"]
+            after = pair["candidate_capability_state"]
+            key = f"{before}_to_{after}"
+            if key in transitions:
+                transitions[key] += 1
+            else:
+                transitions["unknown"] += 1
+        capability_summary = {
+            design: {
+                state: sum(
+                    pair[f"{design}_capability_state"] == state
+                    for pair in pair_records
+                )
+                for state in ("pass", "fail", "unknown")
+            }
+            for design in ("baseline", "candidate")
+        }
+        capability_summary["paired_transitions"] = transitions
+
+        gates = confirmation_policy.get("candidate_gates", {})
+        failures = []
+        if gates.get("require_zero_candidate_capability_failures", True):
+            if capability_summary["candidate"]["fail"]:
+                failures.append("candidate has one or more capability failures")
+        if capability_summary["candidate"]["unknown"]:
+            failures.append("candidate has unknown capability state")
+        if gates.get("require_no_pass_to_fail_transition", True):
+            if transitions["pass_to_fail"]:
+                failures.append("candidate introduces a baseline-pass to candidate-fail transition")
+        protected = metric_summaries["low_resource_active_fraction"]
+        if gates.get("require_no_negative_protected_slice_pairs", True):
+            if protected["negative"]:
+                failures.append("candidate harms protected-slice participation in at least one pair")
+        primary = metric_summaries["active_researcher_fraction"]
+        if primary["mean"] < float(gates.get("minimum_primary_mean_delta", 0.0)):
+            failures.append("candidate mean primary participation delta is below the frozen minimum")
+        resource_delta = shadow_summaries["grant_income"]["mean"]
+        if failures:
+            disposition = "not_confirmed"
+        elif resource_delta > 0:
+            disposition = "confirmed_tradeoff"
+        else:
+            disposition = "eligible_for_non_dominance_review"
+        candidate_decision = {
+            "status": disposition,
+            "passes_noncompensable_gates": not failures,
+            "blocking_reasons": failures,
+            "resource_input_mean_delta": resource_delta,
+            "interpretation": (
+                "Capability and protected-slice gates pass, but higher resource input "
+                "requires a trade-off interpretation."
+                if disposition == "confirmed_tradeoff" else None
+            ),
+        }
+    report = {
         "schema": "scienceutopia.paired_system_comparison.v1",
         "comparison": {
             "baseline": {
@@ -387,7 +499,7 @@ def build_paired_comparison(
                 "study_revision": candidate["snapshot"]["study_revision"],
                 "design_id": candidate["rows"][paired_seeds[0]]["design_id"],
             },
-            "pairing_key": "exploration_seed",
+            "pairing_key": f"{seed_role}_seed",
             "seeds": list(paired_seeds),
             "n_pairs": len(paired_seeds),
             "intervention": {
@@ -419,12 +531,27 @@ def build_paired_comparison(
             "No real-world causal or optimal-science-policy claim is authorized.",
         ],
     }
+    if outcome_distribution:
+        report["schema"] = "scienceutopia.paired_system_comparison.v2"
+        report["comparison"]["seed_role"] = seed_role
+        report["formal_comparison"]["authorized_for_ranking"] = False
+        report["formal_comparison"]["authorized_for_confirmatory_interpretation"] = (
+            formal_complete
+        )
+        report["confirmation_policy"] = confirmation_policy
+        report["capability_outcome_distribution"] = capability_summary
+        report["candidate_confirmation_decision"] = candidate_decision
+    return report
 
 
 def render_markdown(report: Mapping[str, Any]) -> str:
     status = report["formal_comparison"]["status"]
+    capability = report.get("capability_outcome_distribution")
     lines = [
-        "# First five-seed paired system comparison",
+        (
+            "# Five-seed paired system comparison"
+            if capability is not None else "# First five-seed paired system comparison"
+        ),
         "",
         f"Formal comparison status: **{status}**.",
         "",
@@ -459,6 +586,25 @@ def render_markdown(report: Mapping[str, Any]) -> str:
             f"{protected['baseline']:.3g} → {protected['candidate']:.3g} | "
             f"{pair['baseline_eligibility']} / {pair['candidate_eligibility']} |"
         )
+    if capability is not None:
+        decision = report["candidate_confirmation_decision"]
+        transitions = capability["paired_transitions"]
+        lines.extend([
+            "",
+            "## Confirmation capability outcome",
+            "",
+            f"- Baseline pass/fail/unknown: {capability['baseline']['pass']} / "
+            f"{capability['baseline']['fail']} / {capability['baseline']['unknown']}",
+            f"- Candidate pass/fail/unknown: {capability['candidate']['pass']} / "
+            f"{capability['candidate']['fail']} / {capability['candidate']['unknown']}",
+            f"- Paired pass→fail / fail→pass: {transitions['pass_to_fail']} / "
+            f"{transitions['fail_to_pass']}",
+            f"- Frozen decision: **{decision['status']}**",
+        ])
+        if decision["blocking_reasons"]:
+            lines.extend(
+                f"  - {reason}" for reason in decision["blocking_reasons"]
+            )
     lines.extend([
         "",
         "## Interpretation boundary",
@@ -482,8 +628,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--candidate-root", required=True)
     parser.add_argument("--json-output", required=True)
     parser.add_argument("--markdown-output")
+    parser.add_argument(
+        "--seed-role", choices=["exploration", "selection", "confirmation"],
+        default=DEFAULT_SEED_ROLE,
+    )
     args = parser.parse_args(argv)
-    report = build_paired_comparison(args.baseline_root, args.candidate_root)
+    report = build_paired_comparison(
+        args.baseline_root, args.candidate_root, seed_role=args.seed_role,
+    )
     json_path = Path(args.json_output)
     json_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")

@@ -100,7 +100,9 @@ mechanism graphの並行境界は
 2. **完了:** 4年・10人のlongitudinal baseline seed 113は、参加人数10→10→10→8、最終aggregate 0.8、lower slice 0.6で、事前登録した測定可能性gateを通過した。
 3. **完了:** repaired source commit上でbaseline/candidate各5 seedsを完走した。候補は参加率をaggregate +0.08、lower slice +0.16改善したがgrant input +160を要した。baseline seed 107が固定capability floorを下回ったためformal comparisonはincomplete、5-pair vectorはdiagnostic evidenceとして保持した。
 
-次は、capability violationを制度のoutcome distributionとしてどう扱うかを事前に
-定義し、未使用confirmation seeds 401, 409, 419, 421, 431で確認する。観測済みの
-seed 107を理由に閾値や候補を調整してはならない。
+次の確認比較では、capability violationを技術的失敗と分離し、制度のoutcome
+distributionとして全件保持する規約を
+[`confirmation-comparison-v1.md`](confirmation-comparison-v1.md) に事前登録した。
+未使用confirmation seeds 401, 409, 419, 421, 431でbaselineと固定済みcandidateを
+再実行する。観測済みのseed 107を理由に閾値や候補を調整しない。
 

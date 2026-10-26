@@ -73,11 +73,29 @@ outputs/optimization/<study-id>/<study-revision>/
   --markdown-output research/runs/2026-10-26-first-paired-system-comparison.generated.md
 ```
 
+確認段階では、別registryへ未使用confirmation seedsだけを計画する。
+
+```bash
+.venv/bin/python -m utopia.optimization.harness \
+  --study research/specs/study-v6-confirmation-baseline.json \
+  plan --fidelity longitudinal --seed-role confirmation
+
+.venv/bin/python -m utopia.optimization.harness \
+  --study research/specs/study-v6-confirmation-candidate.json \
+  plan --fidelity longitudinal --seed-role confirmation
+```
+
+両方が完走した後、`paired_comparison --seed-role confirmation`で比較する。
+confirmation policy v1ではcapability failureをrun除外理由にせず、pass/failの
+制度outcome distributionとpaired transitionとして保持する。技術的admissibility
+failureだけがformal comparisonを未完了にする。
+
 この比較器はseedをexact joinし、design差分が許可された一変数だけであること、
 source/model/dataset/evaluator/embedding/configが一致すること、全runのintegrity、
-funding reliability、測定完全性を検査する。capability infeasibleなrunはtechnical
-failureとして除外せず、formal statusを`incomplete`にした上でpaired diagnosticを
-保持する。
+funding reliability、測定完全性を検査する。過去のexploration v1 reportでは、
+capability infeasibleなrunを除外せずformal statusを`incomplete`としてpaired
+diagnosticを保持する。confirmation policyを持つv2 reportでは上記の事前登録どおり、
+capability failureをformal completenessではなく制度outcome gateで扱う。
 
 ## Failure and resume semantics
 
