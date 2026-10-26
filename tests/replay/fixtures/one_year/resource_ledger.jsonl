@@ -1,0 +1,3 @@
+{"event_id":"annual-a","year":1,"researcher_id":"researcher-a","category":"annual_research_cost","delta":-10,"requested_delta":-10,"balance_before":100,"balance_after":90,"active_after":true,"uncollected_cost":0,"paper_id":null}
+{"event_id":"annual-b","year":1,"researcher_id":"researcher-b","category":"annual_research_cost","delta":-10,"requested_delta":-10,"balance_before":100,"balance_after":90,"active_after":true,"uncollected_cost":0,"paper_id":null}
+{"event_id":"grant-a","year":1,"researcher_id":"researcher-a","category":"grant_income","delta":20,"requested_delta":20,"balance_before":90,"balance_after":110,"active_after":true,"uncollected_cost":0,"paper_id":null}

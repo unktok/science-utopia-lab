@@ -1,0 +1,2 @@
+{"year":1,"researcher_id":"researcher-a","researcher_type":"university","opening_balance":100,"closing_balance":110,"opening_active":true,"closing_active":true,"annual_research_cost":10,"grant_income":20,"residual":0}
+{"year":1,"researcher_id":"researcher-b","researcher_type":"university","opening_balance":100,"closing_balance":90,"opening_active":true,"closing_active":true,"annual_research_cost":10,"grant_income":0,"residual":0}

@@ -1,0 +1,54 @@
+{
+  "year": 1,
+  "phase": 5,
+  "ecosystem_data": {
+    "agents": [
+      {
+        "id": "researcher-a",
+        "type": "university",
+        "university_name": "institute-0",
+        "resources": 110,
+        "is_active": true
+      },
+      {
+        "id": "researcher-b",
+        "type": "university",
+        "university_name": "institute-1",
+        "resources": 90,
+        "is_active": true
+      }
+    ]
+  },
+  "paper_tracker": {
+    "papers": [
+      {
+        "id": "paper-1",
+        "author_id": "researcher-a",
+        "title": "A Small Reproducible Result",
+        "topics": ["replay"],
+        "conference": "TESTCONF",
+        "year": 1,
+        "status": "accept",
+        "review_history": [
+          {
+            "conference": "TESTCONF",
+            "year": 1,
+            "score": 4.0,
+            "decision": "accept",
+            "reviews": [
+              {
+                "reviewer_id": "researcher-b",
+                "conference_id": "TESTCONF",
+                "overall_score": 4,
+                "justification": "The artifact is sufficient for a replay fixture."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "yearly_results": [
+    {"year": 1}
+  ]
+}
