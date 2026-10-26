@@ -30,6 +30,8 @@
 - [複数seed実験harness](research/harness.md): 計画、registry、再試行、基本集計
 - [ゲーム構想](research/game.md): 研究基盤とゲーム体験の接続
 - [ロードマップ](research/roadmap.md): 段階、成果物、ゲート
+- [Milestone 1 総括](research/milestones/2026-10-26-first-system-comparison.md):
+  ローカル基盤から最初の5-seed制度比較までの成果、限界、次段階
 - [実験テンプレート](research/protocols/experiment-template.md): 実験前後に必ず残す項目
 - [意思決定ログ](research/decisions/): 長期的に効く設計判断
 - [Science of Science 調査](research/literature/science-of-science-objectives.md): 外部文献に基づく目的関数候補
@@ -48,5 +50,18 @@
 
 ## 現在地
 
-2026-10-24 に、Apple M5 Pro / 64 GB 環境上で Ollama と Qwen3-8B を使うローカル実行経路を追加し、10研究者・2機関・1年のシミュレーションを完走した。seed反復harness、Metric Constitution v1、資金申請の段階間conservation traceまで実装し、新constitutionに拘束された10 runをrevision `6fcbf8bae1`として計画済みである。まだ1 seedの旧revisionしか実行しておらず、制度効果の推定は開始していない。詳細は[ベースライン実行記録](research/runs/2026-10-24-qwen3-8b-baseline.md)と[harness検証記録](research/runs/2026-10-24-harness-baseline-seed101.md)を参照する。
+2026-10-26時点で、Qwen3-8Bのローカル実行、seed反復harness、Metric
+Constitution、protected-slice measurement、funding reliability、4年fidelity、
+global reviewer assignmentを実装し、最初のpaired制度比較まで完了した。
+
+資金配分枠を30%から50%へ増やした候補をbaselineと同じ5 seedsで比較した結果、
+aggregate参加率は平均+0.08、初期低資源層は+0.16、査読負担はaggregate
+−0.122、低資源層−0.208だった。一方で各worldのgrant incomeは+160であり、
+これは無条件の優位ではなくresource-for-continuity trade-offである。
+
+baseline seed 107が固定capability floorを下回ったため、事前規則上のformal
+comparisonは`incomplete`であり、結果は5-pair diagnostic evidenceとして保持する。
+次はcapability violationの扱いを事前登録し、未使用confirmation seedsで同じ二制度を
+再評価する。全体の経緯、成果、限界は
+[Milestone 1 総括](research/milestones/2026-10-26-first-system-comparison.md)を参照する。
 
