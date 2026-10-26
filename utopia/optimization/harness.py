@@ -4,12 +4,16 @@ from __future__ import annotations
 import argparse
 from collections import defaultdict
 from contextlib import closing
+from dataclasses import dataclass
 from datetime import datetime, timezone
+import fcntl
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import random
+import shutil
 import sqlite3
 import statistics
 import subprocess
@@ -71,6 +75,32 @@ CREATE TABLE IF NOT EXISTS attempts (
     error TEXT,
     PRIMARY KEY (run_id, attempt),
     FOREIGN KEY (run_id) REFERENCES runs(run_id)
+);
+CREATE TABLE IF NOT EXISTS schedulers (
+    scheduler_id TEXT PRIMARY KEY,
+    started_utc TEXT NOT NULL,
+    finished_utc TEXT,
+    status TEXT NOT NULL CHECK(status IN ('running','complete','interrupted')),
+    worker_limit INTEGER NOT NULL,
+    parent_pid INTEGER NOT NULL,
+    recovered_runs INTEGER NOT NULL,
+    error TEXT
+);
+CREATE TABLE IF NOT EXISTS attempt_schedulers (
+    run_id TEXT NOT NULL,
+    attempt INTEGER NOT NULL,
+    scheduler_id TEXT NOT NULL,
+    worker_slot INTEGER NOT NULL,
+    worker_limit INTEGER NOT NULL,
+    subprocess_pid INTEGER,
+    stdout_path TEXT NOT NULL,
+    stderr_path TEXT NOT NULL,
+    run_output_root TEXT NOT NULL,
+    cache_root TEXT,
+    effective_command_sha256 TEXT NOT NULL,
+    PRIMARY KEY (run_id, attempt),
+    FOREIGN KEY (run_id, attempt) REFERENCES attempts(run_id, attempt),
+    FOREIGN KEY (scheduler_id) REFERENCES schedulers(scheduler_id)
 );
 """
 
@@ -310,6 +340,8 @@ class RunRegistry:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.connection = sqlite3.connect(self.path)
         self.connection.row_factory = sqlite3.Row
+        self.connection.execute("PRAGMA busy_timeout=5000")
+        self.connection.execute("PRAGMA foreign_keys=ON")
         self.connection.executescript(SCHEMA)
         self.connection.commit()
 
@@ -351,23 +383,115 @@ class RunRegistry:
                    WHERE run_id=? AND attempt=? AND status='running'""",
                 (now, reason, row["run_id"], row["attempt"]),
             )
+        self.connection.execute(
+            """UPDATE schedulers SET status='interrupted', finished_utc=?,
+               error=COALESCE(error, ?)
+               WHERE status='running'""",
+            (now, reason),
+        )
         self.connection.commit()
         return len(interrupted)
 
     def start(self, run: str) -> sqlite3.Row:
+        row = self.claim(run)
+        if row is None:
+            raise ValueError(f"Run is not atomically claimable: {run}")
+        return row
+
+    def claim(self, run: str) -> sqlite3.Row | None:
+        """Atomically transition one retryable run to a new running attempt."""
+        started = utc_now()
+        self.connection.execute("BEGIN IMMEDIATE")
+        try:
+            cursor = self.connection.execute(
+                """UPDATE runs SET status='running', attempt=attempt+1, started_utc=?,
+                   finished_utc=NULL, returncode=NULL, error=NULL
+                   WHERE run_id=? AND status IN ('planned','failed')
+                   AND attempt < max_attempts""",
+                (started, run),
+            )
+            if cursor.rowcount != 1:
+                self.connection.rollback()
+                return None
+            row = self.connection.execute(
+                "SELECT * FROM runs WHERE run_id=?", (run,)
+            ).fetchone()
+            self.connection.execute(
+                """INSERT INTO attempts (run_id, attempt, status, started_utc)
+                   VALUES (?, ?, 'running', ?)""",
+                (run, row["attempt"], row["started_utc"]),
+            )
+            self.connection.commit()
+            return row
+        except BaseException:
+            self.connection.rollback()
+            raise
+
+    def start_scheduler(
+        self, scheduler_id: str, *, workers: int, recovered_runs: int
+    ) -> None:
         self.connection.execute(
-            """UPDATE runs SET status='running', attempt=attempt+1, started_utc=?,
-               finished_utc=NULL, returncode=NULL, error=NULL WHERE run_id=?""",
-            (utc_now(), run),
-        )
-        row = self.rows("run_id=?", (run,))[0]
-        self.connection.execute(
-            """INSERT INTO attempts (run_id, attempt, status, started_utc)
-               VALUES (?, ?, 'running', ?)""",
-            (run, row["attempt"], row["started_utc"]),
+            """INSERT INTO schedulers
+               (scheduler_id, started_utc, status, worker_limit, parent_pid,
+                recovered_runs)
+               VALUES (?, ?, 'running', ?, ?, ?)""",
+            (scheduler_id, utc_now(), workers, os.getpid(), recovered_runs),
         )
         self.connection.commit()
-        return row
+
+    def finish_scheduler(
+        self, scheduler_id: str, *, status: str, error: str | None = None
+    ) -> None:
+        if status not in {"complete", "interrupted"}:
+            raise ValueError("scheduler status must be complete or interrupted")
+        self.connection.execute(
+            """UPDATE schedulers SET status=?, finished_utc=?, error=?
+               WHERE scheduler_id=?""",
+            (status, utc_now(), error, scheduler_id),
+        )
+        self.connection.commit()
+
+    def attach_scheduler_attempt(
+        self,
+        row: Mapping[str, Any],
+        *,
+        scheduler_id: str,
+        worker_slot: int,
+        workers: int,
+        stdout_path: Path,
+        stderr_path: Path,
+        run_output_root: Path,
+        cache_root: Path | None,
+        effective_command: list[str],
+    ) -> None:
+        self.connection.execute(
+            """INSERT INTO attempt_schedulers
+               (run_id, attempt, scheduler_id, worker_slot, worker_limit,
+                stdout_path, stderr_path, run_output_root, cache_root,
+                effective_command_sha256)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+            (
+                row["run_id"],
+                row["attempt"],
+                scheduler_id,
+                worker_slot,
+                workers,
+                str(stdout_path),
+                str(stderr_path),
+                str(run_output_root),
+                str(cache_root) if cache_root is not None else None,
+                hashlib.sha256(canonical_json(effective_command).encode()).hexdigest(),
+            ),
+        )
+        self.connection.commit()
+
+    def set_subprocess_pid(self, run: str, attempt: int, pid: int) -> None:
+        self.connection.execute(
+            """UPDATE attempt_schedulers SET subprocess_pid=?
+               WHERE run_id=? AND attempt=?""",
+            (pid, run, attempt),
+        )
+        self.connection.commit()
 
     def finish(
         self, run: str, *, status: str, returncode: int, wall_seconds: float, error: str | None
@@ -390,6 +514,16 @@ class RunRegistry:
     def attempt_rows(self) -> list[sqlite3.Row]:
         return list(self.connection.execute(
             "SELECT * FROM attempts ORDER BY run_id, attempt"
+        ))
+
+    def scheduler_rows(self) -> list[sqlite3.Row]:
+        return list(self.connection.execute(
+            "SELECT * FROM schedulers ORDER BY started_utc, scheduler_id"
+        ))
+
+    def attempt_scheduler_rows(self) -> list[sqlite3.Row]:
+        return list(self.connection.execute(
+            "SELECT * FROM attempt_schedulers ORDER BY run_id, attempt"
         ))
 
 
@@ -496,48 +630,423 @@ def manifest_status(row: Mapping[str, Any]) -> tuple[str, str | None]:
     return str(manifest.get("status", "unknown")), manifest.get("wrapper_error")
 
 
-def execute_pending(
-    registry: RunRegistry, *, limit: int | None = None, selected_run_id: str | None = None
-) -> dict[str, int]:
-    registry.recover_interrupted()
-    if selected_run_id is None:
-        runnable = registry.rows("status IN ('planned','failed') AND attempt < max_attempts")
-    else:
-        runnable = registry.rows(
-            "run_id=? AND status IN ('planned','failed') AND attempt < max_attempts",
-            (selected_run_id,),
+class SchedulerBusyError(RuntimeError):
+    pass
+
+
+class SchedulerFileLock:
+    """Single parent scheduler lease for one registry on this host."""
+
+    def __init__(self, registry_path: Path):
+        self.path = registry_path.with_name(registry_path.name + ".scheduler.lock")
+        self.stream = None
+
+    def __enter__(self):
+        self.stream = self.path.open("a+", encoding="utf-8")
+        try:
+            fcntl.flock(self.stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            self.stream.close()
+            self.stream = None
+            raise SchedulerBusyError(
+                f"Another harness scheduler holds {self.path}"
+            ) from error
+        self.stream.seek(0)
+        self.stream.truncate()
+        self.stream.write(f"pid={os.getpid()} started_utc={utc_now()}\n")
+        self.stream.flush()
+        return self
+
+    def __exit__(self, exc_type, exc, traceback):
+        if self.stream is not None:
+            fcntl.flock(self.stream.fileno(), fcntl.LOCK_UN)
+            self.stream.close()
+        return False
+
+
+def _command_option(command: list[str], option: str) -> str | None:
+    try:
+        index = command.index(option)
+    except ValueError:
+        return None
+    if index + 1 >= len(command):
+        raise ValueError(f"{option} is missing its value")
+    return command[index + 1]
+
+
+def _replace_command_option(command: list[str], option: str, value: Path) -> list[str]:
+    result = list(command)
+    try:
+        index = result.index(option)
+    except ValueError as error:
+        raise ValueError(
+            f"Parallel execution requires explicit {option} in every command"
+        ) from error
+    if index + 1 >= len(result):
+        raise ValueError(f"{option} is missing its value")
+    result[index + 1] = str(value)
+    return result
+
+
+def validate_warm_shared_cache(path: Path) -> dict[str, Any]:
+    """Reject parallel cold starts that could race while constructing RAG."""
+    rag = path / "rag"
+    documents = sorted(
+        item for item in rag.glob("documents-*.pkl")
+        if item.is_file() and item.stat().st_size > 0
+    )
+    embeddings = sorted(
+        item for item in rag.glob("embeddings-*.pt")
+        if item.is_file() and item.stat().st_size > 0
+    )
+    if not documents or not embeddings:
+        raise ValueError(
+            "workers > 1 requires a warm shared RAG cache containing both "
+            "rag/documents-*.pkl and rag/embeddings-*.pt; run once with "
+            "--workers 1 to warm it safely"
         )
-        if not runnable:
-            raise ValueError(f"Run is missing, complete, active, or out of attempts: {selected_run_id}")
-    if limit is not None:
-        runnable = runnable[:limit]
-    counts = {"complete": 0, "failed": 0}
-    for pending in runnable:
-        row = registry.start(pending["run_id"])
-        command = json.loads(row["command_json"])
-        log_dir = Path(row["output_root"]) / "registry-logs" / row["run_id"]
-        log_dir.mkdir(parents=True, exist_ok=True)
-        log_path = log_dir / f"attempt-{row['attempt']}.log"
-        started = time.monotonic()
-        with log_path.open("w", encoding="utf-8") as log:
-            log.write("COMMAND " + canonical_json(command) + "\n")
-            log.flush()
-            result = subprocess.run(
-                command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT, text=True
+    return {
+        "shared_cache": str(path),
+        "document_caches": len(documents),
+        "embedding_caches": len(embeddings),
+    }
+
+
+def _link_or_copy(source: str, destination: str) -> str:
+    try:
+        os.link(source, destination)
+        return destination
+    except OSError:
+        return shutil.copy2(source, destination)
+
+
+def seed_isolated_run_cache(shared: Path, target: Path) -> Path:
+    """Seed a private mutable cache with a read-mostly RAG snapshot.
+
+    RAG writers use atomic replacement, so hard-linked warm RAG files cannot
+    be modified in place. Other cache families include in-place NPZ writers
+    and must be copied normally to prevent cross-run corruption.
+    """
+    marker = target / ".scienceutopia-cache-seed-v1"
+    if marker.exists():
+        return target
+    if target.exists():
+        shutil.rmtree(target)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.mkdir()
+    for source in shared.iterdir():
+        destination = target / source.name
+        if source.is_dir():
+            shutil.copytree(
+                source,
+                destination,
+                copy_function=(
+                    _link_or_copy if source.name == "rag" else shutil.copy2
+                ),
             )
-        elapsed = time.monotonic() - started
-        status, manifest_error = manifest_status(row)
-        complete = result.returncode == 0 and status == "complete"
-        final_status = "complete" if complete else "failed"
-        error = None if complete else (
-            manifest_error or f"process returncode={result.returncode}, manifest status={status}"
+        else:
+            shutil.copy2(source, destination)
+    marker.write_text(
+        json.dumps({
+            "source": str(shared),
+            "seeded_utc": utc_now(),
+            "rag_mode": "hardlink-with-copy-fallback",
+            "mutable_cache_mode": "copy",
+        }, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return target
+
+
+@dataclass
+class ActiveRun:
+    row: Mapping[str, Any]
+    process: subprocess.Popen
+    started: float
+    worker_slot: int
+    streams: tuple[Any, ...]
+
+
+def _close_streams(streams: Iterable[Any]) -> None:
+    seen: set[int] = set()
+    for stream in streams:
+        if stream is not None and id(stream) not in seen:
+            seen.add(id(stream))
+            stream.close()
+
+
+def _finalize_process(
+    registry: RunRegistry,
+    active: ActiveRun,
+    *,
+    forced_error: str | None = None,
+) -> str:
+    _close_streams(active.streams)
+    elapsed = time.monotonic() - active.started
+    returncode = active.process.returncode
+    if returncode is None:
+        returncode = -1
+    status, manifest_error = manifest_status(active.row)
+    complete = forced_error is None and returncode == 0 and status == "complete"
+    final_status = "complete" if complete else "failed"
+    error = None if complete else (
+        forced_error
+        or manifest_error
+        or f"process returncode={returncode}, manifest status={status}"
+    )
+    registry.finish(
+        active.row["run_id"],
+        status=final_status,
+        returncode=returncode,
+        wall_seconds=elapsed,
+        error=error,
+    )
+    return final_status
+
+
+def execute_pending(
+    registry: RunRegistry,
+    *,
+    limit: int | None = None,
+    selected_run_id: str | None = None,
+    workers: int = 1,
+    execution: Mapping[str, Any] | None = None,
+) -> dict[str, int]:
+    if type(workers) is not int or workers < 1:
+        raise ValueError("workers must be a positive integer")
+    if workers > 1 and execution is not None:
+        if execution.get("api_backend") != "ollama":
+            raise ValueError(
+                "bounded multi-run scheduling currently requires api_backend=ollama"
+            )
+
+    with SchedulerFileLock(registry.path):
+        recovered = registry.recover_interrupted()
+        if selected_run_id is None:
+            runnable = registry.rows(
+                "status IN ('planned','failed') AND attempt < max_attempts"
+            )
+        else:
+            runnable = registry.rows(
+                "run_id=? AND status IN ('planned','failed') AND attempt < max_attempts",
+                (selected_run_id,),
+            )
+            if not runnable:
+                raise ValueError(
+                    "Run is missing, complete, active, or out of attempts: "
+                    f"{selected_run_id}"
+                )
+        if limit is not None:
+            runnable = runnable[:limit]
+
+        shared_cache: Path | None = None
+        if workers > 1 and runnable:
+            if execution is not None:
+                expected_endpoint = str(execution["endpoint"])
+                expected_model = str(execution["model"])
+                for pending in runnable:
+                    command = json.loads(pending["command_json"])
+                    if _command_option(command, "--api-backend") != "ollama":
+                        raise ValueError(
+                            "All parallel commands must use api_backend=ollama"
+                        )
+                    if _command_option(command, "--vllm_url") != expected_endpoint:
+                        raise ValueError(
+                            "All parallel commands must share the study Ollama endpoint"
+                        )
+                    if _command_option(command, "--model") != expected_model:
+                        raise ValueError(
+                            "All parallel commands must share the study Ollama model"
+                        )
+            if execution is not None:
+                configured = _resolve_repo_path(execution["data_cache_dir"])
+            else:
+                configured_value = _command_option(
+                    json.loads(runnable[0]["command_json"]),
+                    "--data-cache-dir",
+                )
+                if configured_value is None:
+                    raise ValueError(
+                        "workers > 1 requires an explicit shared data cache"
+                    )
+                configured = Path(configured_value)
+            shared_cache = configured.resolve()
+            validate_warm_shared_cache(shared_cache)
+
+        scheduler_id = "scheduler-" + digest({
+            "registry": str(registry.path.resolve()),
+            "pid": os.getpid(),
+            "time_ns": time.time_ns(),
+        })
+        registry.start_scheduler(
+            scheduler_id, workers=workers, recovered_runs=recovered
         )
-        registry.finish(
-            row["run_id"], status=final_status, returncode=result.returncode,
-            wall_seconds=elapsed, error=error,
-        )
-        counts[final_status] += 1
-    return counts
+        counts = {"complete": 0, "failed": 0}
+        queue = list(runnable)
+        active: dict[str, ActiveRun] = {}
+        available_slots = set(range(workers))
+        scheduler_finished = False
+
+        try:
+            while queue or active:
+                while queue and available_slots:
+                    pending = queue.pop(0)
+                    slot = min(available_slots)
+                    available_slots.remove(slot)
+                    row = registry.claim(pending["run_id"])
+                    if row is None:
+                        available_slots.add(slot)
+                        continue
+                    command = json.loads(row["command_json"])
+                    cache_root = None
+                    if workers > 1:
+                        cache_root = (
+                            Path(row["output_root"])
+                            / "run-caches"
+                            / row["run_id"]
+                        )
+                        seed_isolated_run_cache(shared_cache, cache_root)
+                        command = _replace_command_option(
+                            command, "--data-cache-dir", cache_root
+                        )
+
+                    log_dir = (
+                        Path(row["output_root"])
+                        / "registry-logs"
+                        / row["run_id"]
+                    )
+                    log_dir.mkdir(parents=True, exist_ok=True)
+                    log_path = log_dir / f"attempt-{row['attempt']}.log"
+                    if workers == 1:
+                        combined = log_path.open("w", encoding="utf-8")
+                        combined.write(
+                            "COMMAND " + canonical_json(command) + "\n"
+                        )
+                        combined.write(
+                            f"SCHEDULER {scheduler_id} WORKER {slot}/1\n"
+                        )
+                        combined.flush()
+                        stdout_path = stderr_path = log_path
+                        stdout_stream = combined
+                        stderr_stream = subprocess.STDOUT
+                        streams = (combined,)
+                    else:
+                        stdout_path = (
+                            log_dir / f"attempt-{row['attempt']}.stdout.log"
+                        )
+                        stderr_path = (
+                            log_dir / f"attempt-{row['attempt']}.stderr.log"
+                        )
+                        log_path.write_text(
+                            "COMMAND " + canonical_json(command) + "\n"
+                            + f"SCHEDULER {scheduler_id} WORKER {slot}/{workers}\n"
+                            + f"STDOUT {stdout_path}\nSTDERR {stderr_path}\n",
+                            encoding="utf-8",
+                        )
+                        stdout_stream = stdout_path.open("w", encoding="utf-8")
+                        stderr_stream = stderr_path.open("w", encoding="utf-8")
+                        streams = (stdout_stream, stderr_stream)
+
+                    run_output_root = (
+                        Path(row["output_root"])
+                        / "checkpoints"
+                        / row["run_id"]
+                    )
+                    registry.attach_scheduler_attempt(
+                        row,
+                        scheduler_id=scheduler_id,
+                        worker_slot=slot,
+                        workers=workers,
+                        stdout_path=stdout_path,
+                        stderr_path=stderr_path,
+                        run_output_root=run_output_root,
+                        cache_root=cache_root,
+                        effective_command=command,
+                    )
+                    environment = os.environ.copy()
+                    environment.update({
+                        "UTOPIA_HARNESS_SCHEDULER_ID": scheduler_id,
+                        "UTOPIA_HARNESS_WORKER_SLOT": str(slot),
+                        "UTOPIA_HARNESS_WORKERS": str(workers),
+                    })
+                    started = time.monotonic()
+                    try:
+                        process = subprocess.Popen(
+                            command,
+                            cwd=ROOT,
+                            stdout=stdout_stream,
+                            stderr=stderr_stream,
+                            text=True,
+                            env=environment,
+                        )
+                    except Exception as error:
+                        _close_streams(streams)
+                        registry.finish(
+                            row["run_id"],
+                            status="failed",
+                            returncode=127,
+                            wall_seconds=time.monotonic() - started,
+                            error=f"subprocess start failed: {error}",
+                        )
+                        counts["failed"] += 1
+                        available_slots.add(slot)
+                        continue
+                    registry.set_subprocess_pid(
+                        row["run_id"], row["attempt"], process.pid
+                    )
+                    active[row["run_id"]] = ActiveRun(
+                        row=row,
+                        process=process,
+                        started=started,
+                        worker_slot=slot,
+                        streams=streams,
+                    )
+
+                finished = []
+                for run, item in active.items():
+                    returncode = item.process.poll()
+                    if returncode is not None:
+                        finished.append(run)
+                for run in finished:
+                    item = active.pop(run)
+                    final_status = _finalize_process(registry, item)
+                    counts[final_status] += 1
+                    available_slots.add(item.worker_slot)
+                if active and not finished:
+                    time.sleep(0.05)
+
+            registry.finish_scheduler(scheduler_id, status="complete")
+            scheduler_finished = True
+            return counts
+        except BaseException as error:
+            for item in active.values():
+                item.process.terminate()
+            for item in active.values():
+                try:
+                    item.process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    item.process.kill()
+                    item.process.wait()
+                final_status = _finalize_process(
+                    registry,
+                    item,
+                    forced_error=f"scheduler interrupted: {type(error).__name__}",
+                )
+                counts[final_status] += 1
+            registry.finish_scheduler(
+                scheduler_id,
+                status="interrupted",
+                error=f"{type(error).__name__}: {error}",
+            )
+            scheduler_finished = True
+            raise
+        finally:
+            if not scheduler_finished:
+                registry.finish_scheduler(
+                    scheduler_id,
+                    status="interrupted",
+                    error="scheduler exited without final status",
+                )
 
 
 def numeric_summary(values: Iterable[float]) -> dict[str, float | int | None]:
@@ -790,6 +1299,8 @@ def build_report(
 ) -> dict[str, Any]:
     rows = registry.rows()
     attempts = registry.attempt_rows()
+    schedulers = registry.scheduler_rows()
+    attempt_schedulers = registry.attempt_scheduler_rows()
     by_status: dict[str, int] = {}
     for row in rows:
         by_status[row["status"]] = by_status.get(row["status"], 0) + 1
@@ -897,6 +1408,10 @@ def build_report(
             by_status.get("failed", 0) / attempted_runs if attempted_runs else None
         ),
         "attempt_status_counts": attempt_status,
+        "scheduler_runs": [dict(item) for item in schedulers],
+        "attempt_scheduler_provenance": [
+            dict(item) for item in attempt_schedulers
+        ],
         "attempt_failure_rate": (
             attempt_status.get("failed", 0) / len(finished_attempts) if finished_attempts else None
         ),
@@ -959,6 +1474,15 @@ def main(argv: list[str] | None = None) -> int:
     run = commands.add_parser("run")
     run.add_argument("--limit", type=int)
     run.add_argument("--run-id", help="Execute one specific planned or retryable run")
+    run.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help=(
+            "Maximum concurrent run subprocesses sharing one Ollama endpoint. "
+            "Values above 1 require a warm shared RAG cache."
+        ),
+    )
     commands.add_parser("status")
     commands.add_parser("report")
     args = parser.parse_args(argv)
@@ -976,11 +1500,25 @@ def main(argv: list[str] | None = None) -> int:
         try:
             if args.command == "run":
                 result = execute_pending(
-                    registry, limit=args.limit, selected_run_id=args.run_id
+                    registry,
+                    limit=args.limit,
+                    selected_run_id=args.run_id,
+                    workers=args.workers,
+                    execution=study["execution"],
                 )
             elif args.command == "status":
                 rows = registry.rows()
-                result = {"study_revision": revision, "root": str(root), "runs": [dict(r) for r in rows]}
+                result = {
+                    "study_revision": revision,
+                    "root": str(root),
+                    "runs": [dict(r) for r in rows],
+                    "schedulers": [
+                        dict(item) for item in registry.scheduler_rows()
+                    ],
+                    "attempt_schedulers": [
+                        dict(item) for item in registry.attempt_scheduler_rows()
+                    ],
+                }
             else:
                 constitution = load_metric_constitution(
                     _resolve_repo_path(study["metric_constitution"])
