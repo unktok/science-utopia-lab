@@ -1,0 +1,4 @@
+interface:
+  display_name: "Science Utopia Art Director"
+  short_description: "Direct and review the cyberpunk pixel-art research city"
+  default_prompt: "Review the current Science Utopia game scene against the art bible and evidence contract, then improve the single largest visual weakness."

@@ -51,5 +51,8 @@ interruption. Held-out seeds are present in the campaign specification but are
 not dispatched or consumed by this optimization controller.
 
 The deterministic integration test proves result dependence and crash-resumable
-state. Completion of the first real Qwen3-8B campaign remains the next evidence
-boundary.
+state. The first real Qwen3-8B campaign subsequently completed three suggestions
+across three optimization seeds, including one adaptive suggestion explicitly
+conditioned on the lower-loss initial observation. The adaptive point tied its
+parent, so the result establishes the engineering loop rather than a policy
+improvement.

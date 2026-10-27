@@ -75,19 +75,25 @@ seed 431では低資源層参加率が0.8から0.6へ低下し、「負のprotec
 [Milestone 2](research/milestones/2026-10-27-confirmation-comparison.md)を参照する。
 
 これまでの二条件は手作業で選んだ二つのdesign pointの反復評価であり、design
-spaceの探索ではない。現在の中心課題は、optimizerが直接参照するversioned lossと、
+spaceの探索ではなかった。その後、optimizerが直接参照するversioned lossと、
 候補凍結後にheld-out worldsで報告するevaluation metricsを分離し、
-`suggest → simulate → observe → suggest`の最初の閉ループを完成させることである。
-この最初のloopは固定トポロジー上の数値パラメータから始めてもよいが、optimizerの
-入力型は最終的に科学システム全体を表す`SystemSpec`へ拡張できる境界にする。
+`suggest → simulate → observe → suggest`の最初の閉ループをQwen3-8Bで完成させた。
+固定トポロジー上の8変数を`SystemSpec`へ持ち上げ、2つの初期候補と、低lossの
+観測に依存する1つの適応候補を各3 seedsで評価した。適応候補は親候補と完全に同点で、
+改善は主張しない。この同点はone-year smoke fidelityのengineering lossが異なる
+制度を区別できない場合があることを示した。
 過去campaignのprotected-slice vetoは歴史的promotion policyとして保存するが、
 新しいoptimizerの既定constraintにはしない。
 
-その後、whole-system `SystemSpec`のtyped graph、validator、legacy compilerと、
+whole-system `SystemSpec`のtyped graph、validator、legacy compilerと、
 不透明な`SystemSpec`を扱うblack-box `ask/tell`境界を実装した。optimizerは
 simulator内部や勾配を必要とせず、現行8変数を制限版SystemSpecとして提案し、
 観測lossに依存した次候補を生成できる。実シミュレーションcampaignとの永続的な
-controller接続とversioned `LossSpec`は未完了である。
+controller接続とversioned `LossSpec`も動作している。optimization seeds 503, 509,
+521で9 runsが完了し、held-out seeds 523, 541, 547は未使用のまま保存されている。
+これはengineering demonstrationであり、科学政策上の制度順位ではない。次の中心課題は、
+目的とheld-out metricsの科学的妥当性、一般graph executor、構造探索、微分可能な緩和を
+設計することである。
 
 並行してcanonical replayから生成した状態だけを描画するpixel-art風game UIの
 最初のvertical sliceを実装した。ローカルOllamaのworkers 1/2/4 benchmarkでは、

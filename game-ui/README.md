@@ -1,5 +1,10 @@
 # Game UI vertical slice
 
+This browser is the auditable replay-viewer prototype. The target art direction
+and next production milestone are defined in
+[`ART_BIBLE.md`](ART_BIBLE.md) and
+[`../research/tracks/game-ui-v2-creative-direction.md`](../research/tracks/game-ui-v2-creative-direction.md).
+
 This is a local-only, buildless, read-only viewer for a canonical ScienceUtopia
 replay. It does not run the simulator, an LLM, or a second implementation of
 the replay state machine in the browser.

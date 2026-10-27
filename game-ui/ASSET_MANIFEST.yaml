@@ -1,0 +1,30 @@
+schema: scienceutopia.game-assets.v1
+palette: noctiluca-24-v0.1
+logical_canvas: [480, 270]
+tile_size: [16, 16]
+concepts:
+  - id: noctiluca-keyframe-v0
+    path: art/concepts/noctiluca-keyframe-v0.png
+    status: visual_target_only
+    production_asset: false
+    generated_with: built-in-image-generation
+    purpose:
+      - composition
+      - institutional_silhouette
+      - visible_information_flows
+      - environmental_storytelling
+    constraints:
+      - do_not_use_as_sprite_sheet
+      - redraw_on_pixel_grid
+      - reduce_to_noctiluca_palette
+      - retain_provenance
+planned_atlases:
+  - su_chars_core_01.png
+  - su_chars_outfits_01.png
+  - su_chars_accessories_01.png
+  - su_buildings_base_01.png
+  - su_buildings_emissive_01.png
+  - su_props_01.png
+  - su_flows_fx_01.png
+  - su_ui_9slice_01.png
+  - su_portraits_01.png
