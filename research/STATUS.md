@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 04:08 JST
+Updated: 2026-10-28 04:26 JST
 
 ## Overall position
 
@@ -49,9 +49,9 @@ candidates.
 | frozen protocol | complete at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f` |
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
-| completed optimization runs | 3; all development seeds for the first candidate system |
-| currently running | 1, participation/review arm, design `d61de1ee4e74b`, seed 601; year 3 funding evaluation at the snapshot |
-| remaining optimization runs | 41, including later result-dependent suggestions |
+| completed optimization runs | 4; all development seeds for the first candidate system plus seed 601 for the second |
+| currently running | 1, participation/review arm, design `d61de1ee4e74b`, seed 607 |
+| remaining optimization runs | 40, including later result-dependent suggestions |
 | frozen arm winners | 0 of 3 |
 | held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
 
