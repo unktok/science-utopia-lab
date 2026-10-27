@@ -2,12 +2,15 @@
 
 from .events import EventEnvelope, canonical_event_stream_hash, validate_references
 from .projector import ReplayError, WorldState, replay
+from .viewer import VIEW_SCHEMA_VERSION, build_viewer_payload
 
 __all__ = [
     "ArtifactBundle",
     "EventEnvelope",
     "ReplayError",
     "WorldState",
+    "VIEW_SCHEMA_VERSION",
+    "build_viewer_payload",
     "canonical_event_stream_hash",
     "convert_artifacts",
     "replay",

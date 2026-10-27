@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17172d">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'">
+  <title>ScienceUtopia — Replay Observatory</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#world">Skip to the replay world</a>
+  <header class="topbar">
+    <div class="brand" aria-label="ScienceUtopia Replay Observatory">
+      <span class="brand-mark" aria-hidden="true">SU</span>
+      <span><strong>ScienceUtopia</strong><small>Replay Observatory / prototype 01</small></span>
+    </div>
+    <div class="run-state">
+      <span class="signal" aria-hidden="true"></span>
+      <span id="load-status">loading replay…</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="replay-title">
+      <div>
+        <p class="eyebrow">CANONICAL WORLD RECORD</p>
+        <h1 id="replay-title">Loading ScienceUtopia…</h1>
+        <p class="lede">Follow agents, artifacts, and resources through one deterministic history.</p>
+      </div>
+      <dl class="clock" aria-label="Current simulation time">
+        <div><dt>Year</dt><dd id="year-value">0</dd></div>
+        <div><dt>Phase</dt><dd id="phase-value">—</dd></div>
+      </dl>
+    </section>
+
+    <section class="transport panel" aria-label="Replay controls">
+      <div class="transport-buttons">
+        <button id="reset" type="button" title="Reset (Home)">↺ Reset</button>
+        <button id="previous" type="button" title="Previous event (Left arrow)">◀ Step</button>
+        <button id="play" class="primary" type="button" aria-pressed="false" title="Play or pause (Space)">▶ Play</button>
+        <button id="next" type="button" title="Next event (Right arrow)">Step ▶</button>
+      </div>
+      <label class="scrubber"><span class="sr-only">Replay position</span><input id="progress" type="range" min="0" max="0" value="0"><output id="cursor-label">0 / 0</output></label>
+      <label class="speed">Speed <select id="speed"><option value="1600">0.5×</option><option value="900" selected>1×</option><option value="420">2×</option></select></label>
+    </section>
+
+    <section class="stats" aria-label="World summary">
+      <article><span class="stat-icon people" aria-hidden="true"></span><div><small>Active researchers</small><strong id="stat-researchers">0/0</strong></div></article>
+      <article><span class="stat-icon gem" aria-hidden="true"></span><div><small>Total resources</small><strong id="stat-resources">0</strong></div></article>
+      <article><span class="stat-icon page" aria-hidden="true"></span><div><small>Papers</small><strong id="stat-papers">0</strong></div></article>
+      <article><span class="stat-icon star" aria-hidden="true"></span><div><small>Accepted</small><strong id="stat-accepted">0</strong></div></article>
+    </section>
+
+    <div class="workspace">
+      <section id="world" class="world panel" aria-labelledby="world-title">
+        <div class="panel-heading"><div><p class="eyebrow">LIVE PROJECTION</p><h2 id="world-title">Research Commons</h2></div><span class="legend"><i></i> current actor</span></div>
+        <div class="campus" aria-label="Pixel-art campus map">
+          <div class="stars" aria-hidden="true"></div>
+          <article class="building institute-one"><span class="roof"></span><span class="building-icon" aria-hidden="true">⌂</span><strong>Institute 0</strong><small>research lab</small></article>
+          <article class="building forum"><span class="roof"></span><span class="building-icon" aria-hidden="true">▤</span><strong>Knowledge Forum</strong><small>papers · reviews</small></article>
+          <article class="building institute-two"><span class="roof"></span><span class="building-icon" aria-hidden="true">⌂</span><strong>Institute 1</strong><small>research lab</small></article>
+          <article class="building funding"><span class="roof"></span><span class="building-icon" aria-hidden="true">◆</span><strong>Resource Office</strong><small>grants · ledger</small></article>
+          <div class="paths" aria-hidden="true"></div>
+          <div id="agent-layer" class="agent-layer" aria-live="polite"></div>
+        </div>
+        <div id="event-list" class="event-dots" aria-label="Event timeline"></div>
+      </section>
+
+      <aside class="evidence panel" aria-labelledby="event-title">
+        <div class="panel-heading"><div><p class="eyebrow">EVENT EVIDENCE</p><h2 id="event-title">World ready</h2></div><span class="evidence-badge">READ ONLY</span></div>
+        <p id="event-description" class="event-description" aria-live="polite">Preparing the first event…</p>
+        <p id="event-meta" class="event-meta"></p>
+        <details><summary>Canonical payload</summary><pre id="event-payload">{}</pre></details>
+        <div class="keys"><strong>Keyboard</strong><span><kbd>←</kbd><kbd>→</kbd> step</span><span><kbd>space</kbd> play</span><span><kbd>home</kbd><kbd>end</kbd> jump</span></div>
+      </aside>
+    </div>
+
+    <section class="panel paper-shelf" aria-labelledby="papers-title">
+      <div class="panel-heading"><div><p class="eyebrow">KNOWLEDGE ARCHIVE</p><h2 id="papers-title">Artifacts in this world</h2></div></div>
+      <ul id="papers-list"><li class="empty-state">No papers in the world yet.</li></ul>
+    </section>
+  </main>
+  <footer><span>Source of truth: canonical replay artifact</span><span>No simulator or LLM runs in this viewer.</span></footer>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

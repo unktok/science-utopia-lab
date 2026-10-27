@@ -1,0 +1,844 @@
+{
+  "event_schema_version": "scienceutopia.event.v1",
+  "events": [
+    {
+      "actor_ids": [
+        "researcher-a"
+      ],
+      "artifact_ids": [],
+      "event_id": "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+      "event_type": "agent.registered",
+      "payload": {
+        "agent_type": "university",
+        "initial_active": true,
+        "initial_balance": 100,
+        "institution": "institute-0"
+      },
+      "phase": 0,
+      "provenance": {
+        "record": 0,
+        "source": "checkpoint.ecosystem_data.agents"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 0,
+      "year": 0
+    },
+    {
+      "actor_ids": [
+        "researcher-b"
+      ],
+      "artifact_ids": [],
+      "event_id": "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+      "event_type": "agent.registered",
+      "payload": {
+        "agent_type": "university",
+        "initial_active": true,
+        "initial_balance": 100,
+        "institution": "institute-1"
+      },
+      "phase": 0,
+      "provenance": {
+        "record": 1,
+        "source": "checkpoint.ecosystem_data.agents"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 1,
+      "year": 0
+    },
+    {
+      "actor_ids": [
+        "researcher-a"
+      ],
+      "artifact_ids": [
+        "paper-1"
+      ],
+      "event_id": "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+      "event_type": "paper.submitted",
+      "payload": {
+        "conference": "TESTCONF",
+        "submission_round": 0,
+        "title": "A Small Reproducible Result",
+        "topics": [
+          "replay"
+        ]
+      },
+      "phase": 2,
+      "provenance": {
+        "record": 0,
+        "round": 0,
+        "source": "checkpoint.paper_tracker.papers"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 2,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-a"
+      ],
+      "artifact_ids": [],
+      "event_id": "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+      "event_type": "resource.changed",
+      "payload": {
+        "active_after": true,
+        "balance_after": 90,
+        "balance_before": 100,
+        "category": "annual_research_cost",
+        "delta": -10,
+        "requested_delta": -10,
+        "uncollected_cost": 0
+      },
+      "phase": 2,
+      "provenance": {
+        "record": 0,
+        "source": "resource_ledger.jsonl",
+        "source_event_id": "annual-a"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 3,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-b"
+      ],
+      "artifact_ids": [],
+      "event_id": "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+      "event_type": "resource.changed",
+      "payload": {
+        "active_after": true,
+        "balance_after": 90,
+        "balance_before": 100,
+        "category": "annual_research_cost",
+        "delta": -10,
+        "requested_delta": -10,
+        "uncollected_cost": 0
+      },
+      "phase": 2,
+      "provenance": {
+        "record": 1,
+        "source": "resource_ledger.jsonl",
+        "source_event_id": "annual-b"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 4,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-b"
+      ],
+      "artifact_ids": [
+        "paper-1"
+      ],
+      "event_id": "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+      "event_type": "review.completed",
+      "payload": {
+        "conference": "TESTCONF",
+        "justification": "The artifact is sufficient for a replay fixture.",
+        "score": 4,
+        "submission_round": 0
+      },
+      "phase": 3,
+      "provenance": {
+        "record": 0,
+        "review": 0,
+        "round": 0,
+        "source": "checkpoint.paper_tracker.papers.review_history.reviews"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 5,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-a"
+      ],
+      "artifact_ids": [
+        "paper-1"
+      ],
+      "event_id": "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2",
+      "event_type": "paper.decided",
+      "payload": {
+        "conference": "TESTCONF",
+        "decision": "accept",
+        "score": 4.0,
+        "submission_round": 0
+      },
+      "phase": 4,
+      "provenance": {
+        "record": 0,
+        "round": 0,
+        "source": "checkpoint.paper_tracker.papers.review_history"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 6,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-a"
+      ],
+      "artifact_ids": [],
+      "event_id": "7da9797bf0b6c0976a6650628284840dd053862054b4bd4d3a2ea42bc9298415",
+      "event_type": "resource.changed",
+      "payload": {
+        "active_after": true,
+        "balance_after": 110,
+        "balance_before": 90,
+        "category": "grant_income",
+        "delta": 20,
+        "requested_delta": 20,
+        "uncollected_cost": 0
+      },
+      "phase": 5,
+      "provenance": {
+        "record": 2,
+        "source": "resource_ledger.jsonl",
+        "source_event_id": "grant-a"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 7,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-a"
+      ],
+      "artifact_ids": [],
+      "event_id": "a6eb9e1295cfc60f88bfc87d0ce051167ffb9ab00649c257d3d0d07c0eac8728",
+      "event_type": "resource.balance_reported",
+      "payload": {
+        "closing_active": true,
+        "closing_balance": 110,
+        "opening_active": true,
+        "opening_balance": 100,
+        "residual": 0
+      },
+      "phase": 6,
+      "provenance": {
+        "record": 0,
+        "source": "resource_balances.jsonl"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 8,
+      "year": 1
+    },
+    {
+      "actor_ids": [
+        "researcher-b"
+      ],
+      "artifact_ids": [],
+      "event_id": "7f55b1d00c61e70b27463748a790cd77460dca3c506b1e9d4022c81eb6223e03",
+      "event_type": "resource.balance_reported",
+      "payload": {
+        "closing_active": true,
+        "closing_balance": 90,
+        "opening_active": true,
+        "opening_balance": 100,
+        "residual": 0
+      },
+      "phase": 6,
+      "provenance": {
+        "record": 1,
+        "source": "resource_balances.jsonl"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 9,
+      "year": 1
+    },
+    {
+      "actor_ids": [],
+      "artifact_ids": [],
+      "event_id": "f362e040a94e1ef83d10910f86a9e5a3d4499f328388cb9ff60a0b1873813514",
+      "event_type": "year.completed",
+      "payload": {
+        "year": 1
+      },
+      "phase": 7,
+      "provenance": {
+        "record": 1,
+        "source": "checkpoint.yearly_results"
+      },
+      "schema_version": "scienceutopia.event.v1",
+      "sequence": 10,
+      "year": 1
+    }
+  ],
+  "frames": [
+    {
+      "cursor": 0,
+      "event_id": null,
+      "state": {
+        "agents": {},
+        "applied_event_ids": [],
+        "artifacts": {},
+        "completed_years": [],
+        "year": 0
+      }
+    },
+    {
+      "cursor": 1,
+      "event_id": "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 100,
+            "institution": "institute-0"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101"
+        ],
+        "artifacts": {},
+        "completed_years": [],
+        "year": 0
+      }
+    },
+    {
+      "cursor": 2,
+      "event_id": "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 100,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 100,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c"
+        ],
+        "artifacts": {},
+        "completed_years": [],
+        "year": 0
+      }
+    },
+    {
+      "cursor": 3,
+      "event_id": "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 100,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 100,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              }
+            ],
+            "reviews": [],
+            "status": "submitted",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 4,
+      "event_id": "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 100,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              }
+            ],
+            "reviews": [],
+            "status": "submitted",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 5,
+      "event_id": "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              }
+            ],
+            "reviews": [],
+            "status": "submitted",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 6,
+      "event_id": "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+          "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              }
+            ],
+            "reviews": [
+              {
+                "justification": "The artifact is sufficient for a replay fixture.",
+                "reviewer_id": "researcher-b",
+                "score": 4,
+                "year": 1
+              }
+            ],
+            "status": "submitted",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 7,
+      "event_id": "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+          "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+          "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              },
+              {
+                "decision": "accept",
+                "event": "decided",
+                "year": 1
+              }
+            ],
+            "reviews": [
+              {
+                "justification": "The artifact is sufficient for a replay fixture.",
+                "reviewer_id": "researcher-b",
+                "score": 4,
+                "year": 1
+              }
+            ],
+            "status": "accept",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 8,
+      "event_id": "7da9797bf0b6c0976a6650628284840dd053862054b4bd4d3a2ea42bc9298415",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 110,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+          "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+          "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2",
+          "7da9797bf0b6c0976a6650628284840dd053862054b4bd4d3a2ea42bc9298415"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              },
+              {
+                "decision": "accept",
+                "event": "decided",
+                "year": 1
+              }
+            ],
+            "reviews": [
+              {
+                "justification": "The artifact is sufficient for a replay fixture.",
+                "reviewer_id": "researcher-b",
+                "score": 4,
+                "year": 1
+              }
+            ],
+            "status": "accept",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 9,
+      "event_id": "a6eb9e1295cfc60f88bfc87d0ce051167ffb9ab00649c257d3d0d07c0eac8728",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 110,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+          "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+          "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2",
+          "7da9797bf0b6c0976a6650628284840dd053862054b4bd4d3a2ea42bc9298415",
+          "a6eb9e1295cfc60f88bfc87d0ce051167ffb9ab00649c257d3d0d07c0eac8728"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              },
+              {
+                "decision": "accept",
+                "event": "decided",
+                "year": 1
+              }
+            ],
+            "reviews": [
+              {
+                "justification": "The artifact is sufficient for a replay fixture.",
+                "reviewer_id": "researcher-b",
+                "score": 4,
+                "year": 1
+              }
+            ],
+            "status": "accept",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 10,
+      "event_id": "7f55b1d00c61e70b27463748a790cd77460dca3c506b1e9d4022c81eb6223e03",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 110,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+          "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+          "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2",
+          "7da9797bf0b6c0976a6650628284840dd053862054b4bd4d3a2ea42bc9298415",
+          "a6eb9e1295cfc60f88bfc87d0ce051167ffb9ab00649c257d3d0d07c0eac8728",
+          "7f55b1d00c61e70b27463748a790cd77460dca3c506b1e9d4022c81eb6223e03"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              },
+              {
+                "decision": "accept",
+                "event": "decided",
+                "year": 1
+              }
+            ],
+            "reviews": [
+              {
+                "justification": "The artifact is sufficient for a replay fixture.",
+                "reviewer_id": "researcher-b",
+                "score": 4,
+                "year": 1
+              }
+            ],
+            "status": "accept",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [],
+        "year": 1
+      }
+    },
+    {
+      "cursor": 11,
+      "event_id": "f362e040a94e1ef83d10910f86a9e5a3d4499f328388cb9ff60a0b1873813514",
+      "state": {
+        "agents": {
+          "researcher-a": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 110,
+            "institution": "institute-0"
+          },
+          "researcher-b": {
+            "active": true,
+            "agent_type": "university",
+            "balance": 90,
+            "institution": "institute-1"
+          }
+        },
+        "applied_event_ids": [
+          "c21729fd2e97988004d76e157dc92ffd00791c7f84bdc9066d1afbfb90d9f101",
+          "34d37838f89d4a82064fa353031f1f3d9c200ceecf1f11693de639dda1b2f44c",
+          "4aaa62968c37d8239da7715cc763cdd1b1bcc3cc661e065b706008d286e2c6a2",
+          "f7b1f342b49eba8276f73857de3c9e7dcb0fb4aefa04e2e23752ee1f33979397",
+          "75f5d37363eb0d021965d70e73a96180185c802d26b78055daa9b10d7f2213d8",
+          "f9fa5de599d8dbfd77d9b756efff131fd4142960865c9f658428ff6b77aaf5d5",
+          "8283e77249b99274ca2a5da24910b4d7badec83e8c217afe0309614f89d987d2",
+          "7da9797bf0b6c0976a6650628284840dd053862054b4bd4d3a2ea42bc9298415",
+          "a6eb9e1295cfc60f88bfc87d0ce051167ffb9ab00649c257d3d0d07c0eac8728",
+          "7f55b1d00c61e70b27463748a790cd77460dca3c506b1e9d4022c81eb6223e03",
+          "f362e040a94e1ef83d10910f86a9e5a3d4499f328388cb9ff60a0b1873813514"
+        ],
+        "artifacts": {
+          "paper-1": {
+            "author_id": "researcher-a",
+            "conference": "TESTCONF",
+            "history": [
+              {
+                "event": "submitted",
+                "year": 1
+              },
+              {
+                "decision": "accept",
+                "event": "decided",
+                "year": 1
+              }
+            ],
+            "reviews": [
+              {
+                "justification": "The artifact is sufficient for a replay fixture.",
+                "reviewer_id": "researcher-b",
+                "score": 4,
+                "year": 1
+              }
+            ],
+            "status": "accept",
+            "title": "A Small Reproducible Result",
+            "topics": [
+              "replay"
+            ]
+          }
+        },
+        "completed_years": [
+          1
+        ],
+        "year": 1
+      }
+    }
+  ],
+  "metadata": {
+    "source_label": "tests/replay/fixtures/one_year",
+    "title": "One Year at the Replay Institute"
+  },
+  "schema_version": "scienceutopia.replay-view.v1",
+  "stream_hash": "4829fd12af64eea68ff08417737160c87376e58dd2d3ccdafdf778bb8af0ed39"
+}
