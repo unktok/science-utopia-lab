@@ -1,0 +1,39 @@
+{
+  "schema": "science-utopia.parallel-benchmark-protocol.v1",
+  "id": "local-m5-pro-qwen3-8b-micro-v1",
+  "purpose": "Measure endpoint concurrency before a bounded parallel campaign",
+  "worker_counts": [1, 2, 4],
+  "repetitions": 3,
+  "logical_runs": 4,
+  "requests_per_run": 2,
+  "warmup_requests": 1,
+  "request_timeout_seconds": 180,
+  "max_retries": 1,
+  "sample_interval_seconds": 0.5,
+  "cooldown_seconds": 2,
+  "seed": 20261027,
+  "workload": {
+    "kind": "ollama_chat",
+    "endpoint": "http://127.0.0.1:11434/api/chat",
+    "model": "qwen3:8b",
+    "think": false,
+    "temperature": 0,
+    "num_predict": 96,
+    "keep_alive": "10m",
+    "prompts": [
+      "Return JSON only. Review a hypothetical paper with novelty 0.7, rigor 0.8, and clarity 0.6. Use keys score (0 to 10), confidence (0 to 1), and one_sentence_reason.",
+      "Return JSON only. A hypothetical funding proposal has expected impact 0.75, feasibility 0.65, and cost 0.40. Use keys priority (0 to 10), confidence (0 to 1), and one_sentence_reason."
+    ],
+    "format": {
+      "type": "object",
+      "properties": {
+        "score": {"type": "number"},
+        "priority": {"type": "number"},
+        "confidence": {"type": "number"},
+        "one_sentence_reason": {"type": "string"}
+      },
+      "required": ["confidence", "one_sentence_reason"],
+      "additionalProperties": false
+    }
+  }
+}
