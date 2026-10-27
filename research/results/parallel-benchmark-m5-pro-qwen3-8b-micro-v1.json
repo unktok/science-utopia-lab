@@ -1,0 +1,82 @@
+{
+  "schema": "science-utopia.parallel-benchmark-result-summary.v1",
+  "id": "local-m5-pro-qwen3-8b-micro-v1",
+  "evidence_level": "endpoint_microbenchmark",
+  "source_commit": "179169028ffb2b6d7669f351f8ff3530cc1ebbb1",
+  "source_dirty": false,
+  "protocol_sha256": "81383d2dec1472eb5aaa227cef933e8419b5aef8232557d0c084398881e4ca42",
+  "raw_report_sha256": "411d2c810cafd2e4043be4fdc1e60a5cbd930eea6ba9454917ff030c69c76cdf",
+  "generated_report_sha256": "6008075f50309f42f6891565fa18e0956071fc52adf9ebb6eba7ba7c06895bed",
+  "started_utc": "2026-10-27T01:46:01.899489+00:00",
+  "finished_utc": "2026-10-27T01:47:15.846781+00:00",
+  "host": {
+    "hardware_model": "Mac17,9",
+    "chip": "Apple M5 Pro",
+    "physical_memory_bytes": 68719476736
+  },
+  "backend": {
+    "name": "Ollama",
+    "version": "0.33.3",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "parameter_size": "8.2B",
+    "quantization": "Q4_K_M",
+    "observed_loaded_size_bytes": 11796123484,
+    "client_ollama_environment": {}
+  },
+  "workload": {
+    "repetitions": 3,
+    "logical_runs_per_trial": 4,
+    "requests_per_run": 2,
+    "timed_requests_per_worker_count": 24,
+    "worker_count_order": [[1, 2, 4], [2, 4, 1], [4, 1, 2]]
+  },
+  "results": [
+    {
+      "workers": 1,
+      "mean_makespan_seconds": 7.6877182223058,
+      "speedup_vs_workers_1": 1.0,
+      "parallel_efficiency": 1.0,
+      "mean_generated_tokens_per_second": 47.35560882980841,
+      "mean_request_latency_seconds": 0.9608624532459847,
+      "request_latency_multiplier_vs_workers_1": 1.0,
+      "failed_requests": 0,
+      "retries": 0,
+      "peak_ollama_process_rss_bytes": 11561074688
+    },
+    {
+      "workers": 2,
+      "mean_makespan_seconds": 7.620925430674106,
+      "speedup_vs_workers_1": 1.008764393804833,
+      "parallel_efficiency": 0.5043821969024165,
+      "mean_generated_tokens_per_second": 47.76742648672266,
+      "mean_request_latency_seconds": 1.7746379671273946,
+      "request_latency_multiplier_vs_workers_1": 1.8469219617566637,
+      "failed_requests": 0,
+      "retries": 0,
+      "peak_ollama_process_rss_bytes": 11561058304
+    },
+    {
+      "workers": 4,
+      "mean_makespan_seconds": 7.567069333357115,
+      "speedup_vs_workers_1": 1.0159439386152893,
+      "parallel_efficiency": 0.2539859846538223,
+      "mean_generated_tokens_per_second": 48.104789647199574,
+      "mean_request_latency_seconds": 3.0035734062912525,
+      "request_latency_multiplier_vs_workers_1": 3.1259140120883933,
+      "failed_requests": 0,
+      "retries": 0,
+      "peak_ollama_process_rss_bytes": 11595776000
+    }
+  ],
+  "memory_observation": {
+    "preexisting_swap_used_bytes_approximately": 3827040256,
+    "maximum_observed_within_trial_swap_growth_bytes": 0,
+    "note": "Existing host swap is not attributable to this benchmark; no trial increased it."
+  },
+  "interpretation": {
+    "observed": "Four logical workers completed without request errors, retries, or within-trial swap growth, but produced only 1.0159x makespan speedup while mean request latency rose to 3.1259x the workers=1 value.",
+    "inference": "The single local Ollama/Qwen3-8B endpoint appears effectively throughput-serialized for this fixed request workload.",
+    "not_established": "This endpoint microbenchmark does not establish full-simulator makespan, output determinism under concurrent scheduling, or a campaign worker-count decision."
+  }
+}
