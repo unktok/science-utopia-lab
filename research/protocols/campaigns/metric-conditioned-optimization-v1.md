@@ -114,6 +114,11 @@ campaign record. Loss values may be recomputed from that common trajectory;
 LLM outputs or partial aggregates may not be copied. Until this provenance-safe
 reuse exists, the conservative procedure is to execute each campaign normally.
 
+The pre-run implementation audit found that the v1 registry and evaluator do
+not yet provide that provenance-safe indirection. V1 therefore uses independent
+execution for all 27 initial logical runs. See
+`research/audits/metric-conditioned-v1-trajectory-reuse.md`.
+
 ## Four separate contracts
 
 ### 1. Optimization loss
