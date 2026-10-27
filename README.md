@@ -16,17 +16,40 @@
 
 ---
 
+> **Science Utopia Lab fork**
+>
+> This repository extends the upstream simulator into a research platform for
+> designing and optimizing whole scientific systems. The design object is a
+> typed `SystemSpec`, not peer review alone. Current work includes black-box
+> optimization, mechanism graphs, reproducible campaigns, canonical replay,
+> and a game-like interface. Upstream remains
+> [`Ahren09/ScienceUtopia`](https://github.com/Ahren09/ScienceUtopia).
+
+## Start here
+
+| Goal | Entry point |
+|---|---|
+| Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
+| Set up a development environment | [Development guide](docs/development.md) |
+| Understand the code and data flow | [Architecture](docs/architecture.md) |
+| Make a contribution | [Contributing guide](CONTRIBUTING.md) |
+| Run the relevant tests | [Testing guide](docs/testing.md) |
+| Plan or execute a research campaign | [Research workflow](docs/research-workflow.md) |
+| Browse technical and upstream documentation | [Documentation index](docs/README.md) |
+| Browse the scientific record | [Research index](research/INDEX.md) |
+| Open the local replay game | [Game UI guide](game-ui/README.md) |
+
+The shortest contributor orientation is:
+
+```text
+README → docs/README → docs/architecture → research/STATUS
+```
+
 ## Overview
 
 ScienceUtopia models researchers choosing projects, submitting papers, reviewing one another's work, receiving citations, and competing for funding. Language models make structured decisions within an explicit yearly simulation. Researchers retrieve candidate papers from the public [SciEvo dataset](https://huggingface.co/datasets/Ahren09/SciEvo).
 
 This release supports **new experiments**. It contains the simulator, scientific prompts, experiment definitions, numerical estimators, and regression tests. Historical campaign artifacts and their original results are not distributed. Simulation outputs are checkpoints, request audits, manifests, and numerical tables. Optional manuscript renderers live separately in `scripts/figures/`.
-
-> **Research fork:** this checkout is also the working repository for the
-> [Science Utopia Lab research program](RESEARCH.md): optimization of scientific
-> institutions, modular evaluation mechanisms, differentiable mechanism design,
-> and an interactive ScienceUtopia game. Upstream remains
-> [`Ahren09/ScienceUtopia`](https://github.com/Ahren09/ScienceUtopia).
 
 The [project website](https://ahren09.github.io/ScienceUtopia/) is a static page in `index.html`, with styles in `assets/css/style.css` and the copy-button script in `assets/js/main.js`. Open `index.html` directly in a browser, or view the GitHub Pages site. No backend, package installation, or frontend build is required. GitHub Pages publishes the root of `main`; `.nojekyll` keeps the files static.
 
