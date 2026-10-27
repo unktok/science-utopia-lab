@@ -120,3 +120,16 @@ campaignへ進む。
 manifestの絶対pathはprovenanceとして書き換えない。移動後はvirtual environmentと
 cacheを再接続し、testsとsmoke runを通してから長時間campaignを開始する。
 
+## Optimization v1 — 次の主マイルストーン
+
+1. optimizerが直接参照する`LossSpec`を一つversion固定する。
+2. lossに使うoptimization seedsと、候補凍結後のevaluation seedsを分離する。
+3. evaluation metricsはaccuracyに相当するheld-out評価として定義し、同じcampaignの
+   candidate更新には使わない。
+4. bounded parallel schedulerを安全性監査後に統合し、workers 1/2/4を実測する。
+5. random/Sobol初期点から`observe`し、少なくとも一回は結果依存の次候補を
+   `suggest`する閉ループを完成させる。
+
+technical validity以外のfloorやvetoは既定では置かない。必要な場合だけ、lossとは
+別の明示的constraintまたはcampaign終了後のdecision policyとしてversion化する。
+

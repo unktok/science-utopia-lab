@@ -1,0 +1,79 @@
+# Research index
+
+This is the canonical entry point for the Science Utopia research program.
+Existing documents keep their paths because they are cited by frozen protocols
+and results. New work uses the forward-only taxonomy below.
+
+## Current state
+
+- [Program status](STATUS.md)
+- [Research overview](../RESEARCH.md)
+- [Roadmap](roadmap.md)
+- [Research charter](charter.md)
+- [Closed-loop optimization contract](objectives/losses/closed-loop-v1.md)
+
+## Conceptual objects
+
+| Object | Meaning | New location |
+|---|---|---|
+| loss / objective | quantity directly optimized on search worlds | `objectives/losses/` |
+| design space | parameters or structures the optimizer may change | `objectives/design-spaces/` |
+| evaluation metric | held-out measurement used to understand a frozen candidate | `metrics/` |
+| optimizer method | grid, random, Sobol, Bayesian, evolutionary, gradient, etc. | `optimizers/methods/` |
+| protocol | plan frozen before a campaign | `protocols/campaigns/` |
+| run | one concrete design × seed execution | `runs/` |
+| result | aggregation and interpretation across runs | `results/` |
+| artifact manifest | hashes and current raw-output locator | `artifacts/` |
+| decision | durable architecture or governance choice | `decisions/` |
+| logbook | chronological working record | `logbook/` |
+
+## Forward-only taxonomy
+
+```text
+research/
+  objectives/
+    losses/
+    design-spaces/
+    constitutions/
+  metrics/
+  optimizers/
+    methods/
+    harness/
+    compute/
+  components/
+  protocols/
+    campaigns/
+    templates/
+  runs/
+  results/
+  artifacts/
+  decisions/
+  logbook/
+  literature/
+  milestones/
+```
+
+Historical documents are indexed rather than moved immediately:
+
+- [`optimization.md`](optimization.md): early optimization framing
+- [`metric-constitution-v1.md`](metric-constitution-v1.md): historical
+  governance experiment, not the default optimizer contract
+- [`metric-cards-v0.md`](metric-cards-v0.md): initial measurement cards
+- [`design-space-v0.md`](design-space-v0.md): initial parameter inventory
+- [`harness.md`](harness.md): seed-replicated execution harness
+- [`confirmation-comparison-v1.md`](confirmation-comparison-v1.md): frozen
+  historical promotion policy
+- [`compute-and-parallelization-plan.md`](compute-and-parallelization-plan.md):
+  measured runtime and hardware planning
+
+## Record rules
+
+- Do not use an evaluation metric to tune a candidate and still call it held-out.
+- Technical invalidity means an observation cannot be used; a poor simulated
+  outcome is still a valid observation.
+- A protected slice is reported by default. It becomes a veto only when an
+  explicit versioned constraint or promotion policy says so.
+- Generated reports use `.generated.md`; human interpretation uses a separate
+  file.
+- Closed campaigns retain immutable paths and hashes. Relocation is recorded as
+  a new locator rather than rewriting historical manifests.

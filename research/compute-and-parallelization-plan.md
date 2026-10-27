@@ -1,6 +1,7 @@
 # Compute and parallelization plan
 
 Date: 2026-10-26
+Updated: 2026-10-27
 
 ## Measured local baseline
 
@@ -19,6 +20,30 @@ The first paired system comparison is the planning baseline:
 The cache is already warm, so GPU inference is the dominant remaining runtime.
 At the same fidelity, one design evaluated over five seeds costs about 7.20 hours,
 and eight designs cost about 57.6 hours when executed serially.
+
+The later confirmation campaign was slower and is the conservative planning
+baseline for the next campaign:
+
+- baseline design, five seeds: 31,839.1 seconds (8.84 hours)
+- candidate design, five seeds: 29,314.1 seconds (8.14 hours)
+- total: 61,153.2 seconds (16.99 hours), or 1.70 hours per run
+
+Until a representative benchmark supersedes it, use
+`serial hours = 1.70 × designs × seeds`. The two completed ten-run campaigns
+together consumed 31.39 hours of wall time.
+
+| Designs | Seeds per design | Runs | Conservative serial estimate |
+|---:|---:|---:|---:|
+| 5 | 5 | 25 | 42.5 h (1.8 d) |
+| 8 | 3 | 24 | 40.8 h (1.7 d) |
+| 8 | 5 | 40 | 68.0 h (2.8 d) |
+| 16 | 5 | 80 | 136.0 h (5.7 d) |
+
+Four workers would reduce 40 runs to about 17 hours only under ideal scaling.
+The local Ollama/Metal endpoint has not established that scaling; benchmark
+`workers=1,2,4` on the same representative workload and report aggregate
+throughput, per-run latency, failures, and peak memory before scheduling the
+optimization campaign.
 
 ## Throughput-to-runtime conversion
 
@@ -114,9 +139,11 @@ development worktrees
 Use independent model replicas per GPU and distribute seeds or designs across
 them. For an 8B model that fits on one GPU, data-parallel campaign workers are
 normally preferable to splitting one inference request across multiple GPUs.
-The current harness is sequential and uses a shared endpoint/cache, so bounded
-parallel workers, isolated output roots, and cache-writer safety must be added
-and tested before claiming multi-GPU scaling.
+Bounded parallel workers and isolated per-run outputs are implemented on the
+`track/parallel-harness` branch. They remain outside `main` pending interruption
+safety review and a `workers=1,2,4` benchmark. A shared endpoint and cache still
+mean that worker count is not the same as inference throughput; no multi-GPU or
+four-worker speedup is claimed yet.
 
 The first shared development boundary is a read-only canonical event envelope
 and a deterministic one-year replay fixture. After that boundary is frozen:

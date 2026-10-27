@@ -1,0 +1,40 @@
+{
+  "schema_version": "science-utopia.artifact-manifest.v1",
+  "campaign_id": "confirmation-system-comparison-v1",
+  "recorded_at": "2026-10-27",
+  "source_commit": "9c23a36755c96faa216000422006ca729bbfd2a1",
+  "tracked_results": [
+    {
+      "path": "research/results/confirmation-system-comparison-v1.json",
+      "sha256": "502f41c51d28ead1e5da75588a89e30eb644442aa64c2124c9cf77a40e3a8467"
+    },
+    {
+      "path": "research/runs/2026-10-27-confirmation-system-comparison-v1.generated.md",
+      "sha256": "bdfb6c72e50a5981ddd8da46ae9ee09cbe4b96eb23b711b4221dafeb2232cd1a"
+    }
+  ],
+  "raw_studies": [
+    {
+      "study_id": "longitudinal-confirmation-baseline-v1",
+      "revision": "ccbfa178be",
+      "historical_locator": "/Users/shiro/ScienceUtopia/outputs/optimization/longitudinal-confirmation-baseline-v1/ccbfa178be",
+      "current_locator": "/Users/shiro/ScienceUtopia/outputs/optimization/longitudinal-confirmation-baseline-v1/ccbfa178be",
+      "files": {
+        "registry.sqlite3": "728d9f8ec0cc1fd4c2f36cab1116286d5c5f1886138153422f60599cdd335424",
+        "study-snapshot.json": "f216c2bea2f2c0aacb9ae169888e5bd474f91ee1a79b9204eb977e4b32cc9652",
+        "registry-report.json": "feebeed98bfb97deb8f04339fb541a767649faef9e9ad197da4ce9b4034cf891"
+      }
+    },
+    {
+      "study_id": "funding-slots-confirmation-v1",
+      "revision": "4dc44bb161",
+      "historical_locator": "/Users/shiro/ScienceUtopia/outputs/optimization/funding-slots-confirmation-v1/4dc44bb161",
+      "current_locator": "/Users/shiro/ScienceUtopia/outputs/optimization/funding-slots-confirmation-v1/4dc44bb161",
+      "files": {
+        "registry.sqlite3": "856b0c2b1d82068b065d04a98f5ff0aa018379671d8bb2008cc6b09ae923ae51",
+        "study-snapshot.json": "c08cc193054ad912657dc9de617ed88df75318d0e7d6262e8dff0e22941391e9",
+        "registry-report.json": "4e36230c5d99169ad4c77f134fc00849e024bdaa90ed3e2bf75903a0cf8dd647"
+      }
+    }
+  ]
+}

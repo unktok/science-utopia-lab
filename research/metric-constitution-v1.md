@@ -1,5 +1,11 @@
 # Metric Constitution v1
 
+> Historical/optional governance model: this constitution was used to exercise
+> an explicitly constrained comparison. It is not the default optimization
+> contract. New campaigns separate `LossSpec`, technical validity, held-out
+> evaluation metrics, and optional decision policy as described in
+> [`objectives/losses/closed-loop-v1.md`](objectives/losses/closed-loop-v1.md).
+
 Status: draft for implementation and empirical revision  
 Scope: ScienceUtopia institutional-design experiments  
 Machine-readable contract: [`specs/metric-constitution-v1.schema.json`](specs/metric-constitution-v1.schema.json)  

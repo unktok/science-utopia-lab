@@ -1,5 +1,10 @@
 # Confirmation comparison protocol v1
 
+> Historical scope: this document froze a campaign-specific promotion policy.
+> Its protected-slice veto is not the default loss or constraint for subsequent
+> optimization campaigns. See
+> [`objectives/losses/closed-loop-v1.md`](objectives/losses/closed-loop-v1.md).
+
 Status: preregistered before confirmation runs
 
 Date frozen: 2026-10-26

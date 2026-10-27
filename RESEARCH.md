@@ -19,6 +19,10 @@
 
 ## ノート体系
 
+- [研究INDEX](research/INDEX.md): loss、metrics、optimizer、protocol、resultの入口
+- [現在地](research/STATUS.md): 実装済み、未統合、未着手の一覧
+- [閉ループ最適化contract](research/objectives/losses/closed-loop-v1.md):
+  optimization lossとheld-out evaluation metricsの分離
 - [研究憲章](research/charter.md): 目的、問い、原則、成功条件
 - [科学政策としての目的設定](research/science-policy-frame.md): stakeholder、公共価値、能力、自律性
 - [科学システムの抽象モデル](research/system-model.md): 機構、状態、インターフェース、設計空間
@@ -69,4 +73,11 @@ seed 431では低資源層参加率が0.8から0.6へ低下し、「負のprotec
 許さない」という固定gateに違反した。したがって候補は`not_confirmed`であり、平均値で
 この害を相殺しない。詳細は
 [Milestone 2](research/milestones/2026-10-27-confirmation-comparison.md)を参照する。
+
+これまでの二条件は手作業で選んだ二つのdesign pointの反復評価であり、design
+spaceの探索ではない。現在の中心課題は、optimizerが直接参照するversioned lossと、
+候補凍結後にheld-out worldsで報告するevaluation metricsを分離し、
+`suggest → simulate → observe → suggest`の最初の閉ループを完成させることである。
+過去campaignのprotected-slice vetoは歴史的promotion policyとして保存するが、
+新しいoptimizerの既定constraintにはしない。
 
