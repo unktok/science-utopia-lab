@@ -139,11 +139,14 @@ development worktrees
 Use independent model replicas per GPU and distribute seeds or designs across
 them. For an 8B model that fits on one GPU, data-parallel campaign workers are
 normally preferable to splitting one inference request across multiple GPUs.
-Bounded parallel workers and isolated per-run outputs are implemented on the
-`track/parallel-harness` branch. They remain outside `main` pending interruption
-safety review and a `workers=1,2,4` benchmark. A shared endpoint and cache still
-mean that worker count is not the same as inference throughput; no multi-GPU or
-four-worker speedup is claimed yet.
+The bounded parallel harness can now schedule multiple run subprocesses against
+one shared Ollama endpoint while isolating mutable caches and outputs. Its
+per-run inherited leases prevent a recovered scheduler from duplicating an
+orphaned writer. This is an execution-safety capability, not evidence of
+throughput scaling: workers 1/2/4 must be benchmarked on the target machine
+before making a speed claim, and independent model replicas are still required
+before claiming multi-GPU scaling. See
+[`parallel-harness-v1.md`](parallel-harness-v1.md).
 
 The first shared development boundary is a read-only canonical event envelope
 and a deterministic one-year replay fixture. After that boundary is frozen:

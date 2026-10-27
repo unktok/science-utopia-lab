@@ -40,6 +40,73 @@ from utopia.utils.paths import project_root
 
 
 ROOT = project_root(__file__)
+
+
+class SchedulerBusyError(RuntimeError):
+    pass
+
+
+class RunLease:
+    """A lease inherited by a run subprocess so orphaned children stay visible."""
+
+    def __init__(self, registry_path: Path, run_id: str):
+        lease_id = hashlib.sha256(run_id.encode()).hexdigest()
+        self.path = registry_path.with_name(
+            registry_path.name + ".run-leases"
+        ) / f"{lease_id}.lock"
+        self.run_id = run_id
+        self.stream = None
+
+    def acquire(self) -> "RunLease":
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.stream = self.path.open("a+", encoding="utf-8")
+        try:
+            fcntl.flock(self.stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            self.stream.close()
+            self.stream = None
+            raise SchedulerBusyError(
+                f"Run {self.run_id} still holds its execution lease at {self.path}"
+            ) from error
+        self.stream.seek(0)
+        self.stream.truncate()
+        self.stream.write(
+            f"run_id={self.run_id} owner_pid={os.getpid()} acquired_utc={utc_now()}\n"
+        )
+        self.stream.flush()
+        return self
+
+    def fileno(self) -> int:
+        if self.stream is None:
+            raise RuntimeError("run lease is not acquired")
+        return self.stream.fileno()
+
+    def release(self) -> None:
+        if self.stream is not None:
+            fcntl.flock(self.stream.fileno(), fcntl.LOCK_UN)
+            self.stream.close()
+            self.stream = None
+
+    def relinquish_to_child(self) -> None:
+        """Close only this descriptor after a child inherited the lease.
+
+        Calling LOCK_UN here would also unlock the child's duplicated open file
+        description. A plain close leaves the lease owned by the child until it
+        exits, including when the scheduler subsequently crashes.
+        """
+        if self.stream is None:
+            raise RuntimeError("run lease is not acquired")
+        self.stream.close()
+        self.stream = None
+
+    def __enter__(self) -> "RunLease":
+        return self.acquire()
+
+    def __exit__(self, exc_type, exc, traceback):
+        self.release()
+        return False
+
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS runs (
     run_id TEXT PRIMARY KEY,
@@ -371,25 +438,46 @@ class RunRegistry:
 
     def recover_interrupted(self) -> int:
         interrupted = self.rows("status='running'")
+        # An abruptly terminated scheduler can leave its child simulation alive.
+        # The child inherits this lease file descriptor, so acquire every affected
+        # run lease before changing any registry state. If even one remains held,
+        # leave all rows untouched and refuse to launch possible double writers.
+        recovery_leases: list[RunLease] = []
+        try:
+            for row in interrupted:
+                recovery_leases.append(
+                    RunLease(self.path, row["run_id"]).acquire()
+                )
+        except BaseException:
+            for lease in recovery_leases:
+                lease.release()
+            raise
         now = utc_now()
         reason = "Harness process ended before recording completion; retry may resume checkpoint"
-        for row in interrupted:
+        try:
+            for row in interrupted:
+                self.connection.execute(
+                    """UPDATE runs SET status='failed', finished_utc=?, error=? WHERE run_id=?""",
+                    (now, reason, row["run_id"]),
+                )
+                self.connection.execute(
+                    """UPDATE attempts SET status='failed', finished_utc=?, error=?
+                       WHERE run_id=? AND attempt=? AND status='running'""",
+                    (now, reason, row["run_id"], row["attempt"]),
+                )
             self.connection.execute(
-                """UPDATE runs SET status='failed', finished_utc=?, error=? WHERE run_id=?""",
-                (now, reason, row["run_id"]),
+                """UPDATE schedulers SET status='interrupted', finished_utc=?,
+                   error=COALESCE(error, ?)
+                   WHERE status='running'""",
+                (now, reason),
             )
-            self.connection.execute(
-                """UPDATE attempts SET status='failed', finished_utc=?, error=?
-                   WHERE run_id=? AND attempt=? AND status='running'""",
-                (now, reason, row["run_id"], row["attempt"]),
-            )
-        self.connection.execute(
-            """UPDATE schedulers SET status='interrupted', finished_utc=?,
-               error=COALESCE(error, ?)
-               WHERE status='running'""",
-            (now, reason),
-        )
-        self.connection.commit()
+            self.connection.commit()
+        except BaseException:
+            self.connection.rollback()
+            raise
+        finally:
+            for lease in recovery_leases:
+                lease.release()
         return len(interrupted)
 
     def start(self, run: str) -> sqlite3.Row:
@@ -628,10 +716,6 @@ def manifest_status(row: Mapping[str, Any]) -> tuple[str, str | None]:
                     return "invalid", f"funding application trace failed: {summary_path.name}"
         return "complete", None
     return str(manifest.get("status", "unknown")), manifest.get("wrapper_error")
-
-
-class SchedulerBusyError(RuntimeError):
-    pass
 
 
 class SchedulerFileLock:
@@ -893,8 +977,16 @@ def execute_pending(
                     pending = queue.pop(0)
                     slot = min(available_slots)
                     available_slots.remove(slot)
+                    try:
+                        lease = RunLease(
+                            registry.path, pending["run_id"]
+                        ).acquire()
+                    except SchedulerBusyError:
+                        available_slots.add(slot)
+                        raise
                     row = registry.claim(pending["run_id"])
                     if row is None:
+                        lease.release()
                         available_slots.add(slot)
                         continue
                     command = json.loads(row["command_json"])
@@ -978,9 +1070,11 @@ def execute_pending(
                             stderr=stderr_stream,
                             text=True,
                             env=environment,
+                            pass_fds=(lease.fileno(),),
                         )
                     except Exception as error:
                         _close_streams(streams)
+                        lease.release()
                         registry.finish(
                             row["run_id"],
                             status="failed",
@@ -991,6 +1085,7 @@ def execute_pending(
                         counts["failed"] += 1
                         available_slots.add(slot)
                         continue
+                    lease.relinquish_to_child()
                     registry.set_subprocess_pid(
                         row["run_id"], row["attempt"], process.pid
                     )

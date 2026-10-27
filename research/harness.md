@@ -100,14 +100,20 @@ capability failureをformal completenessではなく制度outcome gateで扱う�
 ## Failure and resume semantics
 
 - run IDはstudy revision、fidelity、seed role、design hash、seedから決定的に作る。
-- harness開始時に`running`のまま残った行を`failed`へ戻す。
+- harness開始時に`running`のまま残った行を検査する。親だけが異常終了して子processが
+  run leaseを保持している場合はregistryを変更せず起動を拒否する。子も終了済みなら
+  その行を`failed`へ戻す。
 - attempt上限内のfailed runは同じrun IDと出力先で再実行する。
 - `--always_rerun`は付けないため、ScienceUtopiaは利用可能な年次checkpointから再開する。
 - process exit 0だけで成功にせず、run manifestの`status=complete`も要求する。
 - integrity reportとfunding application conservation traceの全checkがpassであることも要求する。
-- attemptごとのcombined stdout/stderrを別ファイルへ保存する。
+- worker 1ではattemptごとのcombined stdout/stderrを保存し、並列時はrunごとの
+  stdout/stderrへ分離する。
 - final run状態とは別にattempt tableを保持し、復旧後も一時的失敗、attempt単位の失敗率、消費時間を失わない。
-- v0 harnessは一台のOllama endpointと共有cacheを使うため逐次実行する。並列化時はcache writerとmodel capacityの分離が別途必要。
+- `run --workers N`は一台のOllama endpointへ最大N個の独立runを投入する。
+  `N>1`ではwarm RAG cacheをrunごとのprivate cacheへseedし、mutable cacheと出力を
+  分離する。model capacity上の実効速度は保証しないため1/2/4 workersで実測する。
+  詳細は [`parallel-harness-v1.md`](parallel-harness-v1.md) を参照する。
 
 ## Report boundary
 

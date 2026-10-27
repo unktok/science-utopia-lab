@@ -3,8 +3,8 @@
 The optimization harness can launch independent simulation runs concurrently
 against one shared Ollama endpoint:
 
-    python -m utopia.optimization.harness \
-      --study research/specs/example.json run --workers 2
+    .venv/bin/python -m utopia.optimization.harness \
+      --study research/specs/study-v0-smoke.json run --workers 2
 
 The default remains workers=1. In that mode commands, shared cache behavior,
 combined attempt-N.log output, registry states, retries, and returned counts
@@ -46,9 +46,16 @@ Science outputs remain separated by the existing safe run id:
 
 A non-zero process or invalid manifest fails only that run. Other active and
 queued runs continue. Ctrl-C terminates active children, marks their attempts
-failed, and records an interrupted scheduler. A hard-killed parent leaves
-running rows; the next invocation recovers them as failed attempts and retries
-from their existing checkpoints when attempts remain.
+failed, and records an interrupted scheduler.
+
+Every run subprocess inherits a per-run file lease. If a parent is hard-killed
+but its child simulation remains alive, that child continues to hold the lease.
+The next scheduler then refuses recovery and leaves the registry unchanged,
+rather than launching a second writer into the same run output. After the
+orphan exits or an operator terminates it, the next invocation recovers the
+stale row as a failed attempt and may resume its checkpoint. Integrate this
+version only while the old sequential harness is quiescent, because processes
+started by the old version do not inherit run leases.
 
 ## Shared Ollama and cache safety
 

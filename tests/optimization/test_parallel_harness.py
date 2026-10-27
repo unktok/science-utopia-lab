@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 import pytest
@@ -257,6 +258,46 @@ def test_resume_recovers_running_attempt_and_uses_next_attempt(
         ] == [(1, "failed"), (2, "complete")]
         assert registry.scheduler_rows()[-1]["recovered_runs"] == 1
     finally:
+        registry.close()
+
+
+def test_recovery_refuses_retry_while_orphaned_child_holds_run_lease(
+    tmp_path: Path,
+) -> None:
+    registry = RunRegistry(tmp_path / "registry.sqlite3")
+    child = None
+    lease = None
+    try:
+        add_run(registry, tmp_path, "orphaned")
+        row = registry.claim("orphaned")
+        assert row is not None
+        lease = harness.RunLease(registry.path, "orphaned").acquire()
+        child = subprocess.Popen(
+            [sys.executable, "-c", "import time; time.sleep(60)"],
+            pass_fds=(lease.fileno(),),
+        )
+
+        # Model the scheduler disappearing without terminating its child. The
+        # inherited descriptor keeps the lease held by the surviving process.
+        lease.relinquish_to_child()
+        lease = None
+        with pytest.raises(harness.SchedulerBusyError, match="still holds"):
+            registry.recover_interrupted()
+        assert registry.rows()[0]["status"] == "running"
+        assert registry.attempt_rows()[0]["status"] == "running"
+
+        child.terminate()
+        child.wait(timeout=5)
+        child = None
+        assert registry.recover_interrupted() == 1
+        assert registry.rows()[0]["status"] == "failed"
+        assert registry.attempt_rows()[0]["status"] == "failed"
+    finally:
+        if lease is not None:
+            lease.release()
+        if child is not None:
+            child.terminate()
+            child.wait(timeout=5)
         registry.close()
 
 
