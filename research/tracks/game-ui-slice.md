@@ -1,6 +1,6 @@
 # Game UI vertical slice
 
-Status: implemented on `track/game-ui-slice` (local-only prototype)
+Status: integrated in `main`; real-browser prototype verified on 2026-10-27
 
 ## Question
 
@@ -26,6 +26,13 @@ silently mutate an existing replay.
 - canonical payload inspection and stream-hash visibility;
 - keyboard access, focus indicators, semantic labels, and reduced-motion mode;
 - deterministic Python export tests and dependency-free JavaScript model tests.
+
+## Verification
+
+The generated one-year fixture was loaded in a real browser, playback controls
+and the read-only event-evidence panel were exercised, and the rendered screen
+was captured for remote review. This validates the delivered vertical slice as
+an executable UI rather than a static design mock.
 
 ## Not included
 

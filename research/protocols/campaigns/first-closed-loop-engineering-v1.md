@@ -1,6 +1,6 @@
 # First closed-loop engineering campaign v1
 
-Status: prospective engineering protocol; simulator execution pending
+Status: completed on campaign revision `9a10029807d5`
 
 ## Purpose and claim boundary
 
@@ -92,6 +92,25 @@ Raw outputs stay under ignored `outputs/optimization/closed-loop/`. Compact
 result summaries, hashes, source commit, tag, revision, and interpretation will
 be tracked after completion.
 
+## Completed result
+
+The nine model-backed runs completed on 2026-10-27. The two initial aggregate
+losses were `0.6733787036888884` and `0.42117851300121634`. The adaptive
+suggestion recorded the lower-loss initial observation
+`o27437d6a43b8379b` as its parent and also produced loss
+`0.42117851300121634`. It tied rather than improved on its parent.
+
+All runs completed on attempt one, all integrity and application-trace checks
+passed, and no held-out seed entered the registry. Controller reinitialization
+left its state and evidence hashes unchanged.
+
+- machine-readable result:
+  [`../../results/first-closed-loop-engineering-v1.json`](../../results/first-closed-loop-engineering-v1.json)
+- interpretation:
+  [`../../results/first-closed-loop-engineering-v1-interpretation.md`](../../results/first-closed-loop-engineering-v1-interpretation.md)
+- milestone:
+  [`../../milestones/2026-10-27-first-closed-loop-engineering.md`](../../milestones/2026-10-27-first-closed-loop-engineering.md)
+
 ## Operator commands
 
 Run only from a clean worktree pinned to the protocol tag:
@@ -122,3 +141,6 @@ the optimizer state is reconstructed from disk.
 3. Controller restart does not alter candidate identity or optimizer history.
 4. No held-out evaluation seed appears in the optimization run registry.
 5. The result report preserves the engineering-only claim boundary.
+
+All five criteria passed. These criteria establish controller behavior and
+technical integrity only; they do not validate the loss as a policy objective.

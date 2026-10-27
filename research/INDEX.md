@@ -14,6 +14,9 @@ and results. New work uses the forward-only taxonomy below.
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
 - [Black-box ask/tell boundary](optimizers/blackbox-ask-tell-v1.md)
 - [First closed-loop engineering protocol](protocols/campaigns/first-closed-loop-engineering-v1.md)
+- [First closed-loop engineering result](results/first-closed-loop-engineering-v1-interpretation.md)
+- [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
+- [Milestone 3: first real result-dependent closed loop](milestones/2026-10-27-first-closed-loop-engineering.md)
 - [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)
 - [Game UI vertical slice](tracks/game-ui-slice.md)
 

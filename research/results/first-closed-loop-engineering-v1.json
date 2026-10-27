@@ -1,0 +1,229 @@
+{
+  "schema": "scienceutopia.closed-loop-result.v1",
+  "campaign": {
+    "id": "first-closed-loop-engineering",
+    "revision": "9a10029807d5",
+    "protocol_tag": "protocol/first-closed-loop-engineering-v1.1",
+    "source_commit": "0b733df425405f5e2eeb953cff2a7288f13f5af9",
+    "source_tree_dirty": false,
+    "model": "qwen3:8b",
+    "backend": "ollama",
+    "fidelity": "smoke",
+    "workers": 1,
+    "created_utc": "2026-10-27T03:19:14.441883+00:00",
+    "completed_utc": "2026-10-27T06:03:24.736518+00:00"
+  },
+  "claim_boundary": {
+    "kind": "engineering_demo",
+    "statement": "This result demonstrates a persistent, result-dependent black-box optimization loop over executable SystemSpec objects. It does not establish that any candidate is good science policy or that the engineering loss represents scientific or social value."
+  },
+  "loss_spec": {
+    "id": "engineering-continuity-demo",
+    "version": "1.0.0",
+    "sha256": "b31e8529f5cbaf540f3cfdfab37c1588a9daee68b24bce0b6c2516c6a4c2a983",
+    "lower_is_better": true,
+    "run_formula": {
+      "constant": 1.0,
+      "active_researcher_fraction_coefficient": -1.0,
+      "review_burden_per_active_researcher_coefficient": 0.05
+    },
+    "aggregation": {
+      "formula": "mean + 0.25 * population_sd",
+      "minimum_valid_runs": 3
+    }
+  },
+  "seed_sets": {
+    "optimization": [503, 509, 521],
+    "held_out_evaluation": [523, 541, 547],
+    "held_out_evaluation_consumed": false
+  },
+  "optimizer_outcome": {
+    "kind": "adaptive_random_search",
+    "seed": 20261027,
+    "initial_random": 2,
+    "mutation_scale": 0.2,
+    "budget": {
+      "used": 3,
+      "maximum": 3
+    },
+    "result_dependent_update": {
+      "adaptive_suggestion_id": "s78f27eb6410b8954",
+      "based_on_observation_id": "o27437d6a43b8379b",
+      "lowest_loss_initial_observation_id": "o27437d6a43b8379b",
+      "verified": true
+    },
+    "incumbent": {
+      "suggestion_id": "s5aad19dd3da73bc8",
+      "design_id": "d818522bc230e",
+      "observation_id": "o27437d6a43b8379b",
+      "loss": 0.42117851300121634,
+      "tie_break": "first observation at the minimum loss"
+    },
+    "adaptive_result": {
+      "loss": 0.42117851300121634,
+      "relation_to_parent": "tie",
+      "improvement_claimed": false
+    }
+  },
+  "technical_audit": {
+    "registered_runs": 9,
+    "complete_runs": 9,
+    "failed_runs": 0,
+    "first_attempt_completions": 9,
+    "passing_integrity_reports": 9,
+    "passing_funding_trace_summaries": 9,
+    "unaffordable_application_withdrawals_recorded": 12,
+    "held_out_registry_rows": 0,
+    "restart_state_byte_stable": true,
+    "total_serial_run_seconds": 9821.614676,
+    "mean_run_seconds": 1091.29052,
+    "minimum_run_seconds": 792.6796916249441,
+    "maximum_run_seconds": 1531.5488970829756
+  },
+  "suggestions": [
+    {
+      "suggestion_id": "s48505e482ecaac6c",
+      "design_id": "d0cff50cb65e7",
+      "phase": "initial",
+      "based_on_observation_id": null,
+      "source_candidate": {
+        "acceptance_rate": 0.4992512,
+        "funding_application_cost": 17,
+        "funding_budget_slots_frac": 0.12681819,
+        "resubmission_cost": 8.04928618,
+        "review_policy": "standardized",
+        "reviewer_capacity": 6,
+        "reviewer_matching": "topic",
+        "reviews_per_paper": 5
+      },
+      "observation_id": "odf0f35638a6a68ed",
+      "status": "complete",
+      "loss": 0.6733787036888884,
+      "mean_run_loss": 0.6444444444444445,
+      "population_sd": 0.11573703697777585,
+      "loss_report_sha256": "125761d2d8df1812533deecd6091b97af149497172bf3db83e6e98091c41b006",
+      "runs": [
+        {
+          "seed": 503,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d0cff50cb65e7-s503",
+          "active_researcher_fraction": 0.5,
+          "review_burden_per_active_researcher": 5.0,
+          "run_loss": 0.75,
+          "wall_seconds": 1531.5488970829756
+        },
+        {
+          "seed": 509,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d0cff50cb65e7-s509",
+          "active_researcher_fraction": 0.5,
+          "review_burden_per_active_researcher": 4.0,
+          "run_loss": 0.7,
+          "wall_seconds": 1197.8834205419989
+        },
+        {
+          "seed": 521,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d0cff50cb65e7-s521",
+          "active_researcher_fraction": 0.6,
+          "review_burden_per_active_researcher": 1.6666666666666667,
+          "run_loss": 0.4833333333333334,
+          "wall_seconds": 901.94742916699033
+        }
+      ]
+    },
+    {
+      "suggestion_id": "s5aad19dd3da73bc8",
+      "design_id": "d818522bc230e",
+      "phase": "initial",
+      "based_on_observation_id": null,
+      "source_candidate": {
+        "acceptance_rate": 0.23642167,
+        "funding_application_cost": 11,
+        "funding_budget_slots_frac": 0.23145377,
+        "resubmission_cost": 2.63186844,
+        "review_policy": "standardized",
+        "reviewer_capacity": 5,
+        "reviewer_matching": "topic",
+        "reviews_per_paper": 2
+      },
+      "observation_id": "o27437d6a43b8379b",
+      "status": "complete",
+      "loss": 0.42117851300121634,
+      "mean_run_loss": 0.39166666666666666,
+      "population_sd": 0.11804738533819881,
+      "loss_report_sha256": "f3477bebbc42a62f4237cefb0ee27b591c1a1534caff26c3e9a17e3e9675782c",
+      "runs": [
+        {
+          "seed": 503,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s503",
+          "active_researcher_fraction": 0.6,
+          "review_burden_per_active_researcher": 1.6666666666666667,
+          "run_loss": 0.4833333333333334,
+          "wall_seconds": 1344.9702305829851
+        },
+        {
+          "seed": 509,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s509",
+          "active_researcher_fraction": 0.6,
+          "review_burden_per_active_researcher": 1.3333333333333333,
+          "run_loss": 0.4666666666666667,
+          "wall_seconds": 948.92666591599118
+        },
+        {
+          "seed": 521,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521",
+          "active_researcher_fraction": 0.8,
+          "review_burden_per_active_researcher": 0.5,
+          "run_loss": 0.22499999999999995,
+          "wall_seconds": 792.6796916249441
+        }
+      ]
+    },
+    {
+      "suggestion_id": "s78f27eb6410b8954",
+      "design_id": "d7e65ef19ae3e",
+      "phase": "adaptive",
+      "based_on_observation_id": "o27437d6a43b8379b",
+      "source_candidate": {
+        "acceptance_rate": 0.19114813,
+        "funding_application_cost": 11,
+        "funding_budget_slots_frac": 0.26765132,
+        "resubmission_cost": 4.55658176,
+        "review_policy": "standardized",
+        "reviewer_capacity": 5,
+        "reviewer_matching": "topic",
+        "reviews_per_paper": 2
+      },
+      "observation_id": "oe893071eee454a9c",
+      "status": "complete",
+      "loss": 0.42117851300121634,
+      "mean_run_loss": 0.39166666666666666,
+      "population_sd": 0.11804738533819881,
+      "loss_report_sha256": "31c5af0f4a95f08a70100c8a57877a044919a1234327ba546f30cda6e508504c",
+      "runs": [
+        {
+          "seed": 503,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d7e65ef19ae3e-s503",
+          "active_researcher_fraction": 0.6,
+          "review_burden_per_active_researcher": 1.6666666666666667,
+          "run_loss": 0.4833333333333334,
+          "wall_seconds": 1348.3392406670027
+        },
+        {
+          "seed": 509,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d7e65ef19ae3e-s509",
+          "active_researcher_fraction": 0.6,
+          "review_burden_per_active_researcher": 1.3333333333333333,
+          "run_loss": 0.4666666666666667,
+          "wall_seconds": 954.67739920900203
+        },
+        {
+          "seed": 521,
+          "run_id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d7e65ef19ae3e-s521",
+          "active_researcher_fraction": 0.8,
+          "review_burden_per_active_researcher": 0.5,
+          "run_loss": 0.22499999999999995,
+          "wall_seconds": 800.64170133299194
+        }
+      ]
+    }
+  ]
+}

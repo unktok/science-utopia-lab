@@ -14,3 +14,7 @@ a compact manifest containing:
 
 Historical absolute paths remain immutable provenance. Moving a repository or
 artifact adds a `current_locator`; it does not rewrite the original manifest.
+
+Current records:
+
+- [`first-closed-loop-engineering-v1.manifest.json`](first-closed-loop-engineering-v1.manifest.json)

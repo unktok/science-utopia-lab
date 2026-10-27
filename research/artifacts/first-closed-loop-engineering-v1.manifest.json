@@ -1,0 +1,61 @@
+{
+  "schema_version": "science-utopia.artifact-manifest.v1",
+  "campaign_id": "first-closed-loop-engineering",
+  "campaign_revision": "9a10029807d5",
+  "recorded_at": "2026-10-27",
+  "source_commit": "0b733df425405f5e2eeb953cff2a7288f13f5af9",
+  "protocol_tag": "protocol/first-closed-loop-engineering-v1.1",
+  "model": {
+    "id": "qwen3:8b",
+    "backend": "ollama"
+  },
+  "dataset": {
+    "id": "Ahren09/SciEvo",
+    "configuration": "arxiv",
+    "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+    "ordered_documents_sha256": "ebc952dbd698c3be609fba511b304bf50e898b60664097416cef4eb076150eec"
+  },
+  "tracked_results": [
+    {
+      "path": "research/results/first-closed-loop-engineering-v1.json",
+      "sha256": "3b6132c12823b34ea76fbe553688c54ed78cd03deac3aadd458a7e775a45d167"
+    },
+    {
+      "path": "research/results/first-closed-loop-engineering-v1-interpretation.md",
+      "sha256": "2e5cc9d20504b0c287b6773e2d7c74f2afcb12068e7af37aecc80cbe5840c11d"
+    },
+    {
+      "path": "research/milestones/2026-10-27-first-closed-loop-engineering.md",
+      "sha256": "b8c134b4f0e77b82358654091cc67b7c9e7004338228d0f5df30b628c915f6d4"
+    }
+  ],
+  "raw_campaign": {
+    "historical_locator": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/first-closed-loop-v1.1/outputs/optimization/closed-loop/first-closed-loop-engineering/9a10029807d5",
+    "current_locator": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/first-closed-loop-v1.1/outputs/optimization/closed-loop/first-closed-loop-engineering/9a10029807d5",
+    "inventory": {
+      "file_count": 178,
+      "byte_count": 23139973,
+      "sha256": "a824f498c20d29fe6cf486c95bb53c9bdda35a58bdb0fcf20ac0461c85f7b9d0",
+      "format": "sorted lines of SHA-256, byte count, and relative path",
+      "excluded": [
+        "runs.sqlite3.run-leases/*",
+        "runs.sqlite3.scheduler.lock"
+      ]
+    },
+    "files": {
+      "campaign-snapshot.json": "c22839d5491b4f5fbc4d509a9b142b6a9ba6fb9737bea33bce255c9f5c2ad1ea",
+      "campaign-state.json": "669248b2abc86f0ba8c0bca9522ba13d885d6515c6d137dacc5328e030350e04",
+      "runs.sqlite3": "8388a107f816962791b97c18ab94f2235267a720b04338d10e91533a50a9906a",
+      "reports/registry-report.json": "80b1aacc6e00267c6831c60d872e7304c28ba1021394177be952d2c3ad956e59",
+      "reports/s48505e482ecaac6c.loss.json": "125761d2d8df1812533deecd6091b97af149497172bf3db83e6e98091c41b006",
+      "reports/s5aad19dd3da73bc8.loss.json": "f3477bebbc42a62f4237cefb0ee27b591c1a1534caff26c3e9a17e3e9675782c",
+      "reports/s78f27eb6410b8954.loss.json": "31c5af0f4a95f08a70100c8a57877a044919a1234327ba546f30cda6e508504c"
+    }
+  },
+  "retention": {
+    "status": "local_primary_only",
+    "backup_verified": false,
+    "readback_verified_at": "2026-10-27",
+    "readback_scope": "all 178 inventory files"
+  }
+}
