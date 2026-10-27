@@ -114,6 +114,14 @@ class FundingApplicationTrace:
         self._emit(trace_id, "collection", outcome="dropped",
                    reason="duplicate_agent_program")
 
+    def withdrawn(self, application, reason):
+        """Record a validated application that exits before evaluation."""
+        trace_id = application.get("_application_trace_id")
+        if trace_id not in self._states:
+            return
+        self._states[trace_id]["dropped"] = True
+        self._emit(trace_id, "submission", outcome="withdrawn", reason=reason)
+
     def evaluation(self, application):
         trace_id = application.get("_application_trace_id")
         if trace_id not in self._states:

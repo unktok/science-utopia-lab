@@ -280,7 +280,7 @@ def build_influx_cohort(year: int, seed: int) -> List[Dict]:
 
 
 def charge_application_costs(university_applications: List[Dict], app_cost: int,
-                             year: int) -> List[Dict]:
+                             year: int, trace=None) -> List[Dict]:
     """Matthew-RD cost intervention: charge the frozen GRANT-APPLICATION cost
     at submission time, BEFORE the funding result is known, to winners and
     losers alike, once per application (incl. multiple same-year apps).
@@ -316,6 +316,8 @@ def charge_application_costs(university_applications: List[Dict], app_cost: int,
                     apply_resource_change(
                         agent, 0, category='funding_application_cost', year=year,
                         program=program_id, reason='withdrawn_unaffordable')
+                if trace is not None:
+                    trace.withdrawn(app_data, "unaffordable_application_cost")
                 del apps_dict[program_id]
                 events.append({
                     'year': year, 'applicant_id': agent.id,
@@ -3484,7 +3486,8 @@ class Simulation:
         self._allocate_industry_funding(year, active_papers, year_results)
         applications = self._collect_funding_applications(year, funding_agencies)
         cost_events = charge_application_costs(
-            applications, getattr(self.args, 'funding_application_cost', 0) or 0, year)
+            applications, getattr(self.args, 'funding_application_cost', 0) or 0, year,
+            trace=self._funding_application_traces.get(year))
         winners = self._evaluate_funding_applications(year, applications, funding_agencies, year_results)
         funding_per_unit = self._allocate_university_funding(year, winners, active_papers)
         self._record_funding_costs(year, cost_events, winners, funding_per_unit)

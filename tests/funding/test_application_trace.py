@@ -5,7 +5,7 @@ from utopia.agents.funding_agents import FundingAgency
 from utopia.agents.researcher_agents import UniversityResearcher
 from utopia.funding.application_trace import FundingApplicationTrace
 from utopia.runtime.checkpointing import simulation_replay_paths
-from utopia.simulation import Simulation
+from utopia.simulation import Simulation, charge_application_costs
 
 
 def metadata(agent_id, program_id):
@@ -71,6 +71,38 @@ def test_terminal_drop_is_explained_but_missing_evaluation_is_not(tmp_path):
     assert summary["passed"] is False
     assert summary["counts"]["dropped"] == 1
     assert summary["failures"] == ["y2-a000002: submitted but not evaluated"]
+
+
+def test_unaffordable_application_withdrawal_is_a_terminal_trace_outcome(tmp_path):
+    class CostedApplicant:
+        def __init__(self):
+            self.id = "researcher-1"
+            self.resources = 3
+            self.resource_ledger = None
+
+        def update_resources(self, delta):
+            self.resources = max(0, self.resources + delta)
+
+    trace = FundingApplicationTrace(1, tmp_path)
+    agent = CostedApplicant()
+    application_metadata = {"agent": agent, "program_id": "program-a"}
+    trace.target(application_metadata, 1)
+    application = {"author": agent, "submit": True}
+    trace.generation_attempt(application_metadata, 1, "valid")
+    trace.validated(application_metadata, application, 1)
+
+    events = charge_application_costs(
+        [{"program-a": application}], app_cost=5, year=1, trace=trace)
+
+    assert events[0]["withdrawn_unaffordable"] is True
+    summary = trace.summary()
+    assert summary["passed"] is True
+    assert summary["counts"]["dropped"] == 1
+    assert summary["counts"]["evaluated"] == 0
+    assert summary["reason_counts"] == {"unaffordable_application_cost": 1}
+    withdrawal = json.loads(trace.events_path.read_text().splitlines()[-1])
+    assert withdrawal["event"] == "submission"
+    assert withdrawal["outcome"] == "withdrawn"
 
 
 def test_normalized_rankings_preserve_application_trace_identity():
