@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/system-spec-v1.schema.json",
+  "title": "Science Utopia whole-system mechanism graph v1",
+  "description": "Structural schema for a complete science-system design. No mechanism family is required.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["system_id", "version"],
+  "properties": {
+    "system_id": { "$ref": "#/$defs/id" },
+    "version": { "type": "integer", "minimum": 1 },
+    "agent_types": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/agentType" },
+      "default": []
+    },
+    "artifact_types": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifactType" },
+      "default": []
+    },
+    "mechanisms": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/mechanism" },
+      "default": []
+    },
+    "connections": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/connection" },
+      "default": []
+    },
+    "schedules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/schedule" },
+      "default": []
+    },
+    "initial_state": { "type": "object", "default": {} },
+    "global_invariants": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true,
+      "default": []
+    },
+    "metadata": { "type": "object", "default": {} }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"
+    },
+    "channel": {
+      "enum": [
+        "artifact",
+        "score",
+        "decision",
+        "feedback",
+        "resource",
+        "signal",
+        "constraint"
+      ]
+    },
+    "agentType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_type_id"],
+      "properties": {
+        "agent_type_id": { "$ref": "#/$defs/id" },
+        "roles": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "default": []
+        },
+        "description": { "type": "string", "default": "" }
+      }
+    },
+    "artifactType": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_type_id"],
+      "properties": {
+        "artifact_type_id": { "$ref": "#/$defs/id" },
+        "description": { "type": "string", "default": "" }
+      }
+    },
+    "port": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["port_id", "channel"],
+      "properties": {
+        "port_id": { "$ref": "#/$defs/id" },
+        "channel": { "$ref": "#/$defs/channel" },
+        "artifact_type": {
+          "oneOf": [{ "$ref": "#/$defs/id" }, { "type": "null" }],
+          "default": null
+        },
+        "required": { "type": "boolean", "default": true }
+      }
+    },
+    "mechanism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mechanism_id", "family", "implementation"],
+      "properties": {
+        "mechanism_id": { "$ref": "#/$defs/id" },
+        "family": {
+          "enum": [
+            "population",
+            "research",
+            "evaluation",
+            "publication",
+            "funding",
+            "governance",
+            "communication",
+            "collaboration",
+            "employment",
+            "education",
+            "custom"
+          ]
+        },
+        "implementation": { "type": "string", "minLength": 1 },
+        "version": { "type": "integer", "minimum": 1, "default": 1 },
+        "inputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/port" },
+          "default": []
+        },
+        "outputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/port" },
+          "default": []
+        },
+        "parameters": { "type": "object", "default": {} }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_mechanism",
+        "source_port",
+        "target_mechanism",
+        "target_port",
+        "channel"
+      ],
+      "properties": {
+        "source_mechanism": { "$ref": "#/$defs/id" },
+        "source_port": { "$ref": "#/$defs/id" },
+        "target_mechanism": { "$ref": "#/$defs/id" },
+        "target_port": { "$ref": "#/$defs/id" },
+        "channel": { "$ref": "#/$defs/channel" },
+        "latency": { "type": "integer", "minimum": 0, "default": 0 }
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mechanism_id", "phase"],
+      "properties": {
+        "mechanism_id": { "$ref": "#/$defs/id" },
+        "phase": { "type": "integer", "minimum": 0 },
+        "trigger": { "type": "string", "minLength": 1, "default": "annual" }
+      }
+    }
+  }
+}
