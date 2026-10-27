@@ -224,6 +224,7 @@ def legacy_candidate_to_system_spec(
                 "log_resource_ledger": bool(fixed.get("log_resource_ledger")),
             },
             "source_design_space": space["id"],
+            "source_candidate": dict(candidate),
             "restricted_topology": True,
         },
     )
