@@ -39,11 +39,30 @@ together consumed 31.39 hours of wall time.
 | 8 | 5 | 40 | 68.0 h (2.8 d) |
 | 16 | 5 | 80 | 136.0 h (5.7 d) |
 
-Four workers would reduce 40 runs to about 17 hours only under ideal scaling.
-The local Ollama/Metal endpoint has not established that scaling; benchmark
-`workers=1,2,4` on the same representative workload and report aggregate
-throughput, per-run latency, failures, and peak memory before scheduling the
-optimization campaign.
+Four independent workers would reduce 40 runs to about 17 hours only under
+ideal scaling. A local endpoint microbenchmark now shows that this assumption
+does not hold for the current single Ollama/Metal endpoint.
+
+## Local workers 1/2/4 microbenchmark
+
+On 2026-10-27, Qwen3-8B Q4_K_M on Ollama 0.33.3 processed the same fixed request
+budget at each worker count, using three order-rotated repetitions:
+
+| Workers | Mean makespan | Speedup | Generated tok/s | Mean request latency |
+|---:|---:|---:|---:|---:|
+| 1 | 7.688 s | 1.000x | 47.356 | 0.961 s |
+| 2 | 7.621 s | 1.009x | 47.767 | 1.775 s |
+| 4 | 7.567 s | 1.016x | 48.105 | 3.004 s |
+
+All 72 timed requests completed without errors or retries, swap did not increase
+within a trial, and Ollama peaked at about 11.6 GB RSS. Thus four workers are
+operationally stable for this short workload, but the endpoint effectively
+serializes inference: aggregate throughput is flat while request latency grows
+to 3.13x. Use one local worker for runtime estimates until a commit-pinned full
+simulator smoke comparison says otherwise. Material campaign speedup requires
+independent model replicas or a backend that demonstrates aggregate batching
+throughput. See
+[`optimizers/compute/parallel-benchmark-v1.md`](optimizers/compute/parallel-benchmark-v1.md).
 
 ## Throughput-to-runtime conversion
 
@@ -143,8 +162,9 @@ The bounded parallel harness can now schedule multiple run subprocesses against
 one shared Ollama endpoint while isolating mutable caches and outputs. Its
 per-run inherited leases prevent a recovered scheduler from duplicating an
 orphaned writer. This is an execution-safety capability, not evidence of
-throughput scaling: workers 1/2/4 must be benchmarked on the target machine
-before making a speed claim, and independent model replicas are still required
+throughput scaling. The local endpoint microbenchmark found only 1.016x speedup
+at four workers with 3.13x mean request latency. A target machine must be
+benchmarked independently, and independent model replicas are still required
 before claiming multi-GPU scaling. See
 [`parallel-harness-v1.md`](parallel-harness-v1.md).
 

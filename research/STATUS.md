@@ -22,16 +22,16 @@ Remote: `unktok/science-utopia-lab`
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | partial | participation, review burden, topic spread, funding/activity shadows |
 | optimization loss | not frozen | new `LossSpec` required before search |
-| held-out evaluation metrics | needs separation | current documents conflate metrics and objectives |
-| candidate generation | partial | random and Sobol sampling exist |
-| closed-loop optimizer | not implemented | no `suggest → simulate → observe → suggest` loop |
-| parallel campaign execution | integrated | bounded workers and orphan-writer leases; benchmark workers 1/2/4 |
-| canonical event replay | integrated | deterministic sidecar fixture; connect future UI consumers |
+| held-out evaluation metrics | contract defined | executable campaign-specific specs remain |
+| candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
+| closed-loop optimizer | partial | result-dependent `SystemSpec` proposal works; production simulator controller missing |
+| parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
+| canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
-| whole-system `SystemSpec` | design stage | typed mechanism graph/compiler not implemented |
-| structural system optimization | not started | topology mutation/search follows executable `SystemSpec` |
+| whole-system `SystemSpec` | integrated foundation | typed model, validator, fingerprint, legacy compiler |
+| structural system optimization | not started | general graph runtime and topology mutation remain |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | design stage | canonical replay is the prerequisite |
+| game UI | first vertical slice | local pixel-art replay viewer; intervention/branching remain |
 
 ## Completed experiment boundary
 
@@ -46,10 +46,10 @@ Complete `Optimization v1`:
 
 1. define one versioned `LossSpec` on optimization seeds;
 2. declare separate held-out evaluation metrics;
-3. integrate and benchmark bounded campaign workers;
+3. **complete:** integrate bounded workers and benchmark the local endpoint;
 4. run an initial multi-design sample;
-5. feed observations into an optimizer interface;
-6. demonstrate at least one full closed-loop proposal update.
+5. **complete at API level:** feed observations into result-dependent `ask/tell`;
+6. connect persistent campaign execution and demonstrate one real proposal update.
 
 This milestone may begin with parameters of the legacy fixed topology for a
 small end-to-end proof. Its optimizer boundary must accept a design object that

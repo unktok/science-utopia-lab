@@ -11,6 +11,10 @@ and results. New work uses the forward-only taxonomy below.
 - [Roadmap](roadmap.md)
 - [Research charter](charter.md)
 - [Closed-loop optimization contract](objectives/losses/closed-loop-v1.md)
+- [Whole-system graph foundation](components/system-spec-graph-v1.md)
+- [Black-box ask/tell boundary](optimizers/blackbox-ask-tell-v1.md)
+- [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)
+- [Game UI vertical slice](tracks/game-ui-slice.md)
 
 ## Conceptual objects
 

@@ -83,3 +83,14 @@ spaceの探索ではない。現在の中心課題は、optimizerが直接参照
 過去campaignのprotected-slice vetoは歴史的promotion policyとして保存するが、
 新しいoptimizerの既定constraintにはしない。
 
+その後、whole-system `SystemSpec`のtyped graph、validator、legacy compilerと、
+不透明な`SystemSpec`を扱うblack-box `ask/tell`境界を実装した。optimizerは
+simulator内部や勾配を必要とせず、現行8変数を制限版SystemSpecとして提案し、
+観測lossに依存した次候補を生成できる。実シミュレーションcampaignとの永続的な
+controller接続とversioned `LossSpec`は未完了である。
+
+並行してcanonical replayから生成した状態だけを描画するpixel-art風game UIの
+最初のvertical sliceを実装した。ローカルOllamaのworkers 1/2/4 benchmarkでは、
+4 workersは安定動作したがthroughputは1.016倍に留まったため、単一endpointを
+4倍速とは見積もらない。
+
