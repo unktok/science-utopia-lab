@@ -6,6 +6,7 @@ import pytest
 from utopia.optimization.paired_comparison import (
     bootstrap_mean_interval,
     build_paired_comparison,
+    main,
     render_markdown,
     summarize_deltas,
 )
@@ -202,6 +203,30 @@ def test_confirmation_treats_capability_failure_as_outcome_distribution(tmp_path
     assert report["capability_outcome_distribution"]["paired_transitions"]["fail_to_pass"] == 1
     assert report["candidate_confirmation_decision"]["status"] == "confirmed_tradeoff"
     assert "Confirmation capability outcome" in render_markdown(report)
+
+
+def test_cli_uses_seed_set_declared_for_requested_role(tmp_path):
+    baseline = tmp_path / "baseline"
+    candidate = tmp_path / "candidate"
+    output = tmp_path / "comparison.json"
+    _write_campaign(
+        baseline, label="baseline", funding_fraction=0.3,
+        eligibility="feasible", seed_role="confirmation",
+    )
+    _write_campaign(
+        candidate, label="candidate", funding_fraction=0.5,
+        eligibility="feasible", seed_role="confirmation",
+    )
+
+    assert main([
+        "--baseline-root", str(baseline),
+        "--candidate-root", str(candidate),
+        "--seed-role", "confirmation",
+        "--json-output", str(output),
+    ]) == 0
+    report = json.loads(output.read_text())
+    assert report["comparison"]["seeds"] == [1]
+    assert report["comparison"]["pairing_key"] == "confirmation_seed"
 
 
 def test_build_comparison_rejects_unregistered_design_change(tmp_path):

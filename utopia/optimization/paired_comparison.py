@@ -60,6 +60,17 @@ def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _declared_seed_set(root: str | Path, seed_role: str) -> tuple[int, ...]:
+    snapshot = _read_json(Path(root) / "study-snapshot.json")
+    declared = snapshot.get("study", {}).get("seed_sets", {}).get(seed_role)
+    if not isinstance(declared, list) or not declared:
+        raise ValueError(f"study snapshot has no non-empty {seed_role} seed set")
+    seeds = tuple(int(seed) for seed in declared)
+    if len(seeds) != len(set(seeds)):
+        raise ValueError(f"study snapshot {seed_role} seed set is not unique")
+    return seeds
+
+
 def _quantile(sorted_values: list[float], probability: float) -> float:
     if len(sorted_values) == 1:
         return sorted_values[0]
@@ -633,8 +644,15 @@ def main(argv: list[str] | None = None) -> int:
         default=DEFAULT_SEED_ROLE,
     )
     args = parser.parse_args(argv)
+    baseline_seeds = _declared_seed_set(args.baseline_root, args.seed_role)
+    candidate_seeds = _declared_seed_set(args.candidate_root, args.seed_role)
+    if baseline_seeds != candidate_seeds:
+        raise ValueError(
+            f"baseline and candidate {args.seed_role} seed sets do not match"
+        )
     report = build_paired_comparison(
-        args.baseline_root, args.candidate_root, seed_role=args.seed_role,
+        args.baseline_root, args.candidate_root, seeds=baseline_seeds,
+        seed_role=args.seed_role,
     )
     json_path = Path(args.json_output)
     json_path.parent.mkdir(parents=True, exist_ok=True)
