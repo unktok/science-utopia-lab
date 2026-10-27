@@ -21,9 +21,9 @@ searched.
 | held-out evaluation metrics | needs separation | current documents conflate metrics and objectives |
 | candidate generation | partial | random and Sobol sampling exist |
 | closed-loop optimizer | not implemented | no `suggest → simulate → observe → suggest` loop |
-| parallel campaign execution | implemented on branch, not integrated | safety fix and benchmark required |
-| canonical event replay | implemented on branch, not integrated | branch verification and staged merge |
-| Evaluation System API | implemented on branch, not integrated | shadow-mode integration required |
+| parallel campaign execution | integrated | bounded workers and orphan-writer leases; benchmark workers 1/2/4 |
+| canonical event replay | integrated | deterministic sidecar fixture; connect future UI consumers |
+| Evaluation System API | integrated foundation | auditable interface; shadow-mode simulator integration remains |
 | structural system optimization | design stage | typed mechanism graph not implemented |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | design stage | canonical replay is the prerequisite |
