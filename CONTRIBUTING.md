@@ -5,6 +5,10 @@
 `main` is the integration and canonical research-record branch. Use one branch
 and one linked worktree per feature or research track.
 
+The canonical checkout is `/Users/shiro/unktok/dev/science-utopia-lab` and
+linked worktrees are grouped under
+`/Users/shiro/unktok/dev/science-utopia-lab-worktrees/`.
+
 Suggested branch prefixes:
 
 - `protocol/`: preregistration and campaign definitions

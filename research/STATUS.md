@@ -9,6 +9,10 @@ does not yet have a complete closed-loop optimizer. Two parameter points have
 been repeatedly evaluated; the eight-dimensional design space has not yet been
 searched.
 
+Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
+
+Remote: `unktok/science-utopia-lab`
+
 ## Capability map
 
 | Layer | Status | Evidence / next gap |
