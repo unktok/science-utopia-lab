@@ -1,13 +1,17 @@
 # Program status
 
-Updated: 2026-10-27
+Updated: 2026-10-28 01:38 JST
 
 ## Overall position
 
 The project has a working stochastic simulation, evaluation environment, and
 persistent closed-loop controller. The first commit-pinned Qwen3-8B campaign
-has completed all nine runs and a real result-dependent adaptive update. This
-is an engineering demonstration, not a validated science-policy result.
+completed all nine runs and a real result-dependent adaptive update. The first
+metric-conditioned study is now executing: it changes the optimization metric,
+optimizes the scientific system independently under each metric, freezes one
+winner per arm, and only then compares those systems on a shared held-out
+metric suite. This remains a synthetic research experiment, not a validated
+science-policy result.
 
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
@@ -21,7 +25,7 @@ Remote: `unktok/science-utopia-lab`
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
-| optimization loss | engineering v1 executed | real closed loop complete; objective resolution is coarse and not policy-valid |
+| optimization loss | three-arm study executing | participation/review, topic-entropy, and review-burden losses are frozen as experimental interventions |
 | held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
@@ -32,6 +36,29 @@ Remote: `unktok/science-utopia-lab`
 | structural system optimization | not started | production mechanism adapters, checkpointed graph state, and topology mutation remain |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | v2 vertical slice verified | fixed-grid production art, six evidence-linked flows, deterministic browser review; intervention/branching remain |
+
+## Metric-conditioned study execution snapshot
+
+The scientific independent variable is the optimization `LossSpec`. The
+primary outcome is the resulting optimized `SystemSpec` and its held-out
+behavior—not whether a metric merely separates a small set of preselected
+candidates.
+
+| Stage | Current state |
+|---|---|
+| frozen protocol | complete at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f` |
+| three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
+| total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
+| completed optimization runs | 1 |
+| currently running | 1, participation/review arm, design `d3536002463db`, seed 607 |
+| remaining optimization runs | 43, including later result-dependent suggestions |
+| frozen arm winners | 0 of 3 |
+| held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
+
+The live scheduler is intentionally single-worker. A measured four-worker
+microbenchmark against one local Ollama endpoint improved throughput only
+about 1.016× while increasing request latency, so local concurrency is not
+being treated as a fourfold speedup.
 
 ## Completed experiment boundary
 
@@ -53,9 +80,9 @@ The next execution steps are:
 
 1. **complete:** freeze and audit the three experimental loss arms, executable
    common evaluator, analysis contract, and seed firewalls;
-2. commit-pin a clean experiment worktree, verify byte-identical initial
-   suggestions, then run equal-budget optimization while treating objective
-   resolution as a secondary measurement-quality check rather than the
+2. **in progress:** from the clean commit-pinned worktree, run equal-budget
+   optimization after verifying byte-identical initial suggestions; objective
+   resolution remains a secondary measurement-quality check rather than the
    scientific target;
 3. freeze one winner per arm before consuming the new study-held-out split,
    then report a cross-evaluation matrix, rank reversals, trade-offs, gaming,

@@ -1,6 +1,6 @@
 # Science Utopia Lab — program map
 
-Updated: 2026-10-27
+Updated: 2026-10-28
 
 ![Science Utopia Lab program map](figures/science-utopia-program-map.png)
 
@@ -33,12 +33,18 @@ objective produced. Technical validity and an optional policy decision are
 separate again. Objective resolution is useful QA, but it is not the research
 question by itself.
 
+Accordingly, the central comparison is a matrix: rows are systems obtained by
+optimizing different losses, while columns are shared held-out evaluation
+metrics. A result such as “loss A produced system A*, which scores this way on
+metrics A/B/C” is the intended evidence. Testing whether loss A can reliably
+distinguish two already chosen systems is only supporting measurement QA.
+
 ## Current tracks
 
 | Track | Current state | What is actually finished | Next evidence-producing step |
 |---|---|---|---|
 | Reproducible simulator | operational | local Qwen3-8B, repeated seeds, restart/provenance, longitudinal runs | keep frozen during metric-conditioned study |
-| Metric-conditioned optimization | execution-ready, no study runs yet | three alternative-loss arms, study controller, winner seal and seed firewall are implemented | commit-pin, verify identical initial proposals, optimize all arms, freeze winners, run held-out cross-evaluation |
+| Metric-conditioned optimization | executing from frozen worktree | three alternative-loss arms, identical initial proposals, study controller, winner seal, seed firewall; 1/45 optimization runs complete and 1 running at the 2026-10-28 01:38 JST snapshot | finish all arms, freeze three winners simultaneously, then run held-out cross-evaluation |
 | Evaluation metrics | executable common suite | participation, entropy, burden, coverage, attrition, activity, funding/resource ledger plus rank/trade-off/gaming/generalization analyses | run the untouched split and produce cross-objective result graphics |
 | Whole-system abstraction | executable foundation implemented | typed `SystemSpec`, validator, generic implementation registry/runner, canonical provenance, legacy compiler | checkpointable state and production adapters for interchangeable mechanisms |
 | Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | compare stronger methods only after the multi-loss baseline closes |
@@ -73,7 +79,8 @@ held-out worlds early:
 
 1. **complete:** freeze three contrasting proxy objectives, identical search
    conditions, common evaluation suite, and analysis code;
-2. commit-pin and run equal-budget black-box optimization for each objective;
+2. **in progress:** run equal-budget black-box optimization for each objective
+   from the clean commit-pinned worktree;
 3. freeze one winner per arm before opening the evaluation split;
 4. cross-evaluate all winners on the same metrics and visualize rank reversals,
    trade-offs, generalization gaps, and proxy gaming;
