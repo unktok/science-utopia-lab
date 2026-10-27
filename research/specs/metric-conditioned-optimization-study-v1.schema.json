@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/metric-conditioned-optimization-study-v1.schema.json",
+  "title": "Science Utopia metric-conditioned optimization study v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "version",
+    "campaigns",
+    "forbidden_legacy_held_out_seeds",
+    "common_optimization_seeds",
+    "common_held_out_evaluation_seeds",
+    "held_out_evaluator",
+    "held_out_metric_suite",
+    "decision_policy",
+    "analysis"
+  ],
+  "properties": {
+    "schema": {"const": "scienceutopia.metric-conditioned-optimization-study.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "campaigns": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "forbidden_legacy_held_out_seeds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "integer"}
+    },
+    "common_optimization_seeds": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"type": "integer"}
+    },
+    "common_held_out_evaluation_seeds": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "integer"}
+    },
+    "held_out_evaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "spec"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "spec": {"type": "string", "minLength": 1}
+      }
+    },
+    "held_out_metric_suite": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role", "direction"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "role": {"enum": ["evaluation_metric", "shadow_diagnostic"]},
+          "direction": {"enum": ["maximize", "minimize", "observe"]},
+          "slice": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "decision_policy": {"const": "report_only"},
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cross_evaluation_matrix",
+        "rank_reversal",
+        "trade_offs",
+        "gaming_audit",
+        "generalization",
+        "resolution_check"
+      ],
+      "properties": {
+        "cross_evaluation_matrix": {"type": "boolean"},
+        "rank_reversal": {"type": "boolean"},
+        "trade_offs": {"type": "boolean"},
+        "gaming_audit": {"type": "boolean"},
+        "generalization": {"type": "boolean"},
+        "resolution_check": {"type": "boolean"}
+      }
+    }
+  }
+}

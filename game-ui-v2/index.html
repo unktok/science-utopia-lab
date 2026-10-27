@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070814" />
+    <title>NOCTILUCA // Research Arcology</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#world-controls">Skip to world controls</a>
+    <div id="app" class="app-shell" data-motion="full">
+      <header class="topbar" aria-label="Replay identity">
+        <div class="wordmark"><span class="wordmark__signal" aria-hidden="true"></span>NOCTILUCA <em>// RESEARCH ARCOLOGY</em></div>
+        <dl class="run-strip" id="run-strip">
+          <div><dt>RUN</dt><dd id="run-id">—</dd></div>
+          <div><dt>BRANCH</dt><dd id="branch-id">—</dd></div>
+          <div><dt>TIME</dt><dd id="world-time">—</dd></div>
+        </dl>
+        <div id="verification" class="verification" data-state="loading" role="status">LOADING CONTRACT</div>
+      </header>
+
+      <main class="world-stage" aria-label="Science ecosystem replay">
+        <section class="canvas-column" aria-labelledby="world-heading">
+          <h1 id="world-heading" class="sr-only">NOCTILUCA scientific ecosystem world</h1>
+          <div id="game-frame" class="game-frame" tabindex="0" aria-describedby="canvas-help">
+            <div id="phaser-root" aria-hidden="true"></div>
+            <div id="loading-state" class="loading-state" role="status">
+              <span class="loading-state__mark" aria-hidden="true"></span>
+              <strong>OPENING REPLAY CHANNEL</strong>
+              <span>Validating canonical events and production assets…</span>
+            </div>
+            <div id="world-error" class="world-error" role="alert" hidden></div>
+            <div class="truth-key" aria-label="Visual truth legend">
+              <span data-truth="canonical">CANONICAL</span>
+              <span data-truth="derived">DERIVED</span>
+              <span data-truth="ambient">AMBIENT</span>
+            </div>
+            <span class="minimap-frame" aria-hidden="true">MAP / LOD0</span>
+          </div>
+          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, and Escape to close the inspector. Every scientific flow can be opened in the evidence inspector.</p>
+
+          <section id="world-controls" class="transport" aria-label="Replay transport">
+            <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
+            <button id="step-back" type="button" aria-label="Step backward">−1</button>
+            <output id="cursor-output" for="timeline">00:00.0</output>
+            <input id="timeline" type="range" min="0" max="60000" value="0" step="100" aria-label="Replay position" />
+            <button id="step-forward" type="button" aria-label="Step forward">+1</button>
+            <label class="speed-control">SPEED
+              <select id="speed" aria-label="Playback speed">
+                <option value="0.5">0.5×</option>
+                <option value="1" selected>1×</option>
+                <option value="2">2×</option>
+                <option value="4">4×</option>
+              </select>
+            </label>
+          </section>
+          <div id="event-lane" class="event-lane" aria-label="Canonical event timeline"></div>
+        </section>
+
+        <aside id="inspector" class="inspector" aria-labelledby="inspector-heading" hidden>
+          <header>
+            <span id="inspector-kicker">EVIDENCE TRACE</span>
+            <button id="inspector-close" type="button" aria-label="Close inspector">CLOSE</button>
+          </header>
+          <h2 id="inspector-heading">Select a researcher, institution, or flow</h2>
+          <div id="inspector-body"></div>
+        </aside>
+      </main>
+
+      <footer class="command-deck">
+        <fieldset id="layer-filters" class="layer-filters">
+          <legend>FLOW LAYERS</legend>
+          <label><input type="checkbox" value="data" checked /><span data-flow="data">DATA</span></label>
+          <label><input type="checkbox" value="paper" checked /><span data-flow="paper">PAPER</span></label>
+          <label><input type="checkbox" value="review" checked /><span data-flow="review">REVIEW</span></label>
+          <label><input type="checkbox" value="funding" checked /><span data-flow="funding">FUNDING</span></label>
+          <label><input type="checkbox" value="citation" checked /><span data-flow="citation">CITATION</span></label>
+          <label><input type="checkbox" value="policy" checked /><span data-flow="policy">POLICY</span></label>
+        </fieldset>
+        <div class="view-controls" aria-label="View options">
+          <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>
+          <button id="contrast-toggle" type="button" aria-pressed="false">HIGH CONTRAST</button>
+          <button id="motion-toggle" type="button" aria-pressed="false">REDUCE MOTION</button>
+          <label>ATMOSPHERE <input id="atmosphere" type="range" min="0" max="100" value="62" /></label>
+        </div>
+      </footer>
+
+      <section id="semantic-world" class="semantic-world" aria-label="Accessible world entities">
+        <h2>World entities and evidence</h2>
+        <p>This list mirrors the canvas. Activate an item to inspect its canonical or derived evidence.</p>
+        <div id="semantic-entities"></div>
+      </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

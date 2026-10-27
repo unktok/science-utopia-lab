@@ -547,15 +547,19 @@ class ClosedLoopCampaign:
         for row in rows:
             run_counts[row["status"]] = run_counts.get(row["status"], 0) + 1
         complete = [
-            record["observation"]
+            (record["suggestion"]["proposal_index"], record["observation"])
             for record in state["suggestions"]
             if record["status"] == "observed_complete"
         ]
-        incumbent = min(
+        incumbent_record = min(
             complete,
-            key=lambda item: (item["loss"], item["observation_id"]),
+            # The campaign contract retains the earliest technically valid
+            # proposal at an exactly tied loss.  Observation ids are hashes and
+            # therefore cannot encode that temporal rule.
+            key=lambda item: (item[1]["loss"], item[0]),
             default=None,
         )
+        incumbent = incumbent_record[1] if incumbent_record is not None else None
         return {
             "schema": "scienceutopia.closed-loop-status.v1",
             "campaign_id": self.spec["id"],

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Science Utopia Lab program map</title>
+  <desc id="desc">The central metric-conditioned optimization loop and the current state of six parallel research and product tracks.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070814"/><stop offset="1" stop-color="#101a35"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" x2="1"><stop stop-color="#2dd4ff"/><stop offset="1" stop-color="#39f5c8"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#2dd4ff"/></marker>
+    <style>
+      .sans{font-family:Inter,"Noto Sans JP",system-ui,sans-serif}.title{font-size:44px;font-weight:800;fill:#eee9d8}.sub{font-size:20px;fill:#9ea8c2}.label{font-size:19px;font-weight:750;fill:#eee9d8}.body{font-size:15px;fill:#c7ccdc}.tiny{font-size:13px;fill:#9ea8c2}.card{fill:#11182f;stroke:#46527a;stroke-width:2}.active{stroke:#39f5c8}.ready{stroke:#2dd4ff}.future{stroke:#6a769a;stroke-dasharray:8 6}.chip{font-size:12px;font-weight:800}.edge{fill:none;stroke:#2dd4ff;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <path d="M0 210H1600M0 585H1600" stroke="#1a2140"/>
+  <text x="70" y="75" class="sans title">SCIENCE UTOPIA LAB</text>
+  <text x="70" y="112" class="sans sub">目的関数を替えると、どの科学制度が生まれるのか。</text>
+  <rect x="1240" y="55" width="290" height="54" rx="10" fill="#182445" stroke="#f653d8"/>
+  <text x="1385" y="78" text-anchor="middle" class="sans tiny">CURRENT MILESTONE</text>
+  <text x="1385" y="98" text-anchor="middle" class="sans label" font-size="15">MULTI-LOSS → CROSS-EVAL</text>
+
+  <text x="70" y="170" class="sans label">中心となる実験ループ</text>
+  <g class="sans">
+    <rect class="card active" x="70" y="205" width="255" height="150" rx="14"/>
+    <text x="92" y="238" class="label">1  最適化メトリクス</text>
+    <text x="92" y="269" class="body">LossSpec A / B / C</text>
+    <text x="92" y="296" class="tiny">同じ探索空間・予算・seed</text>
+    <text x="92" y="319" class="tiny">変えるのは目的関数だけ</text>
+
+    <rect class="card ready" x="385" y="205" width="225" height="150" rx="14"/>
+    <text x="407" y="238" class="label">2  OPTIMIZER</text>
+    <text x="407" y="269" class="body">black-box ask / tell</text>
+    <text x="407" y="296" class="tiny">提案 → 観測 → 更新</text>
+    <text x="407" y="319" class="tiny">勾配は不要</text>
+
+    <rect class="card ready" x="670" y="205" width="245" height="150" rx="14"/>
+    <text x="692" y="238" class="label">3  SYSTEM SPEC</text>
+    <text x="692" y="269" class="body">制度パラメータ / 機構 / 構造</text>
+    <text x="692" y="296" class="tiny">現在: 固定構造の8変数</text>
+    <text x="692" y="319" class="tiny">将来: 機構グラフ全体</text>
+
+    <rect class="card ready" x="975" y="205" width="235" height="150" rx="14"/>
+    <text x="997" y="238" class="label">4  SIMULATE</text>
+    <text x="997" y="269" class="body">Qwen3-8B × 複数world</text>
+    <text x="997" y="296" class="tiny">確率的・longitudinal</text>
+    <text x="997" y="319" class="tiny">winnerを目的ごとに凍結</text>
+
+    <rect class="card active" x="1270" y="205" width="260" height="150" rx="14"/>
+    <text x="1292" y="238" class="label">5  共通評価メトリクス</text>
+    <text x="1292" y="269" class="body">held-out cross-evaluation</text>
+    <text x="1292" y="296" class="tiny">同じ物差しで A* / B* / C*</text>
+    <text x="1292" y="319" class="tiny">順位反転・代償・攻略を分析</text>
+  </g>
+  <path class="edge" d="M325 280H375"/><path class="edge" d="M610 280H660"/><path class="edge" d="M915 280H965"/><path class="edge" d="M1210 280H1260"/>
+  <path d="M1090 365V420H500V365" fill="none" stroke="#f653d8" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="795" y="448" text-anchor="middle" class="sans tiny" fill="#f653d8">optimization worlds の loss だけが探索へ戻る</text>
+  <rect x="70" y="480" width="1460" height="66" rx="12" fill="#141a32" stroke="#ffc857"/>
+  <text x="95" y="507" class="sans label" fill="#ffc857">研究上の問い</text>
+  <text x="265" y="507" class="sans body">「この指標は候補を見分けるか」だけではない。</text>
+  <text x="265" y="532" class="sans body">「この指標で最適化した結果、どんな科学システムができ、別の共通指標ではどう見えるか」を調べる。</text>
+
+  <text x="70" y="625" class="sans label">並列トラックと現在地</text>
+  <g class="sans">
+    <rect class="card active" x="70" y="655" width="460" height="112" rx="12"/>
+    <text x="92" y="686" class="label">RESEARCH CORE</text><rect x="388" y="670" width="118" height="25" rx="12" fill="#214840"/><text x="447" y="688" text-anchor="middle" class="chip" fill="#39f5c8">ACTIVE</text>
+    <text x="92" y="718" class="body">3目的 + winner seal + 共通評価suite 実装済み</text><text x="92" y="744" class="tiny">次: commit-pin → optimize → freeze → cross-evaluate</text>
+
+    <rect class="card ready" x="570" y="655" width="460" height="112" rx="12"/>
+    <text x="592" y="686" class="label">SYSTEM ABSTRACTION</text><rect x="888" y="670" width="118" height="25" rx="12" fill="#173c4b"/><text x="947" y="688" text-anchor="middle" class="chip" fill="#2dd4ff">FOUNDATION</text>
+    <text x="592" y="718" class="body">typed graph + generic runner + canonical provenance</text><text x="592" y="744" class="tiny">次: checkpoint stateと交換可能なproduction adapters</text>
+
+    <rect class="card active" x="1070" y="655" width="460" height="112" rx="12"/>
+    <text x="1092" y="686" class="label">GAME + REPLAY</text><rect x="1388" y="670" width="118" height="25" rx="12" fill="#4b2044"/><text x="1447" y="688" text-anchor="middle" class="chip" fill="#f653d8">ACTIVE</text>
+    <text x="1092" y="718" class="body">evidence replay + Phaser + fixed-grid production art</text><text x="1092" y="744" class="tiny">次: world density / animation → intervention branching</text>
+
+    <rect class="card ready" x="70" y="797" width="460" height="112" rx="12"/>
+    <text x="92" y="828" class="label">REPRO + COMPUTE</text><rect x="388" y="812" width="118" height="25" rx="12" fill="#173c4b"/><text x="447" y="830" text-anchor="middle" class="chip" fill="#2dd4ff">OPERATIONAL</text>
+    <text x="92" y="860" class="body">restart / provenance / seed registry / local LLM</text><text x="92" y="886" class="tiny">n=4 on one endpoint: only ~1.016x; independent GPUs preferred</text>
+
+    <rect class="card ready" x="570" y="797" width="460" height="112" rx="12"/>
+    <text x="592" y="828" class="label">PAPER + GRAPHICS</text><rect x="888" y="812" width="118" height="25" rx="12" fill="#3f3820"/><text x="947" y="830" text-anchor="middle" class="chip" fill="#ffc857">WORKING DRAFT</text>
+    <text x="592" y="860" class="body">7-page NeurIPS-style PDF</text><text x="592" y="886" class="tiny">次: cross-eval matrix / trade-off / system diagrams</text>
+
+    <rect class="card future" x="1070" y="797" width="460" height="112" rx="12"/>
+    <text x="1092" y="828" class="label">DIFFERENTIABLE SYSTEMS</text><rect x="1388" y="812" width="118" height="25" rx="12" fill="#292d43"/><text x="1447" y="830" text-anchor="middle" class="chip" fill="#9ea8c2">FUTURE</text>
+    <text x="1092" y="860" class="body">relaxation / surrogate / gradient design</text><text x="1092" y="886" class="tiny">開始条件: stable target + held-out evaluation</text>
+  </g>
+  <text x="70" y="957" class="sans tiny">Green: active milestone  ·  Cyan: operational foundation  ·  Dashed: downstream research</text>
+  <text x="1530" y="957" text-anchor="end" class="sans tiny">2026-10-27 · evidence before claims</text>
+</svg>

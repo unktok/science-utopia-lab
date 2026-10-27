@@ -1,0 +1,35 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "participation-review-tradeoff-probe",
+  "version": "1.0.0",
+  "status": "research",
+  "direction": "minimize",
+  "optimization_seed_role": "optimization",
+  "per_run": {
+    "intercept": 1.0,
+    "terms": [
+      {
+        "metric_id": "active-researcher-fraction",
+        "slice_id": null,
+        "coefficient": -1.0
+      },
+      {
+        "metric_id": "review-burden-per-active-researcher",
+        "slice_id": null,
+        "coefficient": 0.05
+      }
+    ]
+  },
+  "across_seeds": {
+    "aggregation": "mean_plus_population_sd",
+    "dispersion_weight": 0.25,
+    "minimum_valid_runs": 3
+  },
+  "interpretation": "Development-only conditioning signal balancing simulated participation continuity against logged review burden. It is one experimental value choice, not a validated science-policy objective.",
+  "prohibited_claims": [
+    "best real-world science policy",
+    "scientific quality optimum",
+    "social welfare optimum",
+    "held-out evaluation result"
+  ]
+}

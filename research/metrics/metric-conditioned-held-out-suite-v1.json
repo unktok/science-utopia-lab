@@ -1,0 +1,60 @@
+{
+  "schema": "scienceutopia.held-out-metric-suite.v1",
+  "id": "metric-conditioned-held-out-suite",
+  "version": "1.0.0",
+  "evaluator": {
+    "id": "metric-conditioned-native-evaluator",
+    "version": "1.0.0"
+  },
+  "metrics": [
+    {
+      "id": "review-coverage",
+      "version": "1.0.0",
+      "unit": "fraction",
+      "direction": "maximize",
+      "formula": "logged review actions / (submission rounds * declared reviews_per_paper)",
+      "sources": ["review_action.parquet", "ecosystem_year.parquet", "frozen SystemSpec"]
+    },
+    {
+      "id": "submission-count",
+      "version": "1.0.0",
+      "unit": "submission rounds",
+      "direction": "observe",
+      "formula": "sum(ecosystem_year.num_submissions)",
+      "sources": ["ecosystem_year.parquet"]
+    },
+    {
+      "id": "decision-count",
+      "version": "1.0.0",
+      "unit": "decisions",
+      "direction": "observe",
+      "formula": "count(paper.parquet rows with boolean accepted decision)",
+      "sources": ["paper.parquet"]
+    },
+    {
+      "id": "accepted-paper-count",
+      "version": "1.0.0",
+      "unit": "accepted submission rounds",
+      "direction": "observe",
+      "formula": "sum(boolean paper.parquet.accepted)",
+      "sources": ["paper.parquet"]
+    },
+    {
+      "id": "attrition-fraction",
+      "version": "1.0.0",
+      "unit": "fraction of initial researchers",
+      "direction": "minimize",
+      "formula": "initial researchers ever recorded inactive / initial researchers",
+      "sources": ["agent_year.parquet"]
+    },
+    {
+      "id": "funding-and-resource-ledger",
+      "version": "1.0.0",
+      "unit": "structured diagnostic",
+      "direction": "observe",
+      "formula": "native funding trace totals plus reconciled resource-ledger inflow and final-balance distribution",
+      "sources": ["funding_application_trace_year_*.summary.json", "checkpoint_year_*.json"]
+    }
+  ],
+  "notes": "These diagnostics are common held-out measurements, never optimizer inputs or implicit vetoes. Review coverage is undefined rather than one when there are no submission rounds."
+}

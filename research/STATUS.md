@@ -20,18 +20,18 @@ Remote: `unktok/science-utopia-lab`
 | local Qwen3-8B simulation | operational | stable four-year runs through Ollama/Metal |
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
-| measurement | partial | participation, review burden, topic spread, funding/activity shadows |
+| measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
 | optimization loss | engineering v1 executed | real closed loop complete; objective resolution is coarse and not policy-valid |
-| held-out evaluation metrics | contract defined | executable campaign-specific specs remain |
+| held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
-| closed-loop optimizer | operational | 3 suggestions × 3 seeds completed; restart-safe result-dependent update verified |
+| closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
-| whole-system `SystemSpec` | integrated foundation | typed model, validator, fingerprint, legacy compiler |
-| structural system optimization | not started | general graph runtime and topology mutation remain |
+| whole-system `SystemSpec` | executable foundation | typed model, validator, generic registry/runner, canonical provenance, legacy compiler |
+| structural system optimization | not started | production mechanism adapters, checkpointed graph state, and topology mutation remain |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | first vertical slice | local pixel-art replay viewer; intervention/branching remain |
+| game UI | v2 vertical slice verified | fixed-grid production art, six evidence-linked flows, deterministic browser review; intervention/branching remain |
 
 ## Completed experiment boundary
 
@@ -42,17 +42,29 @@ default constraint for future optimization.
 
 ## Next milestone
 
-Design `Optimization v2` without consuming held-out seeds:
+Execute `Optimization v2` without consuming held-out seeds early. The
+preregistered `Metric-Conditioned Optimization Study v1` will hold the
+simulator, design space, optimizer, budget, and development seeds constant;
+change only the `LossSpec`; then compare the frozen arm winners on one common,
+untouched evaluation split. Seeds 523, 541, and 547 remain attached to the
+first campaign and are forbidden in the new study.
 
-1. justify a research objective from science-of-science evidence and keep it
-   separate from held-out evaluation metrics;
-2. measure whether the objective resolves meaningful differences at affordable
-   simulator fidelities;
-3. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
+The next execution steps are:
+
+1. **complete:** freeze and audit the three experimental loss arms, executable
+   common evaluator, analysis contract, and seed firewalls;
+2. commit-pin a clean experiment worktree, verify byte-identical initial
+   suggestions, then run equal-budget optimization while treating objective
+   resolution as a secondary measurement-quality check rather than the
+   scientific target;
+3. freeze one winner per arm before consuming the new study-held-out split,
+   then report a cross-evaluation matrix, rank reversals, trade-offs, gaming,
+   and generalization without selecting a universal winner;
+4. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
    legacy topology;
-4. add campaign/replay comparison to the game UI;
-5. preregister a new search budget, seed partition, optimizer, and stopping
-   rule before model-backed execution.
+5. add campaign/replay comparison to the game UI;
+6. keep every model-backed run commit-pinned and separate from active
+   development worktrees.
 
 The first closed-loop result is frozen at revision `9a10029807d5`. Its untouched
 held-out seeds must not be repurposed for tuning.

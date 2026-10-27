@@ -82,11 +82,11 @@ print(plan.cli_args)
   direct candidate-to-CLI path;
 - the restricted compiler refuses unsupported topology changes.
 
-## Next executable slice
+## Executable slice added
 
-The next track should add a mechanism implementation registry and graph runner
-with canonical event output. The first replacement/removal experiment should
-exercise a mechanism through that generic runner, with contract tests for
-decision provenance and resource effects. Publication, funding, and governance
-need first-class runtime adapters before structural optimization claims are
-made.
+The implementation registry and deterministic graph runner are now specified
+in [`mechanism-graph-runtime-v1.md`](mechanism-graph-runtime-v1.md). Its
+publication-only and funding-to-research examples emit canonical events with
+decision lineage and replayable resource effects. This is a generic execution
+foundation, not yet a production adapter for every legacy mechanism and not
+yet evidence for structural-optimization performance.

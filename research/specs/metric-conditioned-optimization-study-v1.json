@@ -1,0 +1,95 @@
+{
+  "schema": "scienceutopia.metric-conditioned-optimization-study.v1",
+  "id": "metric-conditioned-optimization-v1",
+  "version": "1.0.0",
+  "campaigns": [
+    "research/specs/metric-conditioned-participation-review-v1.json",
+    "research/specs/metric-conditioned-topic-diversity-v1.json",
+    "research/specs/metric-conditioned-review-burden-v1.json"
+  ],
+  "forbidden_legacy_held_out_seeds": [523, 541, 547],
+  "common_optimization_seeds": [601, 607, 617],
+  "common_held_out_evaluation_seeds": [701, 709, 719, 727, 733],
+  "held_out_evaluator": {
+    "id": "metric-conditioned-native-evaluator",
+    "version": "1.0.0",
+    "spec": "research/metrics/metric-conditioned-held-out-suite-v1.json"
+  },
+  "held_out_metric_suite": [
+    {
+      "id": "active-researcher-fraction",
+      "role": "evaluation_metric",
+      "direction": "maximize",
+      "slice": null
+    },
+    {
+      "id": "active-researcher-fraction",
+      "role": "evaluation_metric",
+      "direction": "maximize",
+      "slice": "low-resource-researchers"
+    },
+    {
+      "id": "topic-entropy",
+      "role": "evaluation_metric",
+      "direction": "observe",
+      "slice": null
+    },
+    {
+      "id": "review-burden-per-active-researcher",
+      "role": "evaluation_metric",
+      "direction": "minimize",
+      "slice": null
+    },
+    {
+      "id": "review-burden-per-active-researcher",
+      "role": "evaluation_metric",
+      "direction": "minimize",
+      "slice": "low-resource-researchers"
+    },
+    {
+      "id": "submission-count",
+      "role": "shadow_diagnostic",
+      "direction": "observe",
+      "slice": null
+    },
+    {
+      "id": "decision-count",
+      "role": "shadow_diagnostic",
+      "direction": "observe",
+      "slice": null
+    },
+    {
+      "id": "accepted-paper-count",
+      "role": "shadow_diagnostic",
+      "direction": "observe",
+      "slice": null
+    },
+    {
+      "id": "review-coverage",
+      "role": "shadow_diagnostic",
+      "direction": "observe",
+      "slice": null
+    },
+    {
+      "id": "attrition-fraction",
+      "role": "shadow_diagnostic",
+      "direction": "minimize",
+      "slice": null
+    },
+    {
+      "id": "funding-and-resource-ledger",
+      "role": "shadow_diagnostic",
+      "direction": "observe",
+      "slice": null
+    }
+  ],
+  "decision_policy": "report_only",
+  "analysis": {
+    "cross_evaluation_matrix": true,
+    "rank_reversal": true,
+    "trade_offs": true,
+    "gaming_audit": true,
+    "generalization": true,
+    "resolution_check": true
+  }
+}

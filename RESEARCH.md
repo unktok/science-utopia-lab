@@ -20,6 +20,7 @@
 ## ノート体系
 
 - [研究INDEX](research/INDEX.md): loss、metrics、optimizer、protocol、resultの入口
+- [プロジェクト全体図](research/program-map.md): 目的、中心実験、依存関係、並列トラックの現在地
 - [現在地](research/STATUS.md): 実装済み、未統合、未着手の一覧
 - [閉ループ最適化contract](research/objectives/losses/closed-loop-v1.md):
   optimization lossとheld-out evaluation metricsの分離

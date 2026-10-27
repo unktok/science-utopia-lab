@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="80" viewBox="0 0 96 80" shape-rendering="crispEdges">
+  <!-- Peer Review Exchange: two anonymous chambers around an elevated routing eye. -->
+  <g fill="#10142A">
+    <rect x="5" y="72" width="86" height="6"/>
+    <rect x="9" y="39" width="25" height="34"/>
+    <rect x="62" y="39" width="25" height="34"/>
+    <rect x="17" y="31" width="17" height="9"/>
+    <rect x="62" y="31" width="17" height="9"/>
+    <rect x="29" y="22" width="38" height="34"/>
+    <rect x="35" y="15" width="26" height="8"/>
+    <rect x="42" y="9" width="12" height="7"/>
+    <rect x="45" y="4" width="6" height="6"/>
+  </g>
+  <g fill="#1A2140">
+    <rect x="11" y="41" width="21" height="29"/>
+    <rect x="64" y="41" width="21" height="29"/>
+    <rect x="31" y="24" width="34" height="30"/>
+    <rect x="37" y="17" width="22" height="6"/>
+  </g>
+  <!-- The central routing seal is readable without hue. -->
+  <g fill="#F653D8">
+    <rect x="36" y="31" width="4" height="8"/>
+    <rect x="40" y="27" width="16" height="16"/>
+    <rect x="56" y="31" width="4" height="8"/>
+    <rect x="43" y="24" width="10" height="3"/>
+    <rect x="43" y="43" width="10" height="3"/>
+  </g>
+  <g fill="#EEE9D8">
+    <rect x="43" y="31" width="10" height="8"/>
+    <rect x="46" y="29" width="4" height="12"/>
+  </g>
+  <rect x="47" y="32" width="3" height="6" fill="#070814"/>
+  <!-- Anonymous review booths: mirrored but visibly occupied. -->
+  <g fill="#2A3560">
+    <rect x="14" y="45" width="15" height="20"/>
+    <rect x="67" y="45" width="15" height="20"/>
+    <rect x="34" y="49" width="28" height="21"/>
+  </g>
+  <g fill="#A86BFF">
+    <rect x="16" y="48" width="11" height="7"/>
+    <rect x="69" y="48" width="11" height="7"/>
+    <rect x="37" y="52" width="22" height="3"/>
+    <rect x="37" y="59" width="22" height="3"/>
+    <rect x="37" y="66" width="22" height="2"/>
+  </g>
+  <g fill="#9EA8C2">
+    <rect x="18" y="50" width="7" height="3"/>
+    <rect x="71" y="50" width="7" height="3"/>
+    <rect x="42" y="53" width="5" height="2"/>
+    <rect x="49" y="60" width="6" height="2"/>
+  </g>
+  <!-- Queue columns and accept/revise/reject routing lamps. -->
+  <g fill="#46527A">
+    <rect x="5" y="49" width="4" height="20"/>
+    <rect x="87" y="49" width="4" height="20"/>
+    <rect x="18" y="65" width="3" height="6"/>
+    <rect x="75" y="65" width="3" height="6"/>
+  </g>
+  <g fill="#39F5C8">
+    <rect x="6" y="51" width="2" height="3"/>
+    <rect x="6" y="57" width="2" height="3"/>
+    <rect x="88" y="51" width="2" height="3"/>
+  </g>
+  <g fill="#FFC857">
+    <rect x="88" y="57" width="2" height="3"/>
+    <rect x="44" y="19" width="3" height="3"/>
+  </g>
+  <g fill="#FF617D">
+    <rect x="6" y="63" width="2" height="3"/>
+    <rect x="88" y="63" width="2" height="3"/>
+  </g>
+  <!-- Paper slots break the façade into active editorial routing. -->
+  <g fill="#EEE9D8">
+    <rect x="11" y="35" width="9" height="3"/>
+    <rect x="76" y="35" width="9" height="3"/>
+    <rect x="26" y="57" width="5" height="3"/>
+    <rect x="65" y="57" width="5" height="3"/>
+  </g>
+  <g fill="#2DD4FF">
+    <rect x="46" y="6" width="4" height="3"/>
+    <rect x="32" y="25" width="3" height="13"/>
+    <rect x="61" y="25" width="3" height="13"/>
+  </g>
+</svg>

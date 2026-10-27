@@ -1,0 +1,30 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "review-burden-probe",
+  "version": "1.0.0",
+  "status": "research",
+  "direction": "minimize",
+  "optimization_seed_role": "optimization",
+  "per_run": {
+    "intercept": 0.0,
+    "terms": [
+      {
+        "metric_id": "review-burden-per-active-researcher",
+        "slice_id": null,
+        "coefficient": 1.0
+      }
+    ]
+  },
+  "across_seeds": {
+    "aggregation": "mean_plus_population_sd",
+    "dispersion_weight": 0.25,
+    "minimum_valid_runs": 3
+  },
+  "interpretation": "Development-only conditioning signal minimizing logged review actions per active researcher-step. It is intentionally vulnerable to suppressing evaluation activity and is included to study metric-induced system design and gaming.",
+  "prohibited_claims": [
+    "review quality optimum",
+    "researcher wellbeing optimum",
+    "best real-world science policy",
+    "held-out evaluation result"
+  ]
+}

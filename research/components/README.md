@@ -8,7 +8,8 @@ The primary abstraction is the complete typed mechanism graph (`SystemSpec`),
 not any one component API. Components may be present, absent, repeated, or
 connected differently when allowed by their contracts.
 
-The canonical event/replay sidecar and an Evaluation System API vertical slice
-are integrated in `main`. The latter demonstrates one possible component
-boundary; it does not yet alter simulator decisions or constitute the
-whole-system abstraction.
+The canonical event/replay sidecar, an Evaluation System API vertical slice,
+and the first deterministic whole-graph runtime are integrated foundations.
+The evaluation API demonstrates one possible component boundary; it is not the
+root abstraction. The generic runtime is documented in
+[`mechanism-graph-runtime-v1.md`](mechanism-graph-runtime-v1.md).

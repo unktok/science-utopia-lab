@@ -1,0 +1,30 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "topic-diversity-probe",
+  "version": "1.0.0",
+  "status": "research",
+  "direction": "minimize",
+  "optimization_seed_role": "optimization",
+  "per_run": {
+    "intercept": 0.0,
+    "terms": [
+      {
+        "metric_id": "topic-entropy",
+        "slice_id": null,
+        "coefficient": -1.0
+      }
+    ]
+  },
+  "across_seeds": {
+    "aggregation": "mean_plus_population_sd",
+    "dispersion_weight": 0.25,
+    "minimum_valid_runs": 3
+  },
+  "interpretation": "Adversarial proxy stress test that deliberately rewards entropy over the fixed topic ontology so the study can observe the institution induced by that narrow target. This is not a recommendation to maximize entropy: entropy observes variety and balance but not disparity, coherence, truth, usefulness, or scientific value.",
+  "prohibited_claims": [
+    "scientific diversity optimum",
+    "knowledge quality optimum",
+    "best real-world science policy",
+    "held-out evaluation result"
+  ]
+}

@@ -7,14 +7,18 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Program map: goals, dependencies, and parallel tracks](program-map.md)
 - [Research overview](../RESEARCH.md)
 - [Roadmap](roadmap.md)
 - [Research charter](charter.md)
 - [Closed-loop optimization contract](objectives/losses/closed-loop-v1.md)
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
+- [Generic mechanism graph runtime](components/mechanism-graph-runtime-v1.md)
 - [Black-box ask/tell boundary](optimizers/blackbox-ask-tell-v1.md)
 - [First closed-loop engineering protocol](protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [First closed-loop engineering result](results/first-closed-loop-engineering-v1-interpretation.md)
+- [Metric-conditioned optimization v1 preregistration](protocols/campaigns/metric-conditioned-optimization-v1.md)
+- [Metric-conditioned held-out metric suite](metrics/metric-conditioned-held-out-suite-v1.json)
 - [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
 - [Milestone 3: first real result-dependent closed loop](milestones/2026-10-27-first-closed-loop-engineering.md)
 - [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)

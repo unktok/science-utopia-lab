@@ -183,6 +183,41 @@ def test_campaign_rejects_overlapping_optimization_and_held_out_seeds(tmp_path):
         ClosedLoopCampaign(path)
 
 
+def test_exact_loss_tie_retains_earliest_proposal(tmp_path, monkeypatch):
+    controller = ClosedLoopCampaign(_write_campaign(tmp_path, campaign_id="tie-test"))
+    controller.initialize()
+    suggestions = controller.suggest()
+    _complete_all_runs(controller)
+
+    def tied_report(registry, constitution):
+        return {
+            "objective_evaluations": [
+                {
+                    "run_id": row["run_id"],
+                    "metrics": {
+                        "active-researcher-fraction": {
+                            "status": "measured",
+                            "value": 0.8,
+                        },
+                        "review-burden-per-active-researcher": {
+                            "status": "measured",
+                            "value": 1.0,
+                        },
+                    },
+                }
+                for row in registry.rows("status='complete'")
+            ]
+        }
+
+    monkeypatch.setattr(closed_loop, "build_report", tied_report)
+    controller.observe_ready()
+
+    assert (
+        controller.status()["incumbent"]["suggestion_id"]
+        == suggestions[0]["suggestion"]["suggestion_id"]
+    )
+
+
 def test_production_campaign_rejects_dirty_source_tree(tmp_path):
     spec = _campaign_spec(tmp_path)
     spec["execution"]["require_clean_worktree"] = True
