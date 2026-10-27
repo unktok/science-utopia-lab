@@ -1,0 +1,34 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "engineering-continuity-demo",
+  "version": "1.0.0",
+  "status": "engineering_demo",
+  "direction": "minimize",
+  "optimization_seed_role": "optimization",
+  "per_run": {
+    "intercept": 1.0,
+    "terms": [
+      {
+        "metric_id": "active-researcher-fraction",
+        "slice_id": null,
+        "coefficient": -1.0
+      },
+      {
+        "metric_id": "review-burden-per-active-researcher",
+        "slice_id": null,
+        "coefficient": 0.05
+      }
+    ]
+  },
+  "across_seeds": {
+    "aggregation": "mean_plus_population_sd",
+    "dispersion_weight": 0.25,
+    "minimum_valid_runs": 3
+  },
+  "interpretation": "Engineering-only closed-loop signal: lower values combine researcher continuity with a small review-burden term and a dispersion penalty. It is not a validated measure of scientific or social value.",
+  "prohibited_claims": [
+    "best real-world science policy",
+    "social welfare optimum",
+    "held-out evaluation result"
+  ]
+}

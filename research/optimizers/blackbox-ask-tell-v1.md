@@ -42,10 +42,14 @@ evolution strategies, CMA-ES, or learned policies can implement the same
 `ask`, `tell`, and `state_dict` contract. Differentiable optimization is an
 additional backend and is not required by the boundary.
 
-## Remaining production connection
+## Production connection
 
-The current helper closes a synchronous loop for tests and cheap surrogate
-runs. A production campaign controller must persist each suggestion before job
-dispatch, aggregate its declared optimization seeds through a versioned
-`LossSpec`, and resume optimizer state after interruption. Held-out evaluation
-metrics are applied only after the selected `SystemSpec` is frozen.
+`utopia.optimization.closed_loop` now persists each suggestion before job
+dispatch, registers its optimization-seed replicas, aggregates them through the
+campaign's versioned `LossSpec`, calls `tell`, and resumes optimizer state after
+interruption. Held-out seeds are present in the campaign specification but are
+not dispatched or consumed by this optimization controller.
+
+The deterministic integration test proves result dependence and crash-resumable
+state. Completion of the first real Qwen3-8B campaign remains the next evidence
+boundary.

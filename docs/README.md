@@ -23,6 +23,7 @@ record lives separately under [`research/`](../research/INDEX.md).
 
 - [Whole-system `SystemSpec`](../research/components/system-spec-graph-v1.md)
 - [Black-box ask/tell optimizer](../research/optimizers/blackbox-ask-tell-v1.md)
+- [First closed-loop campaign protocol](../research/protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [Canonical event replay](../research/canonical-event-replay-v1.md)
 - [Parallel campaign harness](../research/parallel-harness-v1.md)
 - [Compute and parallelization](../research/compute-and-parallelization-plan.md)

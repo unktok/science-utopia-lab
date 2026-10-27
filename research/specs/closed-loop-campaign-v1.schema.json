@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/closed-loop-campaign-v1.schema.json",
+  "title": "Science Utopia closed-loop campaign",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "version",
+    "status",
+    "study_template",
+    "loss_spec",
+    "fidelity",
+    "seed_sets",
+    "optimizer",
+    "budget",
+    "execution"
+  ],
+  "properties": {
+    "schema": {"const": "scienceutopia.closed-loop-campaign.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "minLength": 1},
+    "study_template": {"type": "string", "minLength": 1},
+    "loss_spec": {"type": "string", "minLength": 1},
+    "fidelity": {"type": "string", "minLength": 1},
+    "seed_sets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["optimization", "held_out_evaluation"],
+      "properties": {
+        "optimization": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "integer"}
+        },
+        "held_out_evaluation": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "integer"}
+        }
+      }
+    },
+    "optimizer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "seed", "initial_random", "mutation_scale"],
+      "properties": {
+        "kind": {"const": "adaptive_random_search"},
+        "seed": {"type": "integer"},
+        "initial_random": {"type": "integer", "minimum": 1},
+        "mutation_scale": {"type": "number", "exclusiveMinimum": 0, "maximum": 1}
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_suggestions", "initial_batch", "adaptive_batch"],
+      "properties": {
+        "max_suggestions": {"type": "integer", "minimum": 1},
+        "initial_batch": {"type": "integer", "minimum": 1},
+        "adaptive_batch": {"type": "integer", "minimum": 1}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["workers", "output_root", "require_clean_worktree"],
+      "properties": {
+        "workers": {"type": "integer", "minimum": 1},
+        "output_root": {"type": "string", "minLength": 1},
+        "require_clean_worktree": {"type": "boolean"}
+      }
+    },
+    "notes": {"type": "string"}
+  }
+}

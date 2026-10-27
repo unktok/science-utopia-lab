@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/loss-spec-v1.schema.json",
+  "title": "Science Utopia LossSpec v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "version",
+    "status",
+    "direction",
+    "optimization_seed_role",
+    "per_run",
+    "across_seeds",
+    "interpretation"
+  ],
+  "properties": {
+    "schema": {"const": "scienceutopia.loss-spec.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "status": {"enum": ["engineering_demo", "research"]},
+    "direction": {"const": "minimize"},
+    "optimization_seed_role": {"type": "string", "minLength": 1},
+    "per_run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intercept", "terms"],
+      "properties": {
+        "intercept": {"type": "number"},
+        "terms": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["metric_id", "coefficient"],
+            "properties": {
+              "metric_id": {"type": "string", "minLength": 1},
+              "slice_id": {"type": ["string", "null"]},
+              "coefficient": {"type": "number"}
+            }
+          }
+        }
+      }
+    },
+    "across_seeds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["aggregation", "dispersion_weight", "minimum_valid_runs"],
+      "properties": {
+        "aggregation": {"const": "mean_plus_population_sd"},
+        "dispersion_weight": {"type": "number", "minimum": 0},
+        "minimum_valid_runs": {"type": "integer", "minimum": 1}
+      }
+    },
+    "interpretation": {"type": "string", "minLength": 1},
+    "prohibited_claims": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  }
+}

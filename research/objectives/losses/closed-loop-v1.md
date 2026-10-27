@@ -74,9 +74,15 @@ fixed-topology parameter vector. This is an implementation rung, not a decision
 to make peer review or any other single mechanism the permanent optimization
 unit.
 
-## Current implementation gap
+## Current implementation
 
-The simulator, design validation, seeded harness, random/Sobol candidate
-generation, and measurements exist. The missing pieces are an executable
-`LossSpec`, an optimizer state/interface, and a campaign controller that returns
-observations to the optimizer until its budget is exhausted.
+`utopia.optimization.loss` evaluates a versioned scalar `LossSpec` without
+turning missing or corrupt observations into arbitrary numeric penalties.
+`utopia.optimization.closed_loop` persists each ask before job registration,
+executes seed replicas through the existing harness, aggregates measured inputs,
+and returns complete or invalid observations through `tell`.
+
+The first concrete loss is explicitly marked `engineering_demo`. It combines a
+one-year continuity proxy, review burden, and cross-seed dispersion only to test
+the machinery. It must not be reported as a validated measure of scientific
+value or social welfare.

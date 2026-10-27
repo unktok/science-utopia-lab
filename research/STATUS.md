@@ -4,10 +4,10 @@ Updated: 2026-10-27
 
 ## Overall position
 
-The project has a working stochastic simulation and evaluation environment, but
-does not yet have a complete closed-loop optimizer. Two parameter points have
-been repeatedly evaluated; the eight-dimensional design space has not yet been
-searched.
+The project has a working stochastic simulation, evaluation environment, and
+persistent closed-loop controller. The controller has completed an automated
+result-dependent loop against deterministic test observations; the first
+commit-pinned Qwen3-8B campaign has not yet completed.
 
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
@@ -21,10 +21,10 @@ Remote: `unktok/science-utopia-lab`
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | partial | participation, review burden, topic spread, funding/activity shadows |
-| optimization loss | not frozen | new `LossSpec` required before search |
+| optimization loss | engineering v1 frozen | executable demo loss; not a validated scientific-value construct |
 | held-out evaluation metrics | contract defined | executable campaign-specific specs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
-| closed-loop optimizer | partial | result-dependent `SystemSpec` proposal works; production simulator controller missing |
+| closed-loop optimizer | implemented, campaign pending | persistent ask/register/run/observe/tell; real Qwen3-8B result pending |
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
@@ -42,14 +42,17 @@ default constraint for future optimization.
 
 ## Next milestone
 
-Complete `Optimization v1`:
+Complete `Optimization v1` execution:
 
-1. define one versioned `LossSpec` on optimization seeds;
+1. **complete:** define one versioned engineering `LossSpec` on optimization seeds;
 2. declare separate held-out evaluation metrics;
 3. **complete:** integrate bounded workers and benchmark the local endpoint;
-4. run an initial multi-design sample;
+4. run the two-design, three-seed initial batch from a clean protocol tag;
 5. **complete at API level:** feed observations into result-dependent `ask/tell`;
-6. connect persistent campaign execution and demonstrate one real proposal update.
+6. **complete in deterministic integration:** persist the campaign and verify a
+   result-dependent third proposal;
+7. complete the same update using real simulator outputs, then freeze the
+   engineering result without making a science-policy claim.
 
 This milestone may begin with parameters of the legacy fixed topology for a
 small end-to-end proof. Its optimizer boundary must accept a design object that

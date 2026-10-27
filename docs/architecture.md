@@ -20,9 +20,10 @@ flowchart LR
     A --> E[Held-out evaluation metrics]
 ```
 
-The graph runtime and production optimizer controller are still in progress.
-Today, the legacy compiler executes a restricted fixed-topology `SystemSpec`;
-the ask/tell optimizer and replay/game paths are implemented foundations.
+The general graph runtime is still in progress. Today, the legacy compiler
+executes a restricted fixed-topology `SystemSpec`; the persistent campaign
+controller closes ask/register/run/observe/tell over that executable subspace.
+The replay/game path is an implemented presentation foundation.
 
 ## Packages and responsibilities
 
@@ -71,3 +72,20 @@ decisions independently of the Python replay projector.
   state.
 - Add a viewer by consuming canonical replay rather than simulator internals.
 - Add an evaluation metric only with an explicit data split and version.
+
+## First closed-loop execution
+
+The production entry point is `python -m utopia.optimization.closed_loop`. Its
+state machine is:
+
+```text
+init → suggest(initial) → run → observe/tell
+                                  ↓
+                         suggest(adaptive) → run → observe/tell
+```
+
+Suggestions are written to `campaign-state.json` before their seed-replicated
+jobs enter `runs.sqlite3`. The controller can therefore reconstruct pending
+optimizer state after interruption. `status` reports the current budget,
+suggestion states, run states, incumbent observation, and whether held-out
+seeds have been consumed.
