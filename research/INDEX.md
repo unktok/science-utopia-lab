@@ -16,6 +16,7 @@ and results. New work uses the forward-only taxonomy below.
 
 | Object | Meaning | New location |
 |---|---|---|
+| `SystemSpec` | complete science-system graph being designed | `components/` and `objectives/design-spaces/` |
 | loss / objective | quantity directly optimized on search worlds | `objectives/losses/` |
 | design space | parameters or structures the optimizer may change | `objectives/design-spaces/` |
 | evaluation metric | held-out measurement used to understand a frozen candidate | `metrics/` |

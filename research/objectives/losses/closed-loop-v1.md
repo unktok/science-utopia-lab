@@ -58,16 +58,21 @@ default is `report_only`.
 
 ```text
 optimization seeds
-θ_t → simulator → valid observation → loss L(θ_t)
- ↑                                      ↓
- └──────────── optimizer.observe/suggest ┘
+SystemSpec_t → simulator → valid observation → loss L(SystemSpec_t)
+     ↑                                             ↓
+     └────────────── optimizer.observe/suggest ────┘
 
-freeze candidate θ*
+freeze candidate SystemSpec*
 
 held-out seeds / stress scenarios
-θ* → simulator → evaluation metrics → evidence report
-                                  → optional decision policy
+SystemSpec* → simulator → evaluation metrics → evidence report
+                                           → optional decision policy
 ```
+
+The first executable campaign may encode `SystemSpec` as the existing
+fixed-topology parameter vector. This is an implementation rung, not a decision
+to make peer review or any other single mechanism the permanent optimization
+unit.
 
 ## Current implementation gap
 

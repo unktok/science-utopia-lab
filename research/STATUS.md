@@ -19,7 +19,7 @@ Remote: `unktok/science-utopia-lab`
 |---|---|---|
 | local Qwen3-8B simulation | operational | stable four-year runs through Ollama/Metal |
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
-| parameter design space | partial | eight parameters; no structural mechanism search |
+| parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | partial | participation, review burden, topic spread, funding/activity shadows |
 | optimization loss | not frozen | new `LossSpec` required before search |
 | held-out evaluation metrics | needs separation | current documents conflate metrics and objectives |
@@ -27,8 +27,9 @@ Remote: `unktok/science-utopia-lab`
 | closed-loop optimizer | not implemented | no `suggest → simulate → observe → suggest` loop |
 | parallel campaign execution | integrated | bounded workers and orphan-writer leases; benchmark workers 1/2/4 |
 | canonical event replay | integrated | deterministic sidecar fixture; connect future UI consumers |
-| Evaluation System API | integrated foundation | auditable interface; shadow-mode simulator integration remains |
-| structural system optimization | design stage | typed mechanism graph not implemented |
+| Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
+| whole-system `SystemSpec` | design stage | typed mechanism graph/compiler not implemented |
+| structural system optimization | not started | topology mutation/search follows executable `SystemSpec` |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | design stage | canonical replay is the prerequisite |
 
@@ -49,3 +50,8 @@ Complete `Optimization v1`:
 4. run an initial multi-design sample;
 5. feed observations into an optimizer interface;
 6. demonstrate at least one full closed-loop proposal update.
+
+This milestone may begin with parameters of the legacy fixed topology for a
+small end-to-end proof. Its optimizer boundary must accept a design object that
+can later become a whole-system `SystemSpec`; optimizing the evaluation
+subsystem alone is not the research endpoint.

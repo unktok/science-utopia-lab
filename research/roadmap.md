@@ -33,19 +33,21 @@
 - 5〜8変数の小規模探索を再現できる
 - 未使用 seed で候補を再評価できる
 
-## Phase 2 — Evaluation System API
+## Phase 2 — SystemSpecと機構グラフ基盤
 
 成果物:
 
-- `LegacyPeerReviewEvaluation`
-- 型付き機構 interface と contract tests
-- 少なくとも一つの代替評価機構
-- 現行挙動との regression comparison
+- whole-system `SystemSpec` schemaとvalidator
+- 現行システムを再現する`LegacySystemSpec` compiler
+- 型付き機構interface、接続規則、contract tests
+- canonical event/replayによるグラフ実行の観測
+- Evaluation System APIを最初のvertical sliceとして接続
 
 完了ゲート:
 
-- simulator 本体を分岐せず評価機構を交換できる
-- decision provenance と resource effect を追跡できる
+- legacy構成を`SystemSpec`から再現できる
+- 少なくとも一機構をsimulator本体の分岐なしで交換または除去できる
+- 機構間のdecision provenanceとresource effectを追跡できる
 
 ## Phase 3 — 多目的ブラックボックス制度探索
 
@@ -62,28 +64,33 @@
 - 選ばれた制度が未使用 seed と環境 shift で検証される
 - 改善だけでなく代償と失敗範囲を説明できる
 
-## Phase 4 — 微分可能な評価機構
+## Phase 4 — 科学システム構造探索
 
 成果物:
 
-- 連続緩和された評価・配分機構
-- differentiable surrogate
-- gradient / ES / black-box の比較
-- gradient fidelity 診断
+- mechanism graphの構造変異operator
+- publication / funding / governanceの分離
+- 構造とパラメータの共同探索
+- 複雑さと性能のtrade-off
 
 完了ゲート:
 
-- surrogate 上だけでなく真の simulator 上で改善を確認する
-- 勾配近似が壊れる条件を特定する
+- 異なるtopologyを同じ実験contractで実行・比較できる
+- 未使用seedと環境shiftで構造候補を再評価できる
 
-## Phase 5 — 科学システム構造探索
+## Phase 5 — 微分可能な科学システム
 
 成果物:
 
-- mechanism graph schema
-- publication / funding / governance の分離
-- 構造とパラメータの共同探索
-- 複雑さと性能の trade-off
+- 連続緩和された機構・接続・配分
+- differentiable surrogate
+- gradient / ES / black-boxの比較
+- gradient fidelity診断
+
+完了ゲート:
+
+- surrogate上だけでなく真のsimulator上で改善を確認する
+- 勾配近似が壊れる機構・構造・条件を特定する
 
 ## Parallel Track — Game vertical slice
 
@@ -113,12 +120,12 @@ pairを許さない固定gateに違反したため、判断は`not_confirmed`で
 candidateを閉じ、新しいdesign集合・seed分割・判断規則を事前登録したmulti-design
 campaignへ進む。
 
-## Repository relocation backlog
+## Repository relocation
 
-現在のrepositoryは`/Users/shiro/ScienceUtopia`にある。active experimentがない区切りで
-移動先を決めて移す。tracked sourceにはこの絶対pathの固定参照はないが、historical
-manifestの絶対pathはprovenanceとして書き換えない。移動後はvirtual environmentと
-cacheを再接続し、testsとsmoke runを通してから長時間campaignを開始する。
+repositoryは`/Users/shiro/unktok/dev/science-utopia-lab`へ移動済みである。
+historical manifestの絶対pathはprovenanceとして維持し、旧pathのcompatibility
+symlinkとartifact manifestの`current_locator`で接続している。統合testsは移動後の
+実体pathで通過済みであり、次の長時間campaign前にsmoke runを行う。
 
 ## Optimization v1 — 次の主マイルストーン
 
@@ -129,6 +136,10 @@ cacheを再接続し、testsとsmoke runを通してから長時間campaignを�
 4. bounded parallel schedulerを安全性監査後に統合し、workers 1/2/4を実測する。
 5. random/Sobol初期点から`observe`し、少なくとも一回は結果依存の次候補を
    `suggest`する閉ループを完成させる。
+
+最初の実行では現行固定topologyのparameter vectorを制限版`SystemSpec`として用いて
+よい。ただしoptimizer APIとcampaign recordの設計単位はsystem全体とし、
+Evaluation Systemだけを恒久的な最適化対象にはしない。
 
 technical validity以外のfloorやvetoは既定では置かない。必要な場合だけ、lossとは
 別の明示的constraintまたはcampaign終了後のdecision policyとしてversion化する。

@@ -11,6 +11,24 @@
 - **Channels**: artifact、score、decision、feedback、resource、signal、constraint
 - **Observables**: 科学的成果、効率、公平性、頑健性、参加者の状態
 
+設計・探索の単位は個別の査読方式ではなく、グラフ全体を記述する
+`SystemSpec`である。
+
+```text
+SystemSpec
+  agent_types
+  artifact_types
+  mechanisms[]       # zero or more typed mechanism instances
+  connections[]      # channels and their direction
+  schedules[]        # ordering, timing, triggers
+  initial_state
+  global_invariants
+```
+
+評価、publication、funding、governmentなどはすべて任意の機構familyである。
+特定familyの存在を必須とせず、同じ働きを別の構成で実現することや、ある働きを
+置かないことも設計空間に含める。
+
 各機構は概念上、次の契約を持つ。
 
 ```text
@@ -26,7 +44,7 @@ Mechanism
 
 この契約により、「査読」は simulator 全体へ埋め込まれた固定フェーズではなく、交換可能な一機構になる。
 
-## Evaluation System
+## Evaluation System — 一つの機構familyの例
 
 評価システムを次の5段階へ分解する。
 
@@ -61,11 +79,11 @@ Mechanism
 ## 現行コードからの移行方針
 
 1. 現行イベントと状態遷移を観測し、暗黙の依存関係を列挙する。
-2. 現行の査読・採択挙動を `LegacyPeerReviewEvaluation` として固定する。
-3. 入出力 schema と不変条件を contract test にする。
-4. 第二の単純な instance（例: score + lottery）を実装し、交換可能性を証明する。
-5. publication と funding を別機構へ切り離す。
-6. 機構グラフの設定、検証、可視化を追加する。
+2. 現行システム全体を生成する `LegacySystemSpec` / compiler を固定する。
+3. 機構の入出力 schema とシステム全体の不変条件を contract test にする。
+4. 査読・採択は最初のvertical sliceとして交換可能性を検証する。
+5. publication、funding、governanceを順に独立機構へ切り離す。
+6. `SystemSpec`の検証、実行、差分、可視化、構造探索を追加する。
 
 ## 必須の不変条件
 
