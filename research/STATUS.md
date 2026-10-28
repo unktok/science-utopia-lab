@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 12:13 JST
+Updated: 2026-10-28 12:27 JST
 
 ## Overall position
 
@@ -32,6 +32,7 @@ Remote: `unktok/science-utopia-lab`
 | held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
+| post-optimization comparison | executable pre-held-out v1 | explicit three-winner fingerprint gate, 3-by-3 LossSpec matrix, seed uncertainty, Pareto/trade-offs, runtime/failure/provenance, and paper SVG/LaTeX without held-out access |
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |

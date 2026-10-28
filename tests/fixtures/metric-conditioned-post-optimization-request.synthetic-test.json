@@ -1,0 +1,10 @@
+{
+  "schema": "scienceutopia.metric-conditioned-post-optimization-request.v1",
+  "fixture_use": "synthetic_test_only",
+  "interpretation": "Synthetic fingerprints for contract and rendering tests; not experimental winners.",
+  "winner_fingerprints": {
+    "participation-arm": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "review-burden-arm": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "topic-diversity-arm": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  }
+}
