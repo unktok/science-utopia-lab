@@ -28,6 +28,8 @@ and results. New work uses the forward-only taxonomy below.
 - [Metric-conditioned held-out metric suite](metrics/metric-conditioned-held-out-suite-v1.json)
 - [Metric-conditioned results graphics pipeline](decisions/0009-metric-conditioned-results-graphics-pipeline.md)
 - [Metric-conditioned automatic paper slice](decisions/0010-metric-conditioned-automatic-paper-slice.md)
+- [Pre-held-out optimization completion analysis](decisions/0012-pre-held-out-optimization-completion-analysis.md)
+- [Optimization completion analysis runbook](protocols/campaigns/metric-conditioned-optimization-completion-analysis-v1.md)
 - [Objective catalog v1 decision](decisions/0011-objective-catalog-v1.md)
 - [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
 - [Milestone 3: first real result-dependent closed loop](milestones/2026-10-27-first-closed-loop-engineering.md)

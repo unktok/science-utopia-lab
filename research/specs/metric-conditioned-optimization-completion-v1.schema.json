@@ -1,0 +1,378 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/metric-conditioned-optimization-completion-v1.schema.json",
+  "title": "Science Utopia metric-conditioned optimization completion report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "study_id",
+    "study_revision",
+    "data_classification",
+    "evidence_boundary",
+    "contract",
+    "provenance",
+    "execution",
+    "arms",
+    "frozen_winners",
+    "development_cross_objective",
+    "interpretation_guard"
+  ],
+  "properties": {
+    "schema": {
+      "const": "scienceutopia.metric-conditioned-optimization-completion.v1"
+    },
+    "study_id": {"type": "string", "minLength": 1},
+    "study_revision": {"type": "string", "minLength": 1},
+    "data_classification": {
+      "enum": ["experimental", "synthetic_test_fixture"]
+    },
+    "evidence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "split",
+        "held_out_consumed",
+        "held_out_seeds",
+        "verified_absent_paths",
+        "interpretation"
+      ],
+      "properties": {
+        "split": {"const": "development_only"},
+        "held_out_consumed": {"const": false},
+        "held_out_seeds": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {"type": "integer"}
+        },
+        "verified_absent_paths": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "interpretation": {"type": "string", "minLength": 1}
+      }
+    },
+    "contract": {
+      "const": {
+        "arms": 3,
+        "candidates_per_arm": 5,
+        "development_seeds_per_candidate": 3,
+        "logical_runs": 45,
+        "distinct_losses": 3,
+        "decision_policy": "report_only"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_commit",
+        "controlled_search_contract_sha256",
+        "manifest_path",
+        "manifest_sha256",
+        "winner_freeze_path",
+        "winner_freeze_sha256",
+        "campaign_files"
+      ],
+      "properties": {
+        "source_commit": {"$ref": "#/$defs/nonempty"},
+        "controlled_search_contract_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "study_template",
+            "fidelity",
+            "seed_sets",
+            "optimizer",
+            "budget",
+            "execution"
+          ],
+          "properties": {
+            "study_template": {"$ref": "#/$defs/sha256"},
+            "fidelity": {"$ref": "#/$defs/sha256"},
+            "seed_sets": {"$ref": "#/$defs/sha256"},
+            "optimizer": {"$ref": "#/$defs/sha256"},
+            "budget": {"$ref": "#/$defs/sha256"},
+            "execution": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "manifest_path": {"$ref": "#/$defs/nonempty"},
+        "manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "winner_freeze_path": {"$ref": "#/$defs/nonempty"},
+        "winner_freeze_sha256": {"$ref": "#/$defs/sha256"},
+        "campaign_files": {
+          "type": "object",
+          "minProperties": 3,
+          "maxProperties": 3,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "snapshot_sha256",
+              "state_sha256",
+              "registry_sha256",
+              "registry_report_sha256"
+            ],
+            "properties": {
+              "snapshot_sha256": {"$ref": "#/$defs/sha256"},
+              "state_sha256": {"$ref": "#/$defs/sha256"},
+              "registry_sha256": {"$ref": "#/$defs/sha256"},
+              "registry_report_sha256": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        }
+      }
+    },
+    "execution": {"$ref": "#/$defs/execution"},
+    "arms": {
+      "type": "object",
+      "minProperties": 3,
+      "maxProperties": 3,
+      "additionalProperties": {"$ref": "#/$defs/arm"}
+    },
+    "frozen_winners": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"type": "object"}
+    },
+    "development_cross_objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_rankings",
+        "frozen_winner_matrix",
+        "pairwise_rank_association",
+        "winner_reversals"
+      ],
+      "properties": {
+        "candidate_rankings": {
+          "type": "object",
+          "minProperties": 3,
+          "maxProperties": 3,
+          "additionalProperties": {"$ref": "#/$defs/ranking"}
+        },
+        "frozen_winner_matrix": {
+          "type": "object",
+          "minProperties": 3,
+          "maxProperties": 3,
+          "additionalProperties": {
+            "type": "object",
+            "minProperties": 3,
+            "maxProperties": 3,
+            "additionalProperties": {"$ref": "#/$defs/loss_result"}
+          }
+        },
+        "pairwise_rank_association": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"$ref": "#/$defs/rank_comparison"}
+        },
+        "winner_reversals": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {"$ref": "#/$defs/rank_comparison"}
+        }
+      }
+    },
+    "interpretation_guard": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_runs",
+        "executed_runs",
+        "adopted_runs",
+        "attempt_status_counts",
+        "physical_attempt_wall_seconds"
+      ],
+      "properties": {
+        "logical_runs": {"type": "integer", "minimum": 0},
+        "executed_runs": {"type": "integer", "minimum": 0},
+        "adopted_runs": {"type": "integer", "minimum": 0},
+        "attempt_status_counts": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "physical_attempt_wall_seconds": {"type": "number", "minimum": 0},
+        "artifact_links": {
+          "type": "array",
+          "items": {"type": "object"}
+        }
+      }
+    },
+    "arm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "loss_spec",
+        "campaign_revision",
+        "candidates",
+        "frozen_winner_candidate_key",
+        "execution"
+      ],
+      "properties": {
+        "loss_spec": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "version", "sha256"],
+          "properties": {
+            "id": {"$ref": "#/$defs/nonempty"},
+            "version": {"$ref": "#/$defs/nonempty"},
+            "sha256": {"$ref": "#/$defs/sha256"}
+          }
+        },
+        "campaign_revision": {"$ref": "#/$defs/nonempty"},
+        "candidates": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {"$ref": "#/$defs/candidate"}
+        },
+        "frozen_winner_candidate_key": {"$ref": "#/$defs/nonempty"},
+        "execution": {"$ref": "#/$defs/execution"}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_key",
+        "proposal_index",
+        "phase",
+        "suggestion_id",
+        "design_id",
+        "system_fingerprint",
+        "source_candidate",
+        "run_ids",
+        "execution_provenance",
+        "cross_objective_losses"
+      ],
+      "properties": {
+        "candidate_key": {"$ref": "#/$defs/nonempty"},
+        "proposal_index": {"type": "integer", "minimum": 0, "maximum": 4},
+        "phase": {"type": ["string", "null"]},
+        "suggestion_id": {"$ref": "#/$defs/nonempty"},
+        "design_id": {"$ref": "#/$defs/nonempty"},
+        "system_fingerprint": {"$ref": "#/$defs/nonempty"},
+        "source_candidate": {"type": "object"},
+        "run_ids": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "execution_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "executed": {"type": "integer", "minimum": 0, "maximum": 3},
+            "adopted": {"type": "integer", "minimum": 0, "maximum": 3}
+          }
+        },
+        "cross_objective_losses": {
+          "type": "object",
+          "minProperties": 3,
+          "maxProperties": 3,
+          "additionalProperties": {"$ref": "#/$defs/loss_result"}
+        }
+      }
+    },
+    "loss_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loss", "mean", "population_sd", "seed_values", "uncertainty"],
+      "properties": {
+        "loss": {"type": "number"},
+        "mean": {"type": "number"},
+        "population_sd": {"type": "number", "minimum": 0},
+        "seed_values": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["seed", "run_id", "loss", "execution_mode"],
+            "properties": {
+              "seed": {"type": "integer"},
+              "run_id": {"$ref": "#/$defs/nonempty"},
+              "loss": {"type": "number"},
+              "execution_mode": {"enum": ["executed", "adopted"]}
+            }
+          }
+        },
+        "uncertainty": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "resamples", "ci95_low", "ci95_high"],
+          "properties": {
+            "method": {"const": "exact_seed_bootstrap_percentile"},
+            "resamples": {"const": 27},
+            "ci95_low": {"type": "number"},
+            "ci95_high": {"type": "number"}
+          }
+        }
+      }
+    },
+    "ranking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values", "ranks", "order", "best_candidate_key", "best_design_id"],
+      "properties": {
+        "values": {
+          "type": "object",
+          "minProperties": 15,
+          "maxProperties": 15,
+          "additionalProperties": {"type": "number"}
+        },
+        "ranks": {
+          "type": "object",
+          "minProperties": 15,
+          "maxProperties": 15,
+          "additionalProperties": {"type": "number", "minimum": 1, "maximum": 15}
+        },
+        "order": {
+          "type": "array",
+          "minItems": 15,
+          "maxItems": 15,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "best_candidate_key": {"$ref": "#/$defs/nonempty"},
+        "best_design_id": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "rank_comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "left",
+        "right",
+        "kendall_tau_b",
+        "left_best_candidate_key",
+        "right_best_candidate_key",
+        "winner_changes"
+      ],
+      "properties": {
+        "left": {"$ref": "#/$defs/nonempty"},
+        "right": {"$ref": "#/$defs/nonempty"},
+        "kendall_tau_b": {"type": ["number", "null"], "minimum": -1, "maximum": 1},
+        "left_best_candidate_key": {"$ref": "#/$defs/nonempty"},
+        "right_best_candidate_key": {"$ref": "#/$defs/nonempty"},
+        "winner_changes": {"type": "boolean"}
+      }
+    }
+  }
+}
