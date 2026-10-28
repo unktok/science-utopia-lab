@@ -228,6 +228,8 @@ def build_viewer_payload_v2(
         "chapters": [],
         "workflow_nodes": [],
         "epistemic_flows": [],
+        "workstations": [],
+        "interior_activities": [],
         **dict(choreography or {}),
     }
     ambient_value = {
@@ -311,6 +313,25 @@ def _validate_v2_visual_records(
         entity_ids.add(record_id)
         visual_ids.add(record_id)
 
+    workstation_ids: set[str] = set()
+    for record in choreography.get("workstations", []):
+        _validate_trace_record(record, event_ids=event_ids, expected="derived")
+        record_id = str(record["id"])
+        if record_id in visual_ids or record_id in entity_ids:
+            raise ValueError(f"Duplicate workstation id: {record_id}")
+        if record.get("entity_type") != "workstation":
+            raise ValueError(f"Invalid workstation entity type: {record_id}")
+        if not isinstance(record.get("asset_key"), str):
+            raise ValueError(f"Workstation requires an asset: {record_id}")
+        if not all(
+            isinstance(record.get(axis), int) and not isinstance(record.get(axis), bool)
+            for axis in ("x", "y")
+        ):
+            raise ValueError(f"Workstation must use integer geometry: {record_id}")
+        workstation_ids.add(record_id)
+        entity_ids.add(record_id)
+        visual_ids.add(record_id)
+
     entity_positions = {
         str(record["entity_id"]): (record.get("x"), record.get("y"))
         for record in choreography.get("placements", [])
@@ -319,8 +340,12 @@ def _validate_v2_visual_records(
         str(record["id"]): (record.get("x"), record.get("y"))
         for record in choreography.get("workflow_nodes", [])
     })
+    entity_positions.update({
+        str(record["id"]): (record.get("x"), record.get("y"))
+        for record in choreography.get("workstations", [])
+    })
 
-    for group_name in ("placements", "flows", "actions", "camera_cues", "chapters", "epistemic_flows"):
+    for group_name in ("placements", "flows", "actions", "camera_cues", "chapters", "epistemic_flows", "interior_activities"):
         for record in choreography.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="derived")
             record_id = str(record["id"])
@@ -342,7 +367,7 @@ def _validate_v2_visual_records(
                     )
                 if record.get("action_type") not in {
                     "move", "experiment", "write", "review", "revise",
-                    "publish", "allocate", "receive", "read", "cite", "policy",
+                    "publish", "allocate", "apply", "receive", "read", "cite", "policy",
                 }:
                     raise ValueError(
                         f"Unsupported action type: {record.get('action_type')}"
@@ -399,6 +424,15 @@ def _validate_v2_visual_records(
                     raise ValueError(f"Epistemic flow endpoint has no deterministic placement: {record.get('id')}")
                 if path[0] != {"x": start[0], "y": start[1]} or path[-1] != {"x": end[0], "y": end[1]}:
                     raise ValueError(f"Epistemic flow path endpoints do not match placements: {record.get('id')}")
+            if group_name == "interior_activities":
+                if record.get("activity_type") not in {"write", "review", "apply", "read", "receive"}:
+                    raise ValueError(f"Unsupported interior activity: {record.get('activity_type')}")
+                if record.get("actor_entity_id") not in researcher_ids:
+                    raise ValueError(f"Unknown interior actor: {record.get('actor_entity_id')}")
+                if record.get("workstation_id") not in workstation_ids:
+                    raise ValueError(f"Unknown interior workstation: {record.get('workstation_id')}")
+                if not isinstance(record.get("event_type"), str):
+                    raise ValueError(f"Interior activity requires an event type: {record.get('id')}")
     for group_name in ("actors", "effects"):
         for record in ambient.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="ambient")

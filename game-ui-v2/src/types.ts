@@ -1,10 +1,12 @@
 export const FLOW_TYPES = ["data", "paper", "review", "funding", "citation", "policy"] as const;
 export type FlowType = (typeof FLOW_TYPES)[number];
 export type TruthStatus = "canonical" | "derived" | "ambient";
-export const ACTION_TYPES = ["move", "experiment", "write", "review", "revise", "publish", "allocate", "receive", "read", "cite", "policy"] as const;
+export const ACTION_TYPES = ["move", "experiment", "write", "review", "revise", "publish", "allocate", "apply", "receive", "read", "cite", "policy"] as const;
 export type ActionType = (typeof ACTION_TYPES)[number];
 export const EPISTEMIC_FLOW_KINDS = ["manuscript", "review", "decision", "application", "award"] as const;
 export type EpistemicFlowKind = (typeof EPISTEMIC_FLOW_KINDS)[number];
+export const INTERIOR_ACTIVITY_TYPES = ["write", "review", "apply", "read", "receive"] as const;
+export type InteriorActivityType = (typeof INTERIOR_ACTIVITY_TYPES)[number];
 
 export interface WorldPoint {
   x: number;
@@ -24,7 +26,7 @@ export interface EvidenceRecord {
 }
 
 export interface WorldEntity extends EvidenceRecord {
-  entity_type: "researcher" | "institution" | "artifact" | "ambient_actor" | "workflow_node";
+  entity_type: "researcher" | "institution" | "artifact" | "ambient_actor" | "workflow_node" | "workstation";
   asset_key: string;
   x: number;
   y: number;
@@ -82,6 +84,13 @@ export interface EpistemicFlow extends EvidenceRecord {
   event_type: string;
 }
 
+export interface InteriorActivity extends EvidenceRecord {
+  activity_type: InteriorActivityType;
+  actor_entity_id: string;
+  workstation_id: string;
+  event_type: string;
+}
+
 export interface CinematicChapter extends EvidenceRecord {
   end_ms: number;
 }
@@ -123,6 +132,8 @@ export interface ReplayV2 {
     chapters: CinematicChapter[];
     workflow_nodes: WorldEntity[];
     epistemic_flows: EpistemicFlow[];
+    workstations: WorldEntity[];
+    interior_activities: InteriorActivity[];
     time_compression: {
       kind: string;
       canonical_event_count: number;
@@ -153,7 +164,7 @@ export interface AssetPack {
 
 export interface SelectionDetail {
   id: string;
-  category: "entity" | "flow" | "epistemic" | "action" | "event";
+  category: "entity" | "flow" | "epistemic" | "interior" | "action" | "event";
 }
 
 export interface RuntimePreferences {

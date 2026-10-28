@@ -35,7 +35,10 @@ describe("replay-view v2 contract", () => {
       return counts;
     }, {})).toEqual({ manuscript: 2, review: 4, decision: 2, award: 2, application: 10 });
     expect(replay.choreography.epistemic_flows.every((flow) => flow.path.every((point) => Number.isInteger(point.x) && Number.isInteger(point.y)))).toBe(true);
-    expect(replay.choreography.actions).toHaveLength(20);
+    expect(replay.choreography.workstations).toHaveLength(11);
+    expect(replay.choreography.interior_activities).toHaveLength(20);
+    expect(replay.ambient.effects.every((effect) => effect.truth_status === "ambient" && effect.derived_from_event_ids.length === 0)).toBe(true);
+    expect(replay.choreography.actions).toHaveLength(56);
     expect(replay.choreography.chapters).toHaveLength(9);
     expect(replay.choreography.time_compression).toMatchObject({
       kind: "deterministic-stage-compression",
@@ -45,7 +48,7 @@ describe("replay-view v2 contract", () => {
     expect(replay.choreography.actions.reduce<Record<string, number>>((counts, action) => {
       counts[action.action_type] = (counts[action.action_type] ?? 0) + 1;
       return counts;
-    }, {})).toEqual({ move: 12, write: 2, review: 4, receive: 2 });
+    }, {})).toEqual({ move: 36, write: 2, review: 4, read: 2, receive: 2, apply: 10 });
     expect(replay.choreography.actions.every((action) => (
       action.path.length >= 2
       && action.path.every((point) => Number.isInteger(point.x) && Number.isInteger(point.y))
@@ -127,6 +130,12 @@ describe("replay-view v2 contract", () => {
     expect(() => parseReplayV2(raw)).toThrow(/semantic mismatch/);
   });
 
+  it("rejects an interior activity whose task contradicts its canonical event", async () => {
+    const raw = JSON.parse(await readFile(fileURLToPath(campaignUrl), "utf8")) as { choreography: { interior_activities: Array<{ activity_type: string }> } };
+    raw.choreography.interior_activities[0]!.activity_type = "receive";
+    expect(() => parseReplayV2(raw)).toThrow(/semantic mismatch/);
+  });
+
   it("rejects an actor action attached to an institution", async () => {
     const raw = await fixture() as { choreography: { actions: Array<{ actor_entity_id: string }> } };
     raw.choreography.actions[0]!.actor_entity_id = "institution:noctiluca-knowledge-lab:244054c6";
@@ -149,6 +158,7 @@ describe("asset pack contract", () => {
       "flow_data", "flow_paper", "flow_review", "flow_funding", "flow_citation", "flow_policy",
       "workflow_submission", "workflow_review", "workflow_publication", "workflow_funding",
       "token_manuscript", "token_review_seal", "token_decision", "token_application", "token_grant",
+      "station_manuscript", "station_review", "station_application", "station_decision", "station_award",
       "ambient_courier_drone",
     ]));
   });

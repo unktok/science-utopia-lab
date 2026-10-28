@@ -13,6 +13,9 @@ const captures = {
   "noctiluca-epistemic-review-seed521-cursor-21000.png": "db48e5764458655d5dc4a9842642bd4b9e0ad710f82380de73390f92b1ef8b81",
   "noctiluca-epistemic-application-seed521-cursor-36500.png": "33680042350acf333af329822976b05121c4da0ed514e9eb90398bd097147fe7",
   "noctiluca-epistemic-award-seed521-cursor-42000.png": "f6d1e26f6e13ffb9deaa21f98457e6223808c46a3c204f1cc8899592ba20daf5",
+  "noctiluca-life-writing-seed521-cursor-6200.png": "bbcb21a6f4e9f18216d6bf47ce1dfdd0a1e51e9cfbb318b41fa202b48623a584",
+  "noctiluca-life-review-seed521-cursor-20200.png": "1da1e23bb561fcf0e270665e3bf8bb450067c54d997adc3a8c380229e5bf91a7",
+  "noctiluca-life-application-seed521-cursor-36500.png": "0a0393ac54e5ad2b0933a91ad8a6f83b5ce86e46d586e098b37da39ec2069937",
 };
 
 describe("deterministic visual review artifacts", () => {

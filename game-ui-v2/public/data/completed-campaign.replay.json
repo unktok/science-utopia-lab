@@ -1,7 +1,30 @@
 {
   "ambient": {
     "actors": [],
-    "effects": []
+    "effects": [
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [],
+        "duration_ms": 48000,
+        "id": "ambient:interior-console-flicker",
+        "kind": "interior-console-flicker",
+        "label": "Cosmetic console flicker",
+        "logical_timestamp_ms": 0,
+        "truth_status": "ambient"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [],
+        "duration_ms": 48000,
+        "id": "ambient:break-room-vapor",
+        "kind": "break-room-vapor",
+        "label": "Cosmetic break-room vapor",
+        "logical_timestamp_ms": 0,
+        "truth_status": "ambient"
+      }
+    ]
   },
   "canonical": {
     "entities": {
@@ -3501,6 +3524,236 @@
         "truth_status": "derived"
       },
       {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 406,
+          "y": 232
+        },
+        "id": "action:move-to-read:7300f4c3b557",
+        "kind": "researcher-action",
+        "label": "Move to read station",
+        "logical_timestamp_ms": 26600,
+        "path": [
+          {
+            "x": 284,
+            "y": 152
+          },
+          {
+            "x": 284,
+            "y": 185
+          },
+          {
+            "x": 406,
+            "y": 185
+          },
+          {
+            "x": 406,
+            "y": 232
+          }
+        ],
+        "start": {
+          "x": 284,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "read",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9"
+        ],
+        "duration_ms": 2000,
+        "end": {
+          "x": 406,
+          "y": 232
+        },
+        "id": "action:read:7300f4c3b557",
+        "kind": "researcher-action",
+        "label": "Read publication decision",
+        "logical_timestamp_ms": 28200,
+        "path": [
+          {
+            "x": 406,
+            "y": 232
+          },
+          {
+            "x": 406,
+            "y": 232
+          }
+        ],
+        "start": {
+          "x": 406,
+          "y": 232
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9"
+        ],
+        "duration_ms": 1500,
+        "end": {
+          "x": 284,
+          "y": 152
+        },
+        "id": "action:return-from-read:7300f4c3b557",
+        "kind": "researcher-action",
+        "label": "Return from read station",
+        "logical_timestamp_ms": 30400,
+        "path": [
+          {
+            "x": 406,
+            "y": 232
+          },
+          {
+            "x": 406,
+            "y": 185
+          },
+          {
+            "x": 284,
+            "y": 185
+          },
+          {
+            "x": 284,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 406,
+          "y": 232
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 450,
+          "y": 232
+        },
+        "id": "action:move-to-read:6feef1b78496",
+        "kind": "researcher-action",
+        "label": "Move to read station",
+        "logical_timestamp_ms": 29600,
+        "path": [
+          {
+            "x": 434,
+            "y": 152
+          },
+          {
+            "x": 434,
+            "y": 185
+          },
+          {
+            "x": 450,
+            "y": 185
+          },
+          {
+            "x": 450,
+            "y": 232
+          }
+        ],
+        "start": {
+          "x": 434,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "read",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3"
+        ],
+        "duration_ms": 2000,
+        "end": {
+          "x": 450,
+          "y": 232
+        },
+        "id": "action:read:6feef1b78496",
+        "kind": "researcher-action",
+        "label": "Read publication decision",
+        "logical_timestamp_ms": 31200,
+        "path": [
+          {
+            "x": 450,
+            "y": 232
+          },
+          {
+            "x": 450,
+            "y": 232
+          }
+        ],
+        "start": {
+          "x": 450,
+          "y": 232
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3"
+        ],
+        "duration_ms": 1500,
+        "end": {
+          "x": 434,
+          "y": 152
+        },
+        "id": "action:return-from-read:6feef1b78496",
+        "kind": "researcher-action",
+        "label": "Return from read station",
+        "logical_timestamp_ms": 33400,
+        "path": [
+          {
+            "x": 450,
+            "y": 232
+          },
+          {
+            "x": 450,
+            "y": 185
+          },
+          {
+            "x": 434,
+            "y": 185
+          },
+          {
+            "x": 434,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 450,
+          "y": 232
+        },
+        "truth_status": "derived"
+      },
+      {
         "action_type": "receive",
         "actor_entity_id": "institution_0001_researcher_2",
         "causal_parent_id": "6b87fe8e878a37904fb889ce962bb303b7e2eab49e86542fbf9dea67d8a7860e",
@@ -3563,6 +3816,1204 @@
         "start": {
           "x": 434,
           "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_0",
+        "causal_parent_id": "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+          "32f5964f98c2c1eca8c143b2b25c20fa20a62a420220c15295b8b438ce382f4a",
+          "6ede3dcd7da2cb5775b24647ca58b1074ac8087de56b7848182dacde7ba249a1"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 72,
+          "y": 222
+        },
+        "id": "action:move-to-application:99787ed073a4",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 32800,
+        "path": [
+          {
+            "x": 196,
+            "y": 152
+          },
+          {
+            "x": 196,
+            "y": 202
+          },
+          {
+            "x": 72,
+            "y": 202
+          },
+          {
+            "x": 72,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 196,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_0",
+        "causal_parent_id": "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+          "32f5964f98c2c1eca8c143b2b25c20fa20a62a420220c15295b8b438ce382f4a",
+          "6ede3dcd7da2cb5775b24647ca58b1074ac8087de56b7848182dacde7ba249a1"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 72,
+          "y": 222
+        },
+        "id": "action:apply:99787ed073a4",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 33700,
+        "path": [
+          {
+            "x": 72,
+            "y": 222
+          },
+          {
+            "x": 72,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 72,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_0",
+        "causal_parent_id": "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+          "32f5964f98c2c1eca8c143b2b25c20fa20a62a420220c15295b8b438ce382f4a",
+          "6ede3dcd7da2cb5775b24647ca58b1074ac8087de56b7848182dacde7ba249a1"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 196,
+          "y": 152
+        },
+        "id": "action:return-from-application:99787ed073a4",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 35500,
+        "path": [
+          {
+            "x": 72,
+            "y": 222
+          },
+          {
+            "x": 72,
+            "y": 202
+          },
+          {
+            "x": 196,
+            "y": 202
+          },
+          {
+            "x": 196,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 72,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_1",
+        "causal_parent_id": "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+          "27de84d8953a6c87adf904f10cc7816ed7eae5750b0996d9d2fb37f124684232",
+          "ae65cd334ebd9e5739676e3c962f16750a04b6aea50b98c3dbaeba9c1abc9566"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 100,
+          "y": 222
+        },
+        "id": "action:move-to-application:bf51f23eef60",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 33400,
+        "path": [
+          {
+            "x": 240,
+            "y": 152
+          },
+          {
+            "x": 240,
+            "y": 202
+          },
+          {
+            "x": 100,
+            "y": 202
+          },
+          {
+            "x": 100,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 240,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_1",
+        "causal_parent_id": "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+          "27de84d8953a6c87adf904f10cc7816ed7eae5750b0996d9d2fb37f124684232",
+          "ae65cd334ebd9e5739676e3c962f16750a04b6aea50b98c3dbaeba9c1abc9566"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 100,
+          "y": 222
+        },
+        "id": "action:apply:bf51f23eef60",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 34300,
+        "path": [
+          {
+            "x": 100,
+            "y": 222
+          },
+          {
+            "x": 100,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 100,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_1",
+        "causal_parent_id": "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+          "27de84d8953a6c87adf904f10cc7816ed7eae5750b0996d9d2fb37f124684232",
+          "ae65cd334ebd9e5739676e3c962f16750a04b6aea50b98c3dbaeba9c1abc9566"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 240,
+          "y": 152
+        },
+        "id": "action:return-from-application:bf51f23eef60",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 36100,
+        "path": [
+          {
+            "x": 100,
+            "y": 222
+          },
+          {
+            "x": 100,
+            "y": 202
+          },
+          {
+            "x": 240,
+            "y": 202
+          },
+          {
+            "x": 240,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 100,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+          "11f3954f68040060b190cc9665537587fda3e6093e306a52167b5789f3ae9599"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 128,
+          "y": 222
+        },
+        "id": "action:move-to-application:59bed1bcf76c",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 34000,
+        "path": [
+          {
+            "x": 284,
+            "y": 152
+          },
+          {
+            "x": 284,
+            "y": 202
+          },
+          {
+            "x": 128,
+            "y": 202
+          },
+          {
+            "x": 128,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 284,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+          "11f3954f68040060b190cc9665537587fda3e6093e306a52167b5789f3ae9599"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 128,
+          "y": 222
+        },
+        "id": "action:apply:59bed1bcf76c",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 34900,
+        "path": [
+          {
+            "x": 128,
+            "y": 222
+          },
+          {
+            "x": 128,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 128,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+          "11f3954f68040060b190cc9665537587fda3e6093e306a52167b5789f3ae9599"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 284,
+          "y": 152
+        },
+        "id": "action:return-from-application:59bed1bcf76c",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 36700,
+        "path": [
+          {
+            "x": 128,
+            "y": 222
+          },
+          {
+            "x": 128,
+            "y": 202
+          },
+          {
+            "x": 284,
+            "y": 202
+          },
+          {
+            "x": 284,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 128,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_3",
+        "causal_parent_id": "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+          "10f6a261945cbcb200dd5e6c8d064a72a2cd45398db5c82f28b766bbb350b0d1"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 156,
+          "y": 222
+        },
+        "id": "action:move-to-application:8c5b6bbf8047",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 34400,
+        "path": [
+          {
+            "x": 196,
+            "y": 194
+          },
+          {
+            "x": 196,
+            "y": 202
+          },
+          {
+            "x": 156,
+            "y": 202
+          },
+          {
+            "x": 156,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 196,
+          "y": 194
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_3",
+        "causal_parent_id": "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+          "10f6a261945cbcb200dd5e6c8d064a72a2cd45398db5c82f28b766bbb350b0d1"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 156,
+          "y": 222
+        },
+        "id": "action:apply:8c5b6bbf8047",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 35300,
+        "path": [
+          {
+            "x": 156,
+            "y": 222
+          },
+          {
+            "x": 156,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 156,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_3",
+        "causal_parent_id": "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+          "10f6a261945cbcb200dd5e6c8d064a72a2cd45398db5c82f28b766bbb350b0d1"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 196,
+          "y": 194
+        },
+        "id": "action:return-from-application:8c5b6bbf8047",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 37100,
+        "path": [
+          {
+            "x": 156,
+            "y": 222
+          },
+          {
+            "x": 156,
+            "y": 202
+          },
+          {
+            "x": 196,
+            "y": 202
+          },
+          {
+            "x": 196,
+            "y": 194
+          }
+        ],
+        "start": {
+          "x": 156,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_4",
+        "causal_parent_id": "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+          "851208cd0573b29094b849f975c9cdfbc9886dfd3d46204de3b227a4d16e4c65"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 72,
+          "y": 222
+        },
+        "id": "action:move-to-application:ab58015fd86d",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 34800,
+        "path": [
+          {
+            "x": 240,
+            "y": 194
+          },
+          {
+            "x": 240,
+            "y": 202
+          },
+          {
+            "x": 72,
+            "y": 202
+          },
+          {
+            "x": 72,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 240,
+          "y": 194
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_4",
+        "causal_parent_id": "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+          "851208cd0573b29094b849f975c9cdfbc9886dfd3d46204de3b227a4d16e4c65"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 72,
+          "y": 222
+        },
+        "id": "action:apply:ab58015fd86d",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 35700,
+        "path": [
+          {
+            "x": 72,
+            "y": 222
+          },
+          {
+            "x": 72,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 72,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0000_researcher_4",
+        "causal_parent_id": "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+          "851208cd0573b29094b849f975c9cdfbc9886dfd3d46204de3b227a4d16e4c65"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 240,
+          "y": 194
+        },
+        "id": "action:return-from-application:ab58015fd86d",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 37500,
+        "path": [
+          {
+            "x": 72,
+            "y": 222
+          },
+          {
+            "x": 72,
+            "y": 202
+          },
+          {
+            "x": 240,
+            "y": 202
+          },
+          {
+            "x": 240,
+            "y": 194
+          }
+        ],
+        "start": {
+          "x": 72,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_0",
+        "causal_parent_id": "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+          "3f99aa090e37789496ed2d27d944556f9c5e35e845312eed20e2f4106718ebc7"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 100,
+          "y": 222
+        },
+        "id": "action:move-to-application:b80a1b1509f8",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 35200,
+        "path": [
+          {
+            "x": 346,
+            "y": 152
+          },
+          {
+            "x": 346,
+            "y": 202
+          },
+          {
+            "x": 100,
+            "y": 202
+          },
+          {
+            "x": 100,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 346,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_0",
+        "causal_parent_id": "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+          "3f99aa090e37789496ed2d27d944556f9c5e35e845312eed20e2f4106718ebc7"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 100,
+          "y": 222
+        },
+        "id": "action:apply:b80a1b1509f8",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 36100,
+        "path": [
+          {
+            "x": 100,
+            "y": 222
+          },
+          {
+            "x": 100,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 100,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_0",
+        "causal_parent_id": "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+          "3f99aa090e37789496ed2d27d944556f9c5e35e845312eed20e2f4106718ebc7"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 346,
+          "y": 152
+        },
+        "id": "action:return-from-application:b80a1b1509f8",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 37900,
+        "path": [
+          {
+            "x": 100,
+            "y": 222
+          },
+          {
+            "x": 100,
+            "y": 202
+          },
+          {
+            "x": 346,
+            "y": 202
+          },
+          {
+            "x": 346,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 100,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_1",
+        "causal_parent_id": "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+          "da9d1fb0ec20a7fdae2702a635da1eca3ff6c9f6365f87935b4792ee3341351e",
+          "0bf1f07222c839790a885b6ae216bf2a7b3e4eaefeffcdd4e7bbf7c1d57c3de3"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 128,
+          "y": 222
+        },
+        "id": "action:move-to-application:e4d057a3a34f",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 35600,
+        "path": [
+          {
+            "x": 390,
+            "y": 152
+          },
+          {
+            "x": 390,
+            "y": 202
+          },
+          {
+            "x": 128,
+            "y": 202
+          },
+          {
+            "x": 128,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 390,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_1",
+        "causal_parent_id": "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+          "da9d1fb0ec20a7fdae2702a635da1eca3ff6c9f6365f87935b4792ee3341351e",
+          "0bf1f07222c839790a885b6ae216bf2a7b3e4eaefeffcdd4e7bbf7c1d57c3de3"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 128,
+          "y": 222
+        },
+        "id": "action:apply:e4d057a3a34f",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 36500,
+        "path": [
+          {
+            "x": 128,
+            "y": 222
+          },
+          {
+            "x": 128,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 128,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_1",
+        "causal_parent_id": "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+          "da9d1fb0ec20a7fdae2702a635da1eca3ff6c9f6365f87935b4792ee3341351e",
+          "0bf1f07222c839790a885b6ae216bf2a7b3e4eaefeffcdd4e7bbf7c1d57c3de3"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 390,
+          "y": 152
+        },
+        "id": "action:return-from-application:e4d057a3a34f",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 38300,
+        "path": [
+          {
+            "x": 128,
+            "y": 222
+          },
+          {
+            "x": 128,
+            "y": 202
+          },
+          {
+            "x": 390,
+            "y": 202
+          },
+          {
+            "x": 390,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 128,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+          "cb62adc18e9eb517b2aefaf431dec40d3b1b16c4aa67e37c4d5a32ec7491453b",
+          "da1b0735f6b144586025e0b862fc77b27a02c0461114f5a2afa8efd29ad4d0bb"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 156,
+          "y": 222
+        },
+        "id": "action:move-to-application:1e050cca9f28",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 36200,
+        "path": [
+          {
+            "x": 434,
+            "y": 152
+          },
+          {
+            "x": 434,
+            "y": 202
+          },
+          {
+            "x": 156,
+            "y": 202
+          },
+          {
+            "x": 156,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 434,
+          "y": 152
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+          "cb62adc18e9eb517b2aefaf431dec40d3b1b16c4aa67e37c4d5a32ec7491453b",
+          "da1b0735f6b144586025e0b862fc77b27a02c0461114f5a2afa8efd29ad4d0bb"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 156,
+          "y": 222
+        },
+        "id": "action:apply:1e050cca9f28",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 37100,
+        "path": [
+          {
+            "x": 156,
+            "y": 222
+          },
+          {
+            "x": 156,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 156,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+          "cb62adc18e9eb517b2aefaf431dec40d3b1b16c4aa67e37c4d5a32ec7491453b",
+          "da1b0735f6b144586025e0b862fc77b27a02c0461114f5a2afa8efd29ad4d0bb"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 434,
+          "y": 152
+        },
+        "id": "action:return-from-application:1e050cca9f28",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 38900,
+        "path": [
+          {
+            "x": 156,
+            "y": 222
+          },
+          {
+            "x": 156,
+            "y": 202
+          },
+          {
+            "x": 434,
+            "y": 202
+          },
+          {
+            "x": 434,
+            "y": 152
+          }
+        ],
+        "start": {
+          "x": 156,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_3",
+        "causal_parent_id": "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+          "faa6da8a4dddd2c971cc6da1e94dc98fd5c8664701a2b19489caa22c77beafd7",
+          "f43278b427436af43759504c36a945d3317134ab69928335b22f7cffa182ad60"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 72,
+          "y": 222
+        },
+        "id": "action:move-to-application:bc2f93f1862c",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 36800,
+        "path": [
+          {
+            "x": 346,
+            "y": 194
+          },
+          {
+            "x": 346,
+            "y": 202
+          },
+          {
+            "x": 72,
+            "y": 202
+          },
+          {
+            "x": 72,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 346,
+          "y": 194
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_3",
+        "causal_parent_id": "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+          "faa6da8a4dddd2c971cc6da1e94dc98fd5c8664701a2b19489caa22c77beafd7",
+          "f43278b427436af43759504c36a945d3317134ab69928335b22f7cffa182ad60"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 72,
+          "y": 222
+        },
+        "id": "action:apply:bc2f93f1862c",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 37700,
+        "path": [
+          {
+            "x": 72,
+            "y": 222
+          },
+          {
+            "x": 72,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 72,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_3",
+        "causal_parent_id": "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+          "faa6da8a4dddd2c971cc6da1e94dc98fd5c8664701a2b19489caa22c77beafd7",
+          "f43278b427436af43759504c36a945d3317134ab69928335b22f7cffa182ad60"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 346,
+          "y": 194
+        },
+        "id": "action:return-from-application:bc2f93f1862c",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 39500,
+        "path": [
+          {
+            "x": 72,
+            "y": 222
+          },
+          {
+            "x": 72,
+            "y": 202
+          },
+          {
+            "x": 346,
+            "y": 202
+          },
+          {
+            "x": 346,
+            "y": 194
+          }
+        ],
+        "start": {
+          "x": 72,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_4",
+        "causal_parent_id": "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+          "9baa7ce6c92574a077b7d3288322a6122e56213e051876a3332da7fab67caeda",
+          "9a9262e9ad43556e7dbe80b368a4efc1ffe9d5e6f7006b00d398354fed850bd5"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 100,
+          "y": 222
+        },
+        "id": "action:move-to-application:f4c105712b15",
+        "kind": "researcher-action",
+        "label": "Move to application terminal",
+        "logical_timestamp_ms": 37400,
+        "path": [
+          {
+            "x": 390,
+            "y": 194
+          },
+          {
+            "x": 390,
+            "y": 202
+          },
+          {
+            "x": 100,
+            "y": 202
+          },
+          {
+            "x": 100,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 390,
+          "y": 194
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_4",
+        "causal_parent_id": "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+          "9baa7ce6c92574a077b7d3288322a6122e56213e051876a3332da7fab67caeda",
+          "9a9262e9ad43556e7dbe80b368a4efc1ffe9d5e6f7006b00d398354fed850bd5"
+        ],
+        "duration_ms": 1400,
+        "end": {
+          "x": 100,
+          "y": 222
+        },
+        "id": "action:apply:f4c105712b15",
+        "kind": "researcher-action",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 38300,
+        "path": [
+          {
+            "x": 100,
+            "y": 222
+          },
+          {
+            "x": 100,
+            "y": 222
+          }
+        ],
+        "start": {
+          "x": 100,
+          "y": 222
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "institution_0001_researcher_4",
+        "causal_parent_id": "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+          "9baa7ce6c92574a077b7d3288322a6122e56213e051876a3332da7fab67caeda",
+          "9a9262e9ad43556e7dbe80b368a4efc1ffe9d5e6f7006b00d398354fed850bd5"
+        ],
+        "duration_ms": 800,
+        "end": {
+          "x": 390,
+          "y": 194
+        },
+        "id": "action:return-from-application:f4c105712b15",
+        "kind": "researcher-action",
+        "label": "Return from application terminal",
+        "logical_timestamp_ms": 40100,
+        "path": [
+          {
+            "x": 100,
+            "y": 222
+          },
+          {
+            "x": 100,
+            "y": 202
+          },
+          {
+            "x": 390,
+            "y": 202
+          },
+          {
+            "x": 390,
+            "y": 194
+          }
+        ],
+        "start": {
+          "x": 100,
+          "y": 222
         },
         "truth_status": "derived"
       }
@@ -3659,6 +5110,36 @@
         "zoom": 2
       },
       {
+        "causal_parent_id": "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9"
+        ],
+        "duration_ms": 5300,
+        "id": "camera:7300f4c3b557",
+        "kind": "camera-cue",
+        "label": "Follow institution_0000_researcher_2",
+        "logical_timestamp_ms": 26600,
+        "target_entity_id": "institution_0000_researcher_2",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3"
+        ],
+        "duration_ms": 5300,
+        "id": "camera:6feef1b78496",
+        "kind": "camera-cue",
+        "label": "Follow institution_0001_researcher_2",
+        "logical_timestamp_ms": 29600,
+        "target_entity_id": "institution_0001_researcher_2",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
         "causal_parent_id": "6b87fe8e878a37904fb889ce962bb303b7e2eab49e86542fbf9dea67d8a7860e",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
@@ -3685,6 +5166,172 @@
         "label": "Follow institution_0001_researcher_2",
         "logical_timestamp_ms": 42500,
         "target_entity_id": "institution_0001_researcher_2",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+          "32f5964f98c2c1eca8c143b2b25c20fa20a62a420220c15295b8b438ce382f4a",
+          "6ede3dcd7da2cb5775b24647ca58b1074ac8087de56b7848182dacde7ba249a1"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:99787ed073a4",
+        "kind": "camera-cue",
+        "label": "Follow institution_0000_researcher_0",
+        "logical_timestamp_ms": 32800,
+        "target_entity_id": "institution_0000_researcher_0",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+          "27de84d8953a6c87adf904f10cc7816ed7eae5750b0996d9d2fb37f124684232",
+          "ae65cd334ebd9e5739676e3c962f16750a04b6aea50b98c3dbaeba9c1abc9566"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:bf51f23eef60",
+        "kind": "camera-cue",
+        "label": "Follow institution_0000_researcher_1",
+        "logical_timestamp_ms": 33400,
+        "target_entity_id": "institution_0000_researcher_1",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+          "11f3954f68040060b190cc9665537587fda3e6093e306a52167b5789f3ae9599"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:59bed1bcf76c",
+        "kind": "camera-cue",
+        "label": "Follow institution_0000_researcher_2",
+        "logical_timestamp_ms": 34000,
+        "target_entity_id": "institution_0000_researcher_2",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+          "10f6a261945cbcb200dd5e6c8d064a72a2cd45398db5c82f28b766bbb350b0d1"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:8c5b6bbf8047",
+        "kind": "camera-cue",
+        "label": "Follow institution_0000_researcher_3",
+        "logical_timestamp_ms": 34400,
+        "target_entity_id": "institution_0000_researcher_3",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+          "851208cd0573b29094b849f975c9cdfbc9886dfd3d46204de3b227a4d16e4c65"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:ab58015fd86d",
+        "kind": "camera-cue",
+        "label": "Follow institution_0000_researcher_4",
+        "logical_timestamp_ms": 34800,
+        "target_entity_id": "institution_0000_researcher_4",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+          "3f99aa090e37789496ed2d27d944556f9c5e35e845312eed20e2f4106718ebc7"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:b80a1b1509f8",
+        "kind": "camera-cue",
+        "label": "Follow institution_0001_researcher_0",
+        "logical_timestamp_ms": 35200,
+        "target_entity_id": "institution_0001_researcher_0",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+          "da9d1fb0ec20a7fdae2702a635da1eca3ff6c9f6365f87935b4792ee3341351e",
+          "0bf1f07222c839790a885b6ae216bf2a7b3e4eaefeffcdd4e7bbf7c1d57c3de3"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:e4d057a3a34f",
+        "kind": "camera-cue",
+        "label": "Follow institution_0001_researcher_1",
+        "logical_timestamp_ms": 35600,
+        "target_entity_id": "institution_0001_researcher_1",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+          "cb62adc18e9eb517b2aefaf431dec40d3b1b16c4aa67e37c4d5a32ec7491453b",
+          "da1b0735f6b144586025e0b862fc77b27a02c0461114f5a2afa8efd29ad4d0bb"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:1e050cca9f28",
+        "kind": "camera-cue",
+        "label": "Follow institution_0001_researcher_2",
+        "logical_timestamp_ms": 36200,
+        "target_entity_id": "institution_0001_researcher_2",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+          "faa6da8a4dddd2c971cc6da1e94dc98fd5c8664701a2b19489caa22c77beafd7",
+          "f43278b427436af43759504c36a945d3317134ab69928335b22f7cffa182ad60"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:bc2f93f1862c",
+        "kind": "camera-cue",
+        "label": "Follow institution_0001_researcher_3",
+        "logical_timestamp_ms": 36800,
+        "target_entity_id": "institution_0001_researcher_3",
+        "truth_status": "derived",
+        "zoom": 2
+      },
+      {
+        "causal_parent_id": "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+          "9baa7ce6c92574a077b7d3288322a6122e56213e051876a3332da7fab67caeda",
+          "9a9262e9ad43556e7dbe80b368a4efc1ffe9d5e6f7006b00d398354fed850bd5"
+        ],
+        "duration_ms": 3500,
+        "id": "camera:application:f4c105712b15",
+        "kind": "camera-cue",
+        "label": "Follow institution_0001_researcher_4",
+        "logical_timestamp_ms": 37400,
+        "target_entity_id": "institution_0001_researcher_4",
         "truth_status": "derived",
         "zoom": 2
       }
@@ -4780,6 +6427,364 @@
         "truth_status": "derived"
       }
     ],
+    "interior_activities": [
+      {
+        "activity_type": "write",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "96cf6793a49c3b6a33a4575e99274944976ec7bacb628f93a9e177ded7a6a5c9",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "96cf6793a49c3b6a33a4575e99274944976ec7bacb628f93a9e177ded7a6a5c9"
+        ],
+        "duration_ms": 2000,
+        "event_type": "paper.submitted",
+        "id": "interior:write:96cf6793a49c",
+        "kind": "institutional-interior-activity",
+        "label": "Synthesize and write manuscript",
+        "logical_timestamp_ms": 5200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:manuscript:0"
+      },
+      {
+        "activity_type": "write",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "18442bd6af1b8abf2e4c2fd963ed64ff036fc01369f2755ac70b95b6112085bf",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "18442bd6af1b8abf2e4c2fd963ed64ff036fc01369f2755ac70b95b6112085bf"
+        ],
+        "duration_ms": 2000,
+        "event_type": "paper.submitted",
+        "id": "interior:write:18442bd6af1b",
+        "kind": "institutional-interior-activity",
+        "label": "Synthesize and write manuscript",
+        "logical_timestamp_ms": 8200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:manuscript:1"
+      },
+      {
+        "activity_type": "review",
+        "actor_entity_id": "institution_0001_researcher_1",
+        "causal_parent_id": "67ed6b7e3b27f788099f75437a44fa25507e36ded9c3ffb8ec897a753d961784",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "67ed6b7e3b27f788099f75437a44fa25507e36ded9c3ffb8ec897a753d961784"
+        ],
+        "duration_ms": 2000,
+        "event_type": "review.completed",
+        "id": "interior:review:67ed6b7e3b27",
+        "kind": "institutional-interior-activity",
+        "label": "Inspect and complete peer review",
+        "logical_timestamp_ms": 16200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:review:0"
+      },
+      {
+        "activity_type": "review",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "d0788ee35cd87d09c9dd4a9296d928441a8a498c2db64ed5453a6529dec10935",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "d0788ee35cd87d09c9dd4a9296d928441a8a498c2db64ed5453a6529dec10935"
+        ],
+        "duration_ms": 2000,
+        "event_type": "review.completed",
+        "id": "interior:review:d0788ee35cd8",
+        "kind": "institutional-interior-activity",
+        "label": "Inspect and complete peer review",
+        "logical_timestamp_ms": 19200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:review:1"
+      },
+      {
+        "activity_type": "review",
+        "actor_entity_id": "institution_0000_researcher_0",
+        "causal_parent_id": "92490255362ebf3596dcbd29a90201f94a5372e6ca70d75e4fe868a82cbc0a5b",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "92490255362ebf3596dcbd29a90201f94a5372e6ca70d75e4fe868a82cbc0a5b"
+        ],
+        "duration_ms": 2000,
+        "event_type": "review.completed",
+        "id": "interior:review:92490255362e",
+        "kind": "institutional-interior-activity",
+        "label": "Inspect and complete peer review",
+        "logical_timestamp_ms": 22200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:review:0"
+      },
+      {
+        "activity_type": "review",
+        "actor_entity_id": "institution_0000_researcher_1",
+        "causal_parent_id": "7af69d595c1fbe6c69ef8ee75ce07a4ffa1a75d798ff008b914b42b44ab36515",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7af69d595c1fbe6c69ef8ee75ce07a4ffa1a75d798ff008b914b42b44ab36515"
+        ],
+        "duration_ms": 2000,
+        "event_type": "review.completed",
+        "id": "interior:review:7af69d595c1f",
+        "kind": "institutional-interior-activity",
+        "label": "Inspect and complete peer review",
+        "logical_timestamp_ms": 25200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:review:1"
+      },
+      {
+        "activity_type": "read",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9"
+        ],
+        "duration_ms": 2000,
+        "event_type": "paper.decided",
+        "id": "interior:read:7300f4c3b557",
+        "kind": "institutional-interior-activity",
+        "label": "Read recorded publication decision",
+        "logical_timestamp_ms": 28200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:decision:0"
+      },
+      {
+        "activity_type": "read",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3"
+        ],
+        "duration_ms": 2000,
+        "event_type": "paper.decided",
+        "id": "interior:read:6feef1b78496",
+        "kind": "institutional-interior-activity",
+        "label": "Read recorded publication decision",
+        "logical_timestamp_ms": 31200,
+        "truth_status": "derived",
+        "workstation_id": "workstation:decision:1"
+      },
+      {
+        "activity_type": "receive",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "6b87fe8e878a37904fb889ce962bb303b7e2eab49e86542fbf9dea67d8a7860e",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6b87fe8e878a37904fb889ce962bb303b7e2eab49e86542fbf9dea67d8a7860e"
+        ],
+        "duration_ms": 1800,
+        "event_type": "resource.changed",
+        "id": "interior:receive:6b87fe8e878a",
+        "kind": "institutional-interior-activity",
+        "label": "Receive grant ledger update",
+        "logical_timestamp_ms": 40500,
+        "truth_status": "derived",
+        "workstation_id": "workstation:award:0"
+      },
+      {
+        "activity_type": "receive",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "7e341d7e0e4c3458b25b13de799caa428170b6712d334ff08a6a217ce69a3e81",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7e341d7e0e4c3458b25b13de799caa428170b6712d334ff08a6a217ce69a3e81"
+        ],
+        "duration_ms": 1800,
+        "event_type": "resource.changed",
+        "id": "interior:receive:7e341d7e0e4c",
+        "kind": "institutional-interior-activity",
+        "label": "Receive grant ledger update",
+        "logical_timestamp_ms": 42500,
+        "truth_status": "derived",
+        "workstation_id": "workstation:award:0"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_0",
+        "causal_parent_id": "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+          "32f5964f98c2c1eca8c143b2b25c20fa20a62a420220c15295b8b438ce382f4a",
+          "6ede3dcd7da2cb5775b24647ca58b1074ac8087de56b7848182dacde7ba249a1"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:99787ed073a4",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 33700,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:0"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_1",
+        "causal_parent_id": "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+          "27de84d8953a6c87adf904f10cc7816ed7eae5750b0996d9d2fb37f124684232",
+          "ae65cd334ebd9e5739676e3c962f16750a04b6aea50b98c3dbaeba9c1abc9566"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:bf51f23eef60",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 34300,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:1"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_2",
+        "causal_parent_id": "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+          "11f3954f68040060b190cc9665537587fda3e6093e306a52167b5789f3ae9599"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:59bed1bcf76c",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 34900,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:2"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_3",
+        "causal_parent_id": "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+          "10f6a261945cbcb200dd5e6c8d064a72a2cd45398db5c82f28b766bbb350b0d1"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:8c5b6bbf8047",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 35300,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:3"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0000_researcher_4",
+        "causal_parent_id": "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+          "851208cd0573b29094b849f975c9cdfbc9886dfd3d46204de3b227a4d16e4c65"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:ab58015fd86d",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 35700,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:0"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_0",
+        "causal_parent_id": "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+          "3f99aa090e37789496ed2d27d944556f9c5e35e845312eed20e2f4106718ebc7"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:b80a1b1509f8",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 36100,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:1"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_1",
+        "causal_parent_id": "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+          "da9d1fb0ec20a7fdae2702a635da1eca3ff6c9f6365f87935b4792ee3341351e",
+          "0bf1f07222c839790a885b6ae216bf2a7b3e4eaefeffcdd4e7bbf7c1d57c3de3"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:e4d057a3a34f",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 36500,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:2"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_2",
+        "causal_parent_id": "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+          "cb62adc18e9eb517b2aefaf431dec40d3b1b16c4aa67e37c4d5a32ec7491453b",
+          "da1b0735f6b144586025e0b862fc77b27a02c0461114f5a2afa8efd29ad4d0bb"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:1e050cca9f28",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 37100,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:3"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_3",
+        "causal_parent_id": "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+          "faa6da8a4dddd2c971cc6da1e94dc98fd5c8664701a2b19489caa22c77beafd7",
+          "f43278b427436af43759504c36a945d3317134ab69928335b22f7cffa182ad60"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:bc2f93f1862c",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 37700,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:0"
+      },
+      {
+        "activity_type": "apply",
+        "actor_entity_id": "institution_0001_researcher_4",
+        "causal_parent_id": "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+          "9baa7ce6c92574a077b7d3288322a6122e56213e051876a3332da7fab67caeda",
+          "9a9262e9ad43556e7dbe80b368a4efc1ffe9d5e6f7006b00d398354fed850bd5"
+        ],
+        "duration_ms": 1400,
+        "event_type": "resource.changed",
+        "id": "interior:apply:f4c105712b15",
+        "kind": "institutional-interior-activity",
+        "label": "Prepare funding application",
+        "logical_timestamp_ms": 38300,
+        "truth_status": "derived",
+        "workstation_id": "workstation:application:1"
+      }
+    ],
     "placements": [
       {
         "asset_key": "institution_funding",
@@ -5185,6 +7190,220 @@
         "truth_status": "derived",
         "x": 112,
         "y": 232
+      }
+    ],
+    "workstations": [
+      {
+        "asset_key": "station_manuscript",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "96cf6793a49c3b6a33a4575e99274944976ec7bacb628f93a9e177ded7a6a5c9"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:manuscript:0",
+        "kind": "institutional-workstation",
+        "label": "MANUSCRIPT BENCH 1",
+        "logical_timestamp_ms": 6000,
+        "truth_status": "derived",
+        "x": 218,
+        "y": 220
+      },
+      {
+        "asset_key": "station_manuscript",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "18442bd6af1b8abf2e4c2fd963ed64ff036fc01369f2755ac70b95b6112085bf"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:manuscript:1",
+        "kind": "institutional-workstation",
+        "label": "MANUSCRIPT BENCH 2",
+        "logical_timestamp_ms": 9000,
+        "truth_status": "derived",
+        "x": 266,
+        "y": 220
+      },
+      {
+        "asset_key": "station_review",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "67ed6b7e3b27f788099f75437a44fa25507e36ded9c3ffb8ec897a753d961784",
+          "92490255362ebf3596dcbd29a90201f94a5372e6ca70d75e4fe868a82cbc0a5b"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:review:0",
+        "kind": "institutional-workstation",
+        "label": "REVIEW BOOTH 1",
+        "logical_timestamp_ms": 17000,
+        "truth_status": "derived",
+        "x": 314,
+        "y": 152
+      },
+      {
+        "asset_key": "station_review",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "d0788ee35cd87d09c9dd4a9296d928441a8a498c2db64ed5453a6529dec10935",
+          "7af69d595c1fbe6c69ef8ee75ce07a4ffa1a75d798ff008b914b42b44ab36515"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:review:1",
+        "kind": "institutional-workstation",
+        "label": "REVIEW BOOTH 2",
+        "logical_timestamp_ms": 20000,
+        "truth_status": "derived",
+        "x": 354,
+        "y": 152
+      },
+      {
+        "asset_key": "station_application",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "99787ed073a4b6790d4e724bb151687279be00f0bc1855cea21c4d5db7320373",
+          "32f5964f98c2c1eca8c143b2b25c20fa20a62a420220c15295b8b438ce382f4a",
+          "6ede3dcd7da2cb5775b24647ca58b1074ac8087de56b7848182dacde7ba249a1",
+          "ab58015fd86d38bc504b68ef03bb8aea8273d9a0502d55fe192493b8bb57d127",
+          "851208cd0573b29094b849f975c9cdfbc9886dfd3d46204de3b227a4d16e4c65",
+          "bc2f93f1862c519940c490354812f00561b144798b8470fc83430ac5588384e6",
+          "faa6da8a4dddd2c971cc6da1e94dc98fd5c8664701a2b19489caa22c77beafd7",
+          "f43278b427436af43759504c36a945d3317134ab69928335b22f7cffa182ad60"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:application:0",
+        "kind": "institutional-workstation",
+        "label": "APPLICATION TERMINAL 1",
+        "logical_timestamp_ms": 34000,
+        "truth_status": "derived",
+        "x": 72,
+        "y": 222
+      },
+      {
+        "asset_key": "station_application",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bf51f23eef6057ca470f0afc04fc8e33786d9991848d156373a60829758dca84",
+          "27de84d8953a6c87adf904f10cc7816ed7eae5750b0996d9d2fb37f124684232",
+          "ae65cd334ebd9e5739676e3c962f16750a04b6aea50b98c3dbaeba9c1abc9566",
+          "b80a1b1509f8ef26ef8f6e873ee2ae76d45272c8389e478a162a4bb179c382b7",
+          "3f99aa090e37789496ed2d27d944556f9c5e35e845312eed20e2f4106718ebc7",
+          "f4c105712b15ec5192e0c5d817e3f063b994700568939c2544dcf140e169ee33",
+          "9baa7ce6c92574a077b7d3288322a6122e56213e051876a3332da7fab67caeda",
+          "9a9262e9ad43556e7dbe80b368a4efc1ffe9d5e6f7006b00d398354fed850bd5"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:application:1",
+        "kind": "institutional-workstation",
+        "label": "APPLICATION TERMINAL 2",
+        "logical_timestamp_ms": 34600,
+        "truth_status": "derived",
+        "x": 100,
+        "y": 222
+      },
+      {
+        "asset_key": "station_application",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "59bed1bcf76c991ae53bc7789d90dda07e89846e06fb9535a4409c2be7a6e031",
+          "11f3954f68040060b190cc9665537587fda3e6093e306a52167b5789f3ae9599",
+          "e4d057a3a34f3dbcdffc1637f7c6fcdf57b52935864d8c59663ba17180ab1205",
+          "da9d1fb0ec20a7fdae2702a635da1eca3ff6c9f6365f87935b4792ee3341351e",
+          "0bf1f07222c839790a885b6ae216bf2a7b3e4eaefeffcdd4e7bbf7c1d57c3de3"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:application:2",
+        "kind": "institutional-workstation",
+        "label": "APPLICATION TERMINAL 3",
+        "logical_timestamp_ms": 35200,
+        "truth_status": "derived",
+        "x": 128,
+        "y": 222
+      },
+      {
+        "asset_key": "station_application",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "8c5b6bbf80476b37c93ea4f1038ac9562b38a66ceb3d31a2aa848ae982d8674e",
+          "10f6a261945cbcb200dd5e6c8d064a72a2cd45398db5c82f28b766bbb350b0d1",
+          "1e050cca9f28284646d00723840a0d1e8b725ebf4ca72eec580b116acdeef94d",
+          "cb62adc18e9eb517b2aefaf431dec40d3b1b16c4aa67e37c4d5a32ec7491453b",
+          "da1b0735f6b144586025e0b862fc77b27a02c0461114f5a2afa8efd29ad4d0bb"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:application:3",
+        "kind": "institutional-workstation",
+        "label": "APPLICATION TERMINAL 4",
+        "logical_timestamp_ms": 35600,
+        "truth_status": "derived",
+        "x": 156,
+        "y": 222
+      },
+      {
+        "asset_key": "station_decision",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7300f4c3b557092f70a0393f5bc074709dfab71f8df8725f45873168c57a62d9"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:decision:0",
+        "kind": "institutional-workstation",
+        "label": "DECISION CONSOLE 1",
+        "logical_timestamp_ms": 29000,
+        "truth_status": "derived",
+        "x": 406,
+        "y": 232
+      },
+      {
+        "asset_key": "station_decision",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6feef1b7849629b93ed157a47b53114cc6a6550a46b5b94d8beba38beff235e3"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:decision:1",
+        "kind": "institutional-workstation",
+        "label": "DECISION CONSOLE 2",
+        "logical_timestamp_ms": 32000,
+        "truth_status": "derived",
+        "x": 450,
+        "y": 232
+      },
+      {
+        "asset_key": "station_award",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6b87fe8e878a37904fb889ce962bb303b7e2eab49e86542fbf9dea67d8a7860e",
+          "7e341d7e0e4c3458b25b13de799caa428170b6712d334ff08a6a217ce69a3e81"
+        ],
+        "duration_ms": 48000,
+        "entity_type": "workstation",
+        "id": "workstation:award:0",
+        "kind": "institutional-workstation",
+        "label": "GRANT INBOX",
+        "logical_timestamp_ms": 41000,
+        "truth_status": "derived",
+        "x": 434,
+        "y": 152
       }
     ]
   },

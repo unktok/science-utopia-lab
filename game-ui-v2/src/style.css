@@ -84,6 +84,8 @@ code { overflow-wrap: anywhere; color: var(--cyan); font: inherit; font-size: .8
 .epistemic-status[data-kind="decision"] { border-color: var(--gold); color: var(--gold); }
 .epistemic-status[data-kind="award"] { border-color: var(--mint); color: var(--mint); }
 .epistemic-status[data-kind="idle"] { border-color: var(--line); color: var(--muted); }
+.interior-status { position: absolute; z-index: 6; top: 24px; left: 7px; max-width: 66%; padding: 3px 6px; pointer-events: none; border-left: 2px solid var(--line); color: var(--muted); background: rgba(7, 8, 20, .88); font-size: 5px; letter-spacing: .08em; }
+.interior-status[data-active="true"] { border-color: var(--gold); color: var(--paper); }
 [data-truth="canonical"] { color: var(--mint); }
 [data-truth="derived"] { color: var(--cyan); border-style: dashed !important; }
 [data-truth="ambient"] { color: var(--muted); border-style: dotted !important; }

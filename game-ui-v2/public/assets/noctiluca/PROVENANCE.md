@@ -2,7 +2,7 @@
 
 ## Production runtime assets
 
-Status: `production-grid-v0.4`. The runtime manifest loads twenty-four SVGs under
+Status: `production-grid-v0.5`. The runtime manifest loads twenty-nine SVGs under
 `production/`: four six-frame researcher sheets with 24x32 frames, four
 institutions at 96x80, six flow packets at 8x8, and a 16x8 ambient courier.
 They were hand-authored for this repository on 2026-10-27 and 2026-10-28 from
@@ -17,6 +17,13 @@ funding relays have different silhouettes rather than colour swaps. Manuscript,
 review seal, decision, application, and grant packets likewise use distinct
 paper, aperture, routing fork, form, and ledger/token geometry. These assets
 only render evidence-linked Python-authored routes; they do not create events.
+
+Version 0.5 adds five 32x24 cutaway workstations for manuscript synthesis,
+anonymous review, funding applications, publication decisions, and grant
+receipt. Each station has a task-specific silhouette and instrument layout.
+They are attached only to evidence-linked interior activities. Console flicker
+and break-room vapor are drawn separately by the ambient renderer and remain
+explicitly cosmetic, with no canonical source IDs.
 
 The institution silhouettes are purpose-specific rather than recoloured
 shells:

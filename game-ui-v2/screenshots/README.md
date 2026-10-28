@@ -1,5 +1,23 @@
 # Deterministic visual QA
 
+## Researcher life and institutional interiors
+
+These 1440x1050 reduced-motion captures are driven by the verified completed
+seed-521 campaign. They open derived interior activity records alongside their
+canonical sources; the review and application views enable camera follow to
+make their institutional workspaces legible.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-life-writing-seed521-cursor-6200.png` | `bbcb21a6f4e9f18216d6bf47ce1dfdd0a1e51e9cfbb318b41fa202b48623a584` |
+| `noctiluca-life-review-seed521-cursor-20200.png` | `1da1e23bb561fcf0e270665e3bf8bb450067c54d997adc3a8c380229e5bf91a7` |
+| `noctiluca-life-application-seed521-cursor-36500.png` | `0a0393ac54e5ad2b0933a91ad8a6f83b5ce86e46d586e098b37da39ec2069937` |
+
+Each capture was repeated from a separate empty Chrome profile and was
+byte-identical. The visible `INTERIORS` layer is evidence-linked and derived.
+The independently switchable `COSMETIC` layer contains only records marked
+`ambient`, with no canonical source IDs.
+
 ## Verified completed campaign capture
 
 `noctiluca-completed-campaign-seed521-cursor-9000.png` is the first capture

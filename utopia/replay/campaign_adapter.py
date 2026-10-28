@@ -227,6 +227,13 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             })
 
     paper_events = [event for event in events if event.event_type == "paper.submitted"]
+    review_events = [event for event in events if event.event_type == "review.completed"]
+    decision_events = [event for event in events if event.event_type == "paper.decided"]
+    grant_events = [event for event in events if event.event_type == "resource.changed" and event.payload.get("category") == "grant_income"]
+    application_events: dict[str, list[EventEnvelope]] = {}
+    for event in events:
+        if event.event_type == "resource.changed" and event.payload.get("category") == "funding_application_cost":
+            application_events.setdefault(event.actor_ids[0], []).append(event)
     for index, event in enumerate(paper_events):
         paper_id = event.artifact_ids[0]
         point = (218 + index * 48, 232)
@@ -267,10 +274,71 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             "duration_ms": 48_000, "causal_parent_id": None,
         })
 
+    workstations: list[dict[str, Any]] = []
+    manuscript_station_by_event: dict[str, str] = {}
+    review_station_by_event: dict[str, str] = {}
+    decision_station_by_event: dict[str, str] = {}
+    application_station_by_actor: dict[str, str] = {}
+    award_station_by_actor: dict[str, str] = {}
+
+    def add_workstation(
+        station_id: str, label: str, asset_key: str,
+        station_position: tuple[int, int], source_events: Sequence[EventEnvelope],
+    ) -> None:
+        positions[station_id] = station_position
+        workstations.append({
+            "id": station_id, "label": label, "kind": "institutional-workstation",
+            "entity_type": "workstation", "asset_key": asset_key,
+            "x": station_position[0], "y": station_position[1],
+            "truth_status": "derived",
+            "derived_from_event_ids": [event.event_id for event in source_events],
+            "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": min(times[event.event_id] for event in source_events),
+            "duration_ms": 48_000, "causal_parent_id": None,
+        })
+
+    for index, event in enumerate(paper_events):
+        station_id = f"workstation:manuscript:{index}"
+        manuscript_station_by_event[event.event_id] = station_id
+        add_workstation(station_id, f"MANUSCRIPT BENCH {index + 1}", "station_manuscript",
+            (218 + index * 48, 220), [event])
+    for index in range(2):
+        source_events = review_events[index::2]
+        if source_events:
+            station_id = f"workstation:review:{index}"
+            add_workstation(station_id, f"REVIEW BOOTH {index + 1}", "station_review",
+                ((314, 152), (354, 152))[index], source_events)
+            for event in source_events:
+                review_station_by_event[event.event_id] = station_id
+    application_points = ((72, 222), (100, 222), (128, 222), (156, 222))
+    application_station_sources: list[list[EventEnvelope]] = [[] for _ in application_points]
+    for index, (actor, source_events) in enumerate(sorted(application_events.items())):
+        terminal_index = index % len(application_points)
+        station_id = f"workstation:application:{terminal_index}"
+        application_station_by_actor[actor] = station_id
+        application_station_sources[terminal_index].extend(source_events)
+    for index, source_events in enumerate(application_station_sources):
+        if source_events:
+            add_workstation(f"workstation:application:{index}", f"APPLICATION TERMINAL {index + 1}",
+                "station_application", application_points[index], source_events)
+    for index, event in enumerate(decision_events):
+        station_id = f"workstation:decision:{index}"
+        decision_station_by_event[event.event_id] = station_id
+        add_workstation(station_id, f"DECISION CONSOLE {index + 1}", "station_decision",
+            ((406, 232), (450, 232))[index % 2], [event])
+    grants_by_actor: dict[str, list[EventEnvelope]] = {}
+    for event in grant_events:
+        grants_by_actor.setdefault(event.actor_ids[0], []).append(event)
+    for index, (actor, source_events) in enumerate(sorted(grants_by_actor.items())):
+        station_id = f"workstation:award:{index}"
+        award_station_by_actor[actor] = station_id
+        add_workstation(station_id, "GRANT INBOX", "station_award", positions[actor], source_events)
+
     flows: list[dict[str, Any]] = []
     actions: list[dict[str, Any]] = []
     camera_cues: list[dict[str, Any]] = []
     epistemic_flows: list[dict[str, Any]] = []
+    interior_activities: list[dict[str, Any]] = []
 
     def point(value: tuple[int, int]) -> dict[str, int]:
         return {"x": value[0], "y": value[1]}
@@ -289,6 +357,42 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
                 logical_timestamp_ms=start_ms, label=label,
                 kind="researcher-action"),
             "causal_parent_id": event.event_id,
+        })
+
+    def add_action_many(
+        source_events: Sequence[EventEnvelope], suffix: str, action_type: str,
+        start: tuple[int, int], end: tuple[int, int], path: list[tuple[int, int]],
+        start_ms: int, duration_ms: int, label: str,
+    ) -> None:
+        first = source_events[0]
+        actions.append({
+            "id": f"action:{suffix}:{first.event_id[:12]}",
+            "actor_entity_id": first.actor_ids[0], "action_type": action_type,
+            "start": point(start), "end": point(end),
+            "path": [point(item) for item in path],
+            "truth_status": "derived",
+            "derived_from_event_ids": [event.event_id for event in source_events],
+            "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": start_ms, "duration_ms": duration_ms,
+            "causal_parent_id": first.event_id, "label": label,
+            "kind": "researcher-action",
+        })
+
+    def add_interior_activity(
+        source_events: Sequence[EventEnvelope], activity_type: str,
+        workstation_id: str, start_ms: int, duration_ms: int, label: str,
+    ) -> None:
+        first = source_events[0]
+        interior_activities.append({
+            "id": f"interior:{activity_type}:{first.event_id[:12]}",
+            "label": label, "kind": "institutional-interior-activity",
+            "activity_type": activity_type, "event_type": first.event_type,
+            "actor_entity_id": first.actor_ids[0], "workstation_id": workstation_id,
+            "truth_status": "derived",
+            "derived_from_event_ids": [event.event_id for event in source_events],
+            "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": start_ms, "duration_ms": duration_ms,
+            "causal_parent_id": first.event_id,
         })
 
     def add_work_cycle(
@@ -351,6 +455,8 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             paper_point = positions[paper]
             work_point = (paper_point[0], paper_point[1] - 12)
             add_work_cycle(event, "write", work_point, "Write and submit paper")
+            add_interior_activity([event], "write", manuscript_station_by_event[event.event_id],
+                max(0, event_time - 800), 2_000, "Synthesize and write manuscript")
             flows.append({
                 "id": f"flow:paper:{event.event_id[:12]}", "flow_type": "paper",
                 "from_entity_id": actor, "to_entity_id": paper,
@@ -371,6 +477,8 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             booth = ((314, 152), (354, 152))[review_index % 2]
             review_index += 1
             add_work_cycle(event, "review", booth, "Complete peer review")
+            add_interior_activity([event], "review", review_station_by_event[event.event_id],
+                max(0, event_time - 800), 2_000, "Inspect and complete peer review")
             flows.append({
                 "id": f"flow:review:{event.event_id[:12]}", "flow_type": "review",
                 "from_entity_id": actor, "to_entity_id": paper,
@@ -391,6 +499,11 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             paper = event.artifact_ids[0]
             paper_point = positions[paper]
             relay = positions["workflow:publication-spine"]
+            station_id = decision_station_by_event[event.event_id]
+            station_point = positions[station_id]
+            add_work_cycle(event, "read", station_point, "Read publication decision")
+            add_interior_activity([event], "read", station_id,
+                max(0, event_time - 800), 2_000, "Read recorded publication decision")
             decision = str(event.payload.get("decision") or "recorded").upper()
             add_epistemic_flow(
                 "decision", [event], paper, "workflow:publication-spine",
@@ -405,6 +518,8 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             home = positions[actor]
             add_action(event, "receive", "receive", home, home, [home, home],
                 max(0, event_time - 500), 1_800, "Receive grant income")
+            add_interior_activity([event], "receive", award_station_by_actor[actor],
+                max(0, event_time - 500), 1_800, "Receive grant ledger update")
             camera_cues.append({
                 "id": f"camera:{event.event_id[:12]}", "target_entity_id": actor,
                 "zoom": 2, **_trace(event, event_count=count, duration=2_300,
@@ -428,16 +543,39 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
                 duration_ms=2_400,
             )
 
-    application_events: dict[str, list[EventEnvelope]] = {}
-    for event in events:
-        if event.event_type == "resource.changed" and event.payload.get("category") == "funding_application_cost":
-            application_events.setdefault(event.actor_ids[0], []).append(event)
     funding_relay = positions.get("workflow:funding-ledger")
     if funding_relay:
         for actor, source_events in sorted(application_events.items()):
             home = positions[actor]
             first_time = times[source_events[0].event_id]
             last_time = times[source_events[-1].event_id]
+            station_id = application_station_by_actor[actor]
+            station_point = positions[station_id]
+            work_duration = max(1_400, last_time - first_time + 1_000)
+            via_home = (home[0], 202)
+            via_station = (station_point[0], 202)
+            add_action_many(source_events, "move-to-application", "move", home, station_point,
+                [home, via_home, via_station, station_point], max(0, first_time - 1_200),
+                800, "Move to application terminal")
+            add_action_many(source_events, "apply", "apply", station_point, station_point,
+                [station_point, station_point], max(0, first_time - 300), work_duration,
+                "Prepare funding application")
+            add_action_many(source_events, "return-from-application", "move", station_point, home,
+                [station_point, via_station, via_home, home], first_time + work_duration + 100,
+                800, "Return from application terminal")
+            add_interior_activity(source_events, "apply", station_id,
+                max(0, first_time - 300), work_duration, "Prepare funding application")
+            camera_cues.append({
+                "id": f"camera:application:{source_events[0].event_id[:12]}",
+                "target_entity_id": actor, "zoom": 2,
+                "truth_status": "derived",
+                "derived_from_event_ids": [event.event_id for event in source_events],
+                "derivation_version": DERIVATION_VERSION_V2,
+                "logical_timestamp_ms": max(0, first_time - 1_200),
+                "duration_ms": work_duration + 2_100,
+                "causal_parent_id": source_events[0].event_id,
+                "label": f"Follow {actor}", "kind": "camera-cue",
+            })
             add_epistemic_flow(
                 "application", source_events, actor, "workflow:funding-ledger",
                 [home, (home[0], 216), (funding_relay[0], 216), funding_relay],
@@ -468,11 +606,25 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
         "duration_ms": 48_000, "placements": placements, "flows": flows,
         "actions": actions, "camera_cues": camera_cues, "chapters": chapters,
         "workflow_nodes": workflow_nodes, "epistemic_flows": epistemic_flows,
+        "workstations": workstations, "interior_activities": interior_activities,
         "time_compression": {
             "kind": "deterministic-stage-compression",
             "canonical_event_count": len(events), "duration_ms": 48_000,
         },
-    }, {"actors": [], "effects": []})
+    }, {"actors": [], "effects": [
+        {
+            "id": "ambient:interior-console-flicker", "label": "Cosmetic console flicker",
+            "kind": "interior-console-flicker", "truth_status": "ambient",
+            "derived_from_event_ids": [], "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": 0, "duration_ms": 48_000, "causal_parent_id": None,
+        },
+        {
+            "id": "ambient:break-room-vapor", "label": "Cosmetic break-room vapor",
+            "kind": "break-room-vapor", "truth_status": "ambient",
+            "derived_from_event_ids": [], "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": 0, "duration_ms": 48_000, "causal_parent_id": None,
+        },
+    ]})
 
 
 def export_campaign_bundle(source_manifest: Path, campaign_root: Path, project_root: Path) -> dict[str, Any]:
@@ -629,6 +781,43 @@ def validate_portable_bundle(payload: Mapping[str, Any]) -> None:
             valid = False
         if not valid:
             raise ValueError(f"epistemic flow semantic mismatch: {flow.get('id')}")
+    workstations = choreography.get("workstations")
+    interior_activities = choreography.get("interior_activities")
+    if verified_source and (
+        not isinstance(workstations, list) or not workstations
+        or not isinstance(interior_activities, list) or not interior_activities
+    ):
+        raise ValueError("verified campaign requires evidence-linked institutional interiors")
+    workstation_ids = {
+        str(_object(row, f"choreography.workstations[{index}]").get("id"))
+        for index, row in enumerate(workstations or [])
+    }
+    for index, activity_value in enumerate(interior_activities or []):
+        activity = _object(activity_value, f"choreography.interior_activities[{index}]")
+        source_ids = activity.get("derived_from_event_ids", [])
+        if not isinstance(source_ids, list) or not source_ids or any(event_id not in event_by_id for event_id in source_ids):
+            raise ValueError(f"interior activity has an unknown canonical source: {activity.get('id')}")
+        sources = [event_by_id[event_id] for event_id in source_ids]
+        activity_type = activity.get("activity_type")
+        same_actor = len({event.actor_ids[0] for event in sources}) == 1
+        base_valid = activity.get("event_type") == sources[0].event_type \
+            and all(event.event_type == sources[0].event_type for event in sources) \
+            and same_actor and activity.get("actor_entity_id") == sources[0].actor_ids[0] \
+            and activity.get("workstation_id") in workstation_ids
+        if activity_type == "write":
+            semantic_valid = len(sources) == 1 and sources[0].event_type == "paper.submitted"
+        elif activity_type == "review":
+            semantic_valid = len(sources) == 1 and sources[0].event_type == "review.completed"
+        elif activity_type == "read":
+            semantic_valid = len(sources) == 1 and sources[0].event_type == "paper.decided"
+        elif activity_type == "apply":
+            semantic_valid = all(event.payload.get("category") == "funding_application_cost" for event in sources)
+        elif activity_type == "receive":
+            semantic_valid = len(sources) == 1 and sources[0].payload.get("category") == "grant_income"
+        else:
+            semantic_valid = False
+        if not base_valid or not semantic_valid:
+            raise ValueError(f"interior activity semantic mismatch: {activity.get('id')}")
     serialized = json.dumps(payload, sort_keys=True)
     forbidden = ('"paper_tracker":', '"ecosystem_data":', '"memory_bank":', '"conference_system":')
     if any(token in serialized for token in forbidden):

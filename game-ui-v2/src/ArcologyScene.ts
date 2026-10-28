@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import type { ActionType, AssetPack, CanonicalEvent, EpistemicFlow, EpistemicFlowKind, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, TruthStatus, VisualAction, VisualFlow, WorldEntity, WorldPoint } from "./types";
+import type { ActionType, AssetPack, CanonicalEvent, EpistemicFlow, EpistemicFlowKind, FlowType, InteriorActivity, ReplayV2, RuntimePreferences, SelectionDetail, TruthStatus, VisualAction, VisualFlow, WorldEntity, WorldPoint } from "./types";
 
 const WORLD_WIDTH = 480;
 const WORLD_HEIGHT = 270;
@@ -39,6 +39,11 @@ interface EpistemicFlowVisual {
   model: EpistemicFlow;
   graphics: Phaser.GameObjects.Graphics;
   packet: Phaser.GameObjects.Image;
+  label: Phaser.GameObjects.Text;
+}
+
+interface InteriorActivityVisual {
+  model: InteriorActivity;
   label: Phaser.GameObjects.Text;
 }
 
@@ -104,6 +109,7 @@ function actionColor(action: ActionType): number {
   if (["write", "revise", "publish"].includes(action)) return 0xffc857;
   if (action === "review") return 0xf653d8;
   if (["allocate", "receive"].includes(action)) return 0x39f5c8;
+  if (action === "apply") return 0x2dd4ff;
   if (["cite", "read"].includes(action)) return 0xa86bff;
   if (action === "policy") return 0xff617d;
   return 0x2dd4ff;
@@ -141,6 +147,7 @@ export class ArcologyScene extends Phaser.Scene {
   private readonly actorHuds = new Map<string, ActorHud>();
   private readonly flowVisuals: FlowVisual[] = [];
   private readonly epistemicFlowVisuals: EpistemicFlowVisual[] = [];
+  private readonly interiorActivityVisuals: InteriorActivityVisual[] = [];
   private readonly layerVisibility = new Map<FlowType, boolean>();
   private readonly epistemicVisibility = new Map<EpistemicFlowKind, boolean>();
   private cursorMs = 0;
@@ -152,8 +159,12 @@ export class ArcologyScene extends Phaser.Scene {
   private minimap?: Phaser.Cameras.Scene2D.Camera;
   private keyMap?: Record<string, Phaser.Input.Keyboard.Key>;
   private rainGraphics?: Phaser.GameObjects.Graphics;
+  private interiorGraphics?: Phaser.GameObjects.Graphics;
+  private interiorAmbientGraphics?: Phaser.GameObjects.Graphics;
   private stateGraphics?: Phaser.GameObjects.Graphics;
   private activityGraphics?: Phaser.GameObjects.Graphics;
+  private interiorsVisible = true;
+  private interiorAmbientVisible = true;
   private readonly onSelect: (detail: SelectionDetail) => void;
   private readonly onReady: () => void;
 
@@ -194,7 +205,7 @@ export class ArcologyScene extends Phaser.Scene {
     this.drawWorldGround();
 
     const groups = this.replay.canonical.entities;
-    const allEntities = [...groups.institutions, ...groups.artifacts, ...groups.researchers, ...this.replay.choreography.workflow_nodes, ...this.replay.ambient.actors];
+    const allEntities = [...groups.institutions, ...groups.artifacts, ...groups.researchers, ...this.replay.choreography.workflow_nodes, ...this.replay.choreography.workstations, ...this.replay.ambient.actors];
     for (const entity of allEntities) {
       this.entities.set(entity.id, entity);
       this.createEntity(entity);
@@ -202,7 +213,10 @@ export class ArcologyScene extends Phaser.Scene {
     this.createActorHuds();
     for (const flow of this.replay.choreography.flows) this.createFlow(flow);
     for (const flow of this.replay.choreography.epistemic_flows) this.createEpistemicFlow(flow);
+    for (const activity of this.replay.choreography.interior_activities) this.createInteriorActivity(activity);
     this.activityGraphics = this.add.graphics().setDepth(10);
+    this.interiorGraphics = this.add.graphics().setDepth(8);
+    this.interiorAmbientGraphics = this.add.graphics().setDepth(6);
     this.rainGraphics = this.add.graphics().setDepth(15);
     this.stateGraphics = this.add.graphics().setDepth(7);
     this.stateGraphics.setInteractive(
@@ -247,15 +261,28 @@ export class ArcologyScene extends Phaser.Scene {
     this.renderEpistemicFlows();
   }
 
+  setInteriorsVisible(visible: boolean): void {
+    this.interiorsVisible = visible;
+    for (const station of this.replay.choreography.workstations) this.sprites.get(station.id)?.setVisible(visible);
+    this.renderInteriorActivities();
+  }
+
+  setInteriorAmbientVisible(visible: boolean): void {
+    this.interiorAmbientVisible = visible;
+    this.renderInteriorAmbient();
+  }
+
   select(id: string): void {
     const action = this.replay.choreography.actions.find((row) => row.id === id);
     const flow = this.replay.choreography.flows.find((row) => row.id === id);
     const epistemic = this.replay.choreography.epistemic_flows.find((row) => row.id === id);
+    const interior = this.replay.choreography.interior_activities.find((row) => row.id === id);
     const event = this.replay.canonical.events.find((row) => row.id === id);
     const researcherIds = new Set(this.replay.canonical.entities.researchers.map((row) => row.id));
     this.followTargetId = action?.actor_entity_id
       ?? [flow?.from_entity_id, flow?.to_entity_id].find((candidate) => candidate && researcherIds.has(candidate))
       ?? [epistemic?.from_entity_id, epistemic?.to_entity_id].find((candidate) => candidate && researcherIds.has(candidate))
+      ?? (interior && researcherIds.has(interior.actor_entity_id) ? interior.actor_entity_id : undefined)
       ?? event?.actor_ids.find((candidate) => researcherIds.has(candidate))
       ?? (researcherIds.has(id) ? id : undefined);
     const sprite = this.sprites.get(this.followTargetId ?? id);
@@ -286,6 +313,8 @@ export class ArcologyScene extends Phaser.Scene {
     this.renderActivityEffects();
     this.renderFlows();
     this.renderEpistemicFlows();
+    this.renderInteriorActivities();
+    this.renderInteriorAmbient();
     this.renderAmbient();
     this.renderInstitutionStates();
   }
@@ -377,7 +406,7 @@ export class ArcologyScene extends Phaser.Scene {
     const sprite: Phaser.GameObjects.Image = asset?.frames
       ? this.add.sprite(Math.round(entity.x), Math.round(entity.y), entity.asset_key, 0)
       : this.add.image(Math.round(entity.x), Math.round(entity.y), entity.asset_key);
-    const depth = entity.entity_type === "institution" ? 2 : entity.entity_type === "workflow_node" ? 6 : entity.entity_type === "ambient_actor" ? 6 : 9;
+    const depth = entity.entity_type === "institution" ? 2 : entity.entity_type === "workstation" ? 5 : entity.entity_type === "workflow_node" ? 6 : entity.entity_type === "ambient_actor" ? 6 : 9;
     sprite.setOrigin(0.5, 1).setDepth(depth);
     if (asset) sprite.setDisplaySize(Math.round(asset.width), Math.round(asset.height));
     sprite.setInteractive({ useHandCursor: true });
@@ -461,6 +490,13 @@ export class ArcologyScene extends Phaser.Scene {
         if (action.action_type === "publish") {
           graphics.fillStyle(0xeee9d8, 0.9).fillRect(x - 14, y - 21, 5, 7).fillRect(x - 12, y - 24, 5, 7);
           graphics.fillStyle(0x4f7cff, 0.85).fillRect(x - 11, y - 22, 3, 1);
+        }
+      } else if (action.action_type === "apply") {
+        graphics.fillStyle(0x10142a, 0.96).fillRect(x + 7, y - 25, 12, 13);
+        graphics.lineStyle(1, 0x2dd4ff, 0.94).strokeRect(x + 7, y - 25, 12, 13);
+        for (let row = 0; row < 3; row += 1) {
+          graphics.fillStyle(row === phase ? 0x39f5c8 : 0x4f7cff, row === phase ? 1 : 0.58).fillRect(x + 9, y - 22 + row * 3, 2, 2);
+          graphics.fillStyle(0xeee9d8, 0.78).fillRect(x + 13, y - 21 + row * 3, 4, 1);
         }
       } else if (["allocate", "receive"].includes(action.action_type)) {
         graphics.lineStyle(1, 0x39f5c8, 0.92).strokeRect(x - 15, y - 24, 10, 12);
@@ -616,6 +652,63 @@ export class ArcologyScene extends Phaser.Scene {
       const position = pointOnPath(model.path, progress);
       packet.setPosition(position.x, position.y);
       label.setText(`${model.flow_kind.toUpperCase()} // ${model.derived_from_event_ids.length} EVENT${model.derived_from_event_ids.length === 1 ? "" : "S"}\nDERIVED ROUTE`).setPosition(position.x, position.y - 9);
+    }
+  }
+
+  private createInteriorActivity(activity: InteriorActivity): void {
+    const station = this.replay.choreography.workstations.find((row) => row.id === activity.workstation_id);
+    if (!station) return;
+    const label = this.add.text(station.x, station.y - 27, "", {
+      fontFamily: "monospace",
+      fontSize: "5px",
+      color: "#eee9d8",
+      backgroundColor: "#070814",
+      padding: { x: 2, y: 1 },
+    }).setOrigin(0.5, 1).setDepth(16).setVisible(false).setInteractive({ useHandCursor: true });
+    label.on("pointerdown", () => this.onSelect({ id: activity.id, category: "interior" }));
+    this.interiorActivityVisuals.push({ model: activity, label });
+  }
+
+  private renderInteriorActivities(): void {
+    if (!this.interiorGraphics) return;
+    this.interiorGraphics.clear();
+    for (const visual of this.interiorActivityVisuals) {
+      const { model, label } = visual;
+      const active = this.interiorsVisible && this.cursorMs >= model.logical_timestamp_ms && this.cursorMs <= model.logical_timestamp_ms + model.duration_ms;
+      label.setVisible(active);
+      if (!active) continue;
+      const station = this.entities.get(model.workstation_id);
+      if (!station) continue;
+      const color = actionColor(model.activity_type);
+      const progress = Phaser.Math.Clamp((this.cursorMs - model.logical_timestamp_ms) / Math.max(1, model.duration_ms), 0, 1);
+      this.interiorGraphics.lineStyle(1, color, 0.96).strokeRect(station.x - 18, station.y - 27, 36, 29);
+      this.interiorGraphics.fillStyle(0x070814, 0.9).fillRect(station.x - 16, station.y + 3, 32, 3);
+      this.interiorGraphics.fillStyle(color, 0.94).fillRect(station.x - 16, station.y + 3, Math.round(32 * progress), 3);
+      this.interiorGraphics.fillStyle(color, 0.9).fillRect(station.x - 18, station.y - 27, 5, 2).fillRect(station.x + 13, station.y - 27, 5, 2);
+      label.setText(`${model.activity_type.toUpperCase()} // ${model.derived_from_event_ids.length} CANONICAL\nINSTITUTION INTERIOR · DERIVED`).setPosition(station.x, station.y - 28);
+    }
+  }
+
+  private renderInteriorAmbient(): void {
+    if (!this.interiorAmbientGraphics) return;
+    const graphics = this.interiorAmbientGraphics;
+    graphics.clear();
+    if (!this.interiorAmbientVisible) return;
+    const flicker = this.replay.ambient.effects.some((effect) => effect.kind === "interior-console-flicker");
+    const vapor = this.replay.ambient.effects.some((effect) => effect.kind === "break-room-vapor");
+    const phase = this.preferences.reducedMotion ? 0 : Math.floor(this.cursorMs / 280) % 3;
+    if (flicker) {
+      for (const [index, station] of this.replay.choreography.workstations.entries()) {
+        const color = index % 2 === phase % 2 ? 0x2dd4ff : 0xf653d8;
+        graphics.fillStyle(color, 0.34).fillRect(station.x - 8 + (index % 3) * 3, station.y - 18, 2, 1);
+      }
+    }
+    if (vapor) {
+      graphics.fillStyle(0x9ea8c2, 0.22);
+      for (const [x, y] of [[184, 181], [187, 178], [190, 175]] as Array<[number, number]>) {
+        graphics.fillRect(x + phase, y - phase, 2, 2);
+      }
+      graphics.fillStyle(0xeee9d8, 0.35).fillRect(182, 183, 10, 2);
     }
   }
 

@@ -70,10 +70,13 @@ def test_committed_bundle_is_real_campaign_projection_not_raw_state() -> None:
     assert payload["metadata"]["campaign_revision"] == "9a10029807d5"
     assert len(payload["canonical"]["events"]) == 71
     assert len(payload["projection"]["frames"]) == 72
-    assert len(payload["choreography"]["actions"]) == 20
+    assert len(payload["choreography"]["actions"]) == 56
     assert len(payload["choreography"]["chapters"]) == 9
     assert len(payload["choreography"]["workflow_nodes"]) == 4
     assert len(payload["choreography"]["epistemic_flows"]) == 20
+    assert len(payload["choreography"]["workstations"]) == 11
+    assert len(payload["choreography"]["interior_activities"]) == 20
+    assert all(effect["truth_status"] == "ambient" and not effect["derived_from_event_ids"] for effect in payload["ambient"]["effects"])
     epistemic_kinds = [flow["flow_kind"] for flow in payload["choreography"]["epistemic_flows"]]
     assert {kind: epistemic_kinds.count(kind) for kind in set(epistemic_kinds)} == {
         "application": 10, "award": 2, "decision": 2, "manuscript": 2, "review": 4,
@@ -81,8 +84,27 @@ def test_committed_bundle_is_real_campaign_projection_not_raw_state() -> None:
     assert payload["choreography"]["time_compression"]["kind"] == "deterministic-stage-compression"
     action_types = [action["action_type"] for action in payload["choreography"]["actions"]]
     assert {kind: action_types.count(kind) for kind in set(action_types)} == {
-        "move": 12, "receive": 2, "review": 4, "write": 2,
+        "apply": 10, "move": 36, "read": 2, "receive": 2, "review": 4, "write": 2,
     }
+    station_by_id = {
+        station["id"]: station for station in payload["choreography"]["workstations"]
+    }
+    work_actions = [
+        action for action in payload["choreography"]["actions"]
+        if action["action_type"] != "move"
+    ]
+    for activity in payload["choreography"]["interior_activities"]:
+        station = station_by_id[activity["workstation_id"]]
+        matches = [
+            action for action in work_actions
+            if action["action_type"] == activity["activity_type"]
+            and action["actor_entity_id"] == activity["actor_entity_id"]
+            and action["logical_timestamp_ms"] == activity["logical_timestamp_ms"]
+        ]
+        assert len(matches) == 1
+        assert matches[0]["start"] == matches[0]["end"] == {
+            "x": station["x"], "y": station["y"],
+        }
     assert all(
         isinstance(point[axis], int)
         for action in payload["choreography"]["actions"]
@@ -150,5 +172,21 @@ def test_portable_validation_rejects_unknown_epistemic_source() -> None:
     payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
     tampered = copy.deepcopy(payload)
     tampered["choreography"]["epistemic_flows"][0]["derived_from_event_ids"] = ["missing"]
+    with pytest.raises(ValueError, match="unknown canonical source"):
+        validate_portable_bundle(tampered)
+
+
+def test_portable_validation_rejects_interior_activity_semantic_tampering() -> None:
+    payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
+    tampered = copy.deepcopy(payload)
+    tampered["choreography"]["interior_activities"][0]["activity_type"] = "receive"
+    with pytest.raises(ValueError, match="interior activity semantic mismatch"):
+        validate_portable_bundle(tampered)
+
+
+def test_portable_validation_rejects_unknown_interior_activity_source() -> None:
+    payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
+    tampered = copy.deepcopy(payload)
+    tampered["choreography"]["interior_activities"][0]["derived_from_event_ids"] = ["missing"]
     with pytest.raises(ValueError, match="unknown canonical source"):
         validate_portable_bundle(tampered)

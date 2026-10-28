@@ -32,6 +32,7 @@
             </div>
             <div id="world-error" class="world-error" role="alert" hidden></div>
             <div id="epistemic-status" class="epistemic-status" role="status">EPISTEMIC ROUTE // IDLE</div>
+            <div id="interior-status" class="interior-status" role="status">INSTITUTION INTERIOR // IDLE</div>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
               <span data-truth="derived">DERIVED</span>
@@ -90,6 +91,8 @@
           <label><input type="checkbox" value="award" checked /><span data-epistemic="award">AWARD</span></label>
         </fieldset>
         <div class="view-controls" aria-label="View options">
+          <button id="interior-toggle" type="button" aria-label="Toggle evidence-linked institution interiors" aria-pressed="true">INTERIORS: ON</button>
+          <button id="interior-ambient-toggle" type="button" aria-label="Toggle non-evidence cosmetic interior ambience" aria-pressed="true">COSMETIC: ON</button>
           <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>
           <button id="contrast-toggle" type="button" aria-pressed="false">HIGH CONTRAST</button>
           <button id="motion-toggle" type="button" aria-pressed="false">REDUCE MOTION</button>

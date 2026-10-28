@@ -100,6 +100,9 @@ logical canvas remains 480x270 and only integer display scaling is used.
 - [policy transmission](screenshots/noctiluca-v3-policy-cursor-43000.png)
 - [intervention branch comparison](screenshots/noctiluca-branch-compare-cursor-43000.png)
 - [branch intervention evidence](screenshots/noctiluca-branch-compare-intervention-evidence.png)
+- [verified researcher writing interior](screenshots/noctiluca-life-writing-seed521-cursor-6200.png)
+- [verified peer-review interior](screenshots/noctiluca-life-review-seed521-cursor-20200.png)
+- [verified funding application interior](screenshots/noctiluca-life-application-seed521-cursor-36500.png)
 
 ## Evidence contract
 

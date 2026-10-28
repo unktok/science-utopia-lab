@@ -1,4 +1,4 @@
-import { ACTION_TYPES, EPISTEMIC_FLOW_KINDS, FLOW_TYPES, type AssetPack, type EvidenceRecord, type ReplayV2, type TruthStatus, type WorldEntity, type WorldPoint } from "./types";
+import { ACTION_TYPES, EPISTEMIC_FLOW_KINDS, FLOW_TYPES, INTERIOR_ACTIVITY_TYPES, type AssetPack, type EvidenceRecord, type ReplayV2, type TruthStatus, type WorldEntity, type WorldPoint } from "./types";
 
 const asRecord = (value: unknown, path: string): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${path} must be an object`);
@@ -148,6 +148,16 @@ export function parseReplayV2(input: unknown): ReplayV2 {
     if (typeof row.asset_key !== "string") throw new Error(`${path}.asset_key is required`);
     return parsed;
   });
+  const workstations = asArray(choreography.workstations ?? [], "choreography.workstations").map((raw, i) => {
+    const path = `choreography.workstations[${i}]`;
+    const row = asRecord(raw, path);
+    const parsed = entity(row, path, "workstation");
+    if (parsed.truth_status !== "derived" || parsed.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
+    for (const id of parsed.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    if (!Number.isInteger(parsed.x) || !Number.isInteger(parsed.y)) throw new Error(`${path} must use integer geometry`);
+    if (typeof row.asset_key !== "string") throw new Error(`${path}.asset_key is required`);
+    return parsed;
+  });
 
   const parseEntities = (key: "researchers" | "institutions" | "artifacts", type: WorldEntity["entity_type"]) =>
     asArray(entities[key], `canonical.entities.${key}`).map((raw, i) => {
@@ -215,6 +225,21 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       to_entity_id: asString(row.to_entity_id, `${path}.to_entity_id`),
       path: flowPath,
       packet_asset_key: asString(row.packet_asset_key, `${path}.packet_asset_key`),
+      event_type: asString(row.event_type, `${path}.event_type`),
+    };
+  });
+  const interiorActivities = asArray(choreography.interior_activities ?? [], "choreography.interior_activities").map((raw, i) => {
+    const path = `choreography.interior_activities[${i}]`;
+    const row = asRecord(raw, path);
+    const base = evidence(row, path);
+    if (!INTERIOR_ACTIVITY_TYPES.includes(row.activity_type as never)) throw new Error(`${path}.activity_type is unknown`);
+    if (base.truth_status !== "derived" || base.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
+    for (const id of base.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    return {
+      ...base,
+      activity_type: row.activity_type as (typeof INTERIOR_ACTIVITY_TYPES)[number],
+      actor_entity_id: asString(row.actor_entity_id, `${path}.actor_entity_id`),
+      workstation_id: asString(row.workstation_id, `${path}.workstation_id`),
       event_type: asString(row.event_type, `${path}.event_type`),
     };
   });
@@ -316,6 +341,8 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       chapters,
       workflow_nodes: workflowNodes,
       epistemic_flows: epistemicFlows,
+      workstations,
+      interior_activities: interiorActivities,
       time_compression: {
         kind: asString(timeCompressionRaw.kind, "choreography.time_compression.kind"),
         canonical_event_count: asNumber(timeCompressionRaw.canonical_event_count, "choreography.time_compression.canonical_event_count"),
@@ -329,7 +356,8 @@ export function parseReplayV2(input: unknown): ReplayV2 {
   const verifiedSource = replay.metadata.source_kind === "verified_commit_pinned_campaign_run";
   if (replay.metadata.empirical !== verifiedSource) throw new Error("verified/synthetic source boundary mismatch");
   if (verifiedSource && epistemicFlows.length === 0) throw new Error("verified campaign requires epistemic flows");
-  const allEntities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...workflowNodes, ...ambientActors];
+  if (verifiedSource && (workstations.length === 0 || interiorActivities.length === 0)) throw new Error("verified campaign requires institutional interiors");
+  const allEntities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...workflowNodes, ...workstations, ...ambientActors];
   const entityIds = new Set(allEntities.map((item) => item.id));
   if (entityIds.size !== allEntities.length) throw new Error("entity ids must be unique");
   for (const flow of flows) {
@@ -362,6 +390,24 @@ export function parseReplayV2(input: unknown): ReplayV2 {
             ? sources.every((event) => event!.payload?.category === "funding_application_cost") && new Set(sources.map((event) => event!.actor_ids[0])).size === 1 && flow.from_entity_id === source.actor_ids[0] && flow.to_entity_id === "workflow:funding-ledger"
             : sources.length === 1 && source.payload?.category === "grant_income" && flow.from_entity_id === "workflow:funding-ledger" && flow.to_entity_id === source.actor_ids[0];
     if (!valid) throw new Error(`${flow.id} semantic mismatch`);
+  }
+  const workstationIds = new Set(workstations.map((station) => station.id));
+  for (const activity of interiorActivities) {
+    const sources = activity.derived_from_event_ids.map((id) => eventById.get(id));
+    if (sources.some((event) => !event) || sources.some((event) => event!.kind !== activity.event_type)) throw new Error(`${activity.id} event type mismatch`);
+    const source = sources[0]!;
+    const sameActor = new Set(sources.map((event) => event!.actor_ids[0])).size === 1;
+    const baseValid = sameActor && activity.actor_entity_id === source.actor_ids[0] && workstationIds.has(activity.workstation_id);
+    const semanticValid = activity.activity_type === "write"
+      ? sources.length === 1 && source.kind === "paper.submitted"
+      : activity.activity_type === "review"
+        ? sources.length === 1 && source.kind === "review.completed"
+        : activity.activity_type === "read"
+          ? sources.length === 1 && source.kind === "paper.decided"
+          : activity.activity_type === "apply"
+            ? sources.every((event) => event!.payload?.category === "funding_application_cost")
+            : sources.length === 1 && source.payload?.category === "grant_income";
+    if (!baseValid || !semanticValid) throw new Error(`${activity.id} semantic mismatch`);
   }
   for (const cue of cameraCues) {
     if (!cue.target_entity_id || !entityIds.has(cue.target_entity_id)) throw new Error(`${cue.id} has an unknown camera target`);
