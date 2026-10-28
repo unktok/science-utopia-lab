@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/differentiable-system-design-v0.schema.json",
+  "title": "ScienceUtopia Differentiable System Design v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "version", "status", "active_campaign_effect", "objective_binding", "system_template", "relaxation", "inner_optimizer", "surrogate", "outer_validation", "audit"],
+  "properties": {
+    "schema": {"const": "scienceutopia.differentiable-system-design.v0"},
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "version": {"type": "string", "pattern": "^0\\.[0-9]+\\.[0-9]+$"},
+    "status": {"const": "prospective-synthetic-proof-only"},
+    "active_campaign_effect": {"const": "none"},
+    "objective_binding": {"$ref": "#/$defs/objectiveBinding"},
+    "system_template": {"$ref": "#/$defs/systemTemplate"},
+    "relaxation": {"$ref": "#/$defs/relaxation"},
+    "inner_optimizer": {"$ref": "#/$defs/optimizer"},
+    "surrogate": {"$ref": "#/$defs/surrogate"},
+    "outer_validation": {"$ref": "#/$defs/outer"},
+    "audit": {"$ref": "#/$defs/audit"}
+  },
+  "$defs": {
+    "strings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "hashRef": {"type": "object", "additionalProperties": false, "required": ["id", "version", "sha256"], "properties": {"id": {"type": "string", "minLength": 1}, "version": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "objectiveBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["objective_spec", "compilation_sha256", "loss_spec", "phase", "source_paths", "role"],
+      "properties": {
+        "objective_spec": {"$ref": "#/$defs/hashRef"},
+        "compilation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "loss_spec": {"$ref": "#/$defs/hashRef"},
+        "phase": {"type": "string", "minLength": 1},
+        "source_paths": {"$ref": "#/$defs/strings"},
+        "role": {"const": "synthetic-future-loss-only"}
+      }
+    },
+    "port": {
+      "type": "object", "additionalProperties": false,
+      "required": ["port_id", "channel", "required"],
+      "properties": {
+        "port_id": {"type": "string", "minLength": 1},
+        "channel": {"enum": ["artifact", "score", "decision", "feedback", "resource", "signal", "constraint"]},
+        "artifact_type": {"type": ["string", "null"]},
+        "required": {"type": "boolean"}
+      }
+    },
+    "presence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": {"enum": ["fixed-present", "relaxed-binary"]},
+        "initial_logit": {"type": "number"}
+      },
+      "allOf": [{"if": {"properties": {"mode": {"const": "relaxed-binary"}}}, "then": {"required": ["initial_logit"]}}]
+    },
+    "parameter": {
+      "type": "object", "additionalProperties": false,
+      "required": ["parameter_id", "minimum", "maximum", "initial_normalized", "round_digits"],
+      "properties": {
+        "parameter_id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "minimum": {"type": "number"},
+        "maximum": {"type": "number"},
+        "initial_normalized": {"type": "number", "minimum": 0, "maximum": 1},
+        "round_digits": {"type": "integer", "minimum": 0, "maximum": 8}
+      }
+    },
+    "mechanism": {
+      "type": "object", "additionalProperties": false,
+      "required": ["slot_id", "mechanism_id", "family", "presence", "implementations", "inputs", "outputs", "parameters", "schedule"],
+      "properties": {
+        "slot_id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "mechanism_id": {"type": "string", "minLength": 1},
+        "family": {"enum": ["population", "research", "evaluation", "publication", "funding", "governance", "communication", "collaboration", "employment", "education", "custom"]},
+        "presence": {"$ref": "#/$defs/presence"},
+        "implementations": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["option_id", "implementation", "initial_logit"], "properties": {"option_id": {"type": "string", "pattern": "^[a-z0-9-]+$"}, "implementation": {"type": "string", "minLength": 1}, "initial_logit": {"type": "number"}}}},
+        "inputs": {"type": "array", "items": {"$ref": "#/$defs/port"}},
+        "outputs": {"type": "array", "items": {"$ref": "#/$defs/port"}},
+        "parameters": {"type": "array", "items": {"$ref": "#/$defs/parameter"}},
+        "schedule": {"type": "object", "additionalProperties": false, "required": ["phase", "trigger"], "properties": {"phase": {"type": "integer", "minimum": 0}, "trigger": {"type": "string", "minLength": 1}}}
+      }
+    },
+    "edge": {
+      "type": "object", "additionalProperties": false,
+      "required": ["edge_id", "source_mechanism", "source_port", "target_mechanism", "target_port", "channel", "latency", "presence"],
+      "properties": {
+        "edge_id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "source_mechanism": {"type": "string"},
+        "source_port": {"type": "string"},
+        "target_mechanism": {"type": "string"},
+        "target_port": {"type": "string"},
+        "channel": {"enum": ["artifact", "score", "decision", "feedback", "resource", "signal", "constraint"]},
+        "latency": {"type": "integer", "minimum": 0},
+        "presence": {"$ref": "#/$defs/presence"}
+      }
+    },
+    "systemTemplate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["system_id", "version", "agent_types", "artifact_types", "mechanisms", "edges", "global_invariants"],
+      "properties": {
+        "system_id": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1},
+        "agent_types": {"type": "array", "items": {"type": "object"}},
+        "artifact_types": {"type": "array", "items": {"type": "object"}},
+        "mechanisms": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/mechanism"}},
+        "edges": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/edge"}},
+        "global_invariants": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "relaxation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["binary", "categorical", "continuous", "projection"],
+      "properties": {
+        "binary": {"type": "object", "additionalProperties": false, "required": ["transform", "temperature"], "properties": {"transform": {"const": "sigmoid"}, "temperature": {"type": "number", "exclusiveMinimum": 0}}},
+        "categorical": {"type": "object", "additionalProperties": false, "required": ["transform", "temperature"], "properties": {"transform": {"const": "softmax"}, "temperature": {"type": "number", "exclusiveMinimum": 0}}},
+        "continuous": {"type": "object", "additionalProperties": false, "required": ["domain"], "properties": {"domain": {"const": "normalized-unit-interval"}}},
+        "projection": {"type": "object", "additionalProperties": false, "required": ["binary_threshold", "categorical_rule", "dangling_edge_rule"], "properties": {"binary_threshold": {"type": "number", "minimum": 0, "maximum": 1}, "categorical_rule": {"const": "deterministic-argmax"}, "dangling_edge_rule": {"const": "force-absent"}}}
+      }
+    },
+    "optimizer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["method", "iterations", "learning_rate", "gradient_clip", "logit_clip", "record_every_step"],
+      "properties": {
+        "method": {"const": "projected-gradient-descent"},
+        "iterations": {"type": "integer", "minimum": 1, "maximum": 10000},
+        "learning_rate": {"type": "number", "exclusiveMinimum": 0},
+        "gradient_clip": {"type": "number", "exclusiveMinimum": 0},
+        "logit_clip": {"type": "number", "exclusiveMinimum": 0},
+        "record_every_step": {"const": true}
+      }
+    },
+    "surrogate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_type", "conditioned_loss_sha256", "bias", "targets", "weights", "interactions", "uncertainty"],
+      "properties": {
+        "model_type": {"const": "synthetic-quadratic-analytic-gradient"},
+        "conditioned_loss_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bias": {"type": "number"},
+        "targets": {"type": "object", "additionalProperties": {"type": "number"}},
+        "weights": {"type": "object", "additionalProperties": {"type": "number", "minimum": 0}},
+        "interactions": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["left", "right", "coefficient"], "properties": {"left": {"type": "string"}, "right": {"type": "string"}, "coefficient": {"type": "number"}}}},
+        "uncertainty": {"type": "object", "additionalProperties": false, "required": ["base", "distance_scale", "anchor"], "properties": {"base": {"type": "number", "minimum": 0}, "distance_scale": {"type": "number", "minimum": 0}, "anchor": {"type": "object", "additionalProperties": {"type": "number"}}}}
+      }
+    },
+    "outer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evaluator", "data_role", "scenarios", "maximum_absolute_gap", "maximum_relaxation_projection_gap", "maximum_uncertainty", "projection_epsilon"],
+      "properties": {
+        "evaluator": {"const": "synthetic-nondifferentiable-black-box"},
+        "data_role": {"const": "synthetic-development-validation-not-confirmatory"},
+        "scenarios": {"$ref": "#/$defs/strings"},
+        "maximum_absolute_gap": {"type": "number", "minimum": 0},
+        "maximum_relaxation_projection_gap": {"type": "number", "minimum": 0},
+        "maximum_uncertainty": {"type": "number", "minimum": 0},
+        "projection_epsilon": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "audit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required_reports", "goodhart_flags", "prohibited_claims"],
+      "properties": {
+        "required_reports": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"enum": ["gradient-trace", "projection-decisions", "surrogate-gap", "uncertainty", "projection-instability", "outer-validation", "objective-provenance"]}},
+        "goodhart_flags": {"$ref": "#/$defs/strings"},
+        "prohibited_claims": {"$ref": "#/$defs/strings"}
+      }
+    }
+  }
+}

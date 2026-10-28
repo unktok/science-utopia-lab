@@ -1,0 +1,147 @@
+{
+  "schema": "scienceutopia.differentiable-system-design.v0",
+  "id": "synthetic-whole-system-gradient-proof",
+  "version": "0.1.0",
+  "status": "prospective-synthetic-proof-only",
+  "active_campaign_effect": "none",
+  "objective_binding": {
+    "objective_spec": {"id": "synthetic-public-science-stewardship", "version": "1.0.0", "sha256": "2578cf41c81f9ea78edc4db96639a4e8d65200bcc5335f64fe6c3c9950b828f2"},
+    "compilation_sha256": "17d953fbda527e9bee088d9d1677237145263a406803d69eedd1ff19befcafc3",
+    "loss_spec": {"id": "synthetic-public-science-stewardship--explore", "version": "1.0.0", "sha256": "671a2fc3e6e2b9d2498ea2753b32dff2c24c4a419af81cac1fc1058ba071248b"},
+    "phase": "explore",
+    "source_paths": ["tests/fixtures/objective-constitution/objective-spec.synthetic-test.json", "tests/fixtures/objective-constitution/validated-metric-cards.synthetic-test.json"],
+    "role": "synthetic-future-loss-only"
+  },
+  "system_template": {
+    "system_id": "synthetic-gradient-science-system",
+    "version": 1,
+    "agent_types": [{"agent_type_id": "researcher", "roles": ["research", "evaluation"], "description": "Synthetic researcher actor."}],
+    "artifact_types": [{"artifact_type_id": "manuscript", "description": "Synthetic research object."}, {"artifact_type_id": "publication", "description": "Synthetic public record."}],
+    "mechanisms": [
+      {
+        "slot_id": "research", "mechanism_id": "research-core", "family": "research",
+        "presence": {"mode": "fixed-present"},
+        "implementations": [{"option_id": "lab", "implementation": "synthetic.research.lab-v1", "initial_logit": 0.0}],
+        "inputs": [{"port_id": "resources", "channel": "resource", "artifact_type": null, "required": false}],
+        "outputs": [{"port_id": "manuscript", "channel": "artifact", "artifact_type": "manuscript", "required": false}],
+        "parameters": [{"parameter_id": "exploration-rate", "minimum": 0.0, "maximum": 1.0, "initial_normalized": 0.35, "round_digits": 4}],
+        "schedule": {"phase": 0, "trigger": "annual"}
+      },
+      {
+        "slot_id": "evaluation", "mechanism_id": "evaluation-core", "family": "evaluation",
+        "presence": {"mode": "relaxed-binary", "initial_logit": -0.2},
+        "implementations": [{"option_id": "open", "implementation": "synthetic.evaluation.open-v1", "initial_logit": 0.0}, {"option_id": "committee", "implementation": "synthetic.evaluation.committee-v1", "initial_logit": 0.0}],
+        "inputs": [{"port_id": "submission", "channel": "artifact", "artifact_type": "manuscript", "required": false}],
+        "outputs": [{"port_id": "verdict", "channel": "decision", "artifact_type": null, "required": false}],
+        "parameters": [{"parameter_id": "review-depth", "minimum": 0.0, "maximum": 1.0, "initial_normalized": 0.4, "round_digits": 4}],
+        "schedule": {"phase": 1, "trigger": "annual"}
+      },
+      {
+        "slot_id": "publication", "mechanism_id": "publication-core", "family": "publication",
+        "presence": {"mode": "fixed-present"},
+        "implementations": [{"option_id": "repository", "implementation": "synthetic.publication.repository-v1", "initial_logit": 0.0}, {"option_id": "journal", "implementation": "synthetic.publication.journal-v1", "initial_logit": 0.0}],
+        "inputs": [{"port_id": "manuscript", "channel": "artifact", "artifact_type": "manuscript", "required": false}, {"port_id": "decision", "channel": "decision", "artifact_type": null, "required": false}],
+        "outputs": [{"port_id": "record", "channel": "artifact", "artifact_type": "publication", "required": false}],
+        "parameters": [{"parameter_id": "access-delay", "minimum": 0.0, "maximum": 1.0, "initial_normalized": 0.5, "round_digits": 4}],
+        "schedule": {"phase": 2, "trigger": "annual"}
+      },
+      {
+        "slot_id": "funding", "mechanism_id": "funding-core", "family": "funding",
+        "presence": {"mode": "relaxed-binary", "initial_logit": -0.1},
+        "implementations": [{"option_id": "public", "implementation": "synthetic.funding.public-grant-v1", "initial_logit": 0.0}, {"option_id": "matching", "implementation": "synthetic.funding.matching-v1", "initial_logit": 0.0}],
+        "inputs": [{"port_id": "policy", "channel": "constraint", "artifact_type": null, "required": false}],
+        "outputs": [{"port_id": "allocations", "channel": "resource", "artifact_type": null, "required": false}],
+        "parameters": [{"parameter_id": "allocation-share", "minimum": 0.0, "maximum": 1.0, "initial_normalized": 0.3, "round_digits": 4}],
+        "schedule": {"phase": 0, "trigger": "annual"}
+      },
+      {
+        "slot_id": "governance", "mechanism_id": "governance-core", "family": "governance",
+        "presence": {"mode": "relaxed-binary", "initial_logit": -0.3},
+        "implementations": [{"option_id": "mission", "implementation": "synthetic.governance.mission-board-v1", "initial_logit": 0.0}, {"option_id": "polycentric", "implementation": "synthetic.governance.polycentric-v1", "initial_logit": 0.0}],
+        "inputs": [],
+        "outputs": [{"port_id": "policy", "channel": "constraint", "artifact_type": null, "required": false}],
+        "parameters": [{"parameter_id": "mission-concentration", "minimum": 0.0, "maximum": 1.0, "initial_normalized": 0.7, "round_digits": 4}],
+        "schedule": {"phase": 0, "trigger": "annual"}
+      },
+      {
+        "slot_id": "communication", "mechanism_id": "communication-core", "family": "communication",
+        "presence": {"mode": "relaxed-binary", "initial_logit": -0.2},
+        "implementations": [{"option_id": "broadcast", "implementation": "synthetic.communication.broadcast-v1", "initial_logit": 0.0}, {"option_id": "digest", "implementation": "synthetic.communication.digest-v1", "initial_logit": 0.0}],
+        "inputs": [{"port_id": "publication", "channel": "artifact", "artifact_type": "publication", "required": false}],
+        "outputs": [{"port_id": "signal", "channel": "signal", "artifact_type": null, "required": false}],
+        "parameters": [{"parameter_id": "dissemination-intensity", "minimum": 0.0, "maximum": 1.0, "initial_normalized": 0.45, "round_digits": 4}],
+        "schedule": {"phase": 3, "trigger": "annual"}
+      }
+    ],
+    "edges": [
+      {"edge_id": "funding-research", "source_mechanism": "funding-core", "source_port": "allocations", "target_mechanism": "research-core", "target_port": "resources", "channel": "resource", "latency": 0, "presence": {"mode": "relaxed-binary", "initial_logit": -0.1}},
+      {"edge_id": "research-evaluation", "source_mechanism": "research-core", "source_port": "manuscript", "target_mechanism": "evaluation-core", "target_port": "submission", "channel": "artifact", "latency": 0, "presence": {"mode": "relaxed-binary", "initial_logit": -0.1}},
+      {"edge_id": "research-publication", "source_mechanism": "research-core", "source_port": "manuscript", "target_mechanism": "publication-core", "target_port": "manuscript", "channel": "artifact", "latency": 0, "presence": {"mode": "relaxed-binary", "initial_logit": 0.1}},
+      {"edge_id": "evaluation-publication", "source_mechanism": "evaluation-core", "source_port": "verdict", "target_mechanism": "publication-core", "target_port": "decision", "channel": "decision", "latency": 0, "presence": {"mode": "relaxed-binary", "initial_logit": -0.1}},
+      {"edge_id": "governance-funding", "source_mechanism": "governance-core", "source_port": "policy", "target_mechanism": "funding-core", "target_port": "policy", "channel": "constraint", "latency": 0, "presence": {"mode": "relaxed-binary", "initial_logit": -0.2}},
+      {"edge_id": "publication-communication", "source_mechanism": "publication-core", "source_port": "record", "target_mechanism": "communication-core", "target_port": "publication", "channel": "artifact", "latency": 0, "presence": {"mode": "relaxed-binary", "initial_logit": -0.2}}
+    ],
+    "global_invariants": ["synthetic-proof-only", "no-real-policy-claim"]
+  },
+  "relaxation": {
+    "binary": {"transform": "sigmoid", "temperature": 1.0},
+    "categorical": {"transform": "softmax", "temperature": 1.0},
+    "continuous": {"domain": "normalized-unit-interval"},
+    "projection": {"binary_threshold": 0.5, "categorical_rule": "deterministic-argmax", "dangling_edge_rule": "force-absent"}
+  },
+  "inner_optimizer": {"method": "projected-gradient-descent", "iterations": 80, "learning_rate": 0.4, "gradient_clip": 2.0, "logit_clip": 6.0, "record_every_step": true},
+  "surrogate": {
+    "model_type": "synthetic-quadratic-analytic-gradient",
+    "conditioned_loss_sha256": "671a2fc3e6e2b9d2498ea2753b32dff2c24c4a419af81cac1fc1058ba071248b",
+    "bias": 0.05,
+    "targets": {
+      "presence:research": 1.0, "implementation:research:lab": 1.0, "parameter:research:exploration-rate": 0.72,
+      "presence:evaluation": 1.0, "implementation:evaluation:open": 1.0, "implementation:evaluation:committee": 0.0, "parameter:evaluation:review-depth": 0.65,
+      "presence:publication": 1.0, "implementation:publication:repository": 1.0, "implementation:publication:journal": 0.0, "parameter:publication:access-delay": 0.15,
+      "presence:funding": 1.0, "implementation:funding:public": 1.0, "implementation:funding:matching": 0.0, "parameter:funding:allocation-share": 0.64,
+      "presence:governance": 1.0, "implementation:governance:mission": 0.0, "implementation:governance:polycentric": 1.0, "parameter:governance:mission-concentration": 0.35,
+      "presence:communication": 1.0, "implementation:communication:broadcast": 0.0, "implementation:communication:digest": 1.0, "parameter:communication:dissemination-intensity": 0.7,
+      "edge:funding-research": 1.0, "edge:research-evaluation": 1.0, "edge:research-publication": 1.0, "edge:evaluation-publication": 1.0, "edge:governance-funding": 1.0, "edge:publication-communication": 1.0
+    },
+    "weights": {
+      "presence:research": 0.05, "implementation:research:lab": 0.05, "parameter:research:exploration-rate": 0.7,
+      "presence:evaluation": 0.35, "implementation:evaluation:open": 0.25, "implementation:evaluation:committee": 0.25, "parameter:evaluation:review-depth": 0.35,
+      "presence:publication": 0.05, "implementation:publication:repository": 0.2, "implementation:publication:journal": 0.2, "parameter:publication:access-delay": 0.25,
+      "presence:funding": 0.3, "implementation:funding:public": 0.2, "implementation:funding:matching": 0.2, "parameter:funding:allocation-share": 0.5,
+      "presence:governance": 0.35, "implementation:governance:mission": 0.2, "implementation:governance:polycentric": 0.2, "parameter:governance:mission-concentration": 0.45,
+      "presence:communication": 0.25, "implementation:communication:broadcast": 0.2, "implementation:communication:digest": 0.2, "parameter:communication:dissemination-intensity": 0.3,
+      "edge:funding-research": 0.2, "edge:research-evaluation": 0.2, "edge:research-publication": 0.15, "edge:evaluation-publication": 0.2, "edge:governance-funding": 0.25, "edge:publication-communication": 0.2
+    },
+    "interactions": [
+      {"left": "presence:governance", "right": "edge:governance-funding", "coefficient": -0.12},
+      {"left": "presence:communication", "right": "edge:publication-communication", "coefficient": -0.08}
+    ],
+    "uncertainty": {
+      "base": 0.02,
+      "distance_scale": 0.015,
+      "anchor": {
+        "presence:research": 1.0, "implementation:research:lab": 1.0, "parameter:research:exploration-rate": 0.35,
+        "presence:evaluation": 0.450166, "implementation:evaluation:open": 0.5, "implementation:evaluation:committee": 0.5, "parameter:evaluation:review-depth": 0.4,
+        "presence:publication": 1.0, "implementation:publication:repository": 0.5, "implementation:publication:journal": 0.5, "parameter:publication:access-delay": 0.5,
+        "presence:funding": 0.475021, "implementation:funding:public": 0.5, "implementation:funding:matching": 0.5, "parameter:funding:allocation-share": 0.3,
+        "presence:governance": 0.425557, "implementation:governance:mission": 0.5, "implementation:governance:polycentric": 0.5, "parameter:governance:mission-concentration": 0.7,
+        "presence:communication": 0.450166, "implementation:communication:broadcast": 0.5, "implementation:communication:digest": 0.5, "parameter:communication:dissemination-intensity": 0.45,
+        "edge:funding-research": 0.475021, "edge:research-evaluation": 0.475021, "edge:research-publication": 0.524979, "edge:evaluation-publication": 0.475021, "edge:governance-funding": 0.450166, "edge:publication-communication": 0.450166
+      }
+    }
+  },
+  "outer_validation": {
+    "evaluator": "synthetic-nondifferentiable-black-box",
+    "data_role": "synthetic-development-validation-not-confirmatory",
+    "scenarios": ["synthetic-base", "synthetic-congestion"],
+    "maximum_absolute_gap": 0.35,
+    "maximum_relaxation_projection_gap": 0.35,
+    "maximum_uncertainty": 0.12,
+    "projection_epsilon": 0.02
+  },
+  "audit": {
+    "required_reports": ["gradient-trace", "projection-decisions", "surrogate-gap", "uncertainty", "projection-instability", "outer-validation", "objective-provenance"],
+    "goodhart_flags": ["surrogate-gap-exceeds-bound", "surrogate-uncertainty-exceeds-bound", "projection-boundary-sensitive", "surrogate-improvement-blackbox-regression", "relaxation-projection-gap"],
+    "prohibited_claims": ["real-world differentiable science system", "validated policy optimum", "replacement for black-box validation", "confirmatory result", "active campaign result"]
+  }
+}
