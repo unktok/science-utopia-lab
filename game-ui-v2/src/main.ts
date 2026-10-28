@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
 import { agentStateAtCue, buildEvidenceQuayProjection, cueAtCursor } from "./evidenceQuay";
 import { webCanonicalHash } from "./hash";
+import { buildInstitutionalInteriorProjection, interiorAtCursor, type InteriorPose } from "./institutionInterior";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
 import { installArcologyRail } from "./arcologyNav";
@@ -121,6 +122,11 @@ interface EvidenceQuayController {
   setCursor(cursorMs: number): void;
 }
 
+interface InstitutionInteriorController {
+  setCursor(cursorMs: number): void;
+  toggle(): void;
+}
+
 function installEvidenceQuay(replay: ReplayV2): EvidenceQuayController {
   const quay = required<HTMLElement>("evidence-quay");
   const heading = required<HTMLHeadingElement>("quay-heading");
@@ -189,6 +195,75 @@ function installEvidenceQuay(replay: ReplayV2): EvidenceQuayController {
   };
 }
 
+function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorController {
+  const deck = required<HTMLElement>("institution-interiors");
+  const toggle = required<HTMLButtonElement>("interior-deck-toggle");
+  const close = required<HTMLButtonElement>("interior-deck-close");
+  const packet = required<HTMLElement>("interior-packet");
+  const eventButton = required<HTMLButtonElement>("interior-fact-event");
+  const factStatus = required<HTMLElement>("interior-fact-status");
+  const factTitle = required<HTMLElement>("interior-fact-title");
+  const factState = required<HTMLElement>("interior-fact-state");
+  const boundary = required<HTMLElement>("interior-truth-boundary");
+  let open = new URLSearchParams(window.location.search).get("interior") === "on";
+  const setOpen = (value: boolean): void => {
+    open = value;
+    deck.hidden = !open;
+    toggle.setAttribute("aria-pressed", String(open));
+    toggle.textContent = `INTERIOR DECK: ${open ? "ON" : "OFF"}`;
+  };
+  if (!replay.metadata.empirical) {
+    toggle.disabled = true;
+    toggle.title = "Verified commit-pinned campaign replay required";
+    setOpen(false);
+    return { setCursor: () => undefined, toggle: () => undefined };
+  }
+  const projection = buildInstitutionalInteriorProjection(replay);
+  boundary.innerHTML = `<strong>AUTHORITATIVE:</strong> canonical event and matching frame readout only. <strong>PRESENTATION-ONLY:</strong> ${escapeHtml(projection.disclosure.split(". ").at(-1) ?? "all spatial staging")}`;
+  const roomNodes = [...deck.querySelectorAll<HTMLElement>("[data-room]")];
+  const actorVariant = (id: string): number => [...id].reduce((sum, character) => sum + character.charCodeAt(0), 0) % 4;
+  const actorMarkup = (id: string, pose: InteriorPose): string => `<i class="interior-researcher" data-variant="${actorVariant(id)}" data-pose="${escapeHtml(pose)}" title="${escapeHtml(id)} · presentation-only pose"><span class="interior-researcher__signal">${escapeHtml(pose.toUpperCase())}</span></i>`;
+  eventButton.addEventListener("click", () => {
+    const id = eventButton.dataset.eventId;
+    if (id) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "event" } }));
+  });
+  toggle.addEventListener("click", () => setOpen(!open));
+  close.addEventListener("click", () => {
+    setOpen(false);
+    toggle.focus();
+  });
+  setOpen(open);
+  let renderedEventId = "";
+  return {
+    toggle: () => toggle.click(),
+    setCursor(cursorMs: number): void {
+      const selected = interiorAtCursor(projection, cursorMs);
+      if (!selected) return;
+      packet.style.left = `${Math.round(selected.progress * 100)}%`;
+      if (renderedEventId === selected.scene.evidence.event.id) return;
+      renderedEventId = selected.scene.evidence.event.id;
+      const { evidence, presentation, activity_label: activityLabel, subject } = selected.scene;
+      packet.dataset.packet = presentation.packet_kind;
+      for (const room of roomNodes) {
+        const active = room.dataset.room === presentation.room_id;
+        room.dataset.active = String(active);
+        room.title = active ? `Presentation-only route: ${presentation.route_label}` : "Presentation-only institutional room";
+        const occupants = room.querySelector<HTMLElement>(".interior-occupants");
+        if (occupants) occupants.innerHTML = active ? Object.keys(evidence.actor_states).slice(0, 2).map((id) => actorMarkup(id, presentation.pose)).join("") : "";
+      }
+      const actorEntries = Object.entries(evidence.actor_states);
+      const balanceReadout = actorEntries.map(([id, state]) => `${id}: ${typeof state.balance === "number" ? `balance ${state.balance}` : "state recorded"}`).join(" · ");
+      const artifactEntries = Object.entries(evidence.artifact_states);
+      const artifactReadout = artifactEntries.map(([, state]) => typeof state.status === "string" ? `paper ${state.status}` : "artifact recorded").join(" · ");
+      factStatus.textContent = `${selected.scene.activity.toUpperCase()} · CANONICAL`;
+      factTitle.textContent = `${activityLabel} · ${subject}`;
+      factState.textContent = `AUTHORITATIVE FRAME ${evidence.frame.cursor}${balanceReadout ? ` · ${balanceReadout}` : ""}${artifactReadout ? ` · ${artifactReadout}` : ""}`;
+      eventButton.disabled = false;
+      eventButton.dataset.eventId = evidence.event.id;
+    },
+  };
+}
+
 function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   const inspector = required<HTMLElement>("inspector");
   const heading = required<HTMLHeadingElement>("inspector-heading");
@@ -219,7 +294,7 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   }) as EventListener);
 }
 
-function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController): void {
+function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController, institutionInteriors: InstitutionInteriorController): void {
   const timeline = required<HTMLInputElement>("timeline");
   const play = required<HTMLButtonElement>("play-toggle");
   const output = required<HTMLOutputElement>("cursor-output");
@@ -240,6 +315,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: E
     output.value = formatTime(cursor);
     scene.setCursor(cursor);
     evidenceQuay.setCursor(cursor);
+    institutionInteriors.setCursor(cursor);
     chapterNav.querySelectorAll<HTMLButtonElement>("button[data-start]").forEach((button) => {
       const start = Number(button.dataset.start);
       const end = Number(button.dataset.end);
@@ -323,6 +399,9 @@ function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: E
     } else if (event.key.toLowerCase() === "q") {
       event.preventDefault();
       required<HTMLButtonElement>("quay-event").focus();
+    } else if (event.key.toLowerCase() === "i") {
+      event.preventDefault();
+      institutionInteriors.toggle();
     } else if (event.code === "Space") {
       event.preventDefault();
       play.click();
@@ -386,7 +465,8 @@ async function boot(): Promise<void> {
       required<HTMLDivElement>("loading-state").hidden = true;
       installInspector(replay, scene);
       const evidenceQuay = installEvidenceQuay(replay);
-      installControls(replay, scene, evidenceQuay);
+      const institutionInteriors = installInstitutionInteriors(replay);
+      installControls(replay, scene, evidenceQuay, institutionInteriors);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
         const category = replay.canonical.events.some((event) => event.id === selected)

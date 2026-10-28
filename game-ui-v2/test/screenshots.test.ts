@@ -24,6 +24,9 @@ const captures = {
   "noctiluca-arcology-hub-system-foundry.png": "2a7dc8db1aba35a94fc0338ed9c3ef7a5fecc91d7b7e526e3857c3042f45413c",
   "noctiluca-evidence-quay-review-seed521-cursor-20200.png": "d0a1aeec6f9d90b9e0a930f2e44011022c138a5e0e9106ccd378b9b18bd5d530",
   "noctiluca-evidence-quay-funding-seed521-cursor-36500.png": "bb440d6db67ff7bac71811a0c8238dcbab889e5f510c6952610bd12cdf197ff6",
+  "noctiluca-institution-interior-writing-seed521-cursor-6200.png": "386e32d44b3c94bbe99a5343f0ae0968e0eceb5386ccd0d5e5858f29e47368a6",
+  "noctiluca-institution-interior-review-seed521-cursor-20200.png": "8a5c715a3dddaebd0b71b2cf4c02a75dc31a747f92fa860c413a2d7c42a5a236",
+  "noctiluca-institution-interior-funding-seed521-cursor-36500.png": "b952e4e69f74fe08d1880de6de7bc68209d7e3461cc477031f11e73ab8e52d94",
 };
 
 describe("deterministic visual review artifacts", () => {

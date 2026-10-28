@@ -55,6 +55,56 @@
               </div>
               <p id="quay-boundary" class="evidence-quay__boundary"><strong>TRUTH BOUNDARY</strong> Event activity and frame state are authoritative. Movement, route, courier and packet motion are PRESENTATION-ONLY.</p>
             </section>
+            <section id="institution-interiors" class="institution-interiors" aria-labelledby="interior-deck-heading" hidden>
+              <header class="institution-interiors__header">
+                <div>
+                  <span>INTERIOR DECK // VERIFIED EVENT FEED</span>
+                  <h2 id="interior-deck-heading">Institutional life cutaway</h2>
+                </div>
+                <button id="interior-deck-close" type="button" aria-label="Close institution interior deck">×</button>
+              </header>
+              <p class="institution-interiors__stage-label"><strong>PRESENTATION-ONLY STAGE</strong> Rooms, walking, poses, packets, light and ambience</p>
+              <div class="institution-interiors__rooms" aria-label="Four presentation-only institutional rooms">
+                <article class="interior-room interior-room--lab" data-room="laboratory" aria-label="Laboratory presentation room">
+                  <header><span>01</span><strong>RESEARCH LAB</strong><em>presentation</em></header>
+                  <div class="interior-room__scene" aria-hidden="true">
+                    <i class="pixel-prop pixel-prop--tank"></i><i class="pixel-prop pixel-prop--scope"></i><i class="pixel-prop pixel-prop--bench"></i>
+                    <div class="interior-occupants"></div>
+                  </div>
+                  <small>INSTRUMENT / SAMPLE / BENCH</small>
+                </article>
+                <article class="interior-room interior-room--write" data-room="writing-room" aria-label="Writing room presentation room">
+                  <header><span>02</span><strong>MANUSCRIPT ROOM</strong><em>presentation</em></header>
+                  <div class="interior-room__scene" aria-hidden="true">
+                    <i class="pixel-prop pixel-prop--terminal"></i><i class="pixel-prop pixel-prop--archive"></i><i class="pixel-prop pixel-prop--paper"></i>
+                    <div class="interior-occupants"></div>
+                  </div>
+                  <small>DRAFT / ARCHIVE / SUBMISSION</small>
+                </article>
+                <article class="interior-room interior-room--review" data-room="review-room" aria-label="Review room presentation room">
+                  <header><span>03</span><strong>SEALED REVIEW</strong><em>presentation</em></header>
+                  <div class="interior-room__scene" aria-hidden="true">
+                    <i class="pixel-prop pixel-prop--booth"></i><i class="pixel-prop pixel-prop--seal"></i><i class="pixel-prop pixel-prop--dais"></i>
+                    <div class="interior-occupants"></div>
+                  </div>
+                  <small>ANONYMITY / SCORE / DECISION</small>
+                </article>
+                <article class="interior-room interior-room--fund" data-room="funding-assembly" aria-label="Funding assembly presentation room">
+                  <header><span>04</span><strong>FUNDING ASSEMBLY</strong><em>presentation</em></header>
+                  <div class="interior-room__scene" aria-hidden="true">
+                    <i class="pixel-prop pixel-prop--table"></i><i class="pixel-prop pixel-prop--vault"></i><i class="pixel-prop pixel-prop--council"></i>
+                    <div class="interior-occupants"></div>
+                  </div>
+                  <small>APPLICATION / COUNCIL / LEDGER</small>
+                </article>
+              </div>
+              <div class="interior-tube" aria-hidden="true"><span>PNEUMATIC KNOWLEDGE GRID</span><i id="interior-packet" data-packet="none"></i></div>
+              <div class="institution-interiors__facts" role="status" aria-live="polite">
+                <div><span id="interior-fact-status">NO EVENT</span><strong id="interior-fact-title">Awaiting canonical event</strong><small id="interior-fact-state">AUTHORITATIVE FRAME —</small></div>
+                <button id="interior-fact-event" type="button" disabled>OPEN EVIDENCE</button>
+              </div>
+              <p id="interior-truth-boundary" class="institution-interiors__boundary"><strong>AUTHORITATIVE:</strong> event/frame readout only. <strong>PRESENTATION-ONLY:</strong> all spatial staging.</p>
+            </section>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
               <span data-truth="derived">DERIVED</span>
@@ -63,7 +113,7 @@
             </div>
             <span class="minimap-frame" aria-hidden="true">MAP / LOD0</span>
           </div>
-          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, and Escape to close the inspector. Every scientific flow can be opened in the evidence inspector.</p>
+          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, and Escape to close the inspector. Every scientific flow can be opened in the evidence inspector.</p>
 
           <section id="world-controls" class="transport" aria-label="Replay transport">
             <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
@@ -115,6 +165,7 @@
         </fieldset>
         <div class="view-controls" aria-label="View options">
           <button id="interior-toggle" type="button" aria-label="Toggle evidence-linked institution interiors" aria-pressed="true">INTERIORS: ON</button>
+          <button id="interior-deck-toggle" type="button" aria-label="Toggle presentation-only institution interior deck" aria-pressed="false">INTERIOR DECK: OFF</button>
           <button id="interior-ambient-toggle" type="button" aria-label="Toggle non-evidence cosmetic interior ambience" aria-pressed="true">COSMETIC: ON</button>
           <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>
           <button id="contrast-toggle" type="button" aria-pressed="false">HIGH CONTRAST</button>
