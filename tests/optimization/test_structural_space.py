@@ -180,9 +180,10 @@ def test_one_step_neighbors_cover_all_structural_mutation_kinds():
 
     assert kinds == {
         "node-presence",
+        "family",
         "implementation",
         "edge-presence",
-        "topology",
+        "latency",
     }
 
 

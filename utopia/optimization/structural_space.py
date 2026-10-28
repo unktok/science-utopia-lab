@@ -237,11 +237,27 @@ class StructuralSystemSpace:
                 slot_id = node_diffs[0]
                 before = incumbent_nodes[slot_id]
                 after = selection.nodes[slot_id]
-                kind = (
-                    "node-presence"
-                    if before is None or after is None
-                    else "implementation"
-                )
+                if before is None or after is None:
+                    kind = "node-presence"
+                else:
+                    slot = self._node_slots[slot_id]
+                    before_option = next(
+                        option for option in slot.options if option.option_id == before
+                    )
+                    after_option = next(
+                        option for option in slot.options if option.option_id == after
+                    )
+                    if before_option.mechanism.family != after_option.mechanism.family:
+                        kind = "family"
+                    elif (
+                        before_option.mechanism.implementation
+                        != after_option.mechanism.implementation
+                        or before_option.mechanism.version
+                        != after_option.mechanism.version
+                    ):
+                        kind = "implementation"
+                    else:
+                        kind = "configuration"
             else:
                 slot_id = edge_diffs[0]
                 before = incumbent_edges[slot_id]
@@ -249,7 +265,7 @@ class StructuralSystemSpace:
                 kind = (
                     "edge-presence"
                     if before is None or after is None
-                    else "topology"
+                    else "latency"
                 )
             mutation = StructuralMutation(kind, slot_id, before, after)
             neighbors.append((mutation, self.build(selection).to_dict()))

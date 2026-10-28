@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 11:06 JST
+Updated: 2026-10-28 11:19 JST
 
 ## Overall position
 
@@ -35,7 +35,7 @@ Remote: `unktok/science-utopia-lab`
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
 | whole-system `SystemSpec` | heterogeneous production slice | typed model, validator, generic registry/runner, canonical provenance, legacy compiler, and checkpointable evaluation/publication/funding adapters |
-| structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; connecting those mutations to heterogeneous production adapters remains |
+| structural system optimization | production vertical slice | 64 typed candidates mutate node presence, mechanism family, edge presence, and latency; production evaluation/publication/funding adapters now execute through one ask/loss/tell and fingerprint-bound checkpoint boundary |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | spatial-activity v4 integrated | branch comparison plus four researchers, Publication Spine, 16 canonical events, 17 evidence-linked actions, and seven spatial flows; real campaign adapter remains |
 

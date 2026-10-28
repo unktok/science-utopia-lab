@@ -64,9 +64,11 @@ The adapter exposes only valid one-slot neighbors. Each mutation is recorded as
 one of:
 
 - `node-presence`: add or remove an optional mechanism;
+- `family`: exchange a present node across descriptive mechanism families;
 - `implementation`: exchange the implementation of a present node;
+- `configuration`: exchange a present option while retaining family and implementation;
 - `edge-presence`: add or remove an optional connection;
-- `topology`: change a connection variant, currently latency.
+- `latency`: change a present connection's delivery latency.
 
 If removing a node would leave an edge dangling, that mutation is not a legal
 one-step neighbor. The optimizer may first remove the edge and remove the node
@@ -103,7 +105,8 @@ validity, held-out metrics, and optional promotion policy.
 - absence/presence, multiple implementation families, and edge variants occur;
 - illegal dangling or port-incompatible edges are excluded and rejected;
 - canonical round-trip and rebuild detect candidate tampering;
-- legal neighbors cover all four mutation kinds;
+- legal neighbors cover node presence, family, implementation, edge presence,
+  and latency mutation kinds;
 - sampling and mutation are deterministic;
 - the existing `AdaptiveRandomSearch` completes ask/execute/loss/tell and state
   restoration with structural candidates.
