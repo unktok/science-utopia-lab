@@ -38,7 +38,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | bidirectional simulator boundary | verified native events enter the generic graph through the workload bridge; the reverse compiler now seals exact supported fixed-topology SystemSpecs into dry-run-validated native campaign plans and explicitly rejects unsupported structure |
 | structural system optimization | communication production slice | 97 communication candidates vary broker absence, broadcast/digest implementation, fan-out edge presence, and latency through one fingerprint-bound ask/loss/tell boundary |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | verified real-campaign adapter | completed seed-521 campaign is converted by Python into 71 canonical events / 72 authoritative frames after commit, manifest, integrity, completion, and artifact-hash verification; the running v1.1 study is not represented early |
+| game UI | verified research-arcology adapter | a pixel-art hub routes between the completed seed-521 campaign's 71 canonical events / 72 authoritative frames, a separately labeled synthetic SystemSpec sandbox, and a hash-bound v1.1 optimization snapshot; the running study is never presented as a completed outcome |
 
 ## Metric-conditioned study execution snapshot
 
