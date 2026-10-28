@@ -1,5 +1,19 @@
 # Deterministic visual QA
 
+## Optimization mission-control v1
+
+These `1440x1050` captures use forced reduced motion and a 2500 ms virtual-time
+budget. The verified capture shows the timestamped read-only v1.1 registry
+projection: 3 LossSpec arms, 5 candidate bays per arm, the physical/logical
+ledger, no frozen winner, and the locked held-out vault. The synthetic capture
+loads a separately labeled fixture to exercise complete/running/failed/adopted
+display states; it is not experiment evidence.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-optimization-mission-verified.png` | `de0f3bac244fad8229ffc7fdfc337947f8e1bdb5ce127b6bcc25ce93508d41e4` |
+| `noctiluca-optimization-mission-synthetic.png` | `c32572a8c905cba705e69dfdfdbbb75546db0b006f759354051808e89c8e25eb` |
+
 ## Science-system design sandbox
 
 These 1440x1050 captures show the isolated `SYNTHETIC SANDBOX`, not a replay

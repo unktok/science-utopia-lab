@@ -87,6 +87,27 @@ http://localhost:4173/sandbox.html?motion=reduced&preset=invalid-publication
 - [valid synthetic SystemSpec](screenshots/noctiluca-system-sandbox-valid.png)
 - [disconnected publication input](screenshots/noctiluca-system-sandbox-invalid-publication.png)
 
+## Optimization mission control
+
+Open `mission.html` for the read-only operations view of the three-arm metric-
+conditioned v1.1 study. The default bundle is a timestamped, source-commit-
+pinned projection of campaign state and SQLite registries. It displays only
+orchestration facts: logical registration, physical/adopted execution, seed
+state, winner-freeze state, and the held-out firewall. Objective values,
+unfinished results, and inferred winners are not exported.
+
+```text
+http://localhost:4173/mission.html
+http://localhost:4173/mission.html?source=synthetic
+```
+
+The second URL is a separately labelled UI-test fixture. Its invented mixed
+states never share the verified source kind. See the full adapter and claim
+boundary in `research/tracks/game-ui-optimization-mission-control-v1.md`.
+
+- [verified optimization snapshot](screenshots/noctiluca-optimization-mission-verified.png)
+- [synthetic state coverage](screenshots/noctiluca-optimization-mission-synthetic.png)
+
 ## Deterministic review scene
 
 The review URLs fix replay time and motion state:

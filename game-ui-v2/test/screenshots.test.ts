@@ -18,6 +18,8 @@ const captures = {
   "noctiluca-life-application-seed521-cursor-36500.png": "0a0393ac54e5ad2b0933a91ad8a6f83b5ce86e46d586e098b37da39ec2069937",
   "noctiluca-system-sandbox-valid.png": "835da7a83355eff5b338fc262d6b3905408d7c4dfb767a47c7b049f70d9604f3",
   "noctiluca-system-sandbox-invalid-publication.png": "d0007a200d82ce38633dcb1bc7e9c21c87e1a51ca96aeb42768b47dce42bc047",
+  "noctiluca-optimization-mission-verified.png": "de0f3bac244fad8229ffc7fdfc337947f8e1bdb5ce127b6bcc25ce93508d41e4",
+  "noctiluca-optimization-mission-synthetic.png": "c32572a8c905cba705e69dfdfdbbb75546db0b006f759354051808e89c8e25eb",
 };
 
 describe("deterministic visual review artifacts", () => {

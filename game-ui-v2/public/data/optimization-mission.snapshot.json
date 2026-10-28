@@ -1,0 +1,608 @@
+{
+  "arms": [
+    {
+      "budget": {
+        "maximum": 5,
+        "optimization_seeds": 3,
+        "used": 3
+      },
+      "campaign_id": "metric-conditioned-participation-review-v1-1",
+      "candidates": [
+        {
+          "design_id": "d3536002463db",
+          "phase": "initial",
+          "proposal_index": 0,
+          "seeds": [
+            {
+              "attempt": 2,
+              "execution_kind": "physical",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": "2026-10-28T02:09:37.125671+00:00",
+              "status": "running",
+              "wall_seconds": 240.82054929202422
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "running",
+          "suggestion_id": "s35e03107a6494ea2"
+        },
+        {
+          "design_id": "db197e2eb5b1a",
+          "phase": "initial",
+          "proposal_index": 1,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "sbf5c7ce5f0f3a18f"
+        },
+        {
+          "design_id": "d61de1ee4e74b",
+          "phase": "initial",
+          "proposal_index": 2,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "s4f0336a8ea15348e"
+        }
+      ],
+      "loss_spec": {
+        "direction": "minimize",
+        "id": "participation-review-tradeoff-probe",
+        "interpretation": "Development-only conditioning signal balancing simulated participation continuity against logged review burden. It is one experimental value choice, not a validated science-policy objective.",
+        "label": "Participation \u00d7 review",
+        "prohibited_claims": [
+          "best real-world science policy",
+          "scientific quality optimum",
+          "social welfare optimum",
+          "held-out evaluation result"
+        ],
+        "version": "1.0.0"
+      },
+      "registry_projection_sha256": "eefd7c619b1e300b2db50fee4f187c0eeda7ad375f1afb948b96c79f7723d415",
+      "revision": "2517fd02d6ff",
+      "state_updated_utc": "2026-10-28T02:09:37.123117+00:00",
+      "winner": {
+        "design_id": null,
+        "status": "not_frozen"
+      }
+    },
+    {
+      "budget": {
+        "maximum": 5,
+        "optimization_seeds": 3,
+        "used": 3
+      },
+      "campaign_id": "metric-conditioned-topic-diversity-v1-1",
+      "candidates": [
+        {
+          "design_id": "d3536002463db",
+          "phase": "initial",
+          "proposal_index": 0,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "s35e03107a6494ea2"
+        },
+        {
+          "design_id": "db197e2eb5b1a",
+          "phase": "initial",
+          "proposal_index": 1,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "sbf5c7ce5f0f3a18f"
+        },
+        {
+          "design_id": "d61de1ee4e74b",
+          "phase": "initial",
+          "proposal_index": 2,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "s4f0336a8ea15348e"
+        }
+      ],
+      "loss_spec": {
+        "direction": "minimize",
+        "id": "topic-diversity-probe",
+        "interpretation": "Adversarial proxy stress test that deliberately rewards entropy over the fixed topic ontology so the study can observe the institution induced by that narrow target. This is not a recommendation to maximize entropy: entropy observes variety and balance but not disparity, coherence, truth, usefulness, or scientific value.",
+        "label": "Topic diversity",
+        "prohibited_claims": [
+          "scientific diversity optimum",
+          "knowledge quality optimum",
+          "best real-world science policy",
+          "held-out evaluation result"
+        ],
+        "version": "1.0.0"
+      },
+      "registry_projection_sha256": "b980d32185b08a114804756d0037b41679ddc8f546f1d7ec01b2b7b60d83c8a7",
+      "revision": "f4863d6282d1",
+      "state_updated_utc": "2026-10-28T02:03:41.565317+00:00",
+      "winner": {
+        "design_id": null,
+        "status": "not_frozen"
+      }
+    },
+    {
+      "budget": {
+        "maximum": 5,
+        "optimization_seeds": 3,
+        "used": 3
+      },
+      "campaign_id": "metric-conditioned-review-burden-v1-1",
+      "candidates": [
+        {
+          "design_id": "d3536002463db",
+          "phase": "initial",
+          "proposal_index": 0,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "s35e03107a6494ea2"
+        },
+        {
+          "design_id": "db197e2eb5b1a",
+          "phase": "initial",
+          "proposal_index": 1,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "sbf5c7ce5f0f3a18f"
+        },
+        {
+          "design_id": "d61de1ee4e74b",
+          "phase": "initial",
+          "proposal_index": 2,
+          "seeds": [
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 601,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 607,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            },
+            {
+              "attempt": 0,
+              "execution_kind": "unmaterialized",
+              "finished_utc": null,
+              "max_attempts": 2,
+              "physical_run_id": null,
+              "seed": 617,
+              "started_utc": null,
+              "status": "planned",
+              "wall_seconds": null
+            }
+          ],
+          "status": "planned",
+          "suggestion_id": "s4f0336a8ea15348e"
+        }
+      ],
+      "loss_spec": {
+        "direction": "minimize",
+        "id": "review-burden-probe",
+        "interpretation": "Development-only conditioning signal minimizing logged review actions per active researcher-step. It is intentionally vulnerable to suppressing evaluation activity and is included to study metric-induced system design and gaming.",
+        "label": "Review burden",
+        "prohibited_claims": [
+          "review quality optimum",
+          "researcher wellbeing optimum",
+          "best real-world science policy",
+          "held-out evaluation result"
+        ],
+        "version": "1.0.0"
+      },
+      "registry_projection_sha256": "d66c6a41a9de00cd4f2dfbed68157032bbacf643e4bb1c2dc995b4c3071346ba",
+      "revision": "49ec38ecd9ff",
+      "state_updated_utc": "2026-10-28T02:03:41.576784+00:00",
+      "winner": {
+        "design_id": null,
+        "status": "not_frozen"
+      }
+    }
+  ],
+  "disclosure": "Read-only progress snapshot. It contains orchestration state, not objective values, unfinished results, or an inferred winner.",
+  "held_out": {
+    "reason": "The held-out registry cannot exist until all three arm winners are immutably frozen.",
+    "registered_runs": 0,
+    "registry_exists": false,
+    "seeds": [
+      701,
+      709,
+      719,
+      727,
+      733
+    ],
+    "status": "locked"
+  },
+  "observed_at_utc": "2026-10-28T03:13:08.338710+00:00",
+  "progress": {
+    "execution_counts": {
+      "adopted_complete": 0,
+      "physical_complete": 0,
+      "physical_running": 1
+    },
+    "logical_capacity": 45,
+    "logical_registered": 27,
+    "status_counts": {
+      "complete": 0,
+      "failed": 0,
+      "planned": 26,
+      "running": 1
+    }
+  },
+  "provenance": {
+    "registry_projection_sha256": "0b019b722532e138c71076237cf89a569d560238ac17efe1c8ecae2b1e9480f7",
+    "source_commit": "1078279d1ce833afe9ffb6b7c262da15357b76ab",
+    "source_files": [
+      {
+        "path": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-participation-review-v1-1/2517fd02d6ff/campaign-snapshot.json",
+        "role": "campaign_snapshot",
+        "sha256": "6063b40328bbc5941da4d3e8705de11971a8ecc33e297444bbaafdf6a0287fef"
+      },
+      {
+        "path": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-review-burden-v1-1/49ec38ecd9ff/campaign-snapshot.json",
+        "role": "campaign_snapshot",
+        "sha256": "3c209f070dc9c904ef696bbd3fb5cf6431abb3f795bffcac2e0c379309443524"
+      },
+      {
+        "path": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-topic-diversity-v1-1/f4863d6282d1/campaign-snapshot.json",
+        "role": "campaign_snapshot",
+        "sha256": "0cc15d3a5022678e6b9ce5f92461c4738db4cb8d3f91ea94afb588158a043dcf"
+      },
+      {
+        "path": "research/specs/metric-conditioned-participation-review-v1-1.json",
+        "role": "campaign_spec",
+        "sha256": "e4fcfccb3ae443e7a2f334b98f9f1acdd055ae049b207099fda9047b46e3c7a5"
+      },
+      {
+        "path": "research/specs/metric-conditioned-review-burden-v1-1.json",
+        "role": "campaign_spec",
+        "sha256": "6435fa29157f79e98829f14e0aab0800da8756a876ac7d6db851eb16956d7098"
+      },
+      {
+        "path": "research/specs/metric-conditioned-topic-diversity-v1-1.json",
+        "role": "campaign_spec",
+        "sha256": "211de1c6d81d8360054c169a78e8c07acff6fd32be9a9e5f26e791a73cb16aa9"
+      },
+      {
+        "path": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-participation-review-v1-1/2517fd02d6ff/campaign-state.json",
+        "role": "campaign_state",
+        "sha256": "f4970ba37f01c02cca92b6483cfb26576089f02381f5443af424eede8fde1436"
+      },
+      {
+        "path": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-review-burden-v1-1/49ec38ecd9ff/campaign-state.json",
+        "role": "campaign_state",
+        "sha256": "842e24e6fb7be01ecd55ac0acfe46526a2cf2f7ed0e9884d94210342a0d9f639"
+      },
+      {
+        "path": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-topic-diversity-v1-1/f4863d6282d1/campaign-state.json",
+        "role": "campaign_state",
+        "sha256": "4e3b84c8cd3b607e242e7df872db088c8d8725f95d5ad9d7b4b190da24a3b695"
+      },
+      {
+        "path": "research/specs/metric-conditioned-optimization-study-v1-1.json",
+        "role": "study_spec",
+        "sha256": "25a64e7a9a3af46ec1221f73405ca31b4b50641408cb40f4e807fa68b2fa1397"
+      }
+    ],
+    "source_tree_clean": true,
+    "study_spec_sha256": "25a64e7a9a3af46ec1221f73405ca31b4b50641408cb40f4e807fa68b2fa1397"
+  },
+  "runtime": {
+    "backend": "ollama",
+    "batch_size": 2,
+    "fidelity": "longitudinal",
+    "max_attempts": 2,
+    "model": "qwen3:8b",
+    "workers": 1
+  },
+  "schema_version": "scienceutopia.optimization-mission-control.v1",
+  "snapshot_hash": "43d4f26d654cc200c177776700710813e33a2e2899ebaa6e39e0bb0b5c70de84",
+  "source_kind": "read_only_metric_conditioned_registry_snapshot",
+  "study": {
+    "arms": 3,
+    "candidate_capacity": 15,
+    "decision_policy": "report_only",
+    "goal": "Compare how three explicit LossSpecs condition the search for science-system designs; freeze one winner per arm before any held-out evaluation.",
+    "id": "metric-conditioned-optimization-v1-1",
+    "logical_run_capacity": 45,
+    "version": "1.1.0"
+  },
+  "truth_status": "verified_snapshot",
+  "winner_freeze": {
+    "frozen_arms": 0,
+    "required_arms": 3,
+    "status": "not_frozen"
+  },
+  "workflow": [
+    {
+      "id": "development",
+      "label": "Develop 3 LossSpec arms",
+      "status": "running"
+    },
+    {
+      "id": "freeze",
+      "label": "Freeze one winner per arm",
+      "status": "locked"
+    },
+    {
+      "id": "held_out",
+      "label": "Run common held-out seeds",
+      "status": "locked"
+    },
+    {
+      "id": "report",
+      "label": "Cross-evaluate and report",
+      "status": "locked"
+    }
+  ]
+}

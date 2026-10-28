@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050611" />
+    <title>NOCTILUCA // Optimization Mission Control</title>
+  </head>
+  <body class="mission-body">
+    <a class="skip-link" href="#arm-grid">Skip to LossSpec arms</a>
+    <main id="mission-app" class="mission-app" data-source="loading">
+      <header class="mission-topbar">
+        <div class="wordmark"><span class="wordmark__signal" aria-hidden="true"></span>NOCTILUCA <em>// OPTIMIZATION MISSION CONTROL</em></div>
+        <dl class="mission-run-strip">
+          <div><dt>STUDY</dt><dd id="study-id">loading…</dd></div>
+          <div><dt>RUNTIME</dt><dd id="runtime-id">—</dd></div>
+          <div><dt>SNAPSHOT UTC</dt><dd id="snapshot-time">—</dd></div>
+        </dl>
+        <div id="mission-verification" class="verification" data-state="loading" role="status">VERIFYING SNAPSHOT</div>
+      </header>
+
+      <section class="mission-disclosure" aria-label="Evidence boundary">
+        <strong id="truth-badge">READ-ONLY SNAPSHOT</strong>
+        <p id="mission-disclosure">Loading mission contract…</p>
+        <a href="./sandbox.html">SYSTEM SANDBOX ↗</a>
+      </section>
+
+      <section class="mission-brief" aria-labelledby="mission-title">
+        <div>
+          <span class="eyebrow">CURRENT RESEARCH OBJECTIVE</span>
+          <h1 id="mission-title">WHAT ARE WE TRYING TO DO?</h1>
+          <p id="mission-goal">Loading registered study goal…</p>
+        </div>
+        <div class="mission-meter" aria-label="Logical run registration progress">
+          <span><b id="logical-count">—</b> LOGICAL RUNS REGISTERED</span>
+          <div><i id="logical-fill"></i></div>
+          <small id="logical-detail">—</small>
+          <small class="execution-key"><b>P</b> physical attempt started <b>A</b> adopted verified artifact <b>·</b> logical row only</small>
+        </div>
+      </section>
+
+      <nav id="workflow" class="mission-workflow" aria-label="Optimization workflow"></nav>
+
+      <section class="mission-world" aria-label="Optimization operations world">
+        <section id="arm-grid" class="arm-grid" aria-label="Three LossSpec optimization arms" tabindex="-1"></section>
+        <aside class="vault-column" aria-label="Winner and held-out controls">
+          <article class="winner-seal">
+            <span class="eyebrow">IMMUTABLE DECISION GATE</span>
+            <img src="/assets/noctiluca/production/token-review-seal.svg" width="72" height="72" alt="" />
+            <h2>WINNER SEAL</h2>
+            <strong id="freeze-status">0 / 3 FROZEN</strong>
+            <p>No arm winner is shown until the study writes the immutable freeze artifact.</p>
+          </article>
+          <article class="heldout-vault">
+            <span class="vault-light" aria-hidden="true"></span>
+            <span class="eyebrow">SEED FIREWALL</span>
+            <h2>HELD-OUT VAULT</h2>
+            <strong>LOCKED</strong>
+            <div id="heldout-seeds" class="heldout-seeds" aria-label="Reserved held-out seeds"></div>
+            <p id="heldout-reason">—</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="mission-console" aria-label="Selected arm and provenance">
+        <article class="arm-inspector">
+          <header><span class="eyebrow">SELECTED LOSS CONDITION</span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></header>
+          <h2 id="selected-arm-title">—</h2>
+          <p id="selected-arm-interpretation">—</p>
+          <dl id="selected-candidate"></dl>
+        </article>
+        <article class="execution-ledger">
+          <span class="eyebrow">PHYSICAL ≠ LOGICAL</span>
+          <h2>Execution ledger</h2>
+          <dl>
+            <div><dt>PHYSICAL COMPLETE</dt><dd id="physical-complete">—</dd></div>
+            <div><dt>PHYSICAL RUNNING</dt><dd id="physical-running">—</dd></div>
+            <div><dt>ADOPTED COMPLETE</dt><dd id="adopted-complete">—</dd></div>
+          </dl>
+          <p>An adopted logical run reuses a verified physical artifact; it is not another simulation.</p>
+        </article>
+        <details class="provenance-console">
+          <summary>PROVENANCE / HASHES</summary>
+          <dl><div><dt>SOURCE COMMIT</dt><dd><code id="source-commit">—</code></dd></div><div><dt>SNAPSHOT SHA-256</dt><dd><code id="snapshot-hash">—</code></dd></div><div><dt>REGISTRY PROJECTION</dt><dd><code id="registry-hash">—</code></dd></div></dl>
+        </details>
+      </section>
+
+      <footer class="mission-footer">
+        <strong>NO RESULT INFERENCE</strong>
+        <p>Running and planned rows are progress facts only. This screen never estimates objective values, declares a provisional winner, or opens held-out evidence.</p>
+        <a href="?source=synthetic">OPEN SYNTHETIC UI TEST</a>
+      </footer>
+
+      <div id="mission-error" class="mission-error" hidden role="alert"><strong>SNAPSHOT REJECTED</strong><span></span></div>
+    </main>
+    <script type="module" src="/src/mission.ts"></script>
+  </body>
+</html>
