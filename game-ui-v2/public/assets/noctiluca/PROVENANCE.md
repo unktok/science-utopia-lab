@@ -2,7 +2,7 @@
 
 ## Production runtime assets
 
-Status: `production-grid-v0.3`. The runtime manifest loads fifteen SVGs under
+Status: `production-grid-v0.4`. The runtime manifest loads twenty-four SVGs under
 `production/`: four six-frame researcher sheets with 24x32 frames, four
 institutions at 96x80, six flow packets at 8x8, and a 16x8 ambient courier.
 They were hand-authored for this repository on 2026-10-27 and 2026-10-28 from
@@ -10,6 +10,13 @@ integer-aligned `rect` primitives using only the frozen
 NOCTILUCA 24-colour palette. They declare `shape-rendering="crispEdges"` and
 contain no curves, transforms, filters, opacity, gradients, or embedded raster
 images.
+
+Version 0.4 adds four 32x32 institutional relay nodes and five 10x10 epistemic
+packets, hand-authored on 2026-10-28. Submission, review, publication, and
+funding relays have different silhouettes rather than colour swaps. Manuscript,
+review seal, decision, application, and grant packets likewise use distinct
+paper, aperture, routing fork, form, and ledger/token geometry. These assets
+only render evidence-linked Python-authored routes; they do not create events.
 
 The institution silhouettes are purpose-specific rather than recoloured
 shells:

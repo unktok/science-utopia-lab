@@ -28,6 +28,13 @@ describe("replay-view v2 contract", () => {
     expect(replay.canonical.entities.researchers).toHaveLength(12);
     expect(replay.canonical.entities.institutions).toHaveLength(3);
     expect(replay.choreography.flows).toHaveLength(8);
+    expect(replay.choreography.workflow_nodes).toHaveLength(4);
+    expect(replay.choreography.epistemic_flows).toHaveLength(20);
+    expect(replay.choreography.epistemic_flows.reduce<Record<string, number>>((counts, flow) => {
+      counts[flow.flow_kind] = (counts[flow.flow_kind] ?? 0) + 1;
+      return counts;
+    }, {})).toEqual({ manuscript: 2, review: 4, decision: 2, award: 2, application: 10 });
+    expect(replay.choreography.epistemic_flows.every((flow) => flow.path.every((point) => Number.isInteger(point.x) && Number.isInteger(point.y)))).toBe(true);
     expect(replay.choreography.actions).toHaveLength(20);
     expect(replay.choreography.chapters).toHaveLength(9);
     expect(replay.choreography.time_compression).toMatchObject({
@@ -114,6 +121,12 @@ describe("replay-view v2 contract", () => {
     expect(() => parseReplayV2(raw)).toThrow(/path endpoints must match start\/end/);
   });
 
+  it("rejects an epistemic route whose claimed kind contradicts its canonical event", async () => {
+    const raw = JSON.parse(await readFile(fileURLToPath(campaignUrl), "utf8")) as { choreography: { epistemic_flows: Array<{ flow_kind: string }> } };
+    raw.choreography.epistemic_flows[0]!.flow_kind = "award";
+    expect(() => parseReplayV2(raw)).toThrow(/semantic mismatch/);
+  });
+
   it("rejects an actor action attached to an institution", async () => {
     const raw = await fixture() as { choreography: { actions: Array<{ actor_entity_id: string }> } };
     raw.choreography.actions[0]!.actor_entity_id = "institution:noctiluca-knowledge-lab:244054c6";
@@ -134,6 +147,8 @@ describe("asset pack contract", () => {
       "researcher_early", "researcher_pi", "researcher_reviewer", "researcher_editor",
       "institution_lab", "institution_review", "institution_publication", "institution_funding",
       "flow_data", "flow_paper", "flow_review", "flow_funding", "flow_citation", "flow_policy",
+      "workflow_submission", "workflow_review", "workflow_publication", "workflow_funding",
+      "token_manuscript", "token_review_seal", "token_decision", "token_application", "token_grant",
       "ambient_courier_drone",
     ]));
   });

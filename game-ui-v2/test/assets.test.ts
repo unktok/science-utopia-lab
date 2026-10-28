@@ -30,6 +30,15 @@ const EXPECTED: Record<string, { kind: "researcher" | "institution" | "flow" | "
   flow_funding: { kind: "flow", width: 8, height: 8 },
   flow_citation: { kind: "flow", width: 8, height: 8 },
   flow_policy: { kind: "flow", width: 8, height: 8 },
+  workflow_submission: { kind: "institution", width: 32, height: 32 },
+  workflow_review: { kind: "institution", width: 32, height: 32 },
+  workflow_publication: { kind: "institution", width: 32, height: 32 },
+  workflow_funding: { kind: "institution", width: 32, height: 32 },
+  token_manuscript: { kind: "flow", width: 10, height: 10 },
+  token_review_seal: { kind: "flow", width: 10, height: 10 },
+  token_decision: { kind: "flow", width: 10, height: 10 },
+  token_application: { kind: "flow", width: 10, height: 10 },
+  token_grant: { kind: "flow", width: 10, height: 10 },
   ambient_courier_drone: { kind: "environment", width: 16, height: 8 },
 };
 
@@ -40,7 +49,7 @@ async function loadPack() {
 describe("NOCTILUCA production pixel assets", () => {
   it("maps every required key to its exact fixed-grid production SVG", async () => {
     const pack = await loadPack();
-    expect(pack.version).toBe("noctiluca-production-v0.3");
+    expect(pack.version).toBe("noctiluca-production-v0.4");
     expect(pack.palette).toBe("noctiluca-24-v0.1");
     expect(new Set(pack.images.map((image) => image.key))).toEqual(new Set(Object.keys(EXPECTED)));
     expect(new Set(pack.images.map((image) => image.url)).size).toBe(pack.images.length);

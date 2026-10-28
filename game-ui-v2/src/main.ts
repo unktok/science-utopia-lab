@@ -3,7 +3,7 @@ import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
 import { webCanonicalHash } from "./hash";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
-import type { CanonicalEvent, EvidenceRecord, FlowType, ProjectionFrame, ReplayV2, RuntimePreferences, SelectionDetail, WorldEntity } from "./types";
+import type { CanonicalEvent, EpistemicFlowKind, EvidenceRecord, FlowType, ProjectionFrame, ReplayV2, RuntimePreferences, SelectionDetail, WorldEntity } from "./types";
 import "./style.css";
 
 const ASSET_PACK_URL = "/assets/noctiluca/asset-pack.json";
@@ -85,10 +85,10 @@ function installIntegerScaling(): void {
 
 function renderSemanticWorld(replay: ReplayV2): void {
   const target = required<HTMLDivElement>("semantic-entities");
-  const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.ambient.actors];
+  const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.choreography.workflow_nodes, ...replay.ambient.actors];
   const group = (title: string, rows: Array<WorldEntity | EvidenceRecord>, category: SelectionDetail["category"]): string => `
     <section><h3>${escapeHtml(title)}</h3><ul>${rows.map((row) => `<li><button type="button" data-select-id="${escapeHtml(row.id)}" data-select-category="${escapeHtml(category)}"><span>${escapeHtml(row.label)}</span><small>${escapeHtml(row.truth_status)}; ${escapeHtml(row.kind)}; ${formatTime(row.logical_timestamp_ms)}</small></button></li>`).join("")}</ul></section>`;
-  target.innerHTML = group("Entities", entities, "entity") + group("Researcher actions", replay.choreography.actions, "action") + group("Information flows", replay.choreography.flows, "flow") + group("Canonical events", replay.canonical.events, "event");
+  target.innerHTML = group("Entities and institutional workflow nodes", entities, "entity") + group("Researcher actions", replay.choreography.actions, "action") + group("Information flows", replay.choreography.flows, "flow") + group("Epistemic routes", replay.choreography.epistemic_flows, "epistemic") + group("Canonical events", replay.canonical.events, "event");
   target.querySelectorAll<HTMLButtonElement>("[data-select-id]").forEach((button) => button.addEventListener("click", () => {
     const id = button.dataset.selectId;
     const category = button.dataset.selectCategory as SelectionDetail["category"] | undefined;
@@ -124,11 +124,11 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   window.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
   window.addEventListener("noctiluca:select", ((event: CustomEvent<SelectionDetail>) => {
     const { id, category } = event.detail;
-    const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.ambient.actors];
-    const record = category === "entity" ? entities.find((item) => item.id === id) : category === "flow" ? replay.choreography.flows.find((item) => item.id === id) : category === "action" ? replay.choreography.actions.find((item) => item.id === id) : replay.canonical.events.find((item) => item.id === id);
+    const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.choreography.workflow_nodes, ...replay.ambient.actors];
+    const record = category === "entity" ? entities.find((item) => item.id === id) : category === "flow" ? replay.choreography.flows.find((item) => item.id === id) : category === "epistemic" ? replay.choreography.epistemic_flows.find((item) => item.id === id) : category === "action" ? replay.choreography.actions.find((item) => item.id === id) : replay.canonical.events.find((item) => item.id === id);
     if (!record) return;
     scene.select(id);
-    kicker.textContent = category === "flow" ? "INFORMATION FLOW" : category === "action" ? "DERIVED RESEARCHER ACTION" : category === "event" ? "CANONICAL EVENT" : "ENTITY DOSSIER";
+    kicker.textContent = category === "epistemic" ? "EPISTEMIC ROUTE · CANONICAL SOURCES" : category === "flow" ? "INFORMATION FLOW" : category === "action" ? "DERIVED RESEARCHER ACTION" : category === "event" ? "CANONICAL EVENT" : "ENTITY DOSSIER";
     heading.textContent = record.label;
     body.innerHTML = evidenceMarkup(record, replay);
     inspector.hidden = false;
@@ -156,6 +156,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
   const urlParameters = new URLSearchParams(window.location.search);
   const eventTimes = [...new Set(replay.canonical.events.map((event) => event.logical_timestamp_ms))].sort((a, b) => a - b);
   const chapterNav = required<HTMLElement>("chapter-nav");
+  const epistemicStatus = required<HTMLElement>("epistemic-status");
 
   const setCursor = (value: number): void => {
     cursor = Math.max(0, Math.min(value, replay.choreography.duration_ms));
@@ -167,6 +168,11 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
       const end = Number(button.dataset.end);
       button.dataset.active = String(cursor >= start && cursor <= end);
     });
+    const activeRoutes = replay.choreography.epistemic_flows.filter((flow) => cursor >= flow.logical_timestamp_ms && cursor <= flow.logical_timestamp_ms + flow.duration_ms);
+    epistemicStatus.textContent = activeRoutes.length
+      ? `EPISTEMIC ROUTE // ${activeRoutes.map((flow) => flow.flow_kind.toUpperCase()).join(" + ")} // ${activeRoutes.reduce((sum, flow) => sum + flow.derived_from_event_ids.length, 0)} CANONICAL EVENT${activeRoutes.length === 1 && activeRoutes[0]!.derived_from_event_ids.length === 1 ? "" : "S"}`
+      : "EPISTEMIC ROUTE // IDLE";
+    epistemicStatus.dataset.kind = activeRoutes[0]?.flow_kind ?? "idle";
   };
   const setPlaying = (value: boolean): void => {
     playing = value;
@@ -204,6 +210,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
   requestAnimationFrame(tick);
 
   required<HTMLFieldSetElement>("layer-filters").querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach((checkbox) => checkbox.addEventListener("change", () => scene.setLayerVisible(checkbox.value as FlowType, checkbox.checked)));
+  required<HTMLFieldSetElement>("epistemic-filters").querySelectorAll<HTMLInputElement>("input[type=checkbox]").forEach((checkbox) => checkbox.addEventListener("change", () => scene.setEpistemicVisible(checkbox.value as EpistemicFlowKind, checkbox.checked)));
   const follow = required<HTMLButtonElement>("follow-toggle");
   follow.addEventListener("click", () => {
     const enabled = follow.getAttribute("aria-pressed") !== "true";
@@ -284,7 +291,7 @@ async function boot(): Promise<void> {
       if (selected) {
         const category = replay.canonical.events.some((event) => event.id === selected)
           ? "event"
-          : selected.startsWith("flow:") ? "flow" : selected.startsWith("action:") ? "action" : "entity";
+          : selected.startsWith("epistemic:") ? "epistemic" : selected.startsWith("flow:") ? "flow" : selected.startsWith("action:") ? "action" : "entity";
         window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: selected, category } }));
       }
       const verification = required<HTMLDivElement>("verification");

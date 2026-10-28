@@ -240,9 +240,37 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
                 kind="paper-placement"),
         })
 
+    workflow_specs = (
+        ("workflow:submission-relay", "SUBMISSION RELAY", "workflow_submission", (168, 232),
+            [event for event in events if event.event_type == "paper.submitted"]),
+        ("workflow:review-exchange", "REVIEW EXCHANGE", "workflow_review", (334, 118),
+            [event for event in events if event.event_type == "review.completed"]),
+        ("workflow:publication-spine", "PUBLICATION SPINE", "workflow_publication", (432, 232),
+            [event for event in events if event.event_type == "paper.decided"]),
+        ("workflow:funding-ledger", "FUNDING LEDGER", "workflow_funding", (112, 232),
+            [event for event in events if event.event_type == "resource.changed"
+                and event.payload.get("category") in {"funding_application_cost", "grant_income"}]),
+    )
+    workflow_nodes: list[dict[str, Any]] = []
+    for node_id, label, asset_key, node_position, source_events in workflow_specs:
+        if not source_events:
+            continue
+        positions[node_id] = node_position
+        workflow_nodes.append({
+            "id": node_id, "label": label, "kind": "institutional-workflow-node",
+            "entity_type": "workflow_node", "asset_key": asset_key,
+            "x": node_position[0], "y": node_position[1],
+            "truth_status": "derived",
+            "derived_from_event_ids": [event.event_id for event in source_events],
+            "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": min(times[event.event_id] for event in source_events),
+            "duration_ms": 48_000, "causal_parent_id": None,
+        })
+
     flows: list[dict[str, Any]] = []
     actions: list[dict[str, Any]] = []
     camera_cues: list[dict[str, Any]] = []
+    epistemic_flows: list[dict[str, Any]] = []
 
     def point(value: tuple[int, int]) -> dict[str, int]:
         return {"x": value[0], "y": value[1]}
@@ -288,6 +316,33 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
             "causal_parent_id": event.event_id,
         })
 
+    def add_epistemic_flow(
+        flow_kind: str,
+        source_events: Sequence[EventEnvelope],
+        from_entity_id: str,
+        to_entity_id: str,
+        path: list[tuple[int, int]],
+        label: str,
+        packet_asset_key: str,
+        *,
+        duration_ms: int = 2_600,
+    ) -> None:
+        first = source_events[0]
+        epistemic_flows.append({
+            "id": f"epistemic:{flow_kind}:{first.event_id[:12]}",
+            "label": label, "kind": "epistemic-flow",
+            "flow_kind": flow_kind, "event_type": first.event_type,
+            "from_entity_id": from_entity_id, "to_entity_id": to_entity_id,
+            "path": [point(item) for item in path],
+            "packet_asset_key": packet_asset_key,
+            "truth_status": "derived",
+            "derived_from_event_ids": [event.event_id for event in source_events],
+            "derivation_version": DERIVATION_VERSION_V2,
+            "logical_timestamp_ms": times[first.event_id],
+            "duration_ms": duration_ms,
+            "causal_parent_id": first.event_id,
+        })
+
     review_index = 0
     for event in events:
         event_time = times[event.event_id]
@@ -304,6 +359,13 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
                     label="PAPER // author handoff", kind="paper-flow"),
                 "causal_parent_id": event.event_id,
             })
+            home = positions[actor]
+            relay = positions["workflow:submission-relay"]
+            add_epistemic_flow(
+                "manuscript", [event], actor, paper,
+                [home, (home[0], 210), (relay[0], 210), relay, (paper_point[0], relay[1]), paper_point],
+                "MANUSCRIPT // author → submission → paper", "token_manuscript",
+            )
         elif event.event_type == "review.completed":
             actor, paper = event.actor_ids[0], event.artifact_ids[0]
             booth = ((314, 152), (354, 152))[review_index % 2]
@@ -317,6 +379,25 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
                     label="REVIEW // reviewer handoff", kind="review-flow"),
                 "causal_parent_id": event.event_id,
             })
+            home = positions[actor]
+            relay = positions["workflow:review-exchange"]
+            paper_point = positions[paper]
+            add_epistemic_flow(
+                "review", [event], actor, paper,
+                [home, (home[0], relay[1]), relay, (paper_point[0], relay[1]), paper_point],
+                "REVIEW // reviewer → exchange → paper", "token_review_seal",
+            )
+        elif event.event_type == "paper.decided":
+            paper = event.artifact_ids[0]
+            paper_point = positions[paper]
+            relay = positions["workflow:publication-spine"]
+            decision = str(event.payload.get("decision") or "recorded").upper()
+            add_epistemic_flow(
+                "decision", [event], paper, "workflow:publication-spine",
+                [paper_point, (paper_point[0], 252), (relay[0], 252), relay],
+                f"DECISION // {decision} → publication spine", "token_decision",
+                duration_ms=2_200,
+            )
         elif event.event_type == "resource.changed" and event.payload.get("category") == "grant_income":
             actor = event.actor_ids[0]
             agent = next(row for row in agent_events if row.actor_ids[0] == actor)
@@ -339,6 +420,31 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
                     label="FUNDING // grant handoff", kind="funding-flow"),
                 "causal_parent_id": event.event_id,
             })
+            relay = positions["workflow:funding-ledger"]
+            add_epistemic_flow(
+                "award", [event], "workflow:funding-ledger", actor,
+                [relay, (relay[0], 216), (home[0], 216), home],
+                "AWARD // grant ledger → researcher", "token_grant",
+                duration_ms=2_400,
+            )
+
+    application_events: dict[str, list[EventEnvelope]] = {}
+    for event in events:
+        if event.event_type == "resource.changed" and event.payload.get("category") == "funding_application_cost":
+            application_events.setdefault(event.actor_ids[0], []).append(event)
+    funding_relay = positions.get("workflow:funding-ledger")
+    if funding_relay:
+        for actor, source_events in sorted(application_events.items()):
+            home = positions[actor]
+            first_time = times[source_events[0].event_id]
+            last_time = times[source_events[-1].event_id]
+            add_epistemic_flow(
+                "application", source_events, actor, "workflow:funding-ledger",
+                [home, (home[0], 216), (funding_relay[0], 216), funding_relay],
+                f"APPLICATION // {len(source_events)} canonical fee event{'s' if len(source_events) != 1 else ''}",
+                "token_application",
+                duration_ms=max(1_800, last_time - first_time + 600),
+            )
 
     chapter_labels = {
         "register": "ASSEMBLE", "submit": "SUBMIT", "produce": "PRODUCE",
@@ -361,6 +467,7 @@ def campaign_presentation(events: Sequence[EventEnvelope]) -> tuple[dict[str, An
     return ({
         "duration_ms": 48_000, "placements": placements, "flows": flows,
         "actions": actions, "camera_cues": camera_cues, "chapters": chapters,
+        "workflow_nodes": workflow_nodes, "epistemic_flows": epistemic_flows,
         "time_compression": {
             "kind": "deterministic-stage-compression",
             "canonical_event_count": len(events), "duration_ms": 48_000,
@@ -460,6 +567,10 @@ def validate_portable_bundle(payload: Mapping[str, Any]) -> None:
         if recreated.event_id != row.get("event_id"):
             raise ValueError(f"canonical event identity mismatch at index {index}")
         events.append(recreated)
+    metadata = _object(payload.get("metadata"), "portable metadata")
+    verified_source = metadata.get("source_kind") == "verified_commit_pinned_campaign_run"
+    if bool(metadata.get("empirical")) != verified_source:
+        raise ValueError("portable verified/synthetic source boundary mismatch")
     if canonical_event_stream_hash(events) != payload.get("stream_hash"):
         raise ValueError("portable canonical stream hash mismatch")
     if web_event_stream_hash(raw_events) != payload.get("web_stream_hash"):
@@ -477,6 +588,47 @@ def validate_portable_bundle(payload: Mapping[str, Any]) -> None:
         expected_timestamp = 0 if cursor == 0 else _object(facts[cursor - 1], f"canonical.facts[{cursor - 1}]").get("logical_timestamp_ms")
         if frame.get("logical_timestamp_ms") != expected_timestamp:
             raise ValueError(f"authoritative projection timestamp mismatch at cursor {cursor}")
+    choreography = _object(payload.get("choreography"), "portable choreography")
+    epistemic_flows = choreography.get("epistemic_flows")
+    if verified_source and (not isinstance(epistemic_flows, list) or not epistemic_flows):
+        raise ValueError("verified campaign requires evidence-linked epistemic flows")
+    event_by_id = {event.event_id: event for event in events}
+    for index, flow_value in enumerate(epistemic_flows or []):
+        flow = _object(flow_value, f"choreography.epistemic_flows[{index}]")
+        source_ids = flow.get("derived_from_event_ids", [])
+        if not isinstance(source_ids, list) or any(event_id not in event_by_id for event_id in source_ids):
+            raise ValueError(f"epistemic flow has an unknown canonical source: {flow.get('id')}")
+        sources = [event_by_id[event_id] for event_id in source_ids]
+        kind = flow.get("flow_kind")
+        if not sources:
+            raise ValueError(f"epistemic flow has no canonical source: {flow.get('id')}")
+        if flow.get("event_type") != sources[0].event_type or any(event.event_type != sources[0].event_type for event in sources):
+            raise ValueError(f"epistemic flow event type mismatch: {flow.get('id')}")
+        if kind == "manuscript":
+            valid = len(sources) == 1 and sources[0].event_type == "paper.submitted" \
+                and flow.get("from_entity_id") == sources[0].actor_ids[0] \
+                and flow.get("to_entity_id") == sources[0].artifact_ids[0]
+        elif kind == "review":
+            valid = len(sources) == 1 and sources[0].event_type == "review.completed" \
+                and flow.get("from_entity_id") == sources[0].actor_ids[0] \
+                and flow.get("to_entity_id") == sources[0].artifact_ids[0]
+        elif kind == "decision":
+            valid = len(sources) == 1 and sources[0].event_type == "paper.decided" \
+                and flow.get("from_entity_id") == sources[0].artifact_ids[0] \
+                and flow.get("to_entity_id") == "workflow:publication-spine"
+        elif kind == "application":
+            valid = all(event.payload.get("category") == "funding_application_cost" for event in sources) \
+                and len({event.actor_ids[0] for event in sources}) == 1 \
+                and flow.get("from_entity_id") == sources[0].actor_ids[0] \
+                and flow.get("to_entity_id") == "workflow:funding-ledger"
+        elif kind == "award":
+            valid = len(sources) == 1 and sources[0].payload.get("category") == "grant_income" \
+                and flow.get("from_entity_id") == "workflow:funding-ledger" \
+                and flow.get("to_entity_id") == sources[0].actor_ids[0]
+        else:
+            valid = False
+        if not valid:
+            raise ValueError(f"epistemic flow semantic mismatch: {flow.get('id')}")
     serialized = json.dumps(payload, sort_keys=True)
     forbidden = ('"paper_tracker":', '"ecosystem_data":', '"memory_bank":', '"conference_system":')
     if any(token in serialized for token in forbidden):

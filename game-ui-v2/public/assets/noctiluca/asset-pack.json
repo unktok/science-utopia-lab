@@ -1,5 +1,5 @@
 {
-  "version": "noctiluca-production-v0.3",
+  "version": "noctiluca-production-v0.4",
   "palette": "noctiluca-24-v0.1",
   "images": [
     { "key": "researcher_early", "url": "/assets/noctiluca/production/researcher-early.svg", "kind": "researcher", "width": 24, "height": 32, "frames": { "frameWidth": 24, "frameHeight": 32, "end": 5 } },
@@ -16,6 +16,15 @@
     { "key": "flow_funding", "url": "/assets/noctiluca/production/flow-funding.svg", "kind": "flow", "width": 8, "height": 8 },
     { "key": "flow_citation", "url": "/assets/noctiluca/production/flow-citation.svg", "kind": "flow", "width": 8, "height": 8 },
     { "key": "flow_policy", "url": "/assets/noctiluca/production/flow-policy.svg", "kind": "flow", "width": 8, "height": 8 },
+    { "key": "workflow_submission", "url": "/assets/noctiluca/production/workflow-submission.svg", "kind": "institution", "width": 32, "height": 32 },
+    { "key": "workflow_review", "url": "/assets/noctiluca/production/workflow-review.svg", "kind": "institution", "width": 32, "height": 32 },
+    { "key": "workflow_publication", "url": "/assets/noctiluca/production/workflow-publication.svg", "kind": "institution", "width": 32, "height": 32 },
+    { "key": "workflow_funding", "url": "/assets/noctiluca/production/workflow-funding.svg", "kind": "institution", "width": 32, "height": 32 },
+    { "key": "token_manuscript", "url": "/assets/noctiluca/production/token-manuscript.svg", "kind": "flow", "width": 10, "height": 10 },
+    { "key": "token_review_seal", "url": "/assets/noctiluca/production/token-review-seal.svg", "kind": "flow", "width": 10, "height": 10 },
+    { "key": "token_decision", "url": "/assets/noctiluca/production/token-decision.svg", "kind": "flow", "width": 10, "height": 10 },
+    { "key": "token_application", "url": "/assets/noctiluca/production/token-application.svg", "kind": "flow", "width": 10, "height": 10 },
+    { "key": "token_grant", "url": "/assets/noctiluca/production/token-grant.svg", "kind": "flow", "width": 10, "height": 10 },
     { "key": "ambient_courier_drone", "url": "/assets/noctiluca/production/ambient-courier-drone.svg", "kind": "environment", "width": 16, "height": 8 }
   ]
 }

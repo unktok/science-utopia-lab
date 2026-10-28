@@ -3,6 +3,8 @@ export type FlowType = (typeof FLOW_TYPES)[number];
 export type TruthStatus = "canonical" | "derived" | "ambient";
 export const ACTION_TYPES = ["move", "experiment", "write", "review", "revise", "publish", "allocate", "receive", "read", "cite", "policy"] as const;
 export type ActionType = (typeof ACTION_TYPES)[number];
+export const EPISTEMIC_FLOW_KINDS = ["manuscript", "review", "decision", "application", "award"] as const;
+export type EpistemicFlowKind = (typeof EPISTEMIC_FLOW_KINDS)[number];
 
 export interface WorldPoint {
   x: number;
@@ -22,7 +24,7 @@ export interface EvidenceRecord {
 }
 
 export interface WorldEntity extends EvidenceRecord {
-  entity_type: "researcher" | "institution" | "artifact" | "ambient_actor";
+  entity_type: "researcher" | "institution" | "artifact" | "ambient_actor" | "workflow_node";
   asset_key: string;
   x: number;
   y: number;
@@ -71,6 +73,15 @@ export interface VisualAction extends EvidenceRecord {
   path: WorldPoint[];
 }
 
+export interface EpistemicFlow extends EvidenceRecord {
+  flow_kind: EpistemicFlowKind;
+  from_entity_id: string;
+  to_entity_id: string;
+  path: WorldPoint[];
+  packet_asset_key: string;
+  event_type: string;
+}
+
 export interface CinematicChapter extends EvidenceRecord {
   end_ms: number;
 }
@@ -110,6 +121,8 @@ export interface ReplayV2 {
     actions: VisualAction[];
     camera_cues: CameraCue[];
     chapters: CinematicChapter[];
+    workflow_nodes: WorldEntity[];
+    epistemic_flows: EpistemicFlow[];
     time_compression: {
       kind: string;
       canonical_event_count: number;
@@ -140,7 +153,7 @@ export interface AssetPack {
 
 export interface SelectionDetail {
   id: string;
-  category: "entity" | "flow" | "action" | "event";
+  category: "entity" | "flow" | "epistemic" | "action" | "event";
 }
 
 export interface RuntimePreferences {

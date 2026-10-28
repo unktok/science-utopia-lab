@@ -31,6 +31,7 @@
               <span>Validating canonical events and production assets…</span>
             </div>
             <div id="world-error" class="world-error" role="alert" hidden></div>
+            <div id="epistemic-status" class="epistemic-status" role="status">EPISTEMIC ROUTE // IDLE</div>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
               <span data-truth="derived">DERIVED</span>
@@ -79,6 +80,14 @@
           <label><input type="checkbox" value="funding" checked /><span data-flow="funding">FUNDING</span></label>
           <label><input type="checkbox" value="citation" checked /><span data-flow="citation">CITATION</span></label>
           <label><input type="checkbox" value="policy" checked /><span data-flow="policy">POLICY</span></label>
+        </fieldset>
+        <fieldset id="epistemic-filters" class="layer-filters epistemic-filters">
+          <legend>EPISTEMIC ROUTES</legend>
+          <label><input type="checkbox" value="manuscript" checked /><span data-epistemic="manuscript">MANUSCRIPT</span></label>
+          <label><input type="checkbox" value="review" checked /><span data-epistemic="review">REVIEW</span></label>
+          <label><input type="checkbox" value="decision" checked /><span data-epistemic="decision">DECISION</span></label>
+          <label><input type="checkbox" value="application" checked /><span data-epistemic="application">APPLICATION</span></label>
+          <label><input type="checkbox" value="award" checked /><span data-epistemic="award">AWARD</span></label>
         </fieldset>
         <div class="view-controls" aria-label="View options">
           <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>

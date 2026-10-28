@@ -25,6 +25,7 @@ VIEW_SCHEMA_VERSION_V2 = "scienceutopia.replay-view.v2"
 DERIVATION_VERSION_V2 = "scienceutopia.game-choreography.v2.0.0"
 TRUTH_STATUSES = frozenset({"canonical", "derived", "ambient"})
 FLOW_TYPES = ("data", "paper", "review", "funding", "citation", "policy")
+EPISTEMIC_FLOW_KINDS = ("manuscript", "review", "decision", "application", "award")
 
 
 def build_viewer_payload(
@@ -225,6 +226,8 @@ def build_viewer_payload_v2(
         "actions": [],
         "camera_cues": [],
         "chapters": [],
+        "workflow_nodes": [],
+        "epistemic_flows": [],
         **dict(choreography or {}),
     }
     ambient_value = {
@@ -291,7 +294,33 @@ def _validate_v2_visual_records(
         for entity in entities.get("researchers", ())
     }
     visual_ids: set[str] = set()
-    for group_name in ("placements", "flows", "actions", "camera_cues", "chapters"):
+    for record in choreography.get("workflow_nodes", []):
+        _validate_trace_record(record, event_ids=event_ids, expected="derived")
+        record_id = str(record["id"])
+        if record_id in visual_ids or record_id in entity_ids:
+            raise ValueError(f"Duplicate workflow node id: {record_id}")
+        if record.get("entity_type") != "workflow_node":
+            raise ValueError(f"Invalid workflow node entity type: {record_id}")
+        if not isinstance(record.get("asset_key"), str):
+            raise ValueError(f"Workflow node requires an asset: {record_id}")
+        if not all(
+            isinstance(record.get(axis), int) and not isinstance(record.get(axis), bool)
+            for axis in ("x", "y")
+        ):
+            raise ValueError(f"Workflow node must use integer geometry: {record_id}")
+        entity_ids.add(record_id)
+        visual_ids.add(record_id)
+
+    entity_positions = {
+        str(record["entity_id"]): (record.get("x"), record.get("y"))
+        for record in choreography.get("placements", [])
+    }
+    entity_positions.update({
+        str(record["id"]): (record.get("x"), record.get("y"))
+        for record in choreography.get("workflow_nodes", [])
+    })
+
+    for group_name in ("placements", "flows", "actions", "camera_cues", "chapters", "epistemic_flows"):
         for record in choreography.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="derived")
             record_id = str(record["id"])
@@ -347,6 +376,29 @@ def _validate_v2_visual_records(
                 end_ms = record.get("end_ms")
                 if not isinstance(end_ms, int) or end_ms < int(record["logical_timestamp_ms"]):
                     raise ValueError(f"Invalid chapter interval: {record.get('id')}")
+            if group_name == "epistemic_flows":
+                if record.get("flow_kind") not in EPISTEMIC_FLOW_KINDS:
+                    raise ValueError(f"Unsupported epistemic flow kind: {record.get('flow_kind')}")
+                if not isinstance(record.get("packet_asset_key"), str) or not isinstance(record.get("event_type"), str):
+                    raise ValueError(f"Incomplete epistemic flow metadata: {record.get('id')}")
+                for endpoint in ("from_entity_id", "to_entity_id"):
+                    if record.get(endpoint) not in entity_ids:
+                        raise ValueError(f"Unknown epistemic flow endpoint: {record.get(endpoint)}")
+                path = record.get("path")
+                if not isinstance(path, Sequence) or len(path) < 2:
+                    raise ValueError(f"Epistemic flow path requires at least two points: {record.get('id')}")
+                for point in path:
+                    if not isinstance(point, Mapping) or not all(
+                        isinstance(point.get(axis), int) and not isinstance(point.get(axis), bool)
+                        for axis in ("x", "y")
+                    ):
+                        raise ValueError(f"Epistemic flow path must use integer geometry: {record.get('id')}")
+                start = entity_positions.get(str(record.get("from_entity_id")))
+                end = entity_positions.get(str(record.get("to_entity_id")))
+                if start is None or end is None:
+                    raise ValueError(f"Epistemic flow endpoint has no deterministic placement: {record.get('id')}")
+                if path[0] != {"x": start[0], "y": start[1]} or path[-1] != {"x": end[0], "y": end[1]}:
+                    raise ValueError(f"Epistemic flow path endpoints do not match placements: {record.get('id')}")
     for group_name in ("actors", "effects"):
         for record in ambient.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="ambient")

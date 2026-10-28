@@ -79,6 +79,11 @@ code { overflow-wrap: anywhere; color: var(--cyan); font: inherit; font-size: .8
 .truth-key { position: absolute; z-index: 6; left: 7px; bottom: 7px; display: flex; gap: 4px; pointer-events: none; }
 .truth-key span, .truth-chip { padding: 3px 5px; border: 1px solid currentColor; background: rgba(7, 8, 20, .88); font-size: 8px; letter-spacing: .08em; }
 .minimap-frame { position: absolute; z-index: 6; right: 1.45%; top: 2.6%; width: 21.67%; height: 23%; padding: 2px 4px; pointer-events: none; border: 1px solid var(--line); color: var(--muted); background: linear-gradient(135deg, rgba(7, 8, 20, .16), transparent); font-size: 5px; letter-spacing: .08em; }
+.epistemic-status { position: absolute; z-index: 6; top: 7px; left: 7px; max-width: 66%; padding: 4px 6px; pointer-events: none; border: 1px solid var(--cyan); color: var(--cyan); background: rgba(7, 8, 20, .9); font-size: 6px; letter-spacing: .08em; }
+.epistemic-status[data-kind="review"] { border-color: var(--magenta); color: var(--magenta); }
+.epistemic-status[data-kind="decision"] { border-color: var(--gold); color: var(--gold); }
+.epistemic-status[data-kind="award"] { border-color: var(--mint); color: var(--mint); }
+.epistemic-status[data-kind="idle"] { border-color: var(--line); color: var(--muted); }
 [data-truth="canonical"] { color: var(--mint); }
 [data-truth="derived"] { color: var(--cyan); border-style: dashed !important; }
 [data-truth="ambient"] { color: var(--muted); border-style: dotted !important; }
@@ -115,8 +120,9 @@ code { overflow-wrap: anywhere; color: var(--cyan); font: inherit; font-size: .8
 .projection-pair article { min-width: 0; padding: 6px; border: 1px dashed var(--line); }
 .projection-pair h5 { margin: 0; color: var(--mint); font-size: 8px; letter-spacing: .08em; }
 
-.command-deck { display: flex; min-height: 70px; align-items: center; gap: 20px; padding: 8px 14px; border-top: 1px solid var(--cyan); background: rgba(7, 8, 20, .97); }
+.command-deck { display: flex; min-height: 70px; align-items: center; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--cyan); background: rgba(7, 8, 20, .97); }
 .layer-filters { flex: 1; display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin: 0; padding: 4px 10px 8px; border: 1px solid var(--line); }
+.epistemic-filters { border-color: #2dd4ff88; }
 .layer-filters legend { padding: 0 5px; color: var(--muted); font-size: 9px; letter-spacing: .11em; }
 .layer-filters label { display: flex; align-items: center; gap: 5px; font-size: 10px; }
 .layer-filters input { accent-color: var(--cyan); }
@@ -126,6 +132,11 @@ code { overflow-wrap: anywhere; color: var(--cyan); font: inherit; font-size: .8
 [data-flow="funding"] { color: var(--mint); }
 [data-flow="citation"] { color: var(--violet); }
 [data-flow="policy"] { color: var(--coral); }
+[data-epistemic="manuscript"] { color: var(--paper); }
+[data-epistemic="review"] { color: var(--magenta); }
+[data-epistemic="decision"] { color: var(--gold); }
+[data-epistemic="application"] { color: var(--cyan); }
+[data-epistemic="award"] { color: var(--mint); }
 .view-controls { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
 .view-controls label { display: grid; gap: 3px; color: var(--muted); font-size: 8px; letter-spacing: .08em; }
 .view-controls input { width: 100px; accent-color: var(--magenta); }

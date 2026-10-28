@@ -72,6 +72,12 @@ def test_committed_bundle_is_real_campaign_projection_not_raw_state() -> None:
     assert len(payload["projection"]["frames"]) == 72
     assert len(payload["choreography"]["actions"]) == 20
     assert len(payload["choreography"]["chapters"]) == 9
+    assert len(payload["choreography"]["workflow_nodes"]) == 4
+    assert len(payload["choreography"]["epistemic_flows"]) == 20
+    epistemic_kinds = [flow["flow_kind"] for flow in payload["choreography"]["epistemic_flows"]]
+    assert {kind: epistemic_kinds.count(kind) for kind in set(epistemic_kinds)} == {
+        "application": 10, "award": 2, "decision": 2, "manuscript": 2, "review": 4,
+    }
     assert payload["choreography"]["time_compression"]["kind"] == "deterministic-stage-compression"
     action_types = [action["action_type"] for action in payload["choreography"]["actions"]]
     assert {kind: action_types.count(kind) for kind in set(action_types)} == {
@@ -129,4 +135,20 @@ def test_portable_validation_rejects_projection_timing_tampering() -> None:
     tampered = copy.deepcopy(payload)
     tampered["projection"]["frames"][1]["logical_timestamp_ms"] = 99
     with pytest.raises(ValueError, match="authoritative projection timestamp mismatch"):
+        validate_portable_bundle(tampered)
+
+
+def test_portable_validation_rejects_epistemic_semantic_tampering() -> None:
+    payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
+    tampered = copy.deepcopy(payload)
+    tampered["choreography"]["epistemic_flows"][0]["flow_kind"] = "award"
+    with pytest.raises(ValueError, match="epistemic flow semantic mismatch"):
+        validate_portable_bundle(tampered)
+
+
+def test_portable_validation_rejects_unknown_epistemic_source() -> None:
+    payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
+    tampered = copy.deepcopy(payload)
+    tampered["choreography"]["epistemic_flows"][0]["derived_from_event_ids"] = ["missing"]
+    with pytest.raises(ValueError, match="unknown canonical source"):
         validate_portable_bundle(tampered)

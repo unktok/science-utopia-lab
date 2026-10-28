@@ -10,6 +10,9 @@ const captures = {
   "noctiluca-completed-campaign-seed521-cursor-9000.png": "eb984c5aaadc69aeddb5b9b5d07b840e85f7649c1a19bef0fba7bf7e518aa923",
   "noctiluca-cinematic-review-seed521-cursor-20000.png": "5a20b9df6775a814974cd9a4a428d1cbc9f870b71ff42c1a24d5d97dfe9551ea",
   "noctiluca-cinematic-funding-seed521-cursor-42000.png": "f5fd5245077c45c503d16586038eba0a9623acb80c0e97b3714b5c3686d98cd1",
+  "noctiluca-epistemic-review-seed521-cursor-21000.png": "db48e5764458655d5dc4a9842642bd4b9e0ad710f82380de73390f92b1ef8b81",
+  "noctiluca-epistemic-application-seed521-cursor-36500.png": "33680042350acf333af329822976b05121c4da0ed514e9eb90398bd097147fe7",
+  "noctiluca-epistemic-award-seed521-cursor-42000.png": "f6d1e26f6e13ffb9deaa21f98457e6223808c46a3c204f1cc8899592ba20daf5",
 };
 
 describe("deterministic visual review artifacts", () => {

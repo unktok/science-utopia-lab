@@ -1,4 +1,4 @@
-import { ACTION_TYPES, FLOW_TYPES, type AssetPack, type EvidenceRecord, type ReplayV2, type TruthStatus, type WorldEntity, type WorldPoint } from "./types";
+import { ACTION_TYPES, EPISTEMIC_FLOW_KINDS, FLOW_TYPES, type AssetPack, type EvidenceRecord, type ReplayV2, type TruthStatus, type WorldEntity, type WorldPoint } from "./types";
 
 const asRecord = (value: unknown, path: string): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${path} must be an object`);
@@ -138,6 +138,17 @@ export function parseReplayV2(input: unknown): ReplayV2 {
   });
   const placementsByEntity = new Map(placements.map((placement) => [placement.entity_id, placement]));
 
+  const workflowNodes = asArray(choreography.workflow_nodes ?? [], "choreography.workflow_nodes").map((raw, i) => {
+    const path = `choreography.workflow_nodes[${i}]`;
+    const row = asRecord(raw, path);
+    const parsed = entity(row, path, "workflow_node");
+    if (parsed.truth_status !== "derived" || parsed.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
+    for (const id of parsed.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    if (!Number.isInteger(parsed.x) || !Number.isInteger(parsed.y)) throw new Error(`${path} must use integer geometry`);
+    if (typeof row.asset_key !== "string") throw new Error(`${path}.asset_key is required`);
+    return parsed;
+  });
+
   const parseEntities = (key: "researchers" | "institutions" | "artifacts", type: WorldEntity["entity_type"]) =>
     asArray(entities[key], `canonical.entities.${key}`).map((raw, i) => {
       const row = asRecord(raw, `canonical.entities.${key}[${i}]`);
@@ -185,6 +196,26 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       start,
       end,
       path: actionPath,
+    };
+  });
+
+  const epistemicFlows = asArray(choreography.epistemic_flows ?? [], "choreography.epistemic_flows").map((raw, i) => {
+    const path = `choreography.epistemic_flows[${i}]`;
+    const row = asRecord(raw, path);
+    const base = evidence(row, path);
+    if (!EPISTEMIC_FLOW_KINDS.includes(row.flow_kind as never)) throw new Error(`${path}.flow_kind is unknown`);
+    if (base.truth_status !== "derived" || base.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
+    for (const id of base.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    const flowPath = asArray(row.path, `${path}.path`).map((value, pointIndex) => integerPoint(value, `${path}.path[${pointIndex}]`));
+    if (flowPath.length < 2) throw new Error(`${path}.path requires at least two points`);
+    return {
+      ...base,
+      flow_kind: row.flow_kind as (typeof EPISTEMIC_FLOW_KINDS)[number],
+      from_entity_id: asString(row.from_entity_id, `${path}.from_entity_id`),
+      to_entity_id: asString(row.to_entity_id, `${path}.to_entity_id`),
+      path: flowPath,
+      packet_asset_key: asString(row.packet_asset_key, `${path}.packet_asset_key`),
+      event_type: asString(row.event_type, `${path}.event_type`),
     };
   });
 
@@ -283,6 +314,8 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       actions,
       camera_cues: cameraCues,
       chapters,
+      workflow_nodes: workflowNodes,
+      epistemic_flows: epistemicFlows,
       time_compression: {
         kind: asString(timeCompressionRaw.kind, "choreography.time_compression.kind"),
         canonical_event_count: asNumber(timeCompressionRaw.canonical_event_count, "choreography.time_compression.canonical_event_count"),
@@ -293,7 +326,10 @@ export function parseReplayV2(input: unknown): ReplayV2 {
     ambient: { actors: ambientActors, effects: ambientEffects },
   };
 
-  const allEntities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...ambientActors];
+  const verifiedSource = replay.metadata.source_kind === "verified_commit_pinned_campaign_run";
+  if (replay.metadata.empirical !== verifiedSource) throw new Error("verified/synthetic source boundary mismatch");
+  if (verifiedSource && epistemicFlows.length === 0) throw new Error("verified campaign requires epistemic flows");
+  const allEntities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...workflowNodes, ...ambientActors];
   const entityIds = new Set(allEntities.map((item) => item.id));
   if (entityIds.size !== allEntities.length) throw new Error("entity ids must be unique");
   for (const flow of flows) {
@@ -302,6 +338,30 @@ export function parseReplayV2(input: unknown): ReplayV2 {
   for (const action of actions) {
     const actor = allEntities.find((item) => item.id === action.actor_entity_id);
     if (!actor || actor.entity_type !== "researcher") throw new Error(`${action.id} has an unknown researcher actor`);
+  }
+  const eventById = new Map(events.map((event) => [event.id, event]));
+  for (const flow of epistemicFlows) {
+    const from = allEntities.find((item) => item.id === flow.from_entity_id);
+    const to = allEntities.find((item) => item.id === flow.to_entity_id);
+    if (!from || !to) throw new Error(`${flow.id} has an unknown epistemic endpoint`);
+    const firstPoint = flow.path[0]!;
+    const lastPoint = flow.path.at(-1)!;
+    if (firstPoint.x !== from.x || firstPoint.y !== from.y || lastPoint.x !== to.x || lastPoint.y !== to.y) {
+      throw new Error(`${flow.id} path endpoints do not match entity placements`);
+    }
+    const sources = flow.derived_from_event_ids.map((id) => eventById.get(id));
+    if (sources.some((event) => !event) || sources.some((event) => event!.kind !== flow.event_type)) throw new Error(`${flow.id} event type mismatch`);
+    const source = sources[0]!;
+    const valid = flow.flow_kind === "manuscript"
+      ? sources.length === 1 && source.kind === "paper.submitted" && flow.from_entity_id === source.actor_ids[0] && flow.to_entity_id === source.artifact_ids[0]
+      : flow.flow_kind === "review"
+        ? sources.length === 1 && source.kind === "review.completed" && flow.from_entity_id === source.actor_ids[0] && flow.to_entity_id === source.artifact_ids[0]
+        : flow.flow_kind === "decision"
+          ? sources.length === 1 && source.kind === "paper.decided" && flow.from_entity_id === source.artifact_ids[0] && flow.to_entity_id === "workflow:publication-spine"
+          : flow.flow_kind === "application"
+            ? sources.every((event) => event!.payload?.category === "funding_application_cost") && new Set(sources.map((event) => event!.actor_ids[0])).size === 1 && flow.from_entity_id === source.actor_ids[0] && flow.to_entity_id === "workflow:funding-ledger"
+            : sources.length === 1 && source.payload?.category === "grant_income" && flow.from_entity_id === "workflow:funding-ledger" && flow.to_entity_id === source.actor_ids[0];
+    if (!valid) throw new Error(`${flow.id} semantic mismatch`);
   }
   for (const cue of cameraCues) {
     if (!cue.target_entity_id || !entityIds.has(cue.target_entity_id)) throw new Error(`${cue.id} has an unknown camera target`);

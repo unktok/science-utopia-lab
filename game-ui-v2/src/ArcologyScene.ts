@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import type { ActionType, AssetPack, CanonicalEvent, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, TruthStatus, VisualAction, VisualFlow, WorldEntity, WorldPoint } from "./types";
+import type { ActionType, AssetPack, CanonicalEvent, EpistemicFlow, EpistemicFlowKind, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, TruthStatus, VisualAction, VisualFlow, WorldEntity, WorldPoint } from "./types";
 
 const WORLD_WIDTH = 480;
 const WORLD_HEIGHT = 270;
@@ -19,12 +19,26 @@ const FLOW_STYLE: Record<FlowType, { width: number; cadence: number; echoes: num
   citation: { width: 1, cadence: 2, echoes: 2 },
   policy: { width: 2, cadence: 6, echoes: 3 },
 };
+const EPISTEMIC_COLORS: Record<EpistemicFlowKind, number> = {
+  manuscript: 0xeee9d8,
+  review: 0xf653d8,
+  decision: 0xffc857,
+  application: 0x2dd4ff,
+  award: 0x39f5c8,
+};
 
 interface FlowVisual {
   model: VisualFlow;
   graphics: Phaser.GameObjects.Graphics;
   packets: Phaser.GameObjects.Image[];
   curve: Phaser.Curves.QuadraticBezier;
+  label: Phaser.GameObjects.Text;
+}
+
+interface EpistemicFlowVisual {
+  model: EpistemicFlow;
+  graphics: Phaser.GameObjects.Graphics;
+  packet: Phaser.GameObjects.Image;
   label: Phaser.GameObjects.Text;
 }
 
@@ -126,7 +140,9 @@ export class ArcologyScene extends Phaser.Scene {
   private readonly currentActions = new Map<string, VisualAction>();
   private readonly actorHuds = new Map<string, ActorHud>();
   private readonly flowVisuals: FlowVisual[] = [];
+  private readonly epistemicFlowVisuals: EpistemicFlowVisual[] = [];
   private readonly layerVisibility = new Map<FlowType, boolean>();
+  private readonly epistemicVisibility = new Map<EpistemicFlowKind, boolean>();
   private cursorMs = 0;
   private followTargetId?: string;
   private followEnabled = false;
@@ -148,6 +164,7 @@ export class ArcologyScene extends Phaser.Scene {
     this.onSelect = options.onSelect ?? ((detail) => window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail })));
     this.onReady = options.onReady ?? (() => window.dispatchEvent(new CustomEvent("noctiluca:renderer-ready")));
     for (const flowType of Object.keys(FLOW_COLORS) as FlowType[]) this.layerVisibility.set(flowType, true);
+    for (const flowKind of Object.keys(EPISTEMIC_COLORS) as EpistemicFlowKind[]) this.epistemicVisibility.set(flowKind, true);
     for (const action of replay.choreography.actions) {
       const rows = this.actionsByActor.get(action.actor_entity_id) ?? [];
       rows.push(action);
@@ -177,13 +194,14 @@ export class ArcologyScene extends Phaser.Scene {
     this.drawWorldGround();
 
     const groups = this.replay.canonical.entities;
-    const allEntities = [...groups.institutions, ...groups.artifacts, ...groups.researchers, ...this.replay.ambient.actors];
+    const allEntities = [...groups.institutions, ...groups.artifacts, ...groups.researchers, ...this.replay.choreography.workflow_nodes, ...this.replay.ambient.actors];
     for (const entity of allEntities) {
       this.entities.set(entity.id, entity);
       this.createEntity(entity);
     }
     this.createActorHuds();
     for (const flow of this.replay.choreography.flows) this.createFlow(flow);
+    for (const flow of this.replay.choreography.epistemic_flows) this.createEpistemicFlow(flow);
     this.activityGraphics = this.add.graphics().setDepth(10);
     this.rainGraphics = this.add.graphics().setDepth(15);
     this.stateGraphics = this.add.graphics().setDepth(7);
@@ -224,13 +242,20 @@ export class ArcologyScene extends Phaser.Scene {
     this.renderFlows();
   }
 
+  setEpistemicVisible(flowKind: EpistemicFlowKind, visible: boolean): void {
+    this.epistemicVisibility.set(flowKind, visible);
+    this.renderEpistemicFlows();
+  }
+
   select(id: string): void {
     const action = this.replay.choreography.actions.find((row) => row.id === id);
     const flow = this.replay.choreography.flows.find((row) => row.id === id);
+    const epistemic = this.replay.choreography.epistemic_flows.find((row) => row.id === id);
     const event = this.replay.canonical.events.find((row) => row.id === id);
     const researcherIds = new Set(this.replay.canonical.entities.researchers.map((row) => row.id));
     this.followTargetId = action?.actor_entity_id
       ?? [flow?.from_entity_id, flow?.to_entity_id].find((candidate) => candidate && researcherIds.has(candidate))
+      ?? [epistemic?.from_entity_id, epistemic?.to_entity_id].find((candidate) => candidate && researcherIds.has(candidate))
       ?? event?.actor_ids.find((candidate) => researcherIds.has(candidate))
       ?? (researcherIds.has(id) ? id : undefined);
     const sprite = this.sprites.get(this.followTargetId ?? id);
@@ -260,6 +285,7 @@ export class ArcologyScene extends Phaser.Scene {
     this.renderActions();
     this.renderActivityEffects();
     this.renderFlows();
+    this.renderEpistemicFlows();
     this.renderAmbient();
     this.renderInstitutionStates();
   }
@@ -351,7 +377,7 @@ export class ArcologyScene extends Phaser.Scene {
     const sprite: Phaser.GameObjects.Image = asset?.frames
       ? this.add.sprite(Math.round(entity.x), Math.round(entity.y), entity.asset_key, 0)
       : this.add.image(Math.round(entity.x), Math.round(entity.y), entity.asset_key);
-    const depth = entity.entity_type === "institution" ? 2 : entity.entity_type === "ambient_actor" ? 6 : 9;
+    const depth = entity.entity_type === "institution" ? 2 : entity.entity_type === "workflow_node" ? 6 : entity.entity_type === "ambient_actor" ? 6 : 9;
     sprite.setOrigin(0.5, 1).setDepth(depth);
     if (asset) sprite.setDisplaySize(Math.round(asset.width), Math.round(asset.height));
     sprite.setInteractive({ useHandCursor: true });
@@ -536,6 +562,60 @@ export class ArcologyScene extends Phaser.Scene {
         const labelPoint = curve.getPoint(leadProgress);
         label.setText(`${model.label}\nDERIVED · ${model.derived_from_event_ids.length} EVENT`).setPosition(Math.round(labelPoint.x), Math.round(labelPoint.y - 8));
       }
+    }
+  }
+
+  private createEpistemicFlow(flow: EpistemicFlow): void {
+    const graphics = this.add.graphics().setDepth(7);
+    const asset = this.assetPack.images.find((image) => image.key === flow.packet_asset_key);
+    if (!asset || !this.textures.exists(flow.packet_asset_key)) {
+      window.dispatchEvent(new CustomEvent("noctiluca:asset-missing", { detail: { key: flow.packet_asset_key, entityId: flow.id } }));
+    }
+    const packet = this.add.image(flow.path[0]!.x, flow.path[0]!.y, flow.packet_asset_key)
+      .setDepth(14)
+      .setDisplaySize(asset?.width ?? 10, asset?.height ?? 10)
+      .setInteractive({ useHandCursor: true });
+    packet.on("pointerdown", () => this.onSelect({ id: flow.id, category: "epistemic" }));
+    const label = this.add.text(flow.path[0]!.x, flow.path[0]!.y, "", {
+      fontFamily: "monospace",
+      fontSize: "5px",
+      color: `#${EPISTEMIC_COLORS[flow.flow_kind].toString(16).padStart(6, "0")}`,
+      backgroundColor: "#070814",
+      padding: { x: 2, y: 1 },
+    }).setOrigin(0.5, 1).setDepth(15).setInteractive({ useHandCursor: true });
+    label.on("pointerdown", () => this.onSelect({ id: flow.id, category: "epistemic" }));
+    this.epistemicFlowVisuals.push({ model: flow, graphics, packet, label });
+  }
+
+  private renderEpistemicFlows(): void {
+    for (const visual of this.epistemicFlowVisuals) {
+      const { model, graphics, packet, label } = visual;
+      graphics.clear();
+      const elapsed = this.cursorMs - model.logical_timestamp_ms;
+      const active = elapsed >= 0 && elapsed <= model.duration_ms;
+      const residual = elapsed > model.duration_ms && elapsed <= model.duration_ms + 1_200;
+      const visible = this.epistemicVisibility.get(model.flow_kind) !== false && (active || residual);
+      graphics.setVisible(visible);
+      packet.setVisible(visible && active);
+      label.setVisible(visible && active);
+      if (!visible) continue;
+      const color = EPISTEMIC_COLORS[model.flow_kind];
+      const alpha = (residual ? 1 - (elapsed - model.duration_ms) / 1_200 : 1) * 0.92;
+      graphics.lineStyle(model.flow_kind === "award" ? 3 : 2, color, alpha);
+      for (let index = 1; index < model.path.length; index += 1) {
+        const from = model.path[index - 1]!;
+        const to = model.path[index]!;
+        graphics.lineBetween(from.x, from.y, to.x, to.y);
+        graphics.fillStyle(color, alpha).fillRect(from.x - 1, from.y - 1, 3, 3);
+      }
+      const target = model.path.at(-1)!;
+      graphics.lineStyle(1, color, alpha).strokeRect(target.x - 6, target.y - 6, 12, 12);
+      graphics.strokeRect(target.x - 9, target.y - 9, 18, 18);
+      if (!active) continue;
+      const progress = this.preferences.reducedMotion ? 0.58 : Phaser.Math.Clamp(elapsed / Math.max(1, model.duration_ms), 0, 1);
+      const position = pointOnPath(model.path, progress);
+      packet.setPosition(position.x, position.y);
+      label.setText(`${model.flow_kind.toUpperCase()} // ${model.derived_from_event_ids.length} EVENT${model.derived_from_event_ids.length === 1 ? "" : "S"}\nDERIVED ROUTE`).setPosition(position.x, position.y - 9);
     }
   }
 
