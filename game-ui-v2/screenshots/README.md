@@ -1,5 +1,23 @@
 # Deterministic visual QA
 
+## Verified collaboration / evidence navigation v1
+
+These `1440x1050` reduced-motion captures open the typed graph over the
+verified seed-521 campaign at cursor 47,000 ms. The artifact view preserves
+authorship and reviewer edges as separate canonical relations. The researcher
+view shows affiliation, authorship, review and funding-activity event nodes
+while the status rail keeps `FUNDER 0 · IDENTITY MISSING` visible. No funder or
+citation identity is synthesized.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-evidence-graph-artifact-seed521-cursor-47000.png` | `587064a7f46b8207b50ab7b3ac3bc5ef39010105c15a9132af24e4dd1f3d9485` |
+| `noctiluca-evidence-graph-funding-seed521-cursor-47000.png` | `00cb4f7ab85131b305880bdd63752ea94d001389150e6d5a2b6e6f47aeebf6c5` |
+
+Each capture was regenerated from a separate empty Chrome profile and matched
+byte-for-byte. Node position, force layout, routes, packet animation, colour,
+and narrative styling remain continuously labelled `PRESENTATION-ONLY`.
+
 ## Verified researcher identity and life course v1
 
 These `1440x1050` reduced-motion captures open a researcher dossier directly

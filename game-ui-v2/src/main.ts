@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
+import { buildCollaborationEvidenceGraph, EVIDENCE_EDGE_KINDS, graphAtCursor, type EvidenceEdgeKind, type EvidenceGraphNode } from "./collaborationGraph";
 import { agentStateAtCue, buildEvidenceQuayProjection, cueAtCursor } from "./evidenceQuay";
 import { webCanonicalHash } from "./hash";
 import { buildInstitutionalInteriorProjection, interiorAtCursor, type InteriorPose } from "./institutionInterior";
@@ -133,6 +134,11 @@ interface ResearcherDossierController {
   toggle(): void;
 }
 
+interface CollaborationGraphController {
+  setCursor(cursorMs: number): void;
+  toggle(): void;
+}
+
 function installEvidenceQuay(replay: ReplayV2): EvidenceQuayController {
   const quay = required<HTMLElement>("evidence-quay");
   const heading = required<HTMLHeadingElement>("quay-heading");
@@ -208,6 +214,7 @@ function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorContr
   const packet = required<HTMLElement>("interior-packet");
   const eventButton = required<HTMLButtonElement>("interior-fact-event");
   const researcherButton = required<HTMLButtonElement>("interior-fact-researcher");
+  const graphButton = required<HTMLButtonElement>("interior-fact-graph");
   const factStatus = required<HTMLElement>("interior-fact-status");
   const factTitle = required<HTMLElement>("interior-fact-title");
   const factState = required<HTMLElement>("interior-fact-state");
@@ -237,6 +244,10 @@ function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorContr
   researcherButton.addEventListener("click", () => {
     const id = researcherButton.dataset.researcherId;
     if (id) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "entity" } }));
+  });
+  graphButton.addEventListener("click", () => {
+    const id = graphButton.dataset.graphId;
+    if (id) window.dispatchEvent(new CustomEvent<{ id: string }>("noctiluca:graph-open", { detail: { id } }));
   });
   toggle.addEventListener("click", () => setOpen(!open));
   close.addEventListener("click", () => {
@@ -275,6 +286,9 @@ function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorContr
       researcherButton.disabled = !primaryResearcher;
       if (primaryResearcher) researcherButton.dataset.researcherId = primaryResearcher;
       else researcherButton.removeAttribute("data-researcher-id");
+      graphButton.disabled = !primaryResearcher;
+      if (primaryResearcher) graphButton.dataset.graphId = primaryResearcher;
+      else graphButton.removeAttribute("data-graph-id");
     },
   };
 }
@@ -283,6 +297,7 @@ function installResearcherDossier(replay: ReplayV2): ResearcherDossierController
   const panel = required<HTMLElement>("researcher-dossier");
   const toggleButton = required<HTMLButtonElement>("dossier-toggle");
   const closeButton = required<HTMLButtonElement>("dossier-close");
+  const graphButton = required<HTMLButtonElement>("dossier-graph");
   if (!replay.metadata.empirical) {
     toggleButton.disabled = true;
     toggleButton.title = "Verified commit-pinned campaign replay required";
@@ -313,6 +328,7 @@ function installResearcherDossier(replay: ReplayV2): ResearcherDossierController
     const active = typeof agent?.active === "boolean" ? agent.active : undefined;
     required<HTMLHeadingElement>("dossier-heading").textContent = selected.label;
     required<HTMLElement>("dossier-identity").textContent = `CANONICAL ID ${selected.researcher_id}`;
+    graphButton.dataset.graphId = selected.researcher_id;
     required<HTMLElement>("dossier-frame").textContent = `${state.frame.cursor} · ${formatTime(state.frame.logical_timestamp_ms)}`;
     const activeNode = required<HTMLElement>("dossier-active");
     activeNode.textContent = active === undefined ? "NOT OBSERVED" : active ? "ACTIVE" : "INACTIVE AT FRAME";
@@ -367,6 +383,10 @@ function installResearcherDossier(replay: ReplayV2): ResearcherDossierController
     setOpen(false);
     toggleButton.focus();
   });
+  graphButton.addEventListener("click", () => {
+    const id = graphButton.dataset.graphId;
+    if (id) window.dispatchEvent(new CustomEvent<{ id: string }>("noctiluca:graph-open", { detail: { id } }));
+  });
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && open) setOpen(false);
   });
@@ -375,6 +395,150 @@ function installResearcherDossier(replay: ReplayV2): ResearcherDossierController
     const dossier = dossiers.get(event.detail.id);
     if (!dossier) return;
     selected = dossier;
+    setOpen(true);
+    render();
+  }) as EventListener);
+  return {
+    toggle: () => toggleButton.click(),
+    setCursor(value: number): void {
+      cursorMs = value;
+      render();
+    },
+  };
+}
+
+function installCollaborationGraph(replay: ReplayV2): CollaborationGraphController {
+  const panel = required<HTMLElement>("collaboration-graph");
+  const toggleButton = required<HTMLButtonElement>("graph-toggle");
+  const closeButton = required<HTMLButtonElement>("graph-close");
+  if (!replay.metadata.empirical) {
+    toggleButton.disabled = true;
+    toggleButton.title = "Verified commit-pinned campaign replay required";
+    return { setCursor: () => undefined, toggle: () => undefined };
+  }
+  const fullGraph = buildCollaborationEvidenceGraph(replay);
+  const enabled = new Set<EvidenceEdgeKind>(EVIDENCE_EDGE_KINDS);
+  const defaultNode = fullGraph.nodes.find((node) => node.id === "institution_0001_researcher_2") ?? fullGraph.nodes[0]!;
+  const requestedFocus = new URLSearchParams(window.location.search).get("graph");
+  let focusId = fullGraph.nodes.some((node) => node.id === requestedFocus) ? requestedFocus! : defaultNode.id;
+  let cursorMs = 0;
+  let open = Boolean(requestedFocus);
+  const setOpen = (value: boolean): void => {
+    open = value;
+    panel.hidden = !value;
+    toggleButton.setAttribute("aria-pressed", String(value));
+    toggleButton.textContent = `EVIDENCE GRAPH: ${value ? "ON" : "OFF"}`;
+  };
+  setOpen(open);
+  const openEvent = (eventId: string): void => {
+    const event = replay.canonical.events.find((candidate) => candidate.id === eventId);
+    if (!event) return;
+    setOpen(false);
+    window.dispatchEvent(new CustomEvent<number>("noctiluca:seek", { detail: event.logical_timestamp_ms }));
+    window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: eventId, category: "event" } }));
+  };
+  const nodeForEntity = (id: string): EvidenceGraphNode | undefined => {
+    const direct = fullGraph.nodes.find((node) => node.id === id);
+    if (direct) return direct;
+    const institution = replay.canonical.entities.institutions.find((candidate) => candidate.id === id);
+    return institution ? fullGraph.nodes.find((node) => node.id === `institution:${institution.label}`) : undefined;
+  };
+  const render = (): void => {
+    if (!open) return;
+    const graph = graphAtCursor(fullGraph, cursorMs);
+    const focus = graph.nodes.find((node) => node.id === focusId) ?? graph.nodes.find((node) => node.kind === "researcher") ?? graph.nodes[0];
+    if (!focus) return;
+    focusId = focus.id;
+    required<HTMLElement>("graph-focus-label").textContent = `FOCUS ${focus.kind.toUpperCase()} · ${focus.label}`;
+    required<HTMLElement>("graph-boundary").innerHTML = `<strong>CANONICAL EVIDENCE</strong> ${escapeHtml(fullGraph.disclosure.split(". ")[0] ?? fullGraph.disclosure)}. <em>PRESENTATION-ONLY</em> force layout, routes, motion, colour and narrative styling.`;
+    required<HTMLElement>("graph-observations").innerHTML = fullGraph.observations.map((observation) => `<article class="graph-observation" data-status="${observation.status}" title="Loaded verified run · ${escapeHtml(observation.note)}"><span>RUN · ${observation.kind.toUpperCase()}</span><strong>${observation.count}</strong><small>${escapeHtml(observation.status.replaceAll("_", " "))}</small></article>`).join("");
+    required<HTMLUListElement>("graph-missing").innerHTML = fullGraph.missingness.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+
+    const incidentEdges = graph.edges.filter((edge) => enabled.has(edge.kind) && (edge.source_id === focus.id || edge.target_id === focus.id));
+    const peerIds = [...new Set(incidentEdges.map((edge) => edge.source_id === focus.id ? edge.target_id : edge.source_id))].slice(0, 8);
+    const slots = [{ x: 18, y: 20 }, { x: 50, y: 16 }, { x: 82, y: 20 }, { x: 86, y: 50 }, { x: 82, y: 80 }, { x: 50, y: 84 }, { x: 18, y: 80 }, { x: 14, y: 50 }];
+    const positions = new Map<string, { x: number; y: number }>([[focus.id, { x: 50, y: 50 }]]);
+    peerIds.forEach((id, index) => positions.set(id, slots[index]!));
+    const visibleEdges = incidentEdges.filter((edge) => positions.has(edge.source_id) && positions.has(edge.target_id));
+    const edgeMarkup = visibleEdges.map((edge) => {
+      const peerId = edge.source_id === focus.id ? edge.target_id : edge.source_id;
+      const peer = positions.get(peerId)!;
+      const dx = peer.x - 50;
+      const dy = peer.y - 50;
+      const length = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+      return `<i class="graph-edge-line" data-kind="${edge.kind}" style="--x:50%;--y:50%;--length:${length}%;--angle:${angle}deg" title="${escapeHtml(edge.kind)} · presentation-only route"></i>`;
+    }).join("");
+    const nodeIds = [focus.id, ...peerIds];
+    const nodeMarkup = nodeIds.map((id) => graph.nodes.find((node) => node.id === id)).filter((node): node is EvidenceGraphNode => Boolean(node)).map((node) => {
+      const position = positions.get(node.id)!;
+      return `<button class="graph-node" type="button" data-graph-node="${escapeHtml(node.id)}" data-kind="${node.kind}" data-focus="${node.id === focus.id}" style="--x:${position.x}%;--y:${position.y}%"><strong>${escapeHtml(node.label)}</strong><small>${escapeHtml(node.kind.toUpperCase())} · ${escapeHtml(node.truth_status)}</small></button>`;
+    }).join("");
+    const canvas = required<HTMLElement>("graph-canvas");
+    canvas.innerHTML = edgeMarkup + nodeMarkup;
+    canvas.querySelectorAll<HTMLButtonElement>("[data-graph-node]").forEach((button) => button.addEventListener("click", () => {
+      const id = button.dataset.graphNode;
+      const node = id ? fullGraph.nodes.find((candidate) => candidate.id === id) : undefined;
+      if (!node) return;
+      if (node.kind === "researcher") {
+        setOpen(false);
+        window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: node.id, category: "entity" } }));
+      } else if (node.kind === "event") {
+        const eventId = node.evidence_event_ids[0];
+        if (eventId) openEvent(eventId);
+      } else {
+        focusId = node.id;
+        render();
+      }
+    }));
+
+    const evidenceList = required<HTMLElement>("graph-evidence-list");
+    evidenceList.innerHTML = visibleEdges.length ? visibleEdges.map((edge) => `<button class="graph-evidence-edge" type="button" data-graph-event="${escapeHtml(edge.event_id)}"><strong>${escapeHtml(edge.source_id)} → ${escapeHtml(edge.target_id)}</strong><span>${edge.kind.toUpperCase()}</span><code>${escapeHtml(edge.event_kind)} · ${escapeHtml(edge.label)}</code></button>`).join("") : "<p class=\"dossier-empty\">NO ENABLED CANONICAL EDGE INCIDENT TO THIS NODE</p>";
+    evidenceList.querySelectorAll<HTMLButtonElement>("[data-graph-event]").forEach((button) => button.addEventListener("click", () => {
+      const id = button.dataset.graphEvent;
+      if (id) openEvent(id);
+    }));
+    const connectedEventIds = new Set(visibleEdges.map((edge) => edge.event_id));
+    const lineage = required<HTMLElement>("graph-lineage");
+    lineage.innerHTML = graph.lineage.map((event) => `<button type="button" data-lineage-event="${escapeHtml(event.id)}" data-connected="${connectedEventIds.has(event.id)}" aria-label="Sequence ${event.sequence}: ${escapeHtml(event.kind)}"></button>`).join("");
+    lineage.querySelectorAll<HTMLButtonElement>("[data-lineage-event]").forEach((button) => button.addEventListener("click", () => {
+      const id = button.dataset.lineageEvent;
+      if (id) openEvent(id);
+    }));
+  };
+
+  const filters = required<HTMLElement>("graph-filters");
+  filters.innerHTML = EVIDENCE_EDGE_KINDS.map((kind) => `<label><input type="checkbox" value="${kind}" checked />${kind.replaceAll("_", " ").toUpperCase()}</label>`).join("");
+  filters.querySelectorAll<HTMLInputElement>("input").forEach((checkbox) => checkbox.addEventListener("change", () => {
+    const kind = checkbox.value as EvidenceEdgeKind;
+    if (checkbox.checked) enabled.add(kind);
+    else enabled.delete(kind);
+    render();
+  }));
+  toggleButton.addEventListener("click", () => {
+    setOpen(!open);
+    render();
+  });
+  closeButton.addEventListener("click", () => {
+    setOpen(false);
+    toggleButton.focus();
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && open) setOpen(false);
+  });
+  window.addEventListener("noctiluca:graph-open", ((event: CustomEvent<{ id: string }>) => {
+    const node = nodeForEntity(event.detail.id);
+    if (node) focusId = node.id;
+    setOpen(true);
+    render();
+  }) as EventListener);
+  window.addEventListener("noctiluca:select", ((event: CustomEvent<SelectionDetail>) => {
+    if (event.detail.category !== "entity") return;
+    const isResearcher = fullGraph.nodes.some((node) => node.kind === "researcher" && node.id === event.detail.id);
+    if (isResearcher) return;
+    const node = nodeForEntity(event.detail.id);
+    if (!node || !["artifact", "institution"].includes(node.kind)) return;
+    focusId = node.id;
     setOpen(true);
     render();
   }) as EventListener);
@@ -397,7 +561,7 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   window.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
   window.addEventListener("noctiluca:select", ((event: CustomEvent<SelectionDetail>) => {
     const { id, category } = event.detail;
-    if (category === "entity" && replay.canonical.entities.researchers.some((researcher) => researcher.id === id)) {
+    if (category === "entity" && [...replay.canonical.entities.researchers, ...replay.canonical.entities.artifacts, ...replay.canonical.entities.institutions].some((entity) => entity.id === id)) {
       scene.select(id);
       return;
     }
@@ -421,7 +585,7 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   }) as EventListener);
 }
 
-function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController, institutionInteriors: InstitutionInteriorController, researcherDossier: ResearcherDossierController): void {
+function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController, institutionInteriors: InstitutionInteriorController, researcherDossier: ResearcherDossierController, collaborationGraph: CollaborationGraphController): void {
   const timeline = required<HTMLInputElement>("timeline");
   const play = required<HTMLButtonElement>("play-toggle");
   const output = required<HTMLOutputElement>("cursor-output");
@@ -444,6 +608,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: E
     evidenceQuay.setCursor(cursor);
     institutionInteriors.setCursor(cursor);
     researcherDossier.setCursor(cursor);
+    collaborationGraph.setCursor(cursor);
     chapterNav.querySelectorAll<HTMLButtonElement>("button[data-start]").forEach((button) => {
       const start = Number(button.dataset.start);
       const end = Number(button.dataset.end);
@@ -533,6 +698,9 @@ function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: E
     } else if (event.key.toLowerCase() === "d") {
       event.preventDefault();
       researcherDossier.toggle();
+    } else if (event.key.toLowerCase() === "g") {
+      event.preventDefault();
+      collaborationGraph.toggle();
     } else if (event.code === "Space") {
       event.preventDefault();
       play.click();
@@ -598,7 +766,8 @@ async function boot(): Promise<void> {
       const evidenceQuay = installEvidenceQuay(replay);
       const institutionInteriors = installInstitutionInteriors(replay);
       const researcherDossier = installResearcherDossier(replay);
-      installControls(replay, scene, evidenceQuay, institutionInteriors, researcherDossier);
+      const collaborationGraph = installCollaborationGraph(replay);
+      installControls(replay, scene, evidenceQuay, institutionInteriors, researcherDossier, collaborationGraph);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
         const category = replay.canonical.events.some((event) => event.id === selected)

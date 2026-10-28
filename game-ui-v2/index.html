@@ -102,6 +102,7 @@
               <div class="institution-interiors__facts" role="status" aria-live="polite">
                 <div><span id="interior-fact-status">NO EVENT</span><strong id="interior-fact-title">Awaiting canonical event</strong><small id="interior-fact-state">AUTHORITATIVE FRAME —</small></div>
                 <button id="interior-fact-researcher" type="button" disabled>OPEN RESEARCHER</button>
+                <button id="interior-fact-graph" type="button" disabled>OPEN GRAPH</button>
                 <button id="interior-fact-event" type="button" disabled>OPEN EVIDENCE</button>
               </div>
               <p id="interior-truth-boundary" class="institution-interiors__boundary"><strong>AUTHORITATIVE:</strong> event/frame readout only. <strong>PRESENTATION-ONLY:</strong> all spatial staging.</p>
@@ -116,6 +117,7 @@
                 </div>
                 <button id="dossier-close" type="button" aria-label="Close researcher dossier">×</button>
               </header>
+              <button id="dossier-graph" class="dossier-graph-link" type="button">OPEN EVIDENCE GRAPH</button>
               <p id="dossier-boundary" class="researcher-dossier__boundary"><strong>AUTHORITATIVE PROJECTION</strong> Events, topics, balances and active state. <em>PRESENTATION-ONLY</em> avatar expression, relationship lines, layout and narrative styling.</p>
               <div class="researcher-dossier__status" role="status" aria-live="polite">
                 <div><span>CURSOR FRAME</span><strong id="dossier-frame">—</strong></div>
@@ -145,6 +147,25 @@
               </div>
               <aside class="dossier-missing" aria-labelledby="dossier-missing-heading"><h3 id="dossier-missing-heading">OBSERVATION LIMITS / MISSINGNESS</h3><ul id="dossier-missing"></ul></aside>
             </section>
+            <section id="collaboration-graph" class="collaboration-graph" aria-labelledby="graph-heading" hidden>
+              <header class="collaboration-graph__header">
+                <div><span>VERIFIED COLLABORATION / EVIDENCE NAVIGATOR</span><h2 id="graph-heading">Typed evidence graph</h2><small id="graph-focus-label">FOCUS —</small></div>
+                <button id="graph-close" type="button" aria-label="Close collaboration evidence graph">×</button>
+              </header>
+              <p id="graph-boundary" class="collaboration-graph__boundary"><strong>CANONICAL EVIDENCE</strong> typed nodes and event edges. <em>PRESENTATION-ONLY</em> force layout, routes, motion, colour and narrative styling.</p>
+              <div id="graph-observations" class="graph-observations" aria-label="Typed edge observation status"></div>
+              <div class="collaboration-graph__workspace">
+                <aside class="graph-controls" aria-label="Evidence edge filters">
+                  <h3>EDGE TYPES</h3>
+                  <div id="graph-filters"></div>
+                  <p><strong>NO TYPE SUBSTITUTION</strong> A funding activity is not a funder edge. A review is not coauthorship.</p>
+                </aside>
+                <div id="graph-canvas" class="graph-canvas" role="group" aria-label="Presentation-only layout of canonical evidence nodes"></div>
+                <section class="graph-evidence" aria-labelledby="graph-evidence-heading"><header><h3 id="graph-evidence-heading">EVIDENCE EDGES</h3><span>OPEN CANONICAL SOURCE</span></header><div id="graph-evidence-list"></div></section>
+              </div>
+              <div id="graph-lineage" class="graph-lineage" aria-label="Canonical event lineage"></div>
+              <aside class="graph-missing"><h3>MISSING / NOT OBSERVED</h3><ul id="graph-missing"></ul></aside>
+            </section>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
               <span data-truth="derived">DERIVED</span>
@@ -153,7 +174,7 @@
             </div>
             <span class="minimap-frame" aria-hidden="true">MAP / LOD0</span>
           </div>
-          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, D to open a researcher dossier, and Escape to close open panels. Researcher sprites and interior actors open their authoritative life-course dossier.</p>
+          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, D to open a researcher dossier, G to open the typed evidence graph, and Escape to close open panels. Researcher, artifact, and institution nodes support drill-through.</p>
 
           <section id="world-controls" class="transport" aria-label="Replay transport">
             <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
@@ -207,6 +228,7 @@
           <button id="interior-toggle" type="button" aria-label="Toggle evidence-linked institution interiors" aria-pressed="true">INTERIORS: ON</button>
           <button id="interior-deck-toggle" type="button" aria-label="Toggle presentation-only institution interior deck" aria-pressed="false">INTERIOR DECK: OFF</button>
           <button id="dossier-toggle" type="button" aria-label="Open verified researcher dossier" aria-pressed="false">DOSSIER: OFF</button>
+          <button id="graph-toggle" type="button" aria-label="Open verified collaboration evidence graph" aria-pressed="false">EVIDENCE GRAPH: OFF</button>
           <button id="interior-ambient-toggle" type="button" aria-label="Toggle non-evidence cosmetic interior ambience" aria-pressed="true">COSMETIC: ON</button>
           <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>
           <button id="contrast-toggle" type="button" aria-pressed="false">HIGH CONTRAST</button>

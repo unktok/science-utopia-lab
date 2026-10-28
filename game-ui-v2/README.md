@@ -127,6 +127,30 @@ boundary in `research/tracks/game-ui-optimization-mission-control-v1.md`.
 - [verified optimization snapshot](screenshots/noctiluca-optimization-mission-verified.png)
 - [synthetic state coverage](screenshots/noctiluca-optimization-mission-synthetic.png)
 
+## Verified collaboration / evidence navigator
+
+The verified city now exposes an evidence graph from the city, institutional
+interior and researcher dossier. Press `G`, select an artifact or institution,
+or use `OPEN EVIDENCE GRAPH` in a dossier/interior fact bar. Canonical
+affiliation, authorship, coauthor, reviewer, funding activity, funder and
+citation edges remain separate filterable types. Missing funder identity and
+unobserved citation/coauthor events are reported directly; the browser never
+substitutes one relation for another.
+
+```text
+http://localhost:4173/?replay=campaign&motion=reduced&cursor=47000&graph=https%3A%2F%2Farxiv.org%2Fabs%2F1606.04422
+http://localhost:4173/?replay=campaign&motion=reduced&cursor=47000&graph=institution_0001_researcher_2
+```
+
+The graph's force layout, node placement, edge routes/animation, colour and
+narrative labels have a typed `presentation_only` contract. Edge cards and the
+lineage strip drill into the existing canonical event inspector; researcher
+nodes drill back into dossiers. See
+`research/tracks/game-ui-collaboration-evidence-v1.md`.
+
+- [artifact authorship/reviewer graph](screenshots/noctiluca-evidence-graph-artifact-seed521-cursor-47000.png)
+- [researcher funding-activity graph](screenshots/noctiluca-evidence-graph-funding-seed521-cursor-47000.png)
+
 ## Deterministic review scene
 
 The review URLs fix replay time and motion state:
