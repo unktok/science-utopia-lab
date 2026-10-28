@@ -9,7 +9,7 @@ registry of every quantity the simulator can measure.
   report-only and never an executable registry
 - `design-spaces/`: parameters and mechanisms that may change
 - `constitutions/`: optional normative commitments for campaigns that explicitly
-  choose them
+  choose them, including the prospective evidence-gated ObjectiveSpec compiler
 
 Historical objective documents remain at their original paths and are mapped in
 [`../INDEX.md`](../INDEX.md).

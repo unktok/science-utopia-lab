@@ -1,0 +1,20 @@
+{
+  "schema": "scienceutopia.synthetic-measurement-evidence.v1",
+  "status": "synthetic-test-only-not-empirical-validation",
+  "world": "two-metric compiler fixture",
+  "checks": [
+    {"id": "progress-construct", "outcome": "passed", "note": "Synthetic verified-progress value follows the fixture's declared ground truth."},
+    {"id": "progress-gaming", "outcome": "passed", "note": "Unverified output inflation does not increase the synthetic verified-progress value."},
+    {"id": "progress-reliability", "outcome": "passed", "note": "Repeated fixture evaluation is deterministic."},
+    {"id": "progress-normalization", "outcome": "passed", "note": "Identity normalization preserves the bounded synthetic value."},
+    {"id": "burden-construct", "outcome": "passed", "note": "Synthetic lifecycle cost includes logged work and delayed rework."},
+    {"id": "burden-gaming", "outcome": "passed", "note": "Suppressing review moves cost to delayed rework rather than erasing it."},
+    {"id": "burden-reliability", "outcome": "passed", "note": "Repeated fixture evaluation is deterministic."},
+    {"id": "burden-normalization", "outcome": "passed", "note": "Identity normalization preserves the bounded synthetic value."}
+  ],
+  "prohibited_claims": [
+    "real-world construct validation",
+    "empirical science-policy evidence",
+    "production metric promotion"
+  ]
+}

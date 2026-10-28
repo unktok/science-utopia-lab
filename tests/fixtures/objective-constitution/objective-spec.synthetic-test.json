@@ -1,0 +1,135 @@
+{
+  "schema": "scienceutopia.objective-spec.v1",
+  "id": "synthetic-public-science-stewardship",
+  "version": "1.0.0",
+  "status": "prospective-future-campaign",
+  "scope": "Synthetic compiler fixture balancing verified progress and lifecycle process burden; not a proposed or validated policy.",
+  "governance": {
+    "active_campaign_effect": "none",
+    "universal_objective_claim": "none",
+    "decision_authority": "synthetic fixture assembly",
+    "mandate": "Exercise explicit normative fields and deterministic compilation only.",
+    "amendment_process": "Replace this fixture through reviewed version control; never mutate a compiled campaign in place.",
+    "review_date": "2027-01-31",
+    "public_reason": "Demonstrate that weights and affected parties remain visible rather than appearing as natural scientific constants."
+  },
+  "stakeholders": [
+    {
+      "id": "early-career-researchers",
+      "role": "worker",
+      "standing": "They perform and bear the opportunity cost of research and evaluation work.",
+      "interests": ["meaningful scientific work", "sustainable workload", "future capability"],
+      "possible_burdens": ["concentrated review labor", "career delay", "metric gaming pressure"],
+      "voice_and_authority": "Synthetic fixture records consultation and amendment rights but grants no real authority."
+    },
+    {
+      "id": "institutions",
+      "role": "funder",
+      "standing": "They steward synthetic public resources and infrastructure.",
+      "interests": ["verified progress", "capacity renewal", "resource accountability"],
+      "possible_burdens": ["maintenance cost", "verification cost", "coordination cost"],
+      "voice_and_authority": "Synthetic budget-setting role subject to declared review."
+    },
+    {
+      "id": "affected-public",
+      "role": "affected-non-user",
+      "standing": "They may bear consequences without directly producing or using research.",
+      "interests": ["reliable knowledge", "visible externalities", "correctable decisions"],
+      "possible_burdens": ["missed errors", "delayed benefit", "externalized risk"],
+      "voice_and_authority": "Synthetic reason-demanding and amendment standing; no claim-truth vote."
+    }
+  ],
+  "constructs": [
+    {
+      "id": "verification-weighted-epistemic-progress",
+      "definition": "Synthetic decision-relevant uncertainty reduction attached to verified claims.",
+      "normative_reason": "The fixture values reliable learning rather than raw output volume.",
+      "not_equivalent_to": ["publication count", "national advantage", "social welfare"],
+      "stakeholder_refs": ["early-career-researchers", "institutions", "affected-public"]
+    },
+    {
+      "id": "distributed-process-burden",
+      "definition": "Synthetic immediate and delayed process cost distributed across roles and affected groups.",
+      "normative_reason": "Progress should not make evaluation labor or delayed failure cost invisible.",
+      "not_equivalent_to": ["review action count", "researcher wellbeing", "total public cost"],
+      "stakeholder_refs": ["early-career-researchers", "institutions", "affected-public"]
+    }
+  ],
+  "time_horizon": {
+    "decision_horizon": "two synthetic campaign phases",
+    "outcome_windows": ["near-term", "multi-cycle"],
+    "discounting": "No cross-window scalar discount; both windows remain reported.",
+    "lag_policy": "Delayed rework stays attached to the action that generated it.",
+    "terminal_value_policy": "Unresolved claims and remaining capability are reported, not assigned zero value."
+  },
+  "distribution": {
+    "unit": "synthetic actor-group by institutional role",
+    "groups": ["early-career-researchers", "institutions", "affected-public"],
+    "aggregation": "Optimizer receives only validated aggregate components; group incidence remains a mandatory shadow report.",
+    "incidence_reporting": "Report benefit and burden by all declared groups and preserve the aggregate-to-group mapping.",
+    "unknown_group_policy": "Unknown incidence remains unknown and triggers review; it is not silently assigned to the mean."
+  },
+  "uncertainty": {
+    "aleatory": "Seed variation is aggregated as mean plus population dispersion.",
+    "epistemic": "Synthetic validation does not establish transfer to real scientific institutions.",
+    "risk_aggregation": "mean_plus_population_sd",
+    "dispersion_weight": 0.25,
+    "minimum_valid_runs": 3,
+    "missingness_policy": "reject-unmeasured-run-no-imputation-penalty"
+  },
+  "phases": [
+    {"id": "explore", "start_step": 0, "end_step": 3, "reason": "Give verified progress and lifecycle burden equal declared standing during initial exploration."},
+    {"id": "consolidate", "start_step": 3, "end_step": null, "reason": "Increase the declared weight on verified progress while retaining a positive burden tradeoff."}
+  ],
+  "components": [
+    {
+      "id": "verified-progress",
+      "construct_ref": "verification-weighted-epistemic-progress",
+      "metric_card_ref": {"id": "synthetic-verified-progress", "version": "1.0.0", "sha256": "5c673d3b33dfd8f156357c8034e5ddf57e8249d24e6446c7a96846b8cae6fbbc"},
+      "weights": [{"phase_ref": "explore", "value": 0.5}, {"phase_ref": "consolidate", "value": 0.75}],
+      "stakeholder_refs": ["early-career-researchers", "institutions", "affected-public"],
+      "distribution_interpretation": "Aggregate progress is accompanied by group incidence; no group floor is compiled as a veto.",
+      "time_interpretation": "Both near-term verification and multi-cycle decision update remain in the metric card's scope.",
+      "rationale": "The synthetic policy explicitly values verified rather than merely produced claims."
+    },
+    {
+      "id": "lifecycle-burden",
+      "construct_ref": "distributed-process-burden",
+      "metric_card_ref": {"id": "synthetic-lifecycle-burden", "version": "1.0.0", "sha256": "39b2f284da942d19b2f5d0fb9ca1ee2be5a5863f59017ae07d8e33c0247ed08f"},
+      "weights": [{"phase_ref": "explore", "value": 0.5}, {"phase_ref": "consolidate", "value": 0.25}],
+      "stakeholder_refs": ["early-career-researchers", "institutions", "affected-public"],
+      "distribution_interpretation": "Lifecycle cost is not allowed to disappear by moving work across groups or time.",
+      "time_interpretation": "Immediate work and delayed rework are measured within the declared windows.",
+      "rationale": "The synthetic policy makes the opportunity cost of verification explicit without turning it into a hard constraint."
+    }
+  ],
+  "tradeoffs": [
+    {
+      "id": "progress-versus-lifecycle-burden",
+      "component_refs": ["verified-progress", "lifecycle-burden"],
+      "reason": "Verification can require labor, while minimizing visible labor can suppress verification; the selected exchange changes by declared phase.",
+      "treatment": "explicit-weighted-tradeoff",
+      "not_a_veto": true
+    }
+  ],
+  "hard_constraints": [],
+  "goodhart_audit": {
+    "known_failure_modes": ["inflate unverified output", "suppress review and move cost into delayed rework", "shift burdens outside declared groups", "optimize the phase boundary"],
+    "adversarial_evidence_refs": ["progress-gaming", "burden-gaming"],
+    "shadow_monitors": ["unverified output count", "burden incidence by group", "delayed rework", "metric-to-construct divergence"],
+    "review_triggers": ["adversarial test failure", "distribution support loss", "new unmeasured burden route", "normalization drift"],
+    "expiry_policy": "Metric promotion expires before any new campaign unless evidence and weights are reapproved."
+  },
+  "measurement_evidence_policy": {
+    "minimum_status": "validated-for-optimization",
+    "required_scopes": ["construct-validity", "adversarial-validity", "measurement-reliability"],
+    "independent_review": true,
+    "promotion_boundary": "future-campaign-only"
+  },
+  "prohibited_claims": [
+    "best real-world science policy",
+    "empirically validated stakeholder weights",
+    "universal scientific value",
+    "current campaign result"
+  ]
+}

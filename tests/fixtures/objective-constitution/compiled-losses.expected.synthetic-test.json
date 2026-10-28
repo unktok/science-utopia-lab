@@ -1,0 +1,30 @@
+{
+  "schema": "scienceutopia.synthetic-objective-compilation-expectation.v1",
+  "status": "synthetic-test-only",
+  "objective_spec_sha256": "2578cf41c81f9ea78edc4db96639a4e8d65200bcc5335f64fe6c3c9950b828f2",
+  "metric_registry_sha256": "326895623709ba99f53bd819b6bf6693fa16b7d3e3a0a508b9bd597377359498",
+  "phases": [
+    {
+      "id": "explore",
+      "loss_spec_sha256": "671a2fc3e6e2b9d2498ea2753b32dff2c24c4a419af81cac1fc1058ba071248b",
+      "intercept": 0.0,
+      "coefficients": {
+        "synthetic-verified-progress-index": -0.5,
+        "synthetic-review-lifecycle-cost": 0.5
+      }
+    },
+    {
+      "id": "consolidate",
+      "loss_spec_sha256": "4dce917b40d23ccb38c426fefeea9016d5558a5265d08e40bf939e9e76cbb27f",
+      "intercept": 0.0,
+      "coefficients": {
+        "synthetic-verified-progress-index": -0.75,
+        "synthetic-review-lifecycle-cost": 0.25
+      }
+    }
+  ],
+  "prohibited_claims": [
+    "real-world policy validation",
+    "production metric promotion"
+  ]
+}

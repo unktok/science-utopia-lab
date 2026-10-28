@@ -1,0 +1,63 @@
+{
+  "schema": "scienceutopia.validated-metric-card-registry.v1",
+  "id": "synthetic-objective-compiler-metrics",
+  "version": "1.0.0",
+  "status": "prospective-synthetic-test-only",
+  "active_campaign_effect": "none",
+  "cards": [
+    {
+      "id": "synthetic-verified-progress",
+      "version": "1.0.0",
+      "construct_id": "verification-weighted-epistemic-progress",
+      "status": "validated-for-optimization",
+      "metric_id": "synthetic-verified-progress-index",
+      "slice_id": null,
+      "preferred_direction": "maximize",
+      "normalization": {
+        "formula": "offset_plus_multiplier_times_raw",
+        "offset": 0.0,
+        "multiplier": 1.0,
+        "unit": "synthetic bounded index",
+        "evidence_ref": "progress-normalization"
+      },
+      "optimization_role": "future-campaign-input",
+      "evidence_refs": ["progress-construct", "progress-gaming", "progress-reliability", "progress-normalization"],
+      "goodhart_test_refs": ["progress-gaming"],
+      "distribution_support": ["early-career-researchers", "institutions", "affected-public"],
+      "time_support": ["near-term", "multi-cycle"],
+      "limitations": ["synthetic fixture only", "does not validate semantic claim scoring in real science"]
+    },
+    {
+      "id": "synthetic-lifecycle-burden",
+      "version": "1.0.0",
+      "construct_id": "distributed-process-burden",
+      "status": "validated-for-optimization",
+      "metric_id": "synthetic-review-lifecycle-cost",
+      "slice_id": null,
+      "preferred_direction": "minimize",
+      "normalization": {
+        "formula": "offset_plus_multiplier_times_raw",
+        "offset": 0.0,
+        "multiplier": 1.0,
+        "unit": "synthetic normalized cost",
+        "evidence_ref": "burden-normalization"
+      },
+      "optimization_role": "future-campaign-input",
+      "evidence_refs": ["burden-construct", "burden-gaming", "burden-reliability", "burden-normalization"],
+      "goodhart_test_refs": ["burden-gaming"],
+      "distribution_support": ["early-career-researchers", "institutions", "affected-public"],
+      "time_support": ["near-term", "multi-cycle"],
+      "limitations": ["synthetic fixture only", "does not validate real labor or downstream harm measurement"]
+    }
+  ],
+  "evidence": [
+    {"id": "progress-construct", "scope": "construct-validity", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Synthetic progress follows declared fixture ground truth."},
+    {"id": "progress-gaming", "scope": "adversarial-validity", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Synthetic unverified output inflation is detected."},
+    {"id": "progress-reliability", "scope": "measurement-reliability", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Synthetic progress is deterministic."},
+    {"id": "progress-normalization", "scope": "normalization", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Identity normalization is valid on the synthetic range."},
+    {"id": "burden-construct", "scope": "construct-validity", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Synthetic lifecycle cost includes immediate and delayed work."},
+    {"id": "burden-gaming", "scope": "adversarial-validity", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Synthetic review suppression moves rather than erases cost."},
+    {"id": "burden-reliability", "scope": "measurement-reliability", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Synthetic lifecycle cost is deterministic."},
+    {"id": "burden-normalization", "scope": "normalization", "status": "passed-synthetic-fixture", "independent_review": true, "artifact": "tests/fixtures/objective-constitution/measurement-evidence.synthetic-test.json", "sha256": "8ae930a0d4b18c4a7d7628a1e42f2d67f3c8f44c7f187533d506c7b5f7645f40", "claim": "Identity normalization is valid on the synthetic range."}
+  ]
+}

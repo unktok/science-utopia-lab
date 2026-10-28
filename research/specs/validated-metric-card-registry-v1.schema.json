@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/validated-metric-card-registry-v1.schema.json",
+  "title": "ScienceUtopia Validated Metric Card Registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "version", "status", "active_campaign_effect", "cards", "evidence"],
+  "properties": {
+    "schema": {"const": "scienceutopia.validated-metric-card-registry.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"enum": ["prospective-validation-registry", "prospective-synthetic-test-only"]},
+    "active_campaign_effect": {"const": "none"},
+    "cards": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/card"}},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}}
+  },
+  "$defs": {
+    "strings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "card": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "version", "construct_id", "status", "metric_id", "slice_id", "preferred_direction", "normalization", "optimization_role", "evidence_refs", "goodhart_test_refs", "distribution_support", "time_support", "limitations"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "construct_id": {"type": "string", "minLength": 1},
+        "status": {"enum": ["validated-for-optimization", "report-only", "retired"]},
+        "metric_id": {"type": "string", "minLength": 1},
+        "slice_id": {"type": ["string", "null"]},
+        "preferred_direction": {"enum": ["maximize", "minimize"]},
+        "normalization": {"type": "object", "additionalProperties": false, "required": ["formula", "offset", "multiplier", "unit", "evidence_ref"], "properties": {"formula": {"const": "offset_plus_multiplier_times_raw"}, "offset": {"type": "number"}, "multiplier": {"type": "number", "exclusiveMinimum": 0}, "unit": {"type": "string", "minLength": 1}, "evidence_ref": {"type": "string", "minLength": 1}}},
+        "optimization_role": {"const": "future-campaign-input"},
+        "evidence_refs": {"$ref": "#/$defs/strings"},
+        "goodhart_test_refs": {"$ref": "#/$defs/strings"},
+        "distribution_support": {"$ref": "#/$defs/strings"},
+        "time_support": {"$ref": "#/$defs/strings"},
+        "limitations": {"$ref": "#/$defs/strings"}
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "scope", "status", "independent_review", "artifact", "sha256", "claim"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "scope": {"enum": ["construct-validity", "adversarial-validity", "measurement-reliability", "distributional-validity", "temporal-validity", "normalization"]},
+        "status": {"enum": ["passed", "passed-synthetic-fixture"]},
+        "independent_review": {"const": true},
+        "artifact": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "claim": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
