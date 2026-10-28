@@ -166,6 +166,29 @@
               <div id="graph-lineage" class="graph-lineage" aria-label="Canonical event lineage"></div>
               <aside class="graph-missing"><h3>MISSING / NOT OBSERVED</h3><ul id="graph-missing"></ul></aside>
             </section>
+            <section id="optimizer-observatory" class="optimizer-observatory" aria-labelledby="observatory-heading" data-source="verified" hidden>
+              <header class="optimizer-observatory__header">
+                <div><span id="observatory-truth">VERIFIED SNAPSHOT · READ ONLY</span><h2 id="observatory-heading">OPTIMIZER OBSERVATORY</h2><small id="observatory-observed">LOADING PROVENANCE</small></div>
+                <button id="observatory-close" type="button" aria-label="Close optimizer observatory">×</button>
+              </header>
+              <p class="optimizer-observatory__boundary"><strong>STATUS / REPORT / PROVENANCE ONLY</strong> Unexported scores are NOT OBSERVED. Unfrozen winners remain NOT FROZEN. <em>PRESENTATION-ONLY</em> district, facilities, routes, motion, colour and story labels.</p>
+              <div id="observatory-loading" class="observatory-loading" role="status">VERIFYING OPTIMIZATION SNAPSHOT…</div>
+              <nav id="observatory-arm-tabs" class="observatory-arm-tabs" aria-label="LossSpec arms"></nav>
+              <div id="observatory-relation" class="observatory-relation"></div>
+              <div class="observatory-city" aria-label="LossSpec to system-design optimization flow">
+                <section id="observatory-metric" class="observatory-station observatory-metric"></section>
+                <i class="observatory-route" aria-hidden="true">OBJECTIVE</i>
+                <section class="observatory-station observatory-foundry"><span>SYSTEM DESIGN FOUNDRY</span><div id="observatory-designs" class="observatory-designs"></div></section>
+                <i class="observatory-route" aria-hidden="true">RUNS</i>
+                <section class="observatory-station observatory-run-yard"><span>SEED RUN YARD</span><div id="observatory-seeds" class="observatory-seeds"></div></section>
+                <i class="observatory-route" aria-hidden="true">SCORE</i>
+                <section id="observatory-score" class="observatory-station observatory-score"></section>
+                <i class="observatory-route" aria-hidden="true">FREEZE</i>
+                <section id="observatory-winner" class="observatory-station observatory-winner"></section>
+              </div>
+              <p id="observatory-report" class="observatory-report">REPORT LOCKED</p>
+              <dl id="observatory-provenance" class="observatory-provenance"></dl>
+            </section>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
               <span data-truth="derived">DERIVED</span>
@@ -174,7 +197,7 @@
             </div>
             <span class="minimap-frame" aria-hidden="true">MAP / LOD0</span>
           </div>
-          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, D to open a researcher dossier, G to open the typed evidence graph, and Escape to close open panels. Researcher, artifact, and institution nodes support drill-through.</p>
+          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, D to open a researcher dossier, G to open the typed evidence graph, O to open the optimizer observatory, and Escape to close open panels. Researcher, artifact, and institution nodes support drill-through.</p>
 
           <section id="world-controls" class="transport" aria-label="Replay transport">
             <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
@@ -229,6 +252,7 @@
           <button id="interior-deck-toggle" type="button" aria-label="Toggle presentation-only institution interior deck" aria-pressed="false">INTERIOR DECK: OFF</button>
           <button id="dossier-toggle" type="button" aria-label="Open verified researcher dossier" aria-pressed="false">DOSSIER: OFF</button>
           <button id="graph-toggle" type="button" aria-label="Open verified collaboration evidence graph" aria-pressed="false">EVIDENCE GRAPH: OFF</button>
+          <button id="observatory-toggle" type="button" aria-label="Open optimizer observatory" aria-pressed="false">OBSERVATORY: OFF</button>
           <button id="interior-ambient-toggle" type="button" aria-label="Toggle non-evidence cosmetic interior ambience" aria-pressed="true">COSMETIC: ON</button>
           <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>
           <button id="contrast-toggle" type="button" aria-pressed="false">HIGH CONTRAST</button>

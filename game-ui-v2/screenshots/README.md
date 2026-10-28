@@ -1,5 +1,22 @@
 # Deterministic visual QA
 
+## Optimizer Observatory v1
+
+These `1440x1050` reduced-motion captures embed the result-blind optimization
+flow inside the verified city. The verified capture reads the timestamped,
+commit-pinned mission snapshot. The second capture deliberately substitutes
+the separate UI-test fixture and keeps `SYNTHETIC DEMO FIXTURE` visible.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-optimizer-observatory-verified.png` | `3cb506556f1e9e8d7096db867126931e51c9cb528fab34bc417ca579909e29e8` |
+| `noctiluca-optimizer-observatory-synthetic.png` | `aab0d3d7c930a235d6d7bd4680715efbd3c91ad66b6fbabf39d88ee317a58892` |
+
+Each capture was produced twice with separate empty Chrome profiles and was
+byte-identical. Both keep every score `NOT OBSERVED`, winner `NOT FROZEN`, and
+report `LOCKED`. District layout, station silhouette, packet routes/motion,
+colour and narrative labels are `PRESENTATION-ONLY`.
+
 ## Verified collaboration / evidence navigation v1
 
 These `1440x1050` reduced-motion captures open the typed graph over the

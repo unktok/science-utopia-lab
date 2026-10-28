@@ -31,6 +31,8 @@ const captures = {
   "noctiluca-researcher-dossier-author-seed521-cursor-47000.png": "8f799f72a92d0b460f2583f4d8c4e7c11fc3b3c5200b6ce5a060f0ba2f915824",
   "noctiluca-evidence-graph-artifact-seed521-cursor-47000.png": "587064a7f46b8207b50ab7b3ac3bc5ef39010105c15a9132af24e4dd1f3d9485",
   "noctiluca-evidence-graph-funding-seed521-cursor-47000.png": "00cb4f7ab85131b305880bdd63752ea94d001389150e6d5a2b6e6f47aeebf6c5",
+  "noctiluca-optimizer-observatory-verified.png": "3cb506556f1e9e8d7096db867126931e51c9cb528fab34bc417ca579909e29e8",
+  "noctiluca-optimizer-observatory-synthetic.png": "aab0d3d7c930a235d6d7bd4680715efbd3c91ad66b6fbabf39d88ee317a58892",
 };
 
 describe("deterministic visual review artifacts", () => {

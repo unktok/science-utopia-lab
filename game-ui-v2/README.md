@@ -151,6 +151,30 @@ nodes drill back into dossiers. See
 - [artifact authorship/reviewer graph](screenshots/noctiluca-evidence-graph-artifact-seed521-cursor-47000.png)
 - [researcher funding-activity graph](screenshots/noctiluca-evidence-graph-funding-seed521-cursor-47000.png)
 
+## Optimizer Observatory
+
+Press `O` to open the optimization-to-city bridge. It verifies the existing
+read-only mission snapshot, then renders each LossSpec arm as a conditioning
+gate feeding system-design candidates, seed-run bays, a score array and a
+winner-freeze vault. The status adapter exports no objective values, so score
+cells remain `NOT OBSERVED`; the winner and report remain `NOT FROZEN` and
+`LOCKED`. Snapshot time, source commit and provenance hashes stay visible.
+
+```text
+http://localhost:4173/?replay=campaign&motion=reduced&cursor=47000&observatory=on&loss=1
+http://localhost:4173/?replay=campaign&motion=reduced&cursor=47000&observatory=synthetic&loss=2
+```
+
+The second URL is a conspicuously labelled synthetic UI fixture. Changing the
+LossSpec rebinds the candidate/run rail and explains that system design is the
+optimized variable. Because this snapshot's three arms still share their
+initial candidate identities, cross-arm design divergence is truthfully shown
+as `NOT OBSERVED`, not implied by the visual layout. See
+`research/tracks/game-ui-optimizer-observatory-v1.md`.
+
+- [verified result-blind observatory](screenshots/noctiluca-optimizer-observatory-verified.png)
+- [synthetic status-coverage observatory](screenshots/noctiluca-optimizer-observatory-synthetic.png)
+
 ## Deterministic review scene
 
 The review URLs fix replay time and motion state:

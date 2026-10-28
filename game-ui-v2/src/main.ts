@@ -5,6 +5,7 @@ import { agentStateAtCue, buildEvidenceQuayProjection, cueAtCursor } from "./evi
 import { webCanonicalHash } from "./hash";
 import { buildInstitutionalInteriorProjection, interiorAtCursor, type InteriorPose } from "./institutionInterior";
 import { buildResearcherLifeCourseProjection, dossierAtCursor } from "./researcherLifeCourse";
+import { installOptimizerObservatory } from "./optimizerObservatoryView";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
 import { installArcologyRail } from "./arcologyNav";
@@ -767,6 +768,7 @@ async function boot(): Promise<void> {
       const institutionInteriors = installInstitutionInteriors(replay);
       const researcherDossier = installResearcherDossier(replay);
       const collaborationGraph = installCollaborationGraph(replay);
+      installOptimizerObservatory();
       installControls(replay, scene, evidenceQuay, institutionInteriors, researcherDossier, collaborationGraph);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
