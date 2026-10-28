@@ -101,9 +101,49 @@
               <div class="interior-tube" aria-hidden="true"><span>PNEUMATIC KNOWLEDGE GRID</span><i id="interior-packet" data-packet="none"></i></div>
               <div class="institution-interiors__facts" role="status" aria-live="polite">
                 <div><span id="interior-fact-status">NO EVENT</span><strong id="interior-fact-title">Awaiting canonical event</strong><small id="interior-fact-state">AUTHORITATIVE FRAME —</small></div>
+                <button id="interior-fact-researcher" type="button" disabled>OPEN RESEARCHER</button>
                 <button id="interior-fact-event" type="button" disabled>OPEN EVIDENCE</button>
               </div>
               <p id="interior-truth-boundary" class="institution-interiors__boundary"><strong>AUTHORITATIVE:</strong> event/frame readout only. <strong>PRESENTATION-ONLY:</strong> all spatial staging.</p>
+            </section>
+            <section id="researcher-dossier" class="researcher-dossier" aria-labelledby="dossier-heading" hidden>
+              <header class="researcher-dossier__header">
+                <div class="dossier-avatar" aria-hidden="true"><i id="dossier-face"></i></div>
+                <div>
+                  <span>VERIFIED RESEARCHER DOSSIER // LIFE-COURSE TERMINAL</span>
+                  <h2 id="dossier-heading">Select a researcher</h2>
+                  <small id="dossier-identity">CANONICAL ID —</small>
+                </div>
+                <button id="dossier-close" type="button" aria-label="Close researcher dossier">×</button>
+              </header>
+              <p id="dossier-boundary" class="researcher-dossier__boundary"><strong>AUTHORITATIVE PROJECTION</strong> Events, topics, balances and active state. <em>PRESENTATION-ONLY</em> avatar expression, relationship lines, layout and narrative styling.</p>
+              <div class="researcher-dossier__status" role="status" aria-live="polite">
+                <div><span>CURSOR FRAME</span><strong id="dossier-frame">—</strong></div>
+                <div><span>ACTIVE STATE</span><strong id="dossier-active">NOT OBSERVED</strong></div>
+                <div><span>RESOURCE</span><strong id="dossier-balance">NOT OBSERVED</strong></div>
+                <div><span>INSTITUTION</span><strong id="dossier-institution">NOT OBSERVED</strong></div>
+              </div>
+              <div class="researcher-dossier__grid">
+                <section class="dossier-panel dossier-panel--timeline" aria-labelledby="dossier-timeline-heading">
+                  <header><h3 id="dossier-timeline-heading">ANNUAL EVENT TIMELINE</h3><span>CANONICAL</span></header>
+                  <div id="dossier-timeline" class="dossier-timeline"></div>
+                </section>
+                <section class="dossier-panel dossier-panel--direction" aria-labelledby="dossier-direction-heading">
+                  <header><h3 id="dossier-direction-heading">RESEARCH DIRECTION</h3><span>AUTHORED TOPICS ONLY</span></header>
+                  <div id="dossier-directions" class="dossier-directions"></div>
+                  <h4>ACTIVITY LEDGER</h4><div id="dossier-activities" class="dossier-activities"></div>
+                </section>
+                <section class="dossier-panel dossier-panel--resources" aria-labelledby="dossier-resource-heading">
+                  <header><h3 id="dossier-resource-heading">RESOURCE TRACE</h3><span>FRAME STATE</span></header>
+                  <div id="dossier-resource-chart" class="dossier-resource-chart"></div>
+                </section>
+                <section class="dossier-panel dossier-panel--relations" aria-labelledby="dossier-relations-heading">
+                  <header><h3 id="dossier-relations-heading">ARTIFACT-MEDIATED ACTIVITY</h3><span>PRESENTATION LINES</span></header>
+                  <div id="dossier-relationship-map" class="dossier-relationship-map"></div>
+                  <div id="dossier-relationship-evidence" class="dossier-relationship-evidence"></div>
+                </section>
+              </div>
+              <aside class="dossier-missing" aria-labelledby="dossier-missing-heading"><h3 id="dossier-missing-heading">OBSERVATION LIMITS / MISSINGNESS</h3><ul id="dossier-missing"></ul></aside>
             </section>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
@@ -113,7 +153,7 @@
             </div>
             <span class="minimap-frame" aria-hidden="true">MAP / LOD0</span>
           </div>
-          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, and Escape to close the inspector. Every scientific flow can be opened in the evidence inspector.</p>
+          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, I to toggle the institution interior deck, D to open a researcher dossier, and Escape to close open panels. Researcher sprites and interior actors open their authoritative life-course dossier.</p>
 
           <section id="world-controls" class="transport" aria-label="Replay transport">
             <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
@@ -166,6 +206,7 @@
         <div class="view-controls" aria-label="View options">
           <button id="interior-toggle" type="button" aria-label="Toggle evidence-linked institution interiors" aria-pressed="true">INTERIORS: ON</button>
           <button id="interior-deck-toggle" type="button" aria-label="Toggle presentation-only institution interior deck" aria-pressed="false">INTERIOR DECK: OFF</button>
+          <button id="dossier-toggle" type="button" aria-label="Open verified researcher dossier" aria-pressed="false">DOSSIER: OFF</button>
           <button id="interior-ambient-toggle" type="button" aria-label="Toggle non-evidence cosmetic interior ambience" aria-pressed="true">COSMETIC: ON</button>
           <button id="follow-toggle" type="button" aria-pressed="false">FOLLOW: OFF</button>
           <button id="contrast-toggle" type="button" aria-pressed="false">HIGH CONTRAST</button>

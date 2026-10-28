@@ -1,5 +1,26 @@
 # Deterministic visual QA
 
+## Verified researcher identity and life course v1
+
+These `1440x1050` reduced-motion captures open a researcher dossier directly
+from the verified city. The terminal reads event history, authored-paper
+topics, activity counts, resource states, active state, and artifact-mediated
+peer evidence from canonical events and exact authoritative frames. Node
+layout, relationship lines, avatar expression, and narrative styling are
+continuously marked `PRESENTATION-ONLY`. The missingness rail states that the
+loaded run ends at Year 1 and contains no explicit `researcher.exit` event.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-researcher-dossier-inactive-seed521-cursor-47000.png` | `253a7a2c85cf97e666fa0ada5f74105d4e71124ec91cdfeec166921863e0e5f2` |
+| `noctiluca-researcher-dossier-author-seed521-cursor-47000.png` | `8f799f72a92d0b460f2583f4d8c4e7c11fc3b3c5200b6ce5a060f0ba2f915824` |
+
+The first shows an authoritative inactive-at-frame state with a 50→7 resource
+trajectory and no authored topic evidence. The second shows an active author,
+canonical paper topics, resource trajectory, paper/review/funding activity,
+and three artifact-mediated peer events. Each capture was repeated from a
+separate empty Chrome profile and was byte-identical.
+
 ## Institutional life cutaway v1
 
 These `1440x1050` reduced-motion captures open the presentation-only

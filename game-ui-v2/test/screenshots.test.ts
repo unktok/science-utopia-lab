@@ -27,6 +27,8 @@ const captures = {
   "noctiluca-institution-interior-writing-seed521-cursor-6200.png": "386e32d44b3c94bbe99a5343f0ae0968e0eceb5386ccd0d5e5858f29e47368a6",
   "noctiluca-institution-interior-review-seed521-cursor-20200.png": "8a5c715a3dddaebd0b71b2cf4c02a75dc31a747f92fa860c413a2d7c42a5a236",
   "noctiluca-institution-interior-funding-seed521-cursor-36500.png": "b952e4e69f74fe08d1880de6de7bc68209d7e3461cc477031f11e73ab8e52d94",
+  "noctiluca-researcher-dossier-inactive-seed521-cursor-47000.png": "253a7a2c85cf97e666fa0ada5f74105d4e71124ec91cdfeec166921863e0e5f2",
+  "noctiluca-researcher-dossier-author-seed521-cursor-47000.png": "8f799f72a92d0b460f2583f4d8c4e7c11fc3b3c5200b6ce5a060f0ba2f915824",
 };
 
 describe("deterministic visual review artifacts", () => {

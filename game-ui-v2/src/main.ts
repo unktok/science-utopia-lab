@@ -3,6 +3,7 @@ import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
 import { agentStateAtCue, buildEvidenceQuayProjection, cueAtCursor } from "./evidenceQuay";
 import { webCanonicalHash } from "./hash";
 import { buildInstitutionalInteriorProjection, interiorAtCursor, type InteriorPose } from "./institutionInterior";
+import { buildResearcherLifeCourseProjection, dossierAtCursor } from "./researcherLifeCourse";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
 import { installArcologyRail } from "./arcologyNav";
@@ -127,6 +128,11 @@ interface InstitutionInteriorController {
   toggle(): void;
 }
 
+interface ResearcherDossierController {
+  setCursor(cursorMs: number): void;
+  toggle(): void;
+}
+
 function installEvidenceQuay(replay: ReplayV2): EvidenceQuayController {
   const quay = required<HTMLElement>("evidence-quay");
   const heading = required<HTMLHeadingElement>("quay-heading");
@@ -201,6 +207,7 @@ function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorContr
   const close = required<HTMLButtonElement>("interior-deck-close");
   const packet = required<HTMLElement>("interior-packet");
   const eventButton = required<HTMLButtonElement>("interior-fact-event");
+  const researcherButton = required<HTMLButtonElement>("interior-fact-researcher");
   const factStatus = required<HTMLElement>("interior-fact-status");
   const factTitle = required<HTMLElement>("interior-fact-title");
   const factState = required<HTMLElement>("interior-fact-state");
@@ -226,6 +233,10 @@ function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorContr
   eventButton.addEventListener("click", () => {
     const id = eventButton.dataset.eventId;
     if (id) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "event" } }));
+  });
+  researcherButton.addEventListener("click", () => {
+    const id = researcherButton.dataset.researcherId;
+    if (id) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "entity" } }));
   });
   toggle.addEventListener("click", () => setOpen(!open));
   close.addEventListener("click", () => {
@@ -260,6 +271,118 @@ function installInstitutionInteriors(replay: ReplayV2): InstitutionInteriorContr
       factState.textContent = `AUTHORITATIVE FRAME ${evidence.frame.cursor}${balanceReadout ? ` · ${balanceReadout}` : ""}${artifactReadout ? ` · ${artifactReadout}` : ""}`;
       eventButton.disabled = false;
       eventButton.dataset.eventId = evidence.event.id;
+      const primaryResearcher = Object.keys(evidence.actor_states)[0];
+      researcherButton.disabled = !primaryResearcher;
+      if (primaryResearcher) researcherButton.dataset.researcherId = primaryResearcher;
+      else researcherButton.removeAttribute("data-researcher-id");
+    },
+  };
+}
+
+function installResearcherDossier(replay: ReplayV2): ResearcherDossierController {
+  const panel = required<HTMLElement>("researcher-dossier");
+  const toggleButton = required<HTMLButtonElement>("dossier-toggle");
+  const closeButton = required<HTMLButtonElement>("dossier-close");
+  if (!replay.metadata.empirical) {
+    toggleButton.disabled = true;
+    toggleButton.title = "Verified commit-pinned campaign replay required";
+    return { setCursor: () => undefined, toggle: () => undefined };
+  }
+  const projection = buildResearcherLifeCourseProjection(replay);
+  const dossiers = new Map(projection.dossiers.map((dossier) => [dossier.researcher_id, dossier]));
+  const defaultDossier = projection.dossiers.find((dossier) => dossier.researcher_id.includes("_researcher_")) ?? projection.dossiers[0]!;
+  let selected = defaultDossier;
+  let cursorMs = 0;
+  let open = false;
+  const setOpen = (value: boolean): void => {
+    open = value;
+    panel.hidden = !value;
+    toggleButton.setAttribute("aria-pressed", String(value));
+    toggleButton.textContent = `DOSSIER: ${value ? "ON" : "OFF"}`;
+  };
+  const selectEvent = (id: string): void => {
+    const event = replay.canonical.events.find((candidate) => candidate.id === id);
+    if (!event) return;
+    window.dispatchEvent(new CustomEvent<number>("noctiluca:seek", { detail: event.logical_timestamp_ms }));
+    window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "event" } }));
+  };
+  const render = (): void => {
+    if (!open) return;
+    const state = dossierAtCursor(projection, selected, cursorMs);
+    const agent = state.agent_state;
+    const active = typeof agent?.active === "boolean" ? agent.active : undefined;
+    required<HTMLHeadingElement>("dossier-heading").textContent = selected.label;
+    required<HTMLElement>("dossier-identity").textContent = `CANONICAL ID ${selected.researcher_id}`;
+    required<HTMLElement>("dossier-frame").textContent = `${state.frame.cursor} · ${formatTime(state.frame.logical_timestamp_ms)}`;
+    const activeNode = required<HTMLElement>("dossier-active");
+    activeNode.textContent = active === undefined ? "NOT OBSERVED" : active ? "ACTIVE" : "INACTIVE AT FRAME";
+    activeNode.dataset.state = active === false ? "inactive" : "active";
+    required<HTMLElement>("dossier-face").dataset.state = active === false ? "inactive" : "active";
+    required<HTMLElement>("dossier-balance").textContent = typeof agent?.balance === "number" ? agent.balance.toFixed(1) : "NOT OBSERVED";
+    required<HTMLElement>("dossier-institution").textContent = typeof agent?.institution === "string" ? agent.institution : "NOT OBSERVED";
+
+    const byYear = new Map<number, typeof state.events>();
+    for (const event of state.events) byYear.set(event.event.year, [...(byYear.get(event.event.year) ?? []), event]);
+    const timeline = required<HTMLElement>("dossier-timeline");
+    timeline.innerHTML = byYear.size ? [...byYear.entries()].map(([year, events]) => `<section class="dossier-year"><strong>YEAR ${year}</strong><div class="dossier-year__events">${events.map(({ event, activity_kind: activityKind, canonical_label: label }) => `<button class="dossier-event" type="button" data-life-event="${escapeHtml(event.id)}" data-kind="${escapeHtml(activityKind)}"><time>${formatTime(event.logical_timestamp_ms)}</time><span>${escapeHtml(label)}</span></button>`).join("")}</div></section>`).join("") : "<p class=\"dossier-empty\">NO CANONICAL EVENTS OBSERVED AT THIS CURSOR</p>";
+    timeline.querySelectorAll<HTMLButtonElement>("[data-life-event]").forEach((button) => button.addEventListener("click", () => {
+      const id = button.dataset.lifeEvent;
+      if (id) selectEvent(id);
+    }));
+
+    const observedTopics = [...new Set(state.events.filter(({ event }) => event.kind === "paper.submitted").flatMap(({ event }) => Array.isArray(event.payload?.topics) ? event.payload.topics.filter((topic): topic is string => typeof topic === "string") : []))];
+    required<HTMLElement>("dossier-directions").innerHTML = observedTopics.length ? observedTopics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join("") : "<p class=\"dossier-empty\">NOT OBSERVED — NO AUTHORED-PAPER TOPICS AT THIS CURSOR</p>";
+    const activityKinds = ["paper", "review", "funding", "research", "reporting", "registration"] as const;
+    required<HTMLElement>("dossier-activities").innerHTML = activityKinds.map((kind) => `<div><span>${kind.toUpperCase()}</span><strong>${state.events.filter((event) => event.activity_kind === kind).length}</strong></div>`).join("");
+
+    const maximumBalance = Math.max(1, ...state.resource_points.map((point) => point.balance));
+    required<HTMLElement>("dossier-resource-chart").innerHTML = state.resource_points.length ? state.resource_points.map((point) => `<i class="resource-bar" data-active="${point.active}" style="--bar-height:${Math.max(6, Math.round(point.balance / maximumBalance * 100))}%" title="${escapeHtml(point.category)} · balance ${point.balance} · authoritative frame ${point.frame_cursor}"><span>${point.balance}</span></i>`).join("") : "<p class=\"dossier-empty\">NO NUMERIC RESOURCE STATE OBSERVED</p>";
+
+    const relationships = selected.relationships.filter((relationship) => relationship.logical_timestamp_ms <= cursorMs);
+    const peers = [...new Set(relationships.map((relationship) => relationship.peer_id))].slice(0, 3);
+    const map = required<HTMLElement>("dossier-relationship-map");
+    map.innerHTML = `<button class="relation-center" type="button" title="Current researcher">${escapeHtml(selected.researcher_id)}</button>${peers.map((peer, index) => `<i class="relation-line" data-position="${index}" aria-hidden="true"></i><button class="relation-peer" type="button" data-peer-id="${escapeHtml(peer)}" data-position="${index}">${escapeHtml(peer)}</button>`).join("")}${peers.length ? "" : "<p class=\"dossier-empty\">NO ARTIFACT-MEDIATED PEER EVENT OBSERVED</p>"}`;
+    map.querySelectorAll<HTMLButtonElement>("[data-peer-id]").forEach((button) => button.addEventListener("click", () => {
+      const peer = button.dataset.peerId;
+      const next = peer ? dossiers.get(peer) : undefined;
+      if (next) {
+        selected = next;
+        render();
+      }
+    }));
+    const evidence = required<HTMLElement>("dossier-relationship-evidence");
+    evidence.innerHTML = relationships.length ? relationships.map((relationship) => `<button type="button" data-relationship-event="${escapeHtml(relationship.event_id)}"><span>${escapeHtml(relationship.evidence_label)} · ${escapeHtml(relationship.peer_id)}</span><code>${escapeHtml(relationship.artifact_id.replace("https://arxiv.org/abs/", "arXiv:"))}</code></button>`).join("") : "";
+    evidence.querySelectorAll<HTMLButtonElement>("[data-relationship-event]").forEach((button) => button.addEventListener("click", () => {
+      const id = button.dataset.relationshipEvent;
+      if (id) selectEvent(id);
+    }));
+    required<HTMLUListElement>("dossier-missing").innerHTML = selected.missingness.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  };
+
+  toggleButton.addEventListener("click", () => {
+    setOpen(!open);
+    render();
+  });
+  closeButton.addEventListener("click", () => {
+    setOpen(false);
+    toggleButton.focus();
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && open) setOpen(false);
+  });
+  window.addEventListener("noctiluca:select", ((event: CustomEvent<SelectionDetail>) => {
+    if (event.detail.category !== "entity") return;
+    const dossier = dossiers.get(event.detail.id);
+    if (!dossier) return;
+    selected = dossier;
+    setOpen(true);
+    render();
+  }) as EventListener);
+  return {
+    toggle: () => toggleButton.click(),
+    setCursor(value: number): void {
+      cursorMs = value;
+      render();
     },
   };
 }
@@ -274,6 +397,10 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   window.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
   window.addEventListener("noctiluca:select", ((event: CustomEvent<SelectionDetail>) => {
     const { id, category } = event.detail;
+    if (category === "entity" && replay.canonical.entities.researchers.some((researcher) => researcher.id === id)) {
+      scene.select(id);
+      return;
+    }
     const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.choreography.workflow_nodes, ...replay.choreography.workstations, ...replay.ambient.actors];
     const record = category === "entity" ? entities.find((item) => item.id === id) : category === "flow" ? replay.choreography.flows.find((item) => item.id === id) : category === "epistemic" ? replay.choreography.epistemic_flows.find((item) => item.id === id) : category === "interior" ? replay.choreography.interior_activities.find((item) => item.id === id) : category === "action" ? replay.choreography.actions.find((item) => item.id === id) : replay.canonical.events.find((item) => item.id === id);
     if (!record) return;
@@ -294,7 +421,7 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   }) as EventListener);
 }
 
-function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController, institutionInteriors: InstitutionInteriorController): void {
+function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController, institutionInteriors: InstitutionInteriorController, researcherDossier: ResearcherDossierController): void {
   const timeline = required<HTMLInputElement>("timeline");
   const play = required<HTMLButtonElement>("play-toggle");
   const output = required<HTMLOutputElement>("cursor-output");
@@ -316,6 +443,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: E
     scene.setCursor(cursor);
     evidenceQuay.setCursor(cursor);
     institutionInteriors.setCursor(cursor);
+    researcherDossier.setCursor(cursor);
     chapterNav.querySelectorAll<HTMLButtonElement>("button[data-start]").forEach((button) => {
       const start = Number(button.dataset.start);
       const end = Number(button.dataset.end);
@@ -402,6 +530,9 @@ function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: E
     } else if (event.key.toLowerCase() === "i") {
       event.preventDefault();
       institutionInteriors.toggle();
+    } else if (event.key.toLowerCase() === "d") {
+      event.preventDefault();
+      researcherDossier.toggle();
     } else if (event.code === "Space") {
       event.preventDefault();
       play.click();
@@ -466,7 +597,8 @@ async function boot(): Promise<void> {
       installInspector(replay, scene);
       const evidenceQuay = installEvidenceQuay(replay);
       const institutionInteriors = installInstitutionInteriors(replay);
-      installControls(replay, scene, evidenceQuay, institutionInteriors);
+      const researcherDossier = installResearcherDossier(replay);
+      installControls(replay, scene, evidenceQuay, institutionInteriors, researcherDossier);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
         const category = replay.canonical.events.some((event) => event.id === selected)
