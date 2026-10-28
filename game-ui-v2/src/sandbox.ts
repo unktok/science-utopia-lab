@@ -1,4 +1,5 @@
 import { canonicalHash, stableStringify } from "./hash";
+import { installArcologyRail } from "./arcologyNav";
 import {
   initialSandboxState,
   materializeSystemSpec,
@@ -11,6 +12,8 @@ import {
 } from "./systemSandbox";
 import "./style.css";
 import "./sandbox.css";
+
+installArcologyRail("sandbox");
 
 const CONTRACT_URL = "/data/system-sandbox.contract.json";
 const required = <T extends Element>(id: string): T => {

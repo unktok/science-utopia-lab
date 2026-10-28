@@ -1,5 +1,19 @@
 # Deterministic visual QA
 
+## Research-arcology hub v1
+
+The presentation-only transit deck keeps all three destination truth
+boundaries visible at once without loading their scientific contracts. The
+first capture selects Evidence Quay (`VERIFIED REPLAY`); the second selects the
+System Foundry (`SYNTHETIC SANDBOX`). Both use a `1440x1050` viewport, forced
+reduced motion, and a 2000 ms virtual-time budget. Separate Chrome processes
+produced byte-identical repeats.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-arcology-hub.png` | `8b59639a5ee2c1553d40db99617808ac96986cc26ab59321a9b9aa9d6489beb1` |
+| `noctiluca-arcology-hub-system-foundry.png` | `2a7dc8db1aba35a94fc0338ed9c3ef7a5fecc91d7b7e526e3857c3042f45413c` |
+
 ## Optimization mission-control v1
 
 These `1440x1050` captures use forced reduced motion and a 2500 ms virtual-time

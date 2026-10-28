@@ -37,6 +37,25 @@ drive deterministic workstation effects: instrument readouts, manuscripts,
 review terminals, repository pages, funding ledgers, citation brackets, and
 policy broadcasts. No effect appears without an active choreography action.
 
+## Research arcology hub
+
+Open `hub.html` for the shared in-world transit deck. Three pixel-art district
+gates lead to the commit-pinned research city, the synthetic SystemSpec
+foundry, and the timestamped optimization mission-control screen. A shared
+truth rail remains visible after transit and labels both the intended
+destination and the actual active source (including synthetic replay/UI test
+query modes).
+
+```text
+http://localhost:4173/hub.html
+```
+
+The hub is deliberately presentation-only: it imports no replay, sandbox, or
+mission data contract and fetches no scientific data. Optional session state
+stores only the last visited district. Arrow keys select a gate, Enter opens
+it, and Alt+H/R/S/M provides direct transit. See
+`research/tracks/game-ui-research-arcology-hub-v1.md` for the boundary design.
+
 ## Run
 
 Requires a current Node.js and npm.

@@ -1,6 +1,9 @@
 import { parseMissionBundle, verifyMissionBundle, type MissionArm, type MissionBundle, type MissionCandidate } from "./missionContract";
+import { installArcologyRail } from "./arcologyNav";
 import "./style.css";
 import "./mission.css";
+
+installArcologyRail("mission");
 
 const required = <T extends HTMLElement>(id: string): T => {
   const element = document.getElementById(id);

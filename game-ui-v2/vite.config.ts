@@ -12,6 +12,7 @@ export default defineConfig({
         compare: resolve(__dirname, "compare.html"),
         sandbox: resolve(__dirname, "sandbox.html"),
         mission: resolve(__dirname, "mission.html"),
+        hub: resolve(__dirname, "hub.html"),
       },
     },
   },

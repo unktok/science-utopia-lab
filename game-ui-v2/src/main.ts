@@ -3,10 +3,12 @@ import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
 import { webCanonicalHash } from "./hash";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
+import { installArcologyRail } from "./arcologyNav";
 import type { CanonicalEvent, EpistemicFlowKind, EvidenceRecord, FlowType, ProjectionFrame, ReplayV2, RuntimePreferences, SelectionDetail, WorldEntity } from "./types";
 import "./style.css";
 
 const ASSET_PACK_URL = "/assets/noctiluca/asset-pack.json";
+installArcologyRail("replay");
 
 const required = <T extends HTMLElement>(id: string): T => {
   const node = document.getElementById(id);

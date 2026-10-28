@@ -20,6 +20,8 @@ const captures = {
   "noctiluca-system-sandbox-invalid-publication.png": "d0007a200d82ce38633dcb1bc7e9c21c87e1a51ca96aeb42768b47dce42bc047",
   "noctiluca-optimization-mission-verified.png": "de0f3bac244fad8229ffc7fdfc337947f8e1bdb5ce127b6bcc25ce93508d41e4",
   "noctiluca-optimization-mission-synthetic.png": "c32572a8c905cba705e69dfdfdbbb75546db0b006f759354051808e89c8e25eb",
+  "noctiluca-arcology-hub.png": "8b59639a5ee2c1553d40db99617808ac96986cc26ab59321a9b9aa9d6489beb1",
+  "noctiluca-arcology-hub-system-foundry.png": "2a7dc8db1aba35a94fc0338ed9c3ef7a5fecc91d7b7e526e3857c3042f45413c",
 };
 
 describe("deterministic visual review artifacts", () => {

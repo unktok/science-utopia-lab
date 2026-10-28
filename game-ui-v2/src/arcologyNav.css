@@ -1,0 +1,21 @@
+.arcology-rail { position: sticky; z-index: 120; top: 0; min-height: 33px; display: grid; grid-template-columns: auto minmax(210px,1fr) auto; align-items: stretch; border-bottom: 1px solid #2dd4ff88; color: #eee9d8; background: #050611f7; box-shadow: 0 4px 14px #000a; font: 7px/1.2 "SFMono-Regular",Menlo,monospace; letter-spacing: .08em; }
+.arcology-rail a { display: flex; align-items: center; gap: 6px; min-height: 32px; padding: 4px 9px; border-right: 1px solid #2a3560; color: #9ea8c2; text-decoration: none; }
+.arcology-rail a:hover,.arcology-rail a:focus-visible { z-index: 1; color: #070814; outline: 2px solid #eee9d8; outline-offset: -2px; background: #2dd4ff; }
+.arcology-rail__hub b { color: #39f5c8; font-size: 13px; }
+.arcology-rail__boundary { display: flex; align-items: center; padding: 4px 10px; color: #9ea8c2; }
+.arcology-rail__boundary::before { content: ""; width: 6px; height: 6px; margin-right: 7px; background: currentColor; box-shadow: 0 0 8px currentColor; }
+.arcology-rail [data-truth="verified"] { color: #39f5c8; }
+.arcology-rail [data-truth="synthetic"] { color: #ffc857; }
+.arcology-rail [data-truth="snapshot"] { color: #2dd4ff; }
+.arcology-rail [data-truth="transit"] { color: #a86bff; }
+.arcology-rail__modes { display: flex; }
+.arcology-rail__modes a { white-space: nowrap; }
+.arcology-rail__modes a[data-active="true"] { color: #070814; background: #eee9d8; }
+.arcology-rail kbd { display: inline-grid; width: 15px; height: 15px; place-items: center; border: 1px solid currentColor; color: inherit; background: transparent; font: inherit; }
+.arcology-transition { position: fixed; z-index: 1000; inset: 0; display: grid; place-content: center; justify-items: center; gap: 9px; color: #2dd4ff; background: #050611; clip-path: inset(50% 0); transition: clip-path .32s steps(8); }
+.arcology-transition[data-open="true"] { clip-path: inset(0); }
+.arcology-transition span { color: #9ea8c2; font-size: 8px; letter-spacing: .2em; }
+.arcology-transition strong { color: #eee9d8; font: 700 22px/1 "Avenir Next Condensed","Arial Narrow",sans-serif; letter-spacing: .08em; }
+.arcology-transition i { width: 160px; height: 6px; border: 1px solid #46527a; background: repeating-linear-gradient(90deg,#2dd4ff 0 14px,transparent 14px 18px); }
+@media (max-width: 800px) { .arcology-rail { position: relative; width: 100%; grid-template-columns: minmax(0,1fr); } .arcology-rail__boundary { order: -1; min-height: 27px; padding-right: 38px; border-bottom: 1px solid #2a3560; } .arcology-rail__modes { min-width: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); } .arcology-rail__modes a { min-width: 0; justify-content: center; padding-inline: 2px; font-size: 5px; text-align: center; white-space: normal; } .arcology-rail__modes a span { overflow-wrap: anywhere; } .arcology-rail__hub { position: absolute; right: 3px; top: 1px; border: 0 !important; } .arcology-rail__hub span { display: none; } }
+@media (prefers-reduced-motion: reduce) { .arcology-transition { transition: none; } }
