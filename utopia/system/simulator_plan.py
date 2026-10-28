@@ -19,12 +19,16 @@ from utopia.arguments import parse_arguments
 from .legacy import LEGACY_ADAPTER, LegacyCompilationError, compile_legacy_system
 from .model import MechanismFamily, MechanismSpec, SystemSpec
 from .production.communication import KNOWLEDGE_BROADCAST, KNOWLEDGE_DIGEST
+from .production.governance import (
+    EVENT_RESPONSIVE_GOVERNMENT,
+    THRESHOLD_GOVERNMENT,
+)
 from .validation import validate_system_spec
 
 
 PLAN_SCHEMA = "scienceutopia.system-spec-simulator-experiment-plan.v1"
 COMPILER_ID = "scienceutopia.system-spec-to-simulator-plan"
-COMPILER_REVISION = "1.1.0"
+COMPILER_REVISION = "1.2.0"
 SEAL_ALGORITHM = "sha256"
 NATIVE_COMMUNICATION_SOURCE = "native.communication.accepted-output-source-v1"
 NATIVE_COMMUNICATION_RECEIVER = "native.communication.researcher-receiver-v1"
@@ -287,6 +291,30 @@ _IMPLEMENTATIONS: Mapping[str, _ImplementationContract] = {
         MechanismFamily.RESEARCH,
         (("receiver_role", "--communication-receiver-role", "scalar"),),
     ),
+    EVENT_RESPONSIVE_GOVERNMENT: _ImplementationContract(
+        MechanismFamily.GOVERNANCE,
+        (
+            ("directives", "--government-directives-json", "canonical-json"),
+            (
+                "minimum_observations",
+                "--government-minimum-observations",
+                "scalar",
+            ),
+            ("repeat_interval", "--government-repeat-interval", "scalar"),
+        ),
+    ),
+    THRESHOLD_GOVERNMENT: _ImplementationContract(
+        MechanismFamily.GOVERNANCE,
+        (
+            ("directives", "--government-directives-json", "canonical-json"),
+            (
+                "minimum_observations",
+                "--government-minimum-observations",
+                "scalar",
+            ),
+            ("repeat_interval", "--government-repeat-interval", "scalar"),
+        ),
+    ),
 }
 
 _RUNTIME_PARAMETERS = {
@@ -325,12 +353,15 @@ def compile_system_spec_experiment_plan(
             f"SystemSpec is not bound to supported adapter {LEGACY_ADAPTER!r}"
         )
     try:
-        from utopia.communication.native import split_native_communication_system_spec
-        base_spec, native_config = split_native_communication_system_spec(spec)
+        base_spec, native_config, government_config = _split_native_overlays(spec)
         legacy = compile_legacy_system(base_spec, years=request.fidelity.num_years)
     except (LegacyCompilationError, ValueError) as error:
         raise SimulatorPlanCompilationError(str(error)) from error
-    cli_args = legacy.cli_args + _native_communication_args(native_config)
+    cli_args = (
+        legacy.cli_args
+        + _native_communication_args(native_config)
+        + _native_government_args(government_config)
+    )
     _validate_mapping_arguments(mappings, cli_args)
 
     runs = tuple(
@@ -417,12 +448,15 @@ def _compile_system_spec_experiment_plan_unvalidated(
     if spec.metadata.get("compiler") != LEGACY_ADAPTER:
         raise SimulatorPlanCompilationError("source SystemSpec adapter is unsupported")
     try:
-        from utopia.communication.native import split_native_communication_system_spec
-        base_spec, native_config = split_native_communication_system_spec(spec)
+        base_spec, native_config, government_config = _split_native_overlays(spec)
         legacy = compile_legacy_system(base_spec, years=request.fidelity.num_years)
     except (LegacyCompilationError, ValueError) as error:
         raise SimulatorPlanCompilationError(str(error)) from error
-    cli_args = legacy.cli_args + _native_communication_args(native_config)
+    cli_args = (
+        legacy.cli_args
+        + _native_communication_args(native_config)
+        + _native_government_args(government_config)
+    )
     _validate_mapping_arguments(mappings, cli_args)
     runs = tuple(
         _compile_run(spec, request, cli_args, seed) for seed in request.seeds
@@ -523,6 +557,8 @@ def _validate_mapping_arguments(
                 )
             if binding.encoding == "repeat-per-year":
                 expected = ",".join(str(item) for item in binding.value)
+            elif binding.encoding == "canonical-json":
+                expected = _canonical_json(binding.value)
             else:
                 expected = str(binding.value)
             if argv[positions[0] + 1] != expected:
@@ -541,6 +577,53 @@ def _native_communication_args(config: Any) -> tuple[str, ...]:
         "--communication-receiver-role", config.receiver_role,
         "--communication-system-fingerprint", config.system_fingerprint,
     )
+
+
+def _native_government_args(config: Any) -> tuple[str, ...]:
+    if config is None:
+        return ()
+    return (
+        "--government-policy-mode", config.mode,
+        "--government-minimum-observations", str(config.minimum_observations),
+        "--government-repeat-interval", str(config.repeat_interval),
+        "--government-directives-json", _canonical_json(config.directives),
+        "--government-observation-sources", ",".join(config.observation_sources),
+        "--government-policy-edges", ",".join(
+            f"{target}:{latency}" for target, latency in config.policy_latencies
+        ),
+        "--government-system-fingerprint", config.system_fingerprint,
+    )
+
+
+def _split_native_overlays(spec: SystemSpec) -> tuple[SystemSpec, Any, Any]:
+    """Strip exact optional overlays in their declared outer-to-inner order."""
+
+    from utopia.communication.native import split_native_communication_system_spec
+    from utopia.government.native import split_native_government_system_spec
+
+    communication = spec.metadata.get("native_communication")
+    government = spec.metadata.get("native_government")
+    communication_outer = False
+    if isinstance(communication, Mapping) and isinstance(government, Mapping):
+        communication_outer = spec.system_id == (
+            f"{communication.get('base_system_id')}"
+            f"-native-communication-{communication.get('mode')}"
+        )
+    if communication_outer:
+        without_communication, communication_config = (
+            split_native_communication_system_spec(spec)
+        )
+        base, government_config = split_native_government_system_spec(
+            without_communication
+        )
+    else:
+        without_government, government_config = split_native_government_system_spec(
+            spec
+        )
+        base, communication_config = split_native_communication_system_spec(
+            without_government
+        )
+    return base, communication_config, government_config
 
 
 def _compile_run(

@@ -434,6 +434,17 @@ class Simulation:
             if native_communication_config is not None else None
         )
 
+        # Government is an independent, default-off control-plane mechanism.
+        from utopia.government.native import (
+            NativeGovernmentRuntime,
+            native_government_config_from_namespace,
+        )
+        native_government_config = native_government_config_from_namespace(self.args)
+        self.native_government = (
+            NativeGovernmentRuntime(native_government_config)
+            if native_government_config is not None else None
+        )
+
         # Create output directory
 
         # Initialize components
@@ -602,6 +613,9 @@ class Simulation:
         native_communication = getattr(self, 'native_communication', None)
         if native_communication is not None:
             contract['native_communication'] = native_communication.config.to_dict()
+        native_government = getattr(self, 'native_government', None)
+        if native_government is not None:
+            contract['native_government'] = native_government.config.to_dict()
         return json.loads(canonical_json(contract))
 
     def portable_safe_point(self):
@@ -3407,6 +3421,8 @@ class Simulation:
             logger.info(f"Year {year}: acceptance rate set to {rate:.3f} for all conferences "
                         f"(schedule override)")
 
+        self._apply_native_government_evaluation_policy(year_results)
+
         tiebreak_seed = (derive_seed(getattr(self.args, 'seed', 42), 'phase4_tiebreak', year)
                          if self.acceptance_tiebreak == 'seeded' else None)
         self.conference_system.make_all_decisions(tiebreak_seed=tiebreak_seed,
@@ -3506,6 +3522,15 @@ class Simulation:
             trace=self._funding_application_traces.get(year))
         winners = self._evaluate_funding_applications(year, applications, funding_agencies, year_results)
         funding_per_unit = self._allocate_university_funding(year, winners, active_papers)
+        native_government = getattr(self, 'native_government', None)
+        if native_government is not None:
+            government_results = year_results.setdefault('native_government', {})
+            government_results['funding_award_multiplier'] = (
+                native_government.funding_award_multiplier
+            )
+            active_funding = native_government.active_policy('funding')
+            if active_funding is not None:
+                government_results['funding_policy'] = active_funding
         self._record_funding_costs(year, cost_events, winners, funding_per_unit)
         trace = self._funding_application_traces.get(year)
         if trace is not None:
@@ -3912,6 +3937,10 @@ class Simulation:
             academic_funding_per_unit = int(
                 self.funding_tracker.get_funding_allocation_amount(year, 'university') / denominator)
 
+        native_government = getattr(self, 'native_government', None)
+        if native_government is not None:
+            academic_funding_per_unit *= native_government.funding_award_multiplier
+
         # Apply funding decisions to university researchers and update success history
         for program_id, winners_for_program in all_funding_winners_dict.items():
             for winner in winners_for_program:
@@ -4108,6 +4137,7 @@ class Simulation:
         self.portable_safe_point()
         # Year setup
         year_results = self._setup_year(year)
+        self._start_native_government_year(year, year_results)
 
         self.portable_safe_point()
         # Phase 0: Resubmissions (year 2+)
@@ -4160,6 +4190,10 @@ class Simulation:
         # accepted-output metadata and is independent of native citations.
         self._run_native_communication(year, year_results)
 
+        # Phase 9: government observes explicit mechanism summaries and issues
+        # versioned policies for future delayed delivery.
+        self._finish_native_government_year(year, year_results)
+
         # Collect exploration metrics (if enabled)
         self._collect_exploration_metrics(year)
 
@@ -4188,6 +4222,65 @@ class Simulation:
         events = self.native_communication.step(year, accepted)
         year_results['native_communication'] = self.native_communication.summary()
         year_results['native_communication']['events_emitted_this_year'] = len(events)
+        return events
+
+    def _start_native_government_year(self, year, year_results):
+        native_government = getattr(self, 'native_government', None)
+        if native_government is None:
+            return ()
+        events = native_government.start_year(year)
+        government_results = year_results.setdefault('native_government', {})
+        government_results['policy_events_applied_at_start'] = len(events)
+        government_results['active_policies'] = {
+            target: native_government.active_policy(target)
+            for target in ('evaluation', 'funding')
+            if native_government.active_policy(target) is not None
+        }
+        return events
+
+    def _apply_native_government_evaluation_policy(self, year_results):
+        native_government = getattr(self, 'native_government', None)
+        if native_government is None:
+            return None
+        policy_rate = native_government.evaluation_acceptance_rate
+        if policy_rate is None:
+            return None
+        for conference in self.conference_system.conferences:
+            conference.acceptance_rate = policy_rate
+        government_results = year_results.setdefault('native_government', {})
+        government_results['evaluation_policy'] = {
+            **native_government.active_policy('evaluation'),
+            'applied_acceptance_rate': policy_rate,
+        }
+        return policy_rate
+
+    def _finish_native_government_year(self, year, year_results):
+        native_government = getattr(self, 'native_government', None)
+        if native_government is None:
+            return ()
+        decisions = year_results.get('decisions', {})
+        funding = year_results.get('ecosystem_metrics', {}).get(
+            'funding_success_by_type', {}
+        )
+        accepted = self.paper_tracker.accepted_papers_by_year.get(year, {})
+        observations = {
+            'evaluation': {
+                'accepted': int(decisions.get('total_accepted', 0)),
+                'rejected': int(decisions.get('total_rejected', 0)),
+            },
+            'funding': {
+                'awards': int(funding.get('university', 0)),
+                'applications': int(funding.get('total_applications', 0)),
+            },
+            'publication': {
+                'published_count': len(accepted),
+                'published_output_ids': sorted(accepted),
+            },
+        }
+        events = native_government.finish_year(year, observations)
+        government_results = year_results.setdefault('native_government', {})
+        government_results.update(native_government.summary())
+        government_results['events_emitted_this_year_end'] = len(events)
         return events
 
     def run(self):
@@ -4393,6 +4486,9 @@ class Simulation:
         native_communication = getattr(self, 'native_communication', None)
         if native_communication is not None:
             checkpoint_data['native_communication'] = native_communication.to_dict()
+        native_government = getattr(self, 'native_government', None)
+        if native_government is not None:
+            checkpoint_data['native_government'] = native_government.to_dict()
 
         # Save exploration experiment trackers if enabled
         if self.is_exploration_experiment:
@@ -4594,6 +4690,19 @@ class Simulation:
             from utopia.communication.native import NativeCommunicationBroker
             self.native_communication = NativeCommunicationBroker(
                 self.native_communication.config, native_state
+            )
+        government_state = checkpoint_data.get('native_government')
+        if getattr(self, 'native_government', None) is None:
+            if government_state is not None:
+                raise ValueError(
+                    "Checkpoint enables native government but current config is off"
+                )
+        else:
+            if government_state is None:
+                raise ValueError("Checkpoint is missing native government state")
+            from utopia.government.native import NativeGovernmentRuntime
+            self.native_government = NativeGovernmentRuntime(
+                self.native_government.config, government_state
             )
         # N0 anchor (older checkpoints lack it: fall back to the current university count)
         self.initial_university_count = checkpoint_data.get('initial_university_count')

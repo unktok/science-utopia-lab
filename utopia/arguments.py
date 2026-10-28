@@ -309,6 +309,44 @@ def parse_arguments(argv=None, *, create_dirs=True):
         help='Complete source SystemSpec SHA-256 required when the broker is enabled.'
     )
     parser.add_argument(
+        '--government-policy-mode',
+        choices=['off', 'event-responsive', 'threshold'],
+        default='off',
+        help='Prospective native government policy runtime; off preserves legacy behavior.'
+    )
+    parser.add_argument(
+        '--government-minimum-observations',
+        type=int,
+        default=1,
+        help='Observation-count threshold for the government production mechanism.'
+    )
+    parser.add_argument(
+        '--government-repeat-interval',
+        type=int,
+        default=1,
+        help='Observation-count interval between threshold policy decisions.'
+    )
+    parser.add_argument(
+        '--government-directives-json',
+        default='{}',
+        help='Canonical typed government directives from the sealed SystemSpec.'
+    )
+    parser.add_argument(
+        '--government-observation-sources',
+        default='',
+        help='Comma-separated observed mechanism families from the sealed SystemSpec.'
+    )
+    parser.add_argument(
+        '--government-policy-edges',
+        default='',
+        help='Comma-separated target:latency policy edges from the sealed SystemSpec.'
+    )
+    parser.add_argument(
+        '--government-system-fingerprint',
+        default=None,
+        help='Complete source SystemSpec SHA-256 required when government is enabled.'
+    )
+    parser.add_argument(
         '--annual_influx_rate',
         type=float,
         default=0.0,
@@ -495,6 +533,18 @@ def parse_arguments(argv=None, *, create_dirs=True):
                 'when the broker is enabled')
         if not args.communication_receiver_role:
             raise ValueError('--communication-receiver-role must be non-empty')
+    if args.government_minimum_observations < 1:
+        raise ValueError('--government-minimum-observations must be positive')
+    if args.government_repeat_interval < 1:
+        raise ValueError('--government-repeat-interval must be positive')
+    if args.government_policy_mode != 'off':
+        fingerprint = args.government_system_fingerprint or ''
+        if not re.fullmatch(r'[0-9a-f]{64}', fingerprint):
+            raise ValueError(
+                '--government-system-fingerprint must be lowercase SHA-256 '
+                'when government is enabled')
+        from utopia.government.native import native_government_config_from_namespace
+        native_government_config_from_namespace(args)
 
     from utopia.funding.accounting import resolve_cost_policy, cost_policy_tag
     from utopia.config import SIMULATION_CONFIG

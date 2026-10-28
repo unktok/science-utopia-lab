@@ -138,6 +138,42 @@ def convert_artifacts(bundle: ArtifactBundle) -> list[EventEnvelope]:
                 provenance=event.provenance,
             ))
 
+    native_government = checkpoint.get("native_government")
+    if native_government is not None:
+        from utopia.government.native import (
+            NativeGovernmentConfig,
+            NativeGovernmentRuntime,
+        )
+        if not isinstance(native_government, Mapping):
+            raise ValueError("native government checkpoint must be an object")
+        config = native_government.get("config")
+        if not isinstance(config, Mapping):
+            raise ValueError("native government checkpoint config is missing")
+        policy_latencies = config.get("policy_latencies")
+        if not isinstance(policy_latencies, list):
+            raise ValueError("native government policy latencies are missing")
+        parsed_config = dict(config)
+        parsed_config["observation_sources"] = tuple(
+            parsed_config.get("observation_sources", ())
+        )
+        parsed_config["policy_latencies"] = tuple(
+            (item["target"], item["latency"]) for item in policy_latencies
+        )
+        runtime = NativeGovernmentRuntime(
+            NativeGovernmentConfig(**parsed_config), native_government
+        )
+        for event in runtime.events:
+            specs.append(_spec(
+                year=event.year,
+                phase=event.phase,
+                event_type=event.event_type,
+                stable_order=(event.sequence,),
+                actor_ids=event.actor_ids,
+                artifact_ids=event.artifact_ids,
+                payload=event.payload,
+                provenance=event.provenance,
+            ))
+
     first_balances: dict[str, Mapping[str, Any]] = {}
     for row in sorted(
         balances, key=lambda item: (int(item["year"]), str(item["researcher_id"]))

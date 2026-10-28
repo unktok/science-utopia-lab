@@ -36,14 +36,18 @@ contracts:
 | communication | `legacy.communication.citation-v1` | simulator built-in |
 | communication | exact native accepted-output source + broadcast/digest + receiver overlay | native prospective broker |
 | funding | `legacy.funding.fixed-budget-v1` | CLI parameters |
+| governance | exact catalog-derived event-responsive/threshold government overlay | native prospective policy runtime |
 
-Communication is still not generally supported. In addition to the built-in
-citation mechanism, compiler revision `1.1.0` recognizes one exact prospective
-overlay: accepted-output source, production broadcast or digest broker, and a
-single researcher receiver. Other communication candidates remain
-unsupported. Governance/government, collaboration, employment, education,
-and custom mechanisms are likewise not silently removed from a candidate;
-compilation fails with their mechanism id, family, and implementation.
+Communication and governance are still not generally supported. In addition
+to the built-in citation mechanism, compiler revision `1.2.0` recognizes one
+exact prospective communication overlay: accepted-output source, production
+broadcast or digest broker, and a single researcher receiver. Other
+communication candidates remain unsupported. The same compiler revision
+recognizes one exact government overlay derived from the stateful structural
+catalog, including selected observation and policy edges with one- or two-year
+latency. Other governance, collaboration, employment, education, and custom
+mechanisms are likewise not silently removed from a candidate; compilation
+fails with their mechanism id, family, and implementation.
 
 Compiler v1 also requires the exact legacy connections, edge latencies,
 schedules, implementation versions, parameter names, and runtime metadata.
@@ -72,7 +76,7 @@ contract.
 
 - the complete canonical source `SystemSpec` and its fingerprint;
 - compiler id `scienceutopia.system-spec-to-simulator-plan` and revision
-  `1.1.0`;
+  `1.2.0`;
 - clean compiler source commit and caller-supplied source locator;
 - campaign id and seed role;
 - the complete, unique seed list;

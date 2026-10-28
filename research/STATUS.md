@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 12:51 JST
+Updated: 2026-10-28 14:49 JST
 
 ## Overall position
 
@@ -38,7 +38,7 @@ Remote: `unktok/science-utopia-lab`
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
-| whole-system `SystemSpec` | first prospective native structural mechanism | verified native events enter the generic graph through the workload bridge; sealed plans can now map an exact broadcast/digest communication overlay into default-off native simulator execution with fingerprinted checkpoints and canonical lineage |
+| whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
 | structural system optimization | communication production slice | 97 communication candidates vary broker absence, broadcast/digest implementation, fan-out edge presence, and latency through one fingerprint-bound ask/loss/tell boundary |
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
 | game UI | verified research-arcology adapter | a pixel-art hub routes between the completed seed-521 campaign's 71 canonical events / 72 authoritative frames, a separately labeled synthetic SystemSpec sandbox, and a hash-bound v1.1 optimization snapshot; Evidence Quay, institutional cutaways, and cursor-bounded researcher dossiers render observed operations/life courses while keeping rooms, sprites, relationship layout, motion, packets, and lighting presentation-only, and the running study is never presented as a completed outcome |
