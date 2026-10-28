@@ -1,0 +1,873 @@
+{
+  "authoritative_fixtures": [
+    {
+      "fingerprint": "9a6262161548ff0a80897f29b62fad2988df02360c2b4812a1e24bf4f87c5314",
+      "id": "base-valid",
+      "spec": {
+        "agent_types": [],
+        "artifact_types": [
+          {
+            "artifact_type_id": "publication-record",
+            "description": "Synthetic publication record"
+          }
+        ],
+        "connections": [
+          {
+            "channel": "constraint",
+            "latency": 0,
+            "source_mechanism": "government",
+            "source_port": "mandate",
+            "target_mechanism": "evaluation",
+            "target_port": "mandate"
+          },
+          {
+            "channel": "constraint",
+            "latency": 0,
+            "source_mechanism": "government",
+            "source_port": "mandate",
+            "target_mechanism": "funding",
+            "target_port": "mandate"
+          },
+          {
+            "channel": "resource",
+            "latency": 1,
+            "source_mechanism": "funding",
+            "source_port": "budget",
+            "target_mechanism": "evaluation",
+            "target_port": "budget"
+          },
+          {
+            "channel": "decision",
+            "latency": 0,
+            "source_mechanism": "evaluation",
+            "source_port": "decision",
+            "target_mechanism": "publication",
+            "target_port": "decision"
+          },
+          {
+            "channel": "artifact",
+            "latency": 1,
+            "source_mechanism": "publication",
+            "source_port": "record",
+            "target_mechanism": "communication",
+            "target_port": "record"
+          },
+          {
+            "channel": "signal",
+            "latency": 1,
+            "source_mechanism": "communication",
+            "source_port": "feedback",
+            "target_mechanism": "government",
+            "target_port": "feedback"
+          }
+        ],
+        "global_invariants": [],
+        "initial_state": {},
+        "mechanisms": [
+          {
+            "family": "governance",
+            "implementation": "sandbox.governance.ministry-priorities-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "signal",
+                "port_id": "feedback",
+                "required": false
+              }
+            ],
+            "mechanism_id": "government",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "constraint",
+                "port_id": "mandate",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "funding",
+            "implementation": "sandbox.funding.proposal-competition-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "constraint",
+                "port_id": "mandate",
+                "required": false
+              }
+            ],
+            "mechanism_id": "funding",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "resource",
+                "port_id": "budget",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "evaluation",
+            "implementation": "sandbox.evaluation.peer-panel-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "constraint",
+                "port_id": "mandate",
+                "required": true
+              },
+              {
+                "artifact_type": null,
+                "channel": "resource",
+                "port_id": "budget",
+                "required": true
+              }
+            ],
+            "mechanism_id": "evaluation",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "decision",
+                "port_id": "decision",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "publication",
+            "implementation": "sandbox.publication.curated-archive-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "decision",
+                "port_id": "decision",
+                "required": true
+              }
+            ],
+            "mechanism_id": "publication",
+            "outputs": [
+              {
+                "artifact_type": "publication-record",
+                "channel": "artifact",
+                "port_id": "record",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "communication",
+            "implementation": "sandbox.communication.open-network-v1",
+            "inputs": [
+              {
+                "artifact_type": "publication-record",
+                "channel": "artifact",
+                "port_id": "record",
+                "required": true
+              }
+            ],
+            "mechanism_id": "communication",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "signal",
+                "port_id": "feedback",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          }
+        ],
+        "metadata": {
+          "claim_boundary": "structure-only synthetic sandbox; no simulation or policy result",
+          "source_kind": "synthetic_system_design_sandbox"
+        },
+        "schedules": [
+          {
+            "mechanism_id": "government",
+            "phase": 0,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "funding",
+            "phase": 1,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "evaluation",
+            "phase": 2,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "publication",
+            "phase": 3,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "communication",
+            "phase": 4,
+            "trigger": "annual"
+          }
+        ],
+        "system_id": "noctiluca-synthetic-sandbox",
+        "version": 1
+      },
+      "validation": {
+        "issues": [],
+        "valid": true
+      }
+    },
+    {
+      "fingerprint": "8d3930e46f2df4f4095dbd47aadb7f276c5d7453e82d8596668a69bcc1f21a49",
+      "id": "publication-input-disconnected",
+      "spec": {
+        "agent_types": [],
+        "artifact_types": [
+          {
+            "artifact_type_id": "publication-record",
+            "description": "Synthetic publication record"
+          }
+        ],
+        "connections": [
+          {
+            "channel": "constraint",
+            "latency": 0,
+            "source_mechanism": "government",
+            "source_port": "mandate",
+            "target_mechanism": "evaluation",
+            "target_port": "mandate"
+          },
+          {
+            "channel": "constraint",
+            "latency": 0,
+            "source_mechanism": "government",
+            "source_port": "mandate",
+            "target_mechanism": "funding",
+            "target_port": "mandate"
+          },
+          {
+            "channel": "resource",
+            "latency": 1,
+            "source_mechanism": "funding",
+            "source_port": "budget",
+            "target_mechanism": "evaluation",
+            "target_port": "budget"
+          },
+          {
+            "channel": "artifact",
+            "latency": 1,
+            "source_mechanism": "publication",
+            "source_port": "record",
+            "target_mechanism": "communication",
+            "target_port": "record"
+          },
+          {
+            "channel": "signal",
+            "latency": 1,
+            "source_mechanism": "communication",
+            "source_port": "feedback",
+            "target_mechanism": "government",
+            "target_port": "feedback"
+          }
+        ],
+        "global_invariants": [],
+        "initial_state": {},
+        "mechanisms": [
+          {
+            "family": "governance",
+            "implementation": "sandbox.governance.ministry-priorities-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "signal",
+                "port_id": "feedback",
+                "required": false
+              }
+            ],
+            "mechanism_id": "government",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "constraint",
+                "port_id": "mandate",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "funding",
+            "implementation": "sandbox.funding.proposal-competition-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "constraint",
+                "port_id": "mandate",
+                "required": false
+              }
+            ],
+            "mechanism_id": "funding",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "resource",
+                "port_id": "budget",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "evaluation",
+            "implementation": "sandbox.evaluation.peer-panel-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "constraint",
+                "port_id": "mandate",
+                "required": true
+              },
+              {
+                "artifact_type": null,
+                "channel": "resource",
+                "port_id": "budget",
+                "required": true
+              }
+            ],
+            "mechanism_id": "evaluation",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "decision",
+                "port_id": "decision",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "publication",
+            "implementation": "sandbox.publication.curated-archive-v1",
+            "inputs": [
+              {
+                "artifact_type": null,
+                "channel": "decision",
+                "port_id": "decision",
+                "required": true
+              }
+            ],
+            "mechanism_id": "publication",
+            "outputs": [
+              {
+                "artifact_type": "publication-record",
+                "channel": "artifact",
+                "port_id": "record",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          },
+          {
+            "family": "communication",
+            "implementation": "sandbox.communication.open-network-v1",
+            "inputs": [
+              {
+                "artifact_type": "publication-record",
+                "channel": "artifact",
+                "port_id": "record",
+                "required": true
+              }
+            ],
+            "mechanism_id": "communication",
+            "outputs": [
+              {
+                "artifact_type": null,
+                "channel": "signal",
+                "port_id": "feedback",
+                "required": true
+              }
+            ],
+            "parameters": {},
+            "version": 1
+          }
+        ],
+        "metadata": {
+          "claim_boundary": "structure-only synthetic sandbox; no simulation or policy result",
+          "source_kind": "synthetic_system_design_sandbox"
+        },
+        "schedules": [
+          {
+            "mechanism_id": "government",
+            "phase": 0,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "funding",
+            "phase": 1,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "evaluation",
+            "phase": 2,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "publication",
+            "phase": 3,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "communication",
+            "phase": 4,
+            "trigger": "annual"
+          }
+        ],
+        "system_id": "noctiluca-synthetic-sandbox",
+        "version": 1
+      },
+      "validation": {
+        "issues": [
+          {
+            "code": "unconnected_required_input",
+            "message": "required input has no incoming connection",
+            "path": "mechanisms.publication.inputs.decision",
+            "severity": "error"
+          }
+        ],
+        "valid": false
+      }
+    }
+  ],
+  "base_spec": {
+    "agent_types": [],
+    "artifact_types": [
+      {
+        "artifact_type_id": "publication-record",
+        "description": "Synthetic publication record"
+      }
+    ],
+    "connections": [
+      {
+        "channel": "constraint",
+        "latency": 0,
+        "source_mechanism": "government",
+        "source_port": "mandate",
+        "target_mechanism": "evaluation",
+        "target_port": "mandate"
+      },
+      {
+        "channel": "constraint",
+        "latency": 0,
+        "source_mechanism": "government",
+        "source_port": "mandate",
+        "target_mechanism": "funding",
+        "target_port": "mandate"
+      },
+      {
+        "channel": "resource",
+        "latency": 1,
+        "source_mechanism": "funding",
+        "source_port": "budget",
+        "target_mechanism": "evaluation",
+        "target_port": "budget"
+      },
+      {
+        "channel": "decision",
+        "latency": 0,
+        "source_mechanism": "evaluation",
+        "source_port": "decision",
+        "target_mechanism": "publication",
+        "target_port": "decision"
+      },
+      {
+        "channel": "artifact",
+        "latency": 1,
+        "source_mechanism": "publication",
+        "source_port": "record",
+        "target_mechanism": "communication",
+        "target_port": "record"
+      },
+      {
+        "channel": "signal",
+        "latency": 1,
+        "source_mechanism": "communication",
+        "source_port": "feedback",
+        "target_mechanism": "government",
+        "target_port": "feedback"
+      }
+    ],
+    "global_invariants": [],
+    "initial_state": {},
+    "mechanisms": [
+      {
+        "family": "governance",
+        "implementation": "sandbox.governance.ministry-priorities-v1",
+        "inputs": [
+          {
+            "artifact_type": null,
+            "channel": "signal",
+            "port_id": "feedback",
+            "required": false
+          }
+        ],
+        "mechanism_id": "government",
+        "outputs": [
+          {
+            "artifact_type": null,
+            "channel": "constraint",
+            "port_id": "mandate",
+            "required": true
+          }
+        ],
+        "parameters": {},
+        "version": 1
+      },
+      {
+        "family": "funding",
+        "implementation": "sandbox.funding.proposal-competition-v1",
+        "inputs": [
+          {
+            "artifact_type": null,
+            "channel": "constraint",
+            "port_id": "mandate",
+            "required": false
+          }
+        ],
+        "mechanism_id": "funding",
+        "outputs": [
+          {
+            "artifact_type": null,
+            "channel": "resource",
+            "port_id": "budget",
+            "required": true
+          }
+        ],
+        "parameters": {},
+        "version": 1
+      },
+      {
+        "family": "evaluation",
+        "implementation": "sandbox.evaluation.peer-panel-v1",
+        "inputs": [
+          {
+            "artifact_type": null,
+            "channel": "constraint",
+            "port_id": "mandate",
+            "required": true
+          },
+          {
+            "artifact_type": null,
+            "channel": "resource",
+            "port_id": "budget",
+            "required": true
+          }
+        ],
+        "mechanism_id": "evaluation",
+        "outputs": [
+          {
+            "artifact_type": null,
+            "channel": "decision",
+            "port_id": "decision",
+            "required": true
+          }
+        ],
+        "parameters": {},
+        "version": 1
+      },
+      {
+        "family": "publication",
+        "implementation": "sandbox.publication.curated-archive-v1",
+        "inputs": [
+          {
+            "artifact_type": null,
+            "channel": "decision",
+            "port_id": "decision",
+            "required": true
+          }
+        ],
+        "mechanism_id": "publication",
+        "outputs": [
+          {
+            "artifact_type": "publication-record",
+            "channel": "artifact",
+            "port_id": "record",
+            "required": true
+          }
+        ],
+        "parameters": {},
+        "version": 1
+      },
+      {
+        "family": "communication",
+        "implementation": "sandbox.communication.open-network-v1",
+        "inputs": [
+          {
+            "artifact_type": "publication-record",
+            "channel": "artifact",
+            "port_id": "record",
+            "required": true
+          }
+        ],
+        "mechanism_id": "communication",
+        "outputs": [
+          {
+            "artifact_type": null,
+            "channel": "signal",
+            "port_id": "feedback",
+            "required": true
+          }
+        ],
+        "parameters": {},
+        "version": 1
+      }
+    ],
+    "metadata": {
+      "claim_boundary": "structure-only synthetic sandbox; no simulation or policy result",
+      "source_kind": "synthetic_system_design_sandbox"
+    },
+    "schedules": [
+      {
+        "mechanism_id": "government",
+        "phase": 0,
+        "trigger": "annual"
+      },
+      {
+        "mechanism_id": "funding",
+        "phase": 1,
+        "trigger": "annual"
+      },
+      {
+        "mechanism_id": "evaluation",
+        "phase": 2,
+        "trigger": "annual"
+      },
+      {
+        "mechanism_id": "publication",
+        "phase": 3,
+        "trigger": "annual"
+      },
+      {
+        "mechanism_id": "communication",
+        "phase": 4,
+        "trigger": "annual"
+      }
+    ],
+    "system_id": "noctiluca-synthetic-sandbox",
+    "version": 1
+  },
+  "bundle_hash": "ded9a61d2df8b0f131a8238e1440987a342045aa9e7877f00f0c4fdbd2932be3",
+  "disclosure": "SYNTHETIC SANDBOX \u2014 structure exploration only. No simulation has run, and no scientific, optimization, or policy result is shown.",
+  "edge_catalog": [
+    {
+      "allowed_latencies": [
+        0,
+        1,
+        2
+      ],
+      "connection": {
+        "channel": "constraint",
+        "latency": 0,
+        "source_mechanism": "government",
+        "source_port": "mandate",
+        "target_mechanism": "evaluation",
+        "target_port": "mandate"
+      },
+      "edge_id": "edge:0",
+      "label": "POLICY MANDATE"
+    },
+    {
+      "allowed_latencies": [
+        0,
+        1,
+        2
+      ],
+      "connection": {
+        "channel": "constraint",
+        "latency": 0,
+        "source_mechanism": "government",
+        "source_port": "mandate",
+        "target_mechanism": "funding",
+        "target_port": "mandate"
+      },
+      "edge_id": "edge:1",
+      "label": "BUDGET CONSTRAINT"
+    },
+    {
+      "allowed_latencies": [
+        0,
+        1,
+        2
+      ],
+      "connection": {
+        "channel": "resource",
+        "latency": 1,
+        "source_mechanism": "funding",
+        "source_port": "budget",
+        "target_mechanism": "evaluation",
+        "target_port": "budget"
+      },
+      "edge_id": "edge:2",
+      "label": "RESEARCH RESOURCE"
+    },
+    {
+      "allowed_latencies": [
+        0,
+        1,
+        2
+      ],
+      "connection": {
+        "channel": "decision",
+        "latency": 0,
+        "source_mechanism": "evaluation",
+        "source_port": "decision",
+        "target_mechanism": "publication",
+        "target_port": "decision"
+      },
+      "edge_id": "edge:3",
+      "label": "EVALUATION DECISION"
+    },
+    {
+      "allowed_latencies": [
+        0,
+        1,
+        2
+      ],
+      "connection": {
+        "channel": "artifact",
+        "latency": 1,
+        "source_mechanism": "publication",
+        "source_port": "record",
+        "target_mechanism": "communication",
+        "target_port": "record"
+      },
+      "edge_id": "edge:4",
+      "label": "PUBLIC RECORD"
+    },
+    {
+      "allowed_latencies": [
+        0,
+        1,
+        2
+      ],
+      "connection": {
+        "channel": "signal",
+        "latency": 1,
+        "source_mechanism": "communication",
+        "source_port": "feedback",
+        "target_mechanism": "government",
+        "target_port": "feedback"
+      },
+      "edge_id": "edge:5",
+      "label": "PUBLIC SIGNAL"
+    }
+  ],
+  "node_catalog": [
+    {
+      "asset_key": "system_government",
+      "description": "Sets constraints and receives public signals.",
+      "implementations": [
+        {
+          "id": "sandbox.governance.ministry-priorities-v1",
+          "label": "MINISTRY PRIORITIES"
+        },
+        {
+          "id": "sandbox.governance.citizen-council-v1",
+          "label": "CITIZEN COUNCIL"
+        }
+      ],
+      "label": "GOVERNMENT",
+      "mechanism_id": "government",
+      "x": 50,
+      "y": 8
+    },
+    {
+      "asset_key": "system_evaluation",
+      "description": "Converts resources and constraints into decisions.",
+      "implementations": [
+        {
+          "id": "sandbox.evaluation.peer-panel-v1",
+          "label": "PEER PANEL"
+        },
+        {
+          "id": "sandbox.evaluation.partial-lottery-v1",
+          "label": "PARTIAL LOTTERY"
+        }
+      ],
+      "label": "EVALUATION",
+      "mechanism_id": "evaluation",
+      "x": 50,
+      "y": 42
+    },
+    {
+      "asset_key": "system_publication",
+      "description": "Turns decisions into durable public records.",
+      "implementations": [
+        {
+          "id": "sandbox.publication.curated-archive-v1",
+          "label": "CURATED ARCHIVE"
+        },
+        {
+          "id": "sandbox.publication.open-repository-v1",
+          "label": "OPEN REPOSITORY"
+        }
+      ],
+      "label": "PUBLICATION",
+      "mechanism_id": "publication",
+      "x": 78,
+      "y": 70
+    },
+    {
+      "asset_key": "system_communication",
+      "description": "Circulates records and returns social signals.",
+      "implementations": [
+        {
+          "id": "sandbox.communication.open-network-v1",
+          "label": "OPEN NETWORK"
+        },
+        {
+          "id": "sandbox.communication.curated-broadcast-v1",
+          "label": "CURATED BROADCAST"
+        }
+      ],
+      "label": "COMMUNICATION",
+      "mechanism_id": "communication",
+      "x": 22,
+      "y": 70
+    },
+    {
+      "asset_key": "system_funding",
+      "description": "Allocates resources under optional constraints.",
+      "implementations": [
+        {
+          "id": "sandbox.funding.proposal-competition-v1",
+          "label": "PROPOSAL COMPETITION"
+        },
+        {
+          "id": "sandbox.funding.equal-block-v1",
+          "label": "EQUAL BLOCK GRANTS"
+        }
+      ],
+      "label": "FUNDING",
+      "mechanism_id": "funding",
+      "x": 16,
+      "y": 36
+    }
+  ],
+  "schema_version": "scienceutopia.system-sandbox.v1",
+  "source_kind": "synthetic_system_design_sandbox",
+  "system_spec_contract": "research/specs/system-spec-v1.schema.json",
+  "truth_status": "synthetic",
+  "validator_contract": "utopia.system.validation.validate_system_spec"
+}

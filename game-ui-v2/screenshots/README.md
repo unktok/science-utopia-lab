@@ -1,5 +1,22 @@
 # Deterministic visual QA
 
+## Science-system design sandbox
+
+These 1440x1050 captures show the isolated `SYNTHETIC SANDBOX`, not a replay
+or experimental result. The first is the Python-validated five-mechanism base
+`SystemSpec`. The second disables the evaluation-to-publication decision edge
+and exposes the resulting `unconnected_required_input` technical error.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-system-sandbox-valid.png` | `835da7a83355eff5b338fc262d6b3905408d7c4dfb767a47c7b049f70d9604f3` |
+| `noctiluca-system-sandbox-invalid-publication.png` | `d0007a200d82ce38633dcb1bc7e9c21c87e1a51ca96aeb42768b47dce42bc047` |
+
+Both were repeated from separate empty Chrome profiles and were byte-identical.
+The valid and invalid captures use reduced motion and keep the claim boundary,
+SystemSpec fingerprint, graph validity, node implementations, and edge
+latencies visible together.
+
 ## Researcher life and institutional interiors
 
 These 1440x1050 reduced-motion captures are driven by the verified completed

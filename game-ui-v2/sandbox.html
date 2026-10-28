@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070814" />
+    <title>NOCTILUCA // Science System Design Console</title>
+  </head>
+  <body class="sandbox-body">
+    <a class="skip-link" href="#sandbox-controls">Skip graph visualization</a>
+    <main id="sandbox-app" class="sandbox-app" data-motion="full">
+      <header class="sandbox-topbar">
+        <div class="wordmark"><span class="wordmark__signal" aria-hidden="true"></span>NOCTILUCA <em>// SYSTEM DESIGN CONSOLE</em></div>
+        <dl class="sandbox-run-strip">
+          <div><dt>MODE</dt><dd>SYNTHETIC STRUCTURE</dd></div>
+          <div><dt>CONTRACT</dt><dd>SystemSpec v1</dd></div>
+          <div><dt>EXECUTION</dt><dd>NOT RUN</dd></div>
+        </dl>
+        <div id="contract-status" class="verification" data-state="loading" role="status">VERIFYING CONTRACT</div>
+      </header>
+
+      <section class="sandbox-disclosure" aria-label="Claim boundary">
+        <strong>SYNTHETIC SANDBOX</strong>
+        <p id="sandbox-disclosure">Loading structure-only contract…</p>
+        <a href="./index.html?replay=campaign">OPEN VERIFIED REPLAY ↗</a>
+      </section>
+
+      <section class="sandbox-workspace" aria-label="Science system design workspace">
+        <section class="system-map-panel" aria-labelledby="map-title">
+          <header>
+            <div><span class="eyebrow">WHOLE-SYSTEM DESIGN OBJECT</span><h1 id="map-title">COMPOSE THE SCIENCE SYSTEM</h1></div>
+            <div id="validity-chip" class="validity-chip" data-valid="pending">VALIDATING</div>
+          </header>
+          <div id="system-map" class="system-map" aria-describedby="map-help">
+            <svg id="system-edge-svg" class="system-edge-svg" viewBox="0 0 1000 640" preserveAspectRatio="none" aria-hidden="true">
+              <defs><marker id="sandbox-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z"></path></marker></defs>
+              <g id="system-edge-layer"></g>
+            </svg>
+            <div id="system-node-layer" class="system-node-layer"></div>
+            <div class="map-grid-label" aria-hidden="true">NOCTILUCA // TYPE-SAFE ARCHITECTURE GRID</div>
+          </div>
+          <p id="map-help" class="map-help">Toggle a node, exchange its implementation, or change an edge and latency. The fingerprint covers the complete graph. No simulator is executed.</p>
+          <div class="sandbox-toolbar" aria-label="Sandbox actions">
+            <button id="reset-spec" type="button">RESET VALID SPEC <kbd>R</kbd></button>
+            <button id="break-publication" type="button">LOAD DISCONNECTED INPUT <kbd>B</kbd></button>
+            <span id="change-summary" role="status">BASE SPEC</span>
+          </div>
+        </section>
+
+        <aside id="sandbox-controls" class="sandbox-controls" aria-labelledby="controls-title">
+          <header><span class="eyebrow">STRUCTURE MUTATIONS</span><h2 id="controls-title">CHANNEL ROUTER</h2></header>
+          <ol id="edge-controls" class="edge-controls"></ol>
+        </aside>
+      </section>
+
+      <section class="spec-console" aria-label="SystemSpec identity and validation">
+        <article class="fingerprint-card">
+          <span class="eyebrow">COMPLETE SYSTEM IDENTITY</span>
+          <h2>SystemSpec fingerprint</h2>
+          <code id="spec-fingerprint">calculating…</code>
+          <dl><div><dt>NODES</dt><dd id="node-count">—</dd></div><div><dt>EDGES</dt><dd id="edge-count">—</dd></div><div><dt>MAX LATENCY</dt><dd id="latency-count">—</dd></div></dl>
+        </article>
+        <article class="validation-card">
+          <span class="eyebrow">TECHNICAL VALIDITY ONLY</span>
+          <h2 id="validation-title">Validation pending</h2>
+          <ul id="validation-issues" aria-live="polite"></ul>
+        </article>
+        <details class="spec-json-card">
+          <summary>INSPECT CANONICAL SystemSpec JSON</summary>
+          <pre id="spec-json"></pre>
+        </details>
+      </section>
+
+      <footer class="sandbox-footer">
+        <strong>STRUCTURE ≠ OUTCOME</strong>
+        <p>A valid graph is only technically well-formed. It is not scientifically good, ethically acceptable, optimized, evaluated, or policy-ready.</p>
+      </footer>
+
+      <div id="sandbox-error" class="sandbox-error" hidden role="alert"><strong>CONTRACT REJECTED</strong><span></span></div>
+    </main>
+    <script type="module" src="/src/sandbox.ts"></script>
+  </body>
+</html>

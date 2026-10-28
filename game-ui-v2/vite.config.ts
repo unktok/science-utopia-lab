@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         compare: resolve(__dirname, "compare.html"),
+        sandbox: resolve(__dirname, "sandbox.html"),
       },
     },
   },

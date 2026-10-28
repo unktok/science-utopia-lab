@@ -44,6 +44,11 @@ const EXPECTED: Record<string, { kind: "researcher" | "institution" | "flow" | "
   station_application: { kind: "institution", width: 32, height: 24 },
   station_decision: { kind: "institution", width: 32, height: 24 },
   station_award: { kind: "institution", width: 32, height: 24 },
+  system_evaluation: { kind: "institution", width: 48, height: 40 },
+  system_publication: { kind: "institution", width: 48, height: 40 },
+  system_funding: { kind: "institution", width: 48, height: 40 },
+  system_government: { kind: "institution", width: 48, height: 40 },
+  system_communication: { kind: "institution", width: 48, height: 40 },
   ambient_courier_drone: { kind: "environment", width: 16, height: 8 },
 };
 
@@ -54,7 +59,7 @@ async function loadPack() {
 describe("NOCTILUCA production pixel assets", () => {
   it("maps every required key to its exact fixed-grid production SVG", async () => {
     const pack = await loadPack();
-    expect(pack.version).toBe("noctiluca-production-v0.5");
+    expect(pack.version).toBe("noctiluca-production-v0.6");
     expect(pack.palette).toBe("noctiluca-24-v0.1");
     expect(new Set(pack.images.map((image) => image.key))).toEqual(new Set(Object.keys(EXPECTED)));
     expect(new Set(pack.images.map((image) => image.url)).size).toBe(pack.images.length);

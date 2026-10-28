@@ -16,6 +16,8 @@ const captures = {
   "noctiluca-life-writing-seed521-cursor-6200.png": "bbcb21a6f4e9f18216d6bf47ce1dfdd0a1e51e9cfbb318b41fa202b48623a584",
   "noctiluca-life-review-seed521-cursor-20200.png": "1da1e23bb561fcf0e270665e3bf8bb450067c54d997adc3a8c380229e5bf91a7",
   "noctiluca-life-application-seed521-cursor-36500.png": "0a0393ac54e5ad2b0933a91ad8a6f83b5ce86e46d586e098b37da39ec2069937",
+  "noctiluca-system-sandbox-valid.png": "835da7a83355eff5b338fc262d6b3905408d7c4dfb767a47c7b049f70d9604f3",
+  "noctiluca-system-sandbox-invalid-publication.png": "d0007a200d82ce38633dcb1bc7e9c21c87e1a51ca96aeb42768b47dce42bc047",
 };
 
 describe("deterministic visual review artifacts", () => {

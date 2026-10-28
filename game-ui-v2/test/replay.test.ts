@@ -159,6 +159,7 @@ describe("asset pack contract", () => {
       "workflow_submission", "workflow_review", "workflow_publication", "workflow_funding",
       "token_manuscript", "token_review_seal", "token_decision", "token_application", "token_grant",
       "station_manuscript", "station_review", "station_application", "station_decision", "station_award",
+      "system_evaluation", "system_publication", "system_funding", "system_government", "system_communication",
       "ambient_courier_drone",
     ]));
   });

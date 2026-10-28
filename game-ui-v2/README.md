@@ -71,6 +71,22 @@ rect-only SVG vocabulary. Replay tests enforce that every actor action and
 flow is derived from canonical evidence. Silhouette and semantic legibility
 remain visual review gates.
 
+## Synthetic science-system design console
+
+Open `sandbox.html` to edit a structure-only five-node `SystemSpec`. The page
+is deliberately separate from the verified replay and is always labelled
+`SYNTHETIC SANDBOX`; it runs no simulation and displays no outcome. The
+contract is generated and validated by Python, while browser fingerprint and
+validator parity are checked against valid and invalid authoritative fixtures.
+
+```text
+http://localhost:4173/sandbox.html?motion=reduced
+http://localhost:4173/sandbox.html?motion=reduced&preset=invalid-publication
+```
+
+- [valid synthetic SystemSpec](screenshots/noctiluca-system-sandbox-valid.png)
+- [disconnected publication input](screenshots/noctiluca-system-sandbox-invalid-publication.png)
+
 ## Deterministic review scene
 
 The review URLs fix replay time and motion state:

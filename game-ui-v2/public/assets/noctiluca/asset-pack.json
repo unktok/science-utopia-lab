@@ -1,5 +1,5 @@
 {
-  "version": "noctiluca-production-v0.5",
+  "version": "noctiluca-production-v0.6",
   "palette": "noctiluca-24-v0.1",
   "images": [
     { "key": "researcher_early", "url": "/assets/noctiluca/production/researcher-early.svg", "kind": "researcher", "width": 24, "height": 32, "frames": { "frameWidth": 24, "frameHeight": 32, "end": 5 } },
@@ -30,6 +30,11 @@
     { "key": "station_application", "url": "/assets/noctiluca/production/station-application.svg", "kind": "institution", "width": 32, "height": 24 },
     { "key": "station_decision", "url": "/assets/noctiluca/production/station-decision.svg", "kind": "institution", "width": 32, "height": 24 },
     { "key": "station_award", "url": "/assets/noctiluca/production/station-award.svg", "kind": "institution", "width": 32, "height": 24 },
+    { "key": "system_evaluation", "url": "/assets/noctiluca/production/system-evaluation.svg", "kind": "institution", "width": 48, "height": 40 },
+    { "key": "system_publication", "url": "/assets/noctiluca/production/system-publication.svg", "kind": "institution", "width": 48, "height": 40 },
+    { "key": "system_funding", "url": "/assets/noctiluca/production/system-funding.svg", "kind": "institution", "width": 48, "height": 40 },
+    { "key": "system_government", "url": "/assets/noctiluca/production/system-government.svg", "kind": "institution", "width": 48, "height": 40 },
+    { "key": "system_communication", "url": "/assets/noctiluca/production/system-communication.svg", "kind": "institution", "width": 48, "height": 40 },
     { "key": "ambient_courier_drone", "url": "/assets/noctiluca/production/ambient-courier-drone.svg", "kind": "environment", "width": 16, "height": 8 }
   ]
 }
