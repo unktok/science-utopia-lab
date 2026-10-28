@@ -179,8 +179,9 @@ def test_paper_boundary_requires_complete_figure_set():
     boundary = (ROOT / "paper/metric_conditioned_results.tex").read_text(
         encoding="utf-8"
     )
-    assert boundary.count("\\IfFileExists") == 3
+    assert boundary.count("\\IfFileExists") == 4
     assert "metricconditionedresultstrue" in boundary
+    assert "generated/metric-conditioned/metric-conditioned-results.generated" in boundary
     assert "No synthetic fixture" in boundary
     assert "tests/fixtures" not in boundary
     main_tex = (ROOT / "paper/main.tex").read_text(encoding="utf-8")

@@ -34,15 +34,16 @@ ARM_ORDER = (
     "metric-conditioned-topic-diversity-v1",
     "metric-conditioned-review-burden-v1",
 )
-ARM_LABELS = {
-    ARM_ORDER[0]: "Participation-review",
-    ARM_ORDER[1]: "Topic-entropy proxy",
-    ARM_ORDER[2]: "Review-burden proxy",
+ROLE_ORDER = ("participation-review", "topic-diversity", "review-burden")
+ROLE_LABELS = {
+    ROLE_ORDER[0]: "Participation-review",
+    ROLE_ORDER[1]: "Topic-entropy proxy",
+    ROLE_ORDER[2]: "Review-burden proxy",
 }
-ARM_COLORS = {
-    ARM_ORDER[0]: "#376795",
-    ARM_ORDER[1]: "#E8A33D",
-    ARM_ORDER[2]: "#E76254",
+ROLE_COLORS = {
+    ROLE_ORDER[0]: "#376795",
+    ROLE_ORDER[1]: "#E8A33D",
+    ROLE_ORDER[2]: "#E76254",
 }
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PAPER_RESULTS_DIR = REPO_ROOT / "paper/figures/metric-conditioned"
@@ -60,9 +61,18 @@ def _classification(value: Mapping[str, Any]) -> str:
     return value.get("provenance", {}).get("data_classification", EXPERIMENTAL)
 
 
+def _arm_role(arm: str) -> str | None:
+    return next((role for role in ROLE_ORDER if role in arm), None)
+
+
 def _arm_order(arms) -> list[str]:
-    arms = list(arms)
-    return [arm for arm in ARM_ORDER if arm in arms] + sorted(set(arms) - set(ARM_ORDER))
+    return sorted(
+        set(arms),
+        key=lambda arm: (
+            ROLE_ORDER.index(_arm_role(arm)) if _arm_role(arm) else len(ROLE_ORDER),
+            arm,
+        ),
+    )
 
 
 def _profile_map(report: Mapping[str, Any], arm: str) -> dict[str, Mapping[str, Any]]:
@@ -168,7 +178,11 @@ def normalize_report(
             ),
         },
         "arms": [
-            {"id": arm, "label": ARM_LABELS.get(arm, arm), "color": ARM_COLORS.get(arm, "#666666")}
+            {
+                "id": arm,
+                "label": ROLE_LABELS.get(_arm_role(arm), arm),
+                "color": ROLE_COLORS.get(_arm_role(arm), "#666666"),
+            }
             for arm in arms
         ],
         "optimization_trajectories": trajectories,
@@ -226,9 +240,25 @@ def plot_cross_evaluation(summary, out_dir, formats):
         ]
         for arm in arms
     ], dtype=float)
+    uncertainty = summary["cross_evaluation"].get("uncertainty")
+    annotations: Any = matrix
+    annotation_format = ".3f"
+    if uncertainty:
+        annotations = np.array([
+            [
+                (
+                    f"{matrix[row, column]:.3f}\n"
+                    f"[{uncertainty[arm][loss]['ci95_low']:.3f}, "
+                    f"{uncertainty[arm][loss]['ci95_high']:.3f}]"
+                )
+                for column, loss in enumerate(loss_ids)
+            ]
+            for row, arm in enumerate(arms)
+        ])
+        annotation_format = ""
     fig, ax = plt.subplots(figsize=(5.6, 2.45))
     sns.heatmap(
-        ranks, annot=matrix, fmt=".3f", cmap="mako_r", linewidths=0.5,
+        ranks, annot=annotations, fmt=annotation_format, cmap="mako_r", linewidths=0.5,
         vmin=1, vmax=len(arms),
         linecolor="white", xticklabels=[item.replace("-probe", "") for item in loss_ids],
         yticklabels=labels, cbar_kws={"label": "Within-loss rank (1 = best)"}, ax=ax,

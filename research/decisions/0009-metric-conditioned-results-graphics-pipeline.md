@@ -1,6 +1,7 @@
 # Decision 0009: Generate study figures from a sealed machine-readable summary
 
-- Status: accepted for the metric-conditioned optimization v1 study
+- Status: graphics component retained; direct manuscript publication superseded
+  by Decision 0010
 - Date: 2026-10-28
 - Scope: scientific graphics and NeurIPS working-paper insertion boundary
 
@@ -25,6 +26,7 @@ The pipeline creates exactly three named figures:
 
 1. `metric-conditioned-cross-evaluation`: frozen systems by held-out loss.
    Because the three losses have different units, annotations show raw loss
+   (and, when supplied by the full report slice, its uncertainty interval)
    while color shows rank *within each loss column*. Lower loss is better.
 2. `metric-conditioned-objective-trajectories`: one panel per arm with raw
    development observations, the incumbent trace, and the frozen winner.
@@ -40,6 +42,10 @@ topic entropy and review burden are narrow proxy arms used to expose objective
 dependence, not policy recommendations.
 
 ## Experimental invocation
+
+For the completed study, use Decision 0010's automatic paper-slice command so
+the completion, uncertainty, runtime, and provenance gates run together. The
+lower-level invocation below remains useful for standalone figure regeneration.
 
 After all three arm campaigns are complete, the winners are frozen, and the
 common held-out report exists, run from the repository root (replace revision

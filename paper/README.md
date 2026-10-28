@@ -30,12 +30,14 @@ protocols, compact results, and artifact manifests.
 ## Metric-conditioned result boundary
 
 `metric_conditioned_results.tex` is a guarded insertion point for the
-preregistered three-arm study. It includes results only when all three PDFs are
-present under `figures/metric-conditioned/`; otherwise the manuscript states
-that the study is incomplete. The reproducible command and chart semantics are
+preregistered three-arm study. It includes results only when the generated
+LaTeX fragment and all three PDFs are atomically present under
+`generated/metric-conditioned/`; otherwise the manuscript states that the
+study is incomplete. The one-command analysis and reporting boundary is
 recorded in
-`research/decisions/0009-metric-conditioned-results-graphics-pipeline.md`.
+`research/decisions/0010-metric-conditioned-automatic-paper-slice.md`.
 
 Never copy a synthetic preview into the paper directory. The graphics CLI
 requires an explicit synthetic classification, places a warning inside every
-synthetic image, and rejects that classification at the paper destination.
+synthetic image, and rejects that classification at the generated paper
+destination.

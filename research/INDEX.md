@@ -25,6 +25,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Metric-conditioned v1 zero-query failure audit](audits/metric-conditioned-v1-zero-query-failure.md)
 - [Metric-conditioned held-out metric suite](metrics/metric-conditioned-held-out-suite-v1.json)
 - [Metric-conditioned results graphics pipeline](decisions/0009-metric-conditioned-results-graphics-pipeline.md)
+- [Metric-conditioned automatic paper slice](decisions/0010-metric-conditioned-automatic-paper-slice.md)
 - [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
 - [Milestone 3: first real result-dependent closed loop](milestones/2026-10-27-first-closed-loop-engineering.md)
 - [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)

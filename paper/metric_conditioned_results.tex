@@ -1,14 +1,16 @@
 % Result insertion boundary for the preregistered metric-conditioned study.
-% The graphics CLI refuses to place synthetic fixtures in this directory.
+% The report builder atomically publishes this fragment and all source figures.
 \newif\ifmetricconditionedresults
 \metricconditionedresultsfalse
-\IfFileExists{figures/metric-conditioned/metric-conditioned-cross-evaluation.pdf}{%
-  \IfFileExists{figures/metric-conditioned/metric-conditioned-objective-trajectories.pdf}{%
-    \IfFileExists{figures/metric-conditioned/metric-conditioned-tradeoff-rank-generalization.pdf}{%
-      \metricconditionedresultstrue
+\IfFileExists{generated/metric-conditioned/metric-conditioned-results.generated.tex}{%
+  \IfFileExists{generated/metric-conditioned/figures/metric-conditioned-cross-evaluation.pdf}{%
+    \IfFileExists{generated/metric-conditioned/figures/metric-conditioned-objective-trajectories.pdf}{%
+      \IfFileExists{generated/metric-conditioned/figures/metric-conditioned-tradeoff-rank-generalization.pdf}{%
+        \metricconditionedresultstrue
+      }{}%
     }{}%
   }{}%
-}{}
+}{}%
 
 \section{Metric-Conditioned Optimization Study}
 \label{sec:metric-conditioned-results}
@@ -18,36 +20,10 @@ fixed while changing only the optimization loss. Each arm freezes its winner
 before a common held-out suite evaluates all three systems. Topic entropy and
 review burden are deliberately narrow proxy objectives, not normative policy
 recommendations. This section reports results only when the complete,
-experiment-classified three-figure set is present.
+experiment-classified report fragment and three-figure set are present.
 
 \ifmetricconditionedresults
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.92\linewidth]{figures/metric-conditioned/metric-conditioned-cross-evaluation.pdf}
-    \caption{Cross-evaluation of the three frozen systems. Cell annotations are
-    held-out losses in their native units; color encodes rank within each loss
-    column, because losses are not commensurate across columns. Lower is better.}
-    \label{fig:metric-conditioned-cross-evaluation}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\linewidth]{figures/metric-conditioned/metric-conditioned-objective-trajectories.pdf}
-    \caption{Arm-specific development trajectories. Points are observed losses,
-    steps are incumbent losses, and stars mark frozen winners. Panels retain
-    each objective's native units rather than implying that values are
-    comparable across objectives.}
-    \label{fig:metric-conditioned-trajectories}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\linewidth]{figures/metric-conditioned/metric-conditioned-tradeoff-rank-generalization.pdf}
-    \caption{Held-out trade-off, rank reversal, and generalization diagnostics
-    for the frozen systems. These diagnostics characterize how the chosen loss
-    changes the system found; they do not establish a universally best system.}
-    \label{fig:metric-conditioned-diagnostics}
-\end{figure}
+\input{generated/metric-conditioned/metric-conditioned-results.generated}
 \else
 \begin{center}
 \fbox{\parbox{0.9\linewidth}{\small\textbf{Result boundary.}

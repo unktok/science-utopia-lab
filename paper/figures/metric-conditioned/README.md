@@ -1,7 +1,8 @@
 # Metric-conditioned experimental figures
 
-This directory is the manuscript insertion boundary for the completed
-metric-conditioned study. It must contain all three experimental PDFs or none:
+This directory is the legacy standalone graphics boundary. The manuscript now
+uses the atomic report slice under `paper/generated/metric-conditioned/`.
+Standalone regeneration here still expects all three experimental PDFs or none:
 
 - `metric-conditioned-cross-evaluation.pdf`
 - `metric-conditioned-objective-trajectories.pdf`
