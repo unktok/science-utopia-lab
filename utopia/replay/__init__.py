@@ -46,6 +46,8 @@ __all__ = [
     "branch_events",
     "branch_manifest",
     "branch_payload",
+    "export_campaign_bundle",
+    "validate_portable_bundle",
 ]
 
 
@@ -57,5 +59,12 @@ def __getattr__(name: str):
         return {
             "ArtifactBundle": ArtifactBundle,
             "convert_artifacts": convert_artifacts,
+        }[name]
+    if name in {"export_campaign_bundle", "validate_portable_bundle"}:
+        from .campaign_adapter import export_campaign_bundle, validate_portable_bundle
+
+        return {
+            "export_campaign_bundle": export_campaign_bundle,
+            "validate_portable_bundle": validate_portable_bundle,
         }[name]
     raise AttributeError(name)

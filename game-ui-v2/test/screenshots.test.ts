@@ -7,9 +7,10 @@ const captures = {
   "noctiluca-v4-review-network-cursor-20000.png": "38a8766980a149cfcec33244a6133e3444684c8ab5314a4ac84d7760cfea1183",
   "noctiluca-v4-publication-funding-cursor-26000.png": "4516ddd36a8da5a295978ccdec13eb8c0417068abf45323de73f532dd4b585b1",
   "noctiluca-v4-publication-evidence-cursor-26000.png": "8d65b81b37cabf8bb7597d35052fb34bab45cd3b2001f9361a77e2d9a7bbb58b",
+  "noctiluca-completed-campaign-seed521-cursor-9000.png": "eb984c5aaadc69aeddb5b9b5d07b840e85f7649c1a19bef0fba7bf7e518aa923",
 };
 
-describe("v4 deterministic visual review artifacts", () => {
+describe("deterministic visual review artifacts", () => {
   for (const [name, expectedHash] of Object.entries(captures)) {
     it(`${name} is the reviewed 1440x1050 PNG`, async () => {
       const bytes = await readFile(fileURLToPath(new URL(`../screenshots/${name}`, import.meta.url)));

@@ -1,0 +1,41 @@
+{
+  "schema_version": "scienceutopia.game-campaign-source.v1",
+  "status": "completed",
+  "campaign_id": "first-closed-loop-engineering",
+  "campaign_revision": "9a10029807d5",
+  "source_commit": "0b733df425405f5e2eeb953cff2a7288f13f5af9",
+  "protocol_tag": "protocol/first-closed-loop-engineering-v1.1",
+  "campaign_result": {
+    "path": "research/results/first-closed-loop-engineering-v1.json",
+    "sha256": "3b6132c12823b34ea76fbe553688c54ed78cd03deac3aadd458a7e775a45d167"
+  },
+  "run": {
+    "id": "opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521",
+    "suggestion_id": "s5aad19dd3da73bc8",
+    "seed": 521,
+    "status": "complete"
+  },
+  "files": {
+    "run_manifest": {
+      "path": "runs/docs/opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521/run_manifest.json",
+      "sha256": "41024b28b4277ffe15513d802ebb49c822b2b65ef7d711671517fb3d972906ea"
+    },
+    "integrity": {
+      "path": "runs/docs/opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521/integrity_checks.json",
+      "sha256": "fb7152e86344e2cdc46dee17cd8f1c3edbc266b022e1f022ce95735afe7841b1"
+    },
+    "checkpoint": {
+      "path": "runs/checkpoints/opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521/checkpoint_year_1.json",
+      "sha256": "9432c21ed029a079b113c89df40f4eb569984a5e7a91c16ae418cde242cba79a"
+    },
+    "resource_ledger": {
+      "path": "runs/checkpoints/opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521/resource_ledger.jsonl",
+      "sha256": "f4b346c3e9cec25ba25956988fda91e8376515520ec2651920a27a9f3235eb02"
+    },
+    "resource_balances": {
+      "path": "runs/checkpoints/opt-first-closed-loop-engineering-9a10029807d5-smoke-optimization-d818522bc230e-s521/resource_balances.jsonl",
+      "sha256": "a3bf1664b43cc1f1f690f4d0439d9b18b0218a32f859fcfa9a00928e60b72fbb"
+    }
+  },
+  "claim_boundary": "Completed 2026-10-27 engineering-demo run. This is not the running metric-conditioned v1.1 study, not a policy result, and not evidence that the selected system is scientifically optimal."
+}

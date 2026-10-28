@@ -1,17 +1,43 @@
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { canonicalHash } from "../src/hash";
+import { canonicalHash, webCanonicalHash } from "../src/hash";
 import { parseAssetPack, parseReplayV2 } from "../src/replay";
+import { replaySource } from "../src/source";
 
 const fixtureUrl = new URL("../public/data/vertical-slice.replay.json", import.meta.url);
 const assetPackUrl = new URL("../public/assets/noctiluca/asset-pack.json", import.meta.url);
+const campaignUrl = new URL("../public/data/completed-campaign.replay.json", import.meta.url);
 
 async function fixture(): Promise<unknown> {
   return JSON.parse(await readFile(fileURLToPath(fixtureUrl), "utf8"));
 }
 
 describe("replay-view v2 contract", () => {
+  it("loads the verified completed campaign bundle", async () => {
+    const raw = JSON.parse(await readFile(fileURLToPath(campaignUrl), "utf8"));
+    const replay = parseReplayV2(raw);
+    expect(replay.metadata).toMatchObject({
+      source_kind: "verified_commit_pinned_campaign_run",
+      campaign_id: "first-closed-loop-engineering",
+      campaign_revision: "9a10029807d5",
+      source_commit: "0b733df425405f5e2eeb953cff2a7288f13f5af9",
+    });
+    expect(replay.canonical.events).toHaveLength(71);
+    expect(replay.projection.frames).toHaveLength(72);
+    expect(replay.canonical.entities.researchers).toHaveLength(12);
+    expect(replay.canonical.entities.institutions).toHaveLength(3);
+    expect(replay.choreography.flows).toHaveLength(8);
+    expect(await webCanonicalHash(replay.canonical.raw_events)).toBe(replay.web_stream_hash);
+    expect(replay.canonical.entities.researchers.every((entity) => entity.x >= 0 && entity.x <= 480)).toBe(true);
+  });
+
+  it("only resolves allowlisted replay aliases and defaults to campaign", () => {
+    expect(replaySource("")).toEqual({ key: "campaign", url: "/data/completed-campaign.replay.json" });
+    expect(replaySource("?replay=synthetic")).toEqual({ key: "synthetic", url: "/data/vertical-slice.replay.json" });
+    expect(() => replaySource("?replay=https://attacker.invalid/raw.json")).toThrow(/Unknown replay source/);
+  });
+
   it("loads the deterministic vertical slice with all six flow types", async () => {
     const replay = parseReplayV2(await fixture());
     expect(replay.choreography.duration_ms).toBe(48_000);

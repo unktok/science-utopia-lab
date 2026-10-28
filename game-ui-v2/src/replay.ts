@@ -64,13 +64,13 @@ const inferredAssetKey = (id: string, entityType: WorldEntity["entity_type"]): s
   return "ambient_courier_drone";
 };
 
-const entity = (raw: unknown, path: string, entityType: WorldEntity["entity_type"], placement?: { x: number; y: number }): WorldEntity => {
+const entity = (raw: unknown, path: string, entityType: WorldEntity["entity_type"], placement?: { x: number; y: number; asset_key?: string }): WorldEntity => {
   const row = asRecord(raw, path);
   const base = evidence(row, path);
   return {
     ...base,
     entity_type: entityType,
-    asset_key: typeof row.asset_key === "string" ? row.asset_key : inferredAssetKey(base.id, entityType),
+    asset_key: typeof row.asset_key === "string" ? row.asset_key : placement?.asset_key ?? inferredAssetKey(base.id, entityType),
     x: asNumber(row.x, `${path}.x`, placement?.x ?? 0),
     y: asNumber(row.y, `${path}.y`, placement?.y ?? 0),
     role: typeof row.role === "string" ? row.role : undefined,
@@ -81,6 +81,7 @@ const entity = (raw: unknown, path: string, entityType: WorldEntity["entity_type
 
 export function parseReplayV2(input: unknown): ReplayV2 {
   const root = asRecord(input, "replay");
+  if (root.schema_version !== "scienceutopia.replay-view.v2") throw new Error("Unsupported replay schema");
   const metadata = asRecord(root.metadata, "metadata");
   const canonical = asRecord(root.canonical, "canonical");
   const entities = asRecord(canonical.entities, "canonical.entities");
@@ -120,6 +121,7 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       entity_id: asString(row.entity_id, `${path}.entity_id`),
       x: asNumber(row.x, `${path}.x`),
       y: asNumber(row.y, `${path}.y`),
+      asset_key: typeof row.asset_key === "string" ? row.asset_key : undefined,
     };
   });
   const placementsByEntity = new Map(placements.map((placement) => [placement.entity_id, placement]));
@@ -216,6 +218,7 @@ export function parseReplayV2(input: unknown): ReplayV2 {
     schema_version: asString(root.schema_version, "schema_version"),
     event_schema_version: asString(root.event_schema_version, "event_schema_version"),
     stream_hash: asString(root.stream_hash, "stream_hash"),
+    web_stream_hash: typeof root.web_stream_hash === "string" ? root.web_stream_hash : undefined,
     derivation_version: asString(root.derivation_version, "derivation_version"),
     metadata: {
       run_id: asString(metadata.run_id ?? metadata.run ?? metadata.source_label ?? metadata.title, "metadata.run_id"),
@@ -225,6 +228,10 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       disclosure: asString(metadata.disclosure, "metadata.disclosure"),
       phase: typeof metadata.phase === "string" ? metadata.phase : undefined,
       year: typeof metadata.year === "string" || typeof metadata.year === "number" ? metadata.year : undefined,
+      campaign_id: typeof metadata.campaign_id === "string" ? metadata.campaign_id : undefined,
+      campaign_revision: typeof metadata.campaign_revision === "string" ? metadata.campaign_revision : undefined,
+      source_commit: typeof metadata.source_commit === "string" ? metadata.source_commit : undefined,
+      claim_boundary: typeof metadata.claim_boundary === "string" ? metadata.claim_boundary : undefined,
     },
     canonical: {
       events,

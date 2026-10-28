@@ -1,5 +1,22 @@
 # Deterministic visual QA
 
+## Verified completed campaign capture
+
+`noctiluca-completed-campaign-seed521-cursor-9000.png` is the first capture
+driven by an actual completed, commit-pinned campaign run rather than the
+synthetic renderer contract. It shows twelve registered agents, three derived
+institution nodes, two papers, and simultaneous paper/review flows from the
+completed seed-521 run. Its SHA-256 is
+`eb984c5aaadc69aeddb5b9b5d07b840e85f7649c1a19bef0fba7bf7e518aa923`.
+
+The 1440x1050 reduced-motion capture at cursor 9,000 ms was generated twice
+with separate empty Chrome profiles and once directly to the tracked path; all
+three PNGs were byte-identical. The visible disclosure identifies the source as
+the completed 2026-10-27 engineering demo and explicitly excludes the running
+metric-conditioned v1.1 study and policy/optimality claims.
+
+Capture URL: `/?replay=campaign&motion=reduced&cursor=9000`.
+
 ## v4 spatial activity captures
 
 The v4 captures use a 1440x1050 viewport, cursor-fixed reduced motion, the

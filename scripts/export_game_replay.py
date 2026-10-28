@@ -16,6 +16,7 @@ from utopia.replay import (
     build_viewer_payload,
     build_viewer_payload_v2,
     convert_artifacts,
+    export_campaign_bundle,
     vertical_slice_events,
     vertical_slice_metadata,
     vertical_slice_presentation,
@@ -28,6 +29,16 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--title")
     parser.add_argument("--source-label")
+    parser.add_argument(
+        "--campaign-source-manifest",
+        type=Path,
+        help="Verified source declaration for a completed commit-pinned campaign run.",
+    )
+    parser.add_argument(
+        "--campaign-root",
+        type=Path,
+        help="Local raw campaign root; required with --campaign-source-manifest.",
+    )
     parser.add_argument(
         "--view-version",
         choices=("1", "2"),
@@ -46,7 +57,19 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    if args.vertical_slice_fixture:
+    if args.campaign_source_manifest:
+        if args.checkpoint is not None or args.vertical_slice_fixture:
+            parser.error("campaign source cannot be combined with a checkpoint or fixture")
+        if args.campaign_root is None:
+            parser.error("--campaign-root is required with --campaign-source-manifest")
+        if args.view_version == "1":
+            parser.error("campaign source requires replay-view v2")
+        payload = export_campaign_bundle(
+            args.campaign_source_manifest,
+            args.campaign_root,
+            PROJECT_ROOT,
+        )
+    elif args.vertical_slice_fixture:
         if args.checkpoint is not None:
             parser.error("checkpoint cannot be combined with --vertical-slice-fixture")
         if args.view_version == "1":
@@ -66,7 +89,7 @@ def main(argv: list[str] | None = None) -> int:
         )
     else:
         if args.checkpoint is None:
-            parser.error("checkpoint is required unless --vertical-slice-fixture is used")
+            parser.error("checkpoint is required unless a fixture or campaign source is used")
         events = convert_artifacts(ArtifactBundle.discover(args.checkpoint))
         metadata = {
             "title": args.title or "ScienceUtopia replay",

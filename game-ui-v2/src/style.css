@@ -59,6 +59,7 @@ code { overflow-wrap: anywhere; color: var(--cyan); font: inherit; font-size: .8
 .verification[data-state="verified"] { border-color: var(--mint); color: var(--mint); }
 .verification[data-state="error"] { border-color: var(--coral); color: var(--coral); }
 
+.source-disclosure { margin: 0; padding: 5px 14px; border-bottom: 1px solid #2dd4ff55; color: var(--muted); background: #080b19; font: 8px/1.45 monospace; letter-spacing: .04em; }
 .world-stage { position: relative; display: flex; min-height: 0; padding: 10px 12px 7px; overflow: auto; }
 .canvas-column { min-width: 480px; flex: 1; display: grid; align-content: start; justify-items: center; gap: 6px; }
 .game-frame { --display-width: 960px; --display-height: 540px; --atmosphere: .62; position: relative; width: var(--display-width); height: var(--display-height); max-width: none; overflow: hidden; border: 1px solid var(--cyan); outline: 3px solid #10142a; background: var(--ink); box-shadow: 0 0 0 1px #000, 0 0 42px rgba(45, 212, 255, calc(var(--atmosphere) * .2)); }

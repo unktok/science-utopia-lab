@@ -1,11 +1,11 @@
 import Phaser from "phaser";
 import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
-import { canonicalHash } from "./hash";
+import { webCanonicalHash } from "./hash";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
+import { replaySource } from "./source";
 import type { EvidenceRecord, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, WorldEntity } from "./types";
 import "./style.css";
 
-const REPLAY_URL = "/data/vertical-slice.replay.json";
 const ASSET_PACK_URL = "/assets/noctiluca/asset-pack.json";
 
 const required = <T extends HTMLElement>(id: string): T => {
@@ -206,11 +206,16 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
 async function boot(): Promise<void> {
   installIntegerScaling();
   const errorPanel = required<HTMLDivElement>("world-error");
+  let replayUrl = "allowlisted replay source";
   try {
+    replayUrl = replaySource(window.location.search).url;
     const [replay, assetPack] = await Promise.all([
-      loadJson(REPLAY_URL, parseReplayV2),
+      loadJson(replayUrl, parseReplayV2),
       loadJson(ASSET_PACK_URL, parseAssetPack),
     ]);
+    const actualHash = await webCanonicalHash(replay.canonical.raw_events);
+    const supplied = (replay.web_stream_hash ?? replay.stream_hash).replace(/^sha256:/, "");
+    if (supplied !== actualHash) throw new Error(`Canonical stream hash mismatch: supplied ${supplied}, recomputed ${actualHash}`);
     const scene = new ArcologyScene(replay, assetPack);
     const missing = new Set<string>();
     window.addEventListener("noctiluca:asset-missing", ((event: CustomEvent<{ key: string }>) => {
@@ -227,12 +232,10 @@ async function boot(): Promise<void> {
         const category = selected.startsWith("flow:") ? "flow" : selected.startsWith("action:") ? "action" : selected.startsWith("event:") ? "event" : "entity";
         window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: selected, category } }));
       }
-      const actualHash = await canonicalHash(replay.canonical.raw_events);
       const verification = required<HTMLDivElement>("verification");
-      const supplied = replay.stream_hash.replace(/^sha256:/, "");
       const verified = supplied === actualHash;
       verification.dataset.state = verified ? "verified" : "error";
-      verification.textContent = verified ? `${replay.metadata.empirical ? "" : "SYNTHETIC · "}STREAM VERIFIED` : "HASH MISMATCH";
+      verification.textContent = verified ? `${replay.metadata.empirical ? "COMPLETED · " : "SYNTHETIC · "}STREAM VERIFIED` : "HASH MISMATCH";
       verification.title = verified ? `SHA-256 ${actualHash}` : `${replay.metadata.disclosure}; supplied ${supplied}, recomputed ${actualHash}`;
     }, { once: true });
     new Phaser.Game(arcologyConfig(scene));
@@ -240,13 +243,16 @@ async function boot(): Promise<void> {
     required<HTMLElement>("run-id").textContent = replay.metadata.run_id;
     required<HTMLElement>("branch-id").textContent = replay.metadata.branch;
     required<HTMLElement>("world-time").textContent = [replay.metadata.year, replay.metadata.phase].filter(Boolean).join(" / ") || "REPLAY";
+    const disclosure = required<HTMLElement>("source-disclosure");
+    disclosure.textContent = replay.metadata.claim_boundary ?? replay.metadata.disclosure;
+    disclosure.title = [replay.metadata.campaign_id, replay.metadata.campaign_revision, replay.metadata.source_commit].filter(Boolean).join(" · ");
     renderSemanticWorld(replay);
     renderEventLane(replay);
   } catch (error) {
     required<HTMLDivElement>("loading-state").hidden = true;
     errorPanel.hidden = false;
     const message = error instanceof Error ? error.message : String(error);
-    errorPanel.innerHTML = `<strong>REPLAY CHANNEL FAILED</strong><span>${escapeHtml(message)}</span><small>Expected ${escapeHtml(REPLAY_URL)} and ${escapeHtml(ASSET_PACK_URL)}. The renderer does not invent scientific activity or substitute temporary art.</small>`;
+    errorPanel.innerHTML = `<strong>REPLAY CHANNEL FAILED</strong><span>${escapeHtml(message)}</span><small>Expected ${escapeHtml(replayUrl)} and ${escapeHtml(ASSET_PACK_URL)}. The renderer does not invent scientific activity or substitute temporary art.</small>`;
     const verification = required<HTMLDivElement>("verification");
     verification.dataset.state = "error";
     verification.textContent = "LOAD ERROR";

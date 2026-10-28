@@ -68,6 +68,7 @@ export interface ReplayV2 {
   schema_version: string;
   event_schema_version: string;
   stream_hash: string;
+  web_stream_hash?: string;
   derivation_version: string;
   metadata: {
     run_id: string;
@@ -77,6 +78,10 @@ export interface ReplayV2 {
     disclosure: string;
     phase?: string;
     year?: string | number;
+    campaign_id?: string;
+    campaign_revision?: string;
+    source_commit?: string;
+    claim_boundary?: string;
   };
   canonical: {
     events: CanonicalEvent[];
@@ -93,7 +98,7 @@ export interface ReplayV2 {
     flows: VisualFlow[];
     actions: VisualAction[];
     camera_cues: CameraCue[];
-    placements: Array<EvidenceRecord & { entity_id: string; x: number; y: number }>;
+    placements: Array<EvidenceRecord & { entity_id: string; x: number; y: number; asset_key?: string }>;
   };
   ambient: {
     actors: WorldEntity[];
