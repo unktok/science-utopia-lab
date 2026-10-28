@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 09:15 JST
+Updated: 2026-10-28 10:39 JST
 
 ## Overall position
 
@@ -49,8 +49,8 @@ candidates.
 | frozen protocol | complete at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f` |
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
-| completed optimization runs | 7; all development seeds for the first candidate system, seeds 601 and 617 for the second, and seeds 601 and 607 for the third |
-| currently running | 1, participation/review arm, third initial design `db197e2eb5b1a`, seed 617 |
+| completed optimization runs | 8; all development seeds for the first and third candidate systems, and seeds 601 and 617 for the second |
+| currently running | 0 at this snapshot; the initial scheduler queue terminalized and the checkpoint retry is the next lease |
 | retryable failed runs | 1, design `d61de1ee4e74b`, seed 607; attempt 1 failed in year 4 and retains one checkpoint-resuming attempt |
 | remaining optimization runs | 37 logical runs, including the retryable second-design seed 607 run and later result-dependent suggestions |
 | frozen arm winners | 0 of 3 |
