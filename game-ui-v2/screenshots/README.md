@@ -1,5 +1,23 @@
 # Deterministic visual QA
 
+## Evidence Quay authoritative operations v2
+
+These `1440x1050` reduced-motion captures deepen the verified seed-521 replay
+without inventing simulator state. The operations dock joins the current
+canonical event to its exact authoritative projection frame and shows the
+named researcher plus the frame-recorded resource balance. The pixel route,
+courier, packet motion, and persistence between event timestamps are labeled
+`PRESENTATION-ONLY`; they are not simulation outcomes.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-evidence-quay-review-seed521-cursor-20200.png` | `d0a1aeec6f9d90b9e0a930f2e44011022c138a5e0e9106ccd378b9b18bd5d530` |
+| `noctiluca-evidence-quay-funding-seed521-cursor-36500.png` | `bb440d6db67ff7bac71811a0c8238dcbab889e5f510c6952610bd12cdf197ff6` |
+
+Each capture was repeated in a separate empty Chrome profile and was
+byte-identical. The first shows a canonical review and authoritative frame 28;
+the second shows a canonical funding-application cost and frame 45.
+
 ## Research-arcology hub v1
 
 The presentation-only transit deck keeps all three destination truth

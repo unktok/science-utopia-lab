@@ -22,6 +22,8 @@ const captures = {
   "noctiluca-optimization-mission-synthetic.png": "c32572a8c905cba705e69dfdfdbbb75546db0b006f759354051808e89c8e25eb",
   "noctiluca-arcology-hub.png": "8b59639a5ee2c1553d40db99617808ac96986cc26ab59321a9b9aa9d6489beb1",
   "noctiluca-arcology-hub-system-foundry.png": "2a7dc8db1aba35a94fc0338ed9c3ef7a5fecc91d7b7e526e3857c3042f45413c",
+  "noctiluca-evidence-quay-review-seed521-cursor-20200.png": "d0a1aeec6f9d90b9e0a930f2e44011022c138a5e0e9106ccd378b9b18bd5d530",
+  "noctiluca-evidence-quay-funding-seed521-cursor-36500.png": "bb440d6db67ff7bac71811a0c8238dcbab889e5f510c6952610bd12cdf197ff6",
 };
 
 describe("deterministic visual review artifacts", () => {

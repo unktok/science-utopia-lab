@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
+import { agentStateAtCue, buildEvidenceQuayProjection, cueAtCursor } from "./evidenceQuay";
 import { webCanonicalHash } from "./hash";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
@@ -116,6 +117,78 @@ function renderEventLane(replay: ReplayV2): void {
   }
 }
 
+interface EvidenceQuayController {
+  setCursor(cursorMs: number): void;
+}
+
+function installEvidenceQuay(replay: ReplayV2): EvidenceQuayController {
+  const quay = required<HTMLElement>("evidence-quay");
+  const heading = required<HTMLHeadingElement>("quay-heading");
+  const frameLabel = required<HTMLElement>("quay-frame");
+  const origin = required<HTMLElement>("quay-origin");
+  const destination = required<HTMLElement>("quay-destination");
+  const courier = required<HTMLElement>("quay-courier");
+  const workers = required<HTMLDivElement>("quay-workers");
+  const eventButton = required<HTMLButtonElement>("quay-event");
+  const boundary = required<HTMLParagraphElement>("quay-boundary");
+  if (!replay.metadata.empirical) {
+    quay.dataset.state = "synthetic";
+    heading.textContent = "Unavailable for synthetic replay fixtures";
+    frameLabel.textContent = "NO VERIFIED FRAME";
+    boundary.innerHTML = "<strong>FAIL-CLOSED</strong> Evidence Quay only projects verified commit-pinned campaign events and authoritative frames.";
+    return { setCursor: () => undefined };
+  }
+  const projection = buildEvidenceQuayProjection(replay);
+  boundary.innerHTML = `<strong>TRUTH BOUNDARY</strong> ${escapeHtml(projection.disclosure)}`;
+  eventButton.disabled = false;
+  eventButton.addEventListener("click", () => {
+    const id = eventButton.dataset.eventId;
+    if (id) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "event" } }));
+  });
+  let renderedEventId = "";
+  return {
+    setCursor(cursorMs: number): void {
+      const selection = cueAtCursor(projection, cursorMs);
+      if (!selection) {
+        heading.textContent = "No canonical event applied yet";
+        frameLabel.textContent = "FRAME 0 · INITIAL";
+        courier.dataset.packet = "none";
+        courier.style.left = "0%";
+        workers.replaceChildren();
+        eventButton.disabled = true;
+        eventButton.removeAttribute("data-event-id");
+        eventButton.innerHTML = "<strong>INITIAL AUTHORITATIVE FRAME</strong><span>Advance to the first canonical event.</span>";
+        renderedEventId = "";
+        return;
+      }
+      const { cue, progress } = selection;
+      courier.style.left = `${Math.round(progress * 100)}%`;
+      if (renderedEventId === cue.event.id) return;
+      renderedEventId = cue.event.id;
+      quay.dataset.activity = cue.activity;
+      heading.textContent = `${cue.activity.toUpperCase()} // ${cue.activity_label}`;
+      frameLabel.textContent = `FRAME ${cue.frame.cursor} · VERIFIED`;
+      origin.textContent = cue.motion.from;
+      destination.textContent = cue.motion.to;
+      courier.dataset.packet = cue.motion.packet_kind;
+      workers.innerHTML = cue.actor_ids.length ? cue.actor_ids.map((actorId) => {
+        const state = agentStateAtCue(cue, actorId);
+        const balance = typeof state?.balance === "number" ? `BAL ${state.balance.toFixed(0)}` : "STATE RECORDED";
+        return `<button class="quay-worker" type="button" data-researcher-id="${escapeHtml(actorId)}" title="Open ${escapeHtml(actorId)}">
+          <i class="quay-worker__pixel" aria-hidden="true"></i><strong>${escapeHtml(actorId)}</strong><small>${escapeHtml(balance)}</small>
+        </button>`;
+      }).join("") : "<span class=\"evidence-quay__system\">SYSTEM-LEVEL CANONICAL EVENT</span>";
+      workers.querySelectorAll<HTMLButtonElement>("[data-researcher-id]").forEach((button) => button.addEventListener("click", () => {
+        const id = button.dataset.researcherId;
+        if (id) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id, category: "entity" } }));
+      }));
+      eventButton.disabled = false;
+      eventButton.dataset.eventId = cue.event.id;
+      eventButton.innerHTML = `<strong>${escapeHtml(cue.event.kind)} · ${escapeHtml(cue.subject)}</strong><span>SEQ ${cue.event.sequence} · CANONICAL EVENT → AUTHORITATIVE FRAME ${cue.frame.cursor}</span>`;
+    },
+  };
+}
+
 function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   const inspector = required<HTMLElement>("inspector");
   const heading = required<HTMLHeadingElement>("inspector-heading");
@@ -146,7 +219,7 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   }) as EventListener);
 }
 
-function installControls(replay: ReplayV2, scene: ArcologyScene): void {
+function installControls(replay: ReplayV2, scene: ArcologyScene, evidenceQuay: EvidenceQuayController): void {
   const timeline = required<HTMLInputElement>("timeline");
   const play = required<HTMLButtonElement>("play-toggle");
   const output = required<HTMLOutputElement>("cursor-output");
@@ -166,6 +239,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
     timeline.value = String(Math.round(cursor));
     output.value = formatTime(cursor);
     scene.setCursor(cursor);
+    evidenceQuay.setCursor(cursor);
     chapterNav.querySelectorAll<HTMLButtonElement>("button[data-start]").forEach((button) => {
       const start = Number(button.dataset.start);
       const end = Number(button.dataset.end);
@@ -246,6 +320,9 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
     if (event.key.toLowerCase() === "f") {
       event.preventDefault();
       follow.click();
+    } else if (event.key.toLowerCase() === "q") {
+      event.preventDefault();
+      required<HTMLButtonElement>("quay-event").focus();
     } else if (event.code === "Space") {
       event.preventDefault();
       play.click();
@@ -308,7 +385,8 @@ async function boot(): Promise<void> {
     window.addEventListener("noctiluca:renderer-ready", async () => {
       required<HTMLDivElement>("loading-state").hidden = true;
       installInspector(replay, scene);
-      installControls(replay, scene);
+      const evidenceQuay = installEvidenceQuay(replay);
+      installControls(replay, scene, evidenceQuay);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
         const category = replay.canonical.events.some((event) => event.id === selected)

@@ -33,14 +33,37 @@
             <div id="world-error" class="world-error" role="alert" hidden></div>
             <div id="epistemic-status" class="epistemic-status" role="status">EPISTEMIC ROUTE // IDLE</div>
             <div id="interior-status" class="interior-status" role="status">INSTITUTION INTERIOR // IDLE</div>
+            <section id="evidence-quay" class="evidence-quay" aria-labelledby="quay-heading" aria-live="polite">
+              <header class="evidence-quay__header">
+                <div>
+                  <span class="evidence-quay__eyebrow">EVIDENCE QUAY // AUTHORITATIVE OPERATIONS</span>
+                  <h2 id="quay-heading">Waiting for verified replay</h2>
+                </div>
+                <span id="quay-frame" class="evidence-quay__frame">FRAME —</span>
+              </header>
+              <div class="evidence-quay__route" aria-hidden="true">
+                <span id="quay-origin">LAB BERTH</span>
+                <span class="evidence-quay__track"><i id="quay-courier" class="evidence-quay__courier" data-packet="none"></i></span>
+                <span id="quay-destination">CIVIC LEDGER</span>
+              </div>
+              <div class="evidence-quay__body">
+                <div id="quay-workers" class="evidence-quay__workers" aria-label="Researchers named by the current canonical event"></div>
+                <button id="quay-event" class="evidence-quay__event" type="button" disabled>
+                  <strong>NO CANONICAL EVENT APPLIED</strong>
+                  <span>Move the replay timeline to begin.</span>
+                </button>
+              </div>
+              <p id="quay-boundary" class="evidence-quay__boundary"><strong>TRUTH BOUNDARY</strong> Event activity and frame state are authoritative. Movement, route, courier and packet motion are PRESENTATION-ONLY.</p>
+            </section>
             <div class="truth-key" aria-label="Visual truth legend">
               <span data-truth="canonical">CANONICAL</span>
               <span data-truth="derived">DERIVED</span>
               <span data-truth="ambient">AMBIENT</span>
+              <span data-truth="presentation">PRESENTATION-ONLY</span>
             </div>
             <span class="minimap-frame" aria-hidden="true">MAP / LOD0</span>
           </div>
-          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, and Escape to close the inspector. Every scientific flow can be opened in the evidence inspector.</p>
+          <p id="canvas-help" class="sr-only">Use arrow keys or W A S D to pan, plus and minus to zoom, F to follow the selected researcher, Q to focus the Evidence Quay event, and Escape to close the inspector. Every scientific flow can be opened in the evidence inspector.</p>
 
           <section id="world-controls" class="transport" aria-label="Replay transport">
             <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
