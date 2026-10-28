@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 12:40 JST
+Updated: 2026-10-28 12:51 JST
 
 ## Overall position
 
@@ -55,10 +55,10 @@ candidates.
 | frozen protocol | v1 is retained at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f`; active v1.1 is tagged `protocol/metric-conditioned-optimization-v1.1` at `1078279d1ce833afe9ffb6b7c262da15357b76ab` |
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
-| completed optimization runs | active v1.1: 0 of 45 logical, 0 of 27 expected physical; archived v1 evidence remains 8 complete plus 1 terminal failure and is not pooled |
-| currently running | 1 canonical physical run: participation/review design `d3536002463db`, seed 601, attempt 2 |
+| completed optimization runs | active v1.1: 1 of 45 logical, 1 of 27 expected physical; the first run passed all four integrity and funding-trace checks in 6001.9 seconds; archived v1 evidence remains 8 complete plus 1 terminal failure and is not pooled |
+| currently running | 1 canonical physical run: participation/review design `d3536002463db`, seed 607, attempt 1 |
 | failures / retries | active v1.1: 0 terminal failed rows and 1 preserved 240.8-second operator interruption after a missing derived RAG cache was detected; archived v1: 1 empty-query failure, repaired before the new source freeze |
-| remaining optimization runs | 45 logical; with successful audited adoption of the common initial trajectories, 27 physical simulations total |
+| remaining optimization runs | 44 logical; with successful audited adoption of the common initial trajectories, 26 physical simulations remain |
 | frozen arm winners | 0 of 3 |
 | held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
 
