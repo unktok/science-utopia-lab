@@ -389,6 +389,7 @@ class ClosedLoopCampaign:
                         "command_json": canonical_json(command),
                         "output_root": str(self.paths.runs),
                         "created_utc": record["created_utc"],
+                        "source_commit": self.source["commit"],
                     })
                     planned += int(added)
                 record["status"] = "planned"
@@ -536,6 +537,7 @@ class ClosedLoopCampaign:
         registry = RunRegistry(self.paths.registry)
         try:
             rows = registry.rows()
+            adopted_count = len(registry.artifact_link_rows())
         finally:
             registry.close()
         suggestion_counts: dict[str, int] = {}
@@ -568,6 +570,10 @@ class ClosedLoopCampaign:
             "root": str(self.paths.root),
             "suggestions": suggestion_counts,
             "runs": run_counts,
+            "run_provenance": {
+                "executed_complete": run_counts.get("complete", 0) - adopted_count,
+                "adopted_complete": adopted_count,
+            },
             "budget": {
                 "used": len(state["suggestions"]),
                 "maximum": self.spec["budget"]["max_suggestions"],

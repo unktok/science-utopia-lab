@@ -451,6 +451,7 @@ def evaluate_run(
 
 def write_evaluation(evaluation: Mapping[str, Any], output_root: str | Path) -> Path:
     path = Path(output_root) / "docs" / evaluation["run_id"] / "objective_evaluation.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(evaluation, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return path
 

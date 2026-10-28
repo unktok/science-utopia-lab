@@ -274,6 +274,69 @@ class MetricConditionedStudy:
             "proposal_count": len(proposals[0]),
         }
 
+    def adopt_initial(self, canonical_arm: str | None = None) -> dict[str, Any]:
+        """Adopt completed byte-identical initial trajectories into other arms."""
+        by_id = {campaign.spec["id"]: campaign for campaign in self.campaigns}
+        canonical = by_id.get(canonical_arm) if canonical_arm else self.campaigns[0]
+        if canonical is None:
+            raise ValueError(f"unknown canonical arm {canonical_arm!r}")
+        initial_count = canonical.spec["optimizer"]["initial_random"]
+        states = {campaign.spec["id"]: campaign._load_state() for campaign in self.campaigns}
+        for campaign in self.campaigns:
+            records = states[campaign.spec["id"]]["suggestions"]
+            if len(records) != initial_count:
+                raise RuntimeError(
+                    "initial adoption requires exactly the initial proposal batch in every arm"
+                )
+        canonical_records = sorted(
+            states[canonical.spec["id"]]["suggestions"],
+            key=lambda item: item["suggestion"]["proposal_index"],
+        )
+        canonical_candidates = [
+            canonical_json(record["source_candidate"]) for record in canonical_records
+        ]
+        results: dict[str, list[dict[str, Any]]] = {}
+        for target in self.campaigns:
+            if target is canonical:
+                continue
+            target_records = sorted(
+                states[target.spec["id"]]["suggestions"],
+                key=lambda item: item["suggestion"]["proposal_index"],
+            )
+            target_candidates = [
+                canonical_json(record["source_candidate"])
+                for record in target_records
+            ]
+            if target_candidates != canonical_candidates:
+                raise RuntimeError("initial proposals are not byte-identical across arms")
+            target_registry = RunRegistry(target.paths.registry)
+            try:
+                adopted: list[dict[str, Any]] = []
+                for source_record, target_record in zip(canonical_records, target_records):
+                    if len(source_record["run_ids"]) != len(target_record["run_ids"]):
+                        raise RuntimeError("initial proposal seed replication differs across arms")
+                    for source_run, target_run in zip(
+                        source_record["run_ids"], target_record["run_ids"]
+                    ):
+                        adopted.append(target_registry.adopt_artifact(
+                            target_run,
+                            source_registry_path=canonical.paths.registry,
+                            source_run=source_run,
+                        ))
+                results[target.spec["id"]] = adopted
+            finally:
+                target_registry.close()
+        return {
+            "canonical_arm": canonical.spec["id"],
+            "targets": results,
+            "logical_runs_adopted": sum(
+                int(item["adopted"]) for items in results.values() for item in items
+            ),
+            "logical_runs_idempotent": sum(
+                int(item["idempotent"]) for items in results.values() for item in items
+            ),
+        }
+
     def freeze_winners(self) -> dict[str, Any]:
         """Seal all arm winners; refuse partial campaigns or mutable overwrite."""
         self.audit()
@@ -697,8 +760,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--study", required=True, type=Path)
     commands = parser.add_subparsers(dest="command", required=True)
-    for command in ("audit", "init", "suggest-initial", "freeze", "plan-evaluation", "report-evaluation", "status"):
+    for command in (
+        "audit", "init", "suggest-initial", "freeze", "plan-evaluation",
+        "report-evaluation", "status",
+    ):
         commands.add_parser(command)
+    adopt = commands.add_parser("adopt-initial")
+    adopt.add_argument("--canonical-arm")
     run = commands.add_parser("run-evaluation")
     run.add_argument("--limit", type=int)
     run.add_argument("--workers", type=int)
@@ -710,6 +778,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         result = study.initialize()
     elif args.command == "suggest-initial":
         result = study.suggest_initial()
+    elif args.command == "adopt-initial":
+        result = study.adopt_initial(args.canonical_arm)
     elif args.command == "freeze":
         result = study.freeze_winners()
     elif args.command == "plan-evaluation":

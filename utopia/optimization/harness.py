@@ -21,6 +21,17 @@ import sys
 import time
 from typing import Any, Iterable, Mapping
 
+from utopia.optimization.artifact_reuse import (
+    RECEIPT_SCHEMA,
+    ResolvedArtifact,
+    execution_identity,
+    file_sha256,
+    object_sha256,
+    raw_file_records,
+    receipt_path,
+    verify_receipt,
+    write_receipt,
+)
 from utopia.optimization.design_space import (
     candidate_to_cli,
     load_candidate,
@@ -168,6 +179,25 @@ CREATE TABLE IF NOT EXISTS attempt_schedulers (
     PRIMARY KEY (run_id, attempt),
     FOREIGN KEY (run_id, attempt) REFERENCES attempts(run_id, attempt),
     FOREIGN KEY (scheduler_id) REFERENCES schedulers(scheduler_id)
+);
+CREATE TABLE IF NOT EXISTS run_execution_identities (
+    run_id TEXT PRIMARY KEY,
+    identity_json TEXT NOT NULL,
+    identity_sha256 TEXT NOT NULL,
+    FOREIGN KEY (run_id) REFERENCES runs(run_id)
+);
+CREATE TABLE IF NOT EXISTS artifact_links (
+    logical_run_id TEXT PRIMARY KEY,
+    source_registry_path TEXT NOT NULL,
+    physical_run_id TEXT NOT NULL,
+    physical_output_root TEXT NOT NULL,
+    execution_identity_sha256 TEXT NOT NULL,
+    bundle_receipt_path TEXT NOT NULL,
+    bundle_receipt_sha256 TEXT NOT NULL,
+    source_attempt INTEGER NOT NULL,
+    source_attempt_provenance_sha256 TEXT NOT NULL,
+    adopted_utc TEXT NOT NULL,
+    FOREIGN KEY (logical_run_id) REFERENCES runs(run_id)
 );
 """
 
@@ -416,8 +446,7 @@ class RunRegistry:
         self.connection.close()
 
     def add(self, record: Mapping[str, Any]) -> bool:
-        before = self.connection.total_changes
-        self.connection.execute(
+        cursor = self.connection.execute(
             """INSERT OR IGNORE INTO runs
             (run_id, study_id, study_revision, design_id, design_json, sampler, fidelity,
              seed_role, seed, status, max_attempts, command_json, output_root, created_utc)
@@ -428,8 +457,45 @@ class RunRegistry:
                 "command_json", "output_root", "created_utc",
             )),
         )
+        source_commit = record.get("source_commit")
+        if source_commit is not None:
+            persisted = self.connection.execute(
+                "SELECT * FROM runs WHERE run_id=?", (record["run_id"],)
+            ).fetchone()
+            if persisted is None:
+                self.connection.rollback()
+                raise RuntimeError(f"failed to persist run {record['run_id']}")
+            requested_identity = execution_identity(record, source_commit)
+            identity = execution_identity(persisted, source_commit)
+            if requested_identity != identity:
+                self.connection.rollback()
+                raise ValueError(
+                    f"run id already exists with different execution inputs: "
+                    f"{record['run_id']}"
+                )
+            encoded_identity = canonical_json(identity)
+            identity_sha = object_sha256(identity)
+            self.connection.execute(
+                """INSERT OR IGNORE INTO run_execution_identities
+                   (run_id, identity_json, identity_sha256) VALUES (?, ?, ?)""",
+                (record["run_id"], encoded_identity, identity_sha),
+            )
+            saved = self.connection.execute(
+                """SELECT identity_json, identity_sha256
+                   FROM run_execution_identities WHERE run_id=?""",
+                (record["run_id"],),
+            ).fetchone()
+            if (
+                saved is None
+                or saved["identity_json"] != encoded_identity
+                or saved["identity_sha256"] != identity_sha
+            ):
+                self.connection.rollback()
+                raise ValueError(
+                    f"execution identity changed for existing run {record['run_id']}"
+                )
         self.connection.commit()
-        return self.connection.total_changes > before
+        return cursor.rowcount == 1
 
     def rows(self, where: str = "1=1", parameters: tuple[Any, ...] = ()) -> list[sqlite3.Row]:
         return list(self.connection.execute(
@@ -613,6 +679,267 @@ class RunRegistry:
         return list(self.connection.execute(
             "SELECT * FROM attempt_schedulers ORDER BY run_id, attempt"
         ))
+
+    def execution_identity_row(self, run: str) -> sqlite3.Row | None:
+        return self.connection.execute(
+            "SELECT * FROM run_execution_identities WHERE run_id=?", (run,)
+        ).fetchone()
+
+    def validated_execution_identity(
+        self, row: Mapping[str, Any]
+    ) -> sqlite3.Row:
+        saved = self.execution_identity_row(row["run_id"])
+        if saved is None:
+            raise ValueError(f"run lacks an execution identity: {row['run_id']}")
+        decoded = json.loads(saved["identity_json"])
+        current = execution_identity(row, decoded["producer_source_commit"])
+        if (
+            canonical_json(current) != saved["identity_json"]
+            or object_sha256(current) != saved["identity_sha256"]
+        ):
+            raise ValueError(f"run execution identity no longer matches: {row['run_id']}")
+        return saved
+
+    def artifact_link(self, run: str) -> sqlite3.Row | None:
+        return self.connection.execute(
+            "SELECT * FROM artifact_links WHERE logical_run_id=?", (run,)
+        ).fetchone()
+
+    def artifact_link_rows(self) -> list[sqlite3.Row]:
+        return list(self.connection.execute(
+            "SELECT * FROM artifact_links ORDER BY logical_run_id"
+        ))
+
+    def resolve_artifact(
+        self, row: Mapping[str, Any], *, verify: bool = True
+    ) -> ResolvedArtifact:
+        """Resolve a logical row without writing to its physical artifact."""
+        link = self.artifact_link(row["run_id"])
+        if link is None:
+            return ResolvedArtifact(
+                logical_run_id=row["run_id"],
+                physical_run_id=row["run_id"],
+                physical_output_root=Path(row["output_root"]),
+                mode="executed",
+            )
+        if verify:
+            target_identity = self.validated_execution_identity(row)
+            if target_identity["identity_sha256"] != link["execution_identity_sha256"]:
+                raise ValueError("logical run identity differs from adopted artifact")
+            receipt = verify_receipt(
+                Path(link["bundle_receipt_path"]),
+                expected_sha256=link["bundle_receipt_sha256"],
+                expected_run_id=link["physical_run_id"],
+                expected_identity_sha256=link["execution_identity_sha256"],
+            )
+            linked_root = Path(link["physical_output_root"]).resolve()
+            expected_receipt = receipt_path(
+                linked_root, link["physical_run_id"]
+            ).resolve()
+            if Path(link["bundle_receipt_path"]).resolve() != expected_receipt:
+                raise ValueError("artifact link receipt path is inconsistent")
+            if Path(receipt["physical_output_root"]).resolve() != linked_root:
+                raise ValueError("artifact link physical output root is inconsistent")
+            if (
+                Path(receipt["source_registry_path"]).resolve()
+                != Path(link["source_registry_path"]).resolve()
+            ):
+                raise ValueError("artifact link source registry is inconsistent")
+            if receipt["source_attempt"] != link["source_attempt"]:
+                raise ValueError("artifact link source attempt is inconsistent")
+            if (
+                receipt["source_attempt_provenance_sha256"]
+                != link["source_attempt_provenance_sha256"]
+            ):
+                raise ValueError("artifact link attempt provenance is inconsistent")
+        return ResolvedArtifact(
+            logical_run_id=row["run_id"],
+            physical_run_id=link["physical_run_id"],
+            physical_output_root=Path(link["physical_output_root"]),
+            mode="adopted",
+            execution_identity_sha256=link["execution_identity_sha256"],
+            bundle_receipt_sha256=link["bundle_receipt_sha256"],
+            source_registry_path=Path(link["source_registry_path"]),
+        )
+
+    def seal_artifact(self, run: str) -> dict[str, Any]:
+        """Seal a genuinely executed terminal run into an immutable receipt."""
+        rows = self.rows("run_id=?", (run,))
+        if len(rows) != 1:
+            raise ValueError(f"source run is missing: {run}")
+        row = rows[0]
+        if row["status"] != "complete" or row["attempt"] < 1:
+            raise ValueError("source run must be terminal complete and executed")
+        if self.artifact_link(run) is not None:
+            raise ValueError("an adopted logical run cannot become a physical source")
+        attempt = self.connection.execute(
+            """SELECT * FROM attempts
+               WHERE run_id=? AND attempt=? AND status='complete'""",
+            (run, row["attempt"]),
+        ).fetchone()
+        scheduler = self.connection.execute(
+            """SELECT * FROM attempt_schedulers
+               WHERE run_id=? AND attempt=?""",
+            (run, row["attempt"]),
+        ).fetchone()
+        if attempt is None or scheduler is None:
+            raise ValueError("source run lacks completed attempt/scheduler provenance")
+        identity = self.validated_execution_identity(row)
+        status, error = manifest_status(row)
+        if status != "complete":
+            raise ValueError(f"source artifact is not valid: {status}: {error}")
+        output_root = Path(row["output_root"])
+        manifest_path = output_root / "docs" / run / "run_manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest_args = manifest.get("args") if isinstance(manifest.get("args"), dict) else {}
+        decoded_identity = json.loads(identity["identity_json"])
+        if manifest.get("experiment_id") != run:
+            raise ValueError("source manifest experiment id mismatch")
+        if manifest.get("git_commit") != decoded_identity["producer_source_commit"]:
+            raise ValueError("source manifest commit differs from execution identity")
+        if manifest.get("git_dirty_files", "") != "":
+            raise ValueError("source manifest records a dirty producer worktree")
+        if manifest_args.get("seed") != row["seed"]:
+            raise ValueError("source manifest seed mismatch")
+        if manifest_args.get("model") != decoded_identity["model"]:
+            raise ValueError("source manifest model mismatch")
+        for manifest_key, identity_key in (
+            ("model_revision", "model_revision"),
+            ("api_backend", "api_backend"),
+            ("dataset_revision", "dataset_revision"),
+        ):
+            expected = decoded_identity[identity_key]
+            if expected is not None and manifest_args.get(manifest_key) != expected:
+                raise ValueError(f"source manifest {manifest_key} mismatch")
+        integrity_path = manifest_path.parent / "integrity_checks.json"
+        if not integrity_path.is_file() or integrity_path.is_symlink():
+            raise ValueError("source artifact lacks a regular integrity report")
+        provenance = {"attempt": dict(attempt), "scheduler": dict(scheduler)}
+        destination = receipt_path(output_root, run)
+        if destination.exists():
+            saved = verify_receipt(
+                destination,
+                expected_run_id=run,
+                expected_identity_sha256=identity["identity_sha256"],
+            )
+            if Path(saved["physical_output_root"]).resolve() != output_root.resolve():
+                raise ValueError("artifact receipt output root differs from source row")
+            if Path(saved["source_registry_path"]).resolve() != self.path.resolve():
+                raise ValueError("artifact receipt registry differs from source registry")
+            if saved.get("source_attempt") != row["attempt"]:
+                raise ValueError("artifact receipt source attempt differs from registry")
+            if saved.get("source_attempt_provenance_sha256") != object_sha256(provenance):
+                raise ValueError("artifact receipt attempt provenance differs from registry")
+            return saved
+        receipt = {
+            "schema": RECEIPT_SCHEMA,
+            "physical_run_id": run,
+            "physical_output_root": str(output_root.resolve()),
+            "execution_identity": decoded_identity,
+            "execution_identity_sha256": identity["identity_sha256"],
+            "source_registry_path": str(self.path.resolve()),
+            "source_attempt": row["attempt"],
+            "source_attempt_provenance": provenance,
+            "source_attempt_provenance_sha256": object_sha256(provenance),
+            "sealed_utc": utc_now(),
+            "raw_files": raw_file_records(output_root, run),
+        }
+        write_receipt(destination, receipt)
+        return verify_receipt(
+            destination,
+            expected_run_id=run,
+            expected_identity_sha256=identity["identity_sha256"],
+        )
+
+    def adopt_artifact(
+        self,
+        target_run: str,
+        *,
+        source_registry_path: str | Path,
+        source_run: str,
+    ) -> dict[str, Any]:
+        """Atomically adopt a sealed physical run into an attempt-zero target."""
+        source_path = Path(source_registry_path).resolve()
+        if source_path == self.path.resolve() and source_run == target_run:
+            raise ValueError("a run cannot adopt itself")
+        source = RunRegistry(source_path)
+        try:
+            receipt = source.seal_artifact(source_run)
+            source_row = source.rows("run_id=?", (source_run,))[0]
+            source_identity = source.execution_identity_row(source_run)
+            source_attempt = source_row["attempt"]
+        finally:
+            source.close()
+        source_receipt = receipt_path(Path(receipt["physical_output_root"]), source_run)
+        receipt_sha = file_sha256(source_receipt)
+        existing = self.artifact_link(target_run)
+        if existing is not None:
+            same = (
+                Path(existing["source_registry_path"]).resolve() == source_path
+                and existing["physical_run_id"] == source_run
+                and existing["bundle_receipt_sha256"] == receipt_sha
+            )
+            if not same:
+                raise ValueError("target run already adopted a different artifact")
+            target_rows = self.rows("run_id=?", (target_run,))
+            if len(target_rows) != 1:
+                raise ValueError(f"target run is missing: {target_run}")
+            if target_rows[0]["status"] != "complete" or target_rows[0]["attempt"] != 0:
+                raise ValueError("adopted target registry state is inconsistent")
+            if self.connection.execute(
+                "SELECT 1 FROM attempts WHERE run_id=? LIMIT 1", (target_run,)
+            ).fetchone() is not None:
+                raise ValueError("adopted target unexpectedly has an execution attempt")
+            self.resolve_artifact(target_rows[0], verify=True)
+            return {"adopted": False, "idempotent": True, **dict(existing)}
+        target_rows = self.rows("run_id=?", (target_run,))
+        if len(target_rows) != 1:
+            raise ValueError(f"target run is missing: {target_run}")
+        if source_identity is None:
+            raise ValueError("source requires an execution identity")
+
+        self.connection.execute("BEGIN IMMEDIATE")
+        try:
+            target = self.connection.execute(
+                "SELECT * FROM runs WHERE run_id=?", (target_run,)
+            ).fetchone()
+            if target is None:
+                raise ValueError(f"target run is missing: {target_run}")
+            if target["status"] != "planned" or target["attempt"] != 0:
+                raise ValueError("target must be planned with zero attempts")
+            if self.connection.execute(
+                "SELECT 1 FROM attempts WHERE run_id=? LIMIT 1", (target_run,)
+            ).fetchone() is not None:
+                raise ValueError("target already has an execution attempt")
+            target_identity = self.validated_execution_identity(target)
+            if target_identity["identity_sha256"] != source_identity["identity_sha256"]:
+                raise ValueError("source and target execution identities differ")
+            adopted_utc = utc_now()
+            self.connection.execute(
+                """INSERT INTO artifact_links
+                   (logical_run_id, source_registry_path, physical_run_id,
+                    physical_output_root, execution_identity_sha256,
+                    bundle_receipt_path, bundle_receipt_sha256, source_attempt,
+                    source_attempt_provenance_sha256, adopted_utc)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (
+                    target_run, str(source_path), source_run,
+                    receipt["physical_output_root"],
+                    source_identity["identity_sha256"], str(source_receipt), receipt_sha,
+                    source_attempt, receipt["source_attempt_provenance_sha256"], adopted_utc,
+                ),
+            )
+            self.connection.execute(
+                """UPDATE runs SET status='complete', finished_utc=?, returncode=NULL,
+                   wall_seconds=NULL, error=NULL WHERE run_id=?""",
+                (adopted_utc, target_run),
+            )
+            self.connection.commit()
+        except BaseException:
+            self.connection.rollback()
+            raise
+        link = self.artifact_link(target_run)
+        return {"adopted": True, "idempotent": False, **dict(link)}
 
 
 def plan_study(
@@ -1401,8 +1728,18 @@ def build_report(
         by_status[row["status"]] = by_status.get(row["status"], 0) + 1
     completed = [row for row in rows if row["status"] == "complete"]
     activity, pipeline_diagnostics, objective_evaluations, report_errors = [], [], [], []
+    resolved_artifacts: dict[str, ResolvedArtifact] = {}
     for row in completed:
-        trace_root = Path(row["output_root"]) / "checkpoints" / row["run_id"]
+        try:
+            artifact = registry.resolve_artifact(row, verify=True)
+            resolved_artifacts[row["run_id"]] = artifact
+        except Exception as error:
+            report_errors.append({
+                "run_id": row["run_id"],
+                "error": f"artifact resolution failed: {error}",
+            })
+            continue
+        trace_root = artifact.checkpoints_dir
         trace_summaries = []
         for trace_path in sorted(trace_root.glob(
                 "funding_application_trace_year_*.summary.json")):
@@ -1431,9 +1768,18 @@ def build_report(
         if constitution is not None:
             try:
                 evaluation = evaluate_run(
-                    run_id=row["run_id"], output_root=row["output_root"],
+                    run_id=artifact.physical_run_id,
+                    output_root=artifact.physical_output_root,
                     constitution=constitution,
                 )
+                evaluation["run_id"] = row["run_id"]
+                evaluation["artifact_provenance"] = {
+                    "mode": artifact.mode,
+                    "physical_run_id": artifact.physical_run_id,
+                    "physical_output_root": str(artifact.physical_output_root),
+                    "execution_identity_sha256": artifact.execution_identity_sha256,
+                    "bundle_receipt_sha256": artifact.bundle_receipt_sha256,
+                }
                 write_evaluation(evaluation, row["output_root"])
                 objective_evaluations.append(evaluation)
             except Exception as error:
@@ -1443,10 +1789,13 @@ def build_report(
         try:
             from utopia.analysis.release import summarize_run
 
-            result, _, _, _ = summarize_run(row["run_id"], row["output_root"])
+            result, _, _, _ = summarize_run(
+                artifact.physical_run_id, artifact.physical_output_root
+            )
             last = result["annual"][-1]
             activity.append({
                 "run_id": row["run_id"], "design_id": row["design_id"], "seed": row["seed"],
+                "execution_mode": artifact.mode,
                 "papers": last["cumulative_unique_papers"],
                 "accepted": last["cumulative_accepted_papers"],
                 "reviews": result["total_reviews"],
@@ -1469,7 +1818,7 @@ def build_report(
                 diagnostic_by_run.get(row["run_id"], {"run_id": row["run_id"]}),
                 funding_reliability_policy,
             )
-            for row in completed
+            for row in completed if row["run_id"] in resolved_artifacts
         ]
     objective_readiness = (
         summarize_evaluations(objective_evaluations, completed, constitution)
@@ -1487,7 +1836,7 @@ def build_report(
         participation_suitability = [
             evaluate_participation_measurement_suitability(
                 evaluations_by_run.get(row["run_id"]),
-                Path(row["output_root"]) / "docs" / row["run_id"],
+                resolved_artifacts[row["run_id"]].docs_dir,
                 participation_measurement_policy,
             )
             for row in completed
@@ -1507,6 +1856,13 @@ def build_report(
         "attempt_scheduler_provenance": [
             dict(item) for item in attempt_schedulers
         ],
+        "artifact_provenance_counts": {
+            "executed": sum(
+                1 for row in completed if registry.artifact_link(row["run_id"]) is None
+            ),
+            "adopted": len(registry.artifact_link_rows()),
+        },
+        "artifact_links": [dict(item) for item in registry.artifact_link_rows()],
         "attempt_failure_rate": (
             attempt_status.get("failed", 0) / len(finished_attempts) if finished_attempts else None
         ),
@@ -1514,7 +1870,10 @@ def build_report(
             attempt["wall_seconds"] for attempt in finished_attempts
             if attempt["wall_seconds"] is not None
         ),
-        "completed_run_wall_seconds": numeric_summary(row["wall_seconds"] for row in completed),
+        "completed_run_wall_seconds": numeric_summary(
+            row["wall_seconds"] for row in completed
+            if row["wall_seconds"] is not None
+        ),
         "activity_distributions": {
             field: numeric_summary(item[field] for item in activity) for field in fields
         },
