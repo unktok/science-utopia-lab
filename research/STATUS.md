@@ -37,7 +37,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | heterogeneous production slice | typed model, validator, generic registry/runner, canonical provenance, legacy compiler, and checkpointable evaluation/publication/funding adapters |
 | structural system optimization | production vertical slice | 64 typed candidates mutate node presence, mechanism family, edge presence, and latency; production evaluation/publication/funding adapters now execute through one ask/loss/tell and fingerprint-bound checkpoint boundary |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | spatial-activity v4 integrated | branch comparison plus four researchers, Publication Spine, 16 canonical events, 17 evidence-linked actions, and seven spatial flows; real campaign adapter remains |
+| game UI | verified real-campaign adapter | completed seed-521 campaign is converted by Python into 71 canonical events / 72 authoritative frames after commit, manifest, integrity, completion, and artifact-hash verification; the running v1.1 study is not represented early |
 
 ## Metric-conditioned study execution snapshot
 
