@@ -33,7 +33,7 @@ Remote: `unktok/science-utopia-lab`
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
 | whole-system `SystemSpec` | executable foundation | typed model, validator, generic registry/runner, canonical provenance, legacy compiler |
-| structural system optimization | not started | production mechanism adapters, checkpointed graph state, and topology mutation remain |
+| structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; production adapters and checkpointed graph state remain |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | v2 vertical slice verified | fixed-grid production art, six evidence-linked flows, deterministic browser review; intervention/branching remain |
 
