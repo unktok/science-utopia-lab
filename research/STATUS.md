@@ -39,7 +39,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | bidirectional simulator boundary | verified native events enter the generic graph through the workload bridge; the reverse compiler now seals exact supported fixed-topology SystemSpecs into dry-run-validated native campaign plans and explicitly rejects unsupported structure |
 | structural system optimization | communication production slice | 97 communication candidates vary broker absence, broadcast/digest implementation, fan-out edge presence, and latency through one fingerprint-bound ask/loss/tell boundary |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | verified research-arcology adapter | a pixel-art hub routes between the completed seed-521 campaign's 71 canonical events / 72 authoritative frames, a separately labeled synthetic SystemSpec sandbox, and a hash-bound v1.1 optimization snapshot; Evidence Quay renders event-bound operations while keeping spatial motion and packets presentation-only, and the running study is never presented as a completed outcome |
+| game UI | verified research-arcology adapter | a pixel-art hub routes between the completed seed-521 campaign's 71 canonical events / 72 authoritative frames, a separately labeled synthetic SystemSpec sandbox, and a hash-bound v1.1 optimization snapshot; Evidence Quay and institutional cutaways render event-bound operations while keeping rooms, sprites, spatial motion, packets, and lighting presentation-only, and the running study is never presented as a completed outcome |
 
 ## Metric-conditioned study execution snapshot
 
