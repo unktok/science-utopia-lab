@@ -5,6 +5,7 @@ from pathlib import Path
 from types import SimpleNamespace
 import tarfile
 
+import numpy as np
 import pytest
 
 from utopia.data.fulltext import (
@@ -419,6 +420,24 @@ def test_fulltext_embedding_revision_constructors_cache_and_checkpoint(
     alternate.load_documents(num_years=1)
     alternate.build_knowledge_index()
     assert len(list((path.parent / "embeddings").glob("*.pt"))) == 2
+
+
+@pytest.mark.parametrize(
+    "retrieval_type",
+    ["submission", "accepted_papers", "accepted_or_rejected_papers"],
+)
+def test_batch_retrieve_empty_queries_is_a_valid_empty_batch(retrieval_type):
+    """A zero-activity year must not enter the embedding or index paths."""
+    from utopia.data.rag import RAG
+
+    rag = object.__new__(RAG)
+    rag.device = "cpu"
+
+    result = rag.batch_retrieve([], retrieval_type=retrieval_type)
+
+    assert result["topk_indices"].shape == (0, 0)
+    assert result["topk_indices"].dtype == np.int64
+    assert tuple(result["similarity_scores"].shape) == (0, 0)
 
 
 def test_legacy_ignores_fulltext_embedding_revision_env(

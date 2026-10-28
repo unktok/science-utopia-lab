@@ -406,8 +406,21 @@ class RAG:
         Returns:
             Dictionary with 'topk_indices' and 'similarity_scores'
         """
-        
+
         assert retrieval_type in ["submission", "accepted_papers", "accepted_or_rejected_papers"], "Invalid retrieval_type"
+
+        # A scientifically valid low-resource trajectory can reach a year with
+        # no active authors (and therefore no retrieval queries).  Encoding an
+        # empty list produces a rank-one tensor in SentenceTransformers, which
+        # cannot participate in the Q x D matrix multiplication below.  There
+        # is no retrieval work to perform in this case, so preserve the empty
+        # batch explicitly instead of turning zero activity into a technical
+        # simulation failure.
+        if len(queries) == 0:
+            return {
+                'topk_indices': np.empty((0, 0), dtype=np.int64),
+                'similarity_scores': torch.empty((0, 0), device=self.device),
+            }
 
         # Select the appropriate index
         if retrieval_type == "submission":
