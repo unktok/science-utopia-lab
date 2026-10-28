@@ -1,0 +1,309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/semantic-instrumentation-shadow-report-v1.schema.json",
+  "title": "Science Utopia semantic instrumentation shadow report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "bundle_id",
+    "run_id",
+    "data_classification",
+    "source_bundle_sha256",
+    "authorization",
+    "contract_coverage",
+    "lineage_and_missingness",
+    "epistemic_progress_shadow",
+    "robustness_shadow",
+    "gaming_counterdiagnostics",
+    "ground_truth_boundary",
+    "interpretation_guard"
+  ],
+  "properties": {
+    "schema": {"const": "scienceutopia.semantic-instrumentation-shadow-report.v1"},
+    "bundle_id": {"$ref": "#/$defs/nonempty"},
+    "run_id": {"$ref": "#/$defs/nonempty"},
+    "data_classification": {
+      "enum": [
+        "synthetic_ground_truth",
+        "synthetic_gaming_counterexample",
+        "experimental_shadow"
+      ]
+    },
+    "source_bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "optimization_input",
+        "candidate_selection",
+        "promotion_veto",
+        "allowed_uses"
+      ],
+      "properties": {
+        "mode": {"const": "report_only"},
+        "optimization_input": {"const": false},
+        "candidate_selection": {"const": false},
+        "promotion_veto": {"const": false},
+        "allowed_uses": {
+          "const": ["shadow_diagnostic", "synthetic_contract_validation"]
+        }
+      }
+    },
+    "contract_coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "events",
+        "event_type_counts",
+        "claim_ids",
+        "claim_versions",
+        "evidence_items",
+        "verifications",
+        "replication_attempts",
+        "replication_resolutions",
+        "corrections_issued",
+        "corrections_propagated"
+      ],
+      "properties": {
+        "events": {"$ref": "#/$defs/count"},
+        "event_type_counts": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/count"}
+        },
+        "claim_ids": {"$ref": "#/$defs/count"},
+        "claim_versions": {"$ref": "#/$defs/count"},
+        "evidence_items": {"$ref": "#/$defs/count"},
+        "verifications": {"$ref": "#/$defs/count"},
+        "replication_attempts": {"$ref": "#/$defs/count"},
+        "replication_resolutions": {"$ref": "#/$defs/count"},
+        "corrections_issued": {"$ref": "#/$defs/count"},
+        "corrections_propagated": {"$ref": "#/$defs/count"}
+      }
+    },
+    "lineage_and_missingness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lineage_events",
+        "complete_lineages",
+        "incomplete_lineages",
+        "missing_measurements",
+        "missing_reasons",
+        "missing_fields",
+        "independence_assessments"
+      ],
+      "properties": {
+        "lineage_events": {"$ref": "#/$defs/count"},
+        "complete_lineages": {"$ref": "#/$defs/count"},
+        "incomplete_lineages": {"$ref": "#/$defs/count"},
+        "missing_measurements": {"$ref": "#/$defs/count"},
+        "missing_reasons": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/count"}
+        },
+        "missing_fields": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/count"}
+        },
+        "independence_assessments": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/independence"}
+        }
+      }
+    },
+    "epistemic_progress_shadow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_evidence_coverage",
+        "verification_coverage",
+        "independent_result_coverage",
+        "truth_target_coverage",
+        "verification_weighted_entropy_reduction",
+        "synthetic_truth_brier_improvement",
+        "interpretation"
+      ],
+      "properties": {
+        "claim_evidence_coverage": {"$ref": "#/$defs/ratio"},
+        "verification_coverage": {"$ref": "#/$defs/ratio"},
+        "independent_result_coverage": {"$ref": "#/$defs/ratio"},
+        "truth_target_coverage": {"$ref": "#/$defs/ratio"},
+        "verification_weighted_entropy_reduction": {"$ref": "#/$defs/summary"},
+        "synthetic_truth_brier_improvement": {"$ref": "#/$defs/summary"},
+        "interpretation": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "robustness_shadow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "replication_attempt_coverage",
+        "replication_resolution_coverage",
+        "truth_aligned_independent_results",
+        "correction_issuance_coverage",
+        "correction_propagation_coverage",
+        "stale_dependent_claim_refs",
+        "correction_latency_steps",
+        "interpretation"
+      ],
+      "properties": {
+        "replication_attempt_coverage": {"$ref": "#/$defs/ratio"},
+        "replication_resolution_coverage": {"$ref": "#/$defs/ratio"},
+        "truth_aligned_independent_results": {"$ref": "#/$defs/ratio"},
+        "correction_issuance_coverage": {"$ref": "#/$defs/ratio"},
+        "correction_propagation_coverage": {"$ref": "#/$defs/ratio"},
+        "stale_dependent_claim_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "correction_latency_steps": {"$ref": "#/$defs/summary"},
+        "interpretation": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "gaming_counterdiagnostics": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/$defs/independence_flag"},
+          {"$ref": "#/$defs/splitting_flag"},
+          {"$ref": "#/$defs/easy_selection_flag"}
+        ]
+      }
+    },
+    "ground_truth_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "schema", "target_count", "synthetic_only"],
+      "properties": {
+        "status": {"enum": ["observed", "missing"]},
+        "schema": {
+          "type": ["string", "null"]
+        },
+        "target_count": {"$ref": "#/$defs/count"},
+        "synthetic_only": {"type": "boolean"}
+      }
+    },
+    "interpretation_guard": {"$ref": "#/$defs/nonempty"}
+  },
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1},
+    "count": {"type": "integer", "minimum": 0},
+    "nullable_number": {"type": ["number", "null"]},
+    "ratio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numerator", "denominator", "value"],
+      "properties": {
+        "numerator": {"$ref": "#/$defs/count"},
+        "denominator": {"$ref": "#/$defs/count"},
+        "value": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "mean", "minimum", "maximum", "values"],
+      "properties": {
+        "count": {"$ref": "#/$defs/count"},
+        "mean": {"$ref": "#/$defs/nullable_number"},
+        "minimum": {"$ref": "#/$defs/nullable_number"},
+        "maximum": {"$ref": "#/$defs/nullable_number"},
+        "values": {
+          "type": "array",
+          "items": {"type": "number"}
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "event_type",
+        "claim_ref",
+        "outcome",
+        "independence_claimed",
+        "independence_status",
+        "overlapping_dimensions"
+      ],
+      "properties": {
+        "event_id": {"$ref": "#/$defs/nonempty"},
+        "event_type": {"enum": ["verification.completed", "replication.resolved"]},
+        "claim_ref": {"$ref": "#/$defs/nonempty"},
+        "outcome": {
+          "enum": ["supports", "challenges", "inconclusive", "technical_failure"]
+        },
+        "independence_claimed": {"type": "boolean"},
+        "independence_status": {"enum": ["independent", "correlated", "unknown"]},
+        "overlapping_dimensions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["method", "data", "model", "evaluator", "organization"]}
+        }
+      }
+    },
+    "independence_flag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "triggered", "event_ids", "interpretation"],
+      "properties": {
+        "id": {
+          "const": "declared-independence-with-correlated-or-missing-lineage"
+        },
+        "status": {"const": "evaluated"},
+        "triggered": {"type": "boolean"},
+        "event_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "interpretation": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "splitting_flag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "triggered",
+        "truth_target_ids",
+        "interpretation"
+      ],
+      "properties": {
+        "id": {"const": "claim-splitting-on-one-truth-target"},
+        "status": {"enum": ["evaluated", "not_evaluable"]},
+        "triggered": {"type": ["boolean", "null"]},
+        "truth_target_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "interpretation": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "easy_selection_flag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "triggered",
+        "hard_target_coverage",
+        "interpretation"
+      ],
+      "properties": {
+        "id": {"const": "easy-target-selection"},
+        "status": {"enum": ["evaluated", "not_evaluable"]},
+        "triggered": {"type": ["boolean", "null"]},
+        "hard_target_coverage": {"$ref": "#/$defs/ratio"},
+        "interpretation": {"$ref": "#/$defs/nonempty"}
+      }
+    }
+  }
+}

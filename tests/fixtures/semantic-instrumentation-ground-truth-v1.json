@@ -1,0 +1,359 @@
+{
+  "schema": "scienceutopia.semantic-instrumentation-bundle.v1",
+  "bundle_id": "synthetic-semantic-ground-truth-v1",
+  "classification": "synthetic_ground_truth",
+  "instrumentation_use": "report_only",
+  "run_id": "synthetic-ground-truth-run-v1",
+  "events": [
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-claim-easy",
+      "sequence": 0,
+      "step": 0,
+      "event_type": "claim.created",
+      "actor_id": "researcher-a",
+      "institution_id": "institute-a",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": []
+      },
+      "payload": {
+        "claim_id": "claim-easy",
+        "claim_version": 1,
+        "parent_version": null,
+        "truth_target_id": {"status": "observed", "value": "target-easy-true"},
+        "asserted_value": true,
+        "claim_type": "binary-effect",
+        "scope": "synthetic population A",
+        "prior_probability": {"status": "observed", "value": 0.55},
+        "dependencies": []
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-evidence-event.v1",
+      "event_id": "evt-evidence-easy",
+      "sequence": 1,
+      "step": 1,
+      "event_type": "evidence.attached",
+      "actor_id": "researcher-a",
+      "institution_id": "institute-a",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-claim-easy"]
+      },
+      "payload": {
+        "evidence_id": "evidence-easy",
+        "claim_ref": "claim-easy@1",
+        "result": "supports",
+        "strength": {"status": "observed", "value": 0.8},
+        "lineage": {
+          "method": {"status": "observed", "value": "method-origin-a"},
+          "data": {"status": "observed", "value": "data-origin-a"},
+          "model": {"status": "observed", "value": "model-origin-a"},
+          "evaluator": {"status": "observed", "value": "evaluator-origin-a"},
+          "organization": {"status": "observed", "value": "organization-origin-a"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-verification-event.v1",
+      "event_id": "evt-verification-easy",
+      "sequence": 2,
+      "step": 2,
+      "event_type": "verification.completed",
+      "actor_id": "verifier-b",
+      "institution_id": "institute-b",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-evidence-easy"]
+      },
+      "payload": {
+        "verification_id": "verification-easy",
+        "claim_ref": "claim-easy@1",
+        "evidence_ids": ["evidence-easy"],
+        "outcome": "supports",
+        "posterior_probability": {"status": "observed", "value": 0.9},
+        "independence_claimed": true,
+        "lineage": {
+          "method": {"status": "observed", "value": "method-verify-b"},
+          "data": {"status": "observed", "value": "data-verify-b"},
+          "model": {"status": "observed", "value": "model-verify-b"},
+          "evaluator": {"status": "observed", "value": "evaluator-verify-b"},
+          "organization": {"status": "observed", "value": "organization-verify-b"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-claim-false",
+      "sequence": 3,
+      "step": 2,
+      "event_type": "claim.created",
+      "actor_id": "researcher-c",
+      "institution_id": "institute-c",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": []
+      },
+      "payload": {
+        "claim_id": "claim-false",
+        "claim_version": 1,
+        "parent_version": null,
+        "truth_target_id": {"status": "observed", "value": "target-hard-false"},
+        "asserted_value": true,
+        "claim_type": "binary-effect",
+        "scope": "synthetic population B",
+        "prior_probability": {"status": "observed", "value": 0.6},
+        "dependencies": []
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-evidence-event.v1",
+      "event_id": "evt-evidence-false",
+      "sequence": 4,
+      "step": 3,
+      "event_type": "evidence.attached",
+      "actor_id": "researcher-c",
+      "institution_id": "institute-c",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-claim-false"]
+      },
+      "payload": {
+        "evidence_id": "evidence-false",
+        "claim_ref": "claim-false@1",
+        "result": "supports",
+        "strength": {"status": "observed", "value": 0.7},
+        "lineage": {
+          "method": {"status": "observed", "value": "method-origin-c"},
+          "data": {"status": "observed", "value": "data-origin-c"},
+          "model": {"status": "observed", "value": "model-origin-c"},
+          "evaluator": {"status": "observed", "value": "evaluator-origin-c"},
+          "organization": {"status": "observed", "value": "organization-origin-c"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-replication-event.v1",
+      "event_id": "evt-replication-attempt-false",
+      "sequence": 5,
+      "step": 4,
+      "event_type": "replication.attempted",
+      "actor_id": "replicator-d",
+      "institution_id": "institute-d",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-claim-false"]
+      },
+      "payload": {
+        "replication_id": "replication-false",
+        "claim_ref": "claim-false@1",
+        "preregistered": true,
+        "lineage": {
+          "method": {"status": "observed", "value": "method-replicate-d"},
+          "data": {"status": "observed", "value": "data-replicate-d"},
+          "model": {"status": "observed", "value": "model-replicate-d"},
+          "evaluator": {"status": "observed", "value": "evaluator-replicate-d"},
+          "organization": {"status": "observed", "value": "organization-replicate-d"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-replication-event.v1",
+      "event_id": "evt-replication-result-false",
+      "sequence": 6,
+      "step": 7,
+      "event_type": "replication.resolved",
+      "actor_id": "replicator-d",
+      "institution_id": "institute-d",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-replication-attempt-false"]
+      },
+      "payload": {
+        "replication_id": "replication-false",
+        "outcome": "challenges",
+        "posterior_probability": {"status": "observed", "value": 0.15},
+        "independence_claimed": true,
+        "lineage": {
+          "method": {"status": "observed", "value": "method-replicate-d"},
+          "data": {"status": "observed", "value": "data-replicate-d"},
+          "model": {"status": "observed", "value": "model-replicate-d"},
+          "evaluator": {"status": "observed", "value": "evaluator-replicate-d"},
+          "organization": {"status": "observed", "value": "organization-replicate-d"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-evidence-event.v1",
+      "event_id": "evt-invalidate-evidence-false",
+      "sequence": 7,
+      "step": 7,
+      "event_type": "evidence.invalidated",
+      "actor_id": "editor-f",
+      "institution_id": "journal-f",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": [
+          "evt-evidence-false",
+          "evt-replication-result-false"
+        ]
+      },
+      "payload": {
+        "evidence_id": "evidence-false",
+        "reason": "Independent replication challenged the original evidence.",
+        "invalidating_event_ids": ["evt-replication-result-false"]
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-claim-dependent",
+      "sequence": 8,
+      "step": 7,
+      "event_type": "claim.created",
+      "actor_id": "researcher-e",
+      "institution_id": "institute-e",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-claim-false"]
+      },
+      "payload": {
+        "claim_id": "claim-dependent",
+        "claim_version": 1,
+        "parent_version": null,
+        "truth_target_id": {"status": "observed", "value": "target-medium-true"},
+        "asserted_value": true,
+        "claim_type": "derived-effect",
+        "scope": "synthetic population C",
+        "prior_probability": {"status": "observed", "value": 0.5},
+        "dependencies": ["claim-false@1"]
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-correction-event.v1",
+      "event_id": "evt-correction-false",
+      "sequence": 9,
+      "step": 8,
+      "event_type": "correction.issued",
+      "actor_id": "editor-f",
+      "institution_id": "journal-f",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-replication-result-false"]
+      },
+      "payload": {
+        "correction_id": "correction-false",
+        "target_claim_ref": "claim-false@1",
+        "disposition": "withdrawn",
+        "invalidating_event_ids": ["evt-replication-result-false"],
+        "replacement_claim_ref": {
+          "status": "missing",
+          "reason": "not_applicable",
+          "detail": "The false claim is withdrawn without replacement."
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-withdraw-false",
+      "sequence": 10,
+      "step": 8,
+      "event_type": "claim.withdrawn",
+      "actor_id": "researcher-c",
+      "institution_id": "institute-c",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-claim-false", "evt-correction-false"]
+      },
+      "payload": {
+        "claim_ref": "claim-false@1",
+        "reason": "Independent replication challenged the asserted effect."
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-revise-dependent",
+      "sequence": 11,
+      "step": 9,
+      "event_type": "claim.revised",
+      "actor_id": "researcher-e",
+      "institution_id": "institute-e",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-claim-dependent", "evt-correction-false"]
+      },
+      "payload": {
+        "claim_id": "claim-dependent",
+        "claim_version": 2,
+        "parent_version": 1,
+        "truth_target_id": {"status": "observed", "value": "target-medium-true"},
+        "asserted_value": true,
+        "claim_type": "derived-effect",
+        "scope": "synthetic population C without the withdrawn dependency",
+        "prior_probability": {"status": "observed", "value": 0.5},
+        "dependencies": []
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-correction-event.v1",
+      "event_id": "evt-propagate-false",
+      "sequence": 12,
+      "step": 9,
+      "event_type": "correction.propagated",
+      "actor_id": "editor-f",
+      "institution_id": "journal-f",
+      "provenance": {
+        "run_id": "synthetic-ground-truth-run-v1",
+        "producer": "synthetic-fixture-v1",
+        "source_event_ids": ["evt-correction-false", "evt-revise-dependent"]
+      },
+      "payload": {
+        "correction_id": "correction-false",
+        "dependent_claim_ref": "claim-dependent@1",
+        "status": "updated",
+        "replacement_dependency_ref": {
+          "status": "missing",
+          "reason": "not_applicable",
+          "detail": "The withdrawn dependency was removed rather than replaced."
+        }
+      }
+    }
+  ],
+  "ground_truth": {
+    "status": "observed",
+    "schema": "scienceutopia.semantic-ground-truth.v1",
+    "universe_id": "semantic-ground-truth-universe-v1",
+    "targets": [
+      {
+        "truth_target_id": "target-easy-true",
+        "truth": true,
+        "difficulty": "easy",
+        "importance": 1.0
+      },
+      {
+        "truth_target_id": "target-medium-true",
+        "truth": true,
+        "difficulty": "medium",
+        "importance": 1.5
+      },
+      {
+        "truth_target_id": "target-hard-false",
+        "truth": false,
+        "difficulty": "hard",
+        "importance": 2.0
+      }
+    ]
+  }
+}

@@ -11,3 +11,8 @@ existence does not automatically make them optimization objectives or vetoes.
 If a metric is used to tune or select a candidate, record it as an effective
 loss or selection criterion for that campaign and allocate new held-out evidence
 for final evaluation.
+
+[`semantic-instrumentation-v1.md`](semantic-instrumentation-v1.md) is an earlier
+measurement layer: versioned claim/evidence/verification/replication/correction
+events and synthetic shadow diagnostics. It is explicitly neither a LossSpec
+nor a held-out metric, and cannot select or veto candidates.

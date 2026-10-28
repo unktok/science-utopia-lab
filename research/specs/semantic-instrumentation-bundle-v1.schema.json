@@ -1,0 +1,432 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/semantic-instrumentation-bundle-v1.schema.json",
+  "title": "Science Utopia semantic instrumentation bundle v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "bundle_id",
+    "classification",
+    "instrumentation_use",
+    "run_id",
+    "events",
+    "ground_truth"
+  ],
+  "properties": {
+    "schema": {"const": "scienceutopia.semantic-instrumentation-bundle.v1"},
+    "bundle_id": {"$ref": "#/$defs/nonempty"},
+    "classification": {
+      "enum": [
+        "synthetic_ground_truth",
+        "synthetic_gaming_counterexample",
+        "experimental_shadow"
+      ]
+    },
+    "instrumentation_use": {"const": "report_only"},
+    "run_id": {"$ref": "#/$defs/nonempty"},
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/$defs/claim_event"},
+          {"$ref": "#/$defs/evidence_event"},
+          {"$ref": "#/$defs/verification_event"},
+          {"$ref": "#/$defs/replication_event"},
+          {"$ref": "#/$defs/correction_event"}
+        ]
+      }
+    },
+    "ground_truth": {
+      "oneOf": [
+        {"$ref": "#/$defs/ground_truth"},
+        {"$ref": "#/$defs/missing"}
+      ]
+    }
+  },
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1},
+    "missing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason", "detail"],
+      "properties": {
+        "status": {"const": "missing"},
+        "reason": {
+          "enum": [
+            "not_observed",
+            "measurement_failed",
+            "redacted",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "detail": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "observed_string": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value"],
+      "properties": {
+        "status": {"const": "observed"},
+        "value": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "observed_probability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value"],
+      "properties": {
+        "status": {"const": "observed"},
+        "value": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "string_measurement": {
+      "oneOf": [
+        {"$ref": "#/$defs/observed_string"},
+        {"$ref": "#/$defs/missing"}
+      ]
+    },
+    "probability_measurement": {
+      "oneOf": [
+        {"$ref": "#/$defs/observed_probability"},
+        {"$ref": "#/$defs/missing"}
+      ]
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "data", "model", "evaluator", "organization"],
+      "properties": {
+        "method": {"$ref": "#/$defs/string_measurement"},
+        "data": {"$ref": "#/$defs/string_measurement"},
+        "model": {"$ref": "#/$defs/string_measurement"},
+        "evaluator": {"$ref": "#/$defs/string_measurement"},
+        "organization": {"$ref": "#/$defs/string_measurement"}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "producer", "source_event_ids"],
+      "properties": {
+        "run_id": {"$ref": "#/$defs/nonempty"},
+        "producer": {"$ref": "#/$defs/nonempty"},
+        "source_event_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        }
+      }
+    },
+    "event_common": {
+      "type": "object",
+      "required": [
+        "schema",
+        "event_id",
+        "sequence",
+        "step",
+        "event_type",
+        "actor_id",
+        "institution_id",
+        "provenance",
+        "payload"
+      ],
+      "properties": {
+        "event_id": {"$ref": "#/$defs/nonempty"},
+        "sequence": {"type": "integer", "minimum": 0},
+        "step": {"type": "integer", "minimum": 0},
+        "actor_id": {"$ref": "#/$defs/nonempty"},
+        "institution_id": {"$ref": "#/$defs/nonempty"},
+        "provenance": {"$ref": "#/$defs/provenance"}
+      }
+    },
+    "claim_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "claim_version",
+        "parent_version",
+        "truth_target_id",
+        "asserted_value",
+        "claim_type",
+        "scope",
+        "prior_probability",
+        "dependencies"
+      ],
+      "properties": {
+        "claim_id": {"$ref": "#/$defs/nonempty"},
+        "claim_version": {"type": "integer", "minimum": 1},
+        "parent_version": {"type": ["integer", "null"], "minimum": 1},
+        "truth_target_id": {"$ref": "#/$defs/string_measurement"},
+        "asserted_value": {"type": "boolean"},
+        "claim_type": {"$ref": "#/$defs/nonempty"},
+        "scope": {"$ref": "#/$defs/nonempty"},
+        "prior_probability": {"$ref": "#/$defs/probability_measurement"},
+        "dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"}
+        }
+      }
+    },
+    "withdraw_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_ref", "reason"],
+      "properties": {
+        "claim_ref": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"},
+        "reason": {"$ref": "#/$defs/nonempty"}
+      }
+    },
+    "claim_event": {
+      "allOf": [
+        {"$ref": "#/$defs/event_common"},
+        {
+          "properties": {
+            "schema": {"const": "scienceutopia.semantic-claim-event.v1"},
+            "event_type": {
+              "enum": ["claim.created", "claim.revised", "claim.withdrawn"]
+            },
+            "payload": {
+              "oneOf": [
+                {"$ref": "#/$defs/claim_payload"},
+                {"$ref": "#/$defs/withdraw_payload"}
+              ]
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "evidence_attach_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "claim_ref", "result", "strength", "lineage"],
+      "properties": {
+        "evidence_id": {"$ref": "#/$defs/nonempty"},
+        "claim_ref": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"},
+        "result": {"enum": ["supports", "challenges", "null"]},
+        "strength": {"$ref": "#/$defs/probability_measurement"},
+        "lineage": {"$ref": "#/$defs/lineage"}
+      }
+    },
+    "evidence_invalidate_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "reason", "invalidating_event_ids"],
+      "properties": {
+        "evidence_id": {"$ref": "#/$defs/nonempty"},
+        "reason": {"$ref": "#/$defs/nonempty"},
+        "invalidating_event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        }
+      }
+    },
+    "evidence_event": {
+      "allOf": [
+        {"$ref": "#/$defs/event_common"},
+        {
+          "properties": {
+            "schema": {"const": "scienceutopia.semantic-evidence-event.v1"},
+            "event_type": {"enum": ["evidence.attached", "evidence.invalidated"]},
+            "payload": {
+              "oneOf": [
+                {"$ref": "#/$defs/evidence_attach_payload"},
+                {"$ref": "#/$defs/evidence_invalidate_payload"}
+              ]
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "verification_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verification_id",
+        "claim_ref",
+        "evidence_ids",
+        "outcome",
+        "posterior_probability",
+        "independence_claimed",
+        "lineage"
+      ],
+      "properties": {
+        "verification_id": {"$ref": "#/$defs/nonempty"},
+        "claim_ref": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"},
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "outcome": {"enum": ["supports", "challenges", "inconclusive"]},
+        "posterior_probability": {"$ref": "#/$defs/probability_measurement"},
+        "independence_claimed": {"type": "boolean"},
+        "lineage": {"$ref": "#/$defs/lineage"}
+      }
+    },
+    "verification_event": {
+      "allOf": [
+        {"$ref": "#/$defs/event_common"},
+        {
+          "properties": {
+            "schema": {"const": "scienceutopia.semantic-verification-event.v1"},
+            "event_type": {"const": "verification.completed"},
+            "payload": {"$ref": "#/$defs/verification_payload"}
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "replication_attempt_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replication_id", "claim_ref", "preregistered", "lineage"],
+      "properties": {
+        "replication_id": {"$ref": "#/$defs/nonempty"},
+        "claim_ref": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"},
+        "preregistered": {"type": "boolean"},
+        "lineage": {"$ref": "#/$defs/lineage"}
+      }
+    },
+    "replication_resolve_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "replication_id",
+        "outcome",
+        "posterior_probability",
+        "independence_claimed",
+        "lineage"
+      ],
+      "properties": {
+        "replication_id": {"$ref": "#/$defs/nonempty"},
+        "outcome": {
+          "enum": ["supports", "challenges", "inconclusive", "technical_failure"]
+        },
+        "posterior_probability": {"$ref": "#/$defs/probability_measurement"},
+        "independence_claimed": {"type": "boolean"},
+        "lineage": {"$ref": "#/$defs/lineage"}
+      }
+    },
+    "replication_event": {
+      "allOf": [
+        {"$ref": "#/$defs/event_common"},
+        {
+          "properties": {
+            "schema": {"const": "scienceutopia.semantic-replication-event.v1"},
+            "event_type": {"enum": ["replication.attempted", "replication.resolved"]},
+            "payload": {
+              "oneOf": [
+                {"$ref": "#/$defs/replication_attempt_payload"},
+                {"$ref": "#/$defs/replication_resolve_payload"}
+              ]
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "correction_issue_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "correction_id",
+        "target_claim_ref",
+        "disposition",
+        "invalidating_event_ids",
+        "replacement_claim_ref"
+      ],
+      "properties": {
+        "correction_id": {"$ref": "#/$defs/nonempty"},
+        "target_claim_ref": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"},
+        "disposition": {"enum": ["revised", "withdrawn", "scope_narrowed"]},
+        "invalidating_event_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/nonempty"}
+        },
+        "replacement_claim_ref": {
+          "oneOf": [
+            {"$ref": "#/$defs/observed_string"},
+            {"$ref": "#/$defs/missing"}
+          ]
+        }
+      }
+    },
+    "correction_propagate_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "correction_id",
+        "dependent_claim_ref",
+        "status",
+        "replacement_dependency_ref"
+      ],
+      "properties": {
+        "correction_id": {"$ref": "#/$defs/nonempty"},
+        "dependent_claim_ref": {"type": "string", "pattern": "^.+@[1-9][0-9]*$"},
+        "status": {"enum": ["updated", "withdrawn", "acknowledged"]},
+        "replacement_dependency_ref": {
+          "oneOf": [
+            {"$ref": "#/$defs/observed_string"},
+            {"$ref": "#/$defs/missing"}
+          ]
+        }
+      }
+    },
+    "correction_event": {
+      "allOf": [
+        {"$ref": "#/$defs/event_common"},
+        {
+          "properties": {
+            "schema": {"const": "scienceutopia.semantic-correction-event.v1"},
+            "event_type": {"enum": ["correction.issued", "correction.propagated"]},
+            "payload": {
+              "oneOf": [
+                {"$ref": "#/$defs/correction_issue_payload"},
+                {"$ref": "#/$defs/correction_propagate_payload"}
+              ]
+            }
+          }
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "ground_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "schema", "universe_id", "targets"],
+      "properties": {
+        "status": {"const": "observed"},
+        "schema": {"const": "scienceutopia.semantic-ground-truth.v1"},
+        "universe_id": {"$ref": "#/$defs/nonempty"},
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["truth_target_id", "truth", "difficulty", "importance"],
+            "properties": {
+              "truth_target_id": {"$ref": "#/$defs/nonempty"},
+              "truth": {"type": "boolean"},
+              "difficulty": {"enum": ["easy", "medium", "hard"]},
+              "importance": {"type": "number", "exclusiveMinimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}

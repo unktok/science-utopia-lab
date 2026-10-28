@@ -1,0 +1,283 @@
+{
+  "schema": "scienceutopia.semantic-instrumentation-bundle.v1",
+  "bundle_id": "synthetic-semantic-gaming-counterexample-v1",
+  "classification": "synthetic_gaming_counterexample",
+  "instrumentation_use": "report_only",
+  "run_id": "synthetic-gaming-run-v1",
+  "events": [
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-game-claim-a1",
+      "sequence": 0,
+      "step": 0,
+      "event_type": "claim.created",
+      "actor_id": "gaming-researcher",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": []
+      },
+      "payload": {
+        "claim_id": "game-claim-a1",
+        "claim_version": 1,
+        "parent_version": null,
+        "truth_target_id": {"status": "observed", "value": "easy-target-a"},
+        "asserted_value": true,
+        "claim_type": "fragmented-binary-effect",
+        "scope": "easy subgroup A1",
+        "prior_probability": {"status": "observed", "value": 0.5},
+        "dependencies": []
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-evidence-event.v1",
+      "event_id": "evt-game-evidence-a1",
+      "sequence": 1,
+      "step": 1,
+      "event_type": "evidence.attached",
+      "actor_id": "gaming-researcher",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": ["evt-game-claim-a1"]
+      },
+      "payload": {
+        "evidence_id": "game-evidence-a1",
+        "claim_ref": "game-claim-a1@1",
+        "result": "supports",
+        "strength": {"status": "observed", "value": 0.99},
+        "lineage": {
+          "method": {"status": "observed", "value": "shared-method"},
+          "data": {"status": "observed", "value": "shared-data"},
+          "model": {"status": "observed", "value": "shared-model"},
+          "evaluator": {"status": "observed", "value": "shared-evaluator"},
+          "organization": {"status": "observed", "value": "shared-organization"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-verification-event.v1",
+      "event_id": "evt-game-verify-a1",
+      "sequence": 2,
+      "step": 2,
+      "event_type": "verification.completed",
+      "actor_id": "nominal-verifier-a1",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": ["evt-game-evidence-a1"]
+      },
+      "payload": {
+        "verification_id": "game-verification-a1",
+        "claim_ref": "game-claim-a1@1",
+        "evidence_ids": ["game-evidence-a1"],
+        "outcome": "supports",
+        "posterior_probability": {"status": "observed", "value": 0.99},
+        "independence_claimed": true,
+        "lineage": {
+          "method": {"status": "observed", "value": "shared-method"},
+          "data": {"status": "observed", "value": "shared-data"},
+          "model": {"status": "observed", "value": "shared-model"},
+          "evaluator": {"status": "observed", "value": "shared-evaluator"},
+          "organization": {"status": "observed", "value": "shared-organization"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-game-claim-a2",
+      "sequence": 3,
+      "step": 2,
+      "event_type": "claim.created",
+      "actor_id": "gaming-researcher",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": []
+      },
+      "payload": {
+        "claim_id": "game-claim-a2",
+        "claim_version": 1,
+        "parent_version": null,
+        "truth_target_id": {"status": "observed", "value": "easy-target-a"},
+        "asserted_value": true,
+        "claim_type": "fragmented-binary-effect",
+        "scope": "easy subgroup A2",
+        "prior_probability": {"status": "observed", "value": 0.5},
+        "dependencies": []
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-evidence-event.v1",
+      "event_id": "evt-game-evidence-a2",
+      "sequence": 4,
+      "step": 3,
+      "event_type": "evidence.attached",
+      "actor_id": "gaming-researcher",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": ["evt-game-claim-a2"]
+      },
+      "payload": {
+        "evidence_id": "game-evidence-a2",
+        "claim_ref": "game-claim-a2@1",
+        "result": "supports",
+        "strength": {"status": "observed", "value": 0.99},
+        "lineage": {
+          "method": {"status": "observed", "value": "shared-method"},
+          "data": {"status": "observed", "value": "shared-data"},
+          "model": {"status": "observed", "value": "shared-model"},
+          "evaluator": {"status": "observed", "value": "shared-evaluator"},
+          "organization": {"status": "observed", "value": "shared-organization"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-verification-event.v1",
+      "event_id": "evt-game-verify-a2",
+      "sequence": 5,
+      "step": 4,
+      "event_type": "verification.completed",
+      "actor_id": "nominal-verifier-a2",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": ["evt-game-evidence-a2"]
+      },
+      "payload": {
+        "verification_id": "game-verification-a2",
+        "claim_ref": "game-claim-a2@1",
+        "evidence_ids": ["game-evidence-a2"],
+        "outcome": "supports",
+        "posterior_probability": {"status": "observed", "value": 0.99},
+        "independence_claimed": true,
+        "lineage": {
+          "method": {"status": "observed", "value": "shared-method"},
+          "data": {"status": "observed", "value": "shared-data"},
+          "model": {"status": "observed", "value": "shared-model"},
+          "evaluator": {"status": "observed", "value": "shared-evaluator"},
+          "organization": {"status": "observed", "value": "shared-organization"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-claim-event.v1",
+      "event_id": "evt-game-claim-b",
+      "sequence": 6,
+      "step": 4,
+      "event_type": "claim.created",
+      "actor_id": "gaming-researcher",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": []
+      },
+      "payload": {
+        "claim_id": "game-claim-b",
+        "claim_version": 1,
+        "parent_version": null,
+        "truth_target_id": {"status": "observed", "value": "easy-target-b"},
+        "asserted_value": true,
+        "claim_type": "easy-binary-effect",
+        "scope": "easy population B",
+        "prior_probability": {"status": "observed", "value": 0.5},
+        "dependencies": []
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-evidence-event.v1",
+      "event_id": "evt-game-evidence-b",
+      "sequence": 7,
+      "step": 5,
+      "event_type": "evidence.attached",
+      "actor_id": "gaming-researcher",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": ["evt-game-claim-b"]
+      },
+      "payload": {
+        "evidence_id": "game-evidence-b",
+        "claim_ref": "game-claim-b@1",
+        "result": "supports",
+        "strength": {"status": "observed", "value": 0.99},
+        "lineage": {
+          "method": {"status": "observed", "value": "shared-method"},
+          "data": {"status": "observed", "value": "shared-data"},
+          "model": {"status": "observed", "value": "shared-model"},
+          "evaluator": {"status": "observed", "value": "shared-evaluator"},
+          "organization": {"status": "observed", "value": "shared-organization"}
+        }
+      }
+    },
+    {
+      "schema": "scienceutopia.semantic-verification-event.v1",
+      "event_id": "evt-game-verify-b",
+      "sequence": 8,
+      "step": 6,
+      "event_type": "verification.completed",
+      "actor_id": "nominal-verifier-b",
+      "institution_id": "gaming-institute",
+      "provenance": {
+        "run_id": "synthetic-gaming-run-v1",
+        "producer": "synthetic-gaming-fixture-v1",
+        "source_event_ids": ["evt-game-evidence-b"]
+      },
+      "payload": {
+        "verification_id": "game-verification-b",
+        "claim_ref": "game-claim-b@1",
+        "evidence_ids": ["game-evidence-b"],
+        "outcome": "supports",
+        "posterior_probability": {"status": "observed", "value": 0.99},
+        "independence_claimed": true,
+        "lineage": {
+          "method": {"status": "observed", "value": "shared-method"},
+          "data": {"status": "observed", "value": "shared-data"},
+          "model": {"status": "observed", "value": "shared-model"},
+          "evaluator": {"status": "observed", "value": "shared-evaluator"},
+          "organization": {"status": "observed", "value": "shared-organization"}
+        }
+      }
+    }
+  ],
+  "ground_truth": {
+    "status": "observed",
+    "schema": "scienceutopia.semantic-ground-truth.v1",
+    "universe_id": "semantic-gaming-universe-v1",
+    "targets": [
+      {
+        "truth_target_id": "easy-target-a",
+        "truth": true,
+        "difficulty": "easy",
+        "importance": 1.0
+      },
+      {
+        "truth_target_id": "easy-target-b",
+        "truth": true,
+        "difficulty": "easy",
+        "importance": 1.0
+      },
+      {
+        "truth_target_id": "hard-target-false",
+        "truth": false,
+        "difficulty": "hard",
+        "importance": 2.0
+      },
+      {
+        "truth_target_id": "hard-target-true",
+        "truth": true,
+        "difficulty": "hard",
+        "importance": 2.0
+      }
+    ]
+  }
+}
