@@ -31,6 +31,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Game UI v2 creative direction](tracks/game-ui-v2-creative-direction.md)
 - [Game UI v3 evidence-driven vertical slice](tracks/game-ui-v3-vertical-slice.md)
 - [Game UI intervention branch comparison](tracks/game-ui-branch-comparison-v1.md)
+- [Game UI v4 spatial activity](tracks/game-ui-v4-spatial-activity.md)
 
 ## Conceptual objects
 

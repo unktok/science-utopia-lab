@@ -37,7 +37,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | heterogeneous production slice | typed model, validator, generic registry/runner, canonical provenance, legacy compiler, and checkpointable evaluation/publication/funding adapters |
 | structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; connecting those mutations to heterogeneous production adapters remains |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | branch comparison vertical slice implemented | v3 world plus two canonical futures from one hash-verified replay origin, synchronized transport, intervention evidence, authoritative projection summaries, deterministic browser review; real campaign adapter remains |
+| game UI | spatial-activity v4 integrated | branch comparison plus four researchers, Publication Spine, 16 canonical events, 17 evidence-linked actions, and seven spatial flows; real campaign adapter remains |
 
 ## Metric-conditioned study execution snapshot
 
