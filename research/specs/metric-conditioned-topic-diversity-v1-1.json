@@ -1,0 +1,30 @@
+{
+  "schema": "scienceutopia.closed-loop-campaign.v1",
+  "id": "metric-conditioned-topic-diversity-v1-1",
+  "version": "1.1.0",
+  "status": "preregistered_development_study",
+  "study_template": "research/specs/study-v3-longitudinal-pilot.json",
+  "loss_spec": "research/objectives/losses/topic-diversity-probe-v1.json",
+  "fidelity": "longitudinal",
+  "seed_sets": {
+    "optimization": [601, 607, 617],
+    "held_out_evaluation": [701, 709, 719, 727, 733]
+  },
+  "optimizer": {
+    "kind": "adaptive_random_search",
+    "seed": 20261028,
+    "initial_random": 3,
+    "mutation_scale": 0.2
+  },
+  "budget": {
+    "max_suggestions": 5,
+    "initial_batch": 3,
+    "adaptive_batch": 1
+  },
+  "execution": {
+    "workers": 1,
+    "output_root": "outputs/optimization/metric-conditioned-v1-1",
+    "require_clean_worktree": true
+  },
+  "notes": "Protocol v1.1 arm B. Scientific inputs are unchanged from v1. V1 artifacts are forbidden; initial reuse is allowed only through the content-addressed adoption API for artifacts produced by this version's one pinned source commit. Held-out seeds remain unconsumed until all three winners are frozen."
+}

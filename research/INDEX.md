@@ -18,6 +18,8 @@ and results. New work uses the forward-only taxonomy below.
 - [First closed-loop engineering protocol](protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [First closed-loop engineering result](results/first-closed-loop-engineering-v1-interpretation.md)
 - [Metric-conditioned optimization v1 preregistration](protocols/campaigns/metric-conditioned-optimization-v1.md)
+- [Metric-conditioned optimization v1.1 repair/reuse amendment](protocols/campaigns/metric-conditioned-optimization-v1-1.md)
+- [Metric-conditioned v1 zero-query failure audit](audits/metric-conditioned-v1-zero-query-failure.md)
 - [Metric-conditioned held-out metric suite](metrics/metric-conditioned-held-out-suite-v1.json)
 - [Metric-conditioned results graphics pipeline](decisions/0009-metric-conditioned-results-graphics-pipeline.md)
 - [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
