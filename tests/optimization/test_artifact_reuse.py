@@ -98,17 +98,17 @@ def _write_raw_artifact(root, run_id, *, seed=601, model="qwen3:8b", commit=COMM
     (registry_logs / "attempt-1.log").write_text("complete\n")
 
 
-def _mark_executed(registry, record, *, status="complete"):
+def _mark_executed(registry, record, *, status="complete", scheduler_suffix=""):
     if not registry.rows("run_id=?", (record["run_id"],)):
         assert registry.add(record)
-    scheduler_id = "scheduler-" + record["run_id"]
+    scheduler_id = "scheduler-" + record["run_id"] + scheduler_suffix
     registry.start_scheduler(scheduler_id, workers=1, recovered_runs=0)
     row = registry.start(record["run_id"])
     attempt_log = (
         Path(record["output_root"])
         / "registry-logs"
         / record["run_id"]
-        / "attempt-1.log"
+        / f"attempt-{row['attempt']}.log"
     )
     registry.attach_scheduler_attempt(
         row,
@@ -419,5 +419,132 @@ def test_metric_conditioned_study_adopts_identical_initial_batch(tmp_path):
             assert len(target_registry.artifact_link_rows()) == 9
             assert {row["status"] for row in target_registry.rows()} == {"complete"}
             assert {row["attempt"] for row in target_registry.rows()} == {0}
+        finally:
+            target_registry.close()
+
+
+def test_metric_conditioned_study_skips_terminal_failed_initial_source(tmp_path):
+    manifest = json.loads((
+        ROOT / "research/specs/metric-conditioned-optimization-study-v1.json"
+    ).read_text())
+    campaign_paths = []
+    for index, relative in enumerate(manifest["campaigns"]):
+        campaign = json.loads((ROOT / relative).read_text())
+        campaign["study_template"] = str(ROOT / campaign["study_template"])
+        campaign["loss_spec"] = str(ROOT / campaign["loss_spec"])
+        campaign["execution"]["output_root"] = str(tmp_path / "outputs")
+        campaign["execution"]["require_clean_worktree"] = False
+        path = tmp_path / f"campaign-{index}.json"
+        path.write_text(json.dumps(campaign))
+        campaign_paths.append(str(path))
+    manifest["campaigns"] = campaign_paths
+    manifest_path = tmp_path / "study.json"
+    manifest_path.write_text(json.dumps(manifest))
+
+    study = MetricConditionedStudy(manifest_path)
+    study.initialize()
+    study.suggest_initial()
+    canonical = study.campaigns[0]
+    registry = RunRegistry(canonical.paths.registry)
+    try:
+        rows = registry.rows()
+        failed = rows[0]
+        for row in rows:
+            record = dict(row)
+            if row["run_id"] == failed["run_id"]:
+                _mark_executed(
+                    registry, record, status="failed", scheduler_suffix="-first"
+                )
+                _mark_executed(
+                    registry, record, status="failed", scheduler_suffix="-second"
+                )
+                continue
+            _mark_executed(registry, record)
+            identity = json.loads(
+                registry.execution_identity_row(row["run_id"])["identity_json"]
+            )
+            _write_raw_artifact(
+                Path(row["output_root"]),
+                row["run_id"],
+                seed=row["seed"],
+                model=identity["model"],
+                commit=identity["producer_source_commit"],
+            )
+    finally:
+        registry.close()
+
+    first = study.adopt_initial(canonical.spec["id"])
+    second = study.adopt_initial(canonical.spec["id"])
+
+    assert first["logical_runs_adopted"] == 16
+    assert first["logical_runs_skipped_terminal_failed"] == 2
+    assert second["logical_runs_adopted"] == 0
+    assert second["logical_runs_idempotent"] == 16
+    assert second["logical_runs_skipped_terminal_failed"] == 2
+    for target in study.campaigns[1:]:
+        skipped = first["skipped_terminal_failed"][target.spec["id"]]
+        assert len(skipped) == 1
+        assert skipped[0]["source_run_id"] == failed["run_id"]
+        assert skipped[0]["reason"] == "source_has_no_complete_physical_bundle"
+        target_registry = RunRegistry(target.paths.registry)
+        try:
+            assert len(target_registry.artifact_link_rows()) == 8
+            assert len(target_registry.rows("status='complete'")) == 8
+            planned = target_registry.rows("status='planned'")
+            assert len(planned) == 1
+            assert planned[0]["attempt"] == 0
+            assert planned[0]["design_id"] == failed["design_id"]
+            assert planned[0]["seed"] == failed["seed"]
+            assert target_registry.attempt_rows() == []
+        finally:
+            target_registry.close()
+
+
+def test_metric_conditioned_study_preflights_nonterminal_sources(tmp_path):
+    manifest = json.loads((
+        ROOT / "research/specs/metric-conditioned-optimization-study-v1.json"
+    ).read_text())
+    campaign_paths = []
+    for index, relative in enumerate(manifest["campaigns"]):
+        campaign = json.loads((ROOT / relative).read_text())
+        campaign["study_template"] = str(ROOT / campaign["study_template"])
+        campaign["loss_spec"] = str(ROOT / campaign["loss_spec"])
+        campaign["execution"]["output_root"] = str(tmp_path / "outputs")
+        campaign["execution"]["require_clean_worktree"] = False
+        path = tmp_path / f"campaign-{index}.json"
+        path.write_text(json.dumps(campaign))
+        campaign_paths.append(str(path))
+    manifest["campaigns"] = campaign_paths
+    manifest_path = tmp_path / "study.json"
+    manifest_path.write_text(json.dumps(manifest))
+
+    study = MetricConditionedStudy(manifest_path)
+    study.initialize()
+    study.suggest_initial()
+    canonical = study.campaigns[0]
+    registry = RunRegistry(canonical.paths.registry)
+    try:
+        row = registry.rows()[0]
+        _mark_executed(registry, dict(row))
+        identity = json.loads(
+            registry.execution_identity_row(row["run_id"])["identity_json"]
+        )
+        _write_raw_artifact(
+            Path(row["output_root"]),
+            row["run_id"],
+            seed=row["seed"],
+            model=identity["model"],
+            commit=identity["producer_source_commit"],
+        )
+    finally:
+        registry.close()
+
+    with pytest.raises(RuntimeError, match="canonical initial sources are not terminal"):
+        study.adopt_initial(canonical.spec["id"])
+    for target in study.campaigns[1:]:
+        target_registry = RunRegistry(target.paths.registry)
+        try:
+            assert target_registry.artifact_link_rows() == []
+            assert {row["status"] for row in target_registry.rows()} == {"planned"}
         finally:
             target_registry.close()

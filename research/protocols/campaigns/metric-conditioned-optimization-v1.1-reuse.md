@@ -56,9 +56,22 @@ python -m utopia.optimization.metric_conditioned_study \
   --canonical-arm metric-conditioned-participation-review-v1-1
 ```
 
-The command seals the nine physical artifacts and creates 18 logical adoption
-links. Each arm then runs `observe`; adaptive proposals can diverge from the
-arm-specific loss observations and execute normally.
+The command first verifies that every canonical source is terminal. When all
+nine sources are complete, it seals the nine physical artifacts and creates 18
+logical adoption links. A planned, running, or retryable-failed source blocks
+the command before any target mutation.
+
+An exhausted terminal failure has no complete physical trajectory to seal. The
+command reports it under `skipped_terminal_failed`, leaves the corresponding
+target rows planned at attempt zero, and adopts only the complete sources. The
+skipped target runs must execute independently before `observe`; a technical
+failure is never relabeled as a shared trajectory or converted into a penalty.
+Repeating the command is idempotent for adopted rows and reports the same
+terminal-failure skips.
+
+After every initial target row becomes terminal, each arm runs `observe`;
+adaptive proposals can diverge from the arm-specific loss observations and
+execute normally.
 
 Reports retain logical run ids and expose physical lineage, bundle hashes, and
 separate `executed`/`adopted` counts. An adopted trajectory is never counted as

@@ -275,7 +275,7 @@ class MetricConditionedStudy:
         }
 
     def adopt_initial(self, canonical_arm: str | None = None) -> dict[str, Any]:
-        """Adopt completed byte-identical initial trajectories into other arms."""
+        """Adopt complete initial trajectories and expose terminal source failures."""
         by_id = {campaign.spec["id"]: campaign for campaign in self.campaigns}
         canonical = by_id.get(canonical_arm) if canonical_arm else self.campaigns[0]
         if canonical is None:
@@ -295,7 +295,43 @@ class MetricConditionedStudy:
         canonical_candidates = [
             canonical_json(record["source_candidate"]) for record in canonical_records
         ]
+        canonical_registry = RunRegistry(canonical.paths.registry)
+        try:
+            canonical_rows = {
+                row["run_id"]: row for row in canonical_registry.rows()
+            }
+        finally:
+            canonical_registry.close()
+        missing_sources = [
+            run_id
+            for record in canonical_records
+            for run_id in record["run_ids"]
+            if run_id not in canonical_rows
+        ]
+        if missing_sources:
+            raise RuntimeError(
+                f"canonical initial source rows are missing: {missing_sources}"
+            )
+        nonterminal_sources = [
+            run_id
+            for record in canonical_records
+            for run_id in record["run_ids"]
+            if not (
+                canonical_rows[run_id]["status"] == "complete"
+                or (
+                    canonical_rows[run_id]["status"] == "failed"
+                    and canonical_rows[run_id]["attempt"]
+                    >= canonical_rows[run_id]["max_attempts"]
+                )
+            )
+        ]
+        if nonterminal_sources:
+            raise RuntimeError(
+                "canonical initial sources are not terminal: "
+                f"{nonterminal_sources}"
+            )
         results: dict[str, list[dict[str, Any]]] = {}
+        skipped: dict[str, list[dict[str, Any]]] = {}
         for target in self.campaigns:
             if target is canonical:
                 continue
@@ -312,28 +348,45 @@ class MetricConditionedStudy:
             target_registry = RunRegistry(target.paths.registry)
             try:
                 adopted: list[dict[str, Any]] = []
+                target_skipped: list[dict[str, Any]] = []
                 for source_record, target_record in zip(canonical_records, target_records):
                     if len(source_record["run_ids"]) != len(target_record["run_ids"]):
                         raise RuntimeError("initial proposal seed replication differs across arms")
                     for source_run, target_run in zip(
                         source_record["run_ids"], target_record["run_ids"]
                     ):
+                        source_row = canonical_rows[source_run]
+                        if source_row["status"] == "failed":
+                            target_skipped.append({
+                                "source_run_id": source_run,
+                                "target_run_id": target_run,
+                                "source_status": "terminal_failed",
+                                "source_attempt": source_row["attempt"],
+                                "source_max_attempts": source_row["max_attempts"],
+                                "reason": "source_has_no_complete_physical_bundle",
+                            })
+                            continue
                         adopted.append(target_registry.adopt_artifact(
                             target_run,
                             source_registry_path=canonical.paths.registry,
                             source_run=source_run,
                         ))
                 results[target.spec["id"]] = adopted
+                skipped[target.spec["id"]] = target_skipped
             finally:
                 target_registry.close()
         return {
             "canonical_arm": canonical.spec["id"],
             "targets": results,
+            "skipped_terminal_failed": skipped,
             "logical_runs_adopted": sum(
                 int(item["adopted"]) for items in results.values() for item in items
             ),
             "logical_runs_idempotent": sum(
                 int(item["idempotent"]) for items in results.values() for item in items
+            ),
+            "logical_runs_skipped_terminal_failed": sum(
+                len(items) for items in skipped.values()
             ),
         }
 
