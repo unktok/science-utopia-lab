@@ -51,9 +51,9 @@ one canonical arm. Then run:
 
 ```bash
 python -m utopia.optimization.metric_conditioned_study \
-  --study research/specs/metric-conditioned-optimization-study-v1.json \
+  --study research/specs/metric-conditioned-optimization-study-v1-1.json \
   adopt-initial \
-  --canonical-arm metric-conditioned-participation-review-v1
+  --canonical-arm metric-conditioned-participation-review-v1-1
 ```
 
 The command seals the nine physical artifacts and creates 18 logical adoption

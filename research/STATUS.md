@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 10:55 JST
+Updated: 2026-10-28 11:07 JST
 
 ## Overall position
 
@@ -9,10 +9,10 @@ persistent closed-loop controller. The first commit-pinned Qwen3-8B campaign
 completed all nine runs and a real result-dependent adaptive update. The first
 metric-conditioned study reached eight complete runs, then correctly paused
 after one run exhausted its retry budget on a zero-query retrieval defect. A
-minimal repair is tested outside the frozen worktree; protocol v1.1 will restart
-the same scientific design from one new clean commit with provenance-safe
-initial-trajectory adoption. This remains a synthetic research experiment, not
-a validated science-policy result.
+minimal repair and provenance-safe initial-trajectory adoption are now tested
+outside the frozen worktree. Protocol v1.1 will restart the same scientific
+design from one new clean commit. This remains a synthetic research experiment,
+not a validated science-policy result.
 
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
@@ -26,7 +26,7 @@ Remote: `unktok/science-utopia-lab`
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
-| optimization loss | v1 paused; v1.1 repair in preparation | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
+| optimization loss | v1 paused; v1.1 source freeze next | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
 | held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
@@ -47,7 +47,7 @@ candidates.
 
 | Stage | Current state |
 |---|---|
-| frozen protocol | v1 retained at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f`; v1.1 not yet frozen |
+| frozen protocol | v1 retained at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f`; v1.1 repair/reuse implementation passes its gate and awaits the final source tag |
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
 | completed optimization runs | 8; all development seeds for the first and third candidate systems, and seeds 601 and 617 for the second |
