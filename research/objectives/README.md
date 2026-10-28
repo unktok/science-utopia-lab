@@ -4,6 +4,7 @@ This directory defines what an optimizer directly tries to improve. It is not a
 registry of every quantity the simulator can measure.
 
 - `losses/`: executable and versioned optimization objectives
+- `catalog/`: literature-traceable future candidates; not executable losses
 - `design-spaces/`: parameters and mechanisms that may change
 - `constitutions/`: optional normative commitments for campaigns that explicitly
   choose them

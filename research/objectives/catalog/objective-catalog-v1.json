@@ -1,0 +1,525 @@
+{
+  "schema": "scienceutopia.objective-catalog.v1",
+  "id": "science-utopia-objective-catalog",
+  "version": "1.0.0",
+  "status": "future-campaign-research-catalog",
+  "scope": "Candidate constructs and observable proxies for campaigns after metric-conditioned optimization v1.1; this file is not a LossSpec and cannot alter the active campaign.",
+  "normative_stance": {
+    "universal_composite": "none",
+    "loss_metric_separation": "A proxy exposed to search becomes an optimization input and must receive a distinct untouched evaluation split; diagnostics named held-out remain search-invisible.",
+    "active_campaign_effect": "none"
+  },
+  "source_snapshot": {
+    "science_utopia_commit": "b528d0a93a21287f62bbc3d9ab252e8c94bc40ba",
+    "ai_scientist_survey_commit": "02b437b854e73f1bd8a274399e56167ee05a4400",
+    "survey_topic_map": "research/TOPIC-MAP.md sections Science of Science, research funding, and research evaluation"
+  },
+  "constructs": [
+    {
+      "id": "epistemic-progress",
+      "label": "Epistemic progress",
+      "definition": "Change in warranted uncertainty about typed claims, including informative negative results, rather than growth in publications or acceptance decisions.",
+      "normative_question": "Which questions and audiences should count, and is uncertainty reduction valuable when it does not improve a mission outcome?",
+      "not_equivalent_to": ["paper count", "accepted-paper count", "review score", "citation count"],
+      "citation_refs": ["fortunato-2018", "survey-value-constitution", "project-science-of-science-memo"],
+      "observable_proxies": [
+        {
+          "id": "verification-weighted-information-gain",
+          "description": "Prior-to-posterior uncertainty reduction on preregistered typed claims, credited only after an independent verification event and retaining negative results in the denominator.",
+          "observable": "sum over claims of audience-weighted information gain multiplied by verification-independence weight, reported with attempted and unverifiable claim counts",
+          "aggregation": {
+            "within_run": "time-discounted sum plus annual trajectory; do not discard negative or unresolved claims",
+            "across_seeds": "median and percentile interval with per-seed values; no imputation for missing verification",
+            "reporting": "jointly report claim count, verification coverage, baseline entropy, and information-gain distribution"
+          },
+          "direction": "maximize",
+          "optimization_role": "blocked-pending-validation",
+          "goodhart_risks": [
+            "selecting easy low-entropy claims with cheap verification",
+            "manipulating priors or audience choice to manufacture surprise",
+            "splitting claims to multiply credited information gain"
+          ],
+          "required_simulator_fields": [
+            {"field": "claim_id, claim_type, claim_version", "availability": "missing", "purpose": "define the epistemic unit and revisions"},
+            {"field": "prior_probability and posterior_probability by declared audience", "availability": "missing", "purpose": "compute calibrated information gain"},
+            {"field": "verification_event and verifier_lineage", "availability": "missing", "purpose": "separate independent constraint from evaluator agreement"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "held_out_only",
+            "diagnostic_ids": ["accepted-paper-count", "decision-count", "review-coverage"],
+            "firewall": "never_expose_to_search",
+            "rationale": "Current activity diagnostics cannot validate epistemic progress; a future implementation must first establish claim and verification semantics."
+          },
+          "implementation": {
+            "status": "not-implementable-yet",
+            "current_native_inputs": ["paper.parquet decisions", "review_action.parquet"],
+            "missing_capabilities": ["claim ledger", "calibrated beliefs", "independent verification lineage"],
+            "next_step": "Add a versioned claim/evidence/verification event model and validate it on synthetic ground-truth worlds before defining a LossSpec."
+          },
+          "citation_refs": ["survey-value-constitution", "survey-possibility-space", "project-science-of-science-memo"]
+        }
+      ]
+    },
+    {
+      "id": "novelty",
+      "label": "Useful novelty and exploration",
+      "definition": "New combinations, representations, questions, or discriminating tests that expand reachable inquiry while remaining answerable to evidence.",
+      "normative_question": "How much resource should be reserved for speculative novelty versus consolidation, and who bears its opportunity cost?",
+      "not_equivalent_to": ["semantic distance alone", "topic entropy", "disruption index alone", "idea count"],
+      "citation_refs": ["uzzi-2013", "survey-possibility-space", "project-science-of-science-memo"],
+      "observable_proxies": [
+        {
+          "id": "conventional-core-atypical-test-portfolio",
+          "description": "Portfolio share combining a conventional evidence base with an atypical relation or genuinely new discriminating test, with later validation tracked separately.",
+          "observable": "joint distribution of conventionality, atypicality, discriminating-test novelty, and later validation; never semantic distance alone",
+          "aggregation": {
+            "within_run": "portfolio distribution by year with tail mass and latency-to-validation",
+            "across_seeds": "paired seed contrasts and percentile interval for each component",
+            "reporting": "four-component vector and scatterplot; no single novelty total"
+          },
+          "direction": "target-range",
+          "optimization_role": "future-vector-component",
+          "goodhart_risks": [
+            "incoherent recombination rewarded as novelty",
+            "cosmetic reframing or ontology splitting",
+            "abandoning replication and cumulative development",
+            "optimizing audience priors to create surprise"
+          ],
+          "required_simulator_fields": [
+            {"field": "submission topic and semantic representation", "availability": "derivable", "purpose": "estimate relation to prior work"},
+            {"field": "knowledge lineage and cited combination", "availability": "missing", "purpose": "separate conventional base from atypical combination"},
+            {"field": "discriminating_test_id and tested_alternatives", "availability": "missing", "purpose": "distinguish new tests from textual novelty"},
+            {"field": "later_validation_event", "availability": "missing", "purpose": "observe whether novelty survives constraint"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "optimization_input",
+            "diagnostic_ids": [],
+            "firewall": "allocate_new_evidence_split",
+            "rationale": "If a future search uses this portfolio signal, later validation and current topic-entropy diagnostics must remain on distinct seeds or scenarios."
+          },
+          "implementation": {
+            "status": "partially-derivable",
+            "current_native_inputs": ["topic labels", "embedding-based exploration trackers", "topic entropy"],
+            "missing_capabilities": ["knowledge lineage", "typed discriminating tests", "validation latency"],
+            "next_step": "Prototype the distribution without optimizer exposure, then test construct validity against hand-coded coherent and incoherent novelty fixtures."
+          },
+          "citation_refs": ["uzzi-2013", "survey-possibility-space", "project-science-of-science-memo"]
+        }
+      ]
+    },
+    {
+      "id": "robustness",
+      "label": "Epistemic robustness and correction",
+      "definition": "Persistence of appropriately scoped claims across independent data, methods, contexts, and challenges, together with timely propagation of corrections.",
+      "normative_question": "Which claims merit scarce replication capacity, and how much heterogeneity should count as failure rather than scope information?",
+      "not_equivalent_to": ["same-code reproducibility", "reviewer agreement", "absence of retraction", "test pass rate"],
+      "citation_refs": ["nasem-2019", "survey-value-constitution", "project-science-of-science-memo"],
+      "observable_proxies": [
+        {
+          "id": "independent-replication-and-correction-profile",
+          "description": "Vector of replication attempt coverage, effect/claim agreement under independent lineages, correction latency, and stale downstream reliance.",
+          "observable": "replication attempts and outcomes linked to claim versions, plus time from invalidation to correction and dependent-decision update",
+          "aggregation": {
+            "within_run": "claim-importance-stratified rates and survival curves",
+            "across_seeds": "per-component medians and intervals, preserving attempted/unattempted denominators",
+            "reporting": "replication coverage, heterogeneity, correction latency, and stale reliance remain separate"
+          },
+          "direction": "pareto",
+          "optimization_role": "blocked-pending-validation",
+          "goodhart_risks": [
+            "testing only easy claims",
+            "narrowing claim scope after failure without recording revisions",
+            "discouraging risky research to maximize survival",
+            "using correlated model lineages as independent replications"
+          ],
+          "required_simulator_fields": [
+            {"field": "claim_version and scope", "availability": "missing", "purpose": "bind replication to the tested claim"},
+            {"field": "replication_attempt and outcome", "availability": "missing", "purpose": "retain the full attempt denominator"},
+            {"field": "method, data, model, and evaluator lineage", "availability": "missing", "purpose": "measure independence rather than actor count"},
+            {"field": "correction and dependent-decision events", "availability": "missing", "purpose": "measure correction propagation"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "held_out_only",
+            "diagnostic_ids": ["review-coverage", "decision-count"],
+            "firewall": "never_expose_to_search",
+            "rationale": "Review completion and decisions are process diagnostics, not evidence that claims replicate or corrections propagate."
+          },
+          "implementation": {
+            "status": "not-implementable-yet",
+            "current_native_inputs": ["review actions", "paper decisions"],
+            "missing_capabilities": ["claim lineage", "replication mechanism", "correction dependency graph"],
+            "next_step": "Implement claim-version and replication/correction events, then test recovery on seeded false-claim and heterogeneous-effect worlds."
+          },
+          "citation_refs": ["nasem-2019", "survey-value-constitution", "project-science-of-science-memo"]
+        }
+      ]
+    },
+    {
+      "id": "diversity",
+      "label": "Epistemic and institutional diversity",
+      "definition": "Variety, balance, and disparity across topics, methods, evidence, lineages, institutions, and surviving branches, including their ability to interact coherently.",
+      "normative_question": "Which distinctions deserve preservation, and when does concentration reflect useful specialization rather than premature closure?",
+      "not_equivalent_to": ["topic entropy alone", "headcount", "number of labels", "uniform allocation"],
+      "citation_refs": ["stirling-2007", "survey-possibility-space", "project-science-of-science-memo"],
+      "observable_proxies": [
+        {
+          "id": "rao-stirling-branch-survival-profile",
+          "description": "Topic or lineage variety and balance weighted by pairwise disparity, accompanied by branch survival, reopening, and integration coherence.",
+          "observable": "Rao-Stirling diversity over a frozen ontology/distance matrix plus branch survival and cross-branch evidence integration",
+          "aggregation": {
+            "within_run": "area under annual diversity trajectory plus end-state branch survival and reopening rates",
+            "across_seeds": "component-wise mean, population SD, and rank stability",
+            "reporting": "variety, balance, disparity, survival, and coherence are shown independently"
+          },
+          "direction": "pareto",
+          "optimization_role": "future-vector-component",
+          "goodhart_risks": [
+            "splitting near-identical topics to increase variety",
+            "maintaining unproductive branches indefinitely",
+            "maximizing disparity while destroying coherence",
+            "confusing shared foundation-model outputs with independent lineages"
+          ],
+          "required_simulator_fields": [
+            {"field": "annual topic shares", "availability": "native", "purpose": "measure variety and balance"},
+            {"field": "frozen topic or lineage distance matrix", "availability": "missing", "purpose": "measure disparity"},
+            {"field": "branch parent, suspended, extinct, and reopened events", "availability": "missing", "purpose": "measure option survival"},
+            {"field": "evidence integration links", "availability": "missing", "purpose": "separate diversity from disconnected fragmentation"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "optimization_input",
+            "diagnostic_ids": [],
+            "firewall": "allocate_new_evidence_split",
+            "rationale": "The current topic-entropy probe is an adversarial proxy arm; this richer construct would require a new campaign and independent branch/coherence diagnostics."
+          },
+          "implementation": {
+            "status": "partially-derivable",
+            "current_native_inputs": ["ecosystem_year.topic_entropy", "occupied_directions", "topic labels"],
+            "missing_capabilities": ["frozen disparity matrix", "branch lineage and reopening", "integration coherence"],
+            "next_step": "Add a versioned ontology and distance matrix, then compare entropy and Rao-Stirling rankings before any optimization use."
+          },
+          "citation_refs": ["stirling-2007", "survey-possibility-space", "project-science-of-science-memo"]
+        }
+      ]
+    },
+    {
+      "id": "participation",
+      "label": "Participation and research-capacity continuity",
+      "definition": "The ability of heterogeneous researchers to enter, remain, exercise meaningful research routes, exit voluntarily, and regain capability after shocks.",
+      "normative_question": "Whose participation is valuable, what constitutes meaningful agency rather than forced retention, and which burdens are acceptable?",
+      "not_equivalent_to": ["active headcount", "retention alone", "submission count", "equal final resources"],
+      "citation_refs": ["survey-participation-typed", "survey-value-constitution", "project-ai-survey-memo"],
+      "observable_proxies": [
+        {
+          "id": "cohort-route-participation-profile",
+          "description": "Cohort survival and attrition combined with access to proposal, review, resource, collaboration, challenge, and voluntary-exit routes.",
+          "observable": "initial-cohort survival curve and route-specific opportunity/use rates by preregistered resource and career strata",
+          "aggregation": {
+            "within_run": "survival curve, route coverage, burden, and exit-reason distribution",
+            "across_seeds": "paired strata contrasts with uncertainty; retain zero-opportunity denominators",
+            "reporting": "aggregate and preregistered slices, with route access separate from route use"
+          },
+          "direction": "pareto",
+          "optimization_role": "future-vector-component",
+          "goodhart_risks": [
+            "preventing voluntary exit to improve retention",
+            "keeping inactive or under-resourced agents nominally active",
+            "increasing low-value submissions to simulate participation",
+            "averaging away blocked routes for low-resource cohorts"
+          ],
+          "required_simulator_fields": [
+            {"field": "agent_id, year, is_active, preregistered resource_band", "availability": "native", "purpose": "measure cohort continuity without outcome-conditioned slicing"},
+            {"field": "submission, review, funding, and collaboration events", "availability": "native", "purpose": "measure some participation routes"},
+            {"field": "opportunity denominator by route", "availability": "derivable", "purpose": "separate access from chosen use"},
+            {"field": "exit reason and voluntariness", "availability": "missing", "purpose": "distinguish attrition from voluntary mobility"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "optimization_input",
+            "diagnostic_ids": [],
+            "firewall": "allocate_new_evidence_split",
+            "rationale": "Active-researcher fraction can be a future loss component only when untouched attrition, route, and burden diagnostics use separate seeds."
+          },
+          "implementation": {
+            "status": "partially-derivable",
+            "current_native_inputs": ["agent_year.parquet", "review_action.parquet", "funding application traces", "activity counts"],
+            "missing_capabilities": ["complete opportunity denominators", "exit reasons", "challenge and appeal routes"],
+            "next_step": "Build a report-only route ledger and validate access/use/exit semantics before proposing any new scalar LossSpec."
+          },
+          "citation_refs": ["survey-participation-typed", "project-ai-survey-memo"]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "label": "Resource and verification efficiency",
+      "definition": "Marginal warranted knowledge, reusable capability, or commitment-specific outcome produced per scarce resource and time, with burden and latency retained.",
+      "normative_question": "Which outputs count in the numerator, what capabilities must not be treated as overhead, and whose labor or opportunity cost is counted?",
+      "not_equivalent_to": ["papers per dollar", "fewest reviews", "shortest latency", "maximum resource equality"],
+      "citation_refs": ["fortin-currie-2013", "survey-allocation", "project-science-of-science-memo"],
+      "observable_proxies": [
+        {
+          "id": "marginal-verified-return-profile",
+          "description": "Marginal verified epistemic or mission return over funding, compute, researcher time, review labor, and latency, retaining reusable infrastructure as a separate output.",
+          "observable": "incremental verified return by resource band and design, with total resource ledger, queue time, and capability creation",
+          "aggregation": {
+            "within_run": "annual marginal-return curve and cumulative cost/outcome frontier",
+            "across_seeds": "paired design contrasts and bootstrap interval; do not ratio aggregate totals without support",
+            "reporting": "numerator, each denominator, latency, and capability outputs shown separately"
+          },
+          "direction": "pareto",
+          "optimization_role": "blocked-pending-validation",
+          "goodhart_risks": [
+            "choosing easy cheap work and suppressing hard high-option-value research",
+            "eliminating review or replication to reduce measured burden",
+            "shifting costs to unlogged actors or future periods",
+            "counting unverified quantity as return"
+          ],
+          "required_simulator_fields": [
+            {"field": "funding allocation, inflow, ending balance, application pipeline", "availability": "native", "purpose": "reconcile financial resources"},
+            {"field": "review actions and active researcher-time", "availability": "native", "purpose": "measure visible labor burden"},
+            {"field": "compute, application, administration, and maintenance labor", "availability": "missing", "purpose": "prevent cost shifting"},
+            {"field": "verified epistemic or mission outcome", "availability": "missing", "purpose": "supply a defensible numerator"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "held_out_only",
+            "diagnostic_ids": ["funding-and-resource-ledger", "review-coverage", "submission-count"],
+            "firewall": "never_expose_to_search",
+            "rationale": "The current ledger and activity counts diagnose resources and process but do not provide a validated return numerator."
+          },
+          "implementation": {
+            "status": "not-implementable-yet",
+            "current_native_inputs": ["funding-and-resource-ledger", "review burden", "submission and decision counts"],
+            "missing_capabilities": ["verified-return numerator", "complete labor and compute ledger", "capability asset accounting"],
+            "next_step": "Complete cost accounting and pair it with a validated epistemic or mission outcome; until then keep efficiency report-only."
+          },
+          "citation_refs": ["fortin-currie-2013", "survey-allocation", "project-science-of-science-memo"]
+        }
+      ]
+    },
+    {
+      "id": "public-value",
+      "label": "Mission-specific public value",
+      "definition": "Benefits, burdens, risks, option costs, and capabilities produced for explicitly identified publics under a versioned mission and authority relation.",
+      "normative_question": "Who defines the mission, who has standing, whose harms cannot be averaged away, and when may public authority revise or stop it?",
+      "not_equivalent_to": ["government KPI", "GDP", "patent count", "mission milestone alone", "national competitiveness"],
+      "citation_refs": ["survey-value-standing", "survey-value-constitution", "project-ai-survey-memo"],
+      "observable_proxies": [
+        {
+          "id": "mission-outcome-distribution-profile",
+          "description": "Commitment-specific target attainment reported with uncertainty, benefit and burden distributions, externalities, affected-party standing, and alternative portfolio cost.",
+          "observable": "mission outcome by beneficiary/loss-bearer group plus risk, time, excluded alternatives, appeal, independent verification, and public counter-capacity",
+          "aggregation": {
+            "within_run": "mission milestone trajectory and group-specific benefit/burden distributions",
+            "across_seeds": "scenario-conditional uncertainty and worst-supported group outcomes; no national aggregate utility",
+            "reporting": "vector of attainment, distribution, independence, contestability, alternatives, and recovery"
+          },
+          "direction": "pareto",
+          "optimization_role": "blocked-pending-validation",
+          "goodhart_risks": [
+            "equating official targets with public value",
+            "hiding minority, non-user, future-generation, or environmental losses in aggregates",
+            "self-certification when mission owner also evaluates success",
+            "short KPI windows extinguishing long-latency options"
+          ],
+          "required_simulator_fields": [
+            {"field": "mission_spec_version, owner, authority, expiry", "availability": "missing", "purpose": "bound the commitment and revision authority"},
+            {"field": "beneficiary, payer, loss_bearer, affected_non_user", "availability": "missing", "purpose": "represent public-value distribution"},
+            {"field": "mission outcome and uncertainty", "availability": "missing", "purpose": "measure target attainment"},
+            {"field": "excluded alternatives and opportunity cost", "availability": "missing", "purpose": "make portfolio displacement visible"},
+            {"field": "appeal, independent evaluator, provider dependency", "availability": "missing", "purpose": "measure contestability and counter-capacity"}
+          ],
+          "held_out_diagnostic_relation": {
+            "classification": "held_out_only",
+            "diagnostic_ids": ["funding-and-resource-ledger", "attrition-fraction"],
+            "firewall": "never_expose_to_search",
+            "rationale": "Funding and participation can reveal burdens but cannot stand in for public outcomes or legitimate mission choice."
+          },
+          "implementation": {
+            "status": "not-implementable-yet",
+            "current_native_inputs": ["funding/resource distribution", "researcher attrition"],
+            "missing_capabilities": ["versioned mission model", "public stakeholder model", "outcome causal chain", "standing and appeal", "externality model"],
+            "next_step": "Implement one explicitly bounded synthetic mission scenario with separate outcome, authority, and affected-party objects; do not generalize it to scientific value."
+          },
+          "citation_refs": ["survey-value-standing", "project-ai-survey-memo"]
+        }
+      ]
+    }
+  ],
+  "candidate_loss_families": [
+    {
+      "id": "validated-claim-progress-family",
+      "status": "future-campaign-proposal",
+      "construct_refs": ["epistemic-progress", "robustness"],
+      "proposal": "Compare search under information gain, independent verification, and correction-aware variants after claim semantics exist; retain each component and cross-evaluate on untouched worlds.",
+      "prerequisites": ["claim/evidence ledger", "synthetic ground truth", "independence model", "new optimization and held-out seed allocations"],
+      "citation_refs": ["nasem-2019", "survey-value-constitution"]
+    },
+    {
+      "id": "exploration-portfolio-family",
+      "status": "future-campaign-proposal",
+      "construct_refs": ["novelty", "diversity"],
+      "proposal": "Run separate arms for atypical-test exploration, disparity-aware diversity, and branch-option preservation rather than one weighted novelty score.",
+      "prerequisites": ["frozen ontology and distance matrix", "branch lineage", "coherence and later-validation diagnostics", "new held-out split"],
+      "citation_refs": ["uzzi-2013", "stirling-2007", "survey-possibility-space"]
+    },
+    {
+      "id": "participation-route-family",
+      "status": "future-campaign-proposal",
+      "construct_refs": ["participation"],
+      "proposal": "Compare end-state retention, route access, and shock-recovery objectives as separate arms to reveal which institutional designs each induces.",
+      "prerequisites": ["route opportunity denominators", "exit semantics", "untouched attrition/burden evaluation seeds"],
+      "citation_refs": ["survey-participation-typed"]
+    },
+    {
+      "id": "verified-efficiency-family",
+      "status": "future-campaign-proposal",
+      "construct_refs": ["efficiency", "epistemic-progress"],
+      "proposal": "Explore Pareto frontiers between verified return, cost categories, latency, and capability preservation; do not optimize paper or review counts per cost.",
+      "prerequisites": ["validated return numerator", "complete resource/labor ledger", "capability accounting", "new held-out split"],
+      "citation_refs": ["fortin-currie-2013", "survey-allocation"]
+    },
+    {
+      "id": "bounded-public-mission-family",
+      "status": "future-campaign-proposal",
+      "construct_refs": ["public-value", "robustness", "participation"],
+      "proposal": "For one declared synthetic mission, compare attainment-focused, distribution-aware, and counter-capacity-preserving arms while reporting all dimensions and authority assumptions.",
+      "prerequisites": ["mission and stakeholder model", "outcome model", "standing/appeal events", "independent evaluator", "scenario-specific authorization"],
+      "citation_refs": ["survey-value-standing", "survey-value-constitution"]
+    }
+  ],
+  "composition_strategies": [
+    {
+      "id": "separate-metric-arms",
+      "default": false,
+      "description": "Hold simulator, design space, optimizer, budget, and seeds fixed while changing one declared LossSpec family per arm.",
+      "reporting_requirement": "Cross-evaluate frozen winners on common untouched metrics and report rank reversals and induced system differences."
+    },
+    {
+      "id": "pareto-vector",
+      "default": false,
+      "description": "Retain non-dominated systems over multiple declared dimensions without choosing permanent scalar weights.",
+      "reporting_requirement": "Publish the frontier, uncertainty, dominated systems, and stakeholder- or mission-specific views."
+    },
+    {
+      "id": "campaign-specific-scalarization",
+      "default": false,
+      "description": "Use a preregistered temporary scalarization only as an optimizer interface for one bounded commitment.",
+      "reporting_requirement": "Preserve every component, weights, sensitivity analysis, authority, expiry, and alternative scalarizations."
+    },
+    {
+      "id": "epsilon-constraint",
+      "default": false,
+      "description": "Optimize one declared objective while bounding another only when the bound is explicitly part of that campaign's scientific question.",
+      "reporting_requirement": "Report feasibility, binding frequency, threshold sensitivity, and results without the bound."
+    }
+  ],
+  "citations": [
+    {
+      "id": "fortunato-2018",
+      "kind": "external-publication",
+      "title": "Science of science",
+      "authors": "Fortunato et al.",
+      "year": 2018,
+      "claim_supported": "Science-of-science describes mechanisms of scientific activity and policy-relevant regularities but does not itself supply a universal normative objective.",
+      "locator": {"repository": "DOI", "path_or_identifier": "10.1126/science.aao0185", "section_or_lines": "review scope and policy discussion", "url": "https://doi.org/10.1126/science.aao0185"}
+    },
+    {
+      "id": "uzzi-2013",
+      "kind": "external-publication",
+      "title": "Atypical combinations and scientific impact",
+      "authors": "Uzzi et al.",
+      "year": 2013,
+      "claim_supported": "High-impact work often combines a conventional knowledge base with some atypical combinations; novelty is not a monotone distance target.",
+      "locator": {"repository": "DOI", "path_or_identifier": "10.1126/science.1240474", "section_or_lines": "abstract, methods, and results", "url": "https://doi.org/10.1126/science.1240474"}
+    },
+    {
+      "id": "nasem-2019",
+      "kind": "external-publication",
+      "title": "Reproducibility and Replicability in Science",
+      "authors": "National Academies of Sciences, Engineering, and Medicine",
+      "year": 2019,
+      "claim_supported": "Computational reproducibility and empirical replicability are distinct constructs and require explicit attempt and context information.",
+      "locator": {"repository": "DOI", "path_or_identifier": "10.17226/25303", "section_or_lines": "Chapters 3-5 and definitions", "url": "https://doi.org/10.17226/25303"}
+    },
+    {
+      "id": "stirling-2007",
+      "kind": "external-publication",
+      "title": "A general framework for analysing diversity in science, technology and society",
+      "authors": "Andy Stirling",
+      "year": 2007,
+      "claim_supported": "Diversity has separable variety, balance, and disparity components, so entropy alone is incomplete.",
+      "locator": {"repository": "DOI", "path_or_identifier": "10.1098/rsif.2007.0213", "section_or_lines": "framework and diversity properties", "url": "https://doi.org/10.1098/rsif.2007.0213"}
+    },
+    {
+      "id": "fortin-currie-2013",
+      "kind": "external-publication",
+      "title": "Big Science vs. Little Science: How Scientific Impact Scales with Funding",
+      "authors": "Fortin and Currie",
+      "year": 2013,
+      "claim_supported": "Observed funding-impact relations may have diminishing returns, motivating marginal-return analysis without implying universal small-grant optimality.",
+      "locator": {"repository": "DOI", "path_or_identifier": "10.1371/journal.pone.0065263", "section_or_lines": "results and discussion", "url": "https://doi.org/10.1371/journal.pone.0065263"}
+    },
+    {
+      "id": "survey-value-constitution",
+      "kind": "local-survey-synthesis",
+      "title": "単一目的関数なしに『望ましい科学制度』を設計する方法",
+      "authors": "ai-scientist-survey working synthesis",
+      "year": 2026,
+      "claim_supported": "Scientific values conflict; commitments, constraints, revision authority, and proxy risks must remain explicit rather than becoming one permanent score.",
+      "locator": {"repository": "t46/ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-09-10-scientific-value-constitution-method.md", "section_or_lines": "lines 9-21, 75-149, and Goodhart/optimization sections", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-09-10-scientific-value-constitution-method.md"}
+    },
+    {
+      "id": "survey-possibility-space",
+      "kind": "local-survey-synthesis",
+      "title": "問いの前に何が起きるか――科学的可能性空間の制度的構成とAI時代",
+      "authors": "ai-scientist-survey working synthesis",
+      "year": 2026,
+      "claim_supported": "Idea count and semantic spread do not measure independent lineage, world access, discriminating tests, branch survival, or reopening capacity.",
+      "locator": {"repository": "t46/ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-10-07-before-the-question-scientific-possibility-space.md", "section_or_lines": "lines 67-175 and 195-247", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-10-07-before-the-question-scientific-possibility-space.md"}
+    },
+    {
+      "id": "survey-allocation",
+      "kind": "local-survey-synthesis",
+      "title": "Science of Science allocation survey",
+      "authors": "ai-scientist-survey evidence synthesis",
+      "year": 2026,
+      "claim_supported": "Allocation interacts with cumulative advantage, signal latency, novelty bias, and data-rich concentration; observed outputs and causal returns must be separated.",
+      "locator": {"repository": "t46/ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2023-intellectual-reconstruction/manuscript-driven-external-research/57-publication-revision-2026-09-28/SCIENCE-OF-SCIENCE-ALLOCATION-SURVEY-2026-10-07.md", "section_or_lines": "lines 11-205", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2023-intellectual-reconstruction/manuscript-driven-external-research/57-publication-revision-2026-09-28/SCIENCE-OF-SCIENCE-ALLOCATION-SURVEY-2026-10-07.md"}
+    },
+    {
+      "id": "survey-participation-typed",
+      "kind": "local-survey-synthesis",
+      "title": "Participation is a typed routing circuit, not one state",
+      "authors": "ai-scientist-survey working analysis",
+      "year": 2026,
+      "claim_supported": "Participation is object-, route-, and phase-specific; non-observation and retention are not sufficient participation measures.",
+      "locator": {"repository": "t46/ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-10-08-participation-is-a-typed-routing-circuit-not-one-state.md", "section_or_lines": "construct definition, route-state distinctions, and falsifiers", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-10-08-participation-is-a-typed-routing-circuit-not-one-state.md"}
+    },
+    {
+      "id": "survey-value-standing",
+      "kind": "local-survey-synthesis",
+      "title": "科学的価値を誰が変えられるのか",
+      "authors": "ai-scientist-survey working synthesis",
+      "year": 2026,
+      "claim_supported": "Epistemic, agenda, deployment, and constitutional judgments have different authorities; public funds strengthen standing and appeal requirements.",
+      "locator": {"repository": "t46/ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-09-10-scientific-value-constitution-standing-amendment-and-ai-succession.md", "section_or_lines": "lines 3-103", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-09-10-scientific-value-constitution-standing-amendment-and-ai-succession.md"}
+    },
+    {
+      "id": "project-science-of-science-memo",
+      "kind": "local-project-design",
+      "title": "ScienceUtopia の制度最適化における目的関数候補",
+      "authors": "ScienceUtopia research notes",
+      "year": 2026,
+      "claim_supported": "Maps science-of-science constructs to simulator observables and documents proxy, diversity, robustness, efficiency, and public-value limitations.",
+      "locator": {"repository": "unktok/science-utopia-lab", "commit": "b528d0a93a21287f62bbc3d9ab252e8c94bc40ba", "path_or_identifier": "research/literature/science-of-science-objectives.md", "section_or_lines": "Sections 1-3 and 7"}
+    },
+    {
+      "id": "project-ai-survey-memo",
+      "kind": "local-project-design",
+      "title": "ai-scientist-survey からの目的関数・制度設計メモ",
+      "authors": "ScienceUtopia research notes",
+      "year": 2026,
+      "claim_supported": "Translates pinned ai-scientist-survey syntheses into event-schema, public-mission, participation, and objective-governance requirements.",
+      "locator": {"repository": "unktok/science-utopia-lab", "commit": "b528d0a93a21287f62bbc3d9ab252e8c94bc40ba", "path_or_identifier": "research/literature/ai-scientist-survey-objectives.md", "section_or_lines": "Sections 1-8 and source list S1-S12"}
+    }
+  ]
+}

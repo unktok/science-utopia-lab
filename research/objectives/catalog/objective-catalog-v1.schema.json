@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/objective-catalog-v1.schema.json",
+  "title": "ScienceUtopia Objective Catalog v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "version",
+    "status",
+    "scope",
+    "normative_stance",
+    "source_snapshot",
+    "constructs",
+    "candidate_loss_families",
+    "composition_strategies",
+    "citations"
+  ],
+  "properties": {
+    "schema": {"const": "scienceutopia.objective-catalog.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"const": "future-campaign-research-catalog"},
+    "scope": {"type": "string", "minLength": 1},
+    "normative_stance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["universal_composite", "loss_metric_separation", "active_campaign_effect"],
+      "properties": {
+        "universal_composite": {"const": "none"},
+        "loss_metric_separation": {"type": "string", "minLength": 1},
+        "active_campaign_effect": {"const": "none"}
+      }
+    },
+    "source_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["science_utopia_commit", "ai_scientist_survey_commit", "survey_topic_map"],
+      "properties": {
+        "science_utopia_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "ai_scientist_survey_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "survey_topic_map": {"type": "string", "minLength": 1}
+      }
+    },
+    "constructs": {
+      "type": "array",
+      "minItems": 7,
+      "items": {"$ref": "#/$defs/construct"}
+    },
+    "candidate_loss_families": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/candidateLoss"}
+    },
+    "composition_strategies": {
+      "type": "array",
+      "minItems": 2,
+      "items": {"$ref": "#/$defs/composition"}
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/citation"}
+    }
+  },
+  "$defs": {
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "construct": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "label", "definition", "normative_question", "not_equivalent_to",
+        "citation_refs", "observable_proxies"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "label": {"type": "string", "minLength": 1},
+        "definition": {"type": "string", "minLength": 1},
+        "normative_question": {"type": "string", "minLength": 1},
+        "not_equivalent_to": {"$ref": "#/$defs/nonEmptyStrings"},
+        "citation_refs": {"$ref": "#/$defs/nonEmptyStrings"},
+        "observable_proxies": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/proxy"}
+        }
+      }
+    },
+    "proxy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "description", "observable", "aggregation", "direction",
+        "optimization_role", "goodhart_risks", "required_simulator_fields",
+        "held_out_diagnostic_relation", "implementation", "citation_refs"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "description": {"type": "string", "minLength": 1},
+        "observable": {"type": "string", "minLength": 1},
+        "aggregation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["within_run", "across_seeds", "reporting"],
+          "properties": {
+            "within_run": {"type": "string", "minLength": 1},
+            "across_seeds": {"type": "string", "minLength": 1},
+            "reporting": {"type": "string", "minLength": 1}
+          }
+        },
+        "direction": {
+          "enum": ["maximize", "minimize", "target-range", "pareto", "observe-only"]
+        },
+        "optimization_role": {
+          "enum": ["future-loss-candidate", "future-vector-component", "diagnostic-only", "blocked-pending-validation"]
+        },
+        "goodhart_risks": {"$ref": "#/$defs/nonEmptyStrings"},
+        "required_simulator_fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/field"}
+        },
+        "held_out_diagnostic_relation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["classification", "diagnostic_ids", "firewall", "rationale"],
+          "properties": {
+            "classification": {"enum": ["optimization_input", "held_out_only", "shadow_diagnostic"]},
+            "diagnostic_ids": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            },
+            "firewall": {"enum": ["allocate_new_evidence_split", "never_expose_to_search", "report_both_without_selection"]},
+            "rationale": {"type": "string", "minLength": 1}
+          }
+        },
+        "implementation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "current_native_inputs", "missing_capabilities", "next_step"],
+          "properties": {
+            "status": {"enum": ["executable-now", "partially-derivable", "not-implementable-yet"]},
+            "current_native_inputs": {"type": "array", "items": {"type": "string"}},
+            "missing_capabilities": {"type": "array", "items": {"type": "string"}},
+            "next_step": {"type": "string", "minLength": 1}
+          }
+        },
+        "citation_refs": {"$ref": "#/$defs/nonEmptyStrings"}
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "availability", "purpose"],
+      "properties": {
+        "field": {"type": "string", "minLength": 1},
+        "availability": {"enum": ["native", "derivable", "missing"]},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "candidateLoss": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "construct_refs", "proposal", "prerequisites", "citation_refs"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "status": {"const": "future-campaign-proposal"},
+        "construct_refs": {"$ref": "#/$defs/nonEmptyStrings"},
+        "proposal": {"type": "string", "minLength": 1},
+        "prerequisites": {"$ref": "#/$defs/nonEmptyStrings"},
+        "citation_refs": {"$ref": "#/$defs/nonEmptyStrings"}
+      }
+    },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "default", "description", "reporting_requirement"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "default": {"type": "boolean"},
+        "description": {"type": "string", "minLength": 1},
+        "reporting_requirement": {"type": "string", "minLength": 1}
+      }
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "claim_supported", "locator"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "kind": {"enum": ["external-publication", "local-survey-synthesis", "local-project-design"]},
+        "title": {"type": "string", "minLength": 1},
+        "authors": {"type": "string"},
+        "year": {"type": "integer", "minimum": 1900},
+        "claim_supported": {"type": "string", "minLength": 1},
+        "locator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "path_or_identifier", "section_or_lines"],
+          "properties": {
+            "repository": {"type": "string", "minLength": 1},
+            "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+            "path_or_identifier": {"type": "string", "minLength": 1},
+            "section_or_lines": {"type": "string", "minLength": 1},
+            "url": {"type": "string", "format": "uri"}
+          }
+        }
+      }
+    }
+  }
+}
