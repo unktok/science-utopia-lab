@@ -1,5 +1,38 @@
 # Deterministic visual QA
 
+## v4 spatial activity captures
+
+The v4 captures use a 1440x1050 viewport, cursor-fixed reduced motion, the
+four-researcher synthetic replay contract, and production asset pack v0.3.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-v4-review-network-cursor-20000.png` | `38a8766980a149cfcec33244a6133e3444684c8ab5314a4ac84d7760cfea1183` |
+| `noctiluca-v4-publication-funding-cursor-26000.png` | `4516ddd36a8da5a295978ccdec13eb8c0417068abf45323de73f532dd4b585b1` |
+| `noctiluca-v4-publication-evidence-cursor-26000.png` | `8d65b81b37cabf8bb7597d35052fb34bab45cd3b2001f9361a77e2d9a7bbb58b` |
+
+The publication/funding capture was produced twice with separate Chromium
+profiles and compared byte-for-byte. It shows Iren operating the Publication
+Spine while Sol works in the Civic Ledger. The evidence capture opens Iren's
+derived publication action and its canonical `paper.decided` source. The
+review-network capture shows Mino in the review chamber while the submitted
+paper moves spatially between the lab and exchange.
+
+All visible work effects are selected from active `choreography.actions`; the
+renderer does not infer work from occupation, balance, or paper outcome.
+
+Capture recipe after `npm run dev -- --host 127.0.0.1 --port 4173`:
+
+```sh
+CHROME=/path/to/google-chrome
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars \
+  --force-device-scale-factor=1 --window-size=1440,1050 \
+  --virtual-time-budget=5000 --run-all-compositor-stages-before-draw \
+  --user-data-dir=/path/to/a/new/empty/profile \
+  --screenshot=screenshots/noctiluca-v4-publication-funding-cursor-26000.png \
+  'http://127.0.0.1:4173/?cursor=26000&motion=reduced'
+```
+
 ## Intervention branch comparison
 
 The side-by-side captures use a 1440x1000 viewport and synchronized cursor
@@ -84,7 +117,16 @@ v3 additionally passed these visual checks:
 - environment rain and courier are visibly subordinate and marked ambient;
 - the cursor-14,000 capture is byte-deterministic.
 
-Publication is implemented and automatically checked but is not one of the
-three institutions placed in this replay fixture. Directional walking, longer
-cycles, external art review, and external accessibility review remain later
-gates.
+v4 additionally passed these visual checks:
+
+- four institution silhouettes remain legible at the 480x270 logical canvas;
+- the submission, review-return, publication, citation, funding, and policy
+  routes occupy distinct spatial arcs;
+- researcher workstations change only while an evidence-linked action is
+  active and freeze to a representative frame under reduced motion;
+- the editor sheet and Publication Spine use the frozen palette, integer
+  rectangles, and crisp-edge production contract;
+- the cursor-26,000 capture is byte-deterministic.
+
+Directional walking, longer cycles, external art review, and external
+accessibility review remain later gates.

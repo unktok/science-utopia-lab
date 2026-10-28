@@ -297,7 +297,7 @@ def _validate_v2_visual_records(
                     )
                 if record.get("action_type") not in {
                     "move", "experiment", "write", "review", "revise",
-                    "allocate", "receive", "read", "cite", "policy",
+                    "publish", "allocate", "receive", "read", "cite", "policy",
                 }:
                     raise ValueError(
                         f"Unsupported action type: {record.get('action_type')}"

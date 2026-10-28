@@ -49,6 +49,17 @@ def vertical_slice_events() -> list[EventEnvelope]:
             },
         },
         {
+            "event_type": "agent.registered",
+            "actor_ids": ("researcher:iren",),
+            "payload": {
+                "display_name": "Dr. Iren Moss",
+                "agent_type": "editor_researcher",
+                "institution": "Noctiluca Publication Spine",
+                "initial_balance": 100,
+                "initial_active": True,
+            },
+        },
+        {
             "event_type": "research.data_shared",
             "actor_ids": ("researcher:aya", "researcher:mino"),
             "payload": {
@@ -152,6 +163,17 @@ def vertical_slice_events() -> list[EventEnvelope]:
             },
         },
         {
+            "event_type": "resource.balance_reported",
+            "actor_ids": ("researcher:iren",),
+            "payload": {
+                "opening_balance": 100,
+                "closing_balance": 100,
+                "opening_active": True,
+                "closing_active": True,
+                "residual": 0,
+            },
+        },
+        {
             "event_type": "year.completed",
             "payload": {"year": 1},
         },
@@ -199,11 +221,15 @@ def vertical_slice_presentation(
     lab = _institution_id("Noctiluca Knowledge Lab")
     exchange = _institution_id("Peer Review Exchange")
     bureau = _institution_id("Civic Funding Bureau")
+    publication = _institution_id("Noctiluca Publication Spine")
 
     placements = [
         _placement(lab, 122, 126, registration["researcher:aya"].event_id),
         _placement(exchange, 334, 112, registration["researcher:mino"].event_id),
         _placement(bureau, 252, 222, registration["researcher:sol"].event_id),
+        _placement(
+            publication, 420, 238, registration["researcher:iren"].event_id
+        ),
         _placement(
             "researcher:aya", 144, 164, registration["researcher:aya"].event_id
         ),
@@ -212,6 +238,9 @@ def vertical_slice_presentation(
         ),
         _placement(
             "researcher:sol", 266, 242, registration["researcher:sol"].event_id
+        ),
+        _placement(
+            "researcher:iren", 426, 252, registration["researcher:iren"].event_id
         ),
         _placement(
             "paper:arcology-signals",
@@ -223,27 +252,31 @@ def vertical_slice_presentation(
 
     flow_specs = [
         (
-            "data", lab, exchange, "research.data_shared", 4_000,
+            "data", lab, exchange, "research.data_shared", 13_700,
             "#20e3ff", "DATA // shared",
         ),
         (
-            "paper", lab, exchange, "paper.submitted", 11_000,
+            "paper", lab, exchange, "paper.submitted", 17_100,
             "#ffcf5a", "PAPER // submitted",
         ),
         (
-            "review", exchange, lab, "review.completed", 18_000,
+            "review", exchange, lab, "review.completed", 20_500,
             "#ff4fd8", "REVIEW // returned",
         ),
         (
-            "funding", bureau, lab, "resource.changed", 26_000,
+            "paper", exchange, publication, "paper.decided", 24_000,
+            "#ffcf5a", "PAPER // published",
+        ),
+        (
+            "funding", bureau, lab, "resource.changed", 27_400,
             "#80ff72", "FUNDING // +20",
         ),
         (
-            "citation", bureau, lab, "citation.recorded", 34_000,
+            "citation", publication, lab, "citation.recorded", 30_800,
             "#a98cff", "CITATION // +1",
         ),
         (
-            "policy", bureau, exchange, "policy.changed", 42_000,
+            "policy", bureau, exchange, "policy.changed", 34_200,
             "#ff7657", "POLICY // changed",
         ),
     ]
@@ -277,49 +310,49 @@ def vertical_slice_presentation(
     action_specs = [
         (
             "aya-to-instrument", "researcher:aya", "move",
-            (144, 164), (112, 130), 800, 1_600,
+            (144, 164), (112, 130), 9_600, 1_400,
             (registration["researcher:aya"].event_id,),
             "Aya crosses the laboratory floor",
         ),
         (
             "aya-experiment", "researcher:aya", "experiment",
-            (112, 130), (112, 130), 2_400, 6_600,
+            (112, 130), (112, 130), 11_000, 3_200,
             (by_type["research.data_shared"].event_id,),
             "Aya operates the sample instrument",
         ),
         (
             "aya-to-terminal", "researcher:aya", "move",
-            (112, 130), (142, 130), 9_000, 1_000,
+            (112, 130), (142, 130), 14_200, 800,
             (by_type["paper.submitted"].event_id,),
             "Aya moves to the writing terminal",
         ),
         (
             "aya-write", "researcher:aya", "write",
-            (142, 130), (142, 130), 10_000, 4_769,
+            (142, 130), (142, 130), 15_000, 2_600,
             (by_type["paper.submitted"].event_id,),
             "Aya prepares the submitted paper",
         ),
         (
             "mino-to-review-cell", "researcher:mino", "move",
-            (350, 154), (331, 116), 10_500, 1_500,
+            (350, 154), (331, 116), 17_000, 900,
             (by_type["paper.submitted"].event_id,),
             "Mino enters an anonymous review cell",
         ),
         (
             "mino-review", "researcher:mino", "review",
-            (331, 116), (331, 116), 12_000, 6_462,
+            (331, 116), (331, 116), 17_900, 3_100,
             (by_type["review.completed"].event_id,),
             "Mino reviews the submitted paper",
         ),
         (
             "aya-to-revision-bench", "researcher:aya", "move",
-            (142, 130), (116, 132), 17_000, 1_000,
+            (142, 130), (116, 132), 20_500, 700,
             (by_type["review.completed"].event_id,),
             "Aya returns to the revision bench",
         ),
         (
             "aya-revise", "researcher:aya", "revise",
-            (116, 132), (116, 132), 18_000, 4_154,
+            (116, 132), (116, 132), 21_200, 3_300,
             (
                 by_type["review.completed"].event_id,
                 by_type["paper.decided"].event_id,
@@ -327,44 +360,56 @@ def vertical_slice_presentation(
             "Aya works through the completed review",
         ),
         (
+            "iren-to-publication-console", "researcher:iren", "move",
+            (426, 252), (409, 211), 22_600, 1_000,
+            (by_type["paper.decided"].event_id,),
+            "Iren enters the publication repository",
+        ),
+        (
+            "iren-publish", "researcher:iren", "publish",
+            (409, 211), (409, 211), 23_600, 4_600,
+            (by_type["paper.decided"].event_id,),
+            "Iren deposits the accepted paper",
+        ),
+        (
             "sol-to-ledger", "researcher:sol", "move",
-            (266, 242), (248, 214), 23_000, 1_500,
+            (266, 242), (248, 214), 24_700, 1_000,
             (by_type["resource.changed"].event_id,),
             "Sol enters the allocation ledger",
         ),
         (
             "sol-allocate", "researcher:sol", "allocate",
-            (248, 214), (248, 214), 24_500, 5_500,
+            (248, 214), (248, 214), 25_700, 4_200,
             (by_type["resource.changed"].event_id,),
             "Sol authorizes the grant allocation",
         ),
         (
             "aya-receive-funding", "researcher:aya", "receive",
-            (116, 132), (116, 132), 26_000, 4_200,
+            (116, 132), (116, 132), 27_400, 3_500,
             (by_type["resource.changed"].event_id,),
             "Aya receives a capacity increase",
         ),
         (
             "sol-cite", "researcher:sol", "cite",
-            (248, 214), (248, 214), 32_000, 4_200,
+            (248, 214), (248, 214), 30_500, 3_600,
             (by_type["citation.recorded"].event_id,),
             "Sol records a citation link",
         ),
         (
             "aya-read-citation", "researcher:aya", "read",
-            (116, 132), (116, 132), 34_000, 4_000,
+            (116, 132), (116, 132), 30_800, 3_500,
             (by_type["citation.recorded"].event_id,),
             "Aya inspects the new citation",
         ),
         (
             "sol-policy", "researcher:sol", "policy",
-            (248, 214), (248, 214), 40_000, 6_200,
+            (248, 214), (248, 214), 34_000, 5_300,
             (by_type["policy.changed"].event_id,),
             "Sol transmits the policy change",
         ),
         (
             "mino-policy", "researcher:mino", "policy",
-            (331, 116), (331, 116), 42_000, 4_200,
+            (331, 116), (331, 116), 34_200, 4_000,
             (by_type["policy.changed"].event_id,),
             "Mino receives the open-review policy",
         ),
@@ -422,14 +467,27 @@ def vertical_slice_presentation(
         {
             "id": "camera:system",
             "kind": "camera",
+            "target_entity_id": publication,
+            "zoom": 0.9,
+            **_trace(
+                "derived",
+                event_ids=(by_type["paper.decided"].event_id,),
+                logical_timestamp_ms=22_000,
+                duration_ms=8_000,
+                causal_parent_id="flow:3:review",
+            ),
+        },
+        {
+            "id": "camera:civic-system",
+            "kind": "camera",
             "target_entity_id": bureau,
             "zoom": 0.9,
             **_trace(
                 "derived",
                 event_ids=(by_type["policy.changed"].event_id,),
-                logical_timestamp_ms=38_000,
-                duration_ms=10_000,
-                causal_parent_id="flow:5:citation",
+                logical_timestamp_ms=30_000,
+                duration_ms=12_000,
+                causal_parent_id="flow:6:citation",
             ),
         },
     ]
@@ -491,9 +549,10 @@ def vertical_slice_metadata() -> dict[str, Any]:
         "source_kind": "synthetic_contract_fixture",
         "empirical": False,
         "disclosure": (
-            "Hand-authored deterministic fixture for renderer validation. It is not "
+            "Hand-authored deterministic four-researcher fixture for renderer "
+            "validation. It is not "
             "an experimental run or evidence about a real ScienceUtopia system. All "
-            "six semantic flows cite synthetic canonical fixture events; ambient "
+            "six semantic flow types cite synthetic canonical fixture events; ambient "
             "activity is isolated and makes no scientific claim."
         ),
     }

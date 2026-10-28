@@ -50,7 +50,7 @@
           "causal_parent_id": null,
           "derivation_version": "scienceutopia.game-choreography.v2.0.0",
           "derived_from_event_ids": [
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
           ],
           "duration_ms": 0,
           "id": "paper:arcology-signals",
@@ -91,6 +91,19 @@
           "causal_parent_id": null,
           "derivation_version": "scienceutopia.game-choreography.v2.0.0",
           "derived_from_event_ids": [
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
+          ],
+          "duration_ms": 0,
+          "id": "institution:noctiluca-publication-spine:c2c34a68",
+          "kind": "institution",
+          "label": "Noctiluca Publication Spine",
+          "logical_timestamp_ms": 0,
+          "truth_status": "derived"
+        },
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
           ],
           "duration_ms": 0,
@@ -113,6 +126,20 @@
           "institution_id": "institution:noctiluca-knowledge-lab:244054c6",
           "kind": "researcher",
           "label": "Dr. Aya Kuroda",
+          "logical_timestamp_ms": 0,
+          "truth_status": "canonical"
+        },
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
+          ],
+          "duration_ms": 0,
+          "id": "researcher:iren",
+          "institution_id": "institution:noctiluca-publication-spine:c2c34a68",
+          "kind": "researcher",
+          "label": "Dr. Iren Moss",
           "logical_timestamp_ms": 0,
           "truth_status": "canonical"
         },
@@ -221,11 +248,35 @@
       },
       {
         "actor_ids": [
+          "researcher:iren"
+        ],
+        "artifact_ids": [],
+        "event_id": "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+        "event_type": "agent.registered",
+        "payload": {
+          "agent_type": "editor_researcher",
+          "display_name": "Dr. Iren Moss",
+          "initial_active": true,
+          "initial_balance": 100,
+          "institution": "Noctiluca Publication Spine"
+        },
+        "phase": 0,
+        "provenance": {
+          "empirical": false,
+          "record": 3,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 3,
+        "year": 0
+      },
+      {
+        "actor_ids": [
           "researcher:aya",
           "researcher:mino"
         ],
         "artifact_ids": [],
-        "event_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+        "event_id": "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
         "event_type": "research.data_shared",
         "payload": {
           "dataset_id": "dataset:noctiluca-17",
@@ -234,11 +285,11 @@
         "phase": 1,
         "provenance": {
           "empirical": false,
-          "record": 3,
+          "record": 4,
           "source": "synthetic.vertical-slice-contract-fixture"
         },
         "schema_version": "scienceutopia.event.v1",
-        "sequence": 3,
+        "sequence": 4,
         "year": 1
       },
       {
@@ -248,7 +299,7 @@
         "artifact_ids": [
           "paper:arcology-signals"
         ],
-        "event_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+        "event_id": "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
         "event_type": "paper.submitted",
         "payload": {
           "conference": "Peer Review Exchange",
@@ -262,31 +313,6 @@
         "phase": 2,
         "provenance": {
           "empirical": false,
-          "record": 4,
-          "source": "synthetic.vertical-slice-contract-fixture"
-        },
-        "schema_version": "scienceutopia.event.v1",
-        "sequence": 4,
-        "year": 1
-      },
-      {
-        "actor_ids": [
-          "researcher:mino"
-        ],
-        "artifact_ids": [
-          "paper:arcology-signals"
-        ],
-        "event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-        "event_type": "review.completed",
-        "payload": {
-          "conference": "Peer Review Exchange",
-          "justification": "Synthetic review used to validate replay choreography.",
-          "score": 4,
-          "submission_round": 0
-        },
-        "phase": 3,
-        "provenance": {
-          "empirical": false,
           "record": 5,
           "source": "synthetic.vertical-slice-contract-fixture"
         },
@@ -296,20 +322,20 @@
       },
       {
         "actor_ids": [
-          "researcher:aya"
+          "researcher:mino"
         ],
         "artifact_ids": [
           "paper:arcology-signals"
         ],
-        "event_id": "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-        "event_type": "paper.decided",
+        "event_id": "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+        "event_type": "review.completed",
         "payload": {
           "conference": "Peer Review Exchange",
-          "decision": "accept",
+          "justification": "Synthetic review used to validate replay choreography.",
           "score": 4,
           "submission_round": 0
         },
-        "phase": 4,
+        "phase": 3,
         "provenance": {
           "empirical": false,
           "record": 6,
@@ -323,8 +349,33 @@
         "actor_ids": [
           "researcher:aya"
         ],
+        "artifact_ids": [
+          "paper:arcology-signals"
+        ],
+        "event_id": "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+        "event_type": "paper.decided",
+        "payload": {
+          "conference": "Peer Review Exchange",
+          "decision": "accept",
+          "score": 4,
+          "submission_round": 0
+        },
+        "phase": 4,
+        "provenance": {
+          "empirical": false,
+          "record": 7,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 7,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:aya"
+        ],
         "artifact_ids": [],
-        "event_id": "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
+        "event_id": "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
         "event_type": "resource.changed",
         "payload": {
           "active_after": true,
@@ -339,11 +390,11 @@
         "phase": 5,
         "provenance": {
           "empirical": false,
-          "record": 7,
+          "record": 8,
           "source": "synthetic.vertical-slice-contract-fixture"
         },
         "schema_version": "scienceutopia.event.v1",
-        "sequence": 7,
+        "sequence": 8,
         "year": 1
       },
       {
@@ -354,32 +405,10 @@
         "artifact_ids": [
           "paper:arcology-signals"
         ],
-        "event_id": "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
+        "event_id": "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
         "event_type": "citation.recorded",
         "payload": {
           "citation_count_delta": 1
-        },
-        "phase": 5,
-        "provenance": {
-          "empirical": false,
-          "record": 8,
-          "source": "synthetic.vertical-slice-contract-fixture"
-        },
-        "schema_version": "scienceutopia.event.v1",
-        "sequence": 8,
-        "year": 1
-      },
-      {
-        "actor_ids": [
-          "researcher:sol"
-        ],
-        "artifact_ids": [],
-        "event_id": "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-        "event_type": "policy.changed",
-        "payload": {
-          "change": "Synthetic open-review window enabled",
-          "policy_id": "policy:open-review-window",
-          "target_institution": "Peer Review Exchange"
         },
         "phase": 5,
         "provenance": {
@@ -393,19 +422,17 @@
       },
       {
         "actor_ids": [
-          "researcher:aya"
+          "researcher:sol"
         ],
         "artifact_ids": [],
-        "event_id": "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-        "event_type": "resource.balance_reported",
+        "event_id": "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+        "event_type": "policy.changed",
         "payload": {
-          "closing_active": true,
-          "closing_balance": 120,
-          "opening_active": true,
-          "opening_balance": 100,
-          "residual": 0
+          "change": "Synthetic open-review window enabled",
+          "policy_id": "policy:open-review-window",
+          "target_institution": "Peer Review Exchange"
         },
-        "phase": 6,
+        "phase": 5,
         "provenance": {
           "empirical": false,
           "record": 10,
@@ -417,14 +444,14 @@
       },
       {
         "actor_ids": [
-          "researcher:mino"
+          "researcher:aya"
         ],
         "artifact_ids": [],
-        "event_id": "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
+        "event_id": "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
         "event_type": "resource.balance_reported",
         "payload": {
           "closing_active": true,
-          "closing_balance": 100,
+          "closing_balance": 120,
           "opening_active": true,
           "opening_balance": 100,
           "residual": 0
@@ -441,10 +468,10 @@
       },
       {
         "actor_ids": [
-          "researcher:sol"
+          "researcher:mino"
         ],
         "artifact_ids": [],
-        "event_id": "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e",
+        "event_id": "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
         "event_type": "resource.balance_reported",
         "payload": {
           "closing_active": true,
@@ -464,14 +491,20 @@
         "year": 1
       },
       {
-        "actor_ids": [],
+        "actor_ids": [
+          "researcher:sol"
+        ],
         "artifact_ids": [],
-        "event_id": "62f3f668c500430c05b94a38ec35588bc3893180e2fdd4f0c542dade3bae2486",
-        "event_type": "year.completed",
+        "event_id": "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+        "event_type": "resource.balance_reported",
         "payload": {
-          "year": 1
+          "closing_active": true,
+          "closing_balance": 100,
+          "opening_active": true,
+          "opening_balance": 100,
+          "residual": 0
         },
-        "phase": 7,
+        "phase": 6,
         "provenance": {
           "empirical": false,
           "record": 13,
@@ -479,6 +512,48 @@
         },
         "schema_version": "scienceutopia.event.v1",
         "sequence": 13,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:iren"
+        ],
+        "artifact_ids": [],
+        "event_id": "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b",
+        "event_type": "resource.balance_reported",
+        "payload": {
+          "closing_active": true,
+          "closing_balance": 100,
+          "opening_active": true,
+          "opening_balance": 100,
+          "residual": 0
+        },
+        "phase": 6,
+        "provenance": {
+          "empirical": false,
+          "record": 14,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 14,
+        "year": 1
+      },
+      {
+        "actor_ids": [],
+        "artifact_ids": [],
+        "event_id": "e41e27f498713cc6b7ff1a56678f9c57f5a85d32b733d3e052874ed320bd0c55",
+        "event_type": "year.completed",
+        "payload": {
+          "year": 1
+        },
+        "phase": 7,
+        "provenance": {
+          "empirical": false,
+          "record": 15,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 15,
         "year": 1
       }
     ],
@@ -502,7 +577,7 @@
         ],
         "duration_ms": 0,
         "event_id": "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
-        "logical_timestamp_ms": 3692,
+        "logical_timestamp_ms": 3200,
         "truth_status": "canonical"
       },
       {
@@ -513,127 +588,149 @@
         ],
         "duration_ms": 0,
         "event_id": "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-        "logical_timestamp_ms": 7385,
+        "logical_timestamp_ms": 6400,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
         ],
         "duration_ms": 0,
-        "event_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-        "logical_timestamp_ms": 11077,
+        "event_id": "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+        "logical_timestamp_ms": 9600,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f"
         ],
         "duration_ms": 0,
-        "event_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-        "logical_timestamp_ms": 14769,
+        "event_id": "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+        "logical_timestamp_ms": 12800,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
         "duration_ms": 0,
-        "event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-        "logical_timestamp_ms": 18462,
+        "event_id": "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+        "logical_timestamp_ms": 16000,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1"
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
         ],
         "duration_ms": 0,
-        "event_id": "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-        "logical_timestamp_ms": 22154,
+        "event_id": "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+        "logical_timestamp_ms": 19200,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
         ],
         "duration_ms": 0,
-        "event_id": "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-        "logical_timestamp_ms": 25846,
+        "event_id": "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+        "logical_timestamp_ms": 22400,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
         ],
         "duration_ms": 0,
-        "event_id": "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-        "logical_timestamp_ms": 29538,
+        "event_id": "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+        "logical_timestamp_ms": 25600,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d"
         ],
         "duration_ms": 0,
-        "event_id": "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-        "logical_timestamp_ms": 33231,
+        "event_id": "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+        "logical_timestamp_ms": 28800,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c"
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
         ],
         "duration_ms": 0,
-        "event_id": "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-        "logical_timestamp_ms": 36923,
+        "event_id": "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+        "logical_timestamp_ms": 32000,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b"
+          "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8"
         ],
         "duration_ms": 0,
-        "event_id": "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
-        "logical_timestamp_ms": 40615,
+        "event_id": "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+        "logical_timestamp_ms": 35200,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e"
+          "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa"
         ],
         "duration_ms": 0,
-        "event_id": "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e",
-        "logical_timestamp_ms": 44308,
+        "event_id": "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+        "logical_timestamp_ms": 38400,
         "truth_status": "canonical"
       },
       {
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "62f3f668c500430c05b94a38ec35588bc3893180e2fdd4f0c542dade3bae2486"
+          "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8"
         ],
         "duration_ms": 0,
-        "event_id": "62f3f668c500430c05b94a38ec35588bc3893180e2fdd4f0c542dade3bae2486",
+        "event_id": "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+        "logical_timestamp_ms": 41600,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b"
+        ],
+        "duration_ms": 0,
+        "event_id": "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b",
+        "logical_timestamp_ms": 44800,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e41e27f498713cc6b7ff1a56678f9c57f5a85d32b733d3e052874ed320bd0c55"
+        ],
+        "duration_ms": 0,
+        "event_id": "e41e27f498713cc6b7ff1a56678f9c57f5a85d32b733d3e052874ed320bd0c55",
         "logical_timestamp_ms": 48000,
         "truth_status": "canonical"
       }
@@ -649,7 +746,7 @@
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
         ],
-        "duration_ms": 1600,
+        "duration_ms": 1400,
         "end": {
           "x": 112,
           "y": 130
@@ -657,7 +754,7 @@
         "id": "action:aya-to-instrument",
         "kind": "actor_action",
         "label": "Aya crosses the laboratory floor",
-        "logical_timestamp_ms": 800,
+        "logical_timestamp_ms": 9600,
         "start": {
           "x": 144,
           "y": 164
@@ -670,9 +767,9 @@
         "causal_parent_id": "action:aya-to-instrument",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f"
         ],
-        "duration_ms": 6600,
+        "duration_ms": 3200,
         "end": {
           "x": 112,
           "y": 130
@@ -680,7 +777,7 @@
         "id": "action:aya-experiment",
         "kind": "actor_action",
         "label": "Aya operates the sample instrument",
-        "logical_timestamp_ms": 2400,
+        "logical_timestamp_ms": 11000,
         "start": {
           "x": 112,
           "y": 130
@@ -693,9 +790,9 @@
         "causal_parent_id": "action:aya-experiment",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
-        "duration_ms": 1000,
+        "duration_ms": 800,
         "end": {
           "x": 142,
           "y": 130
@@ -703,7 +800,7 @@
         "id": "action:aya-to-terminal",
         "kind": "actor_action",
         "label": "Aya moves to the writing terminal",
-        "logical_timestamp_ms": 9000,
+        "logical_timestamp_ms": 14200,
         "start": {
           "x": 112,
           "y": 130
@@ -716,9 +813,9 @@
         "causal_parent_id": "action:aya-to-terminal",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
-        "duration_ms": 4769,
+        "duration_ms": 2600,
         "end": {
           "x": 142,
           "y": 130
@@ -726,7 +823,7 @@
         "id": "action:aya-write",
         "kind": "actor_action",
         "label": "Aya prepares the submitted paper",
-        "logical_timestamp_ms": 10000,
+        "logical_timestamp_ms": 15000,
         "start": {
           "x": 142,
           "y": 130
@@ -739,9 +836,9 @@
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
-        "duration_ms": 1500,
+        "duration_ms": 900,
         "end": {
           "x": 331,
           "y": 116
@@ -749,7 +846,7 @@
         "id": "action:mino-to-review-cell",
         "kind": "actor_action",
         "label": "Mino enters an anonymous review cell",
-        "logical_timestamp_ms": 10500,
+        "logical_timestamp_ms": 17000,
         "start": {
           "x": 350,
           "y": 154
@@ -762,9 +859,9 @@
         "causal_parent_id": "action:mino-to-review-cell",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
         ],
-        "duration_ms": 6462,
+        "duration_ms": 3100,
         "end": {
           "x": 331,
           "y": 116
@@ -772,7 +869,7 @@
         "id": "action:mino-review",
         "kind": "actor_action",
         "label": "Mino reviews the submitted paper",
-        "logical_timestamp_ms": 12000,
+        "logical_timestamp_ms": 17900,
         "start": {
           "x": 331,
           "y": 116
@@ -785,9 +882,9 @@
         "causal_parent_id": "action:aya-write",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
         ],
-        "duration_ms": 1000,
+        "duration_ms": 700,
         "end": {
           "x": 116,
           "y": 132
@@ -795,7 +892,7 @@
         "id": "action:aya-to-revision-bench",
         "kind": "actor_action",
         "label": "Aya returns to the revision bench",
-        "logical_timestamp_ms": 17000,
+        "logical_timestamp_ms": 20500,
         "start": {
           "x": 142,
           "y": 130
@@ -808,10 +905,10 @@
         "causal_parent_id": "action:aya-to-revision-bench",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1"
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
         ],
-        "duration_ms": 4154,
+        "duration_ms": 3300,
         "end": {
           "x": 116,
           "y": 132
@@ -819,10 +916,56 @@
         "id": "action:aya-revise",
         "kind": "actor_action",
         "label": "Aya works through the completed review",
-        "logical_timestamp_ms": 18000,
+        "logical_timestamp_ms": 21200,
         "start": {
           "x": 116,
           "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:iren",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
+        ],
+        "duration_ms": 1000,
+        "end": {
+          "x": 409,
+          "y": 211
+        },
+        "id": "action:iren-to-publication-console",
+        "kind": "actor_action",
+        "label": "Iren enters the publication repository",
+        "logical_timestamp_ms": 22600,
+        "start": {
+          "x": 426,
+          "y": 252
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "publish",
+        "actor_entity_id": "researcher:iren",
+        "causal_parent_id": "action:iren-to-publication-console",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
+        ],
+        "duration_ms": 4600,
+        "end": {
+          "x": 409,
+          "y": 211
+        },
+        "id": "action:iren-publish",
+        "kind": "actor_action",
+        "label": "Iren deposits the accepted paper",
+        "logical_timestamp_ms": 23600,
+        "start": {
+          "x": 409,
+          "y": 211
         },
         "truth_status": "derived"
       },
@@ -832,9 +975,9 @@
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
         ],
-        "duration_ms": 1500,
+        "duration_ms": 1000,
         "end": {
           "x": 248,
           "y": 214
@@ -842,7 +985,7 @@
         "id": "action:sol-to-ledger",
         "kind": "actor_action",
         "label": "Sol enters the allocation ledger",
-        "logical_timestamp_ms": 23000,
+        "logical_timestamp_ms": 24700,
         "start": {
           "x": 266,
           "y": 242
@@ -855,9 +998,9 @@
         "causal_parent_id": "action:sol-to-ledger",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
         ],
-        "duration_ms": 5500,
+        "duration_ms": 4200,
         "end": {
           "x": 248,
           "y": 214
@@ -865,7 +1008,7 @@
         "id": "action:sol-allocate",
         "kind": "actor_action",
         "label": "Sol authorizes the grant allocation",
-        "logical_timestamp_ms": 24500,
+        "logical_timestamp_ms": 25700,
         "start": {
           "x": 248,
           "y": 214
@@ -878,9 +1021,9 @@
         "causal_parent_id": "action:aya-revise",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
         ],
-        "duration_ms": 4200,
+        "duration_ms": 3500,
         "end": {
           "x": 116,
           "y": 132
@@ -888,7 +1031,7 @@
         "id": "action:aya-receive-funding",
         "kind": "actor_action",
         "label": "Aya receives a capacity increase",
-        "logical_timestamp_ms": 26000,
+        "logical_timestamp_ms": 27400,
         "start": {
           "x": 116,
           "y": 132
@@ -901,9 +1044,9 @@
         "causal_parent_id": "action:sol-allocate",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d"
         ],
-        "duration_ms": 4200,
+        "duration_ms": 3600,
         "end": {
           "x": 248,
           "y": 214
@@ -911,7 +1054,7 @@
         "id": "action:sol-cite",
         "kind": "actor_action",
         "label": "Sol records a citation link",
-        "logical_timestamp_ms": 32000,
+        "logical_timestamp_ms": 30500,
         "start": {
           "x": 248,
           "y": 214
@@ -924,9 +1067,9 @@
         "causal_parent_id": "action:aya-receive-funding",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d"
         ],
-        "duration_ms": 4000,
+        "duration_ms": 3500,
         "end": {
           "x": 116,
           "y": 132
@@ -934,7 +1077,7 @@
         "id": "action:aya-read-citation",
         "kind": "actor_action",
         "label": "Aya inspects the new citation",
-        "logical_timestamp_ms": 34000,
+        "logical_timestamp_ms": 30800,
         "start": {
           "x": 116,
           "y": 132
@@ -947,9 +1090,9 @@
         "causal_parent_id": "action:sol-cite",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
         ],
-        "duration_ms": 6200,
+        "duration_ms": 5300,
         "end": {
           "x": 248,
           "y": 214
@@ -957,7 +1100,7 @@
         "id": "action:sol-policy",
         "kind": "actor_action",
         "label": "Sol transmits the policy change",
-        "logical_timestamp_ms": 40000,
+        "logical_timestamp_ms": 34000,
         "start": {
           "x": 248,
           "y": 214
@@ -970,9 +1113,9 @@
         "causal_parent_id": "action:mino-review",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
         ],
-        "duration_ms": 4200,
+        "duration_ms": 4000,
         "end": {
           "x": 331,
           "y": 116
@@ -980,7 +1123,7 @@
         "id": "action:mino-policy",
         "kind": "actor_action",
         "label": "Mino receives the open-review policy",
-        "logical_timestamp_ms": 42000,
+        "logical_timestamp_ms": 34200,
         "start": {
           "x": 331,
           "y": 116
@@ -1007,7 +1150,7 @@
         "causal_parent_id": "flow:2:paper",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
         ],
         "duration_ms": 8000,
         "id": "camera:exchange",
@@ -1018,15 +1161,29 @@
         "zoom": 1.2
       },
       {
-        "causal_parent_id": "flow:5:citation",
+        "causal_parent_id": "flow:3:review",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
         ],
-        "duration_ms": 10000,
+        "duration_ms": 8000,
         "id": "camera:system",
         "kind": "camera",
-        "logical_timestamp_ms": 38000,
+        "logical_timestamp_ms": 22000,
+        "target_entity_id": "institution:noctiluca-publication-spine:c2c34a68",
+        "truth_status": "derived",
+        "zoom": 0.9
+      },
+      {
+        "causal_parent_id": "flow:6:citation",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
+        ],
+        "duration_ms": 12000,
+        "id": "camera:civic-system",
+        "kind": "camera",
+        "logical_timestamp_ms": 30000,
         "target_entity_id": "institution:civic-funding-bureau:ab1a2175",
         "truth_status": "derived",
         "zoom": 0.9
@@ -1045,7 +1202,7 @@
         "color": "#20e3ff",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f"
         ],
         "duration_ms": 4200,
         "flow_type": "data",
@@ -1053,7 +1210,7 @@
         "id": "flow:1:data",
         "kind": "flow",
         "label": "DATA // shared",
-        "logical_timestamp_ms": 4000,
+        "logical_timestamp_ms": 13700,
         "to_entity_id": "institution:peer-review-exchange:e23ed7a0",
         "truth_status": "derived"
       },
@@ -1063,7 +1220,7 @@
         "color": "#ffcf5a",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
         "duration_ms": 4200,
         "flow_type": "paper",
@@ -1071,7 +1228,7 @@
         "id": "flow:2:paper",
         "kind": "flow",
         "label": "PAPER // submitted",
-        "logical_timestamp_ms": 11000,
+        "logical_timestamp_ms": 17100,
         "to_entity_id": "institution:peer-review-exchange:e23ed7a0",
         "truth_status": "derived"
       },
@@ -1081,7 +1238,7 @@
         "color": "#ff4fd8",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
         ],
         "duration_ms": 4200,
         "flow_type": "review",
@@ -1089,61 +1246,79 @@
         "id": "flow:3:review",
         "kind": "flow",
         "label": "REVIEW // returned",
-        "logical_timestamp_ms": 18000,
-        "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
-        "truth_status": "derived"
-      },
-      {
-        "artifact_id": null,
-        "causal_parent_id": "flow:3:review",
-        "color": "#80ff72",
-        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
-        "derived_from_event_ids": [
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
-        ],
-        "duration_ms": 4200,
-        "flow_type": "funding",
-        "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
-        "id": "flow:4:funding",
-        "kind": "flow",
-        "label": "FUNDING // +20",
-        "logical_timestamp_ms": 26000,
+        "logical_timestamp_ms": 20500,
         "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
         "truth_status": "derived"
       },
       {
         "artifact_id": "paper:arcology-signals",
-        "causal_parent_id": "flow:4:funding",
+        "causal_parent_id": "flow:3:review",
+        "color": "#ffcf5a",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "paper",
+        "from_entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "id": "flow:4:paper",
+        "kind": "flow",
+        "label": "PAPER // published",
+        "logical_timestamp_ms": 24000,
+        "to_entity_id": "institution:noctiluca-publication-spine:c2c34a68",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": null,
+        "causal_parent_id": "flow:4:paper",
+        "color": "#80ff72",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "funding",
+        "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
+        "id": "flow:5:funding",
+        "kind": "flow",
+        "label": "FUNDING // +20",
+        "logical_timestamp_ms": 27400,
+        "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": "paper:arcology-signals",
+        "causal_parent_id": "flow:5:funding",
         "color": "#a98cff",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d"
         ],
         "duration_ms": 4200,
         "flow_type": "citation",
-        "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
-        "id": "flow:5:citation",
+        "from_entity_id": "institution:noctiluca-publication-spine:c2c34a68",
+        "id": "flow:6:citation",
         "kind": "flow",
         "label": "CITATION // +1",
-        "logical_timestamp_ms": 34000,
+        "logical_timestamp_ms": 30800,
         "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
         "truth_status": "derived"
       },
       {
         "artifact_id": null,
-        "causal_parent_id": "flow:5:citation",
+        "causal_parent_id": "flow:6:citation",
         "color": "#ff7657",
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
         ],
         "duration_ms": 4200,
         "flow_type": "policy",
         "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
-        "id": "flow:6:policy",
+        "id": "flow:7:policy",
         "kind": "flow",
         "label": "POLICY // changed",
-        "logical_timestamp_ms": 42000,
+        "logical_timestamp_ms": 34200,
         "to_entity_id": "institution:peer-review-exchange:e23ed7a0",
         "truth_status": "derived"
       }
@@ -1198,6 +1373,21 @@
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
+        ],
+        "duration_ms": 0,
+        "entity_id": "institution:noctiluca-publication-spine:c2c34a68",
+        "id": "placement:institution:noctiluca-publication-spine:c2c34a68",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 420,
+        "y": 238
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
         ],
         "duration_ms": 0,
@@ -1243,7 +1433,22 @@
         "causal_parent_id": null,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
+        ],
+        "duration_ms": 0,
+        "entity_id": "researcher:iren",
+        "id": "placement:researcher:iren",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 426,
+        "y": 252
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
         "duration_ms": 0,
         "entity_id": "paper:arcology-signals",
@@ -1259,7 +1464,7 @@
   "derivation_version": "scienceutopia.game-choreography.v2.0.0",
   "event_schema_version": "scienceutopia.event.v1",
   "metadata": {
-    "disclosure": "Hand-authored deterministic fixture for renderer validation. It is not an experimental run or evidence about a real ScienceUtopia system. All six semantic flows cite synthetic canonical fixture events; ambient activity is isolated and makes no scientific claim.",
+    "disclosure": "Hand-authored deterministic four-researcher fixture for renderer validation. It is not an experimental run or evidence about a real ScienceUtopia system. All six semantic flow types cite synthetic canonical fixture events; ambient activity is isolated and makes no scientific claim.",
     "empirical": false,
     "source_kind": "synthetic_contract_fixture",
     "source_label": "synthetic replay-view v2 contract fixture",
@@ -1327,7 +1532,7 @@
         ],
         "duration_ms": 0,
         "event_id": "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
-        "logical_timestamp_ms": 3692,
+        "logical_timestamp_ms": 3200,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1364,7 +1569,7 @@
         ],
         "duration_ms": 0,
         "event_id": "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-        "logical_timestamp_ms": 7385,
+        "logical_timestamp_ms": 6400,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1405,11 +1610,11 @@
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
         ],
         "duration_ms": 0,
-        "event_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-        "logical_timestamp_ms": 11077,
+        "event_id": "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+        "logical_timestamp_ms": 9600,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1417,6 +1622,12 @@
               "agent_type": "academic_researcher",
               "balance": 100,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1435,7 +1646,61 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81"
+          ],
+          "artifacts": {},
+          "completed_years": [],
+          "year": 0
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+        "cursor": 5,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f"
+        ],
+        "duration_ms": 0,
+        "event_id": "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+        "logical_timestamp_ms": 12800,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f"
           ],
           "artifacts": {},
           "completed_years": [],
@@ -1444,19 +1709,20 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-        "cursor": 5,
+        "causal_parent_id": "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+        "cursor": 6,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
         ],
         "duration_ms": 0,
-        "event_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-        "logical_timestamp_ms": 14769,
+        "event_id": "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+        "logical_timestamp_ms": 16000,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1464,6 +1730,12 @@
               "agent_type": "academic_researcher",
               "balance": 100,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1482,8 +1754,9 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -1510,20 +1783,21 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-        "cursor": 6,
+        "causal_parent_id": "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+        "cursor": 7,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
         ],
         "duration_ms": 0,
-        "event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-        "logical_timestamp_ms": 18462,
+        "event_id": "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+        "logical_timestamp_ms": 19200,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1531,6 +1805,12 @@
               "agent_type": "academic_researcher",
               "balance": 100,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1549,9 +1829,10 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -1585,111 +1866,35 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-        "cursor": 7,
-        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
-        "derived_from_event_ids": [
-          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
-          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
-          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1"
-        ],
-        "duration_ms": 0,
-        "event_id": "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-        "logical_timestamp_ms": 22154,
-        "state": {
-          "agents": {
-            "researcher:aya": {
-              "active": true,
-              "agent_type": "academic_researcher",
-              "balance": 100,
-              "institution": "Noctiluca Knowledge Lab"
-            },
-            "researcher:mino": {
-              "active": true,
-              "agent_type": "review_researcher",
-              "balance": 100,
-              "institution": "Peer Review Exchange"
-            },
-            "researcher:sol": {
-              "active": true,
-              "agent_type": "policy_researcher",
-              "balance": 100,
-              "institution": "Civic Funding Bureau"
-            }
-          },
-          "applied_event_ids": [
-            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
-            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
-            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1"
-          ],
-          "artifacts": {
-            "paper:arcology-signals": {
-              "author_id": "researcher:aya",
-              "conference": "Peer Review Exchange",
-              "history": [
-                {
-                  "event": "submitted",
-                  "year": 1
-                },
-                {
-                  "decision": "accept",
-                  "event": "decided",
-                  "year": 1
-                }
-              ],
-              "reviews": [
-                {
-                  "justification": "Synthetic review used to validate replay choreography.",
-                  "reviewer_id": "researcher:mino",
-                  "score": 4,
-                  "year": 1
-                }
-              ],
-              "status": "accept",
-              "title": "Signals Across the Arcology",
-              "topics": [
-                "science-of-science",
-                "institution-design"
-              ]
-            }
-          },
-          "completed_years": [],
-          "year": 1
-        },
-        "truth_status": "derived"
-      },
-      {
-        "causal_parent_id": "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
+        "causal_parent_id": "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
         "cursor": 8,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
         ],
         "duration_ms": 0,
-        "event_id": "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-        "logical_timestamp_ms": 25846,
+        "event_id": "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+        "logical_timestamp_ms": 22400,
         "state": {
           "agents": {
             "researcher:aya": {
               "active": true,
               "agent_type": "academic_researcher",
-              "balance": 120,
+              "balance": 100,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1708,11 +1913,11 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -1751,23 +1956,23 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
+        "causal_parent_id": "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
         "cursor": 9,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
         ],
         "duration_ms": 0,
-        "event_id": "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-        "logical_timestamp_ms": 29538,
+        "event_id": "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+        "logical_timestamp_ms": 25600,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1775,6 +1980,12 @@
               "agent_type": "academic_researcher",
               "balance": 120,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1793,12 +2004,12 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-            "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -1837,24 +2048,24 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
+        "causal_parent_id": "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
         "cursor": 10,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d"
         ],
         "duration_ms": 0,
-        "event_id": "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-        "logical_timestamp_ms": 33231,
+        "event_id": "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+        "logical_timestamp_ms": 28800,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1862,6 +2073,12 @@
               "agent_type": "academic_researcher",
               "balance": 120,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1880,13 +2097,13 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-            "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-            "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -1925,25 +2142,25 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
+        "causal_parent_id": "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
         "cursor": 11,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-          "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
         ],
         "duration_ms": 0,
-        "event_id": "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-        "logical_timestamp_ms": 36923,
+        "event_id": "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+        "logical_timestamp_ms": 32000,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -1951,6 +2168,12 @@
               "agent_type": "academic_researcher",
               "balance": 120,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -1969,14 +2192,14 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-            "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-            "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-            "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+            "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -2015,26 +2238,26 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
+        "causal_parent_id": "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
         "cursor": 12,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-          "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-          "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+          "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8"
         ],
         "duration_ms": 0,
-        "event_id": "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
-        "logical_timestamp_ms": 40615,
+        "event_id": "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+        "logical_timestamp_ms": 35200,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -2042,6 +2265,12 @@
               "agent_type": "academic_researcher",
               "balance": 120,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -2060,15 +2289,15 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-            "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-            "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-            "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-            "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+            "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+            "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -2107,27 +2336,27 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
+        "causal_parent_id": "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
         "cursor": 13,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-          "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-          "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
-          "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+          "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+          "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa"
         ],
         "duration_ms": 0,
-        "event_id": "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e",
-        "logical_timestamp_ms": 44308,
+        "event_id": "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+        "logical_timestamp_ms": 38400,
         "state": {
           "agents": {
             "researcher:aya": {
@@ -2135,6 +2364,12 @@
               "agent_type": "academic_researcher",
               "balance": 120,
               "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
             },
             "researcher:mino": {
               "active": true,
@@ -2153,16 +2388,16 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-            "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-            "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-            "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-            "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
-            "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+            "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+            "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+            "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -2201,27 +2436,235 @@
         "truth_status": "derived"
       },
       {
-        "causal_parent_id": "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e",
+        "causal_parent_id": "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
         "cursor": 14,
         "derivation_version": "scienceutopia.game-choreography.v2.0.0",
         "derived_from_event_ids": [
           "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
           "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
           "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-          "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-          "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
-          "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e",
-          "62f3f668c500430c05b94a38ec35588bc3893180e2fdd4f0c542dade3bae2486"
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+          "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+          "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+          "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8"
         ],
         "duration_ms": 0,
-        "event_id": "62f3f668c500430c05b94a38ec35588bc3893180e2fdd4f0c542dade3bae2486",
+        "event_id": "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+        "logical_timestamp_ms": 41600,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+            "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+            "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+            "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+            "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+        "cursor": 15,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+          "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+          "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+          "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+          "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b"
+        ],
+        "duration_ms": 0,
+        "event_id": "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b",
+        "logical_timestamp_ms": 44800,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+            "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+            "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+            "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+            "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+            "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b",
+        "cursor": 16,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+          "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+          "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+          "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+          "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+          "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+          "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+          "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+          "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+          "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+          "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+          "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b",
+          "e41e27f498713cc6b7ff1a56678f9c57f5a85d32b733d3e052874ed320bd0c55"
+        ],
+        "duration_ms": 0,
+        "event_id": "e41e27f498713cc6b7ff1a56678f9c57f5a85d32b733d3e052874ed320bd0c55",
         "logical_timestamp_ms": 48000,
         "state": {
           "agents": {
@@ -2231,6 +2674,12 @@
               "balance": 120,
               "institution": "Noctiluca Knowledge Lab"
             },
+            "researcher:iren": {
+              "active": true,
+              "agent_type": "editor_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Publication Spine"
+            },
             "researcher:mino": {
               "active": true,
               "agent_type": "review_researcher",
@@ -2248,17 +2697,19 @@
             "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
             "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
             "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
-            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
-            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
-            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
-            "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1",
-            "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980",
-            "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e",
-            "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa",
-            "f18bbdbaa1191c56b6009235daa46af81baaf79958e6df213621c1d5496d698c",
-            "d148d987c0775f714c7fbbbd10e1e0b1994a7c71e0d7fa84928be4cb1b33c86b",
-            "28e25c7289f7ffc416deea2b6105454fe8c1561f177351e71c351b21d5fce27e",
-            "62f3f668c500430c05b94a38ec35588bc3893180e2fdd4f0c542dade3bae2486"
+            "0cdbc8e5410e4cb17e8d1353241977033f3d795dc62d972fe83c13f56c891a81",
+            "8789a139e69c315ac7ec9413aaf6a47fe4dbdc41428c604164aa39b0e82b9f7f",
+            "a6da8a36c5c4c08e47d6c44423fd1bf08575f17fecfdd78f52d4c8c788d24690",
+            "659123776d353dcdd7619da43b8a770da08aca504bde6c219a916b513e5a3c6c",
+            "abb095ec9b4bc80c480374964c14f94fa87a13cb17fd359bae12f8d3c2aecde8",
+            "eab91e962f002f6fd026bed2e43631fa6f219ce34aabeb4609f55c3f01e11e7c",
+            "06fdb64cb4fc4bc1420041193596cd7d54c987f167e5de2711d3e59fc31b227d",
+            "f56d24d0b893de55d48656b5d6cd7e0c1c0c5fb6d169df541a2e295bdb2a50ab",
+            "d6bc8215e83abd231935e2c62b2ab73f361a16be66e65e169cbff1da88df74a8",
+            "60eb9d0b466ed8f33a1fd551e60fefcaded1684218f75e12d349bad2c3c06eaa",
+            "8467ad52082286b714db249be82c8cd6070dfc59980a868522860e3e18b95cc8",
+            "b700e0cfb4417e753dd8f6a08232aae85e4f0bee4a71fcc0471002a2364d719b",
+            "e41e27f498713cc6b7ff1a56678f9c57f5a85d32b733d3e052874ed320bd0c55"
           ],
           "artifacts": {
             "paper:arcology-signals": {
@@ -2301,6 +2752,6 @@
     ]
   },
   "schema_version": "scienceutopia.replay-view.v2",
-  "stream_hash": "33d402d3c959bb436a1c3c526e7471593695878ba09e9b8c182c82149fe4569f",
+  "stream_hash": "87a0cfac83d9a3377e5ca6cf83942f867ea8552447b23a4324bf19a72b025639",
   "stream_hash_algorithm": "scienceutopia.python-canonical-json-sha256.v1"
 }

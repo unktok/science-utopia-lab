@@ -2,8 +2,8 @@
 
 ## Production runtime assets
 
-Status: `production-grid-v0.2`. The runtime manifest loads fourteen SVGs under
-`production/`: three six-frame researcher sheets with 24x32 frames, four
+Status: `production-grid-v0.3`. The runtime manifest loads fifteen SVGs under
+`production/`: four six-frame researcher sheets with 24x32 frames, four
 institutions at 96x80, six flow packets at 8x8, and a 16x8 ambient courier.
 They were hand-authored for this repository on 2026-10-27 and 2026-10-28 from
 integer-aligned `rect` primitives using only the frozen
@@ -31,6 +31,7 @@ the deterministic browser capture.
 Each researcher sheet has paired idle, walk, and domain-work frames. Aya's work
 frames carry an instrument probe and sample pulse; Sol's carry an allocation
 ledger and policy broadcaster; Mino's carry an open manuscript and review seal.
+Iren's carry stacked repository pages and a publication beacon.
 The frames deliberately change posture and equipment rather than applying a
 generic glow. The browser chooses frames from the replay cursor, so paused and
 reduced-motion scenes are deterministic.

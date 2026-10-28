@@ -16,7 +16,7 @@ from .viewer import build_viewer_payload_v2
 
 
 BRANCH_MANIFEST_SCHEMA = "scienceutopia.replay-branch-manifest.v1"
-SHARED_PREFIX_COUNT = 6
+SHARED_PREFIX_COUNT = 7
 
 
 def _suffix(branch_id: str) -> list[dict[str, Any]]:
@@ -126,7 +126,9 @@ def branch_events(branch_id: str) -> list[EventEnvelope]:
                 "residual": 0,
             },
         }
-        for actor_id in ("researcher:aya", "researcher:mino", "researcher:sol")
+        for actor_id in (
+            "researcher:aya", "researcher:mino", "researcher:sol", "researcher:iren"
+        )
     ]
     specs = suffix + reports + [{"event_type": "year.completed", "payload": {"year": 1}}]
     phase_by_type = {

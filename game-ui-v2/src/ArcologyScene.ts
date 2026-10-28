@@ -85,6 +85,16 @@ function actionFrame(action: ActionType | undefined, cursorMs: number, reducedMo
   return reducedMotion ? 0 : Math.floor(cursorMs / 880) % 2;
 }
 
+function actionColor(action: ActionType): number {
+  if (action === "move") return 0x9ea8c2;
+  if (["write", "revise", "publish"].includes(action)) return 0xffc857;
+  if (action === "review") return 0xf653d8;
+  if (["allocate", "receive"].includes(action)) return 0x39f5c8;
+  if (["cite", "read"].includes(action)) return 0xa86bff;
+  if (action === "policy") return 0xff617d;
+  return 0x2dd4ff;
+}
+
 function lerpPoint(start: WorldPoint, end: WorldPoint, progress: number): WorldPoint {
   return {
     x: Math.round(Phaser.Math.Linear(start.x, end.x, progress)),
@@ -112,6 +122,7 @@ export class ArcologyScene extends Phaser.Scene {
   private keyMap?: Record<string, Phaser.Input.Keyboard.Key>;
   private rainGraphics?: Phaser.GameObjects.Graphics;
   private stateGraphics?: Phaser.GameObjects.Graphics;
+  private activityGraphics?: Phaser.GameObjects.Graphics;
   private readonly onSelect: (detail: SelectionDetail) => void;
   private readonly onReady: () => void;
 
@@ -158,6 +169,7 @@ export class ArcologyScene extends Phaser.Scene {
     }
     this.createActorHuds();
     for (const flow of this.replay.choreography.flows) this.createFlow(flow);
+    this.activityGraphics = this.add.graphics().setDepth(10);
     this.rainGraphics = this.add.graphics().setDepth(15);
     this.stateGraphics = this.add.graphics().setDepth(7);
     this.stateGraphics.setInteractive(
@@ -228,6 +240,7 @@ export class ArcologyScene extends Phaser.Scene {
   private renderFrame(): void {
     if (!this.sys.isActive()) return;
     this.renderActions();
+    this.renderActivityEffects();
     this.renderFlows();
     this.renderAmbient();
     this.renderInstitutionStates();
@@ -261,22 +274,28 @@ export class ArcologyScene extends Phaser.Scene {
     this.drawDistrictPlatform(graphics, 68, 107, 112, 65, 0x2dd4ff);
     this.drawDistrictPlatform(graphics, 280, 92, 112, 72, 0xf653d8);
     this.drawDistrictPlatform(graphics, 196, 196, 112, 66, 0x39f5c8);
+    this.drawDistrictPlatform(graphics, 366, 188, 108, 74, 0xffc857);
 
     graphics.lineStyle(3, 0x10142a, 1);
     graphics.lineBetween(176, 143, 281, 132);
     graphics.lineBetween(288, 166, 274, 196);
     graphics.lineBetween(195, 191, 159, 165);
+    graphics.lineBetween(307, 222, 367, 222);
+    graphics.lineBetween(390, 187, 365, 157);
     graphics.lineStyle(1, 0x46527a, 0.75);
     graphics.lineBetween(176, 141, 281, 130);
     graphics.lineBetween(290, 165, 276, 198);
     graphics.lineBetween(194, 189, 159, 163);
+    graphics.lineBetween(307, 220, 367, 220);
+    graphics.lineBetween(392, 187, 367, 155);
     graphics.fillStyle(0xffc857, 0.85);
-    const conduitLights: Array<[number, number]> = [[182, 139], [210, 136], [238, 133], [266, 130], [287, 172], [282, 185], [185, 182], [174, 173]];
+    const conduitLights: Array<[number, number]> = [[182, 139], [210, 136], [238, 133], [266, 130], [287, 172], [282, 185], [185, 182], [174, 173], [320, 218], [344, 218], [378, 174], [387, 184]];
     for (const [x, y] of conduitLights) graphics.fillRect(x, y, 2, 2);
 
     this.add.text(72, 93, "LAB//01", { fontFamily: "monospace", fontSize: "5px", color: "#2dd4ff" }).setDepth(-5);
     this.add.text(285, 78, "REVIEW//EXCHANGE", { fontFamily: "monospace", fontSize: "5px", color: "#f653d8" }).setDepth(-5);
     this.add.text(201, 182, "CIVIC//LEDGER", { fontFamily: "monospace", fontSize: "5px", color: "#39f5c8" }).setDepth(-5);
+    this.add.text(371, 174, "PUBLICATION//SPINE", { fontFamily: "monospace", fontSize: "5px", color: "#ffc857" }).setDepth(-5);
     this.add.text(8, 82, "AMBIENT INFRA // NON-SCIENTIFIC", { fontFamily: "monospace", fontSize: "4px", color: "#6a769a" }).setDepth(-5);
   }
 
@@ -347,13 +366,61 @@ export class ArcologyScene extends Phaser.Scene {
       hud.label.setVisible(Boolean(active));
       if (active) {
         this.currentActions.set(researcher.id, active);
-        const color = active.action_type === "move" ? 0x9ea8c2 : 0x2dd4ff;
+        const color = actionColor(active.action_type);
         hud.marker.lineStyle(1, color, 0.9);
         hud.marker.strokeRect(position.x - 14, position.y - 34, 28, 36);
         hud.marker.fillStyle(color, 0.9).fillRect(position.x - 14, position.y - 34, 4, 1).fillRect(position.x + 10, position.y - 34, 4, 1);
         hud.label.setText(`◇ ${active.action_type.toUpperCase()} // DERIVED`).setPosition(position.x, position.y - 36);
       } else {
         this.currentActions.delete(researcher.id);
+      }
+    }
+  }
+
+  private renderActivityEffects(): void {
+    if (!this.activityGraphics) return;
+    const graphics = this.activityGraphics;
+    graphics.clear();
+    for (const [actorId, action] of this.currentActions) {
+      const sprite = this.sprites.get(actorId);
+      if (!sprite) continue;
+      const x = Math.round(sprite.x);
+      const y = Math.round(sprite.y);
+      const localTime = Math.max(0, this.cursorMs - action.logical_timestamp_ms);
+      const phase = this.preferences.reducedMotion ? 0 : Math.floor(localTime / 220) % 3;
+      if (action.action_type === "move") {
+        graphics.fillStyle(0x9ea8c2, 0.58);
+        graphics.fillRect(x - 7 - phase * 2, y - 1, 2, 1);
+        graphics.fillRect(x - 12 - phase * 2, y + 1, 2, 1);
+      } else if (action.action_type === "experiment") {
+        graphics.lineStyle(1, 0x2dd4ff, 0.95).strokeRect(x - 14, y - 23, 8, 11);
+        graphics.fillStyle(phase === 1 ? 0xb7f34a : 0x39f5c8, 0.9).fillRect(x - 12, y - 18 - phase, 4, 4 + phase);
+        graphics.lineStyle(1, 0x2dd4ff, 0.75).lineBetween(x - 6, y - 20, x + 5, y - 25 + phase);
+      } else if (["write", "revise", "review", "publish"].includes(action.action_type)) {
+        const accent = action.action_type === "review" ? 0xf653d8 : action.action_type === "publish" ? 0xffc857 : 0xeee9d8;
+        graphics.fillStyle(0x10142a, 0.96).fillRect(x + 7, y - 23, 11, 10);
+        graphics.lineStyle(1, accent, 0.92).strokeRect(x + 7, y - 23, 11, 10);
+        for (let row = 0; row < 3; row += 1) graphics.fillStyle(accent, row === phase ? 1 : 0.42).fillRect(x + 9, y - 21 + row * 3, 6 + (row % 2), 1);
+        if (action.action_type === "publish") {
+          graphics.fillStyle(0xeee9d8, 0.9).fillRect(x - 14, y - 21, 5, 7).fillRect(x - 12, y - 24, 5, 7);
+          graphics.fillStyle(0x4f7cff, 0.85).fillRect(x - 11, y - 22, 3, 1);
+        }
+      } else if (["allocate", "receive"].includes(action.action_type)) {
+        graphics.lineStyle(1, 0x39f5c8, 0.92).strokeRect(x - 15, y - 24, 10, 12);
+        for (let column = 0; column < 3; column += 1) {
+          const height = 3 + ((column + phase) % 3) * 2;
+          graphics.fillStyle(0x39f5c8, 0.86).fillRect(x - 13 + column * 3, y - 14 - height, 2, height);
+        }
+      } else if (["cite", "read"].includes(action.action_type)) {
+        graphics.lineStyle(1, 0xa86bff, 0.9);
+        graphics.strokeRect(x - 15 - phase, y - 25 - phase, 7 + phase * 2, 10 + phase * 2);
+        graphics.fillStyle(0xa86bff, 0.9).fillRect(x - 11, y - 21, 2, 2);
+      } else if (action.action_type === "policy") {
+        graphics.lineStyle(1, 0xff617d, 0.9);
+        for (let ring = 0; ring < 3; ring += 1) {
+          const size = 7 + ring * 5 + phase * 2;
+          graphics.strokeRect(x - Math.floor(size / 2), y - 21 - Math.floor(size / 2), size, size);
+        }
       }
     }
   }
@@ -476,8 +543,8 @@ export class ArcologyScene extends Phaser.Scene {
     const funded = this.eventByType("resource.changed");
     const policy = this.eventByType("policy.changed");
     if (accepted && this.cursorMs >= accepted.logical_timestamp_ms) {
-      this.stateGraphics.fillStyle(0xeee9d8, 0.92).fillRect(354, 78, 7, 9);
-      this.stateGraphics.fillStyle(0x4f7cff, 0.9).fillRect(356, 80, 5, 2);
+      this.stateGraphics.fillStyle(0xeee9d8, 0.92).fillRect(439, 174, 7, 9);
+      this.stateGraphics.fillStyle(0x4f7cff, 0.9).fillRect(441, 176, 5, 2);
     }
     if (funded && this.cursorMs >= funded.logical_timestamp_ms) {
       this.stateGraphics.lineStyle(1, 0x39f5c8, 0.95).strokeRect(92, 90, 16, 11);
@@ -495,7 +562,7 @@ export class ArcologyScene extends Phaser.Scene {
 
   private stateMarkerAt(x: number, y: number): CanonicalEvent | undefined {
     const accepted = this.eventByType("paper.decided");
-    if (accepted && this.cursorMs >= accepted.logical_timestamp_ms && x >= 350 && x <= 366 && y >= 74 && y <= 92) return accepted;
+    if (accepted && this.cursorMs >= accepted.logical_timestamp_ms && x >= 435 && x <= 451 && y >= 170 && y <= 188) return accepted;
     const funded = this.eventByType("resource.changed");
     if (funded && this.cursorMs >= funded.logical_timestamp_ms && x >= 88 && x <= 112 && y >= 86 && y <= 105) return funded;
     const policy = this.eventByType("policy.changed");

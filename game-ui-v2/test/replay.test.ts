@@ -12,21 +12,25 @@ async function fixture(): Promise<unknown> {
 }
 
 describe("replay-view v2 contract", () => {
-  it("loads the deterministic six-flow vertical slice", async () => {
+  it("loads the deterministic vertical slice with all six flow types", async () => {
     const replay = parseReplayV2(await fixture());
     expect(replay.choreography.duration_ms).toBe(48_000);
-    expect(replay.canonical.events).toHaveLength(14);
-    expect(replay.canonical.entities.researchers).toHaveLength(3);
-    expect(replay.canonical.entities.institutions).toHaveLength(3);
-    expect(replay.choreography.flows.map((flow) => flow.flow_type)).toEqual([
+    expect(replay.canonical.events).toHaveLength(16);
+    expect(replay.canonical.entities.researchers).toHaveLength(4);
+    expect(replay.canonical.entities.institutions).toHaveLength(4);
+    expect(new Set(replay.choreography.flows.map((flow) => flow.flow_type))).toEqual(new Set([
       "data", "paper", "review", "funding", "citation", "policy",
-    ]);
-    expect(replay.choreography.actions).toHaveLength(15);
+    ]));
+    expect(replay.choreography.flows.filter((flow) => flow.flow_type === "paper")).toHaveLength(2);
+    expect(replay.choreography.actions).toHaveLength(17);
     expect(new Set(replay.choreography.actions.map((action) => action.actor_entity_id))).toEqual(new Set([
-      "researcher:aya", "researcher:mino", "researcher:sol",
+      "researcher:aya", "researcher:mino", "researcher:sol", "researcher:iren",
     ]));
     expect(replay.choreography.flows.every((flow) => flow.truth_status === "derived" && flow.derived_from_event_ids.length > 0)).toBe(true);
     expect(replay.choreography.actions.every((action) => action.truth_status === "derived" && action.derived_from_event_ids.length > 0)).toBe(true);
+    const publication = replay.choreography.actions.find((action) => action.action_type === "publish");
+    expect(publication).toMatchObject({ actor_entity_id: "researcher:iren", truth_status: "derived" });
+    expect(replay.canonical.events.find((event) => event.id === publication?.derived_from_event_ids[0])?.kind).toBe("paper.decided");
     expect(replay.ambient.effects.every((effect) => effect.truth_status === "ambient" && effect.derived_from_event_ids.length === 0)).toBe(true);
   });
 
@@ -41,6 +45,10 @@ describe("replay-view v2 contract", () => {
     expect(aya).toMatchObject({ x: 144, y: 164, asset_key: "researcher_early" });
     const bureau = replay.canonical.entities.institutions.find((row) => row.id.includes("funding-bureau"));
     expect(bureau).toMatchObject({ x: 252, y: 222, asset_key: "institution_funding" });
+    const publication = replay.canonical.entities.institutions.find((row) => row.id.includes("publication-spine"));
+    expect(publication).toMatchObject({ x: 420, y: 238, asset_key: "institution_publication" });
+    const iren = replay.canonical.entities.researchers.find((row) => row.id === "researcher:iren");
+    expect(iren).toMatchObject({ x: 426, y: 252, asset_key: "researcher_editor" });
   });
 
   it("rejects a derived flow without canonical evidence", async () => {
@@ -72,7 +80,7 @@ describe("asset pack contract", () => {
   it("contains every asset required by the vertical slice", async () => {
     const pack = parseAssetPack(JSON.parse(await readFile(fileURLToPath(assetPackUrl), "utf8")));
     expect(new Set(pack.images.map((image) => image.key))).toEqual(new Set([
-      "researcher_early", "researcher_pi", "researcher_reviewer",
+      "researcher_early", "researcher_pi", "researcher_reviewer", "researcher_editor",
       "institution_lab", "institution_review", "institution_publication", "institution_funding",
       "flow_data", "flow_paper", "flow_review", "flow_funding", "flow_citation", "flow_policy",
       "ambient_courier_drone",

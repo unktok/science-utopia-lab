@@ -19,6 +19,7 @@ const EXPECTED: Record<string, { kind: "researcher" | "institution" | "flow" | "
   researcher_early: { kind: "researcher", width: 24, height: 32 },
   researcher_pi: { kind: "researcher", width: 24, height: 32 },
   researcher_reviewer: { kind: "researcher", width: 24, height: 32 },
+  researcher_editor: { kind: "researcher", width: 24, height: 32 },
   institution_lab: { kind: "institution", width: 96, height: 80 },
   institution_review: { kind: "institution", width: 96, height: 80 },
   institution_publication: { kind: "institution", width: 96, height: 80 },
@@ -39,7 +40,7 @@ async function loadPack() {
 describe("NOCTILUCA production pixel assets", () => {
   it("maps every required key to its exact fixed-grid production SVG", async () => {
     const pack = await loadPack();
-    expect(pack.version).toBe("noctiluca-production-v0.2");
+    expect(pack.version).toBe("noctiluca-production-v0.3");
     expect(pack.palette).toBe("noctiluca-24-v0.1");
     expect(new Set(pack.images.map((image) => image.key))).toEqual(new Set(Object.keys(EXPECTED)));
     expect(new Set(pack.images.map((image) => image.url)).size).toBe(pack.images.length);

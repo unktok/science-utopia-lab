@@ -32,7 +32,7 @@ def payload() -> dict:
     )
 
 
-def test_vertical_slice_has_three_researchers_three_institutions_and_six_flows() -> None:
+def test_vertical_slice_has_four_researchers_four_institutions_and_all_flow_types() -> None:
     value = payload()
 
     assert value["schema_version"] == "scienceutopia.replay-view.v2"
@@ -41,15 +41,19 @@ def test_vertical_slice_has_three_researchers_three_institutions_and_six_flows()
     )
     assert value["metadata"]["source_kind"] == "synthetic_contract_fixture"
     assert value["metadata"]["empirical"] is False
-    assert len(value["canonical"]["entities"]["researchers"]) == 3
-    assert len(value["canonical"]["entities"]["institutions"]) == 3
+    assert len(value["canonical"]["entities"]["researchers"]) == 4
+    assert len(value["canonical"]["entities"]["institutions"]) == 4
     flows = value["choreography"]["flows"]
-    assert len(flows) == 6
-    assert tuple(flow["flow_type"] for flow in flows) == FLOW_TYPES
+    assert len(flows) == 7
+    assert {flow["flow_type"] for flow in flows} == set(FLOW_TYPES)
+    assert [flow["label"] for flow in flows if flow["flow_type"] == "paper"] == [
+        "PAPER // submitted",
+        "PAPER // published",
+    ]
     actions = value["choreography"]["actions"]
-    assert len(actions) == 15
+    assert len(actions) == 17
     assert {action["actor_entity_id"] for action in actions} == {
-        "researcher:aya", "researcher:mino", "researcher:sol",
+        "researcher:aya", "researcher:mino", "researcher:sol", "researcher:iren",
     }
 
 
@@ -79,6 +83,7 @@ def test_projection_is_authoritative_and_reconciles_fixture_resources() -> None:
     assert final["agents"]["researcher:aya"]["balance"] == 120
     assert final["agents"]["researcher:mino"]["balance"] == 100
     assert final["agents"]["researcher:sol"]["balance"] == 100
+    assert final["agents"]["researcher:iren"]["balance"] == 100
     assert final["artifacts"]["paper:arcology-signals"]["status"] == "accept"
     assert final["completed_years"] == [1]
 

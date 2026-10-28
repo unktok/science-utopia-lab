@@ -7,11 +7,12 @@ browser.
 
 ## Current status
 
-The v3 renderer is operational with a 48-second deterministic, synthetic
-fixture containing three researchers, three institutions, fourteen canonical
-events, fifteen evidence-linked actor actions, and all six information-flow
-types. Researchers walk to institution work areas and use role-specific
-experiment, writing, review, allocation, citation, and policy poses. This
+The v4 renderer is operational with a 48-second deterministic, synthetic
+fixture containing four researchers, four institutions, sixteen canonical
+events, seventeen evidence-linked actor actions, and seven visible flows across
+all six information-flow types. Researchers walk to institution work areas and
+use role-specific experiment, writing, review, publication, allocation,
+citation, and policy poses. This
 fixture validates the renderer and evidence interaction; it is not an
 experiment or a claim about a real or simulated scientific system.
 
@@ -28,6 +29,13 @@ The intervention-fork page at `/compare.html` adds two synchronized instances
 of the same renderer. It loads a versioned branch manifest, recomputes the two
 complete stream hashes and their common-prefix hash, and verifies each declared
 `policy.changed` intervention before opening the comparison.
+
+The v4 world closes the spatial publication loop. A paper travels from the lab
+to review, the completed decision moves it into the Publication Spine, and a
+citation returns from the repository to the lab. Explicit derived actions also
+drive deterministic workstation effects: instrument readouts, manuscripts,
+review terminals, repository pages, funding ledgers, citation brackets, and
+policy broadcasts. No effect appears without an active choreography action.
 
 ## Run
 
@@ -69,7 +77,8 @@ The review URLs fix replay time and motion state:
 
 ```text
 http://localhost:4173/?cursor=14000&motion=reduced
-http://localhost:4173/?cursor=28000&motion=reduced
+http://localhost:4173/?cursor=20000&motion=reduced
+http://localhost:4173/?cursor=26000&motion=reduced
 http://localhost:4173/?cursor=43000&motion=reduced
 ```
 
@@ -84,6 +93,9 @@ logical canvas remains 480x270 and only integer display scaling is used.
 
 - [paper and researcher action](screenshots/noctiluca-v3-paper-action-cursor-14000.png)
 - [derived action evidence](screenshots/noctiluca-v3-action-evidence-cursor-14000.png)
+- [review network and four-district world](screenshots/noctiluca-v4-review-network-cursor-20000.png)
+- [publication and funding activity](screenshots/noctiluca-v4-publication-funding-cursor-26000.png)
+- [publication action evidence](screenshots/noctiluca-v4-publication-evidence-cursor-26000.png)
 - [funding and allocation](screenshots/noctiluca-v3-funding-cursor-28000.png)
 - [policy transmission](screenshots/noctiluca-v3-policy-cursor-43000.png)
 - [intervention branch comparison](screenshots/noctiluca-branch-compare-cursor-43000.png)
@@ -143,9 +155,9 @@ mirrored to semantic buttons for keyboard and screen-reader navigation.
 
 `src/replay.ts` validates and joins canonical entities with versioned visual
 placements, actions, and flows. `src/ArcologyScene.ts` renders only validated
-entities and choreography. Frame selection, actor position, rain, courier
-position, and packet position are functions of replay cursor and reduced-motion
-state; a paused cursor is a stable frame. `src/main.ts` owns transport, evidence
+entities and choreography. Frame selection, actor position, workstation
+activity, rain, courier position, and packet position are functions of replay
+cursor and reduced-motion state; a paused cursor is a stable frame. `src/main.ts` owns transport, evidence
 inspection, accessibility, hash verification, and deterministic review
 parameters. Adding a new scientific browser animation must not duplicate
 simulator logic: add a canonical event or a versioned deterministic derivation

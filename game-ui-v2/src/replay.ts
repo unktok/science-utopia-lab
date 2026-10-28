@@ -56,6 +56,7 @@ const inferredAssetKey = (id: string, entityType: WorldEntity["entity_type"]): s
   }
   if (entityType === "researcher") {
     if (id.includes(":mino")) return "researcher_reviewer";
+    if (id.includes(":iren")) return "researcher_editor";
     if (id.includes(":sol")) return "researcher_pi";
     return "researcher_early";
   }

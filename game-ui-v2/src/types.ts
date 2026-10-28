@@ -1,7 +1,7 @@
 export const FLOW_TYPES = ["data", "paper", "review", "funding", "citation", "policy"] as const;
 export type FlowType = (typeof FLOW_TYPES)[number];
 export type TruthStatus = "canonical" | "derived" | "ambient";
-export const ACTION_TYPES = ["move", "experiment", "write", "review", "revise", "allocate", "receive", "read", "cite", "policy"] as const;
+export const ACTION_TYPES = ["move", "experiment", "write", "review", "revise", "publish", "allocate", "receive", "read", "cite", "policy"] as const;
 export type ActionType = (typeof ACTION_TYPES)[number];
 
 export interface WorldPoint {
