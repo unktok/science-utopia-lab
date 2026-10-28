@@ -16,3 +16,10 @@ for final evaluation.
 measurement layer: versioned claim/evidence/verification/replication/correction
 events and synthetic shadow diagnostics. It is explicitly neither a LossSpec
 nor a held-out metric, and cannot select or veto candidates.
+
+[`prospective-semantic-recorder-v1.md`](prospective-semantic-recorder-v1.md)
+adds a default-disabled producer boundary for a future simulator: explicit
+typed event append, run/system/model fingerprint binding, hash-chain integrity,
+and fail-closed checkpoint/resume. It does not infer semantics from existing
+paper/review text, wire itself into the current runner, or expose recorded
+events to optimization.

@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 12:10 JST
+Updated: 2026-10-28 12:13 JST
 
 ## Overall position
 
@@ -27,6 +27,7 @@ Remote: `unktok/science-utopia-lab`
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
+| semantic instrumentation | prospective report-only slice | default-disabled explicit producer API, run/system/model-bound append-only stream, and fail-closed checkpoint/resume; not wired into the current simulator or optimizer |
 | optimization loss | v1 archived; v1.1 running | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
 | held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |

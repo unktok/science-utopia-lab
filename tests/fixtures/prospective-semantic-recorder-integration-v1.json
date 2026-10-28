@@ -1,0 +1,23 @@
+{
+  "schema": "scienceutopia.prospective-semantic-recorder-integration-fixture.v1",
+  "fixture_use": "synthetic_test_only",
+  "interpretation": "Explicit typed producer events used to test prospective recording; never an observed or experimental result.",
+  "explicit_event_plan": {
+    "path": "tests/fixtures/semantic-instrumentation-ground-truth-v1.json",
+    "file_sha256": "91b9ff45cea46b6315a829d24907f2ad94d9274242c31bdc09b263569f676f7a",
+    "contains_free_text_to_infer": false
+  },
+  "recorder": {
+    "recorder_id": "synthetic-prospective-recorder-v1",
+    "producer": "synthetic-fixture-v1",
+    "system_fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "model_fingerprint": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "resume_after_event_count": 7,
+  "expected": {
+    "event_count": 13,
+    "last_event_id": "evt-propagate-false",
+    "instrumentation_use": "report_only",
+    "optimization_input": false
+  }
+}
