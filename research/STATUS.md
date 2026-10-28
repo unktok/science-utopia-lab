@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 12:04 JST
+Updated: 2026-10-28 12:10 JST
 
 ## Overall position
 
@@ -34,7 +34,7 @@ Remote: `unktok/science-utopia-lab`
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
-| whole-system `SystemSpec` | simulator-backed workload slice | a verified commit-pinned simulator checkpoint/ledger stream now enters the generic graph as fingerprint-bound typed batches and fans out to evaluation/publication/funding/government/communication |
+| whole-system `SystemSpec` | bidirectional simulator boundary | verified native events enter the generic graph through the workload bridge; the reverse compiler now seals exact supported fixed-topology SystemSpecs into dry-run-validated native campaign plans and explicitly rejects unsupported structure |
 | structural system optimization | communication production slice | 97 communication candidates vary broker absence, broadcast/digest implementation, fan-out edge presence, and latency through one fingerprint-bound ask/loss/tell boundary |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | verified real-campaign adapter | completed seed-521 campaign is converted by Python into 71 canonical events / 72 authoritative frames after commit, manifest, integrity, completion, and artifact-hash verification; the running v1.1 study is not represented early |

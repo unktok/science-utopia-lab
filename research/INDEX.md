@@ -20,6 +20,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Stateful government policy mechanism](components/stateful-government-policy-v1.md)
 - [Communication and knowledge diffusion mechanism](components/communication-knowledge-diffusion-v1.md)
 - [Simulator-backed workload bridge](components/simulator-workload-bridge-v1.md)
+- [SystemSpec-to-simulator experiment plan compiler](components/system-spec-simulator-experiment-plan-v1.md)
 - [Black-box ask/tell boundary](optimizers/blackbox-ask-tell-v1.md)
 - [First closed-loop engineering protocol](protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [First closed-loop engineering result](results/first-closed-loop-engineering-v1-interpretation.md)
