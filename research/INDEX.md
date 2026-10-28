@@ -14,6 +14,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Closed-loop optimization contract](objectives/losses/closed-loop-v1.md)
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
 - [Generic mechanism graph runtime](components/mechanism-graph-runtime-v1.md)
+- [Heterogeneous production mechanism graph](components/heterogeneous-production-graph-v1.md)
 - [Black-box ask/tell boundary](optimizers/blackbox-ask-tell-v1.md)
 - [First closed-loop engineering protocol](protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [First closed-loop engineering result](results/first-closed-loop-engineering-v1-interpretation.md)

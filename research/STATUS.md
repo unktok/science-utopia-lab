@@ -34,8 +34,8 @@ Remote: `unktok/science-utopia-lab`
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
-| whole-system `SystemSpec` | executable foundation | typed model, validator, generic registry/runner, canonical provenance, legacy compiler |
-| structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; production adapters and checkpointed graph state remain |
+| whole-system `SystemSpec` | heterogeneous production slice | typed model, validator, generic registry/runner, canonical provenance, legacy compiler, and checkpointable evaluation/publication/funding adapters |
+| structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; connecting those mutations to heterogeneous production adapters remains |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | branch comparison vertical slice implemented | v3 world plus two canonical futures from one hash-verified replay origin, synchronized transport, intervention evidence, authoritative projection summaries, deterministic browser review; real campaign adapter remains |
 
@@ -52,14 +52,18 @@ candidates.
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
 | completed optimization runs | active v1.1: 0 of 45 logical, 0 of 27 expected physical; archived v1 evidence remains 8 complete plus 1 terminal failure and is not pooled |
-| currently running | 1 canonical physical run: participation/review design `d3536002463db`, seed 601, attempt 1 |
-| terminal failed runs | active v1.1: 0; archived v1: 1 empty-query failure, repaired before the new source freeze |
+| currently running | 1 canonical physical run: participation/review design `d3536002463db`, seed 601, attempt 2 |
+| failures / retries | active v1.1: 0 terminal failed rows and 1 preserved 240.8-second operator interruption after a missing derived RAG cache was detected; archived v1: 1 empty-query failure, repaired before the new source freeze |
 | remaining optimization runs | 45 logical; with successful audited adoption of the common initial trajectories, 27 physical simulations total |
 | frozen arm winners | 0 of 3 |
 | held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
 
 The long-run v1.1 scheduler started at 11:04 JST and is intentionally
-single-worker. A measured four-worker
+single-worker. Its first attempt was interrupted after detecting an avoidable
+103,107-document CPU embedding rebuild. The replacement cache was admitted
+only after dataset identity, ordered semantic corpus hash, tensor shape,
+finiteness, and SHA-256 verification; attempt 2 started at 11:09 JST. A
+measured four-worker
 microbenchmark against one local Ollama endpoint improved throughput only
 about 1.016× while increasing request latency, so local concurrency is not
 being treated as a fourfold speedup.
