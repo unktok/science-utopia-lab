@@ -1,0 +1,86 @@
+{
+  "schema": "scienceutopia.metric-conditioned-figure-data.v1",
+  "provenance": {
+    "data_classification": "synthetic_test_fixture",
+    "source_report_sha256": "synthetic-test-only",
+    "source_campaign_state_sha256": {
+      "metric-conditioned-participation-review-v1": "synthetic-test-only",
+      "metric-conditioned-topic-diversity-v1": "synthetic-test-only",
+      "metric-conditioned-review-burden-v1": "synthetic-test-only"
+    },
+    "source_report_schema": "scienceutopia.metric-conditioned-cross-evaluation-report.v1",
+    "study_id": "metric-conditioned-optimization-v1-synthetic-test",
+    "study_revision": "synthetic-test-only",
+    "warning": "SYNTHETIC TEST FIXTURE - NOT AN EXPERIMENTAL RESULT"
+  },
+  "arms": [
+    {"id": "metric-conditioned-participation-review-v1", "label": "Participation-review", "color": "#376795"},
+    {"id": "metric-conditioned-topic-diversity-v1", "label": "Topic-entropy proxy", "color": "#E8A33D"},
+    {"id": "metric-conditioned-review-burden-v1", "label": "Review-burden proxy", "color": "#E76254"}
+  ],
+  "optimization_trajectories": {
+    "metric-conditioned-participation-review-v1": [
+      {"proposal_index": 0, "phase": "initial", "status": "observed_complete", "loss": 0.64, "incumbent_loss": 0.64, "suggestion_id": "synthetic-a0"},
+      {"proposal_index": 1, "phase": "initial", "status": "observed_complete", "loss": 0.51, "incumbent_loss": 0.51, "suggestion_id": "synthetic-a1"},
+      {"proposal_index": 2, "phase": "initial", "status": "observed_complete", "loss": 0.57, "incumbent_loss": 0.51, "suggestion_id": "synthetic-a2"},
+      {"proposal_index": 3, "phase": "adaptive", "status": "observed_complete", "loss": 0.46, "incumbent_loss": 0.46, "suggestion_id": "synthetic-a3"},
+      {"proposal_index": 4, "phase": "adaptive", "status": "observed_complete", "loss": 0.43, "incumbent_loss": 0.43, "suggestion_id": "synthetic-a4"}
+    ],
+    "metric-conditioned-topic-diversity-v1": [
+      {"proposal_index": 0, "phase": "initial", "status": "observed_complete", "loss": -0.62, "incumbent_loss": -0.62, "suggestion_id": "synthetic-b0"},
+      {"proposal_index": 1, "phase": "initial", "status": "observed_complete", "loss": -0.55, "incumbent_loss": -0.62, "suggestion_id": "synthetic-b1"},
+      {"proposal_index": 2, "phase": "initial", "status": "observed_complete", "loss": -0.71, "incumbent_loss": -0.71, "suggestion_id": "synthetic-b2"},
+      {"proposal_index": 3, "phase": "adaptive", "status": "observed_complete", "loss": -0.75, "incumbent_loss": -0.75, "suggestion_id": "synthetic-b3"},
+      {"proposal_index": 4, "phase": "adaptive", "status": "observed_complete", "loss": -0.79, "incumbent_loss": -0.79, "suggestion_id": "synthetic-b4"}
+    ],
+    "metric-conditioned-review-burden-v1": [
+      {"proposal_index": 0, "phase": "initial", "status": "observed_complete", "loss": 1.20, "incumbent_loss": 1.20, "suggestion_id": "synthetic-c0"},
+      {"proposal_index": 1, "phase": "initial", "status": "observed_complete", "loss": 0.98, "incumbent_loss": 0.98, "suggestion_id": "synthetic-c1"},
+      {"proposal_index": 2, "phase": "initial", "status": "observed_complete", "loss": 1.08, "incumbent_loss": 0.98, "suggestion_id": "synthetic-c2"},
+      {"proposal_index": 3, "phase": "adaptive", "status": "observed_complete", "loss": 0.66, "incumbent_loss": 0.66, "suggestion_id": "synthetic-c3"},
+      {"proposal_index": 4, "phase": "adaptive", "status": "observed_complete", "loss": 0.52, "incumbent_loss": 0.52, "suggestion_id": "synthetic-c4"}
+    ]
+  },
+  "cross_evaluation": {
+    "loss_ids": ["participation-review-tradeoff-probe", "review-burden-probe", "topic-diversity-probe"],
+    "values": {
+      "metric-conditioned-participation-review-v1": {"participation-review-tradeoff-probe": 0.48, "review-burden-probe": 1.10, "topic-diversity-probe": -0.68},
+      "metric-conditioned-topic-diversity-v1": {"participation-review-tradeoff-probe": 0.63, "review-burden-probe": 1.35, "topic-diversity-probe": -0.84},
+      "metric-conditioned-review-burden-v1": {"participation-review-tradeoff-probe": 0.57, "review-burden-probe": 0.55, "topic-diversity-probe": -0.59}
+    }
+  },
+  "held_out_metrics": {
+    "metric-conditioned-participation-review-v1": {
+      "active-researcher-fraction": {"mean": 0.78, "population_sd": 0.05, "direction": "maximize", "complete": true},
+      "review-burden-per-active-researcher": {"mean": 1.10, "population_sd": 0.12, "direction": "minimize", "complete": true}
+    },
+    "metric-conditioned-topic-diversity-v1": {
+      "active-researcher-fraction": {"mean": 0.62, "population_sd": 0.07, "direction": "maximize", "complete": true},
+      "review-burden-per-active-researcher": {"mean": 1.35, "population_sd": 0.18, "direction": "minimize", "complete": true}
+    },
+    "metric-conditioned-review-burden-v1": {
+      "active-researcher-fraction": {"mean": 0.69, "population_sd": 0.06, "direction": "maximize", "complete": true},
+      "review-burden-per-active-researcher": {"mean": 0.55, "population_sd": 0.09, "direction": "minimize", "complete": true}
+    }
+  },
+  "rank_reversal": {
+    "columns": {
+      "loss:participation-review-tradeoff-probe": {"direction": "minimize", "preference_interpretation": true, "means": {}, "ranks": {"metric-conditioned-participation-review-v1": 1.0, "metric-conditioned-topic-diversity-v1": 3.0, "metric-conditioned-review-burden-v1": 2.0}, "raw_order": []},
+      "loss:review-burden-probe": {"direction": "minimize", "preference_interpretation": true, "means": {}, "ranks": {"metric-conditioned-participation-review-v1": 2.0, "metric-conditioned-topic-diversity-v1": 3.0, "metric-conditioned-review-burden-v1": 1.0}, "raw_order": []},
+      "loss:topic-diversity-probe": {"direction": "minimize", "preference_interpretation": true, "means": {}, "ranks": {"metric-conditioned-participation-review-v1": 2.0, "metric-conditioned-topic-diversity-v1": 1.0, "metric-conditioned-review-burden-v1": 3.0}, "raw_order": []}
+    },
+    "pairwise_kendall_tau_b": [], "winner_reversals": [], "own_loss_check": {}
+  },
+  "paired_tradeoffs": [],
+  "gaming_flags": [
+    {"signature": "synthetic-test-only", "triggered": false}
+  ],
+  "generalization": {
+    "metric-conditioned-participation-review-v1": {"generalization_gap_held_out_minus_optimization": 0.05},
+    "metric-conditioned-topic-diversity-v1": {"generalization_gap_held_out_minus_optimization": 0.04},
+    "metric-conditioned-review-burden-v1": {"generalization_gap_held_out_minus_optimization": 0.03}
+  },
+  "secondary_resolution": {
+    "synthetic-test-only": {"label": "synthetic-test-only", "low_resolution": false}
+  }
+}

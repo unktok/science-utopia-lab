@@ -162,6 +162,8 @@ The campaign consumed 9,821.6 serial seconds (2 h 43 min 42 s). Mean runtime was
 
 The local concurrency microbenchmark found no material throughput gain from four logical workers against one Ollama/Qwen3-8B endpoint. This does not preclude acceleration: independent replicas can be distributed across genuinely independent inference endpoints or GPUs, while a faster backend can reduce per-token latency. However, concurrency settings should be measured end-to-end because a single loaded model may serialize requests or incur latency inflation.
 
+\input{metric_conditioned_results}
+
 \section{Replay as a Game-Like Research Interface}
 
 Long-running multi-agent simulations are difficult to understand from summary tables alone. The first UI prototype therefore presents the canonical event replay as a small pixel-art campus (Figure~\ref{fig:game}). A user can play, pause, step, reset, scrub through time, change playback speed, inspect resources and institutional events, and view the event stream hash. Agents and organizations are visible as inhabitants of a system rather than as rows in a log.

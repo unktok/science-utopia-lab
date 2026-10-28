@@ -26,3 +26,16 @@ The paper reports the first completed result-dependent engineering campaign. It
 does not claim a validated science-policy objective, a held-out result, or a
 structurally optimized institution. Update the paper only alongside the cited
 protocols, compact results, and artifact manifests.
+
+## Metric-conditioned result boundary
+
+`metric_conditioned_results.tex` is a guarded insertion point for the
+preregistered three-arm study. It includes results only when all three PDFs are
+present under `figures/metric-conditioned/`; otherwise the manuscript states
+that the study is incomplete. The reproducible command and chart semantics are
+recorded in
+`research/decisions/0009-metric-conditioned-results-graphics-pipeline.md`.
+
+Never copy a synthetic preview into the paper directory. The graphics CLI
+requires an explicit synthetic classification, places a warning inside every
+synthetic image, and rejects that classification at the paper destination.
