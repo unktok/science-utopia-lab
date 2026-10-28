@@ -15,7 +15,7 @@ const PALETTE = new Set([
   "#F1BD91", "#F7DEC0", "#6E4C2E", "#B07A44",
 ]);
 
-const EXPECTED: Record<string, { kind: "researcher" | "institution" | "flow"; width: number; height: number }> = {
+const EXPECTED: Record<string, { kind: "researcher" | "institution" | "flow" | "environment"; width: number; height: number }> = {
   researcher_early: { kind: "researcher", width: 24, height: 32 },
   researcher_pi: { kind: "researcher", width: 24, height: 32 },
   researcher_reviewer: { kind: "researcher", width: 24, height: 32 },
@@ -29,6 +29,7 @@ const EXPECTED: Record<string, { kind: "researcher" | "institution" | "flow"; wi
   flow_funding: { kind: "flow", width: 8, height: 8 },
   flow_citation: { kind: "flow", width: 8, height: 8 },
   flow_policy: { kind: "flow", width: 8, height: 8 },
+  ambient_courier_drone: { kind: "environment", width: 16, height: 8 },
 };
 
 async function loadPack() {
@@ -38,13 +39,14 @@ async function loadPack() {
 describe("NOCTILUCA production pixel assets", () => {
   it("maps every required key to its exact fixed-grid production SVG", async () => {
     const pack = await loadPack();
-    expect(pack.version).toBe("noctiluca-production-v0.1");
+    expect(pack.version).toBe("noctiluca-production-v0.2");
     expect(pack.palette).toBe("noctiluca-24-v0.1");
     expect(new Set(pack.images.map((image) => image.key))).toEqual(new Set(Object.keys(EXPECTED)));
     expect(new Set(pack.images.map((image) => image.url)).size).toBe(pack.images.length);
     for (const image of pack.images) {
       expect(image).toMatchObject(EXPECTED[image.key]!);
       expect(image.url).toBe(`/assets/noctiluca/production/${image.key.replaceAll("_", "-")}.svg`);
+      if (image.kind === "researcher") expect(image.frames).toEqual({ frameWidth: 24, frameHeight: 32, end: 5 });
     }
   });
 
@@ -53,7 +55,9 @@ describe("NOCTILUCA production pixel assets", () => {
     for (const image of pack.images) {
       const assetUrl = new URL(image.url.replace(/^\//, ""), root);
       const svg = await readFile(fileURLToPath(assetUrl), "utf8");
-      expect(svg, image.key).toMatch(new RegExp(`<svg[^>]+width="${image.width}"[^>]+height="${image.height}"[^>]+viewBox="0 0 ${image.width} ${image.height}"`));
+      const sourceWidth = image.frames ? image.frames.frameWidth * (image.frames.end + 1) : image.width;
+      const sourceHeight = image.frames ? image.frames.frameHeight : image.height;
+      expect(svg, image.key).toMatch(new RegExp(`<svg[^>]+width="${sourceWidth}"[^>]+height="${sourceHeight}"[^>]+viewBox="0 0 ${sourceWidth} ${sourceHeight}"`));
       expect(svg, image.key).toContain('shape-rendering="crispEdges"');
       expect(svg, image.key).not.toMatch(/<(?:path|circle|ellipse|polygon|polyline|line|image|filter|linearGradient|radialGradient)\b/i);
       expect(svg, image.key).not.toMatch(/\b(?:transform|opacity|style|stroke|mask|clip-path)=/i);

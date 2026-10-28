@@ -640,6 +640,354 @@
     ]
   },
   "choreography": {
+    "actions": [
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 1600,
+        "end": {
+          "x": 112,
+          "y": 130
+        },
+        "id": "action:aya-to-instrument",
+        "kind": "actor_action",
+        "label": "Aya crosses the laboratory floor",
+        "logical_timestamp_ms": 800,
+        "start": {
+          "x": 144,
+          "y": 164
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "experiment",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-to-instrument",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+        ],
+        "duration_ms": 6600,
+        "end": {
+          "x": 112,
+          "y": 130
+        },
+        "id": "action:aya-experiment",
+        "kind": "actor_action",
+        "label": "Aya operates the sample instrument",
+        "logical_timestamp_ms": 2400,
+        "start": {
+          "x": 112,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-experiment",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 1000,
+        "end": {
+          "x": 142,
+          "y": 130
+        },
+        "id": "action:aya-to-terminal",
+        "kind": "actor_action",
+        "label": "Aya moves to the writing terminal",
+        "logical_timestamp_ms": 9000,
+        "start": {
+          "x": 112,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "write",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-to-terminal",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 4769,
+        "end": {
+          "x": 142,
+          "y": 130
+        },
+        "id": "action:aya-write",
+        "kind": "actor_action",
+        "label": "Aya prepares the submitted paper",
+        "logical_timestamp_ms": 10000,
+        "start": {
+          "x": 142,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:mino",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 1500,
+        "end": {
+          "x": 331,
+          "y": 116
+        },
+        "id": "action:mino-to-review-cell",
+        "kind": "actor_action",
+        "label": "Mino enters an anonymous review cell",
+        "logical_timestamp_ms": 10500,
+        "start": {
+          "x": 350,
+          "y": 154
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "review",
+        "actor_entity_id": "researcher:mino",
+        "causal_parent_id": "action:mino-to-review-cell",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 6462,
+        "end": {
+          "x": 331,
+          "y": 116
+        },
+        "id": "action:mino-review",
+        "kind": "actor_action",
+        "label": "Mino reviews the submitted paper",
+        "logical_timestamp_ms": 12000,
+        "start": {
+          "x": 331,
+          "y": 116
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-write",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 1000,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-to-revision-bench",
+        "kind": "actor_action",
+        "label": "Aya returns to the revision bench",
+        "logical_timestamp_ms": 17000,
+        "start": {
+          "x": 142,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "revise",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-to-revision-bench",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "5b9dbbbc218f6af3ba474210e3984b23021c49b0067dd4161d38f4b7e62046f1"
+        ],
+        "duration_ms": 4154,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-revise",
+        "kind": "actor_action",
+        "label": "Aya works through the completed review",
+        "logical_timestamp_ms": 18000,
+        "start": {
+          "x": 116,
+          "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+        ],
+        "duration_ms": 1500,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-to-ledger",
+        "kind": "actor_action",
+        "label": "Sol enters the allocation ledger",
+        "logical_timestamp_ms": 23000,
+        "start": {
+          "x": 266,
+          "y": 242
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "allocate",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": "action:sol-to-ledger",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+        ],
+        "duration_ms": 5500,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-allocate",
+        "kind": "actor_action",
+        "label": "Sol authorizes the grant allocation",
+        "logical_timestamp_ms": 24500,
+        "start": {
+          "x": 248,
+          "y": 214
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "receive",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-revise",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "9ed0cdc5b8eb6f8c53474f72c28edb20655fd1492e8b35a01def05146cb28980"
+        ],
+        "duration_ms": 4200,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-receive-funding",
+        "kind": "actor_action",
+        "label": "Aya receives a capacity increase",
+        "logical_timestamp_ms": 26000,
+        "start": {
+          "x": 116,
+          "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "cite",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": "action:sol-allocate",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+        ],
+        "duration_ms": 4200,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-cite",
+        "kind": "actor_action",
+        "label": "Sol records a citation link",
+        "logical_timestamp_ms": 32000,
+        "start": {
+          "x": 248,
+          "y": 214
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "read",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-receive-funding",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "a64e8f3c825da255e7e681c9f741ab688d5946f1029d284bede6b668af206c6e"
+        ],
+        "duration_ms": 4000,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-read-citation",
+        "kind": "actor_action",
+        "label": "Aya inspects the new citation",
+        "logical_timestamp_ms": 34000,
+        "start": {
+          "x": 116,
+          "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "policy",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": "action:sol-cite",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+        ],
+        "duration_ms": 6200,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-policy",
+        "kind": "actor_action",
+        "label": "Sol transmits the policy change",
+        "logical_timestamp_ms": 40000,
+        "start": {
+          "x": 248,
+          "y": 214
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "policy",
+        "actor_entity_id": "researcher:mino",
+        "causal_parent_id": "action:mino-review",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "3e4a47d78b2ccdd3ca10e7a01611550cfe656981e445d18760b6b0c3e4028cfa"
+        ],
+        "duration_ms": 4200,
+        "end": {
+          "x": 331,
+          "y": 116
+        },
+        "id": "action:mino-policy",
+        "kind": "actor_action",
+        "label": "Mino receives the open-review policy",
+        "logical_timestamp_ms": 42000,
+        "start": {
+          "x": 331,
+          "y": 116
+        },
+        "truth_status": "derived"
+      }
+    ],
     "camera_cues": [
       {
         "causal_parent_id": null,

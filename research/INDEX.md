@@ -24,6 +24,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)
 - [Game UI vertical slice](tracks/game-ui-slice.md)
 - [Game UI v2 creative direction](tracks/game-ui-v2-creative-direction.md)
+- [Game UI v3 evidence-driven vertical slice](tracks/game-ui-v3-vertical-slice.md)
 
 ## Conceptual objects
 

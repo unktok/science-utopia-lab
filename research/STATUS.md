@@ -35,7 +35,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | executable foundation | typed model, validator, generic registry/runner, canonical provenance, legacy compiler |
 | structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; production adapters and checkpointed graph state remain |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | v2 vertical slice verified | fixed-grid production art, six evidence-linked flows, deterministic browser review; intervention/branching remain |
+| game UI | v3 vertical slice verified on feature branch | six-frame role sprites, fifteen evidence-linked actor actions, traceable packet trains, dense cyberpunk districts, deterministic browser review; intervention/branching remain |
 
 ## Metric-conditioned study execution snapshot
 

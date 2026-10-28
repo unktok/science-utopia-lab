@@ -51,7 +51,7 @@ separates four kinds of information at the top level:
 | --- | --- | --- |
 | `canonical` | saved source records | canonical events, a fact index, and factual entity labels |
 | `projection` | Python replay projector | authoritative world state at every event cursor |
-| `choreography` | versioned deterministic derivation | placements, flows, and camera cues used to render the facts |
+| `choreography` | versioned deterministic derivation | placements, actor actions, flows, and camera cues used to render the facts |
 | `ambient` | presentation only | rain, traffic, crowds, and other effects with no scientific meaning |
 
 Every fact index, projected frame, entity, choreography record, and ambient
@@ -73,7 +73,14 @@ canonicalization exactly; switching to RFC 8785 would require a new algorithm
 identifier and a separately versioned hash rather than redefining this one.
 The export validator rejects a derived visual without event evidence, an
 ambient record that cites evidence, unknown event references, unknown entity
-endpoints, duplicate choreography IDs, and unsupported flow types.
+endpoints, duplicate choreography IDs, unsupported flow types, and unsupported
+actor-action types.
+
+`choreography.actions` is optional and defaults to an empty list. An action
+names a researcher, an action type, start and end logical-pixel positions, and
+the same trace fields as every other derived visual. The renderer may animate a
+researcher only while such a record is active. It does not infer work from a
+role, paper outcome, balance, or projected state.
 
 The six flow types currently reserved by the visual grammar are `data`,
 `paper`, `review`, `funding`, `citation`, and `policy`. A normal v2 export does
@@ -93,9 +100,10 @@ Export a real saved bundle to the v2 envelope (with no fabricated flows):
 
 `game-ui-v2/public/data/vertical-slice.replay.json` is an explicitly synthetic,
 non-empirical contract fixture. It contains exactly three researchers, three
-institution nodes, and one example of each of the six flow types so the
-renderer can be tested before native simulation events exist for every flow.
-Each flow derives from a corresponding synthetic canonical fixture event. It
+institution nodes, fifteen actor actions, and one example of each of the six
+flow types so the renderer can be tested before native simulation events exist
+for every flow. Each action and flow derives from one or more corresponding
+synthetic canonical fixture events. It
 must never be presented as an experiment, a policy result, or evidence about a
 ScienceUtopia configuration. Decorative rain and courier traffic are isolated
 under `ambient` with empty evidence lists.

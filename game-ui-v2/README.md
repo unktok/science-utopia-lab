@@ -7,17 +7,20 @@ browser.
 
 ## Current status
 
-The renderer integration is operational with a 48-second deterministic,
-synthetic fixture containing three researchers, three institutions, fourteen
-canonical events, and all six information-flow types. This fixture validates
-the renderer and evidence interaction; it is not an experiment or a claim
-about a real or simulated scientific system.
+The v3 renderer is operational with a 48-second deterministic, synthetic
+fixture containing three researchers, three institutions, fourteen canonical
+events, fifteen evidence-linked actor actions, and all six information-flow
+types. Researchers walk to institution work areas and use role-specific
+experiment, writing, review, allocation, citation, and policy poses. This
+fixture validates the renderer and evidence interaction; it is not an
+experiment or a claim about a real or simulated scientific system.
 
-The runtime uses hand-authored, fixed-grid production SVGs: researchers are
-24x32, institutions 96x80, and flow packets 8x8. Every visible mark is an
-integer-aligned rectangle using the frozen 24-colour palette; the browser
-rasterizes the SVGs with nearest-neighbour settings. The earlier generated
-PNGs remain beside them as **concept-only visual targets** and are not loaded.
+The runtime uses hand-authored, fixed-grid production SVGs: each researcher is
+a six-frame 24x32 sheet, institutions are 96x80, flow packets are 8x8, and the
+ambient courier is 16x8. Every sprite mark is an integer-aligned rectangle
+using the frozen 24-colour palette; the browser rasterizes the SVGs with
+nearest-neighbour settings. The earlier generated PNGs remain beside them as
+**concept-only visual targets** and are not loaded.
 See [asset provenance](public/assets/noctiluca/PROVENANCE.md) and the project
 [art bible](../game-ui/ART_BIBLE.md).
 
@@ -40,30 +43,35 @@ npm run build
 npm audit
 ```
 
-The asset tests enforce the production manifest, exact logical dimensions,
+The asset tests enforce the production manifest, sprite-sheet dimensions,
 required keys, frozen palette, integer geometry, crisp-edge declaration, and a
-rect-only SVG vocabulary. Silhouette and semantic legibility remain visual
-review gates.
+rect-only SVG vocabulary. Replay tests enforce that every actor action and
+flow is derived from canonical evidence. Silhouette and semantic legibility
+remain visual review gates.
 
 ## Deterministic review scene
 
-The review URL fixes replay time and motion state:
+The review URLs fix replay time and motion state:
 
 ```text
+http://localhost:4173/?cursor=14000&motion=reduced
 http://localhost:4173/?cursor=28000&motion=reduced
+http://localhost:4173/?cursor=43000&motion=reduced
 ```
 
-To open the evidence trace for the active funding flow:
+To open the evidence trace for Aya's active writing action:
 
 ```text
-http://localhost:4173/?cursor=28000&motion=reduced&select=flow%3A4%3Afunding
+http://localhost:4173/?cursor=14000&motion=reduced&select=action%3Aaya-write
 ```
 
 At a 1440x1050 browser viewport this is the fixed visual-review scene. The
 logical canvas remains 480x270 and only integer display scaling is used.
 
-- [fixed world screenshot](screenshots/noctiluca-vertical-slice-cursor-28000.png)
-- [funding evidence screenshot](screenshots/noctiluca-evidence-funding-cursor-28000.png)
+- [paper and researcher action](screenshots/noctiluca-v3-paper-action-cursor-14000.png)
+- [derived action evidence](screenshots/noctiluca-v3-action-evidence-cursor-14000.png)
+- [funding and allocation](screenshots/noctiluca-v3-funding-cursor-28000.png)
+- [policy transmission](screenshots/noctiluca-v3-policy-cursor-43000.png)
 
 ## Evidence contract
 
@@ -82,9 +90,11 @@ Replay data separates four layers:
 
 The client recursively canonicalizes and recomputes SHA-256 over
 `canonical.events`. It displays `STREAM VERIFIED` only when that digest equals
-the supplied `stream_hash`. Scientific flows must be `derived`, name at least
-one existing canonical event, and carry their derivation version. Ambient
-records may not claim canonical evidence. A missing replay or production asset
+the supplied `stream_hash`. Scientific flows and actor actions must be
+`derived`, name at least one existing canonical event, and carry their
+derivation version. Without an explicit action record, a researcher remains
+idle; the browser does not infer work from role or outcome. Ambient records may
+not claim canonical evidence. A missing replay or production asset
 produces an explicit error; the renderer does not substitute emoji, text
 glyphs, generic geometry, or invented events.
 
@@ -109,8 +119,11 @@ mirrored to semantic buttons for keyboard and screen-reader navigation.
 ## Architecture boundary
 
 `src/replay.ts` validates and joins canonical entities with versioned visual
-placements. `src/ArcologyScene.ts` renders only validated entities and
-choreography. `src/main.ts` owns transport, evidence inspection, accessibility,
-hash verification, and deterministic review parameters. Adding a new browser
-animation must not duplicate simulator logic: add a canonical event or a
-versioned deterministic derivation first.
+placements, actions, and flows. `src/ArcologyScene.ts` renders only validated
+entities and choreography. Frame selection, actor position, rain, courier
+position, and packet position are functions of replay cursor and reduced-motion
+state; a paused cursor is a stable frame. `src/main.ts` owns transport, evidence
+inspection, accessibility, hash verification, and deterministic review
+parameters. Adding a new scientific browser animation must not duplicate
+simulator logic: add a canonical event or a versioned deterministic derivation
+first.

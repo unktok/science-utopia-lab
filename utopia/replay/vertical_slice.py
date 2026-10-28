@@ -274,6 +274,125 @@ def vertical_slice_presentation(
             ),
         })
 
+    action_specs = [
+        (
+            "aya-to-instrument", "researcher:aya", "move",
+            (144, 164), (112, 130), 800, 1_600,
+            (registration["researcher:aya"].event_id,),
+            "Aya crosses the laboratory floor",
+        ),
+        (
+            "aya-experiment", "researcher:aya", "experiment",
+            (112, 130), (112, 130), 2_400, 6_600,
+            (by_type["research.data_shared"].event_id,),
+            "Aya operates the sample instrument",
+        ),
+        (
+            "aya-to-terminal", "researcher:aya", "move",
+            (112, 130), (142, 130), 9_000, 1_000,
+            (by_type["paper.submitted"].event_id,),
+            "Aya moves to the writing terminal",
+        ),
+        (
+            "aya-write", "researcher:aya", "write",
+            (142, 130), (142, 130), 10_000, 4_769,
+            (by_type["paper.submitted"].event_id,),
+            "Aya prepares the submitted paper",
+        ),
+        (
+            "mino-to-review-cell", "researcher:mino", "move",
+            (350, 154), (331, 116), 10_500, 1_500,
+            (by_type["paper.submitted"].event_id,),
+            "Mino enters an anonymous review cell",
+        ),
+        (
+            "mino-review", "researcher:mino", "review",
+            (331, 116), (331, 116), 12_000, 6_462,
+            (by_type["review.completed"].event_id,),
+            "Mino reviews the submitted paper",
+        ),
+        (
+            "aya-to-revision-bench", "researcher:aya", "move",
+            (142, 130), (116, 132), 17_000, 1_000,
+            (by_type["review.completed"].event_id,),
+            "Aya returns to the revision bench",
+        ),
+        (
+            "aya-revise", "researcher:aya", "revise",
+            (116, 132), (116, 132), 18_000, 4_154,
+            (
+                by_type["review.completed"].event_id,
+                by_type["paper.decided"].event_id,
+            ),
+            "Aya works through the completed review",
+        ),
+        (
+            "sol-to-ledger", "researcher:sol", "move",
+            (266, 242), (248, 214), 23_000, 1_500,
+            (by_type["resource.changed"].event_id,),
+            "Sol enters the allocation ledger",
+        ),
+        (
+            "sol-allocate", "researcher:sol", "allocate",
+            (248, 214), (248, 214), 24_500, 5_500,
+            (by_type["resource.changed"].event_id,),
+            "Sol authorizes the grant allocation",
+        ),
+        (
+            "aya-receive-funding", "researcher:aya", "receive",
+            (116, 132), (116, 132), 26_000, 4_200,
+            (by_type["resource.changed"].event_id,),
+            "Aya receives a capacity increase",
+        ),
+        (
+            "sol-cite", "researcher:sol", "cite",
+            (248, 214), (248, 214), 32_000, 4_200,
+            (by_type["citation.recorded"].event_id,),
+            "Sol records a citation link",
+        ),
+        (
+            "aya-read-citation", "researcher:aya", "read",
+            (116, 132), (116, 132), 34_000, 4_000,
+            (by_type["citation.recorded"].event_id,),
+            "Aya inspects the new citation",
+        ),
+        (
+            "sol-policy", "researcher:sol", "policy",
+            (248, 214), (248, 214), 40_000, 6_200,
+            (by_type["policy.changed"].event_id,),
+            "Sol transmits the policy change",
+        ),
+        (
+            "mino-policy", "researcher:mino", "policy",
+            (331, 116), (331, 116), 42_000, 4_200,
+            (by_type["policy.changed"].event_id,),
+            "Mino receives the open-review policy",
+        ),
+    ]
+    actions: list[dict[str, Any]] = []
+    previous_action_by_actor: dict[str, str] = {}
+    for (
+        action_id, actor_id, action_type, start, end, at, duration,
+        source_event_ids, label,
+    ) in action_specs:
+        actions.append({
+            "id": f"action:{action_id}",
+            "kind": "actor_action",
+            "actor_entity_id": actor_id,
+            "action_type": action_type,
+            "start": {"x": start[0], "y": start[1]},
+            "end": {"x": end[0], "y": end[1]},
+            "label": label,
+            **_trace(
+                "derived",
+                event_ids=source_event_ids,
+                logical_timestamp_ms=at,
+                duration_ms=duration,
+                causal_parent_id=previous_action_by_actor.get(actor_id),
+            ),
+        })
+        previous_action_by_actor[actor_id] = f"action:{action_id}"
+
     camera_cues = [
         {
             "id": "camera:establish",
@@ -319,6 +438,7 @@ def vertical_slice_presentation(
         "coordinate_space": {"width": 480, "height": 270, "unit": "logical_pixel"},
         "placements": placements,
         "flows": flows,
+        "actions": actions,
         "camera_cues": camera_cues,
     }
 

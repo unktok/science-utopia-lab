@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import type { AssetPack, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, TruthStatus, VisualFlow, WorldEntity } from "./types";
+import type { ActionType, AssetPack, CanonicalEvent, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, TruthStatus, VisualAction, VisualFlow, WorldEntity, WorldPoint } from "./types";
 
 const WORLD_WIDTH = 480;
 const WORLD_HEIGHT = 270;
@@ -11,34 +11,83 @@ const FLOW_COLORS: Record<FlowType, number> = {
   citation: 0xa86bff,
   policy: 0xff617d,
 };
+const FLOW_STYLE: Record<FlowType, { width: number; cadence: number; echoes: number }> = {
+  data: { width: 2, cadence: 2, echoes: 3 },
+  paper: { width: 2, cadence: 4, echoes: 1 },
+  review: { width: 2, cadence: 3, echoes: 2 },
+  funding: { width: 3, cadence: 5, echoes: 3 },
+  citation: { width: 1, cadence: 2, echoes: 2 },
+  policy: { width: 2, cadence: 6, echoes: 3 },
+};
 
 interface FlowVisual {
   model: VisualFlow;
   graphics: Phaser.GameObjects.Graphics;
-  packet?: Phaser.GameObjects.Image;
+  packets: Phaser.GameObjects.Image[];
   curve: Phaser.Curves.QuadraticBezier;
+  label: Phaser.GameObjects.Text;
+}
+
+interface ActorHud {
+  marker: Phaser.GameObjects.Graphics;
+  label: Phaser.GameObjects.Text;
 }
 
 const dispatchSelection = (detail: SelectionDetail): void => {
   window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail }));
 };
 
-function drawDashedCurve(graphics: Phaser.GameObjects.Graphics, curve: Phaser.Curves.QuadraticBezier, color: number, alpha: number, dotted: boolean): void {
-  const points = curve.getPoints(28);
-  graphics.lineStyle(dotted ? 1 : 2, color, alpha);
+function truthAlpha(status: TruthStatus): number {
+  if (status === "canonical") return 0.96;
+  if (status === "derived") return 0.82;
+  return 0.28;
+}
+
+function drawPatternedCurve(
+  graphics: Phaser.GameObjects.Graphics,
+  curve: Phaser.Curves.QuadraticBezier,
+  color: number,
+  alpha: number,
+  flowType: FlowType,
+): void {
+  const style = FLOW_STYLE[flowType];
+  const points = curve.getPoints(48);
+  graphics.lineStyle(style.width, color, alpha);
   for (let i = 1; i < points.length; i += 1) {
     const from = points[i - 1];
     const to = points[i];
     if (!from || !to) continue;
-    const draw = dotted ? i % 3 === 0 : i % 3 !== 0;
+    const draw = flowType === "citation" ? i % 2 === 0 : i % style.cadence !== 0;
     if (draw) graphics.lineBetween(Math.round(from.x), Math.round(from.y), Math.round(to.x), Math.round(to.y));
+  }
+  for (const progress of [0.25, 0.5, 0.75]) {
+    const point = curve.getPoint(progress);
+    const x = Math.round(point.x);
+    const y = Math.round(point.y);
+    if (flowType === "data") graphics.fillStyle(color, alpha).fillRect(x - 2, y - 1, 4, 2);
+    if (flowType === "paper") graphics.fillStyle(color, alpha).fillRect(x - 1, y - 2, 3, 3);
+    if (flowType === "review") graphics.lineStyle(1, color, alpha).strokeRect(x - 2, y - 2, 4, 4);
+    if (flowType === "funding") graphics.fillStyle(color, alpha).fillRect(x - 2, y - 2, 4, 4);
+    if (flowType === "citation") graphics.fillStyle(color, alpha).fillRect(x - 1, y - 1, 2, 2);
+    if (flowType === "policy") {
+      graphics.lineStyle(1, color, alpha).strokeRect(x - 3, y - 3, 6, 6);
+      graphics.lineBetween(x + 4, y - 2, x + 5, y - 3);
+    }
   }
 }
 
-function truthAlpha(status: TruthStatus): number {
-  if (status === "canonical") return 0.95;
-  if (status === "derived") return 0.78;
-  return 0.28;
+function actionFrame(action: ActionType | undefined, cursorMs: number, reducedMotion: boolean): number {
+  const phase = reducedMotion ? 0 : Math.floor(cursorMs / (action === "move" ? 180 : 320)) % 2;
+  if (action === "move") return 2 + phase;
+  if (action) return 4 + phase;
+  return reducedMotion ? 0 : Math.floor(cursorMs / 880) % 2;
+}
+
+function lerpPoint(start: WorldPoint, end: WorldPoint, progress: number): WorldPoint {
+  return {
+    x: Math.round(Phaser.Math.Linear(start.x, end.x, progress)),
+    y: Math.round(Phaser.Math.Linear(start.y, end.y, progress)),
+  };
 }
 
 export class ArcologyScene extends Phaser.Scene {
@@ -46,6 +95,9 @@ export class ArcologyScene extends Phaser.Scene {
   readonly assetPack: AssetPack;
   private readonly entities = new Map<string, WorldEntity>();
   private readonly sprites = new Map<string, Phaser.GameObjects.Image>();
+  private readonly actionsByActor = new Map<string, VisualAction[]>();
+  private readonly currentActions = new Map<string, VisualAction>();
+  private readonly actorHuds = new Map<string, ActorHud>();
   private readonly flowVisuals: FlowVisual[] = [];
   private readonly layerVisibility = new Map<FlowType, boolean>();
   private cursorMs = 0;
@@ -56,12 +108,20 @@ export class ArcologyScene extends Phaser.Scene {
   private dragStart?: Phaser.Math.Vector2;
   private minimap?: Phaser.Cameras.Scene2D.Camera;
   private keyMap?: Record<string, Phaser.Input.Keyboard.Key>;
+  private rainGraphics?: Phaser.GameObjects.Graphics;
+  private stateGraphics?: Phaser.GameObjects.Graphics;
 
   constructor(replay: ReplayV2, assetPack: AssetPack) {
     super({ key: "ArcologyScene" });
     this.replay = replay;
     this.assetPack = assetPack;
     for (const flowType of Object.keys(FLOW_COLORS) as FlowType[]) this.layerVisibility.set(flowType, true);
+    for (const action of replay.choreography.actions) {
+      const rows = this.actionsByActor.get(action.actor_entity_id) ?? [];
+      rows.push(action);
+      this.actionsByActor.set(action.actor_entity_id, rows);
+    }
+    for (const rows of this.actionsByActor.values()) rows.sort((a, b) => a.logical_timestamp_ms - b.logical_timestamp_ms);
   }
 
   preload(): void {
@@ -90,38 +150,55 @@ export class ArcologyScene extends Phaser.Scene {
       this.entities.set(entity.id, entity);
       this.createEntity(entity);
     }
+    this.createActorHuds();
     for (const flow of this.replay.choreography.flows) this.createFlow(flow);
+    this.rainGraphics = this.add.graphics().setDepth(15);
+    this.stateGraphics = this.add.graphics().setDepth(7);
+    this.stateGraphics.setInteractive(
+      new Phaser.Geom.Rectangle(0, 0, WORLD_WIDTH, WORLD_HEIGHT),
+      (_shape: Phaser.Geom.Rectangle, x: number, y: number) => this.stateMarkerAt(x, y) !== undefined,
+    );
+    this.stateGraphics.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+      const event = this.stateMarkerAt(pointer.worldX, pointer.worldY);
+      if (event) dispatchSelection({ id: event.id, category: "event" });
+    });
 
     this.minimap = this.cameras.add(368, 8, 104, 62, false, "minimap");
     this.minimap.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT).setZoom(0.216).centerOn(WORLD_WIDTH / 2, WORLD_HEIGHT / 2).setRoundPixels(true);
-    this.minimap.setBackgroundColor("rgba(7,8,20,0.88)");
+    this.minimap.setBackgroundColor("rgba(7,8,20,0.9)");
+    this.minimap.ignore([...this.actorHuds.values()].flatMap((hud) => [hud.marker, hud.label]));
 
     this.installPointerControls();
     this.installKeyboardControls();
     this.cameras.main.centerOn(WORLD_WIDTH / 2, WORLD_HEIGHT / 2);
+    this.renderFrame();
     window.dispatchEvent(new CustomEvent("noctiluca:renderer-ready"));
   }
 
   update(_time: number, delta: number): void {
     this.updateKeyboardPan(delta);
-    this.renderFlows();
+    this.renderFrame();
     if (this.followEnabled && this.selectedId) {
-      const sprite = this.sprites.get(this.selectedId);
+      const action = this.replay.choreography.actions.find((row) => row.id === this.selectedId);
+      const sprite = this.sprites.get(action?.actor_entity_id ?? this.selectedId);
       if (sprite) this.cameras.main.centerOn(Math.round(sprite.x), Math.round(sprite.y));
     }
   }
 
   setCursor(milliseconds: number): void {
     this.cursorMs = Math.max(0, Math.min(milliseconds, this.replay.choreography.duration_ms));
+    this.renderFrame();
   }
 
   setLayerVisible(flowType: FlowType, visible: boolean): void {
     this.layerVisibility.set(flowType, visible);
+    this.renderFlows();
   }
 
   select(id: string): void {
     this.selectedId = id;
-    const sprite = this.sprites.get(id);
+    const action = this.replay.choreography.actions.find((row) => row.id === id);
+    const sprite = this.sprites.get(action?.actor_entity_id ?? id);
     if (sprite && this.followEnabled) this.cameras.main.centerOn(Math.round(sprite.x), Math.round(sprite.y));
   }
 
@@ -133,13 +210,8 @@ export class ArcologyScene extends Phaser.Scene {
     this.preferences = preferences;
     const atmosphere = Phaser.Math.Clamp(preferences.atmosphere, 0, 1);
     this.cameras.main.setBackgroundColor(preferences.highContrast ? "#000000" : "#070814");
-    for (const flowVisual of this.flowVisuals) flowVisual.graphics.setAlpha(preferences.highContrast ? 1 : 0.7 + atmosphere * 0.3);
-    for (const sprite of this.sprites.values()) {
-      if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims.isPlaying) {
-        if (preferences.reducedMotion) sprite.anims.pause();
-        else sprite.anims.resume();
-      }
-    }
+    for (const flowVisual of this.flowVisuals) flowVisual.graphics.setAlpha(preferences.highContrast ? 1 : 0.72 + atmosphere * 0.28);
+    this.renderFrame();
   }
 
   zoomBy(direction: 1 | -1): void {
@@ -147,15 +219,70 @@ export class ArcologyScene extends Phaser.Scene {
     this.cameras.main.setZoom(Phaser.Math.Clamp(current + direction, 1, 3)).setRoundPixels(true);
   }
 
+  private renderFrame(): void {
+    if (!this.sys.isActive()) return;
+    this.renderActions();
+    this.renderFlows();
+    this.renderAmbient();
+    this.renderInstitutionStates();
+  }
+
   private drawWorldGround(): void {
     const graphics = this.add.graphics().setDepth(-20);
     graphics.fillStyle(0x070814, 1).fillRect(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
-    graphics.lineStyle(1, 0x1a2140, 0.55);
-    for (let x = 0; x <= WORLD_WIDTH; x += 16) graphics.lineBetween(x, 0, x, WORLD_HEIGHT);
-    for (let y = 0; y <= WORLD_HEIGHT; y += 16) graphics.lineBetween(0, y, WORLD_WIDTH, y);
-    graphics.lineStyle(2, 0x2a3560, 0.6);
-    for (let x = 0; x <= WORLD_WIDTH; x += 160) graphics.lineBetween(x, 0, x, WORLD_HEIGHT);
-    for (let y = 0; y <= WORLD_HEIGHT; y += 160) graphics.lineBetween(0, y, WORLD_WIDTH, y);
+    graphics.fillStyle(0x10142a, 1).fillRect(0, 18, WORLD_WIDTH, 60);
+    graphics.fillStyle(0x1a2140, 1);
+    for (let x = 0; x < WORLD_WIDTH; x += 24) {
+      const height = 10 + (x * 7 % 28);
+      graphics.fillRect(x, 78 - height, 18, height);
+      if (x % 48 === 0) graphics.fillRect(x + 7, 48 - height / 2, 3, 10);
+    }
+    graphics.fillStyle(0x2a3560, 0.9);
+    for (let x = 6; x < WORLD_WIDTH; x += 31) graphics.fillRect(x, 64 - (x % 3) * 5, 2, 3);
+    graphics.fillStyle(0x2dd4ff, 0.6);
+    for (let x = 15; x < WORLD_WIDTH; x += 47) graphics.fillRect(x, 54 + x % 13, 2, 1);
+    graphics.fillStyle(0xf653d8, 0.5);
+    for (let x = 38; x < WORLD_WIDTH; x += 83) graphics.fillRect(x, 45 + x % 19, 1, 3);
+
+    graphics.fillStyle(0x0b0e20, 1).fillRect(0, 78, WORLD_WIDTH, 192);
+    graphics.lineStyle(1, 0x1a2140, 0.65);
+    for (let x = 0; x <= WORLD_WIDTH; x += 16) graphics.lineBetween(x, 78, x, WORLD_HEIGHT);
+    for (let y = 78; y <= WORLD_HEIGHT; y += 16) graphics.lineBetween(0, y, WORLD_WIDTH, y);
+    graphics.lineStyle(2, 0x2a3560, 0.72);
+    graphics.lineBetween(0, 188, WORLD_WIDTH, 188);
+    graphics.lineBetween(208, 78, 208, WORLD_HEIGHT);
+
+    this.drawDistrictPlatform(graphics, 68, 107, 112, 65, 0x2dd4ff);
+    this.drawDistrictPlatform(graphics, 280, 92, 112, 72, 0xf653d8);
+    this.drawDistrictPlatform(graphics, 196, 196, 112, 66, 0x39f5c8);
+
+    graphics.lineStyle(3, 0x10142a, 1);
+    graphics.lineBetween(176, 143, 281, 132);
+    graphics.lineBetween(288, 166, 274, 196);
+    graphics.lineBetween(195, 191, 159, 165);
+    graphics.lineStyle(1, 0x46527a, 0.75);
+    graphics.lineBetween(176, 141, 281, 130);
+    graphics.lineBetween(290, 165, 276, 198);
+    graphics.lineBetween(194, 189, 159, 163);
+    graphics.fillStyle(0xffc857, 0.85);
+    const conduitLights: Array<[number, number]> = [[182, 139], [210, 136], [238, 133], [266, 130], [287, 172], [282, 185], [185, 182], [174, 173]];
+    for (const [x, y] of conduitLights) graphics.fillRect(x, y, 2, 2);
+
+    this.add.text(72, 93, "LAB//01", { fontFamily: "monospace", fontSize: "5px", color: "#2dd4ff" }).setDepth(-5);
+    this.add.text(285, 78, "REVIEW//EXCHANGE", { fontFamily: "monospace", fontSize: "5px", color: "#f653d8" }).setDepth(-5);
+    this.add.text(201, 182, "CIVIC//LEDGER", { fontFamily: "monospace", fontSize: "5px", color: "#39f5c8" }).setDepth(-5);
+    this.add.text(8, 82, "AMBIENT INFRA // NON-SCIENTIFIC", { fontFamily: "monospace", fontSize: "4px", color: "#6a769a" }).setDepth(-5);
+  }
+
+  private drawDistrictPlatform(graphics: Phaser.GameObjects.Graphics, x: number, y: number, width: number, height: number, accent: number): void {
+    graphics.fillStyle(0x10142a, 1).fillRect(x, y, width, height);
+    graphics.fillStyle(0x1a2140, 1).fillRect(x + 4, y + 4, width - 8, height - 8);
+    graphics.lineStyle(1, accent, 0.58).strokeRect(x + 1, y + 1, width - 2, height - 2);
+    graphics.fillStyle(accent, 0.8);
+    graphics.fillRect(x, y, 7, 2).fillRect(x + width - 7, y, 7, 2);
+    graphics.fillRect(x, y + height - 2, 7, 2).fillRect(x + width - 7, y + height - 2, 7, 2);
+    graphics.fillStyle(0x46527a, 0.7);
+    for (let dx = x + 8; dx < x + width - 6; dx += 12) graphics.fillRect(dx, y + height - 5, 6, 1);
   }
 
   private createEntity(entity: WorldEntity): void {
@@ -165,76 +292,209 @@ export class ArcologyScene extends Phaser.Scene {
       return;
     }
     const asset = this.assetPack.images.find((image) => image.key === entity.asset_key);
-    const animationKey = `idle_${entity.asset_key}`;
-    let sprite: Phaser.GameObjects.Image;
-    if (asset?.frames) {
-      const animated = this.add.sprite(Math.round(entity.x), Math.round(entity.y), entity.asset_key);
-      if (!this.anims.exists(animationKey)) {
-        this.anims.create({
-          key: animationKey,
-          frames: this.anims.generateFrameNumbers(entity.asset_key, { start: 0, end: asset.frames.end }),
-          frameRate: entity.entity_type === "researcher" ? 4 : 2,
-          repeat: -1,
-        });
-      }
-      animated.play(animationKey);
-      sprite = animated;
-    } else {
-      sprite = this.add.image(Math.round(entity.x), Math.round(entity.y), entity.asset_key);
-    }
-    sprite.setOrigin(0.5, 1).setDepth(entity.entity_type === "institution" ? 2 : 8);
+    const sprite: Phaser.GameObjects.Image = asset?.frames
+      ? this.add.sprite(Math.round(entity.x), Math.round(entity.y), entity.asset_key, 0)
+      : this.add.image(Math.round(entity.x), Math.round(entity.y), entity.asset_key);
+    const depth = entity.entity_type === "institution" ? 2 : entity.entity_type === "ambient_actor" ? 6 : 9;
+    sprite.setOrigin(0.5, 1).setDepth(depth);
     if (asset) sprite.setDisplaySize(Math.round(asset.width), Math.round(asset.height));
     sprite.setInteractive({ useHandCursor: true });
-    sprite.on("pointerdown", () => dispatchSelection({ id: entity.id, category: "entity" }));
+    sprite.on("pointerdown", () => {
+      const action = this.currentActions.get(entity.id);
+      dispatchSelection({ id: action?.id ?? entity.id, category: action ? "action" : "entity" });
+    });
     sprite.setData("truth_status", entity.truth_status);
     this.sprites.set(entity.id, sprite);
+  }
+
+  private createActorHuds(): void {
+    for (const researcher of this.replay.canonical.entities.researchers) {
+      const marker = this.add.graphics().setDepth(11);
+      const label = this.add.text(researcher.x, researcher.y - 38, "", {
+        fontFamily: "monospace",
+        fontSize: "5px",
+        color: "#2dd4ff",
+        backgroundColor: "#070814",
+        padding: { x: 2, y: 1 },
+      }).setOrigin(0.5, 1).setDepth(12).setVisible(false).setInteractive({ useHandCursor: true });
+      label.on("pointerdown", () => {
+        const action = this.currentActions.get(researcher.id);
+        if (action) dispatchSelection({ id: action.id, category: "action" });
+      });
+      this.actorHuds.set(researcher.id, { marker, label });
+    }
+  }
+
+  private renderActions(): void {
+    for (const researcher of this.replay.canonical.entities.researchers) {
+      const sprite = this.sprites.get(researcher.id);
+      const hud = this.actorHuds.get(researcher.id);
+      if (!sprite || !hud) continue;
+      const rows = this.actionsByActor.get(researcher.id) ?? [];
+      const active = rows.find((action) => this.cursorMs >= action.logical_timestamp_ms && this.cursorMs <= action.logical_timestamp_ms + action.duration_ms);
+      const completed = rows.filter((action) => this.cursorMs > action.logical_timestamp_ms + action.duration_ms).at(-1);
+      const progress = active ? Phaser.Math.Clamp((this.cursorMs - active.logical_timestamp_ms) / Math.max(1, active.duration_ms), 0, 1) : 1;
+      const position = active ? lerpPoint(active.start, active.end, progress) : completed?.end ?? { x: researcher.x, y: researcher.y };
+      sprite.setPosition(position.x, position.y).setDepth(9 + position.y / 1000);
+      if (sprite instanceof Phaser.GameObjects.Sprite) sprite.setFrame(actionFrame(active?.action_type, this.cursorMs, this.preferences.reducedMotion));
+      hud.marker.clear();
+      hud.label.setVisible(Boolean(active));
+      if (active) {
+        this.currentActions.set(researcher.id, active);
+        const color = active.action_type === "move" ? 0x9ea8c2 : 0x2dd4ff;
+        hud.marker.lineStyle(1, color, 0.9);
+        hud.marker.strokeRect(position.x - 14, position.y - 34, 28, 36);
+        hud.marker.fillStyle(color, 0.9).fillRect(position.x - 14, position.y - 34, 4, 1).fillRect(position.x + 10, position.y - 34, 4, 1);
+        hud.label.setText(`◇ ${active.action_type.toUpperCase()} // DERIVED`).setPosition(position.x, position.y - 36);
+      } else {
+        this.currentActions.delete(researcher.id);
+      }
+    }
   }
 
   private createFlow(flow: VisualFlow): void {
     const from = this.entities.get(flow.from_entity_id);
     const to = this.entities.get(flow.to_entity_id);
     if (!from || !to) return;
+    const flowIndex = this.replay.choreography.flows.indexOf(flow);
+    const arcBias = flowIndex % 2 === 0 ? -1 : 1;
     const midpoint = new Phaser.Math.Vector2(
-      Math.round((from.x + to.x) / 2),
-      Math.round((from.y + to.y) / 2 - Math.min(64, Math.abs(from.x - to.x) * 0.18 + 18)),
+      Math.round((from.x + to.x) / 2 + arcBias * (8 + flowIndex * 2)),
+      Math.round((from.y + to.y) / 2 - Math.min(72, Math.abs(from.x - to.x) * 0.2 + 22 + flowIndex * 2)),
     );
     const curve = new Phaser.Curves.QuadraticBezier(
-      new Phaser.Math.Vector2(Math.round(from.x), Math.round(from.y - 18)),
+      new Phaser.Math.Vector2(Math.round(from.x), Math.round(from.y - 22)),
       midpoint,
-      new Phaser.Math.Vector2(Math.round(to.x), Math.round(to.y - 18)),
+      new Phaser.Math.Vector2(Math.round(to.x), Math.round(to.y - 22)),
     );
-    const graphics = this.add.graphics().setDepth(4).setInteractive(
-      new Phaser.Geom.Rectangle(Math.min(from.x, to.x), Math.min(from.y, to.y) - 80, Math.abs(to.x - from.x) || 32, Math.abs(to.y - from.y) + 96),
+    const graphics = this.add.graphics().setDepth(5).setInteractive(
+      new Phaser.Geom.Rectangle(Math.min(from.x, to.x) - 16, Math.min(from.y, to.y) - 96, Math.abs(to.x - from.x) + 32 || 48, Math.abs(to.y - from.y) + 120),
       Phaser.Geom.Rectangle.Contains,
     );
     graphics.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
     const packetKey = `flow_${flow.flow_type}`;
     const packetAsset = this.assetPack.images.find((image) => image.key === packetKey);
-    const packet = this.textures.exists(packetKey) ? this.add.image(from.x, from.y, packetKey).setDepth(9).setInteractive({ useHandCursor: true }) : undefined;
-    if (packet && packetAsset) packet.setDisplaySize(packetAsset.width, packetAsset.height);
-    packet?.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
-    if (!packet) window.dispatchEvent(new CustomEvent("noctiluca:asset-missing", { detail: { key: packetKey, entityId: flow.id } }));
-    this.flowVisuals.push({ model: flow, graphics, packet, curve });
+    const packets: Phaser.GameObjects.Image[] = [];
+    if (this.textures.exists(packetKey) && packetAsset) {
+      for (let i = 0; i < FLOW_STYLE[flow.flow_type].echoes; i += 1) {
+        const packet = this.add.image(from.x, from.y, packetKey).setDepth(13 - i * 0.1).setDisplaySize(packetAsset.width, packetAsset.height).setInteractive({ useHandCursor: true });
+        packet.setAlpha(i === 0 ? 1 : 0.54 - i * 0.12);
+        packet.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
+        packets.push(packet);
+      }
+    } else {
+      window.dispatchEvent(new CustomEvent("noctiluca:asset-missing", { detail: { key: packetKey, entityId: flow.id } }));
+    }
+    const label = this.add.text(from.x, from.y, "", {
+      fontFamily: "monospace",
+      fontSize: "5px",
+      color: `#${FLOW_COLORS[flow.flow_type].toString(16).padStart(6, "0")}`,
+      backgroundColor: "#070814",
+      padding: { x: 2, y: 1 },
+    }).setOrigin(0.5, 1).setDepth(14).setVisible(false).setInteractive({ useHandCursor: true });
+    label.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
+    this.flowVisuals.push({ model: flow, graphics, packets, curve, label });
   }
 
   private renderFlows(): void {
     for (const visual of this.flowVisuals) {
-      const { model, graphics, packet, curve } = visual;
+      const { model, graphics, packets, curve, label } = visual;
       graphics.clear();
-      const visible = this.layerVisibility.get(model.flow_type) !== false;
-      const active = this.cursorMs >= model.logical_timestamp_ms && this.cursorMs <= model.logical_timestamp_ms + model.duration_ms;
-      graphics.setVisible(visible && (active || this.cursorMs >= model.logical_timestamp_ms));
-      packet?.setVisible(visible && active);
+      const layerVisible = this.layerVisibility.get(model.flow_type) !== false;
+      const elapsed = this.cursorMs - model.logical_timestamp_ms;
+      const active = elapsed >= 0 && elapsed <= model.duration_ms;
+      const residual = elapsed > model.duration_ms && elapsed <= model.duration_ms + 1_800;
+      const visible = layerVisible && (active || residual);
+      graphics.setVisible(visible);
+      label.setVisible(visible && active);
+      for (const packet of packets) packet.setVisible(visible && active);
       if (!visible) continue;
       const color = FLOW_COLORS[model.flow_type];
-      drawDashedCurve(graphics, curve, color, truthAlpha(model.truth_status), model.truth_status === "ambient");
-      if (packet && active) {
-        const rawProgress = model.duration_ms === 0 ? 1 : (this.cursorMs - model.logical_timestamp_ms) / model.duration_ms;
-        const progress = this.preferences.reducedMotion ? 0.5 : Phaser.Math.Clamp(rawProgress, 0, 1);
-        const point = curve.getPoint(progress);
-        packet.setPosition(Math.round(point.x), Math.round(point.y));
+      const residualAlpha = residual ? 1 - (elapsed - model.duration_ms) / 1_800 : 1;
+      drawPatternedCurve(graphics, curve, color, truthAlpha(model.truth_status) * residualAlpha, model.flow_type);
+      const target = curve.getPoint(1);
+      graphics.lineStyle(1, color, 0.9 * residualAlpha).strokeRect(Math.round(target.x) - 5, Math.round(target.y) - 5, 10, 10);
+      if (model.flow_type === "policy" && active) {
+        graphics.strokeRect(Math.round(target.x) - 9, Math.round(target.y) - 9, 18, 18);
+        graphics.strokeRect(Math.round(target.x) - 13, Math.round(target.y) - 13, 26, 26);
+      }
+      if (active) {
+        const rawProgress = model.duration_ms === 0 ? 1 : elapsed / model.duration_ms;
+        const leadProgress = this.preferences.reducedMotion ? 0.5 : Phaser.Math.Clamp(rawProgress, 0, 1);
+        packets.forEach((packet, index) => {
+          const progress = this.preferences.reducedMotion && index > 0 ? -1 : leadProgress - index * 0.08;
+          packet.setVisible(progress >= 0);
+          if (progress >= 0) {
+            const point = curve.getPoint(Phaser.Math.Clamp(progress, 0, 1));
+            packet.setPosition(Math.round(point.x), Math.round(point.y));
+          }
+        });
+        const labelPoint = curve.getPoint(leadProgress);
+        label.setText(`${model.label}\nDERIVED · ${model.derived_from_event_ids.length} EVENT`).setPosition(Math.round(labelPoint.x), Math.round(labelPoint.y - 8));
       }
     }
+  }
+
+  private renderAmbient(): void {
+    if (this.rainGraphics) {
+      this.rainGraphics.clear();
+      const rain = this.replay.ambient.effects.find((effect) => effect.kind === "rain");
+      if (rain && this.preferences.atmosphere > 0.12) {
+        const motion = this.preferences.reducedMotion ? 37 : Math.floor(this.cursorMs / 70);
+        const alpha = 0.06 + this.preferences.atmosphere * 0.18;
+        this.rainGraphics.lineStyle(1, this.preferences.highContrast ? 0x9ea8c2 : 0x2dd4ff, alpha);
+        for (let i = 0; i < 52; i += 1) {
+          const x = (i * 83 + 17) % WORLD_WIDTH;
+          const y = (i * 47 + motion * 3) % WORLD_HEIGHT;
+          this.rainGraphics.lineBetween(x, y, x - 2, y + 5);
+        }
+      }
+    }
+    for (const actor of this.replay.ambient.actors) {
+      const sprite = this.sprites.get(actor.id);
+      if (!sprite || !actor.path || actor.path.length < 2) continue;
+      const progress = this.preferences.reducedMotion ? 0.36 : (this.cursorMs % Math.max(1, actor.duration_ms)) / Math.max(1, actor.duration_ms);
+      const scaled = progress * (actor.path.length - 1);
+      const index = Math.min(actor.path.length - 2, Math.floor(scaled));
+      const from = actor.path[index]!;
+      const to = actor.path[index + 1]!;
+      const point = lerpPoint(from, to, scaled - index);
+      sprite.setPosition(point.x, point.y).setAlpha(0.44 + this.preferences.atmosphere * 0.34);
+    }
+  }
+
+  private renderInstitutionStates(): void {
+    if (!this.stateGraphics) return;
+    this.stateGraphics.clear();
+    const accepted = this.eventByType("paper.decided");
+    const funded = this.eventByType("resource.changed");
+    const policy = this.eventByType("policy.changed");
+    if (accepted && this.cursorMs >= accepted.logical_timestamp_ms) {
+      this.stateGraphics.fillStyle(0xeee9d8, 0.92).fillRect(354, 78, 7, 9);
+      this.stateGraphics.fillStyle(0x4f7cff, 0.9).fillRect(356, 80, 5, 2);
+    }
+    if (funded && this.cursorMs >= funded.logical_timestamp_ms) {
+      this.stateGraphics.lineStyle(1, 0x39f5c8, 0.95).strokeRect(92, 90, 16, 11);
+      this.stateGraphics.fillStyle(0x39f5c8, 0.9).fillRect(95, 94, 3, 4).fillRect(101, 91, 3, 7);
+    }
+    if (policy && this.cursorMs >= policy.logical_timestamp_ms) {
+      this.stateGraphics.lineStyle(1, 0xff617d, 0.82).strokeRect(304, 83, 60, 5);
+      for (let x = 307; x < 361; x += 7) this.stateGraphics.fillStyle(0xff617d, 0.8).fillRect(x, 85, 3, 1);
+    }
+  }
+
+  private eventByType(type: string): CanonicalEvent | undefined {
+    return this.replay.canonical.events.find((event) => event.kind === type);
+  }
+
+  private stateMarkerAt(x: number, y: number): CanonicalEvent | undefined {
+    const accepted = this.eventByType("paper.decided");
+    if (accepted && this.cursorMs >= accepted.logical_timestamp_ms && x >= 350 && x <= 366 && y >= 74 && y <= 92) return accepted;
+    const funded = this.eventByType("resource.changed");
+    if (funded && this.cursorMs >= funded.logical_timestamp_ms && x >= 88 && x <= 112 && y >= 86 && y <= 105) return funded;
+    const policy = this.eventByType("policy.changed");
+    if (policy && this.cursorMs >= policy.logical_timestamp_ms && x >= 300 && x <= 368 && y >= 79 && y <= 92) return policy;
+    return undefined;
   }
 
   private installPointerControls(): void {

@@ -46,13 +46,18 @@ def test_vertical_slice_has_three_researchers_three_institutions_and_six_flows()
     flows = value["choreography"]["flows"]
     assert len(flows) == 6
     assert tuple(flow["flow_type"] for flow in flows) == FLOW_TYPES
+    actions = value["choreography"]["actions"]
+    assert len(actions) == 15
+    assert {action["actor_entity_id"] for action in actions} == {
+        "researcher:aya", "researcher:mino", "researcher:sol",
+    }
 
 
 def test_all_derived_visuals_trace_to_canonical_events_and_ambient_never_does() -> None:
     value = payload()
     event_ids = {event["event_id"] for event in value["canonical"]["events"]}
 
-    for group in ("placements", "flows", "camera_cues"):
+    for group in ("placements", "flows", "actions", "camera_cues"):
         for record in value["choreography"][group]:
             assert record["truth_status"] == "derived"
             assert record["derived_from_event_ids"]
@@ -91,6 +96,21 @@ def test_v2_rejects_a_derived_flow_without_canonical_evidence() -> None:
         )
 
 
+def test_v2_rejects_an_action_for_a_non_researcher() -> None:
+    events = vertical_slice_events()
+    choreography, ambient = vertical_slice_presentation(events)
+    choreography["actions"][0]["actor_entity_id"] = choreography["placements"][0][
+        "entity_id"
+    ]
+
+    with pytest.raises(ValueError, match="Unknown action actor"):
+        build_viewer_payload_v2(
+            events,
+            choreography=choreography,
+            ambient=ambient,
+        )
+
+
 def test_real_saved_export_does_not_invent_missing_visual_flows() -> None:
     events = convert_artifacts(
         ArtifactBundle.discover(SAVED_FIXTURE / "checkpoint_year_1.json")
@@ -101,6 +121,7 @@ def test_real_saved_export_does_not_invent_missing_visual_flows() -> None:
     assert value["metadata"]["source_kind"] == "saved_simulation_artifact"
     assert value["metadata"]["empirical"] is True
     assert value["choreography"]["flows"] == []
+    assert value["choreography"]["actions"] == []
     assert value["ambient"]["actors"] == []
 
 

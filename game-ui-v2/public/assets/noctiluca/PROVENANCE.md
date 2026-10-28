@@ -2,10 +2,11 @@
 
 ## Production runtime assets
 
-Status: `production-grid-v0.1`. The runtime manifest loads the thirteen SVGs
-under `production/`: three researchers at 24x32, four institutions at 96x80,
-and six flow packets at 8x8. They were hand-authored for this repository on
-2026-10-27 from integer-aligned `rect` primitives using only the frozen
+Status: `production-grid-v0.2`. The runtime manifest loads fourteen SVGs under
+`production/`: three six-frame researcher sheets with 24x32 frames, four
+institutions at 96x80, six flow packets at 8x8, and a 16x8 ambient courier.
+They were hand-authored for this repository on 2026-10-27 and 2026-10-28 from
+integer-aligned `rect` primitives using only the frozen
 NOCTILUCA 24-colour palette. They declare `shape-rendering="crispEdges"` and
 contain no curves, transforms, filters, opacity, gradients, or embedded raster
 images.
@@ -26,6 +27,13 @@ shells:
 integer rectangle geometry, required manifest keys, and common antialias-risk
 constructs. Semantic silhouette recognition and accessibility are reviewed in
 the deterministic browser capture.
+
+Each researcher sheet has paired idle, walk, and domain-work frames. Aya's work
+frames carry an instrument probe and sample pulse; Sol's carry an allocation
+ledger and policy broadcaster; Mino's carry an open manuscript and review seal.
+The frames deliberately change posture and equipment rather than applying a
+generic glow. The browser chooses frames from the replay cursor, so paused and
+reduced-motion scenes are deterministic.
 
 ## Concept references
 

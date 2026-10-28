@@ -207,6 +207,7 @@ def build_viewer_payload_v2(
         "duration_ms": 48_000,
         "placements": [],
         "flows": [],
+        "actions": [],
         "camera_cues": [],
         **dict(choreography or {}),
     }
@@ -269,8 +270,12 @@ def _validate_v2_visual_records(
         for group in entities.values()
         for entity in group
     }
+    researcher_ids = {
+        str(entity["id"])
+        for entity in entities.get("researchers", ())
+    }
     visual_ids: set[str] = set()
-    for group_name in ("placements", "flows", "camera_cues"):
+    for group_name in ("placements", "flows", "actions", "camera_cues"):
         for record in choreography.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="derived")
             record_id = str(record["id"])
@@ -285,6 +290,28 @@ def _validate_v2_visual_records(
                 for endpoint in ("from_entity_id", "to_entity_id"):
                     if record.get(endpoint) not in entity_ids:
                         raise ValueError(f"Unknown flow endpoint: {record.get(endpoint)}")
+            if group_name == "actions":
+                if record.get("actor_entity_id") not in researcher_ids:
+                    raise ValueError(
+                        f"Unknown action actor: {record.get('actor_entity_id')}"
+                    )
+                if record.get("action_type") not in {
+                    "move", "experiment", "write", "review", "revise",
+                    "allocate", "receive", "read", "cite", "policy",
+                }:
+                    raise ValueError(
+                        f"Unsupported action type: {record.get('action_type')}"
+                    )
+                for point_name in ("start", "end"):
+                    point = record.get(point_name)
+                    if not isinstance(point, Mapping) or not all(
+                        isinstance(point.get(axis), (int, float))
+                        and not isinstance(point.get(axis), bool)
+                        for axis in ("x", "y")
+                    ):
+                        raise ValueError(
+                            f"Invalid action {point_name}: {record.get('id')}"
+                        )
     for group_name in ("actors", "effects"):
         for record in ambient.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="ambient")

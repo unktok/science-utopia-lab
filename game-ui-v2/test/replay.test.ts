@@ -21,7 +21,12 @@ describe("replay-view v2 contract", () => {
     expect(replay.choreography.flows.map((flow) => flow.flow_type)).toEqual([
       "data", "paper", "review", "funding", "citation", "policy",
     ]);
+    expect(replay.choreography.actions).toHaveLength(15);
+    expect(new Set(replay.choreography.actions.map((action) => action.actor_entity_id))).toEqual(new Set([
+      "researcher:aya", "researcher:mino", "researcher:sol",
+    ]));
     expect(replay.choreography.flows.every((flow) => flow.truth_status === "derived" && flow.derived_from_event_ids.length > 0)).toBe(true);
+    expect(replay.choreography.actions.every((action) => action.truth_status === "derived" && action.derived_from_event_ids.length > 0)).toBe(true);
     expect(replay.ambient.effects.every((effect) => effect.truth_status === "ambient" && effect.derived_from_event_ids.length === 0)).toBe(true);
   });
 
@@ -44,6 +49,18 @@ describe("replay-view v2 contract", () => {
     expect(() => parseReplayV2(raw)).toThrow(/requires canonical evidence references/);
   });
 
+  it("rejects an actor action without canonical evidence", async () => {
+    const raw = await fixture() as { choreography: { actions: Array<{ derived_from_event_ids: string[] }> } };
+    raw.choreography.actions[0]!.derived_from_event_ids = [];
+    expect(() => parseReplayV2(raw)).toThrow(/requires canonical evidence references/);
+  });
+
+  it("rejects an actor action attached to an institution", async () => {
+    const raw = await fixture() as { choreography: { actions: Array<{ actor_entity_id: string }> } };
+    raw.choreography.actions[0]!.actor_entity_id = "institution:noctiluca-knowledge-lab:244054c6";
+    expect(() => parseReplayV2(raw)).toThrow(/unknown researcher actor/);
+  });
+
   it("rejects ambient presentation that claims evidence", async () => {
     const raw = await fixture() as { ambient: { effects: Array<{ derived_from_event_ids: string[] }> } };
     raw.ambient.effects[0]!.derived_from_event_ids = ["invented-event"];
@@ -58,6 +75,7 @@ describe("asset pack contract", () => {
       "researcher_early", "researcher_pi", "researcher_reviewer",
       "institution_lab", "institution_review", "institution_publication", "institution_funding",
       "flow_data", "flow_paper", "flow_review", "flow_funding", "flow_citation", "flow_policy",
+      "ambient_courier_drone",
     ]));
   });
 

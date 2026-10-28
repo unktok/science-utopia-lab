@@ -61,9 +61,9 @@ function installIntegerScaling(): void {
 function renderSemanticWorld(replay: ReplayV2): void {
   const target = required<HTMLDivElement>("semantic-entities");
   const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.ambient.actors];
-  const group = (title: string, rows: Array<WorldEntity | EvidenceRecord>, category: "entity" | "flow" | "event"): string => `
+  const group = (title: string, rows: Array<WorldEntity | EvidenceRecord>, category: SelectionDetail["category"]): string => `
     <section><h3>${escapeHtml(title)}</h3><ul>${rows.map((row) => `<li><button type="button" data-select-id="${escapeHtml(row.id)}" data-select-category="${escapeHtml(category)}"><span>${escapeHtml(row.label)}</span><small>${escapeHtml(row.truth_status)}; ${escapeHtml(row.kind)}; ${formatTime(row.logical_timestamp_ms)}</small></button></li>`).join("")}</ul></section>`;
-  target.innerHTML = group("Entities", entities, "entity") + group("Information flows", replay.choreography.flows, "flow") + group("Canonical events", replay.canonical.events, "event");
+  target.innerHTML = group("Entities", entities, "entity") + group("Researcher actions", replay.choreography.actions, "action") + group("Information flows", replay.choreography.flows, "flow") + group("Canonical events", replay.canonical.events, "event");
   target.querySelectorAll<HTMLButtonElement>("[data-select-id]").forEach((button) => button.addEventListener("click", () => {
     const id = button.dataset.selectId;
     const category = button.dataset.selectCategory as SelectionDetail["category"] | undefined;
@@ -97,10 +97,10 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
   window.addEventListener("noctiluca:select", ((event: CustomEvent<SelectionDetail>) => {
     const { id, category } = event.detail;
     const entities = [...replay.canonical.entities.researchers, ...replay.canonical.entities.institutions, ...replay.canonical.entities.artifacts, ...replay.ambient.actors];
-    const record = category === "entity" ? entities.find((item) => item.id === id) : category === "flow" ? replay.choreography.flows.find((item) => item.id === id) : replay.canonical.events.find((item) => item.id === id);
+    const record = category === "entity" ? entities.find((item) => item.id === id) : category === "flow" ? replay.choreography.flows.find((item) => item.id === id) : category === "action" ? replay.choreography.actions.find((item) => item.id === id) : replay.canonical.events.find((item) => item.id === id);
     if (!record) return;
     scene.select(id);
-    kicker.textContent = category === "flow" ? "INFORMATION FLOW" : category === "event" ? "CANONICAL EVENT" : "ENTITY DOSSIER";
+    kicker.textContent = category === "flow" ? "INFORMATION FLOW" : category === "action" ? "DERIVED RESEARCHER ACTION" : category === "event" ? "CANONICAL EVENT" : "ENTITY DOSSIER";
     heading.textContent = record.label;
     body.innerHTML = evidenceMarkup(record, replay);
     inspector.hidden = false;
@@ -224,7 +224,7 @@ async function boot(): Promise<void> {
       installControls(replay, scene);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
-        const category = selected.startsWith("flow:") ? "flow" : selected.startsWith("event:") ? "event" : "entity";
+        const category = selected.startsWith("flow:") ? "flow" : selected.startsWith("action:") ? "action" : selected.startsWith("event:") ? "event" : "entity";
         window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: selected, category } }));
       }
       const actualHash = await canonicalHash(replay.canonical.raw_events);

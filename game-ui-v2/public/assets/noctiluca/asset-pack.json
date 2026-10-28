@@ -1,10 +1,10 @@
 {
-  "version": "noctiluca-production-v0.1",
+  "version": "noctiluca-production-v0.2",
   "palette": "noctiluca-24-v0.1",
   "images": [
-    { "key": "researcher_early", "url": "/assets/noctiluca/production/researcher-early.svg", "kind": "researcher", "width": 24, "height": 32 },
-    { "key": "researcher_pi", "url": "/assets/noctiluca/production/researcher-pi.svg", "kind": "researcher", "width": 24, "height": 32 },
-    { "key": "researcher_reviewer", "url": "/assets/noctiluca/production/researcher-reviewer.svg", "kind": "researcher", "width": 24, "height": 32 },
+    { "key": "researcher_early", "url": "/assets/noctiluca/production/researcher-early.svg", "kind": "researcher", "width": 24, "height": 32, "frames": { "frameWidth": 24, "frameHeight": 32, "end": 5 } },
+    { "key": "researcher_pi", "url": "/assets/noctiluca/production/researcher-pi.svg", "kind": "researcher", "width": 24, "height": 32, "frames": { "frameWidth": 24, "frameHeight": 32, "end": 5 } },
+    { "key": "researcher_reviewer", "url": "/assets/noctiluca/production/researcher-reviewer.svg", "kind": "researcher", "width": 24, "height": 32, "frames": { "frameWidth": 24, "frameHeight": 32, "end": 5 } },
     { "key": "institution_lab", "url": "/assets/noctiluca/production/institution-lab.svg", "kind": "institution", "width": 96, "height": 80 },
     { "key": "institution_review", "url": "/assets/noctiluca/production/institution-review.svg", "kind": "institution", "width": 96, "height": 80 },
     { "key": "institution_publication", "url": "/assets/noctiluca/production/institution-publication.svg", "kind": "institution", "width": 96, "height": 80 },
@@ -14,6 +14,7 @@
     { "key": "flow_review", "url": "/assets/noctiluca/production/flow-review.svg", "kind": "flow", "width": 8, "height": 8 },
     { "key": "flow_funding", "url": "/assets/noctiluca/production/flow-funding.svg", "kind": "flow", "width": 8, "height": 8 },
     { "key": "flow_citation", "url": "/assets/noctiluca/production/flow-citation.svg", "kind": "flow", "width": 8, "height": 8 },
-    { "key": "flow_policy", "url": "/assets/noctiluca/production/flow-policy.svg", "kind": "flow", "width": 8, "height": 8 }
+    { "key": "flow_policy", "url": "/assets/noctiluca/production/flow-policy.svg", "kind": "flow", "width": 8, "height": 8 },
+    { "key": "ambient_courier_drone", "url": "/assets/noctiluca/production/ambient-courier-drone.svg", "kind": "environment", "width": 16, "height": 8 }
   ]
 }

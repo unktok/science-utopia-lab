@@ -1,4 +1,4 @@
-import { FLOW_TYPES, type AssetPack, type EvidenceRecord, type ReplayV2, type TruthStatus, type WorldEntity } from "./types";
+import { ACTION_TYPES, FLOW_TYPES, type AssetPack, type EvidenceRecord, type ReplayV2, type TruthStatus, type WorldEntity, type WorldPoint } from "./types";
 
 const asRecord = (value: unknown, path: string): Record<string, unknown> => {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${path} must be an object`);
@@ -24,6 +24,11 @@ const asNumber = (value: unknown, path: string, fallback?: number): number => {
 const truthStatus = (value: unknown, path: string): TruthStatus => {
   if (value === "canonical" || value === "derived" || value === "ambient") return value;
   throw new Error(`${path} must be canonical, derived, or ambient`);
+};
+
+const point = (raw: unknown, path: string): WorldPoint => {
+  const row = asRecord(raw, path);
+  return { x: asNumber(row.x, `${path}.x`), y: asNumber(row.y, `${path}.y`) };
 };
 
 const evidence = (raw: unknown, path: string): EvidenceRecord => {
@@ -142,11 +147,37 @@ export function parseReplayV2(input: unknown): ReplayV2 {
     };
   });
 
+  const actions = asArray(choreography.actions ?? [], "choreography.actions").map((raw, i) => {
+    const path = `choreography.actions[${i}]`;
+    const row = asRecord(raw, path);
+    const base = evidence(row, path);
+    if (!ACTION_TYPES.includes(row.action_type as never)) throw new Error(`${path}.action_type is unknown`);
+    if (base.truth_status !== "derived") throw new Error(`${path} must be derived`);
+    if (base.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
+    for (const id of base.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    return {
+      ...base,
+      actor_entity_id: asString(row.actor_entity_id, `${path}.actor_entity_id`),
+      action_type: row.action_type as (typeof ACTION_TYPES)[number],
+      start: point(row.start, `${path}.start`),
+      end: point(row.end, `${path}.end`),
+    };
+  });
+
   const ambientActors = asArray(ambient.actors, "ambient.actors").map((raw, i) => {
     const row = asRecord(raw, `ambient.actors[${i}]`);
     const path = Array.isArray(row.path) ? row.path : [];
     const first = Array.isArray(path[0]) ? path[0] : [0, 0];
-    return entity(row, `ambient.actors[${i}]`, "ambient_actor", { x: typeof first[0] === "number" ? first[0] : 0, y: typeof first[1] === "number" ? first[1] : 0 });
+    const parsedPath = path.map((value, pointIndex) => {
+      if (!Array.isArray(value) || value.length !== 2 || typeof value[0] !== "number" || typeof value[1] !== "number") {
+        throw new Error(`ambient.actors[${i}].path[${pointIndex}] must be an [x, y] pair`);
+      }
+      return { x: value[0], y: value[1] };
+    });
+    return {
+      ...entity(row, `ambient.actors[${i}]`, "ambient_actor", { x: typeof first[0] === "number" ? first[0] : 0, y: typeof first[1] === "number" ? first[1] : 0 }),
+      path: parsedPath,
+    };
   });
   const ambientEffects = asArray(ambient.effects, "ambient.effects").map((raw, i) => evidence(raw, `ambient.effects[${i}]`));
   for (const [path, records] of [["ambient.actors", ambientActors], ["ambient.effects", ambientEffects]] as const) {
@@ -207,6 +238,7 @@ export function parseReplayV2(input: unknown): ReplayV2 {
     choreography: {
       duration_ms: asNumber(choreography.duration_ms, "choreography.duration_ms"),
       flows,
+      actions,
       camera_cues: cameraCues,
       placements,
     },
@@ -218,6 +250,10 @@ export function parseReplayV2(input: unknown): ReplayV2 {
   if (entityIds.size !== allEntities.length) throw new Error("entity ids must be unique");
   for (const flow of flows) {
     if (!entityIds.has(flow.from_entity_id) || !entityIds.has(flow.to_entity_id)) throw new Error(`${flow.id} has an unknown endpoint`);
+  }
+  for (const action of actions) {
+    const actor = allEntities.find((item) => item.id === action.actor_entity_id);
+    if (!actor || actor.entity_type !== "researcher") throw new Error(`${action.id} has an unknown researcher actor`);
   }
   return replay;
 }

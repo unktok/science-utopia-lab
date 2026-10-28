@@ -1,6 +1,13 @@
 export const FLOW_TYPES = ["data", "paper", "review", "funding", "citation", "policy"] as const;
 export type FlowType = (typeof FLOW_TYPES)[number];
 export type TruthStatus = "canonical" | "derived" | "ambient";
+export const ACTION_TYPES = ["move", "experiment", "write", "review", "revise", "allocate", "receive", "read", "cite", "policy"] as const;
+export type ActionType = (typeof ACTION_TYPES)[number];
+
+export interface WorldPoint {
+  x: number;
+  y: number;
+}
 
 export interface EvidenceRecord {
   id: string;
@@ -22,6 +29,7 @@ export interface WorldEntity extends EvidenceRecord {
   role?: string;
   state?: string;
   description?: string;
+  path?: WorldPoint[];
 }
 
 export interface CanonicalEvent extends EvidenceRecord {
@@ -47,6 +55,13 @@ export interface CameraCue extends EvidenceRecord {
   x?: number;
   y?: number;
   zoom?: number;
+}
+
+export interface VisualAction extends EvidenceRecord {
+  actor_entity_id: string;
+  action_type: ActionType;
+  start: WorldPoint;
+  end: WorldPoint;
 }
 
 export interface ReplayV2 {
@@ -76,6 +91,7 @@ export interface ReplayV2 {
   choreography: {
     duration_ms: number;
     flows: VisualFlow[];
+    actions: VisualAction[];
     camera_cues: CameraCue[];
     placements: Array<EvidenceRecord & { entity_id: string; x: number; y: number }>;
   };
@@ -102,7 +118,7 @@ export interface AssetPack {
 
 export interface SelectionDetail {
   id: string;
-  category: "entity" | "flow" | "event";
+  category: "entity" | "flow" | "action" | "event";
 }
 
 export interface RuntimePreferences {
