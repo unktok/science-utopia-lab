@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 11:19 JST
+Updated: 2026-10-28 11:32 JST
 
 ## Overall position
 
@@ -34,8 +34,8 @@ Remote: `unktok/science-utopia-lab`
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
-| whole-system `SystemSpec` | heterogeneous production slice | typed model, validator, generic registry/runner, canonical provenance, legacy compiler, and checkpointable evaluation/publication/funding adapters |
-| structural system optimization | production vertical slice | 64 typed candidates mutate node presence, mechanism family, edge presence, and latency; production evaluation/publication/funding adapters now execute through one ask/loss/tell and fingerprint-bound checkpoint boundary |
+| whole-system `SystemSpec` | stateful government slice | typed model, validator, generic registry/runner, checkpointable evaluation/publication/funding, plus versioned event-observing government policy delivered to two families |
+| structural system optimization | government production slice | 145 government candidates vary absence, implementation, observation/policy edges, and latency through one ask/loss/tell and fingerprint-bound checkpoint boundary |
 | differentiable optimization | not started | surrogate/relaxation research remains |
 | game UI | verified real-campaign adapter | completed seed-521 campaign is converted by Python into 71 canonical events / 72 authoritative frames after commit, manifest, integrity, completion, and artifact-hash verification; the running v1.1 study is not represented early |
 

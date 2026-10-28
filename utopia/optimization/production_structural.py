@@ -53,6 +53,7 @@ class ProductionStructuralSummary:
     publication_records: int
     funding_awards: int
     total_awarded: float
+    government_policies: int
     blocked_invocations: int
     mechanism_count: int
     connection_count: int
@@ -64,6 +65,7 @@ class ProductionStructuralSummary:
             "publication_records": self.publication_records,
             "funding_awards": self.funding_awards,
             "total_awarded": self.total_awarded,
+            "government_policies": self.government_policies,
             "blocked_invocations": self.blocked_invocations,
             "mechanism_count": self.mechanism_count,
             "connection_count": self.connection_count,
@@ -341,6 +343,10 @@ def execute_production_structural_candidate(
         ),
         funding_awards=len(awards),
         total_awarded=sum(float(event.payload["amount"]) for event in awards),
+        government_policies=sum(
+            event.event_type == "government.policy_decided"
+            for event in result.events
+        ),
         blocked_invocations=sum(record.status == "blocked" for record in result.trace),
         mechanism_count=len(spec.mechanisms),
         connection_count=len(spec.connections),

@@ -9,6 +9,7 @@ import math
 from typing import Any, Mapping
 
 from utopia.agents.conference import Conference, ConferenceStatus
+from utopia.system.production.governance import resolve_active_policy
 from utopia.system.runtime import (
     GraphRuntimeError,
     MechanismContext,
@@ -20,7 +21,8 @@ from utopia.system.runtime import (
 
 
 CONFERENCE_ACCEPTANCE = "production.evaluation.conference-acceptance-v1"
-STATE_SCHEMA_VERSION = "scienceutopia.conference-evaluation-state.v1"
+STATE_SCHEMA_VERSION = "scienceutopia.conference-evaluation-state.v2"
+LEGACY_STATE_SCHEMA_VERSION = "scienceutopia.conference-evaluation-state.v1"
 
 
 def register_conference_evaluation_mechanism(registry: MechanismRegistry) -> None:
@@ -32,6 +34,15 @@ def conference_acceptance(context: MechanismContext) -> MechanismResult:
 
     state = _restore_state(context.state)
     rate = _acceptance_rate(context.mechanism.parameters.get("acceptance_rate", 0.2))
+    active_policy = resolve_active_policy(
+        context.inputs.get("policies", ()),
+        target="evaluation",
+        active=state["active_policy"],
+        system_fingerprint=context.system_fingerprint,
+    )
+    state["active_policy"] = active_policy
+    if active_policy is not None:
+        rate = active_policy["directive"]["acceptance_rate"]
     mode = context.mechanism.parameters.get("acceptance_mode", "rate")
     if mode not in {"rate", "fixed_slots"}:
         raise GraphRuntimeError("conference acceptance_mode must be rate or fixed_slots")
@@ -134,6 +145,16 @@ def conference_acceptance(context: MechanismContext) -> MechanismResult:
                             "production_adapter": CONFERENCE_ACCEPTANCE,
                             "acceptance_mode": mode,
                             "acceptance_rate": rate,
+                            "government_policy_id": (
+                                active_policy["policy_id"]
+                                if active_policy is not None
+                                else None
+                            ),
+                            "government_policy_version": (
+                                active_policy["policy_version"]
+                                if active_policy is not None
+                                else None
+                            ),
                         },
                     )
                 )
@@ -154,18 +175,23 @@ def _restore_state(raw: Mapping[str, Any]) -> dict[str, Any]:
             "processed_batch_ids": [],
             "fixed_slots_by_conference": {},
             "decision_counts": {"accept": 0, "reject": 0},
+            "active_policy": None,
         }
+    if raw.get("schema_version") == LEGACY_STATE_SCHEMA_VERSION:
+        raw = {**dict(raw), "schema_version": STATE_SCHEMA_VERSION, "active_policy": None}
     required = {
         "schema_version",
         "processed_batch_ids",
         "fixed_slots_by_conference",
         "decision_counts",
+        "active_policy",
     }
     if set(raw) != required or raw.get("schema_version") != STATE_SCHEMA_VERSION:
         raise GraphRuntimeError("unsupported conference evaluation mechanism state")
     batches = raw["processed_batch_ids"]
     slots = raw["fixed_slots_by_conference"]
     counts = raw["decision_counts"]
+    active_policy = raw["active_policy"]
     if (
         not isinstance(batches, list)
         or any(not isinstance(item, str) or not item for item in batches)
@@ -188,11 +214,15 @@ def _restore_state(raw: Mapping[str, Any]) -> dict[str, Any]:
         if isinstance(value, bool) or not isinstance(value, int) or value < 0:
             raise GraphRuntimeError("invalid conference decision count state")
         normalized_counts[decision] = value
+    normalized_policy = resolve_active_policy(
+        (), target="evaluation", active=active_policy
+    )
     return {
         "schema_version": STATE_SCHEMA_VERSION,
         "processed_batch_ids": list(batches),
         "fixed_slots_by_conference": normalized_slots,
         "decision_counts": normalized_counts,
+        "active_policy": normalized_policy,
     }
 
 

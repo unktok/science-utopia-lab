@@ -12,6 +12,7 @@ import math
 from typing import Any, Mapping
 
 from utopia.funding.compact import expand_compact_result
+from utopia.system.production.governance import resolve_active_policy
 from utopia.system.runtime import (
     GraphRuntimeError,
     MechanismContext,
@@ -23,7 +24,8 @@ from utopia.system.runtime import (
 
 
 COMPACT_RANKED_ALLOCATION = "production.funding.compact-ranked-allocation-v1"
-STATE_SCHEMA_VERSION = "scienceutopia.compact-funding-state.v1"
+STATE_SCHEMA_VERSION = "scienceutopia.compact-funding-state.v2"
+LEGACY_STATE_SCHEMA_VERSION = "scienceutopia.compact-funding-state.v1"
 
 
 def register_compact_funding_mechanism(registry: MechanismRegistry) -> None:
@@ -45,6 +47,20 @@ def compact_ranked_allocation(context: MechanismContext) -> MechanismResult:
     state = _restore_state(context.state)
     amount = _positive_number(context.mechanism.parameters.get("award_amount", 1.0))
     default_slots = _positive_int(context.mechanism.parameters.get("award_slots", 1))
+    policy_slots = None
+    active_policy = resolve_active_policy(
+        context.inputs.get("policies", ()),
+        target="funding",
+        active=state["active_policy"],
+        system_fingerprint=context.system_fingerprint,
+    )
+    state["active_policy"] = active_policy
+    if active_policy is not None:
+        directive = active_policy["directive"]
+        amount = _positive_number(
+            amount * directive.get("award_amount_multiplier", 1.0)
+        )
+        policy_slots = directive.get("award_slots")
     outputs: list[MechanismValue] = []
     events: list[MechanismEvent] = []
 
@@ -61,7 +77,11 @@ def compact_ranked_allocation(context: MechanismContext) -> MechanismResult:
             expanded = expand_compact_result(compact_result, applications)
         except ValueError as exc:
             raise GraphRuntimeError(f"invalid compact funding panel {panel_id!r}: {exc}") from exc
-        slots = panel.get("award_slots", default_slots)
+        slots = (
+            policy_slots
+            if policy_slots is not None
+            else panel.get("award_slots", default_slots)
+        )
         if isinstance(slots, bool) or not isinstance(slots, int) or slots < 1:
             raise GraphRuntimeError("compact funding award_slots must be a positive integer")
         ranked = expanded["ranked_applications"]
@@ -97,6 +117,16 @@ def compact_ranked_allocation(context: MechanismContext) -> MechanismResult:
                     provenance={
                         "ranking_protocol": "ordered_application_ids_v1",
                         "production_adapter": COMPACT_RANKED_ALLOCATION,
+                        "government_policy_id": (
+                            active_policy["policy_id"]
+                            if active_policy is not None
+                            else None
+                        ),
+                        "government_policy_version": (
+                            active_policy["policy_version"]
+                            if active_policy is not None
+                            else None
+                        ),
                     },
                 )
             )
@@ -117,17 +147,22 @@ def _restore_state(raw: Mapping[str, Any]) -> dict[str, Any]:
             "processed_panel_ids": [],
             "balances": {},
             "total_awarded": 0.0,
+            "active_policy": None,
         }
+    if raw.get("schema_version") == LEGACY_STATE_SCHEMA_VERSION:
+        raw = {**dict(raw), "schema_version": STATE_SCHEMA_VERSION, "active_policy": None}
     if set(raw) != {
         "schema_version",
         "processed_panel_ids",
         "balances",
         "total_awarded",
+        "active_policy",
     } or raw.get("schema_version") != STATE_SCHEMA_VERSION:
         raise GraphRuntimeError("unsupported compact funding mechanism state")
     panels = raw["processed_panel_ids"]
     balances = raw["balances"]
     total = raw["total_awarded"]
+    active_policy = raw["active_policy"]
     if (
         not isinstance(panels, list)
         or any(not isinstance(item, str) or not item for item in panels)
@@ -145,11 +180,13 @@ def _restore_state(raw: Mapping[str, Any]) -> dict[str, Any]:
         sum(normalized_balances.values()), normalized_total, rel_tol=0, abs_tol=1e-9
     ):
         raise GraphRuntimeError("compact funding state balances do not sum to total_awarded")
+    normalized_policy = resolve_active_policy((), target="funding", active=active_policy)
     return {
         "schema_version": STATE_SCHEMA_VERSION,
         "processed_panel_ids": list(panels),
         "balances": normalized_balances,
         "total_awarded": normalized_total,
+        "active_policy": normalized_policy,
     }
 
 
