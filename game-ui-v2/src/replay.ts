@@ -31,6 +31,12 @@ const point = (raw: unknown, path: string): WorldPoint => {
   return { x: asNumber(row.x, `${path}.x`), y: asNumber(row.y, `${path}.y`) };
 };
 
+const integerPoint = (raw: unknown, path: string): WorldPoint => {
+  const parsed = point(raw, path);
+  if (!Number.isInteger(parsed.x) || !Number.isInteger(parsed.y)) throw new Error(`${path} must use integer geometry`);
+  return parsed;
+};
+
 const evidence = (raw: unknown, path: string): EvidenceRecord => {
   const row = asRecord(raw, path);
   const refs = row.derived_from_event_ids === undefined ? [] : asArray(row.derived_from_event_ids, `${path}.derived_from_event_ids`).map((v, i) => asString(v, `${path}.derived_from_event_ids[${i}]`));
@@ -109,6 +115,12 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       label: typeof row.label === "string" ? row.label : asString(row.event_type ?? row.kind, `canonical.events[${i}].event_type`),
       truth_status: "canonical" as const,
       payload: row.payload && typeof row.payload === "object" ? row.payload as Record<string, unknown> : undefined,
+      sequence: asNumber(row.sequence, `canonical.events[${i}].sequence`),
+      year: asNumber(row.year, `canonical.events[${i}].year`),
+      phase: asNumber(row.phase, `canonical.events[${i}].phase`),
+      actor_ids: asArray(row.actor_ids ?? [], `canonical.events[${i}].actor_ids`).map((value, index) => asString(value, `canonical.events[${i}].actor_ids[${index}]`)),
+      artifact_ids: asArray(row.artifact_ids ?? [], `canonical.events[${i}].artifact_ids`).map((value, index) => asString(value, `canonical.events[${i}].artifact_ids[${index}]`)),
+      provenance: asRecord(row.provenance ?? {}, `canonical.events[${i}].provenance`),
     };
   });
   const eventIds = new Set(events.map((item) => item.id));
@@ -158,12 +170,21 @@ export function parseReplayV2(input: unknown): ReplayV2 {
     if (base.truth_status !== "derived") throw new Error(`${path} must be derived`);
     if (base.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
     for (const id of base.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    const start = integerPoint(row.start, `${path}.start`);
+    const end = integerPoint(row.end, `${path}.end`);
+    const actionPath = asArray(row.path ?? [start, end], `${path}.path`).map((value, pointIndex) => integerPoint(value, `${path}.path[${pointIndex}]`));
+    if (actionPath.length < 2) throw new Error(`${path}.path requires at least two points`);
+    if (actionPath[0]!.x !== start.x || actionPath[0]!.y !== start.y
+      || actionPath.at(-1)!.x !== end.x || actionPath.at(-1)!.y !== end.y) {
+      throw new Error(`${path}.path endpoints must match start/end`);
+    }
     return {
       ...base,
       actor_entity_id: asString(row.actor_entity_id, `${path}.actor_entity_id`),
       action_type: row.action_type as (typeof ACTION_TYPES)[number],
-      start: point(row.start, `${path}.start`),
-      end: point(row.end, `${path}.end`),
+      start,
+      end,
+      path: actionPath,
     };
   });
 
@@ -213,6 +234,19 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       zoom: zoomValue,
     };
   });
+  const chapters = asArray(choreography.chapters ?? [], "choreography.chapters").map((raw, i) => {
+    const path = `choreography.chapters[${i}]`;
+    const row = asRecord(raw, path);
+    const base = evidence(row, path);
+    const endMs = asNumber(row.end_ms, `${path}.end_ms`);
+    if (base.truth_status !== "derived" || base.derived_from_event_ids.length === 0) throw new Error(`${path} requires canonical evidence references`);
+    if (endMs < base.logical_timestamp_ms) throw new Error(`${path}.end_ms precedes its start`);
+    for (const id of base.derived_from_event_ids) if (!eventIds.has(id)) throw new Error(`${path} references missing event ${id}`);
+    return { ...base, end_ms: endMs };
+  });
+  const timeCompressionRaw = asRecord(choreography.time_compression ?? {
+    kind: "linear", canonical_event_count: events.length, duration_ms: choreography.duration_ms,
+  }, "choreography.time_compression");
 
   const replay: ReplayV2 = {
     schema_version: asString(root.schema_version, "schema_version"),
@@ -248,6 +282,12 @@ export function parseReplayV2(input: unknown): ReplayV2 {
       flows,
       actions,
       camera_cues: cameraCues,
+      chapters,
+      time_compression: {
+        kind: asString(timeCompressionRaw.kind, "choreography.time_compression.kind"),
+        canonical_event_count: asNumber(timeCompressionRaw.canonical_event_count, "choreography.time_compression.canonical_event_count"),
+        duration_ms: asNumber(timeCompressionRaw.duration_ms, "choreography.time_compression.duration_ms"),
+      },
       placements,
     },
     ambient: { actors: ambientActors, effects: ambientEffects },
@@ -262,6 +302,10 @@ export function parseReplayV2(input: unknown): ReplayV2 {
   for (const action of actions) {
     const actor = allEntities.find((item) => item.id === action.actor_entity_id);
     if (!actor || actor.entity_type !== "researcher") throw new Error(`${action.id} has an unknown researcher actor`);
+  }
+  for (const cue of cameraCues) {
+    if (!cue.target_entity_id || !entityIds.has(cue.target_entity_id)) throw new Error(`${cue.id} has an unknown camera target`);
+    if (cue.truth_status !== "derived" || cue.derived_from_event_ids.length === 0) throw new Error(`${cue.id} requires canonical evidence references`);
   }
   return replay;
 }

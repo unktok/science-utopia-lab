@@ -18,7 +18,7 @@
         </dl>
         <div id="verification" class="verification" data-state="loading" role="status">LOADING CONTRACT</div>
       </header>
-      <p id="source-disclosure" class="source-disclosure" role="note">Loading source provenance…</p>
+      <p class="source-disclosure" role="note"><strong id="source-mode">LOADING SOURCE</strong><span id="source-disclosure">Loading source provenance…</span></p>
 
       <main class="world-stage" aria-label="Science ecosystem replay">
         <section class="canvas-column" aria-labelledby="world-heading">
@@ -42,20 +42,22 @@
 
           <section id="world-controls" class="transport" aria-label="Replay transport">
             <button id="play-toggle" class="transport__play" type="button" aria-label="Play replay">PLAY</button>
-            <button id="step-back" type="button" aria-label="Step backward">−1</button>
+            <button id="step-back" type="button" aria-label="Previous canonical event">−EVENT</button>
             <output id="cursor-output" for="timeline">00:00.0</output>
             <input id="timeline" type="range" min="0" max="60000" value="0" step="100" aria-label="Replay position" />
-            <button id="step-forward" type="button" aria-label="Step forward">+1</button>
+            <button id="step-forward" type="button" aria-label="Next canonical event">+EVENT</button>
             <label class="speed-control">SPEED
               <select id="speed" aria-label="Playback speed">
                 <option value="0.5">0.5×</option>
                 <option value="1" selected>1×</option>
                 <option value="2">2×</option>
                 <option value="4">4×</option>
+                <option value="8">8×</option>
               </select>
             </label>
           </section>
           <div id="event-lane" class="event-lane" aria-label="Canonical event timeline"></div>
+          <nav id="chapter-nav" class="chapter-nav" aria-label="Compressed replay chapters"></nav>
         </section>
 
         <aside id="inspector" class="inspector" aria-labelledby="inspector-heading" hidden>

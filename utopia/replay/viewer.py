@@ -154,6 +154,7 @@ def build_viewer_payload_v2(
     metadata: Mapping[str, Any] | None = None,
     choreography: Mapping[str, Any] | None = None,
     ambient: Mapping[str, Any] | None = None,
+    logical_timestamps_ms: Mapping[str, int] | None = None,
 ) -> dict[str, Any]:
     """Build a truth-status-aware replay-view v2 document.
 
@@ -168,6 +169,20 @@ def build_viewer_payload_v2(
         raise ValueError("Invalid canonical event references: " + "; ".join(errors))
 
     event_ids = {event.event_id for event in ordered}
+    if logical_timestamps_ms is None:
+        event_times = {
+            event.event_id: _logical_time(event, len(ordered)) for event in ordered
+        }
+    else:
+        if set(logical_timestamps_ms) != event_ids:
+            raise ValueError("Logical timestamp map must cover exactly the event stream")
+        event_times = dict(logical_timestamps_ms)
+        values = [event_times[event.event_id] for event in ordered]
+        if any(
+            not isinstance(value, int) or isinstance(value, bool) or value < 0
+            for value in values
+        ) or values != sorted(values):
+            raise ValueError("Logical timestamps must be non-negative monotonic integers")
     entities = _entity_catalog(ordered)
     facts = [
         {
@@ -175,7 +190,7 @@ def build_viewer_payload_v2(
             **_trace(
                 "canonical",
                 event_ids=(event.event_id,),
-                logical_timestamp_ms=_logical_time(event, len(ordered)),
+                logical_timestamp_ms=event_times[event.event_id],
             ),
         }
         for event in ordered
@@ -194,7 +209,7 @@ def build_viewer_payload_v2(
                     "derived",
                     event_ids=source_ids,
                     logical_timestamp_ms=(
-                        _logical_time(prefix[-1], len(ordered)) if prefix else 0
+                        event_times[prefix[-1].event_id] if prefix else 0
                     ),
                     causal_parent_id=(prefix[-2].event_id if len(prefix) > 1 else None),
                 )
@@ -209,6 +224,7 @@ def build_viewer_payload_v2(
         "flows": [],
         "actions": [],
         "camera_cues": [],
+        "chapters": [],
         **dict(choreography or {}),
     }
     ambient_value = {
@@ -275,7 +291,7 @@ def _validate_v2_visual_records(
         for entity in entities.get("researchers", ())
     }
     visual_ids: set[str] = set()
-    for group_name in ("placements", "flows", "actions", "camera_cues"):
+    for group_name in ("placements", "flows", "actions", "camera_cues", "chapters"):
         for record in choreography.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="derived")
             record_id = str(record["id"])
@@ -312,6 +328,25 @@ def _validate_v2_visual_records(
                         raise ValueError(
                             f"Invalid action {point_name}: {record.get('id')}"
                         )
+                if "path" in record:
+                    path = record["path"]
+                    if not isinstance(path, Sequence) or len(path) < 2:
+                        raise ValueError(f"Action path requires at least two points: {record.get('id')}")
+                    for point in path:
+                        if not isinstance(point, Mapping) or not all(
+                            isinstance(point.get(axis), int)
+                            and not isinstance(point.get(axis), bool)
+                            for axis in ("x", "y")
+                        ):
+                            raise ValueError(f"Action path must use integer geometry: {record.get('id')}")
+                    if path[0] != record["start"] or path[-1] != record["end"]:
+                        raise ValueError(f"Action path endpoints must match start/end: {record.get('id')}")
+            if group_name == "camera_cues" and record.get("target_entity_id") not in entity_ids:
+                raise ValueError(f"Unknown camera target: {record.get('target_entity_id')}")
+            if group_name == "chapters":
+                end_ms = record.get("end_ms")
+                if not isinstance(end_ms, int) or end_ms < int(record["logical_timestamp_ms"]):
+                    raise ValueError(f"Invalid chapter interval: {record.get('id')}")
     for group_name in ("actors", "effects"):
         for record in ambient.get(group_name, []):
             _validate_trace_record(record, event_ids=event_ids, expected="ambient")

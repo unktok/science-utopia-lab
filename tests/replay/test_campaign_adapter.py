@@ -70,6 +70,22 @@ def test_committed_bundle_is_real_campaign_projection_not_raw_state() -> None:
     assert payload["metadata"]["campaign_revision"] == "9a10029807d5"
     assert len(payload["canonical"]["events"]) == 71
     assert len(payload["projection"]["frames"]) == 72
+    assert len(payload["choreography"]["actions"]) == 20
+    assert len(payload["choreography"]["chapters"]) == 9
+    assert payload["choreography"]["time_compression"]["kind"] == "deterministic-stage-compression"
+    action_types = [action["action_type"] for action in payload["choreography"]["actions"]]
+    assert {kind: action_types.count(kind) for kind in set(action_types)} == {
+        "move": 12, "receive": 2, "review": 4, "write": 2,
+    }
+    assert all(
+        isinstance(point[axis], int)
+        for action in payload["choreography"]["actions"]
+        for point in action["path"]
+        for axis in ("x", "y")
+    )
+    fact_times = [fact["logical_timestamp_ms"] for fact in payload["canonical"]["facts"]]
+    assert fact_times == sorted(fact_times)
+    assert [frame["logical_timestamp_ms"] for frame in payload["projection"]["frames"][1:]] == fact_times
     assert "paper_tracker" not in payload
     assert "ecosystem_data" not in payload
 
@@ -105,4 +121,12 @@ def test_portable_validation_rejects_projection_tampering() -> None:
     tampered = copy.deepcopy(payload)
     tampered["projection"]["frames"][-1]["state"]["completed_years"] = []
     with pytest.raises(ValueError, match="authoritative projection mismatch"):
+        validate_portable_bundle(tampered)
+
+
+def test_portable_validation_rejects_projection_timing_tampering() -> None:
+    payload = json.loads(COMMITTED.read_text(encoding="utf-8"))
+    tampered = copy.deepcopy(payload)
+    tampered["projection"]["frames"][1]["logical_timestamp_ms"] = 99
+    with pytest.raises(ValueError, match="authoritative projection timestamp mismatch"):
         validate_portable_bundle(tampered)

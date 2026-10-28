@@ -8,6 +8,8 @@ const captures = {
   "noctiluca-v4-publication-funding-cursor-26000.png": "4516ddd36a8da5a295978ccdec13eb8c0417068abf45323de73f532dd4b585b1",
   "noctiluca-v4-publication-evidence-cursor-26000.png": "8d65b81b37cabf8bb7597d35052fb34bab45cd3b2001f9361a77e2d9a7bbb58b",
   "noctiluca-completed-campaign-seed521-cursor-9000.png": "eb984c5aaadc69aeddb5b9b5d07b840e85f7649c1a19bef0fba7bf7e518aa923",
+  "noctiluca-cinematic-review-seed521-cursor-20000.png": "5a20b9df6775a814974cd9a4a428d1cbc9f870b71ff42c1a24d5d97dfe9551ea",
+  "noctiluca-cinematic-funding-seed521-cursor-42000.png": "f5fd5245077c45c503d16586038eba0a9623acb80c0e97b3714b5c3686d98cd1",
 };
 
 describe("deterministic visual review artifacts", () => {

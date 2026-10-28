@@ -3,7 +3,7 @@ import { ArcologyScene, arcologyConfig } from "./ArcologyScene";
 import { webCanonicalHash } from "./hash";
 import { loadJson, parseAssetPack, parseReplayV2 } from "./replay";
 import { replaySource } from "./source";
-import type { EvidenceRecord, FlowType, ReplayV2, RuntimePreferences, SelectionDetail, WorldEntity } from "./types";
+import type { CanonicalEvent, EvidenceRecord, FlowType, ProjectionFrame, ReplayV2, RuntimePreferences, SelectionDetail, WorldEntity } from "./types";
 import "./style.css";
 
 const ASSET_PACK_URL = "/assets/noctiluca/asset-pack.json";
@@ -30,6 +30,31 @@ function evidenceMarkup(record: EvidenceRecord, replay: ReplayV2): string {
   const refs = record.derived_from_event_ids
     .map((id) => replay.canonical.events.find((event) => event.id === id))
     .filter((event): event is NonNullable<typeof event> => Boolean(event));
+  const projectionSnapshot = (frame: ProjectionFrame | undefined, event: CanonicalEvent): Record<string, unknown> => {
+    if (!frame) return { unavailable: true };
+    const agents = frame.state.agents && typeof frame.state.agents === "object" ? frame.state.agents as Record<string, unknown> : {};
+    const artifacts = frame.state.artifacts && typeof frame.state.artifacts === "object" ? frame.state.artifacts as Record<string, unknown> : {};
+    return {
+      cursor: frame.cursor,
+      event_id: frame.event_id ?? null,
+      agents: Object.fromEntries(event.actor_ids.filter((id) => id in agents).map((id) => [id, agents[id]])),
+      artifacts: Object.fromEntries(event.artifact_ids.filter((id) => id in artifacts).map((id) => [id, artifacts[id]])),
+      completed_years: frame.state.completed_years ?? [],
+    };
+  };
+  const causeCards = refs.map((event) => {
+    const before = replay.projection.frames[event.sequence];
+    const after = replay.projection.frames[event.sequence + 1];
+    return `<article class="cause-card">
+      <h4>CAUSE // ${escapeHtml(event.kind)}</h4>
+      <p>actors ${escapeHtml(event.actor_ids.join(", ") || "none")} · artifacts ${escapeHtml(event.artifact_ids.join(", ") || "none")}</p>
+      <pre>${escapeHtml(JSON.stringify({ payload: event.payload ?? {}, provenance: event.provenance }, null, 2))}</pre>
+      <div class="projection-pair">
+        <article><h5>AUTHORITATIVE BEFORE</h5><pre>${escapeHtml(JSON.stringify(projectionSnapshot(before, event), null, 2))}</pre></article>
+        <article><h5>AUTHORITATIVE AFTER</h5><pre>${escapeHtml(JSON.stringify(projectionSnapshot(after, event), null, 2))}</pre></article>
+      </div>
+    </article>`;
+  }).join("");
   return `
     <dl class="evidence-card">
       <div><dt>TRUTH STATUS</dt><dd><span class="truth-chip" data-truth="${escapeHtml(record.truth_status)}">${escapeHtml(record.truth_status.toUpperCase())}</span></dd></div>
@@ -39,7 +64,7 @@ function evidenceMarkup(record: EvidenceRecord, replay: ReplayV2): string {
       ${record.derivation_version ? `<div><dt>DERIVATION</dt><dd>${escapeHtml(record.derivation_version)}</dd></div>` : ""}
       ${record.causal_parent_id ? `<div><dt>CAUSAL PARENT</dt><dd><code>${escapeHtml(record.causal_parent_id)}</code></dd></div>` : ""}
     </dl>
-    <section class="evidence-links"><h3>CANONICAL EVIDENCE</h3>${record.truth_status === "canonical" ? "<p>Direct fact from the canonical event stream.</p>" : refs.length ? refs.map((event) => `<button type="button" data-event-id="${escapeHtml(event.id)}"><strong>${escapeHtml(event.label)}</strong><code>${escapeHtml(event.id)}</code></button>`).join("") : `<p>${record.truth_status === "ambient" ? "No scientific claim; atmosphere only." : "No source event is attached."}</p>`}</section>
+    <section class="evidence-links"><h3>CANONICAL CAUSE &amp; EVIDENCE</h3>${record.truth_status === "canonical" ? "<p>Direct fact from the canonical event stream.</p>" : refs.length ? refs.map((event) => `<button type="button" data-event-id="${escapeHtml(event.id)}"><strong>${escapeHtml(event.label)}</strong><code>${escapeHtml(event.id)}</code></button>`).join("") : `<p>${record.truth_status === "ambient" ? "No scientific claim; atmosphere only." : "No source event is attached."}</p>`}${causeCards}</section>
   `;
 }
 
@@ -81,7 +106,10 @@ function renderEventLane(replay: ReplayV2): void {
     button.style.left = `${Math.min(100, event.logical_timestamp_ms / replay.choreography.duration_ms * 100)}%`;
     button.title = `${formatTime(event.logical_timestamp_ms)} — ${event.label}`;
     button.setAttribute("aria-label", button.title);
-    button.addEventListener("click", () => window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: event.id, category: "event" } })));
+    button.addEventListener("click", () => {
+      window.dispatchEvent(new CustomEvent<number>("noctiluca:seek", { detail: event.logical_timestamp_ms }));
+      window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: event.id, category: "event" } }));
+    });
     lane.append(button);
   }
 }
@@ -106,7 +134,11 @@ function installInspector(replay: ReplayV2, scene: ArcologyScene): void {
     inspector.hidden = false;
     body.querySelectorAll<HTMLButtonElement>("[data-event-id]").forEach((button) => button.addEventListener("click", () => {
       const eventId = button.dataset.eventId;
-      if (eventId) window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: eventId, category: "event" } }));
+      const source = replay.canonical.events.find((item) => item.id === eventId);
+      if (source) {
+        window.dispatchEvent(new CustomEvent<number>("noctiluca:seek", { detail: source.logical_timestamp_ms }));
+        window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: source.id, category: "event" } }));
+      }
     }));
     required<HTMLButtonElement>("inspector-close").focus();
   }) as EventListener);
@@ -122,12 +154,19 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
   let playing = false;
   let lastFrame = performance.now();
   const urlParameters = new URLSearchParams(window.location.search);
+  const eventTimes = [...new Set(replay.canonical.events.map((event) => event.logical_timestamp_ms))].sort((a, b) => a - b);
+  const chapterNav = required<HTMLElement>("chapter-nav");
 
   const setCursor = (value: number): void => {
     cursor = Math.max(0, Math.min(value, replay.choreography.duration_ms));
     timeline.value = String(Math.round(cursor));
     output.value = formatTime(cursor);
     scene.setCursor(cursor);
+    chapterNav.querySelectorAll<HTMLButtonElement>("button[data-start]").forEach((button) => {
+      const start = Number(button.dataset.start);
+      const end = Number(button.dataset.end);
+      button.dataset.active = String(cursor >= start && cursor <= end);
+    });
   };
   const setPlaying = (value: boolean): void => {
     playing = value;
@@ -136,8 +175,21 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
   };
   play.addEventListener("click", () => setPlaying(!playing));
   timeline.addEventListener("input", () => { setPlaying(false); setCursor(Number(timeline.value)); });
-  required<HTMLButtonElement>("step-back").addEventListener("click", () => { setPlaying(false); setCursor(cursor - 1000); });
-  required<HTMLButtonElement>("step-forward").addEventListener("click", () => { setPlaying(false); setCursor(cursor + 1000); });
+  required<HTMLButtonElement>("step-back").addEventListener("click", () => { setPlaying(false); setCursor(eventTimes.filter((time) => time < cursor).at(-1) ?? 0); });
+  required<HTMLButtonElement>("step-forward").addEventListener("click", () => { setPlaying(false); setCursor(eventTimes.find((time) => time > cursor) ?? replay.choreography.duration_ms); });
+  window.addEventListener("noctiluca:seek", ((event: CustomEvent<number>) => { setPlaying(false); setCursor(event.detail); }) as EventListener);
+
+  chapterNav.replaceChildren();
+  for (const chapter of replay.choreography.chapters) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = chapter.label;
+    button.dataset.start = String(chapter.logical_timestamp_ms);
+    button.dataset.end = String(chapter.end_ms);
+    button.title = `${formatTime(chapter.logical_timestamp_ms)}–${formatTime(chapter.end_ms)} · ${chapter.derived_from_event_ids.length} canonical events`;
+    button.addEventListener("click", () => { setPlaying(false); setCursor(chapter.logical_timestamp_ms); });
+    chapterNav.append(button);
+  }
 
   const tick = (now: number): void => {
     const delta = Math.min(now - lastFrame, 100);
@@ -171,11 +223,11 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
     } else if (event.key === "[") {
       event.preventDefault();
       setPlaying(false);
-      setCursor(cursor - 1000);
+      required<HTMLButtonElement>("step-back").click();
     } else if (event.key === "]") {
       event.preventDefault();
       setPlaying(false);
-      setCursor(cursor + 1000);
+      required<HTMLButtonElement>("step-forward").click();
     }
   });
 
@@ -201,6 +253,7 @@ function installControls(replay: ReplayV2, scene: ArcologyScene): void {
   applyPreferences();
   const requestedCursor = Number(urlParameters.get("cursor") ?? 0);
   setCursor(Number.isFinite(requestedCursor) ? requestedCursor : 0);
+  if (urlParameters.get("follow") === "on") follow.click();
 }
 
 async function boot(): Promise<void> {
@@ -229,7 +282,9 @@ async function boot(): Promise<void> {
       installControls(replay, scene);
       const selected = new URLSearchParams(window.location.search).get("select");
       if (selected) {
-        const category = selected.startsWith("flow:") ? "flow" : selected.startsWith("action:") ? "action" : selected.startsWith("event:") ? "event" : "entity";
+        const category = replay.canonical.events.some((event) => event.id === selected)
+          ? "event"
+          : selected.startsWith("flow:") ? "flow" : selected.startsWith("action:") ? "action" : "entity";
         window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail: { id: selected, category } }));
       }
       const verification = required<HTMLDivElement>("verification");
@@ -246,6 +301,9 @@ async function boot(): Promise<void> {
     const disclosure = required<HTMLElement>("source-disclosure");
     disclosure.textContent = replay.metadata.claim_boundary ?? replay.metadata.disclosure;
     disclosure.title = [replay.metadata.campaign_id, replay.metadata.campaign_revision, replay.metadata.source_commit].filter(Boolean).join(" · ");
+    const sourceMode = required<HTMLElement>("source-mode");
+    sourceMode.textContent = replay.metadata.empirical ? "VERIFIED REAL CAMPAIGN" : "SYNTHETIC CONTRACT";
+    sourceMode.dataset.source = replay.metadata.empirical ? "campaign" : "synthetic";
     renderSemanticWorld(replay);
     renderEventLane(replay);
   } catch (error) {

@@ -34,6 +34,12 @@ export interface WorldEntity extends EvidenceRecord {
 
 export interface CanonicalEvent extends EvidenceRecord {
   payload?: Record<string, unknown>;
+  sequence: number;
+  year: number;
+  phase: number;
+  actor_ids: string[];
+  artifact_ids: string[];
+  provenance: Record<string, unknown>;
 }
 
 export interface VisualFlow extends EvidenceRecord {
@@ -62,6 +68,11 @@ export interface VisualAction extends EvidenceRecord {
   action_type: ActionType;
   start: WorldPoint;
   end: WorldPoint;
+  path: WorldPoint[];
+}
+
+export interface CinematicChapter extends EvidenceRecord {
+  end_ms: number;
 }
 
 export interface ReplayV2 {
@@ -98,6 +109,12 @@ export interface ReplayV2 {
     flows: VisualFlow[];
     actions: VisualAction[];
     camera_cues: CameraCue[];
+    chapters: CinematicChapter[];
+    time_compression: {
+      kind: string;
+      canonical_event_count: number;
+      duration_ms: number;
+    };
     placements: Array<EvidenceRecord & { entity_id: string; x: number; y: number; asset_key?: string }>;
   };
   ambient: {

@@ -102,6 +102,21 @@ function lerpPoint(start: WorldPoint, end: WorldPoint, progress: number): WorldP
   };
 }
 
+export function pointOnPath(path: WorldPoint[], progress: number): WorldPoint {
+  if (path.length < 2) throw new Error("A cinematic path requires at least two points");
+  const lengths = path.slice(1).map((point, index) => Math.abs(point.x - path[index]!.x) + Math.abs(point.y - path[index]!.y));
+  const total = Math.max(1, lengths.reduce((sum, length) => sum + length, 0));
+  let distance = Phaser.Math.Clamp(progress, 0, 1) * total;
+  for (let index = 0; index < lengths.length; index += 1) {
+    const length = lengths[index]!;
+    if (distance <= length || index === lengths.length - 1) {
+      return lerpPoint(path[index]!, path[index + 1]!, length === 0 ? 1 : distance / length);
+    }
+    distance -= length;
+  }
+  return path.at(-1)!;
+}
+
 export class ArcologyScene extends Phaser.Scene {
   readonly replay: ReplayV2;
   readonly assetPack: AssetPack;
@@ -113,7 +128,7 @@ export class ArcologyScene extends Phaser.Scene {
   private readonly flowVisuals: FlowVisual[] = [];
   private readonly layerVisibility = new Map<FlowType, boolean>();
   private cursorMs = 0;
-  private selectedId?: string;
+  private followTargetId?: string;
   private followEnabled = false;
   private preferences: RuntimePreferences = { reducedMotion: false, highContrast: false, atmosphere: 0.62 };
   private dragging = false;
@@ -196,11 +211,7 @@ export class ArcologyScene extends Phaser.Scene {
   update(_time: number, delta: number): void {
     this.updateKeyboardPan(delta);
     this.renderFrame();
-    if (this.followEnabled && this.selectedId) {
-      const action = this.replay.choreography.actions.find((row) => row.id === this.selectedId);
-      const sprite = this.sprites.get(action?.actor_entity_id ?? this.selectedId);
-      if (sprite) this.cameras.main.centerOn(Math.round(sprite.x), Math.round(sprite.y));
-    }
+    this.updateFollowCamera();
   }
 
   setCursor(milliseconds: number): void {
@@ -214,14 +225,21 @@ export class ArcologyScene extends Phaser.Scene {
   }
 
   select(id: string): void {
-    this.selectedId = id;
     const action = this.replay.choreography.actions.find((row) => row.id === id);
-    const sprite = this.sprites.get(action?.actor_entity_id ?? id);
+    const flow = this.replay.choreography.flows.find((row) => row.id === id);
+    const event = this.replay.canonical.events.find((row) => row.id === id);
+    const researcherIds = new Set(this.replay.canonical.entities.researchers.map((row) => row.id));
+    this.followTargetId = action?.actor_entity_id
+      ?? [flow?.from_entity_id, flow?.to_entity_id].find((candidate) => candidate && researcherIds.has(candidate))
+      ?? event?.actor_ids.find((candidate) => researcherIds.has(candidate))
+      ?? (researcherIds.has(id) ? id : undefined);
+    const sprite = this.sprites.get(this.followTargetId ?? id);
     if (sprite && this.followEnabled) this.cameras.main.centerOn(Math.round(sprite.x), Math.round(sprite.y));
   }
 
   setFollow(enabled: boolean): void {
     this.followEnabled = enabled;
+    if (enabled) this.updateFollowCamera();
   }
 
   setPreferences(preferences: RuntimePreferences): void {
@@ -244,6 +262,19 @@ export class ArcologyScene extends Phaser.Scene {
     this.renderFlows();
     this.renderAmbient();
     this.renderInstitutionStates();
+  }
+
+  private updateFollowCamera(): void {
+    if (!this.followEnabled) return;
+    const cue = this.replay.choreography.camera_cues.find((row) =>
+      this.cursorMs >= row.logical_timestamp_ms
+      && this.cursorMs <= row.logical_timestamp_ms + row.duration_ms
+      && (!this.followTargetId || row.target_entity_id === this.followTargetId));
+    const targetId = this.followTargetId ?? cue?.target_entity_id;
+    const sprite = targetId ? this.sprites.get(targetId) : undefined;
+    if (!sprite) return;
+    if (cue?.zoom) this.cameras.main.setZoom(Math.round(cue.zoom)).setRoundPixels(true);
+    this.cameras.main.centerOn(Math.round(sprite.x), Math.round(sprite.y));
   }
 
   private drawWorldGround(): void {
@@ -359,7 +390,7 @@ export class ArcologyScene extends Phaser.Scene {
       const active = rows.find((action) => this.cursorMs >= action.logical_timestamp_ms && this.cursorMs <= action.logical_timestamp_ms + action.duration_ms);
       const completed = rows.filter((action) => this.cursorMs > action.logical_timestamp_ms + action.duration_ms).at(-1);
       const progress = active ? Phaser.Math.Clamp((this.cursorMs - active.logical_timestamp_ms) / Math.max(1, active.duration_ms), 0, 1) : 1;
-      const position = active ? lerpPoint(active.start, active.end, progress) : completed?.end ?? { x: researcher.x, y: researcher.y };
+      const position = active ? pointOnPath(active.path, progress) : completed?.end ?? { x: researcher.x, y: researcher.y };
       sprite.setPosition(position.x, position.y).setDepth(9 + position.y / 1000);
       if (sprite instanceof Phaser.GameObjects.Sprite) sprite.setFrame(actionFrame(active?.action_type, this.cursorMs, this.preferences.reducedMotion));
       hud.marker.clear();

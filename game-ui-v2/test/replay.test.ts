@@ -28,6 +28,24 @@ describe("replay-view v2 contract", () => {
     expect(replay.canonical.entities.researchers).toHaveLength(12);
     expect(replay.canonical.entities.institutions).toHaveLength(3);
     expect(replay.choreography.flows).toHaveLength(8);
+    expect(replay.choreography.actions).toHaveLength(20);
+    expect(replay.choreography.chapters).toHaveLength(9);
+    expect(replay.choreography.time_compression).toMatchObject({
+      kind: "deterministic-stage-compression",
+      canonical_event_count: 71,
+      duration_ms: 48_000,
+    });
+    expect(replay.choreography.actions.reduce<Record<string, number>>((counts, action) => {
+      counts[action.action_type] = (counts[action.action_type] ?? 0) + 1;
+      return counts;
+    }, {})).toEqual({ move: 12, write: 2, review: 4, receive: 2 });
+    expect(replay.choreography.actions.every((action) => (
+      action.path.length >= 2
+      && action.path.every((point) => Number.isInteger(point.x) && Number.isInteger(point.y))
+    ))).toBe(true);
+    const factTimes = replay.canonical.events.map((event) => event.logical_timestamp_ms);
+    expect(factTimes).toEqual([...factTimes].sort((left, right) => left - right));
+    expect(replay.projection.frames.slice(1).map((frame) => frame.logical_timestamp_ms)).toEqual(factTimes);
     expect(await webCanonicalHash(replay.canonical.raw_events)).toBe(replay.web_stream_hash);
     expect(replay.canonical.entities.researchers.every((entity) => entity.x >= 0 && entity.x <= 480)).toBe(true);
   });
@@ -87,6 +105,13 @@ describe("replay-view v2 contract", () => {
     const raw = await fixture() as { choreography: { actions: Array<{ derived_from_event_ids: string[] }> } };
     raw.choreography.actions[0]!.derived_from_event_ids = [];
     expect(() => parseReplayV2(raw)).toThrow(/requires canonical evidence references/);
+  });
+
+  it("rejects a cinematic route whose integer path misses its declared endpoint", async () => {
+    const raw = await fixture() as { choreography: { actions: Array<{ path?: Array<{ x: number; y: number }> }> } };
+    const action = raw.choreography.actions[0]!;
+    action.path = [{ x: 1, y: 1 }, { x: 2, y: 2 }];
+    expect(() => parseReplayV2(raw)).toThrow(/path endpoints must match start\/end/);
   });
 
   it("rejects an actor action attached to an institution", async () => {
