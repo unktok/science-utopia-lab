@@ -81,7 +81,8 @@ was not changed.
 - Complete Vitest suite: 83 passed.
 - TypeScript typecheck and Vite production build: passed.
 - Artifact authorship/reviewer view, two byte-identical captures:
-  `587064a7f46b8207b50ab7b3ac3bc5ef39010105c15a9132af24e4dd1f3d9485`.
+  `aa90b4af0ade0d5c06a552d1201f0602c2140d50426d67e906694c61c738f0a3`
+  after the integrated Observatory control was added to the command deck.
 - Researcher funding-activity view, two byte-identical captures:
   `00cb4f7ab85131b305880bdd63752ea94d001389150e6d5a2b6e6f47aeebf6c5`.
 

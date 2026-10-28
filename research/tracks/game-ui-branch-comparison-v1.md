@@ -51,8 +51,10 @@ opens its branch-local canonical evidence.
 - TypeScript typecheck and two-entry production build passed;
 - `npm audit --audit-level=high`: zero vulnerabilities;
 - 1440x1000 headless Chromium visual review passed;
-- two cursor-43,000 captures were byte-identical, SHA-256
-  `1998000843e58adb04b3be4d2bcfaf0c42dfaee9e89fd29925d9b03fa117a70a`.
+- integrated-runtime cursor-43,000 and intervention-evidence captures were each
+  byte-identical across separate browser profiles, SHA-256
+  `e9770f5e2642e42be1ea6fe6113c3b332e9df70cec68c74d58fa772f7cc34045`
+  and `8cf89a226221ac617f6e54d5fc24e31ce08eb5dc1d9b1a000a393236e4d5d89b`.
 
 ## Next boundary
 

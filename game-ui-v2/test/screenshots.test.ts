@@ -29,7 +29,7 @@ const captures = {
   "noctiluca-institution-interior-funding-seed521-cursor-36500.png": "b952e4e69f74fe08d1880de6de7bc68209d7e3461cc477031f11e73ab8e52d94",
   "noctiluca-researcher-dossier-inactive-seed521-cursor-47000.png": "253a7a2c85cf97e666fa0ada5f74105d4e71124ec91cdfeec166921863e0e5f2",
   "noctiluca-researcher-dossier-author-seed521-cursor-47000.png": "8f799f72a92d0b460f2583f4d8c4e7c11fc3b3c5200b6ce5a060f0ba2f915824",
-  "noctiluca-evidence-graph-artifact-seed521-cursor-47000.png": "587064a7f46b8207b50ab7b3ac3bc5ef39010105c15a9132af24e4dd1f3d9485",
+  "noctiluca-evidence-graph-artifact-seed521-cursor-47000.png": "aa90b4af0ade0d5c06a552d1201f0602c2140d50426d67e906694c61c738f0a3",
   "noctiluca-evidence-graph-funding-seed521-cursor-47000.png": "00cb4f7ab85131b305880bdd63752ea94d001389150e6d5a2b6e6f47aeebf6c5",
   "noctiluca-optimizer-observatory-verified.png": "3cb506556f1e9e8d7096db867126931e51c9cb528fab34bc417ca579909e29e8",
   "noctiluca-optimizer-observatory-synthetic.png": "aab0d3d7c930a235d6d7bd4680715efbd3c91ad66b6fbabf39d88ee317a58892",
@@ -42,6 +42,23 @@ describe("deterministic visual review artifacts", () => {
       expect(bytes.subarray(1, 4).toString("ascii")).toBe("PNG");
       expect(bytes.readUInt32BE(16)).toBe(1440);
       expect(bytes.readUInt32BE(20)).toBe(1050);
+      expect(createHash("sha256").update(bytes).digest("hex")).toBe(expectedHash);
+    });
+  }
+});
+
+const branchCaptures = {
+  "noctiluca-branch-compare-cursor-43000.png": "e9770f5e2642e42be1ea6fe6113c3b332e9df70cec68c74d58fa772f7cc34045",
+  "noctiluca-branch-compare-intervention-evidence.png": "8cf89a226221ac617f6e54d5fc24e31ce08eb5dc1d9b1a000a393236e4d5d89b",
+};
+
+describe("deterministic intervention comparison artifacts", () => {
+  for (const [name, expectedHash] of Object.entries(branchCaptures)) {
+    it(`${name} is the reviewed 1440x1000 PNG`, async () => {
+      const bytes = await readFile(fileURLToPath(new URL(`../screenshots/${name}`, import.meta.url)));
+      expect(bytes.subarray(1, 4).toString("ascii")).toBe("PNG");
+      expect(bytes.readUInt32BE(16)).toBe(1440);
+      expect(bytes.readUInt32BE(20)).toBe(1000);
       expect(createHash("sha256").update(bytes).digest("hex")).toBe(expectedHash);
     });
   }

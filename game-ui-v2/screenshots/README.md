@@ -28,7 +28,7 @@ citation identity is synthesized.
 
 | Capture | SHA-256 |
 |---|---|
-| `noctiluca-evidence-graph-artifact-seed521-cursor-47000.png` | `587064a7f46b8207b50ab7b3ac3bc5ef39010105c15a9132af24e4dd1f3d9485` |
+| `noctiluca-evidence-graph-artifact-seed521-cursor-47000.png` | `aa90b4af0ade0d5c06a552d1201f0602c2140d50426d67e906694c61c738f0a3` |
 | `noctiluca-evidence-graph-funding-seed521-cursor-47000.png` | `00cb4f7ab85131b305880bdd63752ea94d001389150e6d5a2b6e6f47aeebf6c5` |
 
 Each capture was regenerated from a separate empty Chrome profile and matched
@@ -217,11 +217,11 @@ identical six-event prefix. The inspector capture opens Future B's canonical
 
 | Capture | SHA-256 |
 |---|---|
-| `noctiluca-branch-compare-cursor-43000.png` | `1998000843e58adb04b3be4d2bcfaf0c42dfaee9e89fd29925d9b03fa117a70a` |
-| `noctiluca-branch-compare-intervention-evidence.png` | `7072d271255ae88fb4cf7bb14544badcc1c9f3d56c5cd2a0353a25f293eca6ce` |
+| `noctiluca-branch-compare-cursor-43000.png` | `e9770f5e2642e42be1ea6fe6113c3b332e9df70cec68c74d58fa772f7cc34045` |
+| `noctiluca-branch-compare-intervention-evidence.png` | `8cf89a226221ac617f6e54d5fc24e31ce08eb5dc1d9b1a000a393236e4d5d89b` |
 
-The comparison capture was repeated with the same Chromium build and was
-byte-identical. Visual review confirmed distinct branch framing, the common
+Both integrated-runtime captures were repeated with separate empty Chrome
+profiles and were byte-identical. Visual review confirmed distinct branch framing, the common
 origin and three-hash verification state, synchronized cursor, authoritative
 outcome strips, and canonical intervention drill-down.
 
