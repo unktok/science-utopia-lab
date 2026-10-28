@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-28 11:07 JST
+Updated: 2026-10-28 11:06 JST
 
 ## Overall position
 
@@ -10,9 +10,10 @@ completed all nine runs and a real result-dependent adaptive update. The first
 metric-conditioned study reached eight complete runs, then correctly paused
 after one run exhausted its retry budget on a zero-query retrieval defect. A
 minimal repair and provenance-safe initial-trajectory adoption are now tested
-outside the frozen worktree. Protocol v1.1 will restart the same scientific
-design from one new clean commit. This remains a synthetic research experiment,
-not a validated science-policy result.
+and integrated. Protocol v1.1 has restarted the same scientific design from
+clean source commit `1078279d1ce833afe9ffb6b7c262da15357b76ab`; its first
+canonical physical trajectory is running. This remains a synthetic research
+experiment, not a validated science-policy result.
 
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
@@ -26,7 +27,7 @@ Remote: `unktok/science-utopia-lab`
 | repeated seeded execution | operational | registry, retry, checkpoint, provenance |
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
-| optimization loss | v1 paused; v1.1 source freeze next | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
+| optimization loss | v1 archived; v1.1 running | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
 | held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
@@ -47,18 +48,18 @@ candidates.
 
 | Stage | Current state |
 |---|---|
-| frozen protocol | v1 retained at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f`; v1.1 repair/reuse implementation passes its gate and awaits the final source tag |
+| frozen protocol | v1 is retained at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f`; active v1.1 is tagged `protocol/metric-conditioned-optimization-v1.1` at `1078279d1ce833afe9ffb6b7c262da15357b76ab` |
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
-| completed optimization runs | 8; all development seeds for the first and third candidate systems, and seeds 601 and 617 for the second |
-| currently running | 0; the v1 scheduler terminalized after the second failed attempt |
-| terminal failed runs | 1, design `d61de1ee4e74b`, seed 607; both attempts reached the valid zero-active-author trajectory and hit the same empty-query RAG defect |
-| remaining optimization runs | v1 is not continued in-place; v1.1 will initialize 45 fresh logical runs after the repair/reuse gate is frozen |
+| completed optimization runs | active v1.1: 0 of 45 logical, 0 of 27 expected physical; archived v1 evidence remains 8 complete plus 1 terminal failure and is not pooled |
+| currently running | 1 canonical physical run: participation/review design `d3536002463db`, seed 601, attempt 1 |
+| terminal failed runs | active v1.1: 0; archived v1: 1 empty-query failure, repaired before the new source freeze |
+| remaining optimization runs | 45 logical; with successful audited adoption of the common initial trajectories, 27 physical simulations total |
 | frozen arm winners | 0 of 3 |
 | held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
 
-The long-run scheduler is currently paused at the explicit protocol repair
-gate. When v1.1 starts it remains intentionally single-worker. A measured four-worker
+The long-run v1.1 scheduler started at 11:04 JST and is intentionally
+single-worker. A measured four-worker
 microbenchmark against one local Ollama endpoint improved throughput only
 about 1.016× while increasing request latency, so local concurrency is not
 being treated as a fourfold speedup.
@@ -83,10 +84,11 @@ The next execution steps are:
 
 1. **complete:** freeze and audit the three experimental loss arms, executable
    common evaluator, analysis contract, and seed firewalls;
-2. **in progress:** from the clean commit-pinned worktree, run equal-budget
-   optimization after verifying byte-identical initial suggestions; objective
-   resolution remains a secondary measurement-quality check rather than the
-   scientific target;
+2. **in progress:** run the canonical nine initial physical simulations from
+   the clean commit-pinned worktree, adopt their exact artifacts into the two
+   other LossSpec arms through the audited content-addressed boundary, then
+   continue each arm's two adaptive candidates; objective resolution remains a
+   secondary measurement-quality check rather than the scientific target;
 3. freeze one winner per arm before consuming the new study-held-out split,
    then report a cross-evaluation matrix, rank reversals, trade-offs, gaming,
    and generalization without selecting a universal winner;
