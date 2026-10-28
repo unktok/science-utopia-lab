@@ -422,6 +422,18 @@ class Simulation:
         else:
             self.args = args
 
+        # Prospective knowledge diffusion is a separate, default-off mechanism.
+        # It never mutates citation selection, citation counts, or the RAG corpus.
+        from utopia.communication.native import (
+            NativeCommunicationBroker,
+            native_config_from_namespace,
+        )
+        native_communication_config = native_config_from_namespace(self.args)
+        self.native_communication = (
+            NativeCommunicationBroker(native_communication_config)
+            if native_communication_config is not None else None
+        )
+
         # Create output directory
 
         # Initialize components
@@ -577,7 +589,7 @@ class Simulation:
                   'reviewer_matching', 'review_policy', 'review_score_mode',
                   'acceptance_tiebreak', 'acceptance_mode', 'start_year',
                   'population_resource_profile')
-        return json.loads(canonical_json({
+        contract = {
             'binding': self._portable_binding,
             'simulation': {name: getattr(self, name, None) for name in fields},
             'config': SIMULATION_CONFIG,
@@ -586,7 +598,11 @@ class Simulation:
             'max_tokens_override': getattr(self.llm, 'max_tokens_override', None),
             'enable_thinking': getattr(self.llm, 'enable_thinking', None),
             'python_hash_seed': os.environ.get('PYTHONHASHSEED'),
-        }))
+        }
+        native_communication = getattr(self, 'native_communication', None)
+        if native_communication is not None:
+            contract['native_communication'] = native_communication.config.to_dict()
+        return json.loads(canonical_json(contract))
 
     def portable_safe_point(self):
         stop = getattr(self, 'portable_stop', None)
@@ -4140,6 +4156,10 @@ class Simulation:
         # Phase 5: Update funding
         self._run_phase_5_update_funding(year, submissions_list, year_results)
 
+        # Phase 6: optional prospective knowledge broker. This consumes only
+        # accepted-output metadata and is independent of native citations.
+        self._run_native_communication(year, year_results)
+
         # Collect exploration metrics (if enabled)
         self._collect_exploration_metrics(year)
 
@@ -4158,6 +4178,17 @@ class Simulation:
         self.wandb_logger.log_phase(year, 5, year_results, self)
 
         return year_results
+
+    def _run_native_communication(self, year, year_results):
+        if getattr(self, 'native_communication', None) is None:
+            return ()
+        accepted = tuple(
+            self.paper_tracker.accepted_papers_by_year.get(year, {}).values()
+        )
+        events = self.native_communication.step(year, accepted)
+        year_results['native_communication'] = self.native_communication.summary()
+        year_results['native_communication']['events_emitted_this_year'] = len(events)
+        return events
 
     def run(self):
         """Run the complete simulation"""
@@ -4359,6 +4390,9 @@ class Simulation:
                          if not portable or key != 'checkpoint_callback'},
                 'git_commit': _git(['git', 'rev-parse', 'HEAD']),
             }
+        native_communication = getattr(self, 'native_communication', None)
+        if native_communication is not None:
+            checkpoint_data['native_communication'] = native_communication.to_dict()
 
         # Save exploration experiment trackers if enabled
         if self.is_exploration_experiment:
@@ -4548,6 +4582,19 @@ class Simulation:
 
         # Convert submitted_paper_ids from list back to set
         self.submitted_paper_ids = set(checkpoint_data['submitted_paper_ids'])
+        native_state = checkpoint_data.get('native_communication')
+        if getattr(self, 'native_communication', None) is None:
+            if native_state is not None:
+                raise ValueError(
+                    "Checkpoint enables native communication but current config is off"
+                )
+        else:
+            if native_state is None:
+                raise ValueError("Checkpoint is missing native communication state")
+            from utopia.communication.native import NativeCommunicationBroker
+            self.native_communication = NativeCommunicationBroker(
+                self.native_communication.config, native_state
+            )
         # N0 anchor (older checkpoints lack it: fall back to the current university count)
         self.initial_university_count = checkpoint_data.get('initial_university_count')
         self.initial_industry_count = checkpoint_data.get('initial_industry_count')

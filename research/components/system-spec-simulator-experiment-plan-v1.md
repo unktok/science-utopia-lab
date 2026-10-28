@@ -34,15 +34,16 @@ contracts:
 | evaluation | `legacy.evaluation.peer-review-v1` | CLI parameters |
 | publication | `legacy.publication.conference-v1` | CLI parameters |
 | communication | `legacy.communication.citation-v1` | simulator built-in |
+| communication | exact native accepted-output source + broadcast/digest + receiver overlay | native prospective broker |
 | funding | `legacy.funding.fixed-budget-v1` | CLI parameters |
 
-The communication row does not mean that communication mechanisms are
-generally supported. It records only the exact built-in citation mechanism in
-the current simulator. Digest brokers, knowledge-diffusion implementations,
-and other communication candidates remain unsupported. Governance/government,
-collaboration, employment, education, and custom mechanisms are likewise not
-silently removed from a candidate; compilation fails with their mechanism id,
-family, and implementation.
+Communication is still not generally supported. In addition to the built-in
+citation mechanism, compiler revision `1.1.0` recognizes one exact prospective
+overlay: accepted-output source, production broadcast or digest broker, and a
+single researcher receiver. Other communication candidates remain
+unsupported. Governance/government, collaboration, employment, education,
+and custom mechanisms are likewise not silently removed from a candidate;
+compilation fails with their mechanism id, family, and implementation.
 
 Compiler v1 also requires the exact legacy connections, edge latencies,
 schedules, implementation versions, parameter names, and runtime metadata.
@@ -71,7 +72,7 @@ contract.
 
 - the complete canonical source `SystemSpec` and its fingerprint;
 - compiler id `scienceutopia.system-spec-to-simulator-plan` and revision
-  `1.0.0`;
+  `1.1.0`;
 - clean compiler source commit and caller-supplied source locator;
 - campaign id and seed role;
 - the complete, unique seed list;
@@ -112,7 +113,8 @@ seeds and temporary non-created paths. It proves:
 - deterministic sealed compilation and strict JSON round-trip;
 - six exact production mappings, including the narrow citation built-in;
 - different model, seed list, or fidelity produces a different plan identity;
-- government and new communication implementations are rejected explicitly;
+- government and communication implementations outside the exact native
+  overlay are rejected explicitly;
 - unknown parameters and topology/latency mutations are rejected;
 - source fingerprint, payload seal, argv hash, and exact mapping tampering are
   detected;

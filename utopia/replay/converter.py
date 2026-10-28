@@ -112,6 +112,32 @@ def convert_artifacts(bundle: ArtifactBundle) -> list[EventEnvelope]:
     balances = _read_jsonl(bundle.resource_balances)
     specs: list[dict[str, Any]] = []
 
+    native_communication = checkpoint.get("native_communication")
+    if native_communication is not None:
+        from utopia.communication.native import (
+            NativeCommunicationBroker,
+            NativeCommunicationConfig,
+        )
+        if not isinstance(native_communication, Mapping):
+            raise ValueError("native communication checkpoint must be an object")
+        config = native_communication.get("config")
+        if not isinstance(config, Mapping):
+            raise ValueError("native communication checkpoint config is missing")
+        broker = NativeCommunicationBroker(
+            NativeCommunicationConfig(**config), native_communication
+        )
+        for event in broker.events:
+            specs.append(_spec(
+                year=event.year,
+                phase=event.phase,
+                event_type=event.event_type,
+                stable_order=(event.sequence,),
+                actor_ids=event.actor_ids,
+                artifact_ids=event.artifact_ids,
+                payload=event.payload,
+                provenance=event.provenance,
+            ))
+
     first_balances: dict[str, Mapping[str, Any]] = {}
     for row in sorted(
         balances, key=lambda item: (int(item["year"]), str(item["researcher_id"]))

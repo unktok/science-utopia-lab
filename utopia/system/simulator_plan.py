@@ -18,13 +18,16 @@ from utopia.arguments import parse_arguments
 
 from .legacy import LEGACY_ADAPTER, LegacyCompilationError, compile_legacy_system
 from .model import MechanismFamily, MechanismSpec, SystemSpec
+from .production.communication import KNOWLEDGE_BROADCAST, KNOWLEDGE_DIGEST
 from .validation import validate_system_spec
 
 
 PLAN_SCHEMA = "scienceutopia.system-spec-simulator-experiment-plan.v1"
 COMPILER_ID = "scienceutopia.system-spec-to-simulator-plan"
-COMPILER_REVISION = "1.0.0"
+COMPILER_REVISION = "1.1.0"
 SEAL_ALGORITHM = "sha256"
+NATIVE_COMMUNICATION_SOURCE = "native.communication.accepted-output-source-v1"
+NATIVE_COMMUNICATION_RECEIVER = "native.communication.researcher-receiver-v1"
 
 _SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,159}$")
 _COMMIT = re.compile(r"^[0-9a-f]{40}$")
@@ -259,6 +262,31 @@ _IMPLEMENTATIONS: Mapping[str, _ImplementationContract] = {
             ("budget_slots_fraction", "--funding_budget_slots_frac", "scalar"),
         ),
     ),
+    NATIVE_COMMUNICATION_SOURCE: _ImplementationContract(
+        MechanismFamily.COMMUNICATION,
+        (),
+        "simulator-built-in",
+    ),
+    KNOWLEDGE_BROADCAST: _ImplementationContract(
+        MechanismFamily.COMMUNICATION,
+        (
+            ("mode", "--communication-broker-mode", "scalar"),
+            ("digest_size", "--communication-digest-size", "scalar"),
+            ("delivery_latency", "--communication-latency", "scalar"),
+        ),
+    ),
+    KNOWLEDGE_DIGEST: _ImplementationContract(
+        MechanismFamily.COMMUNICATION,
+        (
+            ("mode", "--communication-broker-mode", "scalar"),
+            ("digest_size", "--communication-digest-size", "scalar"),
+            ("delivery_latency", "--communication-latency", "scalar"),
+        ),
+    ),
+    NATIVE_COMMUNICATION_RECEIVER: _ImplementationContract(
+        MechanismFamily.RESEARCH,
+        (("receiver_role", "--communication-receiver-role", "scalar"),),
+    ),
 }
 
 _RUNTIME_PARAMETERS = {
@@ -297,13 +325,16 @@ def compile_system_spec_experiment_plan(
             f"SystemSpec is not bound to supported adapter {LEGACY_ADAPTER!r}"
         )
     try:
-        legacy = compile_legacy_system(spec, years=request.fidelity.num_years)
-    except LegacyCompilationError as error:
+        from utopia.communication.native import split_native_communication_system_spec
+        base_spec, native_config = split_native_communication_system_spec(spec)
+        legacy = compile_legacy_system(base_spec, years=request.fidelity.num_years)
+    except (LegacyCompilationError, ValueError) as error:
         raise SimulatorPlanCompilationError(str(error)) from error
-    _validate_mapping_arguments(mappings, legacy.cli_args)
+    cli_args = legacy.cli_args + _native_communication_args(native_config)
+    _validate_mapping_arguments(mappings, cli_args)
 
     runs = tuple(
-        _compile_run(spec, request, legacy.cli_args, seed) for seed in request.seeds
+        _compile_run(spec, request, cli_args, seed) for seed in request.seeds
     )
     provisional = SealedSimulatorExperimentPlan(
         source_system_spec=spec.to_dict(),
@@ -386,12 +417,15 @@ def _compile_system_spec_experiment_plan_unvalidated(
     if spec.metadata.get("compiler") != LEGACY_ADAPTER:
         raise SimulatorPlanCompilationError("source SystemSpec adapter is unsupported")
     try:
-        legacy = compile_legacy_system(spec, years=request.fidelity.num_years)
-    except LegacyCompilationError as error:
+        from utopia.communication.native import split_native_communication_system_spec
+        base_spec, native_config = split_native_communication_system_spec(spec)
+        legacy = compile_legacy_system(base_spec, years=request.fidelity.num_years)
+    except (LegacyCompilationError, ValueError) as error:
         raise SimulatorPlanCompilationError(str(error)) from error
-    _validate_mapping_arguments(mappings, legacy.cli_args)
+    cli_args = legacy.cli_args + _native_communication_args(native_config)
+    _validate_mapping_arguments(mappings, cli_args)
     runs = tuple(
-        _compile_run(spec, request, legacy.cli_args, seed) for seed in request.seeds
+        _compile_run(spec, request, cli_args, seed) for seed in request.seeds
     )
     provisional = SealedSimulatorExperimentPlan(
         spec.to_dict(), spec.fingerprint, request, mappings, runs, ""
@@ -495,6 +529,18 @@ def _validate_mapping_arguments(
                 raise SimulatorPlanCompilationError(
                     f"{mapping.mechanism_id}.{binding.parameter} value differs from {flag}"
                 )
+
+
+def _native_communication_args(config: Any) -> tuple[str, ...]:
+    if config is None:
+        return ()
+    return (
+        "--communication-broker-mode", config.mode,
+        "--communication-digest-size", str(config.digest_size),
+        "--communication-latency", str(config.latency),
+        "--communication-receiver-role", config.receiver_role,
+        "--communication-system-fingerprint", config.system_fingerprint,
+    )
 
 
 def _compile_run(

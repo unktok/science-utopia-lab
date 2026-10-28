@@ -280,6 +280,35 @@ def parse_arguments(argv=None, *, create_dirs=True):
              'Off = neutral condition.'
     )
     parser.add_argument(
+        '--communication-broker-mode',
+        choices=['off', 'broadcast', 'digest'],
+        default='off',
+        help='Prospective native knowledge broker. This is independent of citation '
+             'generation; off preserves the existing simulator path.'
+    )
+    parser.add_argument(
+        '--communication-digest-size',
+        type=int,
+        default=2,
+        help='Minimum buffered accepted outputs before the digest broker emits.'
+    )
+    parser.add_argument(
+        '--communication-latency',
+        type=int,
+        default=0,
+        help='Whole simulation years between broker emission and receiver delivery.'
+    )
+    parser.add_argument(
+        '--communication-receiver-role',
+        default='research-community',
+        help='Typed receiver role recorded in native communication receipts.'
+    )
+    parser.add_argument(
+        '--communication-system-fingerprint',
+        default=None,
+        help='Complete source SystemSpec SHA-256 required when the broker is enabled.'
+    )
+    parser.add_argument(
         '--annual_influx_rate',
         type=float,
         default=0.0,
@@ -454,6 +483,18 @@ def parse_arguments(argv=None, *, create_dirs=True):
         raise ValueError('--reviewer_capacity must be >= 1')
     if args.reviews_per_paper < 1:
         raise ValueError('--reviews_per_paper must be >= 1')
+    if args.communication_digest_size < 1:
+        raise ValueError('--communication-digest-size must be positive')
+    if args.communication_latency < 0:
+        raise ValueError('--communication-latency must be nonnegative')
+    if args.communication_broker_mode != 'off':
+        fingerprint = args.communication_system_fingerprint or ''
+        if not re.fullmatch(r'[0-9a-f]{64}', fingerprint):
+            raise ValueError(
+                '--communication-system-fingerprint must be lowercase SHA-256 '
+                'when the broker is enabled')
+        if not args.communication_receiver_role:
+            raise ValueError('--communication-receiver-role must be non-empty')
 
     from utopia.funding.accounting import resolve_cost_policy, cost_policy_tag
     from utopia.config import SIMULATION_CONFIG
