@@ -36,7 +36,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | executable foundation | typed model, validator, generic registry/runner, canonical provenance, legacy compiler |
 | structural system optimization | executable vertical slice | finite typed grammar changes node presence, mechanism family/implementation, edges, and latency through the existing ask/tell boundary; production adapters and checkpointed graph state remain |
 | differentiable optimization | not started | surrogate/relaxation research remains |
-| game UI | v3 vertical slice integrated | six-frame role sprites, fifteen evidence-linked actor actions, traceable packet trains, dense cyberpunk districts, deterministic browser review; intervention/branching remain |
+| game UI | branch comparison vertical slice implemented | v3 world plus two canonical futures from one hash-verified replay origin, synchronized transport, intervention evidence, authoritative projection summaries, deterministic browser review; real campaign adapter remains |
 
 ## Metric-conditioned study execution snapshot
 
@@ -92,7 +92,7 @@ The next execution steps are:
    and generalization without selecting a universal winner;
 4. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
    legacy topology;
-5. add campaign/replay comparison to the game UI;
+5. connect the hash-verified branch comparison UI to real commit-pinned campaign/replay manifests;
 6. keep every model-backed run commit-pinned and separate from active
    development worktrees.
 

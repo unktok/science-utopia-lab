@@ -1,0 +1,2310 @@
+{
+  "ambient": {
+    "actors": [
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [],
+        "duration_ms": 48000,
+        "id": "ambient:courier-drone-1",
+        "kind": "courier_drone",
+        "label": "decorative traffic — not a simulated agent",
+        "logical_timestamp_ms": 0,
+        "path": [
+          [
+            40,
+            54
+          ],
+          [
+            222,
+            36
+          ],
+          [
+            448,
+            72
+          ]
+        ],
+        "truth_status": "ambient"
+      }
+    ],
+    "effects": [
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [],
+        "duration_ms": 48000,
+        "id": "ambient:rain-field",
+        "kind": "rain",
+        "label": "atmosphere only",
+        "logical_timestamp_ms": 0,
+        "seed": 261001257,
+        "truth_status": "ambient"
+      }
+    ]
+  },
+  "canonical": {
+    "entities": {
+      "artifacts": [
+        {
+          "author_id": "researcher:aya",
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          ],
+          "duration_ms": 0,
+          "id": "paper:arcology-signals",
+          "kind": "paper",
+          "label": "Signals Across the Arcology",
+          "logical_timestamp_ms": 0,
+          "truth_status": "canonical"
+        }
+      ],
+      "institutions": [
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+          ],
+          "duration_ms": 0,
+          "id": "institution:civic-funding-bureau:ab1a2175",
+          "kind": "institution",
+          "label": "Civic Funding Bureau",
+          "logical_timestamp_ms": 0,
+          "truth_status": "derived"
+        },
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+          ],
+          "duration_ms": 0,
+          "id": "institution:noctiluca-knowledge-lab:244054c6",
+          "kind": "institution",
+          "label": "Noctiluca Knowledge Lab",
+          "logical_timestamp_ms": 0,
+          "truth_status": "derived"
+        },
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+          ],
+          "duration_ms": 0,
+          "id": "institution:peer-review-exchange:e23ed7a0",
+          "kind": "institution",
+          "label": "Peer Review Exchange",
+          "logical_timestamp_ms": 0,
+          "truth_status": "derived"
+        }
+      ],
+      "researchers": [
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+          ],
+          "duration_ms": 0,
+          "id": "researcher:aya",
+          "institution_id": "institution:noctiluca-knowledge-lab:244054c6",
+          "kind": "researcher",
+          "label": "Dr. Aya Kuroda",
+          "logical_timestamp_ms": 0,
+          "truth_status": "canonical"
+        },
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+          ],
+          "duration_ms": 0,
+          "id": "researcher:mino",
+          "institution_id": "institution:peer-review-exchange:e23ed7a0",
+          "kind": "researcher",
+          "label": "Dr. Mino Vale",
+          "logical_timestamp_ms": 0,
+          "truth_status": "canonical"
+        },
+        {
+          "causal_parent_id": null,
+          "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+          "derived_from_event_ids": [
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+          ],
+          "duration_ms": 0,
+          "id": "researcher:sol",
+          "institution_id": "institution:civic-funding-bureau:ab1a2175",
+          "kind": "researcher",
+          "label": "Dr. Sol Okafor",
+          "logical_timestamp_ms": 0,
+          "truth_status": "canonical"
+        }
+      ]
+    },
+    "events": [
+      {
+        "actor_ids": [
+          "researcher:aya"
+        ],
+        "artifact_ids": [],
+        "event_id": "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+        "event_type": "agent.registered",
+        "payload": {
+          "agent_type": "academic_researcher",
+          "display_name": "Dr. Aya Kuroda",
+          "initial_active": true,
+          "initial_balance": 100,
+          "institution": "Noctiluca Knowledge Lab"
+        },
+        "phase": 0,
+        "provenance": {
+          "empirical": false,
+          "record": 0,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 0,
+        "year": 0
+      },
+      {
+        "actor_ids": [
+          "researcher:mino"
+        ],
+        "artifact_ids": [],
+        "event_id": "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+        "event_type": "agent.registered",
+        "payload": {
+          "agent_type": "review_researcher",
+          "display_name": "Dr. Mino Vale",
+          "initial_active": true,
+          "initial_balance": 100,
+          "institution": "Peer Review Exchange"
+        },
+        "phase": 0,
+        "provenance": {
+          "empirical": false,
+          "record": 1,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 1,
+        "year": 0
+      },
+      {
+        "actor_ids": [
+          "researcher:sol"
+        ],
+        "artifact_ids": [],
+        "event_id": "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+        "event_type": "agent.registered",
+        "payload": {
+          "agent_type": "policy_researcher",
+          "display_name": "Dr. Sol Okafor",
+          "initial_active": true,
+          "initial_balance": 100,
+          "institution": "Civic Funding Bureau"
+        },
+        "phase": 0,
+        "provenance": {
+          "empirical": false,
+          "record": 2,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 2,
+        "year": 0
+      },
+      {
+        "actor_ids": [
+          "researcher:aya",
+          "researcher:mino"
+        ],
+        "artifact_ids": [],
+        "event_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+        "event_type": "research.data_shared",
+        "payload": {
+          "dataset_id": "dataset:noctiluca-17",
+          "summary": "A synthetic dataset handoff for renderer validation."
+        },
+        "phase": 1,
+        "provenance": {
+          "empirical": false,
+          "record": 3,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 3,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:aya"
+        ],
+        "artifact_ids": [
+          "paper:arcology-signals"
+        ],
+        "event_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+        "event_type": "paper.submitted",
+        "payload": {
+          "conference": "Peer Review Exchange",
+          "submission_round": 0,
+          "title": "Signals Across the Arcology",
+          "topics": [
+            "science-of-science",
+            "institution-design"
+          ]
+        },
+        "phase": 2,
+        "provenance": {
+          "empirical": false,
+          "record": 4,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 4,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:mino"
+        ],
+        "artifact_ids": [
+          "paper:arcology-signals"
+        ],
+        "event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+        "event_type": "review.completed",
+        "payload": {
+          "conference": "Peer Review Exchange",
+          "justification": "Synthetic review used to validate replay choreography.",
+          "score": 4,
+          "submission_round": 0
+        },
+        "phase": 3,
+        "provenance": {
+          "empirical": false,
+          "record": 5,
+          "source": "synthetic.vertical-slice-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 5,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:sol"
+        ],
+        "artifact_ids": [],
+        "event_id": "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+        "event_type": "policy.changed",
+        "payload": {
+          "change": "Open synthesis and signed response window enabled",
+          "policy_id": "policy:open-synthesis",
+          "target_institution": "Peer Review Exchange"
+        },
+        "phase": 4,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 6,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 6,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:aya"
+        ],
+        "artifact_ids": [
+          "paper:arcology-signals"
+        ],
+        "event_id": "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+        "event_type": "paper.decided",
+        "payload": {
+          "conference": "Peer Review Exchange",
+          "decision": "accept",
+          "score": 4,
+          "submission_round": 0
+        },
+        "phase": 5,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 7,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 7,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:aya"
+        ],
+        "artifact_ids": [],
+        "event_id": "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+        "event_type": "resource.changed",
+        "payload": {
+          "active_after": true,
+          "balance_after": 120,
+          "balance_before": 100,
+          "category": "grant_income",
+          "delta": 20,
+          "requested_delta": 20,
+          "source_institution": "Civic Funding Bureau",
+          "uncollected_cost": 0
+        },
+        "phase": 5,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 8,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 8,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:sol",
+          "researcher:aya"
+        ],
+        "artifact_ids": [
+          "paper:arcology-signals"
+        ],
+        "event_id": "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+        "event_type": "citation.recorded",
+        "payload": {
+          "citation_count_delta": 1
+        },
+        "phase": 5,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 9,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 9,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:aya"
+        ],
+        "artifact_ids": [],
+        "event_id": "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+        "event_type": "resource.balance_reported",
+        "payload": {
+          "closing_active": true,
+          "closing_balance": 120,
+          "opening_active": true,
+          "opening_balance": 100,
+          "residual": 0
+        },
+        "phase": 6,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 10,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 10,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:mino"
+        ],
+        "artifact_ids": [],
+        "event_id": "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+        "event_type": "resource.balance_reported",
+        "payload": {
+          "closing_active": true,
+          "closing_balance": 100,
+          "opening_active": true,
+          "opening_balance": 100,
+          "residual": 0
+        },
+        "phase": 6,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 11,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 11,
+        "year": 1
+      },
+      {
+        "actor_ids": [
+          "researcher:sol"
+        ],
+        "artifact_ids": [],
+        "event_id": "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55",
+        "event_type": "resource.balance_reported",
+        "payload": {
+          "closing_active": true,
+          "closing_balance": 100,
+          "opening_active": true,
+          "opening_balance": 100,
+          "residual": 0
+        },
+        "phase": 6,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 12,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 12,
+        "year": 1
+      },
+      {
+        "actor_ids": [],
+        "artifact_ids": [],
+        "event_id": "bb80d796392dbdd9d8738f3a424095ccf011363d4c18eaae3629f6bdf2639e9d",
+        "event_type": "year.completed",
+        "payload": {
+          "year": 1
+        },
+        "phase": 7,
+        "provenance": {
+          "branch": "open-synthesis",
+          "empirical": false,
+          "record": 13,
+          "source": "synthetic.branch-comparison-contract-fixture"
+        },
+        "schema_version": "scienceutopia.event.v1",
+        "sequence": 13,
+        "year": 1
+      }
+    ],
+    "facts": [
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 0,
+        "event_id": "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+        "logical_timestamp_ms": 0,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+        ],
+        "duration_ms": 0,
+        "event_id": "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+        "logical_timestamp_ms": 3692,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+        ],
+        "duration_ms": 0,
+        "event_id": "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+        "logical_timestamp_ms": 7385,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+        ],
+        "duration_ms": 0,
+        "event_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+        "logical_timestamp_ms": 11077,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 0,
+        "event_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+        "logical_timestamp_ms": 14769,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 0,
+        "event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+        "logical_timestamp_ms": 18462,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+        ],
+        "duration_ms": 0,
+        "event_id": "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+        "logical_timestamp_ms": 22154,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730"
+        ],
+        "duration_ms": 0,
+        "event_id": "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+        "logical_timestamp_ms": 25846,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+        ],
+        "duration_ms": 0,
+        "event_id": "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+        "logical_timestamp_ms": 29538,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c"
+        ],
+        "duration_ms": 0,
+        "event_id": "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+        "logical_timestamp_ms": 33231,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35"
+        ],
+        "duration_ms": 0,
+        "event_id": "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+        "logical_timestamp_ms": 36923,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec"
+        ],
+        "duration_ms": 0,
+        "event_id": "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+        "logical_timestamp_ms": 40615,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55"
+        ],
+        "duration_ms": 0,
+        "event_id": "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55",
+        "logical_timestamp_ms": 44308,
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "bb80d796392dbdd9d8738f3a424095ccf011363d4c18eaae3629f6bdf2639e9d"
+        ],
+        "duration_ms": 0,
+        "event_id": "bb80d796392dbdd9d8738f3a424095ccf011363d4c18eaae3629f6bdf2639e9d",
+        "logical_timestamp_ms": 48000,
+        "truth_status": "canonical"
+      }
+    ]
+  },
+  "choreography": {
+    "actions": [
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 1600,
+        "end": {
+          "x": 112,
+          "y": 130
+        },
+        "id": "action:aya-to-instrument",
+        "kind": "actor_action",
+        "label": "Aya crosses the laboratory floor",
+        "logical_timestamp_ms": 800,
+        "start": {
+          "x": 144,
+          "y": 164
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "experiment",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-to-instrument",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+        ],
+        "duration_ms": 6600,
+        "end": {
+          "x": 112,
+          "y": 130
+        },
+        "id": "action:aya-experiment",
+        "kind": "actor_action",
+        "label": "Aya operates the sample instrument",
+        "logical_timestamp_ms": 2400,
+        "start": {
+          "x": 112,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-experiment",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 1000,
+        "end": {
+          "x": 142,
+          "y": 130
+        },
+        "id": "action:aya-to-terminal",
+        "kind": "actor_action",
+        "label": "Aya moves to the writing terminal",
+        "logical_timestamp_ms": 9000,
+        "start": {
+          "x": 112,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "write",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-to-terminal",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 4769,
+        "end": {
+          "x": 142,
+          "y": 130
+        },
+        "id": "action:aya-write",
+        "kind": "actor_action",
+        "label": "Aya prepares the submitted paper",
+        "logical_timestamp_ms": 10000,
+        "start": {
+          "x": 142,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:mino",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 1500,
+        "end": {
+          "x": 331,
+          "y": 116
+        },
+        "id": "action:mino-to-review-cell",
+        "kind": "actor_action",
+        "label": "Mino enters an anonymous review cell",
+        "logical_timestamp_ms": 10500,
+        "start": {
+          "x": 350,
+          "y": 154
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "review",
+        "actor_entity_id": "researcher:mino",
+        "causal_parent_id": "action:mino-to-review-cell",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 6462,
+        "end": {
+          "x": 331,
+          "y": 116
+        },
+        "id": "action:mino-review",
+        "kind": "actor_action",
+        "label": "Mino reviews the submitted paper",
+        "logical_timestamp_ms": 12000,
+        "start": {
+          "x": 331,
+          "y": 116
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-write",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 1000,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-to-revision-bench",
+        "kind": "actor_action",
+        "label": "Aya returns to the revision bench",
+        "logical_timestamp_ms": 17000,
+        "start": {
+          "x": 142,
+          "y": 130
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "revise",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-to-revision-bench",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730"
+        ],
+        "duration_ms": 4154,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-revise",
+        "kind": "actor_action",
+        "label": "Aya works through the completed review",
+        "logical_timestamp_ms": 18000,
+        "start": {
+          "x": 116,
+          "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "move",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+        ],
+        "duration_ms": 1500,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-to-ledger",
+        "kind": "actor_action",
+        "label": "Sol enters the allocation ledger",
+        "logical_timestamp_ms": 23000,
+        "start": {
+          "x": 266,
+          "y": 242
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "allocate",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": "action:sol-to-ledger",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+        ],
+        "duration_ms": 5500,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-allocate",
+        "kind": "actor_action",
+        "label": "Sol authorizes the grant allocation",
+        "logical_timestamp_ms": 24500,
+        "start": {
+          "x": 248,
+          "y": 214
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "receive",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-revise",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+        ],
+        "duration_ms": 4200,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-receive-funding",
+        "kind": "actor_action",
+        "label": "Aya receives a capacity increase",
+        "logical_timestamp_ms": 26000,
+        "start": {
+          "x": 116,
+          "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "cite",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": "action:sol-allocate",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c"
+        ],
+        "duration_ms": 4200,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-cite",
+        "kind": "actor_action",
+        "label": "Sol records a citation link",
+        "logical_timestamp_ms": 32000,
+        "start": {
+          "x": 248,
+          "y": 214
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "read",
+        "actor_entity_id": "researcher:aya",
+        "causal_parent_id": "action:aya-receive-funding",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c"
+        ],
+        "duration_ms": 4000,
+        "end": {
+          "x": 116,
+          "y": 132
+        },
+        "id": "action:aya-read-citation",
+        "kind": "actor_action",
+        "label": "Aya inspects the new citation",
+        "logical_timestamp_ms": 34000,
+        "start": {
+          "x": 116,
+          "y": 132
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "policy",
+        "actor_entity_id": "researcher:sol",
+        "causal_parent_id": "action:sol-cite",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+        ],
+        "duration_ms": 6200,
+        "end": {
+          "x": 248,
+          "y": 214
+        },
+        "id": "action:sol-policy",
+        "kind": "actor_action",
+        "label": "Open synthesis and signed response window enabled",
+        "logical_timestamp_ms": 40000,
+        "start": {
+          "x": 248,
+          "y": 214
+        },
+        "truth_status": "derived"
+      },
+      {
+        "action_type": "policy",
+        "actor_entity_id": "researcher:mino",
+        "causal_parent_id": "action:mino-review",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+        ],
+        "duration_ms": 4200,
+        "end": {
+          "x": 331,
+          "y": 116
+        },
+        "id": "action:mino-policy",
+        "kind": "actor_action",
+        "label": "Open synthesis and signed response window enabled",
+        "logical_timestamp_ms": 42000,
+        "start": {
+          "x": 331,
+          "y": 116
+        },
+        "truth_status": "derived"
+      }
+    ],
+    "camera_cues": [
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 3000,
+        "id": "camera:establish",
+        "kind": "camera",
+        "logical_timestamp_ms": 0,
+        "target_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "truth_status": "derived",
+        "zoom": 1.0
+      },
+      {
+        "causal_parent_id": "flow:2:paper",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 8000,
+        "id": "camera:exchange",
+        "kind": "camera",
+        "logical_timestamp_ms": 16000,
+        "target_entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "truth_status": "derived",
+        "zoom": 1.2
+      },
+      {
+        "causal_parent_id": "flow:5:citation",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+        ],
+        "duration_ms": 10000,
+        "id": "camera:system",
+        "kind": "camera",
+        "logical_timestamp_ms": 38000,
+        "target_entity_id": "institution:civic-funding-bureau:ab1a2175",
+        "truth_status": "derived",
+        "zoom": 0.9
+      }
+    ],
+    "coordinate_space": {
+      "height": 270,
+      "unit": "logical_pixel",
+      "width": 480
+    },
+    "duration_ms": 48000,
+    "flows": [
+      {
+        "artifact_id": null,
+        "causal_parent_id": null,
+        "color": "#20e3ff",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "data",
+        "from_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "id": "flow:1:data",
+        "kind": "flow",
+        "label": "DATA // shared",
+        "logical_timestamp_ms": 4000,
+        "to_entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": "paper:arcology-signals",
+        "causal_parent_id": "flow:1:data",
+        "color": "#ffcf5a",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "paper",
+        "from_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "id": "flow:2:paper",
+        "kind": "flow",
+        "label": "PAPER // submitted",
+        "logical_timestamp_ms": 11000,
+        "to_entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": "paper:arcology-signals",
+        "causal_parent_id": "flow:2:paper",
+        "color": "#ff4fd8",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "review",
+        "from_entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "id": "flow:3:review",
+        "kind": "flow",
+        "label": "REVIEW // returned",
+        "logical_timestamp_ms": 18000,
+        "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": null,
+        "causal_parent_id": "flow:3:review",
+        "color": "#80ff72",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "funding",
+        "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
+        "id": "flow:4:funding",
+        "kind": "flow",
+        "label": "FUNDING // +20",
+        "logical_timestamp_ms": 26000,
+        "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": "paper:arcology-signals",
+        "causal_parent_id": "flow:4:funding",
+        "color": "#a98cff",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "citation",
+        "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
+        "id": "flow:5:citation",
+        "kind": "flow",
+        "label": "CITATION // +1",
+        "logical_timestamp_ms": 34000,
+        "to_entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "truth_status": "derived"
+      },
+      {
+        "artifact_id": null,
+        "causal_parent_id": "flow:5:citation",
+        "color": "#ff7657",
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+        ],
+        "duration_ms": 4200,
+        "flow_type": "policy",
+        "from_entity_id": "institution:civic-funding-bureau:ab1a2175",
+        "id": "flow:6:policy",
+        "kind": "flow",
+        "label": "POLICY // open synthesis",
+        "logical_timestamp_ms": 42000,
+        "to_entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "truth_status": "derived"
+      }
+    ],
+    "placements": [
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 0,
+        "entity_id": "institution:noctiluca-knowledge-lab:244054c6",
+        "id": "placement:institution:noctiluca-knowledge-lab:244054c6",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 122,
+        "y": 126
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+        ],
+        "duration_ms": 0,
+        "entity_id": "institution:peer-review-exchange:e23ed7a0",
+        "id": "placement:institution:peer-review-exchange:e23ed7a0",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 334,
+        "y": 112
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+        ],
+        "duration_ms": 0,
+        "entity_id": "institution:civic-funding-bureau:ab1a2175",
+        "id": "placement:institution:civic-funding-bureau:ab1a2175",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 252,
+        "y": 222
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 0,
+        "entity_id": "researcher:aya",
+        "id": "placement:researcher:aya",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 144,
+        "y": 164
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+        ],
+        "duration_ms": 0,
+        "entity_id": "researcher:mino",
+        "id": "placement:researcher:mino",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 350,
+        "y": 154
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+        ],
+        "duration_ms": 0,
+        "entity_id": "researcher:sol",
+        "id": "placement:researcher:sol",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 266,
+        "y": 242
+      },
+      {
+        "causal_parent_id": null,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 0,
+        "entity_id": "paper:arcology-signals",
+        "id": "placement:paper:arcology-signals",
+        "kind": "placement",
+        "logical_timestamp_ms": 0,
+        "truth_status": "derived",
+        "x": 238,
+        "y": 132
+      }
+    ]
+  },
+  "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+  "event_schema_version": "scienceutopia.event.v1",
+  "metadata": {
+    "branch": "open-synthesis",
+    "disclosure": "Hand-authored branch fixture for renderer validation. The branch outcomes are canonical fixture records, not simulated causal estimates or evidence for a science policy.",
+    "empirical": false,
+    "run_id": "synthetic-intervention-fork-v1",
+    "source_kind": "synthetic_branch_contract_fixture",
+    "title": "NOCTILUCA // open-synthesis",
+    "truth_legend": {
+      "ambient": "Presentation only; not a simulated scientific fact.",
+      "canonical": "Direct source fact in the canonical event stream.",
+      "derived": "Deterministic projection with source event IDs."
+    }
+  },
+  "projection": {
+    "frames": [
+      {
+        "causal_parent_id": null,
+        "cursor": 0,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [],
+        "duration_ms": 0,
+        "event_id": null,
+        "logical_timestamp_ms": 0,
+        "state": {
+          "agents": {},
+          "applied_event_ids": [],
+          "artifacts": {},
+          "completed_years": [],
+          "year": 0
+        },
+        "truth_status": "canonical"
+      },
+      {
+        "causal_parent_id": null,
+        "cursor": 1,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+        ],
+        "duration_ms": 0,
+        "event_id": "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+        "logical_timestamp_ms": 0,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810"
+          ],
+          "artifacts": {},
+          "completed_years": [],
+          "year": 0
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+        "cursor": 2,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+        ],
+        "duration_ms": 0,
+        "event_id": "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+        "logical_timestamp_ms": 3692,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8"
+          ],
+          "artifacts": {},
+          "completed_years": [],
+          "year": 0
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+        "cursor": 3,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+        ],
+        "duration_ms": 0,
+        "event_id": "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+        "logical_timestamp_ms": 7385,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144"
+          ],
+          "artifacts": {},
+          "completed_years": [],
+          "year": 0
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+        "cursor": 4,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+        ],
+        "duration_ms": 0,
+        "event_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+        "logical_timestamp_ms": 11077,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076"
+          ],
+          "artifacts": {},
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+        "cursor": 5,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+        ],
+        "duration_ms": 0,
+        "event_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+        "logical_timestamp_ms": 14769,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                }
+              ],
+              "reviews": [],
+              "status": "submitted",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+        "cursor": 6,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+        ],
+        "duration_ms": 0,
+        "event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+        "logical_timestamp_ms": 18462,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "submitted",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+        "cursor": 7,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+        ],
+        "duration_ms": 0,
+        "event_id": "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+        "logical_timestamp_ms": 22154,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "submitted",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+        "cursor": 8,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730"
+        ],
+        "duration_ms": 0,
+        "event_id": "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+        "logical_timestamp_ms": 25846,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 100,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+        "cursor": 9,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+        ],
+        "duration_ms": 0,
+        "event_id": "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+        "logical_timestamp_ms": 29538,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+            "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+        "cursor": 10,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c"
+        ],
+        "duration_ms": 0,
+        "event_id": "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+        "logical_timestamp_ms": 33231,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+            "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+            "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+        "cursor": 11,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+          "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35"
+        ],
+        "duration_ms": 0,
+        "event_id": "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+        "logical_timestamp_ms": 36923,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+            "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+            "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+            "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+        "cursor": 12,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+          "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+          "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec"
+        ],
+        "duration_ms": 0,
+        "event_id": "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+        "logical_timestamp_ms": 40615,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+            "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+            "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+            "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+            "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+        "cursor": 13,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+          "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+          "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+          "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55"
+        ],
+        "duration_ms": 0,
+        "event_id": "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55",
+        "logical_timestamp_ms": 44308,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+            "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+            "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+            "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+            "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+            "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [],
+          "year": 1
+        },
+        "truth_status": "derived"
+      },
+      {
+        "causal_parent_id": "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55",
+        "cursor": 14,
+        "derivation_version": "scienceutopia.game-choreography.v2.0.0",
+        "derived_from_event_ids": [
+          "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+          "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+          "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+          "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+          "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+          "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+          "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+          "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+          "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+          "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+          "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+          "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+          "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55",
+          "bb80d796392dbdd9d8738f3a424095ccf011363d4c18eaae3629f6bdf2639e9d"
+        ],
+        "duration_ms": 0,
+        "event_id": "bb80d796392dbdd9d8738f3a424095ccf011363d4c18eaae3629f6bdf2639e9d",
+        "logical_timestamp_ms": 48000,
+        "state": {
+          "agents": {
+            "researcher:aya": {
+              "active": true,
+              "agent_type": "academic_researcher",
+              "balance": 120,
+              "institution": "Noctiluca Knowledge Lab"
+            },
+            "researcher:mino": {
+              "active": true,
+              "agent_type": "review_researcher",
+              "balance": 100,
+              "institution": "Peer Review Exchange"
+            },
+            "researcher:sol": {
+              "active": true,
+              "agent_type": "policy_researcher",
+              "balance": 100,
+              "institution": "Civic Funding Bureau"
+            }
+          },
+          "applied_event_ids": [
+            "88d3a42d2cc0dcc7b6a12c664853084593226bc55e50971d3381c204238f9810",
+            "e0b275c20eeba46b08ff2f60d31f347b05cf2709c5affdbc71ce708a5ae5c5f8",
+            "e79098fe2cfa4cf2413c9d147420a5154851028f81c49eb578ce972640e6b144",
+            "511e6afe06050eaffdc242582afb1b69706224e83f92754594bf6ee2c85ca076",
+            "eaa0802165ab1380e2ce145185b2636a7063b8e5e19d73a4c33605bc39a8aae8",
+            "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+            "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+            "92ab15c7d7571da1c55679f41f448012dbe8d9ae094b99ef5b3bf3f8f9d5b730",
+            "936c5731b6ae4a7c784a96a98eb38ab29131325331db0ad606575c5b2ef8e408",
+            "f537bd4b568d690161c9213fda797fb1e490d570eede19d92318f38d5d63512c",
+            "ef58183991a556d7600d1bdd4961253058808065b37fdbbf3e78adfca7b36c35",
+            "6fbea63379ef877415735849eb84333d7d9959316f7e8dbd7eeb90b1dafd87ec",
+            "f0c560bdc1dcb2f40f439cc42371a857bbbd2c62d0b687267f0f1879378c5f55",
+            "bb80d796392dbdd9d8738f3a424095ccf011363d4c18eaae3629f6bdf2639e9d"
+          ],
+          "artifacts": {
+            "paper:arcology-signals": {
+              "author_id": "researcher:aya",
+              "conference": "Peer Review Exchange",
+              "history": [
+                {
+                  "event": "submitted",
+                  "year": 1
+                },
+                {
+                  "decision": "accept",
+                  "event": "decided",
+                  "year": 1
+                }
+              ],
+              "reviews": [
+                {
+                  "justification": "Synthetic review used to validate replay choreography.",
+                  "reviewer_id": "researcher:mino",
+                  "score": 4,
+                  "year": 1
+                }
+              ],
+              "status": "accept",
+              "title": "Signals Across the Arcology",
+              "topics": [
+                "science-of-science",
+                "institution-design"
+              ]
+            }
+          },
+          "completed_years": [
+            1
+          ],
+          "year": 1
+        },
+        "truth_status": "derived"
+      }
+    ]
+  },
+  "schema_version": "scienceutopia.replay-view.v2",
+  "stream_hash": "92d04b6066a3c0b38e2be829c150f66a85c5c0c769400bfb79059301df640c19",
+  "stream_hash_algorithm": "scienceutopia.python-canonical-json-sha256.v1"
+}

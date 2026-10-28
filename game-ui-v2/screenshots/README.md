@@ -1,5 +1,22 @@
 # Deterministic visual QA
 
+## Intervention branch comparison
+
+The side-by-side captures use a 1440x1000 viewport and synchronized cursor
+43,000. Both 480x270 worlds are bound to separate canonical streams with an
+identical six-event prefix. The inspector capture opens Future B's canonical
+`policy.changed` intervention payload.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-branch-compare-cursor-43000.png` | `1998000843e58adb04b3be4d2bcfaf0c42dfaee9e89fd29925d9b03fa117a70a` |
+| `noctiluca-branch-compare-intervention-evidence.png` | `7072d271255ae88fb4cf7bb14544badcc1c9f3d56c5cd2a0353a25f293eca6ce` |
+
+The comparison capture was repeated with the same Chromium build and was
+byte-identical. Visual review confirmed distinct branch framing, the common
+origin and three-hash verification state, synchronized cursor, authoritative
+outcome strips, and canonical intervention drill-down.
+
 ## v3 living-arcology captures
 
 The v3 captures use a 1440x1050 viewport and reduced motion. The world canvas

@@ -15,6 +15,13 @@ from .vertical_slice import (
     vertical_slice_metadata,
     vertical_slice_presentation,
 )
+from .branch_comparison import (
+    BRANCH_MANIFEST_SCHEMA,
+    SHARED_PREFIX_COUNT,
+    branch_events,
+    branch_manifest,
+    branch_payload,
+)
 
 __all__ = [
     "ArtifactBundle",
@@ -34,6 +41,11 @@ __all__ = [
     "vertical_slice_events",
     "vertical_slice_metadata",
     "vertical_slice_presentation",
+    "BRANCH_MANIFEST_SCHEMA",
+    "SHARED_PREFIX_COUNT",
+    "branch_events",
+    "branch_manifest",
+    "branch_payload",
 ]
 
 

@@ -1,0 +1,31 @@
+{
+  "branches": [
+    {
+      "color": "#39f5c8",
+      "id": "open-synthesis",
+      "intervention_event_id": "1fd54d726c6f4800b3349be8f7821a94ac74bd41b33d9e213288ccfff750244d",
+      "label": "OPEN SYNTHESIS",
+      "replay_url": "/data/branch-open-synthesis.replay.json",
+      "stream_hash": "92d04b6066a3c0b38e2be829c150f66a85c5c0c769400bfb79059301df640c19"
+    },
+    {
+      "color": "#f653d8",
+      "id": "sealed-panel",
+      "intervention_event_id": "68d102dbebaa3230147b28a6d540abf6ba27796d4c3a48144ee6c913c34740fa",
+      "label": "SEALED PANEL",
+      "replay_url": "/data/branch-sealed-panel.replay.json",
+      "stream_hash": "b40bea9b1fcff496833b94faac702a1985796fe4e734d0faba7d12d17826da23"
+    }
+  ],
+  "comparison_id": "synthetic-intervention-fork-v1",
+  "disclosure": "Two hand-authored renderer-contract futures share one canonical prefix. Differences demonstrate evidence navigation, not policy effects, optimization results, or causal inference.",
+  "empirical": false,
+  "schema_version": "scienceutopia.replay-branch-manifest.v1",
+  "shared_origin": {
+    "event_count": 6,
+    "last_event_id": "7c9d4391b34e81466c4ca02e42db46a28655809b1cd1b92c472f3ad4517f52a3",
+    "split_after_event_type": "review.completed",
+    "stream_hash": "729b4866fd71a040b0f0d19d57c759caefd76ad932a805df9b1b92a94bcbda09"
+  },
+  "source_kind": "synthetic_branch_contract_fixture"
+}

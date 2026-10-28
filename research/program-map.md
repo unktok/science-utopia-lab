@@ -50,7 +50,7 @@ distinguish two already chosen systems is only supporting measurement QA.
 | Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | compare stronger methods only after the multi-loss baseline closes |
 | Structural optimization | executable vertical slice | finite typed grammar, 39 valid toy systems, canonical structural fingerprints, legal node/family/edge/latency mutation, and result-dependent ask/execute/loss/tell | connect real mechanism adapters and checkpointable state without changing the frozen v1 experiment |
 | Differentiable systems | not started | conceptual direction only | differentiable surrogate/relaxation after stable black-box targets and measurements |
-| Game and replay | v3 vertical slice integrated | replay v2, 14 fixed-grid assets, role-specific action animation, six traceable flow grammars, evidence drill-down, deterministic screenshots | add intervention branching and side-by-side campaign comparison |
+| Game and replay | branch comparison vertical slice implemented | replay v2, fixed-grid living arcology, two canonical futures from one hash-verified origin, synchronized evidence drill-down, deterministic screenshots | adapt real commit-pinned campaign manifests without making unsupported causal claims |
 | Paper and scientific graphics | working draft | seven-page NeurIPS-style PDF and initial figures | add program diagram and metric-conditioned result figures after data exists |
 | Compute | measured | one local Ollama endpoint at four workers gave only about 1.016x throughput | use independent endpoints/GPUs for material parallel speedup; retain seed isolation |
 

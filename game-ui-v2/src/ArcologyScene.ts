@@ -33,9 +33,11 @@ interface ActorHud {
   label: Phaser.GameObjects.Text;
 }
 
-const dispatchSelection = (detail: SelectionDetail): void => {
-  window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail }));
-};
+export interface ArcologySceneOptions {
+  key?: string;
+  onSelect?: (detail: SelectionDetail) => void;
+  onReady?: () => void;
+}
 
 function truthAlpha(status: TruthStatus): number {
   if (status === "canonical") return 0.96;
@@ -110,11 +112,15 @@ export class ArcologyScene extends Phaser.Scene {
   private keyMap?: Record<string, Phaser.Input.Keyboard.Key>;
   private rainGraphics?: Phaser.GameObjects.Graphics;
   private stateGraphics?: Phaser.GameObjects.Graphics;
+  private readonly onSelect: (detail: SelectionDetail) => void;
+  private readonly onReady: () => void;
 
-  constructor(replay: ReplayV2, assetPack: AssetPack) {
-    super({ key: "ArcologyScene" });
+  constructor(replay: ReplayV2, assetPack: AssetPack, options: ArcologySceneOptions = {}) {
+    super({ key: options.key ?? "ArcologyScene" });
     this.replay = replay;
     this.assetPack = assetPack;
+    this.onSelect = options.onSelect ?? ((detail) => window.dispatchEvent(new CustomEvent<SelectionDetail>("noctiluca:select", { detail })));
+    this.onReady = options.onReady ?? (() => window.dispatchEvent(new CustomEvent("noctiluca:renderer-ready")));
     for (const flowType of Object.keys(FLOW_COLORS) as FlowType[]) this.layerVisibility.set(flowType, true);
     for (const action of replay.choreography.actions) {
       const rows = this.actionsByActor.get(action.actor_entity_id) ?? [];
@@ -160,7 +166,7 @@ export class ArcologyScene extends Phaser.Scene {
     );
     this.stateGraphics.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
       const event = this.stateMarkerAt(pointer.worldX, pointer.worldY);
-      if (event) dispatchSelection({ id: event.id, category: "event" });
+      if (event) this.onSelect({ id: event.id, category: "event" });
     });
 
     this.minimap = this.cameras.add(368, 8, 104, 62, false, "minimap");
@@ -172,7 +178,7 @@ export class ArcologyScene extends Phaser.Scene {
     this.installKeyboardControls();
     this.cameras.main.centerOn(WORLD_WIDTH / 2, WORLD_HEIGHT / 2);
     this.renderFrame();
-    window.dispatchEvent(new CustomEvent("noctiluca:renderer-ready"));
+    this.onReady();
   }
 
   update(_time: number, delta: number): void {
@@ -301,7 +307,7 @@ export class ArcologyScene extends Phaser.Scene {
     sprite.setInteractive({ useHandCursor: true });
     sprite.on("pointerdown", () => {
       const action = this.currentActions.get(entity.id);
-      dispatchSelection({ id: action?.id ?? entity.id, category: action ? "action" : "entity" });
+      this.onSelect({ id: action?.id ?? entity.id, category: action ? "action" : "entity" });
     });
     sprite.setData("truth_status", entity.truth_status);
     this.sprites.set(entity.id, sprite);
@@ -319,7 +325,7 @@ export class ArcologyScene extends Phaser.Scene {
       }).setOrigin(0.5, 1).setDepth(12).setVisible(false).setInteractive({ useHandCursor: true });
       label.on("pointerdown", () => {
         const action = this.currentActions.get(researcher.id);
-        if (action) dispatchSelection({ id: action.id, category: "action" });
+        if (action) this.onSelect({ id: action.id, category: "action" });
       });
       this.actorHuds.set(researcher.id, { marker, label });
     }
@@ -371,7 +377,7 @@ export class ArcologyScene extends Phaser.Scene {
       new Phaser.Geom.Rectangle(Math.min(from.x, to.x) - 16, Math.min(from.y, to.y) - 96, Math.abs(to.x - from.x) + 32 || 48, Math.abs(to.y - from.y) + 120),
       Phaser.Geom.Rectangle.Contains,
     );
-    graphics.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
+    graphics.on("pointerdown", () => this.onSelect({ id: flow.id, category: "flow" }));
     const packetKey = `flow_${flow.flow_type}`;
     const packetAsset = this.assetPack.images.find((image) => image.key === packetKey);
     const packets: Phaser.GameObjects.Image[] = [];
@@ -379,7 +385,7 @@ export class ArcologyScene extends Phaser.Scene {
       for (let i = 0; i < FLOW_STYLE[flow.flow_type].echoes; i += 1) {
         const packet = this.add.image(from.x, from.y, packetKey).setDepth(13 - i * 0.1).setDisplaySize(packetAsset.width, packetAsset.height).setInteractive({ useHandCursor: true });
         packet.setAlpha(i === 0 ? 1 : 0.54 - i * 0.12);
-        packet.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
+        packet.on("pointerdown", () => this.onSelect({ id: flow.id, category: "flow" }));
         packets.push(packet);
       }
     } else {
@@ -392,7 +398,7 @@ export class ArcologyScene extends Phaser.Scene {
       backgroundColor: "#070814",
       padding: { x: 2, y: 1 },
     }).setOrigin(0.5, 1).setDepth(14).setVisible(false).setInteractive({ useHandCursor: true });
-    label.on("pointerdown", () => dispatchSelection({ id: flow.id, category: "flow" }));
+    label.on("pointerdown", () => this.onSelect({ id: flow.id, category: "flow" }));
     this.flowVisuals.push({ model: flow, graphics, packets, curve, label });
   }
 
@@ -545,9 +551,9 @@ export class ArcologyScene extends Phaser.Scene {
   }
 }
 
-export const arcologyConfig = (scene: ArcologyScene): Phaser.Types.Core.GameConfig => ({
+export const arcologyConfig = (scene: ArcologyScene, parent = "phaser-root"): Phaser.Types.Core.GameConfig => ({
   type: Phaser.AUTO,
-  parent: "phaser-root",
+  parent,
   width: 480,
   height: 270,
   backgroundColor: "#070814",

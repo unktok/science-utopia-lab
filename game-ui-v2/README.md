@@ -24,6 +24,11 @@ nearest-neighbour settings. The earlier generated PNGs remain beside them as
 See [asset provenance](public/assets/noctiluca/PROVENANCE.md) and the project
 [art bible](../game-ui/ART_BIBLE.md).
 
+The intervention-fork page at `/compare.html` adds two synchronized instances
+of the same renderer. It loads a versioned branch manifest, recomputes the two
+complete stream hashes and their common-prefix hash, and verifies each declared
+`policy.changed` intervention before opening the comparison.
+
 ## Run
 
 Requires a current Node.js and npm.
@@ -41,6 +46,15 @@ npm test
 npm run typecheck
 npm run build
 npm audit
+```
+
+Open `http://localhost:4173/compare.html?cursor=43000` for the side-by-side
+branch slice. Add `&inspect=1` to open Future B's intervention evidence.
+Regenerate its three deterministic JSON documents with:
+
+```sh
+~/.local/bin/python3 ../scripts/export_game_branch_comparison.py \
+  --output-directory public/data
 ```
 
 The asset tests enforce the production manifest, sprite-sheet dimensions,
@@ -72,6 +86,8 @@ logical canvas remains 480x270 and only integer display scaling is used.
 - [derived action evidence](screenshots/noctiluca-v3-action-evidence-cursor-14000.png)
 - [funding and allocation](screenshots/noctiluca-v3-funding-cursor-28000.png)
 - [policy transmission](screenshots/noctiluca-v3-policy-cursor-43000.png)
+- [intervention branch comparison](screenshots/noctiluca-branch-compare-cursor-43000.png)
+- [branch intervention evidence](screenshots/noctiluca-branch-compare-intervention-evidence.png)
 
 ## Evidence contract
 
@@ -80,6 +96,13 @@ The browser loads:
 - `public/data/vertical-slice.replay.json`: replay-view v2 data;
 - `public/assets/noctiluca/asset-pack.json`: stable asset identities and
   logical display sizes.
+
+The comparison page additionally loads
+`public/data/intervention-branches.manifest.json` and its two declared replay
+documents. The manifest fixes the shared-origin event count/hash/terminal event,
+each complete branch hash, and each canonical intervention event ID. A mismatch
+blocks the verified state. Final paper status and balance labels are read from
+authoritative `projection.frames`, never inferred in TypeScript.
 
 Replay data separates four layers:
 
