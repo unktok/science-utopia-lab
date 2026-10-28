@@ -5,6 +5,8 @@ registry of every quantity the simulator can measure.
 
 - `losses/`: executable and versioned optimization objectives
 - `catalog/`: literature-traceable future candidates; not executable losses
+- `landscape/`: construct audits and objective graphs for future campaign design;
+  report-only and never an executable registry
 - `design-spaces/`: parameters and mechanisms that may change
 - `constitutions/`: optional normative commitments for campaigns that explicitly
   choose them

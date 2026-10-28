@@ -1,0 +1,418 @@
+{
+  "schema": "scienceutopia.metric-objective-landscape.v1",
+  "id": "metric-objective-landscape-v1",
+  "version": "1.0.0",
+  "status": "prospective-report-only",
+  "scope": "Construct audit of the three frozen metric-conditioned probes and a plural landscape of prospective objectives for a separately preregistered future campaign.",
+  "source_snapshot": {
+    "science_utopia_commit": "b9680dea603854a6153543e80b34c848d4f2b09d",
+    "ai_scientist_survey_commit": "02b437b854e73f1bd8a274399e56167ee05a4400",
+    "survey_topic_map": "research/TOPIC-MAP.md sections 9, 12, and 13"
+  },
+  "governance": {
+    "active_campaign_effect": "none",
+    "universal_composite": "none",
+    "state_policy_position": "National science policy is one legitimate decision context with public authority, mission, capability, distribution, and externality questions; it is not the universal definition of good science. Epistemic validity, portfolio stewardship, public mission, rights, and operational efficiency remain distinct judgments.",
+    "promotion_rule": "separate-preregistration-new-evidence-split-and-construct-validation"
+  },
+  "current_loss_audit": [
+    {
+      "id": "participation-review-tradeoff-probe",
+      "source_path": "research/objectives/losses/participation-review-tradeoff-probe-v1.json",
+      "source_sha256": "7120b365374a115aebffcf4706cd5694b90ac474a6878d54085cb2bc47431530",
+      "disposition": "contrastive-probe-not-policy-recommendation",
+      "construct_claim": "A deliberately narrow scalarization of simulated workforce continuity and visible review workload, useful for observing which institutional design that value choice induces.",
+      "measurement_model": {
+        "observables": ["active-researcher-fraction", "review-burden-per-active-researcher"],
+        "within_run": "1 - active-researcher-fraction + 0.05 * review-burden-per-active-researcher",
+        "across_seeds": "mean plus 0.25 population standard deviation over three development seeds",
+        "direction": "minimize",
+        "assumptions": ["active status is an adequate proxy for meaningful continued participation", "logged review actions represent burden on a commensurate scale", "the 0.05 exchange rate is an explicit experimental value choice, not an empirical welfare weight"],
+        "valid_interpretation": "A conditioning signal for participation continuity versus logged review activity, not researcher welfare, fairness, scientific progress, or public value."
+      },
+      "goodhart_and_gaming": ["retain nominally active agents without access, agency, or useful work", "block or delay exit while degrading experience", "shift evaluation labor into unlogged channels", "reduce review coverage or submission opportunity to lower visible burden", "exploit the fixed exchange rate so a concentrated harm is compensated by an aggregate gain"],
+      "distribution": {
+        "observed": "System-wide active fraction and mean logged review actions per active researcher-step.",
+        "blind_spots": ["career-stage and institution-specific attrition", "formal eligibility versus practical reachability", "voice, agenda, allocation, and appeal authority", "burden concentration and outside routes", "actor engagement versus proposal or issue processing"],
+        "required_reporting": "Report subgroup retention, typed routes, authority, burden quantiles, object processing, and unknown destinations separately before any policy interpretation."
+      },
+      "time_horizon": {
+        "observed": "Aggregate continuity and actions within the simulated run.",
+        "blind_spots": ["delayed attrition", "career capability accumulation", "recovery after overload", "long-run entry and succession", "whether retained participation later produces epistemic or public outcomes"],
+        "required_reporting": "Add trajectories, transition hazards, lagged outcomes, and reversible versus persistent effects rather than one terminal average."
+      },
+      "state_policy_relation": {
+        "illuminates": "A bounded workforce-sustainability and administrative-capacity question relevant to public research systems.",
+        "insufficient_for": ["national epistemic capability", "equitable access and authority", "mission achievement", "strategic autonomy", "public benefit and externalities"],
+        "authority_question": "Which public, scientific, worker, and affected-party institutions may choose the exchange rate between continuity and burden?"
+      },
+      "missing_constructs": ["typed participation", "meaningful authority", "review quality and coverage", "epistemic progress", "burden distribution", "public mission"],
+      "citation_refs": ["survey-participation-routing", "survey-value-constitution", "project-objective-catalog"]
+    },
+    {
+      "id": "topic-diversity-probe",
+      "source_path": "research/objectives/losses/topic-diversity-probe-v1.json",
+      "source_sha256": "d1f8986310d7852214ef2aa14529a24a4dbeab208b783e9f5fa560c6e6aeabaf",
+      "disposition": "contrastive-probe-not-policy-recommendation",
+      "construct_claim": "An adversarial proxy stress test that rewards variety and balance over a fixed topic ontology to expose the institution induced by entropy maximization.",
+      "measurement_model": {
+        "observables": ["topic-entropy"],
+        "within_run": "negative Shannon entropy of fixed topic labels",
+        "across_seeds": "mean plus 0.25 population standard deviation over three development seeds",
+        "direction": "minimize negative entropy",
+        "assumptions": ["the fixed topic ontology captures relevant categories", "topic-label frequency is meaningful even without intellectual distance", "variety and balance are experimentally useful despite omitted coherence and validity"],
+        "valid_interpretation": "A fixed-ontology variety-and-balance signal only; not scientific diversity, novelty, truth, usefulness, coherence, or option value.",
+        "variety_balance_only": true
+      },
+      "goodhart_and_gaming": ["split or relabel topics without changing inquiry", "produce shallow work in underrepresented labels", "suppress legitimate specialization", "fragment coherent programs", "cycle topics without independent methods, lineages, or world access"],
+      "distribution": {
+        "observed": "Balance of aggregate counts across fixed topic labels.",
+        "blind_spots": ["intellectual disparity between topics", "method, model-lineage, institution, geography, and standpoint diversity", "who controls the ontology", "branch survival and resource concentration", "within-topic exclusion"],
+        "required_reporting": "Decompose variety, balance, disparity, lineage independence, resource allocation, and ontology sensitivity."
+      },
+      "time_horizon": {
+        "observed": "Topic-label mixture accumulated during the run.",
+        "blind_spots": ["premature branch extinction", "dormant branch reopening", "validation latency", "cumulative lock-in", "whether diversity survives resource and evaluation feedback"],
+        "required_reporting": "Report branch birth, survival, extinction, reopening, and later discriminating evidence across multiple horizons."
+      },
+      "state_policy_relation": {
+        "illuminates": "A narrow portfolio-breadth and concentration signal relevant to mission portfolios and strategic optionality.",
+        "insufficient_for": ["mission relevance", "sovereign or public capability", "epistemic distance", "scientific validity", "neglected public needs", "international versus national benefit"],
+        "authority_question": "Who defines the topic ontology and decides whether breadth, depth, missions, or protected minority branches receive public resources?"
+      },
+      "missing_constructs": ["disparity", "lineage independence", "world access", "branch option value", "coherence", "verification", "public need"],
+      "citation_refs": ["stirling-diversity", "survey-possibility-space", "survey-value-constitution", "project-objective-catalog"]
+    },
+    {
+      "id": "review-burden-probe",
+      "source_path": "research/objectives/losses/review-burden-probe-v1.json",
+      "source_sha256": "dba135e3ea35e3b59cd57eb3f0ae82b03d83077f13c1c1253aa33e55655c1679",
+      "disposition": "contrastive-probe-not-policy-recommendation",
+      "construct_claim": "A deliberately gameable proxy for visible process workload, used to test whether minimizing administrative actions selects systems that suppress evaluation.",
+      "measurement_model": {
+        "observables": ["review-burden-per-active-researcher"],
+        "within_run": "logged review actions divided by active researcher-steps",
+        "across_seeds": "mean plus 0.25 population standard deviation over three development seeds",
+        "direction": "minimize",
+        "assumptions": ["review action counts are comparable units of burden", "the active-researcher denominator is not strategically manipulated", "unlogged work and rework are negligible for the narrow probe"],
+        "valid_interpretation": "Visible review-action intensity per active researcher-step, not review quality, total labor, wellbeing, or system efficiency."
+      },
+      "goodhart_and_gaming": ["suppress submissions or reviews", "desk-reject or auto-accept without adequate scrutiny", "shift labor to chairs, authors, tools, or unlogged channels", "inflate the active denominator", "reduce corrections now while creating delayed downstream failure"],
+      "distribution": {
+        "observed": "A system-wide mean count normalized by active researcher-steps.",
+        "blind_spots": ["reviewer load quantiles", "career-stage and expertise concentration", "unpaid and displaced labor", "applicant waiting and rework", "coverage, competence, and minority-issue retention"],
+        "required_reporting": "Report the full workload distribution together with coverage, queue, decision, correction, and displaced-labor measures."
+      },
+      "time_horizon": {
+        "observed": "Contemporaneous logged actions.",
+        "blind_spots": ["review latency", "author rework", "post-publication correction cost", "downstream harm from missed errors", "capacity depletion and learning"],
+        "required_reporting": "Account for current and delayed process costs, quality failures, recovery, and capacity renewal."
+      },
+      "state_policy_relation": {
+        "illuminates": "A narrow administrative transaction-cost question relevant to public-sector efficiency.",
+        "insufficient_for": ["rigor", "legitimacy", "fair opportunity", "workforce wellbeing", "epistemic correction", "total social cost"],
+        "authority_question": "Whose labor and downstream risks count when a funder or state seeks administrative efficiency?"
+      },
+      "missing_constructs": ["coverage", "review quality", "burden incidence", "latency", "correction cost", "epistemic consequences"],
+      "citation_refs": ["survey-value-constitution", "survey-participation-routing", "project-objective-catalog"]
+    }
+  ],
+  "metric_cards": [
+    {
+      "id": "verification-weighted-epistemic-progress",
+      "label": "Verification-weighted epistemic progress",
+      "construct": "Decision-relevant uncertainty reduction attributable to claims whose evidence and verification state remain traceable.",
+      "observable_model": "Predeclared claim-to-evidence state transitions weighted by discriminating power, independent verification, calibration, and downstream decision change; negative and null results may contribute.",
+      "direction": "maximize",
+      "aggregation": "Keep claim classes and uncertainty bands separate; report cumulative and marginal progress with seed uncertainty, never raw publication count.",
+      "campaign_role": "optimization-candidate",
+      "goodhart_risks": ["choose easy-to-verify trivial claims", "over-fragment claims", "manufacture apparent uncertainty reduction with weak priors", "select only favorable verification routes"],
+      "distribution": {"observed": "Progress by claim class, field, lineage, and beneficiary decision.", "blind_spots": ["unknown unknowns", "unrepresented questions", "unequal world access"], "required_reporting": "Stratify progress, failure, abstention, and unasked-question coverage."},
+      "time_horizon": {"observed": "Claim state transitions and later decision updates.", "blind_spots": ["very long validation latency", "future reinterpretation", "option value of unresolved observations"], "required_reporting": "Use multiple horizons and retain unresolved traces."},
+      "state_policy_relation": {"illuminates": "Whether public resources produce reliable knowledge usable for declared missions or public decisions.", "insufficient_for": ["rights", "distribution of benefit", "strategic capability", "inquiry freedom"], "authority_question": "Who defines decision relevance and acceptable evidence for each public commitment?"},
+      "required_simulator_fields": ["versioned claim identity", "evidence lineage", "verification outcomes", "uncertainty before and after", "decision linkage"],
+      "implementation": {"status": "not-implementable-yet", "missing": ["validated semantic claim model", "calibrated evidence-strength model", "decision linkage"], "next_validation": "Prospectively record synthetic ground-truth episodes, then test construct and adversarial validity before search exposure."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["fortunato-science-of-science", "survey-value-constitution", "project-semantic-events"]
+    },
+    {
+      "id": "replication-correction-capacity",
+      "label": "Independent replication and correction capacity",
+      "construct": "The system's ability to challenge results independently, propagate corrections, and recover decisions without suppressing honest error.",
+      "observable_model": "Orthogonal verification attempts, lineage independence, correction detection and propagation, rollback coverage, and recovery time per eligible claim.",
+      "direction": "pareto",
+      "aggregation": "Report attempt opportunity, success and informative failure, latency, lineage independence, and propagation coverage separately.",
+      "campaign_role": "vector-component",
+      "goodhart_risks": ["replicate only easy or famous work", "count non-independent reruns", "maximize correction events by degrading initial quality", "hide unresolved propagation"],
+      "distribution": {"observed": "Replication and correction access by claim, field, institution, and affected decision.", "blind_spots": ["silent abandoned claims", "communities without verification resources", "private downstream use"], "required_reporting": "Include opportunity denominators, independence, censoring, and who bears correction cost."},
+      "time_horizon": {"observed": "Detection, propagation, rollback, and recovery clocks.", "blind_spots": ["generational knowledge loss", "slow harms", "irreversible deployment"], "required_reporting": "Separate immediate correction from long-run memory and irreversibility."},
+      "state_policy_relation": {"illuminates": "Public assurance, resilience, and error-recovery capacity.", "insufficient_for": ["novel discovery", "mission selection", "benefit distribution"], "authority_question": "Which claims require public verification reserves, and who may trigger correction or rollback?"},
+      "required_simulator_fields": ["verification and replication events", "producer and verifier lineage", "correction links", "dependent decisions", "recovery timestamps"],
+      "implementation": {"status": "report-only-ready", "missing": ["empirical calibration against real replication and correction episodes"], "next_validation": "Run shadow diagnostics on prospectively instrumented synthetic cases including gaming counterexamples."},
+      "promotion_boundary": "remain-report-only",
+      "citation_refs": ["nasem-reproducibility", "survey-value-constitution", "project-semantic-events"]
+    },
+    {
+      "id": "possibility-portfolio",
+      "label": "Scientific possibility portfolio",
+      "construct": "Capacity to generate, preserve, reopen, and materially test distinct scientific possibilities before proposal selection collapses them.",
+      "observable_model": "Separate reserves for unresolved traces, representation, world access, independent lineage, dormant branches, and orthogonal constraint; no single possibility score.",
+      "direction": "pareto",
+      "aggregation": "Report reserve-specific coverage, cost, expiry, reopening, and downstream adaptive value.",
+      "campaign_role": "vector-component",
+      "goodhart_risks": ["count superficial ideas", "preserve branches indefinitely", "fake lineage diversity with copied agents", "reward novelty detached from material answerability"],
+      "distribution": {"observed": "Whose problems, representations, facilities, lineages, and branches remain possible.", "blind_spots": ["unarticulated salience", "communities outside the simulator", "incommensurable knowledge practices"], "required_reporting": "Expose ontology and access assumptions and separate social neglectedness from textual spread."},
+      "time_horizon": {"observed": "Branch survival, expiry, reopening, and later evidence.", "blind_spots": ["options whose payoff lies beyond the campaign", "path dependence before observation"], "required_reporting": "Use protected long horizons and retrospective reopening audits."},
+      "state_policy_relation": {"illuminates": "Strategic optionality, long-horizon national capability, and mission revision capacity.", "insufficient_for": ["current mission success", "truth", "public legitimacy", "cost effectiveness"], "authority_question": "Who may protect non-mission branches and revise the public possibility portfolio?"},
+      "required_simulator_fields": ["branch identity and lineage", "world-access capability", "representation changes", "resource and survival history", "reopening triggers"],
+      "implementation": {"status": "not-implementable-yet", "missing": ["branch lineage", "world-access model", "representation-change events"], "next_validation": "Implement separate shadow reserves and test whether each predicts a distinct adaptation under regime shifts."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["survey-possibility-space", "uzzi-atypical-combinations", "survey-reproductive-currency"]
+    },
+    {
+      "id": "disparity-aware-diversity",
+      "label": "Disparity-aware epistemic diversity",
+      "construct": "Variety, balance, and meaningful disparity across topics, methods, lineages, world access, and failure modes.",
+      "observable_model": "A vector of variety, balance, pairwise disparity, lineage independence, and branch survival with ontology-sensitivity analysis.",
+      "direction": "pareto",
+      "aggregation": "Never collapse dimensions by default; report concentration and resource shares across multiple ontologies.",
+      "campaign_role": "optimization-candidate",
+      "goodhart_risks": ["ontology splitting", "cosmetic diversity", "reward incoherence", "duplicate lineages under different labels", "sacrifice productive specialization"],
+      "distribution": {"observed": "Diversity across topics, methods, institutions, lineages, and resource shares.", "blind_spots": ["latent distinctions missing from every ontology", "authority over classification", "within-category hierarchy"], "required_reporting": "Publish ontology provenance, sensitivity, and distributions of resources and authority."},
+      "time_horizon": {"observed": "Diversity, concentration, survival, and reopening trajectories.", "blind_spots": ["future scientific distance", "slow convergence after independent starts"], "required_reporting": "Distinguish temporary convergence from irreversible branch loss."},
+      "state_policy_relation": {"illuminates": "Portfolio concentration, plural capability, and resilience to model or infrastructure monoculture.", "insufficient_for": ["epistemic quality", "mission relevance", "public value", "equity"], "authority_question": "Which diversity dimensions deserve public protection, and who controls their classification?"},
+      "required_simulator_fields": ["multiple topic and method ontologies", "lineage identifiers", "resource allocation", "branch events", "institutional provenance"],
+      "implementation": {"status": "partially-derivable", "missing": ["validated disparity model", "method and lineage fields", "ontology alternatives"], "next_validation": "Compare entropy against disparity and lineage-aware measures on synthetic ontology-gaming cases."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["stirling-diversity", "survey-possibility-space", "project-objective-catalog"]
+    },
+    {
+      "id": "typed-participation-and-authority",
+      "label": "Typed participation, routing, and authority",
+      "construct": "Practical access to constituted opportunities and the conversion of participation into object processing, voice, appeal, allocation, and rule-changing authority.",
+      "observable_model": "Typed route transitions from opportunity and eligibility through reachability, activation, actor engagement, object processing, effects, and downstream selection.",
+      "direction": "pareto",
+      "aggregation": "Report transition rates and censoring by actor, role, object, route, jurisdiction, and protected group.",
+      "campaign_role": "vector-component",
+      "goodhart_risks": ["retain nominal participants without agency", "consultation laundering", "create inaccessible routes", "maximize voice events without uptake", "shift exclusion outside the observed jurisdiction"],
+      "distribution": {"observed": "Access, routing, burden, outcomes, and authority by population and object.", "blind_spots": ["unobserved outside options", "preference endogeneity", "unrepresented affected parties"], "required_reporting": "Preserve unknown destinations and distinguish seats, voice, uptake, veto, appeal, and amendment rights."},
+      "time_horizon": {"observed": "Entry, return, processing, exit, re-entry, and authority-conversion clocks.", "blind_spots": ["long-run capability", "intergenerational exclusion", "institutional memory"], "required_reporting": "Add lagged career, capability, and rule-change outcomes."},
+      "state_policy_relation": {"illuminates": "Fair access to publicly governed science and legitimacy of agenda and allocation authority.", "insufficient_for": ["truth by vote", "epistemic progress", "mission effectiveness", "efficiency"], "authority_question": "Which rights follow from expertise, contribution, affectedness, public payment, or exposure to risk for each decision type?"},
+      "required_simulator_fields": ["typed opportunity and route", "eligibility and reachability", "actor and object transitions", "authority rights", "censoring and effects"],
+      "implementation": {"status": "not-implementable-yet", "missing": ["typed route model", "object-processing states", "authority rights"], "next_validation": "Instrument distinct routes and verify that the richer model changes answers relative to active-fraction counts."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["survey-participation-routing", "survey-standing-authority", "fortin-funding-concentration"]
+    },
+    {
+      "id": "distributed-process-burden",
+      "label": "Distributed process burden and service quality",
+      "construct": "Total process cost and its incidence, conditional on maintaining declared coverage, competence, latency, correction, and appeal functions.",
+      "observable_model": "Labor time, queueing, rework, displaced work, and delayed failure by role and subgroup paired with service-quality vectors.",
+      "direction": "pareto",
+      "aggregation": "Report cost and quality frontiers, workload quantiles, tail latency, and displaced burden rather than a mean action count.",
+      "campaign_role": "optimization-candidate",
+      "goodhart_risks": ["degrade quality to reduce work", "move labor off-ledger", "exclude difficult cases", "automate counts while increasing correction costs", "externalize burden to applicants or the public"],
+      "distribution": {"observed": "Cost and service quality by role, career stage, institution, case type, and beneficiary.", "blind_spots": ["unpaid care and emotional labor", "external public harm", "unrecorded automation maintenance"], "required_reporting": "Include incidence, tail burden, and externalized costs."},
+      "time_horizon": {"observed": "Current labor, queues, rework, corrections, and recovery.", "blind_spots": ["skill erosion", "future system maintenance", "delayed error harm"], "required_reporting": "Use lifecycle cost and capacity-renewal horizons."},
+      "state_policy_relation": {"illuminates": "Administrative efficiency and workforce sustainability without defining efficiency as fewer checks.", "insufficient_for": ["scientific importance", "public mission selection", "rights", "truth"], "authority_question": "Which service guarantees and protected parties constrain public cost reduction?"},
+      "required_simulator_fields": ["labor duration and role", "queue timestamps", "coverage and competence", "rework and correction", "burden bearer"],
+      "implementation": {"status": "partially-derivable", "missing": ["duration", "competence", "displaced labor", "downstream cost"], "next_validation": "Add time-and-incidence ledger and adversarially test review suppression and labor displacement."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["survey-participation-routing", "survey-value-constitution", "project-objective-catalog"]
+    },
+    {
+      "id": "verified-resource-efficiency",
+      "label": "Verified marginal resource efficiency",
+      "construct": "Additional verified epistemic or mission value produced per marginal scarce resource, with displaced and externalized costs visible.",
+      "observable_model": "Counterfactual or randomized marginal value curves linking funding, compute, facilities, labor, and time to separately declared verified outcomes.",
+      "direction": "maximize",
+      "aggregation": "Report marginal curves and uncertainty by resource and portfolio segment; avoid average output per dollar.",
+      "campaign_role": "vector-component",
+      "goodhart_risks": ["select cheap easy outcomes", "ignore fixed infrastructure and maintenance", "externalize labor or environmental costs", "claim causality from selected allocations", "starve high-option-value exploration"],
+      "distribution": {"observed": "Resource inflow, use, verified outcome, and incidence by actor and portfolio.", "blind_spots": ["informal resources", "public infrastructure spillovers", "unpriced externalities"], "required_reporting": "Maintain a resource ledger with allocation, inflow, ending distribution, attrition, and application pipeline."},
+      "time_horizon": {"observed": "Marginal costs and outcomes over declared windows.", "blind_spots": ["long-lag science", "infrastructure depreciation", "capability spillovers"], "required_reporting": "Separate short-run output, long-run capability, maintenance, and option value."},
+      "state_policy_relation": {"illuminates": "Opportunity costs and stewardship of public resources.", "insufficient_for": ["which public mission is legitimate", "rights", "distributional justice", "strategic redundancy"], "authority_question": "Which outcomes and externalities enter the public accounting boundary?"},
+      "required_simulator_fields": ["resource inflows and allocations", "counterfactual assignment", "verified outcome linkage", "externalized costs", "ending resource distribution"],
+      "implementation": {"status": "partially-derivable", "missing": ["causal allocation design", "verified outcome linkage", "full cost boundary"], "next_validation": "Use preregistered interventions to estimate marginal curves and compare against naive output-per-resource proxies."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["fortin-funding-concentration", "survey-reproductive-currency", "project-objective-catalog"]
+    },
+    {
+      "id": "long-horizon-capability-and-option-value",
+      "label": "Long-horizon capability, resilience, and option value",
+      "construct": "The system's durable ability to pursue, verify, revise, and recover across future regime changes, not merely current output.",
+      "observable_model": "Capability stocks, dependency and substitution tests, protected branch reserves, succession, recovery time, and performance under predeclared shocks.",
+      "direction": "pareto",
+      "aggregation": "Report capability vectors, stress-test outcomes, recovery trajectories, and irreversible losses.",
+      "campaign_role": "optimization-candidate",
+      "goodhart_risks": ["hoard unused capacity", "inflate redundancy", "protect incumbents as resilience", "choose favorable shocks", "count nominal substitutes without authority or data portability"],
+      "distribution": {"observed": "Who holds capabilities, dependencies, fallback authority, and recovery resources.", "blind_spots": ["tacit knowledge", "geopolitical spillovers", "unmodeled correlated failures"], "required_reporting": "Map holder, dependency, substitutability, authority, and public access separately."},
+      "time_horizon": {"observed": "Capability accumulation, depreciation, succession, shock, and recovery.", "blind_spots": ["structural breaks beyond modeled scenarios", "future generations' preferences"], "required_reporting": "Use scenario ranges, expiry, and explicit non-closure rather than one discounted scalar."},
+      "state_policy_relation": {"illuminates": "National and public scientific capability, strategic autonomy, continuity, and mission revision.", "insufficient_for": ["global public benefit", "current epistemic quality", "legitimacy of missions", "individual rights"], "authority_question": "Which capabilities warrant collective maintenance and which dependencies or redundancies are acceptable?"},
+      "required_simulator_fields": ["capability stocks", "dependency graph", "substitution authority", "shock scenarios", "recovery and succession events"],
+      "implementation": {"status": "not-implementable-yet", "missing": ["capability-stock model", "dependency graph", "validated shock library"], "next_validation": "Build bounded substitution and recovery scenarios and test whether current-output optima become fragile."},
+      "promotion_boundary": "new-preregistered-campaign-and-evidence-split",
+      "citation_refs": ["survey-state-provider", "survey-value-constitution", "survey-possibility-space"]
+    },
+    {
+      "id": "mission-and-public-value",
+      "label": "Mission and public value with distribution and externalities",
+      "construct": "Progress toward an explicitly authorized public commitment, including benefit, burden, risk, access, affected-party standing, and revision rights.",
+      "observable_model": "Mission-specific outcome model plus beneficiary and burden incidence, counterfactual contribution, externalities, uncertainty, appeal, and amendment traces.",
+      "direction": "target-range",
+      "aggregation": "Keep mission outcomes, distribution, safety, rights, and uncertainty separate; compare scenarios rather than declare one universal welfare score.",
+      "campaign_role": "constitutional-audit",
+      "goodhart_risks": ["define missions around measurable outputs", "exclude non-users and future parties", "nationalize benefits while externalizing global harms", "treat consultation as authority", "freeze a mission after evidence or values change"],
+      "distribution": {"observed": "Benefits, burdens, risks, access, voice, and authority across users, non-users, workers, regions, and future proxies.", "blind_spots": ["unknown affected parties", "unrepresented future interests", "cross-border externalities"], "required_reporting": "Name protected parties, missing constituencies, incidence, standing, and amendment rights."},
+      "time_horizon": {"observed": "Mission outcomes, harms, maintenance, revision triggers, and recovery.", "blind_spots": ["deep future effects", "irreversible ecological or institutional change"], "required_reporting": "Use horizon-specific outcomes, precaution, reversibility, and amendment cadence."},
+      "state_policy_relation": {"illuminates": "The core state-policy question of what publicly authorized science should accomplish and for whom.", "insufficient_for": ["universal scientific value", "truth of individual claims", "all private or global research purposes"], "authority_question": "Who proposes, authorizes, challenges, stops, and amends a mission, and which affected parties hold which rights?"},
+      "required_simulator_fields": ["versioned mission and authorization", "beneficiary and burden incidence", "externality events", "standing and authority", "revision triggers"],
+      "implementation": {"status": "not-implementable-yet", "missing": ["mission model", "stakeholder and externality model", "authority and amendment process"], "next_validation": "Construct multiple incompatible mission scenarios and test the audit without collapsing them into one composite."},
+      "promotion_boundary": "remain-report-only",
+      "citation_refs": ["survey-standing-authority", "survey-state-provider", "survey-value-constitution"]
+    }
+  ],
+  "objective_graph": {
+    "nodes": [
+      {"id": "v-epistemic", "kind": "value", "label": "epistemic progress and correction"},
+      {"id": "v-plurality", "kind": "value", "label": "plural possibility and option value"},
+      {"id": "v-participation", "kind": "value", "label": "access, standing, and authority"},
+      {"id": "v-stewardship", "kind": "value", "label": "resource and process stewardship"},
+      {"id": "v-public", "kind": "value", "label": "authorized mission and public value"},
+      {"id": "c-progress", "kind": "construct", "label": "verification-weighted epistemic progress"},
+      {"id": "c-possibility", "kind": "construct", "label": "scientific possibility portfolio"},
+      {"id": "c-diversity", "kind": "construct", "label": "disparity-aware diversity"},
+      {"id": "c-typed-participation", "kind": "construct", "label": "typed participation and authority"},
+      {"id": "c-burden", "kind": "construct", "label": "distributed process burden"},
+      {"id": "c-capability", "kind": "construct", "label": "long-horizon capability"},
+      {"id": "c-public-value", "kind": "construct", "label": "mission and public value"},
+      {"id": "p-active", "kind": "proxy", "label": "active researcher fraction"},
+      {"id": "p-topic-entropy", "kind": "proxy", "label": "fixed-ontology topic entropy"},
+      {"id": "p-review-actions", "kind": "proxy", "label": "review actions per active researcher-step"},
+      {"id": "l-participation-review", "kind": "loss", "label": "participation-review trade-off probe"},
+      {"id": "l-topic-diversity", "kind": "loss", "label": "topic diversity probe"},
+      {"id": "l-review-burden", "kind": "loss", "label": "review burden probe"},
+      {"id": "policy-state", "kind": "policy-context", "label": "national science policy"},
+      {"id": "f-proxy-sovereignty", "kind": "failure-mode", "label": "proxy sovereignty and Goodhart feedback"}
+    ],
+    "edges": [
+      {"id": "e01", "source": "c-progress", "target": "v-epistemic", "relation": "operationalizes", "claim": "Progress requires evidence and verification transitions, not output volume."},
+      {"id": "e02", "source": "c-possibility", "target": "v-plurality", "relation": "operationalizes", "claim": "Possibility reserves preserve future inquiry options."},
+      {"id": "e03", "source": "c-diversity", "target": "v-plurality", "relation": "partial-proxy-for", "claim": "Diversity is one component of possibility, not possibility itself."},
+      {"id": "e04", "source": "c-typed-participation", "target": "v-participation", "relation": "operationalizes", "claim": "Participation becomes meaningful only through typed routes and authority."},
+      {"id": "e05", "source": "c-burden", "target": "v-stewardship", "relation": "partial-proxy-for", "claim": "Distributed burden is one stewardship dimension conditional on service quality."},
+      {"id": "e06", "source": "c-capability", "target": "v-stewardship", "relation": "temporalizes", "claim": "Capability and recovery extend stewardship beyond current throughput."},
+      {"id": "e07", "source": "c-public-value", "target": "v-public", "relation": "operationalizes", "claim": "Public value must be mission-specific and distribution-aware."},
+      {"id": "e08", "source": "p-active", "target": "c-typed-participation", "relation": "partial-proxy-for", "claim": "Active fraction observes continuity but not access, object processing, or authority."},
+      {"id": "e09", "source": "p-topic-entropy", "target": "c-diversity", "relation": "partial-proxy-for", "claim": "Entropy observes variety and balance but not disparity or lineage."},
+      {"id": "e10", "source": "p-review-actions", "target": "c-burden", "relation": "partial-proxy-for", "claim": "Action counts omit duration, incidence, quality, and delayed costs."},
+      {"id": "e11", "source": "l-participation-review", "target": "p-active", "relation": "operationalizes", "claim": "The frozen loss rewards a higher active fraction."},
+      {"id": "e12", "source": "l-participation-review", "target": "p-review-actions", "relation": "operationalizes", "claim": "The frozen loss penalizes visible review actions at a fixed exchange rate."},
+      {"id": "e13", "source": "l-topic-diversity", "target": "p-topic-entropy", "relation": "operationalizes", "claim": "The frozen loss maximizes fixed-ontology entropy as an adversarial proxy."},
+      {"id": "e14", "source": "l-review-burden", "target": "p-review-actions", "relation": "operationalizes", "claim": "The frozen loss minimizes visible review action intensity."},
+      {"id": "e15", "source": "l-topic-diversity", "target": "c-diversity", "relation": "must-not-be-equated-with", "claim": "Entropy optimization is not a recommendation or a complete diversity construct."},
+      {"id": "e16", "source": "l-review-burden", "target": "f-proxy-sovereignty", "relation": "gaming-path-to", "claim": "Strong reward for fewer actions can suppress evaluation rather than improve efficiency."},
+      {"id": "e17", "source": "l-participation-review", "target": "f-proxy-sovereignty", "relation": "gaming-path-to", "claim": "Nominal retention and a fixed scalarization can displace the underlying values."},
+      {"id": "e18", "source": "l-topic-diversity", "target": "f-proxy-sovereignty", "relation": "gaming-path-to", "claim": "Ontology manipulation can replace substantive plurality with label balance."},
+      {"id": "e19", "source": "policy-state", "target": "c-capability", "relation": "policy-contextualizes", "claim": "States may legitimately evaluate durable public and strategic scientific capability."},
+      {"id": "e20", "source": "policy-state", "target": "c-public-value", "relation": "policy-contextualizes", "claim": "Public authority makes mission, distribution, externality, and amendment questions unavoidable."},
+      {"id": "e21", "source": "policy-state", "target": "v-epistemic", "relation": "must-not-be-equated-with", "claim": "National advantage or mission performance is not identical to epistemic value."},
+      {"id": "e22", "source": "c-possibility", "target": "c-progress", "relation": "trades-off-with", "claim": "Protected options can reduce short-run verified progress while enabling later gains."},
+      {"id": "e23", "source": "c-burden", "target": "c-progress", "relation": "trades-off-with", "claim": "Verification and correction consume labor; minimizing burden alone can damage progress."},
+      {"id": "e24", "source": "c-public-value", "target": "c-typed-participation", "relation": "requires", "claim": "Mission legitimacy requires typed standing and authority, not a beneficiary count."}
+    ]
+  },
+  "citations": [
+    {
+      "id": "project-objective-catalog",
+      "kind": "local-project-design",
+      "title": "Objective Catalog v1",
+      "claim_supported": "Existing plural construct inventory, simulator feasibility, and separation of optimization candidates from diagnostics.",
+      "locator": {"repository": "science-utopia-lab", "commit": "b9680dea603854a6153543e80b34c848d4f2b09d", "path_or_identifier": "research/objectives/catalog/objective-catalog-v1.json", "section_or_lines": "constructs, candidate_loss_families, composition_strategies"}
+    },
+    {
+      "id": "project-semantic-events",
+      "kind": "local-project-design",
+      "title": "Report-only semantic instrumentation v1",
+      "claim_supported": "Versioned claim, evidence, verification, replication, and correction events are prospective report-only instrumentation, not validated optimization inputs.",
+      "locator": {"repository": "science-utopia-lab", "commit": "b9680dea603854a6153543e80b34c848d4f2b09d", "path_or_identifier": "research/metrics/semantic-instrumentation-v1.md", "section_or_lines": "Scope and promotion boundary"}
+    },
+    {
+      "id": "survey-value-constitution",
+      "kind": "local-survey-synthesis",
+      "title": "単一目的関数なしに望ましい科学制度を設計する方法",
+      "claim_supported": "Scientific systems contain plural non-commensurate values; proxies can acquire resource authority and should remain replaceable and decision-bound.",
+      "locator": {"repository": "ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-09-10-scientific-value-constitution-method.md", "section_or_lines": "sections 0, 2.5, 2.6, 3, and 4", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-09-10-scientific-value-constitution-method.md"}
+    },
+    {
+      "id": "survey-standing-authority",
+      "kind": "local-survey-synthesis",
+      "title": "科学的価値を誰が変えられるのか",
+      "claim_supported": "Participation is a rights vector; epistemic truth, public priority, allocation, permission, appeal, and amendment require different authority structures.",
+      "locator": {"repository": "ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-09-10-scientific-value-constitution-standing-amendment-and-ai-succession.md", "section_or_lines": "sections 1 through 5 and 8", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-09-10-scientific-value-constitution-standing-amendment-and-ai-succession.md"}
+    },
+    {
+      "id": "survey-possibility-space",
+      "kind": "local-survey-synthesis",
+      "title": "問いの前に何が起きるか",
+      "claim_supported": "Idea count and topic spread do not measure the institutional capacity to create, preserve, reopen, and materially constrain scientific possibilities.",
+      "locator": {"repository": "ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-10-07-before-the-question-scientific-possibility-space.md", "section_or_lines": "sections 3, 4, and 6", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-10-07-before-the-question-scientific-possibility-space.md"}
+    },
+    {
+      "id": "survey-participation-routing",
+      "kind": "local-survey-synthesis",
+      "title": "参加は一つの状態ではなく制度が構成する型付きrouting回路である",
+      "claim_supported": "Binary participation conflates opportunity, reachability, activation, actor engagement, object processing, effects, and censoring.",
+      "locator": {"repository": "ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-10-08-participation-is-a-typed-routing-circuit-not-one-state.md", "section_or_lines": "conclusion and sections 4 through 7", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-10-08-participation-is-a-typed-routing-circuit-not-one-state.md"}
+    },
+    {
+      "id": "survey-reproductive-currency",
+      "kind": "local-survey-synthesis",
+      "title": "何が次の研究能力を得るのか",
+      "claim_supported": "Epistemic contribution, reproductive standing, and constitutional standing differ; resource conversion and maintenance cannot be reduced to one success currency.",
+      "locator": {"repository": "ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-09-10-research-reproductive-currency-and-allocation-game.md", "section_or_lines": "sections 2 through 7 and 10", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-09-10-research-reproductive-currency-and-allocation-game.md"}
+    },
+    {
+      "id": "survey-state-provider",
+      "kind": "local-survey-synthesis",
+      "title": "国家missionとprivate operating constitution",
+      "claim_supported": "A state mission, public substrate, private operating layer, substitutability, and counter-capacity are distinct dimensions of public scientific capability.",
+      "locator": {"repository": "ai-scientist-survey", "commit": "02b437b854e73f1bd8a274399e56167ee05a4400", "path_or_identifier": "research/2026-10-05-doe-genesis-state-provider-coproduction-audit.md", "section_or_lines": "sections 0 through 4.1 and 7", "url": "https://github.com/t46/ai-scientist-survey/blob/02b437b854e73f1bd8a274399e56167ee05a4400/research/2026-10-05-doe-genesis-state-provider-coproduction-audit.md"}
+    },
+    {
+      "id": "fortunato-science-of-science",
+      "kind": "external-primary-publication",
+      "title": "Science of science",
+      "claim_supported": "Scientific production and impact emerge from interacting individuals, institutions, networks, and allocation processes rather than a single output count.",
+      "locator": {"repository": "external", "path_or_identifier": "Science 359(6379):eaao0185", "section_or_lines": "review synthesis and research agenda", "doi": "10.1126/science.aao0185", "url": "https://doi.org/10.1126/science.aao0185"}
+    },
+    {
+      "id": "stirling-diversity",
+      "kind": "external-primary-publication",
+      "title": "A general framework for analysing diversity in science, technology and society",
+      "claim_supported": "Diversity comprises variety, balance, and disparity; entropy-like measures cover only part of the construct.",
+      "locator": {"repository": "external", "path_or_identifier": "Journal of the Royal Society Interface 4:707-719", "section_or_lines": "general diversity framework", "doi": "10.1098/rsif.2007.0213", "url": "https://doi.org/10.1098/rsif.2007.0213"}
+    },
+    {
+      "id": "uzzi-atypical-combinations",
+      "kind": "external-primary-publication",
+      "title": "Atypical combinations and scientific impact",
+      "claim_supported": "Novel recombination can be studied relationally and is not equivalent to a count of topic labels.",
+      "locator": {"repository": "external", "path_or_identifier": "Science 342(6157):468-472", "section_or_lines": "methods and results", "doi": "10.1126/science.1240474", "url": "https://doi.org/10.1126/science.1240474"}
+    },
+    {
+      "id": "nasem-reproducibility",
+      "kind": "external-primary-publication",
+      "title": "Reproducibility and Replicability in Science",
+      "claim_supported": "Reproducibility, replication, transparency, and correction are related but distinct system capabilities.",
+      "locator": {"repository": "external", "path_or_identifier": "National Academies report", "section_or_lines": "chapters 3 through 6", "doi": "10.17226/25303", "url": "https://doi.org/10.17226/25303"}
+    },
+    {
+      "id": "fortin-funding-concentration",
+      "kind": "external-primary-publication",
+      "title": "Big Science vs. Little Science: How Scientific Impact Scales with Funding",
+      "claim_supported": "Funding concentration and marginal returns require distributional and counterfactual analysis rather than raw output totals.",
+      "locator": {"repository": "external", "path_or_identifier": "PLOS ONE 8(6):e65263", "section_or_lines": "methods and results", "doi": "10.1371/journal.pone.0065263", "url": "https://doi.org/10.1371/journal.pone.0065263"}
+    }
+  ]
+}

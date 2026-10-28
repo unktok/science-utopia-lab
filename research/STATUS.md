@@ -29,6 +29,7 @@ Remote: `unktok/science-utopia-lab`
 | measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
 | semantic instrumentation | prospective report-only slice | default-disabled explicit producer API, run/system/model-bound append-only stream, and fail-closed checkpoint/resume; not wired into the current simulator or optimizer |
 | optimization loss | v1 archived; v1.1 running | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
+| metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |

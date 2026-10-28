@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://science-utopia.local/schemas/metric-objective-landscape-v1.schema.json",
+  "title": "ScienceUtopia Metric / Objective Landscape v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "version", "status", "scope", "source_snapshot", "governance", "current_loss_audit", "metric_cards", "objective_graph", "citations"],
+  "properties": {
+    "schema": {"const": "scienceutopia.metric-objective-landscape.v1"},
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "status": {"const": "prospective-report-only"},
+    "scope": {"type": "string", "minLength": 1},
+    "source_snapshot": {
+      "type": "object", "additionalProperties": false,
+      "required": ["science_utopia_commit", "ai_scientist_survey_commit", "survey_topic_map"],
+      "properties": {
+        "science_utopia_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "ai_scientist_survey_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "survey_topic_map": {"type": "string", "minLength": 1}
+      }
+    },
+    "governance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["active_campaign_effect", "universal_composite", "state_policy_position", "promotion_rule"],
+      "properties": {
+        "active_campaign_effect": {"const": "none"},
+        "universal_composite": {"const": "none"},
+        "state_policy_position": {"type": "string", "minLength": 1},
+        "promotion_rule": {"const": "separate-preregistration-new-evidence-split-and-construct-validation"}
+      }
+    },
+    "current_loss_audit": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/audit"}},
+    "metric_cards": {"type": "array", "minItems": 9, "items": {"$ref": "#/$defs/card"}},
+    "objective_graph": {"$ref": "#/$defs/graph"},
+    "citations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/citation"}}
+  },
+  "$defs": {
+    "strings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "audit": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "source_path", "source_sha256", "disposition", "construct_claim", "measurement_model", "goodhart_and_gaming", "distribution", "time_horizon", "state_policy_relation", "missing_constructs", "citation_refs"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "source_path": {"type": "string", "minLength": 1},
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "disposition": {"const": "contrastive-probe-not-policy-recommendation"},
+        "construct_claim": {"type": "string", "minLength": 1},
+        "measurement_model": {
+          "type": "object", "additionalProperties": true,
+          "required": ["observables", "within_run", "across_seeds", "direction", "assumptions", "valid_interpretation"],
+          "properties": {
+            "observables": {"$ref": "#/$defs/strings"},
+            "within_run": {"type": "string", "minLength": 1},
+            "across_seeds": {"type": "string", "minLength": 1},
+            "direction": {"type": "string", "minLength": 1},
+            "assumptions": {"$ref": "#/$defs/strings"},
+            "valid_interpretation": {"type": "string", "minLength": 1},
+            "variety_balance_only": {"type": "boolean"}
+          }
+        },
+        "goodhart_and_gaming": {"$ref": "#/$defs/strings"},
+        "distribution": {"$ref": "#/$defs/axis"},
+        "time_horizon": {"$ref": "#/$defs/axis"},
+        "state_policy_relation": {"$ref": "#/$defs/policy"},
+        "missing_constructs": {"$ref": "#/$defs/strings"},
+        "citation_refs": {"$ref": "#/$defs/strings"}
+      }
+    },
+    "axis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["observed", "blind_spots", "required_reporting"],
+      "properties": {"observed": {"type": "string", "minLength": 1}, "blind_spots": {"$ref": "#/$defs/strings"}, "required_reporting": {"type": "string", "minLength": 1}}
+    },
+    "policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["illuminates", "insufficient_for", "authority_question"],
+      "properties": {"illuminates": {"type": "string", "minLength": 1}, "insufficient_for": {"$ref": "#/$defs/strings"}, "authority_question": {"type": "string", "minLength": 1}}
+    },
+    "card": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "label", "construct", "observable_model", "direction", "aggregation", "campaign_role", "goodhart_risks", "distribution", "time_horizon", "state_policy_relation", "required_simulator_fields", "implementation", "promotion_boundary", "citation_refs"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "label": {"type": "string", "minLength": 1},
+        "construct": {"type": "string", "minLength": 1},
+        "observable_model": {"type": "string", "minLength": 1},
+        "direction": {"enum": ["maximize", "minimize", "target-range", "pareto", "observe-only"]},
+        "aggregation": {"type": "string", "minLength": 1},
+        "campaign_role": {"enum": ["optimization-candidate", "vector-component", "shadow-diagnostic", "constitutional-audit"]},
+        "goodhart_risks": {"$ref": "#/$defs/strings"},
+        "distribution": {"$ref": "#/$defs/axis"},
+        "time_horizon": {"$ref": "#/$defs/axis"},
+        "state_policy_relation": {"$ref": "#/$defs/policy"},
+        "required_simulator_fields": {"$ref": "#/$defs/strings"},
+        "implementation": {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "missing", "next_validation"],
+          "properties": {"status": {"enum": ["partially-derivable", "not-implementable-yet", "report-only-ready"]}, "missing": {"type": "array", "items": {"type": "string"}}, "next_validation": {"type": "string", "minLength": 1}}
+        },
+        "promotion_boundary": {"enum": ["new-preregistered-campaign-and-evidence-split", "remain-report-only"]},
+        "citation_refs": {"$ref": "#/$defs/strings"}
+      }
+    },
+    "graph": {
+      "type": "object", "additionalProperties": false,
+      "required": ["nodes", "edges"],
+      "properties": {
+        "nodes": {"type": "array", "minItems": 12, "items": {"type": "object", "additionalProperties": false, "required": ["id", "kind", "label"], "properties": {"id": {"type": "string", "pattern": "^[a-z0-9-]+$"}, "kind": {"enum": ["value", "construct", "proxy", "loss", "policy-context", "failure-mode"]}, "label": {"type": "string", "minLength": 1}}}},
+        "edges": {"type": "array", "minItems": 12, "items": {"type": "object", "additionalProperties": false, "required": ["id", "source", "target", "relation", "claim"], "properties": {"id": {"type": "string", "pattern": "^[a-z0-9-]+$"}, "source": {"type": "string"}, "target": {"type": "string"}, "relation": {"enum": ["partial-proxy-for", "operationalizes", "trades-off-with", "gaming-path-to", "requires", "distributionalizes", "temporalizes", "policy-contextualizes", "must-not-be-equated-with"]}, "claim": {"type": "string", "minLength": 1}}}}
+      }
+    },
+    "citation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "title", "claim_supported", "locator"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+        "kind": {"enum": ["local-survey-synthesis", "local-project-design", "external-primary-publication"]},
+        "title": {"type": "string", "minLength": 1},
+        "claim_supported": {"type": "string", "minLength": 1},
+        "locator": {"type": "object", "additionalProperties": false, "required": ["repository", "path_or_identifier", "section_or_lines"], "properties": {"repository": {"type": "string"}, "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}, "path_or_identifier": {"type": "string", "minLength": 1}, "section_or_lines": {"type": "string", "minLength": 1}, "doi": {"type": "string"}, "url": {"type": "string"}}}
+      }
+    }
+  }
+}
