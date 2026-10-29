@@ -19,7 +19,7 @@
 \newcommand{\suto}{\textsc{Suto}}
 \newcommand{\code}[1]{\texttt{#1}}
 
-\title{Science Utopia Lab: Auditable Black-Box Optimization\\of Simulated Scientific Institutions\\\large Working Draft --- Engineering Report}
+\title{Science Utopia Lab: Auditable Black-Box Optimization\\of Simulated Scientific Institutions\\\large Working Draft --- Optimization-Stage Report}
 
 \author{Science Utopia Lab \\
 \texttt{https://github.com/unktok/science-utopia-lab} \\
@@ -30,7 +30,7 @@
 \maketitle
 
 \begin{abstract}
-Scientific institutions are coupled dynamical systems: evaluation, publication, funding, collaboration, and researcher participation jointly shape future scientific activity. We present Science Utopia Lab, an extension of the \suto{} closed-loop LLM-agent simulator that treats the institutional system itself as the object of optimization. The central interface is a versioned, typed \systemspec{} graph whose mechanisms and parameters can be proposed by an optimizer, executed by a stochastic simulator, and evaluated under an explicitly versioned loss. The software separates optimization loss, technical run validity, held-out evaluation metrics, and optional policy-selection rules. We report the first persistent result-dependent black-box loop using Qwen3-8B: three system suggestions evaluated on three optimization seeds each, for nine successful runs. The adaptive third suggestion was generated from the lower-loss initial observation and tied its parent exactly, revealing insufficient resolution in the engineering-only objective rather than a policy improvement. We also introduce canonical event replay and a game-like observatory that preserves provenance from visual state to simulation events. The result is an auditable optimization substrate, not evidence for an optimal real-world science policy. This working paper records the implemented boundary, the first closed-loop result, and the research agenda toward structural and differentiable institutional design.
+Scientific institutions are coupled dynamical systems: evaluation, publication, funding, collaboration, and researcher participation jointly shape future scientific activity. We present Science Utopia Lab, an extension of the \suto{} closed-loop LLM-agent simulator that treats the institutional system itself as the object of optimization. The central interface is a versioned, typed \systemspec{} graph whose mechanisms and parameters can be proposed by an optimizer, executed by a stochastic simulator, and evaluated under an explicitly versioned loss. The software separates optimization loss, technical run validity, held-out evaluation metrics, and optional policy-selection rules. Beyond a first persistent result-dependent black-box loop, we report the optimization phase of a preregistered metric-conditioned study using Qwen3-8B. Three objectives each evaluated five systems on three common development seeds, yielding 45 terminal logical rows: 30 technically valid and 15 invalid with no fabricated loss. The participation--review objective selected one system, whereas topic diversity and review burden selected another; all three winners were sealed simultaneously before held-out use. We also introduce canonical event replay and a game-like observatory that preserves provenance from visual state to simulation events. These results establish an auditable optimization substrate, not an optimal real-world science policy; common held-out evaluation remains pending.
 \end{abstract}
 
 \section{Introduction}
@@ -50,7 +50,7 @@ This report makes four contributions:
     \item canonical replay plus a game-like interface for inspecting agents, artifacts, resources, and institutional events without replacing the research record with a visualization.
 \end{enumerate}
 
-The empirical contribution is intentionally narrow. We demonstrate that the loop executes and adapts using a local Qwen3-8B model. We do not claim that the engineering loss measures scientific value or that the selected candidate should inform real policy.
+The empirical contribution is intentionally narrow. We demonstrate that the loop executes and adapts using a local Qwen3-8B model, then hold the simulator, design space, search budget, and seeds fixed while changing only the optimized loss. We do not claim that any proxy measures scientific value or that a selected candidate should inform real policy.
 
 \section{Problem Formulation}
 
@@ -199,21 +199,21 @@ Research assessment scholarship motivates the explicit separation between measur
 
 \paragraph{Restricted action space.} The optimizer currently mutates eight parameters within a fixed legacy topology. Although \systemspec{} can describe arbitrary mechanism graphs, the general executor and topology mutation operators are not yet implemented. We therefore do not claim structural optimization.
 
-\paragraph{Scale and uncertainty.} Three optimization seeds and one-year smoke simulations are sufficient for an engineering demonstration, not inference about institutional effects. The reserved seeds remain untouched, and no held-out evaluation has been reported.
+\paragraph{Scale and uncertainty.} The engineering demonstration uses three one-year smoke worlds, and the metric-conditioned study uses three four-year development worlds per system. Neither supports inference about real institutional effects. The five common held-out seeds remain untouched, and no held-out evaluation has been reported.
 
 \paragraph{Representational and governance risks.} Synthetic agents should not be assigned real protected characteristics by inference from names or text. Future fairness experiments should use explicit synthetic attributes and document causal assumptions. Human oversight, appeal, public legitimacy, scientific freedom, and externalized harms must remain visible when governance mechanisms are introduced.
 
 \section{Roadmap}
 
-The next research stage has four parallel tracks. First, develop an objective and held-out metric suite grounded in science-of-science literature, then measure whether it resolves meaningful differences at affordable fidelity. Second, implement a mechanism registry and generic graph runner so that evaluation, publication, funding, and governance mechanisms can be added, removed, or replaced. Third, compare black-box methods under equal simulation budgets and investigate differentiable surrogates or continuous relaxations without requiring the LLM simulator itself to be differentiable. Fourth, evolve the replay observatory into a comparison and intervention interface whose actions always create provenance-linked branches.
+The next research stage has four parallel tracks. First, execute the five untouched held-out seeds for each sealed objective-conditioned winner and report the full cross-objective matrix, trade-offs, rank changes, and generalization without selecting a universal winner. Second, implement a mechanism registry and generic graph runner so that evaluation, publication, funding, and governance mechanisms can be added, removed, or replaced. Third, compare black-box methods under equal simulation budgets and investigate differentiable surrogates or continuous relaxations without requiring the LLM simulator itself to be differentiable. Fourth, evolve the replay observatory into a comparison and intervention interface whose actions always create provenance-linked branches.
 
 \section{Conclusion}
 
-Science Utopia Lab turns institutional design into an explicit computational object. Its current contribution is a verifiable bridge from a typed system specification, through stochastic LLM-agent simulation and a versioned loss, back to a result-dependent optimizer. The first nine-run campaign completed that loop and exposed a substantive weakness in the engineering objective through an exact adaptive tie. This is a useful boundary: the machinery is ready for better scientific questions, but the current result is not a scientific-policy optimum. The project now moves from proving that optimization can run to establishing what should be optimized, how whole systems can vary, and how evidence should be inspected and governed.
+Science Utopia Lab turns institutional design into an explicit computational object. Its current contribution is a verifiable bridge from a typed system specification, through stochastic LLM-agent simulation and a versioned loss, back to a result-dependent optimizer. The first nine-run campaign completed that loop; the subsequent three-arm study shows that changing the optimized proxy can change the frozen institutional system under otherwise common search conditions. Fifteen technical failures remained invalid observations rather than artificial penalties, and the protected split remains untouched. This is a useful boundary: objective-conditioned optimization now runs end to end, but the current result is neither a held-out generalization result nor a science-policy optimum. The project next tests the frozen systems on common held-out worlds and expands the design object from eight parameters toward mechanism structure.
 
 \section*{Reproducibility Statement}
 
-The repository contains the campaign protocol, loss specification, design-space schema, compact machine-readable result, interpretation, artifact hashes, tests, and UI source. The frozen experiment used source commit \code{0b733df425405f5e2eeb953cff2a7288f13f5af9}; the compact result records revision \code{9a10029807d5} and protocol tag \code{protocol/first-closed-loop-engineering-v1.1}. The current paper is a post-campaign report. Large raw outputs remain at the locator recorded in the artifact manifest and are intentionally not committed.
+The repository contains campaign protocols, loss specifications, design-space schemas, compact machine-readable results, artifact hashes, tests, figure-generation code, and UI source. The first closed-loop result records revision \code{9a10029807d5}. The metric-conditioned optimization used clean source commit \code{1078279d1ce833afe9ffb6b7c262da15357b76ab}, study revision \code{23cbe8a107e5}, and protocol tag \code{protocol/metric-conditioned-optimization-v1.1}; its three-winner freeze hash is \code{254c3366e921...}. Large raw outputs remain at their recorded locators and are intentionally not committed.
 
 \bibliographystyle{plainnat}
 \bibliography{references}

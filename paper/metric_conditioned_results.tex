@@ -16,19 +16,75 @@
 \label{sec:metric-conditioned-results}
 
 The preregistered study holds the design space, optimizer, budget, and seeds
-fixed while changing only the optimization loss. Each arm freezes its winner
-before a common held-out suite evaluates all three systems. Topic entropy and
-review burden are deliberately narrow proxy objectives, not normative policy
-recommendations. This section reports results only when the complete,
-experiment-classified report fragment and three-figure set are present.
+fixed while changing only the optimization loss. It uses four-year
+longitudinal Qwen3-8B worlds, five candidates per objective, and three common
+development seeds per candidate. Each arm freezes its winner before a common
+held-out suite evaluates all three objective-conditioned systems. Topic entropy
+and review burden are deliberately narrow proxy objectives, not normative
+policy recommendations.
+
+\subsection{Optimization-stage results}
+
+The optimization phase is complete. All 45 logical design--seed rows reached a
+terminal state: 30 were technically valid and 15 failed at the preregistered
+reviewer-capacity boundary. Failed rows retained \code{loss: null}; no numeric
+penalty, protected-slice veto, or undeclared promotion constraint entered the
+optimizer. Twenty-nine rows were physically executed and 16 complete rows were
+adopted from byte-identical initial trajectories under a hash-verified
+provenance contract. The 45 physical process attempts consumed 29.99 serial
+hours.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/metric-conditioned/optimization-stage.pdf}
+    \caption{Optimization-stage traces under the three frozen losses. Stars mark
+    the selected development winner; crosses denote technical invalidity and
+    have no numeric loss. Loss units are objective-specific and must not be
+    compared across panels. The figure uses development seeds 601, 607, and 617
+    only; held-out seeds remain unused.}
+    \label{fig:metric-conditioned-optimization-stage}
+\end{figure}
+
+\begin{table}[t]
+\caption{Frozen winners after the common five-candidate development budget. All
+losses are minimized. Topic candidates C1 and C2 tied exactly, so the declared
+earliest-proposal tie rule retained C1.}
+\label{tab:metric-conditioned-winners}
+\centering
+\small
+\begin{tabular}{llllr}
+\toprule
+Optimization objective & Winner & Design & Valid / invalid rows & Development loss \\
+\midrule
+Participation + review & C2 & \code{db197e2...} & 14 / 1 & 0.321846 \\
+Topic diversity proxy & C1 & \code{d353600...} & 8 / 7 & $-1.696931$ \\
+Review burden proxy & C1 & \code{d353600...} & 8 / 7 & 1.668963 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The participation--review objective selected a different system from the other
+two objectives. Topic diversity and review burden selected the same system on
+the development split, while the topic objective could not distinguish the two
+initial systems. This is evidence that changing the optimized metric can alter
+the selected institution in this simulated setting; it is not yet evidence
+that one system generalizes better. The simultaneous winner seal was written
+before any held-out registry existed.
+
+\subsection{Held-out result boundary}
+
+The conditional block below remains reserved for the complete common held-out
+evaluation. It is populated only when the experiment-classified result fragment
+and all three final figures are atomically present.
 
 \ifmetricconditionedresults
 \input{generated/metric-conditioned/metric-conditioned-results.generated}
 \else
 \begin{center}
 \fbox{\parbox{0.9\linewidth}{\small\textbf{Result boundary.}
-The metric-conditioned optimization and common held-out evaluation are not yet
-complete in this source tree. No synthetic fixture or preliminary profile is
-shown as an experimental result.}}
+The metric-conditioned optimization is complete and its three winners are
+sealed. The common held-out evaluation is not yet run: seeds 701, 709, 719,
+727, and 733 remain unused, and no generalization or universal-winner claim is
+reported.}}
 \end{center}
 \fi
