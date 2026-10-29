@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-29 17:22 JST
+Updated: 2026-10-29 22:42 JST
 
 ## Overall position
 
@@ -31,7 +31,7 @@ Remote: `unktok/science-utopia-lab`
 | optimization loss | v1.1 optimization complete | participation/review, topic-entropy, and review-burden arms each exhausted five suggestions under the same search conditions |
 | metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | objective constitution compiler | prospective synthetic-tested v1 | versioned stakeholder/construct/horizon/distribution/risk/tradeoff/Goodhart/evidence contract compiles only hash-verified validated metric cards into phase LossSpecs; no real metric promoted |
-| held-out evaluation metrics | executable, untouched | versioned common suite and evaluator are frozen; no held-out registry or run exists yet |
+| held-out evaluation metrics | running | the immutable three-winner seal opened the preregistered common split; 15 runs are registered and the first seed is running |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
 | post-optimization comparison | ready at frozen-winner gate | three winner fingerprints are sealed; pre-held-out analysis and later common held-out evaluation remain separate |
@@ -60,7 +60,7 @@ candidates.
 | failures / retries | 15 terminal rows exhausted two attempts at the preregistered reviewer-capacity boundary; invalid suggestions retained `loss: null` and no numeric penalty or extra policy constraint entered an optimizer |
 | remaining optimization runs | 0 |
 | frozen arm winners | 3 of 3, sealed together in freeze `254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d` |
-| held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
+| held-out evaluation runs | 15 planned; the participation/review winner on seed 701 is running and the other 14 rows remain planned |
 
 Across all arms, 45 physical process attempts consumed 107,966.6 serial
 seconds (29.99 hours). Eight complete canonical trajectories were adopted into
@@ -81,11 +81,12 @@ default constraint for future optimization.
 
 ## Next milestone
 
-Run the preregistered common held-out evaluation only from the immutable
+Complete the preregistered common held-out evaluation opened from the immutable
 three-winner seal. The optimization phase held simulator, design space,
 optimizer, budget, and development seeds constant while changing only the
-`LossSpec`. Seeds 701, 709, 719, 727, and 733 remain untouched; seeds 523,
-541, and 547 remain attached to the first campaign and forbidden here.
+`LossSpec`. Seeds 701, 709, 719, 727, and 733 are now reserved in the dedicated
+15-row evaluation registry; the first row is running. Seeds 523, 541, and 547
+remain attached to the first campaign and forbidden here.
 
 The next execution steps are:
 
@@ -96,7 +97,7 @@ The next execution steps are:
    without a fabricated loss;
 3. **complete:** freeze one winner per arm simultaneously before consuming the
    new study-held-out split;
-4. **next:** run the five untouched held-out seeds for the three frozen
+4. **running:** execute the five common held-out seeds for the three frozen
    winners, then report a cross-evaluation matrix, rank reversals, trade-offs,
    gaming, and generalization without selecting a universal winner;
 5. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
