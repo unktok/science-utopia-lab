@@ -32,6 +32,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Metric-conditioned optimization v1 preregistration](protocols/campaigns/metric-conditioned-optimization-v1.md)
 - [Metric-conditioned optimization v1.1 repair/reuse amendment](protocols/campaigns/metric-conditioned-optimization-v1-1.md)
 - [Metric-conditioned v1.1 artifact-reuse implementation contract](protocols/campaigns/metric-conditioned-optimization-v1.1-reuse.md)
+- [Metric-conditioned v1.1 optimization result](results/metric-conditioned-optimization-v1-1.json)
 - [Metric-conditioned v1 zero-query failure audit](audits/metric-conditioned-v1-zero-query-failure.md)
 - [Metric-conditioned held-out metric suite](metrics/metric-conditioned-held-out-suite-v1.json)
 - [Report-only semantic instrumentation v1](metrics/semantic-instrumentation-v1.md)

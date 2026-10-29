@@ -1,0 +1,174 @@
+{
+  "schema": "scienceutopia.metric-conditioned-optimization-result.v1",
+  "study": {
+    "id": "metric-conditioned-optimization-v1-1",
+    "revision": "23cbe8a107e5",
+    "protocol_tag": "protocol/metric-conditioned-optimization-v1.1",
+    "source_commit": "1078279d1ce833afe9ffb6b7c262da15357b76ab",
+    "source_tree_dirty": false,
+    "model": "qwen3:8b",
+    "backend": "ollama",
+    "fidelity": "longitudinal",
+    "optimizer": {
+      "kind": "adaptive_random_search",
+      "seed": 20261028,
+      "initial_random": 3,
+      "mutation_scale": 0.2
+    },
+    "budget": {
+      "arms": 3,
+      "suggestions_per_arm": 5,
+      "optimization_seeds_per_suggestion": 3,
+      "logical_runs": 45
+    },
+    "completed_utc": "2026-10-29T08:22:02.487009+00:00"
+  },
+  "claim_boundary": {
+    "kind": "synthetic_metric_conditioning_experiment",
+    "statement": "The result records which executable fixed-topology SystemSpec each frozen LossSpec selected on development seeds. It does not identify a correct science policy, scientific-value function, social-welfare optimum, or universal winner."
+  },
+  "seed_firewall": {
+    "optimization": [601, 607, 617],
+    "held_out_evaluation": [701, 709, 719, 727, 733],
+    "forbidden_legacy_held_out": [523, 541, 547],
+    "held_out_registry_exists": false,
+    "held_out_rows": 0,
+    "held_out_consumed": false,
+    "post_freeze_audit_passed": true
+  },
+  "trajectory_reuse": {
+    "contract": "research/protocols/campaigns/metric-conditioned-optimization-v1.1-reuse.md",
+    "canonical_arm": "metric-conditioned-participation-review-v1-1",
+    "canonical_initial_trajectories_complete": 8,
+    "canonical_initial_trajectories_failed": 1,
+    "adopted_logical_links": 16,
+    "target_arms": 2,
+    "failed_source_adopted": false,
+    "all_current_links_receipt_and_identity_verified": true,
+    "artifact_reuse_and_study_tests": {
+      "passed": 22,
+      "failed": 0
+    }
+  },
+  "runtime_audit": {
+    "logical_runs": 45,
+    "logical_complete": 30,
+    "logical_failed": 15,
+    "physically_executed_rows": 29,
+    "adopted_complete_rows": 16,
+    "process_attempts": 45,
+    "complete_process_attempts": 14,
+    "failed_process_attempts": 31,
+    "serial_wall_seconds": 107966.62084458326,
+    "serial_wall_hours": 29.990727,
+    "by_arm": [
+      {
+        "campaign_id": "metric-conditioned-participation-review-v1-1",
+        "revision": "2517fd02d6ff",
+        "logical_complete": 14,
+        "logical_failed": 1,
+        "physically_executed_rows": 15,
+        "adopted_complete_rows": 0,
+        "process_attempts": 17,
+        "serial_wall_seconds": 68545.26143062615
+      },
+      {
+        "campaign_id": "metric-conditioned-topic-diversity-v1-1",
+        "revision": "f4863d6282d1",
+        "logical_complete": 8,
+        "logical_failed": 7,
+        "physically_executed_rows": 7,
+        "adopted_complete_rows": 8,
+        "process_attempts": 14,
+        "serial_wall_seconds": 19287.97408170812
+      },
+      {
+        "campaign_id": "metric-conditioned-review-burden-v1-1",
+        "revision": "49ec38ecd9ff",
+        "logical_complete": 8,
+        "logical_failed": 7,
+        "physically_executed_rows": 7,
+        "adopted_complete_rows": 8,
+        "process_attempts": 14,
+        "serial_wall_seconds": 20133.38533224899
+      }
+    ]
+  },
+  "failure_audit": {
+    "terminal_failed_logical_rows": 15,
+    "terminal_failed_rows_by_arm": {
+      "metric-conditioned-participation-review-v1-1": 1,
+      "metric-conditioned-topic-diversity-v1-1": 7,
+      "metric-conditioned-review-burden-v1-1": 7
+    },
+    "common_cause": "The candidate configured reviewer_capacity=1 and the global assignment could not give every submission one review, or submissions exceeded total capacity.",
+    "retry_budget_exhausted": true,
+    "invalid_observations_use_null_loss": true,
+    "numeric_failure_penalty_used": false,
+    "extra_policy_constraint_used": false
+  },
+  "arms": [
+    {
+      "campaign_id": "metric-conditioned-participation-review-v1-1",
+      "revision": "2517fd02d6ff",
+      "loss_spec": {
+        "id": "participation-review-tradeoff-probe",
+        "sha256": "a66801b53868d47d918278ca482ebccff194f330058f33b8aedd5e4e883b45e1"
+      },
+      "suggestions": [
+        {"proposal_index": 0, "suggestion_id": "s35e03107a6494ea2", "design_id": "d3536002463db", "fingerprint": "2e41e887662db96a8b0f483f410929b29895981ba32fa4aa17e69988451aa23b", "status": "observed_complete", "observation_id": "o650d3abce65f0896", "loss": 0.4834481397251563},
+        {"proposal_index": 1, "suggestion_id": "sbf5c7ce5f0f3a18f", "design_id": "db197e2eb5b1a", "fingerprint": "d16d071a6d113d72672c869d46928f4a07340c57abde9037a7c9df09cc249130", "status": "observed_complete", "observation_id": "oa0ea3df6b16ae143", "loss": 0.32184554454124087},
+        {"proposal_index": 2, "suggestion_id": "s4f0336a8ea15348e", "design_id": "d61de1ee4e74b", "fingerprint": "7761f7d9b507e9e666101a776c1d915821092a9281e3734f43eecc61ea907f58", "status": "observed_invalid", "observation_id": "o3058b95e10728a1c", "loss": null},
+        {"proposal_index": 3, "suggestion_id": "sb754dca2bd492dda", "design_id": "de931c351232d", "fingerprint": "0571d48f9e3e5e5058b10bd4c6bf223c41870091ca5bef78209abe531bba8488", "status": "observed_complete", "observation_id": "odffd8d4aa0bc0189", "loss": 0.410309132057532},
+        {"proposal_index": 4, "suggestion_id": "s47cdc2857c4b55c3", "design_id": "d9e924fe0493b", "fingerprint": "c7f30249e67d652ceb744e5142a3e4fbf4ad78c41c001b6b6a60d9c8ae929797", "status": "observed_complete", "observation_id": "o4cfab3e6ffe82dfc", "loss": 0.5280662151200021}
+      ]
+    },
+    {
+      "campaign_id": "metric-conditioned-topic-diversity-v1-1",
+      "revision": "f4863d6282d1",
+      "loss_spec": {
+        "id": "topic-diversity-probe",
+        "sha256": "0ea6f34591e295e6d8a79ed2a78582f50f74c56de9cfdd92b51711d7be13c29f"
+      },
+      "suggestions": [
+        {"proposal_index": 0, "suggestion_id": "s35e03107a6494ea2", "design_id": "d3536002463db", "fingerprint": "2e41e887662db96a8b0f483f410929b29895981ba32fa4aa17e69988451aa23b", "status": "observed_complete", "observation_id": "o650e31daa0c1fdb7", "loss": -1.6969310697990547},
+        {"proposal_index": 1, "suggestion_id": "sbf5c7ce5f0f3a18f", "design_id": "db197e2eb5b1a", "fingerprint": "d16d071a6d113d72672c869d46928f4a07340c57abde9037a7c9df09cc249130", "status": "observed_complete", "observation_id": "od7e2a69a327367a9", "loss": -1.6969310697990547},
+        {"proposal_index": 2, "suggestion_id": "s4f0336a8ea15348e", "design_id": "d61de1ee4e74b", "fingerprint": "7761f7d9b507e9e666101a776c1d915821092a9281e3734f43eecc61ea907f58", "status": "observed_invalid", "observation_id": "ocf8e67290fc86257", "loss": null},
+        {"proposal_index": 3, "suggestion_id": "s4f596a762baccbf9", "design_id": "d5a4861076556", "fingerprint": "049dae3d53b9b9afabeebcdd1975b7d793078a1f1414eac5eb0c0a96cb063239", "status": "observed_invalid", "observation_id": "o78786ce0bf000c64", "loss": null},
+        {"proposal_index": 4, "suggestion_id": "sc8bbf8599c665f63", "design_id": "d1b7b4e431fcf", "fingerprint": "1ab593ef3cd746e0a4dbe49ce3d76d77ccc3e7743df43c544570f18e9cd78349", "status": "observed_invalid", "observation_id": "o70a0c66faf25cbd4", "loss": null}
+      ]
+    },
+    {
+      "campaign_id": "metric-conditioned-review-burden-v1-1",
+      "revision": "49ec38ecd9ff",
+      "loss_spec": {
+        "id": "review-burden-probe",
+        "sha256": "5143301a8573eb68cae36e0acb2145eb47ee09f9cdb66ec08050fd01c5e68a1d"
+      },
+      "suggestions": [
+        {"proposal_index": 0, "suggestion_id": "s35e03107a6494ea2", "design_id": "d3536002463db", "fingerprint": "2e41e887662db96a8b0f483f410929b29895981ba32fa4aa17e69988451aa23b", "status": "observed_complete", "observation_id": "oe31dd8ee903a3ad1", "loss": 1.6689627945031262},
+        {"proposal_index": 1, "suggestion_id": "sbf5c7ce5f0f3a18f", "design_id": "db197e2eb5b1a", "fingerprint": "d16d071a6d113d72672c869d46928f4a07340c57abde9037a7c9df09cc249130", "status": "observed_complete", "observation_id": "o248ad35097c33b8e", "loss": 2.035082156742087},
+        {"proposal_index": 2, "suggestion_id": "s4f0336a8ea15348e", "design_id": "d61de1ee4e74b", "fingerprint": "7761f7d9b507e9e666101a776c1d915821092a9281e3734f43eecc61ea907f58", "status": "observed_invalid", "observation_id": "o524a506eadc6dbc3", "loss": null},
+        {"proposal_index": 3, "suggestion_id": "s4f596a762baccbf9", "design_id": "d5a4861076556", "fingerprint": "049dae3d53b9b9afabeebcdd1975b7d793078a1f1414eac5eb0c0a96cb063239", "status": "observed_invalid", "observation_id": "o586708981b43f78b", "loss": null},
+        {"proposal_index": 4, "suggestion_id": "sc8bbf8599c665f63", "design_id": "d1b7b4e431fcf", "fingerprint": "1ab593ef3cd746e0a4dbe49ce3d76d77ccc3e7743df43c544570f18e9cd78349", "status": "observed_invalid", "observation_id": "o78afae103828827f", "loss": null}
+      ]
+    }
+  ],
+  "winner_freeze": {
+    "schema": "scienceutopia.metric-conditioned-winner-freeze.v1",
+    "frozen_utc": "2026-10-29T08:22:02.487009+00:00",
+    "freeze_sha256": "254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d",
+    "file_sha256": "fd60edb16182e31b531caac33da3ce2d8375dbead5ad85985d01574ed2bc8251",
+    "raw_locator": "outputs/optimization/metric-conditioned-v1-1/metric-conditioned-optimization-v1-1/23cbe8a107e5/winner-freeze.json",
+    "winners": [
+      {"campaign_id": "metric-conditioned-participation-review-v1-1", "proposal_index": 1, "suggestion_id": "sbf5c7ce5f0f3a18f", "design_id": "db197e2eb5b1a", "fingerprint": "d16d071a6d113d72672c869d46928f4a07340c57abde9037a7c9df09cc249130", "loss": 0.32184554454124087},
+      {"campaign_id": "metric-conditioned-topic-diversity-v1-1", "proposal_index": 0, "suggestion_id": "s35e03107a6494ea2", "design_id": "d3536002463db", "fingerprint": "2e41e887662db96a8b0f483f410929b29895981ba32fa4aa17e69988451aa23b", "loss": -1.6969310697990547},
+      {"campaign_id": "metric-conditioned-review-burden-v1-1", "proposal_index": 0, "suggestion_id": "s35e03107a6494ea2", "design_id": "d3536002463db", "fingerprint": "2e41e887662db96a8b0f483f410929b29895981ba32fa4aa17e69988451aa23b", "loss": 1.6689627945031262}
+    ]
+  },
+  "final_candidate_evidence": [
+    {"seed": 601, "wall_seconds": 4560.996267957962, "run_manifest_sha256": "0f49ed6efffd5f9c69dbd3cb077319f2fe6594347500d62e913bc26eaf7a9f13", "integrity_sha256": "c2744ad57ae13523ac4b40c5c833bd73b29ec9edcd7ab241f5e65419ad12fcdc", "attempt_log_sha256": "074ffad48955641a0bfa4678eb42598f047cb30696fe4ccb16a1ae4a9083c2a4"},
+    {"seed": 607, "wall_seconds": 4750.8950707500335, "run_manifest_sha256": "f9270a9f0fe8b86bcee100dd8bfd9b0f3371191d9f7531659e0a5e2264dcd881", "integrity_sha256": "f2643d0e4710c8a9b99bc11ed7e675eacc022fd7f4f14341d0535d850097c743", "attempt_log_sha256": "966f58c8d49c2045688d7ccfa3a6ea0505615e425ed619c3885354dabdbc1111"},
+    {"seed": 617, "wall_seconds": 4160.163501375006, "run_manifest_sha256": "0e68ef9e560399f57981116160867c2a4f7fa41213174acef1db378509ad58f3", "integrity_sha256": "04f1d634d056897ae4c9095738f10e53d96d4bd159aacd93bf97b72e263e6a7f", "attempt_log_sha256": "9644fd5b0d70b2851b29bfb5c87bc7720ef46a672f644b6cf9569e5531811455"}
+  ]
+}

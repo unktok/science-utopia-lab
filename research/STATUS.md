@@ -1,19 +1,19 @@
 # Program status
 
-Updated: 2026-10-28 14:49 JST
+Updated: 2026-10-29 17:22 JST
 
 ## Overall position
 
 The project has a working stochastic simulation, evaluation environment, and
-persistent closed-loop controller. The first commit-pinned Qwen3-8B campaign
-completed all nine runs and a real result-dependent adaptive update. The first
-metric-conditioned study reached eight complete runs, then correctly paused
-after one run exhausted its retry budget on a zero-query retrieval defect. A
-minimal repair and provenance-safe initial-trajectory adoption are now tested
-and integrated. Protocol v1.1 has restarted the same scientific design from
-clean source commit `1078279d1ce833afe9ffb6b7c262da15357b76ab`; its first
-canonical physical trajectory is running. This remains a synthetic research
-experiment, not a validated science-policy result.
+persistent closed-loop controller. Metric-Conditioned Optimization Study v1.1
+has completed its optimization phase from clean source commit
+`1078279d1ce833afe9ffb6b7c262da15357b76ab`: all 45 logical design-seed rows
+are terminal, every arm observed exactly five suggestions, and all three arm
+winners were sealed simultaneously before any held-out seed was registered or
+run. Provenance-safe initial-trajectory adoption reused eight complete
+canonical trajectories in each of two target arms while refusing the one
+failed source. This remains a synthetic research experiment, not a validated
+science-policy result.
 
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
@@ -28,13 +28,13 @@ Remote: `unktok/science-utopia-lab`
 | parameter design space | partial | eight parameters; first closed loop can use this fixed topology |
 | measurement | executable v1 | participation, topic spread, burden, coverage, attrition, activity, funding/resource diagnostics |
 | semantic instrumentation | prospective report-only slice | default-disabled explicit producer API, run/system/model-bound append-only stream, and fail-closed checkpoint/resume; not wired into the current simulator or optimizer |
-| optimization loss | v1 archived; v1.1 running | participation/review, topic-entropy, and review-burden losses remain the frozen experimental interventions |
+| optimization loss | v1.1 optimization complete | participation/review, topic-entropy, and review-burden arms each exhausted five suggestions under the same search conditions |
 | metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | objective constitution compiler | prospective synthetic-tested v1 | versioned stakeholder/construct/horizon/distribution/risk/tradeoff/Goodhart/evidence contract compiles only hash-verified validated metric cards into phase LossSpecs; no real metric promoted |
-| held-out evaluation metrics | executable v1 | versioned common suite, native evaluator, cross-objective analyses; real held-out runs remain |
+| held-out evaluation metrics | executable, untouched | versioned common suite and evaluator are frozen; no held-out registry or run exists yet |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
-| post-optimization comparison | executable pre-held-out v1 | explicit three-winner fingerprint gate, 3-by-3 LossSpec matrix, seed uncertainty, Pareto/trade-offs, runtime/failure/provenance, and paper SVG/LaTeX without held-out access |
+| post-optimization comparison | ready at frozen-winner gate | three winner fingerprints are sealed; pre-held-out analysis and later common held-out evaluation remain separate |
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
@@ -55,19 +55,19 @@ candidates.
 | frozen protocol | v1 is retained at source commit `9f9868d5bac631f6c7c373229d7807a26695a62f`; active v1.1 is tagged `protocol/metric-conditioned-optimization-v1.1` at `1078279d1ce833afe9ffb6b7c262da15357b76ab` |
 | three initial proposals per arm | byte-identical and registered; 27 initial logical runs total |
 | total optimization budget | 45 runs = 3 losses × 5 candidate systems × 3 development seeds |
-| completed optimization runs | active v1.1: 2 of 45 logical, 2 of 27 expected physical; seeds 601 and 607 both passed all four integrity and funding-trace checks in 6001.9 and 4884.4 seconds respectively; archived v1 evidence remains 8 complete plus 1 terminal failure and is not pooled |
-| currently running | 1 canonical physical run: participation/review design `d3536002463db`, seed 617, attempt 1 |
-| failures / retries | active v1.1: 0 terminal failed rows and 1 preserved 240.8-second operator interruption after a missing derived RAG cache was detected; seed 607 also retained stage-level semantic regeneration evidence (one year-2 funding ranking exhausted 3 attempts and was rejected fail-closed, the year-3 retry succeeded, and one self-citation response reached attempt 4) while its simulator process completed with return code 0; archived v1: 1 empty-query failure, repaired before the new source freeze |
-| remaining optimization runs | 43 logical; with successful audited adoption of the common initial trajectories, 25 physical simulations remain |
-| frozen arm winners | 0 of 3 |
+| completed optimization runs | 45 of 45 logical rows terminal: 30 complete and 15 technically failed; 29 rows were physically executed and 16 complete logical rows were provenance-safe adoptions |
+| currently running | none |
+| failures / retries | 15 terminal rows exhausted two attempts at the preregistered reviewer-capacity boundary; invalid suggestions retained `loss: null` and no numeric penalty or extra policy constraint entered an optimizer |
+| remaining optimization runs | 0 |
+| frozen arm winners | 3 of 3, sealed together in freeze `254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d` |
 | held-out evaluation runs | 0; seeds 701, 709, 719, 727, and 733 remain unused |
 
-The long-run v1.1 scheduler started at 11:04 JST and is intentionally
-single-worker. Its first attempt was interrupted after detecting an avoidable
-103,107-document CPU embedding rebuild. The replacement cache was admitted
-only after dataset identity, ordered semantic corpus hash, tensor shape,
-finiteness, and SHA-256 verification; attempt 2 started at 11:09 JST. A
-measured four-worker
+Across all arms, 45 physical process attempts consumed 107,966.6 serial
+seconds (29.99 hours). Eight complete canonical trajectories were adopted into
+each of the two other arms; all 16 links currently reverify their execution
+identity, immutable bundle receipt, raw-file set, and source-attempt
+provenance. The one failed canonical initial trajectory was not reused and was
+executed independently in both target arms. A measured four-worker
 microbenchmark against one local Ollama endpoint improved throughput only
 about 1.016× while increasing request latency, so local concurrency is not
 being treated as a fourfold speedup.
@@ -81,29 +81,28 @@ default constraint for future optimization.
 
 ## Next milestone
 
-Execute `Optimization v2` without consuming held-out seeds early. The
-preregistered `Metric-Conditioned Optimization Study v1` will hold the
-simulator, design space, optimizer, budget, and development seeds constant;
-change only the `LossSpec`; then compare the frozen arm winners on one common,
-untouched evaluation split. Seeds 523, 541, and 547 remain attached to the
-first campaign and are forbidden in the new study.
+Run the preregistered common held-out evaluation only from the immutable
+three-winner seal. The optimization phase held simulator, design space,
+optimizer, budget, and development seeds constant while changing only the
+`LossSpec`. Seeds 701, 709, 719, 727, and 733 remain untouched; seeds 523,
+541, and 547 remain attached to the first campaign and forbidden here.
 
 The next execution steps are:
 
 1. **complete:** freeze and audit the three experimental loss arms, executable
    common evaluator, analysis contract, and seed firewalls;
-2. **in progress:** run the canonical nine initial physical simulations from
-   the clean commit-pinned worktree, adopt their exact artifacts into the two
-   other LossSpec arms through the audited content-addressed boundary, then
-   continue each arm's two adaptive candidates; objective resolution remains a
-   secondary measurement-quality check rather than the scientific target;
-3. freeze one winner per arm before consuming the new study-held-out split,
-   then report a cross-evaluation matrix, rank reversals, trade-offs, gaming,
-   and generalization without selecting a universal winner;
-4. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
+2. **complete:** execute all five candidates per arm, safely adopt only valid
+   byte-identical initial trajectories, and retain every invalid observation
+   without a fabricated loss;
+3. **complete:** freeze one winner per arm simultaneously before consuming the
+   new study-held-out split;
+4. **next:** run the five untouched held-out seeds for the three frozen
+   winners, then report a cross-evaluation matrix, rank reversals, trade-offs,
+   gaming, and generalization without selecting a universal winner;
+5. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
    legacy topology;
-5. connect the hash-verified branch comparison UI to real commit-pinned campaign/replay manifests;
-6. keep every model-backed run commit-pinned and separate from active
+6. connect the hash-verified branch comparison UI to real commit-pinned campaign/replay manifests;
+7. keep every model-backed run commit-pinned and separate from active
    development worktrees.
 
 The first closed-loop result is frozen at revision `9a10029807d5`. Its untouched
