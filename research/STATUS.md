@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-29 22:42 JST
+Updated: 2026-10-30 08:16 JST
 
 ## Overall position
 
@@ -31,7 +31,7 @@ Remote: `unktok/science-utopia-lab`
 | optimization loss | v1.1 optimization complete | participation/review, topic-entropy, and review-burden arms each exhausted five suggestions under the same search conditions |
 | metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | objective constitution compiler | prospective synthetic-tested v1 | versioned stakeholder/construct/horizon/distribution/risk/tradeoff/Goodhart/evidence contract compiles only hash-verified validated metric cards into phase LossSpecs; no real metric promoted |
-| held-out evaluation metrics | running | the immutable three-winner seal opened the preregistered common split; 15 runs are registered and the first seed is running |
+| held-out evaluation metrics | running | 1 of 15 common-split runs is complete, the second is running, and 13 remain planned |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
 | post-optimization comparison | ready at frozen-winner gate | three winner fingerprints are sealed; pre-held-out analysis and later common held-out evaluation remain separate |
@@ -60,7 +60,7 @@ candidates.
 | failures / retries | 15 terminal rows exhausted two attempts at the preregistered reviewer-capacity boundary; invalid suggestions retained `loss: null` and no numeric penalty or extra policy constraint entered an optimizer |
 | remaining optimization runs | 0 |
 | frozen arm winners | 3 of 3, sealed together in freeze `254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d` |
-| held-out evaluation runs | 15 planned; the participation/review winner on seed 701 is running and the other 14 rows remain planned |
+| held-out evaluation runs | 1 complete (participation/review winner, seed 701; 62.2 minutes), 1 running (seed 709), 13 planned |
 
 Across all arms, 45 physical process attempts consumed 107,966.6 serial
 seconds (29.99 hours). Eight complete canonical trajectories were adopted into
