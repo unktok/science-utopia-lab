@@ -14,6 +14,10 @@ from scripts.reports.metric_conditioned_paper_slice import (
     main,
     write_outputs,
 )
+from scripts.reports.metric_conditioned_heldout_release import (
+    probe_readiness,
+    publish,
+)
 from utopia.optimization.harness import digest
 from utopia.optimization.metric_conditioned_analysis import build_analyses
 from utopia.optimization.metric_conditioned_study import (
@@ -50,7 +54,7 @@ def _registry(path, rows, adopted=()):
     connection.executescript("""
         CREATE TABLE runs (
             run_id TEXT PRIMARY KEY, status TEXT, wall_seconds REAL,
-            source_commit TEXT
+            source_commit TEXT, attempt INTEGER, max_attempts INTEGER
         );
         CREATE TABLE attempts (
             run_id TEXT, attempt INTEGER, status TEXT, wall_seconds REAL
@@ -63,7 +67,7 @@ def _registry(path, rows, adopted=()):
     for run_id in rows:
         physical = run_id not in adopted
         connection.execute(
-            "INSERT INTO runs VALUES (?, 'complete', ?, ?)",
+            "INSERT INTO runs VALUES (?, 'complete', ?, ?, 1, 2)",
             (run_id, 100.0 if physical else None, SOURCE_COMMIT),
         )
         if physical:
@@ -94,9 +98,12 @@ def _profile(metric_id, direction, base, *, slice_id=None):
             for seed, value in zip(HELD_OUT_SEEDS, values)
         ],
         "summary": {
-            "count": 5,
+            "n": 5,
             "mean": base,
+            "median": base,
             "population_sd": 0.01414213562373095,
+            "min": base - 0.02,
+            "max": base + 0.02,
         },
         "structured_summary": {},
         "complete": True,
@@ -340,7 +347,10 @@ def _fixture(tmp_path):
         "provenance": {"data_classification": SYNTHETIC},
         "loss_by_frozen_winner": losses,
         "held_out_metric_profiles": profiles,
-        "common_run_evaluations": {},
+        "common_run_evaluations": {
+            item["run_id"]: {"run_id": item["run_id"], "metrics": {}}
+            for item in held_runs
+        },
         "analyses": analyses,
         "raw_registry_report": {"report_errors": []},
     }
@@ -457,6 +467,66 @@ def test_fail_closed_when_arm_changes_controlled_optimizer(tmp_path):
         _build(fixture)
 
 
+def test_fail_closed_when_preregistered_analysis_is_tampered(tmp_path):
+    fixture = _fixture(tmp_path)
+    report = json.loads(fixture["report_path"].read_text())
+    report["analyses"]["rank_reversal"]["columns"][f"loss:{LOSSES[0]}"][
+        "raw_order"
+    ].reverse()
+    _write_json(fixture["report_path"], report)
+
+    with pytest.raises(ValueError, match="do not match recomputed inputs"):
+        _build(fixture)
+
+
+def test_fail_closed_when_metric_summary_is_tampered(tmp_path):
+    fixture = _fixture(tmp_path)
+    report = json.loads(fixture["report_path"].read_text())
+    report["held_out_metric_profiles"][ARMS[0]][0]["summary"]["mean"] += 0.1
+    _write_json(fixture["report_path"], report)
+
+    with pytest.raises(ValueError, match="summary mean is inconsistent"):
+        _build(fixture)
+
+
+def test_readiness_gate_does_not_open_report_before_all_runs_complete(tmp_path):
+    fixture = _fixture(tmp_path)
+    registry = fixture["study_root"] / "held-out-evaluation/runs.sqlite3"
+    connection = sqlite3.connect(registry)
+    connection.execute(
+        "UPDATE runs SET status = 'planned', attempt = 0 WHERE run_id = ?",
+        (f"held-0-{HELD_OUT_SEEDS[0]}",),
+    )
+    connection.commit()
+    connection.close()
+    fixture["report_path"].write_text("not-json", encoding="utf-8")
+
+    readiness = probe_readiness(fixture["study_root"])
+    assert readiness["ready_for_report"] is False
+    assert readiness["value_files_read"] is False
+    with pytest.raises(RuntimeError, match="refusing to read cross-evaluation"):
+        publish(
+            manifest_path=fixture["manifest_path"],
+            study_root=fixture["study_root"],
+            campaign_roots=fixture["campaign_roots"],
+            output_dir=tmp_path / "must-not-exist",
+            classification=SYNTHETIC,
+            formats=("png",),
+        )
+    assert not (tmp_path / "must-not-exist").exists()
+
+
+def test_readiness_gate_opens_only_after_complete_registry(tmp_path):
+    fixture = _fixture(tmp_path)
+    readiness = probe_readiness(fixture["study_root"])
+
+    assert readiness["expected_runs"] == 15
+    assert readiness["status_counts"] == {"complete": 15}
+    assert readiness["ready_for_report"] is True
+    assert readiness["ready_for_publication"] is True
+    assert readiness["value_files_read"] is False
+
+
 def test_synthetic_cli_cannot_publish_to_paper_destination():
     with pytest.raises(ValueError, match="may not be published"):
         main([
@@ -476,3 +546,14 @@ def test_paper_boundary_requires_generated_fragment_and_all_figures():
     assert "generated/metric-conditioned/metric-conditioned-results.generated" in boundary
     assert "No synthetic fixture" in boundary
     assert "tests/fixtures" not in boundary
+
+
+def test_methods_flow_keeps_four_contracts_and_firewall_visible():
+    root = Path(__file__).resolve().parents[2]
+    flow = (root / "paper/metric_conditioned_methods_flow.tex").read_text()
+    paper = (root / "paper/main.tex").read_text()
+
+    for label in ("LossSpec", "ValiditySpec", "held-out", "DecisionPolicy"):
+        assert label in flow
+    assert "simultaneous immutable winner freeze" in flow
+    assert "metric_conditioned_methods_flow" in paper

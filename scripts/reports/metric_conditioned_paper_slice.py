@@ -34,6 +34,7 @@ from utopia.optimization.metric_conditioned_study import (
     FREEZE_SCHEMA,
     STUDY_SCHEMA,
 )
+from utopia.optimization.metric_conditioned_analysis import build_analyses
 from utopia.optimization.loss import loss_spec_sha256
 
 
@@ -186,6 +187,81 @@ def _seed_map(items: Iterable[Mapping[str, Any]], value_key: str) -> dict[int, f
                 raise ValueError("seed observations require unique integer seeds")
             result[seed] = float(value)
     return result
+
+
+def _numeric_summary(values: Iterable[float]) -> dict[str, Any]:
+    numbers = [float(value) for value in values]
+    return {
+        "n": len(numbers),
+        "mean": statistics.fmean(numbers) if numbers else None,
+        "median": statistics.median(numbers) if numbers else None,
+        "population_sd": statistics.pstdev(numbers) if numbers else None,
+        "min": min(numbers) if numbers else None,
+        "max": max(numbers) if numbers else None,
+    }
+
+
+def _flatten_numeric(value: Any, prefix: str = "") -> dict[str, float]:
+    flattened: dict[str, float] = {}
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            if key in {"status", "reason"}:
+                continue
+            path = f"{prefix}.{key}" if prefix else str(key)
+            flattened.update(_flatten_numeric(item, path))
+    elif _finite(value):
+        flattened[prefix] = float(value)
+    return flattened
+
+
+def _structured_summary(values: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
+    by_path: dict[str, list[float]] = {}
+    for value in values:
+        for path, number in _flatten_numeric(value).items():
+            by_path.setdefault(path, []).append(number)
+    return {
+        path: _numeric_summary(numbers)
+        for path, numbers in sorted(by_path.items())
+    }
+
+
+def _equal_number(left: Any, right: Any) -> bool:
+    if left is None or right is None:
+        return left is right
+    return _finite(left) and _finite(right) and math.isclose(
+        float(left), float(right), rel_tol=0.0, abs_tol=1e-12
+    )
+
+
+def _verify_summary(
+    actual: Mapping[str, Any], expected: Mapping[str, Any], *, label: str
+) -> None:
+    if set(actual) != set(expected):
+        raise ValueError(f"{label} summary fields are inconsistent")
+    for key, expected_value in expected.items():
+        actual_value = actual.get(key)
+        if key == "n":
+            if actual_value != expected_value:
+                raise ValueError(f"{label} summary count is inconsistent")
+        elif not _equal_number(actual_value, expected_value):
+            raise ValueError(f"{label} summary {key} is inconsistent")
+
+
+def _analysis_digest(value: Mapping[str, Any]) -> str:
+    """Hash analyses while ignoring only scientifically irrelevant row order."""
+    normalized = json.loads(json.dumps(value, allow_nan=False))
+    for key in ("paired_tradeoffs", "gaming_flags"):
+        normalized[key] = sorted(
+            normalized.get(key, []),
+            key=lambda item: json.dumps(item, sort_keys=True, separators=(",", ":")),
+        )
+    rank = normalized.get("rank_reversal", {})
+    for key in ("pairwise_kendall_tau_b", "winner_reversals"):
+        rank[key] = sorted(
+            rank.get(key, []),
+            key=lambda item: json.dumps(item, sort_keys=True, separators=(",", ":")),
+        )
+    return digest(normalized, length=64)
 
 
 def _paired_uncertainty(
@@ -404,6 +480,15 @@ def _validate_inputs(
         arm_runs = [item for item in snapshot_runs if item.get("campaign_id") == arm]
         if sorted(item.get("seed") for item in arm_runs) != sorted(held_out_seeds):
             raise ValueError(f"{arm} held-out seeds are incomplete")
+        if any(
+            item.get("design_id") != winners[arm].get("design_id")
+            or item.get("loss_spec_id") != winners[arm]["loss_spec"].get("id")
+            for item in arm_runs
+        ):
+            raise ValueError(f"{arm} held-out runs do not use its frozen winner")
+    expected_run_ids = {item["run_id"] for item in snapshot_runs}
+    if set(report.get("common_run_evaluations", {})) != expected_run_ids:
+        raise ValueError("common held-out evaluations do not match the sealed run set")
 
     losses = report.get("loss_by_frozen_winner", {})
     if set(losses) != set(arms):
@@ -414,7 +499,7 @@ def _validate_inputs(
     for arm in arms:
         if set(losses[arm]) != loss_ids:
             raise ValueError(f"{arm} cross-evaluation is not a complete 3x3 matrix")
-        expected_run_ids = {
+        expected_arm_run_ids = {
             item["run_id"] for item in snapshot_runs if item["campaign_id"] == arm
         }
         for loss_id, cell in losses[arm].items():
@@ -428,7 +513,7 @@ def _validate_inputs(
                 cell.get("status") != "complete"
                 or not _finite(cell.get("loss"))
                 or sorted(measured) != sorted(held_out_seeds)
-                or {item.get("run_id") for item in values} != expected_run_ids
+                or {item.get("run_id") for item in values} != expected_arm_run_ids
                 or any(item.get("missing_reason") is not None for item in values)
                 or expected_loss is None
                 or not math.isclose(float(cell["loss"]), expected_loss, abs_tol=1e-12)
@@ -453,8 +538,40 @@ def _validate_inputs(
                 )
             if len(profile.get("seed_values", [])) != len(held_out_seeds):
                 raise ValueError(f"held-out metric has the wrong seed count for {arm}")
-            if any(item.get("status") != "measured" for item in profile["seed_values"]):
+            seed_values = profile["seed_values"]
+            if sorted(item.get("seed") for item in seed_values) != sorted(held_out_seeds):
+                raise ValueError(f"held-out metric has the wrong seed set for {arm}")
+            if any(
+                item.get("status") != "measured"
+                or item.get("missing_reason") is not None
+                for item in seed_values
+            ):
                 raise ValueError(f"held-out metric has non-measured values for {arm}")
+            values = [item.get("value") for item in seed_values]
+            label = f"{arm}/{profile.get('id')}/{profile.get('slice')}"
+            if all(_finite(value) for value in values):
+                _verify_summary(
+                    profile.get("summary", {}),
+                    _numeric_summary(float(value) for value in values),
+                    label=label,
+                )
+                if profile.get("structured_summary"):
+                    raise ValueError(f"{label} mixes scalar and structured summaries")
+            elif all(isinstance(value, Mapping) for value in values):
+                expected_structured = _structured_summary(values)
+                actual_structured = profile.get("structured_summary", {})
+                if set(actual_structured) != set(expected_structured):
+                    raise ValueError(f"{label} structured summary paths are inconsistent")
+                for path, expected_summary in expected_structured.items():
+                    _verify_summary(
+                        actual_structured[path],
+                        expected_summary,
+                        label=f"{label}/{path}",
+                    )
+                if profile.get("summary") != _numeric_summary([]):
+                    raise ValueError(f"{label} mixes structured and scalar summaries")
+            else:
+                raise ValueError(f"{label} contains non-finite or mixed metric values")
     if set(report.get("held_out_metric_profiles", {})) != set(arms):
         raise ValueError("held-out metric profiles are missing an arm")
     required_analyses = {
@@ -466,6 +583,13 @@ def _validate_inputs(
     }
     if set(report.get("analyses", {})) != required_analyses:
         raise ValueError("cross-evaluation report lacks preregistered analyses")
+    recomputed_analyses = build_analyses(
+        freeze=freeze,
+        profiles=report["held_out_metric_profiles"],
+        losses=report["loss_by_frozen_winner"],
+    )
+    if _analysis_digest(recomputed_analyses) != _analysis_digest(report["analyses"]):
+        raise ValueError("cross-evaluation analyses do not match recomputed inputs")
     rank_columns = report["analyses"]["rank_reversal"].get("columns", {})
     for loss_id in loss_ids:
         column = rank_columns.get(f"loss:{loss_id}", {})

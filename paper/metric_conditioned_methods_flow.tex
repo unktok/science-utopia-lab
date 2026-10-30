@@ -1,0 +1,43 @@
+% Method boundary, intentionally independent of experimental result values.
+\begin{figure}[t]
+\centering
+\setlength{\fboxsep}{5pt}
+\begin{minipage}{0.98\linewidth}
+\small
+\centering
+\fbox{\begin{minipage}{0.94\linewidth}
+\textbf{Optimization split (search-visible)}\hfill
+\code{LossSpec} $\rightarrow$ optimizer \code{ask} $\rightarrow$ candidate
+\systemspec{} $\rightarrow$ development-seed simulation
+
+\medskip
+\code{ValiditySpec} admits or rejects a technical observation; only a valid
+declared loss returns through \code{tell}. Held-out metrics and policy rules do
+not enter this loop.
+\end{minipage}}
+
+\vspace{3pt}
+$\Downarrow$ simultaneous immutable winner freeze $\Downarrow$
+\vspace{3pt}
+
+\fbox{\begin{minipage}{0.94\linewidth}
+\textbf{Common held-out split (report-only)}\hfill
+frozen systems $\times$ untouched common seeds $\rightarrow$ technical
+validity $\rightarrow$ held-out metric profiles and all $3\times3$ LossSpec
+cross-evaluations
+
+\medskip
+Paired effects $+$ uncertainty $+$ rank reversal $+$ trade-offs $+$ gaming
+diagnostics $+$ generalization gaps $\rightarrow$ evidence report
+\end{minipage}}
+
+\vspace{3pt}
+$\Downarrow$ optional, separately versioned \code{DecisionPolicy}
+
+\end{minipage}
+\caption{Metric-conditioned study flow and information firewall. Optimization
+loss, technical validity, held-out evaluation, and optional promotion policy
+are distinct contracts. Held-out observations cannot feed back into the frozen
+search.}
+\label{fig:metric-conditioned-methods-flow}
+\end{figure}

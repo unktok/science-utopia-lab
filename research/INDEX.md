@@ -42,6 +42,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Pre-held-out optimization completion analysis](decisions/0012-pre-held-out-optimization-completion-analysis.md)
 - [Optimization completion analysis runbook](protocols/campaigns/metric-conditioned-optimization-completion-analysis-v1.md)
 - [Post-optimization cross-objective runbook](protocols/campaigns/metric-conditioned-post-optimization-comparison-v1.md)
+- [Held-out release and paper-publication runbook](protocols/campaigns/metric-conditioned-heldout-release-v1.md)
 - [Objective catalog v1 decision](decisions/0011-objective-catalog-v1.md)
 - [Semantic instrumentation decision](decisions/0013-report-only-semantic-instrumentation.md)
 - [Prospective semantic recorder decision](decisions/0014-prospective-semantic-recorder-checkpoint.md)
