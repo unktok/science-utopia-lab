@@ -1,0 +1,44 @@
+{
+  "schema": "scienceutopia.held-out-progress.v1",
+  "truth_status": "verified_progress_snapshot",
+  "disclosure": "Read-only orchestration facts from a synthetic UI-test registry; no loss, metric, model output, candidate update, or promotion decision is included.",
+  "observed_at_utc": "2026-10-30T04:30:00+00:00",
+  "study": { "id": "metric-conditioned-optimization-v1.1", "revision": "heldout-ops-fixture-1" },
+  "registry": {
+    "path": "synthetic://game-ui/held-out-registry",
+    "registered_runs": 15,
+    "expected_runs": 15,
+    "projection_sha256": "9ac287f8e42f08ced467ce5f9ba3a875ef421b75e7accc387f515e8acc5134c6"
+  },
+  "progress": {
+    "counts": { "planned": 11, "running": 1, "complete": 3, "failed": 0 },
+    "completion_fraction": 0.2,
+    "retryable_failures": 0,
+    "terminal_failures": 0,
+    "active_runs": [
+      {
+        "run_id": "heldout-participation-review-s727",
+        "seed": 727,
+        "attempt": 1,
+        "max_attempts": 2,
+        "started_utc": "2026-10-30T03:26:00+00:00",
+        "elapsed_seconds": 3840
+      }
+    ],
+    "duration_summary": {
+      "count": 3,
+      "mean_seconds": 5584,
+      "median_seconds": 6000,
+      "minimum_seconds": 3732,
+      "maximum_seconds": 7020
+    },
+    "eta": {
+      "method": "completed_run_median",
+      "remaining_seconds": 61200,
+      "estimated_completion_utc": "2026-10-30T21:30:00+00:00"
+    }
+  },
+  "health": { "stalled": false, "stale_after_hours": 4, "stale_run_ids": [], "failures": [] },
+  "gate": { "ready_for_report": false, "next_action": "continue-evaluation" },
+  "snapshot_sha256": "c7720f404e44474babb280544f811ef66bd269c32f117aa75117dd9a60cf2a8b"
+}

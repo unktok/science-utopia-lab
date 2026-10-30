@@ -1,6 +1,6 @@
 import "./arcologyNav.css";
 
-export type ArcologyModeId = "replay" | "sandbox" | "mission";
+export type ArcologyModeId = "replay" | "sandbox" | "mission" | "heldout";
 export type ArcologyLocation = ArcologyModeId | "hub";
 
 export interface ArcologyMode {
@@ -8,7 +8,7 @@ export interface ArcologyMode {
   key: string;
   district: string;
   title: string;
-  truth: "VERIFIED REPLAY" | "SYNTHETIC SANDBOX" | "VERIFIED SNAPSHOT";
+  truth: "VERIFIED REPLAY" | "SYNTHETIC SANDBOX" | "VERIFIED SNAPSHOT" | "SYNTHETIC UI FIXTURE";
   truthClass: "verified" | "synthetic" | "snapshot";
   href: string;
   description: string;
@@ -34,6 +34,12 @@ export const ARCOLOGY_MODES: readonly ArcologyMode[] = [
     truth: "VERIFIED SNAPSHOT", truthClass: "snapshot", href: "./mission.html",
     description: "Read timestamped orchestration progress without objective values, provisional winners, or held-out evidence.",
     asset: "/assets/noctiluca/production/institution-funding.svg",
+  },
+  {
+    id: "heldout", key: "E", district: "COMMON-SPLIT RELAY", title: "Evaluation ops",
+    truth: "SYNTHETIC UI FIXTURE", truthClass: "synthetic", href: "./heldout.html",
+    description: "Inspect a versioned 3 × 5 held-out execution fixture while results, ranks, and provisional winners remain sealed.",
+    asset: "/assets/noctiluca/production/system-evaluation.svg",
   },
 ] as const;
 

@@ -1,5 +1,14 @@
 # Deterministic visual QA
 
+## Common-Split Relay v1
+
+`noctiluca-heldout-relay-synthetic.png` is the `1440x1050` reduced-motion
+capture of the Common-Split Relay. Both source documents are UI-test fixtures;
+the image is not an experiment result or live progress report.
+
+Two independent empty-profile Chrome captures were byte-identical: SHA-256
+`14ae93e2b5373d8a1d47fcd92650aa1d0ebf0d46d5ee1b02971093f44376737d`.
+
 ## Optimizer Observatory v1
 
 These `1440x1050` reduced-motion captures embed the result-blind optimization

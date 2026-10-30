@@ -1,0 +1,80 @@
+{
+  "schema": "scienceutopia.game-held-out-run-grid.synthetic.v1",
+  "truth_status": "synthetic",
+  "disclosure": "Synthetic 3 × 5 run-grid for UI testing. Identities, timing, and states are invented and are not live experiment evidence.",
+  "observed_at_utc": "2026-10-30T04:30:00+00:00",
+  "study": {
+    "id": "metric-conditioned-optimization-v1.1",
+    "revision": "heldout-ops-fixture-1",
+    "system_count": 3,
+    "seeds_per_system": 5,
+    "total_runs": 15
+  },
+  "systems": [
+    {
+      "system_id": "system-participation-review",
+      "label": "Continuity Habitat",
+      "loss_spec_id": "participation-review-loss-v1",
+      "loss_condition": "conditioned for participation / review continuity",
+      "design_fingerprint": "1a0d1c51dbe14a09c17dc891cc7f4328",
+      "freeze_status": "sealed",
+      "freeze_id": "254c3366e921787ad6a36776801b1cb3b",
+      "asset": "/assets/noctiluca/production/system-evaluation.svg",
+      "runs": [
+        { "run_id": "heldout-participation-review-s701", "seed": 701, "status": "complete", "elapsed_seconds": null, "wall_seconds": 3732, "attempt": 1, "failure_id": null },
+        { "run_id": "heldout-participation-review-s709", "seed": 709, "status": "complete", "elapsed_seconds": null, "wall_seconds": 6000, "attempt": 1, "failure_id": null },
+        { "run_id": "heldout-participation-review-s719", "seed": 719, "status": "complete", "elapsed_seconds": null, "wall_seconds": 7020, "attempt": 1, "failure_id": null },
+        { "run_id": "heldout-participation-review-s727", "seed": 727, "status": "running", "elapsed_seconds": 3840, "wall_seconds": null, "attempt": 1, "failure_id": null },
+        { "run_id": "heldout-participation-review-s733", "seed": 733, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null }
+      ]
+    },
+    {
+      "system_id": "system-topic-entropy",
+      "label": "Plurality Canopy",
+      "loss_spec_id": "topic-entropy-loss-v1",
+      "loss_condition": "conditioned for topic-distribution entropy",
+      "design_fingerprint": "2b1e2d62ecf25b10d28ed902dd8a5439",
+      "freeze_status": "sealed",
+      "freeze_id": "254c3366e921787ad6a36776801b1cb3b",
+      "asset": "/assets/noctiluca/production/system-communication.svg",
+      "runs": [
+        { "run_id": "heldout-topic-entropy-s701", "seed": 701, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-topic-entropy-s709", "seed": 709, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-topic-entropy-s719", "seed": 719, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-topic-entropy-s727", "seed": 727, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-topic-entropy-s733", "seed": 733, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null }
+      ]
+    },
+    {
+      "system_id": "system-review-burden",
+      "label": "Civic Review Loom",
+      "loss_spec_id": "review-burden-loss-v1",
+      "loss_condition": "conditioned for review-burden reduction",
+      "design_fingerprint": "3c2f3e73fda36c21e39fea13ee9b654a",
+      "freeze_status": "sealed",
+      "freeze_id": "254c3366e921787ad6a36776801b1cb3b",
+      "asset": "/assets/noctiluca/production/system-government.svg",
+      "runs": [
+        { "run_id": "heldout-review-burden-s701", "seed": 701, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-review-burden-s709", "seed": 709, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-review-burden-s719", "seed": 719, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-review-burden-s727", "seed": 727, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null },
+        { "run_id": "heldout-review-burden-s733", "seed": 733, "status": "planned", "elapsed_seconds": null, "wall_seconds": null, "attempt": 0, "failure_id": null }
+      ]
+    }
+  ],
+  "technical_failures": [],
+  "boundary": {
+    "result_visibility": "sealed_until_phase_complete",
+    "loss_values_exported": false,
+    "heldout_metrics_exported": false,
+    "provisional_winner_exported": false,
+    "statement": "This run-grid reports orchestration only. It contains no loss values, held-out measurements, rankings, model outputs, or provisional winner."
+  },
+  "provenance": {
+    "fixture_revision": "heldout-run-grid-synthetic-v1",
+    "input_mode": "versioned_portable_snapshot",
+    "live_registry_access": false
+  },
+  "snapshot_sha256": "20f27bd016ca2cff94b9d94c58916de5ddce613d2939ef9e5430b8a51d5ab8e1"
+}

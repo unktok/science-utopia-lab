@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050611" />
+    <title>NOCTILUCA // Common-Split Relay</title>
+  </head>
+  <body class="relay-body">
+    <a class="skip-link" href="#system-grid">Skip to frozen system relay</a>
+    <main id="relay-app" class="relay-app" data-motion="full">
+      <header class="relay-topbar">
+        <div class="wordmark"><span class="wordmark__signal" aria-hidden="true"></span>NOCTILUCA <em>// COMMON-SPLIT RELAY</em></div>
+        <dl class="relay-run-strip">
+          <div><dt>STUDY</dt><dd id="study-id">loading…</dd></div>
+          <div><dt>PHASE</dt><dd id="phase-id">—</dd></div>
+          <div><dt>SNAPSHOT UTC</dt><dd id="snapshot-time">—</dd></div>
+        </dl>
+        <div id="relay-verification" class="verification" data-state="loading" role="status">VERIFYING SNAPSHOT</div>
+      </header>
+
+      <section class="relay-disclosure" aria-label="Truth boundary">
+        <strong id="truth-badge">SYNTHETIC UI FIXTURE</strong>
+        <p id="relay-disclosure">Loading held-out operations contract…</p>
+        <span>NO LIVE SQLITE · NO RESULT FIELDS</span>
+      </section>
+
+      <section class="relay-brief" aria-labelledby="relay-title">
+        <div>
+          <span class="eyebrow">FROZEN SYSTEMS · COMMON SEEDS · RESULT-BLIND OPERATIONS</span>
+          <h1 id="relay-title">THREE SCIENCE SYSTEMS ENTER THE SAME WEATHER</h1>
+          <p>Each LossSpec produced one frozen system. This relay tracks execution of the same five held-out seeds for all three systems. It does not expose loss values, held-out measurements, rankings, or a universal winner.</p>
+        </div>
+        <div class="relay-clock">
+          <span><i aria-hidden="true"></i>CURRENT SIGNAL</span>
+          <strong id="current-run">—</strong>
+          <small><b id="elapsed">—</b> elapsed · <b id="eta">—</b> estimated remaining</small>
+        </div>
+      </section>
+
+      <section class="relay-progress" aria-label="Study execution progress">
+        <div class="progress-copy"><strong id="progress-count">—</strong><span>TERMINAL RUNS</span></div>
+        <div class="progress-track" aria-hidden="true"><i id="progress-fill"></i><b id="progress-runner"></b></div>
+        <dl>
+          <div><dt>COMPLETE</dt><dd id="complete-count">—</dd></div>
+          <div><dt>RUNNING</dt><dd id="running-count">—</dd></div>
+          <div><dt>QUEUED</dt><dd id="planned-count">—</dd></div>
+          <div data-failure><dt>TECH FAIL</dt><dd id="failed-count">—</dd></div>
+        </dl>
+      </section>
+
+      <section id="system-grid" class="system-grid" aria-label="Three frozen science systems"></section>
+
+      <section class="relay-console" aria-label="System comparison and evidence boundary">
+        <article class="comparison-dock">
+          <header><span class="eyebrow">SYSTEM COMPARISON DOCK</span><span>ORCHESTRATION FACTS ONLY</span></header>
+          <nav id="system-tabs" aria-label="Select a frozen system"></nav>
+          <div class="comparison-body">
+            <img id="selected-system-asset" src="/assets/noctiluca/production/system-evaluation.svg" width="96" height="80" alt="" />
+            <dl id="selected-system"></dl>
+          </div>
+        </article>
+
+        <article class="failure-bay">
+          <header><span class="eyebrow">TECHNICAL FAILURE BAY</span><b id="failure-beacon">0 SIGNALS</b></header>
+          <div class="failure-machinery" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+          <p id="failure-copy">Technical failures are execution validity facts, never poor scientific outcomes and never numeric penalties.</p>
+          <ol id="failure-list"></ol>
+        </article>
+
+        <article class="sealed-results">
+          <header><span class="eyebrow">EVIDENCE QUARANTINE</span><b>SEALED</b></header>
+          <div class="sealed-vault" aria-hidden="true"><i></i><span>×</span><i></i></div>
+          <dl>
+            <div><dt>OPTIMIZATION LOSS</dt><dd>WITHHELD FROM VIEW</dd></div>
+            <div><dt>HELD-OUT METRICS</dt><dd>SEALED UNTIL COMPLETE</dd></div>
+            <div><dt>PROVISIONAL WINNER</dt><dd>NOT A VALID OBJECT</dd></div>
+          </dl>
+          <p>Completion unlocks cross-evaluation, rank reversals, trade-offs, gaming diagnostics, and generalization analysis—not a single universal winner.</p>
+        </article>
+      </section>
+
+      <footer class="relay-footer">
+        <strong>TRUTH BOUNDARY</strong>
+        <p id="boundary-copy">—</p>
+        <code id="snapshot-hash">—</code>
+      </footer>
+
+      <div id="relay-error" class="relay-error" hidden role="alert"><strong>SNAPSHOT REJECTED</strong><span></span></div>
+    </main>
+    <script type="module" src="/src/heldout.ts"></script>
+  </body>
+</html>

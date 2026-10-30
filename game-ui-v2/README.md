@@ -175,6 +175,27 @@ as `NOT OBSERVED`, not implied by the visual layout. See
 - [verified result-blind observatory](screenshots/noctiluca-optimizer-observatory-verified.png)
 - [synthetic status-coverage observatory](screenshots/noctiluca-optimizer-observatory-synthetic.png)
 
+## Common-Split Relay
+
+Open `heldout.html` for the result-blind held-out execution view. Three frozen
+systems occupy separate habitats and share the same five seed stations. The
+screen shows run status, current physical run, elapsed time, median-based ETA,
+and technical failures, but deliberately contains no loss values, held-out
+measurements, rankings, model output, or provisional winner.
+
+```text
+http://localhost:4173/heldout.html
+```
+
+The local slice joins two independently hashed, versioned files: an unchanged
+`scienceutopia.held-out-progress.v1` snapshot from a synthetic UI-test
+registry, and a conspicuously labelled synthetic 3 × 5 presentation grid. It
+does not read the active registry, experiment worktree, or raw outputs. See
+`research/tracks/game-ui-heldout-progress-v1.md` for the future verified
+adapter boundary.
+
+- [synthetic held-out relay](screenshots/noctiluca-heldout-relay-synthetic.png)
+
 ## Deterministic review scene
 
 The review URLs fix replay time and motion state:
