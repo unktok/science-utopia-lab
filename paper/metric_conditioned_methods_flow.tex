@@ -5,39 +5,49 @@
 \begin{minipage}{0.98\linewidth}
 \small
 \centering
-\fbox{\begin{minipage}{0.94\linewidth}
-\textbf{Optimization split (search-visible)}\hfill
-\code{LossSpec} $\rightarrow$ optimizer \code{ask} $\rightarrow$ candidate
-\systemspec{} $\rightarrow$ development-seed simulation
+\textbf{Objective is the intervention; the institution is the search output}
 
-\medskip
-\code{ValiditySpec} admits or rejects a technical observation; only a valid
-declared loss returns through \code{tell}. Held-out metrics and policy rules do
-not enter this loop.
-\end{minipage}}
+\vspace{4pt}
+\begin{tabular}{ccc}
+\fbox{\parbox{0.27\linewidth}{\centering
+\textbf{LossSpec A}\\participation $+$ review\\
+$\downarrow$\\search path A $\rightarrow S_A^*$}}
+&
+\fbox{\parbox{0.27\linewidth}{\centering
+\textbf{LossSpec B}\\topic-entropy proxy\\
+$\downarrow$\\search path B $\rightarrow S_B^*$}}
+&
+\fbox{\parbox{0.27\linewidth}{\centering
+\textbf{LossSpec C}\\review-burden proxy\\
+$\downarrow$\\search path C $\rightarrow S_C^*$}}
+\end{tabular}
 
-\vspace{3pt}
+\vspace{5pt}
+Each path repeats: \code{ask} $\rightarrow$ candidate \systemspec{}
+$\rightarrow$ development simulation $\rightarrow$ \code{ValiditySpec}
+$\rightarrow$ declared loss $\rightarrow$ \code{tell}.
+
+\vspace{4pt}
 $\Downarrow$ simultaneous immutable winner freeze $\Downarrow$
-\vspace{3pt}
 
-\fbox{\begin{minipage}{0.94\linewidth}
-\textbf{Common held-out split (report-only)}\hfill
-frozen systems $\times$ untouched common seeds $\rightarrow$ technical
-validity $\rightarrow$ held-out metric profiles and all $3\times3$ LossSpec
-cross-evaluations
+\vspace{4pt}
+\fbox{\begin{minipage}{0.92\linewidth}
+\centering
+\textbf{Common held-out cross-evaluation}\quad
+$\{S_A^*,S_B^*,S_C^*\}\times$ untouched seeds $\times$
+$\{L_A,L_B,L_C,\text{diagnostics}\}$
 
-\medskip
-Paired effects $+$ uncertainty $+$ rank reversal $+$ trade-offs $+$ gaming
-diagnostics $+$ generalization gaps $\rightarrow$ evidence report
+\smallskip
+rank reversals $+$ uncertainty $+$ trade-offs $+$ gaming diagnostics
 \end{minipage}}
 
 \vspace{3pt}
-$\Downarrow$ optional, separately versioned \code{DecisionPolicy}
-
+Held-out results never return to \code{ask}; an optional
+\code{DecisionPolicy} remains separately versioned.
 \end{minipage}
-\caption{Metric-conditioned study flow and information firewall. Optimization
-loss, technical validity, held-out evaluation, and optional promotion policy
-are distinct contracts. Held-out observations cannot feed back into the frozen
-search.}
+\caption{Central experimental logic. Unlike a fixed intervention comparison,
+the objective conditions the sequential process that produces each institution.
+Loss, technical validity, held-out evaluation, and post-evaluation policy remain
+distinct contracts.}
 \label{fig:metric-conditioned-methods-flow}
 \end{figure}

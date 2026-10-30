@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-31 08:40 JST
+Updated: 2026-10-31
 
 ## Overall position
 
@@ -16,6 +16,13 @@ Provenance-safe initial-trajectory adoption reused eight complete
 canonical trajectories in each of two target arms while refusing the one
 failed source. This remains a synthetic research experiment, not a validated
 science-policy result.
+
+The working paper is now explicitly framed around the map
+`objective -> search path -> frozen system -> held-out profile`. The original
+Suto paper's fixed, investigator-selected intervention comparisons are treated
+as the base simulator's contribution rather than repeated as this project's
+main claim. Decision 0020 records the revised claim boundary and next
+experiment.
 
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
@@ -95,10 +102,12 @@ default constraint for future optimization.
 ## Next milestone
 
 The preregistered common held-out comparison is complete. The next experimental
-milestone is to test robustness under larger seed budgets and replicated
-optimizer runs, while separately sealing the first simulator-backed structural
-campaign over the whole-system mechanism grammar. Seeds 701, 709, 719, 727,
-and 733 remain consumed by v1.1 and must not be reused as fresh held-out
+milestone is a replicated optimizer study: larger valid budgets, multiple
+optimizer seeds, equal-budget random/Sobol baselines followed by suitable
+Bayesian or evolutionary methods, incumbent-loss curves, and design-collapsed
+held-out analysis. In parallel, the first simulator-backed structural campaign
+over the whole-system mechanism grammar should be sealed. Seeds 701, 709, 719,
+727, and 733 remain consumed by v1.1 and must not be reused as fresh held-out
 evidence. Seeds 523, 541, and 547 remain attached to the first campaign.
 
 The next execution steps are:

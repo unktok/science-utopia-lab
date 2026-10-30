@@ -1,6 +1,6 @@
 # Science Utopia Lab — program map
 
-Updated: 2026-10-28
+Updated: 2026-10-31
 
 ![Science Utopia Lab program map](figures/science-utopia-program-map.png)
 
@@ -39,19 +39,25 @@ metrics. A result such as “loss A produced system A*, which scores this way on
 metrics A/B/C” is the intended evidence. Testing whether loss A can reliably
 distinguish two already chosen systems is only supporting measurement QA.
 
+The paper-level claim is deliberately narrower and clearer: v1.1 is the first
+existence proof of the full map above. It is not yet evidence that the baseline
+optimizer is sample-efficient, that each objective yields a distinct design,
+or that the whole mechanism graph has been optimized. These gaps define the
+next experiment rather than being hidden as implementation details.
+
 ## Current tracks
 
 | Track | Current state | What is actually finished | Next evidence-producing step |
 |---|---|---|---|
-| Reproducible simulator | operational | local Qwen3-8B, repeated seeds, restart/provenance, longitudinal runs | keep frozen during metric-conditioned study |
-| Metric-conditioned optimization | v1.1 optimization phase complete | 45/45 logical rows are terminal, 16 complete rows have verified adoption lineage, all 15 suggestions are observed, and three winners are sealed together at freeze `254c3366…9244d` before held-out use | publish the development-only completion analysis, then open the separately sealed common held-out phase |
+| Reproducible simulator | operational | local Qwen3-8B, repeated seeds, restart/provenance, longitudinal runs | keep completed v1.1 immutable while designing replicated campaigns |
+| Metric-conditioned optimization | v1.1 complete | 45/45 logical development rows are terminal, three winners were sealed before held-out use, and all 15 common held-out rows completed | replicate paths with larger valid budgets and multiple optimizer seeds |
 | Evaluation metrics | common suite, report-only semantic instrumentation, prospective objective landscape, and ObjectiveSpec compiler | executable diagnostics now sit beside versioned semantic events, missingness/gaming fixtures, a fail-closed recorder, a source-hash-bound audit of the current LossSpecs, nine metric cards/objective relations, and a constitution that requires governance, stakeholders, time, distribution, uncertainty, trade-offs, Goodhart audit, and measurement evidence before compiling future phase-specific LossSpecs; none changes the three frozen LossSpecs | wire prospective evidence into a separately preregistered campaign, validate constructs/cards, then make and seal the explicit normative ObjectiveSpec choice before compiling a new LossSpec |
 | Whole-system abstraction | first native structural mechanism beyond the legacy topology | canonical runs feed typed SystemSpec workloads, validated legacy-compatible graphs compile to sealed plans, and an exact broadcast/digest communication overlay now executes through the production simulator handler with canonical lineage, latency, fingerprinted checkpoint/resume, and default-off isolation from legacy citation | implement the next unsupported mechanism runtime, then execute separately preregistered structural campaigns after the frozen baseline closes |
-| Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | compare stronger methods only after the multi-loss baseline closes |
+| Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | compare random, Sobol, Bayesian, and evolutionary methods under equal budgets |
 | Structural optimization | multiple production vertical slices | 145 government candidates and a separate 97-candidate communication space vary node presence, implementation, edge/fan-out presence, and latency; every candidate executes through a fingerprint-bound black-box ask/execute/loss/tell and checkpoint boundary | compare these structures under research LossSpecs after the frozen eight-parameter baseline closes |
 | Differentiable systems | not started | conceptual direction only | differentiable surrogate/relaxation after stable black-box targets and measurements |
 | Game and replay | research arcology, authoritative operations/interior/life-course layer, system sandbox, and optimization mission control | a pixel-art hub connects verified replay, the separate synthetic graph editor, and the hash-bound study snapshot; Evidence Quay, four institutional cutaways, and researcher dossiers bind activities, resources, active state, papers, reviews, and funding to cursor-bounded canonical events/frames while keeping rooms, poses, relationship layout, motion, packets, lighting, and narrative styling presentation-only | add verified collaboration/evidence navigation and connect the newly frozen winner fingerprints through the read-only adapter |
-| Paper and scientific graphics | pre-held-out completion analysis unblocked | a fail-closed development-only builder audits 45 optimization runs, winner freeze, 15-by-3 cross-scores, uncertainty, ranking reversals, runtime/provenance, and held-out non-use before atomic paper outputs | run from freeze `254c3366…9244d`; only then proceed to the separately sealed held-out result builder |
+| Paper and scientific graphics | held-out result published; narrative revised | automatic evidence slice plus objective-conditioned framing, search-path interpretation, claim boundary, and Suto/Lab contrast | add replicated optimizer comparisons and parameter/mechanism path graphics when new evidence exists |
 | Compute | measured | one local Ollama endpoint at four workers gave only about 1.016x throughput | use independent endpoints/GPUs for material parallel speedup; retain seed isolation |
 
 ## Dependency logic
@@ -74,21 +80,19 @@ The project is deliberately not a single linear backlog.
 
 ## Immediate milestone
 
-Complete `Metric-Conditioned Optimization Study v1` without consuming its
-held-out worlds early:
+Metric-Conditioned Optimization Study v1.1 is complete, including its common
+held-out split. The next milestone is to determine whether the observed
+objective-conditioned patterns survive a stronger optimization design:
 
-1. **complete:** freeze three contrasting proxy objectives, identical search
-   conditions, common evaluation suite, and analysis code;
-2. **in progress:** run equal-budget black-box optimization for each objective
-   from the clean commit-pinned worktree;
-3. freeze one winner per arm before opening the evaluation split;
-4. cross-evaluate all winners on the same metrics and visualize rank reversals,
-   trade-offs, generalization gaps, and proxy gaming;
-5. report what changed in the optimized systems—without declaring one metric or
-   system universally correct.
+1. preregister multiple optimizer seeds and a larger valid evaluation budget;
+2. compare adaptive search with equal-budget random and Sobol baselines;
+3. report incumbent loss versus evaluation count and proposal lineage;
+4. collapse duplicate system fingerprints in institutional comparisons;
+5. broaden the objective family through the Objective Constitution boundary;
+6. seal a separate simulator-backed structural campaign over mechanism graphs.
 
-In parallel, expand the verified game v2 slice and turn the generic mechanism
-runner into checkpointable production adapters. Long model campaigns must run
-from a clean commit-pinned worktree, separate from active game and abstraction
-development.
+In parallel, connect the verified game views to the completed evidence package
+and continue turning the generic mechanism runner into production adapters.
+Long model campaigns must run from a clean, commit-pinned worktree, separate
+from active game and abstraction development.
 

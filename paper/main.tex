@@ -19,7 +19,7 @@
 \newcommand{\suto}{\textsc{Suto}}
 \newcommand{\code}[1]{\texttt{#1}}
 
-\title{Science Utopia Lab: Auditable Black-Box Optimization\\of Simulated Scientific Institutions\\\large Working Draft --- Auditable System Optimization}
+\title{Objective-Conditioned Black-Box Optimization\\of Simulated Scientific Institutions\\\large Science Utopia Lab --- Working Draft}
 
 \author{Science Utopia Lab \\
 \texttt{https://github.com/unktok/science-utopia-lab} \\
@@ -30,27 +30,50 @@
 \maketitle
 
 \begin{abstract}
-Scientific institutions are coupled dynamical systems: evaluation, publication, funding, collaboration, and researcher participation jointly shape future scientific activity. We present Science Utopia Lab, an extension of the \suto{} closed-loop LLM-agent simulator that treats the institutional system itself as the object of optimization. The central interface is a versioned, typed \systemspec{} graph whose mechanisms and parameters can be proposed by an optimizer, executed by a stochastic simulator, and evaluated under an explicitly versioned loss. The software separates optimization loss, technical run validity, held-out evaluation metrics, and optional policy-selection rules. In a preregistered Qwen3-8B study, three objectives each evaluated five systems on three common development seeds, yielding 45 terminal logical rows: 30 technically valid and 15 invalid with no fabricated loss. The objectives selected two distinct institutional designs, which were sealed before 15 common held-out runs. Held-out scoring produced a descriptive loss-dependent rank reversal, but all nine paired loss contrasts had 95\% intervals containing zero; the experiment therefore characterizes objective dependence rather than stable superiority. We also introduce canonical event replay and a game-like observatory that preserves provenance from visual state to simulation events. These results establish an auditable optimization substrate, not an optimal real-world science policy; held-out evidence is admitted only through an atomic completion gate.
+Prior simulation studies of science compare interventions chosen in advance. We study a different problem: given an explicit objective, can a black-box optimizer search over the institution itself, and how does changing that objective alter the search path and the system selected? Science Utopia Lab extends the \suto{} closed-loop LLM-agent simulator with a versioned design object, a persistent \code{ask}/\code{tell} loop, and strict separation among optimization loss, technical validity, held-out evaluation, and post-evaluation policy. In a preregistered Qwen3-8B study, we hold the simulator, eight-parameter design space, optimizer, budget, and seeds fixed while changing only the loss. Three objectives each evaluate five candidate systems on three common development seeds, producing 45 terminal logical rows. They select two distinct designs, sealed before 15 common held-out runs. Cross-scoring the frozen designs yields a descriptive loss-dependent rank reversal, although all nine paired contrasts have 95\% intervals containing zero. The study therefore demonstrates objective-conditioned institutional search, not stable superiority, optimizer efficiency, structural optimization, or a real-world policy optimum. The broader framework represents evaluation, publication, funding, governance, communication, and other mechanisms as a typed \systemspec{} graph, making whole-system optimization the research target while clearly marking the current fixed-topology experiment as its first restricted slice.
 \end{abstract}
 
 \section{Introduction}
 
-Science policy often asks a systems question: which institutional arrangements best support reliable, useful, diverse, and sustainable science? Real-world controlled experimentation is limited by cost, time, ethics, and the absence of counterfactual outcomes. Agent-based simulation can provide a laboratory for such questions, but comparison of hand-selected interventions is only the first step. If a complete simulated scientific ecosystem is viewed as a stochastic function, institutional design becomes an optimization problem.
+Science policy often asks a systems question: which institutional arrangements best support reliable, useful, diverse, and sustainable science? Real-world controlled experimentation is limited by cost, time, ethics, and the absence of counterfactual outcomes. Agent-based simulation can provide a laboratory for such questions, but comparison of hand-selected interventions is only the first step. If a complete simulated scientific ecosystem is viewed as a stochastic function, institutional design becomes an optimization problem: the objective is chosen explicitly, while the institution is the variable to be searched.
 
-The original \suto{} framework models persistent researchers, institutions, funding, collaboration, submission, peer review, resubmission, citation, and attrition across simulated years~\citep{jin2026scienceutopia}. Its reported experiments comprise 61 simulation worlds, more than 40,000 researchers, roughly 400,000 publication decisions, and 1.2 million LLM-generated reviews. Science Utopia Lab starts from that simulator and asks a different methodological question: can the \emph{system that organizes science} be represented as a design object and optimized through a reproducible, inspectable loop?
+The original \suto{} framework models persistent researchers, institutions, funding, collaboration, submission, peer review, resubmission, citation, and attrition across simulated years~\citep{jin2026scienceutopia}. Its 61 reported worlds compare investigator-specified strategies and institutional interventions, including exploration behavior, resubmission, selectivity, disclosure, and funding capacity. Those experiments ask what happens under a chosen condition. Science Utopia Lab starts from the same simulator but asks a different methodological question: conditional on a declared objective, what \emph{system that organizes science} does a sequential optimizer discover?
 
-This question is deceptively difficult. A scalar objective can turn an observable proxy into an unintended target, a problem closely related to Campbell's law and metric gaming~\citep{campbell1979assessing,fire2019overoptimization}. Technical failures must not be silently converted into bad objective values. Metrics used during search cannot simultaneously be described as held out. Finally, optimizing only a peer-review parameter would mistake one mechanism for the entire scientific institution.
+\begin{table}[t]
+\caption{The base simulator and Science Utopia Lab use related machinery but different experimental objects.}
+\label{tab:suto-vs-lab}
+\centering
+\small
+\begin{tabular}{p{0.18\linewidth}p{0.36\linewidth}p{0.36\linewidth}}
+\toprule
+ & Original \suto{} studies & Science Utopia Lab \\
+\midrule
+Intervention & Hand-specified strategy or institutional condition & Versioned optimization objective \\
+Variable of interest & Outcomes under fixed conditions & Search path and resulting \systemspec{} \\
+Feedback & Within-world scientific dynamics & Within-world dynamics plus optimizer \code{tell}$\rightarrow$\code{ask} \\
+Primary evidence & Matched counterfactual effects & Objective-conditioned trajectories, selected systems, and cross-objective held-out behavior \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This distinction matters. Reporting that one acceptance rate or funding rule changes an outcome would largely repeat the intervention logic already enabled by \suto{}. Our object of study is instead the map
+\begin{equation}
+    \text{objective} \longrightarrow \text{search trajectory} \longrightarrow \text{selected institution} \longrightarrow \text{held-out profile}.
+\end{equation}
+The central scientific questions are therefore whether objectives induce different search paths, whether those paths select different systems, and what trade-offs appear when every frozen system is scored under every objective. A later question is whether one optimizer reaches better systems per simulation budget than another.
+
+This problem is deceptively difficult. A scalar objective can turn an observable proxy into an unintended target, a problem closely related to Campbell's law and metric gaming~\citep{campbell1979assessing,fire2019overoptimization}. Technical failures must not be silently converted into bad objective values. Metrics used during search cannot simultaneously be described as held out. Finally, optimizing only a peer-review parameter would mistake one mechanism for the entire scientific institution.
 
 This report makes four contributions:
 
 \begin{enumerate}[leftmargin=*,nosep]
-    \item a whole-system representation based on typed mechanism graphs, with a strict bridge to the current fixed-topology simulator;
-    \item an optimizer boundary that supports non-differentiable black-box methods while leaving room for future differentiable relaxations;
-    \item a persistent, commit-pinned, seed-replicated closed loop with explicit separation between loss, validity, held-out metrics, and decision policy; and
-    \item canonical replay plus a game-like interface for inspecting agents, artifacts, resources, and institutional events without replacing the research record with a visualization.
+    \item an objective-conditioned research design in which the loss, rather than a hand-selected institution, is the experimental intervention;
+    \item a persistent black-box loop that records how observations generate later system proposals and keeps loss, validity, held-out metrics, and decision policy separate;
+    \item a first equal-budget, three-objective experiment with frozen winners and complete cross-objective held-out scoring; and
+    \item a typed whole-system representation that extends the design target beyond peer review while refusing to describe the current fixed-topology runtime as structural optimization.
 \end{enumerate}
 
-The empirical contribution is intentionally narrow. We demonstrate that the loop executes and adapts using a local Qwen3-8B model, then hold the simulator, design space, search budget, and seeds fixed while changing only the optimized loss. The common held-out split completed with no technical failure and entered this draft through an atomic completion gate. We do not claim that any proxy measures scientific value or that a selected candidate should inform real policy.
+The empirical contribution is intentionally narrow. We hold the simulator, design space, search budget, and seeds fixed while changing only the optimized loss. This isolates the first link in the map above, but the five-candidate budget, frequent technical invalidity, and two distinct winners do not yet support a strong claim about optimizer efficiency or path diversity. The common held-out split completed with no technical failure and entered this draft through an atomic completion gate. We do not claim that any proxy measures scientific value or that a selected candidate should inform real policy.
 
 \section{Problem Formulation}
 
@@ -116,31 +139,57 @@ $\downarrow$ \hfill canonical events, snapshots, hashes \hfill $\downarrow$\\
 
 \paragraph{Reproducibility boundary.} Campaign files pin the source revision, model and backend, loss hash, search seed, optimization and held-out seed sets, fidelity, worker count, and suggestion budget. Raw model caches and large outputs remain outside Git; compact results, hashes, protocols, and interpretation are versioned.
 
-\section{First Result-Dependent Closed Loop}
+\input{metric_conditioned_results}
 
-\subsection{Protocol}
+\section{Objectives as a Science-of-Science Problem}
 
-The first real campaign was frozen as \code{first-closed-loop-engineering} at revision \code{9a10029807d5} and protocol tag \code{protocol/first-closed-loop-engineering-v1.1}. It used Qwen3-8B through Ollama on a local Apple M5 Pro host, smoke fidelity, one worker, and three optimization seeds: 503, 509, and 521. Seeds 523, 541, and 547 were reserved for later held-out evaluation and were not consumed.
+The hard research problem is not merely selecting an optimizer; it is deciding what counts as a good scientific system. Science-of-science research characterizes funding, collaboration, careers, publication, and diffusion, but descriptive regularities do not automatically define normative objectives~\citep{fortunato2018science}. The Leiden Manifesto likewise argues that quantitative evaluation should support, not replace, expert judgment and should be matched to institutional missions~\citep{hicks2015leiden}.
 
-The restricted search space varied eight parameters within the fixed simulator topology: acceptance rate, reviews per paper, reviewer capacity, reviewer matching, review policy, funding-budget slot fraction, funding-application cost, and resubmission cost. The budget comprised two independent initial suggestions followed by one adaptive suggestion.
+Accordingly, future campaigns should retain a multi-dimensional measurement layer even if a temporary scalar is used during search. Candidate constructs include epistemic reliability and correction, useful exploration, diversity as variety/balance/disparity~\citep{stirling2007general}, resource efficiency, sustainable research capacity, distributional outcomes, public or mission value, and resistance to gaming. Reproducibility and replicability should remain distinct~\citep{nasem2019reproducibility}. Citation counts, publication counts, acceptance rates, and LLM review scores are diagnostics or proxies, not direct measurements of truth or social value.
 
-For run $r$, the engineering loss was
-\begin{equation}
-    \ell_r = 1-a_r+0.05b_r,
-\end{equation}
-where $a_r$ is the active-researcher fraction and $b_r$ is review burden per active researcher. Across the three seeds,
-\begin{equation}
-    L(S)=\operatorname{mean}_r(\ell_r)+0.25\operatorname{sd}_{\mathrm{pop},r}(\ell_r).
-\end{equation}
-Lower is better. This loss was designed only to exercise the infrastructure with an observable continuity signal and a small burden term. It is explicitly prohibited from supporting claims about scientific quality, social welfare, or policy optimality.
+This framing also clarifies the analogy with national science policy. Governments are important funders, rule setters, and beneficiaries, but their utility is not the sole welfare function. Researchers, affected communities, the international knowledge commons, future generations, and the environment can bear different benefits and burdens. Science Utopia should make those principals and trade-offs inspectable rather than hide them in one score.
 
-\subsection{Results}
+\section{Related Work}
 
-All nine runs completed on their first attempt, passed native integrity checks, and passed funding-application trace checks. Table~\ref{tab:results} shows the optimization trace.
+Our base simulator is \suto{}~\citep{jin2026scienceutopia}. Its matched counterfactuals vary investigator-selected strategies or institutional conditions and analyze their downstream effects. We instead intervene on the objective and study the search process that produces an institution. This complements rather than reproduces the original analyses: \suto{} supplies the longitudinal world, while Science Utopia Lab adds an outer optimization loop and makes objective-conditioned system discovery the experimental object.
 
-\begin{table}[t]
-\caption{Optimization trace. The adaptive point explicitly depends on observation \code{o27437...}; lower loss is better.}
-\label{tab:results}
+Generative-agent systems have demonstrated persistent memory, reflection, and social interaction in simulated environments~\citep{park2023generative}, while \suto{} specializes these ideas to research ecosystems grounded in scientific artifacts. Black-box optimization provides methods for expensive, derivative-free objectives, including Bayesian optimization and evolutionary strategies~\citep{shahriari2016taking}. Our contribution is not a new optimizer or evidence that the present baseline is efficient. It is an interchangeable, auditable boundary through which optimizer methods can later be compared under equal simulation budgets.
+
+Research assessment scholarship motivates the explicit separation between measured proxies and institutional goals. Campbell~\citep{campbell1979assessing} and later empirical work on academic metrics~\citep{fire2019overoptimization} warn that optimization pressure can change the process being measured. We therefore treat metric gaming as a future object of simulation, not merely measurement noise.
+
+\section{Limitations, Risks, and Ethics}
+
+\paragraph{Simulator validity.} An LLM-agent world is not a validated causal model of real academia. Results can reflect prompting, model priors, retrieval data, simplified resource accounting, or omitted mechanisms. Policy claims require external validation and sensitivity analysis beyond software correctness.
+
+\paragraph{Objective misspecification.} The demonstrated objectives are coarse and normatively incomplete. Optimizing them at scale could reward survival without knowledge quality, maximize entropy without epistemic value, or reduce review burden by suppressing valuable evaluation. The two narrow proxy objectives selected the same design, and the diagnostic gaming flags show why proxy-specific improvements must not be treated as welfare improvements.
+
+\paragraph{Restricted action space.} The optimizer currently mutates eight parameters within a fixed legacy topology. Although \systemspec{} can describe arbitrary mechanism graphs, the general executor and topology mutation operators are not yet implemented. We therefore do not claim structural optimization.
+
+\paragraph{Sparse paths and no optimizer baseline.} The study has five proposals per arm. Two arms have only two technically valid designs and therefore provide little adaptive-path evidence. No equal-budget random, Sobol, Bayesian, or evolutionary baseline was run, and no optimizer-seed replication was performed. The experiment demonstrates a functioning objective-conditioned loop, not search efficiency or optimizer superiority.
+
+\paragraph{Scale and uncertainty.} The engineering demonstration uses three one-year smoke worlds, and the objective-conditioned study uses three four-year development worlds per system plus five common held-out seeds. Every one of the nine paired held-out loss intervals contains zero, so the observed rank reversal is descriptive rather than evidence of stable pairwise superiority. Topic entropy and review burden also selected the same design; their separately simulated arm-labelled trajectories are stochastic repetitions, not distinct institutions. None of these simulations supports inference about real institutional effects.
+
+\paragraph{Representational and governance risks.} Synthetic agents should not be assigned real protected characteristics by inference from names or text. Future fairness experiments should use explicit synthetic attributes and document causal assumptions. Human oversight, appeal, public legitimacy, scientific freedom, and externalized harms must remain visible when governance mechanisms are introduced.
+
+\section{Roadmap}
+
+The next research stage has four parallel tracks. First, replicate objective-conditioned paths with larger valid budgets, multiple optimizer seeds, design-collapsed analysis, and broader objective families. Second, compare random, Sobol, Bayesian, and evolutionary methods under an equal simulation budget, reporting incumbent loss versus evaluations rather than only final winners. Third, bind the existing mechanism registry and joint structural grammar into a sealed simulator-backed campaign so that evaluation, publication, funding, governance, and communication can be added, removed, or replaced. Fourth, investigate differentiable surrogates and connect the replay observatory to provenance-linked views of objective, path, system, and held-out evidence.
+
+\section{Conclusion}
+
+Science Utopia Lab turns institutional design into an explicit computational object. Its present empirical claim is specific: changing the optimized proxy can change the trajectory and frozen institutional design under otherwise common search conditions, and the resulting systems can exchange rank when cross-scored under different losses. This is conceptually different from comparing interventions chosen in advance, because the objective conditions the search that produces the intervention. It is also only a first slice: two objectives collapsed to the same design, invalid proposals truncated two adaptive paths, and five held-out seeds did not establish stable pairwise superiority. The next experiments must replicate optimizer paths, compare search methods under equal budgets, broaden objective families, and move from eight fixed-topology parameters toward mechanism structure.
+
+\appendix
+
+\section{Engineering Validation of the Result-Dependent Loop}
+
+Before the objective-conditioned study, a separate campaign verified that a real simulator observation could change a later proposal. The campaign was frozen as \code{first-closed-loop-engineering} at revision \code{9a10029807d5}. It used Qwen3-8B through Ollama, smoke fidelity, one worker, and development seeds 503, 509, and 521. The restricted eight-parameter space matched the later study.
+
+For run $r$, the engineering loss was $\ell_r=1-a_r+0.05b_r$, where $a_r$ is active-researcher fraction and $b_r$ is review burden per active researcher. The aggregate was $L(S)=\operatorname{mean}_r(\ell_r)+0.25\operatorname{sd}_{\mathrm{pop},r}(\ell_r)$. This was an infrastructure probe, not a scientific-quality or policy objective.
+
+\begin{table}[h]
+\caption{Engineering trace showing one observation-dependent proposal. Lower loss is better.}
+\label{tab:engineering-trace}
 \centering
 \small
 \begin{tabular}{llllr}
@@ -154,64 +203,20 @@ Suggestion & Phase & Design & Parent observation & Loss \\
 \end{tabular}
 \end{table}
 
-The second initial design had the lower initial loss. The controller therefore used its observation, \code{o27437d6a43b8379b}, to generate the adaptive design. This establishes a genuine result-dependent transition rather than replay of a precomputed third point. The adaptive design changed acceptance rate (0.2364 to 0.1911), funding-budget slot fraction (0.2315 to 0.2677), and resubmission cost (2.6319 to 4.5566), yet produced exactly the same loss inputs on all three seeds. Under first-at-minimum tie handling, the earlier design remained incumbent. We make no improvement claim.
+The adaptive design changed acceptance rate, funding-budget slot fraction, and resubmission cost, yet tied the incumbent on all three seeds. Thus the test establishes result dependence, not improvement. All nine runs completed and the campaign consumed 9,821.6 serial seconds. A separate four-worker microbenchmark against one local Ollama endpoint produced no material throughput gain, motivating independent inference endpoints for future replicated campaigns.
 
-This tie is itself diagnostic. At one-year smoke fidelity, the loss observes only participation and review burden. Distinct institutional settings can collapse to the same signal. A future objective must be justified by a measurement model and tested for resolution before expensive optimization.
+\section{Canonical Replay and Research Observatory}
 
-\subsection{Runtime and audit}
+Long-running multi-agent simulations are difficult to inspect from aggregate tables alone. The accompanying interface presents commit-pinned canonical event replay as a cyberpunk pixel-art research arcology (Figure~\ref{fig:game}). Users can step through time, follow researchers and institutional flows, and inspect evidence without treating presentation-only choreography as simulation output.
 
-The campaign consumed 9,821.6 serial seconds (2 h 43 min 42 s). Mean runtime was 1,091.3 s per run, with a range of 792.7--1,531.5 s. Twelve unaffordable funding applications were represented as explicit terminal withdrawals rather than dropped silently. No held-out seed appeared in the registry. Reopening the campaign with status/init/status operations left its persisted artifacts byte-stable.
-
-The local concurrency microbenchmark found no material throughput gain from four logical workers against one Ollama/Qwen3-8B endpoint. This does not preclude acceleration: independent replicas can be distributed across genuinely independent inference endpoints or GPUs, while a faster backend can reduce per-token latency. However, concurrency settings should be measured end-to-end because a single loaded model may serialize requests or incur latency inflation.
-
-\input{metric_conditioned_results}
-
-\section{Replay as a Game-Like Research Interface}
-
-Long-running multi-agent simulations are difficult to understand from summary tables alone. The current interface therefore presents a commit-pinned canonical event replay as a cyberpunk pixel-art research arcology (Figure~\ref{fig:game}). A user can play, step, or scrub through time; follow researchers and institutional flows; and open evidence graphs, researcher dossiers, optimization views, and institutional cutaways. Canonical facts, deterministic derived choreography, ambient effects, and presentation-only staging remain visibly separated so that a more expressive world does not become a second source of scientific evidence.
-
-\begin{figure}[t]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{figures/game-ui.png}
-    \caption{Real-browser capture of a verified seed-521 peer-review event at authoritative frame 28. The research city remains visible behind a four-room institutional cutaway with an active sealed-review room and canonical event inspector. Room layout, researcher sprites, furniture, packet motion, and lighting are explicitly presentation-only; event identity and the authoritative frame remain grounded in the commit-pinned replay. This historical engineering campaign is not the metric-conditioned result.}
+    \includegraphics[width=0.92\linewidth]{figures/game-ui.png}
+    \caption{Real-browser capture of a verified seed-521 peer-review event. Event identity and authoritative frame are grounded in commit-pinned replay; room layout, poses, packet motion, and lighting are presentation-only. This engineering campaign is not evidence from the objective-conditioned study.}
     \label{fig:game}
 \end{figure}
 
-The verified replay remains read only: an intervention creates a new, versioned branch rather than mutating recorded history. The interface now includes repository-owned researcher and workstation sprites, distinct research, manuscript, review, and funding rooms, and visible paper, review, citation, funding, and policy routes. The next research-facing step is to bind these comparison and observatory views to the frozen metric-conditioned winners and completed held-out evidence without collapsing verified replay, synthetic system design, and optimization state into one truth boundary.
-
-\section{Objectives as a Science-of-Science Problem}
-
-The hard research problem is not merely selecting an optimizer; it is deciding what counts as a good scientific system. Science-of-science research characterizes funding, collaboration, careers, publication, and diffusion, but descriptive regularities do not automatically define normative objectives~\citep{fortunato2018science}. The Leiden Manifesto likewise argues that quantitative evaluation should support, not replace, expert judgment and should be matched to institutional missions~\citep{hicks2015leiden}.
-
-Accordingly, future campaigns should retain a multi-dimensional measurement layer even if a temporary scalar is used during search. Candidate constructs include epistemic reliability and correction, useful exploration, diversity as variety/balance/disparity~\citep{stirling2007general}, resource efficiency, sustainable research capacity, distributional outcomes, public or mission value, and resistance to gaming. Reproducibility and replicability should remain distinct~\citep{nasem2019reproducibility}. Citation counts, publication counts, acceptance rates, and LLM review scores are diagnostics or proxies, not direct measurements of truth or social value.
-
-This framing also clarifies the analogy with national science policy. Governments are important funders, rule setters, and beneficiaries, but their utility is not the sole welfare function. Researchers, affected communities, the international knowledge commons, future generations, and the environment can bear different benefits and burdens. Science Utopia should make those principals and trade-offs inspectable rather than hide them in one score.
-
-\section{Related Work}
-
-Our base simulator is \suto{}~\citep{jin2026scienceutopia}; this report focuses on the infrastructure required to optimize institutional designs around it. Generative-agent systems have demonstrated persistent memory, reflection, and social interaction in simulated environments~\citep{park2023generative}, while Science Utopia specializes these ideas to research ecosystems grounded in scientific artifacts. Black-box optimization provides methods for expensive, derivative-free objectives, including Bayesian optimization and evolutionary strategies~\citep{shahriari2016taking}. Our contribution is not a new optimizer, but a boundary that makes such methods interchangeable while preserving seeds, provenance, validity, and held-out evaluation.
-
-Research assessment scholarship motivates the explicit separation between measured proxies and institutional goals. Campbell~\citep{campbell1979assessing} and later empirical work on academic metrics~\citep{fire2019overoptimization} warn that optimization pressure can change the process being measured. We therefore treat metric gaming as a future object of simulation, not merely measurement noise.
-
-\section{Limitations, Risks, and Ethics}
-
-\paragraph{Simulator validity.} An LLM-agent world is not a validated causal model of real academia. Results can reflect prompting, model priors, retrieval data, simplified resource accounting, or omitted mechanisms. Policy claims require external validation and sensitivity analysis beyond software correctness.
-
-\paragraph{Objective misspecification.} The demonstrated objectives are coarse and normatively incomplete. Optimizing them at scale could reward survival without knowledge quality, maximize entropy without epistemic value, or reduce review burden by suppressing valuable evaluation. The two narrow proxy objectives selected the same design, and the diagnostic gaming flags show why proxy-specific improvements must not be treated as welfare improvements.
-
-\paragraph{Restricted action space.} The optimizer currently mutates eight parameters within a fixed legacy topology. Although \systemspec{} can describe arbitrary mechanism graphs, the general executor and topology mutation operators are not yet implemented. We therefore do not claim structural optimization.
-
-\paragraph{Scale and uncertainty.} The engineering demonstration uses three one-year smoke worlds, and the metric-conditioned study uses three four-year development worlds per system plus five common held-out seeds. Every one of the nine paired held-out loss intervals contains zero, so the observed rank reversal is descriptive rather than evidence of stable pairwise superiority. Topic entropy and review burden also selected the same design; their separately simulated arm-labelled trajectories are stochastic repetitions, not distinct institutions. None of these simulations supports inference about real institutional effects.
-
-\paragraph{Representational and governance risks.} Synthetic agents should not be assigned real protected characteristics by inference from names or text. Future fairness experiments should use explicit synthetic attributes and document causal assumptions. Human oversight, appeal, public legitimacy, scientific freedom, and externalized harms must remain visible when governance mechanisms are introduced.
-
-\section{Roadmap}
-
-The next research stage has four parallel tracks. First, test whether the metric-conditioned patterns persist under larger seed budgets, design-collapsed analysis, broader objective families, and optimizer replication. Second, bind the existing mechanism registry and joint structural grammar into a sealed simulator-backed campaign so that evaluation, publication, funding, governance, and communication can be added, removed, or replaced. Third, compare black-box methods under equal simulation budgets and investigate differentiable surrogates or continuous relaxations without requiring the LLM simulator itself to be differentiable. Fourth, connect the replay observatory to the completed comparison through provenance-linked, read-only evidence views and versioned intervention branches.
-
-\section{Conclusion}
-
-Science Utopia Lab turns institutional design into an explicit computational object. Its current contribution is a verifiable bridge from a typed system specification, through stochastic LLM-agent simulation and a versioned loss, back to a result-dependent optimizer. The three-arm study shows that changing the optimized proxy can change the frozen institutional design under otherwise common search conditions. Fifteen optimization-stage technical failures remained invalid observations rather than artificial penalties; all 15 held-out runs completed. The held-out matrix exhibits descriptive objective-dependent rank reversal and large differences in accepted-paper count and review coverage, but its five-seed paired loss intervals do not establish a universal or stable winner. The project next expands the design object from eight parameters toward mechanism structure and tests robustness under larger replicated budgets.
+The verified replay remains read only: an intervention creates a new, versioned branch rather than mutating recorded history. This interface is supporting research infrastructure, not a contribution to the optimization result itself.
 
 \section*{Reproducibility Statement}
 

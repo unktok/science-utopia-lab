@@ -13,16 +13,40 @@
   }{}%
 }{}%
 
-\section{Metric-Conditioned Optimization Study}
+\section{Objective-Conditioned Institutional Search}
 \label{sec:metric-conditioned-results}
 
-The preregistered study holds the design space, optimizer, budget, and seeds
-fixed while changing only the optimization loss. It uses four-year
-longitudinal Qwen3-8B worlds, five candidates per objective, and three common
-development seeds per candidate. Each arm freezes its winner before a common
-held-out suite evaluates all three objective-conditioned systems. Topic entropy
-and review burden are deliberately narrow proxy objectives, not normative
-policy recommendations.
+The scientific intervention in this study is the optimization objective. The
+institution is the dependent design object produced by search. The
+preregistered study holds the simulator, eight-parameter design space,
+\code{AdaptiveRandomSearch}, five-candidate budget, and seeds fixed while
+changing only the \code{LossSpec}. It uses four-year longitudinal Qwen3-8B
+worlds and three common development seeds per candidate. Each arm freezes its
+winner before a common held-out suite evaluates all objective-conditioned
+systems.
+
+We ask three questions at the scale supported by this pilot:
+\begin{enumerate}[leftmargin=*,nosep]
+    \item Does changing the objective alter the observed optimization path?
+    \item Does it alter the frozen institutional design?
+    \item Do the frozen designs exchange rank when evaluated under other objectives?
+\end{enumerate}
+Whether adaptive search outperforms random, quasi-random, Bayesian, or
+evolutionary search is a separate question that requires equal-budget optimizer
+replication and is not answered here.
+
+For each valid run $r$, the three minimized per-run losses are
+\begin{align}
+\ell^{\mathrm{part}}_r &= 1-a_r+0.05b_r, &
+\ell^{\mathrm{topic}}_r &= -h_r, &
+\ell^{\mathrm{burden}}_r &= b_r,
+\end{align}
+where $a_r$ is the active-researcher fraction, $b_r$ is review burden per active
+researcher, and $h_r$ is topic entropy. Every arm aggregates its per-run loss
+as the mean plus $0.25$ population standard deviations over the three
+development seeds. The topic and burden objectives are deliberately narrow
+stress tests: entropy does not measure truth or usefulness, and review burden
+can be reduced by suppressing evaluation itself.
 
 \subsection{Optimization-stage results}
 
@@ -64,13 +88,26 @@ Review burden proxy & C1 & \code{d353600...} & 8 / 7 & 1.668963 \\
 \end{tabular}
 \end{table}
 
+\subsection{What the search paths show}
+
+The paths are informative but sparse. In the participation--review arm, C2
+improved on C1 and became the incumbent; after C3 failed technical validity,
+two valid adaptive proposals C4 and C5 were evaluated but did not improve it.
+In the topic arm, C1 and C2 tied exactly and C3--C5 were invalid. In the burden
+arm, C1 beat C2 and C3--C5 were invalid. Thus only one arm produced a multi-step
+valid adaptive path. The experiment establishes that the loop can condition
+subsequent proposals on arm-specific observations, but it does not yet show
+rich or repeatable path divergence.
+
 The participation--review objective selected a different system from the other
 two objectives. Topic diversity and review burden selected the same system on
 the development split, while the topic objective could not distinguish the two
-initial systems. This is evidence that changing the optimized metric can alter
-the selected institution in this simulated setting; it is not yet evidence
-that one system generalizes better. The simultaneous winner seal was written
-before any held-out registry existed.
+valid initial systems. Accordingly, three objective labels yielded only two
+distinct designs. This is evidence that changing the optimized objective can
+alter the selected institution in this simulated setting; it is not evidence
+that every objective induces a distinct institution or that adaptive search
+beats non-adaptive candidate generation. The simultaneous winner seal was
+written before any held-out registry existed.
 
 \subsection{Held-out publication boundary}
 
@@ -89,3 +126,19 @@ sealed. The common held-out evaluation is not yet complete, so no held-out
 generalization or universal-winner claim is published.}}
 \end{center}
 \fi
+
+\subsection{Interpretation: optimization, not another intervention sweep}
+
+The substantive result is not that a particular acceptance rate, review
+policy, or funding fraction causes a particular outcome. Those parameter
+differences are properties of systems returned by search. The result is the
+conditional map from declared objective to search history, frozen design, and
+held-out profile. This is the dimension absent from a matched comparison of
+hand-selected institutional interventions.
+
+The current evidence supports only the first existence claim for that map. A
+stronger optimization claim requires multiple optimizer seeds, a larger valid
+budget, design-collapsed analysis when objectives choose the same system, and
+equal-budget baselines such as random or Sobol sampling. A whole-system claim
+additionally requires the generic mechanism graph runtime: the present search
+changes eight parameters inside one fixed topology.

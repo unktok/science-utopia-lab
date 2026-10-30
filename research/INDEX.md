@@ -53,6 +53,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Objective Constitution compiler decision](decisions/0017-objective-constitution-compiler-v1.md)
 - [Differentiable whole-system surrogate decision](decisions/0018-differentiable-system-design-surrogate-v0.md)
 - [Native government policy runtime decision](decisions/0019-native-government-policy-runtime.md)
+- [Objective-conditioned search paper framing](decisions/0020-objective-conditioned-search-paper-framing.md)
 - [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
 - [Milestone 3: first real result-dependent closed loop](milestones/2026-10-27-first-closed-loop-engineering.md)
 - [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)
