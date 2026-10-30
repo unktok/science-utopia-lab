@@ -20,6 +20,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Generic mechanism graph runtime](components/mechanism-graph-runtime-v1.md)
 - [Heterogeneous production mechanism graph](components/heterogeneous-production-graph-v1.md)
 - [Production structural optimization](components/production-structural-optimization-v1.md)
+- [Whole-system structural black-box slice](components/whole-system-structural-blackbox-v1.md)
 - [Stateful government policy mechanism](components/stateful-government-policy-v1.md)
 - [Communication and knowledge diffusion mechanism](components/communication-knowledge-diffusion-v1.md)
 - [Simulator-backed workload bridge](components/simulator-workload-bridge-v1.md)

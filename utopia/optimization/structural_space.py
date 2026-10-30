@@ -410,6 +410,12 @@ class StructuralSystemSpace:
                 dict(zip((slot.slot_id for slot in self.grammar.node_slots), values[:node_count])),
                 dict(zip((slot.slot_id for slot in self.grammar.edge_slots), values[node_count:])),
             )
+            # Most invalid Cartesian combinations are simple dangling edges or
+            # unconnected required inputs.  Reject those cheaply before
+            # materializing and fully validating a complete SystemSpec.  The
+            # ordinary validator remains authoritative for retained choices.
+            if not self._has_resolvable_structure(selection):
+                continue
             try:
                 validate_system_spec(self._build_unchecked(selection)).require_valid()
             except ValueError:
@@ -417,6 +423,38 @@ class StructuralSystemSpace:
             valid.append(selection)
         return tuple(
             sorted(valid, key=lambda item: _canonical_json(item.to_dict()))
+        )
+
+    def _has_resolvable_structure(self, selection: StructuralSelection) -> bool:
+        mechanisms: dict[str, MechanismSpec] = {}
+        for slot in self.grammar.node_slots:
+            choice = selection.nodes[slot.slot_id]
+            if choice is None:
+                continue
+            option = next(item for item in slot.options if item.option_id == choice)
+            mechanisms[option.mechanism.mechanism_id] = option.mechanism
+
+        connected_inputs: set[tuple[str, str]] = set()
+        for slot in self.grammar.edge_slots:
+            choice = selection.edges[slot.slot_id]
+            if choice is None:
+                continue
+            option = next(item for item in slot.options if item.option_id == choice)
+            connection = option.connection
+            if (
+                connection.source_mechanism not in mechanisms
+                or connection.target_mechanism not in mechanisms
+            ):
+                return False
+            connected_inputs.add(
+                (connection.target_mechanism, connection.target_port)
+            )
+
+        return all(
+            not port.required
+            or (mechanism.mechanism_id, port.port_id) in connected_inputs
+            for mechanism in mechanisms.values()
+            for port in mechanism.inputs
         )
 
     def _build_unchecked(self, selection: StructuralSelection) -> SystemSpec:

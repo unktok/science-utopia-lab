@@ -205,9 +205,20 @@ def communication_structural_space() -> StructuralSystemSpace:
 
 def communication_structural_registry() -> MechanismRegistry:
     registry = MechanismRegistry()
-    registry.register(KNOWLEDGE_SOURCE_FIXTURE, 1, _knowledge_source_fixture)
+    register_communication_structural_fixture(registry)
     register_communication_mechanisms(registry)
     return registry
+
+
+def register_communication_structural_fixture(registry: MechanismRegistry) -> None:
+    """Register only the deterministic development source used by this track.
+
+    Keeping fixture registration separate from the production communication
+    adapters lets a larger graph reuse the exact same synthetic source without
+    copying its behavior or treating it as a production mechanism.
+    """
+
+    registry.register(KNOWLEDGE_SOURCE_FIXTURE, 1, _knowledge_source_fixture)
 
 
 def execute_communication_structural_candidate(
