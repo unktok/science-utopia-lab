@@ -53,6 +53,7 @@ and results. New work uses the forward-only taxonomy below.
 - [First closed-loop artifact manifest](artifacts/first-closed-loop-engineering-v1.manifest.json)
 - [Milestone 3: first real result-dependent closed loop](milestones/2026-10-27-first-closed-loop-engineering.md)
 - [Parallel benchmark](optimizers/compute/parallel-benchmark-v1.md)
+- [Held-out progress monitor v1](optimizers/compute/held-out-progress-monitor-v1.md)
 - [Game UI vertical slice](tracks/game-ui-slice.md)
 - [Game UI v2 creative direction](tracks/game-ui-v2-creative-direction.md)
 - [Game UI v3 evidence-driven vertical slice](tracks/game-ui-v3-vertical-slice.md)
