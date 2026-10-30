@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-30 08:16 JST
+Updated: 2026-10-30 14:16 JST
 
 ## Overall position
 
@@ -31,7 +31,8 @@ Remote: `unktok/science-utopia-lab`
 | optimization loss | v1.1 optimization complete | participation/review, topic-entropy, and review-burden arms each exhausted five suggestions under the same search conditions |
 | metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | objective constitution compiler | prospective synthetic-tested v1 | versioned stakeholder/construct/horizon/distribution/risk/tradeoff/Goodhart/evidence contract compiles only hash-verified validated metric cards into phase LossSpecs; no real metric promoted |
-| held-out evaluation metrics | running | 1 of 15 common-split runs is complete, the second is running, and 13 remain planned |
+| held-out evaluation metrics | running | 4 of 15 common-split runs are complete, the fifth is running, 10 remain planned, and no technical failure is recorded |
+| held-out reporting | fail-closed pipeline ready | a result-blind readiness gate, commit-pinned report handoff, cross-evaluation revalidation, four-panel figures, and atomic NeurIPS insertion are synthetic-tested |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
 | post-optimization comparison | ready at frozen-winner gate | three winner fingerprints are sealed; pre-held-out analysis and later common held-out evaluation remain separate |
@@ -39,9 +40,9 @@ Remote: `unktok/science-utopia-lab`
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
 | whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
-| structural system optimization | communication production slice | 97 communication candidates vary broker absence, broadcast/digest implementation, fan-out edge presence, and latency through one fingerprint-bound ask/loss/tell boundary |
+| structural system optimization | joint synthetic slice | 770 valid graphs jointly vary evaluation, publication, funding, government, communication, connections, and latency through one fingerprint-bound ask/execute/loss/tell boundary |
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
-| game UI | verified research-arcology adapter | a pixel-art hub routes between the completed seed-521 campaign's 71 canonical events / 72 authoritative frames, a separately labeled synthetic SystemSpec sandbox, and a hash-bound v1.1 optimization snapshot; Evidence Quay, institutional cutaways, and cursor-bounded researcher dossiers render observed operations/life courses while keeping rooms, sprites, relationship layout, motion, packets, and lighting presentation-only, and the running study is never presented as a completed outcome |
+| game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |
 
 ## Metric-conditioned study execution snapshot
 
@@ -60,7 +61,7 @@ candidates.
 | failures / retries | 15 terminal rows exhausted two attempts at the preregistered reviewer-capacity boundary; invalid suggestions retained `loss: null` and no numeric penalty or extra policy constraint entered an optimizer |
 | remaining optimization runs | 0 |
 | frozen arm winners | 3 of 3, sealed together in freeze `254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d` |
-| held-out evaluation runs | 1 complete (participation/review winner, seed 701; 62.2 minutes), 1 running (seed 709), 13 planned |
+| held-out evaluation runs | 4 complete, 1 running (participation/review winner, seed 733), 10 planned; median complete-run time 95.1 minutes, no failure or stale run |
 
 Across all arms, 45 physical process attempts consumed 107,966.6 serial
 seconds (29.99 hours). Eight complete canonical trajectories were adopted into
@@ -85,7 +86,7 @@ Complete the preregistered common held-out evaluation opened from the immutable
 three-winner seal. The optimization phase held simulator, design space,
 optimizer, budget, and development seeds constant while changing only the
 `LossSpec`. Seeds 701, 709, 719, 727, and 733 are now reserved in the dedicated
-15-row evaluation registry; the first row is running. Seeds 523, 541, and 547
+15-row evaluation registry; the fifth row is running. Seeds 523, 541, and 547
 remain attached to the first campaign and forbidden here.
 
 The next execution steps are:
@@ -100,8 +101,9 @@ The next execution steps are:
 4. **running:** execute the five common held-out seeds for the three frozen
    winners, then report a cross-evaluation matrix, rank reversals, trade-offs,
    gaming, and generalization without selecting a universal winner;
-5. expand executable `SystemSpec` freedom beyond eight parameters in the fixed
-   legacy topology;
+5. **synthetic slice complete:** the executable joint structural grammar now
+   spans 770 valid graphs; next bind it into a sealed campaign plan before any
+   model-backed structural run;
 6. connect the hash-verified branch comparison UI to real commit-pinned campaign/replay manifests;
 7. keep every model-backed run commit-pinned and separate from active
    development worktrees.
