@@ -1,0 +1,2910 @@
+{
+  "arms": [
+    {
+      "color": "#376795",
+      "id": "metric-conditioned-participation-review-v1-1",
+      "label": "Participation-review"
+    },
+    {
+      "color": "#E8A33D",
+      "id": "metric-conditioned-topic-diversity-v1-1",
+      "label": "Topic-entropy proxy"
+    },
+    {
+      "color": "#E76254",
+      "id": "metric-conditioned-review-burden-v1-1",
+      "label": "Review-burden proxy"
+    }
+  ],
+  "cross_evaluation": {
+    "loss_ids": [
+      "participation-review-tradeoff-probe",
+      "review-burden-probe",
+      "topic-diversity-probe"
+    ],
+    "uncertainty": {
+      "metric-conditioned-participation-review-v1-1": {
+        "participation-review-tradeoff-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": 0.34990994406555914,
+          "ci95_low": 0.22859008164046518,
+          "dispersion_weight": 0.25,
+          "estimate": 0.2954521852649261,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": 0.2779313929313929,
+          "sample_sd": 0.07835536535487486,
+          "standard_error": 0.035041584667066424
+        },
+        "review-burden-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": 2.443706280155172,
+          "ci95_low": 1.57476953513965,
+          "dispersion_weight": 0.25,
+          "estimate": 2.075700598890822,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": 1.9586278586278585,
+          "sample_sd": 0.523565211080326,
+          "standard_error": 0.234145480525927
+        },
+        "topic-diversity-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": -1.6141742153026792,
+          "ci95_low": -1.886497533578746,
+          "dispersion_weight": 0.25,
+          "estimate": -1.7324466752910685,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": -1.771395274976976,
+          "sample_sd": 0.1741834330522317,
+          "standard_error": 0.07789719937181475
+        }
+      },
+      "metric-conditioned-review-burden-v1-1": {
+        "participation-review-tradeoff-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": 0.3513408089340976,
+          "ci95_low": 0.21950801544543422,
+          "dispersion_weight": 0.25,
+          "estimate": 0.28840119340063114,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": 0.27105624855624855,
+          "sample_sd": 0.07756895147604799,
+          "standard_error": 0.03468988968876519
+        },
+        "review-burden-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": 1.5846153846153848,
+          "ci95_low": 1.334513759526357,
+          "dispersion_weight": 0.25,
+          "estimate": 1.4544127381137673,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": 1.4211249711249712,
+          "sample_sd": 0.14886741961224284,
+          "standard_error": 0.06657553397759207
+        },
+        "topic-diversity-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": -1.5629639669411475,
+          "ci95_low": -1.8536269403015995,
+          "dispersion_weight": 0.25,
+          "estimate": -1.7121577731003623,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": -1.7504746992065747,
+          "sample_sd": 0.1713585029246545,
+          "standard_error": 0.07663385221242479
+        }
+      },
+      "metric-conditioned-topic-diversity-v1-1": {
+        "participation-review-tradeoff-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": 0.35095535683290197,
+          "ci95_low": 0.21995414657401832,
+          "dispersion_weight": 0.25,
+          "estimate": 0.28798491329684966,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": 0.27076023391812865,
+          "sample_sd": 0.07703110796291807,
+          "standard_error": 0.034449358757442025
+        },
+        "review-burden-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": 1.5885859633960546,
+          "ci95_low": 1.3210526315789475,
+          "dispersion_weight": 0.25,
+          "estimate": 1.4488494733652457,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": 1.4152046783625731,
+          "sample_sd": 0.1504640974300422,
+          "standard_error": 0.06728959000534515
+        },
+        "topic-diversity-probe": {
+          "bootstrap_resamples": 3125,
+          "ci95_high": -1.5629639669411475,
+          "ci95_low": -1.8536269403015995,
+          "dispersion_weight": 0.25,
+          "estimate": -1.7121577731003623,
+          "method": "exact_nonparametric_bootstrap_of_loss_aggregate_95_percentile",
+          "n": 5,
+          "per_seed_mean": -1.7504746992065747,
+          "sample_sd": 0.1713585029246545,
+          "standard_error": 0.07663385221242479
+        }
+      }
+    },
+    "values": {
+      "metric-conditioned-participation-review-v1-1": {
+        "participation-review-tradeoff-probe": 0.2954521852649261,
+        "review-burden-probe": 2.075700598890822,
+        "topic-diversity-probe": -1.7324466752910685
+      },
+      "metric-conditioned-review-burden-v1-1": {
+        "participation-review-tradeoff-probe": 0.28840119340063114,
+        "review-burden-probe": 1.4544127381137673,
+        "topic-diversity-probe": -1.7121577731003623
+      },
+      "metric-conditioned-topic-diversity-v1-1": {
+        "participation-review-tradeoff-probe": 0.28798491329684966,
+        "review-burden-probe": 1.4488494733652457,
+        "topic-diversity-probe": -1.7121577731003623
+      }
+    }
+  },
+  "gaming_flags": [
+    {
+      "comparator": "metric-conditioned-topic-diversity-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "burden_without_coverage_or_activity",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-topic-diversity-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "entropy_without_participation_or_activity",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": true
+    },
+    {
+      "comparator": "metric-conditioned-topic-diversity-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "aggregate_participation_distributional_tradeoff",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-review-burden-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "burden_without_coverage_or_activity",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-review-burden-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "entropy_without_participation_or_activity",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": true
+    },
+    {
+      "comparator": "metric-conditioned-review-burden-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "aggregate_participation_distributional_tradeoff",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-participation-review-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "burden_without_coverage_or_activity",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": true
+    },
+    {
+      "comparator": "metric-conditioned-participation-review-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "entropy_without_participation_or_activity",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-participation-review-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "aggregate_participation_distributional_tradeoff",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-review-burden-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "burden_without_coverage_or_activity",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": true
+    },
+    {
+      "comparator": "metric-conditioned-review-burden-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "entropy_without_participation_or_activity",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-review-burden-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "aggregate_participation_distributional_tradeoff",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-participation-review-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "burden_without_coverage_or_activity",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": true
+    },
+    {
+      "comparator": "metric-conditioned-participation-review-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "entropy_without_participation_or_activity",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-participation-review-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "aggregate_participation_distributional_tradeoff",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-topic-diversity-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "burden_without_coverage_or_activity",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-topic-diversity-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "entropy_without_participation_or_activity",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "metric-conditioned-topic-diversity-v1-1",
+      "interpretation": "diagnostic flag only; not technical invalidity or rejection",
+      "signature": "aggregate_participation_distributional_tradeoff",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "same-system-development-split",
+      "evidence": {
+        "held_out_minus_optimization_loss": -0.026393359276314754
+      },
+      "interpretation": "generalization diagnostic only; not technical invalidity or rejection",
+      "signature": "development_improvement_without_held_out_transfer",
+      "system": "metric-conditioned-participation-review-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "same-system-development-split",
+      "evidence": {
+        "held_out_minus_optimization_loss": -0.015226703301307598
+      },
+      "interpretation": "generalization diagnostic only; not technical invalidity or rejection",
+      "signature": "development_improvement_without_held_out_transfer",
+      "system": "metric-conditioned-topic-diversity-v1-1",
+      "triggered": false
+    },
+    {
+      "comparator": "same-system-development-split",
+      "evidence": {
+        "held_out_minus_optimization_loss": -0.21455005638935898
+      },
+      "interpretation": "generalization diagnostic only; not technical invalidity or rejection",
+      "signature": "development_improvement_without_held_out_transfer",
+      "system": "metric-conditioned-review-burden-v1-1",
+      "triggered": false
+    }
+  ],
+  "generalization": {
+    "metric-conditioned-participation-review-v1-1": {
+      "generalization_gap_held_out_minus_optimization": -0.026393359276314754,
+      "held_out_aggregate_loss": 0.2954521852649261,
+      "held_out_seed_values": [
+        {
+          "loss": 0.37500000000000006,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-participation-review-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-db197e2eb5b1a-s701",
+          "seed": 701
+        },
+        {
+          "loss": 0.2851351351351351,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-participation-review-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-db197e2eb5b1a-s709",
+          "seed": 709
+        },
+        {
+          "loss": 0.3256756756756757,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-participation-review-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-db197e2eb5b1a-s719",
+          "seed": 719
+        },
+        {
+          "loss": 0.1769230769230769,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-participation-review-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-db197e2eb5b1a-s727",
+          "seed": 727
+        },
+        {
+          "loss": 0.2269230769230769,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-participation-review-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-db197e2eb5b1a-s733",
+          "seed": 733
+        }
+      ],
+      "loss_id": "participation-review-tradeoff-probe",
+      "optimization_split_incumbent_loss": 0.32184554454124087,
+      "retrospective_all_candidate_rerank": {
+        "reason": "the preregistered held-out budget evaluates only the three frozen winners, not all five candidates per arm",
+        "status": "not_identified"
+      }
+    },
+    "metric-conditioned-review-burden-v1-1": {
+      "generalization_gap_held_out_minus_optimization": -0.21455005638935898,
+      "held_out_aggregate_loss": 1.4544127381137673,
+      "held_out_seed_values": [
+        {
+          "loss": 1.3513513513513513,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-review-burden-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s701",
+          "seed": 701
+        },
+        {
+          "loss": 1.2820512820512822,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-review-burden-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s709",
+          "seed": 709
+        },
+        {
+          "loss": 1.3611111111111112,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-review-burden-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s719",
+          "seed": 719
+        },
+        {
+          "loss": 1.4444444444444444,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-review-burden-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s727",
+          "seed": 727
+        },
+        {
+          "loss": 1.6666666666666667,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-review-burden-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s733",
+          "seed": 733
+        }
+      ],
+      "loss_id": "review-burden-probe",
+      "optimization_split_incumbent_loss": 1.6689627945031262,
+      "retrospective_all_candidate_rerank": {
+        "reason": "the preregistered held-out budget evaluates only the three frozen winners, not all five candidates per arm",
+        "status": "not_identified"
+      }
+    },
+    "metric-conditioned-topic-diversity-v1-1": {
+      "generalization_gap_held_out_minus_optimization": -0.015226703301307598,
+      "held_out_aggregate_loss": -1.7121577731003623,
+      "held_out_seed_values": [
+        {
+          "loss": -1.7478680974667573,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-topic-diversity-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s701",
+          "seed": 701
+        },
+        {
+          "loss": -1.7917594692280547,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-topic-diversity-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s709",
+          "seed": 709
+        },
+        {
+          "loss": -1.945910149055313,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-topic-diversity-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s719",
+          "seed": 719
+        },
+        {
+          "loss": -1.4750763110546947,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-topic-diversity-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s727",
+          "seed": 727
+        },
+        {
+          "loss": -1.7917594692280547,
+          "missing_reason": null,
+          "run_id": "opt-metric-conditioned-optimization-v1-1-metric-conditioned-topic-diversity-v1-1-23cbe8a107e5-longitudinal-held-out-evaluation-d3536002463db-s733",
+          "seed": 733
+        }
+      ],
+      "loss_id": "topic-diversity-probe",
+      "optimization_split_incumbent_loss": -1.6969310697990547,
+      "retrospective_all_candidate_rerank": {
+        "reason": "the preregistered held-out budget evaluates only the three frozen winners, not all five candidates per arm",
+        "status": "not_identified"
+      }
+    }
+  },
+  "held_out_metrics": {
+    "metric-conditioned-participation-review-v1-1": {
+      "accepted-paper-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 11.6,
+        "population_sd": 2.870540018881465
+      },
+      "active-researcher-fraction": {
+        "complete": true,
+        "direction": "maximize",
+        "mean": 0.82,
+        "population_sd": 0.07483314773547885
+      },
+      "active-researcher-fraction/low-resource-researchers": {
+        "complete": true,
+        "direction": "maximize",
+        "mean": 0.64,
+        "population_sd": 0.14966629547095767
+      },
+      "attrition-fraction": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 0.18,
+        "population_sd": 0.07483314773547882
+      },
+      "decision-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 24.6,
+        "population_sd": 6.151422599691879
+      },
+      "review-burden-per-active-researcher": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 1.9586278586278585,
+        "population_sd": 0.468290961051854
+      },
+      "review-burden-per-active-researcher/low-resource-researchers": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 1.9595588235294117,
+        "population_sd": 0.4567126546068856
+      },
+      "review-coverage": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 1.0,
+        "population_sd": 0.0
+      },
+      "submission-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 24.6,
+        "population_sd": 6.151422599691879
+      },
+      "topic-entropy": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 1.771395274976976,
+        "population_sd": 0.1557943987436295
+      }
+    },
+    "metric-conditioned-review-burden-v1-1": {
+      "accepted-paper-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 4.0,
+        "population_sd": 0.0
+      },
+      "active-researcher-fraction": {
+        "complete": true,
+        "direction": "maximize",
+        "mean": 0.8,
+        "population_sd": 0.06324555320336761
+      },
+      "active-researcher-fraction/low-resource-researchers": {
+        "complete": true,
+        "direction": "maximize",
+        "mean": 0.6,
+        "population_sd": 0.1264911064067352
+      },
+      "attrition-fraction": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 0.2,
+        "population_sd": 0.06324555320336758
+      },
+      "decision-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 24.8,
+        "population_sd": 7.30479294709987
+      },
+      "review-burden-per-active-researcher": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 1.4211249711249712,
+        "population_sd": 0.13315106795518414
+      },
+      "review-burden-per-active-researcher/low-resource-researchers": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 1.5414890450107168,
+        "population_sd": 0.31639684544041874
+      },
+      "review-coverage": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 0.5577886247877759,
+        "population_sd": 0.14278572132288947
+      },
+      "submission-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 24.8,
+        "population_sd": 7.30479294709987
+      },
+      "topic-entropy": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 1.7504746992065747,
+        "population_sd": 0.15326770442484958
+      }
+    },
+    "metric-conditioned-topic-diversity-v1-1": {
+      "accepted-paper-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 4.0,
+        "population_sd": 0.0
+      },
+      "active-researcher-fraction": {
+        "complete": true,
+        "direction": "maximize",
+        "mean": 0.8,
+        "population_sd": 0.06324555320336761
+      },
+      "active-researcher-fraction/low-resource-researchers": {
+        "complete": true,
+        "direction": "maximize",
+        "mean": 0.6,
+        "population_sd": 0.1264911064067352
+      },
+      "attrition-fraction": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 0.2,
+        "population_sd": 0.06324555320336758
+      },
+      "decision-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 24.8,
+        "population_sd": 6.881860213634101
+      },
+      "review-burden-per-active-researcher": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 1.4152046783625731,
+        "population_sd": 0.1345791800106903
+      },
+      "review-burden-per-active-researcher/low-resource-researchers": {
+        "complete": true,
+        "direction": "minimize",
+        "mean": 1.540491452991453,
+        "population_sd": 0.3163490944825901
+      },
+      "review-coverage": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 0.552352116851268,
+        "population_sd": 0.13968586199952585
+      },
+      "submission-count": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 24.8,
+        "population_sd": 6.881860213634101
+      },
+      "topic-entropy": {
+        "complete": true,
+        "direction": "observe",
+        "mean": 1.7504746992065747,
+        "population_sd": 0.15326770442484958
+      }
+    }
+  },
+  "optimization_trajectories": {
+    "metric-conditioned-participation-review-v1-1": [
+      {
+        "incumbent_loss": 0.4834481397251563,
+        "loss": 0.4834481397251563,
+        "phase": "initial",
+        "proposal_index": 0,
+        "status": "observed_complete",
+        "suggestion_id": "s35e03107a6494ea2"
+      },
+      {
+        "incumbent_loss": 0.32184554454124087,
+        "loss": 0.32184554454124087,
+        "phase": "initial",
+        "proposal_index": 1,
+        "status": "observed_complete",
+        "suggestion_id": "sbf5c7ce5f0f3a18f"
+      },
+      {
+        "incumbent_loss": 0.32184554454124087,
+        "loss": null,
+        "phase": "initial",
+        "proposal_index": 2,
+        "status": "observed_invalid",
+        "suggestion_id": "s4f0336a8ea15348e"
+      },
+      {
+        "incumbent_loss": 0.32184554454124087,
+        "loss": 0.410309132057532,
+        "phase": "adaptive",
+        "proposal_index": 3,
+        "status": "observed_complete",
+        "suggestion_id": "sb754dca2bd492dda"
+      },
+      {
+        "incumbent_loss": 0.32184554454124087,
+        "loss": 0.5280662151200021,
+        "phase": "adaptive",
+        "proposal_index": 4,
+        "status": "observed_complete",
+        "suggestion_id": "s47cdc2857c4b55c3"
+      }
+    ],
+    "metric-conditioned-review-burden-v1-1": [
+      {
+        "incumbent_loss": 1.6689627945031262,
+        "loss": 1.6689627945031262,
+        "phase": "initial",
+        "proposal_index": 0,
+        "status": "observed_complete",
+        "suggestion_id": "s35e03107a6494ea2"
+      },
+      {
+        "incumbent_loss": 1.6689627945031262,
+        "loss": 2.035082156742087,
+        "phase": "initial",
+        "proposal_index": 1,
+        "status": "observed_complete",
+        "suggestion_id": "sbf5c7ce5f0f3a18f"
+      },
+      {
+        "incumbent_loss": 1.6689627945031262,
+        "loss": null,
+        "phase": "initial",
+        "proposal_index": 2,
+        "status": "observed_invalid",
+        "suggestion_id": "s4f0336a8ea15348e"
+      },
+      {
+        "incumbent_loss": 1.6689627945031262,
+        "loss": null,
+        "phase": "adaptive",
+        "proposal_index": 3,
+        "status": "observed_invalid",
+        "suggestion_id": "s4f596a762baccbf9"
+      },
+      {
+        "incumbent_loss": 1.6689627945031262,
+        "loss": null,
+        "phase": "adaptive",
+        "proposal_index": 4,
+        "status": "observed_invalid",
+        "suggestion_id": "sc8bbf8599c665f63"
+      }
+    ],
+    "metric-conditioned-topic-diversity-v1-1": [
+      {
+        "incumbent_loss": -1.6969310697990547,
+        "loss": -1.6969310697990547,
+        "phase": "initial",
+        "proposal_index": 0,
+        "status": "observed_complete",
+        "suggestion_id": "s35e03107a6494ea2"
+      },
+      {
+        "incumbent_loss": -1.6969310697990547,
+        "loss": -1.6969310697990547,
+        "phase": "initial",
+        "proposal_index": 1,
+        "status": "observed_complete",
+        "suggestion_id": "sbf5c7ce5f0f3a18f"
+      },
+      {
+        "incumbent_loss": -1.6969310697990547,
+        "loss": null,
+        "phase": "initial",
+        "proposal_index": 2,
+        "status": "observed_invalid",
+        "suggestion_id": "s4f0336a8ea15348e"
+      },
+      {
+        "incumbent_loss": -1.6969310697990547,
+        "loss": null,
+        "phase": "adaptive",
+        "proposal_index": 3,
+        "status": "observed_invalid",
+        "suggestion_id": "s4f596a762baccbf9"
+      },
+      {
+        "incumbent_loss": -1.6969310697990547,
+        "loss": null,
+        "phase": "adaptive",
+        "proposal_index": 4,
+        "status": "observed_invalid",
+        "suggestion_id": "sc8bbf8599c665f63"
+      }
+    ]
+  },
+  "paired_tradeoffs": [
+    {
+      "ci95": [
+        3.6150516076510804,
+        11.584948392348918
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 7.6,
+      "metric": "accepted-paper-count",
+      "paired_effect_dz": 2.3680724208290718,
+      "paired_sd": 3.2093613071762426,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        4.0,
+        6.0,
+        11.0,
+        6.0,
+        11.0
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        3.6150516076510804,
+        11.584948392348918
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 7.6,
+      "metric": "accepted-paper-count",
+      "paired_effect_dz": 2.3680724208290718,
+      "paired_sd": 3.2093613071762426,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        4.0,
+        6.0,
+        11.0,
+        6.0,
+        11.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "accepted-paper-count",
+      "paired_effect_dz": null,
+      "paired_sd": 0.0,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.1418931784708707,
+        0.1818931784708707
+      ],
+      "direction": "maximize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.019999999999999997,
+      "metric": "active-researcher-fraction",
+      "paired_effect_dz": 0.15339299776947402,
+      "paired_sd": 0.13038404810405302,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.10000000000000009,
+        -0.09999999999999998,
+        0.0,
+        0.09999999999999998,
+        0.20000000000000007
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -0.16416853329919856,
+        0.20416853329919854
+      ],
+      "direction": "maximize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.019999999999999997,
+      "metric": "active-researcher-fraction",
+      "paired_effect_dz": 0.13483997249264834,
+      "paired_sd": 0.1483239697419133,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.20000000000000007,
+        0.0,
+        0.0,
+        0.09999999999999998,
+        0.20000000000000007
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.08779890330850842,
+        0.08779890330850842
+      ],
+      "direction": "maximize",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "active-researcher-fraction",
+      "paired_effect_dz": 0.0,
+      "paired_sd": 0.07071067811865474,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.09999999999999998,
+        0.09999999999999998,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.28378635694174126,
+        0.36378635694174133
+      ],
+      "direction": "maximize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.040000000000000015,
+      "metric": "active-researcher-fraction/low-resource-researchers",
+      "paired_effect_dz": 0.15339299776947413,
+      "paired_sd": 0.260768096208106,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.19999999999999996,
+        -0.20000000000000007,
+        0.0,
+        0.20000000000000007,
+        0.4
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -0.32833706659839695,
+        0.408337066598397
+      ],
+      "direction": "maximize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.040000000000000015,
+      "metric": "active-researcher-fraction/low-resource-researchers",
+      "paired_effect_dz": 0.13483997249264845,
+      "paired_sd": 0.29664793948382656,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.4,
+        0.0,
+        0.0,
+        0.20000000000000007,
+        0.4
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.17559780661701696,
+        0.17559780661701696
+      ],
+      "direction": "maximize",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "active-researcher-fraction/low-resource-researchers",
+      "paired_effect_dz": 0.0,
+      "paired_sd": 0.14142135623730956,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.20000000000000007,
+        0.20000000000000007,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.1818931784708706,
+        0.14189317847087063
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": -0.02,
+      "metric": "attrition-fraction",
+      "paired_effect_dz": -0.1533929977694741,
+      "paired_sd": 0.13038404810405296,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.09999999999999998,
+        0.1,
+        0.0,
+        -0.1,
+        -0.19999999999999998
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -0.20416853329919848,
+        0.1641685332991985
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": -0.02,
+      "metric": "attrition-fraction",
+      "paired_effect_dz": -0.13483997249264842,
+      "paired_sd": 0.14832396974191325,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.19999999999999998,
+        0.0,
+        0.0,
+        -0.1,
+        -0.19999999999999998
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.08779890330850844,
+        0.08779890330850844
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "attrition-fraction",
+      "paired_effect_dz": 0.0,
+      "paired_sd": 0.07071067811865475,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.1,
+        -0.1,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -3.8623826280971323,
+        3.462382628097132
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": -0.2,
+      "metric": "decision-count",
+      "paired_effect_dz": -0.06780635036208103,
+      "paired_sd": 2.9495762407505253,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -1.0,
+        1.0,
+        -5.0,
+        2.0,
+        2.0
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -3.2917184224148306,
+        2.8917184224148302
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": -0.2,
+      "metric": "decision-count",
+      "paired_effect_dz": -0.0803219328902499,
+      "paired_sd": 2.4899799195977463,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -1.0,
+        0.0,
+        -4.0,
+        2.0,
+        2.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.8779890330850845,
+        0.8779890330850845
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "decision-count",
+      "paired_effect_dz": 0.0,
+      "paired_sd": 0.7071067811865476,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.03534511858018052,
+        1.1103508935859554
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.5375028875028874,
+      "metric": "review-burden-per-active-researcher",
+      "paired_effect_dz": 1.1650524698625309,
+      "paired_sd": 0.46135509035598155,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.14864864864864868,
+        0.42065142065142047,
+        1.1524024024024024,
+        0.09401709401709413,
+        0.8717948717948716
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -0.03524498812958465,
+        1.1220913486601556
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.5434231802652855,
+      "metric": "review-burden-per-active-researcher",
+      "paired_effect_dz": 1.1660378703678185,
+      "paired_sd": 0.46604247947270055,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.18421052631578938,
+        0.386913229018492,
+        1.1801801801801803,
+        0.09401709401709413,
+        0.8717948717948716
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.028079929321892856,
+        0.03992051484668891
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.005920292762398027,
+      "metric": "review-burden-per-active-researcher",
+      "paired_effect_dz": 0.21620489312310534,
+      "paired_sd": 0.02738278804368715,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.035561877667140696,
+        -0.03373819163292846,
+        0.0277777777777779,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.13793596064098546,
+        0.9740755176783752
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.41806977851869487,
+      "metric": "review-burden-per-active-researcher/low-resource-researchers",
+      "paired_effect_dz": 0.9336274001563928,
+      "paired_sd": 0.4477908193875454,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.2095588235294117,
+        0.32507739938080493,
+        1.2095588235294117,
+        0.13157894736842102,
+        0.21457489878542502
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -0.13425466553986437,
+        0.9723894066157819
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.4190673705379588,
+      "metric": "review-burden-per-active-researcher/low-resource-researchers",
+      "paired_effect_dz": 0.9403942602888072,
+      "paired_sd": 0.4456294431329874,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.2847222222222223,
+        0.2549019607843137,
+        1.2095588235294117,
+        0.13157894736842102,
+        0.21457489878542502
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.06282790131748,
+        0.06482308535600778
+      ],
+      "direction": "minimize",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.000997592019263882,
+      "metric": "review-burden-per-active-researcher/low-resource-researchers",
+      "paired_effect_dz": 0.019407199701224474,
+      "paired_sd": 0.05140319235242064,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.07516339869281063,
+        -0.07017543859649122,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        0.24399301668268747,
+        0.6404297337417608
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.44221137521222414,
+      "metric": "review-coverage",
+      "paired_effect_dz": 2.770066043682718,
+      "paired_sd": 0.159639289547161,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.3421052631578947,
+        0.375,
+        0.6597222222222222,
+        0.2777777777777778,
+        0.5564516129032258
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        0.25373281924177266,
+        0.6415629470556914
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.447647883148732,
+      "metric": "review-coverage",
+      "paired_effect_dz": 2.866349056020702,
+      "paired_sd": 0.15617354146329723,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.3421052631578947,
+        0.40476190476190477,
+        0.6571428571428571,
+        0.2777777777777778,
+        0.5564516129032258
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.011504881497112674,
+        0.022377897370128554
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.005436507936507939,
+      "metric": "review-coverage",
+      "paired_effect_dz": 0.3984511546210481,
+      "paired_sd": 0.013644101349582981,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.0,
+        0.029761904761904767,
+        -0.00257936507936507,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -3.8623826280971323,
+        3.462382628097132
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": -0.2,
+      "metric": "submission-count",
+      "paired_effect_dz": -0.06780635036208103,
+      "paired_sd": 2.9495762407505253,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -1.0,
+        1.0,
+        -5.0,
+        2.0,
+        2.0
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -3.2917184224148306,
+        2.8917184224148302
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": -0.2,
+      "metric": "submission-count",
+      "paired_effect_dz": -0.0803219328902499,
+      "paired_sd": 2.4899799195977463,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -1.0,
+        0.0,
+        -4.0,
+        2.0,
+        2.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.8779890330850845,
+        0.8779890330850845
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "submission-count",
+      "paired_effect_dz": 0.0,
+      "paired_sd": 0.7071067811865476,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.0,
+        -1.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        -0.1751418792153616,
+        0.21698303075616368
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.020920575770401052,
+      "metric": "topic-entropy",
+      "paired_effect_dz": 0.1324900565877711,
+      "paired_sd": 0.15790298765961908,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.1980420515885557,
+        0.15415067982725827,
+        0.0,
+        0.1923856223746001,
+        -0.043891371761297426
+      ],
+      "right": "metric-conditioned-review-burden-v1-1"
+    },
+    {
+      "ci95": [
+        -0.1751418792153616,
+        0.21698303075616368
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-participation-review-v1-1",
+      "mean_delta": 0.020920575770401052,
+      "metric": "topic-entropy",
+      "paired_effect_dz": 0.1324900565877711,
+      "paired_sd": 0.15790298765961908,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        -0.1980420515885557,
+        0.15415067982725827,
+        0.0,
+        0.1923856223746001,
+        -0.043891371761297426
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    },
+    {
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "direction": "observe",
+      "left": "metric-conditioned-review-burden-v1-1",
+      "mean_delta": 0.0,
+      "metric": "topic-entropy",
+      "paired_effect_dz": null,
+      "paired_sd": 0.0,
+      "paired_seeds": [
+        701,
+        709,
+        719,
+        727,
+        733
+      ],
+      "raw_deltas_left_minus_right": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "right": "metric-conditioned-topic-diversity-v1-1"
+    }
+  ],
+  "provenance": {
+    "data_classification": "experimental_result",
+    "source_campaign_state_sha256": {
+      "metric-conditioned-participation-review-v1-1": "c851cc6553edd5c090571d2aff3fbf4526e6d0fe2a8d264781abe50052a936de",
+      "metric-conditioned-review-burden-v1-1": "55520280d162784701198c78a565fa4af03889dc103a6ca74e171837d8f032a8",
+      "metric-conditioned-topic-diversity-v1-1": "140f3be9f35ce4a320332ad11bc9a7a93a999bcd017c3e5eb6568fc19f784a72"
+    },
+    "source_report_schema": "scienceutopia.metric-conditioned-cross-evaluation-report.v1",
+    "source_report_sha256": "d07fa16e6a60722a0dfb7f99dadbf81c4de94d877a2c49a063dbdf778e43a996",
+    "study_id": "metric-conditioned-optimization-v1-1",
+    "study_revision": "23cbe8a107e5",
+    "warning": null
+  },
+  "rank_reversal": {
+    "columns": {
+      "accepted-paper-count": {
+        "direction": "observe",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 11.6,
+          "metric-conditioned-review-burden-v1-1": 4.0,
+          "metric-conditioned-topic-diversity-v1-1": 4.0
+        },
+        "preference_interpretation": false,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.5,
+          "metric-conditioned-topic-diversity-v1-1": 2.5
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      },
+      "active-researcher-fraction": {
+        "direction": "maximize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 0.82,
+          "metric-conditioned-review-burden-v1-1": 0.8,
+          "metric-conditioned-topic-diversity-v1-1": 0.8
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.5,
+          "metric-conditioned-topic-diversity-v1-1": 2.5
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      },
+      "active-researcher-fraction/low-resource-researchers": {
+        "direction": "maximize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 0.64,
+          "metric-conditioned-review-burden-v1-1": 0.6,
+          "metric-conditioned-topic-diversity-v1-1": 0.6
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.5,
+          "metric-conditioned-topic-diversity-v1-1": 2.5
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      },
+      "attrition-fraction": {
+        "direction": "minimize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 0.18,
+          "metric-conditioned-review-burden-v1-1": 0.2,
+          "metric-conditioned-topic-diversity-v1-1": 0.2
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.5,
+          "metric-conditioned-topic-diversity-v1-1": 2.5
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      },
+      "decision-count": {
+        "direction": "observe",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 24.6,
+          "metric-conditioned-review-burden-v1-1": 24.8,
+          "metric-conditioned-topic-diversity-v1-1": 24.8
+        },
+        "preference_interpretation": false,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 3.0,
+          "metric-conditioned-review-burden-v1-1": 1.5,
+          "metric-conditioned-topic-diversity-v1-1": 1.5
+        },
+        "raw_order": [
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1",
+          "metric-conditioned-participation-review-v1-1"
+        ]
+      },
+      "loss:participation-review-tradeoff-probe": {
+        "direction": "minimize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 0.2779313929313929,
+          "metric-conditioned-review-burden-v1-1": 0.27105624855624855,
+          "metric-conditioned-topic-diversity-v1-1": 0.27076023391812865
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 3.0,
+          "metric-conditioned-review-burden-v1-1": 2.0,
+          "metric-conditioned-topic-diversity-v1-1": 1.0
+        },
+        "raw_order": [
+          "metric-conditioned-topic-diversity-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-participation-review-v1-1"
+        ]
+      },
+      "loss:review-burden-probe": {
+        "direction": "minimize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 1.9586278586278585,
+          "metric-conditioned-review-burden-v1-1": 1.4211249711249712,
+          "metric-conditioned-topic-diversity-v1-1": 1.4152046783625731
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 3.0,
+          "metric-conditioned-review-burden-v1-1": 2.0,
+          "metric-conditioned-topic-diversity-v1-1": 1.0
+        },
+        "raw_order": [
+          "metric-conditioned-topic-diversity-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-participation-review-v1-1"
+        ]
+      },
+      "loss:topic-diversity-probe": {
+        "direction": "minimize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": -1.771395274976976,
+          "metric-conditioned-review-burden-v1-1": -1.7504746992065747,
+          "metric-conditioned-topic-diversity-v1-1": -1.7504746992065747
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.5,
+          "metric-conditioned-topic-diversity-v1-1": 2.5
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      },
+      "review-burden-per-active-researcher": {
+        "direction": "minimize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 1.9586278586278585,
+          "metric-conditioned-review-burden-v1-1": 1.4211249711249712,
+          "metric-conditioned-topic-diversity-v1-1": 1.4152046783625731
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 3.0,
+          "metric-conditioned-review-burden-v1-1": 2.0,
+          "metric-conditioned-topic-diversity-v1-1": 1.0
+        },
+        "raw_order": [
+          "metric-conditioned-topic-diversity-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-participation-review-v1-1"
+        ]
+      },
+      "review-burden-per-active-researcher/low-resource-researchers": {
+        "direction": "minimize",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 1.9595588235294117,
+          "metric-conditioned-review-burden-v1-1": 1.5414890450107168,
+          "metric-conditioned-topic-diversity-v1-1": 1.540491452991453
+        },
+        "preference_interpretation": true,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 3.0,
+          "metric-conditioned-review-burden-v1-1": 2.0,
+          "metric-conditioned-topic-diversity-v1-1": 1.0
+        },
+        "raw_order": [
+          "metric-conditioned-topic-diversity-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-participation-review-v1-1"
+        ]
+      },
+      "review-coverage": {
+        "direction": "observe",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 0.5577886247877759,
+          "metric-conditioned-topic-diversity-v1-1": 0.552352116851268
+        },
+        "preference_interpretation": false,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.0,
+          "metric-conditioned-topic-diversity-v1-1": 3.0
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      },
+      "submission-count": {
+        "direction": "observe",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 24.6,
+          "metric-conditioned-review-burden-v1-1": 24.8,
+          "metric-conditioned-topic-diversity-v1-1": 24.8
+        },
+        "preference_interpretation": false,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 3.0,
+          "metric-conditioned-review-burden-v1-1": 1.5,
+          "metric-conditioned-topic-diversity-v1-1": 1.5
+        },
+        "raw_order": [
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1",
+          "metric-conditioned-participation-review-v1-1"
+        ]
+      },
+      "topic-entropy": {
+        "direction": "observe",
+        "means": {
+          "metric-conditioned-participation-review-v1-1": 1.771395274976976,
+          "metric-conditioned-review-burden-v1-1": 1.7504746992065747,
+          "metric-conditioned-topic-diversity-v1-1": 1.7504746992065747
+        },
+        "preference_interpretation": false,
+        "ranks": {
+          "metric-conditioned-participation-review-v1-1": 1.0,
+          "metric-conditioned-review-burden-v1-1": 2.5,
+          "metric-conditioned-topic-diversity-v1-1": 2.5
+        },
+        "raw_order": [
+          "metric-conditioned-participation-review-v1-1",
+          "metric-conditioned-review-burden-v1-1",
+          "metric-conditioned-topic-diversity-v1-1"
+        ]
+      }
+    },
+    "own_loss_check": {
+      "metric-conditioned-participation-review-v1-1": {
+        "held_out_best_system": "metric-conditioned-topic-diversity-v1-1",
+        "loss_id": "participation-review-tradeoff-probe",
+        "own_winner_remains_best": false
+      },
+      "metric-conditioned-review-burden-v1-1": {
+        "held_out_best_system": "metric-conditioned-topic-diversity-v1-1",
+        "loss_id": "review-burden-probe",
+        "own_winner_remains_best": false
+      },
+      "metric-conditioned-topic-diversity-v1-1": {
+        "held_out_best_system": "metric-conditioned-participation-review-v1-1",
+        "loss_id": "topic-diversity-probe",
+        "own_winner_remains_best": false
+      }
+    },
+    "pairwise_kendall_tau_b": [
+      {
+        "kendall_tau_b": 1.0,
+        "left": "accepted-paper-count",
+        "right": "active-researcher-fraction"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "accepted-paper-count",
+        "right": "active-researcher-fraction/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "accepted-paper-count",
+        "right": "attrition-fraction"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "accepted-paper-count",
+        "right": "decision-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "accepted-paper-count",
+        "right": "loss:participation-review-tradeoff-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "accepted-paper-count",
+        "right": "loss:review-burden-probe"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "accepted-paper-count",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "accepted-paper-count",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "accepted-paper-count",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "accepted-paper-count",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "accepted-paper-count",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "accepted-paper-count",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction",
+        "right": "active-researcher-fraction/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction",
+        "right": "attrition-fraction"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "active-researcher-fraction",
+        "right": "decision-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction",
+        "right": "loss:participation-review-tradeoff-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction",
+        "right": "loss:review-burden-probe"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "active-researcher-fraction",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "active-researcher-fraction",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "attrition-fraction"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "decision-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "loss:participation-review-tradeoff-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "loss:review-burden-probe"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "attrition-fraction",
+        "right": "decision-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "attrition-fraction",
+        "right": "loss:participation-review-tradeoff-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "attrition-fraction",
+        "right": "loss:review-burden-probe"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "attrition-fraction",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "attrition-fraction",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "attrition-fraction",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "attrition-fraction",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "attrition-fraction",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "attrition-fraction",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "decision-count",
+        "right": "loss:participation-review-tradeoff-probe"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "decision-count",
+        "right": "loss:review-burden-probe"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "decision-count",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "decision-count",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "decision-count",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "decision-count",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "decision-count",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "decision-count",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "loss:review-burden-probe"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "loss:participation-review-tradeoff-probe",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "loss:review-burden-probe",
+        "right": "loss:topic-diversity-probe"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "loss:review-burden-probe",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "loss:review-burden-probe",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "loss:review-burden-probe",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "loss:review-burden-probe",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "loss:review-burden-probe",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "loss:topic-diversity-probe",
+        "right": "review-burden-per-active-researcher"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "loss:topic-diversity-probe",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "loss:topic-diversity-probe",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "loss:topic-diversity-probe",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "loss:topic-diversity-probe",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": 1.0,
+        "left": "review-burden-per-active-researcher",
+        "right": "review-burden-per-active-researcher/low-resource-researchers"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "review-burden-per-active-researcher",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "review-burden-per-active-researcher",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "review-burden-per-active-researcher",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "review-burden-per-active-researcher/low-resource-researchers",
+        "right": "review-coverage"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "review-burden-per-active-researcher/low-resource-researchers",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "review-burden-per-active-researcher/low-resource-researchers",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": -0.8164965809277261,
+        "left": "review-coverage",
+        "right": "submission-count"
+      },
+      {
+        "kendall_tau_b": 0.8164965809277261,
+        "left": "review-coverage",
+        "right": "topic-entropy"
+      },
+      {
+        "kendall_tau_b": -1.0,
+        "left": "submission-count",
+        "right": "topic-entropy"
+      }
+    ],
+    "winner_reversals": [
+      {
+        "left": "accepted-paper-count",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "decision-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "accepted-paper-count",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:participation-review-tradeoff-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "accepted-paper-count",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:review-burden-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "accepted-paper-count",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "accepted-paper-count",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher/low-resource-researchers",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "accepted-paper-count",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "decision-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:participation-review-tradeoff-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:review-burden-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher/low-resource-researchers",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "decision-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:participation-review-tradeoff-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:review-burden-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher/low-resource-researchers",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "active-researcher-fraction/low-resource-researchers",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "attrition-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "decision-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "attrition-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:participation-review-tradeoff-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "attrition-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "loss:review-burden-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "attrition-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "attrition-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher/low-resource-researchers",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "attrition-fraction",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "loss:participation-review-tradeoff-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "loss:review-burden-probe",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "loss:topic-diversity-probe",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "review-burden-per-active-researcher",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "review-burden-per-active-researcher/low-resource-researchers",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "review-coverage",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "decision-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "topic-entropy",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:participation-review-tradeoff-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "loss:topic-diversity-probe",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:participation-review-tradeoff-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "review-coverage",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:participation-review-tradeoff-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "loss:participation-review-tradeoff-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "topic-entropy",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:review-burden-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "loss:topic-diversity-probe",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:review-burden-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "review-coverage",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:review-burden-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "loss:review-burden-probe",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "topic-entropy",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "loss:topic-diversity-probe",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "loss:topic-diversity-probe",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "review-burden-per-active-researcher/low-resource-researchers",
+        "right_top_system": "metric-conditioned-topic-diversity-v1-1"
+      },
+      {
+        "left": "loss:topic-diversity-probe",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "review-burden-per-active-researcher",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "review-coverage",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "review-burden-per-active-researcher",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "review-burden-per-active-researcher",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "topic-entropy",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "review-burden-per-active-researcher/low-resource-researchers",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "review-coverage",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "review-burden-per-active-researcher/low-resource-researchers",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "review-burden-per-active-researcher/low-resource-researchers",
+        "left_top_system": "metric-conditioned-topic-diversity-v1-1",
+        "right": "topic-entropy",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      },
+      {
+        "left": "review-coverage",
+        "left_top_system": "metric-conditioned-participation-review-v1-1",
+        "right": "submission-count",
+        "right_top_system": "metric-conditioned-review-burden-v1-1"
+      },
+      {
+        "left": "submission-count",
+        "left_top_system": "metric-conditioned-review-burden-v1-1",
+        "right": "topic-entropy",
+        "right_top_system": "metric-conditioned-participation-review-v1-1"
+      }
+    ]
+  },
+  "schema": "scienceutopia.metric-conditioned-figure-data.v1",
+  "secondary_resolution": {
+    "accepted-paper-count": {
+      "direction": "observe",
+      "empirical_resolution_floor": 3.9849483923489193,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "low_resolution": false,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 3.2093613071762426,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 3.2093613071762426,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.0
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 1,
+      "system_to_seed_signal_ratio": 2.1617444711565823,
+      "top_rank_stability_fraction": 1.0,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 2.870540018881465,
+        "metric-conditioned-review-burden-v1-1": 0.0,
+        "metric-conditioned-topic-diversity-v1-1": 0.0
+      }
+    },
+    "active-researcher-fraction": {
+      "direction": "maximize",
+      "empirical_resolution_floor": 0.1618931784708707,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        0.8660254037844387,
+        0.8660254037844387,
+        1.0,
+        -1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 0.8660254037844387,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.13038404810405302,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.1483239697419133,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.07071067811865474
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.14002800840280027,
+      "top_rank_stability_fraction": 0.8,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.07483314773547885,
+        "metric-conditioned-review-burden-v1-1": 0.06324555320336761,
+        "metric-conditioned-topic-diversity-v1-1": 0.06324555320336761
+      }
+    },
+    "active-researcher-fraction/low-resource-researchers": {
+      "direction": "maximize",
+      "empirical_resolution_floor": 0.3237863569417413,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        0.8660254037844387,
+        0.8660254037844387,
+        1.0,
+        -1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 0.8660254037844387,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.260768096208106,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.29664793948382656,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.14142135623730956
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.14002800840280108,
+      "top_rank_stability_fraction": 0.8,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.14966629547095767,
+        "metric-conditioned-review-burden-v1-1": 0.1264911064067352,
+        "metric-conditioned-topic-diversity-v1-1": 0.1264911064067352
+      }
+    },
+    "attrition-fraction": {
+      "direction": "minimize",
+      "empirical_resolution_floor": 0.16189317847087062,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        0.8660254037844387,
+        0.8660254037844387,
+        1.0,
+        -1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 0.8660254037844387,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.13038404810405296,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.14832396974191325,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.07071067811865475
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.1400280084028011,
+      "top_rank_stability_fraction": 0.8,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.07483314773547882,
+        "metric-conditioned-review-burden-v1-1": 0.06324555320336758,
+        "metric-conditioned-topic-diversity-v1-1": 0.06324555320336758
+      }
+    },
+    "decision-count": {
+      "direction": "observe",
+      "empirical_resolution_floor": 3.0917184224148304,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        0.8660254037844387,
+        -0.8660254037844387,
+        1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 0.9330127018922194,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 2.9495762407505253,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 2.4899799195977463,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.7071067811865476
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.013872841640446526,
+      "top_rank_stability_fraction": 0.6,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 6.151422599691879,
+        "metric-conditioned-review-burden-v1-1": 7.30479294709987,
+        "metric-conditioned-topic-diversity-v1-1": 6.881860213634101
+      }
+    },
+    "loss:participation-review-tradeoff-probe": {
+      "direction": "minimize",
+      "empirical_resolution_floor": 0.1556053778140291,
+      "exact_aggregate_tie_rate": 0.0,
+      "leave_one_seed_out_spearman": [
+        -1.0,
+        0.5,
+        -0.5,
+        1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 0.5,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.12532003669199812,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.1422272212690234,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.07193833968026217
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.04769882744435784,
+      "top_rank_stability_fraction": 0.6,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.07008316933413285,
+        "metric-conditioned-review-burden-v1-1": 0.06937977937753037,
+        "metric-conditioned-topic-diversity-v1-1": 0.06889871751488405
+      }
+    },
+    "loss:review-burden-probe": {
+      "direction": "minimize",
+      "empirical_resolution_floor": 0.572848006083068,
+      "exact_aggregate_tie_rate": 0.0,
+      "leave_one_seed_out_spearman": [
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.46135509035598155,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.46604247947270055,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.02738278804368715
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.8736812695247805,
+      "top_rank_stability_fraction": 0.8,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.468290961051854,
+        "metric-conditioned-review-burden-v1-1": 0.13315106795518414,
+        "metric-conditioned-topic-diversity-v1-1": 0.1345791800106903
+      }
+    },
+    "loss:topic-diversity-probe": {
+      "direction": "minimize",
+      "empirical_resolution_floor": 0.19606245498576264,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        1.0,
+        -1.0,
+        1.0,
+        -1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.15790298765961908,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.15790298765961908,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.0
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.06399171732073403,
+      "top_rank_stability_fraction": 0.6,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.1557943987436295,
+        "metric-conditioned-review-burden-v1-1": 0.15326770442484958,
+        "metric-conditioned-topic-diversity-v1-1": 0.15326770442484958
+      }
+    },
+    "review-burden-per-active-researcher": {
+      "direction": "minimize",
+      "empirical_resolution_floor": 0.572848006083068,
+      "exact_aggregate_tie_rate": 0.0,
+      "leave_one_seed_out_spearman": [
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.46135509035598155,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.46604247947270055,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.02738278804368715
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.8736812695247805,
+      "top_rank_stability_fraction": 0.8,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.468290961051854,
+        "metric-conditioned-review-burden-v1-1": 0.13315106795518414,
+        "metric-conditioned-topic-diversity-v1-1": 0.1345791800106903
+      }
+    },
+    "review-burden-per-active-researcher/low-resource-researchers": {
+      "direction": "minimize",
+      "empirical_resolution_floor": 0.5533220360778232,
+      "exact_aggregate_tie_rate": 0.0,
+      "leave_one_seed_out_spearman": [
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.4477908193875454,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.4456294431329874,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.05140319235242064
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.5345425990334133,
+      "top_rank_stability_fraction": 0.8,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.4567126546068856,
+        "metric-conditioned-review-burden-v1-1": 0.31639684544041874,
+        "metric-conditioned-topic-diversity-v1-1": 0.3163490944825901
+      }
+    },
+    "review-coverage": {
+      "direction": "observe",
+      "empirical_resolution_floor": 0.19391506390695934,
+      "exact_aggregate_tie_rate": 0.0,
+      "leave_one_seed_out_spearman": [
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "low_resolution": false,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.159639289547161,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.15617354146329723,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.013644101349582981
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 1,
+      "system_to_seed_signal_ratio": 1.8187964414156856,
+      "top_rank_stability_fraction": 1.0,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.0,
+        "metric-conditioned-review-burden-v1-1": 0.14278572132288947,
+        "metric-conditioned-topic-diversity-v1-1": 0.13968586199952585
+      }
+    },
+    "submission-count": {
+      "direction": "observe",
+      "empirical_resolution_floor": 3.0917184224148304,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        0.8660254037844387,
+        -0.8660254037844387,
+        1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 0.9330127018922194,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 2.9495762407505253,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 2.4899799195977463,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.7071067811865476
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.013872841640446526,
+      "top_rank_stability_fraction": 0.6,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 6.151422599691879,
+        "metric-conditioned-review-burden-v1-1": 7.30479294709987,
+        "metric-conditioned-topic-diversity-v1-1": 6.881860213634101
+      }
+    },
+    "topic-entropy": {
+      "direction": "observe",
+      "empirical_resolution_floor": 0.19606245498576264,
+      "exact_aggregate_tie_rate": 0.3333333333333333,
+      "leave_one_seed_out_spearman": [
+        1.0,
+        -1.0,
+        1.0,
+        -1.0,
+        1.0
+      ],
+      "low_resolution": true,
+      "median_leave_one_seed_out_spearman": 1.0,
+      "paired_contrast_sd": {
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-review-burden-v1-1": 0.15790298765961908,
+        "metric-conditioned-participation-review-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.15790298765961908,
+        "metric-conditioned-review-burden-v1-1__minus__metric-conditioned-topic-diversity-v1-1": 0.0
+      },
+      "pairwise_contrast_count": 3,
+      "pairwise_contrasts_inside_floor": 3,
+      "system_to_seed_signal_ratio": 0.06399171732073403,
+      "top_rank_stability_fraction": 0.6,
+      "within_system_population_sd": {
+        "metric-conditioned-participation-review-v1-1": 0.1557943987436295,
+        "metric-conditioned-review-burden-v1-1": 0.15326770442484958,
+        "metric-conditioned-topic-diversity-v1-1": 0.15326770442484958
+      }
+    }
+  }
+}

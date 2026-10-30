@@ -1,0 +1,5 @@
+stage,logical_runs,complete_logical_runs,terminal_failed_logical_runs,executed_physical_runs,adopted_logical_runs,physical_run_wall_seconds_total,attempts,attempts_missing_wall_seconds,failed_attempts,registry_sha256,source_commits
+metric-conditioned-participation-review-v1-1,15,14,1,15,0,68545.26143062615,17,0,3,d663fda71aacf8a44c84d5471ec1505082685d77996d7491122a14afd85b7f5c,['1078279d1ce833afe9ffb6b7c262da15357b76ab']
+metric-conditioned-topic-diversity-v1-1,15,8,7,7,8,19287.97408170812,14,0,14,5d26218a6d9180f2602a9308f001bccff0bcbe5fd2f8e5e9ae779e0f9329f4f9,['1078279d1ce833afe9ffb6b7c262da15357b76ab']
+metric-conditioned-review-burden-v1-1,15,8,7,7,8,20133.38533224899,14,0,14,63985c981671787abd15a3718b30407ac95a41dd86aae7cc6fcb41ee1acbdc4f,['1078279d1ce833afe9ffb6b7c262da15357b76ab']
+held-out-evaluation,15,15,0,15,0,80508.92609708407,16,1,1,6b8069c0252980f0862a832eec0b5b8bc81de0d2af2a5be44905e34a76079d8b,[]

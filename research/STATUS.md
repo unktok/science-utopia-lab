@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-30 17:08 JST
+Updated: 2026-10-31 08:40 JST
 
 ## Overall position
 
@@ -10,7 +10,9 @@ has completed its optimization phase from clean source commit
 `1078279d1ce833afe9ffb6b7c262da15357b76ab`: all 45 logical design-seed rows
 are terminal, every arm observed exactly five suggestions, and all three arm
 winners were sealed simultaneously before any held-out seed was registered or
-run. Provenance-safe initial-trajectory adoption reused eight complete
+run. All 15 common held-out runs are now complete with no technical failure,
+and the fail-closed cross-evaluation and paper slice have been published.
+Provenance-safe initial-trajectory adoption reused eight complete
 canonical trajectories in each of two target arms while refusing the one
 failed source. This remains a synthetic research experiment, not a validated
 science-policy result.
@@ -31,11 +33,11 @@ Remote: `unktok/science-utopia-lab`
 | optimization loss | v1.1 optimization complete | participation/review, topic-entropy, and review-burden arms each exhausted five suggestions under the same search conditions |
 | metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | objective constitution compiler | prospective synthetic-tested v1 | versioned stakeholder/construct/horizon/distribution/risk/tradeoff/Goodhart/evidence contract compiles only hash-verified validated metric cards into phase LossSpecs; no real metric promoted |
-| held-out evaluation metrics | running | 6 of 15 common-split runs are complete, the seventh resumed from its year-1 checkpoint under launchd, 8 remain planned, and no terminal technical failure is recorded |
-| held-out reporting | fail-closed pipeline ready | a result-blind readiness gate, commit-pinned report handoff, cross-evaluation revalidation, four-panel figures, and atomic NeurIPS insertion are synthetic-tested |
+| held-out evaluation metrics | complete | all 15 common-split runs completed; five seeds for each of three frozen arm winners, with no terminal technical failure |
+| held-out reporting | published experimental slice | commit-pinned report, independent revalidation, loss/metric tables, paired effects, three final figures, and atomic NeurIPS insertion are complete |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
-| post-optimization comparison | ready at frozen-winner gate | three winner fingerprints are sealed; pre-held-out analysis and later common held-out evaluation remain separate |
+| post-optimization comparison | complete v1.1 | two distinct frozen designs, descriptive loss-dependent rank reversal, and no universal winner; all nine paired held-out loss intervals contain zero |
 | parallel campaign execution | measured | bounded workers safe; one local Ollama endpoint gives no material n=4 speedup |
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
@@ -61,7 +63,17 @@ candidates.
 | failures / retries | 15 terminal rows exhausted two attempts at the preregistered reviewer-capacity boundary; invalid suggestions retained `loss: null` and no numeric penalty or extra policy constraint entered an optimizer |
 | remaining optimization runs | 0 |
 | frozen arm winners | 3 of 3, sealed together in freeze `254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d` |
-| held-out evaluation runs | 6 complete, 1 running (review-burden winner, seed 709, attempt 2/2), 8 planned; median complete-run time 95.1 minutes, no terminal failure or stale run |
+| held-out evaluation runs | 15 complete, 0 running, 0 planned, 0 failed; completed 2026-10-31 05:59 JST |
+
+The three objectives selected two distinct designs. Participation/review chose
+`db197e2eb5b1a`; topic entropy and review burden both chose
+`d3536002463db`. Held-out ordering changed with the scoring loss, but all nine
+paired loss contrasts have 95% intervals containing zero. This is a
+descriptive objective-dependence result, not stable pairwise superiority or a
+universal science-policy recommendation. The participation-selected design
+had 11.6 accepted papers and complete review coverage on average, versus 4.0
+accepted papers and roughly 0.55 coverage for the duplicated narrow-proxy
+design, while carrying substantially higher review burden.
 
 Across all arms, 45 physical process attempts consumed 107,966.6 serial
 seconds (29.99 hours). Eight complete canonical trajectories were adopted into
@@ -82,12 +94,12 @@ default constraint for future optimization.
 
 ## Next milestone
 
-Complete the preregistered common held-out evaluation opened from the immutable
-three-winner seal. The optimization phase held simulator, design space,
-optimizer, budget, and development seeds constant while changing only the
-`LossSpec`. Seeds 701, 709, 719, 727, and 733 are now reserved in the dedicated
-15-row evaluation registry; the seventh row is running. Seeds 523, 541, and 547
-remain attached to the first campaign and forbidden here.
+The preregistered common held-out comparison is complete. The next experimental
+milestone is to test robustness under larger seed budgets and replicated
+optimizer runs, while separately sealing the first simulator-backed structural
+campaign over the whole-system mechanism grammar. Seeds 701, 709, 719, 727,
+and 733 remain consumed by v1.1 and must not be reused as fresh held-out
+evidence. Seeds 523, 541, and 547 remain attached to the first campaign.
 
 The next execution steps are:
 
@@ -98,8 +110,8 @@ The next execution steps are:
    without a fabricated loss;
 3. **complete:** freeze one winner per arm simultaneously before consuming the
    new study-held-out split;
-4. **running:** execute the five common held-out seeds for the three frozen
-   winners, then report a cross-evaluation matrix, rank reversals, trade-offs,
+4. **complete:** execute the five common held-out seeds for the three frozen
+   winners and publish the cross-evaluation matrix, rank reversals, trade-offs,
    gaming, and generalization without selecting a universal winner;
 5. **synthetic slice complete:** the executable joint structural grammar now
    spans 770 valid graphs; next bind it into a sealed campaign plan before any

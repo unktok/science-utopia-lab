@@ -1,0 +1,4 @@
+arm,loss_id,design_id,proposal_index,acceptance_rate,funding_application_cost,funding_budget_slots_frac,resubmission_cost,review_policy,reviewer_capacity,reviewer_matching,reviews_per_paper
+metric-conditioned-participation-review-v1-1,participation-review-tradeoff-probe,db197e2eb5b1a,1,0.49677742,1,0.39067741,12.89051798,persona,8,topic,3
+metric-conditioned-topic-diversity-v1-1,topic-diversity-probe,d3536002463db,0,0.11315865,1,0.32741257,16.3862916,standardized,2,random,4
+metric-conditioned-review-burden-v1-1,review-burden-probe,d3536002463db,0,0.11315865,1,0.32741257,16.3862916,standardized,2,random,4

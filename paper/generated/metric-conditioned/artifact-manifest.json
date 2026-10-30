@@ -1,0 +1,81 @@
+{
+  "artifacts": [
+    {
+      "bytes": 2457,
+      "path": "cross-objective-losses.csv",
+      "sha256": "efd04574dfa8ab84eab1b12df1b1e871e76597d5bae6292daa7212ef1120deb5"
+    },
+    {
+      "bytes": 24301,
+      "path": "figures/metric-conditioned-cross-evaluation.pdf",
+      "sha256": "1e9343302a3963a5034137bfcaf0ab0e202e3dc635549d5df02fdc656ecad56a"
+    },
+    {
+      "bytes": 126256,
+      "path": "figures/metric-conditioned-cross-evaluation.png",
+      "sha256": "756c0d30548406484bd497a61e885bf04e5cec8a2fce336b3521b393714ce0d8"
+    },
+    {
+      "bytes": 27334,
+      "path": "figures/metric-conditioned-objective-trajectories.pdf",
+      "sha256": "5174a505b6f4ce975c8381148cd7afeb588c79eaed3e15151bad53d79fbe66ee"
+    },
+    {
+      "bytes": 119086,
+      "path": "figures/metric-conditioned-objective-trajectories.png",
+      "sha256": "e79e6c0ceb5bf2d7cf3bafe3ebff6c9b14e9745b3ef6e809780debfd4ac0f298"
+    },
+    {
+      "bytes": 29049,
+      "path": "figures/metric-conditioned-tradeoff-rank-generalization.pdf",
+      "sha256": "20fc16aceaa4fa21af6179ef959d1a9c2a7242c4aef3452710694b9898682131"
+    },
+    {
+      "bytes": 160916,
+      "path": "figures/metric-conditioned-tradeoff-rank-generalization.png",
+      "sha256": "4fd9ca25babf0fa08438bd4ecb663d680542bd53a5a704bab298b885e246b75c"
+    },
+    {
+      "bytes": 5588,
+      "path": "held-out-metrics.csv",
+      "sha256": "8eeba212b08760452cf08ecb06aae9b7961ecc4e253a7facaa6da594a4c31960"
+    },
+    {
+      "bytes": 99311,
+      "path": "metric-conditioned-figure-data.json",
+      "sha256": "dce400e5c88fce20e91f6043e9397bc780479217ee6969252e988320d3266c97"
+    },
+    {
+      "bytes": 445607,
+      "path": "metric-conditioned-paper-slice.json",
+      "sha256": "47c444af57a84d86a9fc8d9136fd710305a7b634f30723fdd452f48366ada513"
+    },
+    {
+      "bytes": 2668,
+      "path": "metric-conditioned-results.generated.md",
+      "sha256": "4ef72985d29cf7fd1edc4c93b9e4fb4a4304bcf6956ae38239c815d33f35c706"
+    },
+    {
+      "bytes": 4045,
+      "path": "metric-conditioned-results.generated.tex",
+      "sha256": "cf3db68346ba15214ac3be891c776ca05588071d6525b990b24f739ef11a537d"
+    },
+    {
+      "bytes": 12524,
+      "path": "paired-effects.csv",
+      "sha256": "e93616d18ec7bb2088cd0512f05a467f1ccf0c831fbfd7d61f0efb8ac4ba8020"
+    },
+    {
+      "bytes": 928,
+      "path": "runtime-summary.csv",
+      "sha256": "df4f854e63948166572969d9a34f19a92db42415f482b0b0662ec960b5691b93"
+    },
+    {
+      "bytes": 615,
+      "path": "winner-designs.csv",
+      "sha256": "67649641906639b5b2f0ff730f2de00ea887c7180c709e762ffecd62b73f90a3"
+    }
+  ],
+  "schema": "scienceutopia.generated-artifact-manifest.v1",
+  "source_slice_sha256": "47c444af57a84d86a9fc8d9136fd710305a7b634f30723fdd452f48366ada513"
+}
