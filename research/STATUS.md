@@ -1,6 +1,6 @@
 # Program status
 
-Updated: 2026-10-30 14:16 JST
+Updated: 2026-10-30 17:08 JST
 
 ## Overall position
 
@@ -31,7 +31,7 @@ Remote: `unktok/science-utopia-lab`
 | optimization loss | v1.1 optimization complete | participation/review, topic-entropy, and review-burden arms each exhausted five suggestions under the same search conditions |
 | metric / objective landscape | prospective report-only v1 | three frozen probes audited as constructs; nine plural future metric cards and a machine-checkable objective graph; no active campaign effect |
 | objective constitution compiler | prospective synthetic-tested v1 | versioned stakeholder/construct/horizon/distribution/risk/tradeoff/Goodhart/evidence contract compiles only hash-verified validated metric cards into phase LossSpecs; no real metric promoted |
-| held-out evaluation metrics | running | 4 of 15 common-split runs are complete, the fifth is running, 10 remain planned, and no technical failure is recorded |
+| held-out evaluation metrics | running | 6 of 15 common-split runs are complete, the seventh resumed from its year-1 checkpoint under launchd, 8 remain planned, and no terminal technical failure is recorded |
 | held-out reporting | fail-closed pipeline ready | a result-blind readiness gate, commit-pinned report handoff, cross-evaluation revalidation, four-panel figures, and atomic NeurIPS insertion are synthetic-tested |
 | candidate generation | integrated foundation | random/Sobol plus generic black-box `ask/tell` API |
 | closed-loop optimizer | operational | restart-safe ask/tell plus multi-loss study controller, winner seal, and held-out firewall |
@@ -61,7 +61,7 @@ candidates.
 | failures / retries | 15 terminal rows exhausted two attempts at the preregistered reviewer-capacity boundary; invalid suggestions retained `loss: null` and no numeric penalty or extra policy constraint entered an optimizer |
 | remaining optimization runs | 0 |
 | frozen arm winners | 3 of 3, sealed together in freeze `254c3366e921787ad6a36776801b1cb3b278e2cb36ef247da4cb127b6459244d` |
-| held-out evaluation runs | 4 complete, 1 running (participation/review winner, seed 733), 10 planned; median complete-run time 95.1 minutes, no failure or stale run |
+| held-out evaluation runs | 6 complete, 1 running (review-burden winner, seed 709, attempt 2/2), 8 planned; median complete-run time 95.1 minutes, no terminal failure or stale run |
 
 Across all arms, 45 physical process attempts consumed 107,966.6 serial
 seconds (29.99 hours). Eight complete canonical trajectories were adopted into
@@ -86,7 +86,7 @@ Complete the preregistered common held-out evaluation opened from the immutable
 three-winner seal. The optimization phase held simulator, design space,
 optimizer, budget, and development seeds constant while changing only the
 `LossSpec`. Seeds 701, 709, 719, 727, and 733 are now reserved in the dedicated
-15-row evaluation registry; the fifth row is running. Seeds 523, 541, and 547
+15-row evaluation registry; the seventh row is running. Seeds 523, 541, and 547
 remain attached to the first campaign and forbidden here.
 
 The next execution steps are:
