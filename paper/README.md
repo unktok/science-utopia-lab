@@ -24,8 +24,9 @@ The final shareable artifact is
 
 The paper reports the first completed result-dependent engineering campaign and
 the completed optimization stage of Metric-Conditioned Optimization Study
-v1.1. It does not claim a validated science-policy objective, a held-out result,
-or a structurally optimized institution. Update the paper only alongside the
+v1.1. A held-out result appears only when the guarded generated slice is
+atomically present. The paper does not claim a validated science-policy
+objective or structurally optimized institution. Update it only alongside the
 cited protocols, compact results, and artifact manifests.
 
 ## Metric-conditioned result boundary

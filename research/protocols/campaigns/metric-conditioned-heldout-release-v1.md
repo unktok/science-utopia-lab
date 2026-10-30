@@ -32,12 +32,13 @@ PYTHONPATH=. ~/.local/bin/python3 \
 ```
 
 The check opens only `winner-freeze.json`, the sealed held-out snapshot, and
-the SQLite columns `run_id`, `status`, `attempt`, and `max_attempts` in
-read-only mode. It deliberately does **not** open `cross-evaluation.json` or
-any raw simulator output. `ready_for_report` becomes true only when the
-registry exactly matches the sealed 15-run set and all 15 rows are complete.
-Terminal technical failures do not receive fabricated losses and keep this
-paper release closed.
+the result-blind `scienceutopia.held-out-progress.v1` projection from the
+read-only registry. It deliberately does **not** open `cross-evaluation.json`
+or any raw simulator output. The canonical progress gate opens
+`ready_for_report` when every row is terminal, so the commit-pinned controller
+can faithfully report technical failures. The stricter publication gate opens
+only when all 15 rows are complete. Terminal technical failures do not receive
+fabricated losses and keep the paper release closed.
 
 ## Commit-pinned report generation
 

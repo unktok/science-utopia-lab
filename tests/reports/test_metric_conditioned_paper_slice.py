@@ -1,6 +1,7 @@
 import copy
 import json
 from pathlib import Path
+import re
 import sqlite3
 import statistics
 
@@ -49,12 +50,14 @@ def _write_json(path, value):
     path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def _registry(path, rows, adopted=()):
+def _registry(path, rows, adopted=(), *, study_id="study-v1", revision="revision-1"):
     connection = sqlite3.connect(path)
     connection.executescript("""
         CREATE TABLE runs (
             run_id TEXT PRIMARY KEY, status TEXT, wall_seconds REAL,
-            source_commit TEXT, attempt INTEGER, max_attempts INTEGER
+            source_commit TEXT, attempt INTEGER, max_attempts INTEGER,
+            study_id TEXT, study_revision TEXT, seed INTEGER,
+            seed_role TEXT, started_utc TEXT, finished_utc TEXT, error TEXT
         );
         CREATE TABLE attempts (
             run_id TEXT, attempt INTEGER, status TEXT, wall_seconds REAL
@@ -66,9 +69,20 @@ def _registry(path, rows, adopted=()):
     adopted = set(adopted)
     for run_id in rows:
         physical = run_id not in adopted
+        seed_match = re.search(r"(\d+)$", run_id)
+        seed = int(seed_match.group(1)) if seed_match else 0
         connection.execute(
-            "INSERT INTO runs VALUES (?, 'complete', ?, ?, 1, 2)",
-            (run_id, 100.0 if physical else None, SOURCE_COMMIT),
+            "INSERT INTO runs VALUES (?, 'complete', ?, ?, 1, 2, ?, ?, ?, "
+            "'held_out_evaluation', '2030-01-01T00:00:00+00:00', "
+            "'2030-01-01T00:01:40+00:00', NULL)",
+            (
+                run_id,
+                100.0 if physical else None,
+                SOURCE_COMMIT,
+                study_id,
+                revision,
+                seed,
+            ),
         )
         if physical:
             connection.execute(
@@ -308,7 +322,12 @@ def _fixture(tmp_path):
         "runs": held_runs,
     }
     _write_json(evaluation_root / "snapshot.json", evaluation_snapshot)
-    _registry(evaluation_root / "runs.sqlite3", [item["run_id"] for item in held_runs])
+    _registry(
+        evaluation_root / "runs.sqlite3",
+        [item["run_id"] for item in held_runs],
+        study_id=manifest["id"],
+        revision=freeze["study_revision"],
+    )
 
     loss_bases = {
         ARMS[0]: (0.40, 0.80, 0.90),
@@ -426,6 +445,7 @@ def test_atomic_output_contains_tables_figures_reports_and_manifest(tmp_path):
     assert "rank reversal" in markdown
     assert "Institutional parameters" in markdown
     assert "metric-conditioned-designs" in tex
+    assert "metric-conditioned-heldout-winners" in tex
     manifest = json.loads((output / "artifact-manifest.json").read_text())
     assert manifest["artifacts"]
     with pytest.raises(FileExistsError, match="refusing to overwrite"):
@@ -521,10 +541,47 @@ def test_readiness_gate_opens_only_after_complete_registry(tmp_path):
     readiness = probe_readiness(fixture["study_root"])
 
     assert readiness["expected_runs"] == 15
-    assert readiness["status_counts"] == {"complete": 15}
+    assert readiness["result_blind_progress"]["schema"] == (
+        "scienceutopia.held-out-progress.v1"
+    )
+    assert readiness["result_blind_progress"]["progress"]["counts"] == {
+        "planned": 0,
+        "running": 0,
+        "complete": 15,
+        "failed": 0,
+    }
     assert readiness["ready_for_report"] is True
+    assert readiness["all_runs_complete"] is True
     assert readiness["ready_for_publication"] is True
     assert readiness["value_files_read"] is False
+
+
+def test_terminal_failure_opens_controller_report_but_closes_paper_release(tmp_path):
+    fixture = _fixture(tmp_path)
+    registry = fixture["study_root"] / "held-out-evaluation/runs.sqlite3"
+    connection = sqlite3.connect(registry)
+    connection.execute(
+        "UPDATE runs SET status = 'failed', attempt = max_attempts, "
+        "wall_seconds = NULL, error = 'synthetic technical failure' "
+        "WHERE run_id = ?",
+        (f"held-0-{HELD_OUT_SEEDS[0]}",),
+    )
+    connection.commit()
+    connection.close()
+
+    readiness = probe_readiness(fixture["study_root"])
+    assert readiness["ready_for_report"] is True
+    assert readiness["all_runs_complete"] is False
+    assert readiness["ready_for_publication"] is False
+    with pytest.raises(RuntimeError, match="terminal technical failures"):
+        publish(
+            manifest_path=fixture["manifest_path"],
+            study_root=fixture["study_root"],
+            campaign_roots=fixture["campaign_roots"],
+            output_dir=tmp_path / "must-not-publish",
+            classification=SYNTHETIC,
+            formats=("png",),
+        )
 
 
 def test_synthetic_cli_cannot_publish_to_paper_destination():
@@ -546,6 +603,7 @@ def test_paper_boundary_requires_generated_fragment_and_all_figures():
     assert "generated/metric-conditioned/metric-conditioned-results.generated" in boundary
     assert "No synthetic fixture" in boundary
     assert "tests/fixtures" not in boundary
+    assert "remain unused" not in boundary
 
 
 def test_methods_flow_keeps_four_contracts_and_firewall_visible():

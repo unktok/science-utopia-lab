@@ -34,7 +34,8 @@ The pipeline creates exactly three named figures:
    compared across arms.
 3. `metric-conditioned-tradeoff-rank-generalization`: the held-out activity vs
    review-burden trade-off with population-SD error bars, loss-rank reversal,
-   and held-out-minus-development generalization gap.
+   counts of preregistered triggered proxy-gaming diagnostics, and
+   held-out-minus-development generalization gap.
 
 These figures answer which systems different objectives produce. They do not
 identify a universally or normatively best science system. In particular,

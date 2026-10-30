@@ -20,9 +20,10 @@ from scripts.reports.metric_conditioned_paper_slice import (
     build_slice,
     write_outputs,
 )
+from utopia.optimization.held_out_progress import build_held_out_progress
 
 
-READINESS_SCHEMA = "scienceutopia.metric-conditioned-heldout-readiness.v1"
+READINESS_SCHEMA = "scienceutopia.metric-conditioned-heldout-release-readiness.v1"
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -32,19 +33,16 @@ def _read_json(path: Path) -> dict[str, Any]:
     return value
 
 
-def _status_rows(path: Path) -> list[dict[str, Any]]:
+def _registered_run_ids(path: Path) -> set[str]:
     if not path.is_file():
         raise ValueError(f"missing held-out registry: {path}")
     connection = sqlite3.connect(f"file:{path.resolve()}?mode=ro", uri=True)
     connection.row_factory = sqlite3.Row
     try:
-        return [
-            dict(row)
-            for row in connection.execute(
-                "SELECT run_id, status, attempt, max_attempts "
-                "FROM runs ORDER BY run_id"
-            ).fetchall()
-        ]
+        return {
+            row["run_id"]
+            for row in connection.execute("SELECT run_id FROM runs").fetchall()
+        }
     finally:
         connection.close()
 
@@ -62,19 +60,18 @@ def probe_readiness(study_root: Path) -> dict[str, Any]:
     expected = {item.get("run_id") for item in snapshot.get("runs", [])}
     if None in expected or not expected:
         raise ValueError("held-out snapshot has no valid sealed run set")
-    rows = _status_rows(study_root / "held-out-evaluation/runs.sqlite3")
-    actual = {row["run_id"] for row in rows}
+    registry = study_root / "held-out-evaluation/runs.sqlite3"
+    actual = _registered_run_ids(registry)
     if actual != expected:
         raise ValueError("held-out registry rows differ from the sealed snapshot")
-    counts: dict[str, int] = {}
-    for row in rows:
-        counts[row["status"]] = counts.get(row["status"], 0) + 1
-    exhausted_failures = [
-        row["run_id"]
-        for row in rows
-        if row["status"] == "failed" and row["attempt"] >= row["max_attempts"]
-    ]
-    ready = counts.get("complete", 0) == len(expected) and not exhausted_failures
+    progress = build_held_out_progress(registry, expected_runs=len(expected))
+    if progress["study"] != {
+        "id": snapshot.get("study_id"),
+        "revision": snapshot.get("study_revision"),
+    }:
+        raise ValueError("held-out registry study identity differs from the snapshot")
+    counts = progress["progress"]["counts"]
+    all_complete = counts["complete"] == len(expected)
     report_exists = (study_root / "held-out-evaluation/cross-evaluation.json").is_file()
     return {
         "schema": READINESS_SCHEMA,
@@ -82,11 +79,11 @@ def probe_readiness(study_root: Path) -> dict[str, Any]:
         "study_revision": snapshot.get("study_revision"),
         "winner_freeze_sha256": snapshot.get("winner_freeze_sha256"),
         "expected_runs": len(expected),
-        "status_counts": counts,
-        "exhausted_failure_count": len(exhausted_failures),
-        "ready_for_report": ready,
+        "result_blind_progress": progress,
+        "ready_for_report": progress["gate"]["ready_for_report"],
+        "all_runs_complete": all_complete,
         "cross_evaluation_report_exists": report_exists,
-        "ready_for_publication": ready and report_exists,
+        "ready_for_publication": all_complete and report_exists,
         "value_files_read": False,
         "note": (
             "Readiness uses sealed metadata and SQLite status fields only; "
@@ -108,6 +105,11 @@ def publish(
     if not readiness["ready_for_report"]:
         raise RuntimeError(
             "held-out split is incomplete; refusing to read cross-evaluation values"
+        )
+    if not readiness["all_runs_complete"]:
+        raise RuntimeError(
+            "held-out split has terminal technical failures; report-evaluation may "
+            "record them, but the paper release requires all runs complete"
         )
     if not readiness["cross_evaluation_report_exists"]:
         raise RuntimeError(

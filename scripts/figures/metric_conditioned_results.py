@@ -45,6 +45,11 @@ ROLE_COLORS = {
     ROLE_ORDER[1]: "#E8A33D",
     ROLE_ORDER[2]: "#E76254",
 }
+LOSS_LABELS = {
+    "participation-review-tradeoff-probe": "Part.-review",
+    "topic-diversity-probe": "Topic entropy",
+    "review-burden-probe": "Review burden",
+}
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PAPER_RESULTS_DIR = REPO_ROOT / "paper/figures/metric-conditioned"
 
@@ -73,6 +78,10 @@ def _arm_order(arms) -> list[str]:
             arm,
         ),
     )
+
+
+def _loss_label(loss_id: str) -> str:
+    return LOSS_LABELS.get(loss_id, loss_id.replace("-probe", "").replace("-", " "))
 
 
 def _profile_map(report: Mapping[str, Any], arm: str) -> dict[str, Mapping[str, Any]]:
@@ -260,7 +269,7 @@ def plot_cross_evaluation(summary, out_dir, formats):
     sns.heatmap(
         ranks, annot=annotations, fmt=annotation_format, cmap="mako_r", linewidths=0.5,
         vmin=1, vmax=len(arms),
-        linecolor="white", xticklabels=[item.replace("-probe", "") for item in loss_ids],
+        linecolor="white", xticklabels=[_loss_label(item) for item in loss_ids],
         yticklabels=labels, cbar_kws={"label": "Within-loss rank (1 = best)"}, ax=ax,
     )
     ax.set_xlabel("Loss used to score each frozen system")
@@ -332,7 +341,7 @@ def plot_trajectories(summary, out_dir, formats):
 
 
 def plot_tradeoff_rank_generalization(summary, out_dir, formats):
-    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.35))
+    fig, axes = plt.subplots(1, 4, figsize=(9.4, 2.35))
     arms = [item["id"] for item in summary["arms"]]
     for arm in summary["arms"]:
         metrics = summary["held_out_metrics"][arm["id"]]
@@ -369,28 +378,69 @@ def plot_tradeoff_rank_generalization(summary, out_dir, formats):
     sns.heatmap(
         rank_matrix, annot=True, fmt=".1f", cmap="crest_r", vmin=1, vmax=len(arms),
         cbar=False, linewidths=0.4, linecolor="white", ax=axes[1],
-        xticklabels=[column.removeprefix("loss:").replace("-probe", "") for column in loss_columns],
+        xticklabels=[_loss_label(column.removeprefix("loss:")) for column in loss_columns],
         yticklabels=[item["label"] for item in summary["arms"]],
     )
     axes[1].set_title("Rank reversal", pad=4)
     axes[1].set_xlabel("Held-out scoring loss")
     axes[1].tick_params(axis="x", rotation=25)
 
+    triggered = {
+        arm: sum(
+            item.get("triggered") is True
+            and item.get("signature")
+            != "development_improvement_without_held_out_transfer"
+            for item in summary["gaming_flags"]
+            if item.get("system") == arm
+        )
+        for arm in arms
+    }
+    evaluated = {
+        arm: sum(
+            item.get("signature")
+            != "development_improvement_without_held_out_transfer"
+            for item in summary["gaming_flags"]
+            if item.get("system") == arm
+        )
+        for arm in arms
+    }
+    axes[2].bar(
+        range(len(arms)),
+        [triggered[arm] for arm in arms],
+        color=[item["color"] for item in summary["arms"]],
+        width=0.65,
+    )
+    axes[2].set_xticks(
+        range(len(arms)), ["Part.-review", "Topic", "Burden"], rotation=20
+    )
+    axes[2].set_ylabel("Triggered pairwise flags")
+    axes[2].set_title("Gaming diagnostics", pad=4)
+    axes[2].grid(axis="y", color=GRID, linewidth=0.5)
+    for index, arm in enumerate(arms):
+        axes[2].text(
+            index,
+            triggered[arm] + 0.04,
+            f"{triggered[arm]}/{evaluated[arm]}",
+            ha="center",
+            va="bottom",
+            fontsize=5.5,
+        )
+
     gaps = [
         summary["generalization"][arm]["generalization_gap_held_out_minus_optimization"]
         for arm in arms
     ]
-    axes[2].bar(
+    axes[3].bar(
         range(len(arms)), gaps, color=[item["color"] for item in summary["arms"]], width=0.65
     )
-    axes[2].axhline(0, color=MUTED, linewidth=0.7)
-    axes[2].set_xticks(range(len(arms)), ["Part.-review", "Topic", "Burden"], rotation=20)
-    axes[2].set_ylabel("Held-out - development loss")
-    axes[2].set_title("Generalization gap", pad=4)
-    axes[2].grid(axis="y", color=GRID, linewidth=0.5)
-    for ax, letter in zip(axes, "abc"):
+    axes[3].axhline(0, color=MUTED, linewidth=0.7)
+    axes[3].set_xticks(range(len(arms)), ["Part.-review", "Topic", "Burden"], rotation=20)
+    axes[3].set_ylabel("Held-out - development loss")
+    axes[3].set_title("Generalization gap", pad=4)
+    axes[3].grid(axis="y", color=GRID, linewidth=0.5)
+    for ax, letter in zip(axes, "abcd"):
         ax.text(-0.18, 1.08, letter, transform=ax.transAxes, fontsize=8, fontweight="bold", color=INK)
-    sns.despine(ax=axes[0]); sns.despine(ax=axes[2])
+    sns.despine(ax=axes[0]); sns.despine(ax=axes[2]); sns.despine(ax=axes[3])
     _warning(fig, summary)
     fig.tight_layout(rect=(0, 0, 1, 0.94 if _classification(summary) == SYNTHETIC else 1))
     return _save(fig, out_dir, "metric-conditioned-tradeoff-rank-generalization", formats)
