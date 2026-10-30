@@ -26,7 +26,7 @@ This release path preserves four distinct objects:
 Run this from a clean development or integration worktree:
 
 ```bash
-PYTHONPATH=. ~/.local/bin/python3 \
+PYTHONPATH=. .venv/bin/python \
   -m scripts.reports.metric_conditioned_heldout_release check \
   --study-root <metric-conditioned-v1.1-study-root>
 ```
@@ -47,7 +47,7 @@ commit-pinned controller worktree. This is the only step that reads raw
 held-out output and writes `cross-evaluation.json`:
 
 ```bash
-PYTHONPATH=. ~/.local/bin/python3 scripts/run_metric_conditioned_study.py \
+PYTHONPATH=. .venv/bin/python scripts/run_metric_conditioned_study.py \
   --study research/specs/metric-conditioned-optimization-study-v1-1.json \
   report-evaluation
 ```
@@ -61,7 +61,7 @@ its raw outputs into the versioned report.
 From the reviewed integration revision, publish the final slice:
 
 ```bash
-PYTHONPATH=. ~/.local/bin/python3 \
+PYTHONPATH=. .venv/bin/python \
   -m scripts.reports.metric_conditioned_heldout_release publish \
   --manifest research/specs/metric-conditioned-optimization-study-v1-1.json \
   --study-root <study-root> \
