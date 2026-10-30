@@ -398,9 +398,13 @@ def test_build_slice_validates_and_summarizes_complete_study(tmp_path):
     assert result["schema"] == SLICE_SCHEMA
     assert result["conclusions"]["distinct_frozen_designs"] == 3
     assert result["conclusions"]["rank_reversal_across_losses"] is True
+    assert result["conclusions"]["held_out_loss_pairwise_contrasts"] == 9
+    assert result["conclusions"]["held_out_loss_pairwise_intervals_excluding_zero"] == 9
+    assert result["conclusions"]["all_pairwise_held_out_loss_intervals_include_zero"] is False
     assert result["runtime"]["logical_optimization_runs"] == 45
     assert result["runtime"]["physical_optimization_runs"] == 27
     assert result["runtime"]["adopted_optimization_runs"] == 18
+    assert result["runtime"]["terminal_failed_optimization_runs"] == 0
     assert result["runtime"]["held_out_evaluation"]["logical_runs"] == 15
     assert all(
         item["n"] == 5
@@ -415,6 +419,55 @@ def test_build_slice_validates_and_summarizes_complete_study(tmp_path):
         "Participation-review", "Topic-entropy proxy", "Review-burden proxy"
     ]
     assert "uncertainty" in figure["cross_evaluation"]
+
+
+def test_build_slice_retains_terminal_optimization_failures_without_penalty(tmp_path):
+    fixture = _fixture(tmp_path)
+    arm = ARMS[0]
+    registry = fixture["campaign_roots"][arm] / "runs.sqlite3"
+    run_id = f"{arm}-s0-seed{OPTIMIZATION_SEEDS[0]}"
+    connection = sqlite3.connect(registry)
+    connection.execute(
+        "UPDATE runs SET status = 'failed', attempt = max_attempts, "
+        "error = 'synthetic terminal technical failure' WHERE run_id = ?",
+        (run_id,),
+    )
+    connection.execute(
+        "UPDATE attempts SET status = 'failed' WHERE run_id = ?",
+        (run_id,),
+    )
+    connection.commit()
+    connection.close()
+    state_path = fixture["campaign_roots"][arm] / "campaign-state.json"
+    state = json.loads(state_path.read_text())
+    state["suggestions"][0]["status"] = "observed_invalid"
+    state["suggestions"][0]["observation"] = {"loss": None}
+    _write_json(state_path, state)
+
+    result, _ = _build(fixture)
+
+    runtime = result["runtime"]["optimization_by_arm"][arm]
+    assert runtime["complete_logical_runs"] == 14
+    assert runtime["terminal_failed_logical_runs"] == 1
+    assert result["runtime"]["terminal_failed_optimization_runs"] == 1
+
+
+def test_build_slice_rejects_retryable_optimization_failure(tmp_path):
+    fixture = _fixture(tmp_path)
+    arm = ARMS[0]
+    registry = fixture["campaign_roots"][arm] / "runs.sqlite3"
+    run_id = f"{arm}-s0-seed{OPTIMIZATION_SEEDS[0]}"
+    connection = sqlite3.connect(registry)
+    connection.execute(
+        "UPDATE runs SET status = 'failed', attempt = 1, max_attempts = 2, "
+        "error = 'synthetic retryable technical failure' WHERE run_id = ?",
+        (run_id,),
+    )
+    connection.commit()
+    connection.close()
+
+    with pytest.raises(ValueError, match="registry has unresolved runs"):
+        _build(fixture)
 
 
 def test_atomic_output_contains_tables_figures_reports_and_manifest(tmp_path):

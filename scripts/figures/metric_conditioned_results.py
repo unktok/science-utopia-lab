@@ -274,7 +274,7 @@ def plot_cross_evaluation(summary, out_dir, formats):
     )
     ax.set_xlabel("Loss used to score each frozen system")
     ax.set_ylabel("Optimization objective that produced the system")
-    ax.set_title("Cross-evaluation exposes objective-conditioned systems", pad=7)
+    ax.set_title("Cross-evaluation exposes objective-conditioned outcomes", pad=7)
     ax.tick_params(axis="x", rotation=20)
     _warning(fig, summary)
     fig.tight_layout(rect=(0, 0, 1, 0.96 if _classification(summary) == SYNTHETIC else 1))
@@ -343,7 +343,8 @@ def plot_trajectories(summary, out_dir, formats):
 def plot_tradeoff_rank_generalization(summary, out_dir, formats):
     fig, axes = plt.subplots(1, 4, figsize=(9.4, 2.35))
     arms = [item["id"] for item in summary["arms"]]
-    for arm in summary["arms"]:
+    annotation_offsets = ((4, 4), (4, 7), (4, -11))
+    for arm, annotation_offset in zip(summary["arms"], annotation_offsets):
         metrics = summary["held_out_metrics"][arm["id"]]
         x = metrics["review-burden-per-active-researcher"]["mean"]
         y = metrics["active-researcher-fraction"]["mean"]
@@ -362,7 +363,13 @@ def plot_tradeoff_rank_generalization(summary, out_dir, formats):
             markeredgewidth=0.5,
             zorder=3,
         )
-        axes[0].annotate(arm["label"], (x, y), xytext=(4, 3), textcoords="offset points", fontsize=5.7)
+        axes[0].annotate(
+            arm["label"],
+            (x, y),
+            xytext=annotation_offset,
+            textcoords="offset points",
+            fontsize=5.7,
+        )
     axes[0].set_xlabel("Review burden (lower is better)")
     axes[0].set_ylabel("Active-researcher fraction")
     axes[0].set_title("Held-out trade-off", pad=4)

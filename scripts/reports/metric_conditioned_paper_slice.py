@@ -8,6 +8,7 @@ writes any result artifact.  Outputs are staged and published atomically.
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 import csv
 import hashlib
 import itertools
@@ -284,15 +285,31 @@ def _sqlite_rows(path: Path, query: str) -> list[dict[str, Any]]:
         connection.close()
 
 
-def _registry_summary(path: Path, *, expected_runs: int, label: str) -> dict[str, Any]:
+def _registry_summary(
+    path: Path,
+    *,
+    expected_runs: int,
+    label: str,
+    allow_terminal_failures: bool = False,
+) -> dict[str, Any]:
     if not path.is_file():
         raise ValueError(f"missing {label} registry: {path}")
     rows = _sqlite_rows(path, "SELECT * FROM runs ORDER BY run_id")
     if len(rows) != expected_runs:
         raise ValueError(f"{label} registry has {len(rows)}/{expected_runs} runs")
-    incomplete = [row["run_id"] for row in rows if row["status"] != "complete"]
-    if incomplete:
-        raise ValueError(f"{label} registry has incomplete runs: {incomplete}")
+    terminal_failures = [
+        row
+        for row in rows
+        if row["status"] == "failed" and row["attempt"] >= row["max_attempts"]
+    ]
+    unresolved = [
+        row["run_id"]
+        for row in rows
+        if row["status"] != "complete"
+        and not (allow_terminal_failures and row in terminal_failures)
+    ]
+    if unresolved:
+        raise ValueError(f"{label} registry has unresolved runs: {unresolved}")
     attempts = _sqlite_rows(
         path, "SELECT * FROM attempts ORDER BY run_id, attempt"
     )
@@ -310,13 +327,29 @@ def _registry_summary(path: Path, *, expected_runs: int, label: str) -> dict[str
         else []
     )
     adopted = {item["logical_run_id"] for item in links}
+    invalid_adoptions = [
+        row["run_id"]
+        for row in rows
+        if row["run_id"] in adopted and row["status"] != "complete"
+    ]
+    if invalid_adoptions:
+        raise ValueError(
+            f"{label} registry adopts non-complete runs: {invalid_adoptions}"
+        )
     executed = [row for row in rows if row["run_id"] not in adopted]
     missing_runtime = [
         row["run_id"] for row in executed if not _finite(row.get("wall_seconds"))
     ]
     if missing_runtime:
         raise ValueError(f"{label} executed runs lack runtime: {missing_runtime}")
-    wall_seconds = [float(row["wall_seconds"]) for row in executed]
+    wall_seconds = [
+        float(item["wall_seconds"])
+        for item in attempts
+        if _finite(item.get("wall_seconds"))
+    ]
+    attempts_missing_wall_seconds = sum(
+        not _finite(item.get("wall_seconds")) for item in attempts
+    )
     source_commits = {
         row.get("source_commit")
         for row in rows
@@ -334,12 +367,14 @@ def _registry_summary(path: Path, *, expected_runs: int, label: str) -> dict[str
     return {
         "registry_sha256": _file_sha(path),
         "logical_runs": len(rows),
-        "complete_logical_runs": len(rows),
+        "complete_logical_runs": sum(row["status"] == "complete" for row in rows),
+        "terminal_failed_logical_runs": len(terminal_failures),
         "executed_physical_runs": len(executed),
         "adopted_logical_runs": len(links),
         "physical_run_wall_seconds": _uncertainty(wall_seconds),
         "physical_run_wall_seconds_total": sum(wall_seconds),
         "attempts": len(attempts),
+        "attempts_missing_wall_seconds": attempts_missing_wall_seconds,
         "failed_attempts": sum(item["status"] == "failed" for item in attempts),
         "source_commits": sorted(source_commits),
     }
@@ -749,6 +784,7 @@ def build_slice(
             campaign_roots[arm] / "runs.sqlite3",
             expected_runs=expected,
             label=arm,
+            allow_terminal_failures=True,
         )
         commits = runtime_by_arm[arm]["source_commits"]
         if commits and commits != [freeze["source_commit"]]:
@@ -788,6 +824,14 @@ def build_slice(
     triggered_gaming = [
         item for item in report["analyses"]["gaming_flags"] if item.get("triggered")
     ]
+    loss_effects_excluding_zero = [
+        item
+        for item in loss_effects
+        if item["ci95_low"] > 0 or item["ci95_high"] < 0
+    ]
+    arms_by_design: dict[str, list[str]] = defaultdict(list)
+    for arm, winner in winners.items():
+        arms_by_design[winner["design_id"]].append(arm)
     optimization_runtime_total = sum(
         value["physical_run_wall_seconds_total"] for value in runtime_by_arm.values()
     )
@@ -868,6 +912,16 @@ def build_slice(
             "rank_reversal_across_losses": rank_reversal,
             "best_system_changed_across_losses": best_system_changed,
             "triggered_gaming_flags": triggered_gaming,
+            "held_out_loss_pairwise_contrasts": len(loss_effects),
+            "held_out_loss_pairwise_intervals_excluding_zero": len(
+                loss_effects_excluding_zero
+            ),
+            "all_pairwise_held_out_loss_intervals_include_zero": not bool(
+                loss_effects_excluding_zero
+            ),
+            "arms_by_frozen_design": {
+                design: sorted(group) for design, group in sorted(arms_by_design.items())
+            },
             "universal_winner_selected": False,
         },
         "runtime": {
@@ -881,6 +935,11 @@ def build_slice(
                 optimization_runtime_total
                 + held_out_runtime["physical_run_wall_seconds_total"]
             ),
+            "attempts_missing_wall_seconds": sum(
+                item["attempts_missing_wall_seconds"]
+                for item in runtime_by_arm.values()
+            )
+            + held_out_runtime["attempts_missing_wall_seconds"],
             "logical_optimization_runs": sum(
                 item["logical_runs"] for item in runtime_by_arm.values()
             ),
@@ -889,6 +948,10 @@ def build_slice(
             ),
             "adopted_optimization_runs": sum(
                 item["adopted_logical_runs"] for item in runtime_by_arm.values()
+            ),
+            "terminal_failed_optimization_runs": sum(
+                item["terminal_failed_logical_runs"]
+                for item in runtime_by_arm.values()
             ),
         },
         "figure_data": figure_summary,
@@ -953,7 +1016,7 @@ def _generated_text(slice_data: Mapping[str, Any]) -> tuple[str, str]:
     if conclusions["best_system_changed_across_losses"]:
         reversal_sentence = (
             "The identity of the best frozen system changed across held-out scoring losses, "
-            "constituting a winner-level rank reversal."
+            "a descriptive rank reversal between the frozen designs."
         )
     elif conclusions["rank_reversal_across_losses"]:
         reversal_sentence = (
@@ -964,7 +1027,32 @@ def _generated_text(slice_data: Mapping[str, Any]) -> tuple[str, str]:
         reversal_sentence = (
             "No rank-order reversal was observed across the three held-out losses."
         )
+    if conclusions["all_pairwise_held_out_loss_intervals_include_zero"]:
+        uncertainty_sentence = (
+            f"All {conclusions['held_out_loss_pairwise_contrasts']} paired held-out "
+            "loss contrasts have 95% intervals containing zero, so five seeds do not "
+            "establish stable pairwise superiority."
+        )
+    else:
+        uncertainty_sentence = (
+            f"{conclusions['held_out_loss_pairwise_intervals_excluding_zero']} of "
+            f"{conclusions['held_out_loss_pairwise_contrasts']} paired held-out loss "
+            "contrasts have 95% intervals excluding zero."
+        )
+    duplicated_designs = [
+        group
+        for group in conclusions["arms_by_frozen_design"].values()
+        if len(group) > 1
+    ]
+    duplicate_sentence = ""
+    if duplicated_designs:
+        duplicate_sentence = (
+            "The topic-entropy and review-burden objectives selected the same design; "
+            "their arm-labelled held-out trajectories are independent stochastic "
+            "repetitions, not distinct institutional systems."
+        )
     runtime_hours = slice_data["runtime"]["all_physical_wall_seconds_total"] / 3600
+    missing_runtime_attempts = slice_data["runtime"]["attempts_missing_wall_seconds"]
     held_out_runs = slice_data["runtime"]["held_out_evaluation"]["logical_runs"]
     held_out_seed_count = len(
         slice_data["experimental_contract"]["controlled"]["held_out_seeds"]
@@ -977,6 +1065,8 @@ def _generated_text(slice_data: Mapping[str, Any]) -> tuple[str, str]:
         "",
         selection_sentence,
         reversal_sentence,
+        uncertainty_sentence,
+        duplicate_sentence,
         "The experiment changes the optimization LossSpec, not the simulator, design space, optimizer, budget, or seeds. Narrow proxy objectives are contrasts, not normative recommendations, and the report-only protocol selects no universal winner.",
         "",
         "## Frozen systems and own-objective generalization",
@@ -1028,7 +1118,9 @@ def _generated_text(slice_data: Mapping[str, Any]) -> tuple[str, str]:
         f"The slice covers {slice_data['runtime']['logical_optimization_runs']} logical optimization runs, "
         f"{slice_data['runtime']['physical_optimization_runs']} physically executed optimization runs, "
         f"{slice_data['runtime']['adopted_optimization_runs']} provenance-linked adopted logical runs, "
-        f"and {held_out_runs} held-out runs. Recorded physical runtime totals {runtime_hours:.2f} hours. "
+        f"{slice_data['runtime']['terminal_failed_optimization_runs']} terminal technical failures retained without numeric penalties, "
+        f"and {held_out_runs} held-out runs. Recorded attempt runtime totals at least {runtime_hours:.2f} hours; "
+        f"{missing_runtime_attempts} interrupted attempt(s) lack a recoverable wall-time value. "
         f"Source commit: `{slice_data['provenance']['source_commit']}`; winner-freeze SHA-256: "
         f"`{slice_data['provenance']['winner_freeze_sha256']}`.",
         "",
@@ -1039,7 +1131,16 @@ def _generated_text(slice_data: Mapping[str, Any]) -> tuple[str, str]:
     tex = [
         "% Generated by scripts.reports.metric_conditioned_paper_slice; do not edit.",
         r"\subsection{Completed loss-conditioned comparison}",
-        _tex_escape(selection_sentence) + " " + _tex_escape(reversal_sentence),
+        " ".join(
+            _tex_escape(sentence)
+            for sentence in (
+                selection_sentence,
+                reversal_sentence,
+                uncertainty_sentence,
+                duplicate_sentence,
+            )
+            if sentence
+        ),
         r"The experimental intervention is the optimization \code{LossSpec}; the simulator, design space, optimizer, budget, and seeds are held fixed. The proxy objectives are contrasts, not normative recommendations, and the report-only protocol selects no universal winner.",
         r"\begin{table}[t]",
         f"\\caption{{Frozen systems and own-objective generalization. Intervals are exact nonparametric 95\\% bootstrap percentile intervals for the complete LossSpec aggregate over the {held_out_seed_count} common held-out seeds.}}",
@@ -1111,8 +1212,11 @@ def _generated_text(slice_data: Mapping[str, Any]) -> tuple[str, str]:
         r"\paragraph{Runtime and provenance.}",
         f"The slice contains {slice_data['runtime']['logical_optimization_runs']} logical optimization runs, "
         f"{slice_data['runtime']['physical_optimization_runs']} physical optimization runs, "
-        f"{slice_data['runtime']['adopted_optimization_runs']} adopted logical runs, and {held_out_runs} held-out runs "
-        f"({runtime_hours:.2f} physical runtime hours). Source commit: "
+        f"{slice_data['runtime']['adopted_optimization_runs']} adopted logical runs, "
+        f"{slice_data['runtime']['terminal_failed_optimization_runs']} terminal technical failures retained without numeric penalties, "
+        f"and {held_out_runs} held-out runs "
+        f"(at least {runtime_hours:.2f} recorded attempt-runtime hours; "
+        f"{missing_runtime_attempts} interrupted attempt(s) lack wall time). Source commit: "
         f"\\code{{{_tex_escape(slice_data['provenance']['source_commit'])}}}; winner freeze: "
         f"\\code{{{_tex_escape(slice_data['provenance']['winner_freeze_sha256'])}}}.",
         "",
@@ -1193,7 +1297,7 @@ def write_outputs(
         ] + [{"stage": "held-out-evaluation", **slice_data["runtime"]["held_out_evaluation"]}]
         _write_csv(
             stage / "runtime-summary.csv",
-            ["stage", "logical_runs", "complete_logical_runs", "executed_physical_runs", "adopted_logical_runs", "physical_run_wall_seconds_total", "attempts", "failed_attempts", "registry_sha256", "source_commits"],
+            ["stage", "logical_runs", "complete_logical_runs", "terminal_failed_logical_runs", "executed_physical_runs", "adopted_logical_runs", "physical_run_wall_seconds_total", "attempts", "attempts_missing_wall_seconds", "failed_attempts", "registry_sha256", "source_commits"],
             runtime_rows,
         )
         markdown, tex = _generated_text(slice_data)
