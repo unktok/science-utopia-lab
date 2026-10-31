@@ -1,0 +1,11 @@
+{
+  "jobId": "job-d778b4d49f7e4cac8e9ddf53471ecd31",
+  "status": "COMPLETE / ACTUAL NATIVE LOSS -3",
+  "candidates": 1,
+  "model": "ACTUAL NATIVE LOSS-3.000 ACTUAL MODELqwen3:8bOBSERVED PAPERS / YEAR 23",
+  "authors": 5,
+  "rendererService": "LOCAL QUEUE / SOURCE 3fa445df2fa7",
+  "runProvenance": "RUN SOURCE bceb48cd7ddc / DEVELOPMENT SEED 1301 / 2 YEARS / LOSS native-accepted-count-engineering-v1",
+  "mobileOverflow": false,
+  "errors": []
+}

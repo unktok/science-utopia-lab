@@ -36,8 +36,13 @@ The native fitting graphic is reproducible without model calls:
 .venv/bin/python -m scripts.figures.native_design_evidence
 ```
 
-The current native-foundry image is an actual browser capture of the read-only
-English game interface. Its control-room art is schematic, not scientific state.
+The native-foundry image is an actual browser capture of English evidence
+inspection. Its control-room art is schematic, not scientific state. The new
+native-design-job capture separately shows a real edited-design/queue/worker/
+completed-evidence round trip. The Nov1 draft includes failed adaptive source
+revisions and a zero full-native distribution-gradient estimate, not invention
+success or full-world pathwise differentiation. Compact audits and interpretation
+are in `research/results/native-feedback-breadth-v2.md`.
 
 ## Metric-conditioned result boundary
 

@@ -1,5 +1,12 @@
 # Native System Foundry UI v1
 
+Nov1 update: the new DESIGN WORKBENCH now edits complete SystemSpec/LossSpec
+JSON and submits an explicitly consented fresh native branch through a local
+durable queue; actual completed evidence returns to this same UI. This closes
+the job round-trip gap described below, not in-place society migration or full
+gameplay. [Result](../results/native-feedback-breadth-v2.md) and
+[runbook](../components/native-feedback-and-interactive-design-v2.md).
+
 2026-10-31. Local-only extension of the existing NOCTILUCA pixel/cyberpunk UI.
 The user accepts a game-like institutional design UI as the first deliverable;
 a complete playable science-management game remains a later target.

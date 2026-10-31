@@ -1,0 +1,641 @@
+{
+  "schema": "scienceutopia.native-ui-roundtrip-audit.v2",
+  "job": {
+    "job_id": "job-d778b4d49f7e4cac8e9ddf53471ecd31",
+    "status": "complete",
+    "request_sha256": "633ec5aab2073c0e6d31a2f644cd161d28736119dca45e3e47ab6298eb25dd2c",
+    "source_commit": "bceb48cd7ddcf7b783de887cbdac966c55d736bb",
+    "parent_fingerprint": "d10612fbbe14259c85f021b9fe9ea3c66c360b3fcf2e29604295adc9e2dfc02c",
+    "candidate_fingerprint": "31a05a325ba5bddcd357d2e3c8606c42d60489c8f0727a35c234df0f4bf8a843",
+    "seed": 1301,
+    "years": 2,
+    "result": {
+      "native_loss": -3.0,
+      "measurements": [
+        {
+          "measurement_schema": "scienceutopia.native-domain-measurements.v1",
+          "metrics": {
+            "native.accepted_decisions": {
+              "status": "measured",
+              "value": 3
+            },
+            "native.final_active_authors": {
+              "status": "measured",
+              "value": 5
+            },
+            "native.final_author_resources": {
+              "status": "measured",
+              "value": 640.0
+            },
+            "native.institutional_context_deliveries": {
+              "status": "measured",
+              "value": 0
+            },
+            "native.rejected_decisions": {
+              "status": "measured",
+              "value": 0
+            },
+            "native.review_records": {
+              "status": "measured",
+              "value": 9
+            }
+          },
+          "run_id": "native-design-1986c47bb7b1e33d570e-s1301",
+          "system_fingerprint": "31a05a325ba5bddcd357d2e3c8606c42d60489c8f0727a35c234df0f4bf8a843"
+        }
+      ],
+      "viewer_sha256": "1be7d0151fb8c6cda26aa65a13b64e90b6b83bcf33bea304737f83022be17623",
+      "observation_id": "observation-native-design-1986c47bb7b1e33d570e"
+    },
+    "error": null,
+    "seed_role": "development",
+    "model_weights_trained": false,
+    "same_society_migration": false
+  },
+  "native_audit": {
+    "schema": "scienceutopia.native-design-loop-audit.v1",
+    "binding": {
+      "initial_system_fingerprint": "31a05a325ba5bddcd357d2e3c8606c42d60489c8f0727a35c234df0f4bf8a843",
+      "loss_spec_sha256": "eadec0966d92690b64963e6b678d132864cb095f4dc413f73d959e2a98110c9b",
+      "seeds": [
+        1301
+      ],
+      "world": {
+        "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "corpus_years": 4,
+        "dataset_identity": {
+          "categories": [
+            "cs.AI",
+            "cs.AR",
+            "cs.CC",
+            "cs.CE",
+            "cs.CG",
+            "cs.CL",
+            "cs.CR",
+            "cs.CY",
+            "cs.DB",
+            "cs.DC",
+            "cs.DL",
+            "cs.DM",
+            "cs.DS",
+            "cs.ET",
+            "cs.FL",
+            "cs.LG",
+            "cs.LO",
+            "cs.NI",
+            "cs.OH",
+            "cs.OS",
+            "cs.PF",
+            "cs.PL",
+            "cs.RO",
+            "cs.SE",
+            "cs.SY"
+          ],
+          "configuration": "arxiv",
+          "dataset": "Ahren09/SciEvo",
+          "normalization": "parallel",
+          "num_years": 4,
+          "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+          "start_year": 2016
+        },
+        "model": "qwen3:8b",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "origin": "explicit-local-UI-submission",
+        "population": "five-independent-balanced-researchers",
+        "request_sha256": "633ec5aab2073c0e6d31a2f644cd161d28736119dca45e3e47ab6298eb25dd2c",
+        "source_commit": "bceb48cd7ddcf7b783de887cbdac966c55d736bb",
+        "years": 2
+      }
+    },
+    "campaign_sha256": "8b42e2ec9a9c911935996a4b71977906581c7f52fe2df31aa1bdd95384c92fd9",
+    "completion": {
+      "status": "separately-recorded-single-job",
+      "budget": 1
+    },
+    "rows": [
+      {
+        "suggestion_id": "native-design-1986c47bb7b1e33d570e",
+        "based_on_observation_id": null,
+        "status": "complete",
+        "loss": -3.0,
+        "difference": {
+          "candidate_fingerprint": "31a05a325ba5bddcd357d2e3c8606c42d60489c8f0727a35c234df0f4bf8a843",
+          "connections_after": [
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.open",
+              "source_port": "next",
+              "target_mechanism": "world.resubmissions",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.resubmissions",
+              "source_port": "next",
+              "target_mechanism": "world.research",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.research",
+              "source_port": "next",
+              "target_mechanism": "world.collaboration",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.collaboration",
+              "source_port": "next",
+              "target_mechanism": "world.submission",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.submission",
+              "source_port": "next",
+              "target_mechanism": "world.costs",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.costs",
+              "source_port": "next",
+              "target_mechanism": "world.review",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.review",
+              "source_port": "next",
+              "target_mechanism": "world.selection",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.selection",
+              "source_port": "next",
+              "target_mechanism": "world.publication",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.publication",
+              "source_port": "next",
+              "target_mechanism": "world.citation-potential",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.citation-potential",
+              "source_port": "next",
+              "target_mechanism": "world.funding",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.funding",
+              "source_port": "next",
+              "target_mechanism": "world.communication",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.communication",
+              "source_port": "next",
+              "target_mechanism": "world.close",
+              "target_port": "after"
+            },
+            {
+              "channel": "decision",
+              "latency": 0,
+              "source_mechanism": "world.selection",
+              "source_port": "decisions",
+              "target_mechanism": "world.publication",
+              "target_port": "decisions"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "world.review",
+              "source_port": "world",
+              "target_mechanism": "native-feature-extractor",
+              "target_port": "observations"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "native-feature-extractor",
+              "source_port": "features",
+              "target_mechanism": "addressed-selection",
+              "target_port": "features"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "native-feature-extractor",
+              "source_port": "world",
+              "target_mechanism": "world.selection",
+              "target_port": "observations"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "addressed-selection",
+              "source_port": "accept",
+              "target_mechanism": "world.selection",
+              "target_port": "accept"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "addressed-selection",
+              "source_port": "scores",
+              "target_mechanism": "world.selection",
+              "target_port": "scores"
+            }
+          ],
+          "connections_before": [
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.open",
+              "source_port": "next",
+              "target_mechanism": "world.resubmissions",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.resubmissions",
+              "source_port": "next",
+              "target_mechanism": "world.research",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.research",
+              "source_port": "next",
+              "target_mechanism": "world.collaboration",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.collaboration",
+              "source_port": "next",
+              "target_mechanism": "world.submission",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.submission",
+              "source_port": "next",
+              "target_mechanism": "world.costs",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.costs",
+              "source_port": "next",
+              "target_mechanism": "world.review",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.review",
+              "source_port": "next",
+              "target_mechanism": "world.selection",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.selection",
+              "source_port": "next",
+              "target_mechanism": "world.publication",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.publication",
+              "source_port": "next",
+              "target_mechanism": "world.citation-potential",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.citation-potential",
+              "source_port": "next",
+              "target_mechanism": "world.funding",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.funding",
+              "source_port": "next",
+              "target_mechanism": "world.communication",
+              "target_port": "after"
+            },
+            {
+              "channel": "signal",
+              "latency": 0,
+              "source_mechanism": "world.communication",
+              "source_port": "next",
+              "target_mechanism": "world.close",
+              "target_port": "after"
+            },
+            {
+              "channel": "decision",
+              "latency": 0,
+              "source_mechanism": "world.selection",
+              "source_port": "decisions",
+              "target_mechanism": "world.publication",
+              "target_port": "decisions"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "world.review",
+              "source_port": "world",
+              "target_mechanism": "native-feature-extractor",
+              "target_port": "observations"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "native-feature-extractor",
+              "source_port": "features",
+              "target_mechanism": "addressed-selection",
+              "target_port": "features"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "native-feature-extractor",
+              "source_port": "world",
+              "target_mechanism": "world.selection",
+              "target_port": "observations"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "addressed-selection",
+              "source_port": "accept",
+              "target_mechanism": "world.selection",
+              "target_port": "accept"
+            },
+            {
+              "channel": "artifact",
+              "latency": 0,
+              "source_mechanism": "addressed-selection",
+              "source_port": "scores",
+              "target_mechanism": "world.selection",
+              "target_port": "scores"
+            }
+          ],
+          "nodes_added": [],
+          "nodes_changed": [],
+          "nodes_removed": [],
+          "parent_fingerprint": "31a05a325ba5bddcd357d2e3c8606c42d60489c8f0727a35c234df0f4bf8a843",
+          "schedules_after": [
+            {
+              "mechanism_id": "world.open",
+              "phase": 0,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.resubmissions",
+              "phase": 20,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.research",
+              "phase": 40,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.collaboration",
+              "phase": 60,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.submission",
+              "phase": 80,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.costs",
+              "phase": 100,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.review",
+              "phase": 120,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.selection",
+              "phase": 140,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.publication",
+              "phase": 160,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.citation-potential",
+              "phase": 180,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.funding",
+              "phase": 200,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.communication",
+              "phase": 220,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.close",
+              "phase": 240,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "native-feature-extractor",
+              "phase": 125,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "addressed-selection",
+              "phase": 130,
+              "trigger": "annual"
+            }
+          ],
+          "schedules_before": [
+            {
+              "mechanism_id": "world.open",
+              "phase": 0,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.resubmissions",
+              "phase": 20,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.research",
+              "phase": 40,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.collaboration",
+              "phase": 60,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.submission",
+              "phase": 80,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.costs",
+              "phase": 100,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.review",
+              "phase": 120,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.selection",
+              "phase": 140,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.publication",
+              "phase": 160,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.citation-potential",
+              "phase": 180,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.funding",
+              "phase": 200,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.communication",
+              "phase": 220,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "world.close",
+              "phase": 240,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "native-feature-extractor",
+              "phase": 125,
+              "trigger": "annual"
+            },
+            {
+              "mechanism_id": "addressed-selection",
+              "phase": 130,
+              "trigger": "annual"
+            }
+          ]
+        },
+        "technical_failures": [],
+        "runs": [
+          {
+            "run_id": "native-design-1986c47bb7b1e33d570e-s1301",
+            "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-ui-jobs-v2/outputs/native-ui-jobs-v2/queue/job-d778b4d49f7e4cac8e9ddf53471ecd31/runs/native-design-1986c47bb7b1e33d570e-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+            "checkpoint_sha256": "440208cf58ce10b6c2002da04bd006ef105fdb9498c778db66a36a7c5cbd7c81",
+            "response_cache_sha256": "56ffd9de8ee81e2c1d1159b01a1799c5d08214587371fd9bdf3aa0a40c5006fe",
+            "responses": 56,
+            "llm_call_stats": {
+              "n_prompts": 56,
+              "n_first_attempt_success": 56,
+              "n_retries": 0,
+              "n_failures": 0,
+              "elapsed_seconds": 166.55609321594238,
+              "prompt_tokens": 44318,
+              "completion_tokens": 5933
+            },
+            "papers": 3,
+            "counts": {
+              "native.accepted_decisions": 3,
+              "native.rejected_decisions": 0,
+              "native.review_records": 9,
+              "native.final_active_authors": 5,
+              "native.final_author_resources": 640.0,
+              "native.institutional_context_deliveries": 0
+            },
+            "native_event_counts": {
+              "native.system.phase_executed": 24,
+              "generated.code_executed": 4,
+              "native.tensor.executed": 2
+            },
+            "executed_code": [
+              {
+                "mechanism_id": "world.selection",
+                "executions": 2,
+                "artifact_sha256": "011f9a5e718bf1870b20492ab01c9738680afd17887adc39398563b22fe3d4ac",
+                "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+              },
+              {
+                "mechanism_id": "native-feature-extractor",
+                "executions": 2,
+                "artifact_sha256": "8f1ac4e81a33db1c6dc01fa15bed36dffb26e4d076bd56349ce61a60fd2d0037",
+                "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+              }
+            ],
+            "native_event_stream_hash": "9ed1186179751128ac3f521659142189279ad46dc9b3f6c448b38977a624d748",
+            "canonical_event_count": 54,
+            "canonical_event_stream_hash": "d5cf3cf0bcba48db82f535b590c0fa81c7ad4c70fcfb217f597cf67c9c293c1f",
+            "web_stream_hash": "da0c14374294bc5bda2e989ff54eb040ed0c7701cb17b68c5711fbb3b61b0a21",
+            "replayed_years": [
+              1,
+              2
+            ]
+          }
+        ]
+      }
+    ],
+    "verification": "checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed",
+    "limits": [
+      "development engineering objective, not scientific quality",
+      "explicit edited UI branch, not an optimization campaign or model-invented topology",
+      "no full native autograd or same-society migration",
+      "response journal integrity, not an independent full HTTP wire audit"
+    ]
+  },
+  "viewer_sha256": "1be7d0151fb8c6cda26aa65a13b64e90b6b83bcf33bea304737f83022be17623",
+  "scope": "explicit browser-edited branch; not automatic optimizer or same-society migration"
+}

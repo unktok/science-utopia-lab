@@ -7,6 +7,9 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Native feedback breadth v2: source-revision failures, full-native gradients and actual UI jobs](results/native-feedback-breadth-v2.md)
+- [Native feedback / interactive design implementation and runbook](components/native-feedback-and-interactive-design-v2.md)
+- [Native feedback breadth v2 preregistration and explicit amendments](protocols/campaigns/native-feedback-breadth-v2.md)
 - [Native hard/soft institution programs and trace autograd](components/native-hard-soft-institutions-v1.md)
 - [Differentiable operations and fixed-LLM/multi-agent methods](literature/differentiable-institutions-and-fixed-llm-agents.md)
 - [Open institutional freedom and faithful local relaxations](decisions/0027-open-institutions-first-faithful-local-relaxations.md)

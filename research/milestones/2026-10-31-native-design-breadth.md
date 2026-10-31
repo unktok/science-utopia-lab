@@ -1,6 +1,11 @@
 # 元の研究世界を包含する設計ラボ — 現状と次の実装ゲート
 
-更新: 2026-10-31。Decision 0025/0026を現在の実装へ対応させる。
+更新: 2026-11-01。Decision 0025/0026を現在の実装へ対応させる。
+
+Nov1追記: 実履歴→LLM source改訂→元世界で再評価のループ、固定LLMの後続反応を含む
+paired分布勾配、UI編集→隔離job→実測結果表示まで実行済み。ただし全5改訂sourceが
+同じ不活性ロジックに戻り、勾配probeも0だった。有用な制度発明や全世界backpropの
+達成とは区別する。[実測結果・監査](../results/native-feedback-breadth-v2.md)を参照。
 
 追記（Decision 0027）: 中心は制度・実装・protocol・配線・進行の設計自由度を増やすこと。
 仮説/実験活動をこちらが列挙して実装することは、その前提条件ではない。LLMの重みと
@@ -33,10 +38,10 @@
 | 目的を変えると別の制度になる | 固定8パラメータで3 LossSpecの探索・共通held-out比較を完了。native任意source/graphにも同じLossSpec境界と永続campaignを接続 | 広いsource/graph探索で異なるlossごとの探索経路を少数候補で実行。回数拡大は後 |
 | 出来合いの制度を抽象化し、新制度を作る | 自由なPython/LLM/型付きprotocolに加えID指定の構成編集を実装。Qwen生成のPeer Observerは元世界で実行済みだが条件が発火せずmessage0。配線はgeneric host attachment | 効果が生じる制度のsource/構成を実際の結果から反復改訂する。モデル生成sourceの実行と、有用な新制度発見を区別する |
 | 配線・規則・順序も設計する | 原子的patchでsource、ports、artifact types、nodes、edges、delays、schedulesを同時変更し、完成したgraphを検証。native接続/遅延の因果効果はQA済み | native年間枠の前提を外す一般event実行器と、未知protocolの受け手を含む意味的検証。任意の並びが有効とは主張しない |
-| 元の研究者世界で閉ループ最適化 | baseline → 実行 → 実際のloss → 次patch → 次の実行。pending/観測/親系譜を永続化。実機2候補pilotは別resultで報告 | 一回の追加提案から、複数の適応的source/構造改訂へ。改善や科学的価値は別の評価課題 |
+| 元の研究者世界で閉ループ最適化 | baseline → 実行 → 実際のloss/履歴 → LLM source改訂 → 次の実行を複数回実行。pending/観測/親系譜を永続化 | source-onlyループは既存observation/messages接続固定。新protocolのproducer/consumerと構造を共同生成する自由度を実測feedbackへ接続し、有効な変更を実証する |
 | 微分による最適化 | 同じ制度のhard/soft表現を元世界へ接続。実際のtrace上で7座標のautogradを検証し、更新制度を固定Qwenの元世界で再評価してloss0→-3。機構間tensor通信・記憶の勾配もQA | 固定LLMの入力→応答やopaqueな後続世界への影響を勾配に含め、条件付き近似のずれを測る。**元の世界全体のbackpropagationは未実装** |
 | 科学活動自体も豊かにできる | 任意schemaの成果物・履歴/参照、新機構から研究者promptへの因果的入力、新actorの永続化codec | 追加の拡張候補であり制度生成の前提ではない。研究活動の例を固定catalogとして列挙するより、自由な規則・protocol・実装を生成できる幅を優先 |
-| ゲームまたはgame-like UI | 既存city/replayに加えnative.htmlが元世界の実行された構成・コード・配線・研究者・loss・勾配範囲を表示。PC/mobileの操作・hash検証を確認済み | 自由に編集した設計を隔離branchで実行し、完了後にUIへ返す。現在は実記録の読み取り・観測UIでありプレイ可能な制度運営ゲームではない |
+| ゲームまたはgame-like UI | native.htmlで構成/コード/配線/研究者/lossを閲覧し、SystemSpec/LossSpec JSONを編集→明示同意→永続queue→元世界で別branch実行→実測結果を同UIへ返すところまで実機確認 | 視覚的graph編集・豊かなゲームfeedback・未知protocol可視化。既存社会のhot変更や完成した制度運営ゲームではない |
 | 研究システムの自己改善 | opt-in自己構成観測 → 世界内機構からpatch → 未採点journal → 別のnative世界で評価、という最初のbridgeをQA。親の稼働世界は変更しない | 観測結果を内部designerの記憶へ返す → checkpointを明示移行して同じ社会を継続 → designer/探索戦略自体も改訂。再帰的改善や自律的発見はまだ主張しない |
 
 ## 実行入口と証拠の区別
@@ -55,11 +60,12 @@ all-acceptを禁止せず、勝手なfairness/promotion制約も追加しない�
 ## 次の小規模実装の順序
 
 1. 完了: native共同編集とhard/soft制度fit→再実行の経路を、実際の履歴から監査して記録。
-2. 次: inertだったLLM sourceを含め、source/protocol/配線の設計と実測結果による改訂の自由度を広げる。
-   失敗も残し、toyや便利な制度catalogで置き換えない。
-3. 次: UIから編集した任意設計を隔離実行へ渡し、実際の結果を同じUIに返す。
+2. 接続完了・発明未達: 実際の履歴によるsource反復改訂を実行。全5改訂が不活性だった
+   失敗も残し、protocol/配線の共同生成へ自由度を広げる。toy/catalogに置き換えない。
+3. 接続完了: UIで編集した設計を隔離実行へ渡し、実測結果を同UIに返す。視覚編集は次。
 4. 継続: 固定LLMの反応経路を含む局所tensor化/勾配推定を、元世界を歪めず積み上げる。
-   条件付きtrace fitと全世界の微分を区別する。
+   full-native costのpaired分布勾配probeは実行済みで結果0。条件付きtrace fit、
+   分布勾配、全世界の微分を区別する。
 5. 後続: 内部designerへの評価フィードバックと明示的なstate migrationを実装する。
    改善手続き自体の改訂はその上の別ゲートとして扱う。
 

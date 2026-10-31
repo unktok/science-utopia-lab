@@ -1,6 +1,26 @@
 # Program status
 
-Updated: 2026-10-31
+Updated: 2026-11-01
+
+## Latest non-scale integration
+
+The original native researcher world now runs a result-conditioned local-LLM
+source-revision loop, a paired full-native-cost distribution-gradient probe,
+and actual browser design submission through a source-pinned durable local
+worker back into game-UI evidence. The [Nov1 result](results/native-feedback-breadth-v2.md)
+and [implementation/runbook](components/native-feedback-and-interactive-design-v2.md)
+supersede older descriptions of these interfaces as absent or only QA-tested.
+
+Scientific success is narrower than implementation: five executed source
+revisions all retained the same inert algorithm and delivered no messages;
+planning-before-code retained a recorded technical error and an inert repair.
+The advisory gradient probe reached actual subsequent fixed-LLM request inputs,
+but equal native costs produced gradient0. The UI really executed an edited
+two-year system and loaded loss-3, not a matched optimization result. Full-world
+pathwise backpropagation, useful open institutional invention, same-society
+migration and recursive designer improvement remain incomplete. The Nov1
+working PDF now includes these actual failures, derivative boundaries and a
+completed native job capture; the sealed parameter study remains unchanged.
 
 ## Overall position
 
@@ -101,8 +121,10 @@ see [result](results/native-trace-relaxation-v1.md).
 `game-ui-v2/native.html` now displays real native SystemSpecs, generated source/
 tensor rules, ports/wiring, actual year-boundary researchers, observed native
 losses and conditional-fit scope. Desktop/mobile browser QA passes with no
-exceptions or overflow. It is read-only game-like evidence UI, not a live
-institution-installation game. Its English control-room deck now uses original
+exceptions or overflow. Existing evidence stays read-only; the new DESIGN
+WORKBENCH edits full SystemSpec/LossSpec JSON, validates and explicitly queues
+a fresh native branch, then loads completed evidence. It is not in-place
+institution installation or a complete management game. Its English control-room deck uses original
 pixel/vector artwork and evidence-backed selection/count/year telemetry rather
 than a generic landing-page headline. The working manuscript includes separate
 native-world methods/results, an actual conditional fitting curve versus fresh
@@ -157,7 +179,7 @@ improvement. Those and the city live-intervention adapter remain unimplemented.
 | whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
 | native-world containment and extension | implemented; QA and live Qwen probe complete | baseline matches original six-year state/RNG/wire; code/LLM nodes deliver new protocols; selection replacement/review removal and non-paper artifact history pass QA; four-year real-Qwen message-delivery probe completes; full protocol replacement/new actor behavior remain open |
 | native black-box evaluation | durable campaign implemented | joint source/protocol/wiring patch -> actual Simulation -> native measurements -> caller LossSpec -> Observation; parent lineage, pending resume and recorded loss validation; live pilot reported separately |
-| native design-distribution gradient | QA-tested and CLI runnable | score-function gradient of a bounded design distribution using native costs; this estimator has no live result yet and is distinct from the live hard/soft tensor method below |
+| native design-distribution gradient | live full-feedback paired probe complete | actual subsequent fixed-LLM requests receive changed advisory inputs; two fresh native costs[-1,-1] give gradient0, no reroll; smoothed-distribution derivative, not full-world backpropagation |
 | native hard/soft institution autograd | live short integration complete | same represented institution hard/soft; native trace fit -> fitted program -> fresh fixed-Qwen execution; conditional gradient, not full-world derivative |
 | endogenous design proposals | first QA bridge | institution proposes its own rule patch from native observations; hash-verified journal -> fresh counterfactual evaluation; no hot installation or recursive designer improvement |
 | native-world differentiation | not implemented | JSON/domain operations and LLM/retrieval/discrete transitions remain opaque; numeric-world autograd below is not a substitute |
@@ -165,10 +187,11 @@ improvement. Those and the city live-intervention adapter remain unimplemented.
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
 | optimization continuum | synthetic-tested common boundary | parameters (6 raw variables), mechanism configuration (16), and node/edge structure (26) are nested over one six-family template; black-box, gradient, and hybrid methods share projection and opaque outer evaluation; schedule/latency and model-backed execution remain open |
 | generative mechanism programs | executable numeric miniature | typed ASTs encode input, parameter, memory and update rules; search synthesizes new rules and custom nodes, changes edges/delays/order, and can remove every institutional node; generated programs also run/checkpoint in the existing generic graph runtime |
-| generated implementation code | native execution proof; meaningful invention/optimization incomplete | model-written Peer Observer executes in actual native world through generic typed delivery attachment, but emits zero messages here; earlier raw/named proposal failures retained; no observed researcher-input effect, model-invented wiring or automatic differentiability |
+| generated implementation code | actual result-conditioned source loops complete; meaningful invention incomplete | five executed Qwen revisions share the same inert source and deliver0 messages; recorded plan/technical repair does not establish useful algorithm invention; source-only attachment fixed, joint graph patching separate |
 | direct whole-world differentiation | executable numeric miniature | autograd traverses complete recurrent agent/world transitions; six parameter/rule/node/edge/delay/schedule gradient groups pass representative central differences; hard projection and outer evaluation share the numeric transition equations; full legacy Qwen simulator and token generation remain outside autograd |
 | generative lab viewer | recorded and browser-verified | checksum-bound events, generated SignalBoost rule, graph/process, six-agent state and search paths load into `game-ui-v2/generative.html`; two losses × four selected-system views; Chrome verification passed with zero exceptions/failed requests and no mobile overflow |
 | game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |
+| native interactive design UI | actual browser/worker/result round trip complete | full JSON system/loss editing, explicit consent, durable local queue, pinned native worker, saved-year progress and completed evidence loading; visual graph authoring, live society migration and full gameplay remain open |
 
 ## Metric-conditioned study execution snapshot
 
@@ -225,14 +248,17 @@ and native evidence viewer have completed their bounded probes. The
 [open-institutions decision](decisions/0027-open-institutions-first-faithful-local-relaxations.md)
 now govern remaining work, not the older synthetic-template integration plan.
 
-Before scaling, the next gates are:
+Nov1 closes the basic source-feedback execution, full-native-cost estimator and
+UI job round trip, but not all of their scientific/expressivity goals. Before
+scaling, the next gates are:
 
-1. Result-conditioned model-written algorithm/protocol/graph revision with
-   actual downstream researcher use; retain inert and invalid attempts honestly.
-2. Extend derivative estimation to opaque researcher feedback with explicit
-   fidelity tests; do not relabel conditional autograd as a full-world gradient.
-3. Connect player design/edit/compile to an isolated native branch, pending
-   execution and observed evidence; keep existing records immutable.
+1. Useful model-written algorithm/protocol/graph revision with actual downstream
+   researcher use; the new executable source loops have not achieved this.
+2. Extend faithful differentiable representations to opaque researcher feedback
+   with fidelity tests; the new full-rollout score estimator is not pathwise
+   backpropagation and its one observed gradient is zero.
+3. Extend the completed JSON-edit/isolated-job/evidence UI round trip into visual
+   authoring and richer play feedback; keep existing records immutable.
 4. Implement consequential new roles/artifact workflows where needed, rather
    than expanding a hand-built activity catalog as a substitute for freedom.
 5. Later: same-society migration and recursive improvement of the designer;

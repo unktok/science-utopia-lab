@@ -41,7 +41,7 @@ try {
     assert.equal(await evaluate(`document.getElementById('design-result').disabled`), false);
     await evaluate(`document.getElementById('design-result').click()`);
     await until(`document.getElementById('design-validation')?.textContent.includes('Loaded completed native evidence')`);
-    const result = await evaluate(`({jobId:document.getElementById('design-job-id').textContent,status:document.getElementById('design-job-status').textContent,candidates:document.getElementById('candidate').options.length,model:document.getElementById('native-metrics').textContent,authors:document.querySelectorAll('.native-actor').length})`);
+    const result = await evaluate(`({jobId:document.getElementById('design-job-id').textContent,status:document.getElementById('design-job-status').textContent,candidates:document.getElementById('candidate').options.length,model:document.getElementById('native-metrics').textContent,authors:document.querySelectorAll('.native-actor').length,rendererService:document.getElementById('design-service').textContent,runProvenance:document.getElementById('design-job-provenance').textContent})`);
     assert.equal(result.candidates, 1); assert.equal(result.authors, 5); assert(result.model.includes('qwen3:8b'));
     await send('Page.captureScreenshot', { format: 'png', clip: { x: 0, y: 470, width: 1440, height: 1050, scale: 1 }, captureBeyondViewport: true }).then(s => writeFile(path.join(output, 'native-design-completed.png'), Buffer.from(s.data, 'base64')));
     await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });

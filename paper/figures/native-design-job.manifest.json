@@ -1,0 +1,13 @@
+{
+  "schema": "scienceutopia.actual-native-job-figure.v1",
+  "image": "paper/figures/native-design-job.png",
+  "image_sha256": "729b392d40ee8e30a86763c8936cfd15d1254df22d04c81b376062c5b417355b",
+  "browser_report": "research/results/native-ui-roundtrip-v2.browser.json",
+  "browser_report_sha256": "634ba8327e5410ce92a61ca83c46ddb813a82e5f82cd1e3e0953c068cd7dba69",
+  "native_audit": "research/results/native-ui-roundtrip-v2.audit.json",
+  "native_audit_sha256": "393a95629e072dacf1f177c5b014ebb180ebc563bcd0958a09b5888116b29408",
+  "job_id": "job-d778b4d49f7e4cac8e9ddf53471ecd31",
+  "renderer_source_commit": "3fa445df2fa7965811c55441a396589022b23e84",
+  "worker_source_commit": "bceb48cd7ddcf7b783de887cbdac966c55d736bb",
+  "scope": "actual completed browser-edited fresh native branch; not optimizer superiority or society migration"
+}
