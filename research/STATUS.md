@@ -70,9 +70,14 @@ integration capabilities, not empirical realism or an invented optimized system.
 The standard black-box Suggestion/LossSpec/Observation contract now has a native
 world evaluator; durable arbitrary-source campaign scheduling remains separate.
 
-An independent clean-source local-Qwen probe is specified in the
-[native integration protocol](protocols/campaigns/native-science-kernel-integration-v1.md).
-Its live result must be recorded separately from deterministic QA. Whole native-
+The independent clean-source local-Qwen probe completed four years with five
+researchers in five institutions: 147 model requests, 20 delivered messages and
+532.27 seconds. Checkpoint restore, canonical reconversion/replay and response-
+journal/wire hashes independently verified. Earlier failures and population
+amendments are retained. This proves live integration, not policy improvement
+or code discovery; see the [recorded result](results/native-science-kernel-integration-v1.md)
+and [protocol](protocols/campaigns/native-science-kernel-integration-v1.md).
+Focused regression: 611 passed, three skipped. Whole native-
 world autograd is **not implemented**; the kernel exposes that boundary explicitly.
 See [design and remaining scope](components/native-science-kernel-v1.md).
 
@@ -97,7 +102,7 @@ See [design and remaining scope](components/native-science-kernel-v1.md).
 | canonical event replay | integrated | deterministic sidecar and game-view payload |
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
 | whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
-| native-world containment and extension | implemented and deterministic-QA tested | default graph matches original six-year state/RNG/wire; arbitrary code/LLM nodes can deliver new protocols to real researchers; selection replacement and review removal affect actual publication state; full protocol replacement/new actor behavior remain open |
+| native-world containment and extension | implemented; QA and live Qwen probe complete | baseline matches original six-year state/RNG/wire; code/LLM nodes deliver new protocols; selection replacement/review removal and non-paper artifact history pass QA; four-year real-Qwen message-delivery probe completes; full protocol replacement/new actor behavior remain open |
 | native black-box evaluation | adapter implemented | standard Suggestion -> actual Simulation -> native measurements -> caller LossSpec -> Observation; seed/spec identities checked; not yet a durable arbitrary-source optimization campaign |
 | native-world differentiation | not implemented | JSON/domain operations and LLM/retrieval/discrete transitions remain opaque; numeric-world autograd below is not a substitute |
 | structural system optimization | joint synthetic slice | 770 valid graphs jointly vary evaluation, publication, funding, government, communication, connections, and latency through one fingerprint-bound ask/execute/loss/tell boundary |

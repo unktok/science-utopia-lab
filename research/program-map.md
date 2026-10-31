@@ -55,6 +55,10 @@ Compatibility, new-protocol prompt delivery, decision replacement/removal and
 checkpoint QA are implemented. See the native-kernel design/probe documents in
 the index; unconstrained actor behavior, process generality and native gradients
 remain open rather than being counted complete by the older numeric results.
+The separate native Qwen probe now completed: five researchers/four years,
+147 requests, 20 delivered messages and independently verified checkpoint/
+replay/wire evidence. It is an integration result, not new optimized-policy
+evidence; [result](results/native-science-kernel-integration-v1.md).
 
 | Track | Current state | What is actually finished | Next evidence-producing step |
 |---|---|---|---|

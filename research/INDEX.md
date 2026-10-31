@@ -25,6 +25,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Non-scale limitations against the full research goal](audits/non-scale-limitations-v1.md)
 - [Native science kernel: original world as a contained instance](components/native-science-kernel-v1.md)
 - [Native-world integration probe protocol](protocols/campaigns/native-science-kernel-integration-v1.md)
+- [Native-world Qwen integration result](results/native-science-kernel-integration-v1.md)
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
 - [Miniature Whole-System Design Lab v0](components/miniature-whole-system-design-lab-v0.md)
 - [Generic mechanism graph runtime](components/mechanism-graph-runtime-v1.md)
