@@ -370,12 +370,39 @@ class NativeScienceKernel:
 
     def _store(self, context):
         records = list(context.state.get("records", []))
+        declared = dict(context.state.get("declared_artifacts", {}))
+        events = []
+        declarations = context.mechanism.parameters.get("declare_artifacts", False)
+        reserved = set(self._simulation.paper_tracker.papers_by_id)
+        owners = dict(self._frame.get('artifact_owners', {}))
+        # Merge the completed checkpoint with already executed current-year stores.
+        for node, state in (self.graph_checkpoint or {}).get("mechanism_states", {}).items():
+            for identity in state.get("declared_artifacts", {}):
+                owners.setdefault(identity, node)
         for port, values in context.inputs.items():
+            artifact_type = next(p.artifact_type for p in context.mechanism.inputs if p.port_id == port)
+            if declarations:
+                for value in values:
+                    if len(value.artifact_ids) != 1:
+                        raise GraphRuntimeError("artifact declaration requires exactly one identity per record")
+                    identity = value.artifact_ids[0]
+                    if (identity in reserved or owners.get(identity, context.mechanism.mechanism_id) != context.mechanism.mechanism_id
+                            or (identity in declared and declared[identity] != artifact_type)):
+                        raise GraphRuntimeError("generic artifact identity/type collides with another owner")
+                    events.append(MechanismEvent('artifact.updated' if identity in declared else 'artifact.created',
+                        actor_ids=value.actor_ids, artifact_ids=(identity,),
+                        payload={'artifact_type': artifact_type, 'content': dict(value.payload)}))
+                    declared[identity] = artifact_type
+                    owners[identity] = context.mechanism.mechanism_id
             records.extend({"port": port, "payload": dict(value.payload), "actor_ids": list(value.actor_ids),
                             "artifact_ids": list(value.artifact_ids), "year": context.period,
                             "input_event_ids": list(value.lineage_event_ids)} for value in values)
-        return MechanismResult(next_state={"records": records}, events=(MechanismEvent(
-            "native.system.artifacts_stored", payload={"record_count": len(records)}),))
+        state = {"records": records}
+        if declarations:
+            state['declared_artifacts'] = declared
+            self._frame['artifact_owners'] = owners
+        return MechanismResult(next_state=state, events=(*events, MechanismEvent(
+            "native.system.artifacts_stored", payload={"record_count": len(records)})))
 
     def _llm_institution(self, context):
         """An open role with actual native LLM transport, not an enum of institutions."""

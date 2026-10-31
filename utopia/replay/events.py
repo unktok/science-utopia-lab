@@ -119,7 +119,7 @@ def validate_references(events: Iterable[EventEnvelope]) -> list[str]:
 
         declared_actors = set(event.actor_ids) if event.event_type == "agent.registered" else set()
         declared_artifacts = (
-            set(event.artifact_ids) if event.event_type == "paper.submitted" else set()
+            set(event.artifact_ids) if event.event_type in {"paper.submitted", "artifact.created"} else set()
         )
         for actor_id in event.actor_ids:
             if actor_id not in actors and actor_id not in declared_actors:

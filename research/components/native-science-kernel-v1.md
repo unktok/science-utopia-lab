@@ -109,6 +109,11 @@ Until that gate passes, report local derivatives or surrogate proposals only.
 - `ActorCodecRegistry` makes trusted new actor classes persistable. Their
   behavior/capabilities still need explicit adapters; serialization alone does
   not make an arbitrary citizen/laboratory role act as a researcher.
+- `native.world.artifact-store.v1` records arbitrary protocol payloads. With
+  explicit `declare_artifacts: true`, each input declares/updates one new typed
+  non-paper identity. Canonical `artifact.created`/`artifact.updated` events
+  and replay retain its content and history. Paper/other-store identity
+  collisions fail; recording does not make an artifact scientifically useful.
 - `evaluate_native_suggestion()` consumes the standard Suggestion, caller's
   Simulation factory/seeds and LossSpec and returns an Observation. It chooses
   no scientific objective or implicit social constraint. Its initial native

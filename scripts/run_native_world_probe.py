@@ -91,8 +91,9 @@ def main():
     native_args = parse_arguments([
         '--model', model_name, '--vllm_url', 'http://127.0.0.1:11434/v1', '--api-backend', 'ollama',
         '--num_years', str(args.years), '--seed', str(args.seed),
-        '--population_mode', 'university_only', '--num_institutions', '1',
-        '--researchers_per_institution', '5', '--num_conferences', '1',
+        '--population_mode', 'university_only', '--num_institutions', '5',
+        '--researchers_per_institution', '1', '--num_conferences', '1',
+        '--experiment_stage', 'smoke', '--run-id', 'native-kernel-probe', '--strategy_mix', 'balanced',
         '--funding_allocation_mode', 'fixed', '--experiment_name', 'default_native_kernel_probe',
         '--output-dir', str(args.output / 'simulation'), '--data-cache-dir', str(args.data_cache),
         '--science-system-spec', str(args.output / 'system-spec.json'), '--rag_device', 'cpu',
@@ -138,13 +139,16 @@ def main():
     binding = {'protocol': 'native-science-kernel-integration-v1', 'cell': spec.fingerprint,
         'model': model_name, 'model_revision': digest, 'corpus_sha256': sim.rag.document_identity,
         'science_config': {'years': args.years, 'seed': args.seed, 'system_fingerprint': spec.fingerprint,
-                           'thinking_override': False, 'max_tokens': 768, 'concurrency': 1}, 'seed': args.seed}
+                           'thinking_override': False, 'max_tokens': 768, 'concurrency': 1,
+                           'population': {'institutions': 5, 'researchers_per_institution': 1,
+                                          'strategy_mix': 'balanced'}}, 'seed': args.seed}
     from utopia.models.response_cache import CompletedResponseCache
     model.response_cache = CompletedResponseCache(args.output / 'replies' / 'responses.sqlite', binding=binding)
     sim.enable_portable_checkpoints(binding)
     report = {'schema': 'scienceutopia.native-world-probe.v1',
         'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
         'dirty_development': dirty, 'system_fingerprint': spec.fingerprint, 'model_digest': digest,
+        'population': binding['science_config']['population'],
         'world': 'original-Simulation-no-phase-or-corpus-substitution',
         'code_origin': 'supplied-artifact' if args.code_artifact else 'programmer-authored-example-not-discovery',
         'kernel_gradient_contract': sim.native_system.gradient_contract(), 'status': 'running'}

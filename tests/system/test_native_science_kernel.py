@@ -14,7 +14,7 @@ from utopia.runtime.checkpointing import PortableStop, read_portable_checkpoint
 from utopia.system import (ArtifactTypeSpec, ChannelKind, ConnectionSpec, MechanismFamily,
                            MechanismSpec, PortSpec, ScheduleSpec)
 from utopia.system.native_kernel import (CONTEXT_RECEIVER, NativeScienceKernel,
-    LLM_INSTITUTION, WORLD_ARTIFACT, add_context_receiver, legacy_world_system)
+    ARTIFACT_STORE, LLM_INSTITUTION, WORLD_ARTIFACT, add_context_receiver, legacy_world_system)
 from utopia.system.runtime import GraphRuntimeError, MechanismEvent, MechanismResult, MechanismValue
 
 
@@ -204,6 +204,50 @@ def test_open_llm_institution_uses_native_transport_and_persistent_state(tmp_pat
     assert validate_references(events) == []
     assert any(e.event_type == 'native.system.llm_institution_executed' for e in events)
     sim.llm.response_cache.close()
+
+
+@pytest.mark.parametrize('colliding_store', [False, True])
+def test_new_nonpaper_artifact_has_state_identity_and_replay(tmp_path, fixed_corpus, colliding_store):
+    from utopia.system.native_examples import connect_native_institution
+    from utopia.replay import ArtifactBundle, convert_artifacts, replay
+    node = MechanismSpec('assay-commons', MechanismFamily.CUSTOM, 'test.assay-commons.v1',
+        inputs=(PortSpec('observations', ChannelKind.ARTIFACT, WORLD_ARTIFACT),),
+        outputs=(PortSpec('assays', ChannelKind.ARTIFACT, 'assay-protocol'),))
+    spec = connect_native_institution(legacy_world_system(), node)
+    stores = [MechanismSpec(name, MechanismFamily.CUSTOM, ARTIFACT_STORE,
+              inputs=(PortSpec('records', ChannelKind.ARTIFACT, 'assay-protocol'),),
+              parameters={'declare_artifacts': True})
+              for name in (['assay-register', 'colliding-register'] if colliding_store else ['assay-register'])]
+    spec = replace(spec, mechanisms=(*spec.mechanisms, *stores),
+        schedules=(*spec.schedules, *(ScheduleSpec(s.mechanism_id, 191+i) for i, s in enumerate(stores))),
+        connections=(*spec.connections, *(ConnectionSpec(node.mechanism_id, 'assays', s.mechanism_id,
+                     'records', ChannelKind.ARTIFACT) for s in stores)))
+    def register(kernel, registry):
+        def assay(context):
+            world = context.inputs['observations'][0].payload
+            author = world['papers']['papers'][0]['author_id']
+            return MechanismResult(outputs={'assays': (MechanismValue(
+                {'year': context.period, 'protocol': 'falsifiable independent assay',
+                 'source_abstract': world['papers']['papers'][0]['abstract']},
+                actor_ids=(author,), artifact_ids=('assay-protocol-1',)),)})
+        registry.register('test.assay-commons.v1', 1, assay)
+    sim, _ = make_sim(tmp_path / 'world', native=NativeScienceKernel(spec, registry_extension=register))
+    try:
+        if colliding_store:
+            with pytest.raises(GraphRuntimeError, match='collides'):
+                sim.run()
+            return
+        sim.run()
+        events = convert_artifacts(ArtifactBundle.discover(Path(sim.output_dir) / 'portable_checkpoint_year_6.json.gz'))
+        state = replay(events)
+        artifact = state.artifacts['assay-protocol-1']
+        assert artifact['artifact_type'] == 'assay-protocol'
+        assert artifact['content']['year'] == 6
+        assert len(artifact['history']) == 6
+        assert sum(e.event_type == 'artifact.created' for e in events) == 1
+        assert sum(e.event_type == 'artifact.updated' for e in events) == 5
+    finally:
+        sim.llm.response_cache.close()
 
 
 @pytest.mark.parametrize("retain_peer_review", [True, False])

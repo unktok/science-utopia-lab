@@ -92,3 +92,21 @@ remains an error. Add retrieval and batch/sequential citation regressions.
 Preserve this failed run and its wire proof; do not force earlier publications
 or seed the world with invented accepted papers. The new run keeps all settings
 and starts from another clean commit/worktree.
+
+## Amendment 4 — five independent institutions, still five researchers
+
+Run `8d0613d` passed the empty-citation boundary but failed native selection
+after 113.53 seconds: all five researchers belonged to one institution and the
+original conflict-of-interest rule excluded every possible reviewer. Keep the
+review/selection rules intact; do not invent reviews or make unreviewed papers
+eligible through a hidden fallback. The new probe explicitly uses five
+institutions with one researcher each, all balanced strategy (original CLI
+options, smoke stage layout). Total population, four-year horizon and all other
+probe settings remain unchanged. This is a feasibility correction and changes
+the population/strategy assumptions, not a paired improvement comparison.
+Bind the amended population in the response-cache identity and manifest.
+
+Separately, optional generic artifact declarations now preserve non-paper
+objects through native stores and canonical replay, with unique ownership and
+type checks. The live probe does not exercise that option; its evidence remains
+the deterministic native integration test, not a retroactive live claim.

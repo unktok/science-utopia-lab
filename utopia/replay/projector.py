@@ -58,6 +58,22 @@ def replay(events: Iterable[EventEnvelope]) -> WorldState:
                 "balance": event.payload.get("initial_balance"),
                 "active": event.payload.get("initial_active", True),
             }
+        elif event.event_type == "artifact.created":
+            if len(event.artifact_ids) != 1 or event.artifact_ids[0] in state.artifacts:
+                raise ReplayError("generic artifact creation requires one new identity")
+            state.artifacts[event.artifact_ids[0]] = {
+                "artifact_type": event.payload.get("artifact_type"),
+                "content": dict(event.payload.get("content", {})),
+                "history": [{"year": event.year, "event": "created"}],
+            }
+        elif event.event_type == "artifact.updated":
+            if len(event.artifact_ids) != 1:
+                raise ReplayError("generic artifact update requires one identity")
+            artifact = state.artifacts[event.artifact_ids[0]]
+            if artifact.get("artifact_type") != event.payload.get("artifact_type"):
+                raise ReplayError("generic artifact update changes its type")
+            artifact["content"] = dict(event.payload.get("content", {}))
+            artifact["history"].append({"year": event.year, "event": "updated"})
         elif event.event_type == "paper.submitted":
             paper_id = event.artifact_ids[0]
             paper = state.artifacts.setdefault(
