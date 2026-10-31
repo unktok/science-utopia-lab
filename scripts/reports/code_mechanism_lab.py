@@ -144,9 +144,23 @@ def main():
     parser.add_argument("--original", type=Path, required=True)
     parser.add_argument("--reproduction", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--development-attempts", type=Path, nargs="*", default=[])
     args = parser.parse_args()
     result = compact_result(json.loads(args.original.read_text()), json.loads(args.reproduction.read_text()),
                             args.original, args.reproduction)
+    result["preceding_development_attempts"] = []
+    for path in args.development_attempts:
+        attempts = json.loads(path.read_text())
+        for attempt in attempts:
+            if (sha(attempt["request"]) != attempt["receipt"]["request_sha256"]
+                    or sha(attempt["response"]) != attempt["receipt"]["response_sha256"]):
+                raise ValueError("development attempt receipt mismatch")
+        result["preceding_development_attempts"].append({
+            "path": str(path.resolve()), "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "attempts": [{"status": a["status"], "error": a.get("error"),
+                          "receipt": a["receipt"], "done_reason": a["response"].get("done_reason")}
+                         for a in attempts],
+        })
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
     print(json.dumps({"verified": True, "output": str(args.output.resolve()), "arms": result["arms"]}))

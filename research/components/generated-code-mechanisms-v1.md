@@ -90,6 +90,21 @@ not yet consumed by newly generated researcher behaviors.
 
 ## Reproduction
 
+The **recorded successful slice is initial source execution only**. The code
+revision/search driver did not complete; see the
+[execution/failure analysis](../results/generated-code-mechanisms-v1.md).
+Reproduce the committed initial code without raw caches or an LLM query:
+
+```sh
+.venv/bin/python scripts/replay_generated_code.py --output outputs/code-initial-replay.json
+```
+
+Requires the recorded image ID already installed in local Docker (no automatic
+download or host-execution fallback). This checks the system/event hash and
+summary, plus split checkpoint/resume. It is not a new optimized result.
+
+The experimental full driver, including fresh model calls, is:
+
 ```sh
 .venv/bin/python scripts/run_code_mechanism_lab.py --output outputs/code-mechanism-v1
 .venv/bin/python scripts/run_code_mechanism_lab.py \
@@ -97,7 +112,8 @@ not yet consumed by newly generated researcher behaviors.
   --output outputs/code-mechanism-v1-reproduction
 ```
 
-Run recorded experiments from clean pinned source; dirty development requires
+Its `--proposal-input` option requires a completed full-driver report, which
+the current failed campaign did not produce. Run recorded experiments from clean pinned source; dirty development requires
 an explicit flag and must not be described as pinned experimental evidence.
 
 ## Not solved by arbitrary code generation

@@ -1,0 +1,485 @@
+{
+  "schema": "scienceutopia.generated-code-execution-proof.v1",
+  "evidence_role": "initial-execution-only-optimization-incomplete",
+  "source_commit": "c539319b6a909a8c63b703cdc742cdfeb1385f29",
+  "source_sha256": {
+    "scripts/run_code_mechanism_lab.py": "4c4f5b2ac1efa87037c92adda29fffc6061834fc0eb2dd4f7014c1311c1b0ead",
+    "utopia/system/code_mechanisms.py": "5a47b197f5fd6c70abe419b4d7a7fa417f0dfad7299a29d44f58730a6f5f270a",
+    "utopia/system/code_proposals.py": "4a573d8b34d146ab59f8e5162d81dc2f569843f1587026f5c8fbc72d42873c5a",
+    "utopia/optimization/code_lab.py": "6f28d041342f5fc23ea6d1427616513dbe92b36af0bcdfdfa4b02c897e746425"
+  },
+  "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+  "artifact": {
+    "schema": "scienceutopia.code-mechanism.v1",
+    "label": "Research Commons Decision Engine",
+    "source": "import json\nfrom collections import defaultdict\n\ndef step(context):\n    inputs = context['inputs']\n    state = context['state']\n    outputs = defaultdict(list)\n    decisions = {}\n    artifacts = {}\n\n    for delivered in inputs['review_batches']:\n        batch = delivered['payload']\n        batch_id = batch['batch_id']\n        papers = batch['papers']\n        reviews = batch['reviews']\n\n        for paper in papers:\n            paper_id = paper['id']\n            author_id = paper['author_id']\n            paper_data = paper\n\n            # Aggregate reviews\n            paper_reviews = reviews.get(paper_id, [])\n            total_score = sum(review['overall_score'] for review in paper_reviews)\n            final_score = total_score / len(paper_reviews) if paper_reviews else 0\n\n            # Decision logic\n            if final_score >= 8:\n                decision = 'accept'\n            elif final_score >= 5:\n                decision = 'reject'\n            else:\n                decision = 'reject'\n\n            # Decision record\n            decision_record = {\n                'batch_id': batch_id,\n                'paper_id': paper_id,\n                'decision': decision,\n                'paper': paper_data\n            }\n            outputs['decisions'].append({'payload': decision_record, 'actor_ids': [author_id], 'artifact_ids': [paper_id]})\n            decisions[paper_id] = decision_record\n\n        # Artifact: Paper scores\n        for paper in papers:\n            paper_id = paper['id']\n            paper_reviews = reviews.get(paper_id, [])\n            total_score = sum(review['overall_score'] for review in paper_reviews)\n            final_score = total_score / len(paper_reviews) if paper_reviews else 0\n\n            artifact_record = {\n                'batch_id': batch_id,\n                'paper_id': paper_id,\n                'final_score': final_score,\n                'num_reviews': len(paper_reviews)\n            }\n            outputs['paper_scores'].append({'payload': artifact_record, 'actor_ids': [author_id], 'artifact_ids': [paper_id]})\n            artifacts[paper_id] = artifact_record\n\n    state['decisions'] = decisions\n    state['artifacts'] = artifacts\n    return {'outputs': dict(outputs), 'state': state}",
+    "inputs": {
+      "review_batches": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "papers",
+          "reviews"
+        ],
+        "properties": {
+          "batch_id": {
+            "type": "string"
+          },
+          "papers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "author_id"
+              ]
+            }
+          },
+          "reviews": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "outputs": {
+      "decisions": {
+        "type": "object",
+        "required": [
+          "batch_id",
+          "paper_id",
+          "decision",
+          "paper"
+        ],
+        "properties": {
+          "batch_id": {
+            "type": "string"
+          },
+          "paper_id": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "accept",
+              "reject"
+            ]
+          },
+          "paper": {
+            "type": "object"
+          }
+        }
+      },
+      "paper_scores": {
+        "type": "object",
+        "properties": {
+          "batch_id": {
+            "type": "string"
+          },
+          "paper_id": {
+            "type": "string"
+          },
+          "final_score": {
+            "type": "number"
+          },
+          "num_reviews": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "batch_id",
+          "paper_id",
+          "final_score",
+          "num_reviews"
+        ]
+      }
+    },
+    "state_schema": {
+      "type": "object",
+      "properties": {
+        "decisions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "batch_id": {
+                "type": "string"
+              },
+              "paper_id": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "accept",
+                  "reject"
+                ]
+              },
+              "paper": {
+                "type": "object"
+              }
+            },
+            "required": [
+              "batch_id",
+              "paper_id",
+              "decision",
+              "paper"
+            ]
+          }
+        },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "batch_id": {
+                "type": "string"
+              },
+              "paper_id": {
+                "type": "string"
+              },
+              "final_score": {
+                "type": "number"
+              },
+              "num_reviews": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "batch_id",
+              "paper_id",
+              "final_score",
+              "num_reviews"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "artifact_sha256": "189f5b0c5874f7005a4aa51f0dd8e0f3467d3f9c108f11333c6347ec132dac56",
+  "rationale": "This institution processes review batches to make publication decisions and generates additional artifacts for future use.",
+  "verification": {
+    "script_sha256": "7547c59cc6beca97e2ce3da81b97b9d6122fba2899babfce63fbd4b111ae1d89",
+    "python": "3.11.15 (main, Jun 11 2026, 04:04:09) [Clang 22.1.3 ]"
+  },
+  "model_receipt": {
+    "request_sha256": "b8cdac84008765ed2995a61e12eb344eea18b26c21cfdaf6f2bf3557002b51e3",
+    "response_sha256": "6d990f278a39f5d9747de54cb13cfaed12835be675befae29b4c38447c9bb339",
+    "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "eval_count": 890,
+    "total_duration_ns": 23526846875
+  },
+  "system_fingerprint": "250a1106518e33920a09f803e1363bcea7e2980342f87f88ac0115b4bb318f6d",
+  "summary": {
+    "accepted": 0,
+    "rejected": 5,
+    "publication_records": 5,
+    "invented_artifacts": 5,
+    "blocked_invocations": 0
+  },
+  "event_stream_hash": "1f7d1ee479363160bb217a805514720c8d310c8895d92b0fb07e60f8a3f7ae67",
+  "initial_attempt_statuses": [
+    "invalid",
+    "invalid",
+    "complete"
+  ],
+  "frozen_source_replay_passed": true,
+  "checkpoint_resume_passed": true,
+  "publication_counts_independently_verified": true,
+  "fixture_paper_identity_check_passed": true,
+  "optimization_status": "failed-during-first-objective-code-revision",
+  "selected_optimized_system": null,
+  "failed_proposals_assigned_numeric_loss": false,
+  "development_attempts": [
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-interface-repair/outputs/generated-code-mechanisms-v1/proposal-0.attempts.json",
+      "sha256": "221a9dc0a33c3080a085f28ad65015a7bdfd2a4fab594bdf320afa8324df2414",
+      "attempts": [
+        {
+          "status": "invalid",
+          "error": "result must have exactly outputs and state",
+          "receipt": {
+            "request_sha256": "70a4039493f00cbfff286ae896f95fb6d2b820585b92a0d62a1390fd3e0cfc33",
+            "response_sha256": "7e323f3727f2de4a7dc12cfe3269bf71b5ae277c1088845725bd7e971306ee59",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 815,
+            "total_duration_ns": 17739184791
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "result must have exactly outputs and state",
+          "receipt": {
+            "request_sha256": "2376a585adf35f43b82c34206cfade8d80116e8765da024b3313157d65fbc4ef",
+            "response_sha256": "2317ccec3d440c1fa5622ce1e2f88a649afc6dbb74a853e9a9f09d0b2aa482b7",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 815,
+            "total_duration_ns": 18368108958
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "result must have exactly outputs and state",
+          "receipt": {
+            "request_sha256": "c252248c4f97a24633fcc6746379816454b1e0a43ba2b66b523a9a151bf987e0",
+            "response_sha256": "2feb786388289f9910edeab46ddbac0a953bd27836ace0ecb94f9f97dca38766",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 815,
+            "total_duration_ns": 20822142500
+          },
+          "done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-contract-repair/outputs/generated-code-mechanisms-v1/proposal-0.attempts.json",
+      "sha256": "0eedeaac6613e43b90d78f3cc66af304a34c465a1da6e2db9fa277c588979352",
+      "attempts": [
+        {
+          "status": "complete",
+          "error": null,
+          "receipt": {
+            "request_sha256": "9fb41ec597a077e8c0c06bdcdbc319e5a64be1a4cd97b6130f9eaca9475a4120",
+            "response_sha256": "90de3ef7515241fe694c6ce680f92f13774a099bb09959caf30cfde2dfd65a66",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 618,
+            "total_duration_ns": 22580076750
+          },
+          "done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-contract-repair/outputs/generated-code-mechanisms-v1/proposal-1.attempts.json",
+      "sha256": "b511bdeab86fd269bdb0a730a19aac966e2994e80ba784a03827c1ae0e813020",
+      "attempts": [
+        {
+          "status": "complete",
+          "error": null,
+          "receipt": {
+            "request_sha256": "5603dd5b30721afde1ec71349f8832ab74eec850669faf031c660cafb6eaea0d",
+            "response_sha256": "cc8e99f2dda904e97c9e9676a213b037b5a0f27750551781d2592ef80530c0ae",
+            "history_sha256": "c64e25a7793558e9a0197bcf090c17516980b6adc274c1e4c9dd938aab7c0f0b",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 639,
+            "total_duration_ns": 27316427416
+          },
+          "done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-contract-repair/outputs/generated-code-mechanisms-v1/proposal-2.attempts.json",
+      "sha256": "25d2f11e80cecd308661d00699bff07741f51d3363572bc37757de4fb688df13",
+      "attempts": [
+        {
+          "status": "invalid",
+          "error": "output ports do not match artifact",
+          "receipt": {
+            "request_sha256": "391fdddf23ca6b22d0b3a507b8b328f34cb15fe26197ba95f2991b2981f126be",
+            "response_sha256": "c506bdb02c112517511c9bf28775cddadb2ee401968059bf1195b309a8fcb992",
+            "history_sha256": "003d00c7b6df41cbb0c2484ea0810e2851a8d40e6256d6491e91157307cd3f64",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 739,
+            "total_duration_ns": 29047023625
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "output ports do not match artifact",
+          "receipt": {
+            "request_sha256": "73b5580e8e315654567bf959220bd8865d59dc6272950702f9e8116b61c0586b",
+            "response_sha256": "b59cd4ad0e81ad121390563d1d38434e00d187da3269ff8115d38b2a2cc5cb18",
+            "history_sha256": "003d00c7b6df41cbb0c2484ea0810e2851a8d40e6256d6491e91157307cd3f64",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 739,
+            "total_duration_ns": 26401965459
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "output ports do not match artifact",
+          "receipt": {
+            "request_sha256": "1fe6c6cdb3ac740a4887ef15817b9489bba2cf57caf565cd67a47c6d8e483b6c",
+            "response_sha256": "236e4a804a47e7d616105c08dadcbe61a51d0940e40ce8db38762fe9d2ee444f",
+            "history_sha256": "003d00c7b6df41cbb0c2484ea0810e2851a8d40e6256d6491e91157307cd3f64",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 739,
+            "total_duration_ns": 27078139541
+          },
+          "done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-reasoning/outputs/generated-code-mechanisms-v1/proposal-0.attempts.json",
+      "sha256": "4e320548107677fd4d8e1f024f3380b35a63dc4872df2fa686ba367df6d59d62",
+      "attempts": [
+        {
+          "status": "invalid",
+          "error": "Expecting value: line 1 column 1 (char 0)",
+          "receipt": {
+            "request_sha256": "dc7d5bc6e051c5d246f6f6bdea427a9d8f1769b41e9cc2c890eb0403f4a3a3eb",
+            "response_sha256": "7c79d68e230ba9418c08e2f8e557d350e4eeeece195bbf3fe9cffe35e7203a0c",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 6144,
+            "total_duration_ns": 197215553417
+          },
+          "done_reason": "length"
+        },
+        {
+          "status": "invalid",
+          "error": "generated result violates its contract: 'batch_id' is a required property\n\nFailed validating 'required' in schema:\n    {'properties': {'batch_id': {'type': 'string'},\n                    'decisions': {'items': {'properties': {'batch_id': {'type': 'string'},\n                                                           'decision': {'enum': ['accept',\n                                                                                 'reject']},\n                                                           'paper': {'type': 'object'},\n                                                           'paper_id': {'type': 'string'}},\n                                            'required': ['batch_id',\n                                                         'paper_id',\n                                                         'decision',\n                                                         'paper'],\n                                            'type': 'object'},\n                                  'type': 'array'}},\n     'required': ['batch_id', 'decisions'],\n     'type': 'object'}\n\nOn instance:\n    {'reviews-0': {'decisions': [{'payload': {'batch_id': 'reviews-0',\n                                              'paper_id': 'paper-0-0',\n                                              'decision': 'accept',\n                                              'paper': {'abstract': 'Deterministic '\n                                                                    'abstract '\n                                                                    '0-0',\n                                                        'author_id': 'researcher-0-0',\n                                                        'author_type': 'researcher',\n                                                        'conference': 'science-conf',\n                                                        'id': 'paper-0-0',\n                                                        'maturity': 1,\n                                                        'project_end_year': 1,\n              ",
+          "receipt": {
+            "request_sha256": "bbe5b06822d20900f06bb499086b59454ef6d482dbce8a2407501e39b127e677",
+            "response_sha256": "2946d4528352344c18fcbab99baf15930325012acfb1a061e3f04d09cc212590",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 1116,
+            "total_duration_ns": 36617737083
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "Expecting value: line 1 column 1 (char 0)",
+          "receipt": {
+            "request_sha256": "3988cbfac59f3f4e6870af3c7ab0e2df7029676ea9bff56855e263792b1f39d7",
+            "response_sha256": "dad5fe16b6ecda3c816985c379ded9d39d4a948883c66212835739eeb597b47c",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 6144,
+            "total_duration_ns": 213287686958
+          },
+          "done_reason": "length"
+        }
+      ]
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-explicit-objective/outputs/generated-code-mechanisms-v1/proposal-0.attempts.json",
+      "sha256": "2e5ac7a8505d7df4b712588e35ae8abf253e53b32093ed481c8c88719f83a05b",
+      "attempts": [
+        {
+          "status": "invalid",
+          "error": "generated step failed: Traceback (most recent call last):\n  File \"<string>\", line 13, in <module>\n  File \"<generated-mechanism>\", line 50, in step\nNameError: name 'total' is not defined\n",
+          "receipt": {
+            "request_sha256": "f839205200ebf25b3507f0ca378f27bf1356b22c0790e952bcab435672aa209f",
+            "response_sha256": "bccea864598ee4a6bf51082f9ba1ddabf2ab1d4c99bc43bbd4e9b27f970029d3",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 883,
+            "total_duration_ns": 22616134417
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "generated step failed: Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\n  File \"/usr/local/lib/python3.11/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n          ^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/json/encoder.py\", line 200, in encode\n    chunks = self.iterencode(o, _one_shot=True)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.11/json/encoder.py\", line 258, in iterencode\n    return _iterencode(o, 0)\n           ^^^^^^^^^^^^^^^^^\nTypeError: keys must be str, int, float, bool or None, not tuple\n",
+          "receipt": {
+            "request_sha256": "543059f1aed9f031c3c536c3d360e77cd0b6ef4d2dc2750e87408f4d45f94791",
+            "response_sha256": "f08b0861a4299af3eed3dea8c1370ad35c72727cbe92dcc0d0438e798071a6da",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 896,
+            "total_duration_ns": 22932566417
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "complete",
+          "error": null,
+          "receipt": {
+            "request_sha256": "b8cdac84008765ed2995a61e12eb344eea18b26c21cfdaf6f2bf3557002b51e3",
+            "response_sha256": "6d990f278a39f5d9747de54cb13cfaed12835be675befae29b4c38447c9bb339",
+            "history_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 890,
+            "total_duration_ns": 23526846875
+          },
+          "done_reason": "stop"
+        }
+      ]
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-explicit-objective/outputs/generated-code-mechanisms-v1/proposal-1.attempts.json",
+      "sha256": "ddd52dcbc3fd61af5288ffa56b397024b40e73cf864a7a1f26f3f5209052c8a0",
+      "attempts": [
+        {
+          "status": "invalid",
+          "error": "step outputs must contain exactly ports ['decisions', 'publication_records', 'review_summary']; actual ports: ['decisions', 'paper_scores']",
+          "receipt": {
+            "request_sha256": "b3c683824e8d220fa9527ce362b9cfdc5dd34add4749273e07c88c9d63fa7040",
+            "response_sha256": "c599538bb86f299790380f42c1fe54998747df14fb476adc3f2def8879c13998",
+            "history_sha256": "34a466e936cd5912d7733856c003890dfd40e54c742c51edf88167d06c7bc80b",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 1028,
+            "total_duration_ns": 33155134708
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "step outputs must contain exactly ports ['decisions', 'publication_records', 'review_summary']; actual ports: ['decisions', 'paper_scores', 'publication_records', 'review_summary']",
+          "receipt": {
+            "request_sha256": "b3dcda07881cc1c920694a29eaae8f691679a29ddb9edd206aff58e234aef69d",
+            "response_sha256": "896171e9eef07f4adf59af273b840ff5d49f13a7d7b0957fbeda1403f339aeee",
+            "history_sha256": "34a466e936cd5912d7733856c003890dfd40e54c742c51edf88167d06c7bc80b",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 1415,
+            "total_duration_ns": 45550517750
+          },
+          "done_reason": "stop"
+        },
+        {
+          "status": "invalid",
+          "error": "expected 'else' after 'if' expression (<unknown>, line 31)",
+          "receipt": {
+            "request_sha256": "bf5a474c8a2e2754bbe095cfca823a2c290d717bd976c1ad112cba85c98a79e4",
+            "response_sha256": "bfe5b522360b65bca292b43008aa5c476d818fdaff91366d384e7dc1960001fc",
+            "history_sha256": "34a466e936cd5912d7733856c003890dfd40e54c742c51edf88167d06c7bc80b",
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "eval_count": 1142,
+            "total_duration_ns": 42761606834
+          },
+          "done_reason": "stop"
+        }
+      ]
+    }
+  ],
+  "raw_artifacts": [
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generated-code-mechanisms-v1-explicit-objective/outputs/generated-code-mechanisms-v1/progress.json",
+      "sha256": "26914b9ee9238022e7206bfb11d5d294ebeafa2978717802bbdf8e3eac490d58"
+    },
+    {
+      "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/generated-code-initial-proof-v1/replay.json",
+      "sha256": "64a0996ccb45964af547784858412475786fee21dd5e8e7b7f52538347c3a66d"
+    }
+  ]
+}

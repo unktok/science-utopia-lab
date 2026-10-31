@@ -2,6 +2,7 @@ from copy import deepcopy
 from types import SimpleNamespace
 
 import pytest
+import requests
 
 from utopia.system.code_proposals import propose_local_code
 from utopia.system.code_mechanisms import canonical, sha
@@ -67,3 +68,18 @@ def test_no_fallback_after_failed_probes(monkeypatch):
                            record_attempts=lambda attempts: recorded.extend(deepcopy(attempts)))
     assert [entry["status"] for entry in recorded] == ["requested", "invalid"]
     assert recorded[-1]["error"] == "genuine failure"
+
+
+def test_transport_failure_is_saved_without_a_fake_observation(monkeypatch):
+    prepare(monkeypatch, [])
+    def timeout(*args, **kwargs):
+        raise requests.Timeout("model did not respond")
+    monkeypatch.setattr("utopia.system.code_proposals.requests.post", timeout)
+    recorded = []
+    with pytest.raises(requests.Timeout):
+        propose_local_code(task="Invent", input_schemas={}, required_outputs={"out": {}},
+                           history=[], validate_executable=lambda a: {},
+                           record_attempts=lambda a: recorded.extend(deepcopy(a)))
+    assert [a["status"] for a in recorded] == ["requested", "failed"]
+    assert "model did not respond" in recorded[-1]["error"]
+    assert "loss" not in recorded[-1]

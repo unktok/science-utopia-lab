@@ -21,6 +21,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Generative Program World v1 development protocol](protocols/campaigns/generative-program-world-v1.md)
 - [Generative Program World v1 recorded result](results/generative-program-world-v1.md)
 - [Generated Python implementation mechanisms](components/generated-code-mechanisms-v1.md)
+- [Generated-code execution proof and failed revision analysis](results/generated-code-mechanisms-v1.md)
 - [Non-scale limitations against the full research goal](audits/non-scale-limitations-v1.md)
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
 - [Miniature Whole-System Design Lab v0](components/miniature-whole-system-design-lab-v0.md)
