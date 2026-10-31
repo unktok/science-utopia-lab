@@ -8,22 +8,25 @@ CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 \
   tests/replay tests/mechanisms/evaluation tests/system -q
 ```
 
-The 2026-10-31 native-kernel integration regression passed **584 tests, with two
-skips**, in 57.93 seconds using this broader focused command:
+The 2026-10-31 native-kernel integration regression passed **611 tests, with three
+skips**, in 53.40 seconds using this broader focused command:
 
 ```bash
 CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 \
   .venv/bin/python -m pytest tests/models tests/system tests/runtime \
   tests/funding tests/optimization tests/communication tests/government \
-  tests/replay -xq --tb=short
+  tests/replay tests/data/test_fulltext.py -xq --tb=short
 ```
 
 This is not a full-repository suite or empirical model validation. Native tests
 preserve actual domain phases and script only corpus/retrieval/HTTP for exact
 QA. They compare baseline/original state, RNG and wire requests, edge/delay
 effects, isolated-code selection with review removed, open LLM institution
-memory, portable replay, and plain original funding in empty publication years.
+memory, generic non-paper artifact identity/history, portable replay, plain
+original funding in empty publication years and empty citation histories.
 Live Qwen evidence belongs in the separately pinned research probe result.
+The skips are the two environment-opt-in real-ledger/tokenizer tests and the
+optional rapidgzip test; local Docker source-execution tests did run.
 
 Game UI changes also run:
 

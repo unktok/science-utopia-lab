@@ -133,6 +133,25 @@ new actor behavior, empirical realism, or whole-world differentiation. Existing
 research selection/corpus assumptions are preserved, not endorsed as sufficient.
 The engine must support extensions beyond them; tests establish containment,
 not that the original scientific ontology is final.
+
+In particular, the original simulator chooses existing corpus papers to stand
+for research output. Retaining that behavior proves containment; it does not
+make it an adequate final research model. A richer instance may introduce
+hypotheses, datasets, software, protocols, tests, replications, correction and
+newly authored artifacts, with producer/consumer behavior and actual longitudinal
+consequences. The new generic artifact store only supplies identities/content/
+history; it does not implement those scientific activities by naming them.
+Prioritize one such multi-step native extension over adding more settings to a
+fixed review/funding catalog. Scientific utility needs its own declared loss
+and independent diagnostics, not a built-in favorable numeric world law.
+
+Keep representational freedom separate from an experiment's search variables:
+write a trajectory as `F_world_model(SystemSpec, environment, seed)`. The world
+model can be extended or compared, but an institutional-optimization campaign
+must declare which assumptions are held fixed. Changing the world laws to make
+a proposed institution score better is not evidence that it improved under the
+original objective and environment.
+
 Current observation `extension_state` is the prior completed graph checkpoint,
 not other nodes' uncommitted current-year memory. A node receives its own actual
 latest state; current-year sharing should use explicit edges. Context history
