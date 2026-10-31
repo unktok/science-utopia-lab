@@ -5,7 +5,7 @@ import torch
 
 from utopia.optimization.generative_system import (
     GenerativeSystemSpace, op, program_from_expression, seed_generative_system,
-    synthesize_program,
+    synthesize_program, mutate_program,
 )
 from utopia.system import DeterministicGraphRunner, MechanismRegistry
 from utopia.system.programs import (
@@ -126,4 +126,18 @@ def test_rule_structure_and_process_mutations_are_executable(operation):
     if operation == "program":
         assert any(node["parameters"]["program"] != original.parameters["program"]
                    for node, original in zip(candidate["mechanisms"], system.mechanisms))
+
+
+def test_mutation_uses_declared_symbols_for_a_program_with_custom_names():
+    program = {
+        "schema": "scienceutopia.mechanism-program.v1",
+        "inputs": {"evidence": "vector"}, "parameters": {},
+        "state": {"archive": 0}, "output": {"input": "evidence"},
+        "updates": {"archive": {"state": "archive"}},
+    }
+    for seed in range(10):
+        changed = mutate_program(program, seed=seed)
+        validate_program(changed)
+        output, _ = execute_program(changed, {"evidence": torch.tensor([0.2, 0.7])}, size=2)
+        assert torch.isfinite(output).all()
 

@@ -75,7 +75,7 @@ def main() -> None:
     if args.ollama and args.proposal_input:
         parser.error("choose --ollama or --proposal-input")
     if args.ollama or args.proposal_input:
-        print("Generating a new mechanism and a six-agent world with local Qwen3-8B…", flush=True)
+        print("Generating with local Qwen3-8B…" if args.ollama else "Loading frozen local Qwen proposal…", flush=True)
         generated = (generate_local_proposal() if args.ollama else
                      json.loads(args.proposal_input.read_text(encoding="utf-8")))
         write_json(args.output / "qwen-proposal.raw.json", generated)

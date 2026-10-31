@@ -46,17 +46,27 @@ def program_from_expression(expression: Mapping[str, Any]) -> dict[str, Any]:
     return program
 
 
-def random_expression(rng: random.Random, depth: int = 3) -> dict[str, Any]:
+def random_expression(
+    rng: random.Random, depth: int = 3, *,
+    symbols: Mapping[str, tuple[str, ...]] | None = None,
+) -> dict[str, Any]:
     """A recursive typed numeric grammar; no list of complete mechanisms."""
+    symbols = symbols if symbols is not None else {
+        "input": FEATURES, "param": ("gain", "bias"), "state": ("memory",),
+    }
     if depth <= 0 or rng.random() < 0.25:
-        tag = rng.choice(("input", "input", "param", "state", "const"))
-        if tag == "input": return {tag: rng.choice(FEATURES)}
-        if tag == "param": return {tag: rng.choice(("gain", "bias"))}
-        if tag == "state": return {tag: "memory"}
+        # Preserve the v1 seeded sampling stream for the default vocabulary.
+        tags = [key for key in ("input", "input", "param", "state", "const")
+                if key == "const" or symbols.get(key)]
+        tag = rng.choice(tags)
+        if tag == "state" and len(symbols[tag]) == 1:
+            return {tag: symbols[tag][0]}
+        if tag != "const":
+            return {tag: rng.choice(symbols[tag])}
         return {tag: round(rng.uniform(-1, 1), 5)}
     name = rng.choice(("add", "sub", "mul", "sigmoid", "tanh", "mean", "threshold"))
     arity = 2 if name in {"add", "sub", "mul", "threshold"} else 1
-    return op(name, *(random_expression(rng, depth - 1) for _ in range(arity)))
+    return op(name, *(random_expression(rng, depth - 1, symbols=symbols) for _ in range(arity)))
 
 
 def synthesize_program(*, seed: int, depth: int = 3) -> dict[str, Any]:
@@ -79,7 +89,11 @@ def mutate_program(program: Mapping[str, Any], *, seed: int) -> dict[str, Any]:
 
     visit(root)
     container, index = rng.choice(locations)
-    container[index] = random_expression(rng, depth=2)
+    container[index] = random_expression(rng, depth=2, symbols={
+        "input": tuple(program["inputs"]),
+        "param": tuple(program["parameters"]),
+        "state": tuple(program["state"]),
+    })
     validate_program(candidate)
     return candidate
 
