@@ -34,7 +34,7 @@ class Model:
         self.source, self.prompts = source, []
     def generate(self, **kwargs):
         self.prompts.append(kwargs['prompt'])
-        return {'rationale': 'Explicit scripted QA source, not discovery', 'label': 'QA source', 'source': self.source}, []
+        return {'design_reasoning': 'Explicit scripted QA source, not discovery', 'algorithm_name': 'QA source', 'python_code': self.source}, []
 
 
 def test_actual_selection_ports_probed_and_native_evaluated_without_messages(recorded_selection, tmp_path):
@@ -44,7 +44,8 @@ def test_actual_selection_ports_probed_and_native_evaluated_without_messages(rec
     proposer = NativeFreeSourceRevisionProposer(model, executor, node_id='world.selection', context_provider=provider, receipts=tmp_path / 'proposals')
     result = controller.advance(simulation_factory=factory, proposer=proposer)
     assert result['observation']['status'] == 'complete'
-    assert 'incumbent_result' in model.prompts[0] and 'submitted_papers' in model.prompts[0]
+    assert 'incumbent_output_ports' in model.prompts[0] and 'submitted_papers' in model.prompts[0]
+    assert len(model.prompts[0].encode()) <= 80000 and model.prompts[0].endswith('do not invent native measurements.')
     receipt = json.loads((tmp_path / 'proposals/free-source-1-0.json').read_text())
     assert {'next', 'world', 'decisions'} == set(receipt['probe_results'][0]['result']['outputs'])
     assert any(r['result_changed'] for r in receipt['probe_results'])

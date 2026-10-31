@@ -22,6 +22,18 @@ repairs. Equal source/no effect/worse loss remain valid; no hidden policy veto.
 Loss, exact model source, context/result differences, native code effects and
 actual subsequent model inputs are recorded separately. No benefit is presumed.
 
+First-attempt amendment, before the next live source run: the baseline executed
+with loss-1, but all three technical drafts returned a paper URL instead of
+Python. The exact reconstructed designer prompt was252103 UTF-8 bytes, with
+complete world data duplicated in its input/output examples. Preserve this
+failure. A separate clean revision uses an explicitly bounded prompt projection
+(not a simplified forward world), unambiguous python_code/algorithm_name fields,
+lower designer-only temperature0.2 and a repeated final software task. Actual
+isolated probes still use exact complete native contexts. The prompt view and
+its80KB byte guard are bound in receipts; no silent truncation is presumed safe.
+Researcher temperatures, weights and original native forward equations remain
+unchanged. Run initial plus two revisions again as a separate development probe.
+
 ## Differentiable-representation track
 
 Fit local annual state-transition representations ONLY to hash-verified native
@@ -36,7 +48,7 @@ three-year worlds, same model/corpus/population/development seed. Calibration
 controls: baseline[0.2,0.2,0.2], pulse1[0.8,0.2,0.2],
 pulse2[0.2,0.8,0.2], pulse3[0.2,0.2,0.8]. This separates prior-state variation
 from current-year intervention; rank-deficient coordinates fail identification.
-Two unused calibration-validation designs[0.35,0.35,0.35] and[0.65,0.65,0.65]
+Two unused calibration-validation designs[0.275,0.275,0.275] and[0.375,0.375,0.375]
 test predicted states/loss and gradient direction against actual native secants.
 These are development design-validation runs, not a new held-out science-policy
 study. The final accepted-count engineering LossSpec is compiled exactly into
@@ -47,6 +59,15 @@ controls, request/response journals and local support/rank/fit diagnostics.
 If early years contain no paper decisions, zero sensitivity is valid. Unsupported
 state/coordinate extrapolation is reported; ridge cannot hide nonidentification.
 A gradient proposal is always a hypothesis requiring fresh native evaluation.
+
+Prelaunch geometry correction: the original draft pair[0.35]*3/[0.65]*3
+placed its second endpoint outside the four calibration schedules' convex hull.
+The revised pair above stays inside. Whole-schedule convex-hull membership is
+checked in addition to local state/radius support; any future[0.65]*3 run would
+be labelled extrapolation stress evidence, not the primary fidelity check.
+If a gradient-derived proposal is evaluated, choose a convex combination of
+the current interior schedule and a calibration vertex selected by its gradient,
+so the proposed schedule remains inside measured control support.
 
 ## Execution and delivery
 
