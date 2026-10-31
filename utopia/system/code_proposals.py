@@ -33,7 +33,7 @@ def propose_local_code(
     if model not in models:
         raise ValueError(f"local model {model!r} is not installed")
     prompt = """You implement a science-system institution as executable Python 3.11.
-Return ONLY JSON with EXACT keys: label, rationale, source, additional_outputs, state_schema.
+Return ONLY JSON with EXACT keys: label, rationale, source, new_port_schemas, state_schema.
 source is a JSON string of actual Python defining def step(context), not an AST.
 You may use loops, conditionals, helpers, imports from the Python standard library,
 sorting, dictionaries, lists, arbitrary JSON memory, and invent your own algorithm.
@@ -50,9 +50,15 @@ Never call .items() on a port's list.
 Return EXACTLY {'outputs': {port_name: [record, ...], ...}, 'state': {...}}.
 Every declared output port MUST appear, even if empty. Every output record is
 {'payload': {...}, 'actor_ids': [string,...], 'artifact_ids': [string,...]}.
+There is ONE outputs dict containing BOTH required and newly invented ports.
+Example of RETURN SHAPE ONLY, not an institutional algorithm:
+return {'outputs': {'required_port': [{'payload': payload_dict}],
+                    'invented_port': [{'payload': another_payload_dict}]}, 'state': state}
+Do not return new_port_schemas or additional_outputs from step().
 Never emit event_type, metrics, loss, or private host data. The host measures outcomes.
-additional_outputs maps NEW output port names to JSON Schemas for their payloads.
-Do not repeat required ports in additional_outputs. You may invent new information
+new_port_schemas is MANIFEST METADATA, not a step return value. It maps NEW
+output port names to JSON Schemas for their payloads, not arrays of records.
+Do not repeat required ports in new_port_schemas. You may invent new information
 artifacts rather than using only existing evaluation/funding categories.
 state_schema is a JSON Schema matching the state your code returns. No $ref.
 The required input and output payload schemas follow:
@@ -82,12 +88,12 @@ The required input and output payload schemas follow:
         try:
             proposal = json.loads(text)
             if not isinstance(proposal, dict) or set(proposal) != {
-                "label", "rationale", "source", "additional_outputs", "state_schema"
+                "label", "rationale", "source", "new_port_schemas", "state_schema"
             }:
                 raise ValueError("proposal fields mismatch")
-            additional = proposal["additional_outputs"]
+            additional = proposal["new_port_schemas"]
             if not isinstance(additional, dict) or set(additional) & set(required_outputs):
-                raise ValueError("additional_outputs must be new named payload schemas")
+                raise ValueError("new_port_schemas must be new named payload schemas")
             artifact = {
                 "schema": CODE_SCHEMA, "label": proposal["label"],
                 "source": proposal["source"], "inputs": input_schemas,

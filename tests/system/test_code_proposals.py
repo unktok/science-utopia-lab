@@ -14,7 +14,7 @@ def response(value):
 def proposal():
     return {"label": "New algorithm", "rationale": "History dependent sorting",
             "source": "def step(context):\n    return {'outputs': {'out': []}, 'state': {}}",
-            "additional_outputs": {}, "state_schema": {"type": "object"}}
+            "new_port_schemas": {}, "state_schema": {"type": "object"}}
 
 
 def prepare(monkeypatch, proposals):

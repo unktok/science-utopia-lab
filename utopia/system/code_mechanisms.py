@@ -233,7 +233,10 @@ def validate_context(artifact: dict[str, Any], context: dict[str, Any]) -> None:
 
 def validate_code_result(artifact: dict[str, Any], result: Any) -> None:
     if not isinstance(result, dict) or set(result) != {"outputs", "state"}:
-        raise CodeExecutionError("result must have exactly outputs and state")
+        keys = list(result) if isinstance(result, dict) else type(result).__name__
+        raise CodeExecutionError("step return keys are " + str(keys)
+            + "; expected ONLY outputs and state. Every port, including new artifact ports,"
+              " belongs inside outputs. Schema definitions belong only in manifest metadata.")
     if not isinstance(result["state"], dict) or not isinstance(result["outputs"], dict):
         raise CodeExecutionError("outputs and state must be objects")
     if set(result["outputs"]) != set(artifact["outputs"]):
@@ -247,7 +250,8 @@ def validate_code_result(artifact: dict[str, Any], result: Any) -> None:
                 if (not isinstance(value, dict) or not {"payload"} <= set(value)
                         or set(value) - {"payload", "actor_ids", "artifact_ids"}
                         or not isinstance(value["payload"], dict)):
-                    raise ValueError("invalid output record envelope")
+                    raise ValueError(f"outputs[{port!r}] record must be {{'payload': object,"
+                                     " optional actor_ids/artifact_ids}}; got " + str(value)[:1000])
                 for field in ("actor_ids", "artifact_ids"):
                     ids = value.get(field, [])
                     if not isinstance(ids, list) or any(not isinstance(item, str) or not item for item in ids):
