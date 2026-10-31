@@ -183,6 +183,8 @@ class NativeScienceKernel:
         registry.register(ARTIFACT_STORE, 1, self._store)
         registry.register(LLM_INSTITUTION, 1, self._llm_institution)
         registry.register(DESIGN_PROPOSALS, 1, self._record_design_proposals)
+        from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, tensor_handler
+        registry.register(TENSOR_IMPLEMENTATION, 1, tensor_handler)
         from .code_mechanisms import _schema
         for node in self.spec.mechanisms:
             if node.implementation == LLM_INSTITUTION:
@@ -458,9 +460,13 @@ class NativeScienceKernel:
         return MechanismResult(next_state={'proposals': records}, events=tuple(events))
 
     def gradient_contract(self):
+        from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION
         return {"world": "native-research-world", "end_to_end_autograd": False,
                 "opaque_nodes": [{"id": node.mechanism_id, "implementation": node.implementation}
-                                 for node in self.spec.mechanisms],
+                                 for node in self.spec.mechanisms if node.implementation != TENSOR_IMPLEMENTATION],
+                "represented_tensor_nodes": [node.mechanism_id for node in self.spec.mechanisms
+                                             if node.implementation == TENSOR_IMPLEMENTATION],
+                "tensor_trace_autograd": "represented operations, memory and tensor edges; opaque native observations conditioned/frozen",
                 "reason": "JSON/domain transitions and native LLM/discrete operations do not carry autograd tensors",
                 "numeric_miniature_is_not_a_substitute": True}
 

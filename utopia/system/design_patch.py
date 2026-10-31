@@ -103,7 +103,13 @@ def apply_design_patch(parent: SystemSpec, patch: dict):
         raise ValueError('design edit has unknown or noncanonical SystemSpec fields')
     validate_system_spec(candidate).require_valid()
     from .code_mechanisms import CODE_IMPLEMENTATION, validate_code_artifact
+    from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, validate_tensor_program
     for node in candidate.mechanisms:
+        if node.implementation == TENSOR_IMPLEMENTATION:
+            validate_tensor_program(node.parameters['program'])
+            if (set(node.parameters['program']['inputs']) != set(node.parameters['input_bindings'])
+                    or set(node.parameters['program']['outputs']) != {p.port_id for p in node.outputs}):
+                raise ValueError('tensor program and edited graph bindings differ')
         if node.implementation == CODE_IMPLEMENTATION:
             artifact = node.parameters.get('code_artifact')
             validate_code_artifact(artifact)

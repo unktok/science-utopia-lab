@@ -7,6 +7,11 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Native hard/soft institution programs and trace autograd](components/native-hard-soft-institutions-v1.md)
+- [Differentiable operations and fixed-LLM/multi-agent methods](literature/differentiable-institutions-and-fixed-llm-agents.md)
+- [Open institutional freedom and faithful local relaxations](decisions/0027-open-institutions-first-faithful-local-relaxations.md)
+- [Native LLM institutional invention protocol](protocols/campaigns/native-llm-joint-design-v1.md)
+- [Native hard/soft trace-relaxation protocol](protocols/campaigns/native-trace-relaxation-v1.md)
 - [Native design breadth: original goals, current capabilities and remaining gates](milestones/2026-10-31-native-design-breadth.md)
 - [Program map: goals, dependencies, and parallel tracks](program-map.md)
 - [Research overview](../RESEARCH.md)
