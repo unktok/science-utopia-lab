@@ -83,6 +83,18 @@ See [design and remaining scope](components/native-science-kernel-v1.md).
 
 ## Capability map
 
+Native design-loop extension: atomic patches now jointly edit source, protocol,
+nodes, connections and schedules; a restartable outer controller evaluates them
+through the actual native Simulation/LossSpec boundary. A separate Gaussian
+score-function route updates declared continuous design coordinates from native
+losses, with durable per-draw/batch records. This is not native-world autograd.
+Joint producer/consumer execution, source replacement, result-conditioned graph
+changes, pending resume and native-derived gradient costs pass deterministic QA.
+Live evidence for the new two-candidate loop is recorded separately from the
+previous message-delivery probe; see [design/commands](components/native-design-loops-v1.md).
+Replay/design-path exports are available, but the city live-intervention adapter
+and endogenous/recursive self-improvement remain unimplemented.
+
 | Layer | Status | Evidence / next gap |
 |---|---|---|
 | local Qwen3-8B simulation | operational | stable four-year runs through Ollama/Metal |

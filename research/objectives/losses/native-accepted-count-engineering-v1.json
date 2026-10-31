@@ -1,0 +1,13 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "native-accepted-count-engineering-v1",
+  "version": "1",
+  "status": "engineering-only-not-scientific-value",
+  "optimization_seed_role": "development",
+  "direction": "minimize",
+  "per_run": {"intercept": 0.0, "terms": [
+    {"metric_id": "native.accepted_decisions", "slice_id": null, "coefficient": -1.0}
+  ]},
+  "across_seeds": {"aggregation": "mean_plus_population_sd", "dispersion_weight": 0.0, "minimum_valid_runs": 1},
+  "interpretation": "Gameable count objective to exercise native code/protocol/wiring optimization, not scientific quality or policy. All-accept is allowed. No implicit fairness constraint."
+}
