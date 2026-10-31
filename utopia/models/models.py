@@ -632,6 +632,12 @@ class VLLMServerModel(BaseLLM):
         """Build provider-specific OpenAI chat-completion request fields."""
         if getattr(self, "server_backend", "vllm") == "ollama":
             fields = {}
+            override = getattr(self, "thinking_override", None)
+            if override is not None:
+                # Ollama's /v1 API maps reasoning_effort to native Think.
+                # The vLLM/HF chat_template_kwargs field is not that control.
+                # None deliberately preserves every historical request body.
+                fields["reasoning_effort"] = "medium" if override else "none"
             if request_seed is not None:
                 fields["seed"] = request_seed
             if response_format and response_format.get("type") == "json_schema":

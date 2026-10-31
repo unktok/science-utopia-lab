@@ -7,6 +7,9 @@ def parse_arguments(argv=None, *, create_dirs=True):
     parser = argparse.ArgumentParser(
         description="Run Academic Society Ecosystem Simulation"
     )
+    parser.add_argument('--science-system-spec', default=None,
+        help='Opt in to a native SystemSpec graph; "legacy" reproduces the existing lifecycle, '
+             'otherwise supply a JSON SystemSpec. No simplified world is substituted.')
     parser.add_argument(
         '--num_years',
         type=int,

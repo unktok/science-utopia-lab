@@ -51,6 +51,31 @@ Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
 Remote: `unktok/science-utopia-lab`
 
+## Native-world direction correction and implementation
+
+The original researcher world is now explicitly the minimum contained instance,
+not the target ceiling. The numeric miniature remains method/unit-test evidence,
+not a replacement research world. The new opt-in NativeScienceKernel executes
+SystemSpec graphs against the actual Simulation lifecycle, preserving language
+decisions, projects, original papers/retrieval, publication and funding history.
+Its baseline graph matches the original six-year coordinator's scientific/RNG
+state and wire requests under identical scripted replies and clocks.
+
+New typed institution messages reach actual next-year researcher prompts;
+edge removal and latency alter their availability. Isolated Python can replace
+decision selection and remove the original peer-review stage while committing
+to the real conference/PaperTracker state. A trusted actor-codec extension
+prevents new actor kinds from silently disappearing on persistence. These are
+integration capabilities, not empirical realism or an invented optimized system.
+The standard black-box Suggestion/LossSpec/Observation contract now has a native
+world evaluator; durable arbitrary-source campaign scheduling remains separate.
+
+An independent clean-source local-Qwen probe is specified in the
+[native integration protocol](protocols/campaigns/native-science-kernel-integration-v1.md).
+Its live result must be recorded separately from deterministic QA. Whole native-
+world autograd is **not implemented**; the kernel exposes that boundary explicitly.
+See [design and remaining scope](components/native-science-kernel-v1.md).
+
 ## Capability map
 
 | Layer | Status | Evidence / next gap |

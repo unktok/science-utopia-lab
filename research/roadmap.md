@@ -4,6 +4,14 @@
 
 ## 現在の主マイルストーン — Miniature Whole-System Design Lab v0
 
+Decision 0025により、ここでいう小規模化は人数・期間を小さくすることであり、
+研究活動を数値属性の別世界に置き換えることではない。元の研究者世界も単純すぎる
+ため、それを包含した上で拡張する。NativeScienceKernelは元の実行過程をグラフの
+一構成として実行し、新コード/新protocolから実際の研究者入力と出版状態へ接続する。
+元の6年実行との互換性、接続/遅延の効果、査読の除去と実装置換、再開をQAした。
+研究者世界全体の微分可能化、任意actorの行動、自由なイベント進行は未完であり、
+数値miniatureの成功とは区別する。
+
 少数agent、1〜2年、1〜2 development seeds、少数候補で、次を同じend-to-end workflowに接続する。
 
 1. `ObjectiveSpec`から`LossSpec`とheld-out diagnosticsを生成する。

@@ -90,7 +90,8 @@ Compared with industry researchers, you focus more on theoretical contributions,
 Your current funding level is {self.resources}.
 """
 
-        return prompt
+        from utopia.system.native_kernel import institutional_context_prompt
+        return prompt + institutional_context_prompt(self)
 
 
 
@@ -346,7 +347,8 @@ Compared with university researchers, you focus more on practical applications, 
             prompt += f"""
 Your current funding level is {self.resources}.
 """
-        return prompt
+        from utopia.system.native_kernel import institutional_context_prompt
+        return prompt + institutional_context_prompt(self)
 
     def _apply_agent_review_biases(self, review: Dict) -> Dict:
         """Apply industry-specific biases to reviews"""

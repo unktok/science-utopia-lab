@@ -445,6 +445,13 @@ class Simulation:
             if native_government_config is not None else None
         )
 
+        # A conservative extension of this world, not a replacement simulator.
+        # Off means no graph execution, extra prompts, RNG calls or contract key.
+        from utopia.system.native_kernel import NativeScienceKernel
+        native_spec = getattr(self.args, 'science_system_spec', None)
+        self.native_system = (NativeScienceKernel.from_path(
+            native_spec, seed=getattr(self.args, 'seed', 42)) if native_spec else None)
+
         # Create output directory
 
         # Initialize components
@@ -616,6 +623,9 @@ class Simulation:
         native_government = getattr(self, 'native_government', None)
         if native_government is not None:
             contract['native_government'] = native_government.config.to_dict()
+        native_system = getattr(self, 'native_system', None)
+        if native_system is not None:
+            contract['native_system'] = {'system_fingerprint': native_system.spec.fingerprint}
         return json.loads(canonical_json(contract))
 
     def portable_safe_point(self):
@@ -3409,6 +3419,11 @@ class Simulation:
             year: Current year number
             year_results: Year results dict to update
         """
+        self._select_conference_decisions(year, year_results)
+        self._commit_conference_decisions(year, year_results)
+
+    def _select_conference_decisions(self, year: int, year_results: Dict):
+        """Native baseline selection; publication commit is a separate capability."""
         logger.info(f"Year {year} Phase 4: Making acceptance decisions...")
 
         schedule = getattr(self.args, 'acceptance_rate_schedule', None)
@@ -3428,6 +3443,8 @@ class Simulation:
         self.conference_system.make_all_decisions(tiebreak_seed=tiebreak_seed,
                                                   acceptance_mode=self.acceptance_mode)
 
+    def _commit_conference_decisions(self, year: int, year_results: Dict):
+        """Apply selected decisions to the actual tracker and retrieval state."""
         total_accepted = sum(len(conf.decisions['accept']) for conf in self.conference_system.conferences)
         total_rejected = sum(len(conf.decisions['reject']) for conf in self.conference_system.conferences)
 
@@ -4134,6 +4151,9 @@ class Simulation:
         Returns:
             Dictionary with year results
         """
+        native_system = getattr(self, 'native_system', None)
+        if native_system is not None:
+            return native_system.run_year(self, year)
         self.portable_safe_point()
         # Year setup
         year_results = self._setup_year(year)
@@ -4489,6 +4509,9 @@ class Simulation:
         native_government = getattr(self, 'native_government', None)
         if native_government is not None:
             checkpoint_data['native_government'] = native_government.to_dict()
+        native_system = getattr(self, 'native_system', None)
+        if native_system is not None:
+            checkpoint_data['native_system'] = native_system.to_dict()
 
         # Save exploration experiment trackers if enabled
         if self.is_exploration_experiment:
@@ -4704,6 +4727,14 @@ class Simulation:
             self.native_government = NativeGovernmentRuntime(
                 self.native_government.config, government_state
             )
+        system_state = checkpoint_data.get('native_system')
+        if getattr(self, 'native_system', None) is None:
+            if system_state is not None:
+                raise ValueError('Checkpoint enables native system but current config is off')
+        else:
+            if system_state is None:
+                raise ValueError('Checkpoint is missing native system state')
+            self.native_system.restore(system_state)
         # N0 anchor (older checkpoints lack it: fall back to the current university count)
         self.initial_university_count = checkpoint_data.get('initial_university_count')
         self.initial_industry_count = checkpoint_data.get('initial_industry_count')

@@ -10,6 +10,35 @@ their processes and interactions, and researcher behavior. Parameters,
 generated source, graph search and gradients are complementary design
 freedoms/methods—not separate scientific purposes.
 
+## Native integration amendment (Decision 0025)
+
+The original researcher world is itself too simple to be the ultimate target;
+it must be a contained minimum instance, not a ceiling. The rows below retain
+the earlier code/numeric lab limitations, with this new status distinction:
+
+- NativeScienceKernel now runs open SystemSpec graphs against actual original
+  Simulation phases. Six-year deterministic compatibility includes wire inputs
+  and RNG, not just similar aggregate metrics.
+- New protocols reach real next-year researcher prompts, with edge removal and
+  delayed delivery controls; isolated source replaces actual decision selection,
+  including removal of the original peer-review node. Decisions propagate to
+  native publication/history rather than a fixture-only PaperTracker.
+- Open LLM institution handlers use native model transport with explicit JSON
+  state/output contracts. Generated Python still cannot directly call the
+  network/tools; host-brokered arbitrary tool protocols remain future work.
+- Actor codecs admit trusted new classes and persist their own state. This
+  does not make the original research/funding phases understand all new roles.
+- Arbitrary multi-node protocol synthesis/search, general event scheduling,
+  native gradient estimators, empirical realism and playable live installation
+  remain open. The native ask/tell evaluator is implemented; a durable
+  arbitrary-program campaign has not been completed.
+- Live Qwen evidence is recorded separately from deterministic QA under the
+  [integration protocol](../protocols/campaigns/native-science-kernel-integration-v1.md).
+
+Thus “fixtures only” and “no native lifecycle bridge” no longer describe the
+new native backend, but remain true of earlier frozen lab results. A new bridge
+is not completion of free-form scientific-world design.
+
 | Limitation / simplification | Current evidence and consequence | Next substantive change |
 |---|---|---|
 | Generated numeric rules used a fixed AST/operator catalog | Numeric program v1 has five researcher vectors and four effect dimensions. Changing an expression is not arbitrary institution invention. | New code route removes the algorithm whitelist; accept Python implementations, JSON memory and new output schemas. Test actual execution, not just parseability. |

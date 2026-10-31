@@ -100,6 +100,11 @@ class MultiAgentEcosystem:
 
         agents_data = []
         for agent_id, agent in self.agent_population.items():
+            from utopia.agents.registry import ACTOR_CODECS
+            custom = ACTOR_CODECS.encode(agent)
+            if custom is not None:
+                agents_data.append(custom)
+                continue
             if agent.newest_direction is not None:
                 newest_direction = {
                     'direction': agent.newest_direction['direction'].topic,
@@ -129,6 +134,8 @@ class MultiAgentEcosystem:
                 agent_dict['initial_funding'] = agent.initial_funding
             if getattr(agent, 'production_cost_entries', None):
                 agent_dict['production_cost_entries'] = agent.production_cost_entries
+            if getattr(agent, 'institutional_context', None):
+                agent_dict['institutional_context'] = agent.institutional_context
 
             if isinstance(agent, UniversityResearcher):
                 agent_dict['university_name'] = agent.university_name
@@ -165,8 +172,7 @@ class MultiAgentEcosystem:
                     }
                 agent_dict['funding_programs'] = programs_data
             else:
-                # Unknown agent type - skip or raise error
-                continue
+                raise ValueError(f"Actor {agent.id!r} needs an explicit versioned codec")
 
             agents_data.append(agent_dict)
 
@@ -202,6 +208,10 @@ class MultiAgentEcosystem:
 
         from utopia.agents.research_direction import DIRECTIONS_DICT
         for agent_data in all_agent_data:
+            if 'actor_codec' in agent_data:
+                from utopia.agents.registry import ACTOR_CODECS
+                ecosystem.add_agent(ACTOR_CODECS.decode(agent_data, llm=llm))
+                continue
             agent_type = agent_data['type']
 
             newest_direction_data = agent_data['newest_direction']
@@ -318,9 +328,11 @@ class MultiAgentEcosystem:
                     )
                     agent.funding_programs[prog_id] = program
             else:
-                continue
+                raise ValueError(f"Unknown actor type {agent_type!r}; no actor may silently disappear")
 
             agent.production_cost_entries = agent_data.get('production_cost_entries', {})
+            if agent_data.get('institutional_context'):
+                agent.institutional_context = agent_data['institutional_context']
             ecosystem.add_agent(agent)
 
         return ecosystem

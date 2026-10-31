@@ -108,9 +108,24 @@ def convert_artifacts(bundle: ArtifactBundle) -> list[EventEnvelope]:
     """Convert a saved checkpoint bundle without invoking simulation code."""
 
     checkpoint = _read_json(bundle.checkpoint)
+    # Portable snapshots wrap packed domain data and require versioned decoding;
+    # treating the wrapper as a legacy checkpoint would silently yield no events.
+    from utopia.runtime.checkpointing import FORMAT, read_portable_checkpoint
+    if checkpoint.get("format") == FORMAT:
+        checkpoint = read_portable_checkpoint(bundle.checkpoint)
     ledger = _read_jsonl(bundle.resource_ledger)
     balances = _read_jsonl(bundle.resource_balances)
     specs: list[dict[str, Any]] = []
+
+    native_system = checkpoint.get("native_system")
+    if native_system is not None:
+        from utopia.system import SystemSpec
+        from utopia.system.native_kernel import NativeScienceKernel
+        runtime = NativeScienceKernel(SystemSpec.from_dict(native_system["spec"]), checkpoint=native_system)
+        for event in runtime.events:
+            specs.append(_spec(year=event.year, phase=event.phase, event_type=event.event_type,
+                stable_order=(event.sequence,), actor_ids=event.actor_ids, artifact_ids=event.artifact_ids,
+                payload=event.payload, provenance=event.provenance))
 
     native_communication = checkpoint.get("native_communication")
     if native_communication is not None:

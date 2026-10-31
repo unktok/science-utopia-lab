@@ -59,6 +59,7 @@ from .validation import (
     ValidationReport,
     validate_system_spec,
 )
+from .native_kernel import NativeScienceKernel, legacy_world_system, add_context_receiver
 
 __all__ = [
     "AgentTypeSpec",
@@ -105,4 +106,7 @@ __all__ = [
     "legacy_candidate_to_system_spec",
     "validate_system_spec",
     "validate_simulator_experiment_plan",
+    "NativeScienceKernel",
+    "legacy_world_system",
+    "add_context_receiver",
 ]

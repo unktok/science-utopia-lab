@@ -50,6 +50,31 @@ def test_invalid_override_rejected_before_http(monkeypatch, override):
         models.VLLMServerModel("fake-model", thinking_override=override)
 
 
+@pytest.mark.parametrize("batched", [False, True])
+@pytest.mark.parametrize("override,effort", [(None, None), (False, "none"), (True, "medium")])
+def test_ollama_explicit_override_reaches_wire(batched, override, effort):
+    case = transport.TransportFixture()
+    case.setUp()
+    try:
+        client, wire = case.make_client(server_backend="ollama", thinking_override=override)
+        options = dict(response_format=next(iter(transport.FORMATS.values())),
+                       seed_ctx=("ollama-thinking", 1))
+        if batched:
+            client.generate_batch(["fixture"], **options)
+        else:
+            client.generate(prompt="fixture", **options)
+        body, = wire.payloads
+        if effort is None:
+            assert "reasoning_effort" not in body
+        else:
+            assert body["reasoning_effort"] == effort
+        assert "chat_template_kwargs" not in body
+        assert "response_format" in body
+        assert "seed" in body
+    finally:
+        case.doCleanups()
+
+
 @pytest.mark.parametrize("bound,override", [(None, False), (False, None), (True, False), (0, False)])
 def test_binding_mismatch_rejected_before_cache_or_http(tmp_path, monkeypatch, bound, override):
     binding = deepcopy(BINDING)

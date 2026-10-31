@@ -47,6 +47,15 @@ next experiment rather than being hidden as implementation details.
 
 ## Current tracks
 
+Direction correction (Decision 0025): the original researcher world is a lower
+bound to contain and extend, not an expressiveness ceiling. The new native
+kernel binds open SystemSpec/code/LLM institutions to that live world; numeric
+miniatures cannot substitute for this integration or for native differentiation.
+Compatibility, new-protocol prompt delivery, decision replacement/removal and
+checkpoint QA are implemented. See the native-kernel design/probe documents in
+the index; unconstrained actor behavior, process generality and native gradients
+remain open rather than being counted complete by the older numeric results.
+
 | Track | Current state | What is actually finished | Next evidence-producing step |
 |---|---|---|---|
 | Reproducible simulator | operational | local Qwen3-8B, repeated seeds, restart/provenance, longitudinal runs | keep completed v1.1 immutable while designing replicated campaigns |
