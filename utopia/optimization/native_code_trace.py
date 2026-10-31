@@ -78,9 +78,10 @@ def parent_context_provider(run_directory, *, source_commit):
                     artifact=node.parameters['code_artifact'], binding={'source_commit': source_commit,
                         'system_fingerprint': parent.fingerprint, 'run_id': run['run_id']})
                 for row in rows:
-                    if not any(r['mechanism_id'] == node_id and r['period'] == row['context']['period'] and all(
-                        r[k] == row['receipt'][k] for k in ('image_id', 'artifact_sha256', 'context_sha256', 'result_sha256'))
-                        for r in kernel.execution_receipts):
+                    if not any(e.event_type == 'generated.code_executed' and e.provenance['mechanism_id'] == node_id
+                        and e.year == row['context']['period'] and all(
+                            e.payload[k] == row['receipt'][k] for k in ('image_id', 'artifact_sha256', 'context_sha256', 'result_sha256'))
+                        for e in kernel.events):
                         raise ValueError('recorded input has no matching actual parent node execution')
                 actual.extend(rows)
         if not actual:
