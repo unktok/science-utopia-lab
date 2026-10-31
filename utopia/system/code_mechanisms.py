@@ -48,16 +48,22 @@ def _schema(schema: Any) -> None:
         raise ValueError("contract schema must be an object")
     if len(canonical(schema)) > 65_536:
         raise ValueError("contract schema exceeds size limit")
-    def visit(item):
+    def visit(item, depth=0):
+        if depth > 24:
+            raise ValueError("contract schema nesting exceeds limit")
         if isinstance(item, dict):
             # No external or recursive resolution, including nested unused defs.
             if any(key in item for key in ("$ref", "$dynamicRef", "$recursiveRef")):
                 raise ValueError("schema references are not supported")
+            if any(key in item for key in ("pattern", "patternProperties")):
+                # LLM schemas are untrusted input too: do not evaluate arbitrary
+                # regular expressions against generated strings on the host.
+                raise ValueError("schema regexes are not supported")
             for value in item.values():
-                visit(value)
+                visit(value, depth + 1)
         elif isinstance(item, list):
             for value in item:
-                visit(value)
+                visit(value, depth + 1)
     visit(schema)
     Draft202012Validator.check_schema(schema)
 

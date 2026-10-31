@@ -34,6 +34,16 @@ simulator, its token generation, and arbitrary generated institutions are not
 yet combined in one differentiable execution path. See the
 [recorded result](results/generative-program-world-v1.md).
 
+The next non-scale extension is direct implementation-code generation, not
+another numeric-rule catalog. Generated Python mechanisms now have a generic
+JSON/port/state contract, isolated no-network container execution, checkpointed
+graph integration and a local-Qwen proposal/repair path. Production PaperTracker
+integration tests pass. Model-backed source/revision validation is being
+recorded separately; this does not yet install arbitrary new protocols and
+consumers in the original live researcher lifecycle. The explicit
+[non-scale limitation inventory](audits/non-scale-limitations-v1.md) distinguishes
+these gaps from seed/population/budget scale.
+
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
 Remote: `unktok/science-utopia-lab`
@@ -63,6 +73,7 @@ Remote: `unktok/science-utopia-lab`
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
 | optimization continuum | synthetic-tested common boundary | parameters (6 raw variables), mechanism configuration (16), and node/edge structure (26) are nested over one six-family template; black-box, gradient, and hybrid methods share projection and opaque outer evaluation; schedule/latency and model-backed execution remain open |
 | generative mechanism programs | executable numeric miniature | typed ASTs encode input, parameter, memory and update rules; search synthesizes new rules and custom nodes, changes edges/delays/order, and can remove every institutional node; generated programs also run/checkpoint in the existing generic graph runtime |
+| generated implementation code | executable adapter; model-backed revision under verification | arbitrary Python algorithms/JSON memory/new output schemas run only inside bounded Docker; production PaperTracker and generic artifact ledger share SystemSpec/checkpoint evidence; no claim of automatic code differentiability or complete live-researcher integration |
 | direct whole-world differentiation | executable numeric miniature | autograd traverses complete recurrent agent/world transitions; six parameter/rule/node/edge/delay/schedule gradient groups pass representative central differences; hard projection and outer evaluation share the numeric transition equations; full legacy Qwen simulator and token generation remain outside autograd |
 | generative lab viewer | recorded and browser-verified | checksum-bound events, generated SignalBoost rule, graph/process, six-agent state and search paths load into `game-ui-v2/generative.html`; two losses × four selected-system views; Chrome verification passed with zero exceptions/failed requests and no mobile overflow |
 | game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |

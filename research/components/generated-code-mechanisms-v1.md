@@ -35,8 +35,9 @@ The function returns exactly:
 
 All declared output ports appear, possibly as empty lists. Finite JSON,
 declared port schemas and state schemas are checked before graph state commit.
-Schema references are disabled, including nested definitions: no network schema
-lookup. A contract failure is technical invalidity, never a numeric penalty or
+Schema references and generated regexes are disabled, including nested
+definitions: no network schema lookup or untrusted host regex matching. Schema
+size/depth is bounded. A contract failure is technical invalidity, never a numeric penalty or
 an implicit fairness/promotion criterion.
 
 ## Isolation and evidence

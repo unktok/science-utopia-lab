@@ -34,6 +34,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--proposal-input", type=Path)
+    parser.add_argument("--reasoning", action="store_true",
+                        help="experimental Qwen reasoning profile without a JSON token grammar")
     parser.add_argument("--allow-dirty-development", action="store_true")
     args = parser.parse_args()
     dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=PROJECT_ROOT))
@@ -84,6 +86,7 @@ claim of a good real-world scientific policy. Do not invent fields in input pape
             result = propose_local_code(task=instruction, input_schemas=INPUT_SCHEMAS,
                                         required_outputs=REQUIRED_OUTPUTS, history=history,
                                         validate_executable=probe, seed=911 + 10 * index,
+                                        reasoning=args.reasoning,
                                         record_attempts=lambda attempts: write_json(
                                             args.output / f"proposal-{index}.attempts.json", attempts))
         report["proposals"].append(result)

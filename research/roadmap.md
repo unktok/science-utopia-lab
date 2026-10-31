@@ -28,6 +28,13 @@ relaxationとmodel-backed outer executionは未完である。
 元のlongitudinal Qwen-agent simulatorへの任意機構接続・微分可能化は区別する。
 後者とObjectiveSpecの統合は次の課題であり、scale-upより先に進める。
 
+Decision 0024では固定ASTだけにとどめず、LLMがPython実装コード・JSON内部状態・
+新しい成果物の出力schemaを生成し、隔離実行してproduction PaperTrackerへ接続する
+経路を追加した。任意コードが実行できることと、意味のある新制度が動くこと、
+研究者の反応まで組み込めること、全体を微分できることは別の検証対象である。
+[スケール以外の制限一覧](audits/non-scale-limitations-v1.md)を次の実装優先順位の
+基準とし、producer/consumerの同時生成と新protocolの因果的作用を次に確認する。
+
 ## Phase 0 — 再現可能なローカル基盤（完了・維持）
 
 成果物:

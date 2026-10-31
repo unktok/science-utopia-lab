@@ -37,7 +37,10 @@ def verify_run(report):
                 raise ValueError("result-conditioned history receipt mismatch")
         if proposal["receipt"] != attempts[-1]["receipt"]:
             raise ValueError("selected model receipt mismatch")
-        generated = json.loads(attempts[-1]["response"]["message"]["content"])
+        content = attempts[-1]["response"]["message"]["content"].strip()
+        if content.startswith("```json\n") and content.endswith("```"):
+            content = content[8:-3].strip()
+        generated = json.loads(content)
         if (generated["source"] != artifact["source"] or generated["label"] != artifact["label"]
                 or generated["state_schema"] != artifact["state_schema"]
                 or generated["rationale"] != proposal["rationale"]

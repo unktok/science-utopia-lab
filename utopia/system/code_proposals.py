@@ -15,6 +15,7 @@ def propose_local_code(
     model: str = "qwen3:8b", endpoint: str = "http://localhost:11434",
     seed: int = 911, max_attempts: int = 3,
     record_attempts: Callable[[list[dict]], None] | None = None,
+    reasoning: bool = False,
 ) -> dict[str, Any]:
     """Generate actual source, not selection from a prewritten rule catalog.
 
@@ -69,12 +70,26 @@ The required input and output payload schemas follow:
     for index in range(max_attempts):
         body = {
             "model": model, "messages": messages, "stream": False,
-            "think": True, "format": "json", "keep_alive": "5m",
+            # Do not combine a JSON token grammar with reasoning tokens. Parse
+            # and validate the final text instead; malformed text is a repair.
+            "think": reasoning, "keep_alive": "5m",
             "options": {"temperature": 0.2, "seed": seed + index,
-                        "num_predict": 6144, "num_ctx": 12288},
+                        "num_predict": 4096, "num_ctx": 12288},
         }
-        response = requests.post(endpoint + "/api/chat", json=body, timeout=(10, 240))
-        response.raise_for_status()
+        if not reasoning:
+            body["format"] = "json"
+        record = {"request": body, "status": "requested"}
+        attempts.append(record)
+        if record_attempts:
+            record_attempts(attempts)
+        try:
+            response = requests.post(endpoint + "/api/chat", json=body, timeout=(10, 240))
+            response.raise_for_status()
+        except requests.RequestException as error:
+            record.update({"status": "failed", "error": str(error)[:2000]})
+            if record_attempts:
+                record_attempts(attempts)
+            raise
         raw = response.json()
         text = raw["message"]["content"]
         receipt = {
@@ -83,10 +98,12 @@ The required input and output payload schemas follow:
             "model_digest": models[model], "eval_count": raw.get("eval_count"),
             "total_duration_ns": raw.get("total_duration"),
         }
-        record = {"request": body, "response": raw, "receipt": receipt}
-        attempts.append(record)
+        record.update({"response": raw, "receipt": receipt})
         try:
-            proposal = json.loads(text)
+            content = text.strip()
+            if content.startswith("```json\n") and content.endswith("```"):
+                content = content[8:-3].strip()
+            proposal = json.loads(content)
             if not isinstance(proposal, dict) or set(proposal) != {
                 "label", "rationale", "source", "new_port_schemas", "state_schema"
             }:

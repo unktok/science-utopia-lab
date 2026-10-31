@@ -54,6 +54,14 @@ def test_reject_remote_schema_resolution():
         validate_code_artifact(value)
 
 
+def test_reject_host_regex_evaluation():
+    value = artifact()
+    value["outputs"]["out"] = {"type": "object", "properties": {
+        "text": {"type": "string", "pattern": "(a+)+$"}}}
+    with pytest.raises(ValueError, match="regexes"):
+        validate_code_artifact(value)
+
+
 @pytest.mark.parametrize("result", [
     {"outputs": {"undeclared": []}, "state": {"calls": 1}},
     {"outputs": {"out": []}, "state": {}},
