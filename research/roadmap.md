@@ -1,8 +1,21 @@
 # 研究ロードマップ
 
-日付はコミットメントではなく、前段階の検証を通過したことを次段階の開始条件とする。
+日付はコミットメントではなく、検証ゲートを次段階の開始条件とする。Phaseは能力層を示し、必ずしも直列に大規模化しない。Decision 0021により、次は各能力を小規模に一度つなぐbreadth-first integrationを優先する。
 
-## Phase 0 — 再現可能なローカル基盤（進行中）
+## 現在の主マイルストーン — Miniature Whole-System Design Lab v0
+
+少数agent、1〜2年、1〜2 development seeds、少数候補で、次を同じend-to-end workflowに接続する。
+
+1. `ObjectiveSpec`から`LossSpec`とheld-out diagnosticsを生成する。
+2. evaluationに加えてpublication、funding、government、communicationのうち少なくとも2機構を含む小さな構造grammarを凍結する。
+3. nodeの有無・実装置換と、edgeまたはschedule/latencyをブラックボックス探索する。
+4. 同じ設計対象に対する微分可能relaxationから候補を射影する。
+5. 両方の候補を同じ離散`SystemSpec` validatorとmodel-backed simulatorで外側評価する。
+6. objective、proposal lineage、graph差分、world events、observed lossを同じcanonical artifactsからゲームで表示する。
+
+この段階ではoptimizer superiorityや統計的安定性を主張しない。統合sliceの完了後にseed、optimizer、候補予算、population、期間を一軸ずつ増やす。
+
+## Phase 0 — 再現可能なローカル基盤（完了・維持）
 
 成果物:
 
@@ -17,7 +30,7 @@
 - 設定・出力・コード revision がrun単位で追跡できる
 - 既知の環境差と未解決テストが記録される
 
-## Phase 1 — 測定と最適化 harness
+## Phase 1 — 測定と最適化 harness（parameter-level v1.1完了）
 
 成果物:
 
@@ -33,7 +46,7 @@
 - 5〜8変数の小規模探索を再現できる
 - 未使用 seed で候補を再評価できる
 
-## Phase 2 — SystemSpecと機構グラフ基盤
+## Phase 2 — SystemSpecと機構グラフ基盤（部分実装・v0統合対象）
 
 成果物:
 
@@ -49,7 +62,7 @@
 - 少なくとも一機構をsimulator本体の分岐なしで交換または除去できる
 - 機構間のdecision provenanceとresource effectを追跡できる
 
-## Phase 3 — 多目的ブラックボックス制度探索
+## Phase 3 — 多目的ブラックボックス制度探索（統合後にscale-up）
 
 成果物:
 
@@ -64,7 +77,7 @@
 - 選ばれた制度が未使用 seed と環境 shift で検証される
 - 改善だけでなく代償と失敗範囲を説明できる
 
-## Phase 4 — 科学システム構造探索
+## Phase 4 — 科学システム構造探索（miniature sliceを次に実行）
 
 成果物:
 
@@ -78,7 +91,7 @@
 - 異なるtopologyを同じ実験contractで実行・比較できる
 - 未使用seedと環境shiftで構造候補を再評価できる
 
-## Phase 5 — 微分可能な科学システム
+## Phase 5 — 微分可能な科学システム（synthetic proofをminiature outer loopへ接続）
 
 成果物:
 
@@ -92,9 +105,9 @@
 - surrogate上だけでなく真のsimulator上で改善を確認する
 - 勾配近似が壊れる機構・構造・条件を特定する
 
-## Parallel Track — Game vertical slice
+## Integrated Track — Game vertical slice
 
-Phase 1 の canonical event schema を利用し、read-only replay viewer を作る。その後、checkpoint から制度を変更して branch できる interactive prototype へ進む。研究 core とUIの二重実装は禁止する。
+read-only canonical replay、system sandbox、branch comparison、optimization observatoryの各sliceは存在する。次はこれらを別デモとして増やすのではなく、Miniature Whole-System Design Lab v0のobjective、proposal、graph、outer evaluationへ接続する。研究coreとUIの二重実装は禁止する。
 
 長時間run中の並行開発は、凍結した実験worktreeとtrack別の開発worktreeを分離して
 行う。GPU貸出機の要件、実測runtime換算、event/replay・UI・Evaluation API・
@@ -127,15 +140,15 @@ historical manifestの絶対pathはprovenanceとして維持し、旧pathのcomp
 symlinkとartifact manifestの`current_locator`で接続している。統合testsは移動後の
 実体pathで通過済みであり、次の長時間campaign前にsmoke runを行う。
 
-## Optimization v1 — 次の主マイルストーン
+## Optimization v1 — 完了した基礎マイルストーン
 
-1. optimizerが直接参照する`LossSpec`を一つversion固定する。
-2. lossに使うoptimization seedsと、候補凍結後のevaluation seedsを分離する。
-3. evaluation metricsはaccuracyに相当するheld-out評価として定義し、同じcampaignの
+1. **完了:** optimizerが直接参照する`LossSpec`をversion固定した。
+2. **完了:** lossに使うoptimization seedsと、候補凍結後のevaluation seedsを分離した。
+3. **完了:** evaluation metricsはaccuracyに相当するheld-out評価として定義し、同じcampaignの
    candidate更新には使わない。
-4. bounded parallel schedulerを安全性監査後に統合し、workers 1/2/4を実測する。
-5. random/Sobol初期点から`observe`し、少なくとも一回は結果依存の次候補を
-   `suggest`する閉ループを完成させる。
+4. **完了:** bounded parallel schedulerを安全性監査後に統合し、workers 1/2/4を実測した。
+5. **完了:** 初期点から`observe`し、少なくとも一回は結果依存の次候補を
+   `suggest`する閉ループを完成させた。
 
 最初の実行では現行固定topologyのparameter vectorを制限版`SystemSpec`として用いて
 よい。ただしoptimizer APIとcampaign recordの設計単位はsystem全体とし、

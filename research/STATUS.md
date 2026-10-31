@@ -101,14 +101,23 @@ default constraint for future optimization.
 
 ## Next milestone
 
-The preregistered common held-out comparison is complete. The next experimental
-milestone is a replicated optimizer study: larger valid budgets, multiple
-optimizer seeds, equal-budget random/Sobol baselines followed by suitable
-Bayesian or evolutionary methods, incumbent-loss curves, and design-collapsed
-held-out analysis. In parallel, the first simulator-backed structural campaign
-over the whole-system mechanism grammar should be sealed. Seeds 701, 709, 719,
-727, and 733 remain consumed by v1.1 and must not be reused as fresh held-out
-evidence. Seeds 523, 541, and 547 remain attached to the first campaign.
+The preregistered common held-out comparison is complete. The next milestone is
+**Miniature Whole-System Design Lab v0**, a breadth-first integration slice.
+Before increasing seed counts or candidate budgets, it will connect one small
+objective abstraction, structural mechanism grammar, result-dependent
+black-box path, differentiable proposal path, model-backed outer evaluator,
+canonical replay, and game view through shared `SystemSpec` and evidence
+contracts. One or two development seeds and a short world are acceptable; the
+gate is integration and reproducibility, not statistical confirmation.
+The scale envelope, shared object graph, work packages, and exit criteria are
+recorded in
+[`components/miniature-whole-system-design-lab-v0.md`](components/miniature-whole-system-design-lab-v0.md).
+
+Scale-up is deferred until this slice works. Later campaigns will add optimizer
+seeds, equal-budget baselines, larger populations, longer horizons, and broader
+held-out splits one axis at a time. Seeds 701, 709, 719, 727, and 733 remain
+consumed by v1.1 and must not be reused as fresh held-out evidence. Seeds 523,
+541, and 547 remain attached to the first campaign.
 
 The next execution steps are:
 
@@ -122,11 +131,15 @@ The next execution steps are:
 4. **complete:** execute the five common held-out seeds for the three frozen
    winners and publish the cross-evaluation matrix, rank reversals, trade-offs,
    gaming, and generalization without selecting a universal winner;
-5. **synthetic slice complete:** the executable joint structural grammar now
-   spans 770 valid graphs; next bind it into a sealed campaign plan before any
-   model-backed structural run;
-6. connect the hash-verified branch comparison UI to real commit-pinned campaign/replay manifests;
-7. keep every model-backed run commit-pinned and separate from active
+5. **next:** freeze a miniature grammar spanning at least three mechanism
+   families, with node/implementation and edge/schedule variation;
+6. connect one black-box and one differentiable proposal path to the same
+   discrete validator and compact model-backed outer evaluator;
+7. publish canonical events and comparison artifacts that the game can display
+   as objective, lineage, graph difference, world activity, and observed loss;
+8. only after this integration gate, design larger replicated optimizer and
+   held-out campaigns;
+9. keep every model-backed run commit-pinned and separate from active
    development worktrees.
 
 The first closed-loop result is frozen at revision `9a10029807d5`. Its untouched

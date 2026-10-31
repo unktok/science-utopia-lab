@@ -50,13 +50,13 @@ next experiment rather than being hidden as implementation details.
 | Track | Current state | What is actually finished | Next evidence-producing step |
 |---|---|---|---|
 | Reproducible simulator | operational | local Qwen3-8B, repeated seeds, restart/provenance, longitudinal runs | keep completed v1.1 immutable while designing replicated campaigns |
-| Metric-conditioned optimization | v1.1 complete | 45/45 logical development rows are terminal, three winners were sealed before held-out use, and all 15 common held-out rows completed | replicate paths with larger valid budgets and multiple optimizer seeds |
+| Metric-conditioned optimization | v1.1 complete | 45/45 logical development rows are terminal, three winners were sealed before held-out use, and all 15 common held-out rows completed | keep frozen as the parameter-level baseline; defer scale-up until the miniature whole-system slice works |
 | Evaluation metrics | common suite, report-only semantic instrumentation, prospective objective landscape, and ObjectiveSpec compiler | executable diagnostics now sit beside versioned semantic events, missingness/gaming fixtures, a fail-closed recorder, a source-hash-bound audit of the current LossSpecs, nine metric cards/objective relations, and a constitution that requires governance, stakeholders, time, distribution, uncertainty, trade-offs, Goodhart audit, and measurement evidence before compiling future phase-specific LossSpecs; none changes the three frozen LossSpecs | wire prospective evidence into a separately preregistered campaign, validate constructs/cards, then make and seal the explicit normative ObjectiveSpec choice before compiling a new LossSpec |
-| Whole-system abstraction | first native structural mechanism beyond the legacy topology | canonical runs feed typed SystemSpec workloads, validated legacy-compatible graphs compile to sealed plans, and an exact broadcast/digest communication overlay now executes through the production simulator handler with canonical lineage, latency, fingerprinted checkpoint/resume, and default-off isolation from legacy citation | implement the next unsupported mechanism runtime, then execute separately preregistered structural campaigns after the frozen baseline closes |
-| Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | compare random, Sobol, Bayesian, and evolutionary methods under equal budgets |
-| Structural optimization | multiple production vertical slices | 145 government candidates and a separate 97-candidate communication space vary node presence, implementation, edge/fan-out presence, and latency; every candidate executes through a fingerprint-bound black-box ask/execute/loss/tell and checkpoint boundary | compare these structures under research LossSpecs after the frozen eight-parameter baseline closes |
-| Differentiable systems | not started | conceptual direction only | differentiable surrogate/relaxation after stable black-box targets and measurements |
-| Game and replay | research arcology, authoritative operations/interior/life-course layer, system sandbox, and optimization mission control | a pixel-art hub connects verified replay, the separate synthetic graph editor, and the hash-bound study snapshot; Evidence Quay, four institutional cutaways, and researcher dossiers bind activities, resources, active state, papers, reviews, and funding to cursor-bounded canonical events/frames while keeping rooms, poses, relationship layout, motion, packets, lighting, and narrative styling presentation-only | add verified collaboration/evidence navigation and connect the newly frozen winner fingerprints through the read-only adapter |
+| Whole-system abstraction | first native structural mechanisms beyond the legacy topology | canonical runs feed typed SystemSpec workloads; communication and government overlays have checkpointed causal lineage | freeze a three-plus-family miniature grammar and execute it through a compact model-backed world |
+| Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | produce one structural result-dependent proposal inside the shared miniature slice |
+| Structural optimization | multiple production vertical slices | government and communication spaces already vary node presence, implementation, edge/fan-out presence, and latency through fingerprint-bound ask/execute/loss/tell boundaries | compose a small subset with evaluation and funding/publication in the shared miniature campaign |
+| Differentiable systems | prospective synthetic-tested v0 | whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation work on synthetic fixtures | project one differentiable candidate into the same discrete miniature grammar and evaluate it in the same model-backed outer loop |
+| Game and replay | research arcology, replay, sandbox, branch comparison, and optimization observatory exist | the pixel-art hub already consumes canonical evidence while separating presentation-only choreography | bind the miniature objective, black-box/differentiable lineage, graph differences, world events, and losses into one playable research view |
 | Paper and scientific graphics | held-out result published; narrative revised | automatic evidence slice plus objective-conditioned framing, search-path interpretation, claim boundary, and Suto/Lab contrast | add replicated optimizer comparisons and parameter/mechanism path graphics when new evidence exists |
 | Compute | measured | one local Ollama endpoint at four workers gave only about 1.016x throughput | use independent endpoints/GPUs for material parallel speedup; retain seed isolation |
 
@@ -80,19 +80,19 @@ The project is deliberately not a single linear backlog.
 
 ## Immediate milestone
 
-Metric-Conditioned Optimization Study v1.1 is complete, including its common
-held-out split. The next milestone is to determine whether the observed
-objective-conditioned patterns survive a stronger optimization design:
+Metric-Conditioned Optimization Study v1.1 is complete. The next milestone is
+Miniature Whole-System Design Lab v0, which prioritizes breadth before scale:
 
-1. preregister multiple optimizer seeds and a larger valid evaluation budget;
-2. compare adaptive search with equal-budget random and Sobol baselines;
-3. report incumbent loss versus evaluation count and proposal lineage;
-4. collapse duplicate system fingerprints in institutional comparisons;
-5. broaden the objective family through the Objective Constitution boundary;
-6. seal a separate simulator-backed structural campaign over mechanism graphs.
+1. choose one versioned miniature ObjectiveSpec and its loss/diagnostics;
+2. freeze a small structural grammar with at least three mechanism families;
+3. generate result-dependent black-box and differentiable candidates;
+4. project both into the same discrete SystemSpec validator;
+5. execute them in a short, small-population, model-backed world;
+6. freeze common comparison and canonical replay artifacts;
+7. inspect the objective, search paths, graph differences, world activity, and
+   losses in the game UI.
 
-In parallel, connect the verified game views to the completed evidence package
-and continue turning the generic mechanism runner into production adapters.
-Long model campaigns must run from a clean, commit-pinned worktree, separate
-from active game and abstraction development.
+Only after this works do we increase seeds, optimizer replications, candidate
+budgets, population, or horizon. Model-backed runs remain clean,
+commit-pinned, and separate from active development worktrees.
 
