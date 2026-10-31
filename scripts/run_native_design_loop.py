@@ -22,14 +22,18 @@ def main():
     parser.add_argument('--seed', type=int, default=1301)
     parser.add_argument('--years', type=int, default=4)
     parser.add_argument('--budget', type=int, default=2)
-    parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous'], default='example')
+    parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous', 'fixed'], default='example')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
     parser.add_argument('--designer-brief', type=Path, help='additional versioned task for the LLM designer')
+    parser.add_argument('--corpus-years', type=int, help='explicit corpus horizon >= native simulation years')
+    parser.add_argument('--initial-provenance', type=Path, help='recorded upstream candidate-generation receipt')
     args = parser.parse_args()
     if args.budget < 1 or (args.proposer == 'example' and args.budget > 2):
         parser.error('positive budget; declared example has one joint graph/code proposal (budget <=2)')
     if args.proposer == 'endogenous' and args.system is None:
         parser.error('endogenous mode requires a system that actually emits design proposals')
+    if args.proposer == 'fixed' and (args.budget != 1 or args.system is None):
+        parser.error('fixed mode evaluates exactly one explicitly supplied system')
     from utopia.optimization.loss import load_loss_spec
     from utopia.optimization.native_design import NativeDesignCampaign, LLMNativeDesignProposer, propose_from_native_world
     from utopia.optimization.native_factory import LocalQwenNativeFactory
@@ -41,17 +45,20 @@ def main():
     from utopia.utils.data_utils import write_json_atomic
     from utopia.system.design_patch import digest
     brief = args.designer_brief.read_text() if args.designer_brief else ''
+    initial_provenance = json.loads(args.initial_provenance.read_text()) if args.initial_provenance else None
     loss = load_loss_spec(args.loss)
-    factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years,
-                                    experiment_binding={'loss_spec': loss})
+    factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years, corpus_years=args.corpus_years,
+                                    experiment_binding={'loss_spec': loss, 'initial_provenance': initial_provenance})
     initial = SystemSpec.from_dict(json.loads(args.system.read_text())) if args.system else legacy_world_system(seed=args.seed)
+    if initial_provenance and initial_provenance['candidate_fingerprint'] != initial.fingerprint:
+        parser.error('upstream proposal receipt and initial system differ')
     controller = NativeDesignCampaign(args.output / 'campaign', initial_system=initial,
         loss_spec=loss, seeds=[args.seed], world_binding={'source_commit': factory.source_commit,
             'model': factory.model, 'model_digest': factory.model_digest,
             'corpus_sha256': factory.corpus_sha256, 'dataset_identity': factory.dataset_identity,
-            'years': args.years, 'population': 'five-independent-balanced-researchers',
+            'years': args.years, 'corpus_years': factory.corpus_years, 'population': 'five-independent-balanced-researchers',
             'proposer': args.proposer, 'data_cache': str(args.data_cache.resolve()),
-            'designer_brief_sha256': digest(brief)})
+            'designer_brief_sha256': digest(brief), 'initial_provenance_sha256': digest(initial_provenance)})
     executor = DockerCodeExecutor()
     def example(parent, history, index, loss_spec):
         # Explicitly uses previous native loss; this deliberately limited

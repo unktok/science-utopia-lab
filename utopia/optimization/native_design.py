@@ -152,10 +152,11 @@ class LLMNativeDesignProposer:
     Calls are recorded before repair. The caller supplies a model/cache and
     source-capability instructions; generated code is not executed by this class.
     """
-    def __init__(self, model, *, instructions, receipts, max_attempts=3):
+    def __init__(self, model, *, instructions, receipts, max_attempts=3, named_edits=False, max_tokens=8192):
         if type(max_attempts) is not int or not 1 <= max_attempts <= 5:
             raise ValueError('max_attempts must be in [1,5]')
         self.model, self.instructions, self.receipts, self.max_attempts = model, instructions, Path(receipts), max_attempts
+        self.named_edits, self.max_tokens = named_edits, max_tokens
 
     def __call__(self, parent, history, index, loss_spec):
         prompt = ('Propose an executable science-system design patch, not a numeric substitute world. '
@@ -169,18 +170,43 @@ class LLMNativeDesignProposer:
             '\nPARENT:\n' + json.dumps(parent.to_dict(), ensure_ascii=False, sort_keys=True) +
             '\nDECLARED LOSS:\n' + json.dumps(loss_spec, sort_keys=True) +
             '\nPREVIOUS ACTUAL OBSERVATIONS:\n' + json.dumps(history, ensure_ascii=False, sort_keys=True))
+        if self.named_edits:
+            prompt = ('Design an executable new institution. Return exactly {schema,parent_fingerprint,changes,rationale}. '
+                'schema=scienceutopia.system-design-intent.v1. changes is a list using stable IDs, not array indices. '
+                'Allowed changes: {op:put_node,node:{mechanism_id,family,implementation,inputs:[{port_id,channel,artifact_type,required}],'
+                'outputs:[...],parameters:{...}}}; {op:artifact_type,artifact_type:{artifact_type_id}}; '
+                '{op:connect,connection:{source_mechanism,source_port,target_mechanism,target_port,channel,latency:0}}; '
+                '{op:schedule,schedule:{mechanism_id,phase,trigger:annual}}; {op:remove_node,id}; '
+                '{op:disconnect,connection:{...}}; '
+                '{op:deliver_to_researchers,source:node_id,source_port:output_port,receiver:unique_id,phase:235,latency:0} '
+                'installs the trusted typed delivery broker without any new institution algorithm; '
+                '{op:edit,edit:{op:add|replace|remove,path,value}} for arbitrary other fields. '
+                'Node defaults version=1, ports default required=true. Names cannot duplicate across a node inputs/outputs. '
+                'New source algorithms, schemas and protocols are free; these are edit operations, not institution templates. '
+                'Compile the final transaction atomically. Never import utopia/scienceutopia or third-party libraries in generated code.\n'
+                + self.instructions + '\nPARENT:\n' + json.dumps(parent.to_dict(), sort_keys=True) +
+                '\nDECLARED LOSS:\n' + json.dumps(loss_spec, sort_keys=True) +
+                '\nACTUAL HISTORY (compact, no adopted trajectories):\n' + json.dumps([
+                    {'suggestion_id': r['suggestion']['suggestion_id'], 'loss': r['observation']['loss'],
+                     'status': r['observation']['status'], 'measurements': r['observation']['metadata']['measurements'],
+                     'technical_failures': r['observation']['metadata']['technical_failures']} for r in history], sort_keys=True))
+        original_prompt = prompt
         for attempt in range(self.max_attempts):
-            patch, _ = self.model.generate(prompt=prompt, seed_ctx=('native_design_proposal', index, attempt), max_tokens=8192)
+            patch, _ = self.model.generate(prompt=prompt, seed_ctx=('native_design_proposal', index, attempt), max_tokens=self.max_tokens)
             receipt = {'index': index, 'attempt': attempt, 'prompt_sha256': digest(prompt),
                        'parent_fingerprint': parent.fingerprint, 'history_sha256': digest(history),
                        'loss_spec_sha256': loss_spec_sha256(loss_spec), 'patch': patch}
             try:
+                if self.named_edits:
+                    from utopia.system.design_intent import compile_design_intent
+                    patch = compile_design_intent(parent, patch)
+                    receipt['compiled_patch'] = patch
                 candidate = apply_design_patch(parent, patch)
                 receipt.update(status='structurally_valid-not-runtime-validated', candidate_fingerprint=candidate.fingerprint)
             except Exception as error:
                 receipt.update(status='invalid', error=str(error)[:3000], loss=None)
                 write_json_atomic(self.receipts / f'proposal-{index}-{attempt}.json', receipt, allow_nan=False)
-                prompt += '\nYOUR LAST PATCH:\n' + json.dumps(patch, sort_keys=True) + '\nACTUAL VALIDATION ERROR:\n' + str(error)[:3000]
+                prompt = original_prompt + '\nYOUR LAST PROPOSAL:\n' + json.dumps(receipt['patch'], sort_keys=True) + '\nACTUAL VALIDATION ERROR:\n' + str(error)[:3000]
                 continue
             write_json_atomic(self.receipts / f'proposal-{index}-{attempt}.json', receipt, allow_nan=False)
             return patch
