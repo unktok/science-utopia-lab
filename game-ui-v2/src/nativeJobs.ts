@@ -38,8 +38,9 @@ export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence
     if (!jobId) return;
     try {
       const job = await api(`jobs/${jobId}`);
-      item("design-job-status").textContent = job.status === "complete" ? `COMPLETE / ACTUAL NATIVE LOSS ${job.result.native_loss}` : job.status === "failed" ? "TECHNICAL FAILURE / NO LOSS ASSIGNED" : `${String(job.status).toUpperCase()} / NO MEASURED RESULT YET`;
+      item("design-job-status").textContent = job.status === "complete" ? `COMPLETE / ACTUAL NATIVE LOSS ${job.result.native_loss}` : job.status === "failed" ? "TECHNICAL FAILURE / NO LOSS ASSIGNED" : `${String(job.status).toUpperCase()} / SAVED YEAR ${job.checkpoint_year ?? 0} OF ${job.years} / NO MEASURED RESULT YET`;
       item("design-job-id").textContent = jobId;
+      item("design-job-provenance").textContent = `RUN SOURCE ${String(job.source_commit).slice(0, 12)} / DEVELOPMENT SEED ${job.seed} / ${job.years} YEARS / LOSS ${job.loss_id ?? "recorded request"}`;
       result.disabled = job.status !== "complete";
       if (job.error) error(job.error);
       if (job.status === "queued" || job.status === "running") timer = window.setTimeout(() => { void poll(); }, 2000);

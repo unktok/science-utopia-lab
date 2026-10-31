@@ -42,8 +42,8 @@ def wire_summary(cell, *, needle, required):
 def source_audit(run, loss, *, require_wire):
     from scripts.audit_native_design_loop import audit
     from utopia.optimization.native_feedback import feedback_from_native_history
-    result = audit(run, loss, 2)
     saved = json.loads((run / 'campaign/native-design-state.json').read_text())
+    result = audit(run, loss, saved['binding']['world']['years'])
     feedback = feedback_from_native_history(saved['records'])
     proposals = []
     for index, record in enumerate(saved['records'][1:], 1):

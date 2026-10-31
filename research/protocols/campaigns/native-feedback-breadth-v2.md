@@ -62,7 +62,11 @@ an LLM diagnosis/algorithm plan before generating Python, reports exact
 per-author paper-record counts, and assigns an implementation-engineer system
 role rather than the researcher's default system message. Rationale-first JSON
 ordering supports planning but is not itself evidence. Keep researcher model,
-weights, non-thinking setting, population, corpus, horizon and loss unchanged.
+weights, non-thinking setting, population, four-year corpus and loss unchanged.
+Use three native years for this separately declared probe: papers can first
+appear in year2 and delivered advice must have a subsequent researcher cycle
+in year3. This is a causal-delivery horizon requirement, not a reroll for a
+better score; do not rank its absolute counts against the two-year probes.
 Budget: initial plus one planned revision, at most three technical repairs;
 zero-output source remains technically valid. No hand-written replacement,
 activity veto or selection after an unreported behavioral reroll is permitted.

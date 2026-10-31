@@ -8,6 +8,7 @@ from __future__ import annotations
 from contextlib import contextmanager
 import fcntl
 import json
+import re
 from pathlib import Path
 import sqlite3
 import subprocess
@@ -106,10 +107,23 @@ class NativeJobQueue:
             value = evaluate_loss(request['loss_spec'], result['measurements'])
             if value['status'] != 'complete' or value['loss'] != result['native_loss']:
                 raise ValueError('job result differs from declared native measurements/loss')
+        checkpoint_year = request['years'] if row['status'] == 'complete' else 0
+        campaign = self.directory / identity / 'campaign/native-design-state.json'
+        if row['status'] == 'running' and campaign.exists():
+            state = json.loads(campaign.read_text())
+            record = state.get('pending') or next(iter(state.get('records', [])), None)
+            if record:
+                suggestion_id = record['suggestion']['suggestion_id']
+                if not re.fullmatch(r'native-design-[a-f0-9]{20}', suggestion_id):
+                    raise ValueError('invalid persisted job suggestion identity')
+                checkpoints = self.directory / identity / 'runs' / (suggestion_id + '-s' + str(request['seed'])) / 'simulation/checkpoints/native-design'
+                checkpoint_year = max([0] + [int(m.group(1)) for p in checkpoints.glob('portable_checkpoint_year_*.json.gz')
+                    if (m := re.fullmatch(r'portable_checkpoint_year_(\d+)\.json\.gz', p.name)) and 1 <= int(m.group(1)) <= request['years']])
         return {'job_id': identity, 'status': row['status'], 'request_sha256': row['request_hash'],
             'source_commit': row['source_commit'], 'parent_fingerprint': SystemSpec.from_dict(request['parent_system']).fingerprint,
             'candidate_fingerprint': SystemSpec.from_dict(request['system']).fingerprint,
             'seed': request['seed'], 'years': request['years'], 'result': result, 'error': row['error'],
+            'checkpoint_year': checkpoint_year, 'loss_id': request['loss_spec']['id'],
             'seed_role': 'development', 'model_weights_trained': False, 'same_society_migration': False}
 
     def evidence(self, identity):
