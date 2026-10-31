@@ -1,0 +1,530 @@
+{
+  "schema": "scienceutopia.generative-lab-compact-result.v1",
+  "source": {
+    "commit": "c035d1da793dff2bb92383b2f7045ef78eb728f2",
+    "dirty_development": false,
+    "files": {
+      "utopia/system/program_proposals.py": "dfd529e63ef5e2b665e7b388c7622cacf2749519173646e0068f72b094a0333d",
+      "utopia/system/program_world.py": "12a15c1e8fa8018cb3817580e1800fe6b2890ec75fc7ed477ac2ada4efd05ba0",
+      "utopia/system/programs.py": "ed52bd442259a8253e16324268fc8ce96879c1e054fe6a16e6e532ce8f0f0a18",
+      "utopia/optimization/generative_system.py": "d06a70f7a83fe80cd091c14163c3da4cea68ad576541f27cd60cc9d590aa89a6",
+      "utopia/optimization/program_search.py": "b3f906189bffae7269afbc8bac7d45fdc733e6b60c95da8b9e11d757290bdfdf",
+      "utopia/optimization/blackbox.py": "c8d65fbafdf50d2f73551b65f61d99f68ebb6833ab4028bdbe8bfc9ca1c0ab12",
+      "utopia/optimization/loss.py": "6c6cf28d2ee8f133604bbb306855c5ba6773181797a7b1b04ec1adfb0db5668a",
+      "utopia/replay/program_lab.py": "1b50079e6e83fee4b7ace309c3b9a6145c80751dfa8725ec5ca9213ab30b707e",
+      "utopia/system/model.py": "9d34d759ea5ef608c1f5c088a30130a62ed293edcee7ea4ed407dd23d22f4b51",
+      "utopia/system/runtime.py": "5546a23a6cb113c437f2b675a2d6a6454580d6b3389655dba824b8effabfeae2",
+      "utopia/system/validation.py": "1807f367e5913ac36cbd0340bfe7ea2bedf01cafafaff636b68a625dc4918f7d",
+      "scripts/run_generative_lab.py": "b928c439eaccbda0d1732e1e7eacb3e065844f84fc429f466f56d41c28160c79"
+    },
+    "started_utc": "2026-10-31T01:57:45.026447+00:00",
+    "runtime": {
+      "python": "3.11.15 (main, Jun 11 2026, 04:04:09) [Clang 22.1.3 ]",
+      "torch": "2.9.0",
+      "torch_device": "cpu",
+      "torch_threads": 1,
+      "deterministic_algorithms": true
+    }
+  },
+  "config": {
+    "budget": 5,
+    "steps": 24,
+    "periods": 3,
+    "seeds": [
+      811,
+      821
+    ],
+    "population": 6
+  },
+  "evidence_role": "miniature-development-not-held-out",
+  "backend": "numeric-program-world-v1",
+  "qwen_in_autograd": false,
+  "elapsed_seconds": 16.458376292022876,
+  "qwen_receipt": {
+    "request_sha256": "72024eef6cc20b71d1e855ad624ff0417fe9d32bcf93b382a820bb84e81ac45e",
+    "response_sha256": "ed13026e00b6fb5def497b3e4e25e42419e7018e81071575b3b657a6d60e4206",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "total_duration_ns": 12995444625,
+    "prompt_eval_count": 423,
+    "eval_count": 553
+  },
+  "gradient_maximum_absolute_error": 1.3833933998341763e-11,
+  "baseline": {
+    "production": -0.15144981838403238,
+    "burden": 0.9864008526006003
+  },
+  "selected": [
+    {
+      "objective": "production",
+      "method": "blackbox",
+      "loss": -0.15144981838403238,
+      "system_fingerprint": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+      "mechanism_count": 5,
+      "edge_count": 5,
+      "mechanisms": [
+        {
+          "id": "research",
+          "family": "research",
+          "program_sha256": "73c48164aad8f70dcab35b5c4f322fcb5fa400f0a5d080483e76c5c3fdb4a29c"
+        },
+        {
+          "id": "evaluation",
+          "family": "evaluation",
+          "program_sha256": "eb396485357ed61105221a1d53765e8d049cc51af3df76f4117f38b5752decfc"
+        },
+        {
+          "id": "publication",
+          "family": "publication",
+          "program_sha256": "7d643040b0de581d9f8dca31187d16745f1dd51782aaf58e07661871c3df5f84"
+        },
+        {
+          "id": "funding",
+          "family": "funding",
+          "program_sha256": "f706d8daa35488a46578b7419e1b404cfe2033d9276597c47f0f383fc5a260ec"
+        },
+        {
+          "id": "generated-commons",
+          "family": "custom",
+          "program_sha256": "e8c0732bc51f123d343e3de1c3c3cc9c157c0ee6509c82e5a472294b0f069498"
+        }
+      ],
+      "schedule": [
+        "research",
+        "evaluation",
+        "publication",
+        "funding",
+        "generated-commons"
+      ],
+      "metrics_mean": {
+        "production": 0.15144981838403238,
+        "knowledge": 0.4629929971875357,
+        "novelty": 0.20223414892303448,
+        "resource_dispersion": 0.1461848493796986,
+        "burden": 0.9864008526006003
+      }
+    },
+    {
+      "objective": "production",
+      "method": "gradient",
+      "loss": -0.18533358019433288,
+      "system_fingerprint": "2d5b5fd8724acc9bacfc8459196b63fa4b17780183d0e754023b6f720c7da882",
+      "mechanism_count": 5,
+      "edge_count": 5,
+      "mechanisms": [
+        {
+          "id": "research",
+          "family": "research",
+          "program_sha256": "3bcffc2788c12ece237ac740083b80635f1c0cfefc6f9e5200cdb7efd5026d0a"
+        },
+        {
+          "id": "evaluation",
+          "family": "evaluation",
+          "program_sha256": "82d7f28a51af2dd92768c9a83df95f726a97f99ee3e1501eb613c54b2ad770a0"
+        },
+        {
+          "id": "publication",
+          "family": "publication",
+          "program_sha256": "9e47fcd3e7207664e1f0c521917b0790cdd5ae9e73d3642f41ef094f97576ade"
+        },
+        {
+          "id": "funding",
+          "family": "funding",
+          "program_sha256": "75c5de024a4682f76ae1fdb05e12d9002dc4ddddf0ca0135dd6bad6705567bb3"
+        },
+        {
+          "id": "generated-commons",
+          "family": "custom",
+          "program_sha256": "8925b1e92da2ee3f6ece575423c9403cb28a2fb3c7b81c10970f5d49a4d0f054"
+        }
+      ],
+      "schedule": [
+        "research",
+        "evaluation",
+        "publication",
+        "funding",
+        "generated-commons"
+      ],
+      "metrics_mean": {
+        "production": 0.18533358019433288,
+        "knowledge": 0.5508938966741694,
+        "novelty": 0.23473987179568,
+        "resource_dispersion": 0.25623799227061705,
+        "burden": 3.8244255735401067
+      }
+    },
+    {
+      "objective": "production",
+      "method": "hybrid",
+      "loss": -0.1853745681881463,
+      "system_fingerprint": "e381f411209d50377b12d6094d209a8e03c88c8a707e30a6d8b7ff1be3f88c8e",
+      "mechanism_count": 6,
+      "edge_count": 6,
+      "mechanisms": [
+        {
+          "id": "research",
+          "family": "research",
+          "program_sha256": "3bcffc2788c12ece237ac740083b80635f1c0cfefc6f9e5200cdb7efd5026d0a"
+        },
+        {
+          "id": "evaluation",
+          "family": "evaluation",
+          "program_sha256": "82d7f28a51af2dd92768c9a83df95f726a97f99ee3e1501eb613c54b2ad770a0"
+        },
+        {
+          "id": "publication",
+          "family": "publication",
+          "program_sha256": "9e47fcd3e7207664e1f0c521917b0790cdd5ae9e73d3642f41ef094f97576ade"
+        },
+        {
+          "id": "funding",
+          "family": "funding",
+          "program_sha256": "75c5de024a4682f76ae1fdb05e12d9002dc4ddddf0ca0135dd6bad6705567bb3"
+        },
+        {
+          "id": "generated-commons",
+          "family": "custom",
+          "program_sha256": "8925b1e92da2ee3f6ece575423c9403cb28a2fb3c7b81c10970f5d49a4d0f054"
+        },
+        {
+          "id": "commons-2a5b5849",
+          "family": "custom",
+          "program_sha256": "1928114aa6a4c9db3ef910a7944ae2c872748f1194289e464432f2dff47d78f5"
+        }
+      ],
+      "schedule": [
+        "research",
+        "evaluation",
+        "publication",
+        "funding",
+        "generated-commons",
+        "commons-2a5b5849"
+      ],
+      "metrics_mean": {
+        "production": 0.1853745681881463,
+        "knowledge": 0.5509948839693916,
+        "novelty": 0.2347822473837325,
+        "resource_dispersion": 0.25989774917441244,
+        "burden": 4.385413670647562
+      }
+    },
+    {
+      "objective": "burden",
+      "method": "blackbox",
+      "loss": 0.9144228976556337,
+      "system_fingerprint": "b93737e1021c1ccfcdefb9b1220b49f8116ec8b3e1cfff5776f4ff0fa7696ca4",
+      "mechanism_count": 5,
+      "edge_count": 7,
+      "mechanisms": [
+        {
+          "id": "research",
+          "family": "research",
+          "program_sha256": "73c48164aad8f70dcab35b5c4f322fcb5fa400f0a5d080483e76c5c3fdb4a29c"
+        },
+        {
+          "id": "evaluation",
+          "family": "evaluation",
+          "program_sha256": "eb396485357ed61105221a1d53765e8d049cc51af3df76f4117f38b5752decfc"
+        },
+        {
+          "id": "publication",
+          "family": "publication",
+          "program_sha256": "7d643040b0de581d9f8dca31187d16745f1dd51782aaf58e07661871c3df5f84"
+        },
+        {
+          "id": "funding",
+          "family": "funding",
+          "program_sha256": "f706d8daa35488a46578b7419e1b404cfe2033d9276597c47f0f383fc5a260ec"
+        },
+        {
+          "id": "generated-commons",
+          "family": "custom",
+          "program_sha256": "e8c0732bc51f123d343e3de1c3c3cc9c157c0ee6509c82e5a472294b0f069498"
+        }
+      ],
+      "schedule": [
+        "research",
+        "evaluation",
+        "publication",
+        "funding",
+        "generated-commons"
+      ],
+      "metrics_mean": {
+        "production": 0.14860476458950025,
+        "knowledge": 0.4505581762718016,
+        "novelty": 0.1983389629510345,
+        "resource_dispersion": 0.15626006447652704,
+        "burden": 0.9144228976556337
+      }
+    },
+    {
+      "objective": "burden",
+      "method": "gradient",
+      "loss": 0.16694775931055958,
+      "system_fingerprint": "31e4268d63e02c3a70b5622711e5f35ea5c8de518e718d43b67a09dc3b17491d",
+      "mechanism_count": 4,
+      "edge_count": 3,
+      "mechanisms": [
+        {
+          "id": "research",
+          "family": "research",
+          "program_sha256": "85d1259e70a98f8ad3a645362ee7bc5ed6845ce748cf91c316debfcfb5965e87"
+        },
+        {
+          "id": "evaluation",
+          "family": "evaluation",
+          "program_sha256": "63e35e8946e09b17a406330f925fea3488a330a31f66e9708892096fa05804bf"
+        },
+        {
+          "id": "publication",
+          "family": "publication",
+          "program_sha256": "b445ea8f0c6acaaa9c7b6a90e48eca2c39dce5eda82f20856885ab424482381a"
+        },
+        {
+          "id": "generated-commons",
+          "family": "custom",
+          "program_sha256": "d80c9c7aad5b39ea5e665fed8569893f56a8dacef3046ab540589a687548b538"
+        }
+      ],
+      "schedule": [
+        "evaluation",
+        "research",
+        "publication",
+        "generated-commons"
+      ],
+      "metrics_mean": {
+        "production": 0.09071236126862453,
+        "knowledge": 0.3204611861340124,
+        "novelty": 0.14505789111849782,
+        "resource_dispersion": 0.052337740912017476,
+        "burden": 0.16694775931055958
+      }
+    },
+    {
+      "objective": "burden",
+      "method": "hybrid",
+      "loss": 0.13772076237328462,
+      "system_fingerprint": "bb543df68fecc663fd81b19f66573bfc93793ba90f71c9a56eac08af3d42adc0",
+      "mechanism_count": 4,
+      "edge_count": 3,
+      "mechanisms": [
+        {
+          "id": "research",
+          "family": "research",
+          "program_sha256": "85d1259e70a98f8ad3a645362ee7bc5ed6845ce748cf91c316debfcfb5965e87"
+        },
+        {
+          "id": "evaluation",
+          "family": "evaluation",
+          "program_sha256": "63e35e8946e09b17a406330f925fea3488a330a31f66e9708892096fa05804bf"
+        },
+        {
+          "id": "publication",
+          "family": "publication",
+          "program_sha256": "b445ea8f0c6acaaa9c7b6a90e48eca2c39dce5eda82f20856885ab424482381a"
+        },
+        {
+          "id": "generated-commons",
+          "family": "custom",
+          "program_sha256": "d80c9c7aad5b39ea5e665fed8569893f56a8dacef3046ab540589a687548b538"
+        }
+      ],
+      "schedule": [
+        "evaluation",
+        "generated-commons",
+        "publication",
+        "research"
+      ],
+      "metrics_mean": {
+        "production": 0.08617763184320244,
+        "knowledge": 0.3103728185602139,
+        "novelty": 0.14093880927090824,
+        "resource_dispersion": 0.05243854580792336,
+        "burden": 0.13772076237328462
+      }
+    }
+  ],
+  "development_cross_scoring": [
+    {
+      "selected_under": "production",
+      "method": "blackbox",
+      "system_fingerprint": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+      "development_losses": {
+        "production": -0.15144981838403238,
+        "burden": 0.9864008526006003
+      }
+    },
+    {
+      "selected_under": "production",
+      "method": "gradient",
+      "system_fingerprint": "2d5b5fd8724acc9bacfc8459196b63fa4b17780183d0e754023b6f720c7da882",
+      "development_losses": {
+        "production": -0.18533358019433288,
+        "burden": 3.8244255735401067
+      }
+    },
+    {
+      "selected_under": "production",
+      "method": "hybrid",
+      "system_fingerprint": "e381f411209d50377b12d6094d209a8e03c88c8a707e30a6d8b7ff1be3f88c8e",
+      "development_losses": {
+        "production": -0.1853745681881463,
+        "burden": 4.385413670647562
+      }
+    },
+    {
+      "selected_under": "burden",
+      "method": "blackbox",
+      "system_fingerprint": "b93737e1021c1ccfcdefb9b1220b49f8116ec8b3e1cfff5776f4ff0fa7696ca4",
+      "development_losses": {
+        "production": -0.14860476458950025,
+        "burden": 0.9144228976556337
+      }
+    },
+    {
+      "selected_under": "burden",
+      "method": "gradient",
+      "system_fingerprint": "31e4268d63e02c3a70b5622711e5f35ea5c8de518e718d43b67a09dc3b17491d",
+      "development_losses": {
+        "production": -0.09071236126862453,
+        "burden": 0.16694775931055958
+      }
+    },
+    {
+      "selected_under": "burden",
+      "method": "hybrid",
+      "system_fingerprint": "bb543df68fecc663fd81b19f66573bfc93793ba90f71c9a56eac08af3d42adc0",
+      "development_losses": {
+        "production": -0.08617763184320244,
+        "burden": 0.13772076237328462
+      }
+    }
+  ],
+  "projection_gaps": {
+    "production": 0.0006064951850078271,
+    "burden": 0.16375387034769456
+  },
+  "mutation_showcase": [
+    {
+      "mutation": {
+        "operation": "program",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "mechanism_id": "research",
+        "program_sha256": "de3e8bdb5238923ffd228a393204de4a500936e0e5db0cf99dd40698b56bd4b2",
+        "child": "8ba542c0298be43b208dad0de7f76b96cccef0c28c4908507edf4b797b53ff2b"
+      },
+      "outer_loss": -0.14928714998792314
+    },
+    {
+      "mutation": {
+        "operation": "add-node",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "mechanism_id": "commons-93b53bfe",
+        "program_sha256": "dbc76550bc5bc1bf9ecb0d0e15237fa6b48d17f670bae0afc53a23bf79857f33",
+        "child": "89cea27ac6ce55107f80b63ac564e259061c424d8fede7b90c5adac03ec020c5"
+      },
+      "outer_loss": -0.15144981838403238
+    },
+    {
+      "mutation": {
+        "operation": "remove-node",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "mechanism_id": "publication",
+        "child": "d53848ab235f6418fdbfcc4c2b430fc1cccc1d417972289adac611dd4af6d995"
+      },
+      "outer_loss": -0.14335663723399772
+    },
+    {
+      "mutation": {
+        "operation": "add-edge",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "edge": [
+          "research",
+          "publication"
+        ],
+        "child": "b9314090fcb1b1240033f61d87e6e67ffcab1e6705f7d67d35d564cab1295916"
+      },
+      "outer_loss": -0.15560817588204653
+    },
+    {
+      "mutation": {
+        "operation": "remove-edge",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "edge": [
+          "evaluation",
+          "publication"
+        ],
+        "child": "631031b7db71b4941d46d8800781d9f9fcad02b98c4d774f85df04e11a6dfcc0"
+      },
+      "outer_loss": -0.14639029071111645
+    },
+    {
+      "mutation": {
+        "operation": "delay",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "edge": [
+          "evaluation",
+          "publication"
+        ],
+        "child": "f6181b7bd1de79269ce2937b77c357be18f8c8646445b644413b9d6b6b63c48c"
+      },
+      "outer_loss": -0.14961072026513542
+    },
+    {
+      "mutation": {
+        "operation": "order",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "order": [
+          "evaluation",
+          "research",
+          "publication",
+          "funding",
+          "generated-commons"
+        ],
+        "child": "20633eeeb24cbb97a959e0c25a5057a11dbcdbf3957c587684687b917cb325b8"
+      },
+      "outer_loss": -0.1418708731896543
+    },
+    {
+      "mutation": {
+        "operation": "parameter",
+        "parent": "e78e807c2366c28e6e7e0f55bb4937864badc68e9e702da8510a87f0407f1846",
+        "mechanism_id": "research",
+        "program_sha256": "a6dca67a215a0c7796782f43d31e09af7c53fee13853f242e204c853b9caae93",
+        "child": "d437dd73ff46d3d9d63ccaec2282a71516d81f0f57ce4432808a7a377b0e8bdb"
+      },
+      "outer_loss": -0.16241003060364556
+    }
+  ],
+  "reproduction": {
+    "status": "exact-match",
+    "compared": [
+      "programs",
+      "systems",
+      "losses",
+      "metrics",
+      "gradients",
+      "trajectories",
+      "proposal-lineage",
+      "mutation-showcase"
+    ],
+    "excluded": [
+      "wall-time",
+      "started-utc",
+      "completed-utc"
+    ]
+  },
+  "raw_artifacts": {
+    "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generative-program-world-v1/outputs/generative-lab-v1-qwen",
+    "files": {
+      "report.json": "69c9b0ed8614c8e691244fd12e7092a2b55ef6ebaa319f9fef73a58bf8576a33",
+      "viewer.json": "9369ecdde95321d62b9f8171f41503ec84e6f8dd63c3f18c8b8129cbbc64e389"
+    },
+    "reproduction_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/generative-program-world-v1/outputs/generative-lab-v1-qwen-reproduction",
+    "reproduction_files": {
+      "report.json": "f9ff5883b8f9d17e67c3ea28dac3fd922dbafdf1fd66c14b814c1e56c586c750",
+      "viewer.json": "1d2bdb33176e022c20c989c11b4d59d961f9d687230e3f4fde0a0cf50f9d0101"
+    },
+    "qwen-proposal.raw.json": "e147666092e1b3833da935fc6f6d9d4abc759e0ccaf4ec379d109ef26ff944d2"
+  }
+}

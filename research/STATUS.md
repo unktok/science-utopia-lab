@@ -24,6 +24,16 @@ as the base simulator's contribution rather than repeated as this project's
 main claim. Decision 0020 records the revised claim boundary and next
 experiment.
 
+A separate miniature backend now generates new numeric mechanism programs
+and custom nodes, mutates graph/process structure, and differentiates the
+complete relaxed recurrent world. A clean recorded run at `c035d1d` used a
+Qwen3-8B-generated SignalBoost rule and initial attributes under production and
+burden losses; frozen-input reproduction and independent discrete recomputation
+passed. This is a new executable numeric model. The full original Qwen-agent
+simulator, its token generation, and arbitrary generated institutions are not
+yet combined in one differentiable execution path. See the
+[recorded result](results/generative-program-world-v1.md).
+
 Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
 Remote: `unktok/science-utopia-lab`
@@ -53,8 +63,8 @@ Remote: `unktok/science-utopia-lab`
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
 | optimization continuum | synthetic-tested common boundary | parameters (6 raw variables), mechanism configuration (16), and node/edge structure (26) are nested over one six-family template; black-box, gradient, and hybrid methods share projection and opaque outer evaluation; schedule/latency and model-backed execution remain open |
 | generative mechanism programs | executable numeric miniature | typed ASTs encode input, parameter, memory and update rules; search synthesizes new rules and custom nodes, changes edges/delays/order, and can remove every institutional node; generated programs also run/checkpoint in the existing generic graph runtime |
-| direct whole-world differentiation | executable numeric miniature | autograd traverses complete recurrent agent/WorldSpec transitions; six parameter/rule/node/edge/delay/schedule gradient groups pass central differences; hard projection and outer evaluation share the numeric transition equations; full legacy Qwen simulator and token generation remain outside autograd |
-| generative lab viewer | implemented, recorded source execution pending | checksum-bound events, generated rules, graph/process, agent state and search paths load into `game-ui-v2/generative.html`; local Qwen program/attribute proposal adapter is implemented but recorded execution is still pending |
+| direct whole-world differentiation | executable numeric miniature | autograd traverses complete recurrent agent/world transitions; six parameter/rule/node/edge/delay/schedule gradient groups pass representative central differences; hard projection and outer evaluation share the numeric transition equations; full legacy Qwen simulator and token generation remain outside autograd |
+| generative lab viewer | recorded and browser-verified | checksum-bound events, generated SignalBoost rule, graph/process, six-agent state and search paths load into `game-ui-v2/generative.html`; two losses × four selected-system views; Chrome verification passed with zero exceptions/failed requests and no mobile overflow |
 | game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |
 
 ## Metric-conditioned study execution snapshot
@@ -116,6 +126,12 @@ gate is integration and reproducibility, not statistical confirmation.
 The scale envelope, shared object graph, work packages, and exit criteria are
 recorded in
 [`components/miniature-whole-system-design-lab-v0.md`](components/miniature-whole-system-design-lab-v0.md).
+
+The new Generative Program World completes a bounded rule-generation,
+structural/process optimization, direct relaxed-world differentiation, canonical
+evidence and viewing slice. It does not complete this broader milestone:
+ObjectiveSpec compilation, richer artifact protocols, arbitrary-program
+integration with the original Qwen-agent backend and city intervention remain.
 
 Scale-up is deferred until this slice works. Later campaigns will add optimizer
 seeds, equal-budget baselines, larger populations, longer horizons, and broader

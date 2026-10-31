@@ -21,6 +21,13 @@ black-box / differentiable surrogate / hybrid とする。三つの自由度と�
 projection・外側評価へ通すsynthetic common boundaryは実装済み。schedule/latencyの
 relaxationとmodel-backed outer executionは未完である。
 
+続くDecision 0023で、生成可能な機構DSLと新しい数値world backendを実装した。
+ここでは新規AST/custom node生成、graph/latency/order変更、world全体の連続緩和に
+対するbackpropagation、離散評価、canonical viewを2目的・2development worldsで
+実行・再現した。Qwenは機構規則と初期特徴を生成する。この数値sliceの完了と、
+元のlongitudinal Qwen-agent simulatorへの任意機構接続・微分可能化は区別する。
+後者とObjectiveSpecの統合は次の課題であり、scale-upより先に進める。
+
 ## Phase 0 — 再現可能なローカル基盤（完了・維持）
 
 成果物:

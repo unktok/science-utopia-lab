@@ -2,6 +2,11 @@
 
 Status: synthetic-tested common boundary; model-backed outer integration pending
 
+Later increment: [Generative Program World v1](../../components/generative-program-world-v1.md)
+implements generated institution ASTs and a recurrent numeric simulation,
+including schedule/latency relaxation and direct whole-rollout gradients.
+The original continuum adapter below remains its earlier synthetic proof.
+
 Decision: [0022](../../decisions/0022-two-axis-system-optimization-continuum.md)
 
 ## The map

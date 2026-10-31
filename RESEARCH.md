@@ -55,7 +55,21 @@
 - 指標の改善を科学そのものの改善と同一視しない。Goodhart 化、代理指標の攻略、モデル固有の癖を常に検査する。
 - 上流 ScienceUtopia との差分、モデル、データ revision、実行環境、推論 backend を記録する。
 
-## 現在地
+## 現在地（2026-10-31）
+
+固定topologyのQwen3-8B版では、目的関数ごとの閉ループ探索と共通held-out比較まで
+完了した。別の小規模数値backendでは、新しい機構をASTプログラムとして生成し、
+node/edge、遅延、処理順序を変更して実行するところまで進んだ。そのworld全体の
+連続緩和に対するbackpropagationも実行・数値差分検証済みである。
+
+Qwenが生成したSignalBoost規則と初期研究者特徴を凍結し、production/burdenの
+2目的、6人、3期、2development worldsで探索・離散評価・再現確認・game表示を
+完了した。元のlongitudinal Qwen-agent simulatorへの任意機構接続と、Qwenの
+token生成まで含めた微分可能化は未完である。
+[今回の結果](research/results/generative-program-world-v1.md)と
+[最新の能力表](research/STATUS.md)を参照する。
+
+## 基礎実験の履歴（2026-10-27以降）
 
 2026-10-27時点で、Qwen3-8Bのローカル実行、seed反復harness、Metric
 Constitution、protected-slice measurement、funding reliability、4年fidelity、

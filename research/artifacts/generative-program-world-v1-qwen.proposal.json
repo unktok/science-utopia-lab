@@ -1,0 +1,177 @@
+{
+  "proposal": {
+    "label": "SignalBoost",
+    "rationale": "Researchers with higher quality and novelty signals gain more access to shared resources.",
+    "effects": {
+      "allocation": 1.5,
+      "access": 1.8,
+      "learning": 1.2,
+      "effort": -0.5
+    },
+    "world": {
+      "quality": [
+        0.8,
+        0.5,
+        0.3,
+        0.9,
+        0.2,
+        0.6
+      ],
+      "novelty": [
+        0.4,
+        0.7,
+        0.9,
+        0.1,
+        0.5,
+        0.3
+      ],
+      "resources": [
+        0.6,
+        0.2,
+        0.8,
+        0.4,
+        0.1,
+        0.5
+      ],
+      "knowledge": [
+        0.3,
+        0.9,
+        0.5,
+        0.7,
+        0.4,
+        0.2
+      ]
+    },
+    "program": {
+      "schema": "scienceutopia.mechanism-program.v1",
+      "inputs": {
+        "quality": "vector",
+        "novelty": "vector",
+        "resources": "vector",
+        "knowledge": "vector",
+        "signal": "vector"
+      },
+      "parameters": {
+        "gain": {
+          "initial": 0.7,
+          "minimum": -2,
+          "maximum": 2
+        },
+        "bias": {
+          "initial": -0.1,
+          "minimum": -2,
+          "maximum": 2
+        }
+      },
+      "state": {
+        "memory": 0.0
+      },
+      "output": {
+        "op": "add",
+        "args": [
+          {
+            "op": "mul",
+            "args": [
+              {
+                "input": "quality"
+              },
+              {
+                "param": "gain"
+              }
+            ]
+          },
+          {
+            "op": "mul",
+            "args": [
+              {
+                "input": "signal"
+              },
+              {
+                "param": "bias"
+              }
+            ]
+          }
+        ]
+      },
+      "updates": {
+        "memory": {
+          "op": "add",
+          "args": [
+            {
+              "state": "memory"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "input": "novelty"
+                },
+                {
+                  "const": 0.3
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "world": {
+    "quality": [
+      0.8,
+      0.5,
+      0.3,
+      0.9,
+      0.2,
+      0.6
+    ],
+    "novelty": [
+      0.4,
+      0.7,
+      0.9,
+      0.1,
+      0.5,
+      0.3
+    ],
+    "resources": [
+      0.6,
+      0.2,
+      0.8,
+      0.4,
+      0.1,
+      0.5
+    ],
+    "knowledge": [
+      0.3,
+      0.9,
+      0.5,
+      0.7,
+      0.4,
+      0.2
+    ],
+    "schema": "scienceutopia.program-world.v1",
+    "population": 6,
+    "seed": 811,
+    "source": {
+      "kind": "local-qwen-generated-attributes",
+      "receipt": {
+        "request_sha256": "72024eef6cc20b71d1e855ad624ff0417fe9d32bcf93b382a820bb84e81ac45e",
+        "response_sha256": "ed13026e00b6fb5def497b3e4e25e42419e7018e81071575b3b657a6d60e4206",
+        "model": "qwen3:8b",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+        "total_duration_ns": 12995444625,
+        "prompt_eval_count": 423,
+        "eval_count": 553
+      }
+    }
+  },
+  "receipt": {
+    "request_sha256": "72024eef6cc20b71d1e855ad624ff0417fe9d32bcf93b382a820bb84e81ac45e",
+    "response_sha256": "ed13026e00b6fb5def497b3e4e25e42419e7018e81071575b3b657a6d60e4206",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "total_duration_ns": 12995444625,
+    "prompt_eval_count": 423,
+    "eval_count": 553
+  }
+}

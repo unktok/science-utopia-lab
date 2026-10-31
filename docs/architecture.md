@@ -20,10 +20,19 @@ flowchart LR
     A --> E[Held-out evaluation metrics]
 ```
 
-The general graph runtime is still in progress. Today, the legacy compiler
-executes a restricted fixed-topology `SystemSpec`; the persistent campaign
-controller closes ask/register/run/observe/tell over that executable subspace.
-The replay/game path is an implemented presentation foundation.
+The generic graph runtime executes registered mechanism graphs with typed
+ports, schedules, latency, state, checkpoints and canonical events. The legacy
+compiler and full Qwen-agent simulator support a narrower executable topology
+and explicit prospective overlays. The persistent campaign controller closes
+ask/register/run/observe/tell over that subspace.
+
+A second backend, `program.numeric.v1`, executes generated numeric mechanism
+ASTs in a small recurrent agent world. It supports program/node/edge/process
+generation, gradient-free search and direct differentiation through the
+complete relaxed numeric rollout. Qwen can propose frozen programs and initial
+attributes, but Qwen token generation stays outside autograd. Arbitrary
+program execution in the original full Qwen-agent simulator remains an
+integration gap. See [Generative Program World](../research/components/generative-program-world-v1.md).
 
 ## Packages and responsibilities
 
@@ -36,6 +45,7 @@ The replay/game path is an implemented presentation foundation.
 | `utopia/experiments/` | upstream and legacy experiment drivers |
 | `utopia/analysis/` | numerical summaries and release validation |
 | `game-ui/` | presentation-only local replay viewer |
+| `game-ui-v2/generative.html` | recorded numeric worlds, generated rules/graphs, search paths and canonical evidence |
 | `research/specs/` | versioned schemas and concrete study definitions |
 | `outputs/` | ignored raw run artifacts |
 
@@ -72,6 +82,9 @@ decisions independently of the Python replay projector.
   state.
 - Add a viewer by consuming canonical replay rather than simulator internals.
 - Add an evaluation metric only with an explicit data split and version.
+- Create new numeric mechanisms as validated AST data for the generic program
+  interpreter; add a richer world observation/effect protocol explicitly when
+  the existing numeric vocabulary is insufficient.
 
 ## First closed-loop execution
 

@@ -74,6 +74,23 @@ a whole. The common template still lacks schedule/latency relaxation, and the
 outer evaluator in this checkpoint is synthetic rather than the miniature
 Qwen-backed simulator.
 
+## Later checkpoint: generated institution programs and direct world gradients
+
+[Generative Program World v1](generative-program-world-v1.md) now adds an
+executable institution DSL and generation of new ASTs/custom nodes, graph and
+process mutation, and a complete recurrent numeric world that supports
+backpropagation through parameters, rule choice, nodes, edges, latency and
+schedule. Qwen generated one actual program and initial attributes; two losses,
+discrete projection/outer evaluation, exact frozen-input reproduction and a
+browser evidence view were exercised at clean commit `c035d1d`.
+
+This is a new numeric backend rather than arbitrary-program execution in the
+full original longitudinal Qwen-agent simulator. It completes the numeric
+generation/differentiation/evidence slice and leaves the original ObjectiveSpec,
+richer artifact and native Qwen execution integration gate open. The
+[recorded result](../results/generative-program-world-v1.md) lists both the
+observed trade-offs and remaining boundaries.
+
 ## Minimum structural grammar
 
 The grammar must include evaluation and at least two additional families from
