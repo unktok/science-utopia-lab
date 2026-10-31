@@ -90,8 +90,14 @@ score-function route updates declared continuous design coordinates from native
 losses, with durable per-draw/batch records. This is not native-world autograd.
 Joint producer/consumer execution, source replacement, result-conditioned graph
 changes, pending resume and native-derived gradient costs pass deterministic QA.
-Live evidence for the new two-candidate loop is recorded separately from the
-previous message-delivery probe; see [design/commands](components/native-design-loops-v1.md).
+The clean two-candidate local-Qwen native loop completed in 1,077.93 seconds:
+baseline loss -4, source/protocol/wiring candidate -2, so the baseline remains
+incumbent. Actual domain losses, code/image receipts, lineage, kernel restore,
+canonical replay and response-journal integrity independently reverified.
+There were 302 model responses, no model retries/failures, and no implicit
+policy veto. This is a developer-authored engineering count objective, not LLM
+invention or improved scientific quality; see the [recorded result](results/native-joint-design-pilot-v1.md)
+and [design/commands](components/native-design-loops-v1.md).
 Replay/design-path exports are available with explicit development/presentation-
 pending metadata, not a released city campaign source. An initial endogenous
 proposal bridge is QA-tested: a native institution can observe its SystemSpec,

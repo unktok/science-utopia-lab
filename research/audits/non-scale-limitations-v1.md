@@ -4,6 +4,14 @@ Updated: 2026-10-31. This inventory deliberately excludes bigger populations,
 more seeds, longer runs and larger search budgets. Those cannot repair the
 abstraction/integration limitations below.
 
+Implementation update: [Native design breadth](../milestones/2026-10-31-native-design-breadth.md)
+supersedes the current-status parts of this earlier inventory. Native lifecycle
+integration, joint source/protocol/wiring edits, durable native design campaigns
+and a first endogenous proposal bridge now exist; live LLM joint-design discovery,
+full native differentiation, new scientific activities and game installation
+remain separate gaps. Keep the older findings below as historical failure and
+method-boundary evidence, not a claim that subsequent integration never happened.
+
 The target is objective-conditioned design of an entire science system:
 algorithms and institutional memory, which institutions exist, new protocols,
 their processes and interactions, and researcher behavior. Parameters,

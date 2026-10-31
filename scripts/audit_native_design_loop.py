@@ -21,6 +21,7 @@ def audit(run, loss, years):
     from utopia.replay.projector import replay
     from utopia.runtime.checkpointing import read_portable_checkpoint
     from utopia.system import SystemSpec
+    from utopia.system.code_mechanisms import sha as code_sha
     from utopia.system.native_kernel import NativeScienceKernel
     from utopia.utils.data_utils import file_sha256
 
@@ -45,6 +46,17 @@ def audit(run, loss, years):
             kernel = NativeScienceKernel(spec, checkpoint=state['native_system'])
             if kernel.last_year != years or kernel.to_dict()['event_stream_hash'] != evidence['event_stream_hash']:
                 raise ValueError('native checkpoint year or event hash mismatch')
+            code_receipts = []
+            for node in spec.mechanisms:
+                if node.implementation != 'code.python.v1':
+                    continue
+                receipts = [e for e in kernel.events if e.event_type == 'generated.code_executed'
+                            and e.provenance['mechanism_id'] == node.mechanism_id]
+                if not receipts or any(e.payload['artifact_sha256'] != code_sha(node.parameters['code_artifact'])
+                        or e.payload['image_id'] != node.parameters['runtime_image_id'] for e in receipts):
+                    raise ValueError('executed source/image receipt and suggested code differ')
+                code_receipts.append({'mechanism_id': node.mechanism_id, 'executions': len(receipts),
+                    'artifact_sha256': receipts[0].payload['artifact_sha256'], 'image_id': receipts[0].payload['image_id']})
             binding = state['portable']['contract']['binding']
             world = saved['binding']['world']
             if (binding['cell'] != spec.fingerprint or binding['seed'] != evidence['seed']
@@ -88,6 +100,7 @@ def audit(run, loss, years):
                 'checkpoint_sha256': file_sha256(checkpoint), 'response_cache_sha256': file_sha256(db_path),
                 'responses': len(replies), 'llm_call_stats': state['portable']['llm_call_stats'],
                 'papers': len(papers), 'counts': counts, 'native_event_counts': dict(Counter(e.event_type for e in kernel.events)),
+                'executed_code': code_receipts,
                 'native_event_stream_hash': evidence['event_stream_hash'],
                 'canonical_event_count': len(events), 'canonical_event_stream_hash': canonical_event_stream_hash(events),
                 'web_stream_hash': view['web_stream_hash'], 'replayed_years': projected.completed_years})

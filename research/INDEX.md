@@ -29,6 +29,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Native-world Qwen integration result](results/native-science-kernel-integration-v1.md)
 - [Native joint code/protocol/wiring loops and gradient-estimator route](components/native-design-loops-v1.md)
 - [Native joint-design pilot protocol](protocols/campaigns/native-joint-design-pilot-v1.md)
+- [Native joint-design recorded result: executable loop, no improvement](results/native-joint-design-pilot-v1.md)
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
 - [Miniature Whole-System Design Lab v0](components/miniature-whole-system-design-lab-v0.md)
 - [Generic mechanism graph runtime](components/mechanism-graph-runtime-v1.md)

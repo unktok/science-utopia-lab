@@ -2,6 +2,14 @@
 
 Updated: 2026-10-31
 
+Latest native integration update: the original-goal-by-goal capability/gap map is
+[Native design breadth](milestones/2026-10-31-native-design-breadth.md).
+Atomic source/protocol/wiring edits, a persistent native campaign and native-loss
+score-function search are now implemented. An endogenous proposal-to-fresh-world
+bridge passes QA; whole-native-world autograd, hot migration and recursive
+designer improvement do not. The older diagram/table below retains earlier
+track history and does not supersede that implementation inventory.
+
 ![Science Utopia Lab program map](figures/science-utopia-program-map.png)
 
 Editable source: [`science-utopia-program-map.svg`](figures/science-utopia-program-map.svg).
