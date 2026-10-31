@@ -56,3 +56,15 @@ Use completed-year checkpoints as authoritative. In-flight domain side effects
 are not transactional, so retry from a new Simulation restored to the last
 completed year, not the mutated failed instance. Any source/protocol repair
 gets a new commit/run directory and an explicit amendment before execution.
+
+## Amendment 1 — legitimate empty publication years
+
+The first clean run at `5b5c06b` stopped after 29.02 seconds with `KeyError: 1`
+in the existing publication commit. Native Qwen chose multi-year research
+plans, so there were no submitted papers in year one. The old tracker assertion
+indexed a nonexistent year bucket. Change only that assertion to treat a
+missing bucket as empty, retaining the assertion that no pending papers remain.
+Add a two-year-project test for both original and native coordinators. Do not
+force one-year projects, fabricate papers or change the population/loss to
+avoid the state. The failed output/cache remain intact; the amended live run
+starts in another clean commit/worktree with the same seed and settings.

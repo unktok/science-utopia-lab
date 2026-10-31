@@ -51,6 +51,18 @@ def test_original_world_is_an_exact_instance(tmp_path, fixed_corpus, monkeypatch
     native.llm.response_cache.close()
 
 
+def test_long_projects_allow_empty_publication_years_in_both_coordinators(tmp_path, fixed_corpus, monkeypatch):
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    monkeypatch.setattr(fixture, 'DIRECTION', next(d for d in fixture.AVAILABLE_DIRECTIONS if d.years == 2))
+    for label, kernel in [('original', None), ('native', NativeScienceKernel(legacy_world_system()))]:
+        seed()
+        sim, _ = make_sim(tmp_path / label, native=kernel)
+        sim.run()
+        assert sim.yearly_results[0]['decisions'] == {'total_accepted': 0, 'total_rejected': 0}
+        assert any(r['decisions']['total_accepted'] for r in sim.yearly_results[1:])
+        sim.llm.response_cache.close()
+
+
 def extension_spec(*, connected=True, latency=0):
     base = legacy_world_system()
     producer = MechanismSpec("replication-commons", MechanismFamily.CUSTOM, "test.native.replication.v1",

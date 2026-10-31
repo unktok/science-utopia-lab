@@ -3459,7 +3459,7 @@ class Simulation:
                 self.paper_tracker.add_or_update_paper(paper)
 
         assert len(
-            self.paper_tracker.pending_papers_by_year[year]) == 0, f"There should be NO pending papers for year {year}"
+            self.paper_tracker.pending_papers_by_year.get(year, {})) == 0, f"There should be NO pending papers for year {year}"
 
         self.rag.mark_papers_as_submitted(accepted_paper_ids, rejected_paper_ids)
 

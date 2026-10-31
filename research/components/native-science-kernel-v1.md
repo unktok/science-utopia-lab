@@ -68,6 +68,59 @@ Future surrogate/score-function/relaxation estimators must bind their training
 and outer validation to native trajectories and the same scientific objective.
 Changing to hand-picked numeric world laws is not native-world differentiation.
 
+The next implementation should separate three derivative contracts:
+
+1. **Exact local derivative:** a tensor-backed institution exposes its state,
+   continuous inputs/outputs and parameters without a JSON detach inside the
+   differentiated subgraph. Persistence can detach at completed-step boundaries.
+   The current JSON graph runner does not yet provide this tensor path.
+2. **Estimated native-rollout derivative:** an opaque native transition needs
+   an explicit estimator and evidence of its error. A learned transition must
+   train on native trajectories/artifacts and be checked against fresh native
+   executions, rather than define a convenient substitute science world.
+   Differentiating that learned path is not exact native-world autograd.
+3. **Discrete/structural proposal:** creating Python source or adding a role is
+   still a discrete design operation. Black-box proposal/search remains valid;
+   continuous gates over a finite bank do not make unlimited program synthesis
+   differentiable. Hybrid candidates must return to the same native evaluator.
+
+Any future whole-system gradient report must enumerate every transition from
+design to LossSpec, identify exact/estimated/opaque links, compare gradient
+predictions against native perturbations, and record projected executions.
+Until that gate passes, report local derivatives or surrogate proposals only.
+
+## Usable entry points
+
+- Existing CLI, unchanged when omitted: `--science-system-spec legacy` runs
+  the original-world instance through the graph; a JSON path loads another
+  SystemSpec. Normal original model/population/corpus options still apply.
+- `legacy_world_system()` provides an editable baseline graph;
+  `connect_native_institution()` wires any registered/code/LLM node into it.
+  Graph edges/latency/phases are data. Node implementation lookup is trusted
+  registry registration, not importing model-supplied host code.
+- `native.world.llm-institution.v1` accepts `instruction`, `output_schemas`,
+  optional `state_schema`/`response_format`; it uses the actual native model
+  with input envelopes, artifact identities, lineage and own persistent state.
+  Its output follows the same `outputs`/`state` contract as isolated Python.
+- `native.world.researcher-context.v1` routes arbitrary records to explicit
+  existing author-capable IDs, not a fixed recommendation taxonomy. Current
+  university/industry direction and intention prompts use these records;
+  other hard-coded prompts do not automatically become extensible.
+- `ActorCodecRegistry` makes trusted new actor classes persistable. Their
+  behavior/capabilities still need explicit adapters; serialization alone does
+  not make an arbitrary citizen/laboratory role act as a researcher.
+- `evaluate_native_suggestion()` consumes the standard Suggestion, caller's
+  Simulation factory/seeds and LossSpec and returns an Observation. It chooses
+  no scientific objective or implicit social constraint. Its initial native
+  measurement vocabulary is deliberately small and must be extended explicitly.
+
+The original lifecycle wrappers share a live, private annual frame for domain
+objects. Consequently removing review/selection is tested, but replacing the
+entire research/submission/funding protocol with isolated code is not yet a
+fully port-based operation. New source cannot mutate arbitrary host objects.
+Further capabilities must expose domain effects through explicit contracts or
+trusted adapters; this boundary must not be mistaken for unlimited freedom.
+
 ## Remaining scope
 
 This first integration does not implement unlimited event scheduling, every
@@ -75,6 +128,11 @@ new actor behavior, empirical realism, or whole-world differentiation. Existing
 research selection/corpus assumptions are preserved, not endorsed as sufficient.
 The engine must support extensions beyond them; tests establish containment,
 not that the original scientific ontology is final.
+Current observation `extension_state` is the prior completed graph checkpoint,
+not other nodes' uncommitted current-year memory. A node receives its own actual
+latest state; current-year sharing should use explicit edges. Context history
+is append-only in this slice, so a longer campaign needs a versioned memory/
+retrieval policy rather than silently truncating researcher inputs.
 
 ## Local transport note
 
