@@ -2,6 +2,17 @@
 
 更新: 2026-10-31。Decision 0025/0026を現在の実装へ対応させる。
 
+追記（Decision 0027）: 中心は制度・実装・protocol・配線・進行の設計自由度を増やすこと。
+仮説/実験活動をこちらが列挙して実装することは、その前提条件ではない。LLMの重みと
+研究者personaは固定し、制度側を最適化する。微分可能化のために元世界を歪めない。
+ゲームはまず実行と設計が見えるgame-like UIも許容する。
+
+新しい到達点: 同じ機構のhard/soft表現をnative graphへ接続し、実際のnative traceで
+参照・分岐・記憶・tensor間通信を微分できる。制度7座標を更新した後、同じ固定Qwenの
+元世界を再実行し、工学用loss 0→-3を確認・監査した。全世界の微分ではなく、opaqueな
+研究者反応はtrace fitでは条件付き入力になる。新しいnative UIもPC/mobileで確認済み。
+下表の以前の状態に対する更新として[実機結果](../results/native-trace-relaxation-v1.md)を参照。
+
 ## 一つの研究対象、二つの独立した軸
 
 目的は、宣言した目的関数をよく実現する**科学システムそのもの**を探すこと。
@@ -20,12 +31,12 @@
 | 希望 | 現在実行できる範囲 | 残る最初のゲート |
 |---|---|---|
 | 目的を変えると別の制度になる | 固定8パラメータで3 LossSpecの探索・共通held-out比較を完了。native任意source/graphにも同じLossSpec境界と永続campaignを接続 | 広いsource/graph探索で異なるlossごとの探索経路を少数候補で実行。回数拡大は後 |
-| 出来合いの制度を抽象化し、新制度を作る | Pythonコード/JSON状態/schemaを直接記述・生成し隔離実行。native紙IDに基づく新producer/consumerを組み合わせ可能。外側LLM patch proposerもある | 新しい制度のLLM生成・修正がnative世界で最後まで動く実証。今回のlive共同編集例は人間が書いたアルゴリズムであり発見ではない |
+| 出来合いの制度を抽象化し、新制度を作る | 自由なPython/LLM/型付きprotocolに加えID指定の構成編集を実装。Qwen生成のPeer Observerは元世界で実行済みだが条件が発火せずmessage0。配線はgeneric host attachment | 効果が生じる制度のsource/構成を実際の結果から反復改訂する。モデル生成sourceの実行と、有用な新制度発見を区別する |
 | 配線・規則・順序も設計する | 原子的patchでsource、ports、artifact types、nodes、edges、delays、schedulesを同時変更し、完成したgraphを検証。native接続/遅延の因果効果はQA済み | native年間枠の前提を外す一般event実行器と、未知protocolの受け手を含む意味的検証。任意の並びが有効とは主張しない |
 | 元の研究者世界で閉ループ最適化 | baseline → 実行 → 実際のloss → 次patch → 次の実行。pending/観測/親系譜を永続化。実機2候補pilotは別resultで報告 | 一回の追加提案から、複数の適応的source/構造改訂へ。改善や科学的価値は別の評価課題 |
-| 微分による最適化 | 数値backendで全体autogradは実装済みだが別世界のmethod test。native側は実際のlossから連続設計分布のscore-function勾配を推定し更新、再開できる | nativeの一部をtensor演算へ移し、有限差分等で局所勾配検証 → 不透明LLM/検索/離散選択と推定勾配を接続。**元の世界全体のbackpropagationは未実装** |
-| 科学活動自体を豊かにする | 任意schemaの成果物・履歴/参照、新機構から研究者promptへ因果的な入力、新actorの永続化codec | 仮説→実験/解析→データ/ソフトウェア→検証/訂正の少なくとも一連鎖を実際の研究者行動・資源・履歴へ接続。名前付きartifactを置くだけでは未達 |
-| 楽しいゲームとして操作/観測する | 既存city、replay、分岐比較、数値backend viewerあり。native側は同じcandidate fingerprintの設計差分・loss経路・canonical replayをexport可能 | native新role/protocolの都市表現とsource adapter、プレイヤーpatchを隔離branchで評価する接続。exportだけではUI完成ではない |
+| 微分による最適化 | 同じ制度のhard/soft表現を元世界へ接続。実際のtrace上で7座標のautogradを検証し、更新制度を固定Qwenの元世界で再評価してloss0→-3。機構間tensor通信・記憶の勾配もQA | 固定LLMの入力→応答やopaqueな後続世界への影響を勾配に含め、条件付き近似のずれを測る。**元の世界全体のbackpropagationは未実装** |
+| 科学活動自体も豊かにできる | 任意schemaの成果物・履歴/参照、新機構から研究者promptへの因果的入力、新actorの永続化codec | 追加の拡張候補であり制度生成の前提ではない。研究活動の例を固定catalogとして列挙するより、自由な規則・protocol・実装を生成できる幅を優先 |
+| ゲームまたはgame-like UI | 既存city/replayに加えnative.htmlが元世界の実行された構成・コード・配線・研究者・loss・勾配範囲を表示。PC/mobileの操作・hash検証を確認済み | 自由に編集した設計を隔離branchで実行し、完了後にUIへ返す。現在は実記録の読み取り・観測UIでありプレイ可能な制度運営ゲームではない |
 | 研究システムの自己改善 | opt-in自己構成観測 → 世界内機構からpatch → 未採点journal → 別のnative世界で評価、という最初のbridgeをQA。親の稼働世界は変更しない | 観測結果を内部designerの記憶へ返す → checkpointを明示移行して同じ社会を継続 → designer/探索戦略自体も改訂。再帰的改善や自律的発見はまだ主張しない |
 
 ## 実行入口と証拠の区別
@@ -43,12 +54,13 @@ all-acceptを禁止せず、勝手なfairness/promotion制約も追加しない�
 
 ## 次の小規模実装の順序
 
-1. native共同編集pilotを完走し、実際の履歴からlossと系譜を再計算して記録。
-2. 同じ元世界上でLLMによるsource/protocol共同設計とnative勾配推定を各一周実行。
-   失敗も残し、toy成功で置き換えない。
-3. 新しい研究活動の一連鎖と、そこへ介入できるnative game adapterを接続する。
-4. 局所tensor化/勾配推定を同じ世界へ積み上げる。全面的な自動微分と偽称しない。
-5. 内部designerへの評価フィードバックと明示的なstate migrationを実装する。
+1. 完了: native共同編集とhard/soft制度fit→再実行の経路を、実際の履歴から監査して記録。
+2. 次: inertだったLLM sourceを含め、source/protocol/配線の設計と実測結果による改訂の自由度を広げる。
+   失敗も残し、toyや便利な制度catalogで置き換えない。
+3. 次: UIから編集した任意設計を隔離実行へ渡し、実際の結果を同じUIに返す。
+4. 継続: 固定LLMの反応経路を含む局所tensor化/勾配推定を、元世界を歪めず積み上げる。
+   条件付きtrace fitと全世界の微分を区別する。
+5. 後続: 内部designerへの評価フィードバックと明示的なstate migrationを実装する。
    改善手続き自体の改訂はその上の別ゲートとして扱う。
 
 これはseed/populationを増やす計画ではなく、欠けている能力を小規模に接続する計画。

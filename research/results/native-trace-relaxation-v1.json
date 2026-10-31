@@ -1,0 +1,303 @@
+{
+  "schema": "scienceutopia.native-design-loop-audit.v1",
+  "binding": {
+    "initial_system_fingerprint": "50be3b6bdface4c9548bd5f2a4f94749ed4b02bc1612cc052a7e39c4b794e9c9",
+    "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+    "seeds": [
+      1301
+    ],
+    "world": {
+      "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+      "corpus_years": 4,
+      "data_cache": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-trace-relaxation-v1-a1/outputs/native-trace-relaxation-v1/cache",
+      "dataset_identity": {
+        "categories": [
+          "cs.AI",
+          "cs.AR",
+          "cs.CC",
+          "cs.CE",
+          "cs.CG",
+          "cs.CL",
+          "cs.CR",
+          "cs.CY",
+          "cs.DB",
+          "cs.DC",
+          "cs.DL",
+          "cs.DM",
+          "cs.DS",
+          "cs.ET",
+          "cs.FL",
+          "cs.LG",
+          "cs.LO",
+          "cs.NI",
+          "cs.OH",
+          "cs.OS",
+          "cs.PF",
+          "cs.PL",
+          "cs.RO",
+          "cs.SE",
+          "cs.SY"
+        ],
+        "configuration": "arxiv",
+        "dataset": "Ahren09/SciEvo",
+        "normalization": "parallel",
+        "num_years": 4,
+        "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+        "start_year": 2016
+      },
+      "method": "native-trace-relaxation-v1",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "population": "five-independent-balanced-researchers",
+      "source_commit": "8468f8c8921124d5698c971480ef3e236012560e",
+      "steps": 30,
+      "years": 2
+    }
+  },
+  "campaign_sha256": "e7f4dbce9d92bcb7db693048165ec69b32114dd1d7b32fc9aa5f905207e45b0b",
+  "completion": {
+    "status": "budget-exhausted",
+    "budget": 2,
+    "source_commit": "8468f8c8921124d5698c971480ef3e236012560e",
+    "wall_seconds_this_process": 488.63017387501895,
+    "records_sha256": "197f3f2dbab2d1d26dd3326a3bcf5b33a0983eb107e1ee90b080c083c6cc37f0",
+    "incumbent_suggestion_id": "native-design-33e21cd44b9d1c8b1556",
+    "interpretation": "conditional tensor autograd proposal followed by fresh native evaluation; not full native-world autograd"
+  },
+  "rows": [
+    {
+      "suggestion_id": "native-design-a440e8d5d08f532d5708",
+      "based_on_observation_id": null,
+      "status": "complete",
+      "loss": 0,
+      "difference": {
+        "parent_fingerprint": "50be3b6bdface4c9548bd5f2a4f94749ed4b02bc1612cc052a7e39c4b794e9c9",
+        "candidate_fingerprint": "50be3b6bdface4c9548bd5f2a4f94749ed4b02bc1612cc052a7e39c4b794e9c9",
+        "nodes_added": [],
+        "nodes_removed": [],
+        "nodes_changed": []
+      },
+      "technical_failures": [],
+      "runs": [
+        {
+          "run_id": "native-design-a440e8d5d08f532d5708-s1301",
+          "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-trace-relaxation-v1-a1/outputs/native-trace-relaxation-v1/run/runs/native-design-a440e8d5d08f532d5708-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+          "checkpoint_sha256": "628f5891540486eb21f92b618515ee8e54c53b26f83be8c36fd5fd3b92c493b5",
+          "response_cache_sha256": "f3916040284a4ffa58f3646a154c4e6f937d35001b94b5969fad8ec8578ef554",
+          "responses": 55,
+          "llm_call_stats": {
+            "n_prompts": 55,
+            "n_first_attempt_success": 55,
+            "n_retries": 0,
+            "n_failures": 0,
+            "elapsed_seconds": 176.19847893714905,
+            "prompt_tokens": 43697,
+            "completion_tokens": 5727
+          },
+          "papers": 3,
+          "counts": {
+            "native.accepted_decisions": 0,
+            "native.rejected_decisions": 3,
+            "native.review_records": 9,
+            "native.final_active_authors": 5,
+            "native.final_author_resources": 640,
+            "native.institutional_context_deliveries": 0
+          },
+          "native_event_counts": {
+            "native.system.phase_executed": 24,
+            "generated.code_executed": 4,
+            "native.tensor.executed": 2
+          },
+          "executed_code": [
+            {
+              "mechanism_id": "world.selection",
+              "executions": 2,
+              "artifact_sha256": "011f9a5e718bf1870b20492ab01c9738680afd17887adc39398563b22fe3d4ac",
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+            },
+            {
+              "mechanism_id": "native-feature-extractor",
+              "executions": 2,
+              "artifact_sha256": "8f1ac4e81a33db1c6dc01fa15bed36dffb26e4d076bd56349ce61a60fd2d0037",
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+            }
+          ],
+          "native_event_stream_hash": "43da53f7304b70f44153c02538c92d85ade55ec72973ccaac6871bf1e9ed1946",
+          "canonical_event_count": 54,
+          "canonical_event_stream_hash": "8a79f5c5c03b5950834fb19596b711c94a7dc86d34d55b32415022b1109c6022",
+          "web_stream_hash": "e29200de8f5f1f8627ef78ff68cf39dc3040841f5f734d97f2526e3c88ce3775",
+          "replayed_years": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "suggestion_id": "native-design-33e21cd44b9d1c8b1556",
+      "based_on_observation_id": "observation-native-design-a440e8d5d08f532d5708",
+      "status": "complete",
+      "loss": -3,
+      "difference": {
+        "parent_fingerprint": "50be3b6bdface4c9548bd5f2a4f94749ed4b02bc1612cc052a7e39c4b794e9c9",
+        "candidate_fingerprint": "216867d8c592816756e2a1199b90239aa1298c688129f584afa6a385333a420c",
+        "nodes_added": [],
+        "nodes_removed": [],
+        "nodes_changed": [
+          "addressed-selection"
+        ]
+      },
+      "technical_failures": [],
+      "runs": [
+        {
+          "run_id": "native-design-33e21cd44b9d1c8b1556-s1301",
+          "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-trace-relaxation-v1-a1/outputs/native-trace-relaxation-v1/run/runs/native-design-33e21cd44b9d1c8b1556-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+          "checkpoint_sha256": "24edb0d468a4720bdbb492c8996aecc228d24ca9872bb6fa8ab84f29082c88fb",
+          "response_cache_sha256": "609332e5ed32948501746be280a05f1ec959587271283f22a63485445c5dee8f",
+          "responses": 56,
+          "llm_call_stats": {
+            "n_prompts": 56,
+            "n_first_attempt_success": 56,
+            "n_retries": 0,
+            "n_failures": 0,
+            "elapsed_seconds": 283.7676763534546,
+            "prompt_tokens": 44025,
+            "completion_tokens": 5904
+          },
+          "papers": 3,
+          "counts": {
+            "native.accepted_decisions": 3,
+            "native.rejected_decisions": 0,
+            "native.review_records": 9,
+            "native.final_active_authors": 5,
+            "native.final_author_resources": 640,
+            "native.institutional_context_deliveries": 0
+          },
+          "native_event_counts": {
+            "native.system.phase_executed": 24,
+            "generated.code_executed": 4,
+            "native.tensor.executed": 2
+          },
+          "executed_code": [
+            {
+              "mechanism_id": "world.selection",
+              "executions": 2,
+              "artifact_sha256": "011f9a5e718bf1870b20492ab01c9738680afd17887adc39398563b22fe3d4ac",
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+            },
+            {
+              "mechanism_id": "native-feature-extractor",
+              "executions": 2,
+              "artifact_sha256": "8f1ac4e81a33db1c6dc01fa15bed36dffb26e4d076bd56349ce61a60fd2d0037",
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+            }
+          ],
+          "native_event_stream_hash": "ef242ae7c651602953a5e4d9e2e3ccaac790c44829c4a1bed696fbdd995d31a9",
+          "canonical_event_count": 54,
+          "canonical_event_stream_hash": "7d7bd05a0168fbf808484ef648471e0e8822f94a5bc5a44e4da1457a5d2de815",
+          "web_stream_hash": "3ba34ff9693978da053fd5b20db35b7c72f0d0174210b0a7411921bf48cecb70",
+          "replayed_years": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  ],
+  "verification": "checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed",
+  "limits": [
+    "Fixed Qwen3:8b weights; researcher response/input Jacobians remain opaque",
+    "Conditional autograd through represented tensor institutions, memory and tensor edges; not full-world gradient",
+    "Developer-authored initial institution; not LLM source invention",
+    "Negative accepted-count target permits all-accept; not scientific quality or policy benefit",
+    "Two native years, one development seed, four-year original corpus; no held-out claim",
+    "Concurrent designer calls shared the same inference endpoint; timing is not isolated throughput"
+  ],
+  "relaxation": {
+    "trace_sha256": "367b303185a7fc714899538b30383ab8c750c22cac2cc08c949f2a44dff2059e",
+    "temperature": 0.8,
+    "scope": "frozen native observations; autograd through represented institutions, tensor edges and memory only",
+    "full_native_world_autograd": false,
+    "terms": [
+      {
+        "mechanism": "addressed-selection",
+        "output": "accept",
+        "coefficient": -1
+      }
+    ],
+    "conditional_hard_loss_after": -3,
+    "first_conditional_soft_loss": -0.48291073921665595,
+    "last_conditional_soft_loss": -2.9699652869500017,
+    "actual_trace_gradient_checks": [
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "bias",
+        "coordinate": 0,
+        "autograd": 0.5064705981663294,
+        "central_difference": 0.5064705981744355,
+        "absolute_error": 8.106071369695655e-12
+      },
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "keys",
+        "coordinate": 0,
+        "autograd": -0.41384027935497963,
+        "central_difference": -0.41384027930913,
+        "absolute_error": 4.584965740406233e-11
+      },
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "keys",
+        "coordinate": 1,
+        "autograd": -0.41384027935497963,
+        "central_difference": -0.4138402792897011,
+        "absolute_error": 6.527856033500257e-11
+      },
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "keys",
+        "coordinate": 2,
+        "autograd": 0.4138402793549793,
+        "central_difference": 0.41384027930913,
+        "absolute_error": 4.584932433715494e-11
+      },
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "keys",
+        "coordinate": 3,
+        "autograd": 0.4138402793549793,
+        "central_difference": 0.41384027930913,
+        "absolute_error": 4.584932433715494e-11
+      },
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "thresholds",
+        "coordinate": 0,
+        "autograd": 0.3439840420331907,
+        "central_difference": 0.3439840420393913,
+        "absolute_error": 6.200595592531499e-12
+      },
+      {
+        "mechanism": "addressed-selection",
+        "parameter": "thresholds",
+        "coordinate": 1,
+        "autograd": 0.1624865561331387,
+        "central_difference": 0.16248655612671747,
+        "absolute_error": 6.4212246631001335e-12
+      }
+    ],
+    "reproduced_fit_seconds": 0.3010272500105202,
+    "fitted_programs_sha256": "b3bdc2f8b87eee86de6e236b515076575051878b4031d1fe8cb838775543253a",
+    "full_fit_path_reproduced": true,
+    "fitted_program_installed_in_native_candidate": true
+  },
+  "protocol": "research/protocols/campaigns/native-trace-relaxation-v1.md",
+  "status": "complete-native-hard-soft-fit-and-counterfactual-engineering",
+  "raw_output_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-trace-relaxation-v1-a1/outputs/native-trace-relaxation-v1/run",
+  "preflight_interruption": {
+    "source_commit": "228a030",
+    "cause": "uncached two-year embedding preflight",
+    "native_worlds_executed": 0,
+    "retained": true
+  }
+}

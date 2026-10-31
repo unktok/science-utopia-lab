@@ -15,6 +15,7 @@ export default defineConfig({
         heldout: resolve(__dirname, "heldout.html"),
         hub: resolve(__dirname, "hub.html"),
         generative: resolve(__dirname, "generative.html"),
+        native: resolve(__dirname, "native.html"),
       },
     },
   },

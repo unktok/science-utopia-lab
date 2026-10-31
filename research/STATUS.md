@@ -83,6 +83,33 @@ See [design and remaining scope](components/native-science-kernel-v1.md).
 
 ## Capability map
 
+Latest direction (Decision 0027): prioritize open institutional/source/protocol/
+wiring invention rather than hand-building a catalog of hypothesis/experiment
+activities. Keep researcher LLM weights/personas fixed while optimizing the
+institutions surrounding them. Frozen weights are not frozen responses.
+
+The native kernel now also executes compositional hard/soft tensor programs.
+Actual native traces support pathwise autograd through represented addressing,
+branching, tensor memory and tensor-to-tensor edges. A clean two-system live
+probe fitted seven institutional coordinates and reran the fitted program in
+the original fixed-Qwen world: actual loss 0 -> -3, with 111 saved model replies
+and no model retries/failures. Seven real-trace numerical gradient checks and
+the entire fit path independently reverified. This is a gameable accepted-count
+engineering result, not scientific improvement or full-world input gradients;
+see [result](results/native-trace-relaxation-v1.md).
+
+`game-ui-v2/native.html` now displays real native SystemSpecs, generated source/
+tensor rules, ports/wiring, actual year-boundary researchers, observed native
+losses and conditional-fit scope. Desktop/mobile browser QA passes with no
+exceptions or overflow. It is read-only game-like evidence UI, not a live
+institution-installation game. A separate Qwen-generated Python Peer Observer
+now passes isolated probes and fresh native two-year execution with exact
+source/image receipts. Its trigger never fires: zero messages and no observed
+researcher-input effect. The source is model-generated; its native attachment
+is host-provided, not invented topology. Nine prior proposal/metadata failures
+are retained. This does not complete useful institutional invention or source
+optimization; see [source result](results/native-source-invention-v1.md).
+
 Native design-loop extension: atomic patches now jointly edit source, protocol,
 nodes, connections and schedules; a restartable outer controller evaluates them
 through the actual native Simulation/LossSpec boundary. A separate Gaussian
@@ -126,14 +153,15 @@ improvement. Those and the city live-intervention adapter remain unimplemented.
 | whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
 | native-world containment and extension | implemented; QA and live Qwen probe complete | baseline matches original six-year state/RNG/wire; code/LLM nodes deliver new protocols; selection replacement/review removal and non-paper artifact history pass QA; four-year real-Qwen message-delivery probe completes; full protocol replacement/new actor behavior remain open |
 | native black-box evaluation | durable campaign implemented | joint source/protocol/wiring patch -> actual Simulation -> native measurements -> caller LossSpec -> Observation; parent lineage, pending resume and recorded loss validation; live pilot reported separately |
-| native-loss gradient optimization | QA-tested and CLI runnable | score-function gradient of the declared bounded continuous design distribution using native costs; no full-world autograd or live Qwen gradient result |
+| native design-distribution gradient | QA-tested and CLI runnable | score-function gradient of a bounded design distribution using native costs; this estimator has no live result yet and is distinct from the live hard/soft tensor method below |
+| native hard/soft institution autograd | live short integration complete | same represented institution hard/soft; native trace fit -> fitted program -> fresh fixed-Qwen execution; conditional gradient, not full-world derivative |
 | endogenous design proposals | first QA bridge | institution proposes its own rule patch from native observations; hash-verified journal -> fresh counterfactual evaluation; no hot installation or recursive designer improvement |
 | native-world differentiation | not implemented | JSON/domain operations and LLM/retrieval/discrete transitions remain opaque; numeric-world autograd below is not a substitute |
 | structural system optimization | joint synthetic slice | 770 valid graphs jointly vary evaluation, publication, funding, government, communication, connections, and latency through one fingerprint-bound ask/execute/loss/tell boundary |
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
 | optimization continuum | synthetic-tested common boundary | parameters (6 raw variables), mechanism configuration (16), and node/edge structure (26) are nested over one six-family template; black-box, gradient, and hybrid methods share projection and opaque outer evaluation; schedule/latency and model-backed execution remain open |
 | generative mechanism programs | executable numeric miniature | typed ASTs encode input, parameter, memory and update rules; search synthesizes new rules and custom nodes, changes edges/delays/order, and can remove every institutional node; generated programs also run/checkpoint in the existing generic graph runtime |
-| generated implementation code | recorded initial execution proof; optimization incomplete | Qwen-generated Python/new schema executes through production PaperTracker and a ledger; frozen replay and checkpoint/resume pass; code revision fails, and semantic memory/reference limitations remain; no automatic differentiability or full live-researcher integration |
+| generated implementation code | native execution proof; meaningful invention/optimization incomplete | model-written Peer Observer executes in actual native world through generic typed delivery attachment, but emits zero messages here; earlier raw/named proposal failures retained; no observed researcher-input effect, model-invented wiring or automatic differentiability |
 | direct whole-world differentiation | executable numeric miniature | autograd traverses complete recurrent agent/world transitions; six parameter/rule/node/edge/delay/schedule gradient groups pass representative central differences; hard projection and outer evaluation share the numeric transition equations; full legacy Qwen simulator and token generation remain outside autograd |
 | generative lab viewer | recorded and browser-verified | checksum-bound events, generated SignalBoost rule, graph/process, six-agent state and search paths load into `game-ui-v2/generative.html`; two losses × four selected-system views; Chrome verification passed with zero exceptions/failed requests and no mobile overflow |
 | game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |
