@@ -7,6 +7,7 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Native design breadth: original goals, current capabilities and remaining gates](milestones/2026-10-31-native-design-breadth.md)
 - [Program map: goals, dependencies, and parallel tracks](program-map.md)
 - [Research overview](../RESEARCH.md)
 - [Roadmap](roadmap.md)

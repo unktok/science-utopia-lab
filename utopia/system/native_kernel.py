@@ -28,6 +28,7 @@ CONTROL_ARTIFACT = "native-phase-completion"
 CONTEXT_RECEIVER = "native.world.researcher-context.v1"
 ARTIFACT_STORE = "native.world.artifact-store.v1"
 LLM_INSTITUTION = "native.world.llm-institution.v1"
+DESIGN_PROPOSALS = "native.world.design-proposals.v1"
 STAGES = (
     ("open", MechanismFamily.POPULATION),
     ("resubmissions", MechanismFamily.RESEARCH),
@@ -160,12 +161,18 @@ class NativeScienceKernel:
         # must not accidentally hide the actual artifacts being evaluated.
         for saved, conference in zip(conferences["conferences"], sim.conference_system.conferences):
             saved["submitted_papers"] = conference.submitted_papers
-        return _json({"schema": "scienceutopia.native-world-observation.v1",
+        observation = {"schema": "scienceutopia.native-world-observation.v1",
             "year": self._frame["year"], "ecosystem": sim.ecosystem.to_dict(),
             "papers": sim.paper_tracker.to_dict(),
             "conferences": conferences,
             "year_results": self._frame["results"],
-            "extension_state": dict((self.graph_checkpoint or {}).get("mechanism_states", {}))})
+            "extension_state": dict((self.graph_checkpoint or {}).get("mechanism_states", {}))}
+        # Explicit opt-in self-description for endogenous system-design roles.
+        # No private evaluator/loss/cache/credentials are added to observations.
+        if self.spec.metadata.get('expose_system_spec', False):
+            observation['system_spec'] = self.spec.to_dict()
+            observation['system_fingerprint'] = self.spec.fingerprint
+        return _json(observation)
 
     def _registry(self):
         registry = MechanismRegistry()
@@ -175,6 +182,7 @@ class NativeScienceKernel:
         registry.register(CONTEXT_RECEIVER, 1, self._receive_context)
         registry.register(ARTIFACT_STORE, 1, self._store)
         registry.register(LLM_INSTITUTION, 1, self._llm_institution)
+        registry.register(DESIGN_PROPOSALS, 1, self._record_design_proposals)
         from .code_mechanisms import _schema
         for node in self.spec.mechanisms:
             if node.implementation == LLM_INSTITUTION:
@@ -428,6 +436,26 @@ class NativeScienceKernel:
             for v in values) for port, values in result["outputs"].items()}, next_state=result["state"],
             events=(MechanismEvent("native.system.llm_institution_executed",
                                    payload={"prompt_sha256": _hash(prompt), "response_sha256": _hash(result)}),))
+
+    def _record_design_proposals(self, context):
+        """Record world-originated design proposals; never hot-install or score them."""
+        from .design_patch import apply_design_patch, digest
+        records = list(context.state.get('proposals', []))
+        events = []
+        for values in context.inputs.values():
+            for value in values:
+                proposal = {'year': context.period, 'origin_mechanism': value.source_mechanism,
+                            'patch': dict(value.payload), 'loss': None}
+                try:
+                    candidate = apply_design_patch(self.spec, proposal['patch'])
+                    proposal.update(status='structurally_valid-not-evaluated', candidate_fingerprint=candidate.fingerprint)
+                except Exception as error:
+                    proposal.update(status='technically_invalid', error=str(error)[:2000])
+                proposal['proposal_sha256'] = digest(proposal)
+                records.append(proposal)
+                events.append(MechanismEvent('native.system.design_proposed', actor_ids=value.actor_ids,
+                                             payload=proposal))
+        return MechanismResult(next_state={'proposals': records}, events=tuple(events))
 
     def gradient_contract(self):
         return {"world": "native-research-world", "end_to_end_autograd": False,

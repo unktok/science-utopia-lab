@@ -34,9 +34,18 @@ self-improvement or claiming that repeated revisions guarantee improvement.
 - Recursive improvement of the improvement process: proposals can also change
   the designer, its memory, search strategy or institutional learning process.
 
-Only the first is implemented by this new outer loop. A future endogenous
-design-proposal port can submit the SAME patch format, but no generated source
-is allowed to edit the host, evaluator, loss, raw evidence or model credentials.
+The first has an executable outer loop. An initial second-stage bridge is also
+QA-tested: an opt-in world observation exposes its SystemSpec, an institution
+emits the SAME patch format, and a journal records proposal validity without
+installing it or assigning a loss. The outer controller loads a hash-verified
+native checkpoint and evaluates the last structurally valid proposal from the
+incumbent's first development run as a fresh counterfactual world. QA source
+lowers its own selection threshold after actual native rejections. This is
+developer-authored behavior with scripted transport/corpus, not autonomous
+LLM discovery or recursive improvement of the designer. The clean live pilot
+at `7c91af2` exercises the external developer example only, not this later bridge.
+No generated source is allowed to edit the host, evaluator, loss, raw evidence
+or model credentials.
 Hot installation into a running society requires explicit state migration,
 causal version boundaries and replay/resume semantics; it is not implemented.
 Loss changes are new experiments, not hidden "improvements" to reported scores.

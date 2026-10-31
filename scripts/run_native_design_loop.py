@@ -22,22 +22,27 @@ def main():
     parser.add_argument('--seed', type=int, default=1301)
     parser.add_argument('--years', type=int, default=4)
     parser.add_argument('--budget', type=int, default=2)
-    parser.add_argument('--proposer', choices=['example', 'llm'], default='example')
+    parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous'], default='example')
+    parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
     args = parser.parse_args()
     if args.budget < 1 or (args.proposer == 'example' and args.budget > 2):
         parser.error('positive budget; declared example has one joint graph/code proposal (budget <=2)')
+    if args.proposer == 'endogenous' and args.system is None:
+        parser.error('endogenous mode requires a system that actually emits design proposals')
     from utopia.optimization.loss import load_loss_spec
-    from utopia.optimization.native_design import NativeDesignCampaign, LLMNativeDesignProposer
+    from utopia.optimization.native_design import NativeDesignCampaign, LLMNativeDesignProposer, propose_from_native_world
     from utopia.optimization.native_factory import LocalQwenNativeFactory
     from utopia.system.code_mechanisms import DockerCodeExecutor
     from utopia.system.native_design_examples import deliberation_patch
     from utopia.system.native_kernel import legacy_world_system
+    from utopia.system import SystemSpec
     from utopia.replay.native_design import native_design_view
     from utopia.utils.data_utils import write_json_atomic
     loss = load_loss_spec(args.loss)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years,
                                     experiment_binding={'loss_spec': loss})
-    controller = NativeDesignCampaign(args.output / 'campaign', initial_system=legacy_world_system(seed=args.seed),
+    initial = SystemSpec.from_dict(json.loads(args.system.read_text())) if args.system else legacy_world_system(seed=args.seed)
+    controller = NativeDesignCampaign(args.output / 'campaign', initial_system=initial,
         loss_spec=loss, seeds=[args.seed], world_binding={'source_commit': factory.source_commit,
             'model': factory.model, 'model_digest': factory.model_digest,
             'corpus_sha256': factory.corpus_sha256, 'dataset_identity': factory.dataset_identity,
@@ -51,6 +56,8 @@ def main():
         threshold = max(1., min(7., 4. + (previous or 0.) / 10.))
         return deliberation_patch(parent, image_id=executor.image_id, threshold=threshold)
     proposer = example
+    if args.proposer == 'endogenous':
+        proposer = propose_from_native_world
     if args.proposer == 'llm':
         from utopia.models.models import VLLMServerModel
         from utopia.models.response_cache import CompletedResponseCache

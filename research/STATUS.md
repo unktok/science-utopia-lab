@@ -68,7 +68,7 @@ to the real conference/PaperTracker state. A trusted actor-codec extension
 prevents new actor kinds from silently disappearing on persistence. These are
 integration capabilities, not empirical realism or an invented optimized system.
 The standard black-box Suggestion/LossSpec/Observation contract now has a native
-world evaluator; durable arbitrary-source campaign scheduling remains separate.
+world evaluator and a durable source/graph design campaign (details below).
 
 The independent clean-source local-Qwen probe completed four years with five
 researchers in five institutions: 147 model requests, 20 delivered messages and
@@ -92,8 +92,12 @@ Joint producer/consumer execution, source replacement, result-conditioned graph
 changes, pending resume and native-derived gradient costs pass deterministic QA.
 Live evidence for the new two-candidate loop is recorded separately from the
 previous message-delivery probe; see [design/commands](components/native-design-loops-v1.md).
-Replay/design-path exports are available, but the city live-intervention adapter
-and endogenous/recursive self-improvement remain unimplemented.
+Replay/design-path exports are available with explicit development/presentation-
+pending metadata, not a released city campaign source. An initial endogenous
+proposal bridge is QA-tested: a native institution can observe its SystemSpec,
+propose a patch and have a separate fresh native world evaluate it. This is not
+in-place society migration, autonomous live LLM invention or recursive designer
+improvement. Those and the city live-intervention adapter remain unimplemented.
 
 | Layer | Status | Evidence / next gap |
 |---|---|---|
@@ -115,7 +119,9 @@ and endogenous/recursive self-improvement remain unimplemented.
 | Evaluation System API | first vertical slice | one example mechanism family, not the project abstraction |
 | whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
 | native-world containment and extension | implemented; QA and live Qwen probe complete | baseline matches original six-year state/RNG/wire; code/LLM nodes deliver new protocols; selection replacement/review removal and non-paper artifact history pass QA; four-year real-Qwen message-delivery probe completes; full protocol replacement/new actor behavior remain open |
-| native black-box evaluation | adapter implemented | standard Suggestion -> actual Simulation -> native measurements -> caller LossSpec -> Observation; seed/spec identities checked; not yet a durable arbitrary-source optimization campaign |
+| native black-box evaluation | durable campaign implemented | joint source/protocol/wiring patch -> actual Simulation -> native measurements -> caller LossSpec -> Observation; parent lineage, pending resume and recorded loss validation; live pilot reported separately |
+| native-loss gradient optimization | QA-tested and CLI runnable | score-function gradient of the declared bounded continuous design distribution using native costs; no full-world autograd or live Qwen gradient result |
+| endogenous design proposals | first QA bridge | institution proposes its own rule patch from native observations; hash-verified journal -> fresh counterfactual evaluation; no hot installation or recursive designer improvement |
 | native-world differentiation | not implemented | JSON/domain operations and LLM/retrieval/discrete transitions remain opaque; numeric-world autograd below is not a substitute |
 | structural system optimization | joint synthetic slice | 770 valid graphs jointly vary evaluation, publication, funding, government, communication, connections, and latency through one fingerprint-bound ask/execute/loss/tell boundary |
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |

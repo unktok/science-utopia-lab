@@ -48,6 +48,19 @@ def test_failed_native_sample_prevents_update_not_fabricated_penalty():
     assert report['gradient'] is None
 
 
+def test_partial_replicate_failure_cannot_condition_gradient_on_success():
+    search = optimizer()
+    first, second = search.ask(2)
+    partial = observation(search, first, 3.)
+    # A LossSpec may allow a smaller minimum of valid replicates. That does not
+    # authorize dropping a failed replicate from a native gradient estimate.
+    partial.metadata['technical_failures'] = [{'run_id': 'failed-seed', 'loss': None}]
+    report = search.tell([partial, observation(search, second, 2.)])
+    assert report['status'] == 'not-updated-technical-failure'
+    assert report['gradient'] is None
+    assert report['mean_after'] == report['mean_before']
+
+
 def test_mismatched_gradient_evidence_cannot_update():
     search = optimizer()
     first, second = search.ask(2)

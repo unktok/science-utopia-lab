@@ -65,6 +65,23 @@ the update. Resume does not repeat already committed draws; pure estimator
 replay validates the saved update history. This still requires the native
 factory's response/year caches for an interrupted in-flight draw.
 
+## First endogenous proposal bridge
+
+With explicit `metadata.expose_system_spec: true`, native world observations
+include the executing SystemSpec and fingerprint. A source or LLM institution
+can emit a patch to a node using `native.world.design-proposals.v1`. Its journal
+retains both invalid and structurally valid ideas with **null loss**; it never
+installs them. Ports that may emit no ideas must be optional (`required: false`).
+
+`propose_from_native_world` verifies the completed checkpoint hash, restores the
+native kernel and selects the last structurally valid matching proposal in the
+incumbent's first development run. The same campaign evaluates that proposal in
+a fresh native world with the unchanged loss. QA covers a native institution
+observing actual rejections, proposing a revision of its own threshold and a
+subsequent separately evaluated world. Model/corpus transport is scripted for
+this QA; no live endogenous-discovery result is claimed. The parent world is
+not mutated, and the designer itself is not recursively improved.
+
 ## Commands
 
 From a clean, commit-pinned experiment worktree, with fixed PYTHONHASHSEED,
@@ -96,15 +113,25 @@ CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=1301 /path/to/venv/bin/python \
 The count loss is a declared gameable engineering target, not scientific value.
 It allows all-accept. Changing the LossSpec creates a new campaign identity.
 
+For an initial SystemSpec that really emits design proposals, the black-box
+driver also accepts `--system system.json --proposer endogenous`. It does not
+invent a designer node on the user's behalf. Without a valid world-originated
+proposal the next step fails explicitly rather than silently reverting to an
+external designer. Reusing an existing campaign with another initial graph or
+loss is rejected.
+
 ## Replay, game and recursive improvement boundaries
 
 `native_design_view()` exports loss/design/patch lineage and fingerprints;
 `native_design_replay()` converts a matching native checkpoint into replay-view
-v2. No browser-side scientific transitions are invented. The new city source
+v2 with canonical/web hashes and explicit development/presentation-pending
+metadata. No choreography is invented for unknown native roles. This is not a
+released `verified-campaign` source for the old city renderer. The new city source
 adapter, playable live installation and rendering of every new artifact/role
 are not implemented by these exports.
 
-External objective-conditioned search is not yet an endogenous science society
-redesigning itself. Decision 0026 defines the proposal-port, version/migration,
-branch-evaluation and recursive-designer stages still needed. There is no host
+External objective-conditioned search and the first world-originated proposal
+bridge are distinct from an endogenous society continuously redesigning itself.
+Decision 0026 defines the version/migration, branch-evaluation and recursive-
+designer stages still needed. There is no host
 self-modification, mutable objective oracle or automatic policy deployment.

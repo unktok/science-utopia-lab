@@ -82,7 +82,7 @@ class NativeScoreFunctionSearch:
                   'gradient_target': 'expected native loss under declared bounded Gaussian-logistic design distribution'}
         # Dropping failed samples can bias the estimator; do not silently
         # optimize a conditional-on-success objective or invent failure losses.
-        if any(o.status != 'complete' for o in ordered):
+        if any(o.status != 'complete' or o.metadata.get('technical_failures') for o in ordered):
             report.update(status='not-updated-technical-failure', gradient=None)
         else:
             costs = torch.tensor([o.loss for o in ordered], dtype=torch.float64)

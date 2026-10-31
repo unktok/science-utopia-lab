@@ -3,6 +3,7 @@ from pathlib import Path
 
 from .converter import ArtifactBundle, convert_artifacts
 from .viewer import build_viewer_payload_v2
+from .campaign_adapter import web_event_stream_hash, validate_portable_bundle
 from utopia.runtime.checkpointing import read_portable_checkpoint
 from utopia.system.design_patch import digest
 
@@ -13,10 +14,17 @@ def native_design_replay(checkpoint, *, expected_system_fingerprint, label):
     if not native or native['system_fingerprint'] != expected_system_fingerprint:
         raise ValueError('native design replay and candidate identity differ')
     events = convert_artifacts(ArtifactBundle.discover(checkpoint))
-    return build_viewer_payload_v2(events, metadata={
+    payload = build_viewer_payload_v2(events, metadata={
         'title': label, 'source_kind': 'native-design-development-run',
         'system_fingerprint': expected_system_fingerprint,
+        'empirical': False,
+        'native_presentation_pending': True,
+        'disclosure': 'Native development evidence; not a released verified-campaign source, scientific improvement or live player intervention. ' + label,
         'interpretation': 'Canonical evidence, not scientific improvement or live player intervention'})
+    payload['web_stream_hash'] = web_event_stream_hash(payload['canonical']['events'])
+    payload['web_stream_hash_algorithm'] = 'scienceutopia.web-f64-json-sha256.v1'
+    validate_portable_bundle(payload)
+    return payload
 
 
 def native_design_view(campaign):

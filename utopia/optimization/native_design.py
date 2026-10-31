@@ -185,3 +185,35 @@ class LLMNativeDesignProposer:
             write_json_atomic(self.receipts / f'proposal-{index}-{attempt}.json', receipt, allow_nan=False)
             return patch
         raise ValueError('native design proposal exhausted technical repairs; no loss assigned')
+
+
+def propose_from_native_world(parent, history, index, loss_spec):
+    """Bridge an endogenous proposal to a separately evaluated next world.
+
+    Chooses the last structurally valid matching proposal in the incumbent's
+    first development run. This is explicit proposal selection, not a claim of
+    observed improvement or recursive optimizer self-modification.
+    """
+    from utopia.runtime.checkpointing import read_portable_checkpoint
+    from utopia.system.native_kernel import NativeScienceKernel
+    from utopia.utils.data_utils import file_sha256
+    if not history:
+        raise ValueError('no native observations from which to obtain a design proposal')
+    valid = [r for r in history if r['observation']['status'] == 'complete']
+    if not valid:
+        raise ValueError('no complete native incumbent run')
+    best = min(valid, key=lambda r: r['observation']['loss'])
+    if best['suggestion']['candidate'] != parent.to_dict():
+        raise ValueError('endogenous proposal parent and native incumbent differ')
+    run = best['observation']['metadata']['runs'][0]
+    path = Path(run['checkpoint_path'])
+    if file_sha256(path) != run['checkpoint_sha256']:
+        raise ValueError('endogenous proposal checkpoint hash changed')
+    state = read_portable_checkpoint(path)['native_system']
+    kernel = NativeScienceKernel(parent, checkpoint=state)
+    proposals = [e.payload for e in kernel.events if e.event_type == 'native.system.design_proposed'
+                 and e.payload['status'] == 'structurally_valid-not-evaluated'
+                 and e.payload['patch']['parent_fingerprint'] == parent.fingerprint]
+    if not proposals:
+        raise ValueError('native world produced no structurally valid matching design proposal')
+    return clone(proposals[-1]['patch'])

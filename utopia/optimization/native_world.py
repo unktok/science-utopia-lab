@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from typing import Callable, Sequence
+from pathlib import Path
 
 from .blackbox import Observation, Suggestion
 from .loss import evaluate_loss, loss_spec_sha256, validate_loss_spec
@@ -65,6 +66,10 @@ def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
             evaluations.append(measurement)
             evidence.append({"run_id": run_id, "seed": seed, "system_fingerprint": spec.fingerprint,
                              "event_stream_hash": sim.native_system.to_dict()["event_stream_hash"]})
+            checkpoint = Path(sim.output_dir) / f'portable_checkpoint_year_{sim.num_years}.json.gz'
+            if checkpoint.exists():
+                from utopia.utils.data_utils import file_sha256
+                evidence[-1].update(checkpoint_path=str(checkpoint.resolve()), checkpoint_sha256=file_sha256(checkpoint))
         except Exception as error:
             failures.append({"run_id": run_id, "seed": seed, "error_type": type(error).__name__,
                              "error": str(error)[:2000], "loss": None})

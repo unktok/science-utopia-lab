@@ -16,6 +16,9 @@ def test_native_candidate_evidence_and_design_path_export_without_new_world(tmp_
     payload = native_design_replay(checkpoint, expected_system_fingerprint=fingerprint, label='Native QA, scripted model/corpus')
     assert payload['schema_version'] == 'scienceutopia.replay-view.v2'
     assert payload['metadata']['system_fingerprint'] == fingerprint
+    assert payload['metadata']['native_presentation_pending'] is True
+    assert payload['metadata']['empirical'] is False  # not a released campaign source
+    assert payload['web_stream_hash']
     view = native_design_view(controller)
     assert view['records'][0]['observation']['loss'] == record['observation']['loss']
     assert not view['interpretation']['recursive_self_improvement']
