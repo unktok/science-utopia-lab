@@ -55,7 +55,10 @@ def feedback_from_native_history(history):
                 'delivered_messages': [clone(e.payload['message']) for e in kernel.events
                     if e.event_type == 'native.system.context_delivered'],
                 'authors': [{key: a.get(key) for key in ('id', 'resources', 'is_active')}
-                    for a in state['ecosystem_data']['agents'] if a.get('can_author')]})
+                    for a in state['ecosystem_data']['agents'] if a.get('can_author')],
+                'observed_papers': [{key: p.get(key) for key in ('id', 'author_id', 'title', 'review_history')}
+                    for p in state['paper_tracker']['papers'][:24]],
+                'observation_scope': 'completed native checkpoint; at most first 24 real paper records, not invented examples'})
         result.append(row)
     return {'schema': 'scienceutopia.native-design-feedback.v1', 'observations': result,
             'interpretation': 'actual losses and activity; activity is not a hidden objective or validity floor'}
@@ -101,6 +104,8 @@ class NativeSourceRevisionProposer:
             'Only actual author IDs are legal. Empty messages remain legal. Do not fabricate papers, measurements or outcome claims. '
             'Messages can affect subsequent researcher prompts, not retrospectively create results. '
             'Think about whether previous conditions ever activated; activity is diagnostic, not an added reward. '
+            'If prior source is inert on the supplied real paper/author records, consider revising its actual algorithm, '
+            'not just its formatting or label. Explain what observation motivates the revision. '
             'No network, host files, third-party imports or utopia imports.\nDECLARED LOSS:\n' + json.dumps(loss_spec) +
             '\nPARENT INSTITUTION:\n' + json.dumps(node.to_dict() if hasattr(node, 'to_dict') else parent.to_dict()['mechanisms'][node_index]) +
             '\nACTUAL FEEDBACK:\n' + json.dumps(feedback, ensure_ascii=False) + '\nTASK:\n' + self.instructions)

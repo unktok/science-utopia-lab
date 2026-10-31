@@ -34,3 +34,21 @@ studies out of new UI jobs. Job creation and scientific execution are distinct.
 All live runs start only after implementation/tests commit, in clean detached
 experiment worktrees. New code is developed elsewhere. Record compact audits,
 actual limitations and raw locators; no held-out or cross-probe method contest.
+
+## Predeclared refinement after first source attempt
+
+The first v2 run passes loss/activity feedback but not the actual paper records
+to the designer prompt. Its first revision preserves the >3-paper condition
+and emits zero messages in the isolated probe. Preserve that full run. A new
+clean-source amendment adds actual bounded paper histories to feedback and asks
+the designer to consider substantive rather than cosmetic revision of inert
+logic. Still no message-count validity floor or behavioral reroll is added.
+Run initial plus two revisions again under the same native settings, recording
+this as a separate development experiment rather than an untouched comparison.
+
+The gradient probe's declared coordinate is the exploration_weight in a
+developer-authored advisory message. It changes actual next-year researcher
+inputs, not selection directly. Use one antithetic pair, search seed42,
+sigma0.7 and learning rate0.1 with full fresh native losses. Distinct inputs
+and any changed responses must be checked from response journals; no nonzero
+gradient, beneficial effect or full-world backpropagation is presumed.

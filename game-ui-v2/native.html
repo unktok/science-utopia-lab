@@ -18,6 +18,27 @@
     </aside>
   </section>
   <div class="deck-boundary"><span>FIXED LLM WEIGHTS</span><span>RECORDED NATIVE EXECUTION</span><span>NO LIVE INSTALLATION</span><span>SCHEMATIC SPATIAL LAYOUT</span></div>
+  <details class="native-design-console" id="design-console">
+    <summary>DESIGN WORKBENCH <span>EDIT → VALIDATE → NEW BRANCH → ACTUAL OBSERVATIONS</span></summary>
+    <div class="design-workbench">
+      <div class="design-editors"><div class="design-heading"><h2>Design a new system</h2><button id="design-reset" type="button">COPY SELECTED SYSTEM</button></div>
+        <p id="design-parent">Open this console to copy the selected system. Original records remain immutable.</p>
+        <label for="design-system">SYSTEMSPEC / SOURCE · PORTS · CONNECTIONS · SCHEDULES</label><textarea id="design-system" spellcheck="false" aria-label="Editable science system JSON"></textarea>
+        <label for="design-loss">EXPLICIT OPTIMIZATION LOSS / EDITABLE JSON</label><textarea id="design-loss" spellcheck="false" aria-label="Optimization loss JSON"></textarea>
+      </div>
+      <aside class="design-launch"><span class="section-label">LOCAL NATIVE EXECUTION</span><p id="design-service" role="status">LOCAL WORKER REQUIRED</p>
+        <p>This creates a fresh researcher world. It does not alter the loaded run or migrate an existing society. Python source executes only in the isolated runtime.</p>
+        <label>DEVELOPMENT SEED<input id="design-seed" type="number" value="1301" min="0" max="2147483647" /></label>
+        <label>NATIVE YEARS<input id="design-years" type="number" value="2" min="1" max="4" /></label>
+        <button id="design-validate" type="button" disabled>VALIDATE DESIGN</button>
+        <label class="design-consent"><input id="design-consent" type="checkbox" />I authorize one local Qwen run of this design and loss. This consumes compute.</label>
+        <button id="design-submit" type="button" disabled>QUEUE NATIVE RUN →</button>
+        <p id="design-validation" role="status">No design validated. No experiment submitted.</p>
+        <div class="design-job"><span class="section-label">BRANCH EXECUTION</span><p id="design-job-status" role="status">NO JOB</p><code id="design-job-id"></code><button id="design-result" type="button" disabled>LOAD COMPLETED EVIDENCE</button></div>
+        <p id="design-job-error" role="alert" hidden></p>
+      </aside>
+    </div>
+  </details>
   <section class="controls"><label>DESIGN CANDIDATE<select id="candidate" aria-label="Design candidate"></select></label><label>OBSERVED YEAR<select id="year" aria-label="Observed year"></select></label><button id="step" type="button">NEXT EXECUTION →</button><a href="./sandbox.html">DESIGN CONSOLE ↗</a></section>
   <section class="workspace"><article class="world-panel"><div id="network-heading" class="section-label" tabindex="-1">01 / EXECUTED MECHANISM NETWORK <span id="graph-count"></span></div><div id="native-graph" class="native-graph" role="group" aria-label="Executed mechanisms and connections"></div><p class="legend">Numbers: schedule phases / Lines: actual connections / Arrows: information and control flow. Select a mechanism to inspect its implementation and execution records.</p><div class="researchers"><div class="section-label">RESEARCHERS / YEAR-BOUNDARY SNAPSHOT</div><div id="native-actors"></div></div></article>
     <aside class="inspector"><div class="section-label">02 / IMPLEMENTATION INSPECTOR</div><h2 id="node-name">Select a mechanism</h2><p id="node-meta"></p><p id="native-ports"></p><pre id="native-source"></pre><details><summary>SELECTED EXECUTION EVIDENCE</summary><pre id="native-events"></pre></details></aside></section>

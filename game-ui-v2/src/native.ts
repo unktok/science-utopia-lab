@@ -1,6 +1,7 @@
 import { parseNativeLab, type NativeLab, type NativeCandidate, type NativeNode } from "./nativeContract";
 import "./generative.css";
 import "./native.css";
+import { initializeNativeJobs } from "./nativeJobs";
 
 const el = <T extends HTMLElement>(id: string): T => {
   const item = document.getElementById(id); if (!item) throw new Error(`Missing native UI element ${id}`); return item as T;
@@ -95,4 +96,5 @@ el("step").addEventListener("click", () => {
 });
 el<HTMLInputElement>("load").addEventListener("change", async event => { try { const file = (event.target as HTMLInputElement).files?.[0]; if (file) await load(JSON.parse(await file.text())); } catch (error) { failure(error); } });
 new ResizeObserver(drawEdges).observe(el("native-graph"));
+initializeNativeJobs(() => JSON.parse(selectedSystem().system_spec_json), load);
 fetch("./data/native-design-lab-v1.json").then(response => { if (!response.ok) throw new Error("Use LOAD RUN to select native execution evidence."); return response.json(); }).then(load).catch(failure);
