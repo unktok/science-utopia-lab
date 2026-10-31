@@ -57,6 +57,9 @@ def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
             if (not isinstance(sim, Simulation) or not isinstance(sim.native_system, NativeScienceKernel)
                     or sim.native_system.spec.fingerprint != spec.fingerprint):
                 raise ValueError("factory did not bind the suggested SystemSpec to the native research world")
+            if (getattr(sim.args, "seed", None) != seed
+                    or getattr(sim.llm, "run_seed", None) != seed):
+                raise ValueError("factory native world/model seed differs from the requested replicate")
             sim.run()
             measurement = measure_native_world(sim, run_id=run_id)
             evaluations.append(measurement)

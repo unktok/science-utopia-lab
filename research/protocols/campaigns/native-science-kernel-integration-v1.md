@@ -68,3 +68,14 @@ Add a two-year-project test for both original and native coordinators. Do not
 force one-year projects, fabricate papers or change the population/loss to
 avoid the state. The failed output/cache remain intact; the amended live run
 starts in another clean commit/worktree with the same seed and settings.
+
+## Amendment 2 — empty paper tables retain their columns
+
+The amended run at `0879d1b` passed publication then exposed `KeyError:
+author_type` in original funding's empty-paper table. The earlier QA subclass
+used its funding-feedback overlay, which handles empty tables; this missed the
+plain Simulation funding consumer. Preserve the declared paper DataFrame
+columns for empty as well as nonempty years, and exercise the original funding
+method in the multi-year-project regression. No grant/industry-funding rules,
+model choices or scientific parameters change. Retain this second failure;
+run amendment 2 from another clean commit/worktree.

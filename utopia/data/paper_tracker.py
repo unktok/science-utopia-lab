@@ -336,7 +336,11 @@ class PaperTracker:
                 'project_end_year': paper.project_end_year,
                 'maturity': paper.maturity,
             })
-        return pd.DataFrame(list_of_papers)
+        # A legitimate empty publication year still has the same table contract.
+        # Funding consumers filter/index these columns even when no paper exists.
+        return pd.DataFrame(list_of_papers, columns=[
+            'id', 'title', 'author_id', 'author_type', 'year', 'status',
+            'project_start_year', 'project_end_year', 'maturity'])
 
     def get_papers_before_year(self, year: int) -> Tuple[List[ArchivedPaper], List[ArchivedPaper]]:
         """Get all papers accepted before a given year"""

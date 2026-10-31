@@ -53,10 +53,15 @@ def test_original_world_is_an_exact_instance(tmp_path, fixed_corpus, monkeypatch
 
 def test_long_projects_allow_empty_publication_years_in_both_coordinators(tmp_path, fixed_corpus, monkeypatch):
     from tests.runtime import test_portable_checkpoint_integration as fixture
+    from utopia.simulation import Simulation
+    from types import MethodType
     monkeypatch.setattr(fixture, 'DIRECTION', next(d for d in fixture.AVAILABLE_DIRECTIONS if d.years == 2))
     for label, kernel in [('original', None), ('native', NativeScienceKernel(legacy_world_system()))]:
         seed()
         sim, _ = make_sim(tmp_path / label, native=kernel)
+        # Exercise original funding, not the fixture subclass's feedback overlay.
+        sim._run_phase_5_update_funding = MethodType(Simulation._run_phase_5_update_funding, sim)
+        sim.run_one_round = MethodType(Simulation.run_one_round, sim)
         sim.run()
         assert sim.yearly_results[0]['decisions'] == {'total_accepted': 0, 'total_rejected': 0}
         assert any(r['decisions']['total_accepted'] for r in sim.yearly_results[1:])

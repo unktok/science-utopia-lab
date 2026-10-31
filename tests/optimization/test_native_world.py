@@ -36,3 +36,14 @@ def test_native_technical_failure_is_not_a_loss_penalty():
         seeds=[42], simulation_factory=factory, loss_spec=loss_spec())
     assert result.status == "failed" and result.loss is None
     assert result.metadata["technical_failures"][0]["loss"] is None
+
+
+def test_factory_cannot_mislabel_a_different_seed(tmp_path, fixed_corpus):
+    system = legacy_world_system()
+    def wrong_seed(spec, run_seed, run_id):
+        return make_sim(tmp_path / run_id, native=NativeScienceKernel(spec))[0]
+    result = evaluate_native_suggestion(Suggestion('seed-mismatch', system.to_dict(), 0, 'initial'),
+        seeds=[43], simulation_factory=wrong_seed, loss_spec=loss_spec())
+    assert result.status == 'failed' and result.loss is None
+    assert not result.metadata['measurements']
+    assert 'seed differs' in result.metadata['technical_failures'][0]['error']
