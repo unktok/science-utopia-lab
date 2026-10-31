@@ -240,7 +240,8 @@ def validate_code_result(artifact: dict[str, Any], result: Any) -> None:
     if not isinstance(result["state"], dict) or not isinstance(result["outputs"], dict):
         raise CodeExecutionError("outputs and state must be objects")
     if set(result["outputs"]) != set(artifact["outputs"]):
-        raise CodeExecutionError("output ports do not match artifact")
+        raise CodeExecutionError("step outputs must contain exactly ports " + str(list(artifact["outputs"]))
+                                 + "; actual ports: " + str(list(result["outputs"])))
     try:
         Draft202012Validator(artifact["state_schema"]).validate(result["state"])
         for port, values in result["outputs"].items():

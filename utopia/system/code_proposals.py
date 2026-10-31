@@ -69,9 +69,9 @@ The required input and output payload schemas follow:
     for index in range(max_attempts):
         body = {
             "model": model, "messages": messages, "stream": False,
-            "think": False, "format": "json", "keep_alive": "5m",
+            "think": True, "format": "json", "keep_alive": "5m",
             "options": {"temperature": 0.2, "seed": seed + index,
-                        "num_predict": 3500, "num_ctx": 12288},
+                        "num_predict": 6144, "num_ctx": 12288},
         }
         response = requests.post(endpoint + "/api/chat", json=body, timeout=(10, 240))
         response.raise_for_status()

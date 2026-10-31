@@ -67,7 +67,6 @@ institution could use. You choose the artifact schema, algorithm and memory repr
 For decisions copy each original paper metadata UNCHANGED into payload.paper, its id into
 paper_id and incoming batch_id into batch_id. Both accept and reject are legal. final_score
 may be numeric. Emit actor_ids using paper.author_id and artifact_ids using paper.id.
-First design: use review information and persistent memory in your invented algorithm.
 Keep implementation concise (roughly 25 lines). This is an engineering fixture, not a
 claim of a good real-world scientific policy. Do not invent fields in input papers.
 """
@@ -91,7 +90,7 @@ claim of a good real-world scientific policy. Do not invent fields in input pape
         write_json(args.output / "progress.json", report)
         return result
 
-    initial = propose(0, task, [])
+    initial = propose(0, task + "\nFor this initial design, use review information and persistent memory.", [])
     for index, objective in enumerate(("accepted-record-count", "rejected-record-count"), start=1):
         execution = initial["evidence"]
         suggestion = Suggestion("initial-" + objective, execution["system"], 0, "initial")
@@ -99,8 +98,13 @@ claim of a good real-world scientific policy. Do not invent fields in input pape
         direction = "accepted" if objective.startswith("accepted") else "rejected"
         history = [{"source": initial["artifact"]["source"], "artifact": initial["artifact"],
                     "observation": observation.to_dict()}]
-        instruction = task + f"\nNOW REVISE THE PREVIOUS CODE to minimize loss = -{direction} record count.\n"
-        instruction += "Use the actual observed loss and state below. Change the implementation, not the objective.\n"
+        instruction = (f"OPTIMIZATION TASK: minimize loss = -{direction} record count.\n"
+                       f"Previously {execution['summary'][direction]} of 5 papers were {direction},"
+                       f" so loss was {observation.loss}. Larger {direction} count means SMALLER loss.\n"
+                       "Revise the actual Python algorithm in the previous source. Merely renaming its"
+                       " label does not change behavior. No particular threshold or review-based"
+                       " selection rule is required; those were just the initial implementation.\n") + task
+        instruction += "\nUse the actual observed loss and state below. Change the implementation, not the objective.\n"
         instruction += "No acceptance quota or fairness veto is imposed; all-accept or all-reject is legal.\n"
         revised = propose(index, instruction, history)
         candidate = Suggestion("revision-" + objective, revised["evidence"]["system"], 1,
