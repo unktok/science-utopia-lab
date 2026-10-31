@@ -14,6 +14,7 @@ def propose_local_code(
     history: list[dict[str, Any]], validate_executable: Callable[[dict], Any],
     model: str = "qwen3:8b", endpoint: str = "http://localhost:11434",
     seed: int = 911, max_attempts: int = 3,
+    record_attempts: Callable[[list[dict]], None] | None = None,
 ) -> dict[str, Any]:
     """Generate actual source, not selection from a prewritten rule catalog.
 
@@ -38,9 +39,14 @@ You may use loops, conditionals, helpers, imports from the Python standard libra
 sorting, dictionaries, lists, arbitrary JSON memory, and invent your own algorithm.
 No external packages, network, files, or clock dependence. Use random only if needed:
 the runner seeds it. Do not use hash() for randomness. All persistence is returned state.
-context contains period, phase, random_seed, parameters, state, inputs.
-The first state is {}. Each input port is a LIST of delivered records; access its
+context is a DICTIONARY, NOT a tuple: use context['period'], context['state'],
+context['inputs']. Never unpack it as period, phase, ... = context.
+Other keys are phase, random_seed, parameters. The first state is {}.
+Each input port is a LIST of delivered records; access its
 data as record['payload'], not record directly. Some lists may be empty.
+For any input port: for record in context['inputs']['port_name']:
+    payload = record['payload']
+Never call .items() on a port's list.
 Return EXACTLY {'outputs': {port_name: [record, ...], ...}, 'state': {...}}.
 Every declared output port MUST appear, even if empty. Every output record is
 {'payload': {...}, 'actor_ids': [string,...], 'artifact_ids': [string,...]}.
@@ -91,14 +97,18 @@ The required input and output payload schemas follow:
             validate_code_artifact(artifact)
             evidence = validate_executable(artifact)
             record["status"] = "complete"
+            if record_attempts:
+                record_attempts(attempts)
             return {"artifact": artifact, "rationale": proposal["rationale"],
                     "receipt": receipt, "attempts": attempts, "evidence": evidence}
         except Exception as error:
             record["status"] = "invalid"
             record["error"] = str(error)[:4000]
+            if record_attempts:
+                record_attempts(attempts)
             messages = [*messages, {"role": "assistant", "content": text},
                         {"role": "user", "content": (
                             "Actual validation/execution failed: " + record["error"]
                             + "\nRepair the implementation and return a complete JSON proposal."
                         )}]
-    raise ValueError("local executable proposal exhausted repairs: " + json.dumps(attempts))
+    raise ValueError("local executable proposal exhausted repairs: " + attempts[-1]["error"])

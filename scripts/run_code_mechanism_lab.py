@@ -57,6 +57,10 @@ def main():
     }
     task = """Invent a stateful research commons institution. It receives review_batches
 with papers (full metadata) and reviews keyed by paper id; each review contains overall_score.
+Concrete input access: for delivered in context['inputs']['review_batches']:
+    batch = delivered['payload']
+    for paper in batch['papers']:
+        reviews = batch['reviews'].get(paper['id'], [])
 It must produce publication-compatible decisions, and also invent at least one new
 additional artifact type and emit artifacts carrying substantive information that a future
 institution could use. You choose the artifact schema, algorithm and memory representation.
@@ -80,7 +84,9 @@ claim of a good real-world scientific policy. Do not invent fields in input pape
                 return run_code_lab(artifact, executor)
             result = propose_local_code(task=instruction, input_schemas=INPUT_SCHEMAS,
                                         required_outputs=REQUIRED_OUTPUTS, history=history,
-                                        validate_executable=probe, seed=911 + 10 * index)
+                                        validate_executable=probe, seed=911 + 10 * index,
+                                        record_attempts=lambda attempts: write_json(
+                                            args.output / f"proposal-{index}.attempts.json", attempts))
         report["proposals"].append(result)
         write_json(args.output / "progress.json", report)
         return result

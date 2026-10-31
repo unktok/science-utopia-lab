@@ -97,7 +97,7 @@ def validate_code_artifact(artifact: Mapping[str, Any]) -> None:
 # This bootstrap is trusted; generated source and context arrive only on stdin.
 # Python source is deliberately NOT restricted to an arithmetic/AST vocabulary.
 _BOOTSTRAP = r'''
-import contextlib, hashlib, json, os, random, resource, sys
+import contextlib, hashlib, json, os, random, resource, sys, traceback
 resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
 resource.setrlimit(resource.RLIMIT_CPU, (3, 3))
 resource.setrlimit(resource.RLIMIT_FSIZE, (1048576, 1048576))
@@ -111,7 +111,7 @@ try:
         result = namespace['step'](request['context'])
     encoded = json.dumps({'ok': True, 'result': result}, allow_nan=False, separators=(',', ':'))
 except BaseException as error:
-    encoded = json.dumps({'ok': False, 'error': type(error).__name__ + ': ' + str(error)[:2000]})
+    encoded = json.dumps({'ok': False, 'error': traceback.format_exc(limit=5)[-4000:]})
 sys.stdout.write(encoded)
 '''
 

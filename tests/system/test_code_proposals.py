@@ -60,6 +60,10 @@ def test_no_fallback_after_failed_probes(monkeypatch):
     prepare(monkeypatch, [proposal()])
     def fail(value):
         raise ValueError("genuine failure")
+    recorded = []
     with pytest.raises(ValueError, match="exhausted repairs"):
         propose_local_code(task="Invent", input_schemas={}, required_outputs={"out": {}},
-                           history=[], validate_executable=fail, max_attempts=1)
+                           history=[], validate_executable=fail, max_attempts=1,
+                           record_attempts=lambda attempts: recorded.extend(deepcopy(attempts)))
+    assert len(recorded) == 1
+    assert recorded[0]["error"] == "genuine failure"
