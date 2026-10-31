@@ -19,13 +19,16 @@ SCHEMA = 'scienceutopia.native-score-function.v1'
 
 
 class NativeScoreFunctionSearch:
-    def __init__(self, system, bindings, *, loss_spec, seed=0, sigma=0.7, learning_rate=0.1):
+    def __init__(self, system, bindings, *, loss_spec, seed=0, sigma=0.7, learning_rate=0.1, sampling='iid'):
         validate_loss_spec(loss_spec)
         if (not bindings or type(seed) is not int or not math.isfinite(sigma) or sigma <= 0
                 or not math.isfinite(learning_rate) or learning_rate <= 0):
             raise ValueError('explicit coordinates, seed, positive sigma/learning rate required')
         self.system, self.bindings, self.loss_hash = system, clone(bindings), loss_spec_sha256(loss_spec)
         self.seed, self.sigma, self.learning_rate = seed, float(sigma), float(learning_rate)
+        if sampling not in {'iid', 'antithetic'}:
+            raise ValueError('sampling must be iid or antithetic')
+        self.sampling = sampling
         means = []
         seen = set()
         for binding in self.bindings:
@@ -47,7 +50,13 @@ class NativeScoreFunctionSearch:
         if self.pending or type(count) is not int or count < 2:
             raise ValueError('finish current batch first; at least two draws for leave-one-out baseline')
         generator = torch.Generator().manual_seed(int(digest({'seed': self.seed, 'iteration': self.iteration})[:15], 16))
-        latent = self.mean.detach() + self.sigma * torch.randn((count, len(self.bindings)), generator=generator, dtype=torch.float64)
+        if self.sampling == 'antithetic':
+            if count % 2:
+                raise ValueError('antithetic sampling requires an even count')
+            noise = torch.randn((count // 2, len(self.bindings)), generator=generator, dtype=torch.float64)
+            latent = self.mean.detach() + self.sigma * torch.cat((noise, -noise))
+        else:
+            latent = self.mean.detach() + self.sigma * torch.randn((count, len(self.bindings)), generator=generator, dtype=torch.float64)
         for index, z in enumerate(latent):
             operations = [{'op': 'replace', 'path': binding['path'],
                            'value': binding['lower'] + (binding['upper'] - binding['lower']) * float(torch.sigmoid(value))}
@@ -80,22 +89,34 @@ class NativeScoreFunctionSearch:
                   'draws': clone(self.pending), 'observations': [o.to_dict() for o in ordered],
                   'end_to_end_native_autograd': False,
                   'gradient_target': 'expected native loss under declared bounded Gaussian-logistic design distribution'}
+        if self.sampling == 'antithetic':
+            report.update(method='native-antithetic-score-function',
+                feedback_scope='complete fresh native executions including subsequent fixed-LLM responses; not pathwise backpropagation')
         # Dropping failed samples can bias the estimator; do not silently
         # optimize a conditional-on-success objective or invent failure losses.
         if any(o.status != 'complete' or o.metadata.get('technical_failures') for o in ordered):
             report.update(status='not-updated-technical-failure', gradient=None)
         else:
             costs = torch.tensor([o.loss for o in ordered], dtype=torch.float64)
-            baseline = (costs.sum() - costs) / (len(costs) - 1)
             latent = torch.tensor([r['latent'] for r in self.pending], dtype=torch.float64)
-            log_probability = torch.distributions.Normal(self.mean, self.sigma).log_prob(latent).sum(-1)
-            score_loss = ((costs - baseline).detach() * log_probability).mean()
-            gradient, = torch.autograd.grad(score_loss, self.mean)
+            if self.sampling == 'antithetic':
+                half = len(costs) // 2
+                # Never use the iid leave-one-out baseline here: paired draws
+                # are dependent. This is the paired score-function identity.
+                noise = (latent[:half] - self.mean.detach()) / self.sigma
+                gradient = ((costs[:half] - costs[half:])[:, None] * noise / (2 * self.sigma)).mean(0)
+                baseline_label = 'antithetic pair difference; no dependent leave-one-out baseline'
+            else:
+                baseline = (costs.sum() - costs) / (len(costs) - 1)
+                log_probability = torch.distributions.Normal(self.mean, self.sigma).log_prob(latent).sum(-1)
+                score_loss = ((costs - baseline).detach() * log_probability).mean()
+                gradient, = torch.autograd.grad(score_loss, self.mean)
+                baseline_label = 'leave-one-out; independent of own design draw'
             updated = self.mean.detach() - self.learning_rate * gradient
             if not torch.isfinite(updated).all():
                 raise ValueError('nonfinite score-function update')
             report.update(status='updated', losses=costs.tolist(), gradient=gradient.tolist(),
-                          baseline='leave-one-out; independent of own design draw')
+                          baseline=baseline_label)
             self.mean = updated.requires_grad_()
         report['mean_after'] = self.mean.detach().tolist()
         self.iteration += 1
@@ -103,20 +124,25 @@ class NativeScoreFunctionSearch:
         return report
 
     def state_dict(self):
-        return {'schema': SCHEMA, 'system': self.system.to_dict(), 'bindings': clone(self.bindings),
+        state = {'schema': SCHEMA, 'system': self.system.to_dict(), 'bindings': clone(self.bindings),
                 'loss_spec_sha256': self.loss_hash, 'seed': self.seed, 'sigma': self.sigma,
                 'learning_rate': self.learning_rate, 'iteration': self.iteration,
                 'mean': self.mean.detach().tolist(), 'pending': clone(self.pending)}
+        if self.sampling != 'iid':
+            state['sampling'] = self.sampling
+        return state
 
     @classmethod
     def from_state(cls, state, *, loss_spec):
         from utopia.system import SystemSpec
         expected = {'schema', 'system', 'bindings', 'loss_spec_sha256', 'seed', 'sigma',
                     'learning_rate', 'iteration', 'mean', 'pending'}
+        if 'sampling' in state:
+            expected.add('sampling')
         if set(state) != expected or state['schema'] != SCHEMA or state['loss_spec_sha256'] != loss_spec_sha256(loss_spec):
             raise ValueError('score-function checkpoint schema/loss mismatch')
         search = cls(SystemSpec.from_dict(state['system']), state['bindings'], loss_spec=loss_spec,
-                     seed=state['seed'], sigma=state['sigma'], learning_rate=state['learning_rate'])
+                     seed=state['seed'], sigma=state['sigma'], learning_rate=state['learning_rate'], sampling=state.get('sampling', 'iid'))
         if type(state['iteration']) is not int or state['iteration'] < 0:
             raise ValueError('invalid gradient iteration')
         mean = torch.tensor(state['mean'], dtype=torch.float64)

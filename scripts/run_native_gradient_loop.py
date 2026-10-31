@@ -21,6 +21,8 @@ def main():
     parser.add_argument('--years', type=int, default=4)
     parser.add_argument('--samples', type=int, default=2)
     parser.add_argument('--batches', type=int, default=1)
+    parser.add_argument('--sampling', choices=['iid', 'antithetic'], default='iid')
+    parser.add_argument('--corpus-years', type=int)
     args = parser.parse_args()
     if args.samples < 2 or args.batches < 1:
         parser.error('samples>=2 and batches>=1 required')
@@ -29,14 +31,14 @@ def main():
     from utopia.optimization.native_factory import LocalQwenNativeFactory
     from utopia.optimization.native_gradient import NativeScoreFunctionSearch, NativeGradientCampaign
     loss = load_loss_spec(args.loss)
-    factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years,
+    factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years, corpus_years=args.corpus_years,
                                     experiment_binding={'loss_spec': loss})
     system = SystemSpec.from_dict(json.loads(args.system.read_text()))
-    search = NativeScoreFunctionSearch(system, json.loads(args.bindings.read_text()), loss_spec=loss, seed=args.search_seed)
+    search = NativeScoreFunctionSearch(system, json.loads(args.bindings.read_text()), loss_spec=loss, seed=args.search_seed, sampling=args.sampling)
     campaign = NativeGradientCampaign(args.output / 'campaign', search, loss_spec=loss, seeds=[args.seed],
         world_binding={'source_commit': factory.source_commit, 'model_digest': factory.model_digest,
                        'corpus_sha256': factory.corpus_sha256, 'dataset_identity': factory.dataset_identity,
-                       'years': args.years, 'data_cache': str(args.data_cache.resolve())})
+                       'years': args.years, 'corpus_years': factory.corpus_years, 'data_cache': str(args.data_cache.resolve())})
     while len(campaign.state['reports']) < args.batches:
         report = campaign.advance(simulation_factory=factory, count=args.samples)
         print(json.dumps({key: report[key] for key in ['iteration', 'status', 'mean_before', 'mean_after', 'gradient']}), flush=True)

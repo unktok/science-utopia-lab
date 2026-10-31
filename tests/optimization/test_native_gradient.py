@@ -61,6 +61,35 @@ def test_partial_replicate_failure_cannot_condition_gradient_on_success():
     assert report['mean_after'] == report['mean_before']
 
 
+def test_antithetic_estimate_uses_paired_native_losses_without_iid_baseline():
+    search = NativeScoreFunctionSearch(design(), [{'path': '/mechanisms/0/parameters/free-design-parameter', 'lower': 0., 'upper': 1.}],
+        loss_spec=loss_spec(), seed=42, sampling='antithetic')
+    first, second = search.ask(2)
+    assert search.pending[0]['latent'][0] == -search.pending[1]['latent'][0]
+    resumed = NativeScoreFunctionSearch.from_state(search.state_dict(), loss_spec=loss_spec())
+    expected = (1. - 3.) * search.pending[0]['latent'][0] / (2 * search.sigma**2)
+    report = resumed.tell([observation(search, first, 1.), observation(search, second, 3.)])
+    assert report['gradient'][0] == pytest.approx(expected)
+    assert report['method'] == 'native-antithetic-score-function'
+    assert 'not pathwise' in report['feedback_scope']
+
+
+def test_equal_paired_costs_are_zero_gradient_not_rerolled():
+    search = NativeScoreFunctionSearch(design(), [{'path': '/mechanisms/0/parameters/free-design-parameter', 'lower': 0., 'upper': 1.}],
+        loss_spec=loss_spec(), sampling='antithetic')
+    suggestions = search.ask(2)
+    report = search.tell([observation(search, s, -3.) for s in suggestions])
+    assert report['gradient'] == [0.]
+    assert report['mean_before'] == report['mean_after']
+
+
+def test_paired_draws_require_even_count():
+    search = NativeScoreFunctionSearch(design(), [{'path': '/mechanisms/0/parameters/free-design-parameter', 'lower': 0., 'upper': 1.}],
+        loss_spec=loss_spec(), sampling='antithetic')
+    with pytest.raises(ValueError, match='even'):
+        search.ask(3)
+
+
 def test_mismatched_gradient_evidence_cannot_update():
     search = optimizer()
     first, second = search.ask(2)

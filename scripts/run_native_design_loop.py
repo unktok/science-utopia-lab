@@ -22,7 +22,8 @@ def main():
     parser.add_argument('--seed', type=int, default=1301)
     parser.add_argument('--years', type=int, default=4)
     parser.add_argument('--budget', type=int, default=2)
-    parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous', 'fixed'], default='example')
+    parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous', 'fixed', 'source-revision'], default='example')
+    parser.add_argument('--revision-node', help='existing free-source observation/messages node to revise')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
     parser.add_argument('--designer-brief', type=Path, help='additional versioned task for the LLM designer')
     parser.add_argument('--corpus-years', type=int, help='explicit corpus horizon >= native simulation years')
@@ -34,6 +35,8 @@ def main():
         parser.error('endogenous mode requires a system that actually emits design proposals')
     if args.proposer == 'fixed' and (args.budget != 1 or args.system is None):
         parser.error('fixed mode evaluates exactly one explicitly supplied system')
+    if args.proposer == 'source-revision' and (not args.revision_node or args.system is None):
+        parser.error('source-revision requires an initial system and explicit revision node')
     from utopia.optimization.loss import load_loss_spec
     from utopia.optimization.native_design import NativeDesignCampaign, LLMNativeDesignProposer, propose_from_native_world
     from utopia.optimization.native_factory import LocalQwenNativeFactory
@@ -69,7 +72,7 @@ def main():
     proposer = example
     if args.proposer == 'endogenous':
         proposer = propose_from_native_world
-    if args.proposer == 'llm':
+    if args.proposer in {'llm', 'source-revision'}:
         from utopia.models.models import VLLMServerModel
         from utopia.models.response_cache import CompletedResponseCache
         designer = VLLMServerModel(factory.model, base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
@@ -80,7 +83,12 @@ def main():
             'model': factory.model, 'model_revision': factory.model_digest, 'corpus_sha256': factory.corpus_sha256,
             'seed': args.seed, 'science_config': {'source_commit': factory.source_commit, 'loss_spec': loss,
                                                 'thinking_override': False, 'max_tokens': 8192, 'designer_brief_sha256': digest(brief)}})
-        proposer = LLMNativeDesignProposer(designer, instructions=(
+        if args.proposer == 'source-revision':
+            from utopia.optimization.native_feedback import NativeSourceRevisionProposer
+            proposer = NativeSourceRevisionProposer(designer, executor, node_id=args.revision_node,
+                receipts=args.output / 'design-proposals', instructions=brief)
+        else:
+            proposer = LLMNativeDesignProposer(designer, instructions=(
             'Keep native annual research/submission/funding prerequisites valid. Native selection requires reviews. '
             'A new Python node uses implementation code.python.v1; parameters contain code_artifact with exactly '
             '{schema:scienceutopia.code-mechanism.v1,label,source,inputs,outputs,state_schema} and runtime_image_id=' + executor.image_id +
@@ -108,7 +116,7 @@ def main():
             print(json.dumps({'completed': len(controller.state['records']), 'budget': args.budget,
                               'status': record['observation']['status'], 'loss': record['observation']['loss']}), flush=True)
     finally:
-        if args.proposer == 'llm':
+        if args.proposer in {'llm', 'source-revision'}:
             designer.response_cache.close()
     write_json_atomic(args.output / 'completion.json', {'status': 'budget-exhausted', 'wall_seconds_this_process': time.monotonic()-started,
         'source_commit': factory.source_commit, 'proposer': args.proposer, 'budget': args.budget,
