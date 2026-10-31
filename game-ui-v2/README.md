@@ -39,14 +39,44 @@ policy broadcasts. No effect appears without an active choreography action.
 
 ## Research arcology hub
 
-The native institution evidence view is at `/native.html`. Its English
+The native institution evidence/design view is at `/native.html`. Its English
 Institution Foundry control room is original schematic pixel/vector art;
 the adjacent counts, year and selected mechanism come from checksum-bound
 original researcher-world records. Inspect source, tensor programs, wiring,
-schedules, researchers/resources and real native loss lineage. It is read only:
-no live installation or full-world autograd is implied. `/generative.html`
+schedules, researchers/resources and real native loss lineage. Existing records
+remain read only. An optional local design workbench now edits full SystemSpec
+and explicit LossSpec JSON, validates it, and queues one explicitly authorized
+fresh native branch. It does not migrate a live society or imply full-world
+autograd. `/generative.html`
 remains a separate numeric-miniature method viewer, not that native world.
 See `research/tracks/native-design-ui-v1.md` and asset provenance for scope.
+
+For actual local submission, build first and use the loopback-only server from
+a clean commit-pinned checkout (do not edit its source while a worker runs):
+
+```sh
+cd game-ui-v2
+npm run build
+cd ..
+.venv/bin/python scripts/serve_native_lab.py --queue outputs/native-ui/queue
+```
+
+Open `http://127.0.0.1:4591/native.html`, expand DESIGN WORKBENCH, edit and
+validate, then explicitly authorize and queue the run. Nothing executes merely
+by viewing or validating. A separate one-writer process handles one pending job:
+
+```sh
+.venv/bin/python scripts/serve_native_lab.py --queue outputs/native-ui/queue \
+  --worker-once --data-cache /absolute/path/to/compatible/native/cache
+```
+
+Completed results load into the same native viewer with checksum validation.
+The worker uses the original fixed-Qwen researcher world, five independent
+balanced authors and at most four native years for interactive jobs. Technical
+failure yields no numeric penalty. This is a local development service, not a
+public multi-user application; no command strings, request paths or credentials
+are accepted, historical held-out seeds remain reserved, and generated code
+executes only through the existing isolated container runtime.
 
 Open `hub.html` for the shared in-world transit deck. Three pixel-art district
 gates lead to the commit-pinned research city, the synthetic SystemSpec

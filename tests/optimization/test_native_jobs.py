@@ -27,11 +27,14 @@ def test_queue_persists_and_does_not_execute_on_submit(tmp_path):
     row = queue.submit(request(), source_commit=REVISION)
     assert row['status'] == 'queued' and row['result'] is None
     assert NativeJobQueue(tmp_path).get(row['job_id']) == row
+    assert queue.submit(request(), source_commit=REVISION)['job_id'] == row['job_id']
     with pytest.raises(ValueError, match='completed evidence'):
         queue.evidence(row['job_id'])
-    queue.submit(request(), source_commit=REVISION)
+    other = request(); other['years'] = 3
+    queue.submit(other, source_commit=REVISION)
     with pytest.raises(ValueError, match='queue is full'):
-        queue.submit(request(), source_commit=REVISION)
+        third = request(); third['years'] = 4
+        queue.submit(third, source_commit=REVISION)
 
 
 @pytest.mark.parametrize('change', [
@@ -86,6 +89,22 @@ def test_technical_failure_is_null_not_penalty(tmp_path):
     assert result['status'] == 'failed' and result['result'] is None
 
 
+def test_interrupted_worker_keeps_same_job_pending_for_resume(tmp_path):
+    from utopia.runtime.checkpointing import PortableStop
+    queue = NativeJobQueue(tmp_path)
+    job = queue.submit(request(), source_commit=REVISION)
+    def interrupted(*args): raise PortableStop('explicit interruption before factory ready')
+    with pytest.raises(PortableStop):
+        queue.run_one(interrupted, source_commit=REVISION)
+    assert queue.get(job['job_id'])['status'] == 'running'
+    seen = []
+    def resumed(root, body):
+        seen.append(root.name)
+        raise RuntimeError('intentional terminal technical failure after same-job resume')
+    assert queue.run_one(resumed, source_commit=REVISION)['status'] == 'failed'
+    assert seen == [job['job_id']]
+
+
 def test_only_one_queue_worker_can_execute(tmp_path):
     queue = NativeJobQueue(tmp_path)
     with queue.worker_lock():
@@ -105,6 +124,8 @@ def test_loopback_api_rejects_cross_origin_host_and_missing_token(tmp_path, monk
     try:
         assert requests.get(base + '/native-api/session', headers={'Origin': 'https://attacker.invalid'}, timeout=5).status_code == 403
         assert requests.get(base + '/native-api/session', headers={'Host': 'attacker.invalid'}, timeout=5).status_code == 403
+        assert requests.head(base + '/native.html', headers={'Host': 'attacker.invalid'}, timeout=5).status_code == 403
+        assert requests.get(base + '/native.html', timeout=5).headers['X-Frame-Options'] == 'DENY'
         token = requests.get(base + '/native-api/session', timeout=5).json()['token']
         assert requests.post(base + '/native-api/jobs', json=request(), headers={'Origin': base}, timeout=5).status_code == 403
         headers = {'Origin': base, 'X-Native-Lab-Token': token}

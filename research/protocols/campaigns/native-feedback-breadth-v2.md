@@ -52,3 +52,17 @@ inputs, not selection directly. Use one antithetic pair, search seed42,
 sigma0.7 and learning rate0.1 with full fresh native losses. Distinct inputs
 and any changed responses must be checked from response journals; no nonzero
 gradient, beneficial effect or full-world backpropagation is presumed.
+
+## Explicit designer planning amendment
+
+Both unplanned revision routes preserve the inert trigger in early proposals;
+their model rationales discuss a change that the emitted source does not make.
+Keep their terminal native outcomes. A separate planned-source probe records
+an LLM diagnosis/algorithm plan before generating Python, reports exact
+per-author paper-record counts, and assigns an implementation-engineer system
+role rather than the researcher's default system message. Rationale-first JSON
+ordering supports planning but is not itself evidence. Keep researcher model,
+weights, non-thinking setting, population, corpus, horizon and loss unchanged.
+Budget: initial plus one planned revision, at most three technical repairs;
+zero-output source remains technically valid. No hand-written replacement,
+activity veto or selection after an unreported behavioral reroll is permitted.

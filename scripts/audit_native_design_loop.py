@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
-def audit(run, loss, years):
+def audit(run, loss, years, *, require_completion=True):
     from utopia.optimization.loss import evaluate_loss
     from utopia.optimization.native_design import NativeDesignCampaign
     from utopia.replay.converter import ArtifactBundle, convert_artifacts
@@ -112,12 +112,19 @@ def audit(run, loss, years):
             'technical_failures': obs['metadata']['technical_failures'], 'runs': runs})
     if file_sha256(state_path) != before:
         raise ValueError('read-only audit changed campaign state')
-    completion = json.loads((run / 'completion.json').read_text())
+    if (run / 'completion.json').exists():
+        completion = json.loads((run / 'completion.json').read_text())
+    elif not require_completion:
+        completion = {'status': 'separately-recorded-single-job', 'budget': len(rows)}
+    else:
+        raise ValueError('completed campaign receipt required')
     if len(rows) != completion['budget']:
         raise ValueError('terminal record count and declared budget differ')
     mode = saved['binding']['world'].get('proposer', 'example')
     source_scope = ('LLM-generated source revisions; preserved host wiring' if mode == 'source-revision'
                     else 'LLM graph/code proposals' if mode in {'llm', 'llm-intent'} else 'developer-authored example, not LLM invention')
+    if saved['binding']['world'].get('origin') == 'explicit-local-UI-submission':
+        source_scope = 'explicit edited UI branch, not an optimization campaign or model-invented topology'
     return {'schema': 'scienceutopia.native-design-loop-audit.v1', 'binding': saved['binding'],
         'campaign_sha256': before, 'completion': {k: v for k, v in completion.items() if k != 'incumbent'},
         'rows': rows, 'verification': 'checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed',

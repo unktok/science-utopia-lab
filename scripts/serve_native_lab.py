@@ -46,6 +46,20 @@ def make_server(queue, *, source_commit, directory, port=4591):
         def authorized(self):
             return secrets.compare_digest(self.headers.get('X-Native-Lab-Token', ''), token)
 
+        def end_headers(self):
+            self.send_header('X-Frame-Options', 'DENY')
+            self.send_header('Content-Security-Policy', "frame-ancestors 'none'; base-uri 'self'; form-action 'self'")
+            self.send_header('Cross-Origin-Resource-Policy', 'same-origin')
+            super().end_headers()
+
+        def do_HEAD(self):
+            if not self.allowed():
+                return self.reply(403, {'error': 'loopback host/origin required'})
+            translated = Path(self.translate_path(urlsplit(self.path).path)).resolve()
+            if not translated.is_relative_to(static) or translated.is_dir():
+                return self.reply(404, {'error': 'static file not found'})
+            return super().do_HEAD()
+
         def do_GET(self):
             if not self.allowed():
                 return self.reply(403, {'error': 'loopback host/origin required'})

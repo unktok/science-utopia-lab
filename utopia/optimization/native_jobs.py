@@ -77,6 +77,9 @@ class NativeJobQueue:
         now = time.time()
         with self.connection() as db:
             db.execute('BEGIN IMMEDIATE')
+            existing = db.execute("SELECT id FROM jobs WHERE request_hash=? AND source_commit=? AND status IN ('queued','running') ORDER BY created LIMIT 1", (digest(request), source_commit)).fetchone()
+            if existing is not None:
+                return self.get(existing['id'])
             if db.execute("SELECT count(*) FROM jobs WHERE status IN ('queued','running')").fetchone()[0] >= 2:
                 raise ValueError('local queue is full; wait for existing jobs')
             db.execute('INSERT INTO jobs VALUES (?,?,?,?,?,?,?,?,?)',

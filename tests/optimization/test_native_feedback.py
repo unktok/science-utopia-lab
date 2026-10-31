@@ -91,3 +91,23 @@ def test_checkpoint_tampering_cannot_supply_feedback(native_case):
     history[0]['observation']['metadata']['runs'][0]['checkpoint_sha256'] = '0' * 64
     with pytest.raises(ValueError, match='checkpoint hash'):
         feedback_from_native_history(history)
+
+
+def test_model_plan_is_recorded_before_implementation_and_reused(native_case, tmp_path):
+    from utopia.system.design_patch import digest
+    controller, _, executor = native_case
+    calls = []
+    plan = {'diagnosis': 'The actual checkpoint has no delivered messages', 'proposed_algorithm': 'Use actual observed resources', 'evidence_used': 'actual author records'}
+    class PlannedModel:
+        def generate(self, **kwargs):
+            calls.append(kwargs['seed_ctx'])
+            if kwargs['seed_ctx'][0] == 'native_source_plan': return plan, []
+            assert 'YOUR RECORDED ALGORITHM PLAN' in kwargs['prompt']
+            return {'label': 'Planned QA source', 'source': ACTIVE, 'rationale': 'Implement the recorded hypothesis'}, []
+    proposer = NativeSourceRevisionProposer(PlannedModel(), executor, node_id='qa-observer', receipts=tmp_path / 'planned', planning=True)
+    args = (controller.initial, controller.state['records'], 1, loss_spec())
+    patch = proposer(*args)
+    assert proposer(*args) == patch and len(calls) == 2
+    receipt = json.loads((tmp_path / 'planned/source-revision-1-0.json').read_text())
+    assert receipt['plan_sha256'] == digest(plan)
+    assert json.loads((tmp_path / 'planned/source-plan-1-0.json').read_text())['plan'] == plan

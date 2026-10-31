@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--proposer', choices=['example', 'llm', 'llm-intent', 'endogenous', 'fixed', 'source-revision'], default='example')
     parser.add_argument('--record-wire', action='store_true', help='retain actual native cache-miss model inputs locally')
     parser.add_argument('--revision-node', help='existing free-source observation/messages node to revise')
+    parser.add_argument('--designer-plan', action='store_true', help='record an explicit model diagnosis/algorithm plan before source emission')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
     parser.add_argument('--designer-brief', type=Path, help='additional versioned task for the LLM designer')
     parser.add_argument('--corpus-years', type=int, help='explicit corpus horizon >= native simulation years')
@@ -61,7 +62,8 @@ def main():
             'model': factory.model, 'model_digest': factory.model_digest,
             'corpus_sha256': factory.corpus_sha256, 'dataset_identity': factory.dataset_identity,
             'years': args.years, 'corpus_years': factory.corpus_years, 'population': 'five-independent-balanced-researchers',
-            'proposer': args.proposer, 'data_cache': str(args.data_cache.resolve()),
+            'proposer': args.proposer, 'designer_plan': args.designer_plan, 'revision_node': args.revision_node,
+            'record_wire': args.record_wire, 'data_cache': str(args.data_cache.resolve()),
             'designer_brief_sha256': digest(brief), 'initial_provenance_sha256': digest(initial_provenance)})
     executor = DockerCodeExecutor()
     def example(parent, history, index, loss_spec):
@@ -83,11 +85,11 @@ def main():
             'protocol': 'native-design-proposal-v1', 'cell': controller.initial.fingerprint,
             'model': factory.model, 'model_revision': factory.model_digest, 'corpus_sha256': factory.corpus_sha256,
             'seed': args.seed, 'science_config': {'source_commit': factory.source_commit, 'loss_spec': loss,
-                                                'thinking_override': False, 'max_tokens': 8192, 'designer_brief_sha256': digest(brief)}})
+                           'thinking_override': False, 'max_tokens': 8192, 'designer_brief_sha256': digest(brief), 'designer_plan': args.designer_plan}})
         if args.proposer == 'source-revision':
             from utopia.optimization.native_feedback import NativeSourceRevisionProposer
             proposer = NativeSourceRevisionProposer(designer, executor, node_id=args.revision_node,
-                receipts=args.output / 'design-proposals', instructions=brief)
+                receipts=args.output / 'design-proposals', instructions=brief, planning=args.designer_plan)
         else:
             from utopia.optimization.native_feedback import feedback_from_native_history
             proposer = LLMNativeDesignProposer(designer, instructions=(

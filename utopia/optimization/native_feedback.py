@@ -48,6 +48,11 @@ def feedback_from_native_history(history):
         for run in observation['metadata']['runs']:
             state, kernel = checked_native_state(record, run)
             counts = Counter((e.provenance.get('mechanism_id'), e.event_type) for e in kernel.events)
+            paper_counts = Counter()
+            for paper in state['paper_tracker']['papers']:
+                ids = paper.get('author_id', [])
+                for author in ([ids] if isinstance(ids, str) else ids):
+                    paper_counts[author] += 1
             row['executions'].append({'seed': run['seed'], 'completed_year': kernel.last_year,
                 'checkpoint_sha256': run['checkpoint_sha256'],
                 'mechanism_event_counts': [{'mechanism': node, 'event': event, 'count': count}
@@ -58,6 +63,7 @@ def feedback_from_native_history(history):
                     for a in state['ecosystem_data']['agents'] if a.get('can_author')],
                 'observed_papers': [{key: p.get(key) for key in ('id', 'author_id', 'title', 'review_history')}
                     for p in state['paper_tracker']['papers'][:24]],
+                'observed_paper_records_per_author': dict(paper_counts),
                 'observation_scope': 'completed native checkpoint; at most first 24 real paper records, not invented examples'})
         result.append(row)
     return {'schema': 'scienceutopia.native-design-feedback.v1', 'observations': result,
@@ -71,11 +77,12 @@ class NativeSourceRevisionProposer:
     this route. The separate native graph-intent proposer retains graph freedom.
     Valid inert proposals are never rejected on behavioral grounds.
     """
-    def __init__(self, model, executor, *, node_id, receipts, instructions='', max_attempts=3):
+    def __init__(self, model, executor, *, node_id, receipts, instructions='', max_attempts=3, planning=False):
         if type(max_attempts) is not int or not 1 <= max_attempts <= 5:
             raise ValueError('bounded technical repair budget required')
         self.model, self.executor, self.node_id = model, executor, node_id
         self.receipts, self.instructions, self.max_attempts = Path(receipts), instructions, max_attempts
+        self.planning = planning
 
     def __call__(self, parent, history, index, loss_spec):
         node_index = next(i for i, n in enumerate(parent.mechanisms) if n.mechanism_id == self.node_id)
@@ -113,8 +120,10 @@ class NativeSourceRevisionProposer:
         binding = {'parent_fingerprint': parent.fingerprint, 'history_sha256': digest(history),
                    'loss_spec_sha256': digest(loss_spec), 'node_id': self.node_id, 'index': index,
                    'instructions_sha256': digest(self.instructions)}
-        schema = {'type': 'object', 'additionalProperties': False, 'required': ['label', 'source', 'rationale'],
-                  'properties': {key: {'type': 'string'} for key in ('label', 'source', 'rationale')}}
+        if self.planning:
+            binding['planning'] = True
+        schema = {'type': 'object', 'additionalProperties': False, 'required': ['rationale', 'label', 'source'],
+                  'properties': {key: {'type': 'string'} for key in ('rationale', 'label', 'source')}}
         for attempt in range(self.max_attempts):
             path = self.receipts / f'source-revision-{index}-{attempt}.json'
             if path.exists():
@@ -128,9 +137,31 @@ class NativeSourceRevisionProposer:
                     return receipt['patch']
                 draft, error = receipt['draft'], receipt['error']
             else:
-                draft, _ = self.model.generate(prompt=prompt, seed_ctx=('native_source_revision', index, attempt),
+                plan = None
+                if self.planning:
+                    plan_path = self.receipts / f'source-plan-{index}-{attempt}.json'
+                    if plan_path.exists():
+                        saved_plan = json.loads(plan_path.read_text())
+                        if saved_plan['binding'] != binding or saved_plan['prompt_sha256'] != digest(prompt):
+                            raise ValueError('source planning receipt changed')
+                        plan = saved_plan['plan']
+                    else:
+                        plan_schema = {'type': 'object', 'additionalProperties': False,
+                            'required': ['diagnosis', 'proposed_algorithm', 'evidence_used'],
+                            'properties': {key: {'type': 'string'} for key in ('diagnosis', 'proposed_algorithm', 'evidence_used')}}
+                        plan, _ = self.model.generate(prompt='Before writing code, diagnose why the prior algorithm did or did not act on these actual observations. Propose a substantive executable algorithm change targeting the declared loss. Return {diagnosis,proposed_algorithm,evidence_used}, not source code. Distinguish your hypothesis from an observed benefit.\n' + prompt,
+                            system_prompt='You are a scientific-institution algorithm designer. Ground reasoning in supplied observations; do not merely justify unchanged code.',
+                            seed_ctx=('native_source_plan', index, attempt), response_format={'type': 'json_schema', 'json_object': {'name': 'institution_plan', 'schema': plan_schema}})
+                        if not isinstance(plan, dict) or set(plan) != {'diagnosis', 'proposed_algorithm', 'evidence_used'} or any(not isinstance(v, str) for v in plan.values()):
+                            raise ValueError('invalid model planning output; no source or native score claimed')
+                        write_json_atomic(plan_path, {'binding': binding, 'prompt_sha256': digest(prompt), 'plan': plan}, allow_nan=False)
+                generation_prompt = prompt if plan is None else prompt + '\nYOUR RECORDED ALGORITHM PLAN (hypothesis, not proven improvement):\n' + json.dumps(plan) + '\nNow implement that plan in actual Python. A rationale-only change does not implement a changed algorithm. All technical contracts still apply.'
+                draft, _ = self.model.generate(prompt=generation_prompt, seed_ctx=('native_source_revision', index, attempt),
+                    system_prompt='You implement scientific-institution algorithms as executable Python. Write actual logic from the supplied evidence and task, not a cosmetic rewrite.',
                     max_tokens=4096, response_format={'type': 'json_schema', 'json_object': {'name': 'institution_revision', 'schema': schema}})
                 receipt = {'binding': binding, 'prompt_sha256': digest(prompt), 'feedback': feedback, 'draft': draft, 'loss': None}
+                if plan is not None:
+                    receipt['plan_sha256'] = digest(plan)
                 try:
                     if not isinstance(draft, dict) or set(draft) != {'label', 'source', 'rationale'}:
                         raise ValueError('exact source revision fields required')
