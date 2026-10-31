@@ -1,0 +1,25 @@
+{
+  "schema": "scienceutopia.native-foundry-capture.v1",
+  "base_revision": "94e4123",
+  "capture": "real local Chrome via CDP",
+  "viewport": {
+    "width": 1440,
+    "height": 1250
+  },
+  "clip": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 600
+  },
+  "read_only": true,
+  "art": "schematic, not simulated",
+  "files": {
+    "paper/figures/native-foundry.png": "38d4121d36716be2593683b1d486cdb24af1218f8c963ea62f3a2391350ad9fb",
+    "game-ui-v2/native.html": "34c9722f4b3601898657c4ceecc4669c401d1cfae145e0ae76c4dd92a29b03d7",
+    "game-ui-v2/src/native.ts": "e7dcb617e59b80e966ec6078766831f8a2671770e0dec05da64408280ba0d040",
+    "game-ui-v2/src/native.css": "992ec7268dba9eb797786aacf37b968e4a45fcf1b4d55b018718df62475e3de5",
+    "game-ui-v2/public/assets/noctiluca/production/native-foundry-control-room.svg": "c7c6479a9364905f31cb35ce4ae83179f0baf520c2f3e1a22359a7e3160b5d8e",
+    "game-ui-v2/public/data/native-design-lab-v1.json": "46e445178b6e909a2e4e6352858ef7e5e8651fbb5df9b4594c0ebcd7872a6032"
+  }
+}

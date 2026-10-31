@@ -13,13 +13,14 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{placeins}
 
 \definecolor{draftblue}{HTML}{2457A6}
 \newcommand{\systemspec}{\textsc{SystemSpec}}
 \newcommand{\suto}{\textsc{Suto}}
 \newcommand{\code}[1]{\texttt{#1}}
 
-\title{Objective-Conditioned Black-Box Optimization\\of Simulated Scientific Institutions\\\large Science Utopia Lab --- Working Draft}
+\title{Objective-Conditioned Optimization\\of Simulated Scientific Systems\\\large Science Utopia Lab --- Working Draft, October 31, 2026}
 
 \author{Science Utopia Lab \\
 \texttt{https://github.com/unktok/science-utopia-lab} \\
@@ -30,7 +31,7 @@
 \maketitle
 
 \begin{abstract}
-Prior simulation studies of science compare interventions chosen in advance. We study a different problem: given an explicit objective, can a black-box optimizer search over the institution itself, and how does changing that objective alter the search path and the system selected? Science Utopia Lab extends the \suto{} closed-loop LLM-agent simulator with a versioned design object, a persistent \code{ask}/\code{tell} loop, and strict separation among optimization loss, technical validity, held-out evaluation, and post-evaluation policy. In a preregistered Qwen3-8B study, we hold the simulator, eight-parameter design space, optimizer, budget, and seeds fixed while changing only the loss. Three objectives each evaluate five candidate systems on three common development seeds, producing 45 terminal logical rows. They select two distinct designs, sealed before 15 common held-out runs. Cross-scoring the frozen designs yields a descriptive loss-dependent rank reversal, although all nine paired contrasts have 95\% intervals containing zero. The study therefore demonstrates objective-conditioned institutional search, not stable superiority, optimizer efficiency, structural optimization, or a real-world policy optimum. The broader framework represents evaluation, publication, funding, governance, communication, and other mechanisms as a typed \systemspec{} graph, making whole-system optimization the research target while clearly marking the current fixed-topology experiment as its first restricted slice.
+Prior simulation studies of science compare interventions chosen in advance. We instead ask how an explicit optimization objective conditions the search path and the scientific system selected. Science Utopia Lab extends the \suto{} LLM-agent simulator with versioned system graphs, persistent black-box search, executable institutional code, and hard/soft institution programs while keeping researcher-model weights fixed. A preregistered eight-parameter study changes only the loss across three arms: 45 terminal logical design--seed rows produce two distinct selected systems, frozen before 15 common held-out runs. Cross-scoring yields descriptive objective-dependent ordering, but all nine paired loss intervals contain zero. Separate small native-world probes extend the design variables to source, protocols and wiring. A result-conditioned joint edit executes but worsens its declared loss; a conditional tensor-gradient fit followed by a fresh original-world execution changes negative accepted-decision count from 0 to -3. A model-generated Python institution also executes, but emits no messages. These outcomes distinguish execution, objective improvement and useful institutional invention. Gradients currently traverse represented institutional operations conditional on native observations, not the full LLM-agent world. The contribution is an auditable progression from parameter search toward open-ended scientific-system design, not optimizer superiority, validated science policy, or completed whole-world differentiability.
 \end{abstract}
 
 \section{Introduction}
@@ -70,10 +71,10 @@ This report makes four contributions:
     \item an objective-conditioned research design in which the loss, rather than a hand-selected institution, is the experimental intervention;
     \item a persistent black-box loop that records how observations generate later system proposals and keeps loss, validity, held-out metrics, and decision policy separate;
     \item a first equal-budget, three-objective experiment with frozen winners and complete cross-objective held-out scoring; and
-    \item a typed whole-system representation that extends the design target beyond peer review while refusing to describe the current fixed-topology runtime as structural optimization.
+    \item an executable extension from fixed parameters to institutional source, protocols, wiring and hard/soft programs, with separate native-world probes and explicit derivative boundaries.
 \end{enumerate}
 
-The empirical contribution is intentionally narrow. We hold the simulator, design space, search budget, and seeds fixed while changing only the optimized loss. This isolates the first link in the map above, but the five-candidate budget, frequent technical invalidity, and two distinct winners do not yet support a strong claim about optimizer efficiency or path diversity. The common held-out split completed with no technical failure and entered this draft through an atomic completion gate. We do not claim that any proxy measures scientific value or that a selected candidate should inform real policy.
+The empirical claims have distinct scopes. The three-objective study holds the simulator, design space, search budget, and seeds fixed while changing only the optimized loss; its five-candidate budget, technical invalidity and two distinct winners do not establish optimizer efficiency or rich path diversity. Later native-world probes test broader design freedom at small scale, not a replacement numeric science world. They are development experiments, not extensions of the sealed study's held-out evidence. We do not claim that any proxy measures scientific value or that a selected candidate should inform real policy.
 
 \section{Problem Formulation}
 
@@ -91,7 +92,7 @@ Here $\mathcal{A}$ may be random search, Bayesian optimization, an evolutionary 
 
 We represent $S$ as a \systemspec{} containing agent and artifact types, mechanism instances, typed input/output ports, directed connections, schedules, initial state, invariants, and metadata. Mechanism families may include research, evaluation, publication, funding, governance, communication, collaboration, employment, and education. No family---including evaluation---is structurally mandatory. A publication-only or even empty graph is valid when its declared ports and invariants are satisfied.
 
-The present implementation can describe general typed graphs but executes a restricted subspace through a strict legacy compiler. The compiler accepts the known fixed topology and refuses unsupported node addition, removal, or substitution. This refusal is important: structural freedom in a schema is not yet structural freedom in the runtime. The next runtime milestone is an implementation registry and generic graph executor.
+The preregistered parameter study uses a strict legacy compiler and fixed topology. The newer opt-in native kernel instead executes typed graphs against the original Simulation lifecycle. Atomic edits can add or replace implementations, introduce ports and protocols, and change edges and schedules. Existing research, retrieval, review, publication and funding remain native operations unless explicitly replaced. This is executable structural freedom within declared domain contracts, not unrestricted ontology invention: annual prerequisites, new-role behavior and downstream consumers still require implementation and validation.
 
 \subsection{Four contracts that must remain separate}
 
@@ -139,7 +140,13 @@ $\downarrow$ \hfill canonical events, snapshots, hashes \hfill $\downarrow$\\
 
 \paragraph{Reproducibility boundary.} Campaign files pin the source revision, model and backend, loss hash, search seed, optimization and held-out seed sets, fidelity, worker count, and suggestion budget. Raw model caches and large outputs remain outside Git; compact results, hashes, protocols, and interpretation are versioned.
 
+\paragraph{Original-world containment, not simplification.} A separate numeric miniature supports method tests, including recurrent-world autograd, but is not evidence about the original researcher world. Native extensions must contain that world as a baseline. Deterministic six-year tests match its scientific state, RNG state and model requests under identical scripted replies and clocks. Generated Python runs in pinned no-network containers through declared JSON ports and state; arbitrary generated source is not executed on the host.
+
 \input{metric_conditioned_results}
+
+\FloatBarrier
+\input{native_system_results}
+\FloatBarrier
 
 \section{Objectives as a Science-of-Science Problem}
 
@@ -163,7 +170,9 @@ Research assessment scholarship motivates the explicit separation between measur
 
 \paragraph{Objective misspecification.} The demonstrated objectives are coarse and normatively incomplete. Optimizing them at scale could reward survival without knowledge quality, maximize entropy without epistemic value, or reduce review burden by suppressing valuable evaluation. The two narrow proxy objectives selected the same design, and the diagnostic gaming flags show why proxy-specific improvements must not be treated as welfare improvements.
 
-\paragraph{Restricted action space.} The optimizer currently mutates eight parameters within a fixed legacy topology. Although \systemspec{} can describe arbitrary mechanism graphs, the general executor and topology mutation operators are not yet implemented. We therefore do not claim structural optimization.
+\paragraph{Design freedom versus successful invention.} The held-out study mutates eight parameters within a fixed topology. Native development probes now execute source/protocol/wiring edits, but successful open-ended discovery is incomplete. The live joint proposer was developer-authored and produced a worse candidate. Model-written source executed without activating its message trigger; the host supplied its attachment. Neither a graph API nor an executable code artifact proves useful institutional invention. Novel actors, workflows and protocol semantics still need meaningful downstream behavior.
+
+\paragraph{Conditional rather than whole-world differentiation.} The hard/soft institution fit holds opaque native observations fixed. Text construction, retrieval, arbitrary Python and researcher-response input Jacobians remain outside its pathwise graph. Fixed LLM weights do not remove those dependencies. The numeric miniature's complete recurrent derivative and the native design-distribution score-function route are different methods, not evidence that the original world is fully differentiable.
 
 \paragraph{Sparse paths and no optimizer baseline.} The study has five proposals per arm. Two arms have only two technically valid designs and therefore provide little adaptive-path evidence. No equal-budget random, Sobol, Bayesian, or evolutionary baseline was run, and no optimizer-seed replication was performed. The experiment demonstrates a functioning objective-conditioned loop, not search efficiency or optimizer superiority.
 
@@ -173,11 +182,11 @@ Research assessment scholarship motivates the explicit separation between measur
 
 \section{Roadmap}
 
-The next stage prioritizes breadth before scale. A miniature whole-system slice will use a short horizon, small population, few seeds, and small proposal budget to connect one versioned objective, a structural mechanism grammar, a result-dependent black-box path, a differentiable relaxation with deterministic projection, model-backed outer evaluation, canonical replay, and the game observatory through the same \systemspec{} and provenance contracts. This integration gate does not seek optimizer superiority or statistical stability. After it works end to end, later campaigns will increase seeds, optimizer replications, candidate budgets, population, and horizon one axis at a time and compare random, Sobol, Bayesian, and evolutionary methods under equal budgets.
+The next stage prioritizes remaining design limitations before scale. Native source/protocol/wiring edits and conditional gradient proposals already reach original-world evaluation; the next gate is result-conditioned invention that produces meaningful downstream effects, rather than another hand-built mechanism catalog. It also requires explicit treatment of opaque researcher responses in derivative estimation, and a UI path from editing a design to submitting an isolated branch and inspecting its observations. Same-society migration and recursive improvement of the designer remain longer-term goals. Larger seed sets, optimizer replications, populations and equal-budget method comparisons follow those integration gates; they are not substitutes for them.
 
 \section{Conclusion}
 
-Science Utopia Lab turns institutional design into an explicit computational object. Its present empirical claim is specific: changing the optimized proxy can change the trajectory and frozen institutional design under otherwise common search conditions, and the resulting systems can exchange rank when cross-scored under different losses. This is conceptually different from comparing interventions chosen in advance, because the objective conditions the search that produces the intervention. It is also only a first slice: two objectives collapsed to the same design, invalid proposals truncated two adaptive paths, and five held-out seeds did not establish stable pairwise superiority. The immediate next experiment will integrate mechanism-structure search, a differentiable proposal path, model-backed validation, and game/replay inspection at miniature scale. Replicated paths, equal-budget optimizer comparisons, and larger worlds follow that integration milestone.
+Science Utopia Lab makes the system organizing science a design variable. Changing the optimized proxy selected different parameterized systems in a controlled study, without establishing stable held-out superiority. Later small probes extend the executable object to institutional code, protocols and wiring in the original researcher world, and connect a conditional gradient proposal to fresh native evaluation. Their mixed outcomes matter: a joint edit loses, an accepted-count fit permits all-accept, and generated source can be inert. These are evidence for an auditable design-and-optimization workflow, not a scientific-policy optimum. The remaining goal is broader, consequential institutional invention and faithful derivative treatment without replacing the researcher world with a simpler toy.
 
 \appendix
 
@@ -218,9 +227,21 @@ Long-running multi-agent simulations are difficult to inspect from aggregate tab
 
 The verified replay remains read only: an intervention creates a new, versioned branch rather than mutating recorded history. This interface is supporting research infrastructure, not a contribution to the optimization result itself.
 
+The native Institution Foundry adds a separate view of exact SystemSpecs, code/tensor programs, ports, schedules, year-boundary researcher resources and actual native loss lineage (Figure~\ref{fig:native-foundry}). Its English-language control-room art and spatial layout are presentation-only. Candidate/year/next-execution controls select existing evidence; they do not install a new institution or rerun a society. Conditional soft losses and actual native outcomes are labeled separately.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{figures/native-foundry.png}
+    \caption{Real-browser capture of the native Institution Foundry. The control room is original schematic pixel art, not a simulated location. Mechanism counts, selected design and observed year are derived from checksum-bound native evidence. This is a read-only inspection interface, not a playable institution-installation workflow.}
+    \label{fig:native-foundry}
+\end{figure}
+
+\FloatBarrier
 \section*{Reproducibility Statement}
 
 The repository contains campaign protocols, loss specifications, design-space schemas, compact machine-readable results, artifact hashes, tests, figure-generation code, and UI source. The first closed-loop result records revision \code{9a10029807d5}. The metric-conditioned optimization used clean source commit \code{1078279d1ce833afe9ffb6b7c262da15357b76ab}, study revision \code{23cbe8a107e5}, and protocol tag \code{protocol/metric-conditioned-optimization-v1.1}; its three-winner freeze hash is \code{254c3366e921...}. The commit-pinned cross-evaluation report and independently validated paper slice are hash-recorded in the generated artifact manifest. Large raw outputs remain at their recorded locators and are intentionally not committed.
+
+Native integration, joint-edit, conditional-gradient and generated-source probes retain separate protocols, compact audits and raw locators under \code{research/results/}. Their clean execution revisions are respectively \code{1b2cbcb}, \code{7c91af2}, \code{8468f8c} and \code{33d5bc3}. Independent read-only checks rederive domain counts and caller losses, restore kernels, verify code/image and response-journal hashes, and reconvert canonical events. The native gradient figure is regenerated from the audited compact result and checksum-bound exported fitting history; it does not rerun inference. Local raw-cache paths are provenance locators, not a claim that all large artifacts are distributed with the repository.
 
 \bibliographystyle{plainnat}
 \bibliography{references}

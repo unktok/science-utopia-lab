@@ -1,0 +1,18 @@
+{
+  "schema": "scienceutopia.native-design-paper-figure.v1",
+  "inputs": {
+    "research/results/native-trace-relaxation-v1.json": "243c7da6d40cf27f7eb9e3ddb3faa5e6536f898ff2e6382252d4518a1caa5164",
+    "game-ui-v2/public/data/native-design-lab-v1.json": "46e445178b6e909a2e4e6352858ef7e5e8651fbb5df9b4594c0ebcd7872a6032"
+  },
+  "conditional_trace_sha256": "367b303185a7fc714899538b30383ab8c750c22cac2cc08c949f2a44dff2059e",
+  "steps": 30,
+  "native_losses": [
+    0,
+    -3
+  ],
+  "full_native_world_autograd": false,
+  "outputs": {
+    "paper/figures/native-design-evidence.pdf": "8294c983169b6ca58de0d411a35be5d1884510fd705808ca5d2f30cb3c76746c",
+    "paper/figures/native-design-evidence.png": "c062218d459d86e89097f373d16642f7a7c3d7ed2f1660faaa3a178e9a82e55b"
+  }
+}

@@ -22,12 +22,22 @@ The final shareable artifact is
 
 ## Evidence boundary
 
-The paper reports the first completed result-dependent engineering campaign and
-the completed optimization stage of Metric-Conditioned Optimization Study
-v1.1. A held-out result appears only when the guarded generated slice is
-atomically present. The paper does not claim a validated science-policy
-objective or structurally optimized institution. Update it only alongside the
-cited protocols, compact results, and artifact manifests.
+The paper reports the first result-dependent engineering campaign, the complete
+Metric-Conditioned Optimization Study v1.1 including its guarded held-out slice,
+and separate small native-world integration/source/wiring/conditional-gradient
+probes. It does not claim a validated science-policy objective, successful useful
+LLM institutional invention, optimizer superiority or full native-world autograd.
+The parameter study remains fixed-topology; later native edits are executable
+but development-only. Update only alongside the cited compact results and hashes.
+
+The native fitting graphic is reproducible without model calls:
+
+```bash
+.venv/bin/python -m scripts.figures.native_design_evidence
+```
+
+The current native-foundry image is an actual browser capture of the read-only
+English game interface. Its control-room art is schematic, not scientific state.
 
 ## Metric-conditioned result boundary
 

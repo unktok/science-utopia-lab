@@ -34,16 +34,16 @@ simulator, its token generation, and arbitrary generated institutions are not
 yet combined in one differentiable execution path. See the
 [recorded result](results/generative-program-world-v1.md).
 
-The next non-scale extension is direct implementation-code generation, not
-another numeric-rule catalog. Generated Python mechanisms now have a generic
+The implementation-code extension goes beyond the numeric-rule catalog.
+Generated Python mechanisms now have a generic
 JSON/port/state contract, isolated no-network container execution, checkpointed
 graph integration and a local-Qwen proposal/repair path. Production PaperTracker
 integration tests pass. Qwen-generated initial source now executes and passes
 frozen replay and split checkpoint/resume; result-conditioned revision failed
 three technical attempts, so source optimization is not complete. See the
 [initial execution/failure result](results/generated-code-mechanisms-v1.md).
-This does not yet install arbitrary new protocols and
-consumers in the original live researcher lifecycle. The explicit
+Later native-world tracks below add real protocol/consumer integration, but
+useful model-invented algorithms and topology remain incomplete. The explicit
 [non-scale limitation inventory](audits/non-scale-limitations-v1.md) distinguishes
 these gaps from seed/population/budget scale.
 
@@ -102,7 +102,11 @@ see [result](results/native-trace-relaxation-v1.md).
 tensor rules, ports/wiring, actual year-boundary researchers, observed native
 losses and conditional-fit scope. Desktop/mobile browser QA passes with no
 exceptions or overflow. It is read-only game-like evidence UI, not a live
-institution-installation game. A separate Qwen-generated Python Peer Observer
+institution-installation game. Its English control-room deck now uses original
+pixel/vector artwork and evidence-backed selection/count/year telemetry rather
+than a generic landing-page headline. The working manuscript includes separate
+native-world methods/results, an actual conditional fitting curve versus fresh
+hard outcomes, and the updated foundry image. A separate Qwen-generated Python Peer Observer
 now passes isolated probes and fresh native two-year execution with exact
 source/image receipts. Its trigger never fires: zero messages and no observed
 researcher-input effect. The source is model-generated; its native attachment
@@ -214,54 +218,28 @@ default constraint for future optimization.
 
 ## Next milestone
 
-The preregistered common held-out comparison is complete. The next milestone is
-**Miniature Whole-System Design Lab v0**, a breadth-first integration slice.
-Before increasing seed counts or candidate budgets, it will connect one small
-objective abstraction, structural mechanism grammar, result-dependent
-black-box path, differentiable proposal path, model-backed outer evaluator,
-canonical replay, and game view through shared `SystemSpec` and evidence
-contracts. One or two development seeds and a short world are acceptable; the
-gate is integration and reproducibility, not statistical confirmation.
-The scale envelope, shared object graph, work packages, and exit criteria are
-recorded in
-[`components/miniature-whole-system-design-lab-v0.md`](components/miniature-whole-system-design-lab-v0.md).
+The parameter/held-out study, native lifecycle containment, executable joint
+source/protocol/wiring transaction, conditional tensor-fit/fresh-world path,
+and native evidence viewer have completed their bounded probes. The
+[breadth milestone](milestones/2026-10-31-native-design-breadth.md) and
+[open-institutions decision](decisions/0027-open-institutions-first-faithful-local-relaxations.md)
+now govern remaining work, not the older synthetic-template integration plan.
 
-The new Generative Program World completes a bounded rule-generation,
-structural/process optimization, direct relaxed-world differentiation, canonical
-evidence and viewing slice. It does not complete this broader milestone:
-ObjectiveSpec compilation, richer artifact protocols, arbitrary-program
-integration with the original Qwen-agent backend and city intervention remain.
+Before scaling, the next gates are:
 
-Scale-up is deferred until this slice works. Later campaigns will add optimizer
-seeds, equal-budget baselines, larger populations, longer horizons, and broader
-held-out splits one axis at a time. Seeds 701, 709, 719, 727, and 733 remain
-consumed by v1.1 and must not be reused as fresh held-out evidence. Seeds 523,
-541, and 547 remain attached to the first campaign.
+1. Result-conditioned model-written algorithm/protocol/graph revision with
+   actual downstream researcher use; retain inert and invalid attempts honestly.
+2. Extend derivative estimation to opaque researcher feedback with explicit
+   fidelity tests; do not relabel conditional autograd as a full-world gradient.
+3. Connect player design/edit/compile to an isolated native branch, pending
+   execution and observed evidence; keep existing records immutable.
+4. Implement consequential new roles/artifact workflows where needed, rather
+   than expanding a hand-built activity catalog as a substitute for freedom.
+5. Later: same-society migration and recursive improvement of the designer;
+   neither is implemented by the current endogenous proposal bridge.
 
-The next execution steps are:
-
-1. **complete:** freeze and audit the three experimental loss arms, executable
-   common evaluator, analysis contract, and seed firewalls;
-2. **complete:** execute all five candidates per arm, safely adopt only valid
-   byte-identical initial trajectories, and retain every invalid observation
-   without a fabricated loss;
-3. **complete:** freeze one winner per arm simultaneously before consuming the
-   new study-held-out split;
-4. **complete:** execute the five common held-out seeds for the three frozen
-   winners and publish the cross-evaluation matrix, rank reversals, trade-offs,
-   gaming, and generalization without selecting a universal winner;
-5. **next:** freeze a miniature grammar spanning at least three mechanism
-   families, with node/implementation and edge/schedule variation;
-6. **partially complete:** black-box, differentiable, and hybrid proposal paths
-   now share one discrete validator/projection and opaque evaluator interface
-   on a synthetic six-family template; next connect that interface to the
-   compact model-backed outer evaluator and add schedule/latency freedom;
-7. publish canonical events and comparison artifacts that the game can display
-   as objective, lineage, graph difference, world activity, and observed loss;
-8. only after this integration gate, design larger replicated optimizer and
-   held-out campaigns;
-9. keep every model-backed run commit-pinned and separate from active
-   development worktrees.
-
-The first closed-loop result is frozen at revision `9a10029807d5`. Its untouched
-held-out seeds must not be repurposed for tuning.
+Scale-up remains deferred behind these non-scale integration gaps. Subsequent
+campaigns can add optimizer seeds, equal-budget baselines, population and
+horizon. Seeds 701, 709, 719, 727 and 733 are consumed by v1.1, not fresh held-out
+evidence. Seeds 523, 541 and 547 remain attached to the first campaign frozen
+at `9a10029807d5`; its untouched held-out seeds must not be repurposed for tuning.
