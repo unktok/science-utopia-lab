@@ -14,6 +14,7 @@ export default defineConfig({
         mission: resolve(__dirname, "mission.html"),
         heldout: resolve(__dirname, "heldout.html"),
         hub: resolve(__dirname, "hub.html"),
+        generative: resolve(__dirname, "generative.html"),
       },
     },
   },

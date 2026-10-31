@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080d19" />
+    <title>NOCTILUCA // Institution Foundry</title>
+  </head>
+  <body>
+    <main>
+      <header class="top">
+        <a href="./hub.html">NOCTILUCA / ARCOLOGY</a>
+        <span class="status" id="status" role="status">LOADING EVIDENCE</span>
+        <label class="upload">LOAD RUN<input id="load" type="file" accept=".json,application/json" /></label>
+      </header>
+      <section class="intro">
+        <div><p class="eyebrow">INSTITUTION FOUNDRY / GENERATIVE SYSTEM LAB</p>
+          <h1>制度を、つくる。<br /><span>世界ごと、最適化する。</span></h1>
+          <p class="lede">規則・機構・接続・プロセス。生成された制度が何を変えたか、実行記録から辿る。</p></div>
+        <aside><b>NUMERIC MINIATURE WORLD</b><p id="boundary">読み込み中…</p>
+          <p>表示の配置・色・アニメーションは演出。数値・制度・経路は実行記録から表示。</p></aside>
+      </section>
+      <section class="controls" aria-label="比較対象">
+        <label>目的関数<select id="arm" aria-label="目的関数"></select></label>
+        <label>生成経路<select id="system" aria-label="生成経路"></select></label>
+        <label class="timeline">世界の時刻<input id="period" type="range" min="0" max="2" value="0" /><span id="period-label"></span></label>
+        <button id="play" type="button">▶ REPLAY</button>
+      </section>
+      <section class="workspace">
+        <article class="world-panel"><div class="section-label">01 / SYSTEM GRAPH <span id="graph-count"></span></div>
+          <div id="graph" class="graph" aria-label="実行された制度のグラフ"></div>
+          <p class="legend">→ 接続されたsignal経路　·　τ=1は1期遅延　·　数字は実行順序</p>
+          <div class="researchers"><div class="section-label">RESEARCHERS / AUTHORITATIVE WORLD STATE</div><div id="agents"></div></div>
+        </article>
+        <aside class="inspector"><div class="section-label">02 / EXECUTABLE RULE</div>
+          <h2 id="node-name">機構を選択</h2><p id="node-meta"></p><div id="rule"></div>
+          <details><summary>PROGRAM AST / INTERNAL STATE</summary><pre id="ast"></pre></details>
+          <p id="signal" class="signal"></p>
+        </aside>
+      </section>
+      <section class="evidence">
+        <article><div class="section-label">03 / OBSERVED OUTCOME</div><div id="metrics" class="metrics"></div><code id="fingerprint"></code></article>
+        <article><div class="section-label">04 / OPTIMIZATION PATH</div><svg id="chart" viewBox="0 0 600 170" role="img" aria-label="最適化経路"></svg>
+          <p class="legend">cyan: relaxed gradient loss　·　magenta: discrete black-box loss（同予算比較ではありません）</p><p id="audit"></p></article>
+      </section>
+      <section class="events"><div class="section-label">05 / CANONICAL EVENTS</div><pre id="events"></pre></section>
+      <footer><span id="source"></span><a href="./sandbox.html">STRUCTURAL DESIGN CONSOLE ↗</a></footer>
+      <div id="error" role="alert" hidden></div>
+    </main>
+    <script type="module" src="/src/generative.ts"></script>
+  </body>
+</html>

@@ -17,6 +17,8 @@ and results. New work uses the forward-only taxonomy below.
 - [Objective Constitution / LossSpec compiler v1](objectives/constitutions/objective-constitution-compiler-v1.md)
 - [Differentiable whole-system surrogate v0](optimizers/methods/differentiable-system-design-surrogate-v0.md)
 - [System optimization continuum v1](optimizers/methods/system-optimization-continuum-v1.md)
+- [Generative mechanism programs and differentiable miniature world](components/generative-program-world-v1.md)
+- [Generative Program World v1 development protocol](protocols/campaigns/generative-program-world-v1.md)
 - [Whole-system graph foundation](components/system-spec-graph-v1.md)
 - [Miniature Whole-System Design Lab v0](components/miniature-whole-system-design-lab-v0.md)
 - [Generic mechanism graph runtime](components/mechanism-graph-runtime-v1.md)
