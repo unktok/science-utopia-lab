@@ -103,10 +103,10 @@ async function load(value: unknown): Promise<void> {
   get("error").hidden = true;
   get("status").textContent = lab.source.dirty_development ? "LOCAL DEVELOPMENT RUN" : "CHECKSUM VERIFIED / NUMERIC EXECUTION";
   get("boundary").textContent = lab.qwen_role === "none"
-    ? "生成規則を実行する数値世界。Qwenはこのrunで使っていません。"
-    : "Qwen3-8Bが提案した規則・研究者特徴を凍結し、数値世界で実行。微分は数値世界全体を通り、Qwenの文章生成には通りません。";
+    ? "A numeric world executing generated rules. Qwen was not used in this run."
+    : "Rules and researcher features proposed by Qwen3-8B are frozen and executed in a numeric world. Gradients pass through the numeric world, not Qwen's text generation.";
   get("source").textContent = `SOURCE ${lab.source.commit.slice(0, 12)} · numeric miniature evidence`;
-  armSelect.replaceChildren(...lab.arms.map((arm, index) => new Option(arm.objective === "production" ? "研究生産を最大化" : "制度負担を最小化", String(index))));
+  armSelect.replaceChildren(...lab.arms.map((arm, index) => new Option(arm.objective === "production" ? "MAXIMIZE RESEARCH OUTPUT" : "MINIMIZE INSTITUTIONAL BURDEN", String(index))));
   chooseArm();
 }
 function failure(error: unknown): void {

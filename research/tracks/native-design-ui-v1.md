@@ -42,3 +42,13 @@ Remaining: edit/compile a player design, submit it to an isolated native branch,
 show genuine pending/completed observations; arbitrary new role/protocol
 visualization and deeper game feedback. Current controls are honest read-only
 evidence inspection, not that installation workflow.
+
+Language policy (2026-10-31): game interfaces are English; research notes and
+explanatory material may remain Japanese. Native and numeric foundry headings,
+controls, accessible labels, empty states and errors now use English. Scientific
+evidence and generated source remain verbatim. The LOAD RUN input stays keyboard
+accessible behind an English label, without OS-localized file-input chrome.
+All eight game HTML entries declare English. Frontend118 tests and production
+build pass; real Chrome verifies English default copy, both candidates/objectives,
+and desktop/390px mobile layouts without overflow or runtime errors. Updated
+screenshots and reports: `outputs/native-design-ui-en/` (local, untracked).

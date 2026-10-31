@@ -18,9 +18,9 @@ function inspect(): void {
   el("node-name").textContent = node.mechanism_id;
   el("node-meta").textContent = `${node.family.toUpperCase()} / ${node.implementation}`;
   el("native-ports").textContent = `INPUT  ${node.inputs.map(p => p.port_id).join(" · ") || "none"}\nOUTPUT  ${node.outputs.map(p => p.port_id).join(" · ") || "none"}`;
-  el("native-source").textContent = typeof node.parameters.code_artifact?.source === "string" ? node.parameters.code_artifact.source : node.parameters.program ? JSON.stringify(node.parameters.program, null, 2) : node.parameters.instruction ? String(node.parameters.instruction) : "元の研究者世界の処理。追加コードなし。\n" + JSON.stringify(node.parameters, null, 2);
+  el("native-source").textContent = typeof node.parameters.code_artifact?.source === "string" ? node.parameters.code_artifact.source : node.parameters.program ? JSON.stringify(node.parameters.program, null, 2) : node.parameters.instruction ? String(node.parameters.instruction) : "Original researcher-world operation. No additional code.\n" + JSON.stringify(node.parameters, null, 2);
   const events = system.runs[0]?.events.filter(e => e.year === Number(year.value) && e.provenance.mechanism_id === selected) || [];
-  el("native-events").textContent = events.length ? events.map(e => JSON.stringify(e, null, 2)).join("\n") : "この年の実行記録なし。架空の動作は補完しません。";
+  el("native-events").textContent = events.length ? events.map(e => JSON.stringify(e, null, 2)).join("\n") : "No execution records for this year. No activity is fabricated.";
   drawEdges();
 }
 
@@ -53,7 +53,7 @@ function render(): void {
   }).join("") + "</div>";
   document.querySelectorAll<HTMLButtonElement>("[data-native-node]").forEach(button => button.addEventListener("click", () => { selected = button.dataset.nativeNode!; inspect(); }));
   const frame = run?.frames.find(f => f.year === Number(year.value));
-  el("native-actors").innerHTML = frame ? frame.actors.filter(a => a.can_author).map((actor, i) => `<article class="native-actor"><i class="native-person" aria-hidden="true"></i><b>RESEARCHER ${String(i + 1).padStart(2, "0")}</b><span>${escape(actor.id)}</span><strong>${actor.resources.toFixed(1)} RESOURCES</strong><span>${actor.is_active ? "ACTIVE" : "INACTIVE"} / YEAR ${frame.year}</span></article>`).join("") : "完了した研究者状態なし。";
+  el("native-actors").innerHTML = frame ? frame.actors.filter(a => a.can_author).map((actor, i) => `<article class="native-actor"><i class="native-person" aria-hidden="true"></i><b>RESEARCHER ${String(i + 1).padStart(2, "0")}</b><span>${escape(actor.id)}</span><strong>${actor.resources.toFixed(1)} RESOURCES</strong><span>${actor.is_active ? "ACTIVE" : "INACTIVE"} / YEAR ${frame.year}</span></article>`).join("") : "No completed researcher snapshot.";
   const metrics = system.runs.length ? ` <div><small>ACTUAL MODEL</small><b>${escape(lab.source.world.model)}</b></div><div><small>OBSERVED PAPERS / YEAR ${frame?.year ?? "—"}</small><b>${frame?.paper_count ?? "—"}</b></div>` : "";
   el("native-metrics").innerHTML = `<div class="primary"><small>ACTUAL NATIVE LOSS</small><b>${system.native_loss === null ? "NO VALID LOSS" : system.native_loss.toFixed(3)}</b></div>${metrics}`;
   el("fingerprint").textContent = `SYSTEM ${system.system_fingerprint}`;
@@ -61,7 +61,7 @@ function render(): void {
     const line = document.createElement("div"); line.className = "native-path-row"; line.textContent = `${String(i + 1).padStart(2, "0")}  ${row.status.toUpperCase()}  NATIVE LOSS ${row.native_loss ?? "null"}  / +${row.difference.nodes_added.length} nodes · ${row.difference.nodes_changed.length} replaced`; return line;
   }));
   const fit = lab.relaxation;
-  el("native-gradient").textContent = fit ? `CONDITIONAL SOFT FIT  ${fit.history[0]?.conditional_soft_loss.toFixed(4)} → ${fit.history.at(-1)?.conditional_soft_loss.toFixed(4)}\n${fit.scope}\nLLM WEIGHTS FIXED / FULL-WORLD AUTOGRAD: NO` : "このrunではsoft fittingを実行していません。\nLLM WEIGHTS FIXED / FULL-WORLD AUTOGRAD: NO";
+  el("native-gradient").textContent = fit ? `CONDITIONAL SOFT FIT  ${fit.history[0]?.conditional_soft_loss.toFixed(4)} → ${fit.history.at(-1)?.conditional_soft_loss.toFixed(4)}\n${fit.scope}\nLLM WEIGHTS FIXED / FULL-WORLD AUTOGRAD: NO` : "No soft fitting was performed in this run.\nLLM WEIGHTS FIXED / FULL-WORLD AUTOGRAD: NO";
   el<HTMLButtonElement>("step").disabled = !run?.events.some(e => e.year === Number(year.value) && typeof e.provenance.mechanism_id === "string");
   inspect(); requestAnimationFrame(drawEdges);
 }
@@ -79,7 +79,7 @@ async function load(value: unknown): Promise<void> {
   el("status").textContent = "HASH VERIFIED / NATIVE DEVELOPMENT EVIDENCE";
   el("error").hidden = true;
   el("source").textContent = `SOURCE ${lab.source.world.source_commit.slice(0, 12)} / ${lab.source.world.years} NATIVE YEARS / READ-ONLY EVIDENCE`;
-  candidate.replaceChildren(...lab.systems.map((row, i) => new Option(`${i + 1}. ${i ? "変更案" : "初期設計"} / LOSS ${row.native_loss ?? "null"}`, String(i))));
+  candidate.replaceChildren(...lab.systems.map((row, i) => new Option(`${i + 1}. ${i ? "REVISED DESIGN" : "INITIAL DESIGN"} / LOSS ${row.native_loss ?? "null"}`, String(i))));
   choose();
 }
 function failure(error: unknown): void { el("error").hidden = false; el("error").textContent = String(error); el("status").textContent = "EVIDENCE LOAD FAILED"; }
@@ -93,4 +93,4 @@ el("step").addEventListener("click", () => {
 });
 el<HTMLInputElement>("load").addEventListener("change", async event => { try { const file = (event.target as HTMLInputElement).files?.[0]; if (file) await load(JSON.parse(await file.text())); } catch (error) { failure(error); } });
 new ResizeObserver(drawEdges).observe(el("native-graph"));
-fetch("./data/native-design-lab-v1.json").then(response => { if (!response.ok) throw new Error("LOAD RUNでnative実行記録を選択してください。"); return response.json(); }).then(load).catch(failure);
+fetch("./data/native-design-lab-v1.json").then(response => { if (!response.ok) throw new Error("Use LOAD RUN to select native execution evidence."); return response.json(); }).then(load).catch(failure);

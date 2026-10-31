@@ -23,6 +23,10 @@ try {
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1250, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: 'http://127.0.0.1:4189/native.html' });
   await evaluate(`new Promise((resolve,reject)=>{const start=Date.now();const check=()=>{const status=document.getElementById('status')?.textContent||'';if(status.includes('HASH VERIFIED'))return resolve(status);if(status.includes('FAILED'))return reject(new Error(document.getElementById('error')?.textContent));if(Date.now()-start>15000)return reject(new Error('Native evidence timeout'));setTimeout(check,100)};check()})`);
+  const language = await evaluate(`({lang:document.documentElement.lang,text:document.body.innerText,labels:Array.from(document.querySelectorAll('[aria-label]'),e=>e.getAttribute('aria-label')).join(' '),uploadWidth:document.getElementById('load').getBoundingClientRect().width})`);
+  assert.equal(language.lang, 'en');
+  assert(!/[\u3040-\u30ff\u3400-\u9fff]/u.test(language.text + language.labels), 'Non-English default UI copy');
+  assert.equal(language.uploadWidth, 1, 'OS-localized file input must not be visible');
   const initial = await evaluate(`({candidates:document.getElementById('candidate').options.length,actors:document.querySelectorAll('.native-actor').length,nodes:document.querySelectorAll('[data-native-node]').length,overflow:document.documentElement.scrollWidth>innerWidth})`);
   assert.equal(initial.candidates, 2); assert.equal(initial.actors, 5); assert.equal(initial.overflow, false);
   await evaluate(`document.getElementById('candidate').value='1';document.getElementById('candidate').dispatchEvent(new Event('change'))`);
@@ -30,6 +34,7 @@ try {
   const selected = await evaluate(`({name:document.getElementById('node-name').textContent,source:document.getElementById('native-source').textContent,loss:document.getElementById('native-metrics').textContent,nodes:document.querySelectorAll('[data-native-node]').length,events:document.getElementById('native-events').textContent})`);
   assert(selected.source.includes('def step(context)') || selected.source.includes('tensor-program.v1'));
   assert(selected.events.length > 50); assert(selected.loss.includes('ACTUAL NATIVE LOSS'));
+  assert(!/[\u3040-\u30ff\u3400-\u9fff]/u.test(await evaluate('document.body.innerText')));
   await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true }).then(s => writeFile(path.join(output, 'native-foundry-desktop.png'), Buffer.from(s.data, 'base64')));
   await evaluate(`document.getElementById('step').click()`);
   assert((await evaluate(`document.querySelector('[data-native-node][aria-pressed="true"]')?.dataset.nativeNode`)));
@@ -37,7 +42,7 @@ try {
   const mobileOverflow = await evaluate('document.documentElement.scrollWidth>innerWidth'); assert.equal(mobileOverflow, false);
   await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true }).then(s => writeFile(path.join(output, 'native-foundry-mobile.png'), Buffer.from(s.data, 'base64')));
   assert.equal(errors.length, 0, JSON.stringify(errors));
-  const report = { initial, selected: { name: selected.name, nodes: selected.nodes, sourceCharacters: selected.source.length }, mobileOverflow, errors,
+  const report = { initial, language: { lang: language.lang, englishCopy: true, localizedFileInputHidden: true }, selected: { name: selected.name, nodes: selected.nodes, sourceCharacters: selected.source.length }, mobileOverflow, errors,
     screenshots: ['native-foundry-desktop.png', 'native-foundry-mobile.png'] };
   await writeFile(path.join(output, 'browser-verification.json'), JSON.stringify(report, null, 2));
   console.log(JSON.stringify(report, null, 2));

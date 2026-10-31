@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const targets = await (await fetch("http://127.0.0.1:9338/json/list")).json();
+const targets = await (await fetch(`${process.env.CHROME_CDP_URL || "http://127.0.0.1:9338"}/json/list`)).json();
 const target = targets.find((item) => item.type === "page");
 assert(target, "No browser target");
 const socket = new WebSocket(target.webSocketDebuggerUrl);
@@ -47,7 +47,7 @@ try {
   await send("Network.enable");
   await send("Page.enable");
   await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1350, deviceScaleFactor: 1, mobile: false });
-  await send("Page.navigate", { url: "http://127.0.0.1:4188/generative.html" });
+  await send("Page.navigate", { url: `${process.env.UI_BASE_URL || "http://127.0.0.1:4188"}/generative.html` });
   await evaluate(`new Promise((resolve, reject) => {
     const start = Date.now();
     const check = () => {
@@ -68,6 +68,9 @@ try {
   assert.equal(initial.systems, 4);
   assert.equal(initial.agents, 6);
   assert.equal(initial.errorHidden, true);
+  assert.equal(await evaluate('document.documentElement.lang'), 'en');
+  assert(!/[\u3040-\u30ff\u3400-\u9fff]/u.test(await evaluate('document.body.innerText')), 'Non-English default UI copy');
+  assert.equal(await evaluate('document.getElementById("load").getBoundingClientRect().width'), 1);
   await evaluate(`document.getElementById('system').value='3';document.getElementById('system').dispatchEvent(new Event('change'))`);
   const productionRule = await evaluate(`document.getElementById('rule').textContent`);
   assert(productionRule.includes("out = tanh("));
@@ -80,6 +83,7 @@ try {
     nodes:document.querySelectorAll('[data-node]').length})`);
   assert.equal(burden.period, "T+3");
   assert.equal(burden.agents, 6);
+  assert(!/[\u3040-\u30ff\u3400-\u9fff]/u.test(await evaluate('document.body.innerText')));
   const shot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
   await writeFile(path.join(output, "generative-lab-burden.png"), Buffer.from(shot.data, "base64"));
   await evaluate(`document.querySelector('[data-node]').dispatchEvent(new MouseEvent('click',{bubbles:true}))`);
