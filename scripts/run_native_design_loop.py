@@ -22,7 +22,8 @@ def main():
     parser.add_argument('--seed', type=int, default=1301)
     parser.add_argument('--years', type=int, default=4)
     parser.add_argument('--budget', type=int, default=2)
-    parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous', 'fixed', 'source-revision'], default='example')
+    parser.add_argument('--proposer', choices=['example', 'llm', 'llm-intent', 'endogenous', 'fixed', 'source-revision'], default='example')
+    parser.add_argument('--record-wire', action='store_true', help='retain actual native cache-miss model inputs locally')
     parser.add_argument('--revision-node', help='existing free-source observation/messages node to revise')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
     parser.add_argument('--designer-brief', type=Path, help='additional versioned task for the LLM designer')
@@ -51,7 +52,7 @@ def main():
     initial_provenance = json.loads(args.initial_provenance.read_text()) if args.initial_provenance else None
     loss = load_loss_spec(args.loss)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years, corpus_years=args.corpus_years,
-                                    experiment_binding={'loss_spec': loss, 'initial_provenance': initial_provenance})
+                                    experiment_binding={'loss_spec': loss, 'initial_provenance': initial_provenance}, record_wire=args.record_wire)
     initial = SystemSpec.from_dict(json.loads(args.system.read_text())) if args.system else legacy_world_system(seed=args.seed)
     if initial_provenance and initial_provenance['candidate_fingerprint'] != initial.fingerprint:
         parser.error('upstream proposal receipt and initial system differ')
@@ -72,7 +73,7 @@ def main():
     proposer = example
     if args.proposer == 'endogenous':
         proposer = propose_from_native_world
-    if args.proposer in {'llm', 'source-revision'}:
+    if args.proposer in {'llm', 'llm-intent', 'source-revision'}:
         from utopia.models.models import VLLMServerModel
         from utopia.models.response_cache import CompletedResponseCache
         designer = VLLMServerModel(factory.model, base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
@@ -88,6 +89,7 @@ def main():
             proposer = NativeSourceRevisionProposer(designer, executor, node_id=args.revision_node,
                 receipts=args.output / 'design-proposals', instructions=brief)
         else:
+            from utopia.optimization.native_feedback import feedback_from_native_history
             proposer = LLMNativeDesignProposer(designer, instructions=(
             'Keep native annual research/submission/funding prerequisites valid. Native selection requires reviews. '
             'A new Python node uses implementation code.python.v1; parameters contain code_artifact with exactly '
@@ -107,7 +109,8 @@ def main():
             'on a node with implementation native.world.researcher-context.v1, family communication, no outputs, '
             'scheduled at 235; its artifact_type must match the source output. '
             'New producer and consumer schemas may be designed together.\nDESIGNER TASK:\n' + brief),
-            receipts=args.output / 'design-proposals')
+            receipts=args.output / 'design-proposals', named_edits=args.proposer == 'llm-intent',
+            feedback_provider=feedback_from_native_history)
     started = time.monotonic()
     try:
         while len(controller.state['records']) < args.budget:
@@ -116,7 +119,7 @@ def main():
             print(json.dumps({'completed': len(controller.state['records']), 'budget': args.budget,
                               'status': record['observation']['status'], 'loss': record['observation']['loss']}), flush=True)
     finally:
-        if args.proposer in {'llm', 'source-revision'}:
+        if args.proposer in {'llm', 'llm-intent', 'source-revision'}:
             designer.response_cache.close()
     write_json_atomic(args.output / 'completion.json', {'status': 'budget-exhausted', 'wall_seconds_this_process': time.monotonic()-started,
         'source_commit': factory.source_commit, 'proposer': args.proposer, 'budget': args.budget,

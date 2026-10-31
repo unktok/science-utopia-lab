@@ -14,7 +14,7 @@ class LocalQwenNativeFactory:
     Durable response/year replay is owned by Simulation/CompletedResponseCache.
     """
     def __init__(self, directory, data_cache, *, years=4, model='qwen3:8b', max_tokens=768,
-                 experiment_binding=None, allow_dirty=False, corpus_years=None):
+                 experiment_binding=None, allow_dirty=False, corpus_years=None, record_wire=False):
         import requests
         from utopia.utils.paths import project_root
         self.source_root = project_root(__file__)
@@ -28,6 +28,7 @@ class LocalQwenNativeFactory:
         if type(self.corpus_years) is not int or self.corpus_years < years:
             raise ValueError('corpus horizon must contain every native simulation year')
         self.experiment_binding = experiment_binding or {}
+        self.record_wire = record_wire
         response = requests.get('http://127.0.0.1:11434/api/tags', timeout=10)
         response.raise_for_status()
         self.model_digest = next(m['digest'] for m in response.json()['models'] if m['name'] == model)
@@ -95,4 +96,32 @@ class LocalQwenNativeFactory:
         except BaseException:
             model.response_cache.close()
             raise
+        if self.record_wire:
+            record_native_http(model, sim, root / 'wire-requests.jsonl')
         return sim
+
+
+def record_native_http(model, simulation, path):
+    """Record actual cache-miss payloads, never credentials or cache replays.
+
+    Raw local evidence only. Existing response journals independently retain
+    payload/response hashes. Failed requests can leave extra input records.
+    """
+    import hashlib
+    import json
+    import threading
+    from utopia.runtime.checkpointing import canonical_json
+    path = Path(path)
+    lock = threading.Lock()
+    callback = model.client.chat.completions.create
+    def recorded(**payload):
+        frame = simulation.native_system._frame
+        record = {'year': frame['year'] if frame else None,
+                  'payload_sha256': hashlib.sha256(canonical_json(payload).encode()).hexdigest(), 'payload': payload}
+        with lock:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with path.open('a') as handle:
+                handle.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n')
+                handle.flush()
+        return callback(**payload)
+    model.client.chat.completions.create = recorded

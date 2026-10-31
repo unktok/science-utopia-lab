@@ -115,11 +115,14 @@ def audit(run, loss, years):
     completion = json.loads((run / 'completion.json').read_text())
     if len(rows) != completion['budget']:
         raise ValueError('terminal record count and declared budget differ')
+    mode = saved['binding']['world'].get('proposer', 'example')
+    source_scope = ('LLM-generated source revisions; preserved host wiring' if mode == 'source-revision'
+                    else 'LLM graph/code proposals' if mode in {'llm', 'llm-intent'} else 'developer-authored example, not LLM invention')
     return {'schema': 'scienceutopia.native-design-loop-audit.v1', 'binding': saved['binding'],
         'campaign_sha256': before, 'completion': {k: v for k, v in completion.items() if k != 'incumbent'},
         'rows': rows, 'verification': 'checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed',
         'limits': ['development engineering objective, not scientific quality',
-                   'developer-authored example, not LLM invention', 'no full native autograd or live game intervention',
+                   source_scope, 'no full native autograd or same-society migration',
                    'response journal integrity, not an independent full HTTP wire audit']}
 
 

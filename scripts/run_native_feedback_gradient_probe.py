@@ -53,7 +53,7 @@ def main():
     bindings = [{'path': f'/mechanisms/{index}/parameters/exploration_weight', 'lower': 0., 'upper': 2.}]
     loss = load_loss_spec(args.loss)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=2, corpus_years=4,
-        experiment_binding={'loss_spec': loss, 'method': 'paired-full-native-feedback-v2'})
+        experiment_binding={'loss_spec': loss, 'method': 'paired-full-native-feedback-v2'}, record_wire=True)
     search = NativeScoreFunctionSearch(system, bindings, loss_spec=loss, sampling='antithetic', seed=42)
     campaign = NativeGradientCampaign(args.output / 'campaign', search, loss_spec=loss, seeds=[1301], world_binding={
         'source_commit': factory.source_commit, 'model': factory.model, 'model_digest': factory.model_digest,

@@ -152,13 +152,15 @@ class LLMNativeDesignProposer:
     Calls are recorded before repair. The caller supplies a model/cache and
     source-capability instructions; generated code is not executed by this class.
     """
-    def __init__(self, model, *, instructions, receipts, max_attempts=3, named_edits=False, max_tokens=8192):
+    def __init__(self, model, *, instructions, receipts, max_attempts=3, named_edits=False, max_tokens=8192, feedback_provider=None):
         if type(max_attempts) is not int or not 1 <= max_attempts <= 5:
             raise ValueError('max_attempts must be in [1,5]')
         self.model, self.instructions, self.receipts, self.max_attempts = model, instructions, Path(receipts), max_attempts
         self.named_edits, self.max_tokens = named_edits, max_tokens
+        self.feedback_provider = feedback_provider
 
     def __call__(self, parent, history, index, loss_spec):
+        visible_history = self.feedback_provider(history) if self.feedback_provider else history
         prompt = ('Propose an executable science-system design patch, not a numeric substitute world. '
             'Return exactly {schema, parent_fingerprint, operations, rationale}. '
             'schema is scienceutopia.system-design-patch.v1. operations is a JSON-Patch-style list '
@@ -169,7 +171,7 @@ class LLMNativeDesignProposer:
             'Respect documented native phase prerequisites and sandbox capabilities.\n' + self.instructions +
             '\nPARENT:\n' + json.dumps(parent.to_dict(), ensure_ascii=False, sort_keys=True) +
             '\nDECLARED LOSS:\n' + json.dumps(loss_spec, sort_keys=True) +
-            '\nPREVIOUS ACTUAL OBSERVATIONS:\n' + json.dumps(history, ensure_ascii=False, sort_keys=True))
+            '\nPREVIOUS ACTUAL OBSERVATIONS:\n' + json.dumps(visible_history, ensure_ascii=False, sort_keys=True))
         if self.named_edits:
             prompt = ('Design an executable new institution. Return exactly {schema,parent_fingerprint,changes,rationale}. '
                 'schema=scienceutopia.system-design-intent.v1. changes is a list using stable IDs, not array indices. '
@@ -186,7 +188,7 @@ class LLMNativeDesignProposer:
                 'Compile the final transaction atomically. Never import utopia/scienceutopia or third-party libraries in generated code.\n'
                 + self.instructions + '\nPARENT:\n' + json.dumps(parent.to_dict(), sort_keys=True) +
                 '\nDECLARED LOSS:\n' + json.dumps(loss_spec, sort_keys=True) +
-                '\nACTUAL HISTORY (compact, no adopted trajectories):\n' + json.dumps([
+                '\nACTUAL HISTORY (compact, no adopted trajectories):\n' + json.dumps(visible_history if self.feedback_provider else [
                     {'suggestion_id': r['suggestion']['suggestion_id'], 'loss': r['observation']['loss'],
                      'status': r['observation']['status'], 'measurements': r['observation']['metadata']['measurements'],
                      'technical_failures': r['observation']['metadata']['technical_failures']} for r in history], sort_keys=True))
