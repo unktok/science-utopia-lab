@@ -24,6 +24,7 @@ def main():
     parser.add_argument('--budget', type=int, default=2)
     parser.add_argument('--proposer', choices=['example', 'llm', 'endogenous'], default='example')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
+    parser.add_argument('--designer-brief', type=Path, help='additional versioned task for the LLM designer')
     args = parser.parse_args()
     if args.budget < 1 or (args.proposer == 'example' and args.budget > 2):
         parser.error('positive budget; declared example has one joint graph/code proposal (budget <=2)')
@@ -38,6 +39,8 @@ def main():
     from utopia.system import SystemSpec
     from utopia.replay.native_design import native_design_view
     from utopia.utils.data_utils import write_json_atomic
+    from utopia.system.design_patch import digest
+    brief = args.designer_brief.read_text() if args.designer_brief else ''
     loss = load_loss_spec(args.loss)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years,
                                     experiment_binding={'loss_spec': loss})
@@ -47,7 +50,8 @@ def main():
             'model': factory.model, 'model_digest': factory.model_digest,
             'corpus_sha256': factory.corpus_sha256, 'dataset_identity': factory.dataset_identity,
             'years': args.years, 'population': 'five-independent-balanced-researchers',
-            'proposer': args.proposer, 'data_cache': str(args.data_cache.resolve())})
+            'proposer': args.proposer, 'data_cache': str(args.data_cache.resolve()),
+            'designer_brief_sha256': digest(brief)})
     executor = DockerCodeExecutor()
     def example(parent, history, index, loss_spec):
         # Explicitly uses previous native loss; this deliberately limited
@@ -68,7 +72,7 @@ def main():
             'protocol': 'native-design-proposal-v1', 'cell': controller.initial.fingerprint,
             'model': factory.model, 'model_revision': factory.model_digest, 'corpus_sha256': factory.corpus_sha256,
             'seed': args.seed, 'science_config': {'source_commit': factory.source_commit, 'loss_spec': loss,
-                                                'thinking_override': False, 'max_tokens': 8192}})
+                                                'thinking_override': False, 'max_tokens': 8192, 'designer_brief_sha256': digest(brief)}})
         proposer = LLMNativeDesignProposer(designer, instructions=(
             'Keep native annual research/submission/funding prerequisites valid. Native selection requires reviews. '
             'A new Python node uses implementation code.python.v1; parameters contain code_artifact with exactly '
@@ -76,7 +80,18 @@ def main():
             '. step(context) returns {outputs:{port:[{payload:object,actor_ids:[],artifact_ids:[]}]},state:object}. '
             'Port schemas describe payloads. Code uses only standard-library Python, no network/host files. '
             'Native publication requires decisions for exactly submitted paper IDs with conference_id, accept/reject, finite final_score; '
-            'an empty cycle needs {empty_cycle:true}. Do not change the world seed or fabricate artifacts/reviews.'),
+            'an empty cycle needs {empty_cycle:true}. Do not change the world seed or fabricate artifacts/reviews. '
+            'A code context has period, parameters, state and inputs: {port:[{payload,actor_ids,artifact_ids,...}]}. '
+            'Native world observations contain year,ecosystem:{agents:[{id,type,resources,...}]},papers:{papers:[...]}, '
+            'conferences:{conferences:[{conference_id,submitted_papers:[{id,...}],reviews:{paper_id:[{overall_score,...}]}}]},year_results. '
+            'Connect a native phase world output to a new artifact input of type native-world-observation. '
+            'Code internal state must be an object, not a list. Native stage order is 0..240 in increments of 20. '
+            'A new node may run between existing stages. Metadata labels do not install capabilities. '
+            'Optional ports that can emit nothing require required:false. '
+            'To deliver new artifact content to real next-year researcher prompts, add an optional messages input '
+            'on a node with implementation native.world.researcher-context.v1, family communication, no outputs, '
+            'scheduled at 235; its artifact_type must match the source output. '
+            'New producer and consumer schemas may be designed together.\nDESIGNER TASK:\n' + brief),
             receipts=args.output / 'design-proposals')
     started = time.monotonic()
     try:
@@ -88,8 +103,10 @@ def main():
     finally:
         if args.proposer == 'llm':
             designer.response_cache.close()
-    write_json_atomic(args.output / 'completion.json', {'status': 'complete', 'wall_seconds_this_process': time.monotonic()-started,
+    write_json_atomic(args.output / 'completion.json', {'status': 'budget-exhausted', 'wall_seconds_this_process': time.monotonic()-started,
         'source_commit': factory.source_commit, 'proposer': args.proposer, 'budget': args.budget,
+        'complete_observations': sum(r['observation']['status'] == 'complete' for r in controller.state['records']),
+        'failed_observations': sum(r['observation']['status'] != 'complete' for r in controller.state['records']),
         'incumbent': controller.incumbent(), 'interpretation': 'development engineering probe, not scientific-policy improvement'}, allow_nan=False)
 
 
