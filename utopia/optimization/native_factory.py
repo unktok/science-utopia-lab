@@ -14,7 +14,7 @@ class LocalQwenNativeFactory:
     Durable response/year replay is owned by Simulation/CompletedResponseCache.
     """
     def __init__(self, directory, data_cache, *, years=4, model='qwen3:8b', max_tokens=768,
-                 experiment_binding=None, allow_dirty=False, corpus_years=None, record_wire=False):
+                 experiment_binding=None, allow_dirty=False, corpus_years=None, record_wire=False, record_code=False):
         import requests
         from utopia.utils.paths import project_root
         self.source_root = project_root(__file__)
@@ -29,6 +29,7 @@ class LocalQwenNativeFactory:
             raise ValueError('corpus horizon must contain every native simulation year')
         self.experiment_binding = experiment_binding or {}
         self.record_wire = record_wire
+        self.record_code = record_code
         response = requests.get('http://127.0.0.1:11434/api/tags', timeout=10)
         response.raise_for_status()
         self.model_digest = next(m['digest'] for m in response.json()['models'] if m['name'] == model)
@@ -98,6 +99,15 @@ class LocalQwenNativeFactory:
             raise
         if self.record_wire:
             record_native_http(model, sim, root / 'wire-requests.jsonl')
+        if self.record_code and any(n.implementation == 'code.python.v1' for n in spec.mechanisms):
+            from utopia.optimization.native_code_trace import RecordingCodeExecutor
+            from utopia.system.code_mechanisms import DockerCodeExecutor
+            images = {n.parameters['runtime_image_id'] for n in spec.mechanisms if n.implementation == 'code.python.v1'}
+            if len(images) != 1:
+                raise ValueError('native code recording requires one explicitly pinned image')
+            sim.native_system.code_executor = RecordingCodeExecutor(DockerCodeExecutor(next(iter(images))),
+                root / 'code-contexts.jsonl', binding={'source_commit': self.source_commit,
+                    'system_fingerprint': spec.fingerprint, 'run_id': run_id})
         return sim
 
 

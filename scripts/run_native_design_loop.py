@@ -22,8 +22,9 @@ def main():
     parser.add_argument('--seed', type=int, default=1301)
     parser.add_argument('--years', type=int, default=4)
     parser.add_argument('--budget', type=int, default=2)
-    parser.add_argument('--proposer', choices=['example', 'llm', 'llm-intent', 'endogenous', 'fixed', 'source-revision'], default='example')
+    parser.add_argument('--proposer', choices=['example', 'llm', 'llm-intent', 'endogenous', 'fixed', 'source-revision', 'free-source'], default='example')
     parser.add_argument('--record-wire', action='store_true', help='retain actual native cache-miss model inputs locally')
+    parser.add_argument('--record-code', action='store_true', help='retain exact native container input/output bundles locally')
     parser.add_argument('--revision-node', help='existing free-source observation/messages node to revise')
     parser.add_argument('--designer-plan', action='store_true', help='record an explicit model diagnosis/algorithm plan before source emission')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
@@ -37,7 +38,7 @@ def main():
         parser.error('endogenous mode requires a system that actually emits design proposals')
     if args.proposer == 'fixed' and (args.budget != 1 or args.system is None):
         parser.error('fixed mode evaluates exactly one explicitly supplied system')
-    if args.proposer == 'source-revision' and (not args.revision_node or args.system is None):
+    if args.proposer in {'source-revision', 'free-source'} and (not args.revision_node or args.system is None):
         parser.error('source-revision requires an initial system and explicit revision node')
     from utopia.optimization.loss import load_loss_spec
     from utopia.optimization.native_design import NativeDesignCampaign, LLMNativeDesignProposer, propose_from_native_world
@@ -53,7 +54,8 @@ def main():
     initial_provenance = json.loads(args.initial_provenance.read_text()) if args.initial_provenance else None
     loss = load_loss_spec(args.loss)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years, corpus_years=args.corpus_years,
-                                    experiment_binding={'loss_spec': loss, 'initial_provenance': initial_provenance}, record_wire=args.record_wire)
+                                    experiment_binding={'loss_spec': loss, 'initial_provenance': initial_provenance}, record_wire=args.record_wire,
+                                    record_code=args.record_code or args.proposer == 'free-source')
     initial = SystemSpec.from_dict(json.loads(args.system.read_text())) if args.system else legacy_world_system(seed=args.seed)
     if initial_provenance and initial_provenance['candidate_fingerprint'] != initial.fingerprint:
         parser.error('upstream proposal receipt and initial system differ')
@@ -64,6 +66,7 @@ def main():
             'years': args.years, 'corpus_years': factory.corpus_years, 'population': 'five-independent-balanced-researchers',
             'proposer': args.proposer, 'designer_plan': args.designer_plan, 'revision_node': args.revision_node,
             'record_wire': args.record_wire, 'data_cache': str(args.data_cache.resolve()),
+            'record_code': args.record_code or args.proposer == 'free-source',
             'designer_brief_sha256': digest(brief), 'initial_provenance_sha256': digest(initial_provenance)})
     executor = DockerCodeExecutor()
     def example(parent, history, index, loss_spec):
@@ -75,7 +78,7 @@ def main():
     proposer = example
     if args.proposer == 'endogenous':
         proposer = propose_from_native_world
-    if args.proposer in {'llm', 'llm-intent', 'source-revision'}:
+    if args.proposer in {'llm', 'llm-intent', 'source-revision', 'free-source'}:
         from utopia.models.models import VLLMServerModel
         from utopia.models.response_cache import CompletedResponseCache
         designer = VLLMServerModel(factory.model, base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
@@ -86,7 +89,13 @@ def main():
             'model': factory.model, 'model_revision': factory.model_digest, 'corpus_sha256': factory.corpus_sha256,
             'seed': args.seed, 'science_config': {'source_commit': factory.source_commit, 'loss_spec': loss,
                            'thinking_override': False, 'max_tokens': 8192, 'designer_brief_sha256': digest(brief), 'designer_plan': args.designer_plan}})
-        if args.proposer == 'source-revision':
+        if args.proposer == 'free-source':
+            from utopia.optimization.native_free_source import NativeFreeSourceRevisionProposer
+            from utopia.optimization.native_code_trace import parent_context_provider
+            proposer = NativeFreeSourceRevisionProposer(designer, executor, node_id=args.revision_node,
+                context_provider=parent_context_provider(args.output / 'runs', source_commit=factory.source_commit),
+                receipts=args.output / 'design-proposals', instructions=brief)
+        elif args.proposer == 'source-revision':
             from utopia.optimization.native_feedback import NativeSourceRevisionProposer
             proposer = NativeSourceRevisionProposer(designer, executor, node_id=args.revision_node,
                 receipts=args.output / 'design-proposals', instructions=brief, planning=args.designer_plan)
@@ -121,7 +130,7 @@ def main():
             print(json.dumps({'completed': len(controller.state['records']), 'budget': args.budget,
                               'status': record['observation']['status'], 'loss': record['observation']['loss']}), flush=True)
     finally:
-        if args.proposer in {'llm', 'llm-intent', 'source-revision'}:
+        if args.proposer in {'llm', 'llm-intent', 'source-revision', 'free-source'}:
             designer.response_cache.close()
     write_json_atomic(args.output / 'completion.json', {'status': 'budget-exhausted', 'wall_seconds_this_process': time.monotonic()-started,
         'source_commit': factory.source_commit, 'proposer': args.proposer, 'budget': args.budget,
