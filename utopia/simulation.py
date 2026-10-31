@@ -2399,13 +2399,16 @@ class Simulation:
 
     def _prepare_paper_index(self, year: int):
         """Load the paper index and preserve submission statuses when resuming."""
+        corpus_years = getattr(self.args, 'rag_corpus_years', None) or self.num_years
+        if type(corpus_years) is not int or corpus_years < self.num_years:
+            raise ValueError('RAG corpus horizon must include every simulation year')
         if year == 1:
-            self.rag.load_documents(num_years=self.num_years)
+            self.rag.load_documents(num_years=corpus_years)
             self.rag.build_knowledge_index()
         elif self.rag.documents == []:
             # Loading documents resets statuses, so restore the checkpoint state.
             saved_document_status = self.rag.document_status.copy()
-            self.rag.load_documents(num_years=self.num_years)
+            self.rag.load_documents(num_years=corpus_years)
             self.rag.build_knowledge_index()
             self.rag.document_status = saved_document_status
             logger.info(f"Resumed from checkpoint with {len(saved_document_status)} document statuses preserved")

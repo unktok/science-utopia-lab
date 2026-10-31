@@ -18,6 +18,7 @@ def main():
     parser.add_argument('--seed', type=int, default=1301)
     parser.add_argument('--years', type=int, default=2)
     parser.add_argument('--steps', type=int, default=30)
+    parser.add_argument('--corpus-years', type=int, help='explicit fixed corpus horizon, >= simulation years')
     args = parser.parse_args()
     from utopia.optimization.loss import load_loss_spec, loss_spec_sha256
     from utopia.optimization.native_design import NativeDesignCampaign
@@ -36,12 +37,12 @@ def main():
     if loss_spec_sha256(loss) != loss_spec_sha256(load_loss_spec(ROOT / 'research/objectives/losses/native-accepted-count-engineering-v1.json')):
         parser.error('this pilot requires the explicit accepted-count engineering LossSpec')
     initial = tensor_selection_system(legacy_world_system(seed=args.seed), image_id=DockerCodeExecutor().image_id)
-    factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years,
+    factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years, corpus_years=args.corpus_years,
         experiment_binding={'loss_spec': loss, 'method': 'native-trace-relaxation-v1', 'steps': args.steps})
     controller = NativeDesignCampaign(args.output / 'campaign', initial_system=initial, loss_spec=loss,
         seeds=[args.seed], world_binding={'source_commit': factory.source_commit, 'model': factory.model,
             'model_digest': factory.model_digest, 'corpus_sha256': factory.corpus_sha256,
-            'dataset_identity': factory.dataset_identity, 'years': args.years,
+            'dataset_identity': factory.dataset_identity, 'years': args.years, 'corpus_years': factory.corpus_years,
             'population': 'five-independent-balanced-researchers', 'steps': args.steps,
             'method': 'native-trace-relaxation-v1', 'data_cache': str(args.data_cache.resolve())})
     def propose(parent, history, index, loss_spec):

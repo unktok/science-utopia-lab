@@ -45,3 +45,22 @@ def test_native_factory_refuses_corpus_drift_between_candidates(tmp_path, fixed_
     factory = LocalQwenNativeFactory(tmp_path / 'runs', tmp_path / 'cache', allow_dirty=True)
     with pytest.raises(ValueError, match='corpus changed'):
         factory(legacy_world_system(), 42, 'factory-probe')
+
+
+def test_short_world_uses_explicit_larger_fixed_corpus_without_reloading_shorter_subset(tmp_path, fixed_corpus, monkeypatch):
+    install_transport(monkeypatch)
+    calls = []
+    load = RAG.load_documents
+    def record(rag, *args, **kwargs):
+        calls.append(kwargs['num_years'])
+        return load(rag, *args, **kwargs)
+    monkeypatch.setattr(RAG, 'load_documents', record)
+    factory = LocalQwenNativeFactory(tmp_path / 'runs', tmp_path / 'cache', years=2, corpus_years=4, allow_dirty=True)
+    sim = factory(legacy_world_system(), 42, 'short-world')
+    try:
+        sim._prepare_paper_index(1)
+        assert calls == [4, 4, 4]
+        assert sim.num_years == 2
+        assert sim.llm.response_cache.binding['science_config']['corpus_years'] == 4
+    finally:
+        sim.llm.response_cache.close()

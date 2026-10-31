@@ -14,7 +14,7 @@ class LocalQwenNativeFactory:
     Durable response/year replay is owned by Simulation/CompletedResponseCache.
     """
     def __init__(self, directory, data_cache, *, years=4, model='qwen3:8b', max_tokens=768,
-                 experiment_binding=None, allow_dirty=False):
+                 experiment_binding=None, allow_dirty=False, corpus_years=None):
         import requests
         from utopia.utils.paths import project_root
         self.source_root = project_root(__file__)
@@ -24,6 +24,9 @@ class LocalQwenNativeFactory:
         self.allow_dirty = allow_dirty
         self.directory, self.data_cache = Path(directory), Path(data_cache)
         self.years, self.model, self.max_tokens = years, model, max_tokens
+        self.corpus_years = years if corpus_years is None else corpus_years
+        if type(self.corpus_years) is not int or self.corpus_years < years:
+            raise ValueError('corpus horizon must contain every native simulation year')
         self.experiment_binding = experiment_binding or {}
         response = requests.get('http://127.0.0.1:11434/api/tags', timeout=10)
         response.raise_for_status()
@@ -35,7 +38,7 @@ class LocalQwenNativeFactory:
         rng = capture_rng()
         try:
             rag = RAG(RAGConfig(device='cpu', cache_dir=str(self.data_cache / 'rag')))
-            rag.load_documents(num_years=years)
+            rag.load_documents(num_years=self.corpus_years)
             self.corpus_sha256, self.dataset_identity = rag.document_identity, rag.dataset_identity
         finally:
             restore_rng(rng)
@@ -69,6 +72,7 @@ class LocalQwenNativeFactory:
             '--output-dir', str(root / 'simulation'), '--data-cache-dir', str(self.data_cache),
             '--science-system-spec', str(system_path), '--rag_device', 'cpu', '--batch_size', '1', '--max_retries', '2',
         ], create_dirs=True)
+        args.rag_corpus_years = self.corpus_years
         model = VLLMServerModel(self.model, base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
             max_concurrent_requests=1, run_seed=seed, model_revision=self.model_digest,
             max_tokens_override=self.max_tokens, thinking_override=False, sdk_max_retries=0, request_timeout=120)
@@ -76,13 +80,13 @@ class LocalQwenNativeFactory:
         sim = Simulation(model, num_years=self.years, output_dir=args.output_dir, args=args,
                          funding_allocation_mode='fixed', experiment_name=args.experiment_name, max_retries=2)
         rng = capture_rng()
-        sim.rag.load_documents(num_years=self.years)
+        sim.rag.load_documents(num_years=self.corpus_years)
         restore_rng(rng)
         if sim.rag.document_identity != self.corpus_sha256:
             raise ValueError('native corpus changed between design evaluations')
         binding = {'protocol': 'native-design-loops-v1', 'cell': spec.fingerprint, 'model': self.model,
             'model_revision': self.model_digest, 'corpus_sha256': sim.rag.document_identity, 'seed': seed,
-            'science_config': {'source_commit': self.source_commit, 'years': self.years,
+            'science_config': {'source_commit': self.source_commit, 'years': self.years, 'corpus_years': self.corpus_years,
                 'population': {'institutions': 5, 'per_institution': 1, 'strategy': 'balanced'},
                 'thinking_override': False, 'max_tokens': self.max_tokens, 'experiment': self.experiment_binding}}
         model.response_cache = CompletedResponseCache(root / 'replies' / 'responses.sqlite', binding=binding)
