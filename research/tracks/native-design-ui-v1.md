@@ -52,3 +52,27 @@ All eight game HTML entries declare English. Frontend118 tests and production
 build pass; real Chrome verifies English default copy, both candidates/objectives,
 and desktop/390px mobile layouts without overflow or runtime errors. Updated
 screenshots and reports: `outputs/native-design-ui-en/` (local, untracked).
+
+## Control-room redesign (2026-10-31)
+
+The generic landing-page headline was not consistent with the game's existing
+creative direction. It has been replaced with an Institution Foundry design
+deck: original crisp vector/pixel control-room art, research-city windows,
+network workstation, server racks, an engineer and a secondary terminal. This
+is a standalone presentation scene, not additional simulated world content.
+The scene's artist/provenance note distinguishes it from the fixed runtime
+sprite atlas; there are no third-party or remotely loaded image resources.
+
+The adjacent record-inspection console has explicit READ ONLY status, an
+evidence-backed mechanism/connection/year summary, selected mechanism telemetry,
+and a link into the real graph. The graph/source/actor/loss evidence contract
+is unchanged. Fixed weights, native records, no live installation and schematic
+spatial layout remain visible. All UI copy stays English.
+
+Verification:120 frontend tests, production build (existing Phaser warning),
+real Chrome desktop/390px mobile, art-load check, year/count/selection telemetry,
+source and execution selection, English copy and no overflow/runtime errors.
+Numeric foundry browser regression also passes. Full/deck/mobile captures and
+QA report: `outputs/native-foundry-control-room/`. The paper contains the actual
+deck capture plus a source/image hash manifest, not a mockup. It remains an
+inspection interface, not a completed playable management game.

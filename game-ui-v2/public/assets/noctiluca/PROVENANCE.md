@@ -1,5 +1,17 @@
 # NOCTILUCA asset provenance
 
+## Native foundry scene (2026-10-31)
+
+`production/native-foundry-control-room.svg` is an original code-authored
+640x280 schematic control-room illustration for the native evidence screen.
+It uses integer-aligned rect/path geometry, local reusable symbols and a
+navy/cyan/lavender scene palette; unlike the fixed 24-colour runtime sprite
+atlas below, it is a standalone presentation asset, not an atlas member.
+No third-party art, generated bitmap, external resource, script or simulated
+entity ID is embedded. Windows, skyline, engineer, terminals and network paths
+are decorative; visible labels mark the scene as art, not native world state.
+Actual mechanism/year/selection text is separate evidence-backed DOM content.
+
 ## Production runtime assets
 
 Status: `production-grid-v0.6`. The runtime manifest loads thirty-four SVGs under

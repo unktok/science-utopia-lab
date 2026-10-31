@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="280" viewBox="0 0 640 280" shape-rendering="crispEdges">
+  <title>NOCTILUCA institution foundry control room</title>
+  <desc>Original schematic pixel artwork: a midnight research arcology beyond tall windows, a network design console, server racks and an engineer's desk. Presentation only.</desc>
+  <defs>
+    <pattern id="floor" width="32" height="16" patternUnits="userSpaceOnUse"><path d="M0 15H32M31 0V16" fill="none" stroke="#24304c" stroke-width="1"/></pattern>
+    <pattern id="windows" width="12" height="10" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="3" height="4" fill="#6579a5"/><rect x="8" y="3" width="2" height="4" fill="#324763"/></pattern>
+    <pattern id="vents" width="8" height="5" patternUnits="userSpaceOnUse"><rect width="6" height="2" fill="#1d2941"/></pattern>
+    <g id="tower"><path d="M0 102V24H8V12H24V0H34V12H47V32H56V102Z" fill="#152039"/><rect x="6" y="30" width="44" height="72" fill="url(#windows)"/><rect x="22" y="15" width="16" height="3" fill="#6c78a5"/><path d="M27 0V-12" stroke="#8971b7" stroke-width="2"/><rect x="25" y="-14" width="5" height="3" fill="#b6a0ef"/></g>
+    <g id="server"><rect x="4" y="4" width="38" height="85" fill="#050a16"/><rect width="38" height="85" fill="#3e466b"/><rect x="3" y="3" width="32" height="79" fill="#101a31"/><path d="M5 18H33M5 34H33M5 50H33M5 66H33" stroke="#384566" stroke-width="2"/><path d="M8 9H21M8 25H21M8 41H21M8 57H21M8 73H21" stroke="#667394" stroke-width="2"/><path d="M26 9H30M26 41H30M26 73H30" stroke="#6cdebd" stroke-width="3"/><path d="M26 25H30M26 57H30" stroke="#b49ce8" stroke-width="3"/></g>
+    <g id="chair"><rect x="2" width="19" height="4" fill="#526082"/><rect y="4" width="23" height="21" fill="#303b60"/><rect x="3" y="5" width="17" height="15" fill="#3e4d72"/><rect x="5" y="24" width="13" height="7" fill="#181f39"/><path d="M11 30V36M3 37H20" stroke="#7583a0" stroke-width="2"/></g>
+    <g id="engineer"><rect x="5" width="14" height="4" fill="#292337"/><rect x="2" y="4" width="20" height="9" fill="#37304c"/><rect x="5" y="8" width="16" height="10" fill="#dbb69b"/><rect x="13" y="10" width="9" height="3" fill="#82e6d6"/><rect x="2" y="19" width="20" height="15" fill="#72bdb4"/><rect x="9" y="19" width="6" height="16" fill="#263451"/><rect y="22" width="5" height="14" fill="#d1b49e"/><rect x="20" y="22" width="5" height="14" fill="#d1b49e"/><rect x="4" y="35" width="7" height="16" fill="#384768"/><rect x="14" y="35" width="7" height="16" fill="#384768"/><path d="M2 51H11M14 51H23" stroke="#777e9b" stroke-width="3"/></g>
+  </defs>
+  <rect width="640" height="280" fill="#080c1b"/>
+  <path d="M0 0H640V12H0Z" fill="#11162b"/><path d="M0 13H640" stroke="#303a59"/>
+  <rect x="18" y="38" width="604" height="144" fill="#10172d"/>
+  <rect x="26" y="45" width="588" height="130" fill="#10192f"/>
+  <path d="M26 128H614V175H26Z" fill="#19233b"/>
+  <g opacity=".6"><use href="#tower" x="42" y="71"/><use href="#tower" x="111" y="88"/><use href="#tower" x="198" y="61"/><use href="#tower" x="289" y="86"/><use href="#tower" x="380" y="72"/><use href="#tower" x="469" y="55"/><use href="#tower" x="548" y="82"/></g>
+  <path d="M27 164H613" stroke="#5a497d" stroke-width="2"/><path d="M26 174H614" stroke="#7391b6" stroke-width="3"/>
+  <path d="M174 43V176M391 43V176M26 105H614" stroke="#27334e" stroke-width="5"/>
+  <rect x="16" y="36" width="608" height="5" fill="#39455f"/>
+  <path d="M0 183H640V280H0Z" fill="#131b30"/><path d="M0 184H640V280H0Z" fill="url(#floor)"/>
+  <path d="M0 185H640" stroke="#526486" stroke-width="3"/>
+  <path d="M0 191H640" stroke="#0b1022" stroke-width="5"/>
+  <path d="M32 264H194V248H274M640 248H572V258H485" fill="none" stroke="#77569c" stroke-width="2"/>
+  <path d="M36 267H198V251H274M640 251H576V261H485" fill="none" stroke="#263247"/>
+  <g transform="translate(34 136)"><use href="#server"/><use href="#server" x="44"/><rect x="-3" y="88" width="88" height="5" fill="#586381"/><rect x="14" y="94" width="48" height="3" fill="#777098"/></g>
+  <rect x="148" y="118" width="287" height="97" fill="#030916"/>
+  <rect x="144" y="114" width="287" height="97" fill="#425172"/>
+  <rect x="148" y="118" width="279" height="89" fill="#071725"/>
+  <rect x="152" y="122" width="271" height="81" fill="#0c2534"/>
+  <path d="M156 132H419M156 188H419" stroke="#245469" stroke-width="1"/>
+  <g stroke="#70d4ce" fill="none" stroke-width="2"><path d="M180 151H211V171H244V153H286V173H326V150H368V174H401"/><path d="M244 171V187H368V174" stroke="#9c83d0"/><path d="M286 153V139H368V150" stroke="#7185ae"/></g>
+  <g fill="#0d2435" stroke="#83d5ce" stroke-width="2"><rect x="169" y="143" width="22" height="16"/><rect x="233" y="163" width="22" height="16"/><rect x="275" y="145" width="22" height="16"/><rect x="315" y="165" width="22" height="16"/></g>
+  <g fill="#c3a1eb"><rect x="358" y="142" width="22" height="16"/><rect x="392" y="169" width="17" height="12"/></g>
+  <path d="M172 147H187M172 151H182M236 167H251M278 149H293M318 169H333" stroke="#63bcbb" stroke-width="2"/>
+  <g fill="#6bddcc"><rect x="205" y="149" width="4" height="4"/><rect x="285" y="162" width="4" height="4"/><rect x="352" y="148" width="4" height="4"/></g>
+  <rect x="154" y="124" width="30" height="3" fill="#688da4"/><rect x="188" y="124" width="15" height="3" fill="#476f8a"/><rect x="403" y="124" width="14" height="3" fill="#81d5c1"/>
+  <rect x="232" y="211" width="109" height="6" fill="#394b68"/><rect x="248" y="217" width="80" height="4" fill="#101b30"/>
+  <path d="M135 220H443L459 237H119Z" fill="#4f5f7f"/><path d="M119 237H459V244H119Z" fill="#222e49"/><path d="M128 244H137V263H128ZM441 244H450V263H441Z" fill="#293854"/>
+  <path d="M156 224H227L233 232H150ZM292 224H345L351 232H286Z" fill="#17223b"/><path d="M157 227H224M294 227H342" stroke="#7494ab"/>
+  <rect x="365" y="224" width="19" height="10" fill="#16223a"/><rect x="368" y="226" width="13" height="4" fill="#9078b9"/>
+  <use href="#chair" x="197" y="236"/><use href="#chair" x="345" y="237"/>
+  <g transform="translate(472 164)"><rect x="3" y="3" width="73" height="39" fill="#050a15"/><rect width="73" height="39" fill="#45506f"/><rect x="4" y="4" width="65" height="31" fill="#13192f"/><path d="M10 10H39M10 16H58M10 22H48M10 28H34" stroke="#8c81ba" stroke-width="2"/><path d="M48 10H62M43 28H61" stroke="#73b7b2" stroke-width="2"/><rect x="30" y="39" width="13" height="7" fill="#44516d"/><rect x="20" y="45" width="34" height="4" fill="#536481"/></g>
+  <path d="M462 211H563V218H462Z" fill="#64738f"/><path d="M466 218H472V249H466ZM553 218H559V249H553Z" fill="#35435e"/>
+  <use href="#engineer" x="493" y="220"/>
+  <g transform="translate(581 150)"><rect x="4" width="17" height="5" fill="#7690ab"/><rect x="10" y="5" width="5" height="53" fill="#384a62"/><rect y="50" width="30" height="19" fill="#6a587e"/><rect x="3" y="52" width="24" height="5" fill="#9b83b5"/><path d="M12 52V29H4V20M13 40H24V28M12 30V16" stroke="#578b87" stroke-width="4"/><path d="M0 16H8V21H0ZM20 23H29V28H20ZM8 10H16V16H8Z" fill="#78b9a0"/></g>
+  <path d="M0 276H640" stroke="#645285" stroke-width="3"/>
+  <path d="M12 202H24M12 206H24M617 215H629M617 219H629" stroke="#638797" stroke-width="2"/>
+</svg>

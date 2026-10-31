@@ -39,6 +39,15 @@ policy broadcasts. No effect appears without an active choreography action.
 
 ## Research arcology hub
 
+The native institution evidence view is at `/native.html`. Its English
+Institution Foundry control room is original schematic pixel/vector art;
+the adjacent counts, year and selected mechanism come from checksum-bound
+original researcher-world records. Inspect source, tensor programs, wiring,
+schedules, researchers/resources and real native loss lineage. It is read only:
+no live installation or full-world autograd is implied. `/generative.html`
+remains a separate numeric-miniature method viewer, not that native world.
+See `research/tracks/native-design-ui-v1.md` and asset provenance for scope.
+
 Open `hub.html` for the shared in-world transit deck. Three pixel-art district
 gates lead to the commit-pinned research city, the synthetic SystemSpec
 foundry, and the timestamped optimization mission-control screen. A shared

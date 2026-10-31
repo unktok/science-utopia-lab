@@ -1,11 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="theme-color" content="#080d19" /><title>NOCTILUCA // Native System Foundry</title></head>
-<body><main>
+<body class="foundry-body"><main>
   <header class="top"><a href="./hub.html">NOCTILUCA / ARCOLOGY</a><span id="status" role="status">LOADING NATIVE EVIDENCE</span><label class="upload">LOAD RUN<input id="load" type="file" aria-label="Load native run evidence" accept=".json,application/json" /></label></header>
-  <section class="intro"><div><p class="eyebrow">NATIVE SYSTEM FOUNDRY / INSTITUTIONAL DESIGN</p><h1>Rewire institutions.<br /><span>Test in a researcher world.</span></h1><p class="lede">Code, protocols, connections and schedules. Explore real designs and researcher histories.</p></div><aside><b>ORIGINAL RESEARCHER WORLD</b><p>Execution records from the original researchers, literature search, peer review, publication and funding. LLM weights stay fixed.</p><p>Buildings and positions are schematic. Controls inspect recorded evidence; they do not rerun the world.</p></aside></section>
+  <section class="foundry-deck" aria-labelledby="foundry-title">
+    <div class="deck-scene">
+      <div class="deck-heading"><p class="eyebrow">NOCTILUCA / SYSTEMS ENGINEERING DIVISION</p><h1 id="foundry-title">INSTITUTION <span>FOUNDRY</span></h1><p class="deck-subtitle">DESIGN DECK 07 <span>//</span> NATIVE RESEARCH WORLD</p></div>
+      <img class="deck-art" src="./assets/noctiluca/production/native-foundry-control-room.svg" alt="" />
+      <div class="deck-scene-label"><span class="deck-signal" aria-hidden="true"></span>SCHEMATIC CONTROL ROOM <span>ART / NOT SIMULATION STATE</span></div>
+    </div>
+    <aside class="deck-briefing">
+      <div class="deck-mode"><span class="deck-square" aria-hidden="true"></span>RECORD INSPECTION <b>READ ONLY</b></div>
+      <h2>Every institution.<br /><span>Every connection.</span><br />One traceable system.</h2>
+      <p>Inspect code, protocols and schedules in the original researcher world. Follow actual execution records, not a replacement simulation.</p>
+      <dl class="deck-telemetry"><div><dt>LOADED SYSTEM</dt><dd id="deck-summary">AWAITING VERIFIED EVIDENCE</dd></div><div><dt>INSPECTING</dt><dd id="deck-focus">NO MECHANISM SELECTED</dd></div></dl>
+      <a class="deck-enter" href="#network-heading"><span>OPEN MECHANISM NETWORK</span><span aria-hidden="true">↓</span></a>
+    </aside>
+  </section>
+  <div class="deck-boundary"><span>FIXED LLM WEIGHTS</span><span>RECORDED NATIVE EXECUTION</span><span>NO LIVE INSTALLATION</span><span>SCHEMATIC SPATIAL LAYOUT</span></div>
   <section class="controls"><label>DESIGN CANDIDATE<select id="candidate" aria-label="Design candidate"></select></label><label>OBSERVED YEAR<select id="year" aria-label="Observed year"></select></label><button id="step" type="button">NEXT EXECUTION →</button><a href="./sandbox.html">DESIGN CONSOLE ↗</a></section>
-  <section class="workspace"><article class="world-panel"><div class="section-label">01 / EXECUTED MECHANISM NETWORK <span id="graph-count"></span></div><div id="native-graph" class="native-graph" role="group" aria-label="Executed mechanisms and connections"></div><p class="legend">Numbers: schedule phases / Lines: actual connections / Arrows: information and control flow. Select a mechanism to inspect its implementation and execution records.</p><div class="researchers"><div class="section-label">RESEARCHERS / YEAR-BOUNDARY SNAPSHOT</div><div id="native-actors"></div></div></article>
+  <section class="workspace"><article class="world-panel"><div id="network-heading" class="section-label" tabindex="-1">01 / EXECUTED MECHANISM NETWORK <span id="graph-count"></span></div><div id="native-graph" class="native-graph" role="group" aria-label="Executed mechanisms and connections"></div><p class="legend">Numbers: schedule phases / Lines: actual connections / Arrows: information and control flow. Select a mechanism to inspect its implementation and execution records.</p><div class="researchers"><div class="section-label">RESEARCHERS / YEAR-BOUNDARY SNAPSHOT</div><div id="native-actors"></div></div></article>
     <aside class="inspector"><div class="section-label">02 / IMPLEMENTATION INSPECTOR</div><h2 id="node-name">Select a mechanism</h2><p id="node-meta"></p><p id="native-ports"></p><pre id="native-source"></pre><details><summary>SELECTED EXECUTION EVIDENCE</summary><pre id="native-events"></pre></details></aside></section>
   <section class="evidence"><article><div class="section-label">03 / ACTUAL NATIVE OUTCOME</div><div id="native-metrics" class="metrics"></div><p class="legend">Loss is observed over the complete run. Changing the year does not create intermediate loss values.</p><code id="fingerprint"></code></article><article><div class="section-label">04 / DESIGN LINEAGE &amp; GRADIENT SCOPE</div><div id="native-path"></div><p id="native-gradient"></p><p class="legend">Conditional soft loss and native execution loss are distinct. This is not full-world differentiation.</p></article></section>
   <footer><span id="source"></span><a href="./generative.html">NUMERIC METHOD LAB ↗</a></footer><div id="error" role="alert" hidden></div>

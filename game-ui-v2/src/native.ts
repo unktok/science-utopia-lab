@@ -16,6 +16,7 @@ function inspect(): void {
   if (!node) return;
   document.querySelectorAll<HTMLButtonElement>("[data-native-node]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.nativeNode === selected)));
   el("node-name").textContent = node.mechanism_id;
+  el("deck-focus").textContent = node.mechanism_id;
   el("node-meta").textContent = `${node.family.toUpperCase()} / ${node.implementation}`;
   el("native-ports").textContent = `INPUT  ${node.inputs.map(p => p.port_id).join(" · ") || "none"}\nOUTPUT  ${node.outputs.map(p => p.port_id).join(" · ") || "none"}`;
   el("native-source").textContent = typeof node.parameters.code_artifact?.source === "string" ? node.parameters.code_artifact.source : node.parameters.program ? JSON.stringify(node.parameters.program, null, 2) : node.parameters.instruction ? String(node.parameters.instruction) : "Original researcher-world operation. No additional code.\n" + JSON.stringify(node.parameters, null, 2);
@@ -46,6 +47,7 @@ function render(): void {
   const ordered = [...spec.mechanisms].sort((a, b) => (phase.get(a.mechanism_id) || 0) - (phase.get(b.mechanism_id) || 0));
   if (!ordered.some(n => n.mechanism_id === selected)) selected = ordered[0]?.mechanism_id || "";
   el("graph-count").textContent = `${ordered.length} NODES / ${spec.connections.length} WIRES`;
+  el("deck-summary").textContent = `${ordered.length} MECHANISMS / ${spec.connections.length} CONNECTIONS / YEAR ${year.value || "—"}`;
   el("native-graph").innerHTML = `<svg class="native-wires" aria-hidden="true"></svg><div class="native-grid">` + ordered.map(node => {
     const added = system.difference.nodes_added.includes(node.mechanism_id), changed = system.difference.nodes_changed.includes(node.mechanism_id);
     const kind = node.implementation === "code.python.v1" ? "PYTHON" : node.implementation === "program.tensor.v1" ? "HARD / SOFT" : node.implementation.includes("llm") ? "LLM" : "NATIVE";
