@@ -7,6 +7,7 @@ saved native snapshots. No host execution or fabricated native observation.
 """
 import argparse
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -19,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--history', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--reuse-draft', type=Path, help='reuse exact preserved model source; only metadata compilation changes')
     args = parser.parse_args()
     if subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT): raise ValueError('clean pinned source required')
     from utopia.models.models import VLLMServerModel
@@ -51,7 +53,8 @@ def main():
         'protocol': 'native-structured-source-proposal-v1', 'cell': parent.fingerprint, 'model': 'qwen3:8b',
         'model_revision': revision, 'seed': 1301, 'corpus_sha256': saved['binding']['world']['corpus_sha256'],
         'science_config': {'source_commit': source, 'history_sha256': digest(baseline),
-            'thinking_override': False, 'max_tokens': 3072}})
+                           'thinking_override': False, 'max_tokens': 3072,
+                           'reused_draft_sha256': digest(json.loads(args.reuse_draft.read_text())) if args.reuse_draft else None}})
     executor = DockerCodeExecutor()
     schema = {'type': 'object', 'additionalProperties': False, 'required': ['institution_id', 'label', 'protocol', 'source'],
         'properties': {'institution_id': {'type': 'string'}, 'label': {'type': 'string'},
@@ -73,15 +76,23 @@ def main():
     original = prompt
     try:
         for attempt in range(3):
-            draft, _ = model.generate(prompt=prompt, seed_ctx=('structured_native_source', attempt),
-                response_format={'type': 'json_schema', 'json_object': {'name': 'native_institution', 'schema': schema}})
+            if attempt == 0 and args.reuse_draft:
+                draft = json.loads(args.reuse_draft.read_text())['draft']
+            else:
+                draft, _ = model.generate(prompt=prompt, seed_ctx=('structured_native_source', attempt),
+                    response_format={'type': 'json_schema', 'json_object': {'name': 'native_institution', 'schema': schema}})
             receipt = {'attempt': attempt, 'draft': draft, 'prompt_sha256': digest(prompt), 'source_commit': source, 'loss': None}
             try:
                 artifact = {'schema': CODE_SCHEMA, 'label': draft['label'], 'source': draft['source'],
                     'inputs': {'observations': {'type': 'object'}}, 'outputs': {'messages': {'type': 'object'}}, 'state_schema': {'type': 'object'}}
-                node = MechanismSpec(draft['institution_id'], MechanismFamily.CUSTOM, CODE_IMPLEMENTATION,
+                def identifier(value, prefix):
+                    return value if re.fullmatch(r'[a-z][a-z0-9_.-]{0,63}', value) else prefix + digest(value)[:16]
+                node_id = identifier(draft['institution_id'], 'generated-')
+                protocol_id = identifier(draft['protocol'], 'generated-message-')
+                receipt['compiled_identifiers'] = {'institution_id': node_id, 'protocol_id': protocol_id}
+                node = MechanismSpec(node_id, MechanismFamily.CUSTOM, CODE_IMPLEMENTATION,
                     inputs=(PortSpec('observations', ChannelKind.ARTIFACT, WORLD_ARTIFACT),),
-                    outputs=(PortSpec('messages', ChannelKind.ARTIFACT, draft['protocol'], required=False),),
+                    outputs=(PortSpec('messages', ChannelKind.ARTIFACT, protocol_id, required=False),),
                     parameters={'code_artifact': artifact, 'runtime_image_id': executor.image_id})
                 child = connect_native_institution(parent, node, phase=191, researcher_output='messages')
                 document = child.to_dict()
