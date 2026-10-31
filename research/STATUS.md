@@ -51,6 +51,7 @@ Remote: `unktok/science-utopia-lab`
 | whole-system `SystemSpec` | prospective communication and government mechanisms | sealed plans map exact broadcast/digest and catalog-derived stateful government overlays into default-off native execution; government policies have delayed, fingerprinted, checkpointable evaluation/funding effects and canonical causal lineage |
 | structural system optimization | joint synthetic slice | 770 valid graphs jointly vary evaluation, publication, funding, government, communication, connections, and latency through one fingerprint-bound ask/execute/loss/tell boundary |
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
+| optimization continuum | synthetic-tested common boundary | parameters (6 raw variables), mechanism configuration (16), and node/edge structure (26) are nested over one six-family template; black-box, gradient, and hybrid methods share projection and opaque outer evaluation; schedule/latency and model-backed execution remain open |
 | game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |
 
 ## Metric-conditioned study execution snapshot
@@ -133,8 +134,10 @@ The next execution steps are:
    gaming, and generalization without selecting a universal winner;
 5. **next:** freeze a miniature grammar spanning at least three mechanism
    families, with node/implementation and edge/schedule variation;
-6. connect one black-box and one differentiable proposal path to the same
-   discrete validator and compact model-backed outer evaluator;
+6. **partially complete:** black-box, differentiable, and hybrid proposal paths
+   now share one discrete validator/projection and opaque evaluator interface
+   on a synthetic six-family template; next connect that interface to the
+   compact model-backed outer evaluator and add schedule/latency freedom;
 7. publish canonical events and comparison artifacts that the game can display
    as objective, lineage, graph difference, world activity, and observed loss;
 8. only after this integration gate, design larger replicated optimizer and

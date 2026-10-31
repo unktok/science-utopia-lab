@@ -579,13 +579,33 @@ def optimize_relaxed(
     space: DifferentiableSystemSpace,
     surrogate: DifferentiableSurrogate,
     config: Mapping[str, Any],
+    *,
+    mutable_raw_ids: Sequence[str] | None = None,
 ) -> dict[str, Any]:
+    """Optimize a relaxed system, optionally freezing part of the design.
+
+    ``mutable_raw_ids`` turns the same whole-system relaxation into nested
+    design spaces.  For example, a caller can expose only continuous
+    parameters, then implementation choices, then node/edge topology without
+    changing the surrogate, projection rule, or outer evaluator.
+    """
+
     raw = space.initial_raw()
+    mutable = set(space.raw_ids if mutable_raw_ids is None else mutable_raw_ids)
+    unknown = mutable - set(space.raw_ids)
+    if unknown:
+        raise ValueError(f"mutable_raw_ids contains unknown ids {sorted(unknown)!r}")
+    if not mutable:
+        raise ValueError("mutable_raw_ids must expose at least one design variable")
     trace = []
     for step in range(int(config["iterations"]) + 1):
         features = space.features(raw)
         prediction = surrogate.predict_and_gradient(features)
         raw_gradient = space.pullback(raw, prediction.feature_gradient)
+        raw_gradient = {
+            key: value if key in mutable else 0.0
+            for key, value in raw_gradient.items()
+        }
         norm = math.sqrt(sum(value * value for value in raw_gradient.values()))
         trace.append({
             "step": step,
@@ -601,6 +621,8 @@ def optimize_relaxed(
         scale = min(1.0, clip / norm) if norm > 0 else 1.0
         learning_rate = float(config["learning_rate"])
         for key, gradient in raw_gradient.items():
+            if key not in mutable:
+                continue
             raw[key] -= learning_rate * scale * gradient
             if key.startswith("parameter:"):
                 raw[key] = min(max(raw[key], 0.0), 1.0)

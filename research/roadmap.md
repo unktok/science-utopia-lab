@@ -15,6 +15,12 @@
 
 この段階ではoptimizer superiorityや統計的安定性を主張しない。統合sliceの完了後にseed、optimizer、候補予算、population、期間を一軸ずつ増やす。
 
+Decision 0022により、項目3と4は別々の研究対象ではなく二軸で扱う。何を動かすかは
+parameter ⊂ mechanism implementation ⊂ node/edge structure と段階化し、どう探すかは
+black-box / differentiable surrogate / hybrid とする。三つの自由度と三手法を同じ
+projection・外側評価へ通すsynthetic common boundaryは実装済み。schedule/latencyの
+relaxationとmodel-backed outer executionは未完である。
+
 ## Phase 0 — 再現可能なローカル基盤（完了・維持）
 
 成果物:

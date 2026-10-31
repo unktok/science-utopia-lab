@@ -60,6 +60,20 @@ optimizer.
 | evidence | run registry, canonical events, provenance, comparison reports | define one miniature campaign manifest and comparison artifact |
 | game | replay, system sandbox, branch comparison, optimizer observatory | consume the real miniature artifact instead of separate fixtures |
 
+## Integration checkpoint: common proposal boundary
+
+Decision 0022 and `utopia.optimization.continuum` now separate design freedom
+from search method. Parameters, mechanism implementations, and node/edge
+structure form nested mutable views of the existing six-family relaxation.
+Gradient-free black-box, differentiable-surrogate, and hybrid proposal paths
+all project through the same discrete `SystemSpec` boundary and call the same
+opaque outer-evaluator interface.
+
+This closes the synthetic API part of work package 3, not the work package as
+a whole. The common template still lacks schedule/latency relaxation, and the
+outer evaluator in this checkpoint is synthetic rather than the miniature
+Qwen-backed simulator.
+
 ## Minimum structural grammar
 
 The grammar must include evaluation and at least two additional families from
