@@ -24,15 +24,24 @@ The generic graph runtime executes registered mechanism graphs with typed
 ports, schedules, latency, state, checkpoints and canonical events. The legacy
 compiler and full Qwen-agent simulator support a narrower executable topology
 and explicit prospective overlays. The persistent campaign controller closes
-ask/register/run/observe/tell over that subspace.
+ask/register/run/observe/tell over that subspace. An opt-in NativeScienceKernel
+now binds the generic graph to the actual Simulation phases: the baseline
+contains the original world, while registered, isolated Python and open LLM
+institutions can exchange new protocols and affect researcher inputs or native
+publication decisions. The original world is a minimum instance, not the
+expressiveness ceiling. Annual domain prerequisites and new actor behavior
+remain explicit integration limits; this is not unlimited process freedom.
 
 A second backend, `program.numeric.v1`, executes generated numeric mechanism
 ASTs in a small recurrent agent world. It supports program/node/edge/process
 generation, gradient-free search and direct differentiation through the
 complete relaxed numeric rollout. Qwen can propose frozen programs and initial
-attributes, but Qwen token generation stays outside autograd. Arbitrary
-program execution in the original full Qwen-agent simulator remains an
-integration gap. See [Generative Program World](../research/components/generative-program-world-v1.md).
+attributes, but Qwen token generation stays outside autograd. Isolated source
+now runs in the native world through declared ports; replacing every native
+research/artifact protocol and differentiating that world remain gaps.
+The numeric backend is method-test evidence, not a more simplified substitute
+for the research world. See [native kernel](../research/components/native-science-kernel-v1.md)
+and [Generative Program World](../research/components/generative-program-world-v1.md).
 
 ## Packages and responsibilities
 
@@ -85,6 +94,12 @@ decisions independently of the Python replay projector.
 - Create new numeric mechanisms as validated AST data for the generic program
   interpreter; add a richer world observation/effect protocol explicitly when
   the existing numeric vocabulary is insufficient.
+- For native-world extensions, start from `legacy_world_system()` or another
+  SystemSpec; provide a registered/code/LLM implementation and explicit ports.
+  `--science-system-spec PATH` selects it; omission preserves old behavior.
+  `evaluate_native_suggestion()` connects that world to the existing black-box
+  Observation/LossSpec contract. It is not yet a durable arbitrary-source
+  campaign entry point. Actor codecs extend persistence, not behavior by magic.
 
 ## First closed-loop execution
 

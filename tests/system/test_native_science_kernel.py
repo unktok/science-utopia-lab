@@ -68,6 +68,17 @@ def test_long_projects_allow_empty_publication_years_in_both_coordinators(tmp_pa
         sim.llm.response_cache.close()
 
 
+def test_no_citation_candidates_means_no_model_request(tmp_path, fixed_corpus):
+    sim, calls = make_sim(tmp_path / 'empty-citations')
+    sim.initialize_agents()
+    papers = [{'id': 'new-paper', 'author_id': 'researcher-0'}]
+    result, fmt = sim._select_citations_batch(2, {}, papers, [0], [[]], 'regular', accepted_ids=set())
+    assert result == {0: []} and fmt is None
+    assert sim._select_citations_sequential(None, None, None, [], None) == []
+    assert not calls
+    sim.llm.response_cache.close()
+
+
 def extension_spec(*, connected=True, latency=0):
     base = legacy_world_system()
     producer = MechanismSpec("replication-commons", MechanismFamily.CUSTOM, "test.native.replication.v1",

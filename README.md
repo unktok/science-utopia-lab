@@ -38,6 +38,7 @@
 | Browse technical and upstream documentation | [Documentation index](docs/README.md) |
 | Browse the scientific record | [Research index](research/INDEX.md) |
 | Open the local replay game | [Game UI guide](game-ui/README.md) |
+| Extend the actual researcher world with new institutions | [Native science kernel and limits](research/components/native-science-kernel-v1.md) |
 | Generate new institution rules and differentiate a miniature world | [Generative Program World](research/components/generative-program-world-v1.md) and [recorded result](research/results/generative-program-world-v1.md) |
 
 The shortest contributor orientation is:

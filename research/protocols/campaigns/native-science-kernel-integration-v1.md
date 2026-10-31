@@ -79,3 +79,16 @@ columns for empty as well as nonempty years, and exercise the original funding
 method in the multi-year-project regression. No grant/industry-funding rules,
 model choices or scientific parameters change. Retain this second failure;
 run amendment 2 from another clean commit/worktree.
+
+## Amendment 3 — empty citation history is not a missing corpus
+
+Run `70ca09e` completed year one, delivered five institutional messages, and
+sent six real year-two requests containing their content. It then failed in
+the original citation retriever after 139.21 seconds: year one had no papers,
+so neither prior accepted nor rejected candidates existed. Return a Q-by-zero
+index/score matrix for empty citation pools, preserving query alignment; do
+not query the model for a choice from an empty set. Submission corpus absence
+remains an error. Add retrieval and batch/sequential citation regressions.
+Preserve this failed run and its wire proof; do not force earlier publications
+or seed the world with invented accepted papers. The new run keeps all settings
+and starts from another clean commit/worktree.

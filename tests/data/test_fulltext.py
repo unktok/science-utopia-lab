@@ -440,6 +440,19 @@ def test_batch_retrieve_empty_queries_is_a_valid_empty_batch(retrieval_type):
     assert tuple(result["similarity_scores"].shape) == (0, 0)
 
 
+@pytest.mark.parametrize('retrieval_type', ['accepted_papers', 'accepted_or_rejected_papers'])
+def test_empty_citation_history_returns_one_empty_row_per_query(retrieval_type):
+    import pandas as pd
+    from utopia.data.rag import RAG
+    rag = object.__new__(RAG)
+    rag.device = 'cpu'
+    rag.document_status = pd.DataFrame({'id': ['paper-1'], 'status': ['unsubmitted']})
+    result = rag.batch_retrieve(['query-1', 'query-2'], retrieval_type=retrieval_type)
+    assert result['topk_indices'].shape == (2, 0)
+    assert result['topk_indices'].dtype == np.int64
+    assert tuple(result['similarity_scores'].shape) == (2, 0)
+
+
 def test_legacy_ignores_fulltext_embedding_revision_env(
     tmp_path, monkeypatch, fake_sentence_transformer
 ):

@@ -2729,6 +2729,7 @@ class Simulation:
         max_attempts = 4
         batch_prompts = []
         batch_metadata = []
+        citations_by_paper = {}  # paper_idx -> citation list
 
         for i in paper_indices:
             submitted_paper = submissions_list[i]
@@ -2739,6 +2740,9 @@ class Simulation:
                     candidate_indices[i],
                     SIMULATION_CONFIG['citation']['num_candidate_papers'])
             )
+            if not candidate_papers:
+                citations_by_paper[i] = []
+                continue
 
             citing_institution = getattr(agent, 'university_name', None) or getattr(agent, 'company_name', None)
             if accepted_ids is not None:
@@ -2757,8 +2761,6 @@ class Simulation:
             })
             if citation_response_format is None:
                 citation_response_format = response_format
-
-        citations_by_paper = {}  # paper_idx -> citation list
 
         for attempt in range(max_attempts):
             if not batch_prompts:
@@ -2903,6 +2905,8 @@ class Simulation:
 
     def _select_citations_sequential(self, agent, paper, direction, candidates, institution):
         """Select candidate IDs, preserving the single-request failure policy."""
+        if not candidates:
+            return []
         prompt, response_format = agent.get_citation_prompt(
             paper=paper, direction=direction, candidate_papers=candidates,
             max_papers=30, citing_institution=institution)

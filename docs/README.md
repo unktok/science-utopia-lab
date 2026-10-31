@@ -22,6 +22,7 @@ record lives separately under [`research/`](../research/INDEX.md).
 ## Research-system foundations
 
 - [Whole-system `SystemSpec`](../research/components/system-spec-graph-v1.md)
+- [Native researcher-world kernel and extension API](../research/components/native-science-kernel-v1.md)
 - [Black-box ask/tell optimizer](../research/optimizers/blackbox-ask-tell-v1.md)
 - [First closed-loop campaign protocol](../research/protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [First closed-loop campaign result](../research/results/first-closed-loop-engineering-v1-interpretation.md)

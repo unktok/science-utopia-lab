@@ -440,7 +440,11 @@ class RAG:
                 indices = (self.document_status[self.document_status['status'] == "accept"]).index.values
             else:
                 indices = (self.document_status[(self.document_status['status'].isin({"accept", "reject"}))]).index.values
-            assert len(indices) > 0, "No candidate papers found!"
+            # An empty publication history is valid (e.g. multi-year projects
+            # have not finished yet). Keep query rows, but invent no citations.
+            if len(indices) == 0:
+                return {'topk_indices': np.empty((len(queries), 0), dtype=np.int64),
+                        'similarity_scores': torch.empty((len(queries), 0), device=self.device)}
             print(f"\n[CITATION INDEX] Batch retrieving for {len(queries)} queries...")
             
         else:
