@@ -1,0 +1,15 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "native-joint-v5-net-reviewed-utility",
+  "version": "1",
+  "status": "engineering-proxy-not-scientific-value",
+  "optimization_seed_role": "development",
+  "direction": "minimize",
+  "per_run": {"intercept": 0.0, "terms": [
+    {"metric_id": "native.accepted_decisions", "slice_id": null, "coefficient": 3.25},
+    {"metric_id": "native.accepted_peer_score_sum", "slice_id": null, "coefficient": -1.0},
+    {"metric_id": "native.review_records", "slice_id": null, "coefficient": 0.05}
+  ]},
+  "across_seeds": {"aggregation": "mean_plus_population_sd", "dispersion_weight": 0.0, "minimum_valid_runs": 1},
+  "interpretation": "Minimize 3.25*A-Q+0.05*R. Q sums arithmetic means of raw reviewer overall_score for accepted review-history decisions; unreviewed acceptance contributes zero Q but incurs acceptance cost. R counts all actual reviews, accepted or rejected. Institution-written final_score is NOT used. Coefficients encode an explicit illustrative publication/review cost preference, not an empirically calibrated science-quality law. Reject-all and all-accept are legal; no hidden veto."
+}

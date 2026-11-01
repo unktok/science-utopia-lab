@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import Callable, Sequence
 from pathlib import Path
+import math
 
 from .blackbox import Observation, Suggestion
 from .loss import evaluate_loss, loss_spec_sha256, validate_loss_spec
@@ -29,9 +30,27 @@ def measure_native_world(simulation, *, run_id: str):
         "native.final_author_resources": sum(a.resources for a in authors),
         "native.institutional_context_deliveries": sum(e.event_type == "native.system.context_delivered" for e in kernel.events),
     }
+    accepted = [r for r in rounds if r.get('decision') == 'accept']
+    values['native.accepted_unreviewed_decisions'] = sum(not r.get('reviews', []) for r in accepted)
+    # Use actual reviewer observations, never institution-authored final scores.
+    # Empty review sets explicitly contribute zero utility, not a fabricated score.
+    peer_score = 0.0
+    score_error = None
+    for decision in accepted:
+        reviews = decision.get('reviews', [])
+        scores = [r.get('overall_score') for r in reviews]
+        if any(isinstance(s, bool) or not isinstance(s, (int, float)) or not math.isfinite(s) for s in scores):
+            score_error = 'accepted decision has a missing or nonfinite raw reviewer score'
+            break
+        if scores:
+            peer_score += math.fsum(scores) / len(scores)
+    metrics = {name: {'status': 'measured', 'value': value} for name, value in values.items()}
+    metrics['native.accepted_peer_score_sum'] = (
+        {'status': 'unavailable', 'value': None, 'reason': score_error} if score_error else
+        {'status': 'measured', 'value': peer_score})
     return {"run_id": run_id, "system_fingerprint": kernel.spec.fingerprint,
             "measurement_schema": "scienceutopia.native-domain-measurements.v1",
-            "metrics": {name: {"status": "measured", "value": value} for name, value in values.items()}}
+            "metrics": metrics}
 
 
 def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
