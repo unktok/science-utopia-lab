@@ -17,6 +17,7 @@ from utopia.optimization.native_design import NativeDesignCampaign
 from utopia.optimization.native_manifest_inbox import ExternalAuthoringPending, ManifestInbox
 from utopia.optimization.native_region_proposer_v5a2 import NativeBoundaryRegionProposer
 from utopia.optimization.native_shared_initial import adopt_shared_initial
+from utopia.system import SystemSpec
 from utopia.system.code_mechanisms import DockerCodeExecutor, sha
 from utopia.system.native_kernel import NativeScienceKernel, legacy_world_system
 from utopia.system.native_selection_slot import selection_source_slot
@@ -155,9 +156,17 @@ def test_external_full_native_pipeline_readonly_audit(tmp_path, fixed_corpus, mo
     assert result['new_inference_requests'] == result['generated_code_executions_during_analysis'] == 0
     for arm in arms:
         failed = technical_failure and arm == arms[0]
+        exported = result['arms'][arm]['observed_systems']
+        records = controllers[arms.index(arm)].state['records']
+        assert exported == [record['suggestion']['candidate'] for record in records]
+        assert len(exported) == len(result['arms'][arm]['audit']['rows']) == (1 if failed else 2)
+        assert [SystemSpec.from_dict(system).fingerprint for system in exported] == [
+            row['system_fingerprint'] for row in result['arms'][arm]['audit']['rows']]
+        assert exported[result['arms'][arm]['selected_index']] == result['arms'][arm]['selected_system']
         assert result['arms'][arm]['proposals'][0]['status'] == ('invalid-technical-manifest' if failed else 'isolated-native-region-passed-not-native-evaluated')
         assert len(result['arms'][arm]['external_authoring']) == (3 if failed else 1)
         if not failed:
+            assert len(exported[-1]['metadata']['native_design_region']['node_ids']) == 2
             assert len(result['arms'][arm]['audit']['rows'][1]['runs'][0]['executed_code']) == 2
         else:
             assert result['arms'][arm]['authoring_error']['loss'] is None

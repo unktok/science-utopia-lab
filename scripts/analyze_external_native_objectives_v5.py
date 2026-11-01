@@ -237,6 +237,7 @@ def analyze(run):
         selected = next(i for i, r in enumerate(controller.state['records']) if r == best)
         arms[arm] = {'loss_spec': loss, 'audit': audited, 'loss_path': audited['loss_path'],
             'status': 'declared-budget-complete' if complete else 'terminal-authoring-failure-not-budget-complete',
+            'observed_systems': [deepcopy(record['suggestion']['candidate']) for record in controller.state['records']],
             'selected_index': selected, 'selected_system': best['suggestion']['candidate'],
             'selected_fingerprint': best['observation']['metadata']['system_fingerprint'],
             'authoring_error': error, 'proposals': proposals, 'external_authoring': inbox}
