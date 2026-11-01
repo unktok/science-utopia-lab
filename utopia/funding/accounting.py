@@ -38,6 +38,7 @@ CATEGORIES = (
     "production_submission_cost", "resubmission_cost", "funding_application_cost",
 )
 INCOME_CATEGORIES = frozenset(("grant_income", "industry_income"))
+NATIVE_TRANSFER_CATEGORIES = ("institution_transfer_in", "institution_transfer_out")
 SCHEMA_VERSION = 1
 
 
@@ -148,11 +149,26 @@ class ResourceLedger:
         self.transactions = state.get("transactions", [])
         self.years = state.get("years", {})
         self.entry_years = state.get("entry_years", {})
+        self.native_transfer_accounting = state.get("native_transfer_accounting", False)
+        if type(self.native_transfer_accounting) is not bool:
+            raise ValueError("Invalid native transfer accounting capability")
         self._events = {}
         for event in self.transactions:
             if event["event_id"] in self._events:
                 raise ValueError("Duplicate event in resource ledger checkpoint")
             self._events[event["event_id"]] = event
+
+    @property
+    def categories(self):
+        return CATEGORIES + (NATIVE_TRANSFER_CATEGORIES if self.native_transfer_accounting else ())
+
+    @property
+    def income_categories(self):
+        return INCOME_CATEGORIES | ({NATIVE_TRANSFER_CATEGORIES[0]} if self.native_transfer_accounting else set())
+
+    def enable_native_transfers(self):
+        """Opt-in accounting vocabulary, not an institutional allocation rule."""
+        self.native_transfer_accounting = True
 
     @staticmethod
     def researchers(population):
@@ -195,10 +211,10 @@ class ResourceLedger:
 
     def prepare(self, agent, delta, *, category, year, project=None, paper=None,
                 program=None, reason=None):
-        if category not in CATEGORIES or year is None or not math.isfinite(delta):
+        if category not in self.categories or year is None or not math.isfinite(delta):
             raise ValueError(f"Unclassified or invalid resource change for {agent.id}: {category}")
-        if (category in INCOME_CATEGORIES and delta < 0
-                or category not in INCOME_CATEGORIES and delta > 0):
+        if (category in self.income_categories and delta < 0
+                or category not in self.income_categories and delta > 0):
             raise ValueError(f"Wrong resource change sign for {category}: {delta}")
         event = {
             "event_id": stable_id(year, agent.id, category, project, paper, program, reason),
@@ -238,7 +254,7 @@ class ResourceLedger:
         results = []
         for aid, row in rows.items():
             running = row["opening_balance"]
-            amounts = {category: [] for category in CATEGORIES}
+            amounts = {category: [] for category in self.categories}
             uncollected = []
             for event in events_by_agent[aid]:
                 if not math.isclose(running, event["balance_before"], rel_tol=0, abs_tol=1e-9):
@@ -263,7 +279,7 @@ class ResourceLedger:
                 raise ValueError(f"Checkpoint closing balance mismatch: {year}/{aid}")
             result = dict(row, closing_balance=closing, closing_active=agents[aid].is_active,
                           residual=residual, uncollected_cost=math.fsum(uncollected))
-            result.update({key: math.fsum(values) * (1 if key in INCOME_CATEGORIES else -1)
+            result.update({key: math.fsum(values) * (1 if key in self.income_categories else -1)
                            for key, values in amounts.items()})
             results.append(result)
         return results
@@ -274,10 +290,13 @@ class ResourceLedger:
         return rows
 
     def to_dict(self):
-        return deepcopy({
+        result = {
             "schema_version": SCHEMA_VERSION, "transactions": self.transactions,
             "years": self.years, "entry_years": self.entry_years,
-        })
+        }
+        if self.native_transfer_accounting:
+            result["native_transfer_accounting"] = True
+        return deepcopy(result)
 
     def write(self, directory):
         """Replace complete exports, never append, so rollback/resume cannot duplicate."""

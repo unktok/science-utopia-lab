@@ -29,6 +29,7 @@ CONTEXT_RECEIVER = "native.world.researcher-context.v1"
 ARTIFACT_STORE = "native.world.artifact-store.v1"
 LLM_INSTITUTION = "native.world.llm-institution.v1"
 DESIGN_PROPOSALS = "native.world.design-proposals.v1"
+RESOURCE_TRANSFERS = "native.world.resource-transfers.v1"
 STAGES = (
     ("open", MechanismFamily.POPULATION),
     ("resubmissions", MechanismFamily.RESEARCH),
@@ -184,6 +185,8 @@ class NativeScienceKernel:
         registry.register(ARTIFACT_STORE, 1, self._store)
         registry.register(LLM_INSTITUTION, 1, self._llm_institution)
         registry.register(DESIGN_PROPOSALS, 1, self._record_design_proposals)
+        from .native_resource_transfers import apply_native_resource_transfers
+        registry.register(RESOURCE_TRANSFERS, 1, lambda context: apply_native_resource_transfers(self, context))
         from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, tensor_handler
         registry.register(TENSOR_IMPLEMENTATION, 1, tensor_handler)
         from .code_mechanisms import _schema
