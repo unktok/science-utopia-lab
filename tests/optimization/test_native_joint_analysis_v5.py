@@ -19,6 +19,22 @@ from utopia.system.native_kernel import CONTROL_ARTIFACT, legacy_world_system
 from utopia.system.native_selection_slot import selection_source_slot
 
 
+def test_authoring_reconstruction_uses_exact_versioned_class(monkeypatch):
+    from scripts import analyze_native_joint_objectives_v5 as analysis
+    from utopia.optimization.native_region_proposer_v5 import NativeRegionIRProposer
+    assert analysis._proposer_class('scienceutopia.native-region-proposal.v5') is NativeRegionIRProposer
+    sentinel = object()
+    called = []
+    def load(name):
+        called.append(name)
+        return SimpleNamespace(NativeBoundaryRegionProposer=sentinel)
+    monkeypatch.setattr(analysis.importlib, 'import_module', load)
+    assert analysis._proposer_class('scienceutopia.native-region-proposal.v5a2') is sentinel
+    assert called == ['utopia.optimization.native_region_proposer_v5a2']
+    with pytest.raises(ValueError, match='unknown native region'):
+        analysis._proposer_class('untrusted.module.ClassName')
+
+
 @pytest.fixture
 def authored_fixture(tmp_path, monkeypatch):
     from openai.types.chat import ChatCompletion
@@ -141,6 +157,23 @@ def test_designer_binding_tamper_fails_before_request_replay(authored_fixture):
     bad['seed'] = 43
     with pytest.raises(ValueError, match='journal binding'):
         JournalReplay(f.journal, binding=bad, world=f.world, protocol=f.protocol)
+
+
+def test_actual_authoring_version_must_match_frozen_format(authored_fixture):
+    f = authored_fixture()
+    changed = deepcopy(f.protocol)
+    changed['authoring_format'] = 'boundary-v5a2'
+    # Freeze an internally consistent new journal binding first, so the
+    # independent failure below is specifically the draft-version mismatch.
+    import sqlite3
+    db = sqlite3.connect(f.journal)
+    binding = deepcopy(f.binding)
+    binding['science_config']['protocol'] = changed
+    db.execute('UPDATE metadata SET binding=?', (json.dumps(binding),))
+    db.commit()
+    db.close()
+    with pytest.raises(ValueError, match='version differs from frozen'):
+        audit_proposals(f.arm, f.controller, run=f.run, protocol=changed, world=f.world)
 
 
 @pytest.mark.parametrize('technical_failure', [False, True])

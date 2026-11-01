@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib
 import json
 from pathlib import Path
 import re
@@ -20,6 +21,20 @@ from types import MethodType
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 EXHAUSTED = 'bounded region technical drafts exhausted; no native loss fabricated'
+
+
+def _proposer_class(binding_schema):
+    """Versioned reconstruction, never reinterpret old prompts with new syntax."""
+    known = {
+        'scienceutopia.native-region-proposal.v5':
+            ('utopia.optimization.native_region_proposer_v5', 'NativeRegionIRProposer'),
+        'scienceutopia.native-region-proposal.v5a2':
+            ('utopia.optimization.native_region_proposer_v5a2', 'NativeBoundaryRegionProposer'),
+    }
+    if binding_schema not in known:
+        raise ValueError('unknown native region authoring binding schema')
+    module, name = known[binding_schema]
+    return getattr(importlib.import_module(module), name)
 
 
 def _read(path):
@@ -115,7 +130,6 @@ class JournalReplay:
 
 def audit_proposals(arm, controller, *, run, protocol, world):
     from utopia.optimization.native_code_trace import parent_context_provider
-    from utopia.optimization.native_region_proposer_v5 import NativeRegionIRProposer
     from utopia.system import SystemSpec
     from utopia.system.code_mechanisms import sha
     from utopia.system.design_patch import apply_design_patch
@@ -150,6 +164,14 @@ def audit_proposals(arm, controller, *, run, protocol, world):
                    key=lambda r: r['observation']['loss'])
         parent = SystemSpec.from_dict(best['suggestion']['candidate'])
         receipts = [_read(path) for _, path in paths]
+        authoring_schema = receipts[0]['binding']['schema']
+        declared_schema = {'scoped-v5': 'scienceutopia.native-region-proposal.v5',
+            'boundary-v5a2': 'scienceutopia.native-region-proposal.v5a2'}.get(protocol.get('authoring_format', 'scoped-v5'))
+        if authoring_schema != declared_schema:
+            raise ValueError('actual authoring version differs from frozen experiment format')
+        if any(r['binding']['schema'] != authoring_schema for r in receipts):
+            raise ValueError('authoring version changed inside one repair chain')
+        proposer_class = _proposer_class(authoring_schema)
         first_prompt = _read(directory / f'region-prompt-{index}-0.json')
         instructions = json.loads(first_prompt['prompt'])['instructions']
         executor = ReceiptExecutor(world['image_id'])
@@ -175,7 +197,7 @@ def audit_proposals(arm, controller, *, run, protocol, world):
                 return generated, messages
 
         with tempfile.TemporaryDirectory(prefix='native-joint-v5-audit-') as temporary:
-            proposer = NativeRegionIRProposer(CheckedModel(), executor,
+            proposer = proposer_class(CheckedModel(), executor,
                 removed_nodes=['world.selection'], context_provider=provider,
                 receipts=temporary, instructions=instructions,
                 max_attempts=protocol['max_technical_drafts'], max_tokens=protocol['max_tokens'])
@@ -203,6 +225,7 @@ def audit_proposals(arm, controller, *, run, protocol, world):
         elif index != len(controller.state['records']) or len(receipts) != protocol['max_technical_drafts']:
             raise ValueError('technical exhaustion is not the final complete declared draft budget')
         summaries.append({'proposal_index': index, 'draft_count': len(receipts),
+            'authoring_binding_schema': authoring_schema,
             'status': receipts[-1]['status'], 'candidate_fingerprint': receipts[-1].get('candidate_fingerprint'),
             'receipts': [{'attempt': i, 'receipt_sha256': r['receipt_sha256'],
                 'prompt_sha256': r['prompt_sha256'], 'status': r['status'],
