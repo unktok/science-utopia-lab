@@ -74,10 +74,10 @@ def audit_transfer(directory, loss):
     if candidate.fingerprint != proposal['candidate_fingerprint'] or SystemSpec.from_dict(json.loads((directory / 'candidate.json').read_text())) != candidate:
         raise ValueError('actual initial native candidate differs from generated proposal')
     if plan['mode'] == 'region-v4':
-        from utopia.optimization.native_region_proposer import expand_authoring_manifest, authoring_schema
+        from utopia.optimization.native_region_proposer import expand_authoring_manifest, region_authoring_schema
         successful = [json.loads(p.read_text()) for p in paths if p.name in proposal['evidence']['draft_receipts']]
         successful = [r for r in successful if r['status'] == 'isolated-native-region-passed-not-native-evaluated']
-        if len(successful) != 1 or successful[0]['patch'] != proposal['patch'] or proposal['evidence']['authoring_schema_sha256'] != sha(authoring_schema()):
+        if len(successful) != 1 or successful[0]['patch'] != proposal['patch'] or proposal['evidence']['authoring_schema_sha256'] != sha(region_authoring_schema(parent, ['world.selection'])):
             raise ValueError('joint region generation and transferred patch differ')
         draft = successful[0]
         _, rebuilt = compile_region(parent, expand_authoring_manifest(draft['generated']),

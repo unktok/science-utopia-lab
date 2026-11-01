@@ -132,13 +132,13 @@ def main():
             candidate = apply_design_patch(parent, patch)
             evidence = {'draft_receipts': [p.name for p in sorted((args.output / 'drafts').glob('free-source-[0-9]*.json'))]}
         elif args.mode == 'region-v4':
-            from utopia.optimization.native_region_proposer import NativeRegionProposer, authoring_schema
+            from utopia.optimization.native_region_proposer import NativeRegionProposer, region_authoring_schema
             proposer = NativeRegionProposer(designer, executor, removed_nodes=['world.selection'],
                 context_provider=lambda *a: rows, receipts=args.output / 'drafts', max_attempts=3)
             patch = proposer(parent, history, len(history), loss)
             candidate = apply_design_patch(parent, patch)
             evidence = {'draft_receipts': [p.name for p in sorted((args.output / 'drafts').glob('region-[0-9]*.json'))],
-                'authoring_schema_sha256': sha(authoring_schema()),
+                'authoring_schema_sha256': sha(region_authoring_schema(parent, ['world.selection'])),
                 'interpretation': 'model generates source/protocol/ports/wiring; compiler only derives duplicate schema maps and descriptive custom family'}
         else:
             old_sources = [n.parameters['code_artifact']['source'] for n in parent.mechanisms if n.implementation == 'code.python.v1']

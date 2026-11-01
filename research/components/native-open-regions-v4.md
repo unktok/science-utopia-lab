@@ -10,6 +10,13 @@ compiler derives duplicate schema maps and sets the descriptive family `custom`.
 No institution algorithm or finite algorithm catalog is inserted by the host.
 Exact generated source is saved and mechanically preserved.
 
+The first live a1 exhausted three drafts by confusing retained external endpoints
+with internal replacement nodes. Its [failure record](../results/native-open-region-v4-a1.json)
+is retained, with no native candidate loss. The separately frozen
+[a2 protocol](../protocols/campaigns/native-open-region-v4-a2.md) derives existing
+exclusive phase bounds and retained-node blacklist into the authoring schema.
+This tightens incidental graph syntax guidance, not institution logic.
+
 Unlike the old selection-only isolated probe, `probe_region` supports any
 recorded Python cut, including multiple removed nodes and a communication region
 connected to real researcher-context consumers. It validates all records, full
@@ -17,6 +24,11 @@ contiguous years, graph/source identity, required-port execution semantics,
 container images and context/result receipt hashes. Generated memory is carried
 chronologically and removed initial memory is not accidentally transferred to
 new institutions. Frozen boundary observations do not become fresh-world claims.
+The fixed-wiring free-source proposer now also probes every recorded year with
+the candidate's own evolved memory, rather than parent memory from sparse prompt
+samples. Its receipt binding is version3, so old v2 receipts cannot be silently
+reused under the new probe semantics. Original pinned runs are not rewritten or
+retroactively given these stronger probes.
 
 Prompt and draft receipts bind loss/history/parent/source inputs/schema/image and
 repair chains. Generated responses are saved before probes, so interruption can

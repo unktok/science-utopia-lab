@@ -1,0 +1,27 @@
+{
+  "schema": "scienceutopia.native-open-region.v4.failure-summary",
+  "status": "technical-drafts-exhausted-no-native-candidate",
+  "source_commit": "26ad46b73d4fcfc896fd51f7974f874455fdadc9",
+  "raw_output_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-region-v4-a1/outputs/native-open-region-v4/run",
+  "plan_file_sha256": "990ac53f43df94b484d35762d1988cc5f06203e8954438ab597dabc8d8fb9ee0",
+  "upstream_snapshot_file_sha256": "e5988d32779351e8ba7cbacd820ececa9ef108273b426dffd3e44ca7466eae2a",
+  "upstream_snapshot_canonical_sha256": "62701084656b12f5adf169207a2af26b50e4e3914762d3cc35c062123e1f171b",
+  "baseline_origin": "reused-frozen-upstream-not-rerun",
+  "baseline_loss": -1.0,
+  "native_runtime_tree_sha256": "dc408aa0a6bbe58d573b55f8a8db00221a243f4c1360f875be501243bc71987f",
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "candidate_budget": 1,
+  "technical_drafts": 3,
+  "effective_token_cap": 4096,
+  "fresh_native_worlds": 0,
+  "candidate_loss": null,
+  "independent_reopening_audit": "scripts.audit_native_de_novo_v3.audit_transfer reproduced technical-drafts-exhausted-no-native-candidate from pinned26ad46b",
+  "diagnosis": "All three drafts emitted retained external nodes world.review@120 and world.publication@160, not internal replacement nodes with phases strictly inside (120,160). Port/schema/family errors from v3 were removed, but external-cut vs internal-node distinction remained unsuccessful. No generated Python was edited or natively evaluated.",
+  "drafts": [
+    {"file": "drafts/region-2-0.json", "receipt_sha256": "6e227c30650de41ce00746e56a62fb6733e2ddd2cfad3c08568359031bca9e2a", "previous_receipt_sha256": null, "prompt_sha256": "eb59ef2e52371de8f3df95a25ec18fff03a934f4f3c852451d21d87285501819", "prompt_utf8_bytes": 8475, "error": "exact node fields and phase inside the native boundary required"},
+    {"file": "drafts/region-2-1.json", "receipt_sha256": "d177cbb90e30ca7e9f3c74d791a56141a8e71b19d6b63067bb4ce5f23bf17cf8", "previous_receipt_sha256": "6e227c30650de41ce00746e56a62fb6733e2ddd2cfad3c08568359031bca9e2a", "prompt_sha256": "4792ac5d437ff9397dcc5fc8d3a21b4ca379d4c440e9c6849dbbf5c95cf4e598", "prompt_utf8_bytes": 13538, "error": "exact node fields and phase inside the native boundary required"},
+    {"file": "drafts/region-2-2.json", "receipt_sha256": "6aaab0974e8153c8896d25ecce8000af662fa00dea782728f2fa12b0ba792603", "previous_receipt_sha256": "d177cbb90e30ca7e9f3c74d791a56141a8e71b19d6b63067bb4ce5f23bf17cf8", "prompt_sha256": "87d45e83f40f1f387c08235bea5b85adbe96a5f71f8ddf0d1069127401835604", "prompt_utf8_bytes": 13549, "error": "exact node fields and phase inside the native boundary required"}
+  ],
+  "scientific_quality_or_algorithm_novelty_claim": false
+}

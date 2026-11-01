@@ -13,7 +13,8 @@ from tests.optimization.test_native_world import loss_spec
 from utopia.optimization.native_code_trace import RecordingCodeExecutor, parent_context_provider
 from utopia.optimization.native_design import NativeDesignCampaign
 from utopia.optimization.native_region_design import compile_region, probe_region, probe_selection_region
-from utopia.optimization.native_region_proposer import NativeRegionProposer, expand_authoring_manifest
+from utopia.optimization.native_region_proposer import NativeRegionProposer, expand_authoring_manifest, region_authoring_schema
+from jsonschema import Draft202012Validator
 from utopia.system import ChannelKind, MechanismFamily, MechanismSpec, PortSpec
 from utopia.system.code_mechanisms import CODE_IMPLEMENTATION, CODE_SCHEMA, DockerCodeExecutor, sha
 from utopia.system.native_examples import connect_native_institution
@@ -47,6 +48,21 @@ def test_compact_schema_preserves_exact_python_names_and_connections():
     bad['nodes'][0]['family'] = 'input'
     with pytest.raises(Exception, match='family'):
         expand_authoring_manifest(bad)
+
+
+def test_schema_derives_exclusive_phase_bounds_and_forbids_retained_ids(recorded_selection):
+    campaign, _, _, _ = recorded_selection
+    schema = region_authoring_schema(campaign.initial, ['world.selection'])
+    value = compact(fixture_manifest())
+    validator = Draft202012Validator(schema)
+    validator.validate(value)
+    for phase in (120, 160):
+        bad = deepcopy(value)
+        bad['nodes'][0]['phase'] = phase
+        assert list(validator.iter_errors(bad))
+    bad = deepcopy(value)
+    bad['nodes'][0]['mechanism_id'] = 'world.review'
+    assert list(validator.iter_errors(bad))
 
 
 def test_joint_generation_stateful_native_probe_resume_and_binding(recorded_selection, tmp_path):
