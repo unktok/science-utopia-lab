@@ -113,6 +113,11 @@ def _short(name):
     return re.sub(r'^generated-[0-9a-f]{12}\.', '', name)
 
 
+def _node_label(name, *, native):
+    # Display-only aliases. Full operational IDs remain in selected_graph.
+    return name.removeprefix('world.') if native else _short(name)
+
+
 def _draw_graph(ax, evidence, letter, color):
     cut = evidence['cut']
     ax.set(xlim=(-.02, 1.02), ylim=(0, 1))
@@ -160,22 +165,26 @@ def _draw_graph(ax, evidence, letter, color):
     for node, (x, y) in positions.items():
         inside = node in internal
         boxcolor = color if inside and cut['authored'] else '#7D8C9A'
-        ax.add_patch(FancyBboxPatch((x - widths[node] / 2, y - .15), widths[node], .30,
+        ax.add_patch(FancyBboxPatch((x - widths[node] / 2, y - .18), widths[node], .36,
             boxstyle='round,pad=0.007,rounding_size=0.018', facecolor='#F5F8FB' if inside else '#F2F4F6',
             edgecolor=boxcolor, linewidth=1.2 if inside else .8, zorder=4))
-        name = _short(node)
-        if len(name) > 38:
-            name = name[:35] + '...'
-        ax.text(x, y, '\n'.join(textwrap.wrap(name, 19 if widths[node] > .12 else 13)),
-            ha='center', va='center', fontsize=7 if widths[node] > .12 else 6.1, color='#26384B', zorder=5)
+        name = _node_label(node, native=not inside or not cut['authored'])
+        wrap_width = 16 if widths[node] > .12 else 13
+        if len(name) > wrap_width * 2:
+            name = name[:wrap_width * 2 - 3] + '...'
+        lines = textwrap.wrap(name, wrap_width)
+        if len(lines) > 2:
+            lines = [name[i:i + wrap_width] for i in range(0, len(name), wrap_width)]
+        ax.text(x, y, '\n'.join(lines),
+            ha='center', va='center', fontsize=8.2 if widths[node] > .12 else 6.7, color='#26384B', zorder=5)
     if len(edge_labels) <= 8:
-        ax.text(.5, .10, textwrap.fill('   |   '.join(edge_labels), width=150),
-            ha='center', va='center', fontsize=6, color='#6A7784')
+        ax.text(.5, .18, textwrap.fill(' | '.join(edge_labels), width=120),
+            ha='center', va='center', fontsize=7.2, color='#6A7784')
     else:
-        ax.text(.5, .12, f'{len(edge_labels)} explicit wires; complete port mappings are bound in the figure manifest.',
-            ha='center', va='center', fontsize=6, color='#6A7784')
+        ax.text(.5, .18, f'{len(edge_labels)} explicit wires; complete port mappings are bound in the figure manifest.',
+            ha='center', va='center', fontsize=7.2, color='#6A7784')
     if evidence['authoring_error'] and len(evidence['rows']) == 1:
-        ax.text(.5, .01, 'No eligible fresh native candidate: bounded technical drafts failed.',
+        ax.text(.5, -.15, 'No eligible fresh native candidate: bounded technical drafts failed.',
             ha='center', fontsize=7, color='#A15252')
 
 
@@ -187,9 +196,9 @@ def make_figure(report_path, output):
     if fixture and any(a == 'paper' and b == 'figures' for a, b in zip(output.parts, output.parts[1:])):
         raise ValueError('scripted fixture figures cannot be written into paper/figures')
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'pdf.fonttype': 42, 'font.size': 8})
-    fig = plt.figure(figsize=(7.2, 6.2))
+    fig = plt.figure(figsize=(6.8, 6.2))
     grid = fig.add_gridspec(3, 2, height_ratios=[1.8, 1.25, 1.25],
-        left=.09, right=.985, top=.92, bottom=.095, hspace=.58, wspace=.35)
+        left=.105, right=.985, top=.92, bottom=.15, hspace=.58, wspace=.35)
     for i, arm in enumerate(evidence):
         ax = fig.add_subplot(grid[0, i])
         rows, selected = arm['rows'], arm['selected_index']
@@ -199,25 +208,26 @@ def make_figure(report_path, output):
         ax.scatter([selected], [rows[selected]['loss']], s=80, facecolors='none', edgecolors=COLORS[i], linewidths=1.2, zorder=4)
         for x, y in zip(xs, ys):
             if math.isfinite(y):
-                ax.annotate(f'{y:g}', (x, y), xytext=(0, 7), textcoords='offset points', ha='center', fontsize=7.3)
+                ax.annotate(f'{y:g}', (x, y), xytext=(0, 7), textcoords='offset points', ha='center', fontsize=8.3)
         ax.set_xlim(-.3, max(1.3, len(rows) - .7))
         ax.set_xticks(xs, ['Initial' if x == 0 else f'Revision {x}' for x in xs])
-        ax.set_xlabel('Design observation (initial native world shared)', fontsize=6.7)
-        ax.set_ylabel('Declared loss (lower is preferred)', fontsize=7)
+        ax.set_xlabel('Design observation (initial shared)', fontsize=8)
+        ax.set_ylabel('Declared loss (lower preferred)', fontsize=8)
         ax.set_title(f"{'AB'[i]}   {_objective_label(arm['loss_spec'])}", loc='left', fontsize=9.2, pad=11, color=COLORS[i])
         ax.margins(y=.35)
         ax.spines[['top', 'right']].set_visible(False)
-        ax.tick_params(labelsize=7)
+        ax.tick_params(labelsize=8)
         ax.grid(axis='y', color='#E4E9EF', lw=.6)
         if arm['authoring_error']:
             ax.text(.98, .025, 'Technical authoring failure: no loss point', ha='right', va='bottom',
                 transform=ax.transAxes, fontsize=6.3, color='#A15252')
         _draw_graph(fig.add_subplot(grid[i + 1, :]), arm, 'CD'[i], COLORS[i])
     heading = 'SCRIPTED QA FIXTURE - NOT NATIVE RESULTS' if fixture else 'Objective-conditioned native institutional design'
-    fig.text(.09, .975, heading, fontsize=10, fontweight='semibold', color='#26384B')
-    fig.text(.09, .035, 'A: accepted decisions. Q: sum of accepted raw peer-review means. R: actual reviews. Independent loss units; no cross-panel ranking.\n'
-        'One development seed; shared physical initial world; selected graphs are real incumbents, not necessarily generated improvements.',
-        fontsize=6.6, color='#667585', linespacing=1.6)
+    fig.text(.105, .975, heading, fontsize=10, fontweight='semibold', color='#26384B')
+    fig.text(.105, .025, 'A: accepted decisions. Q: sum of accepted raw-review means. R: actual reviews.\n'
+        'One development seed; shared initial world. Separate objective units; no cross-panel ranking.\n'
+        'Rings mark selected incumbents; displayed cuts are observed designs, not evidence of scientific value.',
+        fontsize=7.2, color='#667585', linespacing=1.6)
     output.parent.mkdir(parents=True, exist_ok=True)
     for suffix in ('.pdf', '.png'):
         options = {'metadata': {'CreationDate': None, 'ModDate': None}} if suffix == '.pdf' else {'dpi': 220}
