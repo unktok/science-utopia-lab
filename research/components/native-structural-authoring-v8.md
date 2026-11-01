@@ -146,3 +146,57 @@ new native-world optimization results or institutional-benefit evidence.
 Actual objective-conditioned authorship and measured exploration belong to the
 separately pinned v8 runner/audit. This reusable example cannot substitute for
 those actual native-Qwen worlds or be reported as autonomous discovery.
+
+## Fresh saved-file authoring validation and the a1 binding failure
+
+The first a1 manifests were invalid before ANY scientist world/reply: authoring
+tooling passed the saved request through JavaScript, which turned integral
+floats such as `1.0` into integers such as `1`. This changed the parent canonical
+fingerprint from `88912a72e5d2f30eace4a595548bcce0ee828bb8e1c40301c438daf13abaa2f4`
+to `af6228e18f41c8051607f6c5dba6c97d59b0d794baf4ce285e05488b3f980bdc`.
+The previous author claim of exact saved-request validation was therefore wrong:
+only a numerically normalized in-memory parent had passed. The host correctly
+rejected the authored patch. This is authoring error, not a host repair or a
+scientific result. Consumed a1 files and both null failures remain unchanged.
+
+The new pure `utopia.optimization.native_external_validation` function
+`validate_saved_generated_response(request_path,response_path,learning_rate=.1)`:
+
+- Freshly reads BOTH saved files using Python's strict JSON decoder, preserving
+  integral float types; rejects duplicate keys, nonfinite numbers, symlinks and
+  identity changes. It does not accept an earlier in-memory object instead.
+- Validates the exact request/response binding, actual original parent, supplied
+  loss, seed, declared batch size and optional explicit learning rate.
+- Constructs the existing `GeneratedMixedDesign`, compiling every REACHABLE
+  conditional factor assignment and parsing literal source without execution.
+- Produces exactly the declared number of deterministic in-memory design draws
+  using the actual request seed/version/history. It reports their fingerprints,
+  probabilities, source hashes and any null technical errors without replacement.
+  These are design draws, NOT native scientific forward observations.
+- Reports saved-byte hashes, canonical hashes, exact parent fingerprint and
+  compiler-file hashes. Either file changing during validation aborts. A later
+  consumer must independently recheck the reported file identities.
+- Writes no files, consumes no inbox and never rebinds/normalizes/repairs a
+  response, imports authored source or calls native worlds, Docker or models.
+
+To validate an external file with an unchanged older experiment source pin,
+load the helper by path while imports resolve against the pinned worktree:
+
+```python
+# Run Python from the clean pinned experiment cwd with PYTHONPATH=.
+import importlib.util
+spec = importlib.util.spec_from_file_location('external_validator', helper_path)
+validator = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(validator)
+report = validator.validate_saved_generated_response(request_path, response_path)
+assert report['status'] == 'passed'
+# Independently preserve/recheck the exact reported file hashes before consumption.
+```
+
+This author-side preflight is not inserted into the immutable 425ec10 source.
+A separate a2 amendment reuses that SAME correct source pin and initial literal
+algorithms, with explicit prior-failure provenance and a newly authored correct
+parent binding. It retains the SAME eight-actual-world maximum across attempts;
+a1 consumed no worlds. Freshly saved a2 responses passed validation using the
+actual 425ec10 classes, not a normalized request. No successful native-world
+outcome or algorithmic improvement is implied by this preflight.
