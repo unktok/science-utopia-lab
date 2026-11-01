@@ -34,9 +34,12 @@ Earlier partial/incomplete QA failures and historical receipt limitations remain
 in the manuscript and component note.
 
 The actual UI export is byte-identical to the audit and its desktop/mobile
-browser captures are checked, not fixture images. Final PDF publication is
-gated on all-page rendering/visual QA and the verification receipt. V7's31-page
-PDF below remains historical, not falsely described as containing v8 data.
+browser captures are checked, not fixture images. The final37-page PDF is built
+from committed text3c2ae4b: all pages rendered/reviewed, new evidence pages
+enlarged, no overfull boxes/undefined references. Cosmetic underfull warnings
+remain. [Verification receipt](../research/results/objective-structure-v8-verification.json)
+binds source/JUnit/figures/export/captures/PDF. V7's31-page PDF below remains
+historical, not falsely described as containing v8 data.
 
 Regenerate structural figures and the guarded result slice without inference:
 

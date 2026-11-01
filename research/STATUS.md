@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## V8 execution/audit/UI complete; final paper verification pending
+## Completed finite v8 goal: structure, response representation, UI and paper
 
 User approves thorough continuation of the original goals, not population/seed
 scale-up. [Acceptance tracks](milestones/2026-11-02-objective-structure-and-response-v8.md)
@@ -34,8 +34,14 @@ their own scopes. Clean integration eda6537 full regression passes1587/6skips
 (968.70s); later exact-observation selection and plotting fixes pass22 targeted
 checks; a later clean report/source suite passes82 with1 heavy duplicate test
 deselected at3ff2968. Later plotting/publication checks have separate scopes.
-These counts overlap and are never added. Final manuscript/PDF visual QA remains
-the active publication gate; no inference process is left running.
+Final clean publication source68727c4 passes83 focused checks/1deselected;
+three later typography checks pass at3c2ae4b. These scopes overlap, not additive.
+The37-page paper is built from committed text3c2ae4b, all pages rendered/reviewed,
+new pages individually inspected, with no overfull boxes or undefined references.
+[Source/artifact verification](results/objective-structure-v8-verification.json)
+binds tests, actual/raw audits, UI export/captures and final PDF. No experiment
+or owned preview process is left running. This closes this finite goal, not all
+future non-scale research or the long-term scientific claims below.
 The [response-boundary representation](components/native-response-boundary-fidelity-v8.md)
 and explicit actual review-context ingress complete seven original six-year
 worlds using1,638 SCRIPTED replies, not Qwen. The unused finite loss change-24

@@ -198,3 +198,31 @@ separate lossunits, exactobservations, adequatepadding/contrast and normalized
 generatedSVGbeforehashing.18 focusedplotchecks pass2.67s. All actual figures,
 methods, fullcrossscores andscriptedresponseQA entertherevisedmanuscript;
 finalPDFvisualQA andsource-boundverificationremainpendingatthisentry.
+
+## Final publication verification — finite goal complete
+
+Clean publication source68727c4 passes83focusedchecks/1deselected4.06s.
+Independent final content review finds no remaining numeric/source/causal
+blocker. Numeric word-spacing and own-loss-selection versus posthoc-crossscore
+wording are corrected; three typography tests pass at3c2ae4b. The final tiny
+clarification says errors have null loss, not that errors are absent.
+
+Final37-page PDF is built from committed text3c2ae4b. All37pages are rendered
+and visually reviewed; pages23--26/35--36 receive enlarged inspection. After
+the final clarification, every rendered page except23 is byte-identical to
+the reviewed version; page23 is individually rechecked. No overfull box,
+undefined or multiply-defined reference. Cosmetic underfull warnings remain.
+PDF SHA35116c79d417f0216a3ee3d0c2727787303be54b3ff87d116d9f5c2964a23ce0.
+
+Final verification rechecks actuala2 all132rawfiles, a1all16files,
+and responseQA305-file inventory unchanged. UI export equals the audit byte
+forbyte; the entire game-ui-v2 git tree matches tested dd87282. Browser capture
+hashes and allzero errors/overflow/nonGET assertions pass. Noexperiment orowned
+previewprocess remains; the user Ollama service is not stopped. Source-bound
+receipt:research/results/objective-structure-v8-verification.json.
+
+All fixedv8 execution/audit/interface/paper gates are complete and artifacts
+are prepared forsafe fast-forward main integration/push. No newseed/population
+or unregistered extra scientific world is added. Actual-Qwen response fidelity,
+exact whole-native/LLM Jacobians, useful autonomous invention and designer
+self-improvement remain unproven, not retroactively labelled completed research.

@@ -9,7 +9,7 @@ worlds; actual paths[-9,-9,-10,-10] and[0,0,.4833,.4833] have734 Qwen replies,
 different16--18-node graphs and an unchanged132-file independently audited raw
 inventory. A separate derivative track passes scripted original-world finite-
 path QA, not actual-Qwen fidelity or a native Jacobian. Actual English UI export/
-browser QA is complete; final paper verification is the last publication gate.
+browser QA and37-page rendered paper verification are complete.
 V7 remains the earlier fixed implementation inventory:
 [non-scale implementation closure v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md).
 The [status page](STATUS.md) is the current execution ledger; old milestones

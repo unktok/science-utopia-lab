@@ -21,6 +21,13 @@ UI implementation184checks/typecheck/build and ACTUAL byte-exact export plus
 desktop/graph/crossscore/mobile browser QA pass. Every capture haszeroerrors,
 overflow andnonGET dispatch. These are not new simulator or model calls.
 
+Final clean publication68727c4 passes83 focused checks with1 duplicate heavy
+check deselected (4.06s); committed paper text3c2ae4b passes3 typography checks.
+All37 PDF pages are rendered and visually reviewed; the final one-line error/
+null-loss clarification changes onlypage23 pixels, individually rechecked.
+Full source/JUnit/raw/UI/PDF hashes:
+[v8 verification receipt](../research/results/objective-structure-v8-verification.json).
+
 ## Historical v7 verification — 2026-11-02
 
 Full clean live source c09e069:1480 passed/6 skipped (847.51s).

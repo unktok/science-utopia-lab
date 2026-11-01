@@ -1,7 +1,8 @@
 # Objective-conditioned structure and native-response fidelity v8
 
-Execution, independent audit and actual UI complete; final paper verification
-is the remaining publication gate. No native/model experiment is still running.
+COMPLETE: execution, independent audit, actual UI and final paper verification.
+No native/model experiment or owned preview process is still running.
+[Source-bound verification receipt](../results/objective-structure-v8-verification.json).
 
 User asks to thoroughly continue the remaining original goals, before scale-up.
 Baseline main c2f2f1a. V7 closed its fixed implementation inventory, not all
@@ -52,10 +53,14 @@ paid provider API; all model-backed work uses clean immutable source pins.
   is fixed and passes40 targeted regression checks without raw modification.
 - Full live-source425ec10 software regression1509passed/6skipped602.55s.
   Clean integration eda6537 passes1587/6skipped968.70s. Later clean source
-  3ff2968 passes82 focused checks/1deselected; later plotting checks pass18.
+  3ff2968 passes82 focused checks/1deselected; final68727c4 passes83/1deselected,
+  and3c2ae4b typography checks pass3. Later plotting checks pass18.
   Scopes overlap and are not added. Actual paths/cross-scores, physically
   5.5-inch paper-width graphics and the response-QA figure are generated from
-  their bound evidence. Manuscript source is revised; final PDF remains pending.
+  their bound evidence. The final37-page PDF is bound to committed text3c2ae4b,
+  all pages rendered/visually reviewed and new evidence pages enlarged. The final
+  clarification changes onlypage23 pixels; it is individually rechecked. No
+  overfull boxes or undefined references; cosmetic underfull warnings remain.
 
 ## Original goals versus research boundaries
 

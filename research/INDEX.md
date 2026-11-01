@@ -9,6 +9,7 @@ and results. New work uses the forward-only taxonomy below.
 - [V8 objective-conditioned structure and native-response fidelity: closure ledger](milestones/2026-11-02-objective-structure-and-response-v8.md)
 - [Eight-world actual structural result and interpretation](results/native-objective-structure-v8-a2.md)
 - [Independent actual v8 audit:734 replies and unchanged132-file raw inventory](results/native-objective-structure-v8-a2.json)
+- [V8 source-bound software, raw, actual UI and37-page PDF verification](results/objective-structure-v8-verification.json)
 - [Preregistered two-objective structural exploration v8](protocols/campaigns/native-objective-structure-v8.md)
 - [Exact-file pre-inference a2 amendment, unchanged total native budget](protocols/campaigns/native-objective-structure-v8-a2.md)
 - [Aborted a1 technical authoring audit: zero worlds and replies](results/native-objective-structure-v8-a1.md)
