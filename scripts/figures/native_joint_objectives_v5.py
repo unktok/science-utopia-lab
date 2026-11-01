@@ -58,6 +58,12 @@ def load_evidence(report):
         raise ValueError('audited joint-objective v5 report required')
     if report.get('classification') not in (ACTUAL, FIXTURE):
         raise ValueError('explicit actual-native or scripted-fixture classification required')
+    if report.get('designer_transport') == 'hash-bound-file-inbox-no-provider-API':
+        origin = report.get('authoring_provenance', {})
+        if (origin.get('kind') != 'hash-bound-external-manifest'
+                or origin.get('provider_authenticated') is not False
+                or origin.get('qwen_designer_authorship_claimed') is not False):
+            raise ValueError('external designer origin must remain explicit and self-reported')
     if report.get('status') not in ('declared-budget-complete', 'terminal-with-preserved-failures'):
         raise ValueError('terminal audit report required; partial worlds are not observations')
     if len(report['arms']) != 2:
@@ -193,6 +199,7 @@ def make_figure(report_path, output):
     report = json.loads(report_path.read_text())
     evidence = load_evidence(report)
     fixture = report['classification'] == FIXTURE
+    external = report.get('designer_transport') == 'hash-bound-file-inbox-no-provider-API'
     if fixture and any(a == 'paper' and b == 'figures' for a, b in zip(output.parts, output.parts[1:])):
         raise ValueError('scripted fixture figures cannot be written into paper/figures')
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'pdf.fonttype': 42, 'font.size': 8})
@@ -222,10 +229,14 @@ def make_figure(report_path, output):
             ax.text(.98, .025, 'Technical authoring failure: no loss point', ha='right', va='bottom',
                 transform=ax.transAxes, fontsize=6.3, color='#A15252')
         _draw_graph(fig.add_subplot(grid[i + 1, :]), arm, 'CD'[i], COLORS[i])
-    heading = 'SCRIPTED QA FIXTURE - NOT NATIVE RESULTS' if fixture else 'Objective-conditioned native institutional design'
+    heading = ('SCRIPTED QA FIXTURE - NOT NATIVE RESULTS' if fixture else
+        'Native institutional design: external designer / native researchers' if external else
+        'Objective-conditioned native institutional design')
     fig.text(.105, .975, heading, fontsize=10, fontweight='semibold', color='#26384B')
+    setting_note = ('External designer (self-reported); one development seed; shared initial. Units differ.\n'
+        if external else 'One development seed; shared initial world. Separate objective units; no cross-panel ranking.\n')
     fig.text(.105, .025, 'A: accepted decisions. Q: sum of accepted raw-review means. R: actual reviews.\n'
-        'One development seed; shared initial world. Separate objective units; no cross-panel ranking.\n'
+        + setting_note +
         'Rings mark selected incumbents; displayed cuts are observed designs, not evidence of scientific value.',
         fontsize=7.2, color='#667585', linespacing=1.6)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -235,6 +246,8 @@ def make_figure(report_path, output):
     plt.close(fig)
     manifest = {'schema': 'scienceutopia.native-joint-objectives-figure.v5',
         'classification': report['classification'], 'source_report_sha256': hashlib.sha256(report_path.read_bytes()).hexdigest(),
+        'designer_transport': report.get('designer_transport'),
+        'authoring_provenance': report.get('authoring_provenance'),
         'generator_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'arms': [{'id': arm['id'], 'native_loss_path': [r['loss'] for r in arm['rows']],
             'selected_index': arm['selected_index'], 'selected_graph': arm['cut'],

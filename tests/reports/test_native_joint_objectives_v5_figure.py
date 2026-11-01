@@ -153,3 +153,19 @@ def test_figure_deterministic_bound_and_fixture_cannot_be_paper_asset(tmp_path):
     assert all(not arm['authoring_failure_is_loss_point'] for arm in manifest['arms'])
     with pytest.raises(ValueError, match='paper/figures'):
         make_figure(path, tmp_path / 'paper/figures/synthetic-must-not-exist')
+
+
+def test_external_authoring_origin_remains_explicit_without_provider_attestation(tmp_path):
+    report = report_fixture()
+    report['designer_transport'] = 'hash-bound-file-inbox-no-provider-API'
+    report['authoring_provenance'] = {'kind': 'hash-bound-external-manifest',
+        'provider_authenticated': False, 'qwen_designer_authorship_claimed': False,
+        'self_reported_authors': [{'kind': 'external', 'identity': 'scripted QA only'}]}
+    path = tmp_path / 'external-scripted-fixture.json'
+    path.write_text(json.dumps(report, sort_keys=True))
+    manifest = make_figure(path, tmp_path / 'external-scripted-figure')
+    assert manifest['authoring_provenance'] == report['authoring_provenance']
+    assert manifest['classification'] == FIXTURE
+    report['authoring_provenance']['provider_authenticated'] = True
+    with pytest.raises(ValueError, match='external designer origin'):
+        load_evidence(report)
