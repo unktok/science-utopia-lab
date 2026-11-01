@@ -213,3 +213,42 @@ tamper rejection were exercised. No full-native autograd/LLM Jacobian claim is
 made. The incomplete source84701f3 partial attempt and source01992cd five-world
 batch remain separately accounted, rather than omitted from implementation
 history or treated as independent scientific repetitions.
+
+## Reproduction and fixed receipts
+
+Compact result: `research/results/native-response-fidelity-v8-scripted.json`.
+Native forward source: `bfe83c0598de07e0f722ba10b7cf6c858de6346e`.
+Independent receipt-hardening/refit source:
+`e8c067760e7ab01ef74bbf185656894b2948a29a`. Seven checkpoint facts,1638
+fresh scripted replies,504 exact authorized review prompt uses and305 raw files
+were checked. Every raw file remained unchanged through independent extraction,
+recalibration and durable semantic reload; additional forward/model/container
+calls were0. This is hash consistency of the retained data, not authenticated
+historical authorship/timing. Per-endpoint anchor status in the result distinguishes
+the three original-operator calibration anchors from four posthoc raw checksums.
+
+Verification receipts retained under this feature worktree's ignored `outputs`:
+
+- `response-fidelity-v8-qa3.log`:1pass,3deselected,64.12s (seven native worlds).
+- `response-fidelity-v8-final-unit4.log`:22pass,1deselected,1.91s (no native forward).
+- `response-fidelity-v8-regression-qa4.log`:34pass,3deselected,66.36s (existing
+  native kernel, relaxation, factorized gradient and new compatibility regressions;
+  not additional fidelity endpoints or scientific repetitions).
+- `response-fidelity-v8-e8c0677-final-audit.log`: independent audit output.
+
+The amended operator is separate from old raw:
+`outputs/response-fidelity-v8-e8c0677-amended-operator.json`. Its file/content/
+representation/module hashes and those of the original operator are in the
+compact result. All checkpoint and local raw paths are machine-local evidence;
+this small JSON does not claim to bundle the full original corpus or checkpoints.
+
+Read-only reanalysis command (use a new output/model path; never write under raw):
+
+```sh
+PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python scripts/analyze_native_response_fidelity_v8.py \
+  --run outputs/response-fidelity-v8-qa3/test_seven_original_native_wor0 \
+  --expected-source bfe83c0598de07e0f722ba10b7cf6c858de6346e \
+  --refit-receipt-amendment \
+  --representation-output outputs/response-fidelity-v8-reanalysis-operator.json \
+  --output outputs/response-fidelity-v8-reanalysis-report.json
+```
