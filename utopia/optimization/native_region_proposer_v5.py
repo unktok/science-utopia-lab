@@ -30,7 +30,8 @@ def probe_authored_region(parent, child, records, *, executor):
     def validate(period, rows, exits):
         worlds = {sha(v['payload']): v['payload'] for row in rows.values()
             for values in row['context']['inputs'].values() for v in values
-            if v['payload'].get('schema') == 'scienceutopia.native-world-observation.v1'}
+            if v['source_mechanism'] not in removed
+            and v['payload'].get('schema') == 'scienceutopia.native-world-observation.v1'}
         if len(worlds) != 1:
             raise ValueError('one actual pre-publication world required for native identity validation')
         world = next(iter(worlds.values()))
