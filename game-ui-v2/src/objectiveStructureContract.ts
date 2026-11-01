@@ -325,7 +325,11 @@ export function parseObjectiveStructureReport(value: unknown, mode: EvidenceMode
       for (const objective of OBJECTIVE_IDS) if (matrixValues[objective] !== expectedRepresentative.row.cross_objective_losses[objective]) throw new Error(`${armId}/${objective} selected matrix differs`);
     }
   }
-  if (!Array.isArray(data.claims) || !data.claims.some((claim: unknown) => typeof claim === "string" && claim.includes("no held-out"))) throw new Error("Truth-boundary claims are absent");
+  if (!Array.isArray(data.claims)
+      || !data.claims.some((claim: unknown) => typeof claim === "string" && claim.includes("held-out"))
+      || !data.claims.some((claim: unknown) => typeof claim === "string" && claim.includes("causal"))) {
+    throw new Error("Truth-boundary claims are absent");
+  }
   return data as ObjectiveStructureReport;
 }
 

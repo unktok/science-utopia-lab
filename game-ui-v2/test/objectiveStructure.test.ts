@@ -89,6 +89,16 @@ describe("objective-conditioned native structure viewer contract", () => {
     expect(() => parseObjectiveStructureReport(changed, "fixture")).toThrow("eight clean worlds");
   });
 
+  it("accepts equivalent audited truth-boundary wording without hard-coding one English phrase", async () => {
+    const changed = structuredClone(await objectiveStructureFixture());
+    changed.claims = [
+      "Development evidence; observed losses do not establish held-out, causal, or generalized improvement.",
+    ];
+    expect(parseObjectiveStructureReport(changed, "fixture").claims[0]).toContain("held-out");
+    changed.claims = ["Development evidence only."];
+    expect(() => parseObjectiveStructureReport(changed, "fixture")).toThrow("Truth-boundary claims are absent");
+  });
+
   it("binds an actual export receipt to report content and exact file identity", async () => {
     const report = await objectiveStructureFixture();
     const receipt = {
