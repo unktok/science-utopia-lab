@@ -14,6 +14,7 @@ from utopia.funding.feedback import FundingFeedbackMixin
 from utopia.models import request_audit
 from utopia.models.response_cache import CompletedResponseCache
 from utopia.runtime.checkpointing import PortableCheckpointError, PortableStop
+from utopia.runtime import snapshots
 from utopia.simulation import Simulation
 
 
@@ -55,8 +56,13 @@ def test_shared_prospective_runner_disables_wandb_before_binding_and_constructor
         model=options.model, model_revision=options.model_revision,
         endpoint=options.vllm_url, context_tokens=options.context_tokens)))
     inference = Mock(side_effect=AssertionError("Constructor must not request inference"))
+    preserved = Mock(side_effect=AssertionError("Constructor must not preserve a checkpoint"))
     uploaded = Mock(side_effect=AssertionError("Constructor must not upload a checkpoint"))
-    monkeypatch.setattr(runner.subprocess, "run", uploaded)
+    # The callback imports these public APIs lazily from their owning module.
+    # Spy at that boundary: no real snapshot work or AWS command can run, and
+    # the contract does not depend on the uploader's subprocess implementation.
+    monkeypatch.setattr(snapshots, "preserve_snapshot", preserved)
+    monkeypatch.setattr(snapshots, "upload_snapshot", uploaded)
     created = []
 
     def model(**kwargs):
@@ -97,6 +103,7 @@ def test_shared_prospective_runner_disables_wandb_before_binding_and_constructor
     assert not list(Path(sim.output_dir).iterdir())
     constructor_only.init.assert_not_called()
     inference.assert_not_called()
+    preserved.assert_not_called()
     uploaded.assert_not_called()
 
 
