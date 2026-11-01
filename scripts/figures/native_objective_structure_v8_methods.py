@@ -22,7 +22,9 @@ def create(output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8.5,
         'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig, ax = plt.subplots(figsize=(7.2, 6.3))
+    # NeurIPS text width is 5.5in: author at final physical width so 9pt text
+    # remains 9pt after inclusion, rather than shrinking a 7.2in canvas.
+    fig, ax = plt.subplots(figsize=(5.5, 6.3))
     ax.set_xlim(0, 7.2); ax.set_ylim(0, 6.3); ax.axis('off')
     fig.subplots_adjust(left=.015, right=.985, bottom=.015, top=.985)
 
@@ -42,11 +44,11 @@ def create(output):
     blue, orange, green, grey = '#2878B5', '#D56A36', '#2C8B75', '#6C7882'
     box(.25, 4.95, 3.05, .72, 'Frozen LossSpec 1: throughput\n$L=-A$', blue)
     box(3.85, 4.95, 3.05, .72, 'Frozen LossSpec 2: reviewed utility\n$L=3.25A-Q+0.05R$', orange)
-    box(.25, 3.45, 2.0, .95, 'Objective-visible external\nstructural authoring\n(no host repair)', '#775DA6')
+    box(.25, 3.45, 2.0, .95, 'Objective-visible\nexternal source author\n(no host repair)', '#775DA6')
     box(2.60, 3.45, 1.80, .95, '2 generations ×\n2 conditional-IID\ndesigns per arm', '#775DA6')
-    box(4.80, 3.45, 2.10, .95, 'Original native world\n5 fixed Qwen researchers\n2 years, seed 42', green)
+    box(4.80, 3.45, 2.10, .95, 'Original native world\n5 fixed Qwen authors\n2 years, seed 42', green)
     box(4.80, 1.95, 2.10, .95, 'Independent checkpoint\nmeasurement\n8 native diagnostics', green)
-    box(2.60, 1.95, 1.80, .95, 'Cross-score every\ncompleted draw under\nboth frozen losses', grey)
+    box(2.60, 1.95, 1.80, .95, 'Cross-score every\ncompleted draw using\nboth frozen losses', grey)
     box(.25, 1.95, 2.0, .95, 'Loss paths + selected\n2×2 matrix + exact\ngraph/source diffs', grey)
     box(.25, .15, 3.05, .60, 'Held-out metrics\nnot defined/measured in v8', '#9A5465', dashed=True, fontsize=8.5)
     box(3.85, .15, 3.05, .60, 'Promotion policy\nnot defined/applied in v8', '#9A5465', dashed=True, fontsize=8.5)
@@ -75,6 +77,8 @@ def create(output):
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}
     for kind, path in paths.items():
         fig.savefig(path, dpi=210 if kind == 'png' else None, bbox_inches='tight', facecolor='white')
+        if kind == 'svg':
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
     plt.close(fig)
     manifest = {'schema': 'scienceutopia.native-objective-structure-methods-figure.v8',
         'result_independent': True, 'new_model_calls': 0, 'new_container_executions': 0,

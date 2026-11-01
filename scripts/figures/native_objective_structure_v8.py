@@ -122,7 +122,7 @@ def create(report, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8.4,
         'axes.spines.top': False, 'axes.spines.right': False, 'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig = plt.figure(figsize=(7.2, 7.0))
+    fig = plt.figure(figsize=(5.5, 6.8))
     grid = fig.add_gridspec(2, 2, height_ratios=[1.25, .92])
     path_grid = grid[0, 0].subgridspec(2, 1, hspace=.82)
     path_axes = [fig.add_subplot(path_grid[index, 0]) for index in range(2)]
@@ -149,7 +149,7 @@ def create(report, output):
         path_ax.set_xticks(range(4), ['G1a', 'G1b', 'G2a', 'G2b'])
         path_ax.set_xlim(-.35, 3.35)
         path_ax.set_ylabel('Own loss')
-        path_ax.set_title(('A1  ' if identity == ARM_IDS[0] else 'A2  ')+LABELS[identity],
+        path_ax.set_title('A1  Throughput' if identity == ARM_IDS[0] else 'A2  Reviewed utility',
                           loc='left', fontsize=9.2, color=COLORS[identity], pad=7)
         path_ax.grid(axis='y', alpha=.18)
 
@@ -170,7 +170,9 @@ def create(report, output):
     for i in range(2):
         for j in range(2):
             axes[1].text(j, i, 'NA' if not np.isfinite(array[i, j]) else f'{array[i,j]:.3g}',
-                         ha='center', va='center', color='#172633', weight='bold')
+                         ha='center', va='center',
+                         color='white' if np.isfinite(shown[i, j]) and shown[i, j] > .55 else '#172633',
+                         weight='bold')
     axes[1].set_xticks(range(2), ['score: -A', 'score: utility'], rotation=18, ha='right')
     axes[1].set_yticks(range(2), ['selected by -A', 'selected by utility'])
     axes[1].set_title('B  Selected cross-score', loc='left', fontsize=9.5)
@@ -190,27 +192,30 @@ def create(report, output):
     for index, identity in enumerate(ARM_IDS):
         axes[2].bar(x+(index-.5)*width, [totals[identity][key] for key in categories], width,
                     color=COLORS[identity], alpha=.9, label=LABELS[identity])
-    axes[2].set_xticks(x, ['node +', 'node -', 'edge +', 'edge -', 'rewire', 'protocol', 'source +', 'source -'],
+    axes[2].set_xticks(x, ['node +', 'node -', 'edge +', 'edge -', 'port rewire', 'protocol', 'source +', 'source -'],
                        rotation=30, ha='right')
     axes[2].set_ylabel('Exact changes vs parent\n(sum over completed draws)')
-    axes[2].set_title('C  Actual graph diffs vs parent', loc='left', fontsize=9.5)
+    axes[2].set_title('C  Actual graph diffs vs parent', loc='left', fontsize=9.5, pad=26)
     axes[2].grid(axis='y', alpha=.18)
-    axes[2].legend(frameon=False, fontsize=7.1, loc='upper right')
+    axes[2].legend(labels=['Throughput', 'Reviewed utility'], frameon=False,
+                   fontsize=7.5, loc='lower left', bbox_to_anchor=(0, 1.00), ncol=2)
 
     title = 'Two-objective native structural exploration'
     if data['classification'] == FIXTURE:
         title = 'SCRIPTED FIXTURE - NOT NATIVE RESULTS'
     fig.suptitle(title, x=.08, y=.97, ha='left', fontsize=11.5)
-    fig.text(.08, .022, 'Development engineering only. Same worlds are cross-scored under both losses; '
-        'matrix color is scaled within column.\nGraph bars are literal differences, not effects.\n'
-        'No held-out, causal, scientific-value, convergence, or comparative optimizer claim.',
+    fig.text(.08, .022, 'Development engineering only. Same worlds cross-scored; colors scaled within columns.\n'
+        'Graph bars are literal differences, not effects.\n'
+        'No held-out, causal, scientific-value, convergence,\nor comparative optimizer claim.',
         color='#53616D', fontsize=7.8)
-    fig.subplots_adjust(left=.10, right=.985, top=.87, bottom=.21, wspace=.48, hspace=.67)
+    fig.subplots_adjust(left=.14, right=.985, top=.87, bottom=.21, wspace=.80, hspace=.67)
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}
     for kind, path in paths.items():
         fig.savefig(path, dpi=210 if kind == 'png' else None, facecolor='white')
+        if kind == 'svg':
+            path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
     plt.close(fig)
-    manifest = {'schema': 'scienceutopia.native-objective-structure-figure.v8', **data,
+    manifest = {**data, 'schema': 'scienceutopia.native-objective-structure-figure.v8',
         'outputs': {key: {'path': str(path), 'sha256': file_sha256(path)} for key, path in paths.items()},
         'new_model_calls': 0, 'new_container_executions': 0}
     write_json_atomic(output.with_suffix('.manifest.json'), manifest, sort_keys=True, allow_nan=False)

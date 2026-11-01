@@ -1,7 +1,8 @@
 # Objective-conditioned original-world structural exploration v8 a2
 
-Status: execution in progress; final independent audit/table pending. Do not
-interpret this partial note as terminal evidence or held-out comparison.
+Status: COMPLETE, independently audited development evidence. Eight physical
+worlds,734 actual Qwen replies,zero technical failures. All132 raw files remain
+byte-identical before/after audit. This is not a held-out comparison.
 
 ## Question and fixed experiment
 
@@ -93,12 +94,62 @@ event stream hash:
 These partial read-only trace checks will be supplemented by the terminal
 independent report, not substituted for it.
 
-## Final audit and interpretation gate
+## All actual outcomes, including unsuccessful redesign
 
-Pending: all eight terminal outcomes, independent checkpoint/raw-review/loss
-reconstruction, both-loss cross-scores for every completed draw, all ties,
-literal initial/parent graph differences, unchanged raw inventory, actual-data
-UI export/browser QA, and final source-bound PDF/verification receipts.
+| Objective / generation / draw | Nodes / edges | A | R | Q | Count loss | Utility loss |
+|---|---:|---:|---:|---:|---:|---:|
+| Throughput / 0 / 0 | 16 / 22 | 9 | 27 | 29 | -9 | 1.6000 |
+| Throughput / 0 / 1 | 16 / 22 | 9 | 27 | 29 | -9 | 1.6000 |
+| Throughput / 1 / 0 | 17 / 24 | 10 | 30 | 31.3333 | -10 | 2.6667 |
+| Throughput / 1 / 1 | 16 / 22 | 10 | 30 | 33.6667 | -10 | 0.3333 |
+| Utility / 0 / 0 | 16 / 22 | 0 | 0 | 0 | 0 | 0 |
+| Utility / 0 / 1 | 16 / 22 | 0 | 0 | 0 | 0 | 0 |
+| Utility / 1 / 0 | 18 / 24 | 1 | 18 | 3.6667 | -1 | 0.4833 |
+| Utility / 1 / 1 | 18 / 24 | 1 | 18 | 3.6667 | -1 | 0.4833 |
+
+The own-loss paths are `[-9,-9,-10,-10]` and
+`[0,0,0.4833333333333335,0.4833333333333335]`. The count objective improves;
+the utility redesign executes but fails to beat the original zero-loss
+incumbent. Its conditional mean>3.25 admission decision does not make the
+review service itself worthwhile: `3.25-3.6666667+.05*18=.4833333`.
+This is an objective incentive, not an extra quality or participation constraint.
+All eight worlds retain five active authors; resources600 versus620 and context
+deliveries0 versus5 are report-only diagnostics, never selection vetoes.
+
+Each objective has two exact best observations. Selection uses own loss only;
+the earliest best observation is a display convention. Count's two best
+systems have utility cross-scores2.6667 and.3333, so the second is not silently
+chosen using the other loss. The selected representative matrix is:
+
+| Selection objective | Count loss | Utility loss |
+|---|---:|---:|
+| Count | -10 | 2.6667 |
+| Utility | 0 | 0 |
+
+Thus changing the optimized proxy selects different observed systems. These
+few development outcomes do not establish objective-induced causal effects,
+scientific value, useful invention or stable out-of-sample ordering. All
+within-generation costs tie, so centered inner score-gradient estimates are
+zero; the observed gain is the external loss/trace-informed source redesign,
+not demonstrated benefit from the mixed-distribution gradient update.
+
+## Final independent audit and publication
+
+[Machine-readable audit](native-objective-structure-v8-a2.json) independently
+reconstructs checkpoint/raw-review losses, all cross-scores, source/history/
+execution receipts and initial/parent graph differences. Actual structural
+sizes16/22,17/24 and18/24 go beyond v7's same19/27 live graphs. Nodes, source
+bodies, protocols and edges change; this does not establish semantic novelty
+or that every valid generated option was sampled. Every complete draw uses
+its exact observation/suggestion IDs, not system fingerprint alone; identical
+systems may have different stochastic observations. All ties and failures
+remain visible.
+
+Content SHA `e932c88a73fe7fa9e3b70b487d798a1504994e3ae6841c26ff335070cbb2ffff`;
+raw inventory SHA `09ebc9ab788855b20fa954107454d7e4ff3679163a134b82f304ff4907b2b1a9`.
+The independent audit starts no models, source code or containers. Actual-data
+UI and rendered PDF have separate final verification receipts; they do not
+alter this frozen raw or add scientific samples.
 
 The development seed and the same completed worlds are reused for cross-scores.
 There is no held-out evaluation, causal institution comparison, convergence

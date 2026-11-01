@@ -32,9 +32,9 @@ def create(report_path, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8.5,
         'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig, (left, right) = plt.subplots(1, 2, figsize=(7.2, 3.55),
+    fig, (left, right) = plt.subplots(1, 2, figsize=(5.5, 3.55),
                                     gridspec_kw={'width_ratios': [1.2, 1]})
-    fig.subplots_adjust(left=.095, right=.985, top=.78, bottom=.32, wspace=.37)
+    fig.subplots_adjust(left=.14, right=.95, top=.78, bottom=.32, wspace=.48)
     blue, orange, green = '#2878B5', '#D56A36', '#2C8B75'
     for indexes, label, color, marker in (
             ([0, 1, 2], 'Calibration', blue, 'o'),
@@ -47,7 +47,7 @@ def create(report_path, output):
     left.axvspan(-.25, .25, color=blue, alpha=.065)
     left.set(xlabel='Institution control $\\theta$', ylabel='Actual native loss',
              xticks=[-.25, 0, .25, .6], yticks=[-120, -96, -72], ylim=(-125, -66))
-    left.set_title('(a) Original native forward; scripted replies', loc='left', fontsize=8.8, pad=11)
+    left.set_title('(a) Native forward; scripted replies', loc='left', fontsize=8.8, pad=11)
     left.legend(loc='lower left', bbox_to_anchor=(-.07, -.57), ncol=2,
                 fontsize=7.1, frameon=False, columnspacing=.6, handletextpad=.3)
     path = data['native_finite_path']
@@ -56,23 +56,26 @@ def create(report_path, output):
     right.set_xscale('log')
     right.set(xlim=(1e-6, 1e3), yticks=[1, 0],
               yticklabels=['Frozen\nresponse', 'Response-\naware'],
-              xlabel='Absolute finite-change prediction error')
-    right.set_title('(b) Unused finite interval: $\\Delta L=-24$', loc='left', fontsize=8.8, pad=11)
+              xlabel='Absolute finite-change error')
+    right.set_xticks([1e-6, 1e-4, 1e-2, 1, 100])
+    right.set_title('(b) Unused $\\Delta L=-24$', loc='left', fontsize=8.8, pad=11)
     for y, error in zip([1, 0], errors):
         right.text(error*1.4, y, f'{error:.3g}', va='center', fontsize=8.5)
     for ax in (left, right):
         ax.spines[['top', 'right']].set_visible(False)
         ax.grid(axis='x', alpha=.14)
         ax.set_axisbelow(True)
-    fig.text(.035, .965, 'Response-boundary refinement: scripted implementation QA only',
+    fig.text(.035, .965, 'Response-aware native QA: scripted only',
              fontsize=11, weight='bold', va='top')
-    fig.text(.035, .88, '7 original six-year worlds · fixed provider · 0 Qwen calls · no whole-world/LLM Jacobian',
+    fig.text(.035, .88, '7 original six-year worlds · 0 Qwen calls · no native/LLM Jacobian',
              fontsize=8.2, color='#53616D')
     fig.text(.985, .025, 'Finite-path agreement is not a point-gradient proof or institutional improvement.',
              fontsize=8.2, color='#8A4253', ha='right')
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}
     for kind, path_out in paths.items():
         fig.savefig(path_out, dpi=210 if kind == 'png' else None, facecolor='white')
+        if kind == 'svg':
+            path_out.write_text('\n'.join(line.rstrip() for line in path_out.read_text().splitlines())+'\n')
     plt.close(fig)
     receipt = {'schema': 'scienceutopia.native-response-fidelity-figure.v8',
         'classification': data['classification'], 'report_sha256': file_sha256(report_path),

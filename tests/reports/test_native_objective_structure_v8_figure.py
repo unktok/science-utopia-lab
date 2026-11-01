@@ -3,7 +3,7 @@ from copy import deepcopy
 
 import pytest
 
-from scripts.analyze_native_objective_structure_v8 import ARM_IDS, FIXTURE, SCHEMA
+from scripts.analyze_native_objective_structure_v8 import ACTUAL, ARM_IDS, FIXTURE, SCHEMA
 from scripts.figures.native_objective_structure_v8 import create, figure_data
 from scripts.figures.native_objective_structure_v8_methods import create as create_methods
 from scripts.reports.native_objective_structure_v8_paper_slice import render_slice
@@ -135,6 +135,21 @@ def test_scripted_fixture_cannot_generate_neurips_paper_slice(tmp_path):
     with pytest.raises(ValueError, match='only frozen actual evidence'):
         render_slice(value, results, methods, results_tex_path='figures/results.pdf',
                      methods_tex_path='figures/methods.pdf')
+
+
+def test_actual_channel_manifest_schema_roundtrip_contract_only(tmp_path):
+    # Synthetic data exercising the actual-classification transport contract.
+    # Never publish this fixture under paper/ or claim it as scientific data.
+    value = report()
+    value['classification'] = ACTUAL
+    rehash(value)
+    results = create(value, tmp_path/'contract-fixture'/'results')
+    methods = create_methods(tmp_path/'contract-fixture'/'methods')
+    assert results['schema'] == 'scienceutopia.native-objective-structure-figure.v8'
+    text = render_slice(value, results, methods, results_tex_path='figures/results.pdf',
+                        methods_tex_path='figures/methods.pdf')
+    assert value['content_sha256'] in text
+    assert 'Selected-system development cross-scores' in text
 
 
 @pytest.mark.parametrize('mutation,match', [
