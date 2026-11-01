@@ -26,6 +26,7 @@ from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 SCHEMA = 'scienceutopia.native-objective-structure-pilot.v8'
+ACTUAL = 'actual-native-qwen-objective-structure-development-v8'
 EXPERIMENT = {'protocol': 'native-objective-structure-v8', 'role': 'development-engineering'}
 GENERATIONS, DRAWS, SEED = 2, 2, 42
 INSTRUCTIONS = (
@@ -33,8 +34,10 @@ INSTRUCTIONS = (
     'world and fixed Qwen weights must remain the forward environment. Author arbitrary new Python algorithms, '
     'protocols, nodes, ports, edges and activity dependency/branch/repetition processes, or retain an existing '
     'system if justified. You may remove/replace the developer open-source, tensor or other institutional '
-    'nodes; no instrumented institution ID is mandatory. Preserve original native scientific phases and '
-    'their actual researcher/paper/resource effects. New source executes only in the pinned networkless '
+    'nodes; no instrumented institution ID is mandatory. Retain original researcher agents and actual '
+    'research/project/paper/RAG/resource state and effects, not replacement numeric science laws. '
+    'Institutions including review, selection and funding may be omitted or replaced when explicit '
+    'downstream-compatible contracts keep the resulting native world executable. New source executes only in the pinned networkless '
     'container; no generated host functions, paid APIs or privileged world writes. All newly needed wires, '
     'artifact types, schedules, domain capabilities and output ABI must be explicitly authored. '
     'Base patch binds the exact parent fingerprint; factor operations apply to the post-base-patch system. '
@@ -45,6 +48,15 @@ INSTRUCTIONS = (
     'Other arm outcomes and future outcomes are not included in this request. Technical failures are null, '
     'not scored penalties or invitations to silently replace an executed draw.'
 )
+
+
+def load_preregistered_losses(paths):
+    losses = [load_loss_spec(path) for path in paths]
+    expected = [load_loss_spec(ROOT / 'research/objectives/losses' / name) for name in (
+        'native-joint-v5-throughput.json', 'native-joint-v5-net-reviewed-utility.json')]
+    if losses != expected:
+        raise ValueError('v8 requires the exact preregistered throughput/utility losses in that order')
+    return losses
 
 
 def advance_arms(arms, campaigns, generators, *, simulation_factory, snapshot):
@@ -87,7 +99,8 @@ def summarize(output, plan, campaigns):
             counts = dict(db.execute('SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
         caches.append({'path': str(path.resolve()), 'sha256': file_sha256(path), 'outcomes': counts})
     replies = sum(c['outcomes'].get('response', 0) for c in caches)
-    result = {'schema': SCHEMA, 'source_commit': plan['world']['source_commit'], 'plan': plan,
+    result = {'schema': SCHEMA, 'classification': plan['world']['classification'],
+        'source_commit': plan['world']['source_commit'], 'plan': plan,
         'status': 'complete' if terminal and complete == 8 and not failures else
             'budget-complete-with-failures' if terminal else 'in-progress',
         'budget_terminal': terminal, 'planned_native_world_budget': 8,
@@ -104,11 +117,11 @@ def summarize(output, plan, campaigns):
 
 
 def run(args):
+    losses = load_preregistered_losses(args.loss)
     from utopia.optimization.native_factory import LocalQwenNativeFactory
     from utopia.system.code_mechanisms import DockerCodeExecutor
     from utopia.system.native_open_examples import open_native_system
 
-    losses = [load_loss_spec(path) for path in args.loss]
     arms = [re.sub(r'[^a-zA-Z0-9_-]', '-', loss['id']) for loss in losses]
     if len(set(arms)) != 2 or len({loss_spec_sha256(loss) for loss in losses}) != 2:
         raise ValueError('two distinct explicit loss definitions and safe arm IDs required')
@@ -120,8 +133,8 @@ def run(args):
     world = {'source_commit': factory.source_commit, 'model_digest': factory.model_digest,
         'corpus_sha256': factory.corpus_sha256, 'years': 2, 'corpus_years': 4,
         'runtime_seed_binding': factory.runtime_seed_binding, 'experiment': EXPERIMENT,
-        'image_id': executor.image_id}
-    plan = {'schema': SCHEMA, 'experiment': EXPERIMENT, 'world': world, 'arm_ids': arms,
+        'image_id': executor.image_id, 'classification': ACTUAL}
+    plan = {'schema': SCHEMA, 'classification': ACTUAL, 'experiment': EXPERIMENT, 'world': world, 'arm_ids': arms,
         'losses': losses, 'seed': SEED, 'generations': GENERATIONS, 'draws_per_generation': DRAWS,
         'population': {'authors': 5, 'conference_setting': 1}, 'mode': 'hybrid',
         'initial_system': initial.to_dict(), 'instructions': INSTRUCTIONS,

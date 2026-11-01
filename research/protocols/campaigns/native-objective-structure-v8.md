@@ -37,7 +37,10 @@ Every exact inbox request/response/consumption is retained.
 
 Nodes, source, ports/protocols, explicit wires, schedules and process dependency/
 branch/repetition rules may change, including removal of developer institutional
-and tensor nodes. Original scientific phases and actual native actions remain.
+and tensor nodes. Original researchers and actual research/project/paper/RAG/
+resource state and effects remain, not replacement numeric science laws.
+Review, selection, funding and other institutions may be omitted/replaced when
+the explicit downstream contracts keep the resulting native world executable.
 There is no fixed catalogue of institution algorithms. No particular tensor ID
 is required; differentiable-fidelity work is a separate explicitly labelled
 track, not a reason to constrain this arm's architecture.
