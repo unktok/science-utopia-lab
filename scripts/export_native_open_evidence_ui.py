@@ -87,7 +87,9 @@ def main():
     source_bytes = args.source.read_bytes()
     evidence = validate(json.loads(source_bytes))
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(evidence, indent=2, ensure_ascii=False, allow_nan=False) + '\n')
+    # Preserve the independently audited compact artifact byte-for-byte after
+    # validation; do not inflate or semantically rewrite it in the UI export.
+    args.output.write_bytes(source_bytes)
     print(json.dumps({'schema': SCHEMA, 'source': str(args.source.resolve()),
         'source_file_sha256': hashlib.sha256(source_bytes).hexdigest(),
         'content_sha256': evidence['content_sha256'], 'output': str(args.output.resolve())}, indent=2))

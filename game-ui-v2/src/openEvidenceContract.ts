@@ -9,7 +9,7 @@ export interface OpenEvidenceClaims {
 export interface OpenEvidenceObservation {
   generation: number; strategy: string; draw: Row; observation: Row | null; checkpoint_sha256?: string;
   open_domain?: Row; process_receipts?: Row[]; events?: Row[]; system?: Row; year?: number;
-  boundary_coverage?: Row; conditional_backward?: Row;
+  boundary_coverage?: Row; conditional_backward?: Row; independent_metrics?: Record<string, { status: string; value: number | null }>; native_counts?: Row;
 }
 export interface NativeOpenEvidence {
   schema: "scienceutopia.native-open-integrated-pilot.v7"; status: "in-progress" | "complete" | "budget-complete-with-failures";

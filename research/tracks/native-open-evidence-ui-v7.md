@@ -64,6 +64,32 @@ source contract.
 content-hash verification for the fixture, null-loss preservation, derivative
 claim boundaries, NativeOpenDomain records and process receipts. Production
 verification is `npm test`, `npm run typecheck`, and `npm run build`. Browser
-QA and actual screenshots are intentionally deferred until the tracked compact
-pilot report exists; fixture screenshots are not substituted for actual
-evidence.
+QA waited for the tracked compact pilot report; fixture screenshots were not
+substituted for actual evidence.
+
+## Completed actual a2 rendering
+
+The independently audited compact a2 artifact is now exported byte-for-byte as
+`game-ui-v2/public/data/native-open-integrated-v7.json` after exporter
+validation. Its semantic content SHA256 is
+`cce6b6b8af54f96bd5b68c00e938b218198ad6dae5cd1241f6427a1c7cabf4fe`.
+It records four completed fresh native worlds, 342 physical fixed-Qwen replies,
+and observed loss path `[-1.2,-0.2,-0.8,-0.2]` across two evolving vocabulary
+generations. The UI also displays independently recomputed endpoint metrics and
+native-effect counts. This path is not a best-design improvement claim.
+
+Local Chrome QA used a clean temporary profile and the actual export. It
+verified all four loss cards, the independent endpoint ledger, one custom actor,
+two scientific artifacts, real process years, 19 nodes, 27 edges, two
+represented tensor nodes, the negative gradient boundary, English-only copy,
+zero browser errors, and no desktop/mobile overflow. It started no experiment,
+model call, or worker. The owned preview and browser were stopped and their
+temporary profile moved recoverably to Trash.
+
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-observations.png`
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-domain.png`
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-process.png`
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-system.png`
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-derivative-boundary.png`
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-actual-full.png`
+- `game-ui-v2/screenshots/noctiluca-open-native-v7-qa.json`

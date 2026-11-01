@@ -38,6 +38,8 @@ function renderObservations(): void {
   el("observation-meta").textContent = `SELECTED ${String(selectedIndex + 1).padStart(2, "0")} / ${String(evidence.observations.length).padStart(2, "0")}`;
   el("observation-deck").innerHTML = evidence.observations.map((item, index) => `<button type="button" data-observation="${index}" data-complete="${complete(item)}" aria-pressed="${index === selectedIndex}"><span>G${item.generation} / DRAW ${index + 1}</span><strong>${esc(statusLabel(item))}</strong><small>${esc(item.strategy)}<br />${complete(item) ? `YEAR ${item.year} · CHECKPOINT ${short(item.checkpoint_sha256)}` : "NO COMPLETE ENDPOINT FIELDS"}</small></button>`).join("");
   el("observation-deck").querySelectorAll<HTMLButtonElement>("button").forEach((button) => button.addEventListener("click", () => { selectedIndex = Number(button.dataset.observation); registrySelection = null; renderSelected(); }));
+  const metrics = record(selected().independent_metrics), counts = record(selected().native_counts), actions = record(counts.actions);
+  el("observation-audit").innerHTML = Object.keys(metrics).length ? `<div><span>INDEPENDENT ENDPOINT RECOMPUTATION</span><strong>${esc(Object.entries(metrics).filter(([, metric]) => record(metric).status === "measured").length)} MEASURED FIELDS</strong></div>${Object.entries(metrics).map(([key, raw]) => { const metric = record(raw); return `<dl><dt>${esc(key.replace("native.", ""))}</dt><dd>${esc(metric.status === "measured" ? metric.value : metric.status)}</dd></dl>`; }).join("")}<div><span>ACTUAL DOMAIN EFFECTS</span><strong>${esc(counts.process_invocations ?? "—")} PROCESS INVOCATIONS / ${esc(counts.domain_commands ?? "—")} COMMANDS</strong><small>${esc(Object.entries(actions).map(([key, value]) => `${key} ${value}`).join(" · "))}</small></div>` : `<p class="empty">No independent audit fields are attached to this ${evidence.ui_fixture ? "synthetic fixture" : "observation"}.</p>`;
 }
 
 function renderDomain(): void {
@@ -95,6 +97,7 @@ function renderEmptyStage(): void {
   el("strategy-panel").innerHTML = `<div><span>CAMPAIGN STAGE</span><strong>WAITING FOR FIRST OBSERVATION</strong><p>No strategy update is displayed before an actual completed generation record exists.</p></div>`;
   el("observation-meta").textContent = "0 ACTUAL OBSERVATIONS";
   el("observation-deck").innerHTML = `<p class="empty">No native world endpoint exists yet. No loss has been assigned.</p>`;
+  el("observation-audit").innerHTML = `<p class="empty">No endpoint exists to audit.</p>`;
   el("actor-list").innerHTML = el("artifact-list").innerHTML = `<p class="empty">No completed checkpoint. No domain records.</p>`;
   el("registry-inspector").innerHTML = `<p class="empty">CONFIGURED / EVIDENCE PENDING</p>`;
   el("process-loom").innerHTML = `<p class="empty">No process receipts exist before an actual native endpoint.</p>`;

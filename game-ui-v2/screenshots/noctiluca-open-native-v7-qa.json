@@ -1,0 +1,42 @@
+{
+  "source": "independently audited native-open-integrated-v7-a2 actual export",
+  "actual_experiment_started_by_ui_qa": false,
+  "overview": {
+    "lang": "en",
+    "truth": "HASH-VERIFIED ACTUAL EVIDENCE",
+    "campaign": "COMPLETE // 4 COMPLETE WORLDS // 342 PHYSICAL QWEN REPLIES",
+    "losses": [
+      "LOSS -1.2",
+      "LOSS -0.2",
+      "LOSS -0.8",
+      "LOSS -0.2"
+    ],
+    "audit": "INDEPENDENT ENDPOINT RECOMPUTATION8 MEASURED FIELDSaccepted_decisions1accepted_peer_score_sum4accepted_unreviewed_decisions0final_active_authors5final_author_resources615institutional_context_deliveries2rejected_decisions6review_records21ACTUAL DOMAIN EFFECTS2 PROCESS INVOCATIONS / 9 COMMANDSactor.create 1 · actor.update 2 · artifact.create 2 · native.context 2 · native.project 2",
+    "actors": 1,
+    "artifacts": 2,
+    "process": [
+      "year 1 · limit — · enabled —delegate 40f50b532862ee5f38…",
+      "year 1 · limit 4 · enabled truedelegate 40f50b532862ee5f38…",
+      "year 2 · limit — · enabled —delegate 40f50b532862ee5f38…",
+      "year 2 · limit 4 · enabled truedelegate 40f50b532862ee5f38…"
+    ],
+    "nodes": 19,
+    "edges": 27,
+    "coverage": "BOUNDARY COVERAGE1 / 27 ROUTES REPRESENTED NUMERICTRACE FRAMES4REPRESENTED TENSOR NODES2OPAQUE MECHANISMS17actor/artifact IDs and text remain routable data, not numerical differentiable coordinates",
+    "backward": "CONDITIONAL BACKWARDPASSEDSOFT LOSS-3.18733442382681NUMERICAL CHECKS1EPSILON0.00001{\n  \"addressed-selection\": {\n    \"bias\": 0.35971062068403614\n  }\n}",
+    "boundary": "THIS DOES NOT ESTABLISHThe displayed −actions term is a local represented surrogate—not the campaign's joint engineering loss −A − 0.1C.a gradient through researcher texta derivative of generated Python sourcea full native-world pathwise gradientcausal institutional benefitscientific value or held-out performance",
+    "fixture": false,
+    "japanese": false,
+    "overflow": false
+  },
+  "mobile_overflow": false,
+  "browser_errors": [],
+  "screenshots": [
+    "noctiluca-open-native-v7-actual-full.png",
+    "noctiluca-open-native-v7-observations.png",
+    "noctiluca-open-native-v7-domain.png",
+    "noctiluca-open-native-v7-process.png",
+    "noctiluca-open-native-v7-system.png",
+    "noctiluca-open-native-v7-derivative-boundary.png"
+  ]
+}

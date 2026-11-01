@@ -1,5 +1,29 @@
 # Deterministic visual QA
 
+## Open native integrated evidence v7
+
+These local Chrome captures render the independently audited actual a2 export,
+not the synthetic UI fixture. Four fresh native worlds produced 342 physical
+fixed-Qwen replies and observed engineering loss path
+`[-1.2,-0.2,-0.8,-0.2]`. Panel captures retain readable native endpoint,
+NativeOpenDomain, process, SystemSpec and represented-conditional derivative
+evidence. The conditional panel states that its `-actions` surrogate is not the
+campaign's joint loss, full-world derivative, causal benefit, held-out result,
+or scientific-value evidence. Browser QA started no experiment or inference.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-open-native-v7-actual-full.png` | `5f112a0ccbf20ec233b85d65c641b1d0707e61c92e8173c04f29cf33e2d9b7da` |
+| `noctiluca-open-native-v7-observations.png` | `5a4918b42d41e308eb9280c93438a387482e4a9c9b9ac6fbfcff9cf9c021a42c` |
+| `noctiluca-open-native-v7-domain.png` | `0f75393556cf6db29be9c1606f3d71b4951d102cdee5c743f32f7c598678f036` |
+| `noctiluca-open-native-v7-process.png` | `e78c2e4b20c750e55c24e182fe5c665dfe2c151a88d81c3285f28f4264792dbc` |
+| `noctiluca-open-native-v7-system.png` | `0a079c0f68ce98d99cc96afd3a0fbfce9129c2219983ef22ff7f4e7da7cd4a5c` |
+| `noctiluca-open-native-v7-derivative-boundary.png` | `8a3af7949063a7f3f7bde849fc385107d4385546b0bd731601306f2ba13f30bf` |
+
+The machine-readable QA record is
+`noctiluca-open-native-v7-qa.json` (SHA256
+`2157826ef8a02ebd52464c44405df7b7a3da6c9354d54ca4eca2f6894d3cbfd5`).
+
 ## Audited native design lifecycle v6
 
 These `1440x1100` local Chrome captures render the real, tracked v5 audit

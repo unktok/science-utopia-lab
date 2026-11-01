@@ -3,9 +3,19 @@ import { describe, expect, it } from "vitest";
 import { derivativeDiagnosticFailure, parseNativeOpenEvidence, processReceiptYear, verifyNativeOpenEvidence } from "../src/openEvidenceContract";
 
 const fixturePath = new URL("../public/data/native-open-evidence.synthetic.json", import.meta.url);
+const actualPath = new URL("../public/data/native-open-integrated-v7.json", import.meta.url);
 const fixture = () => JSON.parse(readFileSync(fixturePath, "utf8"));
 
 describe("native open integrated evidence viewer contract", () => {
+  it("loads the independently audited four-world actual export", () => {
+    const parsed = parseNativeOpenEvidence(JSON.parse(readFileSync(actualPath, "utf8")), "actual");
+    expect(parsed.status).toBe("complete");
+    expect(parsed.physical_reply_count).toBe(342);
+    expect(parsed.complete_native_worlds).toBe(4);
+    expect(parsed.observations.map((row) => row.observation?.loss)).toEqual([-1.2, -0.2, -0.8, -0.2]);
+    expect(parsed.content_sha256).toBe("cce6b6b8af54f96bd5b68c00e938b218198ad6dae5cd1241f6427a1c7cabf4fe");
+  });
+
   it("accepts only an explicitly labelled and hash-bound UI fixture", async () => {
     const parsed = await verifyNativeOpenEvidence(fixture(), "fixture");
     expect(parsed.observations).toHaveLength(2);

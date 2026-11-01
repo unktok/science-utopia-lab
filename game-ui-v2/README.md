@@ -77,6 +77,12 @@ unavailable. `?fixture=open-v7` opens a conspicuously labelled synthetic UI
 fixture and is never accepted through the actual channel. See
 `research/tracks/native-open-evidence-ui-v7.md`.
 
+The current tracked actual export contains four completed fresh worlds, 342
+physical Qwen3:8B replies, and observed engineering losses
+`[-1.2, -0.2, -0.8, -0.2]`. These are development observations, not a claim of
+best-system improvement, causal benefit, held-out performance, or scientific
+value.
+
 Regenerate the portable, hash-bound browser snapshot without running an
 experiment:
 
