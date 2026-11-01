@@ -77,7 +77,7 @@ function renderDerivative(): void {
   const coverage = record(selected().boundary_coverage), backward = record(selected().conditional_backward);
   if (!complete(selected())) { el("coverage-panel").innerHTML = el("backward-panel").innerHTML = `<p class="empty">No derivative evidence for an incomplete endpoint.</p>`; return; }
   const edges = list(coverage.edges), represented = edges.filter((edge) => record(edge).derivative_coverage === "represented-numeric-communication").length;
-  el("coverage-panel").innerHTML = `<span>BOUNDARY COVERAGE</span><h3>${represented} / ${edges.length} ROUTES REPRESENTED NUMERIC</h3><dl><div><dt>TRACE FRAMES</dt><dd>${esc(coverage.trace_frames)}</dd></div><div><dt>VERIFIED TENSOR NODES</dt><dd>${list(coverage.verified_represented_mechanisms).length}</dd></div><div><dt>OPAQUE MECHANISMS</dt><dd>${list(coverage.opaque_mechanisms).length}</dd></div></dl><p>${esc(coverage.nonnumeric_records)}</p>`;
+  el("coverage-panel").innerHTML = `<span>BOUNDARY COVERAGE</span><h3>${represented} / ${edges.length} ROUTES REPRESENTED NUMERIC</h3><dl><div><dt>TRACE FRAMES</dt><dd>${esc(coverage.trace_frames)}</dd></div><div><dt>REPRESENTED TENSOR NODES</dt><dd>${list(coverage.represented_mechanisms).length}</dd></div><div><dt>OPAQUE MECHANISMS</dt><dd>${list(coverage.opaque_mechanisms).length}</dd></div></dl><p>${esc(coverage.nonnumeric_records)}</p>`;
   el("backward-panel").innerHTML = `<span>CONDITIONAL BACKWARD</span><h3 data-status="${esc(backward.status)}">${esc(String(backward.status).toUpperCase())}</h3><dl><div><dt>SOFT LOSS</dt><dd>${esc(backward.conditional_soft_loss)}</dd></div><div><dt>NUMERICAL CHECKS</dt><dd>${list(backward.numerical_checks).length}</dd></div><div><dt>EPSILON</dt><dd>${esc(backward.finite_difference_epsilon)}</dd></div></dl><pre>${esc(json(backward.gradient))}</pre>`;
 }
 
@@ -87,11 +87,27 @@ function renderSource(): void {
   el("raw-observation").textContent = json(current);
 }
 function renderSelected(): void { renderCampaign(); renderObservations(); renderDomain(); renderProcesses(); renderSystem(); renderDerivative(); renderSource(); }
+function renderEmptyStage(): void {
+  el("campaign-meta").textContent = `${evidence.status.toUpperCase()} // 0 COMPLETE WORLDS // ${evidence.physical_reply_count} PHYSICAL QWEN REPLIES`;
+  el("campaign-rail").innerHTML = `<p class="empty">No generated vocabulary record has completed. Configuration is visible; outcomes, losses, systems and derivatives remain absent.</p>`;
+  el("strategy-panel").innerHTML = `<div><span>CAMPAIGN STAGE</span><strong>WAITING FOR FIRST OBSERVATION</strong><p>No strategy update is displayed before an actual completed generation record exists.</p></div>`;
+  el("observation-meta").textContent = "0 ACTUAL OBSERVATIONS";
+  el("observation-deck").innerHTML = `<p class="empty">No native world endpoint exists yet. No loss has been assigned.</p>`;
+  el("actor-list").innerHTML = el("artifact-list").innerHTML = `<p class="empty">No completed checkpoint. No domain records.</p>`;
+  el("registry-inspector").innerHTML = `<p class="empty">CONFIGURED / EVIDENCE PENDING</p>`;
+  el("process-loom").innerHTML = `<p class="empty">No process receipts exist before an actual native endpoint.</p>`;
+  el("system-fingerprint").textContent = "NO COMPLETE SYSTEM";
+  el("system-graph").innerHTML = `<p class="empty">No system observation is attached.</p>`; el("node-inspector").innerHTML = "";
+  el("coverage-panel").innerHTML = el("backward-panel").innerHTML = `<p class="empty">No conditional derivative evidence exists.</p>`;
+  el("source-details").innerHTML = `<div><dt>CONTENT SHA256</dt><dd>${esc(evidence.content_sha256)}</dd></div><div><dt>SOURCE COMMIT</dt><dd>${esc(evidence.source_commit)}</dd></div><div><dt>STATUS</dt><dd>${esc(evidence.status)}</dd></div><div><dt>CONFIGURED PROVIDER</dt><dd>${esc(evidence.configured_researcher_provider)} / live claim ${esc(evidence.claims.live_fixed_Qwen_researchers)}</dd></div><div><dt>WORLD BINDING</dt><dd><pre>${esc(json(evidence.world_binding))}</pre></dd></div><div><dt>CAMPAIGN BINDING</dt><dd><pre>${esc(json(evidence.campaign_binding))}</pre></dd></div>`;
+  el("raw-observation").textContent = "No observation row exists.";
+}
 function renderAll(mode: "actual" | "fixture"): void {
   el("truth-badge").textContent = mode === "actual" ? "HASH-VERIFIED ACTUAL EVIDENCE" : "SYNTHETIC UI FIXTURE // NOT EXPERIMENT DATA";
   el("truth-badge").classList.toggle("fixture", mode === "fixture"); el("evidence").removeAttribute("hidden");
   el("hero-source-label").textContent = mode === "actual" ? "FRONTIER ARRAY / ACTUAL NATIVE EXECUTION" : "FRONTIER ARRAY / SYNTHETIC UI COMPONENT CHECK";
-  el("footer-source").textContent = `${mode === "actual" ? "ACTUAL" : "FIXTURE"} // ${evidence.content_sha256}`; renderSelected();
+  el("footer-source").textContent = `${mode === "actual" ? "ACTUAL" : "FIXTURE"} // ${evidence.content_sha256}`;
+  if (evidence.observations.length) renderSelected(); else renderEmptyStage();
 }
 async function start(): Promise<void> {
   const fixture = new URLSearchParams(location.search).get("fixture") === "open-v7";

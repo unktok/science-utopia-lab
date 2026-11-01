@@ -48,6 +48,15 @@ describe("native open integrated evidence viewer contract", () => {
     expect(() => parseNativeOpenEvidence(mismatched, "fixture")).toThrow("response caches");
   });
 
+  it("accepts a configured zero-world in-progress stage without fabricating outcomes", () => {
+    const pending = fixture(); pending.status = "in-progress"; pending.records = []; pending.observations = [];
+    pending.complete_native_worlds = 0; pending.physical_reply_count = 0; pending.physical_response_caches = [];
+    pending.claims.live_fixed_Qwen_researchers = false;
+    const parsed = parseNativeOpenEvidence(pending, "fixture");
+    expect(parsed.observations).toEqual([]);
+    expect(parsed.claims.live_fixed_Qwen_researchers).toBe(false);
+  });
+
   it("retains actual participants, artifacts, process iteration and skip receipts", () => {
     const parsed = parseNativeOpenEvidence(fixture(), "fixture"); const row = parsed.observations[0]!;
     expect(Object.keys(row.open_domain!.actors)).toEqual(["night-lab"]);
