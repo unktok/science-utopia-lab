@@ -78,7 +78,6 @@ def authored_fixture(tmp_path, monkeypatch):
     model.model_name, model.run_seed, model.server_backend = 'scripted-model', 42, 'ollama'
     model.thinking_override, model.max_tokens_override = False, 4096
     journal = tmp_path / 'arms' / arm / 'designer-replies.sqlite'
-    model.response_cache = CompletedResponseCache(journal, binding=binding)
     valid = {'rationale': 'Scripted fixture, no algorithm executed', 'nodes': [{
         'id': 'tribunal', 'inputs': {
             'evidence': {'sources': ['boundary:world'], 'required': True, 'schema': {'type': 'object'}},
@@ -99,7 +98,11 @@ def authored_fixture(tmp_path, monkeypatch):
             return CodeExecution(result, {'artifact_sha256': sha(artifact), 'context_sha256': sha(context),
                 'result_sha256': sha(result), 'image_id': image, 'wall_seconds': 0.0})
 
-    def create(*, success=True):
+    def create(*, success=True, thinking=False):
+        if thinking:
+            protocol['designer_thinking'] = True
+        model.thinking_override = thinking
+        model.response_cache = CompletedResponseCache(journal, binding=binding)
         queue = [invalid, valid] if success else [invalid, invalid, invalid]
         def callback(**payload):
             content = queue.pop(0)
@@ -127,8 +130,9 @@ def authored_fixture(tmp_path, monkeypatch):
     return create
 
 
-def test_exact_prompt_cache_repair_probe_and_native_candidate_reconstruct_without_execution(authored_fixture):
-    f = authored_fixture()
+@pytest.mark.parametrize('thinking', [False, True])
+def test_exact_prompt_cache_repair_probe_and_native_candidate_reconstruct_without_execution(authored_fixture, thinking):
+    f = authored_fixture(thinking=thinking)
     report = audit_proposals(f.arm, f.controller, run=f.run, protocol=f.protocol, world=f.world)
     assert report[0]['draft_count'] == 2
     assert report[0]['status'] == 'isolated-native-region-passed-not-native-evaluated'

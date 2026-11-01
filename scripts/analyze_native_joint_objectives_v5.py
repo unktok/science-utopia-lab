@@ -108,7 +108,11 @@ class JournalReplay:
                 raise ValueError('designer response journal content hash differs')
         model = VLLMServerModel.__new__(VLLMServerModel)
         model.model_name, model.run_seed = world['model'], protocol['seed']
-        model.server_backend, model.thinking_override = 'ollama', False
+        model.server_backend = 'ollama'
+        thinking = protocol.get('designer_thinking', False)
+        if type(thinking) is not bool:
+            raise ValueError('designer_thinking must be an explicitly bound boolean')
+        model.thinking_override = thinking
         model.max_tokens_override = protocol['max_tokens']
         model.response_cache = object()  # Native JSON parse must fail closed.
 
