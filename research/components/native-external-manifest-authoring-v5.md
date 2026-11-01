@@ -42,8 +42,10 @@ symlink responses, invalid envelope fields and changed consumed responses fail
 closed. Structural/code validity is judged by the existing bounded proposer,
 so invalid drafts remain exact technical receipts with null loss.
 
-`consumed/<sha256>.json` binds the request, entire response, exact manifest and
-author metadata. The adapter never imports, executes, patches or repairs Python
+`consumed/<sha256>.json` binds the canonical request/response, their original
+file-byte hashes, exact manifest and author metadata. Even whitespace-only
+rewrites of consumed files are detected. The adapter never imports, executes,
+patches or repairs Python
 source. Existing source compilation and isolated no-network Docker execution
 remain mandatory. `audit_manifest_inbox` independently reopens exact hashes
 without model calls or file changes; it audits inbox provenance only, not the

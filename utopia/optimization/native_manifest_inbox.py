@@ -10,7 +10,7 @@ from pathlib import Path
 
 from utopia.system.code_mechanisms import sha
 from utopia.system.design_patch import clone
-from utopia.utils.data_utils import write_json_atomic
+from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 SCHEMA = 'scienceutopia.external-manifest-request.v5'
 
@@ -67,6 +67,8 @@ class ManifestInbox:
             response = self._response(digest)
             expected = {'schema': 'scienceutopia.external-manifest-consumed.v5',
                 'request_sha256': digest, 'response_sha256': sha(response),
+                'request_file_sha256': file_sha256(self._path('requests', digest)),
+                'response_file_sha256': file_sha256(self._path('responses', digest)),
                 'manifest_sha256': sha(response['manifest']), 'authoring': response['authoring']}
             if receipt != expected:
                 raise ValueError('consumed external authoring response/manifest changed')
@@ -88,6 +90,8 @@ class ManifestInbox:
         response = self._response(digest)
         receipt = {'schema': 'scienceutopia.external-manifest-consumed.v5',
             'request_sha256': digest, 'response_sha256': sha(response),
+            'request_file_sha256': file_sha256(request_path),
+            'response_file_sha256': file_sha256(response_path),
             'manifest_sha256': sha(response['manifest']), 'authoring': response['authoring']}
         consumed_path = self._path('consumed', digest)
         if consumed_path.exists() and self._read(consumed_path) != receipt:

@@ -81,6 +81,17 @@ def test_changed_generation_settings_get_different_requests_and_no_network(tmp_p
     assert len(set(digests)) == 2
 
 
+def test_consumed_raw_bytes_are_also_bound_not_only_canonical_json(tmp_path):
+    inbox = ManifestInbox(tmp_path)
+    with pytest.raises(ExternalAuthoringPending) as wait:
+        request(inbox)
+    response = answer(wait.value)
+    request(inbox)
+    wait.value.response_path.write_text(json.dumps(response, indent=4))
+    with pytest.raises(ValueError, match='consumed external'):
+        ManifestInbox(tmp_path)
+
+
 def test_symlink_response_is_not_consumed(tmp_path):
     inbox = ManifestInbox(tmp_path / 'inbox')
     with pytest.raises(ExternalAuthoringPending) as wait:
