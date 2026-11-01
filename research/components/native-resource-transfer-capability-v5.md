@@ -42,7 +42,11 @@ does not automatically reactivate an inactive researcher.
   finite-precision domain limitation, not an allocation-policy preference.
 - Native ledger attachment/open-year/duplicate-leg checks happen before
   application. Unexpected execution failures roll back all touched balances,
-  active flags and the entire same ledger object's state.
+  active flags and the entire same ledger object's state. Atomicity covers this
+  transaction batch, not the whole scientific year: a later phase failure still
+  requires restoring the preceding portable checkpoint. Rollback covers native
+  resources/is_active and ledger state, not arbitrary additional side effects
+  introduced by a custom host-side override of an actor's update method.
 - A transfer identity is the exact producer mechanism, producer port, emitted
   period and chosen transaction ID. Exact repeated delivery is a global no-op
   across consumers and past years; reusing an identity for a different command
