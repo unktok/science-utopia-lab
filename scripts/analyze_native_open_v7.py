@@ -299,7 +299,16 @@ def derivative_diagnostics(system, events):
     return coverage, backward
 
 
-def audit_native_run(root, draw, observation, evidence, world, classification):
+def audit_native_run(root, draw, observation, evidence, world, classification, *,
+        expected_experiment=None, expected_loss=None):
+    """Audit one immutable native draw without executing it.
+
+    The optional bindings let later protocols reuse the physical-evidence audit.
+    Defaults deliberately preserve the exact v7 receipt and loss contract.
+    """
+    expected_experiment = (expected_experiment if expected_experiment is not None else
+        {'protocol': 'native-open-integrated-v7', 'role': 'development-engineering'})
+    loss_spec = expected_loss if expected_loss is not None else joint_engineering_loss()
     system = SystemSpec.from_dict(draw['suggestion']['candidate'])
     checkpoint = Path(evidence['checkpoint_path']).resolve()
     cell = Path(root) / 'worlds' / evidence['run_id']
@@ -317,7 +326,7 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
             or (classification != FIXTURE and saved['year'] != 2)):
         raise ValueError('actual source/model/corpus/seed/design/native horizon differs')
     if classification != FIXTURE and (binding['model'] != 'qwen3:8b'
-            or binding['science_config']['experiment'] != {'protocol': 'native-open-integrated-v7', 'role': 'development-engineering'}
+            or binding['science_config']['experiment'] != expected_experiment
             or binding['science_config']['population'] != {'institutions': 5, 'per_institution': 1, 'strategy': 'balanced'}
             or binding['science_config']['corpus_years'] != 4
             or binding['science_config']['thinking_override'] is not False
@@ -372,7 +381,11 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
     if classification != FIXTURE and len(initial_authors) != 5:
         raise ValueError('actual original initialized population is not five researchers')
     coverage, backward = derivative_diagnostics(system, kernel.events)
-    return {'measurement': measurement, 'native_loss': evaluate_loss(joint_engineering_loss(), [measurement])['loss'],
+    conditional_scope = ('Minus represented router actions, conditioned on recorded numeric inputs; '
+        'NOT joint LossSpec -A-0.1C or full native/LLM pathwise derivative.' if loss_spec == joint_engineering_loss()
+        else 'Minus represented router actions, conditioned on recorded numeric inputs; '
+            'NOT the bound native LossSpec or full native/LLM pathwise derivative.')
+    return {'measurement': measurement, 'native_loss': evaluate_loss(loss_spec, [measurement])['loss'],
         'physical_initial_identity': physical_initial_identity(initial),
         'response_proof': response, 'code_proof': code, 'native_counts': domain_proofs(saved, kernel, code_rows),
         'context_input_proof': context_input_proofs(cell, saved),
@@ -384,7 +397,7 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
             'actual_conference_count': len(initial['conference_system']['conferences']),
             'configured_num_conferences': 1 if classification != FIXTURE else None,
             'note': 'Configured count and actual per-category conference instances are separate facts.'},
-        'conditional_backward_scope': 'Minus represented router actions, conditioned on recorded numeric inputs; NOT joint LossSpec -A-0.1C or full native/LLM pathwise derivative.'}
+        'conditional_backward_scope': conditional_scope}
 
 
 def partial_physical_proof(cell, system, world, classification):
