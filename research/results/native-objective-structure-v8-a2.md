@@ -29,6 +29,10 @@ utility author is a fresh specialist context, explicitly recorded rather than
 misrepresented as an authenticated same designer. Thus this is an executable
 objective-conditioned workflow, not a controlled causal effect of objective text
 with every designer behavior held fixed. It is not an optimizer comparison.
+Own completed execution traces and source are available, not only scalar loss.
+The pilot is trace-informed source redesign with native loss feedback, richer
+than a strictly loss-only black-box oracle. The general ask/tell interface
+permits loss-only optimizers independently; no comparative efficiency is inferred.
 
 Live source: `425ec10396b17df85efdff20bb063b20c33886e5`.
 [Protocol](../protocols/campaigns/native-objective-structure-v8.md),

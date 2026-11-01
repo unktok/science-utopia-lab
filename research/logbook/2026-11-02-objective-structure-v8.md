@@ -150,3 +150,23 @@ payload-hash bijection, actual SQL rowid and wire line retained, duplicate/
 missing/tamper/reordering regressions.40 tests pass1.27s; frozen outputs and
 operator remain unchanged. Clean detached eda6537 integration full regression
 starts with persistent JUnit/log/basetemp, separate from the425ec10 experiment.
+
+## Loss improvement, trace attribution and duplicate-design reporting repair
+
+Both throughput generation1 worlds finish at-10: the actual path is
+[-9,-9,-10,-10], six ofeight worlds nowcomplete and568 Qwen replies committed.
+The first new world's realyear1 plan amendment annualizes the previously missed
+two-year author, followed byfive actualsubmissions/acceptances. Publication
+feedback reachesyear2, notyear1: the initialgain cannot be attributed to that
+feedback. The newsource/scope/focus/wiring changes are confounded, not ablated.
+Ownraw/source trace access is explicit, richer than a loss-only black-box oracle.
+
+Root read-only UI/source review finds an ordinary identity bug before actual
+publication: selecting bySystemSpec fingerprint alone can choose a nonbest
+observation when repeated identical designs have different stochastic outcomes.
+The experiment optimizer already uses exactobservations and is unaffected.
+Auditor0fb52b6 (root0293f75), rootfigure7404a88 andUIc46a40c (root4cb9f11)
+switch representatives/ties/crossscores to aligned uniqueobservation+suggestion
+IDs. Repeatedfingerprints remainallowed. Unequalcost andexacttie regressions
+pass; combinedaudit/figure22 checks pass5.25s; UI183checks+build+fixturebrowser
+QA pass, withzeroerrors/overflow/nonGET. No nativeworld isrerun or rewritten.

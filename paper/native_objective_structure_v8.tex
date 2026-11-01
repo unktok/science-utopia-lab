@@ -1,7 +1,7 @@
 \subsection{Objective-conditioned open structural exploration}
 \label{sec:objective-structure-v8}
 
-The next experiment changes the design object rather than the population or
+This experiment changes the design object rather than the population or
 replication scale. Two fixed illustrative LossSpecs condition otherwise identical
 interfaces: throughput $L_{\mathrm{count}}=-A$ and net reviewed utility
 $L_{\mathrm{utility}}=3.25A-Q+0.05R$, where $A$ counts native accepted decisions,
@@ -38,6 +38,12 @@ black-box designer-selection heuristics use actual native costs. They do not
 differentiate source synthesis or researcher text. Identity proposals, repeated
 IID choices and a failure to improve are legal; structural novelty is not
 rewarded or required by a merit filter.
+
+The external author may inspect its own completed source and native execution
+traces in addition to losses. This is richer feedback than a loss-only
+black-box oracle. The generic ask/tell boundary still permits loss-only search;
+this pilot evaluates trace-informed source redesign, not the comparative
+efficiency of a loss-only optimizer or an autonomous Qwen code designer.
 
 The independent read-only analysis reconstructs complete generation/authoring
 history, remeasures eight native diagnostics, cross-scores every completed
