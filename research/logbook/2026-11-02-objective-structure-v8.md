@@ -134,3 +134,19 @@ affect frozen concurrency1 QA. No new forward run is needed for the join fix.
 The new result-bound scientific figure and manuscript subsection expose these
 boundaries. PNG visual QA passes after moving the legend away from the caution
 text; five plotting/hash/false-label tests pass in0.70s. No model calls.
+
+Both utility gen1 draws independently pass exact425ec10 saved-file validation.
+File SHA e74d1b6f2982da18570307ff09d693a78e43d81d2e3ae45848b47fbefecd9329;
+parent66032054f2f6215637b6930e5df8d3c5309401bac12d0690e141eb358a84b4c1.
+Both IIDdraws retain review and have the same18/24 graph fingerprint; neither
+is rerolled. Exact loss algebra removes an unnecessary decision margin, while
+the new digest/lagged feedback remains an unproven mechanism. The new author
+identity is self-reported and separately recorded, not a controlled objective
+effect or authenticated continuation of the previous designer. Generation1
+runner begins at unchanged425ec10, with the four remaining world draws only.
+
+Concurrency wire/SQL correspondence is fixed in4ea5e74 (root eda6537): unique
+payload-hash bijection, actual SQL rowid and wire line retained, duplicate/
+missing/tamper/reordering regressions.40 tests pass1.27s; frozen outputs and
+operator remain unchanged. Clean detached eda6537 integration full regression
+starts with persistent JUnit/log/basetemp, separate from the425ec10 experiment.

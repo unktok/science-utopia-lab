@@ -15,16 +15,26 @@ Native-response-aware derivative refinement is developed separately with
 scripted provider original-world QA, not counted as actual-Qwen evidence.
 Independent audit/graphics and the English comparison UI are implemented;
 actual final data publication remains pending. Frozen425ec10 a2 has completed
-the first two native worlds (throughput losses `[-9,-9]`,212 recorded Qwen replies
-at that committed boundary). The other objective and next loss-driven generation
-are still running/pending. These are preliminary committed observations, not the
+all four generation0 native worlds (throughput losses `[-9,-9]`, utility[0,0],
+342 recorded Qwen replies). Both generation1 source responses independently
+pass exact saved-file validation using425ec10 compiler imports; the remaining
+four actual worlds are running. These are preliminary observations, not the
 independently audited final comparison. A1's two invalid source vocabularies
 execute ZERO worlds/replies and are preserved as an aborted pre-inference
 attempt, not numeric penalties or scientific failures.
 [A1 audit](results/native-objective-structure-v8-a1.md),
 [explicit a2 amendment](protocols/campaigns/native-objective-structure-v8-a2.md).
 Source425ec10 full regression passes1509/6skips; later component checks have
-their own scopes. No new held-out evaluation or full-native autograd is claimed.
+their own scopes. Clean integration eda6537 full regression is running separately.
+The [response-boundary representation](components/native-response-boundary-fidelity-v8.md)
+and explicit actual review-context ingress complete seven original six-year
+worlds using1,638 SCRIPTED replies, not Qwen. The unused finite loss change-24
+has response-aware path-integral error2.36e-5 versus24 for frozen responses;
+the proposed native candidate ties its center. All305 raw files remain unchanged
+under a separately pinned stronger attribution/refit. Prior partial/batch failures
+and missing historical SQL seals are explicit. Independent review accepts the
+binding fixes; a future-concurrency hash-join gap is fixed with40 targeted checks.
+No new held-out evaluation, actual-Qwen fidelity or full-native autograd is claimed.
 
 ## Completed: non-scale implementation closure v7
 
