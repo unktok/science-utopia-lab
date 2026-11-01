@@ -52,3 +52,16 @@ ordinary implementation dependencies must be added, not silently excluded.
 adaptive search and differentiable operational tracks delegated; root owns
 process execution, inventory, integration, reporting and final audit. No v7
 feature or live result is claimed by this plan.
+
+Integration update (not final closure): domain7ce6b87 and operational-gradient
+2caf289 are integrated in37bbfa3, with adaptive search4e28b3c and root process
+implementation. D1/O1/O2/S1/G1/G2 have focused implementation QA; P1 has12 focused
+checks including repeated actual registered LLM request identities and tensor
+memory backward. A joint four-world/six-year original-native integration passes
+in24.22s with scripted HTTP/corpus and real Docker. This is QA, not live-Qwen
+discovery. Independent review found production registration, wrapped-source
+recording, delegate causal-prefix and until-input issues; root fixes those, and
+delegate-aware migration validation is still being completed independently.
+I1 full clean regression/review and V1 actual evidence/UI/paper verification are
+still OPEN. A bounded four-world/two-year local-Qwen pilot is preregistered in
+`../protocols/campaigns/native-open-integrated-v7.md`; it has not yet executed.
