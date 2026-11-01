@@ -23,15 +23,41 @@ The final shareable artifact is
 
 ## Evidence boundary
 
-The active v8 source adds an objective-conditioned free-code/node/protocol/wiring
-pilot and a separate original-world response-boundary representation. Actual
-structural results stay gated until terminal independent audit, and the final
-shareable PDF is not replaced by a partial build. The response QA is explicitly
+The v8 source reports eight completed original-native worlds/734 Qwen replies:
+count[-9,-9,-10,-10] and reviewed utility[0,0,.4833,.4833]. Actual16--18-node
+systems change code, composition, protocols and wires. All132 raw files remain
+unchanged under independent audit. The response QA is separately and explicitly
 scripted (seven original six-year worlds, no Qwen calls), not whole-world or
 LLM differentiation. It predicts an unused finite loss change with error2.36e-5
 versus24 for frozen responses; its proposed native candidate ties, not improves.
 Earlier partial/incomplete QA failures and historical receipt limitations remain
 in the manuscript and component note.
+
+The actual UI export is byte-identical to the audit and its desktop/mobile
+browser captures are checked, not fixture images. Final PDF publication is
+gated on all-page rendering/visual QA and the verification receipt. V7's31-page
+PDF below remains historical, not falsely described as containing v8 data.
+
+Regenerate structural figures and the guarded result slice without inference:
+
+```sh
+.venv/bin/python scripts/figures/native_objective_structure_v8_methods.py \
+  --output paper/figures/native-objective-structure-v8-methods
+.venv/bin/python scripts/figures/native_objective_structure_v8.py \
+  --report research/results/native-objective-structure-v8-a2.json \
+  --output paper/figures/native-objective-structure-v8
+.venv/bin/python scripts/reports/native_objective_structure_v8_paper_slice.py \
+  --report research/results/native-objective-structure-v8-a2.json \
+  --results-manifest paper/figures/native-objective-structure-v8.manifest.json \
+  --methods-manifest paper/figures/native-objective-structure-v8-methods.manifest.json \
+  --output paper/generated/native-v8/results.tex
+```
+
+These assets are authored at the5.5-inch NeurIPS text width. Separate raw-loss
+axes, exact-row tie identity and source/graph accounting avoid visual or
+selection-based extra objectives. Positive paper-slice roundtrip/schema tests
+supplement the fixture-rejection tests; generated SVG whitespace is normalized
+before output hashes are computed.
 
 Regenerate that labelled QA graphic without inference:
 

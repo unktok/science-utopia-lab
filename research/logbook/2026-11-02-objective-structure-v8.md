@@ -170,3 +170,31 @@ switch representatives/ties/crossscores to aligned uniqueobservation+suggestion
 IDs. Repeatedfingerprints remainallowed. Unequalcost andexacttie regressions
 pass; combinedaudit/figure22 checks pass5.25s; UI183checks+build+fixturebrowser
 QA pass, withzeroerrors/overflow/nonGET. No nativeworld isrerun or rewritten.
+
+## Terminal actual result, final integration and publication checks
+
+All8 actualworlds complete at425ec10 with734 replies andzero technical failures.
+T[-9,-9,-10,-10], U[0,0,.4833333333333335,.4833333333333335]. Independent
+read-only audit preserves132 files, inventory09ebc9ab788855b20fa954107454d7e4ff3679163a134b82f304ff4907b2b1a9,
+content e932c88a73fe7fa9e3b70b487d798a1504994e3ae6841c26ff335070cbb2ffff.
+Both objectives have2best observations. T's own-loss ties differ in U(2.6667
+versus.3333); the earliest is displayed without silently optimizing the other
+loss. Utility's revised reviewed design accepts1 withrawmean11/3 after18reviews:
+.4833 is worse thanlegal no-review/no-acceptance0. All centeredinner score
+gradients areexactlyzero; the countgain belongs toexternal source redesign.
+
+Clean integration eda6537 fullregression passes1587/6skipped968.70s. Later clean
+3ff2968 report/validation/response scope82passes/1deselected5.04s. These overlap.
+Actual UI publication discovers and fixes a brittle literal-English truth gate;
+structured held-out/promotion/classification checks remain strict.184UItests,
+build andactualdesktop/mobileQA pass. ByteSHAfd25c21dfa4e2e39c37888402513d2f031e9ae1091b74ea44c65ec5ae2e5f945
+matchesreportexportexactly. Chrome/Vite/linkcleanup complete, no newinference.
+
+The actual paper-slice integration exposes a figure-manifest schema overwritten
+by a data-schema dictionary expansion. The pipeline correctly rejects it; the
+producer order isfixed andapositive schema/roundtrip regression added. Original
+raw and auditednumbers stayunchanged. Newgraphs usefinal5.5-inch physicalwidth,
+separate lossunits, exactobservations, adequatepadding/contrast and normalized
+generatedSVGbeforehashing.18 focusedplotchecks pass2.67s. All actual figures,
+methods, fullcrossscores andscriptedresponseQA entertherevisedmanuscript;
+finalPDFvisualQA andsource-boundverificationremainpendingatthisentry.

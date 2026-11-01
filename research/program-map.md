@@ -2,20 +2,22 @@
 
 Updated: 2026-11-02
 
-The active next step is
+The latest completed execution slice is
 [objective-conditioned structure and native-response fidelity v8](milestones/2026-11-02-objective-structure-and-response-v8.md):
 two fixed losses condition free source/graph generation in eight small native
-worlds maximum; a separate derivative track refines numeric response/parser
-boundaries without replacing the native forward system. Independent audit and
-the English comparison interface are implemented, with final actual evidence
-still pending. V7 remains the completed fixed implementation inventory:
+worlds; actual paths[-9,-9,-10,-10] and[0,0,.4833,.4833] have734 Qwen replies,
+different16--18-node graphs and an unchanged132-file independently audited raw
+inventory. A separate derivative track passes scripted original-world finite-
+path QA, not actual-Qwen fidelity or a native Jacobian. Actual English UI export/
+browser QA is complete; final paper verification is the last publication gate.
+V7 remains the earlier fixed implementation inventory:
 [non-scale implementation closure v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md).
 The [status page](STATUS.md) is the current execution ledger; old milestones
 remain historical. Population/seed expansion is not the next task.
 
 ## Current original-goal map
 
-V7 integration adds persistent data-defined entities with actual native actions,
+V7 integration added persistent data-defined entities with actual native actions,
 source-controlled dependency/branch/repetition processes, evolving generated
 mixed design vocabularies and loss-driven designer-strategy updates. Recurrent
 attention/memory/routing backward, actual native parameter projection and
@@ -24,15 +26,18 @@ the actual four-world pilot, independent audit, real-data English UI and31-page
 paper verification are complete.342 fixed-Qwen replies yield losses
 `[-1.2,-0.2,-0.8,-0.2]`, not a new best. The table separates executable interfaces
 from research success; implementation, live evidence and benefit are not synonyms.
+V8 now adds actual objective-conditioned topology/source changes, all-draw common
+development cross-scores and a response-aware represented derivative; its newer
+evidence is summarized in the first paragraph and the milestone acceptance ledger.
 
 | Original goal | Implemented interface | Evidence already available | Remaining non-scale boundary |
 |---|---|---|---|
-| Change the objective and optimize the scientific system | Versioned LossSpec, independent evaluation metrics, durable black-box ask/execute/measure/tell | Parameter-level held-out study; v5 free-code/graph paths `[-1,-3,-3]` and `[.70,.45,.45]`, five physical worlds | Richer defensible objective constructs, useful scientific discovery and generalization are not established |
+| Change the objective and optimize the scientific system | Versioned LossSpec, separate metrics, durable ask/execute/measure/tell and trace-informed source redesign | Parameter held-out study; v8 eight original worlds/two losses, count9→10 versus utility retaining0, actual changed graphs and all cross-scores | Richer defensible objectives, scientific discovery and generalization remain unestablished |
 | Invent institutions rather than tune a fixed review template | Arbitrary sandboxed Python, explicit protocols, state, ports and outputs; LLM/external complete manifests | Actual Qwen-source execution and externally authored institutions; local-Qwen joint-generation failures are retained | Native effect consumers, security/compute limits and actor ontology remain explicit; external Codex authorship is not autonomous Qwen invention |
-| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent data-defined actors/artifacts; typed native actions; dependency DAGs, guards and repeated custom activities; durable migration | Six-year compatibility/restart QA; actual v7 source revision, process and recipient changes, custom entities and native project/context effects | Original corpus/paper laws and annual legacy single-shot routines remain explicit; new capabilities use trusted typed plugins, not privileged generated code; v7 live topology stays19/27 |
-| Optimize through a differentiable representation | Recurrent memory/addressing/attention/routing; mixed native-cost score gradients; projected represented parameters plus separate opaque numerical perturbations | Actual v5 fresh-native update; v7 live mixed distribution updates and4 conditional numerical checks; scripted native projection/reaction/fidelity/restart QA | Conditional calculus is not full joint-loss/native/LLM pathwise calculus; native fidelity fails in the diagnostic; opaque Jacobians remain unknown |
-| Continually redesign and update the designer | Objective-visible same-society adoption; source/vocabulary generation from measured outcomes; durable loss-driven strategy selection/update | v6 same-society three years/two adoptions/130 replies; v7 two generations/four reset worlds/342 replies, new source actually executes | Reset-world and same-society evidence differ; third new v7 option is unsampled; no new best or improved designer capability is established |
-| Make the system visible and game-like | English cyberpunk city, replay/editor, exact-hash adoption UI and audited open-domain/process/search/derivative evidence | Actual v6 consent receipts; v7 byte-identical audited export,174 UI tests, real browser QA, no error/overflow or UI-launched experiment | Not a complete management game; presentation choreography is not scientific activity |
+| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | Six-year compatibility/restart; v8 actual16/22,17/24 and18/24 graphs with new deadline/amendment/publication-review-feedback routes | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source |
+| Optimize through a differentiable representation | Recurrent attention/routing; native-cost design score gradients; learned response boundary, native projection and explicit unknown support | Earlier native updates and failed transition fit; v8 scripted unused finite-delta error2.36e-5 vs24 frozen, projected candidate ties | No exact native/LLM Jacobian, actual-Qwen response fidelity or optimizer advantage; unmapped heterogeneous raw replies unsupported |
+| Continually redesign and update the designer | Objective-visible same-society adoption; source/vocabulary generation from outcomes; durable strategy updates | v6 same society/two adoptions/130 replies; v8 loss-informed redesigned source improves count but not utility | Reset-world and same-society evidence differ; a better sampled institution does not prove the designer itself improved |
+| Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and exact source/graph chronicle | Actual v6 consent; v8 byte-exact eight-world audit export,184 UI tests/build and actual desktop/mobile QA, no errors/overflow/jobdispatch | Not a complete management game; presentation choreography is not scientific activity |
 
 The two optimization workflows must not be merged in descriptions: a reset-world
 campaign estimates design quality under an explicit loss; the persistent society

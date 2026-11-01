@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## ACTIVE: objective-conditioned structure and native-response fidelity v8
+## V8 execution/audit/UI complete; final paper verification pending
 
 User approves thorough continuation of the original goals, not population/seed
 scale-up. [Acceptance tracks](milestones/2026-11-02-objective-structure-and-response-v8.md)
@@ -13,13 +13,18 @@ worlds maximum. Original five authors/two years/seed42/fixed Qwen3:8B remain.
 Latest v7's unchanged live19/27 graph is not relabelled structural exploration.
 Native-response-aware derivative refinement is developed separately with
 scripted provider original-world QA, not counted as actual-Qwen evidence.
-Independent audit/graphics and the English comparison UI are implemented;
-actual final data publication remains pending. Frozen425ec10 a2 has completed
-all four generation0 native worlds (throughput losses `[-9,-9]`, utility[0,0],
-342 recorded Qwen replies). Both generation1 source responses independently
-pass exact saved-file validation using425ec10 compiler imports; the remaining
-four actual worlds are running. These are preliminary observations, not the
-independently audited final comparison. A1's two invalid source vocabularies
+All8 actual original-native worlds complete at frozen425ec10 with734 Qwen
+replies and0 technical failures. Independent audit reconstructs losses/source/
+history/code/native checkpoints and preserves132 raw files unchanged.
+Throughput path[-9,-9,-10,-10] improves after source/plan/wiring redesign;
+utility[0,0,.4833,.4833] retains its first zero-loss incumbent. Actual graphs
+have16/22,17/24 and18/24 nodes/edges. Both arms have2 exactbest observations;
+earliest display representatives cross-score[-10,2.6667] and[0,0]. All draws,
+ties and unsuccessful revisions remain visible. Cross-scores reuse development
+worlds, not held-out replications. [Result](results/native-objective-structure-v8-a2.md),
+[independent audit](results/native-objective-structure-v8-a2.json).
+The actual English UI byte-exact export and desktop/mobile browser QA pass:
+184 unit checks/build, zero browsererrors/overflow/nonGET dispatch. A1's two invalid source vocabularies
 execute ZERO worlds/replies and are preserved as an aborted pre-inference
 attempt, not numeric penalties or scientific failures.
 [A1 audit](results/native-objective-structure-v8-a1.md),
@@ -27,7 +32,10 @@ attempt, not numeric penalties or scientific failures.
 Source425ec10 full regression passes1509/6skips; later component checks have
 their own scopes. Clean integration eda6537 full regression passes1587/6skips
 (968.70s); later exact-observation selection and plotting fixes pass22 targeted
-checks, with183 UI checks/build/labelled-fixture browser QA. These scopes overlap.
+checks; a later clean report/source suite passes82 with1 heavy duplicate test
+deselected at3ff2968. Later plotting/publication checks have separate scopes.
+These counts overlap and are never added. Final manuscript/PDF visual QA remains
+the active publication gate; no inference process is left running.
 The [response-boundary representation](components/native-response-boundary-fidelity-v8.md)
 and explicit actual review-context ingress complete seven original six-year
 worlds using1,638 SCRIPTED replies, not Qwen. The unused finite loss change-24

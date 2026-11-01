@@ -14,8 +14,12 @@ actual outcomes belong to immutable425ec10 campaign output, not these scripted
 software checks. Frozen bfe83c0 response QA and separately pinned e8c0677
 read-only refit keep their original source identities after integration.
 
-UI implementation183checks/typecheck/build and labelled-fixture browser QA pass;
-actual exported report/browser inspection remain a separate final gate.
+Later clean3ff2968 report/validator/response suite passes82 with1 duplicate heavy
+seven-world check deselected (5.04s). Subsequent physical-width/schema plot
+checks pass18 (2.67s); these are separately scoped, not attributed to3ff2968.
+UI implementation184checks/typecheck/build and ACTUAL byte-exact export plus
+desktop/graph/crossscore/mobile browser QA pass. Every capture haszeroerrors,
+overflow andnonGET dispatch. These are not new simulator or model calls.
 
 ## Historical v7 verification — 2026-11-02
 

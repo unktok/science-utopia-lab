@@ -1,4 +1,7 @@
-# Objective-conditioned structure and native-response fidelity v8 — ACTIVE
+# Objective-conditioned structure and native-response fidelity v8
+
+Execution, independent audit and actual UI complete; final paper verification
+is the remaining publication gate. No native/model experiment is still running.
 
 User asks to thoroughly continue the remaining original goals, before scale-up.
 Baseline main c2f2f1a. V7 closed its fixed implementation inventory, not all
@@ -18,7 +21,7 @@ paid provider API; all model-backed work uses clean immutable source pins.
 
 [Preregistered structural pilot](../protocols/campaigns/native-objective-structure-v8.md).
 
-## Progress, not closure
+## Acceptance ledger
 
 - Structural helpers and real native six-year/Docker/restart QA are integrated;
  20 focused checks pass at their component source. No policy catalogue or forced
@@ -26,15 +29,19 @@ paid provider API; all model-backed work uses clean immutable source pins.
 - Exact-file validation corrects an external float-normalization author error.
   A1 aborts before native inference and is independently audited; a2 has a
   separate pre-inference amendment, same425ec10 source and same8 actual-world
-  cap across attempts. The first4 worlds complete at throughput[-9,-9] and
-  utility[0,0],342 actual Qwen replies. Both generation1 source responses pass
-  exact saved-file checks with immutable425ec10 imports. The next4worlds run;
-  actual feedback and objective comparison are not yet fully audited.
-- Independent audit includes generation failures without invented draws and
-  unavailable cross-metrics without erasing available own-loss results.
-- English objective switchyard181 tests/typecheck/build and explicit fixture
-  browser QA pass. A canonical-SystemSpec/fixture mismatch is found and fixed
-  before real-data publication; actual-data verification remains a gate.
+  cap across attempts. All8 worlds complete with734 Qwen replies,zero technical
+  failures. Paths are throughput[-9,-9,-10,-10] and utility[0,0,.4833,.4833].
+  Source, algorithm, node composition and edges really change:16/22,17/24 and
+  18/24 nodes/edges versus initial19/27. Inner centered gradients arezero;
+  observed improvement belongs to external loss/trace-informed source redesign.
+- Independent audit preserves132 raw files unchanged and reconstructs all8
+  losses, raw reviews, code/history and both-loss cross-scores. Exactrow IDs
+  fix a repeated-system-fingerprint reporting bug before publication. Allties
+  remain; no other-objective tie-break or merit veto is added.
+- English objective switchyard184 tests/typecheck/build and ACTUAL desktop/
+  graph/crossscore/mobile browser QA pass, with byte-exact audited export and
+  zero errors/overflow/nonGET dispatch. Earlier fixture shape/truth-wording
+  integration gaps are fixed, not left as research uncertainty.
 - The response track implements a real raw-response/int-parser boundary and
   opt-in delivered-context review ingress. Independent endpoint/journal/contract
   findings are fixed; a separately pinned read-only refit preserves305 files.
@@ -44,5 +51,24 @@ paid provider API; all model-backed work uses clean immutable source pins.
   historical-seal limitations remain visible. A future concurrency join defect
   is fixed and passes40 targeted regression checks without raw modification.
 - Full live-source425ec10 software regression1509passed/6skipped602.55s.
-  Later scopes overlap and are not added. Paper methods and legible methods
-  figure are prepared; actual results and final PDF verification remain pending.
+  Clean integration eda6537 passes1587/6skipped968.70s. Later clean source
+  3ff2968 passes82 focused checks/1deselected; later plotting checks pass18.
+  Scopes overlap and are not added. Actual paths/cross-scores, physically
+  5.5-inch paper-width graphics and the response-QA figure are generated from
+  their bound evidence. Manuscript source is revised; final PDF remains pending.
+
+## Original goals versus research boundaries
+
+| Goal | What actually works now | What this does not establish |
+|---|---|---|
+| Change loss and optimize systems | Different fixed losses drive native source/graph redesign and own-loss selection; every candidate is cross-scored | Valid scientific welfare, convergence or held-out benefit |
+| Invent institution implementations and composition | Arbitrary sandboxed source, new protocols/nodes/edges/processes, actual project/context/resource effects, persistent typed entities and restart | Unlimited host privileges, arbitrary unregistered physical laws or useful autonomous invention |
+| Optimize through a differentiable representation | Institution/recurrent tensor backward, full-native-cost design score gradients, learned response boundary with native projection/unused scripted finite-path QA | Exact opaque-LLM/whole-world Jacobian or actual-Qwen response fidelity |
+| Iterative/recursive redesign | Actual results feed next-generation source and strategy updates; earlier same-society adoption remains available | Demonstrated improvement of the designer itself or indefinitely useful recursive self-improvement |
+| Make the system visible/game-like | English pixel-art city/replay/editor plus audited optimization paths, exact source/graph changes and browser-verified adoption/evidence | A complete management-game play loop |
+
+This finite v8 goal does not silently mean all future non-scale research is
+finished. The listed ordinary authoring/execution/attribution/export gates are
+implemented and exercised; fidelity, useful invention and generalization need
+new evidence, not merely more rows in the current pilot. No population/seed
+scale-up has been performed or scheduled by this milestone.
