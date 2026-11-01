@@ -74,8 +74,14 @@ novelty or institutional effects.
 
 Selection is the minimum finite observed development loss within each arm.
 Every exact tie is retained; the earliest tied row is only a deterministic
-display representative.  Cross-objective values reuse the same physical
-worlds and therefore are not independent replications.
+display representative. Observation and suggestion IDs identify that exact
+row and must each be unique among completed draws. System fingerprints remain
+structural labels and may repeat: two IID executions of the same system can
+have different stochastic losses, and a tie list can contain the same
+fingerprint more than once. The selected cross-objective matrix is therefore
+read from the representative observation/suggestion row, never from the first
+row with a matching fingerprint. Cross-objective values reuse the same
+physical worlds and therefore are not independent replications.
 
 ## Figure
 

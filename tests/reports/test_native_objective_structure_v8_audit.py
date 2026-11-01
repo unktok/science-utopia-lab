@@ -7,7 +7,7 @@ import pytest
 from scripts.analyze_native_objective_structure_v8 import (
     ARM_IDS, EXPERIMENT, RAW_SCHEMA, _validate_binding, _validate_plan, analyze,
     compact_attempt_report, cross_score_measurement,
-    graph_change, objective_specs,
+    graph_change, objective_specs, select_representative,
 )
 from scripts.analyze_native_open_v7 import audit_native_run
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign, InboxVocabularyGenerator
@@ -120,6 +120,54 @@ def test_missing_other_objective_metric_is_null_with_reason_not_dropped_or_penal
     assert scores[ARM_IDS[0]]['status'] == 'complete' and values[ARM_IDS[0]] == -2.
     assert scores[ARM_IDS[1]]['status'] != 'complete' and values[ARM_IDS[1]] is None
     assert scores[ARM_IDS[1]]['rejected_runs'][0]['reason']
+
+
+def selection_row(candidate, observation_id, suggestion_id, own_loss, other_loss):
+    return {'status': 'complete',
+        'draw': {'suggestion': {'suggestion_id': suggestion_id, 'candidate': candidate}},
+        'observation': {'observation_id': observation_id, 'suggestion_id': suggestion_id},
+        'cross_objective_losses': {ARM_IDS[0]: own_loss, ARM_IDS[1]: other_loss}}
+
+
+def test_representative_is_exact_minimum_observation_not_first_matching_system_fingerprint():
+    candidate = system().to_dict()
+    rows = [selection_row(candidate, 'observation-first', 'suggestion-first', 4., 40.),
+            selection_row(candidate, 'observation-best', 'suggestion-best', 1., 10.)]
+    selection, representative = select_representative(rows, ARM_IDS[0])
+    assert len(set(selection['tied_system_fingerprints'])) == 1
+    assert selection['representative_observation_id'] == 'observation-best'
+    assert selection['representative_suggestion_id'] == 'suggestion-best'
+    assert representative is rows[1]
+    assert representative['cross_objective_losses'][ARM_IDS[1]] == 10.
+
+
+def test_equal_loss_duplicate_system_draws_preserve_both_tie_identities_and_earliest_row():
+    candidate = system().to_dict()
+    rows = [selection_row(candidate, 'observation-first', 'suggestion-first', 1., 40.),
+            selection_row(candidate, 'observation-second', 'suggestion-second', 1., 10.)]
+    selection, representative = select_representative(rows, ARM_IDS[0])
+    assert selection['tie_count'] == 2
+    assert selection['tied_system_fingerprints'] == [
+        SystemSpec.from_dict(candidate).fingerprint, SystemSpec.from_dict(candidate).fingerprint]
+    assert selection['tied_observation_ids'] == ['observation-first', 'observation-second']
+    assert selection['tied_suggestion_ids'] == ['suggestion-first', 'suggestion-second']
+    assert selection['representative_observation_id'] == 'observation-first'
+    assert selection['representative_suggestion_id'] == 'suggestion-first'
+    assert representative is rows[0]
+
+
+@pytest.mark.parametrize('duplicate', ['observation', 'suggestion'])
+def test_representative_selection_rejects_reused_exact_row_identity(duplicate):
+    candidate = system().to_dict()
+    rows = [selection_row(candidate, 'observation-1', 'suggestion-1', 2., 20.),
+            selection_row(candidate, 'observation-2', 'suggestion-2', 1., 10.)]
+    if duplicate == 'observation':
+        rows[1]['observation']['observation_id'] = 'observation-1'
+    else:
+        rows[1]['draw']['suggestion']['suggestion_id'] = 'suggestion-1'
+        rows[1]['observation']['suggestion_id'] = 'suggestion-1'
+    with pytest.raises(ValueError, match='reuse'):
+        select_representative(rows, ARM_IDS[0])
 
 
 def test_full_failed_fixture_replays_read_only_without_fabricating_losses(tmp_path, monkeypatch):

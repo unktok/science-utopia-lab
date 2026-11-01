@@ -186,6 +186,53 @@ def _finite_complete(observation):
             and type(observation.get('loss')) in (int, float) and math.isfinite(observation['loss']))
 
 
+def select_representative(rows, identity):
+    """Select one exact observed draw, never merely a matching system.
+
+    Distinct IID draws may compile to the same SystemSpec fingerprint while
+    producing different stochastic losses.  Observation and suggestion IDs
+    therefore remain the authoritative row identity; the fingerprint is only
+    a structural label and may repeat, including inside a tie.
+    """
+    eligible = [row for row in rows if row['status'] == 'complete']
+    identities = []
+    for row in eligible:
+        suggestion = row.get('draw', {}).get('suggestion')
+        observation = row.get('observation')
+        if (not isinstance(suggestion, dict) or not isinstance(observation, dict)
+                or not isinstance(suggestion.get('suggestion_id'), str)
+                or not suggestion['suggestion_id']
+                or not isinstance(observation.get('observation_id'), str)
+                or not observation['observation_id']
+                or observation.get('suggestion_id') != suggestion['suggestion_id']):
+            raise ValueError('complete selection row lacks exact observation/suggestion identity')
+        identities.append((observation['observation_id'], suggestion['suggestion_id']))
+    if (len({item[0] for item in identities}) != len(identities)
+            or len({item[1] for item in identities}) != len(identities)):
+        raise ValueError('complete selection rows reuse observation or suggestion identity')
+    best_value = min((row['cross_objective_losses'][identity] for row in eligible), default=None)
+    tied = ([row for row in eligible if row['cross_objective_losses'][identity] == best_value]
+            if best_value is not None else [])
+    fingerprints = [SystemSpec.from_dict(row['draw']['suggestion']['candidate']).fingerprint
+                    for row in tied]
+    observation_ids = [row['observation']['observation_id'] for row in tied]
+    suggestion_ids = [row['draw']['suggestion']['suggestion_id'] for row in tied]
+    representative = tied[0] if tied else None
+    selection = {
+        'criterion': ('minimum observed bound development loss; earliest exact observation row '
+                      'in audited campaign order is display representative'),
+        'best_loss': best_value,
+        'tie_count': len(tied),
+        'tied_system_fingerprints': fingerprints,
+        'tied_observation_ids': observation_ids,
+        'tied_suggestion_ids': suggestion_ids,
+        'representative_system_fingerprint': (fingerprints[0] if fingerprints else None),
+        'representative_observation_id': (observation_ids[0] if observation_ids else None),
+        'representative_suggestion_id': (suggestion_ids[0] if suggestion_ids else None),
+    }
+    return selection, representative
+
+
 def cross_score_measurement(measurement, losses, own_identity, observed_loss):
     """Strictly verify the own loss; retain unavailable other losses as null."""
     scores = {key: evaluate_loss(loss, [measurement]) for key, loss in losses.items()}
@@ -324,20 +371,12 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                     raise ValueError('technical failure was converted into a numerical loss')
                 rows.append(row)
                 all_rows.append(row)
-        eligible = [row for row in rows if row['status'] == 'complete']
-        best_value = min((row['cross_objective_losses'][identity] for row in eligible), default=None)
-        tied = [row for row in eligible
-                if row['cross_objective_losses'][identity] == best_value] if best_value is not None else []
-        fingerprints = [SystemSpec.from_dict(row['draw']['suggestion']['candidate']).fingerprint
-                        for row in tied]
+        selection, _ = select_representative(rows, identity)
         arms[identity] = {'loss_spec': losses[identity], 'binding': binding,
             'records': records, 'pending': pending, 'authoring_proofs': authors,
             'generation_failures': generation_failures, 'rows': rows,
             'loss_path': [row['cross_objective_losses'][identity] for row in rows],
-            'selection': {'criterion': 'minimum observed bound development loss; earliest row is display representative',
-                'best_loss': best_value, 'tie_count': len(tied),
-                'tied_system_fingerprints': fingerprints,
-                'representative_system_fingerprint': (fingerprints[0] if fingerprints else None)}}
+            'selection': selection}
 
     physical_directories = {p.name for p in (root / 'worlds').iterdir() if p.is_dir()} if (root / 'worlds').exists() else set()
     journal_directories = {path.parent.parent.name
@@ -411,9 +450,20 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             or claims.get('full_native_world_pathwise_autograd') is not False):
         raise ValueError('raw evidence overclaims development engineering results')
 
-    representatives = {identity: next((row for row in arms[identity]['rows']
-        if row['draw'] and row['draw'].get('suggestion') and SystemSpec.from_dict(row['draw']['suggestion']['candidate']).fingerprint ==
-        arms[identity]['selection']['representative_system_fingerprint']), None) for identity in ARM_IDS}
+    representatives = {}
+    for identity in ARM_IDS:
+        selection = arms[identity]['selection']
+        observation_id = selection['representative_observation_id']
+        suggestion_id = selection['representative_suggestion_id']
+        matches = [row for row in arms[identity]['rows']
+            if row.get('observation') and row['observation'].get('observation_id') == observation_id
+            and row.get('draw') and row['draw'].get('suggestion')
+            and row['draw']['suggestion'].get('suggestion_id') == suggestion_id]
+        if (observation_id is None) != (suggestion_id is None):
+            raise ValueError('representative observation/suggestion identity is incomplete')
+        if len(matches) != (0 if observation_id is None else 1):
+            raise ValueError('representative observation/suggestion identity is not unique')
+        representatives[identity] = matches[0] if matches else None
     selected_matrix = {source: ({target: representatives[source]['cross_objective_losses'][target]
                                  for target in ARM_IDS} if representatives[source] else None)
                        for source in ARM_IDS}
