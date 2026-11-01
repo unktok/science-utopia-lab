@@ -205,6 +205,22 @@ def test_wrapped_llm_first_empty_memory_is_legal_but_explicit_bad_memory_is_reje
     assert kernel.graph_checkpoint['mechanism_states']['worker'] == {}
 
 
+@pytest.mark.parametrize('implementation', ['code.python.v1', 'native.world.llm-institution.v1'])
+def test_empty_first_call_exception_cannot_erase_required_memory_after_execution(implementation):
+    from utopia.system.native_migration import _validate_saved_state
+    node=next(n for n in graph_kernel().spec.mechanisms if n.mechanism_id=='worker')
+    if implementation != 'code.python.v1':
+        data=node.parameters.copy()
+        delegate=deepcopy(data['delegate'])
+        delegate['implementation']=implementation
+        delegate['parameters']={'instruction':'test','output_schemas':{'result':{'type':'object'}},
+            'state_schema':{'type':'object','required':['n'],'properties':{'n':{'type':'integer'}}}}
+        data['delegate']=delegate
+        node=replace(node,parameters=data)
+    with pytest.raises(ValidationError):
+        _validate_saved_state(node,{'total_invocations':1,'delegate_state':{}})
+
+
 ADVISORY = """def step(context):
     observation = context['inputs']['world'][0]['payload']
     ids = [a['id'] for a in observation['ecosystem']['agents'] if a['can_author']]

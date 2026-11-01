@@ -103,21 +103,25 @@ def _validate_execution_state(node, state, *, allow_initial_empty=False):
         # Like generated code, an LLM institution sees {} before producing its
         # first schema-valid memory. Do not invent an initialized state or bar
         # a legal first call just because its OUTPUT memory requires fields.
-        if state:
+        if state or not allow_initial_empty:
             Draft202012Validator(node.parameters.get('state_schema', {'type': 'object'})).validate(state)
 
 
 def _validate_saved_state(node, state):
     executable = _execution_contract(node)
     if executable is node:
-        _validate_execution_state(node, state)
+        # Legacy direct LLM roles have no process invocation counter; their
+        # first empty input memory is legal. Preserve direct-code strictness.
+        _validate_execution_state(node, state,
+            allow_initial_empty=node.implementation == 'native.world.llm-institution.v1')
         return
     if not isinstance(state, dict):
         raise GraphRuntimeError('process state must be a JSON mapping')
     if 'total_invocations' in state and (type(state['total_invocations']) is not int or state['total_invocations'] < 0):
         raise GraphRuntimeError('process invocation memory must be a nonnegative integer')
     saved = state.get('delegate_state', node.parameters['initial_delegate_state'])
-    _validate_execution_state(executable, saved, allow_initial_empty=True)
+    _validate_execution_state(executable, saved,
+        allow_initial_empty=state.get('total_invocations', 0) == 0)
 
 
 def _validate_execution_payload(node, port, payload):
