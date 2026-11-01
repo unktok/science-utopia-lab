@@ -1,5 +1,10 @@
 {
   "schema": "scienceutopia.native-open-integrated-pilot.v7",
+  "status": "budget-complete-with-failures",
+  "configured_researcher_provider": "qwen3:8b",
+  "physical_response_caches": [{ "path": "synthetic/fixture/responses.sqlite", "sha256": "4444444444444444444444444444444444444444444444444444444444444444", "outcomes": { "response": 8, "fixture_failure": 1 } }],
+  "physical_reply_count": 8,
+  "complete_native_worlds": 1,
   "source_commit": "fixture-not-a-source-commit",
   "world_binding": { "model": "synthetic-qwen-label-only", "seed": 42, "years": 2 },
   "campaign_binding": { "mode": "hybrid", "seed": 17, "note": "synthetic UI fixture; no model or native world executed" },
@@ -89,5 +94,5 @@
   "authoring": { "kind": "synthetic-ui-fixture", "authenticated": false },
   "claims": { "live_fixed_Qwen_researchers": true, "scripted_researcher_HTTP": false, "engineering_count_loss": true, "held_out": false, "causal_institutional_benefit": false, "scientific_value": false, "full_native_world_pathwise_autograd": false, "designer_improvement_established": false, "external_authorship_authenticated": false },
   "ui_fixture": true,
-  "content_sha256": "cd76b94f77eb04f0423dc1c103c2cb3e9cac2ff1ad5b6ca36aa9c27d00e654b6"
+  "content_sha256": "4e26ba748cc7f75de9a6599b33a2d8110f36183d7d8c64572e5b8ce1a0b7ed3c"
 }

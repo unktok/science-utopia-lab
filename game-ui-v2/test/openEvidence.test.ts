@@ -9,6 +9,7 @@ describe("native open integrated evidence viewer contract", () => {
   it("accepts only an explicitly labelled and hash-bound UI fixture", async () => {
     const parsed = await verifyNativeOpenEvidence(fixture(), "fixture");
     expect(parsed.observations).toHaveLength(2);
+    expect(parsed.physical_reply_count).toBe(8);
     expect(parsed.observations[0]!.observation!.loss).toBe(0);
     expect(parsed.observations[1]!.observation).toMatchObject({ status: "failed", loss: null });
     expect(() => parseNativeOpenEvidence(fixture(), "actual")).toThrow("Synthetic fixture");
@@ -26,6 +27,11 @@ describe("native open integrated evidence viewer contract", () => {
     expect(() => parseNativeOpenEvidence(changed, "fixture")).toThrow("relabelled");
     const causal = fixture(); causal.claims.causal_institutional_benefit = true;
     expect(() => parseNativeOpenEvidence(causal, "fixture")).toThrow("causal_institutional_benefit");
+  });
+
+  it("binds the live-Qwen claim to physical replies rather than configuration", () => {
+    const changed = fixture(); changed.physical_reply_count = 0;
+    expect(() => parseNativeOpenEvidence(changed, "fixture")).toThrow("physical reply evidence");
   });
 
   it("retains actual participants, artifacts, process iteration and skip receipts", () => {

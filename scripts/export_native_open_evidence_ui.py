@@ -34,8 +34,14 @@ def validate(value):
     if claimed != digest(payload):
         raise ValueError('source content_sha256 differs from exact evidence payload')
     claims = value.get('claims', {})
-    if claims.get('live_fixed_Qwen_researchers') is not True or claims.get('engineering_count_loss') is not True:
-        raise ValueError('fixed live researchers and engineering objective must remain explicit')
+    if (value.get('status') not in ('in-progress', 'complete', 'budget-complete-with-failures')
+            or value.get('configured_researcher_provider') != 'qwen3:8b'
+            or type(value.get('physical_reply_count')) is not int
+            or type(value.get('complete_native_worlds')) is not int):
+        raise ValueError('pilot status, configured provider and physical counts must remain explicit')
+    if (claims.get('live_fixed_Qwen_researchers') is not (value['physical_reply_count'] > 0)
+            or claims.get('engineering_count_loss') is not True):
+        raise ValueError('live researcher claim must follow physical replies; engineering objective must remain explicit')
     if any(claims.get(key) is not False for key in FALSE_CLAIMS):
         raise ValueError('unsupported positive scientific/derivative/authorship claim')
     for index, row in enumerate(value.get('observations', [])):
@@ -57,6 +63,9 @@ def validate(value):
                     or backward.get('full_native_world_autograd') is not False
                     or coverage.get('full_native_world_autograd') is not False):
                 raise ValueError('conditional derivative boundary was overstated')
+    if value['complete_native_worlds'] != sum(r.get('observation', {}).get('status') == 'complete'
+            for r in value.get('observations', []) if isinstance(r.get('observation'), dict)):
+        raise ValueError('complete native-world count differs from observations')
     return value
 
 

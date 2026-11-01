@@ -2,7 +2,7 @@ import { canonicalHash } from "./hash";
 
 type Row = Record<string, any>;
 export interface OpenEvidenceClaims {
-  live_fixed_Qwen_researchers: true; scripted_researcher_HTTP: false; engineering_count_loss: true;
+  live_fixed_Qwen_researchers: boolean; scripted_researcher_HTTP: false; engineering_count_loss: true;
   held_out: false; causal_institutional_benefit: false; scientific_value: false;
   full_native_world_pathwise_autograd: false; designer_improvement_established: false; external_authorship_authenticated: false;
 }
@@ -12,7 +12,9 @@ export interface OpenEvidenceObservation {
   boundary_coverage?: Row; conditional_backward?: Row;
 }
 export interface NativeOpenEvidence {
-  schema: "scienceutopia.native-open-integrated-pilot.v7"; source_commit: string; world_binding: Row; campaign_binding: Row;
+  schema: "scienceutopia.native-open-integrated-pilot.v7"; status: "in-progress" | "complete" | "budget-complete-with-failures";
+  configured_researcher_provider: "qwen3:8b"; physical_response_caches: Array<{ path: string; sha256: string; outcomes: Record<string, number> }>;
+  physical_reply_count: number; complete_native_worlds: number; source_commit: string; world_binding: Row; campaign_binding: Row;
   records: Row[]; observations: OpenEvidenceObservation[]; authoring: unknown; claims: OpenEvidenceClaims; content_sha256: string;
   ui_fixture?: true;
 }
@@ -38,10 +40,15 @@ export function parseNativeOpenEvidence(value: unknown, mode: "actual" | "fixtur
   const data = row(value, "Native open evidence");
   if (data.schema !== "scienceutopia.native-open-integrated-pilot.v7") throw new Error("Unsupported native-open evidence schema");
   if ((mode === "fixture") !== (data.ui_fixture === true)) throw new Error(mode === "fixture" ? "Fixture must carry ui_fixture=true" : "Synthetic fixture cannot enter the actual evidence channel");
+  if (!["in-progress", "complete", "budget-complete-with-failures"].includes(data.status) || data.configured_researcher_provider !== "qwen3:8b") throw new Error("Invalid pilot status or researcher provider");
+  if (!Number.isInteger(data.physical_reply_count) || data.physical_reply_count < 0 || !Number.isInteger(data.complete_native_worlds) || data.complete_native_worlds < 0) throw new Error("Invalid physical execution counts");
+  const caches = array(data.physical_response_caches, "physical_response_caches");
+  for (const [index, cacheValue] of caches.entries()) { const cache = row(cacheValue, `response cache ${index}`); sha(cache.sha256, `response cache ${index} sha256`); if (typeof cache.path !== "string" || !cache.path || Object.values(row(cache.outcomes, "cache outcomes")).some((count) => !Number.isInteger(count) || count < 0)) throw new Error(`Invalid response cache ${index}`); }
   sha(data.content_sha256, "content_sha256"); row(data.world_binding, "world_binding"); row(data.campaign_binding, "campaign_binding");
   const claims = row(data.claims, "claims");
-  const exact: Record<string, boolean> = { live_fixed_Qwen_researchers: true, scripted_researcher_HTTP: false, engineering_count_loss: true, held_out: false, causal_institutional_benefit: false, scientific_value: false, full_native_world_pathwise_autograd: false, designer_improvement_established: false, external_authorship_authenticated: false };
+  const exact: Record<string, boolean> = { scripted_researcher_HTTP: false, engineering_count_loss: true, held_out: false, causal_institutional_benefit: false, scientific_value: false, full_native_world_pathwise_autograd: false, designer_improvement_established: false, external_authorship_authenticated: false };
   for (const [key, expected] of Object.entries(exact)) if (claims[key] !== expected) throw new Error(`Unsupported truth claim ${key}`);
+  if (claims.live_fixed_Qwen_researchers !== (data.physical_reply_count > 0)) throw new Error("Live Qwen claim must follow physical reply evidence");
   const records = array(data.records, "records"); const observations = array(data.observations, "observations");
   for (const [index, valueRow] of observations.entries()) {
     const item = row(valueRow, `observation row ${index}`); if (!Number.isInteger(item.generation) || item.generation < 0 || typeof item.strategy !== "string") throw new Error(`Invalid observation identity ${index}`);
@@ -64,6 +71,7 @@ export function parseNativeOpenEvidence(value: unknown, mode: "actual" | "fixtur
     if (request.generation !== index || typeof request.strategy_id !== "string" || !Array.isArray(record.draws) || !Array.isArray(record.observations)) throw new Error(`Invalid campaign record ${index}`);
     if (record.report !== null) { const report = row(record.report, `report ${index}`); row(report.strategy_before, "strategy_before"); row(report.strategy_after, "strategy_after"); if (report.mixed !== null) row(report.mixed, "mixed report"); }
   }
+  if (data.complete_native_worlds !== observations.filter((item) => row(item, "observation row").observation?.status === "complete").length) throw new Error("Complete native-world count differs from observations");
   return data as NativeOpenEvidence;
 }
 

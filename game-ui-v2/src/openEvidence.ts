@@ -17,7 +17,7 @@ function complete(row: OpenEvidenceObservation): boolean { return row.observatio
 function selected(): OpenEvidenceObservation { return evidence.observations[selectedIndex]!; }
 
 function renderCampaign(): void {
-  el("campaign-meta").textContent = `${evidence.records.length} GENERATED VOCABULAR${evidence.records.length === 1 ? "Y" : "IES"} // ${evidence.observations.length} DRAW ROWS`;
+  el("campaign-meta").textContent = `${evidence.status.toUpperCase()} // ${evidence.complete_native_worlds} COMPLETE WORLDS // ${evidence.physical_reply_count} PHYSICAL QWEN REPLIES`;
   el("campaign-rail").innerHTML = evidence.records.map((item, index) => {
     const request = record(item.request), report = item.report === null ? null : record(item.report);
     const observations = list(item.observations), valid = observations.filter((observation) => record(observation).status === "complete").length;
@@ -90,6 +90,7 @@ function renderSelected(): void { renderCampaign(); renderObservations(); render
 function renderAll(mode: "actual" | "fixture"): void {
   el("truth-badge").textContent = mode === "actual" ? "HASH-VERIFIED ACTUAL EVIDENCE" : "SYNTHETIC UI FIXTURE // NOT EXPERIMENT DATA";
   el("truth-badge").classList.toggle("fixture", mode === "fixture"); el("evidence").removeAttribute("hidden");
+  el("hero-source-label").textContent = mode === "actual" ? "FRONTIER ARRAY / ACTUAL NATIVE EXECUTION" : "FRONTIER ARRAY / SYNTHETIC UI COMPONENT CHECK";
   el("footer-source").textContent = `${mode === "actual" ? "ACTUAL" : "FIXTURE"} // ${evidence.content_sha256}`; renderSelected();
 }
 async function start(): Promise<void> {
