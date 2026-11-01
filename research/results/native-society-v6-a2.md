@@ -82,6 +82,10 @@ four checkpointed generated-code executions, and no uncheckpointed replies or
 execution contexts in this completed trajectory. The audit calls no model or
 generated code. End-boundary active authors are5/5/5; author resources570/640/710.
 These are stocks, not per-year resource gains or independent replications.
+The extended audit also verifies applied plan batches `[1,1,1]`, amendment
+batches `[0,1,0]`, and code-authored primary plans `[0,0,1]`. The final full-plan
+hash joins actual generated outputs to all five actor assignments and all five
+paper identities. Physical source receipts are one-to-one with committed events.
 
 Saved cumulative-call differences give77.11s,130.33s and193.96s of LLM time,
 about401.40s total. This is **not experiment wall time**: retrieval/cache loading,

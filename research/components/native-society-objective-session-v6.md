@@ -52,6 +52,16 @@ status is complete only after restoring the operator-selected saved checkpoint,
 verifying the original-rooted migration chain and matching the exact request.
 An absent checkpoint remains pending even if a journal claims acknowledgement.
 
+New observations additionally pin the binding-specific ordered response prefix.
+If a later year stops after committing responses but before its checkpoint,
+only idempotent observation of an already observed and adopted boundary may
+accept an intact prefix with a verified extra tail. Only the physical response
+count is normalized for that comparison; every scientific field still matches.
+New observation, adoption and direct migration remain strict. Old observations
+without the proof cannot use this prospective recovery path. Scripted native
+stop-after-code/cold-resume tests compare complete scientific state to continuous
+execution and retain ambiguous physical attempts separately from committed effects.
+
 ## Loopback UI boundary
 
 `scripts/serve_native_lab.py --society-config ...` accepts an operator-owned JSON

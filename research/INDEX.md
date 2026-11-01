@@ -8,6 +8,7 @@ and results. New work uses the forward-only taxonomy below.
 
 - [Active non-scale completion v6: acceptance gates and parallel ownership](milestones/2026-11-01-non-scale-completion-v6.md)
 - [Same-society v6 a1: real adoption, preserved RAG continuation failure](results/native-society-v6-a1.md)
+- [Completed same-society v6 a2: two revisions, 130 replies and actual browser receipts](results/native-society-v6-a2.md)
 - [Objective-visible same-society session, complete-state recovery and loopback API](components/native-society-objective-session-v6.md)
 - [Typed native activity contracts](components/native-activity-contracts-v6.md)
 - [Factorized native code/protocol/wiring gradients](components/native-factorized-design-gradients-v6.md)
