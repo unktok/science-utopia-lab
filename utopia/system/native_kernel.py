@@ -50,7 +50,7 @@ STAGES = (
 def _json(value):
     """Observation projection only: exclude clocks/paths, retain domain content."""
     if isinstance(value, dict):
-        return {str(k): (_clone(v) if k in {"institutional_context", "extension_state"} else _json(v))
+        return {str(k): (_clone(v) if k in {"institutional_context", "extension_state", "open_domain"} else _json(v))
                 for k, v in value.items() if k not in {
             "timestamp", "submission_time", "review_time", "decision_time", "output_dir"}}
     if isinstance(value, (tuple, list)):
@@ -145,6 +145,9 @@ class NativeScienceKernel:
         self.last_year = 0
         self.execution_receipts = []
         self.design_history = []
+        self.open_domain_state = {}
+        from .native_open_domain import default_actions
+        self.domain_actions = default_actions()
         self._frame = None
         self._simulation = None
         if checkpoint is not None:
@@ -174,10 +177,16 @@ class NativeScienceKernel:
         if self.spec.metadata.get('expose_system_spec', False):
             observation['system_spec'] = self.spec.to_dict()
             observation['system_fingerprint'] = self.spec.fingerprint
+        if self.open_domain_state:
+            observation['open_domain'] = _clone(self.open_domain_state)
         return _json(observation)
 
     def _registry(self):
         registry = MechanismRegistry()
+        # Trusted plugins register typed actions through registry_extension on
+        # every construction, including migration previews and cold workers.
+        from .native_open_domain import default_actions
+        self.domain_actions = default_actions()
         for stage, _ in STAGES:
             registry.register("native.phase." + stage + ".v1", 1,
                               lambda context, stage=stage: self._stage(stage, context))
@@ -189,6 +198,8 @@ class NativeScienceKernel:
         registry.register(RESOURCE_TRANSFERS, 1, lambda context: apply_native_resource_transfers(self, context))
         from .native_activity_contracts import register_activity_contracts
         register_activity_contracts(self, registry)
+        from .native_open_domain import register_native_domain
+        register_native_domain(self, registry)
         from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, tensor_handler
         registry.register(TENSOR_IMPLEMENTATION, 1, tensor_handler)
         from .code_mechanisms import _schema
@@ -389,7 +400,7 @@ class NativeScienceKernel:
         declared = dict(context.state.get("declared_artifacts", {}))
         events = []
         declarations = context.mechanism.parameters.get("declare_artifacts", False)
-        reserved = set(self._simulation.paper_tracker.papers_by_id)
+        reserved = set(self._simulation.paper_tracker.papers_by_id) | set(self.open_domain_state.get('artifacts', {}))
         owners = dict(self._frame.get('artifact_owners', {}))
         # Merge the completed checkpoint with already executed current-year stores.
         for node, state in (self.graph_checkpoint or {}).get("mechanism_states", {}).items():
@@ -485,11 +496,13 @@ class NativeScienceKernel:
                 "event_stream_hash": canonical_event_stream_hash(self.events)}
         if self.design_history:
             result["design_history"] = _clone(self.design_history)
+        if self.open_domain_state:
+            result['open_domain'] = _clone(self.open_domain_state)
         return result
 
     def restore(self, state):
         required = {"schema", "spec", "system_fingerprint", "last_year", "graph_checkpoint", "events", "event_stream_hash"}
-        if (not isinstance(state, dict) or set(state) not in (required, required | {"design_history"}) or state["schema"] != SCHEMA
+        if (not isinstance(state, dict) or not required <= set(state) <= required | {'design_history', 'open_domain'} or state["schema"] != SCHEMA
                 or state["spec"] != self.spec.to_dict() or state["system_fingerprint"] != self.spec.fingerprint
                 or type(state["last_year"]) is not int or state["last_year"] < 0):
             raise GraphRuntimeError("native kernel checkpoint identity/schema mismatch")
@@ -522,7 +535,10 @@ class NativeScienceKernel:
                     or restored.next_period != state["last_year"] + 1
                     or restored.next_event_sequence != len(events)):
                 raise GraphRuntimeError("native kernel graph cursor mismatch")
+        from .native_open_domain import validate_domain_state
+        validate_domain_state(state.get('open_domain', {}), events=events)
         self.graph_checkpoint = _clone(checkpoint)
         self.events = events
         self.last_year = state["last_year"]
         self.design_history = _clone(state.get("design_history", []))
+        self.open_domain_state = _clone(state.get('open_domain', {}))

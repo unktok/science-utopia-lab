@@ -153,6 +153,8 @@ def migrate_native_design(kernel, candidate: SystemSpec, *, expected_checkpoint_
               "origin": deepcopy(origin or {"kind": "explicit-external-design"}),
               "parent_kernel_sha256": expected_checkpoint_sha256,
               "previous_migration_sha256": kernel.design_history[-1]["receipt_sha256"] if kernel.design_history else None}
+    if kernel.open_domain_state:
+        record['open_domain_before'] = deepcopy(kernel.open_domain_state)
     record["receipt_sha256"] = _digest(record)
     proposed = {**before, "spec": candidate.to_dict(), "system_fingerprint": candidate.fingerprint,
                 "graph_checkpoint": graph, "design_history": [*deepcopy(kernel.design_history), record]}
@@ -289,7 +291,7 @@ def validate_design_history(state, current_spec):
         required = {"schema", "after_year", "event_count", "event_prefix_sha256", "source_spec", "target_spec",
                     "source_graph", "target_graph", "state_actions", "discard_deliveries", "parent_kernel_sha256",
                     "previous_migration_sha256", "receipt_sha256", "origin"}
-        if not isinstance(record, dict) or set(record) != required:
+        if not isinstance(record, dict) or set(record) not in (required, required | {'open_domain_before'}):
             raise GraphRuntimeError("migration receipt fields differ")
         body = {k: v for k, v in record.items() if k != "receipt_sha256"}
         if record["schema"] != SCHEMA or _digest(body) != record["receipt_sha256"] or record["previous_migration_sha256"] != previous_hash:
@@ -331,6 +333,10 @@ def validate_design_history(state, current_spec):
                   "event_stream_hash": record["event_prefix_sha256"]}
         if previous_hash is not None:
             parent["design_history"] = history[:receipt_index]
+        if 'open_domain_before' in record:
+            from .native_open_domain import validate_domain_state
+            validate_domain_state(record['open_domain_before'], events=events)
+            parent['open_domain'] = record['open_domain_before']
         if _digest(parent) != record["parent_kernel_sha256"]:
             raise GraphRuntimeError("migration parent checkpoint hash differs")
         expected.extend([source.fingerprint] * (count - previous_count))
