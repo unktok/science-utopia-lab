@@ -90,20 +90,36 @@ def test_observation_binding_and_duplicate_receipts_rejected():
 def test_native_checkpoint_world_and_seed_are_bound(tmp_path, monkeypatch):
     from utopia.optimization.native_discrete_policy import verify_native_observation
     from utopia.utils.data_utils import file_sha256
-    search = NativeDiscretePolicySearch(designs(), loss_spec=loss_spec())
-    suggestion, = search.ask(1)
-    obs = observation(search, suggestion)
+    from tests.system.test_native_migration import completed_kernel
+    kernel = completed_kernel()  # graph-only receipt fixture, not real science
+    obs = Observation('qa', 'qa', kernel.spec.to_dict(), 'complete', 1., {})
     checkpoint = tmp_path / 'checkpoint.json'
     checkpoint.write_text('fixture')
     world = {'source_commit': 'pinned', 'model_digest': 'fixed', 'corpus_sha256': 'corpus'}
-    binding = {'cell': search.designs[search.pending[0]['action']].fingerprint,
+    binding = {'cell': kernel.spec.fingerprint,
         'seed': 42, 'model_revision': 'fixed', 'corpus_sha256': 'corpus', 'science_config': {'source_commit': 'pinned'}}
-    monkeypatch.setattr('utopia.runtime.checkpointing.read_portable_checkpoint',
-        lambda path: {'portable': {'contract': {'binding': binding}}})
-    obs.metadata['runs'] = [{'seed': 42, 'checkpoint_path': str(checkpoint), 'checkpoint_sha256': file_sha256(checkpoint)}]
+    payload = {'year': 1, 'phase': 5, 'native_system': kernel.to_dict(),
+        'portable': {'contract': {'binding': binding, 'simulation': {'num_years': 1},
+                                 'native_system': {'system_fingerprint': kernel.spec.fingerprint}}}}
+    monkeypatch.setattr('utopia.runtime.checkpointing.read_portable_checkpoint', lambda path: payload)
+    obs.metadata['runs'] = [{'seed': 42, 'checkpoint_path': str(checkpoint),
+        'checkpoint_sha256': file_sha256(checkpoint), 'system_fingerprint': kernel.spec.fingerprint,
+        'event_stream_hash': kernel.to_dict()['event_stream_hash']}]
     verify_native_observation(obs, world, [42])
     binding['seed'] = 43
     with pytest.raises(ValueError, match='RNG binding'):
+        verify_native_observation(obs, world, [42])
+    binding['seed'] = 42
+    payload['year'] = 0
+    with pytest.raises(ValueError, match='complete executed'):
+        verify_native_observation(obs, world, [42])
+    payload['year'] = 1
+    obs.metadata['runs'][0]['event_stream_hash'] = '0' * 64
+    with pytest.raises(ValueError, match='complete executed'):
+        verify_native_observation(obs, world, [42])
+    obs.metadata['runs'][0]['event_stream_hash'] = kernel.to_dict()['event_stream_hash']
+    payload['native_system']['spec']['metadata']['unexecuted_design'] = True
+    with pytest.raises(ValueError):
         verify_native_observation(obs, world, [42])
 
 

@@ -418,6 +418,9 @@ class NativeSocietyDesignSession:
                 raise ValueError('adoption checkpoint cannot be a symlink')
             saved = read_portable_checkpoint(checkpoint)
             native = saved['native_system']
+            if (type(saved.get('year')) is not int or saved['year'] < 1 or saved.get('phase') != 5
+                    or saved['year'] != native.get('last_year')):
+                raise ValueError('adoption requires a completed saved native year boundary')
             if not native.get('design_history'):
                 if adoption is not None:
                     raise ValueError('acknowledged adoption absent from actual saved society')

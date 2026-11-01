@@ -27,6 +27,7 @@ def verify_native_observation(observation, world, seeds):
     """
     from pathlib import Path
     from utopia.runtime.checkpointing import read_portable_checkpoint
+    from utopia.system.native_kernel import NativeScienceKernel
     from utopia.utils.data_utils import file_sha256
     runs = observation.metadata.get('runs', [])
     if observation.status != 'complete' or observation.metadata.get('technical_failures'):
@@ -45,6 +46,16 @@ def verify_native_observation(observation, world, seeds):
                 or binding['corpus_sha256'] != world['corpus_sha256']
                 or binding['science_config']['source_commit'] != world['source_commit']):
             raise ValueError('discrete policy native source/model/corpus/design/RNG binding differs')
+        kernel = NativeScienceKernel(design, checkpoint=state['native_system'])
+        horizon = state['portable']['contract']['simulation']['num_years']
+        if (type(horizon) is not int or horizon < 1 or state.get('phase') != 5
+                or state.get('year') != horizon or kernel.last_year != horizon
+                or run.get('system_fingerprint') != design.fingerprint
+                or run.get('event_stream_hash') != kernel.to_dict()['event_stream_hash']
+                or state['portable']['contract']['native_system']['system_fingerprint'] != design.fingerprint
+                or world.get('years', horizon) != horizon
+                or binding['science_config'].get('years', horizon) != horizon):
+            raise ValueError('discrete policy requires the actual complete executed native design/horizon/event stream')
 
 
 class NativeDiscretePolicySearch:

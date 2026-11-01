@@ -154,6 +154,9 @@ def test_society_confirmation_transport_never_executes_or_claims_adoption(tmp_pa
             calls.append(('consent-only', request_id))
             return {'status': 'pending', 'request_id': request_id, 'request_sha256': confirmed_request_sha256}
         def adoption_status(self, request_id, *, checkpoint):
+            if request_id == 'corrupt-checkpoint':
+                from utopia.runtime.checkpointing import PortableCheckpointError
+                raise PortableCheckpointError('private operator path must not be exposed')
             assert checkpoint is None
             return {'status': 'pending', 'request_id': request_id, 'request_sha256': 'b' * 64,
                     'verified_receipt': False}
@@ -175,6 +178,8 @@ def test_society_confirmation_transport_never_executes_or_claims_adoption(tmp_pa
         assert response.status_code == 202 and response.json()['status'] == 'pending'
         status = requests.get(base + '/native-api/society/requests/qa-request', headers=headers, timeout=5).json()
         assert status['status'] == 'pending' and not status['verified_receipt']
+        corrupt = requests.get(base + '/native-api/society/requests/corrupt-checkpoint', headers=headers, timeout=5)
+        assert corrupt.status_code == 503 and 'private operator path' not in corrupt.text
         assert calls == [('consent-only', 'qa-request')]
     finally:
         server.shutdown(); server.server_close(); thread.join(timeout=5)

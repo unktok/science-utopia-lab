@@ -26,7 +26,7 @@ def patch_to(parent, target):
         for key, value in target.to_dict().items() if value != parent.to_dict()[key]])
 
 
-def test_online_loss_proposal_adoption_feedback_and_original_config_resume(tmp_path, fixed_corpus):
+def test_online_loss_proposal_adoption_feedback_and_original_config_resume(tmp_path, fixed_corpus, monkeypatch):
     root = tmp_path / 'society'
     controller = session(tmp_path / 'session')
     sim, calls = make_sim(root, native=NativeScienceKernel(legacy_world_system(), registry_extension=register_notice))
@@ -69,6 +69,14 @@ def test_online_loss_proposal_adoption_feedback_and_original_config_resume(tmp_p
         assert verified['status'] == 'adopted' and verified['verified_receipt']
         assert verified['migration_receipt_sha256'] == receipt['migration_receipt_sha256']
         assert controller.adoption_status(request['request_id'])['status'] == 'pending'
+        from utopia.runtime.checkpointing import read_portable_checkpoint
+        for bad_key, bad_value in [('phase', 4), ('year', 0)]:
+            bad_saved = read_portable_checkpoint(path)
+            bad_saved[bad_key] = bad_value
+            with monkeypatch.context() as patched:
+                patched.setattr('utopia.runtime.checkpointing.read_portable_checkpoint', lambda p: bad_saved)
+                with pytest.raises(ValueError, match='completed saved native year boundary'):
+                    controller.adoption_status(request['request_id'], checkpoint=path)
         from types import SimpleNamespace
         with controller._lock():
             with pytest.raises(ValueError, match='acknowledged adoption'):

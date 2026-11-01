@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT))
 from utopia.optimization.native_jobs import NativeJobQueue, pinned_revision, validate_job_request
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
+from utopia.runtime.checkpointing import PortableCheckpointError
 
 
 def make_server(queue, *, source_commit, directory, port=4591,
@@ -94,6 +95,8 @@ def make_server(queue, *, source_commit, directory, port=4591,
                 return super().do_GET()
             except KeyError:
                 return self.reply(404, {'error': 'unknown job'})
+            except PortableCheckpointError:
+                return self.reply(503, {'error': 'saved society checkpoint failed integrity validation; no adoption verified'})
             except (ValueError, TypeError) as error:
                 return self.reply(400, {'error': str(error)})
 
