@@ -58,3 +58,37 @@ implemented, but native secant fidelity failed; the fresh proposal's loss -3
 ties the training best -3. Neither exact native pathwise differentiation,
 optimization gain beyond the observed training best nor scientific improvement
 is established.
+
+The [compact recovered audit](../results/native-transition-v4-recovered.json)
+binds the full audit receipt and auditor source hashes. All 139 original archive
+files are byte-identical; the seven real worlds contain 657 recorded native
+requests in total. This recovery adds zero native executions or inference calls.
+
+## Exact offline native-bank objective
+
+`native_cost_bank.py` provides a second, deliberately different route. The four
+**already audited actual native SystemSpecs and their complete-world losses**
+are frozen as a finite bank; the six-feature transition model is not used.
+The objective is `sum(softmax(logits)[i] * actual_native_cost[i])`, enumerating
+all four entries exactly, followed by actual Torch backward and Adam updates.
+This is exact differentiation of a conditional finite-bank expectation, **not
+sampled REINFORCE**. Costs already contain the real downstream researcher/LLM
+responses; no LLM weights or token Jacobians are trained/computed.
+
+`scripts/optimize_audited_native_bank_v4.py` independently binds bank entries to
+the recovery receipt, campaign hashes, complete SystemSpecs, checkpoint hashes,
+fixed model/corpus/source/seed and original domain measurements. Only the four
+training worlds enter the bank; neither validation worlds nor the new proposal
+are used as optimizer inputs. The complete bank and probability/loss path are
+tracked as compact artifacts/results, without raw response caches.
+
+Recorded artifacts: [complete four-system bank](../artifacts/native-cost-bank-v4.json)
+and [80-update probability/loss/gradient path](../results/native-cost-bank-v4.json).
+
+With the native costs `[-2,-2,-3,-3]`, uniform expectation starts at -2.5. Eighty
+offline Adam updates reach approximately -2.99982144 by concentrating probability
+on the two already observed -3 systems. The best actual native loss remains -3:
+this does **not** discover a new system or native best, give fresh validation,
+repair the separate surrogate derivative mismatch, or establish scientific
+improvement. It demonstrates a differentiable distribution objective using
+actual original-world outcomes, with zero additional native runs/inference.

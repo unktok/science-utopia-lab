@@ -1,0 +1,177 @@
+{
+  "actual_year3_researcher_path": {
+    "left_only": 0,
+    "limit": "observed same-seed request/reply differences, not LLM input Jacobians or independently replicated causal effects",
+    "matching": "actual author ID, research-direction activity, within-author call ordinal; not HTTP arrival order",
+    "pairs": [
+      {
+        "activity": "research-direction",
+        "author_id": "institution_0000_researcher_0",
+        "messages_changed": false,
+        "publication_history_view_changed": false,
+        "reply_content_changed": false,
+        "request_hashes": [
+          "bf7274734ce590a878880a34b7526ce1075dc5794a381a83a34cd55b3a4bea38",
+          "bf7274734ce590a878880a34b7526ce1075dc5794a381a83a34cd55b3a4bea38"
+        ],
+        "same_request_seed": true,
+        "within_author_call": 0
+      },
+      {
+        "activity": "research-direction",
+        "author_id": "institution_0001_researcher_0",
+        "messages_changed": true,
+        "publication_history_view_changed": true,
+        "reply_content_changed": true,
+        "request_hashes": [
+          "b14e93809d7f203c622b5edf0c20c9fa4e5260eb0c49345bd0b443e79b58281e",
+          "23c6225375dda214163fa69ccc7845d8df86d0e63ef8eee0da05f6d431e6add7"
+        ],
+        "same_request_seed": true,
+        "within_author_call": 0
+      },
+      {
+        "activity": "research-direction",
+        "author_id": "institution_0003_researcher_0",
+        "messages_changed": false,
+        "publication_history_view_changed": false,
+        "reply_content_changed": false,
+        "request_hashes": [
+          "f686b7742bd7406dc2a55428beca39fed5e2fa23c875e4d1753d3b342884fd7c",
+          "f686b7742bd7406dc2a55428beca39fed5e2fa23c875e4d1753d3b342884fd7c"
+        ],
+        "same_request_seed": true,
+        "within_author_call": 0
+      }
+    ],
+    "right_only": 0,
+    "unidentified_requests": [
+      0,
+      0
+    ],
+    "year": 3
+  },
+  "auditor_source_sha256": {
+    "scripts/audit_native_design_loop.py": "d4e10c380210cd105ec4ed52ec2cd59401d21f3c23c9932c7e909ba391f9530b",
+    "scripts/audit_native_feedback_v2.py": "870398fc508420250a58179d89fe1318091dc929823488165da0c6e334bc89a2",
+    "scripts/audit_native_transition_v3.py": "1778c681c26d4e06cb58e80cf9f289150e26b0d711b30308a32ed30fc63a4e9a",
+    "scripts/recover_native_transition_v3_audit.py": "65c6f60b6b416385210e8d67e235d905af4d25ea3bb7a57cf982b9957e7c2114",
+    "utopia/optimization/native_transition_autograd.py": "cd32fb6622e5d9e4b4d4df8ad6769213ebd3cdab34408997d1cbc739fc1471f8",
+    "utopia/optimization/native_transition_data.py": "d6f942017672b03e913496c4d131226144340741ee182d5b4e693c4ee42d0af7"
+  },
+  "full_audit_receipt": {
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-backprop-v4/outputs/native-transition-v4-audit-recovery-pinned.json",
+    "sha256": "cd9e73d311c761ef2186c0216accfb2344a4b51ca8f07bfdcee1a2c33007b4a8"
+  },
+  "native_requests_by_world": [
+    94,
+    94,
+    93,
+    94,
+    94,
+    94,
+    94
+  ],
+  "new_inference_calls": 0,
+  "new_native_executions": 0,
+  "original_failure": {
+    "binding_sha256": "dcae5e3a38c7bff5104719ad0222f6ef89df034cbda85eaf84198d229cb6a6e8",
+    "error": "relative path can't be expressed as a file URI",
+    "loss_fabricated": false,
+    "native_data_preserved": true,
+    "type": "ValueError"
+  },
+  "raw_output_files": 139,
+  "raw_output_manifest_sha256": "43368a6d585d8d43a0376be1ceca1fe6b18a324825d1ecaa0efd917b401fb9d0",
+  "raw_output_roots": [
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-a2/outputs/native-transition-v3/run",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-analysis-a1/outputs/native-transition-v3-analysis/run"
+  ],
+  "raw_outputs_unchanged": true,
+  "same_representation_max_absolute_error": 8.510303572961675e-12,
+  "schema": "scienceutopia.native-transition-audit-recovery.v4",
+  "source_commit": "b0aa3488cfc94b9e36da8d472e78d81fb1f06fa6",
+  "status": "existing-native-data-representation-and-proposal-independently-audited",
+  "summary": {
+    "directional_fidelity": {
+      "absolute_error": 1.9245008876762473,
+      "actual_native_secant": 0.0,
+      "gradient": [
+        [
+          0.0
+        ],
+        [
+          -1.666666656249999
+        ],
+        [
+          -1.6666666604166658
+        ]
+      ],
+      "method": "unused-native-secant-vs-composed-autograd",
+      "minus_run": "native-design-7361a5c9c465451e64ba-s1301",
+      "plus_run": "native-design-f4d889a6f89b9dfd6aa9-s1301",
+      "predicted_directional_derivative": -1.9245008876762473,
+      "sign_agreement": null,
+      "support": [
+        {
+          "normalized_radius": 0.09622504486493749,
+          "state_off_manifold_norm": 0.0,
+          "training_max_radius": 1.7320508075688774,
+          "training_max_state_residual": 0.0,
+          "within_radius": true,
+          "within_state_manifold": true,
+          "year": 1
+        },
+        {
+          "normalized_radius": 0.09622504486493749,
+          "state_off_manifold_norm": 0.0,
+          "training_max_radius": 1.7320508075688774,
+          "training_max_state_residual": 0.0,
+          "within_radius": true,
+          "within_state_manifold": true,
+          "year": 2
+        },
+        {
+          "normalized_radius": 0.13608276331785055,
+          "state_off_manifold_norm": 3.1031676915590914e-17,
+          "training_max_radius": 1.8257418583505538,
+          "training_max_state_residual": 6.473657049138938e-16,
+          "within_radius": true,
+          "within_state_manifold": true,
+          "year": 3
+        }
+      ]
+    },
+    "full_native_pathwise_autograd": false,
+    "proposal_controls": [
+      0.2625,
+      0.2625,
+      0.5625
+    ],
+    "proposal_loss": -3.0,
+    "represented_gradient": [
+      [
+        0.0
+      ],
+      [
+        -1.666666656249999
+      ],
+      [
+        -1.6666666604166658
+      ]
+    ],
+    "scientific_quality_improvement_established": false,
+    "strictly_better_than_training_best": false,
+    "training_best_loss": -3.0,
+    "training_losses": [
+      -2.0,
+      -2.0,
+      -3.0,
+      -3.0
+    ],
+    "validation_losses": [
+      -2.0,
+      -2.0
+    ]
+  }
+}
