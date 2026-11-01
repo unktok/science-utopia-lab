@@ -66,6 +66,8 @@ def figure_data(report):
                           else row['generation']*2+row['draw_index'])
             rows.append({'label': label, 'x_position': x_position,
                 'status': row['status'], 'loss': value,
+                'observation_id': (row['observation']['observation_id'] if row['status'] == 'complete' else None),
+                'suggestion_id': (row['observation']['suggestion_id'] if row['status'] == 'complete' else None),
                 'cross_objective_losses': row['cross_objective_losses'],
                 'graph_changes': row['graph_changes'],
                 'system_fingerprint': (row['physical_proof']['measurement']['system_fingerprint']
@@ -79,8 +81,18 @@ def figure_data(report):
         best = min((row['loss'] for row in complete), default=None)
         tied = [row for row in complete if row['loss'] == best] if best is not None else []
         selection = arm['selection']
+        observation_ids = [row['observation_id'] for row in complete]
+        suggestion_ids = [row['suggestion_id'] for row in complete]
+        if (any(not isinstance(value, str) or not value for value in observation_ids+suggestion_ids)
+                or len(set(observation_ids)) != len(observation_ids)
+                or len(set(suggestion_ids)) != len(suggestion_ids)):
+            raise ValueError('completed draw observation/suggestion identities must be unique')
         if (selection.get('best_loss') != best or selection.get('tie_count') != len(tied)
                 or selection.get('tied_system_fingerprints') != [row['system_fingerprint'] for row in tied]
+                or selection.get('tied_observation_ids') != [row['observation_id'] for row in tied]
+                or selection.get('tied_suggestion_ids') != [row['suggestion_id'] for row in tied]
+                or selection.get('representative_observation_id') != (tied[0]['observation_id'] if tied else None)
+                or selection.get('representative_suggestion_id') != (tied[0]['suggestion_id'] if tied else None)
                 or selection.get('representative_system_fingerprint') !=
                     (tied[0]['system_fingerprint'] if tied else None)):
             raise ValueError('selected development minimum/ties differ from audited rows')
@@ -90,9 +102,9 @@ def figure_data(report):
                                           for value in matrix.values()):
         raise ValueError('selected cross-objective matrix differs')
     for identity in ARM_IDS:
-        fingerprint = arms[identity]['selection']['representative_system_fingerprint']
+        observation_id = arms[identity]['selection']['representative_observation_id']
         representative = (next((row for row in arms[identity]['rows']
-            if row['system_fingerprint'] == fingerprint), None) if fingerprint is not None else None)
+            if row['observation_id'] == observation_id), None) if observation_id is not None else None)
         expected = representative['cross_objective_losses'] if representative else None
         if matrix[identity] != expected:
             raise ValueError('selected cross-objective matrix differs from representative draw')

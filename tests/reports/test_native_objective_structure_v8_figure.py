@@ -28,7 +28,8 @@ def report():
             cross = {ARM_IDS[0]: float(-index), ARM_IDS[1]: float(index+.25)}
             cross[arm] = own
             rows.append({'generation': index//2, 'draw_index': index%2, 'status': 'complete',
-                'observation': {'status': 'complete', 'loss': own},
+                'observation': {'status': 'complete', 'loss': own,
+                    'observation_id': f'{arm}-obs-{index}', 'suggestion_id': f'{arm}-suggestion-{index}'},
                 'cross_objective_losses': cross,
                 'independent_metrics': {key: {'status': 'measured', 'value': index} for key in METRICS},
                 'physical_proof': {'measurement': {'system_fingerprint': f'{arm}-{index}'}},
@@ -37,6 +38,10 @@ def report():
             'loss_path': [r['observation']['loss'] for r in rows],
             'selection': {'best_loss': float(arm_index/2), 'tie_count': 1,
                 'tied_system_fingerprints': [f'{arm}-0'],
+                'tied_observation_ids': [f'{arm}-obs-0'],
+                'tied_suggestion_ids': [f'{arm}-suggestion-0'],
+                'representative_observation_id': f'{arm}-obs-0',
+                'representative_suggestion_id': f'{arm}-suggestion-0',
                 'representative_system_fingerprint': f'{arm}-0'}}
     value = {'schema': SCHEMA, 'classification': FIXTURE, 'source_commit': 'a'*40,
         'new_model_calls': 0, 'generated_source_executions': 0, 'arms': arms,
@@ -68,6 +73,25 @@ def test_missing_cross_objective_cell_is_explicit_na_not_a_penalty():
     rehash(value)
     data = figure_data(value)
     assert data['selected_cross_objective_matrix'][ARM_IDS[0]][ARM_IDS[1]] is None
+
+
+def test_repeated_system_fingerprint_selects_best_observation_not_first_system():
+    value = report()
+    identity = ARM_IDS[0]
+    arm = value['arms'][identity]
+    row = arm['rows'][1]
+    row['physical_proof']['measurement']['system_fingerprint'] = f'{identity}-0'
+    row['observation']['loss'] = row['cross_objective_losses'][identity] = -5.
+    arm['loss_path'][1] = -5.
+    arm['selection'].update(best_loss=-5., representative_observation_id=f'{identity}-obs-1',
+        representative_suggestion_id=f'{identity}-suggestion-1',
+        tied_observation_ids=[f'{identity}-obs-1'], tied_suggestion_ids=[f'{identity}-suggestion-1'])
+    value['selected_cross_objective_matrix'][identity] = row['cross_objective_losses'].copy()
+    data = figure_data(rehash(value))
+    assert data['selected_cross_objective_matrix'][identity][identity] == -5.
+    value['selected_cross_objective_matrix'][identity] = arm['rows'][0]['cross_objective_losses'].copy()
+    with pytest.raises(ValueError, match='representative draw'):
+        figure_data(rehash(value))
 
 
 def test_synthetic_figure_renders_outside_paper_and_is_hash_bound(tmp_path):
