@@ -41,6 +41,10 @@ class ScriptedExecutor:
 
 @pytest.fixture
 def prepared(tmp_path, fixed_corpus, monkeypatch):
+    return prepare_fixture(tmp_path, monkeypatch)
+
+
+def prepare_fixture(tmp_path, monkeypatch):
     from tests.runtime import test_portable_checkpoint_integration as fixture
     monkeypatch.setattr('time.time', lambda: 1234567890.)
     protocol = {'schema': SCHEMA, 'kind': 'scripted-same-society-audit-fixture-v6', 'evidence': FIXTURE,
@@ -230,3 +234,178 @@ def test_raw_whole_tree_mutation_during_inspection_is_rejected(prepared, monkeyp
     monkeypatch.setattr(auditor, 'code_proofs', changed)
     with pytest.raises(ValueError, match='raw evidence changed'):
         analyze(root, require_complete=False)
+
+
+@pytest.mark.parametrize('different_discarded_result', [False, True])
+def test_stop_after_physical_code_then_cold_resume_preserves_ambiguous_attempts(
+        prepared, monkeypatch, different_discarded_result):
+    """Actual scripted native restart; every physical receipt survives, none deduped."""
+    from utopia.runtime.checkpointing import PortableStop
+    root, advance = prepared
+    first, _ = advance()
+    author_pending(root, first, ScriptedExecutor())
+    staged, _ = advance()
+    stopped = {'value': False}
+    execute = RecordingCodeExecutor.execute
+    scripted = ScriptedExecutor.execute
+
+    def scripted_attempt(self, artifact, context):
+        result = scripted(self, artifact, context)
+        if different_discarded_result and context['period'] == 2 and not stopped['value']:
+            value = deepcopy(result.result)
+            value['state']['discarded_scripted_attempt'] = True
+            receipt = deepcopy(result.receipt)
+            receipt['result_sha256'] = sha(value)
+            return CodeExecution(value, receipt)
+        return result
+
+    def stop_after_record(self, artifact, context):
+        result = execute(self, artifact, context)
+        if context['period'] == 2 and not stopped['value']:
+            stopped['value'] = True
+            raise PortableStop('QA stop after physical code receipt but before year-two commit')
+        return result
+
+    monkeypatch.setattr(ScriptedExecutor, 'execute', scripted_attempt)
+    monkeypatch.setattr(RecordingCodeExecutor, 'execute', stop_after_record)
+    boundary = NativeSocietyDesignSession._boundary
+    strict_rejected = []
+    def checked_boundary(self, simulation, *, allow_observed_replay=False):
+        from pathlib import Path
+        from utopia.runtime.checkpointing import read_portable_checkpoint
+        saved = read_portable_checkpoint(Path(simulation.output_dir) /
+            f'portable_checkpoint_year_{simulation.native_system.last_year}.json.gz')
+        if allow_observed_replay and simulation.llm.response_cache.committed_count() > saved['portable']['response_cache_count']:
+            with pytest.raises(ValueError):
+                boundary(self, simulation)  # Adoption/new-boundary path stays strict.
+            strict_rejected.append(True)
+        return boundary(self, simulation, allow_observed_replay=allow_observed_replay)
+    monkeypatch.setattr(NativeSocietyDesignSession, '_boundary', checked_boundary)
+    with pytest.raises(PortableStop, match='QA stop after physical code'):
+        advance([staged['confirm_request_sha256']])
+    # Original founding configuration, checkpoint, society and response cache;
+    # the uncheckpointed year is rerun, not treated as another scientific year.
+    second, session = advance()
+    assert second['through_year'] == 2 and second['adoptions'] == 1
+    author_pending(root, second, ScriptedExecutor())
+    staged2, _ = advance()
+    complete, session = advance([staged2['confirm_request_sha256']])
+    assert complete['status'] == 'complete'
+    before = inventory(root)
+    report = analyze(root)
+    assert inventory(root) == before
+    evidence = report['code_contexts']
+    assert report['classification'] == FIXTURE and report['status'] == 'complete'
+    assert len(report['rows']) == 3 and len(report['adoptions']) == 2
+    assert len(set(r['same_actor_ids_sha256'] for r in report['rows'])) == 1
+    assert evidence['recorded_executions'] == len(evidence['physical_records']) == 3
+    assert evidence['checkpointed_native_event_count'] == evidence['checkpointed_executions'] == 2
+    assert evidence['one_to_one_physical_execution_proven'] is False
+    assert evidence['status'] == 'physical-attempt-attribution-incomplete'
+    assert evidence['uncheckpointed_execution_contexts'] == 0
+    assert evidence['unattributed_completed_year_contexts'] == int(different_discarded_result)
+    assert evidence['ambiguous_native_event_count'] == int(not different_discarded_result)
+    assert [r['actual_activity_effects'] for r in report['rows']] == [0, 1, 1]
+    assert report['uncheckpointed_responses'] == 0
+    assert strict_rejected
+    assert all(p['pinned_by_observation'] for p in report['response_prefix_proofs'])
+    if not different_discarded_result:
+        group = next(g for g in evidence['native_event_context_candidates'] if g['year'] == 2)
+        assert group['physical_record_indices'] == [0, 1] and group['unique_attribution'] is False
+    # Compare completed scientific serializers to an uninterrupted reference.
+    # Session receipt IDs intentionally bind different host checkpoint bytes.
+    reference_root, reference_advance = prepare_fixture(root.parent / (root.name + '-continuous'), monkeypatch)
+    finish(reference_root, reference_advance)
+    from pathlib import Path
+    from utopia.runtime.checkpointing import read_portable_checkpoint
+    def science(directory):
+        config = json.loads((directory / 'society-session-config.json').read_text())
+        state = read_portable_checkpoint(Path(config['checkpoint_directory']) / 'portable_checkpoint_year_3.json.gz')
+        state['portable'].pop('outputs')  # Host output locations, not scientific state.
+        state['paper_tracker'].pop('output_dir')
+        state['native_system'].pop('design_history')  # Receipt identity, independently audited above.
+        def normalize(value):
+            if isinstance(value, dict):
+                return {k: normalize(v) for k, v in value.items()}
+            if isinstance(value, (list, tuple)):
+                return [normalize(v) for v in value]
+            if isinstance(value, set):
+                return sorted(normalize(v) for v in value)
+            if hasattr(value, 'to_dict'):
+                return normalize(value.to_dict())
+            if type(value).__name__ == 'FundingProgram':
+                return normalize(vars(value))
+            return value
+        return normalize(state)
+    assert science(root) == science(reference_root)
+
+
+def test_changed_original_response_prefix_blocks_replay(prepared, monkeypatch):
+    import sqlite3
+    from utopia.runtime.checkpointing import PortableStop
+    root, advance = prepared
+    first, _ = advance()
+    author_pending(root, first, ScriptedExecutor())
+    staged, _ = advance()
+    original = RecordingCodeExecutor.execute
+    def stop(self, artifact, context):
+        original(self, artifact, context)
+        raise PortableStop('scripted interrupted year with committed reply tail')
+    monkeypatch.setattr(RecordingCodeExecutor, 'execute', stop)
+    with pytest.raises(PortableStop):
+        advance([staged['confirm_request_sha256']])
+    with sqlite3.connect(root / 'runs/persistent-society/replies/responses.sqlite') as database:
+        # Internally hash-shaped, but no longer the exact previously pinned input.
+        database.execute('UPDATE replies SET payload_sha=? WHERE rowid=1', ('e' * 64,))
+    with pytest.raises(PortableStop) as error:
+        advance()
+    assert isinstance(error.value.__cause__, ValueError)
+    assert 'observed response prefix changed' in str(error.value.__cause__)
+
+
+def test_response_prefix_is_read_only_and_checks_original_and_extra_rows(tmp_path):
+    from types import SimpleNamespace
+    from tests.runtime.test_portable_checkpoint_integration import BINDING
+    from utopia.runtime.checkpointing import PortableCheckpointError
+    cache = CompletedResponseCache(tmp_path / 'cache.sqlite', binding=BINDING)
+    def reply(value):
+        return SimpleNamespace(model_dump=lambda **kwargs: {'fixture': value})
+    try:
+        cache.store('a' * 64, 'b' * 64, reply(1))
+        prefix = cache.committed_prefix_identity(1)
+        cache.store('c' * 64, 'd' * 64, reply(2))
+        assert cache.committed_prefix_identity(1) == prefix
+        assert cache.committed_count() == 2
+        cache._db.execute('UPDATE replies SET data_sha=? WHERE identity=?', ('e' * 64, 'c' * 64))
+        cache._db.commit()
+        with pytest.raises(PortableCheckpointError, match='content/identity hash'):
+            cache.committed_prefix_identity(1)  # Even the extra tail must be intact.
+    finally:
+        cache.close()
+
+
+def test_primary_full_plan_lineage_has_effect_even_without_amendments():
+    from scripts.analyze_native_society_v6 import primary_plan_proof
+    plan = {'schema': 'native-research-plan-v1', 'year': 3, 'submit_actor_ids': ['actor'], 'assignments': [{
+        'actor_id': 'actor', 'direction': {'topic': 'free topic'}, 'detailed_focus': 'full primary plan',
+        'reason': 'scripted lineage QA', 'project_start_year': 3, 'project_end_year': 3}]}
+    receipt = {key: key for key in ('image_id', 'artifact_sha256', 'context_sha256', 'result_sha256')}
+    source = {'event_id': 'code-event', 'event_type': 'generated.code_executed',
+        'provenance': {'mechanism_id': 'free-institution'}, 'payload': receipt}
+    effect = {'event_id': 'effect', 'year': 3, 'provenance': {'mechanism_id': 'consumer',
+        'input_event_ids': ['code-event']}, 'payload': {'amendments': [], 'plan_sha256': sha(plan)}}
+    saved = {'native_system': {'events': [source], 'spec': {'connections': [{'source_mechanism': 'free-institution',
+        'source_port': 'prepared', 'target_mechanism': 'consumer', 'target_port': 'plans', 'channel': 'artifact'}]}},
+        'portable': {'agent_states': {'actor': {'state': {'project_start_year': 3, 'project_end_year': 3,
+            'newest_direction': {key: plan['assignments'][0][key] for key in ('direction', 'detailed_focus', 'reason')}}}}},
+        'paper_tracker': {'papers': [{'year': 3, 'id': 'actual-paper', 'author_id': 'actor'}]}}
+    rows = [{'context': {'period': 3}, 'receipt': receipt,
+        'result': {'outputs': {'prepared': [{'payload': plan}]}}}]
+    proof = primary_plan_proof(saved, effect, rows)
+    assert not effect['payload']['amendments']
+    assert proof['verified_actor_assignment_ids'] == ['actor']
+    assert proof['actual_unique_submission_ids'] == ['actual-paper']
+    assert proof['source_native_event_ids'] == ['code-event']
+    saved['portable']['agent_states']['actor']['state']['project_end_year'] = 4
+    with pytest.raises(ValueError, match='actual saved actor state'):
+        primary_plan_proof(saved, effect, rows)

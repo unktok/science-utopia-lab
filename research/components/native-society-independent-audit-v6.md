@@ -43,6 +43,68 @@ additional checks:
 It returns `status: incomplete` and the actual native status, not success.
 The report schema is `scienceutopia.native-society-v6-audit.v1`.
 
+## Physical attempts versus committed code events
+
+The existing append-only recorder has no attempt/commit identifier. A physical
+code call may finish before a later interruption prevents its year checkpoint.
+Cold resume can then append a second call for that same year. The audit keeps
+every physical row, its original index and bundle hash; it never selects a
+preferred attempt or deduplicates identical records.
+
+Each row must use a source actually active in its year. Every committed native
+code event must have at least one exact artifact/context/result/image match.
+Many-to-one or overlapping matches are explicitly ambiguous. Unmatched records
+from a completed year are labelled unattributed, possible uncommitted attempts,
+not proven scientific effects. Later-year rows remain uncheckpointed. These
+cases set `code_contexts.one_to_one_physical_execution_proven: false` and
+`status: physical-attempt-attribution-incomplete`, even if the actual three-year
+society checkpoints independently establish native completion. Missing evidence
+for a committed native code event remains a hard audit error.
+
+`checkpointed_native_event_count` (and the compatible `checkpointed_executions`
+field) counts authoritative native events, never physical contexts. The report
+includes all candidate record indices for each native event. Scripted native
+regressions stop after the physical code receipt, cold restart from the original
+founding configuration, and finish the same society. Both identical replayed
+receipts and a discarded attempt with a different result retain their ambiguity
+or unattributed classification. They are software QA, not actual-Qwen findings.
+
+## Prospective response-tail replay fix
+
+The restart regression exposed a controller issue: native portable replay keeps
+responses from an interrupted later year, but the session's old observation
+callback required the response journal count to equal its last completed
+checkpoint. That blocked replay before the cached responses could be reused.
+The fix is prospective source code, never an edit of a1/a2 run source or raw.
+
+New observations contain an ordered, binding-specific response-prefix digest.
+`CompletedResponseCache.committed_prefix_identity` verifies all committed row
+identities/content hashes, including the tail, without writing or constructing
+a model response. Only idempotent observation of an already observed AND already
+adopted same-year boundary may accept an ahead count. It must retain the exact
+pinned original prefix. The full captured-state comparison normalizes only that
+single transport count; scientific state, RNG, source/model binding, outputs,
+events and all other portable fields must still match. New observations,
+adoption and durable migration remain strict. Legacy observations lacking a
+pinned prefix cannot authorize an ahead-journal replay.
+
+The scripted cold-restart regressions compare completed scientific serializers
+to an uninterrupted reference, separately audit receipt identities, prove the
+strict adoption-boundary rejection remains, and reject a changed original
+response prefix. This is not a claim that historical live runs used the fix.
+
+## Primary plans are not amendment batches
+
+`actual_activity_effects` retains its original, narrow count of nonempty
+amendment batches. The additional `rows[].activity_plans` distinguishes all
+applied plan batches, amendment batches, and code-authored primary plan batches.
+For a full primary plan, the audit follows the actual code event and graph edge
+to its exact saved output, reconstructs optional saved amendment commands as
+data, checks the applied `plan_sha256`, and compares project/direction fields
+with actual saved actor state. Requested submitters are joined to actual paper
+identities; an intention alone is not a fabricated successful submission.
+Physical record candidates remain explicit if attempt attribution is ambiguous.
+
 ```sh
 PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python \
   scripts/analyze_native_society_v6.py --run /absolute/raw/run \

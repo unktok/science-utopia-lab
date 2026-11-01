@@ -5,6 +5,7 @@ committed before the caller or request audit can observe it. Copy a live cache
 with backup(), never by copying the database during a transaction.
 """
 import hashlib
+import json
 from pathlib import Path
 import sqlite3
 
@@ -123,6 +124,38 @@ class CompletedResponseCache:
 
     def committed_count(self):
         return self._db.execute("SELECT count(*) FROM replies").fetchone()[0]
+
+    def committed_prefix_identity(self, count=None):
+        """Read-only identity of an ordered committed prefix, never its text.
+
+        A saved society may replay replies committed by an interrupted later
+        year. New observations pin their original prefix before that happens;
+        count alone cannot prove those original replies were retained exactly.
+        All current rows are integrity-checked, including the additional tail.
+        """
+        try:
+            if self._db.execute('SELECT binding FROM metadata').fetchall() != [(canonical_json(self.binding),)]:
+                raise ValueError('response journal binding changed')
+            rows = self._db.execute('SELECT identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+            if count is None:
+                count = len(rows)
+            if type(count) is not int or not 0 <= count <= len(rows):
+                raise ValueError('response prefix requires an existing nonnegative count')
+            checked = []
+            for identity, payload_sha, outcome, data, data_sha in rows:
+                if (outcome != 'response' or not isinstance(data, str)
+                        or hashlib.sha256(data.encode()).hexdigest() != data_sha
+                        or any(not isinstance(value, str) or len(value) != 64
+                            or any(c not in '0123456789abcdef' for c in value)
+                            for value in (identity, payload_sha, data_sha))):
+                    raise ValueError('response journal content/identity hash changed')
+                canonical_json(json.loads(data))  # finite JSON; no response object/model is constructed.
+                checked.append([identity, payload_sha, outcome, data_sha])
+            return {'schema': 'scienceutopia.completed-response-prefix.v1', 'response_count': count,
+                'binding_sha256': hashlib.sha256(canonical_json(self.binding).encode()).hexdigest(),
+                'rows_sha256': hashlib.sha256(canonical_json(checked[:count]).encode()).hexdigest()}
+        except (ValueError, TypeError, sqlite3.Error) as error:
+            raise PortableCheckpointError('Cannot verify committed response prefix: ' + str(error)) from error
 
     def backup(self, destination):
         """Create a transactionally consistent file for parent-managed S3 upload."""

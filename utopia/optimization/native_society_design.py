@@ -164,7 +164,7 @@ class NativeSocietyDesignSession:
     def _resolved(state):
         return {e['payload']['request_sha256'] for e in state['events'] if e['kind'] in {'adopted', 'cancelled'}}
 
-    def _boundary(self, simulation):
+    def _boundary(self, simulation, *, allow_observed_replay=False):
         """Check actual checkpoint/domain, not a browser's claimed measurement."""
         from utopia.runtime.checkpointing import capture_rng, read_portable_checkpoint
         kernel = simulation.native_system
@@ -179,19 +179,39 @@ class NativeSocietyDesignSession:
                 or getattr(simulation, '_portable_last_year', None) != kernel.last_year):
             raise ValueError("session mutation requires synchronous saved-boundary callback")
         saved = read_portable_checkpoint(path)
+        state = self._read()
+        previous = self._observations(state)
+        replay = (previous[-1] if allow_observed_replay and previous
+            and previous[-1]['through_year'] == kernel.last_year
+            and any(a['after_year'] == kernel.last_year for a in self._adoptions(state)) else None)
+        cache = simulation.llm.response_cache
+        count = cache.committed_count()
+        saved_count = saved['portable']['response_cache_count']
+        ahead = type(count) is int and type(saved_count) is int and count > saved_count
+        if replay is not None and replay.get('response_cache_prefix') is not None:
+            if (replay['response_cache_prefix'].get('response_count') != saved_count
+                    or cache.committed_prefix_identity(saved_count) != replay['response_cache_prefix']):
+                raise ValueError('observed response prefix changed; native replay is not valid')
+        elif ahead:
+            # Legacy observations lack a pinned prefix, so count alone cannot
+            # safely justify a later transport tail. Adoption always stays strict.
+            raise ValueError('ahead response journal has no eligible observed prefix proof')
         if (saved.get('year') != kernel.last_year or saved.get('phase') != 5
                 or saved.get('native_system') != kernel.to_dict()
                 or saved['portable']['contract'] != simulation.portable_contract()
                 or saved['portable']['rng'] != capture_rng()
-                or saved['portable']['response_cache_count'] != simulation.llm.response_cache.committed_count()):
+                or (saved_count != count and not (replay is not None and ahead))):
             raise ValueError("saved society, contract, RNG or response journal changed")
         actual_binding = self._actual_binding(simulation)
-        state = self._read()
         if state['events'] and (state['events'][0]['kind'] != 'bound'
                 or state['events'][0]['payload'] != actual_binding):
             raise ValueError("model/corpus/seed/config society binding differs from session")
         from utopia.runtime.checkpointing import pack_state
         current = simulation.capture_checkpoint_state(kernel.last_year, phase=5)
+        if replay is not None and ahead:
+            # Only transport metadata may be ahead. Every scientific state,
+            # output, RNG, epoch and all other portable fields still match.
+            current['portable']['response_cache_count'] = saved_count
         if digest(pack_state(current)) != digest(pack_state(saved)):
             raise ValueError("unsaved complete native society state changed; adoption is stale")
         return path
@@ -258,7 +278,7 @@ class NativeSocietyDesignSession:
     def observe(self, simulation):
         with self._lock():
             state = self._read()
-            path = self._boundary(simulation)
+            path = self._boundary(simulation, allow_observed_replay=True)
             if not state['events']:
                 self._append(state, 'bound', self._actual_binding(simulation))
             self._reconcile(state, simulation)
@@ -280,6 +300,7 @@ class NativeSocietyDesignSession:
                     "event_prefix_sha256": simulation.native_system.to_dict()['event_stream_hash'],
                     "checkpoint_sha256": file_sha256(path), "domain_sha256": self._domain_hash(simulation),
                     "measurement": measurement, "loss_evaluation": loss,
+                    "response_cache_prefix": simulation.llm.response_cache.committed_prefix_identity(),
                     "loss": loss['loss'], "loss_spec_sha256": self.binding['loss_spec_sha256'],
                     "preceding_adoption": self._adoptions(state)[-1]['request_sha256']
                         if self._adoptions(state) else None,

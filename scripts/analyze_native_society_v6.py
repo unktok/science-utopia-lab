@@ -199,6 +199,7 @@ def checkpoint_proofs(session, checkpoints):
             'actual_saved_system_fingerprint': actual_spec.fingerprint,
             'archived_ordered_corpus_sha256': corpus_digest,
             'cumulative_response_count': saved['portable']['response_cache_count'],
+            'response_cache_prefix': obs.get('response_cache_prefix'),
             'cumulative_flow_metrics': cumulative['metrics'], 'interval_counter_differences': differences,
             'same_actor_ids_sha256': digest(ids), 'actor_count': len(ids),
             'llm_call_stats': saved['portable']['llm_call_stats'],
@@ -208,7 +209,7 @@ def checkpoint_proofs(session, checkpoints):
     return proofs
 
 
-def response_proofs(cell, binding, counts, *, complete, protocol, classification):
+def response_proofs(cell, binding, counts, *, complete, protocol, classification, expected_prefixes=None):
     """Read SQLite in ro mode; join physical HTTP payloads to committed replies."""
     path = cell / 'replies/responses.sqlite'
     database = sqlite3.connect(path.resolve().as_uri() + '?mode=ro', uri=True)
@@ -224,6 +225,7 @@ def response_proofs(cell, binding, counts, *, complete, protocol, classification
         if outcome != 'response' or hashlib.sha256(data.encode()).hexdigest() != data_sha or len(identity) != 64:
             raise ValueError('actual completed response identity/content hash differs')
         parsed = json.loads(data)
+        canonical_json(parsed)
         if parsed.get('model') != binding['model']:
             raise ValueError('completed researcher response declares another model')
         while offset < len(wires) and wires[offset]['payload_sha256'] != payload_sha:
@@ -244,6 +246,15 @@ def response_proofs(cell, binding, counts, *, complete, protocol, classification
     for year, count in enumerate(counts, 1):
         if count != sum(y <= year for y in reply_years):
             raise ValueError('portable response count does not equal committed physical-year prefix')
+    prefixes = []
+    for count, expected in zip(counts, expected_prefixes or [None] * len(counts)):
+        actual = {'schema': 'scienceutopia.completed-response-prefix.v1', 'response_count': count,
+            'binding_sha256': digest(binding),
+            'rows_sha256': digest([[r[0], r[1], r[2], r[4]] for r in replies[:count]])}
+        if expected is not None and expected != actual:
+            raise ValueError('observed committed response prefix differs from actual ordered SQL replies')
+        prefixes.append({'response_count': count, 'pinned_by_observation': expected is not None,
+            'actual_prefix_identity': actual})
     extras = len(replies) - (counts[-1] if counts else 0)
     if complete and extras:
         raise ValueError('completed pilot contains uncheckpointed inference')
@@ -251,7 +262,8 @@ def response_proofs(cell, binding, counts, *, complete, protocol, classification
         'cumulative_responses_per_year': counts, 'responses_by_physical_year': dict(Counter(reply_years)),
         'wire_requests': len(wires), 'wire_sha256': file_sha256(cell / 'wire-requests.jsonl'),
         'response_sql_sha256': file_sha256(path), 'response_content_chain_sha256': digest(replies),
-        'response_binding': binding, 'unmatched_http_inputs': len(wires) - len(replies)}
+        'response_binding': binding, 'response_prefix_proofs': prefixes,
+        'unmatched_http_inputs': len(wires) - len(replies)}
 
 
 def code_proofs(cell, session, world):
@@ -262,34 +274,56 @@ def code_proofs(cell, session, world):
         for event in saved['native_system']['events']:
             if event['event_type'] == 'generated.code_executed':
                 events[event['event_id']] = event
-    seen = set()
+    matches_by_event = {key: [] for key in events}
+    physical = []
     last_year = view['observations'][-1]['through_year'] if view['observations'] else 0
-    for row in rows:
+    for index, row in enumerate(rows):
         if row['binding'] != {'source_commit': world['source_commit'], 'system_fingerprint': session.founding.fingerprint, 'run_id': 'persistent-society'}:
             raise ValueError('code context founding-run/source binding differs')
         if row['receipt'].get('image_id') != world['image_id']:
             raise ValueError('code context container image differs')
         if type(row['context'].get('period')) is not int or not 1 <= row['context']['period'] <= 3:
             raise ValueError('code context is outside the declared native horizon')
-        if row['context']['period'] > last_year:
-            current = view['adoptions'][-1]['migration']['target_spec'] if view['adoptions'] else session.founding.to_dict()
-            if not any(node['implementation'] == 'code.python.v1'
-                    and node['parameters']['code_artifact'] == row['artifact'] for node in current['mechanisms']):
-                raise ValueError('partial-year code context is not the actually adopted source')
+        preceding = [a for a in view['adoptions'] if a['after_year'] < row['context']['period']]
+        current = preceding[-1]['migration']['target_spec'] if preceding else session.founding.to_dict()
+        if not any(node['implementation'] == 'code.python.v1'
+                and node['parameters']['code_artifact'] == row['artifact'] for node in current['mechanisms']):
+            raise ValueError('physical code context is not an actually active source in its year')
         matches = [key for key, event in events.items() if event['year'] == row['context']['period']
             and all(event['payload'][k] == row['receipt'][k] for k in ('image_id', 'artifact_sha256', 'context_sha256', 'result_sha256'))]
-        if len(matches) != 1 and row['context']['period'] <= last_year:
-            raise ValueError('checkpointed code context has no unique exact native execution')
-        if matches:
-            if matches[0] in seen:
-                raise ValueError('duplicate code context for one actual native execution')
-            seen.add(matches[0])
-    if seen != set(events):
+        for key in matches:
+            matches_by_event[key].append(index)
+        physical.append({'record_index': index, 'bundle_sha256': row['bundle_sha256'],
+            'year': row['context']['period'], 'matching_native_event_ids': matches})
+    if any(not indices for indices in matches_by_event.values()):
         raise ValueError('actual native code execution lacks its exact context/result receipt')
-    return {'recorded_executions': len(rows), 'checkpointed_executions': len(seen),
-        'uncheckpointed_execution_contexts': len(rows) - len(seen),
+    ambiguous = [key for key, indices in matches_by_event.items() if len(indices) != 1
+        or any(len(physical[i]['matching_native_event_ids']) != 1 for i in indices)]
+    unattributed = [p for p in physical if not p['matching_native_event_ids'] and p['year'] <= last_year]
+    partial = [p for p in physical if p['year'] > last_year]
+    one_to_one = not ambiguous and not unattributed and not partial
+    for item in physical:
+        item['attribution'] = ('uncheckpointed-year-context' if item['year'] > last_year else
+            'unattributed-completed-year-context-possible-uncommitted-attempt' if not item['matching_native_event_ids'] else
+            'ambiguous-physical-attempt-no-unique-commit-attribution' if any(k in ambiguous for k in item['matching_native_event_ids']) else
+            'unique-exact-committed-event-match')
+    return {'recorded_executions': len(rows), 'checkpointed_executions': len(events),
+        'checkpointed_native_event_count': len(events),
+        'status': 'one-to-one-receipt-matches' if one_to_one else 'physical-attempt-attribution-incomplete',
+        'one_to_one_physical_execution_proven': one_to_one,
+        'uncheckpointed_execution_contexts': len(partial),
+        'unattributed_completed_year_contexts': len(unattributed),
+        'ambiguous_native_event_count': len(ambiguous),
+        'physical_records': physical,
+        'native_event_context_candidates': [{'event_id': key, 'year': events[key]['year'],
+            'mechanism_id': events[key]['provenance']['mechanism_id'],
+            'physical_record_indices': indices, 'unique_attribution': key not in ambiguous}
+            for key, indices in matches_by_event.items()],
         'bundle_sha256s': [r['bundle_sha256'] for r in rows],
-        'scope': 'binding.system_fingerprint is the fixed founding invocation; exact artifacts and native epochs prove migrated execution'}
+        'scope': 'Checkpointed native events are counted once from authoritative epochs, never once per physical context. '
+            'All physical rows are retained; no attempt is arbitrarily selected or deduplicated. '
+            'Unmatched and many-to-one rows do not independently prove a committed effect. '
+            'binding.system_fingerprint is the fixed founding invocation; exact artifacts and epochs bind migrated source.'}
 
 
 def authoring_proofs(directory, session):
@@ -355,6 +389,92 @@ def authoring_proofs(directory, session):
     return sorted(proofs, key=lambda p: p['proposal_index'])
 
 
+def primary_plan_proof(saved, effect, code_rows):
+    """Exact full-plan code output -> effect hash -> real actor/paper facts.
+
+    This covers primary plans, not merely optional amendment batches. Physical
+    duplicate candidates stay explicit; no source is executed or chosen by rank.
+    """
+    spec = saved['native_system']['spec']
+    events = {e['event_id']: e for e in saved['native_system']['events']}
+    primary_edges = [edge for edge in spec['connections'] if edge['target_mechanism'] == effect['provenance']['mechanism_id']
+        and edge['target_port'] == 'plans' and edge['channel'] == 'artifact']
+    candidates = []
+    for edge in primary_edges:
+        for identity in effect['provenance']['input_event_ids']:
+            event = events[identity]
+            if (event['event_type'] != 'generated.code_executed'
+                    or event['provenance']['mechanism_id'] != edge['source_mechanism']):
+                continue
+            for index, record in enumerate(code_rows):
+                if record['context']['period'] != effect['year'] or not all(event['payload'][key] == record['receipt'][key]
+                        for key in ('image_id', 'artifact_sha256', 'context_sha256', 'result_sha256')):
+                    continue
+                for envelope in record['result']['outputs'].get(edge['source_port'], []):
+                    plan = deepcopy(envelope['payload'])
+                    if plan.get('schema') != 'native-research-plan-v1' or plan.get('year') != effect['year']:
+                        raise ValueError('primary code output is not an actual current-year plan')
+                    # Pure data reconstruction of the saved, already verified
+                    # amendment commands; never invoke a native capability.
+                    for amendment in effect['payload']['amendments']:
+                        command = amendment['command']
+                        aid = command['assignment']['actor_id']
+                        matching = [i for i in plan['assignments'] if i['actor_id'] == aid]
+                        if len(matching) != 1:
+                            raise ValueError('primary plan amendment has no unique actual assignment')
+                        matching[0].clear()
+                        matching[0].update(deepcopy(command['assignment']))
+                        if command['submit'] and aid not in plan['submit_actor_ids']:
+                            plan['submit_actor_ids'].append(aid)
+                        elif not command['submit'] and aid in plan['submit_actor_ids']:
+                            plan['submit_actor_ids'].remove(aid)
+                    if digest(plan) != effect['payload']['plan_sha256']:
+                        raise ValueError('primary code plan differs from actual applied plan hash')
+                    candidates.append((index, identity, edge, plan))
+    if not candidates:
+        return None  # Native primary producer is not falsely called a code-authored plan.
+    hashes = {digest(item[3]) for item in candidates}
+    if len(hashes) != 1:
+        raise ValueError('primary plan candidates disagree; no arbitrary source selection')
+    plan = candidates[0][3]  # Equal-by-hash logical content, not a selected physical attempt.
+    actor_states = saved['portable']['agent_states']
+    for assignment in plan['assignments']:
+        state = actor_states[assignment['actor_id']]['state']
+        direction = state['newest_direction']['direction']
+        direction = direction.to_dict() if hasattr(direction, 'to_dict') else direction
+        if (direction != assignment['direction']
+                or any(state[key] != assignment[key] for key in ('project_start_year', 'project_end_year'))
+                or any(state['newest_direction'][key] != assignment[key] for key in ('detailed_focus', 'reason'))):
+            raise ValueError('applied primary code plan differs from actual saved actor state')
+    actual_submissions = {aid: sorted(p['id'] for p in saved['paper_tracker']['papers']
+        if p['year'] == effect['year'] and aid in (p['author_id'] if isinstance(p['author_id'], list) else [p['author_id']]))
+        for aid in plan['submit_actor_ids']}
+    return {'effect_event_id': effect['event_id'], 'plan_sha256': effect['payload']['plan_sha256'],
+        'year': effect['year'], 'source_native_event_ids': sorted({c[1] for c in candidates}),
+        'physical_record_candidates': sorted({c[0] for c in candidates}),
+        'primary_connections': [edge for edge in primary_edges if any(c[2] == edge for c in candidates)],
+        'verified_actor_assignment_ids': [item['actor_id'] for item in plan['assignments']],
+        'requested_submit_actor_ids': plan['submit_actor_ids'],
+        'actual_submission_ids_by_requested_actor': actual_submissions,
+        'actual_unique_submission_ids': sorted({pid for ids in actual_submissions.values() for pid in ids}),
+        'scope': 'Recorded primary-plan content, applied hash, saved actor state and actual paper identities; not a counterfactual effect or unique physical-attempt attribution.'}
+
+
+def activity_plan_proofs(session, cell):
+    code_rows = [validate_record(json.loads(line)) for line in (cell / 'code-contexts.jsonl').read_text().splitlines()] if (cell / 'code-contexts.jsonl').exists() else []
+    reports = []
+    for obs in session.projection()['observations']:
+        saved = read_portable_checkpoint(session.directory / 'observed-societies' / (obs['checkpoint_sha256'] + '.json.gz'))
+        effects = [e for e in saved['native_system']['events'] if e['event_type'] == 'native.system.research_plan_applied'
+            and obs['after_year'] < e['year'] <= obs['through_year']]
+        proofs = [proof for e in effects if (proof := primary_plan_proof(saved, e, code_rows)) is not None]
+        reports.append({'applied_plan_batches': len(effects),
+            'amendment_batches': sum(bool(e['payload']['amendments']) for e in effects),
+            'code_authored_primary_plan_batches': len(proofs), 'primary_plan_lineage': proofs,
+            'scope': 'Amendment batches are not all activity effects; a complete authored primary plan can apply with zero amendments.'})
+    return reports
+
+
 def analyze(run, *, require_complete=True, expected_source=SOURCE_COMMIT):
     run = Path(run).resolve()
     before = inventory(run)
@@ -406,8 +526,11 @@ def analyze(run, *, require_complete=True, expected_source=SOURCE_COMMIT):
             raise ValueError('actual native researcher/source/protocol/founding population differs')
     physical = response_proofs(run / 'runs/persistent-society', binding,
         [p['cumulative_response_count'] for p in proofs], complete=complete,
-        protocol=plan['protocol'], classification=classification)
+        protocol=plan['protocol'], classification=classification,
+        expected_prefixes=[o.get('response_cache_prefix') for o in view['observations']])
     code = code_proofs(run / 'runs/persistent-society', session, plan['world'])
+    for row, activity in zip(base['rows'], activity_plan_proofs(session, run / 'runs/persistent-society')):
+        row['activity_plans'] = activity
     confirmations = {c['request_sha256'] for c in view['confirmations']}
     if any(a['request_sha256'] not in confirmations for a in view['adoptions']):
         raise ValueError('actual adoption lacks durable explicit consent')
@@ -443,6 +566,7 @@ def analyze(run, *, require_complete=True, expected_source=SOURCE_COMMIT):
             'Codex/external author identity is self-reported and not authenticated; researcher weights are not trained.',
             'No new inference, generated-source execution, container invocation or scientific world is used by this audit.',
             'Partial-year replies/code contexts are counted physically but never scored as a completed observation.',
+            'The recorder has no attempt/commit identifier: replayed or unmatched physical contexts may lack unique commit attribution; see code_contexts, not an arbitrary deduplication.',
             'LLM elapsed_seconds is a saved cumulative call statistic, not total experiment wall time.']}
 
 
