@@ -2409,13 +2409,24 @@ class Simulation:
         if year == 1:
             self.rag.load_documents(num_years=corpus_years)
             self.rag.build_knowledge_index()
-        elif self.rag.documents == []:
-            # Loading documents resets statuses, so restore the checkpoint state.
-            saved_document_status = self.rag.document_status.copy()
-            self.rag.load_documents(num_years=corpus_years)
-            self.rag.build_knowledge_index()
-            self.rag.document_status = saved_document_status
-            logger.info(f"Resumed from checkpoint with {len(saved_document_status)} document statuses preserved")
+        elif not self.rag.documents or self.rag.document_embeddings is None:
+            # Corpus binding can preload documents BEFORE portable restore, but
+            # the derived tensor index is deliberately absent from checkpoints.
+            # Nonempty documents therefore do not imply a ready retrieval index.
+            # Rebuilding immutable derived data must not advance scientific RNG.
+            from utopia.runtime.checkpointing import capture_rng, restore_rng
+            rng = capture_rng()
+            try:
+                if not self.rag.documents:
+                    # Loading documents resets statuses; retain exact checkpoint
+                    # rows/order/dtypes rather than resetting submitted papers.
+                    saved_document_status = self.rag.document_status.copy()
+                    self.rag.load_documents(num_years=corpus_years)
+                    self.rag.document_status = saved_document_status
+                    logger.info(f"Resumed from checkpoint with {len(saved_document_status)} document statuses preserved")
+                self.rag.build_knowledge_index()
+            finally:
+                restore_rng(rng)
 
         # Set the current simulation year for year-based data partitioning
         self.rag.set_current_year(year)
