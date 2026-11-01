@@ -56,10 +56,12 @@ function unavailable(reason: string): Row { return { status: "unavailable", loss
 function completeRow(arm: string, generation: number, drawIndex: number, candidate: Row, candidateFingerprint: string, own: number, cross: number | null, added: string, sourceHash: string): Row {
   const throughput = arm === OBJECTIVE_IDS[0] ? own : cross;
   const utility = arm === OBJECTIVE_IDS[1] ? own : cross;
+  const suggestionId = `fixture-suggestion-${arm}-${generation}-${drawIndex}`;
+  const observationId = `fixture-observation-${arm}-${generation}-${drawIndex}`;
   return {
     arm, generation, draw_index: drawIndex, version_sha256: "e".repeat(64), strategy: `fixture-${arm}`,
-    draw: { suggestion: { suggestion_id: `fixture-${arm}-${generation}-${drawIndex}`, candidate }, assignment: {} },
-    observation: { status: "complete", loss: own, metadata: { system_fingerprint: candidateFingerprint } }, status: "complete",
+    draw: { suggestion: { suggestion_id: suggestionId, candidate }, assignment: {} },
+    observation: { observation_id: observationId, suggestion_id: suggestionId, status: "complete", loss: own, metadata: { system_fingerprint: candidateFingerprint } }, status: "complete",
     independent_metrics: { "native.accepted_decisions": { status: "measured", value: 4 } },
     cross_objective_losses: { [OBJECTIVE_IDS[0]]: throughput, [OBJECTIVE_IDS[1]]: utility },
     loss_evaluations: {
@@ -86,8 +88,9 @@ export async function objectiveStructureFixture(): Promise<ObjectiveStructureRep
   const throughputB = system("throughput-b");
   const utilityA = system("utility-a");
   const throughputRows = [
-    completeRow(OBJECTIVE_IDS[0], 0, 0, throughputA, H.throughputA, -4, 1.2, "rapid-disseminator", H.sourceA),
-    completeRow(OBJECTIVE_IDS[0], 0, 1, throughputB, H.throughputB, -4, null, "open-review-router", H.sourceB),
+    completeRow(OBJECTIVE_IDS[0], 0, 0, throughputA, H.throughputA, -3, 2, "rapid-disseminator", H.sourceA),
+    completeRow(OBJECTIVE_IDS[0], 0, 1, throughputA, H.throughputA, -4, 1.2, "rapid-disseminator", H.sourceA),
+    completeRow(OBJECTIVE_IDS[0], 0, 2, throughputB, H.throughputB, -4, null, "open-review-router", H.sourceB),
     failureRow(OBJECTIVE_IDS[0], 1, "generation-failure"),
   ];
   const utilityRows = [
@@ -97,20 +100,36 @@ export async function objectiveStructureFixture(): Promise<ObjectiveStructureRep
   const arms: Row = {
     [OBJECTIVE_IDS[0]]: {
       loss_spec: { id: OBJECTIVE_IDS[0], name: "Throughput", terms: [{ metric: "native.accepted_decisions", weight: -1 }] }, binding: { initial_system: initial },
-      rows: throughputRows, generation_failures: [throughputRows[2]], loss_path: [-4, -4, null],
-      selection: { criterion: "minimum observed bound development loss; earliest row is display representative", best_loss: -4, tie_count: 2, tied_system_fingerprints: [H.throughputA, H.throughputB], representative_system_fingerprint: H.throughputA },
+      rows: throughputRows, generation_failures: [throughputRows[3]], loss_path: [-3, -4, -4, null],
+      selection: {
+        criterion: "minimum observed bound development loss; earliest exact observation row in audited campaign order is display representative",
+        best_loss: -4, tie_count: 2, tied_system_fingerprints: [H.throughputA, H.throughputB],
+        tied_observation_ids: [`fixture-observation-${OBJECTIVE_IDS[0]}-0-1`, `fixture-observation-${OBJECTIVE_IDS[0]}-0-2`],
+        tied_suggestion_ids: [`fixture-suggestion-${OBJECTIVE_IDS[0]}-0-1`, `fixture-suggestion-${OBJECTIVE_IDS[0]}-0-2`],
+        representative_system_fingerprint: H.throughputA,
+        representative_observation_id: `fixture-observation-${OBJECTIVE_IDS[0]}-0-1`,
+        representative_suggestion_id: `fixture-suggestion-${OBJECTIVE_IDS[0]}-0-1`,
+      },
     },
     [OBJECTIVE_IDS[1]]: {
       loss_spec: { id: OBJECTIVE_IDS[1], name: "Net reviewed utility", terms: [] }, binding: { initial_system: initial },
       rows: utilityRows, generation_failures: [], loss_path: [0.7, null],
-      selection: { criterion: "minimum observed bound development loss; earliest row is display representative", best_loss: 0.7, tie_count: 1, tied_system_fingerprints: [H.utilityA], representative_system_fingerprint: H.utilityA },
+      selection: {
+        criterion: "minimum observed bound development loss; earliest exact observation row in audited campaign order is display representative",
+        best_loss: 0.7, tie_count: 1, tied_system_fingerprints: [H.utilityA],
+        tied_observation_ids: [`fixture-observation-${OBJECTIVE_IDS[1]}-0-0`],
+        tied_suggestion_ids: [`fixture-suggestion-${OBJECTIVE_IDS[1]}-0-0`],
+        representative_system_fingerprint: H.utilityA,
+        representative_observation_id: `fixture-observation-${OBJECTIVE_IDS[1]}-0-0`,
+        representative_suggestion_id: `fixture-suggestion-${OBJECTIVE_IDS[1]}-0-0`,
+      },
     },
   };
   const report: Row = {
     schema: "scienceutopia.native-objective-structure-audit.v8", classification: "scripted-fixture-not-native-results",
     status: "budget-complete-with-failures", source_commit: "9".repeat(40), raw_inventory_sha256: H.inventory, raw_file_count: 18,
-    completed_physical_worlds: 3, physical_cache_count: 3,
-    raw_campaign_summary: { planned_native_world_budget: 8, committed_draws: 4, complete_native_worlds: 3, technical_failures: 2, budget_terminal: true, status: "budget-complete-with-failures", configured_researcher_provider: "qwen3:8b", physical_reply_count: 12 },
+    completed_physical_worlds: 4, physical_cache_count: 4,
+    raw_campaign_summary: { planned_native_world_budget: 8, committed_draws: 5, complete_native_worlds: 4, technical_failures: 2, budget_terminal: true, status: "budget-complete-with-failures", configured_researcher_provider: "qwen3:8b", physical_reply_count: 16 },
     arms,
     selected_cross_objective_matrix: {
       [OBJECTIVE_IDS[0]]: { [OBJECTIVE_IDS[0]]: -4, [OBJECTIVE_IDS[1]]: 1.2 },

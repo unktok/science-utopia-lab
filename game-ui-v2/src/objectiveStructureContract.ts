@@ -54,7 +54,11 @@ export interface ObjectiveArm {
     best_loss: number | null;
     tie_count: number;
     tied_system_fingerprints: string[];
+    tied_observation_ids: string[];
+    tied_suggestion_ids: string[];
     representative_system_fingerprint: string | null;
+    representative_observation_id: string | null;
+    representative_suggestion_id: string | null;
   };
 }
 
@@ -104,6 +108,10 @@ function sha256(value: unknown, label: string): string {
 }
 function finite(value: unknown, label: string): number {
   if (typeof value !== "number" || !Number.isFinite(value)) throw new Error(`${label} must be finite`);
+  return value;
+}
+function nonemptyString(value: unknown, label: string): string {
+  if (typeof value !== "string" || !value) throw new Error(`${label} must be a non-empty string`);
   return value;
 }
 function nullableFinite(value: unknown, label: string): number | null {
@@ -164,6 +172,51 @@ function auditedFingerprint(row: Row, label: string): string {
   if (new Set([proofFingerprint, observationFingerprint, initialFingerprint, parentFingerprint]).size !== 1) throw new Error(`${label} audited fingerprint bindings differ`);
   return proofFingerprint;
 }
+
+interface CompleteRowAudit {
+  row: StructuralRow;
+  fingerprint: string;
+  observationId: string;
+  suggestionId: string;
+  ownLoss: number;
+}
+
+function completeRowAudit(row: Row, fingerprint: string, ownLoss: number, label: string): CompleteRowAudit {
+  const suggestion = object(object(row.draw, `${label} draw`).suggestion, `${label} suggestion`);
+  const observation = object(row.observation, `${label} observation`);
+  const suggestionId = nonemptyString(suggestion.suggestion_id, `${label} suggestion_id`);
+  const observationId = nonemptyString(observation.observation_id, `${label} observation_id`);
+  if (observation.suggestion_id !== suggestionId) throw new Error(`${label} observation/suggestion identity differs`);
+  return { row: row as StructuralRow, fingerprint, observationId, suggestionId, ownLoss };
+}
+
+function rowExactIdentity(row: StructuralRow): { observationId: string; suggestionId: string } | null {
+  if (row.status !== "complete") return null;
+  const observationId = row.observation?.observation_id;
+  const suggestionId = row.draw?.suggestion?.suggestion_id;
+  if (typeof observationId !== "string" || typeof suggestionId !== "string") return null;
+  return { observationId, suggestionId };
+}
+
+export function representativeRow(arm: ObjectiveArm): StructuralRow | null {
+  const observationId = arm.selection.representative_observation_id;
+  const suggestionId = arm.selection.representative_suggestion_id;
+  if (observationId === null || suggestionId === null) return null;
+  return arm.rows.find((row) => {
+    const identity = rowExactIdentity(row);
+    return identity?.observationId === observationId && identity.suggestionId === suggestionId;
+  }) ?? null;
+}
+
+export function structuralRowState(row: StructuralRow, arm: ObjectiveArm): "selected" | "tie" | "complete" | "failed" {
+  const identity = rowExactIdentity(row);
+  if (!identity) return row.status === "complete" ? "complete" : "failed";
+  if (identity.observationId === arm.selection.representative_observation_id
+      && identity.suggestionId === arm.selection.representative_suggestion_id) return "selected";
+  const tied = arm.selection.tied_observation_ids.some((observationId, index) => observationId === identity.observationId
+    && arm.selection.tied_suggestion_ids[index] === identity.suggestionId);
+  return tied ? "tie" : "complete";
+}
 function evaluationReason(value: unknown, label: string): void {
   const evaluation = object(value, label);
   if (evaluation.status === "complete") finite(evaluation.loss, `${label}.loss`);
@@ -200,7 +253,7 @@ export function parseObjectiveStructureReport(value: unknown, mode: EvidenceMode
     const rows = array(arm.rows, `${armId} rows`);
     const path = array(arm.loss_path, `${armId} loss path`);
     if (rows.length !== path.length) throw new Error(`${armId} loss path length differs`);
-    const completeFingerprints: string[] = [];
+    const completeRows: CompleteRowAudit[] = [];
     for (let index = 0; index < rows.length; index += 1) {
       const row = object(rows[index], `${armId} row ${index}`);
       if (row.arm !== armId || !Number.isInteger(row.generation) || !["complete", "technical-failure", "generation-failure"].includes(row.status)) throw new Error(`${armId} invalid row identity`);
@@ -222,33 +275,54 @@ export function parseObjectiveStructureReport(value: unknown, mode: EvidenceMode
           const expected = evaluations[objective].status === "complete" ? evaluations[objective].loss : null;
           if (losses[objective] !== expected) throw new Error(`${armId}/${objective} cross loss differs from evaluation`);
         }
-        completeFingerprints.push(candidateFingerprint);
+        completeRows.push(completeRowAudit(row, candidateFingerprint, losses[armId] as number, `${armId} row ${index}`));
       } else {
         if (losses[armId] !== null || row.observation?.loss != null || row.physical_proof !== null || row.graph_changes !== null && row.status === "generation-failure") throw new Error(`${armId} failure fabricated numerical/physical evidence`);
         if (row.status === "generation-failure" && row.draw !== null) throw new Error(`${armId} generation failure fabricated a draw`);
       }
     }
+    if (new Set(completeRows.map((row) => row.observationId)).size !== completeRows.length
+        || new Set(completeRows.map((row) => row.suggestionId)).size !== completeRows.length) {
+      throw new Error(`${armId} complete rows reuse observation or suggestion identity`);
+    }
     const failures = array(arm.generation_failures, `${armId} generation failures`);
     if (failures.some((failure) => object(failure, "generation failure").status !== "generation-failure")) throw new Error(`${armId} generation failure list is invalid`);
     const selection = object(arm.selection, `${armId} selection`);
+    nonemptyString(selection.criterion, `${armId} selection criterion`);
     const best = nullableFinite(selection.best_loss, `${armId} best loss`);
     const finiteOwn = rows.map((row) => object(row, "row").cross_objective_losses[armId]).filter((score) => typeof score === "number") as number[];
     const expectedBest = finiteOwn.length ? Math.min(...finiteOwn) : null;
     if (best !== expectedBest) throw new Error(`${armId} best loss differs from path`);
-    const tied = array(selection.tied_system_fingerprints, `${armId} tied fingerprints`);
-    if (selection.tie_count !== tied.length || (best === null) !== (selection.representative_system_fingerprint === null)) throw new Error(`${armId} tie/representative binding differs`);
-    if (best !== null) {
-      if (selection.representative_system_fingerprint !== tied[0] || tied.some((fp: unknown) => !completeFingerprints.includes(sha256(fp, `${armId} tied fingerprint`)))) throw new Error(`${armId} representative is not an observed tied system`);
+    const tiedFingerprints = array(selection.tied_system_fingerprints, `${armId} tied fingerprints`).map((fp, index) => sha256(fp, `${armId} tied fingerprint ${index}`));
+    const tiedObservationIds = array(selection.tied_observation_ids, `${armId} tied observation ids`).map((id, index) => nonemptyString(id, `${armId} tied observation id ${index}`));
+    const tiedSuggestionIds = array(selection.tied_suggestion_ids, `${armId} tied suggestion ids`).map((id, index) => nonemptyString(id, `${armId} tied suggestion id ${index}`));
+    const expectedTies = best === null ? [] : completeRows.filter((row) => row.ownLoss === best);
+    const expectedFingerprints = expectedTies.map((row) => row.fingerprint);
+    const expectedObservationIds = expectedTies.map((row) => row.observationId);
+    const expectedSuggestionIds = expectedTies.map((row) => row.suggestionId);
+    const same = (actual: string[], expected: string[]): boolean => actual.length === expected.length && actual.every((value, index) => value === expected[index]);
+    if (!Number.isInteger(selection.tie_count) || selection.tie_count !== expectedTies.length
+        || !same(tiedFingerprints, expectedFingerprints)
+        || !same(tiedObservationIds, expectedObservationIds)
+        || !same(tiedSuggestionIds, expectedSuggestionIds)) {
+      throw new Error(`${armId} exact tied row identities differ from minimum-loss campaign rows`);
+    }
+    const representativeFingerprint = selection.representative_system_fingerprint === null ? null : sha256(selection.representative_system_fingerprint, `${armId} representative fingerprint`);
+    const representativeObservationId = selection.representative_observation_id === null ? null : nonemptyString(selection.representative_observation_id, `${armId} representative observation id`);
+    const representativeSuggestionId = selection.representative_suggestion_id === null ? null : nonemptyString(selection.representative_suggestion_id, `${armId} representative suggestion id`);
+    const expectedRepresentative = expectedTies[0] ?? null;
+    if (representativeFingerprint !== (expectedRepresentative?.fingerprint ?? null)
+        || representativeObservationId !== (expectedRepresentative?.observationId ?? null)
+        || representativeSuggestionId !== (expectedRepresentative?.suggestionId ?? null)) {
+      throw new Error(`${armId} representative is not the earliest exact tied row`);
     }
     const matrixRow = matrix[armId];
-    if (selection.representative_system_fingerprint === null) {
+    if (representativeObservationId === null) {
       if (matrixRow !== null) throw new Error(`${armId} matrix must be null without a representative`);
     } else {
       const matrixValues = object(matrixRow, `${armId} selected matrix row`);
-      const representative = rows.find((row, index) => object(row, "row").status === "complete"
-        && auditedFingerprint(object(row, "row"), `${armId} representative candidate ${index}`) === selection.representative_system_fingerprint);
-      if (!representative) throw new Error(`${armId} representative row missing`);
-      for (const objective of OBJECTIVE_IDS) if (matrixValues[objective] !== representative.cross_objective_losses[objective]) throw new Error(`${armId}/${objective} selected matrix differs`);
+      if (!expectedRepresentative) throw new Error(`${armId} representative row missing`);
+      for (const objective of OBJECTIVE_IDS) if (matrixValues[objective] !== expectedRepresentative.row.cross_objective_losses[objective]) throw new Error(`${armId}/${objective} selected matrix differs`);
     }
   }
   if (!Array.isArray(data.claims) || !data.claims.some((claim: unknown) => typeof claim === "string" && claim.includes("no held-out"))) throw new Error("Truth-boundary claims are absent");

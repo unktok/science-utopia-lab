@@ -1,5 +1,5 @@
 import {
-  OBJECTIVE_IDS, parseObjectiveStructureReceipt, parseObjectiveStructureReport, sha256Text, verifyFixtureReport,
+  OBJECTIVE_IDS, parseObjectiveStructureReceipt, parseObjectiveStructureReport, representativeRow, sha256Text, structuralRowState, verifyFixtureReport,
   type ObjectiveArm, type ObjectiveId, type ObjectiveStructureReport, type Row, type StructuralRow,
 } from "./objectiveStructureContract";
 import { objectiveStructureFixture } from "./objectiveStructureFixture";
@@ -31,13 +31,7 @@ function rowFingerprint(row: StructuralRow): string | null {
     ?? row.graph_changes?.vs_parent?.to_fingerprint
     ?? null;
 }
-function rowState(row: StructuralRow, objective: ObjectiveId): string {
-  const selection = report.arms[objective].selection;
-  const fingerprint = rowFingerprint(row);
-  if (fingerprint && fingerprint === selection.representative_system_fingerprint) return "selected";
-  if (fingerprint && selection.tied_system_fingerprints.includes(fingerprint)) return "tie";
-  return row.status === "complete" ? "complete" : "failed";
-}
+function rowObservationId(row: StructuralRow): string | null { return row.status === "complete" ? row.observation?.observation_id ?? null : null; }
 function statusCopy(row: StructuralRow): string {
   if (row.status === "complete") return `LOSS ${score(row.cross_objective_losses[row.arm])}`;
   if (row.status === "generation-failure") return "GENERATION FAILED / ZERO DRAWS";
@@ -49,10 +43,10 @@ function renderPaths(): void {
   el("objective-lines").innerHTML = OBJECTIVE_IDS.map((objective) => {
     const objectiveArm = report.arms[objective]; const meta = labels[objective];
     const stations = objectiveArm.rows.map((row, index) => {
-      const state = rowState(row, objective); const pressed = selectedArm === objective && selectedIndex === index;
+      const state = structuralRowState(row, objectiveArm); const pressed = selectedArm === objective && selectedIndex === index;
       return `<button type="button" class="path-station" data-arm="${objective}" data-index="${index}" data-state="${state}" aria-pressed="${pressed}">
         <span>G${row.generation}${row.draw_index === undefined ? "" : ` · D${row.draw_index + 1}`}</span><i></i><strong>${esc(statusCopy(row))}</strong>
-        <small>${row.status === "complete" ? `SYSTEM ${esc(short(rowFingerprint(row), 15))}` : row.status === "generation-failure" ? "INVALID VOCABULARY · NO CANDIDATE" : "NO COMPLETE NATIVE ENDPOINT"}</small>
+        <small>${row.status === "complete" ? `OBS ${esc(short(rowObservationId(row), 11))} · SYSTEM ${esc(short(rowFingerprint(row), 11))}` : row.status === "generation-failure" ? "INVALID VOCABULARY · NO CANDIDATE" : "NO COMPLETE NATIVE ENDPOINT"}</small>
       </button>`;
     }).join("");
     return `<article class="objective-line" data-accent="${meta.accent}">
@@ -117,8 +111,8 @@ function unavailableReason(row: StructuralRow, objective: ObjectiveId): string {
 function renderCrossscores(): void {
   const matrix = report.selected_cross_objective_matrix;
   el("crossscore-grid").innerHTML = `<div class="matrix-corner"><span>SELECTED UNDER ↓</span><b>RESCORED AS →</b></div>${OBJECTIVE_IDS.map((id) => `<div class="matrix-head"><span>${labels[id].short}</span><b>${labels[id].formula}</b></div>`).join("")}${OBJECTIVE_IDS.map((source) => {
-    const row = report.arms[source].rows.find((value) => rowFingerprint(value) === report.arms[source].selection.representative_system_fingerprint);
-    return `<div class="matrix-label"><span>${labels[source].short}</span><b>${row ? short(rowFingerprint(row), 15) : "NO REPRESENTATIVE"}</b><small>${report.arms[source].selection.tie_count > 1 ? `EARLIEST OF ${report.arms[source].selection.tie_count} TIED` : "DEVELOPMENT REPRESENTATIVE"}</small></div>${OBJECTIVE_IDS.map((target) => {
+    const row = representativeRow(report.arms[source]);
+    return `<div class="matrix-label"><span>${labels[source].short}</span><b>${row ? short(rowObservationId(row), 15) : "NO REPRESENTATIVE"}</b><small>${report.arms[source].selection.tie_count > 1 ? `EARLIEST EXACT OBSERVATION OF ${report.arms[source].selection.tie_count} TIED` : "DEVELOPMENT REPRESENTATIVE OBSERVATION"}</small></div>${OBJECTIVE_IDS.map((target) => {
       const value = matrix[source]?.[target] ?? null; const reason = value === null && row ? unavailableReason(row, target) : "";
       return `<div class="matrix-cell" data-null="${value === null}" data-own="${source === target}"><span>${source === target ? "OWN LOSS" : "SAME-WORLD CROSS-SCORE"}</span><strong>${score(value)}</strong><small>${value === null ? esc(reason) : esc(labels[target].formula)}</small></div>`;
     }).join("")}`;
@@ -163,7 +157,8 @@ async function boot(): Promise<void> {
   mode = fixtureRequested ? "fixture" : "actual";
   try {
     report = fixtureRequested ? await verifyFixtureReport(await objectiveStructureFixture()) : await loadActual();
-    const first = report.arms[selectedArm].rows.findIndex((row) => row.status === "complete"); selectedIndex = first < 0 ? 0 : first;
+    const representative = representativeRow(report.arms[selectedArm]);
+    selectedIndex = representative ? report.arms[selectedArm].rows.indexOf(representative) : 0;
     el("truth-badge").textContent = mode === "fixture" ? "LABELLED UI FIXTURE" : "AUDITED ACTUAL DEVELOPMENT";
     el("truth-badge").setAttribute("data-mode", mode);
     el("evidence").removeAttribute("hidden"); renderAll();
