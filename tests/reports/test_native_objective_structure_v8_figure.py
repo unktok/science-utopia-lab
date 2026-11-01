@@ -85,6 +85,25 @@ def test_result_independent_methods_flow_renders_without_empirical_inputs(tmp_pa
     assert set(manifest['outputs']) == {'pdf', 'png', 'svg'}
 
 
+def test_different_loss_units_have_distinct_plot_axes(tmp_path, monkeypatch):
+    from scripts.figures import native_objective_structure_v8 as plotting
+    figures = []
+    close = plotting.plt.close
+
+    def record_close(figure):
+        if hasattr(figure, 'axes'):
+            figures.append(figure)
+        close(figure)
+
+    monkeypatch.setattr(plotting.plt, 'close', record_close)
+    create(report(), tmp_path/'qa'/'separate-units')
+    paths = [axis for axis in figures[-1].axes if axis.get_ylabel() == 'Own loss']
+    assert len(paths) == 2
+    assert 'Throughput' in paths[0].get_title(loc='left')
+    assert 'Reviewed utility' in paths[1].get_title(loc='left')
+    assert paths[0].get_shared_y_axes().joined(*paths) is False
+
+
 def test_scripted_fixture_cannot_generate_neurips_paper_slice(tmp_path):
     value = report()
     results = create(value, tmp_path/'results'/'figure')
