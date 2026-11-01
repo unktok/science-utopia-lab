@@ -26,6 +26,11 @@ replicate scale-up are deferred.
   or a claim that peer scores measure scientific value. A reject-all solution
   is legal if that is what this declared proxy rewards. No fairness, activity,
   quality or promotion veto is added.
+- Objective selection is not blind to earlier development evidence: the old
+  source-only v3 probe had raw review means3. The publication charge3.25 was
+  chosen before v5 to make an explicit competing preference visible at small
+  scale. Thus a contrasting ordering is an illustrative engineering test, not
+  an independently discovered normative trade-off or held-out hypothesis.
 - Each arm: one initial system plus **two** adaptive proposal slots. Each slot
   permits at most **three** technical drafts, temperature0.2,4096 output tokens.
   Invalid draft loss is null. Exhaustion halts that arm, preserving receipts;

@@ -30,6 +30,7 @@ def main():
     parser.add_argument('--budget', type=int, default=3, help='initial plus adaptive candidates per loss')
     parser.add_argument('--max-technical-drafts', type=int, default=3)
     parser.add_argument('--max-tokens', type=int, default=4096)
+    parser.add_argument('--authoring-format', choices=['scoped-v5', 'boundary-v5a2'], default='scoped-v5')
     args = parser.parse_args()
     if not 2 <= len(args.loss) <= 4 or not 2 <= args.budget <= 4:
         parser.error('bounded pilot requires 2..4 losses and 2..4 systems per loss')
@@ -65,6 +66,9 @@ def main():
         'population': 'five-independent-balanced-researchers',
         'designer': 'Qwen3:8b-scoped-free-Python-and-explicit-graph-v5',
         'no_hidden_merit_or_promotion_veto': True}
+    if args.authoring_format != 'scoped-v5':
+        protocol.update(authoring_format=args.authoring_format,
+            designer='Qwen3:8b-alias-aligned-free-Python-and-explicit-graph-v5a2')
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache,
         years=args.years, corpus_years=args.corpus_years,
         experiment_binding=protocol, record_wire=True, record_code=True,
@@ -132,7 +136,11 @@ def main():
                         'objective_campaign_binding': c.binding, 'protocol': protocol}})
             serialize_native_http(model, args.inference_lock)
             designers.append(model)
-            proposers.append(NativeRegionIRProposer(model, executor,
+            proposer_class = NativeRegionIRProposer
+            if args.authoring_format == 'boundary-v5a2':
+                from utopia.optimization.native_region_proposer_v5a2 import NativeBoundaryRegionProposer
+                proposer_class = NativeBoundaryRegionProposer
+            proposers.append(proposer_class(model, executor,
                 removed_nodes=['world.selection'], context_provider=context,
                 receipts=args.output / 'arms' / arm / 'design-proposals',
                 max_attempts=args.max_technical_drafts, max_tokens=args.max_tokens,
