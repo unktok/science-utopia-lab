@@ -25,3 +25,29 @@ orchestration checks, not model-backed native results. Shared data cache in main
 probe; use it instead of writing inside historical frozen experiment trees.
 The existing shared inference lock is `outputs/native-parallel-v3-inference.lock`
 in main. No v8 native inference has started at this entry.
+
+## Reviewed execution pin and setup
+
+Independent pre-inference review catches two fail-closed requirements: exact
+canonical losses must be checked before factory access, and evidence
+classification must be bound explicitly, including failed-only results. Both
+are fixed at425ec10 and11 runner/v7 checks pass in0.69s. Instructions also clarify
+that retaining original researchers/scientific state does NOT force every legacy
+institution to exist: review/selection/funding may be replaced or omitted with
+explicit executable downstream contracts. No new institution ID is mandatory.
+
+Clean detached experiment `native-objective-structure-v8-a1` pins425ec10. Inbox
+setup is repeated idempotently, with ZERO worlds and ZERO scientist replies;
+it is not an extra trial or failed scientific experiment. Both arm generation0
+requests are now immutable. Shared main corpus cache is reused without writing
+historical experiment data. Actual Qwen3:8B model digest remains
+`500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41`.
+Offline HF cache flags prevent incidental model/data downloads; Ollama is the
+existing local service. Clean pinned full software regression runs separately.
+
+The response-fidelity specialist finds a real raw-review→int parser boundary.
+Its new representation will retain that actual hard forward behavior and
+explicitly distinguish raw-response change, post-parse numeric change,
+conditional institution calculus and native output discrepancy. Local response
+fitting uses calibration-only data; unused endpoint checks cannot select the
+representation. Scripted provider verification is not actual-Qwen fidelity.

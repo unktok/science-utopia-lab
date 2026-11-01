@@ -1,9 +1,10 @@
 """Runner orchestration/reporting units, never native scientific evidence."""
 from types import SimpleNamespace
+import fcntl
 
 import pytest
 
-from scripts.run_native_objective_structure_v8 import ROOT, advance_arms, summarize, load_preregistered_losses
+from scripts.run_native_objective_structure_v8 import ROOT, advance_arms, summarize, load_preregistered_losses, main
 from utopia.optimization.native_manifest_inbox import ExternalAuthoringPending
 
 
@@ -41,6 +42,19 @@ def test_only_exact_preregistered_objectives_are_accepted_before_factory_access(
 def test_classification_must_be_explicit_even_without_completed_native_worlds(tmp_path):
     with pytest.raises(KeyError, match='classification'):
         summarize(tmp_path, {'world': {'source_commit': 'unit-only'}}, {'a': campaign(), 'b': campaign()})
+
+
+def test_single_writer_rejected_before_any_factory_or_inbox_access(tmp_path, monkeypatch):
+    monkeypatch.setattr('sys.argv', ['runner', '--output', str(tmp_path), '--data-cache', 'absent',
+        '--inference-lock', str(tmp_path / 'http.lock'), '--loss', 'absent1', '--loss', 'absent2'])
+    monkeypatch.setattr('scripts.run_native_objective_structure_v8.subprocess.check_output', lambda *a, **kw: b'')
+    def unexpected_factory_access(args):
+        raise AssertionError('writer rejection must happen before factory/inbox access')
+    monkeypatch.setattr('scripts.run_native_objective_structure_v8.run', unexpected_factory_access)
+    with (tmp_path / 'pilot-writer.lock').open('a') as owner:
+        fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        with pytest.raises(RuntimeError, match='another native objective/structure writer'):
+            main()
 
 
 def test_pending_arm_does_not_block_other_arm_or_trigger_repeated_authoring(tmp_path):
