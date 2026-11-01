@@ -2,6 +2,19 @@
 
 Updated: 2026-11-02
 
+## ACTIVE: objective-conditioned structure and native-response fidelity v8
+
+User approves thorough continuation of the original goals, not population/seed
+scale-up. [Acceptance tracks](milestones/2026-11-02-objective-structure-and-response-v8.md)
+and [pre-inference protocol](protocols/campaigns/native-objective-structure-v8.md).
+Two exact illustrative objectives condition free source/node/protocol/wiring
+generation; two generations/two IID draws per objective means eight native
+worlds maximum. Original five authors/two years/seed42/fixed Qwen3:8B remain.
+Latest v7's unchanged live19/27 graph is not relabelled structural exploration.
+Native-response-aware derivative refinement is developed separately with
+scripted provider original-world QA, not counted as actual-Qwen evidence.
+Independent audit/graphics is a third active track. No v8 live result yet.
+
 ## Completed: non-scale implementation closure v7
 
 The user correctly rejects v6 as completion of all feasible pre-scale work.
