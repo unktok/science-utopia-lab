@@ -2,14 +2,17 @@
 
 Updated: 2026-11-01
 
-## Active goal: non-scale completion v6
+## Completed finite integration goal: non-scale v6
 
 User requests autonomous completion of the non-scale capabilities before any
 population/seed-count expansion. [Acceptance gates and ownership](milestones/2026-11-01-non-scale-completion-v6.md).
-Work is isolated in `feature/non-scale-integration-v6`; the v5 results below
-remain historical evidence, not newly relabelled v6 experiments.
+The v6 source/evidence is consolidated and verified; frozen execution pins stay separate.
+The v5 results below remain historical evidence, not newly relabelled experiments.
+This closes the finite execution/interface gates, **not all non-scale research**;
+the remaining native semantics, pathwise gradients and designer-improvement
+frontiers remain ahead of any scale-up. See the milestone's explicit boundaries.
 
-- Typed native research activities are implemented in a reviewed feature branch:
+- Typed native research activities are integrated in the reviewed v6 branch:
   plans, actor references and actual paper bundles replace four private-frame
   transports in an opt-in graph. Six-year original scientific-state/request
   equivalence and consequential changed submissions pass scripted native QA.
@@ -22,18 +25,39 @@ remain historical evidence, not newly relabelled v6 experiments.
   UI completion requires an independently restored actual saved migration, not
   a successful HTTP dispatch or a journal acknowledgement alone. Related
   session/migration/queue tests pass41 checks at the integration source.
-- Factorized code/protocol/edge policy gradients and the live-session UI are in
-  separate implementation/verification tracks. Their software QA is not a live
-  Qwen institutional effect or an optimization-benefit result.
+- Factorized arbitrary code/protocol/edge edit choices have exact joint policy
+  score backward, static whole-grammar validation, full-native-cost campaign
+  updates and cold-restart QA. Eight six-year worlds use scripted replies; this
+  is not a new live-Qwen gradient result or full-world pathwise differentiation.
 - The first live single-society pilot completes year1, external authorship and
   real browser consent -> durable adoption, then fails in year2 real RAG retrieval
   because a cold embedding index was not rebuilt. There are29 actual Qwen replies
   (24 saved-year +5 partial-year), one adoption, loss path[0] and NO year2 score.
-  The old source/raw remain immutable. A separate infrastructure fix/real-RAG
-  regression and clean-pinned a2 retry are being prepared, not a silent repair
-  of the old run or an extra designer draft. [Preserved failure](results/native-society-v6-a1.md).
-  A real browser receipt-display overwrite is also fixed separately. The goal
-  remains ACTIVE; implementation QA is not substituted for a complete pilot.
+  The old source/raw remain immutable. A separate real-RAG fix/retry is not a
+  silent repair or extra a1 draft. [Preserved failure/audit](results/native-society-v6-a1.md).
+- **Corrected actual same-society pilot COMPLETE.** Clean source d68589f runs
+  one society for three years, two exact externally authored code/protocol/wiring
+  revisions,130 researcher replies and losses `[0,-5,-5]`. All36 raw files stay
+  unchanged under independent audit. Four code receipts match four committed
+  events; the final complete primary plan joins all five actual actor states to
+  five actual papers. This is an online lifecycle, not causal benefit, scientific
+  value or Qwen-designed invention. [Result](results/native-society-v6-a2.md).
+- **Actual browser consent/receipt proof COMPLETE.** Two exact consent POSTs,
+  two independently restored saved receipts, three observed intervals, no reload
+  duplicate POST/browser error/mobile overflow. Temporary browser/server stopped;
+  they are not described as continuing background work.
+- A separate interruption regression discovers and fixes ahead-of-checkpoint
+  response replay. New observations pin original reply prefixes; only already
+  observed/adopted boundaries allow the verified transport tail. Scientific-state
+  comparison and new adoption stay strict. The auditor retains every physical
+  attempt and explicitly qualifies ambiguous attribution instead of deduplicating
+  it. These prospective source fixes are NOT relabelled as used in frozen a2.
+- Final clean replay-hardened source b130ccd passes1383 Python tests with6
+  explicit environment/optional skips (480.03s). The unchanged runtime tree is
+  retained in paper source5a14dfd. Its report suite passes84, including12 new
+  figure checks; those counts overlap and must not be added. UI passes163 tests
+  and production build. The updated26-page paper includes actual graphs/UI and
+  all-page visual QA. [Source/JUnit/artifact verification](results/non-scale-completion-v6-verification.json).
 
 ## Objective-conditioned design v5
 

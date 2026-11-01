@@ -1,4 +1,4 @@
-# Non-scale completion v6 — active goal
+# Non-scale completion v6 — finite integration completed
 
 User direction, 2026-11-01: complete the remaining non-scale capabilities before
 increasing population, seed counts or statistical replication. The native
@@ -48,4 +48,57 @@ outcomes to any external proposer; the controller does not invent a policy or
 claim improvement. Tests currently in progress use original native scientific
 phases with scripted corpus/retrieval/HTTP, explicitly not live Qwen invention.
 
-No v6 live execution or completed gate is claimed by this initial plan.
+The paragraphs above retain the initial work plan. Current evidence follows.
+
+## Implementation and small-scale evidence
+
+- Typed native activity contracts retain six-year original-state/request
+  equivalence and expose consequential free-source plan effects.
+- Factorized component-code/protocol/edge choices compile atomically and pass
+  exact expectation/score/finite-difference checks plus eight full six-year
+  scripted-native campaign executions. No new live-Qwen factorized update is
+  claimed; the earlier actual score-gradient result remains separately labelled.
+- [Actual a2](../results/native-society-v6-a2.md) completes one three-year society,
+  two free-source/protocol/wiring revisions and130 researcher replies, loss
+  `[0,-5,-5]`. Independent audit preserves36 raw files, four actual code receipts
+  and all actor/scientific lineage. A1's real failure is retained separately.
+- Actual English UI confirms both exact requests and independently verifies both
+  saved migration receipts after reload. It shows three intervals with no causal
+  claim. No browser/server/native inference process from this pilot is left running.
+- Independent interruption QA additionally exposes and fixes response-tail replay.
+  New prefix proofs permit only idempotent observation after an already installed
+  design, with all scientific state still equal; adoption remains strict.
+  Replayed physical contexts remain auditable without invented attempt identity.
+
+All five finite integration gates now have implementation and scoped evidence.
+Final clean replay-hardened source b130ccd passes1383 tests/6 skips; the paper
+source5a14dfd retains its identical runtime tree and passes84 report tests
+(including12 new figure tests). UI passes163 tests/build; the26-page working
+paper is rendered and visually inspected. Counts overlap, not independent runs.
+See [verification](../results/non-scale-completion-v6-verification.json) for
+source pins, actual audit hashes and explicit skipped environments.
+
+## What remains non-scale research, not a completed claim
+
+The v6 gate is **executable integration**, not all conceivable research. The
+following cannot be solved just by adding researchers or seeds:
+
+1. Native effect consumers still define which kinds of real action exist.
+   Arbitrary institution code/protocols do not automatically invent a new actor,
+   paper-production law, collaboration behavior or event scheduler. Opening those
+   semantics while retaining the original world is a distinct implementation task.
+2. The factorized gradient learns supplied component alternatives, not their
+   source contents. Faithful conditional soft operators, exact score gradients
+   and a failed transition surrogate are separate. Full native/LLM input-response
+   pathwise backward and open source-content differentiation remain unachieved.
+3. External specialists can synthesize/revise arbitrary institutions; local Qwen
+   joint-generation failures remain. A useful, nontrivial objective-conditioned
+   discovery and a designer improving its own design strategy are not established
+   by the count policy or by adding a protocol/node.
+4. The UI is a functional game-like research interface. A full management-game
+   experience is optional future product work, not needed to call the UI useful.
+5. Richer defensible objectives and causal scientific meaning remain research
+   choices/evidence. They must not become hidden vetoes outside the declared loss.
+
+These frontiers remain ahead of scale-up; closing this finite integration goal
+does not authorize population/seed expansion or declare them finished.

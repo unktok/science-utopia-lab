@@ -56,10 +56,11 @@ controller binds that hash and request ID, rejects duplicate/reordered work,
 keeps backend `pending` polls pending, and completes only when an `adopted`
 response matches both identities and carries `verified_receipt=true` plus a
 valid 64-hex durable migration-receipt hash. State and delivery decisions use
-the session API's record-shaped contracts. The shipped page has no transport,
-keeps confirmation and submission disabled, and reports `UNAVAILABLE`; this
-historical v5 snapshot is not a live session and cannot install its selected
-system directly.
+the session API's record-shaped contracts. The historical v5 panel has no live
+adoption target, keeps its installation control disabled, and reports
+`UNAVAILABLE`; selecting an archived system cannot install it directly. The
+separate continuity console below provides transport only for a configured
+actual same-society session.
 The existing `/native-api/jobs` path creates fresh worlds and is deliberately
 not reused as same-society adoption.
 
@@ -90,9 +91,9 @@ society API is shown as unavailable.
 confirmation controls are disabled and browser QA asserts that it sends zero
 society POST requests. The fixture exercises interval, staged-request and
 migration-lineage rendering only; its loss values and receipts are not research
-evidence. No actual persistent-society Qwen pilot result exists in this UI
-change, so the page makes no adoption, causal-improvement or trained-weights
-claim.
+evidence. The initial UI implementation alone provided no actual society result;
+the later actual pilot is recorded separately below. Neither is evidence of
+causal improvement or trained researcher weights.
 
 ## Local verification
 
@@ -106,4 +107,24 @@ overflow.
 - `game-ui-v2/screenshots/noctiluca-design-chronicle-two-node.png`
 - `game-ui-v2/screenshots/noctiluca-same-society-session-fixture.png`
 - `game-ui-v2/screenshots/noctiluca-design-chronicle-v5-qa.json`
+
+## Actual continuing-society browser proof
+
+The [v6 a2 pilot](../results/native-society-v6-a2.md), clean source d68589f,
+completes three actual intervals with loss `[0,-5,-5]` and two code/protocol/wiring
+adoptions. The real loopback page sends one exact consent POST per boundary;
+a separately resumed worker performs each migration. Final full reload verifies
+both saved receipts and displays three intervals, without duplicate POST,
+browser errors or desktop/mobile overflow. This is not fixture evidence, a
+fresh-world comparison or causal benefit. Researcher weights remain fixed.
+
+- `game-ui-v2/screenshots/noctiluca-same-society-v6-a2.png`: actual overview.
+- `game-ui-v2/screenshots/noctiluca-same-society-v6-a2-panel.png`: readable continuity capture.
+- `game-ui-v2/screenshots/noctiluca-same-society-v6-a2-qa.json`: actual checks.
+- `research/results/native-society-v6-a2-ui-checksums.json`: original capture/raw hashes.
+
+The owned server and Chrome are stopped; the temporary profile is recoverably
+in Trash. Raw evidence and detached experiment source are unchanged. The final
+integration's163 UI tests and production build pass; the existing large Phaser
+replay-bundle warning is not misreported as a new build error or zero warnings.
 
