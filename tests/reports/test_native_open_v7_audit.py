@@ -8,7 +8,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from scripts.analyze_native_open_v7 import analyze, authoring_proofs, code_proofs, context_input_proofs, domain_proofs, _inventory, FIXTURE
+from scripts.analyze_native_open_v7 import analyze, authoring_proofs, code_proofs, context_input_proofs, derivative_diagnostics, domain_proofs, _inventory, FIXTURE
 from scripts.run_native_open_pilot_v7 import summarize
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign, InboxVocabularyGenerator
 from utopia.optimization.native_manifest_inbox import ManifestInbox, ExternalAuthoringPending
@@ -248,6 +248,26 @@ def test_generic_store_artifact_lineage_is_resolved_inside_each_mechanism_state(
     kernel.graph_checkpoint['mechanism_states']['actual-store-node']['declared_artifacts'] = {}
     with pytest.raises(ValueError, match='dangling'):
         domain_proofs(saved, kernel)
+
+
+def test_derivative_diagnostic_failures_are_recomputed_without_loss_or_fake_gradient(monkeypatch):
+    system = open_native_system(IMAGE)
+    passed = {'status': 'passed', 'native_loss_gradient_verified': False, 'full_native_world_autograd': False}
+    monkeypatch.setattr('scripts.analyze_native_open_v7.boundary_coverage', lambda *a: passed)
+    monkeypatch.setattr('scripts.analyze_native_open_v7.native_tensor_trace', lambda *a: [])
+    def fail(*a, **k):
+        raise ValueError('intentional diagnostic-only fixture; not a native cost')
+    monkeypatch.setattr('scripts.analyze_native_open_v7.conditional_backward', fail)
+    coverage, backward = derivative_diagnostics(system, [])
+    assert coverage == passed and backward['status'] == 'failed-diagnostic'
+    assert backward['error_type'] == 'ValueError'
+    assert not {'loss', 'gradient'} & backward.keys()
+    assert backward['native_loss_gradient_verified'] is backward['full_native_world_autograd'] is False
+    monkeypatch.setattr('scripts.analyze_native_open_v7.boundary_coverage', fail)
+    monkeypatch.setattr('scripts.analyze_native_open_v7.conditional_backward', lambda *a, **k: passed)
+    coverage, backward = derivative_diagnostics(system, [])
+    assert coverage['status'] == 'failed-diagnostic' and backward == passed
+    assert not {'loss', 'gradient'} & coverage.keys()
 
 
 def test_inventory_rejects_symlink_and_never_reads_outside_raw(tmp_path):

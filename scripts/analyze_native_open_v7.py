@@ -276,6 +276,29 @@ def context_input_proofs(cell, saved):
         'proofs': rows, 'scope': 'Exact persisted delivered message occurs in actual completed HTTP input; not evidence of beneficial interpretation or scientific utility.'}
 
 
+def derivative_diagnostics(system, events):
+    """Recompute diagnostic failures without erasing an independently measured cost.
+
+    Connected historical reports retain their exact old JSON. This does not
+    convert an unavailable opaque/native derivative into a zero gradient.
+    """
+    def failed(error):
+        return {'status': 'failed-diagnostic', 'error_type': type(error).__name__, 'error': str(error),
+            'native_loss_gradient_verified': False, 'full_native_world_autograd': False}
+    try:
+        coverage = boundary_coverage(system, events)
+    except Exception as error:
+        coverage = failed(error)
+    try:
+        programs = {n.mechanism_id: n.parameters['program'] for n in system.mechanisms if n.implementation == 'program.tensor.v1'}
+        backward = conditional_backward(native_tensor_trace(events), programs,
+            trainable={'addressed-selection': ['bias']},
+            terms=[{'mechanism': 'open-memory-router', 'output': 'actions', 'coefficient': -1.}])
+    except Exception as error:
+        backward = failed(error)
+    return coverage, backward
+
+
 def audit_native_run(root, draw, observation, evidence, world, classification):
     system = SystemSpec.from_dict(draw['suggestion']['candidate'])
     checkpoint = Path(evidence['checkpoint_path']).resolve()
@@ -348,16 +371,13 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
     NativeScienceKernel(system, checkpoint=initial['native_system'])
     if classification != FIXTURE and len(initial_authors) != 5:
         raise ValueError('actual original initialized population is not five researchers')
-    programs = {n.mechanism_id: n.parameters['program'] for n in system.mechanisms if n.implementation == 'program.tensor.v1'}
-    backward = conditional_backward(native_tensor_trace(kernel.events), programs,
-        trainable={'addressed-selection': ['bias']},
-        terms=[{'mechanism': 'open-memory-router', 'output': 'actions', 'coefficient': -1.}])
+    coverage, backward = derivative_diagnostics(system, kernel.events)
     return {'measurement': measurement, 'native_loss': evaluate_loss(joint_engineering_loss(), [measurement])['loss'],
         'physical_initial_identity': physical_initial_identity(initial),
         'response_proof': response, 'code_proof': code, 'native_counts': domain_proofs(saved, kernel, code_rows),
         'context_input_proof': context_input_proofs(cell, saved),
         'annual_checkpoints': annual,
-        'boundary_coverage': boundary_coverage(system, kernel.events), 'conditional_backward': backward,
+        'boundary_coverage': coverage, 'conditional_backward': backward,
         'checkpoint_sha256': file_sha256(checkpoint), 'actual_author_count': len([a for a in saved['ecosystem_data']['agents'] if a['can_author']]),
         'initial_roster': {'author_count': len(initial_authors), 'total_actor_count': len(initial['ecosystem_data']['agents']),
             'actor_ids_sha256': digest(sorted(a['id'] for a in initial['ecosystem_data']['agents'])),
