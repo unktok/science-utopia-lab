@@ -51,14 +51,28 @@ def test_online_loss_proposal_adoption_feedback_and_original_config_resume(tmp_p
         request = controller.stage(parent_observation_id=observation['observation_id'],
             patch=patch_to(parent, target), authoring={'identity': 'scripted-QA-designer',
                 'feedback_observation_ids': [o['observation_id'] for o in observed]})
+        assert controller.adoption_status(request['request_id'], checkpoint=path)['status'] == 'pending'
+        pending = controller.confirm(request_id=request['request_id'], confirmed_request_sha256=request['request_sha256'])
+        assert pending['status'] == 'pending'
+        assert len(controller.projection()['adoptions']) == len(installed)
+        assert controller.confirm(request_id=request['request_id'], confirmed_request_sha256=request['request_sha256']) == pending
         before, rng = domain(sim), capture_rng()
         with pytest.raises(ValueError, match='confirmation'):
             controller.adopt(sim, request_id=request['request_id'], confirmed_request_sha256='0' * 64)
+        pre_adoption_kernel = sim.native_system
         receipt = controller.adopt(sim, request_id=request['request_id'],
             confirmed_request_sha256=request['request_sha256'])
         assert domain(sim) == before and capture_rng() == rng
         assert receipt == controller.adopt(sim, request_id=request['request_id'],
             confirmed_request_sha256=request['request_sha256'])
+        verified = controller.adoption_status(request['request_id'], checkpoint=path)
+        assert verified['status'] == 'adopted' and verified['verified_receipt']
+        assert verified['migration_receipt_sha256'] == receipt['migration_receipt_sha256']
+        assert controller.adoption_status(request['request_id'])['status'] == 'pending'
+        from types import SimpleNamespace
+        with controller._lock():
+            with pytest.raises(ValueError, match='acknowledged adoption'):
+                controller._reconcile(controller._read(), SimpleNamespace(native_system=pre_adoption_kernel))
         installed.append(request['request_sha256'])
 
     sim.checkpoint_callback = boundary

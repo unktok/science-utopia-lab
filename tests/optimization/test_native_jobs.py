@@ -136,3 +136,45 @@ def test_loopback_api_rejects_cross_origin_host_and_missing_token(tmp_path, monk
         assert requests.get(base + '/native-api/jobs/' + created.json()['job_id'], headers={'X-Native-Lab-Token': token}, timeout=5).json()['status'] == 'queued'
     finally:
         server.shutdown(); server.server_close(); thread.join(timeout=5)
+
+
+def test_society_confirmation_transport_never_executes_or_claims_adoption(tmp_path, monkeypatch):
+    """Transport fixture; actual saved receipt verification has native QA elsewhere."""
+    path = Path(__file__).resolve().parents[2] / 'scripts/serve_native_lab.py'
+    spec = importlib.util.spec_from_file_location('native_society_server', path)
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    monkeypatch.setattr(module, 'pinned_revision', lambda root: REVISION)
+    calls = []
+    class Session:
+        def projection(self):
+            return {'schema': 'scienceutopia.native-society-design-session.v1', 'fixture': True}
+        def confirm(self, *, request_id, confirmed_request_sha256):
+            if request_id != 'qa-request' or confirmed_request_sha256 != 'b' * 64:
+                raise ValueError('exact pending request required')
+            calls.append(('consent-only', request_id))
+            return {'status': 'pending', 'request_id': request_id, 'request_sha256': confirmed_request_sha256}
+        def adoption_status(self, request_id, *, checkpoint):
+            assert checkpoint is None
+            return {'status': 'pending', 'request_id': request_id, 'request_sha256': 'b' * 64,
+                    'verified_receipt': False}
+    server = module.make_server(NativeJobQueue(tmp_path / 'queue'), source_commit=REVISION,
+        directory=tmp_path, port=0, society_session=Session())
+    thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+    base = f'http://127.0.0.1:{server.server_port}'
+    try:
+        token = requests.get(base + '/native-api/session', timeout=5).json()['token']
+        headers = {'Origin': base, 'X-Native-Lab-Token': token}
+        assert requests.get(base + '/native-api/society', timeout=5).status_code == 403
+        assert requests.get(base + '/native-api/society', headers=headers, timeout=5).json()['fixture']
+        body = {'request_id': 'qa-request', 'confirmed_request_sha256': 'b' * 64}
+        assert requests.post(base + '/native-api/society/confirm', json=body, timeout=5).status_code == 403
+        rejected = requests.post(base + '/native-api/society/confirm',
+            json={**body, 'checkpoint': '/request-selected/path'}, headers=headers, timeout=5)
+        assert rejected.status_code == 400 and not calls
+        response = requests.post(base + '/native-api/society/confirm', json=body, headers=headers, timeout=5)
+        assert response.status_code == 202 and response.json()['status'] == 'pending'
+        status = requests.get(base + '/native-api/society/requests/qa-request', headers=headers, timeout=5).json()
+        assert status['status'] == 'pending' and not status['verified_receipt']
+        assert calls == [('consent-only', 'qa-request')]
+    finally:
+        server.shutdown(); server.server_close(); thread.join(timeout=5)

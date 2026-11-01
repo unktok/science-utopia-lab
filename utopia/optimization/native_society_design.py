@@ -125,6 +125,11 @@ class NativeSocietyDesignSession:
                 elif not isinstance(item.get('reason'), str) or not item['reason'].strip():
                     raise ValueError("cancellation reason required")
                 resolved.add(item['request_sha256'])
+            elif event['kind'] == 'confirmed':
+                request = requests.get(item['request_sha256'])
+                if (request is None or item['request_id'] != request['request_id']
+                        or item['request_sha256'] in resolved):
+                    raise ValueError("confirmation must refer to an unresolved exact staged request")
             else:
                 raise ValueError("unknown society design journal event")
             previous = event['sha256']
@@ -368,6 +373,80 @@ class NativeSocietyDesignSession:
             return self._append(state, 'cancelled', {'request_id': request_id,
                 'request_sha256': confirmed_request_sha256, 'reason': reason})
 
+    def confirm(self, *, request_id, confirmed_request_sha256):
+        """Durable compute consent only. A separate native worker must adopt it.
+
+        Safe for the loopback UI process: no simulation objects, checkpoint
+        writes, inference, kernel changes or request-selected filesystem paths.
+        """
+        with self._lock():
+            state = self._read()
+            request = next((r for r in self._requests(state) if r['request_id'] == request_id), None)
+            if request is None or request['request_sha256'] != confirmed_request_sha256:
+                raise ValueError("confirmation must match the exact staged request")
+            if confirmed_request_sha256 in self._resolved(state):
+                raise ValueError("request is already resolved")
+            if not any(e['kind'] == 'confirmed' and e['payload']['request_sha256'] == confirmed_request_sha256
+                       for e in state['events']):
+                self._append(state, 'confirmed', {'request_id': request_id,
+                    'request_sha256': confirmed_request_sha256})
+            return {'status': 'pending', 'request_id': request_id, 'request_sha256': confirmed_request_sha256}
+
+    def adoption_status(self, request_id, *, checkpoint=None):
+        """Verify an actual saved migration before advertising UI completion.
+
+        ``checkpoint`` is an operator-owned path, never a browser-supplied one.
+        A journal acknowledgement alone cannot make verified_receipt true.
+        """
+        with self._lock():
+            state = self._read()
+            request = next((r for r in self._requests(state) if r['request_id'] == request_id), None)
+            if request is None:
+                raise KeyError('unknown society design request')
+            result = {'status': 'pending', 'request_id': request_id,
+                      'request_sha256': request['request_sha256'], 'verified_receipt': False}
+            if any(e['kind'] == 'cancelled' and e['payload']['request_id'] == request_id for e in state['events']):
+                return {**result, 'status': 'failed', 'error': 'request explicitly cancelled without adoption'}
+            adoption = next((a for a in self._adoptions(state) if a['request_id'] == request_id), None)
+            if checkpoint is None:
+                return result
+            from utopia.runtime.checkpointing import read_portable_checkpoint
+            from utopia.system.native_kernel import NativeScienceKernel
+            from utopia.system.native_migration import checkpoint_native_bootstrap
+            checkpoint = Path(checkpoint)
+            if checkpoint.is_symlink():
+                raise ValueError('adoption checkpoint cannot be a symlink')
+            saved = read_portable_checkpoint(checkpoint)
+            native = saved['native_system']
+            if not native.get('design_history'):
+                if adoption is not None:
+                    raise ValueError('acknowledged adoption absent from actual saved society')
+                return result
+            # Restore validates every migration, graph/state reconciliation and
+            # event epoch against the original configured founding SystemSpec.
+            kernel = checkpoint_native_bootstrap(NativeScienceKernel(self.founding), native)
+            contract = clone(saved['portable']['contract'])
+            contract.pop('native_system', None)
+            if (not state['events'] or state['events'][0]['kind'] != 'bound'
+                    or state['events'][0]['payload']['portable_contract'] != contract
+                    or saved['portable']['contract']['native_system']['system_fingerprint'] != kernel.spec.fingerprint):
+                raise ValueError('adoption checkpoint belongs to a different bound society')
+            # Reconcile read-only here: the worker may have committed the society
+            # but crashed before acknowledging it in the UI journal.
+            receipt = next((r for r in kernel.design_history
+                if r['origin'].get('session_request_sha256') == request['request_sha256']), None)
+            if receipt is None:
+                if adoption is not None:
+                    raise ValueError('acknowledged adoption absent from actual saved society')
+                return result
+            if (receipt['target_spec'] != request['candidate_system']
+                    or receipt['parent_kernel_sha256'] != request['expected_checkpoint_sha256']
+                    or receipt['origin'].get('loss_spec_sha256') != self.binding['loss_spec_sha256']
+                    or (adoption is not None and receipt != adoption['migration'])):
+                raise ValueError('saved adoption differs from exact confirmed request')
+            return {**result, 'status': 'adopted', 'verified_receipt': True,
+                    'migration_receipt_sha256': receipt['receipt_sha256']}
+
     def author(self, proposer, *, authoring, state_actions=None, discard_deliveries=None):
         """Call an external result-conditioned proposer; persist exact input binding.
 
@@ -404,6 +483,7 @@ class NativeSocietyDesignSession:
                     "observations": clone(self._observations(state)),
                     "requests": clone(self._requests(state)), "adoptions": clone(self._adoptions(state)),
                     "cancellations": [clone(e['payload']) for e in state['events'] if e['kind'] == 'cancelled'],
+                    "confirmations": [clone(e['payload']) for e in state['events'] if e['kind'] == 'confirmed'],
                     "pending": clone(pending[-1]) if pending else None,
                     "journal_sha256": state['events'][-1]['sha256'] if state['events'] else None,
                     "model_weights_trained": False, "causal_improvement_established": False}

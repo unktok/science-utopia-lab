@@ -21,7 +21,8 @@ from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 
 
-def make_server(queue, *, source_commit, directory, port=4591):
+def make_server(queue, *, source_commit, directory, port=4591,
+                society_session=None, society_checkpoints=None):
     static = Path(directory).resolve()
     token = secrets.token_urlsafe(32)
     class Handler(SimpleHTTPRequestHandler):
@@ -71,6 +72,17 @@ def make_server(queue, *, source_commit, directory, port=4591):
                     if not self.authorized():
                         return self.reply(403, {'error': 'session token required'})
                     parts = path.split('/')
+                    if path == '/native-api/society' and society_session is not None:
+                        return self.reply(200, society_session.projection())
+                    if (len(parts) == 5 and parts[2:4] == ['society', 'requests']
+                            and society_session is not None):
+                        checkpoint = None
+                        if society_checkpoints is not None:
+                            import re
+                            matches = [(int(m.group(1)), p) for p in Path(society_checkpoints).glob('portable_checkpoint_year_*.json.gz')
+                                if (m := re.fullmatch(r'portable_checkpoint_year_(\d+)\.json\.gz', p.name))]
+                            checkpoint = max(matches, default=(0, None))[1]
+                        return self.reply(200, society_session.adoption_status(parts[4], checkpoint=checkpoint))
                     if len(parts) == 4 and parts[2] == 'jobs':
                         return self.reply(200, queue.get(parts[3]))
                     if len(parts) == 5 and parts[2] == 'jobs' and parts[4] == 'evidence':
@@ -88,7 +100,7 @@ def make_server(queue, *, source_commit, directory, port=4591):
         def do_POST(self):
             if not self.allowed() or not self.authorized() or self.headers.get('Origin') is None:
                 return self.reply(403, {'error': 'same-origin session token required'})
-            if self.path not in {'/native-api/jobs', '/native-api/validate'}:
+            if self.path not in {'/native-api/jobs', '/native-api/validate', '/native-api/society/confirm'}:
                 return self.reply(404, {'error': 'unknown API route'})
             try:
                 size = int(self.headers.get('Content-Length', '0'))
@@ -97,6 +109,12 @@ def make_server(queue, *, source_commit, directory, port=4591):
                 request = json.loads(self.rfile.read(size))
                 if pinned_revision(ROOT) != source_commit:
                     raise ValueError('source changed after server startup')
+                if self.path == '/native-api/society/confirm':
+                    if society_session is None:
+                        return self.reply(404, {'error': 'no native society session configured'})
+                    if not isinstance(request, dict) or set(request) != {'request_id', 'confirmed_request_sha256'}:
+                        raise ValueError('exact staged request ID and confirmation SHA256 required')
+                    return self.reply(202, society_session.confirm(**request))
                 if self.path == '/native-api/validate':
                     validate_job_request(request)
                     return self.reply(200, {'status': 'structurally-validated-not-native-executed',
@@ -118,6 +136,8 @@ def main():
     parser.add_argument('--port', type=int, default=4591)
     parser.add_argument('--worker-once', action='store_true')
     parser.add_argument('--data-cache', type=Path)
+    parser.add_argument('--society-config', type=Path,
+                        help='operator-owned session config; never a request-selected checkpoint path')
     args = parser.parse_args()
     revision = pinned_revision(ROOT)
     queue = NativeJobQueue(args.queue)
@@ -133,7 +153,18 @@ def main():
         directory = ROOT / 'game-ui-v2/dist'
         if not (directory / 'native.html').exists():
             parser.error('build game-ui-v2 first')
-        server = make_server(queue, source_commit=revision, directory=directory, port=args.port)
+        session, checkpoints = None, None
+        if args.society_config is not None:
+            from utopia.optimization.native_society_design import NativeSocietyDesignSession
+            config = json.loads(args.society_config.read_text())
+            if set(config) != {'directory', 'founding_system', 'loss_spec', 'world_binding', 'checkpoint_directory'}:
+                parser.error('society config requires explicit session, founding design, loss, world and checkpoint directory')
+            session = NativeSocietyDesignSession(config['directory'],
+                founding_system=SystemSpec.from_dict(config['founding_system']), loss_spec=config['loss_spec'],
+                world_binding=config['world_binding'])
+            checkpoints = Path(config['checkpoint_directory']).resolve()
+        server = make_server(queue, source_commit=revision, directory=directory, port=args.port,
+                             society_session=session, society_checkpoints=checkpoints)
         print(f'Local native lab: http://127.0.0.1:{server.server_port}/native.html', flush=True)
         try:
             server.serve_forever()
