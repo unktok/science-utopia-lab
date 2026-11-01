@@ -31,6 +31,8 @@ def replay_tensor_trace(trace, programs, *, parameters=None, hard=False, tempera
     if not trace:
         raise ValueError('nonempty native tensor trace required')
     parameters = parameters or {}
+    if verify_recorded and (not hard or parameters):
+        raise ValueError('recorded verification requires unmodified hard execution')
     memory, produced, result = {}, {}, []
     for frame in trace:
         name = frame['mechanism']
@@ -52,11 +54,17 @@ def replay_tensor_trace(trace, programs, *, parameters=None, hard=False, tempera
                     inputs[key] = inputs[key].reshape([0 if d == -1 else d for d in shape])
         if name not in memory:
             memory[name] = {k: torch.tensor(v, dtype=torch.float64) for k, v in frame['state_before'].items()}
+        if verify_recorded:
+            for group, actual_values in (('inputs', inputs), ('state_before', memory[name])):
+                if set(actual_values) != set(frame[group]):
+                    raise ValueError('native tensor hard replay fields differ: ' + group)
+                for key, tensor in actual_values.items():
+                    expected = torch.tensor(frame[group][key], dtype=tensor.dtype).reshape(tensor.shape)
+                    if not torch.allclose(tensor, expected, rtol=0., atol=1e-12):
+                        raise ValueError('native tensor hard replay differs: ' + group + '/' + key)
         outputs, memory[name] = execute_tensor_program(program, inputs, parameters=parameters.get(name),
             state=memory[name], hard=hard, temperature=temperature)
         if verify_recorded:
-            if not hard or parameters:
-                raise ValueError('recorded verification requires unmodified hard execution')
             for group, actual in (('outputs', outputs), ('state_after', memory[name])):
                 for key, tensor in actual.items():
                     expected = torch.tensor(frame[group][key], dtype=tensor.dtype).reshape(tensor.shape)

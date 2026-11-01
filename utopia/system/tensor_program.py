@@ -22,11 +22,17 @@ ARITY = {'add': 2, 'sub': 2, 'mul': 2, 'div': 2, 'matmul': 2,
          'neg': 1, 'tanh': 1, 'sigmoid': 1, 'relu': 1, 'sum': 1,
          'mean': 1, 'transpose': 1, 'reshape': 1, 'column': 1,
          'softmax': 1, 'choose': 1, 'gate': 1, 'branch': 3,
-         'sort': 1, 'match': 1, 'concat': 2}
+         'sort': 1, 'match': 1, 'concat': 2,
+         'exp': 1, 'log': 1, 'sqrt': 1, 'abs': 1, 'logsumexp': 1,
+         'minimum': 2, 'maximum': 2, 'clip': 1, 'stack': 2,
+         'route': 2, 'attention': 3, 'memory_read': 2,
+         'memory_write': 3, 'scatter_add': 3,
+         'sample': 2, 'normal_sample': 3}
 ATTRS = {'sum': {'dim', 'keepdim'}, 'mean': {'dim', 'keepdim'},
          'transpose': {'dims'}, 'reshape': {'shape'}, 'column': {'index'},
          'softmax': {'dim'}, 'choose': {'dim'}, 'concat': {'dim'},
-         'match': {'iterations'}}
+         'match': {'iterations'}, 'logsumexp': {'dim', 'keepdim'},
+         'clip': {'min', 'max'}, 'stack': {'dim'}}
 
 
 def _literal(value):
@@ -73,6 +79,10 @@ def validate_tensor_program(program):
             raise ValueError('tensor dimension outside supported rank')
         if 'keepdim' in attrs and type(attrs['keepdim']) is not bool:
             raise ValueError('keepdim must be boolean')
+        if op == 'clip' and (set(attrs) != {'min', 'max'}
+                or any(type(attrs[k]) not in (int, float) or not math.isfinite(attrs[k]) for k in attrs)
+                or attrs['min'] > attrs['max']):
+            raise ValueError('clip requires explicit finite ordered min/max')
         if 'index' in attrs and (type(attrs['index']) is not int or not 0 <= attrs['index'] < 256):
             raise ValueError('invalid column index')
         if 'iterations' in attrs and (type(attrs['iterations']) is not int or not 1 <= attrs['iterations'] <= 200):
@@ -92,9 +102,45 @@ def validate_tensor_program(program):
 
 
 def _bounded(value):
-    if value.ndim > 3 or value.numel() > 16_384 or not torch.isfinite(value).all():
+    if (not isinstance(value, torch.Tensor) or not value.is_floating_point()
+            or value.ndim > 3 or value.numel() > 16_384 or not torch.isfinite(value).all()):
         raise ValueError('tensor result exceeds rank/element limit or is nonfinite')
     return value
+
+
+def _address(logits, *, hard, temperature):
+    if logits.ndim not in (1, 2) or logits.shape[-1] == 0:
+        raise ValueError('routing requires a nonempty address axis and rank one/two logits')
+    return (torch.zeros_like(logits).scatter(-1, logits.argmax(-1, keepdim=True), 1.)
+        if hard else (logits / temperature).softmax(-1))
+
+
+def _matmul(left, right):
+    shape_only = torch.matmul(torch.empty(left.shape, device='meta'), torch.empty(right.shape, device='meta'))
+    if shape_only.ndim > 3 or shape_only.numel() > 16_384:
+        raise ValueError('matrix product exceeds rank/element limit before allocation')
+    return left @ right
+
+
+def _memory_update(memory, address, value, *, additive):
+    if (memory.ndim != 2 or address.shape != memory.shape[:1] or value.shape != memory.shape[1:]
+            or bool((address < 0).any()) or bool((address > 1).any())
+            or not torch.isclose(address.sum(), address.new_tensor(1.), atol=1e-10, rtol=1e-10)):
+        raise ValueError('memory update needs matrix, normalized nonnegative slot address and one value vector')
+    write = address[:, None] * value[None, :]
+    return memory + write if additive else (1 - address[:, None]) * memory + write
+
+
+def _attention(query, keys, values, *, hard, temperature):
+    if (query.ndim not in (1, 2) or keys.ndim != 2 or values.ndim != 2
+            or query.shape[-1] == 0 or query.shape[-1] != keys.shape[-1]
+            or keys.shape[0] != values.shape[0] or keys.shape[0] == 0):
+        raise ValueError('attention requires aligned query/key widths and real key/value slots')
+    rows = query.shape[0] if query.ndim == 2 else 1
+    if rows * max(keys.shape[0], values.shape[1]) > 16_384:
+        raise ValueError('attention intermediate/output exceeds element limit')
+    scores = query @ keys.T / math.sqrt(keys.shape[-1])
+    return _address(scores, hard=hard, temperature=temperature) @ values
 
 
 def _sort(scores, *, hard, temperature):
@@ -160,16 +206,21 @@ def execute_tensor_program(program, inputs: Mapping[str, torch.Tensor], *, param
         elif op == 'sub': value = args[0] - args[1]
         elif op == 'mul': value = args[0] * args[1]
         elif op == 'div': value = args[0] / args[1]
-        elif op == 'matmul': value = args[0] @ args[1]
+        elif op == 'matmul': value = _matmul(*args)
         elif op == 'neg': value = -args[0]
         elif op == 'tanh': value = args[0].tanh()
         elif op == 'sigmoid': value = args[0].sigmoid()
         elif op == 'relu': value = args[0].relu()
+        elif op in ('exp', 'log', 'sqrt', 'abs'): value = getattr(args[0], op)()
+        elif op == 'logsumexp': value = args[0].logsumexp(dim=attrs.get('dim', -1), keepdim=attrs.get('keepdim', False))
+        elif op in ('minimum', 'maximum'): value = getattr(torch, op)(*args)
+        elif op == 'clip': value = args[0].clamp(**attrs)
         elif op in ('sum', 'mean'): value = getattr(args[0], op)(**attrs)
         elif op == 'transpose': value = args[0].transpose(*attrs['dims'])
         elif op == 'reshape': value = args[0].reshape(attrs['shape'])
         elif op == 'column': value = args[0][:, attrs['index']]
         elif op == 'concat': value = torch.cat(args, dim=attrs.get('dim', -1))
+        elif op == 'stack': value = torch.stack(args, dim=attrs.get('dim', -1))
         elif op == 'softmax': value = args[0].softmax(dim=attrs.get('dim', -1))
         elif op == 'gate': value = (args[0] >= 0).to(anchor.dtype) if hard else (args[0] / temperature).sigmoid()
         elif op == 'choose':
@@ -178,6 +229,24 @@ def execute_tensor_program(program, inputs: Mapping[str, torch.Tensor], *, param
             value = (torch.zeros_like(args[0]).scatter(dim, args[0].argmax(dim=dim, keepdim=True), 1.)
                      if hard else (args[0] / temperature).softmax(dim=dim))
         elif op == 'branch': value = args[0] * args[1] + (1 - args[0]) * args[2]
+        elif op == 'route':
+            if args[1].ndim != 2 or args[0].ndim not in (1, 2) or args[0].shape[-1] != args[1].shape[0]:
+                raise ValueError('route requires address logits and an aligned value-slot matrix')
+            rows = args[0].shape[0] if args[0].ndim == 2 else 1
+            if rows * args[1].shape[1] > 16_384:
+                raise ValueError('route output exceeds element limit')
+            value = _address(args[0], hard=hard, temperature=temperature) @ args[1]
+        elif op == 'attention': value = _attention(*args, hard=hard, temperature=temperature)
+        elif op == 'memory_read': value = _matmul(*args)
+        elif op in ('memory_write', 'scatter_add'): value = _memory_update(*args, additive=op == 'scatter_add')
+        elif op == 'sample':
+            if args[0].shape != args[1].shape:
+                raise ValueError('sample requires explicitly recorded same-shape exogenous Gumbel noise')
+            value = _address(args[0] + args[1], hard=hard, temperature=temperature)
+        elif op == 'normal_sample':
+            if args[0].shape != args[1].shape or args[0].shape != args[2].shape or bool((args[1] < 0).any()):
+                raise ValueError('normal_sample requires aligned mean/nonnegative scale/recorded standard noise')
+            value = args[0] + args[1] * args[2]
         elif op == 'sort': value = _sort(args[0], hard=hard, temperature=temperature)
         elif op == 'match': value = _match(args[0], hard=hard, temperature=temperature, iterations=attrs.get('iterations', 40))
         else: raise AssertionError(op)
