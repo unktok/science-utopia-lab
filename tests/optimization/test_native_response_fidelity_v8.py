@@ -31,6 +31,7 @@ from utopia.system import ArtifactTypeSpec, ChannelKind, ConnectionSpec, Mechani
 from utopia.system.code_mechanisms import CodeExecutionError, DockerCodeExecutor
 from utopia.system.design_patch import digest
 from utopia.system.native_kernel import NativeScienceKernel, add_context_receiver
+from utopia.system.native_review_context import enable_review_context, register_review_context
 from utopia.system.tensor_program import execute_tensor_program
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
@@ -177,7 +178,8 @@ def response_system(image):
         schedules=(*system.schedules, ScheduleSpec('response-signal', 10)), connections=(*system.connections,
             ConnectionSpec('world.open', 'world', 'response-signal', 'world', ChannelKind.ARTIFACT),
             ConnectionSpec('addressed-selection', 'scores', 'recurrent-router', 'scores', ChannelKind.ARTIFACT)))
-    return add_context_receiver(system, source='response-signal', source_port='messages', receiver='response-delivery', phase=15)
+    system = add_context_receiver(system, source='response-signal', source_port='messages', receiver='response-delivery', phase=15)
+    return enable_review_context(system, receiver='response-delivery')
 
 
 class ResponseAwareScriptedHTTP(FakeHTTPModel):
@@ -226,7 +228,8 @@ def test_seven_original_native_worlds_response_boundary_backward_unused_validati
         root = tmp_path/name
         recorder = RecordingCodeExecutor(executor, root/'code-contexts.jsonl', binding={
             'source_commit': world['source_commit'], 'system_fingerprint': candidate.fingerprint, 'run_id': name})
-        sim, actual_calls = make_sim(root, native=NativeScienceKernel(candidate, code_executor=recorder), model_class=ResponseAwareScriptedHTTP)
+        sim, actual_calls = make_sim(root, native=NativeScienceKernel(candidate, code_executor=recorder,
+            registry_extension=register_review_context), model_class=ResponseAwareScriptedHTTP)
         record_native_http(sim.llm, sim, root/'wire.jsonl')
         try:
             sim.run()
@@ -238,7 +241,7 @@ def test_seven_original_native_worlds_response_boundary_backward_unused_validati
             response_evidence[endpoint['checkpoint_sha256']] = {'journal': str(root/'cache/responses.sqlite'),
                 'wire': str(root/'wire.jsonl'), 'mechanism': 'addressed-selection', 'input_name': 'features'}
             return endpoint
-        except Exception as error:
+        except BaseException as error:
             failures.append({'world': name, 'control': value, 'error': str(error), 'loss': None})
             raise  # No success-conditioned replacement world.
         finally:
@@ -291,6 +294,11 @@ def test_seven_original_native_worlds_response_boundary_backward_unused_validati
         'source_commit': world['source_commit'], 'fixture_source_sha256': file_sha256(Path(__file__)),
         'module_source_sha256': file_sha256(ROOT/'utopia/optimization/native_response_fidelity.py'),
         'signal_source_sha256': digest(SIGNAL_SOURCE),
+        'review_ingress_source_sha256': file_sha256(ROOT/'utopia/system/native_review_context.py'),
+        'prior_failed_physical_attempts': [{'source_commit': '84701f3', 'world': 'calibration-0',
+            'completed_worlds': 0, 'loss': None, 'reason': 'actual original review prompt omitted delivered institution signal',
+            'raw_available': False, 'raw_retention_failure': 'shared pytest temporary retention removed partial-world raw',
+            'raw_path': '/private/var/folders/ry/w663wy7n4j52rjwfmd7rxbl40000gn/T/pytest-of-shiro/pytest-756/test_seven_original_native_wor0'}],
         'endpoints': [{k: p[k] for k in ('checkpoint_sha256', 'system_fingerprint', 'coordinate_values', 'native_loss',
             'physical_initial_identity', 'native_event_stream_hash', 'response_cache_count', 'code_contexts_sha256')} for p in endpoints],
         'raw_response_proofs': model.state['raw_response_proofs'], 'temperature_selection': model.state['temperature_selection'],

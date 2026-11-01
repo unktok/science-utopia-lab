@@ -254,7 +254,7 @@ def endpoint_decomposition(left, right, declarations, terms, *, temperature):
         return {'status': 'unsupported-record-routing-or-shape-change', 'left_layout_sha256': signature,
             'right_layout_sha256': other, 'native_delta': right['native_loss']-left['native_loss'],
             'full_native_world_autograd': False}
-    t0, t1 = [torch.tensor(list(p['coordinate_values'].values()), dtype=DTYPE) for p in (left, right)]
+    t0, t1 = [torch.tensor([p['coordinate_values'][d['id']] for d in declarations], dtype=DTYPE) for p in (left, right)]
     def value(theta, z, hard):
         return float(trace_objective(response_replay(left, layout, z, theta, declarations,
             hard=hard, temperature=temperature), terms).detach())
