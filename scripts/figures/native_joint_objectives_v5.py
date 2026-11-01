@@ -117,7 +117,7 @@ def _draw_graph(ax, evidence, letter, color):
     cut = evidence['cut']
     ax.set(xlim=(-.02, 1.02), ylim=(0, 1))
     ax.axis('off')
-    title = 'Selected authored system' if cut['authored'] else 'Original incumbent retained'
+    title = 'Selected authored institution cut' if cut['authored'] else 'Original institution cut retained'
     ax.text(0, 1.01, f'{letter}   {title}', fontsize=9, fontweight='semibold', color='#26384B', transform=ax.transAxes)
     ax.text(1, 1.01, f"Objective { _objective_label(evidence['loss_spec']) }  |  observation {evidence['selected_index']}",
         fontsize=7.2, ha='right', color=color, transform=ax.transAxes)
