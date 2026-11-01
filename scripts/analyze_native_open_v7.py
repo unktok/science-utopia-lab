@@ -191,7 +191,8 @@ def domain_proofs(saved, kernel, code_rows=None):
     native_ids = set(agents)
     artifacts = domain.get('artifacts', {})
     paper_ids = {p['id'] for p in saved['paper_tracker']['papers']}
-    declared = set(kernel.graph_checkpoint['mechanism_states'].get('declared_artifacts', {}))
+    declared = {identity for state in kernel.graph_checkpoint['mechanism_states'].values()
+        for identity in state.get('declared_artifacts', {})}
     all_actor_ids = native_ids | set(domain.get('actors', {}))
     for artifact in artifacts.values():
         if (artifact['owner_actor'] not in all_actor_ids or not set(artifact['actor_ids']) <= all_actor_ids

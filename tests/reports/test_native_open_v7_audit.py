@@ -8,7 +8,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from scripts.analyze_native_open_v7 import analyze, authoring_proofs, code_proofs, context_input_proofs, _inventory, FIXTURE
+from scripts.analyze_native_open_v7 import analyze, authoring_proofs, code_proofs, context_input_proofs, domain_proofs, _inventory, FIXTURE
 from scripts.run_native_open_pilot_v7 import summarize
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign, InboxVocabularyGenerator
 from utopia.optimization.native_manifest_inbox import ManifestInbox, ExternalAuthoringPending
@@ -235,6 +235,19 @@ def test_delivered_context_is_distinct_from_actual_completed_model_input(tmp_pat
     saved['ecosystem_data']['agents'][0]['institutional_context'] = []
     with pytest.raises(ValueError, match='actual recipient state'):
         context_input_proofs(tmp_path, saved)
+
+
+def test_generic_store_artifact_lineage_is_resolved_inside_each_mechanism_state():
+    # Focused helper fixture, not a complete kernel or scientific observation.
+    saved = {'ecosystem_data': {'agents': [{'id': 'a'}]}, 'paper_tracker': {'papers': []},
+        'native_system': {'events': [], 'open_domain': {'actors': {}, 'receipts': {}, 'artifacts': {'x': {
+            'owner_actor': 'a', 'actor_ids': ['a'], 'artifact_ids': ['generic-record'], 'native_paper_ids': []}}}}}
+    kernel = SimpleNamespace(graph_checkpoint={'mechanism_states': {'actual-store-node': {
+        'declared_artifacts': {'generic-record': 'generic-record-type'}}}}, design_history=[])
+    assert domain_proofs(saved, kernel)['custom_artifacts'] == 1
+    kernel.graph_checkpoint['mechanism_states']['actual-store-node']['declared_artifacts'] = {}
+    with pytest.raises(ValueError, match='dangling'):
+        domain_proofs(saved, kernel)
 
 
 def test_inventory_rejects_symlink_and_never_reads_outside_raw(tmp_path):
