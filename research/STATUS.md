@@ -1,6 +1,17 @@
 # Program status
 
-Updated: 2026-11-01
+Updated: 2026-11-02
+
+## ACTIVE: non-scale implementation closure v7
+
+The user correctly rejects v6 as completion of all feasible pre-scale work.
+The [fixed remaining-implementation inventory](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
+now includes open native domain/actions, explicit process execution, evolving
+generated mixed optimization, designer-strategy update mechanisms and operational
+gradient/native fidelity integration. Ordinary implementation must not be
+renamed research uncertainty. Improvement itself is not a pass requirement.
+Four isolated tracks are actively implementing these items. No population/seed
+scale-up or new v7 execution result is claimed at this initial entry.
 
 ## Completed finite integration goal: non-scale v6
 

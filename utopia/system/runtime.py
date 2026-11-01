@@ -38,6 +38,10 @@ class MechanismValue:
     actor_ids: tuple[str, ...] = ()
     artifact_ids: tuple[str, ...] = ()
     lineage_event_ids: tuple[str, ...] = ()
+    # A composite/repeated activity can emit a value before later subactivities
+    # run. Bind only its causal invocation-event prefix, never future events.
+    # None preserves the original complete-invocation behavior and wire format.
+    event_prefix_length: int | None = None
 
 
 @dataclass(frozen=True)
@@ -459,9 +463,9 @@ class DeterministicGraphRunner:
                         (mechanism.mechanism_id, port_id), ()
                     ):
                         for value in values:
-                            lineage = _stable_unique(
-                                (*value.lineage_event_ids, *emitted_event_ids)
-                            )
+                            local_ids = (emitted_event_ids if value.event_prefix_length is None
+                                         else emitted_event_ids[:value.event_prefix_length])
+                            lineage = _stable_unique((*value.lineage_event_ids, *local_ids))
                             delivered = DeliveredValue(
                                 channel=source_port.channel,
                                 artifact_type=source_port.artifact_type,
@@ -760,6 +764,10 @@ def _validate_result(
             _require_string_ids(value.actor_ids, "actor_ids")
             _require_string_ids(value.artifact_ids, "artifact_ids")
             _require_string_ids(value.lineage_event_ids, "lineage_event_ids")
+            if value.event_prefix_length is not None and (
+                    type(value.event_prefix_length) is not int
+                    or not 0 <= value.event_prefix_length <= len(result.events)):
+                raise GraphRuntimeError('output event prefix must name an existing invocation-event prefix')
         normalized[port.port_id] = raw_values
     for event in result.events:
         if not isinstance(event, MechanismEvent):

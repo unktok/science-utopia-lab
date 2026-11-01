@@ -6,6 +6,7 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [ACTIVE: close the remaining feasible non-scale implementations v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
 - [Active non-scale completion v6: acceptance gates and parallel ownership](milestones/2026-11-01-non-scale-completion-v6.md)
 - [Same-society v6 a1: real adoption, preserved RAG continuation failure](results/native-society-v6-a1.md)
 - [Completed same-society v6 a2: two revisions, 130 replies and actual browser receipts](results/native-society-v6-a2.md)
