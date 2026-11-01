@@ -8,6 +8,10 @@ and results. New work uses the forward-only taxonomy below.
 
 - [ACTIVE: objective-conditioned structure and native-response fidelity v8](milestones/2026-11-02-objective-structure-and-response-v8.md)
 - [Preregistered two-objective structural exploration v8](protocols/campaigns/native-objective-structure-v8.md)
+- [Exact-file pre-inference a2 amendment, unchanged total native budget](protocols/campaigns/native-objective-structure-v8-a2.md)
+- [Aborted a1 technical authoring audit: zero worlds and replies](results/native-objective-structure-v8-a1.md)
+- [Policy-free explicit structural authoring and saved-file validation](components/native-structural-authoring-v8.md)
+- [Independent structural audit, all-draw cross-scores and figure contract](components/native-objective-structure-audit-v8.md)
 - [Completed fixed non-scale implementation inventory v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
 - [Actual integrated v7 result: four worlds,342 replies, no new best](results/native-open-integrated-v7-a2.md)
 - [Independent machine-readable v7 audit](results/native-open-integrated-v7-a2.json)

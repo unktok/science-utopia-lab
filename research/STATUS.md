@@ -13,7 +13,18 @@ worlds maximum. Original five authors/two years/seed42/fixed Qwen3:8B remain.
 Latest v7's unchanged live19/27 graph is not relabelled structural exploration.
 Native-response-aware derivative refinement is developed separately with
 scripted provider original-world QA, not counted as actual-Qwen evidence.
-Independent audit/graphics is a third active track. No v8 live result yet.
+Independent audit/graphics and the English comparison UI are implemented;
+actual final data publication remains pending. Frozen425ec10 a2 has completed
+the first two native worlds (throughput losses `[-9,-9]`,212 recorded Qwen replies
+at that committed boundary). The other objective and next loss-driven generation
+are still running/pending. These are preliminary committed observations, not the
+independently audited final comparison. A1's two invalid source vocabularies
+execute ZERO worlds/replies and are preserved as an aborted pre-inference
+attempt, not numeric penalties or scientific failures.
+[A1 audit](results/native-objective-structure-v8-a1.md),
+[explicit a2 amendment](protocols/campaigns/native-objective-structure-v8-a2.md).
+Source425ec10 full regression passes1509/6skips; later component checks have
+their own scopes. No new held-out evaluation or full-native autograd is claimed.
 
 ## Completed: non-scale implementation closure v7
 

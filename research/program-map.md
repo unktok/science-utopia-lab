@@ -2,7 +2,13 @@
 
 Updated: 2026-11-02
 
-The completed fixed implementation inventory is
+The active next step is
+[objective-conditioned structure and native-response fidelity v8](milestones/2026-11-02-objective-structure-and-response-v8.md):
+two fixed losses condition free source/graph generation in eight small native
+worlds maximum; a separate derivative track refines numeric response/parser
+boundaries without replacing the native forward system. Independent audit and
+the English comparison interface are implemented, with final actual evidence
+still pending. V7 remains the completed fixed implementation inventory:
 [non-scale implementation closure v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md).
 The [status page](STATUS.md) is the current execution ledger; old milestones
 remain historical. Population/seed expansion is not the next task.
