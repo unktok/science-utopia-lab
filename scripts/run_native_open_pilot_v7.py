@@ -29,6 +29,25 @@ from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 
+def derivative_diagnostics(system,events):
+    """A failed derivative diagnostic must not erase a completed native cost."""
+    def failed(error):
+        return {'status':'failed-diagnostic','error_type':type(error).__name__,'error':str(error),
+            'native_loss_gradient_verified':False,'full_native_world_autograd':False}
+    try:
+        coverage=boundary_coverage(system,events)
+    except Exception as error:
+        coverage=failed(error)
+    try:
+        programs={n.mechanism_id:n.parameters['program'] for n in system.mechanisms if n.implementation=='program.tensor.v1'}
+        backward=conditional_backward(native_tensor_trace(events),programs,
+            trainable={'addressed-selection':['bias']},
+            terms=[{'mechanism':'open-memory-router','output':'actions','coefficient':-1.}])
+    except Exception as error:
+        backward=failed(error)
+    return coverage,backward
+
+
 def summarize(campaign,output):
     rows=[]
     for record in campaign.state['records']:
@@ -40,10 +59,7 @@ def summarize(campaign,output):
                 saved=read_portable_checkpoint(path)
                 system=SystemSpec.from_dict(draw['suggestion']['candidate'])
                 native=saved['native_system']
-                coverage=boundary_coverage(system,native['events'])
-                programs={n.mechanism_id:n.parameters['program'] for n in system.mechanisms if n.implementation=='program.tensor.v1'}
-                backward=conditional_backward(native_tensor_trace(native['events']),programs,
-                    trainable={'addressed-selection':['bias']},terms=[{'mechanism':'open-memory-router','output':'actions','coefficient':-1.}])
+                coverage,backward=derivative_diagnostics(system,native['events'])
                 domain=native.get('open_domain',{})
                 row.update(checkpoint_path=str(path),checkpoint_sha256=file_sha256(path),
                     boundary_coverage=coverage,conditional_backward=backward,

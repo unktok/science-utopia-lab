@@ -67,6 +67,32 @@ DECLARATIONS = [
 TERMS = [{'mechanism': 'recurrent-router', 'output': 'actions', 'coefficient': -1.}]
 
 
+@pytest.mark.parametrize('also_train_used', [False, True])
+def test_unused_represented_parameters_have_explicit_conditional_zero_not_unknown_native_zero(also_train_used):
+    # Numerical unit QA on the actual tensor handler; not a research-world result.
+    from utopia.system import SystemSpec, ArtifactTypeSpec
+    from utopia.system.runtime import DeterministicGraphRunner
+    program={'schema':SCHEMA,'inputs':{},'parameters':{'used':2.,'unused':5.},
+        'state':{},'nodes':[],'outputs':{'value':'parameter:used'},'updates':{}}
+    node=MechanismSpec('math',MechanismFamily.CUSTOM,IMPLEMENTATION,
+        outputs=(PortSpec('value',ChannelKind.ARTIFACT,'measurement'),),
+        parameters={'program':program,'input_bindings':{}})
+    spec=SystemSpec('unused-derivative-unit',1,artifact_types=(ArtifactTypeSpec('measurement'),),
+        mechanisms=(node,),schedules=(ScheduleSpec('math',0),))
+    result=DeterministicGraphRunner(spec,NativeScienceKernel(spec)._registry()).run(periods=1,start_period=1)
+    trace=native_tensor_trace(result.events)
+    terms=[{'mechanism':'math','output':'value','coefficient':1.}]
+    report=conditional_backward(trace,{'math':program},trainable={'math':
+        ['used','unused'] if also_train_used else ['unused']},terms=terms)
+    assert report['status']=='passed' and report['gradient']['math']['unused']==0.
+    assert report['disconnected_represented_parameters'][0]['parameter']=='unused'
+    assert not report['native_loss_gradient_verified'] and not report['full_native_world_autograd']
+    if also_train_used:
+        assert report['gradient']['math']['used']==1.
+    connected=conditional_backward(trace,{'math':program},trainable={'math':['used']},terms=terms)
+    assert 'disconnected_represented_parameters' not in connected
+
+
 class ResponsiveHTTP(FakeHTTPModel):
     """New answers depend on actual evolving society, not replayed text."""
     def reply(self, **payload):

@@ -187,10 +187,18 @@ def conditional_backward(trace, programs, *, trainable, terms, temperature=1., e
         return trace_objective(replay_tensor_trace(trace, programs, parameters=parameters,
             hard=False, temperature=temperature), terms)
     loss = objective()
-    gradients = torch.autograd.grad(loss, leaves)
+    gradients = (torch.autograd.grad(loss, leaves, allow_unused=True) if loss.requires_grad
+                 else (None,) * len(leaves))
     checks = []
     result = {}
+    disconnected = []
     for (mechanism, key), leaf, gradient in zip(addresses, leaves, gradients):
+        if gradient is None:
+            # Exact zero ONLY in this named, fully represented conditional
+            # objective. Opaque Python/LLM/native effects remain unknown.
+            gradient = torch.zeros_like(leaf)
+            disconnected.append({'mechanism': mechanism, 'parameter': key,
+                'scope': 'unused in represented conditional objective; not a native-loss zero derivative'})
         numerical = torch.zeros_like(leaf)
         for index in range(leaf.numel()):
             original = float(leaf.detach().flatten()[index])
@@ -210,13 +218,17 @@ def conditional_backward(trace, programs, *, trainable, terms, temperature=1., e
         checks.append({'mechanism': mechanism, 'parameter': key, 'autograd': gradient.tolist(),
             'conditional_finite_difference': numerical.tolist(), 'absolute_max_error': error,
             'status': 'passed' if torch.allclose(gradient, numerical, atol=1e-5, rtol=1e-4) else 'failed'})
-    return {'schema': SCHEMA + '.conditional-backward', 'trace_sha256': digest(trace),
+    report = {'schema': SCHEMA + '.conditional-backward', 'trace_sha256': digest(trace),
         'program_sha256s': {name: digest(program) for name, program in programs.items()},
         'conditional_soft_loss': float(loss.detach()), 'terms': deepcopy(terms), 'temperature': temperature,
         'finite_difference_epsilon': epsilon,
         'gradient': result, 'numerical_checks': checks,
         'status': 'passed' if all(c['status'] == 'passed' for c in checks) else 'failed',
         'native_loss_gradient_verified': False, 'full_native_world_autograd': False}
+    # Preserve exact historical payloads for the existing connected case.
+    if disconnected:
+        report['disconnected_represented_parameters'] = disconnected
+    return report
 
 
 def native_endpoint(checkpoint, system, declarations, loss_spec, *, world, code_contexts=None):
