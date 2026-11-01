@@ -130,10 +130,12 @@ startup environment, and factory entry requires an explicit numeric setting.
 
 ## Validation and paper deliverable
 
-Focused implementation regression:491 passed across optimization, system,
-runtime and report tests. Four additional targeted cache/figure/audit checks
-pass; the new author/activity matching test also passes independently. These
-are technical tests, not model-generated institution effectiveness.
+Final integration regression:496 passed across optimization, system, runtime
+and report tests in187.98 seconds. This includes exact legacy-to-normalized
+state-identity checks, actual-author/activity request matching, source-path
+figure identity and reproducible concept assets. These are technical tests,
+not model-generated institution effectiveness or a repository-wide/frontend
+test claim.
 
 Figure1 of the17-page working paper expresses the full program: explicit
 objective -> scientific-system design -> real researcher ecosystem -> outcomes
