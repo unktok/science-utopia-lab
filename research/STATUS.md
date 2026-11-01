@@ -25,7 +25,9 @@ attempt, not numeric penalties or scientific failures.
 [A1 audit](results/native-objective-structure-v8-a1.md),
 [explicit a2 amendment](protocols/campaigns/native-objective-structure-v8-a2.md).
 Source425ec10 full regression passes1509/6skips; later component checks have
-their own scopes. Clean integration eda6537 full regression is running separately.
+their own scopes. Clean integration eda6537 full regression passes1587/6skips
+(968.70s); later exact-observation selection and plotting fixes pass22 targeted
+checks, with183 UI checks/build/labelled-fixture browser QA. These scopes overlap.
 The [response-boundary representation](components/native-response-boundary-fidelity-v8.md)
 and explicit actual review-context ingress complete seven original six-year
 worlds using1,638 SCRIPTED replies, not Qwen. The unused finite loss change-24
