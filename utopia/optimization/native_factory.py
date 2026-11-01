@@ -111,10 +111,14 @@ class LocalQwenNativeFactory:
             record_native_http(model, sim, root / 'wire-requests.jsonl')
         if self.inference_lock:
             serialize_native_http(model, self.inference_lock)
-        if self.record_code and any(n.implementation == 'code.python.v1' for n in spec.mechanisms):
+        from utopia.system.native_process import IMPLEMENTATION as PROCESS_IMPLEMENTATION, _validate_parameters
+        code_nodes = [(_validate_parameters(n.parameters) if n.implementation == PROCESS_IMPLEMENTATION else n)
+                      for n in spec.mechanisms]
+        code_nodes = [n for n in code_nodes if n.implementation == 'code.python.v1']
+        if self.record_code and code_nodes:
             from utopia.optimization.native_code_trace import RecordingCodeExecutor
             from utopia.system.code_mechanisms import DockerCodeExecutor
-            images = {n.parameters['runtime_image_id'] for n in spec.mechanisms if n.implementation == 'code.python.v1'}
+            images = {n.parameters['runtime_image_id'] for n in code_nodes}
             try:
                 if len(images) != 1:
                     raise ValueError('native code recording requires one explicitly pinned image')

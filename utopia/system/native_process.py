@@ -45,7 +45,7 @@ def controlled_activity(node, *, count=1, limit=16, control=False,
     _validate_parameters(parameters)
     return replace(node, implementation=IMPLEMENTATION, version=1,
         parameters=parameters,
-        inputs=(*(replace(p, required=False) if control or count == 0 else p for p in node.inputs),
+        inputs=(*(replace(p, required=False) if control or count == 0 or until_path is not None else p for p in node.inputs),
                 *((PortSpec('process-control', ChannelKind.SIGNAL, CONTROL, required=missing_control != 'wait'),) if control else ())),
         outputs=(*(replace(p, required=False) for p in node.outputs),
                  PortSpec(DONE, ChannelKind.SIGNAL, CONTROL)))
@@ -132,6 +132,7 @@ def _handler(registry, context):
             if not isinstance(result.next_state, dict):
                 raise GraphRuntimeError('process delegate state must remain a JSON mapping')
             state = _clone(result.next_state)
+        iteration_offset = len(events)
         events.extend(replace(event, provenance={**event.provenance,
             'process_iteration': iteration, 'delegate_implementation': delegate.implementation,
             'delegate_contract_sha256': sha(parameters['delegate']),
@@ -141,7 +142,9 @@ def _handler(registry, context):
             'state_after_sha256': sha(state),
             'outputs_sha256': sha({k: [dict(v.payload) for v in values] for k, values in normalized.items()})}))
         for port, values in normalized.items():
-            outputs[port].extend(replace(value, event_prefix_length=len(events)) for value in values)
+            outputs[port].extend(replace(value, event_prefix_length=(len(events)
+                if value.event_prefix_length is None else iteration_offset + value.event_prefix_length))
+                for value in values)
         executed += 1
     receipt = {'year': context.period, 'enabled': enabled, 'requested': count, 'waiting_for_control': waiting,
         'executed': executed, 'limit': parameters['limit'],
@@ -172,6 +175,8 @@ def register_native_process(kernel, registry):
             if kernel.code_executor is None:
                 kernel.code_executor = DockerCodeExecutor(next(iter(images)))
             register_code_mechanisms(registry, kernel.code_executor, kernel.execution_receipts)
+        if getattr(kernel.code_executor, 'image_id', None) != next(iter(images)):
+            raise GraphRuntimeError('process code executor image does not match the pinned delegate image')
     # All delegates resolve before any activity mutates the actual society.
     from .code_mechanisms import _schema
     for node in delegates:

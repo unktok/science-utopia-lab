@@ -109,6 +109,51 @@ def test_budget_and_cycle_fail_without_activity_mutation():
         compile_dependencies(spec,dependencies)
 
 
+def test_explicit_delegate_event_prefix_survives_composition():
+    spec, registry, seen = counter_system(count=2)
+    def work(c):
+        n = c.state['n'] + 1
+        return MechanismResult(outputs={'value': (MechanismValue({'n': n}, event_prefix_length=1),)},
+            next_state={'n': n}, events=(MechanismEvent('early', payload={'n': n}),
+                                        MechanismEvent('late', payload={'n': n})))
+    registry.register('test.work', 1, work, replace=True)
+    result = DeterministicGraphRunner(spec, registry).run(periods=1, start_period=1)
+    events = {e.event_id: e for e in result.events}
+    for value in seen:
+        attached = [events[e] for e in value.lineage_event_ids]
+        assert any(e.event_type == 'early' and e.payload['n'] == value.payload['n'] for e in attached)
+        assert not any(e.event_type == 'late' and e.payload['n'] == value.payload['n'] for e in attached)
+
+
+def test_until_already_true_can_complete_without_unused_required_input():
+    delegate = MechanismSpec('work', MechanismFamily.CUSTOM, 'test.must-not-call',
+        inputs=(PortSpec('unavailable', ChannelKind.ARTIFACT, 'measurement'),))
+    worker = controlled_activity(delegate, until_path=['done'], initial_state={'done': True})
+    spec = SystemSpec('already-done', 1, artifact_types=(ArtifactTypeSpec(CONTROL), ArtifactTypeSpec('measurement')),
+        mechanisms=(worker,), schedules=(ScheduleSpec('work', 0),))
+    registry = MechanismRegistry()
+    registry.register('test.must-not-call', 1, lambda _: pytest.fail('completed activity must not execute'))
+    register_native_process(type('K', (), {'spec': spec})(), registry)
+    result = DeterministicGraphRunner(spec, registry).run(periods=1, start_period=1)
+    assert result.checkpoint.mechanism_states['work']['last_receipt']['executed'] == 0
+    assert any(e.event_type == 'native.process.skipped' for e in result.events)
+
+
+def test_delayed_control_waits_then_executes_actual_activity():
+    spec, registry, seen = counter_system(count=2)
+    worker = next(n for n in spec.mechanisms if n.mechanism_id == 'work')
+    worker = replace(worker, parameters={**worker.parameters, 'missing_control': 'wait'},
+        inputs=tuple(replace(p, required=False) if p.port_id == 'process-control' else p for p in worker.inputs))
+    spec = replace(spec, mechanisms=tuple(worker if n.mechanism_id == 'work' else n for n in spec.mechanisms),
+        connections=tuple(replace(e, latency=1) if e.source_mechanism == 'control' else e for e in spec.connections))
+    result = DeterministicGraphRunner(spec, registry).run(periods=1, start_period=1)
+    assert seen == []
+    assert result.checkpoint.mechanism_states['work']['last_receipt']['waiting_for_control'] is True
+    continued = DeterministicGraphRunner(spec, registry).run(periods=1, checkpoint=result.checkpoint.to_dict())
+    assert [v.payload['n'] for v in seen] == [1, 2]
+    assert continued.checkpoint.mechanism_states['work']['total_invocations'] == 2
+
+
 CONTROLLER='''def step(context):
     plan=context['inputs']['plans'][0]['payload']
     return {'outputs':{'control':[{'payload':{'enabled':context['period'] % 2 == 1,'count':min(2,len(plan['assignments']))}}]},'state':{}}
