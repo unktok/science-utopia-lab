@@ -17,6 +17,7 @@ export default defineConfig({
         generative: resolve(__dirname, "generative.html"),
         native: resolve(__dirname, "native.html"),
         lifecycle: resolve(__dirname, "lifecycle.html"),
+        openEvidence: resolve(__dirname, "open-evidence.html"),
       },
     },
   },

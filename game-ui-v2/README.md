@@ -67,6 +67,16 @@ durable migration receipt. With no society API it fails closed as unavailable;
 disabled. The historical v5 candidate is never submitted through this live
 console. See `research/tracks/native-design-lifecycle-ui-v6.md`.
 
+The v7 open-native evidence viewer is at `/open-evidence.html`. It renders a
+hash-bound exported `scienceutopia.native-open-integrated-pilot.v7` artifact:
+evolving generated vocabularies, actual conditional draws, complete/null
+observations, NativeOpenDomain actors and artifacts, process iteration/skip
+receipts, the SystemSpec graph and represented conditional backward boundary.
+It never starts work. With no exported actual artifact it fails closed as
+unavailable. `?fixture=open-v7` opens a conspicuously labelled synthetic UI
+fixture and is never accepted through the actual channel. See
+`research/tracks/native-open-evidence-ui-v7.md`.
+
 Regenerate the portable, hash-bound browser snapshot without running an
 experiment:
 

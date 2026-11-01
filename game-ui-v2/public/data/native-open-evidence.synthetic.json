@@ -1,0 +1,93 @@
+{
+  "schema": "scienceutopia.native-open-integrated-pilot.v7",
+  "source_commit": "fixture-not-a-source-commit",
+  "world_binding": { "model": "synthetic-qwen-label-only", "seed": 42, "years": 2 },
+  "campaign_binding": { "mode": "hybrid", "seed": 17, "note": "synthetic UI fixture; no model or native world executed" },
+  "records": [
+    {
+      "request": { "generation": 0, "strategy_id": "fixture-designer-a", "count": 2 },
+      "request_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "definition": {
+        "base_patch": null,
+        "factors": [{ "id": "review-rhythm", "choices": ["annual", "rolling"] }],
+        "continuous": [{ "id": "signal-bias", "path": "/mechanisms/1/parameters/program/parameters/bias", "lower": -1, "upper": 1, "mean": 0, "sigma": 0.2 }],
+        "provenance": { "fixture": true }
+      },
+      "version_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "generation_error": null,
+      "draws": [
+        { "assignment": { "review-rhythm": "annual" }, "factor_trace": [], "latent": [0.15], "continuous_operations": [{ "op": "replace", "path": "/mechanisms/1/parameters/program/parameters/bias", "value": 0.07 }], "conditional_latent_log_probability": -0.2, "suggestion": { "suggestion_id": "fixture-0", "candidate": {} } },
+        { "assignment": { "review-rhythm": "rolling" }, "factor_trace": [], "latent": [-0.4], "continuous_operations": [{ "op": "replace", "path": "/mechanisms/1/parameters/program/parameters/bias", "value": -0.19 }], "conditional_latent_log_probability": -0.5, "suggestion": { "suggestion_id": "fixture-1", "candidate": {} } }
+      ],
+      "observations": [
+        { "status": "complete", "loss": 0, "observation_id": "fixture-observation-0", "metadata": { "technical_failures": [] } },
+        { "status": "failed", "loss": null, "observation_id": "fixture-observation-1", "metadata": { "technical_failures": [{ "type": "FixtureFailure" }] } }
+      ],
+      "report": {
+        "status": "not-updated-technical-failure",
+        "strategy_before": { "logits": [0, 0], "statistics": {} },
+        "strategy_after": { "logits": [0, 0], "statistics": {} },
+        "mixed": { "status": "not-updated-technical-failure", "losses": [0, null], "weights_before": {}, "weights_after": {}, "gradient": null },
+        "strategy_gradient": null
+      }
+    }
+  ],
+  "observations": [
+    {
+      "generation": 0,
+      "strategy": "fixture-designer-a",
+      "draw": { "assignment": { "review-rhythm": "annual" }, "latent": [0.15], "continuous_operations": [{ "op": "replace", "path": "/mechanisms/1/parameters/program/parameters/bias", "value": 0.07 }], "conditional_latent_log_probability": -0.2 },
+      "observation": { "status": "complete", "loss": 0, "observation_id": "fixture-observation-0", "metadata": { "technical_failures": [] } },
+      "checkpoint_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "year": 2,
+      "open_domain": {
+        "schema": "scienceutopia.native-open-domain-state.v1",
+        "actors": { "night-lab": { "id": "night-lab", "type": "research-collective", "roles": ["curator", "author"], "state": { "focus": "open methods", "active": true }, "revision": 1, "created_year": 1, "updated_year": 2 } },
+        "artifacts": { "signal-atlas": { "id": "signal-atlas", "type": "living-map", "owner_actor": "night-lab", "content": { "title": "Signal Atlas", "entries": 3 }, "actor_ids": ["night-lab"], "artifact_ids": [], "native_paper_ids": ["fixture-paper-1"], "revision": 2, "created_year": 1, "updated_year": 2 } },
+        "values": {}, "actor_types": { "research-collective": { "roles": ["curator", "author"], "state_schema": { "type": "object" } } }, "artifact_types": { "living-map": { "type": "object" } },
+        "receipts": {}, "last_receipt_key": null
+      },
+      "process_receipts": [
+        { "event_type": "native.process.iteration", "payload": { "iteration": 0, "delegate_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "state_after_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "outputs_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" } },
+        { "event_type": "native.process.completed", "payload": { "year": 2, "enabled": true, "requested": 1, "waiting_for_control": false, "executed": 1, "limit": 4, "delegate_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" } },
+        { "event_type": "native.process.skipped", "payload": { "year": 2, "enabled": false, "requested": 2, "waiting_for_control": false, "executed": 0, "limit": 4, "delegate_contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111" } }
+      ],
+      "events": [{ "event_type": "native.domain.command_committed", "payload": { "fixture": true } }],
+      "system": {
+        "schema": "scienceutopia.system-spec.v1", "system_id": "fixture-open-system", "version": 1, "system_fingerprint": "2222222222222222222222222222222222222222222222222222222222222222",
+        "mechanisms": [
+          { "mechanism_id": "world.research", "family": "research", "implementation": "native.world.llm-institution.v1", "version": 1, "parameters": { "prompt": "fixture-only" }, "inputs": [], "outputs": [{ "port_id": "papers", "artifact_type": "paper", "channel": "artifact", "required": false }] },
+          { "mechanism_id": "open-memory-router", "family": "memory", "implementation": "native.tensor.program.v1", "version": 1, "parameters": { "program": { "parameters": { "bias": 0.07 } } }, "inputs": [{ "port_id": "papers", "artifact_type": "paper", "channel": "artifact", "required": false }], "outputs": [{ "port_id": "actions", "artifact_type": "domain-actions", "channel": "signal", "required": false }] },
+          { "mechanism_id": "open-domain", "family": "domain", "implementation": "native.domain.commands.v1", "version": 1, "parameters": { "capabilities": {} }, "inputs": [{ "port_id": "actions", "artifact_type": "domain-actions", "channel": "signal", "required": false }], "outputs": [] }
+        ],
+        "connections": [
+          { "source_mechanism": "world.research", "source_port": "papers", "target_mechanism": "open-memory-router", "target_port": "papers", "channel": "artifact", "latency": 0 },
+          { "source_mechanism": "open-memory-router", "source_port": "actions", "target_mechanism": "open-domain", "target_port": "actions", "channel": "signal", "latency": 0 }
+        ],
+        "schedules": []
+      },
+      "boundary_coverage": {
+        "schema": "scienceutopia.native-hybrid-fidelity.v7.boundary-coverage", "system_fingerprint": "2222222222222222222222222222222222222222222222222222222222222222", "represented_mechanisms": ["open-memory-router"], "trace_frames": 2,
+        "edges": [
+          { "source_mechanism": "world.research", "source_port": "papers", "target_mechanism": "open-memory-router", "target_port": "papers", "derivative_coverage": "conditioned-numeric-input-opaque-upstream" },
+          { "source_mechanism": "open-memory-router", "source_port": "actions", "target_mechanism": "open-domain", "target_port": "actions", "derivative_coverage": "opaque-consumer-or-native-effect" }
+        ],
+        "verified_represented_mechanisms": ["open-memory-router"], "opaque_mechanisms": [{ "mechanism": "world.research", "boundary": "arbitrary-source-or-LLM" }], "nonnumeric_records": "actor/artifact IDs and text remain routable data, not numerical differentiable coordinates", "full_native_world_autograd": false
+      },
+      "conditional_backward": {
+        "schema": "scienceutopia.native-hybrid-fidelity.v7.conditional-backward", "trace_sha256": "3333333333333333333333333333333333333333333333333333333333333333", "conditional_soft_loss": -0.25, "finite_difference_epsilon": 0.00001,
+        "gradient": { "open-memory-router": { "bias": [0.125] } }, "numerical_checks": [{ "mechanism": "open-memory-router", "parameter": "bias", "status": "passed" }], "status": "passed", "native_loss_gradient_verified": false, "full_native_world_autograd": false
+      }
+    },
+    {
+      "generation": 0,
+      "strategy": "fixture-designer-a",
+      "draw": { "assignment": { "review-rhythm": "rolling" }, "latent": [-0.4], "continuous_operations": [{ "op": "replace", "path": "/mechanisms/1/parameters/program/parameters/bias", "value": -0.19 }], "conditional_latent_log_probability": -0.5 },
+      "observation": { "status": "failed", "loss": null, "observation_id": "fixture-observation-1", "metadata": { "technical_failures": [{ "type": "FixtureFailure" }] } }
+    }
+  ],
+  "authoring": { "kind": "synthetic-ui-fixture", "authenticated": false },
+  "claims": { "live_fixed_Qwen_researchers": true, "scripted_researcher_HTTP": false, "engineering_count_loss": true, "held_out": false, "causal_institutional_benefit": false, "scientific_value": false, "full_native_world_pathwise_autograd": false, "designer_improvement_established": false, "external_authorship_authenticated": false },
+  "ui_fixture": true,
+  "content_sha256": "cd76b94f77eb04f0423dc1c103c2cb3e9cac2ff1ad5b6ca36aa9c27d00e654b6"
+}

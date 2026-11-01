@@ -1,0 +1,77 @@
+import { canonicalHash } from "./hash";
+
+type Row = Record<string, any>;
+export interface OpenEvidenceClaims {
+  live_fixed_Qwen_researchers: true; scripted_researcher_HTTP: false; engineering_count_loss: true;
+  held_out: false; causal_institutional_benefit: false; scientific_value: false;
+  full_native_world_pathwise_autograd: false; designer_improvement_established: false; external_authorship_authenticated: false;
+}
+export interface OpenEvidenceObservation {
+  generation: number; strategy: string; draw: Row; observation: Row | null; checkpoint_sha256?: string;
+  open_domain?: Row; process_receipts?: Row[]; events?: Row[]; system?: Row; year?: number;
+  boundary_coverage?: Row; conditional_backward?: Row;
+}
+export interface NativeOpenEvidence {
+  schema: "scienceutopia.native-open-integrated-pilot.v7"; source_commit: string; world_binding: Row; campaign_binding: Row;
+  records: Row[]; observations: OpenEvidenceObservation[]; authoring: unknown; claims: OpenEvidenceClaims; content_sha256: string;
+  ui_fixture?: true;
+}
+const SHA = /^[0-9a-f]{64}$/;
+const row = (value: unknown, label: string): Row => { if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be an object`); return value as Row; };
+const array = (value: unknown, label: string): any[] => { if (!Array.isArray(value)) throw new Error(`${label} must be an array`); return value; };
+const finite = (value: unknown, label: string): number => { if (typeof value !== "number" || !Number.isFinite(value)) throw new Error(`${label} must be finite`); return value; };
+const sha = (value: unknown, label: string): string => { if (typeof value !== "string" || !SHA.test(value)) throw new Error(`${label} must be lowercase SHA256`); return value; };
+
+function validateOpenDomain(value: unknown): void {
+  const domain = row(value, "open_domain");
+  if (domain.schema !== "scienceutopia.native-open-domain-state.v1") throw new Error("Unexpected NativeOpenDomain schema");
+  for (const key of ["actors", "artifacts", "actor_types", "artifact_types", "values", "receipts"]) row(domain[key], `open_domain.${key}`);
+  for (const [id, actorValue] of Object.entries(domain.actors)) {
+    const actor = row(actorValue, `actor ${id}`); if (actor.id !== id || typeof actor.type !== "string" || !Array.isArray(actor.roles) || !Number.isInteger(actor.revision)) throw new Error(`Invalid actor ${id}`);
+  }
+  for (const [id, artifactValue] of Object.entries(domain.artifacts)) {
+    const artifact = row(artifactValue, `artifact ${id}`); if (artifact.id !== id || typeof artifact.type !== "string" || !Array.isArray(artifact.actor_ids) || !Array.isArray(artifact.artifact_ids) || !Array.isArray(artifact.native_paper_ids)) throw new Error(`Invalid artifact ${id}`);
+  }
+}
+
+export function parseNativeOpenEvidence(value: unknown, mode: "actual" | "fixture" = "actual"): NativeOpenEvidence {
+  const data = row(value, "Native open evidence");
+  if (data.schema !== "scienceutopia.native-open-integrated-pilot.v7") throw new Error("Unsupported native-open evidence schema");
+  if ((mode === "fixture") !== (data.ui_fixture === true)) throw new Error(mode === "fixture" ? "Fixture must carry ui_fixture=true" : "Synthetic fixture cannot enter the actual evidence channel");
+  sha(data.content_sha256, "content_sha256"); row(data.world_binding, "world_binding"); row(data.campaign_binding, "campaign_binding");
+  const claims = row(data.claims, "claims");
+  const exact: Record<string, boolean> = { live_fixed_Qwen_researchers: true, scripted_researcher_HTTP: false, engineering_count_loss: true, held_out: false, causal_institutional_benefit: false, scientific_value: false, full_native_world_pathwise_autograd: false, designer_improvement_established: false, external_authorship_authenticated: false };
+  for (const [key, expected] of Object.entries(exact)) if (claims[key] !== expected) throw new Error(`Unsupported truth claim ${key}`);
+  const records = array(data.records, "records"); const observations = array(data.observations, "observations");
+  for (const [index, valueRow] of observations.entries()) {
+    const item = row(valueRow, `observation row ${index}`); if (!Number.isInteger(item.generation) || item.generation < 0 || typeof item.strategy !== "string") throw new Error(`Invalid observation identity ${index}`);
+    const draw = row(item.draw, `draw ${index}`); const observation = item.observation === null ? null : row(item.observation, `observation ${index}`);
+    if (observation === null || observation.status !== "complete") {
+      if (observation !== null && observation.loss !== null) throw new Error("Incomplete observation must retain null loss");
+      for (const forbidden of ["checkpoint_sha256", "open_domain", "process_receipts", "events", "system", "year", "boundary_coverage", "conditional_backward"]) if (forbidden in item) throw new Error(`Incomplete observation fabricated ${forbidden}`);
+      continue;
+    }
+    finite(observation.loss, `observation ${index} loss`); sha(item.checkpoint_sha256, `observation ${index} checkpoint`); row(item.system, `system ${index}`); validateOpenDomain(item.open_domain);
+    if (!Number.isInteger(item.year) || item.year < 1) throw new Error(`Invalid endpoint year ${index}`);
+    const receipts = array(item.process_receipts, `process_receipts ${index}`); const events = array(item.events, `events ${index}`);
+    if (receipts.some((event) => !String(row(event, "process receipt").event_type).startsWith("native.process."))) throw new Error("Non-process event in process receipts");
+    const coverage = row(item.boundary_coverage, `boundary coverage ${index}`); const backward = row(item.conditional_backward, `conditional backward ${index}`);
+    if (coverage.full_native_world_autograd !== false || backward.full_native_world_autograd !== false || backward.native_loss_gradient_verified !== false) throw new Error("Conditional derivative relabelled as full-world/native-loss gradient");
+    if (!Array.isArray(events) || typeof draw !== "object") throw new Error("Incomplete execution evidence");
+  }
+  for (const [index, valueRecord] of records.entries()) {
+    const record = row(valueRecord, `record ${index}`); const request = row(record.request, `request ${index}`);
+    if (request.generation !== index || typeof request.strategy_id !== "string" || !Array.isArray(record.draws) || !Array.isArray(record.observations)) throw new Error(`Invalid campaign record ${index}`);
+    if (record.report !== null) { const report = row(record.report, `report ${index}`); row(report.strategy_before, "strategy_before"); row(report.strategy_after, "strategy_after"); if (report.mixed !== null) row(report.mixed, "mixed report"); }
+  }
+  return data as NativeOpenEvidence;
+}
+
+export async function verifyNativeOpenEvidence(value: unknown, mode: "actual" | "fixture" = "actual"): Promise<NativeOpenEvidence> {
+  const parsed = parseNativeOpenEvidence(value, mode); const payload = { ...parsed } as Row; delete payload.content_sha256;
+  // The actual artifact is hash-verified by the exporter with Python's exact
+  // JSON number spelling. A browser parse cannot preserve 0 versus 0.0, so it
+  // must not pretend to independently reproduce that semantic hash.
+  if (mode === "fixture" && await canonicalHash(payload) !== parsed.content_sha256) throw new Error("Native-open fixture content hash mismatch");
+  return parsed;
+}
