@@ -131,3 +131,12 @@ export function parseSocietyFixture(value: unknown): SocietyFixtureEnvelope {
   if (envelope.schema !== "scienceutopia.native-society-session-ui-fixture.v1" || envelope.label !== "SYNTHETIC UI FIXTURE / ACTIONS DISABLED") throw new Error("Unlabelled society fixture rejected");
   return { schema: envelope.schema, label: envelope.label, projection: parseNativeSocietyProjection(envelope.projection) };
 }
+
+export function latestRecoverableAdoption(projection: NativeSocietyProjection): SocietyRequest | null {
+  const adoption = projection.adoptions.at(-1);
+  if (!adoption) return null;
+  const request = projection.requests.find((item) => item.request_id === adoption.request_id && item.request_sha256 === adoption.request_sha256);
+  if (!request || request.candidate_fingerprint !== adoption.candidate_fingerprint) return null;
+  const confirmed = projection.confirmations.some((item) => item.request_id === request.request_id && item.request_sha256 === request.request_sha256);
+  return confirmed ? request : null;
+}

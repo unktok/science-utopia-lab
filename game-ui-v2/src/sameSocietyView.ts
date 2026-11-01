@@ -1,5 +1,5 @@
 import { AdoptionController } from "./designLifecycleContract";
-import { NativeSocietyApi, SocietyApiUnavailable, parseSocietyFixture, type NativeSocietyProjection, type SocietyRequest } from "./nativeSocietySession";
+import { NativeSocietyApi, SocietyApiUnavailable, latestRecoverableAdoption, parseSocietyFixture, type NativeSocietyProjection, type SocietyRequest } from "./nativeSocietySession";
 
 const node = <T extends HTMLElement>(id: string): T => { const value = document.getElementById(id); if (!value) throw new Error(`Missing same-society UI element ${id}`); return value as T; };
 const escape = (value: unknown): string => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
@@ -33,8 +33,9 @@ export class SameSocietyView {
       this.api = await NativeSocietyApi.connect(this.fetcher);
       this.controller = new AdoptionController(this.api);
       this.projection = await this.api.projection();
-      this.resumeConfirmedPending();
-      this.source = "real"; this.render();
+      this.source = "real";
+      await this.restoreBackendState();
+      this.render();
       if (this.controller.state === "pending") this.schedulePoll();
     } catch (error) {
       this.source = error instanceof SocietyApiUnavailable ? "unavailable" : "failed";
@@ -44,11 +45,26 @@ export class SameSocietyView {
 
   private pending(): SocietyRequest | null { return this.projection?.pending ?? null; }
 
-  private resumeConfirmedPending(): void {
+  private displayedRequest(): SocietyRequest | null {
     const pending = this.pending();
-    if (!pending || !this.controller || this.controller.state !== "confirm-required") return;
-    const confirmed = this.projection!.confirmations.some((item) => item.request_id === pending.request_id && item.request_sha256 === pending.request_sha256);
-    if (confirmed) this.controller.resumePending(pending, pending.request_sha256);
+    if (pending) return pending;
+    if (this.controller?.state !== "completed" || !this.projection) return null;
+    return this.projection.requests.find((item) => item.request_id === this.controller!.requestId && item.request_sha256 === this.controller!.requestSha256) ?? null;
+  }
+
+  private async restoreBackendState(): Promise<void> {
+    const pending = this.pending();
+    if (!this.controller || this.controller.state !== "confirm-required") return;
+    if (pending) {
+      const confirmed = this.projection!.confirmations.some((item) => item.request_id === pending.request_id && item.request_sha256 === pending.request_sha256);
+      if (confirmed) this.controller.resumePending(pending, pending.request_sha256);
+      return;
+    }
+    const adopted = latestRecoverableAdoption(this.projection!);
+    if (!adopted) return;
+    this.controller.resumePending(adopted, adopted.request_sha256);
+    await this.controller.refresh();
+    if ((this.controller.state as string) !== "completed") throw new Error("Recorded adoption lacks a verified durable migration receipt");
   }
 
   private render(): void {
@@ -76,7 +92,7 @@ export class SameSocietyView {
   }
 
   private renderRequest(): void {
-    const request = this.pending(), fixture = this.source === "fixture";
+    const request = this.displayedRequest(), fixture = this.source === "fixture";
     const input = node<HTMLInputElement>("society-confirm-hash"), consent = node<HTMLInputElement>("society-consent");
     if (!request) {
       node("society-request-state").textContent = "NO STAGED REQUEST"; node("society-request-state").className = "";
@@ -123,7 +139,7 @@ export class SameSocietyView {
     this.busy = true;
     try {
       if (this.controller?.state === "pending") await this.controller.refresh();
-      this.projection = await this.api.projection(); this.resumeConfirmedPending(); this.source = "real"; this.render();
+      this.projection = await this.api.projection(); await this.restoreBackendState(); this.source = "real"; this.render();
       if (this.controller?.state === "pending") this.schedulePoll();
     } catch (error) {
       if (error instanceof SocietyApiUnavailable) { this.source = "unavailable"; this.renderUnavailable(error); }

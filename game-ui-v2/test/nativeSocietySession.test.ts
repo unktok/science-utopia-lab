@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
-import { NativeSocietyApi, SocietyApiUnavailable, parseNativeSocietyProjection, parseSocietyFixture } from "../src/nativeSocietySession";
+import { NativeSocietyApi, SocietyApiUnavailable, latestRecoverableAdoption, parseNativeSocietyProjection, parseSocietyFixture } from "../src/nativeSocietySession";
 
 const envelope = () => JSON.parse(readFileSync(new URL("../public/data/native-society-session-ui-fixture-v1.json", import.meta.url), "utf8"));
 
@@ -35,6 +35,15 @@ describe("same-society projection contract", () => {
       request_sha256: projection.pending.request_sha256,
     }];
     expect(parseNativeSocietyProjection(projection).confirmations).toEqual(projection.confirmations);
+  });
+
+  it("recovers a completed request only when adoption and confirmation share its exact identity", () => {
+    const projection = parseNativeSocietyProjection(envelope().projection);
+    const adoption = projection.adoptions[0]!;
+    projection.confirmations = [{ request_id: adoption.request_id, request_sha256: adoption.request_sha256 }];
+    expect(latestRecoverableAdoption(projection)?.request_sha256).toBe(adoption.request_sha256);
+    projection.confirmations = [];
+    expect(latestRecoverableAdoption(projection)).toBeNull();
   });
 });
 
