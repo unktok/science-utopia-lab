@@ -194,13 +194,16 @@ class NativeGradientCampaign:
                     or (observation.status == 'complete') != (evaluated['status'] == 'complete')
                     or observation.loss != (evaluated['loss'] if evaluated['status'] == 'complete' else None)):
                 raise ValueError('native gradient loss/measurement evidence changed')
+            if self.initial['schema'] == 'scienceutopia.native-discrete-policy.v1':
+                from .native_discrete_policy import verify_native_observation
+                verify_native_observation(observation, self.binding['world'], self.seeds)
             return observation
-        replayed = NativeScoreFunctionSearch.from_state(self.initial, loss_spec=self.loss_spec)
+        replayed = self._restore_search(self.initial)
         for report in self.state['reports']:
             replayed.ask(len(report['draws']))
             if replayed.tell([checked(o) for o in report['observations']]) != report:
                 raise ValueError('native gradient update history changed')
-        saved = NativeScoreFunctionSearch.from_state(self.state['search'], loss_spec=self.loss_spec)
+        saved = self._restore_search(self.state['search'])
         if saved.pending:
             replayed.ask(len(saved.pending))
         if replayed.state_dict() != saved.state_dict() or len(self.state['observations']) > len(saved.pending):
@@ -210,6 +213,12 @@ class NativeGradientCampaign:
             if observation.suggestion_id != record['suggestion']['suggestion_id'] or observation.candidate != record['suggestion']['candidate']:
                 raise ValueError('native gradient pending observation identity changed')
         return saved
+
+    def _restore_search(self, state):
+        if state['schema'] == 'scienceutopia.native-discrete-policy.v1':
+            from .native_discrete_policy import NativeDiscretePolicySearch
+            return NativeDiscretePolicySearch.from_state(state, loss_spec=self.loss_spec)
+        return NativeScoreFunctionSearch.from_state(state, loss_spec=self.loss_spec)
 
     def advance(self, *, simulation_factory, count=2):
         from .blackbox import Observation
@@ -226,6 +235,9 @@ class NativeGradientCampaign:
                 simulation_factory=simulation_factory, loss_spec=self.loss_spec)
             self.state['observations'].append(observation.to_dict())
             self._save()
+        # Reopen newly committed evidence before, not only after, updating a
+        # policy. This also binds discrete draws to their native checkpoints.
+        self._validate()
         report = search.tell([Observation.from_dict(o) for o in self.state['observations']])
         self.state['reports'].append(report)
         self.state['search'], self.state['observations'] = search.state_dict(), []

@@ -13,6 +13,12 @@ sys.path.insert(0, str(ROOT))
 
 
 def audit(run, loss, years, *, require_completion=True, native_run_directory=None):
+    # Both CLI and programmatic callers may supply relative paths. SQLite's
+    # read-only URI requires an absolute path; normalize before constructing any
+    # nested checkpoint/cache paths, without rewriting the archived evidence.
+    run = Path(run).resolve()
+    if native_run_directory is not None:
+        native_run_directory = Path(native_run_directory).resolve()
     from utopia.optimization.loss import evaluate_loss
     from utopia.optimization.native_design import NativeDesignCampaign
     from utopia.replay.converter import ArtifactBundle, convert_artifacts

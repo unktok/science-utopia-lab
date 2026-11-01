@@ -1,5 +1,6 @@
 import json
 import sqlite3
+from pathlib import Path
 
 from scripts.audit_native_transition_v3 import compare_direction_records
 from utopia.system.code_mechanisms import sha
@@ -36,3 +37,13 @@ def test_actual_author_activity_matching_ignores_http_arrival_order(tmp_path):
     assert all(p['same_request_seed'] for p in result['pairs'])
     assert [p['publication_history_view_changed'] for p in result['pairs']] == [True, False]
     assert [p['reply_content_changed'] for p in result['pairs']] == [True, False]
+
+
+def test_relative_wire_roots_are_safe_readonly_sqlite_uris(tmp_path, monkeypatch):
+    fixture_wire(tmp_path / 'left')
+    fixture_wire(tmp_path / 'right', changed=True)
+    monkeypatch.chdir(tmp_path)
+    result = compare_direction_records(Path('left'), Path('right'),
+        author_ids=['institution_0000_researcher_0', 'institution_0001_researcher_0'])
+    assert len(result['pairs']) == 2
+    assert result['pairs'][0]['reply_content_changed']

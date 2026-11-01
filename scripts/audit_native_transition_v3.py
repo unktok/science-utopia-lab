@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT))
 def direction_records(root, *, year, author_ids):
     """Match actual fixed-agent direction requests, not HTTP arrival positions."""
     from utopia.system.code_mechanisms import sha
+    root = Path(root).resolve()
     rows = [json.loads(line) for line in (root / 'wire-requests.jsonl').read_text().splitlines()]
     db = sqlite3.connect((root / 'replies/responses.sqlite').as_uri() + '?mode=ro', uri=True)
     try:
@@ -63,6 +64,7 @@ def compare_direction_records(left, right, *, author_ids, year=3):
 
 
 def audit_transition(run, loss):
+    run = Path(run).resolve()
     import torch
     from scripts.audit_native_design_loop import audit
     from scripts.audit_native_feedback_v2 import wire_summary

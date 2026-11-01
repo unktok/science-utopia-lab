@@ -17,6 +17,7 @@ from utopia.utils.data_utils import file_sha256
 
 
 def wire_summary(cell, *, needle, required):
+    cell = Path(cell).resolve()
     wire = cell / 'wire-requests.jsonl'
     if not wire.exists():
         if required: raise ValueError('actual request journal required')
@@ -75,12 +76,18 @@ def source_audit(run, loss, *, require_wire):
 
 
 def gradient_audit(run, loss):
+    run = Path(run).resolve()
     from utopia.optimization.native_gradient import NativeScoreFunctionSearch, NativeGradientCampaign
     from utopia.system.native_kernel import NativeScienceKernel
     saved_path = run / 'campaign/native-gradient-state.json'
     before = file_sha256(saved_path)
     saved = json.loads(saved_path.read_text())
-    search = NativeScoreFunctionSearch.from_state(saved['binding']['search_definition'], loss_spec=loss)
+    definition = saved['binding']['search_definition']
+    if definition['schema'] == 'scienceutopia.native-discrete-policy.v1':
+        from utopia.optimization.native_discrete_policy import NativeDiscretePolicySearch
+        search = NativeDiscretePolicySearch.from_state(definition, loss_spec=loss)
+    else:
+        search = NativeScoreFunctionSearch.from_state(definition, loss_spec=loss)
     campaign = NativeGradientCampaign(run / 'campaign', search, loss_spec=loss, seeds=saved['binding']['seeds'], world_binding=saved['binding']['world'])
     rows = []
     for report in campaign.state['reports']:
@@ -113,7 +120,8 @@ def gradient_audit(run, loss):
             rows.append({'candidate_fingerprint': spec.fingerprint, 'loss': observation['loss'], 'measurements': measured, 'wire': wires})
     if file_sha256(saved_path) != before: raise ValueError('read-only gradient audit changed state')
     return {'schema': 'scienceutopia.native-feedback-gradient-audit.v2', 'binding': saved['binding'], 'rows': rows,
-        'reports': [{k: r.get(k) for k in ('method', 'status', 'gradient', 'mean_before', 'mean_after', 'feedback_scope')} for r in saved['reports']],
+        'reports': [{k: r.get(k) for k in ('method', 'status', 'gradient', 'mean_before', 'mean_after',
+                    'logits_before', 'logits_after', 'distribution', 'feedback_scope')} for r in saved['reports']],
         'state_sha256': before, 'raw_output_root': str(run), 'full_native_world_autograd': False,
         'verification': 'deterministic estimator replay, independent checkpoint-derived losses, pinned fixed model, actual request hashes and unchanged campaign state'}
 

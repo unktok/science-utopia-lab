@@ -1,6 +1,7 @@
 import hashlib
 import json
 import sqlite3
+from pathlib import Path
 
 import pytest
 
@@ -26,6 +27,13 @@ def test_actual_inputs_and_completed_reply_hashes_match(tmp_path):
     recorded(tmp_path)
     result = wire_summary(tmp_path, needle='advisory-feedback', required=True)
     assert result['actual_requests'] == 1 and result['contexts_by_year'] == {'2': 1}
+
+
+def test_programmatic_relative_path_matches_absolute_readonly_audit(tmp_path, monkeypatch):
+    recorded(tmp_path)
+    expected = wire_summary(tmp_path, needle='advisory-feedback', required=True)
+    monkeypatch.chdir(tmp_path.parent)
+    assert wire_summary(Path(tmp_path.name), needle='advisory-feedback', required=True) == expected
 
 
 def test_corrupt_actual_request_is_rejected(tmp_path):
