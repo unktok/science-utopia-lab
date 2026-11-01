@@ -1,0 +1,183 @@
+{
+  "actions": [
+    1,
+    1
+  ],
+  "audit_new_model_calls": 0,
+  "binding": {
+    "search_definition": {
+      "baseline": 0,
+      "distribution": "categorical",
+      "iteration": 0,
+      "learning_rate": 0.1,
+      "logits": [
+        0,
+        0
+      ],
+      "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+      "pending": [],
+      "schema": "scienceutopia.native-discrete-policy.v1",
+      "seed": 42
+    },
+    "seeds": [
+      1301
+    ],
+    "world": {
+      "candidate_origin": "explicit input SystemSpecs, not automatically invented by this optimizer",
+      "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+      "corpus_years": 4,
+      "data_cache": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-source-v3-a2/outputs/native-open-source-v3/cache",
+      "dataset_identity": {
+        "categories": [
+          "cs.AI",
+          "cs.AR",
+          "cs.CC",
+          "cs.CE",
+          "cs.CG",
+          "cs.CL",
+          "cs.CR",
+          "cs.CY",
+          "cs.DB",
+          "cs.DC",
+          "cs.DL",
+          "cs.DM",
+          "cs.DS",
+          "cs.ET",
+          "cs.FL",
+          "cs.LG",
+          "cs.LO",
+          "cs.NI",
+          "cs.OH",
+          "cs.OS",
+          "cs.PF",
+          "cs.PL",
+          "cs.RO",
+          "cs.SE",
+          "cs.SY"
+        ],
+        "configuration": "arxiv",
+        "dataset": "Ahren09/SciEvo",
+        "normalization": "parallel",
+        "num_years": 4,
+        "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+        "start_year": 2016
+      },
+      "design_manifest_sha256": "6588c81244862fa789a8f4fa3cda3fb3f6ebbab2d65e82fcd3c3530e1b3fff75",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "source_commit": "d6e4ef9836cea21a5fc059d2e1998cc08f8b9687",
+      "years": 2
+    },
+    "design_fingerprints": [
+      "ef28b1c08e57560219f0b82f3742be30cf8819c8fb2967dc0f6c671e1927ca64",
+      "6c7858d0a8e50119e7742c3bf16aff22c6dfd7db93f90bc883b30e5a4fd29039"
+    ]
+  },
+  "campaign_sha256": "56499dbb4b323f5a848edcc81faabef99782ce7a6ea08a22d0a0d45969acd8b6",
+  "gradient": [
+    1.5,
+    -1.5
+  ],
+  "limits": [
+    "one noisy batch, no convergence or held-out benefit claim",
+    "preexisting full designs; not new code/topology invention",
+    "exact policy score autograd, not pathwise native-world or LLM differentiation",
+    "gameable acceptance-count engineering objective, not scientific quality",
+    "Both native worlds use the same scientific seed; these are distinct physical executions, not independent held-out scientific replicates.",
+    "A nonzero fixed-baseline Monte Carlo score estimate can occur from sampled-action imbalance even when possible action costs are equal; do not infer useful signal from gradient magnitude alone."
+  ],
+  "logits_after": [
+    -0.15000000000000002,
+    0.15000000000000002
+  ],
+  "logits_before": [
+    0,
+    0
+  ],
+  "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+  "losses": [
+    -3,
+    -3
+  ],
+  "new_native_executions": 2,
+  "probabilities_before": [
+    0.5,
+    0.5
+  ],
+  "raw_files_verified_unchanged": 25,
+  "responses": 114,
+  "rows": [
+    {
+      "action": 1,
+      "fingerprint": "6c7858d0a8e50119e7742c3bf16aff22c6dfd7db93f90bc883b30e5a4fd29039",
+      "loss": -3,
+      "runs": [
+        {
+          "checkpoint_sha256": "9603e9bb1339b819d9ae73d1e28ebfba7c978012f5ee3ef2e2585f38794f960d",
+          "counts": {
+            "native.accepted_decisions": 3,
+            "native.final_active_authors": 5,
+            "native.final_author_resources": 640,
+            "native.institutional_context_deliveries": 0,
+            "native.rejected_decisions": 0,
+            "native.review_records": 9
+          },
+          "event_stream_hash": "7e427cb2a6e7e45242dfe19bc6e99ba7a74681545ed48167edcfa45203ceb0ed",
+          "executed_code": [
+            {
+              "artifact_sha256": "b7bd1b9a3fc1cbf7ec3ff2599a09376ed39742a8630227e44c26bca87ebf58ad",
+              "executions": 2,
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+              "mechanism_id": "world.selection"
+            }
+          ],
+          "response_journal_sha256": "0aafded0aae55ae4760ded44ffcfd82258e56aa22a549b77c7ac2d09ae858904",
+          "responses": 57,
+          "run_id": "native-discrete-e6f6a608b9683ed9c421-s1301"
+        }
+      ],
+      "suggestion_id": "native-discrete-e6f6a608b9683ed9c421"
+    },
+    {
+      "action": 1,
+      "fingerprint": "6c7858d0a8e50119e7742c3bf16aff22c6dfd7db93f90bc883b30e5a4fd29039",
+      "loss": -3,
+      "runs": [
+        {
+          "checkpoint_sha256": "cb676c1c82017478f555e15fec45cc1cfdee50ab362c9b0015048d72ef1b8ce2",
+          "counts": {
+            "native.accepted_decisions": 3,
+            "native.final_active_authors": 5,
+            "native.final_author_resources": 640,
+            "native.institutional_context_deliveries": 0,
+            "native.rejected_decisions": 0,
+            "native.review_records": 9
+          },
+          "event_stream_hash": "107d5c03f9c20301154692fa07b46fa7d6c59495a20ab480269917548a8327cf",
+          "executed_code": [
+            {
+              "artifact_sha256": "b7bd1b9a3fc1cbf7ec3ff2599a09376ed39742a8630227e44c26bca87ebf58ad",
+              "executions": 2,
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+              "mechanism_id": "world.selection"
+            }
+          ],
+          "response_journal_sha256": "71f2163595c4fc046b8382a4d53307cf6bbffc0017ceb068f93633db48f8c5da",
+          "responses": 57,
+          "run_id": "native-discrete-24ae918bd7cbe2c49e50-s1301"
+        }
+      ],
+      "suggestion_id": "native-discrete-24ae918bd7cbe2c49e50"
+    }
+  ],
+  "schema": "scienceutopia.fresh-native-policy-audit.v5",
+  "experiment_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-live-gradient-v5-a1",
+  "run_directory": "outputs/native-live-gradient-v5/run",
+  "protocol_sha256": "e13e8d6bfc232314c01188042619e95ce52e2473435051bbe5e913db2c3431f2",
+  "transfer_receipt_sha256": "7ca197b25dd6af34a7463cbb7632f6a9aa3e7d6db8f63491d85e4accb83ba1c6",
+  "prepare_to_completed_state_seconds": 654,
+  "probabilities_after": [
+    0.425557483188341,
+    0.574442516811659
+  ],
+  "interpretation": "Fresh full native costs reached exact categorical log-probability autograd and a durable update. Both preregistered draws sampled action1; no contrasting design was executed, so this is not evidence of comparative advantage or actual optimization improvement."
+}
