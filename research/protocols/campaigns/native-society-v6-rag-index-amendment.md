@@ -82,3 +82,21 @@ reference requires29 responses; no already completed year is requested again.
 These are infrastructure QA, not live-Qwen success or proxy benefit. Root must
 record the repaired live pin, new attempt, observed counts/losses, exact external
 reuse and UI/adoption evidence separately before declaring the pilot complete.
+
+## Accounting-double compatibility follow-up
+
+The full corrected-source regression initially reports3 accounting compatibility
+failures (`TestSubmissionRefactorCompatibility`) because its old `RAGFixture`
+did not declare `document_embeddings` at all and its build method was a no-op.
+Actual `RAG.__init__` has always declared the absent derived tensor as `None`.
+The new production readiness check correctly uses that real contract; weakening
+it with attribute-existence fallbacks would hide an incomplete test double.
+
+The follow-up changes **only the accounting fixture/tests and this note**: the
+double now declares an initial missing index and installs a deterministic NumPy
+placeholder when built. Its retrieval remains deliberately scripted, not proof
+of real embedding semantics. Its serializer omits that derived index exactly as
+before. Existing accounting golden references are not updated or normalized;
+they must pass unchanged. A focused lifecycle test checks missing→built→serialized
+→cold-restored readiness. The production RAG/cache repair and running a2 source,
+raw evidence, scientific world and binding checks are untouched.

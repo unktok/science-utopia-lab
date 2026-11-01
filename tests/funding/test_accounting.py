@@ -103,13 +103,19 @@ class ConferenceFixture:
 
 
 class RAGFixture:
-    """Deterministic retrieval fixture, never embeddings or production data."""
+    """Accounting double with explicit derived-index readiness, not real retrieval.
+
+    Real RAG always declares document_embeddings and rebuilds it after a cold
+    restore. The deterministic placeholder below models that lifecycle only;
+    real tensor/cache/retrieval behavior has separate integration tests.
+    """
     def __init__(self, count=3):
         self.documents = [
             SimpleNamespace(page_content=f"Abstract {i}", metadata={
                 "id": f"p{i}", "title": f"Paper {i}", "topics": ["algorithms"], "tags": ["cs.AI"],
             }) for i in range(count)]
         self.id2docs = {d.metadata["id"]: d for d in self.documents}
+        self.document_embeddings = None
         self.document_status = pd.DataFrame(
             [{"id": d.metadata["id"], "status": "unsubmitted"} for d in self.documents],
             columns=["id", "status"])
@@ -118,7 +124,7 @@ class RAGFixture:
         pass
 
     def build_knowledge_index(self):
-        pass
+        self.document_embeddings = np.zeros((len(self.documents), 1), dtype=np.float32)
 
     def set_current_year(self, year):
         pass
@@ -718,6 +724,17 @@ class TestSubmissionRefactorCompatibility(unittest.TestCase):
         for ns in cls.namespaces:
             ns.update(COI_NOTE=COI_NOTE, CitationResponse=native.SchemaStub,
                       SelfCitationResponse=native.SchemaStub)
+
+    def test_rag_fixture_models_cold_and_built_index_lifecycle(self):
+        rag = RAGFixture(3)
+        self.assertIsNone(rag.document_embeddings)
+        serialized = rag.to_dict()
+        rag.build_knowledge_index()
+        np.testing.assert_array_equal(rag.document_embeddings, np.zeros((3, 1), dtype=np.float32))
+        self.assertEqual(rag.to_dict(), serialized)  # derived index is not scientific checkpoint data
+        restored = RAGFixture.from_dict(serialized)
+        self.assertIsNone(restored.document_embeddings)
+        self.assertEqual(restored.to_dict(), serialized)
 
     def citation_scenario(self, ns, scenario, sequential=False, no_authors=False):
         with tempfile.TemporaryDirectory() as directory:
