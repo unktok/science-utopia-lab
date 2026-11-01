@@ -29,8 +29,12 @@ now binds the generic graph to the actual Simulation phases: the baseline
 contains the original world, while registered, isolated Python and open LLM
 institutions can exchange new protocols and affect researcher inputs or native
 publication decisions. The original world is a minimum instance, not the
-expressiveness ceiling. Annual domain prerequisites and new actor behavior
-remain explicit integration limits; this is not unlimited process freedom.
+expressiveness ceiling. Typed activity ports open native research plans and
+actual paper bundles. The optional v7 domain instantiates data-defined persistent
+actors, artifacts and state, with explicit capabilities for actual researcher
+inputs, project changes and conserving resource transfers. Developer-trusted
+plugins can register new typed effects; generated algorithms remain isolated.
+Native annual/paper/corpus physics are still explicit assumptions.
 
 Native joint design now has a durable `NativeDesignCampaign` and scoped
 `{rationale,nodes,exports}` authoring IR. A designer writes complete Python,
@@ -39,9 +43,31 @@ and schedules the declared cut. No missing institutional algorithm or semantic
 connection is inserted. Exact generated history and actual losses condition
 later proposals; technical probe failures have null loss. See
 [authoring and limits](../research/components/native-scoped-region-authoring-v5.md).
-Graph expressiveness must not be confused with native semantic coverage:
-research/submission/funding phases still share hidden annual `_frame` state,
-and adding an actor-type declaration does not instantiate new actor behavior.
+Graph expressiveness must not be confused with native semantic coverage. The
+legacy phase graph retains private annual transports; the opt-in activity graph
+replaces four with actual typed contracts. Actor declarations require explicit
+creation/actions; a data-defined participant is not automatically a new legacy
+researcher class or epistemically valid scientist.
+
+V7 `native.process.activity.v1` adds explicit dependencies, branch/wait/skip,
+bounded repetitions and delegate memory using the real registry, including
+Python/LLM/tensor/domain handlers. Wrapped source and memory/queued protocols are
+validated during adoption and cold reopening. Completion is an actual process
+receipt, not a fabricated scientific effect. Existing annual native phase calls
+remain single-shot under their annual request identities.
+
+`NativeAdaptiveDesignCampaign` connects evolving generated source/protocol/wiring
+definitions, mixed discrete/continuous native draws and actual loss feedback.
+Black-box statistics, exact conditional likelihood scores and a labelled hybrid
+heuristic update design/designer-strategy distributions. Generation probabilities
+remain opaque; an update is not demonstrated designer improvement.
+
+The optional tensor representation includes recurrent addressed memory,
+attention/routing and explicit-noise sampling. Conditional backward, installed
+parameter projection, native numerical perturbations, fresh original-world
+reevaluation and failed local-fidelity checks retain separate evidence. Native
+Python/text/researcher-response boundaries are not given fake pathwise gradients.
+See the [v7 inventory](../research/milestones/2026-11-02-non-scale-implementation-closure-v7.md).
 
 The new [resource capability](../research/components/native-resource-transfer-capability-v5.md)
 adds another real native effect: an explicitly connected arbitrary institution
@@ -76,6 +102,7 @@ and [Generative Program World](../research/components/generative-program-world-v
 | `utopia/analysis/` | numerical summaries and release validation |
 | `game-ui/` | presentation-only local replay viewer |
 | `game-ui-v2/generative.html` | recorded numeric worlds, generated rules/graphs, search paths and canonical evidence |
+| `game-ui-v2/open-evidence.html` | original-native domain/process/mixed-search/conditional-backward evidence, with actual versus fixture separation |
 | `research/specs/` | versioned schemas and concrete study definitions |
 | `outputs/` | ignored raw run artifacts |
 
