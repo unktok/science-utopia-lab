@@ -9,6 +9,9 @@ describe("objective-conditioned native structure viewer contract", () => {
     const parsed = await verifyFixtureReport(fixture);
     expect(parsed.arms[OBJECTIVE_IDS[0]].selection.tie_count).toBe(2);
     expect(parsed.arms[OBJECTIVE_IDS[0]].loss_path).toEqual([-4, -4, null]);
+    expect(parsed.arms[OBJECTIVE_IDS[0]].binding.initial_system).not.toHaveProperty("fingerprint");
+    expect(parsed.arms[OBJECTIVE_IDS[0]].rows[0]!.draw!.suggestion.candidate).not.toHaveProperty("fingerprint");
+    expect(parsed.arms[OBJECTIVE_IDS[0]].rows[0]!.physical_proof!.measurement.system_fingerprint).toBe("2".repeat(64));
     expect(() => parseObjectiveStructureReport(fixture, "actual")).toThrow("actual channel rejects");
   });
 
@@ -42,6 +45,10 @@ describe("objective-conditioned native structure viewer contract", () => {
     const graph = structuredClone(await objectiveStructureFixture());
     graph.arms[OBJECTIVE_IDS[0]].rows[0]!.graph_changes!.vs_parent.counts.nodes_added = 8;
     expect(() => parseObjectiveStructureReport(graph, "fixture")).toThrow("count differs");
+
+    const fingerprint = structuredClone(await objectiveStructureFixture());
+    fingerprint.arms[OBJECTIVE_IDS[0]].rows[0]!.observation!.metadata.system_fingerprint = "8".repeat(64);
+    expect(() => parseObjectiveStructureReport(fingerprint, "fixture")).toThrow("fingerprint bindings differ");
   });
 
   it("rejects a completed label without all eight clean worlds", async () => {

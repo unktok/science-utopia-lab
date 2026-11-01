@@ -22,24 +22,24 @@ function edge(source: string, target: string): Row {
   return { source_mechanism: source, source_port: "out", target_mechanism: target, target_port: "in", channel: "signal", latency: 0 };
 }
 
-function system(fingerprint: string, variant: "initial" | "throughput-a" | "throughput-b" | "utility-a"): Row {
+function system(variant: "initial" | "throughput-a" | "throughput-b" | "utility-a"): Row {
   const mechanisms = [node("world.open", "native.phase.open.v1"), node("review", "native.review.v1"), node("archive", "native.archive.v1")];
   if (variant === "throughput-a") mechanisms.splice(2, 0, node("rapid-disseminator", "code.python.v1", "def run(inputs, state):\n    return {'out': inputs.get('in')}"));
   if (variant === "throughput-b") mechanisms.splice(2, 0, node("open-review-router", "code.python.v1", "def run(inputs, state):\n    return {'out': inputs.get('in'), 'state': state}"));
   if (variant === "utility-a") mechanisms.splice(2, 0, node("deliberation-gate", "code.python.v1", "def run(inputs, state):\n    return {'out': inputs.get('in'), 'audit': True}"));
   const middle = mechanisms[2]!.mechanism_id;
   return {
-    schema: "scienceutopia.system-spec.v1", fingerprint, mechanisms,
+    system_id: "native-research-world", version: 1, agent_types: [], artifact_types: [], global_invariants: [], metadata: {}, mechanisms,
     connections: variant === "initial" ? [edge("world.open", "review"), edge("review", "archive")] : [edge("world.open", "review"), edge("review", middle), edge(middle, "archive")],
     schedules: [], initial_state: {},
   };
 }
 
-const initial = system(H.initial, "initial");
+const initial = system("initial");
 
-function change(to: Row, added: string, sourceHash: string): Row {
+function change(toFingerprint: string, added: string, sourceHash: string): Row {
   return {
-    from_fingerprint: H.initial, to_fingerprint: to.fingerprint,
+    from_fingerprint: H.initial, to_fingerprint: toFingerprint,
     nodes_added: [added], nodes_removed: [],
     edges_added: [["review", "out", added, "in", "signal", 0], [added, "out", "archive", "in", "signal", 0]],
     edges_removed: [["review", "out", "archive", "in", "signal", 0]], rewired_endpoint_pairs: [],
@@ -53,21 +53,21 @@ function change(to: Row, added: string, sourceHash: string): Row {
 function evaluation(loss: number): Row { return { status: "complete", loss, rejected_runs: [] }; }
 function unavailable(reason: string): Row { return { status: "unavailable", loss: null, rejected_runs: [{ reason }] }; }
 
-function completeRow(arm: string, generation: number, drawIndex: number, candidate: Row, own: number, cross: number | null, added: string, sourceHash: string): Row {
+function completeRow(arm: string, generation: number, drawIndex: number, candidate: Row, candidateFingerprint: string, own: number, cross: number | null, added: string, sourceHash: string): Row {
   const throughput = arm === OBJECTIVE_IDS[0] ? own : cross;
   const utility = arm === OBJECTIVE_IDS[1] ? own : cross;
   return {
     arm, generation, draw_index: drawIndex, version_sha256: "e".repeat(64), strategy: `fixture-${arm}`,
     draw: { suggestion: { suggestion_id: `fixture-${arm}-${generation}-${drawIndex}`, candidate }, assignment: {} },
-    observation: { status: "complete", loss: own }, status: "complete",
+    observation: { status: "complete", loss: own, metadata: { system_fingerprint: candidateFingerprint } }, status: "complete",
     independent_metrics: { "native.accepted_decisions": { status: "measured", value: 4 } },
     cross_objective_losses: { [OBJECTIVE_IDS[0]]: throughput, [OBJECTIVE_IDS[1]]: utility },
     loss_evaluations: {
       [OBJECTIVE_IDS[0]]: throughput === null ? unavailable("fixture omits the peer-score metric required only by the other objective") : evaluation(throughput),
       [OBJECTIVE_IDS[1]]: utility === null ? unavailable("fixture omits the peer-score metric required only by the other objective") : evaluation(utility),
     },
-    physical_proof: { measurement: { system_fingerprint: candidate.fingerprint }, run_id: `fixture-run-${generation}-${drawIndex}` },
-    graph_changes: { vs_initial: change(candidate, added, sourceHash), vs_parent: change(candidate, added, sourceHash) },
+    physical_proof: { measurement: { system_fingerprint: candidateFingerprint }, run_id: `fixture-run-${generation}-${drawIndex}` },
+    graph_changes: { vs_initial: change(candidateFingerprint, added, sourceHash), vs_parent: change(candidateFingerprint, added, sourceHash) },
   };
 }
 
@@ -82,16 +82,16 @@ function failureRow(arm: string, generation: number, status: "technical-failure"
 }
 
 export async function objectiveStructureFixture(): Promise<ObjectiveStructureReport> {
-  const throughputA = system(H.throughputA, "throughput-a");
-  const throughputB = system(H.throughputB, "throughput-b");
-  const utilityA = system(H.utilityA, "utility-a");
+  const throughputA = system("throughput-a");
+  const throughputB = system("throughput-b");
+  const utilityA = system("utility-a");
   const throughputRows = [
-    completeRow(OBJECTIVE_IDS[0], 0, 0, throughputA, -4, 1.2, "rapid-disseminator", H.sourceA),
-    completeRow(OBJECTIVE_IDS[0], 0, 1, throughputB, -4, null, "open-review-router", H.sourceB),
+    completeRow(OBJECTIVE_IDS[0], 0, 0, throughputA, H.throughputA, -4, 1.2, "rapid-disseminator", H.sourceA),
+    completeRow(OBJECTIVE_IDS[0], 0, 1, throughputB, H.throughputB, -4, null, "open-review-router", H.sourceB),
     failureRow(OBJECTIVE_IDS[0], 1, "generation-failure"),
   ];
   const utilityRows = [
-    completeRow(OBJECTIVE_IDS[1], 0, 0, utilityA, 0.7, -2, "deliberation-gate", H.sourceA),
+    completeRow(OBJECTIVE_IDS[1], 0, 0, utilityA, H.utilityA, 0.7, -2, "deliberation-gate", H.sourceA),
     failureRow(OBJECTIVE_IDS[1], 0, "technical-failure"),
   ];
   const arms: Row = {

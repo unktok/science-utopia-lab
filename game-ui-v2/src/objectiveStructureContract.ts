@@ -114,12 +114,8 @@ function candidate(row: Row): Row | null {
   const suggestion = object(object(row.draw, "draw").suggestion, "suggestion");
   return object(suggestion.candidate, "candidate system");
 }
-function fingerprint(system: Row, label: string): string {
-  return sha256(system.fingerprint, `${label} fingerprint`);
-}
 function validateSystem(systemValue: unknown, label: string): Row {
   const system = object(systemValue, label);
-  fingerprint(system, label);
   const nodes = array(system.mechanisms, `${label}.mechanisms`);
   const ids = new Set<string>();
   for (const [index, value] of nodes.entries()) {
@@ -137,10 +133,10 @@ function validateSystem(systemValue: unknown, label: string): Row {
   array(system.schedules, `${label}.schedules`);
   return system;
 }
-function validateGraphChange(value: unknown, system: Row, label: string): GraphChange {
+function validateGraphChange(value: unknown, expectedFingerprint: string, label: string): GraphChange {
   const change = object(value, label);
   sha256(change.from_fingerprint, `${label}.from_fingerprint`);
-  if (sha256(change.to_fingerprint, `${label}.to_fingerprint`) !== fingerprint(system, label)) throw new Error(`${label} candidate fingerprint differs`);
+  if (sha256(change.to_fingerprint, `${label}.to_fingerprint`) !== expectedFingerprint) throw new Error(`${label} candidate fingerprint differs`);
   for (const key of ["nodes_added", "nodes_removed", "edges_added", "edges_removed", "source_changes", "protocol_changes", "mechanism_configuration_changes", "schedules_added", "schedules_removed"]) array(change[key], `${label}.${key}`);
   object(change.initial_state_change, `${label}.initial_state_change`);
   const counts = object(change.counts, `${label}.counts`);
@@ -157,6 +153,16 @@ function validateGraphChange(value: unknown, system: Row, label: string): GraphC
   };
   for (const [key, count] of Object.entries(exact)) if (counts[key] !== count) throw new Error(`${label} ${key} count differs from exact diff`);
   return change as GraphChange;
+}
+function auditedFingerprint(row: Row, label: string): string {
+  const proof = object(row.physical_proof, `${label} physical proof`);
+  const proofFingerprint = sha256(object(proof.measurement, `${label} proof measurement`).system_fingerprint, `${label} proof fingerprint`);
+  const observationFingerprint = sha256(object(object(row.observation, `${label} observation`).metadata, `${label} observation metadata`).system_fingerprint, `${label} observation fingerprint`);
+  const changes = object(row.graph_changes, `${label} graph changes`);
+  const initialFingerprint = sha256(object(changes.vs_initial, `${label} vs initial`).to_fingerprint, `${label} vs-initial fingerprint`);
+  const parentFingerprint = sha256(object(changes.vs_parent, `${label} vs parent`).to_fingerprint, `${label} vs-parent fingerprint`);
+  if (new Set([proofFingerprint, observationFingerprint, initialFingerprint, parentFingerprint]).size !== 1) throw new Error(`${label} audited fingerprint bindings differ`);
+  return proofFingerprint;
 }
 function evaluationReason(value: unknown, label: string): void {
   const evaluation = object(value, label);
@@ -203,10 +209,11 @@ export function parseObjectiveStructureReport(value: unknown, mode: EvidenceMode
       for (const objective of OBJECTIVE_IDS) nullableFinite(losses[objective], `${armId}/${objective} loss`);
       if (path[index] !== losses[armId]) throw new Error(`${armId} path differs from own objective`);
       if (row.status === "complete") {
-        const system = validateSystem(candidate(row), `${armId} candidate ${index}`);
+        validateSystem(candidate(row), `${armId} candidate ${index}`);
+        const candidateFingerprint = auditedFingerprint(row, `${armId} row ${index}`);
         const changes = object(row.graph_changes, `${armId} graph changes ${index}`);
-        validateGraphChange(changes.vs_initial, system, `${armId} vs initial ${index}`);
-        validateGraphChange(changes.vs_parent, system, `${armId} vs parent ${index}`);
+        validateGraphChange(changes.vs_initial, candidateFingerprint, `${armId} vs initial ${index}`);
+        validateGraphChange(changes.vs_parent, candidateFingerprint, `${armId} vs parent ${index}`);
         finite(losses[armId], `${armId} own loss`);
         if (object(row.observation, `${armId} observation`).status !== "complete" || row.observation.loss !== losses[armId]) throw new Error(`${armId} observation loss differs`);
         const evaluations = object(row.loss_evaluations, `${armId} loss evaluations`);
@@ -215,7 +222,7 @@ export function parseObjectiveStructureReport(value: unknown, mode: EvidenceMode
           const expected = evaluations[objective].status === "complete" ? evaluations[objective].loss : null;
           if (losses[objective] !== expected) throw new Error(`${armId}/${objective} cross loss differs from evaluation`);
         }
-        completeFingerprints.push(fingerprint(system, `${armId} candidate ${index}`));
+        completeFingerprints.push(candidateFingerprint);
       } else {
         if (losses[armId] !== null || row.observation?.loss != null || row.physical_proof !== null || row.graph_changes !== null && row.status === "generation-failure") throw new Error(`${armId} failure fabricated numerical/physical evidence`);
         if (row.status === "generation-failure" && row.draw !== null) throw new Error(`${armId} generation failure fabricated a draw`);
@@ -238,9 +245,8 @@ export function parseObjectiveStructureReport(value: unknown, mode: EvidenceMode
       if (matrixRow !== null) throw new Error(`${armId} matrix must be null without a representative`);
     } else {
       const matrixValues = object(matrixRow, `${armId} selected matrix row`);
-      const representative = rows.find((row) => {
-        const system = candidate(object(row, "row")); return system && system.fingerprint === selection.representative_system_fingerprint;
-      });
+      const representative = rows.find((row, index) => object(row, "row").status === "complete"
+        && auditedFingerprint(object(row, "row"), `${armId} representative candidate ${index}`) === selection.representative_system_fingerprint);
       if (!representative) throw new Error(`${armId} representative row missing`);
       for (const objective of OBJECTIVE_IDS) if (matrixValues[objective] !== representative.cross_objective_losses[objective]) throw new Error(`${armId}/${objective} selected matrix differs`);
     }

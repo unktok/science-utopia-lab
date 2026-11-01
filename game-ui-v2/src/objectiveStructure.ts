@@ -24,7 +24,13 @@ function arm(): ObjectiveArm { return report.arms[selectedArm]; }
 function selected(): StructuralRow { return arm().rows[selectedIndex]!; }
 function candidate(row: StructuralRow): Row | null { return row.draw?.suggestion?.candidate ?? null; }
 function score(value: number | null): string { return value === null ? "N/A" : Number.isInteger(value) ? String(value) : value.toFixed(3).replace(/0+$/, "").replace(/\.$/, ""); }
-function rowFingerprint(row: StructuralRow): string | null { return candidate(row)?.fingerprint ?? null; }
+function rowFingerprint(row: StructuralRow): string | null {
+  if (row.status !== "complete") return null;
+  return row.physical_proof?.measurement?.system_fingerprint
+    ?? row.observation?.metadata?.system_fingerprint
+    ?? row.graph_changes?.vs_parent?.to_fingerprint
+    ?? null;
+}
 function rowState(row: StructuralRow, objective: ObjectiveId): string {
   const selection = report.arms[objective].selection;
   const fingerprint = rowFingerprint(row);
