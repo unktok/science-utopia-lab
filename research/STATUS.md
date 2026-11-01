@@ -100,6 +100,11 @@ analysis-only export/figure follow-ups receive separate focused checks.
 [Verification](results/objective-conditioned-design-v5-verification.json).
 Game UI and same-society migration retain their v4 implementation
 and evidence; they are not silently claimed to have new live results here.
+An additional read-only v6 design chronicle now exposes the actual v5 two-loss
+paths and every observed system, including the nonselected two-node tie, through
+a source-hash-bound browser snapshot. It starts no inference and keeps
+same-society adoption unavailable until a durable transport returns a verified
+migration receipt. [UI contract and verification](tracks/native-design-lifecycle-ui-v6.md).
 The v4 transition fidelity failure and broader invention/semantics/recursive
 improvement gaps remain. Historical snapshots below retain their original scope.
 No v5 native/designer inference process remains running; completion is recorded,

@@ -64,3 +64,20 @@ describe("deterministic intervention comparison artifacts", () => {
     });
   }
 });
+
+const lifecycleCaptures = {
+  "noctiluca-design-chronicle-v5.png": "c9caa3bf3e76ea98cba006e2690c72f53b0d81fc4c5e71f38cf2f88a580eee32",
+  "noctiluca-design-chronicle-two-node.png": "9b3bd70d88aa710633b4164bc197c67d75caa9e0ac5711981a75b4a84089199c",
+};
+
+describe("audited native design lifecycle visual artifacts", () => {
+  for (const [name, expectedHash] of Object.entries(lifecycleCaptures)) {
+    it(`${name} is the reviewed 1440x1100 PNG`, async () => {
+      const bytes = await readFile(fileURLToPath(new URL(`../screenshots/${name}`, import.meta.url)));
+      expect(bytes.subarray(1, 4).toString("ascii")).toBe("PNG");
+      expect(bytes.readUInt32BE(16)).toBe(1440);
+      expect(bytes.readUInt32BE(20)).toBe(1100);
+      expect(createHash("sha256").update(bytes).digest("hex")).toBe(expectedHash);
+    });
+  }
+});

@@ -51,6 +51,24 @@ autograd. `/generative.html`
 remains a separate numeric-miniature method viewer, not that native world.
 See `research/tracks/native-design-ui-v1.md` and asset provenance for scope.
 
+The audited v5 design lifecycle is at `/lifecycle.html`. This English
+NOCTILUCA chronicle is generated from the tracked v5 result artifact and shows
+both LossSpecs, all three observed systems in each arm, their actual loss paths,
+the first-best tie rule, and code/protocol/wiring differences. It keeps the
+external Codex designer distinct from the fixed local Qwen3:8B researcher
+society. Persistent boundaries mark the result as development-only: not
+held-out, not scientific value, not full-world differentiation and not an
+executed same-society adoption. The adoption airlock is deliberately disabled
+until a durable migration transport and verified receipt are available. See
+`research/tracks/native-design-lifecycle-ui-v6.md`.
+
+Regenerate the portable, hash-bound browser snapshot without running an
+experiment:
+
+```sh
+node ../scripts/export_native_design_lifecycle_ui.mjs
+```
+
 For actual local submission, build first and use the loopback-only server from
 a clean commit-pinned checkout (do not edit its source while a worker runs):
 

@@ -1,0 +1,28 @@
+{
+  "actual_experiment_started": false,
+  "source": "audited v5 portable snapshot",
+  "initial": {
+    "lang": "en",
+    "arms": 2,
+    "systems": 3,
+    "nodes": 13,
+    "loss": "-3",
+    "adoption": "UNAVAILABLE / Transport not connected. Viewing audited evidence cannot adopt a system. Contract: scienceutopia.native-society-design-session.v1.",
+    "confirmDisabled": true,
+    "submitDisabled": true,
+    "overflow": false
+  },
+  "utility_two_node": {
+    "loss": "0.45",
+    "generated": 2,
+    "protocol": "ADDED ARTIFACT TYPEpublication-loss-offers-v1",
+    "selection": "First minimum encountered; retained by deterministic first-best selection. Station 02 was still executed and observed at the same loss (0.45), but it did not replace the earlier minimum.",
+    "source": "def step(context):\n    world = context['inputs']['observations'][0]['payload']\n    cost = context['parameters']['publication_cost']\n    offers = []\n    for conf in world['conferences']['conferences']:\n        for paper in conf['submitted_papers']:\n            reviews = conf['reviews'].get(paper['id'], [])\n            mean_score = sum(review['overall_score'] for review in reviews) / len(reviews) if reviews else 0.0\n            offers.append({'paper_id': paper['id'], 'conference_id': conf['conference_id'], 'review_mean': mean_score, 'loss_increment': cost - mean_score})\n    packet = {'payload': {'year': context['period'], 'offers': offers}, 'actor_ids': [], 'artifact_ids': []}\n    return {'outputs': {'offers': [packet]}, 'state': {}}\n"
+  },
+  "mobile_overflow": false,
+  "browser_errors": [],
+  "screenshots": [
+    "noctiluca-design-chronicle-v5.png",
+    "noctiluca-design-chronicle-two-node.png"
+  ]
+}

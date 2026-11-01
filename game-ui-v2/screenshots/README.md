@@ -1,5 +1,20 @@
 # Deterministic visual QA
 
+## Audited native design lifecycle v6
+
+These `1440x1100` local Chrome captures render the real, tracked v5 audit
+through the portable lifecycle snapshot. The first shows the complete
+development-only loss path and persistent truth boundaries. The second selects
+the nonchosen two-node utility revision, including both generated mechanisms,
+the `publication-loss-offers-v1` protocol, code hashes and changed wiring.
+Same-society adoption remains visibly unavailable; capture QA starts no
+experiment or inference.
+
+| Capture | SHA-256 |
+|---|---|
+| `noctiluca-design-chronicle-v5.png` | `c9caa3bf3e76ea98cba006e2690c72f53b0d81fc4c5e71f38cf2f88a580eee32` |
+| `noctiluca-design-chronicle-two-node.png` | `9b3bd70d88aa710633b4164bc197c67d75caa9e0ac5711981a75b4a84089199c` |
+
 ## Common-Split Relay v1
 
 `noctiluca-heldout-relay-synthetic.png` is the `1440x1050` reduced-motion
