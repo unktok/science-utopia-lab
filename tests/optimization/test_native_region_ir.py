@@ -10,7 +10,7 @@ from tests.optimization.test_native_region_proposer import Model
 from tests.optimization.test_native_world import loss_spec
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from utopia.optimization.native_region_ir import boundary_contract, compile_region_ir, lower_region_ir
-from utopia.optimization.native_region_proposer_v5 import NativeRegionIRProposer
+from utopia.optimization.native_region_proposer_v5 import NativeRegionIRProposer, _prior_generated_regions
 from utopia.system.design_patch import apply_design_patch
 
 
@@ -34,6 +34,23 @@ def fixture_ir():
             'parameters': node['parameters'], 'python_code': node['python_code'], 'state_schema': node['state_schema']})
     return {'rationale': 'Explicit QA algorithm and graph; not model-generated', 'nodes': nodes,
         'exports': {'after': ['node:assembly:ready'], 'decisions': ['node:assembly:verdicts']}}
+
+
+def test_prior_generated_source_visible_with_loss_even_if_not_current_best():
+    source = 'def step(context):\n    return context\n'
+    system = {'metadata': {'native_design_region': {'node_ids': ['generated-local']}},
+        'mechanisms': [{'mechanism_id': 'generated-local', 'parameters': {'code_artifact': {'source': source}}},
+            {'mechanism_id': 'host', 'parameters': {'secret_original_source': 'MUST_NOT_APPEAR'}}],
+        'connections': [{'source_mechanism': 'host', 'target_mechanism': 'generated-local'}],
+        'schedules': [{'mechanism_id': 'generated-local', 'phase': 140}]}
+    history = [{'suggestion': {'candidate': system, 'proposal_index': i},
+        'observation': {'loss': i * 10, 'status': 'complete'}} for i in range(3)]
+    view = _prior_generated_regions(history)
+    assert [r['index'] for r in view['regions']] == [1, 2]
+    assert [r['actual_loss'] for r in view['regions']] == [10, 20]
+    assert view['source_visibility_notice']['older_generated_sources_omitted'] == 1
+    assert view['regions'][-1]['region']['mechanisms'][0]['parameters']['code_artifact']['source'] == source
+    assert 'MUST_NOT_APPEAR' not in json.dumps(view)
 
 
 def test_scoped_host_names_free_protocol_source_and_explicit_wires(recorded_selection):
@@ -155,5 +172,8 @@ def test_second_joint_generation_replaces_previous_region_not_original_host_id(r
     assert {n['mechanism_id'] for n in incumbent['mechanisms']} == set(parent.metadata['native_design_region']['node_ids'])
     assert sorted(n['parameters']['code_artifact']['source'] for n in incumbent['mechanisms']) == sorted(n['python_code'] for n in draft['nodes'])
     assert len(incumbent['connections']) == 5 and len(incumbent['schedules']) == 2
+    prior = json.loads(next_model.calls[0]['prompt'])['previous_generated_candidates']['regions']
+    assert prior[-1]['actual_loss'] == record['observation']['loss']
+    assert prior[-1]['region']['mechanisms'] == incumbent['mechanisms']
     assert len(next_model.calls) == 2
     assert 'each real native paper exactly once' in next_model.calls[1]['prompt']

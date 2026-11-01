@@ -47,6 +47,11 @@ the exact executed generated incumbent's Python, ports, parameters, connections
 and schedules alongside its feedback. The source-visibility policy is bound in
 durable receipts; this is feedback-conditioned revision rather than independent
 code regeneration conditioned only on numerical scores.
+The last at most two generated candidates are also shown with their proposal
+indices, exact regions and actual losses, including candidates that failed to
+beat the incumbent. Older-source omission is explicit and source bytes are
+never truncated. This preserves best-incumbent controller semantics without
+discarding actionable feedback about worse-but-valid previous designs.
 
 The first cut can replace `world.selection`; a later revision automatically
 replaces all IDs of the incumbent `native_design_region`. Therefore new names,

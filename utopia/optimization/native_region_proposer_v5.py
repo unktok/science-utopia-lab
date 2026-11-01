@@ -17,6 +17,29 @@ from utopia.system.design_patch import clone
 from utopia.utils.data_utils import write_json_atomic
 
 
+def _generated_region_view(system):
+    ids = set(system.get('metadata', {}).get('native_design_region', {}).get('node_ids', []))
+    if not ids:
+        return None
+    return {'mechanisms': [n for n in system['mechanisms'] if n['mechanism_id'] in ids],
+        'connections': [c for c in system['connections'] if c['source_mechanism'] in ids or c['target_mechanism'] in ids],
+        'schedules': [s for s in system['schedules'] if s['mechanism_id'] in ids]}
+
+
+def _prior_generated_regions(history, limit=2):
+    result = []
+    for i, record in enumerate(history):
+        region = _generated_region_view(record['suggestion']['candidate'])
+        if region is not None:
+            result.append({'index': record['suggestion'].get('proposal_index', i),
+                'status': record['observation']['status'], 'actual_loss': record['observation']['loss'],
+                'region': region})
+    return {'regions': result[-limit:], 'source_visibility_notice': {
+        'included_last_at_most': limit, 'total_generated_candidates': len(result),
+        'older_generated_sources_omitted': max(0, len(result) - limit),
+        'scope': 'Exact generated source only; original host source withheld. Sources are never truncated.'}}
+
+
 def probe_authored_region(parent, child, records, *, executor):
     """Retain publication identity checks even after original selection is gone."""
     removed = child.metadata['native_design_region']['boundary_origin_nodes']
@@ -90,7 +113,8 @@ class NativeRegionIRProposer:
             'image_id': self.executor.image_id, 'native_bundle_sha256s': [r['bundle_sha256'] for r in records],
             'instructions_sha256': sha(self.instructions), 'max_attempts': self.max_attempts,
             'authoring_schema_sha256': sha(schema), 'temperature': .2,
-            'source_visibility': 'withheld-initial-visible-generated-incumbent',
+            'source_visibility': 'withheld-initial-visible-generated-incumbent-and-history',
+            'prior_generated_source_limit': 2,
             'max_tokens': self.max_tokens, 'max_prompt_utf8_bytes': 40000}
         feedback = [{'index': i, 'status': r['observation']['status'], 'loss': r['observation']['loss'],
             'measurements': clone(r['observation'].get('metadata', {}).get('measurements', {}))}
@@ -106,16 +130,12 @@ class NativeRegionIRProposer:
                 'native_publication_contract': 'For decisions export: exactly one payload per ACTUAL submitted paper: {paper_id,conference_id,decision:accept/reject,final_score:finite number}. With no submitted papers: exactly [{payload:{empty_cycle:true}}]. For after export: [{payload:{year:context[period]}}]. conferences.conferences contains submitted_papers and reviews mapping paper ID to records with overall_score. acceptance_rate is the incumbent algorithm, NOT a required quota. Empty reviews must be handled. Only explicit loss is optimized; generated final_score is not trusted as a raw external review measurement.',
                 'projection_scope': 'Examples below are lossy prompt views only. Technical probes use ALL exact native inputs chronologically. Fresh world evaluation follows separately.',
                 'instructions': self.instructions, 'previous_technical_failure': previous}
+            prompt['previous_generated_candidates'] = _prior_generated_regions(history)
             if parent.metadata.get('native_design_region'):
                 # Feedback about a deployed generated algorithm must be paired
                 # with that exact incumbent, not only its opaque native scores.
                 # The first de-novo proposal still sees no original host code.
-                native = parent.to_dict()
-                prompt['incumbent_generated_region'] = {
-                    'mechanisms': [n for n in native['mechanisms'] if n['mechanism_id'] in removed],
-                    'connections': [c for c in native['connections']
-                        if c['source_mechanism'] in removed or c['target_mechanism'] in removed],
-                    'schedules': [s for s in native['schedules'] if s['mechanism_id'] in removed],
+                prompt['incumbent_generated_region'] = {**_generated_region_view(parent.to_dict()),
                     'instruction': 'This exact generated region was executed for the incumbent feedback. Revise its algorithm, node structure, protocols and wiring freely; use local IDs in your new IR, not these compiled scoped IDs.'}
             for limit in (5, 3, 1):
                 prompt['actual_native_input_examples'] = [prompt_view(_input_view(records[i]), list_limit=limit, text_limit=100) for i in selected]
