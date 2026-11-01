@@ -7,7 +7,8 @@ from tests.system.test_native_science_kernel import make_sim
 from tests.optimization.test_native_world import loss_spec
 from utopia.optimization.native_code_trace import RecordingCodeExecutor, parent_context_provider
 from utopia.optimization.native_design import NativeDesignCampaign
-from utopia.optimization.native_free_source import NativeFreeSourceRevisionProposer
+from utopia.optimization.native_free_source import NativeFreeSourceRevisionProposer, probe_source_trajectory
+from utopia.system import SystemSpec
 from utopia.system.code_mechanisms import DockerCodeExecutor, sha
 from utopia.system.native_kernel import NativeScienceKernel, legacy_world_system
 from utopia.system.native_selection_slot import selection_source_slot
@@ -92,3 +93,32 @@ def test_de_novo_mode_really_withholds_parent_source_but_does_not_veto_equal_cod
     assert receipt['ast_same_as_parent'] is True
     prompt = json.loads((tmp_path / 'de-novo/free-source-prompt-1-0.json').read_text())
     assert prompt['prompt_sha256'] == receipt['prompt_sha256']
+
+
+def test_source_probe_carries_candidate_memory_through_all_years_not_prompt_sample(recorded_selection, tmp_path):
+    controller, factory, executor, provider = recorded_selection
+    node = next(n for n in controller.initial.mechanisms if n.mechanism_id == 'world.selection')
+    source = node.parameters['code_artifact']['source'].replace("context['state'].get('cycles', 0) + 1", "context['state'].get('cycles', 0) + 10")
+    model = Model(source)
+    proposer = NativeFreeSourceRevisionProposer(model, executor, node_id='world.selection',
+        context_provider=provider, receipts=tmp_path / 'stateful', max_probe_contexts=2)
+    result = controller.advance(simulation_factory=factory, proposer=proposer)
+    assert result['observation']['status'] == 'complete'
+    receipt = json.loads((tmp_path / 'stateful/free-source-1-0.json').read_text())
+    assert len(receipt['binding']['selected_bundle_sha256s']) == 2  # prompt samples only
+    assert len(receipt['probe_results']) == 6  # all six exact annual inputs
+    assert [r['result']['state']['cycles'] for r in receipt['probe_results']] == [10, 20, 30, 40, 50, 60]
+    assert [r['context']['state'].get('cycles', 0) for r in receipt['probe_results']] == [0, 10, 20, 30, 40, 50]
+    child = SystemSpec.from_dict(result['suggestion']['candidate'])
+    actual = provider('world.selection', child, controller.state['records'])
+    assert [r['context']['state'].get('cycles', 0) for r in actual] == [0, 10, 20, 30, 40, 50]
+    assert all(r['result']['state'] == q['result']['state'] for r, q in zip(actual, receipt['probe_results']))
+
+
+def test_source_probe_rejects_missing_early_year_even_if_late_parent_memory_exists(recorded_selection):
+    controller, _, executor, provider = recorded_selection
+    node = next(n for n in controller.initial.mechanisms if n.mechanism_id == 'world.selection')
+    rows = provider('world.selection', controller.initial, controller.state['records'])
+    assert rows[1]['context']['state']  # old behavior silently adopted this memory
+    with pytest.raises(ValueError, match='contiguous source trajectory'):
+        probe_source_trajectory(controller.initial, node, node.parameters['code_artifact'], rows[1:], executor=executor)

@@ -11,7 +11,8 @@ from pathlib import Path
 
 from utopia.optimization.native_code_trace import validate_record
 from utopia.optimization.native_feedback import feedback_from_native_history
-from utopia.system.code_mechanisms import CODE_IMPLEMENTATION, sha, validate_code_artifact
+from utopia.system.code_mechanisms import (CODE_IMPLEMENTATION, sha, validate_code_artifact,
+    validate_code_result)
 from utopia.system.design_patch import clone, make_patch, apply_design_patch
 from utopia.utils.data_utils import write_json_atomic
 
@@ -25,6 +26,47 @@ def prompt_view(value, depth=0, *, list_limit=5, text_limit=140):
     if isinstance(value, dict):
         return {k: prompt_view(v, depth + 1, list_limit=list_limit, text_limit=text_limit) for k, v in value.items()} if depth < 12 else {'omitted_object_keys': list(value)}
     return value
+
+
+def probe_source_trajectory(parent, node, artifact, records, *, executor):
+    """Full frozen-input replay, carrying the CANDIDATE's memory, not parent's.
+
+    Sampling applies to prompt examples only. Native downstream responses are
+    NOT regenerated here; this is a technical probe, never a new loss.
+    """
+    calls = {}
+    for row in records:
+        validate_record(row)
+        if row['binding']['system_fingerprint'] != parent.fingerprint or row['artifact'] != node.parameters['code_artifact']:
+            raise ValueError('source trajectory is not the exact native parent')
+        key = row['binding']['run_id'], row['context']['period']
+        if key in calls and calls[key]['bundle_sha256'] != row['bundle_sha256']:
+            raise ValueError('conflicting repeated source trajectory execution')
+        calls[key] = row
+    runs = {}
+    for run_id, period in calls:
+        runs.setdefault(run_id, []).append(period)
+    if not runs or any(sorted(periods) != list(range(1, max(periods) + 1)) for periods in runs.values()):
+        raise ValueError('full contiguous source trajectory from period one required')
+    memory, current_run, results = {}, None, []
+    for (run_id, period), row in sorted(calls.items()):
+        if current_run != run_id:
+            memory = clone(parent.initial_state.get('mechanism_states', {}).get(node.mechanism_id, {}))
+            current_run = run_id
+        context = {**clone(row['context']), 'state': clone(memory)}
+        execution = executor.execute(artifact, context)
+        validate_code_result(artifact, execution.result)
+        if (execution.receipt.get('image_id') != node.parameters['runtime_image_id']
+                or any(execution.receipt.get(k + '_sha256') != sha(v) for k, v in
+                    [('artifact', artifact), ('context', context), ('result', execution.result)])):
+            raise ValueError('free-source isolated execution receipt changed')
+        if any(p.required and not execution.result['outputs'][p.port_id] for p in node.outputs):
+            raise ValueError('source trajectory has an empty required output')
+        memory = clone(execution.result['state'])
+        results.append({'run_id': run_id, 'period': period, 'native_bundle_sha256': row['bundle_sha256'],
+            'context': context, 'result': clone(execution.result), 'receipt': clone(execution.receipt),
+            'result_changed': execution.result != row['result']})
+    return results
 
 
 class NativeFreeSourceRevisionProposer:
@@ -62,7 +104,8 @@ class NativeFreeSourceRevisionProposer:
             'selected_bundle_sha256s': [r['bundle_sha256'] for r in selected],
             'instructions_sha256': sha(self.instructions), 'image_id': self.executor.image_id,
             'max_attempts': self.max_attempts, 'max_probe_contexts': self.max_probe_contexts,
-            'proposal_schema_version': 2, 'prompt_view': 'deterministic strings/list budgets (140/5,100/3,60/2,40/1), depth12, UTF8<=80KB; full probe inputs'}
+            'proposal_schema_version': 3, 'probe_scope': 'all exact contiguous native years, candidate memory carried per run',
+            'prompt_view': 'deterministic strings/list budgets (140/5,100/3,60/2,40/1), depth12, UTF8<=80KB; full chronological probe inputs'}
         binding['show_parent_source'] = self.show_parent_source
         old_sources = [n.parameters['code_artifact']['source'] for n in parent.mechanisms if n.implementation == CODE_IMPLEMENTATION]
         def withhold(value):
@@ -100,7 +143,7 @@ class NativeFreeSourceRevisionProposer:
                      'context_prompt_view': prompt_view(r['context']),
                      'incumbent_output_ports': {port: {'records': len(values), 'first_payload_keys': list(values[0]['payload']) if values else []}
                          for port, values in r['result']['outputs'].items()}} for r in selected],
-                'view_scope': 'Prompt examples are bounded projections of actual data, not full snapshots. Full unmodified inputs are used in all isolated probes. Omitted text/list elements are not replacement world values.',
+                'view_scope': 'Prompt examples are bounded projections of actual data, not full snapshots. ALL full native inputs are replayed chronologically in isolated probes with the candidate memory carried forward. Native downstream responses are frozen, not regenerated; a fresh native world is separate. Omitted text/list elements are not replacement world values.',
                 'instructions': self.instructions, 'previous_technical_failure': previous}
             suffix = '\nFINAL TASK: This is software design, NOT peer review. Return design_reasoning, algorithm_name and python_code. python_code must contain the executable def step(context) implementation for the declared ports. It is not a bibliographic source URL. Implement a genuine algorithm change targeting the exact loss; do not invent native measurements.'
             for text_limit, list_limit in ((140, 5), (100, 3), (60, 2), (40, 1)):
@@ -143,13 +186,7 @@ class NativeFreeSourceRevisionProposer:
                 validate_code_artifact(updated)
                 patch = make_patch(parent, [{'op': 'replace', 'path': f'/mechanisms/{position}/parameters/code_artifact', 'value': updated}], rationale=draft['rationale'])
                 candidate = apply_design_patch(parent, patch)
-                for row in selected:
-                    execution = self.executor.execute(updated, clone(row['context']))
-                    if any(execution.receipt.get(k + '_sha256') != sha(v) for k, v in [('artifact', updated), ('context', row['context']), ('result', execution.result)]):
-                        raise ValueError('free-source isolated execution receipt changed')
-                    receipt['probe_results'].append({'native_bundle_sha256': row['bundle_sha256'],
-                        'result': execution.result, 'receipt': execution.receipt,
-                        'result_changed': execution.result != row['result']})
+                receipt['probe_results'] = probe_source_trajectory(parent, node, updated, contexts, executor=self.executor)
                 receipt.update(status='isolated-probes-passed-not-native-evaluated', patch=patch,
                     source_sha256=sha(draft['source']), source_same_as_parent=draft['source'] == artifact['source'],
                     ast_same_as_parent=ast.dump(ast.parse(draft['source']), include_attributes=False) == ast.dump(ast.parse(artifact['source']), include_attributes=False),
