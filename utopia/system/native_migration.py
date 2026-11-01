@@ -191,7 +191,8 @@ def install_recorded_native_proposal(kernel, proposal_event_id, *, expected_chec
 
 
 def commit_native_design(simulation, candidate=None, *, expected_checkpoint_sha256,
-                         state_actions=None, discard_deliveries=None, proposal_event_id=None):
+                         state_actions=None, discard_deliveries=None, proposal_event_id=None,
+                         origin=None):
     """Durably adopt institutions at a just-saved portable society boundary.
 
     Preserve the prior checkpoint byte-for-byte under a content-addressed archive;
@@ -199,7 +200,7 @@ def commit_native_design(simulation, candidate=None, *, expected_checkpoint_sha2
     This does not invoke checkpoint callbacks or change any scientific/RNG field.
     """
     from .native_kernel import NativeScienceKernel
-    from utopia.runtime.checkpointing import capture_rng, read_portable_checkpoint, write_portable_checkpoint
+    from utopia.runtime.checkpointing import capture_rng, pack_state, read_portable_checkpoint, write_portable_checkpoint
     from utopia.utils.data_utils import file_sha256
     kernel = simulation.native_system
     if (kernel is None or kernel._frame is not None or kernel.last_year < 1
@@ -216,6 +217,8 @@ def commit_native_design(simulation, candidate=None, *, expected_checkpoint_sha2
     if (capture_rng() != state["portable"]["rng"]
             or simulation.llm.response_cache.committed_count() != state["portable"]["response_cache_count"]):
         raise GraphRuntimeError("RNG or inference advanced after the saved society boundary")
+    if _digest(pack_state(simulation.capture_checkpoint_state(kernel.last_year, phase=5))) != _digest(pack_state(state)):
+        raise GraphRuntimeError("unsaved complete society differs from the saved boundary")
     preview = NativeScienceKernel(kernel.spec, registry_extension=kernel.registry_extension,
                                   code_executor=kernel.code_executor, checkpoint=kernel.to_dict())
     kwargs = {"expected_checkpoint_sha256": expected_checkpoint_sha256,
@@ -223,9 +226,9 @@ def commit_native_design(simulation, candidate=None, *, expected_checkpoint_sha2
     if proposal_event_id is None:
         if not isinstance(candidate, SystemSpec):
             raise GraphRuntimeError("explicit candidate required")
-        receipt = migrate_native_design(preview, candidate, **kwargs)
+        receipt = migrate_native_design(preview, candidate, origin=origin, **kwargs)
     else:
-        if candidate is not None:
+        if candidate is not None or origin is not None:
             raise GraphRuntimeError("choose an explicit candidate OR a recorded proposal")
         receipt = install_recorded_native_proposal(preview, proposal_event_id, **kwargs)
     # Archive the old complete society, not only its institution state.

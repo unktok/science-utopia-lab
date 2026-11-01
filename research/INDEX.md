@@ -6,6 +6,7 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [Active non-scale completion v6: acceptance gates and parallel ownership](milestones/2026-11-01-non-scale-completion-v6.md)
 - [Program status](STATUS.md)
 - [Objective-conditioned institutional design v5: goals, implementation and gaps](milestones/2026-11-01-objective-conditioned-design-v5.md)
 - [Two explicit native objectives and raw-peer measurements](objectives/losses/native-joint-v5.md)

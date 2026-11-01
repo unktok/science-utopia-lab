@@ -4471,20 +4471,14 @@ class Simulation:
         logger.info("\nSimulation completed!")
         logger.info(f"Results saved to: {self.output_dir}")
 
-    def _save_checkpoint(self, year: int, phase: int = 5):
-        """Save complete simulation state as checkpoint
+    def capture_checkpoint_state(self, year: int, phase: int = 5):
+        """Capture the canonical data-only snapshot without writing or inference.
 
-        Args:
-            year: Year number
+        Shared by persistence and boundary transactions: there is one field
+        inventory, so an unsaved scientific mutation cannot evade adoption's
+        stale-state checks through an incomplete parallel serializer.
         """
         portable = hasattr(self, '_portable_binding')
-        checkpoint_path = os.path.join(self.output_dir, f"checkpoint_year_{year}.json")
-        if portable and phase != (0 if year == 0 else 5):
-            from utopia.runtime.checkpointing import PortableCheckpointError
-            raise PortableCheckpointError("Portable snapshots require initialized year 0 or a complete year")
-        if getattr(self, 'resource_ledger', None) is not None and year > 0:
-            self.resource_ledger.reconcile(year, self.ecosystem.agent_population, require_closed=True)
-
         # Serialize everything to JSON-compatible format
         checkpoint_data = {
             'year': year,
@@ -4548,9 +4542,7 @@ class Simulation:
             }
 
         if portable:
-            from utopia.runtime.checkpointing import capture_outputs, capture_rng, write_portable_checkpoint
-            if getattr(self, 'resource_ledger', None) is not None:
-                self.resource_ledger.write(self.output_dir)
+            from utopia.runtime.checkpointing import capture_outputs, capture_rng
             graph = self.ecosystem.citation_graph
             checkpoint_data['portable'] = {
                 'contract': self.portable_contract(),
@@ -4573,6 +4565,22 @@ class Simulation:
             for saved, conf in zip(checkpoint_data['conference_system']['conferences'],
                                    self.conference_system.conferences):
                 saved['submitted_papers'] = conf.submitted_papers
+        return checkpoint_data
+
+    def _save_checkpoint(self, year: int, phase: int = 5):
+        """Save complete simulation state as checkpoint."""
+        portable = hasattr(self, '_portable_binding')
+        checkpoint_path = os.path.join(self.output_dir, f"checkpoint_year_{year}.json")
+        if portable and phase != (0 if year == 0 else 5):
+            from utopia.runtime.checkpointing import PortableCheckpointError
+            raise PortableCheckpointError("Portable snapshots require initialized year 0 or a complete year")
+        if getattr(self, 'resource_ledger', None) is not None and year > 0:
+            self.resource_ledger.reconcile(year, self.ecosystem.agent_population, require_closed=True)
+        if portable and getattr(self, 'resource_ledger', None) is not None:
+            self.resource_ledger.write(self.output_dir)
+        checkpoint_data = self.capture_checkpoint_state(year, phase)
+        if portable:
+            from utopia.runtime.checkpointing import write_portable_checkpoint
             checkpoint_path = os.path.join(self.output_dir, f"portable_checkpoint_year_{year}.json.gz")
             write_portable_checkpoint(checkpoint_path, checkpoint_data)
             self._portable_last_year = year

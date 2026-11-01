@@ -20,7 +20,31 @@ def measure_native_world(simulation, *, run_id: str):
     kernel = simulation.native_system
     if kernel is None or kernel.last_year != simulation.num_years:
         raise ValueError("native measurement requires a completed native-world run")
-    rounds = [r for paper in simulation.paper_tracker.papers_by_id.values() for r in paper.review_history]
+    return _measure_domain(simulation, run_id=run_id, after_year=0)
+
+
+def measure_native_boundary(simulation, *, run_id: str, after_year: int):
+    """Real interval flows and end-boundary stocks, NOT a fresh-world comparison.
+
+    The enclosing session must separately verify the just-saved society boundary.
+    Flow counts include only decisions/deliveries after ``after_year``; author
+    activity/resources remain current stocks, not differences of stock totals.
+    """
+    kernel = simulation.native_system
+    if (kernel is None or kernel._frame is not None or type(after_year) is not int
+            or not 0 <= after_year < kernel.last_year):
+        raise ValueError("native interval measurement requires a completed later boundary")
+    result = _measure_domain(simulation, run_id=run_id, after_year=after_year)
+    result.update(measurement_schema="scienceutopia.native-interval-measurements.v1",
+                  interval={"after_year": after_year, "through_year": kernel.last_year},
+                  comparison="online-same-society-not-counterfactual")
+    return result
+
+
+def _measure_domain(simulation, *, run_id, after_year):
+    kernel = simulation.native_system
+    rounds = [r for paper in simulation.paper_tracker.papers_by_id.values()
+              for r in paper.review_history if after_year == 0 or r['year'] > after_year]
     authors = [a for a in simulation.ecosystem.agent_population.values() if getattr(a, 'can_author', False)]
     values = {
         "native.accepted_decisions": sum(r.get("decision") == "accept" for r in rounds),
@@ -28,7 +52,8 @@ def measure_native_world(simulation, *, run_id: str):
         "native.review_records": sum(len(r.get("reviews", [])) for r in rounds),
         "native.final_active_authors": sum(a.is_active for a in authors),
         "native.final_author_resources": sum(a.resources for a in authors),
-        "native.institutional_context_deliveries": sum(e.event_type == "native.system.context_delivered" for e in kernel.events),
+        "native.institutional_context_deliveries": sum(e.event_type == "native.system.context_delivered"
+            and (after_year == 0 or e.year > after_year) for e in kernel.events),
     }
     accepted = [r for r in rounds if r.get('decision') == 'accept']
     values['native.accepted_unreviewed_decisions'] = sum(not r.get('reviews', []) for r in accepted)
