@@ -62,6 +62,19 @@
 
 ## 現在地（2026-11-01）
 
+[非スケール統合 v6 の完了条件](research/milestones/2026-11-01-non-scale-completion-v6.md)、
+[全体目標との対応表](research/program-map.md)、[最新STATUS](research/STATUS.md)
+を現在地の正本とする。元の研究者世界を保ち、研究計画・実論文をtypedな入出力として
+開く基盤、任意コード/protocol/配線の分布勾配、lossを見た同一社会の制度改訂、
+英語ゲームUIからの正確な導入確認を統合している。単体テスト、実Qwen実行、
+独立監査、目的関数上の改善、科学的有用性を同じ「完了」にまとめない。
+
+元の世界全体やLLMの入力応答を通るpathwise微分、新しいactor/研究活動の意味論、
+設計者自身の再帰的改善は未達である。スケールアップをこれらの代わりにはしない。
+lossに書かれていない公平性・参加率・品質の制約も追加しない。
+
+## 前段階の現在地 — v5（履歴）
+
 [全体目標・実装・実証・未達の対応表](research/milestones/2026-11-01-objective-conditioned-design-v5.md)
 と[最新STATUS](research/STATUS.md)を現在地の正本とする。スケールアップではなく、
 元の研究者世界を包含するまま、明示lossに基づくコード・protocol・配線の再設計を
