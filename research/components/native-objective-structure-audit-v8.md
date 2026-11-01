@@ -1,7 +1,7 @@
 # Native objective/structure v8: independent audit and figure
 
-Status: implemented and synthetic-fixture tested; no actual v8 result is
-published by this component.
+Status: implemented and synthetic-fixture tested. The actual `a1` technical
+preflight abort has a compact audit receipt; no native v8 outcome is published.
 
 ## Purpose
 
@@ -50,9 +50,13 @@ independently reconstructs all eight native diagnostics:
 - accepted peer-score sum.
 
 It then evaluates both frozen LossSpecs from those measurements and requires
-the arm's result to equal the saved optimization observation.  Failed or
-incomplete physical worlds retain `loss: null`; they are never converted to an
-optimizer penalty.  Every SQLite response cache is path-, hash-, and
+the arm's result to equal the saved optimization observation. If a metric used
+only by the other objective is unavailable, the completed own-objective world
+is retained while that cross-score is `null` with the evaluator's reason.
+Invalid generated vocabularies are retained as generation failures with zero
+executed draws; the planned two draws are not fabricated. Failed or incomplete
+physical worlds retain `loss: null`; they are never converted to an optimizer
+penalty. Every SQLite response cache is path-, hash-, and
 outcome-count bound, and the entire raw file inventory must be byte-identical
 before and after analysis.
 
@@ -118,6 +122,22 @@ Run only after the raw writer is terminal and the source commit is known:
 .venv/bin/python scripts/figures/native_objective_structure_v8_methods.py \
   --output /absolute/path/outside-raw/native-objective-structure-v8-methods
 ```
+
+An explicitly frozen, incomplete attempt may instead be recorded without
+inventing terminality or outcomes:
+
+```bash
+.venv/bin/python scripts/analyze_native_objective_structure_v8.py \
+  --run /absolute/path/to/frozen-incomplete-v8 \
+  --expected-source <40-hex-source-commit> --allow-incomplete \
+  --compact-attempt-id a1 --aborted-technical-preflight \
+  --output research/results/native-objective-structure-v8-a1.json
+```
+
+That compact receipt retains the complete raw file path/hash inventory and
+authoring/request hashes while omitting bulky generated system payloads. The
+abort flag is fail-closed: it requires zero physical worlds and replies,
+nonterminal budget accounting, generation failures, and pending requests.
 
 These commands perform no new inference.  Actual-data publication remains a
 separate, explicit action after the raw run and audit are frozen.

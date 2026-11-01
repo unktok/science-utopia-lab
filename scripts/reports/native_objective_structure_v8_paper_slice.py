@@ -39,7 +39,7 @@ def render_slice(report, results_manifest, methods_manifest, *, results_tex_path
     matrix = report['selected_cross_objective_matrix']
     def value(row, column):
         item = matrix[row]
-        return '--' if item is None else f"{item[column]:.4g}"
+        return '--' if item is None or item[column] is None else f"{item[column]:.4g}"
     return rf"""% Auto-generated from independently audited v8 evidence {report['content_sha256']}.
 % Prepared fragment only: paper integration remains an explicit reviewed action.
 \begin{{figure*}}[t]

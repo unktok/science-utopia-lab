@@ -54,9 +54,17 @@ def figure_data(report):
                     'native.institutional_context_deliveries', 'native.accepted_unreviewed_decisions',
                     'native.accepted_peer_score_sum'}:
                     raise ValueError('all eight independently measured diagnostics are required')
-            elif value is not None or row['observation'] is not None and row['observation'].get('loss') is not None:
+            elif (row['status'] not in {'technical-failure', 'generation-failure'} or value is not None
+                    or row['observation'] is not None and row['observation'].get('loss') is not None):
                 raise ValueError('technical failure cannot be plotted as a numerical loss')
-            rows.append({'label': f"G{row['generation']+1}{chr(97+row['draw_index'])}",
+            if row['status'] == 'generation-failure' and (row.get('draw') is not None
+                    or row.get('generation_error') is None or row.get('planned_draws') != 2):
+                raise ValueError('generation failure plotting receipt differs')
+            label = (f"G{row['generation']+1} vocabulary failure" if row['status'] == 'generation-failure'
+                     else f"G{row['generation']+1}{chr(97+row['draw_index'])}")
+            x_position = (row['generation']*2+.5 if row['status'] == 'generation-failure'
+                          else row['generation']*2+row['draw_index'])
+            rows.append({'label': label, 'x_position': x_position,
                 'status': row['status'], 'loss': value,
                 'cross_objective_losses': row['cross_objective_losses'],
                 'graph_changes': row['graph_changes'],
@@ -64,6 +72,9 @@ def figure_data(report):
                                        if row['status'] == 'complete' else None)})
         if arm['loss_path'] != [row['loss'] for row in rows]:
             raise ValueError('plotted loss trajectory differs from audit')
+        if arm.get('generation_failures', []) != [row for row in arm['rows']
+                                                   if row['status'] == 'generation-failure']:
+            raise ValueError('generation failure budget accounting differs')
         complete = [row for row in rows if row['loss'] is not None]
         best = min((row['loss'] for row in complete), default=None)
         tied = [row for row in complete if row['loss'] == best] if best is not None else []
@@ -79,8 +90,9 @@ def figure_data(report):
                                           for value in matrix.values()):
         raise ValueError('selected cross-objective matrix differs')
     for identity in ARM_IDS:
-        representative = next((row for row in arms[identity]['rows']
-            if row['system_fingerprint'] == arms[identity]['selection']['representative_system_fingerprint']), None)
+        fingerprint = arms[identity]['selection']['representative_system_fingerprint']
+        representative = (next((row for row in arms[identity]['rows']
+            if row['system_fingerprint'] == fingerprint), None) if fingerprint is not None else None)
         expected = representative['cross_objective_losses'] if representative else None
         if matrix[identity] != expected:
             raise ValueError('selected cross-objective matrix differs from representative draw')
@@ -98,21 +110,31 @@ def create(report, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8.4,
         'axes.spines.top': False, 'axes.spines.right': False, 'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig, axes = plt.subplots(1, 3, figsize=(10.3, 4.8), gridspec_kw={'width_ratios': [1.45, 1, 1.35]})
+    fig = plt.figure(figsize=(7.2, 6.2))
+    grid = fig.add_gridspec(2, 2, height_ratios=[1.08, .92])
+    axes = [fig.add_subplot(grid[0, 0]), fig.add_subplot(grid[0, 1]),
+            fig.add_subplot(grid[1, :])]
 
     # A: real independently reconstructed bound losses; gaps remain gaps.
     offset = {ARM_IDS[0]: -.08, ARM_IDS[1]: .08}
     for identity in ARM_IDS:
         rows = data['arms'][identity]['rows']
+        labelled = False
         for i, row in enumerate(rows):
             if row['loss'] is not None:
-                axes[0].scatter(i+offset[identity], row['loss'], s=54, color=COLORS[identity],
-                    edgecolor='white', linewidth=.6, label=LABELS[identity] if i == 0 else None, zorder=3)
+                axes[0].scatter(row['x_position']+offset[identity], row['loss'], s=54, color=COLORS[identity],
+                    edgecolor='white', linewidth=.6, label=LABELS[identity] if not labelled else None, zorder=3)
             else:
-                axes[0].scatter(i+offset[identity], 0, marker='x', s=45, color=COLORS[identity],
+                axes[0].scatter(row['x_position']+offset[identity], 0, marker='x', s=45,
+                    color=COLORS[identity], label=LABELS[identity] if not labelled else None,
                     transform=axes[0].get_xaxis_transform())
+                if row['status'] == 'generation-failure':
+                    axes[0].annotate('vocabulary\nfailure', (row['x_position']+offset[identity], .03),
+                        xycoords=axes[0].get_xaxis_transform(), xytext=(0, 5), textcoords='offset points',
+                        ha='center', va='bottom', color=COLORS[identity], fontsize=6.8)
+            labelled = True
     axes[0].set_xticks(range(4), ['G1a', 'G1b', 'G2a', 'G2b'])
-    axes[0].set_ylabel('Bound development loss (lower is selected)')
+    axes[0].set_ylabel('Bound loss\n(lower is better)')
     axes[0].set_title('A  Objective-conditioned paths', loc='left', fontsize=9.5)
     axes[0].legend(frameon=False, fontsize=7.6, loc='best')
     axes[0].grid(axis='y', alpha=.18)
@@ -156,19 +178,19 @@ def create(report, output):
                     color=COLORS[identity], alpha=.9, label=LABELS[identity])
     axes[2].set_xticks(x, ['node +', 'node -', 'edge +', 'edge -', 'rewire', 'protocol', 'source +', 'source -'],
                        rotation=30, ha='right')
-    axes[2].set_ylabel('Exact changes summed over completed draws')
+    axes[2].set_ylabel('Exact changes vs parent\n(sum over completed draws)')
     axes[2].set_title('C  Actual graph diffs vs parent', loc='left', fontsize=9.5)
     axes[2].grid(axis='y', alpha=.18)
 
-    title = 'Original-native structural exploration under two explicit objectives'
+    title = 'Two-objective native structural exploration'
     if data['classification'] == FIXTURE:
-        title = 'SCRIPTED FIXTURE — NOT NATIVE QWEN FINDINGS'
-    fig.suptitle(title, x=.06, y=.96, ha='left', fontsize=11.5)
-    fig.text(.06, .025, 'Development engineering only. Same completed worlds are cross-scored under both losses; '
-        'matrix shading is within-column display scaling.\n'
-        'Graph bars are literal set/source differences, not effects. No held-out, causal, scientific-value, '
-        'optimizer-convergence, or improvement claim.', color='#53616D', fontsize=8)
-    fig.subplots_adjust(left=.07, right=.985, top=.84, bottom=.29, wspace=.45)
+        title = 'SCRIPTED FIXTURE - NOT NATIVE RESULTS'
+    fig.suptitle(title, x=.08, y=.97, ha='left', fontsize=11.5)
+    fig.text(.08, .022, 'Development engineering only. Same worlds are cross-scored under both losses; '
+        'matrix color is scaled within column.\nGraph bars are literal differences, not effects.\n'
+        'No held-out, causal, scientific-value, convergence, or improvement claim.',
+        color='#53616D', fontsize=7.8)
+    fig.subplots_adjust(left=.10, right=.985, top=.87, bottom=.21, wspace=.48, hspace=.67)
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}
     for kind, path in paths.items():
         fig.savefig(path, dpi=210 if kind == 'png' else None, facecolor='white')

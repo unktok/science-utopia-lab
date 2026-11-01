@@ -1,10 +1,12 @@
 """Synthetic contract tests only; no native/Qwen result is created here."""
+from copy import deepcopy
 from dataclasses import replace
 
 import pytest
 
 from scripts.analyze_native_objective_structure_v8 import (
     ARM_IDS, EXPERIMENT, RAW_SCHEMA, _validate_binding, _validate_plan, analyze,
+    compact_attempt_report, cross_score_measurement,
     graph_change, objective_specs,
 )
 from scripts.analyze_native_open_v7 import audit_native_run
@@ -108,8 +110,20 @@ def test_v7_shared_audit_defaults_remain_exact_and_new_parameters_are_keyword_on
     assert signature.parameters['expected_loss'].default is None
 
 
+def test_missing_other_objective_metric_is_null_with_reason_not_dropped_or_penalized():
+    losses = objective_specs()
+    measurement = {'run_id': 'synthetic-cross-score-fixture', 'metrics': {
+        'native.accepted_decisions': {'status': 'measured', 'value': 2},
+        'native.review_records': {'status': 'measured', 'value': 3},
+        'native.accepted_peer_score_sum': {'status': 'unavailable', 'reason': 'synthetic fixture missing'}}}
+    scores, values = cross_score_measurement(measurement, losses, ARM_IDS[0], -2.)
+    assert scores[ARM_IDS[0]]['status'] == 'complete' and values[ARM_IDS[0]] == -2.
+    assert scores[ARM_IDS[1]]['status'] != 'complete' and values[ARM_IDS[1]] is None
+    assert scores[ARM_IDS[1]]['rejected_runs'][0]['reason']
+
+
 def test_full_failed_fixture_replays_read_only_without_fabricating_losses(tmp_path, monkeypatch):
-    """Complete budget fixture with eight null failures, not empirical evidence."""
+    """Complete declared budget with generation/draw failures, not empirical evidence."""
     import json
     import scripts.analyze_native_objective_structure_v8 as audit
     raw = tmp_path / 'raw'; raw.mkdir()
@@ -122,8 +136,12 @@ def test_full_failed_fixture_replays_read_only_without_fabricating_losses(tmp_pa
     losses = objective_specs()
     strategies = {name: {'kind': 'synthetic-fixture', 'scope': name} for name in ('invent', 'revise')}
 
-    def definition():
-        return {'base_patch': None, 'factors': [], 'continuous': [{'id': 'coordinate',
+    def definition(generation):
+        factors = ([{'id': 'invalid-choice', 'kind': 'bernoulli', 'choices': [
+            {'id': 'left', 'operations': [], 'provenance': {'kind': 'synthetic-fixture'}},
+            {'id': 'right', 'operations': [{'op': 'remove', 'path': '/mechanisms/0'}],
+             'provenance': {'kind': 'synthetic-fixture'}}]}] if generation == 0 else [])
+        return {'base_patch': None, 'factors': factors, 'continuous': [{'id': 'coordinate',
             'path': '/initial_state/coordinate', 'lower': -1., 'upper': 1., 'mean': 0., 'sigma': .2}],
             'provenance': {'kind': 'synthetic-fixture-not-native-result'}}
 
@@ -145,7 +163,8 @@ def test_full_failed_fixture_replays_read_only_without_fabricating_losses(tmp_pa
             except ExternalAuthoringPending as pending:
                 request = json.loads(pending.request_path.read_text())
                 write_json_atomic(pending.response_path, {'request_sha256': pending.request_sha256,
-                    'manifest': definition(), 'authoring': {'kind': 'external', 'fixture': True}},
+                    'manifest': definition(request['request']['authoring_input']['generation']),
+                    'authoring': {'kind': 'external', 'fixture': True}},
                     sort_keys=True, allow_nan=False)
                 campaign = NativeAdaptiveDesignCampaign(directory / 'campaign', **kwargs)
                 campaign.advance(simulation_factory=failed_factory,
@@ -158,15 +177,15 @@ def test_full_failed_fixture_replays_read_only_without_fabricating_losses(tmp_pa
         for identity, campaign in campaigns.items()}
     # Preserve an interrupted declared physical attempt that reached system.json
     # but never opened a response journal. It remains null, not a ninth result.
-    draw = campaigns[ARM_IDS[0]].state['records'][0]['draws'][0]
+    draw = campaigns[ARM_IDS[0]].state['records'][1]['draws'][0]
     partial = raw / 'worlds' / (draw['suggestion']['suggestion_id'] + '-s42')
     partial.mkdir(parents=True)
     write_json_atomic(partial / 'system.json', draw['suggestion']['candidate'],
                       sort_keys=True, allow_nan=False)
     evidence = {'schema': RAW_SCHEMA, 'classification': value['classification'],
         'source_commit': 'a'*40, 'plan': value, 'status': 'budget-complete-with-failures',
-        'budget_terminal': True, 'planned_native_world_budget': 8, 'committed_draws': 8,
-        'complete_native_worlds': 0, 'technical_failures': 8,
+        'budget_terminal': True, 'planned_native_world_budget': 8, 'committed_draws': 4,
+        'complete_native_worlds': 0, 'technical_failures': 6,
         'configured_researcher_provider': 'qwen3:8b', 'physical_reply_count': 0,
         'physical_response_caches': [], 'arms': arms,
         'claims': {'live_fixed_Qwen_researchers': False, 'scripted_researcher_HTTP': False,
@@ -180,7 +199,50 @@ def test_full_failed_fixture_replays_read_only_without_fabricating_losses(tmp_pa
     assert report['completed_physical_worlds'] == 0 and report['new_model_calls'] == 0
     assert report['physical_world_directory_count'] == 1
     assert report['partial_physical_worlds'][0]['status'] == 'partial-before-response-journal'
-    assert all(row['status'] == 'technical-failure' and row['cross_objective_losses'] == {
-        ARM_IDS[0]: None, ARM_IDS[1]: None} for arm in report['arms'].values() for row in arm['rows'])
+    assert all(len(arm['generation_failures']) == 1 for arm in report['arms'].values())
+    assert all(row['status'] in {'generation-failure', 'technical-failure'}
+        and row['cross_objective_losses'] == {ARM_IDS[0]: None, ARM_IDS[1]: None}
+        for arm in report['arms'].values() for row in arm['rows'])
+    from scripts.figures.native_objective_structure_v8 import figure_data
+    plotted = figure_data(report)
+    assert all(any(row['status'] == 'generation-failure' for row in arm['rows'])
+               for arm in plotted['arms'].values())
     assert report['held_out_metrics'] == {'status': 'not-defined-or-measured'}
+    compact = compact_attempt_report(report, attempt_id='fixture-complete')
+    assert compact['schema'].endswith('attempt-audit.v8')
+    assert compact['full_audit_content_sha256'] == report['content_sha256']
+    assert compact['raw_file_hashes'] == report['raw_file_hashes']
+    assert compact['execution_accounting']['budget_terminal'] is True
 
+    # Exercise the strict aborted-preflight receipt contract separately.  The
+    # invalid-vocabulary records above still come from the real controller;
+    # this copy only models the earlier freeze point before generation 1 was
+    # externally answered.
+    frozen = deepcopy(report)
+    frozen['status'] = 'in-progress'
+    frozen['physical_world_directory_count'] = 0
+    frozen['partial_physical_worlds'] = []
+    frozen['raw_campaign_summary'].update(committed_draws=0, technical_failures=2,
+        budget_terminal=False, status='in-progress', physical_reply_count=0)
+    for arm in frozen['arms'].values():
+        arm['records'] = arm['records'][:1]
+        arm['rows'] = arm['rows'][:1]
+        arm['loss_path'] = arm['loss_path'][:1]
+        arm['pending'] = deepcopy(report['arms'][ARM_IDS[0]]['records'][1])
+        arm['pending']['generated'] = False
+        arm['pending']['compiled'] = False
+        arm['pending']['version_sha256'] = None
+        arm['pending']['generation_error'] = None
+        arm['pending']['draws'] = []
+        arm['pending']['observations'] = []
+        arm['selection'] = {**arm['selection'], 'best_loss': None, 'tie_count': 0,
+            'tied_system_fingerprints': [], 'representative_system_fingerprint': None}
+    frozen['selected_cross_objective_matrix'] = {identity: None for identity in ARM_IDS}
+    frozen['content_sha256'] = digest({key: value for key, value in frozen.items()
+                                       if key != 'content_sha256'})
+    aborted = compact_attempt_report(frozen, attempt_id='fixture-a1',
+                                     aborted_technical_preflight=True)
+    assert aborted['attempt_status'] == 'aborted-technical-preflight-incomplete-budget'
+    assert all(arm['records'][0]['draw_count'] == 0 for arm in aborted['arms'].values())
+    assert all(arm['pending']['generation'] == 1 for arm in aborted['arms'].values())
+    assert aborted['execution_accounting']['complete_native_worlds'] == 0

@@ -40,6 +40,7 @@ from utopia.utils.data_utils import file_sha256
 
 RAW_SCHEMA = 'scienceutopia.native-objective-structure-pilot.v8'
 SCHEMA = 'scienceutopia.native-objective-structure-audit.v8'
+ATTEMPT_SCHEMA = 'scienceutopia.native-objective-structure-attempt-audit.v8'
 FIGURE_DATA_SCHEMA = 'scienceutopia.native-objective-structure-figure-data.v8'
 ACTUAL = 'actual-native-qwen-objective-structure-development-v8'
 PROTOCOL = 'native-objective-structure-v8'
@@ -185,6 +186,19 @@ def _finite_complete(observation):
             and type(observation.get('loss')) in (int, float) and math.isfinite(observation['loss']))
 
 
+def cross_score_measurement(measurement, losses, own_identity, observed_loss):
+    """Strictly verify the own loss; retain unavailable other losses as null."""
+    scores = {key: evaluate_loss(loss, [measurement]) for key, loss in losses.items()}
+    own = scores[own_identity]
+    if own['status'] != 'complete':
+        raise ValueError('complete native checkpoint lacks its own objective loss input')
+    if not math.isclose(own['loss'], observed_loss, rel_tol=1e-12, abs_tol=1e-12):
+        raise ValueError('saved optimization loss differs from independent checkpoint measurement')
+    values = {key: value['loss'] if value['status'] == 'complete' else None
+              for key, value in scores.items()}
+    return scores, values
+
+
 def _bind_authoring_instructions(directory, records, instructions):
     requests = [read(path) for path in sorted((Path(directory) / 'requests').glob('*.json'))]
     for record in records:
@@ -262,9 +276,22 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                                      plan['instructions'])
 
         initial = binding['initial_system']
-        rows = []
+        rows, generation_failures = [], []
         for record in records:
             parent = record['request']['parent_system']
+            if record['generation_error'] is not None:
+                if record['draws'] or record['observations']:
+                    raise ValueError('invalid generated vocabulary cannot claim executed draws')
+                failure = {'arm': identity, 'generation': record['request']['generation'],
+                    'planned_draws': record['request']['count'], 'version_sha256': record['version_sha256'],
+                    'strategy': record['request']['strategy_id'], 'generation_error': deepcopy(record['generation_error']),
+                    'status': 'generation-failure', 'draw': None, 'observation': None,
+                    'independent_metrics': None, 'cross_objective_losses': {key: None for key in ARM_IDS},
+                    'loss_evaluations': None, 'physical_proof': None, 'graph_changes': None}
+                generation_failures.append(failure)
+                rows.append(failure)
+                all_rows.append(failure)
+                continue
             if len(record['draws']) != 2 or len(record['observations']) != 2:
                 raise ValueError('completed generation lacks exactly two IID draw outcomes')
             for draw_index, (draw, observation) in enumerate(zip(record['draws'], record['observations'])):
@@ -286,13 +313,10 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                         raise ValueError('physical native world reused as independent draw')
                     proof = audit_native_run(root, draw, observation, evidence, world, classification,
                         expected_experiment=EXPERIMENT, expected_loss=losses[identity])
-                    scores = {key: evaluate_loss(loss, [proof['measurement']]) for key, loss in losses.items()}
-                    if any(value['status'] != 'complete' for value in scores.values()):
-                        raise ValueError('complete native checkpoint lacks a cross-objective loss input')
-                    if not math.isclose(scores[identity]['loss'], observation['loss'], rel_tol=1e-12, abs_tol=1e-12):
-                        raise ValueError('saved optimization loss differs from independent checkpoint measurement')
+                    scores, cross_values = cross_score_measurement(
+                        proof['measurement'], losses, identity, observation['loss'])
                     row.update(status='complete', independent_metrics=proof['measurement']['metrics'],
-                        cross_objective_losses={key: value['loss'] for key, value in scores.items()},
+                        cross_objective_losses=cross_values,
                         loss_evaluations=scores, physical_proof=proof)
                     physical_ids.add(evidence['run_id'])
                     candidate_by_run[evidence['run_id']] = candidate
@@ -307,7 +331,8 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         fingerprints = [SystemSpec.from_dict(row['draw']['suggestion']['candidate']).fingerprint
                         for row in tied]
         arms[identity] = {'loss_spec': losses[identity], 'binding': binding,
-            'records': records, 'pending': pending, 'authoring_proofs': authors, 'rows': rows,
+            'records': records, 'pending': pending, 'authoring_proofs': authors,
+            'generation_failures': generation_failures, 'rows': rows,
             'loss_path': [row['cross_objective_losses'][identity] for row in rows],
             'selection': {'criterion': 'minimum observed bound development loss; earliest row is display representative',
                 'best_loss': best_value, 'tie_count': len(tied),
@@ -343,12 +368,17 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         if candidate is None:
             # Locate only a declared, saved suggestion ID. Undeclared cache is contamination.
             matches = [row['draw']['suggestion']['candidate'] for row in all_rows
-                if row['draw'].get('suggestion') and run_id.startswith(row['draw']['suggestion']['suggestion_id'])]
+                if row['draw'] and row['draw'].get('suggestion')
+                and run_id == row['draw']['suggestion']['suggestion_id'] + '-s42']
             if len(matches) != 1:
                 raise ValueError('shared world cache is undeclared or ambiguous')
             candidate = matches[0]
         cell, system = root / 'worlds' / run_id, SystemSpec.from_dict(candidate)
         if (cell / 'replies/responses.sqlite').exists():
+            with sqlite3.connect((cell / 'replies/responses.sqlite').resolve().as_uri()+'?mode=ro', uri=True) as db:
+                bindings = db.execute('SELECT binding FROM metadata').fetchall()
+            if (len(bindings) != 1 or json.loads(bindings[0][0]).get('science_config', {}).get('experiment') != EXPERIMENT):
+                raise ValueError('partial physical world experiment binding differs')
             partial.append(partial_physical_proof(cell, system,
                 arms[all_rows[0]['arm']]['binding']['world'], classification))
         else:
@@ -363,15 +393,17 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         raise ValueError('physical world budget exceeds eight draws')
     committed_draws = sum(len(record['draws']) for arm in arms.values() for record in arm['records'])
     failures = sum(bool(record['generation_error']) for arm in arms.values() for record in arm['records'])
-    failures += sum(row['status'] != 'complete' for row in all_rows)
+    failures += sum(row['status'] == 'technical-failure' for row in all_rows)
     terminal = all(len(arms[key]['records']) == 2 and arms[key]['pending'] is None for key in ARM_IDS)
     expected_status = ('complete' if terminal and completed == 8 and not failures else
                        'budget-complete-with-failures' if terminal else 'in-progress')
-    if (raw.get('planned_native_world_budget') != 8 or raw.get('committed_draws') != committed_draws
-            or raw.get('complete_native_worlds') != completed or raw.get('technical_failures') != failures
-            or raw.get('budget_terminal') is not terminal or raw.get('status') != expected_status
-            or raw.get('configured_researcher_provider') != 'qwen3:8b'):
-        raise ValueError('raw terminal draw/failure/status summary differs')
+    expected_summary = {'planned_native_world_budget': 8, 'committed_draws': committed_draws,
+        'complete_native_worlds': completed, 'technical_failures': failures,
+        'budget_terminal': terminal, 'status': expected_status,
+        'configured_researcher_provider': 'qwen3:8b'}
+    raw_summary = {key: raw.get(key) for key in expected_summary}
+    if raw_summary != expected_summary:
+        raise ValueError(f'raw terminal draw/failure/status summary differs: expected {expected_summary}, got {raw_summary}')
     claims = raw.get('claims', {})
     if (claims.get('held_out') is not False or claims.get('causal_institutional_benefit') is not False
             or claims.get('scientific_value') is not False
@@ -380,7 +412,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         raise ValueError('raw evidence overclaims development engineering results')
 
     representatives = {identity: next((row for row in arms[identity]['rows']
-        if row['draw'].get('suggestion') and SystemSpec.from_dict(row['draw']['suggestion']['candidate']).fingerprint ==
+        if row['draw'] and row['draw'].get('suggestion') and SystemSpec.from_dict(row['draw']['suggestion']['candidate']).fingerprint ==
         arms[identity]['selection']['representative_system_fingerprint']), None) for identity in ARM_IDS}
     selected_matrix = {source: ({target: representatives[source]['cross_objective_losses'][target]
                                  for target in ARM_IDS} if representatives[source] else None)
@@ -392,6 +424,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         'raw_file_hashes': inventory, 'new_model_calls': 0, 'generated_source_executions': 0,
         'physical_cache_count': len(journal_directories),
         'physical_world_directory_count': len(physical_directories), 'completed_physical_worlds': completed,
+        'raw_campaign_summary': {**expected_summary, 'physical_reply_count': reply_count},
         'partial_physical_worlds': partial, 'arms': arms, 'selected_cross_objective_matrix': selected_matrix,
         'held_out_metrics': {'status': 'not-defined-or-measured'},
         'promotion_policy': {'status': 'not-defined-or-applied'},
@@ -403,20 +436,146 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     return result
 
 
+def _compact_authoring_proof(proof):
+    receipt = proof.get('receipt')
+    compact_receipt = None
+    if receipt is not None:
+        compact_receipt = {key: receipt.get(key) for key in (
+            'schema', 'request_sha256', 'request_file_sha256', 'response_sha256',
+            'response_file_sha256', 'manifest_sha256')}
+        authored = receipt.get('authoring', {})
+        compact_receipt['authoring'] = {key: authored.get(key) for key in (
+            'kind', 'identity', 'identity_self_reported', 'provider_authenticated',
+            'generation', 'source_commit', 'cross_arm_outcome_access',
+            'original_researcher_model_fixed')}
+        static = authored.get('static_validation', {})
+        compact_receipt['static_validation'] = {key: static.get(key) for key in (
+            'all_reachable_static_valid', 'definition_sha256')}
+    return {key: proof.get(key) for key in (
+        'generation', 'status', 'campaign_request_sha256', 'request_sha256',
+        'request_file_sha256', 'version_sha256')} | {'receipt': compact_receipt}
+
+
+def compact_attempt_report(report, *, attempt_id, aborted_technical_preflight=False):
+    """Produce a compact, hash-bound receipt for a frozen pilot attempt.
+
+    The compact receipt intentionally excludes generated manifests and system
+    payloads.  Their complete immutable inventory remains bound by the raw file
+    hashes, while failure, request, and authoring receipts stay human-auditable.
+    """
+    if report.get('schema') != SCHEMA or report.get('content_sha256') != digest(
+            {key: value for key, value in report.items() if key != 'content_sha256'}):
+        raise ValueError('full audit report content hash differs')
+    if not isinstance(attempt_id, str) or not attempt_id or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789-' for c in attempt_id):
+        raise ValueError('compact attempt ID must use lowercase letters, digits, or hyphens')
+    summary = report.get('raw_campaign_summary', {})
+    if aborted_technical_preflight:
+        if (report.get('status') != 'in-progress' or summary.get('budget_terminal') is not False
+                or summary.get('committed_draws') != 0
+                or report.get('completed_physical_worlds') != 0
+                or report.get('physical_cache_count') != 0
+                or report.get('physical_world_directory_count') != 0
+                or summary.get('physical_reply_count') != 0
+                or not all(len(arm.get('records', [])) == 1
+                           and len(arm.get('generation_failures', [])) == 1
+                           and arm.get('pending') is not None
+                           and arm.get('selection', {}).get('representative_system_fingerprint') is None
+                           for arm in report['arms'].values())
+                or any(value is not None for value in report['selected_cross_objective_matrix'].values())):
+            raise ValueError('technical-preflight abort receipt does not match frozen audit')
+    arms = {}
+    for identity in ARM_IDS:
+        arm = report['arms'][identity]
+        records = [{
+            'generation': record['request']['generation'],
+            'request_sha256': digest(record['request']),
+            'version_sha256': record['version_sha256'],
+            'generated': record['generated'],
+            'compiled': record['compiled'],
+            'generation_error': deepcopy(record['generation_error']),
+            'draw_count': len(record['draws']),
+            'observation_count': len(record['observations']),
+            'record_sha256': digest(record),
+        } for record in arm['records']]
+        pending = arm['pending']
+        pending_receipt = None if pending is None else {
+            'generation': pending['request']['generation'],
+            'request_sha256': digest(pending['request']),
+            'generated': pending['generated'],
+            'compiled': pending['compiled'],
+            'version_sha256': pending['version_sha256'],
+            'pending_sha256': digest(pending),
+        }
+        arms[identity] = {
+            'loss_spec_id': arm['loss_spec']['id'],
+            'loss_spec_sha256': digest(arm['loss_spec']),
+            'record_count': len(records),
+            'records': records,
+            'pending': pending_receipt,
+            'generation_failures': [{key: failure.get(key) for key in (
+                'generation', 'planned_draws', 'version_sha256', 'strategy',
+                'status', 'generation_error')} for failure in arm['generation_failures']],
+            'authoring_proofs': [_compact_authoring_proof(value)
+                                 for value in arm['authoring_proofs']],
+            'selection': deepcopy(arm['selection']),
+        }
+    payload = {
+        'schema': ATTEMPT_SCHEMA,
+        'classification': report['classification'],
+        'attempt_id': attempt_id,
+        'attempt_status': ('aborted-technical-preflight-incomplete-budget'
+                           if aborted_technical_preflight else report['status']),
+        'campaign_status_at_freeze': report['status'],
+        'source_commit': report['source_commit'],
+        'full_audit_content_sha256': report['content_sha256'],
+        'raw_output_root': report['raw_output_root'],
+        'raw_inventory_sha256': report['raw_inventory_sha256'],
+        'raw_file_count': report['raw_file_count'],
+        'raw_file_hashes': deepcopy(report['raw_file_hashes']),
+        'execution_accounting': {
+            **deepcopy(summary),
+            'physical_cache_count': report['physical_cache_count'],
+            'physical_world_directory_count': report['physical_world_directory_count'],
+            'new_model_calls_during_audit': report['new_model_calls'],
+            'generated_source_executions_during_audit': report['generated_source_executions'],
+        },
+        'arms': arms,
+        'selected_cross_objective_matrix': deepcopy(report['selected_cross_objective_matrix']),
+        'held_out_metrics': deepcopy(report['held_out_metrics']),
+        'promotion_policy': deepcopy(report['promotion_policy']),
+        'claims': [
+            'This attempt stopped during generated-vocabulary technical preflight; it did not complete its draw budget.',
+            'No native world, researcher-model reply, numerical objective observation, selection, or optimization result exists.',
+            'A generation failure is one failed generation event, not two fabricated failed draws.',
+            'This receipt supports no held-out, objective comparison, improvement, causal, or scientific-value claim.',
+        ],
+    }
+    payload['content_sha256'] = digest(payload)
+    return payload
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--expected-source', required=True)
     parser.add_argument('--allow-incomplete', action='store_true')
+    parser.add_argument('--compact-attempt-id')
+    parser.add_argument('--aborted-technical-preflight', action='store_true')
     args = parser.parse_args()
     if args.output.resolve().is_relative_to(args.run.resolve()):
         parser.error('audit output must be outside immutable raw evidence')
     report = analyze(args.run, expected_source=args.expected_source,
                      require_complete=not args.allow_incomplete)
-    write_json_atomic(args.output, report, sort_keys=True, ensure_ascii=False, allow_nan=False)
-    print(json.dumps({'status': report['status'], 'physical_worlds': report['completed_physical_worlds'],
-                      'report_sha256': report['content_sha256']}, sort_keys=True))
+    if args.aborted_technical_preflight and not args.compact_attempt_id:
+        parser.error('--aborted-technical-preflight requires --compact-attempt-id')
+    output = (compact_attempt_report(report, attempt_id=args.compact_attempt_id,
+                                     aborted_technical_preflight=args.aborted_technical_preflight)
+              if args.compact_attempt_id else report)
+    write_json_atomic(args.output, output, sort_keys=True, ensure_ascii=False, allow_nan=False)
+    print(json.dumps({'status': output.get('attempt_status', report['status']),
+                      'physical_worlds': report['completed_physical_worlds'],
+                      'report_sha256': output['content_sha256']}, sort_keys=True))
 
 
 if __name__ == '__main__':

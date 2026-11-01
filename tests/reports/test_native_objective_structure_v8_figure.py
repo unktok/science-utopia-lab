@@ -33,7 +33,8 @@ def report():
                 'independent_metrics': {key: {'status': 'measured', 'value': index} for key in METRICS},
                 'physical_proof': {'measurement': {'system_fingerprint': f'{arm}-{index}'}},
                 'graph_changes': {'vs_initial': {'counts': counts}, 'vs_parent': {'counts': counts}}})
-        arms[arm] = {'rows': rows, 'loss_path': [r['observation']['loss'] for r in rows],
+        arms[arm] = {'rows': rows, 'generation_failures': [],
+            'loss_path': [r['observation']['loss'] for r in rows],
             'selection': {'best_loss': float(arm_index/2), 'tie_count': 1,
                 'tied_system_fingerprints': [f'{arm}-0'],
                 'representative_system_fingerprint': f'{arm}-0'}}
@@ -58,6 +59,15 @@ def test_figure_data_preserves_real_units_and_all_graph_diffs():
     assert data['scope'].endswith('no held-out or improvement claim')
     assert data['arms'][ARM_IDS[0]]['rows'][3]['loss'] == 3.
     assert data['arms'][ARM_IDS[1]]['rows'][0]['graph_changes']['vs_parent']['counts']['source_changes'] == 1
+
+
+def test_missing_cross_objective_cell_is_explicit_na_not_a_penalty():
+    value = report()
+    value['arms'][ARM_IDS[0]]['rows'][0]['cross_objective_losses'][ARM_IDS[1]] = None
+    value['selected_cross_objective_matrix'][ARM_IDS[0]][ARM_IDS[1]] = None
+    rehash(value)
+    data = figure_data(value)
+    assert data['selected_cross_objective_matrix'][ARM_IDS[0]][ARM_IDS[1]] is None
 
 
 def test_synthetic_figure_renders_outside_paper_and_is_hash_bound(tmp_path):
@@ -96,4 +106,3 @@ def test_false_empirical_plot_inputs_fail_closed(mutation, match):
     if value['content_sha256'] != 'bad': rehash(value)
     with pytest.raises(ValueError, match=match):
         figure_data(value)
-
