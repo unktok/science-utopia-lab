@@ -144,4 +144,16 @@ describe("same-society adoption state boundary", () => {
     expect(controller.state).toBe("completed");
     await expect(controller.submit({ ...candidate, request_id: "request-2", request_sha256: "f".repeat(64) }, "f".repeat(64))).rejects.toThrow("completed");
   });
+
+  it("resumes only an exact backend-confirmed pending identity without redispatch", async () => {
+    const transport = { dispatch: vi.fn(), receipt: vi.fn(async () => ({ status: "pending" as const, request_id: candidate.request_id, request_sha256: candidate.request_sha256 })) };
+    const controller = new AdoptionController(transport);
+    expect(() => controller.resumePending(candidate, "f".repeat(64))).toThrow("Backend confirmation");
+    controller.resumePending(candidate, candidate.request_sha256);
+    expect(controller.state).toBe("pending");
+    expect(controller.requestId).toBe(candidate.request_id);
+    expect(transport.dispatch).not.toHaveBeenCalled();
+    await controller.refresh();
+    expect(controller.state).toBe("pending");
+  });
 });

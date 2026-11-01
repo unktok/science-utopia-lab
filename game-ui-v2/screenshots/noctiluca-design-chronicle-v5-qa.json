@@ -10,6 +10,8 @@
     "adoption": "UNAVAILABLE / Transport not connected. This historical v5 snapshot is not a live design session and cannot be adopted directly. Contract: scienceutopia.native-society-design-session.v1.",
     "confirmDisabled": true,
     "submitDisabled": true,
+    "liveSource": "SESSION READ FAILED",
+    "liveConfirmDisabled": true,
     "overflow": false
   },
   "utility_two_node": {
@@ -19,10 +21,25 @@
     "selection": "First minimum encountered; retained by deterministic first-best selection. Station 02 was still executed and observed at the same loss (0.45), but it did not replace the earlier minimum.",
     "source": "def step(context):\n    world = context['inputs']['observations'][0]['payload']\n    cost = context['parameters']['publication_cost']\n    offers = []\n    for conf in world['conferences']['conferences']:\n        for paper in conf['submitted_papers']:\n            reviews = conf['reviews'].get(paper['id'], [])\n            mean_score = sum(review['overall_score'] for review in reviews) / len(reviews) if reviews else 0.0\n            offers.append({'paper_id': paper['id'], 'conference_id': conf['conference_id'], 'review_mean': mean_score, 'loss_increment': cost - mean_score})\n    packet = {'payload': {'year': context['period'], 'offers': offers}, 'actor_ids': [], 'artifact_ids': []}\n    return {'outputs': {'offers': [packet]}, 'state': {}}\n"
   },
+  "same_society_fixture": {
+    "truth": "SYNTHETIC UI FIXTURE",
+    "intervals": 2,
+    "losses": [
+      "0.7",
+      "0.45"
+    ],
+    "request": "society-design-eeeeeeeeeeeeeeeeeeeeeeee",
+    "hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "confirmDisabled": true,
+    "consentDisabled": true,
+    "causal": "MIGRATION LINEAGEADOPTION 1 / AFTER Y1333333333333333333…RECEIPT cccccccccccccccccc…SESSION BINDINGFOUNDING SYSTEM111111111111111111…OBSERVATIONS2REQUESTS2CAUSAL CLAIMNOT ESTABLISHED"
+  },
+  "fixture_post_requests": 0,
   "mobile_overflow": false,
   "browser_errors": [],
   "screenshots": [
     "noctiluca-design-chronicle-v5.png",
-    "noctiluca-design-chronicle-two-node.png"
+    "noctiluca-design-chronicle-two-node.png",
+    "noctiluca-same-society-session-fixture.png"
   ]
 }

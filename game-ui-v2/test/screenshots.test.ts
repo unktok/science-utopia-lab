@@ -66,8 +66,9 @@ describe("deterministic intervention comparison artifacts", () => {
 });
 
 const lifecycleCaptures = {
-  "noctiluca-design-chronicle-v5.png": "36d90b870063aa0e5baf3ce2c3e0a3c878f4710f35fb4022b91ad733ef638b5f",
-  "noctiluca-design-chronicle-two-node.png": "d94e31153c8c6e62abe8680817ea594a5f3cef9c5691171b653b4593f1dc7586",
+  "noctiluca-design-chronicle-v5.png": "8ae72e3301b1a069fb69d697355e844df1e437feff89ddbc83eb0620b976a043",
+  "noctiluca-design-chronicle-two-node.png": "ba51cd9a3ef2e9d28f1d3248d6a4398fe5682675c9be8ebb9017eee7a8414008",
+  "noctiluca-same-society-session-fixture.png": "46ca8a41811a94b7d00a2243feb8bfc442c91ea860c8dc06aad3e8fd7ac4b2f9",
 };
 
 describe("audited native design lifecycle visual artifacts", () => {

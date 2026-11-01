@@ -58,9 +58,14 @@ the first-best tie rule, and code/protocol/wiring differences. It keeps the
 external Codex designer distinct from the fixed local Qwen3:8B researcher
 society. Persistent boundaries mark the result as development-only: not
 held-out, not scientific value, not full-world differentiation and not an
-executed same-society adoption. The adoption airlock is deliberately disabled
-until a durable migration transport and verified receipt are available. See
-`research/tracks/native-design-lifecycle-ui-v6.md`.
+executed same-society adoption. A separate continuity console can read a
+configured loopback-only `NativeSocietyDesignSession`: it shows online interval
+losses and exact staged request hashes, keeps confirmation pending while the
+worker runs, and reports completion only after a matching backend-verified
+durable migration receipt. With no society API it fails closed as unavailable;
+`?society=fixture` is a labelled read-only UI fixture whose action controls are
+disabled. The historical v5 candidate is never submitted through this live
+console. See `research/tracks/native-design-lifecycle-ui-v6.md`.
 
 Regenerate the portable, hash-bound browser snapshot without running an
 experiment:

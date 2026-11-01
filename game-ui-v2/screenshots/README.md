@@ -6,14 +6,17 @@ These `1440x1100` local Chrome captures render the real, tracked v5 audit
 through the portable lifecycle snapshot. The first shows the complete
 development-only loss path and persistent truth boundaries. The second selects
 the nonchosen two-node utility revision, including both generated mechanisms,
-the `publication-loss-offers-v1` protocol, code hashes and changed wiring.
-Same-society adoption remains visibly unavailable; capture QA starts no
-experiment or inference.
+the `publication-loss-offers-v1` protocol, code hashes and changed wiring. The
+third exercises the separate same-society continuity console with an explicitly
+labelled read-only fixture: two synthetic online intervals, one migration and
+one staged request. Its controls are disabled and QA observes zero society POST
+requests. Capture QA starts no experiment, inference or migration.
 
 | Capture | SHA-256 |
 |---|---|
-| `noctiluca-design-chronicle-v5.png` | `36d90b870063aa0e5baf3ce2c3e0a3c878f4710f35fb4022b91ad733ef638b5f` |
-| `noctiluca-design-chronicle-two-node.png` | `d94e31153c8c6e62abe8680817ea594a5f3cef9c5691171b653b4593f1dc7586` |
+| `noctiluca-design-chronicle-v5.png` | `8ae72e3301b1a069fb69d697355e844df1e437feff89ddbc83eb0620b976a043` |
+| `noctiluca-design-chronicle-two-node.png` | `ba51cd9a3ef2e9d28f1d3248d6a4398fe5682675c9be8ebb9017eee7a8414008` |
+| `noctiluca-same-society-session-fixture.png` | `46ca8a41811a94b7d00a2243feb8bfc442c91ea860c8dc06aad3e8fd7ac4b2f9` |
 
 ## Common-Split Relay v1
 

@@ -123,6 +123,17 @@ export class AdoptionController {
   private dispatching = false;
   private refreshing = false;
   constructor(private readonly transport?: AdoptionTransport) { this.state = transport ? "confirm-required" : "unavailable"; }
+  resumePending(candidate: AdoptionCandidate, confirmedRequestSha256: string): void {
+    if (!this.transport) throw new Error("Cannot resume without an adoption transport");
+    if (this.dispatching || this.refreshing || this.state === "pending" || this.state === "completed") throw new Error("An adoption request is already active or completed");
+    const confirmation = adoptionConfirmation(candidate);
+    if (confirmedRequestSha256 !== confirmation.confirmed_request_sha256) throw new Error("Backend confirmation does not match the exact staged request SHA256");
+    this.operation += 1;
+    this.requestId = confirmation.request_id;
+    this.requestSha256 = confirmation.confirmed_request_sha256;
+    this.state = "pending";
+    this.message = `Resumed backend-confirmed request / ${this.requestSha256.slice(0, 16)} / no adoption receipt yet.`;
+  }
   async submit(candidate: AdoptionCandidate, confirmedRequestSha256: string): Promise<void> {
     if (!this.transport) { this.state = "unavailable"; throw new Error(this.message); }
     if (this.dispatching || this.refreshing || this.state === "pending" || this.state === "completed") throw new Error("An adoption request is already active or completed");

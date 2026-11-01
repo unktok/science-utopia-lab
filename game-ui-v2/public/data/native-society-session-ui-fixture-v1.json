@@ -1,0 +1,109 @@
+{
+  "schema": "scienceutopia.native-society-session-ui-fixture.v1",
+  "label": "SYNTHETIC UI FIXTURE / ACTIONS DISABLED",
+  "projection": {
+    "schema": "scienceutopia.native-society-design-session.v1",
+    "binding": {
+      "founding_fingerprint": "1111111111111111111111111111111111111111111111111111111111111111",
+      "loss_spec_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "world": { "origin": "synthetic-ui-fixture-no-execution" }
+    },
+    "actual_society_binding": {
+      "founding_fingerprint": "1111111111111111111111111111111111111111111111111111111111111111",
+      "portable_contract": { "fixture": true },
+      "response_cache_binding": { "fixture": true }
+    },
+    "loss_spec": {
+      "schema": "scienceutopia.loss-spec.v1",
+      "id": "fixture-online-net-reviewed-utility",
+      "direction": "minimize",
+      "interpretation": "Synthetic interval values for UI state coverage only; not experiment evidence."
+    },
+    "observations": [
+      {
+        "observation_id": "society-observation-fixture-year-1",
+        "through_year": 1,
+        "after_year": 0,
+        "system_fingerprint": "1111111111111111111111111111111111111111111111111111111111111111",
+        "loss": 0.7,
+        "measurement": { "metrics": { "native.accepted_decisions": { "status": "measured", "value": 1 }, "native.review_records": { "status": "measured", "value": 4 } } },
+        "preceding_adoption": null,
+        "comparison": "online-same-society-not-counterfactual"
+      },
+      {
+        "observation_id": "society-observation-fixture-year-3",
+        "through_year": 3,
+        "after_year": 1,
+        "system_fingerprint": "3333333333333333333333333333333333333333333333333333333333333333",
+        "loss": 0.45,
+        "measurement": { "metrics": { "native.accepted_decisions": { "status": "measured", "value": 0 }, "native.review_records": { "status": "measured", "value": 5 } } },
+        "preceding_adoption": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "comparison": "online-same-society-not-counterfactual"
+      }
+    ],
+    "requests": [
+      {
+        "request_id": "society-design-dddddddddddddddddddddddd",
+        "request_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "parent_observation_id": "society-observation-fixture-year-1",
+        "session_binding_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "expected_checkpoint_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+        "observed_society_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+        "domain_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+        "candidate_fingerprint": "3333333333333333333333333333333333333333333333333333333333333333",
+        "candidate_system": { "system_id": "fixture-notice-system", "mechanisms": [{ "mechanism_id": "fixture.notice" }] },
+        "patch": { "schema": "scienceutopia.system-design-patch.v1", "operations": [{ "op": "add", "path": "/fixture", "value": true }] },
+        "loss_spec_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "state_actions": {},
+        "discard_deliveries": {},
+        "authoring": { "identity": "synthetic-ui-fixture" }
+      },
+      {
+        "request_id": "society-design-eeeeeeeeeeeeeeeeeeeeeeee",
+        "request_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "parent_observation_id": "society-observation-fixture-year-3",
+        "session_binding_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "expected_checkpoint_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+        "observed_society_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+        "domain_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_fingerprint": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "candidate_system": { "system_id": "fixture-two-node-system", "mechanisms": [{ "mechanism_id": "fixture.pricing" }, { "mechanism_id": "fixture.clearing" }] },
+        "patch": { "schema": "scienceutopia.system-design-patch.v1", "operations": [{ "op": "replace", "path": "/fixture", "value": "two-node" }] },
+        "loss_spec_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "state_actions": { "fixture.memory": "reset" },
+        "discard_deliveries": { "0": "synthetic fixture delivery decision" },
+        "authoring": { "identity": "synthetic-ui-fixture" }
+      }
+    ],
+    "adoptions": [
+      {
+        "request_id": "society-design-dddddddddddddddddddddddd",
+        "request_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "candidate_fingerprint": "3333333333333333333333333333333333333333333333333333333333333333",
+        "after_year": 1,
+        "migration_receipt_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+      }
+    ],
+    "cancellations": [],
+    "pending": {
+      "request_id": "society-design-eeeeeeeeeeeeeeeeeeeeeeee",
+      "request_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "parent_observation_id": "society-observation-fixture-year-3",
+      "session_binding_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "expected_checkpoint_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "observed_society_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+      "domain_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "candidate_fingerprint": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "candidate_system": { "system_id": "fixture-two-node-system", "mechanisms": [{ "mechanism_id": "fixture.pricing" }, { "mechanism_id": "fixture.clearing" }] },
+      "patch": { "schema": "scienceutopia.system-design-patch.v1", "operations": [{ "op": "replace", "path": "/fixture", "value": "two-node" }] },
+      "loss_spec_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "state_actions": { "fixture.memory": "reset" },
+      "discard_deliveries": { "0": "synthetic fixture delivery decision" },
+      "authoring": { "identity": "synthetic-ui-fixture" }
+    },
+    "journal_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "model_weights_trained": false,
+    "causal_improvement_established": false,
+    "confirmations": []
+  }
+}

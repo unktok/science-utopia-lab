@@ -1,4 +1,5 @@
 import { AdoptionController, parseDesignLifecycle, type DesignArm, type DesignLifecycleSnapshot, type DesignNode, type DesignSystem } from "./designLifecycleContract";
+import { initializeSameSocietyView } from "./sameSocietyView";
 import "./designLifecycle.css";
 
 const el = <T extends Element = HTMLElement>(id: string): T => { const node = document.getElementById(id); if (!node) throw new Error(`Missing lifecycle element ${id}`); return node as unknown as T; };
@@ -149,6 +150,7 @@ async function start(): Promise<void> {
   armIndex = snapshot.arms.findIndex((candidate) => candidate.id === "native-joint-v5-throughput"); if (armIndex < 0) armIndex = 0;
   systemIndex = arm().selected_index;
   renderHeader(); renderArm(); renderAdoption(); renderTruth();
+  initializeSameSocietyView();
   window.addEventListener("resize", drawWires);
   window.addEventListener("keydown", (event) => {
     if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement || event.metaKey || event.ctrlKey || event.altKey) return;

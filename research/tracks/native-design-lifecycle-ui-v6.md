@@ -63,6 +63,37 @@ system directly.
 The existing `/native-api/jobs` path creates fresh worlds and is deliberately
 not reused as same-society adoption.
 
+## Live same-society continuity spine
+
+The same page now has a separate live-session console for the loopback-only
+`NativeSocietyDesignSession`; it does not turn the historical v5 result into a
+live adoption candidate. The console reads the session token and projection
+from `GET /native-api/session` and `GET /native-api/society`. It renders each
+completed interval as an online loss observation tied to its exact system
+fingerprint, preceding migration and journal. These values compare consecutive
+intervals of one continuing society. They are not counterfactual estimates,
+independent replicates or evidence that a migration caused improvement. The
+researcher model weights remain fixed.
+
+When the live projection contains a staged request, the UI displays the exact
+request, candidate and expected-checkpoint hashes. It enables confirmation only
+after the operator pastes the identical request SHA256 and checks the explicit
+authorization control. `POST /native-api/society/confirm` authorizes the worker
+and returns `pending`; it never counts as adoption. The UI then polls
+`GET /native-api/society/requests/{request_id}` and shows completion only for a
+matching request ID and SHA256 with `status=adopted`, `verified_receipt=true`
+and a valid durable migration-receipt SHA256. Pending remains pending, and
+failed, mismatched, reordered or malformed responses fail closed. An absent
+society API is shown as unavailable.
+
+`?society=fixture` loads a separately labelled synthetic UI fixture. Its
+confirmation controls are disabled and browser QA asserts that it sends zero
+society POST requests. The fixture exercises interval, staged-request and
+migration-lineage rendering only; its loss values and receipts are not research
+evidence. No actual persistent-society Qwen pilot result exists in this UI
+change, so the page makes no adoption, causal-improvement or trained-weights
+claim.
+
 ## Local verification
 
 No inference or experiment job is started. Node exports the tracked snapshot,
@@ -73,5 +104,6 @@ overflow.
 
 - `game-ui-v2/screenshots/noctiluca-design-chronicle-v5.png`
 - `game-ui-v2/screenshots/noctiluca-design-chronicle-two-node.png`
+- `game-ui-v2/screenshots/noctiluca-same-society-session-fixture.png`
 - `game-ui-v2/screenshots/noctiluca-design-chronicle-v5-qa.json`
 
