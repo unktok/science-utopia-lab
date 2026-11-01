@@ -1,0 +1,8 @@
+{
+  "schema": "scienceutopia.native-objective-structure-ui-export.v8",
+  "report_file": "native-objective-structure-v8-a2.json",
+  "report_file_sha256": "fd25c21dfa4e2e39c37888402513d2f031e9ae1091b74ea44c65ec5ae2e5f945",
+  "report_content_sha256": "e932c88a73fe7fa9e3b70b487d798a1504994e3ae6841c26ff335070cbb2ffff",
+  "classification": "actual-native-qwen-objective-structure-development-v8",
+  "exported_without_transform": true
+}
