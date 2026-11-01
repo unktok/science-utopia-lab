@@ -115,8 +115,9 @@ def _validate_plan(kernel, payload, year):
                 or type(d['years']) is not int or d['years'] < 1
                 or not isinstance(d['focus_areas'], list)
                 or any(not isinstance(s, str) for s in d['focus_areas'])
-                or any(d[k] is not None and (not isinstance(d[k], list)
-                    or any(not isinstance(s, str) for s in d[k])) for k in ('keywords', 'related_topics'))
+                or not isinstance(d['keywords'], list) or any(not isinstance(s, str) for s in d['keywords'])
+                or (d['related_topics'] is not None and (not isinstance(d['related_topics'], list)
+                    or any(not isinstance(s, str) for s in d['related_topics'])))
                 or any(not isinstance(item[k], str) for k in ('detailed_focus', 'reason'))):
             raise GraphRuntimeError('native research direction requires explicit free-text/list/duration fields')
         start, end = item['project_start_year'], item['project_end_year']

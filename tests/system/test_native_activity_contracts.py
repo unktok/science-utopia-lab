@@ -153,7 +153,7 @@ def delivered(payload, *, period=1):
     return DeliveredValue(ChannelKind.ARTIFACT, PLAN, payload, (), (), ('actual-producer-event',), 'arbitrary-director', 'plans', period, 1)
 
 
-@pytest.mark.parametrize('failure', ['unknown', 'duplicate', 'timeline', 'inactive', 'stale', 'nonfinite', 'two-writers'])
+@pytest.mark.parametrize('failure', ['unknown', 'duplicate', 'timeline', 'inactive', 'stale', 'nonfinite', 'null-keywords', 'two-writers'])
 def test_whole_plan_and_amendments_fail_before_actual_mutation(failure):
     kernel, actors, plan = unit_plan()
     plan['assignments'][0]['detailed_focus'] = 'must not commit'
@@ -164,6 +164,7 @@ def test_whole_plan_and_amendments_fail_before_actual_mutation(failure):
     elif failure == 'inactive': actors['b'].is_active = False
     elif failure == 'stale': plan['year'] = 0
     elif failure == 'nonfinite': plan['assignments'][1]['direction']['years'] = float('nan')
+    elif failure == 'null-keywords': plan['assignments'][1]['direction']['keywords'] = None
     else:
         command = dict(schema=AMENDMENT, target_year=1, assignment=plan['assignments'][1], submit=True)
         amendments = [delivered(command), delivered(command)]

@@ -60,7 +60,9 @@ One plan bundle has exactly:
 }
 ```
 
-Direction keywords/related_topics may also be null, matching native ResearchDirection.
+Direction related_topics may also be null. Keywords must be an explicit string
+list (possibly empty): the existing native retrieval/collaboration consumers
+iterate/join it, even though the dataclass constructor itself defaults to null.
 Assignments/submission IDs are ordered, unique real author identities. Text is
 not checked against AVAILABLE_DIRECTIONS. Positive project duration has no
 catalogue maximum; project end must equal start + duration - 1, and start must
