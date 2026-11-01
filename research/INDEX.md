@@ -6,7 +6,10 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [ACTIVE: close the remaining feasible non-scale implementations v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
+- [Completed fixed non-scale implementation inventory v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
+- [Actual integrated v7 result: four worlds,342 replies, no new best](results/native-open-integrated-v7-a2.md)
+- [Independent machine-readable v7 audit](results/native-open-integrated-v7-a2.json)
+- [Source-bound v7 verification receipt](results/non-scale-closure-v7-verification.json)
 - [Open native entities and consequential action capabilities](components/native-open-domain-v7.md)
 - [Explicit native process execution](components/native-process-execution-v7.md)
 - [Wrapped executable adoption and cold-restart validation](components/native-process-migration-validation-v7.md)
@@ -14,7 +17,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Operational representations, hybrid projection and native fidelity](components/native-operational-hybrid-gradients-v7.md)
 - [Small integrated native/Qwen pilot protocol](protocols/campaigns/native-open-integrated-v7.md)
 - [English open-native evidence district](tracks/native-open-evidence-ui-v7.md)
-- [Active non-scale completion v6: acceptance gates and parallel ownership](milestones/2026-11-01-non-scale-completion-v6.md)
+- [Historical finite non-scale completion v6](milestones/2026-11-01-non-scale-completion-v6.md)
 - [Same-society v6 a1: real adoption, preserved RAG continuation failure](results/native-society-v6-a1.md)
 - [Completed same-society v6 a2: two revisions, 130 replies and actual browser receipts](results/native-society-v6-a2.md)
 - [Objective-visible same-society session, complete-state recovery and loopback API](components/native-society-objective-session-v6.md)

@@ -99,3 +99,15 @@ limit during a tiny container. It was an infrastructure failure, not an objectiv
 penalty or a successful result. The new fixture declares a separate bounded
 60-second QA executor budget; production sandbox/default and live experiment
 budgets are unchanged. No paid API or live Qwen inference is used.
+
+## Disconnection and diagnostic-failure handling
+
+An unused parameter in the named represented conditional objective receives an
+exact zero derivative and is listed in `disconnected_represented_parameters`.
+This is not zero imputation for opaque Python, researcher text or native input
+Jacobians, which remain unknown. Connected legacy report/replay stays unchanged.
+Each derivative diagnostic may independently return `failed-diagnostic` with
+its error and false verification flags. The completed native loss/cost remains
+valid and retained; an analysis exception cannot fabricate a loss, gradient or
+successful fidelity claim. Focused operator/native/replay/reporting QA covers
+these prospective post-live changes; the immutable live source is not relabelled.

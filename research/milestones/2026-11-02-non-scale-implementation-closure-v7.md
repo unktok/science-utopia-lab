@@ -1,4 +1,4 @@
-# Non-scale implementation closure v7 — ACTIVE
+# Non-scale implementation closure v7 — COMPLETE
 
 The user corrects the v6 completion interpretation: implement and connect the
 remaining feasible capabilities before scale-up, rather than selecting a smaller
@@ -65,3 +65,57 @@ delegate-aware migration validation is still being completed independently.
 I1 full clean regression/review and V1 actual evidence/UI/paper verification are
 still OPEN. A bounded four-world/two-year local-Qwen pilot is preregistered in
 `../protocols/campaigns/native-open-integrated-v7.md`; it has not yet executed.
+
+## Final completion ledger — 2026-11-02
+
+The entries above are chronological, not current pending work. All fixed items
+are now implemented, integrated and verified; no population/seed expansion was
+used to substitute for missing implementation.
+
+| ID | Final evidence | Status |
+|---|---|---|
+| D1 | `native_open_domain.py`; schema/capability/atomic/restart QA; actual persistent cooperative, paper-linked artifacts, researcher inputs and project effects in four live worlds | Complete |
+| P1 | `native_process.py`; registered code/LLM/tensor/domain handlers, dependency/guard/repeat/until execution, unique identities, causal prefixes, migration and original six-year equivalence QA; actual live invocations `[2,2,4,2]` | Complete |
+| O1 | `native_adaptive_search.py`; exact loss history reaches generation1; new source really executes, third process choice is introduced and retained; complete source/manifest/history replay | Complete |
+| O2 | Mixed continuous/discrete black-box/score/hybrid interfaces; native-loss updates and durable failures/resume; actual Gaussian mean `0 → -0.0220573232 → -0.0148996311` | Complete |
+| S1 | Recorded strategy selection, native-loss statistics and distribution update; both actual selections are `revise`, no comparative designer-improvement claim | Complete |
+| G1 | Tensor memory/read/write/scatter/attention/routing/aggregation/reparameterized noise, recurrent multi-node backward and numerical QA; four live conditional checks pass | Complete |
+| G2 | Native parameter projection, fresh original-world reactions, opaque numerical secants, endpoint remeasurement and cold report reload; the scripted native-fidelity failure is explicitly retained | Complete |
+| I1 | Two clean full regressions, later source-bound targeted checks, joint original-native execution and independent final review; no ordinary blocker remains in this fixed inventory | Complete |
+| V1 | Exact audited export in English UI,174 tests/typecheck/build/actual browser QA, empirical figure, final status/map/logbook and31-page rendered/visually checked paper | Complete |
+
+### Actual result, not a success story
+
+[Four-world audit and interpretation](../results/native-open-integrated-v7-a2.md):
+342 actual fixed-Qwen replies, two generated versions, losses
+`[-1.2,-0.2,-0.8,-0.2]`, no new best. All67 raw files remain unchanged.26 isolated
+code executions join actual inputs, events and durable memory.14 context-delivery
+receipts exist; only12 are found verbatim in completed model inputs. The actual
+graphs stay19 nodes/27 edges: algorithms, recipient relations, process repetition
+and continuous values change; new topological size is not demonstrated here.
+The third new process option is static-valid but unsampled. Source authorship is
+external Codex and self-reported, not autonomous Qwen invention.
+
+[Verification receipt](../results/non-scale-closure-v7-verification.json) binds
+source versions, non-additive test scopes, actual report/UI and final PDF hashes.
+Independent final review is read-only; no extra experiment or paid API is used.
+The frozen live c09e069 source/raw are not updated by prospective guard or
+diagnostic improvements. All owned experiment/UI QA processes have finished.
+
+### Remaining research and explicit model assumptions
+
+Useful invention, reliable scientific-value objectives, native derivative
+fidelity, held-out benefit and designer improvement remain unproven. Opaque
+LLM/Python/native input Jacobians are unknown, not fabricated zero gradients.
+Disconnected represented parameters may have zero derivatives only within the
+explicit conditional objective. Conditional calculus, score gradients and
+native numerical secants keep separate estimands.
+
+Original corpus/paper-production physics and legacy annual single-shot routines
+are retained model assumptions, not an expressiveness claim about all science.
+Data-defined actors are not automatically a new legacy LLM-researcher class;
+paper-linked records are not automatically discoveries or new corpus papers.
+Trusted typed plugins can extend the world, while generated source remains
+isolated from privileged host execution. The creative game-like UI is present;
+full management-game mechanics are not claimed. These boundaries are documented
+explicitly, not hidden replacements for any unimplemented v7 inventory item.

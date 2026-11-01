@@ -1,0 +1,140 @@
+{
+  "schema": "scienceutopia.non-scale-closure-verification.v7",
+  "date": "2026-11-02",
+  "status": "fixed-implementation-inventory-complete",
+  "inventory": "research/milestones/2026-11-02-non-scale-implementation-closure-v7.md",
+  "inventory_ids": ["D1", "P1", "O1", "O2", "S1", "G1", "G2", "I1", "V1"],
+  "scope": "Original native world retained; implementation, integration, live feedback, independent audit, actual English UI and paper gates complete. No population/seed expansion; no scientific benefit or unlimited world expressiveness claimed.",
+  "python_environment": {
+    "executable": "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "PYTHONHASHSEED": "42",
+    "CUDA_VISIBLE_DEVICES": "",
+    "PYTHONPATH": "."
+  },
+  "test_counting_rule": "Scopes overlap and MUST NOT be added. Full runs do not include every later targeted change. Each source and artifact is independently bound below.",
+  "full_regressions": [
+    {
+      "source_commit": "c09e069f6e1fd8d7376a509c71fa462ae339f3c1",
+      "source_was_clean_and_unchanged": true,
+      "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/non-scale-v7-verification-c09e069",
+      "passed": 1480,
+      "skipped": 6,
+      "failed": 0,
+      "seconds_pytest": 847.51,
+      "junit": "outputs/non-scale-v7-full.xml",
+      "junit_sha256": "af6ad603005e79a1cf99a994882fcbb4948cc9a03844773bba7fc211371883da"
+    },
+    {
+      "source_commit": "ceb8248355b22a01100f55d3fd985d8de7949205",
+      "source_was_clean_and_unchanged": true,
+      "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/non-scale-v7-verification-ceb8248",
+      "passed": 1496,
+      "skipped": 6,
+      "failed": 0,
+      "seconds_pytest": 816.48,
+      "junit": "outputs/non-scale-v7-full.xml",
+      "junit_sha256": "8f1b16abfb047c862a60978d02b133a2a6c65a92cea4bd238ae630415add068a"
+    }
+  ],
+  "targeted_followups": [
+    {
+      "source_commit": "1da13de28c98b26d8ef3a1e1e430ab9c2a50f1f6",
+      "source_was_clean_and_unchanged": true,
+      "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/non-scale-closure-v7",
+      "scope": "Native hybrid/relaxation, tensor operations, joint native composition, runner diagnostic-failure handling, audit and figure checks; includes post-live conditional-unused derivative hardening.",
+      "passed": 47,
+      "failed": 0,
+      "seconds_pytest": 104.99,
+      "junit": "outputs/non-scale-v7-backward-clean.xml",
+      "junit_sha256": "81e32efb943d7dba90c86431fd56da0df4b6730c3d95155090ba60cbc1e3f29e"
+    },
+    {
+      "source_commit": "31306e2f476182a86644f7fe79dede6c3ad0eae5",
+      "worktree": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/non-scale-closure-v7",
+      "scope": "Final independent report and empirical figure checks, including safe conditional diagnostic failure reporting.",
+      "passed": 17,
+      "failed": 0,
+      "seconds_pytest": 5.13,
+      "junit": "outputs/non-scale-v7-audit-final.xml",
+      "junit_sha256": "6bcf397773952262483295b08cf54b8d98cdd8c87fb729921e4d47e901601394"
+    }
+  ],
+  "ui": {
+    "feature_commit": "6b72d52",
+    "integrated_commit": "37c51b443003cbbb7f360ba2c59bef1097a93abd",
+    "unit_passed": 174,
+    "unit_failed": 0,
+    "typecheck": "passed",
+    "production_build": "passed",
+    "known_warning": "Existing large Phaser bundle warning, not a failed build.",
+    "browser_qa": "game-ui-v2/screenshots/noctiluca-open-native-v7-qa.json",
+    "browser_qa_sha256": "2157826ef8a02ebd52464c44405df7b7a3da6c9354d54ca4eca2f6894d3cbfd5",
+    "browser_errors": 0,
+    "desktop_overflow": false,
+    "mobile_overflow": false,
+    "language": "English",
+    "fixture_used_as_actual": false,
+    "actual_experiment_started_by_ui_qa": false,
+    "owned_browser_and_server_stopped": true,
+    "actual_export": "game-ui-v2/public/data/native-open-integrated-v7.json",
+    "actual_export_sha256": "694d92725a9c3b60a9ea3c8e2897809fc2a3000a03890f2df6321fe4c7271d6a",
+    "export_byte_identical_to_independent_report": true
+  },
+  "actual_evidence": {
+    "source_commit": "c09e069f6e1fd8d7376a509c71fa462ae339f3c1",
+    "raw_worktree": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-integrated-v7-a2",
+    "raw_subdirectory": "outputs/native-open-integrated-v7",
+    "source_and_raw_immutable": true,
+    "completed_worlds": 4,
+    "years_per_world": 2,
+    "development_seed": 42,
+    "generations": 2,
+    "physical_replies": 342,
+    "raw_files_unchanged": 67,
+    "uniquely_matched_code_executions": 26,
+    "context_delivery_receipts": 14,
+    "verbatim_context_matches_in_completed_model_inputs": 12,
+    "loss_path": [-1.2, -0.2, -0.8, -0.2],
+    "loss": "-accepted_decisions - 0.1*institutional_context_deliveries",
+    "new_best": false,
+    "live_graph_sizes": [[19, 27], [19, 27], [19, 27], [19, 27]],
+    "third_generated_process_option": "static-valid but unsampled",
+    "authoring": "External Codex specialist, self-reported and not provider-authenticated; fixed Qwen researchers are not trained.",
+    "conditional_checks_passed": 4,
+    "native_loss_gradient_verified": false,
+    "full_native_world_autograd": false,
+    "held_out": false,
+    "scientific_benefit_established": false,
+    "designer_improvement_established": false,
+    "report": "research/results/native-open-integrated-v7-a2.json",
+    "report_sha256": "694d92725a9c3b60a9ea3c8e2897809fc2a3000a03890f2df6321fe4c7271d6a",
+    "report_semantic_sha256": "cce6b6b8af54f96bd5b68c00e938b218198ad6dae5cd1241f6427a1c7cabf4fe",
+    "audit_source_binding": "Exact analysis file hashes are inside the report; later integration source is not relabelled as the audit source.",
+    "a1": "Prepared initial inbox/corpus only; zero native worlds and replies, not an additional scientific trial.",
+    "experiment_writer_finished": true
+  },
+  "independent_closure_review": {
+    "reviewer": "/root/joint_region_v5",
+    "read_only": true,
+    "finding": "No further ordinary implementation blocker in fixed v7 inventory; final documentation/PDF gates subsequently completed.",
+    "no_new_inference_or_experiments": true
+  },
+  "paper": {
+    "output": "output/pdf/science-utopia-lab-working-paper.pdf",
+    "pages": 31,
+    "bytes": 1431487,
+    "sha256": "92605756bae980e24d9c265ae458b9cc2d1956846a4edb8b5dcd83f21fe0bda0",
+    "source_sha256s": {
+      "paper/main.tex": "fb3fc7dff82ad25c6055f82633cbc69b455e07535583499b99b96616e2b7f965",
+      "paper/native_open_v7.tex": "e3c3bb897c8f57aab73462bfbb39121382531b06ce1c305fd6b5f546a3c61105"
+    },
+    "figure_manifest": "paper/figures/native-open-v7.manifest.json",
+    "figure_manifest_sha256": "713e9e4a5ed16213d5e2548e08e17cc0044d31e0cc7245ded81deaea92c4fb13",
+    "all_pages_rendered_and_visually_checked": true,
+    "individually_inspected_new_pages": [21, 22, 24, 29],
+    "render_directory": "tmp/pdfs/v7-pages",
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "known_warning": "Cosmetic underfull hbox/vbox messages. Actual UI figure is an overview, with full-size tracked captures available separately."
+  }
+}

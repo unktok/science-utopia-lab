@@ -1,6 +1,22 @@
 # Testing
 
-Latest v5 evidence:the full Python suite passes1311 tests with6 explicit skips
+## Latest v7 verification — 2026-11-02
+
+Full clean live source c09e069:1480 passed/6 skipped (847.51s).
+Full clean integration ceb8248:1496 passed/6 skipped (816.48s).
+Later conditional-unused/diagnostic changes:47 targeted checks at1da13de
+(104.99s). Final audit/figure changes:17 checks at31306e2 (5.13s).
+These suites overlap; do not add their counts or claim that one full run used
+all later changes. UI feature6b72d52 (integrated as37c51b4) passes174 tests,
+typecheck and production build. Actual browser inspection has no errors or
+mobile/desktop overflow and starts no native experiment. See
+[source/JUnit/artifact receipt](../research/results/non-scale-closure-v7-verification.json).
+Two full regressions plus risk-scoped later checks are software verification,
+not independent experiments or evidence of institutional benefit.
+
+## Historical v5 verification
+
+V5 evidence:the full Python suite passes1311 tests with6 explicit skips
 from clean`ecd1ae6`. It includes the new native resource capability, accounting,
 restart, authoring and external-inbox audits. Later analysis-only observed-system
 export and node-count graphics receive separate focused checks. See the source/JUnit-bound

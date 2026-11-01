@@ -91,3 +91,47 @@ boundaries remain inspectable. Independent audit and two-panel empirical figure
 code are committed before final data. Manuscript source now describes the new
 capabilities and explicit native annual/corpus/paper assumptions. Final result
 audit, actual-data browser capture, all-page PDF QA and integration remain gates.
+
+## Final execution and closure
+
+All four budgeted a2 worlds finish; the writer exits0. Frozen live source stays
+c09e069, separate from prospective development. Two exact externally authored
+requests/versions connect actual losses to revised source and updated vocabulary.
+The new algorithm preserves native topic choice before papers exist, then uses
+actual review criticism for revision/negative-control briefs. A third process
+option is introduced but not sampled; both outer strategy draws are `revise`.
+
+- Actual native losses: `[-1.2,-0.2,-0.8,-0.2]`; A=`[1,0,0,0]`, C=`[2,2,8,2]`.
+  Batch means move `-.7 → -.5`; incumbent stays-1.2, NO optimization improvement.
+- 342 real HTTP/cache replies;67 raw files unchanged before/after independent audit.
+  All four worlds start from the same physical society.26 isolated code calls
+  have unique input/event/durable-memory attribution. Custom artifact/process
+  counts are `[2,2,4,2]`.14 actual delivery receipts,12 verbatim completed-model
+  input matches: delivery is not silently equated to observed model use.
+- Continuous mean `0 → -0.02205732321823871 → -0.014899631103323116`.
+  Categorical gradients `[0,0]` then `[.3,-.3,0]`; no reroll forces diversity.
+  Four conditional backward checks pass; they are not the joint native loss
+  gradient, opaque text/source derivatives or native fidelity.
+- Actual graph sizes all19 nodes/27 edges. New source, recipient relations,
+  process repetition and continuous parameters execute; new graph size does not.
+
+Final independent review finds no additional ordinary implementation blocker in
+D1/P1/O1/O2/S1/G1/G2/I1/V1. Post-live decccfb safely returns zero for unused
+*represented conditional* parameters and reports disconnected coordinates;
+opaque derivatives remain unknown. Diagnostic errors preserve completed native
+loss/cost and are recorded as failed diagnostics, never fake gradients or scores.
+
+Clean full regressions: live c09e0691480passed/6skipped847.51s; integration
+ceb82481496passed/6skipped816.48s. Post-hardening clean1da13de targeted47passed
+104.99s; final31306e2 audit/figure17passed5.13s. Counts overlap and are NOT added.
+English UI174 tests/typecheck/build pass. Browser QA uses the byte-identical
+audited actual export, has no browser error/Japanese/mobile or desktop overflow,
+and launches no experiment. Owned browser/server processes stop afterward.
+
+The working paper is updated to31 pages with actual loss/activity graphics,
+current implementation limits and actual English UI captures. Every page is
+rendered; new result/figure/table/UI pages21/22/24/29 also inspected individually.
+No clipping/overlap/overfull boxes; underfull TeX warnings remain cosmetic.
+Source-specific JUnit/artifact hashes are retained in the v7 verification JSON.
+This closes ordinary implementation/integration/reporting gates, NOT successful
+useful invention, designer improvement, native pathwise gradients or a full game.

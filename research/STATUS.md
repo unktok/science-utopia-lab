@@ -2,23 +2,51 @@
 
 Updated: 2026-11-02
 
-## ACTIVE: non-scale implementation closure v7
+## Completed: non-scale implementation closure v7
 
 The user correctly rejects v6 as completion of all feasible pre-scale work.
 The [fixed remaining-implementation inventory](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
-now includes open native domain/actions, explicit process execution, evolving
+includes open native domain/actions, explicit process execution, evolving
 generated mixed optimization, designer-strategy update mechanisms and operational
 gradient/native fidelity integration. Ordinary implementation must not be
 renamed research uncertainty. Improvement itself is not a pass requirement.
-The four implementation tracks are integrated. Original-world scripted QA now
-connects domain/process/evolving mixed search/conditional backward; focused49,
-joint27 and later migration35 checks pass at their recorded source versions
-(overlapping checks, NOT a summed independent test count). The first live
-two-year Qwen world completes at engineering loss-1.2; three budgeted worlds,
-next-generation feedback, final independent audit/UI/paper gates remain.
-The live source is clean c09e069 and stays immutable while development continues.
-No population/seed expansion, held-out result, causal benefit or whole-native
-pathwise backward is claimed. Final evidence will replace this interim ledger.
+All fixed implementation items D1/P1/O1/O2/S1/G1/G2/I1/V1 are integrated and
+verified. The original native world is retained, not replaced by a numeric toy.
+
+- Persistent custom actors/artifacts and extensible typed actions have actual
+  native context/project/resource effects. Dependency DAGs, guards, bounded
+  repeated registered activities and state-based stopping are executable and
+  cold-restorable; original six-year compatibility is tested.
+- Actual native loss feeds new sandboxed source, process and vocabulary
+  generation, mixed continuous/discrete search and designer-strategy updates.
+  Recurrent attention/memory/routing backward, native projection and separate
+  opaque-parameter perturbation/fidelity diagnostics are implemented.
+- **Actual integrated pilot COMPLETE:** four reset two-year worlds,342 fixed
+  Qwen replies, two externally authored generations. Losses
+  `[-1.2,-0.2,-0.8,-0.2]`; the first best is NOT improved. Revised source really
+  executes. All graphs remain19 nodes/27 edges; a third generated process choice
+  is valid but unsampled. Four conditional backward checks pass, not full-world
+  or joint-loss gradient fidelity. Independent audit preserves all67 raw files.
+  [Result and interpretation](results/native-open-integrated-v7-a2.md).
+- English evidence UI uses the exact audited export;174 UI tests, typecheck,
+  build and actual desktop/mobile browser QA pass. The31-page working paper
+  includes the empirical graphic and actual UI captures; all pages are rendered
+  and visually checked. No simulation is launched by UI inspection.
+- Full regressions:1480 passed/6 skipped at live c09e069;1496 passed/6 skipped at
+  integration ceb8248. Subsequent backward/reporting changes pass47 targeted
+  checks at1da13de; final audit/figure checks pass17 at31306e2. These overlap and
+  MUST NOT be summed. [Source-bound verification](results/non-scale-closure-v7-verification.json).
+
+Independent final review finds no remaining ordinary implementation blocker in
+the fixed v7 inventory. No native/model experiment process remains running.
+Useful institutional discovery, causal benefit, improved designer capability,
+held-out generalization and full opaque-native/LLM pathwise gradients remain
+UNPROVEN, not newly completed results. A separate scripted native-fidelity
+comparison fails and remains a negative result. Original corpus/paper-production
+laws, annual legacy routines and typed trusted capability boundaries are explicit
+model assumptions, not claims of unlimited ontology or arbitrary privileged
+execution. The game remains a game-like research interface, not a full management
+game. Population/seed expansion has not been performed or scheduled here.
 
 ## Completed finite integration goal: non-scale v6
 

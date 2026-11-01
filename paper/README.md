@@ -23,6 +23,30 @@ The final shareable artifact is
 
 ## Evidence boundary
 
+The2026-11-02 v7 draft is31 pages. It includes persistent open entities, explicit
+processes, evolving mixed/native-cost search, operational conditional backward
+and separately tested native projection/fidelity diagnostics. Its new actual
+pilot is four reset worlds/two years/342 fixed-Qwen replies. Losses
+`[-1.2,-0.2,-0.8,-0.2]` do not beat the first incumbent. Revised source really
+executes; a third new option remains unsampled and graph size stays19/27.
+The source author is external Codex, not the fixed researcher Qwen model.
+
+The empirical v7 figure is reproducible without inference:
+
+```bash
+/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.figures.native_open_v7 \
+  --report research/results/native-open-integrated-v7-a2.json \
+  --output paper/figures/native-open-v7
+```
+
+Actual audited inputs/figure assets and English UI screenshots are tracked.
+Every PDF page is rendered and visually inspected; new pages21/22/24/29 receive
+individual inspection. There are no overfull-box/undefined-reference errors;
+cosmetic underfull warnings remain. Exact final PDF and source-specific QA
+hashes are in
+`research/results/non-scale-closure-v7-verification.json`. This replaces neither
+the earlier frozen empirical studies nor the negative native-fidelity results.
+
 Figure1 now describes the whole research program, not just peer-review search:
 explicit objectives, composable parameters/source/mechanisms/protocols/wiring,
 the original researcher ecosystem, black-box/gradient/hybrid search and independent
@@ -31,7 +55,8 @@ values, replacing functions, adding mechanisms/protocols and rewiring the same
 nodes. They compose over one scientific system, not a fixed sequence of stages.
 The game view is not a separate scientific-system component and is not drawn as
 an independent box here; the game-UI screenshots remain in their own section.
-All curves and layouts are conceptual.
+Figure1's curves and layouts are conceptual; empirical figures are separately
+labelled and bound to their actual data.
 Whole-world backpropagation and useful autonomous invention are labelled as
 research targets, not completed results. Rebuild its vector and raster assets
 without inference with:
