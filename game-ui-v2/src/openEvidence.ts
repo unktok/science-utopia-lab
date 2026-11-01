@@ -1,4 +1,4 @@
-import { verifyNativeOpenEvidence, type NativeOpenEvidence, type OpenEvidenceObservation } from "./openEvidenceContract";
+import { processReceiptYear, verifyNativeOpenEvidence, type NativeOpenEvidence, type OpenEvidenceObservation } from "./openEvidenceContract";
 import "./openEvidence.css";
 
 const el = <T extends Element = HTMLElement>(id: string): T => { const node = document.getElementById(id); if (!node) throw new Error(`Missing open-evidence element ${id}`); return node as unknown as T; };
@@ -59,7 +59,7 @@ function renderProcesses(): void {
   const receipts = list(selected().process_receipts);
   el("process-loom").innerHTML = complete(selected()) && receipts.length ? receipts.map((event, index) => {
     const payload = eventPayload(event), type = String(record(event).event_type), skipped = type.endsWith("skipped");
-    return `<article data-skipped="${skipped}"><div class="process-index">${String(index + 1).padStart(2, "0")}</div><div><span>${esc(type)}</span><h3>${skipped ? "EXPLICIT SKIP" : type.endsWith("iteration") ? `ITERATION ${esc(payload.iteration)}` : `${esc(payload.executed ?? 0)} / ${esc(payload.requested ?? "—")} EXECUTED`}</h3><p>year ${esc(payload.year ?? selected().year)} · limit ${esc(payload.limit ?? "—")} · enabled ${esc(payload.enabled ?? "—")}<br />delegate ${esc(short(payload.delegate_contract_sha256, 18))}</p></div></article>`;
+    return `<article data-skipped="${skipped}"><div class="process-index">${String(index + 1).padStart(2, "0")}</div><div><span>${esc(type)}</span><h3>${skipped ? "EXPLICIT SKIP" : type.endsWith("iteration") ? `ITERATION ${esc(payload.iteration)}` : `${esc(payload.executed ?? 0)} / ${esc(payload.requested ?? "—")} EXECUTED`}</h3><p>year ${esc(processReceiptYear(event, selected().year) ?? "—")} · limit ${esc(payload.limit ?? "—")} · enabled ${esc(payload.enabled ?? "—")}<br />delegate ${esc(short(payload.delegate_contract_sha256, 18))}</p></div></article>`;
   }).join("") : `<p class="empty">${complete(selected()) ? "No native.process.* receipts at this endpoint." : "No completed execution; process activity remains unknown."}</p>`;
 }
 

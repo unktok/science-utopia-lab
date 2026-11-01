@@ -23,6 +23,11 @@ const row = (value: unknown, label: string): Row => { if (!value || typeof value
 const array = (value: unknown, label: string): any[] => { if (!Array.isArray(value)) throw new Error(`${label} must be an array`); return value; };
 const finite = (value: unknown, label: string): number => { if (typeof value !== "number" || !Number.isFinite(value)) throw new Error(`${label} must be finite`); return value; };
 const sha = (value: unknown, label: string): string => { if (typeof value !== "string" || !SHA.test(value)) throw new Error(`${label} must be lowercase SHA256`); return value; };
+export function processReceiptYear(event: unknown, endpointYear: number | undefined): number | undefined {
+  const envelope = row(event, "process receipt"); const payload = row(envelope.payload, "process receipt payload");
+  const value = envelope.year ?? payload.year ?? endpointYear;
+  return Number.isInteger(value) && value >= 1 ? value : undefined;
+}
 
 function validateOpenDomain(value: unknown): void {
   const domain = row(value, "open_domain");
@@ -44,6 +49,8 @@ export function parseNativeOpenEvidence(value: unknown, mode: "actual" | "fixtur
   if (!Number.isInteger(data.physical_reply_count) || data.physical_reply_count < 0 || !Number.isInteger(data.complete_native_worlds) || data.complete_native_worlds < 0) throw new Error("Invalid physical execution counts");
   const caches = array(data.physical_response_caches, "physical_response_caches");
   for (const [index, cacheValue] of caches.entries()) { const cache = row(cacheValue, `response cache ${index}`); sha(cache.sha256, `response cache ${index} sha256`); if (typeof cache.path !== "string" || !cache.path || Object.values(row(cache.outcomes, "cache outcomes")).some((count) => !Number.isInteger(count) || count < 0)) throw new Error(`Invalid response cache ${index}`); }
+  if (data.physical_reply_count !== caches.reduce((total, cache) => total + (row(row(cache, "response cache").outcomes, "cache outcomes").response ?? 0), 0)) throw new Error("Physical reply count differs from response caches");
+  if (data.status === "complete" && data.complete_native_worlds !== 4) throw new Error("Complete pilot must contain all four native worlds");
   sha(data.content_sha256, "content_sha256"); row(data.world_binding, "world_binding"); row(data.campaign_binding, "campaign_binding");
   const claims = row(data.claims, "claims");
   const exact: Record<string, boolean> = { scripted_researcher_HTTP: false, engineering_count_loss: true, held_out: false, causal_institutional_benefit: false, scientific_value: false, full_native_world_pathwise_autograd: false, designer_improvement_established: false, external_authorship_authenticated: false };

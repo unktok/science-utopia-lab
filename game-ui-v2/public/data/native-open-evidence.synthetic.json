@@ -53,7 +53,7 @@
         "receipts": {}, "last_receipt_key": null
       },
       "process_receipts": [
-        { "event_type": "native.process.iteration", "payload": { "iteration": 0, "delegate_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "state_after_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "outputs_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" } },
+        { "event_type": "native.process.iteration", "year": 1, "payload": { "iteration": 0, "delegate_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "state_after_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "outputs_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" } },
         { "event_type": "native.process.completed", "payload": { "year": 2, "enabled": true, "requested": 1, "waiting_for_control": false, "executed": 1, "limit": 4, "delegate_contract_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" } },
         { "event_type": "native.process.skipped", "payload": { "year": 2, "enabled": false, "requested": 2, "waiting_for_control": false, "executed": 0, "limit": 4, "delegate_contract_sha256": "1111111111111111111111111111111111111111111111111111111111111111" } }
       ],
@@ -94,5 +94,5 @@
   "authoring": { "kind": "synthetic-ui-fixture", "authenticated": false },
   "claims": { "live_fixed_Qwen_researchers": true, "scripted_researcher_HTTP": false, "engineering_count_loss": true, "held_out": false, "causal_institutional_benefit": false, "scientific_value": false, "full_native_world_pathwise_autograd": false, "designer_improvement_established": false, "external_authorship_authenticated": false },
   "ui_fixture": true,
-  "content_sha256": "4e26ba748cc7f75de9a6599b33a2d8110f36183d7d8c64572e5b8ce1a0b7ed3c"
+  "content_sha256": "00ad53d1197476505273b1a776c12f73522bdef5c7e6a6d3362991e8f65fd41c"
 }

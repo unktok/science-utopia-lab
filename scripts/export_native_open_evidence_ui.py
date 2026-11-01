@@ -42,6 +42,12 @@ def validate(value):
     if (claims.get('live_fixed_Qwen_researchers') is not (value['physical_reply_count'] > 0)
             or claims.get('engineering_count_loss') is not True):
         raise ValueError('live researcher claim must follow physical replies; engineering objective must remain explicit')
+    response_total = sum(cache.get('outcomes', {}).get('response', 0)
+        for cache in value.get('physical_response_caches', []))
+    if value['physical_reply_count'] != response_total:
+        raise ValueError('physical reply count differs from response caches')
+    if value['status'] == 'complete' and value['complete_native_worlds'] != 4:
+        raise ValueError('complete pilot must contain all four native worlds')
     if any(claims.get(key) is not False for key in FALSE_CLAIMS):
         raise ValueError('unsupported positive scientific/derivative/authorship claim')
     for index, row in enumerate(value.get('observations', [])):

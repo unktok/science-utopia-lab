@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { parseNativeOpenEvidence, verifyNativeOpenEvidence } from "../src/openEvidenceContract";
+import { parseNativeOpenEvidence, processReceiptYear, verifyNativeOpenEvidence } from "../src/openEvidenceContract";
 
 const fixturePath = new URL("../public/data/native-open-evidence.synthetic.json", import.meta.url);
 const fixture = () => JSON.parse(readFileSync(fixturePath, "utf8"));
@@ -30,8 +30,22 @@ describe("native open integrated evidence viewer contract", () => {
   });
 
   it("binds the live-Qwen claim to physical replies rather than configuration", () => {
-    const changed = fixture(); changed.physical_reply_count = 0;
+    const changed = fixture(); changed.physical_reply_count = 0; changed.physical_response_caches[0].outcomes.response = 0;
     expect(() => parseNativeOpenEvidence(changed, "fixture")).toThrow("physical reply evidence");
+  });
+
+  it("uses each process event's actual envelope year before endpoint fallback", () => {
+    const event = fixture().observations[0].process_receipts[0];
+    expect(processReceiptYear(event, 2)).toBe(1);
+    expect(processReceiptYear({ event_type: "native.process.completed", payload: { year: 2 } }, 3)).toBe(2);
+    expect(processReceiptYear({ event_type: "native.process.iteration", payload: {} }, 3)).toBe(3);
+  });
+
+  it("requires status complete to mean all four native worlds and exact cache reply totals", () => {
+    const complete = fixture(); complete.status = "complete";
+    expect(() => parseNativeOpenEvidence(complete, "fixture")).toThrow("all four");
+    const mismatched = fixture(); mismatched.physical_reply_count = 7; mismatched.claims.live_fixed_Qwen_researchers = true;
+    expect(() => parseNativeOpenEvidence(mismatched, "fixture")).toThrow("response caches");
   });
 
   it("retains actual participants, artifacts, process iteration and skip receipts", () => {
