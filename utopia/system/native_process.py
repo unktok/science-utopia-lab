@@ -161,7 +161,8 @@ def _handler(registry, context):
 
 def register_native_process(kernel, registry):
     """Called after ordinary native/domain/tensor/code registry setup."""
-    delegates = [_validate_parameters(n.parameters) for n in kernel.spec.mechanisms if n.implementation == IMPLEMENTATION]
+    from .native_migration import _execution_contract
+    delegates = [_execution_contract(n) for n in kernel.spec.mechanisms if n.implementation == IMPLEMENTATION]
     from .code_mechanisms import CODE_IMPLEMENTATION, DockerCodeExecutor, register_code_mechanisms, validate_code_artifact
     images = {n.parameters.get('runtime_image_id') for n in (*kernel.spec.mechanisms, *delegates)
               if n.implementation == CODE_IMPLEMENTATION}

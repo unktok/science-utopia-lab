@@ -8,6 +8,8 @@ Missing authoring is a durable wait, not a failed world or a made-up cost.
 from __future__ import annotations
 import argparse
 import json
+import fcntl
+import sqlite3
 from pathlib import Path
 import sys
 
@@ -48,11 +50,24 @@ def summarize(campaign,output):
                     open_domain=domain,process_receipts=[e for e in native['events'] if e['event_type'].startswith('native.process.')],
                     events=native['events'],system=system.to_dict(),year=saved['year'])
             rows.append(row)
-    value={'schema':'scienceutopia.native-open-integrated-pilot.v7','source_commit':campaign.binding['world']['source_commit'],
+    caches=[]
+    for path in sorted((Path(output)/'worlds').glob('*/replies/responses.sqlite')):
+        with sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True) as db:
+            counts=dict(db.execute('SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
+        caches.append({'path':str(path),'sha256':file_sha256(path),'outcomes':counts})
+    physical_replies=sum(c['outcomes'].get('response',0) for c in caches)
+    complete=sum(r['observation'] is not None and r['observation']['status']=='complete' for r in rows)
+    terminal=len(campaign.state['records'])==2
+    status=('complete' if terminal and complete==4 else 'budget-complete-with-failures'
+        if terminal else 'in-progress')
+    value={'schema':'scienceutopia.native-open-integrated-pilot.v7','status':status,
+        'configured_researcher_provider':'qwen3:8b','physical_response_caches':caches,
+        'physical_reply_count':physical_replies,'complete_native_worlds':complete,
+        'source_commit':campaign.binding['world']['source_commit'],
         'world_binding':campaign.binding['world'],'campaign_binding':campaign.binding,
         'records':campaign.state['records'],'observations':rows,
         'authoring':audit_manifest_inbox(Path(output)/'authoring'),
-        'claims':{'live_fixed_Qwen_researchers':True,'scripted_researcher_HTTP':False,
+        'claims':{'live_fixed_Qwen_researchers':physical_replies>0,'scripted_researcher_HTTP':False,
             'engineering_count_loss':True,'held_out':False,'causal_institutional_benefit':False,
             'scientific_value':False,'full_native_world_pathwise_autograd':False,
             'designer_improvement_established':False,'external_authorship_authenticated':False}}
@@ -68,6 +83,17 @@ def main():
     parser.add_argument('--inference-lock',type=Path,required=True)
     args=parser.parse_args()
     args.output.mkdir(parents=True,exist_ok=True)
+    # A single process owns all campaign/summary/authoring-consumption writes.
+    # The separate inference lock only serializes HTTP and is not sufficient.
+    with (args.output/'pilot-writer.lock').open('a') as owner:
+        try:
+            fcntl.flock(owner,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise RuntimeError('another native open pilot writer owns this output')
+        return run(args)
+
+
+def run(args):
     executor=DockerCodeExecutor()
     initial=open_native_system(executor.image_id)
     factory=LocalQwenNativeFactory(args.output/'worlds',args.data_cache,years=2,corpus_years=4,
@@ -101,9 +127,10 @@ def main():
         print(json.dumps({'status':'waiting-for-external-authoring','complete_generations':len(campaign.state['records']),
             'evidence_sha256':value['content_sha256'],**waiting.to_dict()}))
         return 3
-    print(json.dumps({'status':'complete','generations':len(campaign.state['records']),
-        'losses':[r['observation']['loss'] if r['observation'] else None for r in summarize(campaign,args.output)['observations']]}))
-    return 0
+    evidence=summarize(campaign,args.output)
+    print(json.dumps({'status':evidence['status'],'generations':len(campaign.state['records']),
+        'losses':[r['observation']['loss'] if r['observation'] else None for r in evidence['observations']]}))
+    return 0 if evidence['status']=='complete' else 2
 
 
 if __name__=='__main__':

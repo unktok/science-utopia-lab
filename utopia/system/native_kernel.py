@@ -533,6 +533,9 @@ class NativeScienceKernel:
             restored = GraphCheckpoint.from_dict(checkpoint)
             from .runtime import _validate_checkpoint
             _validate_checkpoint(restored, self.spec, "annual")
+            if any(n.implementation == 'native.process.activity.v1' for n in self.spec.mechanisms):
+                from .native_migration import validate_native_execution_checkpoint
+                validate_native_execution_checkpoint(self.spec, checkpoint)
             if (restored.system_fingerprint != self.spec.fingerprint
                     or restored.next_period != state["last_year"] + 1
                     or restored.next_event_sequence != len(events)):
