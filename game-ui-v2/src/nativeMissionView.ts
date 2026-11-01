@@ -1,7 +1,7 @@
 import {
-  activateMissionContract, activeMission, emptyMissionBook, linkMissionJob, missionMatchesDraft,
-  missionProgress, observeMissionJob, parseMissionBook,
-  type MissionDraft, type MissionJobLink, type MissionObservation,
+  activateMissionContract, activeMission, emptyMissionBook, linkMissionJobFromPermit, missionMatchesDraft,
+  missionProgress, missionSubmissionPermit, observeMissionJob, parseMissionBook,
+  type MissionDraft, type MissionObservation, type MissionSubmissionPermit,
 } from "./nativeMission";
 
 const STORAGE_KEY = "noctiluca.native-sandbox-missions.v1";
@@ -9,8 +9,8 @@ const el = <T extends HTMLElement>(id: string): T => { const node = document.get
 const escape = (value: unknown): string => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 export type NativeMissionController = {
-  canSubmit(): { ok: boolean; reason: string };
-  linkJob(job: { job_id: string; request_sha256: string }): void;
+  canSubmit(): { ok: boolean; reason: string; permit: MissionSubmissionPermit | null };
+  linkJob(permit: MissionSubmissionPermit, job: { job_id: string; request_sha256: string }): void;
   observeFailure(job: any): void;
   observeEvidence(job: any): void;
   refresh(): void;
@@ -54,13 +54,13 @@ export function initializeNativeMission(loss: HTMLTextAreaElement, onDraftChange
     el("mission-archives").innerHTML = archives.length ? archives.map(row => { const value = missionProgress(book, row.contract.contract_id); return `<article><code>${escape(row.contract.contract_id)}</code><span>${escape(row.contract.loss_id)} / TARGET ${row.contract.target_loss}</span><span>${value.attempted} TRIALS / BEST ${value.best_loss ?? "NOT OBSERVED"}</span></article>`; }).join("") : "<p>NO PRIOR CONTRACTS</p>";
   };
 
-  const canSubmit = (): { ok: boolean; reason: string } => {
+  const canSubmit = (): { ok: boolean; reason: string; permit: MissionSubmissionPermit | null } => {
     const record = active();
-    if (!record) return { ok: false, reason: "Lock a sandbox mission contract first" };
-    if (!matches()) return { ok: false, reason: "LossSpec, target or limit differs from the active contract" };
+    if (!record) return { ok: false, reason: "Lock a sandbox mission contract first", permit: null };
+    if (!matches()) return { ok: false, reason: "LossSpec, target or limit differs from the active contract", permit: null };
     const progress = missionProgress(book, record.contract.contract_id);
-    if (progress.remaining < 1) return { ok: false, reason: "Mission trial limit reached" };
-    return { ok: true, reason: "Mission contract permits one explicitly authorized trial" };
+    if (progress.remaining < 1) return { ok: false, reason: "Mission trial limit reached", permit: null };
+    return { ok: true, reason: "Mission contract permits one explicitly authorized trial", permit: missionSubmissionPermit(book, draft()) };
   };
 
   const terminal = (job: any, status: "complete" | "failed", evidenceLoaded: boolean): MissionObservation => ({
@@ -79,7 +79,7 @@ export function initializeNativeMission(loss: HTMLTextAreaElement, onDraftChange
   render();
   return {
     canSubmit,
-    linkJob(job): void { const record = active(); if (!record || !matches()) throw new Error("Lock the current LossSpec and target as a mission contract first"); const link: MissionJobLink = { ...job, contract_id: record.contract.contract_id }; book = linkMissionJob(book, link); save(); render(); },
+    linkJob(permit, job): void { book = linkMissionJobFromPermit(book, permit, job); save(); render(); },
     observeFailure(job): void { observe(job, "failed", false); },
     observeEvidence(job): void { observe(job, "complete", true); },
     refresh: render,

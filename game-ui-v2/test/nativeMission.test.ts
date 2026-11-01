@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   activateMissionContract, activeMission, emptyMissionBook, linkMissionJob, missionMatchesDraft,
-  missionProgress, observeMissionJob, parseMissionBook, type MissionDraft, type MissionObservation,
+  linkMissionJobFromPermit, missionProgress, missionSubmissionPermit, observeMissionJob, parseMissionBook, type MissionDraft, type MissionObservation,
 } from "../src/nativeMission";
 
 const loss = (id = "loss-a", direction: "minimize" | "maximize" = "minimize") => ({ schema: "scienceutopia.loss-spec.v1", id, direction });
@@ -29,6 +29,18 @@ describe("sandbox mission contracts", () => {
     expect(linkMissionJob(book, link).jobs).toHaveLength(1);
     expect(() => linkMissionJob(book, { job_id: "job-2", request_sha256: "sha-job-2", contract_id })).toThrow("trial limit");
     expect(() => linkMissionJob(book, { ...link, contract_id: "other" })).toThrow("different design contract");
+  });
+
+  it("links a delayed job response only to the exact frozen contract", () => {
+    let book = activateMissionContract(emptyMissionBook(), draft(0, 2));
+    const first = activeMission(book)!.contract.contract_id;
+    const permit = missionSubmissionPermit(book, draft(0, 2))!;
+    book = activateMissionContract(book, draft(-9, 2));
+    const second = activeMission(book)!.contract.contract_id;
+    book = linkMissionJobFromPermit(book, permit, { job_id: "delayed", request_sha256: "sha-delayed" });
+    expect(book.jobs).toContainEqual({ job_id: "delayed", request_sha256: "sha-delayed", contract_id: first });
+    expect(book.jobs.some(row => row.contract_id === second)).toBe(false);
+    expect(() => linkMissionJobFromPermit(book, { ...permit, target_loss: 99 }, { job_id: "forged", request_sha256: "sha-forged" })).toThrow("identity");
   });
 
   it("records actual completed evidence once and never gives failures a score", () => {

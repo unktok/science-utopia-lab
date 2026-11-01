@@ -33,6 +33,12 @@ export type MissionBook = {
   jobs: MissionJobLink[];
 };
 export type MissionDraft = { loss_spec: unknown; target_loss: number; trial_limit: number };
+export type MissionSubmissionPermit = Readonly<{
+  contract_id: string;
+  loss_spec_json: string;
+  target_loss: number;
+  trial_limit: number;
+}>;
 export type MissionProgress = {
   attempted: number;
   remaining: number;
@@ -83,6 +89,24 @@ export function missionMatchesDraft(book: MissionBook, draft: MissionDraft): boo
     const fields = contractFields(draft);
     return active.contract.loss_spec_json === fields.loss_spec_json && active.contract.target_loss === fields.target_loss && active.contract.trial_limit === fields.trial_limit;
   } catch { return false; }
+}
+
+export function missionSubmissionPermit(book: MissionBook, draft: MissionDraft): MissionSubmissionPermit | null {
+  if (!missionMatchesDraft(book, draft)) return null;
+  const record = activeMission(book);
+  if (!record || missionProgress(book, record.contract.contract_id).remaining < 1) return null;
+  return Object.freeze({
+    contract_id: record.contract.contract_id,
+    loss_spec_json: record.contract.loss_spec_json,
+    target_loss: record.contract.target_loss,
+    trial_limit: record.contract.trial_limit,
+  });
+}
+
+export function linkMissionJobFromPermit(book: MissionBook, permit: MissionSubmissionPermit, job: Omit<MissionJobLink, "contract_id">): MissionBook {
+  const record = book.contracts.find(row => row.contract.contract_id === permit.contract_id);
+  if (!record || record.contract.loss_spec_json !== permit.loss_spec_json || record.contract.target_loss !== permit.target_loss || record.contract.trial_limit !== permit.trial_limit) throw new Error("Frozen mission contract identity no longer matches");
+  return linkMissionJob(book, { ...job, contract_id: permit.contract_id });
 }
 
 export function linkMissionJob(book: MissionBook, job: MissionJobLink): MissionBook {
