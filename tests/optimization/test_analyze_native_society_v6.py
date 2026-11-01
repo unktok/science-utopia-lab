@@ -1,0 +1,232 @@
+"""Scripted original-world QA only: no live model, Docker, or empirical finding."""
+from copy import deepcopy
+import json
+
+import pytest
+
+from scripts.analyze_native_society_v6 import (
+    FIXTURE, SOURCE_COMMIT, analyze, inventory, protocol_classification,
+)
+from scripts.run_native_society_pilot_v6 import (
+    INTERPRETATION, SCHEMA, ExternalSocietyProposer, run_society_pilot,
+    write_society_server_config,
+)
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus, seed
+from tests.system.test_native_science_kernel import make_sim
+from tests.optimization.test_native_society_pilot_v6 import author_pending
+from tests.optimization.test_native_world import loss_spec
+from utopia.models.response_cache import CompletedResponseCache
+from utopia.optimization.native_code_trace import RecordingCodeExecutor
+from utopia.optimization.native_factory import record_native_http
+from utopia.optimization.native_society_design import NativeSocietyDesignSession
+from utopia.system.code_mechanisms import CodeExecution, sha
+from utopia.system.native_activity_contracts import activity_world_system
+from utopia.system.native_kernel import NativeScienceKernel
+from utopia.utils.data_utils import write_json_atomic
+
+
+class ScriptedExecutor:
+    """Declared test algorithm, not execution of saved Python or a container."""
+    image_id = 'sha256:' + '1' * 64
+
+    def execute(self, artifact, context):
+        assignment = deepcopy(context['inputs']['plans'][0]['payload']['assignments'][0])
+        assignment['detailed_focus'] = 'Scripted QA activity effect'
+        amendment = {'schema': 'native-research-amendment-v1', 'target_year': context['period'],
+            'assignment': assignment, 'submit': assignment['project_end_year'] == context['period']}
+        result = {'outputs': {'amendments': [{'payload': amendment}]}, 'state': {'cycles': context['period']}}
+        return CodeExecution(result, {'image_id': self.image_id, 'artifact_sha256': sha(artifact),
+            'context_sha256': sha(context), 'result_sha256': sha(result), 'wall_seconds': 0.0})
+
+
+@pytest.fixture
+def prepared(tmp_path, fixed_corpus, monkeypatch):
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    monkeypatch.setattr('time.time', lambda: 1234567890.)
+    protocol = {'schema': SCHEMA, 'kind': 'scripted-same-society-audit-fixture-v6', 'evidence': FIXTURE,
+        'loss': loss_spec(), 'years': 3, 'adoptions': 2, 'technical_drafts_per_boundary': 1,
+        'interpretation': INTERPRETATION}
+    binding = deepcopy(fixture.BINDING)
+    binding['science_config']['source_commit'] = SOURCE_COMMIT
+    monkeypatch.setattr(fixture, 'BINDING', binding)
+    founding = activity_world_system()
+    world = {'source_commit': SOURCE_COMMIT, 'years': 3, 'seed': 42, 'model': binding['model'],
+        'model_digest': binding['model_revision'], 'corpus_sha256': binding['corpus_sha256'],
+        'image_id': ScriptedExecutor.image_id, 'protocol': protocol}
+    write_json_atomic(tmp_path / 'plan.json', {'protocol': protocol, 'world': world, 'founding_system': founding.to_dict()})
+    cell = tmp_path / 'runs/persistent-society'
+    write_json_atomic(cell / 'system.json', founding.to_dict())
+
+    def advance(confirmations=()):
+        seed()
+        session = NativeSocietyDesignSession(tmp_path / 'session', founding_system=founding,
+            loss_spec=loss_spec(), world_binding=world)
+        executor = RecordingCodeExecutor(ScriptedExecutor(), cell / 'code-contexts.jsonl', binding={
+            'source_commit': SOURCE_COMMIT, 'system_fingerprint': founding.fingerprint, 'run_id': 'persistent-society'})
+        sim, calls = make_sim(cell, native=NativeScienceKernel(founding, code_executor=executor))
+        sim.num_years = 3
+        sim.llm.response_cache.close()
+        sim.llm.response_cache = CompletedResponseCache(cell / 'replies/responses.sqlite', binding=binding)
+        record_native_http(sim.llm, sim, cell / 'wire-requests.jsonl')
+        write_society_server_config(tmp_path, session, checkpoint_directory=sim.output_dir)
+        proposer = ExternalSocietyProposer(tmp_path / 'authoring-inbox', world_binding=world,
+            domain_provider=lambda: session._domain(sim), runtime_image_id=executor.image_id)
+        try:
+            result = run_society_pilot(sim, session, proposer, output=tmp_path, confirm_request_sha256=confirmations)
+            return result, session
+        finally:
+            sim.llm.response_cache.close()
+    return tmp_path, advance
+
+
+def finish(root, advance):
+    result, session = advance()
+    for _ in range(2):
+        author_pending(root, result, ScriptedExecutor())
+        staged, session = advance()
+        assert staged['status'] == 'waiting-for-explicit-confirmation'
+        result, session = advance([staged['confirm_request_sha256']])
+    assert result['status'] == 'complete'
+    return session
+
+
+def test_complete_scripted_same_society_independent_whole_audit(prepared, monkeypatch):
+    root, advance = prepared
+    session = finish(root, advance)
+    # Analyzer must not accidentally construct a factory, container or model.
+    def forbidden(*args, **kwargs):
+        raise AssertionError('audit attempted execution/inference')
+    monkeypatch.setattr('utopia.system.code_mechanisms.DockerCodeExecutor.__init__', forbidden)
+    monkeypatch.setattr('utopia.optimization.native_factory.LocalQwenNativeFactory.__init__', forbidden)
+    before = inventory(root)
+    report = analyze(root)
+    assert inventory(root) == before
+    assert report['classification'] == FIXTURE and report['status'] == 'complete'
+    assert report['loss_path'] == [o['loss'] for o in session.projection()['observations']]
+    assert report['physical_societies'] == 1 and report['audit_new_model_calls'] == 0
+    assert len(report['adoptions']) == 2 and len(report['rows']) == 3
+    assert report['cumulative_responses_per_year'][-1] == report['researcher_responses']
+    assert report['uncheckpointed_responses'] == 0
+    assert [r['actual_activity_effects'] for r in report['rows']] == [0, 1, 1]
+    assert report['code_contexts']['checkpointed_executions'] == 2
+    assert all(r['pre_adoption_society_sha256'] for r in report['rows'][:2])
+
+
+def test_pending_is_incomplete_never_success_and_has_no_loss_for_future_year(prepared):
+    root, advance = prepared
+    advance()
+    with pytest.raises(ValueError, match='incomplete'):
+        analyze(root)
+    before = inventory(root)
+    report = analyze(root, require_complete=False)
+    assert inventory(root) == before
+    assert report['status'] == 'incomplete' and report['native_status'] == 'waiting-for-external-authoring'
+    assert len(report['rows']) == len(report['loss_path']) == 1
+    assert not report['adoptions']
+
+
+def test_actual_classification_cannot_be_inferred_from_a_scripted_world(prepared):
+    root, advance = prepared
+    plan = json.loads((root / 'plan.json').read_text())
+    plan['protocol'].pop('evidence')
+    plan['world']['protocol'] = plan['protocol']
+    with pytest.raises(ValueError, match='explicit non-live'):
+        protocol_classification(plan, SOURCE_COMMIT)
+    plan['protocol']['kind'] = 'external-native-same-society-v6'
+    with pytest.raises(ValueError, match='actual fixed-Qwen'):
+        protocol_classification(plan, SOURCE_COMMIT)
+    with pytest.raises(ValueError, match='pinned source'):
+        analyze(root, require_complete=False, expected_source='wrong-source')
+
+
+def test_actual_checkpoint_non_design_tamper_is_detected(prepared):
+    from utopia.runtime.checkpointing import read_portable_checkpoint, write_portable_checkpoint
+    root, advance = prepared
+    finish(root, advance)
+    config = json.loads((root / 'society-session-config.json').read_text())
+    from pathlib import Path
+    path = Path(config['checkpoint_directory']) / 'portable_checkpoint_year_1.json.gz'
+    saved = read_portable_checkpoint(path)
+    saved['portable']['llm_call_stats']['prompt_tokens'] += 1
+    write_portable_checkpoint(path, saved)
+    with pytest.raises(ValueError, match='non-design'):
+        analyze(root)
+
+
+def test_actual_code_context_tamper_is_detected(prepared):
+    root, advance = prepared
+    finish(root, advance)
+    path = root / 'runs/persistent-society/code-contexts.jsonl'
+    rows = [json.loads(line) for line in path.read_text().splitlines()]
+    rows[0]['receipt']['context_sha256'] = '0' * 64
+    rows[0]['bundle_sha256'] = sha({k: v for k, v in rows[0].items() if k != 'bundle_sha256'})
+    # This is intentional fixture corruption, never a raw actual-run edit.
+    path.write_text('\n'.join(json.dumps(r) for r in rows) + '\n')
+    with pytest.raises(ValueError, match='container receipt'):
+        analyze(root)
+
+
+def test_partial_year_response_is_physical_not_an_extra_scored_observation(prepared):
+    import sqlite3
+    from utopia.runtime.checkpointing import canonical_json
+    import hashlib
+    root, advance = prepared
+    advance()
+    cell = root / 'runs/persistent-society'
+    wire_path = cell / 'wire-requests.jsonl'
+    wire = json.loads(wire_path.read_text().splitlines()[0])
+    wire['year'] = 2
+    wire['payload']['extra_body']['seed'] += 99
+    wire['payload_sha256'] = hashlib.sha256(canonical_json(wire['payload']).encode()).hexdigest()
+    with wire_path.open('a') as stream:
+        stream.write(json.dumps(wire) + '\n')
+    with sqlite3.connect(cell / 'replies/responses.sqlite') as database:
+        row = list(database.execute('SELECT * FROM replies LIMIT 1').fetchone())
+        row[0], row[1] = 'a' * 64, wire['payload_sha256']
+        database.execute('INSERT INTO replies VALUES (?,?,?,?,?)', row)
+    progress = json.loads((root / 'progress.json').read_text())
+    progress.update(status='technical-failure', failed_candidate_loss=None, automatic_redraft=False,
+        error_type='FixtureInfrastructureFailure', error='Explicit scripted partial-year QA')
+    write_json_atomic(root / 'progress.json', progress)
+    before = inventory(root)
+    report = analyze(root, require_complete=False)
+    assert inventory(root) == before
+    assert report['status'] == 'incomplete' and report['native_status'] == 'technical-failure'
+    assert report['uncheckpointed_responses'] == 1
+    assert len(report['loss_path']) == len(report['rows']) == 1
+    assert report['researcher_responses'] == report['cumulative_responses_per_year'][0] + 1
+    assert report['technical_failure']['failed_candidate_loss'] is None
+
+
+def test_response_content_hash_tamper_is_detected(prepared):
+    import sqlite3
+    root, advance = prepared
+    advance()
+    with sqlite3.connect(root / 'runs/persistent-society/replies/responses.sqlite') as database:
+        database.execute("UPDATE replies SET data_sha=? WHERE rowid=1", ('0' * 64,))
+    with pytest.raises(ValueError, match='response identity/content hash'):
+        analyze(root, require_complete=False)
+
+
+def test_pre_adoption_archive_byte_tamper_is_detected(prepared):
+    root, advance = prepared
+    finish(root, advance)
+    path = next((root / 'runs/persistent-society/checkpoints/design-migration-archives').glob('*.json.gz'))
+    path.chmod(0o600)  # Intentional corruption of a disposable QA fixture only.
+    path.write_bytes(b'not the observed whole society')
+    with pytest.raises(ValueError, match='whole-society bytes'):
+        analyze(root)
+
+
+def test_raw_whole_tree_mutation_during_inspection_is_rejected(prepared, monkeypatch):
+    from scripts import analyze_native_society_v6 as auditor
+    root, advance = prepared
+    advance()
+    original = auditor.code_proofs
+    def changed(*args, **kwargs):
+        result = original(*args, **kwargs)
+        write_json_atomic(root / 'deliberate-fixture-mutation.json', {'QA': True})
+        return result
+    monkeypatch.setattr(auditor, 'code_proofs', changed)
+    with pytest.raises(ValueError, match='raw evidence changed'):
+        analyze(root, require_complete=False)
