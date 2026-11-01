@@ -55,6 +55,7 @@ and results. New work uses the forward-only taxonomy below.
 - [Joint Qwen region generation v4: two preserved failures](results/native-open-region-v4.md)
 - [Visual native graph authoring and sandbox mission](tracks/native-design-ui-v4.md)
 - [Audited objective-conditioned native design lifecycle UI](tracks/native-design-lifecycle-ui-v6.md)
+- [Objective-conditioned native structure UI v8](tracks/objective-structure-ui-v8.md)
 - [Open native integrated evidence viewer v7](tracks/native-open-evidence-ui-v7.md)
 - [Program concept figure: graphical freedoms and layout refinement v2](figures/program-concept-refinement-v2.md)
 - [Open native design and composed transition representation v3](components/native-open-design-and-transition-representation-v3.md)

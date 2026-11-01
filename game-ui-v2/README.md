@@ -83,6 +83,18 @@ physical Qwen3:8B replies, and observed engineering losses
 best-system improvement, causal benefit, held-out performance, or scientific
 value.
 
+The v8 objective-conditioned structure viewer is at
+`/objective-structure.html`. Its dual-line switchyard keeps both fixed
+illustrative LossSpecs and every development path visible, including exact
+ties, zero-draw generation failures, technical nulls, and unavailable
+same-checkpoint cross-scores. Selecting a complete station opens the actual
+candidate SystemSpec graph, literal node/edge/source/protocol/schedule diff,
+and executable Python source bay. It distinguishes fixed Qwen3:8B researchers
+from external Codex source authorship and permanently labels the evidence as
+development—not held out, promoted, or guaranteed beneficial. Missing actual
+data stays in a waiting state; `?fixture=objective-v8` is the only labelled
+synthetic route. See `research/tracks/objective-structure-ui-v8.md`.
+
 Regenerate the portable, hash-bound browser snapshot without running an
 experiment:
 
