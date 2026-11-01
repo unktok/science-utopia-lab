@@ -61,10 +61,18 @@ node scripts/export-objective-structure.mjs \
   ../research/results/native-objective-structure-v8-a2.json
 npm test
 npm run build
+node scripts/verify-objective-structure-browser.mjs \
+  --mode=actual \
+  --output=screenshots/objective-structure-v8-actual-qa
 ```
 
 The exporter performs no inference and rejects non-terminal, non-actual, or
-misclassified evidence.
+misclassified evidence. The browser harness starts only a loopback Vite server
+and a clean headless Chrome profile. It rejects every non-GET HTTP request,
+page/console exception, HTTP error, horizontal overflow, truth-channel mismatch,
+or report/receipt byte-hash mismatch. It writes four captures and a checksummed
+browser-QA receipt, then stops both owned processes and moves its temporary
+Chrome profile to Trash.
 
 Fixture QA at the implementation commit:
 

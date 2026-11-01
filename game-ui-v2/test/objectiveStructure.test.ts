@@ -74,4 +74,13 @@ describe("objective-conditioned native structure viewer contract", () => {
     for (const phrase of ["OBJECTIVE SWITCHYARD", "DEVELOPMENT — NOT HELD OUT", "NO BENEFIT GUARANTEE", "FIXED QWEN3:8B RESEARCHERS", "EXTERNAL CODEX SOURCE AUTHORSHIP"]) expect(html).toContain(phrase);
     expect(html).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/u);
   });
+
+  it("ships a local browser-QA harness that rejects job dispatch and binds actual report bytes", () => {
+    const harness = readFileSync(new URL("../scripts/verify-objective-structure-browser.mjs", import.meta.url), "utf8");
+    expect(harness).toContain('request.method !== "GET"');
+    expect(harness).toContain("receipt.report_file_sha256 !== sha256(bytes)");
+    expect(harness).toContain('no_job_dispatch: true');
+    expect(harness).toContain('width: 390, height: 844');
+    expect(harness).not.toMatch(/fetch\([^\n]+method:\s*["']POST/);
+  });
 });
