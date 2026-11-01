@@ -1,0 +1,84 @@
+{
+  "schema": "scienceutopia.same-society-ui-e2e.v1",
+  "phase": "a2-final-three-interval-two-receipt",
+  "truth_source": "actual a2 loopback session; not fixture",
+  "source_commit": "d68589f8bc8acf0f53f04619e5c0dd2bcf7a04dc",
+  "progress": {
+    "status": "complete",
+    "through_year": 3,
+    "reset": false,
+    "loss_path": [
+      0,
+      -5,
+      -5
+    ]
+  },
+  "desktop": {
+    "truth": "VERIFIED LOCAL SESSION",
+    "loss_title": "native-joint-v5-throughput",
+    "request_state": "RECEIPT VERIFIED",
+    "request_id": "society-design-a4ad7fe39f2797cdb68de7ae",
+    "request_sha256": "a4ad7fe39f2797cdb68de7ae0ae98db286ca73f6f8eeedda6b7b5fb6ceb17063",
+    "status": "Durable migration receipt verified / 80aebb0bb90ccde5",
+    "confirm_disabled": true,
+    "interval_count": 3,
+    "losses": [
+      "0",
+      "-5",
+      "-5"
+    ],
+    "intervals": [
+      "Y0 → Y1",
+      "Y1 → Y2",
+      "Y2 → Y3"
+    ],
+    "systems": [
+      "SYSTEM 26311ebb0d9896da8bff…",
+      "SYSTEM dd76cc40b4f18ae166ee…",
+      "SYSTEM 3b21345c377a5cb4d1e5…"
+    ],
+    "adoption_count": 2,
+    "ledger": [
+      "ADOPTION 1 / AFTER Y1dd76cc40b4f18ae166…RECEIPT af0b7d46458c0d6377…",
+      "ADOPTION 2 / AFTER Y23b21345c377a5cb4d1…RECEIPT 80aebb0bb90ccde57a…"
+    ],
+    "causal_claim": "NOT ESTABLISHED",
+    "overflow": false
+  },
+  "backend_receipt_checks": [
+    {
+      "http_status": 200,
+      "status": "adopted",
+      "request_id": "society-design-8fe0ee079ea0b0262ed459ab",
+      "request_sha256": "8fe0ee079ea0b0262ed459ab254a2489658b29fe9c8e7fb57d56d45e00429795",
+      "verified_receipt": true,
+      "migration_receipt_sha256": "af0b7d46458c0d63771a31c52a794ce33b5de385ca8a5a0b41c89591b75602da"
+    },
+    {
+      "http_status": 200,
+      "status": "adopted",
+      "request_id": "society-design-a4ad7fe39f2797cdb68de7ae",
+      "request_sha256": "a4ad7fe39f2797cdb68de7ae0ae98db286ca73f6f8eeedda6b7b5fb6ceb17063",
+      "verified_receipt": true,
+      "migration_receipt_sha256": "80aebb0bb90ccde57a46d153bf46d14c514a727e076a401a36c8d711cd3519fa"
+    }
+  ],
+  "reload_duplicate_consent_posts": 0,
+  "scientific_forward_completed": true,
+  "completed_boundary": "progress status complete through_year 3 and three contiguous observed journal intervals",
+  "causal_improvement_established": false,
+  "mobile": {
+    "interval_count": 3,
+    "losses": [
+      "0",
+      "-5",
+      "-5"
+    ],
+    "adoption_count": 2,
+    "request_state": "RECEIPT VERIFIED",
+    "causal_claim": "NOT ESTABLISHED",
+    "overflow": false
+  },
+  "browser_errors": 0,
+  "claim_boundary": "This is one online continuing-society trajectory. Equal later loss is not an unchanged-world counterfactual or causal effect."
+}

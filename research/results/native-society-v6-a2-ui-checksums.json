@@ -1,0 +1,102 @@
+{
+  "schema": "scienceutopia.same-society-ui-evidence-checksums.v1",
+  "phase": "a2-final-three-interval-two-receipt",
+  "source_commit": "d68589f8bc8acf0f53f04619e5c0dd2bcf7a04dc",
+  "files": [
+    {
+      "path": "outputs/native-society-v6/run/society-session-config.json",
+      "bytes": 15957,
+      "sha256": "b32a59cf429d74351e2c42a9681fa24c97f23949b7e3646726b8c743b37a51d1"
+    },
+    {
+      "path": "outputs/native-society-v6/run/progress.json",
+      "bytes": 300,
+      "sha256": "0ae57d93932a9ea0f2c82eac9a074bca68ed66ad75de25f2b2b4a920d11757c0"
+    },
+    {
+      "path": "outputs/native-society-v6/run/session/society-design.json",
+      "bytes": 215782,
+      "sha256": "018206d9ebb366e502a8f54b612740671eab4139867eae44cb7e27929783aadd"
+    },
+    {
+      "path": "outputs/native-society-v6/run/runs/persistent-society/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "bytes": 638612,
+      "sha256": "77b84b2cdac0c58251a9e9effcaaf032f8b3aff711dfd8642fdf005cbb5430af"
+    },
+    {
+      "path": "outputs/native-society-v6/run/runs/persistent-society/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "bytes": 655983,
+      "sha256": "4190d19167efa93bf6f806a0ce31210f0a1870ff70c76b2af527aa6218cc2774"
+    },
+    {
+      "path": "outputs/native-society-v6/run/runs/persistent-society/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "bytes": 676381,
+      "sha256": "7ccee25a37c7cb44fbf81cd524d6c79036e91c18af63b8918ef7db9ffa5e29a4"
+    },
+    {
+      "path": "outputs/native-society-v6/run/runs/persistent-society/simulation/checkpoints/native-design/portable_checkpoint_year_3.json.gz",
+      "bytes": 687787,
+      "sha256": "b33fd22a5062fd25be051edb992fee5a54bb10bdd076c41429664f6ee154453d"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-year1-pre-consent.png",
+      "bytes": 357135,
+      "sha256": "8031ec995849512a1fdf60cafa28fe45c88ad5ebd7767dab1438e7f8769273b1"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-year1-pre-consent-qa.json",
+      "bytes": 850,
+      "sha256": "002b7a18d0773c49c7310fa52c71fdba3532f98670281532de9d552e3d18ecb7"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-consent-pending.png",
+      "bytes": 367404,
+      "sha256": "237c502ff3c327b065a44d3c9a3f6a9f4f2f514629af340320291829b99c8db9"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-consent-pending-qa.json",
+      "bytes": 2100,
+      "sha256": "af867862634776f4db988d1fc1bbc9fc1010ac7fc6c66aa96442038209823a06"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-migration-receipt-verified-reload.png",
+      "bytes": 368591,
+      "sha256": "d9fdb7542816fdb5b18743b5f8d1f71c688cdf834730b99192ad3757de158295"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-migration-receipt-verified-reload-qa.json",
+      "bytes": 1702,
+      "sha256": "0376c6008deec78ac2eac4a595a4660753ff5e73373ead64efcfed589777074e"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-second-consent-pending.png",
+      "bytes": 375988,
+      "sha256": "3d0ae82baccfbf701cf89127e5a8c313a1e27c0c92f21a746e3594b5f03c4b97"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-second-consent-pending-qa.json",
+      "bytes": 2225,
+      "sha256": "6d7f01f4e4e90c5001373464567937c80040724e1f1cc39ee5675d953c0ad4dc"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-final-overview.png",
+      "bytes": 384220,
+      "sha256": "2acbfdaf1cc3aabab92e08ecdad6e8d73eb2a8b02a511bf74355c9cb273de592"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-final-continuity-panel.png",
+      "bytes": 224022,
+      "sha256": "61dd41ded061d3424f1b444731d7bc2698c6e6c3746c76154fff3cc1a3c62da1"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-final-mobile.png",
+      "bytes": 112833,
+      "sha256": "b2da8f9dcefdb10dc657024bc5db07d02881c57640401535e2d06e951b2b61f6"
+    },
+    {
+      "path": "outputs/native-society-v6/ui-evidence/a2-final-ui-qa.json",
+      "bytes": 2728,
+      "sha256": "6477d072f71c4eb2a2700c08a2f328394f27dca64d9370da85ddbb954ac79e8b"
+    }
+  ]
+}
