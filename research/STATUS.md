@@ -25,9 +25,15 @@ remain historical evidence, not newly relabelled v6 experiments.
 - Factorized code/protocol/edge policy gradients and the live-session UI are in
   separate implementation/verification tracks. Their software QA is not a live
   Qwen institutional effect or an optimization-benefit result.
-- A three-year, single-society live pilot is being prepared to expose outcomes
-  after two institutional adoption boundaries. It has NOT started; no v6 live
-  inference or completed non-scale goal is claimed yet.
+- The first live single-society pilot completes year1, external authorship and
+  real browser consent -> durable adoption, then fails in year2 real RAG retrieval
+  because a cold embedding index was not rebuilt. There are29 actual Qwen replies
+  (24 saved-year +5 partial-year), one adoption, loss path[0] and NO year2 score.
+  The old source/raw remain immutable. A separate infrastructure fix/real-RAG
+  regression and clean-pinned a2 retry are being prepared, not a silent repair
+  of the old run or an extra designer draft. [Preserved failure](results/native-society-v6-a1.md).
+  A real browser receipt-display overwrite is also fixed separately. The goal
+  remains ACTIVE; implementation QA is not substituted for a complete pilot.
 
 ## Objective-conditioned design v5
 
