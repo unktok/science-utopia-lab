@@ -34,6 +34,25 @@ its80KB byte guard are bound in receipts; no silent truncation is presumed safe.
 Researcher temperatures, weights and original native forward equations remain
 unchanged. Run initial plus two revisions again as a separate development probe.
 
+De-novo transfer amendment (after observing source-copying in the first bounded
+revision, before generating the extra designs): two separately budgeted probes
+may each propose one candidate using a frozen snapshot of already completed
+upstream observations, with at most three technical drafts. One preserves
+ports and invents source; the other jointly generates source, new node IDs,
+protocol schemas, internal edges and phases within the original selection
+boundary. The latter is an annual zero-delay DAG region, not unrestricted world
+replacement. No developer algorithm example is provided. The entire parent
+source is withheld recursively before prompt projection, while exact complete
+inputs still drive isolated container probes. Prompts, unchanged model output,
+repairs, AST equality diagnostics, patch and upstream lineage are preserved.
+Same code, no effect and worse loss remain legal. These are explicit feedback
+transfers, NOT extra undisclosed iterations of the original campaign. Each
+successful proposal receives one fresh native evaluation. Baseline reuse is
+labelled as upstream, and requires identical execution-only source, model,
+corpus, seed and horizon. Negative accepted-count improvements would establish
+only engineering objective success, not useful scientific institutions or
+algorithmic novelty. No scientific merit/activity veto or new objective is added.
+
 Runtime reproducibility amendment: record Python's startup hash-seed environment
 and an actual hash probe, not only RNG seeds. New source and calibration runs
 explicitly launch with PYTHONHASHSEED=42; calibration refuses a missing seed.

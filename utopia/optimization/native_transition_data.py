@@ -60,6 +60,9 @@ def extract_trajectory(record, *, run_directory, source_commit, model_digest, co
     final, kernel = checked_native_state(record, run)
     spec = SystemSpec.from_dict(record['suggestion']['candidate'])
     node = next(n for n in spec.mechanisms if n.mechanism_id == 'world.selection')
+    from utopia.system.native_selection_slot import RANK_RATE_SOURCE
+    if node.parameters['code_artifact']['source'] != RANK_RATE_SOURCE:
+        raise ValueError('no verified annual-rate coordinate adapter for this different implementation')
     if node.parameters.get('annual_rates') != list(controls):
         raise ValueError('declared controls differ from actually installed native annual rates')
     root = Path(run_directory) / run['run_id']

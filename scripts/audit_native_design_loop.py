@@ -121,7 +121,7 @@ def audit(run, loss, years, *, require_completion=True):
     if len(rows) != completion['budget']:
         raise ValueError('terminal record count and declared budget differ')
     mode = saved['binding']['world'].get('proposer', 'example')
-    source_scope = ('LLM-generated source revisions; preserved host wiring' if mode == 'source-revision'
+    source_scope = ('LLM-generated source revisions; preserved host wiring' if mode in {'source-revision', 'free-source'}
                     else 'LLM graph/code proposals' if mode in {'llm', 'llm-intent'} else 'developer-authored example, not LLM invention')
     if saved['binding']['world'].get('origin') == 'explicit-local-UI-submission':
         source_scope = 'explicit edited UI branch, not an optimization campaign or model-invented topology'

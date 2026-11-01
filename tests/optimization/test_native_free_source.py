@@ -77,3 +77,18 @@ def test_tampered_actual_context_rejected_before_generation(recorded_selection, 
     with pytest.raises(ValueError, match='bundle hash'):
         proposer(controller.initial, controller.state['records'], 1, loss_spec())
     assert not model.prompts
+
+
+def test_de_novo_mode_really_withholds_parent_source_but_does_not_veto_equal_code(recorded_selection, tmp_path):
+    controller, _, executor, provider = recorded_selection
+    source = next(n for n in controller.initial.mechanisms if n.mechanism_id == 'world.selection').parameters['code_artifact']['source']
+    model = Model(source)
+    proposer = NativeFreeSourceRevisionProposer(model, executor, node_id='world.selection', context_provider=provider,
+        receipts=tmp_path / 'de-novo', show_parent_source=False)
+    proposer(controller.initial, controller.state['records'], 1, loss_spec())
+    assert source not in model.prompts[0] and 'implementation withheld' in model.prompts[0]
+    receipt = json.loads((tmp_path / 'de-novo/free-source-1-0.json').read_text())
+    assert receipt['status'] == 'isolated-probes-passed-not-native-evaluated'
+    assert receipt['ast_same_as_parent'] is True
+    prompt = json.loads((tmp_path / 'de-novo/free-source-prompt-1-0.json').read_text())
+    assert prompt['prompt_sha256'] == receipt['prompt_sha256']
