@@ -156,7 +156,9 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
     before = (file_sha256(journal), file_sha256(wire))
     with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
         metadata = db.execute('SELECT binding FROM metadata').fetchall()
-        replies = db.execute('SELECT identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        stored_rows = db.execute('SELECT rowid,identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        sql_rowids = [row[0] for row in stored_rows]
+        replies = [row[1:] for row in stored_rows]
     if len(metadata) != 1:
         raise ValueError('actual numeric response journal has no unique binding')
     b = json.loads(metadata[0][0])
@@ -170,8 +172,15 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
             or b['model_revision'] != world['model_digest'] or b['corpus_sha256'] != world['corpus_sha256']):
         raise ValueError('raw response identity differs from actual native endpoint')
     wires = [json.loads(line) for line in wire.read_text().splitlines()]
-    if len(wires) != len(replies) or len({r['payload_sha256'] for r in wires}) != len(wires):
+    wire_shas = [r['payload_sha256'] for r in wires]
+    reply_shas = [row[1] for row in replies]
+    if (any(not _sha256(s) for s in (*wire_shas, *reply_shas))
+            or len(set(wire_shas)) != len(wires) or len(set(reply_shas)) != len(replies)
+            or set(wire_shas) != set(reply_shas)):
         raise ValueError('raw response/wire are not exact fresh one-to-one physical calls')
+    # Worker request logging precedes HTTP, while SQLite is committed in
+    # completion order. These orders need not agree under concurrency.
+    wire_by_sha = {row['payload_sha256']: (index+1, row) for index, row in enumerate(wires)}
     completion_provenance = {'status': 'no-run-completion-receipt', 'timing_authenticated': False,
         'hash_scope': 'current-read-only-bytes-not-a-historical-run-completion-seal'}
     if completion_receipt is not None:
@@ -214,8 +223,9 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
                 identity = hashlib.sha256(canonical_json({'binding': b, 'seed_ctx': ctx,
                     'item_index': item, 'attempt': attempt, 'seed': seed}).encode()).hexdigest()
                 review_requests[identity] = {'year': entry['year'], 'seed': seed, 'item': item, 'attempt': attempt}
-    by_year = {}
-    for row, (identity, payload_sha, outcome, data, data_sha) in zip(wires, replies):
+    by_year, transport_rows = {}, []
+    for sql_rowid, (identity, payload_sha, outcome, data, data_sha) in zip(sql_rowids, replies):
+        wire_line, row = wire_by_sha[payload_sha]
         if (outcome != 'response' or any(not _sha256(s) for s in (identity, payload_sha, data_sha))
                 or hashlib.sha256(data.encode()).hexdigest() != data_sha):
             raise ValueError('raw numeric reply content hash differs')
@@ -223,6 +233,8 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         if (row['payload_sha256'] != payload_sha or response['model'] != b['model'] or row['payload']['model'] != b['model']
                 or hashlib.sha256(canonical_json(row['payload']).encode()).hexdigest() != payload_sha):
             raise ValueError('raw numeric reply/payload/model binding differs')
+        transport_rows.append({'sql_rowid': sql_rowid, 'wire_line': wire_line,
+            'payload_sha256': payload_sha, 'cache_identity': identity})
         try:
             body = json.loads(response['choices'][0]['message']['content'])
         except (ValueError, KeyError, IndexError, TypeError):
@@ -239,7 +251,8 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
             if type(value) not in (float, int) or not math.isfinite(value) or not 0 <= value <= upper:
                 raise BoundaryUnsupported('raw review score outside declared positive int projection')
             by_year.setdefault(row['year'], []).append({'value': value, 'payload_sha256': payload_sha,
-                'response_sha256': data_sha, 'cache_identity': identity, 'original_review_task': proof})
+                'response_sha256': data_sha, 'cache_identity': identity, 'original_review_task': proof,
+                'sql_rowid': sql_rowid, 'wire_line': wire_line})
     raw, indices, cohorts = native_values.clone(), [], []
     for entry in selected:
         shape = entry['shape']
@@ -276,6 +289,9 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
             'task_schema_sha256': digest(task_schema), 'original_task_seed_ctx': 'phase3_reviews'},
         'checkpoint_sha256': endpoint['checkpoint_sha256'], 'checkpoint_response_count': len(replies),
         'full_checkpoint_binding_sha256': digest(b),
+        'transport_join': {'kind': 'unique-payload-sha256-bijection-in-sql-completion-order',
+            'sql_rowids': sql_rowids, 'wire_lines_in_sql_order': [r['wire_line'] for r in transport_rows],
+            'row_binding_sha256': digest(transport_rows)},
         'completion_provenance': completion_provenance,
         'journal': str(journal.resolve()), 'journal_sha256': before[0], 'wire': str(wire.resolve()),
         'wire_sha256': before[1], 'cohorts': cohorts,

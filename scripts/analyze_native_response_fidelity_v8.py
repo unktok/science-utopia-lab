@@ -31,16 +31,22 @@ def transport_proof(root, events):
     with sqlite3.connect((root/'cache/responses.sqlite').resolve().as_uri()+'?mode=ro', uri=True) as db:
         binding, = db.execute('SELECT binding FROM metadata').fetchone()
         binding = json.loads(binding)
-        replies = db.execute('SELECT payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        replies = db.execute('SELECT rowid,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
     wire = [json.loads(line) for line in (root/'wire.jsonl').read_text().splitlines()]
-    if len(wire) != len(replies) or len({w['payload_sha256'] for w in wire}) != len(wire):
+    wire_shas = [w['payload_sha256'] for w in wire]
+    reply_shas = [r[1] for r in replies]
+    if (len(set(wire_shas)) != len(wire) or len(set(reply_shas)) != len(replies)
+            or set(wire_shas) != set(reply_shas)):
         raise ValueError('scripted QA transport is not one-to-one fresh physical requests')
-    actual_prompts = Counter()
-    for row, (sha, outcome, data, data_sha) in zip(wire, replies):
+    wire_by_sha = {row['payload_sha256']: (index+1, row) for index, row in enumerate(wire)}
+    actual_prompts, transport_rows = Counter(), []
+    for sql_rowid, sha, outcome, data, data_sha in replies:
+        wire_line, row = wire_by_sha[sha]
         if (sha != row['payload_sha256'] or sha != hashlib.sha256(canonical_json(row['payload']).encode()).hexdigest()
                 or outcome != 'response' or data_sha != hashlib.sha256(data.encode()).hexdigest()
                 or json.loads(data)['model'] != binding['model'] or row['payload']['model'] != binding['model']):
             raise ValueError('actual response/request content hash or model differs')
+        transport_rows.append({'sql_rowid': sql_rowid, 'wire_line': wire_line, 'payload_sha256': sha})
         for message in row['payload']['messages']:
             text = message.get('content')
             prefix = IMPORTANT_NOTES+'\n\n'
@@ -71,6 +77,10 @@ def transport_proof(root, events):
     if review_years != list(range(1, 7)) or not uses or uses-actual_prompts:
         raise ValueError('actual native review prompt-use receipts do not match recorded HTTP inputs')
     return {'fresh_physical_responses': len(replies), 'review_prompt_uses_verified': sum(uses.values()),
+        'transport_join': {'kind': 'unique-payload-sha256-bijection-in-sql-completion-order',
+            'sql_rowids': [r[0] for r in replies],
+            'wire_lines_in_sql_order': [r['wire_line'] for r in transport_rows],
+            'row_binding_sha256': digest(transport_rows)},
         'actual_actor_message_deliveries': len(deliveries), 'binding_sha256': digest(binding),
         'journal_sha256': file_sha256(root/'cache/responses.sqlite'), 'wire_sha256': file_sha256(root/'wire.jsonl')}
 

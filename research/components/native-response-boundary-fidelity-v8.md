@@ -252,3 +252,28 @@ PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. /Users/shiro/unktok/dev/sci
   --representation-output outputs/response-fidelity-v8-reanalysis-operator.json \
   --output outputs/response-fidelity-v8-reanalysis-report.json
 ```
+
+## Future concurrency-safe transport joining
+
+Independent review identified one additional ordinary API defect after the
+published sequential QA: worker wire records are written before HTTP requests,
+whereas durable SQLite responses are stored in completion order. Positional
+`zip(wire, replies)` is therefore invalid for concurrent requests, even when
+every request/reply is legitimate. Both the numeric boundary adapter and the
+independent analyzer now require a bijection of unique payload SHA256 values,
+look up each wire request by that SHA, then verify its exact response bytes and
+original review-task identity/schema. Duplicate payload keys, missing requests
+or replies, unmatched sets and payload/response tampering are rejected. They
+retain actual SQLite rowids in completion order and physical wire line numbers;
+they do not sort replies into a fictional chronology or deduplicate them.
+
+The added regressions reverse valid wire order and independently reverse SQL
+completion order (including non-contiguous rowids), then exercise duplicate,
+missing, mismatched and tampered rows for both paths. Forty no-forward tests
+pass (`outputs/response-fidelity-v8-order-independent-unit1.log`,1.27s). No old
+native raw, saved operator or result JSON is changed, and no native world/model
+is rerun or silently refitted for this fix. The existing result remains an
+artifact of its explicitly recorded native and analysis pins, with sequential
+transport. New audits include the stronger join metadata under their own source
+hashes; an explicit representation amendment is still required to migrate a
+saved operator across representation-module changes.

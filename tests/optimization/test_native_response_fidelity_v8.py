@@ -160,6 +160,46 @@ def test_raw_reply_projection_retains_native_integer_boundary_and_rejects_hetero
         raw_review_projection(endpoint, layout, z, journal=journal, wire=wire, mechanism='math', input_name='features')
 
 
+@pytest.mark.parametrize('reorder', ['wire-request-order', 'sql-completion-order'])
+def test_numeric_response_join_is_payload_bijection_not_positional_and_preserves_sql_rowids(tmp_path, reorder):
+    endpoint, journal, wire = numeric_journal(tmp_path, [3.75, 3.75])
+    layout, z, _ = boundary_layout(endpoint)
+    if reorder == 'wire-request-order':
+        wire.write_text('\n'.join(reversed(wire.read_text().splitlines()))+'\n')
+        expected_rowids = [1, 2]
+    else:
+        with sqlite3.connect(journal) as db:
+            db.execute('UPDATE replies SET rowid=rowid+10')
+            db.execute('UPDATE replies SET rowid=113-rowid')
+        expected_rowids = [101, 102]
+    raw, proof = raw_review_projection(endpoint, layout, z, journal=journal, wire=wire,
+        mechanism='math', input_name='features')
+    assert raw.tolist() == [3.75, 2.]
+    assert proof['transport_join']['sql_rowids'] == expected_rowids
+    assert proof['transport_join']['wire_lines_in_sql_order'] == [2, 1]
+
+
+@pytest.mark.parametrize('tamper', ['duplicate-wire', 'duplicate-sql-sha', 'missing-wire', 'missing-sql',
+    'mismatching-sha', 'tampered-payload', 'tampered-response'])
+def test_numeric_response_bijection_rejects_duplicate_missing_mismatched_or_tampered_rows(tmp_path, tamper):
+    endpoint, journal, wire = numeric_journal(tmp_path, [3.75, 3.75])
+    layout, z, _ = boundary_layout(endpoint)
+    wires = [json.loads(s) for s in wire.read_text().splitlines()]
+    if tamper == 'duplicate-wire': wires.append(deepcopy(wires[0]))
+    elif tamper == 'missing-wire': wires.pop()
+    elif tamper == 'mismatching-sha': wires[0]['payload_sha256'] = 'a'*64
+    elif tamper == 'tampered-payload': wires[0]['payload']['messages'] = [{'role': 'user', 'content': 'tampered'}]
+    else:
+        with sqlite3.connect(journal) as db:
+            if tamper == 'duplicate-sql-sha':
+                db.execute('UPDATE replies SET payload_sha=? WHERE rowid=2', (wires[0]['payload_sha256'],))
+            elif tamper == 'missing-sql': db.execute('DELETE FROM replies WHERE rowid=2')
+            else: db.execute("UPDATE replies SET data='tampered' WHERE rowid=1")
+    wire.write_text(''.join(json.dumps(row)+'\n' for row in wires))
+    with pytest.raises(ValueError):
+        raw_review_projection(endpoint, layout, z, journal=journal, wire=wire, mechanism='math', input_name='features')
+
+
 @pytest.mark.parametrize('tamper', ['full-binding', 'truncate-nonreview', 'wrong-task-score', 'wrong-schema', 'foreign-path'])
 def test_raw_review_proof_rejects_truncation_foreign_binding_task_and_schema(tmp_path, tamper):
     endpoint, journal, wire = numeric_journal(tmp_path, [3.75, 3.75], nonreview=True)
