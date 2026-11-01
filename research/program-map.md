@@ -1,13 +1,22 @@
 # Science Utopia Lab — program map
 
-Updated: 2026-11-01
+Updated: 2026-11-02
 
 The active acceptance gates are
-[non-scale completion v6](milestones/2026-11-01-non-scale-completion-v6.md).
+[non-scale implementation closure v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md).
 The [status page](STATUS.md) is the current execution ledger; old milestones
 remain historical. Population/seed expansion is not the next task.
 
 ## Current original-goal map
+
+V7 integration adds persistent data-defined entities with actual native actions,
+source-controlled dependency/branch/repetition processes, evolving generated
+mixed design vocabularies and loss-driven designer-strategy updates. Recurrent
+attention/memory/routing backward, actual native parameter projection and
+explicit local-fidelity failure are tested. Joint original-native QA passes;
+the live pilot, independent audit, actual UI evidence and final paper verification
+are still in progress. This paragraph supersedes the v6 boundary labels in the
+historical capability table below until the v7 final ledger is published.
 
 | Original goal | Implemented interface | Evidence already available | Remaining non-scale boundary |
 |---|---|---|---|

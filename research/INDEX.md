@@ -7,6 +7,13 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [ACTIVE: close the remaining feasible non-scale implementations v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
+- [Open native entities and consequential action capabilities](components/native-open-domain-v7.md)
+- [Explicit native process execution](components/native-process-execution-v7.md)
+- [Wrapped executable adoption and cold-restart validation](components/native-process-migration-validation-v7.md)
+- [Evolving open mixed design and designer-strategy updates](components/native-adaptive-open-search-v7.md)
+- [Operational representations, hybrid projection and native fidelity](components/native-operational-hybrid-gradients-v7.md)
+- [Small integrated native/Qwen pilot protocol](protocols/campaigns/native-open-integrated-v7.md)
+- [English open-native evidence district](tracks/native-open-evidence-ui-v7.md)
 - [Active non-scale completion v6: acceptance gates and parallel ownership](milestones/2026-11-01-non-scale-completion-v6.md)
 - [Same-society v6 a1: real adoption, preserved RAG continuation failure](results/native-society-v6-a1.md)
 - [Completed same-society v6 a2: two revisions, 130 replies and actual browser receipts](results/native-society-v6-a2.md)

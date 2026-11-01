@@ -30,7 +30,7 @@
 | Goal | Entry point |
 |---|---|
 | Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
-| Check original goals against implementation, actual evidence and remaining limits | [Current capability map](research/milestones/2026-11-01-objective-conditioned-design-v5.md) |
+| Check original goals against implementation, actual evidence and remaining limits | [Current implementation gates](research/milestones/2026-11-02-non-scale-implementation-closure-v7.md) and [program map](research/program-map.md) |
 | Set up a development environment | [Development guide](docs/development.md) |
 | Understand the code and data flow | [Architecture](docs/architecture.md) |
 | Make a contribution | [Contributing guide](CONTRIBUTING.md) |
@@ -41,6 +41,8 @@
 | Open the local replay game | [Game UI guide](game-ui/README.md) |
 | Extend the actual researcher world with new institutions | [Native science kernel and limits](research/components/native-science-kernel-v1.md) |
 | Author native institution code, protocols and explicit wiring | [Scoped authoring](research/components/native-scoped-region-authoring-v5.md), [external designer contract](research/components/native-external-manifest-authoring-v5.md) |
+| Extend participants, artifacts, actions and processes in the original world | [Open native domain](research/components/native-open-domain-v7.md), [process execution](research/components/native-process-execution-v7.md), [wrapped adoption/restart](research/components/native-process-migration-validation-v7.md) |
+| Generate evolving mixed designs or inspect conditional/native gradients | [Adaptive search](research/components/native-adaptive-open-search-v7.md), [operational hybrid representations](research/components/native-operational-hybrid-gradients-v7.md) |
 | Generate new institution rules and differentiate a miniature world | [Generative Program World](research/components/generative-program-world-v1.md) and [recorded result](research/results/generative-program-world-v1.md) |
 
 The shortest contributor orientation is:
