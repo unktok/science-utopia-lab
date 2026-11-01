@@ -101,7 +101,9 @@ and restores the original method even if review fails. It neither invents a
 teacher reply nor changes the original integer parser. The receiver preflights
 the entire batch before mutation, rejects duplicate/future deliveries, and
 retains typed authorization state across cold restarts. The host must explicitly
-register the capability; registration without the opt-in spec changes nothing.
+select the capability in SystemSpec. The standard production registry installs
+the trusted handler without a caller-only registry extension; registration
+without the opt-in spec changes nothing.
 
 The amended fidelity budget is seven **fresh** six-year scripted worlds with
 the same predeclared controls/temperature selection above, in addition to the
@@ -114,3 +116,28 @@ proves review authorization/dedup and final native state survive replay. These
 four logical compatibility worlds and their two interrupted physical attempts
 are developer regressions, not additional fidelity endpoints or independent
 scientific samples. The original cached corpus, seed and native actors remain.
+
+## Second prospective amendment: production registry and scalar handoff
+
+At clean source `01992cd`, all five planned calibration/unused native worlds
+completed. Both unused endpoint checks, the finite-path native comparison and
+the strict improvement over the frozen-response predictor passed before a
+post-processing type error interrupted the batch: the quadrature accumulator
+returned `numpy.float64`, correctly rejected by the strict native coordinate
+API. The projected candidate and outside-support worlds were never started;
+their native costs are unknown, not penalties. All five completed worlds remain
+in `outputs/response-fidelity-v8-qa2/test_seven_original_native_wor0`, not in a
+temporary retention directory. That batch is incomplete, not a full QA pass.
+
+Before any rerun, normalize the public finite-path scalar to an ordinary Python
+float and install the already-reviewed trusted ingress in the standard native
+kernel registry. The latter closes a real integration gap: arbitrary authored
+SystemSpecs and cold workers must not require a special test-only host callback
+to use this declared capability. It does not change legacy implementations or
+default prompt bytes. The next clean pin reruns all seven scripted fidelity
+worlds with unchanged controls, loss, temperatures and selection rule, now
+without any registry extension argument. This is an additional seven-world
+developer regression, not selective resampling or actual-Qwen evidence. The
+previous five completed worlds and first partial failure remain separately
+accounted. The new command captures a transcript and completed endpoint receipt
+under a new explicit output base, never overwriting either previous batch.

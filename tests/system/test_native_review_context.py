@@ -72,6 +72,8 @@ def test_original_six_year_default_off_payload_equivalence_and_opt_in_cold_resta
     assert reviews
     assert all(('ACTUAL_REVIEW_CONTEXT' in str(p)) == enabled for p in reviews)
     assert all('get_review_prompt' not in vars(a) for a in resumed.ecosystem.agent_population.values())
+    assert (RECEIVER, 1) in resumed.native_system._registry().registered
+    assert (REVIEW, 1) in resumed.native_system._registry().registered
     if enabled:
         events = [e for e in reference.native_system.events if e.event_type == 'native.system.review_context_used']
         assert len(events) == 6 and all(e.payload['uses'] for e in events)

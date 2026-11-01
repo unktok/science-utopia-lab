@@ -187,5 +187,8 @@ def register_review_context(kernel, registry):
             payload={'authorization_sha256': _hash(payload), 'uses': uses})),
             next_state={'schema': SCHEMA, 'last_period': context.period, 'uses': [*state.get('uses', []), *uses]})
 
-    registry.register(RECEIVER, 1, receive)
-    registry.register(REVIEW, 1, review)
+    # Also safe for explicit registry_extension callers from the initial
+    # capability QA; production kernels now install the same trusted adapter.
+    for identity, handler in ((RECEIVER, receive), (REVIEW, review)):
+        if (identity, 1) not in registry.registered:
+            registry.register(identity, 1, handler)

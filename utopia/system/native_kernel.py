@@ -221,6 +221,10 @@ class NativeScienceKernel:
             register_code_mechanisms(registry, self.code_executor, self.execution_receipts)
         from .native_process import register_native_process
         register_native_process(self, registry)
+        # Trusted opt-in capability only; legacy review implementations and
+        # default prompt bytes are unchanged unless selected in SystemSpec.
+        from .native_review_context import register_review_context
+        register_review_context(self, registry)
         if self.registry_extension:
             self.registry_extension(self, registry)
         return registry

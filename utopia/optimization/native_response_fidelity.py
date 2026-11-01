@@ -421,8 +421,8 @@ class NativeResponseOperator:
         integral, frozen = 0., 0.
         for node, weight in zip(nodes, weights):
             result = self.backward((a+(node+1)*.5*delta).tolist())
-            integral += weight*.5*float(np.dot(result['gradient'], delta))
-            frozen += weight*.5*float(np.dot(result['frozen_boundary_gradient'], delta))
+            integral += float(weight)*.5*float(np.dot(result['gradient'], delta))
+            frozen += float(weight)*.5*float(np.dot(result['frozen_boundary_gradient'], delta))
         endpoint_delta = float((self.value(b)[0]-self.value(a)[0]).detach())
         actual_delta = right['native_loss']-left['native_loss']
         numerical_error = abs(integral-endpoint_delta)

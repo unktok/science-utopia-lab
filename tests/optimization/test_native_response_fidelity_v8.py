@@ -79,6 +79,7 @@ def test_learned_response_chain_rule_and_unused_finite_path_are_not_frozen_input
     assert check['predicted_finite_delta'] == pytest.approx(-.6)
     assert check['frozen_boundary_native_error'] == pytest.approx(.6)
     assert check['response_aware_native_error'] < 1e-12
+    assert type(check['predicted_average_directional_derivative']) is float
     with pytest.raises(ValueError, match='calibration data'):
         model.validate_unused(points[0])
     beyond = numerical_endpoint_not_native(.6, response=5.45)
@@ -228,8 +229,10 @@ def test_seven_original_native_worlds_response_boundary_backward_unused_validati
         root = tmp_path/name
         recorder = RecordingCodeExecutor(executor, root/'code-contexts.jsonl', binding={
             'source_commit': world['source_commit'], 'system_fingerprint': candidate.fingerprint, 'run_id': name})
-        sim, actual_calls = make_sim(root, native=NativeScienceKernel(candidate, code_executor=recorder,
-            registry_extension=register_review_context), model_class=ResponseAwareScriptedHTTP)
+        # Production registry, no caller-only extension: arbitrary sandbox
+        # institution output reaches the original native review HTTP inputs.
+        sim, actual_calls = make_sim(root, native=NativeScienceKernel(candidate, code_executor=recorder),
+            model_class=ResponseAwareScriptedHTTP)
         record_native_http(sim.llm, sim, root/'wire.jsonl')
         try:
             sim.run()
@@ -240,6 +243,7 @@ def test_seven_original_native_worlds_response_boundary_backward_unused_validati
             endpoints.append(endpoint)
             response_evidence[endpoint['checkpoint_sha256']] = {'journal': str(root/'cache/responses.sqlite'),
                 'wire': str(root/'wire.jsonl'), 'mechanism': 'addressed-selection', 'input_name': 'features'}
+            write_json_atomic(tmp_path/'completed-native-endpoints.json', endpoints, sort_keys=True, allow_nan=False)
             return endpoint
         except BaseException as error:
             failures.append({'world': name, 'control': value, 'error': str(error), 'loss': None})
@@ -295,10 +299,16 @@ def test_seven_original_native_worlds_response_boundary_backward_unused_validati
         'module_source_sha256': file_sha256(ROOT/'utopia/optimization/native_response_fidelity.py'),
         'signal_source_sha256': digest(SIGNAL_SOURCE),
         'review_ingress_source_sha256': file_sha256(ROOT/'utopia/system/native_review_context.py'),
+        'production_registry_without_extension': True,
         'prior_failed_physical_attempts': [{'source_commit': '84701f3', 'world': 'calibration-0',
             'completed_worlds': 0, 'loss': None, 'reason': 'actual original review prompt omitted delivered institution signal',
             'raw_available': False, 'raw_retention_failure': 'shared pytest temporary retention removed partial-world raw',
             'raw_path': '/private/var/folders/ry/w663wy7n4j52rjwfmd7rxbl40000gn/T/pytest-of-shiro/pytest-756/test_seven_original_native_wor0'}],
+        'prior_incomplete_batches': [{'source_commit': '01992cd', 'completed_native_worlds': 5,
+            'controls': [-.25, 0., .25, -.20, .10], 'remaining_native_worlds_not_started': 2,
+            'reason': 'np.float64 finite integral output rejected by strict native-coordinate API before candidate execution',
+            'native_world_failures': 0, 'diagnostic_batch_complete': False,
+            'raw_path': str(ROOT/'outputs/response-fidelity-v8-qa2/test_seven_original_native_wor0')}],
         'endpoints': [{k: p[k] for k in ('checkpoint_sha256', 'system_fingerprint', 'coordinate_values', 'native_loss',
             'physical_initial_identity', 'native_event_stream_hash', 'response_cache_count', 'code_contexts_sha256')} for p in endpoints],
         'raw_response_proofs': model.state['raw_response_proofs'], 'temperature_selection': model.state['temperature_selection'],
