@@ -27,12 +27,131 @@ def _digest(value):
     return _hash(value)
 
 
+def _execution_contract(node):
+    """Resolve one data-only process delegate and check its outer transport ABI."""
+    from .native_process import IMPLEMENTATION, CONTROL, DONE, _validate_parameters
+    if node.implementation != IMPLEMENTATION:
+        return node
+    delegate = _validate_parameters(node.parameters)
+    canonical = SystemSpec('delegate-contract', 1, mechanisms=(delegate,)).to_dict()['mechanisms'][0]
+    if canonical != node.parameters['delegate']:
+        raise GraphRuntimeError('process delegate has unknown/noncanonical contract fields')
+    if any(p.port_id == DONE for p in delegate.outputs) or any(p.port_id == 'process-control' for p in delegate.inputs):
+        raise GraphRuntimeError('process delegate collides with reserved control/completion ports')
+    inputs, outputs = {p.port_id: p for p in node.inputs}, {p.port_id: p for p in node.outputs}
+    for declared, lookup in ((delegate.inputs, inputs), (delegate.outputs, outputs)):
+        for port in declared:
+            actual = lookup.get(port.port_id)
+            if actual is None or actual.channel != port.channel or actual.artifact_type != port.artifact_type:
+                raise GraphRuntimeError('process wrapper/delegate ports or transport types differ')
+    if set(outputs) != {p.port_id for p in delegate.outputs} | {DONE}:
+        raise GraphRuntimeError('process wrapper outputs must be delegate outputs plus completion')
+    done = outputs[DONE]
+    if done.channel.value != 'signal' or done.artifact_type != CONTROL:
+        raise GraphRuntimeError('process completion requires its declared control type')
+    if node.parameters['control']:
+        control = inputs.get('process-control')
+        if control is None or control.channel.value != 'signal' or control.artifact_type != CONTROL:
+            raise GraphRuntimeError('process control requires its declared input transport type')
+    return delegate
+
+
+def native_execution_nodes(spec):
+    """Actual executable contracts, including validated wrapped-only delegates.
+
+    Pure traversal for native factory recording/image checks and migration. No
+    source is imported/executed, and no algorithm/port/schema is synthesized.
+    """
+    return tuple(_execution_contract(node) for node in spec.mechanisms)
+
+
+def _tensor_shape(value, depth=0):
+    import math
+    if isinstance(value, list):
+        if depth >= 3 or len(value) > 16_384:
+            raise GraphRuntimeError('saved tensor exceeds rank/element limit')
+        children = [_tensor_shape(v, depth+1) for v in value]
+        if children and any(shape != children[0] for shape in children):
+            raise GraphRuntimeError('saved tensor must not be ragged')
+        shape = (len(value), *(children[0] if children else ()))
+        if math.prod(shape) > 16_384:
+            raise GraphRuntimeError('saved tensor exceeds element limit')
+        return shape
+    # The actual tensor transport casts booleans to float64 too; do not impose
+    # a stricter saved-input alphabet than the executable tensor adapter.
+    if type(value) not in (bool, int, float) or not math.isfinite(value):
+        raise GraphRuntimeError('saved tensor requires finite numeric values')
+    return ()
+
+
+def _validate_execution_state(node, state, *, allow_initial_empty=False):
+    if not isinstance(state, dict):
+        raise GraphRuntimeError('executable mechanism state must be a JSON mapping')
+    if node.implementation == 'code.python.v1':
+        # Match the code ABI: {} is a universal first-call context, not a
+        # fabricated initialized memory. Preserve legacy top-level strictness.
+        if state or not allow_initial_empty:
+            Draft202012Validator(node.parameters['code_artifact']['state_schema']).validate(state)
+    elif node.implementation == 'program.tensor.v1':
+        initial = node.parameters['program']['state']
+        saved = state.get('tensors', initial)
+        if not isinstance(saved, dict) or set(saved) != set(initial):
+            raise GraphRuntimeError('saved tensor memory slot names differ')
+        if any(_tensor_shape(saved[k]) != _tensor_shape(initial[k]) for k in initial):
+            raise GraphRuntimeError('saved tensor memory shape differs')
+    elif node.implementation == 'native.world.llm-institution.v1':
+        Draft202012Validator(node.parameters.get('state_schema', {'type': 'object'})).validate(state)
+
+
+def _validate_saved_state(node, state):
+    executable = _execution_contract(node)
+    if executable is node:
+        _validate_execution_state(node, state)
+        return
+    if not isinstance(state, dict):
+        raise GraphRuntimeError('process state must be a JSON mapping')
+    if 'total_invocations' in state and (type(state['total_invocations']) is not int or state['total_invocations'] < 0):
+        raise GraphRuntimeError('process invocation memory must be a nonnegative integer')
+    saved = state.get('delegate_state', node.parameters['initial_delegate_state'])
+    _validate_execution_state(executable, saved, allow_initial_empty=True)
+
+
+def _validate_execution_payload(node, port, payload):
+    if node.implementation == 'code.python.v1':
+        Draft202012Validator(node.parameters['code_artifact']['inputs'][port]).validate(payload)
+    elif node.implementation == 'program.tensor.v1':
+        from .design_patch import read_pointer
+        for name, binding in node.parameters['input_bindings'].items():
+            if binding['port'] != port:
+                continue
+            shape = _tensor_shape(read_pointer(payload, binding['path']))
+            expected = node.parameters['program']['inputs'][name]
+            if 0 in shape and -1 in expected:
+                shape = tuple(0 if d == -1 else d for d in expected)
+            if len(shape) != len(expected) or any(d != -1 and d != actual for d, actual in zip(expected, shape)):
+                raise GraphRuntimeError('queued tensor input shape differs')
+
+
+def _validate_saved_payload(node, port, payload):
+    executable = _execution_contract(node)
+    if executable is not node and port == 'process-control':
+        from .native_process import _at
+        parameters = node.parameters
+        if parameters['guard_path'] is not None and type(_at(payload, parameters['guard_path'])) is not bool:
+            raise GraphRuntimeError('queued process guard must be boolean')
+        count = _at(payload, parameters['count_path']) if parameters['count_path'] is not None else parameters['count']
+        if type(count) is not int or not 0 <= count <= parameters['limit']:
+            raise GraphRuntimeError('queued process count exceeds declared budget')
+    elif any(p.port_id == port for p in executable.inputs):
+        _validate_execution_payload(executable, port, payload)
+
+
 def _validate_programs(spec):
     """Validate untrusted contracts BEFORE evaluating even their JSON schemas."""
     from .code_mechanisms import validate_code_artifact
     from .tensor_program import IMPLEMENTATION, validate_tensor_program
     images = set()
-    for node in spec.mechanisms:
+    for node in native_execution_nodes(spec):
         if node.implementation == "code.python.v1":
             artifact = node.parameters.get("code_artifact")
             validate_code_artifact(artifact)
@@ -48,9 +167,44 @@ def _validate_programs(spec):
             if (set(node.parameters["program"]["inputs"]) != set(node.parameters["input_bindings"])
                     or set(node.parameters["program"]["outputs"]) != {p.port_id for p in node.outputs}):
                 raise GraphRuntimeError("migration tensor bindings and ports differ")
+            for binding in node.parameters['input_bindings'].values():
+                if (not isinstance(binding, dict) or set(binding) != {'port', 'path'}
+                        or binding['port'] not in {p.port_id for p in node.inputs}
+                        or not isinstance(binding['path'], str)):
+                    raise GraphRuntimeError('migration tensor input binding differs from its transport')
+                from .design_patch import pointer
+                pointer(binding['path'])
+        elif node.implementation == 'native.world.llm-institution.v1':
+            from .code_mechanisms import _schema
+            schemas = node.parameters.get('output_schemas', {})
+            if set(schemas) != {p.port_id for p in node.outputs}:
+                raise GraphRuntimeError('migration LLM outputs and schemas differ')
+            for schema in (*schemas.values(), node.parameters.get('state_schema', {'type': 'object'})):
+                _schema(schema)
+    for wrapper in spec.mechanisms:
+        if wrapper.implementation == 'native.process.activity.v1':
+            _validate_saved_state(wrapper, {})
     if len(images) > 1:
         raise GraphRuntimeError("native code nodes require one pinned container image")
     return next(iter(images), None)
+
+
+def validate_native_execution_checkpoint(spec, graph):
+    """Check actual saved executable memories/pending payloads without execution.
+
+    This also covers post-adoption years, whose current graph is no longer the
+    migration receipt's exact target graph. Kernel callers may reuse this pure
+    check for a direct restore; portable bootstrap calls it before reopening.
+    """
+    _validate_programs(spec)
+    checkpoint = GraphCheckpoint.from_dict(graph)
+    _validate_checkpoint(checkpoint, spec, 'annual')
+    by_id = {node.mechanism_id: node for node in spec.mechanisms}
+    for name, node in by_id.items():
+        _validate_saved_state(node, checkpoint.mechanism_states.get(name, {}))
+    for item in graph['queued_deliveries']:
+        target = by_id[item['target_mechanism']]
+        _validate_saved_payload(target, item['target_port'], item['value']['payload'])
 
 
 def _reconcile(old_spec, new_spec, graph, state_actions, discard_deliveries):
@@ -82,8 +236,7 @@ def _reconcile(old_spec, new_spec, graph, state_actions, discard_deliveries):
             states[name] = deepcopy(action["replace"])
         else:
             raise GraphRuntimeError("state action must be preserve, reset or {replace: JSON object}")
-        if node.implementation == "code.python.v1":
-            Draft202012Validator(node.parameters["code_artifact"]["state_schema"]).validate(states.get(name, {}))
+        _validate_saved_state(node, states.get(name, {}))
     queue = graph["queued_deliveries"]
     known_orders = {str(q["order"]) for q in queue}
     if (set(discard_deliveries) - known_orders
@@ -98,8 +251,7 @@ def _reconcile(old_spec, new_spec, graph, state_actions, discard_deliveries):
         value = item["value"]
         if port is None or port.channel.value != value["channel"] or port.artifact_type != value["artifact_type"]:
             raise GraphRuntimeError("pending delivery incompatible with new target; explicitly discard or retain its port")
-        if target.implementation == "code.python.v1":
-            Draft202012Validator(target.parameters["code_artifact"]["inputs"][port.port_id]).validate(value["payload"])
+        _validate_saved_payload(target, port.port_id, value['payload'])
         retained.append(deepcopy(item))
     migrated = {**deepcopy(graph), "system_fingerprint": new_spec.fingerprint,
                 "mechanism_states": states, "queued_deliveries": retained}
@@ -270,6 +422,7 @@ def checkpoint_native_bootstrap(configured_kernel, saved_state):
         raise GraphRuntimeError("migration lineage does not start at the configured native design")
     current = SystemSpec.from_dict(saved_state["spec"])
     image = _validate_programs(current)
+    validate_native_execution_checkpoint(current, saved_state['graph_checkpoint'])
     executor = configured_kernel.code_executor
     if executor is not None and image is not None and executor.image_id != image:
         executor = None  # Actual execution resolves the target pinned image, not the old executor.
