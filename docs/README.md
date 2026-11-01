@@ -23,6 +23,11 @@ record lives separately under [`research/`](../research/INDEX.md).
 
 - [Whole-system `SystemSpec`](../research/components/system-spec-graph-v1.md)
 - [Native researcher-world kernel and extension API](../research/components/native-science-kernel-v1.md)
+- [Persistent open participants/artifacts/actions](../research/components/native-open-domain-v7.md)
+- [Dependency, branch and repeated activity processes](../research/components/native-process-execution-v7.md)
+- [Evolving mixed design generation and strategy updates](../research/components/native-adaptive-open-search-v7.md)
+- [Operational backward, native projection and fidelity](../research/components/native-operational-hybrid-gradients-v7.md)
+- [English open-native evidence view](../research/tracks/native-open-evidence-ui-v7.md)
 - [Black-box ask/tell optimizer](../research/optimizers/blackbox-ask-tell-v1.md)
 - [First closed-loop campaign protocol](../research/protocols/campaigns/first-closed-loop-engineering-v1.md)
 - [First closed-loop campaign result](../research/results/first-closed-loop-engineering-v1-interpretation.md)

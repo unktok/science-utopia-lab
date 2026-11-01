@@ -10,8 +10,15 @@ now includes open native domain/actions, explicit process execution, evolving
 generated mixed optimization, designer-strategy update mechanisms and operational
 gradient/native fidelity integration. Ordinary implementation must not be
 renamed research uncertainty. Improvement itself is not a pass requirement.
-Four isolated tracks are actively implementing these items. No population/seed
-scale-up or new v7 execution result is claimed at this initial entry.
+The four implementation tracks are integrated. Original-world scripted QA now
+connects domain/process/evolving mixed search/conditional backward; focused49,
+joint27 and later migration35 checks pass at their recorded source versions
+(overlapping checks, NOT a summed independent test count). The first live
+two-year Qwen world completes at engineering loss-1.2; three budgeted worlds,
+next-generation feedback, final independent audit/UI/paper gates remain.
+The live source is clean c09e069 and stays immutable while development continues.
+No population/seed expansion, held-out result, causal benefit or whole-native
+pathwise backward is claimed. Final evidence will replace this interim ledger.
 
 ## Completed finite integration goal: non-scale v6
 
@@ -277,7 +284,11 @@ remains open. The Nov1
 working PDF now includes these actual failures, derivative boundaries and a
 completed native job capture; the sealed parameter study remains unchanged.
 
-## Overall position
+## Historical overall position (pre-v4; superseded above)
+
+The following older snapshots and capability table retain their original claims
+for traceability. Their "not implemented", "next" and "remain open" entries are
+not the current task list. Use the v7 inventory and latest ledger at the top.
 
 The project has a working stochastic simulation, evaluation environment, and
 persistent closed-loop controller. Metric-Conditioned Optimization Study v1.1
@@ -326,7 +337,7 @@ Repository: `/Users/shiro/unktok/dev/science-utopia-lab`
 
 Remote: `unktok/science-utopia-lab`
 
-## Native-world direction correction and implementation
+## Historical native-world direction correction and implementation
 
 The original researcher world is now explicitly the minimum contained instance,
 not the target ceiling. The numeric miniature remains method/unit-test evidence,
@@ -356,7 +367,7 @@ Focused regression: 611 passed, three skipped. Whole native-
 world autograd is **not implemented**; the kernel exposes that boundary explicitly.
 See [design and remaining scope](components/native-science-kernel-v1.md).
 
-## Capability map
+## Historical capability map (pre-v4)
 
 Latest direction (Decision 0027): prioritize open institutional/source/protocol/
 wiring invention rather than hand-building a catalog of hypothesis/experiment
@@ -494,7 +505,7 @@ manually chosen design points, not a parameter search. Their historical
 promotion decision remains preserved, but its protected-slice veto is not a
 default constraint for future optimization.
 
-## Next milestone
+## Historical next milestone (not the active goal)
 
 The parameter/held-out study, native lifecycle containment, executable joint
 source/protocol/wiring transaction, conditional tensor-fit/fresh-world path,
