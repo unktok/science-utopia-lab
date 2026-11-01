@@ -51,3 +51,24 @@ explicitly distinguish raw-response change, post-parse numeric change,
 conditional institution calculus and native output discrepancy. Local response
 fitting uses calibration-only data; unused endpoint checks cannot select the
 representation. Scripted provider verification is not actual-Qwen fidelity.
+
+## A1 external authoring failure; pre-inference a2 amendment
+
+Both submitted generation0 manifests are consumed but statically rejected with
+parent/schema mismatch. Actual exact parent88912a72…abaa2f4 differs from authored
+af6228e1…f980bdc. The author confirms JavaScript JSON normalization of integral
+floats changed the parent identity; its earlier static-validation claim tested
+the wrong normalized parent. Root independently replays the exact saved files
+with425ec10 and reproduces rejection. The host compiler behaves correctly.
+
+ZERO worlds/replies execute, and there is no native loss. Generation1 is pending
+and unanswered; a1 is aborted-before-inference, not falsely terminal-complete.
+Frozen a1 raw and source are retained. The independent auditor additionally
+fixes an ordinary failure-path gap: valid invalid-generation records have zero
+draws, and unavailable comparison metrics must not invalidate an own-loss result.
+
+[A2 amendment](../protocols/campaigns/native-objective-structure-v8-a2.md) is fixed
+before new inference. New output, same correct425ec10 source and same total
+eight-world cap, with exact saved-file numeric-type-preserving validation.
+No unsuccessful native trajectory is replaced, no scientific outcome/metric
+is selected away, no compiler validation is loosened, no extra seed is used.
