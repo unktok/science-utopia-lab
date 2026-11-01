@@ -9,6 +9,7 @@ from __future__ import annotations
 from copy import deepcopy
 import os
 from pathlib import Path
+import re
 
 from jsonschema import Draft202012Validator
 
@@ -26,8 +27,36 @@ def _digest(value):
     return _hash(value)
 
 
+def _validate_programs(spec):
+    """Validate untrusted contracts BEFORE evaluating even their JSON schemas."""
+    from .code_mechanisms import validate_code_artifact
+    from .tensor_program import IMPLEMENTATION, validate_tensor_program
+    images = set()
+    for node in spec.mechanisms:
+        if node.implementation == "code.python.v1":
+            artifact = node.parameters.get("code_artifact")
+            validate_code_artifact(artifact)
+            if (set(artifact["inputs"]) != {p.port_id for p in node.inputs}
+                    or set(artifact["outputs"]) != {p.port_id for p in node.outputs}):
+                raise GraphRuntimeError("migration code ports and artifact schemas differ")
+            image = node.parameters.get("runtime_image_id")
+            if not isinstance(image, str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", image):
+                raise GraphRuntimeError("migration requires an exact pinned container image digest")
+            images.add(image)
+        elif node.implementation == IMPLEMENTATION:
+            validate_tensor_program(node.parameters["program"])
+            if (set(node.parameters["program"]["inputs"]) != set(node.parameters["input_bindings"])
+                    or set(node.parameters["program"]["outputs"]) != {p.port_id for p in node.outputs}):
+                raise GraphRuntimeError("migration tensor bindings and ports differ")
+    if len(images) > 1:
+        raise GraphRuntimeError("native code nodes require one pinned container image")
+    return next(iter(images), None)
+
+
 def _reconcile(old_spec, new_spec, graph, state_actions, discard_deliveries):
     """Pure deterministic reconciliation; also used when reopening a receipt."""
+    _validate_programs(old_spec)
+    _validate_programs(new_spec)
     before = GraphCheckpoint.from_dict(graph)
     _validate_checkpoint(before, old_spec, "annual")
     old = {n.mechanism_id: n for n in old_spec.mechanisms}
@@ -97,6 +126,7 @@ def migrate_native_design(kernel, candidate: SystemSpec, *, expected_checkpoint_
     if kernel.design_history and kernel.design_history[-1]["after_year"] >= kernel.last_year:
         raise GraphRuntimeError("combine edits into one transaction per completed-year boundary")
     validate_system_spec(candidate).require_valid()
+    image = _validate_programs(candidate)
     if candidate.system_id != kernel.spec.system_id:
         raise GraphRuntimeError("same-society migration must preserve system_id")
     def founding(spec):
@@ -106,8 +136,14 @@ def migrate_native_design(kernel, candidate: SystemSpec, *, expected_checkpoint_
     actions, discarded = deepcopy(state_actions or {}), deepcopy(discard_deliveries or {})
     graph = _reconcile(kernel.spec, candidate, kernel.graph_checkpoint, actions, discarded)
     # Resolve implementations and validate code/schema without invoking any node.
+    executor = kernel.code_executor
+    if image is not None and executor is not None and executor.image_id != image:
+        from .code_mechanisms import DockerCodeExecutor
+        executor = DockerCodeExecutor(image)
+        if executor.image_id != image:
+            raise GraphRuntimeError("migration executor does not match the pinned candidate image")
     preview = NativeScienceKernel(candidate, registry_extension=kernel.registry_extension,
-                                  code_executor=kernel.code_executor)
+                                  code_executor=executor)
     DeterministicGraphRunner(candidate, preview._registry())
     record = {"schema": SCHEMA, "after_year": kernel.last_year,
               "event_count": len(kernel.events), "event_prefix_sha256": before["event_stream_hash"],
@@ -163,17 +199,23 @@ def commit_native_design(simulation, candidate=None, *, expected_checkpoint_sha2
     This does not invoke checkpoint callbacks or change any scientific/RNG field.
     """
     from .native_kernel import NativeScienceKernel
-    from utopia.runtime.checkpointing import read_portable_checkpoint, write_portable_checkpoint
+    from utopia.runtime.checkpointing import capture_rng, read_portable_checkpoint, write_portable_checkpoint
     from utopia.utils.data_utils import file_sha256
     kernel = simulation.native_system
     if (kernel is None or kernel._frame is not None or kernel.last_year < 1
             or getattr(simulation, "_portable_last_year", None) != kernel.last_year):
         raise GraphRuntimeError("durable migration requires a saved portable native year boundary")
     path = Path(simulation.output_dir) / f"portable_checkpoint_year_{kernel.last_year}.json.gz"
+    if getattr(simulation, "_portable_active_checkpoint", None) != str(path.resolve()):
+        raise GraphRuntimeError("durable migration must run inside the synchronous completed-checkpoint callback")
     state = read_portable_checkpoint(path)
-    if (state.get("year") != kernel.last_year or state.get("native_system") != kernel.to_dict()
+    if (state.get("year") != kernel.last_year or state.get("phase") != 5
+            or state.get("native_system") != kernel.to_dict()
             or state["portable"]["contract"] != simulation.portable_contract()):
         raise GraphRuntimeError("saved society boundary differs from current kernel/contract")
+    if (capture_rng() != state["portable"]["rng"]
+            or simulation.llm.response_cache.committed_count() != state["portable"]["response_cache_count"]):
+        raise GraphRuntimeError("RNG or inference advanced after the saved society boundary")
     preview = NativeScienceKernel(kernel.spec, registry_extension=kernel.registry_extension,
                                   code_executor=kernel.code_executor, checkpoint=kernel.to_dict())
     kwargs = {"expected_checkpoint_sha256": expected_checkpoint_sha256,
@@ -189,12 +231,16 @@ def commit_native_design(simulation, candidate=None, *, expected_checkpoint_sha2
     # Archive the old complete society, not only its institution state.
     archive = path.parent / "design-migration-archives" / (file_sha256(path) + ".json.gz")
     archive.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    # Persist the newly created archive-directory entry before committing state.
+    directory = os.open(archive.parent.parent, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(directory)
+    finally:
+        os.close(directory)
     data = path.read_bytes()
     try:
-        with os.fdopen(os.open(archive, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600), "wb") as stream:
-            stream.write(data)
-            stream.flush()
-            os.fsync(stream.fileno())
+        from utopia.utils.data_utils import write_bytes_atomic
+        write_bytes_atomic(archive, data, exclusive=True, private=True, readonly=True)
     except FileExistsError:
         if archive.read_bytes() != data:
             raise GraphRuntimeError("immutable pre-migration society archive differs")
@@ -218,8 +264,12 @@ def checkpoint_native_bootstrap(configured_kernel, saved_state):
     if history[0].get("source_spec") != configured_kernel.spec.to_dict():
         raise GraphRuntimeError("migration lineage does not start at the configured native design")
     current = SystemSpec.from_dict(saved_state["spec"])
+    image = _validate_programs(current)
+    executor = configured_kernel.code_executor
+    if executor is not None and image is not None and executor.image_id != image:
+        executor = None  # Actual execution resolves the target pinned image, not the old executor.
     return NativeScienceKernel(current, registry_extension=configured_kernel.registry_extension,
-                               code_executor=configured_kernel.code_executor, checkpoint=saved_state)
+                               code_executor=executor, checkpoint=saved_state)
 
 
 def validate_design_history(state, current_spec):

@@ -257,6 +257,73 @@ def test_cold_bootstrap_refuses_unrelated_configured_world():
         checkpoint_native_bootstrap(unrelated, kernel.to_dict())
 
 
+@pytest.mark.parametrize("malformation", ["phase", "source", "schema", "ports", "rng"])
+def test_durable_preflight_failure_preserves_society(tmp_path, fixed_corpus, monkeypatch, malformation):
+    from utopia.system.native_migration import commit_native_design
+    from utopia.runtime.checkpointing import PortableStop, write_portable_checkpoint
+    from utopia.system.code_mechanisms import CODE_SCHEMA
+    sim, _ = make_sim(tmp_path / "invalid", native=NativeScienceKernel(legacy_world_system()))
+    original_callback = sim.checkpoint_callback
+    checked = []
+    def boundary(path):
+        original_callback(path)
+        if sim.native_system.last_year != 1:
+            return
+        candidate = sim.native_system.spec
+        if malformation == "phase":
+            state = read_portable_checkpoint(path)
+            state["phase"] = 3
+            write_portable_checkpoint(path, state)
+        elif malformation == "rng":
+            import random
+            random.random()
+        else:
+            artifact = {"schema": CODE_SCHEMA, "label": "Invalid migration test", "source": "def step(context):\n    return {'outputs': {}, 'state': {}}",
+                        "inputs": {}, "outputs": {}, "state_schema": {"type": "object"}}
+            if malformation == "source":
+                artifact["source"] = "not valid Python ("
+            elif malformation == "schema":
+                artifact["state_schema"] = {"$ref": "https://example.invalid/must-not-resolve"}
+            elif malformation == "ports":
+                artifact["outputs"] = {"absent": {"type": "object"}}
+            code = MechanismSpec("new-code", MechanismFamily.CUSTOM, "code.python.v1",
+                parameters={"code_artifact": artifact, "runtime_image_id": "sha256:" + "b" * 64})
+            candidate = replace(candidate, mechanisms=(*candidate.mechanisms, code), schedules=(*candidate.schedules, ScheduleSpec("new-code", 250)))
+        before, kernel = path.read_bytes(), sim.native_system
+        with pytest.raises((ValueError, SyntaxError, GraphRuntimeError)):
+            commit_native_design(sim, candidate, expected_checkpoint_sha256=_hash(kernel.to_dict()))
+        assert path.read_bytes() == before and sim.native_system is kernel
+        checked.append(True)
+        raise PortableStop("invalid migration checked")
+    sim.checkpoint_callback = boundary
+    try:
+        with pytest.raises(PortableStop, match="invalid migration checked"):
+            sim.run()
+        assert checked
+    finally:
+        sim.llm.response_cache.close()
+
+
+def test_pinned_executor_changes_with_candidate_without_executing_source(monkeypatch):
+    from types import SimpleNamespace
+    from utopia.system.code_mechanisms import CODE_SCHEMA
+    kernel = completed_kernel()
+    kernel.code_executor = SimpleNamespace(image_id="sha256:" + "a" * 64)
+    requested = []
+    def executor(image):
+        requested.append(image)
+        return SimpleNamespace(image_id=image)
+    monkeypatch.setattr("utopia.system.code_mechanisms.DockerCodeExecutor", executor)
+    artifact = {"schema": CODE_SCHEMA, "label": "Pinned migration", "source": "def step(context):\n    return {'outputs': {}, 'state': {}}",
+                "inputs": {}, "outputs": {}, "state_schema": {"type": "object"}}
+    node = MechanismSpec("code", MechanismFamily.CUSTOM, "code.python.v1",
+                         parameters={"code_artifact": artifact, "runtime_image_id": "sha256:" + "b" * 64})
+    candidate = replace(kernel.spec, mechanisms=(*kernel.spec.mechanisms, node), schedules=(*kernel.spec.schedules, ScheduleSpec("code", 250)))
+    migrate_native_design(kernel, candidate, expected_checkpoint_sha256=_hash(kernel.to_dict()))
+    assert requested == ["sha256:" + "b" * 64]
+    assert kernel.code_executor.image_id == requested[0]
+
+
 def test_pending_delivery_not_silently_lost_and_removed_state_archived():
     kernel = completed_kernel()
     before = kernel.to_dict()

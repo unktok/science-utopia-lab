@@ -579,12 +579,16 @@ class Simulation:
             return
         from pathlib import Path
         from utopia.runtime.checkpointing import PortableStop
+        previous_boundary = getattr(self, '_portable_active_checkpoint', None)
+        self._portable_active_checkpoint = str(Path(checkpoint_path).resolve())
         try:
             callback(Path(checkpoint_path))
         except Exception as error:
             raise PortableStop(
                 f"Checkpoint retained locally; upload callback failed ({type(error).__name__}): "
                 f"{checkpoint_path}") from error
+        finally:
+            self._portable_active_checkpoint = previous_boundary
 
     def extra_checkpoint_state(self):
         """Subclass hook: data only, including funding and logical audit counters."""

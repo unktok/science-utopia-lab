@@ -44,7 +44,8 @@ declared objective. An external scheduler can call it at a completed boundary.
 
 `commit_native_design(simulation, ...)` provides the durable enclosing-society
 transaction, accepting either a candidate or a recorded proposal event. It
-requires the just-saved native boundary and exact contract, prepares the new
+runs inside the synchronous completed-checkpoint callback and requires the
+just-saved native boundary, phase5, exact contract and unadvanced RNG/cache. It prepares the new
 kernel off to the side, archives the OLD complete portable checkpoint bytes
 under their content hash (private local file), then atomically writes the
 complete adopted society before replacing the live kernel. It does not call
@@ -55,6 +56,10 @@ archive. `Simulation.load_checkpoint` validates the migration chain rooted in
 the ORIGINAL configured design before allowing only its native fingerprint
 to change in the contract. Other model/corpus/config/cache bindings still match
 exactly. Cold restart requires no remembered migrated SystemSpec.
+Generated code/port/schema contracts are checked before evaluating any schema;
+external references remain forbidden. A changed container digest resolves its
+own pinned local executor instead of inheriting a mismatched old image. Archive
+file and directory entries are fsynced before committing the adopted snapshot.
 
 ## Verification and scope
 
@@ -72,8 +77,10 @@ Qwen-invented institutions or policy-improvement experiments.
 Additional integration tests simulate shutdown immediately after a durable
 adoption, then load with the ORIGINAL design and continue the same society.
 Injected write failure proves no kernel/checkpoint partial adoption. Unrelated
-configured worlds cannot adopt the saved lineage. Focused migration/native/
-portable integration regression: 29 passed in70.23s.
+configured worlds cannot adopt the saved lineage. Phase/source/schema/port/RNG
+tampering, changed image pinning, queue preservation and explicit discards have
+separate regression tests. Developer callbacks must not mutate scientific domain
+objects before invoking the commit API; it is not a general mid-year API.
 
 Limits: completed annual boundaries only, one joint edit per boundary, same
 system_id/founding attributes, data-only explicit state translation, and
