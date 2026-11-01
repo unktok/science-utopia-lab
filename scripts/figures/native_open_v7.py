@@ -91,8 +91,9 @@ def create(report, output):
             axes[0].hlines(mean, min(ids)-.22, max(ids)+.22, color=colors[generation % 2], alpha=.5, linewidth=1.1)
     labels = []
     for row in data:
-        values = list(row['continuous'].values())
-        continuous = f"bias {values[0]:+.2f}" if len(values) == 1 else f"{len(values)} coordinates"
+        coordinates = list(row['continuous'].items())
+        continuous = (f"{coordinates[0][0].rsplit('/',1)[-1]} {coordinates[0][1]:+.2f}"
+            if len(coordinates) == 1 else f"{len(coordinates)} coordinates")
         factor = ', '.join(f'{k}={v}' for k, v in row['structural_assignment'].items())
         # Full unabridged paths/choices are preserved in the figure manifest.
         if len(factor) > 22:

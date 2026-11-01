@@ -282,12 +282,27 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
     if evidence['event_stream_hash'] != kernel.to_dict()['event_stream_hash']:
         raise ValueError('observation event stream differs from restored actual native kernel')
     years = saved['year']
-    counts = []
+    counts, annual, previous_events, previous_elapsed = [], [], [], 0.
     for year in range(1, years + 1):
-        state = read_portable_checkpoint(checkpoint.parent / f'portable_checkpoint_year_{year}.json.gz')
+        annual_path = checkpoint.parent / f'portable_checkpoint_year_{year}.json.gz'
+        state = read_portable_checkpoint(annual_path)
         if (state['year'] != year or state['phase'] != 5 or state['portable']['contract']['binding'] != binding
                 or state['native_system']['spec'] != system.to_dict()):
             raise ValueError('annual checkpoint source/physical lineage differs')
+        annual_kernel = NativeScienceKernel(system, checkpoint=state['native_system'])
+        events = state['native_system']['events']
+        if (events[:len(previous_events)] != previous_events or saved['native_system']['events'][:len(events)] != events):
+            raise ValueError('native event lineage was reset or changed across annual checkpoints')
+        elapsed = state['portable']['llm_call_stats'].get('elapsed_seconds', 0.)
+        if elapsed < previous_elapsed:
+            raise ValueError('annual native LLM elapsed counter rewound')
+        annual.append({'year': year, 'checkpoint_sha256': file_sha256(annual_path),
+            'accepted_decisions': sum(d.get('decision') == 'accept' for p in state['paper_tracker']['papers'] for d in p['review_history']),
+            'context_deliveries': sum(e.event_type == 'native.system.context_delivered' for e in annual_kernel.events),
+            'cumulative_responses': state['portable']['response_cache_count'],
+            'llm_call_stats': state['portable']['llm_call_stats'], 'interval_llm_elapsed_seconds': elapsed-previous_elapsed,
+            'native_event_stream_hash': state['native_system']['event_stream_hash']})
+        previous_events, previous_elapsed = events, elapsed
         counts.append(state['portable']['response_cache_count'])
     response = response_proofs(cell, binding, counts, complete=True, protocol={},
         classification=RESPONSE_ACTUAL if classification != FIXTURE else FIXTURE)
@@ -302,6 +317,7 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
             or initial['portable']['contract']['binding'] != binding):
         raise ValueError('native draw lacks its original initialized candidate world')
     initial_authors = [a for a in initial['ecosystem_data']['agents'] if a['can_author']]
+    NativeScienceKernel(system, checkpoint=initial['native_system'])
     if classification != FIXTURE and len(initial_authors) != 5:
         raise ValueError('actual original initialized population is not five researchers')
     programs = {n.mechanism_id: n.parameters['program'] for n in system.mechanisms if n.implementation == 'program.tensor.v1'}
@@ -311,6 +327,7 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
     return {'measurement': measurement, 'native_loss': evaluate_loss(joint_engineering_loss(), [measurement])['loss'],
         'physical_initial_identity': physical_initial_identity(initial),
         'response_proof': response, 'code_proof': code, 'native_counts': domain_proofs(saved, kernel, code_rows),
+        'annual_checkpoints': annual,
         'boundary_coverage': boundary_coverage(system, kernel.events), 'conditional_backward': backward,
         'checkpoint_sha256': file_sha256(checkpoint), 'actual_author_count': len([a for a in saved['ecosystem_data']['agents'] if a['can_author']]),
         'initial_roster': {'author_count': len(initial_authors), 'total_actor_count': len(initial['ecosystem_data']['agents']),
@@ -319,6 +336,45 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
             'configured_num_conferences': 1 if classification != FIXTURE else None,
             'note': 'Configured count and actual per-category conference instances are separate facts.'},
         'conditional_backward_scope': 'Minus represented router actions, conditioned on recorded numeric inputs; NOT joint LossSpec -A-0.1C or full native/LLM pathwise derivative.'}
+
+
+def partial_physical_proof(cell, system, world, classification):
+    """Account for actual partial inference without inventing a completed world."""
+    with sqlite3.connect((cell / 'replies/responses.sqlite').resolve().as_uri()+'?mode=ro', uri=True) as db:
+        bindings = db.execute('SELECT binding FROM metadata').fetchall()
+    if len(bindings) != 1:
+        raise ValueError('partial native response journal has no unique binding')
+    binding = json.loads(bindings[0][0])
+    if (binding['cell'] != system.fingerprint or binding['seed'] != 42
+            or binding['science_config']['source_commit'] != world['source_commit']
+            or binding['model_revision'] != world['model_digest'] or binding['corpus_sha256'] != world['corpus_sha256']
+            or read(cell / 'system.json') != system.to_dict()):
+        raise ValueError('partial inference source/model/corpus/design/seed differs')
+    checkpoints = sorted(cell.rglob('portable_checkpoint_year_*.json.gz'),
+        key=lambda p: int(p.name.split('_year_')[1].split('.')[0]))
+    counts, last = [], None
+    for path in checkpoints:
+        saved = read_portable_checkpoint(path)
+        if saved['portable']['contract']['binding'] != binding or saved['native_system']['spec'] != system.to_dict():
+            raise ValueError('partial committed checkpoint differs from its inference journal')
+        NativeScienceKernel(system, checkpoint=saved['native_system'])
+        if saved['year'] > 0:
+            if saved['phase'] != 5 or saved['year'] != len(counts)+1:
+                raise ValueError('partial committed native year prefix is not contiguous')
+            counts.append(saved['portable']['response_cache_count'])
+        last = saved
+    response = response_proofs(cell, binding, counts, complete=False, protocol={},
+        classification=RESPONSE_ACTUAL if classification != FIXTURE else FIXTURE)
+    horizon = binding['science_config']['years']
+    if classification != FIXTURE and (binding['model'] != 'qwen3:8b' or horizon != 2):
+        raise ValueError('partial actual native protocol/model/horizon differs')
+    if any(int(y) > horizon for y in response['responses_by_physical_year']):
+        raise ValueError('partial physical HTTP chronology exceeds native horizon')
+    return {'run_id': cell.name, 'status': 'partial-or-unobserved-physical-run', 'loss': None,
+        'through_committed_year': last['year'] if last else None, 'response_proof': response,
+        'code_proof': code_proofs(cell, system, last['native_system'] if last else {'events': []},
+            world, cell.name, complete=False),
+        'scope': 'A partial or not-yet-observed physical run is not a completed native objective observation.'}
 
 
 def analyze(run, *, expected_source, require_complete=True):
@@ -413,8 +469,15 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         raise ValueError('budget/complete native world reporting differs')
     if require_complete and not complete:
         raise ValueError('four complete native worlds required; use --allow-incomplete for truthful partial audit')
-    caches = []
+    caches, partial_proofs = [], []
+    declared = {d['suggestion']['suggestion_id']+'-s42': SystemSpec.from_dict(d['suggestion']['candidate'])
+        for record in all_records for d in record['draws'] if d['suggestion'] is not None}
     for path in sorted((root / 'worlds').glob('*/replies/responses.sqlite')):
+        cell = path.parent.parent
+        if cell.name not in declared:
+            raise ValueError('physical inference directory was never declared by a generated native draw')
+        if cell.name not in physical:
+            partial_proofs.append(partial_physical_proof(cell, declared[cell.name], b['world'], classification))
         with sqlite3.connect(path.resolve().as_uri() + '?mode=ro', uri=True) as db:
             counts = dict(db.execute('SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
         caches.append({'path': str(path), 'sha256': file_sha256(path), 'outcomes': counts})
@@ -446,6 +509,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             'utopia/optimization/native_hybrid.py', 'utopia/system/native_kernel.py',
             'utopia/system/native_open_domain.py', 'utopia/system/native_migration.py')},
         'native_run_proofs': proof_rows, 'physical_native_worlds': len(physical), 'researcher_responses': replies,
+        'partial_physical_run_proofs': partial_proofs,
         'loss_path': [r['observation']['loss'] if r['observation'] else None for r in rows],
         'pending': deepcopy(controller.state['pending']),
         'limits': ['One development seed and four fresh worlds, not independent seed replication or a causal comparison.',

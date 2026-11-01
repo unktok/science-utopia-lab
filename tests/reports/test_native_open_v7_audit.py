@@ -1,7 +1,9 @@
 """Read-only evidence QA only: no model transport, Docker or new native world."""
 from copy import deepcopy
 import json
+import hashlib
 from pathlib import Path
+import sqlite3
 from types import SimpleNamespace
 
 import pytest
@@ -14,6 +16,7 @@ from utopia.system.code_mechanisms import sha
 from utopia.system.design_patch import digest
 from utopia.system.native_open_examples import joint_engineering_loss, open_native_system
 from utopia.utils.data_utils import write_json_atomic
+from utopia.runtime.checkpointing import canonical_json
 
 IMAGE = 'sha256:' + 'a'*64
 WORLD = {'source_commit': 'b'*40, 'model_digest': 'scripted-only-no-Qwen',
@@ -116,6 +119,44 @@ def test_consumed_manifest_cannot_change_after_generation(tmp_path):
     response['authoring']['identity'] = 'rewritten provenance'
     write_json_atomic(waiting.response_path, response)
     with pytest.raises(ValueError, match='changed'):
+        analyze(tmp_path, expected_source=WORLD['source_commit'], require_complete=False)
+
+
+def test_partial_failed_world_response_hashes_are_audited_without_fabricating_loss(tmp_path):
+    campaign, gen, waiting = setup_pending(tmp_path)
+    respond(waiting)
+    record = campaign.advance(simulation_factory=fail_world, generators={'invent': gen})
+    draw = record['draws'][0]
+    sid = draw['suggestion']['suggestion_id']+'-s42'
+    cell = tmp_path/'worlds'/sid
+    (cell/'replies').mkdir(parents=True)
+    spec = draw['suggestion']['candidate']
+    from utopia.system import SystemSpec
+    binding = {'cell': SystemSpec.from_dict(spec).fingerprint, 'seed': 42, 'model': 'fake-model',
+        'model_revision': WORLD['model_digest'], 'corpus_sha256': WORLD['corpus_sha256'],
+        'science_config': {'source_commit': WORLD['source_commit'], 'years': 2}}
+    payload = {'model': 'fake-model', 'seed': 42, 'messages': []}
+    payload_sha = hashlib.sha256(canonical_json(payload).encode()).hexdigest()
+    data = canonical_json({'model': 'fake-model', 'id': 'fixture-only', 'object': 'chat.completion',
+        'created': 0, 'choices': [{'index': 0, 'message': {'role': 'assistant', 'content': 'QA'}, 'finish_reason': 'stop'}]})
+    sql = cell/'replies/responses.sqlite'
+    with sqlite3.connect(sql) as db:
+        db.execute('CREATE TABLE metadata(binding TEXT)')
+        db.execute('INSERT INTO metadata VALUES (?)', (canonical_json(binding),))
+        db.execute('CREATE TABLE replies(identity TEXT,payload_sha TEXT,outcome TEXT,data TEXT,data_sha TEXT)')
+        db.execute('INSERT INTO replies VALUES (?,?,?,?,?)', ('a'*64, payload_sha, 'response', data,
+            hashlib.sha256(data.encode()).hexdigest()))
+    write_json_atomic(cell/'system.json', spec)
+    (cell/'wire-requests.jsonl').write_text(json.dumps({'year': 1,'payload': payload,'payload_sha256': payload_sha})+'\n')
+    summarize(campaign, tmp_path)
+    result = analyze(tmp_path, expected_source=WORLD['source_commit'], require_complete=False)
+    assert result['audit']['physical_native_worlds'] == 0
+    partial, = result['audit']['partial_physical_run_proofs']
+    assert partial['loss'] is None and partial['response_proof']['researcher_responses'] == 1
+    with sqlite3.connect(sql) as db:
+        db.execute("UPDATE replies SET data_sha='corrupt'")
+    summarize(campaign, tmp_path)
+    with pytest.raises(ValueError, match='content hash'):
         analyze(tmp_path, expected_source=WORLD['source_commit'], require_complete=False)
 
 
