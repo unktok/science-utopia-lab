@@ -62,7 +62,7 @@ The first attempt rejects both initial definitions before any native world or
 researcher response: a JavaScript JSON roundtrip changes integral floats to
 integers, binding the author's patch to a normalized parent rather than the
 exact saved request. The compiler correctly fails closed. Both consumed
-definitions, null generation errors and unanswered next requests are preserved;
+definitions, errors with null loss and unanswered next requests are preserved;
 this is an aborted attempt, not a completed budget. A separately preregistered
 second output uses the same correct source pin and an exact-file Python
 validation workflow. Its actual-world cap remains eight across both attempts;
