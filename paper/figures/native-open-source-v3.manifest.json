@@ -1,0 +1,20 @@
+{
+  "classification": "actual-native-development-outcomes-not-heldout",
+  "inputs": {
+    "research/artifacts/native-open-source-v3-selected-system.json": "a1008b7ac89a80b9cc3b8191496a8deb5f24cd63776aff753f6b93a1fdf9c429",
+    "research/results/native-open-source-v3.json": "0d43a00b20ac50a3ebc0b49e9b15f655b8e0fd58043049c2f8914d1440cfc051",
+    "scripts/figures/native_open_source.py": "9dfc303b4c69c11c26c42634310a8cf7af0bd5178eefb1b3abd051c1435e958b"
+  },
+  "native_losses": [
+    -1.0,
+    -1.0,
+    -3.0
+  ],
+  "outputs": {
+    "paper/figures/native-open-source-v3.pdf": "c3f3e5e6db9fe924c5593980a905b29c96318d7789362dffe2581bce43f619fc",
+    "paper/figures/native-open-source-v3.png": "4b073e1e0c1ab658071b6e531ae17f7587041b04de57a2295316c4bb12e5503a"
+  },
+  "schema": "scienceutopia.native-source-search-figure.v1",
+  "scientific_quality_claim": false,
+  "source_threshold": 2.5
+}

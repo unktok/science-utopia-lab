@@ -15,6 +15,8 @@ def audit_free_source(run, loss):
     from utopia.optimization.native_code_trace import parent_context_provider
     from utopia.system import SystemSpec
     from utopia.system.code_mechanisms import sha
+    from utopia.optimization.native_transition_data import physical_initial_identity
+    from utopia.runtime.checkpointing import read_portable_checkpoint
     saved = json.loads((run / 'campaign/native-design-state.json').read_text())
     world = saved['binding']['world']
     completed = (run / 'completion.json').exists()
@@ -61,17 +63,22 @@ def audit_free_source(run, loss):
             'index': index, 'status': receipt['status'], 'error': receipt.get('error'),
             'source_sha256': sha(receipt['draft'].get('source')) if isinstance(receipt.get('draft'), dict) else None,
             'source_same_as_parent': receipt.get('source_same_as_parent'),
+            'algorithm_name': receipt.get('draft', {}).get('label') if isinstance(receipt.get('draft'), dict) else None,
             'actual_native_evaluated': executed,
             'probe_results_changed': [p['result_changed'] for p in receipt['probe_results']],
             'prompt_utf8_bytes': receipt.get('prompt_utf8_bytes'), 'prompt_view_limits': receipt.get('prompt_view_limits')})
     for row in result['rows']:
         for native in row['runs']:
             native['wire'] = wire_summary(run / 'runs' / native['run_id'], needle='not-a-context-probe', required=True)
+            initial = Path(native['checkpoint']).parent / 'portable_checkpoint_year_0.json.gz'
+            native['initial_physical_state_sha256'] = physical_initial_identity(read_portable_checkpoint(initial))
+    initial_hashes = {n['initial_physical_state_sha256'] for r in result['rows'] for n in r['runs']}
     result.update(schema='scienceutopia.native-open-source-audit.v3', proposals=proposals,
         raw_output_root=str(run), campaign_budget_completed=completed,
         interpretation='actual arbitrary-node source design, not full topology invention or scientific-quality optimization')
+    result['common_initial_physical_state'] = len(initial_hashes) == 1
     if not completed:
-        result['completion'] = 'campaign-not-budget-complete'
+        result['completion']['status'] = 'campaign-not-budget-complete'
     return result
 
 

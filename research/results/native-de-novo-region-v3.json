@@ -1,0 +1,142 @@
+{
+  "schema": "scienceutopia.native-de-novo-independent-audit.v3",
+  "binding": {
+    "baseline_loss": -1.0,
+    "baseline_native_runtime_sha256": "dc408aa0a6bbe58d573b55f8a8db00221a243f4c1360f875be501243bc71987f",
+    "baseline_origin": "reused-upstream-not-rerun",
+    "candidate_budget": 1,
+    "candidate_native_runtime_sha256": "dc408aa0a6bbe58d573b55f8a8db00221a243f4c1360f875be501243bc71987f",
+    "exact_native_context_bundles": [
+      "2c8ccf80fd7c19f339b0e8923c0687eb3ec4443fcc24d9a912607e05b3661d9b",
+      "8c1ecd4aad35c85f50d75860021302ee216ed32105d739d2317a05e72d36e62b"
+    ],
+    "history_sha256": "916df49cb0495e1a15dcfcc8a5573469295505e5b41ee6203228bb1eda5891e2",
+    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+    "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+    "max_technical_drafts": 3,
+    "max_tokens": 4096,
+    "mode": "region",
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "parent_fingerprint": "ef28b1c08e57560219f0b82f3742be30cf8819c8fb2967dc0f6c671e1927ca64",
+    "parent_observation_id": "observation-native-design-1adb6fe4d55e0af5ecfa",
+    "parent_source_withheld": true,
+    "schema": "scienceutopia.native-de-novo-transfer.v1",
+    "seeds": [
+      1301
+    ],
+    "source_commit": "616b6ceb13b403c299009f033c0d5dfa7a2d97c1",
+    "temperature": 0.2,
+    "upstream_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-source-v3-a2/outputs/native-open-source-v3/run",
+    "upstream_snapshot_sha256": "62701084656b12f5adf169207a2af26b50e4e3914762d3cc35c062123e1f171b",
+    "upstream_source_commit": "8a114f37ef740f2486aa4df45034d23e90e026ea",
+    "world": {
+      "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+      "corpus_years": 4,
+      "data_cache": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-source-v3-a2/outputs/native-open-source-v3/cache",
+      "dataset_identity": {
+        "categories": [
+          "cs.AI",
+          "cs.AR",
+          "cs.CC",
+          "cs.CE",
+          "cs.CG",
+          "cs.CL",
+          "cs.CR",
+          "cs.CY",
+          "cs.DB",
+          "cs.DC",
+          "cs.DL",
+          "cs.DM",
+          "cs.DS",
+          "cs.ET",
+          "cs.FL",
+          "cs.LG",
+          "cs.LO",
+          "cs.NI",
+          "cs.OH",
+          "cs.OS",
+          "cs.PF",
+          "cs.PL",
+          "cs.RO",
+          "cs.SE",
+          "cs.SY"
+        ],
+        "configuration": "arxiv",
+        "dataset": "Ahren09/SciEvo",
+        "normalization": "parallel",
+        "num_years": 4,
+        "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+        "start_year": 2016
+      },
+      "designer_brief_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "designer_plan": false,
+      "initial_provenance_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "lab_inference_serialized": true,
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "population": "five-independent-balanced-researchers",
+      "proposer": "free-source",
+      "record_code": true,
+      "record_wire": true,
+      "revision_node": "world.selection",
+      "runtime_seed_binding": {
+        "python_hash_probe": -714974383112699265,
+        "python_hash_seed_environment": "42"
+      },
+      "source_commit": "8a114f37ef740f2486aa4df45034d23e90e026ea",
+      "years": 2
+    }
+  },
+  "prompts": [
+    {
+      "file": "region-prompt-0.json",
+      "sha256": "988e5b0d6383007e3772ef3416a1b7bba68cabc5d027c8628f3bccad26544087",
+      "utf8_bytes": 37944
+    },
+    {
+      "file": "region-prompt-1.json",
+      "sha256": "5c0191a72e5ceb3f391642dd68a1a525c0123a28ac6d0fb3d1d1c0b51017aa0b",
+      "utf8_bytes": 44771
+    },
+    {
+      "file": "region-prompt-2.json",
+      "sha256": "202e352957bb35c499deca97743cfb7cfe0ba72bb650a7b71a6595c7d19b8fa6",
+      "utf8_bytes": 43879
+    }
+  ],
+  "drafts": [
+    {
+      "file": "region-draft-0.json",
+      "receipt_sha256": "a94ef17a23cbebdfc93d2164c28f26393971216b2e773623d103a43fa35925a7",
+      "status": "invalid-technical-manifest",
+      "error": "generated port declarations and code payload schemas disagree",
+      "ast_same_as_parent": null
+    },
+    {
+      "file": "region-draft-1.json",
+      "receipt_sha256": "98ea4da5dff39ba15e4d5a594ca1fac8d4351de22685c1aca3babe872ca5acfe",
+      "status": "invalid-technical-manifest",
+      "error": "'input' is not a valid MechanismFamily",
+      "ast_same_as_parent": null
+    },
+    {
+      "file": "region-draft-2.json",
+      "receipt_sha256": "6d040f295befb36d4344a5f271a5d5dec385cdf63eefff6df9585b3ee77431b7",
+      "status": "invalid-technical-manifest",
+      "error": "'input' is not a valid MechanismFamily",
+      "ast_same_as_parent": null
+    }
+  ],
+  "status": "technical-drafts-exhausted-no-native-candidate",
+  "baseline_origin": "reused-upstream-not-rerun",
+  "baseline_loss": -1.0,
+  "raw_output_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-de-novo-v3-a1/outputs/native-de-novo-v3/region",
+  "scientific_quality_or_algorithm_novelty_claim": false,
+  "generation_configuration_disclosure": {
+    "plan_requested_token_cap": 4096,
+    "effective_wrapper_token_cap": 8192,
+    "reason": "pinned VLLMServerModel.max_tokens_override=8192 superseded requested4096",
+    "old_manifest_rewritten": false
+  }
+}

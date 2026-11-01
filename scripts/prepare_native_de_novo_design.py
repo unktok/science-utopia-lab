@@ -117,7 +117,7 @@ def main():
         return
     designer = VLLMServerModel(world['model'], base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
         run_seed=saved['binding']['seeds'][0], model_revision=world['model_digest'], thinking_override=False,
-        max_tokens_override=8192, sdk_max_retries=0, request_timeout=240)
+        max_tokens_override=4096, sdk_max_retries=0, request_timeout=240)
     designer.response_cache = CompletedResponseCache(args.output / 'designer-replies/responses.sqlite', binding=designer_cache_binding(binding))
     serialize_native_http(designer, args.inference_lock)
     try:

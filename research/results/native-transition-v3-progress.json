@@ -1,0 +1,1691 @@
+{
+  "schema": "scienceutopia.native-transition-independent-audit.v3",
+  "plan_sha256": "543f6e7d0050e34a94d80f429e61cb5fa3b9827d1e92ef9d860bc5776ef1a645",
+  "world": {
+    "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+    "corpus_years": 4,
+    "dataset_identity": {
+      "categories": [
+        "cs.AI",
+        "cs.AR",
+        "cs.CC",
+        "cs.CE",
+        "cs.CG",
+        "cs.CL",
+        "cs.CR",
+        "cs.CY",
+        "cs.DB",
+        "cs.DC",
+        "cs.DL",
+        "cs.DM",
+        "cs.DS",
+        "cs.ET",
+        "cs.FL",
+        "cs.LG",
+        "cs.LO",
+        "cs.NI",
+        "cs.OH",
+        "cs.OS",
+        "cs.PF",
+        "cs.PL",
+        "cs.RO",
+        "cs.SE",
+        "cs.SY"
+      ],
+      "configuration": "arxiv",
+      "dataset": "Ahren09/SciEvo",
+      "normalization": "parallel",
+      "num_years": 4,
+      "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+      "start_year": 2016
+    },
+    "feature_schema": {
+      "limitation": "observed feature projection, not a sufficient Markov state for arbitrary researcher histories/text",
+      "names": [
+        "native.accepted_decisions",
+        "native.rejected_decisions",
+        "native.review_records",
+        "native.final_active_authors",
+        "native.final_author_resources",
+        "native.institutional_context_deliveries"
+      ],
+      "schema": "scienceutopia.native-transition-features.v1",
+      "semantics": "actual cumulative decision/review counts, current authors/resources and delivered contexts at native year boundaries"
+    },
+    "lab_inference_serialized": true,
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "population": "five-independent-balanced-researchers",
+    "protocol": "native-transition-autograd-v3",
+    "runtime_seed_binding": {
+      "python_hash_probe": -714974383112699265,
+      "python_hash_seed_environment": "42"
+    },
+    "source_commit": "8a114f37ef740f2486aa4df45034d23e90e026ea",
+    "years": 3
+  },
+  "cells": [
+    {
+      "name": "baseline",
+      "controls": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "actual_loss": -2.0,
+      "data_identity_amendment": {
+        "schema": "scienceutopia.native-state-identity-amendment.v1",
+        "legacy_bundle_sha256": "2847a279087b44cdb923a686c9bcdacfcefe88bb334f96dfefec781b5b9132f7",
+        "normalized_bundle_sha256": "9fce6b6cb5852d4d825fed0164f397d10672507112fbfe61699adc5b1564ab38",
+        "excluded_field": "paper_tracker.output_dir",
+        "legacy_initial_state_sha256": "528964fad1fe9dd7acc02f4e1773788dd0c5670c97b4a5b67987aa8af3aa12ad",
+        "scientific_initial_state_sha256": "3ad3cb3583c45c8c02edd0d0c7df4563830aea8818c6009a7ca4819b480efb18",
+        "scientific_states_controls_rng_checkpoints_changed": false,
+        "original_bundle_rewritten": false
+      },
+      "audit": {
+        "schema": "scienceutopia.native-design-loop-audit.v1",
+        "binding": {
+          "initial_system_fingerprint": "8dc89382d549517f3c2c49880ed30d029e19c8d068cb6323ed3b775f2e13c6c3",
+          "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+          "seeds": [
+            1301
+          ],
+          "world": {
+            "cell": "baseline",
+            "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+            "corpus_years": 4,
+            "dataset_identity": {
+              "categories": [
+                "cs.AI",
+                "cs.AR",
+                "cs.CC",
+                "cs.CE",
+                "cs.CG",
+                "cs.CL",
+                "cs.CR",
+                "cs.CY",
+                "cs.DB",
+                "cs.DC",
+                "cs.DL",
+                "cs.DM",
+                "cs.DS",
+                "cs.ET",
+                "cs.FL",
+                "cs.LG",
+                "cs.LO",
+                "cs.NI",
+                "cs.OH",
+                "cs.OS",
+                "cs.PF",
+                "cs.PL",
+                "cs.RO",
+                "cs.SE",
+                "cs.SY"
+              ],
+              "configuration": "arxiv",
+              "dataset": "Ahren09/SciEvo",
+              "normalization": "parallel",
+              "num_years": 4,
+              "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+              "start_year": 2016
+            },
+            "feature_schema": {
+              "limitation": "observed feature projection, not a sufficient Markov state for arbitrary researcher histories/text",
+              "names": [
+                "native.accepted_decisions",
+                "native.rejected_decisions",
+                "native.review_records",
+                "native.final_active_authors",
+                "native.final_author_resources",
+                "native.institutional_context_deliveries"
+              ],
+              "schema": "scienceutopia.native-transition-features.v1",
+              "semantics": "actual cumulative decision/review counts, current authors/resources and delivered contexts at native year boundaries"
+            },
+            "lab_inference_serialized": true,
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "population": "five-independent-balanced-researchers",
+            "protocol": "native-transition-autograd-v3",
+            "runtime_seed_binding": {
+              "python_hash_probe": -714974383112699265,
+              "python_hash_seed_environment": "42"
+            },
+            "source_commit": "8a114f37ef740f2486aa4df45034d23e90e026ea",
+            "years": 3
+          }
+        },
+        "campaign_sha256": "9f6d67a993ddb9cc5344d681133b370bf914e39174b0229eb24db66d0c703ee1",
+        "completion": {
+          "status": "separately-recorded-single-job",
+          "budget": 1
+        },
+        "rows": [
+          {
+            "suggestion_id": "native-design-40d4c56ebecee4b89a41",
+            "based_on_observation_id": null,
+            "status": "complete",
+            "loss": -2.0,
+            "difference": {
+              "candidate_fingerprint": "8dc89382d549517f3c2c49880ed30d029e19c8d068cb6323ed3b775f2e13c6c3",
+              "connections_after": [
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.open",
+                  "source_port": "next",
+                  "target_mechanism": "world.resubmissions",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.resubmissions",
+                  "source_port": "next",
+                  "target_mechanism": "world.research",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.research",
+                  "source_port": "next",
+                  "target_mechanism": "world.collaboration",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.collaboration",
+                  "source_port": "next",
+                  "target_mechanism": "world.submission",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.submission",
+                  "source_port": "next",
+                  "target_mechanism": "world.costs",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.costs",
+                  "source_port": "next",
+                  "target_mechanism": "world.review",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "next",
+                  "target_mechanism": "world.selection",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "next",
+                  "target_mechanism": "world.publication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.publication",
+                  "source_port": "next",
+                  "target_mechanism": "world.citation-potential",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.citation-potential",
+                  "source_port": "next",
+                  "target_mechanism": "world.funding",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.funding",
+                  "source_port": "next",
+                  "target_mechanism": "world.communication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.communication",
+                  "source_port": "next",
+                  "target_mechanism": "world.close",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "decision",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "decisions",
+                  "target_mechanism": "world.publication",
+                  "target_port": "decisions"
+                },
+                {
+                  "channel": "artifact",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "world",
+                  "target_mechanism": "world.selection",
+                  "target_port": "observations"
+                }
+              ],
+              "connections_before": [
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.open",
+                  "source_port": "next",
+                  "target_mechanism": "world.resubmissions",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.resubmissions",
+                  "source_port": "next",
+                  "target_mechanism": "world.research",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.research",
+                  "source_port": "next",
+                  "target_mechanism": "world.collaboration",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.collaboration",
+                  "source_port": "next",
+                  "target_mechanism": "world.submission",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.submission",
+                  "source_port": "next",
+                  "target_mechanism": "world.costs",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.costs",
+                  "source_port": "next",
+                  "target_mechanism": "world.review",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "next",
+                  "target_mechanism": "world.selection",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "next",
+                  "target_mechanism": "world.publication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.publication",
+                  "source_port": "next",
+                  "target_mechanism": "world.citation-potential",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.citation-potential",
+                  "source_port": "next",
+                  "target_mechanism": "world.funding",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.funding",
+                  "source_port": "next",
+                  "target_mechanism": "world.communication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.communication",
+                  "source_port": "next",
+                  "target_mechanism": "world.close",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "decision",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "decisions",
+                  "target_mechanism": "world.publication",
+                  "target_port": "decisions"
+                },
+                {
+                  "channel": "artifact",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "world",
+                  "target_mechanism": "world.selection",
+                  "target_port": "observations"
+                }
+              ],
+              "nodes_added": [],
+              "nodes_changed": [],
+              "nodes_removed": [],
+              "parent_fingerprint": "8dc89382d549517f3c2c49880ed30d029e19c8d068cb6323ed3b775f2e13c6c3",
+              "schedules_after": [
+                {
+                  "mechanism_id": "world.open",
+                  "phase": 0,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.resubmissions",
+                  "phase": 20,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.research",
+                  "phase": 40,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.collaboration",
+                  "phase": 60,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.submission",
+                  "phase": 80,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.costs",
+                  "phase": 100,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.review",
+                  "phase": 120,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.selection",
+                  "phase": 140,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.publication",
+                  "phase": 160,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.citation-potential",
+                  "phase": 180,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.funding",
+                  "phase": 200,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.communication",
+                  "phase": 220,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.close",
+                  "phase": 240,
+                  "trigger": "annual"
+                }
+              ],
+              "schedules_before": [
+                {
+                  "mechanism_id": "world.open",
+                  "phase": 0,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.resubmissions",
+                  "phase": 20,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.research",
+                  "phase": 40,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.collaboration",
+                  "phase": 60,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.submission",
+                  "phase": 80,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.costs",
+                  "phase": 100,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.review",
+                  "phase": 120,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.selection",
+                  "phase": 140,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.publication",
+                  "phase": 160,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.citation-potential",
+                  "phase": 180,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.funding",
+                  "phase": 200,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.communication",
+                  "phase": 220,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.close",
+                  "phase": 240,
+                  "trigger": "annual"
+                }
+              ]
+            },
+            "technical_failures": [],
+            "runs": [
+              {
+                "run_id": "native-design-40d4c56ebecee4b89a41-s1301",
+                "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-a2/outputs/native-transition-v3/run/runs/native-design-40d4c56ebecee4b89a41-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_3.json.gz",
+                "checkpoint_sha256": "b3137b66c15521804c627dd36746128e5733d2027915b788cf199c688c695723",
+                "response_cache_sha256": "5d5d91a4c4db1e5251efc0ff3e77d9e6ef72ef15d30fcc22ed1589be42bd55da",
+                "responses": 94,
+                "llm_call_stats": {
+                  "n_prompts": 94,
+                  "n_first_attempt_success": 94,
+                  "n_retries": 0,
+                  "n_failures": 0,
+                  "elapsed_seconds": 690.604968547821,
+                  "prompt_tokens": 80067,
+                  "completion_tokens": 9140
+                },
+                "papers": 5,
+                "counts": {
+                  "native.accepted_decisions": 2,
+                  "native.rejected_decisions": 4,
+                  "native.review_records": 18,
+                  "native.final_active_authors": 5,
+                  "native.final_author_resources": 705.0,
+                  "native.institutional_context_deliveries": 0
+                },
+                "native_event_counts": {
+                  "native.system.phase_executed": 36,
+                  "generated.code_executed": 3
+                },
+                "executed_code": [
+                  {
+                    "mechanism_id": "world.selection",
+                    "executions": 3,
+                    "artifact_sha256": "2fa535dae7f3d06db080b61ae9159321f62d576fb8a5913ccd62ecc04b758a23",
+                    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+                  }
+                ],
+                "native_event_stream_hash": "3b7b47653eeff147be535d22ac541b35c268558dbb6b21e6a8426f752eef9306",
+                "canonical_event_count": 79,
+                "canonical_event_stream_hash": "aa0b79b006f86c369c63b1c240803536ae5be270d79762477002003fda180bb4",
+                "web_stream_hash": "0d6bc313671efae7e58b7c08d0b07f365a77fd56171e6bade0679c232eb020ed",
+                "replayed_years": [
+                  1,
+                  2,
+                  3
+                ],
+                "wire": {
+                  "recorded": true,
+                  "wire_sha256": "cbd4e5d02565270fb121e61b1ec2fbd163da16dd7fc16b652773335e11f4e343",
+                  "actual_requests": 94,
+                  "contexts_by_year": {},
+                  "context_request_hashes": []
+                }
+              }
+            ]
+          }
+        ],
+        "verification": "checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed",
+        "limits": [
+          "development engineering objective, not scientific quality",
+          "developer-authored example, not LLM invention",
+          "no full native autograd or same-society migration",
+          "response journal integrity, not an independent full HTTP wire audit"
+        ]
+      }
+    },
+    {
+      "name": "pulse-1",
+      "controls": [
+        0.8,
+        0.2,
+        0.2
+      ],
+      "actual_loss": -2.0,
+      "data_identity_amendment": {
+        "schema": "scienceutopia.native-state-identity-amendment.v1",
+        "legacy_bundle_sha256": "37a859b9a69de7df9c3317f46d63f6093344ffd43bc9a0dea61fd07439be4da8",
+        "normalized_bundle_sha256": "41177ab9ae9409a6b0abeca25bfaf186c932ca1fa5e16b9f05e2968798487f7f",
+        "excluded_field": "paper_tracker.output_dir",
+        "legacy_initial_state_sha256": "9a7b2fa96546405ed2b9329a1d66a460efb81c70e874ff88af3d1787d1b43613",
+        "scientific_initial_state_sha256": "3ad3cb3583c45c8c02edd0d0c7df4563830aea8818c6009a7ca4819b480efb18",
+        "scientific_states_controls_rng_checkpoints_changed": false,
+        "original_bundle_rewritten": false
+      },
+      "audit": {
+        "schema": "scienceutopia.native-design-loop-audit.v1",
+        "binding": {
+          "initial_system_fingerprint": "33809ae830eb7494ad42f46dccb41f0e38905913f6e6821e136ee7fee3eb10d0",
+          "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+          "seeds": [
+            1301
+          ],
+          "world": {
+            "cell": "pulse-1",
+            "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+            "corpus_years": 4,
+            "dataset_identity": {
+              "categories": [
+                "cs.AI",
+                "cs.AR",
+                "cs.CC",
+                "cs.CE",
+                "cs.CG",
+                "cs.CL",
+                "cs.CR",
+                "cs.CY",
+                "cs.DB",
+                "cs.DC",
+                "cs.DL",
+                "cs.DM",
+                "cs.DS",
+                "cs.ET",
+                "cs.FL",
+                "cs.LG",
+                "cs.LO",
+                "cs.NI",
+                "cs.OH",
+                "cs.OS",
+                "cs.PF",
+                "cs.PL",
+                "cs.RO",
+                "cs.SE",
+                "cs.SY"
+              ],
+              "configuration": "arxiv",
+              "dataset": "Ahren09/SciEvo",
+              "normalization": "parallel",
+              "num_years": 4,
+              "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+              "start_year": 2016
+            },
+            "feature_schema": {
+              "limitation": "observed feature projection, not a sufficient Markov state for arbitrary researcher histories/text",
+              "names": [
+                "native.accepted_decisions",
+                "native.rejected_decisions",
+                "native.review_records",
+                "native.final_active_authors",
+                "native.final_author_resources",
+                "native.institutional_context_deliveries"
+              ],
+              "schema": "scienceutopia.native-transition-features.v1",
+              "semantics": "actual cumulative decision/review counts, current authors/resources and delivered contexts at native year boundaries"
+            },
+            "lab_inference_serialized": true,
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "population": "five-independent-balanced-researchers",
+            "protocol": "native-transition-autograd-v3",
+            "runtime_seed_binding": {
+              "python_hash_probe": -714974383112699265,
+              "python_hash_seed_environment": "42"
+            },
+            "source_commit": "8a114f37ef740f2486aa4df45034d23e90e026ea",
+            "years": 3
+          }
+        },
+        "campaign_sha256": "77eaf682105d21c66342e71f2d1489192d05ce273d57413bd23e25bc57f24f0a",
+        "completion": {
+          "status": "separately-recorded-single-job",
+          "budget": 1
+        },
+        "rows": [
+          {
+            "suggestion_id": "native-design-873984eb193763453218",
+            "based_on_observation_id": null,
+            "status": "complete",
+            "loss": -2.0,
+            "difference": {
+              "candidate_fingerprint": "33809ae830eb7494ad42f46dccb41f0e38905913f6e6821e136ee7fee3eb10d0",
+              "connections_after": [
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.open",
+                  "source_port": "next",
+                  "target_mechanism": "world.resubmissions",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.resubmissions",
+                  "source_port": "next",
+                  "target_mechanism": "world.research",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.research",
+                  "source_port": "next",
+                  "target_mechanism": "world.collaboration",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.collaboration",
+                  "source_port": "next",
+                  "target_mechanism": "world.submission",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.submission",
+                  "source_port": "next",
+                  "target_mechanism": "world.costs",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.costs",
+                  "source_port": "next",
+                  "target_mechanism": "world.review",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "next",
+                  "target_mechanism": "world.selection",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "next",
+                  "target_mechanism": "world.publication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.publication",
+                  "source_port": "next",
+                  "target_mechanism": "world.citation-potential",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.citation-potential",
+                  "source_port": "next",
+                  "target_mechanism": "world.funding",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.funding",
+                  "source_port": "next",
+                  "target_mechanism": "world.communication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.communication",
+                  "source_port": "next",
+                  "target_mechanism": "world.close",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "decision",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "decisions",
+                  "target_mechanism": "world.publication",
+                  "target_port": "decisions"
+                },
+                {
+                  "channel": "artifact",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "world",
+                  "target_mechanism": "world.selection",
+                  "target_port": "observations"
+                }
+              ],
+              "connections_before": [
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.open",
+                  "source_port": "next",
+                  "target_mechanism": "world.resubmissions",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.resubmissions",
+                  "source_port": "next",
+                  "target_mechanism": "world.research",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.research",
+                  "source_port": "next",
+                  "target_mechanism": "world.collaboration",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.collaboration",
+                  "source_port": "next",
+                  "target_mechanism": "world.submission",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.submission",
+                  "source_port": "next",
+                  "target_mechanism": "world.costs",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.costs",
+                  "source_port": "next",
+                  "target_mechanism": "world.review",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "next",
+                  "target_mechanism": "world.selection",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "next",
+                  "target_mechanism": "world.publication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.publication",
+                  "source_port": "next",
+                  "target_mechanism": "world.citation-potential",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.citation-potential",
+                  "source_port": "next",
+                  "target_mechanism": "world.funding",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.funding",
+                  "source_port": "next",
+                  "target_mechanism": "world.communication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.communication",
+                  "source_port": "next",
+                  "target_mechanism": "world.close",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "decision",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "decisions",
+                  "target_mechanism": "world.publication",
+                  "target_port": "decisions"
+                },
+                {
+                  "channel": "artifact",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "world",
+                  "target_mechanism": "world.selection",
+                  "target_port": "observations"
+                }
+              ],
+              "nodes_added": [],
+              "nodes_changed": [],
+              "nodes_removed": [],
+              "parent_fingerprint": "33809ae830eb7494ad42f46dccb41f0e38905913f6e6821e136ee7fee3eb10d0",
+              "schedules_after": [
+                {
+                  "mechanism_id": "world.open",
+                  "phase": 0,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.resubmissions",
+                  "phase": 20,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.research",
+                  "phase": 40,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.collaboration",
+                  "phase": 60,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.submission",
+                  "phase": 80,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.costs",
+                  "phase": 100,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.review",
+                  "phase": 120,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.selection",
+                  "phase": 140,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.publication",
+                  "phase": 160,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.citation-potential",
+                  "phase": 180,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.funding",
+                  "phase": 200,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.communication",
+                  "phase": 220,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.close",
+                  "phase": 240,
+                  "trigger": "annual"
+                }
+              ],
+              "schedules_before": [
+                {
+                  "mechanism_id": "world.open",
+                  "phase": 0,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.resubmissions",
+                  "phase": 20,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.research",
+                  "phase": 40,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.collaboration",
+                  "phase": 60,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.submission",
+                  "phase": 80,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.costs",
+                  "phase": 100,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.review",
+                  "phase": 120,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.selection",
+                  "phase": 140,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.publication",
+                  "phase": 160,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.citation-potential",
+                  "phase": 180,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.funding",
+                  "phase": 200,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.communication",
+                  "phase": 220,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.close",
+                  "phase": 240,
+                  "trigger": "annual"
+                }
+              ]
+            },
+            "technical_failures": [],
+            "runs": [
+              {
+                "run_id": "native-design-873984eb193763453218-s1301",
+                "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-a2/outputs/native-transition-v3/run/runs/native-design-873984eb193763453218-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_3.json.gz",
+                "checkpoint_sha256": "c0767c1bd775ab802da212c36c2f155504df46bc4e6792d222c2539bd8bd32bd",
+                "response_cache_sha256": "e099b494ad240cef974b191dc997b14303da6a5baf57318c34347097b06a866e",
+                "responses": 94,
+                "llm_call_stats": {
+                  "n_prompts": 94,
+                  "n_first_attempt_success": 94,
+                  "n_retries": 0,
+                  "n_failures": 0,
+                  "elapsed_seconds": 997.5271077156067,
+                  "prompt_tokens": 80063,
+                  "completion_tokens": 9142
+                },
+                "papers": 5,
+                "counts": {
+                  "native.accepted_decisions": 2,
+                  "native.rejected_decisions": 4,
+                  "native.review_records": 18,
+                  "native.final_active_authors": 5,
+                  "native.final_author_resources": 705.0,
+                  "native.institutional_context_deliveries": 0
+                },
+                "native_event_counts": {
+                  "native.system.phase_executed": 36,
+                  "generated.code_executed": 3
+                },
+                "executed_code": [
+                  {
+                    "mechanism_id": "world.selection",
+                    "executions": 3,
+                    "artifact_sha256": "2fa535dae7f3d06db080b61ae9159321f62d576fb8a5913ccd62ecc04b758a23",
+                    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+                  }
+                ],
+                "native_event_stream_hash": "51b3acaf42509ffd835845364c5aa7ad17df19ae368869c2ec6d26e83218ed7b",
+                "canonical_event_count": 79,
+                "canonical_event_stream_hash": "b01db91b9ea385839b636f7d65aedcae005388be6c3de34eaecd13367702542a",
+                "web_stream_hash": "f728c475b47f4e49c15076a1ba500f650e68cc2dbb3cdf2ad26133303546411c",
+                "replayed_years": [
+                  1,
+                  2,
+                  3
+                ],
+                "wire": {
+                  "recorded": true,
+                  "wire_sha256": "3e6b2832798cabd852d3d9acc79b22a4a1a8aa9a49597a9385bd17c05c5f2beb",
+                  "actual_requests": 94,
+                  "contexts_by_year": {},
+                  "context_request_hashes": []
+                }
+              }
+            ]
+          }
+        ],
+        "verification": "checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed",
+        "limits": [
+          "development engineering objective, not scientific quality",
+          "developer-authored example, not LLM invention",
+          "no full native autograd or same-society migration",
+          "response journal integrity, not an independent full HTTP wire audit"
+        ]
+      }
+    },
+    {
+      "name": "pulse-2",
+      "controls": [
+        0.2,
+        0.8,
+        0.2
+      ],
+      "actual_loss": -3.0,
+      "data_identity_amendment": {
+        "schema": "scienceutopia.native-state-identity-amendment.v1",
+        "legacy_bundle_sha256": "90af7b5925f229677aba57c64e3ac698a6bf949918300ebf57ce2cba3aea530e",
+        "normalized_bundle_sha256": "a6cdca71623f5898695c40006d8b91675dcd6d69a3c5c8281fd065265bfd84a3",
+        "excluded_field": "paper_tracker.output_dir",
+        "legacy_initial_state_sha256": "7f7c885910d82f4d100add4cd4b08063d4f8e9cf8af203b1ffcf0187f73597f3",
+        "scientific_initial_state_sha256": "3ad3cb3583c45c8c02edd0d0c7df4563830aea8818c6009a7ca4819b480efb18",
+        "scientific_states_controls_rng_checkpoints_changed": false,
+        "original_bundle_rewritten": false
+      },
+      "audit": {
+        "schema": "scienceutopia.native-design-loop-audit.v1",
+        "binding": {
+          "initial_system_fingerprint": "39d0f16fce8cf60fd30ae1c0b9430ed365b4817c2cabe44fb1a466078e108395",
+          "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+          "seeds": [
+            1301
+          ],
+          "world": {
+            "cell": "pulse-2",
+            "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+            "corpus_years": 4,
+            "dataset_identity": {
+              "categories": [
+                "cs.AI",
+                "cs.AR",
+                "cs.CC",
+                "cs.CE",
+                "cs.CG",
+                "cs.CL",
+                "cs.CR",
+                "cs.CY",
+                "cs.DB",
+                "cs.DC",
+                "cs.DL",
+                "cs.DM",
+                "cs.DS",
+                "cs.ET",
+                "cs.FL",
+                "cs.LG",
+                "cs.LO",
+                "cs.NI",
+                "cs.OH",
+                "cs.OS",
+                "cs.PF",
+                "cs.PL",
+                "cs.RO",
+                "cs.SE",
+                "cs.SY"
+              ],
+              "configuration": "arxiv",
+              "dataset": "Ahren09/SciEvo",
+              "normalization": "parallel",
+              "num_years": 4,
+              "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+              "start_year": 2016
+            },
+            "feature_schema": {
+              "limitation": "observed feature projection, not a sufficient Markov state for arbitrary researcher histories/text",
+              "names": [
+                "native.accepted_decisions",
+                "native.rejected_decisions",
+                "native.review_records",
+                "native.final_active_authors",
+                "native.final_author_resources",
+                "native.institutional_context_deliveries"
+              ],
+              "schema": "scienceutopia.native-transition-features.v1",
+              "semantics": "actual cumulative decision/review counts, current authors/resources and delivered contexts at native year boundaries"
+            },
+            "lab_inference_serialized": true,
+            "model": "qwen3:8b",
+            "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+            "population": "five-independent-balanced-researchers",
+            "protocol": "native-transition-autograd-v3",
+            "runtime_seed_binding": {
+              "python_hash_probe": -714974383112699265,
+              "python_hash_seed_environment": "42"
+            },
+            "source_commit": "8a114f37ef740f2486aa4df45034d23e90e026ea",
+            "years": 3
+          }
+        },
+        "campaign_sha256": "1daaa87b20d830717d80b787609e63b0bd0263167d6ebfc0dc593c26fe8505a4",
+        "completion": {
+          "status": "separately-recorded-single-job",
+          "budget": 1
+        },
+        "rows": [
+          {
+            "suggestion_id": "native-design-1b699ea9f7167992e48c",
+            "based_on_observation_id": null,
+            "status": "complete",
+            "loss": -3.0,
+            "difference": {
+              "candidate_fingerprint": "39d0f16fce8cf60fd30ae1c0b9430ed365b4817c2cabe44fb1a466078e108395",
+              "connections_after": [
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.open",
+                  "source_port": "next",
+                  "target_mechanism": "world.resubmissions",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.resubmissions",
+                  "source_port": "next",
+                  "target_mechanism": "world.research",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.research",
+                  "source_port": "next",
+                  "target_mechanism": "world.collaboration",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.collaboration",
+                  "source_port": "next",
+                  "target_mechanism": "world.submission",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.submission",
+                  "source_port": "next",
+                  "target_mechanism": "world.costs",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.costs",
+                  "source_port": "next",
+                  "target_mechanism": "world.review",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "next",
+                  "target_mechanism": "world.selection",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "next",
+                  "target_mechanism": "world.publication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.publication",
+                  "source_port": "next",
+                  "target_mechanism": "world.citation-potential",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.citation-potential",
+                  "source_port": "next",
+                  "target_mechanism": "world.funding",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.funding",
+                  "source_port": "next",
+                  "target_mechanism": "world.communication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.communication",
+                  "source_port": "next",
+                  "target_mechanism": "world.close",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "decision",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "decisions",
+                  "target_mechanism": "world.publication",
+                  "target_port": "decisions"
+                },
+                {
+                  "channel": "artifact",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "world",
+                  "target_mechanism": "world.selection",
+                  "target_port": "observations"
+                }
+              ],
+              "connections_before": [
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.open",
+                  "source_port": "next",
+                  "target_mechanism": "world.resubmissions",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.resubmissions",
+                  "source_port": "next",
+                  "target_mechanism": "world.research",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.research",
+                  "source_port": "next",
+                  "target_mechanism": "world.collaboration",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.collaboration",
+                  "source_port": "next",
+                  "target_mechanism": "world.submission",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.submission",
+                  "source_port": "next",
+                  "target_mechanism": "world.costs",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.costs",
+                  "source_port": "next",
+                  "target_mechanism": "world.review",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "next",
+                  "target_mechanism": "world.selection",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "next",
+                  "target_mechanism": "world.publication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.publication",
+                  "source_port": "next",
+                  "target_mechanism": "world.citation-potential",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.citation-potential",
+                  "source_port": "next",
+                  "target_mechanism": "world.funding",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.funding",
+                  "source_port": "next",
+                  "target_mechanism": "world.communication",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "signal",
+                  "latency": 0,
+                  "source_mechanism": "world.communication",
+                  "source_port": "next",
+                  "target_mechanism": "world.close",
+                  "target_port": "after"
+                },
+                {
+                  "channel": "decision",
+                  "latency": 0,
+                  "source_mechanism": "world.selection",
+                  "source_port": "decisions",
+                  "target_mechanism": "world.publication",
+                  "target_port": "decisions"
+                },
+                {
+                  "channel": "artifact",
+                  "latency": 0,
+                  "source_mechanism": "world.review",
+                  "source_port": "world",
+                  "target_mechanism": "world.selection",
+                  "target_port": "observations"
+                }
+              ],
+              "nodes_added": [],
+              "nodes_changed": [],
+              "nodes_removed": [],
+              "parent_fingerprint": "39d0f16fce8cf60fd30ae1c0b9430ed365b4817c2cabe44fb1a466078e108395",
+              "schedules_after": [
+                {
+                  "mechanism_id": "world.open",
+                  "phase": 0,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.resubmissions",
+                  "phase": 20,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.research",
+                  "phase": 40,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.collaboration",
+                  "phase": 60,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.submission",
+                  "phase": 80,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.costs",
+                  "phase": 100,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.review",
+                  "phase": 120,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.selection",
+                  "phase": 140,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.publication",
+                  "phase": 160,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.citation-potential",
+                  "phase": 180,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.funding",
+                  "phase": 200,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.communication",
+                  "phase": 220,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.close",
+                  "phase": 240,
+                  "trigger": "annual"
+                }
+              ],
+              "schedules_before": [
+                {
+                  "mechanism_id": "world.open",
+                  "phase": 0,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.resubmissions",
+                  "phase": 20,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.research",
+                  "phase": 40,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.collaboration",
+                  "phase": 60,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.submission",
+                  "phase": 80,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.costs",
+                  "phase": 100,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.review",
+                  "phase": 120,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.selection",
+                  "phase": 140,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.publication",
+                  "phase": 160,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.citation-potential",
+                  "phase": 180,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.funding",
+                  "phase": 200,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.communication",
+                  "phase": 220,
+                  "trigger": "annual"
+                },
+                {
+                  "mechanism_id": "world.close",
+                  "phase": 240,
+                  "trigger": "annual"
+                }
+              ]
+            },
+            "technical_failures": [],
+            "runs": [
+              {
+                "run_id": "native-design-1b699ea9f7167992e48c-s1301",
+                "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-a2/outputs/native-transition-v3/run/runs/native-design-1b699ea9f7167992e48c-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_3.json.gz",
+                "checkpoint_sha256": "4c83df32e3a522fc46c75b6230699629f308d169ec9c2f349303bcdc3c77b10d",
+                "response_cache_sha256": "fe204890390f94f0228089040b7983e5c53e112469973507fab4034b13d2312b",
+                "responses": 93,
+                "llm_call_stats": {
+                  "n_prompts": 93,
+                  "n_first_attempt_success": 93,
+                  "n_retries": 0,
+                  "n_failures": 0,
+                  "elapsed_seconds": 342.9898955821991,
+                  "prompt_tokens": 79773,
+                  "completion_tokens": 9200
+                },
+                "papers": 5,
+                "counts": {
+                  "native.accepted_decisions": 3,
+                  "native.rejected_decisions": 3,
+                  "native.review_records": 18,
+                  "native.final_active_authors": 5,
+                  "native.final_author_resources": 705.0,
+                  "native.institutional_context_deliveries": 0
+                },
+                "native_event_counts": {
+                  "native.system.phase_executed": 36,
+                  "generated.code_executed": 3
+                },
+                "executed_code": [
+                  {
+                    "mechanism_id": "world.selection",
+                    "executions": 3,
+                    "artifact_sha256": "2fa535dae7f3d06db080b61ae9159321f62d576fb8a5913ccd62ecc04b758a23",
+                    "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+                  }
+                ],
+                "native_event_stream_hash": "e2bffb5c802eaa14f28b29c0ac5e7ab0fa39703afd4e3ba32ad68e520fc005af",
+                "canonical_event_count": 79,
+                "canonical_event_stream_hash": "883da7f44645a3631aa6c42432fc3f69f71ff572d5eb776935a46dd60087090d",
+                "web_stream_hash": "9df9bf54ab48e20f9cdc939e6d044dbff63a5f9d2849d1832496f66baf8f1e4d",
+                "replayed_years": [
+                  1,
+                  2,
+                  3
+                ],
+                "wire": {
+                  "recorded": true,
+                  "wire_sha256": "db073b50ea44a83690d457a9c00eb84410a0ce9f57bfeccca3e6c786f6a4447d",
+                  "actual_requests": 93,
+                  "contexts_by_year": {},
+                  "context_request_hashes": []
+                }
+              }
+            ]
+          }
+        ],
+        "verification": "checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed",
+        "limits": [
+          "development engineering objective, not scientific quality",
+          "developer-authored example, not LLM invention",
+          "no full native autograd or same-society migration",
+          "response journal integrity, not an independent full HTTP wire audit"
+        ]
+      }
+    }
+  ],
+  "pending_cells": [
+    "pulse-3",
+    "validation-minus",
+    "validation-plus"
+  ],
+  "raw_output_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-a2/outputs/native-transition-v3/run",
+  "full_native_world_autograd": false,
+  "status": "partial-native-data-audit"
+}

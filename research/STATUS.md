@@ -2,6 +2,44 @@
 
 Updated: 2026-11-01
 
+## Parallel native-design / representation work v3 (in progress)
+
+The [v3 implementation](components/native-open-design-and-transition-representation-v3.md)
+adds exact recorded native code inputs, generic existing-node source revision,
+parent-source-withheld design, and a compiler for joint Python/protocol/node/
+wiring regions. The region compiler passes actual native-world scripted QA;
+this is not evidence of Qwen institutional invention. A separate composed
+annual-transition autograd representation is implemented and tested. Its native
+calibration/validation campaign remains active from clean pinned8a114f3, with
+an explicit Python startup hash seed and shared single-inference queue.
+The original researcher world stays the real forward simulator.
+
+Current evidence must not be overread: the first source-revision run completed
+its baseline but exhausted three URL-instead-of-Python drafts. The bounded-prompt
+repeat completed all three native systems with losses[-1,-1,-3]: Qwen changed
+rank/rate selection into an executable review-score threshold2.5. Exact generated
+source, common scientific initial/RNG state, actual domain losses and171 native
+request/reply pairs independently verify. This is a count-objective improvement,
+not scientific quality, algorithmic novelty or new topology. Separate de-novo source and joint-region
+generation each exhausted three technical drafts; neither produced an eligible
+fresh native candidate. The [result note](results/native-parallel-v3.md) records
+those failures and the remaining calibration work. Full native pathwise
+backpropagation and useful autonomous institutional invention remain incomplete.
+
+The calibration's archive-path identity correction is handled in a separate
+clean pinned continuation: original native forward cells and their raw
+extractions remain unchanged, and both original/normalized hashes are verified.
+`complete_native_transition_v3.py` waits for the six already-budgeted cells,
+fits/validates the represented gradient and at most one planned fresh native
+proposal, then writes independent audits or an explicit failure. No calibration
+worlds or extra validation seeds are rerun.
+
+The working paper now includes a publication-wide conceptual Figure1: objectives,
+composable design freedom, researcher ecosystem, black-box/gradient/hybrid
+methods, independent evaluation and a game-like interface. It distinguishes
+research goals from results. The17-page PDF and separate concept PDF are under
+`output/pdf/`; vector/raster source assets and their manifest are tracked.
+
 ## Latest non-scale integration
 
 The original native researcher world now runs a result-conditioned local-LLM

@@ -1,0 +1,637 @@
+{
+  "agent_types": [
+    {
+      "agent_type_id": "researcher",
+      "description": "",
+      "roles": [
+        "research",
+        "review",
+        "apply-for-funding"
+      ]
+    }
+  ],
+  "artifact_types": [
+    {
+      "artifact_type_id": "native-world-observation",
+      "description": ""
+    },
+    {
+      "artifact_type_id": "native-phase-completion",
+      "description": ""
+    },
+    {
+      "artifact_type_id": "native-paper-decision",
+      "description": ""
+    }
+  ],
+  "connections": [
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.open",
+      "source_port": "next",
+      "target_mechanism": "world.resubmissions",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.resubmissions",
+      "source_port": "next",
+      "target_mechanism": "world.research",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.research",
+      "source_port": "next",
+      "target_mechanism": "world.collaboration",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.collaboration",
+      "source_port": "next",
+      "target_mechanism": "world.submission",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.submission",
+      "source_port": "next",
+      "target_mechanism": "world.costs",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.costs",
+      "source_port": "next",
+      "target_mechanism": "world.review",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.review",
+      "source_port": "next",
+      "target_mechanism": "world.selection",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.selection",
+      "source_port": "next",
+      "target_mechanism": "world.publication",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.publication",
+      "source_port": "next",
+      "target_mechanism": "world.citation-potential",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.citation-potential",
+      "source_port": "next",
+      "target_mechanism": "world.funding",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.funding",
+      "source_port": "next",
+      "target_mechanism": "world.communication",
+      "target_port": "after"
+    },
+    {
+      "channel": "signal",
+      "latency": 0,
+      "source_mechanism": "world.communication",
+      "source_port": "next",
+      "target_mechanism": "world.close",
+      "target_port": "after"
+    },
+    {
+      "channel": "decision",
+      "latency": 0,
+      "source_mechanism": "world.selection",
+      "source_port": "decisions",
+      "target_mechanism": "world.publication",
+      "target_port": "decisions"
+    },
+    {
+      "channel": "artifact",
+      "latency": 0,
+      "source_mechanism": "world.review",
+      "source_port": "world",
+      "target_mechanism": "world.selection",
+      "target_port": "observations"
+    }
+  ],
+  "global_invariants": [],
+  "initial_state": {
+    "seed": 1301
+  },
+  "mechanisms": [
+    {
+      "family": "population",
+      "implementation": "native.phase.open.v1",
+      "inputs": [],
+      "mechanism_id": "world.open",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "research",
+      "implementation": "native.phase.resubmissions.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.resubmissions",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "research",
+      "implementation": "native.phase.research.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.research",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "collaboration",
+      "implementation": "native.phase.collaboration.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.collaboration",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "research",
+      "implementation": "native.phase.submission.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.submission",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "research",
+      "implementation": "native.phase.costs.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.costs",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "evaluation",
+      "implementation": "native.phase.review.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.review",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "evaluation",
+      "implementation": "code.python.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "observations",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.selection",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        },
+        {
+          "artifact_type": "native-paper-decision",
+          "channel": "decision",
+          "port_id": "decisions",
+          "required": true
+        }
+      ],
+      "parameters": {
+        "code_artifact": {
+          "inputs": {
+            "after": {
+              "type": "object"
+            },
+            "observations": {
+              "type": "object"
+            }
+          },
+          "label": "MaximizeAcceptedDecisionsAlgorithm",
+          "outputs": {
+            "decisions": {
+              "type": "object"
+            },
+            "next": {
+              "type": "object"
+            },
+            "world": {
+              "type": "object"
+            }
+          },
+          "schema": "scienceutopia.code-mechanism.v1",
+          "source": "def step(context):\n    world = context['inputs']['observations'][0]['payload']\n    decisions = []\n    for conf in world['conferences']['conferences']:\n        scored = []\n        for paper in conf['submitted_papers']:\n            reviews = conf['reviews'].get(paper['id'], [])\n            if not reviews:\n                raise ValueError('actual submitted paper has no reviews')\n            score = sum(r['overall_score'] for r in reviews) / len(reviews)\n            scored.append((paper['id'], score))\n        scored.sort(key=lambda pair: pair[1], reverse=True)\n        # Set a threshold score for acceptance\n        threshold_score = 2.5\n        for paper_id, score in scored:\n            if score >= threshold_score:\n                decisions.append({'payload': {'paper_id': paper_id, 'conference_id': conf['conference_id'],\n                    'final_score': score, 'decision': 'accept'}})\n            else:\n                decisions.append({'payload': {'paper_id': paper_id, 'conference_id': conf['conference_id'],\n                    'final_score': score, 'decision': 'reject'}})\n    if not decisions:\n        decisions = [{'payload': {'empty_cycle': True}}]\n    return {'outputs': {'next': [{'payload': {'year': context['period']}}],\n        'world': [{'payload': world}], 'decisions': decisions},\n        'state': {'cycles': context['state'].get('cycles', 0) + 1}}",
+          "state_schema": {
+            "type": "object"
+          }
+        },
+        "runtime_image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+      },
+      "version": 1
+    },
+    {
+      "family": "publication",
+      "implementation": "native.phase.publication.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        },
+        {
+          "artifact_type": "native-paper-decision",
+          "channel": "decision",
+          "port_id": "decisions",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.publication",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "communication",
+      "implementation": "native.phase.citation-potential.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.citation-potential",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "funding",
+      "implementation": "native.phase.funding.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.funding",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "communication",
+      "implementation": "native.phase.communication.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.communication",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    },
+    {
+      "family": "custom",
+      "implementation": "native.phase.close.v1",
+      "inputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "after",
+          "required": true
+        }
+      ],
+      "mechanism_id": "world.close",
+      "outputs": [
+        {
+          "artifact_type": "native-phase-completion",
+          "channel": "signal",
+          "port_id": "next",
+          "required": true
+        },
+        {
+          "artifact_type": "native-world-observation",
+          "channel": "artifact",
+          "port_id": "world",
+          "required": true
+        }
+      ],
+      "parameters": {},
+      "version": 1
+    }
+  ],
+  "metadata": {
+    "instance": "original-research-world-not-the-expression-ceiling",
+    "world_adapter": "scienceutopia.native-science-kernel.v1"
+  },
+  "schedules": [
+    {
+      "mechanism_id": "world.open",
+      "phase": 0,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.resubmissions",
+      "phase": 20,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.research",
+      "phase": 40,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.collaboration",
+      "phase": 60,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.submission",
+      "phase": 80,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.costs",
+      "phase": 100,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.review",
+      "phase": 120,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.selection",
+      "phase": 140,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.publication",
+      "phase": 160,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.citation-potential",
+      "phase": 180,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.funding",
+      "phase": 200,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.communication",
+      "phase": 220,
+      "trigger": "annual"
+    },
+    {
+      "mechanism_id": "world.close",
+      "phase": 240,
+      "trigger": "annual"
+    }
+  ],
+  "system_id": "native-research-world",
+  "version": 1
+}

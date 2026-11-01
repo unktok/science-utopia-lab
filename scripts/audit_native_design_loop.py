@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
-def audit(run, loss, years, *, require_completion=True):
+def audit(run, loss, years, *, require_completion=True, native_run_directory=None):
     from utopia.optimization.loss import evaluate_loss
     from utopia.optimization.native_design import NativeDesignCampaign
     from utopia.replay.converter import ArtifactBundle, convert_artifacts
@@ -39,7 +39,7 @@ def audit(run, loss, years, *, require_completion=True):
         measured = []
         runs = []
         for evidence in obs['metadata']['runs']:
-            cell = run / 'runs' / evidence['run_id']
+            cell = (Path(native_run_directory) if native_run_directory else run / 'runs') / evidence['run_id']
             checkpoint = cell / 'simulation' / 'checkpoints' / 'native-design' / f'portable_checkpoint_year_{years}.json.gz'
             state = read_portable_checkpoint(checkpoint)
             spec = SystemSpec.from_dict(record['suggestion']['candidate'])
@@ -123,6 +123,8 @@ def audit(run, loss, years, *, require_completion=True):
     mode = saved['binding']['world'].get('proposer', 'example')
     source_scope = ('LLM-generated source revisions; preserved host wiring' if mode in {'source-revision', 'free-source'}
                     else 'LLM graph/code proposals' if mode in {'llm', 'llm-intent'} else 'developer-authored example, not LLM invention')
+    if mode == 'fixed' and saved['binding']['world'].get('initial_provenance_sha256') not in (None, code_sha(None)):
+        source_scope = 'upstream-proposal transfer; authorship requires the separate proposal audit'
     if saved['binding']['world'].get('origin') == 'explicit-local-UI-submission':
         source_scope = 'explicit edited UI branch, not an optimization campaign or model-invented topology'
     return {'schema': 'scienceutopia.native-design-loop-audit.v1', 'binding': saved['binding'],

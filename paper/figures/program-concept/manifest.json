@@ -1,0 +1,14 @@
+{
+  "schema": "scienceutopia.research-program-concept.v1",
+  "classification": "conceptual-not-empirical",
+  "generator": "scripts/figures/science_system_program.py",
+  "generator_sha256": "0564935952a8522095fc28d3417611a393880964e5a490b69e5dbcdc040ba3fe",
+  "caption": "paper/research_program_concept.tex",
+  "whole_world_backpropagation": "research-target-not-established-result",
+  "useful_autonomous_invention": "research-target-not-established-result",
+  "outputs": {
+    "science-system-design-program.pdf": "971fb178d5ada29489ed209a54f899abb13c4da65242320c84f369cbca3d5bc1",
+    "science-system-design-program.png": "74e352f22562517d9507661e79903808dda81cc557758cfe2a586b29a80a34eb",
+    "science-system-design-program.svg": "5986f9dd627c303b8c71b42143a70e878b7a3dff1c61a53674c15b6fe51149ce"
+  }
+}

@@ -22,6 +22,22 @@ The final shareable artifact is
 
 ## Evidence boundary
 
+Figure1 now describes the whole research program, not just peer-review search:
+explicit objectives, composable parameters/source/mechanisms/protocols/wiring,
+the original researcher ecosystem, black-box/gradient/hybrid search, independent
+evaluation and the game-like interface. Its curves and layouts are conceptual.
+Whole-world backpropagation and useful autonomous invention are labelled as
+research targets, not completed results. Rebuild its vector and raster assets
+without inference with:
+
+```bash
+/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.figures.science_system_program
+```
+
+The editable SVG, publication PDF and preview PNG are under
+`paper/figures/program-concept/`. The figure-generation test checks deterministic
+PDF/SVG/PNG output; final manuscript layout also requires rendered visual QA.
+
 The paper reports the first result-dependent engineering campaign, the complete
 Metric-Conditioned Optimization Study v1.1 including its guarded held-out slice,
 and separate small native-world integration/source/wiring/conditional-gradient

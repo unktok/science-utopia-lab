@@ -26,11 +26,16 @@ def state_features(state):
         sum(e['event_type'] == 'native.system.context_delivered' for e in state['native_system']['events']))
 
 
-def physical_initial_identity(state):
+def physical_initial_identity(state, *, include_archive_destination=False):
     fields = ('ecosystem_data', 'conference_system', 'citation_tracker', 'agent_tracker', 'funding_tracker',
         'paper_tracker', 'yearly_results', 'industry_funding_system', 'submitted_paper_ids',
         'initial_university_count', 'initial_industry_count', 'project_cost_policy', 'resource_ledger')
     document = {k: state[k] for k in fields if k in state}
+    # PaperTracker serializes its archive destination alongside scientific
+    # records. Different design runs necessarily have different directories;
+    # that path is not physical state and never enters researcher decisions.
+    if not include_archive_destination:
+        document['paper_tracker'] = {k: v for k, v in state['paper_tracker'].items() if k != 'output_dir'}
     document['agent_states'] = state['portable']['agent_states']
     document['rng'] = state['portable']['rng']
     # Exclude design-dependent contracts and non-scientific cache/path/clocks.
@@ -52,7 +57,8 @@ def compile_terminal_loss(spec):
     return DeclaredLinearTerminalLoss(spec['id'], loss_spec_sha256(spec), STATE_NAMES, tuple(weights), spec['per_run']['intercept'])
 
 
-def extract_trajectory(record, *, run_directory, source_commit, model_digest, corpus_sha256, controls, loss_spec):
+def extract_trajectory(record, *, run_directory, source_commit, model_digest, corpus_sha256, controls, loss_spec,
+                       include_archive_destination=False):
     from utopia.optimization.native_feedback import checked_native_state
     if record['observation']['status'] != 'complete' or len(record['observation']['metadata']['runs']) != 1:
         raise ValueError('one complete actual native run required for transition extraction')
@@ -91,7 +97,7 @@ def extract_trajectory(record, *, run_directory, source_commit, model_digest, co
         if restored.last_year != year:
             raise ValueError('native transition checkpoint completed year mismatch')
         if year == 0:
-            initial_identity = physical_initial_identity(state)
+            initial_identity = physical_initial_identity(state, include_archive_destination=include_archive_destination)
         states.append(tuple(float(v) for v in state_features(state)))
         hashes.append(file_sha256(path))
     metrics = {name: {'status': 'measured', 'value': value} for name, value in zip(STATE_NAMES, states[-1])}
@@ -110,3 +116,28 @@ def extract_trajectory(record, *, run_directory, source_commit, model_digest, co
     return trajectory, {'run_id': run['run_id'], 'system_fingerprint': spec.fingerprint,
         'common_structure_sha256': sha(structural), 'initial_physical_state_sha256': initial_identity,
         'checkpoints': hashes, 'actual_control_executions': call_evidence}
+
+
+def verify_saved_trajectory(record, saved_bundle, **kwargs):
+    """Validate immutable legacy extraction before correcting a path-only hash.
+
+    The archived output directory cannot affect research dynamics. No scientific
+    feature, RNG, model/corpus/source or checkpoint is removed from evidence.
+    """
+    trajectory, evidence = extract_trajectory(record, **kwargs)
+    normalized = {'trajectory': asdict(trajectory), 'evidence': evidence}
+    if sha(saved_bundle) == sha(normalized):
+        return trajectory, evidence, None
+    if not kwargs['source_commit'].startswith('8a114f3'):
+        raise ValueError('saved annual trajectory differs from actual native extraction')
+    legacy, legacy_evidence = extract_trajectory(record, **kwargs, include_archive_destination=True)
+    if sha(saved_bundle) != sha({'trajectory': asdict(legacy), 'evidence': legacy_evidence}):
+        raise ValueError('saved trajectory is neither exact current nor verified legacy archive-path extraction')
+    amendment = {'schema': 'scienceutopia.native-state-identity-amendment.v1',
+        'legacy_bundle_sha256': sha(saved_bundle), 'normalized_bundle_sha256': sha(normalized),
+        'excluded_field': 'paper_tracker.output_dir',
+        'legacy_initial_state_sha256': legacy_evidence['initial_physical_state_sha256'],
+        'scientific_initial_state_sha256': evidence['initial_physical_state_sha256'],
+        'scientific_states_controls_rng_checkpoints_changed': False,
+        'original_bundle_rewritten': False}
+    return trajectory, evidence, amendment

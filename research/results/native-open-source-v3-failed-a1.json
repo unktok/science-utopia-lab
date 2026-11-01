@@ -1,0 +1,550 @@
+{
+  "schema": "scienceutopia.native-open-source-audit.v3",
+  "binding": {
+    "initial_system_fingerprint": "ef28b1c08e57560219f0b82f3742be30cf8819c8fb2967dc0f6c671e1927ca64",
+    "loss_spec_sha256": "5b054925502c3f06d29b7cf8bb407fa509b30e9e02d55945f32496abd3e8245a",
+    "seeds": [
+      1301
+    ],
+    "world": {
+      "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+      "corpus_years": 4,
+      "data_cache": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-source-v3-a1/outputs/native-open-source-v3/cache",
+      "dataset_identity": {
+        "categories": [
+          "cs.AI",
+          "cs.AR",
+          "cs.CC",
+          "cs.CE",
+          "cs.CG",
+          "cs.CL",
+          "cs.CR",
+          "cs.CY",
+          "cs.DB",
+          "cs.DC",
+          "cs.DL",
+          "cs.DM",
+          "cs.DS",
+          "cs.ET",
+          "cs.FL",
+          "cs.LG",
+          "cs.LO",
+          "cs.NI",
+          "cs.OH",
+          "cs.OS",
+          "cs.PF",
+          "cs.PL",
+          "cs.RO",
+          "cs.SE",
+          "cs.SY"
+        ],
+        "configuration": "arxiv",
+        "dataset": "Ahren09/SciEvo",
+        "normalization": "parallel",
+        "num_years": 4,
+        "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+        "start_year": 2016
+      },
+      "designer_brief_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+      "designer_plan": false,
+      "initial_provenance_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "population": "five-independent-balanced-researchers",
+      "proposer": "free-source",
+      "record_code": true,
+      "record_wire": true,
+      "revision_node": "world.selection",
+      "source_commit": "faa751f2198895654b916ce84f602747af9a81f5",
+      "years": 2
+    }
+  },
+  "campaign_sha256": "5773df652c288387def5cd17a65abfa58c2f6dfb2c4d97e9574e7d6ce7efb3fc",
+  "completion": {
+    "status": "campaign-not-budget-complete",
+    "budget": 1
+  },
+  "rows": [
+    {
+      "suggestion_id": "native-design-5df66e81fef77c580170",
+      "based_on_observation_id": null,
+      "status": "complete",
+      "loss": -1.0,
+      "difference": {
+        "candidate_fingerprint": "ef28b1c08e57560219f0b82f3742be30cf8819c8fb2967dc0f6c671e1927ca64",
+        "connections_after": [
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.open",
+            "source_port": "next",
+            "target_mechanism": "world.resubmissions",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.resubmissions",
+            "source_port": "next",
+            "target_mechanism": "world.research",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.research",
+            "source_port": "next",
+            "target_mechanism": "world.collaboration",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.collaboration",
+            "source_port": "next",
+            "target_mechanism": "world.submission",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.review",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.review",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.selection",
+            "source_port": "next",
+            "target_mechanism": "world.publication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.publication",
+            "source_port": "next",
+            "target_mechanism": "world.citation-potential",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.citation-potential",
+            "source_port": "next",
+            "target_mechanism": "world.funding",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.communication",
+            "source_port": "next",
+            "target_mechanism": "world.close",
+            "target_port": "after"
+          },
+          {
+            "channel": "decision",
+            "latency": 0,
+            "source_mechanism": "world.selection",
+            "source_port": "decisions",
+            "target_mechanism": "world.publication",
+            "target_port": "decisions"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.review",
+            "source_port": "world",
+            "target_mechanism": "world.selection",
+            "target_port": "observations"
+          }
+        ],
+        "connections_before": [
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.open",
+            "source_port": "next",
+            "target_mechanism": "world.resubmissions",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.resubmissions",
+            "source_port": "next",
+            "target_mechanism": "world.research",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.research",
+            "source_port": "next",
+            "target_mechanism": "world.collaboration",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.collaboration",
+            "source_port": "next",
+            "target_mechanism": "world.submission",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.submission",
+            "source_port": "next",
+            "target_mechanism": "world.costs",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.costs",
+            "source_port": "next",
+            "target_mechanism": "world.review",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.review",
+            "source_port": "next",
+            "target_mechanism": "world.selection",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.selection",
+            "source_port": "next",
+            "target_mechanism": "world.publication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.publication",
+            "source_port": "next",
+            "target_mechanism": "world.citation-potential",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.citation-potential",
+            "source_port": "next",
+            "target_mechanism": "world.funding",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.funding",
+            "source_port": "next",
+            "target_mechanism": "world.communication",
+            "target_port": "after"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "world.communication",
+            "source_port": "next",
+            "target_mechanism": "world.close",
+            "target_port": "after"
+          },
+          {
+            "channel": "decision",
+            "latency": 0,
+            "source_mechanism": "world.selection",
+            "source_port": "decisions",
+            "target_mechanism": "world.publication",
+            "target_port": "decisions"
+          },
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.review",
+            "source_port": "world",
+            "target_mechanism": "world.selection",
+            "target_port": "observations"
+          }
+        ],
+        "nodes_added": [],
+        "nodes_changed": [],
+        "nodes_removed": [],
+        "parent_fingerprint": "ef28b1c08e57560219f0b82f3742be30cf8819c8fb2967dc0f6c671e1927ca64",
+        "schedules_after": [
+          {
+            "mechanism_id": "world.open",
+            "phase": 0,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.resubmissions",
+            "phase": 20,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.research",
+            "phase": 40,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.collaboration",
+            "phase": 60,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.submission",
+            "phase": 80,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.costs",
+            "phase": 100,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.review",
+            "phase": 120,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.selection",
+            "phase": 140,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.publication",
+            "phase": 160,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.citation-potential",
+            "phase": 180,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.funding",
+            "phase": 200,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.communication",
+            "phase": 220,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.close",
+            "phase": 240,
+            "trigger": "annual"
+          }
+        ],
+        "schedules_before": [
+          {
+            "mechanism_id": "world.open",
+            "phase": 0,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.resubmissions",
+            "phase": 20,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.research",
+            "phase": 40,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.collaboration",
+            "phase": 60,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.submission",
+            "phase": 80,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.costs",
+            "phase": 100,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.review",
+            "phase": 120,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.selection",
+            "phase": 140,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.publication",
+            "phase": 160,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.citation-potential",
+            "phase": 180,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.funding",
+            "phase": 200,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.communication",
+            "phase": 220,
+            "trigger": "annual"
+          },
+          {
+            "mechanism_id": "world.close",
+            "phase": 240,
+            "trigger": "annual"
+          }
+        ]
+      },
+      "technical_failures": [],
+      "runs": [
+        {
+          "run_id": "native-design-5df66e81fef77c580170-s1301",
+          "checkpoint": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-source-v3-a1/outputs/native-open-source-v3/run/runs/native-design-5df66e81fef77c580170-s1301/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+          "checkpoint_sha256": "4e6a93c8ba0484a30c8a736eed127bf52f84801a709d535df9d96ab4eb9f93e4",
+          "response_cache_sha256": "13954e3ff92a70a598597e0c4cf77e868669f6f9e6030235f7a4e783db9420bc",
+          "responses": 56,
+          "llm_call_stats": {
+            "n_prompts": 56,
+            "n_first_attempt_success": 56,
+            "n_retries": 0,
+            "n_failures": 0,
+            "elapsed_seconds": 230.48796272277832,
+            "prompt_tokens": 43834,
+            "completion_tokens": 5823
+          },
+          "papers": 3,
+          "counts": {
+            "native.accepted_decisions": 1,
+            "native.rejected_decisions": 2,
+            "native.review_records": 9,
+            "native.final_active_authors": 5,
+            "native.final_author_resources": 640.0,
+            "native.institutional_context_deliveries": 0
+          },
+          "native_event_counts": {
+            "native.system.phase_executed": 24,
+            "generated.code_executed": 2
+          },
+          "executed_code": [
+            {
+              "mechanism_id": "world.selection",
+              "executions": 2,
+              "artifact_sha256": "2fa535dae7f3d06db080b61ae9159321f62d576fb8a5913ccd62ecc04b758a23",
+              "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833"
+            }
+          ],
+          "native_event_stream_hash": "9c6c0b884109afa1f2e9e84a54a067aa86af82ab5e877588b8ab92d77b15192f",
+          "canonical_event_count": 50,
+          "canonical_event_stream_hash": "fa0594aa0cede7ec2237db5e36a2401c382b641ed8df4e586656a379c16db50f",
+          "web_stream_hash": "a4f64c4e44621246983ac180a32eee2aad5d7274822243b5efe8bab380d815e2",
+          "replayed_years": [
+            1,
+            2
+          ],
+          "wire": {
+            "recorded": true,
+            "wire_sha256": "f90dd36ab55fb948f84939dd700952814e1eaa6937b72842c7f76f32cebc05bb",
+            "actual_requests": 56,
+            "contexts_by_year": {},
+            "context_request_hashes": []
+          }
+        }
+      ]
+    }
+  ],
+  "verification": "checkpoint-derived measurements/loss, lineage, kernel restore, canonical replay, response journal hashes and read-only reopen passed",
+  "limits": [
+    "development engineering objective, not scientific quality",
+    "LLM-generated source revisions; preserved host wiring",
+    "no full native autograd or same-society migration",
+    "response journal integrity, not an independent full HTTP wire audit"
+  ],
+  "proposals": [
+    {
+      "receipt": "free-source-1-0.json",
+      "receipt_sha256": "53b375da2dfb43c088702bd36cdc770396298f6853216c85978cd8a546a9971f",
+      "index": 1,
+      "status": "invalid-technical-candidate",
+      "error": "invalid syntax (<unknown>, line 1)",
+      "source_sha256": "100570aa48f6d4d1773a4658c8fb59092bb955f7ae5e45706099c05c819b41d1",
+      "source_same_as_parent": null,
+      "actual_native_evaluated": false,
+      "probe_results_changed": [],
+      "prompt_utf8_bytes": null,
+      "prompt_view_limits": null
+    },
+    {
+      "receipt": "free-source-1-1.json",
+      "receipt_sha256": "eda7f2dfe63a9100b8b0c52d441dbbcd094e80c2ddf8ba5328b75a7ec30a8f0f",
+      "index": 1,
+      "status": "invalid-technical-candidate",
+      "error": "invalid syntax (<unknown>, line 1)",
+      "source_sha256": "100570aa48f6d4d1773a4658c8fb59092bb955f7ae5e45706099c05c819b41d1",
+      "source_same_as_parent": null,
+      "actual_native_evaluated": false,
+      "probe_results_changed": [],
+      "prompt_utf8_bytes": null,
+      "prompt_view_limits": null
+    },
+    {
+      "receipt": "free-source-1-2.json",
+      "receipt_sha256": "eda7f2dfe63a9100b8b0c52d441dbbcd094e80c2ddf8ba5328b75a7ec30a8f0f",
+      "index": 1,
+      "status": "invalid-technical-candidate",
+      "error": "invalid syntax (<unknown>, line 1)",
+      "source_sha256": "100570aa48f6d4d1773a4658c8fb59092bb955f7ae5e45706099c05c819b41d1",
+      "source_same_as_parent": null,
+      "actual_native_evaluated": false,
+      "probe_results_changed": [],
+      "prompt_utf8_bytes": null,
+      "prompt_view_limits": null
+    }
+  ],
+  "raw_output_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-source-v3-a1/outputs/native-open-source-v3/run",
+  "campaign_budget_completed": false,
+  "interpretation": "actual arbitrary-node source design, not full topology invention or scientific-quality optimization"
+}

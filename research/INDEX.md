@@ -7,6 +7,9 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Open native design and composed transition representation v3](components/native-open-design-and-transition-representation-v3.md)
+- [Parallel invention / native-calibration protocol v3](protocols/campaigns/native-parallel-invention-backprop-v3.md)
+- [Native v3 interim evidence, failures and active calibration](results/native-parallel-v3.md)
 - [Native feedback breadth v2: source-revision failures, full-native gradients and actual UI jobs](results/native-feedback-breadth-v2.md)
 - [Native feedback / interactive design implementation and runbook](components/native-feedback-and-interactive-design-v2.md)
 - [Native feedback breadth v2 preregistration and explicit amendments](protocols/campaigns/native-feedback-breadth-v2.md)

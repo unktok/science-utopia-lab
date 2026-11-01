@@ -68,6 +68,22 @@ It now leaves the startup setting untouched; factory entry refuses a missing
 numeric startup value. Regression tests cover both preservation and refusal
 to manufacture a hash-seed guarantee at runtime.
 
+Analysis-identity amendment, before fitting: independent comparison of the
+completed native initial checkpoints found that PaperTracker serializes its
+archive output_dir beside scientific paper records. This differing destination
+was mistakenly hashed as physical state. Scientific agent/domain/RNG fields
+match; only that archive destination is excluded in the corrected identity.
+Original checkpoint and trajectory files remain immutable. The continuation
+verifies the exact original extraction (including the path), then records
+original/normalized bundle hashes and the excluded field explicitly. The six
+native forward worlds still run from8a114f3 unchanged. A separate clean pinned
+analysis continuation waits for them and performs the already-budgeted fit,
+validation and at most one fresh gradient proposal under identical execution-
+only source. It does not rerun calibration, change controls/observations, add
+seeds, consume a second proposal budget, or rewrite the old failure. The original
+driver's path-induced binding failure is expected and retained; the continuation
+is the authoritative derivative/proposal completion record.
+
 ## Differentiable-representation track
 
 Fit local annual state-transition representations ONLY to hash-verified native
