@@ -22,10 +22,11 @@ def create(output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8.5,
         'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig, ax = plt.subplots(figsize=(10.4, 4.7))
-    ax.set_xlim(0, 10.4); ax.set_ylim(0, 4.7); ax.axis('off')
+    fig, ax = plt.subplots(figsize=(7.2, 6.3))
+    ax.set_xlim(0, 7.2); ax.set_ylim(0, 6.3); ax.axis('off')
+    fig.subplots_adjust(left=.015, right=.985, bottom=.015, top=.985)
 
-    def box(x, y, w, h, text, color, *, dashed=False, fontsize=8.2):
+    def box(x, y, w, h, text, color, *, dashed=False, fontsize=9):
         patch = FancyBboxPatch((x, y), w, h, boxstyle='round,pad=.06,rounding_size=.08',
             linewidth=1.1, edgecolor=color, facecolor=color+'16',
             linestyle='--' if dashed else '-')
@@ -39,35 +40,38 @@ def create(output):
         if label: ax.text((x1+x2)/2, (y1+y2)/2+.10, label, ha='center', color=color, fontsize=7.4)
 
     blue, orange, green, grey = '#2878B5', '#D56A36', '#2C8B75', '#6C7882'
-    box(.25, 3.35, 1.55, .75, 'Frozen LossSpec 1\nThroughput  $L=-A$', blue)
-    box(.25, 2.15, 1.55, .75, 'Frozen LossSpec 2\nReviewed utility\n$L=3.25A-Q+0.05R$', orange)
-    box(2.25, 2.75, 1.65, .9, 'Objective-visible external\nstructural authoring\n(no host repair)', '#775DA6')
-    box(4.35, 2.75, 1.45, .9, '2 generations ×\n2 conditional-IID\ndesigns per arm', '#775DA6')
-    box(6.25, 2.75, 1.55, .9, 'Original native world\n5 fixed Qwen researchers\n2 years, seed 42', green)
-    box(8.25, 2.75, 1.65, .9, 'Independent checkpoint\nmeasurement\n8 native diagnostics', green)
-    box(4.35, 1.20, 1.45, .8, 'Adaptive feedback uses\nthat arm loss only', grey)
-    box(6.25, 1.20, 1.55, .8, 'Cross-score every\ncompleted draw under\nboth frozen losses', grey)
-    box(8.25, 1.20, 1.65, .8, 'Loss paths + selected\n2×2 matrix + exact\ngraph/source diffs', grey)
-    box(.55, .12, 3.20, .60, 'Held-out metrics\nnot defined/measured in v8', '#9A5465', dashed=True, fontsize=7.8)
-    box(4.20, .12, 3.20, .60, 'Promotion policy\nnot defined/applied in v8', '#9A5465', dashed=True, fontsize=7.8)
+    box(.25, 4.95, 3.05, .72, 'Frozen LossSpec 1: throughput\n$L=-A$', blue)
+    box(3.85, 4.95, 3.05, .72, 'Frozen LossSpec 2: reviewed utility\n$L=3.25A-Q+0.05R$', orange)
+    box(.25, 3.45, 2.0, .95, 'Objective-visible external\nstructural authoring\n(no host repair)', '#775DA6')
+    box(2.60, 3.45, 1.80, .95, '2 generations ×\n2 conditional-IID\ndesigns per arm', '#775DA6')
+    box(4.80, 3.45, 2.10, .95, 'Original native world\n5 fixed Qwen researchers\n2 years, seed 42', green)
+    box(4.80, 1.95, 2.10, .95, 'Independent checkpoint\nmeasurement\n8 native diagnostics', green)
+    box(2.60, 1.95, 1.80, .95, 'Cross-score every\ncompleted draw under\nboth frozen losses', grey)
+    box(.25, 1.95, 2.0, .95, 'Loss paths + selected\n2×2 matrix + exact\ngraph/source diffs', grey)
+    box(.25, .15, 3.05, .60, 'Held-out metrics\nnot defined/measured in v8', '#9A5465', dashed=True, fontsize=8.5)
+    box(3.85, .15, 3.05, .60, 'Promotion policy\nnot defined/applied in v8', '#9A5465', dashed=True, fontsize=8.5)
 
-    arrow(1.80, 3.73, 2.25, 3.30, blue)
-    arrow(1.80, 2.53, 2.25, 3.10, orange)
-    arrow(3.90, 3.20, 4.35, 3.20)
-    arrow(5.80, 3.20, 6.25, 3.20)
-    arrow(7.80, 3.20, 8.25, 3.20)
-    arrow(9.08, 2.75, 9.08, 2.00)
-    arrow(8.25, 1.60, 7.80, 1.60)
-    arrow(6.25, 1.60, 5.80, 1.60, label='bound arm loss')
-    arrow(4.35, 1.60, 3.25, 2.75, dashed=True, label='next generation')
-    arrow(7.02, 1.20, 5.80, .72, color='#9A5465', dashed=True)
+    # Connect at the actual padded box boundaries; feedback is one continuous
+    # external path, not disconnected elbows or lines crossing the text panels.
+    arrow(1.78, 4.89, 1.00, 4.46, blue)
+    arrow(5.38, 4.89, 1.70, 4.46, orange)
+    arrow(2.31, 3.925, 2.54, 3.925)
+    arrow(4.46, 3.925, 4.74, 3.925)
+    arrow(5.85, 3.39, 5.85, 2.96)
+    arrow(4.74, 2.425, 4.46, 2.425)
+    arrow(2.54, 2.425, 2.31, 2.425)
+    ax.plot([6.96, 7.08, 7.08, .12, .12], [2.425, 2.425, 1.25, 1.25, 3.925],
+            color=grey, linewidth=1.05, linestyle='--', solid_joinstyle='round')
+    arrow(.12, 3.925, .19, 3.925, grey)
+    ax.text(3.60, 1.38, 'Next generation: adaptive feedback uses that arm loss only',
+            ha='center', fontsize=8.5, color=grey)
 
-    ax.text(.25, 4.45, 'Two-objective original-native structural exploration: methods and evidence boundary',
-            fontsize=12, weight='bold', color='#172633')
-    ax.text(.25, 4.18, 'The optimized object is the system. Objectives stay frozen; technical failures stay null.',
-            fontsize=8.8, color='#53616D')
-    ax.text(7.75, .40, 'Development engineering only\nNo improvement or scientific-value claim',
-            fontsize=7.8, color='#9A5465', ha='left', va='center')
+    ax.text(.25, 6.04, 'Objective-conditioned structural exploration: methods',
+            fontsize=11.5, weight='bold', color='#172633')
+    ax.text(.25, 5.81, 'The system changes; objectives stay frozen; technical failures stay null.',
+            fontsize=8.7, color='#53616D')
+    ax.text(3.60, .98, 'Development engineering only: no scientific-value or general-benefit claim.',
+            fontsize=8.2, color='#9A5465', ha='center', va='center')
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}
     for kind, path in paths.items():
         fig.savefig(path, dpi=210 if kind == 'png' else None, bbox_inches='tight', facecolor='white')

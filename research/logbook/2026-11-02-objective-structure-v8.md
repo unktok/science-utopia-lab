@@ -72,3 +72,32 @@ before new inference. New output, same correct425ec10 source and same total
 eight-world cap, with exact saved-file numeric-type-preserving validation.
 No unsuccessful native trajectory is replaced, no scientific outcome/metric
 is selected away, no compiler validation is loosened, no extra seed is used.
+
+## A2 exact-file validation and actual inference
+
+Both fresh saved a2 responses pass independent root re-reading/compilation using
+the actual425ec10 imports, source hashes and exact request rng. All reachable
+structures and both actual draws pass, with no source/native execution in
+preflight. Response file hashes: throughput
+`4edc2ae28cd9febd839a9853ef36039ade5fa16b4d891347e5e0022d04cbae5f`, utility
+`2d14a4dceb77cf34d4f2967f27633d1ef91a3241aa4371680b95cdd483b679c1`.
+Both manifests explicitly identify prior a1 failure and reuse, not new discovery.
+
+Throughput vocabulary has16/22 or18/25 nodes/edges; reviewed-utility has16/22 or
+17/23. Both initial IID draws select the same structural option within an arm;
+no reroll forces diversity. Fraction/margin continuous draws remain distinct.
+Actual fixed-Qwen inference starts and the first physical response is saved;
+no completed objective or behavioral benefit is claimed at this entry.
+
+Clean live-source425ec10 full regression:1509 passed/6 skipped in602.55s.
+Independent structural/runner verification at8602529:12 passed in25.23s.
+Later exact-file validator/audit/figure/runner scopes pass31 in4.52s; overlap is
+not added to the full count. A1 compact audit independently binds16 unchanged
+raw files and reports aborted before inference, not zero-loss performance.
+
+The methods figure is redrawn at7.2-inch paper width with legible9pt panel text,
+noncrossing continuous feedback and exact scientific/evaluation boundaries;
+PDF/PNG/SVG and manifest are generated, preview inspected, figure tests10 pass
+3.00s. New manuscript methods explicitly separate structural freedom,
+objective-conditioned development comparison, unavailable metrics and the
+preserved pre-inference failure. Actual result insertion stays gated.

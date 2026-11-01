@@ -18,8 +18,8 @@ completed optimization run and contains no native simulation outcome.
 
 The postmortem found that JavaScript serialization normalized an integral
 floating-point value from `1.0` to `1`. Because the generated patch embeds and
-binds the parent system exactly, this changed its parent fingerprint from the
-authored value beginning `88912a72` to the host value beginning `af6228`.
+binds the parent system exactly, normalization changed the author's computed
+fingerprint to `af6228`, while the exact host parent still begins `88912a72`.
 The host compiler correctly rejected the mismatch before a native world or
 researcher-model request could start.
 
