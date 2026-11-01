@@ -135,3 +135,13 @@ No clipping/overlap/overfull boxes; underfull TeX warnings remain cosmetic.
 Source-specific JUnit/artifact hashes are retained in the v7 verification JSON.
 This closes ordinary implementation/integration/reporting gates, NOT successful
 useful invention, designer improvement, native pathwise gradients or a full game.
+
+## Delivery
+
+Implementation, audited result, actual UI and final documentation commit84cbf60
+are fast-forward integrated to main and pushed to origin. The shareable PDF is
+tracked (not merely a local ignored build), so its31-page verified artifact is
+published in a separate final artifact commit. SHA256:
+`92605756bae980e24d9c265ae458b9cc2d1956846a4edb8b5dcd83f21fe0bda0`.
+The previous PDF stays recoverable in Git; an extra local copy is retained under
+ignored `tmp/pdfs/science-utopia-lab-working-paper-v6.pdf`. No raw run is deleted.
