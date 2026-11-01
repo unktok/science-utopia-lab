@@ -2,6 +2,33 @@
 
 Updated: 2026-11-01
 
+## Active goal: non-scale completion v6
+
+User requests autonomous completion of the non-scale capabilities before any
+population/seed-count expansion. [Acceptance gates and ownership](milestones/2026-11-01-non-scale-completion-v6.md).
+Work is isolated in `feature/non-scale-integration-v6`; the v5 results below
+remain historical evidence, not newly relabelled v6 experiments.
+
+- Typed native research activities are implemented in a reviewed feature branch:
+  plans, actor references and actual paper bundles replace four private-frame
+  transports in an opt-in graph. Six-year original scientific-state/request
+  equivalence and consequential changed submissions pass scripted native QA.
+- Same-society objective-visible design sessions now connect interval outcomes,
+  arbitrary patches, exact confirmation, durable migration and subsequent
+  feedback. Independent review found and prompted fixes for foreign/rewound
+  society lineage and incomplete stale-state checks. Persistence and adoption
+  now share the complete canonical scientific-state capture method.
+- A loopback API records consent only; the native worker must perform adoption.
+  UI completion requires an independently restored actual saved migration, not
+  a successful HTTP dispatch or a journal acknowledgement alone. Related
+  session/migration/queue tests pass41 checks at the integration source.
+- Factorized code/protocol/edge policy gradients and the live-session UI are in
+  separate implementation/verification tracks. Their software QA is not a live
+  Qwen institutional effect or an optimization-benefit result.
+- A three-year, single-society live pilot is being prepared to expose outcomes
+  after two institutional adoption boundaries. It has NOT started; no v6 live
+  inference or completed non-scale goal is claimed yet.
+
 ## Objective-conditioned design v5
 
 The latest goal/capability/gap inventory is
