@@ -72,7 +72,7 @@ def create(report, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9,
         'axes.spines.top': False, 'axes.spines.right': False, 'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig, axes = plt.subplots(1, 2, figsize=(10.8, 4.65), gridspec_kw={'width_ratios': [1, 1.2]})
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 5.3), gridspec_kw={'width_ratios': [1, 1.15]})
     colors = ['#27679D', '#BC6539']
     x = np.arange(len(data))
     for i, row in enumerate(data):
@@ -92,17 +92,17 @@ def create(report, output):
     labels = []
     for row in data:
         coordinates = list(row['continuous'].items())
-        continuous = (f"{coordinates[0][0].rsplit('/',1)[-1]} {coordinates[0][1]:+.2f}"
+        symbol = 'b' if coordinates and coordinates[0][0].rsplit('/',1)[-1] == 'bias' else 'v'
+        continuous = (f"{symbol}={coordinates[0][1]:+.2f}"
             if len(coordinates) == 1 else f"{len(coordinates)} coordinates")
-        factor = ', '.join(f'{k}={v}' for k, v in row['structural_assignment'].items())
-        # Full unabridged paths/choices are preserved in the figure manifest.
-        if len(factor) > 22:
-            factor = factor[:19] + '...'
-        labels.append(f"{row['label']}\n{continuous}\n{factor}")
-    axes[0].set_xticks(x, labels, fontsize=7.4)
+        # Exact source/conditional choice names are in the manifest; node/edge
+        # counts are measured from each full actual executed SystemSpec.
+        structure = f"{row['nodes']}n/{row['edges']}e" if row['nodes'] is not None else 'invalid'
+        labels.append(f"{row['label']}\n{continuous}\n{structure}")
+    axes[0].set_xticks(x, labels, fontsize=8.5)
     axes[0].set_xlim(-.6, len(data)-.4)
-    axes[0].set_ylabel('Actual native loss  L = -A - 0.1C  (lower is better)')
-    axes[0].set_title('A  Objective-conditioned native draws', loc='left', fontsize=11, pad=16)
+    axes[0].set_ylabel('Native loss  $L = -A - 0.1C$ (lower is better)', fontsize=9)
+    axes[0].set_title('A  Native loss by sampled design', loc='left', fontsize=10, pad=14)
     axes[0].grid(axis='y', alpha=.18)
     axes[0].margins(y=.23)
     width = .19
@@ -117,20 +117,22 @@ def create(report, output):
                     label=name if i == next((n for n, d in enumerate(data) if d[key] is not None), -1) else None)
     axes[1].set_xticks(x, [d['label'] for d in data])
     axes[1].set_ylim(bottom=0)
-    axes[1].set_ylabel('Counts from completed native checkpoints')
-    axes[1].set_title('B  Committed institutional activity', loc='left', fontsize=11, pad=16)
+    axes[1].set_ylabel('Completed native counts', fontsize=9)
+    axes[1].set_title('B  Committed native activity', loc='left', fontsize=10, pad=14)
     axes[1].grid(axis='y', alpha=.18)
     axes[1].set_axisbelow(True)
-    axes[1].legend(loc='upper left', bbox_to_anchor=(0, 1.01), ncol=2, fontsize=7.6,
-        frameon=False, handlelength=1.2, columnspacing=1.2)
+    handles, legend_labels = axes[1].get_legend_handles_labels()
+    fig.legend(handles, legend_labels, loc='center', bbox_to_anchor=(.54, .18), ncol=2,
+        fontsize=8.5, frameon=False, handlelength=1.2, columnspacing=1.9)
     axes[1].margins(y=.26)
-    title = 'Open institutional design in the original researcher world'
+    title = 'Open institutional design: original researcher world'
     if report['classification'] == FIXTURE:
         title = 'SCRIPTED SOFTWARE QA - NOT NATIVE QWEN FINDINGS'
-    fig.suptitle(title, fontsize=13, x=.06, ha='left', y=.97)
-    fig.text(.06, .035, 'Two IID designs per generation; blue G1, orange G2. Thin lines: observed batch means, not improvement estimates.\n'
-        'One development seed. Engineering count proxy; no held-out, causal, scientific-quality, or full-world autograd claim.', fontsize=8, color='#525E6A')
-    fig.subplots_adjust(left=.075, right=.985, bottom=.25, top=.79, wspace=.32)
+    fig.suptitle(title, fontsize=12, x=.08, ha='left', y=.96)
+    fig.text(.08, .028, 'Two IID designs per generation, one development seed. Thin lines: batch means, not improvement.\n'
+        'b/v: sampled coordinate; n/e: actual nodes/edges. Full structural choices: hashed manifest.\n'
+        'Count proxy; no held-out, causal, scientific-quality, or full-world autograd claim.', fontsize=8.5, color='#525E6A')
+    fig.subplots_adjust(left=.10, right=.98, bottom=.36, top=.80, wspace=.44)
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}
     for kind, path in paths.items():
         fig.savefig(path, dpi=210 if kind == 'png' else None, facecolor='white')

@@ -8,7 +8,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from scripts.analyze_native_open_v7 import analyze, authoring_proofs, code_proofs, domain_proofs, _inventory, FIXTURE
+from scripts.analyze_native_open_v7 import analyze, authoring_proofs, code_proofs, context_input_proofs, _inventory, FIXTURE
 from scripts.run_native_open_pilot_v7 import summarize
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign, InboxVocabularyGenerator
 from utopia.optimization.native_manifest_inbox import ManifestInbox, ExternalAuthoringPending
@@ -214,6 +214,27 @@ def test_committed_code_memory_must_roundtrip_and_continue(tmp_path):
     native['graph_checkpoint']['mechanism_states']['native-feature-extractor'] = {'forged': 1}
     with pytest.raises(ValueError, match='durable kernel memory'):
         code_proofs(tmp_path, system, native, WORLD, 'fixture', complete=True)
+
+
+def test_delivered_context_is_distinct_from_actual_completed_model_input(tmp_path):
+    (tmp_path/'replies').mkdir()
+    message = {'message_id': 'fixture-message', 'received_year': 1, 'payload': {'instruction': 'QA only'}}
+    payload = {'messages': [{'content': json.dumps(message, ensure_ascii=False, sort_keys=True)}]}
+    with sqlite3.connect(tmp_path/'replies/responses.sqlite') as db:
+        db.execute('CREATE TABLE replies(payload_sha TEXT,outcome TEXT)')
+        db.execute('INSERT INTO replies VALUES (?,?)', ('fixture-payload', 'response'))
+    (tmp_path/'wire-requests.jsonl').write_text(json.dumps({'year': 1, 'payload_sha256': 'fixture-payload', 'payload': payload})+'\n')
+    saved = {'ecosystem_data': {'agents': [{'id': 'a', 'institutional_context': [message]}]},
+        'native_system': {'events': [{'event_id': 'fixture-event', 'event_type': 'native.system.context_delivered',
+            'actor_ids': ['a'], 'payload': {'message': message}}]}}
+    proof = context_input_proofs(tmp_path, saved)
+    assert proof['delivered_recipient_messages'] == proof['messages_observed_in_completed_model_inputs'] == 1
+    (tmp_path/'wire-requests.jsonl').write_text('')
+    proof = context_input_proofs(tmp_path, saved)
+    assert proof['delivered_recipient_messages'] == 1 and proof['messages_observed_in_completed_model_inputs'] == 0
+    saved['ecosystem_data']['agents'][0]['institutional_context'] = []
+    with pytest.raises(ValueError, match='actual recipient state'):
+        context_input_proofs(tmp_path, saved)
 
 
 def test_inventory_rejects_symlink_and_never_reads_outside_raw(tmp_path):

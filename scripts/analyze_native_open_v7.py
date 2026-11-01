@@ -248,6 +248,33 @@ def domain_proofs(saved, kernel, code_rows=None):
         'domain_state_sha256': digest(domain), 'kernel_restored_without_execution': True}
 
 
+def context_input_proofs(cell, saved):
+    """Separate delivered/stored messages from messages actually seen in HTTP inputs."""
+    with sqlite3.connect((cell / 'replies/responses.sqlite').resolve().as_uri()+'?mode=ro', uri=True) as db:
+        completed = {r[0] for r in db.execute("SELECT payload_sha FROM replies WHERE outcome='response'")}
+    wires = [json.loads(line) for line in (cell / 'wire-requests.jsonl').read_text().splitlines()]
+    agents = {a['id']: a for a in saved['ecosystem_data']['agents']}
+    rows = []
+    for event in saved['native_system']['events']:
+        if event['event_type'] != 'native.system.context_delivered':
+            continue
+        message = event['payload']['message']
+        rendered = json.dumps(message, ensure_ascii=False, sort_keys=True, allow_nan=False)
+        for actor in event['actor_ids']:
+            stored = [m for m in agents[actor].get('institutional_context', []) if m['message_id'] == message['message_id']]
+            if stored != [message]:
+                raise ValueError('delivered native message is not retained exactly in its actual recipient state')
+            matching = [w['payload_sha256'] for w in wires if w['year'] >= message['received_year']
+                and w['payload_sha256'] in completed and any(isinstance(m.get('content'), str)
+                    and rendered in m['content'] for m in w['payload'].get('messages', []))]
+            rows.append({'event_id': event['event_id'], 'actor_id': actor, 'message_sha256': digest(message),
+                'received_year': message['received_year'], 'completed_http_payload_sha256s': matching,
+                'observed_in_completed_model_input': bool(matching)})
+    return {'delivered_recipient_messages': len(rows),
+        'messages_observed_in_completed_model_inputs': sum(r['observed_in_completed_model_input'] for r in rows),
+        'proofs': rows, 'scope': 'Exact persisted delivered message occurs in actual completed HTTP input; not evidence of beneficial interpretation or scientific utility.'}
+
+
 def audit_native_run(root, draw, observation, evidence, world, classification):
     system = SystemSpec.from_dict(draw['suggestion']['candidate'])
     checkpoint = Path(evidence['checkpoint_path']).resolve()
@@ -327,6 +354,7 @@ def audit_native_run(root, draw, observation, evidence, world, classification):
     return {'measurement': measurement, 'native_loss': evaluate_loss(joint_engineering_loss(), [measurement])['loss'],
         'physical_initial_identity': physical_initial_identity(initial),
         'response_proof': response, 'code_proof': code, 'native_counts': domain_proofs(saved, kernel, code_rows),
+        'context_input_proof': context_input_proofs(cell, saved),
         'annual_checkpoints': annual,
         'boundary_coverage': boundary_coverage(system, kernel.events), 'conditional_backward': backward,
         'checkpoint_sha256': file_sha256(checkpoint), 'actual_author_count': len([a for a in saved['ecosystem_data']['agents'] if a['can_author']]),
@@ -482,7 +510,16 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             counts = dict(db.execute('SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
         caches.append({'path': str(path), 'sha256': file_sha256(path), 'outcomes': counts})
     replies = sum(c['outcomes'].get('response', 0) for c in caches)
-    if raw['physical_response_caches'] != caches or raw['physical_reply_count'] != replies:
+    recorded_caches = raw['physical_response_caches']
+    cache_paths_valid = len(recorded_caches) == len(caches)
+    for recorded, actual in zip(recorded_caches, caches):
+        path = Path(recorded['path'])
+        actual_path = Path(actual['path'])
+        matching_path = (path.resolve() == actual_path.resolve() if path.is_absolute() else
+            '..' not in path.parts and tuple(actual_path.parts[-len(path.parts):]) == path.parts)
+        cache_paths_valid = cache_paths_valid and matching_path and (
+            {k: v for k, v in recorded.items() if k != 'path'} == {k: v for k, v in actual.items() if k != 'path'})
+    if not cache_paths_valid or raw['physical_reply_count'] != replies:
         raise ValueError('actual physical reply cache counts/hash differ from summary')
     if complete and (replies != sum(p['response_proof']['researcher_responses'] for p in proof_rows)
             or len(caches) != 4):
