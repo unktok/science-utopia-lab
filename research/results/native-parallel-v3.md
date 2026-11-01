@@ -116,6 +116,13 @@ and may execute the already-budgeted one gradient proposal under identical
 execution-only source. It produces independent audits or a structured failure;
 it does not rerun baselines, add validation designs or seek a favorable seed.
 
+The continuation is actually running from clean commit951695b in
+`/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-analysis-a1`.
+Its local output root is `outputs/native-transition-v3-analysis/run`; inspect
+`progress.json`, `representation-result.json`, `independent-audit.json`,
+`completion.json` or `analysis-failure.json`. Those future derivative/proposal
+results must not be inferred from this interim report or from unit tests.
+
 An earlier calibration setup probe lacked a genuine fixed startup hash seed
 and was intentionally interrupted. All raw logs/checkpoints remain. It is not
 reused as controlled calibration evidence. `set_seed` now preserves the actual

@@ -34,6 +34,13 @@ fits/validates the represented gradient and at most one planned fresh native
 proposal, then writes independent audits or an explicit failure. No calibration
 worlds or extra validation seeds are rerun.
 
+Live continuation: clean commit951695b in
+`/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-analysis-a1`.
+Its `outputs/native-transition-v3-analysis/run/progress.json` reports waiting,
+analysis/proposal execution, completion or an explicit failure; its driver is
+already running. Original data progress remains at the separate
+`native-transition-v3-a2/outputs/native-transition-v3/run/progress.json`.
+
 The working paper now includes a publication-wide conceptual Figure1: objectives,
 composable design freedom, researcher ecosystem, black-box/gradient/hybrid
 methods, independent evaluation and a game-like interface. It distinguishes
