@@ -187,6 +187,24 @@ def test_wrapped_tensor_program_memory_and_queued_shapes_are_validated():
     assert kernel.to_dict() == before
 
 
+def test_wrapped_llm_first_empty_memory_is_legal_but_explicit_bad_memory_is_rejected():
+    kernel = graph_kernel()
+    before = kernel.to_dict()
+    def llm(node):
+        node['parameters']['delegate']['implementation'] = 'native.world.llm-institution.v1'
+        node['parameters']['delegate']['parameters'] = {'instruction': 'Caller-authored institution; no invocation in this unit.',
+            'output_schemas': {'result': {'type': 'object'}},
+            'state_schema': {'type': 'object', 'required': ['n'], 'properties': {'n': {'type': 'integer'}}}}
+        node['parameters']['initial_delegate_state'] = {}
+    candidate = edited(kernel, llm)
+    with pytest.raises(ValidationError):
+        migrate_native_design(kernel, candidate, expected_checkpoint_sha256=_hash(before),
+            state_actions={'worker': {'replace': {'delegate_state': {'n': 'invalid'}}}})
+    assert kernel.to_dict() == before
+    migrate_native_design(kernel, candidate, expected_checkpoint_sha256=_hash(before), state_actions={'worker': 'reset'})
+    assert kernel.graph_checkpoint['mechanism_states']['worker'] == {}
+
+
 ADVISORY = """def step(context):
     observation = context['inputs']['world'][0]['payload']
     ids = [a['id'] for a in observation['ecosystem']['agents'] if a['can_author']]

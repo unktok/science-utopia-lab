@@ -18,8 +18,8 @@ queued code/tensor/control input before a receipt is committed. Code schemas
 are safety-checked before JSON-Schema evaluation. Tensor memory names, shapes,
 finite values, transport paths and queued numeric input shapes are checked
 without running the program. Process invocation counters must be nonnegative
-integers. Wrapped code retains the actual input ABI's universal empty first-call
-state; this does not synthesize initialized memory or relax output validation.
+integers. Wrapped code and LLM institutions retain the actual input ABI's empty
+first-call state; this does not synthesize initialized memory or relax output validation.
 Existing top-level code migration state validation remains strict.
 
 `validate_native_execution_checkpoint(spec, graph)` is a reusable pure validation

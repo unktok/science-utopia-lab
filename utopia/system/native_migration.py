@@ -100,7 +100,11 @@ def _validate_execution_state(node, state, *, allow_initial_empty=False):
         if any(_tensor_shape(saved[k]) != _tensor_shape(initial[k]) for k in initial):
             raise GraphRuntimeError('saved tensor memory shape differs')
     elif node.implementation == 'native.world.llm-institution.v1':
-        Draft202012Validator(node.parameters.get('state_schema', {'type': 'object'})).validate(state)
+        # Like generated code, an LLM institution sees {} before producing its
+        # first schema-valid memory. Do not invent an initialized state or bar
+        # a legal first call just because its OUTPUT memory requires fields.
+        if state:
+            Draft202012Validator(node.parameters.get('state_schema', {'type': 'object'})).validate(state)
 
 
 def _validate_saved_state(node, state):
