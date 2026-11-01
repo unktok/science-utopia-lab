@@ -139,6 +139,21 @@ def test_exactly_representable_fractional_transfer_is_not_an_integer_only_rule()
     assert math_totals(ledger, actors) == 15.
 
 
+@pytest.mark.parametrize('bad', [value('self', source='a', target='a', amount=10.),
+    value('zero', source='b', target='a', amount=0.)])
+def test_self_and_zero_commands_reject_entire_batch_before_native_active_flag_or_ledger_changes(bad):
+    kernel, actors, ledger = unit_world()
+    # This Actor binds the ACTUAL SimulationAgent.update_resources method.
+    actors['b'].resources = 0.
+    ledger.years['1']['b']['opening_balance'] = 0.
+    before = deepcopy(ledger.to_dict())
+    with pytest.raises(GraphRuntimeError, match='strictly positive|distinct actors'):
+        apply_native_resource_transfers(kernel, context(value(), bad))
+    assert [(actors[k].resources, actors[k].is_active) for k in ['a', 'b']] == [(10., True), (0., True)]
+    assert ledger.to_dict() == before and not ledger.native_transfer_accounting
+    assert not kernel._frame
+
+
 SOURCE = """def step(context):
     world = context['inputs']['world'][0]['payload']
     authors = sorted(a['id'] for a in world['ecosystem']['agents'] if a['can_author'])

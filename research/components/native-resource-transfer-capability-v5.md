@@ -31,9 +31,12 @@ does not automatically reactivate an inactive researcher.
 - Both actors must already exist and be author-capable. No actor creation,
   treasury, minting, debt, external grant supply or research-plan command is
   implemented by this capability.
-- Amounts are finite, nonnegative and available at that point in the declared
+- Transfers are between **distinct** actors and amounts are finite, strictly
+  positive and available at that point in the declared
   input order. Whole batches are preflighted against staged balances before
   any native mutation; later commands may spend earlier incoming transfers.
+  Zero/self commands are rejected before any update call, not implemented as
+  debit/credit no-ops that could accidentally trigger native actor side effects.
 - Debited and credited amounts must each be **exactly representable** in the
   existing numeric actor balances: actual debit == requested amount == actual
   credit. This prevents a large floating-point balance swallowing a debit while

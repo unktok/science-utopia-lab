@@ -36,8 +36,10 @@ def _command(value):
             or not 1 <= len(payload['transaction_id']) <= 200
             or any(not isinstance(payload[k], str) or not payload[k] for k in ('from_actor', 'to_actor'))
             or type(payload['amount']) not in (int, float)
-            or not math.isfinite(payload['amount']) or payload['amount'] < 0):
-        raise GraphRuntimeError('resource transfer requires exact ID/from_actor/to_actor/finite nonnegative amount')
+            or not math.isfinite(payload['amount']) or payload['amount'] <= 0):
+        raise GraphRuntimeError('resource transfer requires exact ID/from_actor/to_actor/finite strictly positive amount')
+    if payload['from_actor'] == payload['to_actor']:
+        raise GraphRuntimeError('native transfer requires two distinct actors; self-transfers are not an implicit no-op')
     origin = {'source_mechanism': value.source_mechanism, 'source_port': value.source_port,
         'emitted_period': value.emitted_period, 'transaction_id': payload['transaction_id']}
     return sha(origin), sha(payload), origin, payload
