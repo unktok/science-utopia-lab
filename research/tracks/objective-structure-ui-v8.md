@@ -74,6 +74,11 @@ or report/receipt byte-hash mismatch. It writes four captures and a checksummed
 browser-QA receipt, then stops both owned processes and moves its temporary
 Chrome profile to Trash.
 
+The capture helper is local developer tooling for this macOS machine: Node22+
+(built-in WebSocket) and Google Chrome at the standard `/Applications` location
+are required. These requirements do not change the browser UI's runtime or
+imply a portable cross-platform capture harness.
+
 Fixture QA at the implementation commit:
 
 - 181 Vitest checks pass, including seven new v8 contract checks;
