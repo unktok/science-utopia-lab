@@ -24,9 +24,9 @@ from utopia.optimization.native_factory import record_native_http
 from utopia.optimization.native_hybrid import conditional_backward, native_endpoint, project_continuous
 from utopia.optimization.native_response_fidelity import (
     BoundaryUnsupported, NativeResponseOperator, boundary_layout, endpoint_decomposition,
-    project_response, raw_review_projection,
+    project_response, raw_review_projection, make_response_completion_receipt,
 )
-from utopia.runtime.checkpointing import canonical_json
+from utopia.runtime.checkpointing import canonical_json, write_portable_checkpoint
 from utopia.system import ArtifactTypeSpec, ChannelKind, ConnectionSpec, MechanismFamily, MechanismSpec, PortSpec, ScheduleSpec
 from utopia.system.code_mechanisms import CodeExecutionError, DockerCodeExecutor
 from utopia.system.design_patch import digest
@@ -104,23 +104,41 @@ def test_native_endpoint_decomposition_is_exact_and_record_changes_are_not_padde
         boundary_layout(a)
 
 
-def numeric_journal(tmp_path, scores):
+def numeric_journal(tmp_path, scores, *, nonreview=False):
     endpoint = numerical_endpoint_not_native(0., response=3., native=-3.)
     endpoint['world'].update(source_commit='scripted-unit', model_digest='scripted-model', corpus_sha256='scripted-corpus', seed=42)
     binding = {'cell': endpoint['system_fingerprint'], 'seed': 42, 'model': 'scripted', 'model_revision': 'scripted-model',
         'corpus_sha256': 'scripted-corpus', 'science_config': {'source_commit': 'scripted-unit'}}
-    journal, wire = tmp_path/'responses.sqlite', tmp_path/'wire.jsonl'
+    from utopia.agents.base_agent import PaperReview
+    from utopia.utils.seeding import derive_seed
+    (tmp_path/'cache').mkdir()
+    journal, wire = tmp_path/'cache/responses.sqlite', tmp_path/'wire.jsonl'
+    checkpoint = tmp_path/'checkpoints/portable_checkpoint_year_1.json.gz'
+    write_portable_checkpoint(checkpoint, {'portable': {'contract': {'binding': binding},
+        'response_cache_count': len(scores)+int(nonreview)}})
+    endpoint.update(checkpoint=str(checkpoint), checkpoint_sha256=file_sha256(checkpoint), response_cache_count=len(scores)+int(nonreview))
     wires = []
     with sqlite3.connect(journal) as db:
         db.execute('CREATE TABLE metadata(binding TEXT)')
         db.execute('INSERT INTO metadata VALUES (?)', (canonical_json(binding),))
-        db.execute('CREATE TABLE replies(payload_sha TEXT,outcome TEXT,data TEXT,data_sha TEXT)')
+        db.execute('CREATE TABLE replies(identity TEXT,payload_sha TEXT,outcome TEXT,data TEXT,data_sha TEXT)')
         for i, score in enumerate(scores):
-            payload = {'model': 'scripted', 'seed': i, 'messages': []}
+            request_seed = derive_seed(binding['seed'], 'phase3_reviews', 1, i, 0)
+            payload = {'model': 'scripted', 'seed': request_seed, 'messages': [],
+                'extra_body': {'structured_outputs': {'json': PaperReview.model_json_schema()}}}
+            identity = hashlib.sha256(canonical_json({'binding': binding, 'seed_ctx': ('phase3_reviews', 1),
+                'item_index': i, 'attempt': 0, 'seed': request_seed}).encode()).hexdigest()
             payload_sha = hashlib.sha256(canonical_json(payload).encode()).hexdigest()
             data = canonical_json({'model': 'scripted', 'choices': [{'message': {'content': json.dumps({'overall_score': score})}}]})
-            db.execute('INSERT INTO replies VALUES (?,?,?,?)', (payload_sha, 'response', data, hashlib.sha256(data.encode()).hexdigest()))
+            db.execute('INSERT INTO replies VALUES (?,?,?,?,?)', (identity, payload_sha, 'response', data, hashlib.sha256(data.encode()).hexdigest()))
             wires.append({'year': 1, 'payload_sha256': payload_sha, 'payload': payload})
+        if nonreview:
+            payload = {'model': 'scripted', 'seed': 0, 'messages': []}
+            sha = hashlib.sha256(canonical_json(payload).encode()).hexdigest()
+            data = canonical_json({'model': 'scripted', 'choices': [{'message': {'content': '{"not_a_review":true}'}}]})
+            db.execute('INSERT INTO replies VALUES (?,?,?,?,?)', (hashlib.sha256(b'nonreview-identity').hexdigest(), sha, 'response', data,
+                hashlib.sha256(data.encode()).hexdigest()))
+            wires.append({'year': 1, 'payload_sha256': sha, 'payload': payload})
     wire.write_text(''.join(json.dumps(row)+'\n' for row in wires))
     return endpoint, journal, wire
 
@@ -140,6 +158,110 @@ def test_raw_reply_projection_retains_native_integer_boundary_and_rejects_hetero
         db.execute('UPDATE replies SET data=?,data_sha=? WHERE rowid=2', (data, hashlib.sha256(data.encode()).hexdigest()))
     with pytest.raises(BoundaryUnsupported, match='heterogeneous'):
         raw_review_projection(endpoint, layout, z, journal=journal, wire=wire, mechanism='math', input_name='features')
+
+
+@pytest.mark.parametrize('tamper', ['full-binding', 'truncate-nonreview', 'wrong-task-score', 'wrong-schema', 'foreign-path'])
+def test_raw_review_proof_rejects_truncation_foreign_binding_task_and_schema(tmp_path, tamper):
+    endpoint, journal, wire = numeric_journal(tmp_path, [3.75, 3.75], nonreview=True)
+    layout, z, _ = boundary_layout(endpoint)
+    raw_review_projection(endpoint, layout, z, journal=journal, wire=wire, mechanism='math', input_name='features')
+    if tamper == 'foreign-path':
+        import shutil
+        foreign = tmp_path/'foreign.sqlite'
+        shutil.copy2(journal, foreign)
+        journal = foreign
+    else:
+        with sqlite3.connect(journal) as db:
+            if tamper == 'full-binding':
+                binding = json.loads(db.execute('SELECT binding FROM metadata').fetchone()[0])
+                binding['protocol'] = 'foreign-protocol-with-same-source-model-cell'
+                db.execute('UPDATE metadata SET binding=?', (canonical_json(binding),))
+            elif tamper == 'truncate-nonreview':
+                db.execute('DELETE FROM replies WHERE rowid=3')
+            elif tamper == 'wrong-task-score':
+                db.execute('UPDATE replies SET identity=? WHERE rowid=1',
+                    (hashlib.sha256(b'nonreview-task-identity').hexdigest(),))
+            else:
+                wires = [json.loads(line) for line in wire.read_text().splitlines()]
+                wires[0]['payload']['extra_body']['structured_outputs']['json'] = {'type': 'object'}
+                sha = hashlib.sha256(canonical_json(wires[0]['payload']).encode()).hexdigest()
+                wires[0]['payload_sha256'] = sha
+                db.execute('UPDATE replies SET payload_sha=? WHERE rowid=1', (sha,))
+                wire.write_text(''.join(json.dumps(r)+'\n' for r in wires))
+    with pytest.raises((ValueError, BoundaryUnsupported)):
+        raw_review_projection(endpoint, layout, z, journal=journal, wire=wire, mechanism='math', input_name='features')
+
+
+@pytest.mark.parametrize('change', ['upper', 'columns', 'mechanism', 'input_name'])
+def test_calibration_requires_full_projection_contract_not_just_equal_indices(monkeypatch, change):
+    monkeypatch.setattr('utopia.optimization.native_response_fidelity.verify_endpoint', lambda *a: None)
+    points = [numerical_endpoint_not_native(x, response=4.25+2*x) for x in (-.25, 0., .25)]
+    evidence = {p['checkpoint_sha256']: {'changed': i == 2} for i, p in enumerate(points)}
+    def projection(endpoint, layout, numeric, *, changed):
+        contract = {'upper': 10, 'score_column': 0, 'count_column': 1, 'mechanism': 'math', 'input_name': 'features'}
+        if changed:
+            if change == 'upper': contract['upper'] = 5
+            elif change == 'columns': contract.update(score_column=1, count_column=0)
+            else: contract[change] = 'other'
+        return numeric, {'kind': 'fixture', 'indices': [0], 'contract': contract}
+    monkeypatch.setattr('utopia.optimization.native_response_fidelity.raw_review_projection', projection)
+    with pytest.raises(BoundaryUnsupported, match='correspondence changes'):
+        NativeResponseOperator.fit(points, DECLARATIONS_UNIT, {}, TERMS_UNIT, numeric_response_evidence=evidence)
+
+
+@pytest.mark.parametrize('change', ['extra-unused', 'missing'])
+def test_numeric_response_evidence_is_exactly_calibration_set_before_selection(monkeypatch, change):
+    monkeypatch.setattr('utopia.optimization.native_response_fidelity.verify_endpoint', lambda *a: None)
+    points = [numerical_endpoint_not_native(x, response=4.25+2*x) for x in (-.25, 0., .25)]
+    evidence = {p['checkpoint_sha256']: {} for p in points}
+    if change == 'extra-unused': evidence[numerical_endpoint_not_native(.1)['checkpoint_sha256']] = {}
+    else: evidence.pop(points[0]['checkpoint_sha256'])
+    with pytest.raises(ValueError, match='exactly the calibration'):
+        NativeResponseOperator.fit(points, DECLARATIONS_UNIT, {}, TERMS_UNIT, numeric_response_evidence=evidence)
+
+
+@pytest.mark.parametrize('atol,rtol', [(float('nan'), 0.), (0., -1.), (float('inf'), 0.), (True, 0.)])
+def test_fidelity_tolerances_are_finite_nonnegative_and_not_bool(monkeypatch, atol, rtol):
+    monkeypatch.setattr('utopia.optimization.native_response_fidelity.verify_endpoint', lambda *a: None)
+    points = [numerical_endpoint_not_native(x, response=4.25+2*x) for x in (-.25, 0., .25)]
+    model = NativeResponseOperator.fit(points, DECLARATIONS_UNIT, {}, TERMS_UNIT)
+    a, b = [numerical_endpoint_not_native(x, response=4.25+2*x) for x in (-.2, .1)]
+    with pytest.raises(ValueError, match='finite nonnegative'):
+        model.validate_unused(a, atol=atol, rtol=rtol)
+    with pytest.raises(ValueError, match='finite nonnegative'):
+        model.integrated_check(a, b, atol=atol, rtol=rtol)
+
+
+def test_finite_delta_agreement_does_not_hide_absolute_endpoint_offset(monkeypatch):
+    monkeypatch.setattr('utopia.optimization.native_response_fidelity.verify_endpoint', lambda *a: None)
+    points = [numerical_endpoint_not_native(x, response=4.25+2*x) for x in (-.25, 0., .25)]
+    model = NativeResponseOperator.fit(points, DECLARATIONS_UNIT, {}, TERMS_UNIT)
+    a, b = [numerical_endpoint_not_native(x, response=4.25+2*x, native=10-(4.25+2*x)) for x in (-.2, .1)]
+    check = model.integrated_check(a, b, quadrature=16)
+    assert check['finite_delta_agreement'] and not check['absolute_endpoint_fidelity']
+    assert check['status'] == 'failed-unused-native-finite-path-fidelity'
+
+
+def test_future_owner_completion_receipt_is_explicit_hashbound_not_retroactive_authentication(tmp_path):
+    from types import SimpleNamespace
+    from utopia.models.response_cache import CompletedResponseCache
+    endpoint, journal, wire = numeric_journal(tmp_path, [3.75, 3.75])
+    layout, z, _ = boundary_layout(endpoint)
+    args = dict(journal=journal, wire=wire, mechanism='math', input_name='features')
+    _, initial = raw_review_projection(endpoint, layout, z, **args)
+    assert initial['completion_provenance']['status'] == 'no-run-completion-receipt'
+    with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
+        owner = SimpleNamespace(path=journal, _db=db, binding=json.loads(db.execute('SELECT binding FROM metadata').fetchone()[0]),
+            committed_count=lambda: db.execute('SELECT count(*) FROM replies').fetchone()[0])
+        owner.committed_prefix_identity = lambda: CompletedResponseCache.committed_prefix_identity(owner)
+        receipt = make_response_completion_receipt(endpoint, owner, wire, run_manifest_sha256='a'*64)
+    _, verified = raw_review_projection(endpoint, layout, z, completion_receipt=receipt, **args)
+    assert verified['completion_provenance']['status'] == 'hashbound-caller-supplied-completion-assertion'
+    assert not verified['completion_provenance']['timing_authenticated']
+    receipt['response_prefix']['rows_sha256'] = 'b'*64
+    receipt['content_sha256'] = digest({k: v for k, v in receipt.items() if k != 'content_sha256'})
+    with pytest.raises(ValueError, match='completion receipt differs'):
+        raw_review_projection(endpoint, layout, z, completion_receipt=receipt, **args)
 
 
 SIGNAL_SOURCE = """def step(context):

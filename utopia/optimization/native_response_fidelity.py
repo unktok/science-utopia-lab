@@ -18,7 +18,7 @@ import torch
 from .loss import evaluate_loss
 from .native_hybrid import native_endpoint
 from .native_relaxation import replay_tensor_trace, trace_objective
-from utopia.runtime.checkpointing import canonical_json
+from utopia.runtime.checkpointing import canonical_json, read_portable_checkpoint
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.tensor_program import execute_tensor_program
@@ -100,53 +100,147 @@ def boundary_layout(endpoint, *, record_keys=('paper_id', 'conference_id')):
     return layout, torch.tensor(values, dtype=DTYPE), digest(signature)
 
 
+def make_response_completion_receipt(endpoint, response_cache, wire, *, run_manifest_sha256):
+    """Future run-owner completion hook, NOT a retrospective audit seal.
+
+    The owner persists this in its completion manifest before other analyses.
+    Hash binding is verifiable; the caller's timing/authorship remains asserted,
+    not authenticated. This function writes nothing and performs no model call.
+    """
+    checkpoint = Path(endpoint['checkpoint']).resolve()
+    journal, wire = Path(response_cache.path).resolve(), Path(wire).resolve()
+    if (journal != checkpoint.parent.parent/'cache/responses.sqlite'
+            or wire != checkpoint.parent.parent/'wire.jsonl'
+            or file_sha256(checkpoint) != endpoint['checkpoint_sha256']
+            or not _sha256(run_manifest_sha256)):
+        raise ValueError('completion receipt requires actual checkpoint/cache/wire and run manifest hash')
+    saved = read_portable_checkpoint(checkpoint)
+    if (response_cache.binding != saved['portable']['contract']['binding']
+            or response_cache.committed_count() != saved['portable']['response_cache_count']
+            or response_cache.committed_count() != endpoint['response_cache_count']):
+        raise ValueError('completion receipt cache differs from completed native checkpoint')
+    value = {'schema': 'scienceutopia.native-response-completion-receipt.v8',
+        'checkpoint_sha256': endpoint['checkpoint_sha256'], 'system_fingerprint': endpoint['system_fingerprint'],
+        'journal_sha256': file_sha256(journal), 'wire_sha256': file_sha256(wire),
+        'response_prefix': response_cache.committed_prefix_identity(), 'run_manifest_sha256': run_manifest_sha256,
+        'creation_scope': 'run-owner-asserted-completion-hook', 'timing_authenticated': False}
+    if value['journal_sha256'] != file_sha256(journal) or value['wire_sha256'] != file_sha256(wire):
+        raise ValueError('completion evidence changed while capturing the owner receipt')
+    value['content_sha256'] = digest(value)
+    return value
+
+
+def _sha256(value):
+    return isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value)
+
+
 def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mechanism, input_name,
-                          score_column=0, count_column=1, upper=10):
+                          score_column=0, count_column=1, upper=10, completion_receipt=None):
     """Verified uniform numeric-reply cohort -> original int() review features.
 
     This optional adapter refuses heterogeneous unassigned replies. It does not
     infer an individual LLM Jacobian or average away different behavior.
     """
-    journal, wire = Path(journal), Path(wire)
+    from utopia.agents.base_agent import PaperReview
+    from utopia.utils.seeding import derive_seed
+    if type(upper) is not int or upper < 1:
+        raise ValueError('native positive-int projection requires an explicit positive integer upper bound')
+    journal, wire = Path(journal).resolve(), Path(wire).resolve()
+    checkpoint = Path(endpoint['checkpoint']).resolve()
+    root = checkpoint.parent.parent
+    if journal != root/'cache/responses.sqlite' or wire != root/'wire.jsonl':
+        raise ValueError('raw review evidence must be the actual checkpoint sibling journal/wire')
+    if file_sha256(checkpoint) != endpoint['checkpoint_sha256']:
+        raise ValueError('actual review checkpoint content changed')
+    saved = read_portable_checkpoint(checkpoint)
     before = (file_sha256(journal), file_sha256(wire))
     with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
         metadata = db.execute('SELECT binding FROM metadata').fetchall()
-        replies = db.execute('SELECT payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        replies = db.execute('SELECT identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
     if len(metadata) != 1:
         raise ValueError('actual numeric response journal has no unique binding')
     b = json.loads(metadata[0][0])
+    if (b != saved['portable']['contract']['binding']
+            or len(replies) != saved['portable']['response_cache_count']
+            or len(replies) != endpoint['response_cache_count']):
+        raise ValueError('raw response full binding/count differs from actual completed checkpoint')
     world = endpoint['world']
     if (b['cell'] != endpoint['system_fingerprint'] or b['seed'] != world['seed']
             or b['science_config']['source_commit'] != world['source_commit']
             or b['model_revision'] != world['model_digest'] or b['corpus_sha256'] != world['corpus_sha256']):
         raise ValueError('raw response identity differs from actual native endpoint')
     wires = [json.loads(line) for line in wire.read_text().splitlines()]
-    by_year, offset = {}, 0
-    for payload_sha, outcome, data, data_sha in replies:
-        if outcome != 'response' or hashlib.sha256(data.encode()).hexdigest() != data_sha:
+    if len(wires) != len(replies) or len({r['payload_sha256'] for r in wires}) != len(wires):
+        raise ValueError('raw response/wire are not exact fresh one-to-one physical calls')
+    completion_provenance = {'status': 'no-run-completion-receipt', 'timing_authenticated': False,
+        'hash_scope': 'current-read-only-bytes-not-a-historical-run-completion-seal'}
+    if completion_receipt is not None:
+        receipt = completion_receipt
+        prefix = {'schema': 'scienceutopia.completed-response-prefix.v1', 'response_count': len(replies),
+            'binding_sha256': hashlib.sha256(canonical_json(b).encode()).hexdigest(),
+            'rows_sha256': hashlib.sha256(canonical_json([[i, p, o, h] for i, p, o, d, h in replies]).encode()).hexdigest()}
+        if (not isinstance(receipt, dict) or set(receipt) != {'schema', 'checkpoint_sha256', 'system_fingerprint',
+                'journal_sha256', 'wire_sha256', 'response_prefix', 'run_manifest_sha256', 'creation_scope',
+                'timing_authenticated', 'content_sha256'}
+                or receipt['schema'] != 'scienceutopia.native-response-completion-receipt.v8'
+                or receipt['content_sha256'] != digest({k: v for k, v in receipt.items() if k != 'content_sha256'})
+                or receipt['checkpoint_sha256'] != endpoint['checkpoint_sha256']
+                or receipt['system_fingerprint'] != endpoint['system_fingerprint']
+                or receipt['journal_sha256'] != before[0] or receipt['wire_sha256'] != before[1]
+                or receipt['response_prefix'] != prefix or not _sha256(receipt['run_manifest_sha256'])
+                or receipt['creation_scope'] != 'run-owner-asserted-completion-hook' or receipt['timing_authenticated'] is not False):
+            raise ValueError('caller-supplied completion receipt differs from actual native evidence')
+        completion_provenance = {'status': 'hashbound-caller-supplied-completion-assertion',
+            'content_sha256': receipt['content_sha256'], 'run_manifest_sha256': receipt['run_manifest_sha256'],
+            'timing_authenticated': False, 'hash_scope': 'verified-provided-receipt-not-independent-proof-of-creation-time'}
+    selected = [e for e in layout if e['mechanism'] == mechanism and e['input'] == input_name]
+    if not selected or len({e['year'] for e in selected}) != len(selected):
+        raise BoundaryUnsupported('one explicitly selected actual review boundary per year required')
+    task_schema = PaperReview.model_json_schema()
+    review_requests = {}
+    for entry in selected:
+        shape = entry['shape']
+        if (type(score_column) is not int or type(count_column) is not int or score_column == count_column
+                or min(score_column, count_column) < 0 or len(shape) != 2 or max(score_column, count_column) >= shape[1]):
+            raise BoundaryUnsupported('review boundary is not the declared numeric score/count matrix')
+        original = native_values[entry['offset']:entry['offset']+entry['size']].reshape(shape)
+        counts = original[:, count_column].tolist()
+        if any(c < 0 or c != int(c) for c in counts):
+            raise BoundaryUnsupported('review count column must contain actual nonnegative integer counts')
+        for item in range(int(sum(counts))):
+            for attempt in range(3):
+                ctx = ('phase3_reviews', entry['year'])
+                seed = derive_seed(b['seed'], *ctx, item, attempt)
+                identity = hashlib.sha256(canonical_json({'binding': b, 'seed_ctx': ctx,
+                    'item_index': item, 'attempt': attempt, 'seed': seed}).encode()).hexdigest()
+                review_requests[identity] = {'year': entry['year'], 'seed': seed, 'item': item, 'attempt': attempt}
+    by_year = {}
+    for row, (identity, payload_sha, outcome, data, data_sha) in zip(wires, replies):
+        if (outcome != 'response' or any(not _sha256(s) for s in (identity, payload_sha, data_sha))
+                or hashlib.sha256(data.encode()).hexdigest() != data_sha):
             raise ValueError('raw numeric reply content hash differs')
-        while offset < len(wires) and wires[offset]['payload_sha256'] != payload_sha:
-            offset += 1
-        if offset == len(wires):
-            raise ValueError('completed numeric reply lacks actual ordered HTTP input')
-        row = wires[offset]
-        offset += 1
         response = json.loads(data)
-        if (response['model'] != b['model'] or hashlib.sha256(canonical_json(row['payload']).encode()).hexdigest() != payload_sha):
+        if (row['payload_sha256'] != payload_sha or response['model'] != b['model'] or row['payload']['model'] != b['model']
+                or hashlib.sha256(canonical_json(row['payload']).encode()).hexdigest() != payload_sha):
             raise ValueError('raw numeric reply/payload/model binding differs')
         try:
             body = json.loads(response['choices'][0]['message']['content'])
         except (ValueError, KeyError, IndexError, TypeError):
             continue
         if isinstance(body, dict) and 'overall_score' in body:
+            proof = review_requests.get(identity)
+            payload = row['payload']
+            actual_seed = payload.get('seed', payload.get('extra_body', {}).get('seed'))
+            schema = (payload.get('extra_body', {}).get('structured_outputs', {}).get('json')
+                or payload.get('response_format', {}).get('json_schema', {}).get('schema'))
+            if proof is None or proof['year'] != row['year'] or actual_seed != proof['seed'] or schema != task_schema:
+                raise BoundaryUnsupported('numeric score lacks actual original phase3 review cache identity/schema proof')
             value = body['overall_score']
             if type(value) not in (float, int) or not math.isfinite(value) or not 0 <= value <= upper:
                 raise BoundaryUnsupported('raw review score outside declared positive int projection')
-            by_year.setdefault(row['year'], []).append({'value': value, 'payload_sha256': payload_sha, 'response_sha256': data_sha})
+            by_year.setdefault(row['year'], []).append({'value': value, 'payload_sha256': payload_sha,
+                'response_sha256': data_sha, 'cache_identity': identity, 'original_review_task': proof})
     raw, indices, cohorts = native_values.clone(), [], []
-    selected = [e for e in layout if e['mechanism'] == mechanism and e['input'] == input_name]
-    if not selected or len({e['year'] for e in selected}) != len(selected):
-        raise BoundaryUnsupported('one explicitly selected actual review boundary per year required')
     for entry in selected:
         shape = entry['shape']
         if len(shape) != 2 or max(score_column, count_column) >= shape[1]:
@@ -177,6 +271,12 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
     if before != (file_sha256(journal), file_sha256(wire)):
         raise ValueError('raw response evidence changed during read-only extraction')
     return raw, {'kind': 'positive-int-truncation', 'indices': indices, 'upper': upper,
+        'contract': {'mechanism': mechanism, 'input_name': input_name, 'score_column': score_column,
+            'count_column': count_column, 'upper': upper, 'native_parser': 'int-positive-truncation',
+            'task_schema_sha256': digest(task_schema), 'original_task_seed_ctx': 'phase3_reviews'},
+        'checkpoint_sha256': endpoint['checkpoint_sha256'], 'checkpoint_response_count': len(replies),
+        'full_checkpoint_binding_sha256': digest(b),
+        'completion_provenance': completion_provenance,
         'journal': str(journal.resolve()), 'journal_sha256': before[0], 'wire': str(wire.resolve()),
         'wire_sha256': before[1], 'cohorts': cohorts,
         'correspondence': 'uniform actual reply cohort only; no heterogeneous averaging or imputed identities'}
@@ -291,6 +391,11 @@ class NativeResponseOperator:
         first = endpoints[0]
         if len({p['checkpoint_sha256'] for p in endpoints}) != len(endpoints):
             raise ValueError('duplicate physical calibration endpoint is not a replicate')
+        if numeric_response_evidence is not None and (not isinstance(numeric_response_evidence, dict)
+                or set(numeric_response_evidence) != {p['checkpoint_sha256'] for p in endpoints}):
+            raise ValueError('numeric response evidence keys must be exactly the calibration checkpoints; no unused extras')
+        if type(rank_rtol) not in (float, int) or not math.isfinite(rank_rtol) or rank_rtol <= 0:
+            raise ValueError('response rank tolerance must be finite positive')
         layouts, raw_values, projections = [], [], []
         for endpoint in endpoints:
             verify_endpoint(endpoint, declarations, loss_spec)
@@ -304,8 +409,8 @@ class NativeResponseOperator:
                 raw, projection = raw_review_projection(endpoint, layout, numeric,
                     **numeric_response_evidence[endpoint['checkpoint_sha256']])
             else:
-                raw, projection = numeric, {'kind': 'identity-post-native-boundary', 'indices': []}
-            if projections and {k: projection[k] for k in ('kind', 'indices')} != {k: projections[0][k] for k in ('kind', 'indices')}:
+                raw, projection = numeric, {'kind': 'identity-post-native-boundary', 'indices': [], 'contract': {'parser': 'identity'}}
+            if projections and {k: projection[k] for k in ('kind', 'indices', 'contract')} != {k: projections[0][k] for k in ('kind', 'indices', 'contract')}:
                 raise BoundaryUnsupported('native parser correspondence changes across calibration')
             raw_values.append(raw)
             projections.append(projection)
@@ -383,6 +488,7 @@ class NativeResponseOperator:
 
     def validate_unused(self, endpoint, *, atol=1e-3, rtol=1e-4):
         self._check()
+        _tolerances(atol, rtol)
         if endpoint['checkpoint_sha256'] in {p['checkpoint_sha256'] for p in self.state['calibration']}:
             raise ValueError('unused verification endpoint was calibration data')
         verify_endpoint(endpoint, self.state['declarations'], self.state['loss_spec'])
@@ -407,6 +513,7 @@ class NativeResponseOperator:
             'representation_sha256': self._hash, 'full_native_world_autograd': False}
 
     def integrated_check(self, left, right, *, quadrature=128, atol=1e-2, rtol=1e-3):
+        _tolerances(atol, rtol)
         if type(quadrature) is not int or not 16 <= quadrature <= 512:
             raise ValueError('bounded declared path quadrature required')
         validations = [self.validate_unused(p, atol=atol, rtol=rtol) for p in (left, right)]
@@ -427,13 +534,16 @@ class NativeResponseOperator:
         actual_delta = right['native_loss']-left['native_loss']
         numerical_error = abs(integral-endpoint_delta)
         error = abs(integral-actual_delta)
-        passed = numerical_error <= atol and error <= atol+rtol*abs(actual_delta)
+        delta_agreement = numerical_error <= atol and error <= atol+rtol*abs(actual_delta)
+        endpoint_agreement = all(v['status'] == 'passed-unused-native-endpoint' for v in validations)
+        passed = delta_agreement and endpoint_agreement
         return {'status': 'passed-unused-native-finite-path-check' if passed else 'failed-unused-native-finite-path-fidelity',
             'predicted_finite_delta': integral, 'represented_endpoint_delta': endpoint_delta,
             'actual_native_delta': actual_delta, 'predicted_average_directional_derivative': integral/distance,
             'actual_native_secant': actual_delta/distance, 'frozen_boundary_predicted_finite_delta': frozen,
             'frozen_boundary_native_error': abs(frozen-actual_delta), 'response_aware_native_error': error,
             'representation_quadrature_error': numerical_error, 'quadrature': quadrature,
+            'finite_delta_agreement': delta_agreement, 'absolute_endpoint_fidelity': endpoint_agreement,
             'point_gradient_at_midpoint': self.backward(((a+b)*.5).tolist()), 'endpoint_checks': validations,
             'atol': atol, 'rtol': rtol, 'representation_sha256': self._hash,
             'scope': 'Path integral of fitted-model autograd versus an unused finite native endpoint difference; NOT a native point Jacobian.',
@@ -462,3 +572,8 @@ class NativeResponseOperator:
         for endpoint in value['verification_endpoints']:
             refitted.validate_unused(endpoint)
         return refitted
+
+
+def _tolerances(atol, rtol):
+    if any(type(v) not in (int, float) or not math.isfinite(v) or v < 0 for v in (atol, rtol)):
+        raise ValueError('fidelity tolerances must be finite nonnegative scalars')

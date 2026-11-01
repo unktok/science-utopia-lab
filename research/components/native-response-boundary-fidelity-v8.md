@@ -110,8 +110,13 @@ the same predeclared controls/temperature selection above, in addition to the
 one failed partial attempt. No result from the failed pin is silently relabelled
 as this extension. Separately, two compatibility comparisons each use one
 continuous six-year reference and one interrupted/cold-resumed society:
-(i) baseline spec with registry absent versus present proves default-off exact
-request/reply identity and scientific-state equivalence; (ii) the opt-in spec
+(i) at `01992cd`, baseline spec with optional handlers absent versus present
+proved default-off exact request/reply identity and scientific-state equivalence;
+after builtin registration, the same comparison proves extension idempotence,
+not handler absence. Separately, the original `test_original_world_is_an_exact_instance`
+compares the original Simulation coordinator (no native registry) against the
+production native kernel and checks all request payloads/scientific state exactly;
+(ii) the opt-in spec
 proves review authorization/dedup and final native state survive replay. These
 four logical compatibility worlds and their two interrupted physical attempts
 are developer regressions, not additional fidelity endpoints or independent
@@ -141,3 +146,70 @@ developer regression, not selective resampling or actual-Qwen evidence. The
 previous five completed worlds and first partial failure remain separately
 accounted. The new command captures a transcript and completed endpoint receipt
 under a new explicit output base, never overwriting either previous batch.
+
+## Independent receipt review and no-forward analysis amendment
+
+The seven-world `bfe83c0` batch passed (64.12s), with all raw/checkpoint/operator
+files retained. Subsequent independent review found ordinary provenance gaps:
+the initial raw numeric adapter checked only part of the SQL binding, could
+mistake another task's `overall_score` for a review, did not compare the complete
+parse/projection contract across fits, and did not exclude extra unused evidence
+keys. These are implementation defects, not research limitations. The hardening
+binds exact checkpoint bytes, standard sibling SQL/wire paths, full checkpoint
+binding and completed row count; it verifies every wire/reply byte hash and
+proves the original phase3 cache identity, derived request seed, and PaperReview
+request schema before attributing numeric replies. All calibration evidence keys
+must equal exactly the calibration checkpoint hashes. Mechanism/input/columns/
+integer parser/domain and indices must remain identical across all fit points.
+Invalid tolerances are rejected, and a matching finite delta is separately
+labelled from absolute endpoint fidelity (a constant-offset model cannot pass).
+
+No native worlds are rerun for these receipt fixes. Read-only analysis preserves
+the original native source pin and saved operator file/content/module hashes,
+checks the historically recorded three calibration SQL/wire hashes, refits the
+same native endpoints under an explicitly labelled stronger representation, and
+saves/reloads the new operator outside old raw. The old native checkpoint format
+stores cache count, not a SQL-file SHA: this distinction is retained. For the
+four unused/proposed/outside worlds the evidence is actual checkpoint/full
+binding/count/task proof plus current immutable raw snapshot, not an invented
+historical checkpoint-stored SQL-file hash. Full-directory before/after hashes
+cover read-only extraction and durable semantic reload. New forward/model calls
+are zero. This amendment never silently relabels the old representation source.
+
+For future runs, `make_response_completion_receipt(endpoint, response_cache,
+wire, run_manifest_sha256=...)` lets the existing run owner capture the actual
+`CompletedResponseCache.committed_prefix_identity()` together with checkpoint,
+SQL/wire hashes and manifest reference at its completion hook. It returns data
+without writing or invoking models. `raw_review_projection(...,
+completion_receipt=...)` requires exact receipt/prefix/hash agreement when such
+a receipt is supplied. Neither API authenticates caller identity or wall-clock
+timing: the status explicitly says caller-supplied completion assertion. Existing
+v8 endpoints have **no** such completion receipt; the auditor does not call this
+hook retrospectively or promote posthoc checksums into historical run seals.
+
+## Scripted implementation result (native source bfe83c0)
+
+All seven original six-year worlds completed, each with four original fixture
+researchers and234 fresh scripted researcher/model replies. Production registry
+dispatch needs no special callback. Calibration controls `[-.25,0,.25]` produced
+native losses `[-72,-96,-96]`; calibration-only RMSE chose temperature0.01 from
+the four predeclared candidates. The two unused controls `[-.20,.10]` produced
+`[-72,-96]`. Their true finite loss difference is-24. Frozen-response autograd
+predicts0 (error24); the fitted response-aware path integral predicts
+-23.999976380018477 (error0.0000236199815). Absolute unused-endpoint checks also
+pass, and the decomposition assigns the-24 difference to actual response drift.
+This is a finite interval check of a developer-scripted response rule, **not** a
+proof of native pointwise differentiability or of fidelity to Qwen.
+
+The point gradient at control0 is approximately-3.21e-8, distinct from the finite
+path average approximately-80. A gradient-integral-guided projected control
+0.1599998425334565 reevaluates to native loss-96: it ties the center, not an
+improvement over it. The extra outside-support world at0.6 has native loss-120,
+but the representation correctly refuses extrapolation and reports predicted
+loss/gradient as null. This favorable outside observation does not expand
+calibration support after looking at it. Conditional multi-node/recurrent
+backward, native hard execution, original int parsing, semantic reload and
+tamper rejection were exercised. No full-native autograd/LLM Jacobian claim is
+made. The incomplete source84701f3 partial attempt and source01992cd five-world
+batch remain separately accounted, rather than omitted from implementation
+history or treated as independent scientific repetitions.
