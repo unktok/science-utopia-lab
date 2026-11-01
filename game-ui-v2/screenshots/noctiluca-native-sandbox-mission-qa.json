@@ -1,0 +1,18 @@
+{
+  "fixture_api": true,
+  "execution_endpoints_blocked": true,
+  "contracts_created": 2,
+  "prior_contracts_separate": true,
+  "recorded_jobs": 0,
+  "explicit_consent_still_required": true,
+  "mobile_overflow": false,
+  "api_requests": [
+    "GET /native-api/session",
+    "POST /native-api/validate"
+  ],
+  "screenshots": [
+    "noctiluca-native-sandbox-mission-desktop.png",
+    "noctiluca-native-sandbox-mission-mobile.png"
+  ],
+  "errors": []
+}

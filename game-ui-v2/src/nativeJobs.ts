@@ -1,4 +1,5 @@
 // Browser edits are data. Only the separate, commit-pinned worker executes jobs.
+import { initializeNativeMission, type NativeMissionController } from "./nativeMissionView";
 const item = <T extends HTMLElement>(id: string): T => {
   const node = document.getElementById(id);
   if (!node) throw new Error(`Missing design workbench element ${id}`);
@@ -22,10 +23,11 @@ export function designRequest(parent: unknown, systemText: string, lossText: str
 export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence: (value: unknown) => Promise<void>): void {
   const panel = item<HTMLDetailsElement>("design-console"), system = item<HTMLTextAreaElement>("design-system"), loss = item<HTMLTextAreaElement>("design-loss");
   const validate = item<HTMLButtonElement>("design-validate"), submit = item<HTMLButtonElement>("design-submit"), result = item<HTMLButtonElement>("design-result"), consent = item<HTMLInputElement>("design-consent");
-  let parent: unknown, token = "", validated = "", jobId = "", initialized = false, timer: number | undefined;
+  let parent: unknown, token = "", validated = "", jobId = "", initialized = false, timer: number | undefined, lastJob: any = null, mission: NativeMissionController | undefined;
   const request = (): Record<string, unknown> => designRequest(parent, system.value, loss.value, Number(item<HTMLInputElement>("design-seed").value), Number(item<HTMLInputElement>("design-years").value));
   const error = (value: unknown): void => { item("design-job-error").hidden = false; item("design-job-error").textContent = String(value); };
-  const changed = (): void => { validated = ""; consent.checked = false; submit.disabled = true; item("design-validation").textContent = "Edited design needs validation and renewed consent. No experiment submitted."; };
+  const refreshSubmit = (): void => { submit.disabled = !validated || !consent.checked || !mission?.canSubmit().ok; };
+  const changed = (): void => { validated = ""; consent.checked = false; refreshSubmit(); item("design-validation").textContent = "Edited design or mission needs validation and renewed consent. No experiment submitted."; };
   const copy = (): void => {
     try { parent = selectedSystem(); system.value = JSON.stringify(parent, null, 2); loss.value = JSON.stringify(nativeEngineeringLoss, null, 2); item("design-parent").textContent = "Parent captured from the selected system. Edit source, nodes, ports, wiring, schedules or parameters below."; system.dispatchEvent(new Event("input", { bubbles: true })); loss.dispatchEvent(new Event("input", { bubbles: true })); changed(); } catch (failure) { error(failure); }
   };
@@ -38,11 +40,13 @@ export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence
     if (!jobId) return;
     try {
       const job = await api(`jobs/${jobId}`);
+      lastJob = job;
       item("design-job-status").textContent = job.status === "complete" ? `COMPLETE / ACTUAL NATIVE LOSS ${job.result.native_loss}` : job.status === "failed" ? "TECHNICAL FAILURE / NO LOSS ASSIGNED" : `${String(job.status).toUpperCase()} / SAVED YEAR ${job.checkpoint_year ?? 0} OF ${job.years} / NO MEASURED RESULT YET`;
       item("design-job-id").textContent = jobId;
       item("design-job-provenance").textContent = `RUN SOURCE ${String(job.source_commit).slice(0, 12)} / DEVELOPMENT SEED ${job.seed} / ${job.years} YEARS / LOSS ${job.loss_id ?? "recorded request"}`;
       result.disabled = job.status !== "complete";
       if (job.error) error(job.error);
+      if (job.status === "failed") mission?.observeFailure(job);
       if (job.status === "queued" || job.status === "running") timer = window.setTimeout(() => { void poll(); }, 2000);
     } catch (failure) { error(failure); }
   };
@@ -56,27 +60,32 @@ export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence
       if (jobId) void poll();
     }).catch(() => { item("design-service").textContent = "OFFLINE / START serve_native_lab.py TO SUBMIT"; });
   });
+  mission = initializeNativeMission(loss, changed);
   item("design-reset").addEventListener("click", copy);
   for (const control of [system, loss, item("design-seed"), item("design-years")]) control.addEventListener("input", changed);
-  consent.addEventListener("change", () => { submit.disabled = !validated || !consent.checked; });
+  consent.addEventListener("change", refreshSubmit);
   validate.addEventListener("click", () => {
     void (async () => { try {
       item("design-job-error").hidden = true;
       const body = request(), checked = await api("validate", body);
-      validated = JSON.stringify(body); submit.disabled = !consent.checked;
+      validated = JSON.stringify(body); refreshSubmit();
       item("design-validation").textContent = `STRUCTURALLY VALID / ${String(checked.candidate_fingerprint).slice(0, 16)} / NOT EXECUTED`;
     } catch (failure) { changed(); error(failure); } })();
   });
   submit.addEventListener("click", () => {
     void (async () => { try {
       const body = request();
+      const missionGuard = mission?.canSubmit();
+      if (!missionGuard?.ok) throw new Error(missionGuard?.reason || "Lock a mission contract first");
       if (!consent.checked || validated !== JSON.stringify(body)) throw new Error("Validate the exact edited design and explicitly authorize its execution first");
       submit.disabled = true; validated = ""; consent.checked = false;
-      const job = await api("jobs", body); jobId = job.job_id;
+      const job = await api("jobs", body);
+      mission!.linkJob({ job_id: String(job.job_id), request_sha256: String(job.request_sha256) });
+      jobId = job.job_id;
       try { sessionStorage.setItem("native-lab-job", jobId); } catch { /* no storage required */ }
       if (timer !== undefined) clearTimeout(timer);
       await poll();
     } catch (failure) { error(failure); } })();
   });
-  result.addEventListener("click", () => { void (async () => { try { await loadEvidence(await api(`jobs/${jobId}/evidence`)); item("design-validation").textContent = "Loaded completed native evidence. Original run was not modified."; } catch (failure) { error(failure); } })(); });
+  result.addEventListener("click", () => { void (async () => { try { if (!lastJob || lastJob.status !== "complete") throw new Error("Completed job metadata is unavailable"); await loadEvidence(await api(`jobs/${jobId}/evidence`)); mission?.observeEvidence(lastJob); item("design-validation").textContent = "Loaded completed native evidence. Actual loss was added once to its original mission contract."; } catch (failure) { error(failure); } })(); });
 }
