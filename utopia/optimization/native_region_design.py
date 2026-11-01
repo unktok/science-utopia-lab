@@ -131,9 +131,16 @@ def probe_region(parent, child, records, *, executor, exit_validator=None):
         key = row['binding']['run_id'], row['context']['period']
         node = matches[0].mechanism_id
         slot = groups.setdefault(key, {})
-        if node in slot and slot[node]['bundle_sha256'] != row['bundle_sha256']:
-            raise ValueError('conflicting repeated native boundary execution')
-        slot[node] = row
+        if node in slot:
+            previous = slot[node]
+            if (any(previous[k] != row[k] for k in ('binding', 'artifact', 'context', 'result'))
+                    or previous['receipt']['image_id'] != row['receipt']['image_id']):
+                raise ValueError('conflicting repeated native boundary execution')
+            # Crash/replay can append the identical semantic call with a new
+            # operational wall time. Preserve the first raw receipt; do not
+            # discard or call a timing-only difference a conflicting outcome.
+        else:
+            slot[node] = row
     if not groups:
         raise ValueError('nonempty actual native boundary probes required')
     by_run = {}
@@ -238,7 +245,9 @@ def probe_selection_region(parent, child, records, *, executor, original_node='w
         if not signals or any(v['payload'].get('year') != period for v in signals):
             raise ValueError('publication control signal must refer to the actual native year')
     result = probe_region(parent, child, records, executor=executor, exit_validator=validate_exits)
-    original = {(r['binding']['run_id'], r['context']['period']): r for r in records}
+    original = {}
+    for row in records:
+        original.setdefault((row['binding']['run_id'], row['context']['period']), row)
     for run in result['runs']:
         row = original[(run['run_id'], run['year'])]
         run['native_boundary_bundle_sha256'] = row['bundle_sha256']

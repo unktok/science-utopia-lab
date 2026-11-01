@@ -1,4 +1,5 @@
 import json
+from copy import deepcopy
 
 import pytest
 
@@ -122,3 +123,31 @@ def test_source_probe_rejects_missing_early_year_even_if_late_parent_memory_exis
     assert rows[1]['context']['state']  # old behavior silently adopted this memory
     with pytest.raises(ValueError, match='contiguous source trajectory'):
         probe_source_trajectory(controller.initial, node, node.parameters['code_artifact'], rows[1:], executor=executor)
+
+
+def test_source_repair_prompt_is_stable_after_sorted_json_disk_reload(recorded_selection, tmp_path):
+    controller, _, executor, provider = recorded_selection
+    source = next(n for n in controller.initial.mechanisms if n.mechanism_id == 'world.selection').parameters['code_artifact']['source']
+    class Repair(Model):
+        def generate(self, **kwargs):
+            self.source = 'def step(context):\n    return None' if not self.prompts else source
+            return super().generate(**kwargs)
+    model = Repair(source)
+    proposer = NativeFreeSourceRevisionProposer(model, executor, node_id='world.selection',
+        context_provider=provider, receipts=tmp_path / 'repair')
+    args = controller.initial, controller.state['records'], 1, loss_spec()
+    patch = proposer(*args)
+    assert len(model.prompts) == 2
+    assert proposer(*args) == patch
+    assert len(model.prompts) == 2
+
+
+def test_source_replay_timing_only_duplicate_preserves_first_receipt(recorded_selection):
+    controller, _, executor, provider = recorded_selection
+    node = next(n for n in controller.initial.mechanisms if n.mechanism_id == 'world.selection')
+    rows = provider('world.selection', controller.initial, controller.state['records'])
+    duplicate = deepcopy(rows[0])
+    duplicate['receipt']['wall_seconds'] += 1
+    duplicate['bundle_sha256'] = sha({k: v for k, v in duplicate.items() if k != 'bundle_sha256'})
+    results = probe_source_trajectory(controller.initial, node, node.parameters['code_artifact'], rows + [duplicate], executor=executor)
+    assert len(results) == 6 and results[0]['native_bundle_sha256'] == rows[0]['bundle_sha256']

@@ -40,9 +40,13 @@ def probe_source_trajectory(parent, node, artifact, records, *, executor):
         if row['binding']['system_fingerprint'] != parent.fingerprint or row['artifact'] != node.parameters['code_artifact']:
             raise ValueError('source trajectory is not the exact native parent')
         key = row['binding']['run_id'], row['context']['period']
-        if key in calls and calls[key]['bundle_sha256'] != row['bundle_sha256']:
-            raise ValueError('conflicting repeated source trajectory execution')
-        calls[key] = row
+        if key in calls:
+            previous = calls[key]
+            if (any(previous[k] != row[k] for k in ('binding', 'artifact', 'context', 'result'))
+                    or previous['receipt']['image_id'] != row['receipt']['image_id']):
+                raise ValueError('conflicting repeated source trajectory execution')
+        else:
+            calls[key] = row
     runs = {}
     for run_id, period in calls:
         runs.setdefault(run_id, []).append(period)
@@ -157,7 +161,7 @@ class NativeFreeSourceRevisionProposer:
                 if not self.show_parent_source:
                     prompt = withhold(prompt)
                     prompt['de_novo_design_scope'] = 'The parent implementation is deliberately withheld. Invent an algorithm from interfaces, actual input/output evidence and the exact loss, rather than reconstructing prior outputs. Inherited institution settings describe the prior system, not additional host constraints.'
-                rendered = json.dumps(prompt, ensure_ascii=False, allow_nan=False) + suffix
+                rendered = json.dumps(prompt, sort_keys=True, ensure_ascii=False, allow_nan=False) + suffix
                 if len(rendered.encode()) <= 80000:
                     break
             if len(rendered.encode()) > 80000:

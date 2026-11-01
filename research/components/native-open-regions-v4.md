@@ -16,6 +16,10 @@ is retained, with no native candidate loss. The separately frozen
 [a2 protocol](../protocols/campaigns/native-open-region-v4-a2.md) derives existing
 exclusive phase bounds and retained-node blacklist into the authoring schema.
 This tightens incidental graph syntax guidance, not institution logic.
+The completed [v4 result](../results/native-open-region-v4.md) retains both failed
+live attempts: a2 also exhausted its three drafts. No eligible joint Qwen graph
+or fresh native candidate loss was produced; namespacing alone cannot repair the
+saved manifests' additional port/channel and missing-wiring defects.
 
 Unlike the old selection-only isolated probe, `probe_region` supports any
 recorded Python cut, including multiple removed nodes and a communication region

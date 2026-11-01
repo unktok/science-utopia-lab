@@ -143,6 +143,18 @@ def test_incomplete_chronology_and_forged_receipts_fail(recorded_selection):
         probe_selection_region(campaign.initial, child, records, executor=Forged())
 
 
+def test_identical_crash_replay_with_different_walltime_is_not_a_conflicting_outcome(recorded_selection):
+    campaign, _, executor, provider = recorded_selection
+    _, child = compile_region(campaign.initial, fixture_manifest(), removed_nodes=['world.selection'], image_id=executor.image_id)
+    records = provider('world.selection', campaign.initial, campaign.state['records'])
+    duplicate = deepcopy(records[0])
+    duplicate['receipt']['wall_seconds'] += 1.0
+    duplicate['bundle_sha256'] = sha({k: v for k, v in duplicate.items() if k != 'bundle_sha256'})
+    result = probe_selection_region(campaign.initial, child, records + [duplicate], executor=executor)
+    assert len(result['runs']) == 6
+    assert result['runs'][0]['native_boundary_bundle_sha256'] == records[0]['bundle_sha256']
+
+
 def test_generic_probe_replaces_multiple_existing_python_nodes(recorded_selection):
     campaign, factory, executor, provider = recorded_selection
     patch, parent = compile_region(campaign.initial, fixture_manifest(), removed_nodes=['world.selection'], image_id=executor.image_id)

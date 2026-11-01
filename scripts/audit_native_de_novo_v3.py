@@ -10,6 +10,34 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
+def audit_region_receipt_chain(paths, plan, parent, loss):
+    """Check failed chains too, not only chains ending in an eligible graph."""
+    from utopia.system.code_mechanisms import sha
+    previous_hash = None
+    for path in sorted(paths):
+        receipt = json.loads(path.read_text())
+        prompt = json.loads(path.with_name(path.name.replace('region-', 'region-prompt-', 1)).read_text())
+        binding = receipt['binding']
+        if (receipt['previous_receipt_sha256'] != previous_hash
+                or prompt['previous_receipt_sha256'] != previous_hash
+                or prompt['binding'] != binding
+                or prompt['prompt_sha256'] != receipt['prompt_sha256']
+                or sha(prompt['prompt']) != receipt['prompt_sha256']
+                or binding['parent_fingerprint'] != parent.fingerprint
+                or binding['history_sha256'] != plan['history_sha256']
+                or binding['loss_spec_sha256'] != sha(loss)
+                or binding['native_bundle_sha256s'] != plan['exact_native_context_bundles']
+                or binding['max_attempts'] != plan['max_technical_drafts']
+                or binding['max_tokens'] != plan['max_tokens']
+                or binding['image_id'] != plan['image_id']
+                or binding['removed_nodes'] != ['world.selection']
+                or receipt['loss'] is not None):
+            raise ValueError('joint region technical repair chain changed')
+        previous_hash = receipt['receipt_sha256']
+    return {'checked_drafts': len(paths), 'last_receipt_sha256': previous_hash,
+        'status': 'prompt-draft-repair-loss-context-chain-verified'}
+
+
 def audit_transfer(directory, loss):
     from scripts.prepare_native_de_novo_design import runtime_tree
     from scripts.audit_native_design_loop import audit
@@ -56,6 +84,8 @@ def audit_transfer(directory, loss):
         'prompts': prompts, 'drafts': drafts, 'status': 'proposal-not-complete',
         'baseline_origin': 'reused-upstream-not-rerun', 'baseline_loss': plan['baseline_loss'],
         'raw_output_root': str(directory), 'scientific_quality_or_algorithm_novelty_claim': False}
+    if plan['mode'] == 'region-v4':
+        result['repair_chain'] = audit_region_receipt_chain(paths, plan, parent, loss)
     if plan['source_commit'].startswith('616b6ce'):
         # Preserve the old manifest; the model wrapper overrode the per-call
         # requested cap. This is a configuration limitation, not an extra try.
@@ -89,20 +119,6 @@ def audit_transfer(directory, loss):
         result['generated_protocols'] = sorted({p['artifact_type'] for n in draft['generated']['nodes']
             for direction in ('inputs', 'outputs') for p in n[direction] if p['artifact_type']})
         result['isolated_probe_years'] = [r['year'] for r in draft['runs']]
-        previous_hash = None
-        for path in sorted(paths):
-            receipt = json.loads(path.read_text())
-            prompt = json.loads(path.with_name(path.name.replace('region-', 'region-prompt-', 1)).read_text())
-            if (receipt['previous_receipt_sha256'] != previous_hash
-                    or prompt['previous_receipt_sha256'] != previous_hash
-                    or prompt['binding'] != receipt['binding']
-                    or prompt['prompt_sha256'] != receipt['prompt_sha256']
-                    or receipt['binding']['parent_fingerprint'] != parent.fingerprint
-                    or receipt['binding']['history_sha256'] != plan['history_sha256']
-                    or receipt['binding']['loss_spec_sha256'] != sha(loss)
-                    or receipt['loss'] is not None):
-                raise ValueError('joint region technical repair chain changed')
-            previous_hash = receipt['receipt_sha256']
     elif plan['mode'] == 'region':
         evidence = proposal['evidence']
         _, rebuilt = compile_region(parent, evidence['manifest'], removed_nodes=['world.selection'], image_id=plan['image_id'])

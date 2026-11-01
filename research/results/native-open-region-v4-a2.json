@@ -1,0 +1,38 @@
+{
+  "schema": "scienceutopia.native-open-region.v4.failure-summary",
+  "status": "technical-drafts-exhausted-no-native-candidate",
+  "source_commit": "60653240194ee2ddbf7c755e2565432f6e63298a",
+  "raw_output_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-region-v4-a2/outputs/native-open-region-v4/run",
+  "plan_file_sha256": "1096d92af528287b8bcad4979d55c39be7cd92f77d891d5a079aa4341268938b",
+  "upstream_snapshot_canonical_sha256": "62701084656b12f5adf169207a2af26b50e4e3914762d3cc35c062123e1f171b",
+  "baseline_origin": "reused-frozen-upstream-not-rerun",
+  "baseline_loss": -1.0,
+  "native_runtime_tree_sha256": "dc408aa0a6bbe58d573b55f8a8db00221a243f4c1360f875be501243bc71987f",
+  "model": "qwen3:8b",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "candidate_budget": 1,
+  "technical_drafts": 3,
+  "effective_token_cap": 4096,
+  "fresh_native_worlds": 0,
+  "candidate_loss": null,
+  "independent_reopening_audit": "audit_transfer at pinned6065324 reproduces exhausted budget; strengthened feature audit also verifies exact prompt/draft/repair/loss/context chain for all three failed drafts",
+  "diagnosis": "Explicit phase constraints changed endpoints120/160 to internal125/150, but all drafts retained external node names world.review/world.publication. Field-specific validation rejected the first reserved ID before code execution. All three drafts retained the same two exact source hashes and two edges. No Python was edited, no native candidate loss invented.",
+  "generated_source_sha256s_all_three_drafts": {
+    "world.review": "fcd8bd65ce4f0652e0a29624ae17a3a6d2130482e40a94fffa7709979a2e6634",
+    "world.publication": "846a9b2b48ca3b6bcc17548f1c4191cb009c76e5da300bd6c2ed68f3dbb5b4d1"
+  },
+  "namespace_only_transfer_eligible": false,
+  "namespace_only_transfer_diagnosis": [
+    "Manifest has only two edges between names also used for generated nodes. It does not explicitly supply external entry and exit reconnections. Colliding names make internal/external interpretation ambiguous.",
+    "The edge world.review.world -> world.publication.decisions has channel decision, but the declared source world port has channel artifact.",
+    "Nodes reuse port IDs across inputs and outputs (world, after, decisions), violating the existing graph contract. A node-only namespace rewrite would not change this.",
+    "Adding missing edges or changing port/channel mappings would invent wiring absent from the model output, not merely hygienically rename local identities. No transfer or salvage was performed."
+  ],
+  "drafts": [
+    {"file": "drafts/region-2-0.json", "receipt_sha256": "df6c998401290c48770c021752a05572339cf689a5655369aae7c052cf86f33a", "previous_receipt_sha256": null, "prompt_sha256": "ef7f986edfca2749c1de33d64bf86c461dcbf0432bc167115402632b6be7248b", "prompt_utf8_bytes": 9098, "error_path": "$.nodes[0].mechanism_id", "error": "reserved retained ID world.review"},
+    {"file": "drafts/region-2-1.json", "receipt_sha256": "3257a4385ea59eddb4874016d88d2645e3b6dcc88db6cbe43850066185a3591f", "previous_receipt_sha256": "df6c998401290c48770c021752a05572339cf689a5655369aae7c052cf86f33a", "prompt_sha256": "171fe7f4b71d0f0e926557d2898385f33dab8ab24509e9e5aa757be27bd29ce7", "prompt_utf8_bytes": 15152, "error_path": "$.nodes[0].mechanism_id", "error": "reserved retained ID world.review"},
+    {"file": "drafts/region-2-2.json", "receipt_sha256": "e12b4c1fa6c859d48285e897480654e94e9950841c5c45c0b997d003c2109862", "previous_receipt_sha256": "3257a4385ea59eddb4874016d88d2645e3b6dcc88db6cbe43850066185a3591f", "prompt_sha256": "ae66d10da5675673970b41bd12f234423e4395297103615761902e74e304eddf", "prompt_utf8_bytes": 15154, "error_path": "$.nodes[0].mechanism_id", "error": "reserved retained ID world.review"}
+  ],
+  "further_model_repeats_authorized": false,
+  "scientific_quality_or_algorithm_novelty_claim": false
+}
