@@ -2,7 +2,53 @@
 
 Updated: 2026-11-01
 
-## Parallel native-design / representation work v3 (in progress)
+## Non-scale implementation and evidence v4
+
+The current inventory is [Non-scale integration v4](milestones/2026-11-01-non-scale-integration-v4.md).
+The original native researcher world remains the forward system. Population,
+seed and horizon scale-up remain deferred; no hidden merit/policy veto is added.
+
+- **Seven-world transition experiment complete and recovered.** Read-only
+  independent audit verifies657 requests and all139 archived files unchanged,
+  with zero new inference. Represented derivative-1.92450 disagrees with native
+  secant0; proposal loss-3 ties training best-3. Native fidelity and new-best
+  benefit are NOT established. The old final-auditor failure stays preserved.
+  [Audited result](results/native-transition-v4-recovered.json).
+- **Distribution gradients implemented.** Categorical/Bernoulli REINFORCE uses
+  full native costs and exact policy log-probability autograd (analytic and
+  scripted-native QA). Separate exact OFFLINE fitting on four complete native
+  systems uses80 Adam steps: expected loss-2.5 -> -2.99982144, costs fixed at
+  [-2,-2,-3,-3]. Probabilities change, not code or LLM weights. No new native
+  best, fresh validation or pathwise world derivative is claimed.
+  [Method](components/native-discrete-policy-gradients-v4.md), [bank result](results/native-cost-bank-v4.json).
+- **Broader joint authoring; live generation still fails.** A durable proposer
+  generates Python/protocol/node/edge manifests. Generic multi-node cuts and
+  full chronological candidate-state probes include real researcher-context
+  delivery in scripted native QA. Fixed-wiring source probes also use candidate
+  memory rather than parent memory. Actual Qwen a1/a2 each exhaust3 technical
+  drafts: no eligible region/no native candidate loss. Missing boundary wires
+  and port/channel errors remain, not just naming. [Both failures](results/native-open-region-v4.md).
+- **Same-society migration with durable cold restart.** Explicit annual
+  adoption preserves agents, projects, papers, resources, histories and RNG;
+  memory/queued messages are reconciled explicitly, old event provenance stays
+  intact, and the previous whole society is archived before atomic adoption.
+  Restart validates lineage rooted in the original configured design. Actual
+  native proposals can be explicitly installed; automatic merit selection and
+  designer improvement are NOT claimed. [API/scope](components/native-society-continuation-v4.md).
+- **Visual editing and a minimal game loop.** Nodes/ports/wires/order synchronize
+  with full JSON and undo/redo. Explicit LossSpec/target/trial-cap DESIGN
+  CONTRACTs bind durable jobs and record only completed evidence; deduplication,
+  failed null scores and separated contract histories are tested. Every edit
+  invalidates validation and compute consent. Browser QA is fixture-labelled
+  and starts no live job. Not a full management game/browser migration control.
+  [Visual UI](tracks/native-design-ui-v4.md).
+
+No v4 inference/native experiment process remains running. The prior source-only
+v3 loss path[-1,-1,-3] is separate positive count-objective evidence. The paper
+now includes native fidelity failure, exact bank fitting, society migration and
+visual editing. Its concept figure describes goals, not completed capabilities.
+
+## Previous v3 implementation snapshot (historical, superseded above)
 
 The [v3 implementation](components/native-open-design-and-transition-representation-v3.md)
 adds exact recorded native code inputs, generic existing-node source revision,
@@ -10,7 +56,7 @@ parent-source-withheld design, and a compiler for joint Python/protocol/node/
 wiring regions. The region compiler passes actual native-world scripted QA;
 this is not evidence of Qwen institutional invention. A separate composed
 annual-transition autograd representation is implemented and tested. Its native
-calibration/validation campaign remains active from clean pinned8a114f3, with
+calibration/validation campaign ran from clean pinned8a114f3, with
 an explicit Python startup hash seed and shared single-inference queue.
 The original researcher world stays the real forward simulator.
 
@@ -19,8 +65,8 @@ re-extraction/refitting produces represented annual gradients
 [0,-1.66666665625,-1.66666666042] at the declared[.325]*3 query. Autograd agrees
 with central differences of that same fitted graph to8.51e-12 maximum absolute
 error. This is now native-data-calibrated backward evidence, not only a numeric
-fixture. The two unused native validation conditions and fresh proposal remain
-pending, so native derivative fidelity and optimization benefit are not claimed.
+fixture. The two unused validation conditions and fresh proposal later completed;
+the v4 audited result above supersedes this intermediate training snapshot.
 
 Current evidence must not be overread: the first source-revision run completed
 its baseline but exhausted three URL-instead-of-Python drafts. The bounded-prompt
@@ -42,11 +88,11 @@ fits/validates the represented gradient and at most one planned fresh native
 proposal, then writes independent audits or an explicit failure. No calibration
 worlds or extra validation seeds are rerun.
 
-Live continuation: clean commit951695b in
+Preserved continuation: clean commit951695b in
 `/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-transition-v3-analysis-a1`.
 Its `outputs/native-transition-v3-analysis/run/progress.json` reports waiting,
-analysis/proposal execution, completion or an explicit failure; its driver is
-already running. Original data progress remains at the separate
+analysis/proposal execution, completion or an explicit failure; its driver has
+exited. The v4 read-only recovery supersedes the failed final audit. Original data remains at the separate
 `native-transition-v3-a2/outputs/native-transition-v3/run/progress.json`.
 
 The working paper now includes a publication-wide conceptual Figure1: objectives,
@@ -58,7 +104,7 @@ panel padding address layout seams and close text. It distinguishes
 research goals from results. The17-page PDF and separate concept PDF are under
 `output/pdf/`; vector/raster source assets and their manifest are tracked.
 
-## Latest non-scale integration
+## Earlier non-scale integration v2 (historical)
 
 The original native researcher world now runs a result-conditioned local-LLM
 source-revision loop, a paired full-native-cost distribution-gradient probe,
@@ -73,8 +119,9 @@ planning-before-code retained a recorded technical error and an inert repair.
 The advisory gradient probe reached actual subsequent fixed-LLM request inputs,
 but equal native costs produced gradient0. The UI really executed an edited
 two-year system and loaded loss-3, not a matched optimization result. Full-world
-pathwise backpropagation, useful open institutional invention, same-society
-migration and recursive designer improvement remain incomplete. The Nov1
+pathwise backpropagation and useful open invention remain incomplete. The v4
+migration API now closes the same-society gap; recursive designer improvement
+remains open. The Nov1
 working PDF now includes these actual failures, derivative boundaries and a
 completed native job capture; the sealed parameter study remains unchanged.
 
@@ -211,8 +258,8 @@ Replay/design-path exports are available with explicit development/presentation-
 pending metadata, not a released city campaign source. An initial endogenous
 proposal bridge is QA-tested: a native institution can observe its SystemSpec,
 propose a patch and have a separate fresh native world evaluate it. This is not
-in-place society migration, autonomous live LLM invention or recursive designer
-improvement. Those and the city live-intervention adapter remain unimplemented.
+autonomous live LLM invention or recursive designer improvement. V4 separately
+adds explicit same-society adoption; the city live-intervention adapter remains open.
 
 | Layer | Status | Evidence / next gap |
 |---|---|---|
@@ -237,7 +284,7 @@ improvement. Those and the city live-intervention adapter remain unimplemented.
 | native black-box evaluation | durable campaign implemented | joint source/protocol/wiring patch -> actual Simulation -> native measurements -> caller LossSpec -> Observation; parent lineage, pending resume and recorded loss validation; live pilot reported separately |
 | native design-distribution gradient | live full-feedback paired probe complete | actual subsequent fixed-LLM requests receive changed advisory inputs; two fresh native costs[-1,-1] give gradient0, no reroll; smoothed-distribution derivative, not full-world backpropagation |
 | native hard/soft institution autograd | live short integration complete | same represented institution hard/soft; native trace fit -> fitted program -> fresh fixed-Qwen execution; conditional gradient, not full-world derivative |
-| endogenous design proposals | first QA bridge | institution proposes its own rule patch from native observations; hash-verified journal -> fresh counterfactual evaluation; no hot installation or recursive designer improvement |
+| endogenous design proposals | fresh-world bridge plus explicit same-society adoption | recorded native patch -> verified annual migration -> durable cold restart; no automatic benefit selection or recursive designer improvement |
 | native-world differentiation | not implemented | JSON/domain operations and LLM/retrieval/discrete transitions remain opaque; numeric-world autograd below is not a substitute |
 | structural system optimization | joint synthetic slice | 770 valid graphs jointly vary evaluation, publication, funding, government, communication, connections, and latency through one fingerprint-bound ask/execute/loss/tell boundary |
 | differentiable optimization | prospective synthetic-tested v0 | ObjectiveSpec-conditioned whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation are executable on synthetic fixtures; no simulator data, real metric, or active campaign input is used |
@@ -247,7 +294,7 @@ improvement. Those and the city live-intervention adapter remain unimplemented.
 | direct whole-world differentiation | executable numeric miniature | autograd traverses complete recurrent agent/world transitions; six parameter/rule/node/edge/delay/schedule gradient groups pass representative central differences; hard projection and outer evaluation share the numeric transition equations; full legacy Qwen simulator and token generation remain outside autograd |
 | generative lab viewer | recorded and browser-verified | checksum-bound events, generated SignalBoost rule, graph/process, six-agent state and search paths load into `game-ui-v2/generative.html`; two losses × four selected-system views; Chrome verification passed with zero exceptions/failed requests and no mobile overflow |
 | game UI | verified research arcology plus result-blind relay | the existing replay/sandbox/observatory views now include a separately hashed Common-Split Relay contract for 3 frozen systems × 5 seeds, current run, ETA, and technical failures; unfinished loss, metrics, ranks, model output, and provisional winners are rejected |
-| native interactive design UI | actual browser/worker/result round trip complete | full JSON system/loss editing, explicit consent, durable local queue, pinned native worker, saved-year progress and completed evidence loading; visual graph authoring, live society migration and full gameplay remain open |
+| native interactive design UI | real jobs, visual graph authoring and evidence-bound sandbox missions | nodes/ports/wires/order, undo/redo, explicit consent, durable queue and completed evidence; contract-bound targets/history, no fake scores; browser migration and full management gameplay remain open |
 
 ## Metric-conditioned study execution snapshot
 
@@ -313,12 +360,12 @@ scaling, the next gates are:
 2. Extend faithful differentiable representations to opaque researcher feedback
    with fidelity tests; the new full-rollout score estimator is not pathwise
    backpropagation and its one observed gradient is zero.
-3. Extend the completed JSON-edit/isolated-job/evidence UI round trip into visual
-   authoring and richer play feedback; keep existing records immutable.
+3. Extend visual authoring and the completed evidence-bound sandbox mission into
+   richer play feedback; keep existing records immutable and migration explicit.
 4. Implement consequential new roles/artifact workflows where needed, rather
    than expanding a hand-built activity catalog as a substitute for freedom.
-5. Later: same-society migration and recursive improvement of the designer;
-   neither is implemented by the current endogenous proposal bridge.
+5. Connect explicit same-society migration to objective-conditioned adoption and
+   eventually recursive improvement of the designer; these are not implied by QA.
 
 Scale-up remains deferred behind these non-scale integration gaps. Subsequent
 campaigns can add optimizer seeds, equal-budget baselines, population and

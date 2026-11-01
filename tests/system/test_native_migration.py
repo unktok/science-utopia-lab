@@ -83,6 +83,16 @@ def test_actual_society_continues_and_restores_across_new_protocol(tmp_path, fix
         reopened = NativeScienceKernel(kernel.spec, checkpoint=saved["native_system"])
         assert reopened.to_dict() == kernel.to_dict()
         assert {e.provenance["system_fingerprint"] for e in reopened.events} == {legacy_world_system().fingerprint, snapshots[0]["system_fingerprint"], kernel.spec.fingerprint}
+        from utopia.replay.converter import ArtifactBundle, convert_artifacts
+        from utopia.replay.projector import replay
+        from utopia.replay.native_design import native_design_replay
+        checkpoint = tmp_path / "society/checkpoints/portable_checkpoint_year_6.json.gz"
+        converted = convert_artifacts(ArtifactBundle.discover(checkpoint))
+        assert {e.event_id for e in kernel.events} <= {e.event_id for e in converted}
+        assert replay(converted).completed_years == list(range(1, 7))
+        view = native_design_replay(checkpoint, expected_system_fingerprint=kernel.spec.fingerprint,
+                                  label="Scripted same-society QA, not model invention")
+        assert view["metadata"]["native_presentation_pending"]
         # Real enclosing Simulation resume uses the current design contract and
         # historical response journal binding; it does not refound the society.
         sim.llm.response_cache.close()

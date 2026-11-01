@@ -1,0 +1,16 @@
+{
+  "classification": "native-development-fidelity-and-offline-bank-fit-not-heldout",
+  "inputs": {
+    "research/artifacts/native-cost-bank-v4.json": "e054adca35ee06a77b0046eccdf0d1d6e11be2c22ab00340afc56aa726492d6c",
+    "research/results/native-cost-bank-v4.json": "a378792a0f05ff2633666dadaab483ace2dd0e49cb08331c538a164d46a4704e",
+    "research/results/native-transition-v4-recovered.json": "76f318a49d2d3bdbf373626cd5a1739fd7917490123799da37b0fd4f859e44aa",
+    "scripts/figures/native_transition_validation.py": "af827dfbd09029d91b8ef0b431136eecc6fff9c1e53a9029c3652061f4f27d11"
+  },
+  "native_fidelity_established": false,
+  "new_native_best": false,
+  "outputs": {
+    "paper/figures/native-transition-validation-v4.pdf": "cb8d372b45760f13cdba266dceb35ccfbf116263862ee8c7fdf983fe82503c41",
+    "paper/figures/native-transition-validation-v4.png": "a0a2dce170be36ef6abf4410a3bfe4d3fc458cead173187dc73fc9983cabf8b4"
+  },
+  "schema": "scienceutopia.native-transition-validation-figure.v4"
+}

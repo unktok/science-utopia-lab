@@ -7,6 +7,14 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Non-scale integration v4: capabilities, evidence and remaining frontier](milestones/2026-11-01-non-scale-integration-v4.md)
+- [Durable same-society institution migration and cold restart](components/native-society-continuation-v4.md)
+- [Native discrete policy gradients and exact frozen-bank backward](components/native-discrete-policy-gradients-v4.md)
+- [Recovered native seven-world audit](results/native-transition-v4-recovered.json)
+- [Exact native-bank probability optimization](results/native-cost-bank-v4.json)
+- [Joint region authoring and chronological probes v4](components/native-open-regions-v4.md)
+- [Joint Qwen region generation v4: two preserved failures](results/native-open-region-v4.md)
+- [Visual native graph authoring and sandbox mission](tracks/native-design-ui-v4.md)
 - [Program concept figure: graphical freedoms and layout refinement v2](figures/program-concept-refinement-v2.md)
 - [Open native design and composed transition representation v3](components/native-open-design-and-transition-representation-v3.md)
 - [Parallel invention / native-calibration protocol v3](protocols/campaigns/native-parallel-invention-backprop-v3.md)

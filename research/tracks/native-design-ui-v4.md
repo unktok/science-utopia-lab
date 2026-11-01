@@ -41,6 +41,16 @@ Rendered evidence:
 
 ## Known limits
 
+Later v4 additions implement evidence-bound sandbox missions: explicit loss,
+target and trial cap, immutable per-contract job links, deduplicated completed
+scores and failed null scores. Editing the objective/target separates histories.
+Submission freezes exact contract identity BEFORE the async API call; a later
+active contract cannot steal an earlier job. Validation, poll and evidence loads
+similarly reject stale async identities, with duplicate submit/load exclusion.
+Deferred-Promise regressions cover these races. Final UI regression:138 tests
+across20 files, typecheck/build successful. Browser QA is fixture-labelled and
+starts no live job; no completed experiment is fabricated for the mission.
+
 - The visual precheck intentionally does not replace Python validation and does not attempt to establish scientific quality, ethics or policy readiness.
 - Artifact-type catalog editing, agent-type editing and global invariants remain advanced-JSON operations.
 - Newly added mechanisms receive an explicit placeholder implementation string; a user must choose an implementation registered by the native runtime before execution can succeed.

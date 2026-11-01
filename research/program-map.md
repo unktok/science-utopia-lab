@@ -1,18 +1,21 @@
 # Science Utopia Lab — program map
 
-Updated: 2026-10-31
+Updated: 2026-11-01
 
-Latest native integration update: the original-goal-by-goal capability/gap map is
-[Native design breadth](milestones/2026-10-31-native-design-breadth.md).
-Atomic source/protocol/wiring edits, a persistent native campaign and native-loss
-score-function search are now implemented. An endogenous proposal-to-fresh-world
-bridge passes QA; whole-native-world autograd, hot migration and recursive
-designer improvement do not. The older diagram/table below retains earlier
-track history and does not supersede that implementation inventory.
+The current original-goal-by-goal inventory is
+[Non-scale integration v4](milestones/2026-11-01-non-scale-integration-v4.md).
+Source/protocol/wiring authoring, full-native-cost distribution gradients,
+visual editing and explicit durable same-society migration are implemented.
+Native transition fidelity fails its unused-design check; exact finite-bank
+probability fitting is separate. Two new Qwen joint-generation attempts fail
+technical contracts. Useful autonomous invention, full native pathwise backward,
+automatic continual adoption and recursive designer improvement remain open.
+The older track table below is historical, not a current completion map.
 
-![Science Utopia Lab program map](figures/science-utopia-program-map.png)
+![Scientific-system design concept](../paper/figures/program-concept/science-system-design-program.png)
 
-Editable source: [`science-utopia-program-map.svg`](figures/science-utopia-program-map.svg).
+Concept, not completion evidence. [Current editable SVG](../paper/figures/program-concept/science-system-design-program.svg).
+The [earlier progress-map SVG](figures/science-utopia-program-map.svg) is retained as history.
 
 ## What this project is trying to do
 

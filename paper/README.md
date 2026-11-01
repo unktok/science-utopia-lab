@@ -67,6 +67,30 @@ revisions and a zero full-native distribution-gradient estimate, not invention
 success or full-world pathwise differentiation. Compact audits and interpretation
 are in `research/results/native-feedback-breadth-v2.md`.
 
+## Non-scale integration v4
+
+The current draft separately reports the recovered seven-world transition
+experiment, its FAILED native-secant fidelity check, exact offline probability
+fitting over four frozen complete native systems, two failed live joint-region
+generation attempts, durable same-society migration QA and visual graph editing.
+The original failed audit and generation drafts remain preserved; no extra
+native reruns repair their conclusions. Migration/visual/mission QA is labelled
+scripted or fixture-backed, not new scientific experiments. The sandbox mission
+target is an explicit game goal, not scientific-quality scoring.
+
+Generate the new native-fidelity/offline-bank graphic without inference:
+
+```bash
+/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.figures.native_transition_validation
+```
+
+Inputs are the tracked recovered audit, complete frozen native bank and exact
+probability-fitting path. The manifest binds those inputs and the source and
+output hashes. This figure does not imply that bank fitting fixes native
+derivative fidelity or discovers new institutions. See
+`research/milestones/2026-11-01-non-scale-integration-v4.md` for the current
+capability/evidence/gap map.
+
 ## Metric-conditioned result boundary
 
 `metric_conditioned_results.tex` is a guarded insertion point for the

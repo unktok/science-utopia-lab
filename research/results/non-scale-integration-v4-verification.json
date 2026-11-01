@@ -1,0 +1,66 @@
+{
+  "schema": "scienceutopia.non-scale-integration-verification.v4",
+  "date": "2026-11-01",
+  "classification": "software-regression-and-preserved-native-evidence-not-policy-validation",
+  "native_python_source_revision": "70fb4f7c5a8f097a83dfea43c705b7d19d56fee3",
+  "ui_async_guard_revision": "17d5be9a266ad4c7f524ea93ec8ae7af6e279d7b",
+  "python": {
+    "executable": "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "environment": {"PYTHONHASHSEED": "42", "CUDA_VISIBLE_DEVICES": "", "PYTHONPATH": "."},
+    "passed": 1197,
+    "skipped": 6,
+    "failed": 0,
+    "errors": 0,
+    "coverage": "disjoint system/runtime, optimization and all-other tests shards cover the complete tests directory",
+    "junit_root": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/native-society-continuation-v4/outputs/non-scale-v4",
+    "shards": [
+      {"file": "final-system-runtime.xml", "passed": 175, "skipped": 0, "sha256": "2e07201b46c85b4651bb779ccb8bdf8b1593e3e33943122a45efbc26db53db95"},
+      {"file": "final-optimization.xml", "passed": 319, "skipped": 0, "sha256": "4e84f3fbbcbb6ba14cb7eb0a889e3c09f98d9d19275836d5bde1d43669e54caf"},
+      {"file": "final-other.xml", "passed": 703, "skipped": 6, "sha256": "1c027bd4bcf20c063bb138010cc8372404fba1a3d1a9046c60d380378eeddb1c"}
+    ],
+    "later_focused_checks_not_added_to_total": [
+      {"file": "final-migration.xml", "passed": 18, "sha256": "adbe5b9bf79b512144a6ee2473066513b22e106c48a58c787202051b1badccba", "scope": "adds canonical replay and viewer export assertions preserving all native design epochs"},
+      {"file": "final-reports.xml", "passed": 57, "sha256": "62f058c5e6159e580b21f5f9483933b4393c422e755dc943d147776d95c86ba5"}
+    ],
+    "initial_failures_corrected": [
+      "six historical prospective constructor tests now spy actual snapshots APIs, not removed funding_feedback.subprocess",
+      "runtime identity regression compares actual pinned matching sources and verifies native changes affect fingerprints, not that all future HEADs equal old source"
+    ]
+  },
+  "ui": {
+    "unit_test_files": 20,
+    "unit_tests_passed": 138,
+    "typecheck": "passed",
+    "production_build": "passed",
+    "known_build_warning": "existing shared Phaser replay chunk exceeds500kB",
+    "browser_evidence": ["research/figures/native-design-ui-v4/browser-verification.json", "game-ui-v2/screenshots/noctiluca-native-sandbox-mission-qa.json"],
+    "browser_scope": "explicit session/validation fixtures; no live job submission, no fabricated completed mission score; desktop and390px mobile",
+    "asynchronous_regression_scope": "deferred promises test stale validation/poll, duplicate submission and frozen job/contract identity",
+    "new_live_ui_inference": 0
+  },
+  "paper": {
+    "path": "output/pdf/science-utopia-lab-working-paper.pdf",
+    "pages": 20,
+    "sha256": "343f2368a10889b9ababf9e47d498ac22f51a315f8f1ce605de17d730f5f7cbd",
+    "all_pages_rendered_and_visually_reviewed": true,
+    "new_native_validation_figure_reviewed_enlarged": true,
+    "undefined_references": false,
+    "overfull_boxes": false
+  },
+  "research_boundaries": {
+    "population_seed_or_horizon_scale_up": false,
+    "new_live_joint_generation_attempts": 2,
+    "technical_drafts_per_attempt": 3,
+    "eligible_joint_candidates": 0,
+    "new_native_worlds_from_joint_generation": 0,
+    "existing_native_transition_worlds_independently_audited": 7,
+    "existing_native_requests_verified": 657,
+    "archive_files_unchanged": 139,
+    "audit_recovery_inference_calls": 0,
+    "native_surrogate_fidelity_established": false,
+    "new_native_best_discovered": false,
+    "useful_autonomous_joint_invention_established": false,
+    "full_native_pathwise_autograd": false,
+    "recursive_designer_improvement_established": false
+  }
+}
