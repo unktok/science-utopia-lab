@@ -1,0 +1,26 @@
+{
+  "fixture_api": true,
+  "actual_inference_started": false,
+  "initial": {
+    "nodes": 15,
+    "wires": 18
+  },
+  "edit": {
+    "nodes": 16,
+    "rewired_latency": 1,
+    "undo_redo": true,
+    "consent_invalidated": true
+  },
+  "authoritative_validation_fixture": true,
+  "submit_remained_disabled": true,
+  "mobile_overflow": false,
+  "api_requests": [
+    "GET /native-api/session",
+    "POST /native-api/validate"
+  ],
+  "errors": [],
+  "screenshots": [
+    "native-visual-authoring-desktop.png",
+    "native-visual-authoring-mobile.png"
+  ]
+}

@@ -25,9 +25,9 @@ export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence
   let parent: unknown, token = "", validated = "", jobId = "", initialized = false, timer: number | undefined;
   const request = (): Record<string, unknown> => designRequest(parent, system.value, loss.value, Number(item<HTMLInputElement>("design-seed").value), Number(item<HTMLInputElement>("design-years").value));
   const error = (value: unknown): void => { item("design-job-error").hidden = false; item("design-job-error").textContent = String(value); };
-  const changed = (): void => { validated = ""; submit.disabled = true; item("design-validation").textContent = "Edited design needs validation. No experiment submitted."; };
+  const changed = (): void => { validated = ""; consent.checked = false; submit.disabled = true; item("design-validation").textContent = "Edited design needs validation and renewed consent. No experiment submitted."; };
   const copy = (): void => {
-    try { parent = selectedSystem(); system.value = JSON.stringify(parent, null, 2); loss.value = JSON.stringify(nativeEngineeringLoss, null, 2); item("design-parent").textContent = "Parent captured from the selected system. Edit source, nodes, ports, wiring, schedules or parameters below."; changed(); } catch (failure) { error(failure); }
+    try { parent = selectedSystem(); system.value = JSON.stringify(parent, null, 2); loss.value = JSON.stringify(nativeEngineeringLoss, null, 2); item("design-parent").textContent = "Parent captured from the selected system. Edit source, nodes, ports, wiring, schedules or parameters below."; system.dispatchEvent(new Event("input", { bubbles: true })); loss.dispatchEvent(new Event("input", { bubbles: true })); changed(); } catch (failure) { error(failure); }
   };
   const api = async (path: string, body?: unknown): Promise<any> => {
     const response = await fetch(`/native-api/${path}`, { method: body === undefined ? "GET" : "POST", headers: { "X-Native-Lab-Token": token, ...(body === undefined ? {} : { "Content-Type": "application/json" }) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });

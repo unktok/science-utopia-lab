@@ -16,4 +16,9 @@ describe("explicit native design submission", () => {
     expect(() => designRequest({}, "{}", "{}", 1301, 2.5)).toThrow("Integer");
     expect(() => designRequest({}, "not JSON", "{}", 1301, 2)).toThrow();
   });
+  it("keeps validation separate from durable execution authorization", () => {
+    const source = String.raw`${designRequest}`;
+    expect(source).not.toContain("fetch");
+    expect(source).not.toContain("jobs");
+  });
 });
