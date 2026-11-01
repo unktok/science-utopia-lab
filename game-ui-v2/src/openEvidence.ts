@@ -1,4 +1,4 @@
-import { processReceiptYear, verifyNativeOpenEvidence, type NativeOpenEvidence, type OpenEvidenceObservation } from "./openEvidenceContract";
+import { derivativeDiagnosticFailure, processReceiptYear, verifyNativeOpenEvidence, type NativeOpenEvidence, type OpenEvidenceObservation } from "./openEvidenceContract";
 import "./openEvidence.css";
 
 const el = <T extends Element = HTMLElement>(id: string): T => { const node = document.getElementById(id); if (!node) throw new Error(`Missing open-evidence element ${id}`); return node as unknown as T; };
@@ -76,9 +76,11 @@ function renderSystem(): void {
 function renderDerivative(): void {
   const coverage = record(selected().boundary_coverage), backward = record(selected().conditional_backward);
   if (!complete(selected())) { el("coverage-panel").innerHTML = el("backward-panel").innerHTML = `<p class="empty">No derivative evidence for an incomplete endpoint.</p>`; return; }
-  const edges = list(coverage.edges), represented = edges.filter((edge) => record(edge).derivative_coverage === "represented-numeric-communication").length;
-  el("coverage-panel").innerHTML = `<span>BOUNDARY COVERAGE</span><h3>${represented} / ${edges.length} ROUTES REPRESENTED NUMERIC</h3><dl><div><dt>TRACE FRAMES</dt><dd>${esc(coverage.trace_frames)}</dd></div><div><dt>REPRESENTED TENSOR NODES</dt><dd>${list(coverage.represented_mechanisms).length}</dd></div><div><dt>OPAQUE MECHANISMS</dt><dd>${list(coverage.opaque_mechanisms).length}</dd></div></dl><p>${esc(coverage.nonnumeric_records)}</p>`;
-  el("backward-panel").innerHTML = `<span>CONDITIONAL BACKWARD</span><h3 data-status="${esc(backward.status)}">${esc(String(backward.status).toUpperCase())}</h3><dl><div><dt>SOFT LOSS</dt><dd>${esc(backward.conditional_soft_loss)}</dd></div><div><dt>NUMERICAL CHECKS</dt><dd>${list(backward.numerical_checks).length}</dd></div><div><dt>EPSILON</dt><dd>${esc(backward.finite_difference_epsilon)}</dd></div></dl><pre>${esc(json(backward.gradient))}</pre>`;
+  const coverageFailure = derivativeDiagnosticFailure(coverage), backwardFailure = derivativeDiagnosticFailure(backward);
+  if (coverageFailure) el("coverage-panel").innerHTML = `<span>BOUNDARY COVERAGE</span><h3 class="diagnostic-failure">FAILED DIAGNOSTIC</h3><dl><div><dt>ERROR TYPE</dt><dd>${esc(coverageFailure.error_type)}</dd></div></dl><p>${esc(coverageFailure.error)}</p><p>No route coverage or verification count is inferred.</p>`;
+  else { const edges = list(coverage.edges), represented = edges.filter((edge) => record(edge).derivative_coverage === "represented-numeric-communication").length; el("coverage-panel").innerHTML = `<span>BOUNDARY COVERAGE</span><h3>${represented} / ${edges.length} ROUTES REPRESENTED NUMERIC</h3><dl><div><dt>TRACE FRAMES</dt><dd>${esc(coverage.trace_frames)}</dd></div><div><dt>REPRESENTED TENSOR NODES</dt><dd>${list(coverage.represented_mechanisms).length}</dd></div><div><dt>OPAQUE MECHANISMS</dt><dd>${list(coverage.opaque_mechanisms).length}</dd></div></dl><p>${esc(coverage.nonnumeric_records)}</p>`; }
+  if (backwardFailure) el("backward-panel").innerHTML = `<span>CONDITIONAL BACKWARD</span><h3 class="diagnostic-failure">FAILED DIAGNOSTIC</h3><dl><div><dt>ERROR TYPE</dt><dd>${esc(backwardFailure.error_type)}</dd></div></dl><p>${esc(backwardFailure.error)}</p><p>No gradient, soft loss, or numerical-check count is fabricated.</p>`;
+  else el("backward-panel").innerHTML = `<span>CONDITIONAL BACKWARD</span><h3 data-status="${esc(backward.status)}">${esc(String(backward.status).toUpperCase())}</h3><dl><div><dt>SOFT LOSS</dt><dd>${esc(backward.conditional_soft_loss)}</dd></div><div><dt>NUMERICAL CHECKS</dt><dd>${list(backward.numerical_checks).length}</dd></div><div><dt>EPSILON</dt><dd>${esc(backward.finite_difference_epsilon)}</dd></div></dl><pre>${esc(json(backward.gradient))}</pre>`;
 }
 
 function renderSource(): void {

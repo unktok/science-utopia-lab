@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { parseNativeOpenEvidence, processReceiptYear, verifyNativeOpenEvidence } from "../src/openEvidenceContract";
+import { derivativeDiagnosticFailure, parseNativeOpenEvidence, processReceiptYear, verifyNativeOpenEvidence } from "../src/openEvidenceContract";
 
 const fixturePath = new URL("../public/data/native-open-evidence.synthetic.json", import.meta.url);
 const fixture = () => JSON.parse(readFileSync(fixturePath, "utf8"));
@@ -55,6 +55,16 @@ describe("native open integrated evidence viewer contract", () => {
     const parsed = parseNativeOpenEvidence(pending, "fixture");
     expect(parsed.observations).toEqual([]);
     expect(parsed.claims.live_fixed_Qwen_researchers).toBe(false);
+  });
+
+  it("retains derivative diagnostic failure errors without fabricating gradients or counts", () => {
+    const changed = fixture(); const failure = { status: "failed-diagnostic", error_type: "TraceUnavailable", error: "actual tensor trace was absent", native_loss_gradient_verified: false, full_native_world_autograd: false };
+    changed.observations[0].boundary_coverage = failure; changed.observations[0].conditional_backward = failure;
+    const parsed = parseNativeOpenEvidence(changed, "fixture");
+    expect(derivativeDiagnosticFailure(parsed.observations[0]!.boundary_coverage)).toEqual({ error_type: "TraceUnavailable", error: "actual tensor trace was absent" });
+    expect(parsed.observations[0]!.observation!.loss).toBe(0);
+    const malformed = fixture(); malformed.observations[0].conditional_backward = { ...failure, error: "" };
+    expect(() => parseNativeOpenEvidence(malformed, "fixture")).toThrow("actual error");
   });
 
   it("retains actual participants, artifacts, process iteration and skip receipts", () => {

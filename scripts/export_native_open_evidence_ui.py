@@ -69,6 +69,9 @@ def validate(value):
                     or backward.get('full_native_world_autograd') is not False
                     or coverage.get('full_native_world_autograd') is not False):
                 raise ValueError('conditional derivative boundary was overstated')
+            for report in (coverage, backward):
+                if report.get('status') == 'failed-diagnostic' and (not report.get('error_type') or not report.get('error')):
+                    raise ValueError('failed derivative diagnostic must retain its actual error')
     if value['complete_native_worlds'] != sum(r.get('observation', {}).get('status') == 'complete'
             for r in value.get('observations', []) if isinstance(r.get('observation'), dict)):
         raise ValueError('complete native-world count differs from observations')

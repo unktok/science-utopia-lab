@@ -28,6 +28,13 @@ export function processReceiptYear(event: unknown, endpointYear: number | undefi
   const value = envelope.year ?? payload.year ?? endpointYear;
   return Number.isInteger(value) && value >= 1 ? value : undefined;
 }
+export function derivativeDiagnosticFailure(value: unknown): null | { error_type: string; error: string } {
+  const report = row(value, "derivative report");
+  if (report.status !== "failed-diagnostic") return null;
+  if (typeof report.error_type !== "string" || !report.error_type || typeof report.error !== "string" || !report.error) throw new Error("Failed derivative diagnostic must retain its actual error");
+  if (report.native_loss_gradient_verified !== false || report.full_native_world_autograd !== false) throw new Error("Failed derivative diagnostic cannot claim a native/full-world gradient");
+  return { error_type: report.error_type, error: report.error };
+}
 
 function validateOpenDomain(value: unknown): void {
   const domain = row(value, "open_domain");
@@ -71,6 +78,7 @@ export function parseNativeOpenEvidence(value: unknown, mode: "actual" | "fixtur
     if (receipts.some((event) => !String(row(event, "process receipt").event_type).startsWith("native.process."))) throw new Error("Non-process event in process receipts");
     const coverage = row(item.boundary_coverage, `boundary coverage ${index}`); const backward = row(item.conditional_backward, `conditional backward ${index}`);
     if (coverage.full_native_world_autograd !== false || backward.full_native_world_autograd !== false || backward.native_loss_gradient_verified !== false) throw new Error("Conditional derivative relabelled as full-world/native-loss gradient");
+    derivativeDiagnosticFailure(coverage); derivativeDiagnosticFailure(backward);
     if (!Array.isArray(events) || typeof draw !== "object") throw new Error("Incomplete execution evidence");
   }
   for (const [index, valueRecord] of records.entries()) {
