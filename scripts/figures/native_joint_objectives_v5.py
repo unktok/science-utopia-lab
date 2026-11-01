@@ -90,11 +90,22 @@ def load_evidence(report):
         selected_fp = rows[selected].get('system_fingerprint', rows[selected].get('difference', {}).get('candidate_fingerprint'))
         if cut['system_fingerprint'] != arm['selected_fingerprint'] or selected_fp != cut['system_fingerprint']:
             raise ValueError('selected graph identity differs from audited actual observation')
+        node_counts = None
+        if 'observed_systems' in arm:
+            systems = arm['observed_systems']
+            if not isinstance(systems, list) or len(systems) != len(rows):
+                raise ValueError('observed system history differs from native loss path')
+            observed_cuts = [graph_cut(system) for system in systems]
+            if any(graph['system_fingerprint'] != row['system_fingerprint']
+                   for graph, row in zip(observed_cuts, rows)):
+                raise ValueError('observed graph history identity differs from native observation')
+            node_counts = [len(graph['internal_nodes']) for graph in observed_cuts]
         error = arm.get('authoring_error')
         if error is not None and error.get('loss') is not None:
             raise ValueError('technical authoring failure must retain null loss')
         result.append({'id': arm_id, 'loss_spec': arm['loss_spec'], 'rows': rows,
-            'selected_index': selected, 'cut': cut, 'authoring_error': error})
+            'selected_index': selected, 'cut': cut, 'authoring_error': error,
+            'region_node_counts': node_counts})
     # Stable semantic order: throughput first, rather than arbitrary JSON order.
     return sorted(result, key=lambda a: (len(a['loss_spec']['per_run']['terms']), a['id']))
 
@@ -217,7 +228,11 @@ def make_figure(report_path, output):
             if math.isfinite(y):
                 ax.annotate(f'{y:g}', (x, y), xytext=(0, 7), textcoords='offset points', ha='center', fontsize=8.3)
         ax.set_xlim(-.3, max(1.3, len(rows) - .7))
-        ax.set_xticks(xs, ['Initial' if x == 0 else f'Revision {x}' for x in xs])
+        labels = ['Initial' if x == 0 else f'Revision {x}' for x in xs]
+        if arm['region_node_counts'] is not None:
+            labels = [label + '\n' + str(count) + (' node' if count == 1 else ' nodes')
+                      for label, count in zip(labels, arm['region_node_counts'])]
+        ax.set_xticks(xs, labels)
         ax.set_xlabel('Design observation (initial shared)', fontsize=8)
         ax.set_ylabel('Declared loss (lower preferred)', fontsize=8)
         ax.set_title(f"{'AB'[i]}   {_objective_label(arm['loss_spec'])}", loc='left', fontsize=9.2, pad=11, color=COLORS[i])
@@ -250,6 +265,7 @@ def make_figure(report_path, output):
         'authoring_provenance': report.get('authoring_provenance'),
         'generator_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'arms': [{'id': arm['id'], 'native_loss_path': [r['loss'] for r in arm['rows']],
+            'region_node_counts': arm['region_node_counts'],
             'selected_index': arm['selected_index'], 'selected_graph': arm['cut'],
             'authoring_failure_is_loss_point': False} for arm in evidence],
         'scientific_quality_claim': False, 'held_out': False,

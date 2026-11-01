@@ -10,6 +10,7 @@ style bundle was not available when this draft was created.
 From the repository root:
 
 ```bash
+mkdir -p tmp/pdfs output/pdf
 cd paper
 /opt/homebrew/bin/tectonic --keep-logs --keep-intermediates \
   --outdir ../tmp/pdfs main.tex
@@ -66,6 +67,34 @@ completed-evidence round trip. The Nov1 draft includes failed adaptive source
 revisions and a zero full-native distribution-gradient estimate, not invention
 success or full-world pathwise differentiation. Compact audits and interpretation
 are in `research/results/native-feedback-breadth-v2.md`.
+
+## Objective-conditioned native design v5
+
+The latest draft reports a separately labelled Codex-designer/local-Qwen-
+researcher campaign: five physical worlds,285 responses, actual loss paths
+`[-1,-3,-3]` and`[.70,.45,.45]`. The utility arm's final new two-node protocol
+executes but ties; the deterministic first-best incumbent stays selected.
+The figure shows actual paths, editable-cut node counts and selected graphs.
+The known3.25 charge is prior-informed and the contrast is a development proxy,
+not scientific value, novelty, held-out evidence or whole-system optimality.
+All failed local-Qwen attempts remain separately documented.
+
+Regenerate the empirical figure without inference:
+
+```bash
+.venv/bin/python -m scripts.figures.native_joint_objectives_v5 \
+  --report research/results/native-external-objectives-v5-a1.json \
+  --output paper/figures/native-joint-objectives-v5
+```
+
+The new native resource-transfer capability has scripted six-year lifecycle,
+accounting and restart evidence, not another live optimization experiment.
+Fresh-native REINFORCE is reported separately from offline bank fitting and
+from missing full-world pathwise differentiation. The original-goal capability
+table states concrete remaining semantics, gradient, continual-adoption and
+game gaps. Full Python regression1311 passed/6 skipped at clean`ecd1ae6`;
+later analysis/figure-only changes receive separate focused verification.
+See [current inventory](../research/milestones/2026-11-01-objective-conditioned-design-v5.md).
 
 ## Non-scale integration v4
 

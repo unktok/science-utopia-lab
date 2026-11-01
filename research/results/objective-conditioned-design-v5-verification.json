@@ -4,6 +4,23 @@
   "scope": "Software regression, not actual institutional invention or scientific benefit",
   "checks": [
     {
+      "source_commit": "ecd1ae64eb8fd5970d7194dd2f367ea1a16cb162",
+      "command": "PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python -m pytest tests --junitxml=outputs/verification/native-v5-full-regression.xml -q",
+      "passed": 1311,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6,
+      "seconds": 534.071,
+      "junit_sha256": "7a44fe29ddf3c965a5eefc9edda5ed348c65afe9e141b1b5252d051ceaaee754",
+      "skip_reasons": [
+        "Optional rapidgzip is not installed",
+        "Three actual-original-simulator tests require isolated EC2 CPU/logger environment",
+        "Actual primary-ledger test requires isolated full-dependency CPU/cache environment",
+        "Pinned local tokenizer audit is opt-in"
+      ],
+      "note": "Clean source was not edited during this full regression. Later analysis-only observed-SystemSpec export and node-count plotting receive separate focused checks; native execution code is unchanged."
+    },
+    {
       "source_commit": "d1eb625",
       "command": "PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python -m pytest tests/optimization tests/reports/test_native_joint_objectives_v5_figure.py --junitxml=outputs/verification/native-joint-v5-pytest.xml -q",
       "passed": 396,

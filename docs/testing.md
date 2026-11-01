@@ -1,10 +1,12 @@
 # Testing
 
-Latest v5 evidence:396 optimization/figure tests pass, plus15 subsequently added
-external-inbox/flat-ABI tests. See the source/JUnit-bound
+Latest v5 evidence:the full Python suite passes1311 tests with6 explicit skips
+from clean`ecd1ae6`. It includes the new native resource capability, accounting,
+restart, authoring and external-inbox audits. Later analysis-only observed-system
+export and node-count graphics receive separate focused checks. See the source/JUnit-bound
 [verification receipt](../research/results/objective-conditioned-design-v5-verification.json).
 These are software checks, not fresh scientific experiments. The v4 full-suite
-result of1197 passed/6 skipped is historical and was not rerun by these commands.
+result of1197 passed/6 skipped is historical; the new full result above supersedes it.
 
 Use the repository environment and explicit deterministic CPU settings:
 

@@ -9,6 +9,16 @@ The latest goal/capability/gap inventory is
 Population, seeds and horizon are not scaled up. The original native researcher
 world remains the forward system; no hidden policy or merit veto is added.
 
+- **Two-objective native code/graph loop COMPLETE.** A separately labelled
+  Codex designer with fixed local Qwen3-8B researchers finishesfive physical
+  worlds/six logical observations,285 responses. Actual paths are`[-1,-3,-3]`
+  and`[.70,.45,.45]`. A new two-node/protocol revision really executes but ties,
+  so the first one-node incumbent remains selected. Independent request/source/
+  checkpoint/raw-review/cache audit keeps all97 archived files unchanged.
+  [Result, cross-scores and limitations](results/native-external-objectives-v5-a1.md).
+  This is a development proxy demonstration, not scientific-value discovery,
+  held-out superiority or full science-system optimization.
+
 - **Joint authoring and actual-feedback search implemented.** Scoped local IDs,
   explicit source references/exports, free Python/protocols/node order and
   code-visible actual feedback share one durable campaign. The compiler inserts
@@ -36,26 +46,37 @@ world remains the forward system; no hidden policy or merit veto is added.
   access; utility exhausts3 plans on exports/types. One physical baseline,
   no candidate loss, all40 raw files unchanged under independent audit.
   [A3 result](results/native-joint-objectives-v5-a3.json).
-- **Separate external-Codex designer pilot running.** Hash-bound complete
+- **Designer/researcher separation is explicit.** Hash-bound complete
   manifests permit a specialist to design institutions while original Qwen8B
   researchers remain fixed. No additional paid provider API is used. Exact
   requests/responses, self-reported author identity and source are retained;
   this must not be called Qwen-designed invention. A new clean pinned source
-  executes its own baseline; maximumfive physical worlds, no scale-up or
-  hidden veto. [Preregistered scope](protocols/campaigns/native-external-objectives-v5.md).
+  executes its own baseline; allfive planned physical worlds complete, with no
+  scale-up or hidden veto. [Preregistered scope](protocols/campaigns/native-external-objectives-v5.md).
 - **Fresh-native distribution backward complete.** Two prerecorded draws`[1,1]`
   execute two NEW native worlds, costs`[-3,-3]`,114 responses. Exact score
   autograd gives`[1.5,-1.5]`, updates logits`[0,0] -> [-.15,.15]`, independently
   verifies with all25 raw files unchanged. The repeated action means no fresh
   comparative benefit/new best is established. This is not a full native-world
   pathwise derivative. [Result and limits](results/fresh-native-policy-gradient-v5.md).
+- **New real resource-effect capability implemented.** Arbitrary connected
+  Python/LLM institutions choose transfers, not a host allocation policy. The
+  consumer applies actual author balances/ledger legs with source-event hashes,
+  delayed/cold-restart deduplication and atomic batch checks. Independent review
+  finds and fixes floating-point unpaid credits; root review also fixes zero/
+  self-transfer activity side effects. Seventeen focused tests pass. Six-year
+  scientific-phase QA uses scripted replies, not new live-Qwen allocation or
+  optimization evidence. [Contract and limits](components/native-resource-transfer-capability-v5.md).
 
-Optimization/figure regression396 passed; the15 subsequently added adapter/ABI
-tests also pass. [Verification](results/objective-conditioned-design-v5-verification.json).
+The full Python regression passes1311 tests with6 explicit skips at clean`ecd1ae6`;
+analysis-only export/figure follow-ups receive separate focused checks.
+[Verification](results/objective-conditioned-design-v5-verification.json).
 Game UI and same-society migration retain their v4 implementation
 and evidence; they are not silently claimed to have new live results here.
 The v4 transition fidelity failure and broader invention/semantics/recursive
 improvement gaps remain. Historical snapshots below retain their original scope.
+No v5 native/designer inference process remains running; completion is recorded,
+not inferred from an idle specialist or a still-pending request.
 
 ## Non-scale implementation and evidence v4
 

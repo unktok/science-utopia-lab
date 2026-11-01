@@ -10,14 +10,17 @@ objectives. Its first actual joint-generation attempt fails all6 drafts; a
 separately registered alias-aligned follow-up also fails6 drafts. Staged graph/
 source generation with corrected, type-preserving prompt examples also fails:
 one graph plan passes, but no candidate reaches a fresh native world. An
-explicitly separate Codex-designer/native-Qwen pilot is now running with
-hash-bound complete manifests and the same two losses and small world budget.
+explicitly separate Codex-designer/native-Qwen pilot now completesfive native
+worlds with paths`[-1,-3,-3]`/`[.70,.45,.45]`. Its final two-node/protocol
+revision really executes but ties the selected one-node incumbent. Exact
+hash-bound complete manifests and native measurements independently audit;
+this remains a simple development-proxy contrast, not good-science discovery.
 A separate two-draw fresh-native policy-gradient batch completes and updates
 probabilities, but same-action sampling does not establish comparative benefit.
 Source/protocol/wiring authoring, full-native-cost distribution gradients,
 visual editing and explicit durable same-society migration are implemented.
 Native transition fidelity fails its unused-design check; exact finite-bank
-probability fitting is separate. Two new Qwen joint-generation attempts fail
+probability fitting is separate. The three local-Qwen v5 joint-generation attempts fail
 technical contracts. Useful autonomous invention, full native pathwise backward,
 automatic continual adoption and recursive designer improvement remain open.
 The older track table below is historical, not a current completion map.

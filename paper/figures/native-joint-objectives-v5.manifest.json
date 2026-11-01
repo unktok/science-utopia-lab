@@ -1,0 +1,191 @@
+{
+  "arms": [
+    {
+      "authoring_failure_is_loss_point": false,
+      "id": "native-joint-v5-throughput",
+      "native_loss_path": [
+        -1.0,
+        -3.0,
+        -3.0
+      ],
+      "region_node_counts": [
+        1,
+        1,
+        1
+      ],
+      "selected_graph": {
+        "authored": true,
+        "edges": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.review",
+            "source_port": "world",
+            "target_mechanism": "generated-95bcf515fbf6.open-publication",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "generated-95bcf515fbf6.open-publication",
+            "source_port": "completion",
+            "target_mechanism": "world.publication",
+            "target_port": "after"
+          },
+          {
+            "channel": "decision",
+            "latency": 0,
+            "source_mechanism": "generated-95bcf515fbf6.open-publication",
+            "source_port": "verdicts",
+            "target_mechanism": "world.publication",
+            "target_port": "decisions"
+          }
+        ],
+        "incoming_nodes": [
+          "world.review"
+        ],
+        "internal_nodes": [
+          "generated-95bcf515fbf6.open-publication"
+        ],
+        "outgoing_nodes": [
+          "world.publication"
+        ],
+        "phases": {
+          "generated-95bcf515fbf6.open-publication": 140
+        },
+        "system_fingerprint": "a0ac1b0632b8c05fc0b9f546027aac2503ba6fadf55198812c39b50f7ffa3bc8"
+      },
+      "selected_index": 1
+    },
+    {
+      "authoring_failure_is_loss_point": false,
+      "id": "native-joint-v5-net-reviewed-utility",
+      "native_loss_path": [
+        0.7,
+        0.45,
+        0.45
+      ],
+      "region_node_counts": [
+        1,
+        1,
+        2
+      ],
+      "selected_graph": {
+        "authored": true,
+        "edges": [
+          {
+            "channel": "artifact",
+            "latency": 0,
+            "source_mechanism": "world.review",
+            "source_port": "world",
+            "target_mechanism": "generated-1c6fb14bc12b.review-surplus",
+            "target_port": "observations"
+          },
+          {
+            "channel": "signal",
+            "latency": 0,
+            "source_mechanism": "generated-1c6fb14bc12b.review-surplus",
+            "source_port": "completion",
+            "target_mechanism": "world.publication",
+            "target_port": "after"
+          },
+          {
+            "channel": "decision",
+            "latency": 0,
+            "source_mechanism": "generated-1c6fb14bc12b.review-surplus",
+            "source_port": "verdicts",
+            "target_mechanism": "world.publication",
+            "target_port": "decisions"
+          }
+        ],
+        "incoming_nodes": [
+          "world.review"
+        ],
+        "internal_nodes": [
+          "generated-1c6fb14bc12b.review-surplus"
+        ],
+        "outgoing_nodes": [
+          "world.publication"
+        ],
+        "phases": {
+          "generated-1c6fb14bc12b.review-surplus": 140
+        },
+        "system_fingerprint": "86da4427f183cf99a3251c059d7d7bf3a646f57057bc2c2067fc7156be1b4aa7"
+      },
+      "selected_index": 1
+    }
+  ],
+  "authoring_provenance": {
+    "kind": "hash-bound-external-manifest",
+    "provider_authenticated": false,
+    "qwen_designer_authorship_claimed": false,
+    "self_reported_authors": [
+      {
+        "claim_boundary": "External nonblinded Codex design, not Qwen designer authorship, novelty, fresh execution success, held-out generalization, or scientific value. No extra native/model/probe calls.",
+        "expected_change": "No additional count improvement is predicted on the supplied trajectory; remove the mechanism's dependence on peer-review scores while retaining the all-submissions policy.",
+        "feedback_used": {
+          "accepted_decisions": 3,
+          "actual_loss_path": [
+            -1.0,
+            -3.0
+          ],
+          "review_records": 9
+        },
+        "identity": "/root/joint_region_v5",
+        "kind": "codex-agent",
+        "nonblinded_across_objectives": true,
+        "researcher_model": "fixed-local-qwen3:8b",
+        "score_semantics": "final_score=1 is a procedural approval indicator, not an external review measurement. Raw-Q measurement must remain independently determined from actual reviews.",
+        "source_origin": "Feedback-conditioned revision of this author's provided incumbent source; no original host selection source was consulted or copied."
+      },
+      {
+        "claim_boundary": "External Codex authorship, not Qwen designer authorship, algorithmic novelty, fresh experimental success, or scientific quality. No ad-hoc model/world/probe calls.",
+        "identity": "/root/joint_region_v5",
+        "kind": "codex-agent",
+        "method": "Direct conditional optimization of the declared count coefficient; one functional institution, explicit observation ingress and publication/control exports.",
+        "nonblinded_across_objectives": true,
+        "researcher_model": "fixed-local-qwen3:8b",
+        "source_origin": "Authored from the frozen request and execution ABI; original host selection source was not consulted or copied for this response."
+      },
+      {
+        "claim_boundary": "External Codex authorship, not Qwen designer authorship, algorithmic novelty, fresh experimental success, or scientific quality. No ad-hoc model/world/probe calls.",
+        "identity": "/root/joint_region_v5",
+        "kind": "codex-agent",
+        "method": "Derive the conditional acceptance increment from the exact coefficients; leave sunk review cost independent of the verdict, and use actual review means rather than institution-written scores as evidence.",
+        "nonblinded_across_objectives": true,
+        "researcher_model": "fixed-local-qwen3:8b",
+        "source_origin": "Authored from the frozen request and execution ABI; original host selection source was not consulted or copied for this response."
+      },
+      {
+        "claim_boundary": "External nonblinded Codex authorship; no Qwen designer, novelty, improved-topology, global-optimality, held-out, or scientific-quality claim. No extra native/model/probe calls.",
+        "expected_change": "Policy-equivalent typed producer/consumer graph exploration, with an expected loss tie on the observed trajectory rather than an invented new best.",
+        "feedback_used": {
+          "accepted_decisions": 0,
+          "accepted_peer_score_sum": 0.0,
+          "actual_loss_path": [
+            0.7,
+            0.45
+          ],
+          "review_records": 9
+        },
+        "identity": "/root/joint_region_v5",
+        "kind": "codex-agent",
+        "nonblinded_across_objectives": true,
+        "protocol_change": "Introduce publication-loss-offers-v1 carrying actual paper identities, raw review means, the explicit acceptance-loss increment, and native year; wire pricing outputs into a distinct clearing consumer.",
+        "researcher_model": "fixed-local-qwen3:8b",
+        "source_origin": "Feedback-conditioned structural revision of this author's supplied incumbent policy; no original host selection source was consulted or copied."
+      }
+    ]
+  },
+  "classification": "actual-native-development-objective-conditioned-joint-design",
+  "designer_transport": "hash-bound-file-inbox-no-provider-API",
+  "generator_sha256": "e34c4815d315ca57fd26b0ff9118844c4086dcd41c66db32c6d83ea2aef846e0",
+  "held_out": false,
+  "outputs": {
+    "pdf": "708aebcf2de582f2ba637b65a66d2a3ac307a3c6d04e9ead561d1b2efb5b202e",
+    "png": "15bc009c050c51be5a00e81ea35a0fc44a4f44aedac09d50c4f1a232c1cd8376"
+  },
+  "schema": "scienceutopia.native-joint-objectives-figure.v5",
+  "scientific_quality_claim": false,
+  "source_report_sha256": "d10a98206d2180cdf716498e59cf7df5708f654c81dece4dfd07f86cf475d779"
+}

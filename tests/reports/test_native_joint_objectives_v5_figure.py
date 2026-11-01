@@ -169,3 +169,19 @@ def test_external_authoring_origin_remains_explicit_without_provider_attestation
     report['authoring_provenance']['provider_authenticated'] = True
     with pytest.raises(ValueError, match='external designer origin'):
         load_evidence(report)
+
+
+def test_node_count_path_requires_exact_observed_graphs_not_an_illustrated_topology(tmp_path):
+    report = report_fixture()
+    original = report['arms']['native-joint-v5-net-reviewed-utility']['selected_system']
+    generated = report['arms']['native-joint-v5-throughput']['selected_system']
+    for arm in report['arms'].values():
+        arm['observed_systems'] = deepcopy([original, generated])
+    assert all(arm['region_node_counts'] == [1, 2] for arm in load_evidence(report))
+    path = tmp_path / 'node-count-scripted-fixture.json'
+    path.write_text(json.dumps(report, sort_keys=True))
+    manifest = make_figure(path, tmp_path / 'node-count-scripted-figure')
+    assert all(arm['region_node_counts'] == [1, 2] for arm in manifest['arms'])
+    report['arms']['native-joint-v5-throughput']['observed_systems'][1]['metadata']['tampered'] = True
+    with pytest.raises(ValueError, match='observed graph history identity'):
+        load_evidence(report)

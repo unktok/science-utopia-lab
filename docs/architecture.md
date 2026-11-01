@@ -43,6 +43,16 @@ Graph expressiveness must not be confused with native semantic coverage:
 research/submission/funding phases still share hidden annual `_frame` state,
 and adding an actor-type declaration does not instantiate new actor behavior.
 
+The new [resource capability](../research/components/native-resource-transfer-capability-v5.md)
+adds another real native effect: an explicitly connected arbitrary institution
+can emit conserving transfers among existing authors. The consumer commits
+actual balances and classified ledger legs, with causal source receipts and
+restart-safe global deduplication. Allocation policy stays in the authored
+producer. This is not unrestricted minting, actor creation or a replacement of
+the entire funding/research process. Exact numeric representability, positive
+amounts/distinct actors and conservation are explicit technical domain contracts,
+not a hidden merit or fairness veto. Default-absent native behavior is preserved.
+
 A second backend, `program.numeric.v1`, executes generated numeric mechanism
 ASTs in a small recurrent agent world. It supports program/node/edge/process
 generation, gradient-free search and direct differentiation through the

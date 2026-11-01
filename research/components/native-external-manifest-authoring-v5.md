@@ -1,9 +1,11 @@
 # Optional external institution designer, unchanged native researchers
 
 This optional adapter is software, not an authorization to run a new campaign.
-No live external authoring, provider API calls or native experiment were run to
-implement it. A user may keep all designers local; this route can remain unused.
-An external/Codex designer must never be reported as Qwen-generated invention.
+Its implementation used software QA only. A subsequent separately preregistered
+[five-world pilot](../results/native-external-objectives-v5-a1.md) now completes
+with actual local-Qwen researchers and external Codex-authored institutions.
+No additional paid provider API is called by the adapter. A user may keep all
+designers local; an external/Codex designer must never be reported as Qwen invention.
 
 ## Request and response contract
 
@@ -88,5 +90,6 @@ Run only after explicit authorization/preregistration from a clean pinned
 experiment checkout, with startup `PYTHONHASHSEED=42` and the repository's
 uv-managed `.venv/bin/python`. The CLI requires output, corpus cache, two loss
 paths and inference-lock path. Reuse exactly the same arguments on resume;
-changed source/protocol/world bindings fail closed. This driver has not been
-used for a live experiment by this implementation task.
+changed source/protocol/world bindings fail closed. Live pilot evidence and its
+authoring assumptions are recorded in the separate protocol/result above;
+software availability alone does not authorize a larger campaign.
