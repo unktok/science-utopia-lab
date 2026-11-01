@@ -32,6 +32,17 @@ publication decisions. The original world is a minimum instance, not the
 expressiveness ceiling. Annual domain prerequisites and new actor behavior
 remain explicit integration limits; this is not unlimited process freedom.
 
+Native joint design now has a durable `NativeDesignCampaign` and scoped
+`{rationale,nodes,exports}` authoring IR. A designer writes complete Python,
+ports/protocols, every wire and node order; compilation only namespaces names
+and schedules the declared cut. No missing institutional algorithm or semantic
+connection is inserted. Exact generated history and actual losses condition
+later proposals; technical probe failures have null loss. See
+[authoring and limits](../research/components/native-scoped-region-authoring-v5.md).
+Graph expressiveness must not be confused with native semantic coverage:
+research/submission/funding phases still share hidden annual `_frame` state,
+and adding an actor-type declaration does not instantiate new actor behavior.
+
 A second backend, `program.numeric.v1`, executes generated numeric mechanism
 ASTs in a small recurrent agent world. It supports program/node/edge/process
 generation, gradient-free search and direct differentiation through the
@@ -79,6 +90,15 @@ Every long run is tied to a source commit, study revision, design fingerprint,
 seed, model/backend identity, and immutable output root. Raw data stays outside
 Git. Compact results and artifact manifests record hashes and current locators.
 
+The institution designer and researcher model are distinct roles. The optional
+[external manifest inbox](../research/components/native-external-manifest-authoring-v5.md)
+records exact hash-bound requests and complete code/graph responses without
+calling a provider API. Missing responses are resumable waiting states; consumed
+raw bytes are immutable. External author metadata is self-reported, not provider
+authentication or evidence that the local researcher model wrote the design.
+Native checkpoint/source/code/image/raw-review and researcher-journal audits
+remain mandatory regardless of designer identity.
+
 The UI consumes `scienceutopia.replay-view.v1` payloads. It may choose visual
 positions, but it must not calculate balances, publication state, or scientific
 decisions independently of the Python replay projector.
@@ -98,8 +118,10 @@ decisions independently of the Python replay projector.
   SystemSpec; provide a registered/code/LLM implementation and explicit ports.
   `--science-system-spec PATH` selects it; omission preserves old behavior.
   `evaluate_native_suggestion()` connects that world to the existing black-box
-  Observation/LossSpec contract. It is not yet a durable arbitrary-source
-  campaign entry point. Actor codecs extend persistence, not behavior by magic.
+  Observation/LossSpec contract; `NativeDesignCampaign` supplies durable source/
+  region ask/execute/tell and pending-work restart. Broader native consumers and
+  arbitrary new activity semantics still require implementation. Actor codecs
+  extend persistence, not behavior by magic.
 
 ## First closed-loop execution
 

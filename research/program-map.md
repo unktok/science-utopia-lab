@@ -8,8 +8,10 @@ V5 implements joint free-code/graph authoring with explicit loss-conditioned
 feedback, independent cross-loss common-initial adoption and raw-peer-score
 objectives. Its first actual joint-generation attempt fails all6 drafts; a
 separately registered alias-aligned follow-up also fails6 drafts. Staged graph/
-source generation with corrected, type-preserving prompt examples is prepared,
-not yet an invention or improvement result.
+source generation with corrected, type-preserving prompt examples also fails:
+one graph plan passes, but no candidate reaches a fresh native world. An
+explicitly separate Codex-designer/native-Qwen pilot is now running with
+hash-bound complete manifests and the same two losses and small world budget.
 A separate two-draw fresh-native policy-gradient batch completes and updates
 probabilities, but same-action sampling does not establish comparative benefit.
 Source/protocol/wiring authoring, full-native-cost distribution gradients,

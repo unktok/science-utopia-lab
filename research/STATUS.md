@@ -27,12 +27,22 @@ world remains the forward system; no hidden policy or merit veto is added.
   resolved, but both arms exhaust3 drafts on missing output references or a
   wrong function entry point; no candidate world/loss. The independent audit
   preserves all raw files. [A2 audit](results/native-joint-objectives-v5-a2.json).
-- **Staged follow-up prepared.** Separate graph/protocol plans from all-node
+- **Staged follow-up completes without an eligible institution.** Separate graph/protocol plans from all-node
   Python authoring; accepted structural plans are never executed or scored.
   Type-preserving input projections fix a host prompt defect that replaced
   deep lists by diagnostic dictionaries. Explicit phase budgets and optional
-  designer-only thinking/token settings are separately preregistered. This is
-  not yet successful institutional generation or optimization evidence.
+  designer-only thinking/token settings are separately preregistered. The
+  throughput plan passes on draft2, but all3 source drafts fail flat-port ABI
+  access; utility exhausts3 plans on exports/types. One physical baseline,
+  no candidate loss, all40 raw files unchanged under independent audit.
+  [A3 result](results/native-joint-objectives-v5-a3.json).
+- **Separate external-Codex designer pilot running.** Hash-bound complete
+  manifests permit a specialist to design institutions while original Qwen8B
+  researchers remain fixed. No additional paid provider API is used. Exact
+  requests/responses, self-reported author identity and source are retained;
+  this must not be called Qwen-designed invention. A new clean pinned source
+  executes its own baseline; maximumfive physical worlds, no scale-up or
+  hidden veto. [Preregistered scope](protocols/campaigns/native-external-objectives-v5.md).
 - **Fresh-native distribution backward complete.** Two prerecorded draws`[1,1]`
   execute two NEW native worlds, costs`[-3,-3]`,114 responses. Exact score
   autograd gives`[1.5,-1.5]`, updates logits`[0,0] -> [-.15,.15]`, independently
@@ -40,8 +50,9 @@ world remains the forward system; no hidden policy or merit veto is added.
   comparative benefit/new best is established. This is not a full native-world
   pathwise derivative. [Result and limits](results/fresh-native-policy-gradient-v5.md).
 
-Optimization regression354 passed; additional format, restart, audit and figure
-checks pass. Game UI and same-society migration retain their v4 implementation
+Optimization/figure regression396 passed; the15 subsequently added adapter/ABI
+tests also pass. [Verification](results/objective-conditioned-design-v5-verification.json).
+Game UI and same-society migration retain their v4 implementation
 and evidence; they are not silently claimed to have new live results here.
 The v4 transition fidelity failure and broader invention/semantics/recursive
 improvement gaps remain. Historical snapshots below retain their original scope.

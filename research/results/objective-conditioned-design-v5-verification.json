@@ -1,0 +1,31 @@
+{
+  "schema": "scienceutopia.verification-receipt.v1",
+  "date": "2026-11-01",
+  "scope": "Software regression, not actual institutional invention or scientific benefit",
+  "checks": [
+    {
+      "source_commit": "d1eb625",
+      "command": "PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python -m pytest tests/optimization tests/reports/test_native_joint_objectives_v5_figure.py --junitxml=outputs/verification/native-joint-v5-pytest.xml -q",
+      "passed": 396,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 677.801,
+      "junit_sha256": "4ce8a1bdf66e2a283798cf33e2bf2cc19579923c9800f10b6901ebab8c043533"
+    },
+    {
+      "source_commit": "019b90bd394480414579b3ff41059bb12bd6036b",
+      "command": "PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python -m pytest tests/optimization/test_native_manifest_inbox.py tests/optimization/test_native_abi_region_proposer.py --junitxml=outputs/verification/native-v5-adapter-abi.xml -q",
+      "passed": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 15.97,
+      "junit_sha256": "4199a727503130ea915bc63df8fafae7b339319ecfdfed83db2fb0c2d192c0b1",
+      "note": "New test files introduced after the 396-test regression; fixture/native Docker QA is labelled separately from live-Qwen experiments."
+    }
+  ],
+  "old_full_1197_test_result_is_not_a_new_rerun": true,
+  "overlapping_intermediate_counts_are_not_summed": true,
+  "new_game_ui_work_is_not_claimed": true
+}

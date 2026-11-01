@@ -46,13 +46,40 @@ improve the designer itself; these are separate claims to establish.
    probability fitting remains separate historical evidence. Neither operation
    supplies a pathwise input-response Jacobian through the LLM/native world.
 
-Source pin for the joint experiment is `2d63110804f1a08505c8e6cec8c1dd2077e7d54f`.
+Source pin for the FIRST joint experiment is `2d63110804f1a08505c8e6cec8c1dd2077e7d54f`.
 It runs in the clean detached worktree
 `/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-joint-objectives-v5-a1`,
 with raw records under `outputs/native-joint-objectives-v5/run`. All live lab
 inference shares one explicit flock; unchanged weights are resident, but each
 fresh world still generates its own responses. The parallel gradient source
 pin, budget and results have their own protocol.
+
+## Actual results so far
+
+- Local-designer a1 and alias-aligned a2 each execute only one baseline and
+  exhaust3 drafts per arm; no eligible new system and no candidate losses.
+- Staged a3 from clean`0c4a2e3` also fails: throughput's second graph plan
+  passes, but three source drafts fail node-ID-versus-port input addressing;
+  utility exhausts its three graph drafts on exports/types. One actual baseline,
+  two logical loss rows, all40 archived files unchanged under independent audit.
+  A passed plan is not an institutional execution or optimization observation.
+- Fresh-native policy backward from clean`d6e4ef9` executes two complete worlds,
+  costs`[-3,-3]`,114 model responses. Actual autograd updates logits; repeated
+  action draws`[1,1]` provide no fresh comparative advantage or new best.
+- A separately preregistered external-Codex designer/native-Qwen pilot now uses
+  clean`019b90bd394480414579b3ff41059bb12bd6036b`. Its author writes complete
+  code/protocol/graph manifests for exact saved requests; no paid provider API,
+  host-written policy repair or change to researcher weights. Maximumfive
+  physical worlds, same two engineering losses, actual feedback between slots.
+  Until native execution/audit completes, this is a running experiment, not
+  useful invention evidence. External authorship must not be called Qwen design.
+
+See the separate attempt protocols/results and
+[verification receipt](../results/objective-conditioned-design-v5-verification.json).
+The396-test optimization/figure regression and15 new adapter/ABI tests pass;
+their fixture QA is not substituted for live model evidence. Game and durable
+migration retain their v4 implementation; no new live gameplay or continual
+adoption result is claimed in this iteration.
 
 ## Claims that remain separate
 

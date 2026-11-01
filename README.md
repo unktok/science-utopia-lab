@@ -30,6 +30,7 @@
 | Goal | Entry point |
 |---|---|
 | Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
+| Check original goals against implementation, actual evidence and remaining limits | [Current capability map](research/milestones/2026-11-01-objective-conditioned-design-v5.md) |
 | Set up a development environment | [Development guide](docs/development.md) |
 | Understand the code and data flow | [Architecture](docs/architecture.md) |
 | Make a contribution | [Contributing guide](CONTRIBUTING.md) |
@@ -39,6 +40,7 @@
 | Browse the scientific record | [Research index](research/INDEX.md) |
 | Open the local replay game | [Game UI guide](game-ui/README.md) |
 | Extend the actual researcher world with new institutions | [Native science kernel and limits](research/components/native-science-kernel-v1.md) |
+| Author native institution code, protocols and explicit wiring | [Scoped authoring](research/components/native-scoped-region-authoring-v5.md), [external designer contract](research/components/native-external-manifest-authoring-v5.md) |
 | Generate new institution rules and differentiate a miniature world | [Generative Program World](research/components/generative-program-world-v1.md) and [recorded result](research/results/generative-program-world-v1.md) |
 
 The shortest contributor orientation is:

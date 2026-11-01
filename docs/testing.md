@@ -1,5 +1,11 @@
 # Testing
 
+Latest v5 evidence:396 optimization/figure tests pass, plus15 subsequently added
+external-inbox/flat-ABI tests. See the source/JUnit-bound
+[verification receipt](../research/results/objective-conditioned-design-v5-verification.json).
+These are software checks, not fresh scientific experiments. The v4 full-suite
+result of1197 passed/6 skipped is historical and was not rerun by these commands.
+
 Use the repository environment and explicit deterministic CPU settings:
 
 ```bash
@@ -48,11 +54,12 @@ node --check game-ui/src/model.js
 
 ## Current known baseline
 
-As of 2026-10-27, the full suite has six pre-existing failures in
-`tests/experiments/test_prospective_logging.py`. Those tests patch a removed
-`funding_feedback.subprocess` attribute and fail unchanged on `main`. Do not hide
-new failures behind this baseline; report focused and full-suite outcomes
-separately until the compatibility tests are repaired.
+The six failures reported on2026-10-27 in
+`tests/experiments/test_prospective_logging.py`, whose mocks patched a removed
+`funding_feedback.subprocess` attribute, were repaired during v4 integration.
+The [v4 verification](../research/results/non-scale-integration-v4-verification.json)
+records the full1197-pass/6-skip result. Do not reuse the old failure list to
+excuse a current regression, or describe a historical full suite as a new run.
 
 ## Reproducibility expectations
 
