@@ -34,6 +34,21 @@ its80KB byte guard are bound in receipts; no silent truncation is presumed safe.
 Researcher temperatures, weights and original native forward equations remain
 unchanged. Run initial plus two revisions again as a separate development probe.
 
+Runtime reproducibility amendment: record Python's startup hash-seed environment
+and an actual hash probe, not only RNG seeds. New source and calibration runs
+explicitly launch with PYTHONHASHSEED=42; calibration refuses a missing seed.
+The first calibration batch was started without that startup setting and is
+retained as an interrupted setup probe, not reused as controlled calibration
+evidence. This prevents restart-dependent set ordering from changing the native
+initial researcher/conference world. Runtime identity joins the campaign and
+portable-checkpoint bindings. Existing immutable source experiments are not
+rewritten or relabelled as having this stronger guarantee.
+The runtime set_seed helper previously overwrote that environment variable
+after Python had already started, which cannot change the running hash salt.
+It now leaves the startup setting untouched; factory entry refuses a missing
+numeric startup value. Regression tests cover both preservation and refusal
+to manufacture a hash-seed guarantee at runtime.
+
 ## Differentiable-representation track
 
 Fit local annual state-transition representations ONLY to hash-verified native
@@ -72,7 +87,10 @@ so the proposed schedule remains inside measured control support.
 ## Execution and delivery
 
 Code/review/figure work proceeds in parallel; the single local Ollama endpoint
-uses one inference worker. Long native campaigns run only in clean detached
+uses one active lab HTTP inference at a time through an explicit shared
+file-lock. Source and calibration pipelines can remain active concurrently,
+interleaving requests and overlapping other work; no inference speedup is
+claimed. Long native campaigns run only in clean detached
 commit-pinned experiment worktrees. Preserve all drafts/technical errors and
 negative evidence. Publish compact audits, actual limits, reproducible concept
 figure, updated status and working manuscript; raw prompts/caches stay local.

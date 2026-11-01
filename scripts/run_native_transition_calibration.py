@@ -32,6 +32,7 @@ def main():
     parser.add_argument('--loss', type=Path, required=True)
     parser.add_argument('--evaluate-proposal', action='store_true', help='fresh native evaluation of one support-preserving gradient proposal')
     parser.add_argument('--through-cell', type=int, default=6, help='bounded execution batch; resume the same frozen plan through this calibration cell')
+    parser.add_argument('--inference-lock', type=Path, help='shared lab inference mutex; actual native pipelines can overlap')
     args = parser.parse_args()
     if not 1 <= args.through_cell <= 6:
         parser.error('--through-cell must be 1..6')
@@ -39,7 +40,10 @@ def main():
     loss_spec = load_loss_spec(args.loss)
     tensor_loss = compile_terminal_loss(loss_spec)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=3, corpus_years=4,
-        experiment_binding={'protocol': 'native-transition-autograd-v3', 'loss_spec': loss_spec}, record_wire=True, record_code=True)
+        experiment_binding={'protocol': 'native-transition-autograd-v3', 'loss_spec': loss_spec}, record_wire=True, record_code=True,
+        inference_lock=args.inference_lock)
+    if factory.runtime_seed_binding['python_hash_seed_environment'] != '42':
+        parser.error('launch the native calibration process with PYTHONHASHSEED=42; a simulation RNG seed alone does not pin Python set ordering')
     executor = DockerCodeExecutor()
     cells = [('baseline', [.2, .2, .2]), ('pulse-1', [.8, .2, .2]),
         ('pulse-2', [.2, .8, .2]), ('pulse-3', [.2, .2, .8]),
@@ -48,6 +52,8 @@ def main():
         'corpus_sha256': factory.corpus_sha256, 'dataset_identity': factory.dataset_identity,
         'years': 3, 'corpus_years': 4, 'population': 'five-independent-balanced-researchers',
         'feature_schema': FEATURE_SCHEMA, 'protocol': 'native-transition-autograd-v3'}
+    world['runtime_seed_binding'] = factory.runtime_seed_binding
+    world['lab_inference_serialized'] = bool(args.inference_lock)
     plan = {'schema': 'scienceutopia.native-transition-plan.v1', 'world': world, 'seed': 1301,
         'cells': cells, 'evaluate_proposal': args.evaluate_proposal, 'loss_spec': loss_spec,
         'gradient_query': [[.325]] * 3, 'proposal_convex_step': .5,

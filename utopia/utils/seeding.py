@@ -25,7 +25,9 @@ def set_seed(seed: int = 42, use_torch: bool = True):
     random.seed(seed)
     np.random.seed(seed)
 
-    os.environ["PYTHONHASHSEED"] = str(seed)
+    # Python reads this ONLY at process startup. Mutating it here does not
+    # reseed hash(), and used to falsely satisfy portable-run validation while
+    # leaving set iteration randomized. Launch Python with an explicit value.
     os.environ["TOKENIZERS_PARALLELISM"] = "false"  # avoid parallel tokenization races
     # single-threaded math libs to avoid nondeterministic reductions (optional but helpful)
     os.environ.setdefault("OMP_NUM_THREADS", "1")

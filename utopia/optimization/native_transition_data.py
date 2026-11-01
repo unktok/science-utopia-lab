@@ -99,7 +99,8 @@ def extract_trajectory(record, *, run_directory, source_commit, model_digest, co
         raise ValueError('transition features do not reproduce exact native LossSpec evaluation')
     structural = spec.to_dict()
     next(n for n in structural['mechanisms'] if n['mechanism_id'] == 'world.selection')['parameters'].pop('annual_rates')
-    common_world = sha({'initial_physical_state': initial_identity, 'common_implementation_graph': structural})
+    common_world = sha({'initial_physical_state': initial_identity, 'common_implementation_graph': structural,
+        'runtime_seed_binding': final['portable']['contract']['binding']['science_config'].get('runtime_seed_binding')})
     binding = NativeBinding(source_commit, model_digest, corpus_sha256, common_world, sha(FEATURE_SCHEMA), STATE_NAMES, ('annual_selection_rate',))
     trajectory = NativeTrajectory(run['run_id'], binding, tuple(states), tuple((float(x),) for x in controls), tuple(hashes), evaluated['loss'])
     trajectory.validate(binding, compile_terminal_loss(loss_spec))

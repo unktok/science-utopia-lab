@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--proposer', choices=['example', 'llm', 'llm-intent', 'endogenous', 'fixed', 'source-revision', 'free-source'], default='example')
     parser.add_argument('--record-wire', action='store_true', help='retain actual native cache-miss model inputs locally')
     parser.add_argument('--record-code', action='store_true', help='retain exact native container input/output bundles locally')
+    parser.add_argument('--inference-lock', type=Path, help='shared explicit local lock for one concurrent lab HTTP inference')
     parser.add_argument('--revision-node', help='existing free-source observation/messages node to revise')
     parser.add_argument('--designer-plan', action='store_true', help='record an explicit model diagnosis/algorithm plan before source emission')
     parser.add_argument('--system', type=Path, help='optional initial SystemSpec; required for endogenous proposer')
@@ -55,7 +56,7 @@ def main():
     loss = load_loss_spec(args.loss)
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache, years=args.years, corpus_years=args.corpus_years,
                                     experiment_binding={'loss_spec': loss, 'initial_provenance': initial_provenance}, record_wire=args.record_wire,
-                                    record_code=args.record_code or args.proposer == 'free-source')
+                                    record_code=args.record_code or args.proposer == 'free-source', inference_lock=args.inference_lock)
     initial = SystemSpec.from_dict(json.loads(args.system.read_text())) if args.system else legacy_world_system(seed=args.seed)
     if initial_provenance and initial_provenance['candidate_fingerprint'] != initial.fingerprint:
         parser.error('upstream proposal receipt and initial system differ')
@@ -67,6 +68,8 @@ def main():
             'proposer': args.proposer, 'designer_plan': args.designer_plan, 'revision_node': args.revision_node,
             'record_wire': args.record_wire, 'data_cache': str(args.data_cache.resolve()),
             'record_code': args.record_code or args.proposer == 'free-source',
+            'runtime_seed_binding': factory.runtime_seed_binding,
+            'lab_inference_serialized': bool(args.inference_lock),
             'designer_brief_sha256': digest(brief), 'initial_provenance_sha256': digest(initial_provenance)})
     executor = DockerCodeExecutor()
     def example(parent, history, index, loss_spec):
@@ -89,6 +92,9 @@ def main():
             'model': factory.model, 'model_revision': factory.model_digest, 'corpus_sha256': factory.corpus_sha256,
             'seed': args.seed, 'science_config': {'source_commit': factory.source_commit, 'loss_spec': loss,
                            'thinking_override': False, 'max_tokens': 8192, 'designer_brief_sha256': digest(brief), 'designer_plan': args.designer_plan}})
+        if args.inference_lock:
+            from utopia.optimization.native_factory import serialize_native_http
+            serialize_native_http(designer, args.inference_lock)
         if args.proposer == 'free-source':
             from utopia.optimization.native_free_source import NativeFreeSourceRevisionProposer
             from utopia.optimization.native_code_trace import parent_context_provider
