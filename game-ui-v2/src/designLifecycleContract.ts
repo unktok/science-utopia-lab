@@ -68,35 +68,104 @@ export function parseDesignLifecycle(value: unknown): DesignLifecycleSnapshot {
 }
 
 export interface AdoptionCandidate {
+  request_id: string; request_sha256: string;
   parent_observation_id: string; expected_checkpoint_sha256: string; candidate_fingerprint: string; candidate_system: unknown;
-  loss_spec_sha256: string; state_actions: unknown[]; discard_deliveries: unknown[]; authoring: unknown;
+  loss_spec_sha256: string; state_actions: Record<string, unknown>; discard_deliveries: Record<string, string>; authoring: unknown;
 }
-export interface AdoptionReceipt { status: "adopted" | "failed"; request_id: string; request_sha256: string; migration_receipt_sha256?: string; error?: string }
-export interface AdoptionTransport { dispatch(candidate: AdoptionCandidate): Promise<{ status: "pending"; request_id: string; request_sha256: string }>; receipt(requestId: string): Promise<AdoptionReceipt> }
+export interface AdoptionReceipt {
+  status: "pending" | "adopted" | "failed"; request_id: string; request_sha256: string;
+  migration_receipt_sha256?: string; verified_receipt?: true; error?: string;
+}
+export interface AdoptionTransport {
+  dispatch(candidate: AdoptionCandidate, confirmedRequestSha256: string): Promise<{ status: "pending"; request_id: string; request_sha256: string }>;
+  receipt(requestId: string): Promise<AdoptionReceipt>;
+}
+
+const SHA256 = /^[0-9a-f]{64}$/;
+function exactSha256(value: unknown, label: string): string {
+  if (typeof value !== "string" || !SHA256.test(value)) throw new Error(`${label} must be a lowercase 64-hex SHA256`);
+  return value;
+}
+function nonEmptyString(value: unknown, label: string): string {
+  if (typeof value !== "string" || !value.trim()) throw new Error(`${label} must be a non-empty string`);
+  return value;
+}
+function record(value: unknown, label: string): Record<string, unknown> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be a record`);
+  return value as Record<string, unknown>;
+}
+
+export interface AdoptionConfirmation {
+  request_id: string; confirmed_request_sha256: string; candidate_fingerprint: string; expected_checkpoint_sha256: string;
+}
+
+export function adoptionConfirmation(candidate: AdoptionCandidate): AdoptionConfirmation {
+  const requestId = nonEmptyString(candidate.request_id, "request_id");
+  const requestSha256 = exactSha256(candidate.request_sha256, "request_sha256");
+  const candidateFingerprint = exactSha256(candidate.candidate_fingerprint, "candidate_fingerprint");
+  const expectedCheckpointSha256 = exactSha256(candidate.expected_checkpoint_sha256, "expected_checkpoint_sha256");
+  exactSha256(candidate.loss_spec_sha256, "loss_spec_sha256");
+  nonEmptyString(candidate.parent_observation_id, "parent_observation_id");
+  record(candidate.candidate_system, "candidate_system");
+  record(candidate.state_actions, "state_actions");
+  const discards = record(candidate.discard_deliveries, "discard_deliveries");
+  if (Object.values(discards).some((reason) => typeof reason !== "string")) throw new Error("discard_deliveries values must be strings");
+  record(candidate.authoring, "authoring");
+  return { request_id: requestId, confirmed_request_sha256: requestSha256, candidate_fingerprint: candidateFingerprint, expected_checkpoint_sha256: expectedCheckpointSha256 };
+}
 
 export class AdoptionController {
   state: AdoptionState;
   requestId = "";
-  message = "Transport not connected. Viewing audited evidence cannot adopt a system.";
+  requestSha256 = "";
+  message = "Transport not connected. This historical v5 snapshot is not a live design session and cannot be adopted directly.";
+  private operation = 0;
+  private dispatching = false;
+  private refreshing = false;
   constructor(private readonly transport?: AdoptionTransport) { this.state = transport ? "confirm-required" : "unavailable"; }
-  async submit(candidate: AdoptionCandidate, explicitlyConfirmed: boolean): Promise<void> {
+  async submit(candidate: AdoptionCandidate, confirmedRequestSha256: string): Promise<void> {
     if (!this.transport) { this.state = "unavailable"; throw new Error(this.message); }
-    if (!explicitlyConfirmed) { this.state = "confirm-required"; throw new Error("Explicit confirmation of the exact staged request is required"); }
-    this.state = "pending"; this.message = "Dispatching exact request; no adoption receipt yet.";
+    if (this.dispatching || this.refreshing || this.state === "pending" || this.state === "completed") throw new Error("An adoption request is already active or completed");
+    const confirmation = adoptionConfirmation(candidate);
+    if (confirmedRequestSha256 !== confirmation.confirmed_request_sha256) {
+      this.state = "confirm-required";
+      throw new Error("confirmed_request_sha256 must exactly match the staged request SHA256 shown to the user");
+    }
+    const operation = ++this.operation;
+    this.requestId = confirmation.request_id;
+    this.requestSha256 = confirmation.confirmed_request_sha256;
+    this.dispatching = true;
+    this.state = "pending"; this.message = `Dispatching exact request ${this.requestSha256.slice(0, 16)} / no adoption receipt yet.`;
     try {
-      const pending = await this.transport.dispatch(candidate);
-      if (pending.status !== "pending" || !pending.request_id || !pending.request_sha256) throw new Error("Invalid pending adoption response");
-      this.requestId = pending.request_id;
-      this.message = `Pending durable migration receipt / ${pending.request_sha256.slice(0, 16)}`;
-    } catch (error) { this.state = "failed"; this.message = String(error); throw error; }
+      const pending = await this.transport.dispatch(candidate, confirmation.confirmed_request_sha256);
+      if (operation !== this.operation) return;
+      if (pending.status !== "pending" || pending.request_id !== this.requestId || pending.request_sha256 !== this.requestSha256) throw new Error("Pending adoption response does not match the exact confirmed request");
+      this.message = `Pending durable migration receipt / ${this.requestSha256.slice(0, 16)}`;
+    } catch (error) {
+      if (operation === this.operation) { this.state = "failed"; this.message = String(error); }
+      throw error;
+    } finally { if (operation === this.operation) this.dispatching = false; }
   }
   async refresh(): Promise<void> {
     if (!this.transport || this.state !== "pending" || !this.requestId) throw new Error("No pending adoption request");
+    if (this.dispatching) { this.message = `Dispatch acknowledgement pending / ${this.requestSha256.slice(0, 16)}`; return; }
+    if (this.refreshing) return;
+    const operation = this.operation, requestId = this.requestId, requestSha256 = this.requestSha256;
+    this.refreshing = true;
     try {
-      const receipt = await this.transport.receipt(this.requestId);
-      if (receipt.status === "adopted" && receipt.migration_receipt_sha256) { this.state = "completed"; this.message = `Durable migration receipt verified / ${receipt.migration_receipt_sha256.slice(0, 16)}`; return; }
+      const receipt = await this.transport.receipt(requestId);
+      if (operation !== this.operation || requestId !== this.requestId || requestSha256 !== this.requestSha256) return;
+      if (receipt.request_id !== requestId || receipt.request_sha256 !== requestSha256) throw new Error("Adoption receipt identity does not match the pending request");
+      if (receipt.status === "pending") { this.message = `Pending durable migration receipt / ${requestSha256.slice(0, 16)}`; return; }
       if (receipt.status === "failed") { this.state = "failed"; this.message = receipt.error || "Migration failed"; return; }
-      throw new Error("Completed adoption requires a verified durable migration receipt");
-    } catch (error) { this.state = "failed"; this.message = String(error); throw error; }
+      if (receipt.status === "adopted" && receipt.verified_receipt === true) {
+        const migrationHash = exactSha256(receipt.migration_receipt_sha256, "migration_receipt_sha256");
+        this.state = "completed"; this.message = `Durable migration receipt verified / ${migrationHash.slice(0, 16)}`; return;
+      }
+      throw new Error("Completed adoption requires backend verified_receipt=true and a valid durable migration receipt SHA256");
+    } catch (error) {
+      if (operation === this.operation && requestId === this.requestId && requestSha256 === this.requestSha256) { this.state = "failed"; this.message = String(error); }
+      throw error;
+    } finally { if (operation === this.operation) this.refreshing = false; }
   }
 }

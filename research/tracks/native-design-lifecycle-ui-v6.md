@@ -32,9 +32,12 @@ revision 1. The view never relabels the later system as a provisional winner.
 ## Actor and truth separation
 
 The UI explicitly separates the external Codex specialist institution designer
-from the five fixed local Qwen3:8B researchers. The author identity is
+from the fixed local Qwen3:8B researcher model. Each candidate uses a separately
+reset native world with fresh responses; it is not one persistent researcher
+society. The author identity is
 self-reported provenance, not authenticated provider identity. The five actual
-physical worlds produced 285 researcher responses; the shared baseline and
+physical worlds each contain five researcher agents and together produced 285
+researcher responses; the shared baseline and
 cross-scoring are not independent replicates.
 
 Persistent boundary labels state that this is one development seed, not
@@ -47,9 +50,16 @@ institution is designed; it does not establish that either proxy is desirable.
 
 The airlock is typed for `scienceutopia.native-society-design-session.v1` and
 models `unavailable -> confirm-required -> pending -> completed|failed`.
-Completion requires a verified durable migration receipt. The shipped page has
-no transport, keeps confirmation and submission disabled, and reports
-`UNAVAILABLE`; merely viewing an audited selected system cannot install it.
+Before dispatch, a live client must display and receive the exact staged
+`confirmed_request_sha256`; a boolean confirmation is insufficient. The
+controller binds that hash and request ID, rejects duplicate/reordered work,
+keeps backend `pending` polls pending, and completes only when an `adopted`
+response matches both identities and carries `verified_receipt=true` plus a
+valid 64-hex durable migration-receipt hash. State and delivery decisions use
+the session API's record-shaped contracts. The shipped page has no transport,
+keeps confirmation and submission disabled, and reports `UNAVAILABLE`; this
+historical v5 snapshot is not a live session and cannot install its selected
+system directly.
 The existing `/native-api/jobs` path creates fresh worlds and is deliberately
 not reused as same-society adoption.
 

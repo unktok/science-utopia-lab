@@ -20,7 +20,7 @@ function renderHeader(): void {
   el("source-hash").textContent = `AUDIT ${short(snapshot.source.artifact_sha256, 18)}`;
   el("designer-meta").textContent = `${snapshot.experiment.designer.identity} / hash-bound manifest / provider identity self-reported, not authenticated`;
   const researchers = snapshot.experiment.researchers;
-  el("researcher-meta").textContent = `${researchers.population} researchers / seed ${researchers.seed} / ${researchers.years} years / ${researchers.responses_per_world} responses per world`;
+  el("researcher-meta").textContent = `${snapshot.experiment.physical_complete_runs} reset physical worlds / ${researchers.population} agents per world / ${researchers.responses_per_world} fresh responses per world`;
   el("source-meta").textContent = `SOURCE ${snapshot.source.source_commit.slice(0, 12)} // AUDIT ${snapshot.source.artifact_sha256.slice(0, 16)}`;
 }
 

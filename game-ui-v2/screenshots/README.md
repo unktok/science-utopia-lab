@@ -12,8 +12,8 @@ experiment or inference.
 
 | Capture | SHA-256 |
 |---|---|
-| `noctiluca-design-chronicle-v5.png` | `c9caa3bf3e76ea98cba006e2690c72f53b0d81fc4c5e71f38cf2f88a580eee32` |
-| `noctiluca-design-chronicle-two-node.png` | `9b3bd70d88aa710633b4164bc197c67d75caa9e0ac5711981a75b4a84089199c` |
+| `noctiluca-design-chronicle-v5.png` | `36d90b870063aa0e5baf3ce2c3e0a3c878f4710f35fb4022b91ad733ef638b5f` |
+| `noctiluca-design-chronicle-two-node.png` | `d94e31153c8c6e62abe8680817ea594a5f3cef9c5691171b653b4593f1dc7586` |
 
 ## Common-Split Relay v1
 

@@ -7,7 +7,7 @@
     "systems": 3,
     "nodes": 13,
     "loss": "-3",
-    "adoption": "UNAVAILABLE / Transport not connected. Viewing audited evidence cannot adopt a system. Contract: scienceutopia.native-society-design-session.v1.",
+    "adoption": "UNAVAILABLE / Transport not connected. This historical v5 snapshot is not a live design session and cannot be adopted directly. Contract: scienceutopia.native-society-design-session.v1.",
     "confirmDisabled": true,
     "submitDisabled": true,
     "overflow": false
