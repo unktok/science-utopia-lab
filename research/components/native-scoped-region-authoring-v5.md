@@ -42,6 +42,11 @@ callback signature `(parent, history, index, loss_spec) -> patch`. It includes
 the exact LossSpec, previous actual losses/measurements, actual native cut,
 and explicitly lossy input examples in the prompt. Exact full native records,
 not those prompt projections, drive isolated chronological probes.
+The initial de-novo draft withholds original host source. Later revisions see
+the exact executed generated incumbent's Python, ports, parameters, connections
+and schedules alongside its feedback. The source-visibility policy is bound in
+durable receipts; this is feedback-conditioned revision rather than independent
+code regeneration conditioned only on numerical scores.
 
 The first cut can replace `world.selection`; a later revision automatically
 replaces all IDs of the incumbent `native_design_region`. Therefore new names,

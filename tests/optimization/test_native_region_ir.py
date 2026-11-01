@@ -84,6 +84,7 @@ def test_durable_generation_probe_resume_and_objective_binding(recorded_selectio
     assert len(receipt['runs']) == 6
     assert len(model.calls[0]['prompt'].encode()) < 15000
     assert json.loads(model.calls[0]['prompt'])['loss_spec'] == loss_spec()
+    assert 'incumbent_generated_region' not in json.loads(model.calls[0]['prompt'])
     changed = deepcopy(loss_spec())
     changed['version'] = 'another-objective'
     with pytest.raises(ValueError, match='prompt/binding changed'):
@@ -150,5 +151,9 @@ def test_second_joint_generation_replaces_previous_region_not_original_host_id(r
     child = apply_design_patch(parent, next_patch)
     assert not set(parent.metadata['native_design_region']['node_ids']) & set(child.metadata['native_design_region']['node_ids'])
     assert json.loads(next_model.calls[0]['prompt'])['observed_feedback'][-1]['loss'] == record['observation']['loss']
+    incumbent = json.loads(next_model.calls[0]['prompt'])['incumbent_generated_region']
+    assert {n['mechanism_id'] for n in incumbent['mechanisms']} == set(parent.metadata['native_design_region']['node_ids'])
+    assert sorted(n['parameters']['code_artifact']['source'] for n in incumbent['mechanisms']) == sorted(n['python_code'] for n in draft['nodes'])
+    assert len(incumbent['connections']) == 5 and len(incumbent['schedules']) == 2
     assert len(next_model.calls) == 2
     assert 'each real native paper exactly once' in next_model.calls[1]['prompt']
