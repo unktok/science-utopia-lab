@@ -17,11 +17,13 @@ from utopia.system.native_kernel import NativeScienceKernel
 from utopia.system.native_open_examples import SOURCE, joint_engineering_loss, open_native_system
 
 
-def test_same_native_world_connects_domain_process_evolving_mixed_search_and_backward(tmp_path, fixed_corpus):
+def test_same_native_world_connects_domain_process_evolving_mixed_search_and_backward(tmp_path, fixed_corpus, monkeypatch):
     executor = DockerCodeExecutor(timeout=60.)
     initial = open_native_system(executor.image_id)
     calls, requests = [], []
     def factory(spec, run_seed, run_id):
+        monkeypatch.setitem(BINDING, 'cell', spec.fingerprint)
+        monkeypatch.setitem(BINDING, 'science_config', {**BINDING['science_config'], 'source_commit':binding['source_commit']})
         seed()
         sim, payloads = make_sim(tmp_path / run_id, native=NativeScienceKernel(spec, code_executor=executor))
         calls.append(payloads)

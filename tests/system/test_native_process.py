@@ -18,7 +18,8 @@ from tests.system.test_native_science_kernel import make_sim, original_science
 
 
 def registry_extension(kernel, registry):
-    register_native_process(kernel, registry)
+    # Production kernel now registers the process handler automatically.
+    assert ('native.process.activity.v1', 1) in registry.registered
 
 
 def test_dependency_compiler_preserves_original_six_year_science_and_all_requests(tmp_path, fixed_corpus, monkeypatch):
@@ -152,6 +153,48 @@ def test_delayed_control_waits_then_executes_actual_activity():
     continued = DeterministicGraphRunner(spec, registry).run(periods=1, checkpoint=result.checkpoint.to_dict())
     assert [v.payload['n'] for v in seen] == [1, 2]
     assert continued.checkpoint.mechanism_states['work']['total_invocations'] == 2
+
+
+def test_actual_llm_institution_repetition_uses_distinct_request_contexts_and_memory():
+    from types import SimpleNamespace
+    from utopia.system.native_kernel import LLM_INSTITUTION
+    seeds = []
+    def generate(**kwargs):
+        seeds.append(kwargs['seed_ctx'])
+        prior=json.loads(kwargs['prompt'].split('Observed input records and your prior state:\n')[1])['state']
+        n=prior.get('n',0)+1
+        return {'outputs':{'value':[{'payload':{'n':n}}]},'state':{'n':n}},[]
+    node=MechanismSpec('actual-role',MechanismFamily.CUSTOM,LLM_INSTITUTION,
+        outputs=(PortSpec('value',ChannelKind.ARTIFACT,'measurement'),),
+        parameters={'instruction':'Create a measurement','output_schemas':{'value':{'type':'object'}}})
+    spec=SystemSpec('repeat-llm',1,artifact_types=(ArtifactTypeSpec(CONTROL),ArtifactTypeSpec('measurement')),
+        mechanisms=(controlled_activity(node,count=3),),schedules=(ScheduleSpec('actual-role',0),))
+    kernel=NativeScienceKernel(spec)
+    kernel._simulation=SimpleNamespace(llm=SimpleNamespace(generate=generate))
+    result=DeterministicGraphRunner(spec,kernel._registry()).run(periods=1,start_period=1)
+    assert len(set(seeds))==3
+    assert [s[2] for s in seeds]==['actual-role.iteration-'+str(i) for i in range(3)]
+    assert result.checkpoint.mechanism_states['actual-role']['delegate_state']=={'n':3}
+
+
+def test_repeated_tensor_memory_has_checked_conditional_backward_across_iterations_and_years():
+    from utopia.system.tensor_program import IMPLEMENTATION as TENSOR, SCHEMA
+    from utopia.optimization.native_relaxation import native_tensor_trace
+    from utopia.optimization.native_hybrid import conditional_backward
+    program={'schema':SCHEMA,'inputs':{},'parameters':{'gain':1.},'state':{'memory':0.},
+        'nodes':[{'id':'next','op':'add','args':['state:memory','parameter:gain'],'attrs':{}}],
+        'outputs':{'value':'next'},'updates':{'memory':'next'}}
+    delegate=MechanismSpec('memory',MechanismFamily.CUSTOM,TENSOR,
+        outputs=(PortSpec('value',ChannelKind.ARTIFACT,'measurement'),),
+        parameters={'program':program,'input_bindings':{}})
+    spec=SystemSpec('repeat-tensor',1,artifact_types=(ArtifactTypeSpec(CONTROL),ArtifactTypeSpec('measurement')),
+        mechanisms=(controlled_activity(delegate,count=3),),schedules=(ScheduleSpec('memory',0),))
+    result=DeterministicGraphRunner(spec,NativeScienceKernel(spec)._registry()).run(periods=2,start_period=1)
+    assert result.checkpoint.mechanism_states['memory']['delegate_state']['tensors']['memory']==6.
+    backward=conditional_backward(native_tensor_trace(result.events),{'memory':program},
+        trainable={'memory':['gain']},terms=[{'mechanism':'memory','output':'value','coefficient':1.}])
+    assert backward['gradient']['memory']['gain']==21.
+    assert all(c['status']=='passed' for c in backward['numerical_checks'])
 
 
 CONTROLLER='''def step(context):

@@ -219,6 +219,8 @@ class NativeScienceKernel:
             if self.code_executor is None:
                 self.code_executor = DockerCodeExecutor(next(iter(images)))
             register_code_mechanisms(registry, self.code_executor, self.execution_receipts)
+        from .native_process import register_native_process
+        register_native_process(self, registry)
         if self.registry_extension:
             self.registry_extension(self, registry)
         return registry
