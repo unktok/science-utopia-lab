@@ -261,6 +261,10 @@ def analyze(run):
     before = _inventory(run)
     plan, terminal = _read(run / 'plan.json'), _read(run / 'completion.json')
     protocol, world = plan['protocol'], plan['world']
+    classification = protocol.get('classification', 'actual-native-development-objective-conditioned-joint-design')
+    if classification not in {'actual-native-development-objective-conditioned-joint-design',
+                               'scripted-fixture-not-native-results'}:
+        raise ValueError('unknown explicitly bound experiment evidence classification')
     if protocol['schema'] != 'scienceutopia.native-joint-objectives.v5' or world['protocol'] != protocol:
         raise ValueError('joint experiment protocol/world binding differs')
     arm_ids, losses = protocol['arm_ids'], protocol['losses']
@@ -350,7 +354,7 @@ def analyze(run):
     if after != before:
         raise ValueError('read-only analysis changed, added, removed or observed changing input files')
     return {'schema': 'scienceutopia.native-joint-objectives-analysis.v5',
-        'classification': 'actual-native-development-objective-conditioned-joint-design',
+        'classification': classification,
         'status': status, 'source_commit': world['source_commit'], 'raw_output_root': str(run),
         'input_manifest_sha256': sha(before), 'input_file_count': len(before),
         'input_file_hashes': before, 'physical_complete_runs': len(physical),
