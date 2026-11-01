@@ -4,6 +4,17 @@
   "scope": "Software regression, not actual institutional invention or scientific benefit",
   "checks": [
     {
+      "source_commit": "7c5db0d00598c562c55d1438df069d446582a55e",
+      "command": "PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python -m pytest tests/optimization/test_external_native_objective_analysis_v5.py tests/reports/test_native_joint_objectives_v5_figure.py --junitxml=outputs/native-v5-late-analysis-figure.xml -q",
+      "passed": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 23.434,
+      "junit_sha256": "0ab7fae3a90bc96a86d51037d7976b825a55af59ee575fcac00131daee64c0bd",
+      "note": "Checks the analysis-only full observed-SystemSpec export and actual node-count path graphics added after the clean full regression. These overlap earlier tests and are not added to1311 as an artificial total."
+    },
+    {
       "source_commit": "ecd1ae64eb8fd5970d7194dd2f367ea1a16cb162",
       "command": "PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= PYTHONPATH=. .venv/bin/python -m pytest tests --junitxml=outputs/verification/native-v5-full-regression.xml -q",
       "passed": 1311,
@@ -44,5 +55,23 @@
   ],
   "old_full_1197_test_result_is_not_a_new_rerun": true,
   "overlapping_intermediate_counts_are_not_summed": true,
-  "new_game_ui_work_is_not_claimed": true
+  "new_game_ui_work_is_not_claimed": true,
+  "actual_external_audit_repeated_byte_identically": true,
+  "actual_external_raw_files_preserved": 97,
+  "actual_loss_figure_pdf_png_manifest_repeated_byte_identically": true,
+  "working_paper": {
+    "path": "output/pdf/science-utopia-lab-working-paper.pdf",
+    "pages": 24,
+    "sha256": "89e97e7dfc507395da020232e8c5c4548b1563ad6fef59389692cd93218db472",
+    "main_tex_sha256": "3b1a65cbe1d367be29df813309dcd3e6e73517cada5f3d0630e1f2fa10d387f4",
+    "native_joint_results_tex_sha256": "fdb5f04089bdf21f672fa7b8dd0c35194078df9ce998f7b1b46f38fecea9020f",
+    "native_system_results_tex_sha256": "bd1305eddf65453222b5242752f39bfde5b8cb11a9487fdf521dccdfe5599e59",
+    "empirical_figure_manifest_sha256": "59497b333b127b0051a6b19eecbb839159cc3eeee0cf40ce33361f18cbf6a38e",
+    "external_native_audit_sha256": "d10a98206d2180cdf716498e59cf7df5708f654c81dece4dfd07f86cf475d779",
+    "all_pages_rendered_and_visually_reviewed": true,
+    "latex_undefined_references": 0,
+    "latex_overfull_boxes": 0,
+    "underfull_spacing_warnings_retained": true,
+    "new_scientific_and_capability_pages_reviewed_enlarged": [14, 16, 19, 24]
+  }
 }
