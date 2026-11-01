@@ -1,14 +1,22 @@
 {
-  "schema": "scienceutopia.research-program-concept.v1",
-  "classification": "conceptual-not-empirical",
-  "generator": "scripts/figures/science_system_program.py",
-  "generator_sha256": "0564935952a8522095fc28d3417611a393880964e5a490b69e5dbcdc040ba3fe",
   "caption": "paper/research_program_concept.tex",
-  "whole_world_backpropagation": "research-target-not-established-result",
-  "useful_autonomous_invention": "research-target-not-established-result",
+  "caption_sha256": "5dcd092d7663c7794f7f9f19efc9054405158ca7b545cd3f46ec322d36e962a3",
+  "classification": "conceptual-not-empirical",
+  "design_freedoms": [
+    "parameters",
+    "algorithms-source",
+    "mechanisms-protocols",
+    "wiring-order"
+  ],
+  "generator": "scripts/figures/science_system_program.py",
+  "generator_sha256": "a0fc03a92176c7edc354259a7abc542b957d0b414c7f0c6a2de22289d0360080",
   "outputs": {
-    "science-system-design-program.pdf": "971fb178d5ada29489ed209a54f899abb13c4da65242320c84f369cbca3d5bc1",
-    "science-system-design-program.png": "74e352f22562517d9507661e79903808dda81cc557758cfe2a586b29a80a34eb",
-    "science-system-design-program.svg": "5986f9dd627c303b8c71b42143a70e878b7a3dff1c61a53674c15b6fe51149ce"
-  }
+    "science-system-design-program.pdf": "19f0a0f0567a7af19c3fa751027d81e06865a85cd9b3b150e43a1a1634975f77",
+    "science-system-design-program.png": "c769386d5f9bd4b534408597d455cb94fe4a58bd6a57c6d8d5f761fb04726176",
+    "science-system-design-program.svg": "a91212f0946edea71be02520d679efbf907d421fc5c7bb1bd92fb1cbfa4419e9"
+  },
+  "schema": "scienceutopia.research-program-concept.v2",
+  "standalone_game_ui_node": false,
+  "useful_autonomous_invention": "research-target-not-established-result",
+  "whole_world_backpropagation": "research-target-not-established-result"
 }

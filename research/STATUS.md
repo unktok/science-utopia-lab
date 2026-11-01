@@ -50,8 +50,11 @@ already running. Original data progress remains at the separate
 `native-transition-v3-a2/outputs/native-transition-v3/run/progress.json`.
 
 The working paper now includes a publication-wide conceptual Figure1: objectives,
-composable design freedom, researcher ecosystem, black-box/gradient/hybrid
-methods, independent evaluation and a game-like interface. It distinguishes
+four illustrated composable design freedoms, the enclosed researcher ecosystem,
+black-box/gradient/hybrid methods and independent evaluation. The refined
+Figure1 removes the standalone game-interface node: the game is a view over the
+whole system, not an extra institution. Continuous connector paths and tested
+panel padding address layout seams and close text. It distinguishes
 research goals from results. The17-page PDF and separate concept PDF are under
 `output/pdf/`; vector/raster source assets and their manifest are tracked.
 

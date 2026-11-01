@@ -121,7 +121,10 @@ unused actual native simulations. Those are different tests.
 `scripts/figures/science_system_program.py` renders the conceptual Figure1 in
 `paper/research_program_concept.tex`. The objective, design freedoms and search
 method are separate axes. The original researcher world is the minimum
-contained instance; a game-like inspect/edit/replay interface and longer-term
-internal redesign are shown in relation to the outer optimization loop.
+contained instance. The refined figure integrates four graphical design-freedom
+examples and encloses institutions and researcher activity in the same system.
+Game-like inspection/editing/replay is a view over that world, not a standalone
+scientific mechanism, so its separate box is omitted. The caption preserves
+longer-term internal-redesign and full-backpropagation claim boundaries.
 Curves and layouts are conceptual, not empirical or completion evidence.
 PDF/SVG/PNG outputs are byte-stable in the tested environment.

@@ -24,8 +24,13 @@ The final shareable artifact is
 
 Figure1 now describes the whole research program, not just peer-review search:
 explicit objectives, composable parameters/source/mechanisms/protocols/wiring,
-the original researcher ecosystem, black-box/gradient/hybrid search, independent
-evaluation and the game-like interface. Its curves and layouts are conceptual.
+the original researcher ecosystem, black-box/gradient/hybrid search and independent
+evaluation. Its four design freedoms now have integrated miniatures: changing
+values, replacing functions, adding mechanisms/protocols and rewiring the same
+nodes. They compose over one scientific system, not a fixed sequence of stages.
+The game view is not a separate scientific-system component and is not drawn as
+an independent box here; the game-UI screenshots remain in their own section.
+All curves and layouts are conceptual.
 Whole-world backpropagation and useful autonomous invention are labelled as
 research targets, not completed results. Rebuild its vector and raster assets
 without inference with:
@@ -36,7 +41,9 @@ without inference with:
 
 The editable SVG, publication PDF and preview PNG are under
 `paper/figures/program-concept/`. The figure-generation test checks deterministic
-PDF/SVG/PNG output; final manuscript layout also requires rendered visual QA.
+PDF/SVG/PNG output, continuous connector paths, text separation and minimum
+physical-point padding inside panels; final manuscript layout also requires
+rendered visual QA.
 
 The paper reports the first result-dependent engineering campaign, the complete
 Metric-Conditioned Optimization Study v1.1 including its guarded held-out slice,
