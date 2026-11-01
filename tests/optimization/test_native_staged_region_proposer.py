@@ -13,7 +13,7 @@ from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from utopia.optimization.native_region_ir import boundary_contract
 from utopia.optimization.native_staged_region_proposer import (
     NativeStagedRegionProposer, STRUCTURE_ONLY, attach_sources, graph_plan_errors,
-    _payload_prompt_view, source_artifact_errors, staged_plan_schema, staged_source_schema,
+    _native_plan_contract, _payload_prompt_view, source_artifact_errors, staged_plan_schema, staged_source_schema,
 )
 from utopia.system import SystemSpec
 from utopia.system.code_mechanisms import sha
@@ -69,6 +69,12 @@ def test_prompt_projection_retains_deep_list_and_score_shapes():
     assert isinstance(projected['reviews']['actual-paper'], list)
     assert [r['overall_score'] for r in projected['reviews']['actual-paper']] == list(range(5))
     assert sha(value) == before
+
+
+def test_nonpublication_cut_does_not_require_publication_institutions():
+    text = _native_plan_contract({'exports': {'notice': {'mechanism': 'custom.communication', 'port': 'messages'}}})
+    assert 'EVERY actual supplied boundary export' in text
+    assert 'decisions' not in text and 'after export' not in text and 'publication' not in text
 
 
 def test_staged_bounded_repairs_exact_source_real_docker_and_native_resume(recorded_selection, tmp_path):

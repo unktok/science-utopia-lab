@@ -55,6 +55,17 @@ def staged_source_schema(plan):
             'properties': {key: {'type': 'string', 'minLength': 1} for key in ids}}}}
 
 
+def _native_plan_contract(contract):
+    publication = {e['port'] for e in contract['exports'].values()
+        if e['mechanism'] == 'world.publication'}
+    notes = ['Plan explicit outputs and wires for EVERY actual supplied boundary export; no other institution is compulsory.']
+    if 'decisions' in publication:
+        notes.append('The supplied native publication decisions export must eventually contain one ENVELOPED actual paper decision per real submission, or exactly one empty_cycle:true marker in empty years. All-accept and reject-all are legal under the explicit loss.')
+    if 'after' in publication:
+        notes.append('The supplied native publication after export must eventually carry the actual year.')
+    return ' '.join(notes)
+
+
 def attach_sources(plan, sources):
     """Copy exact user-authored interfaces and exact generated Python bytes."""
     result = clone(plan)
@@ -215,7 +226,7 @@ class NativeStagedRegionProposer:
             prompt = {**common, 'phase': 'GRAPH_AND_PROTOCOL_PLAN_ONLY_NO_PYTHON',
                 'task': 'Choose arbitrary institutions and explicit connections to MINIMIZE the supplied loss. No hidden quota, quality, fairness or activity veto. Return rationale,nodes,exports WITHOUT python_code. No algorithm catalog.',
                 'contract': 'nodes is YOUR chosen nonempty execution order. Every node has id,inputs,outputs,parameters,state_schema. inputs:{port:{sources:[boundary:ALIAS or node:EARLIER_ID:DECLARED_OUTPUT_PORT],required:boolean,schema:JSONSchema}}. outputs:{DISTINCT_port:{channel,artifact_type,required:boolean,schema:JSONSchema}}. exports must contain EVERY supplied boundary export alias and explicitly reference an actual declared node output of matching type. sources and exports reference PORTS, never a whole node or the word outputs. Names, internal protocols, schemas and node count are free. No missing wires will be supplied by the host. Schemas are JSON Schema such as {type:object}, not endpoint metadata.',
-                'native_interface': 'decisions export must eventually contain one ENVELOPED actual paper decision per real submission, or exactly one empty_cycle:true marker in empty years. after export must eventually carry the actual year. Plan explicit outputs and wires for BOTH exports. All-accept and reject-all are legal under the explicit loss.',
+                'native_interface': _native_plan_contract(contract),
                 'previous_technical_failure': previous}
             path, receipt = self._draft(binding=plan_binding, phase='plan', index=index,
                 attempt=attempt, schema=plan_schema, prompt=prompt, previous_hash=previous_hash)
