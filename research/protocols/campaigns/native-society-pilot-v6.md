@@ -43,6 +43,12 @@ The live CLI pins:
   Its metadata is self-reported, not authenticated provider identity. No paid
   provider API or local designer inference is invoked by the inbox/driver.
 
+Every generated node must use the exact preregistered local container image.
+This is an **execution-infrastructure pin**, not an institution catalogue or a
+restriction to host-authored policy/source/wiring. Arbitrary algorithms, complete
+Python bodies, protocols, node structure and wires remain externally authored;
+the host neither fills them in nor changes them to make a candidate useful.
+
 ## Durable transaction sequence
 
 1. Run the founding society through year1, save its complete portable checkpoint,
@@ -76,6 +82,15 @@ The external inbox request hash and staged adoption request hash are **different
 identities**. Progress records show which one is awaited. A wrong consent hash
 cannot install a proposal. The UI may record consent while the worker is stopped;
 it does not itself migrate or advance the native society.
+
+Before inference, the driver freezes `society-session-config.json` with the
+server's five operator-owned fields (`directory`, `founding_system`, `loss_spec`,
+`world_binding`, `checkpoint_directory`). The latter is the **actual** Simulation
+output path. Identical restarts do not rewrite it; changes fail closed. Pass that
+file to `scripts/serve_native_lab.py --society-config ...` to connect the existing
+Continuity Spine. An external author/HTTP request cannot choose these paths. A
+live browser consent→worker resume→verified saved receipt→completed UI capture is
+a separate root-run acceptance check, not claimed by scripted tests here.
 
 Every resume uses `runs/persistent-society/system.json` for the unchanged founding
 graph. Native portable bootstrap verifies descendant migration lineage; the driver

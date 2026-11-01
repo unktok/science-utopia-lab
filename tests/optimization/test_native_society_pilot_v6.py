@@ -19,6 +19,7 @@ from utopia.system.native_kernel import NativeScienceKernel
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 from scripts.run_native_society_pilot_v6 import (
     ExternalSocietyProposer, SocietyPatchInbox, audit_society_pilot, run_society_pilot,
+    write_society_server_config,
 )
 
 
@@ -184,3 +185,20 @@ def test_invalid_external_source_is_a_preserved_null_loss_technical_failure(tmp_
     assert progress['failed_candidate_loss'] is None and progress['automatic_redraft'] is False
     assert progress['adoptions'] == 0 and len(progress['loss_path']) == 1
     assert len(list((tmp_path / 'authoring-inbox/requests').glob('*.json'))) == 1
+
+
+def test_operator_owned_server_config_has_exact_bindings_and_actual_paths(tmp_path):
+    session = NativeSocietyDesignSession(tmp_path / 'session', founding_system=activity_world_system(),
+        loss_spec=loss_spec(), world_binding={'evidence': 'scripted-configuration-QA'})
+    actual = tmp_path / 'non-guessed' / 'scientific-checkpoints'
+    path = write_society_server_config(tmp_path, session, checkpoint_directory=actual)
+    value = SocietyPatchInbox._read(path)
+    assert set(value) == {'directory', 'founding_system', 'loss_spec', 'world_binding', 'checkpoint_directory'}
+    assert value['checkpoint_directory'] == str(actual.resolve())
+    assert value['directory'] == str(session.directory.resolve())
+    before = file_sha256(path)
+    assert write_society_server_config(tmp_path, session, checkpoint_directory=actual) == path
+    assert file_sha256(path) == before
+    with pytest.raises(ValueError, match='server config changed'):
+        write_society_server_config(tmp_path, session, checkpoint_directory=tmp_path / 'wrong-place')
+    assert file_sha256(path) == before

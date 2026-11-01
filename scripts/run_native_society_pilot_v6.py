@@ -115,6 +115,25 @@ def progress(session, *, status, **extra):
         'population_reset': False, **extra}
 
 
+def write_society_server_config(output, session, *, checkpoint_directory):
+    """Freeze operator-owned paths/bindings for serve_native_lab --society-config.
+
+    Neither author responses nor HTTP requests get to select server filesystem
+    roots. Use the actual Simulation output path, not a guessed layout.
+    """
+    value = {'directory': str(session.directory.resolve()),
+        'founding_system': session.founding.to_dict(), 'loss_spec': clone(session.loss_spec),
+        'world_binding': clone(session.binding['world']),
+        'checkpoint_directory': str(Path(checkpoint_directory).resolve())}
+    path = Path(output) / 'society-session-config.json'
+    if path.exists():
+        if SocietyPatchInbox._read(path) != value:
+            raise ValueError('operator-owned society server config changed')
+    else:
+        write_json_atomic(path, value, sort_keys=True, allow_nan=False)
+    return path
+
+
 def run_society_pilot(simulation, session, proposer, *, output, confirm_request_sha256=(), horizon=3):
     """Generic callable proposer/loss route; the CLI pins the small live protocol.
 
@@ -399,21 +418,22 @@ def main():
         # Always reopen the original founding configuration. Portable restore,
         # not a reset or rewritten system.json, recovers its migrated descendants.
         simulation = factory(initial, 1301, 'persistent-society')
-        simulation.native_system.code_executor = RecordingCodeExecutor(executor,
-            args.output / 'runs/persistent-society/code-contexts.jsonl', binding={
-                'source_commit': factory.source_commit, 'system_fingerprint': initial.fingerprint,
-                'run_id': 'persistent-society'})
-        proposer = ExternalSocietyProposer(args.output / 'authoring-inbox', world_binding=world,
-            domain_provider=lambda: session._domain(simulation), runtime_image_id=executor.image_id)
         try:
+            write_society_server_config(args.output, session, checkpoint_directory=simulation.output_dir)
+            simulation.native_system.code_executor = RecordingCodeExecutor(executor,
+                args.output / 'runs/persistent-society/code-contexts.jsonl', binding={
+                    'source_commit': factory.source_commit, 'system_fingerprint': initial.fingerprint,
+                    'run_id': 'persistent-society'})
+            proposer = ExternalSocietyProposer(args.output / 'authoring-inbox', world_binding=world,
+                domain_provider=lambda: session._domain(simulation), runtime_image_id=executor.image_id)
             result = run_society_pilot(simulation, session, proposer, output=args.output,
                 confirm_request_sha256=args.confirm_request_sha256)
-            if result['status'] == 'complete':
-                audit = audit_society_pilot(session, inbox_directory=args.output / 'authoring-inbox')
-                write_json_atomic(args.output / 'audit.json', audit, sort_keys=True, allow_nan=False)
-            print(json.dumps(result, sort_keys=True), flush=True)
         finally:
             simulation.llm.response_cache.close()
+        if result['status'] == 'complete':
+            audit = audit_society_pilot(session, inbox_directory=args.output / 'authoring-inbox')
+            write_json_atomic(args.output / 'audit.json', audit, sort_keys=True, allow_nan=False)
+        print(json.dumps(result, sort_keys=True), flush=True)
 
 
 if __name__ == '__main__':
