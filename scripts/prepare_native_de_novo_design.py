@@ -51,7 +51,9 @@ def main():
     parser.add_argument('--upstream-run', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--loss', type=Path, required=True)
-    parser.add_argument('--mode', choices=['source', 'region'], required=True)
+    parser.add_argument('--mode', choices=['source', 'region', 'region-v4'], required=True)
+    parser.add_argument('--upstream-snapshot', type=Path,
+        help='explicit previously frozen upstream state; do not retrospectively choose later incumbents')
     parser.add_argument('--inference-lock', type=Path, required=True)
     args = parser.parse_args()
     if subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT):
@@ -62,8 +64,10 @@ def main():
     snapshot_path = args.output / 'upstream-snapshot.json'
     if snapshot_path.exists():
         saved = json.loads(snapshot_path.read_text())
+        if args.upstream_snapshot and json.loads(args.upstream_snapshot.read_text()) != saved:
+            raise ValueError('explicit frozen upstream snapshot changed')
     else:
-        saved = json.loads((upstream / 'campaign/native-design-state.json').read_text())
+        saved = json.loads((args.upstream_snapshot or (upstream / 'campaign/native-design-state.json')).read_text())
         # Pending suggestions are NOT observations and never enter this prompt.
         saved['pending'] = None
         write_json_atomic(snapshot_path, saved, sort_keys=True, allow_nan=False)
@@ -127,6 +131,15 @@ def main():
             patch = proposer(parent, history, len(history), loss)
             candidate = apply_design_patch(parent, patch)
             evidence = {'draft_receipts': [p.name for p in sorted((args.output / 'drafts').glob('free-source-[0-9]*.json'))]}
+        elif args.mode == 'region-v4':
+            from utopia.optimization.native_region_proposer import NativeRegionProposer, authoring_schema
+            proposer = NativeRegionProposer(designer, executor, removed_nodes=['world.selection'],
+                context_provider=lambda *a: rows, receipts=args.output / 'drafts', max_attempts=3)
+            patch = proposer(parent, history, len(history), loss)
+            candidate = apply_design_patch(parent, patch)
+            evidence = {'draft_receipts': [p.name for p in sorted((args.output / 'drafts').glob('region-[0-9]*.json'))],
+                'authoring_schema_sha256': sha(authoring_schema()),
+                'interpretation': 'model generates source/protocol/ports/wiring; compiler only derives duplicate schema maps and descriptive custom family'}
         else:
             old_sources = [n.parameters['code_artifact']['source'] for n in parent.mechanisms if n.implementation == 'code.python.v1']
             def redact(value):

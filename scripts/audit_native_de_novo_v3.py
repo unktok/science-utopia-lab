@@ -44,7 +44,8 @@ def audit_transfer(directory, loss):
             raise ValueError('prompt hash/source withholding failure')
         prompts.append({'file': str(path.relative_to(directory)), 'sha256': value['prompt_sha256'], 'utf8_bytes': len(value['prompt'].encode())})
     drafts = []
-    paths = list((directory / 'drafts').glob('free-source-[0-9]*.json')) + list(directory.glob('region-draft-[0-9]*.json'))
+    paths = (list((directory / 'drafts').glob('free-source-[0-9]*.json'))
+        + list(directory.glob('region-draft-[0-9]*.json')) + list((directory / 'drafts').glob('region-[0-9]*.json')))
     for path in sorted(paths):
         value = json.loads(path.read_text())
         if value['receipt_sha256'] != sha({k: v for k, v in value.items() if k != 'receipt_sha256'}):
@@ -72,7 +73,37 @@ def audit_transfer(directory, loss):
     candidate = apply_design_patch(parent, proposal['patch'])
     if candidate.fingerprint != proposal['candidate_fingerprint'] or SystemSpec.from_dict(json.loads((directory / 'candidate.json').read_text())) != candidate:
         raise ValueError('actual initial native candidate differs from generated proposal')
-    if plan['mode'] == 'region':
+    if plan['mode'] == 'region-v4':
+        from utopia.optimization.native_region_proposer import expand_authoring_manifest, authoring_schema
+        successful = [json.loads(p.read_text()) for p in paths if p.name in proposal['evidence']['draft_receipts']]
+        successful = [r for r in successful if r['status'] == 'isolated-native-region-passed-not-native-evaluated']
+        if len(successful) != 1 or successful[0]['patch'] != proposal['patch'] or proposal['evidence']['authoring_schema_sha256'] != sha(authoring_schema()):
+            raise ValueError('joint region generation and transferred patch differ')
+        draft = successful[0]
+        _, rebuilt = compile_region(parent, expand_authoring_manifest(draft['generated']),
+            removed_nodes=['world.selection'], image_id=plan['image_id'])
+        if rebuilt != candidate:
+            raise ValueError('exact model generated joint region was not mechanically preserved')
+        result['new_region_node_ids'] = candidate.metadata['native_design_region']['node_ids']
+        result['generated_source_sha256s'] = {n['mechanism_id']: sha(n['python_code']) for n in draft['generated']['nodes']}
+        result['generated_protocols'] = sorted({p['artifact_type'] for n in draft['generated']['nodes']
+            for direction in ('inputs', 'outputs') for p in n[direction] if p['artifact_type']})
+        result['isolated_probe_years'] = [r['year'] for r in draft['runs']]
+        previous_hash = None
+        for path in sorted(paths):
+            receipt = json.loads(path.read_text())
+            prompt = json.loads(path.with_name(path.name.replace('region-', 'region-prompt-', 1)).read_text())
+            if (receipt['previous_receipt_sha256'] != previous_hash
+                    or prompt['previous_receipt_sha256'] != previous_hash
+                    or prompt['binding'] != receipt['binding']
+                    or prompt['prompt_sha256'] != receipt['prompt_sha256']
+                    or receipt['binding']['parent_fingerprint'] != parent.fingerprint
+                    or receipt['binding']['history_sha256'] != plan['history_sha256']
+                    or receipt['binding']['loss_spec_sha256'] != sha(loss)
+                    or receipt['loss'] is not None):
+                raise ValueError('joint region technical repair chain changed')
+            previous_hash = receipt['receipt_sha256']
+    elif plan['mode'] == 'region':
         evidence = proposal['evidence']
         _, rebuilt = compile_region(parent, evidence['manifest'], removed_nodes=['world.selection'], image_id=plan['image_id'])
         if rebuilt != candidate:

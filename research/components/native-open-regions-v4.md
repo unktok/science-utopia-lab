@@ -1,0 +1,39 @@
+# Joint source, protocol and wiring authoring v4
+
+The original native world remains the forward system. This extension improves
+joint graph authoring rather than replacing research with a numeric miniature.
+
+`NativeRegionProposer` generates free Python code, arbitrary node/port/protocol
+names, payload schemas, memory and zero-delay forward wiring inside an explicit
+native cut. It uses a compact syntax with one payload schema per port; the
+compiler derives duplicate schema maps and sets the descriptive family `custom`.
+No institution algorithm or finite algorithm catalog is inserted by the host.
+Exact generated source is saved and mechanically preserved.
+
+Unlike the old selection-only isolated probe, `probe_region` supports any
+recorded Python cut, including multiple removed nodes and a communication region
+connected to real researcher-context consumers. It validates all records, full
+contiguous years, graph/source identity, required-port execution semantics,
+container images and context/result receipt hashes. Generated memory is carried
+chronologically and removed initial memory is not accidentally transferred to
+new institutions. Frozen boundary observations do not become fresh-world claims.
+
+Prompt and draft receipts bind loss/history/parent/source inputs/schema/image and
+repair chains. Generated responses are saved before probes, so interruption can
+resume without another model request. Successful, failed and intermediate states
+are explicit; equal source and empty optional outputs are legal. Only technical
+contract errors trigger bounded repairs, never low merit or lack of activity.
+
+QA uses explicit developer-scripted outputs and the actual original Simulation,
+with scripted external HTTP/corpus responses. Tests cover two-node publication
+regions, multiple-node cuts, stateful second-year failures and repair, tampering,
+interruption after model output, and two-stage custom communication that appears
+in actual next-year researcher requests. This is software QA, not model-invented
+institutions or scientific benefit. The separate [live protocol](../protocols/campaigns/native-open-region-v4.md)
+fixes a one-candidate original-Qwen pilot before any v4 model call.
+
+Remaining boundaries: at most six nodes and 32 zero-delay edges on this proposer;
+external cut fixed; legacy Python-free native phases need their own exact input
+recording/consumer adapters; no same-society live migration here. Arbitrary code is
+black-box and not automatically differentiable. Those are implementation scope
+limits, not seed/population-scale limits.
