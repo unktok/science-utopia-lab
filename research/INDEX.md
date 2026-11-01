@@ -7,6 +7,17 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [Program status](STATUS.md)
+- [Objective-conditioned institutional design v5: goals, implementation and gaps](milestones/2026-11-01-objective-conditioned-design-v5.md)
+- [Two explicit native objectives and raw-peer measurements](objectives/losses/native-joint-v5.md)
+- [Scoped code/protocol/wiring authoring v5](components/native-scoped-region-authoring-v5.md)
+- [Boundary-aligned authoring amendment v5 a2](components/native-boundary-authoring-v5a2.md)
+- [Staged graph-then-source authoring](components/native-staged-region-authoring-v5.md)
+- [Native joint-objective preregistration](protocols/campaigns/native-joint-objectives-v5.md)
+- [Separate a2 format-repair amendment](protocols/campaigns/native-joint-objectives-v5-a2.md)
+- [Audited first v5 joint-generation failure](results/native-joint-objectives-v5-a1.json)
+- [Audited alias-aligned v5 follow-up failure](results/native-joint-objectives-v5-a2.json)
+- [Separate staged authoring amendment](protocols/campaigns/native-joint-objectives-v5-a3.md)
+- [Fresh native-cost REINFORCE result and sampling limitations](results/fresh-native-policy-gradient-v5.md)
 - [Non-scale integration v4: capabilities, evidence and remaining frontier](milestones/2026-11-01-non-scale-integration-v4.md)
 - [Durable same-society institution migration and cold restart](components/native-society-continuation-v4.md)
 - [Native discrete policy gradients and exact frozen-bank backward](components/native-discrete-policy-gradients-v4.md)

@@ -30,7 +30,9 @@ def main():
     parser.add_argument('--budget', type=int, default=3, help='initial plus adaptive candidates per loss')
     parser.add_argument('--max-technical-drafts', type=int, default=3)
     parser.add_argument('--max-tokens', type=int, default=4096)
-    parser.add_argument('--authoring-format', choices=['scoped-v5', 'boundary-v5a2'], default='scoped-v5')
+    parser.add_argument('--authoring-format', choices=['scoped-v5', 'boundary-v5a2', 'staged-v5'], default='scoped-v5')
+    parser.add_argument('--designer-thinking', action='store_true',
+        help='explicit designer-only reasoning; native researchers remain unchanged')
     args = parser.parse_args()
     if not 2 <= len(args.loss) <= 4 or not 2 <= args.budget <= 4:
         parser.error('bounded pilot requires 2..4 losses and 2..4 systems per loss')
@@ -69,6 +71,12 @@ def main():
     if args.authoring_format != 'scoped-v5':
         protocol.update(authoring_format=args.authoring_format,
             designer='Qwen3:8b-alias-aligned-free-Python-and-explicit-graph-v5a2')
+    if args.authoring_format == 'staged-v5':
+        protocol.update(designer='Qwen3:8b-staged-graph-then-free-source-v5',
+            plan_technical_drafts=args.max_technical_drafts,
+            source_technical_drafts=args.max_technical_drafts)
+    if args.designer_thinking:
+        protocol['designer_thinking'] = True
     factory = LocalQwenNativeFactory(args.output / 'runs', args.data_cache,
         years=args.years, corpus_years=args.corpus_years,
         experiment_binding=protocol, record_wire=True, record_code=True,
@@ -126,7 +134,7 @@ def main():
             model = VLLMServerModel(factory.model,
                 base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
                 run_seed=args.seed, model_revision=factory.model_digest,
-                thinking_override=False, max_tokens_override=args.max_tokens,
+                thinking_override=args.designer_thinking, max_tokens_override=args.max_tokens,
                 sdk_max_retries=0, request_timeout=240)
             model.response_cache = CompletedResponseCache(args.output / 'arms' / arm / 'designer-replies.sqlite',
                 binding={'protocol': protocol['schema'], 'cell': initial.fingerprint,
@@ -140,6 +148,9 @@ def main():
             if args.authoring_format == 'boundary-v5a2':
                 from utopia.optimization.native_region_proposer_v5a2 import NativeBoundaryRegionProposer
                 proposer_class = NativeBoundaryRegionProposer
+            elif args.authoring_format == 'staged-v5':
+                from utopia.optimization.native_staged_region_proposer import NativeStagedRegionProposer
+                proposer_class = NativeStagedRegionProposer
             proposers.append(proposer_class(model, executor,
                 removed_nodes=['world.selection'], context_provider=context,
                 receipts=args.output / 'arms' / arm / 'design-proposals',

@@ -3,7 +3,15 @@
 Updated: 2026-11-01
 
 The current original-goal-by-goal inventory is
-[Non-scale integration v4](milestones/2026-11-01-non-scale-integration-v4.md).
+[Objective-conditioned design v5](milestones/2026-11-01-objective-conditioned-design-v5.md).
+V5 implements joint free-code/graph authoring with explicit loss-conditioned
+feedback, independent cross-loss common-initial adoption and raw-peer-score
+objectives. Its first actual joint-generation attempt fails all6 drafts; a
+separately registered alias-aligned follow-up also fails6 drafts. Staged graph/
+source generation with corrected, type-preserving prompt examples is prepared,
+not yet an invention or improvement result.
+A separate two-draw fresh-native policy-gradient batch completes and updates
+probabilities, but same-action sampling does not establish comparative benefit.
 Source/protocol/wiring authoring, full-native-cost distribution gradients,
 visual editing and explicit durable same-society migration are implemented.
 Native transition fidelity fails its unused-design check; exact finite-bank

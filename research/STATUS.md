@@ -2,6 +2,50 @@
 
 Updated: 2026-11-01
 
+## Objective-conditioned design v5
+
+The latest goal/capability/gap inventory is
+[Objective-conditioned design v5](milestones/2026-11-01-objective-conditioned-design-v5.md).
+Population, seeds and horizon are not scaled up. The original native researcher
+world remains the forward system; no hidden policy or merit veto is added.
+
+- **Joint authoring and actual-feedback search implemented.** Scoped local IDs,
+  explicit source references/exports, free Python/protocols/node order and
+  code-visible actual feedback share one durable campaign. The compiler inserts
+  no missing semantic wire or institution algorithm. Two LossSpecs use actual
+  accept counts, raw peer-review means and explicit publication/review charges.
+- **First joint attempt fails transparently.** Clean`2d63110` completes one
+  shared initial world (losses`-1`/`.70`), but both arms exhaust3 technical
+  drafts on self-loops. No eligible candidate or candidate loss. Independent
+  analysis reproduces prompt/repair/model-response chains and keeps all36 raw
+  files unchanged. [Audit](results/native-joint-objectives-v5-a1.json).
+- **Alias-aligned follow-up also fails.** Clean`36ab095` uses a new separately
+  bound proposer, with actual examples aligned to boundary references and a
+  first-node grammar that disallows impossible self-input. Old source/failures
+  remain immutable. Same explicit budgets and original forward world; separate
+  baseline rather than mixing source bindings. First-node self-reference is
+  resolved, but both arms exhaust3 drafts on missing output references or a
+  wrong function entry point; no candidate world/loss. The independent audit
+  preserves all raw files. [A2 audit](results/native-joint-objectives-v5-a2.json).
+- **Staged follow-up prepared.** Separate graph/protocol plans from all-node
+  Python authoring; accepted structural plans are never executed or scored.
+  Type-preserving input projections fix a host prompt defect that replaced
+  deep lists by diagnostic dictionaries. Explicit phase budgets and optional
+  designer-only thinking/token settings are separately preregistered. This is
+  not yet successful institutional generation or optimization evidence.
+- **Fresh-native distribution backward complete.** Two prerecorded draws`[1,1]`
+  execute two NEW native worlds, costs`[-3,-3]`,114 responses. Exact score
+  autograd gives`[1.5,-1.5]`, updates logits`[0,0] -> [-.15,.15]`, independently
+  verifies with all25 raw files unchanged. The repeated action means no fresh
+  comparative benefit/new best is established. This is not a full native-world
+  pathwise derivative. [Result and limits](results/fresh-native-policy-gradient-v5.md).
+
+Optimization regression354 passed; additional format, restart, audit and figure
+checks pass. Game UI and same-society migration retain their v4 implementation
+and evidence; they are not silently claimed to have new live results here.
+The v4 transition fidelity failure and broader invention/semantics/recursive
+improvement gaps remain. Historical snapshots below retain their original scope.
+
 ## Non-scale implementation and evidence v4
 
 The current inventory is [Non-scale integration v4](milestones/2026-11-01-non-scale-integration-v4.md).
