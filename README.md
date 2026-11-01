@@ -45,6 +45,7 @@
 | Generate evolving mixed designs or inspect conditional/native gradients | [Adaptive search](research/components/native-adaptive-open-search-v7.md), [operational hybrid representations](research/components/native-operational-hybrid-gradients-v7.md) |
 | Explore free institution structure under different objectives | [V8 protocol](research/protocols/campaigns/native-objective-structure-v8.md), [exact-file recovery amendment](research/protocols/campaigns/native-objective-structure-v8-a2.md), [structural authoring](research/components/native-structural-authoring-v8.md), [independent audit](research/components/native-objective-structure-audit-v8.md) |
 | Inspect objective-conditioned paths, graph changes and cross-scores | [English objective switchyard](research/tracks/objective-structure-ui-v8.md) |
+| Differentiate a response-aware representation without replacing the native world | [Original-world response-boundary operator and evidence limits](research/components/native-response-boundary-fidelity-v8.md), [scripted QA receipt](research/results/native-response-fidelity-v8-scripted.json) |
 | Generate new institution rules and differentiate a miniature world | [Generative Program World](research/components/generative-program-world-v1.md) and [recorded result](research/results/generative-program-world-v1.md) |
 
 The shortest contributor orientation is:

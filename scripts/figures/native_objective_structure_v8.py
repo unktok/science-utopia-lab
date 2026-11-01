@@ -99,7 +99,7 @@ def figure_data(report):
     return {'schema': FIGURE_DATA_SCHEMA, 'classification': report['classification'],
         'report_content_sha256': report['content_sha256'], 'source_commit': report['source_commit'],
         'arms': arms, 'selected_cross_objective_matrix': matrix,
-        'scope': 'development engineering; same draws cross-scored; no held-out or improvement claim'}
+        'scope': 'development engineering; same draws cross-scored; no held-out or generalized benefit claim'}
 
 
 def create(report, output):
@@ -110,34 +110,36 @@ def create(report, output):
     output.parent.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8.4,
         'axes.spines.top': False, 'axes.spines.right': False, 'pdf.fonttype': 42, 'ps.fonttype': 42})
-    fig = plt.figure(figsize=(7.2, 6.2))
-    grid = fig.add_gridspec(2, 2, height_ratios=[1.08, .92])
-    axes = [fig.add_subplot(grid[0, 0]), fig.add_subplot(grid[0, 1]),
-            fig.add_subplot(grid[1, :])]
+    fig = plt.figure(figsize=(7.2, 7.0))
+    grid = fig.add_gridspec(2, 2, height_ratios=[1.25, .92])
+    path_grid = grid[0, 0].subgridspec(2, 1, hspace=.82)
+    path_axes = [fig.add_subplot(path_grid[index, 0]) for index in range(2)]
+    axes = [path_axes[0], fig.add_subplot(grid[0, 1]), fig.add_subplot(grid[1, :])]
 
     # A: real independently reconstructed bound losses; gaps remain gaps.
-    offset = {ARM_IDS[0]: -.08, ARM_IDS[1]: .08}
-    for identity in ARM_IDS:
+    # The losses have different units: never put their raw values on one axis.
+    for identity, path_ax in zip(ARM_IDS, path_axes):
         rows = data['arms'][identity]['rows']
         labelled = False
         for i, row in enumerate(rows):
             if row['loss'] is not None:
-                axes[0].scatter(row['x_position']+offset[identity], row['loss'], s=54, color=COLORS[identity],
+                path_ax.scatter(row['x_position'], row['loss'], s=42, color=COLORS[identity],
                     edgecolor='white', linewidth=.6, label=LABELS[identity] if not labelled else None, zorder=3)
             else:
-                axes[0].scatter(row['x_position']+offset[identity], 0, marker='x', s=45,
+                path_ax.scatter(row['x_position'], 0, marker='x', s=45,
                     color=COLORS[identity], label=LABELS[identity] if not labelled else None,
-                    transform=axes[0].get_xaxis_transform())
+                    transform=path_ax.get_xaxis_transform())
                 if row['status'] == 'generation-failure':
-                    axes[0].annotate('vocabulary\nfailure', (row['x_position']+offset[identity], .03),
-                        xycoords=axes[0].get_xaxis_transform(), xytext=(0, 5), textcoords='offset points',
+                    path_ax.annotate('vocabulary\nfailure', (row['x_position'], .03),
+                        xycoords=path_ax.get_xaxis_transform(), xytext=(0, 5), textcoords='offset points',
                         ha='center', va='bottom', color=COLORS[identity], fontsize=6.8)
             labelled = True
-    axes[0].set_xticks(range(4), ['G1a', 'G1b', 'G2a', 'G2b'])
-    axes[0].set_ylabel('Bound loss\n(lower is better)')
-    axes[0].set_title('A  Objective-conditioned paths', loc='left', fontsize=9.5)
-    axes[0].legend(frameon=False, fontsize=7.6, loc='best')
-    axes[0].grid(axis='y', alpha=.18)
+        path_ax.set_xticks(range(4), ['G1a', 'G1b', 'G2a', 'G2b'])
+        path_ax.set_xlim(-.35, 3.35)
+        path_ax.set_ylabel('Own loss')
+        path_ax.set_title(('A1  ' if identity == ARM_IDS[0] else 'A2  ')+LABELS[identity],
+                          loc='left', fontsize=9.2, color=COLORS[identity], pad=7)
+        path_ax.grid(axis='y', alpha=.18)
 
     # B: raw values, not normalized scores; objectives have different units.
     matrix = data['selected_cross_objective_matrix']
@@ -181,6 +183,7 @@ def create(report, output):
     axes[2].set_ylabel('Exact changes vs parent\n(sum over completed draws)')
     axes[2].set_title('C  Actual graph diffs vs parent', loc='left', fontsize=9.5)
     axes[2].grid(axis='y', alpha=.18)
+    axes[2].legend(frameon=False, fontsize=7.1, loc='upper right')
 
     title = 'Two-objective native structural exploration'
     if data['classification'] == FIXTURE:
@@ -188,7 +191,7 @@ def create(report, output):
     fig.suptitle(title, x=.08, y=.97, ha='left', fontsize=11.5)
     fig.text(.08, .022, 'Development engineering only. Same worlds are cross-scored under both losses; '
         'matrix color is scaled within column.\nGraph bars are literal differences, not effects.\n'
-        'No held-out, causal, scientific-value, convergence, or improvement claim.',
+        'No held-out, causal, scientific-value, convergence, or comparative optimizer claim.',
         color='#53616D', fontsize=7.8)
     fig.subplots_adjust(left=.10, right=.985, top=.87, bottom=.21, wspace=.48, hspace=.67)
     paths = {kind: output.with_suffix('.'+kind) for kind in ('pdf', 'png', 'svg')}

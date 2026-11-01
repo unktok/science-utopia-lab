@@ -1,6 +1,22 @@
 # Testing
 
-## Latest v7 verification — 2026-11-02
+## Active v8 verification — 2026-11-02
+
+Clean live source425ec10 full Python suite:1509 passed/6skipped,602.55s.
+The second full suite is running at clean integration eda6537, including the
+new response-boundary implementation and production review-context capability.
+Do not claim its result before the JUnit/log is terminal. Exact-file authoring,
+independent audit and figure scope passes31 checks at1601019 (4.52s); response
+attribution/concurrency scope passes40 at4ea5e74 (1.27s); plotting scope passes5
+at434685e (0.70s). These scopes overlap, not additive test totals. All model-based
+actual outcomes belong to immutable425ec10 campaign output, not these scripted
+software checks. Frozen bfe83c0 response QA and separately pinned e8c0677
+read-only refit keep their original source identities after integration.
+
+UI implementation181checks/typecheck/build and labelled-fixture browser QA pass;
+actual exported report/browser inspection remain a separate final gate.
+
+## Historical v7 verification — 2026-11-02
 
 Full clean live source c09e069:1480 passed/6 skipped (847.51s).
 Full clean integration ceb8248:1496 passed/6 skipped (816.48s).

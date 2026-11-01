@@ -70,7 +70,7 @@ Reviewed utility & {value(ARM_IDS[1], ARM_IDS[0])} & {value(ARM_IDS[1], ARM_IDS[
 \end{{tabular}}
 \end{{table}}
 
-\paragraph{{Scope.}} These are objective-conditioned development-engineering observations, not held-out, causal, scientific-value, optimizer-convergence, or improvement evidence. Technical failures remain null rather than numerical penalties.
+\paragraph{{Scope.}} These are objective-conditioned development-engineering observations. Observed loss changes do not establish held-out, causal, scientific-value, optimizer-convergence, or generalized institutional benefit. Technical failures remain null rather than numerical penalties.
 """
 
 

@@ -23,6 +23,24 @@ The final shareable artifact is
 
 ## Evidence boundary
 
+The active v8 source adds an objective-conditioned free-code/node/protocol/wiring
+pilot and a separate original-world response-boundary representation. Actual
+structural results stay gated until terminal independent audit, and the final
+shareable PDF is not replaced by a partial build. The response QA is explicitly
+scripted (seven original six-year worlds, no Qwen calls), not whole-world or
+LLM differentiation. It predicts an unused finite loss change with error2.36e-5
+versus24 for frozen responses; its proposed native candidate ties, not improves.
+Earlier partial/incomplete QA failures and historical receipt limitations remain
+in the manuscript and component note.
+
+Regenerate that labelled QA graphic without inference:
+
+```sh
+.venv/bin/python scripts/figures/native_response_fidelity_v8.py \
+  --report research/results/native-response-fidelity-v8-scripted.json \
+  --output paper/figures/native-response-fidelity-v8
+```
+
 The2026-11-02 v7 draft is31 pages. It includes persistent open entities, explicit
 processes, evolving mixed/native-cost search, operational conditional backward
 and separately tested native projection/fidelity diagnostics. Its new actual

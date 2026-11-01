@@ -428,7 +428,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         'partial_physical_worlds': partial, 'arms': arms, 'selected_cross_objective_matrix': selected_matrix,
         'held_out_metrics': {'status': 'not-defined-or-measured'},
         'promotion_policy': {'status': 'not-defined-or-applied'},
-        'claims': ['Development engineering evidence only; no held-out, causal, scientific-value, or improvement claim.',
+        'claims': ['Development engineering evidence only; observed loss changes do not establish held-out, causal, scientific-value, or generalized improvement.',
             'Loss paths are objective-conditioned observations, not optimizer convergence evidence.',
             'Graph changes are exact set/source diffs, not inferred institutional effects.',
             'Technical failures remain null and are excluded from numerical selection.']}

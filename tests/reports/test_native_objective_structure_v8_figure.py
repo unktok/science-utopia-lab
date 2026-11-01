@@ -56,7 +56,7 @@ def rehash(value):
 
 def test_figure_data_preserves_real_units_and_all_graph_diffs():
     data = figure_data(report())
-    assert data['scope'].endswith('no held-out or improvement claim')
+    assert data['scope'].endswith('no held-out or generalized benefit claim')
     assert data['arms'][ARM_IDS[0]]['rows'][3]['loss'] == 3.
     assert data['arms'][ARM_IDS[1]]['rows'][0]['graph_changes']['vs_parent']['counts']['source_changes'] == 1
 
