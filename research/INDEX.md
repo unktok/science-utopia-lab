@@ -12,6 +12,8 @@ and results. New work uses the forward-only taxonomy below.
 - [Aborted a1 technical authoring audit: zero worlds and replies](results/native-objective-structure-v8-a1.md)
 - [Policy-free explicit structural authoring and saved-file validation](components/native-structural-authoring-v8.md)
 - [Independent structural audit, all-draw cross-scores and figure contract](components/native-objective-structure-audit-v8.md)
+- [Response-aware original-world derivative representation, ingress and strict attribution](components/native-response-boundary-fidelity-v8.md)
+- [Seven-world scripted response-fidelity QA (not Qwen fidelity)](results/native-response-fidelity-v8-scripted.json)
 - [Completed fixed non-scale implementation inventory v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md)
 - [Actual integrated v7 result: four worlds,342 replies, no new best](results/native-open-integrated-v7-a2.md)
 - [Independent machine-readable v7 audit](results/native-open-integrated-v7-a2.json)

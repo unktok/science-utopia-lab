@@ -101,3 +101,36 @@ PDF/PNG/SVG and manifest are generated, preview inspected, figure tests10 pass
 3.00s. New manuscript methods explicitly separate structural freedom,
 objective-conditioned development comparison, unavailable metrics and the
 preserved pre-inference failure. Actual result insertion stays gated.
+
+## Generation0 completed and generation1 authorship
+
+All four actual generation0 worlds complete with342 Qwen replies. Throughput
+losses are[-9,-9]; utility losses[0,0]. These units are not directly comparable.
+Only own-arm observations feed each generation1 author. Throughput's actual
+first-year two-year plan exclusion motivates a plan-deadline audit, not a
+hard-coded actor or fabricated paper. Utility has no raw peer evidence because
+both actual initial draws omit review; it must not invent quality observations.
+
+Root independently validates the saved throughput gen1 response with the
+original425ec10 compiler imports: all4 reachable assignments and exact2draws
+pass. Response file SHA d337c8b3b3e7d66d34691d2fc48dc8162d1312e9f5bc345caaaf67e20ebfcd4b;
+parent df58ade96cee62addae8a7ec47d0b1bfc0fbc4eab9025b8676477c46812f3a7e.
+The actual draws have17/24 and16/22 nodes/edges, with distinct new algorithm
+bodies and an optional delayed publication feedback wire. No outcome is yet
+observed for them. No extra native draw or source execution occurs in validation.
+
+## Response-boundary QA integration and manuscript figure
+
+The response-aware representation, actual review information ingress and strict
+read-only native receipt refit are integrated through source d2cc7b8 (root
+dcfcbd8). The seven-world original-native scripted QA is explicitly not Qwen
+fidelity: finite delta-24 is predicted with error2.36e-5 versus24 when responses
+are frozen; proposed native loss-96 ties its center. Pointwise/full-world
+Jacobians remain unverified. First lost partial raw and the second five-world
+scalar-error batch are separately recorded, not discarded as successful runs.
+Independent review accepts the provenance fixes but finds a future-concurrency
+wire/SQL positional-join defect; that ordinary fix is in progress and does not
+affect frozen concurrency1 QA. No new forward run is needed for the join fix.
+The new result-bound scientific figure and manuscript subsection expose these
+boundaries. PNG visual QA passes after moving the legend away from the caution
+text; five plotting/hash/false-label tests pass in0.70s. No model calls.
