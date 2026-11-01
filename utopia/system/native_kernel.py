@@ -143,6 +143,7 @@ class NativeScienceKernel:
         self.events = []
         self.last_year = 0
         self.execution_receipts = []
+        self.design_history = []
         self._frame = None
         self._simulation = None
         if checkpoint is not None:
@@ -473,25 +474,30 @@ class NativeScienceKernel:
     def to_dict(self):
         if self._frame is not None:
             raise GraphRuntimeError("only completed-year kernel checkpoints are supported")
-        return {"schema": SCHEMA, "spec": self.spec.to_dict(), "system_fingerprint": self.spec.fingerprint,
+        result = {"schema": SCHEMA, "spec": self.spec.to_dict(), "system_fingerprint": self.spec.fingerprint,
                 "last_year": self.last_year, "graph_checkpoint": _clone(self.graph_checkpoint),
                 "events": [e.to_dict() for e in self.events],
                 "event_stream_hash": canonical_event_stream_hash(self.events)}
+        if self.design_history:
+            result["design_history"] = _clone(self.design_history)
+        return result
 
     def restore(self, state):
         required = {"schema", "spec", "system_fingerprint", "last_year", "graph_checkpoint", "events", "event_stream_hash"}
-        if (not isinstance(state, dict) or set(state) != required or state["schema"] != SCHEMA
+        if (not isinstance(state, dict) or set(state) not in (required, required | {"design_history"}) or state["schema"] != SCHEMA
                 or state["spec"] != self.spec.to_dict() or state["system_fingerprint"] != self.spec.fingerprint
                 or type(state["last_year"]) is not int or state["last_year"] < 0):
             raise GraphRuntimeError("native kernel checkpoint identity/schema mismatch")
         events = []
         seen = set()
+        from .native_migration import validate_design_history
+        fingerprints = validate_design_history(state, self.spec)
         for index, value in enumerate(state["events"]):
             event = EventEnvelope.create(**{k: value[k] for k in (
                 "sequence", "year", "phase", "event_type", "actor_ids", "artifact_ids", "payload", "provenance")})
             if (event.to_dict() != value or event.sequence != index
                     or not 1 <= event.year <= state["last_year"]
-                    or event.provenance.get("system_fingerprint") != self.spec.fingerprint):
+                    or event.provenance.get("system_fingerprint") != fingerprints[index]):
                 raise GraphRuntimeError("native kernel event history is inconsistent")
             if any(ref not in seen for ref in event.provenance.get("input_event_ids", ())):
                 raise GraphRuntimeError("native kernel causal reference is missing or future")
@@ -514,3 +520,4 @@ class NativeScienceKernel:
         self.graph_checkpoint = _clone(checkpoint)
         self.events = events
         self.last_year = state["last_year"]
+        self.design_history = _clone(state.get("design_history", []))

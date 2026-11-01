@@ -4600,6 +4600,7 @@ class Simulation:
         checkpoint_path = os.path.join(self.output_dir, f"checkpoint_year_{year}.json")
 
         portable = hasattr(self, '_portable_binding')
+        adopted_native_kernel = None
         from utopia.utils.data_utils import read_json
         if portable:
             from utopia.runtime.checkpointing import PortableCheckpointError, read_portable_checkpoint
@@ -4608,7 +4609,15 @@ class Simulation:
                 raise PortableCheckpointError("Missing portable snapshot; legacy checkpoints are not resumable here")
             checkpoint_data = read_portable_checkpoint(portable_path)
             saved = checkpoint_data.get('portable', {})
-            if saved.get('contract') != self.portable_contract():
+            expected_contract = self.portable_contract()
+            native_state = checkpoint_data.get('native_system')
+            configured_kernel = getattr(self, 'native_system', None)
+            if (configured_kernel is not None and isinstance(native_state, dict)
+                    and native_state.get('system_fingerprint') != configured_kernel.spec.fingerprint):
+                from utopia.system.native_migration import checkpoint_native_bootstrap
+                adopted_native_kernel = checkpoint_native_bootstrap(configured_kernel, native_state)
+                expected_contract['native_system'] = {'system_fingerprint': adopted_native_kernel.spec.fingerprint}
+            if saved.get('contract') != expected_contract:
                 raise PortableCheckpointError("Checkpoint science/model/corpus/config binding changed")
             if self.llm.response_cache.committed_count() < saved['response_cache_count']:
                 raise PortableCheckpointError("Response cache is older than the checkpoint")
@@ -4735,6 +4744,8 @@ class Simulation:
                 self.native_government.config, government_state
             )
         system_state = checkpoint_data.get('native_system')
+        if adopted_native_kernel is not None:
+            self.native_system = adopted_native_kernel
         if getattr(self, 'native_system', None) is None:
             if system_state is not None:
                 raise ValueError('Checkpoint enables native system but current config is off')
