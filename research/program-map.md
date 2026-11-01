@@ -2,28 +2,27 @@
 
 Updated: 2026-11-01
 
-The current original-goal-by-goal inventory is
-[Objective-conditioned design v5](milestones/2026-11-01-objective-conditioned-design-v5.md).
-V5 implements joint free-code/graph authoring with explicit loss-conditioned
-feedback, independent cross-loss common-initial adoption and raw-peer-score
-objectives. Its first actual joint-generation attempt fails all6 drafts; a
-separately registered alias-aligned follow-up also fails6 drafts. Staged graph/
-source generation with corrected, type-preserving prompt examples also fails:
-one graph plan passes, but no candidate reaches a fresh native world. An
-explicitly separate Codex-designer/native-Qwen pilot now completesfive native
-worlds with paths`[-1,-3,-3]`/`[.70,.45,.45]`. Its final two-node/protocol
-revision really executes but ties the selected one-node incumbent. Exact
-hash-bound complete manifests and native measurements independently audit;
-this remains a simple development-proxy contrast, not good-science discovery.
-A separate two-draw fresh-native policy-gradient batch completes and updates
-probabilities, but same-action sampling does not establish comparative benefit.
-Source/protocol/wiring authoring, full-native-cost distribution gradients,
-visual editing and explicit durable same-society migration are implemented.
-Native transition fidelity fails its unused-design check; exact finite-bank
-probability fitting is separate. The three local-Qwen v5 joint-generation attempts fail
-technical contracts. Useful autonomous invention, full native pathwise backward,
-automatic continual adoption and recursive designer improvement remain open.
-The older track table below is historical, not a current completion map.
+The active acceptance gates are
+[non-scale completion v6](milestones/2026-11-01-non-scale-completion-v6.md).
+The [status page](STATUS.md) is the current execution ledger; old milestones
+remain historical. Population/seed expansion is not the next task.
+
+## Current original-goal map
+
+| Original goal | Implemented interface | Evidence already available | Remaining non-scale boundary |
+|---|---|---|---|
+| Change the objective and optimize the scientific system | Versioned LossSpec, independent evaluation metrics, durable black-box ask/execute/measure/tell | Parameter-level held-out study; v5 free-code/graph paths `[-1,-3,-3]` and `[.70,.45,.45]`, five physical worlds | Richer defensible objective constructs, useful scientific discovery and generalization are not established |
+| Invent institutions rather than tune a fixed review template | Arbitrary sandboxed Python, explicit protocols, state, ports and outputs; LLM/external complete manifests | Actual Qwen-source execution and externally authored institutions; local-Qwen joint-generation failures are retained | Native effect consumers, security/compute limits and actor ontology remain explicit; external Codex authorship is not autonomous Qwen invention |
+| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; typed native plans and actual paper bundles; generic same-society migration | Six-year original-world equivalence and consequential activity edits in scripted native QA; actual code/graph execution | Annual native scheduler, original paper/corpus law and collaboration semantics still constrain the world |
+| Optimize through a differentiable representation | Faithful local hard/soft operations, composed transition model, native-cost score-function backward; factorized code/protocol/wiring policies | Actual fresh-native v5 distribution update; v6 factorized six-year native QA and exact enumerated/finite-difference checks | Factorized v6 QA is not a new real-Qwen result; source-content/pathwise whole-world gradients are NOT achieved; transition fidelity failure remains |
+| Continually redesign one scientific society | Objective-visible observation/proposal/consent/adoption/feedback session with complete checkpoints and crash recovery | Native scripted continuation/restart; actual v6 a1 adoption followed by preserved infrastructure failure | Corrected a2 live lifecycle is tracked separately in STATUS; sequential losses do not establish a causal benefit; the designer itself is not improved |
+| Make the system visible and game-like | English cyberpunk city, replay, graph/source editor, objective paths and exact-hash live adoption UI | Browser-verified fixture and actual archived research paths; actual a2 consent/saved-receipt verification | Not a complete management game; presentation choreography is not scientific activity |
+
+The two optimization workflows must not be merged in descriptions: a reset-world
+campaign estimates design quality under an explicit loss; the persistent society
+measures subsequent online intervals after adoption. Likewise, externally authored
+institutional synthesis and finite-factor score-gradient optimization are
+composable interfaces, not a demonstrated self-improving endogenous designer.
 
 ![Scientific-system design concept](../paper/figures/program-concept/science-system-design-program.png)
 
@@ -69,7 +68,12 @@ optimizer is sample-efficient, that each objective yields a distinct design,
 or that the whole mechanism graph has been optimized. These gaps define the
 next experiment rather than being hidden as implementation details.
 
-## Current tracks
+## Historical track snapshot (pre-native milestones)
+
+The following table and immediate milestone are preserved as the earlier
+planning snapshot, **not current tasks or evidence**. In particular, no numeric
+miniature can substitute for containing and extending the original researcher
+world. Use the current map above and STATUS for decisions.
 
 Direction correction (Decision 0025): the original researcher world is a lower
 bound to contain and extend, not an expressiveness ceiling. The new native
@@ -100,7 +104,7 @@ evidence; [result](results/native-science-kernel-integration-v1.md).
 | Paper and scientific graphics | held-out result published; narrative revised | automatic evidence slice plus objective-conditioned framing, search-path interpretation, claim boundary, and Suto/Lab contrast | add replicated optimizer comparisons and parameter/mechanism path graphics when new evidence exists |
 | Compute | measured | one local Ollama endpoint at four workers gave only about 1.016x throughput | use independent endpoints/GPUs for material parallel speedup; retain seed isolation |
 
-## Dependency logic
+## Historical dependency logic
 
 The project is deliberately not a single linear backlog.
 
@@ -118,7 +122,7 @@ The project is deliberately not a single linear backlog.
   and held-out evaluation suite; otherwise it would optimize an undefined
   proxy faster.
 
-## Immediate milestone
+## Historical immediate milestone (superseded)
 
 Metric-Conditioned Optimization Study v1.1 is complete. The next milestone is
 Miniature Whole-System Design Lab v0, which prioritizes breadth before scale:

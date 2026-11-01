@@ -60,5 +60,9 @@ saved receipt. The scientific forward remains incomplete regardless of the
 receipt's valid adoption status. The owned server/Chrome have been stopped;
 raw UI evidence and checksums stay under `outputs/native-society-v6/ui-evidence`.
 
-An independent read-only audit is being prepared. No audit-complete or native
-benefit claim is made by this interim interpretation.
+The [independent read-only audit](native-society-v6-a1.json) now reproduces the
+single completed interval, one saved adoption,29 physical replies and5 replies
+outside a saved annual observation. All21 raw files remain byte-identical;
+the audit invokes no model or generated code. It classifies this attempt as
+incomplete, not a completed pilot or a negative institutional score. No native
+benefit claim is made.
