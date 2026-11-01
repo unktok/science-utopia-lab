@@ -133,6 +133,9 @@ class JournalReplay:
 
 
 def audit_proposals(arm, controller, *, run, protocol, world):
+    if protocol.get('authoring_format') == 'staged-v5':
+        from scripts.analyze_native_joint_staged_v5 import audit_staged_proposals
+        return audit_staged_proposals(arm, controller, run=run, protocol=protocol, world=world)
     from utopia.optimization.native_code_trace import parent_context_provider
     from utopia.system import SystemSpec
     from utopia.system.code_mechanisms import sha
@@ -319,8 +322,9 @@ def analyze(run):
                     science = state['portable']['contract']['binding']['science_config']
                     if (science['years'] != protocol['years'] or science['corpus_years'] != protocol['corpus_years']
                             or science.get('runtime_seed_binding') != world['runtime_seed_binding']
-                            or science.get('experiment') != protocol):
-                        raise ValueError('native physical horizon/hash-seed/experiment binding differs')
+                            or science.get('experiment') != protocol
+                            or science.get('thinking_override') is not False):
+                        raise ValueError('native physical horizon/hash-seed/experiment/researcher-thinking binding differs')
                     checked_physical.add(identity)
         arms[arm] = {'loss_spec': loss, 'status': expected_status, 'audit': audited,
             'loss_path': audited['loss_path'], 'selected_index': selected_index,

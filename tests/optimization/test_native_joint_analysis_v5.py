@@ -89,21 +89,48 @@ def authored_fixture(tmp_path, monkeypatch):
         'exports': {'after': ['node:tribunal:ready'], 'decisions': ['node:tribunal:verdicts']}}
     invalid = deepcopy(valid)
     invalid['exports'].pop('after')
+    executed_sources = []
+    execution_error = []
 
     class ScriptedExecutor:
         image_id = image
         def execute(self, artifact, context):
+            executed_sources.append(artifact['source'])
+            if execution_error:
+                raise ValueError(execution_error[0])
             result = {'outputs': {'ready': [{'payload': {'year': context['period']}}],
                                    'verdicts': [{'payload': {'empty_cycle': True}}]}, 'state': {'cycles': 1}}
             return CodeExecution(result, {'artifact_sha256': sha(artifact), 'context_sha256': sha(context),
                 'result_sha256': sha(result), 'image_id': image, 'wall_seconds': 0.0})
 
-    def create(*, success=True, thinking=False):
+    def create(*, success=True, thinking=False, staged=False, failure_phase='source'):
         if thinking:
             protocol['designer_thinking'] = True
+        if staged:
+            protocol['authoring_format'] = 'staged-v5'
         model.thinking_override = thinking
         model.response_cache = CompletedResponseCache(journal, binding=binding)
-        queue = [invalid, valid] if success else [invalid, invalid, invalid]
+        if staged:
+            from utopia.optimization.native_staged_region_proposer import NativeStagedRegionProposer
+            proposer_type = NativeStagedRegionProposer
+            plan = deepcopy(valid)
+            for node in plan['nodes']:
+                node.pop('python_code')
+            invalid_plan = deepcopy(plan)
+            invalid_plan['exports'].pop('after')
+            sources = {'sources': {n['id']: n['python_code'] for n in valid['nodes']}}
+            if success:
+                queue = [invalid_plan, plan, sources]
+            elif failure_phase == 'plan':
+                queue = [invalid_plan] * 3
+            elif failure_phase == 'runtime':
+                execution_error.append('scripted runtime failure, not native evidence')
+                queue = [plan] + [sources] * 3
+            else:
+                queue = [plan] + [{'sources': {'tribunal': 'https://not-executable-python'}}] * 3
+        else:
+            proposer_type = NativeRegionIRProposer
+            queue = [invalid, valid] if success else [invalid, invalid, invalid]
         def callback(**payload):
             content = queue.pop(0)
             return ChatCompletion.model_validate({'id': 'scripted-QA', 'object': 'chat.completion', 'created': 0,
@@ -112,7 +139,7 @@ def authored_fixture(tmp_path, monkeypatch):
         def completion(_model, *, seed_ctx=None, **payload):
             return model.response_cache.create(callback, seed_ctx=seed_ctx, **payload)
         model._create_completion = MethodType(completion, model)
-        proposer = NativeRegionIRProposer(model, ScriptedExecutor(), removed_nodes=['world.selection'],
+        proposer = proposer_type(model, ScriptedExecutor(), removed_nodes=['world.selection'],
             context_provider=provider, receipts=tmp_path / 'arms' / arm / 'design-proposals', instructions='Scripted QA')
         try:
             if success:
@@ -126,7 +153,7 @@ def authored_fixture(tmp_path, monkeypatch):
         finally:
             model.response_cache.close()
         return SimpleNamespace(run=tmp_path, arm=arm, controller=controller, protocol=protocol,
-                               world=world, journal=journal, binding=binding)
+                               world=world, journal=journal, binding=binding, executed_sources=executed_sources)
     return create
 
 
@@ -241,7 +268,8 @@ def test_terminal_classification_and_physical_vs_logical_counts(tmp_path, monkey
     monkeypatch.setattr(native_shared_initial, 'verify_shared_initial', lambda target, source, **kwargs: verified.append((target, source)))
     monkeypatch.setattr(audit_module, 'audit_campaign', lambda directory, *args: deepcopy(audits[directory.name]))
     monkeypatch.setattr(checkpointing, 'read_portable_checkpoint', lambda path: {'portable': {'contract': {'binding': {
-        'science_config': {'years': 2, 'corpus_years': 4, 'runtime_seed_binding': {'fixture': True}, 'experiment': protocol}}}}})
+        'science_config': {'years': 2, 'corpus_years': 4, 'runtime_seed_binding': {'fixture': True},
+                           'experiment': protocol, 'thinking_override': False}}}}})
     monkeypatch.setattr(analysis, 'audit_proposals', lambda arm, *args, **kwargs: [{
         'proposal_index': 1, 'status': 'invalid-technical-manifest' if technical_failure and arm == 'first'
         else 'isolated-native-region-passed-not-native-evaluated'}])
