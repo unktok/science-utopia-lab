@@ -187,6 +187,8 @@ class NativeScienceKernel:
         registry.register(DESIGN_PROPOSALS, 1, self._record_design_proposals)
         from .native_resource_transfers import apply_native_resource_transfers
         registry.register(RESOURCE_TRANSFERS, 1, lambda context: apply_native_resource_transfers(self, context))
+        from .native_activity_contracts import register_activity_contracts
+        register_activity_contracts(self, registry)
         from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, tensor_handler
         registry.register(TENSOR_IMPLEMENTATION, 1, tensor_handler)
         from .code_mechanisms import _schema
