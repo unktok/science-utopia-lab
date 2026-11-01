@@ -14,6 +14,14 @@ calibration/validation campaign remains active from clean pinned8a114f3, with
 an explicit Python startup hash seed and shared single-inference queue.
 The original researcher world stays the real forward simulator.
 
+Four actual training worlds now complete at losses[-2,-2,-3,-3]. Independent
+re-extraction/refitting produces represented annual gradients
+[0,-1.66666665625,-1.66666666042] at the declared[.325]*3 query. Autograd agrees
+with central differences of that same fitted graph to8.51e-12 maximum absolute
+error. This is now native-data-calibrated backward evidence, not only a numeric
+fixture. The two unused native validation conditions and fresh proposal remain
+pending, so native derivative fidelity and optimization benefit are not claimed.
+
 Current evidence must not be overread: the first source-revision run completed
 its baseline but exhausted three URL-instead-of-Python drafts. The bounded-prompt
 repeat completed all three native systems with losses[-1,-1,-3]: Qwen changed

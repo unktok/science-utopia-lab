@@ -95,6 +95,16 @@ then one fresh gradient-proposal world if identification/support succeed.
 snapshot, not a completion record; baseline loss-2 is over three native years.
 Do not confuse this horizon with the two-year source baseline loss-1.
 
+Updated partial snapshot: all four training worlds complete at[-2,-2,-3,-3].
+After exact legacy/normalized identity verification, independent refitting and
+actual `backward()` at the preregistered[.325,.325,.325] query produce annual
+gradients[0,-1.66666665625,-1.66666666042], with represented loss-2.41666666708.
+Numerical central differences of the SAME fitted graph agree to8.51e-12 maximum
+absolute error. That verifies the represented backward implementation on real
+native data. It is not a finite-difference check of the native simulator, a
+token-level LLM derivative, native directional fidelity or fresh proposal
+benefit. Both unused native validation cells remain pending in this snapshot.
+
 The calibration driver does not need another assistant turn to advance cells
 or execute its planned fitting/validation/proposal. This note does not claim
 that native data collection, empirical derivative fidelity or proposal benefit
