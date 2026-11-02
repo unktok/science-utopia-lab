@@ -19,11 +19,31 @@ from .native_factorized_gradient import NativeFactorizedDesignSearch
 from .native_manifest_inbox import ExternalAuthoringPending
 from .native_world import evaluate_native_suggestion
 from utopia.system import SystemSpec
-from utopia.system.design_patch import apply_design_patch, clone, digest, make_patch, read_pointer
+from utopia.system.design_patch import apply_design_patch, clone, digest, make_patch, pointer, read_pointer
 from utopia.utils.data_utils import write_json_atomic
 
 SCHEMA = 'scienceutopia.native-adaptive-open-search.v7'
 VOCABULARY = 'scienceutopia.native-generated-vocabulary.v7'
+EXPECTATION_ESTIMATOR = 'frozen-prior-control-variate-v11'
+
+
+def expectation_compatibility(mixed):
+    """Conservative semantic identity, not a guessed latent feature transport.
+
+    Distribution means/logits and the base values overwritten by declared
+    continuous draws may differ. All source, topology, factor choices, bounds,
+    coordinate IDs/order and scales must otherwise be byte-identical JSON.
+    """
+    base = clone(mixed.base.to_dict())
+    for coordinate in mixed.coordinates:
+        owner = base
+        parts = pointer(coordinate['path'])
+        for part in parts[:-1]:
+            owner = owner[int(part)] if isinstance(owner, list) else owner[part]
+        key = int(parts[-1]) if isinstance(owner, list) else parts[-1]
+        owner[key] = {'declared_continuous_coordinate': coordinate['id']}
+    return digest({'base': base, 'factors': mixed.definition['factors'],
+        'continuous': [{k: v for k, v in c.items() if k != 'mean'} for c in mixed.coordinates]})
 
 
 def _finite(value):
@@ -152,7 +172,7 @@ class GeneratedMixedDesign:
         self._sampled, self._sampling_weights = clone(draws), self.weights()
         return draws
 
-    def update(self, draws, observations, *, score):
+    def update(self, draws, observations, *, score, estimator_context=None):
         self._check_definition()
         if (self._told or self._sampled != draws or self.weights() != self._sampling_weights
                 or len(observations) != len(draws) or len(draws) < 2):
@@ -169,17 +189,42 @@ class GeneratedMixedDesign:
         if valid:
             report.update(all_equal_costs=len(set(costs)) == 1, all_zero_costs=all(c == 0 for c in costs))
         if valid and score and (self.policy or self.coordinates):
-            costs_tensor = torch.tensor(costs, dtype=torch.float64)
-            baseline = (costs_tensor.sum() - costs_tensor) / (len(costs) - 1)
             parameters = [*self.policy.logits.values()] if self.policy else []
             if self.coordinates:
                 parameters.append(self.mean)
-            loss = ((costs_tensor - baseline).detach() * self.log_probabilities(draws)).mean()
-            gradients = torch.autograd.grad(loss, parameters)
-            gradient = {'logits': {key: value.detach().tolist() for key, value in
-                zip([*self.policy.logits] if self.policy else [], gradients)}}
-            if self.coordinates:
-                gradient['continuous_mean'] = gradients[-1].tolist()
+            if estimator_context is None:
+                costs_tensor = torch.tensor(costs, dtype=torch.float64)
+                baseline = (costs_tensor.sum() - costs_tensor) / (len(costs) - 1)
+                loss = ((costs_tensor - baseline).detach() * self.log_probabilities(draws)).mean()
+                gradients = torch.autograd.grad(loss, parameters)
+                gradient = {'logits': {key: value.detach().tolist() for key, value in
+                    zip([*self.policy.logits] if self.policy else [], gradients)}}
+                if self.coordinates:
+                    gradient['continuous_mean'] = gradients[-1].tolist()
+                baseline_note = 'leave-one-out excludes own IID conditional draw; equal costs give exactly zero advantages'
+            else:
+                from .native_expectation_estimators import estimate_expected_loss_gradient
+                estimate = estimate_expected_loss_gradient(draws, costs,
+                    logits=self.policy.logits if self.policy else {}, mean=self.mean, sigma=self.sigma,
+                    discrete_log_probability=self.policy.action_log_probability if self.policy else None,
+                    assignments=self.policy.assignments if self.policy else [{}],
+                    control_variate=estimator_context['control_variate'],
+                    sample_ids=estimator_context['sample_ids'], batch_id=estimator_context['batch_id'])
+                report['expectation_estimator'] = {**estimate,
+                    'prior_fit': estimator_context['prior_fit'],
+                    'compatibility_sha256': expectation_compatibility(self)}
+                if estimate['status'] != 'valid':
+                    # Retain the exact failed estimator receipt and native losses;
+                    # neither inner nor outer policy may update from this batch.
+                    report['status'] = 'not-updated-estimator-failure'
+                    self._told = True
+                    return report
+                gradient = estimate['gradient']
+                gradients = [torch.tensor(gradient['logits'][key], dtype=torch.float64)
+                    for key in (self.policy.logits if self.policy else {})]
+                if self.coordinates:
+                    gradients.append(torch.tensor(gradient['continuous_mean'], dtype=torch.float64))
+                baseline_note = 'prior-only frozen surrogate residual score plus exact surrogate expectation derivative; no current-batch fitting'
             for parameter, g in zip(parameters, gradients):
                 updated = parameter.detach() - self.learning_rate * g
                 if not torch.isfinite(updated).all():
@@ -187,7 +232,7 @@ class GeneratedMixedDesign:
                 with torch.no_grad():
                     parameter.copy_(updated)
             report.update(status='score-updated', gradient=gradient, weights_after=self.weights(),
-                baseline='leave-one-out excludes own IID conditional draw; equal costs give exactly zero advantages')
+                baseline=baseline_note)
         self._told = True
         return report
 
@@ -202,7 +247,8 @@ class NativeAdaptiveDesignCampaign:
     """
     def __init__(self, directory, *, initial_system, loss_spec, seeds, world_binding,
                  strategies, mode='hybrid', seed=42, learning_rate=.1,
-                 strategy_learning_rate=.1, strategy_baseline=0., exploration=.1):
+                 strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
+                 expectation_estimator=None):
         validate_loss_spec(loss_spec)
         if (mode not in {'blackbox', 'score', 'hybrid'} or type(seed) is not int
                 or not seeds or any(type(s) is not int for s in seeds) or len(set(seeds)) != len(seeds)
@@ -221,6 +267,14 @@ class NativeAdaptiveDesignCampaign:
             'mode': mode, 'seed': seed, 'learning_rate': float(learning_rate),
             'strategy_learning_rate': float(strategy_learning_rate), 'strategy_baseline': float(strategy_baseline),
             'exploration': float(exploration)}
+        if expectation_estimator is not None:
+            if (not isinstance(expectation_estimator, dict)
+                    or set(expectation_estimator) != {'name', 'ridge'}
+                    or expectation_estimator['name'] != EXPECTATION_ESTIMATOR
+                    or not _finite(expectation_estimator['ridge']) or expectation_estimator['ridge'] <= 0
+                    or mode == 'blackbox'):
+                raise ValueError('explicit supported expectation estimator/ridge and score mode required')
+            self.binding['expectation_estimator'] = clone(expectation_estimator)
         self.binding_sha256 = digest(self.binding)
         if self.path.exists():
             self.state = json.loads(self.path.read_text())
@@ -280,10 +334,12 @@ class NativeAdaptiveDesignCampaign:
             return {'status': 'invalid-generated-vocabulary', 'loss': None, 'strategy_before': state,
                     'strategy_after': state, 'mixed': None, 'strategy_gradient': None}
         mixed, _ = self._compile(record)
-        report = mixed.update(record['draws'], record['observations'], score=self.binding['mode'] != 'blackbox')
+        context = self._expectation_context(record, mixed) if 'expectation_estimator' in self.binding else None
+        report = mixed.update(record['draws'], record['observations'], score=self.binding['mode'] != 'blackbox',
+            estimator_context=context)
         before = clone(state)
         outer_gradient = None
-        if report['status'] != 'not-updated-technical-failure':
+        if report['status'] not in {'not-updated-technical-failure', 'not-updated-estimator-failure'}:
             cost = math.fsum(report['losses']) / len(report['losses'])
             key = record['request']['strategy_id']
             stats = state['statistics'][key]
@@ -317,6 +373,41 @@ class NativeAdaptiveDesignCampaign:
             'score_scope': 'conditional current-vocabulary likelihood score; unknown generator-source probabilities and direct generator dependence on exposed weights/history are not differentiated',
             'sampling_note': 'one shared strategy draw; conditional IID design draws; outer score uses independent fixed baseline; nonzero equal-cost score noise is not comparative evidence',
             'hybrid_is_heuristic': self.binding['mode'] == 'hybrid'}
+
+    def _expectation_context(self, record, mixed):
+        """Fit only compatible, preceding, valid native data from this arm.
+
+        A changed source, factor grammar or coordinate meaning resets the model;
+        no invented feature transport and no other-arm/future observations.
+        """
+        from .native_expectation_estimators import FrozenDesignControlVariate
+        compatibility = expectation_compatibility(mixed)
+        draws, losses, ids, batches, incompatible = [], [], [], [], []
+        for prior in record['request']['history']:
+            if prior['generation_error']:
+                continue
+            # History records already carry their fit compatibility receipt. A
+            # first-batch receipt exists even when no earlier model was fitted.
+            prior_estimator = (prior['report'].get('mixed') or {}).get('expectation_estimator')
+            if prior_estimator is None or prior_estimator['compatibility_sha256'] != compatibility:
+                incompatible.append(prior['request_sha256'])
+                continue
+            for draw, observation in zip(prior['draws'], prior['observations']):
+                if observation and observation['status'] == 'complete' and not observation['metadata'].get('technical_failures'):
+                    draws.append(draw)
+                    losses.append(observation['loss'])
+                    ids.append(observation['observation_id'])
+                    batches.append(prior['request_sha256'])
+        assignments = mixed.policy.assignments if mixed.policy else [{}]
+        model = (FrozenDesignControlVariate.fit(draws, losses, sample_ids=ids, batch_ids=batches,
+            assignments=assignments, latent_dim=len(mixed.coordinates),
+            ridge=self.binding['expectation_estimator']['ridge']) if draws else None)
+        return {'control_variate': model, 'sample_ids': [o['observation_id'] if o else
+            'invalid-' + str(i) for i, o in enumerate(record['observations'])],
+            'batch_id': record['request_sha256'],
+            'prior_fit': {'status': 'fitted-prior-only' if model is not None else 'no-compatible-prior-plain-lr',
+                'sample_ids': ids, 'batch_ids': batches, 'incompatible_prior_batches': incompatible,
+                'frozen_model': model.to_dict() if model is not None else None}}
 
     def _check_observation(self, value, draw):
         if draw['suggestion'] is None:
