@@ -15,7 +15,7 @@ import pytest
 
 from utopia.agents.base_agent import PaperReview
 from utopia.models.response_cache import CompletedResponseCache
-from utopia.optimization.native_response_prefix import prepare_common_prefix, install_common_prefix
+from utopia.optimization.native_response_prefix import prepare_common_prefix, install_common_prefix, CommonPrefixReplay
 from utopia.runtime.checkpointing import PortableCheckpointError, canonical_json, write_portable_checkpoint
 from utopia.system.design_patch import digest
 from utopia.system.native_kernel import legacy_world_system
@@ -229,3 +229,51 @@ def test_valid_resume_preserves_committed_replay_identity_and_rejects_origin_tam
         assert not no_fresh
     finally:
         broken.llm.response_cache.close()
+
+
+@pytest.mark.parametrize('failure', [None, 'different-score', 'different-justification', 'duplicate-review', 'native-failure'])
+def test_clock_hook_changes_only_matched_year1_field_and_restores_original_conference_methods(failure):
+    """Tiny actor/phase unit: no model, global clock patch or native execution."""
+    row = {'reviewer_id': 'actual-reviewer', 'arxiv_id': 'actual-paper', 'conference_id': 'actual-conference',
+        'year': 1, 'overall_score': 4, 'justification': 'Actual old response', 'review_time': 123.25}
+    class Conference:
+        conference_id = 'actual-conference'
+        def add_review(self, paper_id, review):
+            review['review_time'] = 999.75  # Fixture's original native operation.
+            self.stored.append(review)
+        def __init__(self): self.stored = []
+    conference = Conference()
+    def original_phase(year, results):
+        review = {**row, 'year': year}
+        if failure == 'different-score': review['overall_score'] = 1
+        if failure == 'different-justification': review['justification'] = 'Different response'
+        conference.add_review('actual-paper', review)
+        if failure == 'duplicate-review': conference.add_review('actual-paper', deepcopy(review))
+        if failure == 'native-failure': raise RuntimeError('original native phase failed')
+        return review
+    sim = SimpleNamespace(conference_system=SimpleNamespace(conferences=[conference]), _run_phase_3_peer_review=original_phase)
+    controller = CommonPrefixReplay.__new__(CommonPrefixReplay)
+    controller.simulation, controller.clock_changes, controller._clock_phase_original = sim, [], None
+    controller.prepared = {'review_clock_coupling': {'source_checkpoint_sha256': 'a'*64,
+        'records': [{'year': 1, 'conference_id': 'actual-conference', 'paper_id': 'actual-paper',
+            'reviewer_id': 'actual-reviewer', 'review_time': 123.25, 'anchor_review_sha256': digest(row),
+            'nonclock_review_sha256': digest({k: v for k, v in row.items() if k != 'review_time'})}]}}
+    controller._install_review_clock_coupling()
+    if failure is None:
+        result = sim._run_phase_3_peer_review(1, {})
+        assert result == row and len(controller.clock_changes) == 1
+        assert controller.clock_changes[0]['before_review_time'] == 999.75
+        assert controller.clock_changes[0]['after_review_time'] == 123.25
+        assert controller.clock_changes[0]['nonclock_review_sha256'] == digest({k: v for k, v in row.items() if k != 'review_time'})
+        # An original year2 record MUST retain the original operation's fresh
+        # timestamp rather than being looked up, copied or normalized.
+        later = sim._run_phase_3_peer_review(2, {})
+        assert later['review_time'] == 999.75 and later['year'] == 2
+        assert len(controller.clock_changes) == 1
+    else:
+        with pytest.raises((PortableCheckpointError, RuntimeError)):
+            sim._run_phase_3_peer_review(1, {})
+        if failure in ('different-score', 'different-justification'):
+            assert not controller.clock_changes
+            assert conference.stored[0]['review_time'] == 999.75  # No semantic repair.
+    assert 'add_review' not in vars(conference)  # Restored even on failure.
