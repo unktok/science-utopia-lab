@@ -71,9 +71,24 @@ from utopia.system.native_review_routing import BATCH, PLAN, enable_review_routi
 spec = enable_review_routing(spec, source='my-new-institution', source_port='routing')
 ```
 
-This helper adds the data-only snapshot at phase 105 after original costs at
-100, wires its batch to both the producer and review, and wires the producer's
-command to review at phase 120. It inserts no producer or reviewer policy.
+These numeric defaults apply to the **raw legacy/activity graph**, before an
+explicit process compilation: the helper adds the data-only snapshot at phase
+105 after costs at 100, wires its batch to both the producer and review, and
+wires the producer's command to review at phase 120. It inserts no producer or
+reviewer policy. They are NOT universal phase IDs. For example,
+`open_native_system` has already called `compile_dependencies`, which reindexes
+its actual schedules (costs 80 and review 90 in the current seed graph). A
+designer extending that graph must inspect its actual schedules and explicitly
+choose compatible producer/snapshot priorities, such as producer 85 and
+`snapshot_phase=83`, or explicitly rebuild its process ordering.
+
+After inserting the new nodes/edges into an already compiled process, recompile
+the process metadata/order as well. Its previously materialized dependency
+edges remain real edges; passing empty dependency lists for **every** current
+node to `compile_dependencies` retains those edges without inserting duplicate
+`requires-*` control ports. Alternatively rebuild from the original uncompiled
+spec with a complete explicit dependency/priority map. Neither the helper nor
+the runtime silently moves nodes or repairs contradictory process plans.
 Different node IDs/input names/snapshot phase are explicit helper arguments.
 The helper deliberately refuses already-replaced review implementations rather
 than silently discard a previously selected mechanism. A designer can manually
