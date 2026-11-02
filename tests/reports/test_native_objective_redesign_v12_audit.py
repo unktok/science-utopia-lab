@@ -125,6 +125,7 @@ def test_all_failed_draws_retained_across_three_generations_with_no_numeric_pena
         assert arm['selection']['tie_count'] == 0
         assert all(row['cross_scores'] == {k:None for k in ARM_IDS} for row in arm['observations'])
         assert [proof['generation'] for proof in arm['authoring_proofs']] == [0, 1, 2]
+    assert result['selected_cross_objective_matrix'] == {identity:None for identity in ARM_IDS}
 
 
 @pytest.mark.parametrize('tamper', ['source', 'status', 'budget', 'replies', 'loss', 'veto', 'claim', 'arm', 'instructions'])
@@ -157,6 +158,17 @@ def test_optimizer_update_tampering_rejected_after_matching_summary(tmp_path):
     save(campaigns[identity].path, campaigns[identity].state)
     summarize(tmp_path, plan, campaigns)
     with pytest.raises(ValueError, match='update history'):
+        analyze(tmp_path, expected_source='fixture-source', require_complete=False)
+
+
+def test_duplicate_exact_observation_identity_is_rejected_across_arms(tmp_path):
+    plan, campaigns = fixture(tmp_path)
+    for identity, campaign in campaigns.items():
+        failed_generation(tmp_path, identity, campaign, plan['instructions'])
+        campaign.state['records'][0]['observations'][0]['observation_id'] = 'same-forged-observation-id'
+        save(campaign.path, campaign.state)
+    summarize(tmp_path, plan, campaigns)
+    with pytest.raises(ValueError, match='observation identity reused'):
         analyze(tmp_path, expected_source='fixture-source', require_complete=False)
 
 

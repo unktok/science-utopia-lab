@@ -185,7 +185,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     source_proof = _source_proofs(expected_source, classification)
     if set(raw['arms']) != set(ARM_IDS):
         raise ValueError('missing or extra objective arm')
-    arms, native_proofs, declared, physical_ids = {}, [], {}, set()
+    arms, native_proofs, declared, physical_ids, observation_ids = {}, [], {}, set(), set()
     failures = committed = 0
     for identity in ARM_IDS:
         controller, authors = _read_arm(root, identity, raw, plan, losses[identity])
@@ -209,6 +209,10 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             if len(record['draws']) != DRAWS or len(record['observations']) != DRAWS:
                 raise ValueError('completed generation lacks its exact single draw')
             draw, observation = record['draws'][0], record['observations'][0]
+            if observation is not None:
+                if observation['observation_id'] in observation_ids:
+                    raise ValueError('exact observation identity reused across distinct attempts')
+                observation_ids.add(observation['observation_id'])
             committed += 1
             row = _row(identity, record, draw, observation)
             if row['system'] is not None:
@@ -299,7 +303,8 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     selected = {}
     for identity, arm in arms.items():
         chosen = arm['selection']['representative_observation_id']
-        selected[identity] = next((row['cross_scores'] for row in arm['observations'] if row['observation_id'] == chosen), None)
+        selected[identity] = next((row['cross_scores'] for row in arm['observations']
+            if chosen is not None and row['observation_id'] == chosen), None)
     result = {'schema': SCHEMA, 'classification': classification, 'status': status,
         'source_commit': expected_source, 'objective_order': list(ARM_IDS), 'loss_specs': losses,
         'arms': arms, 'selected_cross_objective_matrix': selected,

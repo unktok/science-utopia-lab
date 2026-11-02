@@ -93,3 +93,26 @@ Repeat the audit to a different output file, compare bytes, and verify the raw
 inventory remains unchanged. `--allow-incomplete` records truthful unfinished
 evidence; it does not turn it into a completed experiment. An improvement or
 useful institutional invention is not a software acceptance condition.
+
+## Separate final-control followup
+
+`scripts/analyze_native_control_followup_v12.py` audits the separately budgeted
+two-draw forward-only proposal evaluation. It reruns the archived v11 auditor
+from an explicitly supplied clean historical worktree, requiring byte-equivalent
+parent report data and unchanged parent raw hashes. It reconstructs only the
+final v11 corrected-control weights, the exact source/graph/coordinate-compatible
+definition, fresh draw seed43, both saved latent/assignment/log-likelihood draws
+and their native seed42 outcomes. It never calls the driver's mutating `run`,
+`advance` or `summarize` entry points. The new actual source pin is independently
+compared with replay-critical driver/native audit blobs.
+
+Native checkpoint, code/context and response-journal proofs are checked again
+for each completed new world. Failed/unfinished draws remain explicit and null;
+no followup optimizer update occurs. Both the followup raw files and immutable
+v11 parent are guarded. The output path cannot overwrite either raw tree, the
+historical audit source, or the pinned parent audit file.
+
+The report schema is
+`scienceutopia.native-control-followup-independent-audit.v12`. Historical v11
+losses are provenance, **not a causal concurrent comparison group**. Two new
+outcomes do not establish expected-loss improvement or variance reduction.
