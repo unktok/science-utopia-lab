@@ -45,3 +45,12 @@ responses comprise216 fresh SCRIPTED callbacks+396 historical replays. These
 are SOFTWARE checks, NOT Qwen results. Each operator uses only3/4/5 own eligible
 endpoints and scheduled temperatures. Thirty policy/diagnostic checks and five
 early audit tests overlap these scopes. Freeze a clean actual source next.
+
+Actual source freezes at`5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a` after adding
+the v10-specific physical ledger, exact anchor-manifest reconstruction and
+synthetic-publication guards. No original native/response runtime blob is
+edited. Run in`science-utopia-lab-experiments/native-method-paths-v10-a1`, raw
+`outputs/native-method-paths-v10-a1`, single writer with the existing inference
+lock. Full exact-source regression runs concurrently in a separate clean
+verification worktree. First actual G0 completes theta0.6/loss0.9/31 fresh
+replies, not improvement; B0 starts. No rule or objective is changed in response.

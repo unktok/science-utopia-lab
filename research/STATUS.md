@@ -14,8 +14,10 @@ incumbent-adjacent interval refinement. Current and incumbent are separate.
 both parser and selection-gate attenuation and a temperature-dependent sign
 change, not merely an undersized gradient. The historical fit roundtrip passes
 with all211 original runtime blobs unchanged. Policies/diagnostic checks pass30
-overlapping tests; full native scripted-loop QA and independent auditor are in
-parallel preparation. No new actual inference has started yet. There is no
+overlapping tests; nine original-world SCRIPTED forwards and live-clock
+integration/source-guard QA pass4 tests. The independent auditor/plotter is
+implemented. Actual inference starts from clean`5ea52a5` in a separate pinned
+experiment worktree; full-source regression runs separately in parallel. There is no
 claim that smoothing will improve native loss or beat the black-box baseline.
 
 ## Completed finite v9 loop: actual-Qwen response-aware institution gradient
