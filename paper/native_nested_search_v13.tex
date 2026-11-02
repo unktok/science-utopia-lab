@@ -1,0 +1,111 @@
+\section{Nested Free Design and Conditional Expected-Loss Optimization}
+\label{sec:nested-design-v13}
+
+The next finite pilot connects two forms of optimization in one original-world
+loop. An external designer can change executable institutional source,
+mechanisms, protocols, wiring and activity processes. Within each explicitly
+authored vocabulary, a conditional sampling distribution can instead be updated
+using observed native losses. These are complementary degrees of freedom, not
+a claim that arbitrary source generation or the researcher world is
+pathwise differentiable.
+
+\paragraph{Prospective objectives and budget.}
+The two exact losses are the existing throughput objective $L_A=-A$ and a new
+illustrative reviewed-production objective $L_E=-Q+0.5R$. Here $A$ counts native
+accepted decisions, $Q$ sums the original integer-parsed reviewer means on
+accepted decisions, and $R$ counts actual review records. An unreviewed
+acceptance contributes zero to $Q$. Institution-written final scores are not
+used. The new coefficient is an explicit engineering preference for review
+work, not a calibrated welfare weight or scientific-quality law. It removes
+the historical utility objective's per-acceptance cost and increases its
+declared review-work cost; it is not a retrospective change to that study.
+No additional merit floor, fairness rule, novelty reward or promotion veto is
+introduced. The original five authors, two years, seed42, four-year real corpus
+and fixed Qwen3:8B weights remain, with no response reuse across worlds.
+
+\begin{table}[t]
+\caption{The fixed nested schedule is repeated for each objective. Native
+attempts total at most eight across both arms; failed slots are not replaced.}
+\label{tab:nested-schedule-v13}
+\centering
+\small
+\begin{tabular}{p{.22\linewidth}p{.43\linewidth}p{.23\linewidth}}
+\toprule
+Stage & Proposal rule & Native attempts / update \\
+\midrule
+Initial G0 & External complete free vocabulary & Two IID draws; one LR step \\
+Updated G0 & Exact G0 vocabulary at saved updated weights & One fresh draw; no update \\
+Redesigned G1 & External complete vocabulary from all own feedback & One fresh draw; no update \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{What is differentiated.}
+For a frozen generated vocabulary $V$, write $q_\theta(d\mid V)$ for its
+explicit categorical and bounded Gaussian-latent design distribution. Source
+and graph patches map a draw $d$ to an executable native system. Subject to
+the usual score-function regularity conditions,
+\begin{equation}
+ \nabla_\theta\mathbb{E}_{d\sim q_\theta,\,\tau\sim\mathrm{Sim}(d)}[L(\tau)]
+ =\mathbb{E}[L(\tau)\nabla_\theta\log q_\theta(d\mid V)].
+\end{equation}
+The simulator, including its language decisions and discrete transitions,
+need not expose a Jacobian for this conditional identity. The implemented
+two-draw leave-one-out estimate is
+\begin{equation}
+ \widehat g=\frac12\bigl[(L_0-L_1)\nabla_\theta\log q_\theta(d_0\mid V)
+ +(L_1-L_0)\nabla_\theta\log q_\theta(d_1\mid V)\bigr],
+ \qquad \theta^+=\theta-0.1\widehat g.
+\end{equation}
+Each draw's baseline excludes its own loss. Equal observed costs give zero
+advantages; valid empty parameter sets are allowed. Technical failures keep
+null losses and leave weights unchanged rather than become fabricated
+penalties. The next native draw uses the exact saved $\theta^+$ and G0
+vocabulary, with a fresh draw identity. It performs no additional update.
+This ensures that the pilot does not end with an untested final parameter
+update. Neither a noisy step nor one followup proves expected improvement.
+
+The external G1 request then exposes all three own preceding observations,
+source/graph definitions, failures and the saved update. It preserves every
+exact incumbent tie and uses the earliest tie only as a display/parent
+representative. G1 may change the algorithms, support and coordinate meanings;
+it declares its initial weights explicitly. The host does not silently
+transport gradients or control state across incompatible vocabularies.
+Retention is legal: useful invention and improving the designer are empirical
+questions, not technical acceptance conditions. External Codex authorship
+remains self-reported, with request-level own-history instructions rather than
+authenticated provider identity or operating-system isolation.
+
+\paragraph{Extending real activities, not replacing the world.}
+An opt-in typed review-routing capability exposes the actual submitted papers
+and original eligible reviewer identities before review execution. Arbitrary
+sandboxed institution source can emit any valid subset of paper/reviewer tasks,
+including none. Trusted identity/accounting transport then invokes the original
+native prompt, model, integer parser, review record and received-experience
+path for those tasks. It does not manufacture scores, charge a new review fee
+or provide a reviewer-allocation policy. Existing self/COI eligibility and
+duplicate-record legality remain disclosed native semantics, not loss vetoes.
+Zero-review systems must explicitly author a compatible admission consumer:
+the host does not repair legacy selection or secretly supply missing reviews.
+The unchanged default graph retains original behavior when this capability is
+absent. This is an additional connection to real work, not a claim that review
+is the entire institution or that every possible scientific activity already
+has a native consumer.
+
+Prospective research-plan receipts now retain the complete original upstream
+plan, source port and input-event lineage, in addition to ordered amendment
+commands. A read-only auditor can reconstruct the full applied plan and join it
+to recorded source outputs and native state. Historical missing provenance
+is not fabricated retroactively. The new audit also independently checks
+scalar likelihood derivatives and the sole LR update, exact post-update
+sampling, checkpoints, actual review tasks and model-request identities.
+
+\paragraph{Inspection and editing boundaries.}
+The existing English pixel-art Institution Foundry exposes the nested stages,
+before/after distribution weights, source, circuit and recorded plan/review
+effects. Its city choreography remains schematic, not measured agent motion.
+An observed institution can seed a local editable branch and an explicit
+handoff to the existing design workbench. The local draft is never presented
+as executed or adopted; runtime validation and renewed compute consent remain
+separate. Same-checkpoint cross-scores remain development diagnostics, not
+held-out evaluations or extra optimization signals.
