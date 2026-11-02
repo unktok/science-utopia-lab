@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 import sys
+import tempfile
 
 import matplotlib.pyplot as plt
 plt.rcParams['svg.hashsalt'] = 'scienceutopia-native-method-paths-v10'
@@ -15,18 +16,31 @@ from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 SCHEMA = 'scienceutopia.native-method-paths-audit.v10'
 ACTUAL = 'actual-native-qwen-method-paths-development-v10'
+FIXTURE = 'scripted-fixture-not-native-results'
 
 
-def read_report(path, expected_source=None):
+def read_report(path, expected_source=None, *, allow_synthetic=False):
     report = json.loads(Path(path).read_text())
     if report.get('content_sha256') != digest({k: v for k, v in report.items() if k != 'content_sha256'}):
         raise ValueError('audit is not content-hash bound')
-    if (report.get('schema') != SCHEMA or report.get('classification') != ACTUAL
+    classification = report.get('classification')
+    if (report.get('schema') != SCHEMA or classification not in (ACTUAL, FIXTURE)
             or report.get('status') != 'complete'
             or report.get('technical_validity', {}).get('completed_worlds') != 6
             or report.get('technical_validity', {}).get('failures')
             or expected_source is not None and report.get('source_commit') != expected_source):
         raise ValueError('figure requires one complete source-bound actual v10 audit')
+    if classification == FIXTURE:
+        if not allow_synthetic or Path(path).resolve().parent != Path(tempfile.gettempdir()).resolve() and not Path(path).resolve().is_relative_to(Path(tempfile.gettempdir()).resolve()):
+            raise ValueError('synthetic figure fixtures require an explicit temporary-only flag')
+    elif (allow_synthetic or expected_source is None
+            or report.get('source_proof', {}).get(
+                'current_method_and_scientific_sources_match_experiment_commit') is not True
+            or report.get('claims', {}).get('actual_fixed_weight_Qwen') is not True
+            or report['claims'].get('optimizer_superiority') is not False
+            or report.get('objective', {}).get('loss_spec', {}).get('id') !=
+                'native-joint-v5-net-reviewed-utility'):
+        raise ValueError('actual figure requires exact audit source/objective/claim proof')
     if (report.get('comparison', {}).get('equal_fresh_native_attempt_budget') != 3
             or report['comparison'].get('optimizer_superiority_claim') is not False
             or report.get('held_out_metrics', {}).get('status') != 'not-measured'):
@@ -38,10 +52,12 @@ def read_report(path, expected_source=None):
     return report
 
 
-def create(source, output, expected_source=None):
-    report = read_report(source, expected_source)
+def create(source, output, expected_source=None, *, allow_synthetic=False):
+    report = read_report(source, expected_source, allow_synthetic=allow_synthetic)
+    if allow_synthetic and not Path(output).resolve().is_relative_to(Path(tempfile.gettempdir()).resolve()):
+        raise ValueError('synthetic figure output must remain in the system temporary directory')
     colors = {'gradient': '#00a7a5', 'blackbox': '#d97706'}
-    fig, axes = plt.subplots(2, 1, figsize=(6.7, 5.2), sharex=True,
+    fig, axes = plt.subplots(2, 1, figsize=(5.5, 4.8), sharex=True,
                              gridspec_kw={'height_ratios': [1, 1.15]})
     for arm in ('gradient', 'blackbox'):
         path = report['arms'][arm]['current_path']
@@ -66,8 +82,11 @@ def create(source, output, expected_source=None):
     axes[0].set_xticks([1, 2, 3])
     for axis in axes:
         axis.grid(alpha=.2)
-        axis.legend(fontsize=7.5, ncol=2)
+        axis.legend(fontsize=6.5, ncol=2)
     fig.suptitle('Equal-budget native method paths\nactual common-prefix-coupled development; not held-out or optimality', fontsize=10)
+    if report['classification'] == FIXTURE:
+        fig.text(.5, .5, 'SYNTHETIC FIXTURE — NOT ACTUAL QWEN', ha='center', va='center',
+                 rotation=25, fontsize=14, color='#dc2626', alpha=.22, weight='bold')
     fig.tight_layout()
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -80,6 +99,7 @@ def create(source, output, expected_source=None):
         'outputs': {'png': {'path': str(png), 'sha256': file_sha256(png)},
                     'svg': {'path': str(svg), 'sha256': file_sha256(svg)}},
         'new_model_calls': 0, 'new_native_worlds': 0,
+        'classification': report['classification'],
         'optimizer_superiority_claim': False, 'held_out_claim': False}
     result['content_sha256'] = digest(result)
     write_json_atomic(output.with_suffix('.manifest.json'), result, sort_keys=True, allow_nan=False)
@@ -90,7 +110,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--audit', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--expected-source')
+    parser.add_argument('--expected-source', required=True)
     args = parser.parse_args()
     print(json.dumps(create(args.audit, args.output, args.expected_source), sort_keys=True))
 

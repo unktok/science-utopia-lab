@@ -8,6 +8,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sqlite3
 import subprocess
 import sys
 
@@ -15,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.analyze_native_qwen_response_v9 import (
-    _audit_endpoint, _physical_response_ledger, inventory,
+    _audit_endpoint, inventory,
 )
 from utopia.optimization.loss import load_loss_spec, loss_spec_sha256
 from utopia.optimization.native_method_paths import (
@@ -23,6 +24,7 @@ from utopia.optimization.native_method_paths import (
     historical_observations, load_path_operator, load_shared_historical, read,
 )
 from utopia.optimization.native_path_policies import validate_state
+from utopia.optimization.native_response_prefix import prepare_common_prefix
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.native_response_examples import DECLARATIONS, TERMS, response_gradient_system
@@ -99,7 +101,74 @@ def _validate_plan(plan, expected_source):
             or coupling.get('prepared', {}).get('prefix_count') != 53
             or coupling['prepared'].get('anchor_endpoint') != shared['anchor_endpoint']):
         raise ValueError('common-prefix plan differs from exact historical anchor')
+    reconstructed = prepare_common_prefix(shared['anchor_world_dir'], shared['anchor_endpoint'])
+    if coupling['prepared'] != reconstructed:
+        raise ValueError('complete common-prefix manifest does not reconstruct from unchanged anchor raw')
     return objective, base, world, shared, coupling
+
+
+def _physical_ledger(root, completed_names, world, coupling):
+    """Count every v10 logical/fresh response without v9 name globals."""
+    declared = {item['name'] for item in SCHEDULE}
+    worlds = root/'worlds'
+    directories = sorted(p for p in worlds.iterdir() if p.is_dir()) if worlds.exists() else []
+    if any(path.name not in declared for path in directories):
+        raise ValueError('undeclared v10 physical world directory exists')
+    ledger = []
+    for cell in directories:
+        journal, wire_path = cell/'replies/responses.sqlite', cell/'wire-requests.jsonl'
+        if not journal.exists():
+            ledger.append({'name': cell.name, 'status': 'partial-before-response-journal',
+                'loss': None, 'response_count': 0, 'logical_response_count': 0,
+                'fresh_physical_reply_count': 0, 'replayed_response_count': 0,
+                'outcomes': {}, 'journal_sha256': None})
+            continue
+        if not wire_path.is_file():
+            raise ValueError(f'{cell.name}: response journal lacks wire provenance')
+        before = file_sha256(journal)
+        with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
+            metadata = db.execute('SELECT binding FROM metadata').fetchall()
+            outcomes = dict(db.execute('SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
+            rows = db.execute('SELECT rowid,identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        wires = [json.loads(line) for line in wire_path.read_text().splitlines()]
+        binding = json.loads(metadata[0][0]) if len(metadata) == 1 else {}
+        sha = lambda value: isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value)
+        if (len(metadata) != 1 or file_sha256(journal) != before
+                or binding.get('seed') != world['seed']
+                or binding.get('model_revision') != world['model_digest']
+                or binding.get('corpus_sha256') != world['corpus_sha256']
+                or binding.get('science_config', {}).get('source_commit') != world['source_commit']
+                or len(rows) != sum(outcomes.values()) or len(rows) != len(wires)
+                or any(not sha(row[1]) or not sha(row[2]) or not sha(row[5])
+                    or hashlib.sha256(row[4].encode()).hexdigest() != row[5] for row in rows)
+                or any(row[3] not in {'response','error'} for row in rows)
+                or [row[2] for row in rows] != [wire.get('payload_sha256') for wire in wires]):
+            raise ValueError(f'{cell.name}: physical response binding/rows differ')
+        replayed = sum('replayed_from' in wire for wire in wires)
+        if (replayed != coupling['prepared']['prefix_count'] and cell.name in completed_names
+                or any('replayed_from' not in wire for wire in wires[:replayed])
+                or any('replayed_from' in wire for wire in wires[replayed:])):
+            raise ValueError(f'{cell.name}: replay rows are not one exact declared prefix')
+        logical = outcomes.get('response', 0); fresh = logical-replayed
+        if fresh < 0:
+            raise ValueError(f'{cell.name}: replay count exceeds logical replies')
+        completed = cell.name in completed_names
+        ledger.append({'name': cell.name, 'status': 'completed-endpoint' if completed else 'partial-null-loss-world',
+            'loss': 'reported-in-endpoint-ledger' if completed else None,
+            'response_count': logical, 'logical_response_count': logical,
+            'fresh_physical_reply_count': fresh, 'replayed_response_count': replayed,
+            'outcomes': outcomes, 'journal_sha256': before, 'binding_sha256': digest(binding),
+            'row_identity_sha256': digest(rows)})
+    completed = [row for row in ledger if row['status'] == 'completed-endpoint']
+    partial = [row for row in ledger if row['status'] != 'completed-endpoint']
+    return {'worlds': ledger,
+        'completed_endpoint_replies': sum(r['logical_response_count'] for r in completed),
+        'partial_null_loss_replies': sum(r['logical_response_count'] for r in partial),
+        'completed_endpoint_fresh_physical_replies': sum(r['fresh_physical_reply_count'] for r in completed),
+        'partial_null_loss_fresh_physical_replies': sum(r['fresh_physical_reply_count'] for r in partial),
+        'all_logical_replies': sum(r['logical_response_count'] for r in ledger),
+        'all_replayed_replies': sum(r['replayed_response_count'] for r in ledger),
+        'all_fresh_physical_replies': sum(r['fresh_physical_reply_count'] for r in ledger)}
 
 
 def _sequence(raw, require_complete):
@@ -239,8 +308,7 @@ def analyze(run, *, expected_source, require_complete=True):
         coupling_arg = {'mode': coupling['mode'], 'prepared': coupling['prepared']}
         proofs = [_audit_endpoint(root, row, base_system=base, declarations=DECLARATIONS,
             objective=objective, world=world, coupling=coupling_arg) for row in rows]
-        physical = _physical_response_ledger(root, {r['name'] for r in rows}, world,
-            coupling=coupling_arg)
+        physical = _physical_ledger(root, {r['name'] for r in rows}, world, coupling_arg)
         operators = _audit_steps(root, raw, shared, objective)
         policies = _audit_policies(root, raw, shared, objective, world)
         if require_complete and (raw.get('physical_native_worlds') != 6

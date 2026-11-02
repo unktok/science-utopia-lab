@@ -6,9 +6,9 @@ import json
 import pytest
 
 from scripts.analyze_native_method_paths_v10 import (
-    ACTUAL, RAW_SCHEMA, SCHEMA, SCHEDULE, _arm_summary, _sequence,
+    ACTUAL, RAW_SCHEMA, SCHEMA, SCHEDULE, _arm_summary, _physical_ledger, _sequence,
 )
-from scripts.figures.native_method_paths_v10 import create, read_report
+from scripts.figures.native_method_paths_v10 import FIXTURE, create, read_report
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256
 
@@ -32,6 +32,18 @@ def test_sequence_retains_exact_interleave_and_null_failure():
     with pytest.raises(ValueError, match='became loss'):
         _sequence({'status': 'stopped-with-preserved-failure',
             'endpoints': rows[:2], 'steps': steps[:3], 'failures': [failure]}, False)
+
+
+def test_v10_ledger_accepts_only_v10_world_names(tmp_path):
+    (tmp_path/'worlds/gradient-0').mkdir(parents=True)
+    world = {'seed': 42, 'model_digest': 'a'*64, 'corpus_sha256': 'b'*64,
+             'source_commit': 'c'*40}
+    result = _physical_ledger(tmp_path, set(), world, {'prepared': {'prefix_count': 53}})
+    assert result['worlds'][0]['name'] == 'gradient-0'
+    assert result['worlds'][0]['status'] == 'partial-before-response-journal'
+    (tmp_path/'worlds/calibration-0').mkdir()
+    with pytest.raises(ValueError, match='undeclared v10'):
+        _physical_ledger(tmp_path, set(), world, {'prepared': {'prefix_count': 53}})
 
 
 def test_arm_summary_keeps_current_worse_noop_and_earliest_tie():
@@ -61,7 +73,7 @@ def fixture_report():
         arms[arm] = {'current_path': current, 'incumbent_path': incumbent,
             'historical_observations_charged': 3, 'fresh_attempts': 3}
         endpoints += [{**row, 'arm': arm, 'step': i} for i, row in enumerate(current)]
-    report = {'schema': SCHEMA, 'classification': ACTUAL, 'status': 'complete',
+    report = {'schema': SCHEMA, 'classification': FIXTURE, 'status': 'complete',
         'source_commit': 'a'*40, 'technical_validity': {'completed_worlds': 6, 'failures': []},
         'comparison': {'equal_fresh_native_attempt_budget': 3,
             'optimizer_superiority_claim': False},
@@ -74,19 +86,25 @@ def fixture_report():
 
 def test_figure_reader_requires_complete_equal_budget_truthful_scope(tmp_path):
     report = fixture_report(); path = tmp_path/'audit.json'; path.write_text(json.dumps(report))
-    assert read_report(path, 'a'*40)['arms']['gradient']['fresh_attempts'] == 3
+    assert read_report(path, 'a'*40, allow_synthetic=True)['arms']['gradient']['fresh_attempts'] == 3
     changed = deepcopy(report); changed['comparison']['optimizer_superiority_claim'] = True
     changed['content_sha256'] = digest({k:v for k,v in changed.items() if k!='content_sha256'})
     path.write_text(json.dumps(changed))
     with pytest.raises(ValueError, match='scope'):
+        read_report(path, 'a'*40, allow_synthetic=True)
+
+    masquerade = fixture_report(); masquerade['classification'] = ACTUAL
+    masquerade['content_sha256'] = digest({k:v for k,v in masquerade.items() if k!='content_sha256'})
+    path.write_text(json.dumps(masquerade))
+    with pytest.raises(ValueError, match='source/objective/claim proof'):
         read_report(path, 'a'*40)
 
 
 def test_figure_is_deterministic_and_zero_call(tmp_path):
     report = fixture_report(); path = tmp_path/'audit.json'; path.write_text(json.dumps(report))
-    first = create(path, tmp_path/'paths', 'a'*40)
+    first = create(path, tmp_path/'paths', 'a'*40, allow_synthetic=True)
     hashes = {key: file_sha256(value['path']) for key, value in first['outputs'].items()}
-    second = create(path, tmp_path/'paths', 'a'*40)
+    second = create(path, tmp_path/'paths', 'a'*40, allow_synthetic=True)
     assert hashes == {key: file_sha256(value['path']) for key, value in second['outputs'].items()}
     assert first['new_model_calls'] == first['new_native_worlds'] == 0
     assert not first['optimizer_superiority_claim'] and not first['held_out_claim']
