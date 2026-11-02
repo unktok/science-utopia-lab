@@ -35,6 +35,7 @@ OBJECTIVE_PATH = ROOT/'research/objectives/losses/native-joint-v5-net-reviewed-u
 PROTOCOL_PATH = ROOT/'research/protocols/campaigns/native-method-paths-v10.md'
 SOURCE_PATHS = (
     'scripts/run_native_method_paths_v10.py',
+    'scripts/analyze_native_qwen_response_v9.py',
     'utopia/optimization/native_method_paths.py',
     'utopia/optimization/native_path_policies.py',
     'utopia/optimization/native_qwen_response.py',
