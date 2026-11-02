@@ -41,6 +41,18 @@ institution ID or fixed code catalog is mandatory. Empty/identity design choices
 are legal, no forced diversity. Authoring is self-reported external Codex, not
 Qwen invention or authenticated independent authorship.
 
+The disclosed optional pilot authoring example is
+`scripts/author_native_open_estimators_v11.py`, not the generic search space or
+an autonomous source-invention model. It explicitly replaces the existing
+feature/tensor/router chain with a Python review-evidence protocol and Python
+selection consumer, with mean/minimum aggregation choices and one bounded
+evidence cutoff. For this estimator pilot generation1 retains those algorithms
+and wiring; the score arm explicitly carries learned weights, while the
+derivative-free arm recenters on its own observed best latent/choice when
+losses differ (ties keep the distribution). This is NOT a claim of new source
+or topology invention in every generation. The generic runner still accepts
+arbitrary new manifests and falls back honestly when prior meanings change.
+
 Generation1 requests contain only that arm's completed past outcomes, loss,
 source/graph and sampled coordinates plus explicit learned weights. They never
 include the other arm's outcomes or unobserved future outcomes. A coordinate's
@@ -64,7 +76,7 @@ external source pauses resumably without scientific failure. No automatic retry
 or replacement of an executed technical failure. A completed bad scientific
 outcome remains a valid loss. A technical failure has null loss and the affected
 batch does not manufacture an estimator update. Preserve partial outputs; stop
-before launching further native attempts after a technical failure, and report
+before launching further batches after a technical failure, and report
 the actual budget consumed. Any change requires a separately recorded
 prospective amendment, not rewriting this attempt.
 

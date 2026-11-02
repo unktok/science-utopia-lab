@@ -75,10 +75,13 @@ def authored_base(parent):
         inputs=evidence_inputs, outputs=evidence_outputs,
         parameters=_code(image, 'Externally authored reviewer aggregation',
             EVIDENCE_SOURCE, evidence_inputs, evidence_outputs))
-    nodes = tuple(selection if n.mechanism_id == old.mechanism_id else n
+    nodes = tuple(replace(selection if n.mechanism_id == old.mechanism_id else n,
+        inputs=tuple(p for p in (selection if n.mechanism_id == old.mechanism_id else n).inputs
+            if not p.port_id.startswith('requires-')))
         for n in parent.mechanisms if n.mechanism_id not in removed) + (node,)
     connections = tuple(e for e in parent.connections if
         e.source_mechanism not in removed and e.target_mechanism not in removed
+        and not e.target_port.startswith('requires-')
         and not (e.target_mechanism == old.mechanism_id and e.target_port != 'after'))
     def edge(source, port, target, target_port):
         return ConnectionSpec(source, port, target, target_port, ChannelKind.ARTIFACT)

@@ -61,7 +61,7 @@ def test_both_authored_algorithms_execute_original_native_world(tmp_path,fixed_c
             assert simulation.native_system.last_year==6
             assert calls
             events=simulation.native_system.events
-            assert any(e.mechanism_id=='review-evidence' for e in events)
+            assert any(e.provenance.get('mechanism_id')=='review-evidence' for e in events)
             assert len(simulation.yearly_results)==6
             assert any(row['decisions']['total_accepted'] for row in simulation.yearly_results)
         finally:
