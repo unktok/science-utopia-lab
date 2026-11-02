@@ -52,6 +52,19 @@ Hash encodings are explicit: new
 `physical_proof.code_proof.sources[].source_sha256` and v8 source-body lineage
 use the latter encoding. They must not be compared as though both were raw text.
 
+The v12-only `physical_proof.activity_effect_proof` separately audits the
+original `native.system.research_plan_applied` capability. This is not a
+`native.project` domain command. Every annual effect retains its complete event,
+event ID/hash, submitter IDs, exact amendment command/hash, originating wire
+and event lineage, and matching sandbox output/source/context/result receipts.
+Where an exact upstream native plan was recorded as a tee input, replaying only
+its data amendments must reproduce the committed plan hash. Otherwise that
+reconstruction is explicitly unavailable, not invented. Annual actor timelines
+and serialized direction/focus/reason are shown against each amended assignment.
+A later legal writer may overwrite that state; mismatches and known later
+activity/project receipts remain visible rather than becoming a hidden veto.
+No causal success is inferred from these committed capability receipts.
+
 ## Result and UI contract
 
 The report schema is

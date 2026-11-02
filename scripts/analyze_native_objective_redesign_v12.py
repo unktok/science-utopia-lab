@@ -24,6 +24,7 @@ from scripts.analyze_native_open_v7 import (
     partial_physical_proof, read,
 )
 from scripts.analyze_native_open_estimators_v11 import incumbent_path, replay_source_proofs
+from scripts.native_activity_effect_audit_v12 import activity_effect_proof
 from scripts.analyze_native_objective_structure_v8 import (
     _bind_authoring_instructions, cross_score_measurement, graph_change, objective_specs,
 )
@@ -78,7 +79,9 @@ def _source_proofs(expected_source, classification):
     result = replay_source_proofs(expected_source, classification)
     if classification != FIXTURE:
         for name in ('scripts/run_native_objective_redesign_v12.py',
-                'scripts/analyze_native_objective_structure_v8.py'):
+                'scripts/analyze_native_objective_structure_v8.py',
+                'utopia/system/native_activity_contracts.py',
+                'utopia/optimization/native_code_trace.py'):
             original = subprocess.check_output(['git', 'show', f'{expected_source}:{name}'], cwd=ROOT)
             actual, local = hashlib.sha256(original).hexdigest(), file_sha256(ROOT / name)
             if actual != local:
@@ -226,6 +229,8 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                 evidence = runs[0]
                 proof = audit_native_run(root, draw, observation, evidence, plan['world'], classification,
                     expected_experiment=EXPERIMENT, expected_loss=losses[identity])
+                proof['activity_effect_proof'] = activity_effect_proof(
+                    root / 'worlds' / evidence['run_id'], declared[evidence['run_id']], evidence['checkpoint_path'])
                 measurement = proof['measurement']
                 evaluations, cross_scores = cross_score_measurement(measurement, losses, identity, observation['loss'])
                 if ([measurement] != observation['metadata']['measurements']
