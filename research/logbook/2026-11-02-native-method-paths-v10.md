@@ -54,3 +54,24 @@ edited. Run in`science-utopia-lab-experiments/native-method-paths-v10-a1`, raw
 lock. Full exact-source regression runs concurrently in a separate clean
 verification worktree. First actual G0 completes theta0.6/loss0.9/31 fresh
 replies, not improvement; B0 starts. No rule or objective is changed in response.
+
+All six actual forwards complete: G theta[.6,.6488091311838646,.7488091311838646],
+B theta[.65,.7250000000000001,.7625000000000001], both native loss paths
+[.9,.8166666666666665,.8166666666666665]. All steps and current/incumbent
+distinctions remain visible. The earliest historical0.8 incumbent is NOT beaten.
+Each arm spends93 fresh calls; total186 new/504logical/318replay. Shared
+historical93 post-prefix+53 unique prefix calls support the three training
+worlds; total unique support332, not project total. Forward elapsed606.43s.
+
+Independent read-only audit finds one reporting representation mismatch: the
+plan file has its own content hash while the same body embedded in evidence
+does not. Validate both seals and compare bodies, not their wrapper fields.
+No raw or forward code is edited. Later source/output-path guards are
+analysis-only. Final repeated audit is byte-identical, all110 raw files unchanged,
+all policy decisions/eligible histories/scheduled backwards/source/prefix/clock
+and original losses verified. Result content SHA
+`b6e221170c36250d60a199c55d34e550f65c6e0d1a87bce18300d1b530aef5b6`.
+The actual report-only path figure is visually checked at5.5in; horizontal
+marker offsets reveal overlapping identical loss paths without changing data.
+The full exact actual-source suite passes1772/6skips in875.93s, distinct from
+later reporting checks. Final paper rendering and release verification follow.

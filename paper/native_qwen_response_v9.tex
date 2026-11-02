@@ -18,7 +18,7 @@ The fixed development loss is the existing reviewed-utility proxy
   \label{eq:native-qwen-v9-loss}
 \end{equation}
 where $A$ is the number of accepted native decisions, $Q$ sums the arithmetic
-mean of raw reviewer scores for accepted decisions, and $R$ counts all native
+mean of native integer-parsed reviewer scores for accepted decisions, and $R$ counts all native
 review records.  No quality, fairness or participation veto is added; reject-all
 remains legal.  The sole optimized institution coordinate $\theta\in[0,1]$ is
 the evidence weight in a public review charter, paired with originality weight

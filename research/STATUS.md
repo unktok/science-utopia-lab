@@ -16,9 +16,16 @@ change, not merely an undersized gradient. The historical fit roundtrip passes
 with all211 original runtime blobs unchanged. Policies/diagnostic checks pass30
 overlapping tests; nine original-world SCRIPTED forwards and live-clock
 integration/source-guard QA pass4 tests. The independent auditor/plotter is
-implemented. Actual inference starts from clean`5ea52a5` in a separate pinned
-experiment worktree; full-source regression runs separately in parallel. There is no
-claim that smoothing will improve native loss or beat the black-box baseline.
+implemented. Actual inference completes6/6 from clean`5ea52a5` in a separate
+pinned experiment worktree: gradient weights[.6000,.6488,.7488], BB weights
+[.6500,.7250,.7625]; both actual losses[.9,.8167,.8167]. Both move but neither
+beats the shared historical best. [Independent audit](results/native-method-paths-v10-a1.json)
+reconstructs every decision/refit/backward and preserves all110 raw files;
+repeating it is byte-identical. Each arm uses93 fresh replies, total186 new/
+504 logical/318 replayed. Full exact-source regression passes1772/6skips in
+875.93s; later reporting fixes have a separate scope. Paper/PDF QA is pending.
+[Milestone](milestones/2026-11-02-native-method-paths-v10.md).
+No smoothing fidelity, superiority or causal scientific-benefit claim follows.
 
 ## Completed finite v9 loop: actual-Qwen response-aware institution gradient
 
