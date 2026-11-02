@@ -28,6 +28,21 @@ state. The normal new response cache stores these actual responses under its
 own current binding. The entire original researcher/paper/retrieval/review/
 publication/funding forward executes; no shorter or numeric replacement world.
 
+An advancing-clock native QA exposes one further original-world dependency:
+Year2 submission prompts render archived paper reviews including the operational
+`review_time` float. Replaying the same real answer still generates a new local
+wall timestamp, so response replay alone cannot reproduce the original input.
+Couple this metadata explicitly: for Year1 reviews only, invoke the ORIGINAL
+review insertion first, verify every non-`review_time` field against the exact
+anchor review identified by year/conference/paper/reviewer, then restore ONLY
+its original `review_time` from the sealed anchor Year1 checkpoint. Record
+original/current value and before/after record hashes as metadata provenance.
+Do not change any score, justification, paper identity, plan, resource, scientific
+year or decision; do not patch global clocks or normalize mismatching prompts.
+Year2 affected review timestamps remain newly generated. The existing original
+observation serializer's metadata exclusions are not broadened. This shares the
+observed administrative history rather than inventing an easier science world.
+
 The first request after the prefix must be actual Year2 review. That and all
 later replies are fresh fixed-weight Qwen calls. The variable charter is still
 created only after Year2 submissions/costs. Assert the actual pre-intervention

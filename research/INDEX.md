@@ -7,6 +7,9 @@ and results. New work uses the forward-only taxonomy below.
 ## Current state
 
 - [V9 actual-Qwen response-aware gradient protocol (new bounded goal)](protocols/campaigns/native-qwen-response-gradient-v9.md)
+- [V9 a3: actual common-history coupling before the intervention](protocols/campaigns/native-qwen-response-gradient-v9-a3.md)
+- [V9 a1 audited prefix drift and partial stop](results/native-qwen-response-v9-a1.json)
+- [V9 a2 audited partial stop](results/native-qwen-response-v9-a2.json)
 - [V9 implementation and experiment log](logbook/2026-11-02-native-qwen-gradient-v9.md)
 - [V8 objective-conditioned structure and native-response fidelity: closure ledger](milestones/2026-11-02-objective-structure-and-response-v8.md)
 - [Eight-world actual structural result and interpretation](results/native-objective-structure-v8-a2.md)

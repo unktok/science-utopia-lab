@@ -179,7 +179,8 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
     from utopia.system.native_review_identity import enable_review_identity_recording
     from utopia.agents.researcher_agents import UniversityResearcher
     from tests.runtime.test_portable_checkpoint_integration import DIRECTION
-    monkeypatch.setattr('time.time', lambda: 1234567890.)
+    if not coupled:
+        monkeypatch.setattr('time.time', lambda: 1234567890.)
     try:
         executor = DockerCodeExecutor(timeout=60.)
     except (OSError, CodeExecutionError):
@@ -244,6 +245,7 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
     # the prefix adapter; its source here is honestly labelled scripted QA.
     module.ACTUAL = 'scripted-fixture-not-native-results'
     module.MODEL = BINDING['model']
+    module.ANCHOR_SOURCE = 'SCRIPTED-RUNNER-QA-NOT-QWEN'
     anchor_calls, prepared = [], None
     if coupled:
         from utopia.optimization.native_response_prefix import prepare_common_prefix
@@ -252,8 +254,8 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
             years=2, corpus_years=4, record_wire=True, record_code=True)
         base = module.response_gradient_system(executor.image_id)
         anchor_system, _ = module.project_continuous(base, module.DECLARATIONS, {'evidence-weight': .2})
-        anchor_sim = anchor_factory(anchor_system, 42, 'scripted-original-anchor')
-        anchor_root = anchor_series/'worlds/scripted-original-anchor'
+        anchor_sim = anchor_factory(anchor_system, 42, 'calibration-0')
+        anchor_root = anchor_series/'worlds/calibration-0'
         enable_review_identity_recording(anchor_sim)
         try:
             anchor_sim.run()
@@ -269,7 +271,8 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
             assert prepared['anchor_classification'] == 'scripted-fixture-not-native-results'
             assert prepared['anchor_model'] == BINDING['model']
             module.save(anchor_series/'evidence.json', {'classification': module.ACTUAL,
-                'endpoints': [{'name': 'scripted-original-anchor', 'endpoint': anchor_endpoint}]})
+                'source_commit': anchor_factory.source_commit,
+                'endpoints': [{'name': 'calibration-0', 'endpoint': anchor_endpoint}]})
             args.common_prefix_anchor = anchor_root
         finally:
             anchor_sim.llm.response_cache.close()

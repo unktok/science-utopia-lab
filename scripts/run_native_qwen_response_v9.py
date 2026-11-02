@@ -31,6 +31,7 @@ EXPERIMENT = {'protocol': 'native-qwen-response-gradient-v9', 'role': 'developme
 CALIBRATION = [.2, .5, .8]
 UNUSED = [.35, .65]
 MODEL = 'qwen3:8b'
+ANCHOR_SOURCE = 'd5b08d64193c32bf05dec95e54ba53d2f1b8cab9'
 WORLD_NAMES = ['calibration-0', 'calibration-1', 'calibration-2', 'unused-0', 'unused-1', 'gradient-candidate']
 
 
@@ -105,6 +106,12 @@ def run(args):
         original = [r['endpoint'] for r in origin['endpoints'] if r['name'] == anchor.name]
         if len(original) != 1:
             raise ValueError('common prefix requires one completed actual anchor endpoint')
+        if (anchor.name != 'calibration-0'
+                or origin.get('source_commit') != ANCHOR_SOURCE
+                or origin.get('classification') != ACTUAL
+                or original[0]['world']['source_commit'] != origin['source_commit']
+                or original[0]['coordinate_values'] != {'evidence-weight': .2}):
+            raise ValueError('a3 requires the exact preregistered original a1/calibration-0 anchor')
         common_prefix = prepare_common_prefix(anchor, original[0])
     executor = DockerCodeExecutor()
     system = response_gradient_system(executor.image_id)
@@ -222,7 +229,9 @@ def run(args):
             evidence['endpoints'].append(row)
             save(evidence_path, evidence)
             print(json.dumps({'event': 'world-complete', 'name': name, 'theta': theta,
-                'loss': endpoint['native_loss'], 'replies': endpoint['response_cache_count'],
+                'loss': endpoint['native_loss'], 'logical_replies': endpoint['response_cache_count'],
+                'fresh_physical_replies': row['fresh_physical_replies'],
+                'historical_replays': row.get('replayed_response_count', 0),
                 'elapsed_seconds': row['elapsed_seconds']}), flush=True)
             return row
         except BaseException as error:

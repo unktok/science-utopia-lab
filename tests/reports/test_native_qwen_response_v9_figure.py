@@ -3,8 +3,17 @@ from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import pytest
+
+
+@pytest.fixture
+def tmp_path():
+    # Synthetic render assets MUST stay in the system temporary directory,
+    # including when the overall native QA has a durable --basetemp elsewhere.
+    with TemporaryDirectory(prefix='scienceutopia-v9-figure-test-') as directory:
+        yield Path(directory)
 
 from scripts.figures.native_qwen_response_v9 import ACTUAL,FIXTURE,NAMES,SCHEMA,create,figure_data
 from utopia.system.design_patch import digest

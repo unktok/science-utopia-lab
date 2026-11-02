@@ -14,11 +14,22 @@ interpolation checks and one pre-frozen gradient candidate. The charter changes
 only after final-year submissions. An opt-in payload renderer keeps causal IDs
 out of review input text, while semantic task receipts map heterogeneous actual
 replies through the original per-review integer parser and per-paper average.
-Eighty-nine focused checks pass (one old heavy duplicate QA deselected), including
-three scripted original-world integration worlds; this is not actual-Qwen evidence.
-Implementation-test setup failures are retained in the v9 log. Actual Qwen
-execution has not yet started at this source snapshot. Completion requires a
-truthful actual loop/report, not a promised fidelity pass or native improvement.
+The original actual-source d5b08d6 passes1642 regression tests/6skips; a later
+113-check focused suite also exercises an entire six-world scripted production
+profile. These scopes overlap, not additive, and are not Qwen evidence.
+Actual a1/a2 are cooperatively stopped and preserved: two complete worlds and
+two partial attempts,228 physical Qwen replies total. Actual pre-intervention
+histories differ, so no controlled response fit/gradient/fidelity is claimed.
+[A1 audit](results/native-qwen-response-v9-a1.json),
+[A2 audit](results/native-qwen-response-v9-a2.json).
+The [prospective a3 amendment](protocols/campaigns/native-qwen-response-gradient-v9-a3.md)
+couples each new full native execution to the same actual historical Qwen prefix,
+then generates affected review/later replies freshly. No numerical replacement
+world or fabricated teacher responses are used. Shared historical answers are
+logical replays, not new physical inferences or independent samples. Transport
+provenance, full native coupled-loop QA and independent audit are being connected
+before the actual a3 run. Completion requires a truthful actual loop/report,
+not a promised fidelity pass or native improvement.
 
 ## Completed finite v8 goal: structure, response representation, UI and paper
 
