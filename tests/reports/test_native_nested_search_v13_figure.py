@@ -28,7 +28,7 @@ def seal(value):
     return value
 
 
-def fixture(tmp_path, monkeypatch, *, invalid=False, failed=False):
+def fixture(tmp_path, monkeypatch, *, invalid=False, failed=False, close_profile=False):
     losses, arms = objective_specs(), {}
     world = {'source_commit': 'fixture-source', 'model_digest': 'fixture-only', 'corpus_sha256': 'fixture-only'}
     for arm_index, identity in enumerate(ARM_IDS):
@@ -39,6 +39,10 @@ def fixture(tmp_path, monkeypatch, *, invalid=False, failed=False):
             metrics = {key: {'status': 'measured', 'value': value} for key, value in (
                 ('native.accepted_decisions', slot+1), ('native.accepted_peer_score_sum', 3.*(slot+1)),
                 ('native.review_records', slot+4))}
+            if close_profile and arm_index == 1:
+                metrics = {key: {'status': 'measured', 'value': value} for key, value in zip(
+                    ('native.accepted_decisions', 'native.accepted_peer_score_sum', 'native.review_records'),
+                    ((6,20,6),(6,18.5,12),(6,12,4),(6,21,6))[slot])}
             measurement = {'run_id': suggestion.suggestion_id+'-s42', 'metrics': metrics}
             evaluation = evaluate_loss(losses[identity], [] if failed else [measurement])
             return Observation('observation-'+suggestion.suggestion_id, suggestion.suggestion_id,
@@ -217,3 +221,23 @@ def test_exact_audit_file_and_actual_flag_are_not_fixture_escape_hatches(tmp_pat
     seal(report)
     with pytest.raises(ValueError, match='synthetic'):
         figure_data(report, 'fixture-source', allow_synthetic=True)
+
+
+def test_close_same_x_native_profiles_have_nonoverlapping_labels(tmp_path, monkeypatch):
+    report = fixture(tmp_path/'fixture', monkeypatch, close_profile=True)
+    audit = tmp_path/'TEST-ONLY-close-profile.json'
+    write_json_atomic(audit, report)
+    figures, original = [], Figure.savefig
+    def save(figure, path, *args, **kwargs):
+        if Path(path).suffix == '.png':
+            figures.append(figure)
+        return original(figure, path, *args, **kwargs)
+    monkeypatch.setattr(Figure, 'savefig', save)
+    render(report, tmp_path/'TEST-ONLY-close-profile', audit_path=audit,
+        expected_source='fixture-source', allow_synthetic=True)
+    figure = figures[0]
+    figure.canvas.draw()
+    boxes = [text.get_window_extent(figure.canvas.get_renderer()) for text in figure.axes[-1].texts]
+    collisions = [(figure.axes[-1].texts[i].get_text(), figure.axes[-1].texts[j].get_text())
+        for i, first in enumerate(boxes) for j, second in enumerate(boxes) if j > i and first.overlaps(second)]
+    assert not collisions, collisions

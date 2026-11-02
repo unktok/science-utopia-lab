@@ -276,8 +276,13 @@ def _value(value):
 
 def _table(axis, headers, labels, values, *, widths=None, bbox=None):
     axis.axis('off')
-    table = axis.table(cellText=values, rowLabels=labels, colLabels=headers,
-        loc='center', cellLoc='center', colWidths=widths, bbox=bbox)
+    # Row-label auto-sizing varies between Agg/SVG renderers. An ordinary,
+    # explicitly sized first column keeps the actual PNG and vector identical
+    # in layout, rather than letting labels escape the native paper margin.
+    label_share = .28 if any(len(label) > 5 for label in labels) else .18
+    columns = [label_share, *([(1-label_share)/len(headers)]*len(headers))]
+    table = axis.table(cellText=[[label, *row] for label, row in zip(labels, values)],
+        colLabels=['', *headers], loc='center', cellLoc='center', colWidths=columns, bbox=bbox)
     table.auto_set_font_size(False)
     table.set_fontsize(7.2)
     table.scale(1, 1.26)
@@ -288,6 +293,24 @@ def _table(axis, headers, labels, values, *, widths=None, bbox=None):
         if row == 0:
             cell.set_height(cell.get_height()*1.7)
     return table
+
+
+def _separate_crossscore_labels(axis, renderer):
+    """Deterministic annotation-only separation in physical point units."""
+    placed = []
+    bounds = axis.get_window_extent(renderer)
+    for text in axis.texts:
+        x, y = text.get_position()
+        for delta in (0, 10, -10, 20, -20, 30, -30, 40, -40, 50, -50):
+            text.set_position((x, y+delta))
+            box = text.get_window_extent(renderer).expanded(1.05, 1.1)
+            if (box.y0 >= bounds.y0 and box.y1 <= bounds.y1
+                    and box.x0 >= 0 and box.x1 <= axis.figure.bbox.x1
+                    and not any(box.overlaps(other) for other in placed)):
+                placed.append(box)
+                break
+        else:
+            raise ValueError('cross-score labels cannot fit native paper bounds without collision')
 
 
 def render(report, output, *, audit_path, expected_source=None, allow_synthetic=False):
@@ -367,10 +390,14 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
                 if row['own_loss'] is not None:
                     grouped.setdefault(tuple(row['cross_scores'][k] for k in ARM_IDS), []).append(
                         ('0a', '0b', 'U', '1')[row['slot']])
-            for point_index, ((x, y), tags) in enumerate(grouped.items()):
+            points = sorted(grouped.items(), key=lambda item: (item[0][1], item[0][0]))
+            for point_index, ((x, y), tags) in enumerate(points):
                 ax.scatter(x, y, color=COLORS[index], marker=('o', 's')[index], s=24,
                     label=('Throughput', 'Efficiency')[index] if point_index == 0 else None)
-                leftward = x >= midpoint
+                # Close vertical profiles otherwise stack short labels directly
+                # on top of one another. Alternate sides in the second arm;
+                # this affects annotation only, never coordinates or scores.
+                leftward = (point_index % 2 == 1) if index else x >= midpoint
                 ax.annotate('/'.join(tags), (x,y), xytext=(-3 if leftward else 3, 5+index*9),
                     textcoords='offset points', ha='right' if leftward else 'left',
                     fontsize=7.2, color=COLORS[index])
@@ -391,6 +418,8 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
             'Cross-score labels: 0a/0b/U/1. Development worlds, not held-out or causal benefit.',
             ha='center', fontsize=7.2, color='#435568')
         fig.tight_layout(rect=(.025,.11,.99,.96), h_pad=2.5, w_pad=2.0)
+        fig.canvas.draw()
+        _separate_crossscore_labels(axes[2,1], fig.canvas.get_renderer())
         fig.canvas.draw()
         output.parent.mkdir(parents=True, exist_ok=True)
         files = []
