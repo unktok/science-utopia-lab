@@ -7,7 +7,7 @@ import { nestedFixture, failedNestedFixture } from '../test/nestedFoundryFixture
 
 const args=Object.fromEntries(process.argv.slice(2).map(value=>{const[key,...rest]=value.replace(/^--/,'').split('=');return[key,rest.join('=')];}));
 const mode=args.mode??'unavailable',scenario=args.scenario??'complete',port=Number(args.port??4343),base=`http://127.0.0.1:${port}`;
-if(!['actual','fixture','unavailable'].includes(mode)||!['complete','zero-replies'].includes(scenario)||scenario!=='complete'&&mode!=='fixture'||!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid browser QA mode/scenario/port');
+if(!['actual','fixture','unavailable'].includes(mode)||!['complete','zero-replies','encoded-system'].includes(scenario)||scenario!=='complete'&&mode!=='fixture'||!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid browser QA mode/scenario/port');
 const sha=value=>createHash('sha256').update(value).digest('hex'),sleep=ms=>new Promise(done=>setTimeout(done,ms));
 const output=resolve(args.output??(mode==='fixture'?await mkdtemp(join(tmpdir(),'noctiluca-v13-fixture-qa-')):`screenshots/nested-foundry-v13-${mode}-qa`));
 if(mode==='fixture'&&!output.startsWith(`${resolve(tmpdir())}/`))throw new Error('Synthetic captures must remain temporary');
@@ -23,7 +23,9 @@ const profile=await mkdtemp(join(tmpdir(),'noctiluca-v13-chrome-'));let vite,chr
 try {
   await mkdir(output,{recursive:true});const overrides={};
   if(mode==='fixture'){
-    const audit=scenario==='zero-replies'?failedNestedFixture():nestedFixture(),text=`${JSON.stringify(audit)}\n`,source=join(output,'SCRIPTED-audit.json');await writeFile(source,text);
+    const audit=scenario==='zero-replies'?failedNestedFixture():nestedFixture();
+    if(scenario==='encoded-system')audit.arms[audit.objective_order[1]].observations.at(-1).system.mechanisms[1].parameters.exact_native_counter='UNSAFE_SYSTEM_INTEGER_TOKEN';
+    const text=`${JSON.stringify(audit).replace('"UNSAFE_SYSTEM_INTEGER_TOKEN"','1122442242526474860')}\n`,source=join(output,'SCRIPTED-audit.json');await writeFile(source,text);
     execFileSync(process.execPath,['scripts/export-nested-foundry-v13.mjs',`--audit=${source}`,`--output=${output}`,`--expected-audit-sha256=${sha(text)}`,`--expected-source=${audit.source_commit}`,'--allow-synthetic-temp-only']);
     for(const name of ['native-nested-search-v13.availability.json','native-nested-search-v13.ui.json','native-nested-search-v13.ui-receipt.json'])overrides[name]=await readFile(join(output,name));
   }
@@ -54,6 +56,7 @@ try {
       if(scenario==='complete')await until(()=>cdp.eval(`document.querySelector('#foundry-branch-status').textContent.includes('LOCAL STRUCTURAL PRECHECK PASS')`),'local structural branch preparation');
       const interaction=await cdp.eval(`({stage:JSON.parse(document.querySelector('#raw-row').textContent).stage,draw:JSON.parse(document.querySelector('#raw-row').textContent).draw_index,sourceNodes:document.querySelectorAll('.circuit-node').length,policyStages:document.querySelectorAll('.nested-stage-grid article').length,branchStatus:document.querySelector('#foundry-branch-status').textContent,draft:document.querySelector('#foundry-draft').value,prepared:document.querySelector('#foundry-prepared').textContent,workbenchHidden:document.querySelector('#foundry-workbench').hidden,eventPosition:document.querySelector('#nested-event-position').textContent})`);
       if(interaction.stage!=='redesign'||interaction.policyStages!==3||scenario==='complete'&&(!interaction.prepared||interaction.workbenchHidden!==(mode==='fixture'))||scenario==='zero-replies'&&(interaction.sourceNodes!==0||interaction.prepared))throw new Error(`Interaction: ${JSON.stringify(interaction)}`);
+      if(scenario==='encoded-system'&&(interaction.prepared||!interaction.workbenchHidden||!interaction.branchStatus.includes('LOSSLESS SERVER-SIDE IMPORT REQUIRED')||!await cdp.eval(`document.querySelector('#foundry-check').disabled&&document.querySelector('#foundry-draft').disabled`)))throw new Error('Encoded native integers were silently reinterpreted or handed off');
       if(capture.id==='draft'&&scenario==='complete'){
         const exact=JSON.parse(interaction.prepared);if(JSON.stringify(exact.system)!==JSON.stringify(JSON.parse(interaction.draft))||exact.no_execution!==true||exact.no_adoption!==true)throw new Error('Prepared branch lost exact local draft or scope');
       }

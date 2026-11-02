@@ -80,7 +80,13 @@ The authoritative runtime/compiler validation is still separate.
 After a local check, download the exact branch JSON or explicitly open the
 existing `native.html` workbench. A source/hash-bound browser-session handoff
 imports the **same edited SystemSpec, original observed parent and exact
-selected LossSpec**. Editing invalidates the prepared export/link. Async import
+selected LossSpec**. The workbench re-verifies the actual export's payload
+receipt and compares its source binding, observed ID/native fingerprint,
+parent UI snapshot and full LossSpec to the prepared branch. A valid local
+branch-file hash alone is insufficient provenance. This is consistency with
+the immutable UI export, not server-validated native provenance or provider-
+authenticated authorship; native fingerprinting is not approximated using
+JavaScript's different floating-point JSON spelling. Editing invalidates the prepared export/link. Async import
 does not overwrite intervening edits. The workbench requires runtime validation,
 an explicit mission and renewed compute consent before its existing job API
 can dispatch anything. No consent, job, observed outcome, live-society binding
@@ -95,6 +101,10 @@ itself contains unsafe integer tokens, browser branch preparation fails closed:
 a lossless server-side import is required instead of changing its semantics to
 rounded numbers or decimal strings. Receipt/seed identity fields remain fully
 inspectable even in that case.
+New unsafe integer lexical tokens typed into the JSON editor are also rejected
+before JavaScript can round them. Existing quoted strings and source-code text
+are never implicitly decoded. A hand-edited local file cannot bypass the
+selected observed SystemSpec's exact-integer metadata check at workbench import.
 
 ## Verification
 
@@ -118,6 +128,7 @@ watermarked synthetic browser checks are allowed:
 ```sh
 node scripts/verify-nested-foundry-browser.mjs --mode=fixture
 node scripts/verify-nested-foundry-browser.mjs --mode=fixture --scenario=zero-replies
+node scripts/verify-nested-foundry-browser.mjs --mode=fixture --scenario=encoded-system
 node scripts/verify-nested-foundry-browser.mjs --mode=unavailable --output=/tmp/v13-unavailable-qa
 ```
 

@@ -5,7 +5,7 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { NESTED_OBJECTIVES, parseNestedFoundry, verifyNestedFoundry } from '../src/nestedFoundryContract';
 import { nativeRecordedEvents } from '../src/nestedFoundrySignal';
-import { prepareFoundryBranch, readPreparedFoundryBranch } from '../src/foundryBranch';
+import { assertUnencodedSystem, parseExactDraft, prepareFoundryBranch, readPreparedFoundryBranch } from '../src/foundryBranch';
 import { recordedParentSystem } from '../src/openRedesignContract';
 import { failedNestedFixture, nestedFixture } from './nestedFoundryFixture';
 import { redesignHash } from './openRedesignFixture';
@@ -59,13 +59,23 @@ describe('continuous nested Institution Foundry',()=>{
     const d=await verifyNestedFoundry(text,receipt,true);expect(d.arms[NESTED_OBJECTIVES[0]].records[0].request.rng_seed).toBe('1122442242526474860');expect(d.numeric_encoding.paths).toContain(`/arms/${NESTED_OBJECTIVES[0]}/records/0/request/rng_seed`);
   });
   it('creates an exact local branch using existing structural helpers without mutating evidence or narrowing mechanism families',async()=>{
-    const audit=nestedFixture(),row=audit.arms[NESTED_OBJECTIVES[0]].observations[0],parent=structuredClone(row.system),edited=structuredClone(parent);edited.mechanisms[1].parameters.new_parameter=4;
-    const origin={source_binding:{source_commit:audit.source_commit},objective_id:NESTED_OBJECTIVES[0],observation_id:row.observation_id,system_fingerprint:row.system_fingerprint};
-    const branch=prepareFoundryBranch(origin,parent,JSON.stringify(edited),audit.loss_specs[NESTED_OBJECTIVES[0]]),text=JSON.stringify(branch);
+    const {text:payload,receipt}=exporting(),evidence=await verifyNestedFoundry(payload,receipt,true),row=evidence.arms[NESTED_OBJECTIVES[0]].observations[0],parent=structuredClone(row.system),edited=structuredClone(parent);edited.mechanisms[1].parameters.new_parameter=4;
+    // A temporary unit-only context exercises the actual handoff guard. No
+    // synthetic classification or bytes are published as actual evidence.
+    evidence.classification='actual-native-qwen-nested-search-development-v13';
+    const origin={source_binding:evidence.source_binding,objective_id:NESTED_OBJECTIVES[0],observation_id:row.observation_id,system_fingerprint:row.system_fingerprint};
+    const branch=prepareFoundryBranch(origin,parent,JSON.stringify(edited),evidence.loss_specs[NESTED_OBJECTIVES[0]]),text=JSON.stringify(branch);
     expect(branch.state).toBe('local-unexecuted-draft');expect(branch.no_adoption).toBe(true);expect(branch.system).toEqual(edited);expect(branch.parent_system).toEqual(parent);expect(row.system).toEqual(parent);
-    expect((await readPreparedFoundryBranch(text,redesignHash(text))).system).toEqual(edited);
-    await expect(readPreparedFoundryBranch(`${text} `,redesignHash(text))).rejects.toThrow('hash');
+    expect((await readPreparedFoundryBranch(text,redesignHash(text),evidence)).system).toEqual(edited);
+    await expect(readPreparedFoundryBranch(`${text} `,redesignHash(text),evidence)).rejects.toThrow('hash');
+    await expect(readPreparedFoundryBranch(text,redesignHash(text))).rejects.toThrow('integrity alone is not provenance');
     expect(()=>prepareFoundryBranch(origin,parent,JSON.stringify({...edited,connections:[{source_mechanism:'MISSING'}]}),{})).toThrow('structural');
+    for(const change of [(b:any)=>b.origin.source_binding.report_file_sha256='0'.repeat(64),(b:any)=>b.origin.system_fingerprint='0'.repeat(64),(b:any)=>b.parent_system.metadata={changed:true},(b:any)=>b.loss_spec.per_run.terms[0].coefficient=999]){
+      const tampered=structuredClone(branch);change(tampered);const bytes=JSON.stringify(tampered);
+      await expect(readPreparedFoundryBranch(bytes,redesignHash(bytes),evidence)).rejects.toThrow('differs from the verified');
+    }
+    const encoded=structuredClone(evidence);encoded.numeric_encoding.paths=[`/arms/${NESTED_OBJECTIVES[0]}/observations/0/system/initial_state/large_counter`];
+    await expect(readPreparedFoundryBranch(text,redesignHash(text),encoded)).rejects.toThrow('LOSSLESS SERVER-SIDE IMPORT REQUIRED');
   });
   it('never turns branch preparation into experiment execution or society adoption',()=>{
     const source=readFileSync(new URL('src/foundryBranch.ts',ui),'utf8');expect(source).not.toContain('fetch(');expect(source).toContain('FIXTURE HANDOFF DISABLED');expect(source).toContain('LOCAL UNEXECUTED DRAFT');expect(source).not.toContain('adoption-request');
@@ -82,5 +92,14 @@ describe('continuous nested Institution Foundry',()=>{
   });
   it('retains editor custom families and keeps runtime validation separate',()=>{
     const editor=readFileSync(new URL('src/nativeDesignGraphView.ts',ui),'utf8');expect(editor).toContain('allowOpenFamilies:true');expect(editor).toContain('DECLARED CUSTOM FAMILY');expect(editor).toContain('still not server-validated or executed');
+  });
+  it('blocks encoded native system integers rather than silently treating them as native strings',()=>{
+    expect(()=>assertUnencodedSystem(['/system/parameters/large_integer'])).toThrow('LOSSLESS SERVER-SIDE IMPORT REQUIRED');expect(()=>assertUnencodedSystem([])).not.toThrow();
+  });
+  it('rejects newly typed unsafe integer tokens before rounding, without decoding existing strings or source',()=>{
+    expect(()=>parseExactDraft('{"counter":1122442242526474860}')).toThrow('Unsafe integer draft token');
+    expect(()=>parseExactDraft('{"counter":-1122442242526474860}')).toThrow('Unsafe integer draft token');
+    expect(parseExactDraft('{"counter":"1122442242526474860","source":"value=1122442242526474860","float":1e20}')).toEqual({counter:'1122442242526474860',source:'value=1122442242526474860',float:1e20});
+    expect(parseExactDraft('{"counter":9007199254740991}').counter).toBe(9007199254740991);
   });
 });

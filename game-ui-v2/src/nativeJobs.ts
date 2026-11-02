@@ -2,6 +2,7 @@
 import { initializeNativeMission, type NativeMissionController } from "./nativeMissionView";
 import { NativeAsyncGuard, snapshotCompletedJob } from "./nativeAsyncGuard";
 import { FOUNDRY_BRANCH_KEY, readPreparedFoundryBranch } from './foundryBranch';
+import { verifyNestedFoundry } from './nestedFoundryContract';
 const item = <T extends HTMLElement>(id: string): T => {
   const node = document.getElementById(id);
   if (!node) throw new Error(`Missing design workbench element ${id}`);
@@ -39,11 +40,16 @@ export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence
       void (async () => {try {
         const text=sessionStorage.getItem(FOUNDRY_BRANCH_KEY);
         if(!text)throw new Error('Prepared Foundry draft is not present in this browser session; no fallback parent substituted');
-        const branch=await readPreparedFoundryBranch(text,preparedHash);
+        // A local byte hash is not provenance. Recheck the independently bound
+        // actual static export before accepting its observed parent or loss.
+        const [payload,receipt]=await Promise.all([fetch('./data/native-nested-search-v13.ui.json'),fetch('./data/native-nested-search-v13.ui-receipt.json')]);
+        if(!payload.ok||!receipt.ok)throw new Error('Actual audited Foundry export unavailable; no unverified branch imported');
+        const evidence=await verifyNestedFoundry(await payload.text(),await receipt.json());
+        const branch=await readPreparedFoundryBranch(text,preparedHash,evidence);
         if(copyTicket!==copyRevision)return;
         parent=branch.parent_system;system.value=JSON.stringify(branch.system,null,2);loss.value=JSON.stringify(branch.loss_spec,null,2);
         item<HTMLInputElement>('design-seed').value=String(branch.seed);item<HTMLInputElement>('design-years').value=String(branch.years);
-        item('design-parent').textContent=`UNEXECUTED FOUNDRY BRANCH / observed parent ${branch.origin.observation_id} / exact audit binding preserved in downloaded branch. Validate the runtime, lock a mission and give renewed compute consent before any job.`;
+        item('design-parent').textContent=`UNEXECUTED FOUNDRY BRANCH / observed parent ${branch.origin.observation_id} / parent and loss match the hash-verified UI export; not server-validated provenance or authenticated authorship. Validate the runtime, lock a mission and give renewed compute consent before any job.`;
         system.dispatchEvent(new Event('input',{bubbles:true}));loss.dispatchEvent(new Event('input',{bubbles:true}));changed();
       }catch(failure){error(failure);}})();return;
     }

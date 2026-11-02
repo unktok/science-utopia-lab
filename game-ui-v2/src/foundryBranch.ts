@@ -1,5 +1,6 @@
 import { parseEditableSystemSpec, structuralCheck } from './nativeDesignGraph';
 import { sha256Text } from './methodObservatoryContract';
+import { stableStringify } from './hash';
 
 export const FOUNDRY_BRANCH_KEY = 'scienceutopia.foundry.prepared-branch.v13';
 export interface PreparedFoundryBranch {
@@ -10,25 +11,49 @@ export interface PreparedFoundryBranch {
   seed: number; years: number; no_execution: true; no_adoption: true;
 }
 
+export function assertUnencodedSystem(paths:readonly string[]):void {
+  if(paths.length)throw new Error('EXACT SYSTEMSPEC CONTAINS UNSAFE INTEGER TOKENS / LOSSLESS SERVER-SIDE IMPORT REQUIRED / NO ROUNDED DRAFT OR HANDOFF CREATED');
+}
+// Reject unsafe integer lexical tokens before JSON.parse can irreversibly round
+// them. Decimal strings remain strings; neither this helper nor the workbench
+// silently decodes audit metadata into a different native JSON type.
+export function parseExactDraft(text:string):any {
+  return JSON.parse(text,(_key,value,context?:{source?:string})=>{
+    if(typeof value==='number'&&!Number.isFinite(value))throw new Error('Non-finite draft number');
+    if(typeof value==='number'&&!Number.isSafeInteger(value)&&Number.isInteger(value)
+      &&(!context?.source||/^-?[0-9]+$/.test(context.source)))throw new Error('Unsafe integer draft token requires a lossless server-side decoder; no rounded handoff created');
+    return value;
+  });
+}
 // A structural precheck is not runtime validation, source execution, or adoption.
-export function prepareFoundryBranch(origin: PreparedFoundryBranch['origin'], parent: Record<string, any>, systemText: string, loss: Record<string, any>): PreparedFoundryBranch {
-  const system = parseEditableSystemSpec(JSON.parse(systemText));
+export function prepareFoundryBranch(origin: PreparedFoundryBranch['origin'], parent: Record<string, any>, systemText: string, loss: Record<string, any>,unsafeSystemIntegerPaths:readonly string[]=[]): PreparedFoundryBranch {
+  assertUnencodedSystem(unsafeSystemIntegerPaths);
+  const exact=parseExactDraft(systemText),system = parseEditableSystemSpec(exact);
   const checked = structuralCheck(system,{allowOpenFamilies:true});
   if (!checked.valid) throw new Error(`Local structural check failed: ${checked.errors.join('; ')}`);
-  if (!origin.observation_id || !/^[a-f0-9]{64}$/.test(origin.system_fingerprint)) throw new Error('Observed parent identity required');
+  if (!origin.observation_id || !/^[a-f0-9]{64}$/.test(origin.system_fingerprint)||origin.objective_id!==loss.id
+      ||!/^[a-f0-9]{40}$/.test(String(origin.source_binding?.source_commit))
+      ||['report_file_sha256','report_content_sha256'].some(key=>!/^[a-f0-9]{64}$/.test(String(origin.source_binding?.[key])))) throw new Error('Observed parent/source/loss identity required');
   // Preserve the exact edited JSON object, including absent optional fields:
   // parseEditableSystemSpec normalizes only its temporary checking copy.
   return structuredClone({schema:'scienceutopia.foundry-prepared-branch.v13',state:'local-unexecuted-draft',origin,parent_system:parent,
-    system:JSON.parse(systemText),loss_spec:loss,seed:42,years:2,no_execution:true,no_adoption:true});
+    system:exact,loss_spec:loss,seed:42,years:2,no_execution:true,no_adoption:true});
 }
 
-export async function readPreparedFoundryBranch(text: string, expectedHash: string): Promise<PreparedFoundryBranch> {
+export async function readPreparedFoundryBranch(text: string, expectedHash: string, verifiedEvidence?:Record<string,any>): Promise<PreparedFoundryBranch> {
   if (!/^[a-f0-9]{64}$/.test(expectedHash) || await sha256Text(text) !== expectedHash) throw new Error('Prepared draft hash differs');
-  const branch = JSON.parse(text) as PreparedFoundryBranch;
+  const branch = parseExactDraft(text) as PreparedFoundryBranch;
   if (branch.schema !== 'scienceutopia.foundry-prepared-branch.v13' || branch.state !== 'local-unexecuted-draft'
       || branch.no_execution !== true || branch.no_adoption !== true || branch.seed !== 42 || branch.years !== 2
       || !branch.loss_spec || typeof branch.loss_spec !== 'object' || !branch.parent_system || !branch.origin?.source_binding) throw new Error('Unsupported prepared draft');
-  prepareFoundryBranch(branch.origin, branch.parent_system, JSON.stringify(branch.system), branch.loss_spec);
+  if(!verifiedEvidence||verifiedEvidence.classification!=='actual-native-qwen-nested-search-development-v13')throw new Error('A hash-verified actual Foundry export is required; draft byte integrity alone is not provenance');
+  const origin=branch.origin,arm=verifiedEvidence.arms?.[origin.objective_id],index=arm?.observations?.findIndex((row:Record<string,any>)=>row.observation_id===origin.observation_id),row=index===undefined||index<0?undefined:arm.observations[index];
+  if(!row||row.status!=='complete'||row.system_fingerprint!==origin.system_fingerprint
+      ||stableStringify(origin.source_binding)!==stableStringify(verifiedEvidence.source_binding)
+      ||stableStringify(branch.parent_system)!==stableStringify(row.system)
+      ||stableStringify(branch.loss_spec)!==stableStringify(verifiedEvidence.loss_specs?.[origin.objective_id]))throw new Error('Prepared parent/source/loss differs from the verified observed UI snapshot');
+  const encoded=(verifiedEvidence.numeric_encoding?.paths??[]).filter((path:string)=>path.startsWith(`/arms/${origin.objective_id}/observations/${index}/system/`));
+  prepareFoundryBranch(branch.origin, branch.parent_system, JSON.stringify(branch.system), branch.loss_spec,encoded);
   return branch;
 }
 
@@ -41,7 +66,7 @@ export function initializeFoundryBranch(container: HTMLElement, selected: () => 
   get('foundry-copy').addEventListener('click',()=>{
     const value=selected();invalidate();captured=null;editor.value='';editor.disabled=true;check.disabled=true;
     if (!value.row.system || value.row.status!=='complete' || !value.row.observation_id) {get('foundry-branch-status').textContent='NO COMPLETE OBSERVED SYSTEM TO COPY / FAILURE REMAINS NULL';return;}
-    if(value.unsafeSystemIntegerPaths.length){captured=null;editor.disabled=true;check.disabled=true;get('foundry-branch-status').textContent='EXACT SYSTEMSPEC CONTAINS UNSAFE INTEGER TOKENS / LOSSLESS SERVER-SIDE IMPORT REQUIRED / NO ROUNDED DRAFT OR HANDOFF CREATED';return;}
+    try{assertUnencodedSystem(value.unsafeSystemIntegerPaths);}catch(error){get('foundry-branch-status').textContent=error instanceof Error?error.message:String(error);return;}
     captured=structuredClone(value);editor.value=JSON.stringify(captured.row.system,null,2);editor.disabled=false;check.disabled=false;
     get('foundry-branch-status').textContent=`LOCAL UNEXECUTED DRAFT FROM ${captured.row.observation_id} / AUDIT UNCHANGED${captured.fixture?' / SCRIPTED UI FIXTURE':''}`;
   });
@@ -49,7 +74,7 @@ export function initializeFoundryBranch(container: HTMLElement, selected: () => 
   check.addEventListener('click',()=>{void(async()=>{try{
     if(!captured)throw new Error('Copy an observed system first');
     const ticket=revision,source=editor.value;
-    const branch=prepareFoundryBranch({source_binding:captured.binding,objective_id:captured.objective,observation_id:captured.row.observation_id,system_fingerprint:captured.row.system_fingerprint},captured.row.system,source,captured.loss);
+    const branch=prepareFoundryBranch({source_binding:captured.binding,objective_id:captured.objective,observation_id:captured.row.observation_id,system_fingerprint:captured.row.system_fingerprint},captured.row.system,source,captured.loss,captured.unsafeSystemIntegerPaths);
     const text=`${JSON.stringify(branch,null,2)}\n`,digest=await sha256Text(text);
     if(ticket!==revision||source!==editor.value)return;
     prepared=text;get('foundry-prepared').textContent=text;download.disabled=false;
