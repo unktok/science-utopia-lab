@@ -182,8 +182,8 @@ def build_figure():
     optimizer = panel('optimizer', (.300, .050, .400, .132), C['amber_bg'], '#E5CFAE')
     text(.5, .158, 'HOW TO SEARCH?', 7.5, C['amber'], 'bold', owner='optimizer')
     text(.5, .128, 'Black-box     Gradients     Hybrid', 8.6, weight='bold', owner='optimizer')
-    text(.5, .102, 'Differentiable representations of the same world', 6.7, C['muted'], owner='optimizer')
-    text(.5, .076, 'Whole-world backprop: research target', 6.7, C['muted'], owner='optimizer')
+    text(.5, .102, 'Score, pathwise and surrogate estimates', 6.7, C['muted'], owner='optimizer')
+    text(.5, .076, 'Differentiability is a tool, not a prerequisite', 6.7, C['muted'], owner='optimizer')
     route([(.125, .385), (.125, .128), port(optimizer, 'left', along=(.128-optimizer.y)/optimizer.height)], C['amber'])
     text(.141, .260, 'Declared\nloss $L$', 7.5, C['amber'], ha='left')
     route([port(outcomes, 'left', along=(.486-outcomes.y)/outcomes.height), (.737, .486),
@@ -216,6 +216,7 @@ def make_figure(output=None):
             'caption_sha256': hashlib.sha256((ROOT / 'paper/research_program_concept.tex').read_bytes()).hexdigest(),
             'design_freedoms': ['parameters', 'algorithms-source', 'mechanisms-protocols', 'wiring-order'],
             'standalone_game_ui_node': False, 'whole_world_backpropagation': 'research-target-not-established-result',
+            'whole_world_differentiability_required': False,
             'useful_autonomous_invention': 'research-target-not-established-result',
             'outputs': {output.with_suffix(s).name: hashlib.sha256(output.with_suffix(s).read_bytes()).hexdigest()
                 for s in ('.pdf', '.png', '.svg')}}

@@ -43,3 +43,28 @@ No v11 actual-Qwen inference has started at this entry. The local researcher
 model digest remains500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41.
 Freeze the reviewed clean source in a separate experiment tree next. Prior
 v8/v9/v10 source and all raw outputs are untouched.
+
+## Frozen source and first actual execution
+
+Actual source pins`acf3a2e4b995f8a04f4b0b56011a7051fe73a112` in a detached clean
+experiment worktree. Initial inbox setup creates zero worlds/replies. Root
+authors both saved generation0 requests with the disclosed helper, independently
+re-reads the exact saved files, verifies each request hash, compiles both
+reachable algorithms and both planned draws, and verifies equal definitions
+across methods. Both IID initial draws select mean aggregation, with cutoffs
+3.5837825665601675 and3.695329425804186. They are never rerolled to force
+algorithmic diversity. Actual physical trajectories are separate, not replays.
+
+The first full native world completes with92 researcher replies and loss
+0.7833333333333337; this is one observation, not an estimator/method comparison.
+Its batch is not complete yet and no second-generation fit/feedback has run.
+Full source-bound regression is running in a separate clean verification tree.
+
+The root catches a reporting-only publication mismatch: the newly updated
+concept caption was not rebound in the tracked figure manifest before the
+actual source pin. Preserve the exact-source full-test outcome rather than
+editing the experiment. Reporting source regenerates the conceptual assets
+with the clarified optional-differentiability label and correct caption hashes;
+four figure/layout/binding checks pass2.28s. No native runtime blob or raw
+evidence is changed by this publication fix. The final source-bound report
+must distinguish that original full-suite scope from the corrected guard run.

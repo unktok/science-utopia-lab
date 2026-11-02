@@ -17,7 +17,7 @@ def test_program_concept_is_stable_vector_and_raster(tmp_path):
         assert first.with_suffix(suffix).read_bytes() == second.with_suffix(suffix).read_bytes()
     svg = first.with_suffix('.svg').read_text()
     for label in ('Composable, not fixed stages', 'Choose the objective',
-            'Scientific system', 'Whole-world backprop: research target',
+            'Scientific system', 'Differentiability is a tool, not a prerequisite',
             'Independent metrics', 'Tune values, keep the rule',
             'Rewrite executable rules', 'Rewire information flows', 'Conceptual'):
         assert label in svg
@@ -69,6 +69,7 @@ def test_tracked_concept_assets_caption_and_deliverable_match_manifest():
     directory = root / 'paper/figures/program-concept'
     manifest = json.loads((directory / 'manifest.json').read_text())
     assert manifest['standalone_game_ui_node'] is False
+    assert manifest['whole_world_differentiability_required'] is False
     assert len(manifest['design_freedoms']) == 4
     for key in ('generator', 'caption'):
         assert hashlib.sha256((root / manifest[key]).read_bytes()).hexdigest() == manifest[key+'_sha256']

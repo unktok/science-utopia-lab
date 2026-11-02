@@ -1284,10 +1284,10 @@ L 264.78393 244.955034
     <text style="font-weight: 700; font-size: 8.6px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #253346" x="230.4" y="325.473626" transform="rotate(-0 230.4 325.473626)">Black-box     Gradients     Hybrid</text>
    </g>
    <g id="text_36">
-    <text style="font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #637285" x="230.4" y="334.483712" transform="rotate(-0 230.4 334.483712)">Differentiable representations of the same world</text>
+    <text style="font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #637285" x="230.4" y="334.483712" transform="rotate(-0 230.4 334.483712)">Score, pathwise and surrogate estimates</text>
    </g>
    <g id="text_37">
-    <text style="font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #637285" x="230.4" y="343.984487" transform="rotate(-0 230.4 343.984487)">Whole-world backprop: research target</text>
+    <text style="font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #637285" x="230.4" y="343.984487" transform="rotate(-0 230.4 343.984487)">Differentiability is a tool, not a prerequisite</text>
    </g>
    <g id="text_38">
     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; fill: #a56a24" transform="translate(68.943053 273.27055)">Declared</text>

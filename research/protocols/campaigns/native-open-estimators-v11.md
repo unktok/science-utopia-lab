@@ -58,7 +58,10 @@ source/graph and sampled coordinates plus explicit learned weights. They never
 include the other arm's outcomes or unobserved future outcomes. A coordinate's
 semantic compatibility with training observations must be explicit; a changed
 vocabulary does not silently inherit a fitted response model or logits. The
-control variate is fixed before drawing the current scored batch. Its fit loss
+control variate is determined exclusively by the sealed preceding history and
+fixed fitting rule, independently of the current scored batch. Deterministic
+replay may recompute its coefficients after execution; this does not allow any
+current observation or outcome to enter the fit. Its fit loss
 is not the native optimization loss and does not select a hidden merit gate.
 
 ## Execution and persistence
