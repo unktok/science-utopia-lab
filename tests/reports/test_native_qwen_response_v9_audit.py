@@ -13,6 +13,7 @@ from scripts.analyze_native_qwen_response_v9 import (
     RAW_SCHEMA,
     UNUSED,
     _endpoint_sequence,
+    _prefix_control_status,
     analyze,
     markdown_summary,
 )
@@ -54,6 +55,20 @@ def test_stopped_attempt_retains_null_failure_and_rejects_live_prefix():
     with pytest.raises(ValueError, match='converted'):
         _endpoint_sequence({'status': 'stopped-with-preserved-failure',
             'endpoints': rows, 'failures': [changed]}, require_complete=False)
+
+
+def test_partial_audit_reproduces_strict_control_failure_without_relabelling(monkeypatch):
+    proofs = [{'control_proof': {'identity': 'a'}}, {'control_proof': {'identity': 'b'}}]
+    error = 'uncontrolled actual pre-intervention/prompt drift: identity'
+    failures = [{'stage': 'fit-control-or-report', 'error_type': 'BoundaryUnsupported',
+        'error': error, 'loss': None}]
+    status = _prefix_control_status(proofs, failures)
+    assert status['status'] == 'reproduced-preserved-strict-control-failure'
+    assert 'not a negative' in status['scope']
+    changed = deepcopy(failures)
+    changed[0]['error'] = 'different error'
+    with pytest.raises(ValueError, match='does not reproduce'):
+        _prefix_control_status(proofs, changed)
 
 
 def test_markdown_reports_unfavorable_candidate_without_promotion_claim():

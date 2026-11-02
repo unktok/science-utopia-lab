@@ -292,6 +292,31 @@ def _complete_reconstruction(root, rows, proofs, raw, objective):
                       'do not independently authenticate when the proposal was created.')}}
 
 
+def _prefix_control_status(proofs, failures):
+    """Verify a prefix or reproduce its preserved strict control failure.
+
+    This does not reinterpret a failed control proof as scientific evidence.
+    It only allows a terminal partial audit to bind the exact failure emitted
+    by the pinned implementation after every individual proof was restored.
+    """
+    if not proofs:
+        return {'status': 'no-completed-world-control-comparison'}
+    try:
+        proof = require_same_control([item['control_proof'] for item in proofs])
+    except Exception as error:
+        failure = failures[0] if len(failures) == 1 else {}
+        if (failure.get('stage') != 'fit-control-or-report'
+                or failure.get('error_type') != type(error).__name__
+                or failure.get('error') != str(error)[:4000]
+                or failure.get('loss', 'not-null') is not None):
+            raise ValueError('cross-world control failure does not reproduce the preserved terminal error') from error
+        return {'status': 'reproduced-preserved-strict-control-failure',
+            'error_type': type(error).__name__, 'error': str(error),
+            'scope': ('Technical preflight failure under the pinned comparator; not a negative '
+                      'fidelity, optimization, or scientific outcome.')}
+    return proof
+
+
 def analyze(run, *, expected_source, require_complete=True):
     root = Path(run).resolve()
     before = inventory(root)
@@ -314,8 +339,7 @@ def analyze(run, *, expected_source, require_complete=True):
         rows, failures, complete = _endpoint_sequence(raw, require_complete=require_complete)
         proofs = [_audit_endpoint(root, row, base_system=base_system, declarations=DECLARATIONS,
                                   objective=objective, world=world) for row in rows]
-        if proofs:
-            require_same_control([p['control_proof'] for p in proofs])
+        prefix_control = _prefix_control_status(proofs, failures)
         analysis = None
         if complete:
             analysis = _complete_reconstruction(root, rows, proofs, raw, objective)
@@ -345,7 +369,8 @@ def analyze(run, *, expected_source, require_complete=True):
             'technical_validity': {'completed_worlds': len(proofs),
                 'planned_world_budget': 6, 'failures': deepcopy(failures),
                 'all_completed_checkpoints_remeasured': True,
-                'all_completed_raw_response_projections_rejoined': True},
+                'all_completed_raw_response_projections_rejoined': True,
+                'prefix_control_comparison': prefix_control},
             'world_order': [{'name': p['name'], 'theta': p['theta']} for p in proofs],
             'endpoints': compact_proofs, 'physical_reply_count': response_total,
             'response_operator_analysis': analysis,
