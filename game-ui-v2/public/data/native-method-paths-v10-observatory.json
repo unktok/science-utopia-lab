@@ -1,0 +1,379 @@
+{
+  "schema": "scienceutopia.method-observatory.v1",
+  "campaign_id": "native-method-paths-v10-a1",
+  "classification": "actual-native-qwen-method-paths-development-v10",
+  "status": "complete",
+  "execution_kind": "actual-native-qwen",
+  "source_binding": {
+    "report_path": "research/results/native-method-paths-v10-a1.json",
+    "report_file_sha256": "b86a1165f6db8e924f919df2239aa7e10fe5187591d5bc1a2ca709b7ccaf4d50",
+    "report_content_sha256": "b6e221170c36250d60a199c55d34e550f65c6e0d1a87bce18300d1b530aef5b6",
+    "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a"
+  },
+  "objective": {
+    "id": "native-joint-v5-net-reviewed-utility",
+    "formula": "L = 3.25A − Q + 0.05R",
+    "direction": "minimize"
+  },
+  "coordinate_labels": [
+    "Review-charter evidence weight"
+  ],
+  "world": {
+    "model": "Qwen3:8B",
+    "seed": 42,
+    "researchers": 5,
+    "years": 2,
+    "corpus_years": 4,
+    "weights": "fixed"
+  },
+  "methods": [
+    {
+      "id": "gradient",
+      "label": "RESPONSE-AWARE GRADIENT",
+      "gradient_kind": "represented-pathwise",
+      "oracle": "fixed loss plus raw review traces and represented backward",
+      "initial": {
+        "coordinates": [
+          0.5
+        ],
+        "actual_loss": 0.9
+      },
+      "historical_incumbent": {
+        "loss": 0.8166666666666665,
+        "name": "calibration-2",
+        "origin": "shared-historical",
+        "theta": 0.8,
+        "coordinates": [
+          0.8
+        ],
+        "actual_loss": 0.8166666666666665
+      },
+      "final_incumbent": {
+        "loss": 0.8166666666666665,
+        "name": "calibration-2",
+        "origin": "shared-historical",
+        "theta": 0.8,
+        "coordinates": [
+          0.8
+        ],
+        "actual_loss": 0.8166666666666665
+      },
+      "cost": {
+        "fresh_native_worlds": 3,
+        "fresh_physical_replies": 93,
+        "historical_observations_charged": 3,
+        "logical_responses": 252,
+        "replayed_responses": 159
+      },
+      "steps": [
+        {
+          "id": "gradient-0",
+          "step": 0,
+          "coordinates": [
+            0.6
+          ],
+          "actual_loss": 0.9,
+          "hard_represented_loss": 0.9000000000000001,
+          "backward": {
+            "coordinates": [
+              0.5
+            ],
+            "frozen_boundary_gradient": [
+              0
+            ],
+            "full_native_world_autograd": false,
+            "gradient": [
+              -0.24092159391109544
+            ],
+            "learned_response_contribution": [
+              -0.24092159391109544
+            ],
+            "native_derivative_verified": false,
+            "representation_sha256": "29d8ef1b7050c7bb881108822fd1a1805195a100883dd1aff8884400c1904b2f",
+            "represented_loss": 1.403206459912328,
+            "scope": "Autograd of a learned response boundary and declared native parse relaxation composed with original tensor institutions; not native/LLM pathwise.",
+            "support": {
+              "hull_weights": [
+                0,
+                1,
+                0
+              ]
+            },
+            "temperature": 1,
+            "operator_file_sha256": "31854eab38f48d0c8dfc0c844459d833da7d4b94519b059e747531a83b52f1ce"
+          },
+          "native_receipt_sha256": "b6fd6de0b6feb9e1c0b8303242292ca65c18b00a1a61a8ee2568b3b3d0c5800b",
+          "checkpoint_sha256": "6bc256f7ab2f04bf9e392fb1fb5220c82068e72a53b81bb8f2a60099c8766468",
+          "system_fingerprint": "0f2eee6fc2a507da180ca0bac961351ac8521da7713bf09d752d806b8484a006",
+          "measurements": {
+            "native.accepted_decisions": 0,
+            "native.accepted_peer_score_sum": 0,
+            "native.review_records": 18
+          },
+          "fresh_replies": 31,
+          "replayed_replies": 53,
+          "elapsed_seconds": 104.63803911209106
+        },
+        {
+          "id": "gradient-1",
+          "step": 1,
+          "coordinates": [
+            0.6488091311838646
+          ],
+          "actual_loss": 0.8166666666666665,
+          "hard_represented_loss": 0.8166666666666667,
+          "backward": {
+            "coordinates": [
+              0.6
+            ],
+            "frozen_boundary_gradient": [
+              0
+            ],
+            "full_native_world_autograd": false,
+            "gradient": [
+              -0.09761826236772937
+            ],
+            "learned_response_contribution": [
+              -0.09761826236772937
+            ],
+            "native_derivative_verified": false,
+            "representation_sha256": "5ee361c55416f1bf100eea3873c044a3b796e7afe0b4426e001bc8c2f138a789",
+            "represented_loss": 1.221738222262267,
+            "scope": "Autograd of a learned response boundary and declared native parse relaxation composed with original tensor institutions; not native/LLM pathwise.",
+            "support": {
+              "hull_weights": [
+                0.33333333333333337,
+                0,
+                0.6666666666666666,
+                0
+              ]
+            },
+            "temperature": 0.2,
+            "operator_file_sha256": "45b0e0c7ad1dc28befd8c97b5910bcf40c3e125bd5800e4ed12266bcbe0c81c9"
+          },
+          "native_receipt_sha256": "1d8c12fd43fca703ae2abf80b9b8a2b1e47e45de144ec10eac98896d7c6ced1d",
+          "checkpoint_sha256": "f993da57a3b9c7f6040da1e51689ed0b0b3165f59f3ead9a22a6f3b6ce63987e",
+          "system_fingerprint": "e9cb15e577fb34e3609a6cb5fe0d1f84bdb74efc51440fb2d10fc8bde043aae1",
+          "measurements": {
+            "native.accepted_decisions": 1,
+            "native.accepted_peer_score_sum": 3.3333333333333335,
+            "native.review_records": 18
+          },
+          "fresh_replies": 31,
+          "replayed_replies": 53,
+          "elapsed_seconds": 107.7475368976593
+        },
+        {
+          "id": "gradient-2",
+          "step": 2,
+          "coordinates": [
+            0.7488091311838646
+          ],
+          "actual_loss": 0.8166666666666665,
+          "hard_represented_loss": 0.8166666666666667,
+          "backward": {
+            "coordinates": [
+              0.6488091311838646
+            ],
+            "frozen_boundary_gradient": [
+              0
+            ],
+            "full_native_world_autograd": false,
+            "gradient": [
+              -1.2462635574505538
+            ],
+            "learned_response_contribution": [
+              -1.2462635574505538
+            ],
+            "native_derivative_verified": false,
+            "representation_sha256": "d2dec65b04b3e0878a97b5a11a2d5463613d9c8c613380979ce5777ca6c950e1",
+            "represented_loss": 0.8959047124246875,
+            "scope": "Autograd of a learned response boundary and declared native parse relaxation composed with original tensor institutions; not native/LLM pathwise.",
+            "support": {
+              "hull_weights": [
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            },
+            "temperature": 0.05,
+            "operator_file_sha256": "7a2c7cbf6d9bf408fdd935c1748c58225c5c4b696fe39fe4c9fca5131248d968"
+          },
+          "native_receipt_sha256": "ca6b9935e315ad39ae5a8e2e384dab83f8205dcbd0e1933d773e0ebaeb2225db",
+          "checkpoint_sha256": "810ad264208301550c76171213c0b5914b443c555afe3294e6efc4a987a6b430",
+          "system_fingerprint": "e6277efccc7aa5f17cefdc644d75790e1f505d0f8d8726968fc56148fb522155",
+          "measurements": {
+            "native.accepted_decisions": 1,
+            "native.accepted_peer_score_sum": 3.3333333333333335,
+            "native.review_records": 18
+          },
+          "fresh_replies": 31,
+          "replayed_replies": 53,
+          "elapsed_seconds": 96.88366079330444
+        }
+      ]
+    },
+    {
+      "id": "blackbox",
+      "label": "BLACK-BOX BISECTION",
+      "gradient_kind": "none",
+      "oracle": "fixed scalar loss only",
+      "initial": {
+        "coordinates": [
+          0.5
+        ],
+        "actual_loss": 0.9
+      },
+      "historical_incumbent": {
+        "loss": 0.8166666666666665,
+        "name": "calibration-2",
+        "origin": "shared-historical",
+        "theta": 0.8,
+        "coordinates": [
+          0.8
+        ],
+        "actual_loss": 0.8166666666666665
+      },
+      "final_incumbent": {
+        "loss": 0.8166666666666665,
+        "name": "calibration-2",
+        "origin": "shared-historical",
+        "theta": 0.8,
+        "coordinates": [
+          0.8
+        ],
+        "actual_loss": 0.8166666666666665
+      },
+      "cost": {
+        "fresh_native_worlds": 3,
+        "fresh_physical_replies": 93,
+        "historical_observations_charged": 3,
+        "logical_responses": 252,
+        "replayed_responses": 159
+      },
+      "steps": [
+        {
+          "id": "blackbox-0",
+          "step": 0,
+          "coordinates": [
+            0.65
+          ],
+          "actual_loss": 0.9,
+          "hard_represented_loss": 0.9000000000000001,
+          "backward": null,
+          "native_receipt_sha256": "2a37998f422c1ec454fe2d0fbc5bc859fe842ea869fc121aad748773775f1546",
+          "checkpoint_sha256": "49e5af8641ca1f4e8c531a7ba8b9d1a2a5fb3272865cf7ba119327757a8b7745",
+          "system_fingerprint": "7a5fc130ba7de510e2a1b121ac5cac94c1dd2d53b6598481bafd9d056ad741cd",
+          "measurements": {
+            "native.accepted_decisions": 0,
+            "native.accepted_peer_score_sum": 0,
+            "native.review_records": 18
+          },
+          "fresh_replies": 31,
+          "replayed_replies": 53,
+          "elapsed_seconds": 97.53054714202881
+        },
+        {
+          "id": "blackbox-1",
+          "step": 1,
+          "coordinates": [
+            0.7250000000000001
+          ],
+          "actual_loss": 0.8166666666666665,
+          "hard_represented_loss": 0.8166666666666667,
+          "backward": null,
+          "native_receipt_sha256": "101e6663c2ba0616117d017f09925c13acc947526823f36658fd406303e431fd",
+          "checkpoint_sha256": "45625be870a529074a414530b44f97b83331a951fd624a6f309a1d2cfe0a7e69",
+          "system_fingerprint": "9eed59c2bcab54d63c499c249c16b3fb0582d8b4c1c611d3f939b445c7ea8165",
+          "measurements": {
+            "native.accepted_decisions": 1,
+            "native.accepted_peer_score_sum": 3.3333333333333335,
+            "native.review_records": 18
+          },
+          "fresh_replies": 31,
+          "replayed_replies": 53,
+          "elapsed_seconds": 102.99205183982849
+        },
+        {
+          "id": "blackbox-2",
+          "step": 2,
+          "coordinates": [
+            0.7625000000000001
+          ],
+          "actual_loss": 0.8166666666666665,
+          "hard_represented_loss": 0.8166666666666667,
+          "backward": null,
+          "native_receipt_sha256": "be8595c2c8f90a8420bba098d05cde72c0f83be0a2fcb182d4c4ebbe6787876c",
+          "checkpoint_sha256": "3f77a990a66d19c9dc2fe9d030082b1f2573de3122cd6e0282644d27d3bc34d4",
+          "system_fingerprint": "44859c7fa106b9bf2f13ba9bc2ac137604216e2ca644b936018c599c2ed20dad",
+          "measurements": {
+            "native.accepted_decisions": 1,
+            "native.accepted_peer_score_sum": 3.3333333333333335,
+            "native.review_records": 18
+          },
+          "fresh_replies": 31,
+          "replayed_replies": 53,
+          "elapsed_seconds": 96.63492393493652
+        }
+      ]
+    }
+  ],
+  "cost_accounting": {
+    "arms": {
+      "blackbox": {
+        "fresh_native_worlds": 3,
+        "fresh_physical_replies": 93,
+        "historical_observations_charged": 3,
+        "logical_responses": 252,
+        "replayed_responses": 159
+      },
+      "gradient": {
+        "fresh_native_worlds": 3,
+        "fresh_physical_replies": 93,
+        "historical_observations_charged": 3,
+        "logical_responses": 252,
+        "replayed_responses": 159
+      }
+    },
+    "native_world_elapsed_seconds": 606.4267597198486,
+    "new_fresh_physical_replies": 186,
+    "shared_historical_calibration_fresh_calls": 93,
+    "shared_historical_unique_actual_support": 146,
+    "total_unique_actual_calls_supporting_paths": 332,
+    "unique_anchor_origin_calls": 53
+  },
+  "comparison": {
+    "blackbox_oracle": "fixed scalar loss only",
+    "equal_fresh_native_attempt_budget": 3,
+    "gradient_oracle": "fixed loss plus raw review traces and represented backward",
+    "held_out_or_replication_claim": false,
+    "optimality_claim": false,
+    "optimizer_superiority_claim": false,
+    "oracle_capabilities_equal": false,
+    "scope": "single common-prefix-coupled development path; descriptive only"
+  },
+  "claims": {
+    "actual_fixed_weight_Qwen": true,
+    "causal_scientific_benefit": false,
+    "exact_Qwen_Jacobian": false,
+    "full_native_world_autograd": false,
+    "new_model_calls": 0,
+    "new_native_worlds": 0,
+    "optimizer_superiority": false,
+    "ongoing_jobs": false,
+    "viewing_starts_jobs": false
+  },
+  "raw_binding": {
+    "file_count": 110,
+    "inventory_sha256": "1d9b821f9cf49c68e392111a50f4a71a12df689557191d96ee3f7dc457a383db"
+  },
+  "limitations": [
+    "One scalar institutional parameter, not free structural invention.",
+    "Single common-prefix-coupled development path; no held-out replication.",
+    "Equal fresh-world budgets, unequal oracle information.",
+    "Represented response gradients are not verified derivatives of the native world.",
+    "Neither method discovers a new best beyond the shared historical incumbent."
+  ]
+}

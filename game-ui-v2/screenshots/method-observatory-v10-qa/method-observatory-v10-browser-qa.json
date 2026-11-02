@@ -1,0 +1,107 @@
+{
+  "schema": "scienceutopia.method-observatory-browser-qa.v1",
+  "story": "Read-only page -> immutable campaign export and receipt -> actual native endpoints, charts, selected-step provenance",
+  "engine": "headless Chrome CDP",
+  "classification": "actual-native-qwen-method-paths-development-v10",
+  "source_binding": {
+    "report_path": "research/results/native-method-paths-v10-a1.json",
+    "report_file_sha256": "b86a1165f6db8e924f919df2239aa7e10fe5187591d5bc1a2ca709b7ccaf4d50",
+    "report_content_sha256": "b6e221170c36250d60a199c55d34e550f65c6e0d1a87bce18300d1b530aef5b6",
+    "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a"
+  },
+  "payload_sha256": "b28b546bb48dae94293f480b6a348f0bb9217f9b821f95e459de4299652d5f45",
+  "ui_source_sha256s": {
+    "method-observatory.html": "97e8b225b6813a40cd407100eb8a1eb81bc2d281c3d918a87bda1aa8ebeb417f",
+    "src/methodObservatory.ts": "ecef98d2611dc53eac99039d6493f98854f0444629bc5709f811cc96d4cf1d3b",
+    "src/methodObservatory.css": "94db206c5e27459dc13e065b4448c2a5c89b5f323688a4a2d74e2bfa34b0693b",
+    "src/methodObservatoryContract.ts": "e7f5691dd6e56431bbef31502bacddcba86c2c4c23f4548da4ce248f51e4341f",
+    "src/objectiveStructure.css": "e7784b23912c2d73bdb0216c82a6a6216de4efae4210d0a57916c04265df5727",
+    "scripts/export-method-paths-v10.mjs": "aa34fd931b24ab2a0fb72692ed9877e391135049bb6fbbfb459d1e03b309f2e0",
+    "scripts/verify-method-observatory-browser.mjs": "573215660a6ca98a97a54052bda4d9528c28a0b2756e25d3843306438b5d144f"
+  },
+  "local_only": true,
+  "no_inference": true,
+  "no_job_dispatch": true,
+  "browser_errors": 0,
+  "failed_http_responses": 0,
+  "non_get_requests": 0,
+  "external_requests": 0,
+  "artifacts": {
+    "overview": {
+      "file": "method-observatory-v10-overview.png",
+      "sha256": "facc20ccb98669fdf704f2c072329cbed9f2a47cd25fd516aa67a97303808181",
+      "width": 1600,
+      "height": 1100,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "innerWidth": 1600,
+      "scrollWidth": 1600,
+      "bodyWidth": 1600,
+      "stations": 6,
+      "svgCharts": 2,
+      "source": "research/results/native-method-paths-v10-a1.json // SHA-256 VERIFIED EXPORT",
+      "images": true
+    },
+    "paths": {
+      "file": "method-observatory-v10-paths.png",
+      "sha256": "cf82d81d9e9da2c984ccb278db2da7ccc2d5ab0b18baff03baf1d5e42df27a60",
+      "width": 1600,
+      "height": 1040,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "innerWidth": 1600,
+      "scrollWidth": 1600,
+      "bodyWidth": 1600,
+      "stations": 6,
+      "svgCharts": 2,
+      "source": "research/results/native-method-paths-v10-a1.json // SHA-256 VERIFIED EXPORT",
+      "images": true
+    },
+    "mobile": {
+      "file": "method-observatory-v10-mobile.png",
+      "sha256": "2e0567ebcf719ca4ef5c308b175f6325a5216fc44adb90f351cdb403e4d94b8f",
+      "width": 390,
+      "height": 844,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "stations": 6,
+      "svgCharts": 2,
+      "source": "research/results/native-method-paths-v10-a1.json // SHA-256 VERIFIED EXPORT",
+      "images": true
+    },
+    "mobile-paths": {
+      "file": "method-observatory-v10-mobile-paths.png",
+      "sha256": "99724e95d2ff4cb9d42c7bf30404728469168513cc5d52b89975b3a74d6d2937",
+      "width": 390,
+      "height": 1100,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "stations": 6,
+      "svgCharts": 2,
+      "source": "research/results/native-method-paths-v10-a1.json // SHA-256 VERIFIED EXPORT",
+      "images": true
+    },
+    "detail": {
+      "file": "method-observatory-v10-detail.png",
+      "sha256": "2c942c7cbae2a15dfaa86be18b43837be7e0a686b9d61bcdd296bc337af275f3",
+      "width": 1600,
+      "height": 1000
+    }
+  },
+  "interactions": [
+    {
+      "method": 1,
+      "step": 0,
+      "title": "BLACK-BOX BISECTION / DRAW 1",
+      "passed": true
+    },
+    {
+      "method": 0,
+      "step": 1,
+      "title": "RESPONSE-AWARE GRADIENT / DRAW 2",
+      "passed": true
+    }
+  ]
+}

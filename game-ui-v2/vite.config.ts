@@ -19,6 +19,7 @@ export default defineConfig({
         lifecycle: resolve(__dirname, "lifecycle.html"),
         openEvidence: resolve(__dirname, "open-evidence.html"),
         objectiveStructure: resolve(__dirname, "objective-structure.html"),
+        methodObservatory: resolve(__dirname, "method-observatory.html"),
       },
     },
   },

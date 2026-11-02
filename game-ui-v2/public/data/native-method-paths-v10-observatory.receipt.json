@@ -1,0 +1,13 @@
+{
+  "schema": "scienceutopia.method-observatory-export.v1",
+  "payload_file": "native-method-paths-v10-observatory.json",
+  "payload_sha256": "b28b546bb48dae94293f480b6a348f0bb9217f9b821f95e459de4299652d5f45",
+  "source_binding": {
+    "report_path": "research/results/native-method-paths-v10-a1.json",
+    "report_file_sha256": "b86a1165f6db8e924f919df2239aa7e10fe5187591d5bc1a2ca709b7ccaf4d50",
+    "report_content_sha256": "b6e221170c36250d60a199c55d34e550f65c6e0d1a87bce18300d1b530aef5b6",
+    "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a"
+  },
+  "no_inference": true,
+  "no_job_dispatch": true
+}

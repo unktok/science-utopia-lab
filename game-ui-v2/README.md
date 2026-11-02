@@ -7,6 +7,12 @@ browser.
 
 ## Current status
 
+The completed actual v10 parameter/loss paths are now available in
+`/method-observatory.html`, linked from the v8 structural switchyard. Read-only
+charts keep current draws separate from the historical incumbent, and actual
+native losses separate from represented gradients. See
+[the method observatory contract and verification](METHOD_OBSERVATORY.md).
+
 The v4 renderer is operational with a 48-second deterministic, synthetic
 fixture containing four researchers, four institutions, sixteen canonical
 events, seventeen evidence-linked actor actions, and seven visible flows across
