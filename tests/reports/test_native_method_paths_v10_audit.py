@@ -76,7 +76,7 @@ def fixture_report():
     report = {'schema': SCHEMA, 'classification': FIXTURE, 'status': 'complete',
         'source_commit': 'a'*40, 'technical_validity': {'completed_worlds': 6, 'failures': []},
         'comparison': {'equal_fresh_native_attempt_budget': 3,
-            'optimizer_superiority_claim': False},
+            'optimizer_superiority_claim': False, 'oracle_capabilities_equal': False},
         'held_out_metrics': {'status': 'not-measured'}, 'shared_historical': {'rows': historical},
         'arms': arms, 'endpoints': endpoints, 'physical_reply_count': 10,
         'logical_response_count': 20, 'replayed_response_count': 10}
@@ -108,6 +108,14 @@ def test_figure_is_deterministic_and_zero_call(tmp_path):
     assert hashes == {key: file_sha256(value['path']) for key, value in second['outputs'].items()}
     assert first['new_model_calls'] == first['new_native_worlds'] == 0
     assert not first['optimizer_superiority_claim'] and not first['held_out_claim']
+
+
+def test_figure_refuses_to_write_into_raw_evidence(tmp_path):
+    report = fixture_report(); report['raw_output_root'] = str(tmp_path/'raw')
+    report['content_sha256'] = digest({k:v for k,v in report.items() if k!='content_sha256'})
+    path = tmp_path/'audit.json'; path.write_text(json.dumps(report))
+    with pytest.raises(ValueError, match='immutable raw'):
+        create(path, tmp_path/'raw/figure', 'a'*40, allow_synthetic=True)
 
 
 def test_schema_names_are_forward_only_v10():

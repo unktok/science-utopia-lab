@@ -323,11 +323,18 @@ def analyze(run, *, expected_source, require_complete=True):
             'replayed_response_count','review_reply_count','objective_measurements','raw_projection_sha256',
             'journal_sha256','wire_sha256','completion_receipt_sha256','run_manifest_sha256')}
             | {'arm': row['arm'], 'step': row['step'], 'proposal_sha256': row['proposal_sha256'],
+               'elapsed_seconds': row['elapsed_seconds'],
                'observation': deepcopy(row['observation']),
                'common_prefix_proof': deepcopy(proof['common_prefix_proof'])}
             for row, proof in zip(rows, proofs)]
         arms = {arm: _arm_summary(arm, [r for r in rows if r['arm'] == arm], shared['rows'])
                 for arm in ('gradient', 'blackbox')}
+        arm_costs = {arm: {'fresh_native_worlds': sum(r['arm'] == arm for r in compact),
+            'fresh_physical_replies': sum(r['fresh_physical_reply_count'] for r in compact if r['arm'] == arm),
+            'logical_responses': sum(r['response_count'] for r in compact if r['arm'] == arm),
+            'replayed_responses': sum(r['replayed_response_count'] for r in compact if r['arm'] == arm),
+            'historical_observations_charged': 3}
+            for arm in ('gradient', 'blackbox')}
         report = {'schema': SCHEMA, 'classification': ACTUAL,
             'status': 'complete' if len(rows) == 6 and not failures else 'valid-preserved-partial-failure',
             'source_commit': expected_source, 'raw_output_root': str(root),
@@ -347,8 +354,21 @@ def analyze(run, *, expected_source, require_complete=True):
             'arms': arms,
             'comparison': {'scope': 'single common-prefix-coupled development path; descriptive only',
                 'equal_fresh_native_attempt_budget': 3,
+                'oracle_capabilities_equal': False,
+                'gradient_oracle': 'fixed loss plus raw review traces and represented backward',
+                'blackbox_oracle': 'fixed scalar loss only',
                 'optimizer_superiority_claim': False, 'optimality_claim': False,
                 'held_out_or_replication_claim': False},
+            'cost_accounting': {'arms': arm_costs,
+                'shared_historical_calibration_fresh_calls': shared['historical_calibration_fresh_calls'],
+                'unique_anchor_origin_calls': shared['unique_anchor_origin_calls'],
+                'shared_historical_unique_actual_support':
+                    shared['historical_calibration_fresh_calls']+shared['unique_anchor_origin_calls'],
+                'new_fresh_physical_replies': physical['all_fresh_physical_replies'],
+                'total_unique_actual_calls_supporting_paths':
+                    shared['historical_calibration_fresh_calls']+shared['unique_anchor_origin_calls']+
+                    physical['all_fresh_physical_replies'],
+                'native_world_elapsed_seconds': sum(row['elapsed_seconds'] for row in compact)},
             'physical_reply_count': physical['all_fresh_physical_replies'],
             'logical_response_count': physical['all_logical_replies'],
             'replayed_response_count': physical['all_replayed_replies'],
@@ -393,6 +413,10 @@ def main():
     parser.add_argument('--markdown', type=Path)
     parser.add_argument('--allow-incomplete', action='store_true')
     args = parser.parse_args()
+    if args.output.resolve().is_relative_to(args.run.resolve()):
+        parser.error('audit output must be outside immutable raw directory')
+    if args.markdown and args.markdown.resolve().is_relative_to(args.run.resolve()):
+        parser.error('markdown output must be outside immutable raw directory')
     report = analyze(args.run, expected_source=args.expected_source,
         require_complete=not args.allow_incomplete)
     write_json_atomic(args.output, report, sort_keys=True, allow_nan=False)
