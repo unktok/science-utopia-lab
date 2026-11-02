@@ -1,0 +1,12 @@
+{
+  "schema": "scienceutopia.open-redesign-ui-export.v12",
+  "payload_file": "native-objective-redesign-v12.ui.json",
+  "payload_sha256": "5bbccee81071471b747be0e49e3bea7e4ffb5d36551da1cc631ace67f71ae244",
+  "source_binding": {
+    "report_file_sha256": "ca2742aa06ccd8675fcc50b5bc17041d057deb2cfad1357a19e3276d96530b76",
+    "report_content_sha256": "c03df804fe46f12f1efec7210f1dba1c624242a8645f9533b698748cc4dfcd5f",
+    "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4"
+  },
+  "no_inference": true,
+  "no_job_dispatch": true
+}

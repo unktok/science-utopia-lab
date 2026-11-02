@@ -1,5 +1,7 @@
 {
   "schema": "scienceutopia.open-redesign-availability.v12",
-  "status": "awaiting-audited-export",
-  "message": "The objective-conditioned redesign campaign has no completed independent audit export here. No result or fixture is substituted."
+  "status": "available",
+  "classification": "actual-native-qwen-objective-redesign-development-v12",
+  "payload": "native-objective-redesign-v12.ui.json",
+  "receipt": "native-objective-redesign-v12.ui-receipt.json"
 }
