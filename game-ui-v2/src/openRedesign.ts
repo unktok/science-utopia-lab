@@ -1,4 +1,4 @@
-import { REDESIGN_OBJECTIVES, verifyOpenRedesign, type Evidence, type ObjectiveId, type OpenRedesign, type RedesignObservation } from './openRedesignContract';
+import { recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign, type Evidence, type ObjectiveId, type OpenRedesign, type RedesignObservation } from './openRedesignContract';
 import './objectiveStructure.css';
 import './openRedesign.css';
 
@@ -80,8 +80,7 @@ function codeMarkup(source: string, other: string, state: 'added'|'removed'): st
 }
 function renderInspector(): void {
   const selected=row(),node=list(selected.system?.mechanisms).find(n=>n.mechanism_id===selectedNode);
-  const record=list(data.arms[armId()].records).find(r=>r.request?.generation===selected.generation);
-  const parentSystem=record?.request?.parent_system??data.arms[armId()].observations.find(r=>r.system_fingerprint===selected.parent_system_fingerprint)?.system;
+  const parentSystem=recordedParentSystem(data,armId(),selected);
   const previousNode=list(parentSystem?.mechanisms).find(n=>n.mechanism_id===selectedNode),edge=list(selected.system?.connections)[selectedWire];
   el('node-title').textContent=edge?`${edge.source_mechanism}.${edge.source_port} → ${edge.target_mechanism}.${edge.target_port}`:selectedNode||'NO CANDIDATE NODE';
   el('inspector-tabs').querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.tab===tab)));
@@ -104,7 +103,8 @@ function renderAll(): void {renderPaths();renderCircuit();renderProfiles();el('r
 function render(): void {
   const fixture=data.classification==='scripted-fixture-not-native-results';if(fixture)document.body.dataset.fixture='scripted-v12';
   el('truth-badge').textContent=fixture?'SCRIPTED FIXTURE / NOT QWEN':'AUDITED ACTUAL DEVELOPMENT';el('truth-badge').dataset.mode=fixture?'fixture':'actual';
-  el('identity-strip').innerHTML=[['OBJECTIVES','TWO EXPLICIT LOSSES','No hidden fairness or quality veto'],['NATIVE WORLDS',`${data.physical_native_worlds} COMPLETE / SIX ATTEMPTS`,'Three generations per objective'],['PHYSICAL REPLIES',String(data.physical_researcher_responses),'Fixed Qwen3:8B researcher weights'],['DESIGNER','EXTERNAL CODEX PILOT','Not authenticated autonomous invention']].map(([title,value,note])=>`<div><span>${title}</span><strong>${esc(value)}</strong><small>${fixture?'SCRIPTED SCHEMA FIXTURE':note}</small></div>`).join('');
+  const replyNote=data.physical_researcher_responses>0?'Observed fixed-weight Qwen3:8B replies':'Qwen3:8B configured / no replies observed';
+  el('identity-strip').innerHTML=[['OBJECTIVES','TWO EXPLICIT LOSSES','No hidden fairness or quality veto'],['NATIVE WORLDS',`${data.physical_native_worlds} COMPLETE / SIX ATTEMPTS`,'Three generations per objective'],['PHYSICAL REPLIES',String(data.physical_researcher_responses),replyNote],['DESIGNER','EXTERNAL CODEX PILOT','Not authenticated autonomous invention']].map(([title,value,note])=>`<div><span>${title}</span><strong>${esc(value)}</strong><small>${fixture?'SCRIPTED SCHEMA FIXTURE':note}</small></div>`).join('');
   const facts=[['SOURCE COMMIT',data.source_binding.source_commit],['AUDIT FILE SHA256',data.source_binding.report_file_sha256],['AUDIT CONTENT SHA256',data.source_binding.report_content_sha256],['RAW INVENTORY SHA256',data.raw_inventory_sha256],['INITIAL / HISTORICAL BASELINE','NONE SCORED'],['HELD-OUT EVALUATION','NONE / SAME-WORLD DEVELOPMENT SCORES'],['LIVE CONTROL','DISABLED / NO DISPATCH'],['CLAIM BOUNDARY','NO SCIENTIFIC-VALUE OR CAUSAL-BENEFIT CLAIM']];
   el('provenance').innerHTML=facts.map(([title,value])=>`<div><dt>${esc(title)}</dt><dd>${esc(value)}</dd></div>`).join('');
   el('limitations').innerHTML=[...(data.limitations??[]),'Designer sees its own arm history; one development seed does not establish generalization.','Free executable representation does not mean unconstrained or automatically successful institution invention.'].map(s=>`<p>${esc(s)}</p>`).join('');

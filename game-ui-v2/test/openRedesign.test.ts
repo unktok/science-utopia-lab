@@ -3,13 +3,13 @@ import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { parseOpenRedesign, REDESIGN_OBJECTIVES, verifyOpenRedesign } from '../src/openRedesignContract';
-import { redesignFixture, redesignHash } from './openRedesignFixture';
+import { parseOpenRedesign, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign } from '../src/openRedesignContract';
+import { redesignFixture, redesignHash, zeroReplyRedesignFixture } from './openRedesignFixture';
 const ui=new URL('../',import.meta.url),script=new URL('scripts/export-open-redesign-v12.mjs',ui).pathname;
-function exporting(change?:(audit:any)=>void){
+function exporting(change?:(audit:any)=>void,fixture=true){
   const root=mkdtempSync(resolve(tmpdir(),'scienceutopia-v12-ui-test-')),audit=redesignFixture();change?.(audit);
   const source=resolve(root,'SCRIPTED-audit.json'),bytes=JSON.stringify(audit);writeFileSync(source,bytes);
-  execFileSync(process.execPath,[script,`--audit=${source}`,`--output=${root}`,`--expected-audit-sha256=${redesignHash(bytes)}`,`--expected-source=${audit.source_commit}`,'--allow-synthetic-temp-only'],{stdio:'pipe'});
+  execFileSync(process.execPath,[script,`--audit=${source}`,`--output=${root}`,`--expected-audit-sha256=${redesignHash(bytes)}`,`--expected-source=${audit.source_commit}`,...(fixture?['--allow-synthetic-temp-only']:[])],{stdio:'pipe'});
   const text=readFileSync(resolve(root,'native-objective-redesign-v12.ui.json'),'utf8'),receipt=JSON.parse(readFileSync(resolve(root,'native-objective-redesign-v12.ui-receipt.json'),'utf8'));
   return {root,audit,text,receipt};
 }
@@ -62,6 +62,39 @@ describe('v12 objective-conditioned free redesign evidence',()=>{
     const d=await verifyOpenRedesign(text,receipt,true);
     expect(d.arms[REDESIGN_OBJECTIVES[0]].observations[0]!.cross_scores[REDESIGN_OBJECTIVES[1]]).toBeNull();
   });
+  it('accepts terminal actual zero-reply failure records without claiming observed Qwen execution',async()=>{
+    // Synthetic producer used only in this temporary export contract test; no actual result is published.
+    const {text,receipt}=exporting(a=>{Object.assign(a,zeroReplyRedesignFixture());a.classification='actual-native-qwen-objective-redesign-development-v12';a.claims.scripted_researcher_HTTP=false;},false);
+    const d=await verifyOpenRedesign(text,receipt);
+    expect(d.physical_researcher_responses).toBe(0);expect(d.claims.live_fixed_Qwen_researchers).toBe(false);
+    expect(d.arms[REDESIGN_OBJECTIVES[0]].observations.every(r=>r.observation_id===null&&r.own_loss===null)).toBe(true);
+    const lie=JSON.parse(text);lie.claims.live_fixed_Qwen_researchers=true;expect(()=>parseOpenRedesign(lie)).toThrow('unsupported claims');
+    expect(()=>exporting(a=>{Object.assign(a,zeroReplyRedesignFixture());a.classification='actual-native-qwen-objective-redesign-development-v12';a.claims.scripted_researcher_HTTP=false;a.claims.live_fixed_Qwen_researchers=true;},false)).toThrow('Researcher attribution');
+  });
+  it('compares G2 source with the recorded incumbent G0, not worse chronological G1',async()=>{
+    const {text,receipt}=exporting(a=>{
+      const arm=a.arms[REDESIGN_OBJECTIVES[0]],rows=arm.observations;
+      for(const r of rows){
+        const node=r.system.mechanisms[1],old=node.mechanism_id;node.mechanism_id='same-open-commons';
+        r.system.connections.forEach((e:any)=>{if(e.source_mechanism===old)e.source_mechanism=node.mechanism_id;if(e.target_mechanism===old)e.target_mechanism=node.mechanism_id;});
+        r.contracts.executable_sources[node.mechanism_id]=r.contracts.executable_sources[old];delete r.contracts.executable_sources[old];
+      }
+      rows[0].own_loss=rows[0].loss=rows[0].cross_scores[REDESIGN_OBJECTIVES[0]]=-5;rows[0].metrics['native.accepted_decisions'].value=5;rows[0].cross_scores[REDESIGN_OBJECTIVES[1]]=3.25*5+.05*24;
+      rows[2].parent_system_fingerprint=rows[0].system_fingerprint;
+      arm.records[2].request.parent_system=rows[0].system;
+    });
+    const d=await verifyOpenRedesign(text,receipt,true),id=REDESIGN_OBJECTIVES[0],arm=d.arms[id];
+    expect(arm.observations[1]!.own_loss!>arm.observations[0]!.own_loss!).toBe(true);
+    expect(recordedParentSystem(d,id,arm.observations[2]!)).toEqual(arm.observations[0]!.system);
+    expect(recordedParentSystem(d,id,arm.observations[2]!)).not.toEqual(arm.observations[1]!.system);
+    const parentNode=recordedParentSystem(d,id,arm.observations[2]!)!.mechanisms.find((node:any)=>node.mechanism_id==='same-open-commons');
+    expect(parentNode.parameters.code_artifact.source).toContain('"shared_evidence": 0');
+    expect(parentNode.parameters.code_artifact.source).not.toContain('"shared_evidence": 1');
+    delete arm.records;expect(recordedParentSystem(d,id,arm.observations[2]!)).toEqual(arm.observations[0]!.system);
+  });
+  it('rejects a fabricated native observation ID on a failed authoring generation',()=>{
+    expect(()=>exporting(a=>{Object.assign(a,zeroReplyRedesignFixture());a.arms[REDESIGN_OBJECTIVES[0]].observations[0].observation_id='INVENTED-NATIVE-ID';})).toThrow('cannot invent');
+  });
   it('rejects invented baseline, missingness as zero, false running best and unsupported causal claim',()=>{
     const {text}=exporting();
     for(const change of [(d:any)=>d.initial_baseline={loss:0},(d:any)=>d.arms[REDESIGN_OBJECTIVES[0]].observations[1].running_best=-999,(d:any)=>d.claims.causal_institutional_benefit=true]){
@@ -80,7 +113,7 @@ describe('v12 objective-conditioned free redesign evidence',()=>{
     expect(code).not.toMatch(/method:\s*['"]POST|\/api\/|setInterval/);
     expect(html).toContain('NOT MEASURED AGENT ACTIVITY');expect(html).toContain('NOT HELD OUT');
     expect(code).not.toContain('review-aggregation');expect(code).toContain('system.mechanisms');
-    expect(code).toContain('record?.request?.parent_system');
+    expect(code).toContain('recordedParentSystem(data,armId(),selected)');
     expect(code).not.toContain('observations[selectedGeneration-1]');
   });
 });

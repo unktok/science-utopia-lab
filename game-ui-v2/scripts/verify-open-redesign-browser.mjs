@@ -3,11 +3,13 @@ import { spawn, execFileSync } from 'node:child_process';
 import { mkdir, mkdtemp, readFile, rename, writeFile } from 'node:fs/promises';
 import { homedir, tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
-import { redesignFixture } from '../test/openRedesignFixture.ts';
+import { redesignFixture, zeroReplyRedesignFixture } from '../test/openRedesignFixture.ts';
 
 const args=Object.fromEntries(process.argv.slice(2).map(value=>{const [key,...rest]=value.replace(/^--/,'').split('=');return [key,rest.join('=')];}));
 const mode=args.mode??'unavailable',port=Number(args.port??4342),base=`http://127.0.0.1:${port}`;
+const scenario=args.scenario??'complete';
 if(!['actual','fixture','unavailable'].includes(mode)||!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid mode or port');
+if(!['complete','zero-replies'].includes(scenario)||scenario!=='complete'&&mode!=='fixture')throw new Error('Failure scenarios are temporary fixture checks only');
 const sha=value=>createHash('sha256').update(value).digest('hex'),sleep=ms=>new Promise(done=>setTimeout(done,ms));
 const output=resolve(args.output??(mode==='fixture'?await mkdtemp(join(tmpdir(),'noctiluca-v12-fixture-qa-')):`screenshots/open-redesign-v12-${mode}-qa`));
 if(mode==='fixture'&&!output.startsWith(`${resolve(tmpdir())}/`))throw new Error('Fixture screenshots must remain temporary');
@@ -25,7 +27,7 @@ try {
   await mkdir(output,{recursive:true});
   const overrides={};
   if(mode==='fixture'){
-    const audit=redesignFixture(),text=`${JSON.stringify(audit)}\n`,source=join(output,'SCRIPTED-audit.json');await writeFile(source,text);
+    const audit=scenario==='zero-replies'?zeroReplyRedesignFixture():redesignFixture(),text=`${JSON.stringify(audit)}\n`,source=join(output,'SCRIPTED-audit.json');await writeFile(source,text);
     execFileSync(process.execPath,['scripts/export-open-redesign-v12.mjs',`--audit=${source}`,`--output=${output}`,`--expected-audit-sha256=${sha(text)}`,`--expected-source=${audit.source_commit}`,'--allow-synthetic-temp-only']);
     for(const name of ['native-objective-redesign-v12.availability.json','native-objective-redesign-v12.ui.json','native-objective-redesign-v12.ui-receipt.json'])overrides[name]=await readFile(join(output,name));
   }
@@ -57,8 +59,9 @@ try {
     if(state.badge!==(mode==='unavailable'?'NO AUDITED EXPORT':mode==='fixture'?'SCRIPTED FIXTURE / NOT QWEN':'AUDITED ACTUAL DEVELOPMENT')||state.evidence!==(mode!=='unavailable')||state.stations!==(mode==='unavailable'?0:6)||state.profileRows!==(mode==='unavailable'?0:6)||!state.images)throw new Error(JSON.stringify(state));
     if(state.innerWidth!==state.scrollWidth||state.innerWidth!==state.bodyWidth)throw new Error(`Horizontal overflow: ${JSON.stringify(state)}`);
     if(mode!=='unavailable'){
-      const interaction=await cdp.eval(`(()=>{const button=document.querySelector('button[data-arm="1"][data-generation="2"]');button.click();const title=document.querySelector('#circuit-title').textContent;const wire=document.querySelector('#wire-list button');if(wire)wire.click();const protocol=document.querySelector('#inspector-content').textContent;document.querySelector('button[data-tab="process"]').click();const process=document.querySelector('#inspector-content').textContent;document.querySelector('button[data-tab="native"]').click();const native=document.querySelector('#inspector-content').textContent;document.querySelector('button[data-tab="source"]').click();return {title,protocol:protocol.includes('ACTUAL SELECTED'),process:process.includes('ACTUAL SYSTEM SCHEDULES'),native:native.includes('ORIGINAL RECORDS')};})()`);
+      const interaction=await cdp.eval(`(()=>{const button=document.querySelector('button[data-arm="1"][data-generation="2"]');button.click();const title=document.querySelector('#circuit-title').textContent;const wire=document.querySelector('#wire-list button');if(wire)wire.click();else document.querySelector('button[data-tab="protocol"]').click();const protocol=document.querySelector('#inspector-content').textContent;document.querySelector('button[data-tab="process"]').click();const process=document.querySelector('#inspector-content').textContent;document.querySelector('button[data-tab="native"]').click();const native=document.querySelector('#inspector-content').textContent;document.querySelector('button[data-tab="source"]').click();return {title,protocol:protocol.includes('ACTUAL SELECTED'),process:process.includes('ACTUAL SYSTEM SCHEDULES'),native:native.includes('ORIGINAL RECORDS'),observation_id:JSON.parse(document.querySelector('#raw-row').textContent).observation_id};})()`);
       if(!interaction.title.includes('GENERATION 2')||!interaction.protocol||!interaction.process||!interaction.native)throw new Error(`Inspector interaction failed: ${JSON.stringify(interaction)}`);
+      if(scenario==='zero-replies'&&(interaction.observation_id!==null||state.nodes!==0))throw new Error(`Fabricated native endpoint in zero-reply failure fixture: ${JSON.stringify(interaction)}`);
     }
     const screenshot=await cdp.call('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false}),bytes=Buffer.from(screenshot.data,'base64'),file=`open-redesign-v12-${mode}-${capture.id}.png`;
     await writeFile(join(output,file),bytes);artifacts[capture.id]={file,sha256:sha(bytes),...capture,...state};
@@ -68,6 +71,6 @@ try {
   const requests=cdp.events.filter(event=>event.method==='Network.requestWillBeSent'&&/^http/.test(event.params.request.url)).map(event=>event.params.request);
   if(errors.length||failed.length||requests.some(request=>request.method!=='GET'||!request.url.startsWith(`${base}/`))||serverErrors.some(text=>/error/i.test(text)))throw new Error(JSON.stringify({errors,failed,serverErrors}));
   const sources={};for(const file of ['native-objective-redesign.html','src/openRedesign.ts','src/openRedesign.css','src/openRedesignContract.ts','scripts/export-open-redesign-v12.mjs','scripts/verify-open-redesign-browser.mjs'])sources[file]=sha(await readFile(file));
-  const receipt={schema:'scienceutopia.open-redesign-ui-browser-qa.v12',mode,classification:mode==='actual'?'actual-native-qwen-objective-redesign-development-v12':mode==='fixture'?'scripted-fixture-not-native-results':'no-actual-export-available',no_inference:true,no_job_dispatch:true,fixture_used:mode==='fixture',browser_errors:0,failed_http_responses:0,non_get_requests:0,external_requests:0,export_binding:exportBinding,ui_source_sha256s:sources,artifacts};
+  const receipt={schema:'scienceutopia.open-redesign-ui-browser-qa.v12',mode,scenario,classification:mode==='actual'?'actual-native-qwen-objective-redesign-development-v12':mode==='fixture'?'scripted-fixture-not-native-results':'no-actual-export-available',no_inference:true,no_job_dispatch:true,fixture_used:mode==='fixture',browser_errors:0,failed_http_responses:0,non_get_requests:0,external_requests:0,export_binding:exportBinding,ui_source_sha256s:sources,artifacts};
   await writeFile(join(output,'open-redesign-v12-browser-qa.json'),`${JSON.stringify(receipt,null,2)}\n`);console.log(JSON.stringify(receipt));
 }finally{cdp?.socket?.close();await stop(chrome);await stop(vite);try{await rename(profile,join(homedir(),'.Trash',`${basename(profile)}-${Date.now()}`));}catch{}}

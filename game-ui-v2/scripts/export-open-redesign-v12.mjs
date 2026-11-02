@@ -37,6 +37,7 @@ for (const id of objectives) {
   let best = Infinity;
   const observations = arm.observations.map((row, index) => {
     if (row.arm !== id || row.generation !== index || row.draw_index !== 0) throw new Error('Observation order differs');
+    if (row.status === 'generation-failure' && row.observation_id !== null) throw new Error('Generation failure cannot invent a native observation ID');
     if (row.status === 'complete') {
       completed++;
       if (!Number.isFinite(row.own_loss) || row.own_loss !== row.loss || row.cross_scores?.[id] !== row.own_loss || !hash(row.system_fingerprint) || !hash(row.checkpoint_sha256)
@@ -60,7 +61,7 @@ for (const id of objectives) {
 }
 if (audit.physical_native_worlds !== completed || !Number.isInteger(audit.physical_researcher_responses) || audit.physical_researcher_responses < 0) throw new Error('Physical cost/count differs');
 for (const key of ['held_out', 'causal_institutional_benefit', 'scientific_value', 'external_authorship_authenticated']) if (audit.claims?.[key] !== false) throw new Error(`Unsupported ${key} claim`);
-if (audit.claims.live_fixed_Qwen_researchers !== !fixture || audit.claims.scripted_researcher_HTTP !== fixture) throw new Error('Researcher attribution differs');
+if (audit.claims.live_fixed_Qwen_researchers !== (!fixture && audit.physical_researcher_responses>0) || audit.claims.scripted_researcher_HTTP !== fixture) throw new Error('Researcher attribution differs');
 const binding = {report_file_sha256:sha(bytes),report_content_sha256:audit.content_sha256,source_commit:audit.source_commit};
 const payload = {schema:'scienceutopia.open-redesign-observatory.v12',classification:audit.classification,status:audit.status,source_binding:binding,objective_order:objectives,loss_specs:audit.loss_specs,arms,
   physical_native_worlds:completed,physical_researcher_responses:audit.physical_researcher_responses,raw_inventory_sha256:audit.audit.raw_inventory_sha256,

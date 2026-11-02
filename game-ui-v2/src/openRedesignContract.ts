@@ -14,6 +14,11 @@ export interface OpenRedesign extends Evidence {
   physical_researcher_responses: number; live_job_control: false;
 }
 const fail = (message: string): never => { throw new Error(`Invalid v12 evidence: ${message}`); };
+export function recordedParentSystem(data: OpenRedesign, objective: ObjectiveId, selected: RedesignObservation): Evidence | undefined {
+  const arm=data.arms[objective];
+  const record=arm.records?.find((value: Evidence)=>value.request?.generation===selected.generation);
+  return record?.request?.parent_system??arm.observations.find(value=>value.system_fingerprint===selected.parent_system_fingerprint)?.system;
+}
 const hash = (value: unknown): boolean => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
 export function parseOpenRedesign(value: unknown, allowFixture = false): OpenRedesign {
@@ -35,6 +40,7 @@ export function parseOpenRedesign(value: unknown, allowFixture = false): OpenRed
       if (row.arm !== id || row.generation !== index || row.draw_index !== 0
           || row.observation_id !== null && (typeof row.observation_id !== 'string' || ids.has(row.observation_id))) fail('observation lineage');
       if (row.observation_id !== null) ids.add(row.observation_id);
+      if (row.status==='generation-failure' && row.observation_id!==null) fail('fabricated generation-failure observation');
       if (row.status === 'complete') {
         if (typeof row.observation_id !== 'string' || !row.observation_id || !finite(row.own_loss) || row.loss !== row.own_loss || row.cross_scores?.[id] !== row.own_loss
             || !hash(row.system_fingerprint) || !hash(row.checkpoint_sha256)
@@ -47,7 +53,7 @@ export function parseOpenRedesign(value: unknown, allowFixture = false): OpenRed
     });
   }
   if (d.claims?.held_out !== false || d.claims.scientific_value !== false || d.claims.causal_institutional_benefit !== false
-      || d.claims.external_authorship_authenticated !== false || d.claims.live_fixed_Qwen_researchers !== !fixture || d.claims.scripted_researcher_HTTP !== fixture) fail('unsupported claims');
+      || d.claims.external_authorship_authenticated !== false || d.claims.live_fixed_Qwen_researchers !== (!fixture && d.physical_researcher_responses>0) || d.claims.scripted_researcher_HTTP !== fixture) fail('unsupported claims');
   return d;
 }
 export async function verifyOpenRedesign(text: string, receipt: Evidence, allowFixture = false): Promise<OpenRedesign> {

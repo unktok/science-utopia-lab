@@ -31,6 +31,11 @@ loss paths, system circuit, source/protocol/process/native receipt inspectors.
   cross-scores, **not held-out evaluations**, causal effect estimates or
   established scientific value. Missing scores stay null.
 - Failure attempts remain visible with null loss, not zero or a penalty.
+- Failed authoring has a null native observation ID, not a fabricated endpoint.
+  A terminal zero-reply campaign can be displayed without claiming Qwen ran;
+  configured model and actually observed replies are distinguished.
+- Source comparison uses the generation request's recorded incumbent parent,
+  not the previous chronological generation when that proposal was worse.
 - Source/protocol/node/wire/process freedoms have no fixed two-review-rule
   selector in this interface. The actual experiment can still exercise a
   narrower portion of the representation; view the literal records.
@@ -83,6 +88,7 @@ Development-only browser checks:
 ```sh
 node scripts/verify-open-redesign-browser.mjs --mode=unavailable
 node scripts/verify-open-redesign-browser.mjs --mode=fixture
+node scripts/verify-open-redesign-browser.mjs --mode=fixture --scenario=zero-replies
 ```
 
 The fixture mode routes temporary synthetic bytes into the browser and adds a
