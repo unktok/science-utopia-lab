@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from utopia.optimization.loss import evaluate_loss
+from utopia.optimization.loss import evaluate_loss, load_loss_spec
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
@@ -94,7 +94,7 @@ def figure_data(report, expected_source=None, *, allow_synthetic=False):
     if report.get('matched_initial_definitions', {}).get('matched') is not True:
         raise ValueError('initial method definitions must be audited as matched')
     loss_spec = report.get('loss_spec', {})
-    if loss_spec.get('id') != LOSS_ID:
+    if loss_spec != load_loss_spec(ROOT / 'research/objectives/losses/native-joint-v5-net-reviewed-utility.json'):
         raise ValueError('fixed native objective differs')
     rows, updates, identities = {}, [], set()
     for arm in ARMS:

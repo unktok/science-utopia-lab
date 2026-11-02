@@ -91,6 +91,14 @@ def write_fixture(directory, report):
     return source
 
 
+def test_objective_identity_includes_coefficients_not_only_its_name():
+    report=fixture_report()
+    report['loss_spec']['per_run']['terms'][0]['coefficient'] += .1
+    reseal(report)
+    with pytest.raises(ValueError,match='fixed native objective'):
+        figure_data(report,allow_synthetic=True)
+
+
 def test_all_exact_points_latents_assignments_and_no_invented_baseline():
     report = fixture_report()
     result = figure_data(report,allow_synthetic=True)
