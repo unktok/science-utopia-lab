@@ -31,6 +31,13 @@ def test_fixed_center_step_uses_only_model_gradient(g, expected):
     assert result['candidate'] not in (.35, .65)
 
 
+def test_numerically_unchanged_projected_step_is_labelled_noop_without_forging_zero_gradient():
+    tiny = 1e-16
+    result = gradient_proposal({'coordinates': [.5], 'gradient': [tiny], 'representation_sha256': 'fixture'})
+    assert result['gradient'] == tiny
+    assert result['candidate'] == .5 and result['unchanged']
+
+
 class HeterogeneousActualInputScript(FakeHTTPModel):
     def reply(self, **payload):
         response = super().reply(**payload)

@@ -28,11 +28,12 @@ def gradient_proposal(backward):
     if type(g) not in (float, int) or not math.isfinite(g):
         raise ValueError('finite represented gradient required')
     displacement = min(.10, max(-.10, -.02*g))
+    candidate = min(.8, max(.2, .5+displacement))
     return {'rule': 'theta=clip(.5+clip(-.02*center_gradient,-.10,.10),.2,.8)',
         'center': .5, 'learning_rate': .02, 'trust_radius': .10,
         'gradient': g, 'requested': .5-.02*g,
-        'candidate': min(.8, max(.2, .5+displacement)),
-        'unchanged': displacement == 0., 'unused_outcomes_seen': 0,
+        'candidate': candidate,
+        'unchanged': candidate == .5, 'unused_outcomes_seen': 0,
         'representation_sha256': backward['representation_sha256']}
 
 
