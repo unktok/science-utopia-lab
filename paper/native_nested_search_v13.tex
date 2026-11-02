@@ -48,7 +48,7 @@ For a frozen generated vocabulary $V$, let $d$ denote categorical choices and
 unbounded Gaussian latents sampled from its declared distribution
 $q_\theta(d\mid V)$. Fixed sigmoids map latents to bounded design coordinates;
 source and graph patches map the draw to an executable native system. Subject to
-the usual score-function regularity conditions,
+the usual score-function regularity conditions~\citep{parmas2021unified},
 \begin{equation}
  \nabla_\theta\mathbb{E}_{d\sim q_\theta,\,\tau\sim\mathrm{Sim}(d)}[L(\tau)]
  =\mathbb{E}[L(\tau)\nabla_\theta\log q_\theta(d\mid V)].
@@ -110,7 +110,7 @@ commands. A read-only auditor can reconstruct the full applied plan and join it
 to recorded source outputs and native state, without reexecuting institutional
 source or treating provenance as scientific correctness. Historical missing provenance
 is not fabricated retroactively. The new audit also independently checks
-scalar likelihood derivatives and the sole LR update, exact post-update
+scalar likelihood derivatives and the single LR update per arm, exact post-update
 sampling, checkpoints, actual review tasks and model-request identities.
 
 \paragraph{Inspection and editing boundaries.}
@@ -128,8 +128,8 @@ held-out evaluations or extra optimization signals.
 All eight scheduled native worlds complete at clean source \code{fdf4d1c},
 using 592 fresh Qwen replies, with no reply reuse or world-level technical
 failure (Table~\ref{tab:nested-results-v13}). The independent read-only audit
-reextracts every checkpoint loss, replays draws and the sole within-vocabulary
-update, and joins actual source, wire, task and plan receipts. Two reports are
+reextracts every checkpoint loss, replays draws and each arm's single
+within-vocabulary update, and joins actual source, wire, task and plan receipts. Two reports are
 byte-identical; all 129 raw input files remain unchanged. All 227 replay-critical
 source blobs match the actual pin. Forty source executions, 16 complete-plan
 effects, 16 routing events and 28 actual review records are verified. These
@@ -224,7 +224,7 @@ do not identify the objective's causal effect by themselves.
 \includegraphics[width=\linewidth]{figures/native-nested-search-v13-a1.png}
 \caption{Audited nested optimization paths at native print size. The two
 own-loss paths use distinct scales and separate current outcomes from best
-so far. Native counts, literal authored edits, the sole conditional update
+so far. Native counts, literal authored edits, each arm's conditional update
 and all same-checkpoint cross-scores are retained. Neither post-update draw
 beats its prior best; both free G1 code revisions improve their own first
 best, without establishing expected or scientific benefit.}
