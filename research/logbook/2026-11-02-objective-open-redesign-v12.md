@@ -20,3 +20,17 @@ wires and processes between generations, rather than selecting from v11's two
 fixed aggregation rules. It may also retain a design if own feedback warrants.
 The interface's freedom is not proof of useful invention. All-loss cross-score
 uses completed development checkpoints, not held-out or counterfactual worlds.
+
+## Singleton derivative-free implementation correction
+
+Pre-inference fixture review finds that the prior adaptive implementation
+requires at least2draws even in black-box mode. A black-box observation requires
+no leave-one-out estimator. Add an explicit `single_draw_blackbox` opt-in used
+only for one-draw black-box campaign batches; score/hybrid still require2.
+Original default/two-draw sampling behavior is retained and tested. Related
+adaptive/v11/singleton/driver regression39pass38.44s; scopes overlap.
+Only `utopia/optimization/native_adaptive_search.py` changes. All original
+native forward laws and other runtime blobs remain unchanged. The separate
+v11 followup re-audits old results from a clean old-source worktree and accepts
+only the exact reviewed optimizer-file change, rather than falsely claiming
+every source blob is identical. No previous protocol/raw result is rewritten.

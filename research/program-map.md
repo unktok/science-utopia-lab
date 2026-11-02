@@ -4,6 +4,13 @@ Updated: 2026-11-02
 
 ## Current direction: optimization, not mandatory differentiability
 
+The active [v12 finite slice](milestones/2026-11-02-objective-open-redesign-v12.md)
+prioritizes objective-conditioned free redesign: two losses, three own-history
+generations each, maximum six native attempts. A separate two-attempt followup
+tests v11's final saved control update, without rewriting its closed budget.
+Independent audit/figures and English flow/lineage UI are parallel tracks.
+This is not another population/seed/horizon scale-up. See STATUS for evidence.
+
 The latest completed execution slice is
 [v11](milestones/2026-11-02-open-native-estimators-v11.md): free code/protocol/wiring
 design shares an original-native execution boundary with derivative-free and
