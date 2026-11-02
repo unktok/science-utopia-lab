@@ -157,3 +157,19 @@ PNG/SVG output. Related 35 checks and focused polluted-startup 3 checks pass;
 scopes overlap. A third clean full suite starts at exact `e0a5c38`, not at the
 frozen experiment pin or uncommitted final publication text. Preserve both
 earlier full-run failures alongside this later verification.
+
+Both G2 authors retain their own G0 incumbent exactly. Utility explicitly rejects
+the unhelpful milestone-clinic result; throughput retains its same-seed tie.
+Fresh final saved-file validation and whole-candidate byte proofs justify reuse
+of earlier six-year SCRIPTED QA without rerunning equivalent fixtures. Root
+again independently checks both exact files against the frozen singleton
+compiler, then starts the final two planned native worlds. No additional
+generation or native reroll will be added. G2 technical receipts are copied to
+the durable ignored verification directory.
+
+The third clean full regression at `e0a5c38` completes 1953 passes, 6 skips,
+zero failures/errors in 1002.97s. This is the corrected-reporting source scope,
+not a full suite at the final publication tip. All native runtime and prospective
+protocol bytes still equal `ecab4b4`. Later print-only layout uses a 5.5-inch
+canvas with minimum 7-point text and its own figure checks; it does not alter
+measurements or retroactively change either earlier failed suite.
