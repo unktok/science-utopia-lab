@@ -178,3 +178,17 @@ and preview supervisors/task-specific launchd registrations are no longer
 running; the user's Ollama service is untouched. Main is clean at the earlier
 published pin, fetched origin has no new commits. Next action is a fast-forward
 integration, final artifact copy and push; no additional native work is pending.
+
+## Publication completes
+
+Root preserves the previous v12 PDF under ignored verification outputs, copies
+the exact reviewed54-page artifact to the established tracked delivery path,
+and commits it as`603cd10ff42a7232c75536d3cd4064dd66972159`. Main fast-forwards
+without conflicts from published`6c7fd63`; `git push origin main` succeeds and
+independent `git ls-remote origin refs/heads/main` confirms the same commit.
+The main-delivery PDF SHA remains
+`159d0ac92c9ff7b00608658044d9af88455de5408b4071c4a80628666fb72f3c`.
+Only paper README/closure notes differ after build source`4ffe576` within paper
+and live runtime/UI scope; no text, figure, native runtime or UI source changes.
+This forward-only publication entry marks the finite v13 goal complete, not
+scientific superiority or completion of all future non-scale work.

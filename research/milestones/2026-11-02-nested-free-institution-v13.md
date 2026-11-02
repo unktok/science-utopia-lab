@@ -1,8 +1,9 @@
 # V13 finite goal: nested search and additional native institutional freedom
 
-Status: publication ready; all eight native worlds, independent audits, actual
-UI, final figure and54-page PDF/source-artifact verification complete. Main
-integration/push is the remaining publication step.
+Status: complete. All eight native worlds, independent audits, actual UI, final
+figure and54-page PDF/source-artifact verification are complete. Main
+fast-forwards without conflicts to publication commit`603cd10`; push succeeds
+and independent remote refs confirm origin/main at that commit.
 
 The [frozen protocol](../protocols/campaigns/native-nested-search-v13.md) connects
 free outer source/graph generation to an inner conditional expected-loss update

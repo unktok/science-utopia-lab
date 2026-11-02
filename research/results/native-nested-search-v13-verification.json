@@ -1483,5 +1483,15 @@
     "source_JSON_Markdown_clean": true,
     "exception": "Exact generated native-nested-search-v13-a1.svg has standard Matplotlib path trailing spaces; excluded only that file rather than changing already hashed bytes."
   },
-  "publication_workflow": "Verified source/artifacts precede documentation-only closure and non-destructive main fast-forward/push; source pins above are not falsely labelled as a full-suite pass for the final documentation tip."
+  "publication_workflow": "Verified source/artifacts precede documentation-only closure and non-destructive main fast-forward/push; source pins above are not falsely labelled as a full-suite pass for the final documentation tip.",
+  "publication": {
+    "publication_commit_including_exact_reviewed_PDF": "603cd10ff42a7232c75536d3cd4064dd66972159",
+    "prior_published_main": "6c7fd63d0760df48664488859935e0571bf973cb",
+    "non_destructive_fast_forward_without_conflict": true,
+    "git_push_origin_main_succeeded": true,
+    "independent_ls_remote_confirmed_publication_commit": true,
+    "main_delivery_PDF_sha256": "159d0ac92c9ff7b00608658044d9af88455de5408b4071c4a80628666fb72f3c",
+    "previous_PDF_preserved": "outputs/native-nested-search-v13-verification/previous-v12-working-paper.pdf",
+    "subsequent_closure_commit_is_documentation_only": true
+  }
 }

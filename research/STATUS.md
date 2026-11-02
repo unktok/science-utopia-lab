@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## Active finite v13: free outer design and conditional inner optimization
+## Completed finite v13: free outer design and conditional inner optimization
 
 The user approves the [next finite goal](milestones/2026-11-02-nested-free-institution-v13.md).
 Three independent feature worktrees have implemented the nested sampler/driver,
@@ -47,8 +47,12 @@ The actual six-panel figure uses bounded leaders to its exact cross-score points
 [Source/artifact verification](results/native-nested-search-v13-verification.json)
 binds native/source/audit/figure/UI/test/PDF hashes without relabelling the2020
 pass as a full-suite run of the final documentation tip. Historical v12 main107
-and followup32 raw files remain byte-identical. Main integration/push is the
-remaining publication step; no native inference is pending.
+and followup32 raw files remain byte-identical. Main fast-forwards without
+conflicts to`603cd10`, including the exact verified PDF, and origin/main is
+independently confirmed at that publication commit. The finite goal is complete;
+no native inference or owned preview task is pending. The milestone's explicit
+non-scale research boundaries remain, not a new claim that every research
+question has been solved.
 
 ## Completed finite v12: free objective-conditioned redesign and inspected effects
 
