@@ -1,0 +1,14 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "native-reviewed-production-efficiency-v13",
+  "version": "1",
+  "status": "engineering_demo",
+  "optimization_seed_role": "development",
+  "direction": "minimize",
+  "per_run": {"intercept": 0.0, "terms": [
+    {"metric_id": "native.accepted_peer_score_sum", "slice_id": null, "coefficient": -1.0},
+    {"metric_id": "native.review_records", "slice_id": null, "coefficient": 0.5}
+  ]},
+  "across_seeds": {"aggregation": "mean_plus_population_sd", "dispersion_weight": 0.0, "minimum_valid_runs": 1},
+  "interpretation": "Minimize -Q+0.5*R. Q sums the arithmetic means of ORIGINAL integer-parsed native reviewer overall_score for accepted review-history decisions; institution-written final_score is not used. Unreviewed acceptance contributes zero Q. R counts actual review records, not reviewed papers. The explicit illustrative coefficient 0.5 expresses a review-work preference and is not empirically calibrated scientific value. Zero reviews, reject-all and all-accept remain legal. No hidden quality/fairness/novelty/promotion veto."
+}

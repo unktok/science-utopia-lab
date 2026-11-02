@@ -2,6 +2,23 @@
 
 Updated: 2026-11-02
 
+## Active finite v13: free outer design and conditional inner optimization
+
+The user approves the [next finite goal](milestones/2026-11-02-nested-free-institution-v13.md).
+Three independent feature worktrees implement a nested sampler/driver, native
+review-task routing plus complete-plan lineage, and an extension of the existing
+English Institution Foundry. Root owns protocol, exact losses, integration,
+execution and independent publication. No v13 actual inference has started yet.
+
+The [prospective protocol](protocols/campaigns/native-nested-search-v13.md)
+fixes two objectives (`-A`, new illustrative `-Q+0.5R`) and at most eight native
+attempts: per objective, two IID G0 draws with one LOO likelihood-ratio update,
+one exact updated-proposal evaluation, then one own-history free redesign and
+evaluation. No untested final update or replacement budget. Fixed Qwen and
+original five authors/two years/seed42/corpus remain; no scale-up or hidden
+quality/fairness/novelty veto. Completion is the integrated executable loop and
+honest evidence, not a promised useful invention or mandatory whole-world AD.
+
 ## Completed finite v12: free objective-conditioned redesign and inspected effects
 
 The [finite v12 goal](milestones/2026-11-02-objective-open-redesign-v12.md) tests
