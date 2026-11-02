@@ -1,5 +1,7 @@
 {
   "schema": "scienceutopia.open-estimator-availability.v11",
-  "status": "awaiting-audited-export",
-  "message": "No completed actual v11 audit has been exported to this viewer. This page starts no jobs."
+  "status": "available",
+  "classification": "actual-native-qwen-open-estimators-development-v11",
+  "payload": "native-open-estimators-v11.ui.json",
+  "receipt": "native-open-estimators-v11.ui-receipt.json"
 }

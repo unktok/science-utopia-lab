@@ -1,0 +1,12 @@
+{
+  "schema": "scienceutopia.open-estimator-ui-export.v11",
+  "payload_file": "native-open-estimators-v11.ui.json",
+  "payload_sha256": "ca694ae57f7642668ffb5de14c9cba5a35d6187ea216ca123dea0a9d5323e7ae",
+  "source_binding": {
+    "report_file_sha256": "98bc7c3e4b2aa32fcedbe1f413c7311a2a71e5034824bb427f21eef8ea5f677d",
+    "report_content_sha256": "0d75a366dc32b8f75dab96ca32d7daa90a91c6e98db140df28bbbc21d6547426",
+    "source_commit": "acf3a2e4b995f8a04f4b0b56011a7051fe73a112"
+  },
+  "no_inference": true,
+  "no_job_dispatch": true
+}

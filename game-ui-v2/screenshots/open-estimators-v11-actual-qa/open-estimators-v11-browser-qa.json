@@ -1,0 +1,78 @@
+{
+  "schema": "scienceutopia.open-estimator-ui-browser-qa.v11",
+  "mode": "actual",
+  "classification": "actual-native-qwen-open-estimators-development-v11",
+  "no_inference": true,
+  "no_job_dispatch": true,
+  "fixture_used": false,
+  "browser_errors": 0,
+  "failed_http_responses": 0,
+  "non_get_requests": 0,
+  "external_requests": 0,
+  "export_binding": {
+    "payload_sha256": "ca694ae57f7642668ffb5de14c9cba5a35d6187ea216ca123dea0a9d5323e7ae",
+    "source_binding": {
+      "report_file_sha256": "98bc7c3e4b2aa32fcedbe1f413c7311a2a71e5034824bb427f21eef8ea5f677d",
+      "report_content_sha256": "0d75a366dc32b8f75dab96ca32d7daa90a91c6e98db140df28bbbc21d6547426",
+      "source_commit": "acf3a2e4b995f8a04f4b0b56011a7051fe73a112"
+    }
+  },
+  "ui_source_sha256s": {
+    "native-open-estimators.html": "872f05fcce5cf9cdb4730a2d1d1bc04f74d3cd6f2a1d63221c7c7a6980bbbfac",
+    "src/openEstimator.ts": "05df0ffb6a3ae6bf57d23b7a2a801583d1ce1525cd7a6e7d073ed61638f58a9c",
+    "src/openEstimator.css": "76b407685c6cab6e03f7b22360c18d036e3ea2f6802bb491f01cc163cff08201",
+    "src/openEstimatorContract.ts": "f4b0382ba5019a8cf957f57b1d3d0d8739146cce4f0e0db0d5f762a42a370f5b",
+    "scripts/export-open-estimators-v11.mjs": "96c051d973bbef1ed0cfa14927b70cf0495a11970be2552b4fe9b31f70cd5444",
+    "scripts/verify-open-estimators-browser.mjs": "e17c7b60e34e8f3a65c803a85199fb940f462bf21ea21565445a7865f2859ccd"
+  },
+  "artifacts": {
+    "overview": {
+      "file": "open-estimators-v11-actual-overview.png",
+      "sha256": "a2d5d82cc2167cf3f7640e86b40a9ad703d346e3b0180b79f12f58716baa2089",
+      "id": "overview",
+      "width": 1600,
+      "height": 1100,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "unavailable": false,
+      "evidence": true,
+      "stations": 8,
+      "innerWidth": 1600,
+      "scrollWidth": 1600,
+      "bodyWidth": 1600,
+      "images": true
+    },
+    "paths": {
+      "file": "open-estimators-v11-actual-paths.png",
+      "sha256": "044aad2b1c6eb5e6eb53980b282f063990f347c1571e1ff4dbbb7d114bd18bbe",
+      "id": "paths",
+      "width": 1600,
+      "height": 1100,
+      "focus": true,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "unavailable": false,
+      "evidence": true,
+      "stations": 8,
+      "innerWidth": 1600,
+      "scrollWidth": 1600,
+      "bodyWidth": 1600,
+      "images": true
+    },
+    "mobile-paths": {
+      "file": "open-estimators-v11-actual-mobile-paths.png",
+      "sha256": "ed35eeddfeb180e82c24ef3f2026e022d5d37d333a80f68a886b5b73346b994f",
+      "id": "mobile-paths",
+      "width": 390,
+      "height": 1100,
+      "focus": true,
+      "mobile": true,
+      "badge": "AUDITED ACTUAL DEVELOPMENT",
+      "unavailable": false,
+      "evidence": true,
+      "stations": 8,
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "images": true
+    }
+  }
+}
