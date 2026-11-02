@@ -63,8 +63,9 @@ try {
       if(!interaction.title.includes('GENERATION 2')||!interaction.protocol||!interaction.process||!interaction.native)throw new Error(`Inspector interaction failed: ${JSON.stringify(interaction)}`);
       if(scenario==='zero-replies'&&(interaction.observation_id!==null||state.nodes!==0))throw new Error(`Fabricated native endpoint in zero-reply failure fixture: ${JSON.stringify(interaction)}`);
     }
+    const capturedState=mode==='unavailable'?{}:await cdp.eval(`({nodes:document.querySelectorAll('.circuit-node').length,selected_observation_id:JSON.parse(document.querySelector('#raw-row').textContent).observation_id,selected_generation:JSON.parse(document.querySelector('#raw-row').textContent).generation,selected_arm:JSON.parse(document.querySelector('#raw-row').textContent).arm})`);
     const screenshot=await cdp.call('Page.captureScreenshot',{format:'png',fromSurface:true,captureBeyondViewport:false}),bytes=Buffer.from(screenshot.data,'base64'),file=`open-redesign-v12-${mode}-${capture.id}.png`;
-    await writeFile(join(output,file),bytes);artifacts[capture.id]={file,sha256:sha(bytes),...capture,...state};
+    await writeFile(join(output,file),bytes);artifacts[capture.id]={file,sha256:sha(bytes),...capture,...state,...capturedState};
   }
   const errors=cdp.events.filter(event=>event.method==='Runtime.exceptionThrown'||event.method==='Log.entryAdded'&&event.params.entry.level==='error');
   const failed=cdp.events.filter(event=>event.method==='Network.responseReceived'&&event.params.response.status>=400);
