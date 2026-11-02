@@ -39,7 +39,10 @@ SCHEMA = 'scienceutopia.native-open-estimators-independent-audit.v11'
 def replay_source_proofs(expected_source, classification):
     """The new audit may be newer, but replayed optimizer math must match pin."""
     names = ('utopia/optimization/native_adaptive_search.py',
-        'utopia/optimization/native_expectation_estimators.py')
+        'utopia/optimization/native_expectation_estimators.py',
+        'scripts/analyze_native_open_v7.py', 'scripts/analyze_native_society_v6.py',
+        'scripts/audit_native_objective_v5.py', 'utopia/system/native_kernel.py',
+        'utopia/system/native_open_domain.py', 'utopia/system/native_migration.py')
     if classification == FIXTURE:
         return {'status': 'scripted-fixture-no-actual-source-claim', 'files': {}}
     proofs = {}
@@ -57,12 +60,15 @@ def replay_source_proofs(expected_source, classification):
 
 
 def _without_provenance(value):
-    """Remove explicitly labelled provenance only, never code/rules/wires/IDs."""
-    if isinstance(value, dict):
-        return {key: _without_provenance(v) for key, v in value.items() if key != 'provenance'}
-    if isinstance(value, list):
-        return [_without_provenance(v) for v in value]
-    return value
+    """Remove ONLY declared vocabulary/choice provenance, not semantic payloads."""
+    result = deepcopy(value)
+    if not isinstance(result, dict):
+        return result
+    result.pop('provenance', None)
+    for factor in result.get('factors', []):
+        for choice in factor.get('choices', []):
+            choice.pop('provenance', None)
+    return result
 
 
 def matched_initial_definitions(arms):
@@ -73,7 +79,7 @@ def matched_initial_definitions(arms):
     if definitions[0] != definitions[1]:
         raise ValueError('initial arm definitions differ beyond explicitly labelled provenance')
     return {'status': 'verified', 'matched': True, 'definition_sha256': digest(definitions[0]),
-        'scope': 'same full initial code/factors/coordinates/weights after removing provenance fields only; no shared physical trajectories'}
+        'scope': 'same full initial code/factors/coordinates/weights except declared top-level vocabulary and factor-choice provenance; semantic provenance-named fields preserved; no shared physical trajectories'}
 
 
 def incumbent_path(rows):

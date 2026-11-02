@@ -130,16 +130,28 @@ def test_all_best_ties_retained_and_failed_draws_not_scored():
 
 def test_matching_initial_definition_does_not_erase_code_or_wiring():
     first = {'base_patch': {'operations': [{'code': 'exact source'}]},
-        'provenance': {'arm': 'a'}, 'factors': [{'provenance': {'arm': 'a'}, 'id': 'same'}]}
+        'provenance': {'arm': 'a'}, 'factors': [{'choices': [{'id': 'same', 'provenance': {'arm': 'a'}}]}]}
     second = deepcopy(first)
     second['provenance'] = {'arm': 'b'}
-    second['factors'][0]['provenance'] = {'arm': 'b'}
+    second['factors'][0]['choices'][0]['provenance'] = {'arm': 'b'}
     arms = {ARM_IDS[0]: {'records': [{'definition': first}]}, ARM_IDS[1]: {'records': [{'definition': second}]}}
     assert matched_initial_definitions(arms)['matched']
     second['base_patch']['operations'][0]['code'] = 'changed source'
     with pytest.raises(ValueError, match='initial arm definitions differ'):
         matched_initial_definitions(arms)
     assert _without_provenance({'metadata': {'arm': 'a'}}) == {'metadata': {'arm': 'a'}}
+
+
+def test_semantic_provenance_named_fields_are_not_erased_for_matching():
+    definition = {'provenance': {'author': 'metadata-only'}, 'base_patch': {'operations': [
+        {'value': {'parameters': {'provenance': {'rule': 'semantic-input'}}}}]},
+        'factors': [{'choices': [{'id': 'x', 'provenance': {'author': 'metadata-only'},
+            'operations': [{'value': {'state': {'provenance': 'semantic-state'}}}]}]}]}
+    normalized = _without_provenance(definition)
+    assert 'provenance' not in normalized
+    assert normalized['base_patch']['operations'][0]['value']['parameters']['provenance'] == {'rule': 'semantic-input'}
+    assert 'provenance' not in normalized['factors'][0]['choices'][0]
+    assert normalized['factors'][0]['choices'][0]['operations'][0]['value']['state']['provenance'] == 'semantic-state'
 
 
 def test_symlink_raw_rejected(tmp_path):

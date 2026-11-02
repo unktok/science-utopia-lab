@@ -24,14 +24,15 @@ Technical stops retain null failed losses and do not become numeric penalties.
   per-arm method bindings, two generations of two draws, and original population.
 - Every generation's exact own-arm past history, request-bound external inbox,
   original manifest, and saved source/factors/coordinates. Initial definitions
-  must match across methods except fields explicitly named `provenance`; code,
-  IDs, edits, bounds, weights, metadata and wiring are not erased for matching.
+  must match across methods except the declared top-level vocabulary and
+  factor-choice `provenance` metadata fields; code, IDs, edits, bounds, weights,
+  metadata, wiring and semantic parameters/state named `provenance` are not erased.
 - Exact replay of the existing durable campaign: conditional likelihoods,
   sampled raw latents/assignments, compatibility signature, prior-only frozen
   fit, both categorical and Gaussian expectation corrections, all comparator
   gradients, and subsequent recorded weights. Replay uses numeric tensor math,
-  not generated institution or researcher execution. Both replay-critical
-  optimizer modules must match their actual experiment source-pin blobs exactly;
+  not generated institution or researcher execution. Replay-critical optimizer,
+  checkpoint audit helper and kernel modules must match their actual source-pin blobs exactly;
   the new audit script itself is allowed to be newer than the actual source.
 - Independent extraction of measurements and native loss from original portable
   checkpoints, annual event prefixes and initialized state. Physical validation
