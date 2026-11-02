@@ -86,3 +86,24 @@ logical replies. The unique anchor-origin calls are counted once in
 `response_coupling`; they are not six independent worlds or six new calls.
 Prior a1/a2 cost remains 228 actual replies and is reported separately from the
 new a3 fresh-call total.
+
+The final a3 analyzer also independently reads the anchor AND target Year1
+checkpoints. All semantic conference/paper/reviewer identities, complete review
+records, original `review_time` values and non-clock hashes must match the
+declared coupling. Before/after receipt hashes are reconstructed from target
+non-clock content and the recorded times. This checks internal evidence
+consistency, not independent authentication of historical before timestamps or
+wall-clock chronology. The source-bound implementation keeps global/transport
+clocks and Year2 review clocks live.
+
+A completed audit may evaluate the already frozen representation at61 fixed
+coordinates for `response_operator_analysis.represented_landscape`. This is a
+posthoc model-only visualization, not additional native measurements, training,
+temperature selection or candidate search. It records the exact representation
+hash and zero additional native/model calls. Figures consume only the compact
+independent report, never execute raw generated source or rerun the simulator.
+
+The actual a3 report, including the failed unused fidelity check and exact
+no-op proposal, is [recorded here](../results/native-qwen-response-v9-a3.md).
+Runtime, reporting, raw inventory and rendered-paper verification remain
+[separately source-bound](../results/native-qwen-response-v9-verification.json).
