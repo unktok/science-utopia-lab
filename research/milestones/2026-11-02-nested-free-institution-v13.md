@@ -25,5 +25,6 @@ Runtime is frozen at `fdf4d1c16964891e890cabe68d59b2820f462b92` in an unedited
 experiment worktree. Root integrated checks pass 30 kernel/driver/loss and
 38 independent-audit component tests; UI has 247 passing tests/typecheck/build
 and fixture/historical browser QA. These scopes overlap and are not Qwen
-experimental observations. Exact-runtime full regression is pending. Actual
+experimental observations. Exact-runtime full regression passes 2020 tests
+with 6 skips in 1200.38 seconds at frozen `fdf4d1c`. Actual
 model progress is confirmed, but no terminal budget/result/audit is claimed.

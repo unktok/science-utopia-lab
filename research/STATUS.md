@@ -24,13 +24,14 @@ honest evidence, not a promised useful invention or mandatory whole-world AD.
 
 Root's integrated kernel/driver/loss checks pass 30 tests; independent audit
 components pass 38 tests at reporting source `ccc1f44` (overlapping scopes).
-The full exact-runtime suite is still running; earlier interrupted starts and
+The full exact-runtime suite passes **2020 tests with 6 skips in 1200.38s** at
+the actual frozen source; earlier interrupted starts and
 a launchd PATH failure before any world execution are preserved, not called
 passes. Long jobs now have explicit executable environment and durable start/
 exit receipts. The UI's 247 tests/typecheck/build and fixture/historical browser
 checks pass, but public v13 data remains unavailable pending actual independent
 audit. Editable local drafts are distinct from execution/adoption. Figure,
-actual UI QA, final result interpretation, manuscript and main push remain.
+actual UI QA, final result interpretation, final manuscript and main push remain.
 
 ## Completed finite v12: free objective-conditioned redesign and inspected effects
 

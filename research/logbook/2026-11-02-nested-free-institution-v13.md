@@ -96,3 +96,14 @@ methods-only build has 52 pages and no overfull boxes/undefined references.
 New pages are rendered at120dpi and inspected. An old floating figure is found
 between the new section's paragraphs; float barriers are added before final
 publication. This preliminary PDF is not the final delivered artifact.
+
+## Exact-runtime full regression completes
+
+Corrected durable job `runtime-full-r4` exits zero: **2020 passed, 6 skipped,
+1200.38 seconds** at actual source `fdf4d1c16964891e890cabe68d59b2820f462b92`.
+Its full log, JUnit and start/environment/exit receipt remain under ignored
+verification outputs. The completed task-specific launchd registration is
+removed; no raw/test log is deleted and the user's Ollama service is untouched.
+No full-suite pass is claimed for either earlier interrupted start. UI and
+report-only checks have their own source-bound scopes; overlapping counts are
+not added to 2020. Actual pilot is still running at its original eight-slot cap.
