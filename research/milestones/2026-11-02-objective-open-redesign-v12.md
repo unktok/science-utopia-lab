@@ -19,3 +19,13 @@ fixes a combined eight-world maximum (six main, two followup), five authors,
 two years, scientific seed42, existing corpus and fixed Qwen weights.
 Successful improvement, useful invention, exact world/LLM derivatives, estimator
 advantage or complete game experience are NOT completion conditions.
+
+## Completed subtrack: native evaluation after the final control update
+
+The [separate followup](../results/native-control-followup-v12-a1.md) completes
+2/2 worlds,180 fresh replies, losses`[1.05,.55]` and zero world-level technical
+failures. Repeated independent audit is byte-identical; all32 raw files and the
+old v11 parent remain unchanged. Measured model-call time sums10.98min, not
+overall wall time. This closes the unevaluated-final-policy step; it does not
+establish an estimator benefit, expected-loss reduction or variance advantage.
+Main redesign execution and its final audit/UI/publication remain in progress.

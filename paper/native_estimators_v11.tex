@@ -105,7 +105,7 @@ has mean gradient $.742395$ and logit gradient $[.109754,-.109754]$, whereas
 plain LR on those same two observations gives $.945250$ and
 $[-.570274,.570274]$. These are individual noisy estimates, not variance
 measurements. The resulting saved mean $-.1150163$ and logits
-$[-.0605587,.0605587]$ are \emph{not} native-tested here.
+$[-.0605587,.0605587]$ are \emph{not} native-tested within the v11 budget.
 
 An independent read-only audit re-extracts the original checkpoint losses,
 replays both policies and fitted-control updates, verifies 64 source executions,
