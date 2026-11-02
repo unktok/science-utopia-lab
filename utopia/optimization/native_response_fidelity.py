@@ -109,9 +109,8 @@ def make_response_completion_receipt(endpoint, response_cache, wire, *, run_mani
     """
     checkpoint = Path(endpoint['checkpoint']).resolve()
     journal, wire = Path(response_cache.path).resolve(), Path(wire).resolve()
-    if (journal != checkpoint.parent.parent/'cache/responses.sqlite'
-            or wire != checkpoint.parent.parent/'wire.jsonl'
-            or file_sha256(checkpoint) != endpoint['checkpoint_sha256']
+    _review_evidence_paths(checkpoint, journal, wire)
+    if (file_sha256(checkpoint) != endpoint['checkpoint_sha256']
             or not _sha256(run_manifest_sha256)):
         raise ValueError('completion receipt requires actual checkpoint/cache/wire and run manifest hash')
     saved = read_portable_checkpoint(checkpoint)
@@ -134,12 +133,77 @@ def _sha256(value):
     return isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value)
 
 
+def _review_evidence_paths(checkpoint, journal, wire):
+    """Only the two existing original fixture/production layouts, never aliases."""
+    if checkpoint.parent.name == 'checkpoints':
+        root = checkpoint.parent.parent
+        expected = (root/'cache/responses.sqlite', root/'wire.jsonl')
+        profile = 'original-scripted-native-layout'
+    elif (checkpoint.parent.name == 'native-design' and checkpoint.parent.parent.name == 'checkpoints'
+            and checkpoint.parent.parent.parent.name == 'simulation'):
+        root = checkpoint.parents[3]
+        expected = (root/'replies/responses.sqlite', root/'wire-requests.jsonl')
+        profile = 'local-qwen-native-factory-layout'
+    else:
+        raise ValueError('raw review checkpoint does not use a supported original native layout')
+    if (journal, wire) != expected:
+        raise ValueError('raw review evidence must be the actual checkpoint sibling journal/wire layout pair')
+    return profile
+
+
+def _review_task_identities(saved, endpoint, years):
+    """Read trusted original-phase task identities from the actual checkpoint."""
+    from utopia.system.native_review_identity import SCHEMA as identity_schema, EVENT
+    events = [e for e in saved.get('native_system', {}).get('events', []) if e.get('event_type') == EVENT]
+    if not events:
+        return None  # Frozen v8 checkpoints retain their strict uniform adapter.
+    review_nodes = {n['mechanism_id'] for n in endpoint['system']['mechanisms']
+        if n['implementation'] in ('native.phase.review.v1', 'native.phase.review.with-delivered-context.v1')}
+    by_year = {}
+    for event in events:
+        value = event.get('payload', {})
+        year = event.get('year')
+        if (set(value) != {'schema', 'year', 'tasks', 'tasks_sha256'} or value['schema'] != identity_schema
+                or value['year'] != year or year in by_year
+                or event.get('provenance', {}).get('mechanism_id') not in review_nodes
+                or not isinstance(value['tasks'], list) or digest(value['tasks']) != value['tasks_sha256']):
+            raise BoundaryUnsupported('actual native review identity event is duplicated, untrusted or altered')
+        seen = set()
+        for i, task in enumerate(value['tasks']):
+            if (not isinstance(task, dict) or set(task) != {'item_index', 'year', 'reviewer_id', 'paper_id',
+                    'conference_id', 'prompt_sha256', 'parsed_response_sha256', 'native_score', 'native_review_sha256'}
+                    or type(task['item_index']) is not int or task['item_index'] != i or task['year'] != year
+                    or any(not isinstance(task[k], str) or not task[k] for k in ('reviewer_id', 'paper_id', 'conference_id'))
+                    or any(not _sha256(task[k]) for k in ('prompt_sha256', 'parsed_response_sha256', 'native_review_sha256'))
+                    or type(task['native_score']) is not int):
+                raise BoundaryUnsupported('actual native review task identity is incomplete or altered')
+            key = task['conference_id'], task['paper_id'], task['reviewer_id']
+            if key in seen:
+                raise BoundaryUnsupported('duplicate actual native reviewer/paper identity')
+            seen.add(key)
+            # Verify the actual archived record, not merely a count/mean or the
+            # observer's copied score. Optional later native transforms remain
+            # opaque and unsupported instead of being erased by this adapter.
+            rows = [r for p in saved.get('paper_tracker', {}).get('papers', []) if p['id'] == task['paper_id']
+                for d in p.get('review_history', []) if d.get('year') == year and d.get('conference') == task['conference_id']
+                for r in d.get('reviews', []) if r.get('reviewer_id') == task['reviewer_id']]
+            if (len(rows) != 1 or digest(rows[0]) != task['native_review_sha256']
+                    or rows[0].get('overall_score') != task['native_score']
+                    or rows[0].get('arxiv_id') != task['paper_id']
+                    or rows[0].get('conference_id') != task['conference_id']):
+                raise BoundaryUnsupported('review identity does not bind one unchanged actual archived native review record')
+        by_year[year] = value['tasks']
+    if set(by_year) != set(years):
+        raise BoundaryUnsupported('native review identity years do not exactly cover the represented review boundary')
+    return by_year
+
+
 def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mechanism, input_name,
                           score_column=0, count_column=1, upper=10, completion_receipt=None):
-    """Verified uniform numeric-reply cohort -> original int() review features.
+    """Actual per-review int() THEN paper mean, with verified task identities.
 
-    This optional adapter refuses heterogeneous unassigned replies. It does not
-    infer an individual LLM Jacobian or average away different behavior.
+    Old checkpoints without task identities retain the strict uniform adapter.
+    No record is aligned by score, title, SQL order or concurrent wire order.
     """
     from utopia.agents.base_agent import PaperReview
     from utopia.utils.seeding import derive_seed
@@ -147,9 +211,7 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         raise ValueError('native positive-int projection requires an explicit positive integer upper bound')
     journal, wire = Path(journal).resolve(), Path(wire).resolve()
     checkpoint = Path(endpoint['checkpoint']).resolve()
-    root = checkpoint.parent.parent
-    if journal != root/'cache/responses.sqlite' or wire != root/'wire.jsonl':
-        raise ValueError('raw review evidence must be the actual checkpoint sibling journal/wire')
+    evidence_layout = _review_evidence_paths(checkpoint, journal, wire)
     if file_sha256(checkpoint) != endpoint['checkpoint_sha256']:
         raise ValueError('actual review checkpoint content changed')
     saved = read_portable_checkpoint(checkpoint)
@@ -206,6 +268,7 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
     if not selected or len({e['year'] for e in selected}) != len(selected):
         raise BoundaryUnsupported('one explicitly selected actual review boundary per year required')
     task_schema = PaperReview.model_json_schema()
+    task_identities = _review_task_identities(saved, endpoint, [e['year'] for e in selected])
     review_requests = {}
     for entry in selected:
         shape = entry['shape']
@@ -216,13 +279,17 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         counts = original[:, count_column].tolist()
         if any(c < 0 or c != int(c) for c in counts):
             raise BoundaryUnsupported('review count column must contain actual nonnegative integer counts')
-        for item in range(int(sum(counts))):
+        task_count = len(task_identities[entry['year']]) if task_identities is not None else int(sum(counts))
+        for item in range(task_count):
             for attempt in range(3):
                 ctx = ('phase3_reviews', entry['year'])
                 seed = derive_seed(b['seed'], *ctx, item, attempt)
                 identity = hashlib.sha256(canonical_json({'binding': b, 'seed_ctx': ctx,
                     'item_index': item, 'attempt': attempt, 'seed': seed}).encode()).hexdigest()
-                review_requests[identity] = {'year': entry['year'], 'seed': seed, 'item': item, 'attempt': attempt}
+                proof = {'year': entry['year'], 'seed': seed, 'item': item, 'attempt': attempt}
+                if task_identities is not None:
+                    proof['native_task'] = task_identities[entry['year']][item]
+                review_requests[identity] = proof
     by_year, transport_rows = {}, []
     for sql_rowid, (identity, payload_sha, outcome, data, data_sha) in zip(sql_rowids, replies):
         wire_line, row = wire_by_sha[payload_sha]
@@ -236,7 +303,8 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         transport_rows.append({'sql_rowid': sql_rowid, 'wire_line': wire_line,
             'payload_sha256': payload_sha, 'cache_identity': identity})
         try:
-            body = json.loads(response['choices'][0]['message']['content'])
+            from utopia.models.models import parse_json_response
+            body = parse_json_response(response['choices'][0]['message']['content'])
         except (ValueError, KeyError, IndexError, TypeError):
             continue
         if isinstance(body, dict) and 'overall_score' in body:
@@ -250,10 +318,20 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
             value = body['overall_score']
             if type(value) not in (float, int) or not math.isfinite(value) or not 0 <= value <= upper:
                 raise BoundaryUnsupported('raw review score outside declared positive int projection')
+            if task_identities is not None:
+                from utopia.constants import IMPORTANT_NOTES
+                task = proof['native_task']
+                users = [m.get('content') for m in payload.get('messages', []) if m.get('role') == 'user']
+                prefix = IMPORTANT_NOTES+'\n\n'
+                if (len(users) != 1 or not isinstance(users[0], str) or not users[0].startswith(prefix)
+                        or hashlib.sha256(users[0][len(prefix):].encode()).hexdigest() != task['prompt_sha256']
+                        or digest(body) != task['parsed_response_sha256'] or int(value) != task['native_score']):
+                    raise BoundaryUnsupported('raw review prompt/result differs from the actual identity-bound original task')
             by_year.setdefault(row['year'], []).append({'value': value, 'payload_sha256': payload_sha,
                 'response_sha256': data_sha, 'cache_identity': identity, 'original_review_task': proof,
                 'sql_rowid': sql_rowid, 'wire_line': wire_line})
     raw, indices, cohorts = native_values.clone(), [], []
+    aggregation, semantic_ids, raw_reviews = [], [], []
     for entry in selected:
         shape = entry['shape']
         if len(shape) != 2 or max(score_column, count_column) >= shape[1]:
@@ -263,6 +341,45 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         counts = original[:, count_column]
         if len(cohort) != int(counts.sum()) or any(c < 0 or c != int(c) for c in counts.tolist()):
             raise BoundaryUnsupported('actual raw review replies and native review counts do not correspond')
+        if task_identities is not None:
+            mapped, seen = {}, set()
+            for reply in cohort:
+                task = reply['original_review_task']['native_task']
+                identity = {k: task[k] for k in ('year', 'conference_id', 'paper_id', 'reviewer_id')}
+                key = canonical_json(identity)
+                if key in seen:
+                    raise BoundaryUnsupported('multiple raw responses claim one actual successful native review task')
+                seen.add(key)
+                mapped.setdefault((task['paper_id'], task['conference_id']), []).append((key, reply))
+            claimed = set()
+            for row, semantic_id in enumerate(entry['semantic_ids']):
+                identity = json.loads(semantic_id)
+                if set(identity) != {'paper_id', 'conference_id'}:
+                    raise BoundaryUnsupported('review matrix must use exact paper/conference semantic row identities')
+                key = identity['paper_id'], identity['conference_id']
+                actual = sorted(mapped.get(key, []), key=lambda r: r[0])
+                if len(actual) != counts[row]:
+                    raise BoundaryUnsupported('actual raw reviewer identities do not match the exact native paper review count')
+                if not actual:
+                    if original[row, score_column] != 0:
+                        raise BoundaryUnsupported('unreviewed native score is not its actual observed zero')
+                    continue
+                parsed_mean = sum(int(r['value']) for _, r in actual)/len(actual)
+                if original[row, score_column] != parsed_mean:
+                    raise BoundaryUnsupported('mean of original per-review integer parses differs from the actual native feature')
+                target = entry['offset']+row*shape[1]+score_column
+                source_indices = []
+                for semantic, reply in actual:
+                    claimed.add(semantic)
+                    source_indices.append(len(native_values)+len(raw_reviews))
+                    semantic_ids.append(semantic)
+                    raw_reviews.append(reply['value'])
+                aggregation.append({'target': target, 'sources': source_indices})
+            if claimed != seen:
+                raise BoundaryUnsupported('actual native review task has no exact represented semantic paper row')
+            cohorts.append({'year': entry['year'], 'actual_replies': len(cohort),
+                'reply_content_sha256': digest(sorted(cohort, key=lambda r: canonical_json(r['original_review_task']['native_task'])))})
+            continue
         distinct = {r['value'] for r in cohort}
         if len(distinct) != 1:
             raise BoundaryUnsupported('heterogeneous or absent raw replies have no unique semantic row correspondence')
@@ -283,10 +400,18 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         raise BoundaryUnsupported('raw review years do not match represented review boundary')
     if before != (file_sha256(journal), file_sha256(wire)):
         raise ValueError('raw response evidence changed during read-only extraction')
-    return raw, {'kind': 'positive-int-truncation', 'indices': indices, 'upper': upper,
-        'contract': {'mechanism': mechanism, 'input_name': input_name, 'score_column': score_column,
-            'count_column': count_column, 'upper': upper, 'native_parser': 'int-positive-truncation',
-            'task_schema_sha256': digest(task_schema), 'original_task_seed_ctx': 'phase3_reviews'},
+    if task_identities is not None:
+        raw = torch.cat((raw, raw.new_tensor(raw_reviews)))
+        indices = list(range(len(native_values), len(raw)))
+    contract = {'mechanism': mechanism, 'input_name': input_name, 'score_column': score_column,
+        'count_column': count_column, 'upper': upper, 'native_parser': 'int-positive-truncation',
+        'task_schema_sha256': digest(task_schema), 'original_task_seed_ctx': 'phase3_reviews'}
+    if task_identities is not None:
+        contract.update(native_boundary_size=len(native_values), raw_review_semantic_ids=semantic_ids,
+            aggregation=aggregation, native_aggregation='mean-after-individual-original-int-parse')
+    return raw, {'kind': 'positive-int-truncation-per-review-mean' if task_identities is not None else 'positive-int-truncation',
+        'indices': indices, 'upper': upper,
+        'contract': contract, 'evidence_layout': evidence_layout,
         'checkpoint_sha256': endpoint['checkpoint_sha256'], 'checkpoint_response_count': len(replies),
         'full_checkpoint_binding_sha256': digest(b),
         'transport_join': {'kind': 'unique-payload-sha256-bijection-in-sql-completion-order',
@@ -295,14 +420,16 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
         'completion_provenance': completion_provenance,
         'journal': str(journal.resolve()), 'journal_sha256': before[0], 'wire': str(wire.resolve()),
         'wire_sha256': before[1], 'cohorts': cohorts,
-        'correspondence': 'uniform actual reply cohort only; no heterogeneous averaging or imputed identities'}
+        'correspondence': ('exact native year/conference/paper/reviewer identities; int EACH raw reply THEN mean; no imputed identities'
+            if task_identities is not None else 'uniform actual reply cohort only; no heterogeneous averaging or imputed identities')}
 
 
 def project_response(raw, projection, *, hard, temperature):
     result = raw.clone()
     indices = projection.get('indices', [])
+    per_review = projection.get('kind') == 'positive-int-truncation-per-review-mean'
     if not indices:
-        return result
+        return result[:projection['contract']['native_boundary_size']] if per_review else result
     selected = raw[indices]
     upper = projection['upper']
     if not torch.isfinite(selected).all() or bool(((selected < 0) | (selected > upper)).any()):
@@ -312,6 +439,11 @@ def project_response(raw, projection, *, hard, temperature):
     else:
         levels = torch.arange(1, upper+1, dtype=raw.dtype)
         result[indices] = torch.sigmoid((selected[:, None]-levels[None, :])/temperature).sum(1)
+    if per_review:
+        contract = projection['contract']
+        for group in contract['aggregation']:
+            result[group['target']] = result[group['sources']].mean()
+        return result[:contract['native_boundary_size']]
     return result
 
 

@@ -261,6 +261,7 @@ class NativeScienceKernel:
         year, results = frame["year"], frame["results"]
         sim.portable_safe_point()
         extra = {}
+        extra_events = ()
         if stage == "open":
             frame["results"] = results = sim._setup_year(year)
             sim._start_native_government_year(year, results)
@@ -282,7 +283,13 @@ class NativeScienceKernel:
         elif stage == "costs":
             sim._charge_annual_costs(year)
         elif stage == "review":
-            sim._run_phase_3_peer_review(year, results)
+            if getattr(sim, '_record_native_review_identities', False):
+                from .native_review_identity import capture_native_review_tasks, EVENT
+                with capture_native_review_tasks(sim, year) as review_identity:
+                    sim._run_phase_3_peer_review(year, results)
+                extra_events = (MechanismEvent(EVENT, payload=review_identity),)
+            else:
+                sim._run_phase_3_peer_review(year, results)
             sim.wandb_logger.log_phase(year, 3, results, sim)
             sim._apply_strategy_quality_adjustment(year)
         elif stage == "selection":
@@ -319,7 +326,7 @@ class NativeScienceKernel:
         world = self.observation()
         return MechanismResult(outputs={"next": (MechanismValue({"year": year}),),
             "world": (MechanismValue(world),), **extra}, events=(MechanismEvent(
-                "native.system.phase_executed", payload={"stage": stage, "observation_sha256": _hash(world)}),))
+                "native.system.phase_executed", payload={"stage": stage, "observation_sha256": _hash(world)}), *extra_events))
 
     def _apply_decisions(self, context):
         """Commit only actual native paper identities, regardless of selection algorithm."""
