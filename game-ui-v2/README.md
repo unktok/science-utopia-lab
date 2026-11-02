@@ -13,6 +13,11 @@ charts keep current draws separate from the historical incumbent, and actual
 native losses separate from represented gradients. See
 [the method observatory contract and verification](METHOD_OBSERVATORY.md).
 
+The separate `/native-open-estimators.html` v11 viewer defaults to a truthful
+unavailable state until a completed actual audit is exported. It supports
+black-box and expectation-gradient batches without inventing an initial score;
+see [v11 export, provenance and browser QA](OPEN_ESTIMATORS_V11.md).
+
 The v4 renderer is operational with a 48-second deterministic, synthetic
 fixture containing four researchers, four institutions, sixteen canonical
 events, seventeen evidence-linked actor actions, and seven visible flows across

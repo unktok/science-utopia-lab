@@ -1,0 +1,71 @@
+{
+  "schema": "scienceutopia.open-estimator-ui-browser-qa.v11",
+  "mode": "unavailable",
+  "classification": "no-actual-export-available",
+  "no_inference": true,
+  "no_job_dispatch": true,
+  "fixture_used": false,
+  "browser_errors": 0,
+  "failed_http_responses": 0,
+  "non_get_requests": 0,
+  "external_requests": 0,
+  "export_binding": null,
+  "ui_source_sha256s": {
+    "native-open-estimators.html": "872f05fcce5cf9cdb4730a2d1d1bc04f74d3cd6f2a1d63221c7c7a6980bbbfac",
+    "src/openEstimator.ts": "05df0ffb6a3ae6bf57d23b7a2a801583d1ce1525cd7a6e7d073ed61638f58a9c",
+    "src/openEstimator.css": "76b407685c6cab6e03f7b22360c18d036e3ea2f6802bb491f01cc163cff08201",
+    "src/openEstimatorContract.ts": "f4b0382ba5019a8cf957f57b1d3d0d8739146cce4f0e0db0d5f762a42a370f5b",
+    "scripts/export-open-estimators-v11.mjs": "6b540b4d8728be9bca72ae791dde9f0e67ea63389d32998119a0c2d2f9cfe528",
+    "scripts/verify-open-estimators-browser.mjs": "e17c7b60e34e8f3a65c803a85199fb940f462bf21ea21565445a7865f2859ccd"
+  },
+  "artifacts": {
+    "overview": {
+      "file": "open-estimators-v11-unavailable-overview.png",
+      "sha256": "76b0f77e36d59b71bb4c4fde2986524422a730b9fd804c4427d6e2dc9ab0069d",
+      "id": "overview",
+      "width": 1600,
+      "height": 1100,
+      "badge": "NO AUDITED EXPORT",
+      "unavailable": true,
+      "evidence": false,
+      "stations": 0,
+      "innerWidth": 1600,
+      "scrollWidth": 1600,
+      "bodyWidth": 1600,
+      "images": true
+    },
+    "paths": {
+      "file": "open-estimators-v11-unavailable-paths.png",
+      "sha256": "76b0f77e36d59b71bb4c4fde2986524422a730b9fd804c4427d6e2dc9ab0069d",
+      "id": "paths",
+      "width": 1600,
+      "height": 1100,
+      "focus": true,
+      "badge": "NO AUDITED EXPORT",
+      "unavailable": true,
+      "evidence": false,
+      "stations": 0,
+      "innerWidth": 1600,
+      "scrollWidth": 1600,
+      "bodyWidth": 1600,
+      "images": true
+    },
+    "mobile-paths": {
+      "file": "open-estimators-v11-unavailable-mobile-paths.png",
+      "sha256": "521a0d9a30cdc647de055777daeba0d37a849ffa90c043a710385df18009031c",
+      "id": "mobile-paths",
+      "width": 390,
+      "height": 1100,
+      "focus": true,
+      "mobile": true,
+      "badge": "NO AUDITED EXPORT",
+      "unavailable": true,
+      "evidence": false,
+      "stations": 0,
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "bodyWidth": 390,
+      "images": true
+    }
+  }
+}

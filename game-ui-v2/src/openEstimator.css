@@ -1,0 +1,1 @@
+body[data-fixture='scripted-v11']::after{content:'SCRIPTED UI FIXTURE · NOT ACTUAL QWEN';position:fixed;z-index:1000;left:5%;right:5%;top:46%;pointer-events:none;text-align:center;font:bold clamp(20px,4vw,70px)/1.2 monospace;transform:rotate(-18deg);color:#ffc85733;text-shadow:0 0 1px #ffc85733}

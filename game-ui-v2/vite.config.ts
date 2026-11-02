@@ -20,6 +20,7 @@ export default defineConfig({
         openEvidence: resolve(__dirname, "open-evidence.html"),
         objectiveStructure: resolve(__dirname, "objective-structure.html"),
         methodObservatory: resolve(__dirname, "method-observatory.html"),
+        openEstimators: resolve(__dirname, "native-open-estimators.html"),
       },
     },
   },
