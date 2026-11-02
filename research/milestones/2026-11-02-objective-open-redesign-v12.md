@@ -1,6 +1,6 @@
 # V12 finite goal: free loss-conditioned redesign and inspected native effects
 
-Status: main G0 complete, G1 executing; separate final-control followup audited.
+Status: eight native worlds and both independent audits complete; actual UI/PDF finalizing.
 
 The primary question is what systems different objectives produce, not making
 the world differentiable. V8's structural paths and v11's estimator integration
@@ -28,4 +28,47 @@ failures. Repeated independent audit is byte-identical; all32 raw files and the
 old v11 parent remain unchanged. Measured model-call time sums10.98min, not
 overall wall time. This closes the unevaluated-final-policy step; it does not
 establish an estimator benefit, expected-loss reduction or variance advantage.
-Main redesign execution and its final audit/UI/publication remain in progress.
+The separately closed main execution is summarized below; actual UI/publication
+finalization is tracked by the overall status, not this earlier subtrack entry.
+
+## Completed execution: objective-conditioned free redesign
+
+The [main result](../results/native-objective-redesign-v12-a1.md) closes all six
+planned main worlds with 565 fresh replies, no reuse and no world-level technical
+failure. Throughput losses are `[-10,-10,-10]`; utility losses are
+`[-1/6,0,-1/6]` up to floating-point precision. Both retain G0, including all
+three/count and two/utility exact best ties. The loss-selected institutions
+are 17 nodes/25 wires and 16 nodes/22 wires, not the same review template.
+
+Utility G1 introduces executable milestone-clinic source and two wires, revises
+evidence matching and commits two actual plan amendments. Its worse observed
+loss is retained as evidence, not labelled successful invention or a causal
+effect of the milestone mechanism alone. G2 returns to G0, the actual incumbent
+parent, rather than making the prior chronological proposal its baseline.
+Each generation can freely author or retain code/protocol/graph/process; no
+semantic novelty or improvement is required by the optimizer's technical gate.
+
+Two independent audits are byte-identical and preserve all 107 raw files;
+32 source executions and native command/event/wire/state evidence are checked.
+Full applied-plan-hash reconstruction is unavailable because the recorded ABI
+does not bind the full upstream context. Combined with the separate followup:
+8 native worlds, 745 fresh Qwen replies, no population/horizon/seed expansion.
+Measured model-call sums are 36.11 min main and 10.98 min followup, not overall
+wall time or a hardware speed benchmark.
+
+## Remaining research and explicit non-scale limitations
+
+- Neither main arm improves its first observation. Useful institutional invention
+  or an improving endogenous designer is not established by executable authoring.
+- These losses are illustrative proxies, not validated scientific value or a
+  normative science-policy choice. No substantive veto was added outside them.
+- Source generation is externally authored/self-reported. Own-history scope is
+  instruction/request enforcement, not OS isolation or provider authentication.
+- Native laws, actor/effect consumers, annual structure and corpus/production
+  assumptions remain extensible but explicit; arbitrary new scientific semantics
+  still need trusted capability implementations and tests.
+- Stronger upstream plan provenance, estimator effectiveness and optional
+  response/pathwise fidelity remain separate non-scale work. Whole-world AD is
+  not a mandatory gate, and more seeds would not fix these implementation gaps.
+- The evidence-facing English game-like UI is not a complete management game.
+  Its choreography must not be read as measured researcher activity.

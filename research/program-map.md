@@ -4,14 +4,20 @@ Updated: 2026-11-02
 
 ## Current direction: optimization, not mandatory differentiability
 
-The active [v12 finite slice](milestones/2026-11-02-objective-open-redesign-v12.md)
-prioritizes objective-conditioned free redesign: two losses, three own-history
-generations each, maximum six native attempts. A separate two-attempt followup
-tests v11's final saved control update, without rewriting its closed budget.
-Independent audit/figures and English flow/lineage UI are parallel tracks.
-This is not another population/seed/horizon scale-up. See STATUS for evidence.
+The [v12 finite slice](milestones/2026-11-02-objective-open-redesign-v12.md)
+closes its native budget: two losses, three own-history generations each,
+six main worlds/565 fresh replies, plus two separate final-control followups/
+180 replies. Throughput `[-10,-10,-10]` and utility `[-1/6,0,-1/6]` select
+different freely authored 17/25 and 16/22 node/wire systems but neither beats
+G0. The milestone-clinic revision executes two native amendments and has a
+worse observed loss, so G2 returns to G0. Independent audit preserves all
+107 main files and all32 followup files; same-checkpoint cross-scores are not
+held-out results. Source/graph freedom is implemented; useful invention is not
+established. Audit/figures, separate estimator forward evaluation and English
+flow/lineage UI are parallel work units, not perpetual background workers.
+There is no population/seed/horizon scale-up. See STATUS for publication QA.
 
-The latest completed execution slice is
+The preceding completed execution slice is
 [v11](milestones/2026-11-02-open-native-estimators-v11.md): free code/protocol/wiring
 design shares an original-native execution boundary with derivative-free and
 conditional expectation-gradient updates. Eight fresh worlds/742 replies
@@ -68,10 +74,10 @@ evidence is summarized in the first paragraph and the milestone acceptance ledge
 
 | Original goal | Implemented interface | Evidence already available | Remaining non-scale boundary |
 |---|---|---|---|
-| Change the objective and optimize the scientific system | Versioned LossSpec, separate metrics, durable ask/execute/measure/tell and trace-informed source redesign | Parameter held-out study; v8 eight original worlds/two losses, count9→10 versus utility retaining0, actual changed graphs and all cross-scores | Richer defensible objectives, scientific discovery and generalization remain unestablished |
+| Change the objective and optimize the scientific system | Versioned LossSpec, separate metrics, durable ask/execute/measure/tell and trace-informed source redesign | Parameter held-out study; v8 count9→10; v12 six original worlds/two freely revised institutions, full paths/cross-scores and no new best | Richer defensible objectives, scientific discovery and generalization remain unestablished |
 | Invent institutions rather than tune a fixed review template | Arbitrary sandboxed Python, explicit protocols, state, ports and outputs; LLM/external complete manifests | Actual Qwen-source execution and externally authored institutions; local-Qwen joint-generation failures are retained | Native effect consumers, security/compute limits and actor ontology remain explicit; external Codex authorship is not autonomous Qwen invention |
-| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | Six-year compatibility/restart; v8 actual16/22,17/24 and18/24 graphs with new deadline/amendment/publication-review-feedback routes | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source |
-| Optimize through a differentiable representation | Recurrent attention/routing; native-cost design score gradients; learned response boundary, native projection and explicit unknown support | Earlier native updates and failed transition fit; v8 scripted unused finite-delta error2.36e-5 vs24 frozen, projected candidate ties | No exact native/LLM Jacobian, actual-Qwen response fidelity or optimizer advantage; unmapped heterogeneous raw replies unsupported |
+| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | Six-year compatibility/restart; v8 topology changes; v12 native annual sprints versus evidence office, new milestone node/two wires and actual amendment receipts | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source; full upstream-plan-hash binding unavailable in v12 |
+| Use suitable gradient estimators or optional differentiable representations | Recurrent attention/routing; mixed-design likelihood-ratio and corrected prior-control estimators; learned response boundary/native projection | V11 native estimator integration; v12 two forward tests after final saved update; scripted response fit passes but actual-Qwen unused-path fidelity fails | No demonstrated estimator advantage or variance reduction; exact world/LLM Jacobian is optional and unverified, not a project gate |
 | Continually redesign and update the designer | Objective-visible same-society adoption; source/vocabulary generation from outcomes; durable strategy updates | v6 same society/two adoptions/130 replies; v8 loss-informed redesigned source improves count but not utility | Reset-world and same-society evidence differ; a better sampled institution does not prove the designer itself improved |
 | Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and exact source/graph chronicle | Actual v6 consent; v8 byte-exact eight-world audit export,184 UI tests/build and actual desktop/mobile QA, no errors/overflow/jobdispatch | Not a complete management game; presentation choreography is not scientific activity |
 

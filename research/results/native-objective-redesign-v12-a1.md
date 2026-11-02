@@ -57,7 +57,7 @@ is no universal winner under these two engineering proxies.
 |---|---:|---|---:|---:|
 | Throughput G0/G1/G2 | 17 / 25 each | Production office, annual sprint scheduler, native selection replacement | 6 each | 10 / 10 each |
 | Utility G0/G2 | 16 / 22 each | Evidence office, native selection replacement | 4 each | 10 / 9 each |
-| Utility G1 | 17 / 24 | Evidence office, milestone clinic, revised selection | 6 | 10 / 10 |
+| Utility G1 | 17 / 24 | Revised evidence office, milestone clinic, unchanged admission source | 6 | 10 / 10 |
 
 “Observed” here counts delivered recipient messages found in at least one
 completed actual model input, not a number of separate HTTP calls. The office
@@ -78,7 +78,8 @@ forced diversity: the same fingerprint
 is executed freshly each time. Repeated outcomes do not imply response reuse.
 
 Utility G1 adds the genuinely executed `milestone-clinic` node and two wires,
-changes selection source and revises schedules. Its loss0 is worse than the
+revises evidence-office matching and schedules while retaining byte-identical
+admission source. Its loss0 is worse than the
 G0 incumbent. **Utility G2's parent is the G0 best, not chronological G1.** G2
 retains that exact parent: its zero `vs_parent` diff is correct, while the
 chronological G1-to-G2 change removes the clinic/revised design by returning to
@@ -136,7 +137,7 @@ verified. This missing proof must not be relabelled a complete full-plan replay.
 
 Despite genuine activity changes, utility G1 still incurs15 reviews and has
 loss0. This is a revision-level outcome, not an isolated causal effect of the
-clinic: selection and scheduling also change. Actual nontrivial execution is
+clinic: evidence matching and scheduling also change. Actual nontrivial execution is
 not the same as a successful optimizer step or beneficial scientific invention.
 
 ## Cost, provenance and limits

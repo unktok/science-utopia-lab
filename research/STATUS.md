@@ -2,30 +2,43 @@
 
 Updated: 2026-11-02
 
-## Active finite v12: objective-conditioned free redesign
+## V12 native execution and independent audits complete; publication finalizing
 
-User approves the next goal: different exact objectives condition continued
-source/protocol/node/wiring/process generation on the original researcher world,
-not another fixed pair of aggregation rules. [V12 milestone](milestones/2026-11-02-objective-open-redesign-v12.md)
-and [prospective protocol](protocols/campaigns/native-objective-redesign-v12.md)
-fix six main worlds (two losses/three generations/one draw) plus two separately
-bound forward-only evaluations after v11's final control update. Five authors,
-two years, scientific seed42 and Qwen weights remain. No hidden veto or novelty
-reward. Independent audit/figures, followup and English UI run as parallel
-implementation tracks, with root integrating and owning actual inference.
-The actual source pins clean`ecab4b4`. Separate own-history authors have supplied
-G0 source/protocol/process/wiring (17/25 and16/22 node/edge graphs). Its two
-actual native worlds complete with191 fresh replies and own losses`-10` and
-`-0.16666666666666785`; a stopped-writer partial independent audit passes.
-G1 is running: throughput retains its executable candidate; utility adds a
-two-year milestone clinic and its native plan-amendment protocol/wiring.
-The separate [two-world control followup](results/native-control-followup-v12-a1.md)
-is independently audited:180 fresh replies, losses`[1.05,.55]`, no demonstrated
-estimator advantage. Old parent raw files stay unchanged. Exact-source full
-regression records1913passes/6skips/one inherited typography failure; a later
-reporting full run records1950passes/6skips/one SVG test-isolation failure now
-being investigated. Neither is falsely called all-green. Main final audit,
-actual UI and updated PDF remain pending; no final v12 main result is claimed.
+The [finite v12 goal](milestones/2026-11-02-objective-open-redesign-v12.md) tests
+different exact objectives through freely authored source, mechanisms, protocols,
+wiring and activity processes, not another fixed review-rule selector. The
+[prospective protocol](protocols/campaigns/native-objective-redesign-v12.md)
+closes at its original budget: six main worlds plus two separately bound
+final-control followups, clean source `ecab4b4`, five authors, two years, scientific
+seed 42 and fixed Qwen weights. No scale-up, hidden veto or novelty reward.
+
+The [main result](results/native-objective-redesign-v12-a1.md) has 565 fresh Qwen
+replies, no response reuse and no world-level technical failure. Throughput
+losses are `[-10,-10,-10]`; utility losses are `[-1/6,0,-1/6]` to floating-point
+precision. Both retain G0, with three and two exact best-observation ties.
+The selected 17-node/25-wire production-office/sprint system and 16-node/22-wire
+evidence-office/utility-admission system differ. Utility G1 adds a real
+milestone-clinic node and two wires; two native plan amendments execute, but
+loss worsens and review count remains 15. G2 returns to its G0 incumbent.
+This is a completed redesign/execute/measure/retain loop, not successful
+adaptive invention, a better designer, generalization or a causal comparison.
+
+Independent repeated audit preserves all 107 main raw files, remeasures all
+losses and same-checkpoint cross-scores, and verifies 32 source executions.
+Native event/command/source/wire/state proofs are present; a fully bound
+upstream-plan context is not, so full applied-plan-hash reconstruction remains
+unavailable. Measured model-call time sums 36.11 min, not overall wall time.
+The [separate control followup](results/native-control-followup-v12-a1.md)
+adds 180 fresh replies and losses `[1.05,.55]`, without an estimator advantage
+or variance-reduction claim. Both raw inventories and the old parent stay intact.
+Together: 8 native worlds, 745 fresh replies; no more inference is pending.
+
+Exact-source full regression retains 1913 passes/6 skips/one inherited spacing
+failure; reporting source retains 1950 passes/6 skips/one SVG isolation failure.
+Corrected clean reporting source `e0a5c38` passes 1953 tests with 6 skips, same
+native runtime. These overlapping scopes are not summed or relabelled as final
+tip verification. Actual UI export/browser QA, final figure and rendered PDF
+are being finalized against the closed audit.
 
 ## Completed finite v11: open native institutions, gradient estimation as a means
 
