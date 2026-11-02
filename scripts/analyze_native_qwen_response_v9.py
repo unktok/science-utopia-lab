@@ -544,6 +544,13 @@ def markdown_summary(report):
         'The table contains fixed-objective development measurements, including an unfavorable or tied candidate if observed.',
         'The gradient is autograd through a calibration-fitted numeric response representation, not an exact Qwen or native-world Jacobian.',
         'Unused coordinates are fidelity checks, not held-out seeds. No promotion policy or causal scientific-benefit claim is applied.', '']
+    control = report['technical_validity'].get('prefix_control_comparison', {})
+    if control.get('status') == 'observed-uncontrolled-prefix-separate-from-terminal-failure':
+        lines += ['## Independent-Qwen prefix diagnostic', '',
+            f"- Status: `{control['status']}`",
+            f"- Comparator detail: `{control['error']}`", '',
+            'The completed independent worlds changed before the declared rubric intervention, so this prefix cannot identify a controlled response fit.',
+            'This stochastic prefix drift is separate from the recorded terminal stop and is not a negative response-fidelity, optimization, or scientific result.', '']
     failures = report['technical_validity']['failures']
     if failures:
         lines += ['## Preserved terminal failure', '',
