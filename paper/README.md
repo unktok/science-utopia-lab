@@ -23,11 +23,14 @@ The final shareable artifact is
 
 ## Evidence boundary
 
-The latest45-page paper adds the actual v11 expected-loss-estimator pilot:
+The historical45-page v11 paper adds the actual expected-loss-estimator pilot:
 eight fresh original-native worlds,742 Qwen replies, no replay, and both paths
 `[.7833333,1.2,1.2,1.2]`. No new best is found. The G0 plain-LR update is
 native-tested through G1; the final prior-only corrected-control update is
-saved but not subsequently native-tested. The small authored family contains
+saved but not subsequently native-tested within that closed budget. The
+separately budgeted [v12 followup](../research/results/native-control-followup-v12-a1.md)
+now supplies two fresh forward outcomes without an estimator-benefit claim.
+The small authored family contains
 two Python aggregation rules and a cutoff, not autonomous structural invention
 in every generation. The generic source/protocol/wiring API is broader.
 The new actual four-panel graphic and English UI capture are audit-bound.
