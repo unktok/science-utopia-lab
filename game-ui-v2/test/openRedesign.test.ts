@@ -51,10 +51,11 @@ describe('v12 objective-conditioned free redesign evidence',()=>{
   it('retains technical failure as null, with no invented endpoint or best score',async()=>{
     const {text,receipt}=exporting(a=>{
       a.status='budget-complete-with-failures';a.physical_native_worlds=5;
-      const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[2];r.status='generation-failure';r.loss=null;r.own_loss=null;r.cross_scores=Object.fromEntries(REDESIGN_OBJECTIVES.map(id=>[id,null]));r.system=null;r.physical_proof=null;r.metrics={};
+      const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[2];r.status='generation-failure';r.observation_id=null;r.loss=null;r.own_loss=null;r.cross_scores=Object.fromEntries(REDESIGN_OBJECTIVES.map(id=>[id,null]));r.system=null;r.physical_proof=null;r.metrics={};
     });
     const data=await verifyOpenRedesign(text,receipt,true),rows=data.arms[REDESIGN_OBJECTIVES[0]].observations;
     expect(rows[2]!.own_loss).toBeNull();expect(rows[2]!.running_best).toBe(rows[1]!.running_best);
+    expect(rows[2]!.observation_id).toBeNull();
   });
   it('preserves missing cross-objective score rather than manufacturing zero',async()=>{
     const {text,receipt}=exporting(a=>{const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[0];delete r.metrics['native.accepted_peer_score_sum'];r.cross_scores[REDESIGN_OBJECTIVES[1]]=null;});
@@ -79,5 +80,7 @@ describe('v12 objective-conditioned free redesign evidence',()=>{
     expect(code).not.toMatch(/method:\s*['"]POST|\/api\/|setInterval/);
     expect(html).toContain('NOT MEASURED AGENT ACTIVITY');expect(html).toContain('NOT HELD OUT');
     expect(code).not.toContain('review-aggregation');expect(code).toContain('system.mechanisms');
+    expect(code).toContain('record?.request?.parent_system');
+    expect(code).not.toContain('observations[selectedGeneration-1]');
   });
 });

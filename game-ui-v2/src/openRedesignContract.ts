@@ -4,7 +4,7 @@ export const REDESIGN_OBJECTIVES = ['native-joint-v5-throughput', 'native-joint-
 export type ObjectiveId = typeof REDESIGN_OBJECTIVES[number];
 export type Evidence = Record<string, any>;
 export interface RedesignObservation extends Evidence {
-  generation: number; draw_index: 0; observation_id: string; own_loss: number | null;
+  generation: number; draw_index: 0; observation_id: string | null; own_loss: number | null;
   cross_scores: Record<ObjectiveId, number | null>; status: string;
 }
 export interface OpenRedesign extends Evidence {
@@ -32,10 +32,11 @@ export function parseOpenRedesign(value: unknown, allowFixture = false): OpenRed
     if (!arm || arm.objective_id !== id || !Array.isArray(arm.observations) || arm.observations.length > 3) fail('objective arm');
     let best = Infinity;
     arm.observations.forEach((row, index) => {
-      if (row.arm !== id || row.generation !== index || row.draw_index !== 0 || typeof row.observation_id !== 'string' || ids.has(row.observation_id)) fail('observation lineage');
-      ids.add(row.observation_id);
+      if (row.arm !== id || row.generation !== index || row.draw_index !== 0
+          || row.observation_id !== null && (typeof row.observation_id !== 'string' || ids.has(row.observation_id))) fail('observation lineage');
+      if (row.observation_id !== null) ids.add(row.observation_id);
       if (row.status === 'complete') {
-        if (!finite(row.own_loss) || row.loss !== row.own_loss || row.cross_scores?.[id] !== row.own_loss
+        if (typeof row.observation_id !== 'string' || !row.observation_id || !finite(row.own_loss) || row.loss !== row.own_loss || row.cross_scores?.[id] !== row.own_loss
             || !hash(row.system_fingerprint) || !hash(row.checkpoint_sha256)
             || !Array.isArray(row.system?.mechanisms) || !Array.isArray(row.system?.connections)
             || !row.physical_proof || !row.lineage?.vs_parent || !row.lineage.vs_initial) fail('actual native endpoint');

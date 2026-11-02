@@ -79,8 +79,10 @@ function codeMarkup(source: string, other: string, state: 'added'|'removed'): st
   return source.split('\n').map(line=>existing.has(line)?esc(line):`<span class="code-${state}">${esc(line)||' '}</span>`).join('\n');
 }
 function renderInspector(): void {
-  const selected=row(),node=list(selected.system?.mechanisms).find(n=>n.mechanism_id===selectedNode),parent=data.arms[armId()].observations[selectedGeneration-1];
-  const previousNode=list(parent?.system?.mechanisms).find(n=>n.mechanism_id===selectedNode),edge=list(selected.system?.connections)[selectedWire];
+  const selected=row(),node=list(selected.system?.mechanisms).find(n=>n.mechanism_id===selectedNode);
+  const record=list(data.arms[armId()].records).find(r=>r.request?.generation===selected.generation);
+  const parentSystem=record?.request?.parent_system??data.arms[armId()].observations.find(r=>r.system_fingerprint===selected.parent_system_fingerprint)?.system;
+  const previousNode=list(parentSystem?.mechanisms).find(n=>n.mechanism_id===selectedNode),edge=list(selected.system?.connections)[selectedWire];
   el('node-title').textContent=edge?`${edge.source_mechanism}.${edge.source_port} → ${edge.target_mechanism}.${edge.target_port}`:selectedNode||'NO CANDIDATE NODE';
   el('inspector-tabs').querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.tab===tab)));
   const pane=(title:string,body:unknown)=>`<article><h4>${esc(title)}</h4><pre>${esc(typeof body==='string'?body:JSON.stringify(body,null,2))}</pre></article>`;
