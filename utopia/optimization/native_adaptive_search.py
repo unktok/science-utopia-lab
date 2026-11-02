@@ -71,7 +71,8 @@ class GeneratedMixedDesign:
     no host institution/code catalogue. A later generator can replace/extend all
     of these, explicitly choosing whether to carry forward learned weights.
     """
-    def __init__(self, parent, definition, *, loss_spec, seed, learning_rate=.1):
+    def __init__(self, parent, definition, *, loss_spec, seed, learning_rate=.1,
+                 single_draw_blackbox=False):
         required = {'base_patch', 'factors', 'continuous', 'provenance'}
         if (not isinstance(definition, dict) or not required <= set(definition)
                 or set(definition) - required - {'logits'}
@@ -79,11 +80,15 @@ class GeneratedMixedDesign:
                 or not isinstance(definition['factors'], list) or not isinstance(definition['continuous'], list)
                 or type(seed) is not int or not _finite(learning_rate) or learning_rate <= 0):
             raise ValueError('complete generated definition/provenance and finite search settings required')
+        if type(single_draw_blackbox) is not bool:
+            raise ValueError('single-draw black-box mode must be explicit boolean')
+        self.single_draw_blackbox = single_draw_blackbox
         self.definition, self.loss = clone(definition), clone(loss_spec)
         self.parent, self.seed, self.learning_rate = parent, seed, float(learning_rate)
         self.base = _apply_or_identity(parent, definition['base_patch'])
         self.policy = (NativeFactorizedDesignSearch(self.base, definition['factors'], loss_spec=loss_spec,
-            design_provenance=definition['provenance'], seed=seed, baseline='leave-one-out',
+            design_provenance=definition['provenance'], seed=seed,
+            baseline=0. if single_draw_blackbox else 'leave-one-out',
             learning_rate=learning_rate, logits=definition.get('logits')) if definition['factors'] else None)
         if self.policy is None and definition.get('logits') not in (None, {}):
             raise ValueError('no factor logits without declared factors')
@@ -134,8 +139,8 @@ class GeneratedMixedDesign:
         self._check_definition()
         if self._sampled is not None:
             raise ValueError('one immutable batch per generated version instance')
-        if type(count) is not int or count < 2:
-            raise ValueError('at least two IID draws required for independent leave-one-out feedback')
+        if type(count) is not int or count < (1 if self.single_draw_blackbox else 2):
+            raise ValueError('at least two IID draws required unless explicit single-draw black-box mode')
         if self.policy:
             self.policy.ask(count)
             discrete = self.policy.pending
@@ -175,7 +180,8 @@ class GeneratedMixedDesign:
     def update(self, draws, observations, *, score, estimator_context=None):
         self._check_definition()
         if (self._told or self._sampled != draws or self.weights() != self._sampling_weights
-                or len(observations) != len(draws) or len(draws) < 2):
+                or len(observations) != len(draws)
+                or len(draws) < (1 if self.single_draw_blackbox and not score else 2)):
             raise ValueError('stale/changed mixed grammar, weights, draw choices or tell batch')
         before = self.weights()
         costs = [o['loss'] if o is not None else None for o in observations]
@@ -296,6 +302,8 @@ class NativeAdaptiveDesignCampaign:
             'generation_error', 'draws', 'observations', 'report')} for record in records]
 
     def _request(self, records, strategy_state, count):
+        if type(count) is not int or count < (1 if self.binding['mode'] == 'blackbox' else 2):
+            raise ValueError('positive black-box batch or at least two score/hybrid draws required')
         ids = sorted(self.binding['strategies'])
         logits = torch.tensor(strategy_state['logits'], dtype=torch.float64)
         probabilities = (1 - self.binding['exploration']) * logits.softmax(0) + self.binding['exploration'] / len(ids)
@@ -319,7 +327,8 @@ class NativeAdaptiveDesignCampaign:
 
     def _mixed(self, record):
         return GeneratedMixedDesign(SystemSpec.from_dict(record['request']['parent_system']), record['definition'],
-            loss_spec=self.loss, seed=record['request']['rng_seed'], learning_rate=self.binding['learning_rate'])
+            loss_spec=self.loss, seed=record['request']['rng_seed'], learning_rate=self.binding['learning_rate'],
+            single_draw_blackbox=self.binding['mode'] == 'blackbox' and record['request']['count'] == 1)
 
     def _compile(self, record):
         mixed = self._mixed(record)
@@ -490,8 +499,8 @@ class NativeAdaptiveDesignCampaign:
         waits preserve it. Invalid vocabularies/draws get null costs and are not
         repaired/resampled; a later explicit advance generates a new version.
         """
-        if type(count) is not int or count < 2:
-            raise ValueError('at least two draws required')
+        if type(count) is not int or count < (1 if self.binding['mode'] == 'blackbox' else 2):
+            raise ValueError('positive black-box batch or at least two draws required for score/hybrid')
         strategy = self._validate()
         record = self.state['pending']
         if record is None:
