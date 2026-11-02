@@ -124,3 +124,36 @@ Its focused run passes, suggesting cross-test Matplotlib settings rather than
 a native loss/runner defect. Preserve the full JUnit receipt; the independent
 reporting specialist investigates deterministic rendering and isolation without
 changing the frozen experiment. This run is not reported as all-green.
+
+## Second generation closes; final own-history requests issued
+
+G1 completes, giving four main native worlds and 374 fresh replies in total.
+The throughput repeat observes the same `A=10,Q=31.666666666666668,R=30,L=-10`.
+The utility milestone-clinic system observes `A=1,Q=4,R=15,L=0`: it is worse
+than its G0 incumbent, not a successful improvement. Native receipts establish
+two actual generated plan amendments and two annual plan-effect events; a
+six-year scripted QA amendment count is not substituted for that actual count.
+The unchanged utility incumbent is G0, so G2's parent is not the chronological
+G1 candidate. A stopped-writer partial independent audit confirms all four
+worlds and finishes before either final external response is published.
+Its content hash is
+`24a8dde12ed4b1206a70acde091e4e58b2fe65fd84b15e48556d4c2562b26ccb`.
+
+Exact G2 request hashes are throughput
+`a3abc119f3ff5c6a3936515c332cec2e15cb8c163ec84947e613ce69e6b00525`
+and utility
+`87369ef89618e34fe351f1f873aa12216a2bdb7c3a2d868d4cab4804b7f5d19a`.
+Authors again see only own-arm histories and referenced own checkpoints. The
+throughput author inspects its committed G1 while the other world is still
+running but writes nothing until the exact request exists and inventory audit
+ends. This parallel reasoning is not parallel native/model execution.
+
+The SVG failure reproduces exactly with ambient `svg.fonttype='none'`.
+Existing other figures legitimately set this global style; the prior assertion
+incorrectly counted path-font comments rather than semantic SVG text. Fix
+`e0a5c38` isolates the complete v12 render context, preserves caller state,
+uses editable text, and tests two polluted style cases for byte-identical
+PNG/SVG output. Related 35 checks and focused polluted-startup 3 checks pass;
+scopes overlap. A third clean full suite starts at exact `e0a5c38`, not at the
+frozen experiment pin or uncommitted final publication text. Preserve both
+earlier full-run failures alongside this later verification.
