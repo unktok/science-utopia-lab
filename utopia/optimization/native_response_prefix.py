@@ -9,6 +9,7 @@ new physical inference or an independent researcher-world replication.
 from copy import deepcopy
 import hashlib
 import json
+import math
 from pathlib import Path
 import sqlite3
 import threading
@@ -40,6 +41,27 @@ def _review(payload):
     schema = (payload.get('extra_body', {}).get('structured_outputs', {}).get('json')
         or payload.get('response_format', {}).get('json_schema', {}).get('schema'))
     return schema == PaperReview.model_json_schema()
+
+
+def _review_clocks(state):
+    """Exact actual year1 semantic review identities and ONLY their clock field."""
+    records, seen = [], set()
+    for conference in state.get('conference_system', {}).get('conferences', []):
+        for paper_id, reviews in conference.get('reviews', {}).items():
+            for review in reviews:
+                identity = {'year': 1, 'conference_id': conference['conference_id'],
+                    'paper_id': paper_id, 'reviewer_id': review.get('reviewer_id')}
+                key = canonical_json(identity)
+                clock = review.get('review_time')
+                if (key in seen or review.get('year') != 1
+                        or review.get('conference_id') != identity['conference_id'] or review.get('arxiv_id') != paper_id
+                        or not isinstance(identity['reviewer_id'], str) or not identity['reviewer_id']
+                        or type(clock) not in (float, int) or not math.isfinite(clock)):
+                    raise ValueError('year1 operational review clock lacks one actual semantic identity')
+                seen.add(key)
+                records.append({**identity, 'review_time': clock, 'anchor_review_sha256': digest(review),
+                    'nonclock_review_sha256': digest({k: v for k, v in review.items() if k != 'review_time'})})
+    return sorted(records, key=lambda record: canonical_json({k: record[k] for k in ('year', 'conference_id', 'paper_id', 'reviewer_id')}))
 
 
 def _transport(journal, wire):
@@ -78,14 +100,17 @@ def prepare_common_prefix(anchor_world_dir, endpoint):
     root = Path(anchor_world_dir).resolve()
     checkpoint = root/'simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz'
     initial = checkpoint.with_name('portable_checkpoint_year_0.json.gz')
+    year1 = checkpoint.with_name('portable_checkpoint_year_1.json.gz')
     journal, wire, contexts = root/'replies/responses.sqlite', root/'wire-requests.jsonl', root/'code-contexts.jsonl'
-    paths = {'checkpoint': checkpoint, 'initial_checkpoint': initial, 'journal': journal, 'wire': wire, 'code_contexts': contexts}
+    paths = {'checkpoint': checkpoint, 'initial_checkpoint': initial, 'year1_checkpoint': year1,
+        'journal': journal, 'wire': wire, 'code_contexts': contexts}
     before = {name: file_sha256(path) for name, path in paths.items()}
     if (Path(endpoint['checkpoint']).resolve() != checkpoint or before['checkpoint'] != endpoint['checkpoint_sha256']
             or before['initial_checkpoint'] != endpoint['initial_checkpoint_sha256']
             or Path(endpoint['code_contexts']).resolve() != contexts or before['code_contexts'] != endpoint['code_contexts_sha256']):
         raise ValueError('historical prefix anchor must bind its exact original production checkpoint/context files')
     saved, initialized = read_portable_checkpoint(checkpoint), read_portable_checkpoint(initial)
+    first_year = read_portable_checkpoint(year1)
     spec = SystemSpec.from_dict(endpoint['system'])
     kernel = NativeScienceKernel(spec, checkpoint=saved['native_system'])
     binding, rows, wires = _transport(journal, wire)
@@ -102,6 +127,10 @@ def prepare_common_prefix(anchor_world_dir, endpoint):
             or binding['model_revision'] != world['model_digest'] or binding['corpus_sha256'] != world['corpus_sha256']
             or binding['seed'] != world['seed'] or kernel.to_dict()['event_stream_hash'] != endpoint['native_event_stream_hash']):
         raise ValueError('historical prefix checkpoint, initialized world, full journal binding or endpoint differs')
+    if (first_year.get('year') != 1 or first_year.get('phase') != 5
+            or first_year['portable']['contract']['binding'] != binding
+            or NativeScienceKernel(spec, checkpoint=first_year['native_system']).last_year != 1):
+        raise ValueError('historical operational metadata must bind the exact completed year1 checkpoint')
     if any('replayed_from' in w for w in wires):
         raise ValueError('historical anchor must contain actual physical replies, not another replayed prefix')
     boundary = next((i for i, w in enumerate(wires) if w['year'] == 2 and _review(w['payload'])), None)
@@ -116,6 +145,10 @@ def prepare_common_prefix(anchor_world_dir, endpoint):
         'anchor_world_dir': str(root), 'anchor_world': str(root), 'anchor_endpoint': deepcopy(endpoint), 'anchor_binding': binding,
         'anchor_files': {name: {'path': str(paths[name]), 'sha256': sha} for name, sha in before.items()},
         'prefix_count': boundary, 'calls': calls,
+        'review_clock_coupling': {'schema': SCHEMA+'.year1-review-clock',
+            'source_checkpoint_sha256': before['year1_checkpoint'], 'records': _review_clocks(first_year),
+            'field': 'review_time', 'period': 1,
+            'scope': 'Only original year1 review operational timestamps are replayed after original add_review; all nonclock fields must match exactly. Global and transport clocks and all year2 review timestamps remain live.'},
         'boundary': {'year': 2, 'task_schema_sha256': digest(PaperReview.model_json_schema()),
             'seed': _seed(wires[boundary]['payload']), 'anchor_first_review_payload_sha256': rows[boundary][2]},
         'module_sha256': file_sha256(Path(__file__)),
@@ -174,6 +207,73 @@ class CommonPrefixReplay:
         self.fresh_started = self.fresh_prior > 0
         self.callback = self.model.client.chat.completions.create
         self.model.client.chat.completions.create = self.create
+        self.clock_changes = []
+        self._clock_phase_original = None
+        self._install_review_clock_coupling()
+
+    def _install_review_clock_coupling(self):
+        records = self.prepared['review_clock_coupling']['records']
+        if not records:
+            return
+        sim = self.simulation
+        original = sim._run_phase_3_peer_review
+        had_instance = '_run_phase_3_peer_review' in vars(sim)
+        old_instance = vars(sim).get('_run_phase_3_peer_review')
+        self._clock_phase_original = (had_instance, old_instance)
+        expected = {canonical_json({k: r[k] for k in ('year', 'conference_id', 'paper_id', 'reviewer_id')}): r for r in records}
+        def phase(year, *args, **kwargs):
+            if year != 1:
+                return original(year, *args, **kwargs)
+            originals, used = [], set()
+            try:
+                for conference in sim.conference_system.conferences:
+                    add = conference.add_review
+                    had_add = 'add_review' in vars(conference)
+                    old_add = vars(conference).get('add_review')
+                    originals.append((conference, had_add, old_add))
+                    def add_review(paper_id, review, _add=add, _conference=conference):
+                        result = _add(paper_id, review)  # Original native mutation and live time.time().
+                        identity = {'year': year, 'conference_id': _conference.conference_id,
+                            'paper_id': paper_id, 'reviewer_id': review.get('reviewer_id')}
+                        key = canonical_json(identity)
+                        anchor = expected.get(key)
+                        nonclock = digest({k: v for k, v in review.items() if k != 'review_time'})
+                        if anchor is None or key in used or nonclock != anchor['nonclock_review_sha256']:
+                            raise PortableCheckpointError('original year1 review differs beyond its exact operational clock identity')
+                        before_time, before_sha = review.get('review_time'), digest(review)
+                        if type(before_time) not in (int, float) or not math.isfinite(before_time):
+                            raise PortableCheckpointError('original native year1 review timestamp is not a finite live clock')
+                        review['review_time'] = anchor['review_time']
+                        if digest(review) != anchor['anchor_review_sha256']:
+                            raise PortableCheckpointError('operational timestamp replay changed nonclock review content')
+                        used.add(key)
+                        self.clock_changes.append({**identity, 'field': 'review_time',
+                            'before_review_time': before_time, 'after_review_time': review['review_time'],
+                            'before_review_sha256': before_sha, 'after_review_sha256': digest(review),
+                            'nonclock_review_sha256': nonclock,
+                            'source_checkpoint_sha256': self.prepared['review_clock_coupling']['source_checkpoint_sha256']})
+                        return result
+                    conference.add_review = add_review
+                result = original(year, *args, **kwargs)
+                if used != set(expected):
+                    raise PortableCheckpointError('original year1 review clocks do not cover the exact historical semantic records')
+                return result
+            finally:
+                for conference, had_add, old_add in originals:
+                    if had_add:
+                        conference.add_review = old_add
+                    else:
+                        vars(conference).pop('add_review', None)
+        sim._run_phase_3_peer_review = phase
+
+    def _completed_clock_state(self):
+        expected = self.prepared['review_clock_coupling']['records']
+        if not expected:
+            return 'no-year1-review-clocks-to-couple'
+        path = Path(self.simulation.output_dir)/'portable_checkpoint_year_1.json.gz'
+        if _review_clocks(read_portable_checkpoint(path)) != expected:
+            raise ValueError('completed target year1 checkpoint has different semantic review clock records')
+        return 'exact-semantic-year1-checkpoint-clocks-verified'
 
     def _origin(self, index):
         call = self.prepared['calls'][index]
@@ -226,6 +326,7 @@ class CommonPrefixReplay:
                 or fresh_count == 0 or logical_count != self.cursor+fresh_count):
             raise ValueError('historical prefix was not fully consumed before fresh original year2 review')
         if require_complete:
+            clock_verification = self._completed_clock_state()
             for record in self.prepared['anchor_files'].values():
                 if file_sha256(Path(record['path'])) != record['sha256']:
                     raise ValueError('historical anchor bytes changed during the coupled native world')
@@ -253,10 +354,24 @@ class CommonPrefixReplay:
             'logical_response_count': logical_count,
             'prefix_complete': self.cursor == self.prepared['prefix_count'],
             'independent_prefix_replication': False,
+            'review_clock_coupling': {'source_checkpoint_sha256': self.prepared['review_clock_coupling']['source_checkpoint_sha256'],
+                'field': 'review_time', 'period': 1, 'expected_records': len(self.prepared['review_clock_coupling']['records']),
+                'current_session_before_after_records': deepcopy(self.clock_changes),
+                'completed_checkpoint_verification': clock_verification if require_complete else 'not-completion-verified',
+                'prior_session_before_timestamps_reconstructed': False,
+                'global_and_transport_clock_modified': False, 'year2_review_clock_modified': False},
             'target_binding_sha256': digest(self.model.response_cache.binding)})
 
     def complete(self):
-        return self.receipt(require_complete=True)
+        result = self.receipt(require_complete=True)
+        if self._clock_phase_original is not None:
+            had_instance, old_instance = self._clock_phase_original
+            if had_instance:
+                self.simulation._run_phase_3_peer_review = old_instance
+            else:
+                vars(self.simulation).pop('_run_phase_3_peer_review', None)
+            self._clock_phase_original = None
+        return result
 
 
 def install_common_prefix(simulation, prepared, wire_path):

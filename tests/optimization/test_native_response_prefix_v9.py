@@ -66,6 +66,9 @@ def anchor(tmp_path, monkeypatch):
     write_portable_checkpoint(final, {'year': 2, 'phase': 5,
         'portable': {'contract': {'binding': binding}, 'response_cache_count': len(calls)},
         'native_system': {'last_year': 2, 'event_stream_hash': 'unit-native-event-stream'}})
+    write_portable_checkpoint(checkpoints/'portable_checkpoint_year_1.json.gz', {'year': 1, 'phase': 5,
+        'portable': {'contract': {'binding': binding}, 'response_cache_count': 1},
+        'native_system': {'last_year': 1, 'event_stream_hash': 'unit-native-year1-events'}})
     contexts = root/'code-contexts.jsonl'
     contexts.write_text('{"unit_fixture_only":true}\n')
     endpoint = {'checkpoint': str(final), 'checkpoint_sha256': file_sha256(final),

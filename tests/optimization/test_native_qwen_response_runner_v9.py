@@ -305,6 +305,20 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
             assert row['common_prefix_receipt']['replayed_response_count'] == prepared['prefix_count']
             assert row['logical_response_count'] == row['fresh_physical_replies']+prepared['prefix_count']
             assert row['common_prefix_receipt'] == module.read(root/'common-prefix-receipt.json')
+            clock = row['common_prefix_receipt']['review_clock_coupling']
+            assert clock['completed_checkpoint_verification'] == 'exact-semantic-year1-checkpoint-clocks-verified'
+            assert len(clock['current_session_before_after_records']) == clock['expected_records'] == 15
+            assert all(change['before_review_time'] != change['after_review_time']
+                for change in clock['current_session_before_after_records'])
+            assert not clock['global_and_transport_clock_modified'] and not clock['year2_review_clock_modified']
+            assert row['elapsed_seconds'] > 0  # The coupled variant must use a genuinely live clock.
+            anchor_final = read_portable_checkpoint(anchor_endpoint['checkpoint'])
+            def year2_clocks(snapshot):
+                return {(c['conference_id'], paper, r['reviewer_id']): r['review_time']
+                    for c in snapshot['conference_system']['conferences'] for paper, reviews in c['reviews'].items()
+                    for r in reviews if r['year'] == 2}
+            old_clocks, new_clocks = year2_clocks(anchor_final), year2_clocks(state)
+            assert new_clocks and all(value != old_clocks.get(key) for key, value in new_clocks.items())
             # Pre-intervention actual response choices, initial native state,
             # world observation and normalized review payload all match both
             # the anchor and every other coupled native world, not just a hash
