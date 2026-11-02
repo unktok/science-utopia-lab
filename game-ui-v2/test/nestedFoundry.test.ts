@@ -102,4 +102,7 @@ describe('continuous nested Institution Foundry',()=>{
     expect(parseExactDraft('{"counter":"1122442242526474860","source":"value=1122442242526474860","float":1e20}')).toEqual({counter:'1122442242526474860',source:'value=1122442242526474860',float:1e20});
     expect(parseExactDraft('{"counter":9007199254740991}').counter).toBe(9007199254740991);
   });
+  it('keeps the existing workbench handoff free of an implicit missing favicon request',()=>{
+    expect(readFileSync(new URL('native.html',ui),'utf8')).toContain('<link rel="icon" href="data:,"');
+  });
 });
