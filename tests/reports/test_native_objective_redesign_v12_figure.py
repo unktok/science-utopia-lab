@@ -71,7 +71,7 @@ def test_synthetic_plot_is_explicitly_opted_in_and_kept_in_temp(tmp_path):
     assert len(manifest['files']) == 2
     svg = (tmp_path / 'figure.svg').read_text()
     assert 'SYNTHETIC CONTRACT FIXTURE' in svg
-    assert 'Same-checkpoint objective profiles' in svg
+    assert 'Same-checkpoint' in svg and 'objective profiles' in svg
     assert 'held-out' in svg
     with pytest.raises(ValueError, match='temporary'):
         render(report, '/Users/shiro/forbidden-fixture-output', audit_path=audit,
@@ -208,3 +208,47 @@ def test_render_ignores_and_restores_other_generators_rcparams(tmp_path, ambient
         for element in ET.fromstring(svg).iter('{http://www.w3.org/2000/svg}text')]
     assert labels.count('n/a') == 24
     assert labels.count('No completed native loss') == 2
+
+
+def test_four_panels_are_native_paper_width_with_legible_fonts_and_watermarked_print_preview(tmp_path, monkeypatch):
+    from pathlib import Path
+    from matplotlib.backends.backend_agg import FigureCanvasAgg
+    from matplotlib.figure import Figure
+    import matplotlib.pyplot as plt
+    report = fixture()
+    audit = tmp_path / 'TEST-ONLY-print-contract.json'
+    write_json_atomic(audit, report)
+    original = Figure.savefig
+    figures = []
+    preview = tmp_path / 'TEST-ONLY-WATERMARKED-5p5in-96dpi.png'
+    def save(figure, path, *args, **kwargs):
+        if Path(path).suffix == '.png':
+            figures.append(figure)
+            original(figure, preview, dpi=96, facecolor='white')
+        return original(figure, path, *args, **kwargs)
+    monkeypatch.setattr(Figure, 'savefig', save)
+    render(report, tmp_path / 'TEST-ONLY-paper-width', audit_path=audit,
+        expected_source='fixture-source', allow_synthetic=True)
+    assert len(figures) == 1
+    figure = figures[0]
+    assert tuple(figure.get_size_inches()) == (5.5, 6.8)
+    assert len(figure.axes) == 4
+    text = []
+    for axis in figure.axes:
+        text.extend([axis.title, axis.xaxis.label, axis.yaxis.label,
+            *axis.get_xticklabels(), *axis.get_yticklabels(), *axis.texts])
+        if axis.get_legend():
+            text.extend(axis.get_legend().get_texts())
+    assert min(item.get_fontsize() for item in text if item.get_text()) >= 7.
+    canvas = FigureCanvasAgg(figure)
+    canvas.draw()
+    renderer = canvas.get_renderer()
+    for item in [*text, *figure.texts]:
+        if not item.get_text() or not item.get_visible():
+            continue
+        box = item.get_window_extent(renderer)
+        assert box.x0 >= -2 and box.y0 >= -2
+        assert box.x1 <= figure.bbox.width + 2 and box.y1 <= figure.bbox.height + 2
+    assert plt.imread(preview).shape[1] == 528  # 5.5 inches at 96 dpi.
+    svg = (tmp_path / 'TEST-ONLY-paper-width.svg').read_text()
+    assert 'SYNTHETIC CONTRACT FIXTURE' in svg and 'NOT RESEARCH EVIDENCE' in svg

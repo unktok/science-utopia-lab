@@ -135,7 +135,9 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
     # editable text or paths/comments; neither global value is evidence data.
     defaults = dict(matplotlib.rcParamsDefault)
     defaults.pop('backend', None)
-    defaults.update({'font.family': 'DejaVu Sans', 'svg.fonttype': 'none',
+    defaults.update({'font.family': 'DejaVu Sans', 'font.size': 8,
+        'axes.labelsize': 8, 'axes.titlesize': 9, 'xtick.labelsize': 7.5,
+        'ytick.labelsize': 7.5, 'legend.fontsize': 7.2, 'svg.fonttype': 'none',
         'svg.hashsalt': 'scienceutopia-native-objective-redesign-v12'})
     with matplotlib.rc_context(defaults):
         return _render(report, output, audit_path=audit_path,
@@ -147,7 +149,9 @@ def _render(report, output, *, audit_path, expected_source=None, allow_synthetic
     if allow_synthetic and not output.resolve().is_relative_to(Path(tempfile.gettempdir()).resolve()):
         raise ValueError('synthetic figure output must stay in temporary test storage')
     data = figure_data(report, expected_source, allow_synthetic=allow_synthetic)
-    fig, axes = plt.subplots(2, 2, figsize=(11.8, 7.9), gridspec_kw={'height_ratios': [1, 1.2]})
+    # Native paper width: avoid shrinking an 11.8-inch dashboard to 5.5 inches,
+    # which would turn eight-point labels into unreadable four-point print.
+    fig, axes = plt.subplots(2, 2, figsize=(5.5, 6.8), gridspec_kw={'height_ratios': [1, 1.2]})
     for index, identity in enumerate(ARM_IDS):
         ax = axes[0, index]
         rows = data['rows'][identity]
@@ -155,24 +159,28 @@ def _render(report, output, *, audit_path, expected_source=None, allow_synthetic
         incumbents = [row['incumbent_loss'] if row['incumbent_loss'] is not None else float('nan') for row in rows]
         has_loss = any(row['own_loss'] is not None for row in rows)
         if has_loss:
-            ax.plot(range(3), values, 'o-', color=COLORS[index], linewidth=1.8, label='Current observed system')
-            ax.step(range(3), incumbents, where='post', color='#303c49', linestyle='--', label='Best observed so far')
+            ax.plot(range(3), values, 'o-', color=COLORS[index], linewidth=1.5, markersize=4, label='Current system')
+            ax.step(range(3), incumbents, where='post', color='#303c49', linestyle='--', label='Best so far')
         else:
             ax.text(.5, .45, 'No completed native loss', transform=ax.transAxes,
-                ha='center', va='center', fontsize=10, color='#596b7a')
+                ha='center', va='center', fontsize=8, color='#596b7a')
             ax.set_yticks([])
         for generation, row in enumerate(rows):
             if row['own_loss'] is None:
                 label = 'Generation\nfailure' if row['status'] == 'generation-failure' else 'Technical\nfailure'
                 ax.text(generation, .95, label, transform=ax.get_xaxis_transform(),
-                    ha='center', va='top', fontsize=8, color='#a23b43')
-        ax.set(title=f'{chr(65+index)}  {LABELS[index]}', xlabel='Authored generation', ylabel='Own optimization loss (lower is better)')
+                    ha='center', va='top', fontsize=7.2, color='#a23b43')
+        ax.set(title=('A  Throughput objective' if index == 0 else 'B  Net reviewed utility\n     objective'),
+            xlabel='Authored generation', ylabel='Own optimization loss\n(lower is better)')
         ax.set_xticks(range(3), ['G0', 'G1', 'G2'])
         ax.set_xlim(-.3, 2.3)
         ax.grid(alpha=.2)
         if has_loss:
-            ax.legend(fontsize=8, loc='best')
+            ax.legend(fontsize=7.2, loc='best', handlelength=1.8)
     cross_ax = axes[1, 0]
+    cross_xs = [row['cross_scores'][ARM_IDS[0]] for rows in data['rows'].values() for row in rows
+        if all(_finite(value) for value in row['cross_scores'].values())]
+    cross_midpoint = (min(cross_xs) + max(cross_xs))/2 if cross_xs else 0
     for index, identity in enumerate(ARM_IDS):
         rows = data['rows'][identity]
         good = [row for row in rows if all(_finite(v) for v in row['cross_scores'].values())]
@@ -181,18 +189,20 @@ def _render(report, output, *, audit_path, expected_source=None, allow_synthetic
             coordinates = tuple(row['cross_scores'][key] for key in ARM_IDS)
             grouped.setdefault(coordinates, []).append(f"G{row['generation']}")
         for point_index, ((x, y), generations) in enumerate(grouped.items()):
-            cross_ax.scatter(x, y, color=COLORS[index], marker=('o','s')[index], s=58, alpha=.78,
-                label=LABELS[index] if point_index == 0 else None)
-            cross_ax.annotate('/'.join(generations), (x,y), xytext=(5, 7+index*10), textcoords='offset points', fontsize=8, color=COLORS[index])
-    cross_ax.set(title='C  Same-checkpoint objective profiles', xlabel='Throughput loss (lower is better)', ylabel='Net reviewed utility loss (lower is better)')
+            cross_ax.scatter(x, y, color=COLORS[index], marker=('o','s')[index], s=28, alpha=.78,
+                label=('Throughput search', 'Utility search')[index] if point_index == 0 else None)
+            leftward = x > cross_midpoint
+            cross_ax.annotate('/'.join(generations), (x,y), xytext=(-3 if leftward else 3, 5+index*8),
+                ha='right' if leftward else 'left', textcoords='offset points', fontsize=7.2, color=COLORS[index])
+    cross_ax.set(title='C  Same-checkpoint\n     objective profiles', xlabel='Throughput loss\n(lower is better)', ylabel='Net reviewed utility loss\n(lower is better)')
     cross_ax.grid(alpha=.2)
     cross_ax.margins(x=.24, y=.30)
     handles, _ = cross_ax.get_legend_handles_labels()
     if handles:
-        cross_ax.legend(fontsize=8)
+        cross_ax.legend(fontsize=7.2, handletextpad=.4, borderpad=.35)
     else:
         cross_ax.text(.5, .5, 'No completed cross-scores', transform=cross_ax.transAxes,
-            ha='center', va='center', fontsize=10, color='#596b7a')
+            ha='center', va='center', fontsize=8, color='#596b7a')
         cross_ax.set_xticks([])
         cross_ax.set_yticks([])
     matrix, labels = [], []
@@ -209,23 +219,24 @@ def _render(report, output, *, audit_path, expected_source=None, allow_synthetic
         interpolation='nearest', vmin=0, vmax=max(largest_change, 1))
     for y, values in enumerate(matrix):
         for x, value in enumerate(values):
-            ax.text(x, y, 'n/a' if math.isnan(value) else str(value), ha='center', va='center', fontsize=9,
+            ax.text(x, y, 'n/a' if math.isnan(value) else str(value), ha='center', va='center', fontsize=8,
                 color='white' if not math.isnan(value) and value > largest_change*.55 else '#213447')
-    ax.set_title('D  Literal changes against own incumbent parent')
-    ax.set_xticks(range(4), ['Source bodies\nadded', 'Nodes\nadded', 'Wires\nadded', 'Process\ncontracts changed'], fontsize=8)
-    ax.set_yticks(range(6), labels, fontsize=8)
+    ax.set_title('D  Literal changes vs\n     incumbent parent')
+    ax.set_xticks(range(4), ['Source\nbodies +', 'Nodes\nadded', 'Wires\nadded', 'Process\nedits'], fontsize=7.2)
+    ax.set_yticks(range(6), labels, fontsize=7.2)
     ax.tick_params(length=0)
-    title = 'Objective-conditioned open institutional redesign'
+    title = 'Objective-conditioned\nopen institutional redesign'
     if allow_synthetic:
-        title = 'SYNTHETIC CONTRACT FIXTURE — NOT RESEARCH EVIDENCE'
-    fig.suptitle(title, fontsize=15, fontweight='bold', y=.98)
+        title = 'SYNTHETIC CONTRACT FIXTURE\nNOT RESEARCH EVIDENCE'
+    fig.suptitle(title, fontsize=11, fontweight='bold', y=.985)
     execution_scope = ('No completed native worlds or Qwen replies were recorded.'
         if report['physical_native_worlds'] == 0 and data['physical_researcher_responses'] == 0
         else 'Fixed Qwen weights; original native researcher world.')
-    fig.text(.5, .025, 'All attempts and exact best ties retained. Cross-scores are development reuse, not held-out tests.\n'
-        'Text/graph changes do not establish useful invention. ' + execution_scope,
-        ha='center', va='bottom', fontsize=8, color='#394957')
-    fig.tight_layout(rect=(0,.085,1,.95), h_pad=2.0, w_pad=2.7)
+    fig.text(.5, .02, 'Every attempt and exact best tie is retained.\n'
+        'Cross-scores reuse development worlds; they are not held-out.\n'
+        'Text/graph changes do not establish useful invention.\n' + execution_scope,
+        ha='center', va='bottom', fontsize=7.2, color='#394957')
+    fig.tight_layout(rect=(0,.105,1,1.0), h_pad=2.0, w_pad=1.3)
     output.parent.mkdir(parents=True, exist_ok=True)
     files = []
     for suffix in ('.png', '.svg'):
