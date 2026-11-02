@@ -160,15 +160,23 @@ def test_control_comparison_still_rejects_changed_scientific_reply_despite_envel
         require_same_control([control_proof(left, left_root), control_proof(right, right_root)])
 
 
+@pytest.mark.parametrize('coupled', [False, True], ids=['independent-scripted', 'historical-prefix-scripted'])
 def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_response_profiles(
-        tmp_path, monkeypatch, fixed_corpus):
-    """Six SCRIPTED two-year/five-author worlds, no Qwen or model downloads."""
+        tmp_path, monkeypatch, fixed_corpus, coupled):
+    """Six SCRIPTED worlds, plus one original anchor for the coupled variant.
+
+    Only the test boundary substitutes MODEL/classification and the factory.
+    Real native phases, source/code receipts, checkpoint restoration, SQL/wire
+    binding, prefix replay, fitting and gradients are never stubbed. These are
+    software regressions, not actual-Qwen research evidence.
+    """
     from utopia.models.response_cache import CompletedResponseCache
     from utopia.optimization.native_code_trace import RecordingCodeExecutor
     from utopia.optimization.native_factory import record_native_http
     from utopia.funding.feedback import FundingFeedbackMixin
     from utopia.system.code_mechanisms import CodeExecutionError, DockerCodeExecutor
     from utopia.system.native_kernel import NativeScienceKernel
+    from utopia.system.native_review_identity import enable_review_identity_recording
     from utopia.agents.researcher_agents import UniversityResearcher
     from tests.runtime.test_portable_checkpoint_integration import DIRECTION
     monkeypatch.setattr('time.time', lambda: 1234567890.)
@@ -231,6 +239,41 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
     output.mkdir()
     args = SimpleNamespace(output=output, data_cache=tmp_path/'fake-cache', inference_lock=tmp_path/'fake-lock', amendment=None)
     module = runner_module()
+    # Explicit fixture-only boundary: production keeps its actual-Qwen model
+    # and anchor classification checks. No HTTP/model response is invented by
+    # the prefix adapter; its source here is honestly labelled scripted QA.
+    module.ACTUAL = 'scripted-fixture-not-native-results'
+    module.MODEL = BINDING['model']
+    anchor_calls, prepared = [], None
+    if coupled:
+        from utopia.optimization.native_response_prefix import prepare_common_prefix
+        anchor_series = tmp_path/'scripted-anchor-series'
+        anchor_factory = ScriptedFactory(anchor_series/'worlds', args.data_cache,
+            years=2, corpus_years=4, record_wire=True, record_code=True)
+        base = module.response_gradient_system(executor.image_id)
+        anchor_system, _ = module.project_continuous(base, module.DECLARATIONS, {'evidence-weight': .2})
+        anchor_sim = anchor_factory(anchor_system, 42, 'scripted-original-anchor')
+        anchor_root = anchor_series/'worlds/scripted-original-anchor'
+        enable_review_identity_recording(anchor_sim)
+        try:
+            anchor_sim.run()
+            anchor_world = {'source_commit': anchor_factory.source_commit, 'model_digest': anchor_factory.model_digest,
+                'corpus_sha256': anchor_factory.corpus_sha256, 'seed': 42, 'years': 2, 'corpus_years': 4,
+                'runtime_seed_binding': anchor_factory.runtime_seed_binding, 'experiment': module.EXPERIMENT,
+                'classification': module.ACTUAL}
+            anchor_endpoint = module.native_endpoint(Path(anchor_sim.output_dir)/'portable_checkpoint_year_2.json.gz',
+                anchor_system, module.DECLARATIONS,
+                module.load_loss_spec(ROOT/'research/objectives/losses/native-joint-v5-net-reviewed-utility.json'),
+                world=anchor_world, code_contexts=anchor_root/'code-contexts.jsonl')
+            prepared = prepare_common_prefix(anchor_root, anchor_endpoint)
+            assert prepared['anchor_classification'] == 'scripted-fixture-not-native-results'
+            assert prepared['anchor_model'] == BINDING['model']
+            module.save(anchor_series/'evidence.json', {'classification': module.ACTUAL,
+                'endpoints': [{'name': 'scripted-original-anchor', 'endpoint': anchor_endpoint}]})
+            args.common_prefix_anchor = anchor_root
+        finally:
+            anchor_sim.llm.response_cache.close()
+        _, _, anchor_calls = records.pop()
     result = module.run(args)
     assert result['status'] == 'complete' and result['physical_native_worlds'] == 6
     assert len(records) == 6
@@ -239,6 +282,7 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
     assert result['physical_reply_count'] == sum(len(calls) for _, _, calls in records)
     assert result['frozen_proposal']['unused_outcomes_seen'] == 0
     assert result['claims']['exact_Qwen_Jacobian'] is False
+    assert result['classification'] == 'scripted-fixture-not-native-results'
     assert {k: v for k, v in module.read(output/'evidence.json').items() if k != 'content_sha256'} == {
         k: v for k, v in result.items() if k != 'content_sha256'}
     for row, (name, sim, calls) in zip(result['endpoints'], records):
@@ -252,5 +296,25 @@ def test_complete_six_world_runner_uses_production_checkpoint_manifest_and_respo
         assert sum(a['can_author'] for a in state['ecosystem_data']['agents']) == 5
         assert len(calls) == row['fresh_physical_replies']
         assert sim.llm.reused == 0
+        if coupled:
+            assert row['common_prefix_receipt']['prefix_complete']
+            assert row['common_prefix_receipt']['fresh_review_boundary_reached']
+            assert row['common_prefix_receipt']['replayed_response_count'] == prepared['prefix_count']
+            assert row['logical_response_count'] == row['fresh_physical_replies']+prepared['prefix_count']
+            assert row['common_prefix_receipt'] == module.read(root/'common-prefix-receipt.json')
+            # Pre-intervention actual response choices, initial native state,
+            # world observation and normalized review payload all match both
+            # the anchor and every other coupled native world, not just a hash
+            # fixture or a transport-only mock.
+            module.require_same_control([row['control_proof'], module.control_proof(anchor_endpoint, anchor_root)])
+            logical_wire = [json.loads(line) for line in (root/'wire-requests.jsonl').read_text().splitlines()]
+            assert all('replayed_from' in line for line in logical_wire[:prepared['prefix_count']])
+            assert all('replayed_from' not in line for line in logical_wire[prepared['prefix_count']:])
+    if coupled:
+        assert result['fresh_physical_reply_count'] == sum(len(calls) for _, _, calls in records)
+        assert result['logical_response_count'] == result['fresh_physical_reply_count']+6*prepared['prefix_count']
+        assert result['unique_actual_calls_supporting_this_campaign'] == prepared['prefix_count']+result['fresh_physical_reply_count']
+        assert len(anchor_calls) == anchor_endpoint['response_cache_count']
+        assert result['all_control_check']['world_count'] == 6
     with pytest.raises(ValueError, match='immutable'):
         module.run(args)
