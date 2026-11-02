@@ -6,6 +6,8 @@ import { tmpdir } from 'node:os';
 
 const args = Object.fromEntries(process.argv.slice(2).map((arg) => { const [key,...rest] = arg.replace(/^--/,'').split('='); return [key,rest.join('=') || true]; }));
 const ui = resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const canonical = (value) => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object'
+  ? Object.fromEntries(Object.keys(value).sort().map(key=>[key,canonical(value[key])])) : value;
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const hash = (value) => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const finite = (value) => typeof value === 'number' && Number.isFinite(value);
@@ -19,6 +21,8 @@ if (synthetic && ![source,output].every((path) => path.startsWith(`${resolve(tmp
 const bytes = await readFile(source);
 if (sha(bytes) !== args['expected-audit-sha256']) throw new Error('Explicit expected audit file hash differs');
 const audit = JSON.parse(bytes);
+const expectedLoss = JSON.parse(await readFile(resolve(ui,'../research/objectives/losses/native-joint-v5-net-reviewed-utility.json'),'utf8'));
+if (JSON.stringify(canonical(audit.loss_spec)) !== JSON.stringify(canonical(expectedLoss))) throw new Error('Full semantic LossSpec differs from the exact preregistered native objective');
 if (audit.schema !== 'scienceutopia.native-open-estimators-independent-audit.v11' || audit.status !== 'complete'
     || audit.classification !== (synthetic ? fixture : actual) || audit.source_commit !== args['expected-source']
     || !hash(audit.content_sha256) || audit.physical_native_worlds !== 8 || audit.logical_completed_draws !== 8

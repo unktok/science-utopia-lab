@@ -1,5 +1,6 @@
 /** Explicit scripted schema fixture. Never written into public/data. */
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 export const h=(s:string):string=>createHash('sha256').update(s).digest('hex');
 export function fixtureAudit():any {
   const arms:any={};
@@ -27,5 +28,6 @@ export function fixtureAudit():any {
     }
     arms[arm]={observations:rows,records,updates,incumbents:{path,best_loss:best,initial_unevaluated_system_scored:false}};
   }
-  return {schema:'scienceutopia.native-open-estimators-independent-audit.v11',classification:'scripted-fixture-not-native-results',status:'complete',source_commit:'a'.repeat(40),content_sha256:h('SCRIPTED-NOT-AN-AUDIT'),physical_native_worlds:8,logical_completed_draws:8,matched_initial_definitions:{matched:true},loss_spec:{id:'native-joint-v5-net-reviewed-utility'},physical_researcher_responses:16,logical_completed_researcher_responses:16,completed_wire_requests:16,reused_responses_in_completed_worlds:0,claims:{held_out:false,causal_institutional_benefit:false,scientific_value:false,designer_improvement_established:false,full_native_world_pathwise_autograd:false,variance_reduction_established:false,external_authorship_authenticated:false,live_fixed_Qwen_researchers:false,scripted_researcher_HTTP:true},audit:{checkpoint_loss_reextracted:true,campaign_updates_and_prior_refits_replayed:true,new_model_calls:0,new_container_executions:0,raw_inventory_sha256:h('SCRIPTED-INVENTORY'),limits:['SCRIPTED SCHEMA FIXTURE ONLY — NO ACTUAL QWEN RESULT']},arms};
+  const loss=JSON.parse(readFileSync(new URL('../../research/objectives/losses/native-joint-v5-net-reviewed-utility.json',import.meta.url),'utf8'));
+  return {schema:'scienceutopia.native-open-estimators-independent-audit.v11',classification:'scripted-fixture-not-native-results',status:'complete',source_commit:'a'.repeat(40),content_sha256:h('SCRIPTED-NOT-AN-AUDIT'),physical_native_worlds:8,logical_completed_draws:8,matched_initial_definitions:{matched:true},loss_spec:loss,physical_researcher_responses:16,logical_completed_researcher_responses:16,completed_wire_requests:16,reused_responses_in_completed_worlds:0,claims:{held_out:false,causal_institutional_benefit:false,scientific_value:false,designer_improvement_established:false,full_native_world_pathwise_autograd:false,variance_reduction_established:false,external_authorship_authenticated:false,live_fixed_Qwen_researchers:false,scripted_researcher_HTTP:true},audit:{checkpoint_loss_reextracted:true,campaign_updates_and_prior_refits_replayed:true,new_model_calls:0,new_container_executions:0,raw_inventory_sha256:h('SCRIPTED-INVENTORY'),limits:['SCRIPTED SCHEMA FIXTURE ONLY — NO ACTUAL QWEN RESULT']},arms};
 }

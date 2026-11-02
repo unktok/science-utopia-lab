@@ -39,6 +39,17 @@ describe('v11 open estimator view',()=>{
     expect(()=>execFileSync(process.execPath,[script,`--audit=${source}`,`--output=${root}`,`--expected-audit-sha256=${'0'.repeat(64)}`,`--expected-source=${audit.source_commit}`],{stdio:'pipe'})).toThrow();
     expect(()=>execFileSync(process.execPath,[script,`--audit=${source}`,`--output=${new URL('public/data',ui).pathname}`,`--expected-audit-sha256=${h(readFileSync(source,'utf8'))}`,`--expected-source=${audit.source_commit}`,'--allow-synthetic-temp-only'],{stdio:'pipe'})).toThrow();
   });
+  it('rejects changed coefficients under the same LossSpec ID while allowing reordered object keys',()=>{
+    const {root,audit}=exported(),source=resolve(root,'SCRIPTED-loss-tamper.json'),script=new URL('scripts/export-open-estimators-v11.mjs',ui).pathname;
+    const run=(value:any)=>{const bytes=JSON.stringify(value);writeFileSync(source,bytes);return execFileSync(process.execPath,[script,`--audit=${source}`,`--output=${root}`,`--expected-audit-sha256=${h(bytes)}`,`--expected-source=${audit.source_commit}`,'--allow-synthetic-temp-only'],{stdio:'pipe'});};
+    const changed=structuredClone(audit);changed.loss_spec.per_run.terms[0].coefficient+=.1;
+    expect(changed.loss_spec.id).toBe(audit.loss_spec.id);
+    expect(()=>run(changed)).toThrow(/Full semantic LossSpec differs/);
+    const reordered=structuredClone(audit);
+    reordered.loss_spec=Object.fromEntries(Object.entries(reordered.loss_spec).reverse());
+    reordered.loss_spec.per_run.terms=reordered.loss_spec.per_run.terms.map((term:any)=>Object.fromEntries(Object.entries(term).reverse()));
+    expect(()=>run(reordered)).not.toThrow();
+  });
   it('is English and read-only without changing v10 guards',()=>{
     const html=readFileSync(new URL('native-open-estimators.html',ui),'utf8'),code=readFileSync(new URL('src/openEstimator.ts',ui),'utf8');
     expect(html).toContain('<html lang="en">');expect(html).not.toMatch(/[\u3040-\u30ff\u3400-\u9fff]/u);

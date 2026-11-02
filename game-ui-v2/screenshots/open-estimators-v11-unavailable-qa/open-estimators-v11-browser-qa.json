@@ -15,7 +15,7 @@
     "src/openEstimator.ts": "05df0ffb6a3ae6bf57d23b7a2a801583d1ce1525cd7a6e7d073ed61638f58a9c",
     "src/openEstimator.css": "76b407685c6cab6e03f7b22360c18d036e3ea2f6802bb491f01cc163cff08201",
     "src/openEstimatorContract.ts": "f4b0382ba5019a8cf957f57b1d3d0d8739146cce4f0e0db0d5f762a42a370f5b",
-    "scripts/export-open-estimators-v11.mjs": "6b540b4d8728be9bca72ae791dde9f0e67ea63389d32998119a0c2d2f9cfe528",
+    "scripts/export-open-estimators-v11.mjs": "96c051d973bbef1ed0cfa14927b70cf0495a11970be2552b4fe9b31f70cd5444",
     "scripts/verify-open-estimators-browser.mjs": "e17c7b60e34e8f3a65c803a85199fb940f462bf21ea21565445a7865f2859ccd"
   },
   "artifacts": {
