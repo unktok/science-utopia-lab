@@ -75,3 +75,11 @@ The actual report-only path figure is visually checked at5.5in; horizontal
 marker offsets reveal overlapping identical loss paths without changing data.
 The full exact actual-source suite passes1772/6skips in875.93s, distinct from
 later reporting checks. Final paper rendering and release verification follow.
+
+Final focused suite first has40 passes/1 fixture setup error because the root
+invocation omitted the required empty CUDA_VISIBLE_DEVICES. Preserve that XML;
+rerun with the documented fixed environment, no code changes:41 passed in20.02s,
+including the live-clock scripted native loop. This is not failed inference or
+native outcome resampling. Enlarged PDF QA catches two long figure y-labels
+touching across panels; shorten labels without changing data, regenerate the
+report-only figure and rebuild the final PDF. Final visual review follows.

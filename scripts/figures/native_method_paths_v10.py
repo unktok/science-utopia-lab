@@ -86,8 +86,8 @@ def create(source, output, expected_source=None, *, allow_synthetic=False):
                     label='shared center loss')
     axes[1].axhline(min(row['native_loss'] for row in historical), color='#334155', linestyle='-.', linewidth=1,
                     label='shared historical best')
-    axes[0].set_ylabel('institution coordinate θ')
-    axes[1].set_ylabel('fixed native loss (lower better)')
+    axes[0].set_ylabel('Institution θ')
+    axes[1].set_ylabel('Native loss L')
     axes[1].set_xlabel('fresh native evaluation per arm')
     axes[0].set_ylim(.17, .83)
     axes[1].set_xlim(.88, 3.12)

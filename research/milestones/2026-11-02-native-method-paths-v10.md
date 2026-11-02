@@ -79,7 +79,7 @@ Each arm consumes93 fresh Qwen replies over3 new native worlds: total186 fresh,
 146 historical+186 new=332 unique physical calls support this comparison,
 counted once. These are not total project calls or independent societies.
 The six native forward executions total606.43s (about10.1min), excluding
-development, fitting and independent verification. Both actual plots are
+development, fitting and independent verification. Both actual figure panels are
 report-only and require no extra native/model calls. Publication QA follows.
 
 ## Remaining scope limits
