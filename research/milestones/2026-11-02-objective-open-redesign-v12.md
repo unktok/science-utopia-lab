@@ -1,6 +1,6 @@
 # V12 finite goal: free loss-conditioned redesign and inspected native effects
 
-Status: implementation in parallel; no v12 actual inference yet.
+Status: main G0 complete, G1 executing; separate final-control followup audited.
 
 The primary question is what systems different objectives produce, not making
 the world differentiable. V8's structural paths and v11's estimator integration

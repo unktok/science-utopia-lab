@@ -14,12 +14,18 @@ two years, scientific seed42 and Qwen weights remain. No hidden veto or novelty
 reward. Independent audit/figures, followup and English UI run as parallel
 implementation tracks, with root integrating and owning actual inference.
 The actual source pins clean`ecab4b4`. Separate own-history authors have supplied
-G0 source/protocol/process/wiring (17/25 and16/22 node/edge graphs); original
-six-year SCRIPTED QA and root independent saved-file preflight pass, not Qwen
-results. The two-world control followup is running first, with parent v11
-re-audited from clean old source and unchanged parent raw files. Main setup is
-waiting for its first actual worlds; full frozen-source regression is running
-in a separate tree. No v12 final empirical result is claimed at this entry.
+G0 source/protocol/process/wiring (17/25 and16/22 node/edge graphs). Its two
+actual native worlds complete with191 fresh replies and own losses`-10` and
+`-0.16666666666666785`; a stopped-writer partial independent audit passes.
+G1 is running: throughput retains its executable candidate; utility adds a
+two-year milestone clinic and its native plan-amendment protocol/wiring.
+The separate [two-world control followup](results/native-control-followup-v12-a1.md)
+is independently audited:180 fresh replies, losses`[1.05,.55]`, no demonstrated
+estimator advantage. Old parent raw files stay unchanged. Exact-source full
+regression records1913passes/6skips/one inherited typography failure; a later
+reporting full run records1950passes/6skips/one SVG test-isolation failure now
+being investigated. Neither is falsely called all-green. Main final audit,
+actual UI and updated PDF remain pending; no final v12 main result is claimed.
 
 ## Completed finite v11: open native institutions, gradient estimation as a means
 

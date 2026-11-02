@@ -91,3 +91,36 @@ both JUnit receipts; do not repair the frozen experiment. Reporting source
 fixes spaces in the v11 reproducibility paragraph, without changing native
 runtime, objective, raw evidence or the actual protocol. Later corrected
 reporting-source verification must be reported as its own scope.
+
+## First loss-conditioned generation and next authored response
+
+G0 completes both native worlds with 191 fresh replies: throughput observes
+`A=10,Q=31.666666666666668,R=30,L=-10` (114 replies), while utility observes
+`A=3,Q=10.666666666666668,R=15,L=-0.16666666666666785` (77 replies).
+The count is ten across TWO years, five per year, not ten per year. A partial
+read-only independent audit runs only after the writer stops and confirms both
+checkpoint measurements and actual native activity effects. This intermediate
+inventory is not the final six-world audit.
+
+For G1, the isolated throughput author retains the exact executable candidate;
+it does not claim global optimality or manufacture novelty. Fresh saved-response
+validation passes, and byte-identity to the prior scripted native QA is recorded.
+The utility author adds an executable two-year milestone clinic, its typed plan
+amendment protocol and wiring, and fixes related-evidence topic matching. The
+acceptance algorithm stays byte-identical. Six-year SCRIPTED native QA passes
+one check in 6.29s, with 18 source receipts and 12 generated plan amendments;
+this is not evidence of actual-Qwen improvement. Root re-reads both exact saved
+response envelopes against the frozen compiler before starting G1 inference.
+Authoring and technical receipts are retained in the ignored durable authors
+directory. The root does not use one arm's result to design the other arm.
+
+## Corrected-report full regression: separate non-native failure
+
+A second clean full suite at reporting source `11abd5b` records 1950 passes,
+6 skips and one failure in 913.07s. The frozen actual runtime/protocol blobs are
+unchanged. The sole failure is the new zero-reply figure's SVG text assertion:
+`test_zero_reply_actual_failure_contract_retains_nulls_and_renders_all_missing_matrix_without_warning`.
+Its focused run passes, suggesting cross-test Matplotlib settings rather than
+a native loss/runner defect. Preserve the full JUnit receipt; the independent
+reporting specialist investigates deterministic rendering and isolation without
+changing the frozen experiment. This run is not reported as all-green.
