@@ -6,6 +6,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V12 active finite goal: objective-conditioned free redesign and native effects](milestones/2026-11-02-objective-open-redesign-v12.md)
+- [V12 prospective six-world redesign plus two-world control followup](protocols/campaigns/native-objective-redesign-v12.md)
+- [V12 parallel development and execution log](logbook/2026-11-02-objective-open-redesign-v12.md)
 - [V11 finite parallel goal: open native institutions and optional gradient estimators](milestones/2026-11-02-open-native-estimators-v11.md)
 - [V11 actual eight-world result: estimator integration, no new best](results/native-open-estimators-v11-a1.md)
 - [V11 independent native/source/update audit,742 replies and unchanged129 raw files](results/native-open-estimators-v11-a1.json)

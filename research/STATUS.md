@@ -2,6 +2,19 @@
 
 Updated: 2026-11-02
 
+## Active finite v12: objective-conditioned free redesign
+
+User approves the next goal: different exact objectives condition continued
+source/protocol/node/wiring/process generation on the original researcher world,
+not another fixed pair of aggregation rules. [V12 milestone](milestones/2026-11-02-objective-open-redesign-v12.md)
+and [prospective protocol](protocols/campaigns/native-objective-redesign-v12.md)
+fix six main worlds (two losses/three generations/one draw) plus two separately
+bound forward-only evaluations after v11's final control update. Five authors,
+two years, scientific seed42 and Qwen weights remain. No hidden veto or novelty
+reward. Independent audit/figures, followup and English UI run as parallel
+implementation tracks, with root integrating and owning actual inference.
+No v12 actual inference/result yet at this planning entry.
+
 ## Completed finite v11: open native institutions, gradient estimation as a means
 
 The user explicitly confirms that whole-world differentiability is not a
