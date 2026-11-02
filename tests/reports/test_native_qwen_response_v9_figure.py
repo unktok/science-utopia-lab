@@ -15,7 +15,8 @@ def tmp_path():
     with TemporaryDirectory(prefix='scienceutopia-v9-figure-test-') as directory:
         yield Path(directory)
 
-from scripts.figures.native_qwen_response_v9 import ACTUAL,FIXTURE,NAMES,SCHEMA,create,figure_data
+from scripts.figures.native_qwen_response_v9 import (ACTUAL,FIXTURE,NAMES,SCHEMA,create,
+    figure_data,create_landscape,landscape_data)
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256,write_json_atomic
 
@@ -87,6 +88,65 @@ def write_fixture(tmp_path,report):
     path=tmp_path/'synthetic-audit.json'
     write_json_atomic(path,report,sort_keys=True,allow_nan=False)
     return path
+
+
+def landscape_fixture(*,noop=False):
+    report=fixture_report()
+    analysis=report['response_operator_analysis']
+    if noop:
+        report['endpoints'][5]['theta']=.5
+        report['world_order'][5]['theta']=.5
+        analysis['center_backward'].update(gradient=[0.],frozen_boundary_gradient=[0.],learned_response_contribution=[0.])
+        analysis['frozen_proposal']['proposal']['candidate']=.5
+    gradient=analysis['center_backward']['gradient'][0]
+    analysis['represented_landscape']={
+        'scope':'posthoc frozen representation visualization; not native samples or candidate selection',
+        'representation_sha256':analysis['operator_representation_sha256'],
+        'new_model_calls':0,'new_native_forward_calls':0,
+        'coordinates':[{'theta':.2+i*.01,'predicted_loss':.43+gradient*(.2+i*.01-.5),
+            'gradient':gradient,'frozen_boundary_gradient':0.} for i in range(61)]}
+    return reseal(report)
+
+
+def test_posthoc_landscape_render_keeps_exact_overlap_noop_and_scope(tmp_path):
+    report=landscape_fixture(noop=True)
+    path=write_fixture(tmp_path,report)
+    first=create_landscape(path,tmp_path/'landscape',allow_synthetic=True)
+    hashes={kind:item['sha256'] for kind,item in first['outputs'].items()}
+    second=create_landscape(path,tmp_path/'landscape',allow_synthetic=True)
+    assert hashes=={kind:item['sha256'] for kind,item in second['outputs'].items()}
+    assert len(first['represented_landscape']['coordinates'])==61
+    assert first['endpoints'][1]['theta']==first['endpoints'][5]['theta']==.5
+    assert first['endpoints'][1]['native_loss']==first['endpoints'][5]['native_loss']
+    assert first['native_interpolation'] is first['used_for_proposal'] is False
+    svg=Path(first['outputs']['svg']['path']).read_text()
+    assert 'no-op' in svg and 'SCHEMA FIXTURE' in svg
+    assert 'Native candidate' in svg and 'Native unused' in svg
+    assert 'not used to choose the candidate' in svg
+    assert set(first['outputs'])=={'png','svg'}
+
+
+@pytest.mark.parametrize('mutation',[
+    lambda s:s.update(scope='candidate search'),
+    lambda s:s.update(representation_sha256=h('other')),
+    lambda s:s.update(new_model_calls=1),
+    lambda s:s.update(new_native_forward_calls=1),
+    lambda s:s['coordinates'].pop(),
+    lambda s:s['coordinates'][1].update(theta=.25),
+    lambda s:s['coordinates'][30].update(gradient=99.),
+    lambda s:s['coordinates'][4].update(predicted_loss=None),
+])
+def test_posthoc_landscape_refuses_unbound_or_malformed_scan(mutation):
+    report=landscape_fixture()
+    mutation(report['response_operator_analysis']['represented_landscape'])
+    reseal(report)
+    with pytest.raises(ValueError):
+        landscape_data(report,allow_synthetic=True)
+
+
+def test_missing_landscape_is_not_reconstructed_or_silently_fit():
+    with pytest.raises(ValueError,match='posthoc'):
+        landscape_data(fixture_report(),allow_synthetic=True)
 
 
 @pytest.mark.parametrize('candidate_loss,outcome',[(.4,'tied'),(1.,'worse'),(-.2,'improved')])

@@ -339,10 +339,116 @@ def create(report_path, output, *, expected_source=None, allow_synthetic=False):
     return receipt
 
 
+def landscape_data(report, *, expected_source=None, allow_synthetic=False):
+    """Read a hash-bound posthoc frozen-operator scan, never execute/refit it."""
+    data=figure_data(report,expected_source=expected_source,allow_synthetic=allow_synthetic)
+    analysis=report['response_operator_analysis']
+    scan=analysis.get('represented_landscape')
+    if (not isinstance(scan,dict)
+            or scan.get('representation_sha256')!=analysis['operator_representation_sha256']
+            or scan.get('scope')!='posthoc frozen representation visualization; not native samples or candidate selection'
+            or scan.get('new_model_calls')!=0 or scan.get('new_native_forward_calls')!=0):
+        raise ValueError('posthoc frozen-operator landscape with explicit zero-call provenance required')
+    rows=scan.get('coordinates',[])
+    if len(rows)!=61:
+        raise ValueError('exactly 61 represented samples within [0.2, 0.8] required')
+    for i,row in enumerate(rows):
+        if not _same(row.get('theta'),.2+i*.01):
+            raise ValueError('represented landscape grid must be fixed before plotting')
+        _finite(row.get('predicted_loss'));_finite(row.get('gradient'))
+        _finite(row.get('frozen_boundary_gradient'))
+    if not _same(rows[30]['gradient'],data['gradients']['total']):
+        raise ValueError('landscape center gradient differs from frozen proposal backward')
+    data['represented_landscape']=scan
+    return data
+
+
+def create_landscape(report_path, output, *, expected_source=None, allow_synthetic=False):
+    """Separate, compact represented-loss/gradient figure; no native interpolation."""
+    report_path,output=Path(report_path),Path(output)
+    report=decode_json(report_path.read_text(),strict=True,finite_floats=True)
+    data=landscape_data(report,expected_source=expected_source,allow_synthetic=allow_synthetic)
+    fixture=data['classification']==FIXTURE
+    if fixture and not output.resolve().is_relative_to(Path(tempfile.gettempdir()).resolve()):
+        raise ValueError('synthetic fixtures may render only in the system temporary directory, never paper assets')
+    if report.get('raw_output_root') and output.resolve().is_relative_to(Path(report['raw_output_root']).resolve()):
+        raise ValueError('figure output cannot mutate immutable native raw evidence')
+    paths={kind:output.with_suffix('.'+kind) for kind in ('png','svg')}
+    manifest_path=output.with_suffix('.manifest.json')
+    if report_path.resolve() in [p.resolve() for p in (*paths.values(),manifest_path)]:
+        raise ValueError('figure outputs cannot overwrite the independent input audit')
+    output.parent.mkdir(parents=True,exist_ok=True)
+    rows=data['represented_landscape']['coordinates'];points=data['endpoints']
+    x=[r['theta'] for r in rows]
+    with plt.rc_context({'font.family':'DejaVu Sans','font.size':7.5,
+            'axes.spines.top':False,'axes.spines.right':False,
+            'svg.fonttype':'none','svg.hashsalt':data['audit_content_sha256']+'landscape'}):
+        fig,(loss,grad)=plt.subplots(2,1,figsize=(5.5,2.8),sharex=True,
+            gridspec_kw={'height_ratios':[2.,1.]})
+        fig.subplots_adjust(left=.13,right=.975,top=.75,bottom=.24,hspace=.23)
+        loss.plot(x,[r['predicted_loss'] for r in rows],color=ORANGE,lw=1.6,zorder=2)
+        # Distinct marker sizes keep all exact overlapping native observations
+        # visible without jittering their scientifically meaningful coordinates.
+        for role,marker,size,color in (('frozen-candidate','D',72,PURPLE),
+                ('calibration','o',30,BLUE),('unused','s',23,TEAL)):
+            group=[p for p in points if p['role']==role]
+            loss.scatter([p['theta'] for p in group],[p['native_loss'] for p in group],
+                marker=marker,s=size,facecolors='none' if role=='frozen-candidate' else color,
+                edgecolors=color,linewidths=1.2,zorder=4)
+        loss.set_ylabel('Loss L')
+        loss.set_ylim(_limits([r['predicted_loss'] for r in rows]+[p['native_loss'] for p in points]))
+        candidate=data['candidate'];theta=candidate['theta']
+        noop=theta==.5
+        label=('Center → candidate: no-op at θ = 0.5' if noop else f'Center 0.5 → candidate {theta:.4g}')
+        if not noop:
+            loss.annotate('',xy=(theta,.96),xytext=(.5,.96),xycoords=('data','axes fraction'),
+                arrowprops={'arrowstyle':'->','color':PURPLE,'lw':1.1})
+        loss.text(.02,.97,label,transform=loss.transAxes,va='top',fontsize=7,color=PURPLE)
+        grad.plot(x,[r['gradient'] for r in rows],color=BLUE,lw=1.25)
+        grad.axhline(0,color=GREY,lw=.65)
+        grad.scatter([.5],[data['gradients']['total']],s=20,color=PURPLE,zorder=4)
+        grad.annotate(f'center: {data["gradients"]["total"]:.3g}',
+            (.5,data['gradients']['total']),xytext=(5,7),textcoords='offset points',fontsize=6.7,color=PURPLE)
+        grad.set(xlabel='Institution coordinate θ',ylabel='dL / dθ\n(represented)',xlim=(.185,.815),
+            ylim=_limits([r['gradient'] for r in rows]))
+        grad.set_xticks([.2,.35,.5,.65,.8])
+        for ax in (loss,grad):
+            ax.grid(alpha=.13);ax.tick_params(labelsize=7)
+            ax.yaxis.set_major_locator(MaxNLocator(nbins=3))
+        fig.text(.035,.97,'SCHEMA FIXTURE · NOT ACTUAL QWEN' if fixture else 'Frozen response model: landscape and local update',
+            va='top',fontsize=10,weight='bold',color='#85404C' if fixture else '#223746')
+        fig.legend(handles=[Line2D([],[],color=ORANGE,label='Frozen model'),
+            Line2D([],[],ls='',marker='o',color=BLUE,label='Native calibration'),
+            Line2D([],[],ls='',marker='s',color=TEAL,label='Native unused'),
+            Line2D([],[],ls='',marker='D',markerfacecolor='none',color=PURPLE,label='Native candidate')],
+            loc='upper left',bbox_to_anchor=(.02,.91),frameon=False,ncol=4,fontsize=6.6,
+            handletextpad=.4,columnspacing=1.0)
+        fig.text(.035,.075,'61 posthoc frozen-model evaluations; not used to choose the candidate. Native points are not interpolated.',
+            fontsize=6.4,color='#52616C')
+        scope='Common-prefix-coupled development' if data['response_coupling'] else 'Development worlds'
+        fig.text(.035,.025,scope+' · represented gradient, not the native/Qwen Jacobian · no new model/native calls',
+            fontsize=6.4,color='#714955')
+        try:
+            fig.savefig(paths['png'],dpi=220,facecolor='white',metadata={'Software':'ScienceUtopiaLab audited v9 landscape'})
+            fig.savefig(paths['svg'],facecolor='white',metadata={'Date':None,'Creator':'ScienceUtopiaLab audited v9 landscape'})
+        finally:
+            plt.close(fig)
+    receipt={'schema':'scienceutopia.native-qwen-response-landscape-figure.v9',**data,
+        'audit_file_sha256':file_sha256(report_path),'new_model_calls':0,'new_native_worlds':0,
+        'posthoc_visualization_only':True,'used_for_proposal':False,
+        'native_interpolation':False,'exact_Qwen_or_native_Jacobian_claim':False,
+        'generator_file_sha256':file_sha256(Path(__file__)),
+        'outputs':{kind:{'path':str(path.resolve()),'sha256':file_sha256(path)} for kind,path in paths.items()}}
+    receipt['content_sha256']=digest(receipt)
+    write_json_atomic(manifest_path,receipt,sort_keys=True,allow_nan=False)
+    return receipt
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report',required=True,type=Path)
     parser.add_argument('--output',required=True,type=Path)
     parser.add_argument('--expected-source')
+    parser.add_argument('--landscape',action='store_true',help='Render the separately audited posthoc represented landscape')
     args=parser.parse_args()
-    create(args.report,args.output,expected_source=args.expected_source)
+    (create_landscape if args.landscape else create)(args.report,args.output,expected_source=args.expected_source)
