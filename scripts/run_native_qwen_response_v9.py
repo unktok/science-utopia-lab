@@ -30,6 +30,7 @@ EXPERIMENT = {'protocol': 'native-qwen-response-gradient-v9', 'role': 'developme
     'review_task_identity_recording': True, 'public_payload_only_review_context': True}
 CALIBRATION = [.2, .5, .8]
 UNUSED = [.35, .65]
+MODEL = 'qwen3:8b'
 WORLD_NAMES = ['calibration-0', 'calibration-1', 'calibration-2', 'unused-0', 'unused-1', 'gradient-candidate']
 
 
@@ -93,12 +94,35 @@ def run(args):
     from utopia.system.code_mechanisms import DockerCodeExecutor
     from utopia.system.native_review_identity import enable_review_identity_recording
     preflight_saved_artifacts(args.output)
+    common_prefix = None
+    anchor = getattr(args, 'common_prefix_anchor', None)
+    if anchor:
+        if getattr(args, 'amendment', False):
+            raise ValueError('a2 and a3 amendments are separate, not combined implicitly')
+        from utopia.optimization.native_response_prefix import prepare_common_prefix
+        anchor = Path(anchor).resolve()
+        origin = read(anchor.parent.parent/'evidence.json')
+        original = [r['endpoint'] for r in origin['endpoints'] if r['name'] == anchor.name]
+        if len(original) != 1:
+            raise ValueError('common prefix requires one completed actual anchor endpoint')
+        common_prefix = prepare_common_prefix(anchor, original[0])
     executor = DockerCodeExecutor()
     system = response_gradient_system(executor.image_id)
     objective = load_loss_spec(ROOT/'research/objectives/losses/native-joint-v5-net-reviewed-utility.json')
     factory = LocalQwenNativeFactory(args.output/'worlds', args.data_cache,
-        years=2, corpus_years=4, experiment_binding=EXPERIMENT,
+        years=2, corpus_years=4, model=MODEL, experiment_binding=EXPERIMENT,
         record_wire=True, record_code=True, inference_lock=args.inference_lock)
+    if common_prefix:
+        from utopia.system import SystemSpec
+        origin = common_prefix['anchor_endpoint']
+        normalized, _ = project_continuous(SystemSpec.from_dict(origin['system']), DECLARATIONS,
+            {'evidence-weight': .5})
+        if (common_prefix['anchor_classification'] != ACTUAL or common_prefix['anchor_model'] != MODEL
+                or origin['world']['model_digest'] != factory.model_digest
+                or origin['world']['corpus_sha256'] != factory.corpus_sha256
+                or origin['world']['seed'] != 42 or origin['world'].get('years') != 2
+                or normalized.to_dict() != system.to_dict()):
+            raise ValueError('prefix anchor is not this actual fixed-Qwen original world and noncoordinate institution')
     world = {'source_commit': factory.source_commit, 'model_digest': factory.model_digest,
         'corpus_sha256': factory.corpus_sha256, 'seed': 42, 'years': 2, 'corpus_years': 4,
         'runtime_seed_binding': factory.runtime_seed_binding, 'experiment': EXPERIMENT,
@@ -114,6 +138,14 @@ def run(args):
             'sha256': file_sha256(ROOT/'research/protocols/campaigns/native-qwen-response-gradient-v9-a2.md'),
             'prior_maximum_worlds': 3, 'maximum_combined_physical_worlds': 9,
             'changes': 'exclude only server envelope metadata from cross-world semantic response equality'}
+    if common_prefix:
+        plan['amendment'] = {'id': 'native-qwen-response-gradient-v9-a3',
+            'sha256': file_sha256(ROOT/'research/protocols/campaigns/native-qwen-response-gradient-v9-a3.md'),
+            'prior_world_attempts': 4, 'prior_completed_worlds': 2, 'prior_partial_worlds': 2,
+            'prior_physical_replies': 228, 'maximum_combined_world_attempts': 10,
+            'changes': 'replay an exact actual Qwen pre-intervention history; generate affected and later replies freshly'}
+        plan['response_coupling'] = {'mode': 'actual-common-prefix-replay',
+            'unique_anchor_prefix_calls': common_prefix['prefix_count'], 'prepared': common_prefix}
     plan_path = args.output/'plan.json'
     if plan_path.exists() and read(plan_path) != plan:
         raise ValueError('frozen plan/source/objective/model/corpus differs')
@@ -149,12 +181,18 @@ def run(args):
             layout, numeric, _ = boundary_layout(restored)
             raw_review_projection(restored, layout, numeric, **prior['numeric_response_evidence'])
             return prior
-        started, sim = time.time(), None
+        started, sim, prefix_controller = time.time(), None, None
         print(json.dumps({'event': 'world-start', 'name': name, 'theta': theta}), flush=True)
         try:
             sim = factory(candidate, 42, name)
             enable_review_identity_recording(sim)
+            if common_prefix:
+                from utopia.optimization.native_response_prefix import install_common_prefix
+                prefix_controller = install_common_prefix(sim, common_prefix, root/'wire-requests.jsonl')
             sim.run()
+            prefix_receipt = prefix_controller.complete() if prefix_controller else None
+            if prefix_receipt:
+                write_json_atomic(root/'common-prefix-receipt.json', prefix_receipt, sort_keys=True, allow_nan=False)
             endpoint = native_endpoint(Path(sim.output_dir)/'portable_checkpoint_year_2.json.gz',
                 candidate, DECLARATIONS, objective, world=world,
                 code_contexts=args.output/'worlds'/name/'code-contexts.jsonl')
@@ -166,12 +204,21 @@ def run(args):
                 root/'wire-requests.jsonl', run_manifest_sha256=file_sha256(root/'simulation/docs/native-design/run_manifest.json'))
             write_json_atomic(root/'completion-receipt.json', receipt, sort_keys=True, allow_nan=False)
             proof = control_proof(endpoint, root)
+            if common_prefix:
+                require_same_control([proof, control_proof(common_prefix['anchor_endpoint'], anchor)])
             row = {'name': name, 'theta': theta, 'endpoint': endpoint, 'projection': projection,
                 'control_proof': proof, 'completion_receipt': receipt, 'elapsed_seconds': time.time()-started,
-                'hard_represented_loss': hard, 'fresh_physical_replies': endpoint['response_cache_count'],
+                'hard_represented_loss': hard,
+                'fresh_physical_replies': prefix_receipt['fresh_physical_reply_count'] if prefix_receipt else endpoint['response_cache_count'],
                 'numeric_response_evidence': {'journal': str(root/'replies/responses.sqlite'),
                     'wire': str(root/'wire-requests.jsonl'), 'mechanism': 'addressed-selection',
                     'input_name': 'features', 'completion_receipt': receipt}}
+            if prefix_receipt:
+                row.update(common_prefix_receipt=prefix_receipt,
+                    logical_response_count=endpoint['response_cache_count'],
+                    replayed_response_count=prefix_receipt['replayed_response_count'])
+                if row['fresh_physical_replies']+row['replayed_response_count'] != row['logical_response_count']:
+                    raise ValueError('logical and actual physical response counts differ from the replay receipt')
             evidence['endpoints'].append(row)
             save(evidence_path, evidence)
             print(json.dumps({'event': 'world-complete', 'name': name, 'theta': theta,
@@ -179,6 +226,9 @@ def run(args):
                 'elapsed_seconds': row['elapsed_seconds']}), flush=True)
             return row
         except BaseException as error:
+            if prefix_controller:
+                partial = prefix_controller.receipt(require_complete=False)
+                write_json_atomic(root/'common-prefix-partial-receipt.json', partial, sort_keys=True, allow_nan=False)
             evidence['failures'].append({'name': name, 'theta': theta, 'error_type': type(error).__name__,
                 'error': str(error)[:4000], 'loss': None, 'elapsed_seconds': time.time()-started})
             evidence['status'] = 'stopped-with-preserved-failure'
@@ -231,6 +281,13 @@ def run(args):
             native_candidate_minus_center=candidate['endpoint']['native_loss']-calibration[1]['endpoint']['native_loss'],
             operator_sha256=file_sha256(operator_path), operator_representation_sha256=operator._hash,
             raw_fit_rmse=operator.state['raw_fit_rmse'])
+        if common_prefix:
+            fresh = sum(r['fresh_physical_replies'] for r in evidence['endpoints'])
+            evidence.update(response_coupling=plan['response_coupling'],
+                logical_response_count=sum(r['logical_response_count'] for r in evidence['endpoints']),
+                fresh_physical_reply_count=fresh,
+                unique_actual_calls_supporting_this_campaign=common_prefix['prefix_count']+fresh,
+                all_v9_actual_physical_replies=228+fresh)
         return save(evidence_path, evidence)
     except BaseException as error:
         if not evidence['failures']:
@@ -247,6 +304,8 @@ def main():
     parser.add_argument('--data-cache', type=Path, required=True)
     parser.add_argument('--inference-lock', type=Path, required=True)
     parser.add_argument('--amendment', action='store_true', help='Bind the prospective a2 server-envelope comparison amendment')
+    parser.add_argument('--common-prefix-anchor', type=Path,
+        help='Bind prospective a3 coupling to one completed actual Qwen world, never a synthetic anchor')
     args = parser.parse_args()
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)

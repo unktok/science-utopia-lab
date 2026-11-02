@@ -133,7 +133,7 @@ def control_proof(endpoint, world_root):
         'preintervention_request_response_sequence_sha256': digest(prefix),
         'raw_prefix_envelope_sha256': digest(raw_prefix),
         'response_comparison_scope': 'Exact full choices including messages and finish reasons; exclude server envelope IDs/created/usage only from cross-world equality, never raw integrity.',
-        'preintervention_physical_reply_count': len(prefix),
+        'preintervention_logical_reply_count': len(prefix),
         'preintervention_world_observation_sha256': digest(pre_world),
         'normalized_final_review_payloads_sha256': digest(reviews),
         'final_review_prompt_count': len(reviews),
