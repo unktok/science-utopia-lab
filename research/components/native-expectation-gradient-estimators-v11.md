@@ -76,8 +76,11 @@ bias the corrected expectation under the stated assumptions.
 Current sample IDs must be disjoint from training sample IDs; the current batch
 ID cannot occur among training batches. The estimator rejects any overlap.
 IDs alone cannot prove chronology or independence: the durable campaign must
-audit that fitting occurs before current sampling, never fit on current costs,
-and freeze the full record. Same dimensions alone do not establish semantic
+audit that all model inputs come only from history sealed before current
+sampling, never fit on current costs, and freeze the full record. Deterministic
+recomputation after sampling is equivalent if it uses exactly those sealed
+prior-only inputs, never current observations or draw-dependent model choices.
+Same dimensions alone do not establish semantic
 compatibility: source, factors, paths, bounds and other relevant semantics must
 also match. Changed source/wiring or coordinate meanings require a compatible
 new model or an explicit plain-LR fallback, not silent cross-vocabulary reuse.
