@@ -80,8 +80,9 @@ latent and explicitly favors that aggregation choice. This is an externally
 authored derivative-free redesign heuristic, not a named Bayesian optimizer.
 
 The score arm's generation0 has no compatible earlier observations, so it uses
-plain likelihood-ratio estimation. Its recorded gradient is
-`dL/dmean = 0.40776843992307504` and aggregation-logit gradient
+plain likelihood-ratio estimation. Its recorded estimate of the conditional
+expected-loss derivative with respect to Gaussian mean is
+`0.40776843992307504`, with aggregation-logit gradient
 `[0.49583333333333346, -0.49583333333333346]`. A learning-rate0.1 update yields
 mean `-0.04077684399230751` and logits
 `[-0.04958333333333335, 0.04958333333333335]`. Those values are explicitly
