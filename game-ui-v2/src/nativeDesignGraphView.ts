@@ -65,7 +65,7 @@ export function initializeNativeDesignGraph(textarea: HTMLTextAreaElement): void
 
   const render = (): void => {
     if (!spec) return;
-    const check = structuralCheck(spec), phases = new Map(spec.schedules.map(row => [row.mechanism_id, row.phase]));
+    const check = structuralCheck(spec,{allowOpenFamilies:true}), phases = new Map(spec.schedules.map(row => [row.mechanism_id, row.phase]));
     localCheck.className = `graph-local-check ${check.valid ? "valid" : "invalid"}`;
     localCheck.textContent = check.valid ? `LOCAL PRECHECK PASS / ${spec.mechanisms.length} mechanisms / ${spec.connections.length} connections / ${check.warnings.length} warning(s) / still not server-validated or executed.` : `LOCAL PRECHECK FAIL / ${check.errors.length} issue(s) / ${check.errors[0]}`;
     undo.disabled = past.length === 0; redo.disabled = future.length === 0;
@@ -74,6 +74,7 @@ export function initializeNativeDesignGraph(textarea: HTMLTextAreaElement): void
     canvas.querySelectorAll<HTMLButtonElement>("[data-author-node]").forEach(button => button.addEventListener("click", () => { selected = button.dataset.authorNode || ""; render(); }));
     const node = selectedNode(); nodeFields.hidden = !node; noSelection.hidden = Boolean(node);
     if (node) {
+      if(!Array.from(family.options).some(value=>value.value===node.family))family.add(option(node.family,`${node.family} / DECLARED CUSTOM FAMILY`));
       idInput.value = node.mechanism_id; family.value = node.family; implementation.value = node.implementation;
       const schedule = spec.schedules.find(row => row.mechanism_id === node.mechanism_id); phase.value = schedule ? String(schedule.phase) : ""; trigger.value = schedule?.trigger || "";
       parameters.value = JSON.stringify(node.parameters, null, 2); renderPorts("inputs", node.inputs); renderPorts("outputs", node.outputs);

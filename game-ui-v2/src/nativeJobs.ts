@@ -1,6 +1,7 @@
 // Browser edits are data. Only the separate, commit-pinned worker executes jobs.
 import { initializeNativeMission, type NativeMissionController } from "./nativeMissionView";
 import { NativeAsyncGuard, snapshotCompletedJob } from "./nativeAsyncGuard";
+import { FOUNDRY_BRANCH_KEY, readPreparedFoundryBranch } from './foundryBranch';
 const item = <T extends HTMLElement>(id: string): T => {
   const node = document.getElementById(id);
   if (!node) throw new Error(`Missing design workbench element ${id}`);
@@ -25,12 +26,27 @@ export function initializeNativeJobs(selectedSystem: () => unknown, loadEvidence
   const panel = item<HTMLDetailsElement>("design-console"), system = item<HTMLTextAreaElement>("design-system"), loss = item<HTMLTextAreaElement>("design-loss");
   const validate = item<HTMLButtonElement>("design-validate"), submit = item<HTMLButtonElement>("design-submit"), result = item<HTMLButtonElement>("design-result"), consent = item<HTMLInputElement>("design-consent");
   let parent: unknown, token = "", validated = "", jobId = "", initialized = false, timer: number | undefined, lastJob: any = null, mission: NativeMissionController | undefined, evidenceLoading = false;
+  let copyRevision=0;
   const asyncGuard = new NativeAsyncGuard();
   const request = (): Record<string, unknown> => designRequest(parent, system.value, loss.value, Number(item<HTMLInputElement>("design-seed").value), Number(item<HTMLInputElement>("design-years").value));
   const error = (value: unknown): void => { item("design-job-error").hidden = false; item("design-job-error").textContent = String(value); };
   const refreshSubmit = (): void => { submit.disabled = asyncGuard.submissionInFlight() || !validated || !consent.checked || !mission?.canSubmit().ok; };
-  const changed = (): void => { asyncGuard.changed(); validated = ""; consent.checked = false; refreshSubmit(); item("design-validation").textContent = "Edited design or mission needs validation and renewed consent. No experiment submitted."; };
+  const changed = (): void => { copyRevision++;asyncGuard.changed(); validated = ""; consent.checked = false; refreshSubmit(); item("design-validation").textContent = "Edited design or mission needs validation and renewed consent. No experiment submitted."; };
   const copy = (): void => {
+    const copyTicket=++copyRevision;
+    const preparedHash = new URLSearchParams(location.search).get('prepared-branch');
+    if (preparedHash) {
+      void (async () => {try {
+        const text=sessionStorage.getItem(FOUNDRY_BRANCH_KEY);
+        if(!text)throw new Error('Prepared Foundry draft is not present in this browser session; no fallback parent substituted');
+        const branch=await readPreparedFoundryBranch(text,preparedHash);
+        if(copyTicket!==copyRevision)return;
+        parent=branch.parent_system;system.value=JSON.stringify(branch.system,null,2);loss.value=JSON.stringify(branch.loss_spec,null,2);
+        item<HTMLInputElement>('design-seed').value=String(branch.seed);item<HTMLInputElement>('design-years').value=String(branch.years);
+        item('design-parent').textContent=`UNEXECUTED FOUNDRY BRANCH / observed parent ${branch.origin.observation_id} / exact audit binding preserved in downloaded branch. Validate the runtime, lock a mission and give renewed compute consent before any job.`;
+        system.dispatchEvent(new Event('input',{bubbles:true}));loss.dispatchEvent(new Event('input',{bubbles:true}));changed();
+      }catch(failure){error(failure);}})();return;
+    }
     try { parent = selectedSystem(); system.value = JSON.stringify(parent, null, 2); loss.value = JSON.stringify(nativeEngineeringLoss, null, 2); item("design-parent").textContent = "Parent captured from the selected system. Edit source, nodes, ports, wiring, schedules or parameters below."; system.dispatchEvent(new Event("input", { bubbles: true })); loss.dispatchEvent(new Event("input", { bubbles: true })); changed(); } catch (failure) { error(failure); }
   };
   const api = async (path: string, body?: unknown): Promise<any> => {

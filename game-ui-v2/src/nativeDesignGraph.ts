@@ -62,7 +62,7 @@ export function parseEditableSystemSpec(value: unknown): EditableSystemSpec {
   return spec;
 }
 
-export function structuralCheck(spec: EditableSystemSpec): StructuralCheck {
+export function structuralCheck(spec: EditableSystemSpec, options: {allowOpenFamilies?: boolean} = {}): StructuralCheck {
   const errors: string[] = [], warnings: string[] = [];
   const nodeIds = new Set<string>(), schedules = new Set<string>();
   const nodeById = new Map<string, DesignMechanism>();
@@ -71,7 +71,7 @@ export function structuralCheck(spec: EditableSystemSpec): StructuralCheck {
     if (!identifier.test(node.mechanism_id)) errors.push(`${at}.mechanism_id must be a lowercase dotted/dashed identifier`);
     if (nodeIds.has(node.mechanism_id)) errors.push(`${at}.mechanism_id duplicates ${node.mechanism_id}`);
     nodeIds.add(node.mechanism_id); nodeById.set(node.mechanism_id, node);
-    if (!mechanismFamilies.includes(node.family as typeof mechanismFamilies[number])) errors.push(`${at}.family is not a known family`);
+    if (options.allowOpenFamilies ? typeof node.family !== 'string' || !node.family.trim() : !mechanismFamilies.includes(node.family as typeof mechanismFamilies[number])) errors.push(`${at}.family is not a known family`);
     if (!node.implementation?.trim()) errors.push(`${at}.implementation must not be empty`);
     const ports = new Set<string>();
     for (const [direction, list] of [["inputs", node.inputs], ["outputs", node.outputs]] as const) for (const [portIndex, port] of list.entries()) {

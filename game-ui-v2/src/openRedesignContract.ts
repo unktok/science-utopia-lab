@@ -14,10 +14,10 @@ export interface OpenRedesign extends Evidence {
   physical_researcher_responses: number; live_job_control: false;
 }
 const fail = (message: string): never => { throw new Error(`Invalid v12 evidence: ${message}`); };
-export function recordedParentSystem(data: OpenRedesign, objective: ObjectiveId, selected: RedesignObservation): Evidence | undefined {
+export function recordedParentSystem(data: Evidence, objective: string, selected: Evidence): Evidence | undefined {
   const arm=data.arms[objective];
-  const record=arm.records?.find((value: Evidence)=>value.request?.generation===selected.generation);
-  return record?.request?.parent_system??arm.observations.find(value=>value.system_fingerprint===selected.parent_system_fingerprint)?.system;
+  const record=arm.records?.find((value: Evidence)=>selected.stage?value.stage===selected.stage:value.request?.generation===selected.generation);
+  return record?.request?.parent_system??arm.observations.find((value:Evidence)=>value.system_fingerprint===selected.parent_system_fingerprint)?.system;
 }
 export function generatedPythonNode(node: Evidence | undefined): Evidence | undefined {
   if(node?.implementation==='code.python.v1')return node;

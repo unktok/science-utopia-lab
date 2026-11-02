@@ -1,35 +1,42 @@
-import { generatedPythonNode, generatedSourceBody, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign, type Evidence, type ObjectiveId, type OpenRedesign, type RedesignObservation } from './openRedesignContract';
+import { generatedPythonNode, generatedSourceBody, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign, type Evidence } from './openRedesignContract';
+import { NESTED_OBJECTIVES, nestedStageLabel, verifyNestedFoundry } from './nestedFoundryContract';
+import { initializeFoundryBranch } from './foundryBranch';
+import { initializeNestedSignal } from './nestedFoundrySignal';
 import './objectiveStructure.css';
 import './openRedesign.css';
+import './nestedFoundry.css';
 
 const el = (id: string): HTMLElement => {const value = document.getElementById(id);if (!value) throw new Error(`Missing ${id}`);return value;};
 const esc = (value: unknown): string => String(value ?? '—').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const list = (value: unknown): Evidence[] => Array.isArray(value) ? value : [];
 const score = (value: number | null): string => value === null ? 'NULL' : Number.isInteger(value) ? String(value) : value.toFixed(4).replace(/0+$/,'').replace(/\.$/,'');
 const short = (value: unknown, size = 13): string => typeof value === 'string' && value.length > size ? `${value.slice(0,size)}…` : String(value ?? '—');
-const labels = ['THROUGHPUT','NET REVIEWED UTILITY'];
-const formulas = ['L = −A','L = 3.25A − Q + 0.05R'];
-let data: OpenRedesign, selectedArm = 0, selectedGeneration = 0, selectedNode = '', selectedWire = -1;
+const nested=new URLSearchParams(location.search).get('campaign')==='v13';
+const objectives:readonly string[]=nested?NESTED_OBJECTIVES:REDESIGN_OBJECTIVES;
+const labels = nested?['THROUGHPUT','REVIEWED PRODUCTION EFFICIENCY']:['THROUGHPUT','NET REVIEWED UTILITY'];
+const formulas = nested?['L = −A','L = −Q + 0.5R']:['L = −A','L = 3.25A − Q + 0.05R'];
+let data: Evidence, selectedArm = 0, selectedGeneration = 0, selectedNode = '', selectedWire = -1;
 let tab: 'source' | 'protocol' | 'process' | 'native' = 'source';
-const armId = (): ObjectiveId => REDESIGN_OBJECTIVES[selectedArm]!;
-const row = (): RedesignObservation => data.arms[armId()].observations[selectedGeneration]!;
+const armId = (): string => objectives[selectedArm]!;
+const row = (): Evidence => data.arms[armId()].observations[selectedGeneration]!;
+const stageLabel=(r:Evidence):string=>nested?nestedStageLabel(r):`G${r.generation}`;
 
-function plot(rows: RedesignObservation[]): string {
+function plot(rows: Evidence[]): string {
   const values = rows.filter(r => r.own_loss !== null).map(r => r.own_loss!);
   if (!values.length) return '<p class="foundry-empty">NO COMPLETE LOSS ENDPOINT</p>';
   const width = 370, height = 155, left = 48, top = 20, bottom = 32, right = 15;
   const padding = Math.max(.2,(Math.max(...values)-Math.min(...values))*.15), lo = Math.min(...values)-padding, hi = Math.max(...values)+padding;
-  const x = (g: number) => left+(width-left-right)*g/2;
+  const x = (g: number) => left+(width-left-right)*g/Math.max(1,rows.length-1);
   const y = (v: number) => top+(height-top-bottom)*(hi-v)/(hi-lo);
-  const path = (key: 'own_loss' | 'running_best') => rows.map((r,i) => r[key] === null ? '' : `${i && rows[i-1]?.[key] !== null ? 'L' : 'M'}${x(r.generation)} ${y(r[key])}`).join(' ');
-  return `<svg class="redesign-plot" viewBox="0 0 ${width} ${height}" role="img" aria-label="Own loss and running best for this objective only">${[lo,(lo+hi)/2,hi].map(v=>`<path d="M${left} ${y(v)}H${width-right}" stroke="#2b3e59"/><text x="${left-8}" y="${y(v)+3}" text-anchor="end">${score(v)}</text>`).join('')}<path class="best-line" d="${path('running_best')}"/><path class="loss-line" d="${path('own_loss')}"/>${rows.filter(r=>r.own_loss!==null).map(r=>`<circle cx="${x(r.generation)}" cy="${y(r.own_loss!)}" r="4"/>`).join('')}${[0,1,2].map(g=>`<text x="${x(g)}" y="${height-10}" text-anchor="middle">G${g}</text>`).join('')}</svg>`;
+  const path = (key: 'own_loss' | 'running_best') => rows.map((r,i) => r[key] === null ? '' : `${i && rows[i-1]?.[key] !== null ? 'L' : 'M'}${x(i)} ${y(r[key])}`).join(' ');
+  return `<svg class="redesign-plot" viewBox="0 0 ${width} ${height}" role="img" aria-label="Own loss and running best for this objective only">${[lo,(lo+hi)/2,hi].map(v=>`<path d="M${left} ${y(v)}H${width-right}" stroke="#2b3e59"/><text x="${left-8}" y="${y(v)+3}" text-anchor="end">${score(v)}</text>`).join('')}<path class="best-line" d="${path('running_best')}"/><path class="loss-line" d="${path('own_loss')}"/>${rows.map((r,i)=>r.own_loss===null?'':`<circle cx="${x(i)}" cy="${y(r.own_loss)}" r="4"/>`).join('')}${rows.map((r,i)=>`<text x="${x(i)}" y="${height-10}" text-anchor="middle">${nested?r.draw_index===null?'ERROR':r.stage==='initial-batch'?`D${r.draw_index+1}`:r.stage==='updated-proposal'?'POST':'G1':stageLabel(r)}</text>`).join('')}</svg>`;
 }
 function renderPaths(): void {
-  el('objective-paths').innerHTML = REDESIGN_OBJECTIVES.map((id,index)=>{
+  el('objective-paths').innerHTML = objectives.map((id,index)=>{
     const arm = data.arms[id];
-    const rows = arm.observations;
+    const rows:Evidence[] = arm.observations;
     const ties = arm.incumbents?.best_observation_ties ?? [];
-    return `<article class="redesign-arm" data-arm="${index}"><div class="redesign-arm-label"><span>${labels[index]} / MINIMIZE</span><h3>${formulas[index]}</h3><p>External code redesign from this arm's own preceding observations. No cross-arm feedback.</p><b>OBSERVED BEST ${score(rows.at(-1)?.running_best ?? null)}<br/>${ties.length} EXACT BEST TIE${ties.length===1?'':'S'} · NO INITIAL SCORE</b></div><div class="redesign-stations">${rows.map((r,i)=>`<button type="button" class="redesign-station" data-arm="${index}" data-generation="${i}" aria-pressed="${selectedArm===index&&selectedGeneration===i}" data-failed="${r.status!=='complete'}"><span>G${r.generation} / ${r.status==='complete'?'NATIVE ENDPOINT':esc(r.status.toUpperCase())}</span><strong>L ${score(r.own_loss)}</strong><em>BEST ${score(r.running_best)}</em><small>${esc(short(r.system_fingerprint))}</small></button>`).join('')}</div>${plot(rows)}</article>`;
+    return `<article class="redesign-arm" data-arm="${index}"><div class="redesign-arm-label"><span>${labels[index]} / MINIMIZE</span><h3>${formulas[index]}</h3><p>${nested?'Free G0 → two native draws → one conditional LR/LOO update → one fresh forward → free G1. No cross-arm feedback.':"External code redesign from this arm's own preceding observations. No cross-arm feedback."}</p><b>OBSERVED BEST ${score(rows.at(-1)?.running_best ?? null)}<br/>${ties.length} EXACT BEST TIE${ties.length===1?'':'S'} · NO INITIAL SCORE</b></div><div class="redesign-stations">${rows.map((r,i)=>`<button type="button" class="redesign-station" data-arm="${index}" data-generation="${i}" aria-pressed="${selectedArm===index&&selectedGeneration===i}" data-failed="${r.status!=='complete'}"><span>${stageLabel(r)} / ${r.status==='complete'?'NATIVE ENDPOINT':esc(r.status.toUpperCase())}</span><strong>L ${score(r.own_loss)}</strong><em>BEST ${score(r.running_best)}</em><small>${esc(short(r.system_fingerprint))}</small></button>`).join('')}</div>${plot(rows)}</article>`;
   }).join('');
   el('objective-paths').querySelectorAll<HTMLButtonElement>('.redesign-station').forEach(button=>button.addEventListener('click',()=>{
     selectedArm=Number(button.dataset.arm);selectedGeneration=Number(button.dataset.generation);selectedNode='';selectedWire=-1;renderAll();
@@ -42,7 +49,7 @@ function nodeAsset(node: Evidence): string {
 }
 function renderCircuit(): void {
   const selected = row(), system = selected.system;
-  el('circuit-title').textContent=`${labels[selectedArm]} / GENERATION ${selected.generation}`;
+  el('circuit-title').textContent=`${labels[selectedArm]} / ${nested?stageLabel(selected):`GENERATION ${selected.generation}`}`;
   el('selected-fingerprint').textContent=selected.system_fingerprint??'NO EXECUTABLE SYSTEM';
   el('selected-summary').innerHTML=`<span>OWN LOSS <b>${score(selected.own_loss)}</b></span><span>RUNNING BEST <b>${score(selected.running_best)}</b></span><span>PARENT <b>${esc(short(selected.parent_system_fingerprint,18))}</b></span><span>STATUS <b>${esc(selected.status.toUpperCase())}</b></span>`;
   if (!system) {el('system-circuit').innerHTML='<p class="foundry-empty">NO EXECUTABLE CANDIDATE / NO GRAPH INFERRED</p>';el('wire-list').innerHTML='';el('change-ledger').innerHTML='<p>Generation or execution failure is retained. Null loss is not a bad numerical score.</p>';renderInspector();return;}
@@ -96,31 +103,48 @@ function renderInspector(): void {
   }
 }
 function renderProfiles(): void {
-  el('cross-profiles').innerHTML=`<table><caption class="sr-only">All recorded systems rescored under both explicit development losses</caption><thead><tr><th>DESIGNED UNDER / GENERATION</th>${formulas.map((formula,i)=>`<th>${labels[i]}<br/>${formula}</th>`).join('')}<th>ORIGINAL NATIVE RECORDS<br/>A / Q / R</th></tr></thead><tbody>${REDESIGN_OBJECTIVES.map((id,a)=>data.arms[id].observations.map((r,g)=>`<tr data-arm="${a}" data-selected="${a===selectedArm&&g===selectedGeneration}"><td>${labels[a]} / G${r.generation}<small>${esc(short(r.observation_id,25))} / ${esc(r.status)}</small></td>${REDESIGN_OBJECTIVES.map(target=>`<td data-own="${id===target}"><strong>${score(r.cross_scores[target])}</strong><small>${id===target?'OWN LOSS':'SAME-WORLD CROSS-SCORE'}</small></td>`).join('')}<td>${['native.accepted_decisions','native.accepted_peer_score_sum','native.review_records'].map(key=>{const metric=r.metrics?.[key];return score(typeof metric==='number'?metric:metric?.value??null);}).join(' / ')}</td></tr>`).join('')).join('')}</tbody></table>`;
+  el('cross-profiles').innerHTML=`<table><caption class="sr-only">All recorded systems rescored under both explicit development losses</caption><thead><tr><th>DESIGNED UNDER / STAGE</th>${formulas.map((formula,i)=>`<th>${labels[i]}<br/>${formula}</th>`).join('')}<th>ORIGINAL NATIVE RECORDS<br/>A / Q / R</th></tr></thead><tbody>${objectives.map((id,a)=>data.arms[id].observations.map((r:Evidence,g:number)=>`<tr data-arm="${a}" data-selected="${a===selectedArm&&g===selectedGeneration}"><td>${labels[a]} / ${stageLabel(r)}<small>${esc(short(r.observation_id,25))} / ${esc(r.status)}</small></td>${objectives.map(target=>`<td data-own="${id===target}"><strong>${score(r.cross_scores[target])}</strong><small>${id===target?'OWN LOSS':'SAME-WORLD CROSS-SCORE'}</small></td>`).join('')}<td>${['native.accepted_decisions','native.accepted_peer_score_sum','native.review_records'].map(key=>{const metric=r.metrics?.[key];return score(typeof metric==='number'?metric:metric?.value??null);}).join(' / ')}</td></tr>`).join('')).join('')}</tbody></table>`;
 }
-function renderAll(): void {renderPaths();renderCircuit();renderProfiles();el('raw-row').textContent=JSON.stringify(row(),null,2);}
+function renderAll(): void {renderPaths();renderCircuit();renderProfiles();el('raw-row').textContent=JSON.stringify(row(),null,2);if(nested)initializeNestedSignal(el('nested-signal'),data,armId(),row(),id=>{selectedNode=id;tab='native';renderCircuit();});}
 function render(): void {
-  const fixture=data.classification==='scripted-fixture-not-native-results';if(fixture)document.body.dataset.fixture='scripted-v12';
+  const fixture=data.classification==='scripted-fixture-not-native-results';if(fixture)document.body.dataset.fixture=nested?'scripted-v13':'scripted-v12';
   el('truth-badge').textContent=fixture?'SCRIPTED FIXTURE / NOT QWEN':'AUDITED ACTUAL DEVELOPMENT';el('truth-badge').dataset.mode=fixture?'fixture':'actual';
   const replyNote=data.physical_researcher_responses>0?'Observed fixed-weight Qwen3:8B replies':'Qwen3:8B configured / no replies observed';
-  el('identity-strip').innerHTML=[['OBJECTIVES','TWO EXPLICIT LOSSES','No hidden fairness or quality veto'],['NATIVE WORLDS',`${data.physical_native_worlds} COMPLETE / SIX ATTEMPTS`,'Three generations per objective'],['PHYSICAL REPLIES',String(data.physical_researcher_responses),replyNote],['DESIGNER','EXTERNAL CODEX PILOT','Not authenticated autonomous invention']].map(([title,value,note])=>`<div><span>${title}</span><strong>${esc(value)}</strong><small>${fixture?'SCRIPTED SCHEMA FIXTURE':note}</small></div>`).join('');
+  el('identity-strip').innerHTML=[['OBJECTIVES','TWO EXPLICIT LOSSES','No hidden fairness or quality veto'],['NATIVE WORLDS',`${data.physical_native_worlds} COMPLETE / ${nested?'EIGHT':'SIX'} ATTEMPTS`,nested?'2 inner + 1 updated + 1 redesigned per objective':'Three generations per objective'],['PHYSICAL REPLIES',String(data.physical_researcher_responses),replyNote],['DESIGNER','EXTERNAL CODEX PILOT','Not authenticated autonomous invention']].map(([title,value,note])=>`<div><span>${title}</span><strong>${esc(value)}</strong><small>${fixture?'SCRIPTED SCHEMA FIXTURE':note}</small></div>`).join('');
   const facts=[['SOURCE COMMIT',data.source_binding.source_commit],['AUDIT FILE SHA256',data.source_binding.report_file_sha256],['AUDIT CONTENT SHA256',data.source_binding.report_content_sha256],['RAW INVENTORY SHA256',data.raw_inventory_sha256],['INITIAL / HISTORICAL BASELINE','NONE SCORED'],['HELD-OUT EVALUATION','NONE / SAME-WORLD DEVELOPMENT SCORES'],['LIVE CONTROL','DISABLED / NO DISPATCH'],['CLAIM BOUNDARY','NO SCIENTIFIC-VALUE OR CAUSAL-BENEFIT CLAIM']];
+  if(nested)facts.push(['SCHEDULED NATIVE SLOTS',`${data.consumed_native_slots??'UNKNOWN'} CONSUMED / ${data.planned_native_world_budget??'UNKNOWN'} RESERVED`],['ACTUAL WORLD DIRECTORIES',String(data.physical_world_directory_count??'UNKNOWN')],['COMPLETED NATIVE DRAWS',String(data.logical_completed_draws??'UNKNOWN')]);
   el('provenance').innerHTML=facts.map(([title,value])=>`<div><dt>${esc(title)}</dt><dd>${esc(value)}</dd></div>`).join('');
   el('limitations').innerHTML=[...(data.limitations??[]),'Designer sees its own arm history; one development seed does not establish generalization.','Free executable representation does not mean unconstrained or automatically successful institution invention.'].map(s=>`<p>${esc(s)}</p>`).join('');
-  REDESIGN_OBJECTIVES.forEach((_id,index)=>{if(!data.arms[REDESIGN_OBJECTIVES[selectedArm]!].observations.length)selectedArm=index;});
+  objectives.forEach((_id,index)=>{if(!data.arms[objectives[selectedArm]!].observations.length)selectedArm=index;});
   if(!data.arms[armId()].observations.length)throw new Error('No recorded attempt available');
   el('evidence').hidden=false;renderAll();el('footer-source').textContent='ACTUAL SOURCE-BOUND AUDIT / IMMUTABLE EXPORTED VIEW';
+  if(nested)initializeFoundryBranch(el('foundry-branch'),()=>({row:row(),objective:armId(),loss:data.loss_specs[armId()],binding:data.source_binding,fixture,unsafeSystemIntegerPaths:data.numeric_encoding.paths.filter((path:string)=>path.startsWith(`/arms/${armId()}/observations/${selectedGeneration}/system/`))}));
 }
 el('inspector-tabs').querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button=>button.addEventListener('click',()=>{tab=button.dataset.tab as typeof tab;renderInspector();}));
 async function boot(): Promise<void> {
   try {
-    const response=await fetch('./data/native-objective-redesign-v12.availability.json');if(!response.ok)throw new Error('Availability manifest missing');const available=await response.json();
-    if(available.schema!=='scienceutopia.open-redesign-availability.v12')throw new Error('Unknown availability contract');
+    if(nested){
+      document.body.dataset.campaign='v13';document.title='NOCTILUCA // Nested Institution Foundry V13';
+      document.querySelector('.os-mark>span')!.textContent='INSTITUTION FOUNDRY // V13';
+      const previous=document.querySelector<HTMLAnchorElement>('.os-topbar>a:last-of-type')!;previous.textContent='V12 FREE REDESIGN ↗';previous.href='./native-objective-redesign.html';
+      document.querySelector('.foundry-copy>.eyebrow')!.textContent='INVENT THE SYSTEM. TUNE IT. RETURN TO INVENTION.';
+      document.querySelector('.foundry-copy>p:last-of-type')!.textContent='Free institutional code and wiring, conditional expected-loss optimization, then a new design from actual feedback. Same original researcher world. Same fixed Qwen weights.';
+      document.querySelector('#redesign-paths h2')!.textContent='ONE CONTINUOUS DESIGN LOOP.';
+      document.querySelector('#unavailable>b')!.textContent='NO AUDITED V13 EXPORT AVAILABLE';
+      const signal=document.createElement('section');signal.id='nested-signal';signal.className='os-board nested-signal-board';document.querySelector('.circuit-board')!.before(signal);
+      const draft=document.createElement('section');draft.id='foundry-branch';draft.className='os-board foundry-branch-board';document.querySelector('.profile-board')!.before(draft);
+    }else{
+      const next=document.createElement('a');next.href='./native-objective-redesign.html?campaign=v13';next.textContent='V13 NESTED DESIGN LOOP ↗';document.querySelector('.os-topbar')!.append(next);
+    }
+    const prefix=nested?'native-nested-search-v13':'native-objective-redesign-v12';
+    const response=await fetch(`./data/${prefix}.availability.json`);if(!response.ok)throw new Error('Availability manifest missing');const available=await response.json();
+    if(available.schema!==(nested?'scienceutopia.nested-foundry-availability.v13':'scienceutopia.open-redesign-availability.v12'))throw new Error('Unknown availability contract');
     if(available.status!=='available')throw new Error(available.message??'Awaiting independent actual audit export');
-    if(available.payload!=='native-objective-redesign-v12.ui.json'||available.receipt!=='native-objective-redesign-v12.ui-receipt.json')throw new Error('Unrecognized evidence paths');
+    if(available.payload!==`${prefix}.ui.json`||available.receipt!==`${prefix}.ui-receipt.json`)throw new Error('Unrecognized evidence paths');
     const [payload,receipt]=await Promise.all([fetch(`./data/${available.payload}`),fetch(`./data/${available.receipt}`)]);if(!payload.ok||!receipt.ok)throw new Error('Complete export unavailable');
-    data=await verifyOpenRedesign(await payload.text(),await receipt.json(),new URLSearchParams(location.search).get('fixture')==='scripted-v12');render();
-    const focus=new URLSearchParams(location.search).get('focus');if(focus==='paths'||focus==='circuit')document.body.dataset.focus=focus;
+    const fixture=new URLSearchParams(location.search).get('fixture')===(nested?'scripted-v13':'scripted-v12');
+    data=nested?await verifyNestedFoundry(await payload.text(),await receipt.json(),fixture):await verifyOpenRedesign(await payload.text(),await receipt.json(),fixture);render();
+    const focus=new URLSearchParams(location.search).get('focus');if(focus==='paths'||focus==='circuit'||nested&&['signal','draft'].includes(focus??''))document.body.dataset.focus=focus!;
   }catch(error){el('evidence').hidden=true;el('truth-badge').textContent='NO AUDITED EXPORT';el('unavailable').hidden=false;el('unavailable-message').textContent=error instanceof Error?error.message:String(error);}
 }
 void boot();
