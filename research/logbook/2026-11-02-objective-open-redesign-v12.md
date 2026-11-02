@@ -236,3 +236,12 @@ screenshot hashes equal the committed paper-build source, so the reviewed
 50-page PDF is retained byte-for-byte rather than needlessly regenerated.
 Root's combined artifact verifier now passes and emits the source/hash-bound
 receipt. No failed assertion is converted into a successful receipt.
+
+Final clean reporting integration source `35c8076` reruns all report tests:
+302 pass in 16.68s. The final JUnit receipt binds this later source, not the
+earlier paper-source run; overlapping counts are not added. The artifact
+verifier is regenerated with that exact source and the full refreshed UI
+artifact commit. All loss/source/graph/capture/PDF hash checks pass, and frozen
+native runtime/protocol bytes remain unchanged. No owned native/model/preview
+process is left; the user's Ollama service remains running. The clean feature
+is ready for fast-forward integration without changing any historical raw.

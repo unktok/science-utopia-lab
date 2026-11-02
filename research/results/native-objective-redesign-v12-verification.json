@@ -265,19 +265,19 @@
     ]
   },
   "final_focused_reporting": {
-    "source_commit": "eb0fdfdff597e290efe38a4bbfad201579404489",
-    "scope": "All tests/reports at the final paper-source commit; overlaps earlier suites, not a whole-repository full regression.",
+    "source_commit": "35c8076d38f1c264f5618bdbe710ce6aa642af11",
+    "scope": "All tests/reports at the recorded final reporting integration source; overlaps earlier suites, not a whole-repository full regression. Paper source/capture bytes are separately bound.",
     "passed": 302,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
-    "junit_seconds": 16.862,
+    "junit_seconds": 16.674,
     "junit": "outputs/native-objective-redesign-v12-verification/final-reporting.xml",
-    "junit_sha256": "c7c7922f155fb537fb33b1b7c5264e52d2e39f96591c78a05c55b6a9cfedcbaf",
+    "junit_sha256": "46c5832c0df02d460321ea228045a7bfeaf671ba76ee7cc1244a8fad62ff22c8",
     "failures": []
   },
   "ui": {
-    "artifact_original_commit": "7da620a",
+    "artifact_original_commit": "7da620aad95ab8305be9bf074ec948297d67fc71",
     "actual_mode": true,
     "ui_tests_passed": 224,
     "production_build_passed": true,
