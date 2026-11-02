@@ -148,6 +148,11 @@ def test_analyze_binds_inventory_and_keeps_loss_separate_from_promotion(tmp_path
                         lambda *_args, **_kwargs: {'candidate_improvement_status': 'worse'})
     monkeypatch.setattr('scripts.analyze_native_qwen_response_v9.source_proof',
                         lambda *_args, **_kwargs: {'fixture.py': '9'*64})
+    monkeypatch.setattr('scripts.analyze_native_qwen_response_v9._physical_response_ledger',
+                        lambda *_args, **_kwargs: {'worlds': [],
+                            'completed_endpoint_replies': 12,
+                            'partial_null_loss_replies': 0,
+                            'all_fresh_physical_replies': 12})
     report = analyze(tmp_path, expected_source=source)
     assert report['objective']['role'] == 'optimization-loss'
     assert report['promotion_policy']['status'] == 'not-defined-or-applied'

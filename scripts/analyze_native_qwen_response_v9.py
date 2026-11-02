@@ -15,6 +15,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sqlite3
 import subprocess
 import sys
 
@@ -277,6 +278,49 @@ def _audit_endpoint(root, row, *, base_system, declarations, objective, world):
         'control_proof': proof, 'endpoint': endpoint}
 
 
+def _physical_response_ledger(root, completed_names, world):
+    """Count every durable actual response, including null-loss partial worlds."""
+    worlds = root / 'worlds'
+    directories = sorted(path for path in worlds.iterdir() if path.is_dir()) if worlds.exists() else []
+    if any(path.name not in FIXED_NAMES for path in directories):
+        raise ValueError('undeclared physical response world directory exists')
+    ledger = []
+    for cell in directories:
+        journal = cell / 'replies/responses.sqlite'
+        if not journal.exists():
+            ledger.append({'name': cell.name, 'status': 'partial-before-response-journal',
+                'loss': None, 'response_count': 0, 'outcomes': {}, 'journal_sha256': None})
+            continue
+        before = file_sha256(journal)
+        with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
+            metadata = db.execute('SELECT binding FROM metadata').fetchall()
+            outcomes = dict(db.execute(
+                'SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
+            rows = db.execute('SELECT payload_sha,outcome,data_sha FROM replies ORDER BY rowid').fetchall()
+        if len(metadata) != 1 or file_sha256(journal) != before:
+            raise ValueError(f'{cell.name}: physical response journal changed or lacks one binding')
+        binding = json.loads(metadata[0][0])
+        if (binding.get('seed') != world['seed']
+                or binding.get('model_revision') != world['model_digest']
+                or binding.get('corpus_sha256') != world['corpus_sha256']
+                or binding.get('science_config', {}).get('source_commit') != world['source_commit']
+                or len(rows) != sum(outcomes.values())
+                or any(not _sha256(row[0]) or not _sha256(row[2]) for row in rows)
+                or any(row[1] not in {'response', 'error'} for row in rows)):
+            raise ValueError(f'{cell.name}: partial/full physical response binding or rows differ')
+        completed = cell.name in completed_names
+        ledger.append({'name': cell.name,
+            'status': 'completed-endpoint' if completed else 'partial-null-loss-world',
+            'loss': 'reported-in-endpoint-ledger' if completed else None,
+            'response_count': outcomes.get('response', 0), 'outcomes': outcomes,
+            'journal_sha256': before, 'binding_sha256': digest(binding),
+            'row_identity_sha256': digest(rows)})
+    completed = sum(row['response_count'] for row in ledger if row['status'] == 'completed-endpoint')
+    partial = sum(row['response_count'] for row in ledger if row['status'] != 'completed-endpoint')
+    return {'worlds': ledger, 'completed_endpoint_replies': completed,
+        'partial_null_loss_replies': partial, 'all_fresh_physical_replies': completed+partial}
+
+
 def _operator_reconstruction(root, rows, proofs, raw, objective):
     calibration_rows, calibration_proofs = rows[:3], proofs[:3]
     endpoints = [p['endpoint'] for p in calibration_proofs]
@@ -408,6 +452,7 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
         rows, failures, complete = _endpoint_sequence(raw, require_complete=require_complete)
         proofs = [_audit_endpoint(root, row, base_system=base_system, declarations=DECLARATIONS,
                                   objective=objective, world=world) for row in rows]
+        physical = _physical_response_ledger(root, {row['name'] for row in rows}, world)
         prefix_control = _prefix_control_status(proofs, failures)
         analysis = None
         if complete:
@@ -420,8 +465,11 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
                 'center_backward': backward, 'frozen_proposal': frozen,
                 'candidate': proposal['candidate'],
                 'unused_or_candidate_outcome_inference': 'not-derived-from-incomplete-attempt'}
-        response_total = sum(p['response_count'] for p in proofs)
-        if complete and response_total != raw.get('physical_reply_count'):
+        completed_response_total = sum(p['response_count'] for p in proofs)
+        if physical['completed_endpoint_replies'] != completed_response_total:
+            raise ValueError('completed endpoint reply total differs from physical SQL ledgers')
+        if complete and (physical['partial_null_loss_replies'] != 0
+                or physical['all_fresh_physical_replies'] != raw.get('physical_reply_count')):
             raise ValueError('physical reply total differs from all restored checkpoints')
         compact_proofs = [{k: v for k, v in proof.items() if k != 'endpoint'} for proof in proofs]
         result = {'schema': SCHEMA, 'classification': ACTUAL,
@@ -444,7 +492,11 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
                 'all_completed_raw_response_projections_rejoined': True,
                 'prefix_control_comparison': prefix_control},
             'world_order': [{'name': p['name'], 'theta': p['theta']} for p in proofs],
-            'endpoints': compact_proofs, 'physical_reply_count': response_total,
+            'endpoints': compact_proofs,
+            'physical_reply_count': physical['all_fresh_physical_replies'],
+            'completed_endpoint_reply_count': physical['completed_endpoint_replies'],
+            'partial_null_loss_reply_count': physical['partial_null_loss_replies'],
+            'physical_response_ledger': physical['worlds'],
             'response_operator_analysis': analysis,
             'raw_hashes': {'plan_file_sha256': file_sha256(root/'plan.json'),
                 'evidence_file_sha256': file_sha256(root/'evidence.json'),
@@ -476,7 +528,9 @@ def markdown_summary(report):
         f"- Source: `{report['source_commit']}`",
         f"- Audit content SHA-256: `{report['content_sha256']}`",
         f"- Completed physical worlds: {report['technical_validity']['completed_worlds']} / 6",
-        f"- Fresh physical replies: {report['physical_reply_count']}", '',
+        f"- Fresh physical replies: {report['physical_reply_count']}",
+        f"- Replies in completed endpoints: {report.get('completed_endpoint_reply_count', report['physical_reply_count'])}",
+        f"- Replies in partial null-loss worlds: {report.get('partial_null_loss_reply_count', 0)}", '',
         '## Observed development losses', '',
         '| world | weight | fixed native loss | A | Q | R | replies |',
         '|---|---:|---:|---:|---:|---:|---:|']

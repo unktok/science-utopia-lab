@@ -34,6 +34,12 @@ completed legal prefix is remeasured, the failure retains null loss, and no
 counterfactual confidence or missing outcome is derived. A live prefix without
 a preserved terminal failure is rejected.
 
+Every durable SQLite response journal is counted, including a cooperatively
+stopped world with no endpoint loss. Reports separate replies attached to
+completed checkpoints from fresh physical replies spent in partial null-loss
+worlds. Thus an interrupted forward call is never erased from the engineering
+budget or converted into an optimization outcome.
+
 Cross-world control comparison is a separate diagnostic from the terminal
 failure ledger. In particular, a cooperative `PortableStop` is not relabelled
 as a comparator failure. If independently sampled Qwen worlds already differ
