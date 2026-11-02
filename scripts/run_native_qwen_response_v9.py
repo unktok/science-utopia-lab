@@ -30,6 +30,7 @@ EXPERIMENT = {'protocol': 'native-qwen-response-gradient-v9', 'role': 'developme
     'review_task_identity_recording': True, 'public_payload_only_review_context': True}
 CALIBRATION = [.2, .5, .8]
 UNUSED = [.35, .65]
+WORLD_NAMES = ['calibration-0', 'calibration-1', 'calibration-2', 'unused-0', 'unused-1', 'gradient-candidate']
 
 
 def read(path):
@@ -46,14 +47,52 @@ def save(path, value):
     return value
 
 
+def preflight_saved_artifacts(output):
+    """Reject orphaned fit/proposal or illegal world prefixes before inference.
+
+    A plan-bound interrupted native world may be resumed by its existing
+    factory/checkpoint binding. This check does not delete, repair or adopt any
+    stale directory, and never executes a saved operator or model.
+    """
+    evidence_path = output/'evidence.json'
+    operator_path, proposal_path = output/'response-operator.json', output/'frozen-proposal.json'
+    if not evidence_path.exists():
+        if operator_path.exists() or proposal_path.exists():
+            raise ValueError('orphaned saved operator/proposal has no authoritative native evidence prefix')
+        return
+    evidence = read(evidence_path)
+    if evidence.get('status') == 'complete':
+        raise ValueError('completed evidence is immutable; inspect it instead of rerunning')
+    if (evidence.get('schema') != SCHEMA or evidence.get('classification') != ACTUAL
+            or not isinstance(evidence.get('endpoints'), list)
+            or len(evidence['endpoints']) > len(WORLD_NAMES)
+            or any(not isinstance(row, dict) for row in evidence['endpoints'])
+            or [row.get('name') for row in evidence['endpoints']] != WORLD_NAMES[:len(evidence['endpoints'])]):
+        raise ValueError('saved evidence does not have a unique legal world prefix')
+    if evidence.get('failures'):
+        raise ValueError('failed attempt retained; explicit prospective amendment required before further execution')
+    count = len(evidence['endpoints'])
+    if (operator_path.exists() or proposal_path.exists()) and count < len(CALIBRATION):
+        raise ValueError('orphaned saved operator/proposal precedes its complete native calibration prefix')
+    if proposal_path.exists() and not operator_path.exists():
+        raise ValueError('frozen proposal has no saved calibration operator')
+    if count > len(CALIBRATION) and (not operator_path.exists() or not proposal_path.exists()):
+        raise ValueError('unused/proposed native world lacks its frozen operator/proposal')
+    # These formats carry content hashes. Check their bytes before any new
+    # physical world; the normal later loader independently restores full native
+    # calibration provenance and recomputes the exact saved representation.
+    for path in (operator_path, proposal_path):
+        if path.exists():
+            value = read(path)
+            if not isinstance(value, dict) or 'content_sha256' not in value:
+                raise ValueError('saved operator/proposal has no content hash: '+str(path))
+
+
 def run(args):
     from utopia.optimization.native_factory import LocalQwenNativeFactory
     from utopia.system.code_mechanisms import DockerCodeExecutor
     from utopia.system.native_review_identity import enable_review_identity_recording
-    if (args.output/'evidence.json').exists():
-        existing = read(args.output/'evidence.json')
-        if existing.get('status') == 'complete':
-            raise ValueError('completed evidence is immutable; inspect it instead of rerunning')
+    preflight_saved_artifacts(args.output)
     executor = DockerCodeExecutor()
     system = response_gradient_system(executor.image_id)
     objective = load_loss_spec(ROOT/'research/objectives/losses/native-joint-v5-net-reviewed-utility.json')
@@ -89,7 +128,7 @@ def run(args):
             'held_out_seeds': False, 'causal_scientific_benefit': False}}
     if evidence['failures']:
         raise ValueError('failed attempt retained; explicit prospective amendment required before further execution')
-    allowed = ['calibration-0', 'calibration-1', 'calibration-2', 'unused-0', 'unused-1', 'gradient-candidate']
+    allowed = WORLD_NAMES
     if (evidence.get('schema') != SCHEMA or evidence.get('classification') != ACTUAL
             or evidence.get('source_commit') != factory.source_commit or evidence.get('plan') != plan
             or [r['name'] for r in evidence['endpoints']] != allowed[:len(evidence['endpoints'])]
