@@ -35,3 +35,13 @@ anchor-return fields, an invalid prefix-controller attribute and the incompatibl
 old strict-loader format. These are ordinary pre-inference development issues,
 not rerolled native outcomes. All30 policy/diagnosis checks pass. New full-native
 scripted QA, final source pin and actual results are still pending.
+
+Live-clock production-profile QA completes three SCRIPTED shared historical
+worlds and six new adaptive worlds. The whole original5author/2year forward,
+real task/projection/source/SQL/wire/checkpoint/code/clock receipts, BOTH policies,
+online response refits and explicit save/load reconstruction execute without
+mocking fit, gradients or native phases. Four tests pass in19.42s;612 logical
+responses comprise216 fresh SCRIPTED callbacks+396 historical replays. These
+are SOFTWARE checks, NOT Qwen results. Each operator uses only3/4/5 own eligible
+endpoints and scheduled temperatures. Thirty policy/diagnostic checks and five
+early audit tests overlap these scopes. Freeze a clean actual source next.

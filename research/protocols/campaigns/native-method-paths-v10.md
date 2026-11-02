@@ -17,6 +17,11 @@ the committed v9-a3 audit, content SHA
 `92d6a9b630d9bcd44e379ec48833aed2de71490b85907068fed740361826abbf`.
 Their native losses are0.9/0.9/0.8166667. Each arm is charged three historical
 evaluations; the underlying physical data/calls are counted once, not twice.
+Equal evaluation budget is not identical oracle capability: the represented
+method uses saved individual review responses/native traces, whereas the black-
+box policy uses only coordinates and measured scalar losses. Both start from
+the same full endpoint data; this methodological distinction is reported, not
+interpreted as a controlled comparison of equal-information oracle methods.
 All v9 data are now development knowledge, NOT new held-out evidence. V9's
 unused outcomes are not fed to either optimizer. Posthoc v9 diagnostics motivated
 this prospectively new method comparison; they do not revise the frozen v9 result.
