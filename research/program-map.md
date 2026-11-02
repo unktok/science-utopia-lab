@@ -4,13 +4,16 @@ Updated: 2026-11-02
 
 ## Current direction: optimization, not mandatory differentiability
 
-The latest completed execution slice is [v10](milestones/2026-11-02-native-method-paths-v10.md):
-two methods move through six fresh native worlds but neither beats the shared
-historical incumbent. [Active v11](milestones/2026-11-02-open-native-estimators-v11.md)
-connects free code/protocol/wiring design to conditional expectation-gradient
-estimators, derivative-free feedback and a latest-method evidence UI.
+The latest completed execution slice is
+[v11](milestones/2026-11-02-open-native-estimators-v11.md): free code/protocol/wiring
+design shares an original-native execution boundary with derivative-free and
+conditional expectation-gradient updates. Eight fresh worlds/742 replies
+complete; both loss paths`[.7833333,1.2,1.2,1.2]` retain the first best. G0 LR
+drives G1 actual evaluations; the final prior-control update is saved but not
+native-tested. The English UI displays the exact audited observations.
+This extends, rather than rewrites, the earlier six-world v10 comparison.
 
-| Parallel work | Shared object | Finite next evidence |
+| Parallel work | Shared object | Finite v11 evidence |
 |---|---|---|
 | Open native design | Executable source, protocols, graph and institutional coordinates | Both search methods run the same original native world |
 | Derivative-free feedback | Actual native LossSpec observations | Durable design/evaluate/revise path |
@@ -18,10 +21,10 @@ estimators, derivative-free feedback and a latest-method evidence UI.
 | Operational representations | Suitable numerical institution/response computations | Remain an optional route, not a whole-world differentiability requirement |
 | English UI and reporting | Immutable actual observations and source receipts | Latest paths, losses, current/incumbent and physical cost visible |
 
-The first three implementation areas are owned across two coordinated backend
-specialists; a third specialist owns the UI, while root integrates protocol,
-verification and manuscript. A named track is not a claim of a perpetual
-background worker. See STATUS for whether it is running or completed.
+The first three implementation areas were completed across two coordinated
+backend specialists; a third specialist owns UI export/QA, while root integrates
+protocol, verification and manuscript. A named track is not a claim of a perpetual
+background worker. No native/model experiment remains running after the budget.
 Whole-world differentiability is no longer a completion condition. This does
 not convert a partial representation into an exact native-world derivative.
 

@@ -85,3 +85,47 @@ not followed by another native evaluation within this budget. Thus this pilot
 tests that estimator on native observations, not the native performance of its
 updated distribution. The final computed update and the last evaluated
 distribution must remain distinct.
+
+\paragraph{Measured native result.}
+All eight fresh worlds complete at source \code{acf3a2e}, using 742 physical
+Qwen replies (372 black-box, 370 score-arm), with no response reuse or
+world-level technical failure. Both arms observe the loss path
+$[.7833333,1.2,1.2,1.2]$ and retain their first incumbent; neither finds a new
+best. Each first draw accepts one paper with original peer-score sum $11/3$
+and 24 review records; each remaining draw accepts none and still incurs 24
+reviews. These yield the unchanged $L=3.25A-Q+.05R$, without an additional
+quality or fairness veto. They illustrate this declared loss, not a validated
+measure of scientific benefit.
+
+Figure~\ref{fig:native-open-estimators-v11} separates actual sampled designs,
+native losses and estimator diagnostics. The generation~0 LR update changes
+the Gaussian mean from zero to $-.0407768$ and mean/minimum logits to
+$[-.0495833,.0495833]$ before generation~1. The final prior-control estimate
+has mean gradient $.742395$ and logit gradient $[.109754,-.109754]$, whereas
+plain LR on those same two observations gives $.945250$ and
+$[-.570274,.570274]$. These are individual noisy estimates, not variance
+measurements. The resulting saved mean $-.1150163$ and logits
+$[-.0605587,.0605587]$ are \emph{not} native-tested here.
+
+An independent read-only audit re-extracts the original checkpoint losses,
+replays both policies and fitted-control updates, verifies 64 source executions,
+64 committed code events and all 32 delivered contexts against actual HTTP
+inputs. Repeated audits are byte-identical and leave all 129 raw files
+unchanged. Accumulated checkpoint model-call time is 2552.99 seconds
+(42.55 minutes), not total campaign wall time or GPU compute time. Independent
+physical worlds share one development seed; this pilot establishes neither
+replicated superiority, variance reduction nor useful autonomous invention.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/native-open-estimators-v11-a1.png}
+\caption{Actual eight-world v11 pilot, not a synthetic optimization landscape.
+(a) Every native loss and running best; horizontally offset markers expose
+overlapping arms, not different evaluation times. (b) Sampled Gaussian latent
+$z$, not the bounded executable cutoff. (c) Actual aggregation implementation.
+(d) Gradient-vector norms, not variance or loss improvement. ``Applied'' means
+used in the saved parameter update: only the G0 LR update is followed by native
+reevaluation; the final G1 control-variate update is not. The vertical divider
+separates generations. No initial-system or historical score is fabricated.}
+\label{fig:native-open-estimators-v11}
+\end{figure}

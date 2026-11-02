@@ -6,7 +6,10 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [V11 active parallel goal: open native institutions and optional gradient estimators](milestones/2026-11-02-open-native-estimators-v11.md)
+- [V11 finite parallel goal: open native institutions and optional gradient estimators](milestones/2026-11-02-open-native-estimators-v11.md)
+- [V11 actual eight-world result: estimator integration, no new best](results/native-open-estimators-v11-a1.md)
+- [V11 independent native/source/update audit,742 replies and unchanged129 raw files](results/native-open-estimators-v11-a1.json)
+- [V11 source-bound tests, actual UI, figure and PDF verification](results/native-open-estimators-v11-verification.json)
 - [V11 prospective eight-attempt native pilot](protocols/campaigns/native-open-estimators-v11.md)
 - [Decision 0028: optimize scientific systems, not differentiability itself](decisions/0028-estimators-serve-open-institutional-optimization.md)
 - [Parmas literature pointers and conditional expected-loss gradient identity](literature/parmas-gradient-estimators-for-open-institutions.md)
@@ -14,6 +17,7 @@ and results. New work uses the forward-only taxonomy below.
 - [V11 open native campaign integration and restart contract](components/native-open-estimators-v11.md)
 - [V11 independent native/estimator/source audit](components/native-open-estimators-independent-audit-v11.md)
 - [English read-only actual method observatory and export contract](../game-ui-v2/METHOD_OBSERVATORY.md)
+- [English actual v11 open-design estimator paths and export contract](../game-ui-v2/OPEN_ESTIMATORS_V11.md)
 - [V11 parallel implementation and execution log](logbook/2026-11-02-open-native-estimators-v11.md)
 - [V10 native institution update paths: implementation, actual result and remaining limits](milestones/2026-11-02-native-method-paths-v10.md)
 - [V10 actual gradient/black-box paths: both move, neither finds a new best](results/native-method-paths-v10-a1.md)

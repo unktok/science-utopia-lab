@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## Active v11: open native institutions, gradient estimation as a means
+## Completed finite v11: open native institutions, gradient estimation as a means
 
 The user explicitly confirms that whole-world differentiability is not a
 required destination and authorizes parallel implementation. The research
@@ -11,7 +11,8 @@ object remains freely designed institutions under an explicit fixed loss.
 records this clarification without rewriting earlier results. Separate feature
 worktrees own the mixed-distribution estimator kernel, open native campaign
 integration and English method-observatory UI; root owns protocol, integration,
-notes and manuscript. All are active development, not yet completed v11 results.
+notes and manuscript. Backend implementation and the bounded native experiment
+are complete; final publication/UI verification is recorded in the milestone.
 
 The [finite goal](milestones/2026-11-02-open-native-estimators-v11.md) connects
 derivative-free feedback and a prior-frozen control-variate expectation-gradient
@@ -19,10 +20,27 @@ route to the same generated source/protocol/wiring/native execution boundary.
 Existing operational representations remain optional useful methods, not a
 mandatory whole-world AD gate. [Parmas literature pointers](literature/parmas-gradient-estimators-for-open-institutions.md)
 motivate the distinction; this is not an implementation claim for TPX/Proppo.
-The [prospective pilot](protocols/campaigns/native-open-estimators-v11.md) caps
-actual native attempts at8 with the existing utility loss, five authors,
-two years and seed42. No v11 actual inference or empirical improvement has been
-recorded at this planning entry. V10/v8 evidence below stays historical.
+The [frozen pilot](protocols/campaigns/native-open-estimators-v11.md) completes
+8/8 fresh original-native worlds at source`acf3a2e`, with the existing utility
+loss, five authors, two years and seed42. It uses742 physical=logical replies,
+zero reuse and zero world-level technical failures. Both methods observe
+`[.7833333,1.2,1.2,1.2]`: neither improves on its first best. The disclosed
+external author replaces source/protocol/wiring, then this pilot retains two
+aggregation implementations plus a cutoff family; it does not invent new
+topology in every generation. G0 plain LR changes the distribution used by
+actual G1 worlds. G1's prior-only corrected-control update is computed/saved,
+but has no subsequent native evaluation within this budget.
+[Independent result](results/native-open-estimators-v11-a1.md) re-extracts losses
+and replays updates; repeated audits are byte-identical, with all129 raw files
+unchanged. Measured model-call time sums42.55min, not overall wall time.
+
+Exact experiment-source full regression retains1806passes/6skips and one
+concept-caption hash failure (publishing-only). Corrected reporting source
+`a48bea1` passes1842/6skips; runtime blobs are identical to the experiment.
+Later focused reporting/UI checks have separate scopes, not additive counts.
+No whole-world derivative, variance reduction, useful invention or superiority
+is established. This closes the finite integration slice, not every remaining
+non-scale research question. V10/v8 evidence below stays historical.
 
 ## Completed finite v10: actual institution update paths, not scale-up
 

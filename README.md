@@ -30,7 +30,7 @@
 | Goal | Entry point |
 |---|---|
 | Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
-| Check original goals against implementation, actual evidence and remaining limits | [Current native method-path milestone](research/milestones/2026-11-02-native-method-paths-v10.md), [structural/response milestone](research/milestones/2026-11-02-objective-structure-and-response-v8.md) and [program map](research/program-map.md) |
+| Check original goals against implementation, actual evidence and remaining limits | [Current open-native estimator milestone](research/milestones/2026-11-02-open-native-estimators-v11.md), [earlier method-path milestone](research/milestones/2026-11-02-native-method-paths-v10.md), [structural/response milestone](research/milestones/2026-11-02-objective-structure-and-response-v8.md) and [program map](research/program-map.md) |
 | Set up a development environment | [Development guide](docs/development.md) |
 | Understand the code and data flow | [Architecture](docs/architecture.md) |
 | Make a contribution | [Contributing guide](CONTRIBUTING.md) |

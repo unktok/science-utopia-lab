@@ -77,3 +77,31 @@ here and in the component note: coefficients are determined only by immutable
 preceding data and the fixed fitting rule; replay may recompute them later,
 without current outcomes influencing the fit. This is a documentation
 clarification, not a prospective method change or new execution attempt.
+
+## Final bounded execution, independent audit and publication
+
+All8 original-native worlds finish at the unchanged frozen source, with742
+physical/logical replies, no reuse and no world-level technical failure.
+Audited reply counts are372 black-box and370 score-arm; earlier informal
+per-arm guesses are not authoritative. Both loss paths are
+`[.7833333333333337,1.2,1.2,1.2]`; no new best. G0 plain LR changes the proposal
+used by G1. The prior-only corrected-control G1 update is computed and saved,
+but not subsequently native-tested; do not infer its performance from G1 losses.
+
+The read-only independent auditor runs twice in its own worktree and once in
+root integration: all result bytes identical, raw129-file inventory unchanged.
+It verifies64 actual source executions/committed events and32 contexts against
+actual HTTP inputs. Accumulated model-call elapsed is2552.99s (42.55min), not
+campaign wall time. No inference occurs during audit, plotting or UI QA.
+The actual English v11 export binds report fileSHA98bc7c3e4b2aa32fcedbe1f413c7311a2a71e5034824bb427f21eef8ea5f677d;
+201UI checks and production build pass, as do actual desktop/mobile interactions
+with zero browser errors, failed HTTP, nonGET/external requests or overflow.
+Final corrected-control update's unevaluated status is visible in the UI.
+
+Actual-source full regression retains1806passes/6skips/1publishing-hash failure.
+A clean corrected reporting-source run at`a48bea1` passes1842/6skips, with all
+native runtime blobs unchanged. Preserve both original logs/JUnit receipts at
+`outputs/native-open-estimators-v11-verification/`; focused later checks overlap
+and are not summed. The actual plot, manuscript result/scope and final PDF
+verification are linked by the final source/artifact receipt. Raw data, frozen
+protocol and original experiment worktree are not amended to improve a result.
