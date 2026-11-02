@@ -1,6 +1,6 @@
 # V11 finite goal: open native institutions with optional gradient estimators
 
-Status: backend and actual pilot complete; final publication receipt below.
+Status: finite implementation, actual pilot, audit, English UI and paper complete.
 
 ## User intent and scope
 
@@ -49,6 +49,10 @@ gradient of the external source author's unknown distribution.
 - English v11 UI exports the exact audit, not a fixture. Actual desktop/mobile
   browser QA and the final figure/PDF are bound by
   [source/artifact verification](../results/native-open-estimators-v11-verification.json).
+- Final reporting guards40pass; UI201checks and production build pass. The
+  45-page PDF is built from committed source`8f82554`: all pages visually reviewed,
+  pages1/2/31/32/33/43/44 enlarged, no overfull boxes or undefined references.
+  No owned experiment/model/preview process remains running.
 
 ## Remaining, without a scale-up prerequisite
 

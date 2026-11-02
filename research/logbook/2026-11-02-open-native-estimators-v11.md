@@ -105,3 +105,11 @@ native runtime blobs unchanged. Preserve both original logs/JUnit receipts at
 and are not summed. The actual plot, manuscript result/scope and final PDF
 verification are linked by the final source/artifact receipt. Raw data, frozen
 protocol and original experiment worktree are not amended to improve a result.
+
+Final manuscript source`8f82554` is committed before build. All45 PDF pages are
+rendered and visually reviewed; pages1/2/31/32/33/43/44 are inspected at150dpi.
+No overfull boxes or undefined references; cosmetic underfull warnings remain.
+Final focused audit/figure/concept tests40pass3.13s, separate from earlier
+whole-suite scopes. The verification receipt binds source/test/audit/export/
+screenshots/actual figure/PDF hashes. No owned native/model/preview process
+remains running; the user's Ollama service is untouched.

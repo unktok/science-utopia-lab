@@ -11,8 +11,8 @@ object remains freely designed institutions under an explicit fixed loss.
 records this clarification without rewriting earlier results. Separate feature
 worktrees own the mixed-distribution estimator kernel, open native campaign
 integration and English method-observatory UI; root owns protocol, integration,
-notes and manuscript. Backend implementation and the bounded native experiment
-are complete; final publication/UI verification is recorded in the milestone.
+notes and manuscript. Backend implementation, the bounded native experiment,
+actual-data English UI and45-page paper verification are complete.
 
 The [finite goal](milestones/2026-11-02-open-native-estimators-v11.md) connects
 derivative-free feedback and a prior-frozen control-variate expectation-gradient
@@ -38,6 +38,12 @@ Exact experiment-source full regression retains1806passes/6skips and one
 concept-caption hash failure (publishing-only). Corrected reporting source
 `a48bea1` passes1842/6skips; runtime blobs are identical to the experiment.
 Later focused reporting/UI checks have separate scopes, not additive counts.
+Final audit/figure/concept checks pass40; actual English UI201checks/build and
+desktop/mobile browser QA pass with zero errors/overflow/job dispatch. The
+45-page PDF is built from committed source`8f82554`; all pages rendered/reviewed,
+seven new/changed pages enlarged, no overfull boxes or undefined references.
+[Source/artifact verification](results/native-open-estimators-v11-verification.json).
+No owned native/model/preview process remains running.
 No whole-world derivative, variance reduction, useful invention or superiority
 is established. This closes the finite integration slice, not every remaining
 non-scale research question. V10/v8 evidence below stays historical.

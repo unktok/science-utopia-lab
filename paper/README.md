@@ -23,6 +23,23 @@ The final shareable artifact is
 
 ## Evidence boundary
 
+The latest45-page paper adds the actual v11 expected-loss-estimator pilot:
+eight fresh original-native worlds,742 Qwen replies, no replay, and both paths
+`[.7833333,1.2,1.2,1.2]`. No new best is found. The G0 plain-LR update is
+native-tested through G1; the final prior-only corrected-control update is
+saved but not subsequently native-tested. The small authored family contains
+two Python aggregation rules and a cutoff, not autonomous structural invention
+in every generation. The generic source/protocol/wiring API is broader.
+The new actual four-panel graphic and English UI capture are audit-bound.
+
+Final source`8f82554` is committed before build; all45 pages are rendered and
+visually checked, with pages1/2/31/32/33/43/44 enlarged to150dpi. There are no
+overfull boxes or undefined references; cosmetic underfull warnings remain.
+[V11 source/artifact verification](../research/results/native-open-estimators-v11-verification.json)
+retains both the actual-source1806pass/6skip/1concept-hash-failure full run and
+the corrected reporting-source1842pass/6skip run. Later40 reporting and201UI
+checks have distinct overlapping scopes, not additional world samples.
+
 The v8 source reports eight completed original-native worlds/734 Qwen replies:
 count[-9,-9,-10,-10] and reviewed utility[0,0,.4833,.4833]. Actual16--18-node
 systems change code, composition, protocols and wires. All132 raw files remain
@@ -57,7 +74,7 @@ one coupled-history development result, without superiority, significance,
 causal benefit or exact native/Qwen differentiation claims. It does not reverse
 the negative v9 fidelity result.
 
-The latest42-page paper is built from committed text and actual figure`ba3678d`.
+The historical42-page v10 paper is built from committed text and actual figure`ba3678d`.
 All pages are rendered and visually reviewed; pages1/26/28/30/31/34/41 are
 individually enlarged to150dpi. The final label fix changes only page31 pixels,
 which are re-inspected; all other pages match their reviewed renders. No
