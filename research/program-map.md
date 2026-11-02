@@ -16,8 +16,11 @@ The latest completed execution slice is
 design shares an original-native execution boundary with derivative-free and
 conditional expectation-gradient updates. Eight fresh worlds/742 replies
 complete; both loss paths`[.7833333,1.2,1.2,1.2]` retain the first best. G0 LR
-drives G1 actual evaluations; the final prior-control update is saved but not
-native-tested. The English UI displays the exact audited observations.
+drives G1 actual evaluations; the final prior-control update was saved but not
+native-tested within that closed budget. The separate
+[v12 followup](results/native-control-followup-v12-a1.md) now supplies two fresh
+forward outcomes, not evidence of expected improvement or variance reduction.
+The English v11 UI displays its exact historical audited observations.
 This extends, rather than rewrites, the earlier six-world v10 comparison.
 
 | Parallel work | Shared object | Finite v11 evidence |
