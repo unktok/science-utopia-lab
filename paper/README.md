@@ -23,7 +23,28 @@ The final shareable artifact is
 
 ## Evidence boundary
 
-The latest 50-page paper adds the closed v12 free institutional redesign:
+The latest manuscript adds the bounded v13 nested institution search:
+two explicit losses, each with two IID G0 design draws, one conditional LOO
+likelihood-ratio update, one exact updated-G0 native forward, and one own-history
+free G1 redesign/forward. All eight original-world runs complete with592 fresh
+Qwen replies and no reuse. Throughput losses are`[-7,-7,-6,-10]` and the new
+illustrative reviewed-production proxy losses are`[-17,-12.5,-10,-18]`.
+Both post-update draws worsen relative to the prior best; both subsequent free
+source revisions improve their observed own first best. No estimator superiority,
+expected improvement, scientific benefit or autonomous-inventor claim follows.
+
+The efficiency redesign uses own-history reviewer scores to allocate one
+eligible reviewer per submission. Actual native review scores remain unchanged
+in definition. This illustrates proxy incentives, not demonstrated quality
+improvement or harm. The exact two LossSpecs, scalar gradients/updates, all
+eight A/Q/R rows, same-checkpoint development cross-scores, source bodies,
+original-world task/plan effects and592-reply cost are retained. Graph sizes
+stay17/25 and16/23 within the arms; G1 changes source, not graph topology.
+The independent audit preserves129 raw files and matches227 source blobs.
+The English Foundry capture is bound to the actual audit, with local editing
+distinct from execution/adoption. World-wide differentiation is not required.
+
+The historical 50-page v12 paper adds the closed free institutional redesign:
 two exact losses, three own-history generations each, six original-native
 worlds and 565 fresh Qwen replies. Throughput `[-10,-10,-10]` and utility
 `[-1/6,0,-1/6]` select different 17/25 and 16/22 node/wire institutions, but

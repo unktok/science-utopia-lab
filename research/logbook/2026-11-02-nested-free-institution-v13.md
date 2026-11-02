@@ -107,3 +107,39 @@ removed; no raw/test log is deleted and the user's Ollama service is untouched.
 No full-suite pass is claimed for either earlier interrupted start. UI and
 report-only checks have their own source-bound scopes; overlapping counts are
 not added to 2020. Actual pilot is still running at its original eight-slot cap.
+
+## Native budget closes; independent remeasurement and actual interface
+
+All eight original-world executions complete at17:18 JST without replacement,
+with592 fresh Qwen replies, zero reuse and zero technical world failures.
+Throughput losses are`[-7,-7,-6,-10]`; efficiency losses are
+`[-17,-12.5,-10,-18]`. The two-draw throughput LOO gradient is exactly zero;
+the efficiency update changes the declared mean/logits. Both later updated-G0
+draws are worse than the prior best. The externally authored own-history G1
+changes one source body per arm and improves observed own best: universal
+annual research cycles for throughput, and full-coverage single-reviewer
+allocation ranked by shrunk historical native review scores for efficiency.
+No causal, expected-improvement, scientific-quality, estimator-superiority or
+endogenous improved-inventor inference is made. No additional native inference
+is pending or authorized by this closed budget.
+
+Repeated independent audits are byte-identical and preserve129 raw files.
+They match227 replay-critical source blobs,40 code executions,16 complete-plan
+effects,16 routing events and28 actual reviews. The report-only reviewer-memory
+check separately matches all22 inputs to the author's own three prior worlds;
+it is not an after-the-fact validity/loss/promotion gate. Native original review
+scores are measured, not replaced by the source's forecasts. Favorable-reviewer
+selection is reported as a proxy incentive without a quality benefit/harm claim.
+
+Actual English UI export, guarded local draft/workbench handoff and nine
+desktop/mobile captures pass with250 tests/typecheck/build, zero browser errors,
+external requests or inference dispatch. All66 unsafe identity integers use
+exact tagged decimal strings, none inside SystemSpecs. Historical v12 bytes
+are retained. Root visually checks actual overview/path/circuit captures.
+
+Reporting source`ae3d682` passes365 report tests in60.18 seconds. Root's first
+all-results manuscript build has54 pages and no overfull boxes/undefined
+references. Figure review catches cross-score labels too far from their points,
+despite non-overlapping boxes; a report-only fix adds unambiguous association
+before final PDF build. The native runtime, losses, frozen protocol and raw
+observations remain unchanged. This intermediate PDF is not the final artifact.

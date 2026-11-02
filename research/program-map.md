@@ -4,7 +4,30 @@ Updated: 2026-11-02
 
 ## Current direction: optimization, not mandatory differentiability
 
-The [v12 finite slice](milestones/2026-11-02-objective-open-redesign-v12.md)
+The [v13 finite slice](milestones/2026-11-02-nested-free-institution-v13.md)
+connects free outer code/system design to conditional inner optimization in the
+original researcher world. Two exact losses each use two IID G0 design draws,
+one LOO likelihood-ratio update, one updated-G0 forward, then one own-history
+free G1 redesign/forward: eight worlds and592 fresh Qwen replies, no scale-up.
+Losses are `[-7,-7,-6,-10]` and `[-17,-12.5,-10,-18]`. Both post-update draws
+are worse than the prior best; both later free source revisions improve the
+observed own first best. The sources use annual project cycles versus actual
+review allocation informed by own prior reviewer scores. This is proxy-seeking
+development evidence, not scientific benefit, estimator superiority or an
+improved autonomous inventor. The native graph sizes remain17/25 and16/23
+within the two arms; this pilot changes G1 source, not G1 topology.
+
+Independent audit preserves129 raw files, matches227 replay-critical source
+blobs and checks40 source executions,16 complete-plan effects,16 routing events
+and28 actual reviews. Source-controlled native reviewer tasks and full upstream
+plan provenance extend the world without replacing its researchers. The English
+Foundry displays exact nested paths, code, graph and receipts; guarded local
+editing is not dispatch or adoption. [Actual result](results/native-nested-search-v13-a1.md).
+The finite implementation goal is not an assertion that all non-scale research
+questions have been solved. Publication/verification state is recorded in
+[STATUS](STATUS.md).
+
+The preceding [v12 finite slice](milestones/2026-11-02-objective-open-redesign-v12.md)
 closes its native budget: two losses, three own-history generations each,
 six main worlds/565 fresh replies, plus two separate final-control followups/
 180 replies. Throughput `[-10,-10,-10]` and utility `[-1/6,0,-1/6]` select
@@ -76,12 +99,12 @@ evidence is summarized in the first paragraph and the milestone acceptance ledge
 
 | Original goal | Implemented interface | Evidence already available | Remaining non-scale boundary |
 |---|---|---|---|
-| Change the objective and optimize the scientific system | Versioned LossSpec, separate metrics, durable ask/execute/measure/tell and trace-informed source redesign | Parameter held-out study; v8 count9→10; v12 six original worlds/two freely revised institutions, full paths/cross-scores and no new best | Richer defensible objectives, scientific discovery and generalization remain unestablished |
+| Change the objective and optimize the scientific system | Versioned LossSpec, separate metrics, durable ask/execute/measure/tell and trace-informed source redesign | Parameter held-out study; v8 count9→10; v13 two original-world nested paths, observed best losses−7→−10 and−17→−18, all draws/cross-scores retained | Richer defensible objectives, scientific discovery and generalization remain unestablished |
 | Invent institutions rather than tune a fixed review template | Arbitrary sandboxed Python, explicit protocols, state, ports and outputs; LLM/external complete manifests | Actual Qwen-source execution and externally authored institutions; local-Qwen joint-generation failures are retained | Native effect consumers, security/compute limits and actor ontology remain explicit; external Codex authorship is not autonomous Qwen invention |
-| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | Six-year compatibility/restart; v8 topology changes; v12 native annual sprints versus evidence office, new milestone node/two wires and actual amendment receipts | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source; full upstream-plan-hash binding unavailable in v12 |
-| Use suitable gradient estimators or optional differentiable representations | Recurrent attention/routing; mixed-design likelihood-ratio and corrected prior-control estimators; learned response boundary/native projection | V11 native estimator integration; v12 two forward tests after final saved update; scripted response fit passes but actual-Qwen unused-path fidelity fails | No demonstrated estimator advantage or variance reduction; exact world/LLM Jacobian is optional and unverified, not a project gate |
+| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | V8/v12 topology changes; v13 actual source-directed reviewer tasks, full pre-amendment plan reconstruction and original default behavior regression | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source; v12 missing lineage remains historical |
+| Use suitable gradient estimators or optional differentiable representations | Recurrent attention/routing; mixed-design likelihood-ratio and corrected prior-control estimators; learned response boundary/native projection | V13 free outer design plus audited per-arm LOO update and exact updated-distribution native followup; both followups worse than prior best; actual-Qwen response fidelity failure retained | No demonstrated estimator advantage or variance reduction; exact world/LLM Jacobian is optional and unverified, not a project gate |
 | Continually redesign and update the designer | Objective-visible same-society adoption; source/vocabulary generation from outcomes; durable strategy updates | v6 same society/two adoptions/130 replies; v8 loss-informed redesigned source improves count but not utility | Reset-world and same-society evidence differ; a better sampled institution does not prove the designer itself improved |
-| Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and actual source/graph chronicle | V6 consent; v12 six-world audit-bound paths/circuit/source/protocol/effect view, lossless integer provenance,224 UI tests/build and actual desktop/mobile QA | Not a complete management game; presentation choreography is not scientific activity |
+| Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and actual source/graph chronicle | V13 eight-world nested Foundry, actual code/task/plan receipts, lossless66 integer identities,250 UI tests/build and nine actual desktop/mobile captures | Not a complete management game; presentation choreography is not scientific activity; local branch preparation does not grant execution consent |
 
 The two optimization workflows must not be merged in descriptions: a reset-world
 campaign estimates design quality under an explicit loss; the persistent society
