@@ -1,0 +1,90 @@
+\subsection{Equal-budget update paths: represented gradients and black-box search}
+\label{sec:native-method-paths-v10}
+
+V9 shows that implementing a backward pass does not establish a useful search
+direction. We therefore define a prospective v10 comparison of two update
+policies, rather than retrospectively replacing its no-op by the better known
+endpoint. Both vary the same charter evidence weight $\theta\in[.2,.8]$ in the
+original five-author, two-year, seed-42 society with fixed Qwen3:8B weights and
+the same real-paper corpus. The native integer review parser, scientific
+activities and selection thresholds remain unchanged. Both optimize exactly
+$L=3.25A-Q+.05R$ from Eq.~\eqref{eq:native-qwen-v9-loss}, without a hidden
+merit, fairness or promotion veto.
+
+\paragraph{Posthoc diagnosis, not new native evidence.}
+Recomputing the frozen v9 representation at different temperatures exposes a
+value-fit/gradient trade-off (Table~\ref{tab:native-v10-diagnosis}). The sharpest
+relaxation fits calibration losses closely but is locally flat at the center;
+coarser relaxations even change the gradient's sign. Only one of 18 fitted raw
+review responses has a substantial coordinate slope. Its influence passes
+through both individual integer-score and admission relaxations; at $.01$
+both are nearly saturated. Cutting represented memory backward changes the
+center derivative only at numerical precision. This diagnosis uses no new
+model, container or native-world calls and does not repair v9's failed unused
+prediction. A larger represented gradient need not improve native loss.
+
+\begin{table}[t]
+\caption{Offline ablations of the same frozen v9 calibration representation
+at $\theta=.5$. These are posthoc model evaluations, not four native
+experiments or evidence for choosing a retrospectively successful update.}
+\label{tab:native-v10-diagnosis}
+\centering
+\small
+\begin{tabular}{rrr}
+\toprule
+Temperature $\tau$ & Center $\partial\widehat L/\partial\theta$ & Calibration-loss RMSE \\
+\midrule
+1    & $-.24092$ & $.52717$ \\
+.2   & $-.09426$ & $.32974$ \\
+.05  & $+.01156$ & $.01522$ \\
+.01  & $1.15\!\times\!10^{-15}$ & $1.16\!\times\!10^{-5}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Same information and loss, different proposal rules.}
+Each arm receives only the three historical v9 calibration endpoints
+$\theta=(.2,.5,.8)$ with native losses $(.9,.9,.8167)$, and is charged three
+historical evaluations. Their underlying calls are counted once, not twice.
+Both start their \emph{current} coordinate at $.5$ while already having the
+historical \emph{incumbent} $.8$. The incumbent is the lowest observed native
+loss, with earliest-observation ties; it is not substituted for the current
+iterate. Neither optimizer receives old unused endpoints or the other arm's
+new outcomes. All these historical data are development knowledge, not a new
+held-out sample.
+
+At gradient step $k=0,1,2$, refit the original affine raw-response operator on
+the shared three endpoints plus only its own earlier completed endpoints.
+Use the fixed temperature schedule $\tau_k=(1,.2,.05)$, not RMSE-based selection
+among temperatures. Backpropagate at the current coordinate and propose
+\begin{equation}
+ \theta_{k+1}=\operatorname{clip}_{[.2,.8]}
+ \bigl(\theta_k+\operatorname{clip}_{[-.1,.1]}(-.5\widehat g_k)\bigr).
+ \label{eq:native-v10-step}
+\end{equation}
+The raw gradient is not sign-normalized or replaced when flat. A no-op still
+requires its allocated fresh evaluation, and even a worsening result advances
+the current iterate. The smoothed representation never changes the hard native
+optimization objective.
+
+The black-box arm uses no derivative or response representation. Sort distinct
+observed coordinates, find the intervals immediately adjacent to its incumbent,
+and evaluate the midpoint of the widest interval; equal widths choose the
+lower interval. Add only its own new observation and repeat. This is a simple
+local interval-refinement baseline, not an optimal global-search method.
+
+\paragraph{Budget and interpretation.}
+The precommitted order is G0, B0, G1, B1, G2, B2: three fresh native attempts
+per arm. Proposal, eligible-history and operator hashes are persisted before
+execution. Technical failure has null loss and stops the campaign without a
+replacement. Each complete original-native forward shares the verified
+53-reply historical prefix, then makes affected year-2 review and later calls
+freshly. Logical responses, fresh calls and historical-origin calls are
+separate ledgers. An explicit source-equivalence bridge checks original
+scientific module bytes and compatible controls without rewriting v9 records.
+Paths must distinguish current, proposed and incumbent systems, and improvement
+over the initial center from improvement over the historical best. Equal native
+budgets do not imply equal response costs. One coupled society, three updates
+and potentially stochastic same-coordinate replies cannot establish optimizer
+superiority, significance, causal institutional benefit or an exact
+native/Qwen Jacobian.
