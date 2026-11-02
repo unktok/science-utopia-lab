@@ -68,3 +68,12 @@ with the clarified optional-differentiability label and correct caption hashes;
 four figure/layout/binding checks pass2.28s. No native runtime blob or raw
 evidence is changed by this publication fix. The final source-bound report
 must distinguish that original full-suite scope from the corrected guard run.
+
+At reporting commit033f232 root briefly clarified the protocol's phrase
+"fixed before drawing" to explain deterministic refitting from sealed earlier
+history. Restore the frozen protocol bytes in the current tree rather than
+silently changing a preregistration after inference. The explanation belongs
+here and in the component note: coefficients are determined only by immutable
+preceding data and the fixed fitting rule; replay may recompute them later,
+without current outcomes influencing the fit. This is a documentation
+clarification, not a prospective method change or new execution attempt.
