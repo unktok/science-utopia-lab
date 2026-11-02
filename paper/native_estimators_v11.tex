@@ -20,6 +20,10 @@ execution. Its likelihood covers only explicit current-vocabulary choices and
 Gaussian latents, not the unknown probability of arbitrary source invention
 or opaque researcher text. Existing conditional score paths implement this
 distinction; they are not whole-world pathwise derivatives.
+Here $J$ is conditional on the supplied vocabulary and frozen source, model,
+corpus, horizon and development-seed binding. Its expectation is over declared
+institutional draws and any remaining conditional model randomness, not a
+population-of-seeds average or the external author's generation distribution.
 
 \paragraph{Optional representations and corrected control variates.}
 LR and reparameterization estimators are related approaches to gradients of
@@ -30,8 +34,8 @@ Nonsmooth-dynamics studies also distinguish differentiability from practical
 estimator behavior~\citep{onoda2026differentiable}. These are methodological
 references, not claims that their algorithms have been reproduced here.
 
-For a surrogate $c(X)$ frozen before drawing the scored batch and with tractable
-expectation, the corrected identity is
+For a surrogate $c(X)$ determined solely by sealed prior history, fixed for the
+current scored batch and with tractable expectation, the corrected identity is
 \begin{equation}
  \nabla_\theta J
  =\mathbb E\!\left[(L-c(X))\nabla_\theta\log q_\theta(X)\right]
@@ -74,3 +78,10 @@ are a deterministic function of sealed earlier history and the fixed fitting
 rule; later replay may recompute them, but no current-batch outcomes enter the
 fit. These interfaces and their software tests do not establish variance
 reduction, method superiority, autonomous invention or scientific value.
+
+Generation~0 uses plain LR; its update defines the generation~1 distribution.
+The prior-fitted control-variate update is computed after generation~1 and is
+not followed by another native evaluation within this budget. Thus this pilot
+tests that estimator on native observations, not the native performance of its
+updated distribution. The final computed update and the last evaluated
+distribution must remain distinct.
