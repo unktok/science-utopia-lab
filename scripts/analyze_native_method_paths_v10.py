@@ -295,8 +295,9 @@ def analyze(run, *, expected_source, require_complete=True):
     before = inventory(root)
     try:
         plan, raw = read(root/'plan.json'), read(root/'evidence.json')
+        embedded_plan = {k: v for k, v in plan.items() if k != 'content_sha256'}
         if (raw.get('schema') != RAW_SCHEMA or raw.get('classification') != ACTUAL
-                or raw.get('source_commit') != expected_source or raw.get('plan') != plan):
+                or raw.get('source_commit') != expected_source or raw.get('plan') != embedded_plan):
             raise ValueError('raw evidence source/schema/plan differs')
         claims = raw.get('claims', {})
         if claims != {'actual_fixed_weight_Qwen': True, 'exact_Qwen_Jacobian': False,
