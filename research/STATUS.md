@@ -13,7 +13,13 @@ bound forward-only evaluations after v11's final control update. Five authors,
 two years, scientific seed42 and Qwen weights remain. No hidden veto or novelty
 reward. Independent audit/figures, followup and English UI run as parallel
 implementation tracks, with root integrating and owning actual inference.
-No v12 actual inference/result yet at this planning entry.
+The actual source pins clean`ecab4b4`. Separate own-history authors have supplied
+G0 source/protocol/process/wiring (17/25 and16/22 node/edge graphs); original
+six-year SCRIPTED QA and root independent saved-file preflight pass, not Qwen
+results. The two-world control followup is running first, with parent v11
+re-audited from clean old source and unchanged parent raw files. Main setup is
+waiting for its first actual worlds; full frozen-source regression is running
+in a separate tree. No v12 final empirical result is claimed at this entry.
 
 ## Completed finite v11: open native institutions, gradient estimation as a means
 

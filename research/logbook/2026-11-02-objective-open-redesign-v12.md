@@ -34,3 +34,44 @@ native forward laws and other runtime blobs remain unchanged. The separate
 v11 followup re-audits old results from a clean old-source worktree and accepts
 only the exact reviewed optimizer-file change, rather than falsely claiming
 every source blob is identical. No previous protocol/raw result is rewritten.
+
+## Clean source, independent authors and zero-world setup
+
+Both v12 actual slices pin clean`ecab4b45c3ec19458aab1e492213518c855cf2f4` in
+a detached experiment worktree. Full regression runs from another clean tree
+at that exact pin. Initial main setup produces two G0 requests, no native worlds
+and zero Qwen replies. The separate parent-bound control followup begins first;
+main inference waits rather than running a second resident science process.
+
+Two external author agents receive isolated, fresh contexts and explicit
+per-arm-only read scopes. Neither receives the other arm's actual outcomes.
+The root integration author supervises execution but does not invent the main
+institutions from both histories. This information policy is an instruction
+and exact request contract, not OS-level isolation or provider authentication.
+
+G0 throughput freely authors a17-node/25-edge system: a production-office source
+shares a real archive bulletin, typed annual-sprint amendments alter actual
+project timing/submission, and Python selects actual submissions. Utility
+authors a16-node/22-edge system: an evidence office draws context from actual
+earlier papers/reviews, removes the seed cooperative's project overwrite and
+accepts where the ORIGINAL reviewer mean exceeds3.25. That cutoff follows the
+declared marginal utility algebra, not an additional quality veto.
+
+Both authors fresh-read saved JSON and compile all reachable assignments plus
+the exact single draw. Separate original six-year SCRIPTED native/Docker QA
+passes (throughput1check9.90s; utility1check9.15s); no actual Qwen inference or
+new scientific outcome is implied by those fixtures. Root independently
+re-reads BOTH saved response/request byte sets against the frozen compiler,
+checks exact rng/version/proposal/parent identities, source ABI and source
+syntax with zero source/model executions. Both pass and match authored hashes.
+Technical authoring scripts/validation/native-QA receipts are copied from
+temporary author directories to ignored durable
+`outputs/native-objective-redesign-v12-verification/authors/`.
+
+Reporting review finds two UI scope errors before actual export: null
+generation-failure IDs were incorrectly required to be native observation IDs,
+and source comparison used previous generation instead of the actual incumbent
+parent. Reporting-only fix`ab5dd44` preserves null identities and uses the exact
+saved parent. These changes do not amend the frozen runner or any native result.
+The post-pin independent main/followup audit guards54pass6.64s; counts overlap
+the earlier development checks and are not additional worlds.
