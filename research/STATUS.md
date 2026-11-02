@@ -8,10 +8,13 @@ The user approves the [next finite goal](milestones/2026-11-02-nested-free-insti
 Three independent feature worktrees have implemented the nested sampler/driver,
 native review-task routing plus complete-plan lineage, and an extension of the
 existing English Institution Foundry. Root integrates them and owns protocol,
-exact losses, execution and independent publication. Actual fixed-Qwen inference
-is running from immutable source `fdf4d1c16964891e890cabe68d59b2820f462b92`;
-the first objective's G0 is consumed, the second is separately authored. No
-final v13 loss, successful invention or completed budget is claimed yet.
+exact losses, execution and independent publication. All eight actual fixed-Qwen
+worlds finish at immutable source `fdf4d1c16964891e890cabe68d59b2820f462b92`:
+592 fresh replies, zero reuse and zero technical failures. Throughput losses
+are `[-7,-7,-6,-10]`; reviewed-production losses `[-17,-12.5,-10,-18]`.
+Both post-update draws are worse than their prior best; both subsequent free
+source revisions improve their own first best. This is development proxy
+improvement, not causal/scientific benefit or estimator superiority.
 
 The [prospective protocol](protocols/campaigns/native-nested-search-v13.md)
 fixes two objectives (`-A`, new illustrative `-Q+0.5R`) and at most eight native
@@ -28,10 +31,17 @@ The full exact-runtime suite passes **2020 tests with 6 skips in 1200.38s** at
 the actual frozen source; earlier interrupted starts and
 a launchd PATH failure before any world execution are preserved, not called
 passes. Long jobs now have explicit executable environment and durable start/
-exit receipts. The UI's 247 tests/typecheck/build and fixture/historical browser
-checks pass, but public v13 data remains unavailable pending actual independent
-audit. Editable local drafts are distinct from execution/adoption. Figure,
-actual UI QA, final result interpretation, final manuscript and main push remain.
+exit receipts. Independent audit repeats byte-identically, preserving all129
+raw files and matching227 replay-critical source blobs. It verifies40 code
+executions,16 complete-plan effects,16 routing events and28 actual reviews.
+A separate report-only check joins the reviewer-memory author's22 source
+records to only its three own prior checkpoints; favorable-reviewer allocation
+is proxy-seeking, not evidence of evaluation quality or harm. Actual UI export
+preserves66 exact integer identities;250 tests/typecheck/build and nine actual
+desktop/mobile captures pass, including guarded local workbench handoff without
+inference, adoption or granted consent. Editable local drafts remain separate
+from execution/adoption. Actual figure final layout QA, final PDF render/
+verification, complete source/artifact receipt and main push remain.
 
 ## Completed finite v12: free objective-conditioned redesign and inspected effects
 

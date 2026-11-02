@@ -1,7 +1,7 @@
 # V13 finite goal: nested search and additional native institutional freedom
 
-Status: active; runtime, capability and UI implementations integrated, bounded
-actual fixed-Qwen inference running; final outcomes/audit/publication pending.
+Status: active; all eight native worlds, independent audits and actual UI are
+complete; final figure/PDF/source-artifact verification and main push pending.
 
 The [frozen protocol](../protocols/campaigns/native-nested-search-v13.md) connects
 free outer source/graph generation to an inner conditional expected-loss update
