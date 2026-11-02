@@ -143,6 +143,12 @@ def apply_research_plans(kernel, context):
     base bundle. No research ranking, fairness threshold, or topic catalog exists.
     """
     payload = _one(context, 'plans', PLAN)
+    base_plan = deepcopy(payload)
+    base_value = context.inputs['plans'][0]
+    base_origin = {'source_mechanism': base_value.source_mechanism,
+        'source_port': base_value.source_port, 'emitted_period': base_value.emitted_period,
+        'input_event_ids': list(base_value.lineage_event_ids),
+        'plan_sha256': sha(base_plan), 'plan': base_plan}
     year = context.period
     # Validate the base before using its IDs to address amendments.
     _validate_plan(kernel, payload, year)
@@ -184,7 +190,43 @@ def apply_research_plans(kernel, context):
     return MechanismResult(outputs={'applied': (MechanismValue(payload, actor_ids=tuple(directions)),)},
         events=(MechanismEvent(EFFECT, actor_ids=tuple(directions), payload={
             'year': year, 'plan_sha256': sha(payload), 'submit_actor_ids': [a.id for a in authors],
-            'amendments': origins}),))
+            'amendments': origins, 'base_plan': base_origin}),))
+
+
+def reconstruct_applied_plan(receipt):
+    """Reconstruct prospective complete plans; historical missing context fails.
+
+    This verifies data/hash consistency, not actor/world truth. A read-only audit
+    must additionally join the recorded source ports/events to native history.
+    """
+    base = receipt.get('base_plan')
+    if (not isinstance(base, dict) or set(base) != {'source_mechanism', 'source_port',
+            'emitted_period', 'input_event_ids', 'plan_sha256', 'plan'}
+            or not base['input_event_ids'] or sha(base['plan']) != base['plan_sha256']):
+        raise GraphRuntimeError('complete upstream native plan context/hash unavailable or invalid')
+    plan = deepcopy(base['plan'])
+    if plan.get('year') != receipt['year'] or base['emitted_period'] != receipt['year']:
+        raise GraphRuntimeError('native base-plan provenance year differs')
+    assignments = {a['actor_id']: a for a in plan['assignments']}
+    if len(assignments) != len(plan['assignments']):
+        raise GraphRuntimeError('native base-plan repeats an actor')
+    seen = set()
+    for origin in receipt['amendments']:
+        command = origin['command']
+        aid = command['assignment']['actor_id']
+        if (sha(command) != origin['command_sha256'] or not origin['input_event_ids']
+                or command['target_year'] != receipt['year'] or aid not in assignments or aid in seen):
+            raise GraphRuntimeError('native amendment reconstruction identity/hash differs')
+        seen.add(aid)
+        assignments[aid].clear()
+        assignments[aid].update(deepcopy(command['assignment']))
+        if command['submit'] and aid not in plan['submit_actor_ids']:
+            plan['submit_actor_ids'].append(aid)
+        elif not command['submit'] and aid in plan['submit_actor_ids']:
+            plan['submit_actor_ids'].remove(aid)
+    if sha(plan) != receipt['plan_sha256'] or plan['submit_actor_ids'] != receipt['submit_actor_ids']:
+        raise GraphRuntimeError('reconstructed applied native plan differs from committed hash')
+    return plan
 
 
 def _read_plan(kernel, context):

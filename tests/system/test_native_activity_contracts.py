@@ -13,6 +13,7 @@ from utopia.system import ArtifactTypeSpec, ChannelKind, ConnectionSpec, Mechani
 from utopia.system.code_mechanisms import CODE_SCHEMA, DockerCodeExecutor, sha
 from utopia.system.native_activity_contracts import (
     AMENDMENT, EFFECT, PLAN, activity_world_system, add_activity_plan_authority, apply_research_plans,
+    reconstruct_applied_plan,
 )
 from utopia.system.native_kernel import NativeScienceKernel, legacy_world_system
 from utopia.system.runtime import DeliveredValue, GraphRuntimeError
@@ -110,6 +111,13 @@ def test_free_code_changes_actual_native_research_inputs_and_source_receipts(tmp
     assert len(effects) == 6 - latency
     events = {e.event_id: e for e in native.native_system.events}
     for event in effects:
+        reconstructed = reconstruct_applied_plan(event.payload)
+        assert sha(reconstructed) == event.payload['plan_sha256']
+        base = event.payload['base_plan']
+        assert base['source_mechanism'] == 'world.research'
+        assert base['source_port'] == 'plans'
+        assert base['input_event_ids']
+        assert all(events[i].event_type == 'native.system.phase_executed' for i in base['input_event_ids'])
         for receipt in event.payload['amendments']:
             assert receipt['command_sha256'] == sha(receipt['command'])
             assert receipt['emitted_period'] + latency == event.year

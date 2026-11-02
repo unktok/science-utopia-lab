@@ -225,6 +225,8 @@ class NativeScienceKernel:
         # default prompt bytes are unchanged unless selected in SystemSpec.
         from .native_review_context import register_review_context
         register_review_context(self, registry)
+        from .native_review_routing import register_review_routing
+        register_review_routing(self, registry)
         if self.registry_extension:
             self.registry_extension(self, registry)
         return registry
@@ -256,7 +258,7 @@ class NativeScienceKernel:
         if missing:
             raise GraphRuntimeError("native phase prerequisites missing: " + str(missing))
 
-    def _stage(self, stage, context):
+    def _stage(self, stage, context, *, review_assignment=None, force_review_identity=False):
         sim, frame = self._simulation, self._frame
         year, results = frame["year"], frame["results"]
         sim.portable_safe_point()
@@ -283,10 +285,13 @@ class NativeScienceKernel:
         elif stage == "costs":
             sim._charge_annual_costs(year)
         elif stage == "review":
-            if getattr(sim, '_record_native_review_identities', False):
+            if force_review_identity or getattr(sim, '_record_native_review_identities', False):
                 from .native_review_identity import capture_native_review_tasks, EVENT
                 with capture_native_review_tasks(sim, year) as review_identity:
-                    sim._run_phase_3_peer_review(year, results)
+                    if review_assignment is None:
+                        sim._run_phase_3_peer_review(year, results)
+                    else:
+                        sim._run_phase_3_peer_review(year, results, native_assignment=review_assignment)
                 extra_events = (MechanismEvent(EVENT, payload=review_identity),)
             else:
                 sim._run_phase_3_peer_review(year, results)
@@ -553,6 +558,19 @@ class NativeScienceKernel:
                 raise GraphRuntimeError("native kernel graph cursor mismatch")
         from .native_open_domain import validate_domain_state
         validate_domain_state(state.get('open_domain', {}), events=events)
+        from .native_activity_contracts import EFFECT, reconstruct_applied_plan
+        for event in events:
+            if event.event_type == EFFECT and 'base_plan' in event.payload:
+                reconstruct_applied_plan(event.payload)
+        from .native_review_routing import REVIEW, validate_routing_state, validate_routing_receipt
+        for event in events:
+            if event.event_type == 'native.system.review_routing_applied':
+                validate_routing_receipt(event.payload)
+        if checkpoint:
+            for node in self.spec.mechanisms:
+                if node.implementation == REVIEW:
+                    validate_routing_state(checkpoint['mechanism_states'].get(node.mechanism_id, {}),
+                        events, node.mechanism_id)
         self.graph_checkpoint = _clone(checkpoint)
         self.events = events
         self.last_year = state["last_year"]

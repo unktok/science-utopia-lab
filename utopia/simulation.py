@@ -3008,7 +3008,7 @@ class Simulation:
                                        year=year, project=project_id(agent)):
                 self.funding_tracker.record_funding_consumption(year, annual_cost, agent.get_type())
 
-    def _run_phase_3_peer_review(self, year: int, year_results: Dict) -> Dict[str, Dict[str, float]]:
+    def _run_phase_3_peer_review(self, year: int, year_results: Dict, *, native_assignment=None) -> Dict[str, Dict[str, float]]:
         """Phase 3: Conduct peer reviews
 
         Args:
@@ -3020,6 +3020,8 @@ class Simulation:
         """
         logger.info(f"Year {year} Phase 3: Conducting peer reviews...")
 
+        if native_assignment is not None and not hasattr(self.llm, 'generate_batch'):
+            raise ValueError('explicit native review routing requires the original batched review path')
         self.conference_system.start_all_review_processes()
 
         # Map conference ids to dict of papers
@@ -3043,8 +3045,9 @@ class Simulation:
             peer_review_response_format = None
             # Capacity-aware assignment (factor K) is computed up front from a dedicated
             # RNG; the legacy path below is untouched when the flags are off.
-            capacity_assignment = (self._assign_reviewers_with_capacity(year, year_results)
-                                   if self._capacity_mode_on else None)
+            capacity_assignment = (native_assignment if native_assignment is not None else
+                (self._assign_reviewers_with_capacity(year, year_results)
+                 if self._capacity_mode_on else None))
             for conference in self.conference_system.conferences:
                 for paper in conference.submitted_papers:
                     if capacity_assignment is not None:
