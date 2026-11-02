@@ -164,7 +164,7 @@ def _review_task_identities(saved, endpoint, years):
         value = event.get('payload', {})
         year = event.get('year')
         if (set(value) != {'schema', 'year', 'tasks', 'tasks_sha256'} or value['schema'] != identity_schema
-                or value['year'] != year or year in by_year
+                or type(year) is not int or value['year'] != year or year in by_year
                 or event.get('provenance', {}).get('mechanism_id') not in review_nodes
                 or not isinstance(value['tasks'], list) or digest(value['tasks']) != value['tasks_sha256']):
             raise BoundaryUnsupported('actual native review identity event is duplicated, untrusted or altered')
@@ -172,7 +172,8 @@ def _review_task_identities(saved, endpoint, years):
         for i, task in enumerate(value['tasks']):
             if (not isinstance(task, dict) or set(task) != {'item_index', 'year', 'reviewer_id', 'paper_id',
                     'conference_id', 'prompt_sha256', 'parsed_response_sha256', 'native_score', 'native_review_sha256'}
-                    or type(task['item_index']) is not int or task['item_index'] != i or task['year'] != year
+                    or type(task['item_index']) is not int or task['item_index'] != i
+                    or type(task['year']) is not int or task['year'] != year
                     or any(not isinstance(task[k], str) or not task[k] for k in ('reviewer_id', 'paper_id', 'conference_id'))
                     or any(not _sha256(task[k]) for k in ('prompt_sha256', 'parsed_response_sha256', 'native_review_sha256'))
                     or type(task['native_score']) is not int):
@@ -189,6 +190,7 @@ def _review_task_identities(saved, endpoint, years):
                 for r in d.get('reviews', []) if r.get('reviewer_id') == task['reviewer_id']]
             if (len(rows) != 1 or digest(rows[0]) != task['native_review_sha256']
                     or rows[0].get('overall_score') != task['native_score']
+                    or rows[0].get('year') != year
                     or rows[0].get('arxiv_id') != task['paper_id']
                     or rows[0].get('conference_id') != task['conference_id']):
                 raise BoundaryUnsupported('review identity does not bind one unchanged actual archived native review record')
@@ -290,7 +292,8 @@ def raw_review_projection(endpoint, layout, native_values, *, journal, wire, mec
                 if task_identities is not None:
                     proof['native_task'] = task_identities[entry['year']][item]
                 review_requests[identity] = proof
-    by_year, transport_rows = {}, []
+    by_year = {year: [] for year in task_identities} if task_identities is not None else {}
+    transport_rows = []
     for sql_rowid, (identity, payload_sha, outcome, data, data_sha) in zip(sql_rowids, replies):
         wire_line, row = wire_by_sha[payload_sha]
         if (outcome != 'response' or any(not _sha256(s) for s in (identity, payload_sha, data_sha))

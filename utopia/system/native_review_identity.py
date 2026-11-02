@@ -86,6 +86,7 @@ def capture_native_review_tasks(simulation, year):
                 raise GraphRuntimeError('successful original review result lacks one unique actual native record')
             row = rows[0]
             if (row.get('arxiv_id') != task['paper_id'] or row.get('conference_id') != task['conference_id']
+                    or row.get('year') != year
                     or row.get('overall_score') != int(body['overall_score'])):
                 raise GraphRuntimeError('actual native review identity or original integer parse differs')
             task.update(parsed_response_sha256=digest(body), native_score=row['overall_score'],

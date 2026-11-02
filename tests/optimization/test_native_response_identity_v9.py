@@ -177,3 +177,57 @@ def test_completion_receipt_supports_only_exact_supported_native_layout_pairs(tm
     assert receipt['journal_sha256'] == file_sha256(journal)
     with pytest.raises(ValueError, match='layout pair'):
         make_response_completion_receipt(endpoint, cache, tmp_path/'foreign.jsonl', run_manifest_sha256='a'*64)
+
+
+def test_valid_retry_binds_successful_task_not_sql_or_wire_position(tmp_path):
+    endpoint, journal, wire, saved = semantic_journal(tmp_path)
+    binding = saved['portable']['contract']['binding']
+    wires = [json.loads(line) for line in wire.read_text().splitlines()]
+    retry_wire = deepcopy(wires[0])
+    retry_seed = derive_seed(42, 'phase3_reviews', 1, 0, 1)
+    retry_wire['payload']['seed'] = retry_seed
+    retry_sha = hashlib.sha256(canonical_json(retry_wire['payload']).encode()).hexdigest()
+    retry_wire['payload_sha256'] = retry_sha
+    retry_identity = hashlib.sha256(canonical_json({'binding': binding, 'seed_ctx': ('phase3_reviews', 1),
+        'item_index': 0, 'attempt': 1, 'seed': retry_seed}).encode()).hexdigest()
+    with sqlite3.connect(journal) as db:
+        original = db.execute('SELECT identity,payload_sha,outcome,data,data_sha FROM replies WHERE rowid=1').fetchone()
+        malformed = canonical_json({'model': 'synthetic', 'choices': [{'message': {'content': 'not valid JSON'}}]})
+        db.execute('UPDATE replies SET data=?,data_sha=? WHERE rowid=1',
+            (malformed, hashlib.sha256(malformed.encode()).hexdigest()))
+        db.execute('INSERT INTO replies VALUES (?,?,?,?,?)', (retry_identity, retry_sha, *original[2:]))
+    # Retry request is physically logged between other original requests, not
+    # grouped by task or matched positionally to SQL completion order.
+    wires.insert(1, retry_wire)
+    wire.write_text(''.join(canonical_json(row)+'\n' for row in wires))
+    saved['portable']['response_cache_count'] = 4
+    write_portable_checkpoint(Path(endpoint['checkpoint']), saved)
+    endpoint.update(checkpoint_sha256=file_sha256(Path(endpoint['checkpoint'])), response_cache_count=4)
+    z, raw, proof = extract(endpoint, journal, wire)
+    assert project_response(raw, proof, hard=True, temperature=.1).tolist() == z.tolist()
+    assert proof['checkpoint_response_count'] == 4
+    assert sum(c['actual_replies'] for c in proof['cohorts']) == 3
+
+
+def test_explicit_empty_review_year_and_zero_review_paper_are_not_imputed(tmp_path):
+    endpoint, journal, wire, saved = semantic_journal(tmp_path)
+    frame = deepcopy(endpoint['trace'][0])
+    frame.update(year=2, event_id='synthetic-empty-year', records=[])
+    frame['inputs']['features'] = []
+    frame['input_sources']['features']['period'] = 2
+    frame['outputs']['utility'] = []
+    endpoint['trace'].append(frame)
+    saved['native_system']['events'].append({'event_type': EVENT, 'year': 2,
+        'provenance': {'mechanism_id': 'world.review'}, 'payload': {'schema': SCHEMA, 'year': 2,
+            'tasks': [], 'tasks_sha256': digest([])}})
+    # A real zero-review feature is retained as its observed zero, not assigned
+    # a latent reviewer or a fabricated response score.
+    endpoint['trace'][0]['records'].append({'paper_id': 'paper-c', 'conference_id': 'conference-1'})
+    endpoint['trace'][0]['inputs']['features'].append([0., 0.])
+    endpoint['trace'][0]['outputs']['utility'].append(0.)
+    write_portable_checkpoint(Path(endpoint['checkpoint']), saved)
+    endpoint['checkpoint_sha256'] = file_sha256(Path(endpoint['checkpoint']))
+    z, raw, proof = extract(endpoint, journal, wire)
+    assert len(raw) == len(z)+3  # Only three actual reviewers, no paper-c padding.
+    assert project_response(raw, proof, hard=True, temperature=.1).tolist() == z.tolist()
+    assert proof['cohorts'][1]['actual_replies'] == 0
