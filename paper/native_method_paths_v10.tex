@@ -2,7 +2,7 @@
 \label{sec:native-method-paths-v10}
 
 V9 shows that implementing a backward pass does not establish a useful search
-direction. We therefore define a prospective v10 comparison of two update
+direction. We therefore preregister a v10 comparison of two update
 policies, rather than retrospectively replacing its no-op by the better known
 endpoint. Both vary the same charter evidence weight $\theta\in[.2,.8]$ in the
 original five-author, two-year, seed-42 society with fixed Qwen3:8B weights and
@@ -42,7 +42,7 @@ Temperature $\tau$ & Center $\partial\widehat L/\partial\theta$ & Calibration-lo
 \end{tabular}
 \end{table}
 
-\paragraph{Same information and loss, different proposal rules.}
+\paragraph{Shared endpoints and loss, different oracle capabilities.}
 Each arm receives only the three historical v9 calibration endpoints
 $\theta=(.2,.5,.8)$ with native losses $(.9,.9,.8167)$, and is charged three
 historical evaluations. Their underlying calls are counted once, not twice.
@@ -51,7 +51,10 @@ historical \emph{incumbent} $.8$. The incumbent is the lowest observed native
 loss, with earliest-observation ties; it is not substituted for the current
 iterate. Neither optimizer receives old unused endpoints or the other arm's
 new outcomes. All these historical data are development knowledge, not a new
-held-out sample.
+held-out sample. Equal evaluation budgets do not mean identical oracle
+capabilities: the gradient method uses saved individual responses and native
+traces, whereas the black-box policy consumes only coordinates and scalar
+losses. This is not a controlled equal-information oracle comparison.
 
 At gradient step $k=0,1,2$, refit the original affine raw-response operator on
 the shared three endpoints plus only its own earlier completed endpoints.
@@ -88,3 +91,52 @@ budgets do not imply equal response costs. One coupled society, three updates
 and potentially stochastic same-coordinate replies cannot establish optimizer
 superiority, significance, causal institutional benefit or an exact
 native/Qwen Jacobian.
+
+\paragraph{Actual paths move, but neither discovers a new best.}
+All six fresh attempts complete (Table~\ref{tab:native-v10-paths} and
+Figure~\ref{fig:native-v10-paths}). The gradient arm refits on 3, 4 and 5
+eligible endpoints; its three proposed coordinates differ from both the center
+and the black-box path. Its represented gradients are
+$(-.24092,-.09762,-1.24626)$, with the first and last steps trust-clipped.
+Both methods observe the same loss sequence
+$(.9,.8167,.8167)$, improving by $.08333$ relative to the initial center at
+their second evaluation. Neither beats the already known historical loss
+$.8167$ at $\theta=.8$: the incumbent therefore remains unchanged. These are
+genuine parameter updates and different search paths, not new-best discovery
+or evidence that either method is superior.
+
+\begin{table}[t]
+\caption{Audited three-evaluation development paths; all native losses are
+measured rather than predicted. Both arms already know the better historical
+point $\theta=.8$, $L=.8167$. Rounded coordinates are for display only.}
+\label{tab:native-v10-paths}
+\centering\small
+\begin{tabular}{lrrrr}
+\toprule
+Method & $\theta_1$ & $\theta_2$ & $\theta_3$ & Native $(L_1,L_2,L_3)$ \\
+\midrule
+Gradient & .6000 & .6488 & .7488 & $(.9000,.8167,.8167)$ \\
+Black-box & .6500 & .7250 & .7625 & $(.9000,.8167,.8167)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The six forwards take approximately 10.1 minutes and generate 186 new physical
+Qwen replies, 93 per arm. They contain 504 logical responses: those 186 fresh
+replies plus 318 replays of the same 53-call actual prefix. The three shared
+calibration endpoints additionally rely on 93 historical post-prefix calls;
+counting that prefix once gives 146 historical supporting calls and 332 unique
+calls supporting this comparison. This is not total project expenditure or
+six independent societies. The new moving paths neither reverse v9's failed
+unused-fidelity result nor validate an exact native/Qwen derivative.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\linewidth]{figures/native-method-paths-v10-a1.png}
+ \caption{Actual equal-native-evaluation-budget development comparison.
+ Current and proposed coordinates move differently, but both methods reach
+ the same observed loss and retain the shared historical incumbent. The
+ gradient arm uses raw response traces; the black-box arm uses scalar losses.
+ One coupled history does not establish statistical or causal superiority.}
+ \label{fig:native-v10-paths}
+\end{figure}

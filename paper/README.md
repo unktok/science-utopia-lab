@@ -42,7 +42,22 @@ negative conditional-fidelity/optimization result, not six independent histories
 an exact Qwen/native Jacobian, held-out evidence or causal institutional benefit.
 The preserved a1/a2 attempts consumed 228 additional physical replies.
 
-The latest40-page PDF is built from committed text`65b671f` and includes both
+The subsequent v10 comparison executes three new native evaluations per method
+after charging both the same three historical calibration endpoints. Gradient
+coordinates `[.6000,.6488,.7488]` and black-box coordinates
+`[.6500,.7250,.7625]` differ, but both observe loss `[.9000,.8167,.8167]`.
+Both improve over the initial center; neither beats the already known historical
+best at `.8`. The gradient arm consumes raw response traces, the black-box arm
+only coordinates/scalar losses: equal native-evaluation budget is not identical
+oracle capability. All six forwards complete with186 fresh Qwen replies and
+318 historical replays (504 logical responses). Including the shared three
+calibration endpoints and counting the53-call origin once gives332 unique
+supporting physical calls, not total project expenditure. The comparison remains
+one coupled-history development result, without superiority, significance,
+causal benefit or exact native/Qwen differentiation claims. It does not reverse
+the negative v9 fidelity result.
+
+The historical40-page v9 PDF is built from committed text`65b671f` and includes both
 actual v9 figures. All40 pages are rendered and visually checked, with new and
 changed pages1/26/27/28/29/32/39 individually inspected at150dpi. There are no
 overfull boxes or undefined references; cosmetic underfull warnings remain.
