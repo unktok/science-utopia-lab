@@ -149,6 +149,57 @@ def test_missing_landscape_is_not_reconstructed_or_silently_fit():
         landscape_data(fixture_report(),allow_synthetic=True)
 
 
+def test_tiny_gradient_explicit_unit_and_bounded_value_labels(tmp_path,monkeypatch):
+    import scripts.figures.native_qwen_response_v9 as module
+    report=landscape_fixture(noop=True)
+    report['response_operator_analysis']['center_backward'].update(
+        gradient=[1.15e-15],learned_response_contribution=[1.15e-15])
+    report=reseal(report)
+    original_close=module.plt.close
+    checked=[]
+    def check_and_close(fig):
+        if hasattr(fig,'axes') and len(fig.axes)==4:
+            fig.canvas.draw();renderer=fig.canvas.get_renderer();axis=fig.axes[1]
+            assert axis.xaxis.get_offset_text().get_text()==''
+            assert '10^-15' in axis.get_xlabel()
+            for text in axis.texts:
+                box=text.get_window_extent(renderer)
+                assert axis.bbox.x0<=box.x0<=box.x1<=axis.bbox.x1
+            checked.append(True)
+        original_close(fig)
+    monkeypatch.setattr(module.plt,'close',check_and_close)
+    receipt=create(write_fixture(tmp_path,report),tmp_path/'tiny',allow_synthetic=True)
+    assert checked and receipt['gradients']['total']==1.15e-15
+    svg=Path(receipt['outputs']['svg']['path']).read_text()
+    assert 'unit: 10^-15' in svg
+
+
+def test_landscape_footers_fit_canvas_at_paper_width(tmp_path,monkeypatch):
+    import scripts.figures.native_qwen_response_v9 as module
+    report=landscape_fixture(noop=True)
+    report['prospective_amendment']={'id':'native-qwen-response-gradient-v9-a3'}
+    report['response_coupling']={'mode':'actual-common-prefix-replay','unique_anchor_prefix_calls':1}
+    for row in report['endpoints']:
+        row.update(fresh_physical_reply_count=1,replayed_response_count=1)
+    report.update(logical_response_count=12,fresh_physical_reply_count=6,physical_reply_count=6)
+    reseal(report)
+    original_close=module.plt.close
+    checked=[]
+    def check_and_close(fig):
+        if hasattr(fig,'axes') and len(fig.axes)==2:
+            fig.canvas.draw();renderer=fig.canvas.get_renderer()
+            assert fig.get_size_inches()[0]==5.5
+            for text in fig.texts:
+                box=text.get_window_extent(renderer)
+                assert 0<=box.x0<=box.x1<=fig.bbox.width
+                assert 0<=box.y0<=box.y1<=fig.bbox.height
+            checked.append(True)
+        original_close(fig)
+    monkeypatch.setattr(module.plt,'close',check_and_close)
+    create_landscape(write_fixture(tmp_path,report),tmp_path/'landscape-fit',allow_synthetic=True)
+    assert checked
+
+
 @pytest.mark.parametrize('candidate_loss,outcome',[(.4,'tied'),(1.,'worse'),(-.2,'improved')])
 def test_exact_plotted_values_keep_unfavorable_tied_and_improved_outcomes(candidate_loss,outcome):
     report=fixture_report(candidate_loss=candidate_loss)

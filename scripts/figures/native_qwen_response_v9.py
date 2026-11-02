@@ -231,6 +231,16 @@ def _limits(values):
     return low-.24*span,high+.30*span
 
 
+def _gradient_display(gradient):
+    """Explicit shared display unit prevents tiny-gradient formatter offsets."""
+    maximum=max(abs(value) for value in gradient.values())
+    exponent=(max(-300,min(300,math.floor(math.log10(maximum))))
+              if maximum and (maximum<.001 or maximum>=10000) else 0)
+    scale=10.**exponent
+    label='Represented dL / dθ'+(f'\n(unit: 10^{exponent})' if exponent else '')
+    return {key:value/scale for key,value in gradient.items()},label
+
+
 def create(report_path, output, *, expected_source=None, allow_synthetic=False):
     report_path,output=Path(report_path),Path(output)
     report=decode_json(report_path.read_text(),strict=True,finite_floats=True)
@@ -270,14 +280,15 @@ def create(report_path, output, *, expected_source=None, allow_synthetic=False):
         a.set_xticks(range(6),labels,fontsize=7)
         a.set_title('(a) Six logical worlds' if coupled else '(a) Six reset worlds',loc='left',fontsize=8.7,pad=10)
         a.text(.0,-.40,'C: calibration · U: unused · G: frozen candidate\n* Fidelity failed / unsupported',transform=a.transAxes,fontsize=6.5,color='#52616C',va='top')
-        gradient=data['gradients']
+        gradient,gradient_label=_gradient_display(data['gradients'])
         for y,(key,label,color) in zip([2,1,0],(('total','Total',BLUE),('frozen','Frozen',GREY),('response_contribution','Learned\nresponse',ORANGE))):
             value=gradient[key]
             b.barh(y,value,height=.44,color=color)
-            b.annotate(f'{value:.3g}',(value,y),xytext=(4 if value>=0 else -4,0),
-                       textcoords='offset points',va='center',ha='left' if value>=0 else 'right',fontsize=7)
-        b.set(yticks=[2,1,0],yticklabels=['Total','Frozen','Learned\nresponse'],xlabel='dL / dθ (represented)',
+            b.text(.98,y,f'{value:.3g}',transform=b.get_yaxis_transform(),va='center',ha='right',fontsize=7,
+                   bbox={'facecolor':'white','alpha':.85,'edgecolor':'none','pad':.4})
+        b.set(yticks=[2,1,0],yticklabels=['Total','Frozen','Learned\nresponse'],xlabel=gradient_label,
               xlim=_limits(list(gradient.values())),ylim=(-.6,2.6))
+        b.ticklabel_format(axis='x',style='plain',useOffset=False)
         b.set_title('(b) Center point gradient\nθ = 0.5',loc='left',fontsize=8.5,pad=10)
         path=data['unused_finite_path']
         values=[path['actual_native_delta'],path['response_delta'],path['frozen_delta']]
@@ -423,10 +434,10 @@ def create_landscape(report_path, output, *, expected_source=None, allow_synthet
             Line2D([],[],ls='',marker='D',markerfacecolor='none',color=PURPLE,label='Native candidate')],
             loc='upper left',bbox_to_anchor=(.02,.91),frameon=False,ncol=4,fontsize=6.6,
             handletextpad=.4,columnspacing=1.0)
-        fig.text(.035,.075,'61 posthoc frozen-model evaluations; not used to choose the candidate. Native points are not interpolated.',
+        fig.text(.035,.075,'61 posthoc model evaluations; not used to choose the candidate. No native interpolation.',
             fontsize=6.4,color='#52616C')
         scope='Common-prefix-coupled development' if data['response_coupling'] else 'Development worlds'
-        fig.text(.035,.025,scope+' · represented gradient, not the native/Qwen Jacobian · no new model/native calls',
+        fig.text(.035,.025,scope+' · not the native/Qwen Jacobian · no new model/native calls',
             fontsize=6.4,color='#714955')
         try:
             fig.savefig(paths['png'],dpi=220,facecolor='white',metadata={'Software':'ScienceUtopiaLab audited v9 landscape'})
