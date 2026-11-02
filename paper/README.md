@@ -23,6 +23,30 @@ The final shareable artifact is
 
 ## Evidence boundary
 
+The latest 50-page paper adds the closed v12 free institutional redesign:
+two exact losses, three own-history generations each, six original-native
+worlds and 565 fresh Qwen replies. Throughput `[-10,-10,-10]` and utility
+`[-1/6,0,-1/6]` select different 17/25 and 16/22 node/wire institutions, but
+neither improves G0. The milestone-clinic revision changes actual project plans
+and Qwen inputs yet has worse observed loss; it is not retained. The actual
+four-panel figure, complete result table and English city/circuit captures are
+audit-bound. Same-checkpoint cross-scores are development reuse, not held-out.
+The separate final-control forward followup adds two native worlds/180 fresh
+replies and losses `[1.05,.55]`, without expected-improvement or variance claims.
+
+Paper source `eb0fdfd` is committed before build. All 50 pages are rendered and
+visually reviewed at 75 dpi; pages 1/2/32/33/34/35/36/38/39/40/47/48/49 are
+also inspected at 150 dpi. No overfull boxes or undefined references remain;
+cosmetic underfull warnings are retained. The source-specific verification
+keeps both failed full regressions and the later clean 1953-pass/6-skip run,
+plus separate final reporting and UI scopes; none are additional world samples.
+[V12 source/artifact verification](../research/results/native-objective-redesign-v12-verification.json)
+binds exact source, audit, export, captures, figure, test receipts and PDF bytes.
+The later UI integer-precision correction changes no screenshot bytes; root
+checks all captures against the committed paper source before retaining this
+reviewed PDF. Unsafe RNG/hash identity integers use tagged exact decimal strings,
+not rounded JavaScript numbers. All native scientific measurements stay intact.
+
 The historical45-page v11 paper adds the actual expected-loss-estimator pilot:
 eight fresh original-native worlds,742 Qwen replies, no replay, and both paths
 `[.7833333,1.2,1.2,1.2]`. No new best is found. The G0 plain-LR update is

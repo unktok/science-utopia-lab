@@ -1,6 +1,6 @@
 # V12 finite goal: free loss-conditioned redesign and inspected native effects
 
-Status: eight native worlds and both independent audits complete; actual UI/PDF finalizing.
+Status: complete — eight native worlds, independent audits, actual UI, figure and verified PDF.
 
 The primary question is what systems different objectives produce, not making
 the world differentiable. V8's structural paths and v11's estimator integration
@@ -28,8 +28,8 @@ failures. Repeated independent audit is byte-identical; all32 raw files and the
 old v11 parent remain unchanged. Measured model-call time sums10.98min, not
 overall wall time. This closes the unevaluated-final-policy step; it does not
 establish an estimator benefit, expected-loss reduction or variance advantage.
-The separately closed main execution is summarized below; actual UI/publication
-finalization is tracked by the overall status, not this earlier subtrack entry.
+The separately closed main execution is summarized below; both reporting tracks
+are also complete and bound by the final source/artifact receipt.
 
 ## Completed execution: objective-conditioned free redesign
 
@@ -55,6 +55,23 @@ does not bind the full upstream context. Combined with the separate followup:
 8 native worlds, 745 fresh Qwen replies, no population/horizon/seed expansion.
 Measured model-call sums are 36.11 min main and 10.98 min followup, not overall
 wall time or a hardware speed benchmark.
+
+## Completed integration and publication
+
+[Verification](../results/native-objective-redesign-v12-verification.json)
+binds the actual experiment source, all three whole-suite scopes (including
+the two preserved failures), separate final report checks, actual 5.5-inch
+figure, English UI and PDF. The UI has 224 passing tests/typecheck/build and
+five inspected actual desktop/mobile captures. An additional exact-export
+guard catches unsafe integer rounding and verifies complete arm equality after
+36 explicitly tagged decimal-string identity conversions. Scientific numbers,
+source and graph remain unchanged; all five captured images are byte-identical.
+
+Paper source `eb0fdfd` produces 50 pages, all rendered/reviewed at 75dpi and
+13 changed/key pages enlarged to 150dpi. No overfull boxes or undefined
+references; cosmetic underfull warnings remain. No new inference accompanies
+audits, plotting, browser checks or PDF generation. No owned native/preview
+process remains after this finite budget; user Ollama is untouched.
 
 ## Remaining research and explicit non-scale limitations
 

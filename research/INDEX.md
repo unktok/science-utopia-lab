@@ -6,11 +6,13 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [V12 active finite goal: objective-conditioned free redesign and native effects](milestones/2026-11-02-objective-open-redesign-v12.md)
+- [V12 completed finite goal: objective-conditioned free redesign and native effects](milestones/2026-11-02-objective-open-redesign-v12.md)
 - [V12 prospective six-world redesign plus two-world control followup](protocols/campaigns/native-objective-redesign-v12.md)
 - [V12 parallel development and execution log](logbook/2026-11-02-objective-open-redesign-v12.md)
 - [V12 six-world objective-conditioned free redesign: complete paths and limits](results/native-objective-redesign-v12-a1.md)
 - [V12 independent main audit,565 replies and unchanged107 raw files](results/native-objective-redesign-v12-a1.json)
+- [V12 source-specific tests, exact export, actual UI, figure and PDF verification](results/native-objective-redesign-v12-verification.json)
+- [V12 actual English pixel city and objective-conditioned paths](../game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-actual-overview.png)
 - [V12 final-control proposal: two fresh native outcomes and limits](results/native-control-followup-v12-a1.md)
 - [V12 independent parent/proposal/native followup audit](results/native-control-followup-v12-a1.json)
 - [V12 immutable final-control followup driver and compatibility contract](components/native-final-control-followup-v12.md)

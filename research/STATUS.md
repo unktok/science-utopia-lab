@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## V12 native execution and independent audits complete; publication finalizing
+## Completed finite v12: free objective-conditioned redesign and inspected effects
 
 The [finite v12 goal](milestones/2026-11-02-objective-open-redesign-v12.md) tests
 different exact objectives through freely authored source, mechanisms, protocols,
@@ -37,8 +37,18 @@ Exact-source full regression retains 1913 passes/6 skips/one inherited spacing
 failure; reporting source retains 1950 passes/6 skips/one SVG isolation failure.
 Corrected clean reporting source `e0a5c38` passes 1953 tests with 6 skips, same
 native runtime. These overlapping scopes are not summed or relabelled as final
-tip verification. Actual UI export/browser QA, final figure and rendered PDF
-are being finalized against the closed audit.
+tip verification. The actual 5.5-inch figure, English audit-bound UI and
+50-page rendered PDF are complete. UI has 224 passing tests/typecheck/build
+and actual desktop/mobile QA, with no inference dispatch or browser errors.
+Root's final export comparison catches and fixes unsafe JavaScript integer
+rounding: 36 RNG/hash-probe identity fields now use explicitly tagged exact
+decimal strings. Complete arm histories match the independently parsed audit;
+all five screenshot bytes remain unchanged from the paper build source.
+The final reporting tests and all source/artifact hashes are separately bound
+in [verification](results/native-objective-redesign-v12-verification.json).
+No native/model/preview process remains owned by this finite slice; the user
+Ollama service is not stopped. Research limits are listed in the milestone,
+not recast as a requirement to differentiate or scale the whole world.
 
 ## Completed finite v11: open native institutions, gradient estimation as a means
 

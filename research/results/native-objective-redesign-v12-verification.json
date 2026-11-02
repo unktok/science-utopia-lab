@@ -1,0 +1,357 @@
+{
+  "schema": "scienceutopia.native-objective-redesign-verification.v12",
+  "date": "2026-11-02",
+  "status": "finite-v12-open-redesign-and-final-control-followup-complete",
+  "scope": "Objective-conditioned executable institution redesign and post-final-control forward evaluation. Not useful invention, causal benefit, optimizer/estimator superiority, variance reduction or all future research completion.",
+  "actual_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+  "native_runtime_and_frozen_protocol_unchanged_since_actual_source": true,
+  "counting_rule": "Overlapping software suites are not summed. Main and followup are separately budgeted development executions; same scientific seed, no response replay.",
+  "authoring_technical_qa": {
+    "scope": "Pre-inference authoring/static/scripted-QA receipts and exact-candidate QA-reuse proofs; not actual-Qwen evidence.",
+    "files": [
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g0/author.py",
+        "sha256": "4933b8f584f31174bfec05ea643e9088d904caedcc451d2f0fa9ac6c216ec6a5"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g0/native-scripted-qa.json",
+        "sha256": "5fbbecd90065782e5f642a2f5dc5bb0d9aeb1a9ffe082797755a544fb408e445"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g0/pytest-g0.log",
+        "sha256": "da883a447df4bed5e0ae3ffbaf4b479105289542323846f6bc250f1d3a77d1bc"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g0/static-validation.json",
+        "sha256": "2a2c192efd18f96cebf7a2b1a1277fa0f7946a026d11c20ce9a4aea66188746e"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g0/test_scripted.py",
+        "sha256": "51b0e42e9cbda19500d7aa6012908e13f13644498f82cb63470293001719defc"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g0/validate.py",
+        "sha256": "02139476cb08cf41f51469d8cd09af4c5fdbc844c6d5a22efe8197893167320f"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g1/author_g1.py",
+        "sha256": "2af234f6630bd2a9cd79fc004263d0840129800f45d7415ae1a95ee9e8d79b2c"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g1/own-actual-g1-evidence.json",
+        "sha256": "d806576864335cc50d60d2bcca8aa97085eb3f91465c24cb81faa0d8be829016"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g1/static-validation.json",
+        "sha256": "7a7481e8ad7a7eb0b55bd3b1dd536b757fb289ce03694fdc81362d2857b0136e"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g2/author_g2.py",
+        "sha256": "5a1afea5953794b366df97b534ad2600bee78c6fe42360944b0095c2eb2a7792"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/throughput-g2/static-validation.json",
+        "sha256": "0f38108f4d6fa1c0334b59038dd10f7032f9c297c64ea8a695fe0b73c1d99e47"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/build.py",
+        "sha256": "2cfec4e2beea6097c91972511d141d556937ece4dc744def45d91a1780565cf7"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/evidence_office.py",
+        "sha256": "eb18883621fbc8afd6311293b477c202132db378409bcb78d4427e82633ff365"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/native-qa-report.json",
+        "sha256": "d9dcbc57c8c07494d34ea1060dcaf856789bd419230ced4aad84f9796355fcb7"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/native-qa.log",
+        "sha256": "f40a92b0b9a1b4eb97e852a0cd5617b48895ad6590e2da5b82bdd9e4ffb33a1d"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/selection.py",
+        "sha256": "0018f2529515f3f616f50e3f81dddf43cb672a4577c2bc6174c55e306a4e169c"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/static-validation.json",
+        "sha256": "cbb04dc5b601c07141f556db04ea922d98c934ee480bc7036d4588cee6d5fd4a"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/test_native_qa.py",
+        "sha256": "6b85dfa0e097ac6322a363aff29fb6cb065ecb59637f8a5a44c7d776afc76391"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g0/validate.py",
+        "sha256": "594bb23366875d508985096e2e53027c5a47f017997c3242c69de4c94cf09380"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/build.py",
+        "sha256": "b3f923d07756d7af16c171a58c793c02457fe36bebf49fefae0aaa1309b56037"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/draft-static-validation.json",
+        "sha256": "87c32c234bd1be7958b1a7d9494ae51d401a1b981f9b7bd7735f236807621406"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/final-static-validation.json",
+        "sha256": "d669eff5178cae3b2371d89beae746289d6c9db1ff88de9697236533b161623d"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/milestone_clinic.py",
+        "sha256": "245b4b64044cb960ef7953e17346cfb6f6b573580440276d6bb3125f3ae6ce5e"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/native-qa-report.json",
+        "sha256": "c9e1ea5037950fcdf104b39e3370f44b35985973d1ae499059543aaa2813b371"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/native-qa.log",
+        "sha256": "140d5328d6d82404f8ef20eff7bf4381c7518a3cd4c60c7e90c927a6ca89d22a"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/publish.py",
+        "sha256": "13452ed4be24253ce4f51ce5a18f3e8f823445153b47f8cd7b276c61d434ac97"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/test_native_qa.py",
+        "sha256": "5bf2989f776f0f9b5c178196aae60f74653be36dce3a0bd75ac8126139156f51"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g1/validate.py",
+        "sha256": "cacfdb50fd45c20397ab3bbee1bccc09a1acc2da39b14668b7d8e6e1bcdf1f14"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g2/build_and_prove.py",
+        "sha256": "e0fc9145f1ff5ea462f0da1a062b6269aac70459421e839c0a661ceb2563ba4f"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g2/draft-static-validation.json",
+        "sha256": "4154601513014a97dc735ba24ba59e7a98ae49ccd81670b1a529d15ba7cb215f"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g2/final-static-validation.json",
+        "sha256": "779386b27b0b4d253dce6c6ffa399e1fbc2f70a9fbf096a31b16e7a37cb9cdf4"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g2/identical-candidate-qa-proof.json",
+        "sha256": "88880eb251b2d217ff24c097ac9e967e515d9b1608f7827341d34c00dcf9d5a6"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g2/publish.py",
+        "sha256": "25ad994f22834c1e91c8d83db1dec13e0bee7011441d6574760c8582fc57a222"
+      },
+      {
+        "path": "outputs/native-objective-redesign-v12-verification/authors/utility-g2/validate.py",
+        "sha256": "bb623607196068bc0c9660ff9730d468713ec5f8756902a9f604c6218950a9b3"
+      }
+    ]
+  },
+  "main": {
+    "audit": {
+      "path": "research/results/native-objective-redesign-v12-a1.json",
+      "sha256": "ca2742aa06ccd8675fcc50b5bc17041d057deb2cfad1357a19e3276d96530b76"
+    },
+    "audit_content_sha256": "c03df804fe46f12f1efec7210f1dba1c624242a8645f9533b698748cc4dfcd5f",
+    "complete_worlds": 6,
+    "physical_replies": 565,
+    "loss_paths": {
+      "native-joint-v5-net-reviewed-utility": [
+        -0.16666666666666785,
+        0.0,
+        -0.16666666666666785
+      ],
+      "native-joint-v5-throughput": [
+        -10.0,
+        -10.0,
+        -10.0
+      ]
+    },
+    "selections": {
+      "native-joint-v5-net-reviewed-utility": {
+        "best_loss": -0.16666666666666785,
+        "criterion": "minimum own development loss; earliest exact row only for display; all ties retained",
+        "representative_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
+        "tie_count": 2
+      },
+      "native-joint-v5-throughput": {
+        "best_loss": -10.0,
+        "criterion": "minimum own development loss; earliest exact row only for display; all ties retained",
+        "representative_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
+        "tie_count": 3
+      }
+    },
+    "raw_inventory_sha256": "d129899ec9aece37a55efe193707b1c964a79e122835f0138817dd0da307c45c",
+    "independent_audits_byte_identical": true,
+    "root_repeat_byte_identical": true,
+    "raw_unchanged_under_audits": true
+  },
+  "separate_final_control_followup": {
+    "audit": {
+      "path": "research/results/native-control-followup-v12-a1.json",
+      "sha256": "2e79fb90ee7f285215144cfdc8a8dcdfc29ac1d9955545fff8376cf89be83345"
+    },
+    "audit_content_sha256": "039ce8f7bbbd4a7186534849a010e6c983af74398fab8247dcb68746f5516b6a",
+    "complete_worlds": 2,
+    "physical_replies": 180,
+    "root_repeat_byte_identical": true,
+    "old_parent_and_new_raw_unchanged": true,
+    "post_final_update_native_evaluated": true,
+    "expected_improvement_or_variance_reduction_established": false
+  },
+  "full_regressions": [
+    {
+      "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+      "scope": "Exact frozen actual source; one inherited manuscript spacing failure retained.",
+      "passed": 1913,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 6,
+      "junit_seconds": 1032.19,
+      "junit": "outputs/native-objective-redesign-v12-verification/full-source.xml",
+      "junit_sha256": "53959b9b0fcd1298d329f4c575391267dd211dc9c2b75f390930c735696905a2",
+      "failures": [
+        {
+          "classname": "tests.reports.test_native_v8_manuscript_typography",
+          "name": "test_new_evidence_prose_has_spaces_before_numeric_values[main.tex]"
+        }
+      ]
+    },
+    {
+      "source_commit": "11abd5bf79666940805a7c0622373f7e12a1d92e",
+      "scope": "Reporting source; one ambient SVG font-style test failure retained, no native-runtime failure.",
+      "passed": 1950,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 6,
+      "junit_seconds": 913.035,
+      "junit": "outputs/native-objective-redesign-v12-verification/reporting-source-full.xml",
+      "junit_sha256": "fe8b158f2ecf4a88e63a7f04273472a93cc6affb1ea0e45cbfe248122fc1ed21",
+      "failures": [
+        {
+          "classname": "tests.reports.test_native_objective_redesign_v12_figure",
+          "name": "test_zero_reply_actual_failure_contract_retains_nulls_and_renders_all_missing_matrix_without_warning"
+        }
+      ]
+    },
+    {
+      "source_commit": "e0a5c38ade3ce14356c24488304d56e99a236895",
+      "scope": "Clean corrected reporting source, same native runtime. Not a full suite at final publication tip.",
+      "passed": 1953,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 6,
+      "junit_seconds": 1002.935,
+      "junit": "outputs/native-objective-redesign-v12-verification/corrected-rendering-full.xml",
+      "junit_sha256": "527215f76b11b47601812392a1d263e4fdbf6165e70443d27f427df4088befa4",
+      "failures": []
+    }
+  ],
+  "inherited_failure_reproduction": {
+    "source_commit": "fc9f51fb1e747136d771c543510d90957fdd3fa6",
+    "scope": "Read-only published v11 source reproduces the same missing-space failure.",
+    "passed": 2,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "junit_seconds": 0.028,
+    "junit": "outputs/native-objective-redesign-v12-verification/inherited-v11-typography.xml",
+    "junit_sha256": "ac6f508b02afb0164e75dacf78037a8ae1432a06ea86a26c129933c655a8a3f0",
+    "failures": [
+      {
+        "classname": "tests.reports.test_native_v8_manuscript_typography",
+        "name": "test_new_evidence_prose_has_spaces_before_numeric_values[main.tex]"
+      }
+    ]
+  },
+  "final_focused_reporting": {
+    "source_commit": "eb0fdfdff597e290efe38a4bbfad201579404489",
+    "scope": "All tests/reports at the final paper-source commit; overlaps earlier suites, not a whole-repository full regression.",
+    "passed": 302,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "junit_seconds": 16.862,
+    "junit": "outputs/native-objective-redesign-v12-verification/final-reporting.xml",
+    "junit_sha256": "c7c7922f155fb537fb33b1b7c5264e52d2e39f96591c78a05c55b6a9cfedcbaf",
+    "failures": []
+  },
+  "ui": {
+    "artifact_original_commit": "7da620a",
+    "actual_mode": true,
+    "ui_tests_passed": 224,
+    "production_build_passed": true,
+    "unsafe_identity_integers_preserved_as_tagged_decimal_strings": true,
+    "exact_encoded_identity_field_count": 36,
+    "payload": {
+      "path": "game-ui-v2/public/data/native-objective-redesign-v12.ui.json",
+      "sha256": "13dfc0c5c11f69176fb62f03fa5fa71c4d5a02775ead7e40d620954866848a3b"
+    },
+    "export_receipt": {
+      "path": "game-ui-v2/public/data/native-objective-redesign-v12.ui-receipt.json",
+      "sha256": "4b7c719aae934ceada45bcca8788556cf88563fa203bd38775036b13552196e1"
+    },
+    "browser_qa": {
+      "path": "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-browser-qa.json",
+      "sha256": "20e4a3e8d5fb55401651d3a7ee7e1be94901e3efc522d10292e839e8b0149846"
+    },
+    "desktop_mobile_and_all_inspector_tabs_reviewed": true,
+    "source_and_capture_bytes_rechecked_by_root": true,
+    "browser_errors": 0,
+    "failed_http": 0,
+    "external_or_non_get_requests": 0,
+    "overflow": false,
+    "no_inference_or_job_dispatch": true
+  },
+  "paper": {
+    "source_commit": "eb0fdfdff597e290efe38a4bbfad201579404489",
+    "source_text_actual_figure_and_ui_captures_committed_before_build": true,
+    "ui_capture_bytes_unchanged_from_paper_build_source": true,
+    "main_tex": {
+      "path": "paper/main.tex",
+      "sha256": "ed540bfcf2d4df7e780636e82fd5c8003af3f981d9d89b856e9789a054f452fd"
+    },
+    "new_section_tex": {
+      "path": "paper/native_objective_redesign_v12.tex",
+      "sha256": "d1311d2bc54e3b0a275390cbf795dab3fd8e57153c56e0bb39da8019e60828eb"
+    },
+    "pdf": {
+      "path": "output/pdf/science-utopia-lab-working-paper.pdf",
+      "sha256": "8b87a39a8f6f3ae9bb383805aa1be107e053242001c9669f24daefab42f9e4ab"
+    },
+    "pages": 50,
+    "all_pages_rendered_and_visually_reviewed": true,
+    "render_dpi": 75,
+    "enlarged_pages_reviewed": [
+      1,
+      2,
+      32,
+      33,
+      34,
+      35,
+      36,
+      38,
+      39,
+      40,
+      47,
+      48,
+      49
+    ],
+    "enlarged_dpi": 150,
+    "render_inventory": "outputs/native-objective-redesign-v12-verification/paper-final-render/render-inventory.json",
+    "render_inventory_sha256": "16a74b5a1ad45c2a2b6530453295669ca39e6b18e58dacaf68aaeec0c1a28b03",
+    "tex_log": "outputs/native-objective-redesign-v12-verification/paper-final.log",
+    "tex_log_sha256": "c6a8d9850b5bf271031de133e52607e1eebd3cb875b3837e201213b66c48c071",
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "cosmetic_underfull_warnings_retained": true,
+    "figure_manifest": {
+      "path": "paper/figures/native-objective-redesign-v12-a1.manifest.json",
+      "sha256": "64a48c402a32cecab146123c4f1f15345ad6c7ae68772cabf769de42ade8032e"
+    }
+  },
+  "no_owned_native_model_or_preview_process_left_running": true,
+  "user_owned_ollama_service_not_stopped": true,
+  "population_seed_or_horizon_scale_up": false,
+  "new_inference_during_analysis_plotting_ui_or_publication": 0
+}

@@ -15,7 +15,9 @@ worse observed loss, so G2 returns to G0. Independent audit preserves all
 held-out results. Source/graph freedom is implemented; useful invention is not
 established. Audit/figures, separate estimator forward evaluation and English
 flow/lineage UI are parallel work units, not perpetual background workers.
-There is no population/seed/horizon scale-up. See STATUS for publication QA.
+There is no population/seed/horizon scale-up. Actual English UI, print-readable
+comparison figure and all-page-reviewed 50-page PDF are also complete; see
+[verification](results/native-objective-redesign-v12-verification.json).
 
 The preceding completed execution slice is
 [v11](milestones/2026-11-02-open-native-estimators-v11.md): free code/protocol/wiring
@@ -79,7 +81,7 @@ evidence is summarized in the first paragraph and the milestone acceptance ledge
 | Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | Six-year compatibility/restart; v8 topology changes; v12 native annual sprints versus evidence office, new milestone node/two wires and actual amendment receipts | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source; full upstream-plan-hash binding unavailable in v12 |
 | Use suitable gradient estimators or optional differentiable representations | Recurrent attention/routing; mixed-design likelihood-ratio and corrected prior-control estimators; learned response boundary/native projection | V11 native estimator integration; v12 two forward tests after final saved update; scripted response fit passes but actual-Qwen unused-path fidelity fails | No demonstrated estimator advantage or variance reduction; exact world/LLM Jacobian is optional and unverified, not a project gate |
 | Continually redesign and update the designer | Objective-visible same-society adoption; source/vocabulary generation from outcomes; durable strategy updates | v6 same society/two adoptions/130 replies; v8 loss-informed redesigned source improves count but not utility | Reset-world and same-society evidence differ; a better sampled institution does not prove the designer itself improved |
-| Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and exact source/graph chronicle | Actual v6 consent; v8 byte-exact eight-world audit export,184 UI tests/build and actual desktop/mobile QA, no errors/overflow/jobdispatch | Not a complete management game; presentation choreography is not scientific activity |
+| Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and actual source/graph chronicle | V6 consent; v12 six-world audit-bound paths/circuit/source/protocol/effect view, lossless integer provenance,224 UI tests/build and actual desktop/mobile QA | Not a complete management game; presentation choreography is not scientific activity |
 
 The two optimization workflows must not be merged in descriptions: a reset-world
 campaign estimates design quality under an explicit loss; the persistent society

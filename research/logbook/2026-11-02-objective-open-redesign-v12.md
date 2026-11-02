@@ -173,3 +173,66 @@ not a full suite at the final publication tip. All native runtime and prospectiv
 protocol bytes still equal `ecab4b4`. Later print-only layout uses a 5.5-inch
 canvas with minimum 7-point text and its own figure checks; it does not alter
 measurements or retroactively change either earlier failed suite.
+
+## Closed native budget, independent repeats and actual presentation
+
+The final main writer exits 0 at 14:57 JST: 6/6 worlds, 565 fresh replies,
+zero reuse and no world-level technical failures. Utility G2 repeats G0 at
+`-0.16666666666666785`; throughput repeats `-10`. The separate followup is
+already closed at 2 worlds/180 replies. Total budget stays 8 worlds/745 replies.
+No additional native/model execution is started.
+
+Independent main audit runs twice byte-identically; root repeats a third time
+and compares bytes successfully. All 107 main raw files remain unchanged.
+The content hash is `c03df804fe46f12f1efec7210f1dba1c624242a8645f9533b698748cc4dfcd5f`;
+inventory hash `d129899ec9aece37a55efe193707b1c964a79e122835f0138817dd0da307c45c`.
+Both objectives retain G0 and all exact ties. Native receipts verify 32 source
+executions, 30 throughput amendments across three worlds and two clinic
+amendments in utility G1. The stronger full-plan-hash join is unavailable:
+recorded code ABI omits upstream source-port/event-lineage context. This is
+disclosed, not inferred from a matching later author state. Main measured
+model-call sum 2166.5264s/36.11min and followup 658.6251s/10.98min are NOT wall time.
+
+Root corrects one interpretation-only typo in the first independent MD: G1
+changes evidence-office source, NOT selection source. Admission source SHA
+`0018f2529515f3f616f50e3f81dddf43cb672a4577c2bc6174c55e306a4e169c`
+is byte-identical in all utility generations. Audit JSON and hashes never change.
+Separate manuscript review checks exact loss algebra, greedy rather than global
+threshold optimality, all-role reply accounting and revision-level rather than
+mechanism-causal loss statements. The unfavorable clinic revision stays visible.
+
+Actual 5.5-inch four-panel figure is generated and inspected. English actual
+UI export/browser checks complete with 223 tests, typecheck/build, five desktop/
+mobile captures, no console/HTTP/external/non-GET failures or inference. Browser
+receipt metadata initially sampled before switching to G2; reporting-only fix
+records the actually selected 16-node utility candidate. Image bytes are unchanged.
+Paper source `eb0fdfd` builds 50 pages; all pages are rendered at 75dpi and
+visually reviewed, with 13 changed/key pages inspected at 150dpi. No overfull
+boxes or undefined references; underfull cosmetic warnings remain. All 302
+report tests pass at that source, separately from the full-suite pin.
+
+## Final exact export guard catches unsafe integer rounding
+
+Root's final artifact verifier compares exported rows with the independent
+audit, beyond matching the declared input file hash. It detects 12 observation
+differences: draw RNG seeds and signed Python hash probes exceed JavaScript's
+safe integer range. Losses, graphs, executable source and every displayed
+scientific metric match. These are reporting precision errors, not altered
+experiments, and no verification receipt is emitted after the failed assertion.
+The UI specialist also checks repeated arm-record fields and implements a
+lossless, explicitly tagged decimal-string representation for unsafe INTEGER
+JSON tokens only. Source-code strings and float/exponent tokens must remain
+untouched. The final export and QA will be rebound; PDF capture bytes must be
+checked unchanged before retaining the already reviewed paper build.
+
+The correction completes as source `08c2cc5` with refreshed artifact `7da620a`:
+224 UI tests, TypeScript/build and actual desktop/mobile QA pass. Node's lexical
+JSON reviver preserves unsafe integer tokens only; the 36 encoded identity
+paths are explicitly listed in payload and receipt. Independent Python parsing
+and root verification require FULL arm equality, including records/history,
+after only declared integer-string conversion and removal of derived running
+best. Both pass. Exact audit/source/graph/loss values remain unchanged. All five
+screenshot hashes equal the committed paper-build source, so the reviewed
+50-page PDF is retained byte-for-byte rather than needlessly regenerated.
+Root's combined artifact verifier now passes and emits the source/hash-bound
+receipt. No failed assertion is converted into a successful receipt.
