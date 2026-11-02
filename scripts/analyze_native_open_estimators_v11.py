@@ -9,10 +9,11 @@ from __future__ import annotations
 
 import argparse
 from copy import deepcopy
+import hashlib
 import json
-import math
 from pathlib import Path
 import sqlite3
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +34,26 @@ from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 SCHEMA = 'scienceutopia.native-open-estimators-independent-audit.v11'
+
+
+def replay_source_proofs(expected_source, classification):
+    """The new audit may be newer, but replayed optimizer math must match pin."""
+    names = ('utopia/optimization/native_adaptive_search.py',
+        'utopia/optimization/native_expectation_estimators.py')
+    if classification == FIXTURE:
+        return {'status': 'scripted-fixture-no-actual-source-claim', 'files': {}}
+    proofs = {}
+    for name in names:
+        try:
+            original = subprocess.check_output(['git', 'show', f'{expected_source}:{name}'], cwd=ROOT)
+        except subprocess.CalledProcessError as error:
+            raise ValueError('actual replay source pin unavailable') from error
+        actual_sha = hashlib.sha256(original).hexdigest()
+        local_sha = file_sha256(ROOT / name)
+        if actual_sha != local_sha:
+            raise ValueError('replay-critical optimizer source differs from actual experiment pin')
+        proofs[name] = {'actual_source_sha256': actual_sha, 'analysis_source_sha256': local_sha}
+    return {'status': 'verified-exact-replay-source-blobs', 'files': proofs}
 
 
 def _without_provenance(value):
@@ -147,6 +168,7 @@ def analyze(run, *, expected_source, require_complete=True):
 def _analyze(root, *, expected_source, require_complete, inventory):
     raw, plan = read(root / 'evidence.json'), read(root / 'plan.json')
     loss, classification = _validate_plan(raw, plan, expected_source)
+    source_proof = replay_source_proofs(expected_source, classification)
     if set(raw['arms']) != set(ARM_IDS):
         raise ValueError('unexpected or missing method arm')
     arms, physical_ids, declared, proofs, rows = {}, set(), {}, [], []
@@ -256,6 +278,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             'raw_inventory_sha256': digest(inventory), 'raw_input_sha256s': inventory,
             'raw_files_verified_unchanged': len(inventory), 'new_model_calls': 0,
             'new_container_executions': 0, 'campaign_updates_and_prior_refits_replayed': True,
+            'replay_source_proofs': source_proof,
             'checkpoint_loss_reextracted': True, 'all_observations_and_exact_ties_retained': True,
             'analysis_source_sha256s': {name: file_sha256(ROOT / name) for name in (
                 'scripts/analyze_native_open_estimators_v11.py', 'scripts/analyze_native_open_v7.py',

@@ -7,7 +7,7 @@ import pytest
 
 from scripts.analyze_native_open_estimators_v11 import (
     ROOT, _inventory, _without_provenance, analyze, incumbent_path,
-    matched_initial_definitions,
+    matched_initial_definitions, replay_source_proofs,
 )
 from scripts.run_native_open_estimators_v11 import (
     ARM_IDS, ESTIMATOR_CONFIG, EXPERIMENT, SCHEMA, summarize,
@@ -159,3 +159,13 @@ def test_concurrent_raw_changes_fail_closed(tmp_path, monkeypatch):
     monkeypatch.setattr('scripts.analyze_native_open_estimators_v11._inventory', inventory)
     with pytest.raises(ValueError, match='raw evidence changed'):
         analyze(tmp_path, expected_source='fixture-source', require_complete=False)
+
+
+def test_replay_critical_source_matches_actual_pin_without_pinning_new_auditor(monkeypatch):
+    monkeypatch.setattr('scripts.analyze_native_open_estimators_v11.subprocess.check_output',
+        lambda argv, **kwargs: (ROOT / argv[-1].split(':', 1)[1]).read_bytes())
+    result = replay_source_proofs('actual-source', 'actual-native-qwen-open-estimators-development-v11')
+    assert result['status'] == 'verified-exact-replay-source-blobs'
+    monkeypatch.setattr('scripts.analyze_native_open_estimators_v11.subprocess.check_output', lambda *a, **kw: b'changed')
+    with pytest.raises(ValueError, match='replay-critical'):
+        replay_source_proofs('actual-source', 'actual-native-qwen-open-estimators-development-v11')

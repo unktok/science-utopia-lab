@@ -30,7 +30,9 @@ Technical stops retain null failed losses and do not become numeric penalties.
   sampled raw latents/assignments, compatibility signature, prior-only frozen
   fit, both categorical and Gaussian expectation corrections, all comparator
   gradients, and subsequent recorded weights. Replay uses numeric tensor math,
-  not generated institution or researcher execution.
+  not generated institution or researcher execution. Both replay-critical
+  optimizer modules must match their actual experiment source-pin blobs exactly;
+  the new audit script itself is allowed to be newer than the actual source.
 - Independent extraction of measurements and native loss from original portable
   checkpoints, annual event prefixes and initialized state. Physical validation
   reuses `audit_native_run` with explicit v11 experiment/loss arguments; old v7
