@@ -75,3 +75,19 @@ parent. Reporting-only fix`ab5dd44` preserves null identities and uses the exact
 saved parent. These changes do not amend the frozen runner or any native result.
 The post-pin independent main/followup audit guards54pass6.64s; counts overlap
 the earlier development checks and are not additional worlds.
+
+## First execution slice and exact-source whole regression
+
+The separate final-control followup completes2/2 original-native worlds with180
+fresh Qwen replies; writer exits0 before main inference starts. Independent
+analysis is pending at this entry. Main G0 now runs from its immutable source.
+
+Exact actual-source full regression at`ecab4b4` completes1913passes/6skips and
+1failure in1032.23s. The sole failure is
+`test_native_v8_manuscript_typography::test_new_evidence_prose_has_spaces_before_numeric_values[main.tex]`:
+inherited v11 prose has `and129` without a space. The same failure reproduces
+at unchanged published main`fc9f51f` (2other typography cases pass). Preserve
+both JUnit receipts; do not repair the frozen experiment. Reporting source
+fixes spaces in the v11 reproducibility paragraph, without changing native
+runtime, objective, raw evidence or the actual protocol. Later corrected
+reporting-source verification must be reported as its own scope.
