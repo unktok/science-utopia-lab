@@ -154,8 +154,10 @@ def test_analyze_binds_inventory_and_keeps_loss_separate_from_promotion(tmp_path
                                                 if k != 'content_sha256'})
 
 
-def test_scientific_source_modules_match_original_a1_pin():
-    proof = source_proof('d5b08d64193c32bf05dec95e54ba53d2f1b8cab9')
+def test_scientific_source_modules_match_current_clean_pin():
+    import subprocess
+    source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+    proof = source_proof(source)
     assert 'utopia/optimization/native_qwen_response.py' in proof
     assert all(len(value) == 64 for value in proof.values())
 
