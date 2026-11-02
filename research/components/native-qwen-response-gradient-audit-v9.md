@@ -64,3 +64,25 @@ Unused coordinates are development fidelity checks, not held-out seeds. The
 fitted numeric response map is not an exact Qwen/text/native-world Jacobian, and
 observed review or loss changes do not establish scientific value or causal
 institutional benefit.
+
+## A3 common-prefix audit
+
+An a3 audit requires
+`--expected-amendment native-qwen-response-gradient-v9-a3`. The analyzer
+reconstructs the prepared manifest from the separately preserved a1 anchor and
+verifies its checkpoint, initialized world, event stream, SQL, wire, code
+contexts, model/corpus/seed, and full raw hashes without copying or rewriting
+them. Every target prefix row must match the anchor payload/year/seed/response
+and exact origin locator, while using a distinct normal target-cache identity.
+The first non-replayed row must be the declared Year2 `PaperReview` boundary;
+no later replay is allowed. Each durable execution receipt and the current
+control comparator must independently agree with the anchor.
+
+A3 response counts have three non-interchangeable meanings. `response_count`
+is the full logical target-cache count, `replayed_response_count` is the shared
+historical prefix, and `fresh_physical_reply_count` is only newly generated
+Qwen replies. Report-level `physical_reply_count` equals fresh replies, never
+logical replies. The unique anchor-origin calls are counted once in
+`response_coupling`; they are not six independent worlds or six new calls.
+Prior a1/a2 cost remains 228 actual replies and is reported separately from the
+new a3 fresh-call total.

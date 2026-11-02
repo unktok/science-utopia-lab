@@ -22,6 +22,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from utopia.agents.base_agent import PaperReview
 from utopia.optimization.loss import load_loss_spec
 from utopia.optimization.native_hybrid import native_endpoint, project_continuous
 from utopia.optimization.native_qwen_response import control_proof, gradient_proposal, require_same_control
@@ -36,6 +37,7 @@ from utopia.optimization.native_response_fidelity import (
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.native_response_examples import DECLARATIONS, TERMS, response_gradient_system
+from utopia.runtime.checkpointing import canonical_json
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 RAW_SCHEMA = 'scienceutopia.native-qwen-response-loop.v9'
@@ -49,8 +51,12 @@ FIXED_NAMES = ('calibration-0', 'calibration-1', 'calibration-2',
                'unused-0', 'unused-1', 'gradient-candidate')
 OBJECTIVE_PATH = ROOT / 'research/objectives/losses/native-joint-v5-net-reviewed-utility.json'
 PROTOCOL_PATH = ROOT / 'research/protocols/campaigns/native-qwen-response-gradient-v9.md'
-AMENDMENT_ID = 'native-qwen-response-gradient-v9-a2'
-AMENDMENT_PATH = ROOT / 'research/protocols/campaigns/native-qwen-response-gradient-v9-a2.md'
+AMENDMENT_A2 = 'native-qwen-response-gradient-v9-a2'
+AMENDMENT_A3 = 'native-qwen-response-gradient-v9-a3'
+AMENDMENT_PATHS = {
+    AMENDMENT_A2: ROOT / 'research/protocols/campaigns/native-qwen-response-gradient-v9-a2.md',
+    AMENDMENT_A3: ROOT / 'research/protocols/campaigns/native-qwen-response-gradient-v9-a3.md',
+}
 SOURCE_PATHS = (
     'utopia/optimization/native_qwen_response.py',
     'utopia/optimization/native_response_fidelity.py',
@@ -95,15 +101,22 @@ def inventory(root):
     return result
 
 
-def source_proof(expected_source, *, include_amendment=False):
+def source_proof(expected_source, *, amendment_id=None):
     """Bind active scientific/comparator bytes to the experiment commit.
 
     The auditor itself is intentionally allowed to be a later addition. The
     modules that interpret raw evidence are not: current analysis code cannot
     silently reinterpret an old run under new scientific/comparator semantics.
     """
-    paths = SOURCE_PATHS + ((str(AMENDMENT_PATH.relative_to(ROOT)),)
-                            if include_amendment else ())
+    extras = ()
+    if amendment_id is not None:
+        path = AMENDMENT_PATHS.get(amendment_id)
+        if path is None:
+            raise ValueError('unknown response-gradient amendment source')
+        extras = (str(path.relative_to(ROOT)),)
+        if amendment_id == AMENDMENT_A3:
+            extras += ('utopia/optimization/native_response_prefix.py',)
+    paths = SOURCE_PATHS + extras
     result = {}
     for relative in paths:
         try:
@@ -127,14 +140,23 @@ def _validate_amendment(plan, expected_amendment):
         if amendment is not None:
             raise ValueError('amended run requires an explicit expected amendment')
         return None
-    if expected_amendment != AMENDMENT_ID or not AMENDMENT_PATH.is_file():
+    path = AMENDMENT_PATHS.get(expected_amendment)
+    if path is None or not path.is_file():
         raise ValueError('unknown or unavailable response-gradient amendment')
-    expected = {'id': AMENDMENT_ID, 'sha256': file_sha256(AMENDMENT_PATH),
-        'prior_maximum_worlds': 3, 'maximum_combined_physical_worlds': 9,
-        'changes': ('exclude only server envelope metadata from cross-world '
-                    'semantic response equality')}
+    if expected_amendment == AMENDMENT_A2:
+        expected = {'id': AMENDMENT_A2, 'sha256': file_sha256(path),
+            'prior_maximum_worlds': 3, 'maximum_combined_physical_worlds': 9,
+            'changes': ('exclude only server envelope metadata from cross-world '
+                        'semantic response equality')}
+    else:
+        expected = {'id': AMENDMENT_A3, 'sha256': file_sha256(path),
+            'prior_world_attempts': 4, 'prior_completed_worlds': 2,
+            'prior_partial_worlds': 2, 'prior_physical_replies': 228,
+            'maximum_combined_world_attempts': 10,
+            'changes': ('replay an exact actual Qwen pre-intervention history; '
+                        'generate affected and later replies freshly')}
     if amendment != expected:
-        raise ValueError('prospective a2 amendment ID/hash/combined budget differs')
+        raise ValueError('prospective amendment ID/hash/prior/combined budget differs')
     return deepcopy(expected)
 
 
@@ -164,6 +186,39 @@ def _fixed_plan(plan, expected_source):
     if plan.get('system') != expected_system:
         raise ValueError('frozen v9 institutional system differs from pinned source')
     return objective, SystemSpec.from_dict(expected_system), world
+
+
+def _response_coupling(plan, amendment, raw_root):
+    value = plan.get('response_coupling')
+    if amendment is None or amendment['id'] != AMENDMENT_A3:
+        if value is not None:
+            raise ValueError('response coupling requires the explicit a3 amendment')
+        return None
+    if (not isinstance(value, dict) or set(value) != {'mode', 'unique_anchor_prefix_calls', 'prepared'}
+            or value.get('mode') != 'actual-common-prefix-replay'
+            or type(value.get('unique_anchor_prefix_calls')) is not int
+            or value['unique_anchor_prefix_calls'] <= 0):
+        raise ValueError('a3 plan lacks exact common-prefix coupling')
+    prepared = value['prepared']
+    from utopia.optimization.native_response_prefix import SCHEMA as prefix_schema, prepare_common_prefix
+    if (not isinstance(prepared, dict) or prepared.get('schema') != prefix_schema
+            or prepared.get('content_sha256') != digest({k: v for k, v in prepared.items()
+                                                         if k != 'content_sha256'})
+            or prepared.get('classification') !=
+                'historical-oracle-prefix-coupling-not-independent-native-samples'
+            or prepared.get('anchor_classification') != ACTUAL
+            or prepared.get('prefix_count') != value['unique_anchor_prefix_calls']
+            or len(prepared.get('calls', [])) != value['unique_anchor_prefix_calls']
+            or prepared.get('module_sha256') != file_sha256(
+                ROOT/'utopia/optimization/native_response_prefix.py')):
+        raise ValueError('a3 prepared common-prefix manifest differs')
+    anchor = Path(prepared['anchor_world_dir']).resolve()
+    if anchor.is_relative_to(Path(raw_root).resolve()):
+        raise ValueError('a3 historical anchor must be a separately preserved actual world')
+    if prepare_common_prefix(anchor, prepared['anchor_endpoint']) != prepared:
+        raise ValueError('a3 prepared prefix does not reconstruct from unchanged anchor raw')
+    return {'mode': value['mode'], 'unique_anchor_prefix_calls': prepared['prefix_count'],
+        'prepared': prepared}
 
 
 def _endpoint_sequence(raw, *, require_complete):
@@ -219,7 +274,99 @@ def _safe_endpoint_paths(root, name, row):
     return cell, checkpoint, contexts, journal, wire, receipt, manifest
 
 
-def _audit_endpoint(root, row, *, base_system, declarations, objective, world):
+def _wire_rows(path):
+    return [json.loads(line) for line in Path(path).read_text().splitlines()]
+
+
+def _audit_common_prefix(cell, row, endpoint, proof, coupling):
+    """Reconstruct one target's normal cache and exact anchor-origin prefix."""
+    prepared = coupling['prepared']
+    receipt_path = cell/'common-prefix-receipt.json'
+    if not receipt_path.is_file():
+        raise ValueError(f"{row['name']}: completed a3 endpoint lacks prefix receipt")
+    receipt = read(receipt_path)
+    if row.get('common_prefix_receipt') != receipt:
+        raise ValueError(f"{row['name']}: row and durable prefix receipt differ")
+    prefix = prepared['prefix_count']
+    journal, wire = cell/'replies/responses.sqlite', cell/'wire-requests.jsonl'
+    with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
+        metadata = db.execute('SELECT binding FROM metadata').fetchall()
+        sql = db.execute(
+            'SELECT rowid,identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+    wires = _wire_rows(wire)
+    if len(metadata) != 1 or len(sql) != len(wires) or len(sql) != endpoint['response_cache_count']:
+        raise ValueError(f"{row['name']}: logical target cache/wire count differs")
+    binding = json.loads(metadata[0][0])
+    if receipt != {**{k: receipt[k] for k in receipt if k != 'content_sha256'},
+                    'content_sha256': digest({k: receipt[k] for k in receipt if k != 'content_sha256'})}:
+        raise ValueError(f"{row['name']}: prefix receipt content differs")
+    expected_receipt = {
+        'schema': prepared['schema']+'.execution',
+        'manifest_sha256': prepared['content_sha256'],
+        'anchor_checkpoint_sha256': prepared['anchor_endpoint']['checkpoint_sha256'],
+        'used_prefix_count': prefix, 'expected_prefix_count': prefix,
+        'replayed_response_count': prefix,
+        'fresh_physical_calls': len(sql)-prefix,
+        'fresh_physical_reply_count': len(sql)-prefix,
+        'fresh_review_boundary_reached': True,
+        'logical_response_count': len(sql), 'prefix_complete': True,
+        'independent_prefix_replication': False,
+        'target_binding_sha256': digest(binding),
+    }
+    for key, value in expected_receipt.items():
+        if receipt.get(key) != value:
+            raise ValueError(f"{row['name']}: prefix receipt field differs: {key}")
+    if (type(receipt.get('initially_committed_prefix_count')) is not int
+            or type(receipt.get('replayed_in_this_session')) is not int
+            or receipt['initially_committed_prefix_count'] + receipt['replayed_in_this_session'] != prefix
+            or type(receipt.get('fresh_physical_calls_this_session')) is not int
+            or not 0 <= receipt['fresh_physical_calls_this_session'] <= len(sql)-prefix):
+        raise ValueError(f"{row['name']}: prefix resume/session counters differ")
+    if (row.get('logical_response_count') != len(sql)
+            or row.get('replayed_response_count') != prefix
+            or row.get('fresh_physical_replies') != len(sql)-prefix):
+        raise ValueError(f"{row['name']}: runner logical/replayed/fresh counters differ")
+    for index, (saved, request, call) in enumerate(zip(sql[:prefix], wires[:prefix], prepared['calls'])):
+        origin = {'schema': prepared['schema']+'.replayed-from',
+            'manifest_sha256': prepared['content_sha256'],
+            'anchor_checkpoint_sha256': prepared['anchor_endpoint']['checkpoint_sha256'],
+            'anchor_journal_sha256': prepared['anchor_files']['journal']['sha256'], **call}
+        _, identity, payload_sha, outcome, data, data_sha = saved
+        if (request.get('replayed_from') != origin or request.get('year') != call['year']
+                or request.get('payload_sha256') != call['payload_sha256']
+                or payload_sha != call['payload_sha256'] or data_sha != call['response_sha256']
+                or outcome != 'response' or hashlib.sha256(data.encode()).hexdigest() != data_sha
+                or identity == call['anchor_cache_identity']
+                or hashlib.sha256(canonical_json(request['payload']).encode()).hexdigest() != payload_sha):
+            raise ValueError(f"{row['name']}: logical replay row {index} differs from exact anchor origin")
+    if any('replayed_from' in request for request in wires[prefix:]):
+        raise ValueError(f"{row['name']}: undeclared replay exists after the prefix")
+    first = wires[prefix]
+    payload = first['payload']
+    schema = (payload.get('extra_body', {}).get('structured_outputs', {}).get('json')
+        or payload.get('response_format', {}).get('json_schema', {}).get('schema'))
+    seed = payload.get('seed', payload.get('extra_body', {}).get('seed'))
+    boundary = prepared['boundary']
+    if (first.get('year') != boundary['year'] or seed != boundary['seed']
+            or digest(schema) != boundary['task_schema_sha256']
+            or schema != PaperReview.model_json_schema()):
+        raise ValueError(f"{row['name']}: first fresh call is not the declared Year2 review boundary")
+    anchor_proof = control_proof(prepared['anchor_endpoint'], Path(prepared['anchor_world_dir']))
+    anchor_control = require_same_control([anchor_proof, proof])
+    return {'mode': coupling['mode'], 'manifest_sha256': prepared['content_sha256'],
+        'receipt_content_sha256': receipt['content_sha256'],
+        'anchor_checkpoint_sha256': prepared['anchor_endpoint']['checkpoint_sha256'],
+        'anchor_journal_sha256': prepared['anchor_files']['journal']['sha256'],
+        'unique_anchor_prefix_calls': prefix, 'response_count': len(sql),
+        'replayed_response_count': prefix, 'fresh_physical_reply_count': len(sql)-prefix,
+        'target_binding_sha256': digest(binding),
+        'anchor_control_check': anchor_control,
+        'first_fresh_review_boundary_verified': True,
+        'no_replay_after_prefix_verified': True,
+        'target_cache_identities_distinct_from_anchor': True}
+
+
+def _audit_endpoint(root, row, *, base_system, declarations, objective, world, coupling=None):
     name, theta = row['name'], row['theta']
     candidate, projection = project_continuous(base_system, declarations, {'evidence-weight': theta})
     if row.get('projection') != projection:
@@ -247,9 +394,19 @@ def _audit_endpoint(root, row, *, base_system, declarations, objective, world):
     _, response = raw_review_projection(endpoint, layout, numeric,
         journal=journal, wire=wire, mechanism='addressed-selection', input_name='features',
         completion_receipt=receipt)
-    if (endpoint['response_cache_count'] != row.get('fresh_physical_replies')
-            or response['checkpoint_response_count'] != row.get('fresh_physical_replies')):
-        raise ValueError(f'{name}: full physical reply count differs')
+    if response['checkpoint_response_count'] != endpoint['response_cache_count']:
+        raise ValueError(f'{name}: full logical reply count differs')
+    prefix_proof = (_audit_common_prefix(cell, row, endpoint, proof, coupling)
+                    if coupling is not None else None)
+    if coupling is None:
+        if (endpoint['response_cache_count'] != row.get('fresh_physical_replies')
+                or any(key in row for key in ('logical_response_count', 'replayed_response_count',
+                                               'common_prefix_receipt'))):
+            raise ValueError(f'{name}: independent-world physical reply count differs')
+        fresh, replayed = endpoint['response_cache_count'], 0
+    else:
+        fresh = prefix_proof['fresh_physical_reply_count']
+        replayed = prefix_proof['replayed_response_count']
     metrics = endpoint['measurement']['metrics']
     objective_metrics = {}
     for key in ('native.accepted_decisions', 'native.accepted_peer_score_sum',
@@ -267,6 +424,8 @@ def _audit_endpoint(root, row, *, base_system, declarations, objective, world):
         'physical_initial_identity': endpoint['physical_initial_identity'],
         'noncoordinate_system_sha256': endpoint['noncoordinate_system_sha256'],
         'response_count': endpoint['response_cache_count'],
+        'fresh_physical_reply_count': fresh, 'replayed_response_count': replayed,
+        'common_prefix_proof': prefix_proof,
         'objective_measurements': objective_metrics,
         'review_reply_count': sum(item['actual_replies'] for item in response['cohorts']),
         'review_cohorts': response['cohorts'],
@@ -278,7 +437,7 @@ def _audit_endpoint(root, row, *, base_system, declarations, objective, world):
         'control_proof': proof, 'endpoint': endpoint}
 
 
-def _physical_response_ledger(root, completed_names, world):
+def _physical_response_ledger(root, completed_names, world, coupling=None):
     """Count every durable actual response, including null-loss partial worlds."""
     worlds = root / 'worlds'
     directories = sorted(path for path in worlds.iterdir() if path.is_dir()) if worlds.exists() else []
@@ -289,14 +448,21 @@ def _physical_response_ledger(root, completed_names, world):
         journal = cell / 'replies/responses.sqlite'
         if not journal.exists():
             ledger.append({'name': cell.name, 'status': 'partial-before-response-journal',
-                'loss': None, 'response_count': 0, 'outcomes': {}, 'journal_sha256': None})
+                'loss': None, 'response_count': 0, 'logical_response_count': 0,
+                'fresh_physical_reply_count': 0, 'replayed_response_count': 0,
+                'outcomes': {}, 'journal_sha256': None})
             continue
+        wire_path = cell/'wire-requests.jsonl'
+        if not wire_path.is_file():
+            raise ValueError(f'{cell.name}: response journal lacks exact wire provenance')
         before = file_sha256(journal)
         with sqlite3.connect(journal.resolve().as_uri()+'?mode=ro', uri=True) as db:
             metadata = db.execute('SELECT binding FROM metadata').fetchall()
             outcomes = dict(db.execute(
                 'SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
-            rows = db.execute('SELECT payload_sha,outcome,data_sha FROM replies ORDER BY rowid').fetchall()
+            rows = db.execute(
+                'SELECT rowid,identity,payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
+        wires = _wire_rows(wire_path)
         if len(metadata) != 1 or file_sha256(journal) != before:
             raise ValueError(f'{cell.name}: physical response journal changed or lacks one binding')
         binding = json.loads(metadata[0][0])
@@ -305,20 +471,46 @@ def _physical_response_ledger(root, completed_names, world):
                 or binding.get('corpus_sha256') != world['corpus_sha256']
                 or binding.get('science_config', {}).get('source_commit') != world['source_commit']
                 or len(rows) != sum(outcomes.values())
-                or any(not _sha256(row[0]) or not _sha256(row[2]) for row in rows)
-                or any(row[1] not in {'response', 'error'} for row in rows)):
+                or len(rows) != len(wires)
+                or any(not _sha256(row[1]) or not _sha256(row[2]) or not _sha256(row[5])
+                       or hashlib.sha256(row[4].encode()).hexdigest() != row[5] for row in rows)
+                or any(row[3] not in {'response', 'error'} for row in rows)
+                or [row[2] for row in rows] != [wire.get('payload_sha256') for wire in wires]):
             raise ValueError(f'{cell.name}: partial/full physical response binding or rows differ')
+        replayed = sum('replayed_from' in wire for wire in wires)
+        if ((coupling is None and replayed)
+                or (coupling is not None and any('replayed_from' not in wire for wire in wires[:replayed]))
+                or any('replayed_from' in wire for wire in wires[replayed:])):
+            raise ValueError(f'{cell.name}: logical replay rows are not one exact initial prefix')
+        logical = outcomes.get('response', 0)
+        fresh = logical-replayed
+        if fresh < 0:
+            raise ValueError(f'{cell.name}: replayed count exceeds logical replies')
         completed = cell.name in completed_names
         ledger.append({'name': cell.name,
             'status': 'completed-endpoint' if completed else 'partial-null-loss-world',
             'loss': 'reported-in-endpoint-ledger' if completed else None,
-            'response_count': outcomes.get('response', 0), 'outcomes': outcomes,
+            'response_count': logical, 'logical_response_count': logical,
+            'fresh_physical_reply_count': fresh, 'replayed_response_count': replayed,
+            'outcomes': outcomes,
             'journal_sha256': before, 'binding_sha256': digest(binding),
             'row_identity_sha256': digest(rows)})
-    completed = sum(row['response_count'] for row in ledger if row['status'] == 'completed-endpoint')
-    partial = sum(row['response_count'] for row in ledger if row['status'] != 'completed-endpoint')
-    return {'worlds': ledger, 'completed_endpoint_replies': completed,
-        'partial_null_loss_replies': partial, 'all_fresh_physical_replies': completed+partial}
+    completed_logical = sum(row['logical_response_count'] for row in ledger
+                            if row['status'] == 'completed-endpoint')
+    partial_logical = sum(row['logical_response_count'] for row in ledger
+                          if row['status'] != 'completed-endpoint')
+    completed_fresh = sum(row['fresh_physical_reply_count'] for row in ledger
+                          if row['status'] == 'completed-endpoint')
+    partial_fresh = sum(row['fresh_physical_reply_count'] for row in ledger
+                        if row['status'] != 'completed-endpoint')
+    replayed = sum(row['replayed_response_count'] for row in ledger)
+    return {'worlds': ledger, 'completed_endpoint_replies': completed_logical,
+        'partial_null_loss_replies': partial_logical,
+        'completed_endpoint_fresh_physical_replies': completed_fresh,
+        'partial_null_loss_fresh_physical_replies': partial_fresh,
+        'all_logical_replies': completed_logical+partial_logical,
+        'all_replayed_replies': replayed,
+        'all_fresh_physical_replies': completed_fresh+partial_fresh}
 
 
 def _operator_reconstruction(root, rows, proofs, raw, objective):
@@ -370,7 +562,7 @@ def _complete_reconstruction(root, rows, proofs, raw, objective):
     delta = proofs[5]['native_loss'] - proofs[1]['native_loss']
     expected = {'calibration_control_check': calibration_controls,
         'all_control_check': controls, 'physical_native_worlds': 6,
-        'physical_reply_count': sum(p['response_count'] for p in proofs),
+        'physical_reply_count': sum(p['fresh_physical_reply_count'] for p in proofs),
         'unused_checks': checks, 'unused_finite_path': finite,
         'unused_decomposition': decomposition, 'candidate_check': candidate_check,
         'native_candidate_minus_center': delta,
@@ -447,12 +639,15 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
                 or claims.get('causal_scientific_benefit') is not False):
             raise ValueError('raw evidence omits or overstates the preregistered claim boundary')
         amendment = _validate_amendment(plan, expected_amendment)
-        sources = source_proof(expected_source, include_amendment=amendment is not None)
+        sources = source_proof(expected_source,
+            amendment_id=amendment['id'] if amendment is not None else None)
+        coupling = _response_coupling(plan, amendment, root)
         objective, base_system, world = _fixed_plan(plan, expected_source)
         rows, failures, complete = _endpoint_sequence(raw, require_complete=require_complete)
         proofs = [_audit_endpoint(root, row, base_system=base_system, declarations=DECLARATIONS,
-                                  objective=objective, world=world) for row in rows]
-        physical = _physical_response_ledger(root, {row['name'] for row in rows}, world)
+                                  objective=objective, world=world, coupling=coupling) for row in rows]
+        physical = _physical_response_ledger(root, {row['name'] for row in rows}, world,
+                                             coupling=coupling)
         prefix_control = _prefix_control_status(proofs, failures)
         analysis = None
         if complete:
@@ -468,9 +663,38 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
         completed_response_total = sum(p['response_count'] for p in proofs)
         if physical['completed_endpoint_replies'] != completed_response_total:
             raise ValueError('completed endpoint reply total differs from physical SQL ledgers')
+        completed_fresh_total = sum(p['fresh_physical_reply_count'] for p in proofs)
+        if physical['completed_endpoint_fresh_physical_replies'] != completed_fresh_total:
+            raise ValueError('completed endpoint fresh reply total differs from physical wire provenance')
         if complete and (physical['partial_null_loss_replies'] != 0
                 or physical['all_fresh_physical_replies'] != raw.get('physical_reply_count')):
             raise ValueError('physical reply total differs from all restored checkpoints')
+        response_coupling = None
+        if coupling is not None:
+            prepared = coupling['prepared']
+            response_coupling = {'mode': coupling['mode'],
+                'classification': 'common-prefix-coupled-development-not-independent-worlds',
+                'unique_anchor_prefix_calls': coupling['unique_anchor_prefix_calls'],
+                'prior_v9_actual_physical_replies': amendment['prior_physical_replies'],
+                'prepared_manifest_sha256': prepared['content_sha256'],
+                'anchor_checkpoint_sha256': prepared['anchor_endpoint']['checkpoint_sha256'],
+                'anchor_journal_sha256': prepared['anchor_files']['journal']['sha256'],
+                'anchor_wire_sha256': prepared['anchor_files']['wire']['sha256'],
+                'anchor_code_contexts_sha256': prepared['anchor_files']['code_contexts']['sha256'],
+                'anchor_source_commit': prepared['anchor_endpoint']['world']['source_commit'],
+                'scope': ('One actual Qwen prefix is replayed across logical development worlds; '
+                          'anchor-origin calls are counted once and are not new a3 calls.')}
+            if complete:
+                expected_counts = {
+                    'response_coupling': plan['response_coupling'],
+                    'logical_response_count': physical['all_logical_replies'],
+                    'fresh_physical_reply_count': physical['all_fresh_physical_replies'],
+                    'unique_actual_calls_supporting_this_campaign':
+                        coupling['unique_anchor_prefix_calls']+physical['all_fresh_physical_replies'],
+                    'all_v9_actual_physical_replies': 228+physical['all_fresh_physical_replies']}
+                for key, value in expected_counts.items():
+                    if raw.get(key) != value:
+                        raise ValueError(f'a3 coupled response accounting differs: {key}')
         compact_proofs = [{k: v for k, v in proof.items() if k != 'endpoint'} for proof in proofs]
         result = {'schema': SCHEMA, 'classification': ACTUAL,
             'status': 'complete' if complete else 'valid-preserved-partial-failure',
@@ -494,9 +718,19 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
             'world_order': [{'name': p['name'], 'theta': p['theta']} for p in proofs],
             'endpoints': compact_proofs,
             'physical_reply_count': physical['all_fresh_physical_replies'],
+            'fresh_physical_reply_count': physical['all_fresh_physical_replies'],
+            'logical_response_count': physical['all_logical_replies'],
+            'replayed_response_count': physical['all_replayed_replies'],
+            'unique_actual_calls_supporting_this_campaign': (
+                coupling['unique_anchor_prefix_calls']+physical['all_fresh_physical_replies']
+                if coupling is not None else physical['all_fresh_physical_replies']),
+            'all_v9_actual_physical_reply_count': (
+                amendment['prior_physical_replies']+physical['all_fresh_physical_replies']
+                if coupling is not None else None),
             'completed_endpoint_reply_count': physical['completed_endpoint_replies'],
             'partial_null_loss_reply_count': physical['partial_null_loss_replies'],
             'physical_response_ledger': physical['worlds'],
+            'response_coupling': response_coupling,
             'response_operator_analysis': analysis,
             'raw_hashes': {'plan_file_sha256': file_sha256(root/'plan.json'),
                 'evidence_file_sha256': file_sha256(root/'evidence.json'),
@@ -511,6 +745,8 @@ def analyze(run, *, expected_source, require_complete=True, expected_amendment=N
                 'actual_fixed_weight_Qwen': True, 'exact_Qwen_Jacobian': False,
                 'full_native_world_autograd': False, 'held_out_generalization': False,
                 'causal_scientific_benefit': False,
+                'common_prefix_coupled_development': coupling is not None,
+                'independent_native_world_replication': False if coupling is not None else None,
                 'counterfactual_confidence_from_partial_attempt': False}}
         result['content_sha256'] = digest(result)
         return result
@@ -523,27 +759,37 @@ def markdown_summary(report):
     if report.get('content_sha256') != digest({k: v for k, v in report.items()
                                                if k != 'content_sha256'}):
         raise ValueError('report content hash differs')
+    coupled = report.get('response_coupling') is not None
     lines = ['# Native Qwen response-gradient v9 audit', '',
         f"- Status: `{report['status']}`",
         f"- Source: `{report['source_commit']}`",
         f"- Audit content SHA-256: `{report['content_sha256']}`",
-        f"- Completed physical worlds: {report['technical_validity']['completed_worlds']} / 6",
+        f"- Completed {'common-prefix-coupled logical' if coupled else 'physical'} worlds: {report['technical_validity']['completed_worlds']} / 6",
         f"- Fresh physical replies: {report['physical_reply_count']}",
+        f"- Logical responses: {report.get('logical_response_count', report['physical_reply_count'])}",
+        f"- Replayed prefix responses: {report.get('replayed_response_count', 0)}",
         f"- Replies in completed endpoints: {report.get('completed_endpoint_reply_count', report['physical_reply_count'])}",
         f"- Replies in partial null-loss worlds: {report.get('partial_null_loss_reply_count', 0)}", '',
         '## Observed development losses', '',
-        '| world | weight | fixed native loss | A | Q | R | replies |',
-        '|---|---:|---:|---:|---:|---:|---:|']
+        '| world | weight | fixed native loss | A | Q | R | logical | fresh | replayed |',
+        '|---|---:|---:|---:|---:|---:|---:|---:|---:|']
     for row in report['endpoints']:
         measurements = row.get('objective_measurements', {})
         a = measurements.get('native.accepted_decisions', 'n/a')
         q = measurements.get('native.accepted_peer_score_sum', 'n/a')
         r = measurements.get('native.review_records', 'n/a')
-        lines.append(f"| {row['name']} | {row['theta']:.6g} | {row['native_loss']:.9g} | {a} | {q} | {r} | {row['response_count']} |")
+        lines.append(f"| {row['name']} | {row['theta']:.6g} | {row['native_loss']:.9g} | {a} | {q} | {r} | {row['response_count']} | {row.get('fresh_physical_reply_count', row['response_count'])} | {row.get('replayed_response_count', 0)} |")
     lines += ['', '## Interpretation boundary', '',
         'The table contains fixed-objective development measurements, including an unfavorable or tied candidate if observed.',
         'The gradient is autograd through a calibration-fitted numeric response representation, not an exact Qwen or native-world Jacobian.',
         'Unused coordinates are fidelity checks, not held-out seeds. No promotion policy or causal scientific-benefit claim is applied.', '']
+    if coupled:
+        coupling = report['response_coupling']
+        lines += ['## Actual common-prefix coupling', '',
+            f"- Unique anchor-origin calls: `{coupling['unique_anchor_prefix_calls']}`",
+            f"- Prepared manifest: `{coupling['prepared_manifest_sha256']}`", '',
+            'The six development worlds execute the full native forward process but share one exact actual-Qwen prefix.',
+            'Replayed prefix responses are logical cache entries, not new model calls or independent world replications. Anchor-origin calls are counted once outside the a3 fresh-call total.', '']
     control = report['technical_validity'].get('prefix_control_comparison', {})
     if control.get('status') == 'observed-uncontrolled-prefix-separate-from-terminal-failure':
         lines += ['## Independent-Qwen prefix diagnostic', '',
@@ -573,7 +819,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--markdown', type=Path)
     parser.add_argument('--allow-incomplete', action='store_true')
-    parser.add_argument('--expected-amendment', choices=(AMENDMENT_ID,))
+    parser.add_argument('--expected-amendment', choices=(AMENDMENT_A2, AMENDMENT_A3))
     args = parser.parse_args()
     if args.output.resolve().is_relative_to(args.run.resolve()):
         parser.error('audit output must be outside immutable raw directory')
