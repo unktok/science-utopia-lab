@@ -34,6 +34,14 @@ completed legal prefix is remeasured, the failure retains null loss, and no
 counterfactual confidence or missing outcome is derived. A live prefix without
 a preserved terminal failure is rejected.
 
+Cross-world control comparison is a separate diagnostic from the terminal
+failure ledger. In particular, a cooperative `PortableStop` is not relabelled
+as a comparator failure. If independently sampled Qwen worlds already differ
+in their pre-intervention response sequence or scientific observation, the
+auditor reports that this prefix cannot identify a controlled response fit. It
+does not call that drift negative fidelity, optimization failure, or a
+scientific/institutional outcome.
+
 After terminal writer exit, use the approved project environment:
 
 ```bash

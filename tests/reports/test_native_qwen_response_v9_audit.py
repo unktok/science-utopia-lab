@@ -68,9 +68,13 @@ def test_partial_audit_reproduces_strict_control_failure_without_relabelling(mon
     assert status['status'] == 'reproduced-preserved-strict-control-failure'
     assert 'not a negative' in status['scope']
     changed = deepcopy(failures)
-    changed[0]['error'] = 'different error'
-    with pytest.raises(ValueError, match='does not reproduce'):
-        _prefix_control_status(proofs, changed)
+    changed[0].update(error_type='PortableStop', error='cooperative operator stop',
+                      name='calibration-2')
+    separate = _prefix_control_status(proofs, changed)
+    assert separate['status'] == 'observed-uncontrolled-prefix-separate-from-terminal-failure'
+    assert separate['matches_recorded_terminal_failure_cause'] is False
+    assert separate['recorded_terminal_failure']['error_type'] == 'PortableStop'
+    assert 'not asserted to have caused' in separate['scope']
 
 
 def test_markdown_reports_unfavorable_candidate_without_promotion_claim():

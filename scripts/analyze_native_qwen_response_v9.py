@@ -368,15 +368,19 @@ def _prefix_control_status(proofs, failures):
         proof = require_same_control([item['control_proof'] for item in proofs])
     except Exception as error:
         failure = failures[0] if len(failures) == 1 else {}
-        if (failure.get('stage') != 'fit-control-or-report'
-                or failure.get('error_type') != type(error).__name__
-                or failure.get('error') != str(error)[:4000]
-                or failure.get('loss', 'not-null') is not None):
-            raise ValueError('cross-world control failure does not reproduce the preserved terminal error') from error
-        return {'status': 'reproduced-preserved-strict-control-failure',
+        recorded_cause = (failure.get('stage') == 'fit-control-or-report'
+            and failure.get('error_type') == type(error).__name__
+            and failure.get('error') == str(error)[:4000]
+            and failure.get('loss', 'not-null') is None)
+        return {'status': ('reproduced-preserved-strict-control-failure' if recorded_cause
+                           else 'observed-uncontrolled-prefix-separate-from-terminal-failure'),
             'error_type': type(error).__name__, 'error': str(error),
-            'scope': ('Technical preflight failure under the pinned comparator; not a negative '
-                      'fidelity, optimization, or scientific outcome.')}
+            'matches_recorded_terminal_failure_cause': recorded_cause,
+            'recorded_terminal_failure': deepcopy(failure),
+            'scope': ('Actual independent-Qwen pre-intervention/prompt drift prevents a controlled '
+                      'response fit for this prefix. It is a separate technical diagnostic, not '
+                      'a negative fidelity, optimization, or scientific outcome, and is not '
+                      'asserted to have caused a separately recorded PortableStop.')}
     return proof
 
 
