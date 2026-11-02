@@ -99,3 +99,38 @@ OS temporary directory, correctly enforcing the synthetic-publication guard.
 Fix only its synthetic test fixture to use an actual OS TemporaryDirectory,
 never weaken the generator's ban on publishing synthetic figures as actual.
 The corrected29 figure checks pass; no real result graphic exists yet.
+
+Actual a3 runs from clean`fb2d1b6f07aadba39148bd5871dac2fd0595b618` after the
+advancing-clock seven-world scripted QA and85 focused checks. All six original
+two-year worlds finish. Each has84 logical replies:53 sealed actual historical
+responses and31 fresh Qwen calls. Total504 logical/318 replayed/186 newphysical;
+239 unique actual calls support a3 and all three attempts cost414 fresh calls
+including prior228. These are not six independent societies.
+
+The fixed temperature selector chooses0.01 by calibration loss RMSE1.1562e-5.
+The represented center gradient is positive1.1488904007345064e-15, not an
+imputed zero; the requested float step rounds to an exact0.5 no-op. Calibration
+losses[0.9,0.9,0.8166666667] do not justify replacing the frozen proposal with
+the observed0.8 sample. Both unused endpoints have native loss0.9, while the
+model predicts about0.816767 at0.65. The response-aware finite-path error is
+0.083946 versus0 for frozen responses. Candidate native loss0.9 ties center.
+This is a connected loop and a negative fidelity/optimization observation, not
+successful institutional improvement. Do not retune the completed result.
+
+The exact actual-source full regression finishes1718 passed/6 skipped in822.60s
+in a separate clean verification worktree. The later landscape renderer passes
+39 checks; these overlap existing scopes, not additive experimental samples.
+Independent audit and graphical/PDF publication verification remain pending.
+
+Final independent a3 audit completes at analysis`cfeac17`; result`b8b16c8`
+is integrated separately from actual source`fb2d1b6`. All six original-world
+checkpoints, raw joins, fixed losses, source bytes and review-clock receipts
+verify. Repeating the full read-only audit gives byte-identical JSON/Markdown.
+Report content SHA`92d6a9b630d9bcd44e379ec48833aed2de71490b85907068fed740361826abbf`;
+101 raw files retain inventory SHA`9e1accb4e0abaf79e81368a51b4583625017d1575120b61cfa6f17bca8711b83`.
+Root independently rechecks all a1/a2/a3 file inventories against their audits:
+41/11/101 files unchanged. New read-only analysis adds a61-point scan of the
+already frozen response model for visualization ONLY, without native/model calls
+or candidate selection. Initial actual figure QA exposes clipped footer/value
+labels; repair layout and normalize only the gradient display unit, not values.
+The final actual PNGs are visually inspected at paper width. PDF QA follows.

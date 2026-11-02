@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## Active v9: actual-Qwen response-aware institution gradient
+## Audited v9: actual-Qwen response-aware institution gradient
 
 The user authorizes the next bounded goal: actual fixed-Qwen responses -> local
 numeric response representation -> institution-coordinate backprop -> projection
@@ -27,9 +27,20 @@ couples each new full native execution to the same actual historical Qwen prefix
 then generates affected review/later replies freshly. No numerical replacement
 world or fabricated teacher responses are used. Shared historical answers are
 logical replays, not new physical inferences or independent samples. Transport
-provenance, full native coupled-loop QA and independent audit are being connected
-before the actual a3 run. Completion requires a truthful actual loop/report,
-not a promised fidelity pass or native improvement.
+provenance and full native coupled-loop QA are connected. Actual a3 executes
+all six logical worlds at frozen`fb2d1b6`:186 new Qwen replies plus318 logical
+replays of the same53 historical prefix replies. The proposed coordinate rounds
+exactly back to0.5; native candidate/center loss both0.9. A better calibration
+point is not substituted for the frozen gradient proposal. The unused0.65
+endpoint and finite-path response-fidelity checks fail; this is not successful
+institution improvement. [Independent final audit](results/native-qwen-response-v9-a3.json)
+verifies all endpoints, exact semantic review-clock coupling and unchanged101-file
+raw inventory; a repeated audit is byte-identical. All attempts cost414 fresh
+replies including228 from preserved a1/a2, without double-counting historical
+anchor calls. [Milestone and remaining limits](milestones/2026-11-02-native-qwen-response-gradient-v9.md).
+Exact actual-source full regression passes1718/6skips in822.60s. Publication
+verification is pending. This finite loop does not establish a useful gradient,
+successful invention, exact Qwen/world Jacobian or all pre-scale completion.
 
 ## Completed finite v8 goal: structure, response representation, UI and paper
 
