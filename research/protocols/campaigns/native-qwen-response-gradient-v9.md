@@ -27,6 +27,11 @@ coordinate. Later native publication/funding still run. This is one local
 parameter experiment in the existing broader structural design system, not a
 claim to differentiate every possible institution or the world's text/ontology.
 
+The delivered Year2 message remains in durable institutional context. Later
+same-year funding/application prompts can therefore see it and its metadata;
+these occur after the review/selection inputs determining A/Q/R. Only the
+review-response boundary is fitted. All-later-prompt invariance is not claimed.
+
 Existing addressed selection uses fixed thresholds3.25, bias0, memory cost0.01.
 Its routing and recurrent memory remain. A second tensor institution accounts
 for the SAME native utility loss from actual actions/scores/review counts.
