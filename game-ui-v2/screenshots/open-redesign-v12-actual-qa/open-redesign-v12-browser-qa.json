@@ -11,7 +11,7 @@
   "non_get_requests": 0,
   "external_requests": 0,
   "export_binding": {
-    "payload_sha256": "5bbccee81071471b747be0e49e3bea7e4ffb5d36551da1cc631ace67f71ae244",
+    "payload_sha256": "13dfc0c5c11f69176fb62f03fa5fa71c4d5a02775ead7e40d620954866848a3b",
     "source_binding": {
       "report_file_sha256": "ca2742aa06ccd8675fcc50b5bc17041d057deb2cfad1357a19e3276d96530b76",
       "report_content_sha256": "c03df804fe46f12f1efec7210f1dba1c624242a8645f9533b698748cc4dfcd5f",
@@ -22,8 +22,8 @@
     "native-objective-redesign.html": "e0a899bd8a7bbff05e2872582d8a3b40d9dac2e2aa70331e0a0fd3dc7012eaf1",
     "src/openRedesign.ts": "fd60d5602b5f9261068fc60a4acd94fe96c2d181573beee65f6b18497d7abf52",
     "src/openRedesign.css": "b8aa333b5f500e055543d4e882567043adc12b60f180f2f7e76193f92075ae18",
-    "src/openRedesignContract.ts": "b0185a6ca760dc78d84bf50d554b7b3fbb93d6952cbfbba4b5c5ff935e38b047",
-    "scripts/export-open-redesign-v12.mjs": "5dc05d679094b4fbbed0663dac4d56a0b9d699fc91f42cc63e01bb2eb0888c65",
+    "src/openRedesignContract.ts": "eb528b5839104dcb035f5c7a1634ff42bd0a7529b7e61cebcb854644bc0f9d90",
+    "scripts/export-open-redesign-v12.mjs": "1f72a965834284d5d0f741de4a141148bd783255d6abe9ba566e76391692e9a8",
     "scripts/verify-open-redesign-browser.mjs": "e80b115bc4925663383506af8ed9de0fe656244f80e1dbe7fef7f84a5401946d"
   },
   "artifacts": {

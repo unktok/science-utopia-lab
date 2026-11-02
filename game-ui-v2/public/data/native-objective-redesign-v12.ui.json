@@ -998,7 +998,7 @@
             "continuous_operations": [],
             "factor_trace": [],
             "latent": [],
-            "rng_seed": 1122442242526474900,
+            "rng_seed": "1122442242526474860",
             "suggestion": {
               "based_on_observation_id": null,
               "candidate": {
@@ -7636,7 +7636,7 @@
                     "strategy": "balanced"
                   },
                   "runtime_seed_binding": {
-                    "python_hash_probe": -714974383112699300,
+                    "python_hash_probe": "-714974383112699265",
                     "python_hash_seed_environment": "42"
                   },
                   "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -9468,7 +9468,7 @@
             "continuous_operations": [],
             "factor_trace": [],
             "latent": [],
-            "rng_seed": 301805989655367800,
+            "rng_seed": "301805989655367818",
             "suggestion": {
               "based_on_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
               "candidate": {
@@ -15571,7 +15571,7 @@
                     "strategy": "balanced"
                   },
                   "runtime_seed_binding": {
-                    "python_hash_probe": -714974383112699300,
+                    "python_hash_probe": "-714974383112699265",
                     "python_hash_seed_environment": "42"
                   },
                   "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -17403,7 +17403,7 @@
             "continuous_operations": [],
             "factor_trace": [],
             "latent": [],
-            "rng_seed": 651918916388128100,
+            "rng_seed": "651918916388128073",
             "suggestion": {
               "based_on_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
               "candidate": {
@@ -23506,7 +23506,7 @@
                     "strategy": "balanced"
                   },
                   "runtime_seed_binding": {
-                    "python_hash_probe": -714974383112699300,
+                    "python_hash_probe": "-714974383112699265",
                     "python_hash_seed_environment": "42"
                   },
                   "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -25763,7 +25763,7 @@
               "continuous_operations": [],
               "factor_trace": [],
               "latent": [],
-              "rng_seed": 1122442242526474900,
+              "rng_seed": "1122442242526474860",
               "suggestion": {
                 "based_on_observation_id": null,
                 "candidate": {
@@ -29630,7 +29630,7 @@
               "system_id": "native-research-world",
               "version": 1
             },
-            "rng_seed": 400223738390202430,
+            "rng_seed": "400223738390202423",
             "schema": "scienceutopia.native-generated-vocabulary.v7",
             "strategy_id": "design",
             "strategy_log_probability": 0,
@@ -29663,7 +29663,7 @@
               "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
               "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
               "runtime_seed_binding": {
-                "python_hash_probe": -714974383112699300,
+                "python_hash_probe": "-714974383112699265",
                 "python_hash_seed_environment": "42"
               },
               "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -29709,7 +29709,7 @@
               "continuous_operations": [],
               "factor_trace": [],
               "latent": [],
-              "rng_seed": 301805989655367800,
+              "rng_seed": "301805989655367818",
               "suggestion": {
                 "based_on_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
                 "candidate": {
@@ -33155,7 +33155,7 @@
                     "continuous_operations": [],
                     "factor_trace": [],
                     "latent": [],
-                    "rng_seed": 1122442242526474900,
+                    "rng_seed": "1122442242526474860",
                     "suggestion": {
                       "based_on_observation_id": null,
                       "candidate": {
@@ -38839,7 +38839,7 @@
               "system_id": "native-research-world",
               "version": 1
             },
-            "rng_seed": 526139537750705400,
+            "rng_seed": "526139537750705391",
             "schema": "scienceutopia.native-generated-vocabulary.v7",
             "strategy_id": "design",
             "strategy_log_probability": 0,
@@ -38872,7 +38872,7 @@
               "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
               "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
               "runtime_seed_binding": {
-                "python_hash_probe": -714974383112699300,
+                "python_hash_probe": "-714974383112699265",
                 "python_hash_seed_environment": "42"
               },
               "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -38926,7 +38926,7 @@
               "continuous_operations": [],
               "factor_trace": [],
               "latent": [],
-              "rng_seed": 651918916388128100,
+              "rng_seed": "651918916388128073",
               "suggestion": {
                 "based_on_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
                 "candidate": {
@@ -42372,7 +42372,7 @@
                     "continuous_operations": [],
                     "factor_trace": [],
                     "latent": [],
-                    "rng_seed": 1122442242526474900,
+                    "rng_seed": "1122442242526474860",
                     "suggestion": {
                       "based_on_observation_id": null,
                       "candidate": {
@@ -44725,7 +44725,7 @@
                     "continuous_operations": [],
                     "factor_trace": [],
                     "latent": [],
-                    "rng_seed": 301805989655367800,
+                    "rng_seed": "301805989655367818",
                     "suggestion": {
                       "based_on_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
                       "candidate": {
@@ -52668,7 +52668,7 @@
               "system_id": "native-research-world",
               "version": 1
             },
-            "rng_seed": 109866772746757710,
+            "rng_seed": "109866772746757718",
             "schema": "scienceutopia.native-generated-vocabulary.v7",
             "strategy_id": "design",
             "strategy_log_probability": 0,
@@ -52701,7 +52701,7 @@
               "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
               "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
               "runtime_seed_binding": {
-                "python_hash_probe": -714974383112699300,
+                "python_hash_probe": "-714974383112699265",
                 "python_hash_seed_environment": "42"
               },
               "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -53580,7 +53580,7 @@
             "continuous_operations": [],
             "factor_trace": [],
             "latent": [],
-            "rng_seed": 1122442242526474900,
+            "rng_seed": "1122442242526474860",
             "suggestion": {
               "based_on_observation_id": null,
               "candidate": {
@@ -57708,7 +57708,7 @@
                     "strategy": "balanced"
                   },
                   "runtime_seed_binding": {
-                    "python_hash_probe": -714974383112699300,
+                    "python_hash_probe": "-714974383112699265",
                     "python_hash_seed_environment": "42"
                   },
                   "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -59446,7 +59446,7 @@
             "continuous_operations": [],
             "factor_trace": [],
             "latent": [],
-            "rng_seed": 301805989655367800,
+            "rng_seed": "301805989655367818",
             "suggestion": {
               "based_on_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
               "candidate": {
@@ -63916,7 +63916,7 @@
                     "strategy": "balanced"
                   },
                   "runtime_seed_binding": {
-                    "python_hash_probe": -714974383112699300,
+                    "python_hash_probe": "-714974383112699265",
                     "python_hash_seed_environment": "42"
                   },
                   "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -65671,7 +65671,7 @@
             "continuous_operations": [],
             "factor_trace": [],
             "latent": [],
-            "rng_seed": 651918916388128100,
+            "rng_seed": "651918916388128073",
             "suggestion": {
               "based_on_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
               "candidate": {
@@ -69345,7 +69345,7 @@
                     "strategy": "balanced"
                   },
                   "runtime_seed_binding": {
-                    "python_hash_probe": -714974383112699300,
+                    "python_hash_probe": "-714974383112699265",
                     "python_hash_seed_environment": "42"
                   },
                   "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -71431,7 +71431,7 @@
               "continuous_operations": [],
               "factor_trace": [],
               "latent": [],
-              "rng_seed": 1122442242526474900,
+              "rng_seed": "1122442242526474860",
               "suggestion": {
                 "based_on_observation_id": null,
                 "candidate": {
@@ -75152,7 +75152,7 @@
               "system_id": "native-research-world",
               "version": 1
             },
-            "rng_seed": 400223738390202430,
+            "rng_seed": "400223738390202423",
             "schema": "scienceutopia.native-generated-vocabulary.v7",
             "strategy_id": "design",
             "strategy_log_probability": 0,
@@ -75185,7 +75185,7 @@
               "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
               "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
               "runtime_seed_binding": {
-                "python_hash_probe": -714974383112699300,
+                "python_hash_probe": "-714974383112699265",
                 "python_hash_seed_environment": "42"
               },
               "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -76224,7 +76224,7 @@
               "continuous_operations": [],
               "factor_trace": [],
               "latent": [],
-              "rng_seed": 301805989655367800,
+              "rng_seed": "301805989655367818",
               "suggestion": {
                 "based_on_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
                 "candidate": {
@@ -79562,7 +79562,7 @@
                     "continuous_operations": [],
                     "factor_trace": [],
                     "latent": [],
-                    "rng_seed": 1122442242526474900,
+                    "rng_seed": "1122442242526474860",
                     "suggestion": {
                       "based_on_observation_id": null,
                       "candidate": {
@@ -84859,7 +84859,7 @@
               "system_id": "native-research-world",
               "version": 1
             },
-            "rng_seed": 526139537750705400,
+            "rng_seed": "526139537750705391",
             "schema": "scienceutopia.native-generated-vocabulary.v7",
             "strategy_id": "design",
             "strategy_log_probability": 0,
@@ -84892,7 +84892,7 @@
               "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
               "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
               "runtime_seed_binding": {
-                "python_hash_probe": -714974383112699300,
+                "python_hash_probe": "-714974383112699265",
                 "python_hash_seed_environment": "42"
               },
               "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -84943,7 +84943,7 @@
               "continuous_operations": [],
               "factor_trace": [],
               "latent": [],
-              "rng_seed": 651918916388128100,
+              "rng_seed": "651918916388128073",
               "suggestion": {
                 "based_on_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
                 "candidate": {
@@ -88147,7 +88147,7 @@
                     "continuous_operations": [],
                     "factor_trace": [],
                     "latent": [],
-                    "rng_seed": 1122442242526474900,
+                    "rng_seed": "1122442242526474860",
                     "suggestion": {
                       "based_on_observation_id": null,
                       "candidate": {
@@ -91337,7 +91337,7 @@
                     "continuous_operations": [],
                     "factor_trace": [],
                     "latent": [],
-                    "rng_seed": 301805989655367800,
+                    "rng_seed": "301805989655367818",
                     "suggestion": {
                       "based_on_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
                       "candidate": {
@@ -99005,7 +99005,7 @@
               "system_id": "native-research-world",
               "version": 1
             },
-            "rng_seed": 109866772746757710,
+            "rng_seed": "109866772746757718",
             "schema": "scienceutopia.native-generated-vocabulary.v7",
             "strategy_id": "design",
             "strategy_log_probability": 0,
@@ -99038,7 +99038,7 @@
               "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
               "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
               "runtime_seed_binding": {
-                "python_hash_probe": -714974383112699300,
+                "python_hash_probe": "-714974383112699265",
                 "python_hash_seed_environment": "42"
               },
               "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
@@ -99080,5 +99080,47 @@
     "Source text changes and actual execution are distinct from useful algorithm invention.",
     "Designer identity is self-reported, not provider authenticated.",
     "Failed attempts are retained with null losses; no hidden fairness/quality/novelty veto applies."
-  ]
+  ],
+  "numeric_encoding": {
+    "schema": "scienceutopia.json-unsafe-integer-decimal-strings.v1",
+    "integer_encoding": "base10-decimal-string",
+    "paths": [
+      "/arms/native-joint-v5-net-reviewed-utility/observations/0/draw/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/observations/0/physical_proof/response_proof/response_binding/science_config/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-net-reviewed-utility/observations/1/draw/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/observations/1/physical_proof/response_proof/response_binding/science_config/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-net-reviewed-utility/observations/2/draw/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/observations/2/physical_proof/response_proof/response_binding/science_config/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-net-reviewed-utility/records/0/draws/0/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/0/request/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/0/request/world_binding/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-net-reviewed-utility/records/1/draws/0/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/1/request/history/0/draws/0/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/1/request/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/1/request/world_binding/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-net-reviewed-utility/records/2/draws/0/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/2/request/history/0/draws/0/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/2/request/history/1/draws/0/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/2/request/rng_seed",
+      "/arms/native-joint-v5-net-reviewed-utility/records/2/request/world_binding/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-throughput/observations/0/draw/rng_seed",
+      "/arms/native-joint-v5-throughput/observations/0/physical_proof/response_proof/response_binding/science_config/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-throughput/observations/1/draw/rng_seed",
+      "/arms/native-joint-v5-throughput/observations/1/physical_proof/response_proof/response_binding/science_config/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-throughput/observations/2/draw/rng_seed",
+      "/arms/native-joint-v5-throughput/observations/2/physical_proof/response_proof/response_binding/science_config/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-throughput/records/0/draws/0/rng_seed",
+      "/arms/native-joint-v5-throughput/records/0/request/rng_seed",
+      "/arms/native-joint-v5-throughput/records/0/request/world_binding/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-throughput/records/1/draws/0/rng_seed",
+      "/arms/native-joint-v5-throughput/records/1/request/history/0/draws/0/rng_seed",
+      "/arms/native-joint-v5-throughput/records/1/request/rng_seed",
+      "/arms/native-joint-v5-throughput/records/1/request/world_binding/runtime_seed_binding/python_hash_probe",
+      "/arms/native-joint-v5-throughput/records/2/draws/0/rng_seed",
+      "/arms/native-joint-v5-throughput/records/2/request/history/0/draws/0/rng_seed",
+      "/arms/native-joint-v5-throughput/records/2/request/history/1/draws/0/rng_seed",
+      "/arms/native-joint-v5-throughput/records/2/request/rng_seed",
+      "/arms/native-joint-v5-throughput/records/2/request/world_binding/runtime_seed_binding/python_hash_probe"
+    ]
+  }
 }
