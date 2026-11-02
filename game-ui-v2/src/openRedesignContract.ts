@@ -39,6 +39,13 @@ export function parseOpenRedesign(value: unknown, allowFixture = false): OpenRed
       || !/^[a-f0-9]{40}$/.test(d.source_binding.source_commit)) fail('immutable source binding');
   if (JSON.stringify(d.objective_order) !== JSON.stringify(REDESIGN_OBJECTIVES)) fail('objective order');
   if (!Number.isInteger(d.physical_researcher_responses) || d.physical_researcher_responses < 0) fail('physical replies');
+  if(d.numeric_encoding?.schema!=='scienceutopia.json-unsafe-integer-decimal-strings.v1'||d.numeric_encoding.integer_encoding!=='base10-decimal-string'||!Array.isArray(d.numeric_encoding.paths))fail('lossless integer encoding');
+  const encodedPaths=new Set<string>();
+  for(const path of d.numeric_encoding.paths){
+    if(typeof path!=='string'||!path.startsWith('/')||encodedPaths.has(path))fail('integer encoding pointer');encodedPaths.add(path);
+    const value=path.split('/').slice(1).reduce((owner:any,key:string)=>owner?.[key.replaceAll('~1','/').replaceAll('~0','~')],d);
+    if(typeof value!=='string'||!/^\-?[0-9]+$/.test(value)||BigInt(value)>=-9007199254740991n&&BigInt(value)<=9007199254740991n)fail('exact unsafe integer text');
+  }
   const ids = new Set<string>();
   for (const id of REDESIGN_OBJECTIVES) {
     const arm = d.arms?.[id];
@@ -69,5 +76,6 @@ export async function verifyOpenRedesign(text: string, receipt: Evidence, allowF
       || receipt.no_inference !== true || receipt.no_job_dispatch !== true) fail('export hash / scope');
   const d = parseOpenRedesign(JSON.parse(text), allowFixture);
   if (JSON.stringify(receipt.source_binding) !== JSON.stringify(d.source_binding)) fail('source receipt differs');
+  if (JSON.stringify(receipt.numeric_encoding) !== JSON.stringify(d.numeric_encoding)) fail('integer encoding receipt differs');
   return d;
 }

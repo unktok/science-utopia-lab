@@ -67,6 +67,22 @@ text. Historical native code receipts instead hash its canonical JSON string
 value; those correspond to the contract's `source_value_sha256`. They must not
 be compared as if the two hash definitions were identical.
 
+### Exact large-integer identities
+
+The Node exporter requires `JSON.parse` reviver `context.source` support. An
+integer lexical token outside JavaScript's safe integer range (±(2^53−1)) is
+encoded as its exact base-10 decimal **string**, never a rounded Number. The
+payload and receipt both carry `numeric_encoding` with schema
+`scienceutopia.json-unsafe-integer-decimal-strings.v1`,
+`integer_encoding: base10-decimal-string`, and JSON-pointer `paths` identifying
+only fields converted from integer tokens. Decode those paths as arbitrary
+precision integers when comparing to the original audit. Existing quoted
+strings, generated source text, decimal-float and exponent tokens are not
+rewritten by this conversion. The source audit's exact file hash remains bound.
+The raw observation inspector displays the exact decimal strings, including RNG
+seeds and runtime hash probes. The browser validates encoding pointers and their
+receipt; it never coerces these identity strings back to Number.
+
 Before an actual export, the tracked availability file is
 `awaiting-audited-export`. There is no public v12 fixture payload. Fixture
 exports and screenshots require explicit flags and system-temporary paths.

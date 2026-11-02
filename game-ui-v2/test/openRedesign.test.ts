@@ -6,9 +6,9 @@ import { describe, expect, it } from 'vitest';
 import { generatedPythonNode, generatedSourceBody, parseOpenRedesign, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign } from '../src/openRedesignContract';
 import { redesignFixture, redesignHash, zeroReplyRedesignFixture } from './openRedesignFixture';
 const ui=new URL('../',import.meta.url),script=new URL('scripts/export-open-redesign-v12.mjs',ui).pathname;
-function exporting(change?:(audit:any)=>void,fixture=true){
+function exporting(change?:(audit:any)=>void,fixture=true,rawTransform?:(bytes:string)=>string){
   const root=mkdtempSync(resolve(tmpdir(),'scienceutopia-v12-ui-test-')),audit=redesignFixture();change?.(audit);
-  const source=resolve(root,'SCRIPTED-audit.json'),bytes=JSON.stringify(audit);writeFileSync(source,bytes);
+  const source=resolve(root,'SCRIPTED-audit.json'),serialized=JSON.stringify(audit),bytes=rawTransform?rawTransform(serialized):serialized;writeFileSync(source,bytes);
   execFileSync(process.execPath,[script,`--audit=${source}`,`--output=${root}`,`--expected-audit-sha256=${redesignHash(bytes)}`,`--expected-source=${audit.source_commit}`,...(fixture?['--allow-synthetic-temp-only']:[])],{stdio:'pipe'});
   const text=readFileSync(resolve(root,'native-objective-redesign-v12.ui.json'),'utf8'),receipt=JSON.parse(readFileSync(resolve(root,'native-objective-redesign-v12.ui-receipt.json'),'utf8'));
   return {root,audit,text,receipt};
@@ -125,6 +125,22 @@ describe('v12 objective-conditioned free redesign evidence',()=>{
     const nested={implementation:'native.process.activity.v1',parameters:{delegate:{implementation:'native.process.activity.v1',parameters:{delegate:python}}}};
     expect(generatedPythonNode(nested)).toBeUndefined();expect(generatedSourceBody(nested)).toBe('');
     expect(()=>exporting(a=>{const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[0];r.system.mechanisms[1]={...nested,mechanism_id:r.system.mechanisms[1].mechanism_id};})).toThrow('Recursive process delegates');
+  });
+  it('preserves unsafe integer lexical tokens exactly without changing source strings, floats or exponents',async()=>{
+    const {text,receipt}=exporting(a=>{
+      const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[0];
+      r.draw={rng_seed:'__UNSAFE_RNG__',negative_probe:'__UNSAFE_NEGATIVE__',large_float:'__LARGE_FLOAT__',large_exponent:'__LARGE_EXPONENT__',quoted_seed:'1122442242526474860'};
+      const artifact=r.system.mechanisms[1].parameters.code_artifact;
+      artifact.source+='\n# literal 1122442242526474860; quoted "1122442242526474860"; exponent 1e20; float 10000000000000000.0\n';
+      const proof=r.contracts.executable_sources['fixture-cooperative-0'];proof.source=artifact.source;proof.source_sha256=redesignHash(artifact.source);
+    },true,bytes=>bytes.replace('"__UNSAFE_RNG__"','1122442242526474860').replace('"__UNSAFE_NEGATIVE__"','-714974383112699265').replace('"__LARGE_FLOAT__"','10000000000000000.0').replace('"__LARGE_EXPONENT__"','1e20'));
+    const d=await verifyOpenRedesign(text,receipt,true),r=d.arms[REDESIGN_OBJECTIVES[0]].observations[0]!;
+    expect(r.draw.rng_seed).toBe('1122442242526474860');expect(r.draw.negative_probe).toBe('-714974383112699265');
+    expect(r.draw.quoted_seed).toBe('1122442242526474860');expect(typeof r.draw.large_float).toBe('number');expect(r.draw.large_exponent).toBe(1e20);
+    expect(generatedSourceBody(r.system.mechanisms[1])).toContain('literal 1122442242526474860; quoted "1122442242526474860"; exponent 1e20; float 10000000000000000.0');
+    expect(d.numeric_encoding.paths).toEqual([`/arms/${REDESIGN_OBJECTIVES[0]}/observations/0/draw/rng_seed`,`/arms/${REDESIGN_OBJECTIVES[0]}/observations/0/draw/negative_probe`]);
+    const tampered=structuredClone(receipt);tampered.numeric_encoding.paths=[];await expect(verifyOpenRedesign(text,tampered,true)).rejects.toThrow('integer encoding receipt');
+    const wrong=JSON.parse(text);wrong.arms[REDESIGN_OBJECTIVES[0]].observations[0].draw.rng_seed=1122442242526474860;expect(()=>parseOpenRedesign(wrong,true)).toThrow('unsafe integer text');
   });
   it('rejects invented baseline, missingness as zero, false running best and unsupported causal claim',()=>{
     const {text}=exporting();

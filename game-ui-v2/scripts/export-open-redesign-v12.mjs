@@ -18,7 +18,29 @@ if (!args.audit || !hash(args['expected-audit-sha256']) || !/^[a-f0-9]{40}$/.tes
 if (fixture && ![source, output].every(path => path.startsWith(`${resolve(tmpdir())}/`))) throw new Error('Synthetic input/output must remain temporary');
 const bytes = await readFile(source);
 if (sha(bytes) !== args['expected-audit-sha256']) throw new Error('Explicit expected audit file hash differs');
-const audit = JSON.parse(bytes);
+// Parsing identity-sized integer tokens as Number first would irreversibly round
+// RNG seeds and runtime hash probes. Inspect their original lexical tokens.
+let reviverSourceSupported=false;
+JSON.parse('1',(_key,value,context)=>{reviverSourceSupported=context?.source==='1';return value;});
+if(!reviverSourceSupported)throw new Error('Lossless audit export requires JSON.parse reviver context.source support');
+const integerFields=new WeakMap();
+const audit = JSON.parse(bytes,function(key,value,context){
+  if(typeof value==='number' && /^-?[0-9]+$/.test(context.source) && !Number.isSafeInteger(value)){
+    let fields=integerFields.get(this);if(!fields){fields=new Set();integerFields.set(this,fields);}fields.add(key);
+    return context.source;
+  }
+  return value;
+});
+const unsafeIntegerPaths=[];
+function recordIntegerPaths(value,path=''){
+  if(!value || typeof value!=='object')return;
+  for(const key of Object.keys(value)){
+    const pointer=`${path}/${key.replaceAll('~','~0').replaceAll('/','~1')}`;
+    if(integerFields.get(value)?.has(key))unsafeIntegerPaths.push(pointer);
+    recordIntegerPaths(value[key],pointer);
+  }
+}
+recordIntegerPaths(audit);
 if (audit.schema !== 'scienceutopia.native-objective-redesign-independent-audit.v12' || !['complete', 'budget-complete-with-failures'].includes(audit.status)
     || audit.classification !== (fixture ? 'scripted-fixture-not-native-results' : 'actual-native-qwen-objective-redesign-development-v12')
     || audit.source_commit !== args['expected-source'] || !hash(audit.content_sha256) || !equal(audit.objective_order, objectives)) throw new Error('Expected source-bound independent v12 audit');
@@ -69,8 +91,10 @@ const binding = {report_file_sha256:sha(bytes),report_content_sha256:audit.conte
 const payload = {schema:'scienceutopia.open-redesign-observatory.v12',classification:audit.classification,status:audit.status,source_binding:binding,objective_order:objectives,loss_specs:audit.loss_specs,arms,
   physical_native_worlds:completed,physical_researcher_responses:audit.physical_researcher_responses,raw_inventory_sha256:audit.audit.raw_inventory_sha256,
   claims:audit.claims,initial_baseline:null,historical_baseline:null,live_job_control:false,limitations:audit.audit.limits ?? []};
+const readPointer=(document,path)=>path.split('/').slice(1).reduce((owner,key)=>owner?.[key.replaceAll('~1','/').replaceAll('~0','~')],document);
+payload.numeric_encoding={schema:'scienceutopia.json-unsafe-integer-decimal-strings.v1',integer_encoding:'base10-decimal-string',paths:unsafeIntegerPaths.filter(path=>typeof readPointer(payload,path)==='string')};
 const text = `${JSON.stringify(payload,null,2)}\n`;
-const receipt = {schema:'scienceutopia.open-redesign-ui-export.v12',payload_file:names[0],payload_sha256:sha(text),source_binding:binding,no_inference:true,no_job_dispatch:true};
+const receipt = {schema:'scienceutopia.open-redesign-ui-export.v12',payload_file:names[0],payload_sha256:sha(text),source_binding:binding,numeric_encoding:payload.numeric_encoding,no_inference:true,no_job_dispatch:true};
 await mkdir(output,{recursive:true});
 await writeFile(resolve(output,names[0]),text);
 await writeFile(resolve(output,names[1]),`${JSON.stringify(receipt,null,2)}\n`);
