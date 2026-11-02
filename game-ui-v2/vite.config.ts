@@ -21,6 +21,7 @@ export default defineConfig({
         objectiveStructure: resolve(__dirname, "objective-structure.html"),
         methodObservatory: resolve(__dirname, "method-observatory.html"),
         openEstimators: resolve(__dirname, "native-open-estimators.html"),
+        openRedesign: resolve(__dirname, "native-objective-redesign.html"),
       },
     },
   },
