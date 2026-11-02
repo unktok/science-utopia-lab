@@ -2,6 +2,28 @@
 
 Updated: 2026-11-02
 
+## Active v11: open native institutions, gradient estimation as a means
+
+The user explicitly confirms that whole-world differentiability is not a
+required destination and authorizes parallel implementation. The research
+object remains freely designed institutions under an explicit fixed loss.
+[Decision0028](decisions/0028-estimators-serve-open-institutional-optimization.md)
+records this clarification without rewriting earlier results. Separate feature
+worktrees own the mixed-distribution estimator kernel, open native campaign
+integration and English method-observatory UI; root owns protocol, integration,
+notes and manuscript. All are active development, not yet completed v11 results.
+
+The [finite goal](milestones/2026-11-02-open-native-estimators-v11.md) connects
+derivative-free feedback and a prior-frozen control-variate expectation-gradient
+route to the same generated source/protocol/wiring/native execution boundary.
+Existing operational representations remain optional useful methods, not a
+mandatory whole-world AD gate. [Parmas literature pointers](literature/parmas-gradient-estimators-for-open-institutions.md)
+motivate the distinction; this is not an implementation claim for TPX/Proppo.
+The [prospective pilot](protocols/campaigns/native-open-estimators-v11.md) caps
+actual native attempts at8 with the existing utility loss, five authors,
+two years and seed42. No v11 actual inference or empirical improvement has been
+recorded at this planning entry. V10/v8 evidence below stays historical.
+
 ## Completed finite v10: actual institution update paths, not scale-up
 
 The user approves rapid parallel development of the next finite goal. Keep the

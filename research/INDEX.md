@@ -6,6 +6,10 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V11 active parallel goal: open native institutions and optional gradient estimators](milestones/2026-11-02-open-native-estimators-v11.md)
+- [V11 prospective eight-attempt native pilot](protocols/campaigns/native-open-estimators-v11.md)
+- [Decision 0028: optimize scientific systems, not differentiability itself](decisions/0028-estimators-serve-open-institutional-optimization.md)
+- [Parmas literature pointers and conditional expected-loss gradient identity](literature/parmas-gradient-estimators-for-open-institutions.md)
 - [V10 native institution update paths: implementation, actual result and remaining limits](milestones/2026-11-02-native-method-paths-v10.md)
 - [V10 actual gradient/black-box paths: both move, neither finds a new best](results/native-method-paths-v10-a1.md)
 - [V10 independent policy/refit/native/reply audit, unchanged110-file raw inventory](results/native-method-paths-v10-a1.json)

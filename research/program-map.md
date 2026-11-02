@@ -2,7 +2,30 @@
 
 Updated: 2026-11-02
 
-The latest completed execution slice is
+## Current direction: optimization, not mandatory differentiability
+
+The latest completed execution slice is [v10](milestones/2026-11-02-native-method-paths-v10.md):
+two methods move through six fresh native worlds but neither beats the shared
+historical incumbent. [Active v11](milestones/2026-11-02-open-native-estimators-v11.md)
+connects free code/protocol/wiring design to conditional expectation-gradient
+estimators, derivative-free feedback and a latest-method evidence UI.
+
+| Parallel work | Shared object | Finite next evidence |
+|---|---|---|
+| Open native design | Executable source, protocols, graph and institutional coordinates | Both search methods run the same original native world |
+| Derivative-free feedback | Actual native LossSpec observations | Durable design/evaluate/revise path |
+| Expected-loss estimators | Explicit declared conditional design distribution | Plain LR and prior-frozen corrected control variate with analytical checks |
+| Operational representations | Suitable numerical institution/response computations | Remain an optional route, not a whole-world differentiability requirement |
+| English UI and reporting | Immutable actual observations and source receipts | Latest paths, losses, current/incumbent and physical cost visible |
+
+The first three implementation areas are owned across two coordinated backend
+specialists; a third specialist owns the UI, while root integrates protocol,
+verification and manuscript. A named track is not a claim of a perpetual
+background worker. See STATUS for whether it is running or completed.
+Whole-world differentiability is no longer a completion condition. This does
+not convert a partial representation into an exact native-world derivative.
+
+The preceding structural execution slice is
 [objective-conditioned structure and native-response fidelity v8](milestones/2026-11-02-objective-structure-and-response-v8.md):
 two fixed losses condition free source/graph generation in eight small native
 worlds; actual paths[-9,-9,-10,-10] and[0,0,.4833,.4833] have734 Qwen replies,

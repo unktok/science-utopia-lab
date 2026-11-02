@@ -1,0 +1,57 @@
+\subsection{Expected-loss gradients without a differentiable native world}
+\label{sec:native-estimators-v11}
+
+The research objective is open institutional optimization, not making every
+native operation differentiable. Let $X$ denote a categorical code/wiring
+assignment and continuous latent institutional coordinates drawn from a
+declared distribution $q_\theta$ within one externally generated vocabulary.
+The original world produces native loss $L(X,\xi)$, with researcher-model
+weights fixed but responses dependent on the installed institution. Under the
+usual support, integrability and differentiation conditions, and no additional
+direct $\theta$-dependence in the conditional environment,
+\begin{equation}
+ \nabla_\theta J
+ = \mathbb E\!\left[L(X,\xi)\nabla_\theta\log q_\theta(X)\right],
+ \qquad J=\mathbb E[L(X,\xi)].
+ \label{eq:native-v11-score}
+\end{equation}
+This estimates a design-distribution gradient without differentiating native
+execution. Its likelihood covers only explicit current-vocabulary choices and
+Gaussian latents, not the unknown probability of arbitrary source invention
+or opaque researcher text. Existing conditional score paths implement this
+distinction; they are not whole-world pathwise derivatives.
+
+\paragraph{Optional representations and corrected control variates.}
+LR and reparameterization estimators are related approaches to gradients of
+expectations~\citep{parmas2021unified}. Composite estimators such as TPX and
+composable propagation frameworks such as Proppo motivate exposing estimation
+as a separate interface~\citep{parmas2023composite,parmas2022proppo}.
+Nonsmooth-dynamics studies also distinguish differentiability from practical
+estimator behavior~\citep{onoda2026differentiable}. These are methodological
+references, not claims that their algorithms have been reproduced here.
+
+For a surrogate $c(X)$ frozen before drawing the scored batch and with tractable
+expectation, the corrected identity is
+\begin{equation}
+ \nabla_\theta J
+ =\mathbb E\!\left[(L-c(X))\nabla_\theta\log q_\theta(X)\right]
+   +\nabla_\theta\mathbb E_{q_\theta}[c(X)].
+ \label{eq:native-v11-control-variate}
+\end{equation}
+An inaccurate $c$ need not bias this identity, but variance reduction is not
+guaranteed. Fitting $c$ on the same scored batch, dropping the correction or
+silently transporting it across incompatible code/coordinate semantics can
+invalidate the intended estimator. Conversely, blending an approximate-world
+derivative with a score estimate does not automatically eliminate its bias.
+
+\paragraph{Prospective non-scale integration.}
+V11 connects derivative-free feedback and prior-frozen corrected estimation
+to the same free source/protocol/wiring boundary. Its protocol caps execution
+at eight native attempts, two methods by two generations by two IID draws,
+under the existing utility loss and unchanged five-author, two-year, seed-42
+world. First-generation definitions are method-matched; later authoring and
+fitting see only their own earlier outcomes. Existing differentiable
+representations remain available, not prerequisites. At this planning entry,
+v11 is active implementation, not a new empirical result or evidence of
+variance reduction, method superiority, autonomous invention or improved
+scientific value.
