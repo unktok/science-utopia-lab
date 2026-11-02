@@ -111,6 +111,7 @@ def summarize(output, plan, campaigns):
             'authoring': audit_manifest_inbox(output / 'arms' / name / 'authoring')}
         for record in campaign.state['records']:
             failures += bool(record['generation_error'])
+            failures += (record.get('report') or {}).get('status') == 'not-updated-estimator-failure'
             for draw, observation in zip(record['draws'], record['observations']):
                 committed += 1
                 valid = observation and observation['status'] == 'complete' and not observation['metadata'].get('technical_failures')
