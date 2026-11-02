@@ -40,8 +40,15 @@ is proxy-seeking, not evidence of evaluation quality or harm. Actual UI export
 preserves66 exact integer identities;250 tests/typecheck/build and nine actual
 desktop/mobile captures pass, including guarded local workbench handoff without
 inference, adoption or granted consent. Editable local drafts remain separate
-from execution/adoption. Actual figure final layout QA, final PDF render/
-verification, complete source/artifact receipt and main push remain.
+from execution/adoption. Final publication source`4ffe576` separately passes
+365 report tests,250 UI tests/typecheck/build. Root checks all54 rendered PDF
+pages and13 enlarged pages; no overfull boxes or undefined references remain.
+The actual six-panel figure uses bounded leaders to its exact cross-score points.
+[Source/artifact verification](results/native-nested-search-v13-verification.json)
+binds native/source/audit/figure/UI/test/PDF hashes without relabelling the2020
+pass as a full-suite run of the final documentation tip. Historical v12 main107
+and followup32 raw files remain byte-identical. Main integration/push is the
+remaining publication step; no native inference is pending.
 
 ## Completed finite v12: free objective-conditioned redesign and inspected effects
 

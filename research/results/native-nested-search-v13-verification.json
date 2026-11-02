@@ -1,0 +1,1487 @@
+{
+  "schema": "scienceutopia.native-nested-search-verification.v13",
+  "date": "2026-11-02",
+  "status": "finite-v13-native-audit-ui-figure-and-paper-verified",
+  "scope": "Bounded original-world free outer institution design + conditional inner expected-loss update. Not all non-scale research completion, autonomous inventor improvement, scientific benefit, generalization, expected improvement or estimator superiority.",
+  "actual_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+  "publication_build_and_final_report_ui_test_source": "4ffe57657e4b3381ba1b20c11087f4e279c9be92",
+  "native_runtime_and_frozen_protocol_byte_unchanged": true,
+  "replay_critical_blobs_checked": 227,
+  "counting_rule": "Overlapping software suites are separate scopes, not summed and not scientific replicates. IID design draws, same development seed42; eight fresh worlds with no response reuse.",
+  "actual": {
+    "audit": {
+      "path": "research/results/native-nested-search-v13-a1.json",
+      "sha256": "201263f4667fd1ad962d4e885148e3c518fdc72771a2d02d2c07c68e67c9c96a"
+    },
+    "audit_content_sha256": "abb671726c48e797a0af28b3fff27b49c0b2fb6a79c3adcb0bd6bb7602bf34ba",
+    "raw_files_verified": 129,
+    "raw_inventory_sha256": "f8e385dde54b0de3218e34796f6688ca19155f5a5eb425e5596e7ac984d91408",
+    "raw_unchanged": true,
+    "independent_repeat_byte_identical": true,
+    "repeat": {
+      "path": "outputs/native-nested-search-v13-verification/independent-audit-repeat.json",
+      "sha256": "201263f4667fd1ad962d4e885148e3c518fdc72771a2d02d2c07c68e67c9c96a"
+    },
+    "physical_worlds": 8,
+    "fresh_replies": 592,
+    "loss_paths": {
+      "native-joint-v5-throughput": [
+        -7.0,
+        -7.0,
+        -6.0,
+        -10.0
+      ],
+      "native-reviewed-production-efficiency-v13": [
+        -17.0,
+        -12.5,
+        -10.0,
+        -18.0
+      ]
+    },
+    "physical_effects": {
+      "source_executions": 40,
+      "complete_plan_effects": 16,
+      "review_routing_events": 16,
+      "review_records": 28
+    },
+    "selected_cross_scores": {
+      "native-joint-v5-throughput": {
+        "native-joint-v5-throughput": -10.0,
+        "native-reviewed-production-efficiency-v13": 0.0
+      },
+      "native-reviewed-production-efficiency-v13": {
+        "native-joint-v5-throughput": -6.0,
+        "native-reviewed-production-efficiency-v13": -18.0
+      }
+    },
+    "model_call_seconds_sum": 2094.17,
+    "time_not_overall_wall_or_author_cost": true
+  },
+  "authoring_scripted_qa_not_Qwen_evidence": [
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/author_g0.py",
+      "sha256": "9d9c7651832113100ab5d057110215502f38486b7bfc264cf63cbd17bec0ac57"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/authoring-log.md",
+      "sha256": "40884d9092998e11bcbc6a2e29962b431e8ee3f890f1d02175247275d43b6534"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/draft-v1.json",
+      "sha256": "eabb293e3be3e24129a9e1b72796d778057be3876895c7734033d71b78ee1975"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-final.json",
+      "sha256": "1d2e9dff28f4feb45a2cf9ea5175f5488c3369fd41dd367330186a1a3dbd0cb9"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-harness-v1.py",
+      "sha256": "69d259ac9a8ff5cb87fedfb6983f80b270a17d12b062a37b22bca00375a84c37"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-junit.xml",
+      "sha256": "e4c1f77035bf06765f27147b27f3f086f4241f2cf823d322398cd28d462317f8"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-exact-draw-0.json",
+      "sha256": "67d00197b55cd0ddb8a44bf4e7433e2be85fc8c663316f6c3755b381c68466c4"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-exact-draw-1.json",
+      "sha256": "4d0844d0dbd8a745d9a2def599b722640fe9214f4bab1120e3fa9f144732357a"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-one-coverage-0-0.json",
+      "sha256": "121aebc3ee61e510fcf9b3f6e90722651e0296ec21d20cce5260bfe32a163efb"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-one-coverage-0-5.json",
+      "sha256": "44ab9368f7ebd74f7c92321f673419c8ab01a63ed6c1f14719ac1d593e36bc1f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-one-coverage-1-0.json",
+      "sha256": "47762ac29643594425b0e37172b8777184dbc942ca686aa83a5e515205643bf8"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-two-coverage-0-0.json",
+      "sha256": "29c93ac43742e9a7a6a0300041275449321b78c3226e9ab00277a8231cd073c8"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-two-coverage-0-5.json",
+      "sha256": "3dafbe85b669838d690298ca0ed9e7668ecbd62af44b036be6a99f775337b6c5"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-two-coverage-1-0.json",
+      "sha256": "7122da7f5fce0891ab87c432983b7f7c73e984cb97fbe5612ae3d5ff9063bd4d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-zero-coverage-0-0.json",
+      "sha256": "b37fdbd1b24b0a29537b45fbfea9e186740f87adf8495f552e7963d8e8d2d9af"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-zero-coverage-0-5.json",
+      "sha256": "fa1f77c2966e69316d609f201f29e598352cb324566ade9e93fa04c5ab492238"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-native-zero-coverage-1-0.json",
+      "sha256": "ea2f4982d8a2b51eff4f9aee7ea46eb1b519f6806fa9e99de4961ec4716c3b04"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_0/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/replies/responses.sqlite",
+      "sha256": "b9e5c2a4abdc07108c1d59a6b2c71569e65db0b7d687c43ea804f0acdd7157ce"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/system.json",
+      "sha256": "e2f05f8f052ba0a10146af2a5d7f420d629a332846dfd88534bdbc6cb91e508e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_1/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/replies/responses.sqlite",
+      "sha256": "e6ee78c495a319f16a9e27601a4748f32bb76d127335f3a59fa07373864e68ae"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/system.json",
+      "sha256": "a30b4b844682e871dfea00211ca6c5c3c8883954dcb28ae8e1412717b9f79818"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_10/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_10/worlds/exact-draw-1/replies/responses.sqlite",
+      "sha256": "7653c1dadd92fa3dad109c6b08923024bb0ff9d8542fa55daca5e279cad45cb7"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_10/worlds/exact-draw-1/system.json",
+      "sha256": "b829fb8e97e636f7879d804bd687ac69d7969257491c8949782b3a3138b63604"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_2/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/replies/responses.sqlite",
+      "sha256": "9b25c037314b826a4056283165a8b88bb04fca8636f750e32e6b4a6b1cc7b3cb"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/system.json",
+      "sha256": "cb4f0948f6cc46c77e90c5d981d3d2142fb0eb923d4700cb49706e663a8f5b62"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_3/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/replies/responses.sqlite",
+      "sha256": "cb349067dacae8f8c935662a3c9d6761fb9ad919ae77eb067f18ce5ae00a8166"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/system.json",
+      "sha256": "e0a7ed2c07357a1a84e15653ea8499cf009cc9bc316fd6b41c3baead005c39d4"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_4/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/replies/responses.sqlite",
+      "sha256": "6d9c82f0e0e9e6c94e010b30e53f58e6b9a745ed6ea94774b16a82a87c05a874"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/system.json",
+      "sha256": "456d8ddd20adb5894421298bc459d740f6f6681d91a24200e2248f22f872dccb"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_5/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/replies/responses.sqlite",
+      "sha256": "f6cb19a86bc11953859c7b1bb85b5db643f891a9efdcb44c2a0d0d40989de534"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/system.json",
+      "sha256": "701e3b1f1eea146a5c6793873594b878bfeb53a6b1d05d6121bd721988ef6236"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_6/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/replies/responses.sqlite",
+      "sha256": "d1a5588fc902e34381d29918ad39d52dad608735e773f7e67a5a565212b11f33"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/system.json",
+      "sha256": "bcf87b778ac7e7e17e225c4b7ed22744e1877277d57b0bbb3f343515d58fcce4"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_7/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/replies/responses.sqlite",
+      "sha256": "5ba92f8511eaf6775b961734e85ed75f7777df4167b0736382a8cd9c819b2a5a"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/system.json",
+      "sha256": "c5ae33425edf7022b494cf9c86ae2ee9891b0c7879d0b278b429a158cf2a2d50"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_8/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/replies/responses.sqlite",
+      "sha256": "1c00e29834ee7c68991f4ae9857f465b8265854933d8a5d0b56a87b37f58c145"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/system.json",
+      "sha256": "9fb7373a1f9131eb6f9ba210fcb4fbcf6f088281413ed75a21076f6de789c1ab"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_9/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_9/worlds/exact-draw-0/replies/responses.sqlite",
+      "sha256": "0c48d07df7c64ec19bf6511a3389602df6bd2b16e17c60f11e08eac66c97e2e7"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-runtime/test_original_native_scripted_9/worlds/exact-draw-0/system.json",
+      "sha256": "ff0909814a3b11ee17ebb679159f6409e191850f4cb078b64e9c38e59a20bc3b"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v1-static.json",
+      "sha256": "9aaf358e042879f00bcabd492baa38a299d2d1a40abf3ef11862933b9ca20172"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-junit.xml",
+      "sha256": "8d8fc9c355ff19c9238477351c9921ade78210e8262e5c63c9f6f7c4206c866f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/code-contexts.jsonl",
+      "sha256": "30436ffb4e2d8a90bf7d4df8084cb53d44da3f4726d6995f61bff579822342fc"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/replies/responses.sqlite",
+      "sha256": "042348022e47e43a0e0fab2e6df32fd3ea2cde5414c7dcc5fb30b41e465bf35c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "9a45445848de57c6918404ed30ff1896d31b602f3758882b44d2e642afcbbb51"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "6c3c75ed216be7b068f023bc00d9b6f1191b691c8bff9a28c8ff393e0039bb65"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "473b745b43481cbe573f73ede874fdf8ae9abb448fc0fa42d88be0bbac74129e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "424bcfc202434c96788f61ffbfeccf7bd2835b38bff3c154e1da34e75a76cc49"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "e67960166c0be2171e19143bd737cd1f8061b6fc565c31cd1f3312b544cea8f1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_0/worlds/zero-coverage-0-0/system.json",
+      "sha256": "e2f05f8f052ba0a10146af2a5d7f420d629a332846dfd88534bdbc6cb91e508e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/code-contexts.jsonl",
+      "sha256": "c075b4025d54777f38eebed6a9a43c2a7253728d0bcaf009aa7235de40f6af3e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/replies/responses.sqlite",
+      "sha256": "5d1812e3572ef461e6758c8fb5f1221d9e8694706bd761fd3cb69a2aa12b11b7"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "cb839abc50d7eff3cbb7e0deee4ddc197fac5ac0495411e14d36831c4acd0df1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "06377f9e55e61ee07fc9ec9c5dcefca443b88fceb8362584e7ca8924115382d1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "6fc8a5d3ccf853ea19f422cfe8bc88c6faa014acb922480b353cc388fd552403"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "424bcfc202434c96788f61ffbfeccf7bd2835b38bff3c154e1da34e75a76cc49"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/simulation/docs/native-design/run_manifest.json",
+      "sha256": "21b738c0bc8ba1fe16d5fa4746bc59d27b3c6d3e5faf04727b7e4e3ccfe0aff2"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_1/worlds/zero-coverage-0-5/system.json",
+      "sha256": "a30b4b844682e871dfea00211ca6c5c3c8883954dcb28ae8e1412717b9f79818"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/code-contexts.jsonl",
+      "sha256": "36d3f5d84f5c2e855b1d1fc78266aed0ef4b13114a74b8b8e2f164164b5c2722"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/replies/responses.sqlite",
+      "sha256": "40a3335ac8dd78c5c03ad0d238c3781b1c8f83db50dcc0f8390b78fe30dc7ce3"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "c607e3278f63676884bf168104332698f70abf7213b991fa5e7badd74293f7fa"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "27c8e43cd6562043079872b90deb0bf34b8f29815f7a8c6bf8af6799f58cee8d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "29fa906a72519c3718db34e8d54e36b9a0b270007bdafb1517a1dca0fb569ec4"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/simulation/docs/native-design/run_manifest.json",
+      "sha256": "c33d66e226f430f74cfc53a40f117934e5d6dca682f1c566f881ed7be98c22af"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_10/worlds/exact-draw-1/system.json",
+      "sha256": "b829fb8e97e636f7879d804bd687ac69d7969257491c8949782b3a3138b63604"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/code-contexts.jsonl",
+      "sha256": "ccf3c60385150355aa95e0b7e9c3c26723b59e92a4595174418dea6565419a30"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/replies/responses.sqlite",
+      "sha256": "9b344bb18eea62f6acf1cba2fd9aea313e16dd77405ff7f4a6476e9c7ac86b21"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "855cdff3cbb117b261a5878b020361e685a519720ffe4f2359695851d458b734"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "dae34237b426aaafd1f5aa11b56d13331eac282a84579a19d855931e0880a49c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "5b8886858e129389d566a88558cdee2b8a51c906914f8751d43f45086b7fbaea"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "424bcfc202434c96788f61ffbfeccf7bd2835b38bff3c154e1da34e75a76cc49"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "6e702ceb1fced8b64f9b64b7b63bdf0a460e1501f351a5ca160f9c3c921e8a00"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_2/worlds/zero-coverage-1-0/system.json",
+      "sha256": "cb4f0948f6cc46c77e90c5d981d3d2142fb0eb923d4700cb49706e663a8f5b62"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/code-contexts.jsonl",
+      "sha256": "5882b0a28c801528d7a5fe1304f17e09b14dbfb3e7799ae720c949fca452d126"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/replies/responses.sqlite",
+      "sha256": "38aa9c1eb87491a69373d1f4eef3516287105c7af8d5fead81883a3c9e24e942"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "702bea749f2d106aa7acb6d74a14d68f51d6680de296dbc0cd9c0d06eb4a7fac"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "4007cb9a5177efd077bd5e0b36583b41aa1cc8ca77ad42ddbdb5f85ac611350d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "95ddd20d628d7567daa5ead16c42ac49022101f72c3d3719085309017c498298"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "424bcfc202434c96788f61ffbfeccf7bd2835b38bff3c154e1da34e75a76cc49"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "5aecfd36f7eee1ec11752e6361444615e4c6ccaadaf84e8120d9a8cb67a55b77"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_3/worlds/one-coverage-0-0/system.json",
+      "sha256": "e0a7ed2c07357a1a84e15653ea8499cf009cc9bc316fd6b41c3baead005c39d4"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/code-contexts.jsonl",
+      "sha256": "456881b7489e2774e058ae26793da12af056915b000f6ef3ed85b85530ed97a3"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/replies/responses.sqlite",
+      "sha256": "4b52d528457676f9c0706ac27158d28bee8bf4f76e5bb4c7835d0e806d43e5be"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "f9bdaab1048c6aaf97f4cb86634cbd8257a242581b388935d151d7df32e19208"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "0f882c74bcb585d218d70d82e54909b1b5955e176fbeb2809a47b2d69cb5fe33"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "df817e40e55e330a2e159f5237dd9592860bf097e0874e4da6f42c9d47a95b37"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/simulation/docs/native-design/run_manifest.json",
+      "sha256": "25346b17057d08b445e8fd77365c5d3e95cbb02d47c9c954ca35d8923059ca1b"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_4/worlds/one-coverage-0-5/system.json",
+      "sha256": "456d8ddd20adb5894421298bc459d740f6f6681d91a24200e2248f22f872dccb"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/code-contexts.jsonl",
+      "sha256": "2b103271bb435f13c405762924954523505f2ca28d6bf7fe4bb2cf0a9ecf2c56"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/replies/responses.sqlite",
+      "sha256": "8333c67b59be54743ab0dea6ae09860dcde6e766129b92c07823ad254dbfa824"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "8395c5d86fda398d729fef5d8e2b541a68e82cac624b47fae8dc3f56b8f9ed88"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "8036847225d257d6d8c2c55ac21f8fae126437eea4c3ca9cf57ea1276cb69194"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "e712f0ee4eba54811978d75ac6c8c6b4976fe1a9a22c47f373f475376d707a84"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "cebce86a32fcf420c6fb095873500e0881e82ac732d49bbfd0d07b7876c2393e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_5/worlds/one-coverage-1-0/system.json",
+      "sha256": "701e3b1f1eea146a5c6793873594b878bfeb53a6b1d05d6121bd721988ef6236"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/code-contexts.jsonl",
+      "sha256": "83a4f9d994cdf08532999ee127b9fc959dbeed110e556858c951741de9457522"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/replies/responses.sqlite",
+      "sha256": "bd75627cfd3af8bc293db3a87f2261d29ad7af41c694a5da9a262a1c1ea431d8"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "df95d3cae8a96308c3a65e6061accaae54fa0a30df5063110607afb92a83a163"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "0a42879c36d81d02504110611713bae3f9a75ff2722dbb02d7a9ab2e4148be92"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "3e545dc6291e3968d754f977ffa4ddbea68e609bbcffef4885c7cc695aa7a0de"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "424bcfc202434c96788f61ffbfeccf7bd2835b38bff3c154e1da34e75a76cc49"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "a604407b23a7c9e4ec687f8b90dfe774c61f72118bf32aeb57d4022198e36627"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_6/worlds/two-coverage-0-0/system.json",
+      "sha256": "bcf87b778ac7e7e17e225c4b7ed22744e1877277d57b0bbb3f343515d58fcce4"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/code-contexts.jsonl",
+      "sha256": "19ca3282789d3aeba36f076040a80a49bbc658979ec056092c7a7b78fc6ec7b0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/replies/responses.sqlite",
+      "sha256": "ff0307dc968af1e3d2e04c58070f9e6caf45b917c74c46a12e4984bf977824a5"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "d746e0e31f0cfb1b231fc4b0762c10b250e48641a7e079886aa6506c8f35642f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "573f78f667b90865acbdee6de545e56f92cd42521c528ca7cb4ceead20db7664"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "bc8148bbace47c87c8e9d90461a980e127856cf275ff7237fa5b25046495a7b1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/simulation/docs/native-design/run_manifest.json",
+      "sha256": "3f6ba8f43c04e05f657662edf0f36138de93160fc3e0ff2067efbac552711e6f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_7/worlds/two-coverage-0-5/system.json",
+      "sha256": "c5ae33425edf7022b494cf9c86ae2ee9891b0c7879d0b278b429a158cf2a2d50"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/code-contexts.jsonl",
+      "sha256": "65b649b4974f391dca5b2a75bc8f97352ce40aae7ccd2fa5b217214c9b59239c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/replies/responses.sqlite",
+      "sha256": "fbaf45be964d166074025d812514e39adfbeffb60c7b23b19f0375858bb1921f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "d6698ba0c99873f8c31661d957530f589a448dd02f599a715a87d80e721764ef"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "62e47ffd6689b5a2adee9a2927a6c1f3d8c026a33ef5f9bc25b455ad6b0e51ae"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "c99960d9458757a7e9caf7ba0f20b649b55d4b4da489190a3f0ec9d2f0761b0f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "2e83d79a75cbf8eca49c77adbc5810809041ab59ea7a88a387a8eb3129598130"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_8/worlds/two-coverage-1-0/system.json",
+      "sha256": "9fb7373a1f9131eb6f9ba210fcb4fbcf6f088281413ed75a21076f6de789c1ab"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/code-contexts.jsonl",
+      "sha256": "32ede73a373a39f84f74aeee10dde545f70da7bff3e37562ace026b443bb8fa5"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/replies/responses.sqlite",
+      "sha256": "9fb08b2377b353f34c73273c5bb970e31b695d5fa96d24fe42bf6a5d26eaaa38"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "6c3f6806f75a27ad5d402a42477c0465114593a15fe38367bc9b3c1243f4b655"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "ab2e049c9cd5aa7126bad6f44f9dae53f60ce171d16b72fb0f66ff36066cb961"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "29cc7236d7556a589177fd0ce62fb0c64ad6504a1356205349d6eb8a4c234163"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/simulation/docs/native-design/run_manifest.json",
+      "sha256": "e7ca024e1b0cc880f6f75207f2098d93e6e6d42f8e8f0f9645b5a64001651692"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/qa-v2-runtime/test_original_native_scripted_9/worlds/exact-draw-0/system.json",
+      "sha256": "ff0909814a3b11ee17ebb679159f6409e191850f4cb078b64e9c38e59a20bc3b"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/summarize_qa.py",
+      "sha256": "3fa91b2fc67107c16bab515578948a9a572d38a5ebb90c95d7d9c6248b3a2684"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g0/test_exact_draft.py",
+      "sha256": "04c0f511fca6c29463c6fefc7c9bc0a23146500727eb65a5c581de0ae969d849"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/author_g1.py",
+      "sha256": "e2c1b64ea4d1ef5ffb5abb70018169b0cd7193d071212c535773355cdea00d52"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/authoring-log.md",
+      "sha256": "877443824046901d814a8a738d9669fcb0e33818bcc37c25c952d0df87360bd3"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/draft-v1.json",
+      "sha256": "e06598e21fcd4dc7f396f03cb71b837f5a2018ec2875af98f5e594efd67c7a2f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/publication-validation.json",
+      "sha256": "d8cfce4d3fa9eea14080911df624180f74e4b09e38cd25e3bd0bab17d1b9361d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-final.json",
+      "sha256": "42e764ed8d1ee453fafaca1b17971d137f82625f986d232a910a8f17f3c0b383"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-native.json",
+      "sha256": "d399849b1b6e2922e57deb6c4d28903b90469b8dedb719742689ecf991496a61"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-static.json",
+      "sha256": "71a960da976495dd2e14ff066a4e21cab4bf83e2c3c067b9e8672e4a25625520"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-junit.xml",
+      "sha256": "777fcc8848e2d7613bdc5a76b889bafae40ced7677afcf454b351654edffaec3"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/scripted-model/cache/responses.sqlite",
+      "sha256": "a333a425b0b7d5adaa9ba2e82967dc6baf29f70a15c5afd81cc1c88b0e4245f0"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/code-contexts.jsonl",
+      "sha256": "e7399bffb9e6cdfac8d8ae8322fd6d394862818a2375b83164f074c1fbe646bf"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/replies/responses.sqlite",
+      "sha256": "81cccf85e706b435706ec6823d937aa1487c4dbd5c6173ab8bd8736907037efc"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/funding_application_trace_year_1.jsonl",
+      "sha256": "7854bcfe61c787ca7b834cd596b9fdea19e5f9caa500dd04b3b513511c4cd39d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/funding_application_trace_year_1.summary.json",
+      "sha256": "ed3c80afef7a0ff05ac31e3b1be0a596bed7d0d5cb4838833a39c2c1b6417815"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/funding_application_trace_year_2.jsonl",
+      "sha256": "b7947854167abaf38a4c3a9dd09bbd53488f8196d86f68fcae66f3f312cbc97c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/funding_application_trace_year_2.summary.json",
+      "sha256": "19a74ce0b5a8c978136c6e3f6a3b033f69316aa5c20097db3d04ba9ee44fd920"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/population_blueprint.csv",
+      "sha256": "a941a2035091e7bb09e70129ac286399b3959974fe70a70794957a9eda592dd1"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/portable_checkpoint_year_0.json.gz",
+      "sha256": "f8a229f427f6d3c9e93e012ecc08473ee1657f147f0f10064b6df80b8faa6360"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz",
+      "sha256": "40a50e2d72a3ed1ce8559763c41d2b19c8de89d692ef764162ffdde3f5124f04"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "sha256": "549da804e2feb043b1e29848ff989a3ed595d7a672e85c2dba1f5614b3ee1985"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/checkpoints/native-design/simulation_report.json",
+      "sha256": "e6f588429456f8e14f7487c6e618ac35e81a13e85937881bd9ae98e558bfccad"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/simulation/docs/native-design/run_manifest.json",
+      "sha256": "0174b18a9ffb85e4bf1ed734d89ea095303c247b17128cdc879edb9e2e9b0491"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/qa-v1-runtime/test_original_production_nativ0/worlds/exact-single-draw/system.json",
+      "sha256": "982481c98270c802c73ad4adc5856a6d832be8158e6f33f357534199653d58bb"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/summarize_qa.py",
+      "sha256": "32b9b19b21af96c5bcad707885d527eef2555e629b6d66a20e025b4aa8dbe1ff"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/efficiency-g1/test_exact_draft.py",
+      "sha256": "21efd925e5d69a42436f7b7f39ab90398b0a24a70837222ef3255ff46cac7158"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/__pycache__/test_scripted_native_qa.cpython-311-pytest-8.4.1.pyc",
+      "sha256": "0098f771820412f45480af8a674185321432e9e5feb2e503c7833d3a0c10cdab"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/author.py",
+      "sha256": "27701218efe6bbddf6b1aeedde6da61d1d8d14b92eca374a0659ae858168220f"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/base-native-case.json",
+      "sha256": "eae1c1d8b87b3de54c2199a1da4b1ba7c485ed2c78bf4f8720ef061c81e25ac5"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/draft-response.json",
+      "sha256": "25c3c111ed8d29a0408057ae98dd37ee7f0b623bc28336ba32be63f7399c387d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/draw0-native-case.json",
+      "sha256": "4cd307c8d0f5f1673b8defbc58f59d0c97f0e9baa4c202849f659721b14a1ef8"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/draw1-native-case.json",
+      "sha256": "7d6b34329165b6f04953cb459101bbefa1c7fd2e9b49cff418d9fc830c934eaa"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/endpoint0-native-case.json",
+      "sha256": "a1780fcd0d5122cc99ba1ba787cd2ab9072e32f18d91e10744e0f6e608cb646a"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/endpoint1-native-case.json",
+      "sha256": "2dbbeb7d09e0c75315617a7a55c51d032c42326fa17f58918eff6d3c867cabfa"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/native-qa-receipt.json",
+      "sha256": "408666d27340b7fd0ea78e6d848ea34ff8ef496d4a12472aaac4811dc3881d71"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/native-qa.xml",
+      "sha256": "bdacef016cb8192ee088942377b970bed115d5c95cf0d0dc90975b312c36e681"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/qa-candidates.json",
+      "sha256": "1b494c40524526310e507f8f8e61881cbf4a00e32fec39eed4e100dcbbc4ffd3"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/static-validation.json",
+      "sha256": "c42a3641a82e4d655f6b77bd1f98c265bc75862dae9f1a97c2bc561e898abd9e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g0/test_scripted_native_qa.py",
+      "sha256": "1348000736e8b56389ab7cca45dad6994085723db1a907fb041321c915ab51dd"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/__pycache__/test_scripted_native_qa.cpython-311-pytest-8.4.1.pyc",
+      "sha256": "9946cb60e8b9d864ee023b93a8d9828e0c637d28f25a41cce40dbc12e7c852f2"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/author.py",
+      "sha256": "af2a2f8af65c7e980ccd7c40d60857b9df61499b2d3e212c14a71f3fbc748b3e"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/draft-response.json",
+      "sha256": "924153e0196fc68d5d4c638af104fae97d19ff326e27224fa8d1b31f40c40717"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/native-case.json",
+      "sha256": "42240c6263823f6e412726fcfc2409df666219e9f844978a2d02f6f42542b668"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/native-qa-receipt.json",
+      "sha256": "9f7ca90050fdad71f081aa8cf940cac547bb82291200e91a54600428e9e70390"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/native-qa.xml",
+      "sha256": "ccde6cf49f5cca0a924a89593155fc48ad1cff7218a3eafe03d13dbd1dbe2e83"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/qa-candidate.json",
+      "sha256": "e42e0b96eca61b49e56587eb4e66b0b65127a097852b5e80caf254390a4de34c"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/static-validation.json",
+      "sha256": "79a3dcb5c9de96c510bc5a64876a6f2da2dade9a346b487cf749d58b26441d1a"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/authors/throughput-g1/test_scripted_native_qa.py",
+      "sha256": "83b5ec23c88473be5838db11cd0461ebca61913cb41652beca1c28d7af1c74af"
+    }
+  ],
+  "reviewer_memory_report_only_not_selection_gate": [
+    {
+      "path": "outputs/native-nested-search-v13-verification/reviewer-memory-audit/audit_reviewer_memory.py",
+      "sha256": "81d87df24968af630648dbe112dc09688ec1985f08e532243eb99df24602ce8d"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/reviewer-memory-audit/reviewer-memory-audit.json",
+      "sha256": "02829be7a58d68f5efad78a4e7c416f47a0c8df0a6ce80ea3a3f7bc9cbf6a519"
+    },
+    {
+      "path": "outputs/native-nested-search-v13-verification/reviewer-memory-audit/reviewer-memory-audit.md",
+      "sha256": "4ec9b932f136e13c74f8ac54f5aeab5279a93ef799dff3b57299a494cf46d3a4"
+    }
+  ],
+  "job_execution": {
+    "receipts": [
+      {
+        "path": "outputs/native-nested-search-v13-verification/actual-driver-r1.receipt.json",
+        "sha256": "bb98ca21ab11fb8a7611ff50879a6c2b1204d5de1733ccdc6932f10cb5f7d409"
+      },
+      {
+        "path": "outputs/native-nested-search-v13-verification/actual-driver-r2.receipt.json",
+        "sha256": "30392e84beeef30bb960e11f741db54d6d4cff5043fd1c02b9f879b1745a8ef2"
+      },
+      {
+        "path": "outputs/native-nested-search-v13-verification/actual-driver-r3.receipt.json",
+        "sha256": "ed8153e25b1888bca127c4f254f39565e471255d057dd030d2e16065f005d561"
+      },
+      {
+        "path": "outputs/native-nested-search-v13-verification/actual-driver-r4.receipt.json",
+        "sha256": "ef5fe5aec16ec3d610e39dd772de47cfcf4f52ac535db62d658bc8a24fece442"
+      },
+      {
+        "path": "outputs/native-nested-search-v13-verification/runtime-full-r2.receipt.json",
+        "sha256": "725c8a6b37dcbb5bbd2cb5daa1dd6d26d75c2cf4572cf85f2e34c7abf3385997"
+      },
+      {
+        "path": "outputs/native-nested-search-v13-verification/runtime-full-r3.receipt.json",
+        "sha256": "8f83be3a6b96b03a5dd7d579441b99036d1df287b49752e95a99499a47a227bf"
+      },
+      {
+        "path": "outputs/native-nested-search-v13-verification/runtime-full-r4.receipt.json",
+        "sha256": "16725d0c674865b73ae2c1294f513d037fafa729b6cb99d49af8ba55028b251b"
+      }
+    ],
+    "failed_or_interrupted_starts": "Initial terminal/nohup starts lack final JUnit/exit and are NOT passes. actual-r2 PATH failure exits1 before worlds; incorrect-env runtime-r3 explicitly terminates -15. Stale running receipts are retained, not proof of live work. Correct runtime-r4 passes; actual-r3 exits3 awaiting G1 authoring then actual-r4 exits0, no replacement slots.",
+    "correct_runtime_exit": 0,
+    "actual_final_exit": 0,
+    "owned_native_preview_supervisors_and_task_launchd_registrations_remaining": false,
+    "user_Ollama_service_untouched": true
+  },
+  "test_scopes": [
+    {
+      "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+      "scope": "Exact frozen native source full pytest",
+      "tests": 2026,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 6,
+      "passed": 2020,
+      "seconds": 1200.33,
+      "junit": {
+        "path": "outputs/native-nested-search-v13-verification/runtime-full-r4-junit.xml",
+        "sha256": "3a1c317c325747560970201f238e825bbf29440f226a0302cf6858a5bfb612d1"
+      }
+    },
+    {
+      "source_commit": "ccc1f44",
+      "scope": "Independent v13 audit component subset",
+      "tests": 38,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "passed": 38,
+      "seconds": 39.811,
+      "junit": {
+        "path": "outputs/native-nested-search-v13-verification/independent-audit-components.xml",
+        "sha256": "935501c6103b650b25a5e59bedb074d4774aacd5fa99e8db28a97609b24f5b0d"
+      }
+    },
+    {
+      "source_commit": "ae3d68272aae3386b8e108175b73979c85915d3d",
+      "scope": "Reporting before final point-label association correction",
+      "tests": 365,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "passed": 365,
+      "seconds": 60.173,
+      "junit": {
+        "path": "outputs/native-nested-search-v13-verification/final-report-suite.xml",
+        "sha256": "d49c6582165bf5ece806439b026d22fc70296485c7b36f048e021a1d76fef69b"
+      }
+    },
+    {
+      "source_commit": "4ffe57657e4b3381ba1b20c11087f4e279c9be92",
+      "scope": "Final reporting suite after point-label fix",
+      "tests": 365,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "passed": 365,
+      "seconds": 60.617,
+      "junit": {
+        "path": "outputs/native-nested-search-v13-verification/publication-report-suite.xml",
+        "sha256": "0b55cd80725384c26d475a0d4d9bf0145f3f8e6f439203553f8fd78fd6f9a86f"
+      }
+    }
+  ],
+  "ui": {
+    "tests": 250,
+    "test_files": 28,
+    "source_commit": "4ffe57657e4b3381ba1b20c11087f4e279c9be92",
+    "test_log": {
+      "path": "outputs/native-nested-search-v13-verification/publication-ui-tests-r2.log",
+      "sha256": "01aa34f498840e01e4c3e1d56341d015887730aa6b52b183e1f872bcffa47459"
+    },
+    "typecheck_exit": 0,
+    "typecheck_log": {
+      "path": "outputs/native-nested-search-v13-verification/publication-ui-typecheck.log",
+      "sha256": "69989f0d66d67adf30ffd6860e3ed5428a69a4494e9ee324400dc62f184be7e4"
+    },
+    "build_exit": 0,
+    "build_log": {
+      "path": "outputs/native-nested-search-v13-verification/publication-ui-build.log",
+      "sha256": "b703b787c9aaee8223e903642513c5de633d338adb1e284dd6f03f435803b966"
+    },
+    "preserved_initial_invocation_failure": {
+      "exit_code": 127,
+      "reason": "Missing node_modules in root worktree; no install/model call. Reused existing agent node_modules and reran.",
+      "log": {
+        "path": "outputs/native-nested-search-v13-verification/publication-ui-tests.log",
+        "sha256": "d2887fc8d19b3a6afe895441dd70859dc3cf8d2aacf3d615948237a79c2491d2"
+      }
+    },
+    "payload": {
+      "path": "game-ui-v2/public/data/native-nested-search-v13.ui.json",
+      "sha256": "03da7f2d91dce905dc684813ff4c3bd6457beef669c05f22a5cb1835d34b6c6b"
+    },
+    "export_receipt": {
+      "path": "game-ui-v2/public/data/native-nested-search-v13.ui-receipt.json",
+      "sha256": "8e4adae46cc524d4a8ade5362e87981866c4f52dcd6bae438d9cfb2f9159c1fd"
+    },
+    "browser_qa": {
+      "path": "game-ui-v2/screenshots/nested-foundry-v13-actual-qa/nested-foundry-v13-browser-qa.json",
+      "sha256": "6ba034c760608513ab77f5be5cf94d52d473c8d319bdb529b4938a537dbaa1f6"
+    },
+    "captures": [
+      {
+        "file": "nested-foundry-v13-actual-overview.png",
+        "sha256": "3980dd225fd1689f97cebc9d35b5fb986329674c121c9eada8411a84ac034a1a",
+        "id": "overview",
+        "width": 1600,
+        "height": 1120,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 1600,
+        "scrollWidth": 1600,
+        "bodyWidth": 1600,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-paths.png",
+        "sha256": "9616b8821781b97bce68d6837fdf6853f89db1351abb8f2eb0840e9813844867",
+        "id": "paths",
+        "focus": "paths",
+        "width": 1600,
+        "height": 1120,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 1600,
+        "scrollWidth": 1600,
+        "bodyWidth": 1600,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-signal.png",
+        "sha256": "7176ca2254b905bcb0ef1d4e191d5c5421a8e89bd270e3e31501285fce482f0f",
+        "id": "signal",
+        "focus": "signal",
+        "width": 1600,
+        "height": 1120,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 1600,
+        "scrollWidth": 1600,
+        "bodyWidth": 1600,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-circuit.png",
+        "sha256": "077caea3e5db24ca20a12366dd9f237dff7c5f502ab0faa0e7be01b1100a68bd",
+        "id": "circuit",
+        "focus": "circuit",
+        "width": 1600,
+        "height": 1120,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 1600,
+        "scrollWidth": 1600,
+        "bodyWidth": 1600,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-draft.png",
+        "sha256": "ecc41d10640f5c52eee9bca16ff4dc6f9352aa9b3db56e17debe24e358e89dbd",
+        "id": "draft",
+        "focus": "draft",
+        "width": 1600,
+        "height": 1120,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 1600,
+        "scrollWidth": 1600,
+        "bodyWidth": 1600,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-mobile-paths.png",
+        "sha256": "a0053c2074f24ead970d3b8d28f8f38ca2709579e8cd68bbc69ec59525fef068",
+        "id": "mobile-paths",
+        "focus": "paths",
+        "width": 390,
+        "height": 1120,
+        "mobile": true,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "bodyWidth": 390,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-mobile-signal.png",
+        "sha256": "8b6ea0e68213c271008746aa08959e0091c314ad31813c1080302193fbaa176d",
+        "id": "mobile-signal",
+        "focus": "signal",
+        "width": 390,
+        "height": 1120,
+        "mobile": true,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "bodyWidth": 390,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-mobile-circuit.png",
+        "sha256": "39d160f36089b1792ebc3682d7c9adbbc317085b5cb023b4c936b19a8104217a",
+        "id": "mobile-circuit",
+        "focus": "circuit",
+        "width": 390,
+        "height": 1120,
+        "mobile": true,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "bodyWidth": 390,
+        "images": true
+      },
+      {
+        "file": "nested-foundry-v13-actual-mobile-draft.png",
+        "sha256": "e98919722f3f00c37c02e178b77dafaeed2273ff3d41b2f56aac51609b2d2f44",
+        "id": "mobile-draft",
+        "focus": "draft",
+        "width": 390,
+        "height": 1120,
+        "mobile": true,
+        "badge": "AUDITED ACTUAL DEVELOPMENT",
+        "evidence": true,
+        "stations": 8,
+        "profiles": 8,
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "bodyWidth": 390,
+        "images": true
+      }
+    ],
+    "all_browser_source_and_capture_hashes_match": true,
+    "lossless_integer_paths": 66,
+    "unsafe_paths_in_observed_SystemSpecs": 0,
+    "full_history_equals_audit_after_declared_integer_encoding_and_running_best": true,
+    "old_v12_files_byte_equal_published_6c7fd63": [
+      "game-ui-v2/public/data/native-objective-redesign-v12.availability.json",
+      "game-ui-v2/public/data/native-objective-redesign-v12.ui-receipt.json",
+      "game-ui-v2/public/data/native-objective-redesign-v12.ui.json",
+      "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-actual-circuit.png",
+      "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-actual-mobile-circuit.png",
+      "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-actual-mobile-paths.png",
+      "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-actual-overview.png",
+      "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-actual-paths.png",
+      "game-ui-v2/screenshots/open-redesign-v12-actual-qa/open-redesign-v12-browser-qa.json"
+    ],
+    "no_inference_job_dispatch_or_adoption": true,
+    "local_branch_is_not_runtime_validated_or_consented": true
+  },
+  "historical_v12_raw_preserved": [
+    {
+      "audit": {
+        "path": "research/results/native-objective-redesign-v12-a1.json",
+        "sha256": "ca2742aa06ccd8675fcc50b5bc17041d057deb2cfad1357a19e3276d96530b76"
+      },
+      "declared_raw_files_byte_unchanged": 107,
+      "stored_raw_inventory_sha256": "d129899ec9aece37a55efe193707b1c964a79e122835f0138817dd0da307c45c",
+      "old_runtime_not_reexecuted": true
+    },
+    {
+      "audit": {
+        "path": "research/results/native-control-followup-v12-a1.json",
+        "sha256": "2e79fb90ee7f285215144cfdc8a8dcdfc29ac1d9955545fff8376cf89be83345"
+      },
+      "declared_raw_files_byte_unchanged": 32,
+      "stored_raw_inventory_sha256": "f5cf7069aac0472f52d2dadb7d83f5c769262d47a6d90c326d637de13c2c7736",
+      "old_runtime_not_reexecuted": true
+    }
+  ],
+  "figure": {
+    "manifest": {
+      "path": "paper/figures/native-nested-search-v13-a1.manifest.json",
+      "sha256": "452f7e9537e0fe1a717a2dd97a8edc5b6cd0c66edfb82eaaefd60529adc409f2"
+    },
+    "manifest_content_sha256": "40e7be07adf4029a4a8b3893e0b7a918daa16edbb6c6dc2e4fa4ba59995cbc71",
+    "generator": {
+      "path": "scripts/figures/native_nested_search_v13.py",
+      "sha256": "59c84f254cc6e203cf1d51c029f052c295c1a77f2caf938b799e0246d79f7c6f"
+    },
+    "outputs": [
+      {
+        "path": "paper/figures/native-nested-search-v13-a1.png",
+        "sha256": "442195924af00297fa33b04d30f78886870c1c7734ab7b61c5b7f2fdb370b0ae"
+      },
+      {
+        "path": "paper/figures/native-nested-search-v13-a1.svg",
+        "sha256": "f2c67258e914032e9f62c122ec906fe2c13dbd6f8ed24ba105c86dda416be37e"
+      }
+    ],
+    "native_width_inches": 5.5,
+    "all_labels_associated_to_exact_points_with_bounded_leaders": true
+  },
+  "paper": {
+    "source_commit": "4ffe57657e4b3381ba1b20c11087f4e279c9be92",
+    "pdf": {
+      "path": "tmp/pdfs/v13-publication/main.pdf",
+      "sha256": "159d0ac92c9ff7b00608658044d9af88455de5408b4071c4a80628666fb72f3c"
+    },
+    "pages": 54,
+    "delivery_path": "output/pdf/science-utopia-lab-working-paper.pdf",
+    "build_log": {
+      "path": "tmp/pdfs/v13-publication/build.log",
+      "sha256": "4071fa1228ff3afb5b531d99ed13254050251021a8b45d344e61d0fb7008f151"
+    },
+    "latex_log": {
+      "path": "tmp/pdfs/v13-publication/main.log",
+      "sha256": "f60ffedccb52ba36d21f39759f201455542c4fb2fde8a64231f11ac1381b57ed"
+    },
+    "render_inventory": {
+      "path": "outputs/native-nested-search-v13-verification/pdf-render/render-inventory.json",
+      "sha256": "b4c9c37af5338b654060298e4030e95b6cce942124b583ef8d693f307c78b9f1"
+    },
+    "render_helper": {
+      "path": "tmp/render_v13_pdf.py",
+      "sha256": "ab150f1be9d51328749e6a47031cb45e5d835225d5b9461d388a846be7957f35"
+    },
+    "all_pages_rendered_and_root_visually_reviewed": true,
+    "all_page_dpi": 75,
+    "enlarged_dpi": 150,
+    "enlarged_pages": [
+      1,
+      2,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      44,
+      45,
+      52,
+      53,
+      54
+    ],
+    "overfull_boxes": 0,
+    "undefined_references": 0,
+    "cosmetic_underfull_warnings_retained": true,
+    "historical_and_intermediate_PDFs_not_called_final": true
+  },
+  "whitespace_check": {
+    "source_JSON_Markdown_clean": true,
+    "exception": "Exact generated native-nested-search-v13-a1.svg has standard Matplotlib path trailing spaces; excluded only that file rather than changing already hashed bytes."
+  },
+  "publication_workflow": "Verified source/artifacts precede documentation-only closure and non-destructive main fast-forward/push; source pins above are not falsely labelled as a full-suite pass for the final documentation tip."
+}

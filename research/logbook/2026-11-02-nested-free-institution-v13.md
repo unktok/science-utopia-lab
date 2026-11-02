@@ -143,3 +143,38 @@ references. Figure review catches cross-score labels too far from their points,
 despite non-overlapping boxes; a report-only fix adds unambiguous association
 before final PDF build. The native runtime, losses, frozen protocol and raw
 observations remain unchanged. This intermediate PDF is not the final artifact.
+
+## Final artifact verification; ready for non-destructive publication
+
+The report-only figure association fix integrates as`4ffe576`: labels stay near
+their exact data y and have leaders; panelE explicitly says one G0 step per arm.
+Root inspects the actual figure and rebuilds the54-page paper from that clean
+source. All pages are rendered at75dpi and visually inspected; pages
+1/2/35/36/37/38/39/40/44/45/52/53/54 are enlarged to150dpi and checked.
+No overfull box or undefined reference remains. Old drafts/build logs are
+retained, not presented as the final artifact. Final PDF SHA256 is
+`159d0ac92c9ff7b00608658044d9af88455de5408b4071c4a80628666fb72f3c`.
+
+At the same publication source,365 report tests pass in60.62 seconds and250
+UI tests pass across28 files; typecheck/build exit0. These final runs have
+durable logs/JUnit. The first root UI invocation exits127 because its worktree
+has no node_modules; that log is preserved, then existing verified dependencies
+are reused without installation and the complete run succeeds. No inference
+or scientist world is consumed by publication QA.
+
+Independent read-only review matches the complete UI arm/history to the audit
+after only declared lossless integer encoding and deterministic running_best,
+checks13 UI-source hashes/nine captures, and confirms all nine historical v12
+UI files unchanged from published`6c7fd63`. Root also verifies all107 main and
+32 followup historical raw-file hashes without reexecuting the old runtime.
+All227 actual replay-critical blobs still match`fdf4d1c` exactly. Source/JSON/
+Markdown whitespace checks pass; only the exact generated Matplotlib SVG's
+standard trailing path whitespace is excluded, rather than changing its hashes.
+
+The compact verification record binds these source-specific overlapping test
+scopes, failed infrastructure starts, authoring scripted QA, independent audit,
+reviewer-memory check, raw inventories, figure, UI and final PDF. Actual/native
+and preview supervisors/task-specific launchd registrations are no longer
+running; the user's Ollama service is untouched. Main is clean at the earlier
+published pin, fetched origin has no new commits. Next action is a fast-forward
+integration, final artifact copy and push; no additional native work is pending.

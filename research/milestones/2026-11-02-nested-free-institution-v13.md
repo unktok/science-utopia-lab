@@ -1,7 +1,8 @@
 # V13 finite goal: nested search and additional native institutional freedom
 
-Status: active; all eight native worlds, independent audits and actual UI are
-complete; final figure/PDF/source-artifact verification and main push pending.
+Status: publication ready; all eight native worlds, independent audits, actual
+UI, final figure and54-page PDF/source-artifact verification complete. Main
+integration/push is the remaining publication step.
 
 The [frozen protocol](../protocols/campaigns/native-nested-search-v13.md) connects
 free outer source/graph generation to an inner conditional expected-loss update
@@ -52,6 +53,18 @@ desktop/mobile captures, with66 exact integer identities preserved and no
 errors, external requests or inference dispatch. These software scopes overlap
 and are not additional scientific observations. Failed/interrupted job starts
 remain recorded, not relabelled as passes.
+
+Final publication source`4ffe576` passes365 report tests and250 UI tests,
+typecheck/build with durable logs. Root checks all54 PDF pages at75dpi and13
+new/changed pages at150dpi, with no overfull boxes or undefined references.
+The actual comparison figure and all nine UI screenshots match their recorded
+hashes; bounded cross-score leader lines remove label/point ambiguity. Native
+runtime/protocol/loss bytes remain identical to the actual source.
+[Verification](../results/native-nested-search-v13-verification.json) binds all
+source-specific scopes and artifacts. Historical v12 main107 and followup32
+raw files remain byte-identical. No owned native/model/preview task remains;
+the user's Ollama service is untouched. This closes this finite implementation
+slice after publication, not every remaining non-scale scientific question.
 
 ## Boundaries after this finite slice
 

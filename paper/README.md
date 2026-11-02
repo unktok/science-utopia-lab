@@ -44,6 +44,18 @@ The independent audit preserves129 raw files and matches227 source blobs.
 The English Foundry capture is bound to the actual audit, with local editing
 distinct from execution/adoption. World-wide differentiation is not required.
 
+The54-page PDF is built from committed publication source`4ffe576`. Every page
+is rendered/reviewed at75dpi; pages1/2/35/36/37/38/39/40/44/45/52/53/54 are
+also inspected at150dpi. No overfull boxes or undefined references remain;
+cosmetic underfull warnings are retained. Final cross-score labels use bounded
+leaders to the exact unchanged points. Publication-source report tests365 and
+UI tests250/typecheck/build have durable receipts, separately from the2020-pass/
+6-skip full suite at immutable actual runtime source`fdf4d1c`. These overlapping
+scopes are not summed and are not a full-suite claim for the final docs tip.
+[V13 source/artifact verification](../research/results/native-nested-search-v13-verification.json)
+binds the actual audit, unchanged129-file raw inventory,227 source blobs,
+lossless actual UI export, nine captures, figure and exact final PDF bytes.
+
 The historical 50-page v12 paper adds the closed free institutional redesign:
 two exact losses, three own-history generations each, six original-native
 worlds and 565 fresh Qwen replies. Throughput `[-10,-10,-10]` and utility
