@@ -1,4 +1,4 @@
-import { recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign, type Evidence, type ObjectiveId, type OpenRedesign, type RedesignObservation } from './openRedesignContract';
+import { generatedPythonNode, generatedSourceBody, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign, type Evidence, type ObjectiveId, type OpenRedesign, type RedesignObservation } from './openRedesignContract';
 import './objectiveStructure.css';
 import './openRedesign.css';
 
@@ -49,7 +49,7 @@ function renderCircuit(): void {
   const nodes=list(system.mechanisms), edges=list(system.connections), diff=selected.lineage.vs_parent, columns=Math.min(5,Math.max(1,Math.ceil(Math.sqrt(nodes.length*1.4))));
   const width=1000, cell=width/columns, height=Math.max(310,Math.ceil(nodes.length/columns)*160+40);
   const position=new Map<string,[number,number]>(nodes.map((node,index)=>[node.mechanism_id,[cell*(index%columns+.5),75+Math.floor(index/columns)*160]]));
-  if (!nodes.some(node=>node.mechanism_id===selectedNode)) selectedNode=nodes.find(node=>node.implementation==='code.python.v1')?.mechanism_id??nodes[0]?.mechanism_id??'';
+  if (!nodes.some(node=>node.mechanism_id===selectedNode)) selectedNode=nodes.find(node=>generatedPythonNode(node))?.mechanism_id??nodes[0]?.mechanism_id??'';
   const addedEdges=new Set((diff.edges_added??[]).map((e: any)=>Array.isArray(e)?e.join(' / '):edgeKey(e)));
   const wires=edges.map((edge,index)=>{
     const a=position.get(edge.source_mechanism), b=position.get(edge.target_mechanism);if(!a||!b)return '';
@@ -73,7 +73,6 @@ function renderCircuit(): void {
   el('change-ledger').innerHTML=`<span>EXACT DIFF / VS RECORDED PARENT</span><h3>${nodes.length} NODES · ${edges.length} WIRES</h3><p>Literal executed design changes. A changed file or wire is not by itself a beneficial or causally isolated intervention.</p>${groups.map(([title,value,items])=>`<section><b>${title}</b><strong>${value}</strong><small>${(items as string[]).map(esc).join('<br/>')||'NO ITEMS IN THIS DIFF'}</small></section>`).join('')}`;
   renderInspector();
 }
-function sourceBody(node: Evidence | undefined): string {return node?.parameters?.code_artifact?.source??'';}
 function codeMarkup(source: string, other: string, state: 'added'|'removed'): string {
   const existing=new Set(other.split('\n'));
   return source.split('\n').map(line=>existing.has(line)?esc(line):`<span class="code-${state}">${esc(line)||' '}</span>`).join('\n');
@@ -86,8 +85,8 @@ function renderInspector(): void {
   el('inspector-tabs').querySelectorAll<HTMLButtonElement>('[data-tab]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.tab===tab)));
   const pane=(title:string,body:unknown)=>`<article><h4>${esc(title)}</h4><pre>${esc(typeof body==='string'?body:JSON.stringify(body,null,2))}</pre></article>`;
   if(tab==='source'){
-    const source=sourceBody(node),before=sourceBody(previousNode);
-    el('inspector-content').innerHTML=source?`<article><h4>RECORDED PARENT / SAME NODE ID${before?'':' / NO PRIOR BODY'}</h4><pre>${before?codeMarkup(before,source,'removed'):'NO PRIOR SAME-ID SOURCE BODY / renamed bodies remain separate in exact lineage'}</pre></article><article><h4>ACTUAL INSTALLED SOURCE / ${esc(node?.implementation)}</h4><pre>${codeMarkup(source,before,'added')}</pre></article><p>Line coloring is a text-membership aid, not a semantic or full edit-distance diff. Exact body hashes, renames and execution receipts are recorded in the audited lineage.</p>`:pane('NATIVE IMPLEMENTATION / NO GENERATED PYTHON BODY',node??'No candidate source');
+    const source=generatedSourceBody(node),before=generatedSourceBody(previousNode);
+    el('inspector-content').innerHTML=source?`<article><h4>RECORDED PARENT / SAME NODE ID${before?'':' / NO PRIOR BODY'}</h4><pre>${before?codeMarkup(before,source,'removed'):'NO PRIOR SAME-ID SOURCE BODY / renamed bodies remain separate in exact lineage'}</pre></article><article><h4>ACTUAL INSTALLED SOURCE / ${esc(node?.implementation)}${node?.implementation==='native.process.activity.v1'?` / DELEGATE ${esc(generatedPythonNode(node)?.mechanism_id)}`:''}</h4><pre>${codeMarkup(source,before,'added')}</pre></article><p>Line coloring is a text-membership aid, not a semantic or full edit-distance diff. Exact body hashes, renames and execution receipts are recorded in the audited lineage.</p>`:pane('NATIVE IMPLEMENTATION / NO GENERATED PYTHON BODY',node??'No candidate source');
   }else if(tab==='protocol'){
     el('inspector-content').innerHTML=pane('ACTUAL SELECTED NODE / INPUT-OUTPUT CONTRACT',node??null)+pane('ACTUAL SELECTED WIRE / NO INFERRED CONNECTION',edge??'Select a literal port-to-port wire below the circuit.');
   }else if(tab==='process'){

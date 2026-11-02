@@ -36,6 +36,10 @@ loss paths, system circuit, source/protocol/process/native receipt inspectors.
   configured model and actually observed replies are distinguished.
 - Source comparison uses the generation request's recorded incumbent parent,
   not the previous chronological generation when that proposal was worse.
+- Direct generated Python and one-layer `native.process.activity.v1` Python
+  delegates are both inspected and checked against the executable source
+  contract using the actual delegate ID. The outer process declaration remains
+  visible; no recursive process delegate is unwrapped or executed by the UI.
 - Source/protocol/node/wire/process freedoms have no fixed two-review-rule
   selector in this interface. The actual experiment can still exercise a
   narrower portion of the representation; view the literal records.

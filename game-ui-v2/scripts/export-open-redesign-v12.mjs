@@ -48,7 +48,10 @@ for (const id of objectives) {
       if (objectives.some((key,i) => row.cross_scores[key] !== null && (scores[i] === null || !Number.isFinite(row.cross_scores[key]) || Math.abs(row.cross_scores[key]-scores[i]) > 1e-10))) throw new Error('Cross-score differs from native checkpoint metrics');
       const nodes = new Set(row.system.mechanisms.map(node => node.mechanism_id));
       if (nodes.size !== row.system.mechanisms.length || row.system.connections.some(edge => !nodes.has(edge.source_mechanism) || !nodes.has(edge.target_mechanism))) throw new Error('Actual graph has invalid endpoints');
-      for (const node of row.system.mechanisms.filter(node => node.implementation === 'code.python.v1')) {
+      for (const outer of row.system.mechanisms) {
+        const node=outer.implementation==='native.process.activity.v1'?outer.parameters?.delegate:outer;
+        if(outer.implementation==='native.process.activity.v1' && node?.implementation==='native.process.activity.v1')throw new Error('Recursive process delegates are forbidden');
+        if(node?.implementation!=='code.python.v1')continue;
         const body = node.parameters?.code_artifact?.source, receipt = row.contracts?.executable_sources?.[node.mechanism_id];
         if (typeof body !== 'string' || receipt?.source !== body || receipt.source_sha256 !== sha(body)) throw new Error('Actual executable source contract differs');
       }

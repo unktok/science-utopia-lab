@@ -3,7 +3,7 @@ import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { parseOpenRedesign, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign } from '../src/openRedesignContract';
+import { generatedPythonNode, generatedSourceBody, parseOpenRedesign, recordedParentSystem, REDESIGN_OBJECTIVES, verifyOpenRedesign } from '../src/openRedesignContract';
 import { redesignFixture, redesignHash, zeroReplyRedesignFixture } from './openRedesignFixture';
 const ui=new URL('../',import.meta.url),script=new URL('scripts/export-open-redesign-v12.mjs',ui).pathname;
 function exporting(change?:(audit:any)=>void,fixture=true){
@@ -94,6 +94,37 @@ describe('v12 objective-conditioned free redesign evidence',()=>{
   });
   it('rejects a fabricated native observation ID on a failed authoring generation',()=>{
     expect(()=>exporting(a=>{Object.assign(a,zeroReplyRedesignFixture());a.arms[REDESIGN_OBJECTIVES[0]].observations[0].observation_id='INVENTED-NATIVE-ID';})).toThrow('cannot invent');
+  });
+  it('retains and validates a generated Python delegate inside one process wrapper, including its exact parent body',async()=>{
+    const {text,receipt}=exporting(a=>{
+      const arm=a.arms[REDESIGN_OBJECTIVES[0]],rows=arm.observations;
+      for(const r of rows){
+        const delegate=r.system.mechanisms[1],old=delegate.mechanism_id;
+        r.system.mechanisms[1]={mechanism_id:'open-process',family:'process',implementation:'native.process.activity.v1',parameters:{delegate,repeat:1,initial_delegate_state:{}}};
+        r.system.connections.forEach((e:any)=>{if(e.source_mechanism===old)e.source_mechanism='open-process';if(e.target_mechanism===old)e.target_mechanism='open-process';});
+        r.contracts.processes={'open-process':r.system.mechanisms[1].parameters};
+      }
+      rows[2].parent_system_fingerprint=rows[0].system_fingerprint;arm.records[2].request.parent_system=rows[0].system;
+    });
+    const d=await verifyOpenRedesign(text,receipt,true),id=REDESIGN_OBJECTIVES[0],r=d.arms[id].observations[2]!,node=r.system.mechanisms[1];
+    expect(node.implementation).toBe('native.process.activity.v1');expect(node.parameters.repeat).toBe(1);
+    expect(generatedPythonNode(node)?.mechanism_id).toBe('fixture-cooperative-2');
+    expect(generatedSourceBody(node)).toContain('"shared_evidence": 2');
+    const parentNode=recordedParentSystem(d,id,r)!.mechanisms.find((n:any)=>n.mechanism_id==='open-process');
+    expect(generatedSourceBody(parentNode)).toContain('"shared_evidence": 0');
+    expect(generatedSourceBody(parentNode)).not.toContain('"shared_evidence": 1');
+    expect(r.contracts.processes['open-process']).toEqual(node.parameters);
+    expect(()=>exporting(a=>{
+      const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[0],delegate=r.system.mechanisms[1];
+      r.system.mechanisms[1]={...delegate,implementation:'native.process.activity.v1',parameters:{delegate}};
+      r.contracts.executable_sources[delegate.mechanism_id].source_sha256='0'.repeat(64);
+    })).toThrow('source contract differs');
+  });
+  it('never recursively unwraps nested process delegates',()=>{
+    const python={implementation:'code.python.v1',parameters:{code_artifact:{source:'SCRIPTED'}}};
+    const nested={implementation:'native.process.activity.v1',parameters:{delegate:{implementation:'native.process.activity.v1',parameters:{delegate:python}}}};
+    expect(generatedPythonNode(nested)).toBeUndefined();expect(generatedSourceBody(nested)).toBe('');
+    expect(()=>exporting(a=>{const r=a.arms[REDESIGN_OBJECTIVES[0]].observations[0];r.system.mechanisms[1]={...nested,mechanism_id:r.system.mechanisms[1].mechanism_id};})).toThrow('Recursive process delegates');
   });
   it('rejects invented baseline, missingness as zero, false running best and unsupported causal claim',()=>{
     const {text}=exporting();

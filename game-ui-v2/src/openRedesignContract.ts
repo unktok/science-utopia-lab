@@ -19,6 +19,14 @@ export function recordedParentSystem(data: OpenRedesign, objective: ObjectiveId,
   const record=arm.records?.find((value: Evidence)=>value.request?.generation===selected.generation);
   return record?.request?.parent_system??arm.observations.find(value=>value.system_fingerprint===selected.parent_system_fingerprint)?.system;
 }
+export function generatedPythonNode(node: Evidence | undefined): Evidence | undefined {
+  if(node?.implementation==='code.python.v1')return node;
+  const delegate=node?.implementation==='native.process.activity.v1'?node.parameters?.delegate:undefined;
+  return delegate?.implementation==='code.python.v1'?delegate:undefined;
+}
+export function generatedSourceBody(node: Evidence | undefined): string {
+  return generatedPythonNode(node)?.parameters?.code_artifact?.source??'';
+}
 const hash = (value: unknown): boolean => typeof value === 'string' && /^[a-f0-9]{64}$/.test(value);
 const finite = (value: unknown): value is number => typeof value === 'number' && Number.isFinite(value);
 export function parseOpenRedesign(value: unknown, allowFixture = false): OpenRedesign {
