@@ -47,3 +47,16 @@ checkpoint, control proof, exact raw-response receipt and content hashes. The
 public-payload option is review-input-only: after review, durable institutional
 context can still be seen by later funding/activity prompts. It does not claim
 all later native behavior is coordinate-invariant.
+
+Actual a1 starts from clean `d5b08d64193c32bf05dec95e54ba53d2f1b8cab9` in
+`science-utopia-lab-experiments/native-qwen-response-gradient-v9-a1`. The exact
+pin passes89 focused tests/1deselected in10.26s. First calibration completes a
+full original two-year world with84 actual Qwen replies (296.2s). Raw source and
+writer are untouched. Before a2 inference, real response envelope inspection
+finds created timestamps, random completion IDs and cache counters. The strict
+a1 full-data-SHA prefix comparison therefore confuses operational envelopes with
+actual researcher response content. Preserve the a1 calibration batch/terminal
+failure and introduce the separate prospective a2 amendment. Only comparison of
+server metadata changes; all raw hashes and exact model choice/message content
+remain bound, as do actual pre-intervention science state and all input payloads.
+Objective/controls/step/world/model are unchanged; all physical attempts count.

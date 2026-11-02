@@ -41,7 +41,9 @@ def control_proof(endpoint, world_root):
 
     The entire actual batch payload, not merely a prompt substring, is compared.
     Only the declared complementary numeric fields are masked. The prefix uses
-    payload+response SHA pairs, so seed equality is never assumed deterministic.
+    payload and exact choices/message SHA pairs, never assumes seed determinism.
+    Raw envelope hashes are sealed separately: server IDs/clocks/cache usage are
+    not native researcher inputs. No choice/message content is normalized away.
     """
     root = Path(world_root).resolve()
     journal, wire = root/'replies/responses.sqlite', root/'wire-requests.jsonl'
@@ -75,7 +77,7 @@ def control_proof(endpoint, world_root):
     wires = [json.loads(line) for line in wire.read_text().splitlines()]
     if len(by_sha) != len(rows) or len(wires) != len(rows) or {w['payload_sha256'] for w in wires} != set(by_sha):
         raise ValueError('control proof requires unique fresh wire/reply bijection')
-    prefix, reviews, began = [], [], False
+    prefix, raw_prefix, reviews, began = [], [], [], False
     theta = endpoint['coordinate_values']['evidence-weight']
     for w in wires:
         payload = w['payload']
@@ -115,7 +117,12 @@ def control_proof(endpoint, world_root):
         elif not began:
             if any('"evidence_weight":' in str(m.get('content', '')) for m in payload['messages']):
                 raise BoundaryUnsupported('variable review charter was visible before its declared intervention')
-            prefix.append({'year': w['year'], 'payload_sha256': w['payload_sha256'], 'response_sha256': sha})
+            choices = json.loads(data).get('choices')
+            if not isinstance(choices, list) or not choices:
+                raise ValueError('actual native reply lacks original choices/messages')
+            prefix.append({'year': w['year'], 'payload_sha256': w['payload_sha256'],
+                'response_choices_sha256': digest(choices)})
+            raw_prefix.append({'payload_sha256': w['payload_sha256'], 'raw_response_sha256': sha})
     pre_world = signals[1]['context']['inputs']['world'][0]['payload']
     if not reviews or not prefix:
         raise BoundaryUnsupported('no actual final-year reviews or pre-intervention replies')
@@ -124,18 +131,22 @@ def control_proof(endpoint, world_root):
     value = {'physical_initial_identity': endpoint['physical_initial_identity'],
         'noncoordinate_system_sha256': endpoint['noncoordinate_system_sha256'],
         'preintervention_request_response_sequence_sha256': digest(prefix),
+        'raw_prefix_envelope_sha256': digest(raw_prefix),
+        'response_comparison_scope': 'Exact full choices including messages and finish reasons; exclude server envelope IDs/created/usage only from cross-world equality, never raw integrity.',
         'preintervention_physical_reply_count': len(prefix),
         'preintervention_world_observation_sha256': digest(pre_world),
         'normalized_final_review_payloads_sha256': digest(reviews),
         'final_review_prompt_count': len(reviews),
-        'scope': 'Actual initial state, pre-intervention HTTP+reply bytes and original world observation; canonical public review payload differs only in the two declared complementary weights.'}
+        'scope': 'Actual initial state, pre-intervention HTTP+choice/message bytes and original world observation; canonical public review payload differs only in the two declared complementary weights.'}
     return value
 
 
 def require_same_control(proofs):
     if not proofs:
         raise ValueError('actual control proofs required')
-    if any(p != proofs[0] for p in proofs[1:]):
-        differing = sorted({k for p in proofs[1:] for k in proofs[0] if p.get(k) != proofs[0][k]})
+    comparable = [{k: v for k, v in p.items() if k != 'raw_prefix_envelope_sha256'} for p in proofs]
+    if any(p != comparable[0] for p in comparable[1:]):
+        differing = sorted({k for p in comparable[1:] for k in comparable[0] if p.get(k) != comparable[0][k]})
         raise BoundaryUnsupported('uncontrolled actual pre-intervention/prompt drift: '+', '.join(differing))
-    return {'status': 'exact-control-invariants-verified', 'world_count': len(proofs), 'proof_sha256': digest(proofs[0])}
+    return {'status': 'exact-control-invariants-verified', 'world_count': len(proofs),
+        'proof_sha256': digest(comparable[0]), 'comparison_excludes': ['raw_prefix_envelope_sha256']}

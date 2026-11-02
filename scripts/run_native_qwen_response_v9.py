@@ -70,6 +70,11 @@ def run(args):
         'calibration': CALIBRATION, 'unused': UNUSED, 'maximum_native_worlds': 6,
         'temperatures': [1., .2, .05, .01], 'candidate_rule': 'center point .5, lr .02, displacement clamp +/-.10, support [.2,.8]',
         'protocol_sha256': file_sha256(ROOT/'research/protocols/campaigns/native-qwen-response-gradient-v9.md')}
+    if getattr(args, 'amendment', False):
+        plan['amendment'] = {'id': 'native-qwen-response-gradient-v9-a2',
+            'sha256': file_sha256(ROOT/'research/protocols/campaigns/native-qwen-response-gradient-v9-a2.md'),
+            'prior_maximum_worlds': 3, 'maximum_combined_physical_worlds': 9,
+            'changes': 'exclude only server envelope metadata from cross-world semantic response equality'}
     plan_path = args.output/'plan.json'
     if plan_path.exists() and read(plan_path) != plan:
         raise ValueError('frozen plan/source/objective/model/corpus differs')
@@ -187,8 +192,7 @@ def run(args):
             native_candidate_minus_center=candidate['endpoint']['native_loss']-calibration[1]['endpoint']['native_loss'],
             operator_sha256=file_sha256(operator_path), operator_representation_sha256=operator._hash,
             raw_fit_rmse=operator.state['raw_fit_rmse'])
-        save(evidence_path, evidence)
-        return evidence
+        return save(evidence_path, evidence)
     except BaseException as error:
         if not evidence['failures']:
             evidence['failures'].append({'stage': 'fit-control-or-report', 'error_type': type(error).__name__,
@@ -203,6 +207,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--data-cache', type=Path, required=True)
     parser.add_argument('--inference-lock', type=Path, required=True)
+    parser.add_argument('--amendment', action='store_true', help='Bind the prospective a2 server-envelope comparison amendment')
     args = parser.parse_args()
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
