@@ -1,11 +1,12 @@
 """Explicit synthetic-only plot guards, not simulated or model evidence."""
 from copy import deepcopy
 import json
+import warnings
 
 import pytest
 
 from scripts.analyze_native_objective_redesign_v12 import (
-    ARM_IDS, FIXTURE, SCHEMA, design_change, executable_contracts, objective_specs,
+    ACTUAL, ARM_IDS, FIXTURE, SCHEMA, design_change, executable_contracts, objective_specs,
 )
 from scripts.analyze_native_open_estimators_v11 import incumbent_path
 from scripts.figures.native_objective_redesign_v12 import figure_data, render
@@ -119,4 +120,66 @@ def test_actual_flag_cannot_be_used_as_fixture_escape_hatch():
     report['classification'] = 'actual-native-qwen-objective-redesign-development-v12'
     seal(report)
     with pytest.raises(ValueError, match='synthetic'):
+        figure_data(report, 'fixture-source', allow_synthetic=True)
+
+
+def zero_reply_failure_contract():
+    """Fabricated zero-execution test contract; not an actual run/audit receipt.
+
+    Its source-proof status is deliberately a stub so the render boundary can
+    be tested without inventing a Qwen reply, checkpoint or source execution.
+    This fixture stays only in pytest temporary output.
+    """
+    report = fixture()
+    report.update(classification=ACTUAL, source_commit='a'*40,
+        status='budget-complete-with-failures', physical_native_worlds=0,
+        logical_completed_draws=0, physical_researcher_responses=0)
+    report['claims'].update(live_fixed_Qwen_researchers=False, scripted_researcher_HTTP=False)
+    report['audit']['replay_source_proofs'] = {
+        'status': 'verified-exact-replay-source-blobs',
+        'scope': 'TEST-ONLY SOURCE-PROOF STUB; NO ACTUAL RUN OR MODEL EVIDENCE'}
+    for arm in report['arms'].values():
+        for row in arm['observations']:
+            row.update(status='generation-failure', own_loss=None, loss=None,
+                cross_scores={key:None for key in ARM_IDS}, observation_id=None,
+                system=None, system_fingerprint=None, contracts=None, lineage=None,
+                metrics=None, checkpoint_sha256=None)
+        arm['incumbents'] = incumbent_path(arm['observations'])
+    return seal(report)
+
+
+def test_zero_reply_actual_failure_contract_retains_nulls_and_renders_all_missing_matrix_without_warning(tmp_path):
+    report = zero_reply_failure_contract()
+    data = figure_data(report, 'a'*40)
+    assert data['physical_researcher_responses'] == 0
+    assert all(row['own_loss'] is row['incumbent_loss'] is row['lineage'] is None
+        for rows in data['rows'].values() for row in rows)
+    audit = tmp_path / 'TEST-ONLY-zero-execution-contract.json'
+    write_json_atomic(audit, report)
+    with warnings.catch_warnings():
+        warnings.simplefilter('error')
+        manifest = render(report, tmp_path / 'TEST-ONLY-zero-execution-figure',
+            audit_path=audit, expected_source='a'*40)
+    assert manifest['data']['physical_researcher_responses'] == 0
+    svg = (tmp_path / 'TEST-ONLY-zero-execution-figure.svg').read_text()
+    assert svg.count('No completed native loss') == 2
+    assert 'No completed cross-scores' in svg
+    assert svg.count('<!-- n/a -->') == 24
+    report['claims']['live_fixed_Qwen_researchers'] = True
+    seal(report)
+    with pytest.raises(ValueError, match='attribution'):
+        figure_data(report, 'a'*40)
+    report['claims']['live_fixed_Qwen_researchers'] = False
+    report['status'] = 'complete'
+    seal(report)
+    with pytest.raises(ValueError, match='terminal status'):
+        figure_data(report, 'a'*40)
+
+
+@pytest.mark.parametrize('replies', [None, -1, 1.5, True])
+def test_invalid_physical_response_counts_are_not_coerced(replies):
+    report = fixture()
+    report['physical_researcher_responses'] = replies
+    seal(report)
+    with pytest.raises(ValueError, match='physical response count'):
         figure_data(report, 'fixture-source', allow_synthetic=True)

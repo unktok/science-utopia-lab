@@ -66,7 +66,10 @@ def figure_data(report, expected_source=None, *, allow_synthetic=False):
             'scientific_value', 'designer_improvement_established', 'full_native_world_pathwise_autograd',
             'external_authorship_authenticated')):
         raise ValueError('claims exceed development evidence')
-    if (claims.get('live_fixed_Qwen_researchers') is not (classification == ACTUAL)
+    replies = report.get('physical_researcher_responses')
+    if type(replies) is not int or replies < 0:
+        raise ValueError('nonnegative actual physical response count required')
+    if (claims.get('live_fixed_Qwen_researchers') is not (classification == ACTUAL and replies > 0)
             or claims.get('scripted_researcher_HTTP') is not (classification == FIXTURE)):
         raise ValueError('actual/fixture attribution differs')
     rows, complete, seen = {}, 0, set()
@@ -118,6 +121,8 @@ def figure_data(report, expected_source=None, *, allow_synthetic=False):
     if (report.get('physical_native_worlds') != complete or report.get('logical_completed_draws') != complete
             or report.get('reused_responses_in_completed_worlds') != 0):
         raise ValueError('native world counts or response reuse differs')
+    if report['status'] != ('complete' if complete == 6 else 'budget-complete-with-failures'):
+        raise ValueError('terminal status differs from retained complete/failure rows')
     return {'classification': classification, 'source_commit': source,
         'audit_content_sha256': report['content_sha256'], 'rows': rows,
         'physical_researcher_responses': report.get('physical_researcher_responses'),
@@ -135,16 +140,25 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
         rows = data['rows'][identity]
         values = [row['own_loss'] if row['own_loss'] is not None else float('nan') for row in rows]
         incumbents = [row['incumbent_loss'] if row['incumbent_loss'] is not None else float('nan') for row in rows]
-        ax.plot(range(3), values, 'o-', color=COLORS[index], linewidth=1.8, label='Current observed system')
-        ax.step(range(3), incumbents, where='post', color='#303c49', linestyle='--', label='Best observed so far')
+        has_loss = any(row['own_loss'] is not None for row in rows)
+        if has_loss:
+            ax.plot(range(3), values, 'o-', color=COLORS[index], linewidth=1.8, label='Current observed system')
+            ax.step(range(3), incumbents, where='post', color='#303c49', linestyle='--', label='Best observed so far')
+        else:
+            ax.text(.5, .45, 'No completed native loss', transform=ax.transAxes,
+                ha='center', va='center', fontsize=10, color='#596b7a')
+            ax.set_yticks([])
         for generation, row in enumerate(rows):
             if row['own_loss'] is None:
-                ax.text(generation, .95, 'Technical\nfailure', transform=ax.get_xaxis_transform(),
+                label = 'Generation\nfailure' if row['status'] == 'generation-failure' else 'Technical\nfailure'
+                ax.text(generation, .95, label, transform=ax.get_xaxis_transform(),
                     ha='center', va='top', fontsize=8, color='#a23b43')
         ax.set(title=f'{chr(65+index)}  {LABELS[index]}', xlabel='Authored generation', ylabel='Own optimization loss (lower is better)')
         ax.set_xticks(range(3), ['G0', 'G1', 'G2'])
+        ax.set_xlim(-.3, 2.3)
         ax.grid(alpha=.2)
-        ax.legend(fontsize=8, loc='best')
+        if has_loss:
+            ax.legend(fontsize=8, loc='best')
     cross_ax = axes[1, 0]
     for index, identity in enumerate(ARM_IDS):
         rows = data['rows'][identity]
@@ -163,6 +177,11 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
     handles, _ = cross_ax.get_legend_handles_labels()
     if handles:
         cross_ax.legend(fontsize=8)
+    else:
+        cross_ax.text(.5, .5, 'No completed cross-scores', transform=cross_ax.transAxes,
+            ha='center', va='center', fontsize=10, color='#596b7a')
+        cross_ax.set_xticks([])
+        cross_ax.set_yticks([])
     matrix, labels = [], []
     fields = ('source_bodies_added', 'nodes_added', 'edges_added', 'process_contract_changes')
     for index, identity in enumerate(ARM_IDS):
@@ -170,11 +189,15 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
             labels.append(f"{'Throughput' if index == 0 else 'Utility'} G{row['generation']}")
             matrix.append([row['lineage']['vs_parent']['counts'][key] if row['lineage'] else np.nan for key in fields])
     ax = axes[1, 1]
-    ax.imshow(np.asarray(matrix, dtype=float), aspect='auto', cmap='Blues', interpolation='nearest', vmin=0)
+    observed_changes = [value for values in matrix for value in values if math.isfinite(value)]
+    largest_change = max(observed_changes, default=0)
+    cmap = plt.get_cmap('Blues').with_extremes(bad='#edf0f3')
+    ax.imshow(np.ma.masked_invalid(np.asarray(matrix, dtype=float)), aspect='auto', cmap=cmap,
+        interpolation='nearest', vmin=0, vmax=max(largest_change, 1))
     for y, values in enumerate(matrix):
         for x, value in enumerate(values):
             ax.text(x, y, 'n/a' if math.isnan(value) else str(value), ha='center', va='center', fontsize=9,
-                color='white' if not math.isnan(value) and value > np.nanmax(matrix)*.55 else '#213447')
+                color='white' if not math.isnan(value) and value > largest_change*.55 else '#213447')
     ax.set_title('D  Literal changes against own incumbent parent')
     ax.set_xticks(range(4), ['Source bodies\nadded', 'Nodes\nadded', 'Wires\nadded', 'Process\ncontracts changed'], fontsize=8)
     ax.set_yticks(range(6), labels, fontsize=8)
@@ -183,8 +206,11 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
     if allow_synthetic:
         title = 'SYNTHETIC CONTRACT FIXTURE — NOT RESEARCH EVIDENCE'
     fig.suptitle(title, fontsize=15, fontweight='bold', y=.98)
+    execution_scope = ('No completed native worlds or Qwen replies were recorded.'
+        if report['physical_native_worlds'] == 0 and data['physical_researcher_responses'] == 0
+        else 'Fixed Qwen weights; original native researcher world.')
     fig.text(.5, .025, 'All attempts and exact best ties retained. Cross-scores are development reuse, not held-out tests.\n'
-        'Text/graph changes do not establish useful invention. Fixed Qwen weights; original native researcher world.',
+        'Text/graph changes do not establish useful invention. ' + execution_scope,
         ha='center', va='bottom', fontsize=8, color='#394957')
     fig.tight_layout(rect=(0,.085,1,.95), h_pad=2.0, w_pad=2.7)
     output.parent.mkdir(parents=True, exist_ok=True)
