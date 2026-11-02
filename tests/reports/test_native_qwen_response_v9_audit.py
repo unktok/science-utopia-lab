@@ -14,8 +14,10 @@ from scripts.analyze_native_qwen_response_v9 import (
     UNUSED,
     _endpoint_sequence,
     _prefix_control_status,
+    _validate_amendment,
     analyze,
     markdown_summary,
+    source_proof,
 )
 from utopia.optimization.loss import load_loss_spec
 from utopia.system.native_response_examples import DECLARATIONS, TERMS, response_gradient_system
@@ -140,10 +142,36 @@ def test_analyze_binds_inventory_and_keeps_loss_separate_from_promotion(tmp_path
     monkeypatch.setattr('scripts.analyze_native_qwen_response_v9._audit_endpoint', proof)
     monkeypatch.setattr('scripts.analyze_native_qwen_response_v9._complete_reconstruction',
                         lambda *_args, **_kwargs: {'candidate_improvement_status': 'worse'})
+    monkeypatch.setattr('scripts.analyze_native_qwen_response_v9.source_proof',
+                        lambda *_args, **_kwargs: {'fixture.py': '9'*64})
     report = analyze(tmp_path, expected_source=source)
     assert report['objective']['role'] == 'optimization-loss'
     assert report['promotion_policy']['status'] == 'not-defined-or-applied'
     assert report['held_out_metrics']['status'] == 'not-measured'
     assert report['raw_hashes']['file_count'] == 2
+    assert report['source_proof']['current_scientific_and_comparator_modules_match_experiment_commit']
     assert report['content_sha256'] == digest({k: v for k, v in report.items()
                                                 if k != 'content_sha256'})
+
+
+def test_scientific_source_modules_match_original_a1_pin():
+    proof = source_proof('d5b08d64193c32bf05dec95e54ba53d2f1b8cab9')
+    assert 'utopia/optimization/native_qwen_response.py' in proof
+    assert all(len(value) == 64 for value in proof.values())
+
+
+def test_amendment_is_explicit_and_binds_prior_plus_combined_budget(tmp_path, monkeypatch):
+    amendment = tmp_path/'a2.md'
+    amendment.write_text('prospective synthetic amendment fixture')
+    monkeypatch.setattr('scripts.analyze_native_qwen_response_v9.AMENDMENT_PATH', amendment)
+    expected = {'id': 'native-qwen-response-gradient-v9-a2',
+        'sha256': file_sha256(amendment), 'prior_maximum_worlds': 3,
+        'maximum_combined_physical_worlds': 9,
+        'changes': 'exclude only server envelope metadata from cross-world semantic response equality'}
+    assert _validate_amendment({'amendment': expected}, expected['id']) == expected
+    with pytest.raises(ValueError, match='explicit expected amendment'):
+        _validate_amendment({'amendment': expected}, None)
+    changed = deepcopy(expected)
+    changed['maximum_combined_physical_worlds'] = 6
+    with pytest.raises(ValueError, match='combined budget'):
+        _validate_amendment({'amendment': changed}, expected['id'])

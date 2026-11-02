@@ -14,6 +14,13 @@ and prospective review-task identity, verifies the owner-asserted completion
 receipt, and reconstructs the control proof. All input files are inventoried
 before and after the audit; a byte change invalidates the report.
 
+The current scientific and comparator modules must be byte-identical to those
+at `--expected-source`; adding the auditor later is allowed, reinterpreting an
+old run with a newer helper is not. An amended a2 run additionally requires
+`--expected-amendment native-qwen-response-gradient-v9-a2`. Its separate
+prospective document hash, three preserved a1 worlds, and nine-world combined
+engineering ceiling must match the frozen plan exactly.
+
 For a complete run, the operator is refit from exactly the three declared
 calibration endpoints. Its state must equal the durable saved operator, and its
 backward result and gradient candidate must reproduce the frozen proposal. The

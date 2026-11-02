@@ -11,9 +11,11 @@ from __future__ import annotations
 
 import argparse
 from copy import deepcopy
+import hashlib
 import json
 import math
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +48,24 @@ FIXED_NAMES = ('calibration-0', 'calibration-1', 'calibration-2',
                'unused-0', 'unused-1', 'gradient-candidate')
 OBJECTIVE_PATH = ROOT / 'research/objectives/losses/native-joint-v5-net-reviewed-utility.json'
 PROTOCOL_PATH = ROOT / 'research/protocols/campaigns/native-qwen-response-gradient-v9.md'
+AMENDMENT_ID = 'native-qwen-response-gradient-v9-a2'
+AMENDMENT_PATH = ROOT / 'research/protocols/campaigns/native-qwen-response-gradient-v9-a2.md'
+SOURCE_PATHS = (
+    'utopia/optimization/native_qwen_response.py',
+    'utopia/optimization/native_response_fidelity.py',
+    'utopia/optimization/native_hybrid.py',
+    'utopia/optimization/native_relaxation.py',
+    'utopia/system/native_response_examples.py',
+    'utopia/system/native_review_context.py',
+    'utopia/system/native_review_identity.py',
+    'utopia/system/native_kernel.py',
+    'utopia/system/native_tensor_examples.py',
+    'utopia/system/tensor_program.py',
+    'utopia/simulation.py',
+    'utopia/models/models.py',
+    'research/objectives/losses/native-joint-v5-net-reviewed-utility.json',
+    'research/protocols/campaigns/native-qwen-response-gradient-v9.md',
+)
 
 
 def _sha256(value):
@@ -72,6 +92,49 @@ def inventory(root):
             result[str(path.relative_to(root))] = {
                 'sha256': file_sha256(path), 'bytes': path.stat().st_size}
     return result
+
+
+def source_proof(expected_source, *, include_amendment=False):
+    """Bind active scientific/comparator bytes to the experiment commit.
+
+    The auditor itself is intentionally allowed to be a later addition. The
+    modules that interpret raw evidence are not: current analysis code cannot
+    silently reinterpret an old run under new scientific/comparator semantics.
+    """
+    paths = SOURCE_PATHS + ((str(AMENDMENT_PATH.relative_to(ROOT)),)
+                            if include_amendment else ())
+    result = {}
+    for relative in paths:
+        try:
+            historical = subprocess.check_output(
+                ['git', 'show', f'{expected_source}:{relative}'], cwd=ROOT)
+        except subprocess.CalledProcessError as error:
+            raise ValueError(f'expected source lacks required analysis module: {relative}') from error
+        current_path = ROOT / relative
+        if not current_path.is_file():
+            raise ValueError(f'current analysis tree lacks required source: {relative}')
+        current = current_path.read_bytes()
+        if current != historical:
+            raise ValueError(f'current analysis source differs from experiment pin: {relative}')
+        result[relative] = hashlib.sha256(current).hexdigest()
+    return result
+
+
+def _validate_amendment(plan, expected_amendment):
+    amendment = plan.get('amendment')
+    if expected_amendment is None:
+        if amendment is not None:
+            raise ValueError('amended run requires an explicit expected amendment')
+        return None
+    if expected_amendment != AMENDMENT_ID or not AMENDMENT_PATH.is_file():
+        raise ValueError('unknown or unavailable response-gradient amendment')
+    expected = {'id': AMENDMENT_ID, 'sha256': file_sha256(AMENDMENT_PATH),
+        'prior_maximum_worlds': 3, 'maximum_combined_physical_worlds': 9,
+        'changes': ('exclude only server envelope metadata from cross-world '
+                    'semantic response equality')}
+    if amendment != expected:
+        raise ValueError('prospective a2 amendment ID/hash/combined budget differs')
+    return deepcopy(expected)
 
 
 def _fixed_plan(plan, expected_source):
@@ -317,7 +380,7 @@ def _prefix_control_status(proofs, failures):
     return proof
 
 
-def analyze(run, *, expected_source, require_complete=True):
+def analyze(run, *, expected_source, require_complete=True, expected_amendment=None):
     root = Path(run).resolve()
     before = inventory(root)
     try:
@@ -335,6 +398,8 @@ def analyze(run, *, expected_source, require_complete=True):
                 or claims.get('held_out_seeds') is not False
                 or claims.get('causal_scientific_benefit') is not False):
             raise ValueError('raw evidence omits or overstates the preregistered claim boundary')
+        amendment = _validate_amendment(plan, expected_amendment)
+        sources = source_proof(expected_source, include_amendment=amendment is not None)
         objective, base_system, world = _fixed_plan(plan, expected_source)
         rows, failures, complete = _endpoint_sequence(raw, require_complete=require_complete)
         proofs = [_audit_endpoint(root, row, base_system=base_system, declarations=DECLARATIONS,
@@ -358,6 +423,9 @@ def analyze(run, *, expected_source, require_complete=True):
         result = {'schema': SCHEMA, 'classification': ACTUAL,
             'status': 'complete' if complete else 'valid-preserved-partial-failure',
             'source_commit': expected_source, 'raw_output_root': str(root),
+            'source_proof': {'current_scientific_and_comparator_modules_match_experiment_commit': True,
+                'module_sha256s': sources},
+            'prospective_amendment': amendment,
             'world_binding': {'source_commit': world['source_commit'],
                 'model_digest': world['model_digest'], 'corpus_sha256': world['corpus_sha256'],
                 'seed': world['seed'], 'years': world['years'],
@@ -440,13 +508,15 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--markdown', type=Path)
     parser.add_argument('--allow-incomplete', action='store_true')
+    parser.add_argument('--expected-amendment', choices=(AMENDMENT_ID,))
     args = parser.parse_args()
     if args.output.resolve().is_relative_to(args.run.resolve()):
         parser.error('audit output must be outside immutable raw directory')
     if args.markdown and args.markdown.resolve().is_relative_to(args.run.resolve()):
         parser.error('markdown output must be outside immutable raw directory')
     report = analyze(args.run, expected_source=args.expected_source,
-                     require_complete=not args.allow_incomplete)
+                     require_complete=not args.allow_incomplete,
+                     expected_amendment=args.expected_amendment)
     write_json_atomic(args.output, report, sort_keys=True, allow_nan=False)
     if args.markdown:
         args.markdown.write_text(markdown_summary(report))
