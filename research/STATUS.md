@@ -2,6 +2,24 @@
 
 Updated: 2026-11-02
 
+## Active v9: actual-Qwen response-aware institution gradient
+
+The user authorizes the next bounded goal: actual fixed-Qwen responses -> local
+numeric response representation -> institution-coordinate backprop -> projection
+-> original-world reevaluation. Population/seeds/horizon are not scaled up.
+[Frozen-before-inference protocol](protocols/campaigns/native-qwen-response-gradient-v9.md).
+The original two-year/five-author/seed42/four-year-corpus setup and existing
+utility LossSpec remain. Six fresh worlds maximum: three calibration, two unused
+interpolation checks and one pre-frozen gradient candidate. The charter changes
+only after final-year submissions. An opt-in payload renderer keeps causal IDs
+out of review input text, while semantic task receipts map heterogeneous actual
+replies through the original per-review integer parser and per-paper average.
+Eighty-nine focused checks pass (one old heavy duplicate QA deselected), including
+three scripted original-world integration worlds; this is not actual-Qwen evidence.
+Implementation-test setup failures are retained in the v9 log. Actual Qwen
+execution has not yet started at this source snapshot. Completion requires a
+truthful actual loop/report, not a promised fidelity pass or native improvement.
+
 ## Completed finite v8 goal: structure, response representation, UI and paper
 
 User approves thorough continuation of the original goals, not population/seed

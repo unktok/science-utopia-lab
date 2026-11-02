@@ -15,12 +15,13 @@ from .validation import validate_system_spec
 
 RECEIVER = 'native.world.review-context-delivery.v1'
 REVIEW = 'native.phase.review.with-delivered-context.v1'
+PAYLOAD_REVIEW = 'native.phase.review.with-public-payload.v1'
 PROTOCOL = 'native-delivered-review-context.v1'
 SCHEMA = 'scienceutopia.delivered-review-context.v1'
 PORT = 'institutional-review-context'
 
 
-def enable_review_context(spec, *, receiver, review='world.review'):
+def enable_review_context(spec, *, receiver, review='world.review', public_payload_only=False):
     """Authorize one existing original context receiver as review information.
 
     Delivery precedes review in the same annual graph. Other receivers' context
@@ -43,7 +44,7 @@ def enable_review_context(spec, *, receiver, review='world.review'):
             node = replace(node, implementation=RECEIVER,
                 outputs=(PortSpec('authorization', ChannelKind.ARTIFACT, PROTOCOL),))
         if node.mechanism_id == review:
-            node = replace(node, implementation=REVIEW,
+            node = replace(node, implementation=PAYLOAD_REVIEW if public_payload_only else REVIEW,
                 inputs=(*node.inputs, PortSpec(PORT, ChannelKind.ARTIFACT, PROTOCOL)),
                 parameters={**node.parameters, 'review_context_receiver': receiver})
         updated.append(node)
@@ -166,8 +167,12 @@ def register_review_context(kernel, registry):
                 old_instance = vars(agent).get('get_review_prompt')
                 original = agent.get_review_prompt
                 originals.append((agent, had_instance, old_instance))
+                # Old specs retain their exact original renderer. Causal IDs
+                # remain out-of-band for the explicitly selected public renderer.
+                visible = ([m['payload'] for m in messages]
+                    if context.mechanism.implementation == PAYLOAD_REVIEW else messages)
                 suffix = '\n## Information received from scientific institutions\n' + '\n'.join(
-                    json.dumps(m, ensure_ascii=False, sort_keys=True, allow_nan=False) for m in messages) + '\n'
+                    json.dumps(m, ensure_ascii=False, sort_keys=True, allow_nan=False) for m in visible) + '\n'
                 def prompt(*args, _original=original, _suffix=suffix, _aid=aid, _messages=messages, **kwargs):
                     text, response_format = _original(*args, **kwargs)
                     text += _suffix
@@ -189,6 +194,6 @@ def register_review_context(kernel, registry):
 
     # Also safe for explicit registry_extension callers from the initial
     # capability QA; production kernels now install the same trusted adapter.
-    for identity, handler in ((RECEIVER, receive), (REVIEW, review)):
+    for identity, handler in ((RECEIVER, receive), (REVIEW, review), (PAYLOAD_REVIEW, review)):
         if (identity, 1) not in registry.registered:
             registry.register(identity, 1, handler)

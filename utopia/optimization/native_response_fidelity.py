@@ -154,11 +154,12 @@ def _review_evidence_paths(checkpoint, journal, wire):
 def _review_task_identities(saved, endpoint, years):
     """Read trusted original-phase task identities from the actual checkpoint."""
     from utopia.system.native_review_identity import SCHEMA as identity_schema, EVENT
+    from utopia.system.native_review_context import REVIEW, PAYLOAD_REVIEW
     events = [e for e in saved.get('native_system', {}).get('events', []) if e.get('event_type') == EVENT]
     if not events:
         return None  # Frozen v8 checkpoints retain their strict uniform adapter.
     review_nodes = {n['mechanism_id'] for n in endpoint['system']['mechanisms']
-        if n['implementation'] in ('native.phase.review.v1', 'native.phase.review.with-delivered-context.v1')}
+        if n['implementation'] in ('native.phase.review.v1', REVIEW, PAYLOAD_REVIEW)}
     by_year = {}
     for event in events:
         value = event.get('payload', {})
