@@ -80,7 +80,16 @@ about589 seconds, excluding development, calibration analysis and verification.
 Clean actual-source full regression passes1718 tests/6 skipped (822.60s).
 Later audit/figure/control checks have separate, overlapping scopes. Publication
 verification is recorded separately; it must not be attributed to the earlier
-runtime-only suite.
+runtime-only suite. The later final audit/figure/control suite passes55 checks.
+The40-page working paper is built from committed text`65b671f`, with actual
+loss/gradient/error and frozen-landscape figures. All pages are rendered and
+visually reviewed; pages1/26/27/28/29/32/39 are individually enlarged and
+inspected. There are no overfull boxes or undefined references; cosmetic
+underfull warnings and the deliberate dedicated full-size figure page remain.
+[Source/artifact verification](../results/native-qwen-response-v9-verification.json).
+The owned experiment processes have exited. This completes the finite v9
+integration goal, not all future non-scale research or the scientific claims
+listed below.
 
 ## What this does not establish / next non-scale questions
 

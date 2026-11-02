@@ -134,3 +134,14 @@ already frozen response model for visualization ONLY, without native/model calls
 or candidate selection. Initial actual figure QA exposes clipped footer/value
 labels; repair layout and normalize only the gradient display unit, not values.
 The final actual PNGs are visually inspected at paper width. PDF QA follows.
+
+Publication closes the finite v9 loop: committed TeX`65b671f` builds a40-page
+working paper. All40 pages are rendered and visually reviewed; new/changed
+pages1/26/27/28/29/32/39 are enlarged to150dpi and inspected individually.
+No overfull boxes, undefined references or replacement glyphs are present;
+cosmetic underfull warnings and a deliberate full-size figure page remain.
+Final report/audit/figure/control checks pass55 (2.37s) at reporting source
+`ba5536e`; overlapping with prior scopes, not additional scientific samples.
+The source/artifact verification receipt records PDF, figure and JUnit hashes.
+No owned native experiment remains running; the user-owned Ollama service is
+left untouched. Main/remote integration follows after a clean-state check.

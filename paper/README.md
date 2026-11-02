@@ -42,8 +42,17 @@ negative conditional-fidelity/optimization result, not six independent histories
 an exact Qwen/native Jacobian, held-out evidence or causal institutional benefit.
 The preserved a1/a2 attempts consumed 228 additional physical replies.
 
-The actual UI export is byte-identical to the audit and its desktop/mobile
-browser captures are checked, not fixture images. The final37-page PDF is built
+The latest40-page PDF is built from committed text`65b671f` and includes both
+actual v9 figures. All40 pages are rendered and visually checked, with new and
+changed pages1/26/27/28/29/32/39 individually inspected at150dpi. There are no
+overfull boxes or undefined references; cosmetic underfull warnings remain.
+[V9 verification](../research/results/native-qwen-response-v9-verification.json)
+binds actual source/runtime regression, final reporting checks, raw inventories,
+figure manifests and PDF. The loop is implemented; its negative/no-op result is
+not an exact Qwen/native Jacobian or an optimization improvement.
+
+The actual v8 UI export is byte-identical to the audit and its desktop/mobile
+browser captures are checked, not fixture images. The historical37-page PDF is built
 from committed text3c2ae4b: all pages rendered/reviewed, new evidence pages
 enlarged, no overfull boxes/undefined references. Cosmetic underfull warnings
 remain. [Verification receipt](../research/results/objective-structure-v8-verification.json)

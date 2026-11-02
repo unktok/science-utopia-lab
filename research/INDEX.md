@@ -9,6 +9,7 @@ and results. New work uses the forward-only taxonomy below.
 - [V9 actual-Qwen response-aware gradient: implementation, outcome and limits](milestones/2026-11-02-native-qwen-response-gradient-v9.md)
 - [V9 six-world actual result: no-op update and failed unused fidelity](results/native-qwen-response-v9-a3.md)
 - [V9 independent audit: 186 fresh replies, 504 logical responses, unchanged101-file raw inventory](results/native-qwen-response-v9-a3.json)
+- [V9 source-bound regression, raw inventory, actual figures and40-page PDF verification](results/native-qwen-response-v9-verification.json)
 - [V9 actual-Qwen response-aware gradient protocol](protocols/campaigns/native-qwen-response-gradient-v9.md)
 - [V9 a3: actual common-history coupling before the intervention](protocols/campaigns/native-qwen-response-gradient-v9-a3.md)
 - [V9 a1 audited prefix drift and partial stop](results/native-qwen-response-v9-a1.json)

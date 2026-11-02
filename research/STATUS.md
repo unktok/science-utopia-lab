@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## Audited v9: actual-Qwen response-aware institution gradient
+## Completed finite v9 loop: actual-Qwen response-aware institution gradient
 
 The user authorizes the next bounded goal: actual fixed-Qwen responses -> local
 numeric response representation -> institution-coordinate backprop -> projection
@@ -38,8 +38,12 @@ verifies all endpoints, exact semantic review-clock coupling and unchanged101-fi
 raw inventory; a repeated audit is byte-identical. All attempts cost414 fresh
 replies including228 from preserved a1/a2, without double-counting historical
 anchor calls. [Milestone and remaining limits](milestones/2026-11-02-native-qwen-response-gradient-v9.md).
-Exact actual-source full regression passes1718/6skips in822.60s. Publication
-verification is pending. This finite loop does not establish a useful gradient,
+Exact actual-source full regression passes1718/6skips in822.60s. The final
+audit/figure/control suite passes55 overlapping checks; the40-page working
+paper includes both actual-result figures, all pages rendered/visually reviewed
+and new pages individually inspected. No overfull boxes or undefined references.
+[Source/artifact verification](results/native-qwen-response-v9-verification.json).
+No owned native/model experiment remains running. This finite loop does not establish a useful gradient,
 successful invention, exact Qwen/world Jacobian or all pre-scale completion.
 
 ## Completed finite v8 goal: structure, response representation, UI and paper
