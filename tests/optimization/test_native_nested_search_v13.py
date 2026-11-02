@@ -129,6 +129,17 @@ def test_failed_native_worlds_stay_null_and_cold_replay_without_mocked_validatio
     assert restored.state['records'][0]['report']['status'] == 'not-updated-technical-failure'
 
 
+def test_nonfinite_likelihood_is_durable_null_vocabulary_failure_not_unwritable_state(tmp_path):
+    definition = tiny_definition()
+    definition['continuous'][0]['sigma'] = 1e-308
+    first = create(tmp_path).advance(simulation_factory=lambda *a: pytest.fail('no world for invalid likelihood'),
+        generator=lambda request: definition)
+    assert first['generation_error']['loss'] is None
+    assert first['generation_error']['type'] == 'ValueError'
+    assert first['draws'] == first['observations'] == []
+    assert create(tmp_path).state['records'] == [first]
+
+
 def test_saved_external_inbox_wait_has_exact_request_and_no_native_calls(tmp_path):
     campaign = create(tmp_path / 'campaign')
     generator = InboxVocabularyGenerator(ManifestInbox(tmp_path / 'authoring'), instructions='unit-only')
