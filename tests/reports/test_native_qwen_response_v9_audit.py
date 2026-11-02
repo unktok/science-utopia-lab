@@ -17,7 +17,9 @@ from scripts.analyze_native_qwen_response_v9 import (
     UNUSED,
     _endpoint_sequence,
     _audit_common_prefix,
+    _audit_review_clock_coupling,
     _prefix_control_status,
+    _represented_landscape,
     _response_coupling,
     _validate_amendment,
     analyze,
@@ -27,7 +29,7 @@ from scripts.analyze_native_qwen_response_v9 import (
 from utopia.agents.base_agent import PaperReview
 from utopia.optimization.loss import load_loss_spec
 from utopia.optimization.native_response_prefix import SCHEMA as PREFIX_SCHEMA
-from utopia.runtime.checkpointing import canonical_json
+from utopia.runtime.checkpointing import canonical_json, write_portable_checkpoint
 from utopia.system.native_response_examples import DECLARATIONS, TERMS, response_gradient_system
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256
@@ -103,6 +105,25 @@ def test_markdown_reports_unfavorable_candidate_without_promotion_claim():
     assert 'Observed status: `worse`' in text
     assert 'No promotion policy' in text
     assert 'not an exact Qwen' in text
+
+
+def test_represented_landscape_is_fixed_posthoc_frozen_grid():
+    class Operator:
+        _hash = 'a'*64
+        def backward(self, coordinates):
+            theta = coordinates[0]
+            return {'represented_loss': theta**2, 'gradient': [2*theta],
+                'frozen_boundary_gradient': [0.]}
+    result = _represented_landscape(Operator())
+    assert result['scope'] == ('posthoc frozen representation visualization; '
+                                'not native samples or candidate selection')
+    assert result['new_native_forward_calls'] == result['new_model_calls'] == 0
+    assert result['representation_sha256'] == 'a'*64
+    assert len(result['coordinates']) == 61
+    assert result['coordinates'][0]['theta'] == .2
+    assert result['coordinates'][-1]['theta'] == pytest.approx(.8)
+    assert set(result['coordinates'][0]) == {
+        'theta', 'predicted_loss', 'gradient', 'frozen_boundary_gradient'}
 
 
 def _plan(source):
@@ -234,10 +255,28 @@ def _coupled_transport(tmp_path):
     call = {'index': 0, 'year': 1, 'seed': 10, 'payload_sha256': payload_shas[0],
         'anchor_cache_identity': '1'*64, 'anchor_sql_rowid': 1,
         'anchor_wire_line': 1, 'response_sha256': data_shas[0]}
+    review = {'year': 1, 'conference_id': 'conference-1', 'arxiv_id': 'paper-1',
+        'reviewer_id': 'reviewer-1', 'review_time': 123.25, 'overall_score': 7}
+    checkpoint_state = {'conference_system': {'conferences': [{'conference_id': 'conference-1',
+        'reviews': {'paper-1': [review]}}]}}
+    anchor_checkpoint = tmp_path/'anchor/year1.json.gz'
+    target_checkpoint = cell/'simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz'
+    anchor_checkpoint.parent.mkdir(parents=True)
+    target_checkpoint.parent.mkdir(parents=True)
+    write_portable_checkpoint(anchor_checkpoint, checkpoint_state)
+    write_portable_checkpoint(target_checkpoint, checkpoint_state)
+    record = {'year': 1, 'conference_id': 'conference-1', 'paper_id': 'paper-1',
+        'reviewer_id': 'reviewer-1', 'review_time': 123.25,
+        'anchor_review_sha256': digest(review),
+        'nonclock_review_sha256': digest({k: v for k, v in review.items() if k != 'review_time'})}
+    source_checkpoint_sha = file_sha256(anchor_checkpoint)
     prepared = {'schema': PREFIX_SCHEMA, 'content_sha256': '2'*64, 'prefix_count': 1,
         'calls': [call], 'anchor_endpoint': {'checkpoint_sha256': '3'*64},
         'anchor_world_dir': str(tmp_path/'anchor'),
-        'anchor_files': {'journal': {'sha256': '4'*64}},
+        'anchor_files': {'journal': {'sha256': '4'*64},
+            'year1_checkpoint': {'path': str(anchor_checkpoint), 'sha256': source_checkpoint_sha}},
+        'review_clock_coupling': {'source_checkpoint_sha256': source_checkpoint_sha,
+            'field': 'review_time', 'period': 1, 'records': [record]},
         'boundary': {'year': 2, 'seed': 20,
             'task_schema_sha256': digest(PaperReview.model_json_schema())}}
     origin = {'schema': PREFIX_SCHEMA+'.replayed-from',
@@ -261,7 +300,22 @@ def _coupled_transport(tmp_path):
         'fresh_physical_calls': 1, 'fresh_physical_reply_count': 1,
         'fresh_physical_calls_this_session': 1, 'fresh_review_boundary_reached': True,
         'logical_response_count': 2, 'prefix_complete': True,
-        'independent_prefix_replication': False, 'target_binding_sha256': digest(binding)}
+        'independent_prefix_replication': False,
+        'review_clock_coupling': {'source_checkpoint_sha256': source_checkpoint_sha,
+            'field': 'review_time', 'period': 1, 'expected_records': 1,
+            'current_session_before_after_records': [{
+                'year': 1, 'conference_id': 'conference-1', 'paper_id': 'paper-1',
+                'reviewer_id': 'reviewer-1', 'field': 'review_time',
+                'before_review_time': 999.75, 'after_review_time': 123.25,
+                'before_review_sha256': digest({**review, 'review_time': 999.75}),
+                'after_review_sha256': digest(review),
+                'nonclock_review_sha256': record['nonclock_review_sha256'],
+                'source_checkpoint_sha256': source_checkpoint_sha}],
+            'completed_checkpoint_verification': 'exact-semantic-year1-checkpoint-clocks-verified',
+            'prior_session_before_timestamps_reconstructed': False,
+            'global_and_transport_clock_modified': False,
+            'year2_review_clock_modified': False},
+        'target_binding_sha256': digest(binding)}
     receipt['content_sha256'] = digest(receipt)
     (cell/'common-prefix-receipt.json').write_text(json.dumps(receipt))
     row = {'name': 'calibration-0', 'common_prefix_receipt': receipt,
@@ -278,8 +332,19 @@ def test_common_prefix_audit_joins_origin_new_cache_and_first_fresh_review(tmp_p
     assert proof['replayed_response_count'] == 1
     assert proof['fresh_physical_reply_count'] == 1
     assert proof['first_fresh_review_boundary_verified']
+    assert proof['review_clock_coupling']['all_semantic_records_verified']
+    assert not proof['review_clock_coupling']['historical_before_timestamps_independently_authenticated']
     with sqlite3.connect(cell/'replies/responses.sqlite') as db:
         db.execute('UPDATE replies SET identity=? WHERE rowid=1', ('1'*64,))
     with pytest.raises(ValueError, match='anchor origin'):
         _audit_common_prefix(cell, row, endpoint, {'same': True},
                              {'mode': 'actual-common-prefix-replay', 'prepared': prepared})
+
+
+def test_review_clock_audit_rejects_tampered_before_hash(tmp_path):
+    cell, row, _endpoint, prepared = _coupled_transport(tmp_path)
+    receipt = deepcopy(row['common_prefix_receipt'])
+    receipt['review_clock_coupling']['current_session_before_after_records'][0][
+        'before_review_sha256'] = '0'*64
+    with pytest.raises(ValueError, match='hashes do not reconstruct'):
+        _audit_review_clock_coupling(cell, prepared, receipt)

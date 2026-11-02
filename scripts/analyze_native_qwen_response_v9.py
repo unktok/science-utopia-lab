@@ -37,7 +37,7 @@ from utopia.optimization.native_response_fidelity import (
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.native_response_examples import DECLARATIONS, TERMS, response_gradient_system
-from utopia.runtime.checkpointing import canonical_json
+from utopia.runtime.checkpointing import canonical_json, read_portable_checkpoint
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
 RAW_SCHEMA = 'scienceutopia.native-qwen-response-loop.v9'
@@ -278,6 +278,102 @@ def _wire_rows(path):
     return [json.loads(line) for line in Path(path).read_text().splitlines()]
 
 
+def _year1_review_records(checkpoint):
+    """Independently reconstruct semantic Year-1 reviews and clock hashes."""
+    state = read_portable_checkpoint(checkpoint)
+    records, reviews = [], {}
+    for conference in state.get('conference_system', {}).get('conferences', []):
+        conference_id = conference.get('conference_id')
+        for paper_id, values in conference.get('reviews', {}).items():
+            for review in values:
+                if review.get('year') != 1:
+                    continue
+                identity = {'year': 1, 'conference_id': conference_id,
+                    'paper_id': paper_id, 'reviewer_id': review.get('reviewer_id')}
+                key = canonical_json(identity)
+                clock = review.get('review_time')
+                if (key in reviews or review.get('conference_id') != conference_id
+                        or review.get('arxiv_id') != paper_id
+                        or not isinstance(identity['reviewer_id'], str)
+                        or not identity['reviewer_id'] or type(clock) not in (int, float)
+                        or not math.isfinite(clock)):
+                    raise ValueError('year1 review checkpoint has an invalid semantic identity or clock')
+                nonclock = {k: v for k, v in review.items() if k != 'review_time'}
+                records.append({**identity, 'review_time': clock,
+                    'anchor_review_sha256': digest(review),
+                    'nonclock_review_sha256': digest(nonclock)})
+                reviews[key] = deepcopy(review)
+    records.sort(key=lambda row: canonical_json({k: row[k] for k in
+        ('year', 'conference_id', 'paper_id', 'reviewer_id')}))
+    return records, reviews
+
+
+def _audit_review_clock_coupling(cell, prepared, receipt):
+    """Verify clock replay against real anchor/target checkpoints and receipts."""
+    declaration = prepared.get('review_clock_coupling', {})
+    anchor_file = prepared.get('anchor_files', {}).get('year1_checkpoint', {})
+    source_sha = declaration.get('source_checkpoint_sha256')
+    anchor_path = Path(anchor_file.get('path', '')).resolve()
+    target_path = cell/'simulation/checkpoints/native-design/portable_checkpoint_year_1.json.gz'
+    if (not anchor_path.is_file() or not target_path.is_file()
+            or anchor_file.get('sha256') != source_sha
+            or file_sha256(anchor_path) != source_sha):
+        raise ValueError('review-clock source checkpoint binding differs')
+    anchor_records, _ = _year1_review_records(anchor_path)
+    target_records, target_reviews = _year1_review_records(target_path)
+    expected = declaration.get('records')
+    if (declaration.get('field') != 'review_time' or declaration.get('period') != 1
+            or anchor_records != expected or target_records != expected):
+        raise ValueError('review-clock anchor/target checkpoint semantics differ')
+    clock = receipt.get('review_clock_coupling', {})
+    if (clock.get('source_checkpoint_sha256') != source_sha
+            or clock.get('field') != 'review_time' or clock.get('period') != 1
+            or clock.get('expected_records') != len(expected)
+            or clock.get('completed_checkpoint_verification') !=
+                'exact-semantic-year1-checkpoint-clocks-verified'
+            or clock.get('prior_session_before_timestamps_reconstructed') is not False
+            or clock.get('global_and_transport_clock_modified') is not False
+            or clock.get('year2_review_clock_modified') is not False):
+        raise ValueError('review-clock completion receipt contract differs')
+    changes = clock.get('current_session_before_after_records')
+    if not isinstance(changes, list) or len(changes) != len(expected):
+        raise ValueError('review-clock before/after receipt coverage differs')
+    expected_by_id = {canonical_json({k: row[k] for k in
+        ('year', 'conference_id', 'paper_id', 'reviewer_id')}): row for row in expected}
+    seen = set()
+    for change in changes:
+        identity = {k: change.get(k) for k in
+            ('year', 'conference_id', 'paper_id', 'reviewer_id')}
+        key = canonical_json(identity)
+        anchor = expected_by_id.get(key)
+        target = target_reviews.get(key)
+        before = change.get('before_review_time')
+        if (anchor is None or target is None or key in seen
+                or change.get('field') != 'review_time'
+                or change.get('source_checkpoint_sha256') != source_sha
+                or type(before) not in (int, float) or not math.isfinite(before)
+                or change.get('after_review_time') != anchor['review_time']
+                or change.get('after_review_sha256') != anchor['anchor_review_sha256']
+                or change.get('nonclock_review_sha256') != anchor['nonclock_review_sha256']):
+            raise ValueError('review-clock before/after row differs')
+        reconstructed_before = deepcopy(target)
+        reconstructed_before['review_time'] = before
+        if (digest(reconstructed_before) != change.get('before_review_sha256')
+                or digest(target) != change.get('after_review_sha256')
+                or digest({k: v for k, v in target.items() if k != 'review_time'}) !=
+                    change.get('nonclock_review_sha256')):
+            raise ValueError('review-clock before/after hashes do not reconstruct')
+        seen.add(key)
+    if seen != set(expected_by_id):
+        raise ValueError('review-clock semantic identities are incomplete')
+    return {'source_checkpoint_sha256': source_sha,
+        'target_checkpoint_sha256': file_sha256(target_path),
+        'record_count': len(expected), 'all_semantic_records_verified': True,
+        'before_hashes_reconstructed_from_target_nonclock_state': True,
+        'historical_before_timestamps_independently_authenticated': False,
+        'year2_review_clocks_declared_live': True}
+
+
 def _audit_common_prefix(cell, row, endpoint, proof, coupling):
     """Reconstruct one target's normal cache and exact anchor-origin prefix."""
     prepared = coupling['prepared']
@@ -353,6 +449,7 @@ def _audit_common_prefix(cell, row, endpoint, proof, coupling):
         raise ValueError(f"{row['name']}: first fresh call is not the declared Year2 review boundary")
     anchor_proof = control_proof(prepared['anchor_endpoint'], Path(prepared['anchor_world_dir']))
     anchor_control = require_same_control([anchor_proof, proof])
+    clock_proof = _audit_review_clock_coupling(cell, prepared, receipt)
     return {'mode': coupling['mode'], 'manifest_sha256': prepared['content_sha256'],
         'receipt_content_sha256': receipt['content_sha256'],
         'anchor_checkpoint_sha256': prepared['anchor_endpoint']['checkpoint_sha256'],
@@ -361,6 +458,7 @@ def _audit_common_prefix(cell, row, endpoint, proof, coupling):
         'replayed_response_count': prefix, 'fresh_physical_reply_count': len(sql)-prefix,
         'target_binding_sha256': digest(binding),
         'anchor_control_check': anchor_control,
+        'review_clock_coupling': clock_proof,
         'first_fresh_review_boundary_verified': True,
         'no_replay_after_prefix_verified': True,
         'target_cache_identities_distinct_from_anchor': True}
@@ -547,6 +645,21 @@ def _operator_reconstruction(root, rows, proofs, raw, objective):
     return operator, backward, proposal, frozen
 
 
+def _represented_landscape(operator):
+    """Posthoc rendering data from the already frozen fitted representation."""
+    coordinates = []
+    for index in range(61):
+        theta = .2 + index * .01
+        represented = operator.backward([theta])
+        coordinates.append({'theta': theta,
+            'predicted_loss': represented['represented_loss'],
+            'gradient': represented['gradient'][0],
+            'frozen_boundary_gradient': represented['frozen_boundary_gradient'][0]})
+    return {'scope': 'posthoc frozen representation visualization; not native samples or candidate selection',
+        'coordinates': coordinates, 'representation_sha256': operator._hash,
+        'new_native_forward_calls': 0, 'new_model_calls': 0}
+
+
 def _complete_reconstruction(root, rows, proofs, raw, objective):
     operator, backward, proposal, frozen = _operator_reconstruction(root, rows, proofs, raw, objective)
     if rows[5]['theta'] != proposal['candidate'] or rows[5]['theta'] in UNUSED:
@@ -572,6 +685,7 @@ def _complete_reconstruction(root, rows, proofs, raw, objective):
     for key, value in expected.items():
         if raw.get(key) != value:
             raise ValueError(f'completed derived evidence differs: {key}')
+    landscape = _represented_landscape(operator)
     return {'operator_file_sha256': expected['operator_sha256'],
         'operator_representation_sha256': operator._hash,
         'operator_content_sha256': read(root/'response-operator.json')['content_sha256'],
@@ -582,6 +696,7 @@ def _complete_reconstruction(root, rows, proofs, raw, objective):
         'candidate_check': candidate_check,
         'candidate_minus_center_native_loss': delta,
         'candidate_improvement_status': ('improved' if delta < 0 else 'worse' if delta > 0 else 'tied'),
+        'represented_landscape': landscape,
         'all_control_check': controls,
         'freeze_order_proof': {'calibration_only_operator_reconstructed': True,
             'unused_outcomes_seen': 0,
