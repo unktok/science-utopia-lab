@@ -33,6 +33,15 @@ versus24 for frozen responses; its proposed native candidate ties, not improves.
 Earlier partial/incomplete QA failures and historical receipt limitations remain
 in the manuscript and component note.
 
+The v9 actual-Qwen pilot is a separate conditional response-gradient result.
+Six complete original-native worlds share one verified 53-reply actual history
+and contain 186 fresh physical replies. A calibration-fitted local operator
+produces an exact no-op at $\theta=.5$; its unused finite-path error is .08395,
+versus zero for frozen responses. The candidate ties its center. This is a
+negative conditional-fidelity/optimization result, not six independent histories,
+an exact Qwen/native Jacobian, held-out evidence or causal institutional benefit.
+The preserved a1/a2 attempts consumed 228 additional physical replies.
+
 The actual UI export is byte-identical to the audit and its desktop/mobile
 browser captures are checked, not fixture images. The final37-page PDF is built
 from committed text3c2ae4b: all pages rendered/reviewed, new evidence pages

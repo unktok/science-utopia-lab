@@ -52,7 +52,11 @@ A separate seven-world \emph{scripted} original-world QA learns a local response
 boundary while preserving the native integer review parser. Its autograd path
 integral predicts an unused finite loss change with error $2.36\times10^{-5}$,
 versus 24 when responses are frozen, but the projected candidate merely ties.
-Actual-Qwen response fidelity and an exact native/LLM Jacobian remain unverified.
+We then run six actual-Qwen worlds coupled to one verified pre-intervention
+history. Calibration fit is close, but an unused finite-path prediction has
+error .08395 versus zero for frozen responses. The center gradient produces an
+exact no-op whose reevaluation ties. Thus conditional actual-Qwen fidelity fails
+here; an exact native/LLM Jacobian remains unverified.
 An English pixel-art interface exposes actual paths, source and graph changes;
 failed attempts and provenance limitations remain recorded. The contribution is
 an executable, inspectable progression toward scientific-system optimization,
@@ -186,6 +190,7 @@ $\downarrow$ \hfill canonical events, snapshots, hashes \hfill $\downarrow$\\
 \input{native_open_v7}
 \input{native_objective_structure_v8}
 \input{native_response_fidelity_v8}
+\input{native_qwen_response_v9}
 \FloatBarrier
 
 \section{Objectives as a Science-of-Science Problem}
@@ -245,6 +250,12 @@ integer parser. That is not actual-Qwen fidelity or an exact native Jacobian;
 the gradient-projected native candidate merely ties its center. The miniature,
 native design-distribution score-function route and frozen-bank expectation
 gradients remain distinct methods, not proof of full-world differentiability.
+The actual-Qwen common-prefix test in Section~\ref{sec:native-qwen-response-v9}
+closes the conditional loop but fails its unused finite-path fidelity check:
+response-aware error is .08395 while the frozen-response error is zero. Its
+represented center gradient yields no institutional change. One coupled history
+and one affected reply per task provide neither an exact Qwen/native Jacobian
+nor uncertainty or causal-effect identification.
 
 \paragraph{Sparse paths and no optimizer baseline.} The parameter study has five proposals per arm. Two arms have only two technically valid designs and therefore provide little adaptive-path evidence. No equal-budget random, Sobol, Bayesian, or evolutionary baseline was run, and no optimizer-seed replication was performed. The experiment demonstrates a functioning objective-conditioned loop, not search efficiency or optimizer superiority.
 
@@ -267,7 +278,7 @@ Objective-conditioned search & Fixed-topology held-out study; actual eight-world
 \addlinespace[4pt]
 Open institutions and architecture & Free Python/protocols/graph; persistent typed entities; real actions; dependencies, guards and repeated activities & Native corpus/paper physics and annual boundaries remain; typed capability plugins extend laws, not arbitrary privileged source access \\
 \addlinespace[4pt]
-Gradient-based design & Recurrent routing backward; mixed design scores; learned response boundary with unused scripted native finite-path checks & No exact native/text Jacobian or actual-Qwen response fidelity; projected candidate ties; no optimizer advantage \\
+Gradient-based design & Recurrent routing backward; mixed design scores; scripted response check; actual-Qwen common-history conditional loop & Actual unused-path fidelity fails; no-op proposal; no exact native/text Jacobian, independent-history estimate or optimizer advantage \\
 \addlinespace[4pt]
 Persistent redesign & Loss-visible migration; actual $[0,-5,-5]$ society; new vocabulary generation and loss-driven designer-strategy updates & Strategy-update machinery is not demonstrated designer improvement or causal institutional benefit \\
 \addlinespace[4pt]
@@ -296,10 +307,12 @@ values of count's two best systems.
 
 Derivative work must retain its evidence boundaries: the transition model fails
 native fidelity; fresh score backward updates a finite design distribution but
-does not demonstrate advantage. The new local response operator passes a
-scripted native finite-path check, not an actual-Qwen or point-gradient check.
-Extend represented operators and design choices with intervention-based fidelity
-checks, rather than calling a larger aggregate surrogate the whole world.
+does not demonstrate advantage. The scripted local response operator passes its
+finite-path check, while the actual-Qwen common-history operator fails: its
+response-aware unused-path error is .08395 versus zero when responses are
+frozen, and its center proposal is a no-op. Extend represented operators and
+design choices with intervention-based fidelity checks, rather than calling a
+larger aggregate surrogate the whole world.
 The game view should expose actual loss paths,
 code/graph changes and explicit adoption without rewriting recorded evidence.
 Larger seed sets, populations, horizons and equal-budget optimizer comparisons
@@ -328,7 +341,10 @@ count change from 9 to 10 accepted decisions, while the alternative utility
 revision fails to beat zero. Actual source/node/protocol/edge changes and 734 fixed-Qwen replies are
 independently audited; those development outcomes do not establish generalized
 institutional benefit. The response-aware representation preserves original
-integer parsing and separately labels scripted finite-path agreement.
+integer parsing and separately labels scripted finite-path agreement. The newer
+actual-Qwen conditional loop executes six complete worlds but fails unused-path
+fidelity and proposes no institutional change; this negative result prevents a
+scripted success from being generalized to actual model responses.
 These outcomes support an auditable workflow,
 not scientific-policy optimality or completed open-ended invention. The remaining
 goal is to test which objectives and expanded freedoms produce meaningful
@@ -505,6 +521,15 @@ integration pin \code{ceb8248}. Subsequent conditional-unused-parameter and
 diagnostic-reporting changes receive a separate 47-check regression at
 \code{1da13de}; these overlapping scopes are not summed. Diagnostic failure
 does not erase a completed native loss or fabricate a zero native derivative.
+
+The actual-Qwen conditional-response pilot pins \code{fb2d1b6}. Its six complete
+common-prefix-coupled worlds contain 504 logical replies: 318 verified historical
+replays and 186 fresh physical Qwen calls. The unique anchor prefix has 53 calls;
+prior a1/a2 attempts consumed 228 physical replies, for 414 across v9. Independent
+audit preserves all 101 a3 raw files, remeasures the fixed loss and reconstructs
+the calibration-only operator and exact no-op proposal. Unused coordinates are
+development fidelity checks, not held-out seeds; common-prefix worlds are not
+independent replications.
 
 Native probes retain separate protocols, source pins and independently derived
 audits under \code{research/results/}, indexed by \code{research/INDEX.md}.
