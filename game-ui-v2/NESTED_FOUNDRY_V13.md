@@ -134,3 +134,37 @@ node scripts/verify-nested-foundry-browser.mjs --mode=unavailable --output=/tmp/
 
 There is no public fixture payload. Synthetic exports and captures must remain
 under the system temporary directory and must not be published as actual results.
+
+## Actual V13 publication receipt
+
+The terminal independent audit was read only after its writer closed and the
+auditor reproduced it twice byte-identically. The actual export binds:
+
+- Native source: `fdf4d1c16964891e890cabe68d59b2820f462b92`.
+- Independent audit file SHA256:
+  `201263f4667fd1ad962d4e885148e3c518fdc72771a2d02d2c07c68e67c9c96a`.
+- Audit content SHA256:
+  `abb671726c48e797a0af28b3fff27b49c0b2fb6a79c3adcb0bd6bb7602bf34ba`.
+- Exact UI payload SHA256:
+  `03da7f2d91dce905dc684813ff4c3bd6457beef669c05f22a5cb1835d34b6c6b`.
+
+All complete arm records, observations and histories compare semantically equal
+to a separately parsed audit after the declared exact-integer conversion and
+the UI's deterministic running-best annotation. There are 66 encoded integer
+identity paths and zero converted values inside an observed SystemSpec.
+The actual display has eight native endpoints, 592 physical replies and both
+complete own-loss paths: `[-7,-7,-6,-10]` and `[-17,-12.5,-10,-18]`.
+These remain development observations, not a causal optimizer comparison.
+
+Actual browser verification is recorded in
+`screenshots/nested-foundry-v13-actual-qa/nested-foundry-v13-browser-qa.json`.
+It has nine reviewed desktop/mobile captures, all eight stations and scores,
+exact original-parent/full-loss local branch import into the existing workbench,
+edit invalidation, renewed-consent requirement, and zero browser errors, failed
+HTTP requests, external requests, non-GET requests or horizontal overflow. The
+native worker is explicitly offline during that import; no runtime validation,
+job, model, world or society adoption was started. An inherited missing favicon
+on the destination page was fixed instead of ignoring its failed HTTP request.
+Final UI regression: 250 tests, typecheck and production build pass. The V12
+payload, availability, export receipt and historical screenshots remain byte-
+unchanged. Owned preview/Chrome processes have stopped.

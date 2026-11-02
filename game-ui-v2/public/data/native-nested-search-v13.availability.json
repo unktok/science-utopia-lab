@@ -1,5 +1,7 @@
 {
   "schema": "scienceutopia.nested-foundry-availability.v13",
-  "status": "awaiting-audited-export",
-  "message": "Awaiting the independent terminal v13 audit. No actual result is inferred and no fixture is substituted."
+  "status": "available",
+  "classification": "actual-native-qwen-nested-search-development-v13",
+  "payload": "native-nested-search-v13.ui.json",
+  "receipt": "native-nested-search-v13.ui-receipt.json"
 }
