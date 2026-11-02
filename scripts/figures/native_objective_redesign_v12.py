@@ -25,7 +25,6 @@ from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
 
-plt.rcParams['svg.hashsalt'] = 'scienceutopia-native-objective-redesign-v12'
 COLORS = ('#087e9c', '#b3497d')
 LABELS = ('Throughput objective', 'Net reviewed utility objective')
 
@@ -130,6 +129,20 @@ def figure_data(report, expected_source=None, *, allow_synthetic=False):
 
 
 def render(report, output, *, audit_path, expected_source=None, allow_synthetic=False):
+    # Other publication generators legitimately change global plotting styles.
+    # Use owned defaults for both drawing AND serialization, then restore the
+    # caller's state. In particular svg.fonttype changes whether labels become
+    # editable text or paths/comments; neither global value is evidence data.
+    defaults = dict(matplotlib.rcParamsDefault)
+    defaults.pop('backend', None)
+    defaults.update({'font.family': 'DejaVu Sans', 'svg.fonttype': 'none',
+        'svg.hashsalt': 'scienceutopia-native-objective-redesign-v12'})
+    with matplotlib.rc_context(defaults):
+        return _render(report, output, audit_path=audit_path,
+            expected_source=expected_source, allow_synthetic=allow_synthetic)
+
+
+def _render(report, output, *, audit_path, expected_source=None, allow_synthetic=False):
     output = Path(output)
     if allow_synthetic and not output.resolve().is_relative_to(Path(tempfile.gettempdir()).resolve()):
         raise ValueError('synthetic figure output must stay in temporary test storage')

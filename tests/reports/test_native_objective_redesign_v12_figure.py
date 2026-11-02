@@ -2,7 +2,9 @@
 from copy import deepcopy
 import json
 import warnings
+import xml.etree.ElementTree as ET
 
+import matplotlib
 import pytest
 
 from scripts.analyze_native_objective_redesign_v12 import (
@@ -164,7 +166,10 @@ def test_zero_reply_actual_failure_contract_retains_nulls_and_renders_all_missin
     svg = (tmp_path / 'TEST-ONLY-zero-execution-figure.svg').read_text()
     assert svg.count('No completed native loss') == 2
     assert 'No completed cross-scores' in svg
-    assert svg.count('<!-- n/a -->') == 24
+    # Verify semantic labels, not backend-dependent path-font comments.
+    text = [''.join(element.itertext()).strip()
+        for element in ET.fromstring(svg).iter('{http://www.w3.org/2000/svg}text')]
+    assert text.count('n/a') == 24
     report['claims']['live_fixed_Qwen_researchers'] = True
     seal(report)
     with pytest.raises(ValueError, match='attribution'):
@@ -183,3 +188,23 @@ def test_invalid_physical_response_counts_are_not_coerced(replies):
     seal(report)
     with pytest.raises(ValueError, match='physical response count'):
         figure_data(report, 'fixture-source', allow_synthetic=True)
+
+
+@pytest.mark.parametrize('ambient_svg_fonttype', ['none', 'path'])
+def test_render_ignores_and_restores_other_generators_rcparams(tmp_path, ambient_svg_fonttype):
+    report = zero_reply_failure_contract()
+    audit = tmp_path / 'TEST-ONLY-zero-execution-contract.json'
+    write_json_atomic(audit, report)
+    expected = render(report, tmp_path / 'baseline', audit_path=audit, expected_source='a'*40)
+    polluted = {'svg.fonttype': ambient_svg_fonttype, 'svg.hashsalt': 'another-report-salt',
+        'font.family': ['DejaVu Serif'], 'font.size': 27., 'axes.facecolor': 'magenta',
+        'savefig.facecolor': 'yellow', 'axes.grid': True}
+    with matplotlib.rc_context(polluted):
+        repeated = render(report, tmp_path / 'polluted', audit_path=audit, expected_source='a'*40)
+        assert [item['sha256'] for item in repeated['files']] == [item['sha256'] for item in expected['files']]
+        assert all(matplotlib.rcParams[key] == value for key,value in polluted.items())
+    svg = (tmp_path / 'polluted.svg').read_text()
+    labels = [''.join(element.itertext()).strip()
+        for element in ET.fromstring(svg).iter('{http://www.w3.org/2000/svg}text')]
+    assert labels.count('n/a') == 24
+    assert labels.count('No completed native loss') == 2
