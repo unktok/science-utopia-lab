@@ -13,7 +13,8 @@ sys.path.insert(0, str(ROOT))
 from utopia.optimization.loss import load_loss_spec, loss_spec_sha256
 from utopia.optimization.native_hybrid import native_endpoint, project_continuous
 from utopia.optimization.native_method_paths import (ACTUAL, SCHEMA, EXPERIMENT,
-    GRADIENT_RULE, SCHEDULE, read, load_shared_historical, historical_observations, fit_path_operator)
+    GRADIENT_RULE, SCHEDULE, read, load_shared_historical, historical_observations, fit_path_operator,
+    save_path_operator)
 from utopia.optimization.native_path_policies import NativePathPolicy
 from utopia.optimization.native_qwen_response import control_proof, require_same_control
 from utopia.optimization.native_relaxation import replay_tensor_trace, trace_objective
@@ -145,7 +146,7 @@ def run(args):
                 operator = fit_path_operator(eligible, objective, temperature, ROOT)
                 operator_path = args.output/'operators'/f'{name}.json'
                 operator_path.parent.mkdir(parents=True, exist_ok=True)
-                operator.save(operator_path)
+                save_path_operator(operator, operator_path)
                 backward = {**operator.backward([policy.summary()['current_theta']]), 'temperature': temperature}
                 operator_record = {'path': str(operator_path), 'file_sha256': file_sha256(operator_path),
                     'representation_sha256': operator._hash,

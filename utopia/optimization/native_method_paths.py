@@ -13,7 +13,7 @@ import torch
 
 from utopia.system.design_patch import digest
 from utopia.system.native_response_examples import DECLARATIONS, TERMS
-from utopia.utils.data_utils import decode_json, file_sha256
+from utopia.utils.data_utils import decode_json, file_sha256, write_json_atomic
 from .native_qwen_response import require_same_control
 from .native_response_fidelity import (NativeResponseOperator, BoundaryUnsupported,
     binding, boundary_layout, raw_review_projection, verify_endpoint, DTYPE)
@@ -186,3 +186,27 @@ def fit_path_operator(rows, objective, temperature, source_root):
         'selected_index': 0, 'calibration_checkpoint_sha256s': [p['checkpoint_sha256'] for p in endpoints],
         'unused_endpoints_seen': 0}
     return NativeResponseOperator(state)
+
+
+def save_path_operator(operator, path):
+    """Explicit v10 format: never claim the strict v8 loader can refit this."""
+    operator._check()
+    value = {'schema': SCHEMA+'.saved-response-operator', 'model': operator.state,
+        'representation_sha256': operator._hash,
+        'fitter_module_sha256': file_sha256(Path(__file__)),
+        'response_module_sha256': file_sha256(Path(__file__).with_name('native_response_fidelity.py'))}
+    value['content_sha256'] = digest(value)
+    write_json_atomic(path, value, sort_keys=True, allow_nan=False)
+
+
+def load_path_operator(path, rows, objective, temperature, source_root):
+    value = read(path)
+    if (value.get('schema') != SCHEMA+'.saved-response-operator'
+            or value.get('fitter_module_sha256') != file_sha256(Path(__file__))
+            or value.get('response_module_sha256') != file_sha256(
+                Path(__file__).with_name('native_response_fidelity.py'))):
+        raise ValueError('v10 response fitter/source identity differs')
+    operator = fit_path_operator(rows, objective, temperature, source_root)
+    if value.get('model') != operator.state or value.get('representation_sha256') != operator._hash:
+        raise ValueError('v10 response operator does not reconstruct from its exact eligible history')
+    return operator
