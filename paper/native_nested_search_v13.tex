@@ -22,6 +22,9 @@ declared review-work cost; it is not a retrospective change to that study.
 No additional merit floor, fairness rule, novelty reward or promotion veto is
 introduced. The original five authors, two years, seed42, four-year real corpus
 and fixed Qwen3:8B weights remain, with no response reuse across worlds.
+IID here describes draws from the conditional design distribution, not
+independent scientific seeds or researcher-response replications. Every fresh
+world resets the same development seed42.
 
 \begin{table}[t]
 \caption{The fixed nested schedule is repeated for each objective. Native
@@ -50,7 +53,10 @@ the usual score-function regularity conditions,
  =\mathbb{E}[L(\tau)\nabla_\theta\log q_\theta(d\mid V)].
 \end{equation}
 The simulator, including its language decisions and discrete transitions,
-need not expose a Jacobian for this conditional identity. The implemented
+need not expose a Jacobian for this conditional identity. This identity
+assumes well-defined integrable costs and a conditional world law
+that has no additional dependence on $\theta$ once its full design is given.
+An unavailable batch does not identify such a gradient. The implemented
 two-draw leave-one-out estimate is
 \begin{equation}
  \widehat g=\frac12\bigl[(L_0-L_1)\nabla_\theta\log q_\theta(d_0\mid V)
@@ -62,8 +68,10 @@ advantages; valid empty parameter sets are allowed. Technical failures keep
 null losses and leave weights unchanged rather than become fabricated
 penalties. The next native draw uses the exact saved $\theta^+$ and G0
 vocabulary, with a fresh draw identity. It performs no additional update.
-This ensures that the pilot does not end with an untested final parameter
-update. Neither a noisy step nor one followup proves expected improvement.
+This schedules a native followup of the final parameter update rather than
+ending immediately after backward. If that attempt fails, its loss stays null
+and the updated proposal remains unevaluated; no replacement is inferred.
+Neither a noisy step nor one completed followup proves expected improvement.
 
 The external G1 request then exposes all three own preceding observations,
 source/graph definitions, failures and the saved update. It preserves every
