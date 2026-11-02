@@ -233,7 +233,10 @@ def estimate_expected_loss_gradient(draws, losses, *, logits, mean, sigma,
         scores = torch.stack([gradient(v, require_all=True) for v in logq])
         costs = torch.tensor(losses, dtype=torch.float64)
         plain_terms = costs[:, None] * scores
-        baseline = ((costs.sum()-costs)/(len(rows)-1)) if len(rows) > 1 else None
+        # Algebraically identical LOO baseline for equal costs, without a
+        # floating-point summation artifact (e.g. repeated decimal 0.1).
+        baseline = ((costs.clone() if len(set(losses)) == 1 else
+            (costs.sum()-costs)/(len(rows)-1)) if len(rows) > 1 else None)
         loo_terms = (costs-baseline)[:, None]*scores if baseline is not None else None
         correction = torch.zeros(scores.shape[1], dtype=torch.float64)
         predictions = torch.zeros(len(rows), dtype=torch.float64)

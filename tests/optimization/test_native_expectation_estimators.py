@@ -118,6 +118,8 @@ def test_equal_costs_not_rerolled_or_forced_nonzero_and_batch_one():
     assert r['status'] == 'valid' and r['all_equal_costs']
     assert r['gradient']['continuous_mean'] == [7.5]  # Ordinary LR sample noise.
     assert r['loo_gradient']['continuous_mean'] == [0.]
+    decimal = report(rows, [.1, .1], logits={}, mean=mean, sigma=sigma)
+    assert decimal['loo_gradient']['continuous_mean'] == [0.]
     zero = report(rows, [0., 0.], logits={}, mean=mean, sigma=sigma)
     assert zero['gradient']['continuous_mean'] == [0.]
     single = report(rows[:1], [2.], logits={}, mean=mean, sigma=sigma)
