@@ -6,6 +6,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V10 equal-budget native institution update-path protocol](protocols/campaigns/native-method-paths-v10.md)
+- [V10 offline diagnosis: parser/gate attenuation and temperature-dependent gradient sign](results/native-response-gradient-diagnosis-v10.md)
+- [V10 method comparison development and execution log](logbook/2026-11-02-native-method-paths-v10.md)
 - [V9 actual-Qwen response-aware gradient: implementation, outcome and limits](milestones/2026-11-02-native-qwen-response-gradient-v9.md)
 - [V9 six-world actual result: no-op update and failed unused fidelity](results/native-qwen-response-v9-a3.md)
 - [V9 independent audit: 186 fresh replies, 504 logical responses, unchanged101-file raw inventory](results/native-qwen-response-v9-a3.json)

@@ -1,0 +1,37 @@
+# 2026-11-02: equal-budget institution optimization paths
+
+The user approves the proposed next goal and explicitly requests parallel work.
+Root owns the frozen protocol, historical-source bridge and actual native
+runner. Separate worktrees own offline gradient-chain diagnosis/native scripted
+QA, durable method policies/paper, and independent result audit/plots.
+
+The scientific world, model weights, existing native objective, population,
+seed count and horizon remain fixed. Both methods receive the SAME three
+historical v9 calibration points and are charged three evaluations. Only
+method-local new observations enter subsequent proposals; six new attempts
+maximum, ordered G0,B0,G1,B1,G2,B2. Technical failure stops this campaign with
+null loss, no replacement. Current coordinate and historical incumbent differ.
+
+Existing raw analysis, explicitly posthoc development evidence, shows that
+the tau0.01 parser and acceptance gate both attenuate the chain. Higher
+temperature does not just restore gradient size: its sign also changes.
+Memory is not the cause. The fixed new continuation schedule[1,.2,.05], raw
+learning rate0.5/trust0.1 and three-step budget are declared before ANY new
+Qwen inference, not selected for favorable unused/native outcomes. The native
+LossSpec and original integer parser never change. A deterministic derivative-
+free adjacent-interval baseline consumes the same initial observations/budget.
+
+Strict original `NativeResponseOperator.fit` correctly rejects mixed source
+metadata, so v10 adds an explicit separate fitter rather than rewriting old
+endpoint identities or weakening v9 defaults. Every pre-existing utopia blob
+at every contributing source must match current bytes; every real endpoint,
+semantic raw projection and control proof is verified. Only three enumerated
+campaign-metadata fields differ. A separate operator save/load format preserves
+and reconstructs this provenance. Historical three-point save/load preflight
+passes;211 original runtime files match. Default old paths remain untouched.
+
+Before source freeze, root and independent reviewers find and correct missing
+anchor-return fields, an invalid prefix-controller attribute and the incompatible
+old strict-loader format. These are ordinary pre-inference development issues,
+not rerolled native outcomes. All30 policy/diagnosis checks pass. New full-native
+scripted QA, final source pin and actual results are still pending.

@@ -2,6 +2,22 @@
 
 Updated: 2026-11-02
 
+## Active v10: actual institution update paths, not scale-up
+
+The user approves rapid parallel development of the next finite goal. Keep the
+original world, fixed LossSpec and one charter coordinate; compare three NEW
+native evaluations per arm with identical three historical calibration points.
+The [frozen protocol](protocols/campaigns/native-method-paths-v10.md) specifies
+scheduled raw-gradient continuation/refitting versus derivative-free
+incumbent-adjacent interval refinement. Current and incumbent are separate.
+[Offline diagnosis](results/native-response-gradient-diagnosis-v10.md) identifies
+both parser and selection-gate attenuation and a temperature-dependent sign
+change, not merely an undersized gradient. The historical fit roundtrip passes
+with all211 original runtime blobs unchanged. Policies/diagnostic checks pass30
+overlapping tests; full native scripted-loop QA and independent auditor are in
+parallel preparation. No new actual inference has started yet. There is no
+claim that smoothing will improve native loss or beat the black-box baseline.
+
 ## Completed finite v9 loop: actual-Qwen response-aware institution gradient
 
 The user authorizes the next bounded goal: actual fixed-Qwen responses -> local
