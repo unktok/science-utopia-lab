@@ -84,7 +84,8 @@ The prior-fitted control-variate update is computed after generation~1 and is
 not followed by another native evaluation within this budget. Thus this pilot
 tests that estimator on native observations, not the native performance of its
 updated distribution. The final computed update and the last evaluated
-distribution must remain distinct.
+distribution must remain distinct. Section~\ref{sec:native-objective-redesign-v12}
+reports a separately budgeted forward-only followup of that final proposal.
 
 \paragraph{Measured native result.}
 All eight fresh worlds complete at source \code{acf3a2e}, using 742 physical
@@ -125,7 +126,8 @@ overlapping arms, not different evaluation times. (b) Sampled Gaussian latent
 $z$, not the bounded executable cutoff. (c) Actual aggregation implementation.
 (d) Gradient-vector norms, not variance or loss improvement. ``Applied'' means
 used in the saved parameter update: only the G0 LR update is followed by native
-reevaluation; the final G1 control-variate update is not. The vertical divider
+reevaluation; the final G1 control-variate update is not reevaluated within the
+v11 budget. The vertical divider
 separates generations. No initial-system or historical score is fabricated.}
 \label{fig:native-open-estimators-v11}
 \end{figure}
