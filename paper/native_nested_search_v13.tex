@@ -37,16 +37,17 @@ attempts total at most eight across both arms; failed slots are not replaced.}
 Stage & Proposal rule & Native attempts / update \\
 \midrule
 Initial G0 & External complete free vocabulary & Two IID draws; one LR step \\
-Updated G0 & Exact G0 vocabulary at saved updated weights & One fresh draw; no update \\
-Redesigned G1 & External complete vocabulary from all own feedback & One fresh draw; no update \\
+Updated G0 & Exact G0 vocabulary at saved updated weights & One fresh draw; forward only \\
+Redesigned G1 & External complete vocabulary from all own feedback & One fresh draw; forward only \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{What is differentiated.}
-For a frozen generated vocabulary $V$, write $q_\theta(d\mid V)$ for its
-explicit categorical and bounded Gaussian-latent design distribution. Source
-and graph patches map a draw $d$ to an executable native system. Subject to
+For a frozen generated vocabulary $V$, let $d$ denote categorical choices and
+unbounded Gaussian latents sampled from its declared distribution
+$q_\theta(d\mid V)$. Fixed sigmoids map latents to bounded design coordinates;
+source and graph patches map the draw to an executable native system. Subject to
 the usual score-function regularity conditions,
 \begin{equation}
  \nabla_\theta\mathbb{E}_{d\sim q_\theta,\,\tau\sim\mathrm{Sim}(d)}[L(\tau)]
@@ -68,6 +69,9 @@ advantages; valid empty parameter sets are allowed. Technical failures keep
 null losses and leave weights unchanged rather than become fabricated
 penalties. The next native draw uses the exact saved $\theta^+$ and G0
 vocabulary, with a fresh draw identity. It performs no additional update.
+If G0 is valid but the update is unavailable, the scheduled followup uses
+unchanged weights. If G0 itself is invalid, that slot is unavailable and
+consumed without a replacement world.
 This schedules a native followup of the final parameter update rather than
 ending immediately after backward. If that attempt fails, its loss stays null
 and the updated proposal remains unevaluated; no replacement is inferred.
@@ -100,10 +104,11 @@ absent. This is an additional connection to real work, not a claim that review
 is the entire institution or that every possible scientific activity already
 has a native consumer.
 
-Prospective research-plan receipts now retain the complete original upstream
+Prospective research-plan receipts now retain the complete pre-amendment upstream
 plan, source port and input-event lineage, in addition to ordered amendment
 commands. A read-only auditor can reconstruct the full applied plan and join it
-to recorded source outputs and native state. Historical missing provenance
+to recorded source outputs and native state, without reexecuting institutional
+source or treating provenance as scientific correctness. Historical missing provenance
 is not fabricated retroactively. The new audit also independently checks
 scalar likelihood derivatives and the sole LR update, exact post-update
 sampling, checkpoints, actual review tasks and model-request identities.

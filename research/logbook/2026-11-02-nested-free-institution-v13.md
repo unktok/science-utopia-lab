@@ -79,3 +79,20 @@ pass; public v13 is still explicitly unavailable, pending final actual audit.
 The auditor has 69 passing overlapping checks and independent scalar LR math,
 complete-plan reconstruction, routing/source/wire/checkpoint/HTTP joins and
 zero-code support. No actual-world audit or result is claimed yet.
+
+## Methods review while the bounded pilot executes
+
+Independent source/document review finds the two-draw LR/LOO formula consistent
+with the implementation and no hidden quality/fairness/min-review veto.
+Wording is tightened for valid-G0/no-update versus invalid-G0/no-world slots,
+unbounded Gaussian latents with fixed bounded-coordinate maps, IID design
+draws versus same-seed native executions, pre-amendment upstream plan context,
+and the possibility that a scheduled final followup itself fails. A separate
+wording clarification preserves the source-pinned prospective protocol unchanged;
+losses, budget, world, source and proposal rules are not amended.
+
+The PDF edit marker runs once before first v13 paper authoring. A preliminary
+methods-only build has 52 pages and no overfull boxes/undefined references.
+New pages are rendered at120dpi and inspected. An old floating figure is found
+between the new section's paragraphs; float barriers are added before final
+publication. This preliminary PDF is not the final delivered artifact.

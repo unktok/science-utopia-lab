@@ -26,8 +26,9 @@ institution is legal; new names or hashes do not establish useful invention.
 ## Likelihood and vocabulary identity
 
 `GeneratedMixedDesign` supplies existing arbitrary graph/source base patches,
-conditional factor edit choices and bounded Gaussian-latent continuous design
-coordinates. G0 uses two IID conditional draws. The estimator is
+conditional factor edit choices and unbounded Gaussian latents mapped by fixed
+sigmoids to bounded continuous design coordinates. G0 uses two IID conditional
+design draws, not independent scientific seeds. The estimator is
 
 `g = ((L0-L1) grad log q(d0) + (L1-L0) grad log q(d1)) / 2`.
 

@@ -8,6 +8,7 @@ and results. New work uses the forward-only taxonomy below.
 
 - [V13 active finite goal: nested open-system search and native freedom](milestones/2026-11-02-nested-free-institution-v13.md)
 - [V13 prospective two-objective 2→1→1, eight-attempt protocol](protocols/campaigns/native-nested-search-v13.md)
+- [V13 source-consistent wording clarifications, no budget/loss amendment](protocols/campaigns/native-nested-search-v13-clarifications.md)
 - [V13 new explicit illustrative loss and limitations](objectives/losses/native-reviewed-production-efficiency-v13.md)
 - [V13 parallel implementation/execution log](logbook/2026-11-02-nested-free-institution-v13.md)
 - [V13 nested sampler/update/redesign kernel and restart contract](components/native-nested-search-v13.md)
