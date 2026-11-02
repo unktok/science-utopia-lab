@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02
 
-## Active v10: actual institution update paths, not scale-up
+## Completed finite v10: actual institution update paths, not scale-up
 
 The user approves rapid parallel development of the next finite goal. Keep the
 original world, fixed LossSpec and one charter coordinate; compare three NEW
@@ -23,7 +23,12 @@ beats the shared historical best. [Independent audit](results/native-method-path
 reconstructs every decision/refit/backward and preserves all110 raw files;
 repeating it is byte-identical. Each arm uses93 fresh replies, total186 new/
 504 logical/318 replayed. Full exact-source regression passes1772/6skips in
-875.93s; later reporting fixes have a separate scope. Paper/PDF QA is pending.
+875.93s; later reporting fixes pass41 checks, final figure guards7 (overlapping,
+not summed). The42-page paper is built from committed text/figure`ba3678d`;
+all pages rendered/reviewed, new/changed pages enlarged, no overfull boxes or
+undefined references. [Source/artifact verification](results/native-method-paths-v10-verification.json).
+No owned native/model experiment remains running. This closes the fixed v10
+goal, not all non-scale research or the long-term scientific claims.
 [Milestone](milestones/2026-11-02-native-method-paths-v10.md).
 No smoothing fidelity, superiority or causal scientific-benefit claim follows.
 

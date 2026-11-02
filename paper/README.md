@@ -57,6 +57,16 @@ one coupled-history development result, without superiority, significance,
 causal benefit or exact native/Qwen differentiation claims. It does not reverse
 the negative v9 fidelity result.
 
+The latest42-page paper is built from committed text and actual figure`ba3678d`.
+All pages are rendered and visually reviewed; pages1/26/28/30/31/34/41 are
+individually enlarged to150dpi. The final label fix changes only page31 pixels,
+which are re-inspected; all other pages match their reviewed renders. No
+overfull boxes or undefined references; cosmetic underfull warnings remain.
+[V10 source/artifact verification](../research/results/native-method-paths-v10-verification.json)
+binds the1772-pass exact native-source regression, separate41/7 reporting scopes,
+independent raw/result audit, actual figure and final PDF. Overlapping checks
+are not additional experimental samples.
+
 The historical40-page v9 PDF is built from committed text`65b671f` and includes both
 actual v9 figures. All40 pages are rendered and visually checked, with new and
 changed pages1/26/27/28/29/32/39 individually inspected at150dpi. There are no

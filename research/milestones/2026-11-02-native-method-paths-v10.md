@@ -80,7 +80,15 @@ Each arm consumes93 fresh Qwen replies over3 new native worlds: total186 fresh,
 counted once. These are not total project calls or independent societies.
 The six native forward executions total606.43s (about10.1min), excluding
 development, fitting and independent verification. Both actual figure panels are
-report-only and require no extra native/model calls. Publication QA follows.
+report-only and require no extra native/model calls. Final focused reporting QA
+passes41 checks; later figure/audit guards pass7 overlapping checks. The42-page
+working paper is built from committed text/figure`ba3678d`. All pages are
+rendered/reviewed; pages1/26/28/30/31/34/41 are individually enlarged to150dpi.
+Only page31 pixels change in the final label refinement and are re-inspected;
+all other final pages match their reviewed renders. No overfull boxes or
+undefined references; cosmetic underfull warnings remain.
+[Source/artifact verification](../results/native-method-paths-v10-verification.json).
+The fixed v10 goal is complete, not every future non-scale research question.
 
 ## Remaining scope limits
 

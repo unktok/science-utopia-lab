@@ -83,3 +83,15 @@ including the live-clock scripted native loop. This is not failed inference or
 native outcome resampling. Enlarged PDF QA catches two long figure y-labels
 touching across panels; shorten labels without changing data, regenerate the
 report-only figure and rebuild the final PDF. Final visual review follows.
+
+Release QA completes: final42-page PDF from committed text/figure`ba3678d`, all
+pages rendered and visually reviewed, new/changed pages1/26/28/30/31/34/41
+individually enlarged to150dpi. Only page31 pixels change after shortening
+labels; the final page is re-inspected, all others match their reviewed renders.
+No overfull boxes, undefined references or replacement glyphs; cosmetic
+underfull warnings remain. Final figure/audit guard suite passes7 checks.
+Root repeats the full actual read-only audit a third time and compares its
+JSON/Markdown byte-for-byte with the independent committed result: identical.
+No new model/native inference or owned experiment remains running; the user's
+Ollama service stays untouched. The verification receipt binds all source,
+JUnit, raw, figure and PDF hashes. Integrate/push after clean-state checks.

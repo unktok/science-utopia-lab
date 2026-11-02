@@ -9,6 +9,7 @@ and results. New work uses the forward-only taxonomy below.
 - [V10 native institution update paths: implementation, actual result and remaining limits](milestones/2026-11-02-native-method-paths-v10.md)
 - [V10 actual gradient/black-box paths: both move, neither finds a new best](results/native-method-paths-v10-a1.md)
 - [V10 independent policy/refit/native/reply audit, unchanged110-file raw inventory](results/native-method-paths-v10-a1.json)
+- [V10 source-bound regression, actual raw/figure and42-page PDF verification](results/native-method-paths-v10-verification.json)
 - [V10 equal-budget native institution update-path protocol](protocols/campaigns/native-method-paths-v10.md)
 - [V10 offline diagnosis: parser/gate attenuation and temperature-dependent gradient sign](results/native-response-gradient-diagnosis-v10.md)
 - [V10 method comparison development and execution log](logbook/2026-11-02-native-method-paths-v10.md)
