@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 
 import matplotlib
 from matplotlib.figure import Figure
+from matplotlib.text import Text
 import pytest
 
 from scripts.analyze_native_nested_search_v13 import (
@@ -237,7 +238,13 @@ def test_close_same_x_native_profiles_have_nonoverlapping_labels(tmp_path, monke
         expected_source='fixture-source', allow_synthetic=True)
     figure = figures[0]
     figure.canvas.draw()
-    boxes = [text.get_window_extent(figure.canvas.get_renderer()) for text in figure.axes[-1].texts]
+    boxes = [Text.get_window_extent(text, figure.canvas.get_renderer()) for text in figure.axes[-1].texts]
     collisions = [(figure.axes[-1].texts[i].get_text(), figure.axes[-1].texts[j].get_text())
         for i, first in enumerate(boxes) for j, second in enumerate(boxes) if j > i and first.overlaps(second)]
     assert not collisions, collisions
+    expected_points = {tuple(row['cross_scores'][key] for key in ARM_IDS)
+        for arm in report['arms'].values() for row in arm['observations']}
+    for text in figure.axes[-1].texts:
+        assert tuple(text.xy) in expected_points
+        assert text.arrow_patch is not None
+        assert abs(text.get_position()[1]) <= 25  # physical point offset, not data-unit jitter

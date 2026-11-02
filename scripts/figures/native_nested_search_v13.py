@@ -13,6 +13,7 @@ import tempfile
 import matplotlib
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
+from matplotlib.text import Annotation, Text
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
@@ -300,10 +301,15 @@ def _separate_crossscore_labels(axis, renderer):
     placed = []
     bounds = axis.get_window_extent(renderer)
     for text in axis.texts:
+        if not isinstance(text, Annotation):
+            continue
         x, y = text.get_position()
-        for delta in (0, 10, -10, 20, -20, 30, -30, 40, -40, 50, -50):
+        for delta in (0, 7, -7, 14, -14, 21, -21):
             text.set_position((x, y+delta))
-            box = text.get_window_extent(renderer).expanded(1.05, 1.1)
+            text.update_positions(renderer)
+            # Leader segments may cross; only the visible label rectangles
+            # must remain separate. Each leader still ends at its exact datum.
+            box = Text.get_window_extent(text, renderer).expanded(1.05, 1.1)
             if (box.y0 >= bounds.y0 and box.y1 <= bounds.y1
                     and box.x0 >= 0 and box.x1 <= axis.figure.bbox.x1
                     and not any(box.overlaps(other) for other in placed)):
@@ -375,7 +381,7 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
         axes[1, 1].text(.5, .04, 'Literal edits, not proven invention.\nFactor-draw changes are separate.',
             transform=axes[1, 1].transAxes, ha='center', va='bottom', fontsize=7.2, color='#435568')
         values = [[_value(data['policy'][identity][key]) for key in ('mean_step_l2', 'logit_step_l2')] for identity in ARM_IDS]
-        axes[2, 0].set_title('E  Sole conditional G0 step', y=1.05, pad=0)
+        axes[2, 0].set_title('E  One G0 conditional step / arm', y=1.05, pad=0)
         _table(axes[2, 0], ['Latent mean\nL2 change', 'Logits\nL2 change'], ['T', 'E'], values,
             bbox=(0,.42,1,.32))
         axes[2, 0].text(.5, .06, 'One LOO step → one fresh forward.\nG1 resets to its authored definition.\nZero change is not a success claim.',
@@ -398,9 +404,11 @@ def render(report, output, *, audit_path, expected_source=None, allow_synthetic=
                 # on top of one another. Alternate sides in the second arm;
                 # this affects annotation only, never coordinates or scores.
                 leftward = (point_index % 2 == 1) if index else x >= midpoint
-                ax.annotate('/'.join(tags), (x,y), xytext=(-3 if leftward else 3, 5+index*9),
-                    textcoords='offset points', ha='right' if leftward else 'left',
-                    fontsize=7.2, color=COLORS[index])
+                ax.annotate('/'.join(tags), (x,y), xytext=(-6 if leftward else 6, 0),
+                    textcoords='offset points', ha='right' if leftward else 'left', va='center',
+                    fontsize=7.2, color=COLORS[index],
+                    arrowprops={'arrowstyle': '-', 'color': COLORS[index], 'linewidth': .6,
+                        'shrinkA': 1., 'shrinkB': 2., 'alpha': .75})
         ax.set(title='F  Same-world cross-scores', xlabel='Throughput loss', ylabel='Efficiency loss')
         ax.grid(alpha=.2)
         ax.margins(x=.5, y=.55)

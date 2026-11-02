@@ -1404,7 +1404,7 @@ z
     <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; fill: #435568" transform="translate(56.682129 456.839846)">Zero change is not a success claim.</text>
    </g>
    <g id="text_102">
-    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="120.975879" y="358.112145" transform="rotate(-0 120.975879 358.112145)">E  Sole conditional G0 step</text>
+    <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="120.975879" y="358.112145" transform="rotate(-0 120.975879 358.112145)">E  One G0 conditional step / arm</text>
    </g>
   </g>
   <g id="axes_6">
@@ -1622,32 +1622,67 @@ L 378.36 465.422242
 L 378.36 363.222149 
 " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
+   <g id="patch_93">
+    <path d="M 277.155403 389.98884 
+Q 276.651859 389.98884 276.148315 389.98884 
+" style="fill: none; opacity: 0.75; stroke: #087e9c; stroke-width: 0.6; stroke-linecap: round"/>
+   </g>
    <g id="text_113">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e9c" x="277.148818" y="384.98884" transform="rotate(-0 277.148818 384.98884)">1</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087e9c" x="280.148818" y="391.859153" transform="rotate(-0 280.148818 391.859153)">1</text>
+   </g>
+   <g id="patch_94">
+    <path d="M 323.247696 389.98884 
+Q 323.751262 389.98884 324.254827 389.98884 
+" style="fill: none; opacity: 0.75; stroke: #087e9c; stroke-width: 0.6; stroke-linecap: round"/>
    </g>
    <g id="text_114">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #087e9c" x="323.254409" y="384.98884" transform="rotate(-0 323.254409 384.98884)">0a/0b</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #087e9c" x="320.254409" y="391.859434" transform="rotate(-0 320.254409 391.859434)">0a/0b</text>
+   </g>
+   <g id="patch_95">
+    <path d="M 340.618161 389.98884 
+Q 341.121403 389.98884 341.624645 389.98884 
+" style="fill: none; opacity: 0.75; stroke: #087e9c; stroke-width: 0.6; stroke-linecap: round"/>
    </g>
    <g id="text_115">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #087e9c" x="340.622939" y="384.98884" transform="rotate(-0 340.622939 384.98884)">U</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #087e9c" x="337.622939" y="391.859153" transform="rotate(-0 337.622939 391.859153)">U</text>
+   </g>
+   <g id="patch_96">
+    <path d="M 346.629524 438.655551 
+Q 346.12598 438.655551 345.622436 438.655551 
+" style="fill: none; opacity: 0.75; stroke: #b3497d; stroke-width: 0.6; stroke-linecap: round"/>
    </g>
    <g id="text_116">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b3497d" x="346.622939" y="424.655551" transform="rotate(-0 346.622939 424.655551)">1</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b3497d" x="349.622939" y="440.525864" transform="rotate(-0 349.622939 440.525864)">1</text>
+   </g>
+   <g id="patch_97">
+    <path d="M 340.618807 435.951845 
+Q 341.121941 435.951845 341.625074 435.951845 
+" style="fill: none; opacity: 0.75; stroke: #b3497d; stroke-width: 0.6; stroke-linecap: round"/>
    </g>
    <g id="text_117">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #b3497d" x="340.622939" y="421.951845" transform="rotate(-0 340.622939 421.951845)">0a</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #b3497d" x="337.622939" y="437.822158" transform="rotate(-0 337.622939 437.822158)">0a</text>
+   </g>
+   <g id="patch_98">
+    <path d="M 346.618691 423.785167 
+Q 346.119886 423.785167 345.621082 423.785167 
+" style="fill: none; opacity: 0.75; stroke: #b3497d; stroke-width: 0.6; stroke-linecap: round"/>
    </g>
    <g id="text_118">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b3497d" x="346.622939" y="409.785167" transform="rotate(-0 346.622939 409.785167)">0b</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b3497d" x="349.622939" y="425.655761" transform="rotate(-0 349.622939 425.655761)">0b</text>
+   </g>
+   <g id="patch_99">
+    <path d="M 340.618161 417.025902 
+Q 341.121403 417.025902 341.624645 417.025902 
+" style="fill: none; opacity: 0.75; stroke: #b3497d; stroke-width: 0.6; stroke-linecap: round"/>
    </g>
    <g id="text_119">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #b3497d" x="340.622939" y="403.025902" transform="rotate(-0 340.622939 403.025902)">U</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #b3497d" x="337.622939" y="418.896214" transform="rotate(-0 337.622939 418.896214)">U</text>
    </g>
    <g id="text_120">
     <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="308.885879" y="357.222149" transform="rotate(-0 308.885879 357.222149)">F  Same-world cross-scores</text>
    </g>
    <g id="legend_3">
-    <g id="patch_93">
+    <g id="patch_100">
      <path d="M 244.451758 461.822242 
 L 302.112508 461.822242 
 Q 303.552508 461.822242 303.552508 460.382242 
