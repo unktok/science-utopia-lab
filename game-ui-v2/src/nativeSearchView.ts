@@ -1,0 +1,87 @@
+import { NativeSearchConsent, decodeSearchEvidence, nativeSearchRequest, validateSearchBinding, verifySearchProgress, type SearchBinding } from './nativeSearchContract';
+import './nativeSearch.css';
+
+const node = <T extends HTMLElement>(id: string): T => { const value = document.getElementById(id); if (!value) throw new Error(`Missing search control ${id}`); return value as T; };
+const pretty = (value: unknown): string => JSON.stringify(value, null, 2) ?? 'Unavailable';
+const loss = (row: any): unknown => row?.observation?.loss ?? row?.observation?.native_loss ?? null;
+
+export function initializeNativeSearch(): void {
+  const panel = node<HTMLDetailsElement>('design-console');
+  const section = document.createElement('section'); section.className = 'autonomous-search'; section.id = 'autonomous-search';
+  section.setAttribute('aria-labelledby', 'search-title');
+  section.innerHTML = `<header class="search-header"><div><p class="section-label">14 / AUTONOMOUS INSTITUTION SEARCH</p><h2 id="search-title">Give the Foundry a loss. Follow every revision.</h2><p>The designer changes code, protocols and graph structure using its own measured history. Fixed researcher model weights. Development observations only.</p></div><span class="search-badge">EDIT → VALIDATE → CONSENT → SEARCH</span></header>
+    <div class="search-launch"><div><label>SEARCH METHOD<select id="search-method"><option value="blackbox">BLACK BOX / OWN HISTORY</option><option value="nested-lr">NESTED LR / 2 → 1 → 1</option></select></label><label>NATIVE WORLD SLOTS<input id="search-budget" type="number" min="1" max="8" value="4" /></label></div><div><label>DESIGNER ATTEMPTS / STAGE<input id="search-attempts" type="number" min="1" max="3" value="2" /></label><label>DESIGNER OUTPUT TOKENS<input id="search-tokens" type="number" min="512" max="8192" value="4096" /></label></div><div class="search-authorization"><p>Uses the exact editable SystemSpec, LossSpec, development seed and native years below. <a href="#design-system">INSPECT INPUTS ↓</a></p><p id="search-service" role="status">LOCAL WORKER REQUIRED</p><button id="search-validate" type="button" disabled>VALIDATE EXACT SEARCH REQUEST</button><label class="search-consent"><input id="search-consent" type="checkbox" disabled />I authorize this validated request's designer calls and native world budget on local Qwen3:8b.</label><button id="search-submit" type="button" disabled>QUEUE AUTONOMOUS SEARCH →</button></div></div>
+    <p id="search-validation" role="status">No search validated. Editing any input requires validation and renewed compute consent.</p><p id="search-error" role="alert" hidden></p>
+    <div class="search-monitor"><div class="search-monitor-heading"><div><span class="section-label">MISSION CONTROL / RECORDED PROGRESS</span><h3 id="search-status" role="status">NO SEARCH DISPATCHED</h3></div><button id="search-refresh" type="button" disabled>REFRESH RECEIPTS</button></div><p id="search-identity">No request, native observation or adoption receipt has been created.</p><div class="search-gauges"><div><small>CHARGED SLOTS</small><b id="search-charged">—</b></div><div><small>PHYSICAL OBSERVATIONS</small><b id="search-physical">—</b></div><div><small>CURRENT LOSS</small><b id="search-current">UNOBSERVED</b></div><div><small>BEST OWN LOSS</small><b id="search-best">UNOBSERVED</b></div></div>
+    <ol id="search-timeline" class="search-timeline" aria-label="Recorded search stages"><li>Generation → technical checks → native years → measurement → update / redesign. Waiting for recorded events.</li></ol><p id="search-replies">Designer replies and researcher replies will be shown separately when supplied by runtime receipts.</p><div id="search-observations" class="search-observations" aria-label="Observed candidate losses"></div>
+    <div class="search-inspection"><article><h3>Selected candidate / literal graph</h3><p id="search-selected">Select a recorded observation to inspect its exact SystemSpec. No automatic adoption.</p><div id="search-graph"></div></article><article><h3>Source, protocol &amp; learned weights</h3><pre id="search-source">No recorded candidate.</pre></article></div>
+    <details><summary>EXACT PROGRESS / ERRORS / LOSS SPEC / SOURCE BINDING</summary><pre id="search-raw">No search evidence.</pre></details><details><summary>EXACT REQUEST / COMPUTE CONSENT BINDING</summary><pre id="search-request">No validated request.</pre></details><div class="search-evidence"><button id="search-evidence" type="button" disabled>FETCH COMPLETE EVIDENCE</button><button id="search-download" type="button" disabled>DOWNLOAD EXACT EVIDENCE JSON</button><label>OPEN SAVED EVIDENCE<input id="search-file" type="file" accept=".json,application/json" /></label></div><p class="search-boundary">Inspection never installs a system into a society. Native technical validity, optimization loss, held-out metrics and optional adoption are separate. The city above is schematic art; progress below comes from receipts.</p></div>`;
+  panel.insertBefore(section, panel.querySelector('.design-workbench'));
+  const state = new NativeSearchConsent(); let token = '', source = '', searchId = '', timer: number | undefined, activeBinding: SearchBinding | undefined, progress: any, raw = '', inFlight = 0, initialized = false;
+  const input = (id: string): HTMLInputElement => node<HTMLInputElement>(id);
+  const request = () => nativeSearchRequest(input('design-system').value, input('design-loss').value, Number(input('design-seed').value), Number(input('design-years').value), node<HTMLSelectElement>('search-method').value, Number(input('search-budget').value), Number(input('search-attempts').value), Number(input('search-tokens').value));
+  const setError = (value: unknown) => { node('search-error').hidden = false; node('search-error').textContent = String(value); };
+  const refresh = () => { let allowed = false; try { allowed = state.canSubmit(request()); } catch { /* invalid draft is never dispatchable */ } node<HTMLButtonElement>('search-submit').disabled = !allowed; input('search-consent').disabled = !state.binding || state.submitting; };
+  const changed = () => { state.changed(); input('search-consent').checked = false; node('search-validation').textContent = 'INPUT EDITED / Validate the exact request and renew compute consent. Existing search receipts remain bound to their original request.'; refresh(); };
+  const api = async (path: string, body?: unknown) => {
+    const response = await fetch(`/native-api/${path}`, { method: body === undefined ? 'GET' : 'POST', headers: { 'X-Native-Lab-Token': token, ...(body === undefined ? {} : { 'Content-Type': 'application/json' }) }, ...(body === undefined ? {} : { body: JSON.stringify(body) }) });
+    const text = await response.text(); if (!response.ok) throw new Error(`Local service ${response.status}: ${text.slice(0, 1000)}`);
+    return { text, ...decodeSearchEvidence(text) };
+  };
+  const inspect = (row: any) => {
+    const observation = row?.observation, system = row?.suggestion?.candidate ?? observation?.candidate ?? row?.suggestion?.system ?? row?.suggestion?.system_spec ?? observation?.system ?? observation?.system_spec;
+    node('search-selected').textContent = `OBSERVATION ${observation?.observation_id ?? 'not allocated'} / LOSS ${String(loss(row))} / ${observation?.status ?? 'unavailable'} / SOURCE ${progress?.source_commit ?? 'unavailable'}`;
+    node('search-graph').replaceChildren();
+    if (system?.mechanisms) {
+      for (const mechanism of system.mechanisms) { const line = document.createElement('div'); line.className = 'search-node'; line.textContent = `${mechanism.mechanism_id} / ${mechanism.family} / ${mechanism.implementation}`; node('search-graph').append(line); }
+      for (const wire of system.connections ?? []) { const line = document.createElement('p'); line.textContent = `${wire.source_mechanism}.${wire.source_port} → ${wire.target_mechanism}.${wire.target_port} / latency ${wire.latency}`; node('search-graph').append(line); }
+    } else node('search-graph').textContent = 'Exact SystemSpec is not supplied by this receipt.';
+    node('search-source').textContent = pretty({ system: system ?? null, suggestion: row?.suggestion ?? null, observation: observation ?? null });
+  };
+  const render = (value: any, text: string, integerPaths: string[]) => {
+    progress = value; raw = text;
+    node('search-status').textContent = `${String(value.status).toUpperCase()} / ${String(value.stage ?? 'stage unavailable').toUpperCase()}`;
+    node('search-identity').textContent = `SEARCH ${value.search_id} / SOURCE ${value.source_commit} / REQUEST SHA256 ${value.request_sha256}`;
+    node('search-charged').textContent = `${value.budget.consumed ?? '—'} / ${value.native_budget} (${value.budget.remaining ?? '—'} remaining)`;
+    node('search-physical').textContent = String(value.budget.native_observations ?? 'Unavailable');
+    node('search-current').textContent = value.current ? String(loss(value.current)) : 'UNOBSERVED';
+    node('search-best').textContent = value.best?.loss === null || value.best?.loss === undefined ? 'UNOBSERVED' : `${value.best.loss} / ${value.best.ties?.length ?? 0} ties`;
+    node('search-timeline').replaceChildren(...value.records.map((record: any, index: number) => {
+      const li = document.createElement('li'), title = document.createElement('b'), details = document.createElement('details'), summary = document.createElement('summary'), body = document.createElement('pre');
+      const generated = record.generation_error ? 'GENERATION FAILED / NULL LOSS' : record.definition ? 'GENERATION RECORDED' : record.status ?? 'recorded';
+      title.textContent = `${String(index + 1).padStart(2, '0')} / ${record.stage ?? record.kind ?? `generation ${record.generation ?? record.request?.generation ?? index}`} / ${generated}`;
+      const facts = document.createElement('p');
+      const observed = Array.isArray(record.observations) ? record.observations : [], valid = observed.filter((item: any) => item?.status === 'complete'), failed = observed.filter((item: any) => !item || item.status !== 'complete');
+      facts.textContent = `REQUESTED NATIVE SLOTS ${record.request?.count ?? 'unavailable'} / DRAW RECEIPTS ${record.draws?.length ?? 0} / COMPLETE ${valid.length} / NULL OR FAILED ${failed.length}${record.generation_error ? ` / ${record.generation_error.type}: ${record.generation_error.message}` : ''}`;
+      summary.textContent = 'EXACT GENERATION / CHECKS / YEARS / MEASUREMENTS / WEIGHT UPDATE RECEIPT'; body.textContent = pretty(record); details.append(summary, body); li.append(title, facts, details); return li;
+    }));
+    if (!value.records.length) { const li = document.createElement('li'); li.textContent = 'No stage receipt yet. No inference activity inferred.'; node('search-timeline').append(li); }
+    const replies = value.replies ?? value.activity?.replies;
+    node('search-replies').textContent = replies ? `PHYSICAL REPLY RECEIPTS / DESIGNER ${replies.designer ?? 'Unavailable'} / RESEARCHER ${replies.researcher ?? 'Unavailable'}` : 'Separate physical designer / researcher reply counts are not supplied by this projection. Inspect exact stage receipts; no count is inferred.';
+    node('search-observations').replaceChildren(...value.observations.map((row: any, index: number) => { const button = document.createElement('button'); button.type = 'button'; button.textContent = `${String(index + 1).padStart(2, '0')} / ${row.observation?.status ?? 'null endpoint'} / LOSS ${String(loss(row))}`; button.addEventListener('click', () => inspect(row)); return button; }));
+    if (value.current) inspect(value.current);
+    node('search-raw').textContent = pretty({ evidence: value, display_numeric_encoding: { integer_encoding: 'base10-decimal-string', paths: integerPaths }, note: 'Display only. Download retains original bytes and numeric tokens.' });
+    node<HTMLButtonElement>('search-evidence').disabled = !['complete', 'failed'].includes(value.status) || !searchId;
+    node<HTMLButtonElement>('search-download').disabled = false;
+  };
+  const poll = async () => {
+    if (!searchId) return; const expected = searchId, ticket = ++inFlight;
+    try { const response = await api(`searches/${encodeURIComponent(expected)}`); if (expected !== searchId || ticket !== inFlight) return; const value = verifySearchProgress(response.value, activeBinding, expected); render(value, response.text, response.integer_paths); if (['queued', 'running'].includes(value.status)) timer = window.setTimeout(() => void poll(), 2000); } catch (error) { setError(error); }
+  };
+  panel.addEventListener('toggle', () => {
+    if (!panel.open || initialized) return; initialized = true;
+    void api('session').then(({ value }) => { if (typeof value.token !== 'string' || !/^[a-f0-9]{40}$/.test(value.source_commit)) throw new Error('Invalid native service session'); token = value.token; source = value.source_commit; node('search-service').textContent = `LOCAL QWEN3:8B / SOURCE ${source.slice(0, 12)}`; node<HTMLButtonElement>('search-validate').disabled = false;
+      try { const saved = sessionStorage.getItem('native-search-v14'); if (saved) { const prior = JSON.parse(saved); searchId = prior.search_id; activeBinding = prior.binding; node<HTMLButtonElement>('search-refresh').disabled = false; void poll(); } } catch { /* storage optional */ }
+    }).catch(error => { node('search-service').textContent = 'OFFLINE / START THE LOCAL NATIVE WORKER TO VALIDATE OR DISPATCH'; setError(error); });
+  });
+  for (const id of ['design-system', 'design-loss', 'design-seed', 'design-years', 'search-method', 'search-budget', 'search-attempts', 'search-tokens']) node(id).addEventListener('input', changed);
+  node('search-method').addEventListener('change', () => { const nested = node<HTMLSelectElement>('search-method').value === 'nested-lr'; input('search-budget').disabled = nested; if (nested) input('search-budget').value = '4'; changed(); });
+  input('search-consent').addEventListener('change', () => { state.consent(input('search-consent').checked); refresh(); });
+  node('search-validate').addEventListener('click', () => { void (async () => { try { node('search-error').hidden = true; const body = request(), revision = state.revision; state.binding = null; state.consented = false; input('search-consent').checked = false; refresh(); const response = await api('search-validate', body), binding = validateSearchBinding(response.value, body, source); if (!state.validated(binding, revision, request())) return; node('search-request').textContent = pretty(binding); node('search-validation').textContent = `RUNTIME VALID / ${body.method} / ${body.native_budget} NATIVE SLOTS / SHA256 ${binding.request_sha256} / NOT EXECUTED`; refresh(); } catch (error) { setError(error); refresh(); } })(); });
+  node('search-submit').addEventListener('click', () => { void (async () => { let started = false; try { const binding = state.begin(request()); started = true; input('search-consent').checked = false; refresh(); const response = await api('searches', { request: binding.request, confirmed_request_sha256: binding.request_sha256 }); const value = verifySearchProgress(response.value, binding); if (timer !== undefined) clearTimeout(timer); ++inFlight; searchId = value.search_id; activeBinding = binding; try { sessionStorage.setItem('native-search-v14', JSON.stringify({ search_id: searchId, binding })); } catch { /* storage optional */ } node<HTMLButtonElement>('search-refresh').disabled = false; render(value, response.text, response.integer_paths); node('search-validation').textContent = 'SEARCH DISPATCHED / Consent consumed. Editing and inspection do not alter the running request.'; if (['queued', 'running'].includes(value.status)) timer = window.setTimeout(() => void poll(), 1000); } catch (error) { setError(error); } finally { if (started) state.submitting = false; refresh(); } })(); });
+  node('search-refresh').addEventListener('click', () => { if (timer !== undefined) clearTimeout(timer); void poll(); });
+  node('search-evidence').addEventListener('click', () => { void (async () => { try { const expected = searchId, response = await api(`searches/${encodeURIComponent(expected)}/evidence`); if (expected !== searchId) return; render(verifySearchProgress(response.value, activeBinding, expected), response.text, response.integer_paths); } catch (error) { setError(error); } })(); });
+  node('search-download').addEventListener('click', () => { if (!raw) return; const url = URL.createObjectURL(new Blob([raw], { type: 'application/json' })), link = document.createElement('a'); link.href = url; link.download = `native-search-${progress.search_id}.json`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); });
+  input('search-file').addEventListener('change', () => { void (async () => { try { const file = input('search-file').files?.[0]; if (!file) return; const text = await file.text(), decoded = decodeSearchEvidence(text), value = verifySearchProgress(decoded.value); if (timer !== undefined) clearTimeout(timer); ++inFlight; searchId = ''; activeBinding = undefined; node<HTMLButtonElement>('search-refresh').disabled = true; render(value, text, decoded.integer_paths); node('search-validation').textContent = 'SAVED EVIDENCE / READ ONLY / Source identifiers are displayed, not independently authenticated. No job or consent created.'; } catch (error) { setError(error); } })(); });
+  refresh();
+}

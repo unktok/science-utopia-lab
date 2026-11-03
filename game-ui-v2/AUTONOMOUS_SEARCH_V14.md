@@ -1,0 +1,60 @@
+# Autonomous Institution Foundry V14
+
+`native.html` extends the existing English pixel-city Foundry workbench with an
+autonomous search console. The graph editor and exact SystemSpec/LossSpec remain
+the inputs; the original manual-run mission is separately available below.
+No existing V12/V13 payload, receipt, availability file or screenshot is changed.
+
+The autonomous console creates exactly
+`scienceutopia.native-search-request.v14`: `initial_system`, `loss_spec`, `seed`,
+`years`, `method`, `native_budget`, and the fixed `qwen3:8b` designer settings.
+Black-box search accepts 1–8 native slots. Nested LR requires exactly four slots
+and the established 2→1→1 schedule. Designer attempts are 1–3 and output token
+limits are 512–8192. Authoritative compilation and validation remain server-side.
+
+The workbench first reads the existing same-origin token session. Validation
+uses `POST /native-api/search-validate`; source, method and native budget must
+match. Compute consent is enabled only after validation, bound to the exact
+request and source receipt, and consumed by
+`POST /native-api/searches` with `{request, confirmed_request_sha256}`. Any input
+edit invalidates validation and consent. Concurrent duplicate submission and
+late validation from an edited draft are blocked. Viewing, editing, validating,
+loading saved evidence and downloading receipts do not dispatch inference.
+
+`GET /native-api/searches/{id}` polls recorded progress. The terminal evidence
+endpoint supplies the same projection with its immutable plan. The console
+keeps charged slots separate from physical native observations, current loss
+separate from best own loss, technical/null endpoints visible, and exact stage
+records available. Source, protocol, weights, graphs and observation objects
+are inspectable only as supplied by the runtime; missing activity is not
+interpolated into a simulated city or invented researcher animation. Designer
+and researcher physical reply counters are shown separately when provided.
+The source commit, exact request hash and full loss remain visible.
+
+Saved evidence opens as read-only, with source identifiers explicitly described
+as unauthenticated unless bound to the live validated request. It cannot create
+consent, execution or adoption. The download preserves exact API/file bytes.
+Unsafe integer lexical tokens are converted to decimal strings plus escaped
+JSON pointers for display only, before JavaScript can round them. Quoted source
+and floating lexical tokens are retained. Unsafe integer request drafts fail
+closed; no rounded SystemSpec or LossSpec is dispatched. Copying an existing
+SystemSpec into the shared workbench now uses that same exact-draft decoder.
+
+Verification:
+
+```sh
+npm test
+npm run build
+node scripts/verify-native-search-browser.mjs
+```
+
+The browser harness intercepts every native API request with prominently labelled
+SCRIPTED fixtures. Its evidence and desktop/mobile captures remain under a
+system temporary directory; they are not actual results. It verifies editing
+invalidation, renewed consent, exact dispatch shape, duplicate prevention,
+null failures, charged-versus-physical slots, unsafe integer display, separate
+reply counters, terminal evidence access, no overflow and zero browser errors.
+It starts/stops only its own Vite and isolated headless Chrome, with no native
+worker or model calls. Current regression result: 266 tests and production build
+pass. Actual screenshots require terminal audited actual evidence and are not
+claimed by this implementation receipt.
