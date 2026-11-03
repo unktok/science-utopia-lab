@@ -192,3 +192,18 @@ def test_scripted_render_is_clearly_labelled_vector_and_tracks_exact_inputs(tmp_
     assert manifest['width_inches'] == 5.5 and len(manifest['files']) == 3
     assert manifest['content_sha256'] == digest({k: v for k, v in manifest.items() if k != 'content_sha256'})
     assert manifest['data']['classification'] == FIXTURE
+
+
+def test_closed_actual_a2_paths_and_costs_join_independent_audits():
+    root = Path(__file__).resolve().parents[2]
+    reports = [json.loads((root / f'research/results/native-staged-search-v15-{revision}.json').read_text())
+        for revision in ('a1', 'a2')]
+    values = figure_data(*reports,
+        expected_a1_source='f969f7cc2f88549ce12c5afbbbeba7b30f38828e',
+        expected_a2_source='51d9cbbd49054cdb89c24ea5bc192ff9b63e9155')
+    assert [p['loss'] for p in values['native_paths']['throughput']] == [-1, -1]
+    assert [p['loss'] for p in values['native_paths']['efficiency']] == [8, 8]
+    assert {p['literal_relation_to_parent'] for path in values['native_paths'].values() for p in path} == {'same-parent'}
+    assert [r['completed_native_worlds'] for r in values['revisions']] == [0, 4]
+    assert [r['physical_scientist_replies'] for r in values['revisions']] == [0, 368]
+    assert values['controlled_comparison'] is values['held_out'] is False

@@ -53,3 +53,20 @@ sources, budgets, incomplete audits, borrowed histories, altered metrics,
 false retention, unknown replies, null-versus-zero handling and source-bound
 output hashes. Page-bound text checks and PNG/PDF rendering guard the layout;
 the final actual figure still receives visual inspection before publication.
+
+## Closed actual a2 rendering
+
+The final independent compact a2 audit has content hash
+`3bc4ba1cb98e1e25fe5a531818c934b3b9503aca4051f419c62ab6216fd27562`.
+The published figure passes its validation and shows throughput losses
+`[-1,-1]` and reviewed-production losses `[8,8]`, all exact-parent retention.
+It records four completed a2 worlds and 368 physical scientist replies;
+historical a1 remains four failed generations and zero worlds/replies. There
+is no new best, new code or novel institution in this staged-authoring pilot.
+
+PNG and the single PDF page rendered through Poppler at 150 dpi were visually
+reviewed: titles, separate axes, open-circle markers, physical-accounting
+table and limitations fit without clipping or overlap. The artifact manifest
+binds both independent audit hashes, generator hash and PNG/SVG/PDF hashes.
+The actual result regression plus 27 contract/rejection checks pass. The
+figure requires no model call, native execution or modification of raw data.
