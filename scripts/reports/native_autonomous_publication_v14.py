@@ -21,10 +21,10 @@ def asset(path):
         'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size}
 
 
-def recorded_test(directory, name, *, source, interrupted=False, junit=False):
+def recorded_test(directory, name, *, source, interrupted=False, failed=False, junit=False):
     path = directory / (name + '.receipt.json')
     receipt = json.loads(path.read_text())
-    if receipt['status'] != 'exited' or receipt['exit_code'] != (-15 if interrupted else 0):
+    if receipt['status'] != 'exited' or receipt['exit_code'] != (-15 if interrupted else 1 if failed else 0):
         raise ValueError('missing expected stopped-process result: ' + name)
     exact_source = subprocess.check_output(['git', 'rev-parse', source], cwd=ROOT, text=True).strip()
     result = {'source_commit': exact_source,
@@ -36,7 +36,8 @@ def recorded_test(directory, name, *, source, interrupted=False, junit=False):
         'log': asset(Path(receipt['log'])), 'status': receipt['status'],
         'exit_code': receipt['exit_code'], 'command': receipt['command'],
         'environment': receipt['environment'], 'started_utc': receipt['started_utc'],
-        'ended_utc': receipt['ended_utc'], 'interrupted_not_a_pass': interrupted}
+        'ended_utc': receipt['ended_utc'], 'interrupted_not_a_pass': interrupted,
+        'failed_not_a_pass': failed}
     if junit:
         xml = directory / (name + '.xml')
         suites = ET.parse(xml).getroot().iter('testsuite')
@@ -99,9 +100,10 @@ def main():
         ('ui-build-r1', 'ed9915b', False, False),
         ('operator-guards-r1', 'ed9915b', False, False),
         ('scripted-browser-r1', 'ed9915b', False, False),
-        ('final-focused-r1', args.paper_source, False, True),
+        ('final-focused-r2', args.paper_source, False, True),
     ):
         checks[name] = recorded_test(v, name, source=source, interrupted=interrupted, junit=junit)
+    checks['final-focused-r1'] = recorded_test(v, 'final-focused-r1', source='f382f5f', failed=True)
     artifacts = [ROOT / 'output/pdf/science-utopia-lab-working-paper.pdf']
     artifacts += sorted((ROOT / 'paper/figures').glob('native-autonomous-search-v14-a1.*'))
     artifacts += sorted((ROOT / 'paper/figures').glob('native-authoring-ir-v14-qa-a1.*'))

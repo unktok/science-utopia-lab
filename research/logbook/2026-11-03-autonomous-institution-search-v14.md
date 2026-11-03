@@ -160,3 +160,30 @@ native worlds/scientist replies. A separate terminal CLI resume returns`null`
 without constructing providers. Independent final QA audit is pending at this
 entry. Full corrected-environment source regression continues; no further
 actual generation/native trial is scheduled.
+
+## Independent closure and publication checks
+
+Separate QA analysis`af889e4` runs twice byte-identically, preserving26 raw
+files and292 exact source blobs at its own matching report checkout. Actual
+result`4aee02f` integrates as`18d3dbc`. The three known replies record55,749
+prompt/6,994 completion tokens and332.003371959 adapter seconds; the fourth
+intent's unknown processing/reply/tokens/time are not imputed. The exact single
+UI validation/submission wire strings and three stopped worker receipts join
+the manifest, queue, stable IR and null outcomes. A1/QA budgets are separate.
+
+Both report-only UI paths are verified: a1's independent audit import and the
+QA's explicitly unverified saved-progress import.277 UI tests, build/typecheck,
+8 operator guards and GET-only actual desktop/mobile captures pass with durable
+logs. Original before/queued PNGs are copied byte-identically, not recreated.
+Owned preview/worker registrations are removed after terminal evidence capture;
+only the corrected-environment full regression remains active at this entry.
+
+The first publication-focused run at`f382f5f` records530 passes and1 manuscript
+spacing failure, not a pass. Fix glued prose numerals in the new paper section
+and extend the typography guard to that section; the four typography checks
+then pass. The failed receipt/JUnit/log remain, and a fresh final focused scope
+must pass before release. PDF work retains the original v13 artifact, runs the
+PDF edit marker once, builds the NeurIPS-style manuscript with actual figures,
+and renders every final page plus enlarged changed pages for visual review.
+Final source/artifact hashes and full/focused outcomes belong to the publication
+verification receipt. No new actual candidate/model call is added for publication.
