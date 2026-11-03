@@ -192,9 +192,15 @@ def figure_data(report,expected_source=None,*,allow_synthetic=False):
                         if r['request_sha256'] == proof['request_sha256'])):
                 raise ValueError('designer request/raw/result/consumed-definition join differs')
             counts['dispatch_intents'] += len(proof['attempts'])
-            if len(proof['attempt_records']) != len(proof['attempts']):
+            if (len(proof['attempt_records']) != len(proof['attempts'])
+                    or len(proof['started_records']) != len(proof['attempts'])):
                 raise ValueError('designer draft completion omitted')
-            for attempt,done in zip(proof['attempts'],proof['attempt_records']):
+            for attempt,done,started in zip(proof['attempts'],proof['attempt_records'],proof['started_records']):
+                if (started['attempt'] != attempt['attempt']
+                        or started['binding_sha256'] != proof['binding']['binding_sha256']
+                        or started['prompt_sha256'] != digest(started['prompt'])
+                        or started.get('dispatch_intent') is not True):
+                    raise ValueError('designer original prompt/dispatch identity differs')
                 if done is None:
                     if attempt['status'] != 'interrupted-response-unknown' or attempt['completed_sha256'] is not None:
                         raise ValueError('unknown designer completion relabelled')
@@ -303,7 +309,7 @@ def render(report,output,*,audit_path,expected_source=None,allow_synthetic=False
         designer_time = f"{timing['recorded_sum']/60:.2f} min" if timing.get('record_count') else 'n/a'
         scientist_time = (f"{report['completed_researcher_model_call_seconds']/60:.2f} min"
             if report['physical_native_worlds'] else 'n/a')
-        ax.text(.5,.01,f'Designer recorded calls: {designer_time}.\nScientist model calls: {scientist_time}.\n'
+        ax.text(.5,.01,f'Designer recorded calls: {designer_time}.\nCompleted scientist calls: {scientist_time}.\n'
             'Intent = dispatch intent; unknowns retained.\nScientist requests: completed worlds only.',
             transform=ax.transAxes,ha='center',va='bottom',fontsize=7,color='#435568')
         ax = axes[2,1]

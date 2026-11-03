@@ -485,7 +485,8 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
         proofs.append({'request_sha256': request_sha, 'binding':binding, 'result':None if open_generation else result,
             'generation_status':'pending-authoring' if open_generation else result['status'],
             'definition_consumed':expected[request_sha]['generated'],
-            'attempts':attempts, 'attempt_records':[read(cell/f'attempt-{a["attempt"]:02d}.completed.json')
+            'attempts':attempts,'started_records':[read(p) for p in starts],
+            'attempt_records':[read(cell/f'attempt-{a["attempt"]:02d}.completed.json')
                 if a['completed_sha256'] else None for a in attempts]})
     missing = set(expected)-observed
     allowed_missing = {pending_sha} if pending_sha and not expected[pending_sha]['generated'] else set()
