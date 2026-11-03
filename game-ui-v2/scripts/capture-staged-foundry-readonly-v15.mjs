@@ -22,6 +22,10 @@ if (phase === 'terminal') { assert.equal(args['writer-stopped'], true, 'Explicit
 const sessionResponse = await fetch(`${base}/native-api/session`); assert.equal(sessionResponse.status, 200); const session = await sessionResponse.json(); assert.equal(session.source_commit, args['expected-source']); assert.equal(session.search_protocol, 'staged-v15'); assert.equal(typeof session.token, 'string');
 const endpoint = `${base}/native-api/searches/${id}${phase === 'terminal' ? '/evidence' : ''}`, response = await fetch(endpoint, { headers: { 'X-Native-Lab-Token': session.token } }); assert.equal(response.status, 200);
 const bytes = Buffer.from(await response.arrayBuffer()), value = JSON.parse(bytes); assert.equal(value.schema, 'scienceutopia.native-search-progress.v15'); assert.equal(value.search_id, id); assert.equal(value.source_commit, args['expected-source']); assert.equal(value.request_sha256, args['expected-request-sha256']); assert.equal(value.plan_sha256, args['expected-plan-sha256']); assert.deepEqual(value.request, run.request); assert.deepEqual(value.immutable_plan, run.runtime_plan);
+// Python's original int/float types, never a JavaScript reserialization, bind
+// the request and plan. The browser display itself remains unaudited.
+const canonical = JSON.parse(execFileSync('/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python', ['-c', 'import sys,json,hashlib; v=json.load(sys.stdin); d=lambda x:hashlib.sha256(json.dumps(x,sort_keys=True,ensure_ascii=False,separators=(",",":"),allow_nan=False).encode()).hexdigest(); print(json.dumps({"request":d(v["request"]),"plan":d(v["immutable_plan"])}))'], { input: bytes, encoding: 'utf8' }));
+assert.equal(canonical.request, args['expected-request-sha256']); assert.equal(canonical.plan, args['expected-plan-sha256']);
 if (phase === 'terminal') assert(['complete', 'failed'].includes(value.status));
 await mkdir(output); const snapshotFile = join(output, `${phase}-progress-exact.json`); await writeFile(snapshotFile, bytes);
 const profile = await mkdtemp(join(tmpdir(), 'noctiluca-v15-actual-readonly-')), sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
