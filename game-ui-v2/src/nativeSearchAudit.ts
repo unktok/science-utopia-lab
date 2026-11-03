@@ -24,12 +24,14 @@ export async function verifyNativeSearchAudit(raw: string, fileHash: string, sou
   }
   return { audit, raw, file_sha256: fileHash, source_commit: source, integer_paths: decoded.integer_paths, scripted };
 }
-export function auditedDesignerAttempts(run: Record<string, any>): { label: string; value: unknown }[] {
+export function auditedDesignerAttempts(run: Record<string, any>): { label: string; value: unknown; authored_source?: string }[] {
   return (run.designer?.proofs ?? []).flatMap((proof: any, generation: number) => (proof.attempts ?? []).map((attempt: any, index: number) => ({
     label: `GENERATION ${generation} / ATTEMPT ${attempt.attempt ?? index} / ${proof.attempt_records?.[index]?.status ?? 'INTERRUPTED / RESPONSE UNKNOWN'} / ${proof.generation_status}`,
+    authored_source: (proof.attempt_records?.[index]?.model_reply?.output?.operations ?? []).filter((op: any) => typeof op.value === 'string' && typeof op.path === 'string' && op.path.endsWith('/source')).map((op: any) => `ORIGINAL AUTHORED VALUE / ${op.path}\n${op.value}`).join('\n\n'),
     value: { scope: 'Original authored output / raw assistant content. A failed or unparsed draft is not a valid candidate, execution or adoption.',
       generation_request_sha256: proof.request_sha256, attempt, dispatch_intent: proof.started_records?.[index] ?? null,
       attempt_record: proof.attempt_records?.[index] ?? null, factual_address_diagnostic: proof.operation_diagnostics?.[index] ?? null,
+      authored_payload_comparison: proof.authored_payload_comparisons?.[index] ?? null,
       generation_result: proof.result, definition_consumed: proof.definition_consumed }
   })));
 }

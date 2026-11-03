@@ -1,0 +1,203 @@
+{
+  "schema": "scienceutopia.native-autonomous-search-actual-browser-qa.v14",
+  "classification": "actual-native-qwen-autonomous-search-development-v14",
+  "experiment_source": "54a7d92dad5221f83f25f81d62aa225ab38cef25",
+  "audit_file_sha256": "88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8",
+  "audit_content_sha256": "c8b5d713bd383ddc2feafebe67398af0e10fab44d2d1cd4d3605f9b5282fbb79",
+  "ui_source_sha256s": {
+    "native.html": "3115b985611ac7a91ae4d4e405cd57986b5956a2e3f2785e0a3285bb82b2d7c7",
+    "src/native.ts": "14aee64ade73a01fafa3f37b85303acac897684754f2ab8e557143d9d96a342a",
+    "src/nativeSearchContract.ts": "59dd97a672007aa93e99007dcb37bfb361907cbf4b374bda0e3cc1f86788b2e8",
+    "src/nativeSearchView.ts": "4ddce6312c467d0894f8c86c9b0e3fe76bf1210b7490a4ccfd8e052950a4c462",
+    "src/nativeSearchAudit.ts": "e6ee71bc04686e80e83f6bd40890e04ba47b9f96bf00ec5f9cd166bc989bad49",
+    "src/nativeSearch.css": "ab4a42ae58ee37b8c8ecb4f21cbca4ce4664c4169d00c2f5143549e8f5c227e0",
+    "scripts/export-native-search-audit-v14.mjs": "7a2dc7d5483d774e4462edf8853a521bf006c8b7c596cd56b0cb38f8ec1033d6",
+    "scripts/verify-native-search-audit-browser.mjs": "1c0f360cb84779e20405dcb61061759ef82484aa5571f30bc27ba1aa55f9b187"
+  },
+  "no_inference": true,
+  "no_post": true,
+  "no_adoption": true,
+  "all_three_requests": true,
+  "designer_attempts": 12,
+  "native_worlds": 0,
+  "native_replies": 0,
+  "raw_authored_source_inspected": true,
+  "browser_errors": 0,
+  "failed_http": 0,
+  "no_overflow": true,
+  "artifacts": [
+    {
+      "file": "actual-throughput-blackbox.png",
+      "sha256": "0e558ec04d4cbb680e79b43a6e60c150dfc55f3b58c1f201066c288993f2ada3",
+      "attempts": 4,
+      "stages": 2,
+      "graph": 0,
+      "best": "UNOBSERVED",
+      "physical": "0",
+      "origin": "INTEGRITY-VALIDATED INDEPENDENT AUDIT / throughput-blackbox / FILE SHA256 88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8 / EXPERIMENT SOURCE 54a7d92dad5221f83f25f81d62aa225ab38cef25 / READ ONLY",
+      "replies": "AUDITED KNOWN RESPONSES / DESIGNER 4 / RESEARCHER 0 / DESIGNER INTERRUPTED RESPONSE UNKNOWN 0"
+    },
+    {
+      "file": "actual-efficiency-blackbox.png",
+      "sha256": "11c009a5416a3c3e5bb31cf1441b5455c766fc84ffb8f1edf472a6abd601324b",
+      "attempts": 4,
+      "stages": 2,
+      "graph": 0,
+      "best": "UNOBSERVED",
+      "physical": "0",
+      "origin": "INTEGRITY-VALIDATED INDEPENDENT AUDIT / efficiency-blackbox / FILE SHA256 88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8 / EXPERIMENT SOURCE 54a7d92dad5221f83f25f81d62aa225ab38cef25 / READ ONLY",
+      "replies": "AUDITED KNOWN RESPONSES / DESIGNER 4 / RESEARCHER 0 / DESIGNER INTERRUPTED RESPONSE UNKNOWN 0"
+    },
+    {
+      "file": "actual-efficiency-nested-lr.png",
+      "sha256": "fffa7df01ecff7407926a5ad265ddfc46f61a2f7fc4fa947719a8c9485b0fc4a",
+      "attempts": 4,
+      "stages": 3,
+      "graph": 0,
+      "best": "UNOBSERVED",
+      "physical": "0",
+      "origin": "INTEGRITY-VALIDATED INDEPENDENT AUDIT / efficiency-nested-lr / FILE SHA256 88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8 / EXPERIMENT SOURCE 54a7d92dad5221f83f25f81d62aa225ab38cef25 / READ ONLY",
+      "replies": "AUDITED KNOWN RESPONSES / DESIGNER 4 / RESEARCHER 0 / DESIGNER INTERRUPTED RESPONSE UNKNOWN 0"
+    },
+    {
+      "file": "actual-source-desktop.png",
+      "sha256": "59208b50975bf3652d7fcf4a99248af4635ae3d23b2a087d53dff4e74daca37d",
+      "width": 1600
+    },
+    {
+      "file": "actual-source-mobile.png",
+      "sha256": "42ef1ce3693eda4cfa0b1ac170db49be3260dd741140ae8468c448efb61e28b0",
+      "width": 390
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4386/native.html?audited-search=v14",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/@vite/client",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/native-foundry-control-room.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/native.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeContract.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/generative.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/native.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeJobs.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeDesignGraphView.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeSearchView.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/foundryBranch.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/@fs/Users/shiro/unktok/dev/science-utopia-lab/game-ui-v2/node_modules/vite/dist/client/env.mjs",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeDesignGraph.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/methodObservatoryContract.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/hash.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeMissionView.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeAsyncGuard.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nestedFoundryContract.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeMission.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeSearchContract.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeSearch.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/src/nativeSearchAudit.ts",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/data/native-autonomous-search-v14.ui-receipt.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/data/native-design-lab-v1.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/native-api/session",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/data/native-autonomous-search-v14.audit.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/researcher-early.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/institution-lab.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/system-government.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/system-evaluation.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/system-publication.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4386/assets/noctiluca/production/institution-funding.svg",
+      "method": "GET"
+    }
+  ]
+}

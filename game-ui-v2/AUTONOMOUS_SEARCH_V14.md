@@ -159,3 +159,40 @@ includes actual loopback HTTP request bodies checked with approved Python's
 canonical JSON digest, 277 UI tests, seven pure operator tests, and scripted
 Chrome numeric-wire / no-event consent-drift checks. No native inference is
 started by these checks.
+
+## Actual a1 read-only publication
+
+The closed independent a1 audit is published byte-identically at
+`public/data/native-autonomous-search-v14.audit.json` with its separate UI
+receipt. Experiment source:
+`54a7d92dad5221f83f25f81d62aa225ab38cef25`. Exact audit file SHA256:
+`88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8`.
+Audit content hash:
+`c8b5d713bd383ddc2feafebe67398af0e10fab44d2d1cd4d3605f9b5282fbb79`.
+
+All three audited requests remain visible in the original workbench at
+`native.html?audited-search=v14`. The result is **budget complete with failures**:
+eight charged slots, six authoring generations, 12 recorded designer responses,
+zero valid candidates, zero native world directories and zero scientist replies.
+The actual captured source is an invalid original designer draft, not an
+executed institution. Draft inspection exposes original values, literal-address
+diagnostics and source comparisons without repairing or adopting them.
+
+`screenshots/autonomous-search-v14-a1-actual-qa/actual-browser-qa.json` binds the
+exact audit/source and UI source-file hashes to five reviewed desktop/mobile
+captures. It verifies all three requests, all 12 attempt records, failure/null
+states, zero candidate graphs and original authored source inspection. It records
+only local GETs, zero POSTs, zero new inference, zero adoption, zero browser
+errors, zero failed HTTP responses and no horizontal overflow. Source/export
+bytes are checked before and after. The browser harness starts and stops only
+its own Vite and isolated Chrome; it never opens mutable raw evidence.
+
+```sh
+node scripts/verify-native-search-audit-browser.mjs \
+  --audit=/absolute/path/to/closed-independent-audit.json \
+  --expected-audit-sha256=88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8 \
+  --expected-source=54a7d92dad5221f83f25f81d62aa225ab38cef25
+```
+
+These failed development requests are the original a1 result. The separately
+authorized stable-ID engineering QA cannot replace or retroactively repair them.

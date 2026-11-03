@@ -1,0 +1,17 @@
+{
+  "schema": "scienceutopia.native-autonomous-search-ui-export.v14",
+  "classification": "actual-native-qwen-autonomous-search-development-v14",
+  "source_commit": "54a7d92dad5221f83f25f81d62aa225ab38cef25",
+  "audit_file_sha256": "88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8",
+  "audit_content_sha256": "c8b5d713bd383ddc2feafebe67398af0e10fab44d2d1cd4d3605f9b5282fbb79",
+  "audit_file": "native-autonomous-search-v14.audit.json",
+  "run_order": [
+    "throughput-blackbox",
+    "efficiency-blackbox",
+    "efficiency-nested-lr"
+  ],
+  "no_inference": true,
+  "no_adoption": true,
+  "unchanged_audit_bytes": true,
+  "integrity_scope": "Exact file SHA and experiment source; independent audit assertions retained. UI source may be a later report-only commit."
+}
