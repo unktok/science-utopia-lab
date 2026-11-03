@@ -1,0 +1,16 @@
+✔ operator refuses absent start before any network or browser work (0.844208ms)
+✔ operator fixes loopback URL and rejects unknown URL/configuration switches (0.947ms)
+✔ operator requires exact source/request pins and absolute paths (0.121917ms)
+✔ operator preserves supplied source/loss and fixed bounded contract (0.93ms)
+✔ operator rejects unsafe numeric tokens without changing source strings (0.109458ms)
+✔ operator rejects extra dispatch fields in exact request (0.1245ms)
+✔ operator editor drafts retain numeric lexical types and source strings (0.149084ms)
+✔ operator receipt views never round unsafe response identities (0.054167ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46.422833

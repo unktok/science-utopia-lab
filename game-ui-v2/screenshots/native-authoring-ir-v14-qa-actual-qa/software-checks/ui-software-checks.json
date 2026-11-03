@@ -1,0 +1,75 @@
+{
+  "schema": "scienceutopia.native-search-ui-software-checks.v14",
+  "git_head": "a8cc980de1143aff4d92ee04d798d208d6cdf5c1",
+  "source_sha256s": {
+    "native.html": "3115b985611ac7a91ae4d4e405cd57986b5956a2e3f2785e0a3285bb82b2d7c7",
+    "src/native.ts": "14aee64ade73a01fafa3f37b85303acac897684754f2ab8e557143d9d96a342a",
+    "src/nativeSearchContract.ts": "59dd97a672007aa93e99007dcb37bfb361907cbf4b374bda0e3cc1f86788b2e8",
+    "src/nativeSearchView.ts": "4ddce6312c467d0894f8c86c9b0e3fe76bf1210b7490a4ccfd8e052950a4c462",
+    "src/nativeSearchAudit.ts": "e6ee71bc04686e80e83f6bd40890e04ba47b9f96bf00ec5f9cd166bc989bad49",
+    "src/nativeSearch.css": "ab4a42ae58ee37b8c8ecb4f21cbca4ce4664c4169d00c2f5143549e8f5c227e0",
+    "test/nativeSearch.test.ts": "84fcbdac5b83bfd88927bf2eadec92dad94b18c666fd465af02aca60a3563824",
+    "test/nativeSearchAudit.test.ts": "f7dd7f40dc74dcbf435104e86db265b9de537a41bcf30756bf414e6806aade2e",
+    "scripts/verify-native-search-ui-checks-v14.mjs": "7f13f035b1e335ca6db354805df05ff3d025e15f325efb2847de34707af31951"
+  },
+  "no_inference": true,
+  "no_native_worker": true,
+  "checks": [
+    {
+      "name": "tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "started_utc": "2026-11-03T01:36:10.900Z",
+      "ended_utc": "2026-11-03T01:36:12.122Z",
+      "exit_code": 0,
+      "error": null,
+      "log_file": "tests.log",
+      "log_sha256": "932b2326113e034e60505b6e03438a45ff8685767b4505feee538adf8b766e96"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "started_utc": "2026-11-03T01:36:12.122Z",
+      "ended_utc": "2026-11-03T01:36:13.299Z",
+      "exit_code": 0,
+      "error": null,
+      "log_file": "typecheck.log",
+      "log_sha256": "69989f0d66d67adf30ffd6860e3ed5428a69a4494e9ee324400dc62f184be7e4"
+    },
+    {
+      "name": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "started_utc": "2026-11-03T01:36:13.299Z",
+      "ended_utc": "2026-11-03T01:36:16.807Z",
+      "exit_code": 0,
+      "error": null,
+      "log_file": "build.log",
+      "log_sha256": "20cc113264aebfacf7583db94e89bd2afbef9ee496ff65cf42946166172b1efb"
+    },
+    {
+      "name": "operator-guards",
+      "command": [
+        "/Users/shiro/.local/share/mise/installs/node/24.22.1/bin/node",
+        "--test",
+        "scripts/test-native-search-operator-v14.mjs"
+      ],
+      "started_utc": "2026-11-03T01:36:16.807Z",
+      "ended_utc": "2026-11-03T01:36:16.885Z",
+      "exit_code": 0,
+      "error": null,
+      "log_file": "operator-guards.log",
+      "log_sha256": "efda1cdc5bbb96e14623e45fa19e5a065b444d2b694d7412ef3c20eed3466406"
+    }
+  ],
+  "all_pass": true
+}

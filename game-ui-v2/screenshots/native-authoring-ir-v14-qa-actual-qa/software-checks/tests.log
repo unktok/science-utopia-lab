@@ -1,0 +1,13 @@
+
+> science-utopia-game-ui-v2@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/shiro/unktok/dev/science-utopia-lab-worktrees/autonomous-search-ui-v14/game-ui-v2
+
+
+ Test Files  30 passed (30)
+      Tests  277 passed (277)
+   Start at  10:36:11
+   Duration  979ms (tests 81%, transform 8%, import 8%, worker 2%)
+

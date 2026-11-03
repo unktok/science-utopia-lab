@@ -1,0 +1,65 @@
+
+> science-utopia-game-ui-v2@0.1.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 89 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/generative.html                                   3.77 kB │ gzip:   1.66 kB
+dist/hub.html                                          4.38 kB │ gzip:   1.76 kB
+dist/native-open-estimators.html                       4.74 kB │ gzip:   2.14 kB
+dist/compare.html                                      4.94 kB │ gzip:   1.48 kB
+dist/open-evidence.html                                5.01 kB │ gzip:   2.06 kB
+dist/sandbox.html                                      5.21 kB │ gzip:   2.01 kB
+dist/heldout.html                                      5.41 kB │ gzip:   2.03 kB
+dist/mission.html                                      5.74 kB │ gzip:   2.13 kB
+dist/method-observatory.html                           5.82 kB │ gzip:   2.61 kB
+dist/native-objective-redesign.html                    5.90 kB │ gzip:   2.45 kB
+dist/objective-structure.html                          5.92 kB │ gzip:   2.50 kB
+dist/lifecycle.html                                   11.05 kB │ gzip:   4.03 kB
+dist/native.html                                      12.54 kB │ gzip:   4.39 kB
+dist/index.html                                       22.30 kB │ gzip:   5.31 kB
+dist/assets/openEstimators-BCN4M81m.css                0.30 kB │ gzip:   0.27 kB
+dist/assets/arcologyNav-B_x-TZUh.css                   2.69 kB │ gzip:   1.05 kB
+dist/assets/compare-COUs8Ehz.css                       4.90 kB │ gzip:   1.58 kB
+dist/assets/generative-BhJUQx3G.css                    5.33 kB │ gzip:   1.97 kB
+dist/assets/methodObservatory-CYGON2U7.css             7.85 kB │ gzip:   2.43 kB
+dist/assets/sandbox-BIjApSIV.css                       9.59 kB │ gzip:   2.63 kB
+dist/assets/hub-CS02WbTR.css                           9.78 kB │ gzip:   2.91 kB
+dist/assets/mission-Dd2969KV.css                      11.00 kB │ gzip:   2.84 kB
+dist/assets/heldout-CeB1sVzo.css                      12.78 kB │ gzip:   3.19 kB
+dist/assets/openRedesign-CjCA9wpa.css                 17.05 kB │ gzip:   4.47 kB
+dist/assets/objectiveStructure-vdtkpzTG.css           18.34 kB │ gzip:   5.02 kB
+dist/assets/native-CCBnnfXT.css                       27.38 kB │ gzip:   6.95 kB
+dist/assets/style-DeEfrYL3.css                        46.07 kB │ gzip:   9.14 kB
+dist/assets/openEvidence-D6dHzsLH.css                 61.65 kB │ gzip:  12.74 kB
+dist/assets/lifecycle-Wv20PpgW.css                    70.36 kB │ gzip:  14.55 kB
+dist/assets/modulepreload-polyfill-BTn-X1SE.js         0.77 kB │ gzip:   0.44 kB │ map:      0.12 kB
+dist/assets/hash-C7Kz1XFI.js                           1.09 kB │ gzip:   0.58 kB │ map:      3.29 kB
+dist/assets/methodObservatoryContract-Bhk8KJ2X.js      2.57 kB │ gzip:   1.19 kB │ map:      8.06 kB
+dist/assets/hub-BVeczeRl.js                            2.67 kB │ gzip:   1.20 kB │ map:      6.78 kB
+dist/assets/arcologyNav-BXCuGOba.js                    3.78 kB │ gzip:   1.77 kB │ map:      9.01 kB
+dist/assets/mission-t6m9-UyG.js                        6.53 kB │ gzip:   2.69 kB │ map:     15.68 kB
+dist/assets/compare-uhUdYNfb.js                        7.12 kB │ gzip:   2.93 kB │ map:     22.16 kB
+dist/assets/methodObservatory-y_YRRs5w.js              7.17 kB │ gzip:   3.38 kB │ map:     15.94 kB
+dist/assets/missionContract-CSWH1nPS.js                7.77 kB │ gzip:   2.58 kB │ map:     21.43 kB
+dist/assets/generative-Jl4DLhSv.js                    10.21 kB │ gzip:   4.34 kB │ map:     28.17 kB
+dist/assets/openEstimators-DPj1IOo0.js                11.50 kB │ gzip:   5.11 kB │ map:     25.09 kB
+dist/assets/heldout-kK_AMP5G.js                       15.76 kB │ gzip:   5.38 kB │ map:     42.15 kB
+dist/assets/foundryBranch-BNPA3awm.js                 16.46 kB │ gzip:   6.34 kB │ map:     42.12 kB
+dist/assets/sandbox-Do94ZRnN.js                       17.16 kB │ gzip:   5.54 kB │ map:     49.54 kB
+dist/assets/openEvidence-C67X0qov.js                  19.84 kB │ gzip:   6.85 kB │ map:     47.89 kB
+dist/assets/openRedesign-DdhDc8WC.js                  26.01 kB │ gzip:  10.49 kB │ map:     58.28 kB
+dist/assets/objectiveStructure-9q5Qv8r2.js            30.14 kB │ gzip:  10.37 kB │ map:     81.36 kB
+dist/assets/lifecycle-BlOHHMHh.js                     30.69 kB │ gzip:   9.82 kB │ map:     79.25 kB
+dist/assets/main-aWdQs0Be.js                          51.14 kB │ gzip:  15.57 kB │ map:    148.58 kB
+dist/assets/native-CWhAihNj.js                        66.82 kB │ gzip:  21.31 kB │ map:    167.99 kB
+dist/assets/replay-NBFXrwLu.js                     1,250.14 kB │ gzip: 344.09 kB │ map: 10,257.25 kB
+✓ built in 2.20s
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
