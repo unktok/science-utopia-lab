@@ -14,6 +14,7 @@ from utopia.optimization.native_staged_author_v15 import (
     replay_staged_generation,
     action_summary,
     build_conversation, turn_control, LocalStagedQwenDesignerModel, ACTION_SCHEMA, SYSTEM_PROMPT,
+    own_failure_history,
 )
 from utopia.system.design_patch import clone, digest
 
@@ -243,6 +244,69 @@ def test_failed_generation_feedback_contains_all_step_errors_and_no_candidate(tm
     assert len(result['generation_failure']['technical_errors']) == 2
     assert len(result['generation_failure']['step_receipts']) == 2
     assert author(Model([]), tmp_path, max_steps=2)(request()) == result
+
+
+def test_next_generation_sees_exact_budget_exhaustion_reason_protocol_and_all_receipt_digests(tmp_path):
+    first = request()
+    failure = author(Model([{'tool': 'validate'}]), tmp_path, max_steps=1)(first)
+    saved = failure['generation_failure']
+    second = request(); second['generation'] = 1
+    second['history'] = [{'definition': failure, 'generation_error': {'type': 'SCRIPTED-downstream-compile-error'}}]
+    model = Model([finish()])
+    result = author(model, tmp_path, max_steps=1)(second)
+    observed = json.loads(model.calls[0]['prompt'])['own_history']['generation_authoring_failures'][0]
+    assert observed['reason'] == saved['reason'] == 'step budget exhausted without valid explicit finish'
+    assert observed['authoring_protocol'] == saved['authoring_protocol']
+    assert observed['step_receipts'] == saved['step_receipts']
+    assert observed['step_receipts'][0]['status'] == 'applied'  # Applied inspection is not a finished candidate.
+    assert observed['exact_generation_failure_sha256'] == digest(saved)
+    assert observed['terminal_evidence_projection']['silent_tail_truncation'] is False
+    assert author(Model([]), tmp_path, max_steps=1)(second) == result
+
+
+def test_next_generation_retains_interrupted_unknown_receipt_not_fake_reply_or_zero_cost(tmp_path):
+    with pytest.raises(KeyboardInterrupt):
+        author(Model([KeyboardInterrupt()]), tmp_path, max_steps=1)(request())
+    failure = author(Model([]), tmp_path, max_steps=1)(request())
+    second = request(); second['generation'] = 1
+    second['history'] = [{'definition': failure}]
+    observed = own_failure_history(second)[0]
+    assert observed['step_receipts'] == failure['generation_failure']['step_receipts']
+    receipt = observed['step_receipts'][0]
+    assert receipt['status'] == 'interrupted-response-unknown' and receipt['completed_sha256'] is None
+    assert 'model_call_seconds' not in receipt and observed['reason']
+    model = Model([finish()])
+    result = author(model, tmp_path, max_steps=1)(second)
+    assert 'InterruptedDispatch' in json.dumps(json.loads(model.calls[0]['prompt'])['own_history'])
+    assert author(Model([]), tmp_path, max_steps=1)(second) == result
+
+
+def test_terminal_failure_evidence_is_complete_at_max_steps_and_preserves_historical_protocol():
+    receipts = [{'step': index, 'status': 'applied', 'started_sha256': str(index).zfill(64),
+        'completed_sha256': 'c' * 64} for index in range(64)]
+    original_protocol = {'schema': 'scienceutopia.staged-author.v15', 'source_sha256': 'f' * 64}
+    saved = {'schema': 'scienceutopia.staged-author-result.v15', 'reason': 'EXACT-' + 'long reason ' * 200,
+        'authoring_protocol': original_protocol, 'step_receipts': receipts, 'technical_errors': []}
+    body = request(); body['history'] = [{'definition': {'generation_failure': saved}}]
+    observed = own_failure_history(body)[0]
+    assert observed['reason'] == saved['reason'] and observed['authoring_protocol'] == original_protocol
+    assert observed['step_receipts'] == receipts and observed['step_receipts'][-1]['step'] == 63
+    assert observed['authoring_protocol'] != protocol_binding()
+
+
+def test_failure_history_never_reads_another_arm_journal_or_changes_legacy_projection(tmp_path):
+    from utopia.optimization.native_authoring_ir import detailed_failure_history
+    first = request()
+    failure = author(Model([{'tool': 'validate'}]), tmp_path, max_steps=1)(first)
+    different = request(); different['loss_spec']['id'] = 'different-arm-scripted'
+    model = Model([finish()])
+    author(model, tmp_path, max_steps=1)(different)
+    assert json.loads(model.calls[0]['prompt'])['own_history']['generation_authoring_failures'] == []
+    own = request(); own['history'] = [{'definition': failure}]
+    legacy = detailed_failure_history(own)
+    assert 'reason' not in legacy[0] and 'step_receipts' not in legacy[0]
+    assert 'reason' in own_failure_history(own)[0]
+    assert detailed_failure_history(own) == legacy
 
 
 def test_prompt_uses_all_own_scalar_history_and_only_requested_literal_body(tmp_path):

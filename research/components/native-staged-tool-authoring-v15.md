@@ -149,6 +149,20 @@ draft hash and the selected complete definition. It does not trust a self-hash
 as evidence that a modified compiler output was truly authored. Extra dispatches
 after finish, orphan completions and noncontiguous intents fail closed.
 
+A prospective V15-only prompt enrichment also carries each own prior terminal
+generation failure's **exact reason**, saved schema, original author-protocol
+identity and every saved bounded step-receipt digest/status record. This matters
+when all inspections were technically applied but no explicit finish occurred:
+the next generation must see "step budget exhausted without valid explicit
+finish", not just error-free individual steps and a generic downstream compiler
+error. Interrupted replies keep their unknown status and null completed digest;
+no model response or zero cost is invented. No receipt tail is silently removed.
+Exact raw step bodies stay in their original journals rather than being repeated;
+the whole-prompt byte cap still applies before any model dispatch. Only the
+supplied campaign request's own history is used, never neighbouring arm journals.
+The V14 history projection and transport remain unchanged; frozen earlier
+prompts are not retroactively enriched.
+
 `initial_draft`, `transition`, `build_prompt` and `compile_draft` are pure
 inspection surfaces. `replay_staged_generation` requires an existing terminal
 journal and never dispatches a model or fills missing files. The native kernel,

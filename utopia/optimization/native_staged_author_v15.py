@@ -213,6 +213,31 @@ def authored_output(state, rationale):
         'continuous': clone(state['continuous']), 'logits': clone(state['logits']), 'rationale': rationale}
 
 
+def own_failure_history(request):
+    """V15-only enrichment of the unchanged legacy IR history projection.
+
+    Keep each saved terminal reason, its original protocol identity, and ALL
+    bounded step receipt digests/statuses. Exact raw bodies stay in their own
+    journals; there is no neighbour-arm lookup or silent tail truncation. The
+    normal explicit whole-prompt byte limit still applies before any dispatch.
+    """
+    failures = detailed_failure_history(request)
+    for item in failures:
+        failure = request['history'][item['history_index']]['definition']['generation_failure']
+        item.update(reason=clone(failure.get('reason')),
+            failure_schema=clone(failure.get('schema')),
+            authoring_protocol=clone(failure.get('authoring_protocol')),
+            step_receipts=clone(failure.get('step_receipts', [])),
+            exact_generation_failure_sha256=digest(failure),
+            terminal_evidence_projection={
+                'reason_and_original_protocol': 'exact saved values, not current-protocol substitutes',
+                'step_receipts': 'all exact saved bounded receipt digest/status records, including unknown replies',
+                'raw_step_bodies': 'not duplicated; exact bodies remain in their original generation journals',
+                'silent_tail_truncation': False,
+                'foreign_arm_lookup': False})
+    return failures
+
+
 def compile_draft(state, request, *, binding_sha256, provider_binding, rationale):
     output = authored_output(state, rationale)
     definition = StableIDAuthoringProtocol().compile(request, output,
@@ -351,7 +376,7 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
     """Reconstructable bounded context; full request and tool bodies stay archived."""
     # Do not expose another arm or silently tail-truncate own outcomes/failures.
     history = _history_view(request)
-    history['generation_authoring_failures'] = detailed_failure_history(request)
+    history['generation_authoring_failures'] = own_failure_history(request)
     previous = []
     for item in steps:
         item_transition = item.get('transition') or {}
