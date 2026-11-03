@@ -43,7 +43,7 @@ try {
   };
   await cdp.call('Fetch.enable', { patterns: [{ urlPattern: `${base}/native-api/*`, requestStage: 'Request' }] });
   await cdp.call('Emulation.setDeviceMetricsOverride', { width: 1600, height: 1120, deviceScaleFactor: 1, mobile: false });
-  await cdp.call('Page.navigate', { url: `${base}/native.html` });
+  await cdp.call('Page.navigate', { url: `${base}/native.html?scripted-audit=v14` });
   await until(() => cdp.eval(`document.querySelector('#status')?.textContent.includes('HASH VERIFIED')`), 'base evidence');
   await cdp.eval(`document.querySelector('#design-console').open=true`);
   await until(() => cdp.eval(`!document.querySelector('#search-validate').disabled`), 'session');
@@ -73,6 +73,21 @@ try {
     const image = await cdp.call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false }); const bytes = Buffer.from(image.data, 'base64'); const file = `SCRIPTED-native-search-v14-${name}.png`; await writeFile(join(output, file), bytes); captures.push({ file, sha256: createHash('sha256').update(bytes).digest('hex') });
   }
   await cdp.eval(`document.querySelector('#search-evidence').click()`); await sleep(100);
+  const runOrder = ['throughput-blackbox', 'efficiency-blackbox', 'efficiency-nested-lr'];
+  const auditRuns = Object.fromEntries(runOrder.map((id, index) => {
+    const ownRequest = { ...structuredClone(request), method: index === 2 ? 'nested-lr' : 'blackbox', native_budget: index === 2 ? 4 : 2 }, plan = { source_commit: source }, records = [{ request: { generation: 0, count: 2 }, generation_error: { type: 'SCRIPTED', message: 'Invalid typed path; no native candidate', loss: null }, draws: [], observations: [] }];
+    const projected = { ...progress('complete'), request: ownRequest, method: ownRequest.method, native_budget: ownRequest.native_budget, records, pending: null, immutable_plan: plan, current: null, best: { loss: null, ties: [] }, observations: [], budget: { consumed: ownRequest.native_budget, native_observations: 0, remaining: 0 } };
+    return [id, { request: ownRequest, method: ownRequest.method, loss_spec: ownRequest.loss_spec, runtime_plan: plan, runtime_progress: projected, records, pending: null, terminal: true, observations: [{ status: 'generation-failure', loss: null, own_loss: null }], physical_researcher_responses: 0, designer: { known_responses: 1, interrupted_response_unknown: 0, proofs: [{ request_sha256: hash, generation_status: 'generation-failed', definition_consumed: false, result: { status: 'generation-failed' }, attempts: [{ attempt: 0 }], started_records: [{ prompt: 'SCRIPTED original prompt' }], attempt_records: [{ status: 'invalid', errors: [{ message: 'SCRIPTED typed path rejected' }], model_reply: { output: { operations: [{ value: { source: 'SCRIPTED raw authored Python source 9007199254740993' } }] }, messages: [{ role: 'assistant', content: 'SCRIPTED unparsed fallback raw source' }] } }] }] } }];
+  }));
+  const audit = { schema: 'scienceutopia.native-autonomous-search-audit.v14', classification: 'scripted-fixture-not-native-results', source_commit: source, content_sha256: hash, status: 'budget-complete-with-failures', run_order: runOrder, runs: auditRuns, exact_identity: 'UNSAFE_INTEGER', audit: { new_model_calls: 0, new_container_executions: 0, campaign_and_lineage_replayed: true, checkpoint_loss_reextracted: true, all_failures_and_exact_ties_retained: true, designer_requests_raw_replies_and_operations_joined: true, scientist_and_designer_costs_separate: true } };
+  const auditRaw = JSON.stringify(audit).replace('"UNSAFE_INTEGER"', '9007199254740993'), auditHash = createHash('sha256').update(auditRaw).digest('hex'), auditFile = join(output, 'SCRIPTED-terminal-audit.json'); await writeFile(auditFile, auditRaw);
+  await cdp.eval(`document.querySelector('#search-audit-hash').value=${JSON.stringify(auditHash)};document.querySelector('#search-audit-source').value=${JSON.stringify(source)}`);
+  const documentNode = await cdp.call('DOM.getDocument'), fileNode = await cdp.call('DOM.querySelector', { nodeId: documentNode.root.nodeId, selector: '#search-audit-file' });
+  await cdp.call('DOM.setFileInputFiles', { nodeId: fileNode.nodeId, files: [auditFile] });
+  await until(() => cdp.eval(`document.querySelector('#search-audit-status').textContent.includes('EXACT AUDIT BYTES VERIFIED')`), 'SCRIPTED audited import');
+  assert.equal(await cdp.eval(`document.querySelector('#search-audit-run').options.length===3&&document.querySelectorAll('#search-graph .search-node').length===0&&document.querySelector('#search-evidence-origin').textContent.includes('SCRIPTED / NOT NATIVE RESULTS')&&document.querySelector('#search-source').textContent.includes('No recorded current candidate')`), true);
+  for (const id of runOrder) { await cdp.eval(`document.querySelector('#search-audit-run').value=${JSON.stringify(id)};document.querySelector('#search-audit-run').dispatchEvent(new Event('change'))`); assert.equal(await cdp.eval(`document.querySelector('#search-designer-attempts').textContent.includes('SCRIPTED raw authored Python source 9007199254740993')&&document.querySelector('#search-best').textContent==='UNOBSERVED'&&document.querySelector('#search-submit').disabled`), true); }
+  assert.equal(submitted, 1);
   const errors = cdp.events.filter(m => m.method === 'Runtime.exceptionThrown' || m.method === 'Log.entryAdded' && m.params.entry.level === 'error');
   const failed = cdp.events.filter(m => m.method === 'Network.responseReceived' && m.params.response.status >= 400);
   assert.equal(errors.length, 0, JSON.stringify(errors)); assert.equal(failed.length, 0, JSON.stringify(failed));

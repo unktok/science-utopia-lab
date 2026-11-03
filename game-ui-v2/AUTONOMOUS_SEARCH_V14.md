@@ -66,3 +66,44 @@ It starts/stops only its own Vite and isolated headless Chrome, with no native
 worker or model calls. Current regression result: 269 tests and production build
 pass. Actual screenshots require terminal audited actual evidence and are not
 claimed by this implementation receipt.
+
+## Terminal independent audit bridge
+
+The existing mission panel also opens the three-request aggregate
+`scienceutopia.native-autonomous-search-audit.v14`. The user supplies the exact
+audit **file** SHA256 and experiment source commit. The importer checks original
+bytes, terminal classification, independent replay/source assertions and each
+runtime projection against the audit's full request, plan, records and pending
+state. File SHA256 is distinct from the audit's Python canonical content hash;
+the UI does not claim to recompute that differently serialized content hash.
+UI report code may be committed after the frozen experiment source.
+
+The request chooser preserves each loss and method. Every original designer
+attempt, dispatch prompt, diagnostic, parsed authored operation/source, raw
+assistant message and transport object remains inspectable, including invalid
+or unparsed drafts. Interrupted unknown attempts remain null. A failed
+generation does not create a candidate graph, world, loss or adoption. Changing
+the displayed audited request clears any pending browser consent and stops
+progress polling; it does not cancel a server job or dispatch new work.
+
+```sh
+node scripts/export-native-search-audit-v14.mjs \
+  --audit=/absolute/path/to/terminal-audit.json \
+  --expected-audit-sha256=EXACT_64_HEX_FILE_HASH \
+  --expected-source=EXACT_40_HEX_EXPERIMENT_SOURCE
+```
+
+The exporter copies original bytes unchanged and writes a separate file receipt
+under `public/data`. Open `native.html?audited-search=v14` for the published
+read-only import, or select a local audit with the exact expected identities.
+The old saved-progress picker remains explicitly unauthenticated. Audit integrity
+does not establish externally authenticated provider authorship or scientific
+benefit. No audit, actual export or actual screenshot is invented before the
+independent writer closes.
+
+SCRIPTED tests require explicit fixture opt-in. Browser fixture import is
+restricted to loopback `?scripted-audit=v14`, always labelled as SCRIPTED, and
+fixture exports require `--allow-scripted-temp-only` with temporary input/output.
+Current regression: 274 tests, typecheck and build pass; scripted browser QA
+also verifies all three audited requests, exact failed raw source inspection,
+zero candidate graph on generation failure and no additional dispatch.
