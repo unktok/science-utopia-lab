@@ -71,6 +71,16 @@ export function verifySearchProgress(value: any, binding?: SearchBinding, expect
   if (value.request?.schema !== requestSchema || !['blackbox', 'nested-lr'].includes(value.method) || value.method !== value.request?.method || value.native_budget !== value.request?.native_budget) throw new Error('Search method or budget differs');
   return value;
 }
+export function pendingNativeDesigns(value: any): { suggestion: Record<string, any>; observation: null; pending_native_observation: true; draw_index: number }[] {
+  const pending = value?.pending;
+  if (!object(pending) || !Array.isArray(pending.draws) || !Array.isArray(pending.observations)) return [];
+  return pending.draws.flatMap((draw: any, index: number) => {
+    // Only supplied, not-yet-observed suggestions. No graph is derived from an
+    // author's finish, an invalid draft, a failed draw or a request's parent.
+    if (index < pending.observations.length || !object(draw) || draw.technical_error || !object(draw.suggestion) || !object(draw.suggestion.candidate) || !Array.isArray(draw.suggestion.candidate.mechanisms)) return [];
+    return [{ suggestion: draw.suggestion, observation: null, pending_native_observation: true as const, draw_index: index }];
+  });
+}
 export function nativeSearchLiveTelemetry(value: any): { phase: string; year: string; designer: string; researcher: string; note: string } {
   const phase = typeof value?.stage === 'string' ? value.stage.toUpperCase() : 'UNAVAILABLE';
   const missing = { phase, year: 'UNAVAILABLE', designer: 'UNAVAILABLE', researcher: 'UNAVAILABLE', note: 'No observed live-progress receipt. Missing counts remain unavailable; durable search status is shown separately.' };

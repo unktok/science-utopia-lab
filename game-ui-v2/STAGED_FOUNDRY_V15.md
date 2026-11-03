@@ -91,3 +91,12 @@ Following actual inspection of a long all-inspection failure trace, prospective
 UI polish keeps the selected step inside its own scrollable list and explicitly
 reports failed generation counts. This does not alter historical runtime,
 screenshots, authored actions, observed native loss or experiment budget.
+
+The prospective pending-design inspector uses only exact suggestions supplied
+under `pending.draws` that have no observation row and no technical draw error.
+It never constructs a graph from a parent request or authoring finish receipt.
+The graph/source inspector labels those supplied designs **NATIVE LOSS
+UNOBSERVED** and retains the suggestion, request and source identities. Existing
+current/best loss and physical observation counters remain unchanged. Null,
+failed and already-observed pending draws are excluded. The raw download is not
+modified by the local presentation-only pending marker.

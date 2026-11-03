@@ -1,4 +1,4 @@
-import { NativeSearchConsent, decodeSearchEvidence, nativeSearchLiveTelemetry, nativeSearchWireRequest, stagedSearchWireRequest, stagedProviderAttemptLimit, validateSearchBinding, verifySearchProgress, type SearchBinding } from './nativeSearchContract';
+import { NativeSearchConsent, decodeSearchEvidence, nativeSearchLiveTelemetry, nativeSearchWireRequest, pendingNativeDesigns, stagedSearchWireRequest, stagedProviderAttemptLimit, validateSearchBinding, verifySearchProgress, type SearchBinding } from './nativeSearchContract';
 import './nativeSearch.css';
 import { auditedDesignerAttempts, verifyNativeSearchAudit, type VerifiedSearchAudit } from './nativeSearchAudit';
 import { mountAuthoringChronicle } from './authoringChronicleView';
@@ -40,7 +40,7 @@ export function initializeNativeSearch(): void {
   };
   const inspect = (row: any) => {
     const observation = row?.observation, system = row?.suggestion?.candidate ?? observation?.candidate ?? row?.suggestion?.system ?? row?.suggestion?.system_spec ?? observation?.system ?? observation?.system_spec;
-    node('search-selected').textContent = `OBSERVATION ${observation?.observation_id ?? 'not allocated'} / LOSS ${String(loss(row))} / ${observation?.status ?? 'unavailable'} / SOURCE ${progress?.source_commit ?? 'unavailable'}`;
+    node('search-selected').textContent = row?.pending_native_observation ? `SUPPLIED PENDING DESIGN / DRAW ${row.draw_index} / SUGGESTION ${row.suggestion?.suggestion_id ?? 'unavailable'} / NATIVE LOSS UNOBSERVED / SOURCE ${progress?.source_commit ?? 'unavailable'} / REQUEST SHA256 ${progress?.request_sha256 ?? 'unavailable'}` : `OBSERVATION ${observation?.observation_id ?? 'not allocated'} / LOSS ${String(loss(row))} / ${observation?.status ?? 'unavailable'} / SOURCE ${progress?.source_commit ?? 'unavailable'}`;
     node('search-graph').replaceChildren();
     if (system?.mechanisms) {
       for (const mechanism of system.mechanisms) { const line = document.createElement('div'); line.className = 'search-node'; line.textContent = `${mechanism.mechanism_id} / ${mechanism.family} / ${mechanism.implementation}`; node('search-graph').append(line); }
@@ -74,9 +74,10 @@ export function initializeNativeSearch(): void {
     if (!value.records.length) { const li = document.createElement('li'); li.textContent = 'No stage receipt yet. No inference activity inferred.'; node('search-timeline').append(li); }
     const replies = value.replies ?? value.activity?.replies;
     node('search-replies').textContent = replies ? `PHYSICAL REPLY RECEIPTS / DESIGNER ${replies.designer ?? 'Unavailable'} / RESEARCHER ${replies.researcher ?? 'Unavailable'}` : 'Separate physical designer / researcher reply counts are not supplied by this projection. Inspect exact stage receipts; no count is inferred.';
-    node('search-observations').replaceChildren(...value.observations.map((row: any, index: number) => { const button = document.createElement('button'); button.type = 'button'; button.textContent = `${String(index + 1).padStart(2, '0')} / ${row.observation?.status ?? 'null endpoint'} / LOSS ${String(loss(row))}`; button.addEventListener('click', () => inspect(row)); return button; }));
+    const pending = pendingNativeDesigns(value);
+    node('search-observations').replaceChildren(...value.observations.map((row: any, index: number) => { const button = document.createElement('button'); button.type = 'button'; button.textContent = `${String(index + 1).padStart(2, '0')} / ${row.observation?.status ?? 'null endpoint'} / LOSS ${String(loss(row))}`; button.addEventListener('click', () => inspect(row)); return button; }), ...pending.map(row => { const button = document.createElement('button'); button.type = 'button'; button.className = 'search-pending-design'; button.textContent = `PENDING DESIGN / DRAW ${row.draw_index} / NATIVE LOSS UNOBSERVED`; button.addEventListener('click', () => inspect(row)); return button; }));
     node('search-graph').replaceChildren(); node('search-selected').textContent = 'No current native candidate. Generation failures do not create a graph or outcome.'; node('search-source').textContent = 'No recorded current candidate. Inspect original failed designer attempts separately.';
-    if (value.current) inspect(value.current);
+    if (pending.length) inspect(pending[0]); else if (value.current) inspect(value.current);
     node('search-raw').textContent = pretty({ evidence: value, display_numeric_encoding: { integer_encoding: 'base10-decimal-string', paths: integerPaths }, note: 'Display only. Download retains original bytes and numeric tokens.' });
     node<HTMLButtonElement>('search-evidence').disabled = !['complete', 'failed'].includes(value.status) || !searchId;
     node<HTMLButtonElement>('search-download').disabled = false;
