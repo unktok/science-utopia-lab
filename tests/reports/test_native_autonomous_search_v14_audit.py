@@ -1,0 +1,187 @@
+"""Scripted audit contracts only: no inference, native worlds or scientific data."""
+from copy import deepcopy
+import json
+
+import pytest
+
+from scripts import analyze_native_autonomous_search_v14 as audit
+from tests.optimization.test_native_adaptive_search import tiny_parent, tiny_definition, fail_factory
+from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
+from utopia.optimization.native_nested_search import NativeNestedDesignCampaign
+from utopia.system.design_patch import digest
+from utopia.utils.data_utils import write_json_atomic, file_sha256
+
+
+def save(path,value):
+    write_json_atomic(path,value,sort_keys=True,allow_nan=False)
+
+
+def hashed(path,value,field='content_sha256'):
+    value = deepcopy(value)
+    value[field] = digest(value)
+    save(path,value)
+    return value
+
+
+def failed_designer(authoring,request):
+    """Durable two-draft malformed-output fixture, not a model call."""
+    request_sha = digest(request)
+    cell = authoring/('generation-'+request_sha)
+    binding = hashed(cell/'request.json',{'schema':'scienceutopia.llm-vocabulary-request.v14',
+        'request':request,'request_sha256':request_sha,'provider_binding':{'model':'scripted-qa'},
+        'image_id':'scripted-qa','settings':{'max_attempts':2,'max_tokens':4096}},'binding_sha256')
+    attempts = []
+    for index in range(2):
+        prompt = 'Explicit malformed-response scripted software QA; '+json.dumps(request,sort_keys=True)
+        start_path = cell/f'attempt-{index:02d}.started.json'
+        done_path = cell/f'attempt-{index:02d}.completed.json'
+        save(start_path,{'schema':'scienceutopia.llm-vocabulary-attempt-start.v14',
+            'attempt':index,'binding_sha256':binding['binding_sha256'],'dispatch_intent':True,
+            'prompt':prompt,'prompt_sha256':digest(prompt),'response_schema':{'type':'object'},
+            'started_utc':'2000-01-01T00:00:00Z'})
+        hashed(done_path,{'schema':'scienceutopia.llm-vocabulary-attempt.v14',
+            'binding_sha256':binding['binding_sha256'],'attempt':index,
+            'started_file_sha256':file_sha256(start_path),'status':'invalid','definition':None,
+            'errors':[{'type':'ValueError','message':'scripted malformed JSON'}],
+            'model_reply':{'output':None,'messages':[{'role':'assistant','content':'not JSON'}],
+                'transport':{'kind':'scripted-no-HTTP'}}})
+        attempts.append({'attempt':index,'started_sha256':file_sha256(start_path),
+            'completed_sha256':file_sha256(done_path),'status':'invalid'})
+    definition = {'generation_failure':{'kind':'scripted-no-model-response'}}
+    hashed(cell/'response.json',{'schema':'scienceutopia.llm-vocabulary-result.v14',
+        'binding_sha256':binding['binding_sha256'],'request_sha256':request_sha,
+        'status':'generation-failed','definition':definition,'selected_attempt':None,
+        'attempts':attempts,'source_execution_on_host':False})
+    return definition
+
+
+def fixture(root,*,terminal=True,valid_definitions=False):
+    initial = tiny_parent().to_dict()
+    world = {'source_commit':'fixture-source','classification':audit.FIXTURE,
+        'model_digest':'fixture-model','corpus_sha256':'fixture-corpus','years':2,'corpus_years':4,
+        'experiment':audit.EXPERIMENT}
+    loss_specs = list(audit.objective_specs().values())
+    entries,controllers = [],[]
+    for identity,loss,method,budget in [('throughput-blackbox',loss_specs[0],'blackbox',2),
+            ('efficiency-blackbox',loss_specs[1],'blackbox',2),('efficiency-nested',loss_specs[1],'nested-lr',4)]:
+        request = {'schema':'scienceutopia.native-search-request.v14','initial_system':initial,
+            'loss_spec':loss,'method':method,'seed':42,'years':2,'native_budget':budget,
+            'designer':{'model':'qwen3:8b','max_attempts':2,'max_tokens':4096}}
+        directory = root/identity
+        save(directory/'plan.json',{'schema':'scienceutopia.native-search-plan.v14',
+            'request':request,'request_sha256':digest(request),'source_commit':'fixture-source'})
+        entries.append({'id':identity,'request':request,'directory':identity})
+        kwargs = dict(initial_system=tiny_parent(),loss_spec=loss,seeds=[42],world_binding=world,seed=42)
+        if method == 'blackbox':
+            controller = NativeAdaptiveDesignCampaign(directory/'campaign',**kwargs,
+                strategies={'automatic':{'kind':'scripted-no-model'}},mode='blackbox')
+        else:
+            controller = NativeNestedDesignCampaign(directory/'campaign',**kwargs)
+        controllers.append(controller)
+        if terminal:
+            for _ in range(budget if method == 'blackbox' else 3):
+                generate = lambda req: failed_designer(directory/'authoring',req)
+                if valid_definitions:
+                    generate = lambda req: tiny_definition()
+                if method == 'blackbox':
+                    controller.advance(simulation_factory=fail_factory,generators={'automatic':generate},count=1)
+                else:
+                    controller.advance(simulation_factory=fail_factory,generator=generate)
+    plan = {'schema':audit.RAW_SCHEMA,'source_commit':'fixture-source','classification':audit.FIXTURE,
+        'experiment':audit.EXPERIMENT,'world':world,'initial_system':initial,'seed':42,
+        'population':{'authors':5,'conference_setting':1},
+        'designer_budget':{'generations':6,'max_attempts_per_generation':2,'max_http_attempts':12},'runs':entries}
+    save(root/'plan.json',plan)
+    return plan,controllers
+
+
+def rehash_file(path):
+    value = json.loads(path.read_text())
+    value.pop('content_sha256',None)
+    return hashed(path,value)
+
+
+def test_failed_designer_consumes_all_slots_without_physical_worlds_and_is_repeatable(tmp_path):
+    fixture(tmp_path)
+    before = audit._inventory(tmp_path)
+    first = audit.analyze(tmp_path,expected_source='fixture-source')
+    second = audit.analyze(tmp_path,expected_source='fixture-source')
+    assert first == second and before == audit._inventory(tmp_path)
+    assert first['status'] == 'budget-complete-with-failures'
+    assert first['consumed_native_slots'] == first['technical_failures'] == 8
+    assert first['physical_native_worlds'] == first['physical_world_directory_count'] == 0
+    assert first['physical_researcher_responses'] == 0
+    assert first['designer_costs'] == {'generations':6,'dispatch_intents':12,'known_responses':12,
+        'valid_drafts':0,'interrupted_response_unknown':0}
+    assert first['claims']['scripted_researcher_HTTP'] and not first['claims']['live_fixed_Qwen_researchers']
+    assert [r['scheduled_native_slots'] for r in first['runs']['efficiency-nested']['observations']] == [2,1,1]
+    assert all(r['loss'] is None for run in first['runs'].values() for r in run['observations'])
+
+
+def test_empty_incomplete_audit_does_not_charge_unstarted_generations(tmp_path):
+    fixture(tmp_path,terminal=False)
+    result = audit.analyze(tmp_path,expected_source='fixture-source',require_complete=False)
+    assert result['status'] == 'in-progress' and result['consumed_native_slots'] == 0
+    assert result['designer_costs']['dispatch_intents'] == 0
+    with pytest.raises(ValueError,match='incomplete'):
+        audit.analyze(tmp_path,expected_source='fixture-source')
+
+
+def test_controller_native_failure_is_null_not_hidden_or_replaced(tmp_path):
+    plan,controllers = fixture(tmp_path,valid_definitions=True)
+    run = audit.audit_native_campaign(tmp_path/'efficiency-nested',method='nested-lr',world=plan['world'],
+        classification=audit.FIXTURE,loss=plan['runs'][2]['request']['loss_spec'],
+        initial_system=plan['initial_system'],expected_budget=4)
+    assert run['terminal'] and run['consumed_native_slots'] == 4
+    assert len(run['observations']) == 4 and run['physical_native_worlds'] == 0
+    assert all(r['observation']['status'] == 'failed' and r['loss'] is None for r in run['observations'])
+    assert run['conditional_update_proof']['updates'] == 0
+
+
+@pytest.mark.parametrize('mutation',['hidden-attempt','raw-output','prompt','definition','request','status','source','budget'])
+def test_rehashed_tampering_is_rejected(tmp_path,mutation):
+    fixture(tmp_path)
+    cells = sorted((tmp_path/'throughput-blackbox'/'authoring').glob('generation-*'))
+    cell = cells[0]
+    if mutation == 'hidden-attempt':
+        response = json.loads((cell/'response.json').read_text())
+        response['attempts'].pop()
+        response.pop('content_sha256'); hashed(cell/'response.json',response)
+    elif mutation == 'raw-output':
+        path = cell/'attempt-00.completed.json'
+        done = json.loads(path.read_text()); done['model_reply']['output'] = {'invented':'repair'}
+        done.pop('content_sha256'); hashed(path,done)
+    elif mutation == 'prompt':
+        path = cell/'attempt-00.started.json'
+        start = json.loads(path.read_text()); start['prompt'] += ' hidden veto'; save(path,start)
+    elif mutation == 'definition':
+        path = cell/'response.json'; result = json.loads(path.read_text())
+        result['definition'] = tiny_definition(); result.pop('content_sha256'); hashed(path,result)
+    elif mutation in ('request','status'):
+        path = cell/'response.json'; result = json.loads(path.read_text())
+        result['request_sha256' if mutation == 'request' else 'status'] = 'forged'
+        result.pop('content_sha256'); hashed(path,result)
+    else:
+        plan = json.loads((tmp_path/'plan.json').read_text())
+        if mutation == 'source': plan['source_commit'] = 'forged'
+        if mutation == 'budget': plan['designer_budget']['max_http_attempts'] = 13
+        save(tmp_path/'plan.json',plan)
+    with pytest.raises(ValueError):
+        audit.analyze(tmp_path,expected_source='fixture-source')
+
+
+def test_orphan_physical_world_is_rejected(tmp_path):
+    fixture(tmp_path)
+    (tmp_path/'throughput-blackbox'/'worlds'/'undeclared').mkdir(parents=True)
+    with pytest.raises(ValueError,match='undeclared'):
+        audit.analyze(tmp_path,expected_source='fixture-source')
+
+
+def test_controller_history_update_forgery_is_rejected(tmp_path):
+    fixture(tmp_path)
+    path = tmp_path/'efficiency-nested'/'campaign'/'native-nested-state.json'
+    state = json.loads(path.read_text())
+    state['records'][2]['request']['history'] = []
+    save(path,state)
+    with pytest.raises(ValueError):
+        audit.analyze(tmp_path,expected_source='fixture-source')
