@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import subprocess
+import sqlite3
 import sys
 import threading
 
@@ -17,6 +18,7 @@ from utopia.optimization.native_jobs import NativeJobQueue
 from utopia.optimization.native_search_jobs_v14 import NativeSearchQueue
 from utopia.optimization.native_search_v14 import NativeSearchController, validate_search_request
 from utopia.runtime.checkpointing import PortableStop
+from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.native_kernel import NativeScienceKernel, legacy_world_system
 
@@ -301,7 +303,77 @@ def test_original_world_scripted_http_search_preserves_ties_current_and_reopens(
     assert result['best']['loss'] is not None and len(result['best']['ties']) == 2
     assert result['current'] != result['best']['incumbent']
     assert len(calls) == len(set(calls)) == 2
-    assert queue(tmp_path).evidence(first['search_id']) == result
+    reopened = queue(tmp_path).evidence(first['search_id'])
+    reopened.pop('live_progress'); result.pop('live_progress')
+    assert reopened == result
+
+
+def test_live_progress_missing_evidence_is_unknown_and_read_only(tmp_path):
+    q = queue(tmp_path); first = submit(q)
+    before = sorted(str(p.relative_to(tmp_path)) for p in tmp_path.rglob('*'))
+    live = q.get(first['search_id'])['live_progress']
+    assert live['scope'] == 'observed-local-files-not-final-audited-cost'
+    assert all(v is None for v in live['designer'].values())
+    assert live['researcher'] == {'runs': [], 'cached_responses': None, 'latest_checkpoint_year': None}
+    assert sorted(str(p.relative_to(tmp_path)) for p in tmp_path.rglob('*')) == before
+
+
+def test_live_progress_observes_bound_files_without_claiming_native_completion(tmp_path):
+    q = queue(tmp_path); first = submit(q, request(budget=1))
+    class PausedFactory(FailedFactory):
+        def __call__(self, *args): raise PortableStop('SCRIPTED pause with scheduled native draw')
+    with pytest.raises(PortableStop):
+        q.run_one(lambda *a: PausedFactory(), generator_builder=lambda *a: definition, source_commit=REVISION)
+    projection = q.get(first['search_id'])
+    pending = projection['pending']
+    root = tmp_path / first['search_id']
+    generation = root / 'authoring' / ('generation-' + digest(pending['request']))
+    generation.mkdir(parents=True)
+    binding = {'schema': 'scienceutopia.llm-vocabulary-request.v14', 'request': pending['request'],
+        'request_sha256': digest(pending['request']), 'provider_binding': BINDING,
+        'image_id': BINDING['image_id'], 'settings': request()['designer'].copy()}
+    binding['settings'].pop('model')
+    binding['binding_sha256'] = digest(binding)
+    (generation / 'request.json').write_text(json.dumps(binding))
+    for suffix in ('started', 'completed'):
+        (generation / f'attempt-00.{suffix}.json').write_text(json.dumps({
+            'attempt': 0, 'binding_sha256': binding['binding_sha256'], 'secret-prompt': 'DO-NOT-EXPOSE'}))
+    run_id = pending['draws'][0]['suggestion']['suggestion_id'] + '-s42'
+    world = root / 'worlds' / run_id
+    checkpoints = world / 'simulation/checkpoints/native-design'; checkpoints.mkdir(parents=True)
+    # Deliberately a filename-only placeholder, not valid checkpoint evidence.
+    (checkpoints / 'portable_checkpoint_year_1.json.gz').write_bytes(b'SCRIPTED provisional filename only')
+    replies = world / 'replies'; replies.mkdir()
+    cache_binding = {'cell': SystemSpec.from_dict(pending['draws'][0]['suggestion']['candidate']).fingerprint,
+        'seed': 42, 'model': BINDING['model'], 'model_revision': BINDING['model_digest'],
+        'corpus_sha256': BINDING['corpus_sha256'], 'science_config': {'source_commit': REVISION, 'years': 1}}
+    path = replies / 'responses.sqlite'
+    with sqlite3.connect(path) as db:
+        db.execute('CREATE TABLE metadata (binding TEXT)')
+        db.execute('INSERT INTO metadata VALUES (?)', (json.dumps(cache_binding),))
+        db.execute('CREATE TABLE replies (outcome TEXT)')
+        db.executemany('INSERT INTO replies VALUES (?)', [('response',), ('response',)])
+    before = path.read_bytes()
+    result = q.get(first['search_id']); live = result['live_progress']
+    assert result['status'] == 'running' and result['best']['loss'] is None
+    assert result['budget']['consumed'] == result['budget']['native_observations'] == 0
+    assert live['designer'] == {'generation_directories': 1, 'attempts_started': 1, 'attempts_completed': 1}
+    assert live['researcher']['cached_responses'] == 2 and live['researcher']['latest_checkpoint_year'] == 1
+    assert live['researcher']['runs'][0]['cache_binding_status'] == 'matched'
+    assert 'DO-NOT-EXPOSE' not in json.dumps(live) and str(tmp_path) not in json.dumps(live)
+    assert path.read_bytes() == before
+    with sqlite3.connect(path) as db:
+        db.execute('UPDATE metadata SET binding=?', (json.dumps({**cache_binding, 'science_config': {'source_commit': 'b' * 40, 'years': 1}}),))
+    mismatched = q.get(first['search_id'])['live_progress']['researcher']
+    assert mismatched['cached_responses'] is None and mismatched['runs'][0]['cache_binding_status'] == 'mismatch'
+    with sqlite3.connect(path) as db:
+        db.execute('BEGIN EXCLUSIVE')
+        unavailable = q.get(first['search_id'])['live_progress']['researcher']
+        assert unavailable['cached_responses'] is None and unavailable['runs'][0]['cache_binding_status'] == 'unavailable'
+    (generation / 'request.json').write_text('{}')
+    broken = q.get(first['search_id'])['live_progress']
+    assert all(v is None for v in broken['designer'].values())
+    assert broken['warnings'] == ['designer-receipts-unavailable-or-binding-mismatch']
 
 
 def test_search_http_consent_origin_source_auth_and_legacy_compatibility(tmp_path, monkeypatch):

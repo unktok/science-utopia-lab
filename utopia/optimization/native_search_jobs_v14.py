@@ -6,6 +6,7 @@ worker shares the old native queue's flock, so the two modes cannot overlap.
 from __future__ import annotations
 
 from contextlib import contextmanager
+from datetime import datetime, timezone
 import fcntl
 import json
 from pathlib import Path
@@ -15,6 +16,7 @@ import time
 import uuid
 
 from utopia.optimization.native_search_v14 import NativeSearchController, make_search_plan
+from utopia.system import SystemSpec
 from utopia.system.design_patch import clone, digest
 
 
@@ -92,7 +94,114 @@ class NativeSearchQueue:
         result = controller.projection(search_id=identity, status=row['status'],
             errors=[{'worker_error': row['error'], 'loss': None}] if row['error'] else [])
         result.update(created_at=row['created'], updated_at=row['updated'])
+        result['live_progress'] = self.live_progress(controller)
         return result
+
+    def live_progress(self, controller):
+        """Best-effort metadata reads, never a final cost/completion assertion.
+
+        Paths come only from the operator queue root and validated campaign IDs.
+        Missing evidence is unknown, and SQLite is opened strictly read-only.
+        No prompts, raw responses, source text or host paths leave this helper.
+        """
+        request, plan = controller.request, controller.plan
+        records = controller.campaign.state['records'] + ([controller.campaign.state['pending']]
+            if controller.campaign.state['pending'] else [])
+        warnings, runs = [], []
+        designer = {'generation_directories': None, 'attempts_started': None, 'attempts_completed': None}
+        authoring = controller.directory / 'authoring'
+        try:
+            if authoring.is_dir():
+                directories, started, completed = 0, 0, 0
+                for record in records:
+                    if record['request'].get('external_authoring') is False:
+                        continue
+                    generation_request = record['request']
+                    generation_sha = digest(generation_request)
+                    directory = authoring / ('generation-' + generation_sha)
+                    if not directory.is_dir():
+                        continue
+                    binding = json.loads((directory / 'request.json').read_text())
+                    binding_hash = binding.get('binding_sha256')
+                    if (binding.get('request') != generation_request or binding.get('request_sha256') != generation_sha
+                            or binding.get('provider_binding') != plan['provider_binding']
+                            or binding.get('image_id') != plan['provider_binding']['image_id']
+                            or binding.get('settings') != {k: request['designer'][k] for k in ('max_attempts', 'max_tokens')}
+                            or binding_hash != digest({k: v for k, v in binding.items() if k != 'binding_sha256'})):
+                        raise ValueError('authoring binding mismatch')
+                    directories += 1
+                    for attempt in range(request['designer']['max_attempts']):
+                        for suffix in ('started', 'completed'):
+                            path = directory / f'attempt-{attempt:02d}.{suffix}.json'
+                            if not path.is_file():
+                                continue
+                            receipt = json.loads(path.read_text())
+                            if receipt.get('binding_sha256') != binding_hash or receipt.get('attempt') != attempt:
+                                raise ValueError('authoring receipt binding mismatch')
+                            if suffix == 'started':
+                                started += 1
+                            else:
+                                completed += 1
+                designer = {'generation_directories': directories,
+                    'attempts_started': started, 'attempts_completed': completed}
+        except (OSError, ValueError, TypeError, KeyError, AttributeError):
+            warnings.append('designer-receipts-unavailable-or-binding-mismatch')
+
+        for record in records:
+            for draw in record['draws']:
+                suggestion = draw['suggestion']
+                if suggestion is None:
+                    continue
+                run_id = suggestion['suggestion_id'] + '-s' + str(request['seed'])
+                if not re.fullmatch(r'native-adaptive-[a-f0-9]{24}-s[0-9]+', run_id):
+                    warnings.append('native-run-identity-unavailable')
+                    continue
+                root = controller.directory / 'worlds' / run_id
+                years = []
+                try:
+                    for checkpoints in (root / 'simulation/checkpoints/native-design', root / 'checkpoints'):
+                        for path in checkpoints.glob('portable_checkpoint_year_*.json.gz'):
+                            match = re.fullmatch(r'portable_checkpoint_year_([0-9]+)\.json\.gz', path.name)
+                            if match and 0 <= int(match[1]) <= request['years'] and path.is_file():
+                                years.append(int(match[1]))
+                except OSError:
+                    warnings.append('native-checkpoint-files-unavailable')
+                count, binding_status = None, 'missing'
+                cache_path = root / 'replies/responses.sqlite'
+                try:
+                    if cache_path.is_file():
+                        binding_status = 'unavailable'
+                        db = sqlite3.connect(cache_path.as_uri() + '?mode=ro', uri=True, timeout=.05)
+                        try:
+                            rows = db.execute('SELECT binding FROM metadata').fetchall()
+                            binding = json.loads(rows[0][0]) if len(rows) == 1 else {}
+                            science = binding.get('science_config', {})
+                            if (binding.get('cell') == SystemSpec.from_dict(suggestion['candidate']).fingerprint
+                                    and binding.get('seed') == request['seed']
+                                    and binding.get('model') == plan['provider_binding']['model']
+                                    and binding.get('model_revision') == plan['provider_binding']['model_digest']
+                                    and binding.get('corpus_sha256') == plan['provider_binding']['corpus_sha256']
+                                    and science.get('source_commit') == plan['source_commit']
+                                    and science.get('years') == request['years']):
+                                count = db.execute("SELECT count(*) FROM replies WHERE outcome='response'").fetchone()[0]
+                                binding_status = 'matched'
+                            else:
+                                binding_status = 'mismatch'
+                        finally:
+                            db.close()
+                except (sqlite3.Error, OSError, ValueError, TypeError, KeyError, AttributeError):
+                    binding_status = 'unavailable'
+                runs.append({'run_id': run_id, 'checkpoint_year': max(years) if years else None,
+                    'cached_responses': count, 'cache_binding_status': binding_status})
+        known_counts = [r['cached_responses'] for r in runs]
+        known_years = [r['checkpoint_year'] for r in runs if r['checkpoint_year'] is not None]
+        return {'schema': 'scienceutopia.native-search-live-progress.v14',
+            'scope': 'observed-local-files-not-final-audited-cost',
+            'observed_at': datetime.now(timezone.utc).isoformat(), 'designer': designer,
+            'researcher': {'runs': runs, 'cached_responses': sum(known_counts)
+                if known_counts and all(c is not None for c in known_counts) else None,
+                'latest_checkpoint_year': max(known_years) if known_years else None},
+            'warnings': sorted(set(warnings))}
 
     def evidence(self, identity):
         # Partial, null and failed stages are evidence too. The complete flag is

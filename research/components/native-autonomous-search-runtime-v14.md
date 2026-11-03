@@ -76,6 +76,15 @@ committed scheduled stage slots, including null generations. Native observations
 count is separate. Exact definitions and candidate SystemSpecs preserve source,
 code and graph changes; neither new hashes nor new names imply useful invention.
 
+Optional `live_progress` reports only provisional observed local files, explicitly
+not final/audited cost. It shows own generation dispatch/completed receipt
+counts, known native run checkpoint filename years and source/model/corpus/seed/
+candidate-bound read-only response-cache row counts. Missing, busy, corrupt or
+mismatched evidence yields null rather than an invented zero. Paths, prompts,
+response bodies and source text are never included. Filename-only checkpoint
+progress never marks a trial or search complete; durable native observations
+and final independent audits retain that responsibility.
+
 Launch the existing server with `--search-config <operator JSON>` to opt in.
 Launch a separate worker with `--search-worker-once --search-config <same JSON>
 --data-cache <operator cache>`, sharing `--queue <directory>` with the server.
