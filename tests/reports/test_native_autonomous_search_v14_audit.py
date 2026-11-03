@@ -300,3 +300,40 @@ def test_zero_scientist_http_adapter_keeps_missing_wire_file_missing_and_raw_unc
         db.execute('INSERT INTO replies VALUES (?)',('unmatched-response',))
     with pytest.raises(ValueError,match='missing wire'):
         audit.zero_http_response_proofs(tmp_path,binding,[],complete=False,protocol={},classification=audit.FIXTURE)
+
+
+def test_full_runtime_plan_request_specific_world_and_progress_join_with_scripted_adapter(tmp_path):
+    """Real runtime/adapter, scripted author and failed factory: no native worlds."""
+    runtime = pytest.importorskip('utopia.optimization.native_search_v14')
+    generator_module = pytest.importorskip('utopia.optimization.native_search_generator_v14')
+    plan,_ = fixture(tmp_path/'seed-schema',terminal=False)
+    source = 'a'*40
+    provider = {'model':'qwen3:8b','model_digest':'b'*64,'corpus_sha256':'c'*64,
+        'dataset_identity':{'kind':'scripted-contract-no-worlds'},'corpus_years':4,'image_id':'sha256:'+'d'*64}
+    plan['source_commit'] = source
+    plan['world'].update(provider,source_commit=source)
+    root = tmp_path/'raw'
+    class Scripted:
+        def generate(self,**kwargs):
+            value = _authored_output()
+            return value,[{'role':'assistant','content':json.dumps(value)}]
+    for entry in plan['runs']:
+        directory = root/entry['directory']
+        frozen = runtime.make_search_plan(entry['request'],source_commit=source,provider_binding=provider)
+        controller = runtime.NativeSearchController(directory,plan=frozen,plan_sha256=digest(frozen))
+        generator = generator_module.LLMVocabularyGenerator(Scripted(),directory/'authoring',
+            image_id=provider['image_id'],provider_binding=provider,max_attempts=2,max_tokens=4096)
+        while not controller.complete:
+            controller.advance(simulation_factory=fail_factory,generator=generator)
+        save(directory/'progress.json',controller.projection(search_id=entry['id'],status='complete'))
+    save(root/'plan.json',plan)
+    before = audit._inventory(root)
+    first = audit.analyze(root,expected_source=source)
+    second = audit.analyze(root,expected_source=source)
+    assert first == second and before == audit._inventory(root)
+    assert first['classification'] == audit.FIXTURE and first['consumed_native_slots'] == 8
+    assert first['physical_native_worlds'] == 0 and first['designer_costs']['valid_drafts'] == 6
+    for entry in plan['runs']:
+        run = first['runs'][entry['id']]
+        assert run['binding']['world']['request_sha256'] == digest(entry['request'])
+        assert run['runtime_progress']['budget']['remaining'] == 0

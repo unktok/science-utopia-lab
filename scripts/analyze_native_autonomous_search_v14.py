@@ -569,7 +569,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                 or any(provider.get(k) != world.get(k) for k in ('model_digest','corpus_sha256','image_id'))):
             raise ValueError('designer provider differs from source-pinned researcher/corpus/image binding')
         campaign_world = None
-        if classification == ACTUAL:
+        if provider is not None:
             from utopia.optimization.native_search_v14 import make_search_plan
             if saved != make_search_plan(request,source_commit=expected_source,provider_binding=provider):
                 raise ValueError('runtime plan policy/budget/source differs from exact actual v14 contract')
@@ -595,6 +595,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             from utopia.optimization.native_search_v14 import NativeSearchController
             progress = read(directory/'progress.json')
             reader = NativeSearchController.__new__(NativeSearchController)
+            reader.directory = directory
             reader.plan,reader.plan_sha256,reader.request = saved,digest(saved),request
             reader.campaign = replay_campaign(directory/'campaign',request['method'])
             projected = reader.projection(search_id=progress['search_id'],status=progress['status'])
