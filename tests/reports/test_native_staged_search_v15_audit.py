@@ -208,9 +208,17 @@ def test_original_native_success_paths_join_source_world_actual_scientist_replie
 
 
 def transport_fixture():
-    binding = {'provider_binding': BINDING, 'binding_sha256': 'b' * 64, 'settings': {'max_tokens': 2048}}
-    started = {'prompt': json.dumps({'000_current_turn': {},
-        'fixture_scope': 'SCRIPTED transport checker only, not an actual model request'}), 'step': 0}
+    from tests.optimization.test_native_world import loss_spec
+    settings = {'max_steps': 16, 'max_tokens': 2048}
+    binding = {'provider_binding': BINDING, 'binding_sha256': 'b' * 64, 'settings': settings}
+    request = {'parent_system': legacy_world_system().to_dict(), 'loss_spec': loss_spec(),
+        'generation': 0, 'count': 1, 'stage': 'SCRIPTED transport checker only'}
+    # Use the real source-owned prompt/control contract. An empty fake control
+    # dictionary stopped being a valid fixture after trusted-role narration;
+    # weakening production parsing would hide that integration mistake.
+    started = {'prompt': audit.staged_author.build_prompt(request,
+        audit.staged_author.initial_draft(request), [], image_id=BINDING['image_id'],
+        binding_sha256=binding['binding_sha256'], settings=settings), 'step': 0}
     action = {'tool': 'finish', 'rationale': 'SCRIPTED'}
     body = {'model': 'qwen3:8b', 'done': True, 'done_reason': 'stop',
         'message': {'role': 'assistant', 'content': json.dumps(action)}}
