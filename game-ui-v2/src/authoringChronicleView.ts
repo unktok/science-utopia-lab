@@ -20,6 +20,8 @@ export function mountAuthoringChronicle(parent: Element): (value: unknown) => vo
     const found = steps.find(x => x.key === key); if (!found) return; selected = key;
     for (const button of list.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.key === key));
     const { item, generation } = found;
+    const selectedButton = [...list.querySelectorAll('button')].find(button => button.dataset.key === key);
+    if (selectedButton) { const row = selectedButton.getBoundingClientRect(), viewport = list.getBoundingClientRect(); if (row.bottom > viewport.bottom) list.scrollTop += row.bottom - viewport.bottom; else if (row.top < viewport.top) list.scrollTop -= viewport.top - row.top; }
     focus.textContent = `${item.tool?.toUpperCase() ?? 'TOOL UNKNOWN'} / ${item.status.toUpperCase()} / STEP ${item.step}`;
     lineage.textContent = `DRAFT ${short(item.draft_before_sha256)} → ${short(item.draft_after_sha256)} / GENERATION ${short(generation.request_sha256)}`;
     chips.replaceChildren(...authorStepChanges(item).map(change => el('span', 'author-change', change)));
@@ -36,12 +38,12 @@ export function mountAuthoringChronicle(parent: Element): (value: unknown) => vo
     delete summary.dataset.invalid; body.hidden = !trace?.generations.some(g => g.steps.length);
     if (!trace) { summary.textContent = 'NO STAGED JOURNAL SUPPLIED / Older search records remain available below. No authoring activity inferred.'; return; }
     steps = trace.generations.flatMap(g => g.steps.map(item => ({ key: `${g.request_sha256}:${item.step}`, generation: g, item })));
-    const finished = steps.filter(x => x.item.status === 'finished').length, rejected = steps.filter(x => x.item.status === 'rejected').length, unknown = steps.filter(x => !x.item.completed).length;
-    summary.textContent = `${trace.generations.length} GENERATIONS / ${steps.length} DISPATCH RECEIPTS / ${rejected} REJECTED TOOLS / ${finished} FINISH RECEIPTS / ${unknown} PENDING OR UNKNOWN REPLIES${trace.warnings.length ? ` / WARNINGS: ${trace.warnings.join('; ')}` : ''}`;
+    const finished = steps.filter(x => x.item.status === 'finished').length, rejected = steps.filter(x => x.item.status === 'rejected').length, unknown = steps.filter(x => !x.item.completed).length, failedGenerations = trace.generations.filter(g => g.status === 'generation-failed').length;
+    summary.textContent = `${trace.generations.length} GENERATIONS / ${steps.length} DISPATCH RECEIPTS / ${rejected} REJECTED TOOLS / ${finished} FINISH RECEIPTS / ${unknown} PENDING OR UNKNOWN REPLIES / ${failedGenerations} GENERATION FAILURES${trace.warnings.length ? ` / WARNINGS: ${trace.warnings.join('; ')}` : ''}`;
     if (!steps.length) summary.textContent += ' / NO TOOL ACTIVITY OBSERVED';
     list.replaceChildren(...steps.map(({ key, item, generation }) => {
       const row = el('li'), button = el('button', `author-event author-${item.status}`); button.type = 'button'; button.dataset.key = key; button.setAttribute('aria-pressed', 'false');
-      button.append(el('span', 'author-index', String(item.step).padStart(2, '0')), el('b', '', item.tool?.toUpperCase() ?? 'AWAITING REPLY'), el('span', 'author-outcome', item.status.toUpperCase()), el('small', '', `G ${short(generation.request_sha256)} / ${item.model_call_seconds === null ? 'COST UNKNOWN' : `${item.model_call_seconds.toFixed(2)}s ADAPTER`}`));
+      button.append(el('span', 'author-index', String(item.step).padStart(2, '0')), el('b', '', item.tool?.toUpperCase() ?? 'AWAITING REPLY'), el('span', 'author-outcome', item.status.toUpperCase()), el('small', '', `G ${short(generation.request_sha256)} / ${generation.status.toUpperCase()} / ${item.model_call_seconds === null ? 'COST UNKNOWN' : `${item.model_call_seconds.toFixed(2)}s ADAPTER`}`));
       button.addEventListener('click', () => select(key)); row.append(button); return row;
     }));
     if (steps.length) select(steps.some(x => x.key === selected) ? selected : steps.at(-1)!.key);

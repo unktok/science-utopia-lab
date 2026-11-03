@@ -73,3 +73,21 @@ The durable checker requires a committed UI tree and a fresh output directory.
 It stores all six command logs plus commit/source-file hashes, and checks source
 bytes again after execution. Browser receipts/captures are linked by their
 printed temporary paths; they remain explicitly SCRIPTED, not actual results.
+
+## Actual read-only snapshots
+
+`scripts/capture-staged-foundry-readonly-v15.mjs` pins the pilot plan's exact
+file hash, run plan, request SHA, experiment source and queue identity, then
+reads only the loopback session/progress. Its isolated browser blocks every
+non-GET or nonlocal request before navigation. It imports original response
+bytes through the existing **unverified saved-progress** control; no independent
+audit is implied. Captures distinguish snapshot versus terminal mode, preserve
+exact downloaded bytes, and record served asset hashes and UI checkout source
+separately from experiment source. Terminal mode additionally requires an
+explicit stopped-writer notice and successful exited writer receipt. It never
+validates, grants consent, queues work, executes code or adopts a system.
+
+Following actual inspection of a long all-inspection failure trace, prospective
+UI polish keeps the selected step inside its own scrollable list and explicitly
+reports failed generation counts. This does not alter historical runtime,
+screenshots, authored actions, observed native loss or experiment budget.
