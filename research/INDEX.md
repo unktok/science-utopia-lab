@@ -6,7 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [V14 active finite goal: automatic free institutional search](milestones/2026-11-03-autonomous-institution-search-v14.md)
+- [V14 completed finite goal: automatic free institutional search and bounded failures](milestones/2026-11-03-autonomous-institution-search-v14.md)
+- [V14 source-specific tests, actual UI/figure and60-page PDF verification](results/native-autonomous-search-v14-verification.json)
 - [V14 prospective8-slot/6-generation automatic-authoring protocol](protocols/campaigns/native-autonomous-search-v14.md)
 - [V14 closed a1 actual authoring failures, costs and null paths](results/native-autonomous-search-v14-a1.md)
 - [V14 independent a1 audit](results/native-autonomous-search-v14-a1.json)

@@ -1,7 +1,7 @@
 # V14 finite goal: automatic free institution search
 
-Status: both finite actual budgets closed; implementation/evidence complete,
-release subject to final source-specific regression and publication verification.
+Status: complete at publication; both finite actual budgets, source-specific
+software checks and reviewed publication artifacts are closed.
 
 The original eight-slot a1 pilot is closed:6 automatic generations/12 replies,
 all technical generation failures, zero native worlds. Its source and data are
@@ -48,7 +48,9 @@ free authored code has only its declared typed native effect interfaces.
   preserves the interrupted attempt, resumed queue and2 null slots. All original
   raw drafts remain; no invention/native-world success is manufactured.
 - Source-specific software checks, actual figure/UI files, reviewed paper/PDF
-  and release hashes are recorded in the final verification receipt. Earlier
+  and release hashes are recorded in the [verification receipt](../results/native-autonomous-search-v14-verification.json).
+  New actual source:2213 passes/6 skips. Final focused source`47ca728`:532 passes.
+  PDF:60 pages/all inspected,12 enlarged, no overfull/undefined references. Earlier
   full-source2166-pass/6-skip scope is not a pass claim for every later commit.
 
 Remaining non-scale engineering/research task: improve model-facing authoring

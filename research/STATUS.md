@@ -2,7 +2,7 @@
 
 Updated: 2026-11-03
 
-## Finite v14: implementation and actual bounded authoring failures
+## Completed finite v14: implementation and actual bounded authoring failures
 
 The user approves the [next finite goal](milestones/2026-11-03-autonomous-institution-search-v14.md):
 reuse the original-world blackbox/nested kernels, but connect model authoring,
@@ -48,8 +48,15 @@ Both actual figures and original failed drafts are published.277 UI tests,
 typecheck/build,8 operator guards and GET-only actual desktop/mobile captures
 pass; the QA saved-progress display remains explicitly unverified, unlike the
 separate independent audit. No fake graph or loss is shown. The publication
-verification receipt records final full/focused scopes, PDF review and hashes;
-release is conditional on those checks, not on useful invention. V13 unchanged.
+[verification receipt](results/native-autonomous-search-v14-verification.json)
+records2213 passes/6 skips at the new actual source and532 passing final focused
+checks at`47ca728`; earlier interrupted and one failed typography scope remain
+separate, not passes. Root reviews all60 final PDF pages and12 enlarged pages,
+with no overfull boxes/undefined references. All103 artifact/render hashes and
+the actual analysis commit resolve correctly. The finite implementation,
+bounded actual failure evidence and publication are complete, not reliable
+automatic invention or all non-scale research. No owned inference/preview/test
+job remains. V13 unchanged.
 
 ## Completed finite v13: free outer design and conditional inner optimization
 

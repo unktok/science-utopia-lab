@@ -187,3 +187,28 @@ PDF edit marker once, builds the NeurIPS-style manuscript with actual figures,
 and renders every final page plus enlarged changed pages for visual review.
 Final source/artifact hashes and full/focused outcomes belong to the publication
 verification receipt. No new actual candidate/model call is added for publication.
+
+## Final release verification
+
+New actual source`fdb694d` full regression exits0:2213 passed/6 skipped,
+947.73seconds. Corrected publication source`47ca7283329e50906870db4547d0ba04a740f0f3`
+focused scope exits0:532 passed/80.06seconds. These scopes overlap; they are not
+added as independent tests or scientific replicates. All owned task-specific
+launchd registrations are removed, leaving user Ollama untouched.
+
+Final60-page NeurIPS-style PDF is rendered at85dpi for all-page contact review,
+with12 enlarged150dpi pages. After the typography correction,57 final page
+images are byte-identical to the already inspected draft, while42/44/59 are
+reinspected at150dpi. No overfull boxes or undefined references remain.
+PDF SHA`ad34845068c2640c8c5d68fcfcade7722701b1e399b2e3142aa4c1bae204136d`;
+the original v13 PDF remains recoverable under the verification output root.
+
+An initial unpublished artifact receipt contains a mistyped full analysis commit.
+Its draft is preserved in`publication-draft-r1-invalid-analysis-pin.json`; correct
+the exact resolvable`af889e4d025437a5320a7fa1a83559bdea4c419c` and canonical
+content hash before release, and add a git object-existence guard to the writer.
+The final receipt verifies103 artifact/render hashes, both actual audit hashes,
+all source-specific stopped-process receipts and explicit failed/interrupted
+scopes. It does not claim the final publication tip matches every historical
+runtime/UI blob. Matching historical analysis branches are published for replay.
+No further actual author/model/native attempt is scheduled.

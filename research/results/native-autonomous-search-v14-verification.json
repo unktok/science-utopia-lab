@@ -1,0 +1,1063 @@
+{
+  "actual_source_commits": {
+    "closed_a1": "54a7d92dad5221f83f25f81d62aa225ab38cef25",
+    "separate_engineering_qa": "fdb694d0adee759470d9c4ff41c4d8c75e490d19"
+  },
+  "all_non_scale_research_completed_claimed": false,
+  "artifacts": [
+    {
+      "bytes": 4915495,
+      "path": "output/pdf/science-utopia-lab-working-paper.pdf",
+      "sha256": "ad34845068c2640c8c5d68fcfcade7722701b1e399b2e3142aa4c1bae204136d"
+    },
+    {
+      "bytes": 8136,
+      "path": "paper/figures/native-autonomous-search-v14-a1.manifest.json",
+      "sha256": "a6907c2a9a3ba5f8e5adda9739032919e9e9a48c872bbb25033662fe3cca2be1"
+    },
+    {
+      "bytes": 203745,
+      "path": "paper/figures/native-autonomous-search-v14-a1.png",
+      "sha256": "fdc33aef8a7fdc4980495f4209b12c70e5e59e88edaae2b07fd8a632cde84dff"
+    },
+    {
+      "bytes": 49704,
+      "path": "paper/figures/native-autonomous-search-v14-a1.svg",
+      "sha256": "50863198363d7e0e7e8bdb7cf3fa4ca7a54ef6c3bfd3d459da6333a06c1fbc97"
+    },
+    {
+      "bytes": 530,
+      "path": "paper/figures/native-authoring-ir-v14-qa-a1.manifest.json",
+      "sha256": "5c66f1307fbe9495f30aff3e7445df28f334c596ae2d11483dfad109e3a27325"
+    },
+    {
+      "bytes": 111894,
+      "path": "paper/figures/native-authoring-ir-v14-qa-a1.png",
+      "sha256": "f086d3fd79ef6b6959d4bccc9d44d7fad7e25d5058533184d088204e68a0bd37"
+    },
+    {
+      "bytes": 97564,
+      "path": "paper/figures/native-authoring-ir-v14-qa-a1.svg",
+      "sha256": "490ad5f50593a1ca0a259d24b44189f3aa800b69266ae682da5d39a2efa131cf"
+    },
+    {
+      "bytes": 131345,
+      "path": "game-ui-v2/screenshots/autonomous-search-v14-a1-actual-qa/actual-efficiency-blackbox.png",
+      "sha256": "11c009a5416a3c3e5bb31cf1441b5455c766fc84ffb8f1edf472a6abd601324b"
+    },
+    {
+      "bytes": 7065,
+      "path": "game-ui-v2/screenshots/autonomous-search-v14-a1-actual-qa/actual-browser-qa.json",
+      "sha256": "126765f059172802703deb510e6257dd62db94c32f750ffa4cbda0bf294051d2"
+    },
+    {
+      "bytes": 68009,
+      "path": "game-ui-v2/screenshots/autonomous-search-v14-a1-actual-qa/actual-source-mobile.png",
+      "sha256": "42ef1ce3693eda4cfa0b1ac170db49be3260dd741140ae8468c448efb61e28b0"
+    },
+    {
+      "bytes": 142452,
+      "path": "game-ui-v2/screenshots/autonomous-search-v14-a1-actual-qa/actual-efficiency-nested-lr.png",
+      "sha256": "fffa7df01ecff7407926a5ad265ddfc46f61a2f7fc4fa947719a8c9485b0fc4a"
+    },
+    {
+      "bytes": 151692,
+      "path": "game-ui-v2/screenshots/autonomous-search-v14-a1-actual-qa/actual-source-desktop.png",
+      "sha256": "59208b50975bf3652d7fcf4a99248af4635ae3d23b2a087d53dff4e74daca37d"
+    },
+    {
+      "bytes": 131048,
+      "path": "game-ui-v2/screenshots/autonomous-search-v14-a1-actual-qa/actual-throughput-blackbox.png",
+      "sha256": "0e558ec04d4cbb680e79b43a6e60c150dfc55f3b58c1f201066c288993f2ada3"
+    },
+    {
+      "bytes": 85493,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/terminal-mobile-mission.png",
+      "sha256": "e10cbfbeec40be7c7b45c50d5da808886a77e9da1687e8b70a2f0a143ac76489"
+    },
+    {
+      "bytes": 143751,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/actual-ui-queued.png",
+      "sha256": "aa152dba9cfd78d847730100f86d7cc30e13db0c894d3aafff33b3953061a35e"
+    },
+    {
+      "bytes": 6104,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/terminal-readonly-browser-qa.json",
+      "sha256": "29bf71448eee35a76b517d4b276cf8c69055293976f802c87287660285c46e8a"
+    },
+    {
+      "bytes": 158510,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/terminal-desktop-mission.png",
+      "sha256": "a5b8632c81e4aa2b78e1e1ef0d9f04d28a8be5d8c5eeb66063e73517db1a5e75"
+    },
+    {
+      "bytes": 177671,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/terminal-desktop-source.png",
+      "sha256": "ee3e7c7c2a117f72af9aac6911c27e7a9bdaadde645bdc9f5de487b301b6e11c"
+    },
+    {
+      "bytes": 139797,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/actual-ui-before-consent.png",
+      "sha256": "ed04e8a7fce30d107f314b3864b3129f05a4e30a18e064f14503a65f2e76c004"
+    },
+    {
+      "bytes": 138718,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/terminal-progress-exact.json",
+      "sha256": "4dee176d8d2373cafc00e5d94fb7442d7b4078fc54f8943c8ec1cff640258a6c"
+    },
+    {
+      "bytes": 68101,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/terminal-mobile-source.png",
+      "sha256": "4f5a000de1a5811f292eafbfa9ee939a2f601e4c0305998a18f2cf45af3f86ea"
+    },
+    {
+      "bytes": 771,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/software-checks/operator-guards.log",
+      "sha256": "efda1cdc5bbb96e14623e45fa19e5a065b444d2b694d7412ef3c20eed3466406"
+    },
+    {
+      "bytes": 2729,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/software-checks/ui-software-checks.json",
+      "sha256": "3f02def33d3d9ef74678d036c57d29fe7deff61b94e4a8e9b880b8ca2b58dd8e"
+    },
+    {
+      "bytes": 70,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/software-checks/typecheck.log",
+      "sha256": "69989f0d66d67adf30ffd6860e3ed5428a69a4494e9ee324400dc62f184be7e4"
+    },
+    {
+      "bytes": 307,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/software-checks/tests.log",
+      "sha256": "932b2326113e034e60505b6e03438a45ff8685767b4505feee538adf8b766e96"
+    },
+    {
+      "bytes": 5173,
+      "path": "game-ui-v2/screenshots/native-authoring-ir-v14-qa-actual-qa/software-checks/build.log",
+      "sha256": "20cc113264aebfacf7583db94e89bd2afbef9ee496ff65cf42946166172b1efb"
+    }
+  ],
+  "audits": {
+    "native-authoring-ir-v14-qa-a1": {
+      "content_sha256": "b37f2dea503a4e0c6cb3f38cf8e870d89f2b9ca07c97a50293a02c8c96f18d16",
+      "file": {
+        "bytes": 1768199,
+        "path": "research/results/native-authoring-ir-v14-qa-a1.json",
+        "sha256": "9a3c47f606ddb8368029c98a136359cfbdedc0d2b0876c74975e13a037ffc3f2"
+      },
+      "raw_inventory_sha256": "32d80fbef5487f89daf58b129f52e218531a474e8ab1ba88fcd0614e32e1adbb",
+      "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+      "status": "budget-complete-with-failures"
+    },
+    "native-autonomous-search-v14-a1": {
+      "content_sha256": "c8b5d713bd383ddc2feafebe67398af0e10fab44d2d1cd4d3605f9b5282fbb79",
+      "file": {
+        "bytes": 4013194,
+        "path": "research/results/native-autonomous-search-v14-a1.json",
+        "sha256": "88520eef09fc36c8ad904a2c19bcb6607ea208f11734d8577e66cd39256de0c8"
+      },
+      "raw_inventory_sha256": "226ef032b736dc0307e3c645807529310a73f6bf5fa1725ba8f0dc4810ed4a9a",
+      "source_commit": "54a7d92dad5221f83f25f81d62aa225ab38cef25",
+      "status": "budget-complete-with-failures"
+    }
+  },
+  "checks": {
+    "final-focused-r1": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/reports",
+        "tests/optimization/test_native_authoring_ir.py",
+        "tests/optimization/test_native_search_generator_v14.py",
+        "tests/optimization/test_native_search_v14.py",
+        "tests/optimization/test_native_jobs.py",
+        "tests/optimization/test_native_autonomous_driver_v14.py",
+        "tests/optimization/test_native_stable_queue_integration_v14.py",
+        "tests/optimization/test_native_authoring_ir_preparation_v14.py",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r1.xml"
+      ],
+      "ended_utc": "2026-11-03T01:43:13.529035+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 1,
+      "failed_not_a_pass": true,
+      "interrupted_not_a_pass": false,
+      "log": {
+        "bytes": 1406,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r1.log",
+        "sha256": "7ef5934d6876c03c63ba3b5e337e84ca4dbe3a3fcded127d5f2de29669596076"
+      },
+      "receipt": {
+        "bytes": 1421,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r1.receipt.json",
+        "sha256": "510bf96a19d87c3c2d22356337ba0712562aa1bd5d38f35a4c2bd8f484d3de65"
+      },
+      "source_commit": "f382f5f2648144649ec486c5836a2918f686c025",
+      "source_scope": "focused source files; report-only repository commits may overlap the run",
+      "started_utc": "2026-11-03T01:41:49.596232+00:00",
+      "status": "exited"
+    },
+    "final-focused-r2": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/reports",
+        "tests/optimization/test_native_authoring_ir.py",
+        "tests/optimization/test_native_search_generator_v14.py",
+        "tests/optimization/test_native_search_v14.py",
+        "tests/optimization/test_native_jobs.py",
+        "tests/optimization/test_native_autonomous_driver_v14.py",
+        "tests/optimization/test_native_stable_queue_integration_v14.py",
+        "tests/optimization/test_native_authoring_ir_preparation_v14.py",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r2.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 532
+      },
+      "ended_utc": "2026-11-03T01:46:29.060135+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "junit": {
+        "bytes": 217360,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r2.xml",
+        "sha256": "bbb4d07e1a784621b5461fc05bae11654e8660470e642489f5fe1acccac1d838"
+      },
+      "log": {
+        "bytes": 809,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r2.log",
+        "sha256": "8162b425e1f647ff13e4e2bf0f22ab225ed54d11585bae649b14a7aa0e30c010"
+      },
+      "passed": 532,
+      "receipt": {
+        "bytes": 1421,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/final-focused-r2.receipt.json",
+        "sha256": "aefe14b51e6a997aecaee20e00435662ff6d9e8ac62f3c8ebb7a7e4d349e83a7"
+      },
+      "source_commit": "47ca7283329e50906870db4547d0ba04a740f0f3",
+      "source_scope": "focused source files; report-only repository commits may overlap the run",
+      "started_utc": "2026-11-03T01:45:06.823540+00:00",
+      "status": "exited"
+    },
+    "ir-qa-full-r1": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r1.xml"
+      ],
+      "ended_utc": "2026-11-03T01:30:00.908811+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": -15,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": true,
+      "log": {
+        "bytes": 2044,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r1.log",
+        "sha256": "019ee539a7e41fc757a8c2a305357ddc8a15d420e42dac3b1a43cf6a595c1b6b"
+      },
+      "receipt": {
+        "bytes": 987,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r1.receipt.json",
+        "sha256": "0bca8dab57f8d1fce791f562c84393df10fe40b037a14bc0ca0da5e829804cd7"
+      },
+      "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+      "source_scope": "immutable experiment checkout",
+      "started_utc": "2026-11-03T01:25:47.041476+00:00",
+      "status": "exited"
+    },
+    "ir-qa-full-r2": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r2.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 6,
+        "tests": 2219
+      },
+      "ended_utc": "2026-11-03T01:46:04.440350+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "junit": {
+        "bytes": 477641,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r2.xml",
+        "sha256": "403173cb2ad2f0ded79ea0dc3e9c99a6fe06a287f5281a10e6b88e22c028405e"
+      },
+      "log": {
+        "bytes": 2659,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r2.log",
+        "sha256": "3139c8651adb8b2e903e44b83db0b2c19be9eb8513a7abacd5ef986a196ce578"
+      },
+      "passed": 2213,
+      "receipt": {
+        "bytes": 1000,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-full-r2.receipt.json",
+        "sha256": "4c9358c6453a72553e855aa6d0adbae9753937d49c02c40add27b86050a27134"
+      },
+      "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+      "source_scope": "immutable experiment checkout",
+      "started_utc": "2026-11-03T01:30:14.722846+00:00",
+      "status": "exited"
+    },
+    "ir-qa-terminal-resume-r1": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "scripts/serve_native_lab.py",
+        "--search-worker-once",
+        "--queue",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-ir-v14-qa-a1/queue",
+        "--search-config",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-ir-v14-qa-a1/operator-config.json",
+        "--data-cache",
+        "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia"
+      ],
+      "ended_utc": "2026-11-03T01:34:35.782863+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "log": {
+        "bytes": 5,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-terminal-resume-r1.log",
+        "sha256": "38e0b9de817f645c4bec37c0d4a3e58baecccb040f5718dc069a72c7385a0bed"
+      },
+      "receipt": {
+        "bytes": 1205,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-terminal-resume-r1.receipt.json",
+        "sha256": "b3452ae2d80f208154c20e3bad17dedfa7bdd574d25c81bd8627f79b6cd6f88f"
+      },
+      "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+      "source_scope": "immutable experiment checkout",
+      "started_utc": "2026-11-03T01:34:34.860741+00:00",
+      "status": "exited"
+    },
+    "ir-qa-worker-r1": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "scripts/serve_native_lab.py",
+        "--search-worker-once",
+        "--queue",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-ir-v14-qa-a1/queue",
+        "--search-config",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-ir-v14-qa-a1/operator-config.json",
+        "--data-cache",
+        "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia"
+      ],
+      "ended_utc": "2026-11-03T01:30:00.896198+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": -15,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": true,
+      "log": {
+        "bytes": 0,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-worker-r1.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "receipt": {
+        "bytes": 1183,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-worker-r1.receipt.json",
+        "sha256": "3891044d1ead57dbd08a3c461de2f89e579542dcdbad9b839ec7fc7f85f7943c"
+      },
+      "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+      "source_scope": "immutable experiment checkout",
+      "started_utc": "2026-11-03T01:26:17.588017+00:00",
+      "status": "exited"
+    },
+    "ir-qa-worker-r2": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "scripts/serve_native_lab.py",
+        "--search-worker-once",
+        "--queue",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-ir-v14-qa-a1/queue",
+        "--search-config",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-ir-v14-qa-a1/operator-config.json",
+        "--data-cache",
+        "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia"
+      ],
+      "ended_utc": "2026-11-03T01:32:51.504126+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "log": {
+        "bytes": 139026,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-worker-r2.log",
+        "sha256": "df936944f4f6b62b16ed5845c696631cbeb686c84b897e1aa137bd8e84a02088"
+      },
+      "receipt": {
+        "bytes": 1196,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ir-qa-worker-r2.receipt.json",
+        "sha256": "3e2d338eec72f95bf8f1cdc47447cea33a129904bd1ab7c72fc61c63b84397d5"
+      },
+      "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+      "source_scope": "immutable experiment checkout",
+      "started_utc": "2026-11-03T01:30:14.667020+00:00",
+      "status": "exited"
+    },
+    "operator-guards-r1": {
+      "command": [
+        "node",
+        "scripts/test-native-search-operator-v14.mjs"
+      ],
+      "ended_utc": "2026-11-03T01:32:56.565630+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": null,
+        "HF_HUB_OFFLINE": null,
+        "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/shiro/.local/share/mise/shims:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/shiro/.codex/tmp/arg0/codex-arg0B6y7ga:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/shiro/.local/share/mise/installs/pnpm/latest:/Users/shiro/.local/share/mise/installs/node/24.22.1/bin:/Users/shiro/.cargo/bin:/Users/shiro/.local/bin:/opt/homebrew/sbin:/Users/shiro/.orbstack/bin:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/Users/shiro/.orbstack/bin",
+        "PYTHONHASHSEED": null,
+        "TRANSFORMERS_OFFLINE": null
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "log": {
+        "bytes": 775,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/operator-guards-r1.log",
+        "sha256": "92834802986fa20f862782446bbc8955a6ae2ced5f847b1d724abf16aef946b6"
+      },
+      "receipt": {
+        "bytes": 1795,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/operator-guards-r1.receipt.json",
+        "sha256": "c9eeab169f348bc99d78e78ec83ffbc2f6f7c272b7626cf316d8f01b085b1cea"
+      },
+      "source_commit": "ed9915b4df5de9f586f36c066e69debf437ab3c3",
+      "source_scope": "focused source files; report-only repository commits may overlap the run",
+      "started_utc": "2026-11-03T01:32:56.508333+00:00",
+      "status": "exited"
+    },
+    "runtime-full-r1": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/runtime-full-r1.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 6,
+        "tests": 2172
+      },
+      "ended_utc": "2026-11-03T01:13:24.343232+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "junit": {
+        "bytes": 338725,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/runtime-full-r1.xml",
+        "sha256": "0b1c87b2b181e65f56df2c03fd1952727f04bfd846cb346621fb56604899a027"
+      },
+      "log": {
+        "bytes": 2662,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/runtime-full-r1.log",
+        "sha256": "38a1ef6f6909810255fa375badec05b70e9b4b88438efe388026327ed71735b4"
+      },
+      "passed": 2166,
+      "receipt": {
+        "bytes": 968,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/runtime-full-r1.receipt.json",
+        "sha256": "b71cda7da51ca1da573ca7b5e13f9ea4a8980c8640e63c2e32f162fec73294ef"
+      },
+      "source_commit": "54a7d92dad5221f83f25f81d62aa225ab38cef25",
+      "source_scope": "immutable experiment checkout",
+      "started_utc": "2026-11-03T00:54:22.705595+00:00",
+      "status": "exited"
+    },
+    "scripted-browser-r1": {
+      "command": [
+        "node",
+        "scripts/verify-native-search-browser.mjs"
+      ],
+      "ended_utc": "2026-11-03T01:34:13.338968+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": null,
+        "HF_HUB_OFFLINE": null,
+        "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/shiro/.local/share/mise/shims:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/shiro/.codex/tmp/arg0/codex-arg0B6y7ga:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/shiro/.local/share/mise/installs/pnpm/latest:/Users/shiro/.local/share/mise/installs/node/24.22.1/bin:/Users/shiro/.cargo/bin:/Users/shiro/.local/bin:/opt/homebrew/sbin:/Users/shiro/.orbstack/bin:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/Users/shiro/.orbstack/bin",
+        "PYTHONHASHSEED": null,
+        "TRANSFORMERS_OFFLINE": null
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "log": {
+        "bytes": 1582,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/scripted-browser-r1.log",
+        "sha256": "243c3e60cc372cb7a7415863add3da487b75f00f35aaae4c8665a83de453e55d"
+      },
+      "receipt": {
+        "bytes": 1793,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/scripted-browser-r1.receipt.json",
+        "sha256": "e7a503d767bf72fccce34f846def9face81d2fe0e8151e901e3520ade2273dfa"
+      },
+      "source_commit": "ed9915b4df5de9f586f36c066e69debf437ab3c3",
+      "source_scope": "focused source files; report-only repository commits may overlap the run",
+      "started_utc": "2026-11-03T01:34:08.956758+00:00",
+      "status": "exited"
+    },
+    "ui-build-r1": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "ended_utc": "2026-11-03T01:32:59.254240+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": null,
+        "HF_HUB_OFFLINE": null,
+        "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/shiro/.local/share/mise/shims:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/shiro/.codex/tmp/arg0/codex-arg0B6y7ga:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/shiro/.local/share/mise/installs/pnpm/latest:/Users/shiro/.local/share/mise/installs/node/24.22.1/bin:/Users/shiro/.cargo/bin:/Users/shiro/.local/bin:/opt/homebrew/sbin:/Users/shiro/.orbstack/bin:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/Users/shiro/.orbstack/bin",
+        "PYTHONHASHSEED": null,
+        "TRANSFORMERS_OFFLINE": null
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "log": {
+        "bytes": 5173,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ui-build-r1.log",
+        "sha256": "61f7b2dabd04b8b4bdb1cbaeece953bca0174fecc15e5ba1c1d93cc1af1f0d34"
+      },
+      "receipt": {
+        "bytes": 1760,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ui-build-r1.receipt.json",
+        "sha256": "a20c7a7976b11d5caf3852cc8d6f7e4ce0d3a3aa8d4e639144e63111e2a7b9ea"
+      },
+      "source_commit": "ed9915b4df5de9f586f36c066e69debf437ab3c3",
+      "source_scope": "focused source files; report-only repository commits may overlap the run",
+      "started_utc": "2026-11-03T01:32:55.339324+00:00",
+      "status": "exited"
+    },
+    "ui-tests-r1": {
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile.junit=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ui-tests-r1.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 277
+      },
+      "ended_utc": "2026-11-03T01:32:55.522486+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": null,
+        "HF_HUB_OFFLINE": null,
+        "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/shiro/.local/share/mise/shims:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/shiro/.codex/tmp/arg0/codex-arg0B6y7ga:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/shiro/.local/share/mise/installs/pnpm/latest:/Users/shiro/.local/share/mise/installs/node/24.22.1/bin:/Users/shiro/.cargo/bin:/Users/shiro/.local/bin:/opt/homebrew/sbin:/Users/shiro/.orbstack/bin:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/Users/shiro/.orbstack/bin",
+        "PYTHONHASHSEED": null,
+        "TRANSFORMERS_OFFLINE": null
+      },
+      "exit_code": 0,
+      "failed_not_a_pass": false,
+      "interrupted_not_a_pass": false,
+      "junit": {
+        "bytes": 64739,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ui-tests-r1.xml",
+        "sha256": "220b3f1991487323a0943aa71e1b6d0d697d244710c6a56cba3762193e2525b5"
+      },
+      "log": {
+        "bytes": 2030,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ui-tests-r1.log",
+        "sha256": "fc34516f1cf84d5c59e3c3ce014b09220b7aa52281db0695ab77ae9efc816ac1"
+      },
+      "passed": 277,
+      "receipt": {
+        "bytes": 1943,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/ui-tests-r1.receipt.json",
+        "sha256": "46ce9b57dd59d7c95c4ec8b257279c338d431b28673207263648a4bd321de049"
+      },
+      "source_commit": "ed9915b4df5de9f586f36c066e69debf437ab3c3",
+      "source_scope": "focused source files; report-only repository commits may overlap the run",
+      "started_utc": "2026-11-03T01:32:54.180595+00:00",
+      "status": "exited"
+    }
+  },
+  "content_sha256": "ca61f5bb4e365981de27405bfc85ab7c12a1e3a9ea6c8ea2854a164e304702d8",
+  "counts_are_not_pooled": true,
+  "current_publication_all_replay_blobs_equal_old_experiments_claimed": false,
+  "date": "2026-11-03",
+  "no_additional_actual_trials_scheduled": true,
+  "paper_build_and_final_focused_source": "47ca7283329e50906870db4547d0ba04a740f0f3",
+  "pdf_review": {
+    "all_pages_visually_inspected": true,
+    "enlarged": [
+      {
+        "bytes": 347113,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-01.png",
+        "sha256": "420ff754630c505cecfdb798c2810da445fbf25ca0d24a8c4934d197c20ec641"
+      },
+      {
+        "bytes": 361545,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-02.png",
+        "sha256": "2ffc746ed5a10b9738946bc844e50b4e4d3df64019a7c917d5251d8d1dc25a49"
+      },
+      {
+        "bytes": 471641,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-41.png",
+        "sha256": "2c1e71d4d2e92e2e58ab6b9f741dab310e06333fb3ac22c28bad2e1261264037"
+      },
+      {
+        "bytes": 446294,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-42.png",
+        "sha256": "8a5b3dd5946dc451709f941a380054efa31d45b5295064039456bf4733e46e27"
+      },
+      {
+        "bytes": 216438,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-43.png",
+        "sha256": "75d275e2a6b93d58be3ad9586cb7df6a5c7026cf39a782bce28b6ac46632e3f8"
+      },
+      {
+        "bytes": 217400,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-44.png",
+        "sha256": "f06cce8604d71779b4a8f90b52be61fd8d0baa6463931e1a8d7dc8686ea7dc4e"
+      },
+      {
+        "bytes": 173542,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-45.png",
+        "sha256": "9f70d9e050a0549545b36dedbd2d6c4866c446bc4241c47673a2a529849d8554"
+      },
+      {
+        "bytes": 302568,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-56.png",
+        "sha256": "3731f8e2d0dd8dabe30d2c244abd57df2692e833c94ec7b4fc7237871e0dbbcd"
+      },
+      {
+        "bytes": 299694,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-57.png",
+        "sha256": "ca7865fb5e09d5295bad227e5c01fa96cb6f8dbbfe2d3148d38b4b3ddbe7cd3e"
+      },
+      {
+        "bytes": 357453,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-58.png",
+        "sha256": "9d2bd4da198eb0051070ff4f7764901229cc69d3df62a372de4624e53502bed3"
+      },
+      {
+        "bytes": 550674,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-59.png",
+        "sha256": "547ecd6a265f5777a1770ac9b00c973f0ae3875f7ca33d96f93f32db85863f6a"
+      },
+      {
+        "bytes": 489450,
+        "path": "tmp/pdfs/v14-release-r2/enlarged/page-60.png",
+        "sha256": "5a6901b78aa856f7eff4bc64d61a3301e845e462343bca07cfefead495c72cd1"
+      }
+    ],
+    "enlarged_pages": "1-2,41-45,56-60",
+    "overfull_boxes": 0,
+    "pages": 60,
+    "rendered_pages": [
+      {
+        "bytes": 156898,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-01.png",
+        "sha256": "c224f321eaf6fd452551f184b4d587b033213f143efb3dc29b05d357a1f2c795"
+      },
+      {
+        "bytes": 161110,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-02.png",
+        "sha256": "920c1a8ef28b7fa825fccccf5e2ed5e9cc08827ba3d7dd745b863e8176920bbd"
+      },
+      {
+        "bytes": 161891,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-03.png",
+        "sha256": "1d9071f60919343ce4e81a5479d5ccd6712a8d0da4af9a0bd2d892af51a615af"
+      },
+      {
+        "bytes": 159868,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-04.png",
+        "sha256": "26e03fb4d0bb82dc0f3856f178cad3541f4f359a8a2a75b2737f416c66d178cf"
+      },
+      {
+        "bytes": 174180,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-05.png",
+        "sha256": "8b5c526962d5e44ce7acbd41db852b4b43bf9b7253b469278226f85e17015b8a"
+      },
+      {
+        "bytes": 155027,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-06.png",
+        "sha256": "56171a240d6314a116436e08488e7b946fa07b656917f79f7aa2b67d7eb53f6c"
+      },
+      {
+        "bytes": 157651,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-07.png",
+        "sha256": "9cc28fa05cb5b7134681be28334c0b77c60da3000d7176629f680a35e1a956c8"
+      },
+      {
+        "bytes": 108630,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-08.png",
+        "sha256": "cfcc8254aef6ce5362cd779c060b2fdf46ea9c2cda3b71fbdf38a4179f85f7af"
+      },
+      {
+        "bytes": 180172,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-09.png",
+        "sha256": "efdafa06f8ebd1e597e1f94e6474c7d23904d104f7664e538e1d20215a752b77"
+      },
+      {
+        "bytes": 161341,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-10.png",
+        "sha256": "b709f905a4985763a74eb620addebc698fa94161409a9471ce638db8e6a9d327"
+      },
+      {
+        "bytes": 167708,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-11.png",
+        "sha256": "1006e51889c9f4d4aaa9209faa904eec346270706da399078131fbe24a33c181"
+      },
+      {
+        "bytes": 210724,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-12.png",
+        "sha256": "bc62ed9f3a727b3b1d4a7efe167e5fbe4cc2ef53983df3447e4053d2aaabd03b"
+      },
+      {
+        "bytes": 218392,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-13.png",
+        "sha256": "2e54e0d39e8954225619bc02dac7cf543cbc21fcab56933137c63c7936f0ae08"
+      },
+      {
+        "bytes": 125657,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-14.png",
+        "sha256": "f09d8dc6d2e434f40e359378e35ac7f7f1b29679b1dcf4da098cf889559af425"
+      },
+      {
+        "bytes": 211784,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-15.png",
+        "sha256": "635cdc6fa27d8f0ce1af37fd45d4993246874e7b361d32a3d523f7698b02c224"
+      },
+      {
+        "bytes": 172870,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-16.png",
+        "sha256": "4e5eb42f8600339daaf998d8865975ad511157fc3a8c2b274e14173f9d760683"
+      },
+      {
+        "bytes": 206242,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-17.png",
+        "sha256": "4bcc604706808080511ba53c402e2a271cb0a9dc1f337ec3e2b25fd84156cf22"
+      },
+      {
+        "bytes": 207612,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-18.png",
+        "sha256": "e9982866ec407ae66b3c88bec0e33f976213b06ce7892ae1e08ac89d9353594e"
+      },
+      {
+        "bytes": 163866,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-19.png",
+        "sha256": "13b2ab0c4bd7a98db8f1a9ae0895af38c78768786adaa2c963389e268be8e884"
+      },
+      {
+        "bytes": 210706,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-20.png",
+        "sha256": "a9befb6e7f96d6b85af1e44b5725e32027caaaab5a8448eeb86b4274ac6afa9a"
+      },
+      {
+        "bytes": 213159,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-21.png",
+        "sha256": "690ce045922e9c91e0e422b7215ea9418da1d1515b78e43b1893f2edec25d39a"
+      },
+      {
+        "bytes": 148195,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-22.png",
+        "sha256": "b0803692d7fd13d2be34ce2b916835ea963dab92f6cfeb418c7b28c72c84a917"
+      },
+      {
+        "bytes": 182634,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-23.png",
+        "sha256": "bc6c628131c2925e8ced1d46415e38bdb0666e2977d9d036183f764883556391"
+      },
+      {
+        "bytes": 122674,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-24.png",
+        "sha256": "3dbea03b85392f180eb31102e420879c9126b0d1ded8cab4518ba76e1a54518d"
+      },
+      {
+        "bytes": 89245,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-25.png",
+        "sha256": "2b6b482f2ed1d1566f6c52f69c3df35a50f1f029578f1ce695e39fc29b2d64ce"
+      },
+      {
+        "bytes": 159557,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-26.png",
+        "sha256": "0880baa5a53184207e5b2b22e081e118156486d838e5c75e6a0c4f7071a8f4bc"
+      },
+      {
+        "bytes": 189392,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-27.png",
+        "sha256": "26e9653b0dd6490f4a47980d80e19219194ac06a3d148bb5cf1f878ee428eb31"
+      },
+      {
+        "bytes": 174431,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-28.png",
+        "sha256": "1f667a8ecd6a040ff0d8f951bbe9cc3a927672cc5d332a1cb929d92365e8a98d"
+      },
+      {
+        "bytes": 100167,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-29.png",
+        "sha256": "a2eee5a7f5d931554192ecb9988ab39a3f4b1c830fa895a08f120281bd470b38"
+      },
+      {
+        "bytes": 196550,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-30.png",
+        "sha256": "6c1fbd2224b4ba20bc9b542d0df4e1bd7584b619708943432274b91d89420f55"
+      },
+      {
+        "bytes": 121934,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-31.png",
+        "sha256": "160b91524448bcb5e73bf5e47e74c53808a2f8388eb66bfa46f090099e9d0fe6"
+      },
+      {
+        "bytes": 212086,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-32.png",
+        "sha256": "6015ba4e98365d24c729cb0e8cd69de9c24af752083b5c9c7277825a34b484ad"
+      },
+      {
+        "bytes": 162481,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-33.png",
+        "sha256": "5b2da3972dc07fefc67b2b7caf539d0bd6825daec510f987aa3f2c9e02388bce"
+      },
+      {
+        "bytes": 193611,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-34.png",
+        "sha256": "5ec359992b109146942c571977e710ea25119bc193da530f85a6f851367189e7"
+      },
+      {
+        "bytes": 155224,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-35.png",
+        "sha256": "3c2f5b056953ca8e7e83fda6852cd3e35ab29636323d9a6515dcd1a6b68d3780"
+      },
+      {
+        "bytes": 112846,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-36.png",
+        "sha256": "db6955e2e3f1b82d82c007f017502dfe5de54dc99602a730e936ca81e54cf741"
+      },
+      {
+        "bytes": 211793,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-37.png",
+        "sha256": "fdb54ebf480709de4322a5017e5ee14caf6cf7d39badf901a05b9290bbcd97fb"
+      },
+      {
+        "bytes": 160465,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-38.png",
+        "sha256": "f7102c0af1e319813c70893f773b2f76aff1973cc112f4a65b097a886850f9ce"
+      },
+      {
+        "bytes": 168881,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-39.png",
+        "sha256": "675b5d619f9b79c5cdbe7bab17e789eff92eb1e8a4b0c4289080d9540358a1c3"
+      },
+      {
+        "bytes": 138526,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-40.png",
+        "sha256": "853349ea6a5cc0f546f97878ee0dcda2827d2ee8aab31c6281a1af61b0a53557"
+      },
+      {
+        "bytes": 205973,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-41.png",
+        "sha256": "fcac3e50e254b541f5a264208f0bcc7ca0119c10bc635019a0ae07c427a5083a"
+      },
+      {
+        "bytes": 190090,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-42.png",
+        "sha256": "4c889ff9de136ee04f061b99a5da0b75a1b7c607d3871dd1c64fa3aad0c2b1e5"
+      },
+      {
+        "bytes": 122278,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-43.png",
+        "sha256": "75c24c48646cc06a879aa8f27ae0cf1c66136ffa9cbfc1037491a0d022fe83ba"
+      },
+      {
+        "bytes": 94894,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-44.png",
+        "sha256": "81d0b107d0c5207e9cc72091403f154d411b008a9b85caed8c94ecd9adb4a8f1"
+      },
+      {
+        "bytes": 90338,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-45.png",
+        "sha256": "87681e9b39e471c1e580c52e0d3f104712eca133be241c89a7bf90b684a1c445"
+      },
+      {
+        "bytes": 190240,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-46.png",
+        "sha256": "4f022b48c5ea2117fbc92a2bcfda1c95ddf56d2be62ef39bd6e141b4a4602c2e"
+      },
+      {
+        "bytes": 209996,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-47.png",
+        "sha256": "0e1b5afceff2b8399ed0dbbb24198ffcb50020ca5c45f98f8e99928e62110f48"
+      },
+      {
+        "bytes": 177707,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-48.png",
+        "sha256": "4a58788ac41a93cdde25fda30970fe8b539c4be93b0c74be9e4fa2a62bedf6c6"
+      },
+      {
+        "bytes": 190458,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-49.png",
+        "sha256": "6b39775bbe15e3219c6285b2291e6a7db6a06691205aba8c365349d2953c332c"
+      },
+      {
+        "bytes": 188738,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-50.png",
+        "sha256": "9f7beaba7e03811ffc478fd14f3c3b9cddd49393187170760a004d8d5ebe390f"
+      },
+      {
+        "bytes": 118505,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-51.png",
+        "sha256": "aa351b58293bc01e7444405332aee8cd9c174a723c025919693265555b64bb32"
+      },
+      {
+        "bytes": 116680,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-52.png",
+        "sha256": "909fab0d0539e1b958c6b6d0534b4b1e2d54694acd1563185989ac77a280e73d"
+      },
+      {
+        "bytes": 50471,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-53.png",
+        "sha256": "91d30173ecfd7e295dece813babb952e3b54d85a45d62c664bb396764461489a"
+      },
+      {
+        "bytes": 113377,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-54.png",
+        "sha256": "d8b7738aa444cd09ebcc63ac8f8d9660c596ca0fa560d8c8b3582003674215e0"
+      },
+      {
+        "bytes": 77790,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-55.png",
+        "sha256": "77b573a86f613643a8cd81ef6a134a0557114a3a47c0a41383af048d0ffa2c97"
+      },
+      {
+        "bytes": 132175,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-56.png",
+        "sha256": "825db619ed8ff06273fe87116853e502e82171ba1b03b1f3c2abf2073ad0c8da"
+      },
+      {
+        "bytes": 133957,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-57.png",
+        "sha256": "6979b0794ec25797138e27a5c4019ef4e4c27f6965d3cd7e0ba3d21fb66c7639"
+      },
+      {
+        "bytes": 165473,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-58.png",
+        "sha256": "4d5cc38d13f65e7ff43376cfda2a3cb6d55e4de85175b84df4eeacd870cf16ea"
+      },
+      {
+        "bytes": 240410,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-59.png",
+        "sha256": "80a36a44bb5c7469e8ba629dae5b1b82b523e48642b6d32cd160fd82a729febd"
+      },
+      {
+        "bytes": 227336,
+        "path": "tmp/pdfs/v14-release-r2/pages/page-60.png",
+        "sha256": "5811e0c91fe31d8665758e59350058c8958c1a1dad8d828fce339e1d455d14ba"
+      }
+    ],
+    "review_method": "Poppler renders, labelled contact sheets, enlarged changed pages",
+    "sheets": [
+      {
+        "bytes": 2527950,
+        "path": "tmp/pdfs/v14-release-r2/sheets/sheet-01.png",
+        "sha256": "caa74056fc5d642035fe52eebc39664e04b8cb02ed0136d6a14027fb83019c71"
+      },
+      {
+        "bytes": 2954251,
+        "path": "tmp/pdfs/v14-release-r2/sheets/sheet-02.png",
+        "sha256": "e90371d1abc4df7b27ff3de2a76ec00e06534c8f5156c0306682c912303d9f64"
+      },
+      {
+        "bytes": 2424821,
+        "path": "tmp/pdfs/v14-release-r2/sheets/sheet-03.png",
+        "sha256": "d1e0052dc62606c41767aaa173effc39384d1aa29f9be388f986656bd82680fc"
+      },
+      {
+        "bytes": 2582908,
+        "path": "tmp/pdfs/v14-release-r2/sheets/sheet-04.png",
+        "sha256": "ee2dbf8879896377e68aa36e47f2a9e71ba4fe0ddcc3324d31ebe70062e93303"
+      },
+      {
+        "bytes": 2207826,
+        "path": "tmp/pdfs/v14-release-r2/sheets/sheet-05.png",
+        "sha256": "7590daf75da10e3aa89a29a183cbe7e2fbc546b8232fa24603b3ec5936693cc9"
+      }
+    ],
+    "undefined_references": 0
+  },
+  "prior_pdf": {
+    "bytes": 4454414,
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-autonomous-search-v14-verification/prior-pdf/science-utopia-lab-v13.pdf",
+    "sha256": "159d0ac92c9ff7b00608658044d9af88455de5408b4071c4a80628666fb72f3c"
+  },
+  "schema": "scienceutopia.native-autonomous-publication-verification.v14",
+  "scope": "Automatic search/consent/runtime and honest bounded failure evidence. No valid automatic candidate/native execution in either actual v14 experiment; not useful invention or scientific benefit.",
+  "separate_qa_matching_analysis_commit": "af889e4d025437a5320a7fa1a83559bdea4c419c",
+  "status": "finite-v14-implementation-failed-actual-authoring-and-artifacts-verified",
+  "test_counting": "Overlapping software scopes are neither added nor scientific replicates; full-suite results apply only to their named frozen sources."
+}

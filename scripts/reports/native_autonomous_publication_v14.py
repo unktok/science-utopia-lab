@@ -66,6 +66,11 @@ def main():
     if not all(re.fullmatch('[a-f0-9]{40}', value) for value in
         (args.paper_source, args.qa_analysis_source)):
         parser.error('exact paper/QA analysis source commits required')
+    for revision in (args.paper_source, args.qa_analysis_source):
+        resolved = subprocess.check_output(['git', 'rev-parse', '--verify', revision + '^{commit}'],
+            cwd=ROOT, text=True).strip()
+        if resolved != revision:
+            raise ValueError('unresolved publication source commit')
     if args.output.exists():
         parser.error('verification receipt already exists; do not overwrite it')
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
@@ -129,7 +134,7 @@ def main():
         'prior_pdf': asset(v / 'prior-pdf/science-utopia-lab-v13.pdf'),
         'no_additional_actual_trials_scheduled': True}
     result['content_sha256'] = digest(result)
-    write_json_atomic(args.output, result, sort_keys=True, allow_nan=False)
+    write_json_atomic(args.output, result, sort_keys=True, allow_nan=False, indent=2)
     print(json.dumps({'output': str(args.output), 'content_sha256': result['content_sha256']}))
 
 
