@@ -62,3 +62,42 @@ source/raw paths, launch receipts, full paths/costs, technical problems and
 independent replay evidence after execution. If this fixed revision fails,
 preserve it and declare a fresh engineering revision before further inference;
 the user's goal remains active rather than relabelled complete.
+
+## Actual a1 launch and observed engineering problem
+
+The first revision starts2026-11-03T08:35:43Z at clean detached source
+`f969f7cc2f88549ce12c5afbbbeba7b30f38828e`, experiment worktree
+`experiment-staged-native-search-v15-a1`. Raw output is
+`outputs/native-staged-search-v15-a1`; supervisor, explicit environment and
+exit receipts are under `outputs/native-staged-search-v15-verification`.
+The same exact source also starts a separately receipted full software suite.
+Root's prelaunch integrated scope passes182 tests/28.34s. Separate read-only
+specialist reviews confirm staged queue/API/projection/cold-terminal behavior;
+these scopes overlap and are not additional model calls or worlds.
+
+The first objective exhausts both16-step generations with repeated valid
+inspection of the same node within each generation. There are no literal
+edits, explicit finish or compiled candidate in that arm, hence no native
+world/loss. This is a real model-action loop, not a path error or model-server
+failure. The fixed pilot continues to its declared bound. A specialist prepares
+a general prompt/interface correction separately; no operator injects a
+candidate, force-finishes a draft or alters the active experiment checkout.
+Record the complete stopped-writer counts after both arms terminate.
+
+The a1 supervisor exits0 at2026-11-03T08:42:41Z: four charged slots, four
+failed generations,64 known completed replies, all64 tool actions `inspect`.
+Both arms have zero compiled designs/native observations and null best losses.
+Observed adapter-call intervals total411.43s; this is not overall wall time.
+Stopped-writer independent audits and final GET-only captures are now requested.
+Exit0 is terminal fixed-budget accounting, not achievement of the user's goal.
+
+## Prospective a2 continuation
+
+The [new prospective protocol](../protocols/campaigns/native-staged-search-v15-a2.md)
+adds a completed assistant-action/returned-tool-result conversation and explicit
+remaining-budget/repeated-read cues, without forbidding legal repeated actions,
+requiring novelty or synthesizing a candidate. The v14 transport is unchanged.
+The same two objectives get a separate four-slot/64-designer-POST maximum;
+source/request/provider/corpus/image pins are frozen before a2 calls.
+Prelaunch focused verification passes156 tests/11.98s at the corrected source.
+These checks are not a2 native outcomes or a full-suite claim for that source.

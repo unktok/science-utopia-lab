@@ -17,6 +17,7 @@ from utopia.utils.data_utils import write_json_atomic
 
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
 CLASSIFICATION = 'actual-local-qwen-staged-native-search-development-v15'
+ENGINEERING_REVISION = 'a2'
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -31,7 +32,8 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
             'designer': {'model': 'qwen3:8b', 'max_steps': 16, 'max_tokens': 2048}}
         plan = make_search_plan(request, source_commit=source_commit, provider_binding=provider_binding)
         runs.append({'id': identity, 'request': request, 'runtime_plan': plan, 'plan_sha256': digest(plan)})
-    return {'schema': SCHEMA, 'classification': CLASSIFICATION, 'source_commit': source_commit,
+    return {'schema': SCHEMA, 'classification': CLASSIFICATION, 'engineering_revision': ENGINEERING_REVISION,
+        'source_commit': source_commit,
         'provider_binding': clone(provider_binding), 'runtime_seed_binding': clone(runtime_seed_binding),
         'initial_system': clone(initial_system), 'population': {'authors': 5, 'conference_setting': 1},
         'runs': runs, 'budget': {'scheduled_native_slots': 4, 'free_generations': 4,
@@ -42,7 +44,7 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         'metadata_preflights': 'Separate GET /api/tags during binding and each native-factory construction; repeated CLI startup can repeat metadata reads, never generation POSTs',
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
-        'protocol': 'research/protocols/campaigns/native-staged-search-v15.md'}
+        'protocol': 'research/protocols/campaigns/native-staged-search-v15-a2.md'}
 
 
 def execute(args):

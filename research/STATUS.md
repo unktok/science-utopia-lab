@@ -20,6 +20,15 @@ losses must reach the next automatic design; SCRIPTED tests alone do not meet
 that operational goal. See the [live work log](logbook/2026-11-03-staged-native-authoring-v15.md).
 At this note's pre-inference checkpoint, there is no actual v15 outcome yet.
 
+The first actual revision at`f969f7c` now stops at its fixed budget:
+four failed generations/64 known inspect replies, no compiled institution or
+native world, all losses null. Its unchanged raw evidence is independently
+audited separately. A [new prospective a2 revision](protocols/campaigns/native-staged-search-v15-a2.md)
+uses completed conversational tool receipts and explicit progress/budget cues;
+it receives a separately declared four-slot budget, not refunded a1 attempts.
+The operational goal remains active. Related156 prelaunch tests pass;
+no a2 success is inferred from them.
+
 ## Completed finite v14: implementation and actual bounded authoring failures
 
 The user approves the [next finite goal](milestones/2026-11-03-autonomous-institution-search-v14.md):

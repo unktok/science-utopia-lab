@@ -8,6 +8,7 @@ and results. New work uses the forward-only taxonomy below.
 
 - [V15 active goal, parallel tracks and forward-only execution log](logbook/2026-11-03-staged-native-authoring-v15.md)
 - [V15 prospective staged local-Qwen/native-feedback protocol](protocols/campaigns/native-staged-search-v15.md)
+- [V15 separate a2 conversational-tool continuation after the read loop](protocols/campaigns/native-staged-search-v15-a2.md)
 - [V15 durable staged literal authoring and strict replay](components/native-staged-tool-authoring-v15.md)
 - [V15 institution-authored arbitrary work for original researchers](components/native-researcher-open-work-v15.md)
 - [V15 existing English Foundry Authoring Chronicle](../game-ui-v2/STAGED_FOUNDRY_V15.md)
