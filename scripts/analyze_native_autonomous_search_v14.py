@@ -11,11 +11,13 @@ from pathlib import Path
 import sqlite3
 import subprocess
 import sys
+from types import FunctionType
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.analyze_native_open_v7 import FIXTURE, _inventory, partial_physical_proof
+from scripts.analyze_native_society_v6 import response_proofs as original_response_proofs
 from scripts.analyze_native_open_estimators_v11 import incumbent_path
 from scripts.analyze_native_nested_search_v13 import design_change, executable_contracts, objective_specs
 from scripts.analyze_native_objective_structure_v8 import cross_score_measurement
@@ -42,6 +44,54 @@ def read(path):
     value = decode_json(Path(path).read_text(),strict=True,finite_floats=True)
     digest(value)
     return value
+
+
+def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classification,expected_prefixes=None):
+    """An absent journal is lawful only before any recorded scientist request.
+
+    This narrow v14 extension does not create an empty raw file or modify the
+    historical helper. All present wire journals use its original validation.
+    """
+    cell = Path(cell)
+    if (cell/'wire-requests.jsonl').exists():
+        return original_response_proofs(cell,binding,counts,complete=complete,protocol=protocol,
+            classification=classification,expected_prefixes=expected_prefixes)
+    path = cell/'replies/responses.sqlite'
+    with sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True) as db:
+        bindings = db.execute('SELECT binding FROM metadata').fetchall()
+        number = db.execute('SELECT COUNT(*) FROM replies').fetchone()[0]
+    if (len(bindings) != 1 or decode_json(bindings[0][0],strict=True,finite_floats=True) != binding
+            or number != 0 or any(n != 0 for n in counts)):
+        raise ValueError('missing wire journal cannot accompany any recorded scientist response')
+    prefixes = []
+    for count,expected in zip(counts,expected_prefixes or [None]*len(counts)):
+        actual = {'schema':'scienceutopia.completed-response-prefix.v1','response_count':0,
+            'binding_sha256':digest(binding),'rows_sha256':digest([])}
+        if expected is not None and expected != actual:
+            raise ValueError('zero-response prefix identity differs')
+        prefixes.append({'response_count':0,'pinned_by_observation':expected is not None,
+            'actual_prefix_identity':actual})
+    return {'researcher_responses':0,'uncheckpointed_responses':0,
+        'cumulative_responses_per_year':counts,'responses_by_physical_year':{},'wire_requests':0,
+        'wire_sha256':None,'response_sql_sha256':file_sha256(path),'response_content_chain_sha256':digest([]),
+        'response_binding':binding,'response_prefix_proofs':prefixes,'unmatched_http_inputs':0,
+        'wire_journal_status':'absent-with-zero-journalled-responses-and-zero-checkpoint-counts'}
+
+
+def _zero_http_adapter(helper):
+    """Reuse the exact pinned trusted helper body with one explicit dependency.
+
+    A private globals copy avoids monkeypatching historical modules or changing
+    another auditor. This does not compile/execute any generated design source.
+    """
+    adapted = FunctionType(helper.__code__,{**helper.__globals__,
+        'response_proofs':zero_http_response_proofs},helper.__name__,helper.__defaults__,helper.__closure__)
+    adapted.__kwdefaults__ = deepcopy(helper.__kwdefaults__)
+    return adapted
+
+
+audit_native_run_v14 = _zero_http_adapter(audit_native_run_v13)
+partial_physical_proof_v14 = _zero_http_adapter(partial_physical_proof)
 
 
 def source_proofs(expected_source, classification):
@@ -167,7 +217,7 @@ def audit_native_campaign(directory, *, method, world, classification, loss, ini
                 if len(runs) != 1 or runs[0]['run_id'] in physical or runs[0]['run_id'] not in declared:
                     raise ValueError('native complete draw needs a unique declared world')
                 evidence = runs[0]
-                proof = audit_native_run_v13(directory, draw, observation, evidence, world, classification,
+                proof = audit_native_run_v14(directory, draw, observation, evidence, world, classification,
                     expected_experiment=experiment, expected_loss=loss)
                 cell = directory/'worlds'/evidence['run_id']
                 proof['activity_effect_proof'] = activity_effect_proof(cell, declared[evidence['run_id']], evidence['checkpoint_path'])
@@ -200,7 +250,7 @@ def audit_native_campaign(directory, *, method, world, classification, loss, ini
             outcomes = dict(db.execute('SELECT outcome,COUNT(*) FROM replies GROUP BY outcome').fetchall())
         caches.append({'path': str(path.resolve()), 'sha256': file_sha256(path), 'outcomes': outcomes})
         if path.parent.parent.name not in physical:
-            partial.append(partial_physical_proof(path.parent.parent, declared[path.parent.parent.name], world, classification))
+            partial.append(partial_physical_proof_v14(path.parent.parent, declared[path.parent.parent.name], world, classification))
     cache_ids = {Path(c['path']).parent.parent.name for c in caches}
     for run_id in sorted(dirs-physical-cache_ids):
         cell = directory/'worlds'/run_id
@@ -210,6 +260,7 @@ def audit_native_campaign(directory, *, method, world, classification, loss, ini
             'files': {str(p.relative_to(cell)):file_sha256(p) for p in sorted(cell.rglob('*')) if p.is_file()}})
     replies = sum(c['outcomes'].get('response',0) for c in caches)
     completed_replies = sum(p['response_proof']['researcher_responses'] for p in native)
+    physical_proofs = native+[p for p in partial if 'response_proof' in p]
     if terminal and not failures and (len(caches) != expected_budget or replies != completed_replies):
         raise ValueError('physical/logical scientist replies differ or were reused')
     return {'method': method, 'loss_spec': loss, 'binding': binding, 'records': records, 'pending': pending,
@@ -219,6 +270,8 @@ def audit_native_campaign(directory, *, method, world, classification, loss, ini
         'physical_native_worlds': len(physical), 'physical_world_directory_count': len(dirs),
         'physical_response_caches': caches, 'physical_researcher_responses': replies,
         'completed_researcher_responses': completed_replies,
+        'physical_wire_requests':sum(p['response_proof']['wire_requests'] for p in physical_proofs),
+        'recorded_code_executions_including_partial':sum(p['code_proof']['recorded_executions'] for p in physical_proofs),
         'completed_wire_requests': sum(p['response_proof']['wire_requests'] for p in native),
         'completed_code_executions': sum(p['code_proof']['recorded_executions'] for p in native),
         'completed_researcher_model_call_seconds': sum(p['annual_checkpoints'][-1]['llm_call_stats'].get(
@@ -569,7 +622,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     counts = {key:sum(r[key] for r in runs.values()) for key in ('consumed_native_slots',
         'physical_native_worlds','physical_world_directory_count','physical_researcher_responses',
         'completed_researcher_responses','completed_wire_requests','completed_code_executions','technical_failures',
-        'completed_researcher_model_call_seconds')}
+        'completed_researcher_model_call_seconds','physical_wire_requests','recorded_code_executions_including_partial')}
     designer = {key:sum(r['designer'][key] for r in runs.values()) for key in
         ('generations','dispatch_intents','known_responses','valid_drafts','interrupted_response_unknown')}
     designer_measurements = {key:{'recorded_sum':math.fsum(r['designer']['cost_measurements'][key]['recorded_sum']
@@ -608,6 +661,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             'checkpoint_loss_reextracted':True,'all_failures_and_exact_ties_retained':True,
             'designer_requests_raw_replies_and_operations_joined':True,
             'scientist_and_designer_costs_separate':True,'replay_source_proofs':sources,
+            'zero_http_adapter_scope':'Exact original pinned physical helper bodies; absent wire allowed only with empty response SQL and zero checkpoint counts.',
             'analysis_source_sha256':file_sha256(Path(__file__)),
             'limits':['Three development requests are not a controlled comparison of methods.',
                 'Literal source/topology edits and physical execution do not establish useful invention.',

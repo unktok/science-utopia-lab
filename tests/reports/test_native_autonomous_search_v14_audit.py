@@ -1,6 +1,7 @@
 """Scripted audit contracts only: no inference, native worlds or scientific data."""
 from copy import deepcopy
 import json
+import sqlite3
 
 import pytest
 
@@ -276,3 +277,26 @@ def test_duplicate_raw_durable_record_keys_are_not_silently_collapsed(tmp_path):
     path.write_text(text.replace('"seed": 42','"seed": 42, "seed": 42',1))
     with pytest.raises(ValueError,match='Duplicate JSON key'):
         audit.analyze(tmp_path,expected_source='fixture-source')
+
+
+def test_zero_scientist_http_adapter_keeps_missing_wire_file_missing_and_raw_unchanged(tmp_path):
+    binding = {'model':'scripted-no-model','fixture':True}
+    path = tmp_path/'replies'/'responses.sqlite'
+    path.parent.mkdir(parents=True)
+    with sqlite3.connect(path) as db:
+        db.execute('CREATE TABLE metadata (binding TEXT)')
+        db.execute('INSERT INTO metadata VALUES (?)',(json.dumps(binding),))
+        db.execute('CREATE TABLE replies (identity TEXT)')
+    before = audit._inventory(tmp_path)
+    proof = audit.zero_http_response_proofs(tmp_path,binding,[0,0],complete=True,protocol={},classification=audit.FIXTURE)
+    assert proof['researcher_responses'] == proof['wire_requests'] == 0
+    assert proof['wire_sha256'] is None and not (tmp_path/'wire-requests.jsonl').exists()
+    assert audit._inventory(tmp_path) == before
+    assert audit.audit_native_run_v13.__globals__['response_proofs'] is audit.original_response_proofs
+    assert audit.audit_native_run_v14.__globals__['response_proofs'] is audit.zero_http_response_proofs
+    with pytest.raises(ValueError,match='missing wire'):
+        audit.zero_http_response_proofs(tmp_path,binding,[1],complete=False,protocol={},classification=audit.FIXTURE)
+    with sqlite3.connect(path) as db:
+        db.execute('INSERT INTO replies VALUES (?)',('unmatched-response',))
+    with pytest.raises(ValueError,match='missing wire'):
+        audit.zero_http_response_proofs(tmp_path,binding,[],complete=False,protocol={},classification=audit.FIXTURE)

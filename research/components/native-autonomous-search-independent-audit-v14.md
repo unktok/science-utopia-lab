@@ -47,6 +47,16 @@ prefixes, source execution/container receipts and original response journals,
 and reconstruct complete plans and actual reviewer tasks. All checkpoint
 cross-scores reuse development worlds. Physical directories, completed worlds,
 charged slots, partial failures and all exact incumbent ties remain distinct.
+The v14 analyzer privately binds the exact original trusted helper bodies to a
+narrow response-audit extension: an absent wire file is legal only with an
+empty response SQLite journal and zero checkpoint response counts. It creates
+no empty raw journal and changes neither historical helper modules nor their
+normal present-wire validation. This supports legal failures before first
+scientist HTTP and legal zero-response worlds without inventing evidence.
+Scientist wire requests and recorded code executions are also totaled across
+partial directories, separately from completed-world counts. Failed sandbox
+calls without a completed code receipt are not falsely counted as recorded
+successful executions.
 Literal source/topology edits and execution do not prove a useful new algorithm,
 scientific value, designer improvement, generalization, variance reduction or
 method superiority. Held-out evaluation and promotion policy are undefined.
