@@ -23,7 +23,7 @@ from utopia.runtime.checkpointing import PortableCheckpointError
 
 
 def make_server(queue, *, source_commit, directory, port=4591,
-                society_session=None, society_checkpoints=None):
+                society_session=None, society_checkpoints=None, search_queue=None):
     static = Path(directory).resolve()
     token = secrets.token_urlsafe(32)
     class Handler(SimpleHTTPRequestHandler):
@@ -68,7 +68,8 @@ def make_server(queue, *, source_commit, directory, port=4591,
             path = urlsplit(self.path).path
             try:
                 if path == '/native-api/session':
-                    return self.reply(200, {'token': token, 'source_commit': source_commit, 'mode': 'local-development-queue'})
+                    return self.reply(200, {'token': token, 'source_commit': source_commit,
+                        'mode': 'local-development-queue', 'search_enabled': search_queue is not None})
                 if path.startswith('/native-api/'):
                     if not self.authorized():
                         return self.reply(403, {'error': 'session token required'})
@@ -88,13 +89,17 @@ def make_server(queue, *, source_commit, directory, port=4591,
                         return self.reply(200, queue.get(parts[3]))
                     if len(parts) == 5 and parts[2] == 'jobs' and parts[4] == 'evidence':
                         return self.reply(200, queue.evidence(parts[3]))
+                    if search_queue is not None and len(parts) == 4 and parts[2] == 'searches':
+                        return self.reply(200, search_queue.get(parts[3]))
+                    if search_queue is not None and len(parts) == 5 and parts[2] == 'searches' and parts[4] == 'evidence':
+                        return self.reply(200, search_queue.evidence(parts[3]))
                     return self.reply(404, {'error': 'unknown API route'})
                 translated = Path(self.translate_path(path)).resolve()
                 if not translated.is_relative_to(static) or translated.is_dir():
                     return self.reply(404, {'error': 'static file not found'})
                 return super().do_GET()
             except KeyError:
-                return self.reply(404, {'error': 'unknown job'})
+                return self.reply(404, {'error': 'unknown job or search'})
             except PortableCheckpointError:
                 return self.reply(503, {'error': 'saved society checkpoint failed integrity validation; no adoption verified'})
             except (ValueError, TypeError) as error:
@@ -103,7 +108,8 @@ def make_server(queue, *, source_commit, directory, port=4591,
         def do_POST(self):
             if not self.allowed() or not self.authorized() or self.headers.get('Origin') is None:
                 return self.reply(403, {'error': 'same-origin session token required'})
-            if self.path not in {'/native-api/jobs', '/native-api/validate', '/native-api/society/confirm'}:
+            if self.path not in {'/native-api/jobs', '/native-api/validate', '/native-api/society/confirm',
+                    '/native-api/search-validate', '/native-api/searches'}:
                 return self.reply(404, {'error': 'unknown API route'})
             try:
                 size = int(self.headers.get('Content-Length', '0'))
@@ -112,6 +118,15 @@ def make_server(queue, *, source_commit, directory, port=4591,
                 request = json.loads(self.rfile.read(size))
                 if pinned_revision(ROOT) != source_commit:
                     raise ValueError('source changed after server startup')
+                if self.path in {'/native-api/search-validate', '/native-api/searches'}:
+                    if search_queue is None:
+                        return self.reply(404, {'error': 'autonomous search is not enabled by the local operator'})
+                    if self.path == '/native-api/search-validate':
+                        return self.reply(200, search_queue.validate(request, source_commit=source_commit))
+                    if not isinstance(request, dict) or set(request) != {'request', 'confirmed_request_sha256'}:
+                        raise ValueError('exact request and confirmed_request_sha256 compute consent required')
+                    return self.reply(201, search_queue.submit(request['request'],
+                        confirmed_request_sha256=request['confirmed_request_sha256'], source_commit=source_commit))
                 if self.path == '/native-api/society/confirm':
                     if society_session is None:
                         return self.reply(404, {'error': 'no native society session configured'})
@@ -138,13 +153,41 @@ def main():
     parser.add_argument('--queue', type=Path, required=True)
     parser.add_argument('--port', type=int, default=4591)
     parser.add_argument('--worker-once', action='store_true')
+    parser.add_argument('--search-worker-once', action='store_true',
+                        help='opt-in bounded autonomous search worker; separate from old jobs')
+    parser.add_argument('--search-config', type=Path,
+                        help='operator-owned JSON {provider_binding}; enables autonomous search API')
     parser.add_argument('--data-cache', type=Path)
     parser.add_argument('--society-config', type=Path,
                         help='operator-owned session config; never a request-selected checkpoint path')
     args = parser.parse_args()
     revision = pinned_revision(ROOT)
     queue = NativeJobQueue(args.queue)
-    if args.worker_once:
+    if args.worker_once and args.search_worker_once:
+        parser.error('choose one worker mode')
+    search_queue = None
+    if args.search_config is not None:
+        from utopia.optimization.native_search_jobs_v14 import NativeSearchQueue
+        config = json.loads(args.search_config.read_text())
+        if not isinstance(config, dict) or set(config) != {'provider_binding'}:
+            parser.error('search config requires exact operator-owned provider_binding')
+        search_queue = NativeSearchQueue(args.queue, provider_binding=config['provider_binding'])
+    if args.search_worker_once:
+        if args.data_cache is None or search_queue is None:
+            parser.error('--search-worker-once requires --data-cache and --search-config')
+        from utopia.optimization.native_factory import LocalQwenNativeFactory
+        def search_factory(root, request):
+            return LocalQwenNativeFactory(root / 'worlds', args.data_cache, years=request['years'], corpus_years=4,
+                record_wire=True, record_code=True, inference_lock=args.queue / 'inference.lock',
+                experiment_binding={'request_sha256': digest(request), 'loss_spec': request['loss_spec']})
+        def search_generator(root, request, provider_binding):
+            from utopia.optimization.native_search_generator_v14 import make_local_vocabulary_generator
+            return make_local_vocabulary_generator(root / 'authoring', image_id=provider_binding['image_id'],
+                provider_binding=provider_binding, max_attempts=request['designer']['max_attempts'],
+                max_tokens=request['designer']['max_tokens'], inference_lock=args.queue / 'inference.lock')
+        print(json.dumps(search_queue.run_one(search_factory, generator_builder=search_generator,
+            source_commit=revision), allow_nan=False), flush=True)
+    elif args.worker_once:
         if args.data_cache is None:
             parser.error('--worker-once requires --data-cache')
         from utopia.optimization.native_factory import LocalQwenNativeFactory
@@ -167,7 +210,7 @@ def main():
                 world_binding=config['world_binding'])
             checkpoints = Path(config['checkpoint_directory']).resolve()
         server = make_server(queue, source_commit=revision, directory=directory, port=args.port,
-                             society_session=session, society_checkpoints=checkpoints)
+                             society_session=session, society_checkpoints=checkpoints, search_queue=search_queue)
         print(f'Local native lab: http://127.0.0.1:{server.server_port}/native.html', flush=True)
         try:
             server.serve_forever()

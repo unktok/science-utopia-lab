@@ -26,7 +26,7 @@ METRICS = {'native.accepted_decisions', 'native.rejected_decisions', 'native.rev
            'native.final_active_authors', 'native.final_author_resources', 'native.institutional_context_deliveries'}
 
 
-def validate_job_request(request):
+def validate_job_request(request, *, measured_metrics=METRICS):
     if not isinstance(request, dict) or set(request) != {'parent_system', 'system', 'loss_spec', 'seed', 'years'}:
         raise ValueError('request requires only parent_system, system, loss_spec, seed and years')
     if type(request['seed']) is not int or not 0 <= request['seed'] < 2**31 or request['seed'] in RESERVED_SEEDS:
@@ -51,7 +51,7 @@ def validate_job_request(request):
     validate_loss_spec(request['loss_spec'])
     if request['loss_spec']['optimization_seed_role'] != 'development':
         raise ValueError('interactive jobs are development only')
-    if any(t['metric_id'] not in METRICS or t['slice_id'] is not None for t in request['loss_spec']['per_run']['terms']):
+    if any(t['metric_id'] not in measured_metrics or t['slice_id'] is not None for t in request['loss_spec']['per_run']['terms']):
         raise ValueError('requested loss has no implemented native measurement adapter')
     if request['loss_spec']['across_seeds']['minimum_valid_runs'] != 1:
         raise ValueError('one-seed interactive job requires minimum_valid_runs=1')
