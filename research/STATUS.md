@@ -2,7 +2,7 @@
 
 Updated: 2026-11-03
 
-## Active finite v14: loss and budget to automatic institutional search
+## Finite v14: implementation and actual bounded authoring failures
 
 The user approves the [next finite goal](milestones/2026-11-03-autonomous-institution-search-v14.md):
 reuse the original-world blackbox/nested kernels, but connect model authoring,
@@ -26,13 +26,30 @@ compute consent, and enqueues the source/operator-bound request. Raw numeric
 types survive the browser wire. Focused integrated tests pass143 checks;
 UI/consent checks are separately scoped. No model weights are trained.
 
-A [separate prospective engineering QA](protocols/campaigns/native-authoring-ir-v14-technical-qa.md)
+A [separate actual engineering QA](results/native-authoring-ir-v14-qa-a1.md)
 pins clean source`fdb694d0adee759470d9c4ff41c4d8c75e490d19`: one throughput
 blackbox request,2 native slots and at most4 designer POSTs. The actual browser
-validates once and submits once, requestSHA`1015e4dc0ef9...`; its separately
-launched worker and exact-source regression are now running. This is neither
-an a1 replacement nor a controlled method/prompt comparison. Publication awaits
-its stopped-writer audit and final UI/PDF verification. V13 remains unchanged.
+validates once and submits once, requestSHA`1015e4dc0ef9...`. Both generations
+fail;4 intents/3 known replies/1 interrupted unknown,0 compiled designs/native
+worlds/scientist replies. The initial worker's Docker-PATH omission is corrected
+by resuming the same queue, without resubmission/budget reset or redispatch of
+the unknown attempt. The terminal worker exits0; a cold-resume diagnostic
+returns no job. No further generation/native trial is scheduled.
+
+Two independent QA audits agree, preserve26 raw files and verify292 source
+blobs at its own documented matching analysis checkout. The initial a1 and QA
+histories/budgets/costs are separate, not a controlled comparison. Three known
+QA replies cost332.00 adapter seconds; unknown cost is not imputed. Stable
+automatic local-Qwen authorship reaching the original world remains unmet.
+The existing kernels' original-world execution is evidenced by earlier studies
+and SCRIPTED integrated/restart checks, not relabelled as v14 actual success.
+
+Both actual figures and original failed drafts are published.277 UI tests,
+typecheck/build,8 operator guards and GET-only actual desktop/mobile captures
+pass; the QA saved-progress display remains explicitly unverified, unlike the
+separate independent audit. No fake graph or loss is shown. The publication
+verification receipt records final full/focused scopes, PDF review and hashes;
+release is conditional on those checks, not on useful invention. V13 unchanged.
 
 ## Completed finite v13: free outer design and conditional inner optimization
 
