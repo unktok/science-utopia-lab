@@ -200,6 +200,8 @@ class NativeScienceKernel:
         register_activity_contracts(self, registry)
         from .native_open_domain import register_native_domain
         register_native_domain(self, registry)
+        from .native_researcher_work import register_researcher_work
+        register_researcher_work(self, registry)
         from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, tensor_handler
         registry.register(TENSOR_IMPLEMENTATION, 1, tensor_handler)
         from .code_mechanisms import _schema
@@ -558,6 +560,8 @@ class NativeScienceKernel:
                 raise GraphRuntimeError("native kernel graph cursor mismatch")
         from .native_open_domain import validate_domain_state
         validate_domain_state(state.get('open_domain', {}), events=events)
+        from .native_researcher_work import validate_work_checkpoint
+        validate_work_checkpoint(self.spec, checkpoint, events)
         from .native_activity_contracts import EFFECT, reconstruct_applied_plan
         for event in events:
             if event.event_type == EFFECT and 'base_plan' in event.payload:

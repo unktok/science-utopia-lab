@@ -105,6 +105,9 @@ def _validate_execution_state(node, state, *, allow_initial_empty=False):
         # a legal first call just because its OUTPUT memory requires fields.
         if state or not allow_initial_empty:
             Draft202012Validator(node.parameters.get('state_schema', {'type': 'object'})).validate(state)
+    elif node.implementation == 'native.researcher.work.v15':
+        from .native_researcher_work import validate_work_state
+        validate_work_state(state)
 
 
 def _validate_saved_state(node, state):
@@ -127,6 +130,9 @@ def _validate_saved_state(node, state):
 def _validate_execution_payload(node, port, payload):
     if node.implementation == 'code.python.v1':
         Draft202012Validator(node.parameters['code_artifact']['inputs'][port]).validate(payload)
+    elif node.implementation == 'native.researcher.work.v15' and port == 'tasks':
+        from .native_researcher_work import validate_work_request
+        validate_work_request(payload)
     elif node.implementation == 'program.tensor.v1':
         from .design_patch import read_pointer
         for name, binding in node.parameters['input_bindings'].items():
@@ -160,7 +166,10 @@ def _validate_programs(spec):
     from .tensor_program import IMPLEMENTATION, validate_tensor_program
     images = set()
     for node in native_execution_nodes(spec):
-        if node.implementation == "code.python.v1":
+        if node.implementation == 'native.researcher.work.v15':
+            from .native_researcher_work import validate_work_node
+            validate_work_node(node)
+        elif node.implementation == "code.python.v1":
             artifact = node.parameters.get("code_artifact")
             validate_code_artifact(artifact)
             if (set(artifact["inputs"]) != {p.port_id for p in node.inputs}
