@@ -114,6 +114,8 @@ def test_failed_designer_consumes_all_slots_without_physical_worlds_and_is_repea
     assert first['physical_researcher_responses'] == 0
     assert first['designer_costs'] == {'generations':6,'dispatch_intents':12,'known_responses':12,
         'valid_drafts':0,'interrupted_response_unknown':0}
+    assert all(proof['started_records'][0]['prompt_sha256'] == digest(proof['started_records'][0]['prompt'])
+        for run in first['runs'].values() for proof in run['designer']['proofs'])
     assert first['claims']['scripted_researcher_HTTP'] and not first['claims']['live_fixed_Qwen_researchers']
     assert [r['scheduled_native_slots'] for r in first['runs']['efficiency-nested']['observations']] == [2,1,1]
     assert all(r['loss'] is None for run in first['runs'].values() for r in run['observations'])
