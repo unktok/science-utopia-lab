@@ -16,12 +16,26 @@ export function mountAuthoringChronicle(parent: Element): (value: unknown) => vo
   const body = el('div', 'author-layout'), list = el('ol', 'author-events'), inspector = el('article', 'author-inspector'); list.setAttribute('aria-label', 'Recorded tool dispatches');
   const focus = el('h4'), lineage = el('p', 'author-lineage'), chips = el('div', 'author-change-list'), errors = el('div', 'author-errors'), authored = el('div', 'author-literal-source'), raw = el('pre'), details = el('details'), disclosure = el('summary', '', 'EXACT TOOL INPUT / RESULT / DIAGNOSTICS'); details.append(disclosure, raw); inspector.append(focus, lineage, chips, errors, authored, details); body.append(list, inspector); section.append(heading, note, rail, summary, body); parent.append(section);
   let selected = '', steps: { key: string; generation: AuthorGeneration; item: AuthorStep }[] = [];
+  const revealSelectedRow = () => {
+    const button = list.querySelector<HTMLButtonElement>('button[aria-pressed="true"]');
+    if (!button || !list.clientHeight) return;
+    const row = button.getBoundingClientRect(), viewport = list.getBoundingClientRect();
+    if (row.bottom > viewport.bottom) list.scrollTop += row.bottom - viewport.bottom;
+    else if (row.top < viewport.top) list.scrollTop -= viewport.top - row.top;
+  };
+  // Responsive wrapping and the mobile max-height change after selection.
+  // Reconcile only list geometry changes; do not hijack manual scrolling or
+  // scroll the document/inspector when the operator resizes the viewport.
+  let resizeFrame = 0;
+  new ResizeObserver(() => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(revealSelectedRow);
+  }).observe(list);
   const select = (key: string) => {
     const found = steps.find(x => x.key === key); if (!found) return; selected = key;
     for (const button of list.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.key === key));
     const { item, generation } = found;
-    const selectedButton = [...list.querySelectorAll('button')].find(button => button.dataset.key === key);
-    if (selectedButton) { const row = selectedButton.getBoundingClientRect(), viewport = list.getBoundingClientRect(); if (row.bottom > viewport.bottom) list.scrollTop += row.bottom - viewport.bottom; else if (row.top < viewport.top) list.scrollTop -= viewport.top - row.top; }
+    revealSelectedRow();
     focus.textContent = `${item.tool?.toUpperCase() ?? 'TOOL UNKNOWN'} / ${item.status.toUpperCase()} / STEP ${item.step}`;
     lineage.textContent = `DRAFT ${short(item.draft_before_sha256)} → ${short(item.draft_after_sha256)} / GENERATION ${short(generation.request_sha256)}`;
     chips.replaceChildren(...authorStepChanges(item).map(change => el('span', 'author-change', change)));

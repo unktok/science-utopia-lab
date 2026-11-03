@@ -79,6 +79,11 @@ try {
   assert.equal(await cdp.eval(`document.querySelector('.author-inspector').textContent.includes('SOURCE / REPLACE @ SCRIPTED-office')&&document.querySelector('.author-inspector').textContent.includes('WIRE / ADD')&&document.querySelector('.author-inspector').textContent.includes('missing field')&&!window.SCRIPTED_XSS`), true);
   await cdp.eval(`document.querySelectorAll('.author-events button')[4].click()`);
   assert.equal(await cdp.eval(`document.querySelector('.author-inspector').textContent.includes('Native execution and loss still require separate receipts')&&document.querySelectorAll('.author-events button[aria-pressed=true]').length===1`), true);
+  for (const width of [390, 1600, 390, 1600]) {
+    await cdp.call('Emulation.setDeviceMetricsOverride', { width, height: 1120, deviceScaleFactor: 1, mobile: width < 500 });
+    await sleep(100);
+    assert.equal(await cdp.eval(`(()=>{const list=document.querySelector('.author-events').getBoundingClientRect(),selected=document.querySelector('.author-events button[aria-pressed=true]').getBoundingClientRect();return selected.top>=list.top-1&&selected.bottom<=list.bottom+1&&document.querySelector('.author-inspector h4').textContent.startsWith('FINISH')})()`), true, 'responsive resize must retain selected FINISH inside list viewport');
+  }
   await cdp.eval(`document.querySelectorAll('.author-events button')[2].focus();document.querySelectorAll('.author-events button')[2].click()`);
   await cdp.eval(`document.querySelector('#search-observations button').click();document.querySelector('#autonomous-search').scrollIntoView()`);
   assert.equal(await cdp.eval(`document.querySelectorAll('#search-graph .search-node').length===JSON.parse(document.querySelector('#design-system').value).mechanisms.length`), true);
