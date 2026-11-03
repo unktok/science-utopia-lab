@@ -3,7 +3,7 @@ export const AUTHOR_TOOLS = ['inspect', 'edit', 'splice', 'configure', 'validate
 export type AuthorTool = typeof AUTHOR_TOOLS[number];
 export interface AuthorStep {
   step: number; status: 'pending' | 'dispatched-response-not-receipted' | 'invalid-response' | 'applied' | 'rejected' | 'transport-error' | 'finished';
-  dispatch_intent: boolean; completed: boolean; tool: AuthorTool | null;
+  dispatch_intent: boolean; completed: boolean; tool: string | null;
   draft_before_sha256: string | null; draft_after_sha256: string | null;
   errors: string[]; result: unknown; authored_output?: unknown; model_call_seconds: number | null;
 }
@@ -26,7 +26,7 @@ export function decodeAuthorTrace(value: unknown): AuthorTrace | null {
     if (!object(g) || !hash(g.request_sha256) || seen.has(g.request_sha256) || typeof g.status !== 'string' || !Array.isArray(g.steps) || g.steps.length > 256 || (g.definition_sha256 !== undefined && !nullableHash(g.definition_sha256))) return fail();
     seen.add(g.request_sha256); let prior = -1;
     for (const s of g.steps) {
-      if (!object(s) || !Number.isSafeInteger(s.step) || s.step < 0 || s.step <= prior || !['pending', 'dispatched-response-not-receipted', 'invalid-response', 'applied', 'rejected', 'transport-error', 'finished'].includes(s.status) || typeof s.dispatch_intent !== 'boolean' || typeof s.completed !== 'boolean' || !(s.tool === null || AUTHOR_TOOLS.includes(s.tool)) || !nullableHash(s.draft_before_sha256) || !nullableHash(s.draft_after_sha256) || !strings(s.errors) || !('result' in s) || !(s.model_call_seconds === null || typeof s.model_call_seconds === 'number' && Number.isFinite(s.model_call_seconds) && s.model_call_seconds >= 0)) return fail();
+      if (!object(s) || !Number.isSafeInteger(s.step) || s.step < 0 || s.step <= prior || !['pending', 'dispatched-response-not-receipted', 'invalid-response', 'applied', 'rejected', 'transport-error', 'finished'].includes(s.status) || typeof s.dispatch_intent !== 'boolean' || typeof s.completed !== 'boolean' || !(s.tool === null || AUTHOR_TOOLS.includes(s.tool) || s.status === 'rejected' && typeof s.tool === 'string' && s.tool.length > 0) || !nullableHash(s.draft_before_sha256) || !nullableHash(s.draft_after_sha256) || !strings(s.errors) || !('result' in s) || !(s.model_call_seconds === null || typeof s.model_call_seconds === 'number' && Number.isFinite(s.model_call_seconds) && s.model_call_seconds >= 0)) return fail();
       const unknownReply = s.status === 'pending' || s.status === 'dispatched-response-not-receipted';
       if (unknownReply && (s.completed || s.tool !== null || s.draft_after_sha256 !== null || s.model_call_seconds !== null)) return fail();
       if (!unknownReply && !s.completed) return fail();
