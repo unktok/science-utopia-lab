@@ -127,6 +127,8 @@ compute consent and clicks the queue button once. It captures the queued view
 and retains request/response bodies, HTTP statuses, separate byte hashes, canonical
 request SHA and search ID. Session tokens are omitted. Any failure produces a
 receipt and forbids automatic submission retry. No adoption endpoint is used.
+An exclusive permanent output-directory lock prevents invoking the same operator
+receipt directory twice, including after an uncertain failure.
 
 ```sh
 node --test scripts/test-native-search-operator-v14.mjs

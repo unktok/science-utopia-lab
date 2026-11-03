@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, open, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -45,6 +45,10 @@ export async function runOperator(args) {
   const providerBytes = await readFile(args['provider-binding']), providerFile = JSON.parse(providerBytes), provider = providerFile.provider_binding ?? providerFile;
   assert.equal(provider.model, 'qwen3:8b', 'Expected fixed Qwen provider');
   await mkdir(args.output, { recursive: true });
+  // A permanent exclusive operator lock prevents a second invocation from
+  // turning an uncertain first submission into an automatic browser retry.
+  const lock = await open(join(args.output, 'actual-ui-submit.lock'), 'wx');
+  await lock.writeFile(JSON.stringify({ expected_source: args['expected-source'], expected_request_sha256: args['expected-request-sha256'], request_file_sha256: sha(requestBytes), no_automatic_retry: true })); await lock.close();
   // This operator never starts a native worker or HTTP service.
   const profile = await mkdtemp(join(tmpdir(), 'noctiluca-v14-ACTUAL-operator-'));
   const network = new Map(), responseTasks = [], failures = [], captures = [];
