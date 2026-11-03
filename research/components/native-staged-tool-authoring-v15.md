@@ -99,6 +99,20 @@ checks that archived dialogue against the deterministic prompt reconstruction.
 SCRIPTED tests verify the conversational and budget contract, not that the next
 actual Qwen pilot will succeed.
 
+A further **prospective** role-hierarchy correction puts the fixed source-owned
+authoring instructions and technical ABI directly into the SYSTEM message,
+rather than leaving them as strings inside the user JSON context. That SYSTEM
+message explicitly says to minimize the exact numeric `exact_loss_spec` in
+session data. World, history, generated source, labels and tool-result strings
+remain untrusted observations; similarly named fields cannot replace the
+trusted protocol. Current-call/budget/next-action narration is natural user-turn
+text outside the observation JSON. Adversarial tests check that observation
+strings claiming new SYSTEM authority never enter the actual SYSTEM message.
+This correction does not add an institution algorithm, constrain which candidate
+is scientifically acceptable, or change the fixed researcher model. Frozen
+a1/a2 messages retain their original source-specific construction; an optional
+future revision is not silently relabelled as having run in either pilot.
+
 ## Journal, crash and replay contract
 
 Every exact campaign generation gets `generation-<request_sha256>/`:
