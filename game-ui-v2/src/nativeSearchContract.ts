@@ -18,11 +18,19 @@ export function nativeSearchRequest(system: string, loss: string, seed: number, 
   integer(attempts, 1, 3, 'Designer attempts'); integer(tokens, 512, 8192, 'Designer output tokens');
   return { schema: 'scienceutopia.native-search-request.v14', initial_system, loss_spec, seed, years, method, native_budget: budget, designer: { model: 'qwen3:8b', max_attempts: attempts, max_tokens: tokens } };
 }
-export interface SearchBinding { request: NativeSearchRequest; request_sha256: string; source_commit: string }
-export function validateSearchBinding(value: any, request: NativeSearchRequest, source: string): SearchBinding {
+export function nativeSearchWireRequest(...args: Parameters<typeof nativeSearchRequest>): { request: NativeSearchRequest; request_json: string } {
+  const request = nativeSearchRequest(...args), [system, loss] = args;
+  // JSON.parse + JSON.stringify erases Python's float-vs-int identity for 1.0,
+  // -1.0 and 0.0. Validate these substrings, then embed their original JSON.
+  const request_json = `{${Object.entries(request).map(([key, value]) => `${JSON.stringify(key)}:${key === 'initial_system' ? system : key === 'loss_spec' ? loss : JSON.stringify(value)}`).join(',')}}`;
+  return { request, request_json };
+}
+export interface SearchBinding { request: NativeSearchRequest; request_json: string; request_sha256: string; source_commit: string }
+export function validateSearchBinding(value: any, request: NativeSearchRequest, source: string, request_json = JSON.stringify(request)): SearchBinding {
   if (value?.status !== 'structurally-validated-not-native-executed' || !/^[a-f0-9]{64}$/.test(value.request_sha256)
     || value.source_commit !== source || !/^[a-f0-9]{40}$/.test(source) || value.method !== request.method || value.planned_native_world_budget !== request.native_budget) throw new Error('Runtime validation source, method or budget binding differs');
-  return { request: structuredClone(request), request_sha256: value.request_sha256, source_commit: source };
+  if (stableStringify(parseExactDraft(request_json)) !== stableStringify(request)) throw new Error('Exact wire request differs from validated request');
+  return { request: structuredClone(request), request_json, request_sha256: value.request_sha256, source_commit: source };
 }
 // Decode exact integer lexical tokens before Number can round them. Strings,
 // floating lexical tokens and source-code bodies retain their original meaning.
@@ -66,14 +74,17 @@ export function nativeSearchLiveTelemetry(value: any): { phase: string; year: st
 export class NativeSearchConsent {
   revision = 0; binding: SearchBinding | null = null; consented = false; submitting = false;
   changed(): void { this.revision++; this.binding = null; this.consented = false; }
-  validated(binding: SearchBinding, revision: number, current: NativeSearchRequest): boolean {
-    if (revision !== this.revision || stableStringify(current) !== stableStringify(binding.request)) return false;
+  validated(binding: SearchBinding, revision: number, current: NativeSearchRequest, request_json = JSON.stringify(current)): boolean {
+    if (revision !== this.revision || stableStringify(current) !== stableStringify(binding.request) || request_json !== binding.request_json) return false;
     this.binding = binding; this.consented = false; return true;
   }
   consent(value: boolean): void { this.consented = !!this.binding && value; }
-  canSubmit(request: NativeSearchRequest): boolean { return !this.submitting && this.consented && !!this.binding && stableStringify(request) === stableStringify(this.binding.request); }
-  begin(request: NativeSearchRequest): SearchBinding {
-    if (!this.canSubmit(request)) throw new Error('Validate this exact request, then explicitly consent to its compute budget');
+  canSubmit(request: NativeSearchRequest, request_json = JSON.stringify(request)): boolean {
+    if (this.binding && (request_json !== this.binding.request_json || stableStringify(request) !== stableStringify(this.binding.request))) { this.changed(); return false; }
+    return !this.submitting && this.consented && !!this.binding;
+  }
+  begin(request: NativeSearchRequest, request_json = JSON.stringify(request)): SearchBinding {
+    if (!this.canSubmit(request, request_json)) throw new Error('Validate this exact request, then explicitly consent to its compute budget');
     const binding = this.binding!; this.submitting = true; this.changed(); return binding;
   }
 }

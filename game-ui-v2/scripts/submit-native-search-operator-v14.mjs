@@ -32,6 +32,13 @@ export function operatorRequest(text) {
   assert.equal(request.loss_spec?.id, 'native-joint-v5-throughput');
   return request;
 }
+export function operatorEditorDrafts(text) {
+  operatorRequest(text);
+  assert.equal(typeof JSON.rawJSON, 'function', 'JSON.rawJSON is required to preserve frozen numeric lexemes');
+  const exact = JSON.parse(text, (_key, value, context) => typeof value === 'number' ? JSON.rawJSON(context.source) : value);
+  assert.equal(JSON.stringify(JSON.parse('1.0', (_key, value, context) => typeof value === 'number' ? JSON.rawJSON(context.source) : value)), '1.0', 'Raw numeric JSON capability check failed');
+  return { initial_system: JSON.stringify(exact.initial_system, null, 2), loss_spec: JSON.stringify(exact.loss_spec, null, 2) };
+}
 class Cdp {
   id = 0; pending = new Map(); events = [];
   async open(url) { this.socket = new WebSocket(url); await new Promise((resolve, reject) => { this.socket.onopen = resolve; this.socket.onerror = reject; }); this.socket.onmessage = ({ data }) => { const m = JSON.parse(data); if (m.id) { this.pending.get(m.id)?.(m); this.pending.delete(m.id); } else { this.events.push(m); this.onEvent?.(m); } }; }
@@ -41,7 +48,7 @@ class Cdp {
 async function until(fn, label) { for (let i = 0; i < 150; i++) { if (await fn()) return; await sleep(100); } throw Error(`Timeout: ${label}. Do not retry submission automatically.`); }
 async function stop(process) { if (process?.exitCode === null) { process.kill('SIGTERM'); await Promise.race([new Promise(resolve => process.once('exit', resolve)), sleep(1500)]); if (process.exitCode === null) process.kill('SIGKILL'); } }
 export async function runOperator(args) {
-  const requestBytes = await readFile(args.request), request = operatorRequest(requestBytes.toString('utf8'));
+  const requestBytes = await readFile(args.request), request = operatorRequest(requestBytes.toString('utf8')), editorDrafts = operatorEditorDrafts(requestBytes.toString('utf8'));
   const providerBytes = await readFile(args['provider-binding']), providerFile = JSON.parse(providerBytes), provider = providerFile.provider_binding ?? providerFile;
   assert.equal(provider.model, 'qwen3:8b', 'Expected fixed Qwen provider');
   await mkdir(args.output, { recursive: true });
@@ -65,11 +72,11 @@ export async function runOperator(args) {
       if (message.method === 'Network.requestWillBeSent') {
         const { requestId, request: outgoing } = message.params;
         if (!/^http/.test(outgoing.url)) return;
-        const row = { request_id: requestId, url: outgoing.url, method: outgoing.method, ...(outgoing.postData ? { request_body: JSON.parse(outgoing.postData), request_body_utf8_sha256: sha(outgoing.postData) } : {}) }; network.set(requestId, row);
+        const row = { request_id: requestId, url: outgoing.url, method: outgoing.method, ...(outgoing.postData ? { request_body: JSON.parse(outgoing.postData), request_body_text: outgoing.postData, request_body_utf8_sha256: sha(outgoing.postData) } : {}) }; network.set(requestId, row);
         if (!outgoing.url.startsWith(`${args.base}/`) || !['GET', 'POST'].includes(outgoing.method) || outgoing.method === 'POST' && !['/native-api/search-validate', '/native-api/searches'].includes(new URL(outgoing.url).pathname)) failures.push('Unexpected external request or mutation observed');
       }
       if (message.method === 'Network.responseReceived') { const row = network.get(message.params.requestId); if (row) { row.http_status = message.params.response.status; if (row.http_status >= 400) failures.push(`HTTP ${row.http_status}: ${row.url}`); } }
-      if (message.method === 'Network.loadingFinished') { const row = network.get(message.params.requestId); if (!row || !row.url.includes('/native-api/')) return; responseTasks.push((async () => { const result = await cdp.call('Network.getResponseBody', { requestId: row.request_id }), text = result.base64Encoded ? Buffer.from(result.body, 'base64').toString('utf8') : result.body; row.response_body_sha256 = sha(text); const body = JSON.parse(text); if (row.url.endsWith('/session')) { row.response = { source_commit: body.source_commit, search_enabled: body.search_enabled, token_present: typeof body.token === 'string' }; } else row.response = body;
+      if (message.method === 'Network.loadingFinished') { const row = network.get(message.params.requestId); if (!row || !row.url.includes('/native-api/')) return; responseTasks.push((async () => { const result = await cdp.call('Network.getResponseBody', { requestId: row.request_id }), text = result.base64Encoded ? Buffer.from(result.body, 'base64').toString('utf8') : result.body; row.response_body_sha256 = sha(text); const body = JSON.parse(text); if (row.url.endsWith('/session')) { row.response = { source_commit: body.source_commit, search_enabled: body.search_enabled, token_present: typeof body.token === 'string' }; } else { row.response = body; row.response_body_text = text; }
         if (row.url.endsWith('/search-validate')) validatedBody = body;
         if (row.url.endsWith('/searches') && row.method === 'POST') queuedBody = body;
       })().catch(error => failures.push(`Unable to retain API response: ${String(error)}`))); }
@@ -81,7 +88,7 @@ export async function runOperator(args) {
     await until(() => cdp.eval(`!document.querySelector('#search-validate').disabled`), 'actual source-bound session');
     const sessions = [...network.values()].filter(row => row.url.endsWith('/session')); await until(() => sessions.every(row => row.response), 'session receipts');
     assert(sessions.length >= 1); assert(sessions.every(row => row.http_status === 200 && row.response.source_commit === args['expected-source'] && row.response.search_enabled === true));
-    await cdp.eval(`(()=>{const r=${JSON.stringify(request)};for(const[id,value]of [['design-system',JSON.stringify(r.initial_system,null,2)],['design-loss',JSON.stringify(r.loss_spec,null,2)],['design-seed',String(r.seed)],['design-years',String(r.years)],['search-method',r.method],['search-budget',String(r.native_budget)],['search-attempts',String(r.designer.max_attempts)],['search-tokens',String(r.designer.max_tokens)]]){const input=document.getElementById(id);input.value=value;input.dispatchEvent(new Event('input',{bubbles:true}));if(id==='search-method')input.dispatchEvent(new Event('change',{bubbles:true}));}})()`);
+    await cdp.eval(`(()=>{const r=${JSON.stringify(request)},drafts=${JSON.stringify(editorDrafts)};for(const[id,value]of [['design-system',drafts.initial_system],['design-loss',drafts.loss_spec],['design-seed',String(r.seed)],['design-years',String(r.years)],['search-method',r.method],['search-budget',String(r.native_budget)],['search-attempts',String(r.designer.max_attempts)],['search-tokens',String(r.designer.max_tokens)]]){const input=document.getElementById(id);input.value=value;input.dispatchEvent(new Event('input',{bubbles:true}));if(id==='search-method')input.dispatchEvent(new Event('change',{bubbles:true}));}})()`);
     assert.equal(await cdp.eval(`document.querySelector('#search-submit').disabled&&!document.querySelector('#search-consent').checked&&document.querySelector('#search-consent').disabled`), true);
     assert.equal([...network.values()].filter(row => row.method === 'POST').length, 0);
     await cdp.eval(`document.querySelector('#search-validate').click()`);
