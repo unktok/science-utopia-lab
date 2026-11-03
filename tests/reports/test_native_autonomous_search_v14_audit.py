@@ -185,3 +185,71 @@ def test_controller_history_update_forgery_is_rejected(tmp_path):
     save(path,state)
     with pytest.raises(ValueError):
         audit.analyze(tmp_path,expected_source='fixture-source')
+
+
+def _real_adapter_fixture(root,values):
+    """Actual adapter with a scripted trusted model; it performs no HTTP."""
+    generator_module = pytest.importorskip('utopia.optimization.native_search_generator_v14')
+    class Scripted:
+        def __init__(self):
+            self.values = iter(values)
+            self.calls = 0
+        def generate(self,**kwargs):
+            self.calls += 1
+            value = next(self.values)
+            if isinstance(value,BaseException):
+                raise value
+            return value,[{'role':'assistant','content':json.dumps(value)}]
+    initial = tiny_parent()
+    world = {'source_commit':'fixture-source','model_digest':'fixture-model','corpus_sha256':'fixture-corpus'}
+    controller = NativeAdaptiveDesignCampaign(root/'campaign',initial_system=initial,
+        loss_spec=list(audit.objective_specs().values())[0],seeds=[42],world_binding=world,
+        strategies={'automatic':{'kind':'scripted-software-QA'}},mode='blackbox',seed=42)
+    model = Scripted()
+    provider = {'model':'qwen3:8b','model_digest':'fixture-model','image_id':'sha256:'+'a'*64}
+    adapter = generator_module.LLMVocabularyGenerator(model,root/'authoring',image_id=provider['image_id'],
+        provider_binding=provider,max_attempts=2,max_tokens=4096)
+    return controller,adapter,model,provider
+
+
+def _authored_output():
+    return {'operations':[{'op':'replace','path':'/initial_state/coordinate','value':1.25}],
+        'factors':[],'continuous':[],'rationale':'Scripted audit contract, not model or scientific evidence'}
+
+
+def test_successful_actual_adapter_keeps_exact_raw_model_operations_and_new_parent(tmp_path):
+    controller,adapter,model,provider = _real_adapter_fixture(tmp_path,[_authored_output()])
+    record = controller.advance(simulation_factory=fail_factory,generators={'automatic':adapter},count=1)
+    proof = audit.audit_designer(tmp_path/'authoring',[record],{'max_attempts':2,'max_tokens':4096},
+        provider_binding=provider)
+    assert model.calls == proof['dispatch_intents'] == proof['known_responses'] == proof['valid_drafts'] == 1
+    assert record['definition']['base_patch']['operations'] == _authored_output()['operations']
+    assert record['draws'][0]['suggestion']['candidate']['initial_state']['coordinate'] == 1.25
+    assert record['observations'][0]['loss'] is None
+
+
+def test_actual_adapter_bounded_invalid_first_draft_and_second_valid_are_both_audited(tmp_path):
+    controller,adapter,model,provider = _real_adapter_fixture(tmp_path,[{'malformed':'first'},_authored_output()])
+    record = controller.advance(simulation_factory=fail_factory,generators={'automatic':adapter},count=1)
+    proof = audit.audit_designer(tmp_path/'authoring',[record],{'max_attempts':2,'max_tokens':4096})
+    assert proof['dispatch_intents'] == proof['known_responses'] == 2 and proof['valid_drafts'] == 1
+    assert [a['status'] for a in proof['proofs'][0]['attempts']] == ['invalid','valid']
+
+
+def test_actual_adapter_preflight_errors_are_not_invented_known_model_responses(tmp_path):
+    controller,adapter,model,provider = _real_adapter_fixture(tmp_path,[RuntimeError('scripted preflight'),RuntimeError('scripted preflight')])
+    record = controller.advance(simulation_factory=fail_factory,generators={'automatic':adapter},count=1)
+    proof = audit.audit_designer(tmp_path/'authoring',[record],{'max_attempts':2,'max_tokens':4096})
+    assert proof['dispatch_intents'] == 2 and proof['known_responses'] == 0
+    assert record['generation_error'] and record['draws'] == []
+
+
+def test_actual_adapter_interrupted_response_remains_unknown_and_is_not_redispatched(tmp_path):
+    controller,adapter,model,provider = _real_adapter_fixture(tmp_path,[KeyboardInterrupt(),_authored_output()])
+    with pytest.raises(KeyboardInterrupt):
+        controller.advance(simulation_factory=fail_factory,generators={'automatic':adapter},count=1)
+    record = controller.advance(simulation_factory=fail_factory,generators={'automatic':adapter},count=1)
+    proof = audit.audit_designer(tmp_path/'authoring',[record],{'max_attempts':2,'max_tokens':4096})
+    assert model.calls == 2 and proof['dispatch_intents'] == 2 and proof['known_responses'] == 1
+    assert proof['interrupted_response_unknown'] == 1
+    assert proof['proofs'][0]['attempt_records'][0] is None

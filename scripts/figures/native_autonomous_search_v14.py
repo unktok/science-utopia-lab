@@ -23,6 +23,7 @@ from scripts.analyze_native_open_estimators_v11 import incumbent_path
 from scripts.native_nested_estimator_audit_v13 import conditional_update_proof
 from scripts.figures.native_nested_search_v13 import _table
 from utopia.optimization.loss import evaluate_loss, loss_spec_sha256
+from utopia.optimization.native_adaptive_search import GeneratedMixedDesign
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import file_sha256, write_json_atomic
@@ -161,7 +162,12 @@ def figure_data(report,expected_source=None,*,allow_synthetic=False):
                 slot_cursor += span
             if run['method'] == 'blackbox' or record['request']['external_authoring']:
                 authored = next(a for a in run['authored_definitions'] if a['record_index'] == index)
+                base = None if record['generation_error'] else GeneratedMixedDesign(
+                    SystemSpec.from_dict(record['request']['parent_system']),record['definition'],
+                    loss_spec=run['loss_spec'],seed=record['request']['rng_seed'],
+                    single_draw_blackbox=record['request']['count'] == 1).base.to_dict()
                 if (authored['definition'] != record['definition']
+                        or authored['base_system'] != base
                         or authored['definition_sha256'] != digest(record['definition'])
                         or authored['literal_change'] != (design_change(record['request']['parent_system'],
                             authored['base_system']) if authored['base_system'] is not None else None)):
@@ -175,6 +181,40 @@ def figure_data(report,expected_source=None,*,allow_synthetic=False):
         ds = run['designer']
         if ds['generations'] != len(ds['proofs']):
             raise ValueError('designer generation evidence count differs')
+        counts = {k:0 for k in ('dispatch_intents','known_responses','valid_drafts','interrupted_response_unknown')}
+        for proof in ds['proofs']:
+            _hashed_record(proof['binding'],field='binding_sha256')
+            _hashed_record(proof['result'])
+            if (proof['binding']['request_sha256'] != proof['request_sha256']
+                    or proof['request_sha256'] != digest(proof['binding']['request'])
+                    or proof['result']['attempts'] != proof['attempts']
+                    or proof['result']['definition'] != next(r['definition'] for r in run['records']
+                        if r['request_sha256'] == proof['request_sha256'])):
+                raise ValueError('designer request/raw/result/consumed-definition join differs')
+            counts['dispatch_intents'] += len(proof['attempts'])
+            if len(proof['attempt_records']) != len(proof['attempts']):
+                raise ValueError('designer draft completion omitted')
+            for attempt,done in zip(proof['attempts'],proof['attempt_records']):
+                if done is None:
+                    if attempt['status'] != 'interrupted-response-unknown' or attempt['completed_sha256'] is not None:
+                        raise ValueError('unknown designer completion relabelled')
+                    counts['interrupted_response_unknown'] += 1
+                    continue
+                _hashed_record(done)
+                if attempt['status'] != done['status']:
+                    raise ValueError('designer technical draft outcome differs')
+                reply = done.get('model_reply') or {}
+                assistants = [m for m in reply.get('messages',[]) if m.get('role') == 'assistant']
+                counts['known_responses'] += int(bool(assistants) or 'raw_http_response' in reply.get('transport',{}))
+                counts['valid_drafts'] += int(done['status'] == 'valid')
+                if done['status'] == 'valid':
+                    from utopia.optimization.native_search_generator_v14 import compile_authored_output
+                    if compile_authored_output(proof['binding']['request'],reply['output'],
+                            binding_sha256=proof['binding']['binding_sha256'],
+                            provider_binding=proof['binding']['provider_binding']) != done['definition']:
+                        raise ValueError('designer authored operations repaired in figure evidence')
+        if any(ds[key] != value for key,value in counts.items()):
+            raise ValueError('designer known/unknown/attempt accounting differs')
         for key in designer:
             designer[key] += ds[key]
         rows.append(run_rows)
@@ -191,6 +231,12 @@ def figure_data(report,expected_source=None,*,allow_synthetic=False):
             or report['physical_native_worlds'] != complete or report['technical_failures'] != failures
             or report['physical_researcher_responses'] != scientist or report['designer_costs'] != designer):
         raise ValueError('aggregate native/designer accounting differs')
+    measurements = report.get('designer_cost_measurements',{})
+    for key,measurement in measurements.items():
+        values = [r['designer']['cost_measurements'][key] for r in report['runs'].values()]
+        if measurement != {'recorded_sum':math.fsum(v['recorded_sum'] for v in values),
+                'record_count':sum(v['record_count'] for v in values)}:
+            raise ValueError('designer timing/token aggregate differs')
     return {'classification':classification,'source_commit':report['source_commit'],'rows':rows,
         'edits':edits,'costs':costs,'accounting':accounting,'designer_costs':designer,
         'physical_researcher_responses':scientist,'planned_native_world_budget':8,
@@ -240,8 +286,13 @@ def render(report,output,*,audit_path,expected_source=None,allow_synthetic=False
         ax.set_title('E  Separate designer / scientist costs',y=1.05,pad=0)
         _table(ax,['Design\nintent/reply','Scientist\nrequest/reply'],[c['label'] for c in data['costs']],
             [[f"{c['designer_intents']}/{c['designer_replies']}",
-                f"{c['scientist_requests']}/{c['scientist_replies']}"] for c in data['costs']],bbox=(0,.3,1,.58))
-        ax.text(.5,.01,'Intent is durable dispatch intent.\nMissing completion = unknown response.\nScientist requests shown for complete worlds.',
+                f"{c['scientist_requests']}/{c['scientist_replies']}"] for c in data['costs']],bbox=(0,.38,1,.50))
+        timing = report.get('designer_cost_measurements',{}).get('model_call_seconds',{})
+        designer_time = f"{timing['recorded_sum']/60:.2f} min" if timing.get('record_count') else 'n/a'
+        scientist_time = (f"{report['completed_researcher_model_call_seconds']/60:.2f} min"
+            if report['physical_native_worlds'] else 'n/a')
+        ax.text(.5,.01,f'Designer recorded calls: {designer_time}.\nScientist model calls: {scientist_time}.\n'
+            'Intent = dispatch intent; unknowns retained.\nScientist requests: completed worlds only.',
             transform=ax.transAxes,ha='center',va='bottom',fontsize=7,color='#435568')
         ax = axes[2,1]
         ax.set_title('F  Charged slots and physical evidence',y=1.05,pad=0)
