@@ -26,7 +26,13 @@ def recorded_test(directory, name, *, source, interrupted=False, junit=False):
     receipt = json.loads(path.read_text())
     if receipt['status'] != 'exited' or receipt['exit_code'] != (-15 if interrupted else 0):
         raise ValueError('missing expected stopped-process result: ' + name)
-    result = {'source_commit': source, 'receipt': asset(path),
+    exact_source = subprocess.check_output(['git', 'rev-parse', source], cwd=ROOT, text=True).strip()
+    result = {'source_commit': exact_source,
+        'source_scope': 'immutable experiment checkout' if source in (
+            '54a7d92dad5221f83f25f81d62aa225ab38cef25',
+            'fdb694d0adee759470d9c4ff41c4d8c75e490d19') else
+            'focused source files; report-only repository commits may overlap the run',
+        'receipt': asset(path),
         'log': asset(Path(receipt['log'])), 'status': receipt['status'],
         'exit_code': receipt['exit_code'], 'command': receipt['command'],
         'environment': receipt['environment'], 'started_utc': receipt['started_utc'],
@@ -92,7 +98,7 @@ def main():
         ('ui-tests-r1', 'ed9915b', False, True),
         ('ui-build-r1', 'ed9915b', False, False),
         ('operator-guards-r1', 'ed9915b', False, False),
-        ('scripted-browser-r1', '38e2c53', False, False),
+        ('scripted-browser-r1', 'ed9915b', False, False),
         ('final-focused-r1', args.paper_source, False, True),
     ):
         checks[name] = recorded_test(v, name, source=source, interrupted=interrupted, junit=junit)
