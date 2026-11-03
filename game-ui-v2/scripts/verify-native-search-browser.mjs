@@ -32,6 +32,11 @@ try {
     else if (path.endsWith('/searches')) { submitted++; const body = JSON.parse(incoming.postData); assert.equal(body.confirmed_request_sha256, hash); assert.deepEqual(body.request, request); value = progress('queued'); }
     else if (path.includes('/searches/')) value = progress('complete');
     else { code = 404; value = { error: 'SCRIPTED unsupported API' }; }
+    // Match the runtime's actual suggestion shape, rather than the older
+    // manual-job SystemSpec spelling used to construct this temporary fixture.
+    for (const row of [...(value.observations ?? []), value.current].filter(Boolean)) {
+      if (row.suggestion?.system) { row.suggestion.candidate = row.suggestion.system; delete row.suggestion.system; }
+    }
     const body = JSON.stringify(value).replace('"UNSAFE_INTEGER"', '9007199254740993');
     void cdp.call('Fetch.fulfillRequest', { requestId, responseCode: code, responseHeaders: [{ name: 'Content-Type', value: 'application/json' }], body: Buffer.from(body).toString('base64') });
   };
@@ -57,6 +62,7 @@ try {
   assert.equal(await cdp.eval(`document.querySelector('#search-raw').textContent.includes('9007199254740993')&&document.querySelector('#search-raw').textContent.includes('/exact_identity')`), true);
   assert.equal(await cdp.eval(`document.querySelector('#search-replies').textContent.includes('DESIGNER 2 / RESEARCHER 17')`), true);
   await cdp.eval(`document.querySelector('#search-observations button').click();document.querySelector('#autonomous-search').scrollIntoView()`);
+  assert.equal(await cdp.eval(`document.querySelectorAll('#search-graph .search-node').length===JSON.parse(document.querySelector('#design-system').value).mechanisms.length`), true);
   const captures = [];
   for (const [name, width, height] of [['desktop', 1600, 1120], ['mobile', 390, 1120]]) {
     await cdp.call('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width < 500 });
