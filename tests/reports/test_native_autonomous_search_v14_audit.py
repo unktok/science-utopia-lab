@@ -253,3 +253,26 @@ def test_actual_adapter_interrupted_response_remains_unknown_and_is_not_redispat
     assert model.calls == 2 and proof['dispatch_intents'] == 2 and proof['known_responses'] == 1
     assert proof['interrupted_response_unknown'] == 1
     assert proof['proofs'][0]['attempt_records'][0] is None
+
+
+def test_pending_interrupted_authoring_can_be_audited_without_charging_a_world(tmp_path):
+    controller,adapter,model,provider = _real_adapter_fixture(tmp_path,[KeyboardInterrupt()])
+    with pytest.raises(KeyboardInterrupt):
+        controller.advance(simulation_factory=fail_factory,generators={'automatic':adapter},count=1)
+    before = audit._inventory(tmp_path)
+    proof = audit.audit_designer(tmp_path/'authoring',[],{'max_attempts':2,'max_tokens':4096},
+        pending=controller.state['pending'])
+    assert proof['dispatch_intents'] == proof['interrupted_response_unknown'] == 1
+    assert proof['known_responses'] == 0 and proof['proofs'][0]['result'] is None
+    assert proof['proofs'][0]['definition_consumed'] is False
+    assert controller.state['records'] == [] and audit._inventory(tmp_path) == before
+
+
+def test_duplicate_raw_durable_record_keys_are_not_silently_collapsed(tmp_path):
+    fixture(tmp_path)
+    path = tmp_path/'plan.json'
+    text = path.read_text()
+    # Deliberately corrupt a raw fixture without constructing a new outcome.
+    path.write_text(text.replace('"seed": 42','"seed": 42, "seed": 42',1))
+    with pytest.raises(ValueError,match='Duplicate JSON key'):
+        audit.analyze(tmp_path,expected_source='fixture-source')

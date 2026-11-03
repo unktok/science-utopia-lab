@@ -15,7 +15,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.analyze_native_open_v7 import FIXTURE, _inventory, read, partial_physical_proof
+from scripts.analyze_native_open_v7 import FIXTURE, _inventory, partial_physical_proof
 from scripts.analyze_native_open_estimators_v11 import incumbent_path
 from scripts.analyze_native_nested_search_v13 import design_change, executable_contracts, objective_specs
 from scripts.analyze_native_objective_structure_v8 import cross_score_measurement
@@ -36,6 +36,12 @@ EXPERIMENT = {'protocol': 'native-autonomous-search-v14', 'role': 'development-e
 FORBIDDEN_CLAIMS = ('held_out', 'causal_institutional_benefit', 'scientific_value',
     'designer_improvement_established', 'full_native_world_pathwise_autograd',
     'variance_reduction_established', 'method_superiority_established')
+
+
+def read(path):
+    value = decode_json(Path(path).read_text(),strict=True,finite_floats=True)
+    digest(value)
+    return value
 
 
 def source_proofs(expected_source, classification):
@@ -261,7 +267,7 @@ def _actual_transport(transport, messages, start, binding):
             raise ValueError('designer original assistant content detached from HTTP response')
 
 
-def audit_designer(directory, records, settings, *, provider_binding=None, classification=FIXTURE):
+def audit_designer(directory, records, settings, *, provider_binding=None, classification=FIXTURE,pending=None):
     """Join exact requests and durable HTTP intent/completion/raw authoring files.
 
     Intent is an upper bound on dispatches, not an exactly-once network claim.
@@ -270,6 +276,10 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
     directory = Path(directory)
     expected = {r['request_sha256']:r for r in records
         if r.get('request',{}).get('external_authoring', True)}
+    pending_sha = None
+    if pending and pending['request'].get('external_authoring',True):
+        pending_sha = pending['request_sha256']
+        expected[pending_sha] = pending
     proofs, observed = [], set()
     started_total = known_total = valid_total = interrupted = 0
     posts = raw_assistant = 0
@@ -287,13 +297,21 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
                 or provider_binding is not None and binding['provider_binding'] != provider_binding):
             raise ValueError('designer exact request/provider/settings binding differs')
         observed.add(request_sha)
-        result = read(cell/'response.json')
-        _hashed_record(result)
+        open_generation = not (cell/'response.json').exists()
+        if open_generation:
+            if request_sha != pending_sha or expected[request_sha]['generated']:
+                raise ValueError('consumed generation lacks its durable final result')
+            result = {'schema':'scienceutopia.llm-vocabulary-result.v14','binding_sha256':binding['binding_sha256'],
+                'request_sha256':request_sha,'source_execution_on_host':False,'definition':None,
+                'selected_attempt':None,'status':'pending-authoring','attempts':None}
+        else:
+            result = read(cell/'response.json')
+            _hashed_record(result)
         if (result.get('schema') != 'scienceutopia.llm-vocabulary-result.v14'
                 or result['binding_sha256'] != binding['binding_sha256']
                 or result['request_sha256'] != request_sha
                 or result.get('source_execution_on_host') is not False
-                or result['definition'] != expected[request_sha]['definition']):
+                or expected[request_sha]['generated'] and result['definition'] != expected[request_sha]['definition']):
             raise ValueError('designer result is not exact consumed unmodified definition')
         attempts, selected_definition = [], None
         errors = []
@@ -390,9 +408,11 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
             attempts.append({'attempt':index,'started_sha256':file_sha256(start_path),
                 'completed_sha256':file_sha256(completed_path),'status':done['status']})
             errors.extend(done['errors'])
-        if result['attempts'] != attempts:
+        if not open_generation and result['attempts'] != attempts:
             raise ValueError('designer response hides or changes an attempted draft')
-        if result['status'] == 'generated':
+        if open_generation:
+            pass  # Exact drafts/unknown responses are retained; no definition was consumed.
+        elif result['status'] == 'generated':
             if selected_definition != result['definition'] or attempts[-1]['status'] != 'valid':
                 raise ValueError('designer successful selection differs from preserved attempt')
         elif (result['status'] != 'generation-failed' or result['selected_attempt'] is not None
@@ -409,14 +429,19 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
                 'request_sha256':request_sha,'reason':'bounded automatic authoring failed','technical_errors':errors}}
             if result['definition'] != expected_failure:
                 raise ValueError('designer failure sentinel hides or changes technical errors')
-        proofs.append({'request_sha256': request_sha, 'binding':binding, 'result':result,
+        proofs.append({'request_sha256': request_sha, 'binding':binding, 'result':None if open_generation else result,
+            'generation_status':'pending-authoring' if open_generation else result['status'],
+            'definition_consumed':expected[request_sha]['generated'],
             'attempts':attempts, 'attempt_records':[read(cell/f'attempt-{a["attempt"]:02d}.completed.json')
                 if a['completed_sha256'] else None for a in attempts]})
-    if set(expected) != observed:
+    missing = set(expected)-observed
+    allowed_missing = {pending_sha} if pending_sha and not expected[pending_sha]['generated'] else set()
+    if not missing <= allowed_missing:
         raise ValueError('consumed designer request missing durable authoring evidence')
     return {'generations':len(proofs), 'dispatch_intents':started_total, 'known_responses':known_total,
         'valid_drafts':valid_total, 'interrupted_response_unknown':interrupted, 'proofs':proofs,
         'recorded_post_payloads':posts,'raw_assistant_responses':raw_assistant,
+        'pending_generation_request_sha256':pending_sha,
         'cost_measurements':{key:{'recorded_sum':math.fsum(values),'record_count':len(values),
             'scope':'sum of present recorded values; missing values are not inferred zero'}
             for key,values in measurements.items()},
@@ -436,10 +461,14 @@ def analyze(run, *, expected_source, require_complete=True):
 def _analyze(root, *, expected_source, require_complete, inventory):
     plan = read(root/'plan.json')
     classification = plan.get('classification')
+    expected_designer_budget = {'generations':6,'max_attempts_per_generation':2,'max_http_attempts':12}
+    if classification == ACTUAL:
+        expected_designer_budget.update(http_budget_means='generation POSTs only; verification GETs separately',
+            max_verification_GETs=12)
     if (plan.get('schema') != RAW_SCHEMA or classification not in (ACTUAL,FIXTURE)
             or plan.get('source_commit') != expected_source or plan.get('experiment') != EXPERIMENT
             or plan.get('seed') != 42 or plan.get('population') != {'authors':5,'conference_setting':1}
-            or plan.get('designer_budget') != {'generations':6,'max_attempts_per_generation':2,'max_http_attempts':12}
+            or plan.get('designer_budget') != expected_designer_budget
             or len(plan.get('runs',[])) != 3):
         raise ValueError('exact preregistered autonomous v14 source/budget/population plan required')
     world = plan['world']
@@ -452,7 +481,15 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             or world.get('runtime_seed_binding',{}).get('python_hash_seed_environment') != '42'):
         raise ValueError('actual autonomous model/corpus/runtime seed binding missing')
     sources = source_proofs(expected_source, classification)
-    runs, contracts, request_hashes = {}, [], set()
+    if classification == ACTUAL:
+        from scripts.run_native_autonomous_search_v14 import build_plan
+        provider = {key:world[key] for key in ('model','model_digest','corpus_sha256','dataset_identity',
+            'corpus_years','image_id')}
+        if plan != build_plan(source_commit=expected_source,initial_system=plan['initial_system'],
+                provider_binding=provider,runtime_seed_binding=world['runtime_seed_binding']):
+            raise ValueError('aggregate plan differs from exact frozen v14 pilot contract')
+    runs, contracts, request_hashes, directories = {}, [], set(), set()
+    all_observation_ids, all_checkpoint_hashes = set(),set()
     for entry in plan['runs']:
         identity, request = entry['id'], entry['request']
         if identity in runs or digest(request) in request_hashes:
@@ -466,6 +503,9 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             raise ValueError('exact autonomous request/initial/loss/designer contract differs')
         contracts.append((request['loss_spec']['id'], request['method'], request['native_budget']))
         directory = _inside(root, entry['directory'])
+        if directory in directories:
+            raise ValueError('distinct autonomous requests share a raw runtime directory')
+        directories.add(directory)
         saved = read(directory/'plan.json')
         if (saved.get('schema') != 'scienceutopia.native-search-plan.v14'
                 or saved['request'] != request or saved['request_sha256'] != digest(request)
@@ -487,7 +527,17 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             classification=classification, loss=request['loss_spec'], initial_system=plan['initial_system'],
             expected_budget=request['native_budget'],campaign_world=campaign_world)
         native['designer'] = audit_designer(directory/'authoring', native['records'],
-            {'max_attempts':2,'max_tokens':4096},provider_binding=provider,classification=classification)
+            {'max_attempts':2,'max_tokens':4096},provider_binding=provider,classification=classification,
+            pending=native['pending'])
+        for row in native['observations']:
+            if row['observation_id'] is not None:
+                if row['observation_id'] in all_observation_ids:
+                    raise ValueError('native observation reused across autonomous requests')
+                all_observation_ids.add(row['observation_id'])
+            if row['checkpoint_sha256'] is not None:
+                if row['checkpoint_sha256'] in all_checkpoint_hashes:
+                    raise ValueError('identical physical checkpoint reused across autonomous requests')
+                all_checkpoint_hashes.add(row['checkpoint_sha256'])
         if (directory/'progress.json').exists():
             from utopia.optimization.native_search_v14 import NativeSearchController
             progress = read(directory/'progress.json')
@@ -513,6 +563,9 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     terminal = all(r['terminal'] for r in runs.values())
     if require_complete and not terminal:
         raise ValueError('incomplete autonomous audit requires explicit flag')
+    cache_paths = {Path(c['path']).resolve() for r in runs.values() for c in r['physical_response_caches']}
+    if {p.resolve() for p in root.rglob('responses.sqlite')} != cache_paths:
+        raise ValueError('unaccounted physical scientist response cache outside declared autonomous worlds')
     counts = {key:sum(r[key] for r in runs.values()) for key in ('consumed_native_slots',
         'physical_native_worlds','physical_world_directory_count','physical_researcher_responses',
         'completed_researcher_responses','completed_wire_requests','completed_code_executions','technical_failures',
@@ -524,10 +577,22 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             for r in runs.values())} for key in ('model_call_seconds','transport_seconds','prompt_tokens','completion_tokens')}
     if designer['generations'] > 6 or designer['dispatch_intents'] > 12:
         raise ValueError('aggregate designer generation/provider budget exceeded')
+    progress = None
+    if classification == ACTUAL:
+        progress = read(root/'progress.json')
+        _hashed_record(progress)
+        expected_progress = {'schema':RAW_SCHEMA+'.progress','classification':ACTUAL,
+            'source_commit':expected_source,'plan_sha256':digest(plan),
+            'status':'complete' if terminal else 'in-progress',
+            'runs':{identity:r['runtime_progress'] for identity,r in runs.items()},'budget_terminal':terminal,
+            'consumed_native_slots':counts['consumed_native_slots'],'planned_native_world_budget':8,
+            'no_manual_authoring':True,'model_weights_trained':False,'same_society_adoption':False}
+        if {k:v for k,v in progress.items() if k != 'content_sha256'} != expected_progress:
+            raise ValueError('aggregate progress/source/plan/complete projection differs')
     result = {'schema':SCHEMA,'classification':classification,'source_commit':expected_source,
         'status':'complete' if terminal and not counts['technical_failures'] else
             'budget-complete-with-failures' if terminal else 'in-progress',
-        'plan':plan,'run_order':list(runs),'runs':runs,'planned_native_world_budget':8,
+        'plan':plan,'raw_progress':progress,'run_order':list(runs),'runs':runs,'planned_native_world_budget':8,
         **counts,'designer_costs':designer,
         'designer_cost_measurements':designer_measurements,
         'designer_recorded_post_payloads':sum(r['designer']['recorded_post_payloads'] for r in runs.values()),
