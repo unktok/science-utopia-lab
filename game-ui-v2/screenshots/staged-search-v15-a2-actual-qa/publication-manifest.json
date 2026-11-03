@@ -1,0 +1,62 @@
+{
+  "schema": "scienceutopia.staged-foundry-published-captures.v15",
+  "classification": "actual-local-qwen-staged-native-search-development-v15",
+  "runtime_source_commit": "51d9cbbd49054cdb89c24ea5bc192ff9b63e9155",
+  "capture_ui_source_commit": "2fd6aea82fdf792d0b70824f5f4208e2b8447419",
+  "capture_harness_code_commit": "2fd6aea82fdf792d0b70824f5f4208e2b8447419",
+  "capture_harness_sha256": "ef9ed315e98751194133d8f154ab8f57ca09bbf4f23808c098aca626016bf31f",
+  "separate_ui_report_child": true,
+  "independent_audit_applied_to_display": false,
+  "screens_are_read_only_saved_progress": true,
+  "all_requests_GET": true,
+  "new_model_calls": 0,
+  "consent_or_adoption": false,
+  "browser_errors": 0,
+  "failed_http": 0,
+  "no_document_horizontal_overflow": true,
+  "visual_review": {
+    "count": 10,
+    "desktop_width": 1600,
+    "mobile_width": 390,
+    "selected_row_inside_list_at_every_capture": true,
+    "all_screens_English": true
+  },
+  "secret_scan": {
+    "credential_key_matches": 0,
+    "credential_string_matches": 0,
+    "exact_progress_bytes_unmodified": true,
+    "session_endpoint_response_not_published": true,
+    "operator_config_not_published": true
+  },
+  "files": {
+    "throughput/terminal-progress-exact.json": "de4147733eb0f0d83a62f7f80e282488d380279e3c3bd157e4c21dda659cf0b2",
+    "throughput/terminal-readonly-browser-qa.json": "b927f9873ceae22c981777baf2f8d96e76935ab353fc7905d07fc1fbcf0f4c74",
+    "throughput/throughput-terminal-desktop-mission.png": "e04082f67627dbd9b411ecf84e3b90f454b41897bcbd0cfac7c2cc2343844b1f",
+    "throughput/throughput-terminal-desktop-workshop.png": "2b4744e3adcd5fa6d0cb05251a17b2507861c8f47b09c809f45e091c1c64b583",
+    "throughput/throughput-terminal-desktop-tool-detail.png": "2b4744e3adcd5fa6d0cb05251a17b2507861c8f47b09c809f45e091c1c64b583",
+    "throughput/throughput-terminal-mobile-workshop.png": "33bd9391e0a4d6556bca16330105790d34f3b16408bf5cd49a92f92f68c411ca",
+    "throughput/throughput-terminal-mobile-tool-detail.png": "8b0824256ec58027913fd85c932b9f6993b2254884ba1c4e138a629bdc5cc621",
+    "efficiency/terminal-progress-exact.json": "271bb61c7c1f3c79243e25dbb6b5f3859c2a23c9ef7e0e0e8e0d19822386729f",
+    "efficiency/terminal-readonly-browser-qa.json": "0d45175572a9ba5352d72b8bc53ca3867796b85cc4543af3eedfa9a98a6c6d08",
+    "efficiency/efficiency-terminal-desktop-mission.png": "59466185779354cdd0125652d7414f230fa14701a8bd098258cf993aaaa2de33",
+    "efficiency/efficiency-terminal-desktop-workshop.png": "ecd19d53fe770a2d6ee2478dfb8fc0aefb930dfaedcf8e3e16f2e838eb299a7f",
+    "efficiency/efficiency-terminal-desktop-tool-detail.png": "c43c38a95950146de975bbe11429ba5b7deb5db97a3a25b4d5f63a65ba8609ba",
+    "efficiency/efficiency-terminal-mobile-workshop.png": "430a78376de18403622314af16b788b45cb87b10b1cc2ef58698a574c8ab1357",
+    "efficiency/efficiency-terminal-mobile-tool-detail.png": "dd14dbea2caafaabec5307f965962b89ef8271147e2c2f8523b560319dbee183",
+    "actual-writer-exit-receipt.json": "fc8a4f64177dcf4bc689bc186e9ddd150fd04f5514f92de51f49e6a70312e0aa",
+    "owned-preview-stop-receipt.json": "a9594bfeadd4f6e4a5778928f7663c6834b0ba2463682654f5dcfe0924ace4a8",
+    "throughput-capture-exit-receipt.json": "b7d8f88da97c2d70e909966d7996aa1fdac01cf73525f34daf03b66fff341163",
+    "efficiency-capture-exit-receipt.json": "46028539272c3cf55c7396e6271eca1e77e1f973fa001fb7dba7fd12885b134a",
+    "backend-ui-binding-wrapper.py": "72fa246d1b7c1b7bb45347902614949d27b256ae94097cdee20987b6ac9c4962"
+  },
+  "preview_stopped": {
+    "durable_supervisor": true,
+    "launchd_label_for_original_preview_removed": true,
+    "child_pid": 77828,
+    "exit_code": -15,
+    "port": 4596,
+    "lsof_listener_check_exit": 1,
+    "no_listener": true
+  },
+  "content_sha256": "a4b0e2f435f0a649f641e99c2dd56186a265384fa6828222e0b10c17f08ed4ff"
+}

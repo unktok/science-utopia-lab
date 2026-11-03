@@ -1,0 +1,27 @@
+{
+  "schema": "scienceutopia.local-job-receipt.v1",
+  "started_utc": "2026-11-03T08:44:21.999547+00:00",
+  "supervisor_pid": 55779,
+  "cwd": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/experiment-staged-native-search-v15-a2",
+  "command": [
+    "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "scripts/run_native_staged_search_v15.py",
+    "--start-authorized-search",
+    "--output",
+    "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a2",
+    "--data-cache",
+    "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia"
+  ],
+  "log": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/a2-job.log",
+  "status": "exited",
+  "environment": {
+    "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    "PYTHONHASHSEED": "42",
+    "CUDA_VISIBLE_DEVICES": "",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1"
+  },
+  "child_pid": 55782,
+  "exit_code": 0,
+  "ended_utc": "2026-11-03T09:23:41.244360+00:00"
+}

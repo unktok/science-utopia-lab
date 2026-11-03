@@ -1,0 +1,33 @@
+{
+  "schema": "scienceutopia.local-job-receipt.v1",
+  "started_utc": "2026-11-03T09:37:42.861978+00:00",
+  "supervisor_pid": 78293,
+  "cwd": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/foundry-v15/game-ui-v2",
+  "command": [
+    "node",
+    "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/foundry-v15/game-ui-v2/scripts/capture-staged-foundry-readonly-v15.mjs",
+    "--pilot=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a2",
+    "--run=efficiency",
+    "--expected-source=51d9cbbd49054cdb89c24ea5bc192ff9b63e9155",
+    "--expected-pilot-plan-sha256=30f8177bcdbd8002c46495e912df0cff8790457769c98d22fcdb39530b914c45",
+    "--expected-request-sha256=6acb14ae9ca310566500b82b3ad9487c836df10f2ea5063b3885d4b37d7478bf",
+    "--expected-plan-sha256=593a2771275160c644f90bcf5afacc96403d571eadf46403895f45657cc39e13",
+    "--port=4596",
+    "--phase=terminal",
+    "--writer-stopped",
+    "--writer-receipt=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/a2-job-receipt.json",
+    "--output=/Users/shiro/unktok/dev/science-utopia-lab/outputs/staged-foundry-v15-a2-efficiency-latest-ui-terminal-a1"
+  ],
+  "log": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/staged-foundry-v15-preview-a2/efficiency-latest-ui-terminal-a1.log",
+  "status": "exited",
+  "environment": {
+    "PATH": "/Users/shiro/.local/share/mise/shims:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/shiro/.local/share/mise/installs/pnpm/latest:/Users/shiro/.local/share/mise/installs/node/24.22.1/bin:/Users/shiro/.cargo/bin:/Users/shiro/.local/share/mise/shims:/Users/shiro/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/shiro/.local/bin:/opt/homebrew/sbin:/Users/shiro/.orbstack/bin:/Users/shiro/.orbstack/bin:/Users/shiro/.codex/tmp/arg0/codex-arg0B6y7ga:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/shiro/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS",
+    "PYTHONHASHSEED": null,
+    "CUDA_VISIBLE_DEVICES": null,
+    "HF_HUB_OFFLINE": null,
+    "TRANSFORMERS_OFFLINE": null
+  },
+  "child_pid": 78295,
+  "exit_code": 0,
+  "ended_utc": "2026-11-03T09:37:46.915947+00:00"
+}

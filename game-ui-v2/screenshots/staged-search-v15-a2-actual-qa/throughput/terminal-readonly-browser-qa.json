@@ -1,0 +1,146 @@
+{
+  "schema": "scienceutopia.staged-foundry-readonly-browser.v15",
+  "classification": "actual-local-qwen-staged-native-search-development-v15",
+  "source_commit": "51d9cbbd49054cdb89c24ea5bc192ff9b63e9155",
+  "request_sha256": "012dd577dfc770a17fb2c43ed9245179ac332eeecba010950f43416eb5c8a3ad",
+  "plan_sha256": "c0dfb663934454a99d5de7e664b74e3ead0a8f9dc8a98eb49cd269aa1b4abbc3",
+  "pilot_plan_file_sha256": "30f8177bcdbd8002c46495e912df0cff8790457769c98d22fcdb39530b914c45",
+  "run": "throughput",
+  "search_id": "search-dde86811f793487cbad9a5b8f718b2ad",
+  "phase": "terminal",
+  "writer_stopped_notice": true,
+  "writer_receipt_sha256": "fc8a4f64177dcf4bc689bc186e9ddd150fd04f5514f92de51f49e6a70312e0aa",
+  "writer_ended_utc": "2026-11-03T09:23:41.244360+00:00",
+  "snapshot_file": "terminal-progress-exact.json",
+  "snapshot_file_sha256": "de4147733eb0f0d83a62f7f80e282488d380279e3c3bd157e4c21dda659cf0b2",
+  "capture_ui_code_git_head": "2fd6aea82fdf792d0b70824f5f4208e2b8447419",
+  "harness_sha256": "ef9ed315e98751194133d8f154ab8f57ca09bbf4f23808c098aca626016bf31f",
+  "served_decoded_asset_sha256s": {
+    "http://127.0.0.1:4596/native.html": "ddc676061dabe4a3fbd49854e26a8899a8bd538db845b4d1b0d85a40dc2bf8c7",
+    "http://127.0.0.1:4596/assets/modulepreload-polyfill-BTn-X1SE.js": "c9c7d714df4248d733cc899b4a80a6ba017a39b46fab92e5f9b0809b917b0361",
+    "http://127.0.0.1:4596/assets/native-u4C7QCkb.js": "da18db991d3cad405ee38bb1d67777c77cb8cf9cd50e9357ef64a1d4147cec46",
+    "http://127.0.0.1:4596/assets/hash-C7Kz1XFI.js": "21cb3a003e9a17ac03a5bc38083a5ba1331c5596373d0792e3140bbb9352535b",
+    "http://127.0.0.1:4596/assets/native-usUYF1_B.css": "244b80aa9f7eac63eeb587baf5f94976d49c7c5ef49119993035c0134c50f6df",
+    "http://127.0.0.1:4596/assets/generative-BhJUQx3G.css": "2e74f5c10945f5e3c7323541c815e5a16a1c603a4a72baf3450677baad510df9",
+    "http://127.0.0.1:4596/assets/methodObservatoryContract-Bhk8KJ2X.js": "8db85836604cbafb53f3c7e96612847ef3497b187c9750f6ab6e4d78d0332d19",
+    "http://127.0.0.1:4596/assets/foundryBranch-BNPA3awm.js": "02d43a2fa0e45b256d5311410760aaee1e2980e0df39e5b84df8a711d36e7681"
+  },
+  "display_only_annotation": "ACTUAL STAGED SEARCH / THROUGHPUT / TERMINAL / SAVED PROGRESS IS NOT AN INDEPENDENT AUDIT / EXACT SNAPSHOT SHA256 de4147733eb0f0d83a62f7f80e282488d380279e3c3bd157e4c21dda659cf0b2",
+  "independent_audit_applied_to_display": false,
+  "status": "complete",
+  "budget": {
+    "scheduled": 2,
+    "consumed": 2,
+    "native_observations": 2,
+    "remaining": 0
+  },
+  "observed_tool_steps": 32,
+  "no_post": true,
+  "no_consent": true,
+  "no_adoption": true,
+  "no_new_model_calls": true,
+  "browser_errors": 0,
+  "failed_http": 0,
+  "no_overflow": true,
+  "captures": [
+    {
+      "file": "throughput-terminal-desktop-mission.png",
+      "sha256": "e04082f67627dbd9b411ecf84e3b90f454b41897bcbd0cfac7c2cc2343844b1f",
+      "width": 1600
+    },
+    {
+      "file": "throughput-terminal-desktop-workshop.png",
+      "sha256": "2b4744e3adcd5fa6d0cb05251a17b2507861c8f47b09c809f45e091c1c64b583",
+      "width": 1600
+    },
+    {
+      "file": "throughput-terminal-desktop-tool-detail.png",
+      "sha256": "2b4744e3adcd5fa6d0cb05251a17b2507861c8f47b09c809f45e091c1c64b583",
+      "width": 1600
+    },
+    {
+      "file": "throughput-terminal-mobile-workshop.png",
+      "sha256": "33bd9391e0a4d6556bca16330105790d34f3b16408bf5cd49a92f92f68c411ca",
+      "width": 390
+    },
+    {
+      "file": "throughput-terminal-mobile-tool-detail.png",
+      "sha256": "8b0824256ec58027913fd85c932b9f6993b2254884ba1c4e138a629bdc5cc621",
+      "width": 390
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4596/native.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/native-u4C7QCkb.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/modulepreload-polyfill-BTn-X1SE.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/hash-C7Kz1XFI.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/methodObservatoryContract-Bhk8KJ2X.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/foundryBranch-BNPA3awm.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/native-usUYF1_B.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/generative-BhJUQx3G.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/native-foundry-control-room.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/data/native-design-lab-v1.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/researcher-early.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/institution-lab.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/system-government.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/system-evaluation.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/system-publication.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/assets/noctiluca/production/institution-funding.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/native-api/session",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4596/native-api/session",
+      "method": "GET"
+    }
+  ]
+}
