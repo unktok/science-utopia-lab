@@ -74,3 +74,32 @@ before v14 manuscript authoring. New methods describe automatic authorship,
 bounded failure handling, original-world/controller reuse and explicit local
 consent. Actual outcomes will be added only after stopped-writer independent
 audit. No PDF result or completion is claimed at this stage.
+
+## A1 stops at its original budget; interface QA is separate
+
+Actual writer exits0 at2026-11-03T01:10:08.191919Z after the exact8 scheduled
+slots and6 free generations. All12 designer attempts receive completed journals;
+no definition compiles, so **zero original-world executions and zero researcher
+responses** occur. Controller terminal status means budget completion, not a
+successful institution or eight completed worlds. No hidden repair, replacement
+candidate, native test or extra generation is inserted into a1. Its completed
+task-specific launchd registration is removed and raw outputs remain unchanged.
+
+Exact-source full pytest at`54a7d92` passes2166 tests with6 skips in1139.74s,
+with durable JUnit/start/environment/exit receipts. Its launchd registration is
+removed; no pass is claimed for a newer publication or revised authoring source.
+
+The original array-index authoring interface is an ordinary engineering
+usability problem. A separate prospective stable-ID IR QA is written before
+its calls: one throughput blackbox request,2 native slots/2 generations,
+2 drafts each (maximum4 generation POSTs), same original world and fixed model.
+It will exercise the actual existing UI validation/consent/queue/worker path.
+This additional bounded QA is explicitly separate from the failed a1 study;
+the original8-slot protocol and all null results are not rewritten or pooled.
+There is still no success/novelty/merit condition or success-conditioned retry.
+
+Dedicated report worktree preserves all233 actual a1 replay-critical source
+blobs while the production feature tree can receive the revised authoring
+interface. Independent a1 audit/figures are now authorized only after the
+writer's confirmed exit. UI will expose actual failed drafts and prompts even
+when there is no compiled candidate, rather than inventing a graph or loss.

@@ -2,6 +2,14 @@
 
 Status: active; implementation and SCRIPTED integration verification underway.
 
+The original eight-slot a1 pilot is closed:6 automatic generations/12 replies,
+all technical generation failures, zero native worlds. Its source and data are
+preserved. A separately [prospective engineering QA](../protocols/campaigns/native-authoring-ir-v14-technical-qa.md)
+fixes2 additional native slots and at most4 generation POSTs for the stable-ID
+interface and actual UI-to-worker roundtrip. It is not an a1 replacement or a
+success-conditioned continuation. The goal remains active through this ordinary
+interface correction and publication; no successful invention is required.
+
 User approves thorough implementation of the next goal. Connect the existing
 open design/nested search components so an explicit loss and budget drive
 automatic model authoring, native execution and own-history redesign, without
