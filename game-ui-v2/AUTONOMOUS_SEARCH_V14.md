@@ -31,6 +31,14 @@ interpolated into a simulated city or invented researcher animation. Designer
 and researcher physical reply counters are shown separately when provided.
 The source commit, exact request hash and full loss remain visible.
 
+Optional `scienceutopia.native-search-live-progress.v14` receipts add a compact
+live band: durable phase, maximum observed checkpoint year, completed designer
+receipt files versus dispatch-intent files, and known researcher cache rows.
+The display labels these provisional observed files, not final audited physical
+calls. Missing or unreadable counts remain unavailable, including cache-binding
+warnings. A checkpoint filename does not establish world completion; durable
+status and final loss continue to come from the separate recorded projection.
+
 Saved evidence opens as read-only, with source identifiers explicitly described
 as unauthenticated unless bound to the live validated request. It cannot create
 consent, execution or adoption. The download preserves exact API/file bytes.
@@ -55,6 +63,6 @@ invalidation, renewed consent, exact dispatch shape, duplicate prevention,
 null failures, charged-versus-physical slots, unsafe integer display, separate
 reply counters, terminal evidence access, no overflow and zero browser errors.
 It starts/stops only its own Vite and isolated headless Chrome, with no native
-worker or model calls. Current regression result: 266 tests and production build
+worker or model calls. Current regression result: 269 tests and production build
 pass. Actual screenshots require terminal audited actual evidence and are not
 claimed by this implementation receipt.

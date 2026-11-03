@@ -37,6 +37,7 @@ try {
     for (const row of [...(value.observations ?? []), value.current].filter(Boolean)) {
       if (row.suggestion?.system) { row.suggestion.candidate = row.suggestion.system; delete row.suggestion.system; }
     }
+    if (value.schema === 'scienceutopia.native-search-progress.v14') value.live_progress = { schema: 'scienceutopia.native-search-live-progress.v14', scope: 'observed-local-files-not-final-audited-cost', observed_at: '2026-11-03T01:20:00Z', designer: { generation_directories: 1, attempts_started: 2, attempts_completed: 1 }, researcher: { runs: [{ run_id: 'SCRIPTED-one', checkpoint_year: 1, cached_responses: 17, cache_binding_status: 'matched' }], cached_responses: 17, latest_checkpoint_year: 1 }, warnings: [] };
     const body = JSON.stringify(value).replace('"UNSAFE_INTEGER"', '9007199254740993');
     void cdp.call('Fetch.fulfillRequest', { requestId, responseCode: code, responseHeaders: [{ name: 'Content-Type', value: 'application/json' }], body: Buffer.from(body).toString('base64') });
   };
@@ -61,12 +62,13 @@ try {
   assert.equal(await cdp.eval(`document.querySelector('#search-charged').textContent.startsWith('4 / 4')&&document.querySelector('#search-physical').textContent==='3'`), true);
   assert.equal(await cdp.eval(`document.querySelector('#search-raw').textContent.includes('9007199254740993')&&document.querySelector('#search-raw').textContent.includes('/exact_identity')`), true);
   assert.equal(await cdp.eval(`document.querySelector('#search-replies').textContent.includes('DESIGNER 2 / RESEARCHER 17')`), true);
+  assert.equal(await cdp.eval(`document.querySelector('#search-live-year').textContent==='1 / 2 MAX OBSERVED'&&document.querySelector('#search-live-designer').textContent==='1 COMPLETED / 2 DISPATCH INTENTS'&&document.querySelector('#search-live-researcher').textContent==='17 KNOWN CACHE ROWS'&&document.querySelector('#search-live-note').textContent.includes('Not final audited physical calls')`), true);
   await cdp.eval(`document.querySelector('#search-observations button').click();document.querySelector('#autonomous-search').scrollIntoView()`);
   assert.equal(await cdp.eval(`document.querySelectorAll('#search-graph .search-node').length===JSON.parse(document.querySelector('#design-system').value).mechanisms.length`), true);
   const captures = [];
-  for (const [name, width, height] of [['desktop', 1600, 1120], ['mobile', 390, 1120]]) {
+  for (const [name, width, height, focus] of [['desktop', 1600, 1120, '#autonomous-search'], ['desktop-progress', 1600, 1120, '.search-live'], ['mobile', 390, 1120, '#autonomous-search'], ['mobile-progress', 390, 1120, '.search-live']]) {
     await cdp.call('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width < 500 });
-    await cdp.eval(`document.querySelector('#autonomous-search').scrollIntoView()`); await sleep(100);
+    await cdp.eval(`document.querySelector(${JSON.stringify(focus)}).scrollIntoView()`); await sleep(100);
     assert.equal(await cdp.eval('document.documentElement.scrollWidth>innerWidth'), false);
     const image = await cdp.call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false }); const bytes = Buffer.from(image.data, 'base64'); const file = `SCRIPTED-native-search-v14-${name}.png`; await writeFile(join(output, file), bytes); captures.push({ file, sha256: createHash('sha256').update(bytes).digest('hex') });
   }

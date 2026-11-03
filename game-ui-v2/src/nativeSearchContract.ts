@@ -50,6 +50,19 @@ export function verifySearchProgress(value: any, binding?: SearchBinding, expect
   if (value.request?.schema !== 'scienceutopia.native-search-request.v14' || !['blackbox', 'nested-lr'].includes(value.method) || value.method !== value.request?.method || value.native_budget !== value.request?.native_budget) throw new Error('Search method or budget differs');
   return value;
 }
+export function nativeSearchLiveTelemetry(value: any): { phase: string; year: string; designer: string; researcher: string; note: string } {
+  const phase = typeof value?.stage === 'string' ? value.stage.toUpperCase() : 'UNAVAILABLE';
+  const missing = { phase, year: 'UNAVAILABLE', designer: 'UNAVAILABLE', researcher: 'UNAVAILABLE', note: 'No observed live-progress receipt. Missing counts remain unavailable; durable search status is shown separately.' };
+  const live = value?.live_progress;
+  if (live?.schema !== 'scienceutopia.native-search-live-progress.v14' || live.scope !== 'observed-local-files-not-final-audited-cost') return missing;
+  const count = (number: unknown): string => typeof number === 'number' && Number.isSafeInteger(number) && number >= 0 ? String(number) : 'UNAVAILABLE';
+  const year = count(live.researcher?.latest_checkpoint_year), years = count(value.request?.years);
+  const warnings = Array.isArray(live.warnings) && live.warnings.length ? ` / WARNINGS ${live.warnings.join(', ')}` : '';
+  return { phase, year: year === 'UNAVAILABLE' ? year : `${year} / ${years} MAX OBSERVED`,
+    designer: `${count(live.designer?.attempts_completed)} COMPLETED / ${count(live.designer?.attempts_started)} DISPATCH INTENTS`,
+    researcher: `${count(live.researcher?.cached_responses)} KNOWN CACHE ROWS`,
+    note: `PROVISIONAL OBSERVED LOCAL FILES / ${typeof live.observed_at === 'string' ? live.observed_at : 'TIME UNAVAILABLE'} / Designer counts are receipt files; researcher counts are known bound cache rows. Not final audited physical calls. Checkpoint filenames do not establish world completion. Missing counts remain unavailable.${warnings}` };
+}
 export class NativeSearchConsent {
   revision = 0; binding: SearchBinding | null = null; consented = false; submitting = false;
   changed(): void { this.revision++; this.binding = null; this.consented = false; }
