@@ -1,8 +1,26 @@
 # Science Utopia Lab — program map
 
-Updated: 2026-11-02
+Updated: 2026-11-03
 
 ## Current direction: optimization, not mandatory differentiability
+
+The [v14 finite slice](milestones/2026-11-03-autonomous-institution-search-v14.md)
+removes manual authoring inbox answers: an exact objective/method/budget drives
+local-Qwen generation, literal edit validation, original-world evaluation and
+own-history redesign using the existing blackbox/nested kernels. Source/ports/
+protocols/graph/processes remain the free design object, not a review menu.
+The existing English Foundry now offers fresh request-bound consent, queue
+submission and provisional live progress; viewing evidence never starts a job.
+
+The [first actual automatic attempt](results/native-autonomous-search-v14-a1.md)
+closes8 charged slots/6 generations/12 designer replies but0 compiled designs,
+0 native worlds and0 researcher replies. Every loss is null. Pointer/type and
+truncation failures are preserved, not replaced. A separate prospective2-slot,
+maximum4-generation-POST engineering QA verifies the revised stable-ID authoring
+interface and actual browser-to-worker path; it does not rewrite a1. Use
+[STATUS](STATUS.md) for its current state and publication receipts. Automated
+useful invention is not yet established, and is not an extra loss-independent
+acceptance test. No scale-up or whole-world Jacobian is required.
 
 The [v13 finite slice](milestones/2026-11-02-nested-free-institution-v13.md)
 connects free outer code/system design to conditional inner optimization in the

@@ -30,7 +30,7 @@
 | Goal | Entry point |
 |---|---|
 | Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
-| Check original goals against implementation, actual evidence and remaining limits | [Current nested free-institution milestone](research/milestones/2026-11-02-nested-free-institution-v13.md), [earlier free-redesign milestone](research/milestones/2026-11-02-objective-open-redesign-v12.md) and [program map](research/program-map.md) |
+| Check original goals against implementation, actual evidence and remaining limits | [Current automatic-search milestone](research/milestones/2026-11-03-autonomous-institution-search-v14.md), [nested free-institution milestone](research/milestones/2026-11-02-nested-free-institution-v13.md) and [program map](research/program-map.md) |
 | Set up a development environment | [Development guide](docs/development.md) |
 | Understand the code and data flow | [Architecture](docs/architecture.md) |
 | Make a contribution | [Contributing guide](CONTRIBUTING.md) |
@@ -44,6 +44,7 @@
 | Extend participants, artifacts, actions and processes in the original world | [Open native domain](research/components/native-open-domain-v7.md), [process execution](research/components/native-process-execution-v7.md), [wrapped adoption/restart](research/components/native-process-migration-validation-v7.md) |
 | Generate evolving mixed designs or inspect conditional/native gradients | [Adaptive search](research/components/native-adaptive-open-search-v7.md), [operational hybrid representations](research/components/native-operational-hybrid-gradients-v7.md) |
 | Explore free institutions with conditional inner optimization | [V13 frozen 2→1→1 protocol](research/protocols/campaigns/native-nested-search-v13.md), [actual eight-world result](research/results/native-nested-search-v13-a1.md), [nested kernel](research/components/native-nested-search-v13.md) |
+| Automatically author institutions from an objective and fixed budget | [Runtime/API](research/components/native-autonomous-search-runtime-v14.md), [stable-ID IR](research/components/native-stable-id-authoring-ir.md), [closed first attempt](research/results/native-autonomous-search-v14-a1.md), [Foundry mission control](game-ui-v2/AUTONOMOUS_SEARCH_V14.md) |
 | Read actual optimization paths and earlier structural cross-scores | [V13 all outcomes and cross-scores](research/results/native-nested-search-v13-a1.md), [earlier free redesign](research/results/native-objective-redesign-v12-a1.md), [gradient/black-box paths](research/results/native-method-paths-v10-a1.md) |
 | Inspect objective-conditioned paths, source, routing and cross-scores | [English nested Institution Foundry](game-ui-v2/NESTED_FOUNDRY_V13.md), [actual pixel-city screenshot](game-ui-v2/screenshots/nested-foundry-v13-actual-qa/nested-foundry-v13-actual-overview.png) |
 | Differentiate a response-aware representation without replacing the native world | [Original-world response-boundary operator and evidence limits](research/components/native-response-boundary-fidelity-v8.md), [scripted QA receipt](research/results/native-response-fidelity-v8-scripted.json) |

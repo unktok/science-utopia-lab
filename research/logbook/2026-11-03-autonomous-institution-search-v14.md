@@ -103,3 +103,35 @@ blobs while the production feature tree can receive the revised authoring
 interface. Independent a1 audit/figures are now authorized only after the
 writer's confirmed exit. UI will expose actual failed drafts and prompts even
 when there is no compiled candidate, rather than inventing a graph or loss.
+
+## Separate interface QA source freeze and real UI submission
+
+Stable-ID literal IR integrates as`8b9ad45`; the existing low-level authoring
+API keeps its legacy default for historical replay. Production chooses the
+new protocol, with exact sequential translation, structured path/type errors,
+all-branch coordinate checks and detailed own failure history. Catalogue size
+is23,804bytes and initial prompt66,329bytes below the240KB byte guard. This is
+not tokenizer proof; provider context limits and actual token receipts remain
+an explicit boundary. No source, schema or missing wire is host-repaired.
+
+The browser previously parsed/stringified1.0 as1, altering Python-canonical
+request/LossSpec hashes. UI fix`9f53ac2` binds exact editor JSON for validation
+and submission, and revokes consent even for raw programmatic drift. Its
+SCRIPTED HTTP test checks original floats against the approved Python backend.
+This prevents a real objective identity change, not merely a cosmetic edit.
+
+Separate QA source freezes clean at`fdb694d0adee759470d9c4ff41c4d8c75e490d19`.
+Preparation archives manifest/request/operator identities before any generation
+or native inference. It performs read-only model-tags, cached-corpus and image
+inspection; its `no_calls_during_preparation` flag means no generation/native
+inference, not no HTTP. RequestSHA`1015e4dc0ef95ae826f826fa6917a0f1e0518330edde68837c09f482b5c2c7f5`,
+planSHA`27e7d916ee26c64e384bf3dadf4cb9c6b12ab13cd83a6e2547dde68ada2af77e`.
+
+The actual isolated browser invokes the operator once: one validation POST,
+one consent-bound search POST, queueID`search-6f65de5f1e834096bc3aa7ca46385156`.
+No interception, adoption or extra job occurs. Actual request/response texts,
+hashes and before/queued captures are saved. The separately launched worker
+starts2026-11-03T01:26:17.588017Z, under the frozen2-slot/max4-generation-POST
+budget, while exact-source full software regression runs in parallel. Root's
+prior integrated focused scope passes143 checks in12.97s. No terminal QA result
+is claimed at this entry.

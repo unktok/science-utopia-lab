@@ -11,13 +11,28 @@ ManifestInbox replies. Separate specialists implement durable runtime/API,
 existing English Foundry mission control and independent reporting; root owns
 the local model author, protocol and publication. No scale-up or hidden veto.
 
-The [prospective protocol](protocols/campaigns/native-autonomous-search-v14.md)
-sets8 native slots across three requests,6 free generations and at most12
-generation POST attempts. Designer and researcher roles/costs are distinct,
-although both use fixed local Qwen3:8B. All own outcomes/failures remain visible;
-new source/graph changes are recorded, never required by a novelty gate.
-Implementation/SCRIPTED tests are underway; no actual v14 result is claimed.
-V13 below is complete and remains unchanged.
+The [closed a1 result](results/native-autonomous-search-v14-a1.md) accounts for
+all8 scheduled slots,6 generations and12 actual designer replies. Nine drafts
+target a missing field on the wrong mechanism; three truncate at4096 tokens.
+No design compiles: zero native worlds/scientist replies, all losses null.
+No source repair, fallback or replacement is introduced. Two read-only audits
+agree and preserve54 raw files/233 matching runtime blobs. Exact actual-source
+regression passes2166 tests with6 skips. These are not eight executed worlds.
+
+Production now adds a literal stable-ID edit IR, general full-document edits,
+structured diagnostics and detailed prior failure feedback. The same existing
+English Foundry accepts an exact loss/method/budget, validates and binds fresh
+compute consent, and enqueues the source/operator-bound request. Raw numeric
+types survive the browser wire. Focused integrated tests pass143 checks;
+UI/consent checks are separately scoped. No model weights are trained.
+
+A [separate prospective engineering QA](protocols/campaigns/native-authoring-ir-v14-technical-qa.md)
+pins clean source`fdb694d0adee759470d9c4ff41c4d8c75e490d19`: one throughput
+blackbox request,2 native slots and at most4 designer POSTs. The actual browser
+validates once and submits once, requestSHA`1015e4dc0ef9...`; its separately
+launched worker and exact-source regression are now running. This is neither
+an a1 replacement nor a controlled method/prompt comparison. Publication awaits
+its stopped-writer audit and final UI/PDF verification. V13 remains unchanged.
 
 ## Completed finite v13: free outer design and conditional inner optimization
 
