@@ -101,3 +101,29 @@ The same two objectives get a separate four-slot/64-designer-POST maximum;
 source/request/provider/corpus/image pins are frozen before a2 calls.
 Prelaunch focused verification passes156 tests/11.98s at the corrected source.
 These checks are not a2 native outcomes or a full-suite claim for that source.
+
+A2 starts2026-11-03T08:44:21Z at clean detached
+`51d9cbbd49054cdb89c24ea5bc192ff9b63e9155`; raw output is
+`outputs/native-staged-search-v15-a2`. T-G0 inspects15 times, then its16th
+model action explicitly finishes the unchanged parent. Its actual original
+world completes with loss`-1.0`. The next generation's first exact prompt
+contains this own measured loss. These are live root observations pending the
+terminal independent audit; neither a new institutional algorithm nor a full
+two-generation native loop is yet inferred. The remaining fixed slots continue.
+
+The full suite at the **a1 source**`f969f7c` completes:
+2327 passed,6 skipped/1196.50s, durable XML and supervisor receipt under the
+verification directory. It is not a full-suite claim for the changed a2 author
+or later publication source. Related a2 prelaunch156 checks remain separate.
+
+The second throughput generation also explicitly finishes the unchanged parent
+and completes its actual native world with loss`-1.0`: observed path`[-1,-1]`,
+no errors. The operational two-generation native-feedback connection now has
+an actual positive arm, while effectiveness/new invention is not established.
+The efficiency arm and terminal independent proof remain pending. Source-bound
+evidence, not this live note alone, must establish final claims.
+
+Separate prospective improvements add trusted-role instruction separation,
+read-only capability/schema discovery and a UI inspector for an exact compiled
+pending candidate with unobserved loss. They never modify an active experiment
+pin and must not be relabelled as features used by a2's original author.
