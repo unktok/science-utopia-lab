@@ -39,6 +39,9 @@ export function operatorEditorDrafts(text) {
   assert.equal(JSON.stringify(JSON.parse('1.0', (_key, value, context) => typeof value === 'number' ? JSON.rawJSON(context.source) : value)), '1.0', 'Raw numeric JSON capability check failed');
   return { initial_system: JSON.stringify(exact.initial_system, null, 2), loss_spec: JSON.stringify(exact.loss_spec, null, 2) };
 }
+export function operatorReceiptView(text) {
+  return JSON.parse(text, (_key, value, context) => { if (typeof value === 'number') { assert(Number.isFinite(value), 'Non-finite receipt number'); if (/^-?[0-9]+$/.test(context.source) && !Number.isSafeInteger(value)) return context.source; } return value; });
+}
 class Cdp {
   id = 0; pending = new Map(); events = [];
   async open(url) { this.socket = new WebSocket(url); await new Promise((resolve, reject) => { this.socket.onopen = resolve; this.socket.onerror = reject; }); this.socket.onmessage = ({ data }) => { const m = JSON.parse(data); if (m.id) { this.pending.get(m.id)?.(m); this.pending.delete(m.id); } else { this.events.push(m); this.onEvent?.(m); } }; }
@@ -60,7 +63,7 @@ export async function runOperator(args) {
   const profile = await mkdtemp(join(tmpdir(), 'noctiluca-v14-ACTUAL-operator-'));
   const network = new Map(), responseTasks = [], failures = [], captures = [];
   let chrome, cdp, submitted = false, validatedBody, queuedBody;
-  const receipt = { schema: 'scienceutopia.native-search-actual-ui-submit.v14', classification: 'ACTUAL-AUTHORIZED-ENGINEERING-QA-NOT-A1-RESULTS', expected_source: args['expected-source'], expected_request_sha256: args['expected-request-sha256'], request_file_sha256: sha(requestBytes), provider_file_sha256: sha(providerBytes), fixed_loopback_origin: args.base, no_worker_or_model_started_by_harness: true, no_adoption: true, fixture_interception: false, captures };
+  const receipt = { schema: 'scienceutopia.native-search-actual-ui-submit.v14', classification: 'ACTUAL-AUTHORIZED-ENGINEERING-QA-NOT-A1-RESULTS', expected_source: args['expected-source'], expected_request_sha256: args['expected-request-sha256'], request_file_sha256: sha(requestBytes), provider_file_sha256: sha(providerBytes), harness_sha256: sha(await readFile(fileURLToPath(import.meta.url))), parsed_view_numeric_encoding: 'Unsafe integer lexical tokens become decimal strings; exact request/response raw text remains authoritative.', fixed_loopback_origin: args.base, no_worker_or_model_started_by_harness: true, no_adoption: true, fixture_interception: false, captures };
   const saveReceipt = async error => { receipt.status = error ? 'operator-failed-no-automatic-retry' : 'queued-once'; if (error) receipt.error = String(error); receipt.submission_clicked_once = submitted; receipt.network = [...network.values()]; receipt.failures = failures; await writeFile(join(args.output, 'actual-ui-submit-receipt.json'), `${JSON.stringify(receipt, null, 2)}\n`); };
   try {
     chrome = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', `--user-data-dir=${profile}`, '--remote-debugging-port=0', 'about:blank'], { stdio: 'ignore' });
@@ -72,11 +75,11 @@ export async function runOperator(args) {
       if (message.method === 'Network.requestWillBeSent') {
         const { requestId, request: outgoing } = message.params;
         if (!/^http/.test(outgoing.url)) return;
-        const row = { request_id: requestId, url: outgoing.url, method: outgoing.method, ...(outgoing.postData ? { request_body: JSON.parse(outgoing.postData), request_body_text: outgoing.postData, request_body_utf8_sha256: sha(outgoing.postData) } : {}) }; network.set(requestId, row);
+        const row = { request_id: requestId, url: outgoing.url, method: outgoing.method, ...(outgoing.postData ? { request_body: operatorReceiptView(outgoing.postData), request_body_text: outgoing.postData, request_body_utf8_sha256: sha(outgoing.postData) } : {}) }; network.set(requestId, row);
         if (!outgoing.url.startsWith(`${args.base}/`) || !['GET', 'POST'].includes(outgoing.method) || outgoing.method === 'POST' && !['/native-api/search-validate', '/native-api/searches'].includes(new URL(outgoing.url).pathname)) failures.push('Unexpected external request or mutation observed');
       }
       if (message.method === 'Network.responseReceived') { const row = network.get(message.params.requestId); if (row) { row.http_status = message.params.response.status; if (row.http_status >= 400) failures.push(`HTTP ${row.http_status}: ${row.url}`); } }
-      if (message.method === 'Network.loadingFinished') { const row = network.get(message.params.requestId); if (!row || !row.url.includes('/native-api/')) return; responseTasks.push((async () => { const result = await cdp.call('Network.getResponseBody', { requestId: row.request_id }), text = result.base64Encoded ? Buffer.from(result.body, 'base64').toString('utf8') : result.body; row.response_body_sha256 = sha(text); const body = JSON.parse(text); if (row.url.endsWith('/session')) { row.response = { source_commit: body.source_commit, search_enabled: body.search_enabled, token_present: typeof body.token === 'string' }; } else { row.response = body; row.response_body_text = text; }
+      if (message.method === 'Network.loadingFinished') { const row = network.get(message.params.requestId); if (!row || !row.url.includes('/native-api/')) return; responseTasks.push((async () => { const result = await cdp.call('Network.getResponseBody', { requestId: row.request_id }), text = result.base64Encoded ? Buffer.from(result.body, 'base64').toString('utf8') : result.body; row.response_body_sha256 = sha(text); const body = operatorReceiptView(text); if (row.url.endsWith('/session')) { row.response = { source_commit: body.source_commit, search_enabled: body.search_enabled, token_present: typeof body.token === 'string' }; } else { row.response = body; row.response_body_text = text; }
         if (row.url.endsWith('/search-validate')) validatedBody = body;
         if (row.url.endsWith('/searches') && row.method === 'POST') queuedBody = body;
       })().catch(error => failures.push(`Unable to retain API response: ${String(error)}`))); }

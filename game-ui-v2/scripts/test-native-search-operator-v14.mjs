@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { operatorArguments, operatorEditorDrafts, operatorRequest } from './submit-native-search-operator-v14.mjs';
+import { operatorArguments, operatorEditorDrafts, operatorReceiptView, operatorRequest } from './submit-native-search-operator-v14.mjs';
 const args = ['--start-authorized-ui-search', '--expected-source=' + 'a'.repeat(40), '--expected-request-sha256=' + 'b'.repeat(64), '--port=4591', '--request=/tmp/operator-request.json', '--provider-binding=/tmp/operator-binding.json', '--output=/tmp/operator-receipt'];
 const request = () => ({ schema: 'scienceutopia.native-search-request.v14', initial_system: { original_source: 'print(9007199254740993)' }, loss_spec: { id: 'native-joint-v5-throughput' }, seed: 42, years: 2, method: 'blackbox', native_budget: 2, designer: { model: 'qwen3:8b', max_attempts: 2, max_tokens: 4096 } });
 test('operator refuses absent start before any network or browser work', () => { assert.throws(() => operatorArguments(args.slice(1)), /Explicit/); });
@@ -10,3 +10,4 @@ test('operator preserves supplied source/loss and fixed bounded contract', () =>
 test('operator rejects unsafe numeric tokens without changing source strings', () => { assert.throws(() => operatorRequest(JSON.stringify(request()).replace('"seed":42', '"seed":9007199254740993')), /Unsafe/); assert.equal(operatorRequest(JSON.stringify(request())).initial_system.original_source, 'print(9007199254740993)'); });
 test('operator rejects extra dispatch fields in exact request', () => { assert.throws(() => operatorRequest(JSON.stringify({ ...request(), adoption: true }))); });
 test('operator editor drafts retain numeric lexical types and source strings', () => { const text = JSON.stringify(request()).replace('"initial_system":{', '"initial_system":{"float":1.0,"integer":1,').replace('"loss_spec":{', '"loss_spec":{"zero":0.0,"coefficient":-1.0,'); const drafts = operatorEditorDrafts(text); assert.match(drafts.initial_system, /"float": 1\.0/); assert.match(drafts.initial_system, /"integer": 1[,\n]/); assert.match(drafts.loss_spec, /"zero": 0\.0/); assert.match(drafts.loss_spec, /"coefficient": -1\.0/); assert.equal(JSON.parse(drafts.initial_system).original_source, request().initial_system.original_source); });
+test('operator receipt views never round unsafe response identities', () => { assert.deepEqual(operatorReceiptView('{"rng":9007199254740993,"source":"x=9007199254740993"}'), { rng: '9007199254740993', source: 'x=9007199254740993' }); });
