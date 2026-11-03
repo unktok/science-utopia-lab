@@ -56,6 +56,7 @@ npm run typecheck
 npm run build
 node scripts/verify-native-search-browser.mjs
 node scripts/verify-native-search-browser.mjs --staged-v15
+node scripts/verify-staged-foundry-checks-v15.mjs --output=/absolute/fresh/directory
 ```
 
 The browser harness intercepts **all** native API requests and visibly labels
@@ -67,3 +68,8 @@ It starts/stops only its own Vite and isolated Chrome processes. Screenshots and
 receipts remain under system temporary directories. Actual captures require a
 separate stopped-writer instruction and exact source/request/audit bindings;
 none is fabricated by these tests.
+
+The durable checker requires a committed UI tree and a fresh output directory.
+It stores all six command logs plus commit/source-file hashes, and checks source
+bytes again after execution. Browser receipts/captures are linked by their
+printed temporary paths; they remain explicitly SCRIPTED, not actual results.
