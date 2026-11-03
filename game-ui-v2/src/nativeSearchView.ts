@@ -1,6 +1,7 @@
-import { NativeSearchConsent, decodeSearchEvidence, nativeSearchLiveTelemetry, nativeSearchWireRequest, validateSearchBinding, verifySearchProgress, type SearchBinding } from './nativeSearchContract';
+import { NativeSearchConsent, decodeSearchEvidence, nativeSearchLiveTelemetry, nativeSearchWireRequest, stagedSearchWireRequest, stagedProviderAttemptLimit, validateSearchBinding, verifySearchProgress, type SearchBinding } from './nativeSearchContract';
 import './nativeSearch.css';
 import { auditedDesignerAttempts, verifyNativeSearchAudit, type VerifiedSearchAudit } from './nativeSearchAudit';
+import { mountAuthoringChronicle } from './authoringChronicleView';
 
 const node = <T extends HTMLElement>(id: string): T => { const value = document.getElementById(id); if (!value) throw new Error(`Missing search control ${id}`); return value as T; };
 const pretty = (value: unknown): string => JSON.stringify(value, null, 2) ?? 'Unavailable';
@@ -23,12 +24,14 @@ export function initializeNativeSearch(): void {
   section.insertBefore(auditPanel, section.querySelector('.search-monitor'));
   const diagnostics = document.createElement('section'); diagnostics.className = 'search-diagnostics'; diagnostics.innerHTML = '<h3>Designer attempts / original authored output</h3><p>Failed, unparsed and interrupted drafts remain explicit. Authored source does not establish a valid candidate or native execution.</p><div id="search-designer-attempts">No independent designer audit imported.</div>';
   section.querySelector('.search-inspection')!.before(diagnostics);
+  const stagedSettings = document.createElement('label'); stagedSettings.hidden = true; stagedSettings.id = 'search-steps-setting'; stagedSettings.innerHTML = 'DESIGNER TOOL STEPS / GENERATION<input id="search-steps" type="number" min="1" max="64" value="16" /><span id="search-tool-budget">No tool budget validated.</span>'; node('search-attempts').parentElement!.after(stagedSettings);
+  const chronicle = document.createElement('div'); diagnostics.before(chronicle); const renderChronicle = mountAuthoringChronicle(chronicle); renderChronicle(undefined);
   const origin = document.createElement('p'); origin.id = 'search-evidence-origin'; node('search-identity').before(origin);
-  const state = new NativeSearchConsent(); let token = '', source = '', searchId = '', timer: number | undefined, activeBinding: SearchBinding | undefined, progress: any, raw = '', inFlight = 0, initialized = false, audited: VerifiedSearchAudit | undefined, downloadName = '';
+  const state = new NativeSearchConsent(); let staged = false, token = '', source = '', searchId = '', timer: number | undefined, activeBinding: SearchBinding | undefined, progress: any, raw = '', inFlight = 0, initialized = false, audited: VerifiedSearchAudit | undefined, downloadName = '';
   const input = (id: string): HTMLInputElement => node<HTMLInputElement>(id);
-  const wireRequest = () => nativeSearchWireRequest(input('design-system').value, input('design-loss').value, Number(input('design-seed').value), Number(input('design-years').value), node<HTMLSelectElement>('search-method').value, Number(input('search-budget').value), Number(input('search-attempts').value), Number(input('search-tokens').value));
+  const wireRequest = () => (staged ? stagedSearchWireRequest : nativeSearchWireRequest)(input('design-system').value, input('design-loss').value, Number(input('design-seed').value), Number(input('design-years').value), node<HTMLSelectElement>('search-method').value, Number(input('search-budget').value), Number(input(staged ? 'search-steps' : 'search-attempts').value), Number(input('search-tokens').value));
   const setError = (value: unknown) => { node('search-error').hidden = false; node('search-error').textContent = String(value); };
-  const refresh = () => { let allowed = false; try { const wire = wireRequest(); allowed = state.canSubmit(wire.request, wire.request_json); } catch { state.changed(); } if (!state.consented) input('search-consent').checked = false; node<HTMLButtonElement>('search-submit').disabled = !allowed; input('search-consent').disabled = !state.binding || state.submitting; };
+  const refresh = () => { let allowed = false; try { const wire = wireRequest(); allowed = state.canSubmit(wire.request, wire.request_json); if (wire.request.schema === 'scienceutopia.native-search-request.v15') node('search-tool-budget').textContent = `AT MOST ${stagedProviderAttemptLimit(wire.request)} DESIGNER PROVIDER ATTEMPTS / ${wire.request.designer.max_steps} TOOL STEPS PER GENERATION / NATIVE SLOTS ARE SEPARATE`; } catch { state.changed(); node('search-tool-budget').textContent = 'Tool budget unavailable until inputs are valid.'; } if (!state.consented) input('search-consent').checked = false; node<HTMLButtonElement>('search-submit').disabled = !allowed; input('search-consent').disabled = !state.binding || state.submitting; };
   const changed = () => { state.changed(); input('search-consent').checked = false; node('search-validation').textContent = 'INPUT EDITED / Validate the exact request and renew compute consent. Existing search receipts remain bound to their original request.'; refresh(); };
   const api = async (path: string, body?: unknown, bodyJSON?: string) => {
     const response = await fetch(`/native-api/${path}`, { method: body === undefined ? 'GET' : 'POST', headers: { 'X-Native-Lab-Token': token, ...(body === undefined ? {} : { 'Content-Type': 'application/json' }) }, ...(body === undefined ? {} : { body: bodyJSON ?? JSON.stringify(body) }) });
@@ -47,6 +50,7 @@ export function initializeNativeSearch(): void {
   };
   const render = (value: any, text: string, integerPaths: string[]) => {
     progress = value; raw = text;
+    renderChronicle(value.authoring_trace);
     downloadName = `native-search-${value.search_id}.json`;
     node('search-evidence-origin').textContent = 'RUNTIME OR SAVED PROGRESS / Independent aggregate audit is not applied to this display.';
     node('search-designer-attempts').textContent = 'No independent designer audit applied to this display.';
@@ -84,11 +88,11 @@ export function initializeNativeSearch(): void {
   panel.addEventListener('toggle', () => {
     if (!panel.open || initialized) return; initialized = true;
     if (new URLSearchParams(location.search).get('audited-search') === 'v14') { node('search-service').textContent = 'READ-ONLY INDEPENDENT AUDIT / NO QUEUE SESSION'; return; }
-    void api('session').then(({ value }) => { if (typeof value.token !== 'string' || !/^[a-f0-9]{40}$/.test(value.source_commit)) throw new Error('Invalid native service session'); token = value.token; source = value.source_commit; node('search-service').textContent = `LOCAL QWEN3:8B / SOURCE ${source.slice(0, 12)}`; node<HTMLButtonElement>('search-validate').disabled = false;
+    void api('session').then(({ value }) => { if (typeof value.token !== 'string' || !/^[a-f0-9]{40}$/.test(value.source_commit)) throw new Error('Invalid native service session'); token = value.token; source = value.source_commit; staged = value.search_protocol === 'staged-v15'; stagedSettings.hidden = !staged; input('search-attempts').parentElement!.hidden = staged; if (staged) input('search-tokens').value = '2048'; node('search-service').textContent = `LOCAL QWEN3:8B / ${staged ? 'STAGED TOOLS V15 / ' : ''}SOURCE ${source.slice(0, 12)}`; node<HTMLButtonElement>('search-validate').disabled = false; refresh();
       try { const saved = sessionStorage.getItem('native-search-v14'); if (saved && !new URLSearchParams(location.search).has('audited-search')) { const prior = JSON.parse(saved); searchId = prior.search_id; activeBinding = prior.binding; node<HTMLButtonElement>('search-refresh').disabled = false; void poll(); } } catch { /* storage optional */ }
     }).catch(error => { node('search-service').textContent = 'OFFLINE / START THE LOCAL NATIVE WORKER TO VALIDATE OR DISPATCH'; setError(error); });
   });
-  for (const id of ['design-system', 'design-loss', 'design-seed', 'design-years', 'search-method', 'search-budget', 'search-attempts', 'search-tokens']) node(id).addEventListener('input', changed);
+  for (const id of ['design-system', 'design-loss', 'design-seed', 'design-years', 'search-method', 'search-budget', 'search-attempts', 'search-steps', 'search-tokens']) node(id).addEventListener('input', changed);
   node('search-method').addEventListener('change', () => { const nested = node<HTMLSelectElement>('search-method').value === 'nested-lr'; input('search-budget').disabled = nested; if (nested) input('search-budget').value = '4'; changed(); });
   input('search-consent').addEventListener('change', () => { state.consent(input('search-consent').checked); refresh(); });
   node('search-validate').addEventListener('click', () => { void (async () => { try { node('search-error').hidden = true; const wire = wireRequest(), body = wire.request, revision = state.revision; state.binding = null; state.consented = false; input('search-consent').checked = false; refresh(); const response = await api('search-validate', body, wire.request_json), binding = validateSearchBinding(response.value, body, source, wire.request_json), current = wireRequest(); if (!state.validated(binding, revision, current.request, current.request_json)) return; node('search-request').textContent = pretty(binding); node('search-validation').textContent = `RUNTIME VALID / ${body.method} / ${body.native_budget} NATIVE SLOTS / SHA256 ${binding.request_sha256} / NOT EXECUTED`; refresh(); } catch (error) { setError(error); refresh(); } })(); });

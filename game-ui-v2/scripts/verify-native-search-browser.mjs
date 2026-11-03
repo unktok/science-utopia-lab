@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 const output = await mkdtemp(join(tmpdir(), 'noctiluca-v14-SCRIPTED-qa-')), profile = await mkdtemp(join(tmpdir(), 'noctiluca-v14-chrome-'));
+const staged = process.argv.includes('--staged-v15');
 const port = 4384, base = `http://127.0.0.1:${port}`, source = 'a'.repeat(40), hash = 'b'.repeat(64), sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 async function until(fn, label) { for (let i = 0; i < 120; i++) { if (await fn()) return; await sleep(100); } throw new Error(`Timeout: ${label}`); }
 class Cdp {
@@ -27,7 +28,7 @@ try {
   for (const domain of ['Page', 'Runtime', 'Network', 'Log']) await cdp.call(`${domain}.enable`);
   cdp.onEvent = m => { if (m.method !== 'Fetch.requestPaused') return; const { request: incoming, requestId } = m.params; requests.push({ url: incoming.url, method: incoming.method });
     let value, code = 200; const path = new URL(incoming.url).pathname;
-    if (path.endsWith('/session')) value = { token: 'SCRIPTED-TOKEN', source_commit: source };
+    if (path.endsWith('/session')) value = { token: 'SCRIPTED-TOKEN', source_commit: source, ...(staged ? { search_protocol: 'staged-v15' } : {}) };
     else if (path.endsWith('/search-validate')) { request = JSON.parse(incoming.postData); validatedRequestText = incoming.postData; assert(incoming.postData.includes('"wire_float":1.0')); assert(incoming.postData.includes('"intercept": 0.0')); value = { status: 'structurally-validated-not-native-executed', request_sha256: hash, source_commit: source, planned_native_world_budget: request.native_budget, method: request.method }; }
     else if (path.endsWith('/searches')) { submitted++; const body = JSON.parse(incoming.postData); assert.equal(body.confirmed_request_sha256, hash); assert.deepEqual(body.request, request); assert(incoming.postData.includes(`"request":${validatedRequestText}`)); value = progress('queued'); }
     else if (path.includes('/searches/')) value = progress('complete');
@@ -37,7 +38,9 @@ try {
     for (const row of [...(value.observations ?? []), value.current].filter(Boolean)) {
       if (row.suggestion?.system) { row.suggestion.candidate = row.suggestion.system; delete row.suggestion.system; }
     }
-    if (value.schema === 'scienceutopia.native-search-progress.v14') value.live_progress = { schema: 'scienceutopia.native-search-live-progress.v14', scope: 'observed-local-files-not-final-audited-cost', observed_at: '2026-11-03T01:20:00Z', designer: { generation_directories: 1, attempts_started: 2, attempts_completed: 1 }, researcher: { runs: [{ run_id: 'SCRIPTED-one', checkpoint_year: 1, cached_responses: 17, cache_binding_status: 'matched' }], cached_responses: 17, latest_checkpoint_year: 1 }, warnings: [] };
+    if (value.schema === 'scienceutopia.native-search-progress.v14' && staged) value.schema = 'scienceutopia.native-search-progress.v15';
+    if (value.schema?.startsWith('scienceutopia.native-search-progress.')) value.live_progress = { schema: 'scienceutopia.native-search-live-progress.v14', scope: 'observed-local-files-not-final-audited-cost', observed_at: '2026-11-03T01:20:00Z', designer: { generation_directories: 1, attempts_started: 2, attempts_completed: 1 }, researcher: { runs: [{ run_id: 'SCRIPTED-one', checkpoint_year: 1, cached_responses: 17, cache_binding_status: 'matched' }], cached_responses: 17, latest_checkpoint_year: 1 }, warnings: [] };
+    if (value.schema?.startsWith('scienceutopia.native-search-progress.')) value.authoring_trace = { schema: 'scienceutopia.authoring-chronicle.v15', scope: 'observed-local-journals-not-independent-audit', warnings: ['SCRIPTED TOOLS / NOT ACTUAL AUTHORSHIP'], generations: [{ request_sha256: hash, status: 'generated', definition_sha256: hash, steps: ['inspect', 'edit', 'edit', 'validate', 'finish', null].map((tool, step) => ({ step, status: tool === null ? 'pending' : step === 1 ? 'rejected' : tool === 'finish' ? 'finished' : 'applied', completed: tool !== null, dispatch_intent: true, tool, draft_before_sha256: hash, draft_after_sha256: tool === null ? null : hash, errors: step === 1 ? ['SCRIPTED missing field: no draft change, no native outcome'] : [], result: { SCRIPTED: true, note: 'Tool result is not a world outcome' }, authored_output: tool === 'edit' ? { operations: [{ op: 'replace', selector: { mechanism_id: 'SCRIPTED-office' }, path: '/parameters/code_artifact/source', value: '<script>window.SCRIPTED_XSS=true</script>' }, { op: 'add', path: '/connections/-', value: { source: 'SCRIPTED-office' } }] } : null, model_call_seconds: tool === null ? null : 1.5 })) }] };
     const body = JSON.stringify(value).replace('"UNSAFE_INTEGER"', '9007199254740993');
     void cdp.call('Fetch.fulfillRequest', { requestId, responseCode: code, responseHeaders: [{ name: 'Content-Type', value: 'application/json' }], body: Buffer.from(body).toString('base64') });
   };
@@ -47,6 +50,7 @@ try {
   await until(() => cdp.eval(`document.querySelector('#status')?.textContent.includes('HASH VERIFIED')`), 'base evidence');
   await cdp.eval(`document.querySelector('#design-console').open=true`);
   await until(() => cdp.eval(`!document.querySelector('#search-validate').disabled`), 'session');
+  assert.equal(await cdp.eval(`!document.querySelector('#search-steps-setting').hidden`), staged);
   assert.equal(await cdp.eval(`document.querySelector('#search-submit').disabled`), true);
   await cdp.eval(`(()=>{const warning=document.createElement('div');warning.textContent='SCRIPTED BROWSER QA / NO INFERENCE / NOT NATIVE RESULTS';warning.style='position:fixed;top:0;left:0;right:0;padding:10px;text-align:center;background:#633956;color:white;z-index:9999;font:13px monospace';document.body.append(warning);const system=document.querySelector('#design-system');system.value=system.value.replace('{','{"wire_float":1.0,"wire_int":1,');system.dispatchEvent(new Event('input'));const loss=document.querySelector('#design-loss');loss.value=loss.value.replace('"intercept": 0','"intercept": 0.0');loss.dispatchEvent(new Event('input'));const method=document.querySelector('#search-method');method.value='nested-lr';method.dispatchEvent(new Event('change'));document.querySelector('#search-validate').click()})()`);
   await until(() => cdp.eval(`document.querySelector('#search-validation').textContent.includes('RUNTIME VALID')`), 'validation');
@@ -62,25 +66,34 @@ try {
   await until(() => cdp.eval(`!document.querySelector('#search-consent').disabled`), 'raw drift requires new validation');
   await cdp.eval(`(()=>{const c=document.querySelector('#search-consent');c.checked=true;c.dispatchEvent(new Event('change'));document.querySelector('#search-submit').click();document.querySelector('#search-submit').click()})()`);
   await until(() => cdp.eval(`document.querySelector('#search-status').textContent.startsWith('COMPLETE')`), 'terminal receipts');
+  if (staged) { assert.equal(request.schema, 'scienceutopia.native-search-request.v15'); assert.deepEqual(request.designer, { model: 'qwen3:8b', max_steps: 16, max_tokens: 2048 }); assert.equal(await cdp.eval(`document.querySelector('#search-tool-budget').textContent.includes('32 DESIGNER PROVIDER ATTEMPTS')`), true); }
   assert.equal(submitted, 1); assert.equal(await cdp.eval(`document.querySelector('#search-observations').children.length`), 2);
   assert.equal(await cdp.eval(`document.querySelector('#search-timeline').children.length`), 3);
   assert.equal(await cdp.eval(`document.querySelector('#search-charged').textContent.startsWith('4 / 4')&&document.querySelector('#search-physical').textContent==='3'`), true);
   assert.equal(await cdp.eval(`document.querySelector('#search-raw').textContent.includes('9007199254740993')&&document.querySelector('#search-raw').textContent.includes('/exact_identity')`), true);
   assert.equal(await cdp.eval(`document.querySelector('#search-replies').textContent.includes('DESIGNER 2 / RESEARCHER 17')`), true);
   assert.equal(await cdp.eval(`document.querySelector('#search-live-year').textContent==='1 / 2 MAX OBSERVED'&&document.querySelector('#search-live-designer').textContent==='1 COMPLETED / 2 DISPATCH INTENTS'&&document.querySelector('#search-live-researcher').textContent==='17 KNOWN CACHE ROWS'&&document.querySelector('#search-live-note').textContent.includes('Not final audited physical calls')`), true);
+  assert.equal(await cdp.eval(`document.querySelectorAll('.author-events button').length===6&&document.querySelector('.author-summary').textContent.includes('1 REJECTED TOOLS / 1 FINISH RECEIPTS / 1 PENDING OR UNKNOWN REPLIES')&&document.querySelector('.author-inspector').textContent.includes('No reply, tool or cost inferred')`), true);
+  await cdp.eval(`document.querySelectorAll('.author-events button')[1].click()`);
+  assert.equal(await cdp.eval(`document.querySelector('.author-inspector').textContent.includes('SOURCE / REPLACE @ SCRIPTED-office')&&document.querySelector('.author-inspector').textContent.includes('WIRE / ADD')&&document.querySelector('.author-inspector').textContent.includes('missing field')&&!window.SCRIPTED_XSS`), true);
+  await cdp.eval(`document.querySelectorAll('.author-events button')[4].click()`);
+  assert.equal(await cdp.eval(`document.querySelector('.author-inspector').textContent.includes('Native execution and loss still require separate receipts')&&document.querySelectorAll('.author-events button[aria-pressed=true]').length===1`), true);
+  await cdp.eval(`document.querySelectorAll('.author-events button')[2].focus();document.querySelectorAll('.author-events button')[2].click()`);
   await cdp.eval(`document.querySelector('#search-observations button').click();document.querySelector('#autonomous-search').scrollIntoView()`);
   assert.equal(await cdp.eval(`document.querySelectorAll('#search-graph .search-node').length===JSON.parse(document.querySelector('#design-system').value).mechanisms.length`), true);
   const captures = [];
-  for (const [name, width, height, focus] of [['desktop', 1600, 1120, '#autonomous-search'], ['desktop-progress', 1600, 1120, '.search-live'], ['mobile', 390, 1120, '#autonomous-search'], ['mobile-progress', 390, 1120, '.search-live']]) {
+  for (const [name, width, height, focus] of [['desktop', 1600, 1120, '#autonomous-search'], ['desktop-progress', 1600, 1120, '.search-live'], ['desktop-authoring', 1600, 1120, '#author-chronicle'], ['mobile', 390, 1120, '#autonomous-search'], ['mobile-progress', 390, 1120, '.search-live'], ['mobile-authoring', 390, 1120, '#author-chronicle']]) {
     await cdp.call('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width < 500 });
     await cdp.eval(`document.querySelector(${JSON.stringify(focus)}).scrollIntoView()`); await sleep(100);
     assert.equal(await cdp.eval('document.documentElement.scrollWidth>innerWidth'), false);
     const image = await cdp.call('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false }); const bytes = Buffer.from(image.data, 'base64'); const file = `SCRIPTED-native-search-v14-${name}.png`; await writeFile(join(output, file), bytes); captures.push({ file, sha256: createHash('sha256').update(bytes).digest('hex') });
   }
   await cdp.eval(`document.querySelector('#search-evidence').click()`); await sleep(100);
+  // Old v14 audit stays v14 even after inspecting a staged-v15 live service.
+  const legacyRequest = { ...request, schema: 'scienceutopia.native-search-request.v14', designer: { model: 'qwen3:8b', max_attempts: 2, max_tokens: 4096 } };
   const runOrder = ['throughput-blackbox', 'efficiency-blackbox', 'efficiency-nested-lr'];
   const auditRuns = Object.fromEntries(runOrder.map((id, index) => {
-    const ownRequest = { ...structuredClone(request), method: index === 2 ? 'nested-lr' : 'blackbox', native_budget: index === 2 ? 4 : 2 }, plan = { source_commit: source }, records = [{ request: { generation: 0, count: 2 }, generation_error: { type: 'SCRIPTED', message: 'Invalid typed path; no native candidate', loss: null }, draws: [], observations: [] }];
+    const ownRequest = { ...structuredClone(legacyRequest), method: index === 2 ? 'nested-lr' : 'blackbox', native_budget: index === 2 ? 4 : 2 }, plan = { source_commit: source }, records = [{ request: { generation: 0, count: 2 }, generation_error: { type: 'SCRIPTED', message: 'Invalid typed path; no native candidate', loss: null }, draws: [], observations: [] }];
     const projected = { ...progress('complete'), request: ownRequest, method: ownRequest.method, native_budget: ownRequest.native_budget, records, pending: null, immutable_plan: plan, current: null, best: { loss: null, ties: [] }, observations: [], budget: { consumed: ownRequest.native_budget, native_observations: 0, remaining: 0 } };
     return [id, { request: ownRequest, method: ownRequest.method, loss_spec: ownRequest.loss_spec, runtime_plan: plan, runtime_progress: projected, records, pending: null, terminal: true, observations: [{ status: 'generation-failure', loss: null, own_loss: null }], physical_researcher_responses: 0, designer: { known_responses: 1, interrupted_response_unknown: 0, proofs: [{ request_sha256: hash, generation_status: 'generation-failed', definition_consumed: false, result: { status: 'generation-failed' }, attempts: [{ attempt: 0 }], started_records: [{ prompt: 'SCRIPTED original prompt' }], attempt_records: [{ status: 'invalid', errors: [{ message: 'SCRIPTED typed path rejected' }], model_reply: { output: { operations: [{ value: { source: 'SCRIPTED raw authored Python source 9007199254740993' } }] }, messages: [{ role: 'assistant', content: 'SCRIPTED unparsed fallback raw source' }] } }] }] } }];
   }));

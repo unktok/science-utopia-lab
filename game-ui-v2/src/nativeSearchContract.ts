@@ -6,6 +6,12 @@ export interface NativeSearchRequest {
   seed: number; years: number; method: 'blackbox' | 'nested-lr'; native_budget: number;
   designer: { model: 'qwen3:8b'; max_attempts: number; max_tokens: number };
 }
+export interface StagedSearchRequest extends Omit<NativeSearchRequest, 'schema' | 'designer'> {
+  schema: 'scienceutopia.native-search-request.v15';
+  designer: { model: 'qwen3:8b'; max_steps: number; max_tokens: number };
+}
+export type AnyNativeSearchRequest = NativeSearchRequest | StagedSearchRequest;
+export function stagedProviderAttemptLimit(request: StagedSearchRequest): number { return (request.method === 'nested-lr' ? 2 : request.native_budget) * request.designer.max_steps; }
 const object = (value: unknown): value is Record<string, any> => !!value && typeof value === 'object' && !Array.isArray(value);
 const integer = (value: number, min: number, max: number, name: string): void => { if (!Number.isSafeInteger(value) || value < min || value > max) throw new Error(`${name} must be an integer from ${min} to ${max}`); };
 export function nativeSearchRequest(system: string, loss: string, seed: number, years: number, method: string, budget: number, attempts: number, tokens: number): NativeSearchRequest {
@@ -25,8 +31,14 @@ export function nativeSearchWireRequest(...args: Parameters<typeof nativeSearchR
   const request_json = `{${Object.entries(request).map(([key, value]) => `${JSON.stringify(key)}:${key === 'initial_system' ? system : key === 'loss_spec' ? loss : JSON.stringify(value)}`).join(',')}}`;
   return { request, request_json };
 }
-export interface SearchBinding { request: NativeSearchRequest; request_json: string; request_sha256: string; source_commit: string }
-export function validateSearchBinding(value: any, request: NativeSearchRequest, source: string, request_json = JSON.stringify(request)): SearchBinding {
+export function stagedSearchWireRequest(system: string, loss: string, seed: number, years: number, method: string, budget: number, steps: number, tokens: number): { request: StagedSearchRequest; request_json: string } {
+  const base = nativeSearchRequest(system, loss, seed, years, method, budget, 1, tokens); integer(steps, 1, 64, 'Designer tool steps');
+  const request: StagedSearchRequest = { ...base, schema: 'scienceutopia.native-search-request.v15', designer: { model: 'qwen3:8b', max_steps: steps, max_tokens: tokens } };
+  const request_json = `{${Object.entries(request).map(([key, value]) => `${JSON.stringify(key)}:${key === 'initial_system' ? system : key === 'loss_spec' ? loss : JSON.stringify(value)}`).join(',')}}`;
+  return { request, request_json };
+}
+export interface SearchBinding { request: AnyNativeSearchRequest; request_json: string; request_sha256: string; source_commit: string }
+export function validateSearchBinding(value: any, request: AnyNativeSearchRequest, source: string, request_json = JSON.stringify(request)): SearchBinding {
   if (value?.status !== 'structurally-validated-not-native-executed' || !/^[a-f0-9]{64}$/.test(value.request_sha256)
     || value.source_commit !== source || !/^[a-f0-9]{40}$/.test(source) || value.method !== request.method || value.planned_native_world_budget !== request.native_budget) throw new Error('Runtime validation source, method or budget binding differs');
   if (stableStringify(parseExactDraft(request_json)) !== stableStringify(request)) throw new Error('Exact wire request differs from validated request');
@@ -50,12 +62,13 @@ export function decodeSearchEvidence(text: string): { value: any; integer_paths:
   visit(value, ''); return { value, integer_paths };
 }
 export function verifySearchProgress(value: any, binding?: SearchBinding, expectedId?: string): Record<string, any> {
-  if (value?.schema !== 'scienceutopia.native-search-progress.v14' || typeof value.search_id !== 'string' || !/^[a-f0-9]{40}$/.test(value.source_commit)
+  if (!['scienceutopia.native-search-progress.v14', 'scienceutopia.native-search-progress.v15'].includes(value?.schema) || typeof value.search_id !== 'string' || !/^[a-f0-9]{40}$/.test(value.source_commit)
     || !/^[a-f0-9]{64}$/.test(value.request_sha256) || !['queued', 'running', 'complete', 'failed'].includes(value.status)
     || !Array.isArray(value.records) || !Array.isArray(value.observations) || !object(value.budget) || !Array.isArray(value.errors)) throw new Error('Malformed native search progress');
   if (expectedId && value.search_id !== expectedId) throw new Error('Search identity differs');
   if (binding && (value.source_commit !== binding.source_commit || value.request_sha256 !== binding.request_sha256 || stableStringify(value.request) !== stableStringify(binding.request))) throw new Error('Search request or source differs from the consented validation');
-  if (value.request?.schema !== 'scienceutopia.native-search-request.v14' || !['blackbox', 'nested-lr'].includes(value.method) || value.method !== value.request?.method || value.native_budget !== value.request?.native_budget) throw new Error('Search method or budget differs');
+  const requestSchema = value.schema === 'scienceutopia.native-search-progress.v15' ? 'scienceutopia.native-search-request.v15' : 'scienceutopia.native-search-request.v14';
+  if (value.request?.schema !== requestSchema || !['blackbox', 'nested-lr'].includes(value.method) || value.method !== value.request?.method || value.native_budget !== value.request?.native_budget) throw new Error('Search method or budget differs');
   return value;
 }
 export function nativeSearchLiveTelemetry(value: any): { phase: string; year: string; designer: string; researcher: string; note: string } {
@@ -74,16 +87,16 @@ export function nativeSearchLiveTelemetry(value: any): { phase: string; year: st
 export class NativeSearchConsent {
   revision = 0; binding: SearchBinding | null = null; consented = false; submitting = false;
   changed(): void { this.revision++; this.binding = null; this.consented = false; }
-  validated(binding: SearchBinding, revision: number, current: NativeSearchRequest, request_json = JSON.stringify(current)): boolean {
+  validated(binding: SearchBinding, revision: number, current: AnyNativeSearchRequest, request_json = JSON.stringify(current)): boolean {
     if (revision !== this.revision || stableStringify(current) !== stableStringify(binding.request) || request_json !== binding.request_json) return false;
     this.binding = binding; this.consented = false; return true;
   }
   consent(value: boolean): void { this.consented = !!this.binding && value; }
-  canSubmit(request: NativeSearchRequest, request_json = JSON.stringify(request)): boolean {
+  canSubmit(request: AnyNativeSearchRequest, request_json = JSON.stringify(request)): boolean {
     if (this.binding && (request_json !== this.binding.request_json || stableStringify(request) !== stableStringify(this.binding.request))) { this.changed(); return false; }
     return !this.submitting && this.consented && !!this.binding;
   }
-  begin(request: NativeSearchRequest, request_json = JSON.stringify(request)): SearchBinding {
+  begin(request: AnyNativeSearchRequest, request_json = JSON.stringify(request)): SearchBinding {
     if (!this.canSubmit(request, request_json)) throw new Error('Validate this exact request, then explicitly consent to its compute budget');
     const binding = this.binding!; this.submitting = true; this.changed(); return binding;
   }
