@@ -51,6 +51,15 @@ maps original goals, implementation, actual evidence and remaining boundaries.
 Final source-scoped checks and visual-review hashes are recorded separately
 from actual scientific outcomes. No blanket all-non-scale-research claim.
 
+The final 65-page PDF is built from `d6c10b8`, including updated abstract,
+conclusion and reproducibility statement. All pages are reviewed at75dpi;
+pages1/2/37/41/44/46/47/48/51/52/53/62/63/64/65 are also inspected at150dpi.
+No overfull boxes or undefined references remain. The full software rerun
+passes2422 tests with6 skips at `b50a48c`, separately from the retained failed
+scope and615 final focused passes at `d6c10b8`. The [V15 publication receipt](../research/results/native-staged-search-v15-verification.json)
+binds named sources, unchanged actual raw inventories, matching historical
+analysis commits, figures, UI captures and exact reviewed PDF/render bytes.
+
 The historical v13 manuscript adds the bounded nested institution search:
 two explicit losses, each with two IID G0 design draws, one conditional LOO
 likelihood-ratio update, one exact updated-G0 native forward, and one own-history

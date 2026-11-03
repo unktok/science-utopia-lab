@@ -1,0 +1,949 @@
+{
+  "a1_failures_retained_separately": true,
+  "all_non_scale_research_completed_claimed": false,
+  "artifacts": [
+    {
+      "bytes": 5274908,
+      "path": "output/pdf/science-utopia-lab-working-paper.pdf",
+      "sha256": "650cd414cc8c2fd12bfefef3ed065e99942daef6a0e4cf2035d14caedf2f2326"
+    },
+    {
+      "bytes": 34987,
+      "path": "paper/figures/native-staged-search-v15-a2.pdf",
+      "sha256": "b85c52ca1431e6103e66961b235e82b4a6c27457255d05b6cbfabc56af72e55c"
+    },
+    {
+      "bytes": 132116,
+      "path": "paper/figures/native-staged-search-v15-a2.png",
+      "sha256": "a1e4c38dc6704d126533300a1f84c10bce9f2f679379e4462123870022cc9cb8"
+    },
+    {
+      "bytes": 27255,
+      "path": "paper/figures/native-staged-search-v15-a2.svg",
+      "sha256": "a88edd169d3e8a909b150596efd2f64b591a0e9f6a228e0fd599d82cf7efdbec"
+    },
+    {
+      "bytes": 4097,
+      "path": "paper/figures/native-staged-search-v15-a2.manifest.json",
+      "sha256": "2391a79a6e695452dfaa5ef3eda215fc22579b44c8ba0f9f77373b0453519572"
+    },
+    {
+      "bytes": 3042,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/README.md",
+      "sha256": "838044dff6751a6a1dd0f7a30f7330e85da96125fa0635145603097225f61996"
+    },
+    {
+      "bytes": 1059,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/actual-writer-exit-receipt.json",
+      "sha256": "fc8a4f64177dcf4bc689bc186e9ddd150fd04f5514f92de51f49e6a70312e0aa"
+    },
+    {
+      "bytes": 597,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/backend-ui-binding-wrapper.py",
+      "sha256": "72fa246d1b7c1b7bb45347902614949d27b256ae94097cdee20987b6ac9c4962"
+    },
+    {
+      "bytes": 251080,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/efficiency-terminal-desktop-mission.png",
+      "sha256": "59466185779354cdd0125652d7414f230fa14701a8bd098258cf993aaaa2de33"
+    },
+    {
+      "bytes": 225127,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/efficiency-terminal-desktop-tool-detail.png",
+      "sha256": "c43c38a95950146de975bbe11429ba5b7deb5db97a3a25b4d5f63a65ba8609ba"
+    },
+    {
+      "bytes": 225134,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/efficiency-terminal-desktop-workshop.png",
+      "sha256": "ecd19d53fe770a2d6ee2478dfb8fc0aefb930dfaedcf8e3e16f2e838eb299a7f"
+    },
+    {
+      "bytes": 63350,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/efficiency-terminal-mobile-tool-detail.png",
+      "sha256": "dd14dbea2caafaabec5307f965962b89ef8271147e2c2f8523b560319dbee183"
+    },
+    {
+      "bytes": 128854,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/efficiency-terminal-mobile-workshop.png",
+      "sha256": "430a78376de18403622314af16b788b45cb87b10b1cc2ef58698a574c8ab1357"
+    },
+    {
+      "bytes": 746554,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/terminal-progress-exact.json",
+      "sha256": "271bb61c7c1f3c79243e25dbb6b5f3859c2a23c9ef7e0e0e8e0d19822386729f"
+    },
+    {
+      "bytes": 5610,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency/terminal-readonly-browser-qa.json",
+      "sha256": "0d45175572a9ba5352d72b8bc53ca3867796b85cc4543af3eedfa9a98a6c6d08"
+    },
+    {
+      "bytes": 2785,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/efficiency-capture-exit-receipt.json",
+      "sha256": "46028539272c3cf55c7396e6271eca1e77e1f973fa001fb7dba7fd12885b134a"
+    },
+    {
+      "bytes": 2323,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/owned-preview-stop-receipt.json",
+      "sha256": "a9594bfeadd4f6e4a5778928f7663c6834b0ba2463682654f5dcfe0924ace4a8"
+    },
+    {
+      "bytes": 3817,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/publication-manifest.json",
+      "sha256": "9e244938a9e0ec72acc2a7c4c76ba0e215d33b3be672662762a46514f83ecab5"
+    },
+    {
+      "bytes": 743699,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/terminal-progress-exact.json",
+      "sha256": "de4147733eb0f0d83a62f7f80e282488d380279e3c3bd157e4c21dda659cf0b2"
+    },
+    {
+      "bytes": 5610,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/terminal-readonly-browser-qa.json",
+      "sha256": "b927f9873ceae22c981777baf2f8d96e76935ab353fc7905d07fc1fbcf0f4c74"
+    },
+    {
+      "bytes": 250389,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/throughput-terminal-desktop-mission.png",
+      "sha256": "e04082f67627dbd9b411ecf84e3b90f454b41897bcbd0cfac7c2cc2343844b1f"
+    },
+    {
+      "bytes": 225827,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/throughput-terminal-desktop-tool-detail.png",
+      "sha256": "2b4744e3adcd5fa6d0cb05251a17b2507861c8f47b09c809f45e091c1c64b583"
+    },
+    {
+      "bytes": 225827,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/throughput-terminal-desktop-workshop.png",
+      "sha256": "2b4744e3adcd5fa6d0cb05251a17b2507861c8f47b09c809f45e091c1c64b583"
+    },
+    {
+      "bytes": 63405,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/throughput-terminal-mobile-tool-detail.png",
+      "sha256": "8b0824256ec58027913fd85c932b9f6993b2254884ba1c4e138a629bdc5cc621"
+    },
+    {
+      "bytes": 129165,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput/throughput-terminal-mobile-workshop.png",
+      "sha256": "33bd9391e0a4d6556bca16330105790d34f3b16408bf5cd49a92f92f68c411ca"
+    },
+    {
+      "bytes": 2785,
+      "path": "game-ui-v2/screenshots/staged-search-v15-a2-actual-qa/throughput-capture-exit-receipt.json",
+      "sha256": "b7d8f88da97c2d70e909966d7996aa1fdac01cf73525f34daf03b66fff341163"
+    }
+  ],
+  "audits": {
+    "a1": {
+      "claims": {
+        "actual_local_Qwen_automatic_loop": false,
+        "browser_consent_claimed": false,
+        "designer_improvement_established": false,
+        "full_world_pathwise_autograd": false,
+        "held_out": false,
+        "live_fixed_Qwen_researchers": false,
+        "method_superiority_established": false,
+        "model_weights_trained": false,
+        "operational_two_generation_native_feedback_arm": false,
+        "same_society_adoption": false,
+        "scientific_benefit_established": false,
+        "scripted_HTTP_only": false
+      },
+      "content_sha256": "83f7a0f2737ee35f484aba3468f9a6b8ab055fbbef9080450c6ef61316083f43",
+      "file": {
+        "bytes": 111366,
+        "path": "research/results/native-staged-search-v15-a1.json",
+        "sha256": "1b3886a465f91a83deefe523142e5a19d1ff8ef98a9dcce3ebdb58d103c2ba9c"
+      },
+      "independent_replay_is_not_rerun_by_publication_utility": true,
+      "matching_analysis_commit": "706d9b26b09dd3f685c304e3d23d07189480a403",
+      "raw_files_verified_unchanged": 153,
+      "raw_inventory_sha256": "70dbbbd8354831b753c4f7b350f44e2f863627503930e7c410c895e0ce8dd66e",
+      "raw_root": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a1",
+      "source_commit": "f969f7cc2f88549ce12c5afbbbeba7b30f38828e",
+      "status": "budget-complete-with-failures"
+    },
+    "a2": {
+      "claims": {
+        "actual_local_Qwen_automatic_loop": true,
+        "browser_consent_claimed": false,
+        "designer_improvement_established": false,
+        "full_world_pathwise_autograd": false,
+        "held_out": false,
+        "live_fixed_Qwen_researchers": true,
+        "method_superiority_established": false,
+        "model_weights_trained": false,
+        "operational_two_generation_native_feedback_arm": true,
+        "same_society_adoption": false,
+        "scientific_benefit_established": false,
+        "scripted_HTTP_only": false
+      },
+      "content_sha256": "3bc4ba1cb98e1e25fe5a531818c934b3b9503aca4051f419c62ab6216fd27562",
+      "file": {
+        "bytes": 136756,
+        "path": "research/results/native-staged-search-v15-a2.json",
+        "sha256": "51fb6e62fb0b99950dd589abb244776808dabd44f9150afbf4ba5f405b879683"
+      },
+      "independent_replay_is_not_rerun_by_publication_utility": true,
+      "matching_analysis_commit": "c40f36b3bf086aac713ee9678b8f105f0b2bcab4",
+      "raw_files_verified_unchanged": 209,
+      "raw_inventory_sha256": "97a7f91a371e991986e5f77607ce6fb8f6d19ec26a7eeebfab1469424b0b3f38",
+      "raw_root": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a2",
+      "source_commit": "51d9cbbd49054cdb89c24ea5bc192ff9b63e9155",
+      "status": "complete"
+    }
+  },
+  "checks": {
+    "a1-job": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "scripts/run_native_staged_search_v15.py",
+        "--start-authorized-search",
+        "--output",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a1",
+        "--data-cache",
+        "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia"
+      ],
+      "ended_utc": "2026-11-03T08:42:41.775604+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "log": {
+        "bytes": 1385,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/a1-job.log",
+        "sha256": "decd624cede2aca1222f2f2f1593b382b2a0a9f732c613bccdd7a25eb1b259f3"
+      },
+      "outcome": "passed",
+      "receipt": {
+        "bytes": 1059,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/a1-job-receipt.json",
+        "sha256": "136f670c684e96b3c7ef8fb5f793d72c0f58f6b9a1085c2f982e6f31ed77572d"
+      },
+      "scope": "exact recorded command at this named source",
+      "source_binding_basis": "HEAD of retained receipt cwd at verification; supervisor has no start-commit field",
+      "source_commit": "f969f7cc2f88549ce12c5afbbbeba7b30f38828e",
+      "started_utc": "2026-11-03T08:35:43.617402+00:00",
+      "suite_passed": null,
+      "zero_process_exit_is_not_scientific_success": true
+    },
+    "a2-job": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "scripts/run_native_staged_search_v15.py",
+        "--start-authorized-search",
+        "--output",
+        "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a2",
+        "--data-cache",
+        "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia"
+      ],
+      "ended_utc": "2026-11-03T09:23:41.244360+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "log": {
+        "bytes": 58177,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/a2-job.log",
+        "sha256": "ae086e7fda2579968d509c693907805281dd36f2ac0205d7e5566c20843fcd9c"
+      },
+      "outcome": "passed",
+      "receipt": {
+        "bytes": 1059,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/a2-job-receipt.json",
+        "sha256": "fc8a4f64177dcf4bc689bc186e9ddd150fd04f5514f92de51f49e6a70312e0aa"
+      },
+      "scope": "exact recorded command at this named source",
+      "source_binding_basis": "HEAD of retained receipt cwd at verification; supervisor has no start-commit field",
+      "source_commit": "51d9cbbd49054cdb89c24ea5bc192ff9b63e9155",
+      "started_utc": "2026-11-03T08:44:21.999547+00:00",
+      "suite_passed": null,
+      "zero_process_exit_is_not_scientific_success": true
+    },
+    "exact-source-tests": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/exact-source-tests.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 6,
+        "tests": 2333
+      },
+      "ended_utc": "2026-11-03T08:56:09.500400+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "junit": {
+        "bytes": 496016,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/exact-source-tests.xml",
+        "sha256": "01da63671bcafe6b40fd980243f319a5bef457fbf2978911f6f3f376f5d93985"
+      },
+      "log": {
+        "bytes": 2821,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/exact-source-tests.log",
+        "sha256": "0b187b38cb8a4255867b19eaf8132e2f6a3dd770ab1834c38a0dc42c6f3b9f9d"
+      },
+      "outcome": "passed",
+      "passed": 2327,
+      "receipt": {
+        "bytes": 1000,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/exact-source-tests-receipt.json",
+        "sha256": "5631b47d83e9d55427a501786545c8f5adb7c887c180f8ba1cb214c41fcb233b"
+      },
+      "scope": "full tests tree at this named source only",
+      "source_binding_basis": "HEAD of retained receipt cwd at verification; supervisor has no start-commit field",
+      "source_commit": "f969f7cc2f88549ce12c5afbbbeba7b30f38828e",
+      "started_utc": "2026-11-03T08:36:10.761431+00:00",
+      "suite_passed": true,
+      "zero_process_exit_is_not_scientific_success": false
+    },
+    "final-focused": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/reports",
+        "tests/optimization/test_native_search_v15.py",
+        "tests/optimization/test_native_search_v15_http_contract.py",
+        "tests/optimization/test_native_staged_author_v15.py",
+        "tests/system/test_native_researcher_work_v15.py",
+        "tests/system/test_native_capability_catalog.py",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/final-focused.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 615
+      },
+      "ended_utc": "2026-11-03T09:53:51.545389+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "junit": {
+        "bytes": 100795,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/final-focused.xml",
+        "sha256": "4e3430128e4809cc5ed55fabff4f0d87eeb09a1571f125f36ec09434976f2aa6"
+      },
+      "log": {
+        "bytes": 883,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/final-focused.log",
+        "sha256": "3d086ac9f007dcba43f52b20480657d262bcd89fff1cc24b70a024bc14d0c139"
+      },
+      "outcome": "passed",
+      "passed": 615,
+      "receipt": {
+        "bytes": 1292,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/final-focused-receipt.json",
+        "sha256": "13e628ebc147cfaa8030f8c89bc9ff3af9c0e9a91cac692d4db5fafb7ea63a02"
+      },
+      "scope": "exact recorded command at this named source",
+      "source_binding_basis": "HEAD of retained receipt cwd at verification; supervisor has no start-commit field",
+      "source_commit": "d6c10b8e2aff730b70a691d846ddacaa7f7af12f",
+      "started_utc": "2026-11-03T09:51:59.586484+00:00",
+      "suite_passed": true,
+      "zero_process_exit_is_not_scientific_success": false
+    },
+    "publication-source-tests": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 11,
+        "skipped": 6,
+        "tests": 2397
+      },
+      "ended_utc": "2026-11-03T09:25:58.585128+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 1,
+      "junit": {
+        "bytes": 517164,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests.xml",
+        "sha256": "4c35899ad6e97d0f6f0be3f01f0b48ca43246b90a1c84ced70486e5aec414923"
+      },
+      "log": {
+        "bytes": 15048,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests.log",
+        "sha256": "396c2056b52ce679b7516f856177d490a1070bf8eeea925507f6637a49cdbcf0"
+      },
+      "outcome": "failed-not-a-pass",
+      "passing_test_cases_within_failed_suite": 2380,
+      "receipt": {
+        "bytes": 1016,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests-receipt.json",
+        "sha256": "1a32e4c0582e82ebdb6773f2eed26f4b2656ddd58aa6bfb8c19f9395c67ce6e8"
+      },
+      "scope": "full tests tree at this named source only",
+      "source_binding_basis": "HEAD of retained receipt cwd at verification; supervisor has no start-commit field",
+      "source_commit": "c0fcbfddab80a47001835694309e71b9a95517fe",
+      "started_utc": "2026-11-03T09:06:05.716393+00:00",
+      "suite_passed": false,
+      "zero_process_exit_is_not_scientific_success": false
+    },
+    "publication-source-tests-r2": {
+      "command": [
+        "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--tb=short",
+        "--junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests-r2.xml"
+      ],
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 6,
+        "tests": 2428
+      },
+      "ended_utc": "2026-11-03T09:45:10.358387+00:00",
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "HF_HUB_OFFLINE": "1",
+        "PATH": "/Users/shiro/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+        "PYTHONHASHSEED": "42",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "exit_code": 0,
+      "junit": {
+        "bytes": 512390,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests-r2.xml",
+        "sha256": "ff2504abf6f498b2bc18eaee628e68d53231d87d320780e966e69e5652e6370a"
+      },
+      "log": {
+        "bytes": 2909,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests-r2.log",
+        "sha256": "e5fb7a6dfeb53c95d06a6b3abef50ba7375fbcb5e67ac8625afb03a4d1cfebe5"
+      },
+      "outcome": "passed",
+      "passed": 2422,
+      "receipt": {
+        "bytes": 1025,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/publication-source-tests-r2-receipt.json",
+        "sha256": "5915097d587ca009189debc9a7af1b23ba1489a95b06c445060f88e199ae9fa4"
+      },
+      "scope": "full tests tree at this named source only",
+      "source_binding_basis": "HEAD of retained receipt cwd at verification; supervisor has no start-commit field",
+      "source_commit": "b50a48ce057e9d868b0e9f401b453d1b0257de10",
+      "started_utc": "2026-11-03T09:29:12.912055+00:00",
+      "suite_passed": true,
+      "zero_process_exit_is_not_scientific_success": false
+    }
+  },
+  "content_sha256": "65f8d08b9d2e367b86861f6133fe869c4984fb8d945fa1c26306412a73f20fb7",
+  "counts_are_not_pooled": true,
+  "current_publication_all_runtime_blobs_equal_actual_experiments_claimed": false,
+  "full_suite_results_apply_only_to_their_named_sources": true,
+  "latest_publication_full_suite_check": "publication-source-tests-r2",
+  "new_model_calls": 0,
+  "new_native_trials": 0,
+  "no_additional_actual_trials_scheduled_by_this_utility": true,
+  "optional_current_protocol_role_capability_and_history_improvements_used_in_a2": false,
+  "paper_build_source": "d6c10b8e2aff730b70a691d846ddacaa7f7af12f",
+  "pdf_review": {
+    "all_pages_visually_inspected": true,
+    "confirmation": "explicit paper-owner --reviewed-all-pages; this utility checks assets, not visual quality",
+    "enlarged": [
+      {
+        "bytes": 353822,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-01.png",
+        "sha256": "f80753d5de43f82f6fa545d23c7b63ac730ae083d462196bf3be8b1813f90cbc"
+      },
+      {
+        "bytes": 365254,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-02.png",
+        "sha256": "3379483ec444db29fcf2447a96b68b7adb8f8440797acd8457a4a5301faf664b"
+      },
+      {
+        "bytes": 484620,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-37.png",
+        "sha256": "9dde677b39742529640d6cf1d0ba4696df608eac2fe93c6dfb5607390725dc0a"
+      },
+      {
+        "bytes": 471641,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-41.png",
+        "sha256": "2c1e71d4d2e92e2e58ab6b9f741dab310e06333fb3ac22c28bad2e1261264037"
+      },
+      {
+        "bytes": 478839,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-44.png",
+        "sha256": "288471a482d5404fe92707e68c08a73560cdd9c2230abb8848fc495db2096271"
+      },
+      {
+        "bytes": 490411,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-46.png",
+        "sha256": "d693e110bb110b4d522d91b978b282b676fffccd5df9cdbd59bbe80332f234d8"
+      },
+      {
+        "bytes": 330721,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-47.png",
+        "sha256": "6b77e35c79513e9558b4532afde84469313f67dba3dd6011e7ffded71226714f"
+      },
+      {
+        "bytes": 150102,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-48.png",
+        "sha256": "a6c7d095bac371359c26d500adda631b388c1cfaef29d09bbc41992c6e0ff084"
+      },
+      {
+        "bytes": 414000,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-51.png",
+        "sha256": "323550978f3775e033381a4b7bc0df43809e5f7df5750949b55add7d31e7602f"
+      },
+      {
+        "bytes": 447665,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-52.png",
+        "sha256": "9729b69afea2ca517387d7c38327b5472ef902b56499220f15db01f835216205"
+      },
+      {
+        "bytes": 388682,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-53.png",
+        "sha256": "6ebe8cbafb1aa85250f80fd72a3effc0198b08e4ddd63c44bfd53fe77986b096"
+      },
+      {
+        "bytes": 357515,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-62.png",
+        "sha256": "8db51edf4e6e9c704e26ac87f17a367521dc6971af0ec6f193f63ce486c95da1"
+      },
+      {
+        "bytes": 552371,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-63.png",
+        "sha256": "ee6999f6c210c2add11438d0f70dabee0414207fac545658b7c09f72f01c2602"
+      },
+      {
+        "bytes": 472029,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-64.png",
+        "sha256": "922ec30525067e3867eabf56292a22d3552bd3b183db463802a0f82ef27966fa"
+      },
+      {
+        "bytes": 105573,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/enlarged/page-65.png",
+        "sha256": "24476ac305f20458d4cbf4c9a06f80afd5348617c3f8b5e4329950e9298cee8d"
+      }
+    ],
+    "enlarged_pages": [
+      1,
+      2,
+      37,
+      41,
+      44,
+      46,
+      47,
+      48,
+      51,
+      52,
+      53,
+      62,
+      63,
+      64,
+      65
+    ],
+    "pages": 65,
+    "render_binding": "owner confirmation plus current PDF/page counts and render hashes; no independent rerender",
+    "rendered_pages": [
+      {
+        "bytes": 130907,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-01.png",
+        "sha256": "6b5bbe5f0e8c2b65134f0459d87aa17a5fb7a8df02c16e1777d40809c39c9883"
+      },
+      {
+        "bytes": 138623,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-02.png",
+        "sha256": "0d1955bf345f01f3f84c4140edc621412451ec5a2cddc7f52c84a67c2297509a"
+      },
+      {
+        "bytes": 146173,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-03.png",
+        "sha256": "e4169c9e4e1ca44f678d4f0e399dc7c8dd8b822daba9dbf7ff24ad23d1f411d4"
+      },
+      {
+        "bytes": 139123,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-04.png",
+        "sha256": "40c6171f15eee4a9374ee89ad5319f26f6a62be4918e358b43a55b37ec3737cc"
+      },
+      {
+        "bytes": 149231,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-05.png",
+        "sha256": "1e390f3eacb5255ede2c4f24d5516548d428a11df04536faf21eaf43444c598d"
+      },
+      {
+        "bytes": 132663,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-06.png",
+        "sha256": "3c53a57c918a869e3f9772b6f573ab826f0a6f981ec72ea805d53295208e3784"
+      },
+      {
+        "bytes": 134315,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-07.png",
+        "sha256": "8ecee579c3a0a614536459e91e501538232027e8dfa31542565da837d50bc353"
+      },
+      {
+        "bytes": 89751,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-08.png",
+        "sha256": "2667d026cb25f62ea344d2218ef16ba73a376c9213a83414a92ae1fcb89713ad"
+      },
+      {
+        "bytes": 150092,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-09.png",
+        "sha256": "4548944030ca0b02a78a03bef95857065d2a92440069337aa192f9578a6d4d4a"
+      },
+      {
+        "bytes": 139330,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-10.png",
+        "sha256": "7d7f59d96e4560c99a7e9f934c79ea6fd6a158217b83e5a191e7c5cd847bee8c"
+      },
+      {
+        "bytes": 142937,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-11.png",
+        "sha256": "6ef6a0bb4b7e1c0bc198bc9c74087f3dce9106e5a104b5db3ed641d17a90912c"
+      },
+      {
+        "bytes": 177394,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-12.png",
+        "sha256": "d1c01141bb1cd5a2adf95fda4aaa43dc740871c067f2ab3f2b9bf870a2ed2350"
+      },
+      {
+        "bytes": 188832,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-13.png",
+        "sha256": "39819681a353d64fb2cc0673076506669a06d159b63d6f15a52ad7107764dca6"
+      },
+      {
+        "bytes": 109185,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-14.png",
+        "sha256": "7d9aa967b36cd9dc15c6b31ac1fb1441801a219085018f4b48ffc301806d601b"
+      },
+      {
+        "bytes": 176331,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-15.png",
+        "sha256": "464902c285ea203aec5b9db6d90fb71ca2654450317a530b4a307c1eac2188ed"
+      },
+      {
+        "bytes": 146008,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-16.png",
+        "sha256": "d082a545332c79d4f8f47a4e3832c6d12e8b5a6fac3ab4beb01217854ee62b6e"
+      },
+      {
+        "bytes": 172857,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-17.png",
+        "sha256": "0206d01bcfff22f805ebcd51a4a767f14a7e79f5c21497957243cba1d633d1bc"
+      },
+      {
+        "bytes": 177306,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-18.png",
+        "sha256": "83b578986e81f93c45808cf63f3271e6762c1b5951e8c4177e1cc97fe1230a70"
+      },
+      {
+        "bytes": 137383,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-19.png",
+        "sha256": "31b67a59711fad08685f7ac3718668be1c986fd32c39fac4d75c3326f8e5077c"
+      },
+      {
+        "bytes": 176929,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-20.png",
+        "sha256": "0a2baa96cc428b935ac732bfde41bc133ff5dbd6a2bc330cf3069393c7e9946c"
+      },
+      {
+        "bytes": 183501,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-21.png",
+        "sha256": "f5ac930aee10cf57ca913460a1612dc103568bf03c55529d39b460f2dfa87e2b"
+      },
+      {
+        "bytes": 124681,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-22.png",
+        "sha256": "73a5cda7fa368ae66ddb3f03662a5e1440fa25861d183b56638c89a67ee79fed"
+      },
+      {
+        "bytes": 155549,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-23.png",
+        "sha256": "0dff8bd17b8b1db72f2f6073416083a28c617417795398c0cabd3f267a138934"
+      },
+      {
+        "bytes": 103094,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-24.png",
+        "sha256": "15e5037967d2dd7d9dd61f53df35a73ed6c1a3443817ae13870b37085922a703"
+      },
+      {
+        "bytes": 76845,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-25.png",
+        "sha256": "3adf5c321bc7e5e21fa5b7fc204c8aa64d2c725257d2e850590241f96b218b76"
+      },
+      {
+        "bytes": 137804,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-26.png",
+        "sha256": "7fa36c1b60c88882a142ecbf4f5ece2d6156a67840ae9b650a7d1b4b46a083b6"
+      },
+      {
+        "bytes": 159304,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-27.png",
+        "sha256": "59d3d52a9c21bc721afec7efc377bc918af991aac8b662a71f485ee012497cbb"
+      },
+      {
+        "bytes": 145969,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-28.png",
+        "sha256": "6b49fbec50daf42b64cb734ada54a3b9271fc6874d4a49aba43e1914b02d38d1"
+      },
+      {
+        "bytes": 77435,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-29.png",
+        "sha256": "fa9d949dc734a5f9ea0095d246f06d9c292bd242f738afd89abbd808c46b7c65"
+      },
+      {
+        "bytes": 167793,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-30.png",
+        "sha256": "3ac607065f43f8a145ca356f2e109237aed2101fba48bf836326211fea7f7eb0"
+      },
+      {
+        "bytes": 108960,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-31.png",
+        "sha256": "7a0a30789a50f7fa8a9174df0bc923df8cf3fe6d5b5a0b195cb6a52522491cb3"
+      },
+      {
+        "bytes": 177812,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-32.png",
+        "sha256": "c34831f603e1603c82778d573447368ac6db4cf0c5466557d124b1b1c9407754"
+      },
+      {
+        "bytes": 143537,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-33.png",
+        "sha256": "752e54207f972962971e88fb8e3ddce07088ff572b9f1998f09bf6b0c0972ce3"
+      },
+      {
+        "bytes": 162344,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-34.png",
+        "sha256": "5530c50503a3e97037515e28f740e893370e20ae638568e3be90cd0ab74b8aba"
+      },
+      {
+        "bytes": 134498,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-35.png",
+        "sha256": "d7c3e0d40ce5876463a0c23fdee387496fd304d3602ab1106f52dac5867fb07c"
+      },
+      {
+        "bytes": 96675,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-36.png",
+        "sha256": "a1f949ab711173658c51796a8c2132d65be9bfee7d26da1f1ac8169f004e837f"
+      },
+      {
+        "bytes": 181094,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-37.png",
+        "sha256": "7514a2633bf5d61e3888c950dc164178bfd3e23b910cb2ed0c812d8b661d2051"
+      },
+      {
+        "bytes": 135870,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-38.png",
+        "sha256": "8a387a60a66f1330a96f86fdbed791412bc52379f9e06288cbc7e901135f01dd"
+      },
+      {
+        "bytes": 143936,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-39.png",
+        "sha256": "7a5d8c2004b89dc65047695bd84cb68f345bfb7c599eedd09173e6b9ebdadb42"
+      },
+      {
+        "bytes": 115285,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-40.png",
+        "sha256": "450c84222c31f2c12c48bae1e18958ca5a3f18d4af38b7a3f09bb46a0a4ef3b4"
+      },
+      {
+        "bytes": 172138,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-41.png",
+        "sha256": "c73de966cddd286320e2f4b0a8a55b4ee391900b47892a6ee970e0c6ec22c2e5"
+      },
+      {
+        "bytes": 164356,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-42.png",
+        "sha256": "d681bc4f6d7123706b0c47e93c21f9e5f7a1aa47d18e8d17922185e311bbf075"
+      },
+      {
+        "bytes": 100877,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-43.png",
+        "sha256": "ceb514a81b11e2de9a315876f8c65f671abfa7f476054fec4b07e46aaa4d0cfb"
+      },
+      {
+        "bytes": 180311,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-44.png",
+        "sha256": "fd79c70c95b2b234955e936455bce16d4834f146df78cbe7be65e3eba1783eeb"
+      },
+      {
+        "bytes": 83427,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-45.png",
+        "sha256": "2ed93e3a3015971778c63d2baa3a2c59a4bad942b525d53cebd78b7a98965041"
+      },
+      {
+        "bytes": 181218,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-46.png",
+        "sha256": "df3d3ab3a2471d509c330023c6623189097c4fc9874a935cd26694c2b634bf5d"
+      },
+      {
+        "bytes": 127851,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-47.png",
+        "sha256": "1a49c190189d46629e0f370d9fccf6624ab6616be54854159ddd5aba6f483555"
+      },
+      {
+        "bytes": 52281,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-48.png",
+        "sha256": "110ffc6367d281b2b5b66769a13e023fbcebe746901c54d53e9c419c0769b262"
+      },
+      {
+        "bytes": 162460,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-49.png",
+        "sha256": "e828dc25918541037efd1e80b54a6bebbe8857e1edc310d7ad48a038db517c11"
+      },
+      {
+        "bytes": 178635,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-50.png",
+        "sha256": "fa2f2189ddecefec9d30cbfc8ca88227ce866fb501e867e4a9c7e49d703d36b3"
+      },
+      {
+        "bytes": 147497,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-51.png",
+        "sha256": "456526ec7367a85bced1d7dcfbb9726bcb129a05947ea01a7bed7e20dda6b772"
+      },
+      {
+        "bytes": 170062,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-52.png",
+        "sha256": "8bffc7c20d5890fe0b298573c43e317212ee5902ff3e1549d2273ba213d551dd"
+      },
+      {
+        "bytes": 150183,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-53.png",
+        "sha256": "64d17728eb09109a03e957e6f63110932ce86ec1b474b1a8a6ef227c9c69395d"
+      },
+      {
+        "bytes": 73970,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-54.png",
+        "sha256": "ae642bdcdbe18d6f8213a138dd5641c9c6766fbd72e5fc2a5c86517908a53879"
+      },
+      {
+        "bytes": 46313,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-55.png",
+        "sha256": "636bbdf8651b65ed3776e7f0196b2dd2cb8a680c50daffd86f2a94ca0f8ed994"
+      },
+      {
+        "bytes": 108915,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-56.png",
+        "sha256": "1a0a0448eae4f6533e5ebbf6d64b4729d8081603355c79e3c28b956bd186e2f8"
+      },
+      {
+        "bytes": 41421,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-57.png",
+        "sha256": "8809fb1ecc9be318867f05314d5f93286c66d99a8e20a41504d8b8e30916bcf0"
+      },
+      {
+        "bytes": 98875,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-58.png",
+        "sha256": "aa5742fe42ab8b722dbc66b70b63bd6eea875a50e01022d373b03d3c469124cc"
+      },
+      {
+        "bytes": 64606,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-59.png",
+        "sha256": "bdcef44ba76893b67082a54269574fa10d1da4b93cf1a7e66ffa7bb92396b5cf"
+      },
+      {
+        "bytes": 108479,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-60.png",
+        "sha256": "10df8554145b146dcf1f7c9ce972a9ea922550c356cc1ce72f6e45952ad05849"
+      },
+      {
+        "bytes": 107130,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-61.png",
+        "sha256": "11d2055a33c49588d87f1b2b492d95bc5dc3beb5694f5c171180932d6c481ac6"
+      },
+      {
+        "bytes": 136046,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-62.png",
+        "sha256": "ecb2515fa8d6c37dc0cd93e6bcf587252b80a46dbddff6362a8efc8de054cfbe"
+      },
+      {
+        "bytes": 204111,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-63.png",
+        "sha256": "8c0048a02f2b8ddd678e3cfc36ff313b7097e2ce2256509b59143d3cf8ef774f"
+      },
+      {
+        "bytes": 183125,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-64.png",
+        "sha256": "150d9b6251264f684d97d38896792cbfaaac113b1fa0b9664561c87fb66ac901"
+      },
+      {
+        "bytes": 41752,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/pages/page-65.png",
+        "sha256": "bd766e3c4cf3026dd4c461944c96e699d8c960659beaf6eca3720249cd46a022"
+      }
+    ],
+    "sheets": [
+      {
+        "bytes": 2504148,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/sheets/sheet-01.png",
+        "sha256": "74b9327f672506c1642abce132530a6fd0a681b16ea67fd87ad0a1a1c931c41a"
+      },
+      {
+        "bytes": 2853212,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/sheets/sheet-02.png",
+        "sha256": "edc6ebe12aaa6ab484810f50c5eeff7e977ce6195580efface0167565312c82c"
+      },
+      {
+        "bytes": 2378732,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/sheets/sheet-03.png",
+        "sha256": "2f3e312a41d69022d175b4fe26beb5d25d7d5e8fb135ca9519b2f01ed3dbf5c3"
+      },
+      {
+        "bytes": 2494738,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/sheets/sheet-04.png",
+        "sha256": "aa7b0f19a0bb16eba601ce1431e3769a8363bdf2e206c955d92f45ea55e5695d"
+      },
+      {
+        "bytes": 2038570,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/sheets/sheet-05.png",
+        "sha256": "731bd9af5ddb1b10b4d1908fa381c4b63e42257f72c311966be37fe241d6ce62"
+      },
+      {
+        "bytes": 1005789,
+        "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/pdf-review-final/sheets/sheet-06.png",
+        "sha256": "b41bc3617cf898a59c0a5257359474c07189a9bfc4534a496f898641bd614373"
+      }
+    ]
+  },
+  "prior_pdf": {
+    "bytes": 4915495,
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-verification/prior-pdf/science-utopia-lab-v14.pdf",
+    "sha256": "ad34845068c2640c8c5d68fcfcade7722701b1e399b2e3142aa4c1bae204136d"
+  },
+  "schema": "scienceutopia.native-staged-publication-verification.v15",
+  "status": "source-scoped-tests-audited-actual-feedback-and-owner-reviewed-artifacts-verified"
+}

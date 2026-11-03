@@ -174,3 +174,39 @@ display client `2fd6aea` are explicitly separate; served asset hashes are
 recorded. A selected-row resize defect is corrected prospectively and tested,
 not edited into the frozen runtime. All preview processes are stopped after
 capture. No additional actual inference is scheduled.
+
+## Final source-scoped software and PDF review
+
+The full clean publication rerun at `b50a48c` passes2422 tests with6 skips in
+955.17s. The earlier11 failures remain failures at their own source. Focused
+checks at `c31c41c` pass615 tests in127.43s; an unintended launchd restart
+after moving the completed receipt repeats the same source-specific scope
+(615pass/110.48s). Both receipts/logs/XMLs are preserved under explicit
+`final-focused-c31*` archive names. Their original log/XML path operands refer
+to the then-current names, not the new final run. No inference or scientific
+trial is involved; the owned launchd labels are removed before final checks.
+
+Root updates the conclusion and reproducibility statement at clean source
+`d6c10b8`, rebuilds using cached Tectonic resources and reviews all65 pages
+at75dpi plus15 selected pages at150dpi. The final PDF SHA256 is
+`650cd414cc8c2fd12bfefef3ed065e99942daef6a0e4cf2035d14caedf2f2326`.
+No overfull boxes, undefined references, clipped text or overlapping figures
+are found. The earlier63-page review remains separate; final verification
+uses only the new65-page renders in `pdf-review-final`. Prior v14 PDF bytes
+remain recoverable at their retained locator and in Git. No additional actual
+world or designer call is scheduled by publication.
+
+Final focused checks at clean immutable `d6c10b8` pass615 tests in110.75s.
+The read-only publication utility succeeds, binding the matching historical
+a1/a2 analysis commits, unchanged153/209-file inventories, source-specific
+full/focused results,26 publication assets,65 page renders,6 review sheets
+and15 enlarged pages. Its content SHA256 is
+`65f8d08b9d2e367b86861f6133fe869c4984fb8d945fa1c26306412a73f20fb7`.
+It neither reruns old experiments through the evolving interpreter nor makes
+model/container calls. Source-specific failures, prospective interfaces and
+actual unchanged-design results remain separate. Independent read-only final
+review finds no material unsupported claim or missed finite operational
+condition. No owned inference, preview or test job remains; the user-owned
+Ollama endpoint is untouched. Final delivery commits contain only the reviewed
+PDF, publication proof and status/index/log documentation after the named
+paper source, not another native experiment or an unrecorded runtime repair.

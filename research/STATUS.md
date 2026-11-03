@@ -2,7 +2,7 @@
 
 Updated: 2026-11-03
 
-## V15 actual operational loop achieved; publication verification in progress
+## V15 actual operational loop achieved; reviewed publication
 
 The [whole-project inventory](milestones/2026-11-03-staged-native-loop-v15.md)
 maps the original goals to implemented, SCRIPTED, actual-Qwen and open evidence.
@@ -37,13 +37,19 @@ host source repair, researcher training or hidden merit/adoption veto is added.
 The new arbitrary-work and later discovery/role/history improvements have
 separate SCRIPTED verification and were **not used by a2**.
 
-Actual inference has stopped. Root is completing the actual scientific figure,
-final source-scoped software verification, reviewed PDF and publication push.
+Actual inference has stopped. The actual three-panel figure and source-bound
+desktop/mobile UI captures are integrated. The 65-page paper is built from
+`d6c10b8`; all pages and 15 enlarged pages are visually inspected, with no
+overfull boxes or undefined references. Source-specific tests and artifact
+hashes are bound by the [publication receipt](results/native-staged-search-v15-verification.json).
 The full suite at a1's source passes 2327 tests with 6 skips. A later publication
 scope retains 11 failures caused by an incomplete synthetic transport fixture;
-the corrected real-prompt fixture passes its related 115 checks. A separate
-fresh full run is in progress. These overlapping scopes are not added or
-relabelled as a full-suite pass of a different source. See the
+the corrected real-prompt fixture passes its related 115 checks. The clean
+full rerun at `b50a48c` passes 2422 tests with 6 skips. These overlapping
+scopes are not added or relabelled as a full-suite pass of another source.
+Final publication checks pass615 tests at paper-build source `d6c10b8`, retaining
+their own source/command rather than being additional native experiments.
+No owned inference, preview or test job remains. See the
 [forward-only work log](logbook/2026-11-03-staged-native-authoring-v15.md).
 
 ## Completed finite v14: implementation and actual bounded authoring failures

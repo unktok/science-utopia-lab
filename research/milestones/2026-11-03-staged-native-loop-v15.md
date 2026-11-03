@@ -5,7 +5,9 @@ authoring and open-work interfaces. Actual a1 is independently closed as an
 inspection-loop failure. Actual a2 is independently terminal-audited: both
 objective arms complete two automatic original-world generations with exact
 own-loss feedback, but all candidates retain their parent. This document does not mark the
-project, all non-scale work, useful invention or a full game complete.
+project, all non-scale work, useful invention or a full game complete. The
+actual results, scientific figure, source-bound desktop/mobile captures and
+reviewed 65-page paper now have a separate publication-verification receipt.
 
 ## The original goal, still the organizing principle
 
@@ -42,10 +44,11 @@ are methods for that goal. Whole-world differentiability is not required:
 | Optional gradient-assisted methods | Hard/soft represented trace gradients, opaque native-cost score-function estimators, conditional mixed-design LR/control-variate and nested kernels | V9–V13 execute gradient-related/native followups, including unchanged or worse outcomes; V13 real eight-world nested path is audited | No whole-world pathwise AD, likelihood for arbitrary code invention, estimator superiority or improved scientist/inventor follows |
 | Same-society / recursive improvement | Explicit checkpoint-bound institution migration, world-originated proposals and durable same-society continuation | Earlier same-society small probes run; adoption is caller-controlled and objective-visible | Automatic beneficial invention, objective-conditioned live adoption and recursive improvement of the designer remain separate open work |
 | English game-like research interface | Cyberpunk pixel-city replay/foundry, source/wire/process editing, exact loss/method/budget consent, native jobs and observed staged chronicle | Historical actual snapshots are recorded; V15 actual captures require stopped-writer/source-bound evidence and remain distinct from audit | An auditable English workbench is not a finished management game; artwork/animation is not evidence of unseen scientific work |
-| Research operations and sharing | Git/worktrees, frozen protocols, source pins, own-history logs, raw inventories, independent reports, scientific figures and a working paper | V14 publication is closed; V15 publication and final source/artifact verification are not claimed complete here yet | Keep revision budgets, software tests, physical inference, failures and interpretation distinct |
+| Research operations and sharing | Git/worktrees, frozen protocols, source pins, own-history logs, raw inventories, independent reports, scientific figures and a working paper | V15 actual figure and source-bound desktop/mobile captures are integrated; the65-page reviewed PDF and source-specific checks have their own publication receipt | Keep revision budgets, software tests, physical inference, failures and interpretation distinct |
 
 Evidence anchors:
 
+- [V15 publication verification and reviewed PDF/artifact identities](../results/native-staged-search-v15-verification.json).
 - [Parameter/held-out study status](../STATUS.md#metric-conditioned-study-execution-snapshot).
 - [V5 external/native two-objective source loop](../results/native-external-objectives-v5-a1.md),
   [V7 native entities/effects](../components/native-open-domain-v7.md),
@@ -119,7 +122,7 @@ and five detailed generic effect ABI cards, including arbitrary researcher
 work, literal Python, bounded processes, domain commands and conserving
 resource transfers. Discovery neither supplies policies nor mutates a graph
 nor grants privileges. SCRIPTED tests verify no model/native handler/container
-dispatch. That future authoring affordance is intentionally absent from this
+dispatch. That future authoring affordance is intentionally absent from the
 historical matching-a2 analysis tree and was not used in the frozen pilot.
 
 ## Next bounded research, not automatic scale-up
