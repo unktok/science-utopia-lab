@@ -1,0 +1,97 @@
+\section{Automatic Institutional Search from an Objective and Budget}
+\label{sec:automatic-search-v14}
+
+The preceding pilot connects free design and conditional optimization but uses
+externally supplied code responses. We next remove that manual authoring
+step. An exact LossSpec, initial SystemSpec, method and native-evaluation
+budget drive a durable controller: request a model-authored institution,
+validate its literal edits, evaluate it in the original researcher world,
+and feed the resulting own history to the next authoring request.
+This is automation of institutional search, not training the researcher LLM.
+
+\paragraph{Authored algorithms and structure.}
+The local fixed Qwen3:8B designer emits an atomic JSON-pointer transaction,
+optional conditional edit factors and bounded continuous coordinates, plus
+a rationale. The transaction can change Python bodies, mechanisms, typed
+ports, protocol types, connections, schedules and process metadata. It is
+not a choice among a host-written institution catalogue. The compiler adds
+only the exact parent fingerprint and provenance envelopes; it does not
+repair Python, fill missing wires or invent missing scientific measurements.
+Every reachable authored code node must retain the operator-pinned sandbox
+image. Existing no-network Docker execution remains separate from the host.
+The initial system is the disclosed pre-existing open-world seed example;
+its developer-written source is not attributed to this new model author.
+
+The prompt contains the complete current parent, exact loss and a deterministic
+own-history view with every scalar outcome, null failure and saved update.
+Repeated older candidate bodies are represented by hashes in this view;
+the complete requests and histories remain archived. Thus the author has
+recorded feedback, without a claim that every historical byte is in its
+context window. Only its own run's history is supplied. Raw model text,
+strictly parsed output, technical diagnostics and compiled definitions are
+linked to the exact request and source. Code is never executed on the host.
+
+\paragraph{One interface, two existing search routes.}
+Black-box mode requests one free institution per scheduled slot, runs one
+native forward and supplies the complete own feedback to the next generation.
+Nested-LR mode reuses the preceding four-slot schedule unchanged: two IID
+G0 designs, one LOO score update, one exact updated-G0 forward, and one
+own-history free G1 redesign/forward. The UI/API supports black-box budgets
+from one to eight and nested-LR exactly four, rather than claiming arbitrary
+nested schedules. An explicitly empty parameter set and explicit retention
+remain legal. There is no implicit transport between changed coordinate
+meanings and no whole-world or source-generator derivative requirement.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{llrr}
+\toprule
+Exact objective & Route & Native slots & Free generations \\
+\midrule
+$L_A=-A$ & Black-box & 2 & 2 \\
+$L_E=-Q+0.5R$ & Black-box & 2 & 2 \\
+$L_E=-Q+0.5R$ & Nested-LR & 4 & 2 \\
+\midrule
+Total & & 8 & 6 \\
+\bottomrule
+\end{tabular}
+\caption{Prospective automatic-search integration budget. The unchanged
+five-researcher, two-year, development-seed42 world uses the four-year real
+corpus and fixed Qwen weights. Unequal method budgets serve interface
+integration, not a controlled optimizer comparison.}
+\label{tab:automatic-budget-v14}
+\end{table}
+
+\paragraph{Budgets, failures and restart.}
+The prospective pilot fixes eight native slots and six free authoring requests
+(Table~\ref{tab:automatic-budget-v14}). Each authoring request permits at most
+two technical attempts, each with at most 4096 output tokens: at most twelve
+generation POSTs, with model-digest verification GETs counted separately.
+There are no network/SDK retries. A durable dispatch intent precedes each call;
+an interrupted intent without a completed receipt consumes that attempt,
+without redispatch or an exactly-once HTTP claim. Successful response receipts
+are replayed rather than regenerated. Technical exhaustion produces an invalid
+vocabulary and charged null slots, never a substituted baseline. A later
+scheduled generation may use the failure as feedback, but receives no extra
+budget. Native checkpoint/response replay supports cold restart. All ties,
+worse draws and failed designs remain in the trace.
+
+\paragraph{Local consent and observed progress.}
+The same controller backs a loopback-only authenticated queue. A user edits
+the existing English Foundry workbench, validates the exact request and grants
+fresh request-bound compute consent before enqueueing. Changing the request
+invalidates validation and consent; viewing/importing evidence does not
+execute or adopt it. Source, model, corpus/dataset and sandbox image are
+operator-bound, not request-selected paths, modules or remote endpoints.
+Single-writer ownership and a shared inference lock serialize designer and
+researcher use of the resident model. Read-only live file observations expose
+generation receipts, native checkpoint years and known cache rows. They are
+labelled provisional, leave unavailable counts null and cannot establish
+completion. Final costs and outcomes come from independent stopped-writer
+audits, separately for the designer and the researcher roles.
+
+The actual pilot calls this controller from the source-pinned CLI; UI queue,
+consent and interruption checks use explicitly SCRIPTED tests rather than an
+extra unbudgeted native world. Original-world execution, institutional
+authorship and interface verification are reported as distinct evidence.

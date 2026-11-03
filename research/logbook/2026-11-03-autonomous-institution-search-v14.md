@@ -43,3 +43,34 @@ cold-restart additions. Independent auditor/figure contract`aeb0a40` integrates
 as`ba2a0e7`, with further literal prompt/raw-response joins in progress.
 All model transport tests so far are SCRIPTED. No actual v14 model/native call,
 main merge or push has occurred at this entry.
+
+## Source freeze and first automatic authoring outcomes
+
+Final pre-freeze joint source scope passes96 tests in11.46 seconds. Runtime
+live-file observation`faca184` integrates as`364a525`, automatic author/driver/
+protocol as`323dcb4`, and UI live telemetry`0b06a7a` as`54a7d92`.
+Actual source freezes at`54a7d92dad5221f83f25f81d62aa225ab38cef25` in a separate
+clean detached experiment worktree. Full exact-source tests and the actual
+automatic writer run as separately supervised launchd jobs with explicit PATH,
+Python/hash/offline environment, start/exit receipts and fresh log targets.
+No active-source change is made, and no external specialist supplies answers.
+
+The first two throughput generations each exhaust their two local-Qwen drafts:
+all target a code-artifact path on a non-code array element. They consume their
+two native slots as null generation failures; no world or scientist response
+is fabricated. Independent read-only diagnosis identifies a low-level addressing
+problem, plus string/numeric/schema-type mistakes, not a scientific-merit veto.
+The current first-error feedback is too generic to identify the actual owner.
+
+The fixed a1 schedule continues unchanged. Separately, a specialist implements
+stable-mechanism-ID edit IR and structured pointer/type diagnostics using only
+SCRIPTED tests. It must not reinterpret or repair historical a1 candidates,
+alter the active source/budget or imply useful invention. Any later verification
+of a revised interface must be separately prospective and attributable, not an
+extra optimization trial hidden inside a1. Raw a1 authoring errors remain data.
+
+Root reads the PDF skill fully and runs its edit-operation marker exactly once
+before v14 manuscript authoring. New methods describe automatic authorship,
+bounded failure handling, original-world/controller reuse and explicit local
+consent. Actual outcomes will be added only after stopped-writer independent
+audit. No PDF result or completion is claimed at this stage.
