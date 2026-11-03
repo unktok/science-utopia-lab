@@ -40,6 +40,29 @@ assistant bytes and transport bodies remain outside Git; a full audit can be
 regenerated without inference. Generation lists follow campaign chronology,
 not lexical hash-directory order.
 
+For conversational engineering revisions, the exact source-pinned
+`build_conversation` and `SYSTEM_PROMPT` reconstruct the actual multi-turn
+provider messages. The auditor additionally checks the conversation schema and
+source-prompt hash. The protocol path and engineering revision come from the
+fully revalidated frozen driver plan, not from an a1-only filename assumption.
+The historical a1 interpreter/report checkout remains separate and unchanged.
+
+Per-generation summaries distinguish successful edit/splice turns, authored
+operation count, `base_patch: null`, node/wire counts, exact parent/base document
+hashes, literal source/protocol/wiring/process deltas and explicit exact parent
+retention. An additional graph projection excludes metadata for diagnosis;
+metadata can itself affect execution, so equality of that projection is not
+called behavioral equivalence. No source inherited from the developer seed is
+automatically attributed as new model-invented code.
+
+Own previous observation IDs/statuses/scalar losses and the selected parent
+observation are explicit feedback links. Every compact native row retains A
+(accepted decisions), Q (actual accepted raw-peer-score sum), R (actual review
+records), same-checkpoint cross-scores, native checkpoint identity, scientist
+reply/wire and recorded/committed code counts, with hashes of complete activity
+and capability proofs. These descriptive fields are not additional optimization
+constraints or extra native evaluations.
+
 ## Interpretation boundaries
 
 The operational loop flag means two source-joined completed original-world
@@ -64,4 +87,11 @@ checkout for the old run and use a separate new checkout for the new run.
 SCRIPTED contracts cover bounded null paths, source/history/prompt corruption,
 unknown interrupted responses without redispatch, exact original transport,
 finite costs, queue idempotency/projections and unaccounted physical artifacts.
+Two complete-original-world positive fixtures also execute four native worlds
+each with SCRIPTED scientist replies: one metadata-only design path and one
+new literal Python node/schedule path through the actual pinned Docker executor.
+They verify original scientist wire/cache/checkpoints, exact evaluated candidate
+source/graph, measured loss fed into the next design, distinct physical runs,
+and unchanged raw evidence under repeated complete audit. Neither fixture is an
+actual-Qwen experiment or a useful-invention result.
 Actual recorded result: [v15 a1](../results/native-staged-search-v15-a1.md).

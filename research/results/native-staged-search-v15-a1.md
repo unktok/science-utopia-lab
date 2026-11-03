@@ -93,10 +93,19 @@ nulls, reset this budget, or present a later success as the original a1 outcome.
 
 ## Reproduction
 
-Use the approved Python in a matching analysis checkout. The command below is
-read-only with respect to raw evidence; place its output outside the raw root:
+Use the approved Python in the historical matching analysis commit
+`706d9b26b09dd3f685c304e3d23d07189480a403`, published as
+`origin/feature/staged-search-a1-report-v15`. The exact analysis-commit locator is
+also recorded by the publication verification receipt. Do **not** run this old
+experiment's audit from a newer main whose author interpreter has changed;
+strict source comparison deliberately rejects that mismatch. Choose a fresh
+analysis-worktree path. The command below is read-only with respect to raw
+evidence; place its output outside the raw root:
 
 ```sh
+git worktree add --detach /tmp/science-utopia-v15-a1-analysis \
+  706d9b26b09dd3f685c304e3d23d07189480a403
+cd /tmp/science-utopia-v15-a1-analysis
 CUDA_VISIBLE_DEVICES= PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
   /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python \
   scripts/analyze_native_staged_search_v15.py \
