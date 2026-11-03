@@ -107,3 +107,32 @@ fixture exports require `--allow-scripted-temp-only` with temporary input/output
 Current regression: 274 tests, typecheck and build pass; scripted browser QA
 also verifies all three audited requests, exact failed raw source inspection,
 zero candidate graph on generation failure and no additional dispatch.
+
+## Separately authorized two-slot engineering operator
+
+`scripts/submit-native-search-operator-v14.mjs` is an actual-only fixed operator
+for the separate bounded engineering QA. It has no fixture interception, starts
+only isolated Chrome, and never starts a worker, model or service. It refuses
+to run without `--start-authorized-ui-search` plus exact prospective request,
+operator provider file, experiment source, server canonical request SHA, fixed
+loopback port and output directory. Root authorization and a pinned running
+service are prerequisites; preparing the harness does not authorize running it.
+
+The fixed contract is throughput loss, black-box two native slots, seed42,
+two years and Qwen3:8b with two drafts per generation /4096 output tokens. The
+operator loads the exact shared editors, confirms old consent is invalidated,
+clicks validation once, checks source/request/budget/provider bindings and four
+maximum designer attempts, captures the pre-consent view, then explicitly checks
+compute consent and clicks the queue button once. It captures the queued view
+and retains request/response bodies, HTTP statuses, separate byte hashes, canonical
+request SHA and search ID. Session tokens are omitted. Any failure produces a
+receipt and forbids automatic submission retry. No adoption endpoint is used.
+
+```sh
+node --test scripts/test-native-search-operator-v14.mjs
+```
+
+Six pure guard tests run without network, Chrome or inference. The actual
+operator remains unrun until the root operator supplies its exact frozen pins,
+service and explicit start instruction. This engineering QA is separate from
+the original a1 negative result and cannot rewrite it.

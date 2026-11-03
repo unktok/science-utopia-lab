@@ -29,6 +29,7 @@ export function auditedDesignerAttempts(run: Record<string, any>): { label: stri
     label: `GENERATION ${generation} / ATTEMPT ${attempt.attempt ?? index} / ${proof.attempt_records?.[index]?.status ?? 'INTERRUPTED / RESPONSE UNKNOWN'} / ${proof.generation_status}`,
     value: { scope: 'Original authored output / raw assistant content. A failed or unparsed draft is not a valid candidate, execution or adoption.',
       generation_request_sha256: proof.request_sha256, attempt, dispatch_intent: proof.started_records?.[index] ?? null,
-      attempt_record: proof.attempt_records?.[index] ?? null, generation_result: proof.result, definition_consumed: proof.definition_consumed }
+      attempt_record: proof.attempt_records?.[index] ?? null, factual_address_diagnostic: proof.operation_diagnostics?.[index] ?? null,
+      generation_result: proof.result, definition_consumed: proof.definition_consumed }
   })));
 }
