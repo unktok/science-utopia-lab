@@ -339,3 +339,26 @@ def test_full_runtime_plan_request_specific_world_and_progress_join_with_scripte
         run = first['runs'][entry['id']]
         assert run['binding']['world']['request_sha256'] == digest(entry['request'])
         assert run['runtime_progress']['budget']['remaining'] == 0
+
+
+def test_authored_pointer_diagnostics_follow_prior_edits_without_repairing_or_mutating():
+    parent = {'items':[0,1,2]}
+    operations = [{'op':'remove','path':'/items/0'},
+        {'op':'replace','path':'/items/2','value':'def step(context): raise RuntimeError("NEVER_EXECUTE")'},
+        {'op':'add','path':'/items/-','value':9}]
+    before = deepcopy(parent),deepcopy(operations)
+    proof = audit.operation_pointer_diagnostics(parent,operations)
+    assert (parent,operations) == before
+    assert proof['first_address_error'] == 1
+    assert proof['operations'][1]['address_trace'][-1] == {'depth':1,'token':'2','owner_kind':'list','owner_length':2}
+    assert proof['operations'][1]['error']['message'] == 'array path index out of range'
+    assert proof['operations'][2]['status'] == 'not-replayed-after-first-address-error'
+    operations[1]['path'] = '/items/1'
+    assert audit.operation_pointer_diagnostics(parent,operations)['all_addresses_applicable'] is True
+
+
+def test_authored_id_address_on_array_is_explicitly_a_noncanonical_index():
+    proof = audit.operation_pointer_diagnostics({'mechanisms':[{'mechanism_id':'selection'}]},
+        [{'op':'replace','path':'/mechanisms/selection','value':{}}])
+    assert proof['operations'][0]['error']['message'] == 'array path requires a canonical nonnegative index'
+    assert proof['operations'][0]['address_trace'][-1]['owner_length'] == 1
