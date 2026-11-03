@@ -44,6 +44,7 @@ ACTION_SCHEMA = {
     'type': 'object', 'required': ['tool'], 'additionalProperties': False,
     'properties': {
         'tool': {'enum': ['inspect', 'edit', 'splice', 'configure', 'validate', 'finish']},
+        'resource': {'enum': ['draft', 'capabilities']},
         'selector': {'type': 'object', 'required': ['mechanism_id'], 'additionalProperties': False,
             'properties': {'mechanism_id': {'type': 'string', 'minLength': 1}}},
         'path': {'type': 'string', 'pattern': r'^(?:/.*)?$'},
@@ -74,6 +75,12 @@ Tools:
     Omit selector for any full-document pointer; path:"" reads the whole draft.
     Optional offset/limit slice strings/lists without changing them. Large
     results return a descriptor, not silently truncated content: read narrower.
+    resource:'draft' is the default. To discover trusted effect APIs without
+    changing your draft, use resource:'capabilities' with path:'/index' for the
+    complete implementation index, or path:'/cards/<exact implementation ID>'
+    for a detailed ABI. path:'' reads the full catalog including all cards.
+    Capability reads cannot use a mechanism selector. They add no node, task,
+    policy, privilege or wire; you must explicitly author any chosen mechanism.
   {"tool":"edit","operations":[{"op":"replace","selector":{
     "mechanism_id":"EXACT ID"},"path":"/parameters/...","value":123}]}
     applies your exact add/remove/replace edits atomically. Full-document paths
@@ -109,9 +116,11 @@ ABI_CONTRACT = ('Python-node ABI:' + ABI_INSTRUCTIONS.split('Python-node ABI:', 
 
 def protocol_binding():
     from . import native_authoring_ir, native_search_generator_v14
+    from utopia.system import native_capability_catalog
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
         'transport_source_sha256': hashlib.sha256(Path(native_search_generator_v14.__file__).read_bytes()).hexdigest(),
+        'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'source_execution_on_host': False, 'native_probes': 0}
 
@@ -177,7 +186,7 @@ def action_summary(action):
     """Keep every prior address visible without repeating arbitrary source bodies."""
     if not isinstance(action, dict):
         return None
-    result = {key: clone(action[key]) for key in ('tool', 'selector', 'path', 'offset', 'limit', 'delete')
+    result = {key: clone(action[key]) for key in ('tool', 'resource', 'selector', 'path', 'offset', 'limit', 'delete')
         if key in action}
     if isinstance(action.get('operations'), list):
         operations = []
@@ -250,7 +259,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
             raise ValueError('tool schema: ' + problems[0].json_path + ': ' + problems[0].message)
         tool = action['tool']
         allowed = {
-            'inspect': {'selector', 'path', 'offset', 'limit'},
+            'inspect': {'resource', 'selector', 'path', 'offset', 'limit'},
             'edit': {'operations'}, 'splice': {'selector', 'path', 'offset', 'delete', 'text'},
             'configure': {'factors', 'continuous', 'logits'}, 'validate': set(), 'finish': {'rationale'},
         }[tool] | {'tool'}
@@ -259,8 +268,16 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
         if tool in {'inspect', 'splice'}:
             if 'path' not in action:
                 raise ValueError('inspect/splice requires explicit path; empty path reads root')
-            path = resolve_address(current['document'], action, stage='staged-' + tool)
-            value = _read(current['document'], path, stage='staged-' + tool) if path else current['document']
+            resource = action.get('resource', 'draft')
+            if resource == 'capabilities':
+                if 'selector' in action:
+                    raise ValueError('capabilities resource has no candidate mechanism selector')
+                from utopia.system.native_capability_catalog import native_capability_catalog
+                document, path = native_capability_catalog(), action['path']
+            else:
+                document = current['document']
+                path = resolve_address(document, action, stage='staged-' + tool)
+            value = _read(document, path, stage='staged-' + tool) if path else document
         if tool == 'inspect':
             original = _descriptor(value)
             if 'offset' in action or 'limit' in action:
@@ -275,11 +292,11 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
             else:
                 selection = None
             if len(json.dumps(value, ensure_ascii=False, allow_nan=False).encode()) > MAX_RESULT_BYTES:
-                record['result'] = {'path': path, 'descriptor': original, 'value_included': False,
+                record['result'] = {'resource': resource, 'path': path, 'descriptor': original, 'value_included': False,
                     'reason': 'explicit tool result byte cap; inspect narrower field or string/list slice',
                     'max_result_bytes': MAX_RESULT_BYTES}
             else:
-                record['result'] = {'path': path, 'descriptor': original,
+                record['result'] = {'resource': resource, 'path': path, 'descriptor': original,
                     'value_included': True, 'value': clone(value), 'selection': selection}
         elif tool in {'edit', 'splice'}:
             if tool == 'splice':
@@ -346,6 +363,7 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
             'raw_action_sha256': digest(item['model_reply']['output'])
                 if item.get('model_reply', {}).get('output') is not None else None})
     control = turn_control(state, steps, max_steps=settings['max_steps'])
+    from utopia.system.native_capability_catalog import native_capability_index
     return json.dumps({'000_current_turn': control, 'instructions': INSTRUCTIONS,
         'technical_ABI_and_distribution_contract': ABI_CONTRACT,
         'binding_sha256': binding_sha256, 'image_id': image_id,
@@ -353,6 +371,7 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
         'stage': request.get('stage', 'blackbox-generation'), 'own_history': history,
         'remaining_calls_including_this_one': settings['max_steps'] - len(steps),
         'draft_index': draft_summary(state), 'previous_steps': previous,
+        'native_effect_abi_index': native_capability_index(),
         'last_tool_response': clone(steps[-1].get('transition')) if steps else None,
         'last_call_errors': clone(steps[-1].get('errors', [])) if steps else [],
         'last_model_action': clone(steps[-1].get('model_reply', {}).get('output')) if steps else None,

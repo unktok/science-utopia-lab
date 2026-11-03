@@ -1,0 +1,231 @@
+"""Read-only discoverability of trusted native effect ABIs, not policy recipes.
+
+The index is derived from actual default registration against an empty graph.
+No handler, generated source, model, native year or Docker executor is invoked.
+Detailed shape schemas are explicitly separated from semantic validator checks.
+"""
+from __future__ import annotations
+
+import hashlib
+import inspect
+from pathlib import Path
+
+from .design_patch import clone, digest
+
+SCHEMA = 'scienceutopia.native-capability-catalog.v15'
+CATALOG_IMPLEMENTATIONS = {
+    'native.researcher.work.v15': 'Invoke an existing original researcher with arbitrary authored work and response schema.',
+    'native.world.resource-transfers.v1': 'Apply conserving institution-authored transfers between actual author balances.',
+    'native.domain.commands.v1': 'Apply explicitly granted typed actor/artifact/state/native-effect commands.',
+    'native.process.activity.v1': 'Run an explicitly authored registered delegate under bounded data-driven process control.',
+    'code.python.v1': 'Run arbitrary authored Python in the pinned isolated no-network executor.',
+}
+
+
+def _source(function):
+    path = Path(inspect.getsourcefile(function)).resolve()
+    package = Path(__file__).resolve().parents[1]
+    if not path.is_relative_to(package):
+        raise ValueError('capability source is outside the trusted utopia package')
+    return {'path': 'utopia/' + str(path.relative_to(package)),
+        'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+        'callable': function.__qualname__}
+
+
+def _registered():
+    from .model import SystemSpec
+    from .native_kernel import NativeScienceKernel
+    # Empty graph is intentional: constructing a candidate's registry could
+    # create its Docker executor. Here code registration is listed separately.
+    kernel = NativeScienceKernel(SystemSpec('readonly-native-abi-catalog', 1))
+    registry = kernel._registry()
+    return {key: registry._implementations[key] for key in registry.registered}
+
+
+def _pointer(identity):
+    return '/cards/' + identity.replace('~', '~0').replace('/', '~1')
+
+
+def native_capability_index():
+    registered = _registered()
+    from .code_mechanisms import CODE_IMPLEMENTATION, register_code_mechanisms
+    implementations = dict(registered)
+    implementations[(CODE_IMPLEMENTATION, 1)] = register_code_mechanisms
+    entries = []
+    for (identity, version), handler in sorted(implementations.items()):
+        detailed = identity in CATALOG_IMPLEMENTATIONS
+        entries.append({'implementation': identity, 'version': version,
+            'registration': 'default-native-registry' if (identity, version) in registered else
+                'conditional: explicitly authored direct/wrapped code node and pinned executor',
+            'contract_coverage': 'detailed-shape-and-semantic-contract' if detailed else 'implementation-identity-only',
+            'description': CATALOG_IMPLEMENTATIONS.get(identity),
+            'detail_path': _pointer(identity) if detailed else None})
+    return {'schema': SCHEMA + '.index', 'resource': 'capabilities', 'implementations': entries,
+        'lookup': {'tool': 'inspect', 'resource': 'capabilities', 'path': '/cards/<exact implementation ID>'},
+        'coverage': {'default_registered_implementation_index': 'complete for the source-pinned empty native registry',
+            'conditional_code_implementation': 'explicitly listed; constructor/executor not invoked',
+            'detailed_contract_implementations': sorted(CATALOG_IMPLEMENTATIONS),
+            'identifier_only_implementations': [entry['implementation'] for entry in entries
+                if entry['contract_coverage'] == 'implementation-identity-only'],
+            'omitted': ['detailed contracts for identifier-only implementations',
+                'operator-specific registry_extension plugins',
+                'live researcher/actor/artifact identities and world data',
+                'institution algorithms, task instructions, default nodes and automatic connections'],
+            'silent_size_truncation': False},
+        'effects': {'candidate_mutation': False, 'handlers_invoked': False, 'docker_calls': 0,
+            'model_calls': 0, 'native_years': 0}}
+
+
+def _object(properties):
+    return {'type': 'object', 'required': list(properties), 'properties': properties, 'additionalProperties': False}
+
+
+def _work():
+    from .native_researcher_work import (
+        IMPLEMENTATION, REQUEST, RESPONSE, _REQUEST_KEYS, validate_work_node, validate_work_request,
+    )
+    identity = {'type': 'string', 'minLength': 1, 'maxLength': 200}
+    request = _object({'schema': {'const': REQUEST}, 'request_id': identity, 'actor_id': identity,
+        'instruction': {'type': 'string', 'minLength': 1}, 'content': {'type': 'object'},
+        'artifact_ids': {'type': 'array', 'uniqueItems': True, 'items': {'type': 'string', 'minLength': 1}},
+        'response_schema': {'type': 'object', 'required': ['type'], 'properties': {'type': {'const': 'object'}}}})
+    if set(request['required']) != _REQUEST_KEYS:
+        raise ValueError('researcher-work catalogue differs from actual request envelope keys')
+    return {'implementation': IMPLEMENTATION, 'version': 1,
+        'ports': {'inputs': [{'port_id': 'tasks', 'channel': 'artifact', 'artifact_type': REQUEST, 'required': False}],
+            'outputs': [{'port_id': 'responses', 'channel': 'artifact', 'artifact_type': RESPONSE, 'required': False}],
+            'additional_inputs': 'permitted; exact optional tasks input and sole responses output must remain'},
+        'parameters_shape_schema': _object({'max_requests_per_invocation': {'type': 'integer', 'minimum': 1, 'maximum': 64}}),
+        'request_shape_schema': request,
+        'response_envelope_shape_schema': _object({'schema': {'const': RESPONSE},
+            'request_id': identity, 'actor_id': identity, 'response': {'type': 'object'},
+            'receipt_sha256': {'type': 'string', 'minLength': 64, 'maxLength': 64}}),
+        'author_choices': ['arbitrary task instruction', 'arbitrary JSON scientific content',
+            'existing recipient actor', 'available artifact references', 'reference-free bounded object response schema'],
+        'semantic_constraints': ['instruction must remain nonempty after whitespace stripping',
+            'max_requests_per_invocation is a Python int, never bool or float, in1..64',
+            'response_schema must pass the existing bounded reference-free/regex-free schema validator',
+            'request <=262144 UTF-8 bytes; rendered prompt <=524288 bytes; never truncated',
+            'recipient is an existing author-capable original actor using the exact original-world model',
+            'value.actor_ids must equal [actor_id] and artifact_ids must exactly match the envelope',
+            'artifact references resolve to actually available native/open-domain/graph records',
+            'actual causal event lineage and available periods required; duplicate request identities reject',
+            'all requests are preflighted before calls; a later failure does not roll back physical inference cost',
+            'response must be a finite object satisfying the authored response_schema'],
+        'cost': {'scientist_model_calls': 'one per actual request; <=max_requests_per_invocation per invocation',
+            'inherited': ['original fixed model identity', 'original scientist token/temperature settings',
+                'exact completed-response cache and checkpoint recovery'],
+            'process_repetition': 'each explicit process iteration has its own request cap and distinct identity',
+            'whole_world_bound': 'not implied by one invocation cap; sum all actual nodes/invocations/iterations'},
+        'privilege': {'granted': ['invoke original researcher and emit response data with audit receipt'],
+            'not_granted': ['publish a paper', 'invent actual experiment results', 'mint resources',
+                'assign native review scores', 'change researcher weights/personas', 'overwrite a native project']},
+        'validators': [_source(validate_work_node), _source(validate_work_request)],
+        'schema_scope': 'shape schemas plus separately listed semantic checks; actual validators are authoritative'}
+
+
+def _transfers():
+    from .native_resource_transfers import IMPLEMENTATION, _command, apply_native_resource_transfers
+    return {'implementation': IMPLEMENTATION, 'version': 1,
+        'ports': {'inputs': 'any explicitly declared ports; handler flattens received values', 'outputs': []},
+        'parameters': 'no institution policy parameter is read by this effect handler',
+        'request_shape_schema': _object({'transaction_id': {'type': 'string', 'minLength': 1, 'maxLength': 200},
+            'from_actor': {'type': 'string', 'minLength': 1}, 'to_actor': {'type': 'string', 'minLength': 1},
+            'amount': {'type': 'number', 'exclusiveMinimum': 0}}),
+        'semantic_constraints': ['finite strictly positive amount, never bool',
+            'existing distinct author-capable from/to actors; sufficient actual debit balance',
+            'debit and credit must represent the exact amount; nonfinite/rounding-created credit rejects',
+            'at most1024 input values; whole batch checked before mutation',
+            'actual causal producer lineage and nonfuture emitted period',
+            'repeated producer/port/period/transaction_id is idempotent only if the command is exactly unchanged'],
+        'cost': {'scientist_model_calls': 0, 'resources': 'conserving debit/credit of existing actual balances'},
+        'privilege': {'granted': ['conserving transfers chosen by explicitly connected institution'],
+            'not_granted': ['resource minting', 'implicit transfer selection', 'actor creation']},
+        'validators': [_source(_command), _source(apply_native_resource_transfers)],
+        'schema_scope': 'shape schema plus semantic checks; no allocation algorithm supplied'}
+
+
+def _domain():
+    from .native_open_domain import (IMPLEMENTATION, STATE_ARTIFACT, COMMAND_SCHEMA,
+        default_actions, register_native_domain, apply_domain_commands)
+    actions = default_actions()
+    return {'implementation': IMPLEMENTATION, 'version': 1,
+        'ports': {'inputs': 'commands port; other input names are not consumed',
+            'outputs': [{'port_id': 'domain', 'channel': 'artifact', 'artifact_type': STATE_ARTIFACT}],
+            'output_optional': 'an entirely empty output declaration is also supported'},
+        'parameters': {'capabilities': {'bootstrap': 'explicit unique action grants',
+                'roles': 'authored role -> unique action grants'},
+            'actor_schemas': 'authored actor type -> bounded JSON schema',
+            'artifact_schemas': 'authored artifact type -> bounded JSON schema'},
+        'action_payload_schemas': {name: clone(schema) for name, (schema, handler) in actions.actions.items()},
+        'request_shape_schema': _object({'schema': {'const': COMMAND_SCHEMA},
+            'command_id': {'type': 'string', 'minLength': 1, 'maxLength': 200},
+            'actor_id': {'type': 'string'}, 'action': {'type': 'string'}, 'payload': {'type': 'object'}}),
+        'action_schema_derivation': 'read directly from actual default_actions().actions, no copy of a policy catalogue',
+        'semantic_constraints': ['explicit source principal/role/action grants and actual lineage required',
+            'actor/artifact identities/types/revisions/references checked against actual persistent world state',
+            'native project/context/transfer actions retain their own original-world semantic constraints',
+            'schemas describe data; generated code never becomes a trusted host handler'],
+        'cost': {'scientist_model_calls': 0, 'resources': 'only explicitly granted conserving native transfer effect'},
+        'privilege': {'granted': ['only the explicitly declared action capability grants'],
+            'not_granted': ['register arbitrary host Python', 'silently invent new native privilege', 'bypass schema/identity checks']},
+        'validators': [_source(register_native_domain), _source(apply_domain_commands)],
+        'schema_scope': 'actual registered action payload schemas; command envelope and semantic checks remain explicit'}
+
+
+def _process():
+    from .native_process import IMPLEMENTATION, CONTROL, DONE, _validate_parameters, controlled_activity
+    return {'implementation': IMPLEMENTATION, 'version': 1,
+        'ports': {'inputs': 'delegate inputs plus optional explicit process-control signal',
+            'outputs': 'delegate outputs made optional plus process-completion signal of type ' + CONTROL,
+            'reserved': {'control_input': 'process-control', 'completion_output': DONE}},
+        'parameter_fields': {'delegate': 'complete authored registered mechanism, no recursive process delegate',
+            'count': 'integer0..limit', 'limit': 'integer1..1024', 'control': 'boolean',
+            'guard_path': 'null or nonempty string-key list; requires control',
+            'count_path': 'null or nonempty string-key list; requires control',
+            'until_path': 'null or nonempty string-key list', 'initial_delegate_state': 'explicit JSON object',
+            'missing_control': 'wait|error'},
+        'semantic_constraints': ['all parameter fields explicit; reserved ports may not collide',
+            'delegates resolve in actual native registry before execution',
+            'native.phase/native.activity legacy routines cannot repeat more than once per annual identity',
+            'data-driven guard/count/stop values remain bounded and typed; no expressions evaluated on the host'],
+        'cost': {'scientist_model_calls': 'delegate-dependent; multiplied only by explicit actual bounded iterations'},
+        'privilege': {'granted': ['compose/reorder/guard/repeat actually registered activities'],
+            'not_granted': ['new underlying native privilege', 'unbounded hidden loops', 'automatic institutional design']},
+        'validators': [_source(_validate_parameters), _source(controlled_activity)],
+        'schema_scope': 'parameter/port ABI summary; actual process validator authoritative'}
+
+
+def _code():
+    from .code_mechanisms import CODE_IMPLEMENTATION, CODE_SCHEMA, validate_code_artifact, register_code_mechanisms
+    return {'implementation': CODE_IMPLEMENTATION, 'version': 1,
+        'ports': {'inputs': 'arbitrary explicitly declared ports matching code_artifact.inputs',
+            'outputs': 'arbitrary explicitly declared ports matching code_artifact.outputs'},
+        'parameter_fields': {'runtime_image_id': 'must equal supplied pinned operator image',
+            'code_artifact': {'schema': CODE_SCHEMA, 'label': 'string1..120 characters',
+                'source': 'literal arbitrary Python1..65536 UTF-8 bytes defining one top-level step(context)',
+                'inputs': 'port -> bounded JSON schema, <=32 ports',
+                'outputs': 'port -> bounded JSON schema, <=32 ports', 'state_schema': 'bounded JSON schema'},
+            'other_authored_fields': 'ordinary data accessible as context.parameters'},
+        'execution_ABI': {'context_keys': ['period', 'phase', 'random_seed', 'parameters', 'state', 'inputs'],
+            'inputs': 'port -> list of complete delivered message envelopes; body in payload',
+            'return': 'outputs:{port:[message envelopes...]}, state:JSON object'},
+        'cost': {'scientist_model_calls': 0, 'runtime': 'pinned isolated executor with explicit resource limits'},
+        'privilege': {'granted': ['arbitrary source computation and typed graph output'],
+            'not_granted': ['host execution/import', 'network', 'world mutation without separately connected native effect capability']},
+        'validators': [_source(validate_code_artifact), _source(register_code_mechanisms)],
+        'schema_scope': 'literal artifact/port/source ABI; no source template or algorithm supplied'}
+
+
+def native_capability_catalog():
+    cards = [_work(), _transfers(), _domain(), _process(), _code()]
+    registered = _registered()
+    registry_sources = {_source(handler)['path']: _source(handler)
+        for handler in registered.values()}
+    result = {'schema': SCHEMA, 'index': native_capability_index(),
+        'cards': {card['implementation']: card for card in cards},
+        'catalog_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        'registry_sources': [registry_sources[key] for key in sorted(registry_sources)],
+        'interpretation': 'native effect ABI discovery, not a finite institution/scientific-activity policy catalogue'}
+    result['content_sha256'] = digest(result)
+    return result

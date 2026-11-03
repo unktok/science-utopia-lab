@@ -494,6 +494,53 @@ def test_fixed_authoring_rules_are_system_authority_but_adversarial_observations
     assert marker not in build_conversation(json.dumps(tampered), SYSTEM_PROMPT)[0]['content']
 
 
+def test_capability_inspection_discovers_unseeded_work_without_mutating_draft_or_calling_model(monkeypatch):
+    def fail(*args, **kwargs):
+        pytest.fail('capability inspection invoked model or container')
+    monkeypatch.setattr('requests.Session', fail)
+    monkeypatch.setattr('utopia.system.code_mechanisms.DockerCodeExecutor.__init__', fail)
+    state = initial_draft(request())
+    assert all(node['implementation'] != 'native.researcher.work.v15' for node in state['document']['mechanisms'])
+    same, observed = apply(state, {'tool': 'inspect', 'resource': 'capabilities', 'path': '/index'})
+    assert observed['ok'] and same == state
+    index = observed['result']['value']
+    assert observed['result']['resource'] == 'capabilities'
+    assert any(entry['implementation'] == 'native.researcher.work.v15' for entry in index['implementations'])
+    same, detailed = apply(state, {'tool': 'inspect', 'resource': 'capabilities',
+        'path': '/cards/native.researcher.work.v15'})
+    assert same == state and detailed['ok']
+    assert detailed['result']['value']['request_shape_schema']['properties']['instruction']['type'] == 'string'
+    assert detailed['definition'] is None and detailed['draft_before_sha256'] == detailed['draft_after_sha256']
+
+
+def test_capability_inspection_reuses_pointer_slice_bounds_and_rejects_candidate_selector():
+    state = initial_draft(request())
+    same, full = apply(state, {'tool': 'inspect', 'resource': 'capabilities', 'path': ''})
+    assert same == state and full['ok']
+    assert full['result']['value']['index']['implementations']
+    same, selected = apply(state, {'tool': 'inspect', 'resource': 'capabilities',
+        'path': '/index/implementations', 'offset': 0, 'limit': 2})
+    assert same == state and selected['ok'] and len(selected['result']['value']) == 2
+    same, rejected = apply(state, {'tool': 'inspect', 'resource': 'capabilities',
+        'selector': {'mechanism_id': ALPHA}, 'path': ''})
+    assert same == state and not rejected['ok'] and 'no candidate mechanism selector' in rejected['errors'][0]['message']
+    for tool in ('edit', 'splice', 'configure', 'finish'):
+        same, rejected = apply(state, {'tool': tool, 'resource': 'capabilities'})
+        assert same == state and not rejected['ok']
+
+
+def test_capability_inspection_and_prompt_catalogue_cold_replay_remain_source_bound(tmp_path):
+    model = Model([{'tool': 'inspect', 'resource': 'capabilities',
+        'path': '/cards/native.researcher.work.v15'}, finish()])
+    result = author(model, tmp_path, max_steps=2)(request())
+    assert result['base_patch'] is None
+    prompt = json.loads(model.calls[0]['prompt'])
+    assert 'native_effect_abi_index' in prompt
+    assert prompt['native_effect_abi_index']['coverage']['identifier_only_implementations']
+    assert author(Model([]), tmp_path, max_steps=2)(request()) == result
+    assert 'capability_catalog_source_sha256' in protocol_binding()
+
+
 def test_staged_dialogue_transport_is_one_loopback_post_and_legacy_transport_unchanged(monkeypatch):
     calls = []
     class Response:

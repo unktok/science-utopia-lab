@@ -30,6 +30,13 @@ The model emits one JSON object per call:
 | `validate` | no policy arguments | invokes existing full static graph/source/ABI/distribution checks |
 | `finish` | authored rationale | invokes the same checks and yields a definition only if valid |
 
+`inspect` also has an explicit read-only `resource:'capabilities'` namespace,
+with exact `/index` and `/cards/<implementation>` pointers; default resource
+remains `draft`. The source-derived implementation index and separately scoped
+detailed effect cards are documented in
+[native ABI discovery](native-capability-discovery-v15.md). This discovers new
+available effects without adding a node, task, algorithm, grant or wire.
+
 New Python source, complete mechanism nodes, contract schemas, artifact types,
 wires, schedules and process metadata can be authored through unrestricted
 full-document JSON edits. Stable-ID addressing is an exact selector convenience,
