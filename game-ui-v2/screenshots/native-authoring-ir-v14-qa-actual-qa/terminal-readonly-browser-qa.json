@@ -1,0 +1,158 @@
+{
+  "schema": "scienceutopia.native-authoring-ir-queue-readonly-browser.v14",
+  "classification": "actual-ui-native-authoring-ir-engineering-qa-v14",
+  "separate_from_closed_a1": true,
+  "phase": "terminal",
+  "writer_stopped_operator_notice": true,
+  "worker_receipt_sha256": "3e2d338eec72f95bf8f1cdc47447cea33a129904bd1ab7c72fc61c63b84397d5",
+  "worker_ended_utc": "2026-11-03T01:32:51.504126+00:00",
+  "source_commit": "fdb694d0adee759470d9c4ff41c4d8c75e490d19",
+  "request_sha256": "1015e4dc0ef95ae826f826fa6917a0f1e0518330edde68837c09f482b5c2c7f5",
+  "plan_sha256": "27e7d916ee26c64e384bf3dadf4cb9c6b12ab13cd83a6e2547dde68ada2af77e",
+  "search_id": "search-6f65de5f1e834096bc3aa7ca46385156",
+  "snapshot_file": "terminal-progress-exact.json",
+  "snapshot_file_sha256": "4dee176d8d2373cafc00e5d94fb7442d7b4078fc54f8943c8ec1cff640258a6c",
+  "manifest_file_sha256": "33d84376864b3577c3522f24197362020158abab08755cb9decadc336b62134a",
+  "original_operator_receipt_sha256": "28aa37eb733705f0c429caec665755d525e857b99bff3269e8bd8bd1797e329e",
+  "harness_sha256": "6bf0e7e0ea0098a68a449346991f74cbfeeabfcca5021921f7c4e6e882999c33",
+  "served_decoded_asset_sha256s": {
+    "http://127.0.0.1:4594/native.html": "538002d72c9df287ae3105b57979515c266209f18c5ee5c00743331ef1d6418b",
+    "http://127.0.0.1:4594/assets/hash-C7Kz1XFI.js": "21cb3a003e9a17ac03a5bc38083a5ba1331c5596373d0792e3140bbb9352535b",
+    "http://127.0.0.1:4594/assets/native-BRXdVgDc.css": "de579fbbb1da91d2e373797dc6d753bc75673d3bec350cee09356faac2e2f4f4",
+    "http://127.0.0.1:4594/assets/modulepreload-polyfill-BTn-X1SE.js": "c9c7d714df4248d733cc899b4a80a6ba017a39b46fab92e5f9b0809b917b0361",
+    "http://127.0.0.1:4594/assets/generative-BhJUQx3G.css": "2e74f5c10945f5e3c7323541c815e5a16a1c603a4a72baf3450677baad510df9",
+    "http://127.0.0.1:4594/assets/methodObservatoryContract-Bhk8KJ2X.js": "8db85836604cbafb53f3c7e96612847ef3497b187c9750f6ab6e4d78d0332d19",
+    "http://127.0.0.1:4594/assets/native-Dzd9BRyW.js": "ffa4e9a6cf30edca1fdd8e0970c97e84d4da25c8401d70e0a5b10bed3f0e1f8d",
+    "http://127.0.0.1:4594/assets/foundryBranch-BNPA3awm.js": "02d43a2fa0e45b256d5311410760aaee1e2980e0df39e5b84df8a711d36e7681"
+  },
+  "display_only_report_annotations": {
+    "heading": "BUDGET TERMINAL / 0 RECORDED NATIVE OBSERVATIONS / SUCCESS NOT IMPLIED",
+    "note": "SEPARATE ENGINEERING QA / TERMINAL / SAVED PROGRESS IS NOT AN INDEPENDENT AUDIT / ORIGINAL STATUS complete / EXACT SNAPSHOT SHA256 4dee176d8d2373cafc00e5d94fb7442d7b4078fc54f8943c8ec1cff640258a6c",
+    "raw_snapshot_unchanged": true
+  },
+  "canonical_request_hash_recomputed_in_browser": false,
+  "saved_progress_is_independently_audited": false,
+  "status": "complete",
+  "stage": "complete",
+  "budget": {
+    "scheduled": 2,
+    "consumed": 2,
+    "native_observations": 0,
+    "remaining": 0
+  },
+  "no_post": true,
+  "no_consent": true,
+  "no_adoption": true,
+  "no_model_calls": true,
+  "browser_errors": 0,
+  "failed_http": 0,
+  "no_overflow": true,
+  "original_submit_captures": [
+    {
+      "file": "actual-ui-before-consent.png",
+      "sha256": "ed04e8a7fce30d107f314b3864b3129f05a4e30a18e064f14503a65f2e76c004",
+      "origin": "unchanged original single-submit operator capture"
+    },
+    {
+      "file": "actual-ui-queued.png",
+      "sha256": "aa152dba9cfd78d847730100f86d7cc30e13db0c894d3aafff33b3953061a35e",
+      "origin": "unchanged original single-submit operator capture"
+    }
+  ],
+  "captures": [
+    {
+      "file": "terminal-desktop-mission.png",
+      "sha256": "a5b8632c81e4aa2b78e1e1ef0d9f04d28a8be5d8c5eeb66063e73517db1a5e75",
+      "width": 1600
+    },
+    {
+      "file": "terminal-desktop-source.png",
+      "sha256": "ee3e7c7c2a117f72af9aac6911c27e7a9bdaadde645bdc9f5de487b301b6e11c",
+      "width": 1600
+    },
+    {
+      "file": "terminal-mobile-mission.png",
+      "sha256": "e10cbfbeec40be7c7b45c50d5da808886a77e9da1687e8b70a2f0a143ac76489",
+      "width": 390
+    },
+    {
+      "file": "terminal-mobile-source.png",
+      "sha256": "4f5a000de1a5811f292eafbfa9ee939a2f601e4c0305998a18f2cf45af3f86ea",
+      "width": 390
+    }
+  ],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:4594/native.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/native-Dzd9BRyW.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/modulepreload-polyfill-BTn-X1SE.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/hash-C7Kz1XFI.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/methodObservatoryContract-Bhk8KJ2X.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/foundryBranch-BNPA3awm.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/native-BRXdVgDc.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/generative-BhJUQx3G.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/native-foundry-control-room.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/data/native-design-lab-v1.json",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/researcher-early.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/institution-lab.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/system-government.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/system-evaluation.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/system-publication.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/assets/noctiluca/production/institution-funding.svg",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/native-api/session",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:4594/native-api/session",
+      "method": "GET"
+    }
+  ]
+}

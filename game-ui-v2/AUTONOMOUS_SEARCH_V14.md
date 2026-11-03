@@ -196,3 +196,46 @@ node scripts/verify-native-search-audit-browser.mjs \
 
 These failed development requests are the original a1 result. The separately
 authorized stable-ID engineering QA cannot replace or retroactively repair them.
+
+## Separate stable-ID QA terminal queue display
+
+The original single-submit operator already queued
+`search-6f65de5f1e834096bc3aa7ca46385156` under frozen source
+`fdb694d0adee759470d9c4ff41c4d8c75e490d19`. It must never be submitted again.
+The GET-only `capture-native-search-queue-readonly-v14.mjs` reads its session
+token privately, verifies the exact manifest/source/request/plan bindings and
+original raw queued response, and imports the original response bytes through
+the existing **unverified saved-progress** control. It never validates, consents,
+queues, adopts, starts a worker or calls a model. Terminal mode requires both
+root's stopped-writer instruction and the closed successful worker receipt.
+
+`screenshots/native-authoring-ir-v14-qa-actual-qa/` contains the exact terminal
+GET `/evidence` response, four reviewed terminal desktop/mobile captures, and
+byte-identical original pre-consent/queued PNGs. The terminal raw snapshot hash
+is `4dee176d8d2373cafc00e5d94fb7442d7b4078fc54f8943c8ec1cff640258a6c`.
+The manifest's request hash is
+`1015e4dc0ef95ae826f826fa6917a0f1e0518330edde68837c09f482b5c2c7f5`;
+its plan hash is
+`27e7d916ee26c64e384bf3dadf4cb9c6b12ab13cd83a6e2547dde68ada2af77e`.
+The worker closed at `2026-11-03T01:32:51.504126+00:00` with exit0.
+
+The display states **BUDGET TERMINAL / 0 RECORDED NATIVE OBSERVATIONS / SUCCESS
+NOT IMPLIED**, with null/unobserved loss and no current candidate graph. The
+three completed designer receipt files and four dispatch intents remain
+separate; the interrupted unknown response is not converted to a reply or zero
+cost. Report-only captions explicitly distinguish this engineering QA from a1
+and from an independent audit. The raw progress bytes stay unchanged. The
+receipt records every served code/CSS/HTML response hash, original capture
+hashes, closed-worker/manifest/operator hashes, and the precise display-only
+captions. It verifies GET-only traffic, zero browser errors, failed HTTP responses
+or overflow. These captures do not claim source usefulness or native success.
+
+Durable local software logs can be generated from the final report branch with:
+
+```sh
+node scripts/verify-native-search-ui-checks-v14.mjs --output=/absolute/check-log-directory
+```
+
+This records the report commit and source-file hashes alongside the 277-test,
+typecheck, production-build and eight pure operator-guard command logs. It does
+not contact the native API or run inference.
