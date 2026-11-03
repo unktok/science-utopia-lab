@@ -135,3 +135,28 @@ starts2026-11-03T01:26:17.588017Z, under the frozen2-slot/max4-generation-POST
 budget, while exact-source full software regression runs in parallel. Root's
 prior integrated focused scope passes143 checks in12.97s. No terminal QA result
 is claimed at this entry.
+
+## Launch environment correction without a budget reset
+
+The new launchd PATH omitted`/usr/local/bin`, where this host's Docker binary
+resides. The full regression visibly produced Docker-related errors/skips;
+root detects the omission before any native QA world exists. Only owned worker
+child26195 and test child26081 are SIGTERM-stopped at2026-11-03T01:30:00Z.
+Both r1 supervisors preserve exit-15 receipts and partial logs; neither is a
+pass. User Ollama and unrelated tasks remain untouched.
+
+The same clean source, exact queue and2-slot/max4-intent budget resume as r2
+with corrected PATH. There is no second browser submission or new campaign.
+The first G0 draft is known truncated; its second in-flight attempt has a
+dispatch intent but no completed receipt and is consumed as response-unknown,
+never redispatched or charged an invented reply/time. G1 uses its two remaining
+declared attempts. Its first has a duplicated global prefix in a local selector
+pointer; its second reaches operation4 before naming a nonexistent numeric
+field. Both literal failures remain. No candidate is moved to a guessed field.
+
+R2 worker exits0 at2026-11-03T01:32:51.504126Z. The queue is terminal with2
+charged null slots,4 dispatch intents,3 completed designer receipts and0
+native worlds/scientist replies. A separate terminal CLI resume returns`null`
+without constructing providers. Independent final QA audit is pending at this
+entry. Full corrected-environment source regression continues; no further
+actual generation/native trial is scheduled.

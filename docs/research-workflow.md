@@ -25,6 +25,18 @@ interesting run does not retroactively define a valid protocol.
 6. Do not alter loss, seeds, simulator, evaluator, or stopping rule after
    seeing results.
 
+For the opt-in automatic designer, use the [v14 runtime contract](../research/components/native-autonomous-search-runtime-v14.md)
+and [literal stable-ID authoring IR](../research/components/native-stable-id-authoring-ir.md).
+Validate the exact request, then grant fresh request-bound compute consent;
+preparation, evidence viewing and local editing are not inference authorization.
+The UI/API process never runs the designer or researcher. Start its separate
+single worker with the same source, provider config and queue directory.
+Verify the actual launch environment (including `/usr/local/bin/docker` on
+this host) before dispatch. Follow the approved Python/TLS instructions;
+do not use Apple Python. Record started/ended receipts and preserve failed
+launches. An interrupted generation intent consumes its declared attempt;
+resume the same queue rather than resubmitting or resetting its budget.
+
 ## After optimization
 
 1. Freeze the selected candidate.
@@ -33,6 +45,14 @@ interesting run does not retroactively define a valid protocol.
 4. Apply a decision policy only if one was explicitly versioned.
 5. Commit compact results, hashes, manifests, and interpretation.
 6. Create an annotated result tag after verification.
+
+If all authoring attempts fail, there is no selected institution to freeze or
+evaluate on held-out seeds. Publish the nulls, original drafts, diagnostics,
+unknown replies and separate designer/scientist costs. A terminal scheduler
+does not imply a compiled design or completed world. An interface correction
+requires a separately prospective source/budget and separate results, never
+repair of historical drafts or hidden replacement trials. See the
+[closed v14 a1 failure](../research/results/native-autonomous-search-v14-a1.md).
 
 ## Parallel development
 
