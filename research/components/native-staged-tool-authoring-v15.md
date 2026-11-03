@@ -125,5 +125,9 @@ temporary graph/source errors, model-authored repair, source chunking, free
 distributions, no-host-execution, pinned images, failure/null behavior, bounded
 steps, interrupted intents, cold replay, raw mismatch, rehashed tampering,
 small original-parent initial context and read-only UI projection. These tests
+also run two original native Simulation worlds with SCRIPTED corpus/replies:
+staged tools finish both candidates and the second generation receives the first
+world's measured loss, without a manual candidate inbox. This is software QA,
+not Qwen institution authorship or a new scientific result. These tests
 do not establish actual Qwen authorship, native scientific benefit, optimizer
 superiority, novelty or recursive improvement of the author.

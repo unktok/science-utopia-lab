@@ -404,3 +404,57 @@ def test_step_and_token_bounds_and_explicit_source_image_identity(tmp_path):
             author(Model([]), tmp_path, **kwargs)
     with pytest.raises(ValueError, match='pinned model/provider/runtime'):
         StagedVocabularyGenerator(Model([]), tmp_path, image_id='wrong', provider_binding=BINDING)
+
+
+def test_original_native_world_two_stage_feedback_uses_staged_author_without_manual_inbox(
+        tmp_path, monkeypatch):
+    """Actual original Simulation phases; corpus/replies explicitly SCRIPTED QA."""
+    from tests.optimization.test_native_search_v14 import (
+        BINDING as world_binding, REVISION, FailedFactory, queue, request as search_request, submit,
+    )
+    from tests.runtime.test_portable_checkpoint_integration import BINDING as checkpoint_binding, fixed_corpus, seed
+    from tests.system.test_native_science_kernel import make_sim
+    from utopia.system.native_kernel import NativeScienceKernel
+
+    fixed_corpus.__wrapped__(monkeypatch)
+    monkeypatch.setitem(checkpoint_binding, 'model_revision', world_binding['model_digest'])
+    monkeypatch.setitem(checkpoint_binding, 'corpus_sha256', world_binding['corpus_sha256'])
+    monkeypatch.setitem(checkpoint_binding, 'science_config', {'source_commit': REVISION, 'years': 1})
+    q = queue(tmp_path)
+    submitted = submit(q, search_request(budget=2))
+    native_calls, prompts = [], []
+
+    class Factory(FailedFactory):
+        def __call__(self, spec, run_seed, run_id):
+            native_calls.append(run_id)
+            seed()
+            monkeypatch.setitem(checkpoint_binding, 'cell', spec.fingerprint)
+            sim, _ = make_sim(tmp_path / 'worlds' / run_id, native=NativeScienceKernel(spec))
+            sim.num_years = 1
+            return sim
+
+    class FeedbackModel:
+        def generate(self, **kwargs):
+            prompt = json.loads(kwargs['prompt']); prompts.append(prompt)
+            if not prompt['previous_steps']:
+                observations = prompt['own_history']['all_observations']
+                action = {'tool': 'edit', 'operations': [{'op': 'add',
+                    'path': '/metadata/staged-scripted-qa', 'value': {
+                        'generation': prompt['generation'],
+                        'own_prior_losses': [item['loss'] for item in observations]}}]}
+            else:
+                action = finish()
+            return action, [{'role': 'assistant', 'content': json.dumps(action)}]
+
+    def builder(root, *args):
+        return StagedVocabularyGenerator(FeedbackModel(), root / 'authoring',
+            image_id=world_binding['image_id'], provider_binding=world_binding, max_steps=2)
+
+    outcome = q.run_one(lambda *args: Factory(), generator_builder=builder, source_commit=REVISION)
+    assert outcome['search_id'] == submitted['search_id'] and outcome['status'] == 'complete'
+    assert not outcome['errors'] and len(native_calls) == len(set(native_calls)) == 2
+    assert outcome['budget']['native_observations'] == 2 and outcome['best']['loss'] is not None
+    assert len(prompts) == 4
+    assert prompts[2]['own_history']['all_observations'][0]['loss'] == outcome['observations'][0]['observation']['loss']
+    assert outcome['records'][1]['definition']['base_patch']['operations'][0]['value']['own_prior_losses'] == [
+        outcome['observations'][0]['observation']['loss']]
