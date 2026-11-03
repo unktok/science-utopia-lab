@@ -138,3 +138,24 @@ Six pure guard tests run without network, Chrome or inference. The actual
 operator remains unrun until the root operator supplies its exact frozen pins,
 service and explicit start instruction. This engineering QA is separate from
 the original a1 negative result and cannot rewrite it.
+
+### Exact numeric request wire
+
+Runtime validation binds `request_json`, including the original validated
+SystemSpec and LossSpec editor JSON substrings. Validation sends that raw JSON;
+dispatch embeds the identical bound substring with its confirmed server hash.
+Consequently `1.0`, `-1.0`, `0.0` and integer tokens retain their distinct Python
+canonical types. Parsed JavaScript Number objects are used for structural
+checks, never to regenerate those two wire fields. Code body strings are not
+edited. Any raw editor drift, including a programmatic change without an input
+event, revokes validation and consent when checked or submitted.
+
+The actual operator probes `context.source` and `JSON.rawJSON` before opening
+Chrome. It formats editor JSON from the input file with original numeric tokens
+intact, then lets the server validate its original canonical request identity.
+No request normalization, fingerprint approximation or objective replacement is
+performed. Unsafe integer request tokens still fail closed. Regression evidence
+includes actual loopback HTTP request bodies checked with approved Python's
+canonical JSON digest, 277 UI tests, seven pure operator tests, and scripted
+Chrome numeric-wire / no-event consent-drift checks. No native inference is
+started by these checks.

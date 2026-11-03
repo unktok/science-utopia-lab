@@ -14,7 +14,7 @@ class Cdp {
   async call(method, params = {}) { const m = await new Promise(resolve => { const id = ++this.id; this.pending.set(id, resolve); this.socket.send(JSON.stringify({ id, method, params })); }); if (m.error) throw Error(JSON.stringify(m.error)); return m.result; }
   async eval(expression) { const r = await this.call('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }); if (r.exceptionDetails) throw Error(JSON.stringify(r.exceptionDetails)); return r.result.value; }
 }
-let vite, chrome, cdp, request, requests = [], submitted = 0;
+let vite, chrome, cdp, request, requests = [], submitted = 0, validatedRequestText = '';
 const progress = status => ({ schema: 'scienceutopia.native-search-progress.v14', classification: 'SCRIPTED-NOT-NATIVE-RESULTS', search_id: 'SCRIPTED-search', status, source_commit: source, request_sha256: hash, request, method: request.method, native_budget: request.native_budget, stage: status === 'queued' ? 'generation' : 'redesign', records: status === 'queued' ? [] : [{ stage: 'initial-batch', status: 'complete', native_years: [1, 2], technical_checks: 'SCRIPTED PASS', policy_update: { before: [0, 0], gradient: [1, -1], after: [-0.1, 0.1] } }, { stage: 'updated-proposal', status: 'failed', error: 'SCRIPTED native failure', loss: null }, { stage: 'redesign', status: 'complete', designer_source: 'SCRIPTED' }], observations: status === 'queued' ? [] : [{ suggestion: { system: request.initial_system }, observation: { observation_id: 'SCRIPTED-o1', status: 'complete', loss: -3 } }, { suggestion: null, observation: { status: 'failed', loss: null } }], current: status === 'queued' ? null : { suggestion: { system: request.initial_system }, observation: { observation_id: 'SCRIPTED-o1', status: 'complete', loss: -3 } }, best: { loss: status === 'queued' ? null : -3, ties: status === 'queued' ? [] : ['SCRIPTED-o1'] }, errors: status === 'queued' ? [] : ['SCRIPTED failure retained'], budget: { scheduled: 4, consumed: status === 'queued' ? 0 : 4, native_observations: status === 'queued' ? 0 : 3, remaining: status === 'queued' ? 4 : 0 }, replies: { designer: 2, researcher: 17 }, exact_identity: 'UNSAFE_INTEGER' });
 async function stop(process) { if (process?.exitCode === null) { process.kill('SIGTERM'); await Promise.race([new Promise(resolve => process.once('exit', resolve)), sleep(1500)]); if (process.exitCode === null) process.kill('SIGKILL'); } }
 try {
@@ -28,8 +28,8 @@ try {
   cdp.onEvent = m => { if (m.method !== 'Fetch.requestPaused') return; const { request: incoming, requestId } = m.params; requests.push({ url: incoming.url, method: incoming.method });
     let value, code = 200; const path = new URL(incoming.url).pathname;
     if (path.endsWith('/session')) value = { token: 'SCRIPTED-TOKEN', source_commit: source };
-    else if (path.endsWith('/search-validate')) { request = JSON.parse(incoming.postData); value = { status: 'structurally-validated-not-native-executed', request_sha256: hash, source_commit: source, planned_native_world_budget: request.native_budget, method: request.method }; }
-    else if (path.endsWith('/searches')) { submitted++; const body = JSON.parse(incoming.postData); assert.equal(body.confirmed_request_sha256, hash); assert.deepEqual(body.request, request); value = progress('queued'); }
+    else if (path.endsWith('/search-validate')) { request = JSON.parse(incoming.postData); validatedRequestText = incoming.postData; assert(incoming.postData.includes('"wire_float":1.0')); assert(incoming.postData.includes('"intercept": 0.0')); value = { status: 'structurally-validated-not-native-executed', request_sha256: hash, source_commit: source, planned_native_world_budget: request.native_budget, method: request.method }; }
+    else if (path.endsWith('/searches')) { submitted++; const body = JSON.parse(incoming.postData); assert.equal(body.confirmed_request_sha256, hash); assert.deepEqual(body.request, request); assert(incoming.postData.includes(`"request":${validatedRequestText}`)); value = progress('queued'); }
     else if (path.includes('/searches/')) value = progress('complete');
     else { code = 404; value = { error: 'SCRIPTED unsupported API' }; }
     // Match the runtime's actual suggestion shape, rather than the older
@@ -48,13 +48,18 @@ try {
   await cdp.eval(`document.querySelector('#design-console').open=true`);
   await until(() => cdp.eval(`!document.querySelector('#search-validate').disabled`), 'session');
   assert.equal(await cdp.eval(`document.querySelector('#search-submit').disabled`), true);
-  await cdp.eval(`(()=>{const warning=document.createElement('div');warning.textContent='SCRIPTED BROWSER QA / NO INFERENCE / NOT NATIVE RESULTS';warning.style='position:fixed;top:0;left:0;right:0;padding:10px;text-align:center;background:#633956;color:white;z-index:9999;font:13px monospace';document.body.append(warning);const method=document.querySelector('#search-method');method.value='nested-lr';method.dispatchEvent(new Event('change'));document.querySelector('#search-validate').click()})()`);
+  await cdp.eval(`(()=>{const warning=document.createElement('div');warning.textContent='SCRIPTED BROWSER QA / NO INFERENCE / NOT NATIVE RESULTS';warning.style='position:fixed;top:0;left:0;right:0;padding:10px;text-align:center;background:#633956;color:white;z-index:9999;font:13px monospace';document.body.append(warning);const system=document.querySelector('#design-system');system.value=system.value.replace('{','{"wire_float":1.0,"wire_int":1,');system.dispatchEvent(new Event('input'));const loss=document.querySelector('#design-loss');loss.value=loss.value.replace('"intercept": 0','"intercept": 0.0');loss.dispatchEvent(new Event('input'));const method=document.querySelector('#search-method');method.value='nested-lr';method.dispatchEvent(new Event('change'));document.querySelector('#search-validate').click()})()`);
   await until(() => cdp.eval(`document.querySelector('#search-validation').textContent.includes('RUNTIME VALID')`), 'validation');
   assert.equal(await cdp.eval(`document.querySelector('#search-submit').disabled`), true);
   await cdp.eval(`(()=>{const c=document.querySelector('#search-consent');c.checked=true;c.dispatchEvent(new Event('change'));const seed=document.querySelector('#design-seed');seed.value='1401';seed.dispatchEvent(new Event('input'))})()`);
   assert.equal(await cdp.eval(`document.querySelector('#search-submit').disabled&&!document.querySelector('#search-consent').checked&&document.querySelector('#search-consent').disabled`), true);
   await cdp.eval(`document.querySelector('#search-validate').click()`);
   await until(() => cdp.eval(`document.querySelector('#search-validation').textContent.includes('RUNTIME VALID')`), 'revalidation');
+  await cdp.eval(`(()=>{const consent=document.querySelector('#search-consent');consent.checked=true;consent.dispatchEvent(new Event('change'));document.querySelector('#design-system').value+=' ';document.querySelector('#search-submit').click()})()`);
+  await until(() => cdp.eval(`document.querySelector('#search-submit').disabled&&!document.querySelector('#search-consent').checked&&document.querySelector('#search-consent').disabled`), 'programmatic raw drift revoked consent');
+  assert.equal(submitted, 0);
+  await cdp.eval(`document.querySelector('#search-validate').click()`);
+  await until(() => cdp.eval(`!document.querySelector('#search-consent').disabled`), 'raw drift requires new validation');
   await cdp.eval(`(()=>{const c=document.querySelector('#search-consent');c.checked=true;c.dispatchEvent(new Event('change'));document.querySelector('#search-submit').click();document.querySelector('#search-submit').click()})()`);
   await until(() => cdp.eval(`document.querySelector('#search-status').textContent.startsWith('COMPLETE')`), 'terminal receipts');
   assert.equal(submitted, 1); assert.equal(await cdp.eval(`document.querySelector('#search-observations').children.length`), 2);
