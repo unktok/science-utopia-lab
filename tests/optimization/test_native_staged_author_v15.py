@@ -13,6 +13,7 @@ from utopia.optimization.native_staged_author_v15 import (
     project_authoring_trace, protocol_binding, transition,
     replay_staged_generation,
     action_summary,
+    build_conversation, turn_control, LocalStagedQwenDesignerModel, ACTION_SCHEMA, SYSTEM_PROMPT,
 )
 from utopia.system.design_patch import clone, digest
 
@@ -421,6 +422,106 @@ def test_step_and_token_bounds_and_explicit_source_image_identity(tmp_path):
             author(Model([]), tmp_path, **kwargs)
     with pytest.raises(ValueError, match='pinned model/provider/runtime'):
         StagedVocabularyGenerator(Model([]), tmp_path, image_id='wrong', provider_binding=BINDING)
+
+
+def test_repeat_inspection_cue_reports_exact_unchanged_history_without_forcing_action():
+    state = initial_draft(request())
+    action = {'tool': 'inspect', 'selector': {'mechanism_id': ALPHA}, 'path': ''}
+    steps = []
+    for index in range(3):
+        state, receipt = apply(state, action)
+        steps.append({'step': index, 'status': 'applied', 'transition': receipt,
+            'model_reply': {'output': action}, 'errors': []})
+    control = turn_control(state, steps, max_steps=4)
+    assert control['consecutive_same_successful_inspections_of_unchanged_draft'] == 3
+    assert control['remaining_calls_including_this_one'] == 1
+    assert 'LAST budgeted call' in control['finish_notice']
+    assert 'same unchanged value 3 times' in control['inspection_notice']
+    assert 'no mandatory edit or novelty gate' in control['retention_policy']
+    _, same = apply(state, action)
+    assert same['ok']  # Observation is a cue, not a hidden tool-selection veto.
+    changed, _ = apply(state, {'tool': 'edit', 'operations': [edit(value=.8)]})
+    assert turn_control(changed, steps, max_steps=4)[
+        'consecutive_same_successful_inspections_of_unchanged_draft'] == 0
+
+
+def test_conversation_presents_last_action_and_receipt_as_completed_turns_not_new_request():
+    state = initial_draft(request())
+    action = {'tool': 'inspect', 'selector': {'mechanism_id': ALPHA}, 'path': ''}
+    state, receipt = apply(state, action)
+    steps = [{'step': 0, 'status': 'applied', 'transition': receipt,
+        'model_reply': {'output': action}, 'errors': []}]
+    prompt = build_prompt(request(), state, steps, image_id=IMAGE,
+        binding_sha256=HASH, settings={'max_steps': 4})
+    messages = build_conversation(prompt, SYSTEM_PROMPT)
+    assert [m['role'] for m in messages] == ['system', 'user', 'assistant', 'user']
+    assert json.loads(messages[2]['content']) == action
+    assert 'ALREADY returned' in messages[3]['content']
+    assert 'DO_NOT_EXECUTE_GENERATED_SOURCE' in messages[3]['content']
+    assert 'not a request to repeat' in messages[3]['content']
+    assert messages[1]['content'].startswith('CURRENT TURN\n')
+    assert 'CHOOSE YOUR NEXT ACTION' in messages[-1]['content']
+    assert build_conversation(prompt, SYSTEM_PROMPT) == messages
+    first_prompt = build_prompt(request(), initial_draft(request()), [], image_id=IMAGE,
+        binding_sha256=HASH, settings={'max_steps': 4})
+    assert [m['role'] for m in build_conversation(first_prompt, SYSTEM_PROMPT)] == ['system', 'user']
+
+
+def test_staged_dialogue_transport_is_one_loopback_post_and_legacy_transport_unchanged(monkeypatch):
+    calls = []
+    class Response:
+        status_code = 200
+        def __init__(self, body):
+            self.body, self.text = body, json.dumps(body)
+        def raise_for_status(self):
+            pass
+        def json(self):
+            return self.body
+    class Session:
+        trust_env = True
+        def get(self, url, **kwargs):
+            calls.append(('GET', url))
+            assert self.trust_env is False
+            return Response({'models': [{'name': 'qwen3:8b', 'digest': BINDING['model_digest']}]})
+        def post(self, url, **kwargs):
+            calls.append(('POST', url))
+            self.payload = kwargs['json']
+            assert self.payload['messages'] == expected
+            assert self.payload['options']['num_predict'] == 512
+            assert self.payload['think'] is False and self.payload['stream'] is False
+            return Response({'message': {'content': json.dumps(finish())}, 'done': True,
+                'done_reason': 'stop', 'prompt_eval_count': 111, 'eval_count': 30})
+    monkeypatch.setattr('requests.Session', Session)
+    prompt = build_prompt(request(), initial_draft(request()), [], image_id=IMAGE,
+        binding_sha256=HASH, settings={'max_steps': 4})
+    expected = build_conversation(prompt, SYSTEM_PROMPT)
+    model = LocalStagedQwenDesignerModel(BINDING)
+    parsed, messages = model.generate(prompt=prompt, system_prompt=SYSTEM_PROMPT,
+        seed_ctx=('SCRIPTED',), max_tokens=512, temperature=.2,
+        response_format={'json_object': {'schema': ACTION_SCHEMA}})
+    assert parsed == finish() and messages[:-1] == expected
+    assert calls == [('GET', 'http://127.0.0.1:11434/api/tags'), ('POST', 'http://127.0.0.1:11434/api/chat')]
+    assert model.last_transport['network_retries'] == 0
+    assert model.last_transport['source_prompt_sha256'] == digest(prompt)
+
+
+def test_cold_replay_binds_exact_provider_dialogue_and_rejects_rehashed_message_tamper(tmp_path):
+    class DialogueModel(Model):
+        def generate(self, **kwargs):
+            output, messages = super().generate(**kwargs)
+            context = build_conversation(kwargs['prompt'], kwargs['system_prompt'])
+            self.last_transport = {'conversation_schema': 'scienceutopia.staged-author.v15.conversation.v1',
+                'source_prompt_sha256': digest(kwargs['prompt']), 'request_payload': {'messages': context}}
+            return output, context + messages
+    definition = author(DialogueModel([{'tool': 'inspect', 'path': '/metadata'}, finish()]),
+        tmp_path, max_steps=2)(request())
+    assert author(Model([]), tmp_path, max_steps=2)(request()) == definition
+    completed = next(tmp_path.glob('generation-*/step-01.completed.json'))
+    def tamper(value):
+        value['model_reply']['transport']['request_payload']['messages'][0]['content'] = 'different prompt'
+    rehash(completed, tamper)
+    with pytest.raises(ValueError, match='provider dialogue differs'):
+        author(Model([]), tmp_path, max_steps=2)(request())
 
 
 def test_original_native_world_two_stage_feedback_uses_staged_author_without_manual_inbox(

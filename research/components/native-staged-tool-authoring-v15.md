@@ -14,8 +14,10 @@ boundary. It takes an explicitly bound model, runtime image, directory,
 `max_steps` (1–64) and `max_tokens` (512–8192). The default tool session is
 12 calls of at most2048 output tokens; a protocol may explicitly choose other
 bounded values. `make_local_staged_generator` uses the existing no-retry,
-loopback-only `LocalQwenDesignerModel`; no paid/cloud provider or new dependency
-is introduced. Neither scientists nor the designer model weights are trained.
+loopback-only transport contract through the additive
+`LocalStagedQwenDesignerModel`; no paid/cloud provider or new dependency is
+introduced. The v14 `LocalQwenDesignerModel` is not changed. Neither scientists
+nor the designer model weights are trained.
 
 The model emits one JSON object per call:
 
@@ -71,6 +73,31 @@ reconstruction. Prompt cap240000 bytes, draft cap512000 bytes and aggregate
 80 literal base edits are explicit finite implementation bounds. A too-large
 prompt terminates authoring without a model call; it is not silently truncated.
 The existing downstream compiler's source/support constraints still apply.
+
+## Prospective conversational correction after a1
+
+Actual a1 exposes a generic agent-interface failure: the model repeatedly
+requests the exact same successful inspection of an unchanged draft, even
+though each receipt and remaining budget are correctly present in the JSON
+context. Those frozen source/raw records are not edited or silently retried.
+
+A separate source revision keeps JSON action/context schemas but presents the
+last authored action as an actual assistant conversational turn, followed by a
+user turn explicitly identifying its **already returned** tool receipt. The
+source-bound pure `build_conversation` function reconstructs these exact provider
+messages. Current budget and the number of repeated successful inspections of
+the unchanged draft appear at both ends of the context. The final-call notice
+explains that only a valid explicit finish can yield a candidate.
+
+These are technical progress cues, not an institution algorithm, a forced edit
+or a novelty policy. All six tools remain legal after repeated inspection;
+explicit retention remains legal. The host neither supplies a candidate nor
+automatically finishes. The additive transport still performs one pinned-model
+verification GET and one fixed loopback POST per dispatched call, with no
+network retry, and archives the exact dialogue/payload/raw reply. Cold replay
+checks that archived dialogue against the deterministic prompt reconstruction.
+SCRIPTED tests verify the conversational and budget contract, not that the next
+actual Qwen pilot will succeed.
 
 ## Journal, crash and replay contract
 
