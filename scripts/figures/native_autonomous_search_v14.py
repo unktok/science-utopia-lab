@@ -298,7 +298,7 @@ def render(report,output,*,audit_path,expected_source=None,allow_synthetic=False
             f"{e['counts']['nodes_added']}/{e['counts']['nodes_removed']}",
             f"{e['counts']['edges_added']}/{e['counts']['edges_removed']}"] for e in data['edits']]
         _table(ax,['New\nbodies','Nodes\n+/−','Wires\n+/−'],[e['label'] for e in data['edits']],vals,bbox=(0,.19,1,.74))
-        ax.text(.5,.02,'Literal edits; n/a is failure.\nNew text is not proven invention.',
+        ax.text(.5,.02,'n/a: no compiled design. Drafts retained.\nLiteral edits do not prove invention.',
             transform=ax.transAxes,ha='center',va='bottom',fontsize=7,color='#435568')
         ax = axes[2,0]
         ax.set_title('E  Separate designer / scientist costs',y=1.05,pad=0)

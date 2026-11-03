@@ -29,6 +29,7 @@ from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampa
 from utopia.optimization.native_nested_search import NativeNestedDesignCampaign
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
+from utopia.system.design_patch import pointer, _index, _edit
 from utopia.utils.data_utils import file_sha256, write_json_atomic, decode_json
 
 SCHEMA = 'scienceutopia.native-autonomous-search-audit.v14'
@@ -291,6 +292,50 @@ def _inside(root, relative):
     return path
 
 
+def operation_pointer_diagnostics(parent,operations):
+    """Describe exact sequential JSON addressing, never repair or execute code.
+
+    The original pinned JSON edit primitives are reused on a private JSON copy.
+    Applicability here does not establish schema/graph/source validity.
+    """
+    result = {'scope':'Sequential JSON container addressing only; no source execution, semantic validity or invention claim.',
+        'operations_sha256':digest(operations),'operations':[],'first_address_error':None}
+    if not isinstance(operations,list):
+        result.update(status='operations-not-an-array',all_addresses_applicable=False)
+        return result
+    document = deepcopy(parent)
+    for index,operation in enumerate(operations):
+        row = {'operation_index':index,'op':operation.get('op') if isinstance(operation,dict) else None,
+            'path':operation.get('path') if isinstance(operation,dict) else None,'address_trace':[]}
+        if result['first_address_error'] is not None:
+            row['status'] = 'not-replayed-after-first-address-error'
+            result['operations'].append(row)
+            continue
+        try:
+            owner = document
+            parts = pointer(row['path'])
+            for depth,token in enumerate(parts):
+                row['address_trace'].append({'depth':depth,'token':token,
+                    'owner_kind':'list' if isinstance(owner,list) else 'object' if isinstance(owner,dict) else 'scalar',
+                    'owner_length':len(owner) if isinstance(owner,(list,dict)) else None})
+                key = _index(owner,token,append=depth == len(parts)-1 and row['op'] == 'add')
+                if depth < len(parts)-1:
+                    owner = owner[key]
+        except (ValueError,KeyError,TypeError,IndexError):
+            pass  # The authoritative original edit primitive supplies its exact error below.
+        try:
+            _edit(document,operation)
+        except (ValueError,KeyError,TypeError,IndexError) as error:
+            row.update(status='address-error',error={'type':type(error).__name__,'message':str(error)})
+            result['first_address_error'] = index
+        else:
+            row['status'] = 'address-applicable'
+        result['operations'].append(row)
+    result.update(status='address-error' if result['first_address_error'] is not None else 'all-addresses-applicable',
+        all_addresses_applicable=result['first_address_error'] is None)
+    return result
+
+
 def _actual_transport(transport, messages, start, binding):
     """Validate recorded fixed local POST without dispatching any request."""
     if 'request_payload' not in transport:
@@ -482,12 +527,18 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
                 'request_sha256':request_sha,'reason':'bounded automatic authoring failed','technical_errors':errors}}
             if result['definition'] != expected_failure:
                 raise ValueError('designer failure sentinel hides or changes technical errors')
+        attempt_documents = [read(cell/f'attempt-{a["attempt"]:02d}.completed.json')
+            if a['completed_sha256'] else None for a in attempts]
+        diagnostics = []
+        for done in attempt_documents:
+            output = (done.get('model_reply') or {}).get('output') if done else None
+            diagnostics.append(operation_pointer_diagnostics(binding['request']['parent_system'],output.get('operations'))
+                if isinstance(output,dict) else None)
         proofs.append({'request_sha256': request_sha, 'binding':binding, 'result':None if open_generation else result,
             'generation_status':'pending-authoring' if open_generation else result['status'],
             'definition_consumed':expected[request_sha]['generated'],
             'attempts':attempts,'started_records':[read(p) for p in starts],
-            'attempt_records':[read(cell/f'attempt-{a["attempt"]:02d}.completed.json')
-                if a['completed_sha256'] else None for a in attempts]})
+            'attempt_records':attempt_documents,'operation_diagnostics':diagnostics})
     missing = set(expected)-observed
     allowed_missing = {pending_sha} if pending_sha and not expected[pending_sha]['generated'] else set()
     if not missing <= allowed_missing:
