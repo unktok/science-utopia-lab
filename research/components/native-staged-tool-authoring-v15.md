@@ -59,7 +59,9 @@ the technical Python/port/distribution ABI and the tool schema. It does **not**
 duplicate the full parent source and protocol bodies. The model can request any
 exact current subtree with `inspect`, including the whole document when it fits.
 Only the last full tool response is repeated, while every prior step's status,
-raw-action hash, current-draft hash and technical errors remain visible. These
+exact addresses, scalar operands, raw-action hash, current-draft hash and
+technical errors remain visible. Arbitrary prior literal bodies have explicit
+type/length/hash descriptors rather than being repeated. These
 omissions are declared, not an undisclosed tail truncation or cross-arm history.
 
 An individual tool response over96000 UTF-8 bytes returns its exact type, length,

@@ -171,6 +171,32 @@ def step_errors(step):
     return errors
 
 
+def action_summary(action):
+    """Keep every prior address visible without repeating arbitrary source bodies."""
+    if not isinstance(action, dict):
+        return None
+    result = {key: clone(action[key]) for key in ('tool', 'selector', 'path', 'offset', 'limit', 'delete')
+        if key in action}
+    if isinstance(action.get('operations'), list):
+        operations = []
+        for operation in action['operations']:
+            if not isinstance(operation, dict):
+                operations.append({'raw_operation_sha256': digest(operation), 'type': json_type(operation)})
+                continue
+            receipt = {key: clone(operation[key]) for key in ('op', 'path', 'selector') if key in operation}
+            if 'value' in operation:
+                value = operation['value']
+                receipt['operand'] = _descriptor(value)
+                if value is None or type(value) in (bool, int, float):
+                    receipt['operand']['literal_scalar'] = value
+            operations.append(receipt)
+        result['operations'] = operations
+    for key in ('text', 'factors', 'continuous', 'logits', 'rationale'):
+        if key in action:
+            result[key + '_descriptor'] = _descriptor(action[key])
+    return result
+
+
 def authored_output(state, rationale):
     return {'operations': clone(state['operations']), 'factors': clone(state['factors']),
         'continuous': clone(state['continuous']), 'logits': clone(state['logits']), 'rationale': rationale}
@@ -314,6 +340,7 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
             'tool': item_transition.get('tool'), 'ok': item_transition.get('ok'),
             'draft_after_sha256': item_transition.get('draft_after_sha256'),
             'errors': step_errors(item),
+            'action_summary': action_summary(item.get('model_reply', {}).get('output')),
             'raw_action_sha256': digest(item['model_reply']['output'])
                 if item.get('model_reply', {}).get('output') is not None else None})
     return json.dumps({'instructions': INSTRUCTIONS,
@@ -329,7 +356,8 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
         'prompt_view': {'full_current_parent_included': False,
             'literal_bodies_available_via': 'inspect exact current JSON path',
             'all_own_scalar_outcomes_failures_updates_included': True,
-            'prior_full_tool_results': 'only latest included; all exact actions/results archived, inspect reads current state',
+            'prior_full_tool_results': 'only latest included; all prior addresses and scalar operands are summarized; '
+                'literal bodies have exact type/length/hash descriptors and are archived, inspect reads current state',
             'prior_provider_raw_transport': 'omitted from prompt; exact journal preserved',
             'silent_size_truncation': False}}, ensure_ascii=False, sort_keys=True, allow_nan=False)
 

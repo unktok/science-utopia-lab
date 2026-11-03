@@ -12,6 +12,7 @@ from utopia.optimization.native_staged_author_v15 import (
     StagedVocabularyGenerator, build_prompt, draft_summary, initial_draft,
     project_authoring_trace, protocol_binding, transition,
     replay_staged_generation,
+    action_summary,
 )
 from utopia.system.design_patch import clone, digest
 
@@ -352,9 +353,25 @@ def test_all_prior_invalid_draft_diagnostics_survive_intervening_tool_calls(tmp_
     author(model, tmp_path, max_steps=3)(request())
     third_prompt = json.loads(model.calls[2]['prompt'])
     assert third_prompt['previous_steps'][0]['errors']
+    prior_action = third_prompt['previous_steps'][0]['action_summary']
+    assert prior_action['operations'][0]['path'] == '/parameters/code_artifact/source'
+    assert prior_action['operations'][0]['selector'] == {'mechanism_id': ALPHA}
+    assert prior_action['operations'][0]['operand']['sha256'] == digest('bad : :')
+    assert 'bad : :' not in json.dumps(prior_action)
     assert third_prompt['previous_steps'][1]['errors'] == []
     projected = project_authoring_trace(tmp_path, allowed_requests=[request()])
     assert projected['generations'][0]['steps'][0]['errors']
+
+
+def test_prior_address_summary_retains_numeric_literals_but_not_arbitrary_code_bodies():
+    summary = action_summary({'tool': 'edit', 'operations': [edit(value=.125),
+        edit(path='/parameters/code_artifact/source', value='arbitrary python body')]})
+    assert summary['operations'][0]['operand']['literal_scalar'] == .125
+    assert summary['operations'][1]['operand']['length'] == len('arbitrary python body')
+    assert 'arbitrary python body' not in json.dumps(summary)
+    splice = action_summary({'tool': 'splice', 'path': '/metadata/text', 'offset': 2,
+        'delete': 0, 'text': 'new chunk'})
+    assert splice['offset'] == 2 and splice['text_descriptor']['sha256'] == digest('new chunk')
 
 
 def test_model_never_called_when_full_prompt_exceeds_explicit_byte_budget(tmp_path):
