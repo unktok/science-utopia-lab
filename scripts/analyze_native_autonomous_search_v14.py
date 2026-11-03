@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import ast
 from copy import deepcopy
 import hashlib
 import json
@@ -30,6 +31,7 @@ from utopia.optimization.native_nested_search import NativeNestedDesignCampaign
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.design_patch import pointer, _index, _edit
+from utopia.system.native_migration import native_execution_nodes
 from utopia.utils.data_utils import file_sha256, write_json_atomic, decode_json
 
 SCHEMA = 'scienceutopia.native-autonomous-search-audit.v14'
@@ -336,6 +338,62 @@ def operation_pointer_diagnostics(parent,operations):
     return result
 
 
+def authored_payload_comparisons(parent,output):
+    """Literal payload lineage, including newline/AST copies, never invention.
+
+    Whitespace/AST comparisons are analysis only; original model bytes and
+    operations are never rewritten or passed back to the compiler.
+    """
+    sources = {n.mechanism_id:n.parameters['code_artifact']['source'] for n in
+        native_execution_nodes(SystemSpec.from_dict(parent)) if n.implementation == 'code.python.v1'}
+    def locations(value,target_sha,path=''):
+        result = [path] if digest(value) == target_sha else []
+        if isinstance(value,dict):
+            for key,child in value.items():
+                result.extend(locations(child,target_sha,path+'/'+str(key).replace('~','~0').replace('/','~1')))
+        elif isinstance(value,list):
+            for index,child in enumerate(value):
+                result.extend(locations(child,target_sha,path+'/'+str(index)))
+        return result
+    def bodies(value,path):
+        result = [(path,value)] if isinstance(value,str) and path.endswith('/code_artifact/source') else []
+        if isinstance(value,dict):
+            for key,child in value.items():
+                result.extend(bodies(child,path+'/'+str(key)))
+        elif isinstance(value,list):
+            for index,child in enumerate(value):
+                result.extend(bodies(child,path+'/'+str(index)))
+        return result
+    rows = []
+    operations = output.get('operations')
+    if not isinstance(operations,list):
+        operations = []
+    for index,operation in enumerate(operations):
+        if not isinstance(operation,dict) or 'value' not in operation:
+            continue
+        value = operation['value']
+        row = {'operation_index':index,'target_path':operation.get('path'),
+            'value_sha256':digest(value),'literal_parent_value_locations':locations(parent,digest(value)),
+            'python_source_comparisons':[]}
+        for path,body in bodies(value,operation.get('path') or ''):
+            try:
+                tree = ast.dump(ast.parse(body),include_attributes=False)
+                parse_error = None
+            except (SyntaxError,ValueError) as error:
+                tree,parse_error = None,{'type':type(error).__name__,'message':str(error)}
+            row['python_source_comparisons'].append({'authored_value_path':path,
+                'authored_source_sha256':hashlib.sha256(body.encode()).hexdigest(),
+                'literal_initial_source_matches':sorted(k for k,s in sources.items() if s == body),
+                'initial_source_minus_one_final_newline_matches':sorted(k for k,s in sources.items()
+                    if s.endswith('\n') and s[:-1] == body),
+                'same_python_AST_initial_source_matches':sorted(k for k,s in sources.items()
+                    if tree is not None and ast.dump(ast.parse(s),include_attributes=False) == tree),
+                'authored_parse_error':parse_error})
+        rows.append(row)
+    return {'scope':'Original JSON values and Python syntax trees compared to supplied parent; no execution, repair, semantic or useful-invention inference.',
+        'analysis_normalization_is_not_repair':True,'operation_values_modified':False,'operations':rows}
+
+
 def _actual_transport(transport, messages, start, binding):
     """Validate recorded fixed local POST without dispatching any request."""
     if 'request_payload' not in transport:
@@ -529,16 +587,19 @@ def audit_designer(directory, records, settings, *, provider_binding=None, class
                 raise ValueError('designer failure sentinel hides or changes technical errors')
         attempt_documents = [read(cell/f'attempt-{a["attempt"]:02d}.completed.json')
             if a['completed_sha256'] else None for a in attempts]
-        diagnostics = []
+        diagnostics,payload_comparisons = [],[]
         for done in attempt_documents:
             output = (done.get('model_reply') or {}).get('output') if done else None
             diagnostics.append(operation_pointer_diagnostics(binding['request']['parent_system'],output.get('operations'))
+                if isinstance(output,dict) else None)
+            payload_comparisons.append(authored_payload_comparisons(binding['request']['parent_system'],output)
                 if isinstance(output,dict) else None)
         proofs.append({'request_sha256': request_sha, 'binding':binding, 'result':None if open_generation else result,
             'generation_status':'pending-authoring' if open_generation else result['status'],
             'definition_consumed':expected[request_sha]['generated'],
             'attempts':attempts,'started_records':[read(p) for p in starts],
-            'attempt_records':attempt_documents,'operation_diagnostics':diagnostics})
+            'attempt_records':attempt_documents,'operation_diagnostics':diagnostics,
+            'authored_payload_comparisons':payload_comparisons})
     missing = set(expected)-observed
     allowed_missing = {pending_sha} if pending_sha and not expected[pending_sha]['generated'] else set()
     if not missing <= allowed_missing:

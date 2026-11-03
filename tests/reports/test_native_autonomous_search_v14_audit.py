@@ -362,3 +362,20 @@ def test_authored_id_address_on_array_is_explicitly_a_noncanonical_index():
         [{'op':'replace','path':'/mechanisms/selection','value':{}}])
     assert proof['operations'][0]['error']['message'] == 'array path requires a canonical nonnegative index'
     assert proof['operations'][0]['address_trace'][-1]['owner_length'] == 1
+
+
+def test_literal_newline_and_ast_copy_proofs_do_not_claim_new_algorithm_or_repair():
+    from utopia.system.native_open_examples import open_native_system
+    parent = open_native_system('sha256:'+'a'*64).to_dict()
+    body = parent['mechanisms'][7]['parameters']['code_artifact']['source']
+    tensor = parent['mechanisms'][15]['parameters']['program']['nodes']
+    output = {'operations':[{'op':'replace','path':'/mechanisms/17/parameters/code_artifact/source','value':body[:-1]},
+        {'op':'replace','path':'/mechanisms/19/parameters/program/nodes','value':tensor}]}
+    before = deepcopy(parent),deepcopy(output)
+    proof = audit.authored_payload_comparisons(parent,output)
+    assert (parent,output) == before and proof['operation_values_modified'] is False
+    code = proof['operations'][0]['python_source_comparisons'][0]
+    assert code['literal_initial_source_matches'] == []
+    assert code['initial_source_minus_one_final_newline_matches'] == ['world.selection']
+    assert code['same_python_AST_initial_source_matches'] == ['world.selection']
+    assert proof['operations'][1]['literal_parent_value_locations'] == ['/mechanisms/15/parameters/program/nodes']
