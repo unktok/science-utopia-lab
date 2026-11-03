@@ -2,32 +2,49 @@
 
 Updated: 2026-11-03
 
-## Active v15: make automatic authoring reach the original world
+## V15 actual operational loop achieved; publication verification in progress
 
-The user's current instruction is to work in parallel until the automatic
-institution-design/native-feedback loop actually works, not stop at another
-all-invalid software pilot. The [prospective protocol](protocols/campaigns/native-staged-search-v15.md)
-fixes a first four-slot, two-objective revision before any v15 inference.
-Failures and interrupted costs are retained; any necessary engineering
-revision gets a new source/budget rather than silently extending this one.
+The [whole-project inventory](milestones/2026-11-03-staged-native-loop-v15.md)
+maps the original goals to implemented, SCRIPTED, actual-Qwen and open evidence.
+The central operational loop now works in the original researcher world:
+local-Qwen explicit finish → native evaluation → exact own measured loss →
+next automatic design/finish → native evaluation. This is not a claim that all
+non-scale research or autonomous useful invention is complete.
 
-Three tracks are integrated in a feature worktree: durable inspect/edit/splice/
-configure/validate/finish authoring, generic institution-authored work addressed
-to the original researchers, and the existing English cyberpunk Foundry's
-Authoring Chronicle. No institution catalogue, host candidate repair, trained
-researcher weights, scale-up or merit/improvement veto is added. Exact native
-losses must reach the next automatic design; SCRIPTED tests alone do not meet
-that operational goal. See the [live work log](logbook/2026-11-03-staged-native-authoring-v15.md).
-At this note's pre-inference checkpoint, there is no actual v15 outcome yet.
+[A2's independent result](results/native-staged-search-v15-a2.md) verifies
+four original-world evaluations, 368 scientist replies, 32 inherited-code
+executions and zero technical failures at source `51d9cbb`. Both objective arms
+complete two generations: throughput `[-1,-1]`, reviewed production `[8,8]`.
+Every world measures A/Q/R = 1/4/24. **All four candidates explicitly retain
+the exact 19-node/27-wire parent.** Feedback is supplied, but effective use,
+new institutional invention, objective-dependent design and improvement are
+not demonstrated. Keeping the parent is legal, not an injected fallback.
 
-The first actual revision at`f969f7c` now stops at its fixed budget:
-four failed generations/64 known inspect replies, no compiled institution or
-native world, all losses null. Its unchanged raw evidence is independently
-audited separately. A [new prospective a2 revision](protocols/campaigns/native-staged-search-v15-a2.md)
-uses completed conversational tool receipts and explicit progress/budget cues;
-it receives a separately declared four-slot budget, not refunded a1 attempts.
-The operational goal remains active. Related156 prelaunch tests pass;
-no a2 success is inferred from them.
+The [first a1 revision](results/native-staged-search-v15-a1.md) remains a
+separate failure: four charged slots, 64 repeated inspections, no compiled
+candidate/native world and null losses. Its costs are not refunded or pooled
+into a controlled comparison. A2 separately records 64 replies (60 inspections,
+four finishes), 989.67 adapter seconds and 39 min 19 s wall time. Two audits
+per revision agree: a1 preserves 153 raw files, a2 209; each matches 242
+critical source blobs at its own frozen matching analysis checkout.
+
+Parallel software adds durable literal editing/repair tools, arbitrary work
+addressed to the actual original researchers, read-only generic effect-ABI
+discovery, exact terminal-failure feedback and the existing English cyberpunk
+Foundry's tool/native chronology. Runtime freedoms still cover parameters,
+algorithms, nodes, schemas, wiring and bounded processes; no policy catalogue,
+host source repair, researcher training or hidden merit/adoption veto is added.
+The new arbitrary-work and later discovery/role/history improvements have
+separate SCRIPTED verification and were **not used by a2**.
+
+Actual inference has stopped. Root is completing the actual scientific figure,
+final source-scoped software verification, reviewed PDF and publication push.
+The full suite at a1's source passes 2327 tests with 6 skips. A later publication
+scope retains 11 failures caused by an incomplete synthetic transport fixture;
+the corrected real-prompt fixture passes its related 115 checks. A separate
+fresh full run is in progress. These overlapping scopes are not added or
+relabelled as a full-suite pass of a different source. See the
+[forward-only work log](logbook/2026-11-03-staged-native-authoring-v15.md).
 
 ## Completed finite v14: implementation and actual bounded authoring failures
 

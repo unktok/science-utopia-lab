@@ -23,7 +23,35 @@ The final shareable artifact is
 
 ## Evidence boundary
 
-The latest manuscript adds the bounded v13 nested institution search:
+The latest manuscript adds the actual v15 automatic native-feedback loop.
+Two own-history-separated objectives each complete two original-world
+evaluations at `51d9cbb`: 368 scientist replies, 32 inherited-code executions
+and zero technical failures. Losses are `[-1,-1]` and `[8,8]`; all four
+candidates explicitly retain the exact 19-node/27-wire parent. This is an
+executable local-Qwen finish/evaluate/own-loss/redesign/evaluate connection,
+not new institutional invention, effective feedback use or improvement.
+
+The first staged revision remains a separately budgeted failure: 64 repeated
+inspections, four null slots, no compiled candidate or native world. Both
+revisions have two byte-identical independent audits at their own matching
+historical analysis branches, not a replay through current main. A2 lasts
+39 min 19 s; recorded designer/scientist call sums are 989.67 s / 1275.04 s.
+These intervals and transport durations are not independent additive costs.
+The actual three-panel figure and English desktop/mobile Foundry captures
+preserve retention, nulls, source pins and separate physical accounting.
+Runtime/backend source `51d9cbb` is distinct from display client `2fd6aea`.
+
+Later production code adds trusted-role instruction separation, read-only
+effect-ABI discovery and exact terminal-failure history. Arbitrary work can
+be addressed to the original researchers using their persona, memory and
+fixed model. These extensions have original-world SCRIPTED verification;
+their mere presence does not establish actual Qwen use in a2. The
+[whole-project inventory](../research/milestones/2026-11-03-staged-native-loop-v15.md)
+maps original goals, implementation, actual evidence and remaining boundaries.
+Final source-scoped checks and visual-review hashes are recorded separately
+from actual scientific outcomes. No blanket all-non-scale-research claim.
+
+The historical v13 manuscript adds the bounded nested institution search:
 two explicit losses, each with two IID G0 design draws, one conditional LOO
 likelihood-ratio update, one exact updated-G0 native forward, and one own-history
 free G1 redesign/forward. All eight original-world runs complete with592 fresh

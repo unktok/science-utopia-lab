@@ -1,7 +1,7 @@
 """Bind audited staged-v15 results, source-scoped tests and owner-reviewed assets.
 
 Read-only verification only: no inference, world, figure/PDF generation or repair.
-The caller supplies explicit human visual-review confirmation; this utility
+The caller supplies explicit paper-owner visual-review confirmation; this utility
 checks identities/counts/hashes and never pretends to perform visual inspection.
 """
 from __future__ import annotations

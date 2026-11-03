@@ -127,3 +127,50 @@ Separate prospective improvements add trusted-role instruction separation,
 read-only capability/schema discovery and a UI inspector for an exact compiled
 pending candidate with unobserved loss. They never modify an active experiment
 pin and must not be relabelled as features used by a2's original author.
+
+## Closed actual a2 and independent results
+
+The writer exits 0 at 2026-11-03T09:23:41Z, after 39 min 19.245 s.
+All four scheduled original-world evaluations complete: throughput `[-1,-1]`,
+reviewed production `[8,8]`, common A/Q/R = 1/4/24, zero technical failures.
+Both G1 requests contain their exact own G0 observation and scalar loss.
+Every generation has 15 inspections and one explicit valid finish; all four
+exactly retain the 19-node/27-wire seed. There is no model-authored source,
+graph/process change, objective-conditioned divergence or observed improvement.
+Retention is legal and explicit, not a host fallback. The operational feedback
+connection is achieved, not useful invention or every non-scale research goal.
+
+Actual costs: 64 known designer replies, 561,586 input / 1,781 output tokens,
+989.672382 adapter seconds; 368 original-scientist replies / wire requests,
+1,275.043923 model-call seconds and 32 inherited-seed code executions.
+The full two audits are byte-identical, preserve all 209 raw files and match
+242 critical source blobs; no inference or container execution occurs in audit.
+Full audit content hash: `80d7daaa31fcbebdbf67a0d3aecf2cc21a819620b9b1cdc807ecfbd1d3d8c96d`.
+Matching report source `c40f36b` is pushed as
+`origin/feature/staged-search-a2-report-v15`; a1's matching `706d9b2` is pushed
+separately. Main's later authoring interpreter must not replay these old runs.
+
+## Publication regression correction, not an actual experiment failure
+
+The full publication-code scope at `c0fcbfd` stops with 2380 passing cases,
+11 failures and 6 skips / 1190.71 s. All 11 failures share one incomplete
+SCRIPTED transport fixture: its empty `000_current_turn` dictionary lacks
+`next_call_number` required by the later trusted-role narration. The production
+prompt builder supplies that field; the actual a2 source is unchanged.
+Root corrects the fixture to call the real `build_prompt`/`initial_draft` with
+a valid LossSpec/settings, without weakening any production or audit check.
+Related author/audit/figure scope passes 115 tests / 24.21 s.
+A fresh clean full scope starts at `b50a48c`, with a separate r2 receipt/log/XML.
+The failed r1 remains a failed scope, not an attributed pass.
+
+## Actual figures and English UI
+
+The audit-bound three-panel figure displays the two a2 native loss paths on
+separate scales and the separate a1/a2 physical accounting. Open circles mean
+exact parent retention, not invented code. Root inspects the actual PNG.
+GET-only final desktop/mobile captures preserve exact progress bytes and grant
+no consent or execution. Runtime/backend source `51d9cbb` and later responsive
+display client `2fd6aea` are explicitly separate; served asset hashes are
+recorded. A selected-row resize defect is corrected prospectively and tested,
+not edited into the frozen runtime. All preview processes are stopped after
+capture. No additional actual inference is scheduled.

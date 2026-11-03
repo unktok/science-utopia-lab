@@ -6,11 +6,18 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [V15 active goal, parallel tracks and forward-only execution log](logbook/2026-11-03-staged-native-authoring-v15.md)
+- [V15 original goals, whole-project evidence inventory and remaining boundaries](milestones/2026-11-03-staged-native-loop-v15.md)
+- [V15 parallel tracks and forward-only execution log](logbook/2026-11-03-staged-native-authoring-v15.md)
+- [V15 a2 actual two-generation native feedback, exact retention and costs](results/native-staged-search-v15-a2.md)
+- [V15 a2 independent audit and unchanged raw/source inventories](results/native-staged-search-v15-a2.json)
+- [V15 a1 closed repeated-inspection failure and retained costs](results/native-staged-search-v15-a1.md)
+- [V15 independent staged/native/source/cost audit](components/native-staged-search-independent-audit-v15.md)
+- [V15 actual loss/accounting scientific figure contract](figures/native-staged-search-v15.md)
 - [V15 prospective staged local-Qwen/native-feedback protocol](protocols/campaigns/native-staged-search-v15.md)
 - [V15 separate a2 conversational-tool continuation after the read loop](protocols/campaigns/native-staged-search-v15-a2.md)
 - [V15 durable staged literal authoring and strict replay](components/native-staged-tool-authoring-v15.md)
 - [V15 institution-authored arbitrary work for original researchers](components/native-researcher-open-work-v15.md)
+- [V15 read-only effect-ABI discovery, permissions and coverage boundaries](components/native-capability-discovery-v15.md)
 - [V15 existing English Foundry Authoring Chronicle](../game-ui-v2/STAGED_FOUNDRY_V15.md)
 - [V14 completed finite goal: automatic free institutional search and bounded failures](milestones/2026-11-03-autonomous-institution-search-v14.md)
 - [V14 source-specific tests, actual UI/figure and60-page PDF verification](results/native-autonomous-search-v14-verification.json)
