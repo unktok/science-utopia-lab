@@ -137,6 +137,18 @@ def test_failed_worlds_are_null_and_restart_resumes_exact_next_slot(tmp_path):
     assert len(resumed['errors']) == 2
 
 
+def test_final_commit_restart_only_marks_terminal_without_constructing_providers(tmp_path):
+    q = queue(tmp_path); first = submit(q, request(budget=1))
+    def stop(controller): raise PortableStop('SCRIPTED stop after last campaign commit')
+    with pytest.raises(PortableStop):
+        q.run_one(lambda *a: FailedFactory(), generator_builder=lambda *a: definition,
+            source_commit=REVISION, after_stage=stop)
+    assert q.get(first['search_id'])['status'] == 'running'
+    result = queue(tmp_path).run_one(lambda *a: pytest.fail('no factory on terminal resume'),
+        generator_builder=lambda *a: pytest.fail('no generator on terminal resume'), source_commit=REVISION)
+    assert result['status'] == 'complete' and result['budget']['consumed'] == 1
+
+
 def test_real_cold_process_restart_never_repeats_committed_native_attempt(tmp_path):
     """Two separate Python workers; native factory is explicitly failing SCRIPTED QA."""
     q = queue(tmp_path); first = submit(q)
@@ -165,6 +177,71 @@ except PortableStop:
     attempts = (tmp_path / 'attempts.txt').read_text().splitlines()
     assert len(attempts) == len(set(attempts)) == 2
     assert queue(tmp_path).get(first['search_id'])['status'] == 'complete'
+
+
+def test_original_native_checkpoint_replays_after_cold_process_loss_of_observation(tmp_path):
+    """Interrupt after native completion, before observation commit; no new replies."""
+    q = queue(tmp_path); first = submit(q, request(budget=1))
+    script = '''
+import sys
+from pathlib import Path
+from pytest import MonkeyPatch
+from tests.optimization.test_native_search_v14 import queue, FailedFactory, definition, REVISION, BINDING
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus, FakeHTTPModel, BINDING as CB, seed
+from tests.system.test_native_science_kernel import make_sim
+from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
+from utopia.runtime.checkpointing import PortableStop
+from utopia.system.native_kernel import NativeScienceKernel
+mp = MonkeyPatch()
+fixed_corpus.__wrapped__(mp)
+mp.setitem(CB, 'model_revision', BINDING['model_digest'])
+mp.setitem(CB, 'corpus_sha256', BINDING['corpus_sha256'])
+mp.setitem(CB, 'science_config', {'source_commit': REVISION, 'years': 1})
+root = Path(sys.argv[1])
+class PhysicalModel(FakeHTTPModel):
+    def reply(self, **payload):
+        with (root / 'physical-replies.txt').open('a') as handle:
+            handle.write('SCRIPTED physical provider call\\n')
+        return super().reply(**payload)
+class Factory(FailedFactory):
+    def __call__(self, spec, run_seed, run_id):
+        mp.setitem(CB, 'cell', spec.fingerprint)
+        seed()
+        sim, calls = make_sim(root / 'worlds' / run_id,
+            native=NativeScienceKernel(spec), model_class=PhysicalModel)
+        sim.num_years = 1
+        return sim
+original_save = NativeAdaptiveDesignCampaign._save
+def interrupted_save(campaign):
+    if campaign.state['pending'] and campaign.state['pending']['observations']:
+        raise PortableStop('SCRIPTED process interruption before observation persistence')
+    return original_save(campaign)
+if sys.argv[2] == 'stop':
+    mp.setattr(NativeAdaptiveDesignCampaign, '_save', interrupted_save)
+try:
+    queue(root).run_one(lambda *a: Factory(), generator_builder=lambda *a: definition,
+        source_commit=REVISION)
+except PortableStop:
+    pass
+finally:
+    mp.undo()
+'''
+    def run(mode):
+        result = subprocess.run([sys.executable, '-c', script, str(tmp_path), mode],
+            cwd=Path(__file__).resolve().parents[2], capture_output=True, text=True)
+        assert result.returncode == 0, result.stdout + result.stderr
+    run('stop')
+    assert q.get(first['search_id'])['status'] == 'running'
+    assert q.get(first['search_id'])['pending']['observations'] == []
+    physical = (tmp_path / 'physical-replies.txt').read_text()
+    assert physical
+    run('resume')
+    result = q.get(first['search_id'])
+    assert result['status'] == 'complete', result['errors']
+    assert result['best']['loss'] is not None
+    assert (tmp_path / 'physical-replies.txt').read_text() == physical
+    assert result['budget']['native_observations'] == 1
+    assert len(list((tmp_path / 'worlds').iterdir())) == 1
 
 
 def test_factory_source_and_provider_mismatch_fail_before_any_generation(tmp_path):
