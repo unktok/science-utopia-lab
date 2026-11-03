@@ -175,6 +175,9 @@ def _compact_observation(row):
     value = {key: row.get(key) for key in ('generation', 'record_index', 'draw_index', 'slot',
         'scheduled_native_slots', 'request_sha256', 'status', 'loss', 'system_fingerprint',
         'checkpoint_sha256', 'observation_id', 'cross_scores')}
+    original = row.get('observation') or {}
+    value['original_observation_status'] = original.get('status')
+    value['original_observation_loss'] = original.get('loss')
     value['native_A_Q_R'] = {key: (row.get('metrics') or {}).get(metric)
         for key, metric in [('A', 'native.accepted_decisions'), ('Q', 'native.accepted_peer_score_sum'),
             ('R', 'native.review_records')]}

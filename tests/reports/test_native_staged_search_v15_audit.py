@@ -87,6 +87,9 @@ def test_all_null_paths_distinguish_generation_native_failures_and_interrupted_u
     assert compact['designer_costs'] == first['designer_costs']
     assert len(compact['runs']['throughput']['generations']) == 2
     assert 'started_records' not in compact['runs']['throughput']['generations'][0]
+    original = first['runs']['throughput']['observations'][0]['observation'] or {}
+    assert compact['runs']['throughput']['observations'][0]['original_observation_status'] == original.get('status')
+    assert compact['runs']['throughput']['observations'][0]['original_observation_loss'] == original.get('loss')
     change = compact['runs']['throughput']['generations'][0]['authoring_change']
     assert change['valid_explicit_finish'] == (not failed)
     if not failed:
