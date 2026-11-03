@@ -6,6 +6,12 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V14 active finite goal: automatic free institutional search](milestones/2026-11-03-autonomous-institution-search-v14.md)
+- [V14 prospective8-slot/6-generation automatic-authoring protocol](protocols/campaigns/native-autonomous-search-v14.md)
+- [V14 parallel implementation/execution log](logbook/2026-11-03-autonomous-institution-search-v14.md)
+- [V14 durable runtime, local queue and explicit API consent](components/native-autonomous-search-runtime-v14.md)
+- [V14 independent automatic-author/native evidence audit](components/native-autonomous-search-independent-audit-v14.md)
+- [V14 existing English Foundry autonomous-search controls](../game-ui-v2/AUTONOMOUS_SEARCH_V14.md)
 - [V13 completed finite goal: nested open-system search and native freedom](milestones/2026-11-02-nested-free-institution-v13.md)
 - [V13 actual eight-world nested paths, proxy incentives and limits](results/native-nested-search-v13-a1.md)
 - [V13 independent raw/source/update/native-effect audit](results/native-nested-search-v13-a1.json)

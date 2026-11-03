@@ -1,6 +1,23 @@
 # Program status
 
-Updated: 2026-11-02
+Updated: 2026-11-03
+
+## Active finite v14: loss and budget to automatic institutional search
+
+The user approves the [next finite goal](milestones/2026-11-03-autonomous-institution-search-v14.md):
+reuse the original-world blackbox/nested kernels, but connect model authoring,
+technical checks, native evaluation and own-history redesign without manual
+ManifestInbox replies. Separate specialists implement durable runtime/API,
+existing English Foundry mission control and independent reporting; root owns
+the local model author, protocol and publication. No scale-up or hidden veto.
+
+The [prospective protocol](protocols/campaigns/native-autonomous-search-v14.md)
+sets8 native slots across three requests,6 free generations and at most12
+generation POST attempts. Designer and researcher roles/costs are distinct,
+although both use fixed local Qwen3:8B. All own outcomes/failures remain visible;
+new source/graph changes are recorded, never required by a novelty gate.
+Implementation/SCRIPTED tests are underway; no actual v14 result is claimed.
+V13 below is complete and remains unchanged.
 
 ## Completed finite v13: free outer design and conditional inner optimization
 
