@@ -69,7 +69,8 @@ def make_server(queue, *, source_commit, directory, port=4591,
             try:
                 if path == '/native-api/session':
                     return self.reply(200, {'token': token, 'source_commit': source_commit,
-                        'mode': 'local-development-queue', 'search_enabled': search_queue is not None})
+                        'mode': 'local-development-queue', 'search_enabled': search_queue is not None,
+                        'search_protocol': getattr(search_queue, 'search_protocol', None)})
                 if path.startswith('/native-api/'):
                     if not self.authorized():
                         return self.reply(403, {'error': 'session token required'})
@@ -157,6 +158,8 @@ def main():
                         help='opt-in bounded autonomous search worker; separate from old jobs')
     parser.add_argument('--search-config', type=Path,
                         help='operator-owned JSON {provider_binding}; enables autonomous search API')
+    parser.add_argument('--search-protocol', choices=('one-shot-v14', 'staged-v15'), default='one-shot-v14',
+                        help='explicit staged opt-in; original v14 queue/protocol remains default')
     parser.add_argument('--data-cache', type=Path)
     parser.add_argument('--society-config', type=Path,
                         help='operator-owned session config; never a request-selected checkpoint path')
@@ -167,11 +170,14 @@ def main():
         parser.error('choose one worker mode')
     search_queue = None
     if args.search_config is not None:
-        from utopia.optimization.native_search_jobs_v14 import NativeSearchQueue
+        if args.search_protocol == 'staged-v15':
+            from utopia.optimization.native_search_v15 import NativeStagedSearchQueue as SearchQueue
+        else:
+            from utopia.optimization.native_search_jobs_v14 import NativeSearchQueue as SearchQueue
         config = json.loads(args.search_config.read_text())
         if not isinstance(config, dict) or set(config) != {'provider_binding'}:
             parser.error('search config requires exact operator-owned provider_binding')
-        search_queue = NativeSearchQueue(args.queue, provider_binding=config['provider_binding'])
+        search_queue = SearchQueue(args.queue, provider_binding=config['provider_binding'])
     if args.search_worker_once:
         if args.data_cache is None or search_queue is None:
             parser.error('--search-worker-once requires --data-cache and --search-config')
@@ -181,6 +187,11 @@ def main():
                 record_wire=True, record_code=True, inference_lock=args.queue / 'inference.lock',
                 experiment_binding={'request_sha256': digest(request), 'loss_spec': request['loss_spec']})
         def search_generator(root, request, provider_binding):
+            if args.search_protocol == 'staged-v15':
+                from utopia.optimization.native_staged_author_v15 import make_local_staged_generator
+                return make_local_staged_generator(root / 'authoring', image_id=provider_binding['image_id'],
+                    provider_binding=provider_binding, max_steps=request['designer']['max_steps'],
+                    max_tokens=request['designer']['max_tokens'], inference_lock=args.queue / 'inference.lock')
             from utopia.optimization.native_search_generator_v14 import make_local_vocabulary_generator
             return make_local_vocabulary_generator(root / 'authoring', image_id=provider_binding['image_id'],
                 provider_binding=provider_binding, max_attempts=request['designer']['max_attempts'],

@@ -78,9 +78,11 @@ def make_search_plan(request, *, source_commit, provider_binding):
 
 class NativeSearchController:
     """Single-writer caller owns locking; readers validate exact persisted state."""
+    plan_builder = staticmethod(make_search_plan)
+
     def __init__(self, directory, *, plan, plan_sha256):
         self.directory = Path(directory)
-        expected = make_search_plan(plan['request'], source_commit=plan['source_commit'],
+        expected = self.plan_builder(plan['request'], source_commit=plan['source_commit'],
             provider_binding=plan['provider_binding'])
         if plan != expected or digest(plan) != plan_sha256:
             raise ValueError('immutable search plan binding changed')

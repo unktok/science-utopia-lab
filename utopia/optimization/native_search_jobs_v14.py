@@ -21,13 +21,18 @@ from utopia.system.design_patch import clone, digest
 
 
 class NativeSearchQueue:
+    search_protocol = 'one-shot-v14'
+    plan_builder = staticmethod(make_search_plan)
+    controller_type = NativeSearchController
+    database_name = 'native-search-jobs-v14.sqlite'
+
     def __init__(self, directory, *, provider_binding):
         from utopia.optimization.native_search_v14 import validate_provider_binding
         validate_provider_binding(provider_binding)
         self.directory = Path(directory).resolve()
         self.directory.mkdir(parents=True, exist_ok=True)
         self.provider_binding = clone(provider_binding)
-        self.path = self.directory / 'native-search-jobs-v14.sqlite'
+        self.path = self.directory / self.database_name
         with self.connection() as db:
             db.execute('CREATE TABLE IF NOT EXISTS searches (id TEXT PRIMARY KEY, plan TEXT NOT NULL, '
                 'plan_hash TEXT NOT NULL UNIQUE, status TEXT NOT NULL, created REAL NOT NULL, '
@@ -39,7 +44,7 @@ class NativeSearchQueue:
         return db
 
     def validate(self, request, *, source_commit):
-        plan = make_search_plan(request, source_commit=source_commit, provider_binding=self.provider_binding)
+        plan = self.plan_builder(request, source_commit=source_commit, provider_binding=self.provider_binding)
         return {'status': 'structurally-validated-not-native-executed',
             'request_sha256': plan['request_sha256'], 'source_commit': source_commit,
             'planned_native_world_budget': request['native_budget'], 'method': request['method'],
@@ -47,7 +52,7 @@ class NativeSearchQueue:
             'maximum_designer_provider_attempts': plan['maximum_designer_provider_attempts']}
 
     def submit(self, request, *, confirmed_request_sha256, source_commit):
-        plan = make_search_plan(request, source_commit=source_commit, provider_binding=self.provider_binding)
+        plan = self.plan_builder(request, source_commit=source_commit, provider_binding=self.provider_binding)
         if confirmed_request_sha256 != plan['request_sha256']:
             raise ValueError('exact validated request SHA256 compute consent required')
         plan_hash = digest(plan)
@@ -61,7 +66,7 @@ class NativeSearchQueue:
             else:
                 if db.execute("SELECT count(*) FROM searches WHERE status IN ('queued','running')").fetchone()[0] >= 2:
                     raise ValueError('local search queue is full; wait for existing searches')
-                NativeSearchController(self.directory / identity, plan=plan, plan_sha256=plan_hash)
+                self.controller_type(self.directory / identity, plan=plan, plan_sha256=plan_hash)
                 db.execute('INSERT INTO searches VALUES (?,?,?,?,?,?,?)',
                     (identity, json.dumps(plan, sort_keys=True, allow_nan=False), plan_hash, 'queued', now, now, None))
         return self.get(identity)
@@ -82,7 +87,7 @@ class NativeSearchQueue:
         state_name = 'native-adaptive-state.json' if plan['request']['method'] == 'blackbox' else 'native-nested-state.json'
         if not (root / 'plan.json').is_file() or not (root / 'campaign' / state_name).is_file():
             raise ValueError('saved search plan/campaign is missing; cannot recreate consumed slots')
-        controller = NativeSearchController(root, plan=plan, plan_sha256=row['plan_hash'])
+        controller = self.controller_type(root, plan=plan, plan_sha256=row['plan_hash'])
         if row['status'] not in {'queued', 'running', 'complete', 'failed'}:
             raise ValueError('invalid persisted search status')
         if row['status'] == 'complete' and not controller.complete:
@@ -97,7 +102,7 @@ class NativeSearchQueue:
         result['live_progress'] = self.live_progress(controller)
         return result
 
-    def live_progress(self, controller):
+    def live_progress(self, controller, *, observe_designer=True):
         """Best-effort metadata reads, never a final cost/completion assertion.
 
         Paths come only from the operator queue root and validated campaign IDs.
@@ -111,7 +116,7 @@ class NativeSearchQueue:
         designer = {'generation_directories': None, 'attempts_started': None, 'attempts_completed': None}
         authoring = controller.directory / 'authoring'
         try:
-            if authoring.is_dir():
+            if authoring.is_dir() and observe_designer:
                 directories, started, completed = 0, 0, 0
                 for record in records:
                     if record['request'].get('external_authoring') is False:

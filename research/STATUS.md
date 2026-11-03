@@ -2,6 +2,24 @@
 
 Updated: 2026-11-03
 
+## Active v15: make automatic authoring reach the original world
+
+The user's current instruction is to work in parallel until the automatic
+institution-design/native-feedback loop actually works, not stop at another
+all-invalid software pilot. The [prospective protocol](protocols/campaigns/native-staged-search-v15.md)
+fixes a first four-slot, two-objective revision before any v15 inference.
+Failures and interrupted costs are retained; any necessary engineering
+revision gets a new source/budget rather than silently extending this one.
+
+Three tracks are integrated in a feature worktree: durable inspect/edit/splice/
+configure/validate/finish authoring, generic institution-authored work addressed
+to the original researchers, and the existing English cyberpunk Foundry's
+Authoring Chronicle. No institution catalogue, host candidate repair, trained
+researcher weights, scale-up or merit/improvement veto is added. Exact native
+losses must reach the next automatic design; SCRIPTED tests alone do not meet
+that operational goal. See the [live work log](logbook/2026-11-03-staged-native-authoring-v15.md).
+At this note's pre-inference checkpoint, there is no actual v15 outcome yet.
+
 ## Completed finite v14: implementation and actual bounded authoring failures
 
 The user approves the [next finite goal](milestones/2026-11-03-autonomous-institution-search-v14.md):
