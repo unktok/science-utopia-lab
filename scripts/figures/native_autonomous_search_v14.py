@@ -237,8 +237,18 @@ def figure_data(report,expected_source=None,*,allow_synthetic=False):
         if measurement != {'recorded_sum':math.fsum(v['recorded_sum'] for v in values),
                 'record_count':sum(v['record_count'] for v in values)}:
             raise ValueError('designer timing/token aggregate differs')
+    initial = report['runs'][report['run_order'][2]]['records'][0]
+    update = initial['report']
+    if initial['generation_error'] or update['status'].startswith('not-updated'):
+        update_label = 'G0 update unavailable (technical failure)'
+    elif update.get('gradient') is None:
+        update_label = 'G0 has no declared factors / coordinates'
+    else:
+        update_label = ('G0 update changed weights' if update['weights_before'] != update['weights_after']
+            else 'G0 update has zero weight change')
     return {'classification':classification,'source_commit':report['source_commit'],'rows':rows,
         'edits':edits,'costs':costs,'accounting':accounting,'designer_costs':designer,
+        'conditional_update_label':update_label,
         'physical_researcher_responses':scientist,'planned_native_world_budget':8,
         'consumed_native_slots':slots,'physical_native_worlds':complete}
 
@@ -268,6 +278,8 @@ def render(report,output,*,audit_path,expected_source=None,allow_synthetic=False
             ax.set_xlim(.65,len(labels)+.35)
             ax.set_title(chr(65+index)+'  '+NAMES[index],pad=7)
             ax.set_ylabel('Own loss (lower is better)')
+            if index == 2:
+                ax.set_xlabel(data['conditional_update_label'],fontsize=6.8,labelpad=6)
             ax.grid(axis='y',alpha=.2)
             if any(math.isfinite(y) for y in ys):
                 ax.legend(loc='best',fontsize=6.8,handlelength=1.4)
