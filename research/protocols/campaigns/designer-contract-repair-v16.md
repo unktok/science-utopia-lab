@@ -78,6 +78,20 @@ It does not prove novel useful institution invention, loss improvement, generic
 8B reliability, or scientific validity. Scaling is not the remedy for a broken
 interface; a valid interface is not evidence of a good research result either.
 
+### Second forward-only correction, before a3
+
+At `b405127`, a2 again closes after its first integer control: a valid inspect,
+not the requested edit. Reordering SYSTEM authority alone is insufficient;
+normal optimization narration still asks for a different task. Both one-call
+failures remain distinct. A3 uses explicit Python-owned interface-control
+conversation mode: no scientific loss/task narration, the actual full original
+parent and completed receipts as observed data, and an exact literal editing
+task. Same fixed model, JSON wire, options, response schema and pure interpreter;
+no fallback based on an error. Production factories remain in `author` mode.
+The continuous source-edit control checks that declared task only. Ordinary
+unforced planning is still a separate test and must not be inferred from it.
+Before a3 dispatch, the shared budget is2+13+8+14=37 maximum POSTs. No increase.
+
 ## Operator commands
 
 Use the approved uv-managed environment and a clean pinned checkout:
