@@ -166,10 +166,14 @@ def draft_summary(state):
                 'parameter_keys': sorted(parameters) if isinstance(parameters, dict) else None})
         else:
             mechanisms.append({'path': '/mechanisms/' + str(index), 'type': json_type(node)})
+    from .native_factorized_gradient import factor_logit_size
     return {'draft_sha256': digest(state), 'document_sha256': digest(document),
         'top_level': {key: _descriptor(value) for key, value in document.items()},
         'mechanisms': mechanisms, 'applied_operation_count': len(state['operations']),
         'distribution': {key: clone(state[key]) for key in ('factors', 'continuous', 'logits')},
+        'declared_factor_logit_shapes': [{'factor_id': factor['id'], 'factor_kind': factor['kind'],
+            'choice_count': len(factor['choices']), 'expected_shape': [factor_logit_size(factor)]}
+            for factor in state['factors']],
         'omissions': ['Literal node/code/schema/value bodies and full connection/schedule/process bodies '
             'are not included in this index; inspect reads exact current values.'],
         'complete_current_node_index': True, 'silent_size_truncation': False}
@@ -379,7 +383,11 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
             current['operations'].extend(edits)
             validation, _ = _validation(current, request, binding_sha256, provider_binding)
             record['result'] = {'operation_map': mapping, 'applied_operations': clone(edits),
-                'validation': validation, 'intermediate_graph_may_be_invalid': True}
+                'validation': validation, 'intermediate_graph_may_be_invalid': True,
+                'literal_document_changed': digest(document) != digest(state['document']),
+                'edit_effect_notice': (None if digest(document) != digest(state['document']) else
+                    'The literal edit leaves the current document identical. This is legal retention, '
+                    'not a new source/graph/parameter change. Static validity does not establish loss minimization.')}
         elif tool == 'configure':
             if set(action) == {'tool'}:
                 raise ValueError('configure requires at least one explicit distribution field')

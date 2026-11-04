@@ -25,6 +25,24 @@ def _finite(value):
     return type(value) in (int, float) and math.isfinite(value)
 
 
+def factor_logit_size(factor):
+    """One log-odds parameter for Bernoulli; one logit per categorical choice."""
+    return 1 if factor['kind'] == 'bernoulli' else len(factor['choices'])
+
+
+class FactorLogitError(ValueError):
+    """Technical shape feedback only, never a proposed policy/value correction."""
+    def __init__(self, factor, actual_shape, *, finite):
+        self.details = {'factor_id': factor['id'], 'factor_kind': factor['kind'],
+            'choice_count': len(factor['choices']), 'expected_shape': [factor_logit_size(factor)],
+            'actual_shape': list(actual_shape), 'all_values_finite': finite,
+            'authored_value_changed_by_host': False}
+        super().__init__('finite logits of the declared factor shape required: factor '
+            + repr(factor['id']) + ' (' + factor['kind'] + '), expected_shape='
+            + repr(self.details['expected_shape']) + ', actual_shape=' + repr(list(actual_shape))
+            + ', all_values_finite=' + str(finite))
+
+
 class NativeFactorizedDesignSearch:
     """IID joint assignments -> atomic design edits -> actual native losses.
 
@@ -75,11 +93,11 @@ class NativeFactorizedDesignSearch:
             raise ValueError('logits must identify every declared factor exactly')
         self.logits = {}
         for factor in self.factors:
-            size = 1 if factor['kind'] == 'bernoulli' else len(factor['choices'])
+            size = factor_logit_size(factor)
             values = [0.] * size if logits is None else logits[factor['id']]
             value = torch.tensor(values, dtype=torch.float64, device='cpu', requires_grad=True)
             if value.shape != (size,) or not torch.isfinite(value).all():
-                raise ValueError('finite logits of the declared factor shape required')
+                raise FactorLogitError(factor, value.shape, finite=bool(torch.isfinite(value).all()))
             self.logits[factor['id']] = value
         self.iteration, self.completed_draws, self.pending = 0, 0, []
 

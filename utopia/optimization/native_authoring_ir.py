@@ -473,7 +473,8 @@ class StableIDAuthoringProtocol:
                 design_provenance={'kind': 'stable-ID-address-preflight'}, seed=request.get('rng_seed', 42),
                 logits=output.get('logits')).assignments if skeleton else [{}])
         except Exception as error:
-            raise AuthoringIRDiagnostic(str(error), stage='declared-factor-support') from error
+            raise AuthoringIRDiagnostic(str(error), stage='declared-factor-support',
+                **getattr(error, 'details', {})) from error
         choice_edits, factor_trace, coordinate_paths, coordinate_trace = {}, {}, {}, {}
         for assignment in assignments:
             document, assignment_edits = clone(base_document), []

@@ -17,7 +17,19 @@ an executed world; a terminal scheduler is not achievement of the loop.
 Feature development and frozen execution use separate worktrees. The existing
 actual staged certificate still matches unchanged runtime/model/backend/image;
 no repeated calibration is needed for driver/report metadata changes alone.
-No new actual candidate/world result exists at this prospective checkpoint.
+The a1 source is frozen at `c6a56a5`. Throughput completes two original-world
+evaluations with losses[-1,-1] and byte-identical selection-source replacements.
+The exact measured G0 loss reaches G1; effective redesign/improvement is not
+shown. Reviewed-production G0 consumes16 calls and fails finish because its
+Bernoulli factor keeps two logits instead of one. G1 remains in progress.
+This is partial operational progress, not completion on both objective arms.
+
+A separate [a2 protocol](protocols/campaigns/native-staged-closed-loop-v17-a2.md)
+prepares exact expected/actual factor-shape diagnostics and an explicit legal
+no-op edit notice.207 prelaunch SCRIPTED checks pass. The active a1 source is
+not edited; all its failures remain charged. A2 requires its own13-control
+certificate and separate4-slot/64-designer-call budget; no more a2 inference
+has yet run. No author/year/seed/corpus scale-up or host-authored policy repair.
 Follow the [execution log](logbook/2026-11-04-native-closed-loop-v17.md).
 
 ## V16 designer interface repair and fail-closed launch gate
