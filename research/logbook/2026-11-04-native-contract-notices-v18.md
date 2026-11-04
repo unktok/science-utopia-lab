@@ -21,6 +21,13 @@ conditional warning instead, with no change to static validity, candidate source
 authored data, losses or candidate eligibility. Extra code-node parameters
 are passed through `context.parameters`; do not generically call them unused.
 
+The first focused test run has one failed test and122 passes: its synthetic
+fixture changes the draft document directly without recording a literal edit.
+The existing exact-reconstruction guard correctly rejects it. Fix the test to
+use the public edit transition, rather than weakening that guard; the subsequent
+123-check run passes. This is a test-fixture correction, not an actual authoring
+failure or an extra native evaluation.
+
 Follow the existing Python/local-Qwen stack exception in the agent-building
 skill. Use the writing skill with the repository's current research taxonomy,
 not an external Page/Space. Initial related checks pass 123 tests; a broader
