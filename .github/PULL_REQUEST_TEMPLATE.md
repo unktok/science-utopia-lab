@@ -23,6 +23,11 @@ smoke runs or campaigns.
 - [ ] frozen protocols and generated results were not silently rewritten
 - [ ] new paths and Markdown links are valid
 - [ ] resume, serialization, and provenance implications are documented
+- [ ] designer/transport changes: real-backend typed controls and a continuous
+      tool session recorded at the matching source/model/backend, or explicitly
+      unverified and production dispatch remains blocked
+- [ ] exact serialized request bytes archived; no successful parsing/static
+      validation presented as evidence of autonomous invention/improvement
 
 ## Research impact
 

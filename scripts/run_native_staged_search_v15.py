@@ -17,7 +17,7 @@ from utopia.utils.data_utils import write_json_atomic
 
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
 CLASSIFICATION = 'actual-local-qwen-staged-native-search-development-v15'
-ENGINEERING_REVISION = 'a2'
+ENGINEERING_REVISION = 'a3-interface-v16'
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -42,9 +42,13 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
             'replacement_policy': 'none'},
         'authoring': 'local Qwen only; no human/Codex candidate implementation',
         'metadata_preflights': 'Separate GET /api/tags during binding and each native-factory construction; repeated CLI startup can repeat metadata reads, never generation POSTs',
+        'interface_certificate': 'Required before queue submission and author construction; current certificate '
+            'is cold-replayed with live version/tags GETs before each designer POST. These additional '
+            'metadata reads are not designer generations or scientific-world slots.',
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
-        'protocol': 'research/protocols/campaigns/native-staged-search-v15-a2.md'}
+        'protocol': 'research/protocols/campaigns/designer-contract-repair-v16.md',
+        'native_campaign_status': 'prospective interface-fixed driver; no new native campaign dispatched by technical verification'}
 
 
 def execute(args):
@@ -58,6 +62,8 @@ def execute(args):
     provider = {k: clone(getattr(factory_binding, k)) for k in
         ('model', 'model_digest', 'corpus_sha256', 'dataset_identity', 'corpus_years')}
     provider['image_id'] = DockerCodeExecutor().image_id
+    from utopia.optimization.native_designer_preflight import require_certificate
+    require_certificate(args.designer_preflight, provider, protocol='staged-v15')
     plan = build_plan(source_commit=source, initial_system=open_native_system(provider['image_id']).to_dict(),
         provider_binding=provider, runtime_seed_binding=factory_binding.runtime_seed_binding)
     path = args.output / 'plan.json'
@@ -100,7 +106,8 @@ def execute(args):
     def author(root, request, binding):
         return make_local_staged_generator(root / 'authoring', image_id=binding['image_id'],
             provider_binding=binding, max_steps=request['designer']['max_steps'],
-            max_tokens=request['designer']['max_tokens'], inference_lock=args.output / 'queue/inference.lock')
+            max_tokens=request['designer']['max_tokens'], inference_lock=args.output / 'queue/inference.lock',
+            preflight_certificate=args.designer_preflight)
 
     snapshot()
     try:
@@ -124,6 +131,8 @@ def main():
     parser.add_argument('--start-authorized-search', action='store_true', required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--data-cache', type=Path, required=True)
+    parser.add_argument('--designer-preflight', type=Path, required=True,
+        help='operator-owned successful current-source/current-backend interface certificate')
     args = parser.parse_args()
     pinned_revision(ROOT)
     args.output = args.output.resolve()

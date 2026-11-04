@@ -401,6 +401,7 @@ def test_legacy_failure_technical_errors_are_visible_even_without_raw_attempt_ev
 
 
 def test_production_helper_defaults_stable_protocol_but_explicit_none_remains_legacy(tmp_path, monkeypatch):
+    monkeypatch.setattr('utopia.optimization.native_designer_preflight.require_certificate', lambda *a, **k: None)
     monkeypatch.setattr('utopia.optimization.native_search_generator_v14.LocalQwenDesignerModel', lambda *a, **k: Model([]))
     stable = make_local_vocabulary_generator(tmp_path / 'stable', image_id=IMAGE, provider_binding=BINDING)
     legacy = make_local_vocabulary_generator(tmp_path / 'legacy', image_id=IMAGE, provider_binding=BINDING, protocol=None)

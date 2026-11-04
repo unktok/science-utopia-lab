@@ -22,6 +22,10 @@ PROTOCOL = 'scienceutopia.native-stable-id-authoring.v1'
 TRACE = 'scienceutopia.native-stable-id-compile-trace.v1'
 SELECTOR = {'type': 'object', 'required': ['mechanism_id'], 'additionalProperties': False,
     'properties': {'mechanism_id': {'type': 'string', 'minLength': 1}}}
+# An empty schema is ANY JSON according to JSON Schema, but the deployed
+# llama.cpp converter compiled it as object-only. Spell out the equivalent
+# union; never silently narrow the institution author's legal operand types.
+ANY_JSON = {'type': ['object', 'array', 'string', 'number', 'boolean', 'null']}
 
 
 def _operation_schema(action, selected):
@@ -32,7 +36,7 @@ def _operation_schema(action, selected):
         properties['selector'] = SELECTOR
         required.append('selector')
     if action != 'remove':
-        properties['value'] = {}
+        properties['value'] = ANY_JSON
         required.append('value')
     return {'type': 'object', 'required': required, 'properties': properties, 'additionalProperties': False}
 

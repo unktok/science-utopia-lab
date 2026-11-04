@@ -220,7 +220,9 @@ def test_local_transport_is_one_fixed_loopback_post_without_proxy_or_retries(mon
             return Response({'models': [{'name': 'qwen3:8b', 'digest': BINDING['model_digest']}]})
         def post(self, url, **kwargs):
             calls.append(('POST', url))
-            assert kwargs['json']['think'] is False and kwargs['json']['stream'] is False
+            payload = json.loads(kwargs['data'])
+            assert payload['format'] == 'json'
+            assert payload['think'] is False and payload['stream'] is False
             return Response({'message': {'content': json.dumps(output())}, 'done': True,
                 'done_reason': 'stop', 'prompt_eval_count': 123, 'eval_count': 45})
     monkeypatch.setattr('requests.Session', Session)

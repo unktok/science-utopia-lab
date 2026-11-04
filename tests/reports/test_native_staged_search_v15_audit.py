@@ -224,7 +224,7 @@ def transport_fixture():
         'message': {'role': 'assistant', 'content': json.dumps(action)}}
     payload = {'model': 'qwen3:8b',
         'messages': audit.staged_author.build_conversation(started['prompt'], audit.staged_author.SYSTEM_PROMPT),
-        'format': audit.ACTION_SCHEMA, 'think': False, 'stream': False,
+        'format': 'json', 'think': False, 'stream': False,
         'options': {'temperature': .2, 'num_predict': 2048, 'num_ctx': 32768,
             'seed': int(audit.digest(('native-staged-designer-v15', binding['binding_sha256'], 0))[:8], 16) % (2**31)}}
     step = {'status': 'finished', 'model_reply': {'messages': [{'role': 'assistant', 'content': body['message']['content']}],
@@ -233,6 +233,8 @@ def transport_fixture():
             'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
             'conversation_schema': audit.staged_author.PROTOCOL + '.conversation.v1',
             'source_prompt_sha256': audit.digest(started['prompt'])}}}
+    from utopia.optimization.native_designer_wire import wire_record
+    step['model_reply']['transport'].update(wire_record(payload, audit.ACTION_SCHEMA))
     return step, started, binding
 
 

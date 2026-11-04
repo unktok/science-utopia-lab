@@ -16,10 +16,11 @@ def test_declared_arbitrary_edit_value_accepts_all_json_types():
         assert not list(Draft202012Validator(ACTION_SCHEMA).iter_errors(action))
 
 
-def test_top_level_schema_does_not_enforce_per_tool_contract():
+def test_fixed_schema_now_enforces_per_tool_contract_historical_report_is_source_pinned():
     action={'tool':'inspect','selector':{'mechanism_id':'world.review'},'text':'not a valid inspection'}
-    assert not list(Draft202012Validator(ACTION_SCHEMA).iter_errors(action))
-    # This is a documented interface mismatch, not a test claiming such action is valid.
+    assert list(Draft202012Validator(ACTION_SCHEMA).iter_errors(action))
+    # Historical acceptance is retained at the report's frozen source, not
+    # imposed as an intentionally broken requirement on the repaired runtime.
 
 
 def test_compiled_rule_extraction_is_literal_not_a_fabricated_language_test():

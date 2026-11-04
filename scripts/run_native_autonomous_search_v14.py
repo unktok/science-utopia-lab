@@ -67,6 +67,8 @@ def run(args):
     provider = {key: clone(getattr(binding_factory, key)) for key in
         ('model', 'model_digest', 'corpus_sha256', 'dataset_identity', 'corpus_years')}
     provider['image_id'] = executor.image_id
+    from utopia.optimization.native_designer_preflight import require_certificate
+    require_certificate(args.designer_preflight, provider, protocol='one-shot-v14')
     initial = open_native_system(executor.image_id)
     plan = build_plan(source_commit=source, initial_system=initial.to_dict(), provider_binding=provider,
         runtime_seed_binding=binding_factory.runtime_seed_binding)
@@ -118,7 +120,8 @@ def run(args):
                 raise ValueError('native provider changed between automatic searches')
             generator = make_local_vocabulary_generator(root / 'authoring',
                 image_id=executor.image_id, provider_binding=provider,
-                max_attempts=2, max_tokens=4096, inference_lock=args.inference_lock)
+                max_attempts=2, max_tokens=4096, inference_lock=args.inference_lock,
+                preflight_certificate=args.designer_preflight)
             while not controller.complete:
                 controller.advance(simulation_factory=factory, generator=generator)
                 progress = snapshot()
@@ -138,6 +141,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--data-cache', type=Path, required=True)
+    parser.add_argument('--designer-preflight', type=Path, required=True)
     parser.add_argument('--inference-lock', type=Path,
         default=Path('/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-parallel-v3-inference.lock'))
     args = parser.parse_args()

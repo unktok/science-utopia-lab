@@ -17,6 +17,13 @@ from utopia.system.design_patch import digest
 from utopia.system.native_open_examples import open_native_system
 
 
+@pytest.fixture(autouse=True)
+def scripted_certificate_boundary(monkeypatch):
+    # These tests explicitly replace the real model; real-certificate checks
+    # have their own tests and are never bypassed in production constructors.
+    monkeypatch.setattr('utopia.optimization.native_designer_preflight.require_certificate', lambda *a, **k: None)
+
+
 def body():
     value = request(budget=2)
     value['initial_system'] = open_native_system(BINDING['image_id']).to_dict()

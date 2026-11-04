@@ -424,7 +424,7 @@ class LLMVocabularyGenerator:
 
 class LocalQwenDesignerModel:
     """One fixed loopback Ollama HTTP POST per generate; no SDK/network retries."""
-    def __init__(self, provider_binding, *, inference_lock=None):
+    def __init__(self, provider_binding, *, inference_lock=None, preflight_certificate=None):
         import requests
         self.binding = clone(provider_binding)
         if self.binding.get('model') != 'qwen3:8b':
@@ -432,7 +432,16 @@ class LocalQwenDesignerModel:
         self.session = requests.Session()
         self.session.trust_env = False
         self.inference_lock = Path(inference_lock) if inference_lock else None
+        self.preflight_certificate = preflight_certificate
         self.last_transport, self.last_messages = {}, []
+
+    def _check_preflight(self, protocol):
+        # Direct model construction is the calibration/test interface. All
+        # production factories require a certificate; check again before POST.
+        if self.preflight_certificate is not None:
+            from .native_designer_preflight import require_certificate
+            return require_certificate(self.preflight_certificate, self.binding, protocol=protocol, session=self.session)
+        return None
 
     @contextmanager
     def _lock(self):
@@ -450,6 +459,7 @@ class LocalQwenDesignerModel:
     def generate(self, *, prompt, system_prompt, seed_ctx, max_tokens, temperature, response_format):
         self.last_transport, self.last_messages = {}, []
         with self._lock():
+            preflight = self._check_preflight('one-shot-v14')
             tags = self.session.get('http://127.0.0.1:11434/api/tags', timeout=10)
             tags.raise_for_status()
             actual = next(item['digest'] for item in tags.json()['models'] if item['name'] == self.binding['model'])
@@ -457,14 +467,17 @@ class LocalQwenDesignerModel:
                 raise ValueError('designer model digest differs from pinned operator binding')
             messages = [{'role': 'system', 'content': system_prompt}, {'role': 'user', 'content': prompt}]
             payload = {'model': self.binding['model'], 'messages': messages,
-                'format': response_format['json_object']['schema'], 'think': False, 'stream': False,
+                'format': 'json', 'think': False, 'stream': False,
                 'options': {'temperature': temperature, 'num_predict': max_tokens,
                     'num_ctx': 32768, 'seed': int(digest(seed_ctx)[:8], 16) % (2**31)}}
             self.last_transport = {'request_payload': clone(payload), 'model_digest': actual,
-                'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0}
+                'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
+                'preflight': preflight}
             begin = time.monotonic()
             try:
-                response = self.session.post('http://127.0.0.1:11434/api/chat', json=payload, timeout=300)
+                from .native_designer_wire import post
+                response = post(self.session, 'http://127.0.0.1:11434/api/chat', payload,
+                    response_format['json_object']['schema'], self.last_transport)
                 self.last_transport['http_status'] = response.status_code
                 self.last_transport['raw_http_response'] = response.text
                 response.raise_for_status()
@@ -483,15 +496,18 @@ class LocalQwenDesignerModel:
 
 def make_local_vocabulary_generator(directory, *, image_id, provider_binding,
                                     max_attempts=2, max_tokens=4096, inference_lock=None,
-                                    protocol='stable-id-v1'):
+                                    protocol='stable-id-v1', preflight_certificate=None):
     """Production helper opts into stable addressing; protocol=None is legacy.
 
     This is a prospective source change. Historical a1 journals keep their
     frozen source/legacy protocol; they are not upgraded or relabelled valid.
     """
+    from .native_designer_preflight import require_certificate
+    require_certificate(preflight_certificate, provider_binding, protocol='one-shot-v14')
     if protocol == 'stable-id-v1':
         from .native_authoring_ir import StableIDAuthoringProtocol
         protocol = StableIDAuthoringProtocol()
-    return LLMVocabularyGenerator(LocalQwenDesignerModel(provider_binding, inference_lock=inference_lock),
+    return LLMVocabularyGenerator(LocalQwenDesignerModel(provider_binding, inference_lock=inference_lock,
+        preflight_certificate=preflight_certificate),
         directory, image_id=image_id, provider_binding=provider_binding,
         max_attempts=max_attempts, max_tokens=max_tokens, protocol=protocol)

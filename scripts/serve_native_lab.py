@@ -158,6 +158,8 @@ def main():
                         help='opt-in bounded autonomous search worker; separate from old jobs')
     parser.add_argument('--search-config', type=Path,
                         help='operator-owned JSON {provider_binding}; enables autonomous search API')
+    parser.add_argument('--designer-preflight', type=Path,
+                        help='operator-owned current real-backend interface certificate; never request-selected')
     parser.add_argument('--search-protocol', choices=('one-shot-v14', 'staged-v15'), default='one-shot-v14',
                         help='explicit staged opt-in; original v14 queue/protocol remains default')
     parser.add_argument('--data-cache', type=Path)
@@ -177,6 +179,8 @@ def main():
         config = json.loads(args.search_config.read_text())
         if not isinstance(config, dict) or set(config) != {'provider_binding'}:
             parser.error('search config requires exact operator-owned provider_binding')
+        from utopia.optimization.native_designer_preflight import require_certificate
+        require_certificate(args.designer_preflight, config['provider_binding'], protocol=args.search_protocol)
         search_queue = SearchQueue(args.queue, provider_binding=config['provider_binding'])
     if args.search_worker_once:
         if args.data_cache is None or search_queue is None:
@@ -191,11 +195,13 @@ def main():
                 from utopia.optimization.native_staged_author_v15 import make_local_staged_generator
                 return make_local_staged_generator(root / 'authoring', image_id=provider_binding['image_id'],
                     provider_binding=provider_binding, max_steps=request['designer']['max_steps'],
-                    max_tokens=request['designer']['max_tokens'], inference_lock=args.queue / 'inference.lock')
+                    max_tokens=request['designer']['max_tokens'], inference_lock=args.queue / 'inference.lock',
+                    preflight_certificate=args.designer_preflight)
             from utopia.optimization.native_search_generator_v14 import make_local_vocabulary_generator
             return make_local_vocabulary_generator(root / 'authoring', image_id=provider_binding['image_id'],
                 provider_binding=provider_binding, max_attempts=request['designer']['max_attempts'],
-                max_tokens=request['designer']['max_tokens'], inference_lock=args.queue / 'inference.lock')
+                max_tokens=request['designer']['max_tokens'], inference_lock=args.queue / 'inference.lock',
+                preflight_certificate=args.designer_preflight)
         print(json.dumps(search_queue.run_one(search_factory, generator_builder=search_generator,
             source_commit=revision), allow_nan=False), flush=True)
     elif args.worker_once:

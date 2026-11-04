@@ -587,7 +587,7 @@ def test_capability_inspection_reuses_pointer_slice_bounds_and_rejects_candidate
     assert same == state and selected['ok'] and len(selected['result']['value']) == 2
     same, rejected = apply(state, {'tool': 'inspect', 'resource': 'capabilities',
         'selector': {'mechanism_id': ALPHA}, 'path': ''})
-    assert same == state and not rejected['ok'] and 'no candidate mechanism selector' in rejected['errors'][0]['message']
+    assert same == state and not rejected['ok'] and 'tool schema' in rejected['errors'][0]['message']
     for tool in ('edit', 'splice', 'configure', 'finish'):
         same, rejected = apply(state, {'tool': tool, 'resource': 'capabilities'})
         assert same == state and not rejected['ok']
@@ -605,7 +605,7 @@ def test_capability_inspection_and_prompt_catalogue_cold_replay_remain_source_bo
     assert 'capability_catalog_source_sha256' in protocol_binding()
 
 
-def test_staged_dialogue_transport_is_one_loopback_post_and_legacy_transport_unchanged(monkeypatch):
+def test_staged_dialogue_transport_is_one_exact_json_mode_loopback_post(monkeypatch):
     calls = []
     class Response:
         status_code = 200
@@ -623,7 +623,9 @@ def test_staged_dialogue_transport_is_one_loopback_post_and_legacy_transport_unc
             return Response({'models': [{'name': 'qwen3:8b', 'digest': BINDING['model_digest']}]})
         def post(self, url, **kwargs):
             calls.append(('POST', url))
-            self.payload = kwargs['json']
+            self.payload = json.loads(kwargs['data'])
+            assert self.payload['format'] == 'json'
+            assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
             assert self.payload['think'] is False and self.payload['stream'] is False
@@ -641,6 +643,7 @@ def test_staged_dialogue_transport_is_one_loopback_post_and_legacy_transport_unc
     assert calls == [('GET', 'http://127.0.0.1:11434/api/tags'), ('POST', 'http://127.0.0.1:11434/api/chat')]
     assert model.last_transport['network_retries'] == 0
     assert model.last_transport['source_prompt_sha256'] == digest(prompt)
+    assert json.loads(model.last_transport['request_wire_utf8']) == model.last_transport['request_payload']
 
 
 def test_cold_replay_binds_exact_provider_dialogue_and_rejects_rehashed_message_tamper(tmp_path):

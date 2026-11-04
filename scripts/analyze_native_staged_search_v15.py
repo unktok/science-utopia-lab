@@ -114,13 +114,16 @@ def _transport(step, started, binding, classification):
             {'role': 'user', 'content': started['prompt']}]
     expected = {'model': binding['provider_binding']['model'],
         'messages': expected_messages,
-        'format': ACTION_SCHEMA, 'think': False, 'stream': False,
+        'format': 'json', 'think': False, 'stream': False,
         'options': {'temperature': .2, 'num_predict': binding['settings']['max_tokens'], 'num_ctx': 32768,
             'seed': int(digest(('native-staged-designer-v15', binding['binding_sha256'], started['step']))[:8], 16) % (2**31)}}
     if (transport['request_payload'] != expected or transport.get('endpoint') != 'http://127.0.0.1:11434/api/chat'
             or transport.get('network_retries') != 0
             or transport.get('model_digest') != binding['provider_binding']['model_digest']):
         raise ValueError('staged original POST model/prompt/schema/options/seed differs')
+    from utopia.optimization.native_designer_wire import wire_record
+    if any(transport.get(key) != value for key, value in wire_record(expected, ACTION_SCHEMA).items()):
+        raise ValueError('staged original request wire/host-schema binding differs')
     if 'response_payload' in transport:
         body = decode_json(transport['raw_http_response'], strict=True, finite_floats=True)
         if digest(body) != digest(transport['response_payload']):
