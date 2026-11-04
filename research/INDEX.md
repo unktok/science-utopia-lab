@@ -6,6 +6,10 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V19 completed finite goal: both two-generation native feedback loops, without useful invention](milestones/2026-11-04-concrete-native-feedback-v19.md)
+- [V19 actual four-world loss paths, unchanged systems and physical costs](results/native-concrete-closed-loop-v19-a1.md)
+- [V19 exact source/raw/tool/feedback audit](results/native-concrete-closed-loop-v19-a1.json)
+- [V19 requirement-by-requirement completion receipt and claim boundaries](results/native-concrete-closed-loop-v19-verification.json)
 - [V19 prospective concrete-instance authoring and final-submission pilot](protocols/campaigns/native-concrete-closed-loop-v19-a1.md)
 - [V19 source and execution log](logbook/2026-11-04-native-concrete-author-v19.md)
 - [V18 conditional code ABI feedback on the archived failure and actual SYSTEM role coverage](results/native-contract-notices-v18.md)

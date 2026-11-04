@@ -1,0 +1,89 @@
+{
+  "schema": "scienceutopia.native-concrete-closed-loop-verification.v19",
+  "objective": "修正後の科学制度設計系を使い、元の研究者世界で2目的関数×2世代の小規模な自動設計・評価・実測損失フィードバックの閉ループを実行し、技術的成否、制度の変更内容、探索経路、損失と費用を元ログに基づいて記録・検証する。保持や悪化を禁止せず、有用な発明・改善を示せたかは別に報告する。",
+  "completion_audit_passed": true,
+  "completion_scope": "Both objective arms at the same frozen source, including actual native G0 and G1 measurements and exact own-loss feedback. Not useful invention or all project goals.",
+  "actual_source_commit": "6b53841b89618bd9ce6ebed3e52b43c3b22c9fe1",
+  "protocol": "research/protocols/campaigns/native-concrete-closed-loop-v19-a1.md",
+  "audit": "research/results/native-concrete-closed-loop-v19-a1.json",
+  "compact_audit_content_sha256": "c475653bbad16411a26eb865bc604c331d78fa6c03d8fcbd52c278dd4de8e7f1",
+  "full_audit_content_sha256": "9b23720fd39e08b33f56972dc814a660bd1e5fca8cc7876189dec78546f2e1e7",
+  "raw_inventory_sha256": "ceb3b11230973a261b0aca7515f8647284e66fa776cf9afa98df899fc4910edf",
+  "raw_files_verified_unchanged": 128,
+  "matching_source_files": 247,
+  "matching_read_only_audits": 2,
+  "requirements_proven": {
+    "both_original_LossSpecs_unchanged": true,
+    "two_generations_per_objective_complete_at_same_source": true,
+    "all_four_candidates_explicitly_finished_by_local_model": true,
+    "original_researcher_world_not_surrogate": true,
+    "each_G1_receives_exact_own_G0_loss_and_observation_ID": true,
+    "each_G1_has_a_fresh_native_measurement": true,
+    "literal_changes_and_all_ties_preserved": true,
+    "tool_errors_and_physical_costs_recorded": true,
+    "retention_and_worse_outcomes_not_vetoed": true,
+    "raw_transports_and_source_bound_read_only_audits_preserved": true,
+    "useful_invention_and_improvement_reported_separately": true
+  },
+  "loss_paths": {"throughput": [-1.0, -1.0], "efficiency": [8.0, 8.0]},
+  "generations": {
+    "throughput": {"calls": [4, 8], "G1_based_on": "observation-native-adaptive-547b073d757dde84c7a331d7"},
+    "efficiency": {"calls": [4, 7], "G1_based_on": "observation-native-adaptive-e7b26e4e9b5aba3cbb086cd9"}
+  },
+  "accounting": {
+    "scheduled_and_consumed_slots": 4,
+    "completed_native_worlds": 4,
+    "generation_or_native_failures": 0,
+    "designer_POSTs_and_known_replies": 23,
+    "unknown_interrupted_replies": 0,
+    "rejected_tool_actions": 7,
+    "accepted_noop_edits": 1,
+    "all_eight_attempted_edit_operands_equal_parent_values": true,
+    "scientist_replies_and_wire_requests": 368,
+    "sandboxed_inherited_code_executions": 32,
+    "newly_authored_source_bodies_executed": 0,
+    "writer_wall_seconds": 1893.374545,
+    "designer_adapter_seconds": 605.1191116294358,
+    "completed_scientist_adapter_seconds": 1204.5339200496674,
+    "parallel_test_and_nested_transport_times_added_to_wall": false
+  },
+  "calibration": {
+    "controls": 13,
+    "actual_and_cold_replayed": true,
+    "certificate_content_sha256": "54e7a890bcab0ab5df8392eb09d16b52b2b38f85f728f453d47b88fb434b3739",
+    "runtime_sha256": "dd3e99b04adc5158bcdbebdefbc47f4ec83b5b20e1aee1184e392536c2e7593a",
+    "separate_adapter_seconds": 230.68225133279338
+  },
+  "full_SCRIPTED_suite": {
+    "source_commit": "6b53841b89618bd9ce6ebed3e52b43c3b22c9fe1",
+    "passed": 2559,
+    "skipped": 6,
+    "pytest_reported_seconds": 1191.39,
+    "junit": "outputs/native-concrete-closed-loop-v19-verification/full-6b53841.xml",
+    "junit_file_sha256": "bdbb7f09aba7c9f89d563adb7bef3174b63922cf9f1e9edb59128ac8060f9cf4",
+    "overlapping_focused_counts_added": false
+  },
+  "publication_verification": {
+    "scope": "Portable publication consistency, historical receipts, existing objective policy and source-owned authoring contracts; no new model/world execution. The worse-outcome projection is SCRIPTED, not an actual V19 worse-world observation.",
+    "passed": 26,
+    "pytest_reported_seconds": 1.20,
+    "junit": "outputs/native-concrete-closed-loop-v19-verification/publication.xml",
+    "junit_file_sha256": "09441ab2b24a8a775e3eb8c55b9073a06013566908e2520d1bd5ed6bf2e92c44",
+    "overlapping_focused_counts_added": false,
+    "V17_a1_a2_a3_raw_files_rehashed_unchanged": [160, 141, 146],
+    "V19_raw_files_rehashed_unchanged": 128
+  },
+  "claims": {
+    "operational_two_objective_feedback_demonstrated": true,
+    "effective_objective_conditioned_redesign_demonstrated": false,
+    "useful_institution_invention": false,
+    "scientific_improvement": false,
+    "designer_learning": false,
+    "method_superiority": false,
+    "held_out": false,
+    "model_weights_trained": false,
+    "world_scale_up": false,
+    "final_call_only_schema_exercised_by_actual_generations": false
+  },
+  "history": {"V17_failures_preserved": true, "V18_analysis_remains_zero_inference": true, "alternate_provider_started": false, "new_paid_API_configuration": false, "remote_push_performed": false, "paper_or_game_updated": false}
+}

@@ -2,7 +2,7 @@
 
 Updated: 2026-11-04
 
-## V19 concrete authoring pilot prepared within the fixed 8B stack
+## V19 both objective feedback loops complete; useful invention remains unshown
 
 The [new prospective protocol](protocols/campaigns/native-concrete-closed-loop-v19-a1.md)
 keeps the full two-objective measured-feedback goal and the same scientific
@@ -11,18 +11,30 @@ advertises the existing finish contract on the final budgeted call. All
 institutional/code/graph freedom and host tool validity remain unchanged;
 no candidate is supplied, repaired or automatically retained.
 
-Before production, the new source requires fresh 13-control real calibration
-and cold replay. Conditional on passing, the separate budget is four native
-slots / 64 author POSTs, 16 calls per generation. At frozen `6b53841`, all 13
-actual controls pass and cold-replay; the writer starts 06:23:30Z. Throughput
-G0 explicitly finishes in four calls after an identical source replacement,
-and measures -1. Throughput G1 receives that exact loss, explicitly finishes
-the retained parent after three rejected extra-field edits, and completes its
-second world at -1. Reviewed-production G0 finishes in four calls and its
-native evaluation is in progress. No changed institution or improvement is
-shown. The exact source's full regression passes 2559 tests with six skips.
-The unanswered external-Codex choice is not assumed; both roles stay Qwen3-8B.
+At frozen `6b53841`, all 13 actual instructed controls pass and cold-replay.
+The separate four-slot writer completes in31m33.37s with23 author POSTs and
+four complete original-world evaluations. Both G1 generations receive their
+own G0 measured loss and observation ID. Throughput losses are `[-1,-1]`;
+reviewed-production losses are `[8,8]`. All four candidates explicitly retain
+their exact parent. Eight attempted edits consist of one accepted no-op and
+seven rejected extra-field actions; even their literal operands are unchanged.
+No useful invention, objective-dependent redesign or improvement is shown.
+
+The [completed finite-goal inventory](milestones/2026-11-04-concrete-native-feedback-v19.md)
+and [actual report](results/native-concrete-closed-loop-v19-a1.md) separate that
+operational achievement from the remaining scientific/design capability.
+Two matching-source read-only audits agree, preserving128 raw files and247
+source proofs. Four physical worlds contain368 fresh scientist replies and32
+inherited-code executions; no newly authored source body executes. The exact
+source's full SCRIPTED regression passes2559 tests with six skips. Final-call
+guidance is not exercised in these actual runs, which all finish before call16.
+
+No owned inference/test writer remains. The unanswered external-Codex choice
+is not assumed; both roles stay Qwen3-8B and its user-owned backend is untouched.
 Prior failures remain charged and are not pooled into a controlled comparison.
+The older V17/V18 sections below describe those revisions' historical scope,
+not the now-achieved V19 two-objective operational loop. Local main only;
+no new remote push, world scale-up, paper/PDF refresh or game change is claimed.
 
 ## V18 offline contract feedback without additional inference
 

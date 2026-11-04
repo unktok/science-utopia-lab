@@ -71,3 +71,56 @@ omitted-logit zero defaults, whereas staged state always persists a logits
 mapping. No change to that unused path is made in this active experiment.
 Reviewed-production G0 explicitly finishes after4 calls and starts its native
 evaluation. Keep the remaining two slots and the current source unchanged.
+
+## Both objective arms complete at the frozen source
+
+The writer exits0 at2026-11-04T06:55:03.798379Z,1893.374545s after its recorded
+start. Reviewed-production G0 measures8. G1 receives that exact scalar and
+observation ID, explicitly finishes in7 calls and measures8 in another native
+world. Its G0 edit and three G1 edits are rejected for an extra top-level
+`rationale`; throughput G1 had three rejected `provenance` envelopes. Overall:
+23 author POSTs, seven rejected tool actions, one accepted no-op edit and four
+explicit finishes. None reaches the final-call-only guidance. Read-only literal
+operand comparison finds all eight attempted edits equal their parent values,
+including the rejected ones. Do not call a rejected edit an accepted no-op.
+
+All four submitted systems are exact parent retentions:19 nodes,27 wires and
+zero literal source/parameter/process/graph changes. Four original-world native
+evaluations complete, each at`A=1,Q=4,R=24`. Throughput losses`[-1,-1]` and
+reviewed-production losses`[8,8]` establish both operational feedback arms, not
+an invented institution, scientific benefit or effective objective-dependent
+redesign. One finish rationale's unmeasured minimization assertion is not proof.
+
+Physical costs are368 fresh scientist replies/wire requests and32 inherited
+sandboxed code executions, zero newly authored source bodies executed. Designer
+adapter time is605.1191116294358s (nested HTTP597.3406945823226s); scientist adapter
+time is1204.5339200496674s. Do not add nested transport, separate calibration or
+parallel tests to the writer's31m33.37s wall time. No failures or costs from
+older trials are refunded, pooled as a method comparison or relabelled.
+
+Run the matching frozen analyzer twice, after the writer's durable exit receipt.
+Both outputs agree byte-for-byte: compact content hash
+`c475653bbad16411a26eb865bc604c331d78fa6c03d8fcbd52c278dd4de8e7f1`,
+full audit content hash
+`9b23720fd39e08b33f56972dc814a660bd1e5fca8cc7876189dec78546f2e1e7`.
+Each verifies128 unchanged raw files and247 matching source files, including
+the auditor; raw inventory digest
+`ceb3b11230973a261b0aca7515f8647284e66fa776cf9afa98df899fc4910edf`.
+No new model calls or source executions occur in either audit.
+
+Publish the interpreted report, exact generated audit, requirement receipt and
+milestone inventory under the existing research taxonomy; update INDEX/STATUS
+without changing older source-scoped artifacts. Final portable publication,
+objective policy and authoring tests pass26 checks in1.20s. A SCRIPTED projection
+asserts that worse measurements remain observable separately from best-so-far;
+no actual worse-world outcome is claimed. JUnit file SHA:
+`09441ab2b24a8a775e3eb8c55b9073a06013566908e2520d1bd5ed6bf2e92c44`.
+These focused counts overlap the full2559-pass suite and are not added.
+
+Rehash all128 V19 and160/141/146 historical V17 raw files:575 unchanged. Verify
+the frozen experiment is still clean at`6b53841`, both matching audits remain
+identical, and no owned native/calibration/test writer remains. User-owned
+Ollama is untouched. Only local main integration is in scope; no remote push,
+paper/PDF or game refresh, model/provider switch or new pilot is implied.
+The finite two-objective feedback goal is supported; useful invention remains
+the next research capability, not silently substituted for this goal.
