@@ -60,6 +60,19 @@ or expired certificates fail closed. Recalibration is explicit, finite and logge
 Tests/docs changes alone do not invalidate runtime fingerprints. Raw prompt data
 and certificates stay in ignored outputs, never sent from browser paths.
 
+### Forward-only correction after the first actual call
+
+At source `0077334`, staged-a1's first typed control returns an inspect action
+instead of the requested integer edit. Gate closes after one charged reply;
+no remaining controls or unforced sessions dispatch. This is not a pass. The
+calibration task precedes the generic author protocol/objective in SYSTEM and
+therefore conflicts with later generic instructions. Move the Python-caller
+task to the end of trusted SYSTEM authority; never promote observed strings.
+Keep a1 intact. A fresh source-pinned a2 may use13 staged +8 one-shot controls;
+reduce optional unforced planning from8 to7 calls per arm. Total across both
+revisions is at most1+13+8+14=36, within the original37 bound. No retries, refunds
+or new scientific worlds. This amendment precedes any a2 dispatch.
+
 Passing proves those literal interface controls and source compilation only.
 It does not prove novel useful institution invention, loss improvement, generic
 8B reliability, or scientific validity. Scaling is not the remedy for a broken
