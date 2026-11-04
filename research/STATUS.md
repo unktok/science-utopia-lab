@@ -12,14 +12,25 @@ source/model/backend/image-bound actual interface certificate, cold-replayed
 before every production designer POST. This is technical readiness, not a new
 novelty, fairness or scientific-merit gate.
 
-At clean source `3135c35`, actual Qwen3-8B passes all13 instructed controls:
+At final runtime source `adb9064`, actual Qwen3-8B passes all13 instructed controls:
 eight exact operand types and continuous real-source inspect → splice →
 reinspect → static validate → explicit finish. Three earlier failed revisions
 remain separately archived (1+1+11 replies); none is refunded or relabelled.
 The new certificate does not prove autonomous planning, useful invention or
-scientific improvement. Two normal objective-arm planning checks and final
-source-specific software verification are being recorded separately. No new
-scientific worlds or generated-source execution are dispatched by this check.
+scientific improvement. The two normal5-call objective arms at `3135c35` both
+end without valid finish; their original terminal failures remain unchanged.
+The optional probe's optimistic failure-dictionary classification and a sorted-
+journal diagnostic-order defect are fixed and regressed, not retroactively
+repaired in old outputs. The full suite at `3135c35` passes2510 with6 skips;
+final runtime `adb9064` passes234 focused checks, followed by48 contract/cold
+checks at test-only `6ad7dc9`. These overlapping scopes are not added together.
+The [repair result](results/designer-contract-repair-v16.md) and
+[literal accounting summary](results/designer-contract-repair-v16.json)
+retain62 actual technical replies across explicitly amended finite budgets,
+with zero new scientific worlds/model-code runs. Historical native153/209-file
+inventories are unchanged; two read-only summaries are byte-identical.
+No owned inference/test worker remains after verification. User-owned Ollama
+is left running. No new native optimization campaign or paper/PDF update here.
 
 See [operator instructions](../docs/designer-preflight.md), the
 [prospective finite protocol and amendments](protocols/campaigns/designer-contract-repair-v16.md)

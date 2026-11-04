@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -94,6 +95,15 @@ def analyze(root):
         'native_worlds': 0, 'generated_source_executions': 0, 'rows': rows, 'costs': sums,
         'evidence_inventory': assets, 'historical_native_inventories': historical,
         'scope': 'literal transport evidence/accounting; planning and invention claims require separate interpretation'}
+    result['test_scopes'] = []
+    for filename, source in [('full-tests-a4.xml', '3135c35'), ('final-focused-a6.xml', 'adb9064'),
+            ('final-cold-contract.xml', '6ad7dc9')]:
+        path = root / filename
+        suite = ET.parse(path).getroot().find('testsuite')
+        counts = {key: int(suite.attrib[key]) for key in ('tests', 'errors', 'failures', 'skipped')}
+        result['test_scopes'].append({'file': filename, 'source_commit_prefix': source, 'sha256': sha(path),
+            **counts, 'passed': counts['tests'] - counts['errors'] - counts['failures'] - counts['skipped'],
+            'seconds': float(suite.attrib['time']), 'overlapping_scopes_not_added': True})
     result['content_sha256'] = digest(result)
     return result
 

@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V16 interface fixes, real controls, failed planning boundaries and test scopes](results/designer-contract-repair-v16.md)
+- [V16 exact wire/certificate/cost/raw-inventory summary](results/designer-contract-repair-v16.json)
 - [V16 actual-backend designer readiness, production gate and renewal](../docs/designer-preflight.md)
 - [V16 prospective finite repair verification and retained failures](protocols/campaigns/designer-contract-repair-v16.md)
 - [V16 forward-only implementation and actual-check log](logbook/2026-11-04-designer-contract-repair-v16.md)

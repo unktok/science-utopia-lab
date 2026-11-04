@@ -84,3 +84,27 @@ only the schema-validation view's ordering and add three direct regressions.
 Author operands/strings/operation-array order remain literal and untouched.
 Declare a final additional13-case a6 certification before dispatch; total
 maximum62 technical POSTs, no more normal planning or scientific worlds.
+
+Final runtime `adb9064` a6 passes13/13 actual controls and the original
+certificate cold verifier. Certificate SHA256
+`97b0714748dc443411aba0736786df8f3a75bdd393ff170d231c7e858db85def`;
+runtime inventory digest
+`c2eae864d66ac82bec3cb379591603c3e4be4abf24655f21199d46230880528d`.
+Earlier a5 also passes13/13 but is superseded by the final source, not reused.
+No further model run is dispatched. Total62 known complete replies,689282
+input/5384 output tokens,1293.76s recorded POST time. Source3135c35's full suite
+finishes2510 passed/6 skipped in1120.14s. Final adb9064 focused scope234 pass
+in32.89s. Test-only6ad7dc9 adds full rejected-action→valid-finish cold replay
+with no redispatch; all48 contract checks pass in2.66s. Scopes overlap, not added.
+
+The [compact result](../results/designer-contract-repair-v16.md) and
+[machine-readable evidence](../results/designer-contract-repair-v16.json) bind
+142 raw JSON assets, test XML hashes and unchanged original153/209-file native
+inventories. Two read-only summaries are byte-identical at content SHA256
+`b9165623d09f43b4aecff3af42ee6d365954753de746cb1163740a7921c929e4`.
+They explicitly preserve the optional old probe-wrapper flags as incorrect,
+and classify both normal planning attempts from hashed original failure
+terminals. No old strict planning replay or new autonomous success is claimed.
+Production source remains fixed during verification; later tests/docs/analysis
+edits do not change the runtime fingerprint. No owned inference/test job remains.
+Keep user-owned Ollama running; no remote push or new paper build in this fix.
