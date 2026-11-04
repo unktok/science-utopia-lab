@@ -55,6 +55,18 @@ def test_matched_tool_schema_reports_the_field_cause_not_the_entire_large_action
     assert len(message) < 200 and 'x' * 20 not in message
 
 
+@pytest.mark.parametrize('action', [
+    {'zzz': 'observed', 'tool': 'unknown', 'aaa': 1},
+    {'tool': 'inspect', 'path': {'z': 2, 'a': 1}},
+    {'tool': 'configure', 'logits': {'z': 'not-array', 'a': 'not-array'}},
+])
+def test_invalid_action_diagnostics_survive_sorted_journal_roundtrip(action):
+    state = initial_draft(request())
+    def apply(value):
+        return transition(state, value, request(), binding_sha256='d' * 64, provider_binding=BINDING)
+    assert apply(action) == apply(json.loads(json.dumps(action, sort_keys=True)))
+
+
 def test_alternating_alias_reads_share_memory_warn_and_real_change_resets_freshness():
     body = request(); state = initial_draft(body); steps = []
     for action in [{'tool': 'inspect', 'path': '/mechanisms/0/parameters'},

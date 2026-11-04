@@ -314,7 +314,11 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
         # Both schemas are generated from the SAME TOOL_FIELDS/ACTION_FIELDS.
         schema = ({**_tool_schema(action['tool'], *TOOL_FIELDS[action['tool']]), '$defs': ACTION_FIELDS}
             if isinstance(action, dict) and action.get('tool') in TOOL_FIELDS else ACTION_SCHEMA)
-        problems = list(Draft202012Validator(schema).iter_errors(action))
+        # Diagnostic repr must not depend on JSON object insertion order.
+        # Only the validation view is canonicalized; literal edit values,
+        # strings and operation-array order remain untouched.
+        validation_view = json.loads(json.dumps(action, sort_keys=True, ensure_ascii=False, allow_nan=False))
+        problems = list(Draft202012Validator(schema).iter_errors(validation_view))
         if problems:
             from jsonschema.exceptions import best_match
             problem = best_match(problems)

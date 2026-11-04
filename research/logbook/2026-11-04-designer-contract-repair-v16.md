@@ -72,3 +72,15 @@ No more normal planning/world runs. Prior a3 full suite is stopped as superseded
 SIGINT/SIGTERM are caught by signal-handling tests, so the owned test root is
 finally killed. It is interrupted/invalidated, not a full pass or a product
 failure. The actual source3135c35 a4 full regression continues separately.
+
+`2f0f68b`:231 source-pinned focused tests pass. A5 actual recertification runs
+separately. Read-only a4 strict replay rejects an invalid-action diagnostic at
+the original source: sorted journal key order changes the repr text of a root
+oneOf error. The a4 original terminal failure classification is unchanged, but
+do not claim successful strict planning replay. Preserve all original files.
+The new precise configure diagnostic fixes the observed giant message; an
+unknown-tool roundtrip check still detects the general ordering defect. Fix
+only the schema-validation view's ordering and add three direct regressions.
+Author operands/strings/operation-array order remain literal and untouched.
+Declare a final additional13-case a6 certification before dispatch; total
+maximum62 technical POSTs, no more normal planning or scientific worlds.

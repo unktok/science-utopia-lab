@@ -128,6 +128,22 @@ than hiding a retry or reusing a source-mismatched certificate. Reason: a newly
 observed generic software feedback bug, not an attempt to force scientific
 invention. Failed earlier counts and all output budgets remain unchanged.
 
+### Journal-order recurrence guard, before a6
+
+Strict cold replay of a4 planning at its own frozen source rejects an error
+receipt: root-oneOf diagnostic strings depend on dictionary insertion order,
+which a sorted journal changes. Its terminal says failure regardless; do not
+call the a4 planning trace a successful cold audit. The precise a5 tool-branch
+diagnostics address the observed configure error, but a targeted unknown-tool
+check still reproduces the general ordering problem. Canonicalize only the
+schema-validation view, not authored values/strings/operation-array order.
+Add direct sorted-roundtrip regressions. Do not repair a4 journals.
+
+Declare one final additional13-control a6 recertification at its new clean
+runtime pin, no more optional normal planning or worlds. Total maximum62
+technical POSTs (49 earlier reserved +13), explicitly before a6 dispatch.
+This covers a reproducibility software defect, not scientific outcome fishing.
+
 ## Operator commands
 
 Use the approved uv-managed environment and a clean pinned checkout:

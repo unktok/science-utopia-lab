@@ -19,7 +19,7 @@ def sha(path):
 
 def analyze(root):
     rows, assets, certificates, planning_results = [], {}, [], []
-    for name in ('staged-a1', 'staged-a2', 'staged-a3', 'staged-a4', 'staged-a5'):
+    for name in ('staged-a1', 'staged-a2', 'staged-a3', 'staged-a4', 'staged-a5', 'staged-a6'):
         directory = root / name
         if not directory.exists():
             continue
@@ -71,7 +71,7 @@ def analyze(root):
             raise ValueError('unknown/out-of-budget planning dispatch')
         for path in sorted(planning.rglob('*.json')):
             assets[str(path.relative_to(root))] = sha(path)
-    if len(rows) > 49:
+    if len(rows) > 62:
         raise ValueError('declared repair verification budget exceeded')
     sums = {}
     for field in ('prompt_tokens', 'completion_tokens', 'elapsed_seconds'):
@@ -89,7 +89,7 @@ def analyze(root):
         historical[name] = {'files': len(actual), 'inventory_sha256': digest(actual), 'unchanged': True}
     result = {'schema': 'scienceutopia.designer-contract-verification-summary.v16',
         'certificates': certificates, 'planning_results': planning_results,
-        'actual_POSTs': len(rows), 'maximum_POSTs': 49,
+        'actual_POSTs': len(rows), 'maximum_POSTs': 62,
         'native_worlds': 0, 'generated_source_executions': 0, 'rows': rows, 'costs': sums,
         'evidence_inventory': assets, 'historical_native_inventories': historical,
         'scope': 'literal transport evidence/accounting; planning and invention claims require separate interpretation'}
