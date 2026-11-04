@@ -2,63 +2,48 @@
 
 Updated: 2026-11-04
 
-## V17 post-repair native feedback pilot authorized
+## V17 finite trials closed; the two-objective feedback goal remains unmet
 
-The next goal is two objective-conditioned automatic generations in the original
-researcher world using the V16 repaired runtime: valid design → native measured
-loss → next automatic design informed by that own loss → native measurement.
-The [prospective protocol](protocols/campaigns/native-staged-closed-loop-v17-a1.md)
-reserves4 native slots and at most64 author POSTs (16 steps/generation,2048 output
-tokens), keeping five authors/two years/development seed42 and both existing
-LossSpecs. Retention and worse outcomes remain legal. No hidden repair,
-replacement candidate or novelty/improvement veto. A failed/null slot is not
-an executed world; a terminal scheduler is not achievement of the loop.
+The [milestone inventory](milestones/2026-11-04-post-repair-native-feedback-v17.md)
+separates implemented repairs from actual original-world outcomes. The target
+is automatic design → measured loss → own-loss-informed redesign → another
+measurement on both objectives. Three separately preregistered, source-isolated
+continuations have stopped at their fixed bounds; no revision completes both
+arms. A terminal scheduler is not achievement of that operational goal.
 
-Feature development and frozen execution use separate worktrees. The existing
-actual staged certificate still matches unchanged runtime/model/backend/image;
-no repeated calibration is needed for driver/report metadata changes alone.
-The a1 source is frozen at `c6a56a5`. Throughput completes two original-world
-evaluations with losses[-1,-1] and byte-identical selection-source replacements.
-The exact measured G0 loss reaches G1; effective redesign/improvement is not
-shown. Reviewed-production G0 consumes16 calls and fails finish because its
-Bernoulli factor keeps two logits instead of one. G1 finishes by retaining the
-parent and measures8. A1 exits0 after39m53.82s:4 charged slots,3 native worlds,
-one failed slot. The two-arm operational goal is not complete; the second arm
-has no G0 measured loss to feed into G1. Two matching-source audits agree:
-160 unchanged raw files,246 matching source files,46 designer replies,276
-scientist replies and24 inherited-code executions. See the
-[closed a1 result](results/native-closed-loop-v17-a1.md).
+- [a1 at `c6a56a5`](results/native-closed-loop-v17-a1.md): throughput `[-1,-1]`,
+  reviewed production `[null,8]`; three completed worlds, one failed generation,
+  46 designer replies. The throughput own-loss feedback loop is verified.
+- [a2 at `22617b5`](results/native-closed-loop-v17-a2.md): throughput `[-1,null]`,
+  reviewed production `[null,null]`; one completed and one partial failed world,
+  47 designer replies. The changed payload schema fails at runtime.
+- [a3 at `c068c81`](results/native-closed-loop-v17-a3.md): throughput `[null,null]`,
+  reviewed production `[8,null]`; one completed world, three failed generations,
+  53 designer replies. The measured 8 reaches G1, which fails to finish.
 
-A separate [a2 protocol](protocols/campaigns/native-staged-closed-loop-v17-a2.md)
-prepares exact expected/actual factor-shape diagnostics and an explicit legal
-no-op edit notice.207 prelaunch SCRIPTED checks pass. The active a1 source is
-not edited; all its failures remain charged. A2 is frozen at`22617b5`; after
-A1 exits, its own13-control calibration passes and cold-verifies. The separate
-4-slot/64-designer-call production writer starts04:29:17Z. T-G0 measures-1;
-T-G1 and E-G0 each fail after16 author calls. E-G1 finishes a changed input
-schema, but fails at runtime before a loss is measured. A2 exits0 after32m32.80s:
-four slots, one completed world, one partial world,47 designer replies and111
-scientist replies. Two cold audits agree and preserve141 raw files. See the
-[closed a2 result](results/native-closed-loop-v17-a2.md). A2 does not complete
-either measured feedback path. The exact A2 source's full SCRIPTED suite
-passes2526 with6 skips in1171.90s. No author/year/seed/corpus scale-up or
-host-authored policy repair.
+All five completed worlds retain the exact parent and measure `A=1,Q=4,R=24`.
+No useful new institution or improvement is demonstrated. Arithmetic spend is
+12 charged slots, 146 designer replies, 479 scientist replies (including 19
+partial-world replies), and 43 inherited-code executions. This is not a pooled
+controlled comparison. Retention and worse outcomes remain legal; no hidden
+fairness/quality/novelty veto, source repair, replacement or refund is introduced.
 
-A separate [a3 continuation](protocols/campaigns/native-staged-closed-loop-v17-a3.md)
-prepares exact reusable inspection addresses and explicit local/global scope,
-without repairing a target or altering institutional freedom. Its207 focused
-prelaunch checks pass at frozen`c068c81`; its full suite passes2532 with6 skips
-in1146.69s. After A2
-exits, its fresh13-control calibration passes and cold-verifies. Its separate
-four-slot/64-call production pilot starts05:07:37Z; outcomes remain open.
-Its throughput G0/G1 each exhaust16 calls without a valid finish or native
-world. Reviewed-production G0 explicitly retains the parent, finishes in5
-calls and is undergoing native evaluation. No two-arm operational completion
-or useful invention is claimed. A nonblocking user choice about a separate
-Codex-designer track has been requested; researcher Qwen weights remain fixed,
-and no alternate-provider track has been launched without that answer.
-The source-bound calibration now covers stable-ID/local-path inspect/splice
-and selector-free absolute reinspection. All prior failures remain charged.
+The final runtime adds exact factor-shape errors, explicit legal no-op feedback,
+reusable inspection addresses and local/global scope notices. Frozen writers
+retain launch/exit and explicit-resume receipts; audits include their own exact
+source. The final actual source passes 2532 SCRIPTED tests with six skips and
+13 real instructed controls. Each revision has two identical read-only audits,
+preserving 160/141/146 raw files and 246 source files per revision. See the
+[verification receipt](results/native-closed-loop-v17-verification.json).
+
+The remaining immediate issue is autonomous design reliability, not world
+scale. The local author still makes invalid/unconsumed-field proposals despite
+precise diagnostics. This does not prove an in-principle 8B limitation. The
+user has been asked about a separate external-Codex designer condition while
+retaining native Qwen3-8B researchers. No answer, alternate-provider track,
+new paid API configuration or additional pilot is assumed. The operational
+goal remains unmet, not marked complete. No owned inference/test worker remains;
+user-owned Ollama is untouched. Local main is updated, not newly pushed.
 Follow the [execution log](logbook/2026-11-04-native-closed-loop-v17.md).
 
 ## V16 designer interface repair and fail-closed launch gate

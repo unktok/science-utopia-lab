@@ -218,3 +218,39 @@ the current Codex as external institutional designer while keeping the native
 researchers at Qwen3-8B. This would be a separately labelled condition, not
 a replacement of failures or a new paid API configuration. No answer has been
 received and no alternate-provider authoring track/request has been launched.
+
+A3 E-G0 completes with `A=1,Q=4,R=24`, own loss8. Its exact loss and observation
+ID reach E-G1, which repeatedly configures nonexistent `/parameters/provenance`
+targets and ends without a valid finish after16 calls. A3's original writer
+exits0 at2026-11-04T05:45:13.463456Z after37m36.29s. Final A3 accounting is four
+charged slots, one completed native world, three generation failures,53 known
+designer replies,92 scientist replies and8 inherited-code executions. Two cold
+source-matched audits agree byte-for-byte and preserve146 raw files and246
+source files, compact hash
+`75ecb62dbfc1a58853364f9a9a83252bf3a4ddac39998ad01d32bd8ceb21a3fb`.
+
+Publish the interpreted A3 result, exact generated audit, whole V17 milestone
+inventory and source-scoped verification receipt. Aggregate physical spend
+across the separate revisions is12 slots/146 author POSTs,26 new calibration
+replies,479 scientist replies and43 inherited-code executions. Five worlds
+complete, one fails after partial execution, and six slots fail authoring.
+No newly authored source body is executed; no useful institution or improvement
+is shown. Arithmetic accounting is not a controlled method comparison.
+
+The finite trials are closed but the user's two-objective measured-feedback
+goal remains unmet. Do not mark it complete or silently add another 8B pilot.
+The separate external-Codex designer choice remains unanswered; an 8B-only
+planning/task-decomposition revision is another possible direction, not yet
+scheduled. No alternate-provider/new paid API track is launched. All owned
+writers/tests have exited; leave the user-owned Ollama service running. Notes
+and fixes are integrated into local main only; no new remote push, paper/PDF
+build, game UI change or science-world scale-up occurs in this milestone.
+
+Final portable publication consistency and related regression scope passes47
+checks in22.24s. Its new tests bind each source/audit hash and aggregate costs,
+keep nulls/failures distinct from completed worlds, preserve identical losses
+across revisions, and prevent claims of unobserved invention/provider changes.
+This overlapping/test-only publication scope is not added to the2532 full-suite
+count at`c068c81`. New report/milestone links resolve. Recheck all three raw
+inventories after publication:160/141/146 files remain byte-identical to their
+source-matched audit indices. No model/container call is made by these checks.

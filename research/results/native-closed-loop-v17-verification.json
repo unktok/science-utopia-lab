@@ -1,0 +1,37 @@
+{
+  "schema": "scienceutopia.native-closed-loop-verification.v17",
+  "finite_engineering_trials_closed": true,
+  "operational_two_objective_two_generation_goal_achieved": false,
+  "comparison_is_controlled": false,
+  "overlapping_test_scopes_added": false,
+  "pilots": [
+    {"revision": "a1", "source_commit": "c6a56a547c4e551ed280837dea5e788468435b0b", "audit": "research/results/native-closed-loop-v17-a1.json", "compact_content_sha256": "11b3befd7ae3ccd7a1954bd34610c25eba2f5c4b083ef9410b36fda94824bea7", "unchanged_raw_files": 160, "matching_source_files": 246, "designer_POSTs": 46, "completed_worlds": 3, "partial_worlds": 0, "wall_seconds": 2393.816853},
+    {"revision": "a2", "source_commit": "22617b5a8bd41b8ca45bcad57fcc7a386678c691", "audit": "research/results/native-closed-loop-v17-a2.json", "compact_content_sha256": "3d7dca99548e4758e0bd166b301a855ae75865b535b20ba6d7fb02fb3fa23034", "unchanged_raw_files": 141, "matching_source_files": 246, "designer_POSTs": 47, "completed_worlds": 1, "partial_worlds": 1, "wall_seconds": 1952.799193},
+    {"revision": "a3", "source_commit": "c068c81c6d0befd301cc093bd8ec943764bb44dc", "audit": "research/results/native-closed-loop-v17-a3.json", "compact_content_sha256": "75ecb62dbfc1a58853364f9a9a83252bf3a4ddac39998ad01d32bd8ceb21a3fb", "unchanged_raw_files": 146, "matching_source_files": 246, "designer_POSTs": 53, "completed_worlds": 1, "partial_worlds": 0, "wall_seconds": 2256.289818}
+  ],
+  "full_SCRIPTED_suites": [
+    {"source_commit": "22617b5a8bd41b8ca45bcad57fcc7a386678c691", "passed": 2526, "skipped": 6, "pytest_reported_seconds": 1171.90, "junit": "outputs/native-closed-loop-v17-verification/a2-full.xml", "junit_file_sha256": "4f75c41cd37dc2eb9083665d590bec5462fb7f0fca77f15f8a522ec57e503b57"},
+    {"source_commit": "c068c81c6d0befd301cc093bd8ec943764bb44dc", "passed": 2532, "skipped": 6, "pytest_reported_seconds": 1146.69, "junit": "outputs/native-closed-loop-v17-verification/a3-full.xml", "junit_file_sha256": "a71ef9e7a133cc1675eefa606913c4fb1f948a749052c354ad72470827dc3c47"}
+  ],
+  "new_actual_interface_calibrations": [
+    {"revision": "a2", "source_commit": "22617b5a8bd41b8ca45bcad57fcc7a386678c691", "controls": 13, "all_passed_and_cold_replayed": true, "certificate": "outputs/native-closed-loop-v17-a2-preflight/certificate.json", "certificate_content_sha256": "675efac2dce71b19409a1fa1a3875e5f70b6c975a3806cd3fe250f80b6ad0daf", "adapter_seconds": 255.90029174950905},
+    {"revision": "a3", "source_commit": "c068c81c6d0befd301cc093bd8ec943764bb44dc", "controls": 13, "all_passed_and_cold_replayed": true, "certificate": "outputs/native-closed-loop-v17-a3-preflight/certificate.json", "certificate_content_sha256": "ff2fda933b97d7a75a57e6fecd1c06fd82ae3ae8d34b1500695d6b0db7b0471b", "adapter_seconds": 256.6059582082089}
+  ],
+  "aggregate_resource_accounting_not_a_method_comparison": {
+    "charged_slots": 12,
+    "generation_failures": 6,
+    "runtime_failures": 1,
+    "completed_native_worlds": 5,
+    "partial_native_worlds": 1,
+    "designer_POSTs_and_known_replies": 146,
+    "unknown_interrupted_replies": 0,
+    "scientist_replies": 479,
+    "partial_world_scientist_replies": 19,
+    "recorded_code_executions_including_partial": 43,
+    "newly_authored_source_bodies_executed": 0,
+    "missing_costs_imputed_as_zero": false
+  },
+  "publication_consistency_checks": {"passed": 47, "pytest_reported_seconds": 22.24, "scope": "Overlapping publication, driver, audit and feedback checks after the frozen c068c81 runtime; not an additional full-suite or actual native experiment", "junit": "outputs/native-closed-loop-v17-verification/publication.xml", "junit_file_sha256": "f3fda148ed5452b49d61ca40ee7e4d5c10a9d5cdb5ea1b167fb631de2ebede27", "consistency_test": "tests/reports/test_native_closed_loop_v17_publication.py", "consistency_test_file_sha256": "ca9625d686748c10cab1ee5f7c2e63ff0873ad35703e6f6acc1bb0faadfeeff9", "all_three_raw_inventories_rechecked_unchanged_after_publication": true},
+  "claims": {"useful_institution_invention": false, "scientific_benefit": false, "method_superiority": false, "designer_improvement": false, "held_out": false, "model_weights_trained": false, "native_world_scale_up": false},
+  "handoff": {"goal_remains_unmet": true, "external_Codex_designer_choice_requested": true, "alternate_provider_track_started": false, "new_paid_API_configuration": false, "additional_trials_started_by_this_report": false, "paper_or_game_updated": false, "remote_push_performed": false}
+}
