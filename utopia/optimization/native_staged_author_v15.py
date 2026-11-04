@@ -185,10 +185,12 @@ def draft_summary(state):
         else:
             mechanisms.append({'path': '/mechanisms/' + str(index), 'type': json_type(node)})
     from .native_factorized_gradient import factor_logit_size
+    from .native_contract_notices import notice_summary
     return {'draft_sha256': digest(state), 'document_sha256': digest(document),
         'top_level': {key: _descriptor(value) for key, value in document.items()},
         'mechanisms': mechanisms, 'applied_operation_count': len(state['operations']),
         'distribution': {key: clone(state[key]) for key in ('factors', 'continuous', 'logits')},
+        'execution_contract_notices': notice_summary(document),
         'declared_factor_logit_shapes': [{'factor_id': factor['id'], 'factor_kind': factor['kind'],
             'choice_count': len(factor['choices']), 'expected_shape': [factor_logit_size(factor)]}
             for factor in state['factors']],
@@ -301,13 +303,17 @@ def compile_draft(state, request, *, binding_sha256, provider_binding, rationale
 
 
 def _validation(state, request, binding_sha256, provider_binding, rationale='Static technical inspection'):
+    from .native_contract_notices import notice_summary
+    notices = notice_summary(state['document'])
     try:
         definition = compile_draft(state, request, binding_sha256=binding_sha256,
             provider_binding=provider_binding, rationale=rationale)
         return {'valid': True, 'definition_sha256': digest(definition), 'errors': [],
+            'execution_contract_notices': notices,
             'scope': 'static graph/source/ABI/distribution; no native execution'}, definition
     except Exception as error:
         return {'valid': False, 'definition_sha256': None, 'errors': [_error(error)],
+            'execution_contract_notices': notices,
             'scope': 'static graph/source/ABI/distribution; no native execution'}, None
 
 
