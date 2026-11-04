@@ -37,3 +37,20 @@ Ollama0.33.3, and the pinned Docker image
 `sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833`.
 These are metadata reads, not new generation. Freeze the complete protocol and
 runtime before the first new13-control calibration POST.
+
+Freeze at `6b53841b89618bd9ce6ebed3e52b43c3b22c9fe1` in a separate detached
+experiment worktree and tag `protocol/native-concrete-closed-loop-v19-a1`.
+The source-matched proof verifies 247 runtime/driver/helper/protocol files.
+All 13 real controls pass in230.68 adapter seconds, certificate content hash
+`54e7a890bcab0ab5df8392eb09d16b52b2b38f85f728f453d47b88fb434b3739`,
+runtime digest`dd3e99b04adc5158bcdbebdefbc47f4ec83b5b20e1aee1184e392536c2e7593a`.
+Cold replay passes. A full SCRIPTED suite is running at the same frozen source;
+its outcome is not yet known and is not inferred from the focused tests.
+
+The production writer starts2026-11-04T06:23:30.423834Z, retaining exact argv
+and environment in`outputs/native-concrete-closed-loop-v19-a1/writer.started.json`.
+No other owned native writer is live before launch. Throughput G0 inspects,
+replaces selection code with byte-identical source, reinspects and finishes in
+four calls. Its original-world evaluation starts. This is legal exact retention,
+not an invented algorithm, improvement, or proof of loss minimization. No slot
+is refunded and no new candidate is supplied by the host.

@@ -13,7 +13,11 @@ no candidate is supplied, repaired or automatically retained.
 
 Before production, the new source requires fresh 13-control real calibration
 and cold replay. Conditional on passing, the separate budget is four native
-slots / 64 author POSTs, 16 calls per generation. No V19 inference has run yet.
+slots / 64 author POSTs, 16 calls per generation. At frozen `6b53841`, all 13
+actual controls pass and cold-replay; the writer starts 06:23:30Z. Throughput
+G0 explicitly finishes in four calls after an identical source replacement,
+and its first original-world evaluation is in progress. No loss, improvement
+or changed institution is inferred yet. The full regression suite is running.
 The unanswered external-Codex choice is not assumed; both roles stay Qwen3-8B.
 Prior failures remain charged and are not pooled into a controlled comparison.
 
