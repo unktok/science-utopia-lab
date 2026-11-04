@@ -1,6 +1,27 @@
 # Program status
 
-Updated: 2026-11-03
+Updated: 2026-11-04
+
+## Staged designer diagnosis finds a real generation language defect
+
+The [root-cause investigation](results/staged-designer-diagnosis-v15.md)
+rechecks all historical evidence and conducts42 separately logged diagnostic
+replies, with zero native worlds/source execution. The actual backend compiles
+the arbitrary edit operand `value:{}` to object-only rules, excluding direct
+scalar/string/array assignments that the host accepts. Five grammar metadata
+queries verify this with zero evaluated/generated tokens. In matched syntax
+controls, original full schema gives0/4 correct edits; JSON mode4/4 and a small
+typed schema4/4. This is an interface defect, not proof of an8B capacity limit.
+
+An alternating-read detector gap and generation/host per-tool-contract mismatch
+are independently identified. Moving instructions alone does not stop the
+historical empty read; bundled memory/goal/progress/role changes reach actual
+code-bearing parameters in two one-step probes, not a finished new institution.
+Schema-order-sensitive replay is discovered and preserved separately. The
+[cold audit](results/staged-designer-diagnosis-v15.json) repeats byte-identically;
+153 a1 and209 a2 raw files remain unchanged. Production/main and the paper are
+not changed by this diagnosis; the defect is documented, not yet repaired.
+See the new prospective diagnostic protocols and local diagnosis branch.
 
 ## V15 actual operational loop achieved; reviewed publication
 

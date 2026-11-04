@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [Why the local staged designer looped and the real generation grammar blocked legal edits](results/staged-designer-diagnosis-v15.md)
+- [Read-only causal diagnosis audit and42-response control evidence](results/staged-designer-diagnosis-v15.json)
 - [V15 source-scoped software checks, audited actual feedback and65-page PDF/artifact verification](results/native-staged-search-v15-verification.json)
 - [V15 original goals, whole-project evidence inventory and remaining boundaries](milestones/2026-11-03-staged-native-loop-v15.md)
 - [V15 parallel tracks and forward-only execution log](logbook/2026-11-03-staged-native-authoring-v15.md)

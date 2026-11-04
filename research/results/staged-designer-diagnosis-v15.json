@@ -1,0 +1,1465 @@
+{
+  "all_arbitrary_institution_edits_impossible_claimed": false,
+  "analysis_script_sha256": "d151a2ae2cf88772688c2e78593c8b636cb1b2a3b8287aff1a58628f1b99f326",
+  "analysis_source_commit": "10658b65c2073e7a4a3b2993bf364d1e742de43e",
+  "compiled_grammar": {
+    "empty-value": {
+      "critical_rules": {
+        "value-": "object",
+        "value-kv": "\"\\\"value\\\"\" space \":\" space value-"
+      },
+      "file_sha256": "e48b581ddd6b8a962f7f83af32881c0da657ce3c0f3e90ae6398a822ddfaa3cf",
+      "tokens_evaluated": 0,
+      "tokens_predicted": 0
+    },
+    "explicit-anyof": {
+      "critical_rules": {
+        "value-": "value-0 | array | string | number | boolean | null",
+        "value-kv": "\"\\\"value\\\"\" space \":\" space value-"
+      },
+      "file_sha256": "92533e186edaf760814d01fc6ec899e6b1fef6f0f8cd34d8c61ff236d42c1b2c",
+      "tokens_evaluated": 0,
+      "tokens_predicted": 0
+    },
+    "explicit-string-value": {
+      "critical_rules": {
+        "value-kv": "\"\\\"value\\\"\" space \":\" space string"
+      },
+      "file_sha256": "7cd8253b1c1aba99f2899911af745f5c2cf006a896727dc00deceb67c6170d08",
+      "tokens_evaluated": 0,
+      "tokens_predicted": 0
+    },
+    "explicit-type-list": {
+      "critical_rules": {
+        "value-": "value-0 | array | string | number | boolean | null",
+        "value-kv": "\"\\\"value\\\"\" space \":\" space value-"
+      },
+      "file_sha256": "92533e186edaf760814d01fc6ec899e6b1fef6f0f8cd34d8c61ff236d42c1b2c",
+      "tokens_evaluated": 0,
+      "tokens_predicted": 0
+    },
+    "full-author-schema": {
+      "critical_rules": {
+        "operations-item-0-value": "object",
+        "operations-item-1-value": "object",
+        "operations-item-3-value": "object",
+        "operations-item-4-value": "object"
+      },
+      "file_sha256": "aa5f22c3c446c1fbcc9501d1bf02cca1a033cb352d3cc29f6e4531d7fd273799",
+      "tokens_evaluated": 0,
+      "tokens_predicted": 0
+    }
+  },
+  "complex_grammar_is_a_locally_demonstrated_edit_obstacle": true,
+  "content_sha256": "a65987866e1d4754131a12447a9d9e7240dead64eb23e4252a97ecbf33548c45",
+  "control_counts": {
+    "institution/full": {
+      "passed": 0,
+      "total": 2
+    },
+    "institution/json": {
+      "passed": 2,
+      "total": 2
+    },
+    "institution/minimal": {
+      "passed": 2,
+      "total": 2
+    },
+    "isolated/full": {
+      "passed": 0,
+      "total": 2
+    },
+    "isolated/json": {
+      "passed": 2,
+      "total": 2
+    },
+    "isolated/minimal": {
+      "passed": 2,
+      "total": 2
+    }
+  },
+  "declared_schema_accepts_string_control_but_compiled_value_rules_object_only": true,
+  "diagnostic_model_POSTs": 42,
+  "diagnostic_plan_sources": {
+    "controls-a3": "e58957871ece7d75b97cc8170a1fd883840e7bb8",
+    "paired-a1": "480219755607cffd54e29d746897e5b94ce2bbb5",
+    "wire-a2": "0ce0d21d5fb808f30753c43ad91094c2f073a154"
+  },
+  "eight_billion_parameter_capacity_limit_identified": false,
+  "fixed_designer_or_invention_demonstrated": false,
+  "generated_source_executions": 0,
+  "historical_interpreter_commit": "51d9cbbd49054cdb89c24ea5bc192ff9b63e9155",
+  "historical_inventories_unchanged": {
+    "a1": {
+      "files": 153,
+      "inventory_sha256": "d7dd495d88522f9a310d4c8ef0575bce27dfa7d91af0e2bce6fb16b9d186f84b",
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a1"
+    },
+    "a2": {
+      "files": 209,
+      "inventory_sha256": "6cffe1879938a7925f9f9bd830b07efc9d59d3af55e684a16184c5e5ce5f4433",
+      "root": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-staged-search-v15-a2"
+    }
+  },
+  "known_replies": 42,
+  "loop_detector_is_a_proven_detection_gap_not_sufficient_explanation_of_loop_origin": true,
+  "native_trials": 0,
+  "production_runtime_changes": false,
+  "raw_artifact_sha256s": {
+    "controls-a3-job.json": "9cf741632947453e08eafb1b03172ee2093e8a5ec2a18ad8f562119924240ce7",
+    "controls-a3/backend.json": "4cea2fb622515e157deaf36f1f6a42ef7f6f36aa495274b5ba9eb6028b37010b",
+    "controls-a3/calls/efficiency-institution-full.completed.json": "c300cfc341d0fb3a4a6970b2fa9f4634cba8a305fb23157a8afda75439db272f",
+    "controls-a3/calls/efficiency-institution-full.started.json": "3cfb57a6a6d73662056e3c8a1008d05e5e18fd31ce46c6dc604025471dda1aea",
+    "controls-a3/calls/efficiency-institution-json.completed.json": "6dda95a27b3adaa110c5fcbc509b61093b02ba482c6886c7f96ba131781834b1",
+    "controls-a3/calls/efficiency-institution-json.started.json": "49791799e6d814e4c4c7afa2a8bab7c735709c3c6c0523a09bf96b56ba5ec944",
+    "controls-a3/calls/efficiency-institution-minimal.completed.json": "fd2f69a765ea40b47120941c204490552869dc24d21f1c465f9021fea287b2e3",
+    "controls-a3/calls/efficiency-institution-minimal.started.json": "046fdd3e6a57b30e10c688ceef248937daa106edd762fdffd220fcb84acbdaa0",
+    "controls-a3/calls/efficiency-isolated-full.completed.json": "e2505e0fc3190c22f24d03702acf0b9a4343515a4f01f7d0cc93fb3ef966d0ab",
+    "controls-a3/calls/efficiency-isolated-full.started.json": "84ac507d6abfdc0cf9504f4e6be32239262730a367f899b25d5879ae7f805bc3",
+    "controls-a3/calls/efficiency-isolated-json.completed.json": "369057cf527ad8f2d1510f5ce8279c1f8efcff7a1e3bd8466ad582c82ec345ef",
+    "controls-a3/calls/efficiency-isolated-json.started.json": "6c714bd938cca0703c9fa497644c4a8289bf281adf04afd2fb443915935ddad0",
+    "controls-a3/calls/efficiency-isolated-minimal.completed.json": "1e2ab2a2812871197ee280c623925af227734fda2d8cc9f3d92705f205c86493",
+    "controls-a3/calls/efficiency-isolated-minimal.started.json": "f720fdf219029464d630b7642c7d571f283b159bd8312ee718dd0af8e7fd6d09",
+    "controls-a3/calls/throughput-institution-full.completed.json": "58424985482a2f345c8cdafd9aaf2996996fad757f7daeb3f9e1e21e73ca6050",
+    "controls-a3/calls/throughput-institution-full.started.json": "3c05b27784fdd5b645311de34a5efd545e687414af21dd71fcb2e3ea0ee5cc06",
+    "controls-a3/calls/throughput-institution-json.completed.json": "46a89fa2f8893b23a558bf673b55f27d03bc20d26a208a3bb6ac52928888fe13",
+    "controls-a3/calls/throughput-institution-json.started.json": "4655029eb26b69115496103cbb8bdd29972d4694669958b462dfa89c2113e2fa",
+    "controls-a3/calls/throughput-institution-minimal.completed.json": "6c612ba6d6332696238a79574159a33a5bfd37b6d154316d8bc741192dec7502",
+    "controls-a3/calls/throughput-institution-minimal.started.json": "ca4b9e45093d5e91be01b518ed9226b9b5dc6f2343b35f6088275b1ed57392c6",
+    "controls-a3/calls/throughput-isolated-full.completed.json": "763f4c97cefd6552951ef662e66fdb43c536ef1a15970fa0fcf097d2935ceec5",
+    "controls-a3/calls/throughput-isolated-full.started.json": "4ecded1634c35634596f8d86121a321f566de62cb0a19a8a51c85bb380cba061",
+    "controls-a3/calls/throughput-isolated-json.completed.json": "f88e116d248a24a6456e69878ffc7af7812a55ed225f582fb65f4136301748fb",
+    "controls-a3/calls/throughput-isolated-json.started.json": "b3b400f5fdd368d56da308ec24aa5a557daae48df24def8e4e0de229c0232571",
+    "controls-a3/calls/throughput-isolated-minimal.completed.json": "32b610020bf3774fca498172b235bc6840092caf6364bdf95966dec6d337bd97",
+    "controls-a3/calls/throughput-isolated-minimal.started.json": "9a4e2dcb80f656495d6000a336a3b5505b3de21e139db2856e7389e98dbe97d0",
+    "controls-a3/plan.json": "488ef68a709b37ade10988ba3eabe4796dfee44cbd95815191b090317d151746",
+    "controls-preflight-tests.xml": "afe8ec14f6d5584002eb130706a9e10711b66b302b193380b49fef76854b2e7b",
+    "diagnosis-final-tests.xml": "323010670407c84c7ef19d8617681bfdba82c05439e921ad1c02f0c656ae7b36",
+    "grammar-metadata/empty-value.completed.json": "e48b581ddd6b8a962f7f83af32881c0da657ce3c0f3e90ae6398a822ddfaa3cf",
+    "grammar-metadata/empty-value.started.json": "54352480b0fa97abfd8787afe7456cd195fd1c60001fe1d540167c5e11fbdd3b",
+    "grammar-metadata/explicit-anyof.completed.json": "92533e186edaf760814d01fc6ec899e6b1fef6f0f8cd34d8c61ff236d42c1b2c",
+    "grammar-metadata/explicit-anyof.started.json": "ed3647bf2c20e67e6edd3ffaa124bda07df4bc0c6c3d4353c90c0eeb959c0302",
+    "grammar-metadata/explicit-string-value.completed.json": "7cd8253b1c1aba99f2899911af745f5c2cf006a896727dc00deceb67c6170d08",
+    "grammar-metadata/explicit-string-value.started.json": "b8777865f5b751b7bdcb8e8abb7b97999eb21c6d62926851f383676703b5aeb2",
+    "grammar-metadata/explicit-type-list.completed.json": "92533e186edaf760814d01fc6ec899e6b1fef6f0f8cd34d8c61ff236d42c1b2c",
+    "grammar-metadata/explicit-type-list.started.json": "8cbd255b48adeee7449aa7b3ab988577c5aaec177feace9fbe687ed259709a56",
+    "grammar-metadata/full-author-schema.completed.json": "aa5f22c3c446c1fbcc9501d1bf02cca1a033cb352d3cc29f6e4531d7fd273799",
+    "grammar-metadata/full-author-schema.started.json": "c4688f89eb9e74eab111fe89b90cfa2dd7776ca6a3a9657f1a2c89caa1ebbe00",
+    "grammar-metadata/plan.json": "0e4f1e06839a4c0ad7ea191e66e969babb1ad84c95fc9e0d28bc7342caf9f04c",
+    "grammar-metadata/props.json": "0ad13200813039bfec89c59e2beaec9ed2eca4534e991a6007010b23c163d5a6",
+    "grammar-metadata/remediation-grammar-plan.json": "9e535e3549e7d27aa89c70a616728400abffab97205db1c7c3196839d7dc568c",
+    "historical-forensics-initial.json": "112aaf399443553edb4dc83e87a391dd78dcdc153a28c34efb89a179551223d6",
+    "paired-a1-single-job.json": "27c6f84880c13e4146dbd73d1f4ef42035d10f64d54b22b28174a2f005cfb17d",
+    "paired-a1/calls/efficiency-baseline.completed.json": "fe9725ac3c4ee503d07de43304f32d6d36e696c0f8a5406c57b4725d4375d098",
+    "paired-a1/calls/efficiency-baseline.started.json": "6137d2a76b553a342fea49b559913aa83bc0b7b69174c7e56d3b1c0fa6e986e0",
+    "paired-a1/calls/efficiency-combined.completed.json": "e50f59a391c09dc66ce2e07360f67e86d076d140d8c664d4bade6c9d9ecc9d19",
+    "paired-a1/calls/efficiency-combined.started.json": "5a92fb7cbb70ef36326af7500632ca785fe84208020f448f95db528dbf980f1f",
+    "paired-a1/calls/efficiency-explicit_objective.completed.json": "ab0688a3cf987264c6b334e442d024b46b2991f96901658249e36aa98b95d502",
+    "paired-a1/calls/efficiency-explicit_objective.started.json": "d8b3f3a4e234344859e8770dd206860cf605a8efd92818084ecd26b40a54e473",
+    "paired-a1/calls/efficiency-interface_control.completed.json": "2e9c124478bda9f003b5632309a36ca87cf3960c2b50407c8a359582c8011024",
+    "paired-a1/calls/efficiency-interface_control.started.json": "e04b042f00ab6edcd45aef733dbb7f4c11d13f9109f38245ab6dbac099d1126a",
+    "paired-a1/calls/efficiency-json_grammar.completed.json": "007e282487bfbda41bcc50c5a670a3f61f86215722f687bc72d7d008bacef367",
+    "paired-a1/calls/efficiency-json_grammar.started.json": "b956f75a7f5fd939074efc3e719a1cefd3e80ebed8c884b79f55796ec6dd1f70",
+    "paired-a1/calls/efficiency-nonconsecutive_notice.completed.json": "eab2610cbf9253655d7ec43335450663f5a4cb6f955d13c5b0e286da0d6c375f",
+    "paired-a1/calls/efficiency-nonconsecutive_notice.started.json": "ba6a4d039fad692715f1d81f568032153c6b3c8ea487dffc84def3efbfddbcda",
+    "paired-a1/calls/efficiency-observation_memory.completed.json": "7aced4f621efd8b78e3da04868f6114ce972c11accab1767ed3104b88d8d356d",
+    "paired-a1/calls/efficiency-observation_memory.started.json": "b568d41f049b270b5caf2acf347e1e45ca0d5ffd9255f60427a0e928dc4aee5e",
+    "paired-a1/calls/efficiency-temperature.completed.json": "7a184d64a5c79e6b889dcc0aa90db00fd9c960d3a4d567f574b37cdf8bc8247b",
+    "paired-a1/calls/efficiency-temperature.started.json": "f3350a19cf2ac1d3592e92850e3566556d524a03a69997217af108c416f57a9f",
+    "paired-a1/calls/efficiency-thinking.completed.json": "91bf8b0553e927ec5cd42fa4ea141be19ea431db7db1eaecd921349eb3f4a6c7",
+    "paired-a1/calls/efficiency-thinking.started.json": "c19508d1fccb302162e70e6987f95246bd48ea275483e4003b163dcbf57ec065",
+    "paired-a1/calls/efficiency-trusted_role.completed.json": "5e0de59fc061a8158e1d2b1cbf11048fd50c3760e5a390d4439ee446e18f206c",
+    "paired-a1/calls/efficiency-trusted_role.started.json": "9e4ea88bbabf014039b4d1d8d18024a58eba18b6af03b55f4f2ec718f1f4b960",
+    "paired-a1/calls/throughput-baseline.completed.json": "d214e5685c13f0cf9cde3782d6d93619350edb4392c049f43904c6d980bb2c4e",
+    "paired-a1/calls/throughput-baseline.started.json": "8bcd4c1647bfcbb78d5f38ef90ceb6835db084578f212a092257715c3b8215b0",
+    "paired-a1/calls/throughput-combined.completed.json": "54cc4947a7c2b29845c2f2a6287faac5e8565253f06b607d3a227175cb6a390d",
+    "paired-a1/calls/throughput-combined.started.json": "cca0138e69d31c1c84785e148ffc1c38356b50dd0c9a79e4525ebf54e2a7a037",
+    "paired-a1/calls/throughput-explicit_objective.completed.json": "f19e82aa1eff1cef462df0fd45dcf8d83d049d6d7cc882ddf0d02fc2cdfc7296",
+    "paired-a1/calls/throughput-explicit_objective.started.json": "256e34460eeffc7fa7a8bcffbfce3d6fb1ae23398efd3dec057b8b7ac3ac33a6",
+    "paired-a1/calls/throughput-interface_control.completed.json": "702f962c6b12d2406bdf324764e7fb104ffdbcb101c81e10aa5e9285126206aa",
+    "paired-a1/calls/throughput-interface_control.started.json": "9b1214c1f1963bb8e84ac50dafeb94040e843b246a118cf215d1bbd5414162b1",
+    "paired-a1/calls/throughput-json_grammar.completed.json": "37f2d556d65e1aefde27eea7494ca06c02ce87eee1df05176810d6f4f8acdb66",
+    "paired-a1/calls/throughput-json_grammar.started.json": "e57e977071d6edfbf67c07b34a6d9e47b0bedad64bd023c587536f5a30047a54",
+    "paired-a1/calls/throughput-nonconsecutive_notice.completed.json": "881df63c266e6b0e881fb60d72b74715ec66b4a6cb58a7ed75f64aec0eb2c18e",
+    "paired-a1/calls/throughput-nonconsecutive_notice.started.json": "f750a0ad118effc8a464c8bb72f453eaf2e36a33d3c4c539139437ec53351207",
+    "paired-a1/calls/throughput-observation_memory.completed.json": "3474d392166f3aef406dab5819e5186b1eeeee0e32a68d66c05fbf8a4c45e8e6",
+    "paired-a1/calls/throughput-observation_memory.started.json": "5f9e330b0e8f6170be1454e4d911d7d65cfce554091ec9388fb981f9fa36b4b8",
+    "paired-a1/calls/throughput-temperature.completed.json": "35d097e96dc235fb1a0176496e36c0f9b2af9f5f9a3012f692d521794859374e",
+    "paired-a1/calls/throughput-temperature.started.json": "ecefdcf934b7cf3716ca5f86060c946421ee6afa3ddf1d1a1dfd849c7395ba67",
+    "paired-a1/calls/throughput-thinking.completed.json": "e050574e0781a61590ddd6752ac25ffd5e4ebbbcc17dfa7efa8c15dc177a5e40",
+    "paired-a1/calls/throughput-thinking.started.json": "a102f8c0144c7ea4bec2778b88db280dfe17d31a5086428e4138e7b0dd80ea43",
+    "paired-a1/calls/throughput-trusted_role.completed.json": "647d385ab20289781015b065080973bb8245a61595e1ff8451b6c73ddf6f99ba",
+    "paired-a1/calls/throughput-trusted_role.started.json": "bfa5dc2e695463e199a1a018ae5c4b5edf2b97084f5e7dd3876e8dd1350c6034",
+    "paired-a1/current-backend.json": "e60b87de1980387812ddfa619d72b4f6abb4cc3e77d4c76238875a507fb79034",
+    "paired-a1/historical-forensics.json": "112aaf399443553edb4dc83e87a391dd78dcdc153a28c34efb89a179551223d6",
+    "paired-a1/plan.json": "f54d304e2808a276f4710bf63117bf3c7ebcfa6d0cf08618b62ef5408d9ac78c",
+    "paired-a1/single-step-summary.json": "26ca541c78a5fabacf4426ff48a068190c4509cfa81ecc83bff599ddeb499770",
+    "preflight-tests.xml": "e3db655d4c95e7bce4053aaa36ea4a74de490d4672a0f2edf834a4b20466167a",
+    "wire-a2-job.json": "927f48f29e5244ac9572e6a22027e352cfa9476c1fd9dd14418c4c3d8740e755",
+    "wire-a2/backend.json": "4cea2fb622515e157deaf36f1f6a42ef7f6f36aa495274b5ba9eb6028b37010b",
+    "wire-a2/calls/efficiency-json_control.completed.json": "331622577bab099587689686544d0a695d81fb335ffbd80ce6409b5ee704546a",
+    "wire-a2/calls/efficiency-json_control.started.json": "8c408b86960e683ba3bef7970d7b62bb987de42d2f3db4e2ec8893547c48e1a7",
+    "wire-a2/calls/efficiency-ordered_baseline.completed.json": "0fa2002c6588d700a4f1e13a271ffb53174e3a352cc847bb69484250671da44e",
+    "wire-a2/calls/efficiency-ordered_baseline.started.json": "a54e191c2053699a33ab1e018d18a9b52391308906587fc7340a76a36350fc43",
+    "wire-a2/calls/efficiency-ordered_combined.completed.json": "d839c2f2cddefa49dcd5601be6b87f248433125fca17f3102a4ab2a04f9baa6c",
+    "wire-a2/calls/efficiency-ordered_combined.started.json": "a07d79c07eb8e8f8652927d476a63cd3de56f1318d13d6ec1c3f0ecb043e6420",
+    "wire-a2/calls/efficiency-ordered_control.completed.json": "373c70d11e7d5099c6a194902f273eb61a8788cf3fa85776bcf18616312ba86c",
+    "wire-a2/calls/efficiency-ordered_control.started.json": "7fe458b1fffc308b5f9c12a6bebe89a0ab540035c9f1e98fcefc6b9e5cda985e",
+    "wire-a2/calls/efficiency-ordered_role.completed.json": "a7c1dbc83977f419cbb0a8672e631d86475c6f4a96d54feefd7acba8279bc9af",
+    "wire-a2/calls/efficiency-ordered_role.started.json": "4189d8840d16bf563557ae2c46c194603518bf5c73a795f4ff5ff6e655013a41",
+    "wire-a2/calls/throughput-json_control.completed.json": "d96d94efb3e489da9a9960d668bbb0f44892792071255e0024f7c2fc4cdc58fc",
+    "wire-a2/calls/throughput-json_control.started.json": "ba32848face8630228ca0b31a8455a078acd0d088e4a37da4c6af7bd3739193c",
+    "wire-a2/calls/throughput-ordered_baseline.completed.json": "e24fb38e3ca01b454e7a7a2efa7df04412e1a968bbd7eeaccc2ae9cf5f595bd7",
+    "wire-a2/calls/throughput-ordered_baseline.started.json": "9d619460727587a521d8e307b74d99e89691358a79ea59616e7c8ff47053dc2a",
+    "wire-a2/calls/throughput-ordered_combined.completed.json": "4d44a44756f7a13c96a9d82a6b89c3b71af135364807d0a2fdd16cec8c75625c",
+    "wire-a2/calls/throughput-ordered_combined.started.json": "a95f9ac8e01c3af704b792c0ff225f84be780fbf5e7a680ba11b498685cb0e33",
+    "wire-a2/calls/throughput-ordered_control.completed.json": "3f10bd548026578456326bb57d7d57ce24621e0a249e4910fcb12b5158d3fb36",
+    "wire-a2/calls/throughput-ordered_control.started.json": "09f2d326a7da8db65175f45552252a76c9033fba52f8165884ca9f7ce2b03041",
+    "wire-a2/calls/throughput-ordered_role.completed.json": "9dbb4d29dd6ebe807d799206f41cd8e893f87e3a6e3c7ac38689b07b03c2eb41",
+    "wire-a2/calls/throughput-ordered_role.started.json": "d6f3dce56f0d53b7306d3518874125f3ddaaf3091c90f20cbacabcbb4432dd09",
+    "wire-a2/plan.json": "4f4e11ddd162adbaa3a59aa0c34ea487312bcab2cb539acd76f5452feee90b9c",
+    "wire-preflight-tests.xml": "9eb03eb14f58070dfe9c7607c7a9685cb4a2dd5fc9499a4e6a5c7af78dda9937"
+  },
+  "recorded_transport_seconds_sum": 277.3109494969249,
+  "rows": [
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting the world.review mechanism parameters to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "fe9725ac3c4ee503d07de43304f32d6d36e696c0f8a5406c57b4725d4375d098",
+      "completion_tokens": 38,
+      "context": null,
+      "elapsed_seconds": 11.761856582947075,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-baseline",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8164,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "baseline"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.selection"
+        },
+        "text": "Inspecting the parameters of the world.selection mechanism to gather more insights for loss minimization.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "e50f59a391c09dc66ce2e07360f67e86d076d140d8c664d4bade6c9d9ecc9d19",
+      "completion_tokens": 43,
+      "context": null,
+      "elapsed_seconds": 12.694710874930024,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-combined",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8817,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "combined"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting the review mechanism parameters to optimize the loss specification.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "ab0688a3cf987264c6b334e442d024b46b2991f96901658249e36aa98b95d502",
+      "completion_tokens": 37,
+      "context": null,
+      "elapsed_seconds": 10.459183665923774,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-explicit_objective",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8219,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "explicit_objective"
+    },
+    {
+      "action": null,
+      "applied_operations": 0,
+      "complete_JSON_object": false,
+      "completion_sha256": "2e9c124478bda9f003b5632309a36ca87cf3960c2b50407c8a359582c8011024",
+      "completion_tokens": null,
+      "context": null,
+      "elapsed_seconds": 12.490626082988456,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-interface_control",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": null,
+      "provider_schema_valid": false,
+      "static_tool_errors": null,
+      "target": "efficiency",
+      "variant": "interface_control"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "007e282487bfbda41bcc50c5a670a3f61f86215722f687bc72d7d008bacef367",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 0.7380285828839988,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "efficiency-json_grammar",
+      "inspect_empty_object": true,
+      "phase": "paired-a1",
+      "prompt_tokens": 8164,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": "json_grammar"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.research"
+        },
+        "text": "Inspecting world.research parameters to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "eab2610cbf9253655d7ec43335450663f5a4cb6f955d13c5b0e286da0d6c375f",
+      "completion_tokens": 38,
+      "context": null,
+      "elapsed_seconds": 1.3553570420481265,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-nonconsecutive_notice",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8397,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "nonconsecutive_notice"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.research"
+        },
+        "text": "Inspecting world.research parameters to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "7aced4f621efd8b78e3da04868f6114ce972c11accab1767ed3104b88d8d356d",
+      "completion_tokens": 38,
+      "context": null,
+      "elapsed_seconds": 1.8902961669955403,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-observation_memory",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8611,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "observation_memory"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting the parameters of the world.review mechanism to proceed with the design.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "7a184d64a5c79e6b889dcc0aa90db00fd9c960d3a4d567f574b37cdf8bc8247b",
+      "completion_tokens": 40,
+      "context": null,
+      "elapsed_seconds": 1.0861500839237124,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-temperature",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8164,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "temperature"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspect review parameters to optimize review records (R) in loss formula",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "91bf8b0553e927ec5cd42fa4ea141be19ea431db7db1eaecd921349eb3f4a6c7",
+      "completion_tokens": 478,
+      "context": null,
+      "elapsed_seconds": 12.639281624928117,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-thinking",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8158,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "thinking"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting the parameters of the world.review mechanism to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "5e0de59fc061a8158e1d2b1cbf11048fd50c3760e5a390d4439ee446e18f206c",
+      "completion_tokens": 40,
+      "context": null,
+      "elapsed_seconds": 10.126001416007057,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-trusted_role",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8081,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "trusted_role"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting the world.review mechanism parameters",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "d214e5685c13f0cf9cde3782d6d93619350edb4392c049f43904c6d980bb2c4e",
+      "completion_tokens": 32,
+      "context": null,
+      "elapsed_seconds": 11.028570499969646,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-baseline",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8089,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "baseline"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.selection"
+        },
+        "text": "Inspecting world.selection parameters to proceed with design optimization.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "54cc4947a7c2b29845c2f2a6287faac5e8565253f06b607d3a227175cb6a390d",
+      "completion_tokens": 36,
+      "context": null,
+      "elapsed_seconds": 12.174961749929935,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-combined",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8742,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "combined"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting world.review parameters to optimize the exact loss specification.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "f19e82aa1eff1cef462df0fd45dcf8d83d049d6d7cc882ddf0d02fc2cdfc7296",
+      "completion_tokens": 37,
+      "context": null,
+      "elapsed_seconds": 11.087274958146736,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-explicit_objective",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8144,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "explicit_objective"
+    },
+    {
+      "action": null,
+      "applied_operations": 0,
+      "complete_JSON_object": false,
+      "completion_sha256": "702f962c6b12d2406bdf324764e7fb104ffdbcb101c81e10aa5e9285126206aa",
+      "completion_tokens": null,
+      "context": null,
+      "elapsed_seconds": 12.270826833089814,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-interface_control",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": null,
+      "provider_schema_valid": false,
+      "static_tool_errors": null,
+      "target": "throughput",
+      "variant": "interface_control"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "37f2d556d65e1aefde27eea7494ca06c02ce87eee1df05176810d6f4f8acdb66",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 0.7396406668704003,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "throughput-json_grammar",
+      "inspect_empty_object": true,
+      "phase": "paired-a1",
+      "prompt_tokens": 8089,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": "json_grammar"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.research"
+        },
+        "text": "Inspecting world.research parameters to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "881df63c266e6b0e881fb60d72b74715ec66b4a6cb58a7ed75f64aec0eb2c18e",
+      "completion_tokens": 38,
+      "context": null,
+      "elapsed_seconds": 1.4274645000696182,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-nonconsecutive_notice",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8322,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "nonconsecutive_notice"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.research"
+        },
+        "text": "Inspecting the research mechanism parameters to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "3474d392166f3aef406dab5819e5186b1eeeee0e32a68d66c05fbf8a4c45e8e6",
+      "completion_tokens": 38,
+      "context": null,
+      "elapsed_seconds": 1.9745040000416338,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-observation_memory",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8536,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "observation_memory"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting world.review parameters to proceed with design.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "35d097e96dc235fb1a0176496e36c0f9b2af9f5f9a3012f692d521794859374e",
+      "completion_tokens": 35,
+      "context": null,
+      "elapsed_seconds": 0.9690321248490363,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-temperature",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8089,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "temperature"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspect review parameters to align with loss spec targeting accepted decisions",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "e050574e0781a61590ddd6752ac25ffd5e4ebbbcc17dfa7efa8c15dc177a5e40",
+      "completion_tokens": 504,
+      "context": null,
+      "elapsed_seconds": 13.674295667093247,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-thinking",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8083,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "thinking"
+    },
+    {
+      "action": {
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "text": "Inspecting the parameters of the world.review mechanism to proceed with design adjustments.",
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "647d385ab20289781015b065080973bb8245a61595e1ff8451b6c73ddf6f99ba",
+      "completion_tokens": 40,
+      "context": null,
+      "elapsed_seconds": 10.902432500151917,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-trusted_role",
+      "inspect_empty_object": null,
+      "phase": "paired-a1",
+      "prompt_tokens": 8006,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for inspect: text",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "throughput",
+      "variant": "trusted_role"
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "replace",
+            "path": "/parameters",
+            "selector": {
+              "mechanism_id": "world.submission"
+            },
+            "value": {
+              "metadata": {
+                "diagnostic_probe": "control"
+              }
+            }
+          }
+        ],
+        "rationale": "Adding /metadata/diagnostic_probe with literal value 'control' to the world.submission mechanism as per the interface control instruction.",
+        "tool": "edit"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "331622577bab099587689686544d0a695d81fb335ffbd80ce6409b5ee704546a",
+      "completion_tokens": 83,
+      "context": null,
+      "elapsed_seconds": 2.1489981249906123,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-json_control",
+      "inspect_empty_object": null,
+      "phase": "wire-a2",
+      "prompt_tokens": 8226,
+      "provider_schema_valid": true,
+      "static_tool_errors": [
+        {
+          "message": "unexpected fields for edit: rationale",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "target": "efficiency",
+      "variant": "json_control"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "0fa2002c6588d700a4f1e13a271ffb53174e3a352cc847bb69484250671da44e",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 9.993210999993607,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "efficiency-ordered_baseline",
+      "inspect_empty_object": true,
+      "phase": "wire-a2",
+      "prompt_tokens": 8164,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": "ordered_baseline"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.selection"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "d839c2f2cddefa49dcd5601be6b87f248433125fca17f3102a4ab2a04f9baa6c",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 10.43199170799926,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "efficiency-ordered_combined",
+      "inspect_empty_object": false,
+      "phase": "wire-a2",
+      "prompt_tokens": 8817,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": "ordered_combined"
+    },
+    {
+      "action": null,
+      "applied_operations": 0,
+      "complete_JSON_object": false,
+      "completion_sha256": "373c70d11e7d5099c6a194902f273eb61a8788cf3fa85776bcf18616312ba86c",
+      "completion_tokens": null,
+      "context": null,
+      "elapsed_seconds": 12.221744999988005,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "efficiency-ordered_control",
+      "inspect_empty_object": null,
+      "phase": "wire-a2",
+      "prompt_tokens": null,
+      "provider_schema_valid": false,
+      "static_tool_errors": null,
+      "target": "efficiency",
+      "variant": "ordered_control"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "a7c1dbc83977f419cbb0a8672e631d86475c6f4a96d54feefd7acba8279bc9af",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 9.731398958014324,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "efficiency-ordered_role",
+      "inspect_empty_object": true,
+      "phase": "wire-a2",
+      "prompt_tokens": 8081,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": "ordered_role"
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "replace",
+            "path": "/parameters",
+            "selector": {
+              "mechanism_id": "world.submission"
+            },
+            "value": {
+              "metadata": {
+                "diagnostic_probe": "control"
+              }
+            }
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "d96d94efb3e489da9a9960d668bbb0f44892792071255e0024f7c2fc4cdc58fc",
+      "completion_tokens": 52,
+      "context": null,
+      "elapsed_seconds": 1.3627314998302609,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "throughput-json_control",
+      "inspect_empty_object": null,
+      "phase": "wire-a2",
+      "prompt_tokens": 8151,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": "json_control"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "e24fb38e3ca01b454e7a7a2efa7df04412e1a968bbd7eeaccc2ae9cf5f595bd7",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 11.080940040992573,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "throughput-ordered_baseline",
+      "inspect_empty_object": true,
+      "phase": "wire-a2",
+      "prompt_tokens": 8089,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": "ordered_baseline"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.selection"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "4d44a44756f7a13c96a9d82a6b89c3b71af135364807d0a2fdd16cec8c75625c",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 11.620785375125706,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "throughput-ordered_combined",
+      "inspect_empty_object": false,
+      "phase": "wire-a2",
+      "prompt_tokens": 8742,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": "ordered_combined"
+    },
+    {
+      "action": null,
+      "applied_operations": 0,
+      "complete_JSON_object": false,
+      "completion_sha256": "3f10bd548026578456326bb57d7d57ce24621e0a249e4910fcb12b5158d3fb36",
+      "completion_tokens": null,
+      "context": null,
+      "elapsed_seconds": 12.628647250123322,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": false,
+      "id": "throughput-ordered_control",
+      "inspect_empty_object": null,
+      "phase": "wire-a2",
+      "prompt_tokens": null,
+      "provider_schema_valid": false,
+      "static_tool_errors": null,
+      "target": "throughput",
+      "variant": "ordered_control"
+    },
+    {
+      "action": {
+        "path": "/parameters",
+        "selector": {
+          "mechanism_id": "world.review"
+        },
+        "tool": "inspect"
+      },
+      "applied_operations": 0,
+      "complete_JSON_object": true,
+      "completion_sha256": "9dbb4d29dd6ebe807d799206f41cd8e893f87e3a6e3c7ac38689b07b03c2eb41",
+      "completion_tokens": 26,
+      "context": null,
+      "elapsed_seconds": 10.955906416988,
+      "exact_control_pass": null,
+      "grammar": null,
+      "historical_tool_valid": true,
+      "id": "throughput-ordered_role",
+      "inspect_empty_object": true,
+      "phase": "wire-a2",
+      "prompt_tokens": 8006,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": "ordered_role"
+    },
+    {
+      "action": null,
+      "applied_operations": 0,
+      "complete_JSON_object": false,
+      "completion_sha256": "c300cfc341d0fb3a4a6970b2fa9f4634cba8a305fb23157a8afda75439db272f",
+      "completion_tokens": null,
+      "context": "institution",
+      "elapsed_seconds": 12.014983707806095,
+      "exact_control_pass": false,
+      "grammar": "full",
+      "historical_tool_valid": false,
+      "id": "efficiency-institution-full",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": null,
+      "provider_schema_valid": false,
+      "static_tool_errors": null,
+      "target": "efficiency",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "6dda95a27b3adaa110c5fcbc509b61093b02ba482c6886c7f96ba131781834b1",
+      "completion_tokens": 33,
+      "context": "institution",
+      "elapsed_seconds": 0.8687103330157697,
+      "exact_control_pass": true,
+      "grammar": "json",
+      "historical_tool_valid": true,
+      "id": "efficiency-institution-json",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 8285,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "fd2f69a765ea40b47120941c204490552869dc24d21f1c465f9021fea287b2e3",
+      "completion_tokens": 33,
+      "context": "institution",
+      "elapsed_seconds": 0.8448832910507917,
+      "exact_control_pass": true,
+      "grammar": "minimal",
+      "historical_tool_valid": true,
+      "id": "efficiency-institution-minimal",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 8285,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": {
+              "control": "string"
+            }
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "e2505e0fc3190c22f24d03702acf0b9a4343515a4f01f7d0cc93fb3ef966d0ab",
+      "completion_tokens": 53,
+      "context": "isolated",
+      "elapsed_seconds": 1.531332875136286,
+      "exact_control_pass": false,
+      "grammar": "full",
+      "historical_tool_valid": true,
+      "id": "efficiency-isolated-full",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 149,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "369057cf527ad8f2d1510f5ce8279c1f8efcff7a1e3bd8466ad582c82ec345ef",
+      "completion_tokens": 46,
+      "context": "isolated",
+      "elapsed_seconds": 0.996250499971211,
+      "exact_control_pass": true,
+      "grammar": "json",
+      "historical_tool_valid": true,
+      "id": "efficiency-isolated-json",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 149,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "1e2ab2a2812871197ee280c623925af227734fda2d8cc9f3d92705f205c86493",
+      "completion_tokens": 46,
+      "context": "isolated",
+      "elapsed_seconds": 1.0091737920884043,
+      "exact_control_pass": true,
+      "grammar": "minimal",
+      "historical_tool_valid": true,
+      "id": "efficiency-isolated-minimal",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 149,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "efficiency",
+      "variant": null
+    },
+    {
+      "action": null,
+      "applied_operations": 0,
+      "complete_JSON_object": false,
+      "completion_sha256": "58424985482a2f345c8cdafd9aaf2996996fad757f7daeb3f9e1e21e73ca6050",
+      "completion_tokens": null,
+      "context": "institution",
+      "elapsed_seconds": 11.47866158396937,
+      "exact_control_pass": false,
+      "grammar": "full",
+      "historical_tool_valid": false,
+      "id": "throughput-institution-full",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": null,
+      "provider_schema_valid": false,
+      "static_tool_errors": null,
+      "target": "throughput",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "46a89fa2f8893b23a558bf673b55f27d03bc20d26a208a3bb6ac52928888fe13",
+      "completion_tokens": 33,
+      "context": "institution",
+      "elapsed_seconds": 0.8662068748380989,
+      "exact_control_pass": true,
+      "grammar": "json",
+      "historical_tool_valid": true,
+      "id": "throughput-institution-json",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 8210,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "6c612ba6d6332696238a79574159a33a5bfd37b6d154316d8bc741192dec7502",
+      "completion_tokens": 33,
+      "context": "institution",
+      "elapsed_seconds": 0.8540005830582231,
+      "exact_control_pass": true,
+      "grammar": "minimal",
+      "historical_tool_valid": true,
+      "id": "throughput-institution-minimal",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 8210,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": {
+              "control": "string"
+            }
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "763f4c97cefd6552951ef662e66fdb43c536ef1a15970fa0fcf097d2935ceec5",
+      "completion_tokens": 53,
+      "context": "isolated",
+      "elapsed_seconds": 1.2960780831053853,
+      "exact_control_pass": false,
+      "grammar": "full",
+      "historical_tool_valid": true,
+      "id": "throughput-isolated-full",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 149,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "f88e116d248a24a6456e69878ffc7af7812a55ed225f582fb65f4136301748fb",
+      "completion_tokens": 46,
+      "context": "isolated",
+      "elapsed_seconds": 0.9457448329776525,
+      "exact_control_pass": true,
+      "grammar": "json",
+      "historical_tool_valid": true,
+      "id": "throughput-isolated-json",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 149,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": null
+    },
+    {
+      "action": {
+        "operations": [
+          {
+            "op": "add",
+            "path": "/metadata/diagnostic_probe",
+            "value": "control"
+          }
+        ],
+        "tool": "edit"
+      },
+      "applied_operations": 1,
+      "complete_JSON_object": true,
+      "completion_sha256": "32b610020bf3774fca498172b235bc6840092caf6364bdf95966dec6d337bd97",
+      "completion_tokens": 46,
+      "context": "isolated",
+      "elapsed_seconds": 0.9380720420740545,
+      "exact_control_pass": true,
+      "grammar": "minimal",
+      "historical_tool_valid": true,
+      "id": "throughput-isolated-minimal",
+      "inspect_empty_object": null,
+      "phase": "controls-a3",
+      "prompt_tokens": 149,
+      "provider_schema_valid": true,
+      "static_tool_errors": [],
+      "target": "throughput",
+      "variant": null
+    }
+  ],
+  "schema": "scienceutopia.staged-designer-causal-diagnosis.v15",
+  "schema_order_comparisons": [
+    {
+      "ordered_baseline_matches_historical_action": true,
+      "schema_key_order_only_changed": true,
+      "semantic_payloads_equal": true,
+      "target": "efficiency"
+    },
+    {
+      "ordered_baseline_matches_historical_action": true,
+      "schema_key_order_only_changed": true,
+      "semantic_payloads_equal": true,
+      "target": "throughput"
+    }
+  ],
+  "sole_cause_of_historical_inspection_choice_identified": false,
+  "token_accounting": {
+    "eval_count_known_sum": 2277,
+    "eval_count_unknown_replies": 6,
+    "prompt_eval_count_known_sum": 249035,
+    "prompt_eval_count_unknown_replies": 6
+  },
+  "unknown_intents": 0,
+  "upstream_reference": "https://github.com/ggml-org/llama.cpp/blob/b10760/common/json-schema-to-grammar.cpp#L1018",
+  "upstream_reference_is_not_substituted_for_observed_local_grammar": true,
+  "zero_token_grammar_queries": 5
+}
