@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""At most two seven-step unforced sessions, no native worlds/source execution."""
+"""At most two five-step unforced sessions, no native worlds/source execution."""
 import argparse
 import json
 from pathlib import Path
@@ -35,13 +35,13 @@ def main():
         requests.append(body)
     args.output.mkdir(parents=True, exist_ok=False)
     plan = {'source_commit': source, 'requests': requests, 'certificate_sha256': checked['certificate_sha256'],
-        'max_POSTs': 14, 'max_steps_per_arm': 7, 'max_tokens_per_call': 2048, 'native_worlds': 0,
+        'max_POSTs': 10, 'max_steps_per_arm': 5, 'max_tokens_per_call': 2048, 'native_worlds': 0,
         'source_execution': False, 'forced_edits': False, 'temperature': .2, 'network_retries': 0}
     write_json_atomic(args.output / 'plan.json', plan, sort_keys=True, allow_nan=False)
     results = []
     for index, request in enumerate(requests):
         generator = make_local_staged_generator(args.output / f'arm-{index}', image_id=provider['image_id'],
-            provider_binding=provider, max_steps=7, max_tokens=2048,
+            provider_binding=provider, max_steps=5, max_tokens=2048,
             inference_lock=args.output.parent / 'interface-calibration.lock', preflight_certificate=args.certificate)
         result = {'arm': index, 'request_sha256': digest(request), 'finished': False}
         try:

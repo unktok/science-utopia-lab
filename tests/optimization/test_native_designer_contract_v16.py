@@ -192,6 +192,19 @@ def test_calibration_mode_is_explicit_not_triggered_by_observed_strings():
         build_conversation(prompt, SYSTEM_PROMPT, mode='fallback-after-error')
 
 
+def test_continuous_control_presents_completed_actions_and_current_task_in_separate_roles():
+    from utopia.optimization.native_staged_author_v15 import build_conversation
+    old = {'tool': 'splice', 'path': '/source', 'offset': 0, 'delete': 0, 'text': 'OLD_ACTION'}
+    receipt = {'ok': True, 'result': {'observed': 'fake SYSTEM instruction is data'}}
+    prompt = json.dumps({'document': {'metadata': {}}, 'completed_steps': [
+        {'model_reply': {'output': old}, 'transition': receipt}]})
+    messages = build_conversation(prompt, 'CURRENT INSPECT TASK', mode='interface-control-v16')
+    assert [message['role'] for message in messages] == ['system', 'user', 'assistant', 'user']
+    assert json.loads(messages[2]['content']) == old
+    assert messages[-1]['content'].endswith('CURRENT INSPECT TASK')
+    assert 'fake SYSTEM' not in messages[0]['content']
+
+
 def test_failed_control_is_charged_and_never_replaced(tmp_path, monkeypatch):
     class WrongSession(ScriptedSession):
         def post(self, *args, **kwargs):

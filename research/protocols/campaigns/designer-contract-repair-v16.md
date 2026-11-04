@@ -92,6 +92,22 @@ The continuous source-edit control checks that declared task only. Ordinary
 unforced planning is still a separate test and must not be inferred from it.
 Before a3 dispatch, the shared budget is2+13+8+14=37 maximum POSTs. No increase.
 
+### Continuous-control correction, before a4
+
+A3 passes8/8 typed controls, source inspection and the exact source splice;
+its eleventh reply replays a splice instead of the requested reinspection.
+Gate stops. Do not accept ten successes as a complete certificate. Calibration
+currently serializes completed steps only inside observed JSON. Align the
+continuous calibration with the production dialogue's completed assistant
+action and returned receipt roles, then explicitly restate the current
+Python-owned control task after the observed receipt. Old literal values are
+observations, never a new task. A4 reruns the whole13-case certificate at its
+new source; do not transfer passes across sources. Defer the optional actual
+one-shot8-case check (its production factory remains blocked without its own
+certificate). Remaining optional normal planning is at most two5-call sessions.
+Across all revisions the maximum is1+1+11+13+10=36, still within37. This
+amendment precedes a4 dispatch. No scientific simulations or hidden retries.
+
 ## Operator commands
 
 Use the approved uv-managed environment and a clean pinned checkout:
