@@ -6,6 +6,10 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V18 conditional code ABI feedback on the archived failure and actual SYSTEM role coverage](results/native-contract-notices-v18.md)
+- [V18 zero-inference archived candidate and wire-role diagnostic record](results/native-contract-notices-v18.json)
+- [V18 prospective zero-inference protocol](protocols/campaigns/native-contract-notices-v18.md)
+- [V18 forward-only diagnostic and implementation log](logbook/2026-11-04-native-contract-notices-v18.md)
 - [V17 full milestone inventory: verified repairs, closed finite failures and remaining designer choice](milestones/2026-11-04-post-repair-native-feedback-v17.md)
 - [V17 source-scoped full tests, calibration, physical spend and unmet-goal receipt](results/native-closed-loop-v17-verification.json)
 - [V17 a3 closed address-feedback trial and persistent autonomous design failures](results/native-closed-loop-v17-a3.md)

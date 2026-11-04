@@ -24,8 +24,9 @@ unions permitting objects do not trigger the notice. Warnings retain exact
 paths and authored types; no schema, path, code or objective is repaired.
 
 Surface a bounded notice summary during static validation and in the draft
-index. Keep validity, candidate eligibility and the exact compiled definition
-unchanged. The source change invalidates old runtime-bound certificates as
+index. Keep validity, candidate eligibility and the authored candidate system
+unchanged; runtime provenance hashes necessarily identify the new source.
+The source change invalidates old runtime-bound certificates as
 usual; no new production call may reuse those certificates.
 
 From a clean, committed analysis checkout, use the existing source-matched a2

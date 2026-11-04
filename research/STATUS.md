@@ -2,6 +2,23 @@
 
 Updated: 2026-11-04
 
+## V18 offline contract feedback without additional inference
+
+The [new diagnostic](results/native-contract-notices-v18.md) adds conditional
+notices for code schemas whose explicit payload/state types exclude objects.
+Warnings change neither candidate eligibility nor authored values; empty record
+lists remain legal. It detects the archived a2 input-schema failure while the
+retained parent has no notice. Two analyses agree and preserve all 141 raw files.
+Actual wire inspection also confirms that all 47 a2 designer POSTs already put
+the protocol, ABI and objective directive in SYSTEM, rejecting that missing-role
+hypothesis for the run.
+
+At `b31cf74`, 206 focused SCRIPTED checks pass. No new model call, scientific
+world, source execution or full-suite/native-success claim is added. The changed
+runtime rejects old certificates; fresh calibration is required before future
+production. The full two-objective feedback goal remains unmet. The separate
+external-Codex designer choice is unanswered; it has not been assumed or launched.
+
 ## V17 finite trials closed; the two-objective feedback goal remains unmet
 
 The [milestone inventory](milestones/2026-11-04-post-repair-native-feedback-v17.md)
