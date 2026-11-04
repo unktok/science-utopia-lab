@@ -47,9 +47,16 @@ host-authored policy repair.
 A separate [a3 continuation](protocols/campaigns/native-staged-closed-loop-v17-a3.md)
 prepares exact reusable inspection addresses and explicit local/global scope,
 without repairing a target or altering institutional freedom. Its207 focused
-prelaunch checks pass at frozen`c068c81`; its full suite is running. After A2
+prelaunch checks pass at frozen`c068c81`; its full suite passes2532 with6 skips
+in1146.69s. After A2
 exits, its fresh13-control calibration passes and cold-verifies. Its separate
 four-slot/64-call production pilot starts05:07:37Z; outcomes remain open.
+Its throughput G0/G1 each exhaust16 calls without a valid finish or native
+world. Reviewed-production G0 explicitly retains the parent, finishes in5
+calls and is undergoing native evaluation. No two-arm operational completion
+or useful invention is claimed. A nonblocking user choice about a separate
+Codex-designer track has been requested; researcher Qwen weights remain fixed,
+and no alternate-provider track has been launched without that answer.
 The source-bound calibration now covers stable-ID/local-path inspect/splice
 and selector-free absolute reinspection. All prior failures remain charged.
 Follow the [execution log](logbook/2026-11-04-native-closed-loop-v17.md).

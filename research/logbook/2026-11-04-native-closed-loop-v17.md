@@ -197,3 +197,24 @@ The certificate cold-replays successfully. The separate A3 writer starts
 Its exact argv/environment are in`outputs/native-closed-loop-v17-a3/writer.started.json`.
 Do not infer autonomous planning from instructed address controls or static
 validity. Keep the new writer's four slots/64-call bounds and original losses.
+
+A3's exact frozen-source full SCRIPTED suite passes2532 with6 skips in1146.69s,
+JUnit`outputs/native-closed-loop-v17-verification/a3-full.xml`, file SHA256
+`a71ef9e7a133cc1675eefa606913c4fb1f948a749052c354ad72470827dc3c47`.
+No focused scope is added to this total. The actual authoring outcome differs:
+both throughput generations exhaust16 calls without a valid finish or world.
+G0 declares factors without matching logits and tries schema-valued numeric
+coordinates. G1 can add an extra `parameters/state_schema` field, but later
+configures choices targeting nonexistent fields on another mechanism. Its
+intermediate valid edit is not submitted or executed as a scientific world.
+Reusable addresses and scope notices are present in the actual receipts;
+their presence is not proof that the model follows them. Do not conclude an
+in-principle8B capacity limit or success of the engineering intervention.
+
+A3 E-G0 explicitly retains the parent in5 calls and starts its original-world
+evaluation. Its loss and E-G1 outcome are not yet known. Continue the original
+remaining two slots. Ask the user nonblockingly whether to additionally use
+the current Codex as external institutional designer while keeping the native
+researchers at Qwen3-8B. This would be a separately labelled condition, not
+a replacement of failures or a new paid API configuration. No answer has been
+received and no alternate-provider authoring track/request has been launched.
