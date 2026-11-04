@@ -54,3 +54,20 @@ replaces selection code with byte-identical source, reinspects and finishes in
 four calls. Its original-world evaluation starts. This is legal exact retention,
 not an invented algorithm, improvement, or proof of loss minimization. No slot
 is refunded and no new candidate is supplied by the host.
+
+The exact frozen-source full SCRIPTED suite passes2559 tests with6 skips in
+1191.39s, JUnit`outputs/native-concrete-closed-loop-v19-verification/full-6b53841.xml`.
+Do not add overlapping focused counts or infer actual planning from a test pass.
+Throughput G0 completes at-1; the exact own loss reaches G1. G1 attempts three
+edits with an extra top-level `provenance` field; each is rejected without draft
+repair/change. It explicitly finishes its unchanged parent on call8, before
+last-call guidance is active. The second native world also completes at-1.
+This arm's two-generation native feedback works, without a useful invention.
+
+Read-only ABI inspection finds no instruction to add top-level edit provenance;
+do not attribute that output to a proven contradictory envelope requirement.
+One separate documentation caveat remains: the excerpt describes one-shot
+omitted-logit zero defaults, whereas staged state always persists a logits
+mapping. No change to that unused path is made in this active experiment.
+Reviewed-production G0 explicitly finishes after4 calls and starts its native
+evaluation. Keep the remaining two slots and the current source unchanged.

@@ -16,8 +16,11 @@ and cold replay. Conditional on passing, the separate budget is four native
 slots / 64 author POSTs, 16 calls per generation. At frozen `6b53841`, all 13
 actual controls pass and cold-replay; the writer starts 06:23:30Z. Throughput
 G0 explicitly finishes in four calls after an identical source replacement,
-and its first original-world evaluation is in progress. No loss, improvement
-or changed institution is inferred yet. The full regression suite is running.
+and measures -1. Throughput G1 receives that exact loss, explicitly finishes
+the retained parent after three rejected extra-field edits, and completes its
+second world at -1. Reviewed-production G0 finishes in four calls and its
+native evaluation is in progress. No changed institution or improvement is
+shown. The exact source's full regression passes 2559 tests with six skips.
 The unanswered external-Codex choice is not assumed; both roles stay Qwen3-8B.
 Prior failures remain charged and are not pooled into a controlled comparison.
 
