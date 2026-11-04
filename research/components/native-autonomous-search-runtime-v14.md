@@ -85,6 +85,10 @@ response bodies and source text are never included. Filename-only checkpoint
 progress never marks a trial or search complete; durable native observations
 and final independent audits retain that responsibility.
 
+Prospective V16: obtain a [real-backend interface certificate](../../docs/designer-preflight.md)
+and supply `--designer-preflight <certificate.json>` to both server and worker.
+This is now required for search-enabled startup and production author helpers;
+the historical V14 evidence remains unchanged at its pinned source.
 Launch the existing server with `--search-config <operator JSON>` to opt in.
 Launch a separate worker with `--search-worker-once --search-config <same JSON>
 --data-cache <operator cache>`, sharing `--queue <directory>` with the server.

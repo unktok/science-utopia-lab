@@ -6,6 +6,12 @@ interesting run does not retroactively define a valid protocol.
 
 ## Before execution
 
+For model-authored searches, first pass the [finite real-backend interface
+preflight](designer-preflight.md) at the current runtime/model/backend binding.
+Supply its operator-owned certificate to server and worker/campaign entrypoints.
+This is technical readiness, not a scientific-merit constraint. Missing,
+incomplete, failed, stale or mismatched evidence must block expensive dispatch.
+
 1. Define the mutable `SystemSpec` subspace.
 2. Freeze a versioned `LossSpec` for optimization seeds.
 3. Define technical `ValiditySpec` checks.

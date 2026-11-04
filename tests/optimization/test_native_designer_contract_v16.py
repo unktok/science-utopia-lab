@@ -42,6 +42,19 @@ def test_sender_schema_and_receiver_both_reject_incomplete_or_cross_tool_fields(
     assert not receipt['ok'] and state == old
 
 
+def test_matched_tool_schema_reports_the_field_cause_not_the_entire_large_action():
+    action = {'tool': 'configure', 'factors': [{'id': 'factor', 'kind': 'categorical',
+        'choices': [{'id': str(index), 'operations': [], 'provenance': {'data': 'x' * 2000}}
+            for index in range(2)], 'logits': [0., 0.]}]}
+    assert list(Draft202012Validator(ACTION_SCHEMA).iter_errors(action))
+    old = initial_draft(request())
+    state, receipt = transition(old, action, request(), binding_sha256='d' * 64, provider_binding=BINDING)
+    message = receipt['errors'][0]['message']
+    assert not receipt['ok'] and state == old
+    assert '$.factors[0]' in message and 'logits' in message and 'unexpected' in message
+    assert len(message) < 200 and 'x' * 20 not in message
+
+
 def test_alternating_alias_reads_share_memory_warn_and_real_change_resets_freshness():
     body = request(); state = initial_draft(body); steps = []
     for action in [{'tool': 'inspect', 'path': '/mechanisms/0/parameters'},

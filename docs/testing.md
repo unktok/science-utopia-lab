@@ -1,5 +1,20 @@
 # Testing
 
+## Designer interface recurrence prevention — V16
+
+Run `tests/optimization/test_native_designer_contract_v16.py` alongside staged
+author/compiler/transport/audit tests. It covers exact JSON types (including
+Unicode, null, booleans and integers above2^53), per-tool sender/receiver
+agreement, alternating/alias reads, bounded/stale memory, and fail-closed
+certificate replay/tampering/expiry/source/backend/model checks.
+
+These are SCRIPTED tests, not actual Qwen evidence. Before an expensive
+model-authored campaign, also follow the [real-backend preflight](designer-preflight.md).
+A unit pass, one completed JSON reply or a static compilation does not establish
+multi-turn authoring reliability. Keep literal controls, unforced planning and
+scientific-world effects as separate evidence levels. Retain unsuccessful
+preflights and exact wire bytes; never call interrupted suites full passes.
+
 ## Active v8 verification — 2026-11-02
 
 Clean live source425ec10 full Python suite:1509 passed/6skipped,602.55s.

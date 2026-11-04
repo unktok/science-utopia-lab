@@ -108,6 +108,26 @@ certificate). Remaining optional normal planning is at most two5-call sessions.
 Across all revisions the maximum is1+1+11+13+10=36, still within37. This
 amendment precedes a4 dispatch. No scientific simulations or hidden retries.
 
+### Final diagnostic-quality fix, before a5 certification
+
+A4 passes13/13 controls. Normal unforced planning exposes a generic error-
+feedback defect: root `oneOf` rejection echoes a huge action, hiding the actual
+misplaced `logits` inside a factor. Match the tool's discriminator against the
+same authoritative schema registry before formatting field-level errors. Legal
+actions/acceptance are unchanged; no repair or scientific-merit filter is added.
+Also fix the new optional probe wrapper: a returned `generation_failure` object
+is a dictionary but not a finished candidate. Preserve a4's original wrapper
+results and classify from original terminal journals, not its optimistic flag.
+Add regressions for both. Do not relabel any a4 planning failure successful.
+
+Changing diagnostic runtime source invalidates the certificate deliberately.
+Declare one additional finite13-control a5 calibration at a new clean pin,
+before dispatch; no more unforced planning or worlds. This raises the total
+technical verification bound from37 to49 (36 already reserved +13), rather
+than hiding a retry or reusing a source-mismatched certificate. Reason: a newly
+observed generic software feedback bug, not an attempt to force scientific
+invention. Failed earlier counts and all output budgets remain unchanged.
+
 ## Operator commands
 
 Use the approved uv-managed environment and a clean pinned checkout:

@@ -2,6 +2,29 @@
 
 Updated: 2026-11-04
 
+## V16 designer interface repair and fail-closed launch gate
+
+The diagnosed edit-language restriction is repaired prospectively: explicit
+all-JSON operand types and JSON-mode transport, strict shared per-tool host
+contracts, exact POST UTF-8 archive, bounded observed read memory and semantic
+nonconsecutive revisit notices. The search entrypoints now require a current
+source/model/backend/image-bound actual interface certificate, cold-replayed
+before every production designer POST. This is technical readiness, not a new
+novelty, fairness or scientific-merit gate.
+
+At clean source `3135c35`, actual Qwen3-8B passes all13 instructed controls:
+eight exact operand types and continuous real-source inspect → splice →
+reinspect → static validate → explicit finish. Three earlier failed revisions
+remain separately archived (1+1+11 replies); none is refunded or relabelled.
+The new certificate does not prove autonomous planning, useful invention or
+scientific improvement. Two normal objective-arm planning checks and final
+source-specific software verification are being recorded separately. No new
+scientific worlds or generated-source execution are dispatched by this check.
+
+See [operator instructions](../docs/designer-preflight.md), the
+[prospective finite protocol and amendments](protocols/campaigns/designer-contract-repair-v16.md)
+and [forward-only log](logbook/2026-11-04-designer-contract-repair-v16.md).
+
 ## Staged designer diagnosis finds a real generation language defect
 
 The [root-cause investigation](results/staged-designer-diagnosis-v15.md)
@@ -19,9 +42,10 @@ historical empty read; bundled memory/goal/progress/role changes reach actual
 code-bearing parameters in two one-step probes, not a finished new institution.
 Schema-order-sensitive replay is discovered and preserved separately. The
 [cold audit](results/staged-designer-diagnosis-v15.json) repeats byte-identically;
-153 a1 and209 a2 raw files remain unchanged. Production/main and the paper are
-not changed by this diagnosis; the defect is documented, not yet repaired.
-See the new prospective diagnostic protocols and local diagnosis branch.
+153 a1 and209 a2 raw files remain unchanged. At the diagnosis-only boundary,
+production/main and the paper were unchanged and the defect was not yet
+repaired. The subsequent V16 repair is tracked above; historical diagnosis
+and native evidence retain their own source scopes.
 
 ## V15 actual operational loop achieved; reviewed publication
 

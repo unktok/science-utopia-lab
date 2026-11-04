@@ -1,5 +1,13 @@
 # Durable staged tool authoring v15
 
+Prospective V16 correction: both local designer transports now explicitly use
+JSON mode with strict host validation, and production helpers require a current
+real-backend interface certificate. Per-tool schemas, explicit any-JSON operand
+types, literal read memory and nonconsecutive revisit detection are shared by
+sender/interpreter. This changes future source bindings, never frozen V15
+results. See [operator guidance](../../docs/designer-preflight.md). The historical
+description below retains its original implementation scope.
+
 This is an opt-in engineering extension of the original-world institution
 designer, not a new numerical research world or a finite menu of institutions.
 The v14 one-shot adapter, factory default, request API and historical journals

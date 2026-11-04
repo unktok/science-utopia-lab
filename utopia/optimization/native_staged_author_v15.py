@@ -308,9 +308,17 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
             if set(action) - allowed:
                 raise ValueError('unexpected fields for ' + action['tool'] + ': '
                     + ','.join(sorted(set(action) - allowed)))
-        problems = list(Draft202012Validator(ACTION_SCHEMA).iter_errors(action))
+        # Select the declared discriminated branch before collecting errors.
+        # Validating only the root oneOf reports the entire giant action and
+        # truncates away the useful field-level cause (e.g. misplaced logits).
+        # Both schemas are generated from the SAME TOOL_FIELDS/ACTION_FIELDS.
+        schema = ({**_tool_schema(action['tool'], *TOOL_FIELDS[action['tool']]), '$defs': ACTION_FIELDS}
+            if isinstance(action, dict) and action.get('tool') in TOOL_FIELDS else ACTION_SCHEMA)
+        problems = list(Draft202012Validator(schema).iter_errors(action))
         if problems:
-            raise ValueError('tool schema: ' + problems[0].json_path + ': ' + problems[0].message)
+            from jsonschema.exceptions import best_match
+            problem = best_match(problems)
+            raise ValueError('tool schema: ' + problem.json_path + ': ' + problem.message)
         tool = action['tool']
         if tool in {'inspect', 'splice'}:
             if 'path' not in action:

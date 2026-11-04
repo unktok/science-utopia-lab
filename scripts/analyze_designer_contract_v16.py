@@ -18,8 +18,8 @@ def sha(path):
 
 
 def analyze(root):
-    rows, assets, certificates = [], {}, []
-    for name in ('staged-a1', 'staged-a2', 'staged-a3', 'staged-a4'):
+    rows, assets, certificates, planning_results = [], {}, [], []
+    for name in ('staged-a1', 'staged-a2', 'staged-a3', 'staged-a4', 'staged-a5'):
         directory = root / name
         if not directory.exists():
             continue
@@ -47,6 +47,20 @@ def analyze(root):
     planning = root / 'planning-a4'
     if planning.exists():
         plan = _strict_json((planning / 'plan.json').read_text())
+        wrapper = _strict_json((planning / 'results.json').read_text())
+        for terminal in sorted(planning.glob('arm-*/generation-*/response.json')):
+            value = _strict_json(terminal.read_text())
+            if value['content_sha256'] != digest({key: item for key, item in value.items() if key != 'content_sha256'}):
+                raise ValueError('planning terminal hash differs')
+            index = int(terminal.parent.parent.name.removeprefix('arm-'))
+            reported = next(item for item in wrapper if item['arm'] == index)
+            valid_finish = value['status'] == 'generated' and 'generation_failure' not in value['definition']
+            planning_results.append({'arm': index, 'source_commit': plan['source_commit'],
+                'request_sha256': value['request_sha256'], 'terminal_status': value['status'],
+                'valid_explicit_finish': valid_finish, 'terminal_sha256': value['content_sha256'],
+                'original_probe_wrapper_finished_flag': reported['finished'],
+                'wrapper_flag_matches_terminal': reported['finished'] == valid_finish,
+                'authoritative_status_source': 'original hashed generation terminal, not probe wrapper'})
         for path in sorted(planning.glob('arm-*/generation-*/step-*.completed.json')):
             step = _strict_json(path.read_text())
             rows.append(_row(str(path.relative_to(root)), step['model_reply']['transport'],
@@ -57,7 +71,7 @@ def analyze(root):
             raise ValueError('unknown/out-of-budget planning dispatch')
         for path in sorted(planning.rglob('*.json')):
             assets[str(path.relative_to(root))] = sha(path)
-    if len(rows) > 37:
+    if len(rows) > 49:
         raise ValueError('declared repair verification budget exceeded')
     sums = {}
     for field in ('prompt_tokens', 'completion_tokens', 'elapsed_seconds'):
@@ -74,7 +88,8 @@ def analyze(root):
             raise ValueError('historical native evidence changed')
         historical[name] = {'files': len(actual), 'inventory_sha256': digest(actual), 'unchanged': True}
     result = {'schema': 'scienceutopia.designer-contract-verification-summary.v16',
-        'certificates': certificates, 'actual_POSTs': len(rows), 'maximum_POSTs': 37,
+        'certificates': certificates, 'planning_results': planning_results,
+        'actual_POSTs': len(rows), 'maximum_POSTs': 49,
         'native_worlds': 0, 'generated_source_executions': 0, 'rows': rows, 'costs': sums,
         'evidence_inventory': assets, 'historical_native_inventories': historical,
         'scope': 'literal transport evidence/accounting; planning and invention claims require separate interpretation'}

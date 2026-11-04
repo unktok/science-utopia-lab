@@ -6,6 +6,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V16 actual-backend designer readiness, production gate and renewal](../docs/designer-preflight.md)
+- [V16 prospective finite repair verification and retained failures](protocols/campaigns/designer-contract-repair-v16.md)
+- [V16 forward-only implementation and actual-check log](logbook/2026-11-04-designer-contract-repair-v16.md)
 - [Why the local staged designer looped and the real generation grammar blocked legal edits](results/staged-designer-diagnosis-v15.md)
 - [Read-only causal diagnosis audit and42-response control evidence](results/staged-designer-diagnosis-v15.json)
 - [V15 source-scoped software checks, audited actual feedback and65-page PDF/artifact verification](results/native-staged-search-v15-verification.json)

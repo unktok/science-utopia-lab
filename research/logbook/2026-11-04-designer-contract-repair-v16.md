@@ -50,3 +50,25 @@ the explicit calibration mode and restate only the Python-owned current task.
 131 related checks pass before the next pin. Defer optional actual one-shot
 verification; its own production gate remains closed. Cap optional normal
 planning at two5-call sessions, keeping total at most36 against the original37.
+
+`3135c35`:a4 passes13/13 actual controls, certificate SHA256
+`04e1afb0f7da534a00385f4dac457409e670d48b13ac9c6216644535ff2e7f7d`.
+Normal author mode then uses5+5 calls. Both original terminal journals say
+`generation-failed`; neither produces a usable definition. They progress to
+configure rather than repeating only empty reads, but invent unverified
+participation-state fields, omit factor logits and fail final compilation.
+Do not call this useful invention. The optional probe wrapper wrongly marks
+returned failure dictionaries `finished:true`; keep that original bug's output
+and override no raw file. Derive interpreted status from original hashed
+terminals instead. Add wrapper-failure regression checks and repair prospectively.
+
+Normal planning also exposes giant root-oneOf diagnostics that hide the actual
+misplaced factor-level `logits`. Select the same declared tool branch before
+formatting errors; preserve acceptance and candidate freedom.191 related tests
+pass, followed by50 focused contract/probe tests (overlapping scopes, not added).
+Declare one additional13-case a5 recertification at a new clean pin because
+runtime diagnostics changed; total maximum becomes49, explicitly prospective.
+No more normal planning/world runs. Prior a3 full suite is stopped as superseded;
+SIGINT/SIGTERM are caught by signal-handling tests, so the owned test root is
+finally killed. It is interrupted/invalidated, not a full pass or a product
+failure. The actual source3135c35 a4 full regression continues separately.

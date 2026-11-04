@@ -9,6 +9,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
+def finished_definition(value):
+    """A returned failure envelope is a dict too; never label it a candidate."""
+    return (isinstance(value, dict) and 'generation_failure' not in value
+        and {'base_patch', 'factors', 'continuous', 'provenance'} <= set(value))
+
+
 def main():
     from utopia.optimization.native_jobs import pinned_revision
     from utopia.optimization.native_designer_preflight import require_certificate
@@ -46,7 +52,7 @@ def main():
         result = {'arm': index, 'request_sha256': digest(request), 'finished': False}
         try:
             design = generator(request)
-            if not isinstance(design, dict):
+            if not finished_definition(design):
                 raise ValueError('finite session ended without an explicit valid finish')
             result.update(finished=True, definition=design)
         except Exception as error:

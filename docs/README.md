@@ -14,6 +14,7 @@ record lives separately under [`research/`](../research/INDEX.md).
 
 ## Product and runtime guides
 
+- [Real-backend designer preflight and production search gate](designer-preflight.md)
 - [Game UI](../game-ui/README.md)
 - [Full-text runtime](fulltext.md)
 - [Sequential funding protocol](sequential_funding_protocol.md)
