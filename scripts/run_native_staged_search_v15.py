@@ -5,8 +5,10 @@ from __future__ import annotations
 import argparse
 import fcntl
 import json
+import os
 from pathlib import Path
 import sys
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -16,8 +18,8 @@ from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
-CLASSIFICATION = 'actual-local-qwen-staged-native-search-development-v15'
-ENGINEERING_REVISION = 'a3-interface-v16'
+CLASSIFICATION = 'actual-local-qwen-staged-native-closed-loop-development-v17'
+ENGINEERING_REVISION = 'v17-a1'
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -47,8 +49,8 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
             'metadata reads are not designer generations or scientific-world slots.',
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
-        'protocol': 'research/protocols/campaigns/designer-contract-repair-v16.md',
-        'native_campaign_status': 'prospective interface-fixed driver; no new native campaign dispatched by technical verification'}
+        'protocol': 'research/protocols/campaigns/native-staged-closed-loop-v17-a1.md',
+        'native_campaign_status': 'explicitly authorized two-objective two-generation native feedback pilot after V16 interface repair'}
 
 
 def execute(args):
@@ -133,13 +135,42 @@ def main():
     parser.add_argument('--data-cache', type=Path, required=True)
     parser.add_argument('--designer-preflight', type=Path, required=True,
         help='operator-owned successful current-source/current-backend interface certificate')
+    parser.add_argument('--resume-existing-launch', action='store_true',
+        help='explicit source-matched resume; consumes existing journals, never replenishes budgets')
     args = parser.parse_args()
     pinned_revision(ROOT)
     args.output = args.output.resolve()
     args.output.mkdir(parents=True, exist_ok=True)
     with (args.output / 'pilot-writer.lock').open('a') as handle:
         fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        return execute(args)
+        started = args.output / 'writer.started.json'
+        ended = args.output / 'writer.ended.json'
+        if started.exists():
+            original = json.loads(started.read_text())
+            if not args.resume_existing_launch or original['source_commit'] != pinned_revision(ROOT):
+                raise ValueError('existing launch requires explicit same-source resume; preserve all original receipts')
+            number = 1 + len(list(args.output.glob('writer-resume-*.started.json')))
+            started = args.output / f'writer-resume-{number:03d}.started.json'
+            ended = args.output / f'writer-resume-{number:03d}.ended.json'
+        elif args.resume_existing_launch:
+            raise ValueError('resume requires an existing launch; no new budget is implicit')
+        receipt = {'schema': 'scienceutopia.native-staged-writer.v17',
+            'source_commit': pinned_revision(ROOT), 'argv': sys.argv,
+            'started_utc': datetime.now(timezone.utc).isoformat(),
+            'environment': {key: os.environ.get(key) for key in
+                ('CUDA_VISIBLE_DEVICES', 'PYTHONHASHSEED', 'HF_HUB_OFFLINE', 'TRANSFORMERS_OFFLINE')},
+            'certificate': str(args.designer_preflight.resolve()), 'status': 'started'}
+        write_json_atomic(started, receipt, sort_keys=True, allow_nan=False)
+        try:
+            code = execute(args)
+        except BaseException as error:
+            receipt.update(status='aborted', error=type(error).__name__ + ': ' + str(error),
+                ended_utc=datetime.now(timezone.utc).isoformat())
+            write_json_atomic(ended, receipt, sort_keys=True, allow_nan=False)
+            raise
+        receipt.update(status='exited', exit_code=code, ended_utc=datetime.now(timezone.utc).isoformat())
+        write_json_atomic(ended, receipt, sort_keys=True, allow_nan=False)
+        return code
 
 
 if __name__ == '__main__':

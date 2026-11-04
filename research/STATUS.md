@@ -2,6 +2,24 @@
 
 Updated: 2026-11-04
 
+## V17 post-repair native feedback pilot authorized
+
+The next goal is two objective-conditioned automatic generations in the original
+researcher world using the V16 repaired runtime: valid design → native measured
+loss → next automatic design informed by that own loss → native measurement.
+The [prospective protocol](protocols/campaigns/native-staged-closed-loop-v17-a1.md)
+reserves4 native slots and at most64 author POSTs (16 steps/generation,2048 output
+tokens), keeping five authors/two years/development seed42 and both existing
+LossSpecs. Retention and worse outcomes remain legal. No hidden repair,
+replacement candidate or novelty/improvement veto. A failed/null slot is not
+an executed world; a terminal scheduler is not achievement of the loop.
+
+Feature development and frozen execution use separate worktrees. The existing
+actual staged certificate still matches unchanged runtime/model/backend/image;
+no repeated calibration is needed for driver/report metadata changes alone.
+No new actual candidate/world result exists at this prospective checkpoint.
+Follow the [execution log](logbook/2026-11-04-native-closed-loop-v17.md).
+
 ## V16 designer interface repair and fail-closed launch gate
 
 The diagnosed edit-language restriction is repaired prospectively: explicit

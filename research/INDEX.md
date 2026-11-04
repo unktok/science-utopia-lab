@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V17 prospective post-repair two-objective/two-generation native pilot](protocols/campaigns/native-staged-closed-loop-v17-a1.md)
+- [V17 execution log and next operational-loop goal](logbook/2026-11-04-native-closed-loop-v17.md)
 - [V16 interface fixes, real controls, failed planning boundaries and test scopes](results/designer-contract-repair-v16.md)
 - [V16 exact wire/certificate/cost/raw-inventory summary](results/designer-contract-repair-v16.json)
 - [V16 actual-backend designer readiness, production gate and renewal](../docs/designer-preflight.md)

@@ -46,7 +46,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
     names = set(subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', source,
         '--', 'utopia'], cwd=ROOT, text=True).splitlines())
     names = {name for name in names if name.endswith('.py')}
-    pending = ['scripts/run_native_staged_search_v15.py', 'scripts/analyze_native_autonomous_search_v14.py']
+    pending = ['scripts/run_native_staged_search_v15.py', 'scripts/analyze_native_autonomous_search_v14.py',
+        'scripts/analyze_native_staged_search_v15.py']
     while pending:
         name = pending.pop()
         if name in names:
@@ -58,7 +59,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 dependency = node.module.replace('.', '/') + '.py'
                 if dependency not in names:
                     pending.append(dependency)
-    if not re.fullmatch(r'research/protocols/campaigns/native-staged-search-v15(?:-a[0-9]+)?\.md', protocol_path):
+    if (not re.fullmatch(r'research/protocols/campaigns/native-staged-search-v15(?:-a[0-9]+)?\.md', protocol_path)
+            and protocol_path != 'research/protocols/campaigns/native-staged-closed-loop-v17-a1.md'):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
