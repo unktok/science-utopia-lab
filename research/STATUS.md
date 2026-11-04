@@ -2,6 +2,21 @@
 
 Updated: 2026-11-04
 
+## V19 concrete authoring pilot prepared within the fixed 8B stack
+
+The [new prospective protocol](protocols/campaigns/native-concrete-closed-loop-v19-a1.md)
+keeps the full two-objective measured-feedback goal and the same scientific
+setting. It clarifies system effects versus optional search distributions and
+advertises the existing finish contract on the final budgeted call. All
+institutional/code/graph freedom and host tool validity remain unchanged;
+no candidate is supplied, repaired or automatically retained.
+
+Before production, the new source requires fresh 13-control real calibration
+and cold replay. Conditional on passing, the separate budget is four native
+slots / 64 author POSTs, 16 calls per generation. No V19 inference has run yet.
+The unanswered external-Codex choice is not assumed; both roles stay Qwen3-8B.
+Prior failures remain charged and are not pooled into a controlled comparison.
+
 ## V18 offline contract feedback without additional inference
 
 The [new diagnostic](results/native-contract-notices-v18.md) adds conditional

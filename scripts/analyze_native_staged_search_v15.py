@@ -62,7 +62,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
     if (not re.fullmatch(r'research/protocols/campaigns/native-staged-search-v15(?:-a[0-9]+)?\.md', protocol_path)
             and protocol_path not in {'research/protocols/campaigns/native-staged-closed-loop-v17-a1.md',
                 'research/protocols/campaigns/native-staged-closed-loop-v17-a2.md',
-                'research/protocols/campaigns/native-staged-closed-loop-v17-a3.md'}):
+                'research/protocols/campaigns/native-staged-closed-loop-v17-a3.md',
+                'research/protocols/campaigns/native-concrete-closed-loop-v19-a1.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})

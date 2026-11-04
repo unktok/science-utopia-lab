@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V19 prospective concrete-instance authoring and final-submission pilot](protocols/campaigns/native-concrete-closed-loop-v19-a1.md)
+- [V19 source and execution log](logbook/2026-11-04-native-concrete-author-v19.md)
 - [V18 conditional code ABI feedback on the archived failure and actual SYSTEM role coverage](results/native-contract-notices-v18.md)
 - [V18 zero-inference archived candidate and wire-role diagnostic record](results/native-contract-notices-v18.json)
 - [V18 prospective zero-inference protocol](protocols/campaigns/native-contract-notices-v18.md)
