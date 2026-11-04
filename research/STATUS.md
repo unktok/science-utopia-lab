@@ -35,16 +35,21 @@ no-op edit notice.207 prelaunch SCRIPTED checks pass. The active a1 source is
 not edited; all its failures remain charged. A2 is frozen at`22617b5`; after
 A1 exits, its own13-control calibration passes and cold-verifies. The separate
 4-slot/64-designer-call production writer starts04:29:17Z. T-G0 measures-1;
-T-G1 and E-G0 each fail after16 author calls. E-G1 is still running. A2 cannot
-complete both measured generations. The exact A2 source's full SCRIPTED suite
+T-G1 and E-G0 each fail after16 author calls. E-G1 finishes a changed input
+schema, but fails at runtime before a loss is measured. A2 exits0 after32m32.80s:
+four slots, one completed world, one partial world,47 designer replies and111
+scientist replies. Two cold audits agree and preserve141 raw files. See the
+[closed a2 result](results/native-closed-loop-v17-a2.md). A2 does not complete
+either measured feedback path. The exact A2 source's full SCRIPTED suite
 passes2526 with6 skips in1171.90s. No author/year/seed/corpus scale-up or
 host-authored policy repair.
 
 A separate [a3 continuation](protocols/campaigns/native-staged-closed-loop-v17-a3.md)
 prepares exact reusable inspection addresses and explicit local/global scope,
 without repairing a target or altering institutional freedom. Its207 focused
-prelaunch checks pass; no a3 inference has run. Its fresh13-control certificate
-and separate four-slot/64-call pilot may start only after A2's writer exits.
+prelaunch checks pass at frozen`c068c81`; its full suite is running. After A2
+exits, its fresh13-control calibration passes and cold-verifies. Its separate
+four-slot/64-call production pilot starts05:07:37Z; outcomes remain open.
 The source-bound calibration now covers stable-ID/local-path inspect/splice
 and selector-free absolute reinspection. All prior failures remain charged.
 Follow the [execution log](logbook/2026-11-04-native-closed-loop-v17.md).

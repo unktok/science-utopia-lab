@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V17 a2 closed original-world authoring, address errors and runtime-schema failure](results/native-closed-loop-v17-a2.md)
+- [V17 a2 exact source/raw/cost audit, including the partial world](results/native-closed-loop-v17-a2.json)
 - [V17 a3 prospective reusable-address continuation, isolated from active a2](protocols/campaigns/native-staged-closed-loop-v17-a3.md)
 - [V17 a1 actual three-world partial feedback, exact retention and failure accounting](results/native-closed-loop-v17-a1.md)
 - [V17 a1 matching-source read-only audit and literal change paths](results/native-closed-loop-v17-a1.json)

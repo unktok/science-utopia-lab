@@ -166,3 +166,34 @@ from`object` to`array`, then writes the same value again. Static checks accept
 the draft; its native usability, final finish and loss are still unknown.
 This is a literal contract edit, not newly invented institution code or proof
 that an array matches the real upstream payload.
+
+A2 E-G1 finishes after10 calls with three identical schema replacements (one
+effective document change). Native execution reaches the first-year selection
+and fails input validation: the real scores payload is an object, not the
+declared array. It records19 partial scientist replies and3 code executions,
+but no measured scalar loss. A2 exits0 at2026-11-04T05:01:50.374834Z after
+32m32.80s. All four slots remain consumed; no candidate is repaired or replaced.
+Two matching-source audits agree:141 unchanged raw files,246 source files,
+47 known designer replies,111 scientist replies (92 completed+19 partial),
+11 code executions (8 completed+3 partial), three technical failures. Publish
+the exact generated audit and interpreted a2 result. Neither arm reaches two
+measured generations; the user's operational goal remains active.
+
+A3 is frozen at`c068c81c6d0befd301cc093bd8ec943764bb44dc`, tagged
+`protocol/native-closed-loop-v17-a3`, in its own detached experiment worktree.
+Its207-check prelaunch scope passes in33.66s; full SCRIPTED tests continue.
+The old A2 certificate is correctly rejected by this changed runtime before
+any POST. After A2 stops, start exactly the declared13 real A3 controls in
+`outputs/native-closed-loop-v17-a3-preflight`. No A3 production call starts
+before a fresh passing certificate cold-replays. A2 source and raw files remain
+untouched. The new address hints do not claim to solve arbitrary runtime
+contract mistakes such as the observed object/array mismatch.
+
+A3 passes all13 actual controls in256.61 adapter seconds, certificate
+`ff2fda933b97d7a75a57e6fecd1c06fd82ae3ae8d34b1500695d6b0db7b0471b`,
+runtime digest`7d9455b19ac33cb044a0840e9fa347e9c094bac85fbc3b4a3259f6bfb5cc4be5`.
+The certificate cold-replays successfully. The separate A3 writer starts
+2026-11-04T05:07:37.173638Z from clean frozen`c068c81`, after A2 has exited.
+Its exact argv/environment are in`outputs/native-closed-loop-v17-a3/writer.started.json`.
+Do not infer autonomous planning from instructed address controls or static
+validity. Keep the new writer's four slots/64-call bounds and original losses.
