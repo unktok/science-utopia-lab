@@ -92,3 +92,43 @@ before any new inference: new runtime-bound13-control calibration, then a new
 years/corpus are unchanged. Do not pool a1/a2 as a controlled comparison or
 refund old failures. A2 is a source-isolated engineering continuation toward
 the user's active operational goal, not claimed invention or hidden scale-up.
+
+A1's original writer exits0 at2026-11-04T04:24:19.361462Z, after39m53.82s.
+All4 scheduled slots are consumed, but only3 native worlds execute: throughput
+losses[-1,-1], reviewed-production[null,8]. E-G1 finishes at its16th call with
+`base_patch:null`, no factors/continuous controls, and explicit parent retention;
+its native world measures8. This does not provide E-G1 with an E-G0 measured
+loss, because E-G0 failed. Do not mark the two-arm operational goal achieved.
+Begin matching-source read-only audits at frozen`c6a56a5` after writer exit.
+
+A2's clean runtime pin is`22617b5a8bd41b8ca45bcad57fcc7a386678c691`.
+Its207-check prelaunch scope passes in68.90s; the full SCRIPTED suite is still
+running. Reusing V16's certificate at this changed runtime is correctly refused
+before dispatch. Only after A1 stops, start the declared fresh13-control staged
+calibration at `outputs/native-closed-loop-v17-a2-preflight`. No A2 production
+author/scientist request is started before its certificate passes cold replay.
+
+Two matching-source A1 audits agree byte-for-byte:160 unchanged raw files,
+246 source/protocol/loss files,46 known designer replies,276 scientist replies,
+24 inherited-code executions and one failed generation. Compact audit content
+hash`11b3befd7ae3ccd7a1954bd34610c25eba2f5c4b083ef9410b36fda94824bea7`.
+Publish the interpreted a1 result and generate its compact audit index directly
+with the frozen analyzer. No new model/container call is made by these audits.
+
+A2's new calibration passes all13 controls in255.90 adapter seconds. Its exact
+certificate`675efac2dce71b19409a1fa1a3875e5f70b6c975a3806cd3fe250f80b6ad0daf`
+cold-verifies against runtime digest
+`899a87ce0988f50dc87c0877b0e53e22ef9fe1cf37da5d096b2932cf5d50c77e`.
+No world or model-authored source is executed by these instructed controls.
+Start the separate A2 production writer at2026-11-04T04:29:17.575641Z from
+clean frozen`22617b5`, with its own fresh output root and certificate. Exact
+argv/environment are retained in`outputs/native-closed-loop-v17-a2/writer.started.json`.
+A1 is stopped and immutable; no model calls are shared between the two writers.
+
+The exact frozen A2 source's full SCRIPTED suite passes2526 tests with6 skips
+in1171.90s, JUnit`outputs/native-closed-loop-v17-verification/a2-full.xml`.
+This scope includes the focused tests; do not add their counts to the full
+suite or imply that these tests prove autonomous invention. A2 T-G0 again
+authors an identical source replacement, receives the new explicit no-change
+notice, validates and finishes in5 calls. Its native world starts. The notice
+does not prohibit legal retention or force a host-authored different policy.

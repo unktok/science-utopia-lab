@@ -21,15 +21,22 @@ The a1 source is frozen at `c6a56a5`. Throughput completes two original-world
 evaluations with losses[-1,-1] and byte-identical selection-source replacements.
 The exact measured G0 loss reaches G1; effective redesign/improvement is not
 shown. Reviewed-production G0 consumes16 calls and fails finish because its
-Bernoulli factor keeps two logits instead of one. G1 remains in progress.
-This is partial operational progress, not completion on both objective arms.
+Bernoulli factor keeps two logits instead of one. G1 finishes by retaining the
+parent and measures8. A1 exits0 after39m53.82s:4 charged slots,3 native worlds,
+one failed slot. The two-arm operational goal is not complete; the second arm
+has no G0 measured loss to feed into G1. Two matching-source audits agree:
+160 unchanged raw files,246 matching source files,46 designer replies,276
+scientist replies and24 inherited-code executions. See the
+[closed a1 result](results/native-closed-loop-v17-a1.md).
 
 A separate [a2 protocol](protocols/campaigns/native-staged-closed-loop-v17-a2.md)
 prepares exact expected/actual factor-shape diagnostics and an explicit legal
 no-op edit notice.207 prelaunch SCRIPTED checks pass. The active a1 source is
-not edited; all its failures remain charged. A2 requires its own13-control
-certificate and separate4-slot/64-designer-call budget; no more a2 inference
-has yet run. No author/year/seed/corpus scale-up or host-authored policy repair.
+not edited; all its failures remain charged. A2 is frozen at`22617b5`; after
+A1 exits, its own13-control calibration passes and cold-verifies. The separate
+4-slot/64-designer-call production writer starts04:29:17Z. Its outcomes are not
+yet known. The exact A2 source's full SCRIPTED suite passes2526 with6 skips in
+1171.90s. No author/year/seed/corpus scale-up or host-authored policy repair.
 Follow the [execution log](logbook/2026-11-04-native-closed-loop-v17.md).
 
 ## V16 designer interface repair and fail-closed launch gate

@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V17 a1 actual three-world partial feedback, exact retention and failure accounting](results/native-closed-loop-v17-a1.md)
+- [V17 a1 matching-source read-only audit and literal change paths](results/native-closed-loop-v17-a1.json)
 - [V17 prospective post-repair two-objective/two-generation native pilot](protocols/campaigns/native-staged-closed-loop-v17-a1.md)
 - [V17 separate a2 continuation with actionable shape and no-op feedback](protocols/campaigns/native-staged-closed-loop-v17-a2.md)
 - [V17 execution log and next operational-loop goal](logbook/2026-11-04-native-closed-loop-v17.md)
