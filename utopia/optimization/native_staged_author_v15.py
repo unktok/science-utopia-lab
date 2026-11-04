@@ -93,6 +93,10 @@ Tools:
   {"tool":"inspect","selector":{"mechanism_id":"EXACT ID"},"path":""}
     reads that complete current node. Local child pointers read specific fields.
     Omit selector for any full-document pointer; path:"" reads the whole draft.
+    An inspection returns reusable_address in the SAME address form you sent.
+    Reuse that address for the target of another inspect/edit/splice. The legacy
+    result.path is document-absolute: omit selector if using that path instead.
+    Never combine a mechanism selector with a full /mechanisms/... pointer.
     Optional offset/limit slice strings/lists without changing them. Large
     results return a descriptor, not silently truncated content: read narrower.
     resource:'draft' is the default. To discover trusted effect APIs without
@@ -150,6 +154,20 @@ def protocol_binding():
 def initial_draft(request):
     return {'schema': STATE, 'document': clone(request['parent_system']),
         'operations': [], 'factors': [], 'continuous': [], 'logits': {}}
+
+
+def reusable_address(action):
+    """Echo the literal target, not a guessed path or repaired operation."""
+    address = {key: clone(action[key]) for key in ('selector', 'path') if key in action}
+    if action.get('resource') == 'capabilities':
+        address['resource'] = 'capabilities'  # Do not redirect a catalog reread to the candidate.
+    return address
+
+
+ADDRESS_NOTICE = ('Choose one address form. With selector, path is relative to that mechanism. '
+    'Without selector, path is relative to the whole document. Reuse reusable_address as-is; '
+    'the legacy result.path is document-absolute, so omit selector if using it. '
+    'No authored target or value has been rewritten.')
 
 
 def draft_summary(state):
@@ -361,6 +379,10 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
             else:
                 record['result'] = {'resource': resource, 'path': path, 'descriptor': original,
                     'value_included': True, 'value': clone(value), 'selection': selection}
+            record['result'].update(reusable_address=reusable_address(action),
+                address_scope='mechanism-relative' if 'selector' in action else 'document-root',
+                resolved_document_path=path, address_notice=ADDRESS_NOTICE,
+                candidate_edit_target=resource == 'draft')
         elif tool in {'edit', 'splice'}:
             if tool == 'splice':
                 if not {'offset', 'delete', 'text'} <= set(action) or not isinstance(value, str):
@@ -412,6 +434,26 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
         return current, record
     except Exception as error:
         record['errors'] = [_error(error)]
+        # Explain only the literal attempted address. Do not infer an intended
+        # node, strip a repeated prefix, resolve fuzzy IDs or apply a repair.
+        attempted = None
+        if isinstance(action, dict) and action.get('tool') in {'inspect', 'splice'}:
+            attempted = action
+        elif isinstance(action, dict) and action.get('tool') == 'edit':
+            index = next((item.get('operation_index') for item in record['errors'][0].get('diagnostics', [])
+                if type(item.get('operation_index')) is int), None)
+            operations = action.get('operations')
+            if isinstance(operations, list) and index is not None and 0 <= index < len(operations):
+                attempted = operations[index]
+        if isinstance(attempted, dict) and 'path' in attempted:
+            try:
+                address = reusable_address(attempted)
+            except (ValueError, TypeError):
+                address = None  # Malformed non-JSON inputs must not break rejection diagnostics.
+            if address is not None:
+                record['errors'][0]['addressing'] = {'authored_address': address,
+                    'path_scope': 'mechanism-relative' if 'selector' in attempted else 'document-root',
+                    'notice': ADDRESS_NOTICE, 'authored_target_changed_by_host': False}
         return clone(state), record
 
 
@@ -512,7 +554,9 @@ def read_memory(state, steps):
             entries[key]['read_count'] += 1
             entries[key]['last_step'] = step['step']
             continue
-        item = {key: clone(value[key]) for key in ('resource', 'path', 'descriptor', 'selection') if key in value}
+        item = {key: clone(value[key]) for key in ('resource', 'path', 'descriptor', 'selection',
+            'reusable_address', 'address_scope', 'resolved_document_path', 'address_notice',
+            'candidate_edit_target') if key in value}
         item.update(document_sha256=document, current_document=document == current,
             read_count=1, last_step=step['step'], value_included=False)
         if value.get('value_included') is True:

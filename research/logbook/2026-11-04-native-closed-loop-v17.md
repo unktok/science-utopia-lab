@@ -132,3 +132,37 @@ suite or imply that these tests prove autonomous invention. A2 T-G0 again
 authors an identical source replacement, receives the new explicit no-change
 notice, validates and finishes in5 calls. Its native world starts. The notice
 does not prohibit legal retention or force a host-authored different policy.
+
+A2 T-G1 receives the measured-1 loss, but after one truncated known reply and
+repeated inspect/configure calls it consumes16 steps without a valid finish.
+Its factor choice operations use `/parameters/inputs/accept` without a node
+selector: the missing root-level `parameters` is not silently supplied. E-G0
+then repeatedly combines a selector with an absolute `/mechanisms/7/...` path,
+producing a doubled prefix. It also ends without a valid finish after16 steps.
+E-G1 receives its own failure history and continues at the same frozen source.
+A2 therefore cannot achieve two measured generations on either arm; preserve
+its pending last generation and all charged costs.
+
+The legacy inspection result's absolute `path` differs from the input's local
+path when a selector is used. Prepare a general reusable-address/scope notice
+outside the active tree, without changing or guessing any authored target.
+Read-only capability addresses remain explicitly read-only and keep their
+resource identity. Alias detection remains canonical; no hidden path repair.
+64 initial and190 integrated SCRIPTED checks pass (overlapping scopes); add
+non-JSON rejection and mixed-address preflight coverage before final freezing.
+
+Write the [separate prospective a3 protocol](../protocols/campaigns/native-staged-closed-loop-v17-a3.md)
+before any a3 inference. It declares13 newly source-bound controls and,
+conditional on passing, a separate four-slot/64-author-call continuation.
+Total maxima are12 slots/192 author POSTs plus26 new a2/a3 controls. No old
+failure is refunded or result pooled into a controlled comparison. Same world,
+losses and fixed model; no forced novelty or host-authored replacement policy.
+
+Final A3 prelaunch scope passes207 SCRIPTED checks in33.66s, including
+non-JSON error safety and relative/absolute calibration coverage. This is not
+an A3 full-suite or actual-model pass. A2 remains at its old source. Its E-G1
+now makes one literal candidate change: selection input schema`scores/type`
+from`object` to`array`, then writes the same value again. Static checks accept
+the draft; its native usability, final finish and loss are still unknown.
+This is a literal contract edit, not newly invented institution code or proof
+that an array matches the real upstream payload.

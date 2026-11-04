@@ -90,8 +90,10 @@ def sequence(state):
         source = node.get('parameters', {}).get('code_artifact', {}).get('source')
         if isinstance(source, str):
             path = f'/mechanisms/{index}/parameters/code_artifact/source'
-            return [{'id': 'sequence-inspect', 'expected': {'tool': 'inspect', 'path': path}},
-                {'id': 'sequence-splice', 'expected': {'tool': 'splice', 'path': path,
+            relative = {'selector': {'mechanism_id': node['mechanism_id']},
+                'path': '/parameters/code_artifact/source'}
+            return [{'id': 'sequence-inspect', 'expected': {'tool': 'inspect', **relative}},
+                {'id': 'sequence-splice', 'expected': {'tool': 'splice', **relative,
                     'offset': len(source), 'delete': 0, 'text': '\n# interface calibration; no behavioral change\n'}},
                 {'id': 'sequence-reinspect', 'expected': {'tool': 'inspect', 'path': path}},
                 {'id': 'sequence-validate', 'expected': {'tool': 'validate'}},
