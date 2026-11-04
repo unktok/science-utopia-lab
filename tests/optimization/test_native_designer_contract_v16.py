@@ -67,6 +67,21 @@ def test_invalid_action_diagnostics_survive_sorted_journal_roundtrip(action):
     assert apply(action) == apply(json.loads(json.dumps(action, sort_keys=True)))
 
 
+def test_invalid_actions_then_valid_finish_cold_replay_without_redispatch(tmp_path):
+    from tests.optimization.test_native_search_generator_v14 import Model
+    from utopia.optimization.native_staged_author_v15 import StagedVocabularyGenerator, replay_staged_generation
+    model = Model([{'zzz': 'observed', 'tool': 'unknown', 'aaa': 1},
+        {'tool': 'inspect', 'path': {'z': 2, 'a': 1}},
+        {'tool': 'finish', 'rationale': 'SCRIPTED retention after rejected actions, not invention'}])
+    generator = StagedVocabularyGenerator(model, tmp_path / 'author', image_id=IMAGE,
+        provider_binding=BINDING, max_steps=3)
+    definition = generator(request())
+    assert 'generation_failure' not in definition and len(model.calls) == 3
+    directory = next((tmp_path / 'author').glob('generation-*'))
+    assert replay_staged_generation(directory) == definition
+    assert len(model.calls) == 3
+
+
 def test_alternating_alias_reads_share_memory_warn_and_real_change_resets_freshness():
     body = request(); state = initial_draft(body); steps = []
     for action in [{'tool': 'inspect', 'path': '/mechanisms/0/parameters'},

@@ -88,6 +88,7 @@ def analyze(root):
             raise ValueError('historical native evidence changed')
         historical[name] = {'files': len(actual), 'inventory_sha256': digest(actual), 'unchanged': True}
     result = {'schema': 'scienceutopia.designer-contract-verification-summary.v16',
+        'analysis_source_sha256': sha(Path(__file__)),
         'certificates': certificates, 'planning_results': planning_results,
         'actual_POSTs': len(rows), 'maximum_POSTs': 62,
         'native_worlds': 0, 'generated_source_executions': 0, 'rows': rows, 'costs': sums,
