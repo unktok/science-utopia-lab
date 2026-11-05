@@ -81,3 +81,31 @@ V23's frozen-source broad suite closes2628 passes/six skips in1580.12s. Its firs
 native measurement is ongoing at this entry. Do not infer the remaining
 generation or overall result. A clean V24 freeze/full software scope may proceed
 in parallel, but no V24 inference is sent while that writer is live.
+
+Freeze the clean V24 implementation at
+`5bfbc118ddf156e7d29da39d2a4d81c416876d91`in the separate detached
+`experiment-native-thinking-exploration-v24-a1`tree and protocol tag.
+Start its full SCRIPTED verification, with JUnit destination
+`outputs/native-planning-author-v22-verification/full-5bfbc11.xml`.
+Local main fast-forwards to the prepared source; no remote push is made.
+These are a source freeze/test start, not actual reasoning compatibility proof.
+
+V23's full-suite JUnit SHA is
+`b9fcdae3639cd9efab34a7aa50943634ebd408858469b15b065f0f5260fdbe5d`.
+Its first native world completes at-1 and G1 starts from its own observation
+`observation-native-adaptive-b24e664c805fda1bf8f16175`. G1's first actual plan
+again misstates the objective direction, suggesting fewer acceptances despite
+the unchanged negative coefficient and explicit numeric direction view.
+Removing competing registry prose has not eliminated arithmetic mistakes or
+the implementation-progress problem. Retain that failure instead of claiming
+the earlier interface change solved stagnation. No new V24 model call is made.
+
+The next safe actual action remains conditional: poll the known live V23
+writer/boundary helper, inspect authoritative exit plus all real outcomes,
+and run two original-fa2-source/raw audits. Only if the full goal is still
+unmet, run fresh V24 readiness from the frozen5bf tree, using the existing
+V23 operator binding and its preflight plan's original-parent request, under
+`outputs/native-thinking-exploration-v24-a1-preflight`. All14 exact controls,
+observed separate reasoning evidence and cold replay must pass before a new
+`outputs/native-thinking-exploration-v24-a1`production writer. Never borrow the
+older V23 certificate. The full goal remains active and unchanged.
