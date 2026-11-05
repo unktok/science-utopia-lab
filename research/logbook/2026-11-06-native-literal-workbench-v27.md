@@ -129,3 +129,22 @@ outputs/native-literal-workbench-v27-verification/full-dfe2cb7.xml. It is
 running. No actual V27 inference has occurred; V26 writer9150/PID37919 remains
 live. Continue to its verified termination, two frozen6d raw audits, fresh
 actual a2 readiness, and the unchanged-world exploration if all14 controls pass.
+
+## Prospective readiness input with actual own history
+
+Before any a2 actual call, select the archived V26 throughput G1 authoring
+request f818ab272717c5b13d2f1d52e5dfb29a69931187cf06b0ccef283baa42f5a864
+as the fresh14-control compatibility input. It has the same unchanged original
+19-node/27-wire parent and its actual own prior observation
+observation-native-adaptive-cdfd73b3e78143f76ed3fe96. This exercises the repaired
+own-history projection in the instructed planning control rather than only
+using a G0 request without history. No expected control value, action, role,
+provider, source, world or14-call budget changes.
+
+Use outputs/native-function-feedback-v26-a1/queue/search-ae63daa6b83f42b8aa1e5e202625dc2e/
+authoring/generation-f818ab272717c5b13d2f1d52e5dfb29a69931187cf06b0ccef283baa42f5a864/request.json
+and the unchanged fixed operator provider configuration. This is an explicit
+instructed compatibility task, not an optimization trial; none of this archived
+history is injected into the new scientific campaign's G0. The complete exact
+calibration request is recorded in its own fresh certificate/plan. Keep the
+live V26 writer running and wait for authoritative termination before starting.
