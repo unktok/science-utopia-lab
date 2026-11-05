@@ -2,6 +2,27 @@
 
 Updated: 2026-11-06 JST
 
+## Function response and own feedback repair is in progress
+
+The live frozen V25 a3 writer finishes both throughput evaluations at loss -1
+with the unchanged original system and continues efficiency. The full goal
+remains active and unmet. Do not describe this as a bug-free model limitation:
+known HTTP200 malformed responses are incorrectly labeled transport errors,
+and the next planner lacks the prior plan versus literal implementation facts.
+
+The separate [V26 preparation](protocols/campaigns/native-function-feedback-v26-a1.md)
+adds strict function JSON syntax, shared completion checks, corrected known
+response classification and all own trial facts for planner/editor. No policy
+candidate, novelty gate, host source repair or incumbent-selection change is
+introduced. Original protocol allowlist omissions are also corrected for
+future audits. Verification, clean freeze and fresh actual14-control readiness
+remain required; no V26 model call has occurred at this entry.
+
+The expanded V26 focused scope subsequently passes288 SCRIPTED checks in60.71s,
+including sender-to-cold-replay malformed/truncated response accounting and
+own-trial feedback. Freeze a fresh source before actual readiness; the V25
+writer remains live and is not interrupted.
+
 ## V25 a3 native pilot is running after all14 actual controls pass
 
 At frozen `1d0e22a`, all14 actual controls and cold replay pass, with correct

@@ -1,4 +1,4 @@
-"""Lossless Qwen Hermes tool envelopes for the existing institutional editor.
+"""Lossless function JSON responses and canonical Hermes completed history.
 
 These are general editing tools, not an institution catalogue. The adapter
 only separates a model-authored function name from its literal arguments.
@@ -6,16 +6,17 @@ It never fills fields, repairs source, executes a candidate or reads reasoning
 as an action. Actual-backend readiness is a separate requirement.
 """
 import json
-import re
 
 from utopia.system.design_patch import clone
 
-CHANNEL = 'scienceutopia.hermes-designer-tools.v25'
+CHANNEL = 'scienceutopia.designer-function-json.v26'
+CONVERSATION_SUFFIX = '.conversation.function-json.v26'
 TOOL_RESPONSE_ONLY = (
     'Call exactly one supplied function for the next action. '
-    'Use the Qwen Hermes tool-call envelope in final response content: '
-    '<tool_call>{"name":"FUNCTION_NAME","arguments":{...}}</tool_call>. '
-    'Return only that one envelope, without prose, Markdown or a bare JSON action. '
+    'Return exactly one JSON object in final response content: '
+    '{"name":"FUNCTION_NAME","arguments":{...}}. '
+    'Do not wrap the NEW response in XML/tool_call tags, prose or Markdown. '
+    'Completed assistant history may use Hermes tags; it is not the new response format. '
     'The function name is the action tool; arguments contain the remaining action fields, '
     'without a tool field. Preserve exact JSON types and string code points, '
     'including real line feeds, quotes and literal backslashes. '
@@ -24,7 +25,7 @@ TOOL_RESPONSE_ONLY = (
 
 CONTROL_TARGET_NOTE = (
     'The JSON below is target DATA, not a previous assistant call or a completed tool result. '
-    'Copy its function name and every literal argument into one NEW Hermes tool_call envelope. '
+    'Copy its function name and every literal argument into one NEW JSON function object. '
     'Use exactly its argument keys: do not add optional arguments, defaults or notes, '
     'and do not carry fields over from a previous call. '
     'Do not claim that the target action has already executed. Do not substitute finish; '
@@ -35,7 +36,10 @@ DESCRIPTIONS = {
     'inspect': ('Read an exact current draft JSON address or a trusted capability ABI. No candidate mutation. '
         'Without selector, path is relative to the whole document. With selector, path is relative '
         'to that mechanism only. A document-root address must not carry a mechanism selector '
-        'from a previous call. Reuse a returned reusable_address as one complete address form.'),
+        'from a previous call. Reuse a returned reusable_address as one complete address form. '
+        'mechanisms is an array: use a numeric array index in a root path, or an exact '
+        'mechanism_id selector with a mechanism-relative path. Free-text plan targets are '
+        'hypotheses, not guaranteed existing JSON addresses.'),
     'edit': 'Apply your literal atomic add/remove/replace edits to arbitrary system JSON, code and wiring.',
     'splice': 'Edit any existing string by Unicode codepoints, including arbitrary literal Python source.',
     'configure': 'Set an optional distribution over authored literal edits, not institutional behavior by itself.',
@@ -67,7 +71,7 @@ def tool_specifications():
 
 
 def action_from_message(message):
-    """Decode one complete Hermes call; never salvage prefixes/thinking/code.
+    """Decode one complete function object; never salvage prefixes/thinking/code.
 
     Host action validation remains in the existing interpreter, so invalid
     literal arguments can receive its normal charged technical feedback.
@@ -77,15 +81,14 @@ def action_from_message(message):
     if not isinstance(message, dict) or message.get('role') != 'assistant':
         raise ValueError('native designer response is not an assistant message')
     if message.get('tool_calls'):
-        raise ValueError('backend-parsed tool calls are not the lossless Hermes response channel')
+        raise ValueError('backend-parsed tool calls are not the lossless function JSON response channel')
     content = message.get('content')
-    match = re.fullmatch(r'\s*<tool_call>\s*([\s\S]+?)\s*</tool_call>\s*', content) if isinstance(content, str) else None
-    if match is None:
-        raise ValueError('designer must return exactly one Hermes tool-call envelope; no content fallback')
+    if not isinstance(content, str):
+        raise ValueError('designer must return one JSON function object; no content fallback')
     from .native_search_generator_v14 import _strict_json
-    function = _strict_json(match.group(1))
+    function = _strict_json(content)
     if not isinstance(function, dict) or set(function) != {'name', 'arguments'}:
-        raise ValueError('Hermes tool call must contain exactly name and arguments')
+        raise ValueError('JSON function call must contain exactly name and arguments')
     if (not isinstance(function, dict) or not isinstance(function.get('name'), str)
             or function['name'] not in DESCRIPTIONS):
         raise ValueError('native designer function name is unknown')
@@ -110,6 +113,19 @@ def message_from_action(action):
     function = function_data(action)
     return {'role': 'assistant', 'content': '<tool_call>\n'
         + json.dumps(function, ensure_ascii=False, allow_nan=False) + '\n</tool_call>'}
+
+
+def response_message_from_action(action):
+    """Fixture serializer for the new response channel; never used to repair replies."""
+    return {'role': 'assistant', 'content': json.dumps(function_data(action),
+        ensure_ascii=False, allow_nan=False)}
+
+
+def action_from_body(body):
+    """One completion check shared by live decoding and independent cold replay."""
+    if not isinstance(body, dict) or body.get('done') is not True or body.get('done_reason') == 'length':
+        raise ValueError('designer output is incomplete/truncated; no source repair')
+    return action_from_message(body.get('message'))
 
 
 def tool_system_prompt():
@@ -143,4 +159,4 @@ def reply_action(reply):
     body = _strict_json(transport['raw_http_response'])
     if body != transport['response_payload'] or not reply['messages'] or reply['messages'][-1] != body['message']:
         raise ValueError('native designer message differs from original HTTP body')
-    return action_from_message(body['message'])
+    return action_from_body(body)

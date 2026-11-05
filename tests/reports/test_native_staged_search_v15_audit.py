@@ -265,13 +265,14 @@ def transport_fixture():
         audit.staged_author.initial_draft(request), [], image_id=BINDING['image_id'],
         binding_sha256=binding['binding_sha256'], settings=settings), 'step': 0}
     action = {'tool': 'finish', 'rationale': 'SCRIPTED'}
-    from utopia.optimization.native_designer_tools_v25 import CHANNEL, message_from_action, tool_specifications
+    from utopia.optimization.native_designer_tools_v25 import (
+        CHANNEL, CONVERSATION_SUFFIX, response_message_from_action as message_from_action)
     body = {'model': 'qwen3:8b', 'done': True, 'done_reason': 'stop',
         'message': message_from_action(action)}
     payload = {'model': 'qwen3:8b',
         'messages': audit.staged_author.build_conversation(started['prompt'],
             audit.staged_author.call_task(0, settings['max_steps']), native_tools=True),
-        'think': True, 'stream': False, 'truncate': False, 'shift': False,
+        'think': True, 'stream': False, 'truncate': False, 'shift': False, 'format': 'json',
         'options': {'temperature': .6, 'num_predict': 2048, 'num_ctx': 32768,
             'top_p': .95, 'top_k': 20, 'min_p': 0.0,
             'seed': int(audit.digest(('native-staged-designer-v15', binding['binding_sha256'], 0))[:8], 16) % (2**31)}}
@@ -280,7 +281,7 @@ def transport_fixture():
             'raw_http_response': json.dumps(body), 'http_status': 200, 'model_digest': BINDING['model_digest'],
             'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
             'response_channel': CHANNEL,
-            'conversation_schema': audit.staged_author.PROTOCOL + '.conversation.tools.v25',
+            'conversation_schema': audit.staged_author.PROTOCOL + CONVERSATION_SUFFIX,
             'source_prompt_sha256': audit.digest(started['prompt'])}}}
     from utopia.optimization.native_designer_wire import wire_record
     step['model_reply']['transport'].update(wire_record(payload, audit.ACTION_SCHEMA))

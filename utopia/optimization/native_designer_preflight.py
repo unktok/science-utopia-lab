@@ -279,10 +279,10 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
                 or body.get('done_reason') == 'length' or body.get('model') != provider['model']):
             raise ValueError('preflight incomplete/foreign original response')
         if protocol == 'staged-v15':
-            from .native_designer_tools_v25 import CHANNEL, action_from_message
+            from .native_designer_tools_v25 import CHANNEL, action_from_body
             if transport.get('response_channel') != CHANNEL:
                 raise ValueError('preflight native tool response channel differs')
-            action_output = action_from_message(body['message'])
+            action_output = action_from_body(body)
         else:
             action_output = _strict_json(body['message']['content'])
         Draft202012Validator(_schema(protocol)).validate(action_output)

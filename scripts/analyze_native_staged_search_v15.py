@@ -73,7 +73,11 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-numeric-objective-exploration-v23-a1.md',
                 'research/protocols/campaigns/native-thinking-exploration-v24-a1.md',
                 'research/protocols/campaigns/native-thinking-exploration-v24-a2.md',
-                'research/protocols/campaigns/native-thinking-exploration-v24-a3.md'}):
+                'research/protocols/campaigns/native-thinking-exploration-v24-a3.md',
+                'research/protocols/campaigns/native-tool-calling-exploration-v25-a1.md',
+                'research/protocols/campaigns/native-tool-calling-exploration-v25-a2.md',
+                'research/protocols/campaigns/native-tool-calling-exploration-v25-a3.md',
+                'research/protocols/campaigns/native-function-feedback-v26-a1.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -122,8 +126,8 @@ def _transport(step, started, binding, classification):
     if hasattr(staged_author, 'build_conversation'):
         expected_messages = staged_author.build_conversation(started['prompt'],
             staged_author.call_task(started['step'], binding['settings']['max_steps']), native_tools=True)
-        from utopia.optimization.native_designer_tools_v25 import CHANNEL
-        if (transport.get('conversation_schema') != staged_author.PROTOCOL + '.conversation.tools.v25'
+        from utopia.optimization.native_designer_tools_v25 import CHANNEL, CONVERSATION_SUFFIX
+        if (transport.get('conversation_schema') != staged_author.PROTOCOL + CONVERSATION_SUFFIX
                 or transport.get('response_channel') != CHANNEL
                 or transport.get('source_prompt_sha256') != digest(started['prompt'])):
             raise ValueError('staged original continuing-dialogue source binding differs')

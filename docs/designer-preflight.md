@@ -59,14 +59,14 @@ fields cannot substitute for that evidence. Literal editor controls must not
 emit nonempty reasoning fields. No extra probe is added. This does not establish
 that the reasoning is correct or that the designer can invent an institution.
 V24 a3 used backend`format:"json"`after preserved a1 syntax/a2 LF failures.
-The prepared V25 source instead uses Qwen's Hermes function-call notation.
+V25 used Qwen's Hermes function-call notation.
 The same seven functions and their schemas are included in the trusted SYSTEM
 message. One complete final `<tool_call>{"name":...,"arguments":...}</tool_call>`
 envelope becomes the exact same host action; no prose/fence/prefix/source repair
 or reasoning extraction is allowed. Multiple calls fail as a whole, not as
 silently discarded extra work. Do not normalize strings or coerce JSON values.
 
-Do not send top-level`tools`or`format`in V25. Ollama0.33.3's typed tool schema
+V25 sent neither top-level`tools`nor`format`. Ollama0.33.3's typed tool schema
 does not retain property references, and its native argument-map JSON path has
 a large-integer round-trip risk. Inline schemas and keep signatures, actions
 and receipts as strings. This uses the learned Hermes syntax without changing
@@ -76,6 +76,17 @@ the independent auditor bind the declared Hermes channel to its exact source.
 The same14 exact decoded actions AND role-specific reasoning evidence must pass
 before production, including real LF and9007199254740993. Older certificates
 cannot authorize this revision. The legacy one-shot wire remains JSON mode.
+
+V26 requests backend `format:"json"` with exactly one final function object
+`{"name":...,"arguments":{...}}`. Completed assistant history remains Hermes
+text, but new responses must not have XML tags. No top-level `tools` or native
+argument-map conversion is used. All fourteen exact actions and role checks
+are unchanged and must pass again at the new source. Malformed or truncated
+known HTTP200 messages are invalid responses, not unknown network failures;
+the same completion decoder verifies live replies and cold replay. No failed
+reply is repaired or retried. Free authoring additionally receives its own
+previous plan, literal implementation facts and measured results as data, not
+as policy instructions or proof of institutional improvement.
 
 Pass `--designer-preflight <certificate.json>` to:
 

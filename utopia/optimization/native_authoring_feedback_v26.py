@@ -1,0 +1,56 @@
+"""Own-trial facts, not a policy, merit gate or model-claim endorsement."""
+from utopia.system.design_patch import clone, digest
+
+
+def own_trial_feedback(request):
+    """Project every own archived trial without reading another arm or source file.
+
+    Literal submission facts are separate from untrusted design intent and
+    native observations. Missing older provenance stays unknown, never zero.
+    No candidate is generated, repaired or rejected by this projection.
+    """
+    trials = []
+    if not request.get('history'):
+        return {'schema': 'scienceutopia.own-authoring-feedback.v26', 'all_own_trials': []}
+    parent_sha = digest(request['parent_system'])
+    for index, record in enumerate(request.get('history', [])):
+        definition = record.get('definition')
+        definition = definition if isinstance(definition, dict) else {}
+        provenance = definition.get('provenance') or {}
+        staged = provenance.get('staged_author') or {}
+        raw_ir = (provenance.get('authoring_compiler') or {}).get('raw_ir')
+        operations = raw_ir.get('operations') if isinstance(raw_ir, dict) else None
+        factors, continuous = definition.get('factors'), definition.get('continuous')
+        valid_shape = ('base_patch' in definition and isinstance(operations, list)
+            and isinstance(factors, list) and isinstance(continuous, list))
+        no_intervention = (definition['base_patch'] is None and not operations
+            and not factors and not continuous) if valid_shape else None
+        observations = []
+        draws = record.get('draws') or []
+        for observation_index, observation in enumerate(record.get('observations') or []):
+            draw = draws[observation_index] if observation_index < len(draws) else None
+            suggestion = draw.get('suggestion') if isinstance(draw, dict) else None
+            candidate = suggestion.get('candidate') if isinstance(suggestion, dict) else None
+            candidate_sha = digest(candidate) if isinstance(candidate, dict) else None
+            observations.append({'observation_index': observation_index,
+                'observation': clone(observation), 'candidate_sha256': candidate_sha,
+                'is_current_parent': candidate_sha == parent_sha if candidate_sha else None})
+        trials.append({'history_index': index,
+            'request_sha256': record.get('request_sha256'), 'version_sha256': record.get('version_sha256'),
+            'untrusted_model_authored_plan': clone(staged.get('untrusted_model_authored_plan')),
+            'literal_submission': {
+                'base_patch_is_null': definition['base_patch'] is None if 'base_patch' in definition else None,
+                'authored_operation_count': len(operations) if isinstance(operations, list) else None,
+                'factor_count': len(factors) if isinstance(factors, list) else None,
+                'continuous_count': len(continuous) if isinstance(continuous, list) else None,
+                'no_literal_intervention': no_intervention,
+                'observed_session': clone(staged.get('observed_session'))},
+            'generation_error': clone(record.get('generation_error')),
+            'generation_failure': clone(definition.get('generation_failure')),
+            'observations': observations, 'update_report': clone(record.get('report'))})
+    return {'schema': 'scienceutopia.own-authoring-feedback.v26',
+        'scope': 'Own archived plans, literal submission facts and native observations; '
+            'a plan/finish claim is not evidence of implemented behavior or improvement.',
+        'all_own_trials': trials, 'based_on_observation_id': request.get('based_on_observation_id'),
+        'current_parent_sha256': parent_sha, 'foreign_arm_lookup': False,
+        'silent_tail_truncation': False, 'missing_values_imputed': False}

@@ -624,7 +624,7 @@ def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch
         def post(self, url, **kwargs):
             calls.append(('POST', url))
             self.payload = json.loads(kwargs['data'])
-            assert 'format' not in self.payload and 'tools' not in self.payload
+            assert self.payload['format'] == 'json' and 'tools' not in self.payload
             assert '<tools>' in self.payload['messages'][0]['content']
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
@@ -632,7 +632,7 @@ def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch
             assert self.payload['think'] is False and self.payload['stream'] is False
             assert self.payload['options']['top_p'] == .95 and self.payload['options']['top_k'] == 20
             assert self.payload['options']['min_p'] == 0.0
-            from utopia.optimization.native_designer_tools_v25 import message_from_action
+            from utopia.optimization.native_designer_tools_v25 import response_message_from_action as message_from_action
             return Response({'message': {**message_from_action(finish()),
                 'thinking': 'SCRIPTED not a tool action'}, 'done': True,
                 'done_reason': 'stop', 'prompt_eval_count': 111, 'eval_count': 30})
@@ -656,11 +656,12 @@ def test_cold_replay_binds_exact_provider_dialogue_and_rejects_rehashed_message_
     class DialogueModel(Model):
         def generate(self, **kwargs):
             output, messages = super().generate(**kwargs)
-            from utopia.optimization.native_designer_tools_v25 import CHANNEL, message_from_action
+            from utopia.optimization.native_designer_tools_v25 import (
+                CHANNEL, CONVERSATION_SUFFIX, response_message_from_action as message_from_action)
             context = build_conversation(kwargs['prompt'], kwargs['system_prompt'], native_tools=True)
             message = message_from_action(output)
-            body = {'message': message}
-            self.last_transport = {'conversation_schema': 'scienceutopia.staged-author.v15.conversation.tools.v25',
+            body = {'message': message, 'done': True, 'done_reason': 'stop'}
+            self.last_transport = {'conversation_schema': 'scienceutopia.staged-author.v15' + CONVERSATION_SUFFIX,
                 'response_channel': CHANNEL, 'response_payload': body, 'raw_http_response': json.dumps(body),
                 'source_prompt_sha256': digest(kwargs['prompt']), 'request_payload': {'messages': context}}
             return output, context + [message]

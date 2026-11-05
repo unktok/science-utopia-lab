@@ -5,7 +5,8 @@ import pytest
 from jsonschema import Draft202012Validator
 
 from utopia.optimization.native_designer_tools_v25 import (
-    CHANNEL, action_from_message, message_from_action, reply_action, tool_specifications,
+    CHANNEL, action_from_message, response_message_from_action as message_from_action,
+    message_from_action as history_message_from_action, reply_action, tool_specifications,
 )
 from utopia.optimization.native_staged_author_v15 import ACTION_SCHEMA, TOOL_FIELDS
 
@@ -17,8 +18,7 @@ VALUES = [None, True, False, 0, -3.5, 9007199254740993, [], {}, [1, None, {'x': 
 
 
 def envelope(name, arguments):
-    return {'role': 'assistant', 'content': '<tool_call>'
-        + json.dumps({'name': name, 'arguments': arguments}) + '</tool_call>'}
+    return {'role': 'assistant', 'content': json.dumps({'name': name, 'arguments': arguments})}
 
 
 @pytest.mark.parametrize('value', VALUES)
@@ -151,7 +151,8 @@ def test_original_world_inspection_keeps_address_forms_distinct_without_host_rep
 def test_no_prose_fence_bare_json_or_valid_prefix_salvage():
     message = message_from_action({'tool': 'validate'})
     for content in ['prose\n' + message['content'], message['content'] + '\nprose',
-            '```\n' + message['content'] + '\n```', '<tool_call>{"name":"validate","arguments":{}}}</tool_call>']:
+            '```\n' + message['content'] + '\n```', '{"name":"validate","arguments":{}}}',
+            '<tool_call>{"name":"validate","arguments":{}}</tool_call>']:
         with pytest.raises(ValueError):
             action_from_message({'role': 'assistant', 'content': content})
 
@@ -159,7 +160,7 @@ def test_no_prose_fence_bare_json_or_valid_prefix_salvage():
 def test_reply_reconstruction_requires_the_exact_original_message_and_body():
     action = {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/x', 'value': 9007199254740993}]}
     message = message_from_action(action)
-    body = {'message': message}
+    body = {'message': message, 'done': True, 'done_reason': 'stop'}
     reply = {'messages': [message], 'transport': {'response_channel': CHANNEL,
         'raw_http_response': json.dumps(body), 'response_payload': copy.deepcopy(body)}}
     assert reply_action(reply) == action
@@ -186,7 +187,7 @@ def test_observed_strings_stay_data_in_completed_hermes_history():
     assert [m['role'] for m in messages] == ['system', 'user', 'assistant', 'tool', 'user']
     assert attack not in messages[0]['content'] and FINAL_JSON_ONLY not in messages[0]['content']
     assert json.loads(messages[3]['content'])['tool_receipt']['result']['value']['attack'] == attack
-    assert action_from_message(messages[2]) == action
+    assert messages[2] == history_message_from_action(action)
     from utopia.optimization.native_staged_author_v15 import native_call_task
     assert '<tools>' in messages[0]['content'] and messages[-1]['content'].endswith(native_call_task(SYSTEM_PROMPT))
 
@@ -194,12 +195,14 @@ def test_observed_strings_stay_data_in_completed_hermes_history():
 def test_large_integer_remains_inside_strings_not_backend_numeric_arguments():
     from utopia.optimization.native_designer_decoding_v24 import designer_payload
     action = {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/x', 'value': 9007199254740993}]}
-    messages = [message_from_action(action)]
+    messages = [history_message_from_action(action)]
     payload = designer_payload('staged-v15', {'model': 'qwen3:8b'}, messages, ['SCRIPTED'],
         max_tokens=8192, temperature=.2, role='editor')
-    assert 'tools' not in payload and 'format' not in payload
+    assert 'tools' not in payload and payload['format'] == 'json'
     assert all('tool_calls' not in message for message in payload['messages'])
     # Deliberately decode outer numeric fields through float64: the action
     # remains an opaque string, so its nested integer is still exact.
     backend_outer = json.loads(json.dumps(payload), parse_int=float)
-    assert action_from_message(backend_outer['messages'][0]) == action
+    history_function = json.loads(backend_outer['messages'][0]['content']
+        .removeprefix('<tool_call>').removesuffix('</tool_call>'))
+    assert history_function['arguments']['operations'][0]['value'] == 9007199254740993

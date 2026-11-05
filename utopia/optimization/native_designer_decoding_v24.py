@@ -2,7 +2,7 @@
 
 Weights and researcher inference are unchanged. The staged institutional
 planner requests reasoning; the literal editor does not. One complete final
-Hermes envelope becomes a tool action, with strict JSON arguments.
+JSON function object becomes a tool action, with strict literal arguments.
 """
 from utopia.system.design_patch import clone, digest
 
@@ -17,7 +17,7 @@ def decoding_contract(protocol, *, role=None):
         role = role or 'editor'
         if role not in ('planner', 'editor'):
             raise ValueError('unknown source-owned designer role')
-        return {'think': role == 'planner', 'backend_format': None, 'response_channel': 'hermes-text-v25',
+        return {'think': role == 'planner', 'backend_format': 'json', 'response_channel': 'function-json-v26',
             'context_policy': {'truncate': False, 'shift': False},
             'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,

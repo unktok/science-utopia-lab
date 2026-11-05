@@ -17,7 +17,7 @@ def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
     original = deepcopy(messages)
     actual = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.6,
         role='planner')
-    assert actual['think'] is True and 'format' not in actual and actual['stream'] is False
+    assert actual['think'] is True and actual['format'] == 'json' and actual['stream'] is False
     assert actual['truncate'] is False and actual['shift'] is False
     assert actual['options'] == {'temperature': .6, 'num_predict': 8192, 'num_ctx': 32768,
         'top_p': .95, 'top_k': 20, 'min_p': 0.0, 'seed': actual['options']['seed']}

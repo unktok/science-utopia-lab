@@ -158,7 +158,7 @@ class ScriptedSession:
             if set(expected) == {'name', 'arguments'}:
                 expected = {'tool': expected['name'], **expected['arguments']}
         self.calls.append(payload)
-        from utopia.optimization.native_designer_tools_v25 import message_from_action
+        from utopia.optimization.native_designer_tools_v25 import response_message_from_action as message_from_action
         message = (message_from_action(expected) if '<tools>' in system else
             {'role': 'assistant', 'content': json.dumps(expected, ensure_ascii=False)})
         return Response({'model': BINDING['model'], 'message': {**message,
@@ -189,7 +189,7 @@ def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(cert
         payload = record['transport']['request_payload']
         assert payload['think'] is (index == 8)
         assert payload['options']['temperature'] == (.6 if index == 8 else .2)
-        assert payload['options']['num_predict'] == 8192 and 'format' not in payload
+        assert payload['options']['num_predict'] == 8192 and payload['format'] == 'json'
         assert 'tools' not in payload  # do not enter the backend's float64 tool-argument parser
         assert '<tools>' in payload['messages'][0]['content']
         assert payload['truncate'] is False and payload['shift'] is False
@@ -238,7 +238,7 @@ def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, 
         record['transport']['response_payload']['message'] = {'content': '', 'thinking': json.dumps(record['output'])}
         record['transport']['raw_http_response'] = json.dumps(record['transport']['response_payload'])
     elif mutation == 'reasoning-evidence': value['reasoning_evidence']['known_nonempty_response_fields'] = 0
-    elif mutation == 'backend-format': record['transport']['request_payload']['format'] = 'json'
+    elif mutation == 'backend-format': record['transport']['request_payload']['format'] = None
     elif mutation == 'decoding-role': record['intent']['decoding_role'] = 'planner'
     value['content_sha256'] = digest({key: item for key, item in value.items() if key != 'content_sha256'})
     certificate.write_text(json.dumps(value))
@@ -299,7 +299,7 @@ def test_failed_control_is_charged_and_never_replaced(tmp_path, monkeypatch):
 
 
 def test_known_wrong_function_is_preserved_as_parsed_output_without_retry(tmp_path, monkeypatch):
-    from utopia.optimization.native_designer_tools_v25 import message_from_action
+    from utopia.optimization.native_designer_tools_v25 import response_message_from_action as message_from_action
     wrong = {'tool': 'finish', 'rationale': 'SCRIPTED false completion claim, not implementation'}
     class WrongFunctionSession(ScriptedSession):
         def post(self, *args, **kwargs):

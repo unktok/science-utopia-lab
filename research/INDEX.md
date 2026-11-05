@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V26 strict function responses and own trial feedback protocol](protocols/campaigns/native-function-feedback-v26-a1.md)
+- [V26 implementation and regression log](logbook/2026-11-06-native-function-feedback-v26.md)
+
 - [V25 a3 prospective exact argument keys and both legal inspect address forms](protocols/campaigns/native-tool-calling-exploration-v25-a3.md)
 
 - [V25 a2 prospective target data and wire task separation after failed literal control](protocols/campaigns/native-tool-calling-exploration-v25-a2.md)
