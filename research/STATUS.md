@@ -2,6 +2,20 @@
 
 Updated: 2026-11-06 JST
 
+## V31 a2 frozen; independent actual readiness is running
+
+Freeze c62a03fdd38012098a3867b71a3584aeeab660b0 in the clean separate
+experiment-native-context-encoding-v31-a2 tree and matching protocol tag.
+Exact-source proof verifies254 blobs; focused source-specific checks pass227
+in32.03s. Its broad software suite72220 is live, not claimed passed.
+
+After a1's verified exit1 and PID absence, new actual max24-control readiness
+starts in90706/PID11359 with the unchanged declared232574 own-measured-history
+request/provider. First four controls pass. These are independent declared
+inputs with an exact key-set notice; a1's18 calls are preserved and not refunded.
+All24/cold replay and a post-readiness loaded40960 window check remain required
+before any V31 native world. Keep the full original goal active and unmet.
+
 ## V31 a1 readiness fails on extra annotations; a2 is prepared separately
 
 Actual a1 process37110 exits1 and PID4676 is absent.17 controls pass; the18th

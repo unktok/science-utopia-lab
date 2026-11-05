@@ -46,3 +46,20 @@ semantic probe: use integer-score features[4,3] in two periods and actual
 selection/router state persistence. Parent routes[1] then[0]; the actual saved
 b334 model candidate routes[1] then[1]. It uses zero Qwen/container calls and
 does not count as another native-world measurement or a new candidate.
+
+Freeze c62a03fdd38012098a3867b71a3584aeeab660b0 in the separate clean
+experiment-native-context-encoding-v31-a2 tree and protocol/native-context-encoding-v31-a2
+tag. Main fast-forwards; preserve the failed173 a1 tree/tag and certificate.
+Exact-source proof50591 exits0 and verifies254 source/protocol/helper blobs.
+Focused exact-source14714 exits0:227 passes in32.03s, JUnit
+outputs/native-context-encoding-v31-verification/focused-c62a03f.xml,
+SHAa56e8354300dd5d38801bbc25c87f4ada78ea832e55725781f010e624fed65ea.
+Broad exact-source suite72220 runs separately; no broad pass is claimed.
+
+After verified a1 exit1/PID absence and exact-source checks, start one new
+max24-control actual readiness in90706/PID11359, output
+outputs/native-context-encoding-v31-a2-preflight, with the same declared232574
+request/fixed provider. First four controls pass at this entry. No old call/
+certificate is reused or refunded. All24/cold replay and the declared fresh
+post-readiness GET /api/ps context40960 check still precede native production.
+The original full research goal is active; no V31 native world has run.
