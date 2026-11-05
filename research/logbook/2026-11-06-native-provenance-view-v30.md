@@ -91,3 +91,30 @@ frozen/queued, throughput G0 generation2a219d1898da4cb4fa7e5e47321441a8f3e3ed0b1
 step00 is authoring. No authored functional institution/native observation or
 own-measured-result-informed re-evaluation is established at this entry.
 Continue the full original active goal; do not finish on software/readiness.
+
+## First free generation: actual functional drafts, not yet native observations
+
+Verified live PID98150; throughput G0 source-free step00 plan applies. Its
+first editor call uses25688 input/1377 output tokens and completes HTTP200/
+done_reason=stop, then correctly rejects nonexistent feature_importance_weights
+on native-feature-extractor. No field is invented/repaired by the host.
+
+Step02 applies exact model-authored addressed-selection thresholds
+[[3.5],[4.5]]→[[3.0],[4.0]] and bias0.5→0.7; static graph/program validation
+passes. These fields are consumed by the existing tensor program's matmul/add/
+gate path, unlike V28's unused version field. An isolated SCRIPTED hard-mode
+probe with features[[3.8,3.0]] gives original accept[0] and this observed
+draft accept[1]. It uses zero new model/container calls and does not claim a
+native scientific measurement or benefit. Original program hash
+25cd9d150975dad5d5f4a753f682d489e3760ae8eaa1ac15e0ac0e928d02a9ca;
+observed step02 program
+b7f251b99adf4e8c1e758bb9f82fecc740f2b05b7c8c32ffcb9e02a1dc4bf65e;
+actual completed-file SHA
+6771572f47574833eac0fc4551fc4fb495b35e60db8180f49e9537c7d8919d5e.
+
+Step03 correctly rejects nonexistent accept_threshold/bias on world.selection;
+the accepted preceding draft remains intact. Step04 changes the existing
+addressed-selection bias0.7→0.75, retains thresholds[[3],[4]], and passes static
+validation. At this entry final submission/native loss/own-result follow-up
+remain unproven; the writer continues. This is existing-parameter institutional
+optimization, not a claim that a new algorithm or mechanism has been invented.
