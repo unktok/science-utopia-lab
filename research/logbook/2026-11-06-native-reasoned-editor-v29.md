@@ -124,3 +124,19 @@ Do not pool it with earlier scopes. Freeze fresh a2 before any actual V29 call;
 software-only01535 a1 broad suite94255 remains live and V28 writer13893/PID64867
 continues its last declared generation. Three V28 author slots are consumed,
 with only one unchanged native observation so far. No V29 inference occurs.
+
+Freeze a2 at254bef6a3962f60be7e51b24b0c57d1ec992bf7b in its separate clean
+experiment tree/tag. Exact-source proof55319 exits0 and verifies253 blobs.
+Its source-specific focused suite69773 passes399 in74.20s; JUnit
+outputs/native-reasoned-editor-v29-verification/focused-254bef6.xml,
+SHA c12adbed3f8fabb784f5bf3d395214cc069e0851bec8dac654f05380391db21a.
+Main fast-forwards; frozen01535/38d sources and live V28 remain unchanged.
+
+The software-only01535 broad suite94255 exits0:2759 passes/six skips in
+1399.76s. JUnit SHA a39369b213298847df8a62c344d9237078f6dac0b49ebac38ae7c38ff6e9a074.
+It has zero actual calls and cannot authorize254. After its verified exit,
+start exact254 broad suite62146, with JUnit
+outputs/native-reasoned-editor-v29-verification/full-254bef6.xml. It is live.
+V28 writer13893/PID64867 still authors its final efficiency G1, three slots
+consumed and one unchanged native observation. No V29 inference is started;
+the next actual24 controls remain pending writer termination.

@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## V29 a2 is frozen; software-only a1 broad checks close
+
+V29 a2 is frozen separately at254bef6a3962f60be7e51b24b0c57d1ec992bf7b.
+Its read-only source proof verifies253 blobs and exact-source focused scope
+passes399 in74.20s. No V29 actual model call has occurred. The preserved01535
+software-only a1 broad suite exits0:2759 passes/six skips in1399.76s. After
+that verified exit, exact254 a2 broad verification starts in62146 and is live.
+Do not substitute a1's broad pass for a2's result or for actual readiness.
+
+Frozen V28 writer64867 remains live in its last author generation. Three
+attempt slots are consumed with one unchanged native observation; no changed
+valid institution or own-measured-result feedback loop is established. Fresh
+a2 actual24-control readiness waits for this writer's authoritative termination.
+The original goal remains active and unmet.
+
 ## V29 a2 preparation: unchanged observations and precise graph errors
 
 The live frozen V28 a2 writer has consumed three attempt slots with one
