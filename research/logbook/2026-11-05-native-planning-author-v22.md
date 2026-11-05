@@ -188,3 +188,33 @@ editor task in SYSTEM and the repeated-read notice in the final user message.
 The task is delivered, rather than silently replaced by a planner role. The
 remaining issue may still involve model/context interaction; no final causal
 claim or native outcome is inferred.
+
+Freeze the conditional a3 implementation at
+`d17bcce1f2f480dbcfab90129a457177a5187386`, in its own detached experiment tree
+and protocol tag. Start its full SCRIPTED suite in parallel with a2, without
+any a3 inference; JUnit destination is
+`outputs/native-planning-author-v22-verification/full-d17bcce.xml`. Neither
+the start nor a focused pass is a full-suite completion receipt.
+
+A2's first authoring generation ends with16 calls: eight plan actions, seven
+inspections and an explicit retention finish. Its terminal definition has
+`base_patch:null`; no code edit or newly authored rule exists. The native
+evaluation begins on that retained parent. Do not count plan-only progress as
+institution invention or presume the remaining a2 outcomes.
+
+Read-only inspection of an actual a2 wire records16018 input tokens within
+the requested32768-token context and a normal stop. The correct editor task
+is present. This rules out those particular missing-task/over-limit hypotheses
+for that request, not all possible backend/context/model problems.
+
+As an additional diagnostic, query local`POST /api/show`for metadata only:
+it identifies Qwen3,8.2B,Q4_K_M with completion/tools/thinking capabilities and
+a template explicitly handling the think switch. This is not a generation or
+scientific world. The application sends`think:false`and temperature0.2.
+The [official Qwen3-8B card](https://huggingface.co/Qwen/Qwen3-8B) distinguishes
+thinking for reasoning/coding from non-thinking operation and recommends
+non-thinking temperature0.7/top-p0.8/top-k20/min-p0. Thinking uses0.6/0.95/20/0.
+These recommendations do not prove the cause of our loop. Decoding or thinking
+mode is an available later engineering hypothesis, not changed in a2/a3 and
+not evidence that the8B weights inherently cannot invent a system. No provider,
+server configuration or user-owned process is changed by this inspection.
