@@ -16,9 +16,14 @@ its causal sufficiency for the observed stagnation is not established.
 See the [prospective continuation](protocols/campaigns/native-design-exploration-v20-a1.md)
 and [forward-only log](logbook/2026-11-05-native-design-exploration-v20.md).
 
-First preserve a read-only exact-wire/operand diagnosis and software checks.
-Then freeze a separate source, require fresh13-control real calibration and
-cold replay, and conditionally run a new four-slot native pilot. Do not call
+The [read-only wire diagnosis](results/native-design-stagnation-v20.md) confirms
+the conflict on all23 actual POSTs and verifies all eight unchanged edit operands,
+with128 raw files unchanged and no new inference. At frozen`65bade6`,124 focused
+SCRIPTED checks pass. All13 actual calibration controls and cold replay pass;
+the separately budgeted four-slot writer starts2026-11-05T09:20:45.967877Z.
+Its first actual request carries the repaired permission, not the contradictory
+prohibition. Outcomes remain unknown. The full SCRIPTED suite is running in
+parallel in the same frozen worktree. Do not call
 unchanged retention invention, silently accept rejected extra fields, change
 provider or substitute a toy world. The full thread goal stays active even
 if this one finite pilot fails to generate changed institutions.

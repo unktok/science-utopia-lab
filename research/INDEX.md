@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V20 actual 23-request instruction contradiction and unchanged edit operands](results/native-design-stagnation-v20.md)
+- [V20 exact read-only wire and operand diagnosis](results/native-design-stagnation-v20.json)
 - [V20 prospective repair of contradictory candidate invention instructions and actual exploration](protocols/campaigns/native-design-exploration-v20-a1.md)
 - [V20 forward-only instruction diagnosis and execution log](logbook/2026-11-05-native-design-exploration-v20.md)
 - [V19 completed finite goal: both two-generation native feedback loops, without useful invention](milestones/2026-11-04-concrete-native-feedback-v19.md)

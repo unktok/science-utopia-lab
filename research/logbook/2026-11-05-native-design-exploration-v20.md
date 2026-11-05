@@ -48,3 +48,32 @@ historical publication checks. JUnit is
 No full-suite or actual design success is inferred from that focused scope.
 The live metadata endpoint reports Ollama0.33.3. A guessed image tag metadata
 query finds no such tag; use the existing operator-bound image ID instead.
+
+Freeze runtime/protocol at`65bade64ef700b1df22f7fb3998412b2a31562b3` in the
+separate detached experiment worktree and tag
+`protocol/native-design-exploration-v20-a1`. The exact original model digest
+and pinned image ID still match; the missing guessed tag did not require an
+image build, pull or runtime substitution.
+
+Run the final read-only diagnosis from that frozen source. All23 actual wires
+contain the conflicting permission/prohibition; all eight edit operands remain
+the exact parent value. Result content hash:
+`a99a45babcc19f2f852482869c5c3c1784e993e63af0cdb496a0db0931e56c67`.
+The128 raw files remain unchanged. Start the declared actual13-control
+calibration and full SCRIPTED suite at the same frozen source. Native production
+has not started at this entry; never infer its outcome from a launch or lock.
+
+A second frozen-source read-only analysis agrees byte-for-byte with the first,
+including all128 unchanged raw files. All13 actual calibration controls pass
+in226.79202050017193 adapter seconds and cold replay succeeds. Certificate
+content hash`5f9f67084baa9ccbcd297dfcdc5b7ca5da74db85b410f6321f8c66eef4daa0bd`;
+runtime digest`1ed97f5e778260d1a21897ef1680252ed2e8cddfdc7c5f810f9c7025f8905791`.
+The calibration is an instructed interface task, not autonomous invention.
+
+Start the separately budgeted four-slot writer from the frozen source. Durable
+start receipt records2026-11-05T09:20:45.967877Z, exact argv, offline/CPU/hash
+environment and certificate. The first actual author call inspects; its wire
+contains the new invention permission and not the old prohibition. No outcome
+or changed institution is inferred from this initial read. The writer and
+parallel full-suite handles are live; do not restart either because a polling
+window yields no output. Keep the broader exploration goal active.
