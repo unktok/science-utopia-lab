@@ -60,3 +60,15 @@ def test_exact_controls_without_observed_reasoning_do_not_prove_requested_mode(t
     assert result['all_controls_passed'] is False
     with pytest.raises(ValueError):
         require_certificate(directory / 'certificate.json', BINDING, protocol='staged-v15')
+
+
+def test_raw_final_json_instruction_is_source_owned_in_planner_editor_and_controls():
+    from utopia.optimization.native_staged_author_v15 import (
+        FINAL_JSON_ONLY, PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT)
+    assert 'without Markdown fences' in FINAL_JSON_ONLY
+    for task in (PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT):
+        assert FINAL_JSON_ONLY in task
+    from utopia.optimization.native_designer_preflight import _prompt
+    _, task = _prompt(request(), initial_draft(request()), [], BINDING,
+        {'tool': 'validate'}, 'staged-v15')
+    assert FINAL_JSON_ONLY in task

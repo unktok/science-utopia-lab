@@ -15,8 +15,8 @@ requests reasoning from the same fixed local designer weights, uses eight
 calls/8192 output tokens per generation and advertises the same legal editor
 tools implementation-first. Final JSON alone is interpreted, without backend
 format grammar, content repair or reasoning-to-code salvage. Researcher/world/
-loss/provider/server settings remain unchanged. The final focused scope passes
-222 tests. Fresh14-control actual readiness must also evidence at least one
+loss/provider/server settings remain unchanged. The final raw-JSON task
+clarification passes223 focused tests. Fresh14-control actual readiness must also evidence at least one
 nonempty separate reasoning field at the new exact settings before production.
 No V24 inference is sent during V23. Close/inspect/audit V23 first under its
 declared adaptive stop; skip V24 if the full goal is already met.

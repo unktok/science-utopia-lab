@@ -32,6 +32,9 @@ JSON grammar. The host still requires exactly one JSON final action under the
 same full schema, without fence/tag stripping, repair or error-triggered format
 fallback. Bind absence of`format`in the exact wire/certificate/audit. The legacy
 one-shot request retains backend JSON mode.
+Planner/editor/instructed-control tasks explicitly require raw final JSON with
+no Markdown fences, explanatory prose or reasoning tags. This is a source-owned
+format instruction before inference, not postprocessing of a failed response.
 
 Preserve raw response bodies, including any separate reasoning field. Only final
 content is parsed as the literal JSON action. Do not salvage a candidate from

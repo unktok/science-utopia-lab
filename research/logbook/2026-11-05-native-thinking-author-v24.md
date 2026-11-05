@@ -109,3 +109,32 @@ V23 operator binding and its preflight plan's original-parent request, under
 observed separate reasoning evidence and cold replay must pass before a new
 `outputs/native-thinking-exploration-v24-a1`production writer. Never borrow the
 older V23 certificate. The full goal remains active and unchanged.
+
+## Final raw JSON task clarification before any V24 inference
+
+The previous turn is progress, not completion: reasoning transport/editor
+presentation are implemented, and V23/V24 software processes are revalidated
+live. No new institutional source is yet verified.
+
+Before the first V24 model call, explicitly require raw final JSON without
+Markdown fences, prose or reasoning tags in planner/editor/control tasks. This
+is a source-owned format instruction, not response postprocessing. Keep every
+literal expected control, strict final parser, host schema and legal action
+unchanged. The revised focused scope passes223 tests in57.51s; JUnit is
+`outputs/native-planning-author-v22-verification/v24-final-json-contract-prelaunch.xml`.
+
+Prepare a second clean source freeze for the same as-yet-unexecuted V24 a1,
+under a distinct source2 tree/tag. Never edit or repoint the earlier5bf frozen
+tree/tag; its full software result remains scoped to that prepared source.
+No V24 actual readiness or production has occurred on either source at this
+entry. The first actual a1 certificate/driver must use only the final source2
+pin, not the earlier preparation. Its scientific budgets/losses/world are
+unchanged by this format clarification. The earlier next-action reference to
+the5bf tree is superseded before inference, not retried after a failed call.
+
+For completion, inspect actual different executable institution rules and their
+native execution/effects under the selected loss, then own measured-result
+feedback and a subsequent measured proposal. Repeated worlds of one retained
+system, plans, unused fields, comments or merely different source hashes are
+insufficient. A non-improving but genuinely different measured system remains
+an admissible result; no candidate novelty/merit veto is added to the search.
