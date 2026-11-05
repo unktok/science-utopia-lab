@@ -2,13 +2,15 @@
 
 Updated: 2026-11-05
 
-## V24 reasoning workflow prepared while V23 native measurements continue
+## V24 actual reasoning readiness after the closed unchanged V23 arm
 
-The first V23 plan correctly interprets the loss sign, but its first16-call
-generation again finishes as exact parent retention without a literal edit.
-Its native measurement/remaining own-result feedback are still running here;
-the full goal remains unmet. Exact V23 software source`fa2b973`passes2628
-SCRIPTED checks/six skips in1580.12s; software success is not invention.
+V23 closes both throughput generations/worlds at`[-1,-1]`, both exact parent
+retentions. All32 replies are plans/reads/finishes, with zero edits. Two matching
+original-source/raw audits verify184 scientist replies and16 inherited-code
+executions. The [closed result](results/native-numeric-objective-exploration-v23-a1.md)
+separately verifies writer exit130 and two unexecuted queued slots; incomplete
+budget flags do not imply a live writer. The full exploration goal remains
+unmet. Exact V23 source`fa2b973`passes2628 software checks/six skips in1580.12s.
 
 The [conditional V24 workflow](protocols/campaigns/native-thinking-exploration-v24-a1.md)
 requests reasoning from the same fixed local designer weights, uses eight
@@ -18,11 +20,15 @@ format grammar, content repair or reasoning-to-code salvage. Researcher/world/
 loss/provider/server settings remain unchanged. The final raw-JSON task
 clarification passes223 focused tests. Fresh14-control actual readiness must also evidence at least one
 nonempty separate reasoning field at the new exact settings before production.
-No V24 inference is sent during V23. Close/inspect/audit V23 first under its
-declared adaptive stop; skip V24 if the full goal is already met.
+After V23's authoritative exit and matching audits, final V24 source2`200bf74`
+starts fresh14-control actual readiness. Its first exact control also has a
+nonempty separate reasoning field; this is not yet all controls or invention.
+No V24 native production is launched here. The final-source broad software
+suite is running; the superseded5bf software scope is explicitly stopped,
+not recorded as a full pass. The earlier frozen source/tag remains untouched.
 See the [forward-only log](logbook/2026-11-05-native-thinking-author-v24.md).
 
-## V23 actual institutional exploration running after closed unchanged V22 a2
+## V23 closed unchanged feedback arm after V22 a2
 
 V22 a2 closes both throughput worlds at`[-1,-1]`, both exact parent retentions.
 Its28 replies are14 plans/12 reads/two finishes, with zero edits or new source.
@@ -46,9 +52,10 @@ The corrected focused scope passes195 SCRIPTED tests. At frozen`fa2b973`, all14
 actual controls and cold replay subsequently pass in371.98 adapter seconds.
 The four-slot writer starts`2026-11-05T12:21:30.649892+00:00`, after a2's exit
 and matching audits. Its first plan correctly identifies increasing A as lowering
-loss and proposes pre-review, but changed code/native execution remains unshown
-at this entry. Broad software checks remain running. A3 is superseded before
-inference, not a failed actual trial. The full goal remains active.
+loss and proposes pre-review, but G1 again misinterprets the sign and neither
+generation changes code. The later closed result is linked above. Broad checks
+finish2628/six skips. A3 is superseded before inference, not a failed actual
+trial. The full goal remains active.
 
 A2's exact-source full software suite passes2611 tests/six skips in1458.61s.
 A3's separate prepared-source suite passes2614 tests/six skips in1468.90s.
