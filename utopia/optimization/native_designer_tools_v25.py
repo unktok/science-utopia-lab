@@ -25,12 +25,17 @@ TOOL_RESPONSE_ONLY = (
 CONTROL_TARGET_NOTE = (
     'The JSON below is target DATA, not a previous assistant call or a completed tool result. '
     'Copy its function name and every literal argument into one NEW Hermes tool_call envelope. '
+    'Use exactly its argument keys: do not add optional arguments, defaults or notes, '
+    'and do not carry fields over from a previous call. '
     'Do not claim that the target action has already executed. Do not substitute finish; '
     'return finish only when the target function name itself is finish. ')
 
 DESCRIPTIONS = {
     'plan': 'Store your own institutional design hypothesis; this does not implement or execute it.',
-    'inspect': 'Read an exact current draft JSON address or a trusted capability ABI. No candidate mutation.',
+    'inspect': ('Read an exact current draft JSON address or a trusted capability ABI. No candidate mutation. '
+        'Without selector, path is relative to the whole document. With selector, path is relative '
+        'to that mechanism only. A document-root address must not carry a mechanism selector '
+        'from a previous call. Reuse a returned reusable_address as one complete address form.'),
     'edit': 'Apply your literal atomic add/remove/replace edits to arbitrary system JSON, code and wiring.',
     'splice': 'Edit any existing string by Unicode codepoints, including arbitrary literal Python source.',
     'configure': 'Set an optional distribution over authored literal edits, not institutional behavior by itself.',

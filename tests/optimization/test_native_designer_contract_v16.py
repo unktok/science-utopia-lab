@@ -324,6 +324,7 @@ def test_control_targets_are_literal_function_data_not_prior_executed_calls():
         prompt, task = p._prompt(req, initial_draft(req), [], BINDING, case['expected'], 'staged-v15')
         messages = build_conversation(prompt, task, mode='interface-control-v16', native_tools=True)
         assert CONTROL_TARGET_NOTE in messages[0]['content'] and CONTROL_TARGET_NOTE in messages[-1]['content']
+        assert 'exactly its argument keys' in CONTROL_TARGET_NOTE and 'do not carry fields over' in CONTROL_TARGET_NOTE
         target = messages[0]['content'].split('nothing is executed or adopted.\n')[1]
         actual, _ = json.JSONDecoder().raw_decode(target)
         assert actual == function_data(case['expected'])

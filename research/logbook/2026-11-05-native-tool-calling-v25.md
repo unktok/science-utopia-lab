@@ -147,3 +147,37 @@ The plan records max14 POSTs and that exact a2 source. First two controls pass,
 including edit/add17 that failed in a1; this is partial literal-control evidence,
 not all14/cold replay or invention. Do not launch native production yet.
 The separate7f broad software scope is still running and has no final result.
+
+## A2 literal address failure and a3 exact argument clarification
+
+A2 passes the first11 actual controls, including real LF, the large integer
+and observed planner reasoning. It fails the12th, sequence-reinspect, when the
+reply adds selector/resource/rationale to a target containing only the absolute
+path. The added selector changes address scope and would be invalid for that
+root pointer. Literal equality fails before interpreter application. Preserve
+the known parsed wrong action and original body, all12 POSTs/replies,
+372.12785191764124s adapter time,139911 input/740 output tokens and failed
+certificate
+`f2a6d3779e75110a90844cb42db8f58d374fbde72e18c3a5b19843b4eff1ca2d`.
+Session87059 exits1; no a2 native world starts. Validate/finish are unexecuted.
+
+Declare [a3](../protocols/campaigns/native-tool-calling-exploration-v25-a3.md)
+before new inference: clarify exact argument keys/no defaults or history-field
+carryover for controls, and describe both existing inspect address forms at
+the function signature. Keep expected values, schema, resolver, parser, roles,
+budgets, world/loss and all scientific author freedom unchanged. The initial
+scope passes276 checks in31.07s. Add an actual original-world source inspection
+regression proving both legal forms agree and the mixed form rejects without
+host repair; the final scope is separate and not added to that count.
+
+The broad exact7f source closes2694 passes/six skips in1079.55s (session12831
+exit0), JUnit SHA
+`c53caa64b71f3e4f846083b4f7e1bc09d14ca9121e8e6c1009a57533e0e4b912`.
+This does not override a1's failed actual control. It is not a broad-suite claim
+for a2/a3 or proof of invention.
+
+Final a3 prelaunch scope passes277 checks in31.19s, JUnit
+`outputs/native-tool-calling-v25-verification/focused-a3-final-prelaunch.xml`.
+It includes the original19-node world's exact source through both legal address
+forms and rejection of the observed mixed form, with no mutation/host repair.
+No a3 model call has occurred at this entry. The full goal remains active.

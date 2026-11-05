@@ -115,6 +115,39 @@ def test_host_properties_are_inline_and_do_not_depend_on_backend_ref_support():
             assert '$ref' not in field
 
 
+def test_inspect_address_help_explains_both_forms_without_changing_the_schema():
+    tools = {item['function']['name']: item['function'] for item in tool_specifications()}
+    assert 'Without selector' in tools['inspect']['description']
+    assert 'With selector' in tools['inspect']['description']
+    assert 'document-root address must not carry a mechanism selector' in tools['inspect']['description']
+    Draft202012Validator(tools['inspect']['parameters']).validate({'path': '/mechanisms/7/parameters/code_artifact/source'})
+    Draft202012Validator(tools['inspect']['parameters']).validate({
+        'selector': {'mechanism_id': 'world.selection'}, 'path': '/parameters/code_artifact/source'})
+
+
+def test_original_world_inspection_keeps_address_forms_distinct_without_host_repair():
+    from tests.optimization.test_native_authoring_ir import request, BINDING, IMAGE
+    from utopia.optimization.native_staged_author_v15 import initial_draft, transition
+    from utopia.system.native_open_examples import open_native_system
+    req = request(); req['parent_system'] = open_native_system(IMAGE).to_dict()
+    state = initial_draft(req)
+    index = next(i for i, node in enumerate(state['document']['mechanisms'])
+        if node['mechanism_id'] == 'world.selection')
+    absolute = f'/mechanisms/{index}/parameters/code_artifact/source'
+    mixed = {'tool': 'inspect', 'path': absolute, 'resource': 'draft',
+        'selector': {'mechanism_id': 'world.selection'}, 'rationale': 'SCRIPTED observed wrong address form'}
+    unchanged, failed = transition(state, mixed, req, binding_sha256='d' * 64, provider_binding=BINDING)
+    assert unchanged == state and not failed['ok']
+    values = []
+    for address in [{'path': absolute}, {'selector': {'mechanism_id': 'world.selection'},
+            'path': '/parameters/code_artifact/source'}]:
+        unchanged, receipt = transition(state, {'tool': 'inspect', **address}, req,
+            binding_sha256='d' * 64, provider_binding=BINDING)
+        assert unchanged == state and receipt['ok']
+        values.append(receipt['result']['value'])
+    assert values[0] == values[1]
+
+
 def test_no_prose_fence_bare_json_or_valid_prefix_salvage():
     message = message_from_action({'tool': 'validate'})
     for content in ['prose\n' + message['content'], message['content'] + '\nprose',

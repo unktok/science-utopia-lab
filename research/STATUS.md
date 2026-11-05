@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V25 a2 fails the12th control and a3 clarifies argument carryover
+
+A2 passes11 actual controls, then adds a selector/resource/rationale to an
+absolute-path-only reinspect target. Strict equality rejects it before action
+application. Preserve12 POSTs/372.13 adapter seconds,139911/740 tokens and the
+failed certificate; no a2 native world starts. Two controls remain unexecuted.
+
+The [a3 preparation](protocols/campaigns/native-tool-calling-exploration-v25-a3.md)
+requires exact target argument keys in controls and explains existing root/
+selected address forms in inspect's description. No expected value, schema,
+resolver, parser, inference setting, scientific world/loss or legal author
+action changes. Fresh actual14-control readiness is required. The separate7f
+software suite closes2694 passes/six skips, without overriding its failed a1
+actual control. The full goal remains unmet and active.
+
+The final a3 focused scope passes277 checks in31.19s, including both address
+forms on the original world's source. Clean source freeze and fresh actual
+readiness remain required; no a3 model call has started at this entry.
+
 ## V25 a2 actual readiness is running after the failed a1 control
 
 Actual a1 source2 `7f03f00` returns a valid Hermes finish instead of the first
