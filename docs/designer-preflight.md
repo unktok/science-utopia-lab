@@ -41,12 +41,12 @@ model digest and sandbox image identity. Neither path is browser-selected.
   --certificate <evidence-directory>/certificate.json
 ```
 
-Current V28 staged: at most24 generation POSTs; one-shot: at most8. These are real inference
+Current staged: at most24 generation POSTs; one-shot: at most8. These are real inference
 costs, not zero-cost validation. Declare their budget before running. No native
 world or generated source is executed by calibration. Use a new output directory
 for every source/revision; retain failures. Do not keep retrying until one passes.
 
-The current staged source uses the same fixed local Qwen3-8B in two caller-owned
+V24–V28 staged sources use the same fixed local Qwen3-8B in two caller-owned
 roles: thinking planner at temperature0.6 and non-thinking literal editor at0.2.
 Both use top-p0.95, top-k20, min-p0,32768 context and8192 output tokens.
 Twenty-three editor controls and one planner control use their actual role settings;
@@ -119,6 +119,26 @@ advertisement, role evidence and cold replay. Historical14-control certificates
 do not authorize this source. Typed field controls reset between cases and may
 temporarily make a field invalid; only the later continuous validate/finish
 claims static graph validity. This is compatibility, not invention evidence.
+
+V29 prospectively enables separate reasoning for the institutional code/graph
+editor at temperature0.6; planner remains0.6/true, and all other sampling,
+context/output budgets, actions and researchers remain unchanged. Final
+submission also uses editor reasoning settings. The same24 controls must pass
+again at the new source, with observed original separate thinking evidence for
+each requested role. Planner and editor evidence cannot substitute for each
+other. This checks role-mode compatibility, not authenticity/correctness of
+deliberation. Never parse reasoning as an action or include it in completed
+assistant history; an incomplete/invalid final response still fails. More
+reasoning may consume the finite context/output budget and is not guaranteed
+to fix free design. No actual V29 call has occurred at this entry.
+
+V29 also replaces only exact duplicated generation-failure bodies in editor
+wire context with explicit own-history references, full key maps and hashes.
+All referenced fields remain present once; unknown/mismatched evidence stays
+fully inline. Source-free planners retain their complete self-contained failure
+body. No loss, receipt, trial or missing value is discarded, and no raw request
+is rewritten. This reduces one observed overflow input but does not guarantee
+free-editor capacity; directed controls and free design remain separate evidence.
 
 Pass `--designer-preflight <certificate.json>` to:
 

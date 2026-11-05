@@ -187,14 +187,14 @@ def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(cert
     assert roles == ['editor'] * 16 + ['planner'] + ['editor'] * 7
     for index, record in enumerate(value['records']):
         payload = record['transport']['request_payload']
-        assert payload['think'] is (index == 16)
-        assert payload['options']['temperature'] == (.6 if index == 16 else .2)
+        assert payload['think'] is True
+        assert payload['options']['temperature'] == .6
         assert payload['options']['num_predict'] == 8192 and payload['format'] == 'json'
         assert 'tools' not in payload  # do not enter the backend's float64 tool-argument parser
         assert '<tools>' in payload['messages'][0]['content']
         assert payload['truncate'] is False and payload['shift'] is False
     assert value['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 1
-    assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 0
+    assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 23
     assert value['reasoning_evidence']['all_role_modes_compatible'] is True
 
 

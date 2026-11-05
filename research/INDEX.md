@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V29 prospective reasoning for code/graph implementation](protocols/campaigns/native-reasoned-editor-v29-a1.md)
+- [V29 separate implementation and actual failure boundary](logbook/2026-11-06-native-reasoned-editor-v29.md)
+
 - [V27 a2 closed author failures, measured overflow and one unchanged world](results/native-literal-workbench-v27-a2.md)
 - [V27 a2 two matching unmodified original-source raw audits](results/native-literal-workbench-v27-a2.json)
 

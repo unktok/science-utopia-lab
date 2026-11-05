@@ -629,7 +629,7 @@ def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
-            assert self.payload['think'] is False and self.payload['stream'] is False
+            assert self.payload['think'] is True and self.payload['stream'] is False
             assert self.payload['options']['top_p'] == .95 and self.payload['options']['top_k'] == 20
             assert self.payload['options']['min_p'] == 0.0
             from utopia.optimization.native_designer_tools_v25 import response_message_from_action as message_from_action

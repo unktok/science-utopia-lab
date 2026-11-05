@@ -23,9 +23,9 @@ def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
         'top_p': .95, 'top_k': 20, 'min_p': 0.0, 'seed': actual['options']['seed']}
     assert messages == original
     assert decoding_contract('staged-v15')['max_tokens'] == 8192
-    editor = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.2,
+    editor = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.6,
         role='editor')
-    assert editor['think'] is False and editor['options']['temperature'] == .2
+    assert editor['think'] is True and editor['options']['temperature'] == .6
     legacy = designer_payload('one-shot-v14', BINDING, messages, ('SCRIPTED',), max_tokens=2048, temperature=.2)
     assert legacy['think'] is False and legacy['format'] == 'json'
     assert legacy['options'] == {'temperature': .2, 'num_predict': 2048, 'num_ctx': 32768,
@@ -109,7 +109,7 @@ def test_staged_dispatch_uses_caller_owned_planner_then_literal_editor_temperatu
     model = Model([PLAN, {'tool': 'finish', 'rationale': 'SCRIPTED explicit retention'}])
     result = author(model, tmp_path, max_steps=3)(request())
     assert result['base_patch'] is None
-    assert [call['temperature'] for call in model.calls] == [.6, .2]
+    assert [call['temperature'] for call in model.calls] == [.6, .6]
     assert task_decoding_role(PLAN_SYSTEM_PROMPT) == 'planner'
     assert task_decoding_role(SYSTEM_PROMPT) == task_decoding_role('UNTRUSTED planner request') == 'editor'
 
@@ -121,10 +121,8 @@ def test_editor_reasoning_fields_cannot_substitute_for_missing_planner_mode_evid
         def post(self, url, **kwargs):
             response = super().post(url, **kwargs)
             payload = json.loads(kwargs['data'])
-            if payload['think']:
+            if payload['messages'][0]['content'].startswith('INSTRUCTED PLANNING INTERFACE CONTROL'):
                 response.body['message'].pop('thinking', None)
-            else:
-                response.body['message']['thinking'] = 'SCRIPTED unexpected editor field'
             return Response(response.body)
     monkeypatch.setattr('requests.Session', WrongRoleSession)
     result = run_calibration(tmp_path / 'wrong-role', request=request(), provider=BINDING)
@@ -134,18 +132,18 @@ def test_editor_reasoning_fields_cannot_substitute_for_missing_planner_mode_evid
     assert result['all_controls_passed'] is False
 
 
-def test_requested_planner_evidence_does_not_hide_unexpected_editor_reasoning(tmp_path, monkeypatch):
+def test_requested_planner_evidence_does_not_hide_missing_editor_reasoning(tmp_path, monkeypatch):
     from tests.optimization.test_native_designer_contract_v16 import ScriptedSession, Response
     from utopia.optimization.native_designer_preflight import run_calibration
-    class ExtraEditorThinkingSession(ScriptedSession):
+    class MissingEditorThinkingSession(ScriptedSession):
         def post(self, url, **kwargs):
             response = super().post(url, **kwargs)
-            if not json.loads(kwargs['data'])['think']:
-                response.body['message']['thinking'] = 'SCRIPTED unexpected literal-editor reasoning'
+            if not json.loads(kwargs['data'])['messages'][0]['content'].startswith('INSTRUCTED PLANNING INTERFACE CONTROL'):
+                response.body['message'].pop('thinking', None)
             return Response(response.body)
-    monkeypatch.setattr('requests.Session', ExtraEditorThinkingSession)
+    monkeypatch.setattr('requests.Session', MissingEditorThinkingSession)
     result = run_calibration(tmp_path / 'unexpected-editor-thinking', request=request(), provider=BINDING)
     assert len(result['records']) == 24 and all(record['ok'] for record in result['records'])
-    assert result['reasoning_evidence']['all_requested_roles_observed'] is True
+    assert result['reasoning_evidence']['all_requested_roles_observed'] is False
     assert result['reasoning_evidence']['all_role_modes_compatible'] is False
     assert result['all_controls_passed'] is False

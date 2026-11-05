@@ -938,6 +938,9 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         # Literal workbench entries already index every current node. Avoid
         # duplicating the older descriptor-only node index in the actual wire.
         context['draft_index'].pop('mechanisms', None)
+    from .native_authoring_feedback_v26 import reference_duplicate_failures
+    context['own_trial_feedback'] = reference_duplicate_failures(
+        context['own_trial_feedback'], context['own_history'])
     from .native_objective_view import loss_arithmetic, wire_objective_view
     context['loss_arithmetic'] = loss_arithmetic(context.pop('exact_loss_spec'))
     context['optimization_task_view'] = wire_objective_view(context['optimization_task_view'])

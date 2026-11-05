@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V28 free-design failures continue; V29 is prepared separately
+
+Frozen V28 a2 remains live. Throughput G0 explicitly finishes but is rejected
+for invalid ports/connections; no native observation is produced. G1 step1
+reports actual HTTP400 input33372 above32768, followed by invalid replies near
+the context boundary. Do not call the existing24-control pass a free-design
+capacity guarantee or classify all rejection as a software bug.
+
+Separate V29 enables reasoning for code/graph implementation and uses exact
+references for duplicate failure bodies, retaining all fields once in editor
+context and full self-contained planner feedback. Its current351-check scope
+passes in67.11s; no V29 actual call has occurred. A clean freeze and fresh24
+actual controls after V28 termination are required before native exploration.
+The full original goal stays active and unmet. Exact38d V28 broad software
+verification is still running; no broad pass is claimed at this entry.
+
 ## All24 actual V28 a2 controls pass; native exploration starts
 
 At frozen38d1fb4, all24 exact actual controls, role-mode evidence and cold

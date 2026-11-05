@@ -80,11 +80,11 @@ def test_prospective_driver_freezes_all_loss_and_step_budgets_before_calls():
     assert plan['budget']['per_call_output_tokens'] == 8192
     assert plan['designer_decoding']['planner']['think'] is True
     assert plan['designer_decoding']['planner']['temperature'] == .6
-    assert plan['designer_decoding']['editor']['think'] is False
-    assert plan['designer_decoding']['editor']['temperature'] == .2
-    assert plan['classification'] == 'actual-local-qwen-native-field-addressing-development-v28'
-    assert plan['engineering_revision'] == 'v28-a2'
-    assert plan['protocol'] == 'research/protocols/campaigns/native-field-addressing-v28-a2.md'
+    assert plan['designer_decoding']['editor']['think'] is True
+    assert plan['designer_decoding']['editor']['temperature'] == .6
+    assert plan['classification'] == 'actual-local-qwen-native-reasoned-editor-development-v29'
+    assert plan['engineering_revision'] == 'v29-a1'
+    assert plan['protocol'] == 'research/protocols/campaigns/native-reasoned-editor-v29-a1.md'
 
 
 def test_staged_queue_observes_exact_journals_and_cold_resume_without_redispatch(tmp_path):

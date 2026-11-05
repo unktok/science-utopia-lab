@@ -1,7 +1,7 @@
 """Source-owned local designer decoding, shared by sender/calibration/auditor.
 
 Weights and researcher inference are unchanged. The staged institutional
-planner requests reasoning; the literal editor does not. One complete final
+planner and institutional code editor request reasoning. One complete final
 JSON function object becomes a tool action, with strict literal arguments.
 """
 from utopia.system.design_patch import clone, digest
@@ -9,7 +9,7 @@ from utopia.system.design_patch import clone, digest
 STAGED_MAX_STEPS = 8
 STAGED_MAX_TOKENS = 8192
 STAGED_PLANNER_TEMPERATURE = .6
-STAGED_EDITOR_TEMPERATURE = .2
+STAGED_EDITOR_TEMPERATURE = .6
 
 
 def decoding_contract(protocol, *, role=None):
@@ -17,7 +17,7 @@ def decoding_contract(protocol, *, role=None):
         role = role or 'editor'
         if role not in ('planner', 'editor'):
             raise ValueError('unknown source-owned designer role')
-        return {'think': role == 'planner', 'backend_format': 'json', 'response_channel': 'function-json-v26',
+        return {'think': True, 'backend_format': 'json', 'response_channel': 'function-json-v26',
             'context_policy': {'truncate': False, 'shift': False},
             'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,

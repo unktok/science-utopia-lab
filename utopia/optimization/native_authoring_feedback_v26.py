@@ -2,6 +2,36 @@
 from utopia.system.design_patch import clone, digest
 
 
+def reference_duplicate_failures(feedback, history):
+    """Editor-only exact references; all original failure fields stay visible once.
+
+    First planners do not receive own_history, so their feedback is never
+    passed through this projection. Unknown/unmatched fields keep the full body.
+    """
+    result = clone(feedback)
+    records = history.get('generation_authoring_failures') or []
+    for trial in result.get('all_own_trials', []):
+        failure = trial.get('generation_failure')
+        if not isinstance(failure, dict) or not failure:
+            continue
+        matches = [(index, item) for index, item in enumerate(records)
+            if item.get('history_index') == trial.get('history_index')]
+        if len(matches) != 1:
+            continue
+        index, record = matches[0]
+        mapping = {key: ('failure_schema' if key == 'schema' else key) for key in failure}
+        if (record.get('exact_generation_failure_sha256') != digest(failure)
+                or any(target not in record or digest(record[target]) != digest(failure[key])
+                    for key, target in mapping.items())):
+            continue
+        trial['generation_failure'] = {
+            'exact_literal_reference': '/own_history/generation_authoring_failures/' + str(index),
+            'referenced_field_map': mapping, 'original_failure_sha256': digest(failure),
+            'scope': 'Every original failure field is present exactly at the reference, using the '
+                'explicit field map. No failure, cause, step receipt or missing value is discarded.'}
+    return result
+
+
 def own_trial_feedback(request):
     """Project every own archived trial without reading another arm or source file.
 
