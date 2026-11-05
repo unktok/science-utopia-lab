@@ -316,3 +316,18 @@ implementation, but the literal document has not changed: this is not invention
 or completion of the full goal. Preserve that discrepancy rather than accept
 model narration as execution evidence. Native evaluation/own-result feedback
 and the remaining scheduled slots are still pending at this observation.
+
+The exact-source broad software suite closes with2646 passes/six skips in
+1367.79s (session78653 exit0). JUnit SHA:
+`1ed932dc051a79c66eae7bff7034bf7f8fb240039748b385e1612fc5798830d7`.
+This verifies that software scope, not autonomous invention.
+
+Throughput G0 completes with observation
+`observation-native-adaptive-0712b6eb3620fced3adabdae`, A=1 and loss=-1,
+without technical failures. G1's dispatched planner input contains that exact
+observation ID in both its own-history basis and loss breakdown; recomputation
+from measured A agrees with the recorded loss. G1's initial plan omits the
+required tool field and is rejected, then its next call supplies the plan
+envelope. It subsequently repeats the same nonexistent code-artifact path on
+the tensor node. These are charged model-authored actions, not dropped edits
+or host repairs. The current finite production run remains live.

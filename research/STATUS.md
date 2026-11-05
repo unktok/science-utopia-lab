@@ -9,12 +9,16 @@ planner has separate reasoning evidence; all13 literal editor controls have
 none, matching their requested profiles. Preserve14 POSTs/392.47 adapter
 seconds and155799/790 reported input/total output tokens. The native writer
 starts `2026-11-05T13:52:03.304606+00:00` at that exact source. Its source-specific
-broad software suite is separately still running.
+broad software suite subsequently closes2646 passes/six skips in1367.79s.
 
 First-generation authoring produces a plan but only an identical binding
 replacement, not a changed executable institution. The model's finish narration
 is not accepted as implementation evidence. Native measurements, own-result
-feedback and the remaining scheduled slots are pending; the full goal remains
+feedback and the remaining scheduled slots were pending at that observation.
+G0 subsequently measures A=1/loss=-1 without technical failure; its exact
+observation ID and recomputed loss reach G1's planner. G1 is still authoring,
+including a rejected missing-tool envelope and repeated nonexistent code reads.
+The full goal remains
 unmet and active. See the [forward-only log](logbook/2026-11-05-native-thinking-author-v24.md).
 
 ## V24 a3 role separated workflow prepared after a2 string fidelity failure
