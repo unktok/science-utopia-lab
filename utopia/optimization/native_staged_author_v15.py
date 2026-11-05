@@ -28,6 +28,7 @@ from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from .native_designer_decoding_v24 import (
     decoding_contract, STAGED_MAX_STEPS, STAGED_MAX_TOKENS, designer_payload)
+from .native_contract_notices import STAGE_PARAMETER_RULE
 
 PROTOCOL = 'scienceutopia.staged-author.v15'
 REQUEST = 'scienceutopia.staged-author-request.v15'
@@ -274,7 +275,8 @@ The host never supplies missing algorithms/wires, substitutes baseline, executes
 your source on the host or spends native probes during authoring.
 """
 
-ABI_CONTRACT = (CODE_CONTRACT_LAYOUT + '\n\nPython-node ABI:' + ABI_INSTRUCTIONS.split('Python-node ABI:', 1)[1]
+ABI_CONTRACT = (CODE_CONTRACT_LAYOUT + '\n\n' + STAGE_PARAMETER_RULE
+    + '\n\nPython-node ABI:' + ABI_INSTRUCTIONS.split('Python-node ABI:', 1)[1]
     .rsplit('Read the actual parent', 1)[0])
 
 

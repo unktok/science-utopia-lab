@@ -1,4 +1,4 @@
-# V32 technical layout diagnosis, separate from live V31
+# V32 technical layout and consumer diagnosis, separate from live V31
 
 The user reiterates autonomy until the full actual changed-candidates/own-result
 goal is done and asks whether this is another bug. Do not substitute a passing
@@ -53,3 +53,55 @@ internal SSE stream or explicit triggering error. Do not assert which internal
 cause occurred, a GPU failure, template parse failure, or exact binary/source
 identity from the version label alone. No backend update/restart or new inference
 is performed by this read-only investigation (access2026-11-05 UTC).
+
+Main fast-forwards the289-check implementation43fa788 while the original
+frozen c62 pilot stays unchanged. Read-only exact43 source proof81932 exits0
+with254 blobs. Its broad software suite79607 runs in the separate clean
+track-native-contract-layout-v32 tree; preserve that source and suite scope.
+
+V31 efficiency G0 then reveals another concrete barrier: steps01/03 replace
+world.review.parameters with required_reviewers3 then2; steps02/04 add
+pre_screening_enabled=true to world.submission.parameters. The original
+native.phase.review.v1 and native.activity.submission.v1 handlers do not read
+these parameter dictionaries. Valid data is not an implemented behavioral
+change. G0 explicitly finishes at05 and proceeds to native measurement; do not
+veto it or claim a functional invention from the author's explanation.
+
+Develop the consumer-contract addition separately in track-native-consumer-contract-v32
+from maind50bb3a, not in the live c62 or broad-testing43 trees. Source-owned
+editor ABI explains these specific adapter semantics; read-only notices name
+the nonempty parameter dictionaries, without deleting/rejecting or activating
+them. Only registered original phase stages and the five activity adapters at
+version1 are identified, never arbitrary implementation source or unknown keys.
+The notice is not a whole-system-effect claim or a scientific veto.
+
+Initial scripted scope has99 passes/two failures: the isolated submission test
+stub omits portable_safe_point, and extra explanatory prose exceeds the existing
+40000-byte prompt check by106 bytes. Correct the stub and shorten only the new
+trusted instruction, not any observed values or that existing size threshold.
+Keep these failed checks visible; no production/model input has been dispatched
+for V32. A2 supersedes software-only a1 before any actual calibration/inference;
+its conditional protocol preserves a1 checks and all V31 costs/failures.
+
+After correcting the missing safe-point stub,100 checks pass but the same
+40106-byte prompt fails: the planning frame omits the editor ABI, so shortening
+that editor rule cannot change this particular frame. Shorten the new trusted
+notice-scope wording instead. Keep the40000-byte check and all observed data.
+Final overlapping focused scope296 passes in16.97s, JUnit
+outputs/native-contract-layout-v32-verification/focused-a2-development.xml,
+SHA248eb9c2b707a9304edc3cc10f2fefb2c99aeb529f59a18538ed959cfb739bd1.
+
+Extend the existing original19-node/27-wire paired native-physics/pinned-Docker
+regression with the exact final V31 G0 two-parameter edit. All85 complete
+SCRIPTED scientist request payloads including sampling seeds match the original
+parent, with raw audit identities still separate. Preserve the existing unused
+late-version case too. The suite passes9 in20.28s, JUnit
+outputs/native-contract-layout-v32-verification/paired-provenance-a2-development.xml.
+These simulated-model/corpus engineering runs perform zero actual Qwen calls
+and are not additional scientific worlds, candidate measurements or proof of
+bitwise-deterministic real backend outputs. They support the exact local
+consumer diagnosis and preserved model-input invariance for these edits.
+
+Add durable project instructions distinguishing parameter labels from actual
+consumers and HTTP200 from final completion. Do not turn either safeguard into
+a hidden scientific veto or a license to repair generated behavior.

@@ -36,3 +36,11 @@
 - Distinguish exact-copy task noncompliance from corrupted operative arguments.
   Allowed optional production annotations must not be silently stripped to pass
   a failed copy control; retain its raw reply/cost and predeclare any new input.
+- A changed parameter name or an author's claimed effect is not evidence of
+  implemented behavior. Trace the actual consumer and preserve local adapter
+  consumption notices as non-veto information, never a new novelty/merit gate.
+  Do not make arbitrary parameters operative by silently implementing the
+  author's prose; the generated system must contain its own actual consumer.
+- HTTP 200 alone is not completion evidence. Preserve incomplete provider
+  envelopes and unknown costs, require the declared final-response signal, and
+  distinguish a related upstream defect from a proven cause of the local event.

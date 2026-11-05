@@ -106,8 +106,9 @@ def test_work_snapshot_keeps_raw_audit_records_and_legacy_renderer_but_projects_
         render_work_prompt(request, {**old, 'model_provenance_view': 'unrecognized'})
 
 
+@pytest.mark.parametrize('edit_kind', ['late-unused-version', 'v31-unused-adapter-parameters'])
 def test_original_19_node_world_inert_late_parameter_does_not_change_any_scientist_request(
-        tmp_path, fixed_corpus, monkeypatch):
+        tmp_path, fixed_corpus, monkeypatch, edit_kind):
     """SCRIPTED backend/corpus, real native phases and pinned Docker; not science evidence."""
     from dataclasses import replace
     from tests.runtime.test_portable_checkpoint_integration import BINDING, DIRECTION, FakeHTTPModel, SmallRealSimulation, seed
@@ -118,8 +119,15 @@ def test_original_19_node_world_inert_late_parameter_does_not_change_any_scienti
     executor = DockerCodeExecutor(timeout=60.)
     parent = open_native_system(executor.image_id)
     nodes = list(parent.mechanisms)
-    node = nodes[7]
-    nodes[7] = replace(node, parameters={**node.parameters, 'version': 1})
+    if edit_kind == 'late-unused-version':
+        node = nodes[7]
+        nodes[7] = replace(node, parameters={**node.parameters, 'version': 1})
+    else:
+        # Exact final V31 a2 efficiency G0 metadata, not an invented policy.
+        authored = {'world.review': {'required_reviewers': 2},
+                    'world.submission': {'pre_screening_enabled': True}}
+        nodes = [replace(node, parameters=authored[node.mechanism_id])
+                 if node.mechanism_id in authored else node for node in nodes]
     inert = replace(parent, mechanisms=tuple(nodes))
     assert parent.fingerprint != inert.fingerprint
     assert len(parent.mechanisms) == len(inert.mechanisms) == 19

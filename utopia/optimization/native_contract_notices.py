@@ -7,8 +7,22 @@ Only explicit root-level type declarations are diagnosed conservatively.
 from utopia.system.design_patch import clone
 
 JSON_TYPES = frozenset({'null', 'boolean', 'object', 'array', 'number', 'integer', 'string'})
-SCOPE = ('Explicit top-level schema types in current code artifacts only; not general JSON '
-    'Schema satisfiability, generated-source analysis, factor-support enumeration or native execution.')
+SCOPE = ('Explicit code-schema root types and original adapter parameter-consumption facts only; '
+    'no general schema satisfiability, source/use analysis, factor enumeration or native execution.')
+STAGE_PARAMETER_RULE = (
+    'Original native.phase.*.v1 stages and native.activity.*.v1 '
+    'resubmissions/research/collaboration/submission/funding adapters do not read '
+    'mechanism.parameters. Adding keys does not change their routines. Explicitly '
+    'author a consuming code/process/wiring and use the actual native effect ABI. '
+    'Keys remain legal data; this notice supplies no implementation and makes no '
+    'claim about other mechanisms reading deliberately exposed data.')
+
+
+def _original_stage_adapter(implementation):
+    from utopia.system.native_kernel import STAGES
+    return isinstance(implementation, str) and implementation in ({'native.phase.' + stage + '.v1' for stage, _ in STAGES}
+        | {'native.activity.' + stage + '.v1' for stage in
+           ('resubmissions', 'research', 'collaboration', 'submission', 'funding')})
 
 
 def _excludes_object(schema):
@@ -44,6 +58,16 @@ def contract_notices(document):
             continue
         if node.get('implementation') == 'native.process.activity.v1':
             pending.append((parameters.get('delegate'), prefix + '/parameters/delegate', owner, ancestors | {id(node)}))
+            continue
+        if parameters and _original_stage_adapter(node.get('implementation')):
+            notices.append({'code': 'original-stage-adapter-does-not-read-parameters',
+                'mechanism_id': owner, 'executed_mechanism_id': node.get('mechanism_id'),
+                'implementation': node.get('implementation'), 'path': prefix + '/parameters',
+                'parameter_names': sorted(key for key in parameters if isinstance(key, str)),
+                'message': STAGE_PARAMETER_RULE,
+                'scope': 'This implementation handler only, not general whole-system effect analysis.',
+                'changes_validity': False, 'authored_value_changed_by_host': False,
+                'native_execution_performed': False})
             continue
         if node.get('implementation') != 'code.python.v1':
             continue  # No assumptions about another implementation's data contract.

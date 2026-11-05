@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V32 a2 non-veto parameter-consumer contracts for original adapters](protocols/campaigns/native-contract-layout-v32-a2.md)
+
 - [V32 conditional named-port/schema contract clarification without repair](protocols/campaigns/native-contract-layout-v32-a1.md)
 - [V32 actual invalid operands, native-validator agreement and separate implementation](logbook/2026-11-06-native-contract-layout-v32.md)
 
