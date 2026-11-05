@@ -2,6 +2,20 @@
 
 Updated: 2026-11-06 JST
 
+## V26 all14 actual controls pass and native exploration is running
+
+At frozen `6d27c2a`, all14 real-backend controls and cold replay pass. Correct
+per-role reasoning evidence is present: one planner field and zero editor
+fields. Preserve14 POSTs,441.89 adapter seconds and167041/858 input/reported
+output tokens. Certificate SHA:
+2497383e22fd7db1a22117a1655bdadfefa5ddf6b56ff648af76df9277b94cd7.
+
+The same-source V26 writer starts2026-11-05T16:36:08.919877Z and is live in
+session9150. It uses the declared two-loss/two-generation, four-native-slot
+scope, with no replacement or supplied candidate. The exact-source broad
+software suite remains running. Readiness and a generated plan are not a
+different executable institution; the full goal remains active and unmet.
+
 ## V25 ends unchanged and V26 actual readiness starts
 
 The frozen V25 a3 writer exits0 at2026-11-05T16:27:25.864125Z, consuming

@@ -126,3 +126,28 @@ failures. Native model-call time1778.44s and author adapter time1461.13s are
 separate; nested author HTTP time is not double-counted. Source251/raw146
 checks preserve the original failed audit and explicit adapter identity.
 V26 readiness now has four passing actual controls; the rest remain pending.
+
+## All14 actual controls and cold replay pass
+
+Session90943 exits0 after all14 exact controls and cold replay. All role-mode
+evidence matches: the one planner control has a separate reasoning field and
+all13 editor controls have none. Costs are14 POSTs/441.88699908414856 adapter
+seconds,167041 input and858 reported output tokens. Certificate SHA:
+2497383e22fd7db1a22117a1655bdadfefa5ddf6b56ff648af76df9277b94cd7;
+runtime SHA:afe4decbc635bae16db90467909fb0ccdccbdaccc1cdb7bce0468cf7de12242c.
+No failed controls, replacements, text repair or hidden retry occurs.
+
+A read-only6d reconstruction using the actual archived V25 efficiency G1
+request additionally confirms that own plan/no-intervention facts and exact
+observation ID c4cf6f3d7c460c7ec03cda08 reach the planner and editor, with older
+missing session facts explicitly unknown. The reconstructed prompt is78092
+UTF8 bytes, planner messages75337 and editor messages110054. This performs no
+new model/native call and does not establish actual inventor behavior.
+
+With a clean frozen6d tree, start the declared native pilot in session9150,
+outputs/native-function-feedback-v26-a1. Its writer-start receipt records
+2026-11-05T16:36:08.919877Z, exact source/certificate and required environment.
+Plan classification is actual-local-qwen-native-function-feedback-development-v26,
+revision v26-a1, with four slots and at most32 author POSTs. The first planner
+reply has arrived; literal intervention and native results remain unproven.
+The exact6d broad software suite34297 remains running, not a claimed pass.
