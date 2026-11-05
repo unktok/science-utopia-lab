@@ -9,6 +9,12 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V31 a1 actual copy-key mismatch, preserved failure and physical costs](results/native-context-encoding-v31-a1-readiness.md)
+- [V31 a1 compact raw-certificate diagnosis with unchanged failed status](results/native-context-encoding-v31-a1-readiness.json)
+
+- [V31 a2 prospective copy-key clarity; unchanged full production API](protocols/campaigns/native-context-encoding-v31-a2.md)
+- [V31 actual extra-annotation failure and separate a2 implementation](logbook/2026-11-06-native-control-keys-v31-a2.md)
+
 - [V30 closed native feedback, one functional policy and remaining capacity barriers](results/native-provenance-view-v30-a1.md)
 - [V30 two matching unmodified original-source audits and physical accounting](results/native-provenance-view-v30-a1.json)
 

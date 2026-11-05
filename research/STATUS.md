@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V31 a1 readiness fails on extra annotations; a2 is prepared separately
+
+Actual a1 process37110 exits1 and PID4676 is absent.17 controls pass; the18th
+copies the exact inspect/path/selector but adds unrequested rationale/provenance.
+The production API allows these fields, while the exact-copy task explicitly
+forbids extras, so the original strict comparison correctly fails. No source/
+path corruption is observed here. Keep its failed certificate and18 calls;
+six later controls are unattempted and zero native V31 worlds are dispatched.
+The separate exact173 broad suite passes2790/six skips in1199.44s.
+
+Separate a2 lists the exact caller-owned top-level argument keys after the same
+calibration target. Production messages, schemas, decoder, legal metadata and
+strict copy criterion do not change. Its scripted74-check scope and wider
+227-check scope pass. Fresh freeze and independent max24 actual controls remain pending.
+The full original goal stays active, not replaced by copy-task success.
+
+See [a2 prospective protocol](protocols/campaigns/native-context-encoding-v31-a2.md)
+and [preserved failure log](logbook/2026-11-06-native-control-keys-v31-a2.md).
+
 ## V30 closes with one changed policy; fresh V31 actual readiness is live
 
 V30 writer29191 exits0 at21:50:56.713393Z after59m54.451195s; PID98150

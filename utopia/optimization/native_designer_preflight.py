@@ -94,6 +94,17 @@ def cases(protocol):
         for index, value in enumerate(VALUES)]
 
 
+def control_argument_key_notice(expected):
+    """Caller-owned copy-task notice, never a production action filter."""
+    from .native_designer_tools_v25 import function_data
+    keys = sorted(function_data(expected)['arguments'])
+    return ('EXACT NEXT RESPONSE TOP-LEVEL ARGUMENT KEYS (no others):\n'
+        + json.dumps(keys, ensure_ascii=False, allow_nan=False)
+        + '\nEvery listed key is required for this copy task. Omit optional keys not listed, '
+          'including rationale/provenance unless listed. This key set applies only to the '
+          'top-level arguments object; preserve every nested literal value exactly.')
+
+
 def _prompt(request, state, steps, provider, expected, protocol):
     if protocol == 'staged-v15' and expected.get('tool') == 'plan':
         from .native_staged_author_v15 import build_prompt, PLAN_CONTROL_SYSTEM_PROMPT
@@ -114,9 +125,11 @@ def _prompt(request, state, steps, provider, expected, protocol):
         + target)
     if protocol == 'one-shot-v14':
         system += '\nUse the one-shot operations/factors/continuous/rationale envelope, not a tool envelope.'
-    elif expected.get('tool') == 'finish':
-        from .native_staged_author_v15 import FINISH_CONTROL_PREFIX
-        system = FINISH_CONTROL_PREFIX + system
+    else:
+        system += '\n\n' + control_argument_key_notice(expected)
+        if expected.get('tool') == 'finish':
+            from .native_staged_author_v15 import FINISH_CONTROL_PREFIX
+            system = FINISH_CONTROL_PREFIX + system
     return prompt, system
 
 

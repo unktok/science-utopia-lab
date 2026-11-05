@@ -1,0 +1,48 @@
+{
+  "actual_original_output": {
+    "path": "/parameters/code_artifact/source",
+    "provenance": {
+      "origin": "interface_calibration"
+    },
+    "rationale": "Retrieving the source code of the code_artifact parameter for world.selection mechanism",
+    "selector": {
+      "mechanism_id": "world.selection"
+    },
+    "tool": "inspect"
+  },
+  "actual_output_valid_production_schema": true,
+  "actual_request_wire_sha256": "03252833b3af75e775f59e841c99147c543da3fb6790e3fa9b8bce2da2d8a2cd",
+  "adapter_seconds": 647.9992747919168,
+  "all_controls_passed": false,
+  "attempted": 18,
+  "certificate_sha256": "3ee0d30b8fd0b7bdea12e4a04761496a688609a093ddcb4ffe7fe1d4aeafdd6c",
+  "classification": "actual readiness failure, not a scientific world or a new cold acceptance",
+  "content_sha256": "1fba5b1361218e9ff62b975e76c7b363951636967144c7b23945c4a2cfc3bbba",
+  "diagnostic_projection_only_operative_operands_exact": true,
+  "expected": {
+    "path": "/parameters/code_artifact/source",
+    "selector": {
+      "mechanism_id": "world.selection"
+    },
+    "tool": "inspect"
+  },
+  "failed_case": "sequence-inspect",
+  "known_reported_input_tokens": 180114,
+  "known_reported_output_tokens": 8096,
+  "known_token_records": 18,
+  "native_worlds": 0,
+  "new_model_calls_by_diagnosis": 0,
+  "original_error": "ValueError: literal output differs from exact typed control",
+  "passed": 17,
+  "preserved_extra_fields": [
+    "provenance",
+    "rationale"
+  ],
+  "raw_certificate_file_sha256": "5282b8b11b1df89cbf5d5d65e73a9bf5fc5fce7f17290918a2e5cd5849c271c2",
+  "raw_response_sha256": "0a510be5f2c7a38ee9c8ad3d149710037cbdbcbef3b54dddc003db0d7179720e",
+  "schema": "scienceutopia.copy-control-failure-diagnosis.v31",
+  "scope": "Projection is diagnostic only: original reply, comparison result and failed certificate are not changed.",
+  "source_commit": "17393ca4c94b6a2aaa17fec722237482455c0be1",
+  "source_executions": 0,
+  "unattempted": 6
+}

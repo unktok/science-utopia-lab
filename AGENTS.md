@@ -33,3 +33,6 @@
   Correctly rejecting a partial reply does not establish sufficient free-design
   context room. Regress actual history-bearing frames, preserve all JSON/string
   contents, and distinguish message-byte savings from measured token capacity.
+- Distinguish exact-copy task noncompliance from corrupted operative arguments.
+  Allowed optional production annotations must not be silently stripped to pass
+  a failed copy control; retain its raw reply/cost and predeclare any new input.

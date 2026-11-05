@@ -30,6 +30,15 @@ b33414c1d29dcfb6d09370851066306f2e040f5ca1949b3b99127798511982ef matches.
 A separate SCRIPTED3.8/3 feature probe distinguishes the changed decision
 function; it is not a native scientific measurement or evidence of benefit.
 
+An additional integer-score two-step SCRIPTED check uses features[4,3] in each
+period (mean4 from three final review records), with the actual tensor/router
+programs and persistent memory. Parent routed actions are[1] then[0]; the saved
+model-authored candidate routes[1] then[1]. Candidate fingerprint is exactly
+b33414c1d29dcfb6d09370851066306f2e040f5ca1949b3b99127798511982ef;
+parent88912a72e5d2f30eace4a595548bcce0ee828bb8e1c40301c438daf13abaa2f4.
+This deterministic program trace uses zero new model/container calls, is not a
+full native-world observation and adds no scientific sample to the experiment.
+
 The exact native loss0 observation reaches the actual G1 planner wire with
 matching observation ID/history/source-prompt hash; original-source audit
 replays it. G1 explicitly retains/re-evaluates the same candidate. Thus real
