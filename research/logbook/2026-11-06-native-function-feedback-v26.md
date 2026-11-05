@@ -79,3 +79,18 @@ The V25 writer remains live in session63205/PID25317; the exact6d broad suite
 remains live in session34297. V26 actual readiness still waits for that writer
 to terminate. Preserve the active unmet goal and continue to readiness, real
 exploration and raw result checks without a new user go-ahead.
+
+## Address rejection correction from the actual efficiency receipt
+
+Inspect efficiency G0's original step01 receipt rather than infer its error
+from the tool name. The model requests resource capabilities, selector
+native-feature-extractor and root path /mechanisms/14 together. The host rejects
+the mutually incompatible resource and selector at schema validation, before
+pointer resolution. That mechanism actually exists at index14 in the19-node
+parent. The earlier shorthand nonexistent-address inspection is therefore not
+the precise cause of this rejection. A later root pointer using an ID as an
+array index is a different error. No target, raw action or result is changed.
+
+The next V26 actual calibration still waits for the last V25 scientific world
+to finish. A completed plan or an explicit unchanged finish does not establish
+that the plan's proposed code was implemented, irrespective of these labels.
