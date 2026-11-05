@@ -157,3 +157,35 @@ are then absent. No final source1 JUnit exists and no unrecorded test count is
 imputed. The frozen5bf source/tag remains untouched. Final source2 full checks
 and the V23 writer remain live; neither scientific measurements nor raw state
 are interrupted by this software-test cancellation.
+
+## V23 writer closed and first V24 actual reasoning control
+
+At`2026-11-05T13:03:34Z`, the helper captures the declared between-arm boundary:
+throughput complete, efficiency queued, no second-arm author directory. It
+immediately signals INT/CONT. Authoritative writer exit130 and durable aborted
+receipt are verified at`2026-11-05T13:03:36.330208+00:00`; the writer/helper PIDs
+are absent. No extended boundary pause or in-flight generation is introduced.
+
+Both actual V23 systems retain the parent at`[-1,-1]`. Two original-fa2-source
+audits finish byte-identically, preserving112 raw files and248 source blobs,
+184 scientist replies and16 inherited-code executions. All32 author responses
+are known (16 plans/14 reads/two finishes), with zero edits and no newly authored
+source. The full exploration goal remains unmet. Preserve the original audit's
+incomplete-budget flags and record unused efficiency slots as unexecuted.
+Publish[the scoped actual result](../results/native-numeric-objective-exploration-v23-a1.md)
+and its exact compact audit, rather than relabeling it a four-slot success.
+
+After this termination, inspection and both matching audits, start the fresh
+V24 a1 readiness from final source2`200bf74`, using the V23 operator binding
+and original-parent preflight request, under
+`outputs/native-thinking-exploration-v24-a1-preflight`. No older certificate is
+reused and no V24 native production is launched at this entry.
+
+The first actual control returns the exact typed action and a nonempty separate
+`message.thinking`field. Its wire requests thinking, omits backend format, and
+binds0.6/0.95/20/0 sampling,8192 output and32768 context. Recorded tokens are
+11166 input/384 total output; elapsed adapter time40.083665292011574s.
+This is one known actual interface/mode control, not all14 controls, reasoning
+correctness or institutional invention. Do not disclose/interpret its raw
+reasoning as a candidate or manufacture a thinking/final token split. The
+remaining finite controls and cold replay must still pass before production.

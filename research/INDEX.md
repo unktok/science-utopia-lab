@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V23 closed unchanged feedback arm and explicitly unexecuted slots](results/native-numeric-objective-exploration-v23-a1.md)
+- [V23 exact source raw action loss and physical audit with incomplete-budget scope](results/native-numeric-objective-exploration-v23-a1.json)
 - [V24 conditional reasoning enabled fixed local designer and unchanged native world](protocols/campaigns/native-thinking-exploration-v24-a1.md)
 - [V24 decoding binding and implementation progress log](logbook/2026-11-05-native-thinking-author-v24.md)
 - [V23 adaptive between-arm diagnostic stop with immediate writer termination guard](protocols/campaigns/native-numeric-objective-v23-a1-stop-addendum.md)
