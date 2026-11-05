@@ -9,6 +9,11 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V30 prospective raw-provenance/model-view separation and unchanged finite pilot](protocols/campaigns/native-provenance-view-v30-a1.md)
+- [V30 actual inert-edit confound and scripted85-request paired regression](logbook/2026-11-06-native-provenance-view-v30.md)
+- [V28 closed two-world result and no functional invention](results/native-field-addressing-v28-a2.md)
+- [V28 two matching unmodified original-source audits](results/native-field-addressing-v28-a2.json)
+
 - [V29 a2 stable evidence prefix and unchanged original-world pilot](protocols/campaigns/native-reasoned-editor-v29-a2.md)
 
 - [V29 prospective reasoning for code/graph implementation](protocols/campaigns/native-reasoned-editor-v29-a1.md)

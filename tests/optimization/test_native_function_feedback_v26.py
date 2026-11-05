@@ -144,7 +144,10 @@ def test_local_sender_known_bad_final_is_archived_and_cold_replayed_without_new_
 @pytest.mark.parametrize('protocol', [
     'native-tool-calling-exploration-v25-a1', 'native-tool-calling-exploration-v25-a2',
     'native-tool-calling-exploration-v25-a3', 'native-function-feedback-v26-a1',
-    'native-literal-workbench-v27-a1', 'native-literal-workbench-v27-a2'])
+    'native-literal-workbench-v27-a1', 'native-literal-workbench-v27-a2',
+    'native-field-addressing-v28-a1', 'native-field-addressing-v28-a2',
+    'native-reasoned-editor-v29-a1', 'native-reasoned-editor-v29-a2',
+    'native-provenance-view-v30-a1'])
 def test_reporting_protocol_allowlist_includes_each_declared_continuation(monkeypatch, protocol):
     from scripts import analyze_native_staged_search_v15 as audit
     import hashlib

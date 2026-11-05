@@ -127,10 +127,10 @@ def institutional_context_prompt(agent) -> str:
     messages = getattr(agent, "institutional_context", ())
     if not messages:
         return ""
-    # Actual delivered content, not our interpretation or a metric score.
-    return "\n## Information received from scientific institutions\n" + "\n".join(
-        json.dumps(message, ensure_ascii=False, sort_keys=True, allow_nan=False)
-        for message in messages) + "\n"
+    # Preserve every raw delivered record in actors/checkpoints/events. Audit
+    # hash labels must not make a late inert edit change earlier model inputs.
+    from .model_provenance_view import render_provenance_view
+    return "\n## Information received from scientific institutions\n" + render_provenance_view(messages) + "\n"
 
 
 class NativeScienceKernel:

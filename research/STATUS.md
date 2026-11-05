@@ -2,6 +2,32 @@
 
 Updated: 2026-11-06 JST
 
+## V28 closes; V30 fixes a real pre-treatment model-input confound
+
+V28 a2 closes with two author failures, one unchanged world at loss-1 and one
+literal-only unused version-parameter edit at loss12. Two unmodified original
+38d-source audits exit0/cmp0; see the [closed report](results/native-field-addressing-v28-a2.md).
+No functional invention or own-measured-loss-informed next proposal is shown.
+
+An inert late edit changes audit IDs in the first researcher request despite
+identical seed/settings, before the edited node executes. This is a real
+implementation confound; do not call its loss difference a policy effect.
+V30 keeps raw provenance intact and gives source-defined opaque context labels
+reconstructable prompt-local aliases. Scientific content/IDs/timing stay literal,
+including deliberately exposed references. A scripted paired original19-node/
+27-wire world with five researchers/two years yields all85 identical scientist
+requests while raw audit events remain different. Related scope passes56.
+
+Both V29 freezes remain software-only/zero actual calls. Exact254 a2 broad
+checks close2765 passes/six skips in1175.14s. New V30 focused checks, clean
+freeze/fresh24 actual readiness and original-world exploration are next, not a
+new user-approval gate. Expanded focused checks pass373 in50.41s after an
+explicitly preserved stale driver-name expectation failure. Audit/fidelity
+checks pass103 in65.83s separately. Keep the original full goal active and unmet.
+
+See [V30 prospective protocol](protocols/campaigns/native-provenance-view-v30-a1.md)
+and [forward-only execution log](logbook/2026-11-06-native-provenance-view-v30.md).
+
 ## V29 a2 is frozen; software-only a1 broad checks close
 
 V29 a2 is frozen separately at254bef6a3962f60be7e51b24b0c57d1ec992bf7b.

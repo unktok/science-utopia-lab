@@ -1,0 +1,60 @@
+# V30: inert-edit provenance confound and forward-only repair
+
+V28 a2 writer13893 exits0 at2026-11-05T19:49:40.677334Z after62m25.664781s.
+Two audits at its unmodified38d source exit0/cmp0, content
+d271f2201fb28e424b61389ee1bf6aaa3d131644b743c7d13fff0f8d0590b78c.
+Four slots mean two author failures and two measured worlds, not four measured
+institutions. Throughput G1 is unchanged; efficiency G1's only literal change
+is unused parameters.version=1, retaining exact source/image/other fields.
+
+Despite that inert addition, actual first scientist requests differ in opaque
+input_event_ids before selection executes, with identical seed/settings. Their
+canonical payload hashes are090e41bdcbbfd4c16cd74c1de9c9e61b5e51cfda49ab3ad34eb843d694c6ddce
+and77a2ae0aa258cdb6818d5421a487c85ea010fc89d896791202ca784c4af42973.
+Removing just that metadata span makes entire payloads equal. The system
+fingerprint binds audit labels into scientific inputs. This is a real
+implementation confound, not a reason to describe loss12 as an institution's
+effect. It does not isolate all stochastic/backend causes of final outcomes.
+
+Develop separately; never change the closed frozen writer, event hashing,
+raw logs or old audits. V30 adds reversible first-occurrence display aliases
+only for source-defined opaque context metadata, retaining literal scientific
+payloads and deliberate reference links. New arbitrary-work snapshots carry
+an explicit renderer version; absent markers retain legacy rendering and
+unknown markers reject.
+
+The initial focused scope passes50 in31.14s. First paired original-world test
+has six passes/one failure only because full paper_tracker dictionaries include
+different output directories; full scientist-request equality already passes.
+Compare actual paper records instead of directory paths, with no request
+normalization. Corrected pair scope passes seven in5.28s; all85 full requests
+match while raw audit IDs remain different. Remove an unnecessary pytest
+record_property warning, then add explicit legacy/new snapshot regression.
+The resulting context/work/kernel/review scope passes56 in38.24s.
+
+Software-only V29 a2 broad suite62146 exits0:2765 passes/six skips in1175.14s,
+JUnit SHA104016f886d885f7f7ce00bd84d86ca69d17acde7acf1ecb1fd71b84bcdf063c.
+Both V29 freezes remain zero-actual and are superseded before inference by
+this newly discovered scientific-input confound. No V30 actual call occurs
+before a clean new freeze and fresh24-control readiness. The original goal
+remains active and unmet; software repair is not invention.
+
+Expanded focused verification first records372 passes/one stale V29 driver
+classification expectation failure in50.54s. Preserve JUnit
+248898aa7b3cec94f535e0064796935958b41d2a7930e6ad91b6ca10a26b9d7f.
+Update only that prospective V30 plan expectation, not any scientific result.
+The corrected same scope passes373 in50.41s, JUnit
+d7064052c4db0a19ce3f838c79367f0a73968552d26e5001fc44df898558cd7c.
+The paired regression now explicitly requires85 complete requests per world.
+Add protocol-allowlist regressions for V28/V29/V30; audit/fidelity tests run
+separately. These are overlapping software scopes, not summed independent
+experiments. No actual V30 model call has yet occurred.
+
+The overlapping audit/fidelity/driver scope passes103 in65.83s, including
+strict raw-response replay and all explicit continuation-protocol allowlists.
+JUnit0d9b2d41b8611b2c8a6782bac6fcb005c09b8be3cca4711742dff8bc24e8c6c7.
+A read-only comparison re-verifies the two actual first payload hashes above,
+seed2089667989 and identical inference settings. Only input_event_ids removal
+makes them equal; the V30 counterfactual display also makes full payloads equal,
+hashaf89ddf913d9f2e5931bb5f49cbecfbbad2180888fd6a0ab4bf2e362b4cab19d.
+This performs zero model/container calls and is not an actual V30 outcome.

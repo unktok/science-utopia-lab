@@ -24,3 +24,8 @@
   parser errors. Never call an interface bug-free on copied controls alone.
 - Do not execute Apple-provided Python or pip. Use `.venv/bin/python`,
   `~/.local/bin/python3`, `~/.local/bin/pip3`, and `/opt/homebrew/bin/uv`.
+- Regress inert institutional edits against full fixed-researcher request
+  payloads, not only graph fingerprints or losses. Opaque cell-bound audit IDs
+  must not introduce pre-treatment model-input differences. Preserve raw audit
+  identities and intentionally authored scientific references; do not rewrite
+  historical logs or interpret an unused parameter's loss change as a policy effect.

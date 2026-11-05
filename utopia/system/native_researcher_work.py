@@ -71,6 +71,12 @@ def _contract(node):
 
 def render_work_prompt(request, snapshot):
     """Pure renderer, reused by read-only receipt audits and cold restore."""
+    visible = deepcopy(snapshot)
+    from .model_provenance_view import SCHEMA as VIEW, provenance_view
+    if 'model_provenance_view' in snapshot and snapshot['model_provenance_view'] != VIEW:
+        raise GraphRuntimeError('unknown model provenance view; never silently change renderer')
+    if snapshot.get('model_provenance_view') == VIEW:
+        visible['institutional_context'] = provenance_view(snapshot['institutional_context'])[0]
     return (snapshot['persona_prompt'] + '\n' + snapshot['memory_prompt']
         + '\n## Institution-authored scientific work\n'
         + 'You are the existing researcher identified below, not a new institution or a new model. '
@@ -78,7 +84,7 @@ def render_work_prompt(request, snapshot):
           'Produce a response to the requested work; do not claim actual experiments or '
           'measurements were performed merely because a request asks for them. '
           'Return one JSON object satisfying the supplied response_schema.\n'
-        + canonical({'request': request, 'actual_researcher_state': snapshot}).decode())
+        + canonical({'request': request, 'actual_researcher_state': visible}).decode())
 
 
 def _artifact_records(kernel, identities):
@@ -120,6 +126,8 @@ def _snapshot(kernel, actor, artifacts):
     # Arbitrary custom scientific keys (including `timestamp`) are literal
     # content, unlike the original world's known operational clock fields.
     snapshot['artifact_records'] = deepcopy(artifacts)
+    from .model_provenance_view import SCHEMA as VIEW
+    snapshot['model_provenance_view'] = VIEW
     canonical(snapshot)
     return snapshot
 
@@ -141,7 +149,9 @@ def validate_work_receipt(record):
         request, snapshot, origin = record['request'], record['native_snapshot'], record['origin']
         snapshot_keys = {'actor_id', 'actor_type', 'can_author', 'is_active', 'resources', 'reputation',
             'persona_prompt', 'memory_prompt', 'project', 'institutional_context', 'artifact_records'}
-        if (not isinstance(snapshot, dict) or set(snapshot) != snapshot_keys
+        from .model_provenance_view import SCHEMA as VIEW
+        if (not isinstance(snapshot, dict) or not snapshot_keys <= set(snapshot) <= snapshot_keys | {'model_provenance_view'}
+                or ('model_provenance_view' in snapshot and snapshot['model_provenance_view'] != VIEW)
                 or not isinstance(snapshot['persona_prompt'], str) or not isinstance(snapshot['memory_prompt'], str)
                 or type(snapshot['is_active']) is not bool or not isinstance(snapshot['artifact_records'], list)
                 or not isinstance(snapshot['institutional_context'], list)
