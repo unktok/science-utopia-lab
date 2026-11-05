@@ -136,3 +136,19 @@ actually fails, and the a2 reminder remains a repair hypothesis pending fresh
 actual evidence. The repaired positional test is distinct from model behavior.
 Keep implementation/interface defects, model choices and scientific merit
 separate, rather than claiming that repeated parent retention is inherent to8B.
+
+At frozen`5096c0e`, all14 actual controls pass and the calibration CLI exits0
+after cold replay. Certificate content SHA:
+`2a45730d66ce1280b534a63827d91df9875877298ce697ebbddd0f0578be21f4`;
+runtime SHA`d11c700dea63bda70784f3823ffbd990cfa4326a2325e3cdd2228eadbae0733b`.
+Summed control adapter time is364.40195916686207s, with all14 recorded token
+fields totaling153700 prompt and475 output tokens. This is separate readiness
+cost, not native scientific work. The failed a1 remains separately charged.
+
+Launch the a2 four-slot writer once from that unchanged frozen source, using
+only its own successful certificate. Durable launch time is
+`2026-11-05T11:26:57.495948+00:00`, raw directory
+`outputs/native-planned-exploration-v22-a2`. Its first queued step is recorded
+as a planner call. No changed institution, native outcome or full exploration
+completion is inferred from this launch. The broad software suite is still
+running at this entry.
