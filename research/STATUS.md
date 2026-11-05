@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V30 all24 actual controls and broad tests pass; native search is live
+
+At frozen c53491f4b96b67261a406b337c9082d540054072, all24 actual
+controls and cold replay pass; session42401 exits0. Separate thinking evidence
+exists for the planner and all23 editor controls. Certificate
+c6e3cf37cd4e31c9c460c9e0fb61454123fe3cb2ae526b756f7ac6094f9110f2,
+runtime6cb5a8a76fbc764578003764e165f975db05b7653555e86c25ddc4f2db173f8e.
+Compatibility costs:24 POSTs/1107.2992186241318 adapter seconds,300021
+input/10163 output tokens, counts present for all24. This is not invention.
+
+Exact-source broad suite64877 exits0:2778 passes/six skips in1271.87s.
+After actual readiness passes, the unchanged four-slot original-world pilot
+starts20:51:02.262198Z in29191/PID98150. Both arm requests are frozen/queued;
+throughput G0 step00 is authoring. No functional institution or measured
+own-result feedback loop is claimed yet. The original full goal stays active.
+
 ## V30 frozen; fresh actual backend readiness is running
 
 Freeze c53491f4b96b67261a406b337c9082d540054072 in the separate clean

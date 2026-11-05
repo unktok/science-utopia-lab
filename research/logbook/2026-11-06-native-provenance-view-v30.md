@@ -74,3 +74,20 @@ config; no prior certificate or candidate is substituted. All24 controls,
 required role evidence and cold replay remain required before native exploration.
 No new native world or changed functional institution is claimed at this entry.
 The original full goal remains active; do not close it on readiness alone.
+
+Fresh actual readiness42401 exits0: all24 controls, all separate role-mode
+evidence (one planner/23 editors) and cold replay pass. Certificate
+c6e3cf37cd4e31c9c460c9e0fb61454123fe3cb2ae526b756f7ac6094f9110f2;
+runtime6cb5a8a76fbc764578003764e165f975db05b7653555e86c25ddc4f2db173f8e.
+All24 report token counts, sum300021 input/10163 output; adapter seconds
+1107.2992186241318. These instructed calls supply no scientific candidate.
+
+Exact c534 broad verification64877 exits0:2778 passes/six skips in1271.87s.
+JUnit5f4467a34ff2d50d163d6b3a6cdbf7d7c3478f193abaa7da56bd023b0559b9b5.
+After verified actual readiness termination, start the unchanged four-slot
+original-world pilot in29191/PID98150, outputs/native-provenance-view-v30-a1.
+Authoritative writer start2026-11-05T20:51:02.262198Z. Both requests are
+frozen/queued, throughput G0 generation2a219d1898da4cb4fa7e5e47321441a8f3e3ed0b19e596c54ef1c60f5697c3f5
+step00 is authoring. No authored functional institution/native observation or
+own-measured-result-informed re-evaluation is established at this entry.
+Continue the full original active goal; do not finish on software/readiness.
