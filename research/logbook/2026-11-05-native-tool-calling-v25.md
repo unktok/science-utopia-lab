@@ -192,3 +192,32 @@ The plan records that exact source, max14 POSTs and created_epoch
 1793892086.411118. First six actual controls pass at this observation; remaining
 controls/cold replay are required before any scientific production. No a3
 native world has started and no final broad software result is inferred.
+
+## A3 actual readiness passes and free production exposes malformed replies
+
+All14 a3 actual controls and cold replay pass (session88426 exit0), including
+the exact absolute-path reinspect that failed in a2. Certificate SHA:
+`6eebe4494b07936ed409ceac22d355ffb0ea729411fc97b710f8dc75fd2d72e1`.
+Runtime SHA:
+`40099cda7675e862c82b82baee4937a4d560d2b7ea6a99cf78d7e58570215aee`.
+Preserve14 POSTs/known replies,449.8180816664826 adapter seconds,166056 input/
+795 reported output tokens. All13 literal editors have zero nonempty reasoning
+fields; the one planner has one, and both role compatibility flags pass.
+Earlier a1/a2 failures and costs remain separate, not replaced or refunded.
+
+At the same frozen1d source, start the authorized four-slot native pilot under
+`outputs/native-tool-calling-v25-a3` (session63205). The durable writer start is
+`2026-11-05T15:31:49.136936+00:00`. Its live process and first author journals
+are observed; the broad exact-source suite97518 is independently still running.
+
+Throughput G0 first produces a correctly signed plan about a new feature, then
+inspects an ID string as an array index, which the unmodified resolver rejects.
+Calls2–6 receive **known complete HTTP200 replies** whose function JSON has an
+extra closing brace. Strict parsing rejects all five, without prefix/brace
+salvage. The current older receipt label is transport-error, but this is not
+an unknown reply or a network outage; raw bodies and physical calls remain
+known/charged. Its last call explicitly finishes the unchanged parent, with no
+edit/source/graph change. Native measurement is running at this observation;
+no measured outcome or different institution is claimed. Passing instructed
+controls did not establish free-generation syntax or invention. Keep the full
+goal unmet and active, and do not modify the running frozen experiment.

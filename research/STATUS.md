@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## V25 a3 native pilot is running after all14 actual controls pass
+
+At frozen `1d0e22a`, all14 actual controls and cold replay pass, with correct
+per-role reasoning evidence. Preserve14 POSTs/449.82 adapter seconds and
+166056/795 input/reported output tokens. The same-source native writer starts
+`2026-11-05T15:31:49.136936+00:00` and is live; its broad software suite is
+separately still running.
+
+Free throughput G0 makes no edit: one plan, one invalid ID-as-array-index read,
+five known HTTP200 replies with malformed extra-brace JSON, then an explicit
+unchanged-parent finish. These are not unknown/network failures despite the
+older receipt's transport-error label. No reply/source repair is performed.
+The first actual scientific measurement is running; different executable
+institutions remain unshown and the full goal stays unmet and active.
+
 ## V25 a2 fails the12th control and a3 clarifies argument carryover
 
 A2 passes11 actual controls, then adds a selector/resource/rationale to an
