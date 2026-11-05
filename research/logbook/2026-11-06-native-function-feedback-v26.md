@@ -116,3 +116,13 @@ not invalidate or rewrite the original actions. Start two explicit adapted
 raw audits in sessions56209 and9843 with fresh separate output paths. Both
 use the original1d runtime/auditor plus the declared checked protocol-path
 extension. They are pending; do not claim matching outputs until verified.
+
+Both adapted audits subsequently exit0 and cmp exits0. Their compact content
+SHA is e7a021607118cdc2e3a0f8e10f5f9ebbd217f91db830b542e7191e09cf811e70;
+the tracked result JSON is copied exactly using apply_patch. The separate
+interpreted result records four unchanged worlds,368 scientist replies,
+32 known author replies,32 inherited code executions and zero native technical
+failures. Native model-call time1778.44s and author adapter time1461.13s are
+separate; nested author HTTP time is not double-counted. Source251/raw146
+checks preserve the original failed audit and explicit adapter identity.
+V26 readiness now has four passing actual controls; the rest remain pending.

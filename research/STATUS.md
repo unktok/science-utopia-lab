@@ -20,6 +20,13 @@ Preserve that failure. Two explicit adapted raw audits are running against
 the clean original runtime/source; their results are pending. They do not
 rewrite the frozen code, model actions or incorrectly classified receipts.
 
+Both adapted raw audits subsequently exit0 and compare byte-identically,
+verifying146 unchanged raw files and251 original source/protocol blobs. The
+[closed result](results/native-tool-calling-exploration-v25-a3.md) records zero
+literal interventions,32 known designer replies and368 researcher replies.
+The first four V26 actual controls pass; remaining controls/cold replay and
+the V26 scientific exploration are still pending.
+
 ## Function response and own feedback repair is in progress
 
 The live frozen V25 a3 writer finishes both throughput evaluations at loss -1
