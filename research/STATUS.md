@@ -2,6 +2,23 @@
 
 Updated: 2026-11-06 JST
 
+## All24 actual V28 a2 controls pass; native exploration starts
+
+At frozen38d1fb4, all24 exact actual controls, role-mode evidence and cold
+replay pass; session55666 exits0. This includes complete literal source
+replacement and explicit final submission. Certificate
+d02f37f329ef7d8d29b749270e8cc50a759d11a1eef6474fc13f0c5139adee3b;
+runtime b9088bea6360d78d88e966afe7809d001cfe6621cfd4d6c11ec5e4495b857007.
+Record24 POSTs,708.9902317097876 adapter seconds and300797/1496 reported
+input/output tokens. These are compatibility costs, not institutional benefit.
+
+Exact38d focused software checks pass342 with no failures in68.45s. After
+actual readiness passes, the unchanged four-slot/two-loss/two-generation native
+pilot starts18:47:15.012553Z in session13893. It is live; no changed candidate
+or completed native observation is claimed yet. Keep the full goal active.
+The separate software-only4b a1 broad suite remains live with its known stale
+sequence-expectation failure; the exact38d broad suite is still pending.
+
 ## V27 a2 closes; actual V28 a2 readiness is running
 
 V27 a2 writer exits0 at18:34:25.160886Z after45m19.06s, with three author

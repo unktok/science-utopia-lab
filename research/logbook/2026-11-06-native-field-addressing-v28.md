@@ -102,3 +102,29 @@ G1 request and fixed operator config. First four controls pass. Remaining20,
 role checks/cold replay and all scientific exploration are pending. Keep the
 original goal active and unmet. The4b a1 broad suite67060 is still running
 with the preserved stale test expectation failure; never attribute it to a2.
+
+## Actual all24 pass and exploration starts
+
+The exact38d focused suite19983 exits0:342 passes in68.45s, JUnit
+outputs/native-field-addressing-v28-verification/focused-38d1fb4.xml,
+SHA1d55e8a0a8e5ce52681d30f6cbcb54de073d7ba18e0a560c612529b67e7893ba.
+This source-specific scope includes field literals/source, schema rejection,
+old arbitrary actions, final submission, native original-world execution and
+own-result feedback/auditing; mocked QA is not scientific evidence.
+
+Session55666 exits0 after all24 actual controls and cold replay pass. Correct
+role evidence: one planner reasoning field, no nonempty editor fields across23
+editor controls. Full source replacement preserves the exact requested string.
+Certificate d02f37f329ef7d8d29b749270e8cc50a759d11a1eef6474fc13f0c5139adee3b;
+runtime b9088bea6360d78d88e966afe7809d001cfe6621cfd4d6c11ec5e4495b857007.
+Record24 POSTs,708.9902317097876 adapter seconds,300797/1496 reported input/
+output tokens, all24 costs present. No failed control is retried or repaired.
+
+After that verified exit, start the unchanged native pilot in13893 from clean
+frozen38d. Writer starts2026-11-05T18:47:15.012553Z with the required empty
+CUDA visibility, hash seed42 and offline environment. Raw root is
+outputs/native-field-addressing-v28-a2. Queue freezes both own loss requests
+before authoring. Four slots/two generations per loss/eight calls per generation
+remain unchanged. No candidate has yet been reported as changed or measured;
+full goal remains active. The4b broad suite67060 is still live with its known
+stale test expectation failure; exact38d broad verification waits for its exit.
