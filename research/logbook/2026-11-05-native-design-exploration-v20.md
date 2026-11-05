@@ -97,3 +97,39 @@ V21 feature worktree while V20 continues unchanged. No V21 model call occurs.
 Its future protocol must first require the V20 writer to terminate and its
 outcome to be inspected. Do not hide this unfavorable partial result, change
 the active source or stop V20 to replace it with a different condition.
+
+## Closed actual outcome without changed institutions
+
+The same writer exits0 at2026-11-05T09:55:48.403493Z,2102.435616s after its
+durable launch, or35m02.44s wall. Both arms complete at`[-1,-1]` and`[8,8]`.
+All four physical systems equal the exact initial parent. Every literal
+source/parameter/graph/protocol/process change is zero; the full goal is unmet.
+Do not use the scheduler's complete status as the thread goal's success.
+
+There are26 author POSTs/known replies: calls4/8 and7/7, zero unknown responses,
+one accepted no-op edit and nine rejected tool actions (three provenance/six
+rationale envelopes). All10 literal edit operands equal their actual parent
+values, including rejected edits. Read-only exact-wire inspection confirms
+none of the26 actual requests contains the conflicting prohibition. The repair
+does not produce exploration in this sample; do not claim it alone caused or
+could not have contributed to the earlier failure.
+
+After authoritative exit, run two matching-source read-only audits. They agree
+byte-for-byte, verifying134 unchanged raw files and247 matching source files.
+Compact hash`2a386b297a48c55286b00f1d05e0115fc423083899d7e1b2f6ddb0f9b716c385`;
+full hash`8d886890803e0d868fd3ba7a25731266a7ea1400c14d60985544f8b5a1bc5685`;
+raw digest`f3e0e25d7f06ef6c35056dea4ad4d6359d6fda06dac135eac3432890f8839783`.
+The supplemental wire/operand diagnosis sends no new inference and has content
+hash`1344e99b59aeeaa21ea76040ee8604e850874fc24bf61c8ebba5d16a994485fd`.
+
+Physical work is368 scientist replies/wire requests and32 inherited sandboxed
+code executions; every world gives`A=1,Q=4,R=24`. Designer adapter time is
+743.9742085004691s, nested HTTP733.1818431231659s and scientist adapter time
+1271.041554927826s. Keep calibration226.79202050017193s and parallel test time
+separate, not added to writer wall. No authored source body executes.
+
+Publish the unchanged-design result and retain the active goal. V20's source
+and raw evidence stay frozen; no resumed/replacement V20 trial is started.
+The prepared V21 protocol may now proceed to its fresh calibration only after
+these closed outcomes and actual unmet-goal condition are recorded. No paid
+provider switch, world scale-up, paper/PDF/game update or remote push is implied.

@@ -6,6 +6,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V20 closed four-world result with repaired instructions and no institutional change](results/native-design-exploration-v20-a1.md)
+- [V20 exact raw/source/own-feedback/native-cost audit](results/native-design-exploration-v20-a1.json)
+- [V20 all26 repaired wires and all10 identical edit operands](results/native-design-exploration-v20-a1-diagnosis.json)
 - [V20 actual 23-request instruction contradiction and unchanged edit operands](results/native-design-stagnation-v20.md)
 - [V20 exact read-only wire and operand diagnosis](results/native-design-stagnation-v20.json)
 - [V20 prospective repair of contradictory candidate invention instructions and actual exploration](protocols/campaigns/native-design-exploration-v20-a1.md)

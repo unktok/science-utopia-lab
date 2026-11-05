@@ -22,14 +22,20 @@ with128 raw files unchanged and no new inference. At frozen`65bade6`,124 focused
 SCRIPTED checks pass. All13 actual calibration controls and cold replay pass;
 the separately budgeted four-slot writer starts2026-11-05T09:20:45.967877Z.
 Its first actual request carries the repaired permission, not the contradictory
-prohibition. The throughput arm has two complete measurements`[-1,-1]`, both
-exact parent retentions; its G1 again encounters three rejected extra-field
-edits. The reviewed-production arm is still running, not yet a complete result.
-The exact frozen-source full SCRIPTED suite passes2575 tests with six skips
-in1308.23s. Do not call
-unchanged retention invention, silently accept rejected extra fields, change
-provider or substitute a toy world. The full thread goal stays active even
-if this one finite pilot fails to generate changed institutions.
+prohibition. The writer exits0 after35m02.44s with four complete worlds. Losses
+are`[-1,-1]` and`[8,8]`; all four systems retain the exact original parent.
+The [closed actual result](results/native-design-exploration-v20-a1.md) records
+26 author POSTs, nine rejected tool actions, all10 unchanged edit operands,
+368 scientist replies and32 inherited-code executions. No new source executes.
+
+Two identical read-only audits verify134 unchanged raw files and247 matching
+source files. The exact frozen-source full SCRIPTED suite passes2575 tests
+with six skips in1308.23s. The corrected permission is on all26 actual wires;
+the instruction defect is repaired but useful exploration remains unshown.
+The full thread goal stays active. Prepare the separate V21 objective-arithmetic
+and untrusted-annotation continuation, with fresh source-bound calibration.
+Do not relabel unchanged retention as invention, switch provider or substitute
+a toy world. All older outcomes/costs remain unchanged and separately scoped.
 
 ## V19 both objective feedback loops complete; useful invention remains unshown
 
