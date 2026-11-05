@@ -58,3 +58,24 @@ unknown/mismatched evidence retention, unchanged researcher execution and
 strict raw-response replay. It does not prove scientific invention or actual
 V29 backend compatibility. Freeze fresh source before any actual call. V28
 writer13893/PID64867 continues unchanged; exact38d broad suite97968 is live.
+
+## Clean freeze and source-scoped verification
+
+Freeze01535cb67e3e4975d15aa13a81684478815c87dd in the separate
+experiment-native-reasoned-editor-v29-a1 tree and matching protocol tag. Main
+fast-forwards without modifying frozen38d or its live writer. The exact-source
+proof64174 exits0 and verifies253 source/protocol blobs. No remote push occurs.
+
+The exact015 focused suite82739 exits0:351 passes in64.80s. JUnit
+outputs/native-reasoned-editor-v29-verification/focused-01535cb.xml,
+SHA c25db740e36159c941e8a4c35bfa0b97faccf78161fc79afb9142d40b4514956.
+The separate exact38d broad suite97968 then exits0:2750 passes/six skips in
+1403.28s, JUnit SHA5ff10afe435860e32cbc31f12638616ff48fd489b383ecc5179047b322ca385b.
+Do not pool those scopes or replace the preserved4b a1 broad failure.
+
+After verified97968 termination, start exact015 broad suite94255, with JUnit
+outputs/native-reasoned-editor-v29-verification/full-01535cb.xml. It remains
+running. No V29 actual call occurs while frozen V28 writer13893/PID64867 is
+live. V28 throughput G1 explicitly retains the parent and executes a native
+world; G0 failed authoring. Different measured institutions and own-measured-
+result-informed re-evaluation remain unshown. Keep the full goal active.

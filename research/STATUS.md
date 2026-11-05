@@ -2,6 +2,20 @@
 
 Updated: 2026-11-06 JST
 
+## Exact V28 broad checks pass; fixed V29 broad verification runs
+
+The exact38d V28 a2 broad suite exits0:2750 passes/six skips in1403.28s.
+This is software evidence, not successful free institution design. The V28
+writer13893/PID64867 remains live, running its unchanged throughput G1 native
+world after G0 author failure. No changed candidate or measured-loss feedback
+loop is established. The original active goal remains unmet.
+
+V29 is frozen separately at01535cb67e3e4975d15aa13a81684478815c87dd with its
+clean tree/tag. Exact-source proof verifies253 blobs and its source-specific
+focused scope passes351 in64.80s. After the V28 broad suite's verified exit,
+V29 broad suite94255 starts. No V29 actual model call has occurred; fresh24
+actual readiness still waits for V28 writer termination, not for user approval.
+
 ## V28 free-design failures continue; V29 is prepared separately
 
 Frozen V28 a2 remains live. Throughput G0 explicitly finishes but is rejected
