@@ -149,9 +149,17 @@ class ScriptedSession:
     def post(self, url, **kwargs):
         payload = json.loads(kwargs['data'])
         system = payload['messages'][0]['content']
-        expected, _ = json.JSONDecoder().raw_decode(system.split('nothing is executed or adopted.\n')[1])
+        target = system.split('nothing is executed or adopted.\n')[1]
+        if target.startswith('<tool_call>'):
+            function, _ = json.JSONDecoder().raw_decode(target.removeprefix('<tool_call>').lstrip())
+            expected = {'tool': function['name'], **function['arguments']}
+        else:
+            expected, _ = json.JSONDecoder().raw_decode(target)
         self.calls.append(payload)
-        return Response({'model': BINDING['model'], 'message': {'content': json.dumps(expected, ensure_ascii=False),
+        from utopia.optimization.native_designer_tools_v25 import message_from_action
+        message = (message_from_action(expected) if '<tools>' in system else
+            {'role': 'assistant', 'content': json.dumps(expected, ensure_ascii=False)})
+        return Response({'model': BINDING['model'], 'message': {**message,
                 **({'thinking': 'SCRIPTED separate reasoning field, not a tool action'} if payload['think'] else {})},
             'done': True, 'done_reason': 'stop', 'eval_count': 12, 'prompt_eval_count': 120})
 
@@ -179,7 +187,10 @@ def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(cert
         payload = record['transport']['request_payload']
         assert payload['think'] is (index == 8)
         assert payload['options']['temperature'] == (.6 if index == 8 else .2)
-        assert payload['options']['num_predict'] == 8192 and payload['format'] == 'json'
+        assert payload['options']['num_predict'] == 8192 and 'format' not in payload
+        assert 'tools' not in payload  # do not enter the backend's float64 tool-argument parser
+        assert '<tools>' in payload['messages'][0]['content']
+        assert payload['truncate'] is False and payload['shift'] is False
     assert value['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 1
     assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 0
     assert value['reasoning_evidence']['all_role_modes_compatible'] is True
@@ -225,7 +236,7 @@ def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, 
         record['transport']['response_payload']['message'] = {'content': '', 'thinking': json.dumps(record['output'])}
         record['transport']['raw_http_response'] = json.dumps(record['transport']['response_payload'])
     elif mutation == 'reasoning-evidence': value['reasoning_evidence']['known_nonempty_response_fields'] = 0
-    elif mutation == 'backend-format': record['transport']['request_payload'].pop('format')
+    elif mutation == 'backend-format': record['transport']['request_payload']['format'] = 'json'
     elif mutation == 'decoding-role': record['intent']['decoding_role'] = 'planner'
     value['content_sha256'] = digest({key: item for key, item in value.items() if key != 'content_sha256'})
     certificate.write_text(json.dumps(value))

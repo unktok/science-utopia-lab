@@ -1,5 +1,8 @@
 # Research index
 
+- [V25 prospective lossless Hermes interface and unchanged original-world exploration](protocols/campaigns/native-tool-calling-exploration-v25-a1.md)
+- [V25 interface implementation and preserved V24 execution evidence](logbook/2026-11-05-native-tool-calling-v25.md)
+
 This is the canonical entry point for the Science Utopia research program.
 Existing documents keep their paths because they are cited by frozen protocols
 and results. New work uses the forward-only taxonomy below.

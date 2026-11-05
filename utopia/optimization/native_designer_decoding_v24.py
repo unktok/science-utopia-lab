@@ -1,8 +1,8 @@
 """Source-owned local designer decoding, shared by sender/calibration/auditor.
 
 Weights and researcher inference are unchanged. The staged institutional
-planner requests reasoning; the literal editor does not. Final JSON content
-alone becomes a tool action.
+planner requests reasoning; the literal editor does not. One complete final
+Hermes envelope becomes a tool action, with strict JSON arguments.
 """
 from utopia.system.design_patch import clone, digest
 
@@ -17,7 +17,9 @@ def decoding_contract(protocol, *, role=None):
         role = role or 'editor'
         if role not in ('planner', 'editor'):
             raise ValueError('unknown source-owned designer role')
-        return {'think': role == 'planner', 'backend_format': 'json', 'max_tokens': STAGED_MAX_TOKENS,
+        return {'think': role == 'planner', 'backend_format': None, 'response_channel': 'hermes-text-v25',
+            'context_policy': {'truncate': False, 'shift': False},
+            'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,
             'sampling_options': {'num_ctx': 32768, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}
@@ -50,4 +52,5 @@ def designer_payload(protocol, provider, messages, seed_ctx, *, max_tokens, temp
             'num_predict': max_tokens, 'seed': int(digest(seed_ctx)[:8], 16) % (2**31)}}
     if contract['backend_format'] is not None:
         payload['format'] = contract['backend_format']
+    payload.update(clone(contract.get('context_policy', {})))
     return payload

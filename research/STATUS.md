@@ -2,6 +2,21 @@
 
 Updated: 2026-11-05
 
+## V25 lossless Hermes interface prepared while V24 completes
+
+The live V24 a3 writer completes both throughput slots at loss=-1 without a
+changed executable institution and continues the two scheduled efficiency
+slots. The full goal is unmet and active.
+
+The separate [V25 continuation](protocols/campaigns/native-tool-calling-exploration-v25-a1.md)
+uses Qwen's trained Hermes call notation with the same seven general tools,
+literal operands and host checks. Messages remain strings to avoid the
+backend's native argument-map integer round-trip risk. No candidate policy,
+scientific-world change or new model is supplied. Sender, cold replay and
+independent audit are connected;227 final focused SCRIPTED checks pass. There have
+been no V25 model calls. Final checks, a clean freeze and fresh exact14-control
+actual readiness are still required before production.
+
 ## V24 a3 actual role checks pass; four-slot native exploration is running
 
 At frozen `01b816b`, all14 fresh actual controls and cold replay pass. The

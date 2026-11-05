@@ -48,7 +48,7 @@ The current staged source uses the same fixed local Qwen3-8B in two caller-owned
 roles: thinking planner at temperature0.6 and non-thinking literal editor at0.2.
 Both use top-p0.95, top-k20, min-p0,32768 context and8192 output tokens.
 Thirteen editor controls and one planner control use their actual role settings;
-strict equality of final JSON remains required. Separate`message.thinking`is
+strict equality of decoded action JSON remains required. Separate`message.thinking`is
 retained in the raw response but is never
 parsed as an action or used to repair missing final content. Backend evaluation
 token totals are recorded without inventing a thinking/final split. The legacy
@@ -58,13 +58,24 @@ The planner control must have a nonempty separate reasoning field; editor
 fields cannot substitute for that evidence. Literal editor controls must not
 emit nonempty reasoning fields. No extra probe is added. This does not establish
 that the reasoning is correct or that the designer can invent an institution.
-The current staged a3 requests declare backend`format:"json"`up front, after
-the preserved a1 extra-brace and a2 escaped-line-feed failures. Final content
-still must be one exact JSON action,
-schema-checked without removing fences/tags/braces or repairing source. This is
-a new source-bound revision, not a fallback/retry inside a failed run.
-The same14 controls must show exact final content AND observed separate reasoning
-before production. The legacy one-shot request continues backend JSON mode.
+V24 a3 used backend`format:"json"`after preserved a1 syntax/a2 LF failures.
+The prepared V25 source instead uses Qwen's Hermes function-call notation.
+The same seven functions and their schemas are included in the trusted SYSTEM
+message. One complete final `<tool_call>{"name":...,"arguments":...}</tool_call>`
+envelope becomes the exact same host action; no prose/fence/prefix/source repair
+or reasoning extraction is allowed. Multiple calls fail as a whole, not as
+silently discarded extra work. Do not normalize strings or coerce JSON values.
+
+Do not send top-level`tools`or`format`in V25. Ollama0.33.3's typed tool schema
+does not retain property references, and its native argument-map JSON path has
+a large-integer round-trip risk. Inline schemas and keep signatures, actions
+and receipts as strings. This uses the learned Hermes syntax without changing
+the shared backend/model or relying on its native tool argument conversion.
+Full original messages and raw HTTP bodies remain archived; cold replay and
+the independent auditor bind the declared Hermes channel to its exact source.
+The same14 exact decoded actions AND role-specific reasoning evidence must pass
+before production, including real LF and9007199254740993. Older certificates
+cannot authorize this revision. The legacy one-shot wire remains JSON mode.
 
 Pass `--designer-preflight <certificate.json>` to:
 

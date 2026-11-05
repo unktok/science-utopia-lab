@@ -605,7 +605,7 @@ def test_capability_inspection_and_prompt_catalogue_cold_replay_remain_source_bo
     assert 'capability_catalog_source_sha256' in protocol_binding()
 
 
-def test_staged_dialogue_transport_is_one_exact_final_json_loopback_post(monkeypatch):
+def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch):
     calls = []
     class Response:
         status_code = 200
@@ -624,20 +624,22 @@ def test_staged_dialogue_transport_is_one_exact_final_json_loopback_post(monkeyp
         def post(self, url, **kwargs):
             calls.append(('POST', url))
             self.payload = json.loads(kwargs['data'])
-            assert self.payload['format'] == 'json'  # constrain generation, never repair final content
+            assert 'format' not in self.payload and 'tools' not in self.payload
+            assert '<tools>' in self.payload['messages'][0]['content']
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
             assert self.payload['think'] is False and self.payload['stream'] is False
             assert self.payload['options']['top_p'] == .95 and self.payload['options']['top_k'] == 20
             assert self.payload['options']['min_p'] == 0.0
-            return Response({'message': {'thinking': 'SCRIPTED not a tool action',
-                'content': json.dumps(finish())}, 'done': True,
+            from utopia.optimization.native_designer_tools_v25 import message_from_action
+            return Response({'message': {**message_from_action(finish()),
+                'thinking': 'SCRIPTED not a tool action'}, 'done': True,
                 'done_reason': 'stop', 'prompt_eval_count': 111, 'eval_count': 30})
     monkeypatch.setattr('requests.Session', Session)
     prompt = build_prompt(request(), initial_draft(request()), [], image_id=IMAGE,
         binding_sha256=HASH, settings={'max_steps': 4})
-    expected = build_conversation(prompt, SYSTEM_PROMPT)
+    expected = build_conversation(prompt, SYSTEM_PROMPT, native_tools=True)
     model = LocalStagedQwenDesignerModel(BINDING)
     parsed, messages = model.generate(prompt=prompt, system_prompt=SYSTEM_PROMPT,
         seed_ctx=('SCRIPTED',), max_tokens=512, temperature=.2,
@@ -654,10 +656,14 @@ def test_cold_replay_binds_exact_provider_dialogue_and_rejects_rehashed_message_
     class DialogueModel(Model):
         def generate(self, **kwargs):
             output, messages = super().generate(**kwargs)
-            context = build_conversation(kwargs['prompt'], kwargs['system_prompt'])
-            self.last_transport = {'conversation_schema': 'scienceutopia.staged-author.v15.conversation.v1',
+            from utopia.optimization.native_designer_tools_v25 import CHANNEL, message_from_action
+            context = build_conversation(kwargs['prompt'], kwargs['system_prompt'], native_tools=True)
+            message = message_from_action(output)
+            body = {'message': message}
+            self.last_transport = {'conversation_schema': 'scienceutopia.staged-author.v15.conversation.tools.v25',
+                'response_channel': CHANNEL, 'response_payload': body, 'raw_http_response': json.dumps(body),
                 'source_prompt_sha256': digest(kwargs['prompt']), 'request_payload': {'messages': context}}
-            return output, context + messages
+            return output, context + [message]
     definition = author(DialogueModel([{'tool': 'inspect', 'path': '/metadata'}, finish()]),
         tmp_path, max_steps=2)(request())
     assert author(Model([]), tmp_path, max_steps=2)(request()) == definition

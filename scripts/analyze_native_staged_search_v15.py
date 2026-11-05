@@ -121,8 +121,10 @@ def _transport(step, started, binding, classification):
         return output
     if hasattr(staged_author, 'build_conversation'):
         expected_messages = staged_author.build_conversation(started['prompt'],
-            staged_author.call_task(started['step'], binding['settings']['max_steps']))
-        if (transport.get('conversation_schema') != staged_author.PROTOCOL + '.conversation.v1'
+            staged_author.call_task(started['step'], binding['settings']['max_steps']), native_tools=True)
+        from utopia.optimization.native_designer_tools_v25 import CHANNEL
+        if (transport.get('conversation_schema') != staged_author.PROTOCOL + '.conversation.tools.v25'
+                or transport.get('response_channel') != CHANNEL
                 or transport.get('source_prompt_sha256') != digest(started['prompt'])):
             raise ValueError('staged original continuing-dialogue source binding differs')
     else:
@@ -144,8 +146,8 @@ def _transport(step, started, binding, classification):
         body = decode_json(transport['raw_http_response'], strict=True, finite_floats=True)
         if digest(body) != digest(transport['response_payload']):
             raise ValueError('staged original HTTP body differs from parsed transport response')
-        assistant = _assistant(step['model_reply'])
-        if assistant is not None and assistant != body.get('message', {}).get('content'):
+        messages = step['model_reply'].get('messages', [])
+        if messages and messages[-1] != body.get('message'):
             raise ValueError('staged original assistant differs from archived HTTP response')
         if step['status'] in {'finished', 'applied', 'rejected'} and (
                 transport.get('http_status') != 200 or body.get('done') is not True
