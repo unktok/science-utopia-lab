@@ -75,9 +75,9 @@ def test_prospective_driver_freezes_all_loss_and_step_budgets_before_calls():
     assert all(run['request']['designer']['max_steps'] == 16 for run in plan['runs'])
     assert all(run['plan_sha256'] == digest(run['runtime_plan']) for run in plan['runs'])
     assert plan['budget']['maximum_designer_digest_preflight_GETs'] == 64
-    assert plan['classification'] == 'actual-local-qwen-staged-native-design-exploration-development-v20'
-    assert plan['engineering_revision'] == 'v20-a1'
-    assert plan['protocol'] == 'research/protocols/campaigns/native-design-exploration-v20-a1.md'
+    assert plan['classification'] == 'actual-local-qwen-staged-native-objective-exploration-development-v21'
+    assert plan['engineering_revision'] == 'v21-a1'
+    assert plan['protocol'] == 'research/protocols/campaigns/native-objective-exploration-v21-a1.md'
 
 
 def test_staged_queue_observes_exact_journals_and_cold_resume_without_redispatch(tmp_path):

@@ -31,7 +31,7 @@ def test_all_json_operand_types_are_explicit_and_host_accepted(value):
     {'tool': 'inspect'}, {'tool': 'inspect', 'path': '', 'text': 'wrong'},
     {'tool': 'inspect', 'resource': 'capabilities', 'selector': {'mechanism_id': 'x'}, 'path': ''},
     {'tool': 'edit'}, {'tool': 'edit', 'operations': []},
-    {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/metadata/x', 'value': 1}], 'rationale': 'wrong'},
+    {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/metadata/x', 'value': 1}], 'undeclared': 'wrong'},
     {'tool': 'splice', 'path': '/x', 'text': ''}, {'tool': 'configure'},
     {'tool': 'validate', 'path': ''}, {'tool': 'finish'}, {'tool': 'finish', 'rationale': ''},
 ])

@@ -6,6 +6,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V21 prepared objective arithmetic and explicitly untrusted author notes](components/native-objective-view-and-author-notes-v21.md)
+- [V21 conditional prospective continuation after V20 closes](protocols/campaigns/native-objective-exploration-v21-a1.md)
+- [V21 software implementation and verification log without new inference](logbook/2026-11-05-native-objective-exploration-v21.md)
 - [V20 actual 23-request instruction contradiction and unchanged edit operands](results/native-design-stagnation-v20.md)
 - [V20 exact read-only wire and operand diagnosis](results/native-design-stagnation-v20.json)
 - [V20 prospective repair of contradictory candidate invention instructions and actual exploration](protocols/campaigns/native-design-exploration-v20-a1.md)

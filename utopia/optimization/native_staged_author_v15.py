@@ -54,7 +54,11 @@ ACTION_FIELDS = {
         'continuous': {'type': 'array', 'maxItems': 12, 'items': COORDINATE},
         'logits': {'type': 'object', 'additionalProperties': {'type': 'array', 'items': {'type': 'number'}}},
         'rationale': {'type': 'string', 'minLength': 1, 'maxLength': 4096},
+        'provenance': {'type': 'object', 'maxProperties': 16},
 }
+# Explicit, untrusted author annotations, not executable design fields or
+# operator attestations. Exact raw actions remain archived; nothing is repaired.
+ANNOTATIONS = ('rationale', 'provenance')
 TOOL_FIELDS = {
     'inspect': (('path',), ('resource', 'selector', 'path', 'offset', 'limit')),
     'edit': (('operations',), ('operations',)),
@@ -65,9 +69,10 @@ TOOL_FIELDS = {
 
 
 def _tool_schema(tool, required, allowed):
+    properties = tuple(dict.fromkeys((*allowed, *ANNOTATIONS)))
     schema = {'type': 'object', 'required': ['tool', *required], 'additionalProperties': False,
         'properties': {'tool': {'const': tool},
-            **{key: {'$ref': '#/$defs/' + key} for key in allowed}}}
+            **{key: {'$ref': '#/$defs/' + key} for key in properties}}}
     if tool == 'configure':
         schema['anyOf'] = [{'required': [key]} for key in allowed]
     if tool == 'inspect':
@@ -90,7 +95,7 @@ def turn_response_schema(remaining_calls):
     if remaining_calls != 1:
         return ACTION_SCHEMA
     return {**_tool_schema('finish', *TOOL_FIELDS['finish']),
-        '$defs': {'rationale': ACTION_FIELDS['rationale']}}
+        '$defs': {key: ACTION_FIELDS[key] for key in ANNOTATIONS}}
 
 INSTRUCTIONS = """You design the scientific SYSTEM to minimize the supplied exact LossSpec.
 Researcher model weights stay fixed. You may invent arbitrary literal Python,
@@ -116,8 +121,23 @@ or connections that use it. Code nodes can read context['parameters'].
 Static validity is not loss minimization. Propose a system; only a subsequent
 native measurement establishes its loss. Read-only notices never veto a design.
 
+OPTIMIZATION IS NOT CODE VERIFICATION.
+A correctly implemented parent may have a poor loss. Copying its source or
+passing a static check does not minimize the objective. Use optimization_task_view
+to read the exact arithmetic and your own measured loss components. Choose
+institutional behavior to test under those numeric terms; do not supply an edit
+identical to the current value and describe it as a changed policy. Retention
+is still legal, but it is retention, not an unmeasured improvement. Form a
+hypothesis about how your chosen change affects the measured terms, then author
+the literal implementation and measure it through the existing native loop.
+No particular hypothesis, institution, source, edge or metric value is supplied.
+
 Return ONE JSON tool action per turn. Use small steps; inspect actual fields
 before editing. The initial index omits source/value bodies: inspect reads them.
+Any action may include optional rationale (a nonempty string) and provenance
+(an object with at most16 keys) as untrusted author notes. These notes do not
+edit the system, execute anything or become trusted compiler/operator provenance.
+Only finish requires rationale. All other undeclared fields remain invalid.
 Tools:
   {"tool":"inspect","selector":{"mechanism_id":"EXACT ID"},"path":""}
     reads that complete current node. Local child pointers read specific fields.
@@ -277,7 +297,7 @@ def action_summary(action):
                     receipt['operand']['literal_scalar'] = value
             operations.append(receipt)
         result['operations'] = operations
-    for key in ('text', 'factors', 'continuous', 'logits', 'rationale'):
+    for key in ('text', 'factors', 'continuous', 'logits', *ANNOTATIONS):
         if key in action:
             result[key + '_descriptor'] = _descriptor(action[key])
     return result
@@ -361,7 +381,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
         'result': None, 'definition': None, 'errors': []}
     try:
         if isinstance(action, dict) and action.get('tool') in TOOL_FIELDS:
-            allowed = {'tool', *TOOL_FIELDS[action['tool']][1]}
+            allowed = {'tool', *TOOL_FIELDS[action['tool']][1], *ANNOTATIONS}
             if set(action) - allowed:
                 raise ValueError('unexpected fields for ' + action['tool'] + ': '
                     + ','.join(sorted(set(action) - allowed)))
@@ -381,6 +401,9 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
             problem = best_match(problems)
             raise ValueError('tool schema: ' + problem.json_path + ': ' + problem.message)
         tool = action['tool']
+        annotations = {key: clone(action[key]) for key in ANNOTATIONS if key in action}
+        if annotations:
+            record['untrusted_author_annotations'] = annotations
         if tool in {'inspect', 'splice'}:
             if 'path' not in action:
                 raise ValueError('inspect/splice requires explicit path; empty path reads root')
@@ -446,13 +469,13 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
                     'The literal edit leaves the current document identical. This is legal retention, '
                     'not a new source/graph/parameter change. Static validity does not establish loss minimization.')}
         elif tool == 'configure':
-            if set(action) == {'tool'}:
+            if not any(key in action for key in ('factors', 'continuous', 'logits')):
                 raise ValueError('configure requires at least one explicit distribution field')
             for key in ('factors', 'continuous', 'logits'):
                 if key in action:
                     current[key] = clone(action[key])
             validation, _ = _validation(current, request, binding_sha256, provider_binding)
-            record['result'] = {'configured_fields': sorted(set(action) - {'tool'}), 'validation': validation}
+            record['result'] = {'configured_fields': sorted(set(action) & {'factors', 'continuous', 'logits'}), 'validation': validation}
         elif tool in {'validate', 'finish'}:
             if tool == 'finish' and 'rationale' not in action:
                 raise ValueError('finish requires explicit authored rationale')
@@ -509,10 +532,12 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
                 if item.get('model_reply', {}).get('output') is not None else None})
     control = turn_control(state, steps, max_steps=settings['max_steps'])
     from utopia.system.native_capability_catalog import native_capability_index
+    from .native_objective_view import objective_view
     return json.dumps({'000_current_turn': control, 'instructions': INSTRUCTIONS,
         'technical_ABI_and_distribution_contract': ABI_CONTRACT,
         'binding_sha256': binding_sha256, 'image_id': image_id,
         'exact_loss_spec': request['loss_spec'], 'generation': request.get('generation'),
+        'optimization_task_view': objective_view(request, state),
         'stage': request.get('stage', 'blackbox-generation'), 'own_history': history,
         'remaining_calls_including_this_one': settings['max_steps'] - len(steps),
         'draft_index': draft_summary(state), 'previous_steps': previous,
