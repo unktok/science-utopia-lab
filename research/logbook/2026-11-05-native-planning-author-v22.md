@@ -64,3 +64,52 @@ frozen-source audits both complete; the four observed systems remain unchanged.
 Close those actual outcomes before any V22 calibration. A clean V22 software
 freeze and full SCRIPTED suite can proceed while that interpretation is saved.
 No V22 model call, source execution or native world has occurred.
+
+## Preserved failed a1 readiness and prospective a2
+
+Freeze the first implementation at`c69a93df9b48fbe8d49a34dadac625f90811a4f4`.
+The broad SCRIPTED run ends2610 passes/one failure/six skips in960.26s. The
+failure is the earlier address-control test's positional assumption that inspect
+is first. Named lookup and an exact six-case-order assertion retain all prior
+address checks and add the plan check; the corrected address/plan/contract
+scope passes66 tests in4.66s. Do not relabel c69's full suite as green.
+
+After V21's authoritative exit and two identical actual audits, record its
+four unchanged systems and unmet goal at`5665b63`. A1 readiness is then run
+at the frozen c69 source. Eight typed controls pass; `sequence-plan` is the
+ninth and fails literal equality. The known HTTP reply paraphrases both
+requested strings and adds rationale/provenance. These are not an unknown
+reply, a new institution or a successful exact control.
+
+Keep all nine charged POSTs/known replies,185.06358041823842s summed control
+time and recorded94589/408 prompt/output tokens. Every token field is present,
+not imputed. Failed certificate content hash:
+`f442d181b5625b987735dcb0d03a6c4d77486ff53b8e9cc1fe42cda3b25f33d9`.
+No a1 scientific world or production writer is started; the gate stops it.
+
+The new planner frame omitted the final Python-owned task reminder used by
+the established editor/control frames. Restore that exact source-owned task
+at the end of planning data. Keep the expected copy object and strict literal
+equality unchanged. The real planner gets its own invention-task reminder,
+not a copy-control policy; observed strings never choose that task.
+
+Write the separate [a2 protocol](../protocols/campaigns/native-planned-exploration-v22-a2.md)
+before new inference: a fresh, separately charged14-control run and conditional
+four-native-slot pilot, with all earlier failures preserved. Do not append a
+retry to a1 or replace its failed certificate. An initial a2 check finds an
+error in the new test's use of `JSONDecoder.raw_decode` (168 passes/one failure):
+its second return value is an index, not the remaining text. Correct the test
+to check the actual suffix; no production behavior is weakened for that error.
+No a2 model call has been made at this entry.
+
+The corrected combined a2 prelaunch scope passes206 SCRIPTED checks in25.79s,
+including address controls, planner/editor role framing, literal replay and
+historical source-scoped publication checks. Counts overlap earlier scopes.
+The original c69 full-suite JUnit SHA is
+`77454fa4b7861a2e44b96394e30e5cbca25ab727ee1f96baca6b4f99ab4d75cf`;
+its one failed positional test remains part of that source's outcome.
+
+Merge the closed V21 evidence, keeping both V22 and V21 INDEX entries. Prepare
+a new a2 source freeze for full software verification and separately budgeted
+actual readiness. No production run is authorized by the failed a1 certificate;
+the source-owned task reminder changes runtime bytes and requires fresh proof.

@@ -6,8 +6,11 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V22 a2 prospective source-owned task reminders after the failed literal control](protocols/campaigns/native-planned-exploration-v22-a2.md)
 - [V22 prospective model-authored planning followed by literal implementation](protocols/campaigns/native-planned-exploration-v22-a1.md)
 - [V22 source-free planning implementation and verification log](logbook/2026-11-05-native-planning-author-v22.md)
+- [V21 closed four-world outcome with valid no-op edits and no institutional change](results/native-objective-exploration-v21-a1.md)
+- [V21 exact source/raw/own-feedback/physical-cost audit](results/native-objective-exploration-v21-a1.json)
 - [V21 prepared objective arithmetic and explicitly untrusted author notes](components/native-objective-view-and-author-notes-v21.md)
 - [V21 conditional prospective continuation after V20 closes](protocols/campaigns/native-objective-exploration-v21-a1.md)
 - [V21 source verification and fresh calibration execution log](logbook/2026-11-05-native-objective-exploration-v21.md)

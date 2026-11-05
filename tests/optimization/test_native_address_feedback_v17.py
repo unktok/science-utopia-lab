@@ -72,11 +72,17 @@ def test_non_json_address_cannot_escape_error_handling():
 
 def test_actual_preflight_sequence_covers_relative_and_absolute_address_forms():
     from utopia.optimization.native_designer_preflight import sequence
+    from utopia.optimization.native_staged_author_v15 import PLAN_CONTROL
     state = initial_draft(request())
-    cases = sequence(state)
-    assert cases[0]['expected']['selector']['mechanism_id'] == state['document']['mechanisms'][0]['mechanism_id']
-    assert cases[0]['expected']['path'] == '/parameters/code_artifact/source'
-    assert cases[1]['expected']['path'] == cases[0]['expected']['path']
-    assert cases[1]['expected']['selector'] == cases[0]['expected']['selector']
-    assert cases[2]['expected']['path'] == '/mechanisms/0/parameters/code_artifact/source'
-    assert 'selector' not in cases[2]['expected']
+    sequence_cases = sequence(state)
+    assert [row['id'] for row in sequence_cases] == ['sequence-plan', 'sequence-inspect',
+        'sequence-splice', 'sequence-reinspect', 'sequence-validate', 'sequence-finish']
+    cases = {row['id']: row['expected'] for row in sequence_cases}
+    assert cases['sequence-plan'] == PLAN_CONTROL
+    relative, splice, absolute = [cases[key] for key in (
+        'sequence-inspect', 'sequence-splice', 'sequence-reinspect')]
+    assert relative['selector']['mechanism_id'] == state['document']['mechanisms'][0]['mechanism_id']
+    assert relative['path'] == '/parameters/code_artifact/source'
+    assert splice['path'] == relative['path'] and splice['selector'] == relative['selector']
+    assert absolute['path'] == '/mechanisms/0/parameters/code_artifact/source'
+    assert 'selector' not in absolute

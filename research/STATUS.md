@@ -2,7 +2,29 @@
 
 Updated: 2026-11-05
 
-## V21 objective arithmetic and explicit author notes in the native pilot
+## V22 planner and editor workflow prepared after failed a1 readiness
+
+V21's four actual systems remain unchanged, so the full exploration goal stays
+active. The [new workflow](protocols/campaigns/native-planned-exploration-v22-a1.md)
+asks the fixed model to design a plan without seeing the current code, then
+asks it to implement or revise that exact untrusted plan through literal tools.
+A plan alone does not change the scientific system; retention stays legal.
+
+At initial source`c69a93d`, actual readiness passes eight typed controls and
+fails the ninth plan-copy control: the known reply paraphrases required text
+and adds notes. All nine POSTs and185.06s summed control time remain charged;
+no native a1 production is launched. Its broad software test also retains one
+old positional address-fixture failure (2610 passes/six skips).
+
+The separate [a2 continuation](protocols/campaigns/native-planned-exploration-v22-a2.md)
+restores the exact Python-owned task at the end of planner data, as already
+done by existing editor/control frames. Expected values and strict equality
+are unchanged. The address fixture now verifies the six named controls without
+dropping any address checks. The final combined scope passes206 SCRIPTED tests;
+fresh14-control actual readiness is still required before any a2 production.
+See the [forward-only execution log](logbook/2026-11-05-native-planning-author-v22.md).
+
+## V21 closes with valid no-op edits and no institutional exploration
 
 The full exploration goal remains active. V20 closes all four original-world
 evaluations with exact parent retentions, so its repaired instruction alone
@@ -21,9 +43,14 @@ in1082.77s; overlapping focused scopes are not added. All13 actual interface
 controls and cold replay pass in274.50214641704224 adapter seconds, separately
 from production. The four-slot writer starts2026-11-05T10:08:15.237951Z from
 the separate frozen experiment tree, only after V20's closed outcome audit.
-Throughput G0 explicitly finishes after six calls with two accepted no-op
-source edits; its first native evaluation is in progress. No institutional
-change or improvement is shown at this point. The full goal stays active.
+The writer exits0 after31m28.88s. The [closed actual result](results/native-objective-exploration-v21-a1.md)
+records losses`[-1,-1]` and`[8,8]`, all four systems equal to the original parent,
+20 known author replies, seven accepted no-op edits and zero tool/native errors.
+Physical work is368 scientist replies and32 inherited-code executions; no newly
+authored source executes. Two identical audits verify122 unchanged raw files
+and248 source files. The full exploration goal remains unmet and active.
+The next prepared workflow separates source-free model-authored planning from
+literal implementation, with fresh14-control readiness required before launch.
 See the [prospective protocol](protocols/campaigns/native-objective-exploration-v21-a1.md)
 and [execution log](logbook/2026-11-05-native-objective-exploration-v21.md).
 

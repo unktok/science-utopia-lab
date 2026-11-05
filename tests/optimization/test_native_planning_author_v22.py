@@ -32,7 +32,9 @@ def test_first_planner_context_has_structure_and_loss_but_no_parent_source_or_st
     assert len(messages) == 2 and [m['role'] for m in messages] == ['system', 'user']
     assert secret not in json.dumps(messages)
     assert 'TRUSTED SCIENTIFIC INSTITUTION DESIGN TASK' in messages[0]['content']
-    data = json.loads(messages[1]['content'].split('\n', 1)[1])
+    raw = messages[1]['content'].split('\n', 1)[1]
+    data, end = json.JSONDecoder().raw_decode(raw)
+    assert raw[end:] == '\n\nCURRENT PYTHON-OWNED TASK\n' + PLAN_SYSTEM_PROMPT
     assert data['exact_loss_spec'] == body['loss_spec']
     assert not data['current_parent_source_supplied']
     assert len(data['planning_system_structure']['mechanisms']) == 2
@@ -119,3 +121,4 @@ def test_instructed_planner_calibration_has_no_conflicting_optimization_task():
     assert 'INSTRUCTED PLANNING INTERFACE CONTROL' in messages[0]['content']
     assert 'Do not optimize' in messages[0]['content']
     assert 'Minimize the exact supplied' not in messages[0]['content']
+    assert messages[-1]['content'].endswith(PLAN_CONTROL_SYSTEM_PROMPT)
