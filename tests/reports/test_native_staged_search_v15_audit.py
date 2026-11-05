@@ -273,7 +273,7 @@ def transport_fixture():
         'messages': audit.staged_author.build_conversation(started['prompt'],
             audit.staged_author.call_task(0, settings['max_steps']), native_tools=True),
         'think': True, 'stream': False, 'truncate': False, 'shift': False, 'format': 'json',
-        'options': {'temperature': .6, 'num_predict': 2048, 'num_ctx': 32768,
+        'options': {'temperature': .6, 'num_predict': 2048, 'num_ctx': 40960,
             'top_p': .95, 'top_k': 20, 'min_p': 0.0,
             'seed': int(audit.digest(('native-staged-designer-v15', binding['binding_sha256'], 0))[:8], 16) % (2**31)}}
     step = {'status': 'finished', 'model_reply': {'messages': [body['message']],

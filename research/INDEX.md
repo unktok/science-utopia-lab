@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V31 conditional JSON presentation, designer window and exact-key diagnostics](protocols/campaigns/native-context-encoding-v31-a1.md)
+- [V31 actual V30 output starvation and separate implementation evidence](logbook/2026-11-06-native-context-encoding-v31.md)
+
 - [V30 prospective raw-provenance/model-view separation and unchanged finite pilot](protocols/campaigns/native-provenance-view-v30-a1.md)
 - [V30 actual inert-edit confound and scripted85-request paired regression](logbook/2026-11-06-native-provenance-view-v30.md)
 - [V28 closed two-world result and no functional invention](results/native-field-addressing-v28-a2.md)

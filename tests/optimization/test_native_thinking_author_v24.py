@@ -19,7 +19,7 @@ def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
         role='planner')
     assert actual['think'] is True and actual['format'] == 'json' and actual['stream'] is False
     assert actual['truncate'] is False and actual['shift'] is False
-    assert actual['options'] == {'temperature': .6, 'num_predict': 8192, 'num_ctx': 32768,
+    assert actual['options'] == {'temperature': .6, 'num_predict': 8192, 'num_ctx': 40960,
         'top_p': .95, 'top_k': 20, 'min_p': 0.0, 'seed': actual['options']['seed']}
     assert messages == original
     assert decoding_contract('staged-v15')['max_tokens'] == 8192

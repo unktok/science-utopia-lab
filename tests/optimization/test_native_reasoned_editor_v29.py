@@ -17,7 +17,7 @@ def test_reasoning_configuration_is_caller_owned_and_leaves_model_and_observatio
         max_tokens=config['max_tokens'], temperature=config['temperature'], role=role)
     assert payload['model'] == BINDING['model']
     assert payload['think'] is True and payload['options']['temperature'] == .6
-    assert payload['options']['num_ctx'] == 32768 and payload['options']['num_predict'] == 8192
+    assert payload['options']['num_ctx'] == 40960 and payload['options']['num_predict'] == 8192
     assert payload['messages'] == messages and payload['messages'] is not messages
     assert payload['format'] == 'json' and payload['shift'] is False and payload['truncate'] is False
     assert decoding_contract('one-shot-v14')['think'] is False

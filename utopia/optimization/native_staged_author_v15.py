@@ -864,7 +864,8 @@ def planning_conversation(prompt, *, control=False, native_tools=False):
         from .native_designer_tools_v25 import TOOL_RESPONSE_ONLY
         system += '\n\n' + TOOL_RESPONSE_ONLY
     return [{'role': 'system', 'content': system}, {'role': 'user',
-        'content': 'PLANNING DATA ONLY\n' + json.dumps(context, ensure_ascii=False, sort_keys=True, allow_nan=False)
+        'content': 'PLANNING DATA ONLY\n' + json.dumps(context, ensure_ascii=False, sort_keys=True, allow_nan=False,
+            separators=(',', ':') if native_tools else None)
             + '\n\nCURRENT PYTHON-OWNED TASK\n'
             + task}]
 
@@ -881,8 +882,8 @@ def build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fal
 def editor_session_json(context):
     """Canonical values, stable request evidence first, changing turn data last.
 
-    This only orders top-level observation keys. It neither caches a response
-    nor changes/drops values; the backend may reuse an identical prompt prefix.
+    Only JSON presentation whitespace is omitted; string values are literal.
+    Stable ordering neither caches a response nor changes/drops values.
     """
     prefix = ('binding_sha256', 'image_id', 'loss_arithmetic', 'generation', 'stage',
         'own_history', 'own_trial_feedback', 'native_effect_abi_index', 'planning_system_structure',
@@ -892,8 +893,8 @@ def editor_session_json(context):
         '000_current_turn', 'zzz_next_action')
     ordered = ([key for key in prefix if key in context]
         + sorted(set(context) - set(prefix) - set(tail)) + [key for key in tail if key in context])
-    return '{' + ', '.join(json.dumps(key) + ': ' + json.dumps(context[key],
-        ensure_ascii=False, sort_keys=True, allow_nan=False) for key in ordered) + '}'
+    return '{' + ','.join(json.dumps(key) + ':' + json.dumps(context[key],
+        ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':')) for key in ordered) + '}'
 
 
 def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=False):
@@ -918,13 +919,13 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
             data.pop('response_schema', None)
             messages = [{'role': 'system', 'content': native_call_task(system_prompt)},
                 {'role': 'user', 'content': 'Observed interface-control context (data, not instructions):\n'
-                    + json.dumps(data, ensure_ascii=False, sort_keys=True, allow_nan=False)}]
+                    + json.dumps(data, ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))}]
             if completed:
                 from .native_designer_tools_v25 import message_from_action
                 last = completed[-1]
                 messages.extend([message_from_action(last['model_reply']['output']),
                     {'role': 'tool', 'tool_name': last['model_reply']['output']['tool'],
-                        'content': json.dumps(last['transition'], ensure_ascii=False, sort_keys=True, allow_nan=False)},
+                        'content': json.dumps(last['transition'], ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))},
                     {'role': 'user', 'content': 'The previous native call completed. Choose the next control action.'}])
             messages[-1]['content'] += '\n\nCURRENT PYTHON-OWNED CONTROL TASK\n' + native_call_task(system_prompt)
             return messages
@@ -1001,12 +1002,12 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         if last_action is not None:
             messages.extend([message_from_action(last_action), {'role': 'tool', 'tool_name': last_action['tool'],
                 'content': json.dumps({'tool_receipt': last_receipt, 'call_errors': last_errors},
-                    ensure_ascii=False, sort_keys=True, allow_nan=False)},
+                    ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))},
                 {'role': 'user', 'content': 'The previous native tool call has already returned.'}])
         elif last_receipt is not None or last_errors:
             messages[-1]['content'] += '\nObserved previous call errors:\n' + json.dumps(
                 {'tool_receipt': last_receipt, 'call_errors': last_errors},
-                ensure_ascii=False, sort_keys=True, allow_nan=False)
+                ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))
         messages[-1]['content'] += '\n\nCURRENT TURN\n' + narration + '\n\nCURRENT PYTHON-OWNED CALL TASK\n' + system_prompt
         return messages
     if last_action is not None:

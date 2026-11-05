@@ -145,7 +145,7 @@ def message_from_action(action):
     """Serialize completed history, never dispatch or replace a provider reply."""
     function = function_data(action)
     return {'role': 'assistant', 'content': '<tool_call>\n'
-        + json.dumps(function, ensure_ascii=False, allow_nan=False) + '\n</tool_call>'}
+        + json.dumps(function, ensure_ascii=False, allow_nan=False, separators=(',', ':')) + '\n</tool_call>'}
 
 
 def response_message_from_action(action):
@@ -172,7 +172,7 @@ def tool_system_prompt(*, role=None):
     """
     return ('\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\n'
         'You are provided with function signatures within <tools></tools> XML tags:\n<tools>\n'
-        + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False) for tool in tool_specifications(role=role))
+        + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False, separators=(',', ':')) for tool in tool_specifications(role=role))
         + '\n</tools>\n\n' + TOOL_RESPONSE_ONLY)
 
 

@@ -39,7 +39,9 @@ def test_noop_plan_is_not_reported_as_an_implemented_institution_and_all_own_tri
     assert trial['observations'][0]['is_current_parent'] is True
     for task in (PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT):
         messages = build_conversation(prompt(req), task, native_tools=True)
-        assert json.dumps(feedback, ensure_ascii=False, sort_keys=True) in messages[1]['content']
+        marker = 'PLANNING DATA ONLY\n' if task == PLAN_SYSTEM_PROMPT else 'EXACT SESSION DATA\n'
+        data, _ = json.JSONDecoder().raw_decode(messages[1]['content'].split(marker, 1)[1])
+        assert data['own_trial_feedback'] == feedback
         assert PLAN['design_intent'] not in messages[0]['content']
     assert req == original
 
@@ -147,7 +149,7 @@ def test_local_sender_known_bad_final_is_archived_and_cold_replayed_without_new_
     'native-literal-workbench-v27-a1', 'native-literal-workbench-v27-a2',
     'native-field-addressing-v28-a1', 'native-field-addressing-v28-a2',
     'native-reasoned-editor-v29-a1', 'native-reasoned-editor-v29-a2',
-    'native-provenance-view-v30-a1'])
+    'native-provenance-view-v30-a1', 'native-context-encoding-v31-a1'])
 def test_reporting_protocol_allowlist_includes_each_declared_continuation(monkeypatch, protocol):
     from scripts import analyze_native_staged_search_v15 as audit
     import hashlib

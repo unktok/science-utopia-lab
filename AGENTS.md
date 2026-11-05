@@ -29,3 +29,7 @@
   must not introduce pre-treatment model-input differences. Preserve raw audit
   identities and intentionally authored scientific references; do not rewrite
   historical logs or interpret an unused parameter's loss change as a policy effect.
+- Inspect backend-reported input/output counts and length termination together.
+  Correctly rejecting a partial reply does not establish sufficient free-design
+  context room. Regress actual history-bearing frames, preserve all JSON/string
+  contents, and distinguish message-byte savings from measured token capacity.

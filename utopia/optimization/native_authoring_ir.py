@@ -254,6 +254,38 @@ def _collection_failure(document, operations, *, stage):
     return None
 
 
+def _tensor_attribute_failure(document, operations, *, stage):
+    """Explain this exact existing rejection; never change validity or repair."""
+    from utopia.system.tensor_program import ATTRS, IMPLEMENTATION, validate_tensor_program
+    for index, owner in enumerate(document.get('mechanisms', [])):
+        if not isinstance(owner, dict) or owner.get('implementation') != IMPLEMENTATION:
+            continue
+        parameters = owner.get('parameters')
+        program = parameters.get('program') if isinstance(parameters, dict) else None
+        try:
+            validate_tensor_program(program)
+        except ValueError as error:
+            if str(error) != 'invalid tensor operation attributes':
+                continue  # Preserve all other errors and their existing precedence.
+        else:
+            continue
+        for node_index, node in enumerate(program['nodes']):
+            attrs, op = node['attrs'], node['op']
+            allowed = ATTRS.get(op, set())
+            if not isinstance(attrs, dict) or not set(attrs) <= allowed:
+                path = f'/mechanisms/{index}/parameters/program/nodes/{node_index}/attrs'
+                return AuthoringIRDiagnostic('invalid tensor operation attributes',
+                    stage=stage, path=path,
+                    operation_index=_operation_index(operations, path, owner.get('mechanism_id')),
+                    actual_owner_id=owner.get('mechanism_id'),
+                    actual_owner_implementation=owner.get('implementation'),
+                    tensor_node_id=node['id'], tensor_operation=op,
+                    expected_type='object containing only the listed operation attributes',
+                    actual_type=json_type(attrs), allowed_attribute_keys=sorted(allowed),
+                    actual_attribute_keys=sorted(attrs) if isinstance(attrs, dict) else None)
+    return None
+
+
 def _literal_fields(document, operations, *, stage, image_id):
     """Check known code/schema ABI field types without changing any value."""
     from utopia.system.code_mechanisms import validate_code_artifact
@@ -497,6 +529,8 @@ class StableIDAuthoringProtocol:
             raise  # Preserve more specific source/ABI/literal diagnostics.
         except Exception as error:
             failure = _collection_failure(base_document, base_operations, stage='base-final-transaction')
+            if failure is None and str(error) == 'invalid tensor operation attributes':
+                failure = _tensor_attribute_failure(base_document, base_operations, stage='base-final-transaction')
             if failure is not None:
                 raise failure from error
             raise AuthoringIRDiagnostic(str(error), stage='base-final-transaction') from error

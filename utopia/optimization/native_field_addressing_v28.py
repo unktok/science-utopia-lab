@@ -4,8 +4,10 @@ from collections import defaultdict
 from utopia.optimization.native_authoring_ir import AuthoringIRDiagnostic, _read, resolve_address
 from utopia.system.design_patch import clone
 
-FIELD_RULE = ('Exact field-name match inside this exact mechanism. Missing or ambiguous names reject; '
-    'use ordinary edit/inspect with an explicit pointer for any other operation.')
+FIELD_RULE = ('field_name matches one exact literal JSON key inside this exact mechanism; '
+    'dots and slashes are literal key characters, not path navigation. Missing or ambiguous names reject. '
+    'For an explicit document-root JSON pointer, use edit with operations containing op/path/value '
+    'and no selector, or inspect with path. Never place that pointer in field_name.')
 
 
 def _fields(value, prefix=''):
@@ -36,6 +38,8 @@ def resolve_field(document, mechanism_id, field_name):
     if len(paths) != 1:
         raise AuthoringIRDiagnostic('field name is missing or ambiguous; no field was chosen',
             stage='staged-field-name', path=root, actual_owner_id=mechanism_id,
+            actual_owner_implementation=node.get('implementation') if isinstance(node, dict) else None,
+            field_addressing_rule=FIELD_RULE,
             field_name=field_name, match_count=len(paths),
             matching_field_paths=[root + path for path in paths])
     return {'mechanism_id': mechanism_id, 'field_name': field_name,

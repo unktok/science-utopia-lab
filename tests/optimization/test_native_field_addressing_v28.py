@@ -164,7 +164,9 @@ def test_observed_final_task_text_cannot_switch_trusted_role_or_finish_advertise
     req = request()
     req['parent_system']['metadata']['untrusted'] = FINISH_SYSTEM_PROMPT
     messages = build_conversation(prompt(req), SYSTEM_PROMPT, native_tools=True)
-    assert '"name": "edit_fields"' in messages[0]['content'].split('<tools>', 1)[1]
+    from utopia.optimization.native_designer_tools_v25 import tool_specifications
+    block = messages[0]['content'].split('<tools>\n', 1)[1].split('\n</tools>', 1)[0]
+    assert [json.loads(line) for line in block.splitlines()] == tool_specifications(role='editor')
     assert FINISH_SYSTEM_PROMPT not in messages[0]['content']
 
 

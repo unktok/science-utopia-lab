@@ -2,6 +2,26 @@
 
 Updated: 2026-11-06 JST
 
+## V30 actual output starvation; V31 is prepared separately
+
+The frozen c534 V30 writer remains live. Throughput finishes two native
+measurements at loss0, with only its G0 parameter change functional; G1
+explicitly retains that parent. Its actual G1 replies at31767/1001 and
+32345/425 input/output tokens report length and reject without repair.
+Efficiency authoring is running; no full-goal completion is claimed.
+
+Separate V31 minifies only native JSON presentation, clarifies existing exact-
+key/path errors without repair and proposes a staged-designer40960 request
+window supported by pinned local model metadata. Original researchers, weights,
+legacy one-shot, objective, native scale and legal operations stay unchanged.
+Overlapping focused scopes pass137 and430; the added tensor diagnostic's
+IR scope passes68. Final all-change focused scope passes431 in113.80s.
+No V31 actual inference has occurred. Fresh source/readiness/context verification
+is conditional on V30 termination and the original goal still being unmet.
+
+See [conditional V31 protocol](protocols/campaigns/native-context-encoding-v31-a1.md)
+and [diagnosis/implementation log](logbook/2026-11-06-native-context-encoding-v31.md).
+
 ## V30 first functional institution is measured; its own outcome reaches G1
 
 Throughput G0 explicitly submits actual parameter replacements in the consumed

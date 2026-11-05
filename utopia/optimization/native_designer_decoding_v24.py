@@ -8,6 +8,7 @@ from utopia.system.design_patch import clone, digest
 
 STAGED_MAX_STEPS = 8
 STAGED_MAX_TOKENS = 8192
+STAGED_CONTEXT_TOKENS = 40960
 STAGED_PLANNER_TEMPERATURE = .6
 STAGED_EDITOR_TEMPERATURE = .6
 
@@ -21,7 +22,7 @@ def decoding_contract(protocol, *, role=None):
             'context_policy': {'truncate': False, 'shift': False},
             'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,
-            'sampling_options': {'num_ctx': 32768, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
+            'sampling_options': {'num_ctx': STAGED_CONTEXT_TOKENS, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}
     if protocol == 'one-shot-v14':
         if role not in (None, 'one-shot'):
