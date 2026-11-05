@@ -148,3 +148,29 @@ instructed compatibility task, not an optimization trial; none of this archived
 history is injected into the new scientific campaign's G0. The complete exact
 calibration request is recorded in its own fresh certificate/plan. Keep the
 live V26 writer running and wait for authoritative termination before starting.
+
+## V26 closure and actual a2 readiness
+
+V26 session9150 exits0 and PID37919 is absent. The original writer-ended
+receipt gives16:36:08.919877Z→17:41:47.445119Z,65m38.53s at frozen6d.
+Four native worlds remain unchanged, throughput[-1,-1], efficiency[8,8].
+The efficiency G1 first reply is known HTTP200/done=false, with no token
+metadata. It is correctly charged/rejected as invalid-response, not repaired
+or redispatched. All four generations later explicitly finish unchanged.
+
+After that authoritative termination, start fresh actual a2 readiness in
+session17524, outputs/native-literal-workbench-v27-a2-preflight, from clean
+frozendfe and the prospectively declared f818 actual G1 request/provider.
+The first nine controls pass, including the planner with own history. All14
+and cold replay are still pending. No a2 scientific pilot has started.
+
+The exactdfe broad suite52287 exits0:2729 passes/six skips in1357.79s. JUnit
+SHA:d9c35d6205db5ab2eb74742b484d4143e67dd9c4f82f368f17314a567cf5beed.
+Keep this separate from the preserved1046 a1 result and from actual readiness.
+
+Two unmodified frozen6d raw audit sessions35492 and17282 exit0, with cmp0,
+content SHA629cb65a37e073c245f1647183c1dd62d9693fc7bc758e34ef807abe19aa363f.
+They verify251 source/protocol blobs and146 unchanged raw files. Track the
+exact compact JSON plus interpreted result, without the external V25 reporting
+adapter. Preserve643130/6924 reported author tokens over31 records; the32nd
+reply's missing counts are not zero. The goal remains unmet and active.

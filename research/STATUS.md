@@ -2,6 +2,23 @@
 
 Updated: 2026-11-06 JST
 
+## V26 closes unchanged and V27 a2 actual readiness is running
+
+V26 exits0 at2026-11-05T17:41:47.445119Z. All four native slots finish with
+throughput[-1,-1], efficiency[8,8] and exact unchanged original institutions.
+Two unmodified frozen6d raw audits exit0 and compare byte-identically. The
+[closed report](results/native-function-feedback-v26-a1.md) records368
+scientist replies,32 known author replies and no applied edit. One known
+incomplete author reply is rejected; its missing token counts stay unknown.
+The complete goal remains active and unmet.
+
+Only after verified V26 termination, fresh actual a2 readiness starts from
+clean frozendfe with the declared actual G1 compatibility request. The first
+nine controls pass, including the own-history planner control. All14 exact
+controls/role checks and cold replay remain required before production.
+The exactdfe broad suite separately closes2729 passes/six skips in1357.79s;
+it does not substitute for actual readiness or institutional invention.
+
 ## Workbench a2 removes repeated candidate bodies without dropping outcomes
 
 Actual V26 G1 editor inputs reach29814 tokens in a32768 context. Its own

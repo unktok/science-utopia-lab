@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V26 closed unchanged four-world outcome and actual context defects](results/native-function-feedback-v26-a1.md)
+- [V26 two matching unmodified original-source raw audits](results/native-function-feedback-v26-a1.json)
+
 - [V27 a2 explicit candidate-body references preserving every other observation field](protocols/campaigns/native-literal-workbench-v27-a2.md)
 
 - [V27 literal node workbench and unchanged-world verification protocol](protocols/campaigns/native-literal-workbench-v27-a1.md)
