@@ -181,3 +181,14 @@ Final a3 prelaunch scope passes277 checks in31.19s, JUnit
 It includes the original19-node world's exact source through both legal address
 forms and rejection of the observed mixed form, with no mutation/host repair.
 No a3 model call has occurred at this entry. The full goal remains active.
+
+Freeze a3 at `1d0e22a5da4e704b30fc1f49ec292f503ffb82e9` in the separate
+`experiment-native-tool-calling-v25-a3` tree/tag. Focused JUnit SHA:
+`12e7fc4e4d336725296899b76d175536c7e98ddcb550bc8af0dcbbceff8f0dab`.
+Start its exact-source broad suite (session97518), JUnit
+`outputs/native-tool-calling-v25-verification/full-a3.xml`, and fresh actual
+readiness (session88426) under `outputs/native-tool-calling-v25-a3-preflight`.
+The plan records that exact source, max14 POSTs and created_epoch
+1793892086.411118. First six actual controls pass at this observation; remaining
+controls/cold replay are required before any scientific production. No a3
+native world has started and no final broad software result is inferred.

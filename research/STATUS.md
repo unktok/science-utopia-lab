@@ -21,6 +21,10 @@ The final a3 focused scope passes277 checks in31.19s, including both address
 forms on the original world's source. Clean source freeze and fresh actual
 readiness remain required; no a3 model call has started at this entry.
 
+A3 is subsequently frozen at `1d0e22a`; its broad software suite and fresh
+actual readiness are running. The first six controls pass. All14 plus cold
+replay remain required; no a3 scientific production has started.
+
 ## V25 a2 actual readiness is running after the failed a1 control
 
 Actual a1 source2 `7f03f00` returns a valid Hermes finish instead of the first
