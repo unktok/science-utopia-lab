@@ -2,15 +2,19 @@
 
 Updated: 2026-11-05
 
-## V23 numeric objective interface prepared while V22 a2 closes
+## V23 actual readiness running after the closed unchanged V22 a2 arm
 
-V22 a2 G0 finishes16 actions without a code edit, explicitly retains the parent
-and measures-1 in the original world. G1's actual plan cites registry prose
-about scientific value as a reason to add scientific-merit/anti-gaming aims.
-Those are not requested loss terms. No new executed rule is shown at this entry.
-The full goal stays active; the [adaptive stop addendum](protocols/campaigns/native-planned-exploration-v22-a2-stop-addendum.md)
-lets the first arm's two native measurements/own feedback close, then captures
-an auditable between-arm stop rather than claiming all four slots complete.
+V22 a2 closes both throughput worlds at`[-1,-1]`, both exact parent retentions.
+Its28 replies are14 plans/12 reads/two finishes, with zero edits or new source.
+G1's plan cites registry prose about scientific value as a reason to add
+scientific-merit/anti-gaming aims, which are not requested loss terms. The
+[closed result](results/native-planned-exploration-v22-a2.md) retains184 scientist
+replies/16 inherited-code executions and two matching source/raw audits.
+The [adaptive stop addendum](protocols/campaigns/native-planned-exploration-v22-a2-stop-addendum.md)
+closes the owned writer between arms (exit130, durable operator-interrupt receipt);
+the two remaining slots stay unexecuted/queued. The original audit keeps its
+incomplete-budget flags, distinct from verified writer termination. The full
+exploration goal remains unmet and active.
 
 The [prepared V23 interface](protocols/campaigns/native-numeric-objective-exploration-v23-a1.md)
 keeps full original LossSpecs, hashes and scientific losses unchanged. Actual
@@ -18,15 +22,16 @@ author messages receive exact computational fields/measurement definitions,
 not noncomputational registry commentary as a competing requirement. Own
 numeric outcomes/failures remain; no institution, code, threshold or gate is
 supplied. It includes a3's task tail without changing decoding or provider.
-The corrected focused scope passes195 SCRIPTED tests; no V23/a3 actual model
-call is made yet. Close/audit a2 first, skip another pilot if the full goal is
-met; otherwise freeze V23 and require fresh14-control actual readiness.
+The corrected focused scope passes195 SCRIPTED tests. Frozen V23`fa2b973`has
+its full software suite and fresh14-control actual readiness running, after
+a2's authoritative exit and two matching audits. No V23 native production is
+yet launched. A3 is superseded before inference, not a failed actual trial.
 
 A2's exact-source full software suite passes2611 tests/six skips in1458.61s.
-A3's separate prepared-source full suite is still running at this entry.
+A3's separate prepared-source suite passes2614 tests/six skips in1468.90s.
 See the [forward-only V23 log](logbook/2026-11-05-native-numeric-objective-v23.md).
 
-## V22 a2 actual exploration running; a3 editor task reminder conditional
+## V22 a2 closed diagnostic arm; a3 prepared-source checks complete
 
 V21's four actual systems remain unchanged, so the full exploration goal stays
 active. The [new workflow](protocols/campaigns/native-planned-exploration-v22-a1.md)
@@ -53,15 +58,16 @@ with364.40s summed adapter time. The conditional four-slot writer starts
 `2026-11-05T11:26:57.495948+00:00`. Its first plan proposes review filtering but
 contradicts its own loss arithmetic. Early editor actions alternate plan text
 and unchanged code reads; no executed new rule is yet established. Preserve
-the live trial and inspect the final outcome rather than infer success/failure
-from a plan alone. The broad a2 software scope is still running at this entry.
+the trial's actions and actual outcomes rather than infer success from a plan.
+The later closed result is linked above; the exact-source broad a2 scope passes
+2611 tests/six skips in1458.61s.
 
 A separate [a3 revision](protocols/campaigns/native-planned-exploration-v22-a3.md)
 repeats the exact caller-owned editor task after observations, matching the
 planner/control placement, with no supplied policy or reduced legal tool space.
-The initial focused scope passes157 SCRIPTED checks. No a3 inference is sent
-during a2; close a2 evidence first and skip a3 if the full goal is already met.
-Otherwise require a new clean source freeze and fresh actual readiness.
+The initial focused scope passes157 SCRIPTED checks and its later full scope
+passes2614/six skips. No a3 inference occurs; V23 supersedes it before actual
+execution, preserving this prepared source and its software-only scope.
 
 ## V21 closes with valid no-op edits and no institutional exploration
 
