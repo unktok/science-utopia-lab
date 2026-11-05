@@ -52,3 +52,12 @@ parallel full-suite verification only; no V21 calibration/inference starts
 while V20 is live. Native V20 now has both throughput observations at-1 and
 reviewed-production G0 is under evaluation. The V20 full suite separately
 finishes2575 passes/six skips at its own source; it is not a V21 full-suite claim.
+
+Commit the prospective software/protocol at
+`3b0f6091f93d424961fe26df7c2936ef8de7e386` and create a separate detached
+verification worktree. Start its full SCRIPTED suite with JUnit destination
+`outputs/native-objective-view-v21-verification/full-3b0f609.xml`; handle63974 is
+live at this entry and its result is unknown. This is a software freeze for
+parallel testing only, not a V21 inference launch. V20's handle33595 remains
+live and its frozen`65bade6` tree remains unchanged. No new certificate or V21
+model/world call has been made. Keep the full goal active.
