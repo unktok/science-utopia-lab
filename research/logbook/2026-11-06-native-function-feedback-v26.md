@@ -70,3 +70,12 @@ At `2026-11-05T16:16Z`, V25 has three completed native slots and its final
 generation is still authoring; rejected nonexistent-address inspections
 alternate with more plans. The new source and readiness do not yet establish
 a remedy for that free-design failure.
+
+At16:18Z, a fresh process loads the original clean frozen1d auditor through
+the explicit adapter and verifies251 original runtime/helper/protocol source
+blobs, including the actual V25 a3 protocol. This is source verification only,
+not a completed raw audit. No source/raw/model/container mutation occurs.
+The V25 writer remains live in session63205/PID25317; the exact6d broad suite
+remains live in session34297. V26 actual readiness still waits for that writer
+to terminate. Preserve the active unmet goal and continue to readiness, real
+exploration and raw result checks without a new user go-ahead.
