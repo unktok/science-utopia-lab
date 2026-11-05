@@ -111,3 +111,12 @@ outputs/native-literal-workbench-v27-verification/focused-a2.xml.
 At17:12Z, V26's throughput arm finishes both slots at loss -1 and its writer
 continues efficiency. The1046 a1 broad suite remains live in52836; a2 has no
 actual inference. Freeze a fresh a2 source before its required actual controls.
+
+Freeze a2 atdfe2cb7a8877c66bbbe1d508572ae13ae197fa74, in the separate
+experiment-native-literal-workbench-v27-a2 tree and matching protocol tag.
+Preserve1046's a1 freeze and still-running broad suite52836. Avoid concurrent
+broad software suites; after it terminates, start the exactdfe a2 suite. No
+V27 actual model call has occurred. V26 session9150/PID37919 remains live,
+finishes throughput[-1,-1] and continues the first efficiency world at17:15Z.
+Both source worktrees stay immutable. Actual a2 readiness waits for the V26
+writer's authoritative termination; the full unmet goal remains active.
