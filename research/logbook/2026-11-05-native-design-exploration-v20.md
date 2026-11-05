@@ -77,3 +77,23 @@ contains the new invention permission and not the old prohibition. No outcome
 or changed institution is inferred from this initial read. The writer and
 parallel full-suite handles are live; do not restart either because a polling
 window yields no output. Keep the broader exploration goal active.
+
+The full SCRIPTED suite handle terminates with exit0:2575 passes, six skips,
+1308.23s at the exact frozen`65bade6` source. JUnit is
+`outputs/native-design-exploration-v20-verification/full-65bade6.xml`, file SHA
+`48d96ee2494e6da5f340d1ee9a2c7f8e24188d39788bb21dc9418dc01e996a33`.
+Do not add overlapping focused counts or use these tests to claim invention.
+
+The throughput arm completes both native observations at`[-1,-1]`. G0 explicitly
+finishes after4 calls and G1 after8; all submissions retain the exact parent.
+G1 receives its own measured-1 and has three rejected provenance-bearing edits.
+The reviewed-production G0 has now explicitly finished after7 calls and is
+under native evaluation; its result is not known at this entry. The same writer
+handle remains live with no exit receipt. The repaired permission is on actual
+wires, but this first arm does not establish successful exploration.
+
+Develop objective arithmetic and optional untrusted author notes in a separate
+V21 feature worktree while V20 continues unchanged. No V21 model call occurs.
+Its future protocol must first require the V20 writer to terminate and its
+outcome to be inspected. Do not hide this unfavorable partial result, change
+the active source or stop V20 to replace it with a different condition.

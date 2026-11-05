@@ -22,8 +22,11 @@ with128 raw files unchanged and no new inference. At frozen`65bade6`,124 focused
 SCRIPTED checks pass. All13 actual calibration controls and cold replay pass;
 the separately budgeted four-slot writer starts2026-11-05T09:20:45.967877Z.
 Its first actual request carries the repaired permission, not the contradictory
-prohibition. Outcomes remain unknown. The full SCRIPTED suite is running in
-parallel in the same frozen worktree. Do not call
+prohibition. The throughput arm has two complete measurements`[-1,-1]`, both
+exact parent retentions; its G1 again encounters three rejected extra-field
+edits. The reviewed-production arm is still running, not yet a complete result.
+The exact frozen-source full SCRIPTED suite passes2575 tests with six skips
+in1308.23s. Do not call
 unchanged retention invention, silently accept rejected extra fields, change
 provider or substitute a toy world. The full thread goal stays active even
 if this one finite pilot fails to generate changed institutions.
