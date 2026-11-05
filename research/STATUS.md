@@ -2,6 +2,23 @@
 
 Updated: 2026-11-06 JST
 
+## V27 a2 closes; actual V28 a2 readiness is running
+
+V27 a2 writer exits0 at18:34:25.160886Z after45m19.06s, with three author
+failures and one unchanged efficiency world at loss8. Missing losses stay null.
+Its six HTTP400 bodies explicitly report input overflow, not model incapacity.
+Two unmodified frozen-source audits exit0/cmp0 and verify104 raw files/252
+source blobs. See the [closed result](results/native-literal-workbench-v27-a2.md).
+The intended changed-candidate/own-measured-result feedback goal is unmet.
+
+V28 a2 is frozen separately at38d1fb40aa413e39f1139bab786af7921d5c5e91.
+Its read-only source proof verifies253 blobs; focused software checks pass323
+and an overlapping53-check scope passes. After V27's verified termination,
+fresh actual24-control readiness starts in55666 with the prospectively declared
+actual G1 request/provider. First four controls pass. Remaining20/cold replay
+and native exploration are pending. A1's broad suite remains running with its
+stale six-case expectation failure preserved. Full goal remains active.
+
 ## Actual overflow diagnosed; V28 a2 is prepared before inference
 
 V27 a2 efficiency G1 explicitly submits an unchanged parent and is measuring

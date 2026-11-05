@@ -79,3 +79,26 @@ label change. The broad a1 failure is localized to the older address-feedback
 test's six-case sequence expectation; update that expectation to eight for a2
 without modifying the a1 freeze. It remains a recorded failing a1 broad suite,
 not a retrospectively successful one. All actual readiness remains pending.
+
+## Frozen a2 and V27 termination
+
+A2 freezes at38d1fb40aa413e39f1139bab786af7921d5c5e91 in its separate clean
+tree/tag. Its read-only exact-source proof verifies253 blobs. The overlapping
+field/driver/address/annotation scope passes53 checks in4.82s after the stale
+sequence expectation is corrected. Counts are not pooled with the323 scope.
+
+V27 a2 session21876 exits0; PID54626 is absent. Exact writer end18:34:25.160886Z,
+elapsed45m19.06s. Only one unchanged native world completes at loss8, with
+92 actual researcher replies and eight inherited code executions. Three slots
+fail authoring. All six saved HTTP400 replies report input overflow explicitly.
+The original-source audits24701/35720 exit0/cmp0, content
+db69a933662e8834800138325951737e77bd5773149ef65f03448b1b73b87e46,
+verifying252 source/protocol blobs and104 unchanged raw files. Track the exact
+compact JSON and interpreted result; no external reporting adapter is used.
+
+After verified V27 termination, fresh actual a2 readiness starts in55666,
+outputs/native-field-addressing-v28-a2-preflight, using the declared f818 actual
+G1 request and fixed operator config. First four controls pass. Remaining20,
+role checks/cold replay and all scientific exploration are pending. Keep the
+original goal active and unmet. The4b a1 broad suite67060 is still running
+with the preserved stale test expectation failure; never attribute it to a2.

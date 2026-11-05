@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V27 a2 closed author failures, measured overflow and one unchanged world](results/native-literal-workbench-v27-a2.md)
+- [V27 a2 two matching unmodified original-source raw audits](results/native-literal-workbench-v27-a2.json)
+
 - [V28 a2 measured overflow, shared field rules and actionable bounded diagnostics](protocols/campaigns/native-field-addressing-v28-a2.md)
 
 - [V28 prospective exact field tools and explicit final submission](protocols/campaigns/native-field-addressing-v28-a1.md)
