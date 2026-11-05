@@ -53,6 +53,13 @@ source/retention validity, untrusted note preservation, unknown-field rejection,
 annotation-only configure rejection and cold replay without redispatch. They
 do not demonstrate autonomous invention or scientific improvement.
 
+At the prepared source`3b0f609`, the full SCRIPTED suite subsequently passes2599
+tests with six skips. The separate13-control actual interface certificate and
+cold replay pass. Production then starts at that frozen source; its first
+submission still retains the parent. Passing those checks is not evidence the
+new objective view makes the model explore. Actual outcomes remain recorded
+in the execution log rather than inferred from software readiness.
+
 The [prospective protocol](../protocols/campaigns/native-objective-exploration-v21-a1.md)
 requires predecessor termination, actual outcome inspection and fresh
 source-bound calibration before any V21 production. Parallel software testing

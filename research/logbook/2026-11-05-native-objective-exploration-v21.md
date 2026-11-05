@@ -80,3 +80,36 @@ started and will require actual calibration success plus cold replay.
 Merge the closed V20 evidence into this feature branch. Resolve only the
 INDEX insertion overlap by keeping both the new V21 entries and all three
 closed V20 result links. Preserve source pins and every original outcome.
+
+The exact frozen-source full SCRIPTED suite exits0 with2599 passes/six skips
+in1082.77s. JUnit file SHA:
+`120e60f5b2bebc671e010242a7ebb2eed06094e74a099f91f58563670cb87768`.
+Its source is`3b0f609`; later merges add documentation only, not different
+runtime evidence. Do not add the overlapping168/75 focused counts.
+
+The actual13-control calibration starts2026-11-05T10:02:29.957318Z and passes
+with cold replay,274.50214641704224 separate adapter seconds. Certificate
+content hash`809efcd4fa7cecfda6a696752a0107912d1ebef7005a16a9f1c2ae8a67b7e520`;
+runtime digest`46fa582ed464775c5d3b85147e2d169f31527febdba8210e82c601a67499786c`.
+This source/backend/model/image-bound interface evidence is not invention.
+
+The V21 production writer starts2026-11-05T10:08:15.237951Z, with exact argv,
+environment and certificate in its durable launch receipt. Handle54197 is
+live. Throughput G0 inspects/edits/reinspects, performs two accepted literal
+no-op source replacements and explicitly finishes on call6. Its rationale
+again says correct input/output code aligns with loss. The first native world
+is under evaluation, not yet an observed new loss. Do not call this a changed
+institution or effective use of the objective view.
+
+Actual prompt counts for these six calls range10681–14553 tokens, below the
+configured32768-token context. This is not evidence of reaching that declared
+limit, though it does not establish every backend attention/detail behavior.
+Retain the current finite writer unchanged through its remaining slots.
+
+If exploration remains absent, a further engineering hypothesis is to separate
+model-authored institutional planning from literal implementation: first ask
+the fixed model for an objective-conditioned intervention without presenting
+the old source to copy, then pass that exact untrusted plan to the editor.
+No host policy should be supplied and unchanged candidates must stay legal.
+This is an unimplemented next option, not an authorized extra inference probe
+or a claim that planning separation solves the issue. Keep the full goal active.

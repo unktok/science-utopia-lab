@@ -2,7 +2,7 @@
 
 Updated: 2026-11-05
 
-## V21 objective arithmetic and explicit author notes under actual calibration
+## V21 objective arithmetic and explicit author notes in the native pilot
 
 The full exploration goal remains active. V20 closes all four original-world
 evaluations with exact parent retentions, so its repaired instruction alone
@@ -16,12 +16,14 @@ explicitly typed, untrusted author notes, not executable changes or trusted
 operator claims. Unknown fields still reject; retention and worse outcomes
 remain legal. No candidate policy, new metric or merit veto is supplied.
 
-At source`3b0f609`,168 focused objective/annotation checks and75 separate
-driver/publication checks pass; counts overlap. Its full SCRIPTED suite is
-still running in an isolated verification tree. Only after V20's terminal
-writer and two matching actual audits, start the new13-control calibration
-from a separate frozen experiment tree at that same source. Native V21
-production is not yet launched; require actual pass and cold replay first.
+At source`3b0f609`, the full SCRIPTED suite passes2599 tests with six skips
+in1082.77s; overlapping focused scopes are not added. All13 actual interface
+controls and cold replay pass in274.50214641704224 adapter seconds, separately
+from production. The four-slot writer starts2026-11-05T10:08:15.237951Z from
+the separate frozen experiment tree, only after V20's closed outcome audit.
+Throughput G0 explicitly finishes after six calls with two accepted no-op
+source edits; its first native evaluation is in progress. No institutional
+change or improvement is shown at this point. The full goal stays active.
 See the [prospective protocol](protocols/campaigns/native-objective-exploration-v21-a1.md)
 and [execution log](logbook/2026-11-05-native-objective-exploration-v21.md).
 
