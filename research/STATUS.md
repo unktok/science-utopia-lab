@@ -17,6 +17,12 @@ independent audit are connected;227 final focused SCRIPTED checks pass. There ha
 been no V25 model calls. Final checks, a clean freeze and fresh exact14-control
 actual readiness are still required before production.
 
+The implementation/protocol is frozen at `5b4205f` in its own detached
+experiment tree; the exact-source broad suite is running separately. The final
+focused227 checks take41.68s. V24 a3 subsequently reaches three completed
+native slots (throughput[-1,-1], efficiency G0=8); its last generation remains
+live. No V25 model call has started.
+
 ## V24 a3 actual role checks pass; four-slot native exploration is running
 
 At frozen `01b816b`, all14 fresh actual controls and cold replay pass. The

@@ -45,3 +45,21 @@ action and values, avoiding contradictory bare-JSON/function-call instructions.
 Final prelaunch scope again passes227 checks in41.68s, with JUnit at
 `outputs/native-tool-calling-v25-verification/focused-prelaunch-3.xml`.
 These scopes overlap and are not added. No V25 model call has occurred.
+
+Freeze the implementation/protocol at
+`5b4205fb17cfa1daf15b2ed7559569294ced5f29`, with the separate detached
+`experiment-native-tool-calling-v25-a1` tree and
+`protocol/native-tool-calling-exploration-v25-a1` tag. Final focused JUnit SHA:
+`7aa9f1663ac6296dc2cde2769ef8589ab81c63c84a81a6630c5021ddc0115d57`.
+Start the exact-source broad software suite (session53821), with JUnit
+`outputs/native-tool-calling-v25-verification/full-5b4205f.xml`. It is still
+running; no final broad count/pass is claimed. Main is locally fast-forwarded
+to this implementation; there is no remote push or manuscript/game change.
+
+The original a3 writer is reverified live at PID99630/session16635. Three
+native slots have completed: throughput losses[-1,-1], efficiency G0 loss8.
+The latter's observation is
+`observation-native-adaptive-765a89e5012aa73df02f09d6`, with the unchanged
+original system fingerprint. Efficiency G1 is authoring at this entry. There
+is no new actual V25 inference while that writer remains live. The full goal
+remains unmet and active.
