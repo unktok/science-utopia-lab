@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V22 prospective model-authored planning followed by literal implementation](protocols/campaigns/native-planned-exploration-v22-a1.md)
+- [V22 source-free planning implementation and verification log](logbook/2026-11-05-native-planning-author-v22.md)
 - [V21 prepared objective arithmetic and explicitly untrusted author notes](components/native-objective-view-and-author-notes-v21.md)
 - [V21 conditional prospective continuation after V20 closes](protocols/campaigns/native-objective-exploration-v21-a1.md)
 - [V21 source verification and fresh calibration execution log](logbook/2026-11-05-native-objective-exploration-v21.md)

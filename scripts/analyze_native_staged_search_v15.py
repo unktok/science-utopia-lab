@@ -65,7 +65,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-staged-closed-loop-v17-a3.md',
                 'research/protocols/campaigns/native-concrete-closed-loop-v19-a1.md',
                 'research/protocols/campaigns/native-design-exploration-v20-a1.md',
-                'research/protocols/campaigns/native-objective-exploration-v21-a1.md'}):
+                'research/protocols/campaigns/native-objective-exploration-v21-a1.md',
+                'research/protocols/campaigns/native-planned-exploration-v22-a1.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -112,7 +113,8 @@ def _transport(step, started, binding, classification):
             raise ValueError('staged designer transport lacks its exact original POST payload')
         return output
     if hasattr(staged_author, 'build_conversation'):
-        expected_messages = staged_author.build_conversation(started['prompt'], staged_author.SYSTEM_PROMPT)
+        expected_messages = staged_author.build_conversation(started['prompt'],
+            staged_author.call_task(started['step'], binding['settings']['max_steps']))
         if (transport.get('conversation_schema') != staged_author.PROTOCOL + '.conversation.v1'
                 or transport.get('source_prompt_sha256') != digest(started['prompt'])):
             raise ValueError('staged original continuing-dialogue source binding differs')

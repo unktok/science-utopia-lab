@@ -161,13 +161,13 @@ def certificate(tmp_path, monkeypatch):
     ScriptedSession.calls = []
     directory = tmp_path / 'calibration'
     result = p.run_calibration(directory, request=request(), provider=BINDING)
-    assert result['all_controls_passed'] and len(result['records']) == 13
+    assert result['all_controls_passed'] and len(result['records']) == 14
     return directory / 'certificate.json'
 
 
 def test_certificate_replays_all_exact_wire_typed_controls_and_continuous_code_sequence(certificate):
     result = p.require_certificate(certificate, BINDING, protocol='staged-v15')
-    assert result['controls'] == 13
+    assert result['controls'] == 14
 
 
 def test_one_shot_has_its_own_protocol_bound_controls_and_certificate(tmp_path, monkeypatch):

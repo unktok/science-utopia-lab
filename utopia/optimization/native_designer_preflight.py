@@ -70,6 +70,10 @@ def cases(protocol):
 
 
 def _prompt(request, state, steps, provider, expected, protocol):
+    if protocol == 'staged-v15' and expected.get('tool') == 'plan':
+        from .native_staged_author_v15 import build_prompt, PLAN_CONTROL_SYSTEM_PROMPT
+        return build_prompt(request, state, steps, image_id=provider['image_id'],
+            binding_sha256=digest(request), settings={'max_steps': 16}), PLAN_CONTROL_SYSTEM_PROMPT
     prompt = json.dumps({'document': state['document'], 'completed_steps': steps,
         'image_id': provider['image_id'], 'response_schema': _schema(protocol)},
         ensure_ascii=False, sort_keys=True, allow_nan=False)
@@ -92,7 +96,9 @@ def sequence(state):
             path = f'/mechanisms/{index}/parameters/code_artifact/source'
             relative = {'selector': {'mechanism_id': node['mechanism_id']},
                 'path': '/parameters/code_artifact/source'}
-            return [{'id': 'sequence-inspect', 'expected': {'tool': 'inspect', **relative}},
+            from .native_staged_author_v15 import PLAN_CONTROL
+            return [{'id': 'sequence-plan', 'expected': clone(PLAN_CONTROL)},
+                {'id': 'sequence-inspect', 'expected': {'tool': 'inspect', **relative}},
                 {'id': 'sequence-splice', 'expected': {'tool': 'splice', **relative,
                     'offset': len(source), 'delete': 0, 'text': '\n# interface calibration; no behavioral change\n'}},
                 {'id': 'sequence-reinspect', 'expected': {'tool': 'inspect', 'path': path}},
@@ -129,7 +135,7 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
     state, steps, records = initial_draft(request), [], []
     for case in plan['cases']:
         # Typed controls are independent. The five-step sequence is continuous.
-        if case['id'].startswith('typed-') or case['id'] == 'sequence-inspect':
+        if case['id'].startswith('typed-') or case['id'] == 'sequence-plan':
             state, steps = initial_draft(request), []
         prompt, system = _prompt(request, state, steps, provider, case['expected'], protocol)
         intent = {'id': case['id'], 'prompt': prompt, 'system_prompt': system,
@@ -200,7 +206,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
         raise ValueError('designer preflight provider/image binding differs')
     state, steps = initial_draft(plan['request']), []
     for case, record in zip(expected_cases, records):
-        if case['id'].startswith('typed-') or case['id'] == 'sequence-inspect':
+        if case['id'].startswith('typed-') or case['id'] == 'sequence-plan':
             state, steps = initial_draft(plan['request']), []
         prompt, system = _prompt(plan['request'], state, steps, provider, case['expected'], protocol)
         intent = {'id': case['id'], 'prompt': prompt, 'system_prompt': system,
