@@ -21,6 +21,11 @@ V26 completes both throughput evaluations at loss -1 without a literal
 intervention and continues its two scheduled efficiency slots. The full goal
 of different model-authored executable institutions remains active and unmet.
 
+The preserved1046 a1 broad suite subsequently closes2725 passes/six skips in
+1413.53s. The exactdfe a2 broad suite is now running; do not attribute the a1
+pass to a2. A2 is frozen in its separate clean tree/tag and still requires
+fresh actual readiness after V26 termination. No new model is substituted.
+
 ## Literal node editor workbench is prepared separately
 
 V27 supplies actual current node/source/root-field values and exact addresses

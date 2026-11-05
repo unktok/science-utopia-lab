@@ -120,3 +120,12 @@ V27 actual model call has occurred. V26 session9150/PID37919 remains live,
 finishes throughput[-1,-1] and continues the first efficiency world at17:15Z.
 Both source worktrees stay immutable. Actual a2 readiness waits for the V26
 writer's authoritative termination; the full unmet goal remains active.
+
+The preserved1046 a1 broad suite52836 exits0:2725 passes/six skips in1413.53s.
+JUnit SHA:2075074fc33656756d60c2b7fd5398c9f28d8e64b4c07f9b27f3a08be6d0215a.
+This is software-only a1 evidence, not an a2 broad pass or actual readiness.
+After that verified exit, start the exactdfe a2 broad suite52287, with JUnit
+outputs/native-literal-workbench-v27-verification/full-dfe2cb7.xml. It is
+running. No actual V27 inference has occurred; V26 writer9150/PID37919 remains
+live. Continue to its verified termination, two frozen6d raw audits, fresh
+actual a2 readiness, and the unchanged-world exploration if all14 controls pass.
