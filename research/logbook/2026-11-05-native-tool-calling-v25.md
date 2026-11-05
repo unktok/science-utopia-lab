@@ -221,3 +221,35 @@ edit/source/graph change. Native measurement is running at this observation;
 no measured outcome or different institution is claimed. Passing instructed
 controls did not establish free-generation syntax or invention. Keep the full
 goal unmet and active, and do not modify the running frozen experiment.
+
+The exact1d broad suite closes2698 passes/six skips in1549.87s (session97518
+exit0), JUnit SHA
+`28ff9bb5cb18a3034750c5132ad0e489d9145f9a7fb468fff580117bcaeedbaf`.
+This does not make malformed free replies valid or establish invention.
+
+G0 subsequently measures loss=-1 at
+`observation-native-adaptive-af75e734f2664ecee2ff94cb`, with original parent
+fingerprint88912a72…2f4. G1's actual planner input carries that exact basis ID
+and its scalar measurements; its author request is
+`5bd717698fbe7323de9ad6dd8d9724c99b40b79adf7cda01a26243ac8ee15b6d`.
+The writer (PID25317/session63205) remains live. G1's early actions alternate
+plans and rejected reads, not edits. There is no adaptive stop addendum for
+this revision at this entry; do not assume unused queued slots were cancelled.
+
+Read-only source/request inspection also distinguishes two feedback facts.
+The parent is correctly selected from the best measured incumbent in
+native_adaptive_search._request; do not misdiagnose it as always resetting to
+the initial world. But full request.history retains prior definitions/plans
+and raw edits while the wire projection omits them. The source-free planner
+receives scalar breakdowns, not its prior intended plan versus submitted no-op.
+Its G0 completed generation also hides per-step malformed replies from the
+generation-failure-only history. This is a semantic-feedback limitation to
+address, not evidence that the scientific parent selection is broken.
+
+Next engineering hypotheses, not implemented/authorized by a new certificate
+yet: enforce general JSON syntax for free function-name/argument generation
+(without narrowing argument types or repairing responses), classify known
+malformed final replies separately from unknown transport failures, and expose
+source-bound prior-plan/submission/outcome facts rather than only hashes/losses.
+Keep all current raw/source evidence intact and declare/freeze a fresh protocol
+before more inference at any changed interface. The full goal stays unchanged.

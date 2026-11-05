@@ -17,6 +17,13 @@ older receipt's transport-error label. No reply/source repair is performed.
 The first actual scientific measurement is running; different executable
 institutions remain unshown and the full goal stays unmet and active.
 
+G0 subsequently completes at loss=-1 with the original system; its exact
+observation reaches G1, which is authoring without a confirmed edit yet.
+The1d software suite closes2698 passes/six skips in1549.87s. The live writer
+continues the declared four-slot budget. Remaining engineering work includes
+free-response syntax/known-error classification and semantic prior-trial
+feedback; passing literal controls alone is not treated as goal completion.
+
 ## V25 a2 fails the12th control and a3 clarifies argument carryover
 
 A2 passes11 actual controls, then adds a selector/resource/rationale to an
