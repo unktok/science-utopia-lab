@@ -63,3 +63,28 @@ request/fixed provider. First four controls pass at this entry. No old call/
 certificate is reused or refunded. All24/cold replay and the declared fresh
 post-readiness GET /api/ps context40960 check still precede native production.
 The original full research goal is active; no V31 native world has run.
+
+Actual a2 readiness90706 exits0: all24 exact controls and cold replay pass,
+including the previously failed sequence-inspect and complete source/finish
+sequence. All24 have original separate thinking fields (one planner/23 editor);
+this is compatibility evidence, not authenticated reasoning correctness.
+Certificatee50c606f369ed0d04097ed76f12b0cf339bbb258f71095d0c621a83dfd0e54b4;
+runtime7b14e71b0efa7577105e22510d980336009a9d37980fba64a77064805baefb90.
+Record24 POSTs/871.1500937871169 adapter seconds,245422 input/10123 output
+tokens, all24 token records known. A1's18 are not refunded or reclassified.
+One failure/pass pair does not establish universal copy reliability or an
+isolated causal performance effect of the instruction change.
+
+The declared read-only GET /api/ps after completed readiness reports the same
+model/digest and context40960 at2026-11-05T22:31:49Z. Save evidence separately
+as outputs/native-context-encoding-v31-a2-preflight/loaded-context-after-readiness.json;
+the original certificate/response bytes stay unchanged. This passes the
+declared loaded-window gate, not free design.
+
+After the verified readiness exit, start the unchanged four-attempt original-
+world pilot in73821/PID16216. Authoritative writer start
+2026-11-05T22:31:50.453741Z, sourcec62a03f, output
+outputs/native-context-encoding-v31-a2. Original researchers/corpus/losses/
+seed42/two-year/five-author scope and no donor history in G0 stay unchanged.
+Broad software suite72220 remains live. No new native observation or completed
+multiple-candidate/own-result loop is claimed at this entry; continue the goal.

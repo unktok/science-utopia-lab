@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## V31 a2 all24 actual controls pass; native exploration is live
+
+At frozen c62a03fdd38012098a3867b71a3584aeeab660b0, all24 exact controls,
+separate role evidence and cold replay pass;90706 exits0. Failed a1 remains
+failed, with its18 calls separately preserved. Certificate
+e50c606f369ed0d04097ed76f12b0cf339bbb258f71095d0c621a83dfd0e54b4,
+runtime7b14e71b0efa7577105e22510d980336009a9d37980fba64a77064805baefb90.
+The required post-readiness model/digest/context40960 check passes at22:31:49Z.
+
+Only after those checks, the unchanged two-objective/two-generation original-
+world pilot starts22:31:50.453741Z in73821/PID16216, output
+outputs/native-context-encoding-v31-a2. It is authoring; no new valid institution
+or native observation is yet claimed. Exact-source broad suite72220 remains
+live. Keep the full original goal active; readiness is not institution invention.
+
 ## V31 a2 frozen; independent actual readiness is running
 
 Freeze c62a03fdd38012098a3867b71a3584aeeab660b0 in the clean separate
