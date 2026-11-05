@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V31 a2 closed measured feedback, invalid schemas and unconsumed labels](results/native-context-encoding-v31-a2.md)
+- [V31 a2 two matching unmodified original-source audits](results/native-context-encoding-v31-a2.json)
+
 - [V32 a2 non-veto parameter-consumer contracts for original adapters](protocols/campaigns/native-contract-layout-v32-a2.md)
 
 - [V32 conditional named-port/schema contract clarification without repair](protocols/campaigns/native-contract-layout-v32-a1.md)

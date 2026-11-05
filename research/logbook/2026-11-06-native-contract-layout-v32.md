@@ -150,3 +150,35 @@ It includes the entire native_search_v15 controller/queue/driver module, existin
 budget checks, both ABI additions, exact controls and original paired-world
 request invariance. Runtime code remains byte-identical to3fda; only the stale
 test expectation and research notes change after that implementation source.
+
+The318-check pre-freeze JUnit SHA is
+f8424807748adc02463df422b9117baf109e36335e9f3a87ad5edc2a21bf7511.
+Commit6f1e02d2643e4d51620f3a744f91fd6d690034d1 and fast-forward main.
+Preserved43 broad suite79607 exits1:2819 pass/one stale metadata assertion/
+six skips in1548.79s, JUnit full-development.xml SHA
+e0a3c65232479b7cd00300fa67304006ca2b20c753dc1b77ce99fa0c035530a2.
+Broad3fda continues with its same known stale expectation; no pass is claimed.
+Start independent corrected exact6f1e broad suite54627 in its unchanged clean
+development tree, outputs/native-contract-layout-v32-verification/full-6f1e02d.xml.
+
+V31 a2 writer73821 exits0 and PID16216 is absent. Authoritative end23:22:23.199834Z
+after50m32.746093s. Two unmodified original c62 audits93626/87414 exit0/cmp0,
+compact9552688186791e6f766141012f779f772d3477add23ab2e8d41ed2bf64f129ae.
+Track their unchanged compact projection and interpreted report separately.
+They verify112 raw files/254 blobs; two actual worlds have12/12, A0/Q0/R24.
+Record29 author POSTs,194 scientist replies/wires,16 code executions and the
+unknown token count on the partial reply. Both valid systems only add/change
+unread review/submission adapter parameters, including G1's review_criteria.
+No Python/program/wire/process/schedule/node changes occur. The original goal
+is still active and unmet, not completed by two literal graph fingerprints.
+
+After those authoritative terminal/audit checks, freeze a separate clean
+experiment-native-contract-layout-v32-a2 at6f1e02d and matching protocol tag.
+Read-only exact-source proof16870 exits0 with254 blobs; exact focused95864 exits0
+with318 passes in22.50s, JUnit focused-6f1e02d.xml SHA
+791061f5c09343be661f58c6a19ffa248f6fedbe004d9fbb63af7651650f61f5.
+Start one fresh max24-control actual readiness26575 with the unchanged declared
+V30 request232574 and V26 provider, outputs/native-contract-layout-v32-a2-preflight.
+All24/cold replay and a fresh post-readiness GET /api/ps loaded40960 check remain
+required before native production; no old call/certificate is reused or refunded.
+No V32 native world is claimed. Continue until the actual full goal is achieved.

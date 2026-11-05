@@ -2,6 +2,32 @@
 
 Updated: 2026-11-06 JST
 
+## V31 a2 closes and audits agree; fresh V32 a2 readiness starts
+
+Writer73821 exits0, PID16216 is absent, and the original c62 writer records
+22:31:50.453741Z–23:22:23.199834Z (50m32.746093s). Both unmodified original-
+source audits93626/87414 exit0/cmp0, content
+9552688186791e6f766141012f779f772d3477add23ab2e8d41ed2bf64f129ae.
+Throughput has two author failures/null losses; efficiency measures two worlds
+at12/12, A0/Q0/R24 each. Own loss reaches G1, but only unconsumed parameters
+change: no functional institution invention or full-goal completion.
+Record29 author POSTs,194 scientist responses/wires and16 code executions;
+the incomplete reply's token cost remains unknown. See the [closed report](results/native-context-encoding-v31-a2.md).
+
+Only after termination and matching audits, freeze separate V32 a2 source
+6f1e02d2643e4d51620f3a744f91fd6d690034d1 and matching protocol tag.
+Exact-source proof16870 verifies254 blobs; focused95864 passes318 in22.50s,
+JUnit791061f5c09343be661f58c6a19ffa248f6fedbe004d9fbb63af7651650f61f5.
+Fresh max24 actual readiness starts in26575 at the same predeclared V30
+request232574/provider. No old certificate/cost is reused or refunded. All24,
+cold replay and a fresh post-readiness loaded40960 check still precede production.
+No V32 native world has run. Keep the original full goal active.
+
+The software-only43 broad suite ends2819 pass/one stale V31 metadata assertion/
+six skips in1548.79s. That expectation is corrected and the controller/driver
+module added to the passing318 scope, without weakening budgets or changing
+runtime code. Preserve its failed JUnit; new exact6f1e broad suite54627 runs.
+
 ## Exact original-adapter consumer diagnosis is verified; V31 still measures
 
 V31 efficiency G0 explicitly finishes at05 with two valid parameter additions
