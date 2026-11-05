@@ -2,6 +2,29 @@
 
 Updated: 2026-11-05
 
+## V21 objective arithmetic and explicit author notes under actual calibration
+
+The full exploration goal remains active. V20 closes all four original-world
+evaluations with exact parent retentions, so its repaired instruction alone
+does not demonstrate new-system generation. Both matching audits and physical
+costs are recorded before the next condition starts.
+
+The [prepared implementation](components/native-objective-view-and-author-notes-v21.md)
+distinguishes optimization from code verification and shows exact loss-term
+directions and own measured components. Optional rationale/provenance are now
+explicitly typed, untrusted author notes, not executable changes or trusted
+operator claims. Unknown fields still reject; retention and worse outcomes
+remain legal. No candidate policy, new metric or merit veto is supplied.
+
+At source`3b0f609`,168 focused objective/annotation checks and75 separate
+driver/publication checks pass; counts overlap. Its full SCRIPTED suite is
+still running in an isolated verification tree. Only after V20's terminal
+writer and two matching actual audits, start the new13-control calibration
+from a separate frozen experiment tree at that same source. Native V21
+production is not yet launched; require actual pass and cold replay first.
+See the [prospective protocol](protocols/campaigns/native-objective-exploration-v21-a1.md)
+and [execution log](logbook/2026-11-05-native-objective-exploration-v21.md).
+
 ## V20 actual institutional exploration remains the active goal
 
 The full goal is not satisfied by V19's completed but unchanged feedback loops.
@@ -22,14 +45,20 @@ with128 raw files unchanged and no new inference. At frozen`65bade6`,124 focused
 SCRIPTED checks pass. All13 actual calibration controls and cold replay pass;
 the separately budgeted four-slot writer starts2026-11-05T09:20:45.967877Z.
 Its first actual request carries the repaired permission, not the contradictory
-prohibition. The throughput arm has two complete measurements`[-1,-1]`, both
-exact parent retentions; its G1 again encounters three rejected extra-field
-edits. The reviewed-production arm is still running, not yet a complete result.
-The exact frozen-source full SCRIPTED suite passes2575 tests with six skips
-in1308.23s. Do not call
-unchanged retention invention, silently accept rejected extra fields, change
-provider or substitute a toy world. The full thread goal stays active even
-if this one finite pilot fails to generate changed institutions.
+prohibition. The writer exits0 after35m02.44s with four complete worlds. Losses
+are`[-1,-1]` and`[8,8]`; all four systems retain the exact original parent.
+The [closed actual result](results/native-design-exploration-v20-a1.md) records
+26 author POSTs, nine rejected tool actions, all10 unchanged edit operands,
+368 scientist replies and32 inherited-code executions. No new source executes.
+
+Two identical read-only audits verify134 unchanged raw files and247 matching
+source files. The exact frozen-source full SCRIPTED suite passes2575 tests
+with six skips in1308.23s. The corrected permission is on all26 actual wires;
+the instruction defect is repaired but useful exploration remains unshown.
+The full thread goal stays active. Prepare the separate V21 objective-arithmetic
+and untrusted-annotation continuation, with fresh source-bound calibration.
+Do not relabel unchanged retention as invention, switch provider or substitute
+a toy world. All older outcomes/costs remain unchanged and separately scoped.
 
 ## V19 both objective feedback loops complete; useful invention remains unshown
 

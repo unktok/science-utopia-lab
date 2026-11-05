@@ -61,3 +61,22 @@ live at this entry and its result is unknown. This is a software freeze for
 parallel testing only, not a V21 inference launch. V20's handle33595 remains
 live and its frozen`65bade6` tree remains unchanged. No new certificate or V21
 model/world call has been made. Keep the full goal active.
+
+V20's writer now terminates exit0 with a durable exit receipt. Two matching
+frozen-source actual audits agree, preserving134 raw files and247 source files.
+Its four systems all equal the parent; losses`[-1,-1]` and`[8,8]` confirm that
+the full exploration goal remains unmet. Commit its interpreted outcome,
+26-author/368-scientist/32-code accounting and10-identical-operand diagnosis
+at`09198ef` before any V21 calibration. No V20 slot is resumed or refunded.
+
+Create the separate V21 experiment worktree and tag
+`protocol/native-objective-exploration-v21-a1` at the unchanged prepared source
+`3b0f6091f93d424961fe26df7c2936ef8de7e386`. After verifying no native/designer
+writer remains, start the declared fresh13-control calibration, handle25000,
+using the existing operator-bound Qwen/image/corpus metadata. Full SCRIPTED
+verification continues separately at the same source. Production is not yet
+started and will require actual calibration success plus cold replay.
+
+Merge the closed V20 evidence into this feature branch. Resolve only the
+INDEX insertion overlap by keeping both the new V21 entries and all three
+closed V20 result links. Preserve source pins and every original outcome.
