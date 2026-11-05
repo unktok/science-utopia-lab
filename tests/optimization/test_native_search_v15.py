@@ -69,15 +69,19 @@ def test_prospective_driver_freezes_all_loss_and_step_budgets_before_calls():
     plan = module.build_plan(source_commit=REVISION, initial_system=request()['initial_system'],
         provider_binding=BINDING, runtime_seed_binding={'python_hash_seed_environment': '42'})
     assert plan['budget']['scheduled_native_slots'] == 4
-    assert plan['budget']['maximum_generation_POSTs'] == 64
+    assert plan['budget']['maximum_generation_POSTs'] == 32
     assert [run['id'] for run in plan['runs']] == ['throughput', 'efficiency']
     assert plan['runs'][0]['request']['loss_spec']['per_run']['terms'][0]['coefficient'] == -1.0
-    assert all(run['request']['designer']['max_steps'] == 16 for run in plan['runs'])
+    assert all(run['request']['designer']['max_steps'] == 8 for run in plan['runs'])
+    assert all(run['request']['designer']['max_tokens'] == 8192 for run in plan['runs'])
     assert all(run['plan_sha256'] == digest(run['runtime_plan']) for run in plan['runs'])
-    assert plan['budget']['maximum_designer_digest_preflight_GETs'] == 64
-    assert plan['classification'] == 'actual-local-qwen-numeric-objective-native-exploration-development-v23'
-    assert plan['engineering_revision'] == 'v23-a1'
-    assert plan['protocol'] == 'research/protocols/campaigns/native-numeric-objective-exploration-v23-a1.md'
+    assert plan['budget']['maximum_designer_digest_preflight_GETs'] == 32
+    assert plan['budget']['per_generation_tool_steps'] == 8
+    assert plan['budget']['per_call_output_tokens'] == 8192
+    assert plan['designer_decoding']['think'] is True and plan['designer_decoding']['temperature'] == .6
+    assert plan['classification'] == 'actual-local-qwen-thinking-native-exploration-development-v24'
+    assert plan['engineering_revision'] == 'v24-a1'
+    assert plan['protocol'] == 'research/protocols/campaigns/native-thinking-exploration-v24-a1.md'
 
 
 def test_staged_queue_observes_exact_journals_and_cold_resume_without_redispatch(tmp_path):

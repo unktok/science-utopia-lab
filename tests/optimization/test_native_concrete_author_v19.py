@@ -13,7 +13,13 @@ from utopia.optimization.native_staged_author_v15 import (
 
 
 def test_nonfinal_calls_preserve_the_entire_existing_tool_and_system_space():
-    assert turn_response_schema(16) == turn_response_schema(2) == ACTION_SCHEMA
+    advertised = turn_response_schema(16)
+    assert advertised == turn_response_schema(2)
+    # oneOf branch order is presentation, not JSON-Schema acceptance. Preserve
+    # every full tool contract while allowing implementation-first ordering.
+    by_tool = lambda schema: {part['properties']['tool']['const']: part for part in schema['oneOf']}
+    assert by_tool(advertised) == by_tool(ACTION_SCHEMA)
+    assert advertised['$defs'] == ACTION_SCHEMA['$defs']
     assert 'arbitrary literal Python' in INSTRUCTIONS
     assert 'new institutions' in INSTRUCTIONS
     assert 'Factor IDs and' in INSTRUCTIONS and 'choice names do not create native variables' in INSTRUCTIONS

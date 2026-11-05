@@ -26,6 +26,8 @@ from utopia.optimization.native_search_generator_v14 import (
 )
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
+from .native_designer_decoding_v24 import (
+    STAGED_TEMPERATURE, STAGED_MAX_STEPS, STAGED_MAX_TOKENS, designer_payload)
 
 PROTOCOL = 'scienceutopia.staged-author.v15'
 REQUEST = 'scienceutopia.staged-author-request.v15'
@@ -103,6 +105,8 @@ ACTION_SCHEMA = {'oneOf': [_tool_schema(tool, *fields) for tool, fields in TOOL_
     '$defs': ACTION_FIELDS}
 PLAN_ACTION_SCHEMA = {**_tool_schema('plan', *TOOL_FIELDS['plan']),
     '$defs': {key: ACTION_FIELDS[key] for key in (*TOOL_FIELDS['plan'][1], *ANNOTATIONS)}}
+EDITOR_ACTION_SCHEMA = {'oneOf': [_tool_schema(tool, *TOOL_FIELDS[tool]) for tool in
+    ('edit', 'splice', 'inspect', 'configure', 'validate', 'finish', 'plan')], '$defs': ACTION_FIELDS}
 
 
 def call_task(index, max_steps):
@@ -118,7 +122,9 @@ def turn_response_schema(remaining_calls):
     This is a model-authored finish request, not automatic baseline adoption.
     """
     if remaining_calls != 1:
-        return ACTION_SCHEMA
+        # All the same legal actions, with implementation tools first. Plan
+        # revisions remain advertised and legal; this is not a novelty veto.
+        return EDITOR_ACTION_SCHEMA
     return {**_tool_schema('finish', *TOOL_FIELDS['finish']),
         '$defs': {key: ACTION_FIELDS[key] for key in ANNOTATIONS}}
 
@@ -227,10 +233,12 @@ def protocol_binding():
     from . import native_authoring_ir, native_search_generator_v14
     from . import native_designer_wire
     from utopia.system import native_capability_catalog
+    from . import native_designer_decoding_v24
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
         'transport_source_sha256': hashlib.sha256(Path(native_search_generator_v14.__file__).read_bytes()).hexdigest(),
         'wire_source_sha256': hashlib.sha256(Path(native_designer_wire.__file__).read_bytes()).hexdigest(),
+        'decoding_source_sha256': hashlib.sha256(Path(native_designer_decoding_v24.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'source_execution_on_host': False, 'native_probes': 0}
@@ -944,7 +952,7 @@ class StagedVocabularyGenerator:
             output, messages = self.model.generate(prompt=started['prompt'],
                 system_prompt=call_task(started['step'], self.settings['max_steps']),
                 seed_ctx=('native-staged-designer-v15', binding['binding_sha256'], started['step']),
-                max_tokens=self.settings['max_tokens'], temperature=.2,
+                max_tokens=self.settings['max_tokens'], temperature=STAGED_TEMPERATURE,
                 response_format={'type': 'json_schema', 'json_object': {'name': 'native_staged_author_v15',
                     'schema': clone(ACTION_SCHEMA)}})
             if digest(_strict_json(_assistant_text(messages))) != digest(output):
@@ -1035,7 +1043,8 @@ class StagedVocabularyGenerator:
 
 
 def make_local_staged_generator(directory, *, image_id, provider_binding,
-                                max_steps=12, max_tokens=2048, inference_lock=None, preflight_certificate=None):
+                                max_steps=STAGED_MAX_STEPS, max_tokens=STAGED_MAX_TOKENS,
+                                inference_lock=None, preflight_certificate=None):
     """Explicit opt-in only; neither v14 factory nor request defaults change."""
     from .native_designer_preflight import require_certificate
     require_certificate(preflight_certificate, provider_binding, protocol='staged-v15')
@@ -1046,7 +1055,7 @@ def make_local_staged_generator(directory, *, image_id, provider_binding,
 
 
 class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
-    """Same fixed loopback/no-retry transport, additive staged dialogue only."""
+    """Fixed local weights, source-owned staged reasoning and no network retry."""
     def __init__(self, *args, conversation_mode='author', **kwargs):
         if conversation_mode not in ('author', 'interface-control-v16'):
             raise ValueError('unknown designer conversation mode')
@@ -1063,10 +1072,8 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
             if actual != self.binding['model_digest']:
                 raise ValueError('designer model digest differs from pinned operator binding')
             messages = build_conversation(prompt, system_prompt, mode=self.conversation_mode)
-            payload = {'model': self.binding['model'], 'messages': messages,
-                'format': 'json', 'think': False, 'stream': False,
-                'options': {'temperature': temperature, 'num_predict': max_tokens,
-                    'num_ctx': 32768, 'seed': int(digest(seed_ctx)[:8], 16) % (2**31)}}
+            payload = designer_payload('staged-v15', self.binding, messages, seed_ctx,
+                max_tokens=max_tokens, temperature=temperature)
             self.last_transport = {'request_payload': clone(payload), 'model_digest': actual,
                 'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
                 'preflight': preflight,

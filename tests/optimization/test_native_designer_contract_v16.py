@@ -151,7 +151,8 @@ class ScriptedSession:
         system = payload['messages'][0]['content']
         expected, _ = json.JSONDecoder().raw_decode(system.split('nothing is executed or adopted.\n')[1])
         self.calls.append(payload)
-        return Response({'model': BINDING['model'], 'message': {'content': json.dumps(expected, ensure_ascii=False)},
+        return Response({'model': BINDING['model'], 'message': {'content': json.dumps(expected, ensure_ascii=False),
+                **({'thinking': 'SCRIPTED separate reasoning field, not a tool action'} if payload['think'] else {})},
             'done': True, 'done_reason': 'stop', 'eval_count': 12, 'prompt_eval_count': 120})
 
 
@@ -181,7 +182,8 @@ def test_one_shot_has_its_own_protocol_bound_controls_and_certificate(tmp_path, 
 
 
 @pytest.mark.parametrize('mutation', ['pass-flag', 'drop-call', 'wire', 'output', 'schema',
-    'partial', 'runtime', 'backend', 'receipt', 'model', 'seed', 'unsafe-number', 'expired', 'future'])
+    'partial', 'runtime', 'backend', 'receipt', 'model', 'seed', 'unsafe-number', 'expired', 'future',
+    'think', 'temperature', 'max-tokens', 'decoding', 'thinking-only', 'reasoning-evidence', 'backend-format'])
 def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, mutation):
     value = json.loads(certificate.read_text()); record = value['records'][0]
     if mutation == 'pass-flag': value['all_controls_passed'] = False
@@ -200,6 +202,15 @@ def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, 
     elif mutation == 'unsafe-number': value['records'][7]['output']['operations'][0]['value'] = 9007199254740992
     elif mutation == 'expired': value['completed_epoch'] -= 86401
     elif mutation == 'future': value['completed_epoch'] += 100
+    elif mutation == 'think': record['transport']['request_payload']['think'] = False
+    elif mutation == 'temperature': value['plan']['temperature'] = .2
+    elif mutation == 'max-tokens': value['plan']['max_tokens'] = 2048
+    elif mutation == 'decoding': value['plan']['decoding_contract']['sampling_options']['top_p'] = .8
+    elif mutation == 'thinking-only':
+        record['transport']['response_payload']['message'] = {'content': '', 'thinking': json.dumps(record['output'])}
+        record['transport']['raw_http_response'] = json.dumps(record['transport']['response_payload'])
+    elif mutation == 'reasoning-evidence': value['reasoning_evidence']['known_nonempty_response_fields'] = 0
+    elif mutation == 'backend-format': record['transport']['request_payload']['format'] = 'json'
     value['content_sha256'] = digest({key: item for key, item in value.items() if key != 'content_sha256'})
     certificate.write_text(json.dumps(value))
     with pytest.raises(ValueError):

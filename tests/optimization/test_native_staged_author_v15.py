@@ -605,7 +605,7 @@ def test_capability_inspection_and_prompt_catalogue_cold_replay_remain_source_bo
     assert 'capability_catalog_source_sha256' in protocol_binding()
 
 
-def test_staged_dialogue_transport_is_one_exact_json_mode_loopback_post(monkeypatch):
+def test_staged_dialogue_transport_is_one_exact_final_json_loopback_post(monkeypatch):
     calls = []
     class Response:
         status_code = 200
@@ -624,12 +624,15 @@ def test_staged_dialogue_transport_is_one_exact_json_mode_loopback_post(monkeypa
         def post(self, url, **kwargs):
             calls.append(('POST', url))
             self.payload = json.loads(kwargs['data'])
-            assert self.payload['format'] == 'json'
+            assert 'format' not in self.payload  # native reasoning, strict final JSON on host
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
-            assert self.payload['think'] is False and self.payload['stream'] is False
-            return Response({'message': {'content': json.dumps(finish())}, 'done': True,
+            assert self.payload['think'] is True and self.payload['stream'] is False
+            assert self.payload['options']['top_p'] == .95 and self.payload['options']['top_k'] == 20
+            assert self.payload['options']['min_p'] == 0.0
+            return Response({'message': {'thinking': 'SCRIPTED not a tool action',
+                'content': json.dumps(finish())}, 'done': True,
                 'done_reason': 'stop', 'prompt_eval_count': 111, 'eval_count': 30})
     monkeypatch.setattr('requests.Session', Session)
     prompt = build_prompt(request(), initial_draft(request()), [], image_id=IMAGE,
@@ -643,6 +646,7 @@ def test_staged_dialogue_transport_is_one_exact_json_mode_loopback_post(monkeypa
     assert calls == [('GET', 'http://127.0.0.1:11434/api/tags'), ('POST', 'http://127.0.0.1:11434/api/chat')]
     assert model.last_transport['network_retries'] == 0
     assert model.last_transport['source_prompt_sha256'] == digest(prompt)
+    assert model.last_transport['response_payload']['message']['thinking'] == 'SCRIPTED not a tool action'
     assert json.loads(model.last_transport['request_wire_utf8']) == model.last_transport['request_payload']
 
 

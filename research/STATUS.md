@@ -2,6 +2,26 @@
 
 Updated: 2026-11-05
 
+## V24 reasoning workflow prepared while V23 native measurements continue
+
+The first V23 plan correctly interprets the loss sign, but its first16-call
+generation again finishes as exact parent retention without a literal edit.
+Its native measurement/remaining own-result feedback are still running here;
+the full goal remains unmet. Exact V23 software source`fa2b973`passes2628
+SCRIPTED checks/six skips in1580.12s; software success is not invention.
+
+The [conditional V24 workflow](protocols/campaigns/native-thinking-exploration-v24-a1.md)
+requests reasoning from the same fixed local designer weights, uses eight
+calls/8192 output tokens per generation and advertises the same legal editor
+tools implementation-first. Final JSON alone is interpreted, without backend
+format grammar, content repair or reasoning-to-code salvage. Researcher/world/
+loss/provider/server settings remain unchanged. The final focused scope passes
+222 tests. Fresh14-control actual readiness must also evidence at least one
+nonempty separate reasoning field at the new exact settings before production.
+No V24 inference is sent during V23. Close/inspect/audit V23 first under its
+declared adaptive stop; skip V24 if the full goal is already met.
+See the [forward-only log](logbook/2026-11-05-native-thinking-author-v24.md).
+
 ## V23 actual institutional exploration running after closed unchanged V22 a2
 
 V22 a2 closes both throughput worlds at`[-1,-1]`, both exact parent retentions.

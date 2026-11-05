@@ -16,10 +16,12 @@ from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_search_v15 import NativeStagedSearchQueue, make_search_plan
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
+from utopia.optimization.native_designer_decoding_v24 import (
+    decoding_contract, STAGED_MAX_STEPS, STAGED_MAX_TOKENS)
 
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
-CLASSIFICATION = 'actual-local-qwen-numeric-objective-native-exploration-development-v23'
-ENGINEERING_REVISION = 'v23-a1'
+CLASSIFICATION = 'actual-local-qwen-thinking-native-exploration-development-v24'
+ENGINEERING_REVISION = 'v24-a1'
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -31,7 +33,7 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         request = {'schema': 'scienceutopia.native-search-request.v15',
             'initial_system': clone(initial_system), 'loss_spec': loss, 'seed': 42, 'years': 2,
             'method': 'blackbox', 'native_budget': 2,
-            'designer': {'model': 'qwen3:8b', 'max_steps': 16, 'max_tokens': 2048}}
+            'designer': {'model': 'qwen3:8b', 'max_steps': STAGED_MAX_STEPS, 'max_tokens': STAGED_MAX_TOKENS}}
         plan = make_search_plan(request, source_commit=source_commit, provider_binding=provider_binding)
         runs.append({'id': identity, 'request': request, 'runtime_plan': plan, 'plan_sha256': digest(plan)})
     return {'schema': SCHEMA, 'classification': CLASSIFICATION, 'engineering_revision': ENGINEERING_REVISION,
@@ -39,17 +41,19 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         'provider_binding': clone(provider_binding), 'runtime_seed_binding': clone(runtime_seed_binding),
         'initial_system': clone(initial_system), 'population': {'authors': 5, 'conference_setting': 1},
         'runs': runs, 'budget': {'scheduled_native_slots': 4, 'free_generations': 4,
-            'maximum_generation_POSTs': 64, 'maximum_designer_digest_preflight_GETs': 64,
-            'per_generation_tool_steps': 16, 'per_call_output_tokens': 2048,
+            'maximum_generation_POSTs': 4 * STAGED_MAX_STEPS,
+            'maximum_designer_digest_preflight_GETs': 4 * STAGED_MAX_STEPS,
+            'per_generation_tool_steps': STAGED_MAX_STEPS, 'per_call_output_tokens': STAGED_MAX_TOKENS,
             'replacement_policy': 'none'},
         'authoring': 'local Qwen only; no human/Codex candidate implementation',
+        'designer_decoding': decoding_contract('staged-v15'),
         'metadata_preflights': 'Separate GET /api/tags during binding and each native-factory construction; repeated CLI startup can repeat metadata reads, never generation POSTs',
         'interface_certificate': 'Required before queue submission and author construction; current certificate '
             'is cold-replayed with live version/tags GETs before each designer POST. These additional '
             'metadata reads are not designer generations or scientific-world slots.',
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
-        'protocol': 'research/protocols/campaigns/native-numeric-objective-exploration-v23-a1.md',
+        'protocol': 'research/protocols/campaigns/native-thinking-exploration-v24-a1.md',
         'native_campaign_status': 'explicitly authorized two-objective two-generation native feedback pilot after V16 interface repair'}
 
 

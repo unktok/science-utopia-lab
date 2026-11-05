@@ -13,11 +13,23 @@ from jsonschema import Draft202012Validator
 
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
+from .native_designer_decoding_v24 import decoding_contract, designer_payload, STAGED_MAX_STEPS
 
 SCHEMA = 'scienceutopia.designer-interface-certificate.v16'
 TTL_SECONDS = 86400
 VALUES = [17, -2.75, True, None, ['x', 3, False], {'nested': {'items': [None, 1]}},
     '研究者\n"quoted" \\ source: def step(context):\n    return {}\n', 9007199254740993]
+
+
+def reasoning_evidence(records, *, requested):
+    count = 0
+    for record in records:
+        body = (record.get('transport') or {}).get('response_payload')
+        message = body.get('message') if isinstance(body, dict) else None
+        thinking = message.get('thinking') if isinstance(message, dict) else None
+        count += int(isinstance(thinking, str) and bool(thinking.strip()))
+    return {'requested': requested, 'known_nonempty_response_fields': count,
+        'scope': 'Observed separate HTTP response fields, not authenticated correctness of reasoning.'}
 
 
 def runtime_binding():
@@ -73,7 +85,7 @@ def _prompt(request, state, steps, provider, expected, protocol):
     if protocol == 'staged-v15' and expected.get('tool') == 'plan':
         from .native_staged_author_v15 import build_prompt, PLAN_CONTROL_SYSTEM_PROMPT
         return build_prompt(request, state, steps, image_id=provider['image_id'],
-            binding_sha256=digest(request), settings={'max_steps': 16}), PLAN_CONTROL_SYSTEM_PROMPT
+            binding_sha256=digest(request), settings={'max_steps': STAGED_MAX_STEPS}), PLAN_CONTROL_SYSTEM_PROMPT
     prompt = json.dumps({'document': state['document'], 'completed_steps': steps,
         'image_id': provider['image_id'], 'response_schema': _schema(protocol)},
         ensure_ascii=False, sort_keys=True, allow_nan=False)
@@ -123,18 +135,20 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
     from .native_search_generator_v14 import LocalQwenDesignerModel
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
+    decoding = decoding_contract(protocol)
     plan = {'schema': SCHEMA + '.plan', 'protocol': protocol, 'source_commit': source_commit, 'request': clone(request),
         'provider': clone(provider), 'runtime': runtime_binding(), 'backend': backend_binding(provider),
         'cases': planned_cases(request, protocol), 'max_POSTs': len(planned_cases(request, protocol)),
         'native_worlds': 0, 'source_executions': 0, 'network_retries': 0,
-        'max_tokens': 2048, 'temperature': .2, 'created_epoch': time.time()}
+        'max_tokens': decoding['max_tokens'], 'temperature': decoding['temperature'],
+        'decoding_contract': decoding, 'created_epoch': time.time()}
     write_json_atomic(directory / 'plan.json', plan, sort_keys=True, allow_nan=False)
     model = (LocalStagedQwenDesignerModel if protocol == 'staged-v15' else LocalQwenDesignerModel)(provider,
         inference_lock=directory.parent / 'interface-calibration.lock',
         **({'conversation_mode': 'interface-control-v16'} if protocol == 'staged-v15' else {}))
     state, steps, records = initial_draft(request), [], []
     for case in plan['cases']:
-        # Typed controls are independent. The five-step sequence is continuous.
+        # Typed controls are independent. The six-step sequence is continuous.
         if case['id'].startswith('typed-') or case['id'] == 'sequence-plan':
             state, steps = initial_draft(request), []
         prompt, system = _prompt(request, state, steps, provider, case['expected'], protocol)
@@ -145,7 +159,8 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         begin = time.monotonic()
         try:
             output, _ = model.generate(prompt=prompt, system_prompt=system, seed_ctx=intent['seed_ctx'],
-                max_tokens=2048, temperature=.2, response_format={'json_object': {'schema': _schema(protocol)}})
+                max_tokens=plan['max_tokens'], temperature=plan['temperature'],
+                response_format={'json_object': {'schema': _schema(protocol)}})
             # Python bool==1 and large numeric rounding are NOT exact JSON equality.
             if digest(output) != digest(case['expected']):
                 raise ValueError('literal output differs from exact typed control')
@@ -168,9 +183,12 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
             'error': record.get('error')}), flush=True)
         if not record['ok']:
             break  # Failed/unknown replies are charged, never automatically replaced.
+    reasoning = reasoning_evidence(records, requested=decoding['think'])
     certificate = {'schema': SCHEMA, 'plan': plan, 'records': records, 'completed_epoch': time.time(),
+        'reasoning_evidence': reasoning,
         'maximum_age_seconds': TTL_SECONDS, 'all_controls_passed': len(records) == len(plan['cases'])
-            and all(record['ok'] for record in records)}
+            and all(record['ok'] for record in records)
+            and (not decoding['think'] or reasoning['known_nonempty_response_fields'] > 0)}
     certificate['content_sha256'] = digest(certificate)
     write_json_atomic(directory / 'certificate.json', certificate, sort_keys=True, allow_nan=False)
     return certificate
@@ -200,10 +218,16 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
     expected_cases = planned_cases(plan['request'], protocol)
     if (plan['cases'] != expected_cases or len(records) != len(expected_cases)
             or not certificate['all_controls_passed'] or plan['max_POSTs'] != len(expected_cases)
-            or plan['max_tokens'] != 2048 or plan['temperature'] != .2):
+            or plan['max_tokens'] != decoding_contract(protocol)['max_tokens']
+            or plan['temperature'] != decoding_contract(protocol)['temperature']
+            or plan.get('decoding_contract') != decoding_contract(protocol)):
         raise ValueError('designer preflight controls incomplete or plan changed')
     if any(plan['provider'].get(key) != provider.get(key) for key in ('model', 'model_digest', 'image_id')):
         raise ValueError('designer preflight provider/image binding differs')
+    reasoning = reasoning_evidence(records, requested=decoding_contract(protocol)['think'])
+    if (certificate.get('reasoning_evidence') != reasoning
+            or reasoning['requested'] and not reasoning['known_nonempty_response_fields']):
+        raise ValueError('requested reasoning has no original separate response evidence')
     state, steps = initial_draft(plan['request']), []
     for case, record in zip(expected_cases, records):
         if case['id'].startswith('typed-') or case['id'] == 'sequence-plan':
@@ -214,9 +238,8 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
         transport = record['transport']
         messages = (build_conversation(prompt, system, mode='interface-control-v16') if protocol == 'staged-v15' else
             [{'role': 'system', 'content': system}, {'role': 'user', 'content': prompt}])
-        payload = {'model': provider['model'], 'messages': messages, 'format': 'json', 'think': False,
-            'stream': False, 'options': {'temperature': .2, 'num_predict': 2048, 'num_ctx': 32768,
-                'seed': int(digest(intent['seed_ctx'])[:8], 16) % (2**31)}}
+        payload = designer_payload(protocol, provider, messages, intent['seed_ctx'],
+            max_tokens=plan['max_tokens'], temperature=plan['temperature'])
         wire = wire_record(payload, _schema(protocol))
         if (record['intent'] != intent or record['ok'] is not True or transport['request_payload'] != payload
                 or any(transport.get(key) != value for key, value in wire.items())

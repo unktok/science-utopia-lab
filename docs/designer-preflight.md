@@ -9,9 +9,9 @@ silently added to optimization.
 ## What it checks
 
 Eight exact JSON operand types, followed (for staged authoring) by a continuous
-inspect → literal source splice → reinspection → static validate → finish
+source-free plan → inspect → literal source splice → reinspection → static validate → finish
 session against the real original-world parent. These are instructed interface
-controls, not autonomous invention. They use the production JSON-mode wire and
+controls, not autonomous invention. They use the production loopback wire and
 host interpreter, but an explicitly separate calibration task/conversation.
 Ordinary autonomous planning requires separate evidence.
 
@@ -39,10 +39,28 @@ model digest and sandbox image identity. Neither path is browser-selected.
   --certificate <evidence-directory>/certificate.json
 ```
 
-Staged: at most13 generation POSTs; one-shot: at most8. These are real inference
+Staged: at most14 generation POSTs; one-shot: at most8. These are real inference
 costs, not zero-cost validation. Declare their budget before running. No native
 world or generated source is executed by calibration. Use a new output directory
 for every source/revision; retain failures. Do not keep retrying until one passes.
+
+The current staged source requests reasoning on the same fixed local Qwen3-8B:
+temperature0.6, top-p0.95, top-k20, min-p0,32768 context and8192 output tokens.
+The14 controls use those same settings; strict equality of final JSON remains
+required. Separate`message.thinking`is retained in the raw response but is never
+parsed as an action or used to repair missing final content. Backend evaluation
+token totals are recorded without inventing a thinking/final split. The legacy
+one-shot wire remains non-thinking, temperature0.2 and2048 output tokens.
+Older non-thinking certificates do not authorize this runtime.
+At least one of the same14 staged responses must have a nonempty separate
+reasoning field to evidence the requested mode; no extra probe is added. Exact
+final controls without any such field fail readiness. This does not establish
+that the reasoning is correct or that the designer can invent an institution.
+The staged request omits backend`format`up front so native reasoning is not
+constrained by a JSON grammar. Final content is still required to be one exact
+JSON action, parsed and schema-checked without removing fences/tags or repairing
+source. This is not an error-triggered format fallback. The one-shot request
+continues to use backend`format:"json"`.
 
 Pass `--designer-preflight <certificate.json>` to:
 
