@@ -112,3 +112,18 @@ worlds and one efficiency author failure. Efficiency G1 explicitly submits
 unchanged original-parent retention, not a new institution and not a host
 baseline fallback. Keep the full goal active; after verified termination inspect
 two original-source audits and decide the conditional V31 continuation.
+
+V30 writer29191 exits0 at21:50:56.713393Z and PID98150 is absent. Both
+unmodified c534-source raw audits30886/54513 exit0 and compare byte-identical,
+contentba88754d4058ffc38a4c4f70b26ad1ee2e1a388fcd5b047cbcf1a42f0dff923f.
+Only one unique functional model-authored policy is measured; the full goal
+remains unmet, so the conditional continuation is now applicable.
+
+After those verified exits, start fresh max24-control actual readiness37110/
+PID4676 at clean frozen17393ca, using the declared actual232574 own-measured-
+history request and fixed provider config. First two controls pass. An early
+read-only GET /api/ps reports pinned model/digest, context_length40960 and
+size_vram11796123484. This confirms the loaded window at that instant, not
+free-design success or the required post-readiness check; repeat that check
+after all24/cold replay and before native production. Broad suite63978 remains
+live. No V31 scientific world or completed native feedback loop is claimed.

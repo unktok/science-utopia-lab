@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V30 closed native feedback, one functional policy and remaining capacity barriers](results/native-provenance-view-v30-a1.md)
+- [V30 two matching unmodified original-source audits and physical accounting](results/native-provenance-view-v30-a1.json)
+
 - [V31 conditional JSON presentation, designer window and exact-key diagnostics](protocols/campaigns/native-context-encoding-v31-a1.md)
 - [V31 actual V30 output starvation and separate implementation evidence](logbook/2026-11-06-native-context-encoding-v31.md)
 

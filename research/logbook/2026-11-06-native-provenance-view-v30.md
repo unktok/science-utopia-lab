@@ -164,3 +164,20 @@ plan's scientific-quality rhetoric is untrusted model text, not an added host
 constraint or a proof of better science. One of four scheduled native slots is
 complete. G1 re-evaluation, other-loss measurements and final two exact-source
 audits remain pending; the full original goal is active and unmet.
+
+## Closed V30 original-source audits
+
+Writer29191 exits0 at2026-11-05T21:50:56.713393Z,59m54.451195s after its
+recorded start. PID98150 is absent. Two unmodified c534-source audits30886 and
+54513 exit0/cmp0, compact content
+ba88754d4058ffc38a4c4f70b26ad1ee2e1a388fcd5b047cbcf1a42f0dff923f.
+They verify132 raw files/254 source blobs. Three native worlds give T[0,0]
+and E[null,12]; T G0 is the only unique changed functional policy. T G1
+retains/re-evaluates it after actual measured feedback; E0 rejects invalid
+matmul attributes and E1 explicitly keeps the original parent. Do not complete
+the multiple-candidate goal on these retention paths.
+
+Record291 scientist replies/wires,24 code executions and32 known author HTTP
+responses.31 have reported token statistics823939/27981 input/output; the
+remaining fields stay unknown. See results/native-provenance-view-v30-a1.md
+and the byte-identical compact audit for complete physical accounting.

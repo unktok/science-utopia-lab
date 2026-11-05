@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V30 closes with one changed policy; fresh V31 actual readiness is live
+
+V30 writer29191 exits0 at21:50:56.713393Z after59m54.451195s; PID98150
+is absent. Both unmodified c534-source audits30886/54513 exit0/cmp0, content
+ba88754d4058ffc38a4c4f70b26ad1ee2e1a388fcd5b047cbcf1a42f0dff923f.
+Three actual worlds yield throughput[0,0] and efficiency[null,12]. Only T G0
+is a new functional parameter change; T G1 retains it and E G1 keeps the
+original parent. Own measured loss does reach G1, but multiple changed
+model-authored systems are still unshown. See the [closed report](results/native-provenance-view-v30-a1.md).
+
+After authoritative termination and matching audits, fresh V31 max24-control
+actual readiness starts in37110/PID4676 at frozen17393ca, with the predeclared
+actual V30 successful-own-history request232574 and fixed provider config.
+The first two controls pass. An early read-only GET /api/ps reports the pinned
+model/digest with loaded context40960/size_vram11796123484; repeat the declared
+post-readiness check before native production. All24/cold replay remain
+required; no V31 native world is claimed. Exact-source broad suite63978 runs.
+The original full goal remains active and unmet.
+
 ## V31 is frozen and exact-source checks pass; V30 still runs unchanged
 
 Freeze17393ca4c94b6a2aaa17fec722237482455c0be1 in the separate clean
