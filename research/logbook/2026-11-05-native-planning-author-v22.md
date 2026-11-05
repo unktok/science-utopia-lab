@@ -113,3 +113,26 @@ Merge the closed V21 evidence, keeping both V22 and V21 INDEX entries. Prepare
 a new a2 source freeze for full software verification and separately budgeted
 actual readiness. No production run is authorized by the failed a1 certificate;
 the source-owned task reminder changes runtime bytes and requires fresh proof.
+
+## A2 source frozen and actual readiness started
+
+Freeze the clean a2 merge at`5096c0ebfc46a7ae2c52ff24725b94217b0ea968`
+in the separate detached`experiment-native-planned-exploration-v22-a2`tree,
+tagged`protocol/native-planned-exploration-v22-a2`. Local main fast-forwards
+to that source; no remote push, manuscript or game update is made.
+
+Start the separately budgeted14-control actual readiness under
+`outputs/native-planned-exploration-v22-a2-preflight`, using the prior V21
+operator model/backend binding and unchanged real parent request. In parallel,
+start the full SCRIPTED software scope at the same frozen a2 source, with
+JUnit destination`outputs/native-planning-author-v22-verification/full-5096c0e.xml`.
+These starts are not completion receipts. No a2 native production is yet
+launched, and the full exploration goal remains active.
+
+The user reiterates autonomous continuation to the actual end state and asks
+whether this is a bug. Do not state that bugs are ruled out: the earlier
+contradictory instruction is a verified defect, a1's new planner interface
+actually fails, and the a2 reminder remains a repair hypothesis pending fresh
+actual evidence. The repaired positional test is distinct from model behavior.
+Keep implementation/interface defects, model choices and scientific merit
+separate, rather than claiming that repeated parent retention is inherent to8B.
