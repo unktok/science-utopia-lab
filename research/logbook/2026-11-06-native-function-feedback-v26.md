@@ -151,3 +151,17 @@ Plan classification is actual-local-qwen-native-function-feedback-development-v2
 revision v26-a1, with four slots and at most32 author POSTs. The first planner
 reply has arrived; literal intervention and native results remain unproven.
 The exact6d broad software suite34297 remains running, not a claimed pass.
+
+The exact6d broad suite subsequently exits0:2710 passes/six skips in1510.67s.
+JUnit SHA:ad5b0604c4d6842726a3d3cebba75e63367932c97e5470f0d27aefbce97a402a.
+The free G0 author still alternates plan actions and rejected reads of
+/mechanisms/world.selection/decision. Its known final JSON is now valid,
+but that does not resolve the semantic address/implementation failure.
+Preserve the ongoing four-slot run and do not claim the full goal achieved.
+
+Read-only size checks find the complete original parent is26107 compact UTF8
+bytes and its two Python-node parameter/port bundles total3578 bytes. Prepare
+a separate later editor workbench that exposes actual literal node bodies and
+their exact addresses instead of requiring successful speculative reads first.
+This is parent information, not a host-authored intervention. Keep the first
+planner source-free, all legal actions and the scientific world/loss unchanged.

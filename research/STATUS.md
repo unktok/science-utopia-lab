@@ -16,6 +16,11 @@ scope, with no replacement or supplied candidate. The exact-source broad
 software suite remains running. Readiness and a generated plan are not a
 different executable institution; the full goal remains active and unmet.
 
+The exact6d broad suite subsequently closes2710 passes/six skips in1510.67s.
+Free G0 responses are syntactically valid, but repeated plan-derived invalid
+reads still prevent literal implementation. Prepare a separate literal-node
+editor workbench; do not modify or stop the live frozen V26 experiment.
+
 ## V25 ends unchanged and V26 actual readiness starts
 
 The frozen V25 a3 writer exits0 at2026-11-05T16:27:25.864125Z, consuming
