@@ -114,6 +114,9 @@ def _prompt(request, state, steps, provider, expected, protocol):
         + target)
     if protocol == 'one-shot-v14':
         system += '\nUse the one-shot operations/factors/continuous/rationale envelope, not a tool envelope.'
+    elif expected.get('tool') == 'finish':
+        from .native_staged_author_v15 import FINISH_CONTROL_PREFIX
+        system = FINISH_CONTROL_PREFIX + system
     return prompt, system
 
 
@@ -126,11 +129,17 @@ def sequence(state):
             relative = {'selector': {'mechanism_id': node['mechanism_id']},
                 'path': '/parameters/code_artifact/source'}
             from .native_staged_author_v15 import PLAN_CONTROL
+            edited_source = source + '\n# interface calibration; no behavioral change\n'
             return [{'id': 'sequence-plan', 'expected': clone(PLAN_CONTROL)},
                 {'id': 'sequence-inspect', 'expected': {'tool': 'inspect', **relative}},
                 {'id': 'sequence-splice', 'expected': {'tool': 'splice', **relative,
                     'offset': len(source), 'delete': 0, 'text': '\n# interface calibration; no behavioral change\n'}},
                 {'id': 'sequence-reinspect', 'expected': {'tool': 'inspect', 'path': path}},
+                {'id': 'sequence-inspect-field', 'expected': {'tool': 'inspect_field',
+                    'mechanism_id': node['mechanism_id'], 'field_name': 'source'}},
+                {'id': 'sequence-edit-fields-source', 'expected': {'tool': 'edit_fields',
+                    'mechanism_id': node['mechanism_id'],
+                    'field_updates': [{'field_name': 'source', 'value': edited_source}]}},
                 {'id': 'sequence-validate', 'expected': {'tool': 'validate'}},
                 {'id': 'sequence-finish', 'expected': {'tool': 'finish',
                     'rationale': 'Interface calibration only; no behavioral improvement claimed'}}]
@@ -139,7 +148,25 @@ def sequence(state):
 
 def planned_cases(request, protocol):
     from .native_staged_author_v15 import initial_draft
-    return cases(protocol) + (sequence(initial_draft(request)) if protocol == 'staged-v15' else [])
+    if protocol != 'staged-v15':
+        return cases(protocol)
+    state = initial_draft(request)
+    from .native_field_addressing_v28 import resolve_field
+    identity = None
+    for node in state['document'].get('mechanisms', []):
+        if isinstance(node.get('parameters', {}).get('code_artifact', {}).get('source'), str):
+            resolve_field(state['document'], node['mechanism_id'], 'family')
+            identity = node['mechanism_id']
+            break
+    if identity is None:
+        raise ValueError('field controls require a real code-bearing parent')
+    # Family intentionally exercises arbitrary JSON replacement, including
+    # temporarily invalid graphs. Each typed case resets; only the subsequent
+    # continuous validation/finish claims static graph validity.
+    field_cases = [{'id': 'typed-field-' + str(index), 'expected': {'tool': 'edit_fields',
+        'mechanism_id': identity, 'field_updates': [{'field_name': 'family', 'value': clone(value)}]}}
+        for index, value in enumerate(VALUES)]
+    return cases(protocol) + field_cases + sequence(state)
 
 
 def _apply(state, action, request, provider):

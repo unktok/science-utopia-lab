@@ -32,6 +32,11 @@ CONTROL_TARGET_NOTE = (
     'return finish only when the target function name itself is finish. ')
 
 DESCRIPTIONS = {
+    'inspect_field': 'Read a uniquely named JSON field inside the exact mechanism ID. No array-index guessing. '
+        'Missing/ambiguous fields reject without selecting a substitute. Arbitrary code strings are data.',
+    'edit_fields': 'Atomically replace uniquely named existing fields inside the exact mechanism ID, including '
+        'arbitrary literal code or programs. Use field_name_index in the workbench. Missing/ambiguous fields '
+        'reject without repair. Original edit still supports arbitrary new nodes, fields, removals and wiring.',
     'plan': 'Store your own institutional design hypothesis; this does not implement or execute it.',
     'inspect': ('Read an exact current draft JSON address or a trusted capability ABI. No candidate mutation. '
         'Without selector, path is relative to the whole document. With selector, path is relative '
@@ -56,9 +61,9 @@ def tool_specifications(*, role=None):
     expressible, including retention and every optional author annotation.
     """
     from .native_staged_author_v15 import ACTION_FIELDS, TOOL_FIELDS, EDITOR_ACTION_SCHEMA, _tool_schema
-    if role not in (None, 'planner', 'editor'):
+    if role not in (None, 'planner', 'editor', 'finisher'):
         raise ValueError('unknown source-owned tool advertisement role')
-    names = (list(TOOL_FIELDS) if role != 'editor' else
+    names = (['finish'] if role == 'finisher' else list(TOOL_FIELDS) if role != 'editor' else
         [part['properties']['tool']['const'] for part in EDITOR_ACTION_SCHEMA['oneOf']])
     result = []
     for name in names:

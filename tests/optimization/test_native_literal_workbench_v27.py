@@ -118,7 +118,7 @@ def test_editor_advertises_implementation_first_without_removing_or_weakening_an
     editor = tool_specifications(role='editor')
     planner = tool_specifications(role='planner')
     assert [item['function']['name'] for item in editor] == [
-        'edit', 'splice', 'inspect', 'configure', 'validate', 'finish', 'plan']
+        'edit_fields', 'edit', 'splice', 'inspect_field', 'inspect', 'configure', 'validate', 'finish', 'plan']
     assert planner[0]['function']['name'] == 'plan'
     assert {item['function']['name']: item for item in editor} == original
     with pytest.raises(ValueError, match='source-owned'):

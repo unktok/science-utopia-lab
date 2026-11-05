@@ -9,7 +9,7 @@ from tests.optimization.test_native_authoring_ir import ALPHA, BINDING, IMAGE, r
 from tests.optimization.test_native_staged_author_v15 import Model, apply, author, rehash
 from utopia.optimization.native_staged_author_v15 import (
     ACTION_SCHEMA, PLAN_ACTION_SCHEMA, PLAN_SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT,
-    SYSTEM_PROMPT, build_conversation, build_prompt, call_task, initial_draft,
+    SYSTEM_PROMPT, FINISH_SYSTEM_PROMPT, build_conversation, build_prompt, call_task, initial_draft,
     replay_staged_generation)
 
 PLAN = {'tool': 'plan', 'objective_reasoning': 'SCRIPTED exact numeric objective reasoning',
@@ -42,7 +42,8 @@ def test_first_planner_context_has_structure_and_loss_but_no_parent_source_or_st
     assert len(data['planning_system_structure']['mechanisms']) == 2
     assert data['response_schema'] == PLAN_ACTION_SCHEMA
     assert call_task(0, 16) == PLAN_SYSTEM_PROMPT
-    assert call_task(1, 16) == call_task(0, 1) == SYSTEM_PROMPT
+    assert call_task(1, 16) == SYSTEM_PROMPT
+    assert call_task(0, 1) == FINISH_SYSTEM_PROMPT
 
 
 def test_observed_fields_cannot_select_planner_role_or_become_system_authority():
@@ -94,7 +95,7 @@ def test_plan_edit_finish_replays_without_model_redispatch_or_plan_policy_repair
     model = Model([PLAN, edit, finish])
     result = author(model, tmp_path, max_steps=3)(request())
     assert 'generation_failure' not in result
-    assert [call['system_prompt'] for call in model.calls] == [PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, SYSTEM_PROMPT]
+    assert [call['system_prompt'] for call in model.calls] == [PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, FINISH_SYSTEM_PROMPT]
     assert result['base_patch']['operations'] == [{'op': 'replace', 'path': '/mechanisms/0/parameters/gain', 'value': .8}]
     folder = next(tmp_path.glob('generation-*'))
     assert replay_staged_generation(folder, expected_provider_binding=BINDING) == result

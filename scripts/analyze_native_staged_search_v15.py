@@ -79,7 +79,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-tool-calling-exploration-v25-a3.md',
                 'research/protocols/campaigns/native-function-feedback-v26-a1.md',
                 'research/protocols/campaigns/native-literal-workbench-v27-a1.md',
-                'research/protocols/campaigns/native-literal-workbench-v27-a2.md'}):
+                'research/protocols/campaigns/native-literal-workbench-v27-a2.md',
+                'research/protocols/campaigns/native-field-addressing-v28-a1.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -173,7 +174,10 @@ def authoring_change(request, result, completed_steps):
     raw_ir = definition.get('provenance', {}).get('authoring_compiler', {}).get('raw_ir')
     result_summary = {'valid_explicit_finish': result['status'] == 'generated',
         'successful_edit_or_splice_steps': sum(step is not None and step.get('transition') is not None
-            and step['transition']['ok'] and step['transition']['tool'] in {'edit', 'splice'}
+            and step['transition']['ok'] and step['transition']['tool'] in {'edit', 'splice', 'edit_fields'}
+            for step in completed_steps),
+        'successful_edit_fields_steps': sum(step is not None and step.get('transition') is not None
+            and step['transition']['ok'] and step['transition']['tool'] == 'edit_fields'
             for step in completed_steps),
         'authored_operation_count': len(raw_ir['operations']) if raw_ir is not None else None,
         'base_patch_null': definition.get('base_patch') is None if result['status'] == 'generated' else None,

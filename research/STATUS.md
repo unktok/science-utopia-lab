@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V27 actual generation failures and separate V28 repair
+
+V27 a2 actual14-control readiness passes with cold replay at frozendfe. Its
+finite native pilot is still live. Both throughput author attempts fail without
+an explicit finish and produce zero native observations. Actual edits propose
+different values but use invalid ID/array and nested field addresses. Do not
+call these consumed slots measured worlds or blame model capacity alone.
+
+Separate V28 adds exact unique-key field tools and a final-call submission task
+with finish-only advertisement; all old arbitrary code/graph/wiring tools stay
+host-legal, with no implicit finish or failed-action repair. Software checks
+are in progress. A clean freeze, fresh max24-control actual readiness and a new
+four-slot native pilot remain pending; no V28 inference has occurred. The full
+active goal of changed candidates, measured loss and own-result re-evaluation
+remains unmet. See the [prospective protocol](protocols/campaigns/native-field-addressing-v28-a1.md).
+
 ## V26 closes unchanged and V27 a2 actual readiness is running
 
 V26 exits0 at2026-11-05T17:41:47.445119Z. All four native slots finish with

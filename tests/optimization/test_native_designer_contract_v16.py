@@ -172,23 +172,23 @@ def certificate(tmp_path, monkeypatch):
     ScriptedSession.calls = []
     directory = tmp_path / 'calibration'
     result = p.run_calibration(directory, request=request(), provider=BINDING)
-    assert result['all_controls_passed'] and len(result['records']) == 14
+    assert result['all_controls_passed'] and len(result['records']) == 24
     return directory / 'certificate.json'
 
 
 def test_certificate_replays_all_exact_wire_typed_controls_and_continuous_code_sequence(certificate):
     result = p.require_certificate(certificate, BINDING, protocol='staged-v15')
-    assert result['controls'] == 14
+    assert result['controls'] == 24
 
 
 def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(certificate):
     value = json.loads(certificate.read_text())
     roles = [record['intent']['decoding_role'] for record in value['records']]
-    assert roles == ['editor'] * 8 + ['planner'] + ['editor'] * 5
+    assert roles == ['editor'] * 16 + ['planner'] + ['editor'] * 7
     for index, record in enumerate(value['records']):
         payload = record['transport']['request_payload']
-        assert payload['think'] is (index == 8)
-        assert payload['options']['temperature'] == (.6 if index == 8 else .2)
+        assert payload['think'] is (index == 16)
+        assert payload['options']['temperature'] == (.6 if index == 16 else .2)
         assert payload['options']['num_predict'] == 8192 and payload['format'] == 'json'
         assert 'tools' not in payload  # do not enter the backend's float64 tool-argument parser
         assert '<tools>' in payload['messages'][0]['content']

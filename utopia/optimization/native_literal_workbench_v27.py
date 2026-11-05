@@ -38,6 +38,8 @@ def literal_workbench(state):
             item = entry(path, node)
             if isinstance(node, dict):
                 item['mechanism_id'] = clone(node.get('mechanism_id'))
+                from .native_field_addressing_v28 import field_index
+                item['field_name_index'] = field_index(node)
                 parameters = node.get('parameters')
                 artifact = parameters.get('code_artifact') if isinstance(parameters, dict) else None
                 if isinstance(artifact, dict) and isinstance(artifact.get('source'), str):

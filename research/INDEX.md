@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V28 prospective exact field tools and explicit final submission](protocols/campaigns/native-field-addressing-v28-a1.md)
+- [V28 actual failure boundary and separate implementation log](logbook/2026-11-06-native-field-addressing-v28.md)
+
 - [V26 closed unchanged four-world outcome and actual context defects](results/native-function-feedback-v26-a1.md)
 - [V26 two matching unmodified original-source raw audits](results/native-function-feedback-v26-a1.json)
 

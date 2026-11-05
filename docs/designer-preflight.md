@@ -8,8 +8,10 @@ silently added to optimization.
 
 ## What it checks
 
-Eight exact JSON operand types, followed (for staged authoring) by a continuous
-source-free plan → inspect → literal source splice → reinspection → static validate → finish
+Eight exact JSON operand types. Staged authoring additionally checks the same
+eight operands through exact field-name addressing, followed by a continuous
+source-free plan → inspect → literal source splice → reinspection → field read
+→ complete literal source replacement → static validate → explicit finish
 session against the real original-world parent. These are instructed interface
 controls, not autonomous invention. They use the production loopback wire and
 host interpreter, but an explicitly separate calibration task/conversation.
@@ -39,7 +41,7 @@ model digest and sandbox image identity. Neither path is browser-selected.
   --certificate <evidence-directory>/certificate.json
 ```
 
-Staged: at most14 generation POSTs; one-shot: at most8. These are real inference
+Current V28 staged: at most24 generation POSTs; one-shot: at most8. These are real inference
 costs, not zero-cost validation. Declare their budget before running. No native
 world or generated source is executed by calibration. Use a new output directory
 for every source/revision; retain failures. Do not keep retrying until one passes.
@@ -47,7 +49,7 @@ for every source/revision; retain failures. Do not keep retrying until one passe
 The current staged source uses the same fixed local Qwen3-8B in two caller-owned
 roles: thinking planner at temperature0.6 and non-thinking literal editor at0.2.
 Both use top-p0.95, top-k20, min-p0,32768 context and8192 output tokens.
-Thirteen editor controls and one planner control use their actual role settings;
+Twenty-three editor controls and one planner control use their actual role settings;
 strict equality of decoded action JSON remains required. Separate`message.thinking`is
 retained in the raw response but is never
 parsed as an action or used to repair missing final content. Backend evaluation
@@ -60,7 +62,7 @@ emit nonempty reasoning fields. No extra probe is added. This does not establish
 that the reasoning is correct or that the designer can invent an institution.
 V24 a3 used backend`format:"json"`after preserved a1 syntax/a2 LF failures.
 V25 used Qwen's Hermes function-call notation.
-The same seven functions and their schemas are included in the trusted SYSTEM
+V25's seven functions and their schemas are included in the trusted SYSTEM
 message. One complete final `<tool_call>{"name":...,"arguments":...}</tool_call>`
 envelope becomes the exact same host action; no prose/fence/prefix/source repair
 or reasoning extraction is allowed. Multiple calls fail as a whole, not as
@@ -73,7 +75,7 @@ and receipts as strings. This uses the learned Hermes syntax without changing
 the shared backend/model or relying on its native tool argument conversion.
 Full original messages and raw HTTP bodies remain archived; cold replay and
 the independent auditor bind the declared Hermes channel to its exact source.
-The same14 exact decoded actions AND role-specific reasoning evidence must pass
+For V25, the same14 exact decoded actions AND role-specific reasoning evidence must pass
 before production, including real LF and9007199254740993. Older certificates
 cannot authorize this revision. The legacy one-shot wire remains JSON mode.
 
@@ -104,6 +106,19 @@ hashes. Every other observation field is preserved. Exact original evidence
 remains archived and current draft bodies remain available to editors. This
 restores the planner's source exclusion and avoids duplicating a whole old
 system in its own feedback; it does not discard failed trials or measurements.
+
+V28 adds `inspect_field` and `edit_fields`: exact mechanism ID plus unique
+existing JSON key name, with atomic literal values. Missing or ambiguous names
+reject, with no fuzzy match, chosen substitute or repair of earlier invalid
+actions. Ordinary tools retain arbitrary node/code/wiring/process edits. The
+last production call now has a caller-owned final-submission task and advertises
+only `finish`; all nine actions remain host-legal. A last non-finish still fails;
+there is no implicit finish or baseline fallback. Fresh V28 readiness requires
+all24 exact controls, including complete source bytes and the final-only
+advertisement, role evidence and cold replay. Historical14-control certificates
+do not authorize this source. Typed field controls reset between cases and may
+temporarily make a field invalid; only the later continuous validate/finish
+claims static graph validity. This is compatibility, not invention evidence.
 
 Pass `--designer-preflight <certificate.json>` to:
 

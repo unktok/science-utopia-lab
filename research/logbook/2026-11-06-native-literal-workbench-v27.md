@@ -175,7 +175,7 @@ exact compact JSON plus interpreted result, without the external V25 reporting
 adapter. Preserve643130/6924 reported author tokens over31 records; the32nd
 reply's missing counts are not zero. The goal remains unmet and active.
 
-## All24 typed and role facts remain separate from free design success
+## All14 actual controls remain separate from free design success
 
 A2 session17524 exits0 after all14 declared actual controls and cold replay,
 using the archived G1 compatibility request. Preserve14 POSTs/361.00711187627167s,
