@@ -6,6 +6,7 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V24 a2 prospective reasoning with generation-time JSON syntax constraints](protocols/campaigns/native-thinking-exploration-v24-a2.md)
 - [V23 closed unchanged feedback arm and explicitly unexecuted slots](results/native-numeric-objective-exploration-v23-a1.md)
 - [V23 exact source raw action loss and physical audit with incomplete-budget scope](results/native-numeric-objective-exploration-v23-a1.json)
 - [V24 conditional reasoning enabled fixed local designer and unchanged native world](protocols/campaigns/native-thinking-exploration-v24-a1.md)

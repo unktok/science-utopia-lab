@@ -56,11 +56,13 @@ At least one of the same14 staged responses must have a nonempty separate
 reasoning field to evidence the requested mode; no extra probe is added. Exact
 final controls without any such field fail readiness. This does not establish
 that the reasoning is correct or that the designer can invent an institution.
-The staged request omits backend`format`up front so native reasoning is not
-constrained by a JSON grammar. Final content is still required to be one exact
-JSON action, parsed and schema-checked without removing fences/tags or repairing
-source. This is not an error-triggered format fallback. The one-shot request
-continues to use backend`format:"json"`.
+The current staged a2 request declares backend`format:"json"`up front alongside
+reasoning, after the separately preserved no-grammar a1 control failed on an
+extra closing brace. Final content still must be one exact JSON action,
+schema-checked without removing fences/tags/braces or repairing source. This is
+a new source-bound revision, not a fallback/retry inside the failed a1 run.
+The same14 controls must show exact final content AND observed separate reasoning
+before production. The legacy one-shot request continues backend JSON mode.
 
 Pass `--designer-preflight <certificate.json>` to:
 

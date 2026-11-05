@@ -1,5 +1,6 @@
 """SCRIPTED reasoning transport and phase advertisement, not model performance."""
 from copy import deepcopy
+import json
 
 import pytest
 from jsonschema import Draft202012Validator
@@ -15,7 +16,7 @@ def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
     messages = [{'role': 'user', 'content': 'SCRIPTED fixture'}]
     original = deepcopy(messages)
     actual = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.6)
-    assert actual['think'] is True and 'format' not in actual and actual['stream'] is False
+    assert actual['think'] is True and actual['format'] == 'json' and actual['stream'] is False
     assert actual['options'] == {'temperature': .6, 'num_predict': 8192, 'num_ctx': 32768,
         'top_p': .95, 'top_k': 20, 'min_p': 0.0, 'seed': actual['options']['seed']}
     assert messages == original
@@ -72,3 +73,13 @@ def test_raw_final_json_instruction_is_source_owned_in_planner_editor_and_contro
     _, task = _prompt(request(), initial_draft(request()), [], BINDING,
         {'tool': 'validate'}, 'staged-v15')
     assert FINAL_JSON_ONLY in task
+
+
+def test_nested_control_with_extra_closing_brace_still_rejects_without_prefix_salvage():
+    from utopia.optimization.native_search_generator_v14 import _strict_json
+    action = {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/metadata/interface_calibration',
+        'value': {'nested': {'items': [None, 1]}}}]}
+    text = json.dumps(action)
+    assert _strict_json(text) == action
+    with pytest.raises(json.JSONDecodeError, match='Extra data'):
+        _strict_json(text + '}')

@@ -12,7 +12,7 @@ STAGED_TEMPERATURE = .6
 
 def decoding_contract(protocol):
     if protocol == 'staged-v15':
-        return {'think': True, 'backend_format': None, 'max_tokens': STAGED_MAX_TOKENS,
+        return {'think': True, 'backend_format': 'json', 'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_TEMPERATURE,
             'sampling_options': {'num_ctx': 32768, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}

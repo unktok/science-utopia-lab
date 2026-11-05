@@ -2,7 +2,23 @@
 
 Updated: 2026-11-05
 
-## V24 actual reasoning readiness after the closed unchanged V23 arm
+## V24 a1 readiness fails strict nested JSON and a2 is prepared
+
+At frozen source2`200bf74`, actual readiness passes five controls then fails
+the sixth on one extra closing brace. All six replies have nonempty separate
+reasoning fields, but malformed final content remains rejected. The failed
+certificate, six POSTs/247.02 adapter seconds and67018/2362 reported input/total
+output tokens are preserved. No a1 native production is launched.
+
+The [a2 continuation](protocols/campaigns/native-thinking-exploration-v24-a2.md)
+requests generation-time JSON syntax constraints alongside unchanged reasoning,
+budgets, exact controls and scientific setting. Final parsing/schema remain
+strict; no prefix/brace salvage or candidate policy is added. Its focused
+scope passes224 tests; fresh14-control actual compatibility and observed-mode
+evidence must still pass after a new freeze. No a2 inference has occurred here.
+The full goal remains unmet and active.
+
+## Initial V24 reasoning readiness after the closed unchanged V23 arm
 
 V23 closes both throughput generations/worlds at`[-1,-1]`, both exact parent
 retentions. All32 replies are plans/reads/finishes, with zero edits. Two matching
@@ -23,7 +39,8 @@ nonempty separate reasoning field at the new exact settings before production.
 After V23's authoritative exit and matching audits, final V24 source2`200bf74`
 starts fresh14-control actual readiness. Its first exact control also has a
 nonempty separate reasoning field; this is not yet all controls or invention.
-No V24 native production is launched here. The final-source broad software
+The later sixth-control failure is preserved above; no native production is
+launched. The final-source broad software
 suite is running; the superseded5bf software scope is explicitly stopped,
 not recorded as a full pass. The earlier frozen source/tag remains untouched.
 See the [forward-only log](logbook/2026-11-05-native-thinking-author-v24.md).

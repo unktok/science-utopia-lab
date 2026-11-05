@@ -189,3 +189,35 @@ This is one known actual interface/mode control, not all14 controls, reasoning
 correctness or institutional invention. Do not disclose/interpret its raw
 reasoning as a candidate or manufacture a thinking/final token split. The
 remaining finite controls and cold replay must still pass before production.
+
+## Preserved failed a1 readiness and prospective JSON constrained a2
+
+At final a1 source2`200bf74`, controls0–4 pass; control5 stops actual readiness.
+Its known final content is the expected nested-object action followed by one
+extra closing brace. Outer HTTP/body metadata is intact, done is true and stop
+is normal; all six separate reasoning fields are nonempty. This is a malformed
+known final response, not an unknown/truncated reply or missing reasoning mode.
+The strict parser correctly raises`JSONDecodeError: Extra data: line 1 column
+134 (char 133)`. Do not strip the brace or accept a valid prefix.
+
+Keep all six charged POSTs/known responses,247.02281495765783s summed adapter
+time,67018 input and2362 reported total output tokens. All six cost fields are
+present; no split/imputation is made. Failed certificate content SHA:
+`5765441830356dcd4f45a8dcf8234f7c61beda8e83a5e373ae23ebb9547fa380`.
+The calibration CLI exits1. No V24 a1 scientific world/production writer is
+launched, and the eight remaining controls are unexecuted, not retried.
+
+Prepare[the separate a2 protocol](../protocols/campaigns/native-thinking-exploration-v24-a2.md)
+before more inference. Change only the staged backend format from absent to
+`json`, keeping thinking/sampling/budgets, exact controls, final parser/schema,
+original world/losses and all tool freedom. The generation-time syntax constraint
+does not supply a candidate or salvage a malformed response. Sender, cold
+replay and auditor bind the new field. A new negative test ensures the same
+nested action with an extra brace still fails the unmodified parser.
+
+The combined a2 prelaunch scope passes224 SCRIPTED checks in26.39s. This does
+not prove the actual backend supports reasoning plus JSON mode; require all14
+fresh actual controls, separate reasoning evidence and cold replay after a new
+clean freeze. Preserve a1 failure; do not append successful controls to it,
+reuse its certificate or label this as a fallback inside the failed call.
+No a2 model call has occurred at this entry. The full goal remains active.

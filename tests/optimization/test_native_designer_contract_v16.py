@@ -210,7 +210,7 @@ def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, 
         record['transport']['response_payload']['message'] = {'content': '', 'thinking': json.dumps(record['output'])}
         record['transport']['raw_http_response'] = json.dumps(record['transport']['response_payload'])
     elif mutation == 'reasoning-evidence': value['reasoning_evidence']['known_nonempty_response_fields'] = 0
-    elif mutation == 'backend-format': record['transport']['request_payload']['format'] = 'json'
+    elif mutation == 'backend-format': record['transport']['request_payload'].pop('format')
     value['content_sha256'] = digest({key: item for key, item in value.items() if key != 'content_sha256'})
     certificate.write_text(json.dumps(value))
     with pytest.raises(ValueError):

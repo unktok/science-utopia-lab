@@ -624,7 +624,7 @@ def test_staged_dialogue_transport_is_one_exact_final_json_loopback_post(monkeyp
         def post(self, url, **kwargs):
             calls.append(('POST', url))
             self.payload = json.loads(kwargs['data'])
-            assert 'format' not in self.payload  # native reasoning, strict final JSON on host
+            assert self.payload['format'] == 'json'  # constrain generation, never repair final content
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
