@@ -176,3 +176,34 @@ def test_raw_auditor_counts_field_edits_separately_without_turning_failed_genera
     change = authoring_change(request(), result, steps)
     assert change['successful_edit_or_splice_steps'] == change['successful_edit_fields_steps'] == 1
     assert change['valid_explicit_finish'] is False and change['exact_document_changed'] is None
+
+
+def test_nested_operation_error_identifies_extra_field_without_repeating_full_program():
+    state = initial_draft(request()); original = deepcopy(state)
+    action = {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/metadata/experiment',
+        'value': {'source': 'SCRIPTED_FULL_SOURCE_DO_NOT_ECHO' * 2000},
+        'rationale': 'misplaced inside an operation, not legal here'}]}
+    changed, receipt = apply(state, action)
+    assert changed == original and not receipt['ok']
+    error = receipt['errors'][0]['message']
+    assert '$.operations[0]' in error and 'unexpected fields rationale' in error
+    assert len(error) < 150 and 'SCRIPTED_FULL_SOURCE_DO_NOT_ECHO' not in error
+    assert action['operations'][0]['value']['source'].startswith('SCRIPTED_FULL_SOURCE')
+
+
+def test_native_protocol_keeps_all_explanations_but_not_duplicate_host_envelope_examples():
+    from utopia.optimization.native_staged_author_v15 import INSTRUCTIONS, TOOL_FIELDS
+    from utopia.optimization.native_designer_tools_v25 import native_instruction_semantics
+    rendered = native_instruction_semantics(INSTRUCTIONS)
+    assert '"tool":' not in rendered
+    assert 'without a tool field' in rendered
+    for name in TOOL_FIELDS:
+        assert 'Function ' + name + ':' in rendered
+    assert 'An invalid intermediate GRAPH is permitted' in rendered
+    assert 'Full-document paths' in rendered and 'Your last call must finish' in rendered
+    req = request(); state = initial_draft(req)
+    from utopia.optimization.native_literal_workbench_v27 import literal_workbench
+    from utopia.optimization.native_field_addressing_v28 import FIELD_RULE
+    bench = literal_workbench(state)
+    assert bench['field_addressing_rule'] == FIELD_RULE
+    assert all('rule' not in node['field_name_index'] for node in bench['nodes'])

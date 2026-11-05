@@ -80,7 +80,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-function-feedback-v26-a1.md',
                 'research/protocols/campaigns/native-literal-workbench-v27-a1.md',
                 'research/protocols/campaigns/native-literal-workbench-v27-a2.md',
-                'research/protocols/campaigns/native-field-addressing-v28-a1.md'}):
+                'research/protocols/campaigns/native-field-addressing-v28-a1.md',
+                'research/protocols/campaigns/native-field-addressing-v28-a2.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})

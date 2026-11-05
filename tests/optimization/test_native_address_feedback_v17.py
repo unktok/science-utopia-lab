@@ -76,7 +76,8 @@ def test_actual_preflight_sequence_covers_relative_and_absolute_address_forms():
     state = initial_draft(request())
     sequence_cases = sequence(state)
     assert [row['id'] for row in sequence_cases] == ['sequence-plan', 'sequence-inspect',
-        'sequence-splice', 'sequence-reinspect', 'sequence-validate', 'sequence-finish']
+        'sequence-splice', 'sequence-reinspect', 'sequence-inspect-field',
+        'sequence-edit-fields-source', 'sequence-validate', 'sequence-finish']
     cases = {row['id']: row['expected'] for row in sequence_cases}
     assert cases['sequence-plan'] == PLAN_CONTROL
     relative, splice, absolute = [cases[key] for key in (

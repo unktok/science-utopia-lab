@@ -4,6 +4,9 @@ from collections import defaultdict
 from utopia.optimization.native_authoring_ir import AuthoringIRDiagnostic, _read, resolve_address
 from utopia.system.design_patch import clone
 
+FIELD_RULE = ('Exact field-name match inside this exact mechanism. Missing or ambiguous names reject; '
+    'use ordinary edit/inspect with an explicit pointer for any other operation.')
+
 
 def _fields(value, prefix=''):
     if isinstance(value, dict):
@@ -22,9 +25,7 @@ def field_index(node):
     for name, path in _fields(node):
         matches[name].append(path)
     return {'unique_field_names': sorted(name for name in matches if len(matches[name]) == 1),
-        'ambiguous_field_names': {name: len(matches[name]) for name in sorted(matches) if len(matches[name]) > 1},
-        'rule': 'Exact field-name match inside this exact mechanism. Missing or ambiguous names reject; '
-            'use ordinary edit/inspect with an explicit pointer for any other operation.'}
+        'ambiguous_field_names': {name: len(matches[name]) for name in sorted(matches) if len(matches[name]) > 1}}
 
 
 def resolve_field(document, mechanism_id, field_name):

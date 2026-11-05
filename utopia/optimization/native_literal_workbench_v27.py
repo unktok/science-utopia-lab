@@ -15,6 +15,7 @@ def literal_workbench(state):
     after intermediate invalid graph edits. Large bodies keep explicit omission
     descriptors and remain available through unrestricted inspect calls.
     """
+    from .native_field_addressing_v28 import FIELD_RULE
     document = state['document']
     used = 0
 
@@ -55,6 +56,7 @@ def literal_workbench(state):
     return {'schema': 'scienceutopia.literal-editor-workbench.v27',
         'scope': 'Observed current draft only, not a supplied candidate or a measured improvement.',
         'document_sha256': digest(document), 'nodes': entries, 'root_fields': root_fields,
+        'field_addressing_rule': FIELD_RULE,
         'all_current_nodes_indexed': True, 'all_current_root_fields_indexed': True,
         'literal_bytes_included': used, 'literal_byte_cap': MAX_LITERAL_BYTES,
         'per_entry_byte_cap': MAX_ENTRY_BYTES, 'silent_size_truncation': False,

@@ -54,7 +54,7 @@ DESCRIPTIONS = {
 
 
 def tool_specifications(*, role=None):
-    """Derive all seven parameter schemas from the authoritative host contract.
+    """Derive parameter schemas from the authoritative host contract.
 
     No hand-maintained copy of operation/value schemas and no backend grammar
     that would narrow arbitrary JSON operands. Every host-valid action remains
@@ -78,6 +78,29 @@ def tool_specifications(*, role=None):
         result.append({'type': 'function', 'function': {
             'name': name, 'description': DESCRIPTIONS[name], 'parameters': parameters}})
     return result
+
+
+def native_instruction_semantics(instructions):
+    """Keep every tool explanation, without redundant host-envelope examples.
+
+    Function schemas are already advertised separately. These are trusted,
+    source-owned examples, never model/source text or a response repair path.
+    """
+    from .native_staged_author_v15 import TOOL_FIELDS
+    decoder = json.JSONDecoder()
+    cursor, parts, names = 0, [], []
+    import re
+    for match in re.finditer(r'(?m)^  \{"tool":', instructions):
+        if match.start() < cursor:
+            continue
+        action, length = decoder.raw_decode(instructions[match.start() + 2:])
+        parts.extend([instructions[cursor:match.start()], '  Function ' + action['tool'] + ':'])
+        names.append(action['tool'])
+        cursor = match.start() + 2 + length
+    parts.append(instructions[cursor:])
+    if len(names) != len(TOOL_FIELDS) or set(names) != set(TOOL_FIELDS):
+        raise ValueError('source-owned tool example inventory differs from host functions')
+    return ''.join(parts).replace('Return ONE JSON tool action per turn.', TOOL_RESPONSE_ONLY)
 
 
 def action_from_message(message):

@@ -366,6 +366,26 @@ def _error(error):
     return result
 
 
+def schema_problem_message(problem):
+    """Bound the cause, not repr of an entire authored program/source operand."""
+    instance, keyword = problem.instance, problem.validator
+    if keyword == 'oneOf' and isinstance(instance, dict) and 'op' in instance:
+        branch = next((part for part in OPERATION['oneOf']
+            if part['properties']['op']['const'] == instance['op']
+            and ('selector' in part['properties']) == ('selector' in instance)), None)
+        if branch is not None:
+            issues = list(Draft202012Validator(branch).iter_errors(instance))
+            if issues:
+                return problem.json_path + ': ' + '; '.join(schema_problem_message(issue) for issue in issues)
+    if keyword == 'additionalProperties' and isinstance(instance, dict):
+        return problem.json_path + ': unexpected fields ' + ','.join(sorted(
+            set(instance) - set(problem.schema.get('properties', {}))))
+    if keyword == 'required' and isinstance(instance, dict):
+        return problem.json_path + ': missing required fields ' + ','.join(
+            key for key in problem.validator_value if key not in instance)
+    return problem.json_path + ': invalid ' + str(keyword) + ' (actual JSON type ' + json_type(instance) + ')'
+
+
 def step_errors(step):
     """All technical feedback, including accepted but temporarily invalid drafts."""
     action_transition = step.get('transition') or {}
@@ -507,7 +527,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
         if problems:
             from jsonschema.exceptions import best_match
             problem = best_match(problems)
-            raise ValueError('tool schema: ' + problem.json_path + ': ' + problem.message)
+            raise ValueError('tool schema: ' + schema_problem_message(problem))
         tool = action['tool']
         annotations = {key: clone(action[key]) for key in ANNOTATIONS if key in action}
         if annotations:
@@ -934,9 +954,8 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         'do not fabricate measured outcomes or claim an unexecuted candidate was evaluated.')
     instructions = INSTRUCTIONS
     if native_tools:
-        from .native_designer_tools_v25 import TOOL_RESPONSE_ONLY
-        instructions = instructions.replace('Return ONE JSON tool action per turn.',
-            TOOL_RESPONSE_ONLY + '\nThe JSON examples below describe host action notation, not response content.')
+        from .native_designer_tools_v25 import native_instruction_semantics
+        instructions = native_instruction_semantics(instructions)
     messages = [{'role': 'system', 'content':
         'TRUSTED INSTITUTION-AUTHORING PROTOCOL\n' + instructions
         + '\n\nTRUSTED EXECUTION ABI AND DISTRIBUTION CONTRACT\n' + ABI_CONTRACT

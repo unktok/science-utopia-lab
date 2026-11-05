@@ -2,6 +2,19 @@
 
 Updated: 2026-11-06 JST
 
+## Actual overflow diagnosed; V28 a2 is prepared before inference
+
+V27 a2 efficiency G1 explicitly submits an unchanged parent and is measuring
+one native world; three earlier author slots failed. Its raw HTTP400 step4
+reports32922 input tokens above32768. Do not label this a model-only limit.
+V28 a1 remains software-only at4b072b1; its broad suite is running with a
+failure and no actual model call. Separate a2 removes repeated field rules
+and redundant host-envelope examples, and diagnoses invalid operation keys
+without echoing a whole program. Exact old actions still reject; no source
+repair occurs. Focused checks and a fresh clean freeze remain required, then
+actual24-control readiness after V27's writer terminates. Full goal remains
+active and unmet. See the [a2 protocol](protocols/campaigns/native-field-addressing-v28-a2.md).
+
 ## V27 actual generation failures and separate V28 repair
 
 V27 a2 actual14-control readiness passes with cold replay at frozendfe. Its
