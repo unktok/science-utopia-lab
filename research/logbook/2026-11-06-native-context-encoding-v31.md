@@ -94,3 +94,21 @@ is not a complete budget guarantee; minified-message tokenization must still
 be observed. Update the prospective claim rather than promising capacity.
 Final G1 explicitly submits unchanged original-parent retention and starts
 one native world. V30 remains live, not terminal at this entry.
+
+Freeze17393ca4c94b6a2aaa17fec722237482455c0be1 in the separate clean
+experiment-native-context-encoding-v31-a1 tree and protocol/native-context-encoding-v31-a1
+tag. Main fast-forwards; both V30 frozen code and its running writer remain
+unchanged. Exact-source proof94836 exits0 and verifies254 blobs.
+
+Exact-source focused suite14324 exits0:264 passes in52.41s, JUnit
+outputs/native-context-encoding-v31-verification/focused-17393ca.xml,
+SHAae43c29afc2ed580e6ffaf7f627ac7d289c2ca3c928690e3643aba9ba45e45b0.
+Exact-source broad suite63978 is live with JUnit
+outputs/native-context-encoding-v31-verification/full-17393ca.xml, not claimed
+passed. No V31 actual model call occurs while V30 PID98150 remains live.
+
+At this entry V30 is in its final native measurement, after two throughput
+worlds and one efficiency author failure. Efficiency G1 explicitly submits
+unchanged original-parent retention, not a new institution and not a host
+baseline fallback. Keep the full goal active; after verified termination inspect
+two original-source audits and decide the conditional V31 continuation.

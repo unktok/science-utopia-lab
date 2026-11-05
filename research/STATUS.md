@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V31 is frozen and exact-source checks pass; V30 still runs unchanged
+
+Freeze17393ca4c94b6a2aaa17fec722237482455c0be1 in the separate clean
+experiment-native-context-encoding-v31-a1 tree and matching protocol tag.
+Read-only source proof verifies254 blobs; exact-source focused scope passes
+264 in52.41s. Pre-freeze all-change scope passes431 in113.80s. Exact-source
+broad suite63978 is running; no broad pass is claimed. No V31 actual model
+call has occurred.
+
+Frozen V30 PID98150 remains live in its last native measurement. It has two
+completed throughput worlds with one unique functional parameter change and
+one efficiency author failure. Efficiency G1 explicitly retains the original
+parent and is measuring it. The full changed-candidates/own-result/re-evaluation
+goal remains active, not completed by these retention paths. Close and audit
+V30 before deciding whether the conditional fresh V31 continuation is needed.
+
 ## V30 actual output starvation; V31 is prepared separately
 
 The frozen c534 V30 writer remains live. Throughput finishes two native
