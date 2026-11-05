@@ -1,6 +1,27 @@
 # Program status
 
-Updated: 2026-11-04
+Updated: 2026-11-05
+
+## V20 actual institutional exploration remains the active goal
+
+The full goal is not satisfied by V19's completed but unchanged feedback loops.
+Actual model-authored institutional changes, multiple original-world loss
+evaluations and own-result-informed subsequent proposals remain to be shown.
+
+Source inspection finds a conflicting source-owned turn task: "do not invent
+a candidate or a measured outcome", despite SYSTEM permission to invent new
+code/institutions. Repair that sentence without changing schemas, tool validity,
+source/compiler/ABI semantics, models or scientific losses. The defect is real;
+its causal sufficiency for the observed stagnation is not established.
+See the [prospective continuation](protocols/campaigns/native-design-exploration-v20-a1.md)
+and [forward-only log](logbook/2026-11-05-native-design-exploration-v20.md).
+
+First preserve a read-only exact-wire/operand diagnosis and software checks.
+Then freeze a separate source, require fresh13-control real calibration and
+cold replay, and conditionally run a new four-slot native pilot. Do not call
+unchanged retention invention, silently accept rejected extra fields, change
+provider or substitute a toy world. The full thread goal stays active even
+if this one finite pilot fails to generate changed institutions.
 
 ## V19 both objective feedback loops complete; useful invention remains unshown
 

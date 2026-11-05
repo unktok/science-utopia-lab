@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V20 prospective repair of contradictory candidate invention instructions and actual exploration](protocols/campaigns/native-design-exploration-v20-a1.md)
+- [V20 forward-only instruction diagnosis and execution log](logbook/2026-11-05-native-design-exploration-v20.md)
 - [V19 completed finite goal: both two-generation native feedback loops, without useful invention](milestones/2026-11-04-concrete-native-feedback-v19.md)
 - [V19 actual four-world loss paths, unchanged systems and physical costs](results/native-concrete-closed-loop-v19-a1.md)
 - [V19 exact source/raw/tool/feedback audit](results/native-concrete-closed-loop-v19-a1.json)

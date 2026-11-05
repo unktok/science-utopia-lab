@@ -659,7 +659,8 @@ def build_conversation(prompt, system_prompt, *, mode='author'):
         + str(control['remaining_calls_including_this_one']) + ' budgeted calls INCLUDING this one.\n'
         + (control.get('inspection_notice') or '') + '\n' + control['finish_notice']
         + '\nChoose your next tool action under the trusted SYSTEM protocol. '
-        'Explicit retention is legal; do not invent a candidate or a measured outcome.')
+        'Explicit retention is legal. You may invent new candidate code and institutions; '
+        'do not fabricate measured outcomes or claim an unexecuted candidate was evaluated.')
     messages = [{'role': 'system', 'content':
         'TRUSTED INSTITUTION-AUTHORING PROTOCOL\n' + INSTRUCTIONS
         + '\n\nTRUSTED EXECUTION ABI AND DISTRIBUTION CONTRACT\n' + ABI_CONTRACT
