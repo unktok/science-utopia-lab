@@ -220,6 +220,40 @@ def _operation_index(operations, path, identity):
     return None
 
 
+def _collection_failure(document, operations, *, stage):
+    """Explain a previously rejected typed conversion; never add a new veto.
+
+    Called only after the existing compiler fails. It reports existing model
+    container contracts without repairing a value or executing any source.
+    """
+    def issue(value, path, expected):
+        return AuthoringIRDiagnostic('system collection has the wrong JSON shape',
+            operation_index=_operation_index(operations, path, None), path=path, stage=stage,
+            expected_type=expected, actual_type=json_type(value),
+            **_owner(document, pointer(path)))
+
+    def objects(value, path):
+        if not isinstance(value, list):
+            return issue(value, path, 'array of objects')
+        for index, item in enumerate(value):
+            if not isinstance(item, dict):
+                return issue(item, path + '/' + str(index), 'object')
+        return None
+
+    for key in ('agent_types', 'artifact_types', 'mechanisms', 'connections', 'schedules'):
+        if key in document:
+            failure = objects(document[key], '/' + key)
+            if failure is not None:
+                return failure
+    for index, node in enumerate(document.get('mechanisms', [])):
+        for direction in ('inputs', 'outputs'):
+            if direction in node:
+                failure = objects(node[direction], '/mechanisms/' + str(index) + '/' + direction)
+                if failure is not None:
+                    return failure
+    return None
+
+
 def _literal_fields(document, operations, *, stage, image_id):
     """Check known code/schema ABI field types without changing any value."""
     from utopia.system.code_mechanisms import validate_code_artifact
@@ -455,11 +489,16 @@ class StableIDAuthoringProtocol:
                     coordinate_id=coordinate['id'], expected_type='finite ordered bounds/mean and positive finite sigma')
         parent = SystemSpec.from_dict(request['parent_system'])
         base_document, base_operations, base_trace = translate_operations(parent.to_dict(), output['operations'], stage='base')
-        _literal_fields(base_document, base_operations, stage='base', image_id=provider_binding['image_id'])
         try:
+            _literal_fields(base_document, base_operations, stage='base', image_id=provider_binding['image_id'])
             base = _apply_or_identity(parent, make_patch(parent, base_operations, rationale=output['rationale'])
                 if base_operations else None)
+        except AuthoringIRDiagnostic:
+            raise  # Preserve more specific source/ABI/literal diagnostics.
         except Exception as error:
+            failure = _collection_failure(base_document, base_operations, stage='base-final-transaction')
+            if failure is not None:
+                raise failure from error
             raise AuthoringIRDiagnostic(str(error), stage='base-final-transaction') from error
         translated = clone(output)
         translated['operations'] = base_operations

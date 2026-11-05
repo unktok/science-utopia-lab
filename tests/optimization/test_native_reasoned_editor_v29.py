@@ -86,3 +86,72 @@ def test_unmatched_failure_fields_never_disappear_or_gain_a_fabricated_reference
     original = deepcopy(feedback)
     assert reference_duplicate_failures(feedback, history) == original
     assert feedback == original
+
+
+def test_session_order_keeps_all_values_types_unknown_fields_and_current_state():
+    from copy import deepcopy
+    from utopia.optimization.native_staged_author_v15 import editor_session_json
+    context = {'000_current_turn': {'remaining': 4}, 'binding_sha256': 'SCRIPTED binding',
+        'own_history': {'loss': None}, 'literal_editor_workbench': {'source': 'a\n"b"\\c'},
+        'future_observed_field': {'items': [False, 9007199254740993, -2.75]}, 'previous_steps': []}
+    original = deepcopy(context)
+    encoded = editor_session_json(context)
+    assert json.loads(encoded) == context == original
+    assert editor_session_json(dict(reversed(list(context.items())))) == encoded
+    changed = deepcopy(context); changed['literal_editor_workbench']['source'] = 'CURRENT changed source\n'
+    assert json.loads(editor_session_json(changed)) == changed
+    assert json.loads(encoded)['literal_editor_workbench']['source'] != changed['literal_editor_workbench']['source']
+
+
+def test_unchanged_evidence_prefix_precedes_changing_budget_without_a_stale_cached_response():
+    import os
+    from copy import deepcopy
+    from utopia.optimization.native_staged_author_v15 import editor_session_json
+    first = {'000_current_turn': {'remaining': 4}, 'binding_sha256': 'SCRIPTED',
+        'own_history': {'complete_prior_failures': ['x' * 4000]},
+        'literal_editor_workbench': {'source': 'SCRIPTED current source\n'}, 'previous_steps': []}
+    second = deepcopy(first)
+    second['000_current_turn']['remaining'] = 3
+    second['previous_steps'] = [{'status': 'rejected', 'loss': None}]
+    old = [json.dumps(v, sort_keys=True) for v in (first, second)]
+    new = [editor_session_json(v) for v in (first, second)]
+    assert len(os.path.commonprefix(new)) > 4000 > len(os.path.commonprefix(old))
+    assert json.loads(new[1])['previous_steps'] == second['previous_steps']
+    assert new[0] != new[1]  # no response memoization or stale budget
+
+
+def test_current_native_budget_notice_remains_at_end_after_full_observed_data():
+    from tests.optimization.test_native_authoring_ir import request
+    from tests.optimization.test_native_planning_author_v22 import prompt
+    from utopia.optimization.native_staged_author_v15 import SYSTEM_PROMPT, build_conversation, native_call_task
+    messages = build_conversation(prompt(request()), SYSTEM_PROMPT, native_tools=True)
+    content = messages[1]['content']
+    assert content.startswith('CURRENT TURN\n\nEXACT SESSION DATA\n')
+    assert content.index('EXACT SESSION DATA') < content.index('Continue the current institution-authoring session')
+    assert 'budgeted calls INCLUDING this one' in content
+    assert messages[-1]['content'].endswith(native_call_task(SYSTEM_PROMPT))
+
+
+@pytest.mark.parametrize('value,expected,path', [
+    ({'reviewed': 'not a port list'}, 'array of objects', '/mechanisms/6/outputs'),
+    (['not a port object'], 'object', '/mechanisms/6/outputs/0'),
+    (None, 'array of objects', '/mechanisms/6/outputs')])
+def test_invalid_port_edit_stays_literal_but_static_error_identifies_exact_owner_and_shape(value, expected, path):
+    from tests.optimization.test_native_authoring_ir import IMAGE, request
+    from tests.optimization.test_native_staged_author_v15 import apply
+    from utopia.optimization.native_staged_author_v15 import initial_draft
+    from utopia.system.native_open_examples import open_native_system
+    req = request(); req['parent_system'] = open_native_system(IMAGE).to_dict()
+    state = initial_draft(req)
+    action = {'tool': 'edit_fields', 'mechanism_id': 'world.review',
+        'field_updates': [{'field_name': 'outputs', 'value': value}]}
+    changed, receipt = apply(state, action, req)
+    assert receipt['ok']  # Invalid intermediate graphs remain legal.
+    assert changed['document']['mechanisms'][6]['outputs'] == value
+    validation = receipt['result']['validation']
+    assert not validation['valid']
+    diagnostic = validation['errors'][0]['diagnostics'][0]
+    assert diagnostic['path'] == path and diagnostic['expected_type'] == expected
+    assert diagnostic['actual_owner_id'] == 'world.review' and diagnostic['operation_index'] == 0
+    _, finish = apply(changed, {'tool': 'finish', 'rationale': 'SCRIPTED invalid graph'}, req)
+    assert not finish['ok'] and finish['definition'] is None

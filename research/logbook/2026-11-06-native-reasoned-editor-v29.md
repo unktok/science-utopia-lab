@@ -79,3 +79,48 @@ running. No V29 actual call occurs while frozen V28 writer13893/PID64867 is
 live. V28 throughput G1 explicitly retains the parent and executes a native
 world; G0 failed authoring. Different measured institutions and own-measured-
 result-informed re-evaluation remain unshown. Keep the full goal active.
+
+## Separate a2 before any V29 actual call
+
+Preserve software-only01535cb a1 tree/tag and its running broad suite94255.
+Source-specific a1 focused checks pass351 in64.80s. No V29 actual call has
+occurred. Prepare a2 while the frozen V28 four-slot writer continues unchanged.
+
+Native editor user messages currently begin with changing call/budget narration
+and000_current_turn before static request/world evidence. Move immutable own
+request evidence first, current workbench next and dynamic indexes/controls
+last; put full current narration in the final task reminder. No field, value,
+unknown evidence or role changes. Nested values remain canonically serialized
+and cold reconstruction deterministic. Actual V28 G0 steps4/5 have26488 common
+serialized prefix bytes; the prospective wire has83939. This is zero-inference
+message-byte evidence, not measured token cache hits or speedup. Source/world
+freshness and current budget remain explicit; no response is memoized.
+
+The a2 prefix-targeted scope passes124 checks in7.70s. Current V28 efficiency
+G0 then exposes repeated generic string-index parser errors for an object in
+world.review outputs. Add diagnostic-only shape explanation after existing
+base compilation rejects; preserve specific earlier source/ABI diagnostics.
+It never vetoes a previously accepted system or repairs an invalid graph.
+
+The first shape-regression scope records134 passes/three fixture failures:
+the synthetic code node has two outputs keys and correctly rejects ambiguous
+field-name addressing before graph validation. Replace that fixture with the
+actual original19-node parent's world.review. The corrected scope passes137
+in12.65s. Preserve the first failure instead of relabeling it successful.
+
+Zero-inference application of the archived actual V28 efficiency G0 step2
+still accepts its exact literal edit but rejects static compilation, with
+operation0/path /mechanisms/6/outputs, world.review/native.phase.review.v1,
+expected array of objects/actual object. No old receipt is rewritten, no source
+is executed and no new model/native call occurs. Add recurrence instructions
+to AGENTS.md: copied controls do not prove free-frame capacity, and actual
+failed-history/shape regressions are required before calling an interface fixed.
+
+The full a2 focused scope passes399 SCRIPTED checks in69.56s, including all
+authoring-IR regressions and original-world native/feedback/replay checks.
+JUnit outputs/native-reasoned-editor-v29-verification/focused-a2-development.xml,
+SHA9f1b4e4abaec6c3c8892007b758546a16ee1c3dbf7fd73f253a697d030b377fd.
+Do not pool it with earlier scopes. Freeze fresh a2 before any actual V29 call;
+software-only01535 a1 broad suite94255 remains live and V28 writer13893/PID64867
+continues its last declared generation. Three V28 author slots are consumed,
+with only one unchanged native observation so far. No V29 inference occurs.

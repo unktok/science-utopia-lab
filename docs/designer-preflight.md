@@ -140,6 +140,15 @@ body. No loss, receipt, trial or missing value is discarded, and no raw request
 is rewritten. This reduces one observed overflow input but does not guarantee
 free-editor capacity; directed controls and free design remain separate evidence.
 
+V29 a2 additionally orders free-editor request evidence before changing turn
+data, while retaining the full current budget/task reminder at the end. All
+values, unknown fields and current draft source remain present; no response is
+cached or redispatched. It also explains already-rejected graph-container
+conversion errors with exact owner/path/expected type, without adding a veto
+to successful compilation. Preserve the software-only a1 freeze and run fresh
+actual24-control readiness at a2; neither a larger serialized common prefix
+nor a better error message is scientific optimization evidence.
+
 Pass `--designer-preflight <certificate.json>` to:
 
 - `scripts/run_native_staged_search_v15.py`

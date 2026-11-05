@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## V29 a2 preparation: unchanged observations and precise graph errors
+
+The live frozen V28 a2 writer has consumed three attempt slots with one
+unchanged native observation; efficiency G1 is authoring. No changed valid
+institution has been measured. Same invalid port edits and generic parser
+errors are real observed barriers, not evidence of scientific improvement.
+
+Separate V29 a2 retains a1 reasoning/failure references, places stable evidence
+before changing turn data, and explains existing graph-shape rejection by
+owner/path/types. No observation value, legal action or successful-compile
+decision changes. Its current focused scope passes399 in69.56s. A clean a2
+freeze and fresh actual24 controls after V28 termination are still pending.
+The software-only01535 a1 broad suite remains live; no V29 actual call has
+occurred. Keep the original full goal active, not replaced by interface checks.
+
 ## Exact V28 broad checks pass; fixed V29 broad verification runs
 
 The exact38d V28 a2 broad suite exits0:2750 passes/six skips in1403.28s.

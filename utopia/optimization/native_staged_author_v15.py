@@ -878,6 +878,24 @@ def build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fal
     return messages
 
 
+def editor_session_json(context):
+    """Canonical values, stable request evidence first, changing turn data last.
+
+    This only orders top-level observation keys. It neither caches a response
+    nor changes/drops values; the backend may reuse an identical prompt prefix.
+    """
+    prefix = ('binding_sha256', 'image_id', 'loss_arithmetic', 'generation', 'stage',
+        'own_history', 'own_trial_feedback', 'native_effect_abi_index', 'planning_system_structure',
+        'literal_editor_workbench')
+    tail = ('draft_index', 'optimization_task_view', 'model_authored_design_plan',
+        'observed_read_memory', 'previous_steps', 'remaining_calls_including_this_one',
+        '000_current_turn', 'zzz_next_action')
+    ordered = ([key for key in prefix if key in context]
+        + sorted(set(context) - set(prefix) - set(tail)) + [key for key in tail if key in context])
+    return '{' + ', '.join(json.dumps(key) + ': ' + json.dumps(context[key],
+        ensure_ascii=False, sort_keys=True, allow_nan=False) for key in ordered) + '}'
+
+
 def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=False):
     """Pure message reconstruction for the opt-in staged local transport.
 
@@ -975,21 +993,21 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         # Calibration is an explicit alternate technical task, not a scientific
         # objective silently competing with a later "minimize loss" directive.
         + '\n\nTRUSTED CALL TASK\n' + system_prompt},
-        {'role': 'user', 'content': 'CURRENT TURN\n' + narration + '\n\nEXACT SESSION DATA\n'
-            + json.dumps(context, ensure_ascii=False, sort_keys=True, allow_nan=False)}]
+        {'role': 'user', 'content': ('CURRENT TURN\n\nEXACT SESSION DATA\n' + editor_session_json(context)
+            if native_tools else 'CURRENT TURN\n' + narration + '\n\nEXACT SESSION DATA\n'
+                + json.dumps(context, ensure_ascii=False, sort_keys=True, allow_nan=False))}]
     if native_tools:
         from .native_designer_tools_v25 import message_from_action
         if last_action is not None:
             messages.extend([message_from_action(last_action), {'role': 'tool', 'tool_name': last_action['tool'],
                 'content': json.dumps({'tool_receipt': last_receipt, 'call_errors': last_errors},
                     ensure_ascii=False, sort_keys=True, allow_nan=False)},
-                {'role': 'user', 'content': 'The previous native tool call has already returned.\n'
-                    + narration}])
+                {'role': 'user', 'content': 'The previous native tool call has already returned.'}])
         elif last_receipt is not None or last_errors:
             messages[-1]['content'] += '\nObserved previous call errors:\n' + json.dumps(
                 {'tool_receipt': last_receipt, 'call_errors': last_errors},
                 ensure_ascii=False, sort_keys=True, allow_nan=False)
-        messages[-1]['content'] += '\n\nCURRENT PYTHON-OWNED CALL TASK\n' + system_prompt
+        messages[-1]['content'] += '\n\nCURRENT TURN\n' + narration + '\n\nCURRENT PYTHON-OWNED CALL TASK\n' + system_prompt
         return messages
     if last_action is not None:
         messages.append({'role': 'assistant', 'content': json.dumps(last_action,

@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V29 a2 stable evidence prefix and unchanged original-world pilot](protocols/campaigns/native-reasoned-editor-v29-a2.md)
+
 - [V29 prospective reasoning for code/graph implementation](protocols/campaigns/native-reasoned-editor-v29-a1.md)
 - [V29 separate implementation and actual failure boundary](logbook/2026-11-06-native-reasoned-editor-v29.md)
 
