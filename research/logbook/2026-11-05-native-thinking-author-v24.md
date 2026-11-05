@@ -284,3 +284,35 @@ The actual-a2 source's broad software scope closes2640 passes/six skips in
 This does not override its failed real string-fidelity control. Preserve both
 the failed a1 and a2 actual evidence/costs. A3 needs its own clean freeze and
 fresh14-control actual readiness; no older certificate authorizes production.
+
+## A3 exact-role readiness passes and native production starts
+
+Freeze a3 at `01b816ba016ede03c1fa93dbb4917412fce4d3a5`, in the separate
+`experiment-native-thinking-exploration-v24-a3` tree and protocol tag. Start
+the source-specific broad software suite with JUnit
+`outputs/native-planning-author-v22-verification/full-01b816b.xml`; it is still
+running at this entry, so no final count/pass is inferred.
+
+All14 fresh actual controls and cold replay pass (CLI exit0), with certificate
+`d94db30a0878aad7bc8d3311e7b832f868be0d9e731717b0a985096f6cbcb055`
+and runtime binding
+`f4414acef2dd0e37a033469b65c7fbf2ee179148ef0aa8be9ea089dc35cdf204`.
+All13 literal editor controls have no nonempty reasoning field; the single
+thinking planner control does. Both role compatibility flags pass. Preserve
+14 charged POSTs/known replies,392.4747979159001 summed adapter seconds,
+155799 input and790 reported total output tokens. No thinking/final token split
+is inferred. Failed a1/a2 costs and outputs remain separate and unchanged.
+
+The authorized four-slot writer starts `2026-11-05T13:52:03.304606+00:00`
+at the same frozen a3 source, under
+`outputs/native-thinking-exploration-v24-a3`. Production session16635 is
+observed live. No production certificate is borrowed from an earlier revision.
+
+The first throughput generation completes its eight author calls with a
+correctly signed plan, one invalid guessed source path, one rejected extra
+plan field, an exact input-binding read, and one accepted **identical** binding
+replacement. Other successful actions are plans and finish. The finish claims
+implementation, but the literal document has not changed: this is not invention
+or completion of the full goal. Preserve that discrepancy rather than accept
+model narration as execution evidence. Native evaluation/own-result feedback
+and the remaining scheduled slots are still pending at this observation.

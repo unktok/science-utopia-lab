@@ -2,6 +2,21 @@
 
 Updated: 2026-11-05
 
+## V24 a3 actual role checks pass; four-slot native exploration is running
+
+At frozen `01b816b`, all14 fresh actual controls and cold replay pass. The
+planner has separate reasoning evidence; all13 literal editor controls have
+none, matching their requested profiles. Preserve14 POSTs/392.47 adapter
+seconds and155799/790 reported input/total output tokens. The native writer
+starts `2026-11-05T13:52:03.304606+00:00` at that exact source. Its source-specific
+broad software suite is separately still running.
+
+First-generation authoring produces a plan but only an identical binding
+replacement, not a changed executable institution. The model's finish narration
+is not accepted as implementation evidence. Native measurements, own-result
+feedback and the remaining scheduled slots are pending; the full goal remains
+unmet and active. See the [forward-only log](logbook/2026-11-05-native-thinking-author-v24.md).
+
 ## V24 a3 role separated workflow prepared after a2 string fidelity failure
 
 A2 passes six actual controls then fails the seventh: decoded real line feeds
