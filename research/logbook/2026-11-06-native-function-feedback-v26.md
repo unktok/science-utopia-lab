@@ -94,3 +94,25 @@ array index is a different error. No target, raw action or result is changed.
 The next V26 actual calibration still waits for the last V25 scientific world
 to finish. A completed plan or an explicit unchanged finish does not establish
 that the plan's proposed code was implemented, irrespective of these labels.
+
+## V25 termination and fresh V26 actual readiness
+
+Session63205 exits0. The original writer-ended receipt records
+2026-11-05T15:31:49.136936Z to16:27:25.864125Z,55m36.73s, at frozen1d.
+Its PID25317 is no longer present. All four slots complete with throughput
+[-1,-1] and efficiency[8,8]. All four saved generated definitions have a null
+base patch and empty factors/continuous coordinates. Do not mark the full
+goal complete.
+
+Start fresh actual V26 readiness only after that verified exit, using clean
+frozen6d, the same original19-node/27-wire G0 request and fixed provider binding.
+Session90943 writes outputs/native-function-feedback-v26-a1-preflight. Its first
+typed control passes in29.60s; all14 and cold replay are still required.
+No V26 native campaign has started. The exact6d broad suite34297 remains live.
+
+Run the original unmodified V25 audit command once: session51960 exits1 with
+the exact missing-protocol-allowlist ValueError. Preserve that failure; it does
+not invalidate or rewrite the original actions. Start two explicit adapted
+raw audits in sessions56209 and9843 with fresh separate output paths. Both
+use the original1d runtime/auditor plus the declared checked protocol-path
+extension. They are pending; do not claim matching outputs until verified.

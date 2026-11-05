@@ -2,6 +2,24 @@
 
 Updated: 2026-11-06 JST
 
+## V25 ends unchanged and V26 actual readiness starts
+
+The frozen V25 a3 writer exits0 at2026-11-05T16:27:25.864125Z, consuming
+all four scheduled native slots. Throughput losses are[-1,-1] and efficiency
+losses[8,8]. The full goal remains unmet; explicit finishes without a literal
+intervention are not institutional invention.
+
+At frozen `6d27c2a`, fresh V26 actual readiness is now running after V25's
+verified termination. The first typed control passes. All14 controls, exact
+role-mode evidence and cold replay are required before native production.
+Its exact-source broad software suite remains running; no broad pass is
+claimed. Raw evidence is under outputs/native-function-feedback-v26-a1-preflight.
+
+The original V25 auditor exits1 on its omitted protocol allowlist entry.
+Preserve that failure. Two explicit adapted raw audits are running against
+the clean original runtime/source; their results are pending. They do not
+rewrite the frozen code, model actions or incorrectly classified receipts.
+
 ## Function response and own feedback repair is in progress
 
 The live frozen V25 a3 writer finishes both throughput evaluations at loss -1
