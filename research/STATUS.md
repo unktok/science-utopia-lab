@@ -2,6 +2,24 @@
 
 Updated: 2026-11-06 JST
 
+## V33 frozen and exact-source checks pass; fresh actual readiness is live
+
+Freeze2a523181e781dcca570ad5b719b2805396d4c3ca in the separate clean
+experiment-native-submission-context-v33-a1 tree and matching protocol tag.
+Exact source proof17162 verifies254 blobs and also confirms the previously
+passed V32 certificate is rejected at the changed scientist runtime. That
+negative check leaves the old certificate/status/cost untouched. Exact frozen
+focused43795 passes376 in31.42s, JUnit
+3eef0a1731c7a664db3b40ba7993fa2bd7a61ef008981582d892c6c50e4b16d3.
+Broad exact-source suite11133 runs separately; no full pass is yet claimed.
+
+After V32 readiness26575's verified exit0, start one fresh max24-control actual
+readiness53349 with the same declared V30 request232574 and fixed provider.
+All24/cold replay and post-readiness loaded40960 evidence still precede native
+production. V32 remains at zero native worlds under its production hold; no
+old certificate is reused/refunded. V33 has no native observation yet. Continue
+the unchanged original functional-candidate/own-result/re-evaluation goal.
+
 ## Actual clock leakage found; V32 native production held, V33 fix verified
 
 Read-only actual-wire comparison finds94/97 scientist payloads equal across

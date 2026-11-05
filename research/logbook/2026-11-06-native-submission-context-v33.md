@@ -93,3 +93,24 @@ e00d7f1d3edf2216753e913eb662758aada84c2dc418fe93f14b5f36f59e923a,
 verified without rewriting any raw file. Confirm that outputs/native-contract-layout-v32-a2
 does not exist; only its preflight evidence exists. No V32 native budget is
 consumed, and no V33 model call has occurred before fresh source verification.
+
+Commit/freeze2a523181e781dcca570ad5b719b2805396d4c3ca in the separate clean
+experiment-native-submission-context-v33-a1 tree/tag and fast-forward main.
+Read-only exact source proof17162 exits0 with254 blobs. Its separate negative
+check correctly refuses the actual V32 certificate under the changed runtime:
+'designer preflight protocol/runtime/backend binding changed'. This does not
+rewrite that old passed certificate or constitute an actual failed model call.
+
+Exact frozen focused43795 exits0:376 passes in31.42s, JUnit
+outputs/native-submission-context-v33-verification/focused-2a52318.xml,
+SHA3eef0a1731c7a664db3b40ba7993fa2bd7a61ef008981582d892c6c50e4b16d3.
+Broad exact-source suite11133 runs separately, full-2a52318.xml; no full pass
+is claimed. The frozen tree remains unchanged, including its source/test/docs.
+
+Only after V32 readiness26575's verified exit0, start one new max24 actual
+readiness53349 at2a52318 with the same predeclared V30 request232574/provider,
+outputs/native-submission-context-v33-a1-preflight. V32's24 compatibility calls
+and zero native worlds remain preserved, not refunded or turned into trials.
+All24/cold replay/separate role evidence and the post-readiness loaded40960
+check still precede V33 native production. No V33 native world is claimed;
+the original full goal remains active and unmet.
