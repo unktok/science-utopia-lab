@@ -6,6 +6,7 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V22 a3 conditional editor task reminder; no inference during a2](protocols/campaigns/native-planned-exploration-v22-a3.md)
 - [V22 a2 prospective source-owned task reminders after the failed literal control](protocols/campaigns/native-planned-exploration-v22-a2.md)
 - [V22 prospective model-authored planning followed by literal implementation](protocols/campaigns/native-planned-exploration-v22-a1.md)
 - [V22 source-free planning implementation and verification log](logbook/2026-11-05-native-planning-author-v22.md)

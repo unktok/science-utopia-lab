@@ -2,7 +2,7 @@
 
 Updated: 2026-11-05
 
-## V22 planner and editor workflow prepared after failed a1 readiness
+## V22 a2 actual exploration running; a3 editor task reminder conditional
 
 V21's four actual systems remain unchanged, so the full exploration goal stays
 active. The [new workflow](protocols/campaigns/native-planned-exploration-v22-a1.md)
@@ -23,6 +23,21 @@ are unchanged. The address fixture now verifies the six named controls without
 dropping any address checks. The final combined scope passes206 SCRIPTED tests;
 fresh14-control actual readiness is still required before any a2 production.
 See the [forward-only execution log](logbook/2026-11-05-native-planning-author-v22.md).
+
+Subsequently freeze a2 at`5096c0e`: all14 actual controls and cold replay pass,
+with364.40s summed adapter time. The conditional four-slot writer starts
+`2026-11-05T11:26:57.495948+00:00`. Its first plan proposes review filtering but
+contradicts its own loss arithmetic. Early editor actions alternate plan text
+and unchanged code reads; no executed new rule is yet established. Preserve
+the live trial and inspect the final outcome rather than infer success/failure
+from a plan alone. The broad a2 software scope is still running at this entry.
+
+A separate [a3 revision](protocols/campaigns/native-planned-exploration-v22-a3.md)
+repeats the exact caller-owned editor task after observations, matching the
+planner/control placement, with no supplied policy or reduced legal tool space.
+The initial focused scope passes157 SCRIPTED checks. No a3 inference is sent
+during a2; close a2 evidence first and skip a3 if the full goal is already met.
+Otherwise require a new clean source freeze and fresh actual readiness.
 
 ## V21 closes with valid no-op edits and no institutional exploration
 

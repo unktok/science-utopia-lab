@@ -804,6 +804,10 @@ def build_conversation(prompt, system_prompt, *, mode='author'):
             + '\n\nCHOOSE YOUR NEXT ACTION\n' + narration})
     else:
         messages[-1]['content'] += '\n\nCHOOSE YOUR NEXT ACTION\n' + narration
+    # Repeat the same caller-owned task after observed data, just as planner
+    # and interface-control frames do. A stored plan/read receipt is data, not
+    # the next task. This does not supply a candidate or reject legal actions.
+    messages[-1]['content'] += '\n\nCURRENT PYTHON-OWNED CALL TASK\n' + system_prompt
     return messages
 
 

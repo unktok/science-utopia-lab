@@ -152,3 +152,39 @@ only its own successful certificate. Durable launch time is
 as a planner call. No changed institution, native outcome or full exploration
 completion is inferred from this launch. The broad software suite is still
 running at this entry.
+
+## Conditional editor-frame repair prepared during a2
+
+The first a2 planner proposes threshold-based filtering but contradicts its
+own`-A`arithmetic: it says increasing A lowers loss, then says reducing A lowers
+loss. Preserve that literal reasoning without repairing it or imposing a
+scientific merit veto. The author then alternates unchanged plan submissions
+and reads of the same selection source (steps0–6). These legal actions do not
+implement a changed rule. Do not infer its final outcome while it is live.
+
+Inspection shows a frame difference: planner/control messages end with the
+exact caller-owned task, but author/editor messages end with generic next-step
+narration; the specific implementation task appears only before long observed
+data in SYSTEM. Prepare [a3](../protocols/campaigns/native-planned-exploration-v22-a3.md)
+by repeating that SAME task after data for the editor too. No task is inferred
+from observations, no candidate is supplied, no legal tool is removed and no
+model reply is repaired. This is a plausible task-framing weakness, not proof
+of the sole cause or a guarantee of invention.
+
+The focused planner, staged author, contract, address and independent-audit
+scope passes157 SCRIPTED checks in57.67s. New checks cover initial, receipt and
+error branches, exact final task placement, and plan/retention legality. This
+scope does not demonstrate autonomous code generation. Driver/protocol labels
+are prepared as a separate a3 revision, never repointed from a2. No a3 model
+call is made; it is conditional on closed a2 evidence leaving the full goal
+unmet, a clean freeze and fresh14-control actual readiness.
+
+After separately updating the prospective a3 driver/protocol identity and
+audit allowlist, the planner/search/audit scope passes59 SCRIPTED checks in
+44.99s. It overlaps the earlier157 and is not added. An earlier command named
+a nonexistent publication-test path and collected zero tests; it is not a
+passing scope. Read-only inspection of a2's actual step7 wire shows the correct
+editor task in SYSTEM and the repeated-read notice in the final user message.
+The task is delivered, rather than silently replaced by a planner role. The
+remaining issue may still involve model/context interaction; no final causal
+claim or native outcome is inferred.

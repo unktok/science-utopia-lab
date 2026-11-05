@@ -70,6 +70,7 @@ def test_plan_is_literal_persistent_hypothesis_not_executable_change_or_finish()
     editor = build_conversation(json.dumps(data), call_task(1, 16))
     assert PLAN['design_intent'] in editor[1]['content']
     assert PLAN['design_intent'] not in editor[0]['content']
+    assert editor[-1]['content'].endswith('\n\nCURRENT PYTHON-OWNED CALL TASK\n' + SYSTEM_PROMPT)
     _, finished = apply(new, {'tool': 'finish', 'rationale': 'SCRIPTED explicit retention'})
     assert finished['ok'] and finished['definition']['base_patch'] is None
     assert finished['definition']['provenance']['staged_author']['untrusted_model_authored_plan'] == new['design_plan']
@@ -122,3 +123,17 @@ def test_instructed_planner_calibration_has_no_conflicting_optimization_task():
     assert 'Do not optimize' in messages[0]['content']
     assert 'Minimize the exact supplied' not in messages[0]['content']
     assert messages[-1]['content'].endswith(PLAN_CONTROL_SYSTEM_PROMPT)
+
+
+@pytest.mark.parametrize('receipt,errors', [(None, []), ({'ok': True}, []), (None, ['SCRIPTED error'])])
+def test_editor_tail_repeats_own_task_not_observed_plan_or_receipt(receipt, errors):
+    data = json.loads(prompt(request(), budget=1))
+    data['model_authored_design_plan'] = {'design_intent': 'UNTRUSTED_PLAN_TASK_MARKER'}
+    data['last_tool_response'] = receipt
+    data['last_call_errors'] = errors
+    messages = build_conversation(json.dumps(data), SYSTEM_PROMPT)
+    assert messages[-1]['content'].endswith('\n\nCURRENT PYTHON-OWNED CALL TASK\n' + SYSTEM_PROMPT)
+    assert 'UNTRUSTED_PLAN_TASK_MARKER' not in messages[0]['content']
+    # Literal plan revision and explicit retention remain legal host actions.
+    Draft202012Validator(ACTION_SCHEMA).validate(PLAN)
+    Draft202012Validator(ACTION_SCHEMA).validate({'tool': 'finish', 'rationale': 'SCRIPTED retention'})
