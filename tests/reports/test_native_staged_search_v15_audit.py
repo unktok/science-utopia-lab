@@ -25,7 +25,7 @@ def rehash(path, change, field='content_sha256'):
     save(path, value)
 
 
-def fixture(root, *, generation_fails=False, unknown=False, run_jobs=True):
+def fixture(root, *, generation_fails=False, unknown=False, run_jobs=True, malformed_first=False):
     plan = audit.build_plan(source_commit=REVISION, initial_system=legacy_world_system().to_dict(),
         provider_binding=BINDING, runtime_seed_binding={'python_hash_seed_environment': '42', 'python_hash_probe': 123})
     plan['classification'] = audit.FIXTURE
@@ -44,6 +44,8 @@ def fixture(root, *, generation_fails=False, unknown=False, run_jobs=True):
                 raise KeyboardInterrupt('SCRIPTED unknown response boundary')
             action = ({'tool': 'edit', 'operations': [{'op': 'replace', 'path': '/absent', 'value': 1}]}
                 if generation_fails else {'tool': 'finish', 'rationale': 'SCRIPTED explicit parent retention, not scientific invention'})
+            if malformed_first and self.calls % 2 == 1:
+                action = {'design_intent': 'SCRIPTED malformed plan without discriminator'}
             return action, [{'role': 'assistant', 'content': json.dumps(action)}]
     model = Model()
     def author(directory, request, provider):
@@ -63,6 +65,49 @@ def fixture(root, *, generation_fails=False, unknown=False, run_jobs=True):
     progress['content_sha256'] = audit.digest(progress)
     save(root / 'progress.json', progress)
     return queue, plan, model
+
+
+def test_compact_missing_tool_reply_is_counted_without_changing_raw_or_full_audit(tmp_path):
+    fixture(tmp_path, malformed_first=True)
+    full = audit.analyze(tmp_path, expected_source=REVISION)
+    before = deepcopy(full)
+    compact = audit.compact_summary(full)
+    assert full == before
+    assert audit.digest(compact)  # sorting must not mix None/string keys
+    for run in compact['runs'].values():
+        for generation in run['generations']:
+            assert generation['tool_counts'] == {'finish': 1}
+            assert generation['replies_without_string_tool'] == 1
+    assert compact['exact_full_audit_content_sha256'] == full['content_sha256']
+    assert compact['summary_projection']['projection_is_not_a_new_raw_or_scientific_audit']
+
+
+@pytest.mark.parametrize('bad', [None, {}, {'tool': None}, {'tool': 1}, {'tool': []}, {'tool': {}}])
+def test_compact_nonstring_or_missing_tool_never_becomes_a_json_key(tmp_path, bad):
+    fixture(tmp_path)
+    full = audit.analyze(tmp_path, expected_source=REVISION)
+    full['runs']['throughput']['designer']['proofs'][0]['completed_records'][0]['model_reply']['output'] = bad
+    # Isolate publication shape from raw audit validity; this synthetic change
+    # is never accepted as a new audit or a generated scientific institution.
+    compact = audit.compact_summary(full)
+    first = compact['runs']['throughput']['generations'][0]
+    assert first['tool_counts'] == {} and first['replies_without_string_tool'] == 1
+    json.dumps(compact, sort_keys=True, allow_nan=False)
+
+
+def test_saved_audit_projection_binds_full_hash_source_and_separate_publisher(tmp_path):
+    fixture(tmp_path / 'raw')
+    full = audit.analyze(tmp_path / 'raw', expected_source=REVISION)
+    path = tmp_path / 'full.json'; save(path, full)
+    projected = audit.compact_saved_audit(path, expected_source=REVISION)
+    assert projected['audit']['analysis_source_sha256'] == full['audit']['analysis_source_sha256']
+    assert projected['summary_projection']['source_sha256'] == audit.file_sha256(audit.Path(audit.__file__))
+    assert audit.read(path) == full
+    with pytest.raises(ValueError, match='source'):
+        audit.compact_saved_audit(path, expected_source='e' * 40)
+    full['status'] = 'invented-success'; save(path, full)
+    with pytest.raises(ValueError):
+        audit.compact_saved_audit(path, expected_source=REVISION)
 
 
 @pytest.mark.parametrize('failed,unknown', [(False, False), (True, False), (False, True)])

@@ -229,8 +229,10 @@ def compact_summary(report):
                 'generation': proof['request'].get('generation'),
                 'stage': proof['request'].get('stage', 'blackbox-generation'),
                 'definition_sha256': proof['definition_sha256'], 'status': proof['result']['status'],
-                'counts': proof['counts'], 'tool_counts': dict(Counter(action.get('tool')
-                    for action in actions if isinstance(action, dict))),
+                'counts': proof['counts'], 'tool_counts': dict(Counter(action['tool']
+                    for action in actions if isinstance(action, dict) and isinstance(action.get('tool'), str))),
+                'replies_without_string_tool': sum(not isinstance(action, dict)
+                    or not isinstance(action.get('tool'), str) for action in actions),
                 'distinct_action_count': len({digest(action) for action in actions}),
                 'step_receipts': proof['result']['steps'], 'final_draft_sha256': proof['result']['draft_sha256'],
                 'authoring_change': proof['authoring_change'],
@@ -252,9 +254,28 @@ def compact_summary(report):
     compact.update(schema='scienceutopia.native-staged-search-audit-summary.v15', runs=runs,
         exact_full_audit_content_sha256=report['content_sha256'],
         exact_full_audit_reproducible=True,
+        summary_projection={'schema': 'scienceutopia.staged-audit-projection.v25',
+            'source_sha256': file_sha256(Path(__file__)),
+            'input_full_audit_content_sha256': report['content_sha256'],
+            'projection_is_not_a_new_raw_or_scientific_audit': True},
         raw_prompt_transport_copy_policy='Exact original source/request/step files and hashes are indexed; large raw prompts/transports remain outside Git.')
     compact['content_sha256'] = digest(compact)
     return compact
+
+
+def compact_saved_audit(path, *, expected_source):
+    """Project an existing source-pinned audit without rerunning/replacing it.
+
+    Hash/source checks bind the supplied full report; they are not a fresh
+    independent audit of raw data. Keep that distinction explicit in output.
+    This allows a fixed publisher to summarize older frozen audits without
+    modifying the experiment/auditor that produced their authoritative proof.
+    """
+    report = read(path)
+    if report.get('schema') != SCHEMA or report.get('source_commit') != expected_source:
+        raise ValueError('saved full audit schema/source differs')
+    _hashed_record(report)
+    return compact_summary(report)
 
 
 def audit_authoring(directory, records, *, provider, designer, classification, pending=None):
@@ -522,17 +543,31 @@ def _analyze(root, *, expected_source, require_complete, inventory):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--run', type=Path, required=True)
+    inputs = parser.add_mutually_exclusive_group(required=True)
+    inputs.add_argument('--run', type=Path)
+    inputs.add_argument('--from-full-audit', type=Path,
+        help='project a saved full audit; no new raw audit, source replay or inference')
     parser.add_argument('--expected-source', required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--allow-incomplete', action='store_true')
     parser.add_argument('--compact', action='store_true', help='write compact publication index, not repeated raw prompt bodies')
     args = parser.parse_args()
-    if args.output.resolve().is_relative_to(args.run.resolve()):
+    if args.from_full_audit:
+        if args.allow_incomplete:
+            parser.error('--allow-incomplete applies to a raw audit, not a saved projection')
+        if args.output.resolve() == args.from_full_audit.resolve():
+            raise ValueError('projection cannot overwrite its full audit input')
+        result = compact_saved_audit(args.from_full_audit, expected_source=args.expected_source)
+        raw_root = Path(result['audit']['raw_root'])
+    else:
+        raw_root = args.run
+        result = None
+    if args.output.resolve().is_relative_to(raw_root.resolve()):
         raise ValueError('audit output must be outside immutable raw evidence')
-    result = analyze(args.run, expected_source=args.expected_source, require_complete=not args.allow_incomplete)
-    if args.compact:
-        result = compact_summary(result)
+    if result is None:
+        result = analyze(args.run, expected_source=args.expected_source, require_complete=not args.allow_incomplete)
+        if args.compact:
+            result = compact_summary(result)
     write_json_atomic(args.output, result, sort_keys=True, allow_nan=False)
     print(json.dumps({key: result[key] for key in ('status', 'physical_native_worlds',
         'physical_researcher_responses', 'content_sha256')}, sort_keys=True))

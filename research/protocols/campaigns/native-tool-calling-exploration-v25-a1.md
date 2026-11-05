@@ -88,3 +88,15 @@ frozen-source/raw audits and inspect code/runtime effects, loss joins and later
 feedback. Keep the full goal active if different measured institutions remain
 unshown. This is an engineering continuation, not a controlled performance
 comparison between interfaces or optimization methods.
+
+## Publisher correction before the first actual call
+
+Keep the initial5b preparation/tag as software-only evidence. Before any V25
+inference, correct the compact publisher's failure on missing/non-string tool
+discriminators discovered in V24's actual replies. Count those replies
+explicitly, without changing raw actions or dropping failures. A repaired
+saved-audit projection checks the original full-report hash/source and records
+the separate publisher identity; it is not a new independent raw audit.
+Update the two stale V24 raw-JSON test expectations while retaining legacy
+and role checks. Freeze a separate clean source2 for actual readiness; no
+designer/runtime/world/objective/control value changes or hidden retries result.

@@ -17,7 +17,8 @@ def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
     original = deepcopy(messages)
     actual = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.6,
         role='planner')
-    assert actual['think'] is True and actual['format'] == 'json' and actual['stream'] is False
+    assert actual['think'] is True and 'format' not in actual and actual['stream'] is False
+    assert actual['truncate'] is False and actual['shift'] is False
     assert actual['options'] == {'temperature': .6, 'num_predict': 8192, 'num_ctx': 32768,
         'top_p': .95, 'top_k': 20, 'min_p': 0.0, 'seed': actual['options']['seed']}
     assert messages == original
@@ -69,16 +70,19 @@ def test_exact_controls_without_observed_reasoning_do_not_prove_requested_mode(t
         require_certificate(directory / 'certificate.json', BINDING, protocol='staged-v15')
 
 
-def test_raw_final_json_instruction_is_source_owned_in_planner_editor_and_controls():
+def test_source_owned_response_contract_keeps_legacy_frames_and_current_hermes_distinct():
     from utopia.optimization.native_staged_author_v15 import (
-        FINAL_JSON_ONLY, PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT)
+        FINAL_JSON_ONLY, PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT, native_call_task)
+    from utopia.optimization.native_designer_tools_v25 import TOOL_RESPONSE_ONLY
     assert 'without Markdown fences' in FINAL_JSON_ONLY
     for task in (PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT):
         assert FINAL_JSON_ONLY in task
+        assert TOOL_RESPONSE_ONLY in native_call_task(task)
+        assert FINAL_JSON_ONLY not in native_call_task(task)
     from utopia.optimization.native_designer_preflight import _prompt
     _, task = _prompt(request(), initial_draft(request()), [], BINDING,
         {'tool': 'validate'}, 'staged-v15')
-    assert FINAL_JSON_ONLY in task
+    assert TOOL_RESPONSE_ONLY in task and FINAL_JSON_ONLY not in task
 
 
 def test_nested_control_with_extra_closing_brace_still_rejects_without_prefix_salvage():

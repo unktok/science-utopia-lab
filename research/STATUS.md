@@ -2,6 +2,22 @@
 
 Updated: 2026-11-05
 
+## V24 a3 closes unchanged and V25 source2 readiness is prepared
+
+All four V24 a3 native slots finish normally (writer exit0): throughput[-1,-1],
+efficiency[8,8], all exact original-parent systems. Two matching full original
+audits verify368 scientist replies and32 inherited-code executions. The old
+compact publisher fails on missing-tool replies; the separate repaired summary
+preserves both those replies and its original/full-audit identity. See the
+[closed result](results/native-thinking-exploration-v24-a3.md).
+
+The prepared5b broad scope exposes two stale raw-JSON assertions. The separate
+feature fixes the publisher and updates those expectations without weakening
+legacy/role checks;273 expanded prelaunch checks pass. No V25 model call has
+occurred. Preserve5b's freeze, then freeze source2 for fresh exact14-control
+actual readiness and the declared unchanged-world exploration. The full goal
+remains unmet and active.
+
 ## V25 lossless Hermes interface prepared while V24 completes
 
 The live V24 a3 writer completes both throughput slots at loss=-1 without a

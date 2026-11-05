@@ -63,3 +63,41 @@ The latter's observation is
 original system fingerprint. Efficiency G1 is authoring at this entry. There
 is no new actual V25 inference while that writer remains live. The full goal
 remains unmet and active.
+
+## Closed V24 trial and summary publisher defect
+
+V24 a3 exits0 at `2026-11-05T14:40:25.781626+00:00`, with all four slots
+complete: throughput[-1,-1], efficiency[8,8], all exact parent retentions.
+Two original-source compact audit commands fail when their tool counter mixes
+None with string keys for missing-discriminator replies. Preserve both exit1
+traces; do not modify frozen01b or raw evidence. Two original-source **full**
+audits then pass and compare byte-identically, with full content SHA
+`bc0e56fe8b971a9de1ef1e51ec6d527dd700e88585ea3cbdc5e436d9017cd1aa`.
+
+Fix publication only: count string tool names and separately count replies
+without one, including missing/null/numeric/list/object values. Raw actions
+and full reports remain untouched. Add a saved-full-audit projection mode
+that checks its full-report hash/source, retains the original audit identity,
+records the separate publisher source hash and explicitly does NOT claim a
+new raw audit. It cannot overwrite its full input or write inside raw evidence.
+The reporting scope passes39 checks in27.29s. Two actual projections of the
+matching full reports compare identically; the tracked third copy also matches.
+See the [closed result](../results/native-thinking-exploration-v24-a3.md).
+
+The broad prepared5b scope exposes two older V24 assertions still expecting
+backend JSON mode/raw-JSON controls. Update their expected current Hermes
+contract while preserving legacy-frame assertions and all role/mode checks.
+The expanded prelaunch scope includes the V22/V23/V24 regressions omitted from
+the earlier focused subset;273 checks pass in33.10s, JUnit
+`outputs/native-tool-calling-v25-verification/focused-source2-prelaunch.xml`.
+No V25 actual model request has occurred. Preserve5b's source/tag and broad
+test outcome as prepared-source evidence; freeze a separate source2 before
+fresh actual readiness, not an in-run repair or a reused certificate.
+
+The prepared5b broad suite closes with exactly the two stale V24 assertions
+above:2684 passes/two failures/six skips in1091.90s (session53821 exit1).
+It is not reported as a full pass. Final expanded source2 prelaunch JUnit SHA:
+`3021dddc69cebc2478f8bb09e40ca69f3207db97a6f86bca626126c92b576dda`.
+Only the read-only publisher and stale test expectations differ after5b;
+designer/runtime/world code and the14 exact control values are unchanged.
+The old source/tag remains untouched and has zero actual model calls.

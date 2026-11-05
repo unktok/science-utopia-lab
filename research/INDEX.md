@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V24 a3 closed four-world result with unchanged systems and repaired summary provenance](results/native-thinking-exploration-v24-a3.md)
+- [V24 a3 compact projection of two matching original-source full audits](results/native-thinking-exploration-v24-a3.json)
+
 - [V24 a3 prospective reasoning planner and precise literal editor with unchanged controls](protocols/campaigns/native-thinking-exploration-v24-a3.md)
 - [V24 a2 prospective reasoning with generation-time JSON syntax constraints](protocols/campaigns/native-thinking-exploration-v24-a2.md)
 - [V23 closed unchanged feedback arm and explicitly unexecuted slots](results/native-numeric-objective-exploration-v23-a1.md)
