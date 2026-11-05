@@ -2,7 +2,7 @@
 
 Updated: 2026-11-05
 
-## V24 a1 readiness fails strict nested JSON and a2 is prepared
+## V24 a2 actual reasoning JSON readiness after the failed a1 control
 
 At frozen source2`200bf74`, actual readiness passes five controls then fails
 the sixth on one extra closing brace. All six replies have nonempty separate
@@ -14,9 +14,12 @@ The [a2 continuation](protocols/campaigns/native-thinking-exploration-v24-a2.md)
 requests generation-time JSON syntax constraints alongside unchanged reasoning,
 budgets, exact controls and scientific setting. Final parsing/schema remain
 strict; no prefix/brace salvage or candidate policy is added. Its focused
-scope passes224 tests; fresh14-control actual compatibility and observed-mode
-evidence must still pass after a new freeze. No a2 inference has occurred here.
-The full goal remains unmet and active.
+scope passes224 tests. At frozen`6480329`, fresh14-control actual compatibility
+is running; the first six controls pass, including the previously malformed
+nested case, and a separate reasoning field is observed. Remaining controls
+and cold replay must still pass before production; none is launched here.
+The full goal remains unmet and active. Exact a1 source2 software scope closes
+2639 passes/six skips in1273.00s without overriding its failed real control.
 
 ## Initial V24 reasoning readiness after the closed unchanged V23 arm
 

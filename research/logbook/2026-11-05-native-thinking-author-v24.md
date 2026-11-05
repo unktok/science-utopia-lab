@@ -221,3 +221,25 @@ fresh actual controls, separate reasoning evidence and cold replay after a new
 clean freeze. Preserve a1 failure; do not append successful controls to it,
 reuse its certificate or label this as a fallback inside the failed call.
 No a2 model call has occurred at this entry. The full goal remains active.
+
+Freeze a2 at`6480329c1ac0581baaefab8bb7c5986dcfadac01`in the separate
+`experiment-native-thinking-exploration-v24-a2`tree and its own protocol tag.
+Start full SCRIPTED verification with JUnit
+`outputs/native-planning-author-v22-verification/full-6480329.xml`. Start the
+new separately budgeted actual14-control readiness under
+`outputs/native-thinking-exploration-v24-a2-preflight`, with the same V23
+operator binding/original-parent request. No a1 result is rewritten or reused
+as authorization, and no a2 native production is launched at this entry.
+
+The original actual-a1 source2 broad scope closes2639 passes/six skips in
+1273.00s; JUnit SHA
+`d57a054ddcc1bd001bbe80a7177cc1fae7d02319eb6ba20e43e1cc35b34e926d`.
+It does not turn its failed real control into a pass. The earlier5bf preparation
+remains an explicitly cancelled software-only scope, not part of this count.
+
+The first six a2 actual controls pass, including the exact same nested-object
+case that failed in a1. The first a2 response also has a nonempty separate
+reasoning field with backend JSON mode requested. This supports compatibility
+for those controls, not all14, correctness of reasoning or institutional
+invention. Continue the remaining finite controls and cold replay; never launch
+production on this partial evidence alone.
