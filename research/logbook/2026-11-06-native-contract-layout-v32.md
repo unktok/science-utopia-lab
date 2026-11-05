@@ -105,3 +105,14 @@ consumer diagnosis and preserved model-input invariance for these edits.
 Add durable project instructions distinguishing parameter labels from actual
 consumers and HTTP200 from final completion. Do not turn either safeguard into
 a hidden scientific veto or a license to repair generated behavior.
+
+Commit the a2 implementation3fda040ca93d4b6abc871b34799948d8d23663c4 and
+fast-forward main. Keep development43 and active c62 trees untouched. Exact3fda
+read-only source proof60501 exits0 with254 blobs; combined source-specific
+focused/paired scope37862 exits0 with305 passes in32.43s, JUnit
+outputs/native-contract-layout-v32-verification/focused-3fda040.xml,
+SHA5a781332a7a15a6fb7af2e1979b8dccaad8e55b901bf802e599c57469658feda.
+The paired development9-test JUnit SHA is
+f50fe8dc571dee95a61487cd95fd39039b1c68525944a8f00aa259e78c725921.
+Broad source-specific a2 checks run separately in its unchanged3fda tree.
+No V32 actual inference/calibration has occurred; V31's original pilot continues.

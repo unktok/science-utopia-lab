@@ -2,6 +2,23 @@
 
 Updated: 2026-11-06 JST
 
+## Exact original-adapter consumer diagnosis is verified; V31 still measures
+
+V31 efficiency G0 explicitly finishes at05 with two valid parameter additions
+and enters actual native measurement. Code inspection and separate SCRIPTED
+original-world paired replay show its required_reviewers/pre_screening_enabled
+keys are not consumed by those adapters: all85 full scientist input requests
+including seeds match the original parent. This does not add a scientific
+sample or assert bitwise-deterministic actual backend outputs. Preserve its
+pending actual result; do not call these data fields a new implemented policy.
+
+The separate a2 implementation3fda040 adds non-veto consumer notices alongside
+the named-port ABI explanation. Arbitrary fields remain legal and both actual
+edits still compile and explicitly finish. Exact source proof verifies254
+blobs;305 focused/paired checks pass in32.43s. Fresh broad a2 checks run in the
+unchanged development tree. No V32 model call has occurred. Finish/audit the
+original frozen V31 pilot before conditional fresh readiness/continuation.
+
 ## V31 authoring continues; V32 only clarifies the diagnosed ABI layout
 
 The V31 a2 frozen writer16216 remains live. Both throughput generations fail
