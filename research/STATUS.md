@@ -2,6 +2,30 @@
 
 Updated: 2026-11-06 JST
 
+## V31 authoring continues; V32 only clarifies the diagnosed ABI layout
+
+The V31 a2 frozen writer16216 remains live. Both throughput generations fail
+explicit finish with null losses and zero native observations; G1 repeatedly
+writes one JSON Schema at the required named-port/schema map. Efficiency G0
+is authoring. Preserve all attempts; no original-goal completion is claimed.
+
+Separate implementation43fa788 adds source-owned staged editor ABI explanation
+and exact-path rejection context without accepting/repairing those invalid
+values. SCRIPTED289 focused checks pass in13.01s, including original-world
+operand replay, delegates, escaping and legal schema-keyword port names.
+Its broad software suite79607 is running; no V32 inference has occurred.
+V31 must close and be audited before any conditional fresh V32 calibration.
+
+Read-only upstream investigation finds the same HTTP200/done=false symptom in
+[Ollama issue17836](https://github.com/ollama/ollama/issues/17836) and a
+[proposed missing-final-event fix](https://github.com/ollama/ollama/pull/17846).
+Published v0.33.3 code still has a success return without requiring a final
+response. This makes a backend reporting defect plausible, not an established
+trigger for our exact partial reply. Its internal cause remains unknown; no
+backend/service modification or silent replacement is performed.
+
+See [V32 diagnosis and source boundaries](logbook/2026-11-06-native-contract-layout-v32.md).
+
 ## V31 a2 first author failure is preserved; native pilot continues
 
 Exact frozen c62 broad suite72220 finishes:2795 passes/six skips in1321.72s,
