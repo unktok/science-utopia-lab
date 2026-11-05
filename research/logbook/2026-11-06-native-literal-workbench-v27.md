@@ -174,3 +174,27 @@ They verify251 source/protocol blobs and146 unchanged raw files. Track the
 exact compact JSON plus interpreted result, without the external V25 reporting
 adapter. Preserve643130/6924 reported author tokens over31 records; the32nd
 reply's missing counts are not zero. The goal remains unmet and active.
+
+## All24 typed and role facts remain separate from free design success
+
+A2 session17524 exits0 after all14 declared actual controls and cold replay,
+using the archived G1 compatibility request. Preserve14 POSTs/361.00711187627167s,
+171602 input/647 reported output tokens, certificate
+25ce69bcae53cbf3d14357d91e0979563460946251628c4ec44aa36486ce1b44,
+runtime02766f6c554aac932ecbe3fffa9d49294c1d643222d1046e7f861e03b06a8889.
+Only the planner has separate reasoning, matching both role modes.
+
+Start the unchanged-scope a2 scientific writer in21876/PID54626, at
+2026-11-05T17:49:06.101396Z, frozen dfe. Its G0 request has generation0 and
+empty own history; no calibration history is injected. It sees literal node
+bodies but still uses ID-as-array-index paths and guesses parameter nesting.
+At18:04Z, the throughput arm consumes its two declared slots with zero native
+observations. G0 exhausts eight steps without explicit finish. These are
+generation failures, not evaluated baseline losses or completed optimization.
+
+The actual final G0 call is still an invalid inspect. Although turn data asks
+for finish, the caller-owned SYSTEM task remains implement-the-plan and the
+native tool advertisement includes every tool; its finish-only response schema
+was removed from the native wire. Prepare a separate field-addressed API and
+explicit final-call submission task, without changing or stopping this dfe
+run, auto-finishing, repairing targets or supplying scientific code.
