@@ -58,3 +58,19 @@ seed2089667989 and identical inference settings. Only input_event_ids removal
 makes them equal; the V30 counterfactual display also makes full payloads equal,
 hashaf89ddf913d9f2e5931bb5f49cbecfbbad2180888fd6a0ab4bf2e362b4cab19d.
 This performs zero model/container calls and is not an actual V30 outcome.
+
+Freeze c53491f4b96b67261a406b337c9082d540054072 in the separate clean
+experiment-native-provenance-view-v30-a1 tree and protocol/native-provenance-view-v30-a1
+tag. Main fast-forwards; all older frozen source trees/tags remain unchanged.
+Read-only exact-source proof61626 exits0 and verifies254 blobs. Exact-source
+targeted suite28882 exits0:187 passes in107.61s, JUnit
+1d9aee27a22613e49fbda4f50c6c8da625cd782eb13c3a096cf2271ef0b31778.
+Broad verification64877 runs separately at the exact source, not claimed passed.
+
+After that focused exit, fresh actual max24-control readiness starts in42401
+from the clean frozen tree, output outputs/native-provenance-view-v30-a1-preflight.
+Use the declared saved50cc actual failed-history request and fixed provider
+config; no prior certificate or candidate is substituted. All24 controls,
+required role evidence and cold replay remain required before native exploration.
+No new native world or changed functional institution is claimed at this entry.
+The original full goal remains active; do not close it on readiness alone.

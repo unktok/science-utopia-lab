@@ -2,6 +2,17 @@
 
 Updated: 2026-11-06 JST
 
+## V30 frozen; fresh actual backend readiness is running
+
+Freeze c53491f4b96b67261a406b337c9082d540054072 in the separate clean
+experiment-native-provenance-view-v30-a1 tree and matching protocol tag.
+Read-only source proof verifies254 blobs; exact-source targeted checks
+pass187 in107.61s. Earlier overlapping development scopes pass373 and103.
+After those verified exits, fresh actual24-control readiness starts in42401
+with the prospectively selected saved50cc failed-history request. No native
+V30 world has yet run. Exact-source broad software verification64877 is live.
+The original full goal remains active and unmet; readiness is not invention.
+
 ## V28 closes; V30 fixes a real pre-treatment model-input confound
 
 V28 a2 closes with two author failures, one unchanged world at loss-1 and one
