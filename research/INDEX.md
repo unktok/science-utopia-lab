@@ -9,6 +9,11 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V33 actual native submission-clock leakage and source-level shadowing fix](results/native-submission-clock-v33.json)
+- [V33 prospective unchanged-scale continuation after native input repair](protocols/campaigns/native-submission-context-v33-a1.md)
+- [V33 reproduction, varied-clock paired regression and preserved raw clocks](logbook/2026-11-06-native-submission-context-v33.md)
+- [V32 native-production hold, separate from its copy certificate](protocols/campaigns/native-contract-layout-v32-a2-native-stop-addendum.md)
+
 - [V31 a2 closed measured feedback, invalid schemas and unconsumed labels](results/native-context-encoding-v31-a2.md)
 - [V31 a2 two matching unmodified original-source audits](results/native-context-encoding-v31-a2.json)
 

@@ -71,10 +71,19 @@ the author's explanation do not install review counts, filtering or scoring.
 
 Separate SCRIPTED original-world/native-physics/pinned-Docker paired regression
 of G0's exact two-key edit preserves all85 complete scientist requests including
-seeds against the original parent, while retaining separate raw audit IDs.
+seeds against the original parent under an intentionally fixed shared host
+clock, while retaining separate raw audit IDs.
 This is zero-real-Qwen engineering evidence, not an additional candidate sample
 or proof of bitwise-deterministic actual model outputs. The local handler fact
 does not assert general equivalence for arbitrary future consumers.
+
+A later [read-only actual-wire diagnosis](native-submission-clock-v33.json)
+finds that this did not establish independent-clock invariance:94/97 actual
+payloads match the V30 original parent, with three year2 submission inputs
+differing only in accidentally interpolated host review clocks. All raw losses
+and original-source audits remain unchanged. Do not infer a policy effect from
+this execution-clock nuisance or claim the original renderer was bug-free.
+The separate V33 source fix and varied-clock tests preserve the raw timestamps.
 
 ## Distinct incomplete backend reply
 

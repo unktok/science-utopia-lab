@@ -82,9 +82,9 @@ def test_prospective_driver_freezes_all_loss_and_step_budgets_before_calls():
     assert plan['designer_decoding']['planner']['temperature'] == .6
     assert plan['designer_decoding']['editor']['think'] is True
     assert plan['designer_decoding']['editor']['temperature'] == .6
-    assert plan['classification'] == 'actual-local-qwen-native-contract-layout-development-v32'
-    assert plan['engineering_revision'] == 'v32-a2'
-    assert plan['protocol'] == 'research/protocols/campaigns/native-contract-layout-v32-a2.md'
+    assert plan['classification'] == 'actual-local-qwen-native-submission-context-development-v33'
+    assert plan['engineering_revision'] == 'v33-a1'
+    assert plan['protocol'] == 'research/protocols/campaigns/native-submission-context-v33-a1.md'
     assert (path.parents[1] / plan['protocol']).is_file()
     assert plan['designer_decoding']['planner']['sampling_options']['num_ctx'] == 40960
     assert plan['designer_decoding']['editor']['sampling_options']['num_ctx'] == 40960

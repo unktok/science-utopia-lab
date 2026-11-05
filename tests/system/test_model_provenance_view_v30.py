@@ -107,8 +107,9 @@ def test_work_snapshot_keeps_raw_audit_records_and_legacy_renderer_but_projects_
 
 
 @pytest.mark.parametrize('edit_kind', ['late-unused-version', 'v31-unused-adapter-parameters'])
+@pytest.mark.parametrize('clock_mode', ['shared', 'independent'])
 def test_original_19_node_world_inert_late_parameter_does_not_change_any_scientist_request(
-        tmp_path, fixed_corpus, monkeypatch, edit_kind):
+        tmp_path, fixed_corpus, monkeypatch, edit_kind, clock_mode):
     """SCRIPTED backend/corpus, real native phases and pinned Docker; not science evidence."""
     from dataclasses import replace
     from tests.runtime.test_portable_checkpoint_integration import BINDING, DIRECTION, FakeHTTPModel, SmallRealSimulation, seed
@@ -133,9 +134,10 @@ def test_original_19_node_world_inert_late_parameter_does_not_change_any_scienti
     assert len(parent.mechanisms) == len(inert.mechanisms) == 19
     assert len(parent.connections) == len(inert.connections) == 27
     assert parent.mechanisms[7].parameters['code_artifact'] == inert.mechanisms[7].parameters['code_artifact']
-    monkeypatch.setattr('time.time', lambda: 1234567890.)
     results = []
-    for label, spec in [('original', parent), ('inert', inert)]:
+    for run_index, (label, spec) in enumerate([('original', parent), ('inert', inert)]):
+        clock = 1234567890. + (run_index * 86400. if clock_mode == 'independent' else 0.)
+        monkeypatch.setattr('time.time', lambda value=clock: value)
         seed(); calls = []; root = tmp_path / label
         monkeypatch.setitem(BINDING, 'cell', spec.fingerprint)
         model = FakeHTTPModel(root, calls)
@@ -159,7 +161,20 @@ def test_original_19_node_world_inert_late_parameter_does_not_change_any_scienti
             model.response_cache.close()
     assert len(results[0]['calls']) == len(results[1]['calls']) == 85
     assert results[0]['calls'] == results[1]['calls']
-    assert results[0]['papers'] == results[1]['papers']
+    if clock_mode == 'shared':
+        assert results[0]['papers'] == results[1]['papers']
+    else:
+        # Raw host metadata MUST remain different, not be rewritten to pass.
+        assert results[0]['papers'] != results[1]['papers']
+        projected = []
+        for result in results:
+            papers = deepcopy(result['papers'])
+            for paper in papers:
+                for history in paper['review_history']:
+                    for review in history.get('reviews', []):
+                        review.pop('review_time', None)
+            projected.append(papers)
+        assert projected[0] == projected[1]
     # Audit identities stay cell-bound and are NOT rewritten to make this pass.
     assert results[0]['events'] != results[1]['events']
     assert results[0]['raw_contexts'] != results[1]['raw_contexts']

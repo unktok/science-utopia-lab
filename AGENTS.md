@@ -44,3 +44,8 @@
 - HTTP 200 alone is not completion evidence. Preserve incomplete provider
   envelopes and unknown costs, require the declared final-response signal, and
   distinguish a related upstream defect from a proven cause of the local event.
+- A paired test with time.time fixed does not establish independence from
+  execution clocks. Vary host clocks as well as graph/audit identities, compare
+  full scientist request payloads, and retain raw operational timestamps. Fix
+  unintended renderer/argument-shadowing paths instead of regex-scrubbing
+  arbitrary authored scientific timestamps or mutating old logs to match.

@@ -806,8 +806,9 @@ If you choose not to resubmit, respond with a json file that contains an empty l
             max_papers: Maximum number of candidate papers to show
             previous_papers: Optional list of preview strings for previously accepted papers
             max_submissions: papers to pick in this prompt (scale experiment factor S).
-                1 (default) is the legacy single-paper prompt/schema, byte-identical to the
-                pre-flag template. k>1 asks for up to k DISTINCT papers and returns
+                1 (default) uses the single-paper prompt/schema. Own archived history
+                is separate from caller-supplied citation previews; internal object
+                representations are not citation previews. k>1 asks for up to k DISTINCT papers and returns
                 {"submissions": [{id, arxiv_id, conference, reason}, ...]}.
             force_list: use the list prompt/schema even when max_submissions == 1 (retries
                 inside a k>1 batch must share the batch's response_format).
@@ -838,9 +839,9 @@ From the following candidate papers, please give me up to {max_submissions} DIST
 ## Previously Accepted Papers (for reference and citation)
 The following are previous papers you wrote, either accepted or rejected. You can use them to inspire your paper.
 """
-            previous_papers = paper_tracker.get_papers_by_author(self.id)
-            previous_papers.sort(key=lambda x: x.year, reverse=True)
-            for i, paper in enumerate(previous_papers[:10], 1):  # Show top 5
+            own_previous_papers = sorted(paper_tracker.get_papers_by_author(self.id),
+                                         key=lambda x: x.year, reverse=True)
+            for i, paper in enumerate(own_previous_papers[:10], 1):
                 latest_score = paper.review_history[-1]['score'] if paper.review_history else 0.0
                 prompt += f"{i}. \"{paper.title}\" - Year: {paper.year}, Conference: {paper.conference} ({paper.status} with score {latest_score:.2f})\n"
 

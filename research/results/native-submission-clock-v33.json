@@ -1,0 +1,78 @@
+{
+  "schema": "scienceutopia.native-submission-clock-diagnosis.v33",
+  "content_sha256": "e00d7f1d3edf2216753e913eb662758aada84c2dc418fe93f14b5f36f59e923a",
+  "classification": "read-only-actual-wire-diagnosis-not-new-scientific-samples",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "raw_files_rewritten": false,
+  "inputs": [
+    {
+      "role": "V30-efficiency-G1-original-parent",
+      "source_commit": "c53491f4b96b67261a406b337c9082d540054072",
+      "world": "native-adaptive-a3a7211109630d5b3f20d40b-s42",
+      "system_fingerprint": "88912a72e5d2f30eace4a595548bcce0ee828bb8e1c40301c438daf13abaa2f4",
+      "wire_sha256": "3f541232ad56c3026c4eede5ebcebe5aac9a0124c69bd686aba4dff1feed8b55",
+      "requests": 97,
+      "operational_review_clock_occurrences": 9
+    },
+    {
+      "role": "V31-efficiency-G0-unconsumed-parameters",
+      "source_commit": "c62a03fdd38012098a3867b71a3584aeeab660b0",
+      "world": "native-adaptive-831b517f8d6b696bf9a26142-s42",
+      "system_fingerprint": "c0deff3060e2d23a20020062729a21238ffcd7dea88164f0e0429e1a2db2134c",
+      "wire_sha256": "56545b90c1b8591f7a90d1fe98e0f5f0c087debbe97acde05cabede102c5a871",
+      "requests": 97,
+      "operational_review_clock_occurrences": 9
+    },
+    {
+      "role": "V31-efficiency-G1-unconsumed-parameters",
+      "source_commit": "c62a03fdd38012098a3867b71a3584aeeab660b0",
+      "world": "native-adaptive-547bc03ff259c1f21f80e07c-s42",
+      "system_fingerprint": "013ad4e4010bc29756ab6aad44187ca73100c650b6c68b01eb58e65e5b228bd2",
+      "wire_sha256": "90475bf01f6b4f412872df7c8bdcabfe0d4a8c89b23c7e01b0551d51467c996a",
+      "requests": 97,
+      "operational_review_clock_occurrences": 9
+    }
+  ],
+  "exact_full_payload_matches": {
+    "V30-parent_vs_V31-G0": 94,
+    "V30-parent_vs_V31-G1": 94,
+    "V31-G0_vs_V31-G1": 94
+  },
+  "baseline_comparison_different_zero_based_indices": [49, 50, 52],
+  "different_payload_field": "messages[1].content",
+  "different_simulated_year": 2,
+  "diagnostic_only_clock_substitution": {
+    "baseline_vs_G0_exact_payload_matches": 97,
+    "baseline_vs_G1_exact_payload_matches": 97,
+    "used_in_production": false,
+    "scope": "A read-only explanation of known host-stamped review_time fields in the archived private-object representation; not a license to scrub arbitrary scientific timestamps."
+  },
+  "root_cause": {
+    "file": "utopia/agents/base_agent.py",
+    "method": "SimulationAgent.get_paper_submission_prompt",
+    "argument": "previous_papers",
+    "failure": "Year2+ overwrites caller citation previews with private ArchivedPaper objects, sorts the tracker-owned list in place, then interpolates their full reprs in the separate citation-preview block.",
+    "clock_producers": ["utopia/agents/conference.py:Conference.add_review", "utopia/simulation.py:Simulation._run_phase_3_peer_review"],
+    "previous_paired_clock_control": "The old85-request SCRIPTED paired regression intentionally fixed time.time in both worlds; it did not test independent clocks."
+  },
+  "correction": {
+    "separate_sorted_local_own_history": true,
+    "preserve_caller_citation_previews": true,
+    "preserve_raw_review_histories_and_timestamps": true,
+    "no_production_regex_scrubbing": true,
+    "presentation_change": "The existing bounded own-paper summary remains. The unintended duplicate private-object citation repr is removed and actually supplied previews are restored; old affected prompt bytes are deliberately not retained."
+  },
+  "verification": {
+    "before_fix_unit_tests": {"failed": 6, "passed": 1},
+    "after_fix_submission_and_legacy_golden_tests": {"passed": 31, "seconds": 2.46},
+    "paired_suite": {"passed": 11, "seconds": 33.76, "junit_sha256": "55211f5ac5bd220ee78ce14ddde00041402dcb6a3f782b491372f54f78280682"},
+    "paired_scope": "SCRIPTED model/corpus, actual original19-node27-wire five-researcher two-year native phases and pinned Docker. Both inert edits, shared/independent clocks: all85 full scientist payloads including seeds agree per pair; independent raw review clocks and audit identities stay different. Zero real Qwen calls."
+  },
+  "limits": [
+    "This does not invent a functional institution or complete the original goal.",
+    "Do not compare old/new source losses as a causal institutional effect.",
+    "The independent incomplete Ollama response cause remains unresolved.",
+    "The new paired regression is engineering evidence, not additional actual scientific worlds or universal clock independence for arbitrary authored workflows."
+  ]
+}

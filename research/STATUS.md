@@ -2,6 +2,34 @@
 
 Updated: 2026-11-06 JST
 
+## Actual clock leakage found; V32 native production held, V33 fix verified
+
+Read-only actual-wire comparison finds94/97 scientist payloads equal across
+the original V30 parent and both V31 inert instances. Three year2 submission
+inputs differ only in host review_time values printed through ArchivedPaper
+reprs. The existing85-request paired test fixed time.time; it did not establish
+independent-clock invariance. See the [sealed diagnosis](results/native-submission-clock-v33.json).
+
+The source bug overwrites caller citation previews with a private archive list,
+sorts it in place and interpolates its full repr as citation text. Separate
+sorted own-history data fixes that path without altering raw review archives,
+masking authored timing strings or replacing the actual original-world phases.
+It deliberately removes unintended private reprs and restores supplied previews;
+do not claim old affected prompt bytes or cross-source loss comparability.
+Seven red/green regressions and legacy goldens pass31; shared/independent-clock
+paired suite passes11 and preserves all85 full requests per pair while raw
+timestamps/audit identities stay different. Initial expanded scope passes375.
+
+Preserve frozen V32 source6f1e02d. Its full suite54627 passes2828/six skips in
+1308.42s, and actual readiness26575 passes all24/cold replay with certificate
+d426e774db332af7e334cca53410d4ed9fa17182dbefb5437935e172bd16699a.
+These do not override the independently diagnosed native-renderer defect.
+The [production-hold addendum](protocols/campaigns/native-contract-layout-v32-a2-native-stop-addendum.md)
+keeps V32 at zero native worlds; record24 calls/878.5776040400378s/245430 input/
+9948 output separately, all counts known. No post-readiness production window
+gate or native pilot is attempted. Fresh V33 source/readiness is required after
+the fix; the original functional-candidate/own-result goal stays active and unmet.
+
 ## V31 a2 closes and audits agree; fresh V32 a2 readiness starts
 
 Writer73821 exits0, PID16216 is absent, and the original c62 writer records
