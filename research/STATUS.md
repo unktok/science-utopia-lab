@@ -2,7 +2,7 @@
 
 Updated: 2026-11-05
 
-## V23 actual readiness running after the closed unchanged V22 a2 arm
+## V23 actual institutional exploration running after closed unchanged V22 a2
 
 V22 a2 closes both throughput worlds at`[-1,-1]`, both exact parent retentions.
 Its28 replies are14 plans/12 reads/two finishes, with zero edits or new source.
@@ -22,10 +22,13 @@ author messages receive exact computational fields/measurement definitions,
 not noncomputational registry commentary as a competing requirement. Own
 numeric outcomes/failures remain; no institution, code, threshold or gate is
 supplied. It includes a3's task tail without changing decoding or provider.
-The corrected focused scope passes195 SCRIPTED tests. Frozen V23`fa2b973`has
-its full software suite and fresh14-control actual readiness running, after
-a2's authoritative exit and two matching audits. No V23 native production is
-yet launched. A3 is superseded before inference, not a failed actual trial.
+The corrected focused scope passes195 SCRIPTED tests. At frozen`fa2b973`, all14
+actual controls and cold replay subsequently pass in371.98 adapter seconds.
+The four-slot writer starts`2026-11-05T12:21:30.649892+00:00`, after a2's exit
+and matching audits. Its first plan correctly identifies increasing A as lowering
+loss and proposes pre-review, but changed code/native execution remains unshown
+at this entry. Broad software checks remain running. A3 is superseded before
+inference, not a failed actual trial. The full goal remains active.
 
 A2's exact-source full software suite passes2611 tests/six skips in1458.61s.
 A3's separate prepared-source suite passes2614 tests/six skips in1468.90s.

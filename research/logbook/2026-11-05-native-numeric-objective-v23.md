@@ -97,3 +97,20 @@ a2 writer exit, outcome inspection and two matching audits, launch the fresh
 separately budgeted14-control actual readiness at that exact frozen V23 source,
 under`outputs/native-numeric-objective-v23-a1-preflight`. No old certificate is
 reused; no V23 scientific-world production is yet launched at this entry.
+
+All14 actual V23 controls and cold replay pass; calibration exits0. Certificate
+content SHA`59b8cd7a261dc231d57a02c720c3fb447fda3cc7167178d2d0306972abf1e3c5`,
+runtime SHA`28445873936437615a8bbb9d347a7eaa42c127db16cc209eeea9ff46ef9c68aa`.
+Summed readiness adapter time is371.9805100809317s, with153764 prompt and475
+output tokens, separately charged from production and prior revisions.
+
+Launch the four-slot V23 writer once at frozen`fa2b973`, using only that
+certificate. Durable start is`2026-11-05T12:21:30.649892+00:00`; raw output is
+`outputs/native-numeric-objective-exploration-v23-a1`. Its first actual planner
+returns a mandatory pre-review proposal and correctly states that the-1
+coefficient means increasing accepted decisions lowers loss. This differs from
+the earlier contradictory/extra-mandatory-aim reasoning, but is still only a
+plan. No changed executable institution or causal sufficiency of the repair is
+inferred. Its actual implementation, native measurements and own-result-informed
+next proposal still need verification. Broad frozen-source software checks
+remain running at this entry. Keep the full exploration goal active.
