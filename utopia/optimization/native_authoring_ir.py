@@ -20,6 +20,16 @@ from utopia.system.design_patch import _edit, clone, digest, make_patch, pointer
 
 PROTOCOL = 'scienceutopia.native-stable-id-authoring.v1'
 TRACE = 'scienceutopia.native-stable-id-compile-trace.v1'
+CODE_CONTRACT_LAYOUT = (
+    'code.python.v1 has distinct literal containers: mechanism.inputs/outputs are arrays '
+    'of graph port descriptors; parameters.code_artifact.inputs/outputs are objects '
+    'mapping each literal port name to that port payload JSON Schema object, NOT '
+    'descriptor arrays and NOT one JSON Schema for the whole map. Schema keywords '
+    'such as type/properties/additionalProperties belong inside a port payload schema. '
+    'parameters.code_artifact.state_schema is one JSON Schema for returned state; '
+    'source is a Python string. New port names remain unrestricted, subject to the '
+    'existing graph/code ABI consistency checks. Changing a schema alone does not '
+    'compute a feature: author the source and explicit data flow that produce/use it.')
 SELECTOR = {'type': 'object', 'required': ['mechanism_id'], 'additionalProperties': False,
     'properties': {'mechanism_id': {'type': 'string', 'minLength': 1}}}
 # An empty schema is ANY JSON according to JSON Schema, but the deployed
@@ -326,12 +336,25 @@ def _literal_fields(document, operations, *, stage, image_id):
             expected = 'string' if field == 'source' else 'object'
             size = len(value.encode()) if isinstance(value, str) else None
             if json_type(value) != expected or field == 'source' and not 1 <= size <= 65_536:
+                layout = {}
+                direction = field.split('/', 1)[0]
+                if direction in ('inputs', 'outputs'):
+                    container_path = prefix + '/parameters/code_artifact/' + direction
+                    layout = {
+                        'contract_container_role': 'port-name-to-payload-schema-map',
+                        'contract_container_path': container_path,
+                        'literal_contract_layout_rule': CODE_CONTRACT_LAYOUT,
+                        'authored_map_keys': sorted(artifact[direction])
+                            if isinstance(artifact[direction], dict) else None,
+                        'schema_entry_path': path if '/' in field else None,
+                    }
                 raise AuthoringIRDiagnostic('literal Python source must have 1..65536 UTF-8 bytes' if field == 'source'
-                    else 'literal contract schema container must be a JSON object, not encoded text',
+                    else ('literal port-name-to-payload-schema map and each port schema must be JSON objects'
+                        if layout else 'literal contract schema container must be a JSON object, not encoded text'),
                     operation_index=_operation_index(operations, path, outer.get('mechanism_id')),
                     path=path, stage=stage, expected_type=expected,
                     actual_type=json_type(value), source_utf8_bytes=size if field == 'source' else None,
-                    deepest_existing_prefix=path, **owner)
+                    deepest_existing_prefix=path, **layout, **owner)
         try:
             validate_code_artifact(artifact)  # Parses AST/schema only; no generated code execution.
         except Exception as error:

@@ -17,7 +17,7 @@ import time
 from jsonschema import Draft202012Validator
 
 from utopia.optimization.native_authoring_ir import (
-    COORDINATE, FACTOR, OPERATION, StableIDAuthoringProtocol, detailed_failure_history,
+    CODE_CONTRACT_LAYOUT, COORDINATE, FACTOR, OPERATION, StableIDAuthoringProtocol, detailed_failure_history,
     _read, json_type, resolve_address, translate_operations,
 )
 from utopia.optimization.native_search_generator_v14 import (
@@ -274,7 +274,7 @@ The host never supplies missing algorithms/wires, substitutes baseline, executes
 your source on the host or spends native probes during authoring.
 """
 
-ABI_CONTRACT = ('Python-node ABI:' + ABI_INSTRUCTIONS.split('Python-node ABI:', 1)[1]
+ABI_CONTRACT = (CODE_CONTRACT_LAYOUT + '\n\nPython-node ABI:' + ABI_INSTRUCTIONS.split('Python-node ABI:', 1)[1]
     .rsplit('Read the actual parent', 1)[0])
 
 

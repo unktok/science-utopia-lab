@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V32 conditional named-port/schema contract clarification without repair](protocols/campaigns/native-contract-layout-v32-a1.md)
+- [V32 actual invalid operands, native-validator agreement and separate implementation](logbook/2026-11-06-native-contract-layout-v32.md)
+
 - [V31 a1 actual copy-key mismatch, preserved failure and physical costs](results/native-context-encoding-v31-a1-readiness.md)
 - [V31 a1 compact raw-certificate diagnosis with unchanged failed status](results/native-context-encoding-v31-a1-readiness.json)
 
