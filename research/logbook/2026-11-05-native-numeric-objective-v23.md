@@ -64,3 +64,36 @@ If the full goal is met, skip further pilots. Otherwise V23 supersedes a3 BEFORE
 any a3 inference, folding in the prepared task tail plus this newly observed
 objective/prose issue. Freeze and freshly calibrate that exact V23 source; no
 older certificate authorizes it. No V23 model call is made at this entry.
+
+## Closed a2 evidence and V23 readiness launch
+
+The first a2 arm closes both actual worlds at losses`[-1,-1]`, both exact
+parent retentions. The owned writer is paused at the declared between-arm
+boundary`2026-11-05T12:02:21Z`, with efficiency still queued and no second-arm
+author request. After inspection, SIGINT/CONT closes it with exit130 and durable
+aborted receipt at`2026-11-05T12:13:14.312920+00:00`. The roughly11-minute
+boundary pause remains part of lifecycle wall time, not model inference time.
+No scientific world/model request is interrupted, no queue records are rewritten,
+and both unused slots remain unexecuted rather than imputed null measurements.
+
+Two frozen-a2-source audits complete byte-identically, verifying104 unchanged
+raw files and248 source blobs,184 scientist replies and16 inherited-code
+executions. There are28 known author replies,14 plans/12 reads/two finishes,
+zero edits and no unknown reply. The strict audit intentionally retains its
+incomplete-budget/in-progress flags for the queued second arm; authoritative
+writer termination is separately evidenced. Record the complete scoped result
+in[the a2 report](../results/native-planned-exploration-v22-a2.md). The full
+exploration goal is unmet; do not mark it complete.
+
+The unused a3 source's full software suite also closes:2614 passes/six skips
+in1468.90s at`d17bcce`, JUnit SHA
+`1ad5f4f42298dfd5ba11145288b12f7e7917f3f1a70449af64c6752099df3d81`.
+It remains software-only and is superseded before actual inference.
+
+Freeze V23 at`fa2b97383b9d0ac964bea8b22defab6c3fe20c03`, in its own detached
+tree/tag. Start full SCRIPTED verification with JUnit destination
+`outputs/native-planning-author-v22-verification/full-fa2b973.xml`. After the
+a2 writer exit, outcome inspection and two matching audits, launch the fresh
+separately budgeted14-control actual readiness at that exact frozen V23 source,
+under`outputs/native-numeric-objective-v23-a1-preflight`. No old certificate is
+reused; no V23 scientific-world production is yet launched at this entry.

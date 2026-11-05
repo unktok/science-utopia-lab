@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V22 a2 closed unchanged two-generation arm and explicit unexecuted slots](results/native-planned-exploration-v22-a2.md)
+- [V22 a2 exact matching-source/raw/action/physical audit, with incomplete-budget scope](results/native-planned-exploration-v22-a2.json)
 - [V23 prospective numeric objective contract, with full original LossSpecs archived](protocols/campaigns/native-numeric-objective-exploration-v23-a1.md)
 - [V23 prose/metric separation implementation and verification log](logbook/2026-11-05-native-numeric-objective-v23.md)
 - [V22 a2 explicit adaptive between-arm diagnostic stop; not four-slot completion](protocols/campaigns/native-planned-exploration-v22-a2-stop-addendum.md)
