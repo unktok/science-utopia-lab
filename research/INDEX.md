@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V25 a2 prospective target data and wire task separation after failed literal control](protocols/campaigns/native-tool-calling-exploration-v25-a2.md)
+
 - [V24 a3 closed four-world result with unchanged systems and repaired summary provenance](results/native-thinking-exploration-v24-a3.md)
 - [V24 a3 compact projection of two matching original-source full audits](results/native-thinking-exploration-v24-a3.json)
 

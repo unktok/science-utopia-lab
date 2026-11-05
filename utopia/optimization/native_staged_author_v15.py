@@ -730,9 +730,11 @@ def native_call_task(system_prompt):
     if system_prompt in (SYSTEM_PROMPT, PLAN_SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT):
         task = system_prompt.replace(FINAL_JSON_ONLY, TOOL_RESPONSE_ONLY)
         if system_prompt == PLAN_CONTROL_SYSTEM_PROMPT:
-            from .native_designer_tools_v25 import message_from_action
+            from .native_designer_tools_v25 import function_data, CONTROL_TARGET_NOTE
+            task = task.replace('This is a prospective compatibility control;',
+                CONTROL_TARGET_NOTE + 'This is a prospective compatibility control;')
             task = task.replace(json.dumps(PLAN_CONTROL, ensure_ascii=False, sort_keys=True),
-                message_from_action(PLAN_CONTROL)['content'])
+                json.dumps(function_data(PLAN_CONTROL), ensure_ascii=False, sort_keys=True))
         return task
     # Typed control tasks are already constructed for the native channel.
     return system_prompt

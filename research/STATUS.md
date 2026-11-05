@@ -1,6 +1,22 @@
 # Program status
 
-Updated: 2026-11-05
+Updated: 2026-11-06 JST
+
+## V25 a1 first control fails and a2 separates target data from completed calls
+
+Actual a1 source2 `7f03f00` returns a valid Hermes finish instead of the first
+requested edit/add17. Strict equality rejects it before application. Preserve
+one POST/17.37 adapter seconds and11601/35 input/output tokens; no a1 native
+world starts and13 controls remain unexecuted.
+
+The [a2 preparation](protocols/campaigns/native-tool-calling-exploration-v25-a2.md)
+separates wire format from scientific submission and presents literal control
+targets as unexecuted function data. Failed parsed actions are logged explicitly.
+Expected values, parser, role settings, original world/losses and scientific tool
+freedom remain unchanged. Fresh source-bound14-control readiness is required.
+The expanded a2 prelaunch scope passes275 checks in33.59s; no a2 actual model
+request has occurred at this entry.
+The full exploration goal remains unmet and active.
 
 ## V24 a3 closes unchanged and V25 source2 readiness is prepared
 

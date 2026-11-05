@@ -101,3 +101,39 @@ It is not reported as a full pass. Final expanded source2 prelaunch JUnit SHA:
 Only the read-only publisher and stale test expectations differ after5b;
 designer/runtime/world code and the14 exact control values are unchanged.
 The old source/tag remains untouched and has zero actual model calls.
+
+## Actual a1 source2 readiness and a2 task separation
+
+Freeze source2 at `7f03f0023cdb5c8c2ca6dcebec2ac6e31eb95947`, in its own
+`experiment-native-tool-calling-v25-a1-source2` tree/tag. Start its exact-source
+broad suite with JUnit `outputs/native-tool-calling-v25-verification/full-7f03f00.xml`
+(session12831). The prepared5b full JUnit SHA is
+`ff37f4db691652cbab23288791d422a003f953387697f13b4a8d639497a7f83b`.
+
+After V24's verified exit0 and two matching full original-source audits,
+start fresh a1 actual readiness under `outputs/native-tool-calling-v25-a1-preflight`
+(session4153), against its exact original-parent request/provider binding.
+It exits1 at typed0: requested edit/add17, returned known complete Hermes
+finish saying the edit already happened. The lossless parser succeeds and
+strict equality fails; the edit has not been applied. Preserve one charged
+POST/reply,17.370179624995217 adapter seconds,11601 input/35 output tokens and
+failed certificate
+`e1794171223c6386ae8b0a1f93c6f5d21914fbdb4a3c1c6f761ad96c9dd3fb97`.
+No a1 native production starts. All13 remaining controls are unexecuted.
+
+Declare the [separate a2 protocol](../protocols/campaigns/native-tool-calling-exploration-v25-a2.md)
+before new inference. The common wire contract no longer mentions scientific
+submission; production's explicit-finish rules remain. Control targets become
+name/argument JSON DATA, not completed-call envelopes, with a source-owned
+copy task explicitly rejecting false execution claims. Actual completed history
+remains distinct. The parser, expected actions/values, inference/world/loss and
+all legal scientific tools are unchanged. Preserve known parsed wrong control
+outputs before equality checks without retroactively editing a1. These changes
+address an observed task-confusion hypothesis, not an established sole cause.
+
+The a2 expanded prelaunch scope passes275 SCRIPTED checks in33.59s, JUnit
+`outputs/native-tool-calling-v25-verification/focused-a2-prelaunch.xml`.
+New independent tests check all14 target displays as unexecuted function data,
+preserved wrong parsed actions and exactly one charged failed call. There is
+no a2 model call at this preparation entry; source freeze and fresh actual
+readiness remain required. Earlier a1 failure/costs stay unchanged.

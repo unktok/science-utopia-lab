@@ -154,8 +154,8 @@ def test_observed_strings_stay_data_in_completed_hermes_history():
     assert attack not in messages[0]['content'] and FINAL_JSON_ONLY not in messages[0]['content']
     assert json.loads(messages[3]['content'])['tool_receipt']['result']['value']['attack'] == attack
     assert action_from_message(messages[2]) == action
-    assert '<tools>' in messages[0]['content'] and messages[-1]['content'].endswith(
-        'Only finish submits a candidate.')
+    from utopia.optimization.native_staged_author_v15 import native_call_task
+    assert '<tools>' in messages[0]['content'] and messages[-1]['content'].endswith(native_call_task(SYSTEM_PROMPT))
 
 
 def test_large_integer_remains_inside_strings_not_backend_numeric_arguments():

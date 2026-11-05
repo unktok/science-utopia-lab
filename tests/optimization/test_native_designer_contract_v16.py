@@ -155,6 +155,8 @@ class ScriptedSession:
             expected = {'tool': function['name'], **function['arguments']}
         else:
             expected, _ = json.JSONDecoder().raw_decode(target)
+            if set(expected) == {'name', 'arguments'}:
+                expected = {'tool': expected['name'], **expected['arguments']}
         self.calls.append(payload)
         from utopia.optimization.native_designer_tools_v25 import message_from_action
         message = (message_from_action(expected) if '<tools>' in system else
@@ -294,3 +296,36 @@ def test_failed_control_is_charged_and_never_replaced(tmp_path, monkeypatch):
     assert len(result['records']) == len(ScriptedSession.calls) == 1 and not result['all_controls_passed']
     with pytest.raises(ValueError, match='incomplete'):
         p.require_certificate(tmp_path / 'failed/certificate.json', BINDING, protocol='staged-v15')
+
+
+def test_known_wrong_function_is_preserved_as_parsed_output_without_retry(tmp_path, monkeypatch):
+    from utopia.optimization.native_designer_tools_v25 import message_from_action
+    wrong = {'tool': 'finish', 'rationale': 'SCRIPTED false completion claim, not implementation'}
+    class WrongFunctionSession(ScriptedSession):
+        def post(self, *args, **kwargs):
+            super().post(*args, **kwargs)
+            return Response({'model': BINDING['model'], 'message': message_from_action(wrong),
+                'done': True, 'done_reason': 'stop'})
+    monkeypatch.setattr('requests.Session', WrongFunctionSession)
+    ScriptedSession.calls = []
+    result = p.run_calibration(tmp_path / 'wrong-function', request=request(), provider=BINDING)
+    assert len(result['records']) == len(ScriptedSession.calls) == 1
+    assert result['records'][0]['output'] == wrong
+    assert not result['records'][0]['ok'] and not result['all_controls_passed']
+
+
+def test_control_targets_are_literal_function_data_not_prior_executed_calls():
+    from utopia.optimization.native_designer_tools_v25 import (
+        CONTROL_TARGET_NOTE, function_data, message_from_action,
+    )
+    from utopia.optimization.native_staged_author_v15 import build_conversation
+    req = request()
+    for case in p.planned_cases(req, 'staged-v15'):
+        prompt, task = p._prompt(req, initial_draft(req), [], BINDING, case['expected'], 'staged-v15')
+        messages = build_conversation(prompt, task, mode='interface-control-v16', native_tools=True)
+        assert CONTROL_TARGET_NOTE in messages[0]['content'] and CONTROL_TARGET_NOTE in messages[-1]['content']
+        target = messages[0]['content'].split('nothing is executed or adopted.\n')[1]
+        actual, _ = json.JSONDecoder().raw_decode(target)
+        assert actual == function_data(case['expected'])
+        assert message_from_action(case['expected'])['content'] not in messages[0]['content']
+        assert 'Only finish submits a candidate.' not in messages[0]['content']

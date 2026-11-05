@@ -20,7 +20,13 @@ TOOL_RESPONSE_ONLY = (
     'without a tool field. Preserve exact JSON types and string code points, '
     'including real line feeds, quotes and literal backslashes. '
     'Do not add an extra JSON encoding layer. Separate reasoning and ordinary '
-    'prose are not executable actions. Only finish submits a candidate.')
+    'prose are not executable actions.')
+
+CONTROL_TARGET_NOTE = (
+    'The JSON below is target DATA, not a previous assistant call or a completed tool result. '
+    'Copy its function name and every literal argument into one NEW Hermes tool_call envelope. '
+    'Do not claim that the target action has already executed. Do not substitute finish; '
+    'return finish only when the target function name itself is finish. ')
 
 DESCRIPTIONS = {
     'plan': 'Store your own institutional design hypothesis; this does not implement or execute it.',
@@ -85,17 +91,18 @@ def action_from_message(message):
     return {'tool': function['name'], **clone(arguments)}
 
 
-def message_from_action(action):
-    """Represent a completed literal action as native tool-call history.
-
-    This is a history serialization, never a second dispatch or a generated
-    replacement response. The original provider body must stay archived.
-    """
+def function_data(action):
+    """Separate literal name/arguments without asserting execution or dispatch."""
     if (not isinstance(action, dict) or not isinstance(action.get('tool'), str)
             or action['tool'] not in DESCRIPTIONS):
         raise ValueError('cannot serialize an action with an unknown native function')
-    function = {'name': action['tool'],
+    return {'name': action['tool'],
         'arguments': clone({key: value for key, value in action.items() if key != 'tool'})}
+
+
+def message_from_action(action):
+    """Serialize completed history, never dispatch or replace a provider reply."""
+    function = function_data(action)
     return {'role': 'assistant', 'content': '<tool_call>\n'
         + json.dumps(function, ensure_ascii=False, allow_nan=False) + '\n</tool_call>'}
 
