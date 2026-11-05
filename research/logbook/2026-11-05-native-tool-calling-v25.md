@@ -137,3 +137,13 @@ New independent tests check all14 target displays as unexecuted function data,
 preserved wrong parsed actions and exactly one charged failed call. There is
 no a2 model call at this preparation entry; source freeze and fresh actual
 readiness remain required. Earlier a1 failure/costs stay unchanged.
+
+Freeze a2 at `5ecbd8b5814c5afe88d26f87304b47b064da4365` in the separate
+`experiment-native-tool-calling-v25-a2` tree and its protocol tag. Focused JUnit
+SHA `585f48a445438d12a9808230fdc24c2b61da4e87d862adc354746c2cac5cbdb8`.
+Start fresh actual readiness under `outputs/native-tool-calling-v25-a2-preflight`
+(session87059), with the unchanged a3 original-parent request/provider binding.
+The plan records max14 POSTs and that exact a2 source. First two controls pass,
+including edit/add17 that failed in a1; this is partial literal-control evidence,
+not all14/cold replay or invention. Do not launch native production yet.
+The separate7f broad software scope is still running and has no final result.
