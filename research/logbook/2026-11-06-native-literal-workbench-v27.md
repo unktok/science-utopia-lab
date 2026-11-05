@@ -60,3 +60,13 @@ memory-cost edits, but uses invented ID-as-array-index paths and remains
 rejected. This is an observed action change, not evidence of institutional
 implementation or a controlled causal claim about V26 feedback. Keep the full
 goal active and preserve all remaining scheduled V26 work.
+
+Freeze V27 at1046d6c705756b9666180bb561847888d11aa3fb, with the separate
+experiment-native-literal-workbench-v27-a1 tree and matching protocol tag.
+Start the exact-source broad software suite in session52836, JUnit
+outputs/native-literal-workbench-v27-verification/full-1046d6c.xml. It is still
+running, not a claimed broad pass. Main is locally fast-forwarded without
+remote push. At16:56Z, V26 session9150/PID37919 remains live, with its G1
+author still alternating rejected inspections and plans after the initial
+rejected edit. No V27 actual inference has occurred; wait for V26 termination
+before the prospective fresh14-control readiness. The full goal stays active.
