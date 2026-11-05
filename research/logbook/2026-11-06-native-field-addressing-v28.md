@@ -128,3 +128,17 @@ before authoring. Four slots/two generations per loss/eight calls per generation
 remain unchanged. No candidate has yet been reported as changed or measured;
 full goal remains active. The4b broad suite67060 is still live with its known
 stale test expectation failure; exact38d broad verification waits for its exit.
+
+The preserved4b a1 broad suite67060 exits1:2747 passes, six skips, one stale
+six-versus-eight sequence expectation failure in1326.44s. JUnit SHA
+81ca14ad81f57bcb225cbf6f2ae9260704a34d44480a3a4932206c5bd20373e8.
+This matches the already-fixed expectation in a2; keep the a1 failure intact.
+After its verified exit, start exact38d broad suite97968, JUnit
+outputs/native-field-addressing-v28-verification/full-38d1fb4.xml. It is live.
+
+The free a2 G0 planner returns a proposed decision-boost under loss -A. Its
+first editor reply is known HTTP200/done=false with no token metadata, and is
+charged/rejected as invalid-response. No source, prefix or partial JSON is
+salvaged. Next edit_fields correctly rejects ambiguous outputs/inputs names,
+with both actual matching paths reported. No changed valid candidate or native
+measurement is claimed yet. The remaining declared calls continue unchanged.
