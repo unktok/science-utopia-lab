@@ -145,3 +145,15 @@ Freeze source2 at`200bf74da0fce8a7f29733bb5f370be38c2ac61f`in
 scope with JUnit`outputs/native-planning-author-v22-verification/full-200bf74.xml`.
 The earlier5bf full scope continues in its untouched tree. Neither source has
 sent a V24 model call; the final source2 is the sole prospective actual source.
+
+Stop the superseded5bf software-only broad scope to free resources for the
+final source2 verification. SIGINT and SIGTERM do not terminate that test
+process; output after those signals contains failure markers without final
+traceback or JUnit. Do not attribute those markers as verified code regressions
+or claim a full pass. At`2026-11-05T13:01:30Z`, terminate only its verified owned
+PID57300 at a paused boundary with no active test child except the idle resource
+tracker. Authoritative test-session exit is137; both that PID and its tracker
+are then absent. No final source1 JUnit exists and no unrecorded test count is
+imputed. The frozen5bf source/tag remains untouched. Final source2 full checks
+and the V23 writer remain live; neither scientific measurements nor raw state
+are interrupted by this software-test cancellation.
