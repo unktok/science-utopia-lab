@@ -21,7 +21,7 @@ from utopia.optimization.native_designer_decoding_v24 import (
 
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
 CLASSIFICATION = 'actual-local-qwen-native-literal-workbench-development-v27'
-ENGINEERING_REVISION = 'v27-a1'
+ENGINEERING_REVISION = 'v27-a2'
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -53,7 +53,7 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
             'metadata reads are not designer generations or scientific-world slots.',
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
-        'protocol': 'research/protocols/campaigns/native-literal-workbench-v27-a1.md',
+        'protocol': 'research/protocols/campaigns/native-literal-workbench-v27-a2.md',
         'native_campaign_status': 'explicitly authorized two-objective two-generation native feedback pilot after V16 interface repair'}
 
 

@@ -144,7 +144,7 @@ def test_local_sender_known_bad_final_is_archived_and_cold_replayed_without_new_
 @pytest.mark.parametrize('protocol', [
     'native-tool-calling-exploration-v25-a1', 'native-tool-calling-exploration-v25-a2',
     'native-tool-calling-exploration-v25-a3', 'native-function-feedback-v26-a1',
-    'native-literal-workbench-v27-a1'])
+    'native-literal-workbench-v27-a1', 'native-literal-workbench-v27-a2'])
 def test_reporting_protocol_allowlist_includes_each_declared_continuation(monkeypatch, protocol):
     from scripts import analyze_native_staged_search_v15 as audit
     import hashlib
@@ -163,9 +163,38 @@ def test_parent_feedback_uses_current_best_candidate_without_host_policy_or_sour
     req = request()
     secret = 'SCRIPTED_SOURCE_NOT_FOR_PLANNER'
     req['parent_system']['mechanisms'][0]['parameters']['code_artifact']['source'] += '\n# ' + secret
-    req['history'] = [record({}, req['parent_system'], {'loss': 2, 'status': 'complete'})]
+    req['history'] = [record({}, req['parent_system'], {'loss': 2, 'status': 'complete',
+        'candidate': deepcopy(req['parent_system'])})]
     feedback = own_trial_feedback(req)
     assert feedback['current_parent_sha256'] == digest(req['parent_system'])
     assert feedback['all_own_trials'][0]['observations'][0]['is_current_parent'] is True
     messages = build_conversation(prompt(req), PLAN_SYSTEM_PROMPT, native_tools=True)
     assert secret not in json.dumps(messages)
+
+
+def test_full_observed_candidate_is_explicitly_referenced_without_dropping_any_other_observation_fact():
+    req = request()
+    observation = {'candidate': deepcopy(req['parent_system']), 'observation_id': 'actual-shape',
+        'status': 'complete', 'loss': -2, 'suggestion_id': 'own-suggestion',
+        'metadata': {'measurements': {'A': 2}, 'technical_failures': [],
+            'runs': [{'checkpoint_sha256': 'c' * 64, 'seed': 42}], 'unknown_future_field': [None, True, 9007199254740993]}}
+    req['history'] = [record({}, req['parent_system'], observation)]
+    original = deepcopy(req)
+    item = own_trial_feedback(req)['all_own_trials'][0]['observations'][0]
+    assert item['observation'] == {key: value for key, value in observation.items() if key != 'candidate'}
+    assert item['original_observation_sha256'] == digest(observation)
+    assert item['explicit_body_omission']['field'] == 'candidate'
+    assert item['explicit_body_omission']['body_sha256'] == digest(observation['candidate'])
+    assert item['candidate_sha256'] == digest(req['parent_system']) and item['is_current_parent'] is True
+    assert req == original
+
+
+def test_null_candidate_body_is_not_replaced_with_an_empty_system_or_zero():
+    req = request()
+    observation = {'candidate': None, 'status': 'technical-failure', 'loss': None,
+        'metadata': {'technical_failures': [{'message': 'SCRIPTED failed native measurement'}]}}
+    req['history'] = [record({}, req['parent_system'], observation)]
+    item = own_trial_feedback(req)['all_own_trials'][0]['observations'][0]
+    assert item['observation']['loss'] is None
+    assert item['observation']['metadata'] == observation['metadata']
+    assert item['explicit_body_omission']['body_sha256'] == digest(None)

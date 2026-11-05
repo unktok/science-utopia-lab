@@ -98,6 +98,13 @@ canonical entry order. This is current-parent information, not a host-authored
 candidate, source repair or scientific merit gate. A fresh V27 source-bound
 actual certificate remains required; V26's pass does not authorize it.
 
+V27 a2 additionally excludes repeated full previous-candidate bodies from
+model-facing observations, with explicit candidate-body/original-observation
+hashes. Every other observation field is preserved. Exact original evidence
+remains archived and current draft bodies remain available to editors. This
+restores the planner's source exclusion and avoids duplicating a whole old
+system in its own feedback; it does not discard failed trials or measurements.
+
 Pass `--designer-preflight <certificate.json>` to:
 
 - `scripts/run_native_staged_search_v15.py`

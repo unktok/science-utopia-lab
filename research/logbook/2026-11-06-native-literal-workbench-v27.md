@@ -70,3 +70,44 @@ remote push. At16:56Z, V26 session9150/PID37919 remains live, with its G1
 author still alternating rejected inspections and plans after the initial
 rejected edit. No V27 actual inference has occurred; wait for V26 termination
 before the prospective fresh14-control readiness. The full goal stays active.
+
+## Actual candidate body duplication and a2 preparation
+
+Inspect actual V26 G1 token counts rather than infer capacity from bytes:
+editor inputs26752–29814, in the fixed32768 context, with91–116s calls.
+The own-trial observation unexpectedly includes its full candidate body:
+27906 bytes, while other observation metadata is only2249 bytes. Trial
+feedback totals39007 bytes. The earlier scalar-only fake observation did not
+exercise this actual schema shape. It also lets prior source reach the G1
+planner when the previous candidate is the current parent. A1 remains frozen
+and software-only; no actual a1 inference has happened.
+
+In separate prospective a2, omit only the model-facing candidate body, keeping
+an explicit field/body hash and complete original observation hash. Preserve
+all other fields, every outcome/failure, metadata and unknown future values
+exactly. Full raw requests/observations are not edited; current literal draft
+information remains available to the editor workbench. Add actual-shape source
+exclusion, single current-source occurrence, no mutation and null-value tests.
+The initial focused projection/planning/workbench scope passes39 checks in4.09s.
+
+Read-only reconstruction on the same archived actual G1 request compares
+frozen a1 with prospective a2: planner messages79782→49105 bytes, editor
+131295→100618, prompt118719→91195, own feedback39007→11483. No model/native
+call occurs and no tokenizer or speed guarantee is inferred. Complete outcome
+facts stay in the prompt; full old candidate bodies are explicitly referenced.
+
+The [a2 protocol](../protocols/campaigns/native-literal-workbench-v27-a2.md)
+keeps the same scientific scope and requires a fresh source-bound actual14
+controls only after V26 termination. Do not alter a1's freeze, stop the current
+V26 run or silently run replacement trials. Final a2 verification/freeze and
+actual readiness remain pending; the full goal is still active and unmet.
+
+The final expanded a2 scope passes302 SCRIPTED tests in69.90s. It includes
+the actual-shaped candidate observation, exact preservation of every other
+field, null candidate/loss handling, planner source exclusion and exactly one
+current-source occurrence in editor context. JUnit SHA:
+f6fbaad4e961d190288e2ea26ee27638a9eacbc68fbc95a0f1b4f45ff42f06f1,
+outputs/native-literal-workbench-v27-verification/focused-a2.xml.
+At17:12Z, V26's throughput arm finishes both slots at loss -1 and its writer
+continues efficiency. The1046 a1 broad suite remains live in52836; a2 has no
+actual inference. Freeze a fresh a2 source before its required actual controls.

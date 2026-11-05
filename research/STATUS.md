@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## Workbench a2 removes repeated candidate bodies without dropping outcomes
+
+Actual V26 G1 editor inputs reach29814 tokens in a32768 context. Its own
+feedback repeats the previous whole candidate, including code, not just loss
+metadata. V27 a2 replaces only that body with explicit body/original-observation
+hashes, preserving every other observation field and all own trials. Current
+draft bodies stay visible to editors. The same archived editor input falls
+from131295 to100618 UTF8 bytes; no token-speed guarantee is claimed.
+
+The final a2 focused scope passes302 SCRIPTED checks in69.90s, including the
+actual full-candidate observation shape and source exclusion. Preserve the
+software-only a1 freeze and its still-running broad suite. No V27 actual model
+call has occurred; fresh a2 actual readiness waits for V26's verified end.
+See the [a2 protocol](protocols/campaigns/native-literal-workbench-v27-a2.md).
+
+V26 completes both throughput evaluations at loss -1 without a literal
+intervention and continues its two scheduled efficiency slots. The full goal
+of different model-authored executable institutions remains active and unmet.
+
 ## Literal node editor workbench is prepared separately
 
 V27 supplies actual current node/source/root-field values and exact addresses

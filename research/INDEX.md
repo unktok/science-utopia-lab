@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V27 a2 explicit candidate-body references preserving every other observation field](protocols/campaigns/native-literal-workbench-v27-a2.md)
+
 - [V27 literal node workbench and unchanged-world verification protocol](protocols/campaigns/native-literal-workbench-v27-a1.md)
 - [V27 implementation and regression log](logbook/2026-11-06-native-literal-workbench-v27.md)
 

@@ -125,6 +125,25 @@ def test_editor_advertises_implementation_first_without_removing_or_weakening_an
         tool_specifications(role='UNTRUSTED observed role')
 
 
+def test_actual_observation_shape_does_not_leak_prior_candidate_to_planner_or_duplicate_editor_source():
+    req = request()
+    marker = 'SCRIPTED_UNIQUE_CURRENT_CODE_NOT_A_POLICY'
+    req['parent_system']['mechanisms'][0]['parameters']['code_artifact']['source'] += '\n# ' + marker
+    observation = {'observation_id': 'own-observation', 'candidate': deepcopy(req['parent_system']),
+        'status': 'complete', 'loss': -1, 'metadata': {'measurements': {'A': 1}, 'technical_failures': []}}
+    draw = {'suggestion': {'candidate': deepcopy(req['parent_system'])}}
+    req['history'] = [{'definition': {}, 'draws': [draw], 'observations': [observation], 'report': {}}]
+    req['observations'] = [{'suggestion': draw['suggestion'], 'observation': observation}]
+    state = initial_draft(req)
+    planner = build_conversation(prompt(req), PLAN_SYSTEM_PROMPT, native_tools=True)
+    assert marker not in json.dumps(planner)
+    state, receipt = apply(state, PLAN, req)
+    steps = [{'step': 0, 'status': 'applied', 'model_reply': {'output': PLAN}, 'transition': receipt}]
+    editor = build_conversation(prompt(req, state, steps), SYSTEM_PROMPT, native_tools=True)
+    assert json.dumps(editor).count(marker) == 1
+    assert observation['candidate'] == req['parent_system']  # raw request untouched
+
+
 def test_literal_workbench_allows_direct_model_authored_edit_and_exact_cold_replay_without_forced_inspect(tmp_path):
     class ScriptedWorkbenchModel(Model):
         def generate(self, **kwargs):

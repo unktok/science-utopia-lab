@@ -32,9 +32,20 @@ def own_trial_feedback(request):
             suggestion = draw.get('suggestion') if isinstance(draw, dict) else None
             candidate = suggestion.get('candidate') if isinstance(suggestion, dict) else None
             candidate_sha = digest(candidate) if isinstance(candidate, dict) else None
-            observations.append({'observation_index': observation_index,
-                'observation': clone(observation), 'candidate_sha256': candidate_sha,
-                'is_current_parent': candidate_sha == parent_sha if candidate_sha else None})
+            view = clone(observation)
+            omitted = None
+            if isinstance(view, dict) and 'candidate' in view:
+                body = view.pop('candidate')
+                omitted = {'field': 'candidate', 'body_sha256': digest(body),
+                    'scope': 'Only the full prior candidate body is not repeated. The exact original '
+                        'observation is archived; current literal draft bodies are supplied to the editor.'}
+            item = {'observation_index': observation_index,
+                'observation': view, 'candidate_sha256': candidate_sha,
+                'is_current_parent': candidate_sha == parent_sha if candidate_sha else None}
+            if omitted is not None:
+                item.update(original_observation_sha256=digest(observation),
+                    explicit_body_omission=omitted)
+            observations.append(item)
         trials.append({'history_index': index,
             'request_sha256': record.get('request_sha256'), 'version_sha256': record.get('version_sha256'),
             'untrusted_model_authored_plan': clone(staged.get('untrusted_model_authored_plan')),
