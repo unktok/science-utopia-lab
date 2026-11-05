@@ -47,3 +47,26 @@ at `outputs/native-function-feedback-v26-verification/focused-a1.xml`, SHA
 `5eef93b4a6077aa929dc40e0df627c2f87a498fdc047cfb22b4c91f04d958233`.
 No V26 actual model request has occurred; V25 remains live. Freeze the new
 source before the broad software suite and fresh actual readiness.
+
+Freeze V26 at `6d27c2a7811de40c71491afefe6a277f41e51a78` in the detached
+experiment-native-function-feedback-v26-a1 tree and protocol tag. The exact
+source broad software suite starts in session34297, with JUnit under
+`outputs/native-function-feedback-v26-verification/full-6d27c2a.xml`; no broad
+pass/count is yet claimed. No new designer inference overlaps the live V25
+writer. Main is locally fast-forwarded, with no remote push.
+
+Prepare an explicit external reporting adapter for V25's frozen allowlist
+omission. It loads the clean original pinned auditor/runtime, keeps its full
+source-byte verifier, and separately verifies the actual V25 protocol byte.
+Only that three-path allowlist extension is substituted, and its own hash is
+reported separately. It cannot overwrite raw evidence, frozen source or an
+existing report. This is an adapted audit, not a claim that the unmodified
+original command passed. It performs no model/container execution. The original
+experiment and its incorrectly classified receipts remain unchanged.
+
+The separate reporting adapter plus existing report regressions pass44
+SCRIPTED checks in58.63s. Actual use still waits for the V25 writer to terminate.
+At `2026-11-05T16:16Z`, V25 has three completed native slots and its final
+generation is still authoring; rejected nonexistent-address inspections
+alternate with more plans. The new source and readiness do not yet establish
+a remedy for that free-design failure.
