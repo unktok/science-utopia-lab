@@ -44,23 +44,25 @@ costs, not zero-cost validation. Declare their budget before running. No native
 world or generated source is executed by calibration. Use a new output directory
 for every source/revision; retain failures. Do not keep retrying until one passes.
 
-The current staged source requests reasoning on the same fixed local Qwen3-8B:
-temperature0.6, top-p0.95, top-k20, min-p0,32768 context and8192 output tokens.
-The14 controls use those same settings; strict equality of final JSON remains
-required. Separate`message.thinking`is retained in the raw response but is never
+The current staged source uses the same fixed local Qwen3-8B in two caller-owned
+roles: thinking planner at temperature0.6 and non-thinking literal editor at0.2.
+Both use top-p0.95, top-k20, min-p0,32768 context and8192 output tokens.
+Thirteen editor controls and one planner control use their actual role settings;
+strict equality of final JSON remains required. Separate`message.thinking`is
+retained in the raw response but is never
 parsed as an action or used to repair missing final content. Backend evaluation
 token totals are recorded without inventing a thinking/final split. The legacy
 one-shot wire remains non-thinking, temperature0.2 and2048 output tokens.
 Older non-thinking certificates do not authorize this runtime.
-At least one of the same14 staged responses must have a nonempty separate
-reasoning field to evidence the requested mode; no extra probe is added. Exact
-final controls without any such field fail readiness. This does not establish
+The planner control must have a nonempty separate reasoning field; editor
+fields cannot substitute for that evidence. Literal editor controls must not
+emit nonempty reasoning fields. No extra probe is added. This does not establish
 that the reasoning is correct or that the designer can invent an institution.
-The current staged a2 request declares backend`format:"json"`up front alongside
-reasoning, after the separately preserved no-grammar a1 control failed on an
-extra closing brace. Final content still must be one exact JSON action,
+The current staged a3 requests declare backend`format:"json"`up front, after
+the preserved a1 extra-brace and a2 escaped-line-feed failures. Final content
+still must be one exact JSON action,
 schema-checked without removing fences/tags/braces or repairing source. This is
-a new source-bound revision, not a fallback/retry inside the failed a1 run.
+a new source-bound revision, not a fallback/retry inside a failed run.
 The same14 controls must show exact final content AND observed separate reasoning
 before production. The legacy one-shot request continues backend JSON mode.
 

@@ -2,7 +2,23 @@
 
 Updated: 2026-11-05
 
-## V24 a2 actual reasoning JSON readiness after the failed a1 control
+## V24 a3 role separated workflow prepared after a2 string fidelity failure
+
+A2 passes six actual controls then fails the seventh: decoded real line feeds
+become literal backslash,n characters. Preserve seven POSTs/264.59 adapter
+seconds,78216 input/3300 total output tokens and the failed certificate; no a2
+native production is launched. Its source-specific software suite still passes
+2640 tests/six skips in979.72s, which does not override that actual failure.
+
+The [a3 workflow](protocols/campaigns/native-thinking-exploration-v24-a3.md)
+uses the same fixed local model with thinking0.6 for planning and non-thinking0.2
+for precise literal editing. Profiles are source-task-owned, not selected by
+observations. All14 expected controls, raw JSON values, parser, scientific loss/
+world and legal actions remain unchanged. The focused scope passes230 checks;
+fresh actual per-role mode/fidelity evidence and cold replay remain required.
+No a3 model call is made at this entry. The full goal stays unmet and active.
+
+## V24 a2 failed string fidelity after the failed a1 syntax control
 
 At frozen source2`200bf74`, actual readiness passes five controls then fails
 the sixth on one extra closing brace. All six replies have nonempty separate
@@ -15,9 +31,10 @@ requests generation-time JSON syntax constraints alongside unchanged reasoning,
 budgets, exact controls and scientific setting. Final parsing/schema remain
 strict; no prefix/brace salvage or candidate policy is added. Its focused
 scope passes224 tests. At frozen`6480329`, fresh14-control actual compatibility
-is running; the first six controls pass, including the previously malformed
-nested case, and a separate reasoning field is observed. Remaining controls
-and cold replay must still pass before production; none is launched here.
+first passes six controls, including the previously malformed nested case,
+then fails the seventh on altered line-feed values. Separate reasoning is
+observed, but strict final-value fidelity is not achieved; no production is
+launched. The separate a3 continuation and source-specific outcomes are above.
 The full goal remains unmet and active. Exact a1 source2 software scope closes
 2639 passes/six skips in1273.00s without overriding its failed real control.
 

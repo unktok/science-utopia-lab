@@ -15,18 +15,24 @@ from tests.optimization.test_native_staged_author_v15 import apply
 def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
     messages = [{'role': 'user', 'content': 'SCRIPTED fixture'}]
     original = deepcopy(messages)
-    actual = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.6)
+    actual = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.6,
+        role='planner')
     assert actual['think'] is True and actual['format'] == 'json' and actual['stream'] is False
     assert actual['options'] == {'temperature': .6, 'num_predict': 8192, 'num_ctx': 32768,
         'top_p': .95, 'top_k': 20, 'min_p': 0.0, 'seed': actual['options']['seed']}
     assert messages == original
     assert decoding_contract('staged-v15')['max_tokens'] == 8192
+    editor = designer_payload('staged-v15', BINDING, messages, ('SCRIPTED',), max_tokens=8192, temperature=.2,
+        role='editor')
+    assert editor['think'] is False and editor['options']['temperature'] == .2
     legacy = designer_payload('one-shot-v14', BINDING, messages, ('SCRIPTED',), max_tokens=2048, temperature=.2)
     assert legacy['think'] is False and legacy['format'] == 'json'
     assert legacy['options'] == {'temperature': .2, 'num_predict': 2048, 'num_ctx': 32768,
         'seed': actual['options']['seed']}
     with pytest.raises(ValueError, match='unknown'):
         decoding_contract('model-authored-protocol')
+    with pytest.raises(ValueError, match='unknown'):
+        decoding_contract('staged-v15', role='WORLD_STRING_REQUESTING_PLANNER')
 
 
 def test_editor_advertises_implementation_first_without_removing_any_legal_tool():
@@ -83,3 +89,59 @@ def test_nested_control_with_extra_closing_brace_still_rejects_without_prefix_sa
     assert _strict_json(text) == action
     with pytest.raises(json.JSONDecodeError, match='Extra data'):
         _strict_json(text + '}')
+
+
+def test_real_line_feeds_are_not_silently_restored_from_literal_backslash_n():
+    from utopia.optimization.native_search_generator_v14 import _strict_json
+    value = 'SCRIPTED\n"quoted" \\ source'
+    wrong = value.replace('\n', '\\n')
+    assert _strict_json(json.dumps({'value': wrong}))['value'] == wrong
+    assert wrong != value
+
+
+def test_staged_dispatch_uses_caller_owned_planner_then_literal_editor_temperatures(tmp_path):
+    from tests.optimization.test_native_staged_author_v15 import Model, author
+    from utopia.optimization.native_staged_author_v15 import task_decoding_role, PLAN_SYSTEM_PROMPT, SYSTEM_PROMPT
+    model = Model([PLAN, {'tool': 'finish', 'rationale': 'SCRIPTED explicit retention'}])
+    result = author(model, tmp_path, max_steps=3)(request())
+    assert result['base_patch'] is None
+    assert [call['temperature'] for call in model.calls] == [.6, .2]
+    assert task_decoding_role(PLAN_SYSTEM_PROMPT) == 'planner'
+    assert task_decoding_role(SYSTEM_PROMPT) == task_decoding_role('UNTRUSTED planner request') == 'editor'
+
+
+def test_editor_reasoning_fields_cannot_substitute_for_missing_planner_mode_evidence(tmp_path, monkeypatch):
+    from tests.optimization.test_native_designer_contract_v16 import ScriptedSession, Response
+    from utopia.optimization.native_designer_preflight import run_calibration
+    class WrongRoleSession(ScriptedSession):
+        def post(self, url, **kwargs):
+            response = super().post(url, **kwargs)
+            payload = json.loads(kwargs['data'])
+            if payload['think']:
+                response.body['message'].pop('thinking', None)
+            else:
+                response.body['message']['thinking'] = 'SCRIPTED unexpected editor field'
+            return Response(response.body)
+    monkeypatch.setattr('requests.Session', WrongRoleSession)
+    result = run_calibration(tmp_path / 'wrong-role', request=request(), provider=BINDING)
+    assert len(result['records']) == 14 and all(record['ok'] for record in result['records'])
+    assert result['reasoning_evidence']['known_nonempty_response_fields'] == 13
+    assert result['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 0
+    assert result['all_controls_passed'] is False
+
+
+def test_requested_planner_evidence_does_not_hide_unexpected_editor_reasoning(tmp_path, monkeypatch):
+    from tests.optimization.test_native_designer_contract_v16 import ScriptedSession, Response
+    from utopia.optimization.native_designer_preflight import run_calibration
+    class ExtraEditorThinkingSession(ScriptedSession):
+        def post(self, url, **kwargs):
+            response = super().post(url, **kwargs)
+            if not json.loads(kwargs['data'])['think']:
+                response.body['message']['thinking'] = 'SCRIPTED unexpected literal-editor reasoning'
+            return Response(response.body)
+    monkeypatch.setattr('requests.Session', ExtraEditorThinkingSession)
+    result = run_calibration(tmp_path / 'unexpected-editor-thinking', request=request(), provider=BINDING)
+    assert len(result['records']) == 14 and all(record['ok'] for record in result['records'])
+    assert result['reasoning_evidence']['all_requested_roles_observed'] is True
+    assert result['reasoning_evidence']['all_role_modes_compatible'] is False
+    assert result['all_controls_passed'] is False

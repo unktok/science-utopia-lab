@@ -243,3 +243,44 @@ reasoning field with backend JSON mode requested. This supports compatibility
 for those controls, not all14, correctness of reasoning or institutional
 invention. Continue the remaining finite controls and cold replay; never launch
 production on this partial evidence alone.
+
+## A2 string fidelity failure and source owned role separation
+
+A2 readiness passes controls0–5, then fails`typed-6`on an altered string value.
+The reply is known, complete, valid JSON, with separate reasoning; the original
+line feed after the first three Japanese characters is code point10, whereas
+the decoded reply has92,110 (literal backslash,n). The same substitution occurs
+at the other intended line feeds. The parser must not normalize it back.
+
+Preserve all seven charged POSTs/replies,264.5944487100933s adapter time,78216
+input/3300 reported total output tokens and failed certificate
+`cc8001f5a65af3c67d2b2da52a0500d53a5cdace48dcc0117d5449911f62b89d`.
+All seven reasoning fields are nonempty. Calibration exits1 and no a2 native
+production is launched. Remaining controls are unexecuted, not hidden retries.
+
+Prepare[the separate a3 protocol](../protocols/campaigns/native-thinking-exploration-v24-a3.md)
+before further inference: same weights, thinking planner0.6 and non-thinking
+literal editor0.2, both JSON mode and the same8192-token cap. Typed/editing
+controls match the actual editor profile; the plan control matches the actual
+planner. Cold replay binds each caller-owned role/profile and cannot borrow
+editor response fields to claim planner mode. Keep every exact expected value,
+including line feeds, all host-valid actions, original world/losses and source
+budgets. Explain one-time JSON encoding in source tasks; never repair the reply.
+This is not weakening a control or silently changing inference after failure.
+
+The initial role-separated focused scope passes228 SCRIPTED checks in25.12s.
+Add explicit independent checks for exactly13 editor controls at non-thinking0.2
+and one planner control at thinking0.6, role-specific cold reconstruction,
+rehashed role tampering and unexpected reasoning in literal editors. Editor
+fields cannot substitute for missing planner evidence; correct planner evidence
+cannot hide an unexpected editor mode. The final combined scope passes230
+checks in25.42s, JUnit
+`outputs/native-planning-author-v22-verification/v24-a3-final-prelaunch.xml`.
+These overlapping counts are not added. No a3 model call is made here.
+
+The actual-a2 source's broad software scope closes2640 passes/six skips in
+979.72s, JUnit SHA
+`66bb6c2fb94e2b12ea47cc0040c7308c5c6bef2f6d1d67db61d3fc5a5e193ada`.
+This does not override its failed real string-fidelity control. Preserve both
+the failed a1 and a2 actual evidence/costs. A3 needs its own clean freeze and
+fresh14-control actual readiness; no older certificate authorizes production.

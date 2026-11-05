@@ -171,6 +171,20 @@ def test_certificate_replays_all_exact_wire_typed_controls_and_continuous_code_s
     assert result['controls'] == 14
 
 
+def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(certificate):
+    value = json.loads(certificate.read_text())
+    roles = [record['intent']['decoding_role'] for record in value['records']]
+    assert roles == ['editor'] * 8 + ['planner'] + ['editor'] * 5
+    for index, record in enumerate(value['records']):
+        payload = record['transport']['request_payload']
+        assert payload['think'] is (index == 8)
+        assert payload['options']['temperature'] == (.6 if index == 8 else .2)
+        assert payload['options']['num_predict'] == 8192 and payload['format'] == 'json'
+    assert value['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 1
+    assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 0
+    assert value['reasoning_evidence']['all_role_modes_compatible'] is True
+
+
 def test_one_shot_has_its_own_protocol_bound_controls_and_certificate(tmp_path, monkeypatch):
     monkeypatch.setattr('requests.Session', ScriptedSession)
     directory = tmp_path / 'one-shot'
@@ -183,7 +197,8 @@ def test_one_shot_has_its_own_protocol_bound_controls_and_certificate(tmp_path, 
 
 @pytest.mark.parametrize('mutation', ['pass-flag', 'drop-call', 'wire', 'output', 'schema',
     'partial', 'runtime', 'backend', 'receipt', 'model', 'seed', 'unsafe-number', 'expired', 'future',
-    'think', 'temperature', 'max-tokens', 'decoding', 'thinking-only', 'reasoning-evidence', 'backend-format'])
+    'think', 'temperature', 'max-tokens', 'decoding', 'thinking-only', 'reasoning-evidence', 'backend-format',
+    'decoding-role'])
 def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, mutation):
     value = json.loads(certificate.read_text()); record = value['records'][0]
     if mutation == 'pass-flag': value['all_controls_passed'] = False
@@ -202,15 +217,16 @@ def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, 
     elif mutation == 'unsafe-number': value['records'][7]['output']['operations'][0]['value'] = 9007199254740992
     elif mutation == 'expired': value['completed_epoch'] -= 86401
     elif mutation == 'future': value['completed_epoch'] += 100
-    elif mutation == 'think': record['transport']['request_payload']['think'] = False
+    elif mutation == 'think': record['transport']['request_payload']['think'] = not record['transport']['request_payload']['think']
     elif mutation == 'temperature': value['plan']['temperature'] = .2
     elif mutation == 'max-tokens': value['plan']['max_tokens'] = 2048
-    elif mutation == 'decoding': value['plan']['decoding_contract']['sampling_options']['top_p'] = .8
+    elif mutation == 'decoding': value['plan']['decoding_contract']['editor']['sampling_options']['top_p'] = .8
     elif mutation == 'thinking-only':
         record['transport']['response_payload']['message'] = {'content': '', 'thinking': json.dumps(record['output'])}
         record['transport']['raw_http_response'] = json.dumps(record['transport']['response_payload'])
     elif mutation == 'reasoning-evidence': value['reasoning_evidence']['known_nonempty_response_fields'] = 0
     elif mutation == 'backend-format': record['transport']['request_payload'].pop('format')
+    elif mutation == 'decoding-role': record['intent']['decoding_role'] = 'planner'
     value['content_sha256'] = digest({key: item for key, item in value.items() if key != 'content_sha256'})
     certificate.write_text(json.dumps(value))
     with pytest.raises(ValueError):

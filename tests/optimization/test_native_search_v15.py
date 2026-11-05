@@ -78,10 +78,13 @@ def test_prospective_driver_freezes_all_loss_and_step_budgets_before_calls():
     assert plan['budget']['maximum_designer_digest_preflight_GETs'] == 32
     assert plan['budget']['per_generation_tool_steps'] == 8
     assert plan['budget']['per_call_output_tokens'] == 8192
-    assert plan['designer_decoding']['think'] is True and plan['designer_decoding']['temperature'] == .6
+    assert plan['designer_decoding']['planner']['think'] is True
+    assert plan['designer_decoding']['planner']['temperature'] == .6
+    assert plan['designer_decoding']['editor']['think'] is False
+    assert plan['designer_decoding']['editor']['temperature'] == .2
     assert plan['classification'] == 'actual-local-qwen-thinking-native-exploration-development-v24'
-    assert plan['engineering_revision'] == 'v24-a2'
-    assert plan['protocol'] == 'research/protocols/campaigns/native-thinking-exploration-v24-a2.md'
+    assert plan['engineering_revision'] == 'v24-a3'
+    assert plan['protocol'] == 'research/protocols/campaigns/native-thinking-exploration-v24-a3.md'
 
 
 def test_staged_queue_observes_exact_journals_and_cold_resume_without_redispatch(tmp_path):

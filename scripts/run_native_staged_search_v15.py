@@ -17,11 +17,11 @@ from utopia.optimization.native_search_v15 import NativeStagedSearchQueue, make_
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from utopia.optimization.native_designer_decoding_v24 import (
-    decoding_contract, STAGED_MAX_STEPS, STAGED_MAX_TOKENS)
+    decoding_contracts, STAGED_MAX_STEPS, STAGED_MAX_TOKENS)
 
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
 CLASSIFICATION = 'actual-local-qwen-thinking-native-exploration-development-v24'
-ENGINEERING_REVISION = 'v24-a2'
+ENGINEERING_REVISION = 'v24-a3'
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -46,14 +46,14 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
             'per_generation_tool_steps': STAGED_MAX_STEPS, 'per_call_output_tokens': STAGED_MAX_TOKENS,
             'replacement_policy': 'none'},
         'authoring': 'local Qwen only; no human/Codex candidate implementation',
-        'designer_decoding': decoding_contract('staged-v15'),
+        'designer_decoding': decoding_contracts('staged-v15'),
         'metadata_preflights': 'Separate GET /api/tags during binding and each native-factory construction; repeated CLI startup can repeat metadata reads, never generation POSTs',
         'interface_certificate': 'Required before queue submission and author construction; current certificate '
             'is cold-replayed with live version/tags GETs before each designer POST. These additional '
             'metadata reads are not designer generations or scientific-world slots.',
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
-        'protocol': 'research/protocols/campaigns/native-thinking-exploration-v24-a2.md',
+        'protocol': 'research/protocols/campaigns/native-thinking-exploration-v24-a3.md',
         'native_campaign_status': 'explicitly authorized two-objective two-generation native feedback pilot after V16 interface repair'}
 
 

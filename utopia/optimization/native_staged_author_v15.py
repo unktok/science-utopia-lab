@@ -27,7 +27,7 @@ from utopia.optimization.native_search_generator_v14 import (
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from .native_designer_decoding_v24 import (
-    STAGED_TEMPERATURE, STAGED_MAX_STEPS, STAGED_MAX_TOKENS, designer_payload)
+    decoding_contract, STAGED_MAX_STEPS, STAGED_MAX_TOKENS, designer_payload)
 
 PROTOCOL = 'scienceutopia.staged-author.v15'
 REQUEST = 'scienceutopia.staged-author-request.v15'
@@ -39,7 +39,10 @@ MAX_DRAFT_BYTES = 512_000
 MAX_RESULT_BYTES = 96_000
 FINAL_JSON_ONLY = ('Final response content must be exactly one raw JSON object, '
     'without Markdown fences, explanatory prose or reasoning tags. '
-    'Separate provider reasoning is not part of the final action.')
+    'Separate provider reasoning is not part of the final action. '
+    'The host decodes JSON exactly once. Preserve original string code points, '
+    'including real line feeds, quotes and literal backslashes. '
+    'A supplied target action is already serialized JSON; do not add another escaping layer.')
 SYSTEM_PROMPT = ('Implement the stored model_authored_design_plan through literal tool actions. '
     'This is an institutional design-to-code task, not a correctness review of existing code. '
     'If no plan is stored, choose your own candidate under the exact loss. You may revise the '
@@ -116,6 +119,11 @@ EDITOR_ACTION_SCHEMA = {'oneOf': [_tool_schema(tool, *TOOL_FIELDS[tool]) for too
 def call_task(index, max_steps):
     """Python-owned task choice, never a world/request string promoted to SYSTEM."""
     return PLAN_SYSTEM_PROMPT if index == 0 and max_steps > 1 else SYSTEM_PROMPT
+
+
+def task_decoding_role(system_prompt):
+    """Caller-owned role choice; observed values never request reasoning."""
+    return 'planner' if system_prompt in (PLAN_SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT) else 'editor'
 
 
 def turn_response_schema(remaining_calls):
@@ -953,10 +961,13 @@ class StagedVocabularyGenerator:
         output, messages, action_transition, errors = None, [], None, []
         status, begin = 'transport-error', time.monotonic()
         try:
+            task = call_task(started['step'], self.settings['max_steps'])
+            role = task_decoding_role(task)
             output, messages = self.model.generate(prompt=started['prompt'],
-                system_prompt=call_task(started['step'], self.settings['max_steps']),
+                system_prompt=task,
                 seed_ctx=('native-staged-designer-v15', binding['binding_sha256'], started['step']),
-                max_tokens=self.settings['max_tokens'], temperature=STAGED_TEMPERATURE,
+                max_tokens=self.settings['max_tokens'],
+                temperature=decoding_contract('staged-v15', role=role)['temperature'],
                 response_format={'type': 'json_schema', 'json_object': {'name': 'native_staged_author_v15',
                     'schema': clone(ACTION_SCHEMA)}})
             if digest(_strict_json(_assistant_text(messages))) != digest(output):
@@ -1076,8 +1087,9 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
             if actual != self.binding['model_digest']:
                 raise ValueError('designer model digest differs from pinned operator binding')
             messages = build_conversation(prompt, system_prompt, mode=self.conversation_mode)
+            role = task_decoding_role(system_prompt)
             payload = designer_payload('staged-v15', self.binding, messages, seed_ctx,
-                max_tokens=max_tokens, temperature=temperature)
+                max_tokens=max_tokens, temperature=temperature, role=role)
             self.last_transport = {'request_payload': clone(payload), 'model_digest': actual,
                 'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
                 'preflight': preflight,

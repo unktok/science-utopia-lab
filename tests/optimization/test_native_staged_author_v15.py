@@ -628,7 +628,7 @@ def test_staged_dialogue_transport_is_one_exact_final_json_loopback_post(monkeyp
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
-            assert self.payload['think'] is True and self.payload['stream'] is False
+            assert self.payload['think'] is False and self.payload['stream'] is False
             assert self.payload['options']['top_p'] == .95 and self.payload['options']['top_k'] == 20
             assert self.payload['options']['min_p'] == 0.0
             return Response({'message': {'thinking': 'SCRIPTED not a tool action',
