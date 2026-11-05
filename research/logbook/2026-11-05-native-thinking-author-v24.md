@@ -138,3 +138,10 @@ feedback and a subsequent measured proposal. Repeated worlds of one retained
 system, plans, unused fields, comments or merely different source hashes are
 insufficient. A non-improving but genuinely different measured system remains
 an admissible result; no candidate novelty/merit veto is added to the search.
+
+Freeze source2 at`200bf74da0fce8a7f29733bb5f370be38c2ac61f`in
+`experiment-native-thinking-exploration-v24-a1-source2`, tagged
+`protocol/native-thinking-exploration-v24-a1-source2`. Start its full SCRIPTED
+scope with JUnit`outputs/native-planning-author-v22-verification/full-200bf74.xml`.
+The earlier5bf full scope continues in its untouched tree. Neither source has
+sent a V24 model call; the final source2 is the sole prospective actual source.
