@@ -116,3 +116,37 @@ The paired development9-test JUnit SHA is
 f50fe8dc571dee95a61487cd95fd39039b1c68525944a8f00aa259e78c725921.
 Broad source-specific a2 checks run separately in its unchanged3fda tree.
 No V32 actual inference/calibration has occurred; V31's original pilot continues.
+
+The43 broad suite reveals a stale V31 classification/revision/protocol assertion
+in test_native_search_v15's frozen-budget test, omitted from the initial focused
+list. A separate exact43 targeted reproduction43097 exits1 at that old metadata
+assertion; all preceding four-slot/32-call/loss/decoding assertions pass. Neither
+broad43 nor broad3fda is claimed passed. Do not modify either running source.
+Create track-native-v32-driver-contract-check from main0c13e22 and update only
+the expected declared V32 a2 metadata in that test, also checking the exact
+protocol file exists and the declared40960 windows. Production code and budgets
+do not change. Include the whole native_search_v15 test module in the corrected
+focused scope and retain the original broad-suite failure evidence.
+
+Separately, read-only engineering replay94745 of the three completed V31
+generations under3fda reproduces all21 parsed literal actions' acceptance and
+exact before/after document/draft hashes, preserving the one no-action incomplete
+reply. The only new consumer notice is on the actual valid adapter-parameter
+edit. This is not a new original-source audit, scientific candidate or native
+measurement; new model/world calls are zero. Keep the unmodified c62 final audits
+as the authority for V31 after its writer is terminal.
+
+V31 efficiency G0 actually measures loss12 at fingerprint
+c0deff3060e2d23a20020062729a21238ffcd7dea88164f0e0429e1a2db2134c,
+with97 scientist request lines observed. Its actual G1 request
+641759a08fafa592f452e89a75650b7189427b91fb58a10a95d5414c1652894f names
+observation-native-adaptive-831b517f8d6b696bf9a26142 and contains that one own
+actual observation/history. G1 is authoring. This establishes own-result input,
+not a functional new institution or full-goal completion.
+
+The corrected expanded focused scope16724 exits0:318 passes in44.47s,
+JUnit outputs/native-contract-layout-v32-verification/focused-a2-driver-check.xml.
+It includes the entire native_search_v15 controller/queue/driver module, existing
+budget checks, both ABI additions, exact controls and original paired-world
+request invariance. Runtime code remains byte-identical to3fda; only the stale
+test expectation and research notes change after that implementation source.
