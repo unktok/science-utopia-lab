@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V27 literal node workbench and unchanged-world verification protocol](protocols/campaigns/native-literal-workbench-v27-a1.md)
+- [V27 implementation and regression log](logbook/2026-11-06-native-literal-workbench-v27.md)
+
 - [V25 a3 closed unchanged four-world result and observed failure modes](results/native-tool-calling-exploration-v25-a3.md)
 - [V25 a3 matching adapted raw audits and original source proof](results/native-tool-calling-exploration-v25-a3.json)
 

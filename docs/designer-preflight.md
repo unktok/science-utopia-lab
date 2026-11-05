@@ -88,6 +88,16 @@ reply is repaired or retried. Free authoring additionally receives its own
 previous plan, literal implementation facts and measured results as data, not
 as policy instructions or proof of institutional improvement.
 
+V27 keeps the same response channel and exact controls, but changes production
+editor context. A literal workbench shows current nodes, source, root fields
+and complete root addresses, with explicit bounded-body omission descriptors.
+Already observed values can be edited without a mandatory extra read. The
+first planner stays source-free; editor tool signatures put edit/splice first
+without removing any legal tool or operand. Saved/cold reconstruction uses
+canonical entry order. This is current-parent information, not a host-authored
+candidate, source repair or scientific merit gate. A fresh V27 source-bound
+actual certificate remains required; V26's pass does not authorize it.
+
 Pass `--designer-preflight <certificate.json>` to:
 
 - `scripts/run_native_staged_search_v15.py`

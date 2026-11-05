@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## Literal node editor workbench is prepared separately
+
+V27 supplies actual current node/source/root-field values and exact addresses
+to editors while retaining source-free first planning. It allows direct edits
+of already observed values and advertises implementation tools first without
+removing any action. Values are parent observations, not host-authored policies.
+The final focused scope passes298 SCRIPTED checks in51.61s, including all19
+original nodes, exact reads, explicit omissions and canonical cold replay.
+See the [protocol](protocols/campaigns/native-literal-workbench-v27-a1.md).
+
+The frozen V26 writer remains live. G0 measures loss -1 with the original
+system; its exact observation reaches G1. G1 now attempts edits but rejects
+plan-derived invalid paths, so a different executable institution remains
+unshown. No V27 actual model call has occurred. A clean freeze, fresh actual
+readiness and real exploration remain required; do not modify the live V26 run.
+
 ## V26 all14 actual controls pass and native exploration is running
 
 At frozen `6d27c2a`, all14 real-backend controls and cold replay pass. Correct

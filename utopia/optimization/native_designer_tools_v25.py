@@ -48,16 +48,21 @@ DESCRIPTIONS = {
 }
 
 
-def tool_specifications():
+def tool_specifications(*, role=None):
     """Derive all seven parameter schemas from the authoritative host contract.
 
     No hand-maintained copy of operation/value schemas and no backend grammar
     that would narrow arbitrary JSON operands. Every host-valid action remains
     expressible, including retention and every optional author annotation.
     """
-    from .native_staged_author_v15 import ACTION_FIELDS, TOOL_FIELDS, _tool_schema
+    from .native_staged_author_v15 import ACTION_FIELDS, TOOL_FIELDS, EDITOR_ACTION_SCHEMA, _tool_schema
+    if role not in (None, 'planner', 'editor'):
+        raise ValueError('unknown source-owned tool advertisement role')
+    names = (list(TOOL_FIELDS) if role != 'editor' else
+        [part['properties']['tool']['const'] for part in EDITOR_ACTION_SCHEMA['oneOf']])
     result = []
-    for name, fields in TOOL_FIELDS.items():
+    for name in names:
+        fields = TOOL_FIELDS[name]
         parameters = _tool_schema(name, *fields)
         parameters['required'].remove('tool')
         del parameters['properties']['tool']
@@ -128,7 +133,7 @@ def action_from_body(body):
     return action_from_message(body.get('message'))
 
 
-def tool_system_prompt():
+def tool_system_prompt(*, role=None):
     """Use the model's trained Hermes syntax without Ollama's lossy argument map.
 
     Ollama0.33.3's native argument-map JSON decoding has float64 round-trip
@@ -139,7 +144,7 @@ def tool_system_prompt():
     """
     return ('\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\n'
         'You are provided with function signatures within <tools></tools> XML tags:\n<tools>\n'
-        + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False) for tool in tool_specifications())
+        + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False) for tool in tool_specifications(role=role))
         + '\n</tools>\n\n' + TOOL_RESPONSE_ONLY)
 
 
