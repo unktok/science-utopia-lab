@@ -118,3 +118,20 @@ addressed-selection bias0.7→0.75, retains thresholds[[3],[4]], and passes stat
 validation. At this entry final submission/native loss/own-result follow-up
 remain unproven; the writer continues. This is existing-parameter institutional
 optimization, not a claim that a new algorithm or mechanism has been invented.
+
+Step05 again rejects nonexistent world.selection fields; step06 rejects
+dot-separated nonexistent field names. Rejection is atomic and does not erase
+the prior accepted addressed-selection edits. Step07 explicitly finishes and
+validates. Its actual patch has four literal replace operations (step02 and
+step04), leaving thresholds[[3],[4]]/bias0.75. The model's free-text provenance
+says retention, but is untrusted descriptive text: actual patch replay is
+changed. Do not infer unchanged institutions from that label.
+
+The resulting original-world measurement starts at
+worlds/native-adaptive-fa7ce756ee72db98faac1b2b-s42. Its actual first scientist
+wire has seed2089667989, temperature0.7/max_tokens768 and full payload hash
+af89ddf913d9f2e5931bb5f49cbecfbbad2180888fd6a0ab4bf2e362b4cab19d,
+exactly matching the earlier read-only V30 display projection of both archived
+V28 first requests. This is actual pre-treatment input evidence for the repair,
+not an outcome comparison against old-source losses. Native loss and own-result
+follow-up remain pending; live PID98150 continues without replacement.
