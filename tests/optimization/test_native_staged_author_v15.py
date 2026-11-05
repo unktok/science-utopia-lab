@@ -548,7 +548,7 @@ def test_fixed_authoring_rules_are_system_authority_but_adversarial_observations
     assert 'TRUSTED INSTITUTION-AUTHORING PROTOCOL' in system
     assert 'Return ONE JSON tool action per turn' in system
     assert 'Python-node ABI' in system
-    assert 'Minimize the exact_loss_spec' in system
+    assert 'Minimize loss_arithmetic' in system
     assert marker not in system
     assert marker in messages[1]['content'] and marker in messages[-1]['content']
     # An arbitrary JSON string in a similarly named field is never promoted.

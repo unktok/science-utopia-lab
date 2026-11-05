@@ -2,6 +2,30 @@
 
 Updated: 2026-11-05
 
+## V23 numeric objective interface prepared while V22 a2 closes
+
+V22 a2 G0 finishes16 actions without a code edit, explicitly retains the parent
+and measures-1 in the original world. G1's actual plan cites registry prose
+about scientific value as a reason to add scientific-merit/anti-gaming aims.
+Those are not requested loss terms. No new executed rule is shown at this entry.
+The full goal stays active; the [adaptive stop addendum](protocols/campaigns/native-planned-exploration-v22-a2-stop-addendum.md)
+lets the first arm's two native measurements/own feedback close, then captures
+an auditable between-arm stop rather than claiming all four slots complete.
+
+The [prepared V23 interface](protocols/campaigns/native-numeric-objective-exploration-v23-a1.md)
+keeps full original LossSpecs, hashes and scientific losses unchanged. Actual
+author messages receive exact computational fields/measurement definitions,
+not noncomputational registry commentary as a competing requirement. Own
+numeric outcomes/failures remain; no institution, code, threshold or gate is
+supplied. It includes a3's task tail without changing decoding or provider.
+The corrected focused scope passes195 SCRIPTED tests; no V23/a3 actual model
+call is made yet. Close/audit a2 first, skip another pilot if the full goal is
+met; otherwise freeze V23 and require fresh14-control actual readiness.
+
+A2's exact-source full software suite passes2611 tests/six skips in1458.61s.
+A3's separate prepared-source full suite is still running at this entry.
+See the [forward-only V23 log](logbook/2026-11-05-native-numeric-objective-v23.md).
+
 ## V22 a2 actual exploration running; a3 editor task reminder conditional
 
 V21's four actual systems remain unchanged, so the full exploration goal stays

@@ -35,7 +35,9 @@ def test_first_planner_context_has_structure_and_loss_but_no_parent_source_or_st
     raw = messages[1]['content'].split('\n', 1)[1]
     data, end = json.JSONDecoder().raw_decode(raw)
     assert raw[end:] == '\n\nCURRENT PYTHON-OWNED TASK\n' + PLAN_SYSTEM_PROMPT
-    assert data['exact_loss_spec'] == body['loss_spec']
+    from utopia.optimization.native_objective_view import loss_arithmetic
+    assert 'exact_loss_spec' not in data
+    assert data['loss_arithmetic'] == loss_arithmetic(body['loss_spec'])
     assert not data['current_parent_source_supplied']
     assert len(data['planning_system_structure']['mechanisms']) == 2
     assert data['response_schema'] == PLAN_ACTION_SCHEMA

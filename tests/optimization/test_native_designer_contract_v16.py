@@ -225,7 +225,7 @@ def test_calibration_mode_is_explicit_not_triggered_by_observed_strings():
         binding_sha256='d' * 64, settings={'max_steps': 7})
     messages = build_conversation(prompt, SYSTEM_PROMPT)
     assert data['parent_system']['metadata']['attack'] not in messages[0]['content']
-    assert 'Minimize the exact_loss_spec' in messages[0]['content']
+    assert 'Minimize loss_arithmetic' in messages[0]['content']
     control = build_conversation(prompt, 'EXPLICIT PYTHON TASK', mode='interface-control-v16')
     assert control[0]['content'] == 'EXPLICIT PYTHON TASK' and len(control) == 2
     with pytest.raises(ValueError, match='unknown designer conversation mode'):
