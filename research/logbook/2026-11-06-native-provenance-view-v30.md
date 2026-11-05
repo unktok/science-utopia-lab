@@ -135,3 +135,32 @@ exactly matching the earlier read-only V30 display projection of both archived
 V28 first requests. This is actual pre-treatment input evidence for the repair,
 not an outcome comparison against old-source losses. Native loss and own-result
 follow-up remain pending; live PID98150 continues without replacement.
+
+## Throughput G0 is measured, and its exact result reaches actual G1 planning
+
+The first original-world measurement completes with status complete/loss0,
+native.accepted_decisions0, rejected8/reviews24, no technical failures.
+Final system.json retains actual thresholds[[3],[4]]/bias0.75 at the consumed
+program.tensor.v1 node. Executed fingerprint
+b33414c1d29dcfb6d09370851066306f2e040f5ca1949b3b99127798511982ef;
+checkpoint60286df9c94c995e4094eb646ca8ef1950f356efc87e2209255235ce8ded86be,
+event streamda1bc2470cad7419e22ccdf3b47a879825f55b6df0266d44c3fddb4176c66bbc.
+No scientific improvement or comparison against older renderer losses is claimed.
+
+G1 request23257442607ab578c2843116dac0c3e490c042f685f2c34dcd96562ef4b9b265
+has one own history record and observation-native-adaptive-fa7ce756ee72db98faac1b2b
+at loss0/status complete, based_on_observation_id exactly matches it. Parse the
+actual planner HTTP request's PLANNING DATA ONLY JSON: own_trial_feedback
+includes that exact observation, metrics, raw evidence hashes and applied/
+rejected author history, with only the prior full candidate body replaced by
+its explicit archived hash/reference. Original observation hash
+ea37b9148c0174672cbfb69cc03d1e4e0dc0bb58b4856609e6fd5f12c4b08f43.
+The recorded source-prompt SHA matches the started request. This is actual
+own-measured-result input evidence, not merely a prepared local request.
+
+G1 planner step00 completes/applies a new plan with13811 input/1045 output
+tokens in67.95554749993607s; editing continues in live PID98150. A generated
+plan's scientific-quality rhetoric is untrusted model text, not an added host
+constraint or a proof of better science. One of four scheduled native slots is
+complete. G1 re-evaluation, other-loss measurements and final two exact-source
+audits remain pending; the full original goal is active and unmet.

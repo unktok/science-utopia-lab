@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V30 first functional institution is measured; its own outcome reaches G1
+
+Throughput G0 explicitly submits actual parameter replacements in the consumed
+addressed-selection tensor program: thresholds[[3.5],[4.5]]→[[3],[4]],
+bias0.5→0.75. Its original-world two-year measurement completes with loss0,
+accepted0/rejected8/reviews24 and no technical failures. Executed system
+fingerprintb33414c1d29dcfb6d09370851066306f2e040f5ca1949b3b99127798511982ef
+matches the changed candidate; this is not V28's unused version edit.
+It is existing-parameter optimization, not new algorithm/mechanism invention,
+and does not establish scientific improvement or an old-source causal contrast.
+
+G1 request23257442607ab578c2843116dac0c3e490c042f685f2c34dcd96562ef4b9b265
+contains that exact own observation/history. Its actual planner wire includes
+loss0/status complete and the same observation ID; source-prompt hash matches
+the recorded request. The planner replies with a new plan and editing is live
+in PID98150. Only one of four scheduled native slots is complete. Multiple
+candidate measurements and follow-up re-evaluation remain required; keep the
+original full goal active, not complete on this partial loop.
+
 ## V30 all24 actual controls and broad tests pass; native search is live
 
 At frozen c53491f4b96b67261a406b337c9082d540054072, all24 actual
