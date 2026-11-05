@@ -2,7 +2,7 @@
 
 Updated: 2026-11-05
 
-## V21 objective arithmetic and explicit author notes in the native pilot
+## V21 closes with valid no-op edits and no institutional exploration
 
 The full exploration goal remains active. V20 closes all four original-world
 evaluations with exact parent retentions, so its repaired instruction alone
@@ -21,9 +21,14 @@ in1082.77s; overlapping focused scopes are not added. All13 actual interface
 controls and cold replay pass in274.50214641704224 adapter seconds, separately
 from production. The four-slot writer starts2026-11-05T10:08:15.237951Z from
 the separate frozen experiment tree, only after V20's closed outcome audit.
-Throughput G0 explicitly finishes after six calls with two accepted no-op
-source edits; its first native evaluation is in progress. No institutional
-change or improvement is shown at this point. The full goal stays active.
+The writer exits0 after31m28.88s. The [closed actual result](results/native-objective-exploration-v21-a1.md)
+records losses`[-1,-1]` and`[8,8]`, all four systems equal to the original parent,
+20 known author replies, seven accepted no-op edits and zero tool/native errors.
+Physical work is368 scientist replies and32 inherited-code executions; no newly
+authored source executes. Two identical audits verify122 unchanged raw files
+and248 source files. The full exploration goal remains unmet and active.
+The next prepared workflow separates source-free model-authored planning from
+literal implementation, with fresh14-control readiness required before launch.
 See the [prospective protocol](protocols/campaigns/native-objective-exploration-v21-a1.md)
 and [execution log](logbook/2026-11-05-native-objective-exploration-v21.md).
 

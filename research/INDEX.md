@@ -6,6 +6,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V21 closed four-world outcome with valid no-op edits and no institutional change](results/native-objective-exploration-v21-a1.md)
+- [V21 exact source/raw/own-feedback/physical-cost audit](results/native-objective-exploration-v21-a1.json)
 - [V21 prepared objective arithmetic and explicitly untrusted author notes](components/native-objective-view-and-author-notes-v21.md)
 - [V21 conditional prospective continuation after V20 closes](protocols/campaigns/native-objective-exploration-v21-a1.md)
 - [V21 source verification and fresh calibration execution log](logbook/2026-11-05-native-objective-exploration-v21.md)

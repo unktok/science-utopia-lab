@@ -113,3 +113,32 @@ the old source to copy, then pass that exact untrusted plan to the editor.
 No host policy should be supplied and unchanged candidates must stay legal.
 This is an unimplemented next option, not an authorized extra inference probe
 or a claim that planning separation solves the issue. Keep the full goal active.
+
+## Closed actual result without different institutions
+
+The writer exits0 at2026-11-05T10:39:44.118291Z,1888.88034s after its durable
+start. Throughput calls6/5 and reviewed-production calls3/6 produce losses
+`[-1,-1]` and`[8,8]`. All four measured systems retain the exact original parent;
+all final source/parameter/graph/protocol/process differences are zero. Seven
+accepted edit transactions are no-ops. There is no tool rejection, unknown
+reply or generation/native failure in this sample. Those technical successes
+do not establish the active exploration goal.
+
+Two matching frozen-source read-only audits agree byte-for-byte, preserving122
+raw files and248 source files. Compact hash
+`5638366400e613dc236aa112b440265864963d440d21cbcd347cac0a92adf8ef`;
+full hash`87266eacb5102f893efa6510044eec675754cba715a09443a38d69de6d3b5f15`;
+raw digest`50228a9c8b8f49ba048e575fb9aaafb5c58c101ed23d075edaf675ded644078e`.
+Both own-loss/ID inputs and all literal actions/finished definitions are replayed.
+
+Physical cost is20 author POSTs/known replies,368 fresh scientist replies/wire
+requests and32 inherited sandboxed executions. Every world gives`A=1,Q=4,R=24`.
+Designer adapter time559.6240904186852s includes nested HTTP553.2097707500216s;
+scientist adapter time1251.1552352905273s. No new authored source body executes.
+Keep separate calibration274.50214641704224s and parallel full-suite time out
+of writer wall accounting. No old failures/costs are relabelled or refunded.
+
+Publish this unchanged-design outcome and retain the full goal. The separate
+V22 planner/editor implementation passes focused software checks but has no
+actual model/world call yet. It can proceed to fresh14-control calibration
+only after this closed result is recorded. Do not resume or extend V21.
