@@ -2,6 +2,30 @@
 
 Updated: 2026-11-06 JST
 
+## V31 a2 first author failure is preserved; native pilot continues
+
+Exact frozen c62 broad suite72220 finishes:2795 passes/six skips in1321.72s,
+JUnit outputs/native-context-encoding-v31-verification/full-c62a03f.xml,
+SHA d0eedcb4fdcb7b05119f4de556048e56cc91b6fb36a5aa2ea2ca3dfa68b5bac8.
+This is software evidence, not successful institutional invention.
+
+The live pilot's throughput G0 exhausts eight steps without valid explicit
+finish and consumes one slot with null loss; no native world runs for it.
+It replaces code_artifact.outputs first with a port-descriptor array, then
+with a single object schema instead of the required port-name/schema map.
+Read-only replay through the independent underlying validate_code_artifact
+rejects both exact values too; the original parent passes. These rejections
+are not evidence that the authoring layer rejected valid native artifacts.
+Field-name ambiguity rejections are also preserved, without host repair.
+
+Separately, step03 returns HTTP200 with done=false and incomplete final JSON
+after90.385s. Its backend token counts remain unknown. The configured client
+timeout is300s; neither that timeout nor context overflow is established here.
+Read-only backend logs show slot40960 and no explicit error for this event;
+routine task cleanup alone does not identify the cause. Do not call the whole
+interface bug-free or silently salvage/retry the reply. G1 authoring is live
+in73821/PID16216; the original multiple-candidate/own-result goal stays active.
+
 ## V31 a2 all24 actual controls pass; native exploration is live
 
 At frozen c62a03fdd38012098a3867b71a3584aeeab660b0, all24 exact controls,

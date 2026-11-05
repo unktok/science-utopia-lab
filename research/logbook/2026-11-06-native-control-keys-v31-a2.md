@@ -88,3 +88,37 @@ outputs/native-context-encoding-v31-a2. Original researchers/corpus/losses/
 seed42/two-year/five-author scope and no donor history in G0 stay unchanged.
 Broad software suite72220 remains live. No new native observation or completed
 multiple-candidate/own-result loop is claimed at this entry; continue the goal.
+
+Exact frozen c62 broad suite72220 now exits0:2795 passes/six skips in1321.72s.
+JUnit outputs/native-context-encoding-v31-verification/full-c62a03f.xml has
+SHA d0eedcb4fdcb7b05119f4de556048e56cc91b6fb36a5aa2ea2ca3dfa68b5bac8.
+This does not establish free-design success or a universally bug-free system.
+
+Throughput G0 generation4e4419f19ac1de6ec931500394e50764d6aa21a0eb1ba1404534943e89dfd0c2
+ends generation-failed after all eight steps; selected_step=null and no native
+world/loss is manufactured. Steps01/04/06 choose ambiguous literal outputs;
+steps02/05 apply actual literal edits but leave an invalid code artifact.
+Step02 writes a port-descriptor array at code_artifact.outputs; step05 writes
+an object schema there with additionalProperties/properties/type. That field
+is instead a map from port names to payload schemas. Independent read-only
+calls to the underlying validate_code_artifact on the original artifact pass,
+and on each exact edited artifact reject respectively with 'port schemas must
+be an object with at most 32 ports' and 'contract schema must be an object'.
+No candidate/source is repaired or evaluated after failed explicit finish07.
+This distinguishes correct rejection from a transport corruption or an IR
+validator false positive; it does not prove the diagnostic is sufficiently clear.
+
+G0 step03 is a separate protocol failure, not part of those schema rejections.
+The saved raw HTTP200 body has done=false, message.content1021 characters,
+message.thinking1947 characters, no token statistics, done_reason or error.
+The final content ends in JSONDecodeError at position1021; dispatch is refused.
+Adapter duration90.38502066698857s is below its configured300s timeout, so do
+not claim a300s timeout. Request num_ctx40960/max output8192 is unchanged.
+Read-only own-time backend log inspection around2026-11-06T07:36:09+09:00
+shows slot40960, a200 response at about89s and ordinary task cleanup without
+an explicit cause. Normal successful replies also have task-cancel cleanup;
+that log string alone does not prove cancellation caused this failure.
+Do not infer a hidden retry from multiple backend tasks, impute unknown token
+costs, salvage truncated content, alter the backend or label this model-only.
+G1 continues in the unchanged frozen pilot; no readiness/test pass substitutes
+for multiple functional candidate measurements and own-result re-evaluation.
