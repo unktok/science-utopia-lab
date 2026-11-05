@@ -218,3 +218,13 @@ These recommendations do not prove the cause of our loop. Decoding or thinking
 mode is an available later engineering hypothesis, not changed in a2/a3 and
 not evidence that the8B weights inherently cannot invent a system. No provider,
 server configuration or user-owned process is changed by this inspection.
+
+After the first16-call plan/read-only generation, record an explicit
+[adaptive resource stop](../protocols/campaigns/native-planned-exploration-v22-a2-stop-addendum.md)
+before the first closed two-generation arm. Let that arm's native measurements
+and own-result feedback close, then stop only at an auditable between-arm
+boundary without in-flight inference or an unfinished author journal. Preserve
+every actual action/outcome/cost and report remaining slots as unexecuted.
+This is not a preregistered method comparison or full four-slot completion;
+the full exploration goal remains unchanged. Do not spend remaining slots only
+to satisfy the earlier maximum while a prepared engineering repair is waiting.
