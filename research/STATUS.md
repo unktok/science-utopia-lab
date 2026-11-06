@@ -4,6 +4,12 @@ Updated: 2026-11-06 JST
 
 ## V39 execution-first scope authorized; historical copy failures stay failed
 
+At08:32Z G2 completes a second original-world measurement, also loss−7. Its
+newly authored source changes exception handling but retains always-accept:
+own-feedback→new-program→remeasurement is observed, not a different selection
+policy or loss improvement. G1 is an author failure, not a loss.3/8 slots
+consumed; continue the original finite pilot and terminal original-source audits.
+
 At08:15Z the first actually changed candidate completes its native world:
 throughput G0 always-accept source, loss−7 (seven accepted decisions). Its actual
 loss/observation reaches the next actual35B planner POST; original-source wire

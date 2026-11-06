@@ -36,6 +36,17 @@ HTTP body and assistant response to this G1 planner step. This uses no new
 model or code execution. Merely finding a value in an archive is not the proof.
 The terminal full audits and subsequent remeasurement are still pending.
 
+At08:32Z, G2 generationf7d00aa5b5a8e973a804ae01a322280417b371485322db23331987fc8719b347
+completes a second full native measurement: loss -7.0, observation
+`observation-native-adaptive-ba669499e438ab75aa841452`. Its actual model source
+changes exception/default handling while keeping the same always-accept policy.
+Thus observed own-feedback→new-program→remeasurement exists, but this is not
+evidence of a different institutional selection policy or better loss. Keep it
+legal under the declared objective rather than inventing a novelty veto.
+G1 between them is an author failure (three500/EOFs, rejected read-only feature
+extractor write and final8192-token length termination), not another native
+loss. Three of eight slots are consumed and the original finite pilot continues.
+
 G1 currently also has backend500/EOF failures; retain them as charged steps
 with unknown token costs, separate from native losses. Do not change the active
 source, replenish slots, repair generated code, or normalize old evidence.
