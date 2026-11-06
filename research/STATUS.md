@@ -2,6 +2,24 @@
 
 Updated: 2026-11-06 JST
 
+## V35 a2 readiness passes; on-demand-file native optimization is live
+
+Readiness22686 exits0 at frozen8196814:all27 original targets/cold replay and
+separate roles pass, including both formerly difficult string copies and new
+read/write-file controls. Certificate
+dfe73575a0bdc548f0307dcb246aa0ac5b2955f88092ca8d3e48512be6b2d0c4;
+runtimecc4d1db4a3f66b19b0369d0240f71630e8296cdd1665a9d0f64dbb931672f1c2.
+Record27 POSTs/1114.10184908472s/290393 input11397 output, all27 known.
+Fresh loaded-model gate at02:46:48.342704Z verifies the same digest/context40960,
+sidecardc75b7b7386ea62f5e04f4e1a666951b06e51dac44929358f4bf84fefb8ea663.
+
+Only then launch actual native pilot20363 at02:47:09.391899Z, output
+outputs/native-file-workspace-v35-a2. It has eight declared attempt slots/four
+generations per objective, same actual scientist/world settings and one seed;
+G0 has no donor feedback. No functional institution/native measurement is
+claimed merely from launch. Continue to actual results and original-source
+audits; a1's failed source/certificate/cost remain untouched and separate.
+
 ## Fresh V35 a2 actual readiness is live; original target values are unchanged
 
 After failed a1 exit1, freeze separate81968141135ff7724746c557d9bb7c1c579fa075

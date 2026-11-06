@@ -40,3 +40,19 @@ from632d776. No production decoder, tool semantics, world or loss changes.
 Start one independent actual max27 readiness22686/PID83148, same declared V30
 request/V26 provider. At this entry it is live, not a valid certificate, native
 world or functional institution. Continue the original goal after its real gates.
+
+Actual22686 later exits0:all27 exact targets/cold replay/separate role evidence
+pass, certificate dfe73575a0bdc548f0307dcb246aa0ac5b2955f88092ca8d3e48512be6b2d0c4,
+runtimecc4d1db4a3f66b19b0369d0240f71630e8296cdd1665a9d0f64dbb931672f1c2.
+Record27 new POSTs/1114.10184908472 adapter seconds/290393 input11397 output,
+all27 token records known. Typed-6 now matches the unchanged original value;
+this demonstrates that copy at the new frame, not an isolated causal proof of
+why a1 failed or general free-design reliability. No reply is repaired.
+
+Fresh post-readiness cold verification and GET /api/ps pass same model/digest/
+context40960 at02:46:48.342704Z, sealed sidecar
+dc75b7b7386ea62f5e04f4e1a666951b06e51dac44929358f4bf84fefb8ea663.
+Only then start actual eight-attempt native pilot20363 at02:47:09.391899Z from
+unchanged frozen8196814. G0 has no calibration-donor history. It is live with
+zero native measurements at this entry. Continue the unchanged original goal;
+readiness success/file infrastructure is not functional institution invention.
