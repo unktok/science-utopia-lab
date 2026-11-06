@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## Prospective V42 error recovery; no new designer calls yet
+
+V40 full450c17f has1496 pass/one skip/one failure: a redundant exact-name Docker
+rm-f times out10s after a native code+protocol+wiring run. Preserve its failed
+JUnit0e57fd9803ef2d742d824ce1c79342f721b3ca9b5d2f491b2b111cadc6323033.
+Prepare a combined source with normal exit0 --rm cleanup, bounded exceptional
+local cleanup preserving interruptions, dataclass-derived missing-field
+diagnostics, and separate fixed6 history-format+2 thinking-mode probes. No
+generated source repair, policy veto, scientist/model/loss change, backend patch,
+external service or new scientific campaign. Development related checks pass
+66/one optional skip; committed broad verification must precede actual probes.
+Allsix archived length failures contain8192 thinking tokens and empty answer
+content; this is not by itself evidence of context-window overflow. Actual
+thinking-mode effectiveness and history-format benefit remain unmeasured.
+
 ## V40 conditional presentation-only designer history is being prepared
 
 Separate prospective `plain-function-history-v40` serializes completed parsed

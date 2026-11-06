@@ -113,3 +113,17 @@ describes parameter-controlled nonthinking mode; [Ollama's API](https://docs.oll
 defines the think flag. Neither proves this local converted model/backend
 honors it. Measure the two declared local probes after the combined committed
 software gate; do not silently change production decoding based on docs alone.
+
+Independent read-only lifecycle review identifies two exceptional-path gaps in
+the initial cleanup patch: kill failure skips reaping, and a local error can
+replace an outstanding daemon timeout/user interruption. Preserve that first
+development result. Capture the actual execution error explicitly, attempt all
+local releases independently, bound local reaping to10s, preserve the primary
+error and attach secondary failures as notes. A new interruption outranks an
+ordinary preceding error; an existing interruption is not converted to a failed
+candidate. Do not infer guaranteed OS cleanup when an actual kill/reap fails.
+Combined cleanup/security/native-case/required-field checks98784 pass66/one
+optional skipped9.62s. Python3.11 is explicit in requirements. The separately
+committed required-field diagnosticc794cf2 is integrated as600bf7b, preserving
+its earlier fixture failures and actual-E2 read-only proof. New combined broad
+verification is still required before the6+2 local model probes.

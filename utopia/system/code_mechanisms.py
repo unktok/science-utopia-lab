@@ -169,6 +169,7 @@ class DockerCodeExecutor:
         start = time.monotonic()
         stdout, stderr = bytearray(), bytearray()
         process = None
+        execution_error = None
         try:
             with tempfile.TemporaryFile() as data, selectors.DefaultSelector() as selector:
                 data.write(request)
@@ -192,9 +193,12 @@ class DockerCodeExecutor:
                 if process.returncode:
                     raise CodeExecutionError(f"container exited {process.returncode}: "
                                              + stderr.decode(errors="replace")[:1000])
+        except BaseException as error:
+            execution_error = error
+            raise
         finally:
             if process is not None:
-                self._cleanup_process(process, name)
+                self._cleanup_process(process, name, pending_error=execution_error)
         try:
             envelope = json.loads(stdout)
         except (ValueError, UnicodeError) as error:
@@ -210,27 +214,42 @@ class DockerCodeExecutor:
             "wall_seconds": time.monotonic() - start,
         })
 
-    def _cleanup_process(self, process, name):
+    def _cleanup_process(self, process, name, *, pending_error=None):
         # A successful foreground `docker run --rm` has already exited with
         # automatic removal enabled. A redundant daemon rm can time out and
         # turn a completed execution into an infrastructure failure. Keep the
         # explicit exact-name cleanup for nonzero, interrupted or live clients.
+        primary = pending_error
+
+        def remember(error):
+            nonlocal primary
+            if primary is None:
+                primary = error
+            elif not isinstance(error, Exception) and isinstance(primary, Exception):
+                # A fresh user interruption must not become an ordinary failed
+                # candidate just because a preceding cleanup operation failed.
+                error.add_note('Preceding cleanup/execution error: ' + repr(primary))
+                primary = error
+            else:
+                primary.add_note('Additional local/container cleanup error: ' + repr(error))
+
         try:
             if process.poll() != 0:
                 subprocess.run([self.docker, "rm", "-f", name], capture_output=True, timeout=10)
-        finally:
-            # Even failed/interrupting daemon cleanup must not bypass local
-            # client termination, reaping or pipe closure. Do not suppress the
-            # cleanup exception or retry/adopt an uncertain execution.
+        except BaseException as error:
+            remember(error)
+        # Attempt every local release even if an earlier one fails. Reaping
+        # has its own finite10s bound when a failed kill leaves a live client.
+        for release in (
+            lambda: process.kill() if process.poll() is None else None,
+            lambda: process.wait(timeout=10), process.stdout.close, process.stderr.close,
+        ):
             try:
-                if process.poll() is None:
-                    process.kill()
-                process.wait()
-            finally:
-                try:
-                    process.stdout.close()
-                finally:
-                    process.stderr.close()
+                release()
+            except BaseException as error:
+                remember(error)
+        if primary is not None:
+            raise primary
 
 
 def validate_context(artifact: dict[str, Any], context: dict[str, Any]) -> None:

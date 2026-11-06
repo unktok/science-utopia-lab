@@ -22,7 +22,8 @@ class Client:
             raise self.kill_error
         self.returncode = -9
 
-    def wait(self):
+    def wait(self, *, timeout):
+        assert timeout == 10
         self.waited = True
         if self.wait_error:
             raise self.wait_error
@@ -77,4 +78,39 @@ def test_local_cleanup_errors_cannot_leak_open_pipes(executor, monkeypatch, kind
     process = Client(None, **{kind + '_error': error})
     with pytest.raises(OSError):
         executor._cleanup_process(process, 'utopia-code-SCRIPTED-exact')
+    assert process.waited
+    assert process.stdout.closed and process.stderr.closed
+
+
+@pytest.mark.parametrize('primary', [KeyboardInterrupt(), subprocess.TimeoutExpired('SCRIPTED rm', 10)])
+def test_combined_cleanup_failure_preserves_primary_and_attempts_all_releases(executor, monkeypatch, primary):
+    def failed(*args, **kwargs):
+        raise primary
+    monkeypatch.setattr(m.subprocess, 'run', failed)
+    process = Client(None, kill_error=OSError('SCRIPTED kill'), wait_error=OSError('SCRIPTED wait'))
+    with pytest.raises(type(primary)) as raised:
+        executor._cleanup_process(process, 'utopia-code-SCRIPTED-exact')
+    assert raised.value is primary and len(primary.__notes__) == 2
+    assert process.killed and process.waited and process.stdout.closed and process.stderr.closed
+
+
+def test_existing_execution_interrupt_survives_daemon_cleanup_failure(executor, monkeypatch):
+    def failed(*args, **kwargs):
+        raise OSError('SCRIPTED daemon')
+    monkeypatch.setattr(m.subprocess, 'run', failed)
+    primary = KeyboardInterrupt(); process = Client(None)
+    with pytest.raises(KeyboardInterrupt) as raised:
+        executor._cleanup_process(process, 'utopia-code-SCRIPTED-exact', pending_error=primary)
+    assert raised.value is primary and primary.__notes__
+    assert process.waited and process.stdout.closed and process.stderr.closed
+
+
+def test_new_local_interrupt_takes_precedence_over_ordinary_cleanup_failure(executor, monkeypatch):
+    def failed(*args, **kwargs):
+        raise OSError('SCRIPTED daemon')
+    monkeypatch.setattr(m.subprocess, 'run', failed)
+    interrupt = KeyboardInterrupt(); process = Client(None, wait_error=interrupt)
+    with pytest.raises(KeyboardInterrupt) as raised:
+        executor._cleanup_process(process, 'utopia-code-SCRIPTED-exact')
+    assert raised.value is interrupt and interrupt.__notes__
     assert process.stdout.closed and process.stderr.closed

@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [Prospective combined error recovery: preserved full-test failure, executor cleanup, required-field context and6+2 bounded probes](logbook/2026-11-06-native-json-history-v40.md)
+
 - [Prospective required-SystemSpec-field diagnostic; original V39 failures preserved](components/native-required-field-diagnostics-v41.md)
 
 - [V40 conditional plain-JSON designer history; no dispatch before V39 closure/audits](protocols/campaigns/native-json-history-v40-a1.md)

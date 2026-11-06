@@ -139,7 +139,9 @@ Keep sandbox flags, image, code/outputs and15s execution/10s forced cleanup
 bounds unchanged. Successful foreground `docker run --rm` client exit0 uses
 Docker's automatic container removal, without an additional rm daemon call.
 Nonzero, live or interrupted clients retain exact-name forced cleanup. A nested
-finally always terminates/reaps/closes the local client even if daemon cleanup
-fails or is interrupted; its exception is not suppressed, retried or scored as
+cleanup attempts every local kill/reap/close even if a previous release fails,
+with a finite10s local reaping allowance. Preserve the original error and attach
+secondary errors as notes; interruption retains precedence over ordinary errors.
+No cleanup error is suppressed, retried or scored as
 a successful scientific execution. Never touch unrelated containers or Docker
 daemon configuration. See [Docker's --rm contract](https://docs.docker.com/reference/cli/docker/container/run/#clean-up---rm).
