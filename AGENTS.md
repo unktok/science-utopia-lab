@@ -8,6 +8,14 @@
 - Run long campaigns only from a clean, commit-pinned experiment worktree.
   Develop code in a separate feature worktree and never modify an active
   experiment worktree.
+- Full integration checks that compare runtime bytes with Git HEAD must start
+  after committing runtime changes. Do not change runtime or HEAD during those
+  checks. Preserve failed source-bound results instead of weakening the guard.
+- Declare finite designer connect/read time allowances before dispatch and
+  record them even on transport failure. For non-streaming reasoning, check
+  their suitability for the declared output budget; a read timeout is not a
+  scientific loss. Preserve missing responses/token costs as unknown, without
+  output salvage, hidden retries or changes to active experiment settings.
 - Keep raw caches and outputs out of Git. Track compact results, hashes,
   manifests, protocols, and interpreted reports.
 - Before expensive model-authored campaigns, run the finite real-backend
