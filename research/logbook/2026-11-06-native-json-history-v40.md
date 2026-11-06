@@ -40,3 +40,29 @@ inference, certificate, backend setting change, native experiment, candidate
 implementation or demonstrated EOF fix is claimed. Failed raw generated text
 and token counts remain unknown. Literal tool-tag data may still trigger a
 backend parser; this presentation-only intervention does not eliminate that risk.
+
+## Optional six-POST diagnostic prepared separately
+
+Add a dedicated fixed-three-frame paired harness, conditional on actual V39
+closure and two matching original-D29 full terminal audits. It reconstructs the
+original legacy wires before pairing, holds a read-only shared writer lock,
+requires explicit operator run authorization, and pins source/runtime, provider,
+model/digest and API-reported backend identity. Original source proof hashes and
+all raw inventory hashes must match. Version identity is not proof of upstream
+binary equivalence. The plan fixes six alternating-profile POSTs, original seeds,
+8192/T.6/40960,10/900 timeouts,14 maximum metadata GETs and zero retries/worlds.
+
+Save per-call intent before dispatch and raw transport, completion/parse/schema
+classifications, reported costs/unknowns after it. Schema checks never invoke the
+action interpreter or compile/execute returned code. Incomplete/EOF replies are
+separate charged replicates; interrupted intents cannot resume/redispatch. The
+new output directory cannot overwrite original evidence. Original file/audit
+hashes are checked again at completion. No automatic eight-world continuation.
+
+Initial mocked harness scope:16 pass/5.24s. Tests supply scripted sessions and
+source/audit fixtures, reject unfinished/mismatched/tampered original evidence,
+verify exact seed/options and pre-POST journals, and distinguish EOF, timeout,
+partial, schema-invalid, foreign-model and interrupted outcomes with unknown
+costs preserved. The final mocked scope, including the read-only writer-lock
+guard, passes17/4.92s. Full committed-source software verification remains a
+separate gate. No actual backend/model/Docker calls are made or claimed.
