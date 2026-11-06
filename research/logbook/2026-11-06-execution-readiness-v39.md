@@ -51,3 +51,23 @@ costs/hashes in the readiness report, then start scientific writer76434 at
 08:01:58Z from the unchanged frozen source. First request343aa017 has zero
 history/observations. Do not confuse the calibration donor's35B author binding
 with a changed researcher: the scientific plan/factory still uses fixed8B.
+
+Live G0 uses seven author steps: plan; HTTP500/EOF; read_file; write_file;
+HTTP500/EOF; write_file; explicit finish. Both writes are actual designer
+outputs to code/world.selection.py; the final source implements always-accept
+decisions while preserving the native output envelope. No host supplies or
+repairs this code. The native world then starts; no completed loss is claimed
+at this entry. Preserve both failed calls as charged steps/unknown token costs.
+
+Local server.log lines5636114–5636116 (17:04:08.007JST) and5636166–5636168
+(17:05:59.305JST) report qwen3coder/qwen35 tool-call parse EOF followed by500,
+matching the archived HTTP error bodies. This localizes the reported failure
+to the backend parser path, not a proven candidate-source defect. The original
+generated token stream is unavailable, so its precise offending output and
+causal trigger remain unknown. Official v0.33.3 source shows propagation from
+the delegated tool parser and XML parsing of tool-tag content, consistent with
+the logs; the installed dirty backend is not proven byte-equivalent to the tag.
+See [Qwen35 parser](https://github.com/ollama/ollama/blob/v0.33.3/model/parsers/qwen35.go)
+and [delegated parser](https://github.com/ollama/ollama/blob/v0.33.3/model/parsers/qwen3coder.go).
+Do not restart, patch or reconfigure the security-patched shared backend or
+silently retry/repair either historical response while this pilot continues.
