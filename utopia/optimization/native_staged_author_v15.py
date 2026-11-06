@@ -1203,6 +1203,13 @@ class StagedVocabularyGenerator:
             'max_prompt_bytes': MAX_PROMPT_BYTES, 'max_tool_result_bytes': MAX_RESULT_BYTES,
             'max_draft_bytes': MAX_DRAFT_BYTES, 'max_aggregate_operations': 80, 'native_probes': 0,
             **profile_options(conversation_profile)}
+        from .native_designer_tools_v25 import PLAIN_FUNCTION_DIRECT
+        if conversation_profile == PLAIN_FUNCTION_DIRECT:
+            from .native_designer_decoding_v24 import decoding_contracts
+            self.settings['designer_decoding'] = decoding_contracts('staged-v15',
+                conversation_profile=conversation_profile)
+            if max_tokens != self.settings['designer_decoding']['editor']['max_tokens']:
+                raise ValueError('direct designer profile requires its exact source-owned decoding token budget')
         self.protocol = protocol_binding()
 
     def __call__(self, request):
@@ -1315,7 +1322,8 @@ class StagedVocabularyGenerator:
                 system_prompt=task,
                 seed_ctx=('native-staged-designer-v15', binding['binding_sha256'], started['step']),
                 max_tokens=self.settings['max_tokens'],
-                temperature=decoding_contract('staged-v15', role=role)['temperature'],
+                temperature=decoding_contract('staged-v15', role=role,
+                    conversation_profile=self.conversation_profile)['temperature'],
                 response_format={'type': 'json_schema', 'json_object': {'name': 'native_staged_author_v15',
                     'schema': clone(ACTION_SCHEMA)}})
             from .native_designer_tools_v25 import reply_action
@@ -1357,6 +1365,10 @@ class StagedVocabularyGenerator:
             raise ValueError('saved staged completed receipt binding changed')
         reply = completed['model_reply']
         transport = reply.get('transport') or {}
+        from .native_designer_tools_v25 import PLAIN_FUNCTION_DIRECT
+        if (self.conversation_profile == PLAIN_FUNCTION_DIRECT and transport
+                and transport.get('conversation_schema') is None):
+            raise ValueError('saved staged direct-profile transport lacks its conversation schema')
         if transport.get('conversation_schema') is not None:
             from .native_designer_tools_v25 import CHANNEL, conversation_schema
             expected_messages = build_conversation(started['prompt'], call_task(started['step'], self.settings['max_steps']),
@@ -1369,6 +1381,19 @@ class StagedVocabularyGenerator:
                 raise ValueError('saved staged provider dialogue differs from exact prompt reconstruction')
             if reply['messages'] and reply['messages'][:-1] != expected_messages:
                 raise ValueError('saved staged assistant dialogue differs from actual provider request')
+            if self.conversation_profile == PLAIN_FUNCTION_DIRECT:
+                from .native_designer_wire import wire_record
+                role = task_decoding_role(call_task(started['step'], self.settings['max_steps']))
+                contract = decoding_contract('staged-v15', role=role,
+                    conversation_profile=self.conversation_profile)
+                payload = designer_payload('staged-v15', self.provider_binding, expected_messages,
+                    ('native-staged-designer-v15', binding['binding_sha256'], started['step']),
+                    max_tokens=self.settings['max_tokens'], temperature=contract['temperature'], role=role,
+                    conversation_profile=self.conversation_profile)
+                if (transport.get('request_payload') != payload
+                        or transport.get('http_timeout_seconds') != contract['http_timeout_seconds']
+                        or any(transport.get(k) != v for k, v in wire_record(payload, ACTION_SCHEMA).items())):
+                    raise ValueError('saved staged direct-profile decoding/wire differs')
         if completed['status'] in {'finished', 'applied', 'rejected'}:
             from .native_designer_tools_v25 import reply_action
             if digest(reply_action(reply)) != digest(reply['output']):
@@ -1478,7 +1503,8 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
                 conversation_profile=self.conversation_profile)
             role = task_decoding_role(system_prompt)
             payload = designer_payload('staged-v15', self.binding, messages, seed_ctx,
-                max_tokens=max_tokens, temperature=temperature, role=role)
+                max_tokens=max_tokens, temperature=temperature, role=role,
+                conversation_profile=self.conversation_profile)
             self.last_transport = {'request_payload': clone(payload), 'model_digest': actual,
                 'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
                 'preflight': preflight,
@@ -1491,7 +1517,8 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
                 from .native_designer_wire import post
                 response = post(self.session, 'http://127.0.0.1:11434/api/chat', payload,
                     response_format['json_object']['schema'], self.last_transport,
-                    timeout=tuple(decoding_contract('staged-v15', role=role)['http_timeout_seconds']))
+                    timeout=tuple(decoding_contract('staged-v15', role=role,
+                        conversation_profile=self.conversation_profile)['http_timeout_seconds']))
                 self.last_transport['http_status'] = response.status_code
                 self.last_transport['raw_http_response'] = response.text
                 response.raise_for_status()

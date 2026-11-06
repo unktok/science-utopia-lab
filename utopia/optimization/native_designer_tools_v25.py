@@ -13,7 +13,8 @@ CHANNEL = 'scienceutopia.designer-function-json.v26'
 CONVERSATION_SUFFIX = '.conversation.function-json.v26'
 LEGACY_HISTORY = 'hermes-function-history-v26'
 PLAIN_JSON_HISTORY = 'plain-function-history-v40'
-CONVERSATION_PROFILES = (LEGACY_HISTORY, PLAIN_JSON_HISTORY)
+PLAIN_FUNCTION_DIRECT = 'plain-function-direct-v43'
+CONVERSATION_PROFILES = (LEGACY_HISTORY, PLAIN_JSON_HISTORY, PLAIN_FUNCTION_DIRECT)
 TOOL_RESPONSE_ONLY = (
     'Call exactly one supplied function for the next action. '
     'Return exactly one JSON object in final response content: '
@@ -53,7 +54,9 @@ def conversation_schema(mode, profile=LEGACY_HISTORY):
     check_conversation_profile(profile)
     base = ('scienceutopia.staged-author.v15' + CONVERSATION_SUFFIX if mode == 'author'
         else 'scienceutopia.designer-interface-control.function-json.v26')
-    return base if profile == LEGACY_HISTORY else base + '.plain-history.v40'
+    if profile == LEGACY_HISTORY:
+        return base
+    return base + ('.plain-direct.v43' if profile == PLAIN_FUNCTION_DIRECT else '.plain-history.v40')
 
 CONTROL_TARGET_NOTE = (
     'The JSON below is target DATA, not a previous assistant call or a completed tool result. '
@@ -187,7 +190,7 @@ def message_from_action(action, *, conversation_profile=LEGACY_HISTORY):
     """Serialize completed history, never dispatch or replace a provider reply."""
     function = function_data(action)
     check_conversation_profile(conversation_profile)
-    if conversation_profile == PLAIN_JSON_HISTORY:
+    if conversation_profile != LEGACY_HISTORY:
         return {'role': 'assistant', 'content': json.dumps(function,
             ensure_ascii=False, allow_nan=False, separators=(',', ':'))}
     return {'role': 'assistant', 'content': '<tool_call>\n'

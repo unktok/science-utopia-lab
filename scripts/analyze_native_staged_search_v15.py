@@ -28,7 +28,8 @@ from scripts.run_native_designer_roles_v38 import (
     SCHEMA as ROLE_RAW_SCHEMA,
 )
 from scripts.run_native_json_history_v40 import build_plan as plain_history_build_plan
-from utopia.optimization.native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_JSON_HISTORY
+from scripts.run_native_direct_profile_v43 import build_plan as direct_build_plan
+from utopia.optimization.native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_JSON_HISTORY, PLAIN_FUNCTION_DIRECT
 from utopia.optimization.native_designer_roles_v38 import (
     NativeRoleBoundSearchController, NativeRoleBoundSearchQueue,
 )
@@ -108,7 +109,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-designer-roles-v38-a2.md',
                 'research/protocols/campaigns/native-designer-roles-v38-a3.md',
                 'research/protocols/campaigns/native-execution-readiness-v39-a1.md',
-                'research/protocols/campaigns/native-json-history-v40-a1.md'}):
+                'research/protocols/campaigns/native-json-history-v40-a1.md',
+                'research/protocols/campaigns/native-direct-profile-v43-a1.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -154,8 +156,8 @@ def _transport(step, started, binding, classification):
         if transport:
             raise ValueError('staged designer transport lacks its exact original POST payload')
         return output
+    profile = binding['settings'].get('conversation_profile', LEGACY_HISTORY)
     if hasattr(staged_author, 'build_conversation'):
-        profile = binding['settings'].get('conversation_profile', LEGACY_HISTORY)
         expected_messages = staged_author.build_conversation(started['prompt'],
             staged_author.call_task(started['step'], binding['settings']['max_steps']), native_tools=True,
             **({'conversation_profile': profile} if profile != LEGACY_HISTORY else {}))
@@ -172,9 +174,11 @@ def _transport(step, started, binding, classification):
     expected = designer_payload('staged-v15', binding['provider_binding'], expected_messages,
         ('native-staged-designer-v15', binding['binding_sha256'], started['step']),
         max_tokens=binding['settings']['max_tokens'],
-        temperature=decoding_contract('staged-v15', role=role)['temperature'], role=role)
+        temperature=decoding_contract('staged-v15', role=role, conversation_profile=profile)['temperature'],
+        role=role, conversation_profile=profile)
     if (transport['request_payload'] != expected or transport.get('endpoint') != 'http://127.0.0.1:11434/api/chat'
-            or transport.get('http_timeout_seconds') != decoding_contract('staged-v15', role=role)['http_timeout_seconds']
+            or transport.get('http_timeout_seconds') != decoding_contract('staged-v15', role=role,
+                conversation_profile=profile)['http_timeout_seconds']
             or transport.get('network_retries') != 0
             or transport.get('model_digest') != binding['provider_binding']['model_digest']):
         raise ValueError('staged original POST model/prompt/schema/options/seed differs')
@@ -446,7 +450,9 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     provider = plan['provider_binding']
     role_separated = classification == ROLE_CLASSIFICATION
     author_provider = plan['designer_provider_binding'] if role_separated else provider
-    plan_builder = (plain_history_build_plan if role_separated
+    plan_builder = (direct_build_plan if role_separated
+        and plan.get('conversation_profile') == PLAIN_FUNCTION_DIRECT else
+        plain_history_build_plan if role_separated
         and plan.get('conversation_profile') == PLAIN_JSON_HISTORY else
         role_build_plan if role_separated else build_plan)
     expected_plan = plan_builder(

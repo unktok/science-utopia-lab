@@ -23,7 +23,7 @@ def main():
         default='literal-controls-v16', help='prospective technical criteria; never reinterpret old evidence')
     from utopia.optimization.native_designer_tools_v25 import CONVERSATION_PROFILES, LEGACY_HISTORY, profile_options
     parser.add_argument('--conversation-profile', choices=CONVERSATION_PROFILES, default=LEGACY_HISTORY,
-        help='explicit source-owned history presentation; no backend or response repair')
+        help='explicit source-owned history/decoding profile; no backend or response repair')
     args = parser.parse_args()
     provider = json.loads(args.provider_config.read_text())['provider_binding']
     if args.mode == 'verify':

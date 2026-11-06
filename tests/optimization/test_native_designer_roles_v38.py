@@ -217,11 +217,13 @@ def test_mocked_stronger_designer_controls_use_exact_role_and_cold_certificate(t
     assert not (tmp_path / 'unused-author').exists()
 
 
-@pytest.mark.parametrize('plain_history', [False, True])
+@pytest.mark.parametrize('plain_history', [False, True, 'plain-function-direct-v43'])
 def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tmp_path, monkeypatch, plain_history):
     from scripts import analyze_native_staged_search_v15 as audit
     from scripts.run_native_designer_roles_v38 import build_plan as pilot_plan
-    if plain_history:
+    if plain_history == 'plain-function-direct-v43':
+        from scripts.run_native_direct_profile_v43 import build_plan as pilot_plan
+    elif plain_history:
         from scripts.run_native_json_history_v40 import build_plan as pilot_plan
     from utopia.system.native_open_examples import open_native_system
     from utopia.utils.data_utils import write_json_atomic

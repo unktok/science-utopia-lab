@@ -213,7 +213,7 @@ class DialogueModel:
             conversation_profile=self.conversation_profile)
         payload = designer_payload('staged-v15', BINDING, messages, kwargs['seed_ctx'],
             max_tokens=kwargs['max_tokens'], temperature=kwargs['temperature'],
-            role=task_decoding_role(kwargs['system_prompt']))
+            role=task_decoding_role(kwargs['system_prompt']), conversation_profile=self.conversation_profile)
         message = response_message_from_action(action)
         body = {'model': BINDING['model'], 'message': message, 'done': True, 'done_reason': 'stop'}
         self.last_transport = {'conversation_profile': self.conversation_profile,
