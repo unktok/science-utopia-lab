@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## V36 prospective source passes1336 checks; V35 a2 actual pilot remains live
+
+Clean b42a522 full optimization plus staged-audit scope21483 exits0:1336 pass
+in1053.35s, JUnit8d48faa425d65cbbb406d0e4e3625de58a091d0aaa291ca3fd56edf42ef90f2f.
+All255 source blobs match and all27 original control targets are unchanged.
+Integrate the prepared file-primary/recorded900s staged-read changes locally;
+no remote push, actual V36 certificate/freeze or inference is claimed yet.
+
+At04:16Z actual frozen8196814 has6/8 slots consumed and continues. E1's changed
+code fails on missing local inputworld; E2 has no applied edit and is measuring
+the original parent. The original read is exact and prior timeout/port failure
+reaches the actual next planner POST. No functioning new institution is yet
+established. Preserve this finite experiment through its end and original audits
+before any conditional next revision; do not stop the original goal at tests.
+
 ## V35 a2 continues; V36 file-first guidance and designer timeout are prepared
 
 Actual8196814 remains immutable/live:5/8 slots consumed at03:57Z. Throughput

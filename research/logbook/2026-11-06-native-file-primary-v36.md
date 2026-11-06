@@ -126,6 +126,27 @@ Commit the prospective changes before the next full optimization run, retaining
 all earlier failed and successful source-specific JUnit artifacts separately.
 The original goal is still unmet; V35a2 now has5/8 slots consumed and is live.
 
+### Final prospective-source verification before local integration
+
+Clean b42a522e169f0249d743906b9a63ad72339eecbd full optimization plus original
+staged audit scope21483 exits0:1336 pass in1053.35s. Preserve
+optimization-final-committed-source.xml SHA
+8d48faa425d65cbbb406d0e4e3625de58a091d0aaa291ca3fd56edf42ef90f2f.
+All255 replay-critical source blobs match b42a522. All27 control target actions/
+values still exactly equal the immutable positive V35a2 plan. No actual V36
+certificate, freeze, POST or native world is inferred from this verification.
+
+At04:16Z V35a2 is still live with6/8 slots consumed. E1's statically valid
+5aafd1c1a159 candidate fails in actual code execution with KeyError:world.
+Its actual read returns the exact original parent source, and its model HTTP
+content equals the applied source string: no source transfer corruption is
+observed there. E1's actual planner POST contains the prior300s ReadTimeout
+and graph-port failure. E2 receives the actual native failure, repeatedly
+misaddresses fields, finally finishes without an applied edit and is measuring
+the original parent. These facts do not establish working institutional
+invention or complete the original goal. Keep the actual writer/source/raw
+untouched and close it authoritatively before any conditional next inference.
+
 Also retain the functional-classification caution: open-memory-router emits
 hard gate actions. Merely changing world.selection's consumer threshold from.5
 to.7 may be equivalent on reachable0/1 inputs. Literal source fingerprints and
