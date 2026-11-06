@@ -86,3 +86,17 @@ optimization-development.xml SHA
 57f17dd4fe1a2c099b9c2f2b4b2d9f51e137ebaab4d426d30331a02372b7f0af.
 This is broader engineering evidence, not a full-repository pass, a bug-free
 claim or a new native scientific measurement. Actual readiness continues.
+
+Actual readiness52284 subsequently exits0: all24 exact controls/cold replay and
+separate role evidence pass. Certificate
+72b5699f248afb8797975a06ba5f1b92f669a4eb21d136065df9de79017d0e51;
+runtime30b438460467e28ceaa838b7a2f018f25fb69415d28675d8aecef7d4deb7883f.
+Record24 new POSTs/840.4524331262801 adapter seconds/245430 input9929 output,
+all24 token costs known. A fresh GET /api/ps after cold re-verification verifies
+the same fixed model/digest/context40960 at2026-11-06T01:07:52.050364Z;
+loaded sidecar0c305216d2d821a612170086717acf82c98717020f4a8d3670d1902b7b5d9081.
+
+Only after these gates launch one original-world pilot28400/PID66149 at
+2026-11-06T01:08:09.633603Z from clean frozen75da492. No old result is donated
+to G0 and no trial is replaced/refunded. It is live with zero measurements at
+this entry; keep the original functional-candidate/own-feedback goal active.

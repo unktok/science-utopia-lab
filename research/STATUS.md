@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V34 actual readiness passes; repaired original-world search is live
+
+At immutable75da492, readiness52284 exits0:all24 controls/cold replay and
+separate role evidence pass. Certificate
+72b5699f248afb8797975a06ba5f1b92f669a4eb21d136065df9de79017d0e51,
+runtime30b438460467e28ceaa838b7a2f018f25fb69415d28675d8aecef7d4deb7883f.
+Record24 additional POSTs/840.4524331262801s/245430 input9929 output, all known.
+Fresh post-readiness loaded-model GET verifies the same digest/context40960
+at01:07:52.050364Z; sidecar0c305216d2d821a612170086717acf82c98717020f4a8d3670d1902b7b5d9081.
+
+Only then start actual native pilot28400/PID66149 at01:08:09.633603Z, output
+outputs/native-field-feedback-v34-a1. Original two losses/two generations/four
+attempts and original world/researchers remain unchanged; G0 has no donor
+history. No actual V34 functional candidate/measurement is claimed at launch.
+Continue the original goal, not merely readiness or a running process.
+
 ## V33 terminal with failures preserved; V34 actual readiness is live
 
 Writer76825 exits0 at00:52:11.310706Z after48m40.77s. Four slots consumed:
