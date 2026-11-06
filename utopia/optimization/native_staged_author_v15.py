@@ -312,6 +312,7 @@ def protocol_binding():
     from . import native_literal_workbench_v27
     from . import native_field_addressing_v28
     from . import native_file_workspace_v35
+    from . import native_contract_notices
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
         'transport_source_sha256': hashlib.sha256(Path(native_search_generator_v14.__file__).read_bytes()).hexdigest(),
@@ -322,6 +323,7 @@ def protocol_binding():
         'literal_workbench_source_sha256': hashlib.sha256(Path(native_literal_workbench_v27.__file__).read_bytes()).hexdigest(),
         'field_addressing_source_sha256': hashlib.sha256(Path(native_field_addressing_v28.__file__).read_bytes()).hexdigest(),
         'file_workspace_source_sha256': hashlib.sha256(Path(native_file_workspace_v35.__file__).read_bytes()).hexdigest(),
+        'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'source_execution_on_host': False, 'native_probes': 0}

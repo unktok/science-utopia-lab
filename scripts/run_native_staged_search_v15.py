@@ -22,6 +22,7 @@ from utopia.optimization.native_designer_decoding_v24 import (
 SCHEMA = 'scienceutopia.staged-native-search-pilot.v15'
 CLASSIFICATION = 'actual-local-qwen-native-file-workspace-development-v35'
 ENGINEERING_REVISION = 'v35-a1'
+GENERATIONS_PER_OBJECTIVE = 4
 SCHEDULE = (('throughput', 'native-joint-v5-throughput'),
             ('efficiency', 'native-reviewed-production-efficiency-v13'))
 
@@ -32,7 +33,7 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         loss = json.loads((ROOT / 'research/objectives/losses' / (loss_id + '.json')).read_text())
         request = {'schema': 'scienceutopia.native-search-request.v15',
             'initial_system': clone(initial_system), 'loss_spec': loss, 'seed': 42, 'years': 2,
-            'method': 'blackbox', 'native_budget': 2,
+            'method': 'blackbox', 'native_budget': GENERATIONS_PER_OBJECTIVE,
             'designer': {'model': 'qwen3:8b', 'max_steps': STAGED_MAX_STEPS, 'max_tokens': STAGED_MAX_TOKENS}}
         plan = make_search_plan(request, source_commit=source_commit, provider_binding=provider_binding)
         runs.append({'id': identity, 'request': request, 'runtime_plan': plan, 'plan_sha256': digest(plan)})
@@ -40,9 +41,10 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         'source_commit': source_commit,
         'provider_binding': clone(provider_binding), 'runtime_seed_binding': clone(runtime_seed_binding),
         'initial_system': clone(initial_system), 'population': {'authors': 5, 'conference_setting': 1},
-        'runs': runs, 'budget': {'scheduled_native_slots': 4, 'free_generations': 4,
-            'maximum_generation_POSTs': 4 * STAGED_MAX_STEPS,
-            'maximum_designer_digest_preflight_GETs': 4 * STAGED_MAX_STEPS,
+        'runs': runs, 'budget': {'scheduled_native_slots': len(SCHEDULE) * GENERATIONS_PER_OBJECTIVE,
+            'free_generations': len(SCHEDULE) * GENERATIONS_PER_OBJECTIVE,
+            'maximum_generation_POSTs': len(SCHEDULE) * GENERATIONS_PER_OBJECTIVE * STAGED_MAX_STEPS,
+            'maximum_designer_digest_preflight_GETs': len(SCHEDULE) * GENERATIONS_PER_OBJECTIVE * STAGED_MAX_STEPS,
             'per_generation_tool_steps': STAGED_MAX_STEPS, 'per_call_output_tokens': STAGED_MAX_TOKENS,
             'replacement_policy': 'none'},
         'authoring': 'local Qwen only; no human/Codex candidate implementation',
@@ -54,7 +56,7 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         'continuation': 'failed engineering revisions remain separate; user authorizes further declared revisions until native loop works',
         'no_novelty_or_improvement_veto': True, 'same_society_adoption': False,
         'protocol': 'research/protocols/campaigns/native-file-workspace-v35-a1.md',
-        'native_campaign_status': 'explicitly authorized two-objective two-generation native feedback pilot after V16 interface repair'}
+        'native_campaign_status': 'authorized two-objective four-generation same-world feedback pilot; no replenished failures'}
 
 
 def execute(args):
@@ -98,7 +100,7 @@ def execute(args):
         result = {'schema': SCHEMA + '.progress', 'classification': CLASSIFICATION,
             'source_commit': source, 'plan_sha256': digest(plan), 'runs': runs,
             'terminal': all(r['status'] in ('complete', 'failed') for r in runs.values()),
-            'scheduled_native_slots': 4,
+            'scheduled_native_slots': plan['budget']['scheduled_native_slots'],
             'consumed_native_slots': sum(r['budget']['consumed'] for r in runs.values())}
         result['content_sha256'] = digest(result)
         write_json_atomic(args.output / 'progress.json', result, sort_keys=True, allow_nan=False)

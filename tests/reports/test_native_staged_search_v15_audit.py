@@ -61,7 +61,8 @@ def fixture(root, *, generation_fails=False, unknown=False, run_jobs=True, malfo
     progress = {'schema': audit.RAW_SCHEMA + '.progress', 'classification': audit.FIXTURE,
         'source_commit': REVISION, 'plan_sha256': audit.digest(plan), 'runs': runs,
         'terminal': all(r['status'] in ('complete', 'failed') for r in runs.values()),
-        'scheduled_native_slots': 4, 'consumed_native_slots': sum(r['budget']['consumed'] for r in runs.values())}
+        'scheduled_native_slots': plan['budget']['scheduled_native_slots'],
+        'consumed_native_slots': sum(r['budget']['consumed'] for r in runs.values())}
     progress['content_sha256'] = audit.digest(progress)
     save(root / 'progress.json', progress)
     return queue, plan, model
@@ -118,19 +119,19 @@ def test_all_null_paths_distinguish_generation_native_failures_and_interrupted_u
     assert first == audit.analyze(tmp_path, expected_source=REVISION)
     assert before == audit._inventory(tmp_path)
     assert first['status'] == 'budget-complete-with-failures' and first['budget_terminal']
-    assert first['consumed_native_slots'] == first['technical_failures'] == 4
+    assert first['consumed_native_slots'] == first['technical_failures'] == 8
     assert first['physical_native_worlds'] == first['physical_researcher_responses'] == 0
-    assert first['designer_costs']['generations'] == 4
+    assert first['designer_costs']['generations'] == 8
     assert first['designer_costs']['dispatch_intents'] == model.calls
     assert first['designer_costs']['interrupted_response_unknown'] == int(unknown)
     assert first['designer_costs']['known_designer_responses'] == model.calls - int(unknown)
-    assert first['designer_costs']['valid_finished_generations'] == (0 if failed else 4)
+    assert first['designer_costs']['valid_finished_generations'] == (0 if failed else 8)
     assert first['claims']['scripted_HTTP_only'] and not first['claims']['actual_local_Qwen_automatic_loop']
     assert not first['claims']['operational_two_generation_native_feedback_arm']
     compact = audit.compact_summary(first)
     assert compact['exact_full_audit_content_sha256'] == first['content_sha256']
     assert compact['designer_costs'] == first['designer_costs']
-    assert len(compact['runs']['throughput']['generations']) == 2
+    assert len(compact['runs']['throughput']['generations']) == 4
     assert 'started_records' not in compact['runs']['throughput']['generations'][0]
     original = first['runs']['throughput']['observations'][0]['observation'] or {}
     assert compact['runs']['throughput']['observations'][0]['original_observation_status'] == original.get('status')
@@ -222,18 +223,18 @@ def test_original_native_success_paths_join_source_world_actual_scientist_replie
     runs = {name: queue.get(identity) for name, identity in searches.items()}
     progress = {'schema': audit.RAW_SCHEMA + '.progress', 'classification': audit.FIXTURE,
         'source_commit': REVISION, 'plan_sha256': audit.digest(plan), 'runs': runs,
-        'terminal': True, 'scheduled_native_slots': 4, 'consumed_native_slots': 4}
+        'terminal': True, 'scheduled_native_slots': 8, 'consumed_native_slots': 8}
     progress['content_sha256'] = audit.digest(progress); save(tmp_path / 'progress.json', progress)
     before = audit._inventory(tmp_path)
     result = audit.analyze(tmp_path, expected_source=REVISION)
     assert result == audit.analyze(tmp_path, expected_source=REVISION)
     assert before == audit._inventory(tmp_path)
-    assert result['status'] == 'complete' and result['physical_native_worlds'] == 4
+    assert result['status'] == 'complete' and result['physical_native_worlds'] == 8
     assert result['physical_researcher_responses'] == len(scientist_calls) > 0
     assert result['claims']['operational_two_generation_native_feedback_arm']
     assert not result['claims']['actual_local_Qwen_automatic_loop']
-    assert len(native_calls) == len(set(native_calls)) == 4
-    assert result['designer_costs']['dispatch_intents'] == 8
+    assert len(native_calls) == len(set(native_calls)) == 8
+    assert result['designer_costs']['dispatch_intents'] == 16
     assert bool(result['completed_code_executions']) == with_code
     compact = audit.compact_summary(result)
     for name, run in result['runs'].items():

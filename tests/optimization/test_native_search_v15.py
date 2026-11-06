@@ -68,14 +68,16 @@ def test_prospective_driver_freezes_all_loss_and_step_budgets_before_calls():
     module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
     plan = module.build_plan(source_commit=REVISION, initial_system=request()['initial_system'],
         provider_binding=BINDING, runtime_seed_binding={'python_hash_seed_environment': '42'})
-    assert plan['budget']['scheduled_native_slots'] == 4
-    assert plan['budget']['maximum_generation_POSTs'] == 32
+    assert plan['budget']['scheduled_native_slots'] == 8
+    assert plan['budget']['free_generations'] == 8
+    assert all(run['request']['native_budget'] == 4 for run in plan['runs'])
+    assert plan['budget']['maximum_generation_POSTs'] == 64
     assert [run['id'] for run in plan['runs']] == ['throughput', 'efficiency']
     assert plan['runs'][0]['request']['loss_spec']['per_run']['terms'][0]['coefficient'] == -1.0
     assert all(run['request']['designer']['max_steps'] == 8 for run in plan['runs'])
     assert all(run['request']['designer']['max_tokens'] == 8192 for run in plan['runs'])
     assert all(run['plan_sha256'] == digest(run['runtime_plan']) for run in plan['runs'])
-    assert plan['budget']['maximum_designer_digest_preflight_GETs'] == 32
+    assert plan['budget']['maximum_designer_digest_preflight_GETs'] == 64
     assert plan['budget']['per_generation_tool_steps'] == 8
     assert plan['budget']['per_call_output_tokens'] == 8192
     assert plan['designer_decoding']['planner']['think'] is True

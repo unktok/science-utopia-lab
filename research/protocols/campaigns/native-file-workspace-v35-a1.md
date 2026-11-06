@@ -44,6 +44,16 @@ legal. Read/write consume ordinary steps; invalid drafts remain diagnosable,
 and only a valid explicit finish yields a candidate. No hidden retry, inferred
 finish, automatic rollback/fallback or novelty/merit constraint is introduced.
 
+Additionally, non-veto AST diagnostics may point out literal
+context['parameters']['key'] or context['inputs']['key'] reads whose key is
+absent from THIS executing node's declared local parameter/input maps. Show the
+actual owner and observed local keys, never bind a neighbour's value or add a
+parameter/wire. This is only a potential syntactic mismatch: dead branches,
+caught exceptions, context rebinding, dynamic names and optional .get accesses
+are not solved. It never changes validity or fills a scientific implementation.
+Unparseable source remains the existing validator's responsibility. Include
+notice source hashes in author bindings and preserve explicit notice caps.
+
 ## Gates and finite actual continuation
 
 SCRIPTED tests cover exact source and preserved runtime/ABI, complete arbitrary
@@ -65,11 +75,16 @@ and V26 provider only for calibration. Require all27/cold replay/separate roles,
 then fresh GET /api/ps for the same model/digest/context40960. A failed, unknown
 or stale result stops that revision, without replacing/refunding calls.
 
-After passing, run the same two objectives (-A and -Q+.5R), two generations each,
-four attempts, original19 nodes/27 wires/five balanced researchers/one conference/
+After passing, run the same two objectives (-A and -Q+.5R), FOUR generations each,
+eight predeclared attempts, original19 nodes/27 wires/five balanced researchers/one conference/
 two years/seed42/corpus/Docker. Designer stays Qwen3-8B/thinking/T.6/context40960/
 output8192/max8 steps; scientist settings stay fixed. G0 contains no donor history;
-G1 sees only its own actual outcomes. Preserve every technical null and physical
+subsequent generations see only their own actual outcomes. This increases only
+the optimizer's feedback iterations, not world population/years/seeds; a failed
+generation still consumes its one original slot. The finite author ceiling is
+64 POSTs (eight generations times max8), with no replacement/refund. Declare
+these changed driver budgets and matching audit/projection assertions before
+freezing; V34's old four-slot budget remains untouched. Preserve every technical null and physical
 cost; obtain two matching unmodified original-source audits after termination.
 The original goal still requires actual different functional model-authored
 systems, multiple measured original worlds, own-result-informed proposal and

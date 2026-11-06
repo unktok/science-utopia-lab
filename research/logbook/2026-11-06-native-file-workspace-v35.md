@@ -82,3 +82,57 @@ native world exists at this entry. Wait for authoritative V34 closure and its
 original audits. If its genuine functional-candidate/own-result/remeasurement
 goal is achieved, do not run an unnecessary V35 campaign; otherwise finish
 verification, freeze a fresh source and continue without shrinking that goal.
+
+## Forward iteration budget and local-context diagnostics
+
+Broader preliminary c5aa500 optimization84573 exits1:1272 pass/one stale exact
+preflight-sequence expectation in894.88s, optimization-development.xml SHA
+6260cf680a3f6435ce9949a47db7439f4088193814f8cff290d56d6a28b068c7.
+Preserve that failure. Add the three declared file controls to this final old
+expectation while retaining its original relative/absolute operand assertions.
+
+Prospectively increase only the optimizer's feedback iterations to four per
+objective/eight total attempts (max64 designer POSTs), not scientists, years,
+seeds or worlds per evaluation. This avoids spending a two-generation search
+entirely diagnosing an early failed implementation. No existing V34 slot/log/
+cost is changed or refunded. Driver/progress/auditor budgets derive from the
+frozen plan; audit engineering fixtures now exercise all eight unique worlds,
+own histories, checkpoints, raw attempts and exact cold analysis. The operational
+two-generation flag now means an observed consecutive complete pair within a
+longer arm, not automatic scientific benefit or functional novelty.
+The dedicated eight-slot audit/launch scope49538 passes41 in101.11s; JUnit
+audit-eight-slot-development.xml SHA
+2e4d7a162db0332f674e7d4b9d630cfe712f0563a1a5112a6ac892586a70d66a.
+These are SCRIPTED engineering worlds, never extra actual Qwen samples.
+
+Actual V34 E0 later fails KeyError review_thresholds: the author placed that
+value on world.review but reads context.parameters in world.selection. Its
+actual G1 planner wire does contain the exact KeyError/native technical failure;
+an identical plan is not evidence that feedback was dropped. Prepare non-veto
+AST observations for literal local parameters/inputs keys absent from the
+executing node. No dataflow/branch/caught-exception/context-rebinding proof is
+claimed; optional .get/dynamic reads and other implementations are not inferred.
+Point to the actual owner and bounded complete literal names (max64/2048 encoded
+name bytes with explicit omissions), without selecting a value/owner/wire or
+changing accepted designs. The code handler excludes code_artifact/runtime_image_id
+from user parameters; inspect that actual consumer and match its context rather
+than exposing editor metadata as runtime values. Hash notice source in bindings.
+
+Initial local-context regressions are red5/pass1, then two reserved-metadata
+regressions are red2. Before that final metadata-filter refinement, expanded
+source/workspace/notice/driver/audit scope24184 passes541/one skip in167.59s;
+focused-final-development.xml SHA
+8d0e758006ba6c51ea42e827eeb4268ba0fa06499d5be1b173d57e1a3afaa9cd.
+After matching the exact handler and adding reserved/cap checks, current affected
+scope29061 passes72 in3.25s; local-contracts-final.xml SHA
+63a1e31a89b6a740f4c4c80b849acd74bfa8dcd6cd165ba7b76c4a87cc0eda82.
+Final broader optimization77286 is running; no pass is yet claimed.
+
+V34 also has one further actual HTTP200/doneFalse incomplete envelope (E1
+step05,108.96299041714519s), with no final reason or reported token statistics.
+Keep its raw705-character content/7229-character thinking and unknown costs;
+do not salvage/retry or label it a proven timeout/context overflow. Read-only
+server lines around5573905 show the corresponding108s HTTP200 and slot40960,
+truncated0 plus cancellation, but normal cleanup can also cancel; this does not
+identify the local trigger. No backend restart/update/configuration is attempted.
+V34 remains live; no actual V35 controls or native worlds are launched yet.

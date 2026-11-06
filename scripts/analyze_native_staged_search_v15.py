@@ -515,11 +515,13 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     designer = {key: sum(run['designer'][key] for run in runs.values()) for key in ('generations',
         'dispatch_intents', 'completed_step_receipts', 'recorded_POST_attempts', 'known_HTTP_responses',
         'known_designer_responses', 'interrupted_response_unknown', 'valid_finished_generations')}
-    if designer['generations'] > 4 or designer['dispatch_intents'] > 64:
+    if (designer['generations'] > plan['budget']['free_generations']
+            or designer['dispatch_intents'] > plan['budget']['maximum_generation_POSTs']):
         raise ValueError('staged aggregate generation/provider budget exceeded')
     expected_progress = {'schema': RAW_SCHEMA + '.progress', 'classification': classification,
         'source_commit': expected_source, 'plan_sha256': digest(plan), 'runs': {name: r['runtime_progress'] for name, r in runs.items()},
-        'terminal': queue_terminal, 'scheduled_native_slots': 4, 'consumed_native_slots': totals['consumed_native_slots']}
+        'terminal': queue_terminal, 'scheduled_native_slots': plan['budget']['scheduled_native_slots'],
+        'consumed_native_slots': totals['consumed_native_slots']}
     if {k: v for k, v in progress.items() if k != 'content_sha256'} != expected_progress:
         raise ValueError('staged aggregate progress changed source/budget/own histories')
     if {p.resolve() for p in root.rglob('responses.sqlite')} != physical_paths:
@@ -528,13 +530,14 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         raise ValueError('unaccounted designer generation directory outside declared staged own histories')
     if {p.resolve() for p in root.rglob('system.json')} != system_paths:
         raise ValueError('unaccounted native source/world directory outside declared staged own histories')
-    operational = any(len(run['observations']) == 2 and all(row['status'] == 'complete'
-        for row in run['observations']) for run in runs.values())
+    operational = any(any(all(row['status'] == 'complete' for row in run['observations'][i:i + 2])
+        for i in range(len(run['observations']) - 1)) for run in runs.values())
     output = {'schema': SCHEMA, 'classification': classification, 'source_commit': expected_source,
         'engineering_revision': plan.get('engineering_revision', 'a1'),
         'status': ('budget-complete-with-failures' if terminal and totals['technical_failures'] else 'complete'
             if terminal else 'technically-aborted' if queue_terminal else 'in-progress'),
-        'budget_terminal': terminal, 'queue_terminal': queue_terminal, 'planned_native_slots': 4,
+        'budget_terminal': terminal, 'queue_terminal': queue_terminal,
+        'planned_native_slots': plan['budget']['scheduled_native_slots'],
         **totals, 'designer_costs': designer,
         'designer_cost_measurements': {key: {'recorded_sum': math.fsum(run['designer']['cost_measurements'][key]['recorded_sum']
             for run in runs.values()), 'record_count': sum(run['designer']['cost_measurements'][key]['record_count']
