@@ -52,3 +52,50 @@ and terminal audit reconstruct results without new scientific calls.
 This ledger records authorization before launch; it does not claim a candidate
 or world exists before the actual journal records it. Launch and measured
 outcomes will be appended as they occur.
+
+## Actual launch and first generated program
+
+Writer95369 starts at2026-11-06T11:25:54.643321Z from the declared immutable
+E920 tree. Both objective requests are queued. Throughput G0 generates actual
+`step(context)` code applying a score threshold0.1 rather than the original
+selection function. The five charged turns are plan, file read, file write,
+rejected finish with an unsupported `rationally` field, then a corrected finish
+issued by the model itself. No host repairs that reply or source. All transport
+responses for these turns complete; the final submission is valid and its
+original researcher world is now executing. Loss and behavioral differences
+are not claimed until the actual world measurements complete.
+
+## First measurement and actual feedback-driven second program
+
+At11:35Z, throughput G0 completes its native world: A=7, Q=22.333333333333336,
+R=21 and own loss-7.0, observation
+`observation-native-adaptive-f5cb44962e8249c00554ce17`. Its91 researcher POSTs
+are physically recorded. The threshold0.1 program accepts every submission on
+these inputs; do not infer a policy improvement from a changed source file.
+
+G1 request809a5d4430dcf489b7c12590574f5ce741e26e50a86f6e036a9dbc60862af815
+uses that own measured observation as parent feedback. The actual completed
+planner HTTP POST contains both the exact observation ID and loss-7.0, requests
+thinkFalse and completes200/stop. This is a live scalar wire check, not the final
+independent replay. The model writes an unconditional-accept selection program
+and finishes in four charged turns. Its second native world is now executing;
+there is no second measured loss yet. The source policies differ on possible
+inputs, but observed behavioral diversity must be measured, not assumed.
+
+## Automatic end-of-search audit
+
+Read-only postprocessor98167 is running from the SAME frozen E920 source. It
+records its own started receipt outside the raw search and waits for the
+exclusive writer lock to be released. Under a shared writer lock it requires
+the terminal writer receipt, runs the existing complete original-source audit
+once and then its existing compact projection. It introduces zero model calls,
+code executions or trial retries, and records a separate ended receipt including
+any error. It never changes the scientific writer or its outcome.
+
+Expected outputs are siblings, not edits to raw evidence:
+`outputs/native-direct-profile-v43-a1-audit.json`,
+`outputs/native-direct-profile-v43-a1-compact.json`, and
+`outputs/native-direct-profile-v43-a1-postprocess/{started,ended}.json`.
+Logs: `/tmp/science-utopia-v43-a1-search.log` and
+`/tmp/science-utopia-v43-a1-postprocess.log`.
+These outputs are pending while the search runs; do not report them as completed.

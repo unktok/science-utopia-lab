@@ -2,7 +2,7 @@
 
 Updated: 2026-11-06 JST
 
-## Actual V43 institution search authorized; dispatching existing verified source
+## Actual V43 search:1/8 measured, second model-authored program executing
 
 The user requests actual institutional optimization, not another readiness
 milestone. Use clean frozen E920, existing passing direct-profile certificate
@@ -11,7 +11,14 @@ same original world, Qwen3-8B researchers and local35B designer. No new software
 or calibration phase, source repair, hidden merit veto or failed-slot refill.
 Record candidate behavior, graph/wiring changes, loss paths and physical costs.
 See the [prospective search ledger](logbook/2026-11-06-native-direct-profile-v43-search.md).
-This entry precedes dispatch; actual progress must come from the new raw journal.
+Writer95369 starts11:25:54Z from immutable E920. Throughput G0 completes its
+threshold0.1 world: A7/Q22.333333333333336/R21, loss-7,91 physical researcher
+requests. G1's actual planner POST contains its own G0 observation ID and loss;
+the model writes an unconditional-accept program, finishes and starts its world.
+No G1 loss or observed policy improvement is claimed yet. Read-only watcher98167
+automatically runs the complete original-source audit and compact projection
+after writer exit, with zero new model calls/executions. Both jobs remain live;
+the new raw journal, not software/calibration success, supplies search progress.
 
 ## Error fixes verified: V43 software, actual controls and cold replay pass
 
