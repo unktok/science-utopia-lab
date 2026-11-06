@@ -67,3 +67,10 @@ resubmission, invalid-source repair by a new explicit model write, exact termina
 replay, unchanged optional-note failures, retained parent and fresh certificate
 binding. Mocked paths are not evidence of successful free institution authoring;
 actual local checks and native evaluations must still be observed.
+
+Initial committed395a886 passes147 related checks/one optional skip45.66s,
+including the actual original V43 regression. Before any actual call or broad
+dispatch, prioritize the efficiency arm in the explicit driver and add its
+budget/order test: verify the previously never-implemented arm first rather than
+waiting through four throughput worlds. This does not alter either loss or add
+any world/seed. Freeze the final source separately;395a886 stays unchanged.

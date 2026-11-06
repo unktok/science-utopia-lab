@@ -24,6 +24,9 @@ def build_plan(**kwargs):
         entry['runtime_plan'] = make_search_plan(entry['request'], source_commit=kwargs['source_commit'],
             provider_binding=kwargs['provider_binding'])
         entry['plan_sha256'] = digest(entry['runtime_plan'])
+    # Verify the previously unimplemented arm first, rather than waiting for
+    # four more already-understood throughput worlds before observing it.
+    plan['runs'].sort(key=lambda entry: entry['id'] != 'efficiency')
     plan.update(engineering_revision='v44-a1', protocol=PROTOCOL, conversation_profile=AUTHORING_RECOVERY,
         designer_decoding=decoding_contracts('staged-v15', conversation_profile=AUTHORING_RECOVERY),
         authoring_workflow={'maximum_steps': MAX_STEPS, 'submission_reserve': SUBMISSION_RESERVE,

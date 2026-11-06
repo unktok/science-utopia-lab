@@ -239,3 +239,17 @@ def test_implementation_grammar_keeps_every_literal_json_type(literal):
     schema = backend_format([{'role': 'system', 'content': 'V44_ACTION_PHASE=implementation'}])
     Draft202012Validator(schema).validate(action)
     assert json.loads(json.dumps(action, ensure_ascii=False)) == action
+
+
+def test_driver_prioritizes_previously_failed_arm_without_more_worlds_or_hidden_calls():
+    from scripts.run_native_authoring_recovery_v44 import build_plan
+    from tests.optimization.test_native_designer_roles_v38 import designer_binding
+    from tests.optimization.test_native_search_v14 import BINDING as science
+    from utopia.system.native_open_examples import open_native_system
+    plan = build_plan(source_commit='f' * 40, initial_system=open_native_system(science['image_id']).to_dict(),
+        provider_binding=science, runtime_seed_binding={}, designer_provider_binding=designer_binding())
+    assert [entry['id'] for entry in plan['runs']] == ['efficiency', 'throughput']
+    assert plan['budget']['scheduled_native_slots'] == 8
+    assert plan['budget']['maximum_generation_POSTs'] == 128
+    assert all(entry['request']['designer']['max_steps'] == 16 for entry in plan['runs'])
+    assert all(entry['runtime_plan']['maximum_designer_provider_attempts'] == 64 for entry in plan['runs'])

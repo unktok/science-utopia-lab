@@ -45,7 +45,8 @@ patch, external provider, download or additional spending is involved.
 After software and actual technical checks pass, use the unchanged original
 world, five authors/two years/development seed42/Qwen3-8B researchers. Run the two
 existing losses, four generations each, eight total slots, at most128 designer
-generation POSTs. Actual candidates are executed as received, evaluated by the
+generation POSTs. Run the previously failed efficiency arm first, without
+changing its loss, seeds or number of candidates. Actual candidates are executed as received, evaluated by the
 declared loss and fed back to the next proposal. Preserve failures/null losses.
 No hand-authored candidate, baseline substitution or novelty veto is allowed.
 The completion report distinguishes workflow repair from institutional behavior
