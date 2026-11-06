@@ -10,6 +10,8 @@ import hashlib
 import json
 import math
 from pathlib import Path
+from dataclasses import MISSING, fields, is_dataclass
+from typing import get_args, get_origin, get_type_hints
 
 from jsonschema import Draft202012Validator
 
@@ -220,11 +222,15 @@ def translate_operations(document, operations, *, stage):
 def _operation_index(operations, path, identity):
     for index in reversed(range(len(operations))):
         operation = operations[index]
-        value = operation.get('value')
         if (path == operation['path'] or path.startswith(operation['path'] + '/')
                 or operation['path'].startswith(path + '/')):
             return index
-        if (operation['path'].startswith('/mechanisms/') and isinstance(value, dict)
+    # Prefer concrete path evidence over an incidental same-ID literal in a
+    # later dictionary operand. The ID fallback supports appended whole nodes.
+    for index in reversed(range(len(operations))):
+        operation = operations[index]
+        value = operation.get('value')
+        if (identity is not None and operation['path'].startswith('/mechanisms/') and isinstance(value, dict)
                 and value.get('mechanism_id') == identity):
             return index
     return None
@@ -262,6 +268,53 @@ def _collection_failure(document, operations, *, stage):
                 if failure is not None:
                     return failure
     return None
+
+
+def _required_field_failure(document, operations, error, *, stage):
+    """Locate an existing typed-parser missing-field failure; never validate early.
+
+    Required names and nested record types come from the real model dataclasses,
+    not a second schema or a node/policy catalogue. Match the original KeyError
+    or dataclass-constructor TypeError before explaining an absent field. Enum,
+    semantic and unrelated type failures keep their existing diagnostics.
+    """
+    if not isinstance(error, (KeyError, TypeError)):
+        return None
+
+    def visit(value, model, parts):
+        if not isinstance(value, dict):
+            return None  # The existing collection-shape diagnostic owns this.
+        required = [field.name for field in fields(model)
+            if field.default is MISSING and field.default_factory is MISSING]
+        missing = [name for name in required if name not in value]
+        for name in missing:
+            matched = (isinstance(error, KeyError) and error.args == (name,)) or (
+                isinstance(error, TypeError) and str(error).startswith(model.__name__ + '.__init__() missing '))
+            if matched:
+                path = _path(parts + [name])
+                owner = _owner(document, parts)
+                return AuthoringIRDiagnostic('required ' + model.__name__ + ' field ' + repr(name) + ' is missing',
+                    operation_index=_operation_index(operations, path, owner.get('actual_owner_id')),
+                    path=path, stage=stage, deepest_existing_prefix=_path(parts), first_missing_segment=name,
+                    available_keys=sorted(value), required_fields=required, missing_fields=missing,
+                    required_object_path=_path(parts), model_type=model.__name__,
+                    expected_type='present required field', actual_type='missing',
+                    underlying_error_type=type(error).__name__, underlying_error_message=str(error),
+                    **owner)
+        hints = get_type_hints(model)
+        for field in fields(model):
+            hint = hints[field.name]
+            args = get_args(hint)
+            if get_origin(hint) is tuple and args and is_dataclass(args[0]):
+                children = value.get(field.name, ())
+                if isinstance(children, list):
+                    for index, item in enumerate(children):
+                        failure = visit(item, args[0], parts + [field.name, str(index)])
+                        if failure is not None:
+                            return failure
+        return None
+
+    return visit(document, SystemSpec, [])
 
 
 def _tensor_attribute_failure(document, operations, *, stage):
@@ -552,6 +605,8 @@ class StableIDAuthoringProtocol:
             raise  # Preserve more specific source/ABI/literal diagnostics.
         except Exception as error:
             failure = _collection_failure(base_document, base_operations, stage='base-final-transaction')
+            if failure is None:
+                failure = _required_field_failure(base_document, base_operations, error, stage='base-final-transaction')
             if failure is None and str(error) == 'invalid tensor operation attributes':
                 failure = _tensor_attribute_failure(base_document, base_operations, stage='base-final-transaction')
             if failure is not None:
