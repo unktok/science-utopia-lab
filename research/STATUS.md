@@ -2,6 +2,27 @@
 
 Updated: 2026-11-06 JST
 
+## V33 actual readiness passes; corrected original-world search is live
+
+At frozen2a52318, actual53349 exits0: all24 exact controls/cold replay and
+separate role fields pass. Certificate
+edff6727a8af320c4e9b5d97b7628b0a4cd3cb69801d6983d664289b88d0664a,
+runtime0f1c25aa98c157aaafcdf7600825720e8d67f2b44d79cf4d672208ff28f971d3.
+Record24 POSTs/868.2109952473547s/245430 input9948 output, all24 known.
+The separate post-readiness GET /api/ps passes the same model/digest/context40960
+at2026-11-06T00:03:13.115583Z, sealed sidecar
+bba49bcff1b792f31c7a3fe903f155725ae640cb3369c005320b327e7f72747b.
+
+Only after those checks start the unchanged two-objective/two-generation
+original-world pilot76825/PID48345 at00:03:30.543730Z, output
+outputs/native-submission-context-v33-a1. Actual G0 requestc4338273 has zero
+history/observations; no calibration donor candidate/result enters free design.
+The scientist submission renderer has the verified shadowing/clock fix; code,
+researcher weights/settings, world activities, losses and scientific scale stay
+pinned for this pilot. Broad exact-source suite11133 still runs; no full pass
+or new functional institution/native observation is claimed yet. Continue the
+original full goal, not merely this readiness milestone.
+
 ## V33 frozen and exact-source checks pass; fresh actual readiness is live
 
 Freeze2a523181e781dcca570ad5b719b2805396d4c3ca in the separate clean

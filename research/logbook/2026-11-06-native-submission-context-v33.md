@@ -114,3 +114,27 @@ and zero native worlds remain preserved, not refunded or turned into trials.
 All24/cold replay/separate role evidence and the post-readiness loaded40960
 check still precede V33 native production. No V33 native world is claimed;
 the original full goal remains active and unmet.
+
+Actual V33 readiness53349 exits0: all24 exact controls/cold replay pass,
+with24 separate thinking fields (one planner/23 editor), not a reasoning-quality
+claim. Certificateedff6727a8af320c4e9b5d97b7628b0a4cd3cb69801d6983d664289b88d0664a;
+runtime0f1c25aa98c157aaafcdf7600825720e8d67f2b44d79cf4d672208ff28f971d3.
+Charge24 POSTs/868.2109952473547 adapter seconds/245430 input9948 output,
+all24 token records known. Preserve V32's24 separately, not refunded or reused.
+
+The required read-only GET /api/ps at2026-11-06T00:03:13.115583Z confirms the
+same model/digest/context40960. Store the raw response/sealed JSON separately in
+outputs/native-submission-context-v33-a1-preflight/loaded-context-after-readiness.json,
+contentbba49bcff1b792f31c7a3fe903f155725ae640cb3369c005320b327e7f72747b.
+No service/RoPE/model reconfiguration occurs; this is loaded-window evidence,
+not successful free invention or a universal context-capacity guarantee.
+
+Only after readiness exit and loaded gate, start the original-scale/four-attempt
+native pilot76825/PID48345. Authoritative writer start00:03:30.543730Z at2a52318,
+output outputs/native-submission-context-v33-a1. Search IDs
+search-a2bbf7e021df492ca2b7ab99766e56cb (throughput) and
+search-75be1ccfca7f41e498e16e06898fdd68 (efficiency).
+Actual G0 requestc4338273865b06c9f8606b8b61f21526184e4e205aa655d0784bdc4b9f121117
+contains zero history/observations: the calibration donor is not free-production
+data. Broad exact-source11133 still runs; no new functional institution or native
+measurement is claimed. Continue the unchanged original goal to actual completion.
