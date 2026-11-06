@@ -4,6 +4,13 @@ Updated: 2026-11-06 JST
 
 ## V39 execution-first scope authorized; historical copy failures stay failed
 
+Fresh actual readiness37176 exits0:28 technical controls plus cold replay pass,
+26 exact copies/two diagnostic mismatches retained. Certificate
+e93a5c77b5cb3792ac4b0804ee00baef991d107555489f76882a43bae470ff7e;
+28 costs known237232 input/20530 output/625.3978697929997 adapter seconds.
+Full source-bound software49563 remains live. No actual V39 scientific world
+yet; continue directly to the eight-slot loop after that gate passes.
+
 The user explicitly authorizes exact-copy equality as diagnostic, not a future
 dispatch veto. Implement a separate execution-readiness-v39 scope with original
 raw values, schema/tool permissions, actual interpreter/static checks and cold
