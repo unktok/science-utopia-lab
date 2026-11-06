@@ -2,6 +2,17 @@
 
 Updated: 2026-11-06 JST
 
+## Actual V43 institution search authorized; dispatching existing verified source
+
+The user requests actual institutional optimization, not another readiness
+milestone. Use clean frozen E920, existing passing direct-profile certificate
+and unchanged driver. Two objectives/four generations each/eight total slots;
+same original world, Qwen3-8B researchers and local35B designer. No new software
+or calibration phase, source repair, hidden merit veto or failed-slot refill.
+Record candidate behavior, graph/wiring changes, loss paths and physical costs.
+See the [prospective search ledger](logbook/2026-11-06-native-direct-profile-v43-search.md).
+This entry precedes dispatch; actual progress must come from the new raw journal.
+
 ## Error fixes verified: V43 software, actual controls and cold replay pass
 
 Frozen E920 full software passes1604/2 optional skips756.00s. Fresh direct-profile

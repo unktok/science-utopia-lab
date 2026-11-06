@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V43 actual institution search: user authorization, finite eight-slot plan and measured outcome ledger](logbook/2026-11-06-native-direct-profile-v43-search.md)
+
 - [V43 error fixes verified:1,604 regressions,28 fresh actual controls and two cold replays; no scientific campaign](results/native-direct-profile-v43-a1-readiness.md)
 
 - [Actual8-call error-diagnostic projection: paired history formats and thinking modes; no candidate execution](results/native-designer-error-diagnostics-v42-a1.json)
