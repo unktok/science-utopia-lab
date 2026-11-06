@@ -324,6 +324,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
             max_tokens=settings['max_tokens'], temperature=settings['temperature'], role=role)
         wire = wire_record(payload, _schema(protocol))
         if (record['intent'] != intent or record['ok'] is not True or transport['request_payload'] != payload
+                or transport.get('http_timeout_seconds') != settings.get('http_timeout_seconds', 300)
                 or any(transport.get(key) != value for key, value in wire.items())
                 or transport.get('model_digest') != provider['model_digest']
                 or transport.get('endpoint') != 'http://127.0.0.1:11434/api/chat'

@@ -222,6 +222,7 @@ def test_local_transport_is_one_fixed_loopback_post_without_proxy_or_retries(mon
             calls.append(('POST', url))
             payload = json.loads(kwargs['data'])
             assert payload['format'] == 'json'
+            assert kwargs['timeout'] == 300
             assert payload['think'] is False and payload['stream'] is False
             return Response({'message': {'content': json.dumps(output())}, 'done': True,
                 'done_reason': 'stop', 'prompt_eval_count': 123, 'eval_count': 45})

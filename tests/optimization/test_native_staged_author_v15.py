@@ -627,6 +627,7 @@ def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch
             assert self.payload['format'] == 'json' and 'tools' not in self.payload
             assert '<tools>' in self.payload['messages'][0]['content']
             assert kwargs['headers'] == {'Content-Type': 'application/json'}
+            assert kwargs['timeout'] == (10, 900)
             assert self.payload['messages'] == expected
             assert self.payload['options']['num_predict'] == 512
             assert self.payload['think'] is True and self.payload['stream'] is False
@@ -647,6 +648,7 @@ def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch
     assert parsed == finish() and messages[:-1] == expected
     assert calls == [('GET', 'http://127.0.0.1:11434/api/tags'), ('POST', 'http://127.0.0.1:11434/api/chat')]
     assert model.last_transport['network_retries'] == 0
+    assert model.last_transport['http_timeout_seconds'] == [10, 900]
     assert model.last_transport['source_prompt_sha256'] == digest(prompt)
     assert model.last_transport['response_payload']['message']['thinking'] == 'SCRIPTED not a tool action'
     assert json.loads(model.last_transport['request_wire_utf8']) == model.last_transport['request_payload']

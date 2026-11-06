@@ -37,6 +37,21 @@ string types, explicit caps/read memory, sandbox and source bindings. No policy,
 parameter value, target node, wire, prototype, default fix, scientific constraint,
 automatic finish/fallback or extra retry is supplied by the host.
 
+### Explicit source-owned designer transport allowance
+
+V35a2 efficiencyG0 step06 ends with an actual ReadTimeout(read timeout=300),
+while the local backend had been generating tokens. Preserve that failure and
+unknown final response/token costs. A non-streaming8192-token reasoning call
+can require more than300s on this host; reaching the read limit is not evidence
+that a scientific policy fails. Separately from the presentation change, declare
+connect10s/read900s for each staged planner/editor POST. These are requests
+connection/read-inactivity allowances, not a promised completion time or a new
+token/call budget. Record them before POST, including exceptions; bind them in
+the decoding contract, actual calibration cold gate and final transport audit.
+Do not retry, stream/salvage partial actions, accept incomplete envelopes, change
+researcher/one-shot timeouts, alter the backend, or modify/refund V35a2. Native
+calibration and production both use the same new staged allowance.
+
 ## Conditional finite actual continuation
 
 SCRIPTED checks must verify small role advertisements, unchanged full host

@@ -11,6 +11,7 @@ STAGED_MAX_TOKENS = 8192
 STAGED_CONTEXT_TOKENS = 40960
 STAGED_PLANNER_TEMPERATURE = .6
 STAGED_EDITOR_TEMPERATURE = .6
+STAGED_HTTP_TIMEOUT_SECONDS = (10, 900)
 
 
 def decoding_contract(protocol, *, role=None):
@@ -19,6 +20,7 @@ def decoding_contract(protocol, *, role=None):
         if role not in ('planner', 'editor'):
             raise ValueError('unknown source-owned designer role')
         return {'think': True, 'backend_format': 'json', 'response_channel': 'function-json-v26',
+            'http_timeout_seconds': list(STAGED_HTTP_TIMEOUT_SECONDS),
             'context_policy': {'truncate': False, 'shift': False},
             'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,

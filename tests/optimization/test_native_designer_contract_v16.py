@@ -195,6 +195,7 @@ def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(cert
         assert 'tools' not in payload  # do not enter the backend's float64 tool-argument parser
         assert '<tools>' in payload['messages'][0]['content']
         assert payload['truncate'] is False and payload['shift'] is False
+        assert record['transport']['http_timeout_seconds'] == [10, 900]
     assert value['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 1
     assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 26
     assert value['reasoning_evidence']['all_role_modes_compatible'] is True
@@ -213,7 +214,7 @@ def test_one_shot_has_its_own_protocol_bound_controls_and_certificate(tmp_path, 
 @pytest.mark.parametrize('mutation', ['pass-flag', 'drop-call', 'wire', 'output', 'schema',
     'partial', 'runtime', 'backend', 'receipt', 'model', 'seed', 'unsafe-number', 'expired', 'future',
     'think', 'temperature', 'max-tokens', 'decoding', 'thinking-only', 'reasoning-evidence', 'backend-format',
-    'decoding-role'])
+    'decoding-role', 'http-timeout', 'decoding-timeout'])
 def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, mutation):
     value = json.loads(certificate.read_text()); record = value['records'][0]
     if mutation == 'pass-flag': value['all_controls_passed'] = False
@@ -242,6 +243,8 @@ def test_rehashed_certificate_corruption_does_not_bypass_cold_gate(certificate, 
     elif mutation == 'reasoning-evidence': value['reasoning_evidence']['known_nonempty_response_fields'] = 0
     elif mutation == 'backend-format': record['transport']['request_payload']['format'] = None
     elif mutation == 'decoding-role': record['intent']['decoding_role'] = 'planner'
+    elif mutation == 'http-timeout': record['transport']['http_timeout_seconds'] = [10, 300]
+    elif mutation == 'decoding-timeout': value['plan']['decoding_contract']['editor']['http_timeout_seconds'] = [10, 300]
     value['content_sha256'] = digest({key: item for key, item in value.items() if key != 'content_sha256'})
     certificate.write_text(json.dumps(value))
     with pytest.raises(ValueError):

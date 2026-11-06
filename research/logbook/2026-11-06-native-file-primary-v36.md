@@ -69,6 +69,63 @@ world or source freeze occurs at this entry. Follow the conditional protocol
 only after V35 a2's authoritative full closure and original audits, and only
 if the unchanged functional-candidate/own-result/remeasurement goal is unmet.
 
+### Committed-source rerun, not a weakened source guard
+
+Wider56694 subsequently ends1288 pass/one failure in998.73s. Preserve
+optimization-development.xml SHA
+109f8d788e10b49293bbcaf1fa85a2340fbc59f0844210ce74ec954798a13590.
+The moving-clock nine-world integration fixture captured HEADa38d81b before
+the prepared V36 changes were committed. Its strict full-runtime comparison
+correctly rejects the changed native_designer_tools_v25.py against that old
+HEAD. The final feature commit37edc3c was made at03:22:02Z; this is a dirty-
+development source-pin failure, not evidence that the current native pilot
+crashed and not permission to bypass source equivalence. No test or runtime
+guard is changed for it. Rerun the entire optimization scope from clean
+37edc3c as session25803, optimization-committed-source.xml; retain the original
+failed result separately. Do not commit or change runtime during that rerun.
+
+Read-only37edc3c proof verifies all255 replay-critical source blobs. All27
+planned control actions/values exactly equal the positive immutable V35a2
+certificate's original cases. These are source/reference checks, not a new
+actual backend certificate, world, or functional scientific candidate.
+
+The clean37edc3c rerun25803 exits0:1289 pass in1044.43s. Preserve
+optimization-committed-source.xml SHA
+95c92e14990826e343ebfe491115c72a098c3465fb930b33c4c3a557f5569974.
+This pass belongs to the file-primary source before the next timeout change;
+do not transfer it to later changed runtime bytes.
+
+### Actual V35 read timeout, separately declared V36 transport change
+
+V35a2 efficiencyG0 step06 has an actual ReadTimeout(read timeout=300), not the
+earlier unexplained HTTP200/doneFalse event. A contemporaneous local server tail
+shows generation progressing, but supplies no completed reply/token receipt.
+The generation fails with its invalid changed source/graph and remaining charged
+steps preserved. The immutable actual run continues; no retry or repair occurs.
+
+Prepare connect10s/read900s only for staged designer POSTs, keeping8192 output/
+eight steps, model/world/losses and non-streaming strict response acceptance.
+Non-streaming8192-token reasoning at the observed local speed can outlast300s;
+900 is a prospective finite allowance, not a proven universal sufficient limit,
+total wall-clock deadline or demonstrated fix for the different V34 event.
+Record the exact allowance before dispatch (also on exception), declare it in
+the decoding contract, and require it in calibration/final transport audits.
+Researcher and one-shot300s settings, shared backend and activeV35 remain as-is.
+
+Initial affected timeout checks41510 pass151 in18.25s,
+timeout-focused-development.xml SHA
+6091cf39a396d57ca7e1130bae871b8c1ae1aeb4ac6282135eaac5fd5dad1ebc.
+Additional rehashed-timeout-tamper and original-audit tests are added before
+committing/final broader checks. No actual V36 source freeze or model call yet.
+
+Those expanded checks25252 exit0:194 pass in135.40s, including exact original
+POST replay and rehashed missing/altered timeout rejection at both cold gates.
+timeout-audit-development.xml SHA
+afa1e5ab52100b53c1d003a6fc61ff1d4c5675ee7777c5007b7b88ef211b0f3d.
+Commit the prospective changes before the next full optimization run, retaining
+all earlier failed and successful source-specific JUnit artifacts separately.
+The original goal is still unmet; V35a2 now has5/8 slots consumed and is live.
+
 Also retain the functional-classification caution: open-memory-router emits
 hard gate actions. Merely changing world.selection's consumer threshold from.5
 to.7 may be equivalent on reachable0/1 inputs. Literal source fingerprints and

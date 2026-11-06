@@ -156,6 +156,7 @@ def _transport(step, started, binding, classification):
         max_tokens=binding['settings']['max_tokens'],
         temperature=decoding_contract('staged-v15', role=role)['temperature'], role=role)
     if (transport['request_payload'] != expected or transport.get('endpoint') != 'http://127.0.0.1:11434/api/chat'
+            or transport.get('http_timeout_seconds') != decoding_contract('staged-v15', role=role)['http_timeout_seconds']
             or transport.get('network_retries') != 0
             or transport.get('model_digest') != binding['provider_binding']['model_digest']):
         raise ValueError('staged original POST model/prompt/schema/options/seed differs')

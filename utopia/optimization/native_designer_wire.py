@@ -15,7 +15,10 @@ def wire_record(payload, schema):
             ensure_ascii=False, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()}
 
 
-def post(session, endpoint, payload, schema, record):
+def post(session, endpoint, payload, schema, record, *, timeout=300):
     record.update(wire_record(payload, schema))
+    # Transport settings are source-owned, not candidate/model-controlled. Keep
+    # them in the receipt even when a single POST raises without a response.
+    record['http_timeout_seconds'] = list(timeout) if isinstance(timeout, tuple) else timeout
     return session.post(endpoint, data=record['request_wire_utf8'].encode(),
-        headers={'Content-Type': 'application/json'}, timeout=300)
+        headers={'Content-Type': 'application/json'}, timeout=timeout)

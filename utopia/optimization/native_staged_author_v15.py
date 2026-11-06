@@ -1445,7 +1445,8 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
             try:
                 from .native_designer_wire import post
                 response = post(self.session, 'http://127.0.0.1:11434/api/chat', payload,
-                    response_format['json_object']['schema'], self.last_transport)
+                    response_format['json_object']['schema'], self.last_transport,
+                    timeout=tuple(decoding_contract('staged-v15', role=role)['http_timeout_seconds']))
                 self.last_transport['http_status'] = response.status_code
                 self.last_transport['raw_http_response'] = response.text
                 response.raise_for_status()

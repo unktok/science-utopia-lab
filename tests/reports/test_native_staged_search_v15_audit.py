@@ -281,6 +281,7 @@ def transport_fixture():
         'output': action, 'transport': {'request_payload': payload, 'response_payload': body,
             'raw_http_response': json.dumps(body), 'http_status': 200, 'model_digest': BINDING['model_digest'],
             'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
+            'http_timeout_seconds': [10, 900],
             'response_channel': CHANNEL,
             'conversation_schema': audit.staged_author.PROTOCOL + CONVERSATION_SUFFIX,
             'source_prompt_sha256': audit.digest(started['prompt'])}}}
@@ -296,7 +297,7 @@ def test_exact_original_post_and_http_body_are_checked_without_dispatching():
 
 
 @pytest.mark.parametrize('mutation', ['no-transport', 'seed', 'model', 'prompt', 'schema', 'raw-body',
-    'assistant', 'truncated', 'not-done', 'foreign-response-model'])
+    'assistant', 'truncated', 'not-done', 'foreign-response-model', 'http-timeout', 'missing-http-timeout'])
 def test_synthetic_transport_proofs_reject_wrong_provider_prompt_or_truncated_accepted_action(mutation):
     step, started, binding = transport_fixture(); transport = step['model_reply']['transport']
     if mutation == 'no-transport': step['model_reply']['transport'] = {}
@@ -306,6 +307,8 @@ def test_synthetic_transport_proofs_reject_wrong_provider_prompt_or_truncated_ac
     elif mutation == 'schema': transport['request_payload']['format'] = {'type': 'object'}
     elif mutation == 'raw-body': transport['raw_http_response'] = '{}'
     elif mutation == 'assistant': step['model_reply']['messages'][-1]['content'] = '{}'
+    elif mutation == 'http-timeout': transport['http_timeout_seconds'] = [10, 300]
+    elif mutation == 'missing-http-timeout': transport.pop('http_timeout_seconds')
     else:
         if mutation == 'truncated': transport['response_payload']['done_reason'] = 'length'
         elif mutation == 'not-done': transport['response_payload']['done'] = False

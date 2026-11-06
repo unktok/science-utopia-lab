@@ -2,6 +2,32 @@
 
 Updated: 2026-11-06 JST
 
+## V35 a2 continues; V36 file-first guidance and designer timeout are prepared
+
+Actual8196814 remains immutable/live:5/8 slots consumed at03:57Z. Throughput
+has two author failures and two complete exact-parent loss0 worlds; efficiency
+G0 fails after changed but invalid code/ports and an actual300s ReadTimeout.
+EfficiencyG1 reads the actual source and writes statically valid Python, with
+a non-veto missing-local-input notice still present; no functioning changed
+native institution is claimed. Preserve all errors/cost unknowns and continue
+the actual finite pilot, then run its original source audits.
+
+Separate V36 advertises read_file/write_file/finish, with all eleven unchanged
+host tools fully legal/readable through immutable reference files. The normal
+editor no longer teaches conflicting pointer/flat-field tutorials. A second,
+explicitly declared change allows staged designer connect10/read900 seconds,
+recorded before each single POST and bound in calibration/final audits. Same
+8192-token/eight-step budget, researcher settings, world, losses and backend;
+no hidden retry/repair, output salvage or scientific-policy template is added.
+
+File-first clean37edc3c optimization checks pass1289/1044.43s; timeout-affected
+expanded checks pass194/135.40s. Earlier failed dirty-source and obsolete test-
+expectation results are retained. Neither result is an actual V36 certificate,
+scientific sample or completion of the original goal. Final committed-source
+broader checks and conditional future actual gates remain. See the
+[V36 log](logbook/2026-11-06-native-file-primary-v36.md) and
+[conditional protocol](protocols/campaigns/native-file-primary-v36-a1.md).
+
 ## V35 a2 readiness passes; on-demand-file native optimization is live
 
 Readiness22686 exits0 at frozen8196814:all27 original targets/cold replay and
