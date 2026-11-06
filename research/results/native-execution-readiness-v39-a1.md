@@ -47,6 +47,15 @@ G1 between them is an author failure (three500/EOFs, rejected read-only feature
 extractor write and final8192-token length termination), not another native
 loss. Three of eight slots are consumed and the original finite pilot continues.
 
+Read-only comparison of the two completed worlds finds91 researcher request
+payloads each, all payloads/hashes/year labels identical. The entire
+wire-requests.jsonl files share SHA256
+edfc0ccafa2fa70d885c0edc64adc76f4dcb721b62b70dcd55c6942b05385b17.
+This supports the same-policy interpretation on these actual inputs, despite
+the changed defensive code. It is not a reason to exclude the second proposal.
+G3 explicitly finishes without any applied edit and begins a retained-parent
+remeasurement; do not count it as another invented institution.
+
 G1 currently also has backend500/EOF failures; retain them as charged steps
 with unknown token costs, separate from native losses. Do not change the active
 source, replenish slots, repair generated code, or normalize old evidence.
