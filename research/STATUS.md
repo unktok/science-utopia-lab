@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V36 a1 fresh real readiness is live after V35 a2 original closure
+
+Freeze b04dad4056c3d8b0b12df14711dd2931b5647b58 in separate
+experiment-native-file-primary-v36-a1 tree and matching protocol tag; all255
+source blobs and all27 original control target actions/values verify. Final
+source-scoped reporting checks96516 pass86/65.82s; utopia/runtime driver bytes
+remain identical to the1336-pass b42a522 source. Preserve the old819 reports.
+
+Start fresh actual max27 readiness93487 with the same V30 request/V26 provider,
+fixed qwen3:8b digest/backend0.33.3, thinking/T.6/context40960/8192 output and
+declared connect10/read900s for both designer roles. No old call or certificate
+is reused/refunded; no V36 native world exists yet. If all actual controls/cold
+replay/role evidence pass, obtain a fresh loaded40960 observation and continue
+to the same eight-slot original-world feedback pilot. The original goal remains
+active; tests, calibration and parent retention are not the finish condition.
+
 ## V35 a2 closes with matching original audits; original goal remains unmet
 
 Writer20363 exits0 at04:40:50.622504Z after1h53m41.23s; PID84286 is absent.
