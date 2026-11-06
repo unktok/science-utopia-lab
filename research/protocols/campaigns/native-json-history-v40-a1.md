@@ -97,3 +97,31 @@ code or literal tool tags and remain data. A small paired diagnostic cannot
 prove a universal fix or scientific benefit, is not a readiness certificate,
 and does not authorize a new eight-world campaign. Any later scientific pilot
 still needs its separately declared fresh technical readiness and source gates.
+
+## Separate two-POST reasoning-budget diagnostic (V41)
+
+The user subsequently asks to fix remaining errors thoroughly. Offline V39
+inspection finds six length terminations: all8192 reported output tokens,
+nonempty thinking and empty answer content. Inputs range5034..22859 reported
+tokens, so these events do not by themselves establish context-window overflow.
+The thinking capability is present in local model metadata; an effective false
+mode on this exact model/backend is an empirical question, not assumed.
+
+The separate `diagnose_native_reasoning_budget_v41.py` fixes efficiencyG0
+generation556d77cf...fec74 step00, the original5034-input-token planner failure.
+Rebuild its exact legacy request and wire first. Predeclare two NEW local
+replicates in true/false order, varying only payload.think. Keep original seed,
+messages, model/digest/backend, options/context40960/output8192,10/900 timeouts
+and zero retries. Maximum2 generation POSTs/6 metadata GETs, no role-load POSTs.
+This budget is separate from, not a replenishment of, the six V40 history probes.
+
+Require the original writer-ended lock, two unchanged original-D29 full audits,
+clean committed diagnostic source and source-bound scripted checks. Existing
+runtime/helper bytes must match the broad-verified V40 source; new script and
+its tests are a separately declared diagnostic delta, not an untested production
+profile or fresh readiness certificate. No scientist or candidate code runs.
+Preserve exact request bytes, response bodies, parsed plan/strict schema result,
+thinking/content character counts and reported or unknown costs. No output
+salvage, global backend setting change, hidden retry or automatic adoption.
+An interruption consumes its intent; no resume/redispatch in the fresh output.
+Two fixed-order outcomes cannot prove reliability or better design quality.
