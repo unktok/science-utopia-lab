@@ -142,7 +142,7 @@ def _prompt(request, state, steps, provider, expected, protocol):
     return prompt, system
 
 
-def sequence(state):
+def sequence(state, request=None):
     """Literal multi-turn code editing control, NOT an autonomous design success."""
     for index, node in enumerate(state['document'].get('mechanisms', [])):
         source = node.get('parameters', {}).get('code_artifact', {}).get('source')
@@ -154,7 +154,7 @@ def sequence(state):
             edited_source = source + '\n# interface calibration; no behavioral change\n'
             from urllib.parse import quote
             token = quote(node['mechanism_id'], safe='._-')
-            return [{'id': 'sequence-plan', 'expected': clone(PLAN_CONTROL)},
+            result = [{'id': 'sequence-plan', 'expected': clone(PLAN_CONTROL)},
                 {'id': 'sequence-inspect', 'expected': {'tool': 'inspect', **relative}},
                 {'id': 'sequence-splice', 'expected': {'tool': 'splice', **relative,
                     'offset': len(source), 'delete': 0, 'text': '\n# interface calibration; no behavioral change\n'}},
@@ -171,6 +171,19 @@ def sequence(state):
                 {'id': 'sequence-validate', 'expected': {'tool': 'validate'}},
                 {'id': 'sequence-finish', 'expected': {'tool': 'finish',
                     'rationale': 'Interface calibration only; no behavioral improvement claimed'}}]
+            if request is not None:
+                from .native_file_workspace_v35 import _entries
+                entries, _ = _entries(state['document'], request)
+                historical = sorted(name for name in entries
+                    if name.startswith('history/') and name.endswith('.py'))
+                changed = [name for name in historical
+                    if entries[name]['archive']['candidate_virtual_filename'] in entries
+                    and entries[name]['value'] != entries[
+                        entries[name]['archive']['candidate_virtual_filename']]['value']]
+                if historical:
+                    result.insert(-2, {'id': 'sequence-read-own-history', 'expected': {
+                        'tool': 'read_file', 'filename': (changed or historical)[0]}})
+            return result
     raise ValueError('staged calibration requires a real code-bearing parent, not an empty toy document')
 
 
@@ -194,7 +207,7 @@ def planned_cases(request, protocol):
     field_cases = [{'id': 'typed-field-' + str(index), 'expected': {'tool': 'edit_fields',
         'mechanism_id': identity, 'field_updates': [{'field_name': 'family', 'value': clone(value)}]}}
         for index, value in enumerate(VALUES)]
-    return cases(protocol) + field_cases + sequence(state)
+    return cases(protocol) + field_cases + sequence(state, request)
 
 
 def _apply(state, action, request, provider):

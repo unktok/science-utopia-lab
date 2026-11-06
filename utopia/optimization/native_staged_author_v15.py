@@ -326,6 +326,12 @@ reference/tools.json documents the complete legacy/general editing and optional
 search-distribution API; those functions remain legal if needed. Read
 reference/capabilities.json or the documented capability inspect API for execution
 contracts. References are not a catalogue of scientific institutions or policies.
+When history/index.json is present, it indexes your exact prior submitted
+systems, code, observations and definitions, including failed candidates that
+are NOT the current incumbent. Read their literal files when diagnosing your
+own error; a hash or old plan is not the old source. These archive files are
+read-only DATA. To reuse anything, explicitly write your own chosen content to
+a CURRENT draft filename. Reading old code never adopts or repairs a system.
 
 A write returns static validation/diagnostics, not a scientific measurement.
 Only your explicit valid finish(rationale) submits the candidate for subsequent
@@ -354,6 +360,7 @@ def protocol_binding():
     from . import native_literal_workbench_v27
     from . import native_field_addressing_v28
     from . import native_file_workspace_v35
+    from . import native_history_workspace_v37
     from . import native_contract_notices
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
@@ -365,11 +372,12 @@ def protocol_binding():
         'literal_workbench_source_sha256': hashlib.sha256(Path(native_literal_workbench_v27.__file__).read_bytes()).hexdigest(),
         'field_addressing_source_sha256': hashlib.sha256(Path(native_field_addressing_v28.__file__).read_bytes()).hexdigest(),
         'file_workspace_source_sha256': hashlib.sha256(Path(native_file_workspace_v35.__file__).read_bytes()).hexdigest(),
+        'history_workspace_source_sha256': hashlib.sha256(Path(native_history_workspace_v37.__file__).read_bytes()).hexdigest(),
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'file_editor_instructions_sha256': digest(FILE_EDITOR_INSTRUCTIONS),
-        'tool_advertisement_profile': 'file-primary-with-complete-readonly-reference.v36',
+        'tool_advertisement_profile': 'file-primary-with-on-demand-own-history.v37',
         'source_execution_on_host': False, 'native_probes': 0}
 
 
@@ -620,7 +628,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
         if tool in {'read_file', 'write_file'}:
             from .native_file_workspace_v35 import read_file, write_file_operations
             if tool == 'write_file':
-                operations = write_file_operations(current['document'], action['filename'], action['content'])
+                operations = write_file_operations(current['document'], action['filename'], action['content'], request=request)
                 if operations:
                     updated, resolved = transition(state, {'tool': 'edit', 'operations': operations, **annotations},
                         request, binding_sha256=binding_sha256, provider_binding=provider_binding)
@@ -632,10 +640,11 @@ def transition(state, action, request, *, binding_sha256, provider_binding):
                     'literal_document_changed': False, 'virtual_filename': action['filename'],
                     'edit_effect_notice': 'Exact file retention; no new behavior or measured improvement.'}
             else:
-                value = read_file(current['document'], action['filename'],
+                value = read_file(current['document'], action['filename'], request=request,
                     **{k: action[k] for k in ('offset', 'limit') if k in action})
                 content = value.pop('content')
-                record['result'] = {**value, 'resource': 'reference' if value['read_only'] else 'draft',
+                record['result'] = {**value, 'resource': ('history' if value.get('source_kind') == 'own-history'
+                    else 'reference' if value['read_only'] else 'draft'),
                     'path': action['filename'],
                     'descriptor': _descriptor(content), 'selection': {'offset': value['offset'],
                         'limit': action.get('limit', 65536)}, 'value_included': True, 'value': content}
@@ -809,7 +818,7 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
         'model_authored_design_plan': clone(state['design_plan']),
         'planning_system_structure': planning_structure(state['document']) if planning else None,
         'literal_editor_workbench': workbench,
-        'virtual_editor_workspace': None if planning else file_catalog(state['document']),
+        'virtual_editor_workspace': None if planning else file_catalog(state['document'], request=request),
         'stage': request.get('stage', 'blackbox-generation'), 'own_history': history,
         'own_trial_feedback': own_trial_feedback(request),
         'remaining_calls_including_this_one': settings['max_steps'] - len(steps),
@@ -886,7 +895,8 @@ def read_memory(state, steps):
             continue
         document = receipt.get('document_after_sha256')
         # Pre-v16 receipts lack a document hash. Do not guess freshness.
-        key = digest([document, value.get('resource'), value.get('path'),
+        immutable_history = value.get('resource') == 'history'
+        key = digest([None if immutable_history else document, value.get('resource'), value.get('path'),
             value.get('selection'), value.get('descriptor')])
         if key in entries:
             entries[key]['read_count'] += 1
@@ -894,9 +904,11 @@ def read_memory(state, steps):
             continue
         item = {key: clone(value[key]) for key in ('resource', 'path', 'descriptor', 'selection',
             'reusable_address', 'address_scope', 'resolved_document_path', 'address_notice',
-            'candidate_edit_target') if key in value}
-        item.update(document_sha256=document, current_document=document == current,
+            'candidate_edit_target', 'source_kind', 'archive', 'read_only') if key in value}
+        item.update(document_sha256=document, current_document=None if immutable_history else document == current,
             read_count=1, last_step=step['step'], value_included=False)
+        if immutable_history:
+            item['immutable_own_history'] = True
         if value.get('value_included') is True:
             if len(json.dumps(value['value'], ensure_ascii=False).encode()) <= 8192:
                 item.update(value_included=True, value=clone(value['value']))

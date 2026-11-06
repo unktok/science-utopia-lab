@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V37 conditional on-demand own-candidate source retrieval](protocols/campaigns/native-history-files-v37-a1.md)
+- [V37 actual missing read path and separate retrieval implementation](logbook/2026-11-06-native-history-files-v37.md)
+
 - [V35 a2 closed original-world feedback, exact parent invariance and actual failure causes](results/native-file-workspace-v35-a2.md)
 - [V35 a2 matching original-source compact audit](results/native-file-workspace-v35-a2.json)
 

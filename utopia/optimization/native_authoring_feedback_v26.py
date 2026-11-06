@@ -75,6 +75,9 @@ def own_trial_feedback(request):
             if omitted is not None:
                 item.update(original_observation_sha256=digest(observation),
                     explicit_body_omission=omitted)
+                if isinstance(body, dict):
+                    item['archived_candidate_file'] = (
+                        f'history/trial-{index:03d}/observation-{observation_index:03d}/system.json')
             observations.append(item)
         trials.append({'history_index': index,
             'request_sha256': record.get('request_sha256'), 'version_sha256': record.get('version_sha256'),

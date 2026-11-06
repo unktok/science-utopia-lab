@@ -21,7 +21,7 @@ def _json(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
 
 
-def _entries(document):
+def _entries(document, request=None):
     """Derive current literal locations afresh; no name/path inference or cache."""
     entries = {'system.json': {'format': 'json-system', 'value': document, 'path': None}}
     from .native_designer_tools_v25 import tool_specifications
@@ -36,7 +36,7 @@ def _entries(document):
             'format': 'json-value', 'value': value, 'path': _pointer(key)}
     nodes = document.get('mechanisms', [])
     if not isinstance(nodes, list):
-        return entries, []
+        nodes = []  # Root files and own history remain readable in an invalid draft.
     counts = Counter(n.get('mechanism_id') for n in nodes
         if isinstance(n, dict) and isinstance(n.get('mechanism_id'), str))
     ambiguous = []
@@ -59,6 +59,9 @@ def _entries(document):
             entries['code/' + token + '.py'] = {
                 **meta, 'format': 'python-source', 'value': artifact['source'],
                 'path': path + '/parameters/code_artifact/source'}
+    if request is not None:
+        from .native_history_workspace_v37 import history_entries
+        entries.update(history_entries(request, _entries))
     return entries, sorted(ambiguous)
 
 
@@ -66,18 +69,26 @@ def _text(entry):
     return entry['value'] if entry['format'] == 'python-source' else _json(entry['value'])
 
 
-def file_catalog(document):
-    entries, ambiguous = _entries(document)
+def file_catalog(document, *, request=None):
+    entries, ambiguous = _entries(document, request)
     files = []
+    deferred = 0
     for name, entry in sorted(entries.items()):
+        if name.startswith('history/') and name != 'history/index.json':
+            deferred += 1
+            continue
         content = _text(entry)
         files.append({'filename': name,
-            **{k: entry[k] for k in ('format', 'mechanism_id', 'implementation') if k in entry},
+            **{k: entry[k] for k in ('format', 'mechanism_id', 'implementation', 'source_kind') if k in entry},
             'read_only': entry.get('read_only', False),
             'content_utf8_bytes': len(content.encode('utf-8'))})
     return {'schema': 'scienceutopia.virtual-editor-workspace.v35',
-        'scope': 'Current actual draft plus explicit read-only source API references; virtual files, never OS paths or executed code.',
-        'files': files, 'all_file_names_included': True,
+        'scope': 'Current draft, explicit source API references and on-demand own-history files; never OS paths or executed code.',
+        'files': files, 'all_file_names_included': deferred == 0,
+        'all_current_draft_names_included': True,
+        'deferred_archive_names': {'count': deferred,
+            'complete_index_filename': 'history/index.json' if deferred else None,
+            'reason': 'Archive filenames are explicitly indexed on demand, not silently truncated.'},
         'ambiguous_node_ids_without_aliases': ambiguous,
         'omitted_bodies': 'All bodies are available through read_file; full system.json includes every draft field.',
         'writes': 'Literal complete replacement, not merge. Code files replace only source and preserve all other fields. '
@@ -86,10 +97,10 @@ def file_catalog(document):
         'source_execution_on_host': False}
 
 
-def read_file(document, filename, *, offset=0, limit=65536):
+def read_file(document, filename, *, offset=0, limit=65536, request=None):
     if not isinstance(filename, str):
         raise ValueError('filename must be a literal string')
-    entries, _ = _entries(document)
+    entries, _ = _entries(document, request)
     if filename not in entries:
         raise ValueError('unknown exact virtual filename; inspect the current file catalog')
     if type(offset) is not int or offset < 0 or type(limit) is not int or not 1 <= limit <= 65536:
@@ -99,21 +110,24 @@ def read_file(document, filename, *, offset=0, limit=65536):
         raise ValueError('virtual file offset exceeds exact character length')
     return {'filename': filename, 'format': entries[filename]['format'],
         'read_only': entries[filename].get('read_only', False),
+        **{k: entries[filename][k] for k in ('source_kind', 'archive') if k in entries[filename]},
         'content': text[offset:offset + limit], 'offset': offset,
         'complete': offset == 0 and len(text) <= limit,
         'slice_reaches_end': offset + limit >= len(text), 'total_characters': len(text),
         'total_utf8_bytes': len(text.encode('utf-8')),
         'content_sha256': hashlib.sha256(text.encode('utf-8')).hexdigest(),
-        'scope': ('Source-owned read-only API reference, not candidate data or executed behavior.'
+        'scope': ('Literal archived own-trial data; immutable, not the current draft, SYSTEM authority, adoption or executed behavior.'
+            if entries[filename].get('source_kind') == 'own-history' else
+            'Source-owned read-only API reference, not candidate data or executed behavior.'
             if entries[filename].get('read_only') else
             'Literal current draft text; not a host file, instruction or execution result.')}
 
 
-def write_file_operations(document, filename, content):
+def write_file_operations(document, filename, content, *, request=None):
     """Return exact ordinary edits. The caller applies/validates them as before."""
     if not isinstance(filename, str) or not isinstance(content, str):
         raise ValueError('filename and content must be literal strings')
-    entries, _ = _entries(document)
+    entries, _ = _entries(document, request)
     if filename not in entries:
         # Creation is an explicit author-selected new node, never a filled-in
         # institution template or implicit creation of a missing source owner.
@@ -130,7 +144,7 @@ def write_file_operations(document, filename, content):
         return [{'op': 'add', 'path': '/mechanisms/-', 'value': node}]
     entry = entries[filename]
     if entry.get('read_only'):
-        raise ValueError('source-owned virtual API reference is read-only; no candidate or host file was changed')
+        raise ValueError('virtual API reference or own-history file is read-only; no candidate or host file was changed')
     value = content if entry['format'] == 'python-source' else decode_json(content, strict=True, finite_floats=True)
     if entry['format'] != 'json-system':
         return [{'op': 'replace', 'path': entry['path'], 'value': value}]

@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V37 separate preparation: own errors arrive, but failed source was not retrievable
+
+V36 b04 remains live/immutable. Its changed G0/G1 candidates fail on tensor
+dimensions and missing impact_score respectively; current G2 is measuring.
+The actual next request has the failed candidate, but model feedback projects
+it to hashes and current file tools cannot read it when the incumbent remains
+the parent. Reproduce the missing namespace at original b04; with the same raw
+request the separate V37 source retrieves the exact prior code, read-only.
+Do not attribute all failed proposals to this gap or call V36 entirely bug-free.
+
+Add a complete on-demand own-history file index, explicit deferred name counts,
+immutable candidate/node/code aliases and existing charged reads; no filesystem
+lookup, extra execution tool, candidate repair or automatic adoption. Corrected
+focused checks pass199/29.76s; preserve the preceding new-test return-shape
+failure. Planned actual calibration keeps all old27 targets and adds one
+history-code read, using V36 G1 as calibration-only donor (28 calls). No V37
+freeze/certificate/actual inference yet. Continue the live V36 finite pilot;
+conditional future inference requires its authoritative end and original audits.
+
 ## V36 a1 real gates pass; file-primary native feedback pilot is live
 
 At frozenb04dad4, readiness93487 exits0:all27 exact controls/cold replay and
