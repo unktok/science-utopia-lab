@@ -66,3 +66,24 @@ This is preparation, not a V37 source freeze, certificate or scientific result.
 The live V36 pilot continues to its finite end and original audits before any
 conditional next inference. No claim that retrieval fixes all code mistakes or
 guarantees useful institutional invention is made.
+
+## Broader unchanged-source checks and retained infrastructure failure
+
+At committed742027b082612c0c1c52a7476c0cf3a98bdfbe7e, the full optimization,
+staged-audit, tensor program/operation, submission-context and provenance-view
+scope first yields1398 pass/one failure in1232.44s. JUnit
+9962cf221df46da3355ca75f099c27dd673208d0a1999cbbca92037a38a6b679.
+The exact test-region receipts show that the second, valid SCRIPTED response
+failed on `docker rm -f` cleanup timeout10s, then the fake model had no third
+response. This is not relabelled as a history-helper regression or an actual
+scientific proposal failure. The named test container is absent on inspection.
+
+Same-source isolated repair test:1 pass/9.18s, JUnit
+ed4ae543ced18c47163a469df908787f698246df21fb3b8915ddd55f8beba817.
+Then a separately named full repeat, without runtime/HEAD/assertion/timeout
+changes, passes all1399 in1172.20s. JUnit
+fccb5bcdc01aa9d00fde0c9faa1b73643cd1a78af2985e6ab034646ae14c5e10.
+Both full outcomes are retained. These are software checks, not an actual V37
+model certificate, measured native institution or completion of the original
+goal. The later designer-only authorization allows a V38 combined continuation;
+the prospective Qwen-only V37 campaign remains unlaunched.

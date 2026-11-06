@@ -129,3 +129,11 @@ topK20/minP0; do not assume the route honors those from metadata alone. The
 loaded-context check must observe40960. Unspecified model defaults are bound
 to the actual model digest, not asserted identical to Qwen3-8B. No generation,
 loading, backend change or new external service has occurred in this preparation.
+
+The unchanged742 V37 full repeat now exits0:1399 pass/1172.20s, JUnit
+fccb5bcdc01aa9d00fde0c9faa1b73643cd1a78af2985e6ab034646ae14c5e10.
+Do not erase its first cleanup-timeout failure. With the duplicate broad run
+finished, the final V38 committed-source scope can now include all affected
+optimization/audit/tensor/scientist-rendering checks, including the previously
+deselected Docker cases, without overlap with another broad suite. V36's
+actual experiment remains unchanged and continues concurrently.

@@ -18,8 +18,8 @@ provider, certificate or scientific result exists yet. Do not call this complete
 
 At06:02Z frozen V36 remains live:4/8 consumed; throughput's four authored worlds
 fail shape/key/envelope execution, efficiencyG0 is editing. Do not change that
-run. V37's broad check has1398 pass/one Docker cleanup timeout; same-source
-isolation passes and a separate unchanged-source full repeat runs. Preserve all
+run. V37's first broad check has1398 pass/one Docker cleanup timeout; same-source
+isolation and all1399 in the separate full repeat pass. Preserve all
 outcomes. After V36's actual end and two original-source audits, a fully verified
 V38 continuation may supersede the unlaunched Qwen-only V37 pilot if the original
 functional-candidate/own-feedback/remeasurement goal remains unmet.
