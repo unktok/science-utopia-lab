@@ -9,7 +9,11 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [V43 opt-in direct designer profile preparation; effectiveness unmeasured](protocols/campaigns/native-direct-profile-v43-a1.md)
+- [V43 error fixes verified:1,604 regressions,28 fresh actual controls and two cold replays; no scientific campaign](results/native-direct-profile-v43-a1-readiness.md)
+
+- [Actual8-call error-diagnostic projection: paired history formats and thinking modes; no candidate execution](results/native-designer-error-diagnostics-v42-a1.json)
+
+- [V43 prospective opt-in direct designer profile protocol, with subsequent verification link](protocols/campaigns/native-direct-profile-v43-a1.md)
 - [V43 isolated source work and focused regression boundary](logbook/2026-11-06-native-direct-profile-v43.md)
 
 - [Prospective combined error recovery: preserved full-test failure, executor cleanup, required-field context and6+2 bounded probes](logbook/2026-11-06-native-json-history-v40.md)

@@ -53,3 +53,12 @@ plan/CLI. Its existing `--start-authorized-search` and current certificate gates
 remain mandatory; no launch command is implied here. Preparation alone grants
 no dispatch authority. The auditor reconstructs this driver's exact plan and
 checks think/payload/wire, schema, seeds, timeouts and all original receipts.
+
+## Subsequent error-fix validation (not a change to the prepared protocol)
+
+The original frozen protocol remains premeasurement. Under the user's error-fix
+instruction, the combined immutable E920 source subsequently passes software
+checks, fresh actual profile-bound technical controls and original-response
+cold replay. See the [observed readiness report](../../results/native-direct-profile-v43-a1-readiness.md)
+and logbook for sources, costs, retained failures and claim limits. No automatic
+scientific campaign or change to legacy defaults is authorized by that result.

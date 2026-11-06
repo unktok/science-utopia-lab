@@ -2,6 +2,40 @@
 
 Updated: 2026-11-06 JST
 
+## Error fixes verified: V43 software, actual controls and cold replay pass
+
+Frozen E920 full software passes1604/2 optional skips756.00s. Fresh direct-profile
+controls55722 exit0:28/28 pass,26 exact copies/two retained diagnostic mismatches;
+both immediate and separate-process47522 original-response cold replay pass.
+All28 token costs known:238090 input/1292 output,144.19644129415974 adapter
+seconds. No generated source or native world executes during calibration.
+Certificateb545654cf8e23d1ca7d2ca29bc947ced278ec511f5bd3f1c83d12f1ee53c4f3d.
+See the [error-recovery/readiness report](results/native-direct-profile-v43-a1-readiness.md).
+No automatic scientific campaign or default-profile change follows. All required
+technical checks for local integration are complete. Older sections below are historical.
+
+## Prior diagnostic and full-gate progress (historical)
+
+Combined979 passes1575/2 optional skips674.03s. Fixed six history probes find
+oldHermes0/3 complete (all500/EOF), plainJSON3/3 complete/schema-valid. Separate
+thinking pair exactly reproduces the old8192-token thinking-only failure;
+false gives567-token valid plan/no thinking.8 actual POSTs,44741 known input/
+12993 output, three unknown token costs;0 actions/worlds,266 original raw files
+unchanged. See [checked diagnostic projection](results/native-designer-error-diagnostics-v42-a1.json).
+
+Explicit opt-in plain-function-direct-v43 is implemented and source-bound through
+sender/plans/calibration/cold replay/auditor, keeping old defaults/criteria.
+Frozen E920 full82928 exits0:1604 pass/2 optional skips756.00s, JUnit
+64dc7b1b1290be4dc5f9dd559a3f28f7b8218a9e0aaf7d88bee55485c32dac31.
+The separately preserved basetemp-parent SETUP failure is not overwritten;
+source bytes/HEAD never change between attempts. All262 source blobs verify,
+and all28 planned control cases exactly match the old readiness inputs. Fresh
+finite28 actual profile-bound controls55722 are now running, not certificate
+reuse or another scientific campaign. Small diagnostic effects are not universal
+reliability, invention or scientific-benefit claims. Main is not yet updated
+with the feature while verification remains incomplete. Older entries below
+retain their historical preparation state, not current live status.
+
 ## V43 opt-in direct profile preparation; no inference or adoption
 
 Separate prospective `plain-function-direct-v43` shares V40's lossless history
