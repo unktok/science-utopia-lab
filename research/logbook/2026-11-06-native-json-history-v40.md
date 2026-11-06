@@ -114,6 +114,16 @@ defines the think flag. Neither proves this local converted model/backend
 honors it. Measure the two declared local probes after the combined committed
 software gate; do not silently change production decoding based on docs alone.
 
+Failure-evidence retention note: the first broad test's temporary campaign
+directory subsequently expires under pytest's normal retention while its failed
+JUnit remains preserved. Its TimeoutExpired technical failure was read before
+expiry and is recorded above/in the tool transcript; do not claim the full
+temporary campaign is still available. Prospectively include the actual native
+technical_failures in this integration test's assertion/JUnit rather than only
+failed/complete. Later broad runs use an explicit fresh basetemp inside the
+ignored verification output, avoiding silent expiry of failure context. Original
+V39 research raw files/audits are outside pytest and remain unchanged.
+
 Independent read-only lifecycle review identifies two exceptional-path gaps in
 the initial cleanup patch: kill failure skips reaping, and a local error can
 replace an outstanding daemon timeout/user interruption. Preserve that first

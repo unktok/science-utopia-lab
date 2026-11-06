@@ -94,11 +94,14 @@ def test_joint_code_protocol_and_wiring_edit_executes_in_native_world(tmp_path, 
         pytest.skip('local isolated Python runtime required')
     controller = campaign(tmp_path / 'campaign')
     first = controller.advance(simulation_factory=factory(tmp_path / 'runs'))
+    assert first['observation']['status'] == 'complete', first['observation']['metadata']['technical_failures']
     def proposer(parent, history, index, objective):
         assert history[0]['observation']['loss'] == first['observation']['loss']
         return deliberation_patch(parent, image_id=executor.image_id, threshold=3.)
     second = controller.advance(simulation_factory=factory(tmp_path / 'runs'), proposer=proposer)
-    assert second['observation']['status'] == 'complete'
+    # Preserve the actual technical cause in JUnit even if pytest later expires
+    # its temporary campaign directory; never reduce it to just failed/complete.
+    assert second['observation']['status'] == 'complete', second['observation']['metadata']['technical_failures']
     assert second['observation']['loss'] < first['observation']['loss']
     assert second['difference']['nodes_added'] == ['deliberation-assembly']
     assert second['difference']['nodes_changed'] == ['world.selection']
