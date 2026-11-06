@@ -194,13 +194,7 @@ class DockerCodeExecutor:
                                              + stderr.decode(errors="replace")[:1000])
         finally:
             if process is not None:
-                # The exact generated container is the only deletion target.
-                subprocess.run([self.docker, "rm", "-f", name], capture_output=True, timeout=10)
-                if process.poll() is None:
-                    process.kill()
-                process.wait()
-                process.stdout.close()
-                process.stderr.close()
+                self._cleanup_process(process, name)
         try:
             envelope = json.loads(stdout)
         except (ValueError, UnicodeError) as error:
@@ -215,6 +209,28 @@ class DockerCodeExecutor:
             "context_sha256": sha(context), "result_sha256": sha(result),
             "wall_seconds": time.monotonic() - start,
         })
+
+    def _cleanup_process(self, process, name):
+        # A successful foreground `docker run --rm` has already exited with
+        # automatic removal enabled. A redundant daemon rm can time out and
+        # turn a completed execution into an infrastructure failure. Keep the
+        # explicit exact-name cleanup for nonzero, interrupted or live clients.
+        try:
+            if process.poll() != 0:
+                subprocess.run([self.docker, "rm", "-f", name], capture_output=True, timeout=10)
+        finally:
+            # Even failed/interrupting daemon cleanup must not bypass local
+            # client termination, reaping or pipe closure. Do not suppress the
+            # cleanup exception or retry/adopt an uncertain execution.
+            try:
+                if process.poll() is None:
+                    process.kill()
+                process.wait()
+            finally:
+                try:
+                    process.stdout.close()
+                finally:
+                    process.stderr.close()
 
 
 def validate_context(artifact: dict[str, Any], context: dict[str, Any]) -> None:

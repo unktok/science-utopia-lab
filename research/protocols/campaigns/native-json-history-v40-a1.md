@@ -116,12 +116,30 @@ and zero retries. Maximum2 generation POSTs/6 metadata GETs, no role-load POSTs.
 This budget is separate from, not a replenishment of, the six V40 history probes.
 
 Require the original writer-ended lock, two unchanged original-D29 full audits,
-clean committed diagnostic source and source-bound scripted checks. Existing
-runtime/helper bytes must match the broad-verified V40 source; new script and
-its tests are a separately declared diagnostic delta, not an untested production
-profile or fresh readiness certificate. No scientist or candidate code runs.
+clean committed diagnostic source and source-bound scripted checks. The first
+V40 broad source450c17f has a real Docker cleanup failure; retain it as failed.
+Before actual probes, commit and broadly verify the combined prospective cleanup,
+required-field diagnostics and standalone probes. This is not a production
+decoding profile or fresh readiness certificate. No scientist or candidate code runs.
 Preserve exact request bytes, response bodies, parsed plan/strict schema result,
 thinking/content character counts and reported or unknown costs. No output
 salvage, global backend setting change, hidden retry or automatic adoption.
 An interruption consumes its intent; no resume/redispatch in the fresh output.
 Two fixed-order outcomes cannot prove reliability or better design quality.
+
+## Prospective code-executor cleanup repair (V42)
+
+V40's first1496-pass/one-failure full scope fails on a Docker rm-f timeout in
+the native code+protocol+wiring integration test, not on a designer POST.
+Preserve failed JUnit0e57fd9803ef2d742d824ce1c79342f721b3ca9b5d2f491b2b111cadc6323033,
+788.46s. Read-only inspection later finds the exact named container absent;
+that does not prove its state at the earlier timeout.
+
+Keep sandbox flags, image, code/outputs and15s execution/10s forced cleanup
+bounds unchanged. Successful foreground `docker run --rm` client exit0 uses
+Docker's automatic container removal, without an additional rm daemon call.
+Nonzero, live or interrupted clients retain exact-name forced cleanup. A nested
+finally always terminates/reaps/closes the local client even if daemon cleanup
+fails or is interrupted; its exception is not suppressed, retried or scored as
+a successful scientific execution. Never touch unrelated containers or Docker
+daemon configuration. See [Docker's --rm contract](https://docs.docker.com/reference/cli/docker/container/run/#clean-up---rm).

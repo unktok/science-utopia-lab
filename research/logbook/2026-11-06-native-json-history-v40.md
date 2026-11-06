@@ -85,3 +85,31 @@ and raw wire otherwise reconstruct exactly. Correct the diagnostic to retain
 the ORIGINAL full host schema and record the extra plan-only classification
 separately. This is a new diagnostic implementation error, not a historical V39
 experiment defect; no actual POST has occurred. Preserve this first outcome.
+
+## Full verification exposes a real executor cleanup defect
+
+Frozen450c17f full check68678 exits1:1496 pass/one optional skip/one failure,
+788.46s, JUnit0e57fd9803ef2d742d824ce1c79342f721b3ca9b5d2f491b2b111cadc6323033.
+The native code+protocol+wiring test's saved technical failure is a10-second
+`docker rm -f` TimeoutExpired for its exact generated container. This is an
+infrastructure cleanup failure, not model inference or a native numerical loss.
+The old finally also skips local kill/reap/pipe closure if daemon removal raises.
+Do not call this broad run passed or overwrite its JUnit. No actual probes yet.
+
+New prospective cleanup uses existing foreground `run --rm` automatic removal
+on client exit0, without another daemon rm. Keep forced exact-name cleanup for
+live/nonzero clients,15s execution and10s removal bounds, all sandbox flags and
+the same immutable image. Nested finally releases local client resources even
+when daemon cleanup fails or is interrupted; errors remain failures, not retries
+or scientific success. See [Docker's removal contract](https://docs.docker.com/reference/cli/docker/container/run/#clean-up---rm).
+Mocked lifecycle tests plus real isolated-code security/timeout/output-flood
+checks and the exact failed native integration case pass28/7.68s. These are
+development checks, not the new committed broad gate. No Docker daemon changes,
+unrelated-container deletion or real designer/scientist calls occur.
+
+The reasoning probe is motivated by the actual archived8192-token thinking-only
+failures. [Qwen's official model card](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)
+describes parameter-controlled nonthinking mode; [Ollama's API](https://docs.ollama.com/api/chat)
+defines the think flag. Neither proves this local converted model/backend
+honors it. Measure the two declared local probes after the combined committed
+software gate; do not silently change production decoding based on docs alone.
