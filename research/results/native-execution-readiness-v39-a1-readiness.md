@@ -28,10 +28,15 @@ executions occur in this readiness calibration. Raw evidence stays under
 `outputs/native-execution-readiness-v39-a1-preflight` and out of Git.
 
 Committed related software checks pass172/one deferred98.66s; all260 source
-blobs match. Full source-bound software session49563 is still live at this
-entry, so no scientific dispatch is yet claimed. The next action after both
-gates is the same actual eight-slot original-world feedback search, not another
-copy benchmark. This readiness is not institutional invention or loss evidence.
+blobs match. Full source-bound software session49563 subsequently exits0:
+1463 pass873.08s, JUnit
+c2f8a15ed0603a29a3f72a976584b8eb2de3d11832264ad538f16274af696950.
+Only then start actual scientific writer76434 at08:01:58Z on the same immutable
+source, output `outputs/native-execution-readiness-v39-a1`. The first generation
+has zero own history/observations; calibration donor trials are not scientific
+feedback. Eight unchanged slots remain the finite declared budget. This launch
+is not institutional invention or measured loss evidence; continue through
+actual execution, own feedback and remeasurement, not another copy benchmark.
 
 Historical V38a2 and V38a3 literal certificates remain failed at their original
 criteria. No old failed certificate is promoted or reused in this scope.

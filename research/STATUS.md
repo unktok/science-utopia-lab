@@ -4,6 +4,13 @@ Updated: 2026-11-06 JST
 
 ## V39 execution-first scope authorized; historical copy failures stay failed
 
+The final full software49563 exits0:1463 pass873.08s. Both new-scope gates pass
+at frozen d29d791, then actual scientific writer76434 starts08:01:58Z at
+outputs/native-execution-readiness-v39-a1. G0 has zero history/observations;
+no calibration donor is scientific feedback. Preserve that running tree/journal.
+The original functioning-candidate/loss/own-feedback/remeasurement goal remains
+active; a running process or readiness certificate is not its completion.
+
 Fresh actual readiness37176 exits0:28 technical controls plus cold replay pass,
 26 exact copies/two diagnostic mismatches retained. Certificate
 e93a5c77b5cb3792ac4b0804ee00baef991d107555489f76882a43bae470ff7e;

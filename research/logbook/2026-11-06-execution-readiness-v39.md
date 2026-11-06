@@ -44,3 +44,10 @@ All260 source blobs verify against that pin. Freeze the separate immutable
 experiment-native-execution-readiness-v39-a1 tree/tag. Fresh max28 actual checks
 37176 start07:42:15Z; full software49563 starts07:46:58Z, after old Docker checks
 end to avoid duplicate container contention. These are live, not pass claims.
+
+Subsequent outcomes:37176 passes28 technical controls/cold replay, with26 exact
+copies andtwo mismatches retained. Full49563 passes1463/873.08s. Record exact
+costs/hashes in the readiness report, then start scientific writer76434 at
+08:01:58Z from the unchanged frozen source. First request343aa017 has zero
+history/observations. Do not confuse the calibration donor's35B author binding
+with a changed researcher: the scientific plan/factory still uses fixed8B.
