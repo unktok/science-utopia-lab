@@ -109,3 +109,11 @@ The whole research program and transport reliability remain open. Separate
 optional V40 profile/nonexecuting diagnostic is prepared at1d787b79,17 mocked
 harness checks pass, no actual V40 inference/certificate. Do not automatically
 start another eight-world campaign merely to test its interface hypothesis.
+
+Publication checks: commitf36831e is clean; compact identity/source/audit linkage,
+all8 outcomes, two changed programs/four retentions, every own-feedback replay
+and the266-file raw inventory pass direct original-source assertions. Committed
+compact/saved-audit/exact-POST regressions86960 pass9,32 deselected,14.99s,
+without new backend or container calls. `git diff --check` passes. Fast-forward
+the result records into local main; no remote push. The experiment D29 source
+stays clean and the optional V40 feature stays separate and unlaunched.
