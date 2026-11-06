@@ -143,6 +143,8 @@ def sequence(state):
                 'path': '/parameters/code_artifact/source'}
             from .native_staged_author_v15 import PLAN_CONTROL
             edited_source = source + '\n# interface calibration; no behavioral change\n'
+            from urllib.parse import quote
+            token = quote(node['mechanism_id'], safe='._-')
             return [{'id': 'sequence-plan', 'expected': clone(PLAN_CONTROL)},
                 {'id': 'sequence-inspect', 'expected': {'tool': 'inspect', **relative}},
                 {'id': 'sequence-splice', 'expected': {'tool': 'splice', **relative,
@@ -153,6 +155,10 @@ def sequence(state):
                 {'id': 'sequence-edit-fields-source', 'expected': {'tool': 'edit_fields',
                     'mechanism_id': node['mechanism_id'],
                     'field_updates': [{'field_name': 'source', 'value': edited_source}]}},
+                {'id': 'sequence-read-code-file', 'expected': {'tool': 'read_file', 'filename': 'code/' + token + '.py'}},
+                {'id': 'sequence-write-code-file', 'expected': {'tool': 'write_file',
+                    'filename': 'code/' + token + '.py', 'content': edited_source}},
+                {'id': 'sequence-read-node-file', 'expected': {'tool': 'read_file', 'filename': 'nodes/' + token + '.json'}},
                 {'id': 'sequence-validate', 'expected': {'tool': 'validate'}},
                 {'id': 'sequence-finish', 'expected': {'tool': 'finish',
                     'rationale': 'Interface calibration only; no behavioral improvement claimed'}}]

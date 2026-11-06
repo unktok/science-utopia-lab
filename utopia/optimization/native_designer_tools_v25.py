@@ -32,6 +32,11 @@ CONTROL_TARGET_NOTE = (
     'return finish only when the target function name itself is finish. ')
 
 DESCRIPTIONS = {
+    'read_file': 'Read a current virtual draft filename from virtual_editor_workspace. Never reads an OS file. '
+        'Optional offset/limit return an explicitly marked character slice.',
+    'write_file': 'Write your complete literal text to an exact virtual draft filename. code/*.py changes only '
+        'Python source, preserving runtime/ABI/parameters/wiring. JSON files replace the whole indicated value. '
+        'new/<URL-encoded-exact-mechanism-id>.json appends your complete arbitrary node. Never executes code or writes OS files.',
     'inspect_field': 'Read a uniquely named JSON field inside the exact mechanism ID. No array-index guessing. '
         'Missing/ambiguous fields reject without selecting a substitute. Arbitrary code strings are data.',
     'edit_fields': 'Atomically replace uniquely named existing fields inside the exact mechanism ID, including '

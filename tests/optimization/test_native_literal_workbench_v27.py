@@ -103,14 +103,19 @@ def test_planner_stays_source_free_but_editor_gets_literal_values_as_data_not_au
     state, receipt = apply(state, PLAN, req)
     steps = [{'step': 0, 'status': 'applied', 'model_reply': {'output': PLAN}, 'transition': receipt}]
     editor = build_conversation(prompt(req, state, steps), SYSTEM_PROMPT, native_tools=True)
-    assert secret in editor[1]['content'] and secret not in editor[0]['content']
-    assert 'literal_editor_workbench' in editor[1]['content']
+    assert secret not in json.dumps(editor)
+    action = {'tool': 'read_file', 'filename': 'code/' + ALPHA + '.py'}
+    state, receipt = apply(state, action, req)
+    steps.append({'step': 1, 'status': 'applied', 'model_reply': {'output': action}, 'transition': receipt})
+    editor = build_conversation(prompt(req, state, steps), SYSTEM_PROMPT, native_tools=True)
+    assert secret in json.dumps(editor) and secret not in editor[0]['content']
     # The descriptor-only node index is not duplicated on the actual wire.
     raw = editor[1]['content'].split('EXACT SESSION DATA\n', 1)[1]
     data, _ = json.JSONDecoder().raw_decode(raw)
     assert 'mechanisms' not in data['draft_index']
-    assert len(data['literal_editor_workbench']['nodes']) == 2
-    assert data['prompt_view']['full_current_draft_included'] is True
+    assert 'literal_editor_workbench' not in data
+    assert len([f for f in data['virtual_editor_workspace']['files'] if f['filename'].startswith('nodes/')]) == 2
+    assert data['prompt_view']['full_current_draft_included'] is False
 
 
 def test_editor_advertises_implementation_first_without_removing_or_weakening_any_action():
@@ -118,7 +123,7 @@ def test_editor_advertises_implementation_first_without_removing_or_weakening_an
     editor = tool_specifications(role='editor')
     planner = tool_specifications(role='planner')
     assert [item['function']['name'] for item in editor] == [
-        'edit_fields', 'edit', 'splice', 'inspect_field', 'inspect', 'configure', 'validate', 'finish', 'plan']
+        'read_file', 'write_file', 'edit_fields', 'edit', 'splice', 'inspect_field', 'inspect', 'configure', 'validate', 'finish', 'plan']
     assert planner[0]['function']['name'] == 'plan'
     assert {item['function']['name']: item for item in editor} == original
     with pytest.raises(ValueError, match='source-owned'):
@@ -139,6 +144,11 @@ def test_actual_observation_shape_does_not_leak_prior_candidate_to_planner_or_du
     assert marker not in json.dumps(planner)
     state, receipt = apply(state, PLAN, req)
     steps = [{'step': 0, 'status': 'applied', 'model_reply': {'output': PLAN}, 'transition': receipt}]
+    editor = build_conversation(prompt(req, state, steps), SYSTEM_PROMPT, native_tools=True)
+    assert marker not in json.dumps(editor)  # Bodies are explicitly on demand.
+    action = {'tool': 'read_file', 'filename': 'code/' + ALPHA + '.py'}
+    state, receipt = apply(state, action, req)
+    steps.append({'step': 1, 'status': 'applied', 'model_reply': {'output': action}, 'transition': receipt})
     editor = build_conversation(prompt(req, state, steps), SYSTEM_PROMPT, native_tools=True)
     assert json.dumps(editor).count(marker) == 1
     assert observation['candidate'] == req['parent_system']  # raw request untouched

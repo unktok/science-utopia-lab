@@ -102,19 +102,25 @@ def test_native_wire_minifies_json_only_not_instruction_prose_or_observed_string
     body['parent_system'].setdefault('metadata', {})['future_literal'] = sentinel
     state = initial_draft(body)
     steps = []
+    if stage != 'planner':
+        metadata_action = {'tool': 'read_file', 'filename': 'system/metadata.json'}
+        state, metadata_receipt = apply(state, metadata_action, body)
+        assert metadata_receipt['ok']
+        steps.append({'step': 0, 'status': 'applied', 'model_reply': {'output': metadata_action},
+            'transition': metadata_receipt})
     if stage == 'editor':
         from tests.optimization.test_native_planning_author_v22 import PLAN
         state, receipt = apply(state, PLAN, body)
         assert receipt['ok']
-        steps = [{'step': 0, 'status': 'applied', 'model_reply': {'output': PLAN}, 'transition': receipt}]
+        steps.append({'step': 1, 'status': 'applied', 'model_reply': {'output': PLAN}, 'transition': receipt})
     elif stage == 'completed-tool':
         action = {'tool': 'inspect_field', 'mechanism_id': ALPHA, 'field_name': 'source'}
         state, receipt = apply(state, action, body)
         assert receipt['ok']
-        steps = [{'step': 0, 'status': 'applied', 'model_reply': {'output': action}, 'transition': receipt}]
+        steps.append({'step': 1, 'status': 'applied', 'model_reply': {'output': action}, 'transition': receipt})
     elif stage == 'previous-error':
-        steps = [{'step': 0, 'status': 'invalid-response',
-            'errors': [{'type': 'SCRIPTED', 'message': sentinel}]}]
+        steps.append({'step': 1, 'status': 'invalid-response',
+            'errors': [{'type': 'SCRIPTED', 'message': sentinel}]})
     messages = build_conversation(prompt(body, state, steps),
         PLAN_SYSTEM_PROMPT if stage == 'planner' else SYSTEM_PROMPT, native_tools=True)
     original = deepcopy(messages)
@@ -124,8 +130,9 @@ def test_native_wire_minifies_json_only_not_instruction_prose_or_observed_string
     if stage != 'planner':
         data, _ = json.JSONDecoder().raw_decode(
             messages[1]['content'].split('EXACT SESSION DATA\n', 1)[1])
-        metadata = next(item['value'] for item in data['literal_editor_workbench']['root_fields']
-            if item['address']['path'] == '/metadata')
+        assert 'literal_editor_workbench' not in data and data['prompt_view']['virtual_file_index_only']
+        metadata = json.loads(next(item['value'] for item in data['observed_read_memory']['entries']
+            if item['path'] == 'system/metadata.json'))
         assert metadata['future_literal'] == sentinel
 
 

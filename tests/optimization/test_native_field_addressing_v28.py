@@ -136,12 +136,12 @@ def test_escaped_exact_key_names_and_source_contents_are_not_fuzzy_addresses():
     assert changed['document']['mechanisms'][0]['metadata']['a/b~c'] == 9007199254740993
 
 
-def test_prospective_24_controls_keep_all_original_operands_and_static_finish_on_original_parent():
+def test_prospective_27_controls_keep_all_original_operands_and_static_finish_on_original_parent():
     from utopia.optimization import native_designer_preflight as p
     from utopia.optimization.native_staged_author_v15 import transition, submission_task, task_decoding_role
     req = request(); req['parent_system'] = open_native_system(IMAGE).to_dict()
     planned = p.planned_cases(req, 'staged-v15')
-    assert len(planned) == 24 and planned[:8] == p.cases('staged-v15')
+    assert len(planned) == 27 and planned[:8] == p.cases('staged-v15')
     assert [case['expected']['field_updates'][0]['value'] for case in planned[8:16]] == p.VALUES
     state, steps = initial_draft(req), []
     for case in planned:

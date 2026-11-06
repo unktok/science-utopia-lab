@@ -172,19 +172,19 @@ def certificate(tmp_path, monkeypatch):
     ScriptedSession.calls = []
     directory = tmp_path / 'calibration'
     result = p.run_calibration(directory, request=request(), provider=BINDING)
-    assert result['all_controls_passed'] and len(result['records']) == 24
+    assert result['all_controls_passed'] and len(result['records']) == 27
     return directory / 'certificate.json'
 
 
 def test_certificate_replays_all_exact_wire_typed_controls_and_continuous_code_sequence(certificate):
     result = p.require_certificate(certificate, BINDING, protocol='staged-v15')
-    assert result['controls'] == 24
+    assert result['controls'] == 27
 
 
 def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(certificate):
     value = json.loads(certificate.read_text())
     roles = [record['intent']['decoding_role'] for record in value['records']]
-    assert roles == ['editor'] * 16 + ['planner'] + ['editor'] * 7
+    assert roles == ['editor'] * 16 + ['planner'] + ['editor'] * 10
     for index, record in enumerate(value['records']):
         payload = record['transport']['request_payload']
         assert payload['think'] is True
@@ -194,7 +194,7 @@ def test_calibration_profiles_match_actual_planner_and_literal_editor_roles(cert
         assert '<tools>' in payload['messages'][0]['content']
         assert payload['truncate'] is False and payload['shift'] is False
     assert value['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 1
-    assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 23
+    assert value['reasoning_evidence']['roles']['editor']['known_nonempty_response_fields'] == 26
     assert value['reasoning_evidence']['all_role_modes_compatible'] is True
 
 

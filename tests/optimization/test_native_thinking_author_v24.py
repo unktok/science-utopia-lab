@@ -38,7 +38,7 @@ def test_source_owned_staged_reasoning_settings_and_legacy_wire_are_distinct():
 
 def test_editor_advertises_implementation_first_without_removing_any_legal_tool():
     editor = turn_response_schema(7)
-    assert editor['oneOf'][0]['properties']['tool']['const'] == 'edit_fields'
+    assert [part['properties']['tool']['const'] for part in editor['oneOf'][:2]] == ['read_file', 'write_file']
     by_tool = lambda value: {part['properties']['tool']['const']: part for part in value['oneOf']}
     assert by_tool(editor) == by_tool(ACTION_SCHEMA)
     assert editor['$defs'] == ACTION_SCHEMA['$defs']
@@ -62,7 +62,7 @@ def test_exact_controls_without_observed_reasoning_do_not_prove_requested_mode(t
     monkeypatch.setattr('requests.Session', NoThinkingSession)
     directory = tmp_path / 'no-reasoning-evidence'
     result = run_calibration(directory, request=request(), provider=BINDING)
-    assert len(result['records']) == 24 and all(record['ok'] for record in result['records'])
+    assert len(result['records']) == 27 and all(record['ok'] for record in result['records'])
     assert result['reasoning_evidence']['requested'] is True
     assert result['reasoning_evidence']['known_nonempty_response_fields'] == 0
     assert result['all_controls_passed'] is False
@@ -126,8 +126,8 @@ def test_editor_reasoning_fields_cannot_substitute_for_missing_planner_mode_evid
             return Response(response.body)
     monkeypatch.setattr('requests.Session', WrongRoleSession)
     result = run_calibration(tmp_path / 'wrong-role', request=request(), provider=BINDING)
-    assert len(result['records']) == 24 and all(record['ok'] for record in result['records'])
-    assert result['reasoning_evidence']['known_nonempty_response_fields'] == 23
+    assert len(result['records']) == 27 and all(record['ok'] for record in result['records'])
+    assert result['reasoning_evidence']['known_nonempty_response_fields'] == 26
     assert result['reasoning_evidence']['roles']['planner']['known_nonempty_response_fields'] == 0
     assert result['all_controls_passed'] is False
 
@@ -143,7 +143,7 @@ def test_requested_planner_evidence_does_not_hide_missing_editor_reasoning(tmp_p
             return Response(response.body)
     monkeypatch.setattr('requests.Session', MissingEditorThinkingSession)
     result = run_calibration(tmp_path / 'unexpected-editor-thinking', request=request(), provider=BINDING)
-    assert len(result['records']) == 24 and all(record['ok'] for record in result['records'])
+    assert len(result['records']) == 27 and all(record['ok'] for record in result['records'])
     assert result['reasoning_evidence']['all_requested_roles_observed'] is False
     assert result['reasoning_evidence']['all_role_modes_compatible'] is False
     assert result['all_controls_passed'] is False

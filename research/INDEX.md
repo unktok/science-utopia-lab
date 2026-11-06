@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V35 conditional virtual file workspace, not an institutional policy](protocols/campaigns/native-file-workspace-v35-a1.md)
+- [V35 separate implementation and explicit on-demand observation checks](logbook/2026-11-06-native-file-workspace-v35.md)
+
 - [V33 closed raw source-exception, native failure and actual input invariance](results/native-submission-context-v33-a1.md)
 
 - [V34 rejected-history host bug and observed-key feedback](logbook/2026-11-06-native-field-feedback-v34.md)
