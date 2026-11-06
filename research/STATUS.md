@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V36 a1 real gates pass; file-primary native feedback pilot is live
+
+At frozenb04dad4, readiness93487 exits0:all27 exact controls/cold replay and
+both requested reasoning roles pass. Certificate
+718991789c88a86f75d1d0542953578a168d72d7a0b4a831c39e8a17b0bb3e77;
+runtime5dd613a1720169285f78b286eeb782db737d13de0c2d2b5d72cdbaa29cdb02f7.
+Record27 additional POSTs/859.7543598343618 adapter seconds/226720 input/
+11669 output, all27 known; transport858.8653332500253s. Fresh loaded-model
+gate1308 at05:05:44.875593Z verifies the same model/digest/context40960,
+sidecarc7dfee1e2f445c0119041af22d1cca6033795649413ad37e6213fa69490f44cd.
+
+Only then launch actual native pilot20629/PID5580 at05:06:15.643380Z, output
+outputs/native-file-primary-v36-a1. Same eight finite slots/four generations
+per loss and original-world/researcher settings; G0 request9fbe6654 has zero
+history/observations. No calibration donor candidate or old failure is reused.
+Continue to actual changed functional candidates, measured own feedback and
+remeasurement, then original-source audits. No invention/benefit or original
+goal completion is claimed merely from these gates or a running process.
+
 ## V36 a1 fresh real readiness is live after V35 a2 original closure
 
 Freeze b04dad4056c3d8b0b12df14711dd2931b5647b58 in separate

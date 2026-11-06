@@ -183,6 +183,27 @@ Next freeze a clean new V36 source/tree/tag and start one fresh max27 actual
 readiness, preserving all old failures and costs. No copied control can by
 itself complete the original functional-candidate/feedback/remeasurement goal.
 
+### Actual V36 gates pass and the unchanged native pilot starts
+
+Freeze b04dad4056c3d8b0b12df14711dd2931b5647b58 in a separate clean experiment
+tree and matching protocol/native-file-primary-v36-a1 tag.255 source blobs and
+all27 original target actions/values verify. Fresh93487/PID4939 actual readiness
+exits0 with all27/cold replay and observed requested roles (planner1/editor26).
+Certificate718991789c88a86f75d1d0542953578a168d72d7a0b4a831c39e8a17b0bb3e77,
+runtime5dd613a1720169285f78b286eeb782db737d13de0c2d2b5d72cdbaa29cdb02f7.
+Record27 new POSTs/859.7543598343618 adapter seconds/858.8653332500253 transport
+seconds/226720 input11669 output; all27 counts known. Each records connect10/
+read900s. None is refunded or counted as a scientific candidate.
+
+Independent read-only loaded-context gate1308 exits0 at05:05:44.875593Z,
+same fixed model/digest and40960 slot; sidecar identity
+c7dfee1e2f445c0119041af22d1cca6033795649413ad37e6213fa69490f44cd.
+Only then launch native20629/PID5580 at05:06:15.643380Z. ThroughputG0 request
+9fbe66545f26b291981f126a012440cef993a2c5a71224f0a3522762c8f4415d has zero
+history/observations. Preserve the frozen source and all old V35 evidence.
+The original goal remains active/unmet; continue the actual eight-slot pilot,
+not a readiness-only or parent-retention handoff.
+
 Also retain the functional-classification caution: open-memory-router emits
 hard gate actions. Merely changing world.selection's consumer threshold from.5
 to.7 may be equivalent on reachable0/1 inputs. Literal source fingerprints and
