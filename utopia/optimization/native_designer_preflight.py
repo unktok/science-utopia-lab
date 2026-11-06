@@ -18,6 +18,8 @@ from .native_designer_decoding_v24 import (
 
 SCHEMA = 'scienceutopia.designer-interface-certificate.v16'
 TTL_SECONDS = 86400
+LITERAL_SCOPE = 'literal-controls-v16'
+EXECUTION_SCOPE = 'execution-readiness-v39'
 VALUES = [17, -2.75, True, None, ['x', 3, False], {'nested': {'items': [None, 1]}},
     '研究者\n"quoted" \\ source: def step(context):\n    return {}\n', 9007199254740993]
 CONTROL_JSON_BEGIN = 'BEGIN COMPLETE NEXT RESPONSE JSON\n'
@@ -245,9 +247,37 @@ def _apply(state, action, request, provider):
     return transition(state, action, request, binding_sha256=digest(request), provider_binding=provider)
 
 
-def run_calibration(directory, *, request, provider, protocol='staged-v15', source_commit='SCRIPTED-unpinned-test'):
+def _check_scope(scope, protocol):
+    if scope not in (LITERAL_SCOPE, EXECUTION_SCOPE) or (scope == EXECUTION_SCOPE and protocol != 'staged-v15'):
+        raise ValueError('unknown designer readiness scope/protocol')
+
+
+def copy_diagnostic(output, expected):
+    return {'exact_match': digest(output) == digest(expected),
+        'expected_sha256': digest(expected), 'actual_sha256': digest(output)}
+
+
+def _check_control_output(output, expected, *, scope):
+    if scope == LITERAL_SCOPE and digest(output) != digest(expected):
+        raise ValueError('literal output differs from exact typed control')
+    if scope == EXECUTION_SCOPE and output.get('tool') != expected.get('tool'):
+        raise ValueError('technical control did not exercise the declared tool')
+
+
+def _check_intermediate_source(state, case_id, request, provider, *, scope):
+    if scope == EXECUTION_SCOPE and case_id in (
+            'sequence-splice', 'sequence-edit-fields-source', 'sequence-write-code-file'):
+        from .native_staged_author_v15 import _validation
+        result, _ = _validation(state, request, digest(request), provider)
+        if not result['valid']:
+            raise ValueError('actual generated control source failed static technical validation')
+
+
+def run_calibration(directory, *, request, provider, protocol='staged-v15', source_commit='SCRIPTED-unpinned-test',
+                    scope=LITERAL_SCOPE):
     from .native_staged_author_v15 import initial_draft, LocalStagedQwenDesignerModel
     from .native_search_generator_v14 import LocalQwenDesignerModel
+    _check_scope(scope, protocol)
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     decoding = decoding_contract(protocol)
@@ -259,6 +289,8 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         'native_worlds': 0, 'source_executions': 0, 'network_retries': 0,
         'max_tokens': decoding['max_tokens'], 'temperature': temperatures,
         'decoding_contract': contracts, 'created_epoch': time.time()}
+    if scope != LITERAL_SCOPE:
+        plan['readiness_scope'] = scope
     write_json_atomic(directory / 'plan.json', plan, sort_keys=True, allow_nan=False)
     model_type = LocalStagedQwenDesignerModel if protocol == 'staged-v15' else LocalQwenDesignerModel
     if protocol == 'staged-v15' and provider.get('model') != 'qwen3:8b':
@@ -287,13 +319,17 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
                 response_format={'json_object': {'schema': _schema(protocol)}})
             record['output'] = clone(output)  # preserve known parsed wrong actions before equality checks
             # Python bool==1 and large numeric rounding are NOT exact JSON equality.
-            if digest(output) != digest(case['expected']):
-                raise ValueError('literal output differs from exact typed control')
+            if scope == EXECUTION_SCOPE:
+                record['copy_diagnostic'] = copy_diagnostic(output, case['expected'])
             Draft202012Validator(_schema(protocol)).validate(output)
+            _check_control_output(output, case['expected'], scope=scope)
             action = output if protocol == 'staged-v15' else {'tool': 'edit', 'operations': output['operations']}
             state, receipt = _apply(state, action, request, provider)
+            if scope == EXECUTION_SCOPE:
+                record['receipt'] = clone(receipt)
             if not receipt['ok']:
                 raise ValueError('control rejected by actual interpreter: ' + str(receipt['errors']))
+            _check_intermediate_source(state, case['id'], request, provider, scope=scope)
             if case['id'] in ('sequence-validate', 'sequence-finish') and not receipt['result']['valid']:
                 raise ValueError('continuous code edit failed static compilation')
             record.update(ok=True, output=output, receipt=receipt)
@@ -319,8 +355,9 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
     return certificate
 
 
-def require_certificate(path, provider, *, protocol, session=None, now=None):
+def require_certificate(path, provider, *, protocol, session=None, now=None, scope=LITERAL_SCOPE):
     """Cold replay literal controls + live metadata; a pass flag alone is insufficient."""
+    _check_scope(scope, protocol)
     if path is None:
         raise ValueError('actual-backend designer preflight certificate required before production search')
     from .native_search_generator_v14 import _strict_json
@@ -337,7 +374,8 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
     age = (time.time() if now is None else now) - certificate['completed_epoch']
     if not 0 <= age <= TTL_SECONDS or certificate['maximum_age_seconds'] != TTL_SECONDS:
         raise ValueError('designer preflight is stale or future-dated; recalibrate explicitly')
-    if (plan['protocol'] != protocol or plan['runtime'] != runtime_binding()
+    if (plan.get('readiness_scope', LITERAL_SCOPE) != scope
+            or plan['protocol'] != protocol or plan['runtime'] != runtime_binding()
             or plan['backend'] != backend_binding(provider, session)):
         raise ValueError('designer preflight protocol/runtime/backend binding changed')
     expected_cases = planned_cases(plan['request'], protocol)
@@ -389,16 +427,23 @@ def require_certificate(path, provider, *, protocol, session=None, now=None):
         else:
             action_output = _strict_json(body['message']['content'])
         Draft202012Validator(_schema(protocol)).validate(action_output)
-        if digest(action_output) != digest(case['expected']) or digest(record['output']) != digest(action_output):
+        _check_control_output(action_output, case['expected'], scope=scope)
+        if (scope == EXECUTION_SCOPE
+                and record.get('copy_diagnostic') != copy_diagnostic(action_output, case['expected'])):
+            raise ValueError('preflight copy diagnostic differs from actual original response')
+        if digest(record['output']) != digest(action_output):
             raise ValueError('preflight typed output differs from original response')
         action = action_output if protocol == 'staged-v15' else {'tool': 'edit', 'operations': action_output['operations']}
         state, receipt = _apply(state, action, plan['request'], provider)
         if not receipt['ok'] or record['receipt'] != receipt:
             raise ValueError('preflight interpreter replay differs')
+        _check_intermediate_source(state, case['id'], plan['request'], provider, scope=scope)
         if case['id'] in ('sequence-validate', 'sequence-finish') and not receipt['result']['valid']:
             raise ValueError('preflight continuous compilation invalid')
         steps.append({'step': len(steps), 'status': 'applied', 'model_reply': {'output': action_output},
             'transition': receipt})
     return {'certificate_sha256': certificate['content_sha256'], 'controls': len(records),
+        **({'readiness_scope': scope, 'exact_copy_matches': sum(
+            row['copy_diagnostic']['exact_match'] for row in records)} if scope == EXECUTION_SCOPE else {}),
         'age_seconds': age, 'protocol': protocol, 'backend': clone(plan['backend']),
         'runtime_sha256': digest(plan['runtime'])}

@@ -110,8 +110,19 @@ class NativeRoleBoundSearchQueue(NativeStagedSearchQueue):
 
 class LocalRoleBoundDesignerModel(LocalStagedQwenDesignerModel):
     """Unchanged literal staged transport, explicitly different local weights."""
+    def __init__(self, *args, readiness_scope='literal-controls-v16', **kwargs):
+        self.readiness_scope = readiness_scope
+        super().__init__(*args, **kwargs)
+
     def _validate_model_binding(self):
         validate_designer_binding(self.binding)
+
+    def _check_preflight(self, protocol):
+        if self.preflight_certificate is not None:
+            from .native_designer_preflight import require_certificate
+            return require_certificate(self.preflight_certificate, self.binding,
+                protocol=protocol, session=self.session, scope=self.readiness_scope)
+        return None
 
 
 def staged_model_type(provider):
@@ -125,11 +136,12 @@ def staged_model_type(provider):
 
 def make_local_role_bound_generator(directory, *, image_id, provider_binding,
                                     max_steps, max_tokens, inference_lock=None,
-                                    preflight_certificate=None):
+                                    preflight_certificate=None, readiness_scope='literal-controls-v16'):
     from .native_designer_preflight import require_certificate
     validate_designer_binding(provider_binding)
-    require_certificate(preflight_certificate, provider_binding, protocol='staged-v15')
+    require_certificate(preflight_certificate, provider_binding, protocol='staged-v15', scope=readiness_scope)
     return StagedVocabularyGenerator(LocalRoleBoundDesignerModel(provider_binding,
-        inference_lock=inference_lock, preflight_certificate=preflight_certificate),
+        inference_lock=inference_lock, preflight_certificate=preflight_certificate,
+        readiness_scope=readiness_scope),
         directory, image_id=image_id, provider_binding=provider_binding,
         max_steps=max_steps, max_tokens=max_tokens)

@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V39 user-authorized execution readiness; exact copy becomes diagnostic](protocols/campaigns/native-execution-readiness-v39-a1.md)
+- [V39 prospective scope implementation and claim boundaries](logbook/2026-11-06-execution-readiness-v39.md)
+
 - [V38 a2 actual exact-copy failure and separate original-source static diagnostic](results/native-designer-roles-v38-a2-readiness.md)
 - [V38 a3 prospective whitespace witness and explicit designer startup](protocols/campaigns/native-designer-roles-v38-a3.md)
 

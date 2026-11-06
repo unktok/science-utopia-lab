@@ -24,6 +24,12 @@
   transport compatibility evidence. A failed/unknown/stale certificate must
   stop the campaign, not trigger hidden retries, source repair or a baseline
   fallback. Preserve exact request UTF-8 bytes as well as parsed dictionaries.
+- The user's 2026-11-06 authorization makes exact-copy equality diagnostic in
+  the prospective execution-readiness-v39 scope, not a scientific dispatch veto.
+  Require a fresh source/model/backend-bound technical certificate in that
+  explicit scope; preserve raw received values, real interpreter/static checks,
+  tool coverage and cold replay. Legacy literal-control certificates keep their
+  original criteria and failed status; never relabel or reuse a failed one.
 - Check semantic nonconsecutive read loops and retained observed values; do
   not infer planning progress from a finished session or an unchanged parent.
 - A directed copy-control pass is not free-design context-capacity evidence.

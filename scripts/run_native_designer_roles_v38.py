@@ -19,8 +19,9 @@ from utopia.system.design_patch import clone, digest
 
 SCHEMA = 'scienceutopia.role-bound-native-search-pilot.v38'
 CLASSIFICATION = 'actual-local-separate-designer-fixed-qwen-researchers-v38'
-ENGINEERING_REVISION = 'v38-a3'
-PROTOCOL = 'research/protocols/campaigns/native-designer-roles-v38-a3.md'
+ENGINEERING_REVISION = 'v39-a1'
+PROTOCOL = 'research/protocols/campaigns/native-execution-readiness-v39-a1.md'
+READINESS_SCOPE = 'execution-readiness-v39'
 
 
 def build_plan(*, source_commit, initial_system, provider_binding,
@@ -38,6 +39,7 @@ def build_plan(*, source_commit, initial_system, provider_binding,
         entry['plan_sha256'] = digest(entry['runtime_plan'])
     plan.update(schema=SCHEMA, classification=CLASSIFICATION,
         engineering_revision=ENGINEERING_REVISION, protocol=PROTOCOL,
+        readiness_scope=READINESS_SCOPE,
         designer_provider_binding=clone(designer_provider_binding),
         authoring='separately pinned local LLM designer only; no human/Codex candidate implementation',
         role_policy='Qwen3-8B researchers unchanged; only the local designer differs',
@@ -56,9 +58,11 @@ def execute(args):
     from utopia.optimization.native_loaded_roles_v38 import LocalRoleBoundNativeFactory
     def factory(*a, **kw):
         return LocalRoleBoundNativeFactory(*a, designer_provider=config['provider_binding'], **kw)
+    def generator(*a, **kw):
+        return make_local_role_bound_generator(*a, readiness_scope=READINESS_SCOPE, **kw)
     return execute_pilot(args, plan_builder=build_plan, queue_type=NativeRoleBoundSearchQueue,
-        designer_provider=config['provider_binding'], generator_factory=make_local_role_bound_generator,
-        native_factory_type=factory)
+        designer_provider=config['provider_binding'], generator_factory=generator,
+        native_factory_type=factory, readiness_scope=READINESS_SCOPE)
 
 
 def extra_arguments(parser):

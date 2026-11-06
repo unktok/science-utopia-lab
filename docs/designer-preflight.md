@@ -1,5 +1,24 @@
 # Real-backend designer readiness
 
+## Current prospective policy (V39)
+
+The user explicitly chose execution/loss evaluation over exact-copy gating on
+2026-11-06. For the new role-bound campaign use `--scope execution-readiness-v39`
+on both `run` and `verify`. A fresh certificate in that explicit scope is
+required; exact-copy equality is recorded with expected/actual digests but is
+not a veto. Schema, declared tool coverage, permissions, actual interpreter and
+static source validity, complete raw transport, literal raw-to-parsed agreement,
+model/backend/source bindings, role evidence and cold replay still must pass.
+Actual source is never normalized or substituted. There are at most28 real
+controls with the own-history donor; zero native worlds during calibration.
+Production then executes generated candidates and measures the declared loss.
+
+The default scope remains `literal-controls-v16` for historical/legacy callers.
+Old failed certificates remain failed and cannot authorize the new scope. The
+sections below describe the versioned history, not a reinstated copy veto on
+the new execution-readiness campaign. See the
+[V39 protocol](../research/protocols/campaigns/native-execution-readiness-v39-a1.md).
+
 The automatic institution designer now fails closed before production search
 unless the operator supplies a current interface calibration certificate.
 This checks literal editing/transport, not whether a proposed institution is

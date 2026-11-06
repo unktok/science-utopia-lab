@@ -2,6 +2,17 @@
 
 Updated: 2026-11-06 JST
 
+## V39 execution-first scope authorized; historical copy failures stay failed
+
+The user explicitly authorizes exact-copy equality as diagnostic, not a future
+dispatch veto. Implement a separate execution-readiness-v39 scope with original
+raw values, schema/tool permissions, actual interpreter/static checks and cold
+replay still mandatory. Legacy default scope remains strict; old failed
+certificates are not promoted or reused. V38a3's already running strict controls
+and full software checks remain immutable. The original functioning-candidate,
+measured own-feedback/remeasurement goal remains active and unmet; no V39 actual
+readiness or scientific outcome is claimed before committed verification.
+
 ## V38 a2 actual copy task fails; original research goal stays active
 
 Actual local35B readiness55110 exits1 after22/28 controls,21 pass, certificate
