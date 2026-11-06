@@ -2,6 +2,18 @@
 
 Updated: 2026-11-06 JST
 
+## V40 conditional presentation-only designer history is being prepared
+
+Separate prospective `plain-function-history-v40` serializes completed parsed
+actions as plain function JSON, including rejected actions with their exact
+receipts/errors. The legacy default stays Hermes. Bind the profile through
+operator plans, certificate/cold replay, generation settings, transport and
+independent audit. Preserve raw replies, arbitrary strings including literal
+tool tags, scientist settings, world/losses and finite budgets. This is a
+plausible interface intervention, not a proven cause or actual transport fix.
+No V40 inference, certificate, native world or full source-bound verification
+exists. Dispatch remains conditional on V39's original closure/audits if needed.
+
 ## V39 execution-first scope authorized; historical copy failures stay failed
 
 At08:15Z the first actually changed candidate completes its native world:

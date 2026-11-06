@@ -61,7 +61,7 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
 
 def execute(args, *, plan_builder=build_plan, queue_type=NativeStagedSearchQueue,
             designer_provider=None, generator_factory=None, native_factory_type=None,
-            readiness_scope='literal-controls-v16'):
+            readiness_scope='literal-controls-v16', conversation_profile='hermes-function-history-v26'):
     from utopia.optimization.native_factory import LocalQwenNativeFactory
     from utopia.optimization.native_staged_author_v15 import make_local_staged_generator
     from utopia.system.code_mechanisms import DockerCodeExecutor
@@ -80,7 +80,10 @@ def execute(args, *, plan_builder=build_plan, queue_type=NativeStagedSearchQueue
             raise ValueError('separate designer requires an explicit role-bound generator factory')
     author_provider = provider if designer_provider is None else designer_provider
     from utopia.optimization.native_designer_preflight import require_certificate
-    require_certificate(args.designer_preflight, author_provider, protocol='staged-v15', scope=readiness_scope)
+    from utopia.optimization.native_designer_tools_v25 import profile_options
+    profile = profile_options(conversation_profile)
+    require_certificate(args.designer_preflight, author_provider, protocol='staged-v15', scope=readiness_scope,
+        **profile)
     if designer_provider is not None:
         from utopia.optimization.native_loaded_roles_v38 import record_loaded_context
         from utopia.optimization.native_scientist_load_v38 import load_scientist, load_local_role
@@ -135,6 +138,8 @@ def execute(args, *, plan_builder=build_plan, queue_type=NativeStagedSearchQueue
             experiment_binding={'request_sha256': digest(request), 'loss_spec': request['loss_spec']})
 
     def author(root, request, binding):
+        if request['designer'].get('conversation_profile', 'hermes-function-history-v26') != conversation_profile:
+            raise ValueError('pilot and author request conversation profiles differ')
         return (generator_factory or make_local_staged_generator)(root / 'authoring', image_id=binding['image_id'],
             provider_binding=binding, max_steps=request['designer']['max_steps'],
             max_tokens=request['designer']['max_tokens'], inference_lock=args.output / 'queue/inference.lock',

@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V40 conditional plain-JSON designer history; no dispatch before V39 closure/audits](protocols/campaigns/native-json-history-v40-a1.md)
+- [V40 separate profile implementation, scripted checks and claim boundaries](logbook/2026-11-06-native-json-history-v40.md)
+
 - [V39 live native search: first changed functional candidate loss−7 and actual own-feedback delivery](results/native-execution-readiness-v39-a1.md)
 
 - [V39 actual technical readiness:28 pass;26 exact copies and2 diagnostic mismatches](results/native-execution-readiness-v39-a1-readiness.md)

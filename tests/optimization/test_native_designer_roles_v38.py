@@ -217,9 +217,12 @@ def test_mocked_stronger_designer_controls_use_exact_role_and_cold_certificate(t
     assert not (tmp_path / 'unused-author').exists()
 
 
-def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tmp_path, monkeypatch):
+@pytest.mark.parametrize('plain_history', [False, True])
+def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tmp_path, monkeypatch, plain_history):
     from scripts import analyze_native_staged_search_v15 as audit
     from scripts.run_native_designer_roles_v38 import build_plan as pilot_plan
+    if plain_history:
+        from scripts.run_native_json_history_v40 import build_plan as pilot_plan
     from utopia.system.native_open_examples import open_native_system
     from utopia.utils.data_utils import write_json_atomic
     from utopia.optimization.native_loaded_roles_v38 import SCIENTIST_DIGEST, record_loaded_context
@@ -270,7 +273,8 @@ def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tm
     def author(root, current, provider):
         assert provider == designer
         return StagedVocabularyGenerator(model, root / 'authoring', image_id=provider['image_id'],
-            provider_binding=provider, max_steps=current['designer']['max_steps'], max_tokens=current['designer']['max_tokens'])
+            provider_binding=provider, max_steps=current['designer']['max_steps'], max_tokens=current['designer']['max_tokens'],
+            **({'conversation_profile': current['designer']['conversation_profile']} if plain_history else {}))
 
     def forbidden_world(*args):
         # Queue construction checks native model/corpus attributes even if no

@@ -15,6 +15,7 @@ from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from .native_designer_decoding_v24 import (
     decoding_contract, decoding_contracts, calibration_role, designer_payload, STAGED_MAX_STEPS)
+from .native_designer_tools_v25 import LEGACY_HISTORY, profile_options
 
 SCHEMA = 'scienceutopia.designer-interface-certificate.v16'
 TTL_SECONDS = 86400
@@ -274,10 +275,13 @@ def _check_intermediate_source(state, case_id, request, provider, *, scope):
 
 
 def run_calibration(directory, *, request, provider, protocol='staged-v15', source_commit='SCRIPTED-unpinned-test',
-                    scope=LITERAL_SCOPE):
+                    scope=LITERAL_SCOPE, conversation_profile=LEGACY_HISTORY):
     from .native_staged_author_v15 import initial_draft, LocalStagedQwenDesignerModel
     from .native_search_generator_v14 import LocalQwenDesignerModel
     _check_scope(scope, protocol)
+    profile = profile_options(conversation_profile)
+    if profile and protocol != 'staged-v15':
+        raise ValueError('designer conversation profile requires staged-v15')
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     decoding = decoding_contract(protocol)
@@ -288,7 +292,7 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         'cases': planned_cases(request, protocol), 'max_POSTs': len(planned_cases(request, protocol)),
         'native_worlds': 0, 'source_executions': 0, 'network_retries': 0,
         'max_tokens': decoding['max_tokens'], 'temperature': temperatures,
-        'decoding_contract': contracts, 'created_epoch': time.time()}
+        'decoding_contract': contracts, 'created_epoch': time.time(), **profile}
     if scope != LITERAL_SCOPE:
         plan['readiness_scope'] = scope
     write_json_atomic(directory / 'plan.json', plan, sort_keys=True, allow_nan=False)
@@ -298,7 +302,7 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         model_type = staged_model_type(provider)
     model = model_type(provider,
         inference_lock=directory.parent / 'interface-calibration.lock',
-        **({'conversation_mode': 'interface-control-v16'} if protocol == 'staged-v15' else {}))
+        **({'conversation_mode': 'interface-control-v16', **profile} if protocol == 'staged-v15' else {}))
     state, steps, records = initial_draft(request), [], []
     for case in plan['cases']:
         # Typed controls are independent. The six-step sequence is continuous.
@@ -355,9 +359,13 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
     return certificate
 
 
-def require_certificate(path, provider, *, protocol, session=None, now=None, scope=LITERAL_SCOPE):
+def require_certificate(path, provider, *, protocol, session=None, now=None, scope=LITERAL_SCOPE,
+                        conversation_profile=LEGACY_HISTORY):
     """Cold replay literal controls + live metadata; a pass flag alone is insufficient."""
     _check_scope(scope, protocol)
+    profile = profile_options(conversation_profile)
+    if profile and protocol != 'staged-v15':
+        raise ValueError('designer conversation profile requires staged-v15')
     if path is None:
         raise ValueError('actual-backend designer preflight certificate required before production search')
     from .native_search_generator_v14 import _strict_json
@@ -375,6 +383,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
     if not 0 <= age <= TTL_SECONDS or certificate['maximum_age_seconds'] != TTL_SECONDS:
         raise ValueError('designer preflight is stale or future-dated; recalibrate explicitly')
     if (plan.get('readiness_scope', LITERAL_SCOPE) != scope
+            or plan.get('conversation_profile', LEGACY_HISTORY) != conversation_profile
             or plan['protocol'] != protocol or plan['runtime'] != runtime_binding()
             or plan['backend'] != backend_binding(provider, session)):
         raise ValueError('designer preflight protocol/runtime/backend binding changed')
@@ -403,7 +412,8 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
             'seed_ctx': ['designer-contract-v16', protocol, case['id']], 'expected': case['expected'],
             'decoding_role': role}
         transport = record['transport']
-        messages = (build_conversation(prompt, system, mode='interface-control-v16', native_tools=True) if protocol == 'staged-v15' else
+        messages = (build_conversation(prompt, system, mode='interface-control-v16', native_tools=True,
+            **profile) if protocol == 'staged-v15' else
             [{'role': 'system', 'content': system}, {'role': 'user', 'content': prompt}])
         payload = designer_payload(protocol, provider, messages, intent['seed_ctx'],
             max_tokens=settings['max_tokens'], temperature=settings['temperature'], role=role)
@@ -420,8 +430,11 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
                 or body.get('done_reason') == 'length' or body.get('model') != provider['model']):
             raise ValueError('preflight incomplete/foreign original response')
         if protocol == 'staged-v15':
-            from .native_designer_tools_v25 import CHANNEL, action_from_body
-            if transport.get('response_channel') != CHANNEL:
+            from .native_designer_tools_v25 import CHANNEL, action_from_body, conversation_schema
+            if (transport.get('response_channel') != CHANNEL
+                    or transport.get('conversation_profile', LEGACY_HISTORY) != conversation_profile
+                    or (profile and transport.get('conversation_schema') != conversation_schema(
+                        'interface-control-v16', conversation_profile))):
                 raise ValueError('preflight native tool response channel differs')
             action_output = action_from_body(body)
         else:
@@ -446,4 +459,4 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
         **({'readiness_scope': scope, 'exact_copy_matches': sum(
             row['copy_diagnostic']['exact_match'] for row in records)} if scope == EXECUTION_SCOPE else {}),
         'age_seconds': age, 'protocol': protocol, 'backend': clone(plan['backend']),
-        'runtime_sha256': digest(plan['runtime'])}
+        'runtime_sha256': digest(plan['runtime']), **profile}

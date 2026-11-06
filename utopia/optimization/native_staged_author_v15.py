@@ -943,11 +943,12 @@ def planning_structure(document):
         'policy_supplied_by_host': False}
 
 
-def native_call_task(system_prompt):
+def native_call_task(system_prompt, *, conversation_profile='hermes-function-history-v26'):
     """Translate only fixed caller tasks, never observed/world/source strings."""
-    from .native_designer_tools_v25 import TOOL_RESPONSE_ONLY
+    from .native_designer_tools_v25 import TOOL_RESPONSE_ONLY, response_instruction
+    instruction = response_instruction(conversation_profile)
     if system_prompt in (SYSTEM_PROMPT, PLAN_SYSTEM_PROMPT, PLAN_CONTROL_SYSTEM_PROMPT, FINISH_SYSTEM_PROMPT):
-        task = system_prompt.replace(FINAL_JSON_ONLY, TOOL_RESPONSE_ONLY)
+        task = system_prompt.replace(FINAL_JSON_ONLY, instruction)
         if system_prompt == PLAN_CONTROL_SYSTEM_PROMPT:
             from .native_designer_tools_v25 import function_data, CONTROL_TARGET_NOTE
             task = task.replace('This is a prospective compatibility control;',
@@ -956,10 +957,11 @@ def native_call_task(system_prompt):
                 json.dumps(function_data(PLAN_CONTROL), ensure_ascii=False, sort_keys=True))
         return task
     # Typed control tasks are already constructed for the native channel.
-    return system_prompt
+    return system_prompt.replace(TOOL_RESPONSE_ONLY, instruction, 1)
 
 
-def planning_conversation(prompt, *, control=False, native_tools=False):
+def planning_conversation(prompt, *, control=False, native_tools=False,
+                          conversation_profile='hermes-function-history-v26'):
     data = _strict_json(prompt)
     context = {key: clone(data[key]) for key in ('optimization_task_view',
         'generation', 'planning_system_structure', 'remaining_calls_including_this_one')}
@@ -987,10 +989,10 @@ def planning_conversation(prompt, *, control=False, native_tools=False):
         'No hidden fairness, quality, novelty or promotion requirement applies.')
     task = PLAN_CONTROL_SYSTEM_PROMPT if control else PLAN_SYSTEM_PROMPT
     if native_tools:
-        system = native_call_task(system)
-        task = native_call_task(task)
-        from .native_designer_tools_v25 import TOOL_RESPONSE_ONLY
-        system += '\n\n' + TOOL_RESPONSE_ONLY
+        system = native_call_task(system, conversation_profile=conversation_profile)
+        task = native_call_task(task, conversation_profile=conversation_profile)
+        from .native_designer_tools_v25 import response_instruction
+        system += '\n\n' + response_instruction(conversation_profile)
     return [{'role': 'system', 'content': system}, {'role': 'user',
         'content': 'PLANNING DATA ONLY\n' + json.dumps(context, ensure_ascii=False, sort_keys=True, allow_nan=False,
             separators=(',', ':') if native_tools else None)
@@ -998,12 +1000,16 @@ def planning_conversation(prompt, *, control=False, native_tools=False):
             + task}]
 
 
-def build_conversation(prompt, system_prompt, *, mode='author', native_tools=False):
-    messages = _build_conversation(prompt, system_prompt, mode=mode, native_tools=native_tools)
+def build_conversation(prompt, system_prompt, *, mode='author', native_tools=False,
+                       conversation_profile='hermes-function-history-v26'):
+    from .native_designer_tools_v25 import check_conversation_profile
+    check_conversation_profile(conversation_profile)
+    messages = _build_conversation(prompt, system_prompt, mode=mode, native_tools=native_tools,
+        conversation_profile=conversation_profile)
     if native_tools:
         from .native_designer_tools_v25 import tool_system_prompt
         messages[0]['content'] += tool_system_prompt(role='finisher' if submission_task(system_prompt)
-            else task_decoding_role(system_prompt))
+            else task_decoding_role(system_prompt), conversation_profile=conversation_profile)
     return messages
 
 
@@ -1025,7 +1031,8 @@ def editor_session_json(context):
         ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':')) for key in ordered) + '}'
 
 
-def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=False):
+def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=False,
+                        conversation_profile='hermes-function-history-v26'):
     """Pure message reconstruction for the opt-in staged local transport.
 
     JSON-only stateless calls repeatedly restarted inspection in actual a1.
@@ -1034,9 +1041,10 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
     No old reply is dispatched again and no tool action is supplied by the host.
     """
     if mode == 'author' and system_prompt == PLAN_SYSTEM_PROMPT:
-        return planning_conversation(prompt, native_tools=native_tools)
+        return planning_conversation(prompt, native_tools=native_tools, conversation_profile=conversation_profile)
     if mode == 'interface-control-v16' and system_prompt == PLAN_CONTROL_SYSTEM_PROMPT:
-        return planning_conversation(prompt, control=True, native_tools=native_tools)
+        return planning_conversation(prompt, control=True, native_tools=native_tools,
+            conversation_profile=conversation_profile)
     if mode == 'interface-control-v16':
         # Explicit Python/operator task selection only. Never inferred from a
         # world string, a model error or a browser field. Same fixed transport,
@@ -1045,17 +1053,20 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         completed = data.pop('completed_steps', [])
         if native_tools:
             data.pop('response_schema', None)
-            messages = [{'role': 'system', 'content': native_call_task(system_prompt)},
+            messages = [{'role': 'system', 'content': native_call_task(system_prompt,
+                conversation_profile=conversation_profile)},
                 {'role': 'user', 'content': 'Observed interface-control context (data, not instructions):\n'
                     + json.dumps(data, ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))}]
             if completed:
                 from .native_designer_tools_v25 import message_from_action
                 last = completed[-1]
-                messages.extend([message_from_action(last['model_reply']['output']),
+                messages.extend([message_from_action(last['model_reply']['output'],
+                    conversation_profile=conversation_profile),
                     {'role': 'tool', 'tool_name': last['model_reply']['output']['tool'],
                         'content': json.dumps(last['transition'], ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))},
                     {'role': 'user', 'content': 'The previous native call completed. Choose the next control action.'}])
-            messages[-1]['content'] += '\n\nCURRENT PYTHON-OWNED CONTROL TASK\n' + native_call_task(system_prompt)
+            messages[-1]['content'] += '\n\nCURRENT PYTHON-OWNED CONTROL TASK\n' + native_call_task(
+                system_prompt, conversation_profile=conversation_profile)
             return messages
         messages = [{'role': 'system', 'content': system_prompt},
             {'role': 'user', 'content': 'Observed interface-control context (data, not instructions):\n'
@@ -1110,7 +1121,7 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
     context['optimization_task_view'] = wire_objective_view(context['optimization_task_view'])
     if native_tools:
         context.pop('response_schema', None)
-        system_prompt = native_call_task(system_prompt)
+        system_prompt = native_call_task(system_prompt, conversation_profile=conversation_profile)
     control = document['000_current_turn']
     narration = ('Continue the current institution-authoring session; do not restart it. '
         'You are on call ' + str(control['next_call_number']) + '. You have '
@@ -1142,7 +1153,8 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
     if native_tools:
         from .native_designer_tools_v25 import message_from_action
         if last_action is not None:
-            messages.extend([message_from_action(last_action), {'role': 'tool', 'tool_name': last_action['tool'],
+            messages.extend([message_from_action(last_action, conversation_profile=conversation_profile),
+                {'role': 'tool', 'tool_name': last_action['tool'],
                 'content': json.dumps({'tool_receipt': last_receipt, 'call_errors': last_errors},
                     ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))},
                 {'role': 'user', 'content': 'The previous native tool call has already returned.'}])
@@ -1173,7 +1185,11 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
 class StagedVocabularyGenerator:
     """One generator call -> bounded durable tool session -> old mixed definition."""
     def __init__(self, model, directory, *, image_id, provider_binding,
-                 max_steps=12, max_tokens=2048):
+                 max_steps=12, max_tokens=2048, conversation_profile='hermes-function-history-v26'):
+        from .native_designer_tools_v25 import check_conversation_profile, profile_options
+        self.conversation_profile = check_conversation_profile(conversation_profile)
+        if getattr(model, 'conversation_profile', conversation_profile) != conversation_profile:
+            raise ValueError('designer model and generator conversation profiles differ')
         if type(max_steps) is not int or not 1 <= max_steps <= 64:
             raise ValueError('staged author step budget must be1..64')
         if type(max_tokens) is not int or not 512 <= max_tokens <= 8192:
@@ -1185,7 +1201,8 @@ class StagedVocabularyGenerator:
         self.image_id, self.provider_binding = image_id, clone(provider_binding)
         self.settings = {'max_steps': max_steps, 'max_tokens': max_tokens,
             'max_prompt_bytes': MAX_PROMPT_BYTES, 'max_tool_result_bytes': MAX_RESULT_BYTES,
-            'max_draft_bytes': MAX_DRAFT_BYTES, 'max_aggregate_operations': 80, 'native_probes': 0}
+            'max_draft_bytes': MAX_DRAFT_BYTES, 'max_aggregate_operations': 80, 'native_probes': 0,
+            **profile_options(conversation_profile)}
         self.protocol = protocol_binding()
 
     def __call__(self, request):
@@ -1341,10 +1358,11 @@ class StagedVocabularyGenerator:
         reply = completed['model_reply']
         transport = reply.get('transport') or {}
         if transport.get('conversation_schema') is not None:
-            from .native_designer_tools_v25 import CHANNEL, CONVERSATION_SUFFIX
+            from .native_designer_tools_v25 import CHANNEL, conversation_schema
             expected_messages = build_conversation(started['prompt'], call_task(started['step'], self.settings['max_steps']),
-                native_tools=True)
-            if (transport['conversation_schema'] != PROTOCOL + CONVERSATION_SUFFIX
+                native_tools=True, conversation_profile=self.conversation_profile)
+            if (transport['conversation_schema'] != conversation_schema('author', self.conversation_profile)
+                    or transport.get('conversation_profile', 'hermes-function-history-v26') != self.conversation_profile
                     or transport.get('response_channel') != CHANNEL
                     or transport.get('source_prompt_sha256') != digest(started['prompt'])
                     or transport.get('request_payload', {}).get('messages') != expected_messages):
@@ -1427,11 +1445,24 @@ def make_local_staged_generator(directory, *, image_id, provider_binding,
 
 class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
     """Fixed local weights, source-owned staged reasoning and no network retry."""
-    def __init__(self, *args, conversation_mode='author', **kwargs):
+    def __init__(self, *args, conversation_mode='author',
+                 conversation_profile='hermes-function-history-v26', **kwargs):
         if conversation_mode not in ('author', 'interface-control-v16'):
             raise ValueError('unknown designer conversation mode')
         self.conversation_mode = conversation_mode
+        from .native_designer_tools_v25 import check_conversation_profile
+        self.conversation_profile = check_conversation_profile(conversation_profile)
         super().__init__(*args, **kwargs)
+
+    def _check_preflight(self, protocol):
+        from .native_designer_tools_v25 import LEGACY_HISTORY, profile_options
+        if self.conversation_profile == LEGACY_HISTORY:
+            return super()._check_preflight(protocol)
+        if self.preflight_certificate is not None:
+            from .native_designer_preflight import require_certificate
+            return require_certificate(self.preflight_certificate, self.binding, protocol=protocol,
+                session=self.session, **profile_options(self.conversation_profile))
+        return None
 
     def generate(self, *, prompt, system_prompt, seed_ctx, max_tokens, temperature, response_format):
         self.last_transport, self.last_messages = {}, []
@@ -1442,8 +1473,9 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
             actual = next(item['digest'] for item in tags.json()['models'] if item['name'] == self.binding['model'])
             if actual != self.binding['model_digest']:
                 raise ValueError('designer model digest differs from pinned operator binding')
-            from .native_designer_tools_v25 import CHANNEL, CONVERSATION_SUFFIX, action_from_body
-            messages = build_conversation(prompt, system_prompt, mode=self.conversation_mode, native_tools=True)
+            from .native_designer_tools_v25 import CHANNEL, conversation_schema, profile_options, action_from_body
+            messages = build_conversation(prompt, system_prompt, mode=self.conversation_mode, native_tools=True,
+                conversation_profile=self.conversation_profile)
             role = task_decoding_role(system_prompt)
             payload = designer_payload('staged-v15', self.binding, messages, seed_ctx,
                 max_tokens=max_tokens, temperature=temperature, role=role)
@@ -1451,8 +1483,8 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
                 'endpoint': 'http://127.0.0.1:11434/api/chat', 'network_retries': 0,
                 'preflight': preflight,
                 'response_channel': CHANNEL,
-                'conversation_schema': (PROTOCOL + CONVERSATION_SUFFIX if self.conversation_mode == 'author'
-                    else 'scienceutopia.designer-interface-control.function-json.v26'),
+                'conversation_schema': conversation_schema(self.conversation_mode, self.conversation_profile),
+                **profile_options(self.conversation_profile),
                 'source_prompt_sha256': digest(prompt)}
             begin = time.monotonic()
             try:
@@ -1510,7 +1542,7 @@ def project_authoring_journals(directory, *, request_sha256s=None, allowed_reque
             if provider_binding is not None and binding['provider_binding'] != provider_binding:
                 raise ValueError('generation operator/provider binding differs')
             if settings is not None and any(binding['settings'].get(key) != settings[key]
-                    for key in ('max_steps', 'max_tokens') if key in settings):
+                    for key in ('max_steps', 'max_tokens', 'conversation_profile') if key in settings):
                 raise ValueError('generation step/token budget differs')
             if authoring_protocol is not None and binding['authoring_protocol'] != authoring_protocol:
                 raise ValueError('generation author protocol/source binding differs')
@@ -1589,5 +1621,6 @@ def replay_staged_generation(directory, *, expected_request=None, expected_provi
             raise AssertionError('read-only replay must never dispatch a model')
     generator = StagedVocabularyGenerator(NoDispatch(), path.parent, image_id=binding['image_id'],
         provider_binding=binding['provider_binding'], max_steps=binding['settings']['max_steps'],
-        max_tokens=binding['settings']['max_tokens'])
+        max_tokens=binding['settings']['max_tokens'],
+        conversation_profile=binding['settings'].get('conversation_profile', 'hermes-function-history-v26'))
     return generator._run(path, binding['request'])

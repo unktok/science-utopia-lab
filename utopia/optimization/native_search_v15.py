@@ -82,7 +82,8 @@ class NativeStagedSearchQueue(NativeSearchQueue):
         trace = project_authoring_trace(controller.directory / 'authoring',
             allowed_requests=[record['request'] for record in records],
             provider_binding=self.designer_provider_for(controller.request),
-            settings={k: controller.request['designer'][k] for k in ('max_steps', 'max_tokens')},
+            settings={k: controller.request['designer'][k] for k in
+                ('max_steps', 'max_tokens', 'conversation_profile') if k in controller.request['designer']},
             authoring_protocol=protocol_binding())
         result['authoring_trace'] = trace
         result['live_progress'] = super().live_progress(controller, observe_designer=False)

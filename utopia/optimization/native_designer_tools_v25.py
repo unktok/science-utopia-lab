@@ -1,4 +1,4 @@
-"""Lossless function JSON responses and canonical Hermes completed history.
+"""Lossless function JSON responses and explicitly versioned completed history.
 
 These are general editing tools, not an institution catalogue. The adapter
 only separates a model-authored function name from its literal arguments.
@@ -11,6 +11,9 @@ from utopia.system.design_patch import clone
 
 CHANNEL = 'scienceutopia.designer-function-json.v26'
 CONVERSATION_SUFFIX = '.conversation.function-json.v26'
+LEGACY_HISTORY = 'hermes-function-history-v26'
+PLAIN_JSON_HISTORY = 'plain-function-history-v40'
+CONVERSATION_PROFILES = (LEGACY_HISTORY, PLAIN_JSON_HISTORY)
 TOOL_RESPONSE_ONLY = (
     'Call exactly one supplied function for the next action. '
     'Return exactly one JSON object in final response content: '
@@ -22,6 +25,35 @@ TOOL_RESPONSE_ONLY = (
     'including real line feeds, quotes and literal backslashes. '
     'Do not add an extra JSON encoding layer. Separate reasoning and ordinary '
     'prose are not executable actions.')
+
+
+def check_conversation_profile(profile):
+    if profile not in CONVERSATION_PROFILES:
+        raise ValueError('unknown source-owned designer conversation profile')
+    return profile
+
+
+def profile_options(profile):
+    """Keep legacy records/call signatures unchanged unless explicitly selected."""
+    check_conversation_profile(profile)
+    return {} if profile == LEGACY_HISTORY else {'conversation_profile': profile}
+
+
+def response_instruction(profile=LEGACY_HISTORY):
+    check_conversation_profile(profile)
+    if profile == LEGACY_HISTORY:
+        return TOOL_RESPONSE_ONLY
+    return TOOL_RESPONSE_ONLY.replace(
+        'Completed assistant history may use Hermes tags; it is not the new response format. ',
+        'Completed assistant history uses the same JSON representation and has already returned; '
+        'its receipt records acceptance or rejection. Produce the next action. ')
+
+
+def conversation_schema(mode, profile=LEGACY_HISTORY):
+    check_conversation_profile(profile)
+    base = ('scienceutopia.staged-author.v15' + CONVERSATION_SUFFIX if mode == 'author'
+        else 'scienceutopia.designer-interface-control.function-json.v26')
+    return base if profile == LEGACY_HISTORY else base + '.plain-history.v40'
 
 CONTROL_TARGET_NOTE = (
     'The JSON below is target DATA, not a previous assistant call or a completed tool result. '
@@ -151,9 +183,13 @@ def function_data(action):
         'arguments': clone({key: value for key, value in action.items() if key != 'tool'})}
 
 
-def message_from_action(action):
+def message_from_action(action, *, conversation_profile=LEGACY_HISTORY):
     """Serialize completed history, never dispatch or replace a provider reply."""
     function = function_data(action)
+    check_conversation_profile(conversation_profile)
+    if conversation_profile == PLAIN_JSON_HISTORY:
+        return {'role': 'assistant', 'content': json.dumps(function,
+            ensure_ascii=False, allow_nan=False, separators=(',', ':'))}
     return {'role': 'assistant', 'content': '<tool_call>\n'
         + json.dumps(function, ensure_ascii=False, allow_nan=False, separators=(',', ':')) + '\n</tool_call>'}
 
@@ -171,8 +207,8 @@ def action_from_body(body):
     return action_from_message(body.get('message'))
 
 
-def tool_system_prompt(*, role=None):
-    """Use the model's trained Hermes syntax without Ollama's lossy argument map.
+def tool_system_prompt(*, role=None, conversation_profile=LEGACY_HISTORY):
+    """Advertise JSON tools without Ollama's lossy native argument map.
 
     Ollama0.33.3's native argument-map JSON decoding has float64 round-trip
     risk above2**53, including previous assistant calls sent as history. Here
@@ -186,7 +222,8 @@ def tool_system_prompt(*, role=None):
         + '\n</tools>\n\nDefault functions are advertised above, not a restriction on scientific design. '
         'The complete host API remains legal and is documented in reference/tools.json. '
         'An exact source-owned compatibility-control target may explicitly declare another host function; '
-        'copy that declared target rather than substituting a default function.\n' + TOOL_RESPONSE_ONLY)
+        'copy that declared target rather than substituting a default function.\n'
+        + response_instruction(conversation_profile))
 
 
 def reply_action(reply):

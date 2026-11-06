@@ -15,6 +15,7 @@ from .native_search_v15 import (
     make_search_plan as legacy_plan, validate_search_request as legacy_validate,
 )
 from .native_staged_author_v15 import LocalStagedQwenDesignerModel, StagedVocabularyGenerator
+from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_JSON_HISTORY, profile_options
 
 REQUEST_SCHEMA = 'scienceutopia.native-search-request.v38'
 PLAN_SCHEMA = 'scienceutopia.native-search-plan.v38'
@@ -49,7 +50,8 @@ def _legacy_validation_view(request):
         raise ValueError('exact native-search-request.v38 fields required')
     designer = request['designer']
     if (not isinstance(designer, dict)
-            or set(designer) != {'model', 'max_steps', 'max_tokens', 'provider_binding'}):
+            or set(designer) - {'conversation_profile'} != {'model', 'max_steps', 'max_tokens', 'provider_binding'}
+            or ('conversation_profile' in designer and designer['conversation_profile'] != PLAIN_JSON_HISTORY)):
         raise ValueError('explicit separately bound designer and bounded steps/tokens required')
     validate_designer_binding(designer['provider_binding'])
     if designer['model'] != designer['provider_binding']['model']:
@@ -76,6 +78,7 @@ def make_search_plan(request, *, source_commit, provider_binding):
     plan.update(schema=PLAN_SCHEMA, request=clone(request), request_sha256=digest(request),
         designer_provider_binding=clone(request['designer']['provider_binding']),
         role_policy='scientist provider fixed; designer separately declared and source/model bound')
+    plan.update(profile_options(request['designer'].get('conversation_profile', LEGACY_HISTORY)))
     return plan
 
 
@@ -121,7 +124,8 @@ class LocalRoleBoundDesignerModel(LocalStagedQwenDesignerModel):
         if self.preflight_certificate is not None:
             from .native_designer_preflight import require_certificate
             return require_certificate(self.preflight_certificate, self.binding,
-                protocol=protocol, session=self.session, scope=self.readiness_scope)
+                protocol=protocol, session=self.session, scope=self.readiness_scope,
+                **profile_options(self.conversation_profile))
         return None
 
 
@@ -136,12 +140,15 @@ def staged_model_type(provider):
 
 def make_local_role_bound_generator(directory, *, image_id, provider_binding,
                                     max_steps, max_tokens, inference_lock=None,
-                                    preflight_certificate=None, readiness_scope='literal-controls-v16'):
+                                    preflight_certificate=None, readiness_scope='literal-controls-v16',
+                                    conversation_profile=LEGACY_HISTORY):
     from .native_designer_preflight import require_certificate
     validate_designer_binding(provider_binding)
-    require_certificate(preflight_certificate, provider_binding, protocol='staged-v15', scope=readiness_scope)
+    profile = profile_options(conversation_profile)
+    require_certificate(preflight_certificate, provider_binding, protocol='staged-v15', scope=readiness_scope,
+        **profile)
     return StagedVocabularyGenerator(LocalRoleBoundDesignerModel(provider_binding,
         inference_lock=inference_lock, preflight_certificate=preflight_certificate,
-        readiness_scope=readiness_scope),
+        readiness_scope=readiness_scope, **profile),
         directory, image_id=image_id, provider_binding=provider_binding,
-        max_steps=max_steps, max_tokens=max_tokens)
+        max_steps=max_steps, max_tokens=max_tokens, **profile)

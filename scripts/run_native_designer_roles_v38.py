@@ -51,7 +51,7 @@ def build_plan(*, source_commit, initial_system, provider_binding,
     return plan
 
 
-def execute(args):
+def execute(args, *, plan_builder=build_plan, conversation_profile='hermes-function-history-v26'):
     config = json.loads(args.designer_provider_config.read_text())
     if not isinstance(config, dict) or set(config) != {'provider_binding'}:
         raise ValueError('exact operator-owned designer provider configuration required')
@@ -59,10 +59,13 @@ def execute(args):
     def factory(*a, **kw):
         return LocalRoleBoundNativeFactory(*a, designer_provider=config['provider_binding'], **kw)
     def generator(*a, **kw):
-        return make_local_role_bound_generator(*a, readiness_scope=READINESS_SCOPE, **kw)
-    return execute_pilot(args, plan_builder=build_plan, queue_type=NativeRoleBoundSearchQueue,
+        from utopia.optimization.native_designer_tools_v25 import profile_options
+        return make_local_role_bound_generator(*a, readiness_scope=READINESS_SCOPE,
+            **profile_options(conversation_profile), **kw)
+    return execute_pilot(args, plan_builder=plan_builder, queue_type=NativeRoleBoundSearchQueue,
         designer_provider=config['provider_binding'], generator_factory=generator,
-        native_factory_type=factory, readiness_scope=READINESS_SCOPE)
+        native_factory_type=factory, readiness_scope=READINESS_SCOPE,
+        **({'conversation_profile': conversation_profile} if conversation_profile != 'hermes-function-history-v26' else {}))
 
 
 def extra_arguments(parser):
