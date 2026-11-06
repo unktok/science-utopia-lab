@@ -68,6 +68,32 @@ def reference_digest(value):
 
 
 REFERENCE = json.loads((Path(__file__).parent / "fixtures/accounting_reference.json").read_text())
+SUBMISSION_CONTEXT_REFERENCE = json.loads((Path(__file__).parent /
+    "fixtures/submission_context_v33_reference.json").read_text())
+
+
+def non_submission_trace(value):
+    """Test-only projection; preserve every field except declared submission text.
+
+    The full corrected trace has its own exact golden. This second assertion
+    binds all other prompts/schemas/call counts/seeds/accounting to the
+    independently reproduced pre-V33 trace, rather than weakening compatibility.
+    Never use this projection on production model inputs or saved evidence.
+    """
+    projected = deepcopy(value)
+    calls = []
+    for call in projected['calls']:
+        metadata = call[1]
+        submission = ((isinstance(metadata, (list, tuple)) and metadata[0] == 'phase2_submissions')
+            or (isinstance(metadata, dict)
+                and 'submission' in metadata.get('json_object', {}).get('name', '')))
+        if submission:
+            body = (['<DECLARED-SUBMISSION-PROMPT>'] * len(call[0])
+                if isinstance(call[0], list) else '<DECLARED-SUBMISSION-PROMPT>')
+            call = (body, *call[1:])
+        calls.append(call)
+    projected['calls'] = calls
+    return projected
 
 
 def fixed_hash_seed(function):
@@ -714,7 +740,7 @@ class TestCostConfiguration(unittest.TestCase):
 
 
 class TestSubmissionRefactorCompatibility(unittest.TestCase):
-    """Compare observable Phase 0/2 behavior with the version before extraction."""
+    """Preserve Phase0/2 behavior except the explicit V33 submission text repair."""
 
     @classmethod
     def setUpClass(cls):
@@ -825,7 +851,12 @@ class TestSubmissionRefactorCompatibility(unittest.TestCase):
         for scenario in ("valid", "retry", "regular_exhausted", "extended_exhausted", "self_exhausted", "empty"):
             with self.subTest(scenario=scenario):
                 after = self.citation_scenario(self.namespaces[0], scenario)
-                self.assertEqual(reference_digest(after), REFERENCE["citations"][f"{scenario}:False:False"])
+                key = f"{scenario}:False:False"
+                expected = SUBMISSION_CONTEXT_REFERENCE['cases'][key]
+                self.assertEqual(expected['legacy_full_sha256'], REFERENCE['citations'][key])
+                self.assertEqual(reference_digest(after), expected['corrected_full_sha256'])
+                self.assertEqual(reference_digest(non_submission_trace(after)),
+                    expected['unchanged_non_submission_trace_sha256'])
                 self.assertEqual([paper["id"] for paper in after["papers"]], ["p2", "p3"])
                 self.assertEqual(after["results"]["paper_submission"]["num_papers_submitted"], 3)
 
@@ -834,7 +865,12 @@ class TestSubmissionRefactorCompatibility(unittest.TestCase):
         for scenario in ("valid", "retry", "self_exhausted", "empty"):
             with self.subTest(scenario=scenario):
                 after = self.citation_scenario(self.namespaces[0], scenario, sequential=True)
-                self.assertEqual(reference_digest(after), REFERENCE["citations"][f"{scenario}:True:False"])
+                key = f"{scenario}:True:False"
+                expected = SUBMISSION_CONTEXT_REFERENCE['cases'][key]
+                self.assertEqual(expected['legacy_full_sha256'], REFERENCE['citations'][key])
+                self.assertEqual(reference_digest(after), expected['corrected_full_sha256'])
+                self.assertEqual(reference_digest(non_submission_trace(after)),
+                    expected['unchanged_non_submission_trace_sha256'])
 
     @fixed_hash_seed
     def test_year_with_only_resubmissions_preserves_requests_and_venue_admission(self):

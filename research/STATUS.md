@@ -2,6 +2,21 @@
 
 Updated: 2026-11-06 JST
 
+## V33 full-suite differences are isolated to the declared submission text
+
+Exact2a broad11133 ends2836 pass/two pre-V33 full-trace golden failures/six
+skips in1266.08s; preserve that failed JUnit. Independent actual test-scenario
+replays at frozen6f1e/2a reproduce all10 original hashes at6f1e and show all10
+non-submission trace hashes equal across sources. Only the intended submission
+body changes; citation outcomes, resources, schemas/calls/seeds, all other
+prompts, world results and RNG states stay identical in these SCRIPTED checks.
+
+A separate test-only branch keeps the old fixture and adds exact corrected V33
+full-trace references plus unchanged non-submission hashes. Corrected scope
+passes53/one skip in10.51s. Runtime and scripts remain byte-identical to frozen2a;
+the live native experiment and its certificate are not modified/restarted.
+This does not create a functional institution or complete the original goal.
+
 ## V33 actual readiness passes; corrected original-world search is live
 
 At frozen2a52318, actual53349 exits0: all24 exact controls/cold replay and

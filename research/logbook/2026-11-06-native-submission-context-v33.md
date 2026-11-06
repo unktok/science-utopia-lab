@@ -138,3 +138,34 @@ Actual G0 requestc4338273865b06c9f8606b8b61f21526184e4e205aa655d0784bdc4b9f12111
 contains zero history/observations: the calibration donor is not free-production
 data. Broad exact-source11133 still runs; no new functional institution or native
 measurement is claimed. Continue the unchanged original goal to actual completion.
+
+Exact2a broad suite11133 exits1:2836 pass/two citation trace golden failures/
+six skips in1266.08s, JUnit full-2a52318.xml SHA
+b8e3afdad8068798fd7d86574c12506da154087bd284fdfde70d57585aa51d3e.
+Do not claim a full pass or erase those original-source failures. They compare
+entire call traces, including the deliberately repaired year2 submission text,
+against pre-V33 hashes. Diagnose before updating any expectation.
+
+Read-only fixed-PYTHONHASHSEED=0 executions of the actual accounting test
+scenarios at frozen6f1e and2a reproduce all10 legacy reference digests at6f1e.
+At2a, all10 traces differ only in their Phase2 submission prompt bodies: their
+hashes after replacing exactly those bodies are identical across both sources.
+This retains all other prompt bytes, schemas, call counts, seed contexts, papers,
+citations, venues, resource balances, funding data and Python/NumPy RNG state.
+Private ArchivedPaper reprs disappear, as the V33 protocol explicitly declares.
+No model, Docker world, generated candidate or actual scientific sample is added.
+
+Develop test-only track-native-citation-goldens-v33 from main8beea24. Preserve
+accounting_reference.json unchanged. Add separate versioned V33 full-trace
+goldens and the independently reproduced common non-submission trace hashes.
+The two tests now assert both exact corrected full traces AND unchanged
+non-submission behavior, as well as the original legacy-hash identity. Existing
+no-author/resubmission compatibility checks keep their original full goldens.
+No production normalizer or runtime/script change is introduced. Git confirms
+utopia/scripts are byte-identical to actual frozen2a; do not alter that live tree.
+
+Corrected accounting plus submission/golden scope38734 exits0:53 pass/one skip
+in10.51s, JUnit accounting-contract-development.xml SHA
+f0e1cdf7d605125bfc68377715aef6b8813f5698871175b7b837a23bf40402cd.
+The original-source pilot remains live and pinned; no new actual model control
+or scientific trial is dispatched by this test-only expectation correction.

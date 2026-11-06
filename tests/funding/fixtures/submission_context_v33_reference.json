@@ -1,0 +1,60 @@
+{
+  "schema": "scienceutopia.submission-context-reference.v33",
+  "scope": "SCRIPTED trace goldens after the declared V33 submission-renderer repair; pre-V33 accounting_reference.json is preserved.",
+  "old_runtime_source": "6f1e02d2643e4d51620f3a744f91fd6d690034d1",
+  "corrected_runtime_source": "2a523181e781dcca570ad5b719b2805396d4c3ca",
+  "python_hash_seed": "0",
+  "projection": "Replace only each Phase2 submission prompt body with DECLARED-SUBMISSION-PROMPT, retaining prompt counts, schemas, seed contexts, all other prompt bytes and all scientific/accounting results.",
+  "cases": {
+    "empty:False:False": {
+      "legacy_full_sha256": "eb688a01bf5e6d70af7d99f59f1437cc55f8afb5c83524987f6b365c940d5845",
+      "corrected_full_sha256": "eff6ad29534b3fe37edef2e31fbb94504822c1ee62546e3ac6ae5e9cacbc88be",
+      "unchanged_non_submission_trace_sha256": "a35745bb003cef9a9967c0fc1fc393f514f4e14f2337549075fd8040adc46f24"
+    },
+    "empty:True:False": {
+      "legacy_full_sha256": "0a3096530205d764d0bd1d1699ec1af3eef57fe7527bc9b25ae9cd591fec74d4",
+      "corrected_full_sha256": "baff8af7a8151b666dadd6537d2e1df25d2a559138081271052d1dc9b7f5ff63",
+      "unchanged_non_submission_trace_sha256": "0d6b5536e04c0ccbdf5cd0768ab80f8187fb1d011ac6ba7d36d857ab07ac1707"
+    },
+    "extended_exhausted:False:False": {
+      "legacy_full_sha256": "32cd4b2c671d9f5c11ec0459c1d7cd068e8c7354ee88ee087532fc4ea073720a",
+      "corrected_full_sha256": "e9355aabf97cb974c93b8ad18d6694e8ac823afb483cc3a15544d3dc302da57c",
+      "unchanged_non_submission_trace_sha256": "41effc2e94e6c396917bf523d5e1fef00b4942cbd0eeb7aa313675b468bde2c9"
+    },
+    "regular_exhausted:False:False": {
+      "legacy_full_sha256": "76ac2704e9baa92d59c88987b503ed0579f1bdb3eb887f80b24c25a1198357ea",
+      "corrected_full_sha256": "fe945aaa2ad14d26c0223d7bfd52e19be0ee5938a3e9df52c3e4450d145ce13d",
+      "unchanged_non_submission_trace_sha256": "34c45d94cd23362137ec50478c1e980064ce226931c5993fd1ce717d2ea06e0d"
+    },
+    "retry:False:False": {
+      "legacy_full_sha256": "bd8f15ebbd01459d348a6b66ed58a2aa2064a81339f361ac6f07516be9355b0c",
+      "corrected_full_sha256": "9c0304df0b6094972b85292bd1f0d5da19657c66940a979a580c48e47450b35d",
+      "unchanged_non_submission_trace_sha256": "45447d94dd187587306c13edd9c2c5e1d8b966d5e730f03b5e5114582d423d85"
+    },
+    "retry:True:False": {
+      "legacy_full_sha256": "24999206fd44daaa73f16e5ff3136cb24c639ab8d0766ef386c88cd7e5a8b78b",
+      "corrected_full_sha256": "269479e7f27c008ae9b52e572e5ca5d1412debb24f6f4f70a4848d14b901379e",
+      "unchanged_non_submission_trace_sha256": "1dd804ba32f7c43c302fb6e64ced322f147b10c6b9217ec74c8b0f72cd2e63d6"
+    },
+    "self_exhausted:False:False": {
+      "legacy_full_sha256": "428bce568b43fab13e233ccc5ac7d2d0df6ebc8c65aec8547ea6f9d6c52b5b50",
+      "corrected_full_sha256": "831afb3265157ec687352f06983b3a518b66780373191d4b08268f5db9348212",
+      "unchanged_non_submission_trace_sha256": "f74b9029800c88bb96e13159d92d3f9986951319e82607b7745891e87254c051"
+    },
+    "self_exhausted:True:False": {
+      "legacy_full_sha256": "75694ba7057cb58ba935550a31cd84fef46686b062c62c3bf4e0843db5b0cedd",
+      "corrected_full_sha256": "a336b04adbc5fbb4837470c369bcfdc177869319c429ef311634b51e69a362ce",
+      "unchanged_non_submission_trace_sha256": "99b736452b1b158b4e73a5e071834983db7a91e00aeb66d0906b82d4ce553f80"
+    },
+    "valid:False:False": {
+      "legacy_full_sha256": "eb688a01bf5e6d70af7d99f59f1437cc55f8afb5c83524987f6b365c940d5845",
+      "corrected_full_sha256": "eff6ad29534b3fe37edef2e31fbb94504822c1ee62546e3ac6ae5e9cacbc88be",
+      "unchanged_non_submission_trace_sha256": "a35745bb003cef9a9967c0fc1fc393f514f4e14f2337549075fd8040adc46f24"
+    },
+    "valid:True:False": {
+      "legacy_full_sha256": "0a3096530205d764d0bd1d1699ec1af3eef57fe7527bc9b25ae9cd591fec74d4",
+      "corrected_full_sha256": "baff8af7a8151b666dadd6537d2e1df25d2a559138081271052d1dc9b7f5ff63",
+      "unchanged_non_submission_trace_sha256": "0d6b5536e04c0ccbdf5cd0768ab80f8187fb1d011ac6ba7d36d857ab07ac1707"
+    }
+  }
+}
