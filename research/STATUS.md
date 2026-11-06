@@ -4,6 +4,13 @@ Updated: 2026-11-06 JST
 
 ## V39 execution-first scope authorized; historical copy failures stay failed
 
+At08:15Z the first actually changed candidate completes its native world:
+throughput G0 always-accept source, loss−7 (seven accepted decisions). Its actual
+loss/observation reaches the next actual35B planner POST; original-source wire
+diagnostic88266 verifies it. This is one functional changed candidate plus own
+feedback, not yet multiple-candidate/remeasurement or held-out/quality evidence.
+The finite pilot continues; retain and separately investigate backend500/EOFs.
+
 The final full software49563 exits0:1463 pass873.08s. Both new-scope gates pass
 at frozen d29d791, then actual scientific writer76434 starts08:01:58Z at
 outputs/native-execution-readiness-v39-a1. G0 has zero history/observations;

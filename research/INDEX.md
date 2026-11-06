@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V39 live native search: first changed functional candidate loss−7 and actual own-feedback delivery](results/native-execution-readiness-v39-a1.md)
+
 - [V39 actual technical readiness:28 pass;26 exact copies and2 diagnostic mismatches](results/native-execution-readiness-v39-a1-readiness.md)
 
 - [V39 user-authorized execution readiness; exact copy becomes diagnostic](protocols/campaigns/native-execution-readiness-v39-a1.md)
