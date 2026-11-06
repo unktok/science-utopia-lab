@@ -165,6 +165,13 @@ Keep that source-bound audit unchanged; correct the prospective prose template
 with affected tests before the next source freeze. The legacy at-least-two-
 complete-observation claim remains separate from functional invention.
 
+The prospective analyzer now uses iteration-count-neutral development/held-out
+prose. Its regression asserts the actual eight-slot/four-per-objective fixture
+plan and absence of the obsolete two-generation claim. This changes reporting
+text only; runtime, scientific measurements, legacy claim semantics and all
+old819 audit bytes stay unchanged. Commit before affected checks and freeze
+only after they pass, not by claiming the old1336 run tested this new helper.
+
 Also retain the functional-classification caution: open-memory-router emits
 hard gate actions. Merely changing world.selection's consumer threshold from.5
 to.7 may be equivalent on reachable0/1 inputs. Literal source fingerprints and

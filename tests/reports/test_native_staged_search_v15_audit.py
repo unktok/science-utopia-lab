@@ -69,8 +69,12 @@ def fixture(root, *, generation_fails=False, unknown=False, run_jobs=True, malfo
 
 
 def test_compact_missing_tool_reply_is_counted_without_changing_raw_or_full_audit(tmp_path):
-    fixture(tmp_path, malformed_first=True)
+    _, plan, _ = fixture(tmp_path, malformed_first=True)
     full = audit.analyze(tmp_path, expected_source=REVISION)
+    assert plan['budget']['scheduled_native_slots'] == 8
+    assert all(entry['request']['native_budget'] == 4 for entry in plan['runs'])
+    assert 'These development-seed feedback runs are not a held-out or causal method comparison.' in full['audit']['limitations']
+    assert not any('two generations per objective' in value for value in full['audit']['limitations'])
     before = deepcopy(full)
     compact = audit.compact_summary(full)
     assert full == before

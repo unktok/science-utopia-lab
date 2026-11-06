@@ -560,7 +560,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             'new_container_executions': 0, 'exact_raw_tools_draft_source_definition_replayed': True,
             'own_history_loss_and_all_ties_replayed': True,
             'limitations': ['Parsed receipts/raw transports are evidence, not provider-authenticated scientific truth.',
-                'One development seed and two generations per objective are not a held-out or causal method comparison.',
+                'These development-seed feedback runs are not a held-out or causal method comparison.',
                 'Explicit parent retention is legal and is not attributed as newly invented source.',
                 'Designer dispatch intents, recorded POST attempts, known responses and unknown interruptions are separate.',
                 'GET /api/tags binding/native-factory preflights are not completely journalled and are not inferred as zero.']}}
