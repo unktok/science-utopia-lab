@@ -1,5 +1,30 @@
 # V44: repair authoring failures before claiming institutional optimization
 
+## Current verification update: a4 free authoring completes
+
+Frozen60ef56ca2e32634c72817676b8bcc55bc9fcaa45 passes29/29 actual
+technical controls (27 exact copies/two retained diagnostic mismatches), including
+cold replay, with certificate
+cbe60a2be86aeea4c317b20d6046b7db049581eed6ca08046fc5bbb48a5644b7.
+Its separate nonexecuting efficiency-G0 free-authoring check completes in
+318.8702142238617s using14 charged POSTs. A flat function reply at step4 remains
+an invalid response; the model corrects its response on the next charged call.
+There are eight successful explicit writes, two changed literal code bodies,
+two changed configurations, and a valid explicit finish. No generated source
+or original world executes in this interface check; there is no measured loss.
+Separate-process replay passes with all30 raw JSON files byte-identical and
+definition digest87532abc3d799d7eb3d96707c4646f6936f3ee278b6b6218ba826980e878c78f.
+Raw evidence is outputs/native-authoring-recovery-v44-a4-free-authoring.
+
+Inspection also finds a remaining host bookkeeping bug: a response failure
+without any dispatched transition resets the unchanged-draft inspection count.
+Fix this separately in the feature, not the immutable60ef experiment: only the
+executor's three declared nontransition failure statuses preserve that count.
+They remain charged, cannot fabricate progress, and unknown/malformed transition
+records are not assumed safe. Four new regression cases plus the existing
+V44 checks pass34/34 in9.89s. No model output or old receipt is repaired, and the
+ongoing60ef source-bound checks retain their original semantics.
+
 The user explicitly requests all identified failures be fixed. Retain V43's
 immutable E920 tree, raw files and terminal audit. Its actual writer ends
 2026-11-06T11:56:20.827389Z, elapsed1826.184068s. Eight slots are consumed:

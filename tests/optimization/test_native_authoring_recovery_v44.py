@@ -117,6 +117,36 @@ def test_large_draft_is_explicit_not_truncated_or_forced_without_supplied_body()
     assert flow['literal_current_system_included'] is False and flow['phase'] == 'general'
 
 
+@pytest.mark.parametrize('status', [
+    'invalid-response', 'transport-error', 'interrupted-response-unknown'])
+def test_charged_nontransition_failure_does_not_reset_implementation_checkpoint(status):
+    body = request(); state = initial_draft(body); steps = []
+    for index in range(3):
+        state, receipt = step(state, {'tool': 'read_file', 'filename': 'system.json'}, body, index)
+        steps.append(receipt)
+    failed = {'step': 3, 'status': status, 'transition': None,
+        'model_reply': {'output': None}, 'errors': [{'message': 'original failure'}]}
+    steps.append(failed)
+    before = deepcopy(steps)
+    flow = workflow(state, steps, max_steps=16)
+    assert flow['phase'] == 'implementation'
+    assert flow['inspection_attempts_since_last_draft_change'] == 3
+    assert flow['remaining_calls_including_this_one'] == 12
+    assert steps == before
+    state, edited = step(state, {'tool': 'edit', 'operations': [
+        {'op': 'add', 'path': '/metadata/actual_change', 'value': True}]}, body, 4)
+    assert workflow(state, steps + [edited], max_steps=16)['phase'] == 'general'
+
+
+def test_missing_transition_on_unknown_status_is_not_assumed_to_preserve_draft():
+    body = request(); state = initial_draft(body); steps = []
+    for index in range(3):
+        state, receipt = step(state, {'tool': 'read_file', 'filename': 'system.json'}, body, index)
+        steps.append(receipt)
+    steps.append({'status': 'unknown', 'transition': None})
+    assert workflow(state, steps, max_steps=16)['phase'] == 'general'
+
+
 def test_all_submission_notes_are_non_executable_including_misleading_operation_fields():
     body = request(); state = initial_draft(body)
     notes = {'rationation': None, 'source': 'raise RuntimeError("DO_NOT_EXECUTE")',

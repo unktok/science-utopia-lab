@@ -53,7 +53,14 @@ def workflow(state, steps, *, max_steps):
     inspections = successful = 0
     current = digest(state)
     for step in reversed(steps):
-        receipt = step.get('transition') or {}
+        receipt = step.get('transition')
+        if receipt is None and step.get('status') in (
+                'invalid-response', 'transport-error', 'interrupted-response-unknown'):
+            # No transition was dispatched, so the executor cannot have changed
+            # the draft. Keep the checkpoint active across charged failures;
+            # do not mistake a malformed reply for implementation progress.
+            continue
+        receipt = receipt or {}
         if receipt.get('draft_after_sha256') != current or receipt.get('draft_before_sha256') != current:
             break
         inspections += int(receipt.get('tool') in
