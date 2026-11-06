@@ -2,6 +2,29 @@
 
 Updated: 2026-11-06 JST
 
+## V35 a2 closes with matching original audits; original goal remains unmet
+
+Writer20363 exits0 at04:40:50.622504Z after1h53m41.23s; PID84286 is absent.
+Eight slots:three author failures, one changed-code KeyError:world world, four
+complete exact-parent worlds (throughput0/0, efficiency12/12). E3's pre-screening
+source is fully reverted before submission. No functioning new institution is
+established, and the original goal is not complete.
+
+Two unmodified original819 audits98972/77970 exit0 and compare equal,
+identity405d05c4515e4f298558c76a5aa3f2ae8283a88fdb2fa9aa3630e14acc2cad4d.
+All four parent executions have the same97 full scientist request payloads.
+Actual own failures/measurements reach the next planner, but editing/policy
+generation remains unreliable. Record64 POSTs/63 HTTP bodies/62 known token
+records; one actual300s read timeout and a separate36.5s HTTP200/doneFalse
+event remain distinct. Preserve unknown costs and the original audit's stale
+two-generation prose label (actual planfour), rather than rewriting old evidence.
+
+See the [closed V35 a2 report](results/native-file-workspace-v35-a2.md). Next,
+after affected prospective reporting checks, freeze the prepared V36 source for
+fresh actual27 controls/loaded40960 gate and the same original-world finite
+feedback pilot if eligible. No V36 source freeze, certificate or call is yet
+claimed. Continue through actual results, not a readiness-only handoff.
+
 ## V36 prospective source passes1336 checks; V35 a2 actual pilot remains live
 
 Clean b42a522 full optimization plus staged-audit scope21483 exits0:1336 pass

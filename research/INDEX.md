@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V35 a2 closed original-world feedback, exact parent invariance and actual failure causes](results/native-file-workspace-v35-a2.md)
+- [V35 a2 matching original-source compact audit](results/native-file-workspace-v35-a2.json)
+
 - [V36 conditional file-primary guidance with a complete legal API reference](protocols/campaigns/native-file-primary-v36-a1.md)
 - [V36 actual addressing confusion and separate non-narrowing interface work](logbook/2026-11-06-native-file-primary-v36.md)
 

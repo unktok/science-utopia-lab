@@ -147,6 +147,24 @@ the original parent. These facts do not establish working institutional
 invention or complete the original goal. Keep the actual writer/source/raw
 untouched and close it authoritatively before any conditional next inference.
 
+### Actual V35 a2 closure makes the conditional continuation eligible
+
+Writer20363 exits0 at04:40:50.622504Z; PID84286 is absent. Eight slots end
+with three author failures, one changed-code failed native world and four
+complete exact-parent worlds. Original819 audits98972/77970 exit0/compare equal,
+identity405d05c4515e4f298558c76a5aa3f2ae8283a88fdb2fa9aa3630e14acc2cad4d.
+The original goal remains unmet. The closed report/compact original projection
+preserve all failures, source identities and costs, including a separate actual
+HTTP200/doneFalse event, not just the300s read timeout. All four complete parent
+worlds have97 identical full scientist request payloads, canonical year/payload
+SHA b6e9813585eb6153c57ef3c648fb7c16373cf8aa219b7c9857692c0f6b5c2bf6.
+
+The original auditor has an obsolete prose label saying two generations per
+objective while the actual immutable plan and eight records specify four each.
+Keep that source-bound audit unchanged; correct the prospective prose template
+with affected tests before the next source freeze. The legacy at-least-two-
+complete-observation claim remains separate from functional invention.
+
 Also retain the functional-classification caution: open-memory-router emits
 hard gate actions. Merely changing world.selection's consumer threshold from.5
 to.7 may be equivalent on reachable0/1 inputs. Literal source fingerprints and
