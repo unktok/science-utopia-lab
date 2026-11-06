@@ -13,6 +13,12 @@ and full software checks remain immutable. The original functioning-candidate,
 measured own-feedback/remeasurement goal remains active and unmet; no V39 actual
 readiness or scientific outcome is claimed before committed verification.
 
+Committed source d29d791 passes172 related checks/one deferred98.66s and260
+source blobs match. Freeze the distinct V39a1 tree/tag. Fresh actual new-scope
+readiness37176 and source-bound full software49563 are live; no native dispatch
+yet. Old D510 strict readiness remains failed at22/28 (only five formatting
+spaces, equal AST); its separate full suite passes1451/1119.18s.
+
 ## V38 a2 actual copy task fails; original research goal stays active
 
 Actual local35B readiness55110 exits1 after22/28 controls,21 pass, certificate

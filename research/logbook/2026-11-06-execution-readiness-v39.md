@@ -34,3 +34,13 @@ Its actual source is865 rather than860 characters: only five whitespace
 characters, equal AST and matching other arguments. All22 token costs known:
 181923 input/15642 output;538.011561332969 adapter seconds. Zero native worlds.
 Do not relabel this failed old-scope evidence as new-scope readiness.
+
+Original D510 full software check56367 separately passes1451/1119.18s,
+JUnit841b185ea7edc136df73b8ca6fb64b41438a911908c00d0928bed83e08c555b5.
+The new scope is committed atd29d7917c3c22b246106378ac4b988c92ba53c35;
+its committed related checks90074 pass172/one deferred/98.66s,
+JUnit3e36e2225db1ff0a722a34e1c7eee1620fb823ddd96bcf8cb39c95b22e77fe93.
+All260 source blobs verify against that pin. Freeze the separate immutable
+experiment-native-execution-readiness-v39-a1 tree/tag. Fresh max28 actual checks
+37176 start07:42:15Z; full software49563 starts07:46:58Z, after old Docker checks
+end to avoid duplicate container contention. These are live, not pass claims.
