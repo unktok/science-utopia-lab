@@ -55,8 +55,11 @@ observation; its first POST passes the independent original-source transport
 component check. The model changes code/world.selection.py, explicitly submits
 after six error-free charged calls and starts its next original world. This is
 actual measured feedback followed by a code revision and reexecution, not copied
-controls alone. G1's terminal loss and the final two-objective comparison remain
-pending. See the [live ledger](../logbook/2026-11-07-native-authoring-recovery-v44.md).
+controls alone. By2026-11-06T17:34Z, G1 also completes without technical failures,
+A0/Q0/R24/loss12.0. Thus two candidates are measured with flat loss12→12, not an
+improvement. G2 authoring and six remaining slots continue; the final
+two-objective comparison and terminal full audit remain incomplete. See the
+[live ledger](../logbook/2026-11-07-native-authoring-recovery-v44.md).
 
 Separately,6332bdd fixes checkpoint counting across declared failures with no
 executed transition;34 focused tests pass and committed full verification passes
@@ -66,3 +69,9 @@ SHA256 60cc57a2ab65a5619792a9feb490a6fcc91604efdf9339e134eca978a3ccbbcd.
 It is not injected into the running60ef experiment. Both source
 identities remain explicit, so later replay never applies new semantics to old
 experimental records.
+
+All verified runtime changes are fast-forwarded into local main at e4d13bc;
+subsequent commits update documentation only. The merged utopia/scripts/tests
+and campaign protocol are byte-identical to the verified6332bdd tree. Both
+development and main worktrees are clean at integration. No remote push, new
+external provider, backend patch or scientist-model change occurs in this fix.

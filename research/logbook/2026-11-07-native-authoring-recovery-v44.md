@@ -1,5 +1,19 @@
 # V44: repair authoring failures before claiming institutional optimization
 
+## Local integration and second completed evaluation
+
+Local main fast-forwards to e4d13bc with all verified repairs and evidence.
+Only research documentation differs from tested6332bdd; utopia/scripts/tests
+and the prospective campaign protocol are byte-identical. Main and feature
+worktrees are clean at integration. No remote/external-provider/backend changes
+are made. The original60ef campaign retains its exact frozen source.
+
+At2026-11-06T17:34Z efficiency G1 completes without technical failures, again
+A0/Q0/R24/loss12.0, observation-native-adaptive-1623230c2bc51617496f8af3.
+The measured path is12→12, not improvement. Two of eight slots now have valid
+world evaluations and G2 is pending. The scientific writer and separate
+terminal auditor continue; no full campaign-audit success is claimed yet.
+
 ## Final software repair verification
 
 The separate clean6332bdd1b5fc29740ca753d67a5dbae129b8e2ca worktree passes

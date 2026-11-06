@@ -4,7 +4,7 @@ Updated: 2026-11-07 JST
 
 ## V44 repairs verified; actual loss-feedback loop running
 
-Snapshot:2026-11-06T17:30Z. This is a recorded observation, not a heartbeat.
+Snapshot:2026-11-06T17:34Z. This is a recorded observation, not a heartbeat.
 For current liveness use outputs/native-authoring-recovery-v44-a4/writer.started.json,
 writer.ended.json (when present), the writer lock and actual step/world receipts.
 
@@ -21,14 +21,17 @@ read-only terminal auditor67219 are running. Researchers remain Qwen3-8B; the
 existing local35B designer and original losses/seed/world scale are unchanged.
 Efficiency G0 completes with no technical failures: A0/Q0/R24, loss12.0.
 G1 receives that exact measured observation, writes code/world.selection.py,
-submits after six error-free calls and starts its own original world. This is
-actual feedback-driven revision/reexecution, not a claim of loss improvement.
+submits after six error-free calls and completes its own original world without
+technical failures, again A0/Q0/R24/loss12.0. Two of eight slots are measured;
+G2 is pending. This is actual feedback-driven revision/reexecution, not a loss
+improvement. The final two-objective comparison remains incomplete.
 
 Separately fix the remaining failure-bookkeeping bug in6332bdd: a failed reply
 with no dispatched transition must not reset the implementation checkpoint.
 34 focused regressions pass; its separate frozen full verification34073 passes
-1638 checks/two optional skips1274.18s. All known host repairs are ready for local
-integration, with no claim that an LLM cannot make another error. Never change
+1638 checks/two optional skips1274.18s. All known host repairs are integrated on
+local main (e4d13bc plus documentation updates), with no claim that an LLM cannot
+make another error. Never change
 the active60ef experiment source or its received code. Future dispatch from a
 different source still requires its own source-bound certificate.
 
