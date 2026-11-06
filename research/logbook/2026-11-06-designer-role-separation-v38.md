@@ -92,3 +92,40 @@ V36 remains frozen/live; four throughput candidates all fail actual execution
 (matrix shape, impact_score, record envelope, impact_scores respectively).
 This strengthens the practical reason to test a separately declared designer,
 but does not prove a stronger model or the retrieval repair will solve it.
+
+## Committed-source and successful software-path checks
+
+At b834867349ecd3c3594129bbdd7775f131733a15,259 exact runtime/driver/helper/
+protocol source blobs verify. The28 proposed calibration targets have digest
+3c32606374f77ff9cbb17ef1c29da99a41f78ad76fd7568b12f4827209da9277;
+removing the one own-history read leaves all27 original V36 controls exactly
+equal, including literal operand values. No controls have been dispatched.
+
+Committed-source non-Docker affected scope:164 pass/168.57s,2 real-Docker cases
+deliberately deselected to avoid overlap with V37's broad repeat. JUnit SHA
+48ad84d8f6f2dd69e133873d69a1a492984e2cddb6fd41a7c0c4313609059771.
+The full eventual scope must include those cases; this is not a full-suite pass.
+
+Additional test-only successful path:1 pass/6.12s, JUnit
+c38fedc372ad66800fc646df149d579b417ee2d6d9ec6ed7ce3fdd82f23a21b4.
+Uses actual simulator code with explicitly SCRIPTED corpus and responses, not
+actual Qwen/35B inference. Two completed worlds retain scientist cache/wire
+identity; the separate designer's next prompt receives the actual preceding
+test loss; live response counts/cache binding/role-specific trace match.
+Parent retention is explicit and no scientific invention is claimed.
+
+Prepare outputs/native-designer-roles-v38-provider/operator-config.json by
+changing only model/model_digest from the V26 operator provider. Every corpus,
+dataset, horizon and image value compares exactly equal. Designer binding
+digest3f27c8fc54dd715900a7a89a76843e0ec832b6a2a751b2f0beeeff30b83ed4eb;
+original scientist binding
+ce535a2dd3d1c3f504a82a28dd64ef2e38b507087c5cf50a4cc3dad781fd6716.
+This file preparation is not a source freeze, real calibration or pilot launch.
+
+Read-only /api/show of the exact64k alias reports num_ctx65536, temperature1,
+presence_penalty1.5 and repeat_penalty1, with nvfp4/safetensors35.1B metadata.
+The prospective request still explicitly sends context40960/T.6/topP.95/
+topK20/minP0; do not assume the route honors those from metadata alone. The
+loaded-context check must observe40960. Unspecified model defaults are bound
+to the actual model digest, not asserted identical to Qwen3-8B. No generation,
+loading, backend change or new external service has occurred in this preparation.

@@ -16,6 +16,7 @@ from utopia.optimization.native_staged_author_v15 import StagedVocabularyGenerat
 from utopia.optimization.native_search_generator_v14 import LocalQwenDesignerModel
 from utopia.runtime.checkpointing import PortableStop
 from utopia.system.design_patch import digest
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 
 
 def designer_binding():
@@ -290,3 +291,73 @@ def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tm
     assert not first['claims']['live_fixed_Qwen_researchers']
     assert not first['claims']['scientific_benefit_established']
     assert audit.compact_summary(first)['role_bindings'] == first['role_bindings']
+
+
+def test_successful_scripted_worlds_keep_scientist_identity_and_feed_actual_loss_to_other_designer(
+        tmp_path, monkeypatch, fixed_corpus):
+    """Real simulator code, fake corpus/responses; NOT a live 35B result."""
+    import json
+    from tests.runtime.test_portable_checkpoint_integration import (
+        BINDING as physical_binding, FakeHTTPModel, SmallRealSimulation, seed,
+    )
+    from utopia.models.response_cache import CompletedResponseCache
+    from utopia.optimization.native_factory import record_native_http
+    from utopia.system.native_kernel import NativeScienceKernel
+    from utopia.utils.data_utils import write_json_atomic
+
+    body = request(budget=2)
+    queue = NativeRoleBoundSearchQueue(tmp_path / 'queue', provider_binding=BINDING)
+    queue.submit(body, confirmed_request_sha256=digest(body), source_commit=REVISION)
+    for key, value in [('model', BINDING['model']), ('model_revision', BINDING['model_digest']),
+            ('corpus_sha256', BINDING['corpus_sha256'])]:
+        monkeypatch.setitem(physical_binding, key, value)
+    native_calls, scientist_calls, prompts = [], [], []
+
+    class Factory(FailedFactory):
+        def __init__(self, root, current):
+            super().__init__(); self.root, self.current = root, current
+        def __call__(self, candidate, world_seed, run_id):
+            native_calls.append(run_id)
+            cell = self.root / 'worlds' / run_id
+            seed()
+            monkeypatch.setitem(physical_binding, 'cell', candidate.fingerprint)
+            monkeypatch.setitem(physical_binding, 'science_config', {'source_commit': REVISION, 'years': body['years'],
+                'experiment': {'request_sha256': digest(self.current), 'loss_spec': self.current['loss_spec']}})
+            model = FakeHTTPModel(cell, scientist_calls)
+            unused = model.response_cache.path
+            model.response_cache.close(); unused.unlink()
+            model.response_cache = CompletedResponseCache(cell / 'replies/responses.sqlite', binding=physical_binding)
+            sim = SmallRealSimulation(cell, model)
+            sim.native_system = NativeScienceKernel(candidate); sim.num_years = body['years']
+            sim.enable_portable_checkpoints(physical_binding)
+            record_native_http(model, sim, cell / 'wire-requests.jsonl')
+            write_json_atomic(cell / 'system.json', candidate.to_dict(), sort_keys=True, allow_nan=False)
+            return sim
+
+    class Designer:
+        def generate(self, **kwargs):
+            prompts.append(json.loads(kwargs['prompt']))
+            action = {'tool': 'finish', 'rationale': 'SCRIPTED explicit retention, no invention claimed'}
+            return action, [{'role': 'assistant', 'content': json.dumps(action)}]
+
+    def author(root, current, provider):
+        assert provider == designer_binding()
+        return StagedVocabularyGenerator(Designer(), root / 'authoring', image_id=provider['image_id'],
+            provider_binding=provider, max_steps=current['designer']['max_steps'],
+            max_tokens=current['designer']['max_tokens'])
+
+    result = queue.run_one(lambda root, current: Factory(root, current),
+        generator_builder=author, source_commit=REVISION)
+    assert result['status'] == 'complete' and not result['errors']
+    assert len(native_calls) == len(set(native_calls)) == 2
+    assert scientist_calls and all(payload['model'] == 'qwen3:8b' for _, payload in scientist_calls)
+    observations = result['observations']
+    assert all(row['observation']['status'] == 'complete' and row['observation']['loss'] is not None
+        for row in observations)
+    assert len(prompts) == 2 and not prompts[0]['own_history']['all_observations']
+    assert prompts[1]['own_history']['all_observations'][0]['loss'] == observations[0]['observation']['loss']
+    assert not result['authoring_trace']['warnings']
+    live = result['live_progress']['researcher']
+    assert live['cached_responses'] == len(scientist_calls)
+    assert all(run['cache_binding_status'] == 'matched' for run in live['runs'])
+    assert result['role_bindings']['designer']['model'] != result['role_bindings']['scientist']['model']
