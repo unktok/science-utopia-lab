@@ -1,10 +1,11 @@
 """Source-owned local designer decoding, shared by sender/calibration/auditor.
 
-Weights and researcher inference are unchanged. The staged institutional
-planner and institutional code editor request reasoning. One complete final
+Weights and researcher inference are unchanged. Legacy/V40 staged planner
+and editor request reasoning; the explicit V43 direct profile does not. One complete final
 JSON function object becomes a tool action, with strict literal arguments.
 """
 from utopia.system.design_patch import clone, digest
+from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_FUNCTION_DIRECT, check_conversation_profile
 
 STAGED_MAX_STEPS = 8
 STAGED_MAX_TOKENS = 8192
@@ -14,12 +15,14 @@ STAGED_EDITOR_TEMPERATURE = .6
 STAGED_HTTP_TIMEOUT_SECONDS = (10, 900)
 
 
-def decoding_contract(protocol, *, role=None):
+def decoding_contract(protocol, *, role=None, conversation_profile=LEGACY_HISTORY):
+    check_conversation_profile(conversation_profile)
     if protocol == 'staged-v15':
         role = role or 'editor'
         if role not in ('planner', 'editor'):
             raise ValueError('unknown source-owned designer role')
-        return {'think': True, 'backend_format': 'json', 'response_channel': 'function-json-v26',
+        return {'think': conversation_profile != PLAIN_FUNCTION_DIRECT,
+            'backend_format': 'json', 'response_channel': 'function-json-v26',
             'http_timeout_seconds': list(STAGED_HTTP_TIMEOUT_SECONDS),
             'context_policy': {'truncate': False, 'shift': False},
             'max_tokens': STAGED_MAX_TOKENS,
@@ -27,6 +30,8 @@ def decoding_contract(protocol, *, role=None):
             'sampling_options': {'num_ctx': STAGED_CONTEXT_TOKENS, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}
     if protocol == 'one-shot-v14':
+        if conversation_profile != LEGACY_HISTORY:
+            raise ValueError('designer conversation profile requires staged-v15')
         if role not in (None, 'one-shot'):
             raise ValueError('unknown source-owned designer role')
         return {'think': False, 'backend_format': 'json', 'max_tokens': 2048, 'temperature': .2,
@@ -34,9 +39,9 @@ def decoding_contract(protocol, *, role=None):
     raise ValueError('unknown designer decoding protocol')
 
 
-def decoding_contracts(protocol):
+def decoding_contracts(protocol, *, conversation_profile=LEGACY_HISTORY):
     roles = ('planner', 'editor') if protocol == 'staged-v15' else ('one-shot',)
-    return {role: decoding_contract(protocol, role=role) for role in roles}
+    return {role: decoding_contract(protocol, role=role, conversation_profile=conversation_profile) for role in roles}
 
 
 def calibration_role(protocol, case_id):
@@ -47,8 +52,13 @@ def calibration_role(protocol, case_id):
     raise ValueError('unknown designer decoding protocol')
 
 
-def designer_payload(protocol, provider, messages, seed_ctx, *, max_tokens, temperature, role=None):
-    contract = decoding_contract(protocol, role=role)
+def designer_payload(protocol, provider, messages, seed_ctx, *, max_tokens, temperature, role=None,
+                     conversation_profile=LEGACY_HISTORY):
+    contract = decoding_contract(protocol, role=role, conversation_profile=conversation_profile)
+    if conversation_profile == PLAIN_FUNCTION_DIRECT and (
+            type(max_tokens) is not int or max_tokens != contract['max_tokens']
+            or temperature != contract['temperature']):
+        raise ValueError('direct designer profile requires its exact source-owned decoding budget/temperature')
     payload = {'model': provider['model'], 'messages': clone(messages),
         'think': contract['think'], 'stream': False,
         'options': {**clone(contract['sampling_options']), 'temperature': temperature,

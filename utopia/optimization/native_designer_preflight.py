@@ -15,7 +15,7 @@ from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from .native_designer_decoding_v24 import (
     decoding_contract, decoding_contracts, calibration_role, designer_payload, STAGED_MAX_STEPS)
-from .native_designer_tools_v25 import LEGACY_HISTORY, profile_options
+from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_FUNCTION_DIRECT, profile_options
 
 SCHEMA = 'scienceutopia.designer-interface-certificate.v16'
 TTL_SECONDS = 86400
@@ -27,11 +27,14 @@ CONTROL_JSON_BEGIN = 'BEGIN COMPLETE NEXT RESPONSE JSON\n'
 CONTROL_JSON_END = '\nEND COMPLETE NEXT RESPONSE JSON'
 
 
-def reasoning_evidence(records, *, protocol):
+def reasoning_evidence(records, *, protocol, conversation_profile=LEGACY_HISTORY):
     count = 0
-    contracts = decoding_contracts(protocol)
+    contracts = decoding_contracts(protocol, conversation_profile=conversation_profile)
     roles = {role: {'requested': contract['think'], 'controls_seen': 0,
         'known_nonempty_response_fields': 0} for role, contract in contracts.items()}
+    if conversation_profile == PLAIN_FUNCTION_DIRECT:
+        for row in roles.values():
+            row['invalid_thinking_response_fields'] = 0
     for record in records:
         role = calibration_role(protocol, record['intent']['id'])
         body = (record.get('transport') or {}).get('response_payload')
@@ -41,12 +44,15 @@ def reasoning_evidence(records, *, protocol):
         count += observed
         roles[role]['controls_seen'] += 1
         roles[role]['known_nonempty_response_fields'] += observed
+        if conversation_profile == PLAIN_FUNCTION_DIRECT and thinking is not None and not isinstance(thinking, str):
+            roles[role]['invalid_thinking_response_fields'] += 1
     return {'requested': any(contract['think'] for contract in contracts.values()),
         'known_nonempty_response_fields': count, 'roles': roles,
         'all_requested_roles_observed': all(not row['requested'] or row['known_nonempty_response_fields'] > 0
             for row in roles.values()),
-        'all_role_modes_compatible': all((row['known_nonempty_response_fields'] > 0 if row['requested']
-            else row['known_nonempty_response_fields'] == 0) for row in roles.values()),
+        'all_role_modes_compatible': all(not row.get('invalid_thinking_response_fields', 0)
+            and (row['known_nonempty_response_fields'] > 0 if row['requested']
+                else row['known_nonempty_response_fields'] == 0) for row in roles.values()),
         'scope': 'Observed separate HTTP response fields, not authenticated correctness of reasoning.'}
 
 
@@ -284,8 +290,8 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         raise ValueError('designer conversation profile requires staged-v15')
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
-    decoding = decoding_contract(protocol)
-    contracts = decoding_contracts(protocol)
+    decoding = decoding_contract(protocol, conversation_profile=conversation_profile)
+    contracts = decoding_contracts(protocol, conversation_profile=conversation_profile)
     temperatures = {role: settings['temperature'] for role, settings in contracts.items()}
     plan = {'schema': SCHEMA + '.plan', 'protocol': protocol, 'source_commit': source_commit, 'request': clone(request),
         'provider': clone(provider), 'runtime': runtime_binding(), 'backend': backend_binding(provider),
@@ -348,7 +354,7 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
             'error': record.get('error')}), flush=True)
         if not record['ok']:
             break  # Failed/unknown replies are charged, never automatically replaced.
-    reasoning = reasoning_evidence(records, protocol=protocol)
+    reasoning = reasoning_evidence(records, protocol=protocol, conversation_profile=conversation_profile)
     certificate = {'schema': SCHEMA, 'plan': plan, 'records': records, 'completed_epoch': time.time(),
         'reasoning_evidence': reasoning,
         'maximum_age_seconds': TTL_SECONDS, 'all_controls_passed': len(records) == len(plan['cases'])
@@ -390,14 +396,14 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
     expected_cases = planned_cases(plan['request'], protocol)
     if (plan['cases'] != expected_cases or len(records) != len(expected_cases)
             or not certificate['all_controls_passed'] or plan['max_POSTs'] != len(expected_cases)
-            or plan['max_tokens'] != decoding_contract(protocol)['max_tokens']
+            or plan['max_tokens'] != decoding_contract(protocol, conversation_profile=conversation_profile)['max_tokens']
             or plan['temperature'] != {role: settings['temperature']
-                for role, settings in decoding_contracts(protocol).items()}
-            or plan.get('decoding_contract') != decoding_contracts(protocol)):
+                for role, settings in decoding_contracts(protocol, conversation_profile=conversation_profile).items()}
+            or plan.get('decoding_contract') != decoding_contracts(protocol, conversation_profile=conversation_profile)):
         raise ValueError('designer preflight controls incomplete or plan changed')
     if any(plan['provider'].get(key) != provider.get(key) for key in ('model', 'model_digest', 'image_id')):
         raise ValueError('designer preflight provider/image binding differs')
-    reasoning = reasoning_evidence(records, protocol=protocol)
+    reasoning = reasoning_evidence(records, protocol=protocol, conversation_profile=conversation_profile)
     if (certificate.get('reasoning_evidence') != reasoning
             or not reasoning['all_role_modes_compatible']):
         raise ValueError('requested reasoning has no original separate response evidence')
@@ -407,7 +413,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
             state, steps = initial_draft(plan['request']), []
         prompt, system = _prompt(plan['request'], state, steps, provider, case['expected'], protocol)
         role = calibration_role(protocol, case['id'])
-        settings = decoding_contract(protocol, role=role)
+        settings = decoding_contract(protocol, role=role, conversation_profile=conversation_profile)
         intent = {'id': case['id'], 'prompt': prompt, 'system_prompt': system,
             'seed_ctx': ['designer-contract-v16', protocol, case['id']], 'expected': case['expected'],
             'decoding_role': role}
@@ -416,7 +422,8 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
             **profile) if protocol == 'staged-v15' else
             [{'role': 'system', 'content': system}, {'role': 'user', 'content': prompt}])
         payload = designer_payload(protocol, provider, messages, intent['seed_ctx'],
-            max_tokens=settings['max_tokens'], temperature=settings['temperature'], role=role)
+            max_tokens=settings['max_tokens'], temperature=settings['temperature'], role=role,
+            conversation_profile=conversation_profile)
         wire = wire_record(payload, _schema(protocol))
         if (record['intent'] != intent or record['ok'] is not True or transport['request_payload'] != payload
                 or transport.get('http_timeout_seconds') != settings.get('http_timeout_seconds', 300)

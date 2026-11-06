@@ -2,6 +2,15 @@
 
 Updated: 2026-11-06 JST
 
+## V43 opt-in direct profile preparation; no inference or adoption
+
+Separate prospective `plain-function-direct-v43` shares V40's lossless history
+renderer and requests source-bound thinkFalse for both designer roles. Legacy
+and V40 stay unchanged/default. Profile-bound plans, payloads, certificates,
+cold replay and audit reject mismatches. Effectiveness remains UNMEASURED;
+no new campaign, backend/scientist/world/budget change or output salvage.
+See the [conditional protocol](protocols/campaigns/native-direct-profile-v43-a1.md).
+
 ## Prospective V42 error recovery; no new designer calls yet
 
 V40 full450c17f has1496 pass/one skip/one failure: a redundant exact-name Docker
