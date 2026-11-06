@@ -118,14 +118,20 @@ def test_planner_stays_source_free_but_editor_gets_literal_values_as_data_not_au
     assert data['prompt_view']['full_current_draft_included'] is False
 
 
-def test_editor_advertises_implementation_first_without_removing_or_weakening_any_action():
+def test_editor_advertises_file_defaults_and_preserves_complete_legacy_api_reference():
     original = {item['function']['name']: item for item in tool_specifications()}
     editor = tool_specifications(role='editor')
     planner = tool_specifications(role='planner')
     assert [item['function']['name'] for item in editor] == [
-        'read_file', 'write_file', 'edit_fields', 'edit', 'splice', 'inspect_field', 'inspect', 'configure', 'validate', 'finish', 'plan']
-    assert planner[0]['function']['name'] == 'plan'
-    assert {item['function']['name']: item for item in editor} == original
+        'read_file', 'write_file', 'finish']
+    assert [t['function']['name'] for t in planner] == ['plan']
+    assert {item['function']['name']: item for item in editor} == {
+        name: original[name] for name in ('read_file', 'write_file', 'finish')}
+    from utopia.optimization.native_file_workspace_v35 import read_file
+    reference = json.loads(read_file(request()['parent_system'], 'reference/tools.json')['content'])
+    assert {t['function']['name']: t for t in reference} == original
+    assert set(original) == {'plan', 'read_file', 'write_file', 'inspect', 'inspect_field', 'edit_fields',
+        'edit', 'splice', 'configure', 'validate', 'finish'}
     with pytest.raises(ValueError, match='source-owned'):
         tool_specifications(role='UNTRUSTED observed role')
 

@@ -26,6 +26,8 @@ def test_each_nonplanner_copy_task_ends_with_its_exact_key_set_without_changing_
             assert MARKER not in task  # Existing special planner control stays unchanged.
             continue
         target_text = task.split('nothing is executed or adopted.\n', 1)[1]
+        if target_text.startswith(preflight.CONTROL_JSON_BEGIN):
+            target_text = target_text.removeprefix(preflight.CONTROL_JSON_BEGIN).split(preflight.CONTROL_JSON_END, 1)[0]
         target, _ = json.JSONDecoder().raw_decode(target_text)
         assert target == function_data(expected)
         keys, end = json.JSONDecoder().raw_decode(task.split(MARKER, 1)[1])

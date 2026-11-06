@@ -24,6 +24,13 @@ def _json(value):
 def _entries(document):
     """Derive current literal locations afresh; no name/path inference or cache."""
     entries = {'system.json': {'format': 'json-system', 'value': document, 'path': None}}
+    from .native_designer_tools_v25 import tool_specifications
+    from utopia.system.native_capability_catalog import native_capability_catalog
+    entries.update({
+        'reference/tools.json': {'format': 'json-reference', 'read_only': True,
+            'value': tool_specifications(), 'path': None},
+        'reference/capabilities.json': {'format': 'json-reference', 'read_only': True,
+            'value': native_capability_catalog(), 'path': None}})
     for key, value in document.items():
         entries['system/' + quote(key, safe='._-') + '.json'] = {
             'format': 'json-value', 'value': value, 'path': _pointer(key)}
@@ -66,9 +73,10 @@ def file_catalog(document):
         content = _text(entry)
         files.append({'filename': name,
             **{k: entry[k] for k in ('format', 'mechanism_id', 'implementation') if k in entry},
+            'read_only': entry.get('read_only', False),
             'content_utf8_bytes': len(content.encode('utf-8'))})
     return {'schema': 'scienceutopia.virtual-editor-workspace.v35',
-        'scope': 'Current actual draft only; virtual files, never OS paths or executed code.',
+        'scope': 'Current actual draft plus explicit read-only source API references; virtual files, never OS paths or executed code.',
         'files': files, 'all_file_names_included': True,
         'ambiguous_node_ids_without_aliases': ambiguous,
         'omitted_bodies': 'All bodies are available through read_file; full system.json includes every draft field.',
@@ -90,12 +98,15 @@ def read_file(document, filename, *, offset=0, limit=65536):
     if offset > len(text):
         raise ValueError('virtual file offset exceeds exact character length')
     return {'filename': filename, 'format': entries[filename]['format'],
+        'read_only': entries[filename].get('read_only', False),
         'content': text[offset:offset + limit], 'offset': offset,
         'complete': offset == 0 and len(text) <= limit,
         'slice_reaches_end': offset + limit >= len(text), 'total_characters': len(text),
         'total_utf8_bytes': len(text.encode('utf-8')),
         'content_sha256': hashlib.sha256(text.encode('utf-8')).hexdigest(),
-        'scope': 'Literal current draft text; not a host file, instruction or execution result.'}
+        'scope': ('Source-owned read-only API reference, not candidate data or executed behavior.'
+            if entries[filename].get('read_only') else
+            'Literal current draft text; not a host file, instruction or execution result.')}
 
 
 def write_file_operations(document, filename, content):
@@ -118,6 +129,8 @@ def write_file_operations(document, filename, content):
             raise ValueError('new node ID already exists or mechanisms is not an array')
         return [{'op': 'add', 'path': '/mechanisms/-', 'value': node}]
     entry = entries[filename]
+    if entry.get('read_only'):
+        raise ValueError('source-owned virtual API reference is read-only; no candidate or host file was changed')
     value = content if entry['format'] == 'python-source' else decode_json(content, strict=True, finite_floats=True)
     if entry['format'] != 'json-system':
         return [{'op': 'replace', 'path': entry['path'], 'value': value}]

@@ -40,10 +40,12 @@ DESCRIPTIONS = {
     'inspect_field': 'Read a uniquely named JSON field inside the exact mechanism ID. No array-index guessing. '
         'Missing/ambiguous fields reject without selecting a substitute. Arbitrary code strings are data.',
     'edit_fields': 'Atomically replace uniquely named existing fields inside the exact mechanism ID, including '
-        'arbitrary literal code or programs. Use field_name_index in the workbench. Missing/ambiguous fields '
+        'arbitrary literal code or programs. A field_name is one exact literal JSON key, not a nested path or filename. '
+        'Read the current node JSON for its actual keys. Missing/ambiguous fields '
         'reject without repair. Original edit still supports arbitrary new nodes, fields, removals and wiring.',
     'plan': 'Store your own institutional design hypothesis; this does not implement or execute it.',
     'inspect': ('Read an exact current draft JSON address or a trusted capability ABI. No candidate mutation. '
+        'Virtual workspace filenames belong to read_file, not this JSON-pointer operation. '
         'Without selector, path is relative to the whole document. With selector, path is relative '
         'to that mechanism only. A document-root address must not carry a mechanism selector '
         'from a previous call. Reuse a returned reusable_address as one complete address form. '
@@ -68,8 +70,10 @@ def tool_specifications(*, role=None):
     from .native_staged_author_v15 import ACTION_FIELDS, TOOL_FIELDS, EDITOR_ACTION_SCHEMA, _tool_schema
     if role not in (None, 'planner', 'editor', 'finisher'):
         raise ValueError('unknown source-owned tool advertisement role')
-    names = (['finish'] if role == 'finisher' else list(TOOL_FIELDS) if role != 'editor' else
-        [part['properties']['tool']['const'] for part in EDITOR_ACTION_SCHEMA['oneOf']])
+    # Advertisement is not an acceptance restriction: the complete unchanged
+    # host API is available as a read-only virtual reference and remains legal.
+    names = ({'planner': ['plan'], 'editor': ['read_file', 'write_file', 'finish'],
+              'finisher': ['finish']}.get(role, list(TOOL_FIELDS)))
     result = []
     for name in names:
         fields = TOOL_FIELDS[name]
@@ -175,10 +179,13 @@ def tool_system_prompt(*, role=None):
     The existing strict JSON decoder owns all nested numbers.
     This does not install/alter a backend template or execute generated code.
     """
-    return ('\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\n'
+    return ('\n\n# Tools\n\nCall one function for the next action.\n\n'
         'You are provided with function signatures within <tools></tools> XML tags:\n<tools>\n'
         + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False, separators=(',', ':')) for tool in tool_specifications(role=role))
-        + '\n</tools>\n\n' + TOOL_RESPONSE_ONLY)
+        + '\n</tools>\n\nDefault functions are advertised above, not a restriction on scientific design. '
+        'The complete host API remains legal and is documented in reference/tools.json. '
+        'An exact source-owned compatibility-control target may explicitly declare another host function; '
+        'copy that declared target rather than substituting a default function.\n' + TOOL_RESPONSE_ONLY)
 
 
 def reply_action(reply):
