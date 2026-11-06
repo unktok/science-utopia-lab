@@ -2,6 +2,37 @@
 
 Updated: 2026-11-06 JST
 
+## V39 closed: changed-program feedback goal reached, invention limits retained
+
+Writer76434 exits0 at09:42:04.512947Z after6006.808746s (1h40m06.81s),8/8
+slots. Six native worlds complete; two author sessions fail, not native losses.
+Two unmodified original-D29 full audits59380/91157 exit0 and are byte-identical,
+content7bd8d1683c0458b4e23364906507c290d87459abbd64ff4da094078e1f5bdf57.
+Verify260 source blobs/266 unchanged raw files,564 physical researcher replies,
+48 recorded/committed code executions,60 designer POSTs.43 token records known:
+666645 input/121812 output;17 EOF responses have unknown tokens, not zero.
+
+Throughput G0 actually creates always-accept code, G2 receives its measured-7
+and writes a different defensive program, then remeasures-7. This reaches the
+finite operational changed-program/own-feedback/remeasurement goal. Both have
+the same observed policy; G3 retains G0, not a third invention. Three completed
+throughput worlds have identical91 full researcher requests each. Efficiency
+G0/G1/G3 retain the original parent and score12; G2's node replacement fails
+final submission on missing mechanism_id. Three efficiency worlds have identical
+97 full requests each. No improving loss path, diverse successful policy
+invention, held-out or scientific-benefit claim follows.
+
+The whole research program is NOT complete. Designer authoring is unreliable:
+17 HTTP500/EOFs andsix length terminations. Separate V40 plain-history profile
+and optional six-call nonexecuting diagnostic are prepared at1d787b79 on
+track/native-json-history-v40;17 mocked harness checks pass, no actual V40 calls,
+full verification/certificate, merge or new campaign. Do not silently extend
+V39 or claim this prepared intervention fixes the backend. See the
+[closed report](results/native-execution-readiness-v39-a1.md) and
+[exact compact audit](results/native-execution-readiness-v39-a1.json).
+
+The following entries retain the historical sequence, not current live status.
+
 ## V39 execution-first scope authorized; historical copy failures stay failed
 
 At08:32Z G2 completes a second original-world measurement, also loss−7. Its

@@ -9,7 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
-- [V39 live native search: first changed functional candidate loss−7 and actual own-feedback delivery](results/native-execution-readiness-v39-a1.md)
+- [V39 closed: changed program → own measured feedback → revision → remeasurement; no policy-diversity or improvement claim](results/native-execution-readiness-v39-a1.md)
+- [V39 compact original-source audit: six worlds, two author failures, physical costs](results/native-execution-readiness-v39-a1.json)
 
 - [V39 actual technical readiness:28 pass;26 exact copies and2 diagnostic mismatches](results/native-execution-readiness-v39-a1-readiness.md)
 
