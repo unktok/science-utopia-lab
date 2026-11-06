@@ -2,6 +2,20 @@
 
 Updated: 2026-11-06 JST
 
+## Fresh V35 a2 actual readiness is live; original target values are unchanged
+
+After failed a1 exit1, freeze separate81968141135ff7724746c557d9bb7c1c579fa075
+tree/tag.255 source blobs verify, and all27 planned target actions/values exactly
+equal the failed a1 plan. The only utopia difference from632d776 is calibration
+response framing, not production design or the scientific world.104 affected
+checks pass; prior exact543/broader1282 results remain source-scoped engineering
+evidence, never an override of a1's actual failure.
+
+Start one fresh max27 actual readiness22686/PID83148 with the same declared
+V30 request/V26 provider. No old call/result/certificate is reused or refunded;
+no a2 native world exists yet. Continue through real gates if passed, not a
+readiness-only handoff. The unchanged original goal stays active and unmet.
+
 ## V35 a1 real readiness fails; a2 clarifies literal control boundaries
 
 Actual25548 exits1 after7/27 controls:typed-6 changes newline/backslash values.

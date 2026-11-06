@@ -31,3 +31,12 @@ made. Follow its prospective max27 fresh readiness/cold replay/loaded40960 gates
 before the unchanged-scale four-generation-per-loss native pilot. The original
 functional-candidate/own-result/remeasurement goal stays active, not completed
 by clarification, engineering tests, or a copied control.
+
+After authoritative a1 terminal exit1, freeze81968141135ff7724746c557d9bb7c1c579fa075
+in experiment-native-file-workspace-v35-a2 with its matching protocol tag. Source
+proof16541 verifies255 blobs and compares all27 new planned actions/values equal
+to the original a1 plan; the preflight framing is the only utopia file changed
+from632d776. No production decoder, tool semantics, world or loss changes.
+Start one independent actual max27 readiness22686/PID83148, same declared V30
+request/V26 provider. At this entry it is live, not a valid certificate, native
+world or functional institution. Continue the original goal after its real gates.
