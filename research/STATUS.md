@@ -2,7 +2,11 @@
 
 Updated: 2026-11-07 JST
 
-## V44 actual search running; authoring recovery verified
+## V44 repairs verified; actual loss-feedback loop running
+
+Snapshot:2026-11-06T17:30Z. This is a recorded observation, not a heartbeat.
+For current liveness use outputs/native-authoring-recovery-v44-a4/writer.started.json,
+writer.ended.json (when present), the writer lock and actual step/world receipts.
 
 Frozen60ef56ca passes1634 software tests/two optional skips in880.85s,
 29/29 actual technical controls and cold replay. Its separate free-authoring
@@ -15,12 +19,18 @@ Actual eight-slot/two-objective original-world search starts2026-11-06T17:08:25Z
 in outputs/native-authoring-recovery-v44-a4, efficiency first. Writer61590 and
 read-only terminal auditor67219 are running. Researchers remain Qwen3-8B; the
 existing local35B designer and original losses/seed/world scale are unchanged.
-No loss or institutional improvement is claimed before terminal observations.
+Efficiency G0 completes with no technical failures: A0/Q0/R24, loss12.0.
+G1 receives that exact measured observation, writes code/world.selection.py,
+submits after six error-free calls and starts its own original world. This is
+actual feedback-driven revision/reexecution, not a claim of loss improvement.
 
 Separately fix the remaining failure-bookkeeping bug in6332bdd: a failed reply
 with no dispatched transition must not reset the implementation checkpoint.
-34 focused regressions pass; its separate frozen full verification34073 is
-running. Never change the active60ef experiment source or its received code.
+34 focused regressions pass; its separate frozen full verification34073 passes
+1638 checks/two optional skips1274.18s. All known host repairs are ready for local
+integration, with no claim that an LLM cannot make another error. Never change
+the active60ef experiment source or its received code. Future dispatch from a
+different source still requires its own source-bound certificate.
 
 ## Prior repair development and V43 failure summary
 

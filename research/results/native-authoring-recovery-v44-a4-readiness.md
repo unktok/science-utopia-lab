@@ -48,8 +48,21 @@ execution and feedback receipts. Read-only watcher67219 waits for the writer
 lock before independently auditing all outputs with this original source.
 At dispatch no measured result is claimed. Failure slots are not refilled.
 
+Subsequent live evidence: efficiency G0 completes without technical failures,
+A=0/Q=0/R=24 and loss12.0. Its14 charged calls include one preserved invalid
+response and explicit model recovery. G1's actual request includes that measured
+observation; its first POST passes the independent original-source transport
+component check. The model changes code/world.selection.py, explicitly submits
+after six error-free charged calls and starts its next original world. This is
+actual measured feedback followed by a code revision and reexecution, not copied
+controls alone. G1's terminal loss and the final two-objective comparison remain
+pending. See the [live ledger](../logbook/2026-11-07-native-authoring-recovery-v44.md).
+
 Separately,6332bdd fixes checkpoint counting across declared failures with no
-executed transition;34 focused tests pass and its committed full verification
-is in progress. It is not injected into the running60ef experiment. Both source
+executed transition;34 focused tests pass and committed full verification passes
+1638 checks/two optional skips1274.18s. Its JUnit is
+outputs/native-authoring-recovery-v44-a5-verification/broad-committed-source.xml,
+SHA256 60cc57a2ab65a5619792a9feb490a6fcc91604efdf9339e134eca978a3ccbbcd.
+It is not injected into the running60ef experiment. Both source
 identities remain explicit, so later replay never applies new semantics to old
 experimental records.

@@ -1,5 +1,44 @@
 # V44: repair authoring failures before claiming institutional optimization
 
+## Final software repair verification
+
+The separate clean6332bdd1b5fc29740ca753d67a5dbae129b8e2ca worktree passes
+1638 related software checks/two optional skips1274.18s, exit0, with no source or
+HEAD changes during the checks. JUnit
+outputs/native-authoring-recovery-v44-a5-verification/broad-committed-source.xml
+SHA256 60cc57a2ab65a5619792a9feb490a6fcc91604efdf9339e134eca978a3ccbbcd.
+The source-bound60ef actual campaign remains unchanged and running separately.
+Integrate the verified software locally together with this evidence; do not
+reuse60ef's certificate for dispatch from a different source. Optional future
+authoring improvements are not a guarantee that model errors are impossible.
+
+## Actual original-world feedback loop, not only interface controls
+
+After60ef passes1634 software checks/two optional skips880.85s, actual writer
+61590 starts2026-11-06T17:08:25.218649Z. Its separate watcher67219 waits for the
+writer lock and then runs the original-source audit and compact projection.
+Raw output is outputs/native-authoring-recovery-v44-a4; these jobs neither reuse
+a failed certificate nor refill a failed slot.
+
+Efficiency G0 submits after14 charged calls, including one rejected flat reply
+and model-authored recovery. Two successful source writes are literal author
+actions. Its full original world completes without technical failures. Measured
+A=0, Q=0, R=24, so the unchanged objective -Q+0.5R is12.0. Eight rejected
+decisions remain a legitimate measured outcome, not a new scientific merit veto
+or a claimed improvement. Observation ID is
+observation-native-adaptive-a7214a9946e209dc7d44f224.
+
+Efficiency G1's actual request carries that observation and loss12.0, with one
+history item. Its first actual POST passes the original-source independent
+transport component check; this is not yet a full terminal campaign audit.
+The model writes code/world.selection.py and explicitly submits after six
+charged calls with no rejected/invalid responses. Its new original world starts.
+Terminal author-result content hashes are
+G0 34f64bb4c572c217689cf160e870f74ffeebda6488a104e69bd1c307cf237642 and
+G1 28a744bc3a43300afa9572ceeffb00bc678c2b963269deae05ad52eba3483fe9.
+These observations establish execution, measured feedback and explicit revision;
+G1's loss and objective-dependent institutional improvement are still unmeasured.
+
 ## Current verification update: a4 free authoring completes
 
 Frozen60ef56ca2e32634c72817676b8bcc55bc9fcaa45 passes29/29 actual
