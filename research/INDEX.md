@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V34 matching original audits, preserved native/code failures and costs](results/native-field-feedback-v34-a1.md)
+- [V34 compact original-source audit projection](results/native-field-feedback-v34-a1.json)
+
 - [V35 conditional virtual file workspace, not an institutional policy](protocols/campaigns/native-file-workspace-v35-a1.md)
 - [V35 separate implementation and explicit on-demand observation checks](logbook/2026-11-06-native-file-workspace-v35.md)
 

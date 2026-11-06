@@ -2,6 +2,26 @@
 
 Updated: 2026-11-06 JST
 
+## V34 closes with matching original audits; V35 actual readiness is live
+
+Writer28400 exits0 at02:07:55.873934Z (59m46.24s). Four slots:two rejected
+author generations, one complete unchanged-parent loss0, one changed-code world
+failing on a missing local parameter. Original audits86513/8424 exit0/cmp0,
+identity0fdaddb5940320a60824efd01068603f1e49907fb4db49eb51362b50f6347baa.
+The malformed-history host crash does not recur. Real own failure reaches the
+next planner, but useful functional code generation is not yet reliable; one
+incomplete backend envelope remains unexplained, with unknown token counts.
+See the [closed V34 report](results/native-field-feedback-v34-a1.md).
+
+After closure freeze632d776b60ec81eb9f6373c4e2c73cf8360e2adf in a separate
+experiment-native-file-workspace-v35-a1 tree and matching tag.255 source blobs
+verify. Fresh max27 actual readiness25548 runs; exact-source focused68633 and
+broader optimization77286 also run. No actual V35 native world is yet launched.
+If eligible, continue through the loaded40960 gate to the declared same-world
+four-generation-per-objective/eight-attempt feedback pilot. This changes only
+optimizer iterations, not world scale/seeds, and never replenishes failed slots.
+The original full goal remains active; no readiness/test/parent-retention handoff.
+
 ## V34 actual readiness passes; repaired original-world search is live
 
 At immutable75da492, readiness52284 exits0:all24 controls/cold replay and
