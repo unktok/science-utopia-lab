@@ -17,6 +17,8 @@ Freeze separate75da492/tree/tag after V33 termination. Fresh actual V34 max24
 readiness52284 runs; do not infer a pass/candidate from its launch. Continue
 through loaded-window gate and actual native feedback if it passes, without
 changing the original goal to engineering readiness or parent retention.
+Exact-source focused checks pass420/one skip; wider optimization suite7008
+passes1248 in834.75s. These verify the engineering repair, not actual invention.
 
 ## V33 malformed-response history exposes another host bug; V34 fix under test
 

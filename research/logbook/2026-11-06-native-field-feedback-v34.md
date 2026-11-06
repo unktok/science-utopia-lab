@@ -80,3 +80,9 @@ no warnings, exact rejected authored_output/errors, next valid edit and explicit
 finish. Main-only test scope14031 passes12 in2.59s, ui-history-contract.xml SHA
 3cd760875c530e8c7f59d7faace80aaed6a95a89401b80c74fe0b7515847da6a.
 No runtime, actual source75da492 or certificate is changed by this extra coverage.
+
+Wider original V34 optimization suite7008 exits0:1248 pass in834.75s, JUnit
+optimization-development.xml SHA
+57f17dd4fe1a2c099b9c2f2b4b2d9f51e137ebaab4d426d30331a02372b7f0af.
+This is broader engineering evidence, not a full-repository pass, a bug-free
+claim or a new native scientific measurement. Actual readiness continues.
