@@ -357,7 +357,10 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
             steps.append({'step': len(steps), 'status': 'applied', 'model_reply': {'output': output},
                 'transition': receipt})
         except Exception as error:
-            record['error'] = type(error).__name__ + ': ' + str(error)
+            from jsonschema import ValidationError
+            from .native_staged_author_v15 import schema_problem_message
+            record['error'] = type(error).__name__ + ': ' + (
+                schema_problem_message(error) if isinstance(error, ValidationError) else str(error))
         record.update(transport=clone(model.last_transport), elapsed_seconds=time.monotonic() - begin)
         records.append(record)
         write_json_atomic(directory / (case['id'] + '.completed.json'), record, sort_keys=True, allow_nan=False)

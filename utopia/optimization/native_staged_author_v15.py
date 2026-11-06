@@ -466,6 +466,14 @@ def _error(error):
 def schema_problem_message(problem):
     """Bound the cause, not repr of an entire authored program/source operand."""
     instance, keyword = problem.instance, problem.validator
+    if keyword == 'oneOf' and isinstance(instance, dict) and 'tool' in instance:
+        branch = next((part for part in problem.schema['oneOf']
+            if part.get('properties', {}).get('tool', {}).get('const') == instance['tool']), None)
+        if branch is not None:
+            issues = list(Draft202012Validator({**branch,
+                '$defs': problem.schema.get('$defs', ACTION_FIELDS)}).iter_errors(instance))
+            if issues:
+                return problem.json_path + ': ' + '; '.join(schema_problem_message(issue) for issue in issues)
     if keyword == 'oneOf' and isinstance(instance, dict) and 'op' in instance:
         branch = next((part for part in OPERATION['oneOf']
             if part['properties']['op']['const'] == instance['op']

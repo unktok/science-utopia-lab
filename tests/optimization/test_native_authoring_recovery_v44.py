@@ -225,7 +225,7 @@ def test_implementation_stage_can_author_code_after_bounded_inspection(tmp_path)
     assert model.calls[4]['system_prompt'] == IMPLEMENT_TASK
     cell = next(tmp_path.glob('generation-*'))
     fourth = json.loads((cell / 'step-04.completed.json').read_text())
-    assert fourth['model_reply']['transport']['request_payload']['format']['properties']['name']['enum']
+    assert fourth['model_reply']['transport']['request_payload']['format']['oneOf']
     assert fourth['model_reply']['output']['content'] == edited
     assert fourth['transition']['document_before_sha256'] != fourth['transition']['document_after_sha256']
     assert replay_staged_generation(cell) == result
@@ -239,6 +239,36 @@ def test_implementation_grammar_keeps_every_literal_json_type(literal):
     schema = backend_format([{'role': 'system', 'content': 'V44_ACTION_PHASE=implementation'}])
     Draft202012Validator(schema).validate(action)
     assert json.loads(json.dumps(action, ensure_ascii=False)) == action
+
+
+def test_implementation_grammar_requires_actual_tool_arguments_not_just_action_name():
+    schema = backend_format([{'role': 'system', 'content': 'V44_ACTION_PHASE=implementation'}])
+    validate = Draft202012Validator(schema)
+    missing = {'name': 'edit_fields', 'arguments': {'field_updates': [
+        {'field_name': 'family', 'value': {'nested': {'items': [None, 1]}}}]}}
+    assert list(validate.iter_errors(missing))
+    correct = deepcopy(missing); correct['arguments']['mechanism_id'] = 'exact-ID'
+    validate.validate(correct)
+    for raw in ({'name': 'write_file', 'arguments': {'content': 'literal source'}},
+            {'name': 'edit', 'arguments': {'operations': []}},
+            {'name': 'read_file', 'arguments': {'filename': 'system.json'}}):
+        assert list(validate.iter_errors(raw))
+
+
+def test_typed_schema_expansion_preserves_boolean_and_closed_empty_objects():
+    from utopia.optimization.native_authoring_recovery_v44 import explicit_json_operands
+    assert explicit_json_operands(False) is False
+    assert explicit_json_operands(True) is True
+    empty = {'type': 'object', 'properties': {}, 'additionalProperties': False}
+    assert explicit_json_operands(empty) == empty
+
+
+def test_known_missing_argument_has_bounded_diagnostic_not_entire_schema_dump():
+    from utopia.optimization.native_staged_author_v15 import schema_problem_message
+    raw = {'tool': 'edit_fields', 'field_updates': [{'field_name': 'family', 'value': {'nested': None}}]}
+    error = next(Draft202012Validator(host_action_schema(PROFILE)).iter_errors(raw))
+    message = schema_problem_message(error)
+    assert 'mechanism_id' in message and len(message) < 200
 
 
 def test_driver_prioritizes_previously_failed_arm_without_more_worlds_or_hidden_calls():

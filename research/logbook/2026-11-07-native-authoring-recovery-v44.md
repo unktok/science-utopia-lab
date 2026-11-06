@@ -74,3 +74,18 @@ dispatch, prioritize the efficiency arm in the explicit driver and add its
 budget/order test: verify the previously never-implemented arm first rather than
 waiting through four throughput worlds. This does not alter either loss or add
 any world/seed. Freeze the final source separately;395a886 stays unchanged.
+
+At final1d194661,264 exact runtime/driver/helper blobs verify. The actual
+calibration24345 stops at14 calls:13 pass, typed-field-5 returns complete200
+but omits required mechanism_id. Preserve failed certificate
+4137a13ab4e22e8e32b54dcc5f3068950d0dc6be362385e9a76994c3636f624a
+and all raw costs/responses. Zero scientific worlds are dispatched from1d194661.
+Its broad software27353 continues unchanged in its own frozen tree.
+
+The first implementation-envelope grammar constrained function names but not
+per-function required arguments. Fix prospectively in the feature: derive each
+function's actual required keys/types from the SAME host contract; expand only
+unconstrained schema positions to explicit recursive JSON types. Preserve false
+schemas, empty closed property maps, arbitrary literal code/values and optional
+notes. No authored response is repaired, and neither certificate is reused.
+Add missing-ID, closed-map, boolean-schema and bounded-diagnostic regressions.

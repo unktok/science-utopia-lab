@@ -86,6 +86,33 @@ def generic_json_value():
         {'type': 'object', 'additionalProperties': {'$ref': '#/$defs/JSONValue'}}]}
 
 
+def explicit_json_operands(schema):
+    """Preserve schema semantics while spelling out every unconstrained operand.
+
+    Only walk schema positions; an empty properties map is not an empty value
+    schema. This does not change or repair any model-authored operand or source.
+    """
+    if type(schema) is bool:
+        return schema
+    if not schema:
+        return {'$ref': '#/$defs/JSONValue'}
+    result = clone(schema)
+    for key in ('properties', '$defs'):
+        if key in result:
+            result[key] = {name: explicit_json_operands(value) for name, value in result[key].items()}
+    for key in ('anyOf', 'oneOf', 'allOf'):
+        if key in result:
+            result[key] = [explicit_json_operands(value) for value in result[key]]
+    for key in ('items', 'additionalProperties', 'not', 'if', 'then', 'else'):
+        if isinstance(result.get(key), dict):
+            result[key] = explicit_json_operands(result[key])
+    if result.get('type') == 'object' and result.get('additionalProperties', True) is True:
+        result['additionalProperties'] = {'$ref': '#/$defs/JSONValue'}
+    if result.get('type') == 'array' and 'items' not in result:
+        result['items'] = {'$ref': '#/$defs/JSONValue'}
+    return result
+
+
 def backend_format(messages):
     if not messages or messages[0].get('role') != 'system':
         raise ValueError('source-owned V44 system message required')
@@ -97,12 +124,14 @@ def backend_format(messages):
         return 'json'
     if phase not in ('submit', 'implementation'):
         raise ValueError('unknown V44 output phase')
-    arguments = {'type': 'object', 'additionalProperties': {'$ref': '#/$defs/JSONValue'}}
-    if phase == 'submit':
-        arguments = {'type': 'object', 'properties': {
-            'rationale': {'type': 'string', 'minLength': 1, 'maxLength': 4096},
-            'provenance': {'type': 'object', 'maxProperties': 16,
-                'additionalProperties': {'$ref': '#/$defs/JSONValue'}}}, 'additionalProperties': False}
-    return {'type': 'object', 'required': ['name', 'arguments'], 'additionalProperties': False,
-        'properties': {'name': {'enum': ['finish'] if phase == 'submit' else list(IMPLEMENTATION_TOOLS)},
-            'arguments': arguments}, '$defs': {'JSONValue': generic_json_value()}}
+    from .native_designer_tools_v25 import tool_specifications, AUTHORING_RECOVERY
+    from .native_staged_author_v15 import ACTION_FIELDS
+    functions = tool_specifications(role='finisher' if phase == 'submit' else 'implementation',
+        conversation_profile=AUTHORING_RECOVERY)
+    branches = [{'type': 'object', 'required': ['name', 'arguments'], 'additionalProperties': False,
+        'properties': {'name': {'const': tool['function']['name']},
+            'arguments': explicit_json_operands(tool['function']['parameters'])}} for tool in functions]
+    schema = branches[0] if phase == 'submit' else {'oneOf': branches}
+    schema['$defs'] = {**{key: explicit_json_operands(value) for key, value in ACTION_FIELDS.items()},
+        'JSONValue': generic_json_value()}
+    return schema
