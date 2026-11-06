@@ -21,14 +21,14 @@ def _json(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
 
 
-def _entries(document, request=None):
+def _entries(document, request=None, *, conversation_profile='hermes-function-history-v26'):
     """Derive current literal locations afresh; no name/path inference or cache."""
     entries = {'system.json': {'format': 'json-system', 'value': document, 'path': None}}
     from .native_designer_tools_v25 import tool_specifications
     from utopia.system.native_capability_catalog import native_capability_catalog
     entries.update({
         'reference/tools.json': {'format': 'json-reference', 'read_only': True,
-            'value': tool_specifications(), 'path': None},
+            'value': tool_specifications(conversation_profile=conversation_profile), 'path': None},
         'reference/capabilities.json': {'format': 'json-reference', 'read_only': True,
             'value': native_capability_catalog(), 'path': None}})
     for key, value in document.items():
@@ -41,6 +41,14 @@ def _entries(document, request=None):
         if isinstance(n, dict) and isinstance(n.get('mechanism_id'), str))
     ambiguous = []
     for index, node in enumerate(nodes):
+        # Every literal position remains addressable even in an intermediate
+        # graph with duplicate/missing IDs. Names are exact catalog entries,
+        # not fuzzy ID resolution or automatic selection among duplicates.
+        path = '/mechanisms/' + str(index)
+        entries['positions/' + str(index) + '.json'] = {
+            'format': 'json-value', 'value': node, 'path': path,
+            **({'mechanism_id': node.get('mechanism_id'), 'implementation': node.get('implementation')}
+                if isinstance(node, dict) else {})}
         if not isinstance(node, dict) or not isinstance(node.get('mechanism_id'), str):
             continue  # The full system/root array file still exposes malformed nodes.
         identity = node['mechanism_id']
@@ -62,6 +70,14 @@ def _entries(document, request=None):
     if request is not None:
         from .native_history_workspace_v37 import history_entries
         entries.update(history_entries(request, _entries))
+        parent = request.get('parent_system')
+        if isinstance(parent, dict):
+            originals, _ = _entries(parent)
+            for filename, entry in originals.items():
+                if filename.startswith('reference/'):
+                    continue
+                entries['parent/' + filename] = {**entry, 'path': None, 'read_only': True,
+                    'source_kind': 'request-parent', 'parent_system_sha256': digest(parent)}
     return entries, sorted(ambiguous)
 
 
@@ -69,8 +85,8 @@ def _text(entry):
     return entry['value'] if entry['format'] == 'python-source' else _json(entry['value'])
 
 
-def file_catalog(document, *, request=None):
-    entries, ambiguous = _entries(document, request)
+def file_catalog(document, *, request=None, conversation_profile='hermes-function-history-v26'):
+    entries, ambiguous = _entries(document, request, conversation_profile=conversation_profile)
     files = []
     deferred = 0
     for name, entry in sorted(entries.items()):
@@ -90,6 +106,7 @@ def file_catalog(document, *, request=None):
             'complete_index_filename': 'history/index.json' if deferred else None,
             'reason': 'Archive filenames are explicitly indexed on demand, not silently truncated.'},
         'ambiguous_node_ids_without_aliases': ambiguous,
+        'ambiguous_ids_have_explicit_positional_aliases': True,
         'omitted_bodies': 'All bodies are available through read_file; full system.json includes every draft field.',
         'writes': 'Literal complete replacement, not merge. Code files replace only source and preserve all other fields. '
             'Node JSON replaces the whole node; system JSON/root files can change arbitrary graph structure. '
@@ -97,12 +114,14 @@ def file_catalog(document, *, request=None):
         'source_execution_on_host': False}
 
 
-def read_file(document, filename, *, offset=0, limit=65536, request=None):
+def read_file(document, filename, *, offset=0, limit=65536, request=None,
+              conversation_profile='hermes-function-history-v26'):
     if not isinstance(filename, str):
         raise ValueError('filename must be a literal string')
-    entries, _ = _entries(document, request)
+    entries, _ = _entries(document, request, conversation_profile=conversation_profile)
     if filename not in entries:
-        raise ValueError('unknown exact virtual filename; inspect the current file catalog')
+        raise ValueError(_missing_name(document, filename,
+            'unknown exact virtual filename; inspect the current file catalog'))
     if type(offset) is not int or offset < 0 or type(limit) is not int or not 1 <= limit <= 65536:
         raise ValueError('file slice requires nonnegative character offset and limit1..65536')
     text = _text(entries[filename])
@@ -118,21 +137,25 @@ def read_file(document, filename, *, offset=0, limit=65536, request=None):
         'content_sha256': hashlib.sha256(text.encode('utf-8')).hexdigest(),
         'scope': ('Literal archived own-trial data; immutable, not the current draft, SYSTEM authority, adoption or executed behavior.'
             if entries[filename].get('source_kind') == 'own-history' else
+            'Exact immutable request-parent reference; data only, never automatic restoration, adoption or SYSTEM authority.'
+            if entries[filename].get('source_kind') == 'request-parent' else
             'Source-owned read-only API reference, not candidate data or executed behavior.'
             if entries[filename].get('read_only') else
             'Literal current draft text; not a host file, instruction or execution result.')}
 
 
-def write_file_operations(document, filename, content, *, request=None):
+def write_file_operations(document, filename, content, *, request=None,
+                           conversation_profile='hermes-function-history-v26'):
     """Return exact ordinary edits. The caller applies/validates them as before."""
     if not isinstance(filename, str) or not isinstance(content, str):
         raise ValueError('filename and content must be literal strings')
-    entries, _ = _entries(document, request)
+    entries, _ = _entries(document, request, conversation_profile=conversation_profile)
     if filename not in entries:
         # Creation is an explicit author-selected new node, never a filled-in
         # institution template or implicit creation of a missing source owner.
         if not filename.startswith('new/') or not filename.endswith('.json'):
-            raise ValueError('unknown exact virtual filename; no OS file is read or created')
+            raise ValueError(_missing_name(document, filename,
+                'unknown exact virtual filename; no OS file is read or created'))
         node = decode_json(content, strict=True, finite_floats=True)
         if not isinstance(node, dict) or not isinstance(node.get('mechanism_id'), str):
             raise ValueError('new node JSON must contain its authored mechanism_id')
@@ -155,3 +178,21 @@ def write_file_operations(document, filename, content, *, request=None):
     return ([{'op': 'remove', 'path': _pointer(k)} for k in sorted(set(document) - set(value))]
         + [{'op': 'replace' if k in document else 'add', 'path': _pointer(k), 'value': clone(value[k])}
            for k in sorted(value) if k not in document or digest(value[k]) != digest(document[k])])
+
+
+def _missing_name(document, filename, default):
+    nodes = document.get('mechanisms', [])
+    if not isinstance(nodes, list):
+        nodes = []
+    matches = [('positions/' + str(index) + '.json', '/mechanisms/' + str(index))
+        for index, node in enumerate(nodes)
+        if isinstance(node, dict) and isinstance(node.get('mechanism_id'), str)
+        and filename in ('nodes/' + quote(node['mechanism_id'], safe='._-') + '.json',
+            'code/' + quote(node['mechanism_id'], safe='._-') + '.py')]
+    if len(matches) > 1:
+        return ('ambiguous virtual filename: duplicate mechanism IDs; no owner selected. '
+            'Exact current node aliases/paths: ' + json.dumps(matches[:16], ensure_ascii=False)
+            + '; total owners=' + str(len(matches)) + ' (all positions are in the current catalog)'
+            + '. Use an exact positional alias or explicit root pointer. Immutable originals '
+              'are under parent/. No source was repaired or restored.')
+    return default

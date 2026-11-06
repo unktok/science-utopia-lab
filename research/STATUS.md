@@ -18,12 +18,14 @@ old profiles, raw failures and scientific validation. The existing two losses,
 eight world slots and Qwen3-8B researchers remain fixed. See the
 [repair ledger](logbook/2026-11-07-native-authoring-recovery-v44.md) and
 [prospective protocol](protocols/campaigns/native-authoring-recovery-v44-a1.md).
-Current host-workflow focus22 checks pass, including pure application of all five
-original V43 failed submissions with their exact raw notes. Initial real14-call
-and revised6-call technical checks failed and remain failed; the latter returned
-non-JSON prose despite a requested JSON Schema. Stop relying on backend grammar.
-Committed broad/real-backend/free-authoring verification and actual new loss
-measurements are not yet claimed. There are no active scientific V44 worlds.
+Frozen c54 passes1626/two optional skips807.42s,29 fresh actual controls and cold
+replay. All five V43 bad-note submissions pass prospective static regression
+without changing their raw notes. Real free-authoring now edits the graph, but
+its16-call run fails on a duplicate-ID graph and inaccessible ambiguous aliases.
+Repair exact positional/immutable-parent references and ambiguity diagnostics;
+count failed read attempts too. Workspace/new-profile compatibility98 pass.
+Initial real14-call and revised6-call controls remain failed; the latter disproves
+backend schema enforcement. There are no active scientific V44 worlds yet.
 
 ## Historical V43 launch progress (superseded by terminal receipts above)
 

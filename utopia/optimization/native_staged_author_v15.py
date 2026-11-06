@@ -682,10 +682,12 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
         if tool in {'read_file', 'write_file'}:
             from .native_file_workspace_v35 import read_file, write_file_operations
             if tool == 'write_file':
-                operations = write_file_operations(current['document'], action['filename'], action['content'], request=request)
+                operations = write_file_operations(current['document'], action['filename'], action['content'], request=request,
+                    conversation_profile=conversation_profile)
                 if operations:
                     updated, resolved = transition(state, {'tool': 'edit', 'operations': operations, **annotations},
-                        request, binding_sha256=binding_sha256, provider_binding=provider_binding)
+                        request, binding_sha256=binding_sha256, provider_binding=provider_binding,
+                        conversation_profile=conversation_profile, workflow_phase=workflow_phase)
                     resolved.update(tool=tool, virtual_filename=action['filename'],
                         authored_file_action_sha256=digest(action))
                     return updated, resolved
@@ -695,6 +697,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
                     'edit_effect_notice': 'Exact file retention; no new behavior or measured improvement.'}
             else:
                 value = read_file(current['document'], action['filename'], request=request,
+                    conversation_profile=conversation_profile,
                     **{k: action[k] for k in ('offset', 'limit') if k in action})
                 content = value.pop('content')
                 record['result'] = {**value, 'resource': ('history' if value.get('source_kind') == 'own-history'
@@ -868,7 +871,13 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
     if settings.get('conversation_profile') == AUTHORING_RECOVERY:
         from .native_authoring_recovery_v44 import workflow
         control['authoring_workflow'] = workflow(state, steps, max_steps=settings['max_steps'])
+        from .native_authoring_recovery_v44 import MAX_FULL_DOCUMENT_BYTES
     planning = not steps and settings['max_steps'] > 1
+    if settings.get('conversation_profile') == AUTHORING_RECOVERY:
+        control['authoring_workflow']['literal_parent_system_included'] = (
+            control['authoring_workflow']['phase'] in ('implementation', 'recovery') and
+            len(json.dumps([state['document'], request['parent_system']], ensure_ascii=False,
+                allow_nan=False).encode()) <= MAX_FULL_DOCUMENT_BYTES)
     from utopia.system.native_capability_catalog import native_capability_index
     from .native_objective_view import objective_view
     from .native_literal_workbench_v27 import literal_workbench
@@ -884,9 +893,13 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
         **({'v44_literal_current_system': clone(state['document'])
                 if not planning and control['authoring_workflow']['literal_current_system_included'] else None}
             if settings.get('conversation_profile') == AUTHORING_RECOVERY else {}),
+        **({'v44_literal_parent_system': clone(request['parent_system'])
+                if control['authoring_workflow']['literal_parent_system_included'] else None}
+            if settings.get('conversation_profile') == AUTHORING_RECOVERY else {}),
         'planning_system_structure': planning_structure(state['document']) if planning else None,
         'literal_editor_workbench': workbench,
-        'virtual_editor_workspace': None if planning else file_catalog(state['document'], request=request),
+        'virtual_editor_workspace': None if planning else file_catalog(state['document'], request=request,
+            conversation_profile=settings.get('conversation_profile', 'hermes-function-history-v26')),
         'stage': request.get('stage', 'blackbox-generation'), 'own_history': history,
         'own_trial_feedback': own_trial_feedback(request),
         'remaining_calls_including_this_one': settings['max_steps'] - len(steps),
@@ -964,7 +977,9 @@ def read_memory(state, steps):
         document = receipt.get('document_after_sha256')
         # Pre-v16 receipts lack a document hash. Do not guess freshness.
         immutable_history = value.get('resource') == 'history'
-        key = digest([None if immutable_history else document, value.get('resource'), value.get('path'),
+        immutable_parent = value.get('source_kind') == 'request-parent'
+        immutable = immutable_history or immutable_parent
+        key = digest([None if immutable else document, value.get('resource'), value.get('path'),
             value.get('selection'), value.get('descriptor')])
         if key in entries:
             entries[key]['read_count'] += 1
@@ -973,10 +988,12 @@ def read_memory(state, steps):
         item = {key: clone(value[key]) for key in ('resource', 'path', 'descriptor', 'selection',
             'reusable_address', 'address_scope', 'resolved_document_path', 'address_notice',
             'candidate_edit_target', 'source_kind', 'archive', 'read_only') if key in value}
-        item.update(document_sha256=document, current_document=None if immutable_history else document == current,
+        item.update(document_sha256=document, current_document=None if immutable else document == current,
             read_count=1, last_step=step['step'], value_included=False)
         if immutable_history:
             item['immutable_own_history'] = True
+        if immutable_parent:
+            item['immutable_request_parent'] = True
         if value.get('value_included') is True:
             if len(json.dumps(value['value'], ensure_ascii=False).encode()) <= 8192:
                 item.update(value_included=True, value=clone(value['value']))
@@ -1200,11 +1217,13 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         # The source prompt's document is reconstructed from the same explicit
         # read-only current draft payload, never a host-authored policy.
         literal = context.pop('v44_literal_current_system', None)
+        parent_literal = context.pop('v44_literal_parent_system', None)
         context['literal_current_system'] = literal
         context['literal_current_system_byte_cap'] = MAX_FULL_DOCUMENT_BYTES
         context['prompt_view']['full_current_draft_included'] = literal is not None
         fresh_implementation = system_prompt in (IMPLEMENT_TASK, RECOVER_TASK)
         if fresh_implementation:
+            context['literal_parent_system'] = parent_literal
             context['previous_action_observation'] = {'action': clone(last_action),
                 'receipt': clone(last_receipt), 'errors': clone(last_errors)}
             for item in context['observed_read_memory']['entries']:

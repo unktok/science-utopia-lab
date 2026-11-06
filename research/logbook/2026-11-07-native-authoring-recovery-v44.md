@@ -133,3 +133,43 @@ G0 request with zero observations/history, same parent/loss, updating only its
 world source_commit for prospective provenance. Inspect actual writes and
 explicit submission before claiming that the read-loop repair works with the
 real local model. This is not donor history or measured scientific evidence.
+
+## c54 full pass and real free-authoring discovery
+
+Frozen c54df764 passes the complete related suite:1626 pass/two optional skips,
+807.42s;27214 exits0. JUnit SHA256
+a1d5c28ee891729b6fa18c396dea6facdac2866661669d7e38e2fa19a27b4539.
+All264 source blobs match. Fresh actual controls32032 exit0:29 pass,27 exact
+copies/two retained diagnostic mismatches; certificate
+f40614f29eebedd0185530596bb3d8cd797f3530506ca24347156ff1ff76dbc4,
+runtime13d795c352270ffd30ebcc4a03d6b8c4737017b63f830326b3dca74ea03432ec.
+The final control also proves explicit no-explanation submission. Cold replay
+passes without redispatch. This is not free-authoring success by itself.
+
+Real free-authoring45125 consumes16 calls in281.985069s and statically fails,
+with no source execution or native world. It DOES author an actual graph edit
+after three reads, unlike V43. However, it replaces array index18
+(open-memory-router) with a node named world.review, while the original review
+node is at index6. The draft then has duplicate IDs and dangling connections.
+The virtual workspace drops ambiguous named aliases and reports only unknown
+filename; repeated reads/writes cannot select either node. It also lacks an
+immutable initial-parent reference for recovering overwritten data. All later
+finish calls pass the note contract but correctly fail real graph validity.
+Preserve the failed terminal result/content
+8481828893ec00710cef1d7e7a6d88fe7931af903dd35833c84649a458e85701.
+
+Repair this concrete workspace limitation prospectively: explicit positions/N.json
+aliases for EVERY literal node (even malformed/duplicate-ID); ambiguity errors
+give exact candidate paths and never select an owner; parent/ aliases expose the
+unchanged request parent read-only. Include both current and parent exact data
+at a repair checkpoint only when their combined UTF-8 size fits65536 bytes.
+Count failed inspections too, so bad-name loops enter implementation promptly.
+Prefer exact file names or stable ID selectors without imposing an institution
+policy. Source-owned API reference signatures match the selected profile;
+parent read memory is immutable, never current draft data. No auto-restore,
+rollback, code repair or baseline adoption is introduced.
+
+Workspace/history/new-profile compatibility passes98 checks22.11s. Add an
+explicit immutable-parent-memory regression and predeclare a separate max16
+a4 free check at the new source, not a refill or reinterpretation of c54's
+failed run. Final-source software/calibration and actual losses remain pending.

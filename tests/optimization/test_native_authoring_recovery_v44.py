@@ -302,3 +302,70 @@ def test_driver_prioritizes_previously_failed_arm_without_more_worlds_or_hidden_
     assert plan['budget']['maximum_generation_POSTs'] == 128
     assert all(entry['request']['designer']['max_steps'] == 16 for entry in plan['runs'])
     assert all(entry['runtime_plan']['maximum_designer_provider_attempts'] == 64 for entry in plan['runs'])
+
+
+def test_duplicate_ids_remain_addressable_and_parent_references_are_read_only():
+    from utopia.optimization.native_file_workspace_v35 import read_file, write_file_operations, file_catalog
+    body = request(); original = deepcopy(body['parent_system']); doc = deepcopy(original)
+    identity = doc['mechanisms'][0]['mechanism_id']
+    doc['mechanisms'][1]['mechanism_id'] = identity
+    with pytest.raises(ValueError, match='ambiguous.*duplicate') as error:
+        read_file(doc, 'nodes/' + identity + '.json', request=body)
+    assert 'positions/0.json' in str(error.value) and 'positions/1.json' in str(error.value)
+    assert json.loads(read_file(doc, 'positions/1.json', request=body)['content']) == doc['mechanisms'][1]
+    assert json.loads(read_file(doc, 'parent/positions/1.json', request=body)['content']) == original['mechanisms'][1]
+    operations = write_file_operations(doc, 'positions/1.json', json.dumps(original['mechanisms'][1]), request=body)
+    assert operations == [{'op': 'replace', 'path': '/mechanisms/1', 'value': original['mechanisms'][1]}]
+    with pytest.raises(ValueError, match='read-only'):
+        write_file_operations(doc, 'parent/positions/1.json', '{}', request=body)
+    names = {entry['filename'] for entry in file_catalog(doc, request=body)['files']}
+    assert {'positions/0.json', 'positions/1.json', 'parent/system.json'} <= names
+    assert body['parent_system'] == original and doc['mechanisms'][1]['mechanism_id'] == identity
+
+
+@pytest.mark.parametrize('malformed', [None, 17, [], [None, True, {'not_an_id': 2}]])
+def test_malformed_intermediate_workspace_keeps_root_access_and_clear_missing_error(malformed):
+    from utopia.optimization.native_file_workspace_v35 import read_file
+    doc = deepcopy(request()['parent_system']); doc['mechanisms'] = malformed
+    assert json.loads(read_file(doc, 'system.json')['content']) == doc
+    with pytest.raises(ValueError, match='unknown exact virtual filename'):
+        read_file(doc, 'nodes/absent.json')
+
+
+def test_three_failed_inspections_also_enter_checkpoint_and_parent_is_supplied_as_data():
+    body = request(); state = initial_draft(body); steps = []
+    actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED', 'design_intent': 'SCRIPTED'},
+        *[{'tool': 'read_file', 'filename': 'nodes/absent.json'} for _ in range(3)]]
+    for index, action in enumerate(actions):
+        state, receipt = step(state, action, body, index); steps.append(receipt)
+    info = workflow(state, steps, max_steps=16)
+    assert info['phase'] == 'implementation' and info['inspection_attempts_since_last_draft_change'] == 3
+    assert info['successful_inspections_since_last_document_change'] == 0
+    prompt = build_prompt(body, state, steps, image_id=IMAGE, binding_sha256='d' * 64,
+        settings={'max_steps': 16, 'conversation_profile': PROFILE})
+    data = json.loads(prompt)
+    assert data['v44_literal_parent_system'] == body['parent_system']
+    assert data['000_current_turn']['authoring_workflow']['literal_parent_system_included']
+    messages = build_conversation(prompt, IMPLEMENT_TASK, native_tools=True, conversation_profile=PROFILE)
+    assert len(messages) == 2 and 'literal_parent_system' in messages[1]['content']
+
+
+def test_source_owned_api_reference_matches_selected_submission_contract():
+    from utopia.optimization.native_file_workspace_v35 import read_file
+    doc = request()['parent_system']
+    new = json.loads(read_file(doc, 'reference/tools.json', conversation_profile=PROFILE)['content'])
+    old = json.loads(read_file(doc, 'reference/tools.json')['content'])
+    new_finish = next(tool['function']['parameters'] for tool in new if tool['function']['name'] == 'finish')
+    old_finish = next(tool['function']['parameters'] for tool in old if tool['function']['name'] == 'finish')
+    assert new_finish['required'] == [] and new_finish['additionalProperties'] is True
+    assert 'rationale' in old_finish['required'] and old_finish['additionalProperties'] is False
+
+
+def test_parent_read_memory_is_immutable_not_a_current_draft_value():
+    from utopia.optimization.native_staged_author_v15 import read_memory
+    body = request(); state = initial_draft(body)
+    state, first = step(state, {'tool': 'read_file', 'filename': 'parent/positions/0.json'}, body, 0)
+    state, second = step(state, {'tool': 'edit', 'operations': [
+        {'op': 'add', 'path': '/metadata/change', 'value': 9}]}, body, 1)
+    entry = read_memory(state, [first, second])['entries'][0]
+    assert entry['immutable_request_parent'] is True and entry['current_document'] is None

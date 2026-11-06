@@ -20,7 +20,11 @@ IMPLEMENT_TASK = (
     'retained. Now author a concrete literal code/graph/configuration change, or explicitly finish '
     'to retain the parent. Do not claim that a plan or an explanation changed the draft. '
     'This checkpoint is one implementation action, not a policy catalogue or a novelty requirement. '
-    'All general editing operations and arbitrary literal JSON/Python operands remain available. ')
+    'All general editing operations and arbitrary literal JSON/Python operands remain available. '
+    'Prefer write_file at exact catalog filenames or edits with exact mechanism_id selectors; '
+    'do not guess a numeric array index. positions/N.json entries identify current nodes, even '
+    'when IDs are duplicated. parent/ files and literal_parent_system are immutable references '
+    'for your explicit repairs, never automatic restoration or a supplied new institution. ')
 SUBMIT_TASK = (
     'EXPLICIT SUBMISSION. Call finish on the exact current draft. No explanation is required: '
     'arguments may be {}. Optional rationale/provenance are archived author notes only. '
@@ -45,14 +49,16 @@ def action_schema():
 
 def workflow(state, steps, *, max_steps):
     remaining = max_steps - len(steps)
-    complete = len(json.dumps(state['document'], ensure_ascii=False, allow_nan=False).encode()) <= MAX_FULL_DOCUMENT_BYTES
-    inspections = 0
+    complete = bool(steps) and len(json.dumps(state['document'], ensure_ascii=False, allow_nan=False).encode()) <= MAX_FULL_DOCUMENT_BYTES
+    inspections = successful = 0
     current = digest(state)
     for step in reversed(steps):
         receipt = step.get('transition') or {}
         if receipt.get('draft_after_sha256') != current or receipt.get('draft_before_sha256') != current:
             break
-        inspections += int(receipt.get('ok') is True and receipt.get('tool') in
+        inspections += int(receipt.get('tool') in
+            ('read_file', 'inspect', 'inspect_field'))
+        successful += int(receipt.get('ok') is True and receipt.get('tool') in
             ('read_file', 'inspect', 'inspect_field'))
     if not steps:
         phase = 'planning'
@@ -66,7 +72,8 @@ def workflow(state, steps, *, max_steps):
         phase = 'general'
     return {'schema': 'scienceutopia.authoring-workflow.v44', 'phase': phase,
         'remaining_calls_including_this_one': remaining, 'submission_reserve': SUBMISSION_RESERVE,
-        'successful_inspections_since_last_document_change': inspections,
+        'inspection_attempts_since_last_draft_change': inspections,
+        'successful_inspections_since_last_document_change': successful,
         'literal_current_system_included': complete, 'literal_current_system_byte_cap': MAX_FULL_DOCUMENT_BYTES,
         'all_calls_charged': True, 'host_repair': False, 'host_auto_submit': False}
 
