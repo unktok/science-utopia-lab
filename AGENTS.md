@@ -49,3 +49,8 @@
   full scientist request payloads, and retain raw operational timestamps. Fix
   unintended renderer/argument-shadowing paths instead of regex-scrubbing
   arbitrary authored scientific timestamps or mutating old logs to match.
+- Schema-rejected model actions are untrusted JSON, not validated tool objects.
+  Regress rebuilding the next prompt and UI history for malformed member types
+  and missing keys, not only the immediate rejection. Retain exact raw actions,
+  errors and charged steps; never fabricate a missing terminal journal during
+  analysis or call a limited component diagnostic a successful original audit.

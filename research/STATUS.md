@@ -2,6 +2,24 @@
 
 Updated: 2026-11-06 JST
 
+## V33 malformed-response history exposes another host bug; V34 fix under test
+
+Actual throughput G1's string field_updates member is correctly schema-rejected,
+but summarizing it crashes the next prompt with TypeError and leaves no original
+terminal journal. Preserve the partial journal and controller null failure; do
+not call the model solely responsible or claim an original full audit passes.
+Separate V34 type-safe summaries preserve rejection/raw action/step budget;
+bounded observed field-name diagnostics address repeated literal-name mistakes
+without choosing a policy or repairing code. SCRIPTED focused checks pass112;
+actual-prefix original-source reproduction fails as observed and the separate
+new-source engineering replay rebuilds the next prompt with zero new model calls.
+V33 runs to its finite end; fresh V34 readiness/production is conditional on
+terminal V33 and the unchanged unmet functional-candidate/feedback goal.
+
+Test-only corrected V33 accounting goldens broad suite passes2838/six skips;
+actual frozen2a runtime/scripts are unchanged. See the [V34 log](logbook/2026-11-06-native-field-feedback-v34.md)
+and [conditional protocol](protocols/campaigns/native-field-feedback-v34-a1.md).
+
 ## V33 full-suite differences are isolated to the declared submission text
 
 Exact2a broad11133 ends2836 pass/two pre-V33 full-trace golden failures/six

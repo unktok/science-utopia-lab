@@ -422,8 +422,21 @@ def action_summary(action):
             operations.append(receipt)
         result['operations'] = operations
     if isinstance(action.get('field_updates'), list):
-        result['field_updates'] = [{'field_name': update['field_name'],
-            'operand': _descriptor(update['value'])} for update in action['field_updates']]
+        updates = []
+        for update in action['field_updates']:
+            if not isinstance(update, dict):
+                updates.append({'raw_field_update_sha256': digest(update), 'type': json_type(update)})
+                continue
+            item = {'field_name': clone(update['field_name'])} if 'field_name' in update else {}
+            if 'value' in update:
+                item['operand'] = _descriptor(update['value'])
+            if set(update) != {'field_name', 'value'} or not isinstance(update.get('field_name'), str):
+                item.update(raw_field_update_sha256=digest(update), type='object',
+                    literal_keys=sorted(update))
+            updates.append(item)
+        result['field_updates'] = updates
+    elif 'field_updates' in action:
+        result['field_updates_descriptor'] = _descriptor(action['field_updates'])
     for key in ('text', 'factors', 'continuous', 'logits', 'objective_reasoning',
                 'design_intent', 'implementation_targets', *ANNOTATIONS):
         if key in action:

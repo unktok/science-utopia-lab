@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V34 rejected-history host bug and observed-key feedback](logbook/2026-11-06-native-field-feedback-v34.md)
+- [V34 conditional unchanged-scale continuation](protocols/campaigns/native-field-feedback-v34-a1.md)
+
 - [V33 actual native submission-clock leakage and source-level shadowing fix](results/native-submission-clock-v33.json)
 - [V33 prospective unchanged-scale continuation after native input repair](protocols/campaigns/native-submission-context-v33-a1.md)
 - [V33 reproduction, varied-clock paired regression and preserved raw clocks](logbook/2026-11-06-native-submission-context-v33.md)
