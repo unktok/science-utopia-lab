@@ -30,7 +30,7 @@ def decoding_contract(protocol, *, role=None, conversation_profile=LEGACY_HISTOR
             'sampling_options': {'num_ctx': STAGED_CONTEXT_TOKENS, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}
         if conversation_profile == AUTHORING_RECOVERY:
-            result['backend_format_policy'] = 'Source-owned per-phase V44 submission/implementation envelope; generic JSON elsewhere'
+            result['backend_format_policy'] = 'Generic JSON; host-enforced V44 workflow; all finish arguments are archived non-executable notes'
         return result
     if protocol == 'one-shot-v14':
         if conversation_profile != LEGACY_HISTORY:

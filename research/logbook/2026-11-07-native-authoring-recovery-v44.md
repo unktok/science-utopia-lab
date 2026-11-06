@@ -89,3 +89,47 @@ unconstrained schema positions to explicit recursive JSON types. Preserve false
 schemas, empty closed property maps, arbitrary literal code/values and optional
 notes. No authored response is repaired, and neither certificate is reused.
 Add missing-ID, closed-map, boolean-schema and bounded-diagnostic regressions.
+
+## Actual a2 disproves backend schema enforcement; definitive host workflow
+
+Frozenf7de171 actual85378 ends failed after6 calls, five pass and typed-5 has8192
+output tokens/zero separate thinking/33502 final-content characters. Its final
+content contains malformed JSON and repeated prose despite the requested object
+schema; therefore backend-enforced output legality is not established here.
+Certificate72b7ee42ad7890ee1ed95c036864b567a2e08b0705631bbc20b37e34cae69361
+remains failed. Do not salvage a valid-looking substring or alter the backend.
+No scientific world was dispatched. Superseded old full tests27353/PID79538
+and47999/PID81857 receive SIGINT only after exact owned-process checks; their
+logs/JUnit/temp evidence remain, and neither is counted as a full pass. The
+first interrupt also reports a pytest teardown stash KeyError; retain it as an
+interrupted test invocation, not evidence about native scientific outcomes.
+
+The definitive prospective revision uses generic JSON and host-owned workflow,
+not speculative token masks. For finish, every argument is declared uninterpreted
+optional submission metadata. Archive its EXACT mapping in the actual receipt
+and compiled untrusted provenance, including rationation/rationally/operations
+or source-like notes. Notes never mutate the system or become trusted executable
+instructions; actual code/graph/permissions validation remains mandatory. Other
+tools retain strict required fields. No raw argument is repaired or discarded.
+
+The host rejects read/plan/validate at an implementation checkpoint before tool
+execution; it preserves that raw charged request and all feedback. Re-present
+the exact complete draft and last observation in a fresh implementation dialogue,
+not as another completed assistant read that invites repetition. Executable
+draft/configuration changes reset the inspection count; parent retention stays
+legal. Reserved submission calls enforce an explicit finish, with the existing
+bounded model repair/resubmission opportunity. Never auto-submit the parent.
+
+Host-workflow focus22 checks pass5.87s. This includes applying ALL five original
+V43 failed sessions statically under the new explicit semantics, with no raw
+changes or generated execution: each preserves its original notes and yields a
+technically valid actual draft. Original certificates/outcomes stay failed.
+This is a prospective static regression, not a claim of new measured losses.
+
+The definitive host-workflow plus legacy compatibility focus passes111 checks
+17.51s. Predeclare one separate free-authoring check, max16 actual designer
+POSTs/no generated-source execution/no native world: use the original efficiency
+G0 request with zero observations/history, same parent/loss, updating only its
+world source_commit for prospective provenance. Inspect actual writes and
+explicit submission before claiming that the read-loop repair works with the
+real local model. This is not donor history or measured scientific evidence.

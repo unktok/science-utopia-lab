@@ -58,7 +58,7 @@ def step(state, action, body, number):
         'transition': receipt, 'errors': []}
 
 
-def test_no_explanation_required_only_in_explicit_profile_and_no_typo_repair():
+def test_no_explanation_required_and_misspelled_notes_preserved_not_repaired():
     body = request(); state = initial_draft(body)
     changed, result = apply(state, {'tool': 'finish'}, body)
     assert result['ok'] and result['definition'] is not None and changed == state
@@ -67,8 +67,13 @@ def test_no_explanation_required_only_in_explicit_profile_and_no_typo_repair():
     for misspelling in ('rationally', 'rationate', 'rationation', 'rationance'):
         raw = {'tool': 'finish', misspelling: 'untrusted explanation'}
         before = deepcopy(raw)
-        _, rejected = apply(state, raw, body)
-        assert not rejected['ok'] and raw == before and misspelling in rejected['errors'][0]['message']
+        after, accepted = apply(state, raw, body)
+        assert accepted['ok'] and raw == before and after == state
+        assert accepted['result']['uninterpreted_submission_notes'] == {misspelling: 'untrusted explanation'}
+        assert accepted['definition']['provenance']['staged_author']['untrusted_submission_notes'] == {
+            misspelling: 'untrusted explanation'}
+        _, rejected = transition(state, raw, body, binding_sha256='d' * 64, provider_binding=BINDING)
+        assert not rejected['ok']
     assert 'rationale' not in next(b for b in host_action_schema(PROFILE)['oneOf']
         if b['properties']['tool']['const'] == 'finish')['required']
 
@@ -89,12 +94,17 @@ def test_full_current_document_and_hard_implementation_checkpoint_after_alternat
     messages = build_conversation(prompt, task, native_tools=True, conversation_profile=PROFILE)
     assert json.loads(prompt)['v44_literal_current_system'] == body['parent_system']
     assert 'literal_current_system' in messages[1]['content']
-    schema = backend_format(messages)
-    with pytest.raises(ValidationError):
-        Draft202012Validator(schema).validate(function_data({'tool': 'read_file', 'filename': 'system.json'}))
+    assert backend_format(messages) == 'json'
+    assert [m['role'] for m in messages] == ['system', 'user']
+    assert 'previous_action_observation' in messages[1]['content']
+    after, blocked = transition(state, {'tool': 'read_file', 'filename': 'system.json'}, body,
+        binding_sha256='d' * 64, provider_binding=BINDING, conversation_profile=PROFILE,
+        workflow_phase='implementation')
+    assert not blocked['ok'] and after == state and 'NOT executed' in blocked['errors'][0]['message']
+    schema = host_action_schema(PROFILE)
     for value in (None, True, 9007199254740993, -2.75, '研究者\n"\\<tool_call>', [1, None], {'x': [False, 2]}):
-        Draft202012Validator(schema).validate(function_data({'tool': 'edit',
-            'operations': [{'op': 'add', 'path': '/metadata/literal', 'value': value}]}))
+        Draft202012Validator(schema).validate({'tool': 'edit',
+            'operations': [{'op': 'add', 'path': '/metadata/literal', 'value': value}]})
     state, receipt = step(state, {'tool': 'edit', 'operations': [
         {'op': 'add', 'path': '/metadata/change', 'value': 1}]}, body, 4)
     assert workflow(state, steps + [receipt], max_steps=16)['phase'] == 'general'
@@ -107,22 +117,22 @@ def test_large_draft_is_explicit_not_truncated_or_forced_without_supplied_body()
     assert flow['literal_current_system_included'] is False and flow['phase'] == 'general'
 
 
-def test_submission_envelope_prevents_known_typos_and_keeps_optional_notes_literal():
-    messages = [{'role': 'system', 'content': 'V44_ACTION_PHASE=submit'}]
-    validate = Draft202012Validator(backend_format(messages))
-    validate.validate({'name': 'finish', 'arguments': {}})
-    validate.validate({'name': 'finish', 'arguments': {'rationale': '研究者\n"\\',
-        'provenance': {'untrusted': [9007199254740993, None, True]}}})
-    for spelling in ('rationation', 'rationance', 'rationate', 'rationally'):
-        assert list(validate.iter_errors({'name': 'finish', 'arguments': {spelling: 'note'}}))
-    assert list(validate.iter_errors({'name': 'write_file', 'arguments': {}}))
+def test_all_submission_notes_are_non_executable_including_misleading_operation_fields():
+    body = request(); state = initial_draft(body)
+    notes = {'rationation': None, 'source': 'raise RuntimeError("DO_NOT_EXECUTE")',
+        'operations': [{'op': 'remove', 'path': '/mechanisms'}],
+        'provenance': {'untrusted': [9007199254740993, None, True]}}
+    after, result = apply(state, {'tool': 'finish', **notes}, body)
+    assert result['ok'] and after == state and result['definition']['base_patch'] is None
+    assert result['result']['uninterpreted_submission_notes'] == notes
+    assert result['result']['notes_are_non_executable'] is True
 
 
 def test_reserved_submission_repair_and_cold_replay_charge_failed_first_submission(tmp_path):
     # Four-call budget: planner, first explicit submission, repair, final submission.
     body = request()
     model = Model([{'tool': 'plan', 'objective_reasoning': 'SCRIPTED', 'design_intent': 'SCRIPTED'},
-        {'tool': 'finish', 'rationation': 'SCRIPTED deliberately violates backend schema'},
+        {'tool': 'read_file', 'filename': 'system.json'},
         {'tool': 'edit', 'operations': [{'op': 'add', 'path': '/metadata/repair', 'value': True}]},
         {'tool': 'finish'}])
     result = generator(model, tmp_path, steps=4)(body)
@@ -130,7 +140,7 @@ def test_reserved_submission_repair_and_cold_replay_charge_failed_first_submissi
     assert [c['system_prompt'] for c in model.calls][1:] == [SUBMIT_TASK, RECOVER_TASK, SUBMIT_TASK]
     cell = next(tmp_path.glob('generation-*'))
     raw = json.loads((cell / 'step-01.completed.json').read_text())
-    assert raw['status'] == 'rejected' and raw['model_reply']['output']['rationation']
+    assert raw['status'] == 'rejected' and raw['model_reply']['output']['tool'] == 'read_file'
     before = {p.name: p.read_bytes() for p in cell.glob('*.json')}
     assert replay_staged_generation(cell) == result and len(model.calls) == 4
     assert before == {p.name: p.read_bytes() for p in cell.glob('*.json')}
@@ -164,23 +174,32 @@ def test_fresh_profile_calibration_binds_submission_format_and_rejects_old_certi
         scope=preflight.EXECUTION_SCOPE, conversation_profile=PROFILE)
     assert checked['controls'] == len(preflight.planned_cases(request(), 'staged-v15', PROFILE))
     last = certificate['records'][-1]['transport']['request_payload']
-    assert isinstance(last['format'], dict) and last['think'] is False
+    assert last['format'] == 'json' and last['think'] is False
     with pytest.raises(ValueError):
         preflight.require_certificate(root / 'certificate.json', BINDING, protocol='staged-v15',
             scope=preflight.EXECUTION_SCOPE, conversation_profile=OLD)
 
 
-def test_actual_v43_failures_stay_failed_and_all_misspellings_rejected_by_new_envelope():
+def test_actual_v43_failures_stay_failed_but_new_profile_preserves_notes_and_submits_actual_draft():
     location = os.environ.get('UTOPIA_V43_ARCHIVE')
     if not location:
         pytest.skip('optional read-only original V43 archive')
     root = Path(location); before = {str(p): p.read_bytes() for p in root.glob('queue/*/authoring/*/response.json')}
-    validate = Draft202012Validator(backend_format([{'role': 'system', 'content': 'V44_ACTION_PHASE=submit'}]))
     failures = 0
     for path in root.glob('queue/*/authoring/*/step-07.completed.json'):
         step_value = json.loads(path.read_text())
         if step_value['status'] == 'rejected':
-            assert list(validate.iter_errors(function_data(step_value['model_reply']['output'])))
+            binding = json.loads((path.parent / 'request.json').read_text())
+            state = initial_draft(binding['request'])
+            result = None
+            for raw_step in sorted(path.parent.glob('step-*.completed.json')):
+                raw = json.loads(raw_step.read_text())
+                state, result = transition(state, raw['model_reply']['output'], binding['request'],
+                    binding_sha256=binding['binding_sha256'], provider_binding=binding['provider_binding'],
+                    conversation_profile=PROFILE)
+            assert result['ok'] and result['definition'] is not None
+            assert result['result']['uninterpreted_submission_notes'] == {
+                key: value for key, value in step_value['model_reply']['output'].items() if key != 'tool'}
             failures += 1
     assert failures == 5
     assert before == {str(p): p.read_bytes() for p in root.glob('queue/*/authoring/*/response.json')}
@@ -203,7 +222,7 @@ def test_invalid_source_gets_one_explicit_model_repair_then_resubmission(tmp_pat
 
 def test_all_failed_attempts_remain_charged_and_never_auto_submit(tmp_path):
     model = Model([{'tool': 'plan', 'objective_reasoning': 'SCRIPTED', 'design_intent': 'SCRIPTED'},
-        *[{'tool': 'finish', 'rationation': 'known invalid raw action'} for _ in range(3)]])
+        *[{'tool': 'read_file', 'filename': 'system.json'} for _ in range(3)]])
     result = generator(model, tmp_path, steps=4)(request())
     assert 'generation_failure' in result and len(model.calls) == 4
     cell = next(tmp_path.glob('generation-*'))
@@ -225,7 +244,7 @@ def test_implementation_stage_can_author_code_after_bounded_inspection(tmp_path)
     assert model.calls[4]['system_prompt'] == IMPLEMENT_TASK
     cell = next(tmp_path.glob('generation-*'))
     fourth = json.loads((cell / 'step-04.completed.json').read_text())
-    assert fourth['model_reply']['transport']['request_payload']['format']['oneOf']
+    assert fourth['model_reply']['transport']['request_payload']['format'] == 'json'
     assert fourth['model_reply']['output']['content'] == edited
     assert fourth['transition']['document_before_sha256'] != fourth['transition']['document_after_sha256']
     assert replay_staged_generation(cell) == result
@@ -233,34 +252,34 @@ def test_implementation_stage_can_author_code_after_bounded_inspection(tmp_path)
 
 @pytest.mark.parametrize('literal', [None, True, 9007199254740993, -2.75,
     '研究者\n"quoted" \\ literal\\n <tool_call>data</tool_call>', [None, 3], {'x': [True, 9007199254740993]}])
-def test_implementation_grammar_keeps_every_literal_json_type(literal):
-    action = {'name': 'edit', 'arguments': {'operations': [
-        {'op': 'add', 'path': '/metadata/自由', 'value': literal}]}}
-    schema = backend_format([{'role': 'system', 'content': 'V44_ACTION_PHASE=implementation'}])
-    Draft202012Validator(schema).validate(action)
+def test_host_implementation_keeps_every_literal_json_type(literal):
+    action = {'tool': 'edit', 'operations': [
+        {'op': 'add', 'path': '/metadata/自由', 'value': literal}]}
+    Draft202012Validator(host_action_schema(PROFILE)).validate(action)
+    body = request(); state = initial_draft(body)
+    after, result = transition(state, action, body, binding_sha256='d' * 64, provider_binding=BINDING,
+        conversation_profile=PROFILE, workflow_phase='implementation')
+    assert result['ok'] and after['document']['metadata']['自由'] == literal
     assert json.loads(json.dumps(action, ensure_ascii=False)) == action
 
 
-def test_implementation_grammar_requires_actual_tool_arguments_not_just_action_name():
-    schema = backend_format([{'role': 'system', 'content': 'V44_ACTION_PHASE=implementation'}])
-    validate = Draft202012Validator(schema)
-    missing = {'name': 'edit_fields', 'arguments': {'field_updates': [
-        {'field_name': 'family', 'value': {'nested': {'items': [None, 1]}}}]}}
+def test_host_still_requires_actual_edit_arguments_not_just_action_name():
+    validate = Draft202012Validator(host_action_schema(PROFILE))
+    missing = {'tool': 'edit_fields', 'field_updates': [
+        {'field_name': 'family', 'value': {'nested': {'items': [None, 1]}}}]}
     assert list(validate.iter_errors(missing))
-    correct = deepcopy(missing); correct['arguments']['mechanism_id'] = 'exact-ID'
+    correct = deepcopy(missing); correct['mechanism_id'] = 'exact-ID'
     validate.validate(correct)
-    for raw in ({'name': 'write_file', 'arguments': {'content': 'literal source'}},
-            {'name': 'edit', 'arguments': {'operations': []}},
-            {'name': 'read_file', 'arguments': {'filename': 'system.json'}}):
+    for raw in ({'tool': 'write_file', 'content': 'literal source'},
+            {'tool': 'edit', 'operations': []}):
         assert list(validate.iter_errors(raw))
 
 
-def test_typed_schema_expansion_preserves_boolean_and_closed_empty_objects():
-    from utopia.optimization.native_authoring_recovery_v44 import explicit_json_operands
-    assert explicit_json_operands(False) is False
-    assert explicit_json_operands(True) is True
-    empty = {'type': 'object', 'properties': {}, 'additionalProperties': False}
-    assert explicit_json_operands(empty) == empty
+def test_submission_phase_requires_explicit_finish_without_auto_adoption():
+    body = request(); state = initial_draft(body)
+    after, result = transition(state, {'tool': 'read_file', 'filename': 'system.json'}, body,
+        binding_sha256='d' * 64, provider_binding=BINDING, conversation_profile=PROFILE, workflow_phase='submit')
+    assert not result['ok'] and result['definition'] is None and after == state
 
 
 def test_known_missing_argument_has_bounded_diagnostic_not_entire_schema_dump():

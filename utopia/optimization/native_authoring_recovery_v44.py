@@ -38,6 +38,8 @@ def action_schema():
     for branch in schema['oneOf']:
         if branch['properties']['tool'].get('const') == 'finish':
             branch['required'] = ['tool']
+            branch['properties'] = {'tool': {'const': 'finish'}}
+            branch['additionalProperties'] = True
     return schema
 
 
@@ -45,10 +47,10 @@ def workflow(state, steps, *, max_steps):
     remaining = max_steps - len(steps)
     complete = len(json.dumps(state['document'], ensure_ascii=False, allow_nan=False).encode()) <= MAX_FULL_DOCUMENT_BYTES
     inspections = 0
-    current = digest(state['document'])
+    current = digest(state)
     for step in reversed(steps):
         receipt = step.get('transition') or {}
-        if receipt.get('document_after_sha256') != current or receipt.get('document_before_sha256') != current:
+        if receipt.get('draft_after_sha256') != current or receipt.get('draft_before_sha256') != current:
             break
         inspections += int(receipt.get('ok') is True and receipt.get('tool') in
             ('read_file', 'inspect', 'inspect_field'))
@@ -77,42 +79,6 @@ def task(index, max_steps, prompt, *, planner, general):
         'recovery': RECOVER_TASK}.get(phase, general)
 
 
-def generic_json_value():
-    # Explicit recursive types avoid the previously observed empty-schema ->
-    # object-only backend conversion. Integers are not cast through native tools.
-    return {'anyOf': [{'type': 'null'}, {'type': 'boolean'}, {'type': 'integer'},
-        {'type': 'number'}, {'type': 'string'},
-        {'type': 'array', 'items': {'$ref': '#/$defs/JSONValue'}},
-        {'type': 'object', 'additionalProperties': {'$ref': '#/$defs/JSONValue'}}]}
-
-
-def explicit_json_operands(schema):
-    """Preserve schema semantics while spelling out every unconstrained operand.
-
-    Only walk schema positions; an empty properties map is not an empty value
-    schema. This does not change or repair any model-authored operand or source.
-    """
-    if type(schema) is bool:
-        return schema
-    if not schema:
-        return {'$ref': '#/$defs/JSONValue'}
-    result = clone(schema)
-    for key in ('properties', '$defs'):
-        if key in result:
-            result[key] = {name: explicit_json_operands(value) for name, value in result[key].items()}
-    for key in ('anyOf', 'oneOf', 'allOf'):
-        if key in result:
-            result[key] = [explicit_json_operands(value) for value in result[key]]
-    for key in ('items', 'additionalProperties', 'not', 'if', 'then', 'else'):
-        if isinstance(result.get(key), dict):
-            result[key] = explicit_json_operands(result[key])
-    if result.get('type') == 'object' and result.get('additionalProperties', True) is True:
-        result['additionalProperties'] = {'$ref': '#/$defs/JSONValue'}
-    if result.get('type') == 'array' and 'items' not in result:
-        result['items'] = {'$ref': '#/$defs/JSONValue'}
-    return result
-
-
 def backend_format(messages):
     if not messages or messages[0].get('role') != 'system':
         raise ValueError('source-owned V44 system message required')
@@ -120,18 +86,10 @@ def backend_format(messages):
     if not marker.startswith('V44_ACTION_PHASE='):
         raise ValueError('source-owned V44 action phase missing')
     phase = marker.removeprefix('V44_ACTION_PHASE=')
-    if phase == 'general':
-        return 'json'
-    if phase not in ('submit', 'implementation'):
+    if phase not in ('general', 'submit', 'implementation'):
         raise ValueError('unknown V44 output phase')
-    from .native_designer_tools_v25 import tool_specifications, AUTHORING_RECOVERY
-    from .native_staged_author_v15 import ACTION_FIELDS
-    functions = tool_specifications(role='finisher' if phase == 'submit' else 'implementation',
-        conversation_profile=AUTHORING_RECOVERY)
-    branches = [{'type': 'object', 'required': ['name', 'arguments'], 'additionalProperties': False,
-        'properties': {'name': {'const': tool['function']['name']},
-            'arguments': explicit_json_operands(tool['function']['parameters'])}} for tool in functions]
-    schema = branches[0] if phase == 'submit' else {'oneOf': branches}
-    schema['$defs'] = {**{key: explicit_json_operands(value) for key, value in ACTION_FIELDS.items()},
-        'JSONValue': generic_json_value()}
-    return schema
+    # The installed backend returned non-JSON prose despite an object schema in
+    # real a2 controls. Do not claim or depend on token-mask enforcement. This
+    # prospective revision uses the previously measured generic JSON channel;
+    # the host owns field validation and workflow legality, never output repair.
+    return 'json'

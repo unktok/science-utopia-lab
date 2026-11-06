@@ -11,20 +11,28 @@ POSTs complete without transport errors. Correct stale live documentation.
 Explicit `plain-function-recovery-v44` retains plain literal history, local35B
 designer, thinkFalse,8192 output/context40960/connect10-read900/no network retry.
 Old profiles and old failed certificates keep their semantics and outcomes.
-Finish has no mandatory rationale in this new profile. Optional author notes
-remain exact untrusted values; no typo repair or ignored unknown field is used.
-A source-owned final-response JSON schema constrains only the submission
-envelope and its declared optional note keys. Static code/graph/ABI/permissions
-checks still decide technical validity; only the model explicitly submits.
+Finish has no mandatory rationale in this new profile. ALL finish argument
+fields are declared optional non-executable author notes. Store the whole exact
+mapping in the receipt and compiled audit provenance, including misspellings;
+never rename, strip, execute or interpret any note as a draft edit. Other tools
+keep their exact required fields/permissions and reject undeclared fields.
+Static code/graph/ABI/permissions checks still decide technical validity; only
+the model explicitly submits. Use the measured generic JSON response channel.
+Do not rely on JSON Schema token masking: actual a2 controls returned non-JSON
+prose despite a format schema. Strict complete-response parsing remains required.
 
 For a draft within65536 UTF-8 bytes, supply the exact complete current system
 to the editor as data. Larger drafts remain explicitly omitted, never truncated.
-After three successful inspections without a document change, take an explicit
-implementation checkpoint with write/edit/configure/finish actions. The model
+After three successful inspections without an executable draft change, take an explicit
+implementation checkpoint with write/edit/configure/finish actions. The host
+rejects another read/plan/validate in that checkpoint BEFORE executing it. A new
+implementation dialogue supplies the exact latest action/receipt as DATA, not
+another assistant-read/tool example; every prior scalar outcome/error remains
+available. The model
 can author arbitrary programs, nodes, wiring and schedules or retain explicitly.
-The next ordinary phase can read again after an actual edit. No novelty, edit,
-scientific-quality or improvement gate is added. The checkpoint has unrestricted
-recursive JSON operands with explicit JSON types, not object-only empty schemas.
+The next ordinary phase can read again after an actual edit/configuration change. No novelty, edit,
+scientific-quality or improvement gate is added. The checkpoint keeps unrestricted
+literal JSON operands and arbitrary Python, without backend schema narrowing.
 
 Allow at most16 charged author turns, not8: the last three are first explicit
 submission, bounded repair if required, and final explicit submission. Every
@@ -33,7 +41,7 @@ Declaring more within-session turns is not increasing world/seed/candidate scale
 
 ## Verification and actual execution
 
-Regress actual V43 misspelled rationale arguments, alternating unchanged reads,
+Regress actual V43 misspelled rationale arguments as exact non-executable notes, alternating unchanged reads,
 retention, malformed drafts, reserved repair, arbitrary literal types/strings,
 payload schema binding, tamper rejection and terminal cold replay. Commit source
 before source-equivalence tests and freeze a separate immutable experiment tree.
@@ -41,6 +49,15 @@ Fresh finite source-bound actual calibration remains required, but copied
 controls are not proof of free authoring. Exercise free authoring and inspect
 actual edits/submission, not only a model's prose claims. No API/global backend
 patch, external provider, download or additional spending is involved.
+
+Before scientific dispatch, one separate free-authoring check may use the exact
+original efficiency G0 request/parent/loss with no history or observations, with
+only its world source_commit updated to this prospective source. Declare at
+most16 additional charged designer POSTs, zero generated-source executions and
+zero native worlds. Archive the actual model-authored edits/notes and terminal
+static result. It is interface verification, not a scientific candidate, donor
+feedback, preselection or a measured loss. Never refill its budget or alter a
+received program. This check can run alongside CPU-only software verification.
 
 After software and actual technical checks pass, use the unchanged original
 world, five authors/two years/development seed42/Qwen3-8B researchers. Run the two

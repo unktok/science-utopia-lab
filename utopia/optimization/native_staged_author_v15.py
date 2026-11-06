@@ -160,6 +160,13 @@ def call_task(index, max_steps, *, conversation_profile='hermes-function-history
     return PLAN_SYSTEM_PROMPT if index == 0 and max_steps > 1 else SYSTEM_PROMPT
 
 
+def workflow_phase(prompt, conversation_profile):
+    from .native_designer_tools_v25 import AUTHORING_RECOVERY
+    if conversation_profile == AUTHORING_RECOVERY:
+        return _strict_json(prompt)['000_current_turn']['authoring_workflow']['phase']
+    return None
+
+
 def submission_task(system_prompt):
     from .native_authoring_recovery_v44 import SUBMIT_TASK
     return system_prompt in (FINISH_SYSTEM_PROMPT, SUBMIT_TASK) or system_prompt.startswith(FINISH_CONTROL_PREFIX)
@@ -597,12 +604,16 @@ def compile_draft(state, request, *, binding_sha256, provider_binding, rationale
     return definition
 
 
-def _validation(state, request, binding_sha256, provider_binding, rationale='Static technical inspection'):
+def _validation(state, request, binding_sha256, provider_binding, rationale='Static technical inspection',
+                submission_notes=None):
     from .native_contract_notices import notice_summary
     notices = notice_summary(state['document'])
     try:
         definition = compile_draft(state, request, binding_sha256=binding_sha256,
             provider_binding=provider_binding, rationale=rationale)
+        if submission_notes is not None:
+            definition['provenance']['staged_author']['untrusted_submission_notes'] = clone(submission_notes)
+            definition['provenance']['staged_author']['submission_notes_are_non_executable'] = True
         return {'valid': True, 'definition_sha256': digest(definition), 'errors': [],
             'execution_contract_notices': notices,
             'scope': 'static graph/source/ABI/distribution; no native execution'}, definition
@@ -613,7 +624,7 @@ def _validation(state, request, binding_sha256, provider_binding, rationale='Sta
 
 
 def transition(state, action, request, *, binding_sha256, provider_binding,
-               conversation_profile='hermes-function-history-v26'):
+               conversation_profile='hermes-function-history-v26', workflow_phase=None):
     """Pure deterministic tool interpreter. It never evaluates candidate source.
 
     Returns unchanged state plus an explicit rejection on any technical error.
@@ -627,20 +638,33 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
         'document_after_sha256': digest(state['document']),
         'result': None, 'definition': None, 'errors': []}
     try:
+        from .native_designer_tools_v25 import AUTHORING_RECOVERY
+        recovery_finish = (conversation_profile == AUTHORING_RECOVERY
+            and isinstance(action, dict) and action.get('tool') == 'finish')
+        if (conversation_profile == AUTHORING_RECOVERY and workflow_phase == 'submit'
+                and isinstance(action, dict) and action.get('tool') != 'finish'):
+            raise ValueError('submission checkpoint: this action was NOT executed. '
+                'Explicitly call finish with the current draft; explanation fields are optional notes. '
+                'Only a technically valid explicit submission can produce a candidate.')
+        from .native_authoring_recovery_v44 import IMPLEMENTATION_TOOLS
+        if (conversation_profile == AUTHORING_RECOVERY and workflow_phase in ('implementation', 'recovery')
+                and isinstance(action, dict) and action.get('tool') not in IMPLEMENTATION_TOOLS):
+            raise ValueError('implementation checkpoint: this read/plan was NOT executed. '
+                'The exact current system and previous read receipt are already supplied. '
+                'Author a literal implementation action or explicitly finish to retain; '
+                'an explanation alone does not change the institution.')
         if isinstance(action, dict) and action.get('tool') in TOOL_FIELDS:
             allowed = {'tool', *TOOL_FIELDS[action['tool']][1], *ANNOTATIONS}
-            if set(action) - allowed:
+            if set(action) - allowed and not recovery_finish:
                 raise ValueError('unexpected fields for ' + action['tool'] + ': '
                     + ','.join(sorted(set(action) - allowed)))
         # Select the declared discriminated branch before collecting errors.
         # Validating only the root oneOf reports the entire giant action and
         # truncates away the useful field-level cause (e.g. misplaced logits).
         # Both schemas are generated from the SAME TOOL_FIELDS/ACTION_FIELDS.
-        from .native_designer_tools_v25 import AUTHORING_RECOVERY
-        recovery_finish = (conversation_profile == AUTHORING_RECOVERY
-            and isinstance(action, dict) and action.get('tool') == 'finish')
-        schema = ({**_tool_schema(action['tool'],
-                () if recovery_finish else TOOL_FIELDS[action['tool']][0], TOOL_FIELDS[action['tool']][1]), '$defs': ACTION_FIELDS}
+        schema = (next(branch for branch in host_action_schema(conversation_profile)['oneOf']
+                if branch['properties']['tool']['const'] == 'finish') if recovery_finish else
+            {**_tool_schema(action['tool'], *TOOL_FIELDS[action['tool']]), '$defs': ACTION_FIELDS}
             if isinstance(action, dict) and action.get('tool') in TOOL_FIELDS else ACTION_SCHEMA)
         # Diagnostic repr must not depend on JSON object insertion order.
         # Only the validation view is canonicalized; literal edit values,
@@ -781,9 +805,15 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
             if tool == 'finish' and 'rationale' not in action and not recovery_finish:
                 raise ValueError('finish requires explicit authored rationale')
             validation, definition = _validation(current, request, binding_sha256, provider_binding,
-                rationale=action.get('rationale', 'Explicit model submission; no optional explanation supplied'
-                    if recovery_finish else 'Static technical inspection'))
+                rationale=('Explicit model submission; arbitrary notes archived separately'
+                    if recovery_finish else action.get('rationale', 'Static technical inspection')),
+                submission_notes={key: clone(value) for key, value in action.items() if key != 'tool'}
+                    if recovery_finish else None)
             record['result'] = validation
+            if recovery_finish:
+                record['result']['uninterpreted_submission_notes'] = {
+                    key: clone(value) for key, value in action.items() if key != 'tool'}
+                record['result']['notes_are_non_executable'] = True
             if tool == 'finish' and definition is None:
                 record['errors'] = clone(validation['errors'])
                 return clone(state), record
@@ -1173,6 +1203,13 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
         context['literal_current_system'] = literal
         context['literal_current_system_byte_cap'] = MAX_FULL_DOCUMENT_BYTES
         context['prompt_view']['full_current_draft_included'] = literal is not None
+        fresh_implementation = system_prompt in (IMPLEMENT_TASK, RECOVER_TASK)
+        if fresh_implementation:
+            context['previous_action_observation'] = {'action': clone(last_action),
+                'receipt': clone(last_receipt), 'errors': clone(last_errors)}
+            for item in context['observed_read_memory']['entries']:
+                if item.get('value_reference', {}).get('location') == 'exact latest tool receipt result.value':
+                    item['value_reference']['location'] = 'previous_action_observation.receipt.result.value'
     narration = ('Continue the current institution-authoring session; do not restart it. '
         'You are on call ' + str(control['next_call_number']) + '. You have '
         + str(control['remaining_calls_including_this_one']) + ' budgeted calls INCLUDING this one.\n'
@@ -1183,7 +1220,9 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
     instructions = FILE_EDITOR_INSTRUCTIONS if native_tools else INSTRUCTIONS
     if conversation_profile == AUTHORING_RECOVERY:
         instructions = instructions.replace('Only finish requires rationale.',
-            'In this profile finish has no required explanation argument; rationale/provenance are optional notes.')
+            'In this profile every finish argument is an optional uninterpreted note; none edits the draft.')
+        instructions = instructions.replace('All other undeclared fields remain invalid.',
+            'Other tools still reject undeclared fields; finish archives all argument fields as non-executable notes.')
     messages = [{'role': 'system', 'content':
         'TRUSTED INSTITUTION-AUTHORING PROTOCOL\n' + instructions
         + '\n\nTRUSTED EXECUTION ABI AND DISTRIBUTION CONTRACT\n' + ABI_CONTRACT
@@ -1205,7 +1244,11 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
                 + json.dumps(context, ensure_ascii=False, sort_keys=True, allow_nan=False))}]
     if native_tools:
         from .native_designer_tools_v25 import message_from_action
-        if last_action is not None:
+        if conversation_profile == AUTHORING_RECOVERY and fresh_implementation:
+            messages[-1]['content'] += ('\n\nThe previous action and full receipt are in '
+                'previous_action_observation. This is an implementation checkpoint, not another inspection.\n'
+                + system_prompt)
+        elif last_action is not None:
             messages.extend([message_from_action(last_action, conversation_profile=conversation_profile),
                 {'role': 'tool', 'tool_name': last_action['tool'],
                 'content': json.dumps({'tool_receipt': last_receipt, 'call_errors': last_errors},
@@ -1344,7 +1387,8 @@ class StagedVocabularyGenerator:
             if completed.get('transition') is not None:
                 state, replay = transition(state, completed['model_reply']['output'], request,
                     binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
-                    conversation_profile=self.conversation_profile)
+                    conversation_profile=self.conversation_profile,
+                    workflow_phase=workflow_phase(prompt, self.conversation_profile))
                 if replay != completed['transition']:
                     raise ValueError('saved staged tool result differs from deterministic replay')
             steps.append(completed)
@@ -1390,7 +1434,8 @@ class StagedVocabularyGenerator:
                 raise ValueError('parsed tool output differs from exact raw model response')
             _, action_transition = transition(state, output, request,
                 binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
-                conversation_profile=self.conversation_profile)
+                conversation_profile=self.conversation_profile,
+                workflow_phase=workflow_phase(started['prompt'], self.conversation_profile))
             status = ('finished' if action_transition['definition'] is not None else
                 'applied' if action_transition['ok'] else 'rejected')
         except Exception as error:
@@ -1462,7 +1507,8 @@ class StagedVocabularyGenerator:
                 raise ValueError('saved staged raw action differs from parsed response')
             _, expected = transition(state, reply['output'], request,
                 binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
-                conversation_profile=self.conversation_profile)
+                conversation_profile=self.conversation_profile,
+                workflow_phase=workflow_phase(started['prompt'], self.conversation_profile))
             status = 'finished' if expected['definition'] is not None else 'applied' if expected['ok'] else 'rejected'
             if completed['transition'] != expected or completed['status'] != status or completed['errors']:
                 raise ValueError('saved staged tool transition/status changed')

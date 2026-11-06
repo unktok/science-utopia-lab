@@ -126,8 +126,14 @@ def tool_specifications(*, role=None, conversation_profile=LEGACY_HISTORY):
         # shared fields before transport instead of advertising empty argument
         # schemas after the server renders its model template.
         parameters['properties'] = {key: clone(ACTION_FIELDS[key]) for key in parameters['properties']}
+        if conversation_profile == AUTHORING_RECOVERY and name == 'finish':
+            parameters['properties'] = {}
+            parameters['additionalProperties'] = True
         result.append({'type': 'function', 'function': {
-            'name': name, 'description': DESCRIPTIONS[name], 'parameters': parameters}})
+            'name': name, 'description': ('Explicitly submit the current draft. No required arguments. '
+                'Every argument field is an optional uninterpreted author note, never a system edit.'
+                if conversation_profile == AUTHORING_RECOVERY and name == 'finish' else DESCRIPTIONS[name]),
+            'parameters': parameters}})
     return result
 
 
