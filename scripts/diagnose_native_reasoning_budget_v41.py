@@ -18,7 +18,7 @@ from utopia.optimization.native_designer_tools_v25 import action_from_body
 from utopia.optimization.native_designer_wire import post, wire_record
 from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_search_generator_v14 import _strict_json
-from utopia.optimization.native_staged_author_v15 import build_conversation, call_task, PLAN_ACTION_SCHEMA
+from utopia.optimization.native_staged_author_v15 import build_conversation, call_task, ACTION_SCHEMA, PLAN_ACTION_SCHEMA
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from jsonschema import Draft202012Validator
@@ -47,10 +47,10 @@ def plan(raw, *, audits, writer_ended, provider):
     if (binding['provider_binding'] != provider or binding['request_sha256'] != GENERATION
             or digest(binding['request']) != GENERATION
             or started['prompt_sha256'] != digest(started['prompt'])
-            or started['response_schema'] != PLAN_ACTION_SCHEMA
+            or started['response_schema'] != ACTION_SCHEMA
             or completed['started_file_sha256'] != hashlib.sha256((cell / 'step-00.started.json').read_bytes()).hexdigest()
             or old['request_payload'] != payload
-            or any(old.get(k) != v for k, v in wire_record(payload, PLAN_ACTION_SCHEMA).items())
+            or any(old.get(k) != v for k, v in wire_record(payload, ACTION_SCHEMA).items())
             or completed['status'] != 'invalid-response' or body.get('done_reason') != 'length'
             or body.get('eval_count') != 8192 or body['message'].get('content') != ''
             or not body['message'].get('thinking')):
@@ -61,6 +61,8 @@ def plan(raw, *, audits, writer_ended, provider):
         'backend': old['preflight']['backend'], 'payload': payload,
         'calls': [{'ordinal': i, 'think': mode} for i, mode in enumerate(MODES)],
         'maximum_POSTs': 2, 'maximum_metadata_GETs': 6, 'http_timeout_seconds': [10, 900],
+        'original_host_action_schema_sha256': digest(ACTION_SCHEMA),
+        'additional_diagnostic_plan_schema_sha256': digest(PLAN_ACTION_SCHEMA),
         'network_retries': 0, 'native_worlds': 0, 'actions_applied': 0,
         'scope': 'Same original planner input/seed/options; only explicit think flag varies. No execution/readiness or efficacy claim.'}
     result['content_sha256'] = digest(result)
@@ -74,7 +76,7 @@ def dispatch(session, provider, payload):
     begin = time.monotonic()
     try:
         response = post(session, 'http://127.0.0.1:11434/api/chat', payload,
-            PLAN_ACTION_SCHEMA, transport, timeout=(10, 900))
+            ACTION_SCHEMA, transport, timeout=(10, 900))
         transport.update(http_status=response.status_code, raw_http_response=response.text)
         body = _strict_json(response.text)
         transport['response_payload'] = body
@@ -123,7 +125,7 @@ def run(value, output, *, session=None):
             write_json_atomic(output / (prefix + '.started.json'), {
                 'schema': SCHEMA + '.started', 'plan_sha256': value['content_sha256'],
                 'call': call, 'started_utc': archive.utc(), 'http_timeout_seconds': [10, 900],
-                **wire_record(payload, PLAN_ACTION_SCHEMA)}, sort_keys=True, allow_nan=False)
+                **wire_record(payload, ACTION_SCHEMA)}, sort_keys=True, allow_nan=False)
             record = dispatch(session, value['provider'], payload)
             record.update(schema=SCHEMA + '.completed', plan_sha256=value['content_sha256'], call=call)
             write_json_atomic(output / (prefix + '.completed.json'), record, sort_keys=True, allow_nan=False)

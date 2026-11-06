@@ -46,6 +46,8 @@ def test_completion_plan_schema_and_unknown_costs_are_not_salvaged(outcome):
     session = Session([outcome])
     result = h.dispatch(session, {'model': 'SCRIPTED-model'}, {'model': 'SCRIPTED-model', 'think': True})
     assert len(session.posts) == 1 and result['action_applied'] is False
+    assert result['transport']['host_response_schema_sha256'] == h.wire_record(
+        session.posts[0], h.ACTION_SCHEMA)['host_response_schema_sha256']
     assert result['technical_success'] is (outcome == 'success')
     if outcome == 'length':
         assert result['complete_envelope'] is False and result['content_characters'] == 0

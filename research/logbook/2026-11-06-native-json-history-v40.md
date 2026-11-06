@@ -66,3 +66,22 @@ partial, schema-invalid, foreign-model and interrupted outcomes with unknown
 costs preserved. The final mocked scope, including the read-only writer-lock
 guard, passes17/4.92s. Full committed-source software verification remains a
 separate gate. No actual backend/model/Docker calls are made or claimed.
+
+## Separate reasoning-only output-starvation probe
+
+Offline original V39 inspection finds six length terminations, all8192 output
+tokens with thinking but empty answer content; input5034..22859, not evidence
+that context overflow alone explains them. Prepare a separate two-POST true/false
+diagnostic on the original efficiencyG0 planner frame. Do not change production
+decoding, budgets, scientists, losses or original outcomes. New script only;
+all existing runtime/helper bytes still equal the broad-tested450c17f source.
+
+Development mocked probes pass13/1.74s; committed53a03e0 combined diagnostic
+checks pass30/3.89s. The first zero-network actual-archive plan reconstruction
+correctly stops: the new diagnostic incorrectly assumed the original planner's
+host schema was PLAN_ACTION_SCHEMA. Actual V39 uses ACTION_SCHEMA for host
+validation even when its trusted prompt asks for a plan. Payload/messages/seed
+and raw wire otherwise reconstruct exactly. Correct the diagnostic to retain
+the ORIGINAL full host schema and record the extra plan-only classification
+separately. This is a new diagnostic implementation error, not a historical V39
+experiment defect; no actual POST has occurred. Preserve this first outcome.
