@@ -173,3 +173,29 @@ does not stop at these gates.
 
 V36 is now authoritatively closed with two matching original-source audits;
 see the exact closed report rather than prior live snapshots above.
+
+## A2 actual boundary and prospective a3
+
+At immutable EBA, committed focused checks pass176/64.51s with two Docker cases
+deferred to full scope, JUnit
+35c57fb9e747c089660653a6383770ff6609da389080416d2a791c73a9b0d8ca.
+Freeze a2 tree/tag, verify260 exact blobs and all28 unchanged target values.
+Real35B controls55110 and full software65276 then run concurrently at that exact
+source in separate trees. Actual GET /api/ps confirms the approved35B digest,
+context40960 and size_vram24537311728. No scientist/free-design trial is started.
+
+The real controls fail call22 on reindentation only; the full suite passes1447.
+See the separate closed-readiness report for literal differences, actual costs,
+and original-source static replay. A failed literal-copy task is not silently
+interpreted as wire corruption, inability to author scientific code, a failed
+scientific world or a passed certificate. Retain all raw data and unknowns.
+
+Pending user clarification, a3 keeps exact equality mandatory but derives
+character/byte/per-line indentation witnesses for multiline copy targets.
+All28 actions/values stay unchanged; production prompts and scientific policies
+are untouched. Separately add a role-labelled empty-prompt designer load before
+the launch context check: an already installed model can expire while waiting
+for tests, just as the scientist did. Max1 designer+9 scientist loads/10 context
+GETs without explicit resume, no model generation/global backend edits by loads.
+The prior a2 source/tree/certificate remain unchanged.52 development checks pass
+11.54s; commit/focused source checks and actual gates still remain for a3.

@@ -5,7 +5,7 @@ import pytest
 
 from tests.optimization.test_native_designer_contract_v16 import Response
 from tests.optimization.test_native_loaded_roles_v38 import bindings
-from utopia.optimization.native_scientist_load_v38 import load_scientist, replay_load
+from utopia.optimization.native_scientist_load_v38 import load_scientist, load_local_role, replay_load
 from utopia.system.design_patch import digest
 
 
@@ -105,3 +105,25 @@ def test_changed_scientist_weights_are_rejected_before_dispatch(tmp_path):
     with pytest.raises(ValueError,match='original researcher weights'):
         load_scientist(tmp_path/'never.json',provider=provider,purpose='SCRIPTED',session=session)
     assert session.calls==[] and not list(tmp_path.iterdir())
+
+
+def test_explicit_designer_load_cannot_be_mislabeled_as_a_scientist_load(tmp_path):
+    designer=bindings()['designer'];path=tmp_path/'designer.json'
+    class DesignerSession:
+        calls=[]
+        def post(self,url,**kwargs):
+            self.calls.append(kwargs)
+            payload=json.loads(kwargs['data'])
+            assert payload['model']==designer['model'] and payload['prompt']==''
+            assert payload['options']=={'num_ctx':40960}
+            return Response({'model':designer['model'],'done':True,'done_reason':'load'})
+    session=DesignerSession()
+    record=load_local_role(path,provider=designer,purpose='SCRIPTED-designer',role='designer',session=session)
+    intent=read(path.with_suffix('.started.json'))
+    assert intent['role']==record['role']=='designer' and len(session.calls)==1
+    assert replay_load(intent,record,provider=designer,purpose='SCRIPTED-designer',role='designer')['empty_prompt_load_confirmed']
+    with pytest.raises(ValueError):
+        replay_load(intent,record,provider=designer,purpose='SCRIPTED-designer',role='scientist')
+    with pytest.raises(ValueError):
+        load_scientist(tmp_path/'not-science.json',provider=designer,purpose='SCRIPTED',session=session)
+    assert len(session.calls)==1

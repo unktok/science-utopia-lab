@@ -1,4 +1,4 @@
-"""Explicit bounded empty-prompt scientist loading, never scientific inference."""
+"""Explicit bounded empty-prompt local role loading, never scientific inference."""
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -10,16 +10,22 @@ from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic, decode_json
 from .native_search_v14 import validate_provider_binding
 
-SCHEMA = 'scienceutopia.explicit-scientist-load.v38'
+SCHEMA = 'scienceutopia.explicit-local-role-load.v38'
 ENDPOINT = 'http://127.0.0.1:11434/api/generate'
 SCIENTIST_DIGEST = '500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41'
 TIMEOUT = (10, 120)
 
 
-def payload_for(provider):
-    validate_provider_binding(provider)
-    if provider['model_digest'] != SCIENTIST_DIGEST:
-        raise ValueError('explicit load must retain the original researcher weights')
+def payload_for(provider, *, role='scientist'):
+    if role == 'scientist':
+        validate_provider_binding(provider)
+        if provider['model_digest'] != SCIENTIST_DIGEST:
+            raise ValueError('explicit load must retain the original researcher weights')
+    elif role == 'designer':
+        from .native_designer_roles_v38 import validate_designer_binding
+        validate_designer_binding(provider)
+    else:
+        raise ValueError('unknown explicit local load role')
     return {'model': provider['model'], 'prompt': '', 'stream': False, 'think': False,
         'options': {'num_ctx': 40960}, 'keep_alive': '5m'}
 
@@ -38,11 +44,15 @@ def _valid(record):
 
 
 def load_scientist(path, *, provider, purpose, session=None):
+    return load_local_role(path, provider=provider, purpose=purpose, role='scientist', session=session)
+
+
+def load_local_role(path, *, provider, purpose, role, session=None):
     path = Path(path); started = path.with_suffix('.started.json')
     if path.exists() or started.exists():
         raise ValueError('explicit load already dispatched; no overwrite or hidden retry')
-    payload = payload_for(provider); wire = _wire(payload)
-    intent = {'schema': SCHEMA + '.intent', 'provider': clone(provider), 'purpose': purpose,
+    payload = payload_for(provider, role=role); wire = _wire(payload)
+    intent = {'schema': SCHEMA + '.intent', 'provider': clone(provider), 'purpose': purpose, 'role': role,
         'endpoint': ENDPOINT, 'request_payload': payload, 'request_wire_utf8': wire,
         'request_wire_sha256': hashlib.sha256(wire.encode()).hexdigest(),
         'http_timeout_seconds': list(TIMEOUT), 'network_retries': 0,
@@ -53,7 +63,7 @@ def load_scientist(path, *, provider, purpose, session=None):
         import requests
         session = requests.Session(); session.trust_env = False
     begin = time.monotonic()
-    record = {'schema': SCHEMA, 'provider': clone(provider), 'purpose': purpose,
+    record = {'schema': SCHEMA, 'provider': clone(provider), 'purpose': purpose, 'role': role,
         'intent_sha256': intent['content_sha256']}
     try:
         response = session.post(ENDPOINT, data=wire.encode(), headers={'Content-Type': 'application/json'}, timeout=TIMEOUT)
@@ -72,11 +82,11 @@ def load_scientist(path, *, provider, purpose, session=None):
     return record
 
 
-def replay_load(intent, record, *, provider, purpose):
-    wire = _wire(payload_for(provider))
+def replay_load(intent, record, *, provider, purpose, role='scientist'):
+    wire = _wire(payload_for(provider, role=role))
     if (intent.get('schema') != SCHEMA + '.intent' or intent.get('provider') != provider
-            or intent.get('purpose') != purpose or intent.get('endpoint') != ENDPOINT
-            or intent.get('request_payload') != payload_for(provider) or intent.get('request_wire_utf8') != wire
+            or intent.get('purpose') != purpose or intent.get('role') != role or intent.get('endpoint') != ENDPOINT
+            or intent.get('request_payload') != payload_for(provider, role=role) or intent.get('request_wire_utf8') != wire
             or intent.get('request_wire_sha256') != hashlib.sha256(wire.encode()).hexdigest()
             or intent.get('http_timeout_seconds') != list(TIMEOUT) or intent.get('network_retries') != 0
             or intent.get('content_sha256') != digest({k:v for k,v in intent.items() if k!='content_sha256'})):
@@ -84,6 +94,7 @@ def replay_load(intent, record, *, provider, purpose):
     if record is None:
         return {'status': 'dispatched-response-unknown', 'empty_prompt_load_confirmed': False}
     if (record.get('schema') != SCHEMA or record.get('provider') != provider or record.get('purpose') != purpose
+            or record.get('role') != role
             or record.get('intent_sha256') != intent['content_sha256']
             or record.get('content_sha256') != digest({k:v for k,v in record.items() if k!='content_sha256'})):
         raise ValueError('explicit load completion binding differs')

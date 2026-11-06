@@ -2,6 +2,25 @@
 
 Updated: 2026-11-06 JST
 
+## V38 a2 actual copy task fails; original research goal stays active
+
+Actual local35B readiness55110 exits1 after22/28 controls,21 pass, certificate
+0d70ec0e03be9b77494f49c422420f79a065dfd4d2becd11bfe63598f4c98229.
+The failed source differs ONLY by ten formatting spaces (860→870); ASTs match,
+other arguments match, raw/parsed values agree. Original-source read-only replay
+matches the21 earlier receipts, accepts the actual action and statically validates
+it. The failed certificate is not changed or treated as a scientific result.
+All22 costs known:180345 input/15522 output/450.29395204456523 adapter seconds;
+zero native worlds. Same-source full software suite passes1447/884.49s separately.
+
+The user is asked whether future exact-copy checks should be diagnostic or remain
+mandatory. Until an explicit answer, maintain the existing mandatory gate. A3 is
+prepared separately with unchanged28 targets, copy-only whitespace witnesses and
+one explicit designer startup load (plus the original nine scientist loads) to
+handle ordinary idle expiry.52 development checks pass; no a3 inference/certificate
+or scientific result exists yet. V36 remains closed with8 failed slots and the
+original functioning-candidate/own-feedback/remeasurement goal remains unmet.
+
 ## V36 closes unmet; explicit sequential role loading is prepared
 
 Writer20629 exits0 at06:32:41.149171Z after1h26m25.51s, all8 slots consumed.

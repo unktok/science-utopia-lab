@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V38 a2 actual exact-copy failure and separate original-source static diagnostic](results/native-designer-roles-v38-a2-readiness.md)
+- [V38 a3 prospective whitespace witness and explicit designer startup](protocols/campaigns/native-designer-roles-v38-a3.md)
+
 - [V36 exact original-source closure: six failed changed worlds, two author failures](results/native-file-primary-v36-a1.md)
 - [V36 original-source compact audit](results/native-file-primary-v36-a1.json)
 - [V38 a2 prospective explicit sequential local-role loading](protocols/campaigns/native-designer-roles-v38-a2.md)

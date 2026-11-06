@@ -19,8 +19,8 @@ from utopia.system.design_patch import clone, digest
 
 SCHEMA = 'scienceutopia.role-bound-native-search-pilot.v38'
 CLASSIFICATION = 'actual-local-separate-designer-fixed-qwen-researchers-v38'
-ENGINEERING_REVISION = 'v38-a2'
-PROTOCOL = 'research/protocols/campaigns/native-designer-roles-v38-a2.md'
+ENGINEERING_REVISION = 'v38-a3'
+PROTOCOL = 'research/protocols/campaigns/native-designer-roles-v38-a3.md'
 
 
 def build_plan(*, source_commit, initial_system, provider_binding,
@@ -45,6 +45,7 @@ def build_plan(*, source_commit, initial_system, provider_binding,
         native_campaign_status='authorized finite eight-slot development pilot; no failed-slot replenishment')
     plan['budget']['maximum_added_loaded_context_GETs_without_resume'] = 10
     plan['budget']['maximum_explicit_empty_prompt_scientist_load_POSTs_without_resume'] = 9
+    plan['budget']['maximum_explicit_empty_prompt_designer_load_POSTs_without_resume'] = 1
     return plan
 
 

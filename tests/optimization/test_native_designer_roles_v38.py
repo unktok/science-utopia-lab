@@ -1,5 +1,6 @@
 """SCRIPTED role separation, not evidence of actual 35B provider compatibility."""
 import copy
+import json
 
 import pytest
 
@@ -240,12 +241,15 @@ def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tm
                 'context_length': 40960} for b in (scientist, designer)]})
         def post(self, *a, **k):
             from tests.optimization.test_native_designer_contract_v16 import Response
-            return Response({'model': scientist['model'], 'done': True, 'done_reason': 'load'})
-    from utopia.optimization.native_scientist_load_v38 import load_scientist
-    load_scientist(tmp_path / 'role-load-before-pilot-000.json', provider=scientist,
-        purpose='before-role-bound-pilot', session=MetadataSession())
+            model = json.loads(k['data'])['model']
+            return Response({'model': model, 'done': True, 'done_reason': 'load'})
+    from utopia.optimization.native_scientist_load_v38 import load_scientist, load_local_role
+    load_local_role(tmp_path / 'role-load-designer-before-pilot-000.json', provider=designer,
+        purpose='before-role-switch:designer', role='designer', session=MetadataSession())
     record_loaded_context(tmp_path / 'loaded-role-context-designer-before-switch-000.json',
         expected={'designer': designer}, purpose='before-role-switch:designer', session=MetadataSession())
+    load_scientist(tmp_path / 'role-load-before-pilot-000.json', provider=scientist,
+        purpose='before-role-bound-pilot', session=MetadataSession())
     record_loaded_context(tmp_path / 'loaded-role-context-before-pilot-000.json',
         expected={'scientist': scientist}, purpose='before-role-bound-pilot',
         session=MetadataSession())
@@ -293,6 +297,7 @@ def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tm
     assert first['role_bindings'] == {'scientist': scientist, 'designer': designer}
     assert first['loaded_role_context_observations']['records'] == 2
     assert first['explicit_scientist_loads']['dispatched_POSTs'] == 1
+    assert first['explicit_designer_loads']['dispatched_POSTs'] == 1
     assert first['consumed_native_slots'] == first['technical_failures'] == 8
     assert first['physical_native_worlds'] == first['physical_researcher_responses'] == 0
     assert first['designer_costs']['dispatch_intents'] == model.calls == 64

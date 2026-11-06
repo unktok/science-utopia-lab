@@ -107,6 +107,35 @@ def control_argument_key_notice(expected):
           'top-level arguments object; preserve every nested literal value exactly.')
 
 
+def control_string_whitespace_notice(expected):
+    """Copy-task witness only; not a policy/code template or output normalizer."""
+    from .native_designer_tools_v25 import function_data
+    rows = []
+    def visit(value, path):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                visit(item, path + '.' + key)
+        elif isinstance(value, list):
+            for index, item in enumerate(value):
+                visit(item, path + '[' + str(index) + ']')
+        elif isinstance(value, str) and '\n' in value:
+            prefixes = []
+            for line in value.split('\n'):
+                leading = line[:len(line) - len(line.lstrip(' \t'))]
+                prefixes.append([ord(char) for char in leading])
+            rows.append({'path': path, 'characters': len(value), 'utf8_bytes': len(value.encode()),
+                'line_leading_codepoints': prefixes})
+    visit(function_data(expected), '$')
+    if not rows:
+        return ''
+    return ('LITERAL STRING WHITESPACE IS DATA IN THIS COPY CONTROL. '
+        'Do not format, improve, align or reindent source code. The complete serialized response '
+        'above is the target, not a code-formatting task. These caller-owned witnesses describe '
+        'the exact multiline strings; 32 means one space and 9 means one tab. '
+        'Copy the target; do not return these witnesses as arguments.\n'
+        + json.dumps(rows, ensure_ascii=False, allow_nan=False))
+
+
 def _prompt(request, state, steps, provider, expected, protocol):
     if protocol == 'staged-v15' and expected.get('tool') == 'plan':
         from .native_staged_author_v15 import build_prompt, PLAN_CONTROL_SYSTEM_PROMPT
@@ -136,6 +165,7 @@ def _prompt(request, state, steps, provider, expected, protocol):
         system += '\nUse the one-shot operations/factors/continuous/rationale envelope, not a tool envelope.'
     else:
         system += '\n\n' + control_argument_key_notice(expected)
+        system += '\n\n' + control_string_whitespace_notice(expected)
         if expected.get('tool') == 'finish':
             from .native_staged_author_v15 import FINISH_CONTROL_PREFIX
             system = FINISH_CONTROL_PREFIX + system

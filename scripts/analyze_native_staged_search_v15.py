@@ -103,7 +103,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-file-primary-v36-a1.md',
                 'research/protocols/campaigns/native-history-files-v37-a1.md',
                 'research/protocols/campaigns/native-designer-roles-v38-a1.md',
-                'research/protocols/campaigns/native-designer-roles-v38-a2.md'}):
+                'research/protocols/campaigns/native-designer-roles-v38-a2.md',
+                'research/protocols/campaigns/native-designer-roles-v38-a3.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -452,19 +453,25 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     if read(root / 'operator-config.json') != {'provider_binding': provider,
             **({'designer_provider_binding': author_provider} if role_separated else {})}:
         raise ValueError('staged operator binding differs from frozen plan')
-    loaded_observations, scientist_loads = [], []
+    loaded_observations, scientist_loads, designer_loads = [], [], []
     if role_separated:
         from utopia.optimization.native_loaded_roles_v38 import replay_loaded_context
         from utopia.optimization.native_scientist_load_v38 import replay_load
-        def audit_loads(paths, purpose):
+        def audit_loads(paths, purpose, role='scientist'):
             valid = []
             for path in paths:
                 completed = path.with_name(path.name.replace('.started.json', '.json'))
                 intent = read(path); record = read(completed) if completed.exists() else None
-                proof = replay_load(intent, record, provider=provider, purpose=purpose)
-                scientist_loads.append({'intent': intent, 'completion': record, 'proof': proof})
+                proof = replay_load(intent, record,
+                    provider=provider if role == 'scientist' else author_provider, purpose=purpose, role=role)
+                (scientist_loads if role == 'scientist' else designer_loads).append(
+                    {'intent': intent, 'completion': record, 'proof': proof})
                 valid.append(proof['empty_prompt_load_confirmed'])
             return valid
+        initial_designer_loads = audit_loads(sorted(root.glob('role-load-designer-before-pilot-*.started.json')),
+            'before-role-switch:designer', role='designer')
+        if not any(initial_designer_loads):
+            raise ValueError('separate-role pilot lacks its explicit confirmed designer context load')
         initial_loads = audit_loads(sorted(root.glob('role-load-before-pilot-*.started.json')),
             'before-role-bound-pilot')
         if not any(initial_loads):
@@ -603,6 +610,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         for i in range(len(run['observations']) - 1)) for run in runs.values())
     if role_separated and not list(root.glob('writer-resume-*.started.json')):
         if (len(scientist_loads) > plan['budget']['maximum_explicit_empty_prompt_scientist_load_POSTs_without_resume']
+                or len(designer_loads) > plan['budget']['maximum_explicit_empty_prompt_designer_load_POSTs_without_resume']
                 or len(loaded_observations) > plan['budget']['maximum_added_loaded_context_GETs_without_resume']):
             raise ValueError('explicit role-management attempts exceed the declared finite budget')
     output = {'schema': SCHEMA, 'classification': classification, 'source_commit': expected_source,
@@ -622,6 +630,13 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             'confirmed_empty_prompt_loads': sum(item['proof']['empty_prompt_load_confirmed'] for item in scientist_loads),
             'response_unknown': sum(item['completion'] is None for item in scientist_loads),
             'recorded_seconds': math.fsum(item['completion']['elapsed_seconds'] for item in scientist_loads if item['completion']),
+            'model_generation_counts_not_inferred_from_missing_provider_counters': True}}
+            if role_separated else {}),
+        **({'explicit_designer_loads': {
+            'dispatched_POSTs': len(designer_loads),
+            'confirmed_empty_prompt_loads': sum(item['proof']['empty_prompt_load_confirmed'] for item in designer_loads),
+            'response_unknown': sum(item['completion'] is None for item in designer_loads),
+            'recorded_seconds': math.fsum(item['completion']['elapsed_seconds'] for item in designer_loads if item['completion']),
             'model_generation_counts_not_inferred_from_missing_provider_counters': True}}
             if role_separated else {}),
         'status': ('budget-complete-with-failures' if terminal and totals['technical_failures'] else 'complete'
