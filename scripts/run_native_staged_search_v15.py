@@ -59,28 +59,42 @@ def build_plan(*, source_commit, initial_system, provider_binding, runtime_seed_
         'native_campaign_status': 'authorized two-objective four-generation same-world feedback pilot; no replenished failures'}
 
 
-def execute(args):
+def execute(args, *, plan_builder=build_plan, queue_type=NativeStagedSearchQueue,
+            designer_provider=None, generator_factory=None, native_factory_type=None):
     from utopia.optimization.native_factory import LocalQwenNativeFactory
     from utopia.optimization.native_staged_author_v15 import make_local_staged_generator
     from utopia.system.code_mechanisms import DockerCodeExecutor
     from utopia.system.native_open_examples import open_native_system
     source = pinned_revision(ROOT)
-    factory_binding = LocalQwenNativeFactory(args.output / 'binding-only-no-worlds', args.data_cache,
+    factory_type = native_factory_type or LocalQwenNativeFactory
+    factory_binding = factory_type(args.output / 'binding-only-no-worlds', args.data_cache,
         years=2, corpus_years=4)
     provider = {k: clone(getattr(factory_binding, k)) for k in
         ('model', 'model_digest', 'corpus_sha256', 'dataset_identity', 'corpus_years')}
     provider['image_id'] = DockerCodeExecutor().image_id
+    if designer_provider is not None:
+        from utopia.optimization.native_designer_roles_v38 import validate_designer_binding
+        validate_designer_binding(designer_provider, scientist_binding=provider)
+        if generator_factory is None:
+            raise ValueError('separate designer requires an explicit role-bound generator factory')
+    author_provider = provider if designer_provider is None else designer_provider
     from utopia.optimization.native_designer_preflight import require_certificate
-    require_certificate(args.designer_preflight, provider, protocol='staged-v15')
-    plan = build_plan(source_commit=source, initial_system=open_native_system(provider['image_id']).to_dict(),
-        provider_binding=provider, runtime_seed_binding=factory_binding.runtime_seed_binding)
+    require_certificate(args.designer_preflight, author_provider, protocol='staged-v15')
+    if designer_provider is not None:
+        from utopia.optimization.native_loaded_roles_v38 import record_loaded_context
+        number = len(list(args.output.glob('loaded-role-context-before-pilot-*.json')))
+        record_loaded_context(args.output / f'loaded-role-context-before-pilot-{number:03d}.json',
+            expected={'scientist': provider, 'designer': author_provider}, purpose='before-role-bound-pilot')
+    plan = plan_builder(source_commit=source, initial_system=open_native_system(provider['image_id']).to_dict(),
+        provider_binding=provider, runtime_seed_binding=factory_binding.runtime_seed_binding,
+        **({'designer_provider_binding': designer_provider} if designer_provider is not None else {}))
     path = args.output / 'plan.json'
     if path.exists():
         if json.loads(path.read_text()) != plan:
             raise ValueError('frozen staged native pilot changed; never rewrite it')
     else:
         write_json_atomic(path, plan, sort_keys=True, allow_nan=False)
-    queue = NativeStagedSearchQueue(args.output / 'queue', provider_binding=provider)
+    queue = queue_type(args.output / 'queue', provider_binding=provider)
     searches = {}
     # Freeze/validate every request before the first model generation. CLI
     # authorization supplies exact request-bound consent; not a browser claim.
@@ -92,12 +106,13 @@ def execute(args):
     if identities.exists() and json.loads(identities.read_text()) != searches:
         raise ValueError('immutable queued search identities changed')
     write_json_atomic(identities, searches, sort_keys=True, allow_nan=False)
-    write_json_atomic(args.output / 'operator-config.json', {'provider_binding': provider},
+    write_json_atomic(args.output / 'operator-config.json', {'provider_binding': provider,
+        **({'designer_provider_binding': designer_provider} if designer_provider is not None else {})},
         sort_keys=True, allow_nan=False)
 
     def snapshot(_controller=None):
         runs = {name: queue.get(identity) for name, identity in searches.items()}
-        result = {'schema': SCHEMA + '.progress', 'classification': CLASSIFICATION,
+        result = {'schema': plan['schema'] + '.progress', 'classification': plan['classification'],
             'source_commit': source, 'plan_sha256': digest(plan), 'runs': runs,
             'terminal': all(r['status'] in ('complete', 'failed') for r in runs.values()),
             'scheduled_native_slots': plan['budget']['scheduled_native_slots'],
@@ -107,12 +122,12 @@ def execute(args):
         return result
 
     def factory(root, request):
-        return LocalQwenNativeFactory(root / 'worlds', args.data_cache, years=request['years'], corpus_years=4,
+        return factory_type(root / 'worlds', args.data_cache, years=request['years'], corpus_years=4,
             record_wire=True, record_code=True, inference_lock=args.output / 'queue/inference.lock',
             experiment_binding={'request_sha256': digest(request), 'loss_spec': request['loss_spec']})
 
     def author(root, request, binding):
-        return make_local_staged_generator(root / 'authoring', image_id=binding['image_id'],
+        return (generator_factory or make_local_staged_generator)(root / 'authoring', image_id=binding['image_id'],
             provider_binding=binding, max_steps=request['designer']['max_steps'],
             max_tokens=request['designer']['max_tokens'], inference_lock=args.output / 'queue/inference.lock',
             preflight_certificate=args.designer_preflight)
@@ -134,7 +149,7 @@ def execute(args):
     return 1 if any(run['status'] == 'failed' for run in state['runs'].values()) else 0
 
 
-def main():
+def main(*, execute_callback=None, extra_arguments=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--start-authorized-search', action='store_true', required=True)
     parser.add_argument('--output', type=Path, required=True)
@@ -143,6 +158,8 @@ def main():
         help='operator-owned successful current-source/current-backend interface certificate')
     parser.add_argument('--resume-existing-launch', action='store_true',
         help='explicit source-matched resume; consumes existing journals, never replenishes budgets')
+    if extra_arguments is not None:
+        extra_arguments(parser)
     args = parser.parse_args()
     pinned_revision(ROOT)
     args.output = args.output.resolve()
@@ -168,7 +185,7 @@ def main():
             'certificate': str(args.designer_preflight.resolve()), 'status': 'started'}
         write_json_atomic(started, receipt, sort_keys=True, allow_nan=False)
         try:
-            code = execute(args)
+            code = (execute_callback or execute)(args)
         except BaseException as error:
             receipt.update(status='aborted', error=type(error).__name__ + ': ' + str(error),
                 ended_utc=datetime.now(timezone.utc).isoformat())

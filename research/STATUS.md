@@ -2,6 +2,28 @@
 
 Updated: 2026-11-06 JST
 
+## V38 prepared only: separately pinned local designer, unchanged researchers
+
+The user permits changing only the designer if needed, with advance confirmation
+for new external services/costs. Read-only local discovery finds an already
+installed35B identity. Separate v38 request/plan/queue/driver and role-aware audit
+retain Qwen3-8B scientists, the original world/losses/eight slots, and exact own
+history retrieval. Legacy requests cannot silently select another designer.
+
+Add recorded read-only loaded40960 observations for both roles before launch
+and the original scientist before each world, avoiding an implicit context change
+on model eviction without altering scientist payloads or reconfiguring/loading
+the backend.36 development checks pass; no actual35B inference, compatible
+provider, certificate or scientific result exists yet. Do not call this complete.
+
+At06:02Z frozen V36 remains live:4/8 consumed; throughput's four authored worlds
+fail shape/key/envelope execution, efficiencyG0 is editing. Do not change that
+run. V37's broad check has1398 pass/one Docker cleanup timeout; same-source
+isolation passes and a separate unchanged-source full repeat runs. Preserve all
+outcomes. After V36's actual end and two original-source audits, a fully verified
+V38 continuation may supersede the unlaunched Qwen-only V37 pilot if the original
+functional-candidate/own-feedback/remeasurement goal remains unmet.
+
 ## V37 separate preparation: own errors arrive, but failed source was not retrievable
 
 V36 b04 remains live/immutable. Its changed G0/G1 candidates fail on tensor

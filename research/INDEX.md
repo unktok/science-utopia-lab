@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V38 prospective designer-only local-model separation, fixed researchers and loaded-context checks](protocols/campaigns/native-designer-roles-v38-a1.md)
+- [V38 user authorization, exact installed identities and software evidence](logbook/2026-11-06-designer-role-separation-v38.md)
+
 - [V37 conditional on-demand own-candidate source retrieval](protocols/campaigns/native-history-files-v37-a1.md)
 - [V37 actual missing read path and separate retrieval implementation](logbook/2026-11-06-native-history-files-v37.md)
 

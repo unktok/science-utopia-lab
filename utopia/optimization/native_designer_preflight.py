@@ -230,7 +230,11 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         'max_tokens': decoding['max_tokens'], 'temperature': temperatures,
         'decoding_contract': contracts, 'created_epoch': time.time()}
     write_json_atomic(directory / 'plan.json', plan, sort_keys=True, allow_nan=False)
-    model = (LocalStagedQwenDesignerModel if protocol == 'staged-v15' else LocalQwenDesignerModel)(provider,
+    model_type = LocalStagedQwenDesignerModel if protocol == 'staged-v15' else LocalQwenDesignerModel
+    if protocol == 'staged-v15' and provider.get('model') != 'qwen3:8b':
+        from .native_designer_roles_v38 import staged_model_type
+        model_type = staged_model_type(provider)
+    model = model_type(provider,
         inference_lock=directory.parent / 'interface-calibration.lock',
         **({'conversation_mode': 'interface-control-v16'} if protocol == 'staged-v15' else {}))
     state, steps, records = initial_draft(request), [], []

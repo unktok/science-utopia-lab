@@ -68,6 +68,9 @@ class NativeStagedSearchQueue(NativeSearchQueue):
     controller_type = NativeStagedSearchController
     database_name = 'native-search-jobs-v15.sqlite'
 
+    def designer_provider_for(self, request):
+        return clone(self.provider_binding)
+
     def get(self, identity):
         row, controller = self._load(identity)
         result = controller.projection(search_id=identity, status=row['status'],
@@ -78,7 +81,7 @@ class NativeStagedSearchQueue(NativeSearchQueue):
             [controller.campaign.state['pending']] if controller.campaign.state['pending'] else [])
         trace = project_authoring_trace(controller.directory / 'authoring',
             allowed_requests=[record['request'] for record in records],
-            provider_binding=self.provider_binding,
+            provider_binding=self.designer_provider_for(controller.request),
             settings={k: controller.request['designer'][k] for k in ('max_steps', 'max_tokens')},
             authoring_protocol=protocol_binding())
         result['authoring_trace'] = trace

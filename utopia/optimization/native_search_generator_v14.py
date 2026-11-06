@@ -427,13 +427,16 @@ class LocalQwenDesignerModel:
     def __init__(self, provider_binding, *, inference_lock=None, preflight_certificate=None):
         import requests
         self.binding = clone(provider_binding)
-        if self.binding.get('model') != 'qwen3:8b':
-            raise ValueError('this local designer supports the explicitly fixed qwen3:8b model only')
+        self._validate_model_binding()
         self.session = requests.Session()
         self.session.trust_env = False
         self.inference_lock = Path(inference_lock) if inference_lock else None
         self.preflight_certificate = preflight_certificate
         self.last_transport, self.last_messages = {}, []
+
+    def _validate_model_binding(self):
+        if self.binding.get('model') != 'qwen3:8b':
+            raise ValueError('this local designer supports the explicitly fixed qwen3:8b model only')
 
     def _check_preflight(self, protocol):
         # Direct model construction is the calibration/test interface. All

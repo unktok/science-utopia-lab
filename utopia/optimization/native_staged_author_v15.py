@@ -373,6 +373,7 @@ def protocol_binding():
         'field_addressing_source_sha256': hashlib.sha256(Path(native_field_addressing_v28.__file__).read_bytes()).hexdigest(),
         'file_workspace_source_sha256': hashlib.sha256(Path(native_file_workspace_v35.__file__).read_bytes()).hexdigest(),
         'history_workspace_source_sha256': hashlib.sha256(Path(native_history_workspace_v37.__file__).read_bytes()).hexdigest(),
+        'designer_roles_source_sha256': hashlib.sha256(Path(__file__).with_name('native_designer_roles_v38.py').read_bytes()).hexdigest(),
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),

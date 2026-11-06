@@ -23,6 +23,13 @@ from scripts.analyze_native_autonomous_search_v14 import (
     authored_payload_comparisons, read, replay_campaign, design_change, GeneratedMixedDesign, SystemSpec,
 )
 from scripts.run_native_staged_search_v15 import build_plan, CLASSIFICATION, SCHEMA as RAW_SCHEMA
+from scripts.run_native_designer_roles_v38 import (
+    build_plan as role_build_plan, CLASSIFICATION as ROLE_CLASSIFICATION,
+    SCHEMA as ROLE_RAW_SCHEMA,
+)
+from utopia.optimization.native_designer_roles_v38 import (
+    NativeRoleBoundSearchController, NativeRoleBoundSearchQueue,
+)
 from utopia.optimization.native_search_v15 import NativeStagedSearchController
 from utopia.optimization import native_staged_author_v15 as staged_author
 from utopia.optimization.native_staged_author_v15 import (
@@ -94,7 +101,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-file-workspace-v35-a1.md',
                 'research/protocols/campaigns/native-file-workspace-v35-a2.md',
                 'research/protocols/campaigns/native-file-primary-v36-a1.md',
-                'research/protocols/campaigns/native-history-files-v37-a1.md'}):
+                'research/protocols/campaigns/native-history-files-v37-a1.md',
+                'research/protocols/campaigns/native-designer-roles-v38-a1.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -421,12 +429,16 @@ def analyze(run, *, expected_source, require_complete=True):
 
 def _analyze(root, *, expected_source, require_complete, inventory):
     plan = read(root / 'plan.json'); classification = plan.get('classification')
-    if classification not in {CLASSIFICATION, FIXTURE} or plan.get('source_commit') != expected_source:
+    if classification not in {CLASSIFICATION, ROLE_CLASSIFICATION, FIXTURE} or plan.get('source_commit') != expected_source:
         raise ValueError('staged actual/fixture classification or source differs')
     source = source_proofs(expected_source, classification, protocol_path=plan['protocol'])
     provider = plan['provider_binding']
-    expected_plan = build_plan(source_commit=expected_source, initial_system=plan['initial_system'],
-        provider_binding=provider, runtime_seed_binding=plan['runtime_seed_binding'])
+    role_separated = classification == ROLE_CLASSIFICATION
+    author_provider = plan['designer_provider_binding'] if role_separated else provider
+    expected_plan = (role_build_plan if role_separated else build_plan)(
+        source_commit=expected_source, initial_system=plan['initial_system'],
+        provider_binding=provider, runtime_seed_binding=plan['runtime_seed_binding'],
+        **({'designer_provider_binding': author_provider} if role_separated else {}))
     expected_plan['classification'] = classification
     if plan != expected_plan:
         raise ValueError('staged exact frozen pilot source/request/loss/budget differs')
@@ -436,12 +448,27 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                 or plan['runtime_seed_binding'].get('python_hash_seed_environment') != '42'
                 or plan['initial_system'] != open_native_system(provider['image_id']).to_dict()):
             raise ValueError('actual staged model/corpus/hash-seed/original disclosed seed differs')
-    if read(root / 'operator-config.json') != {'provider_binding': provider}:
+    if read(root / 'operator-config.json') != {'provider_binding': provider,
+            **({'designer_provider_binding': author_provider} if role_separated else {})}:
         raise ValueError('staged operator binding differs from frozen plan')
+    loaded_observations = []
+    if role_separated:
+        from utopia.optimization.native_loaded_roles_v38 import replay_loaded_context
+        gates = sorted(root.glob('loaded-role-context-before-pilot-*.json'))
+        if not gates:
+            raise ValueError('separate-role pilot lacks its fresh both-role loaded-context gate')
+        for path in gates:
+            observation = read(path)
+            replay_loaded_context(observation, expected={'scientist': provider, 'designer': author_provider},
+                purpose='before-role-bound-pilot')
+            loaded_observations.append(observation)
+        if not any(item['valid'] for item in loaded_observations):
+            raise ValueError('separate-role pilot launched without both original contexts loaded')
     searches = read(root / 'searches.json')
     if set(searches) != {entry['id'] for entry in plan['runs']} or len(set(searches.values())) != len(searches):
         raise ValueError('staged arms share or omit a physical queued search')
-    db_rows = _queue_rows(root / 'queue/native-search-jobs-v15.sqlite')
+    database = (NativeRoleBoundSearchQueue.database_name if role_separated else 'native-search-jobs-v15.sqlite')
+    db_rows = _queue_rows(root / 'queue' / database)
     if set(db_rows) != set(searches.values()):
         raise ValueError('unaccounted staged queue rows')
     progress = read(root / 'progress.json'); _hashed_record(progress)
@@ -457,6 +484,17 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                 or row['plan_hash'] != digest(runtime_plan) or row['status'] not in {'queued', 'running', 'complete', 'failed'}):
             raise ValueError('staged queue/request/plan/source/status binding differs')
         directory = _inside(root, 'queue/' + search_id)
+        if role_separated:
+            for native_root in sorted((directory / 'worlds').glob('*')):
+                gates = sorted(native_root.glob('loaded-role-context-*.json'))
+                valid = []
+                for path in gates:
+                    observation = read(path)
+                    valid.append(replay_loaded_context(observation, expected={'scientist': provider},
+                        purpose='before-native-world:' + native_root.name))
+                    loaded_observations.append(observation)
+                if (native_root / 'system.json').exists() and not any(valid):
+                    raise ValueError('native world lacks its original scientist loaded-context evidence')
         world = {'source_commit': expected_source, **deepcopy(provider),
             'runtime_seed_binding': plan['runtime_seed_binding'], 'years': request['years']}
         campaign_world = {'source_commit': expected_source, **deepcopy(provider),
@@ -466,11 +504,12 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             loss=request['loss_spec'], initial_system=plan['initial_system'], expected_budget=request['native_budget'],
             experiment={'request_sha256': digest(request), 'loss_spec': request['loss_spec']}, campaign_world=campaign_world)
         native['designer'] = audit_authoring(directory / 'authoring', native['records'], pending=native['pending'],
-            provider=provider, designer=request['designer'], classification=classification)
+            provider=author_provider, designer=request['designer'], classification=classification)
         journal_paths.update((directory / 'authoring' / ('generation-' + proof['request_sha256'])).resolve()
             for proof in native['designer']['proofs'])
         system_paths.update(p.resolve() for p in (directory / 'worlds').glob('*/system.json'))
-        reader = NativeStagedSearchController.__new__(NativeStagedSearchController)
+        controller_type = NativeRoleBoundSearchController if role_separated else NativeStagedSearchController
+        reader = controller_type.__new__(controller_type)
         reader.directory, reader.plan, reader.plan_sha256, reader.request = directory, runtime_plan, digest(runtime_plan), request
         reader.campaign = replay_campaign(directory / 'campaign', request['method'])
         errors = [{'worker_error': row['error'], 'loss': None}] if row['error'] else []
@@ -481,7 +520,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         if saved['created_at'] != row['created'] or saved['updated_at'] != row['updated']:
             raise ValueError('staged saved progress is not its final persisted queue snapshot')
         trace = project_authoring_trace(directory / 'authoring', allowed_requests=[r['request'] for r in native['records']
-            + ([native['pending']] if native['pending'] else [])], provider_binding=provider,
+            + ([native['pending']] if native['pending'] else [])], provider_binding=author_provider,
             settings={key: request['designer'][key] for key in ('max_steps', 'max_tokens')}, authoring_protocol=protocol_binding())
         if trace != saved['authoring_trace'] or trace['warnings']:
             raise ValueError('staged observed UI authoring trace differs from exact audited journals')
@@ -522,7 +561,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     if (designer['generations'] > plan['budget']['free_generations']
             or designer['dispatch_intents'] > plan['budget']['maximum_generation_POSTs']):
         raise ValueError('staged aggregate generation/provider budget exceeded')
-    expected_progress = {'schema': RAW_SCHEMA + '.progress', 'classification': classification,
+    expected_progress = {'schema': (ROLE_RAW_SCHEMA if role_separated else RAW_SCHEMA) + '.progress', 'classification': classification,
         'source_commit': expected_source, 'plan_sha256': digest(plan), 'runs': {name: r['runtime_progress'] for name, r in runs.items()},
         'terminal': queue_terminal, 'scheduled_native_slots': plan['budget']['scheduled_native_slots'],
         'consumed_native_slots': totals['consumed_native_slots']}
@@ -538,6 +577,16 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         for i in range(len(run['observations']) - 1)) for run in runs.values())
     output = {'schema': SCHEMA, 'classification': classification, 'source_commit': expected_source,
         'engineering_revision': plan.get('engineering_revision', 'a1'),
+        **({'role_bindings': {'scientist': deepcopy(provider), 'designer': deepcopy(author_provider)}}
+            if role_separated else {}),
+        **({'loaded_role_context_observations': {
+            'records': len(loaded_observations),
+            'valid': sum(item['valid'] for item in loaded_observations),
+            'metadata_GET_attempts': sum(item['metadata_GET_attempts'] for item in loaded_observations),
+            'recorded_seconds': math.fsum(item['elapsed_seconds'] for item in loaded_observations),
+            'receipt_sha256s': [item['content_sha256'] for item in loaded_observations],
+            'no_model_loading_or_generation_by_these_checks': True}}
+            if role_separated else {}),
         'status': ('budget-complete-with-failures' if terminal and totals['technical_failures'] else 'complete'
             if terminal else 'technically-aborted' if queue_terminal else 'in-progress'),
         'budget_terminal': terminal, 'queue_terminal': queue_terminal,
