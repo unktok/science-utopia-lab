@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V35 a1 real readiness fails; a2 clarifies literal control boundaries
+
+Actual25548 exits1 after7/27 controls:typed-6 changes newline/backslash values.
+Raw strict decoding reproduces the saved wrong model action; do not repair it.
+Record7 POSTs/306.90316045773216s/72035 input3355 output, all7 costs known;
+failed certificate6a8db3e64fdfd047cf4614ebfa40523c6057a18b1b643eb0118a51b23883188a.
+There are zero a1 native worlds and no valid production gate. Preserve frozen
+632d776/tree/tag and its failure despite543 focused/1282 broader test passes.
+
+Separate prospective a2 marks the complete once-serialized control JSON without
+changing its target values, production authoring, scientist/world/losses or
+eight-attempt budget.104 focused checks pass; no actual a2 call yet. See the
+[closed actual failure](results/native-file-workspace-v35-a1-readiness.md) and
+[new protocol](protocols/campaigns/native-file-workspace-v35-a2.md). The original
+goal remains active; work continues, not a readiness-only handoff.
+
 ## V34 closes with matching original audits; V35 actual readiness is live
 
 Writer28400 exits0 at02:07:55.873934Z (59m46.24s). Four slots:two rejected

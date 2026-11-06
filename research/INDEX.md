@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V35 a1 actual string-copy failure, retained costs and no native worlds](results/native-file-workspace-v35-a1-readiness.md)
+- [V35 a2 prospective complete response-text boundaries](protocols/campaigns/native-file-workspace-v35-a2.md)
+
 - [V34 matching original audits, preserved native/code failures and costs](results/native-field-feedback-v34-a1.md)
 - [V34 compact original-source audit projection](results/native-field-feedback-v34-a1.json)
 

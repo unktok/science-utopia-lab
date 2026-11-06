@@ -150,6 +150,8 @@ class ScriptedSession:
         payload = json.loads(kwargs['data'])
         system = payload['messages'][0]['content']
         target = system.split('nothing is executed or adopted.\n')[1]
+        if target.startswith(p.CONTROL_JSON_BEGIN):
+            target = target.removeprefix(p.CONTROL_JSON_BEGIN).split(p.CONTROL_JSON_END, 1)[0]
         if target.startswith('<tool_call>'):
             function, _ = json.JSONDecoder().raw_decode(target.removeprefix('<tool_call>').lstrip())
             expected = {'tool': function['name'], **function['arguments']}
@@ -326,6 +328,8 @@ def test_control_targets_are_literal_function_data_not_prior_executed_calls():
         assert CONTROL_TARGET_NOTE in messages[0]['content'] and CONTROL_TARGET_NOTE in messages[-1]['content']
         assert 'exactly its argument keys' in CONTROL_TARGET_NOTE and 'do not carry fields over' in CONTROL_TARGET_NOTE
         target = messages[0]['content'].split('nothing is executed or adopted.\n')[1]
+        if target.startswith(p.CONTROL_JSON_BEGIN):
+            target = target.removeprefix(p.CONTROL_JSON_BEGIN).split(p.CONTROL_JSON_END, 1)[0]
         actual, _ = json.JSONDecoder().raw_decode(target)
         assert actual == function_data(case['expected'])
         assert message_from_action(case['expected'])['content'] not in messages[0]['content']
