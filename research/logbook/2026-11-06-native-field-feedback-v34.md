@@ -73,3 +73,10 @@ request/provider, max24 controls. It has no native worlds and is not yet a
 passing certificate or free-design success. Preserve the frozen source; wait
 for its actual terminal status and subsequent loaded40960 gate, then continue
 the original-world feedback pilot if eligible. The original goal stays active.
+
+While readiness runs, add test-only assertions that the same malformed-response
+SCRIPTED four-step journal also remains visible in the observed UI chronicle:
+no warnings, exact rejected authored_output/errors, next valid edit and explicit
+finish. Main-only test scope14031 passes12 in2.59s, ui-history-contract.xml SHA
+3cd760875c530e8c7f59d7faace80aaed6a95a89401b80c74fe0b7515847da6a.
+No runtime, actual source75da492 or certificate is changed by this extra coverage.

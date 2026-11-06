@@ -8,7 +8,8 @@ from tests.optimization.test_native_authoring_ir import ALPHA, IMAGE, request
 from tests.optimization.test_native_planning_author_v22 import PLAN
 from tests.optimization.test_native_staged_author_v15 import apply, author, Model
 from utopia.optimization.native_staged_author_v15 import (
-    action_summary, build_prompt, build_conversation, initial_draft, SYSTEM_PROMPT)
+    action_summary, build_prompt, build_conversation, initial_draft, SYSTEM_PROMPT,
+    project_authoring_trace)
 from utopia.system.design_patch import digest
 
 
@@ -73,3 +74,13 @@ def test_invalid_edit_consumes_one_step_then_next_model_action_and_cold_replay_w
     assert len(list(result_path.parent.glob('step-*.started.json'))) == 4
     # Re-entry has no remaining provider actions: any redispatch would fail.
     assert generator(body) == definition
+    trace = project_authoring_trace(tmp_path, allowed_requests=[body],
+        provider_binding=generator.provider_binding, settings=generator.settings,
+        authoring_protocol=generator.protocol)
+    assert trace['warnings'] == []
+    assert trace['generations'][0]['status'] == 'generated'
+    assert [s['status'] for s in trace['generations'][0]['steps']] == [
+        'applied', 'rejected', 'applied', 'finished']
+    rejected = trace['generations'][0]['steps'][1]
+    assert rejected['authored_output']['field_updates'][1] == 'malformed row'
+    assert rejected['errors']
