@@ -5,7 +5,7 @@ and editor request reasoning; the explicit V43 direct profile does not. One comp
 JSON function object becomes a tool action, with strict literal arguments.
 """
 from utopia.system.design_patch import clone, digest
-from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_FUNCTION_DIRECT, check_conversation_profile
+from .native_designer_tools_v25 import LEGACY_HISTORY, DIRECT_PROFILES, AUTHORING_RECOVERY, check_conversation_profile
 
 STAGED_MAX_STEPS = 8
 STAGED_MAX_TOKENS = 8192
@@ -21,7 +21,7 @@ def decoding_contract(protocol, *, role=None, conversation_profile=LEGACY_HISTOR
         role = role or 'editor'
         if role not in ('planner', 'editor'):
             raise ValueError('unknown source-owned designer role')
-        return {'think': conversation_profile != PLAIN_FUNCTION_DIRECT,
+        result = {'think': conversation_profile not in DIRECT_PROFILES,
             'backend_format': 'json', 'response_channel': 'function-json-v26',
             'http_timeout_seconds': list(STAGED_HTTP_TIMEOUT_SECONDS),
             'context_policy': {'truncate': False, 'shift': False},
@@ -29,6 +29,9 @@ def decoding_contract(protocol, *, role=None, conversation_profile=LEGACY_HISTOR
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,
             'sampling_options': {'num_ctx': STAGED_CONTEXT_TOKENS, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}
+        if conversation_profile == AUTHORING_RECOVERY:
+            result['backend_format_policy'] = 'Source-owned per-phase V44 submission/implementation envelope; generic JSON elsewhere'
+        return result
     if protocol == 'one-shot-v14':
         if conversation_profile != LEGACY_HISTORY:
             raise ValueError('designer conversation profile requires staged-v15')
@@ -55,7 +58,7 @@ def calibration_role(protocol, case_id):
 def designer_payload(protocol, provider, messages, seed_ctx, *, max_tokens, temperature, role=None,
                      conversation_profile=LEGACY_HISTORY):
     contract = decoding_contract(protocol, role=role, conversation_profile=conversation_profile)
-    if conversation_profile == PLAIN_FUNCTION_DIRECT and (
+    if conversation_profile in DIRECT_PROFILES and (
             type(max_tokens) is not int or max_tokens != contract['max_tokens']
             or temperature != contract['temperature']):
         raise ValueError('direct designer profile requires its exact source-owned decoding budget/temperature')
@@ -65,5 +68,8 @@ def designer_payload(protocol, provider, messages, seed_ctx, *, max_tokens, temp
             'num_predict': max_tokens, 'seed': int(digest(seed_ctx)[:8], 16) % (2**31)}}
     if contract['backend_format'] is not None:
         payload['format'] = contract['backend_format']
+    if conversation_profile == AUTHORING_RECOVERY:
+        from .native_authoring_recovery_v44 import backend_format
+        payload['format'] = backend_format(messages)
     payload.update(clone(contract.get('context_policy', {})))
     return payload

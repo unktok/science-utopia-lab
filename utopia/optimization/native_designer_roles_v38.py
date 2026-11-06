@@ -15,7 +15,7 @@ from .native_search_v15 import (
     make_search_plan as legacy_plan, validate_search_request as legacy_validate,
 )
 from .native_staged_author_v15 import LocalStagedQwenDesignerModel, StagedVocabularyGenerator
-from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_JSON_HISTORY, PLAIN_FUNCTION_DIRECT, profile_options
+from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_JSON_HISTORY, DIRECT_PROFILES, profile_options
 
 REQUEST_SCHEMA = 'scienceutopia.native-search-request.v38'
 PLAN_SCHEMA = 'scienceutopia.native-search-plan.v38'
@@ -52,7 +52,7 @@ def _legacy_validation_view(request):
     if (not isinstance(designer, dict)
             or set(designer) - {'conversation_profile'} != {'model', 'max_steps', 'max_tokens', 'provider_binding'}
             or ('conversation_profile' in designer and designer['conversation_profile'] not in
-                (PLAIN_JSON_HISTORY, PLAIN_FUNCTION_DIRECT))):
+                (PLAIN_JSON_HISTORY, *DIRECT_PROFILES))):
         raise ValueError('explicit separately bound designer and bounded steps/tokens required')
     validate_designer_binding(designer['provider_binding'])
     if designer['model'] != designer['provider_binding']['model']:
@@ -63,9 +63,9 @@ def _legacy_validation_view(request):
             'designer': {'model': 'qwen3:8b', **{
                 k: designer[k] for k in ('max_steps', 'max_tokens')}}}
     legacy_validate(view)
-    if designer.get('conversation_profile') == PLAIN_FUNCTION_DIRECT:
+    if designer.get('conversation_profile') in DIRECT_PROFILES:
         from .native_designer_decoding_v24 import decoding_contract
-        if designer['max_tokens'] != decoding_contract('staged-v15', conversation_profile=PLAIN_FUNCTION_DIRECT)['max_tokens']:
+        if designer['max_tokens'] != decoding_contract('staged-v15', conversation_profile=designer['conversation_profile'])['max_tokens']:
             raise ValueError('direct designer profile requires its exact source-owned decoding token budget')
     if len(json.dumps(request, allow_nan=False).encode()) > 512_000:
         raise ValueError('search request exceeds byte budget')
@@ -84,9 +84,9 @@ def make_search_plan(request, *, source_commit, provider_binding):
         designer_provider_binding=clone(request['designer']['provider_binding']),
         role_policy='scientist provider fixed; designer separately declared and source/model bound')
     plan.update(profile_options(request['designer'].get('conversation_profile', LEGACY_HISTORY)))
-    if plan.get('conversation_profile') == PLAIN_FUNCTION_DIRECT:
+    if plan.get('conversation_profile') in DIRECT_PROFILES:
         from .native_designer_decoding_v24 import decoding_contracts
-        plan['designer_decoding'] = decoding_contracts('staged-v15', conversation_profile=PLAIN_FUNCTION_DIRECT)
+        plan['designer_decoding'] = decoding_contracts('staged-v15', conversation_profile=plan['conversation_profile'])
     return plan
 
 

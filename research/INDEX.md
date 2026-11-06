@@ -9,6 +9,9 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V44 authoring recovery: actual V43 failure causes, implementation and verification ledger](logbook/2026-11-07-native-authoring-recovery-v44.md)
+- [V44 prospective finite recovery and original-world search protocol](protocols/campaigns/native-authoring-recovery-v44-a1.md)
+
 - [V43 actual institution search: user authorization, finite eight-slot plan and measured outcome ledger](logbook/2026-11-06-native-direct-profile-v43-search.md)
 
 - [V43 error fixes verified:1,604 regressions,28 fresh actual controls and two cold replays; no scientific campaign](results/native-direct-profile-v43-a1-readiness.md)

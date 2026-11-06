@@ -1,6 +1,27 @@
 # Program status
 
-Updated: 2026-11-06 JST
+Updated: 2026-11-07 JST
+
+## V44 authoring recovery implementation; V43 finished with failures
+
+V43 writer ends2026-11-06T11:56:20Z after30m26s; its automatic original-source
+audit and compact projection complete.3/8 worlds measured, all throughput loss-7;
+the other five fail final submission, and all four efficiency plans make no
+actual edits. All53 designer POSTs complete; this is not another transport EOF.
+The earlier live summary below is historical, not evidence of a running job.
+
+The user explicitly requests the known problems be fixed. Implement the opt-in
+V44 profile: optional submission notes/source-constrained envelope, exact current
+draft context, implementation checkpoint after unchanged reads, and16 charged
+turns with three reserved for explicit submit/model repair/resubmit. Preserve
+old profiles, raw failures and scientific validation. The existing two losses,
+eight world slots and Qwen3-8B researchers remain fixed. See the
+[repair ledger](logbook/2026-11-07-native-authoring-recovery-v44.md) and
+[prospective protocol](protocols/campaigns/native-authoring-recovery-v44-a1.md).
+Development new-focus18 checks pass; committed broad/real-backend/free-authoring
+verification and actual new loss measurements are not yet claimed.
+
+## Historical V43 launch progress (superseded by terminal receipts above)
 
 ## Actual V43 search:1/8 measured, second model-authored program executing
 

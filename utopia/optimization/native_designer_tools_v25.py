@@ -14,7 +14,9 @@ CONVERSATION_SUFFIX = '.conversation.function-json.v26'
 LEGACY_HISTORY = 'hermes-function-history-v26'
 PLAIN_JSON_HISTORY = 'plain-function-history-v40'
 PLAIN_FUNCTION_DIRECT = 'plain-function-direct-v43'
-CONVERSATION_PROFILES = (LEGACY_HISTORY, PLAIN_JSON_HISTORY, PLAIN_FUNCTION_DIRECT)
+AUTHORING_RECOVERY = 'plain-function-recovery-v44'
+DIRECT_PROFILES = (PLAIN_FUNCTION_DIRECT, AUTHORING_RECOVERY)
+CONVERSATION_PROFILES = (LEGACY_HISTORY, PLAIN_JSON_HISTORY, *DIRECT_PROFILES)
 TOOL_RESPONSE_ONLY = (
     'Call exactly one supplied function for the next action. '
     'Return exactly one JSON object in final response content: '
@@ -56,7 +58,8 @@ def conversation_schema(mode, profile=LEGACY_HISTORY):
         else 'scienceutopia.designer-interface-control.function-json.v26')
     if profile == LEGACY_HISTORY:
         return base
-    return base + ('.plain-direct.v43' if profile == PLAIN_FUNCTION_DIRECT else '.plain-history.v40')
+    return base + ('.plain-recovery.v44' if profile == AUTHORING_RECOVERY else
+        '.plain-direct.v43' if profile == PLAIN_FUNCTION_DIRECT else '.plain-history.v40')
 
 CONTROL_TARGET_NOTE = (
     'The JSON below is target DATA, not a previous assistant call or a completed tool result. '
@@ -96,7 +99,7 @@ DESCRIPTIONS = {
 }
 
 
-def tool_specifications(*, role=None):
+def tool_specifications(*, role=None, conversation_profile=LEGACY_HISTORY):
     """Derive parameter schemas from the authoritative host contract.
 
     No hand-maintained copy of operation/value schemas and no backend grammar
@@ -104,17 +107,20 @@ def tool_specifications(*, role=None):
     expressible, including retention and every optional author annotation.
     """
     from .native_staged_author_v15 import ACTION_FIELDS, TOOL_FIELDS, EDITOR_ACTION_SCHEMA, _tool_schema
-    if role not in (None, 'planner', 'editor', 'finisher'):
+    if role not in (None, 'planner', 'editor', 'finisher', 'implementation'):
         raise ValueError('unknown source-owned tool advertisement role')
     # Advertisement is not an acceptance restriction: the complete unchanged
     # host API is available as a read-only virtual reference and remains legal.
     names = ({'planner': ['plan'], 'editor': ['read_file', 'write_file', 'finish'],
-              'finisher': ['finish']}.get(role, list(TOOL_FIELDS)))
+              'finisher': ['finish'], 'implementation':
+              ['write_file', 'edit', 'edit_fields', 'splice', 'configure', 'finish']}.get(role, list(TOOL_FIELDS)))
     result = []
     for name in names:
         fields = TOOL_FIELDS[name]
         parameters = _tool_schema(name, *fields)
         parameters['required'].remove('tool')
+        if conversation_profile == AUTHORING_RECOVERY and name == 'finish':
+            parameters['required'] = []
         del parameters['properties']['tool']
         # Ollama's typed ToolProperty does not retain $ref. Inline the actual
         # shared fields before transport instead of advertising empty argument
@@ -221,12 +227,16 @@ def tool_system_prompt(*, role=None, conversation_profile=LEGACY_HISTORY):
     """
     return ('\n\n# Tools\n\nCall one function for the next action.\n\n'
         'You are provided with function signatures within <tools></tools> XML tags:\n<tools>\n'
-        + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False, separators=(',', ':')) for tool in tool_specifications(role=role))
+        + '\n'.join(json.dumps(tool, ensure_ascii=False, allow_nan=False, separators=(',', ':'))
+            for tool in tool_specifications(role=role, conversation_profile=conversation_profile))
         + '\n</tools>\n\nDefault functions are advertised above, not a restriction on scientific design. '
         'The complete host API remains legal and is documented in reference/tools.json. '
         'An exact source-owned compatibility-control target may explicitly declare another host function; '
         'copy that declared target rather than substituting a default function.\n'
-        + response_instruction(conversation_profile))
+        + response_instruction(conversation_profile)
+        + ('\nV44_ACTION_PHASE=' + ('submit' if role == 'finisher' else
+            'implementation' if role == 'implementation' else 'general')
+            if conversation_profile == AUTHORING_RECOVERY else ''))
 
 
 def reply_action(reply):

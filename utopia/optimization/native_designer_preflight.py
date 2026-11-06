@@ -15,7 +15,7 @@ from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 from .native_designer_decoding_v24 import (
     decoding_contract, decoding_contracts, calibration_role, designer_payload, STAGED_MAX_STEPS)
-from .native_designer_tools_v25 import LEGACY_HISTORY, PLAIN_FUNCTION_DIRECT, profile_options
+from .native_designer_tools_v25 import LEGACY_HISTORY, DIRECT_PROFILES, profile_options
 
 SCHEMA = 'scienceutopia.designer-interface-certificate.v16'
 TTL_SECONDS = 86400
@@ -32,7 +32,7 @@ def reasoning_evidence(records, *, protocol, conversation_profile=LEGACY_HISTORY
     contracts = decoding_contracts(protocol, conversation_profile=conversation_profile)
     roles = {role: {'requested': contract['think'], 'controls_seen': 0,
         'known_nonempty_response_fields': 0} for role, contract in contracts.items()}
-    if conversation_profile == PLAIN_FUNCTION_DIRECT:
+    if conversation_profile in DIRECT_PROFILES:
         for row in roles.values():
             row['invalid_thinking_response_fields'] = 0
     for record in records:
@@ -44,7 +44,7 @@ def reasoning_evidence(records, *, protocol, conversation_profile=LEGACY_HISTORY
         count += observed
         roles[role]['controls_seen'] += 1
         roles[role]['known_nonempty_response_fields'] += observed
-        if conversation_profile == PLAIN_FUNCTION_DIRECT and thinking is not None and not isinstance(thinking, str):
+        if conversation_profile in DIRECT_PROFILES and thinking is not None and not isinstance(thinking, str):
             roles[role]['invalid_thinking_response_fields'] += 1
     return {'requested': any(contract['think'] for contract in contracts.values()),
         'known_nonempty_response_fields': count, 'roles': roles,
@@ -82,10 +82,10 @@ def backend_binding(provider, session=None):
     return {'model': provider['model'], 'model_digest': actual, 'ollama_version': version['version']}
 
 
-def _schema(protocol):
+def _schema(protocol, conversation_profile=LEGACY_HISTORY):
     if protocol == 'staged-v15':
-        from .native_staged_author_v15 import ACTION_SCHEMA
-        return ACTION_SCHEMA
+        from .native_staged_author_v15 import host_action_schema
+        return host_action_schema(conversation_profile)
     if protocol == 'one-shot-v14':
         from .native_authoring_ir import OUTPUT_SCHEMA
         return OUTPUT_SCHEMA
@@ -145,7 +145,7 @@ def control_string_whitespace_notice(expected):
         + json.dumps(rows, ensure_ascii=False, allow_nan=False))
 
 
-def _prompt(request, state, steps, provider, expected, protocol):
+def _prompt(request, state, steps, provider, expected, protocol, conversation_profile=LEGACY_HISTORY):
     if protocol == 'staged-v15' and expected.get('tool') == 'plan':
         from .native_staged_author_v15 import build_prompt, PLAN_CONTROL_SYSTEM_PROMPT
         return build_prompt(request, state, steps, image_id=provider['image_id'],
@@ -178,6 +178,11 @@ def _prompt(request, state, steps, provider, expected, protocol):
         if expected.get('tool') == 'finish':
             from .native_staged_author_v15 import FINISH_CONTROL_PREFIX
             system = FINISH_CONTROL_PREFIX + system
+        from .native_designer_tools_v25 import AUTHORING_RECOVERY
+        if conversation_profile == AUTHORING_RECOVERY and expected.get('tool') in (
+                'edit', 'edit_fields', 'write_file'):
+            from .native_authoring_recovery_v44 import IMPLEMENT_CONTROL_PREFIX
+            system = IMPLEMENT_CONTROL_PREFIX + system
     return prompt, system
 
 
@@ -226,7 +231,7 @@ def sequence(state, request=None):
     raise ValueError('staged calibration requires a real code-bearing parent, not an empty toy document')
 
 
-def planned_cases(request, protocol):
+def planned_cases(request, protocol, conversation_profile=LEGACY_HISTORY):
     from .native_staged_author_v15 import initial_draft
     if protocol != 'staged-v15':
         return cases(protocol)
@@ -246,12 +251,17 @@ def planned_cases(request, protocol):
     field_cases = [{'id': 'typed-field-' + str(index), 'expected': {'tool': 'edit_fields',
         'mechanism_id': identity, 'field_updates': [{'field_name': 'family', 'value': clone(value)}]}}
         for index, value in enumerate(VALUES)]
-    return cases(protocol) + field_cases + sequence(state, request)
+    result = cases(protocol) + field_cases + sequence(state, request)
+    from .native_designer_tools_v25 import AUTHORING_RECOVERY
+    if conversation_profile == AUTHORING_RECOVERY:
+        result.append({'id': 'sequence-finish-without-notes', 'expected': {'tool': 'finish'}})
+    return result
 
 
-def _apply(state, action, request, provider):
+def _apply(state, action, request, provider, conversation_profile=LEGACY_HISTORY):
     from .native_staged_author_v15 import transition
-    return transition(state, action, request, binding_sha256=digest(request), provider_binding=provider)
+    return transition(state, action, request, binding_sha256=digest(request), provider_binding=provider,
+        conversation_profile=conversation_profile)
 
 
 def _check_scope(scope, protocol):
@@ -295,7 +305,8 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
     temperatures = {role: settings['temperature'] for role, settings in contracts.items()}
     plan = {'schema': SCHEMA + '.plan', 'protocol': protocol, 'source_commit': source_commit, 'request': clone(request),
         'provider': clone(provider), 'runtime': runtime_binding(), 'backend': backend_binding(provider),
-        'cases': planned_cases(request, protocol), 'max_POSTs': len(planned_cases(request, protocol)),
+        'cases': planned_cases(request, protocol, conversation_profile),
+        'max_POSTs': len(planned_cases(request, protocol, conversation_profile)),
         'native_worlds': 0, 'source_executions': 0, 'network_retries': 0,
         'max_tokens': decoding['max_tokens'], 'temperature': temperatures,
         'decoding_contract': contracts, 'created_epoch': time.time(), **profile}
@@ -314,7 +325,7 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         # Typed controls are independent. The six-step sequence is continuous.
         if case['id'].startswith('typed-') or case['id'] == 'sequence-plan':
             state, steps = initial_draft(request), []
-        prompt, system = _prompt(request, state, steps, provider, case['expected'], protocol)
+        prompt, system = _prompt(request, state, steps, provider, case['expected'], protocol, conversation_profile)
         role = calibration_role(protocol, case['id'])
         settings = contracts[role]
         intent = {'id': case['id'], 'prompt': prompt, 'system_prompt': system,
@@ -326,15 +337,15 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
         try:
             output, _ = model.generate(prompt=prompt, system_prompt=system, seed_ctx=intent['seed_ctx'],
                 max_tokens=settings['max_tokens'], temperature=settings['temperature'],
-                response_format={'json_object': {'schema': _schema(protocol)}})
+                response_format={'json_object': {'schema': _schema(protocol, conversation_profile)}})
             record['output'] = clone(output)  # preserve known parsed wrong actions before equality checks
             # Python bool==1 and large numeric rounding are NOT exact JSON equality.
             if scope == EXECUTION_SCOPE:
                 record['copy_diagnostic'] = copy_diagnostic(output, case['expected'])
-            Draft202012Validator(_schema(protocol)).validate(output)
+            Draft202012Validator(_schema(protocol, conversation_profile)).validate(output)
             _check_control_output(output, case['expected'], scope=scope)
             action = output if protocol == 'staged-v15' else {'tool': 'edit', 'operations': output['operations']}
-            state, receipt = _apply(state, action, request, provider)
+            state, receipt = _apply(state, action, request, provider, conversation_profile)
             if scope == EXECUTION_SCOPE:
                 record['receipt'] = clone(receipt)
             if not receipt['ok']:
@@ -393,7 +404,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
             or plan['protocol'] != protocol or plan['runtime'] != runtime_binding()
             or plan['backend'] != backend_binding(provider, session)):
         raise ValueError('designer preflight protocol/runtime/backend binding changed')
-    expected_cases = planned_cases(plan['request'], protocol)
+    expected_cases = planned_cases(plan['request'], protocol, conversation_profile)
     if (plan['cases'] != expected_cases or len(records) != len(expected_cases)
             or not certificate['all_controls_passed'] or plan['max_POSTs'] != len(expected_cases)
             or plan['max_tokens'] != decoding_contract(protocol, conversation_profile=conversation_profile)['max_tokens']
@@ -411,7 +422,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
     for case, record in zip(expected_cases, records):
         if case['id'].startswith('typed-') or case['id'] == 'sequence-plan':
             state, steps = initial_draft(plan['request']), []
-        prompt, system = _prompt(plan['request'], state, steps, provider, case['expected'], protocol)
+        prompt, system = _prompt(plan['request'], state, steps, provider, case['expected'], protocol, conversation_profile)
         role = calibration_role(protocol, case['id'])
         settings = decoding_contract(protocol, role=role, conversation_profile=conversation_profile)
         intent = {'id': case['id'], 'prompt': prompt, 'system_prompt': system,
@@ -424,7 +435,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
         payload = designer_payload(protocol, provider, messages, intent['seed_ctx'],
             max_tokens=settings['max_tokens'], temperature=settings['temperature'], role=role,
             conversation_profile=conversation_profile)
-        wire = wire_record(payload, _schema(protocol))
+        wire = wire_record(payload, _schema(protocol, conversation_profile))
         if (record['intent'] != intent or record['ok'] is not True or transport['request_payload'] != payload
                 or transport.get('http_timeout_seconds') != settings.get('http_timeout_seconds', 300)
                 or any(transport.get(key) != value for key, value in wire.items())
@@ -446,7 +457,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
             action_output = action_from_body(body)
         else:
             action_output = _strict_json(body['message']['content'])
-        Draft202012Validator(_schema(protocol)).validate(action_output)
+        Draft202012Validator(_schema(protocol, conversation_profile)).validate(action_output)
         _check_control_output(action_output, case['expected'], scope=scope)
         if (scope == EXECUTION_SCOPE
                 and record.get('copy_diagnostic') != copy_diagnostic(action_output, case['expected'])):
@@ -454,7 +465,7 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
         if digest(record['output']) != digest(action_output):
             raise ValueError('preflight typed output differs from original response')
         action = action_output if protocol == 'staged-v15' else {'tool': 'edit', 'operations': action_output['operations']}
-        state, receipt = _apply(state, action, plan['request'], provider)
+        state, receipt = _apply(state, action, plan['request'], provider, conversation_profile)
         if not receipt['ok'] or record['receipt'] != receipt:
             raise ValueError('preflight interpreter replay differs')
         _check_intermediate_source(state, case['id'], plan['request'], provider, scope=scope)
