@@ -1,4 +1,4 @@
-"""Read-only local loaded-context evidence; never loads or repairs a model."""
+"""Read-only context evidence plus separately journalled explicit scientist loads."""
 from datetime import datetime, timezone
 import json
 import math
@@ -19,8 +19,11 @@ CONTEXT_TOKENS = 40960
 
 
 def _validate_expected(expected):
-    if not isinstance(expected, dict) or set(expected) not in ({'scientist'}, {'scientist', 'designer'}):
-        raise ValueError('explicit scientist or both role bindings required')
+    if not isinstance(expected, dict) or set(expected) not in ({'scientist'}, {'designer'}, {'scientist', 'designer'}):
+        raise ValueError('explicit nonempty known role bindings required')
+    if set(expected) == {'designer'}:
+        validate_designer_binding(expected['designer'])
+        return
     validate_provider_binding(expected['scientist'])
     if expected['scientist']['model_digest'] != SCIENTIST_DIGEST:
         raise ValueError('loaded-context scientist digest differs from the fixed original model')
@@ -90,7 +93,7 @@ def replay_loaded_context(record, *, expected, purpose):
 
 
 class LocalRoleBoundNativeFactory(LocalQwenNativeFactory):
-    """No scientist payload change: require its already loaded original context.
+    """Explicitly load the original context, then delegate unchanged science.
 
     Designer and scientist inference is serialized. Once a world starts, our
     scheduler runs no other-model generation until that world ends. This does
@@ -112,7 +115,10 @@ class LocalRoleBoundNativeFactory(LocalQwenNativeFactory):
             raise ValueError('native run id must be a safe single directory name')
         # Unique observation per construction/resume, never rewrite an old gate.
         root = self.directory / run_id
-        index = len(list(root.glob('loaded-role-context-*.json')))
+        from .native_scientist_load_v38 import load_scientist
+        index = len(list(root.glob('role-load-*.started.json')))
+        load_scientist(root / f'role-load-{index:03d}.json', provider=self.scientist_provider,
+            purpose='before-native-world:' + run_id)
         record_loaded_context(root / f'loaded-role-context-{index:03d}.json',
             expected={'scientist': self.scientist_provider}, purpose='before-native-world:' + run_id)
         return super().__call__(spec, seed, run_id)

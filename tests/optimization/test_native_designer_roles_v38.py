@@ -238,8 +238,16 @@ def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tm
             from tests.optimization.test_native_designer_contract_v16 import Response
             return Response({'models': [{'name': b['model'], 'digest': b['model_digest'],
                 'context_length': 40960} for b in (scientist, designer)]})
+        def post(self, *a, **k):
+            from tests.optimization.test_native_designer_contract_v16 import Response
+            return Response({'model': scientist['model'], 'done': True, 'done_reason': 'load'})
+    from utopia.optimization.native_scientist_load_v38 import load_scientist
+    load_scientist(tmp_path / 'role-load-before-pilot-000.json', provider=scientist,
+        purpose='before-role-bound-pilot', session=MetadataSession())
+    record_loaded_context(tmp_path / 'loaded-role-context-designer-before-switch-000.json',
+        expected={'designer': designer}, purpose='before-role-switch:designer', session=MetadataSession())
     record_loaded_context(tmp_path / 'loaded-role-context-before-pilot-000.json',
-        expected={'scientist': scientist, 'designer': designer}, purpose='before-role-bound-pilot',
+        expected={'scientist': scientist}, purpose='before-role-bound-pilot',
         session=MetadataSession())
     queue = NativeRoleBoundSearchQueue(tmp_path / 'queue', provider_binding=scientist)
     searches = {}
@@ -283,7 +291,8 @@ def test_role_aware_audit_cold_replays_all_failure_journals_without_inference(tm
     assert first == audit.analyze(tmp_path, expected_source=REVISION)
     assert before == audit._inventory(tmp_path)
     assert first['role_bindings'] == {'scientist': scientist, 'designer': designer}
-    assert first['loaded_role_context_observations']['records'] == 1
+    assert first['loaded_role_context_observations']['records'] == 2
+    assert first['explicit_scientist_loads']['dispatched_POSTs'] == 1
     assert first['consumed_native_slots'] == first['technical_failures'] == 8
     assert first['physical_native_worlds'] == first['physical_researcher_responses'] == 0
     assert first['designer_costs']['dispatch_intents'] == model.calls == 64

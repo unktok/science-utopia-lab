@@ -102,7 +102,8 @@ def source_proofs(source, classification, *, protocol_path=PROTOCOL):
                 'research/protocols/campaigns/native-file-workspace-v35-a2.md',
                 'research/protocols/campaigns/native-file-primary-v36-a1.md',
                 'research/protocols/campaigns/native-history-files-v37-a1.md',
-                'research/protocols/campaigns/native-designer-roles-v38-a1.md'}):
+                'research/protocols/campaigns/native-designer-roles-v38-a1.md',
+                'research/protocols/campaigns/native-designer-roles-v38-a2.md'}):
         raise ValueError('staged source protocol path is not an explicit versioned pilot protocol')
     names.update({protocol_path, 'research/objectives/losses/native-joint-v5-throughput.json',
         'research/objectives/losses/native-reviewed-production-efficiency-v13.json'})
@@ -451,19 +452,42 @@ def _analyze(root, *, expected_source, require_complete, inventory):
     if read(root / 'operator-config.json') != {'provider_binding': provider,
             **({'designer_provider_binding': author_provider} if role_separated else {})}:
         raise ValueError('staged operator binding differs from frozen plan')
-    loaded_observations = []
+    loaded_observations, scientist_loads = [], []
     if role_separated:
         from utopia.optimization.native_loaded_roles_v38 import replay_loaded_context
+        from utopia.optimization.native_scientist_load_v38 import replay_load
+        def audit_loads(paths, purpose):
+            valid = []
+            for path in paths:
+                completed = path.with_name(path.name.replace('.started.json', '.json'))
+                intent = read(path); record = read(completed) if completed.exists() else None
+                proof = replay_load(intent, record, provider=provider, purpose=purpose)
+                scientist_loads.append({'intent': intent, 'completion': record, 'proof': proof})
+                valid.append(proof['empty_prompt_load_confirmed'])
+            return valid
+        initial_loads = audit_loads(sorted(root.glob('role-load-before-pilot-*.started.json')),
+            'before-role-bound-pilot')
+        if not any(initial_loads):
+            raise ValueError('separate-role pilot lacks its explicit confirmed scientist context load')
+        designer_gates = sorted(root.glob('loaded-role-context-designer-before-switch-*.json'))
+        if not designer_gates:
+            raise ValueError('separate-role pilot lacks its fresh designer context observation')
+        for path in designer_gates:
+            observation = read(path)
+            replay_loaded_context(observation, expected={'designer': author_provider}, purpose='before-role-switch:designer')
+            loaded_observations.append(observation)
+        if not any(item['valid'] for item in loaded_observations):
+            raise ValueError('designer context was not observed after readiness')
         gates = sorted(root.glob('loaded-role-context-before-pilot-*.json'))
         if not gates:
             raise ValueError('separate-role pilot lacks its fresh both-role loaded-context gate')
         for path in gates:
             observation = read(path)
-            replay_loaded_context(observation, expected={'scientist': provider, 'designer': author_provider},
+            replay_loaded_context(observation, expected={'scientist': provider},
                 purpose='before-role-bound-pilot')
             loaded_observations.append(observation)
-        if not any(item['valid'] for item in loaded_observations):
-            raise ValueError('separate-role pilot launched without both original contexts loaded')
+        if not any(read(path)['valid'] for path in gates):
+            raise ValueError('separate-role pilot launched without the original scientist context loaded')
     searches = read(root / 'searches.json')
     if set(searches) != {entry['id'] for entry in plan['runs']} or len(set(searches.values())) != len(searches):
         raise ValueError('staged arms share or omit a physical queued search')
@@ -486,6 +510,8 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         directory = _inside(root, 'queue/' + search_id)
         if role_separated:
             for native_root in sorted((directory / 'worlds').glob('*')):
+                load_valid = audit_loads(sorted(native_root.glob('role-load-*.started.json')),
+                    'before-native-world:' + native_root.name)
                 gates = sorted(native_root.glob('loaded-role-context-*.json'))
                 valid = []
                 for path in gates:
@@ -493,7 +519,7 @@ def _analyze(root, *, expected_source, require_complete, inventory):
                     valid.append(replay_loaded_context(observation, expected={'scientist': provider},
                         purpose='before-native-world:' + native_root.name))
                     loaded_observations.append(observation)
-                if (native_root / 'system.json').exists() and not any(valid):
+                if (native_root / 'system.json').exists() and (not any(valid) or not any(load_valid)):
                     raise ValueError('native world lacks its original scientist loaded-context evidence')
         world = {'source_commit': expected_source, **deepcopy(provider),
             'runtime_seed_binding': plan['runtime_seed_binding'], 'years': request['years']}
@@ -575,6 +601,10 @@ def _analyze(root, *, expected_source, require_complete, inventory):
         raise ValueError('unaccounted native source/world directory outside declared staged own histories')
     operational = any(any(all(row['status'] == 'complete' for row in run['observations'][i:i + 2])
         for i in range(len(run['observations']) - 1)) for run in runs.values())
+    if role_separated and not list(root.glob('writer-resume-*.started.json')):
+        if (len(scientist_loads) > plan['budget']['maximum_explicit_empty_prompt_scientist_load_POSTs_without_resume']
+                or len(loaded_observations) > plan['budget']['maximum_added_loaded_context_GETs_without_resume']):
+            raise ValueError('explicit role-management attempts exceed the declared finite budget')
     output = {'schema': SCHEMA, 'classification': classification, 'source_commit': expected_source,
         'engineering_revision': plan.get('engineering_revision', 'a1'),
         **({'role_bindings': {'scientist': deepcopy(provider), 'designer': deepcopy(author_provider)}}
@@ -586,6 +616,13 @@ def _analyze(root, *, expected_source, require_complete, inventory):
             'recorded_seconds': math.fsum(item['elapsed_seconds'] for item in loaded_observations),
             'receipt_sha256s': [item['content_sha256'] for item in loaded_observations],
             'no_model_loading_or_generation_by_these_checks': True}}
+            if role_separated else {}),
+        **({'explicit_scientist_loads': {
+            'dispatched_POSTs': len(scientist_loads),
+            'confirmed_empty_prompt_loads': sum(item['proof']['empty_prompt_load_confirmed'] for item in scientist_loads),
+            'response_unknown': sum(item['completion'] is None for item in scientist_loads),
+            'recorded_seconds': math.fsum(item['completion']['elapsed_seconds'] for item in scientist_loads if item['completion']),
+            'model_generation_counts_not_inferred_from_missing_provider_counters': True}}
             if role_separated else {}),
         'status': ('budget-complete-with-failures' if terminal and totals['technical_failures'] else 'complete'
             if terminal else 'technically-aborted' if queue_terminal else 'in-progress'),

@@ -2,6 +2,24 @@
 
 Updated: 2026-11-06 JST
 
+## V36 closes unmet; explicit sequential role loading is prepared
+
+Writer20629 exits0 at06:32:41.149171Z after1h26m25.51s, all8 slots consumed.
+Six changed native programs fail execution; two author sessions fail. No valid
+loss or completed world exists. Two unmodified b04 audits6848/1546 exit0 and
+match ddaee9f2a48e749bc3d2a7aa7d059af718858b95041448f68ee4b6903f23fad2.
+There are120 physical scientist replies in six PARTIAL worlds,53 designer POSTs,
+51 known token records776564 input64846 output, two unknown. The original goal
+remains active; finite script completion is not functioning optimization.
+
+The V38a1 prepared9aa0bda source passes1436/1083.46s; tag/tree are preserved,
+but zero actual a1 calls/certificates/worlds exist. GET /api/ps at06:39:07Z is
+empty: ordinary idle expiry makes the prior no-loading/both-resident premise
+unsuitable. A2 declares exact empty-prompt scientist loads before worlds and
+sequential context40960 checks, without changing scientist wire bodies or global
+settings.48 development checks pass; commit/focused source checks and full
+software/real28-control gates still precede scientific dispatch.
+
 ## V38 prepared only: separately pinned local designer, unchanged researchers
 
 The user permits changing only the designer if needed, with advance confirmation

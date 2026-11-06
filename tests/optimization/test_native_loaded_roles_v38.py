@@ -32,7 +32,7 @@ class Session:
             raise self.error
         return Response({'models': self.models})
     def post(self, *a, **k):
-        pytest.fail('metadata gate must never load or generate')
+        pytest.fail('metadata observation itself must never load or generate')
 
 
 def test_both_contexts_exactly_observed_and_cold_replayed_without_new_calls(tmp_path):
@@ -94,7 +94,7 @@ def test_rehashed_outcome_raw_body_or_cost_tampering_is_still_rejected(tmp_path,
 
 
 def test_no_vacuous_or_changed_scientist_expectation_can_pass_without_a_read(tmp_path):
-    for expected in ({}, {'designer': designer_binding()},
+    for expected in ({}, {'unknown-role': designer_binding()},
             {'scientist': {**bindings()['scientist'], 'model_digest': '0' * 64}}):
         session = Session()
         with pytest.raises(ValueError):
@@ -113,7 +113,11 @@ def test_world_guard_requires_same_loaded_scientist_without_changing_its_payload
         return 'SCRIPTED untouched native factory delegation'
     monkeypatch.setattr(LocalQwenNativeFactory, '__init__', init)
     monkeypatch.setattr(LocalQwenNativeFactory, '__call__', execute)
-    session = Session()
+    class LoadSession(Session):
+        def post(self, url, **kwargs):
+            assert url.endswith('/api/generate') and json.loads(kwargs['data'])['prompt'] == ''
+            return Response({'model':'qwen3:8b','done':True,'done_reason':'load'})
+    session = LoadSession()
     monkeypatch.setattr('requests.Session', lambda: session)
     factory = LocalRoleBoundNativeFactory(tmp_path, tmp_path / 'data', designer_provider=expected['designer'])
     assert factory('SCRIPTED-spec', 42, 'native-run') == 'SCRIPTED untouched native factory delegation'

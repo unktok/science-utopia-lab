@@ -9,6 +9,11 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V36 exact original-source closure: six failed changed worlds, two author failures](results/native-file-primary-v36-a1.md)
+- [V36 original-source compact audit](results/native-file-primary-v36-a1.json)
+- [V38 a2 prospective explicit sequential local-role loading](protocols/campaigns/native-designer-roles-v38-a2.md)
+- [V35 supplemental incomplete-envelope mechanism, not proven local cause](results/native-partial-envelope-v35-supplement.md)
+
 - [V38 prospective designer-only local-model separation, fixed researchers and loaded-context checks](protocols/campaigns/native-designer-roles-v38-a1.md)
 - [V38 user authorization, exact installed identities and software evidence](logbook/2026-11-06-designer-role-separation-v38.md)
 

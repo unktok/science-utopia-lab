@@ -82,9 +82,14 @@ def execute(args, *, plan_builder=build_plan, queue_type=NativeStagedSearchQueue
     require_certificate(args.designer_preflight, author_provider, protocol='staged-v15')
     if designer_provider is not None:
         from utopia.optimization.native_loaded_roles_v38 import record_loaded_context
-        number = len(list(args.output.glob('loaded-role-context-before-pilot-*.json')))
+        from utopia.optimization.native_scientist_load_v38 import load_scientist
+        number = len(list(args.output.glob('role-load-before-pilot-*.started.json')))
+        record_loaded_context(args.output / f'loaded-role-context-designer-before-switch-{number:03d}.json',
+            expected={'designer': author_provider}, purpose='before-role-switch:designer')
+        load_scientist(args.output / f'role-load-before-pilot-{number:03d}.json',
+            provider=provider, purpose='before-role-bound-pilot')
         record_loaded_context(args.output / f'loaded-role-context-before-pilot-{number:03d}.json',
-            expected={'scientist': provider, 'designer': author_provider}, purpose='before-role-bound-pilot')
+            expected={'scientist': provider}, purpose='before-role-bound-pilot')
     plan = plan_builder(source_commit=source, initial_system=open_native_system(provider['image_id']).to_dict(),
         provider_binding=provider, runtime_seed_binding=factory_binding.runtime_seed_binding,
         **({'designer_provider_binding': designer_provider} if designer_provider is not None else {}))

@@ -137,3 +137,39 @@ finished, the final V38 committed-source scope can now include all affected
 optimization/audit/tensor/scientist-rendering checks, including the previously
 deselected Docker cases, without overlap with another broad suite. V36's
 actual experiment remains unchanged and continues concurrently.
+
+## Prepared a1 closed without inference; prospective a2 handles ordinary expiry
+
+At9aa0bda9393c02454a3b51d4ec81ddbbea362b2e, all1436 broad checks pass in1083.46s,
+JUnit5a7b8c1418ca4a3f87f817b9b1518901e1530d61bad7a5e06b48ed158573405f.
+Freeze the separate a1 tree/tag and verify259 exact source blobs. No a1 actual
+calibration, certificate, free generation or scientific world is dispatched.
+
+Before inference, check local ownership: the MLX /api/show FROM is a symbolic
+self-name, not an absolute GGUF file path, so an initial absolute-path assertion
+fails without inference. Inspect the actual local manifest instead: its exact
+SHA is the approvedf3ddc743 model digest; all997 layers exist locally at their
+declared sizes, total21909283871 bytes,986 tensor layers. The manifest/config
+has no remote host/model. Do not download anything or interpret the incorrect
+metadata-path assumption as a provider/candidate failure.
+
+At06:39:07Z, actual GET /api/ps returns models[] after V36 has ended. Normal
+idle expiry means requiring both weights to remain resident without loading
+would block or risk a different implicit scientist context. This is an a1
+prepared orchestration limitation, not a scientific outcome or paid model call.
+Preserve9aa0bda/tree/tag unchanged. Declare a2 before dispatch: explicit finite
+empty-prompt scientist load intent/completion, connect10/read120/no retry, then
+observed scientist40960 before each world; fresh designer40960 before the
+prelaunch switch. No simultaneous residency requirement, scientific warm-up
+prompt, scientist request change, weight update or global backend edit.
+
+At most9 added load POSTs/10 context GETs without explicit resume, separate
+from designer/scientist generations. Keep interruptions unknown and all costs
+separate.48 development checks pass10.92s; exact committed-source focus and
+full regression plus fresh28 actual compatibility controls are still required.
+The latter two may run concurrently at the same immutable source after focused
+checks, but no scientific campaign begins until both pass. The original goal
+does not stop at these gates.
+
+V36 is now authoritatively closed with two matching original-source audits;
+see the exact closed report rather than prior live snapshots above.
