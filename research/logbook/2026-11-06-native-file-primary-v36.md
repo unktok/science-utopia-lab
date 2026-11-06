@@ -172,6 +172,17 @@ text only; runtime, scientific measurements, legacy claim semantics and all
 old819 audit bytes stay unchanged. Commit before affected checks and freeze
 only after they pass, not by claiming the old1336 run tested this new helper.
 
+Clean7542252f8595a91b74fe6f327ee727909f4fae99 affected reporting/search/
+file/timeout scope96516 exits0:86 pass in65.82s. Preserve
+final-reporting-committed-source.xml SHA
+e57952f28363ce52ff6ab4403da967614ce9347ef6f2cdfed7e8d32b5094237b.
+utopia/ and the native driver remain byte-identical to the full1336-pass
+b42a522 source; only the prospective analytical prose/test has since changed.
+All conditional closure requirements now hold; the original goal is unmet.
+Next freeze a clean new V36 source/tree/tag and start one fresh max27 actual
+readiness, preserving all old failures and costs. No copied control can by
+itself complete the original functional-candidate/feedback/remeasurement goal.
+
 Also retain the functional-classification caution: open-memory-router emits
 hard gate actions. Merely changing world.selection's consumer threshold from.5
 to.7 may be equivalent on reachable0/1 inputs. Literal source fingerprints and

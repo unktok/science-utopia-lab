@@ -69,6 +69,8 @@ There are64 designer dispatch intents/POST attempts/completed step receipts:
 1272218 input/49458 output. Missing token counts are not zero.
 All64 adapter durations are recorded,4986.467417791719s; transport durations
 sum4933.8431735825725s. These scopes must not be confused with total wall time.
+Binding/native-factory/certificate metadata GETs are not completely journalled;
+their unknown total count is not inferred as zero.
 
 E0 step06 is an actual ReadTimeout(read timeout=300),301.00268550007604s
 adapter time, without a completed HTTP body. Separately, T G2 step04 is
