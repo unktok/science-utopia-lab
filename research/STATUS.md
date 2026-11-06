@@ -2,6 +2,22 @@
 
 Updated: 2026-11-06 JST
 
+## V33 terminal with failures preserved; V34 actual readiness is live
+
+Writer76825 exits0 at00:52:11.310706Z after48m40.77s. Four slots consumed:
+two unchanged-parent measurements (loss0/12), one host TypeError before a world,
+one LLM-code world failing on missing features input. Goal remains unmet.
+Two original full audits reject the absent original terminal journal; preserve
+those failures. Two matching explicitly limited component diagnostics reproduce
+the original exception and verify raw prefixes/native evidence without calls or
+rewrites. Actual G0 scientist inputs now agree97/97 across independent clocks.
+See the [closed V33 result](results/native-submission-context-v33-a1.md).
+
+Freeze separate75da492/tree/tag after V33 termination. Fresh actual V34 max24
+readiness52284 runs; do not infer a pass/candidate from its launch. Continue
+through loaded-window gate and actual native feedback if it passes, without
+changing the original goal to engineering readiness or parent retention.
+
 ## V33 malformed-response history exposes another host bug; V34 fix under test
 
 Actual throughput G1's string field_updates member is correctly schema-rejected,

@@ -9,6 +9,8 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V33 closed raw source-exception, native failure and actual input invariance](results/native-submission-context-v33-a1.md)
+
 - [V34 rejected-history host bug and observed-key feedback](logbook/2026-11-06-native-field-feedback-v34.md)
 - [V34 conditional unchanged-scale continuation](protocols/campaigns/native-field-feedback-v34-a1.md)
 
