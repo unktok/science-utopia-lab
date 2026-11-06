@@ -50,6 +50,11 @@ tests or copy controls alone are not real transport or free-design evidence.
 
 ## Optional targeted paired real-backend diagnostic
 
+On2026-11-06, after the V39 closure/status report, the user instructs us to
+thoroughly fix the remaining errors. Proceed with this finite local diagnostic
+after its declared original-audit and committed software gates. No external
+service/spending, backend change or automatic scientific pilot is introduced.
+
 `scripts/diagnose_native_json_history_v40.py` is a separate diagnostic option,
 not an automatic scientific continuation. It must not run until V39's original
 writer exits, both original-D29 full terminal audits match, and the operator
