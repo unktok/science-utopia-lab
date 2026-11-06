@@ -2,7 +2,27 @@
 
 Updated: 2026-11-07 JST
 
-## V44 authoring recovery implementation; V43 finished with failures
+## V44 actual search running; authoring recovery verified
+
+Frozen60ef56ca passes1634 software tests/two optional skips in880.85s,
+29/29 actual technical controls and cold replay. Its separate free-authoring
+check completes14 charged calls/eight explicit writes/valid finish, changing
+two code bodies and two configurations; separate replay leaves30 raw files
+unchanged. A rejected flat reply remains charged and is corrected by the model,
+not the host. These checks execute no generated source or scientific world.
+
+Actual eight-slot/two-objective original-world search starts2026-11-06T17:08:25Z
+in outputs/native-authoring-recovery-v44-a4, efficiency first. Writer61590 and
+read-only terminal auditor67219 are running. Researchers remain Qwen3-8B; the
+existing local35B designer and original losses/seed/world scale are unchanged.
+No loss or institutional improvement is claimed before terminal observations.
+
+Separately fix the remaining failure-bookkeeping bug in6332bdd: a failed reply
+with no dispatched transition must not reset the implementation checkpoint.
+34 focused regressions pass; its separate frozen full verification34073 is
+running. Never change the active60ef experiment source or its received code.
+
+## Prior repair development and V43 failure summary
 
 V43 writer ends2026-11-06T11:56:20Z after30m26s; its automatic original-source
 audit and compact projection complete.3/8 worlds measured, all throughput loss-7;
@@ -25,7 +45,8 @@ its16-call run fails on a duplicate-ID graph and inaccessible ambiguous aliases.
 Repair exact positional/immutable-parent references and ambiguity diagnostics;
 count failed read attempts too. Workspace/new-profile compatibility98 pass.
 Initial real14-call and revised6-call controls remain failed; the latter disproves
-backend schema enforcement. There are no active scientific V44 worlds yet.
+backend schema enforcement. That development-stage no-dispatch statement is
+superseded by the source-bound live search recorded above.
 
 ## Historical V43 launch progress (superseded by terminal receipts above)
 

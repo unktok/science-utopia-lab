@@ -9,6 +9,7 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V44 verified authoring recovery and actual-search entry point](results/native-authoring-recovery-v44-a4-readiness.md)
 - [V44 authoring recovery: actual V43 failure causes, implementation and verification ledger](logbook/2026-11-07-native-authoring-recovery-v44.md)
 - [V44 prospective finite recovery and original-world search protocol](protocols/campaigns/native-authoring-recovery-v44-a1.md)
 
