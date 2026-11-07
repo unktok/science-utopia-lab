@@ -15,6 +15,28 @@ def sample():
     return project(p,a,expected_source=p['source_commit'])
 
 
+def varied_sample():
+    """Synthetic distinct physical targets, signed differences, and one-sided nulls."""
+    r=sample();targets={}
+    for i,job in enumerate(list(r['evaluation'])):
+        target=deepcopy(job);target['job_id']='SCRIPTED-target-'+job['job_id']
+        target['labels']=[label for label in job['labels'] if label.startswith('selected:')]
+        job['labels']=[label for label in job['labels'] if label.startswith('reference:')]
+        target['cross_scores']={k:None if i==3 else -7.+[-2.,3.,0.,-1.,5.,2.][i]
+            for k in target['cross_scores']}
+        targets[(job['seed'],job['years'])]=target;r['evaluation'].append(target)
+    for refs in r['paired_vs_all_references'].values():
+        for objectives in refs.values():
+            for objective,horizons in objectives.items():
+                for block in horizons.values():
+                    for pair in block['pairs']:
+                        target=targets[(pair['seed'],pair['years'])];a=target['cross_scores'][objective];b=pair['reference_loss']
+                        pair.update(target_job_id=target['job_id'],physically_shared=False,target_loss=a,
+                            difference=a-b if a is not None and b is not None else None)
+                    block['summary']=descriptive(block['pairs'],'difference')
+    r['physical_evaluation_jobs']=len(r['evaluation']);return hashed(r)
+
+
 def test_all_references_all_arms_raw_pairs_missingness_and_separate_horizons():
     r=sample();before=deepcopy(r);data=figures.panel_data(r)
     assert r==before and data==figures.panel_data(r)
@@ -41,6 +63,14 @@ def test_no_selection_is_not_a_zero_loss_or_an_evaluated_null_candidate():
     for panel in data['panels']:
         row=next(row for row in panel['rows'] if row['arm']==arm)
         assert not row['selection_available'] and row['summary'] is None and row['pairs']==[]
+
+
+def test_nonshared_positive_negative_zero_and_one_sided_missing_differences():
+    data=figures.panel_data(varied_sample());row=data['panels'][0]['rows'][0]
+    assert [p['difference'] for p in row['pairs']]==[-2.,None,0.,None,5.]
+    assert row['summary']['values']==[-2.,None,0.,None,5.]
+    assert row['summary']['mean']==1. and row['summary']['available']==3
+    assert not any(p['physically_shared'] for p in row['pairs'])
 
 
 @pytest.mark.parametrize('mutate',[

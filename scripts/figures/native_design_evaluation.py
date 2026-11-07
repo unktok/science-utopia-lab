@@ -104,18 +104,21 @@ def _render(panel,classification,output):
                         ax.scatter(pair['difference'],y,color=color,s=18,
                             marker='s' if pair['physically_shared'] else 'o',zorder=3)
                 if summary['mean'] is not None:
-                    ax.scatter(summary['mean'],i,marker='D',s=27,edgecolors='#222',
-                        facecolors='white',zorder=4)
+                    ax.scatter(summary['mean'],i,marker='D',s=40,edgecolors='#222',
+                        facecolors='none',zorder=4)
             ax.axvline(0,color='#888',lw=.8,ls='--');ax.grid(axis='x',alpha=.18)
             ax.set(yticks=range(len(rows)),yticklabels=labels,ylim=(len(rows)-.5,-.5),
                 xlabel='Selected loss - reference loss (negative favors selected)',
                 title='Search/evaluation objective: '+('throughput (-A)' if objective=='throughput' else 'selective production (4A - Q + 0.1R)'))
             ax.tick_params(axis='y',length=0)
+            if not any(r['summary'] is not None and r['summary']['available'] for r in rows):
+                ax.text(.5,.5,'No numerical paired differences',transform=ax.transAxes,
+                    ha='center',va='center',color='#555')
         horizon='Two-year unused-condition evaluation' if panel['years']==2 else 'Four-year SINGLE-SEED diagnostic'
         fig.suptitle(horizon+'\nReference: '+panel['reference'],fontsize=12,y=.99)
         handles=[Line2D([0],[0],marker='o',color=COLORS[j],ls='none',label='seed '+str(seed))
             for j,seed in enumerate(panel['seeds'])]
-        handles += [Line2D([0],[0],marker='D',markerfacecolor='white',color='#222',ls='none',label='Available-pair mean'),
+        handles += [Line2D([0],[0],marker='D',markerfacecolor='none',color='#222',ls='none',label='Available-pair mean'),
             Line2D([0],[0],marker='s',color='#555',ls='none',label='Same physical job'),
             Line2D([0],[0],marker='x',color='#555',ls='none',label='Missing: outside plot, not a loss')]
         fig.legend(handles=handles,loc='upper center',bbox_to_anchor=(.5,.925),ncol=3,frameon=False,fontsize=8)
