@@ -3636,3 +3636,14 @@ controls, changed inventories and mutation during projection. Raw records and
 failed/missing outcomes are not repaired or deleted by the reader. This QA is
 not a complete V2 cost measurement or original-source audit; actual projection
 must wait for both normal writer closure and a full audited inventory.
+
+Committed source40c95bb51d9662c535a652aca9534c2298ffb381 passes the final70-test
+batch in5.67s, no failures/errors/skips. Receipt XML SHA256
+4f1024127585cdf96ef2708cbfce7d62088e8676e2f5fb61dbee0a568d7ed2bf;
+projection sourcee3c58b2c8522401b9eb4577d722f1ef70db6a0ee729c0693c3d66efeb808eb63.
+Compact bounded-scope evidence: research/results/native-auxiliary-costs-qa-v1.json.
+The final regression also verifies returned malformed JSON count values cannot
+mutate original audit data. Active docs check19 documents/222 local targets/
+six snapshots. No actual V2 cost report is generated from the live archive.
+Original PDF/source/receipts, source b6654ad and finite scientific conditions
+stay untouched; no model, external account, registry query or new resource use.

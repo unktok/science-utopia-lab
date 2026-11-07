@@ -1,0 +1,34 @@
+{
+  "schema": "scienceutopia.native-auxiliary-costs-qa.v1",
+  "status": "SCRIPTED-projection-QA-passed-not-real-V2-cost-totals",
+  "analysis_source_commit": "40c95bb51d9662c535a652aca9534c2298ffb381",
+  "projection_source_sha256": "e3c58b2c8522401b9eb4577d722f1ef70db6a0ee729c0693c3d66efeb808eb63",
+  "qa": {
+    "receipt": "outputs/publication-benchmark-v2-verification/auxiliary-costs-committed.xml",
+    "receipt_sha256": "4f1024127585cdf96ef2708cbfce7d62088e8676e2f5fb61dbee0a568d7ed2bf",
+    "passed": 70,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "Synthetic auxiliary raw-record projection, existing scientist-token/report tests, active docs and reviewed-manuscript artifact checks. Not a real native campaign or complete V2 audit."
+  },
+  "verified_software_behaviors": [
+    "closed source/audit/inventory binding and live-study rejection",
+    "author proof records rejoined to exact raw starts/completions",
+    "calibration records tied to original certificate and load records to exact intents/providers",
+    "interrupted/failed requests retained; missing responses not fabricated",
+    "known zero, missing and invalid fields distinct; Boolean/fractional counts not coerced",
+    "native/transport token aliases and nested durations kept separate",
+    "integer nanoseconds preserve values above2**53",
+    "single load elapsed time not invented as separate transport timing",
+    "distinct physical files not deduplicated by body content; duplicate load paths/control IDs rejected",
+    "raw inventory/input mutation and resealed audit-body/raw disagreement rejected",
+    "output overwrite/raw-root writes rejected; original adapter provenance retained",
+    "returned malformed JSON field cannot mutate original audit transport"
+  ],
+  "new_model_calls": 0,
+  "new_generated_code_executions": 0,
+  "real_V2_cost_totals_generated": false,
+  "full_project_compute_FLOPs_energy_money_or_fresh_GPU_cost_measured": false,
+  "requires_normal_writer_closure_and_complete_original_source_audit": true
+}

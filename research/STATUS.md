@@ -102,7 +102,8 @@ is SCRIPTED QA only. The [manuscript evidence map](../paper/submission-outline.m
 joins the final questions to required actual evidence, not new selection rules.
 The [auxiliary model-cost projection](../scripts/reports/native_auxiliary_costs.py)
 adds proposal/calibration/load usage and explicit missingness alongside the
-scientist-response token module; real V2 cost totals still await closed audits.
+scientist-response token module; [70-test verification](results/native-auxiliary-costs-qa-v1.json)
+is SCRIPTED QA, and real V2 cost totals still await closed audits.
 [Reproduction and analysis workflow](../docs/research-workflow.md) separates
 tracked rebuilds, original-source audits and fresh inference.
 
