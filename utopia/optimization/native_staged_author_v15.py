@@ -620,6 +620,7 @@ def _validation(state, request, binding_sha256, provider_binding, rationale='Sta
         definition = compile_draft(state, request, binding_sha256=binding_sha256,
             provider_binding=provider_binding, rationale=rationale)
         if 'design_space' in request:
+            from utopia.system import SystemSpec
             from .native_design_space import require_candidate_in_space
             from .native_adaptive_search import GeneratedMixedDesign
             anchor = SystemSpec.from_dict(request['design_space_anchor'])
