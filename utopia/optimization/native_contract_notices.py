@@ -1,7 +1,8 @@
 """Non-veto diagnostics for the existing object-payload code ABI.
 
 No schema satisfiability solver, source evaluation, candidate repair or native
-probe. Empty record lists remain legal even if a port schema excludes objects.
+probe. Empty record lists remain legal for optional graph outputs even if a
+payload schema excludes objects; required graph outputs must emit a record.
 Only explicit root types and literal local context-key reads are diagnosed.
 """
 import ast
@@ -143,7 +144,8 @@ def contract_notices(document):
                 'path': path, 'declared_type': clone(schema['type']),
                 'runtime_object': 'returned state' if is_state else 'one record payload',
                 'condition': ('When this mechanism executes and returns state.' if is_state else
-                    'When a record is delivered/emitted on this port; an empty record list remains legal.'),
+                    'When a record is delivered/emitted on this port; an empty record list remains legal '
+                    'only for optional graph outputs. Required graph outputs must emit at least one envelope.'),
                 'message': ('The code ABI requires object state, including returned empty state.' if is_state else
                     'Each record payload is an object. This schema does not describe the outer list of records. '
                     'Array-valued data may be fields inside a payload object.'),

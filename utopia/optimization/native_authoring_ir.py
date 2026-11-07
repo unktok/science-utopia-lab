@@ -31,7 +31,13 @@ CODE_CONTRACT_LAYOUT = (
     'parameters.code_artifact.state_schema is one JSON Schema for returned state; '
     'source is a Python string. New port names remain unrestricted, subject to the '
     'existing graph/code ABI consistency checks. Changing a schema alone does not '
-    'compute a feature: author the source and explicit data flow that produce/use it.')
+    'compute a feature: author the source and explicit data flow that produce/use it. '
+    'When a node executes, every graph output port with required=true must emit '
+    'at least one message envelope; an omitted port or [] violates this runtime '
+    'contract even if the payload JSON Schema is otherwise permissive. Optional '
+    'output ports may emit []. This is message cardinality, not a requirement '
+    'about which scientific decision to make. Each payload must also satisfy '
+    'the declared receiver protocol; cardinality alone does not establish that.')
 SELECTOR = {'type': 'object', 'required': ['mechanism_id'], 'additionalProperties': False,
     'properties': {'mechanism_id': {'type': 'string', 'minLength': 1}}}
 # An empty schema is ANY JSON according to JSON Schema, but the deployed
