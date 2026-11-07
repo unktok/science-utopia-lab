@@ -1943,3 +1943,48 @@ At18:06:49UTC the actual writer is live; frozen b6654ad is clean. No active
 source/settings/selection/budget modification or optional registry egress.
 Forty-six search slots, fixed selection/evaluation, two original-source audits
 and the final analysis/manuscript/review still remain. Goal active, not blocked.
+
+### Slots75/76: run01 uniform histories fully observed
+
+Previous turn records73/74 and the completed technical-only histories. This
+continuation repeatedly re-polls actual writer46865 live, and read-only observer
+20605 reaches76 before its900s limit and exits0. Frozen b6654ad starts clean;
+no active source, model, prompt, budget, selection or registry-egress changes.
+At18:16:08UTC search76/120:41 complete,14 generation failures,21 execution
+failures;reference9/9,evaluation0. This is expected finite execution, not a blocker.
+
+| Run01 uniform arm | G0 | G1 | G2 | G3 | Best including initial |
+| --- | --- | --- | --- | --- | --- |
+| T | -1 | -7 | -7 | -7 | -7 |
+| C | 2.733333333333334 | 8.433333333333332 | 8.433333333333332 | 7.766666666666664 | 2.4000000000000004 |
+
+C G3 improves on its immediately previous candidates, but not its own G0 or
+the separately measured initial. T G3 ties its G1/G2. Uniform draws do not learn
+from observed losses: this is a finite random history, not feedback learning.
+All16 consumed uniform proposals execute; all14 consumed LLM-numeric slots have
+generation nulls so far. Unequal partial counts are not a closed study or proof
+of intrinsic domain/optimizer superiority. Identical T/C candidate dictionaries
+and RNG524317548865738533 are confirmed for G3; these are two physical forwards,
+not two distinct policies or independent development environment seeds.
+
+G3 changes the same six allowed coordinates only: selection thresholds
+1.6017984960362763/3.6286849931925507,bias-3.5474679948538395,
+memory_cost0.08493847502284017,router threshold0.8145951001747819,count2.
+T completes A7/Q22.333333333333332/R21;C completes
+A7/Q22.333333333333336/R21. Both have5 active researchers/resources620 and
+4 institutional-context deliveries. Preserve the exact recorded floats; no
+causal Q effect, perfect response coupling or altered tie tolerance is inferred.
+
+T request ab0e58bf2b63df06028a1fb150e64df29c8a3e0f6df3f7e35393c6dc4e300e80;
+world native-adaptive-2c55a187c04c917a7c83130c-s42;
+checkpoint SHA256250aaa170ba1c832272ebe1d35074dc3e9a227cccac7fa16dd7562f04d993c7f.
+C request 0445da68df3cd688a7bd51320e0ef70c41d94dfbe81085d944c05a75a651b32d;
+world native-adaptive-cc5ad7306be660f9e2579339-s42;
+checkpoint SHA2561311b63b4aaa9b026a0287e1c006e918c333ec5aa9ec9f23db285255af39e564.
+Shared candidate fingerprint
+045ed821672e36d7120b379bf16e074266f12b07e0bb252ac58dffa0cb342a4a;
+76-slot progress SHA256ca7b6b851f6fc6ccd629ac5a92c8608e46aefb8eca6daf9c811a14cf40367185.
+The actual writer remains live and proceeds to the remaining four run01 slots,
+then requires fresh run02 calibration before its40-slot search. Selected-policy
+evaluation is still0. All final original-source audits, analyses and manuscript/
+mock review remain open; the goal stays active without changing its scope.

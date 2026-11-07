@@ -12,7 +12,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
 | V2 readiness | Run00/run01 each pass28 fresh real designer controls and cold replay;26 exact copies are diagnostic. Run02 still needs fresh calibration |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at18:07UTC:74/120 slots,39 complete,14 generation failures,21 execution failures |
+| V2 search | Running at18:18UTC:76/120 slots,41 complete,14 generation failures,21 execution failures |
 | Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
 | Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
@@ -40,9 +40,11 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   tied with their prior bests. Technical-only T G3 completes at0, worse than its
   valid G0 -7, which remains eligible. Technical-only C G3 fails empty required
   decisions output; all four of that run/arm's proposals retain null losses.
-  No primary-objective result through74 beats its
+  Run01 uniform T/C histories now close all four generations without a new
+  best after G1/G0 respectively. No primary-objective result through76 beats its
   corresponding strong reference.
-- All14 uniform-numeric proposals execute; all14 LLM-numeric proposals fail
+- All16 uniform-numeric proposals execute; all14 LLM-numeric slots consumed
+  so far fail
   generation so far. Domain presentation/compliance confounds intrinsic
   expressivity claims. Technical nulls are not measured bad scientific losses.
 - Permitted code/graph freedom is not demonstrated structural invention.
