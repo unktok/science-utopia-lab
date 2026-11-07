@@ -166,7 +166,10 @@ trusted host callbacks.
 \paragraph{World and objectives.}
 All arms retain the original researcher lifecycle, with five balanced
 researchers, two simulated years, seed~42, and the same pinned four-year public
-corpus. Researcher inference uses fixed Qwen3-8B weights. The already approved
+SciEvo corpus \citep{jin2024scievo}: 103,107 CS documents from 2016--2019.
+The recorded retrieval model is \texttt{thenlper/gte-small}; exact data/model
+revisions are retained with the source and resource records.
+Researcher inference uses fixed Qwen3-8B weights. The already approved
 local 35B designer uses the same bounded authoring profile in every arm. These
 are local development conditions, not a reproduction of ScienceUtopia's
 reported 32B setup. The shared initial institution is the editable developer
@@ -264,6 +267,18 @@ research endpoint. The eight controls take 37m23s wall time, 726 recorded
 scientist responses and 56 institution-code executions, with no designer calls.
 Two original-source read-only audits are byte-identical. This closes the
 baseline pilot, not the design-freedom study.
+
+\paragraph{Selection algebra is not institutional discovery.}
+With realized decision records and review cost fixed, $T$ favors accepting
+every record, and $E$ does so whenever its original mean review score is
+positive. For $C$, accepting a record of mean score $q_i$ changes loss by
+$4-q_i$. All observed S1 record means are below 4; thus rejection is optimal
+in that restricted problem. This follows from the losses, not a new optimizer.
+Yet realized record counts vary: the open accept-all and reject-all worlds
+contain seven and eight decision records, respectively. Their fixed-record
+minima are not feasible-policy bounds because changing acceptance also changes
+future submissions and reviews. Appendix~\ref{sec:selection-relaxation} details
+this read-only analysis. It neither excludes candidates nor alters the V2 losses.
 
 \section{Prospectively fixed design-freedom comparison}
 \label{sec:prospective}
@@ -390,9 +405,8 @@ feedback superiority. The subsequent strong-rule pilot recovers the earlier
 proxy minimum using simple hand rules. The next comparison therefore fixes
 freedom ablations and selection before unused-condition evaluation. Those results
 and mechanistic evidence are still required; the protocol is not their substitute.
-Further freedom ablations, unused-condition evaluation,
-and mechanistic evidence are necessary before strong empirical or deployment
-claims, and before treating this working draft as a completed conference paper.
+This working draft is not yet a completed conference study or evidence for
+scientific-policy deployment.
 
 \bibliographystyle{plainnat}
 \bibliography{references,submission-sources}
@@ -425,4 +439,49 @@ separate records. Their sources, author provenance, losses, seeds, histories,
 and costs are not pooled into this matched comparison. The bundled 2025 style
 is used for a readable working draft, not claimed compliance with an unverified
 future conference's format, anonymity rules, or submission deadline.
+
+\clearpage
+\section{Fixed-record selection relaxation}
+\label{sec:selection-relaxation}
+Freeze the $N$ realized decision records, their original reviewer means $q_i$
+and total review count $R$. A record without reviews has $q_i=0$ under the
+declared measurement convention. Relax only its acceptance flag $z_i\in\{0,1\}$:
+\begin{align}
+ T(z)&=-\sum_{i=1}^N z_i,& T_{\min}^{\rm rec}&=-N,\\
+ E(z)&=0.5R-\sum_{i=1}^N z_iq_i,& E_{\min}^{\rm rec}&=0.5R+\sum_i\min(0,-q_i),\\
+ C(z)&=0.1R+\sum_{i=1}^N z_i(4-q_i),& C_{\min}^{\rm rec}&=0.1R+\sum_i\min(0,4-q_i).
+\end{align}
+All zero-coefficient choices remain exact ties. Missing scores can make this
+relaxation unavailable even when the originally accepted-record loss is known;
+the valid original observation is retained. Under fixed reviews, $C$'s marginal
+threshold is 4, not 4.3. Separately, comparing a full trajectory against a
+zero-review, zero-acceptance outcome gives $C<0$ iff $Q/A>4+0.1R/A$ for $A>0$.
+
+The analysis re-reads completed S1 checkpoints, joins their hashes to the
+original-source audit, and reproduces recorded losses within floating-point
+tolerance. Original audit values and independent-summation differences are
+stored separately; the largest absolute difference is $5.33\times10^{-15}$.
+Two analysis outputs are byte-identical, without new model calls, generated
+code execution or world trajectories. Exhaustive flag enumeration on small
+scripted cases verifies the formulas against the declared LossSpecs; these
+software cases are not experimental worlds.
+
+For S1, record counts are 6 for legacy, 7 for accept-all, rank/rate,
+score-threshold 3 and reviewer-free accept-all, and 8 for the editable seed,
+reject-all and score-threshold 4. The largest original mean score is $11/3$.
+Accept-all reaches the fixed-record minima for $T/E$, while reject-all reaches
+it for $C$. These statements explain simple incentives; they do not demonstrate
+the value of code/graph search. In particular, $T_{\min}^{\rm rec}=-8$ in the
+reject-all record set does not show that a dynamic all-accept institution can
+produce eight acceptances: changing those decisions changes the later world.
+
+\paragraph{Reproduction and resource boundary.}
+The repository separates rebuilding tracked tables/figures, re-auditing full
+raw archives at their original sources, and rerunning fresh LLM trajectories.
+The first needs no model server; the latter requires approved exact corpus,
+model and sandbox artifacts. Model aliases/digests alone do not supply a public
+conversion recipe. A selected-package environment observation made after
+dispatch is not a startup attestation or a record of the separate inference
+service. The local 35B model construction recipe and fresh-machine inference
+reproduction remain unresolved; neither is claimed complete here.
 \end{document}

@@ -27,9 +27,11 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. The fixed8B scientist is now executing fresh reference worlds.
-At09:19UTC3/9 references are closed and open-accept-all is in flight;
-no search proposal or selected-policy evaluation has completed.
+diagnostic. At10:00UTC all9 fresh reference worlds are closed. Search has
+consumed2/120 slots, both generation failures in the parameter-only arms;
+their code edits exceed the declared numeric domain. The first throughput
+fixed-graph code proposal has submitted successfully and its researcher world
+is in flight, not yet a completed loss. Selected-policy evaluation remains0.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout
@@ -95,8 +97,25 @@ The [short manuscript](../paper/submission.tex) now contains the actual all-tria
 table, search paths, source/mechanism interpretation and measured costs.
 This closes a small integration comparison, not the full conference study.
 The updated working PDF also includes the completed S1 strong-rule comparison,
-its print-sized figure and the separately labeled V2 protocol. All9 pages were
+its print-sized figure and the separately labeled V2 protocol. All10 pages were
 visually checked; no future V2 outcomes are represented as results.
+
+Read-only fixed-record acceptance analysis is now implemented, exhaustively
+tested on small scripted cases, and applied twice to S1 with byte-identical
+outputs. The [tracked result](results/native-controls-selection-relaxation-v1.json)
+separates exact audited losses from independent-summation roundoff. It explains
+simple loss incentives without treating a frozen-record optimum as a feasible
+dynamic-policy bound, an optimizer result or a candidate filter. The focused
+28-check scope at0e50262 is software QA, not additional experiment samples.
+
+The reproduction workflow now separates tracked figure/PDF rebuilding,
+original-source raw auditing and new inference. A tracked selected-package
+[environment observation](results/submission-environment-observed-v2.json) is
+explicitly post-dispatch, not a startup attestation or complete environment lock.
+43 offline artifact/report checks at08acafc pass. The local35B construction
+recipe and separate model-server environment remain unresolved for fresh-machine
+reproduction; a local alias/digest alone is insufficient. No weights are shared
+or downloaded, and no completed public/anonymous artifact release is claimed.
 
 While inference runs, a separate analysis feature is completed and integrated:
 closed-audit projection of all120 slots, all reference-paired seed differences,

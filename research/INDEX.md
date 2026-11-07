@@ -24,6 +24,8 @@ Historical documents retain their paths and source identities.
 
 - [S1 strong rule baselines](results/native-benchmark-controls-v2-a1.md): all eight
   complete, original-source audited twice; developer controls, not automatic invention.
+- [S1 fixed-record relaxation](results/native-controls-selection-relaxation-v1.json):
+  read-only loss algebra, not a dynamic-policy optimum or new search outcome.
 - [V1 same-source feedback comparison](results/native-feedback-comparison-v1-a1.md):
   all eight slots, four runtime failures, initial all-accept improvement, no measured G1 gain.
 - [V1 compact audit](results/native-feedback-comparison-v1-a1.json) and

@@ -99,3 +99,47 @@ source-hashed report/figure pipeline. Actual mechanism analysis and manuscript
 claims depend on those results; implementation/test counts do not close the
 submission goal. Do not refill failures, alter losses or increase budgets to
 force a favorable result. Submission/sharing/new paid resources remain unapproved.
+
+Continuation through10:00UTC: all9 V2 references are closed. The first two
+numeric-arm G0 slots are generation failures; literal code changes exceed the
+declared parameter domain. Throughput's journal shows both rejected finishes
+reported that domain violation before the16-action limit. This is not evidence
+of transport rewriting or a proven runner bug. The generic controller failure
+message alone is not a sufficient cause diagnosis. No failed slot is refilled
+and no domain is widened after observing these outcomes. The next throughput
+fixed-graph proposal has submitted and its researcher world is in flight;
+no completed search loss or selected-policy evaluation is claimed here.
+
+Separate fixed-record relaxation work is merged at52c386b. Exhaustive small
+flag enumerations verify T/E/C formulas; source-bound checkpoint reading retains
+missing scores and raw audited floats, rather than turning nulls into penalties.
+At0e5026296cc416ae25f4c0a9ca5f82ec301acc24 the focused suite passes28 in6.51s,
+JUnit selection-relaxation-final.xml SHA256
+93a4771e783c6161e2ee36d0c59e9dcde3d31e2cc6f3a8a6dbf66dc2df7ecbd3.
+Actual S1 analysis outputs a2/a3 are byte-identical, tracked content hash
+765ed31c7ac8ebb3f5ca683901ff961b67b33eeb0fc87784b8e67442d3e6aa90.
+Largest independent-summation versus audited-loss difference is5.329070518200751e-15.
+All original reviewer means are below4; simple acceptance preferences follow
+the declared loss coefficients. Different realized record sets prevent calling
+these frozen-record minima feasible dynamic-policy bounds. No new model/code
+execution or change to active objectives/proposer inputs occurred.
+
+Artifact kit work is merged separately. At08acafc0a4f7e9f596f1bdd6a0d5bd2207806625,
+43 offline report/artifact checks pass in6.75s, JUnit artifact-kit-final.xml SHA256
+4178701c568197bd254f6965a4a19882dd6dd4b8a4a10f409fb4b0c5c5d32de3.
+The tracked S1 summary successfully re-renders in a fresh output directory;
+that is not a new raw audit. Selected-package environment observation at09:45UTC
+is explicitly not startup attestation or a model-server environment lock.
+Actual native checkpoints identify thenlper/gte-small revision17e1f347d17fe144873b1201da91788898c639cd;
+the separate local35B conversion recipe remains unverified. Existing image
+metadata was inspected without pulling or creating an image. Corpus attribution
+uses the SciEvo primary dataset card/paper, not a claim of blanket underlying
+paper/model redistribution rights. Updated workflow/testing docs separate all
+reproduction tiers and release/authorization boundaries.
+
+The working manuscript now incorporates that analysis, attribution and resource
+limitations. Offline Tectonic build has10 pages; all final rendered pages are
+visually inspected. A harmless inputenc/UTF-8-engine notice is retained in the
+build receipt; there are no overfull/underfull or undefined-reference notices.
+The prior9-page PDF is preserved under ignored build intermediates. This is a
+working draft, not a submission-ready finding or a completed conference study.

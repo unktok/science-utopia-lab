@@ -46,6 +46,20 @@
     "junit_sha256": "271e4bc60514e1213505df36984a97893fa1f406a1e86655d9bb5ad8ecf2d725",
     "scope": "Reviewed PDF/source/figure hashes, recursive generated-table inputs, bibliography keys, repository docs, scientific plot and synthetic study reporting. No PDF rebuild or new experiment."
   },
+  "fixed_record_relaxation_scope": {
+    "source_commit": "0e5026296cc416ae25f4c0a9ca5f82ec301acc24",
+    "passed": 28, "failed": 0, "skipped": 0, "seconds": 6.51,
+    "junit": "outputs/publication-benchmark-v2-verification/selection-relaxation-final.xml",
+    "junit_sha256": "93a4771e783c6161e2ee36d0c59e9dcde3d31e2cc6f3a8a6dbf66dc2df7ecbd3",
+    "scope": "Exhaustive scripted selection flags, original-source checkpoint joins, raw/audited float separation, null physical worlds and read-only CLI. Not dynamic policy bounds or new model outcomes."
+  },
+  "artifact_reproduction_scope": {
+    "source_commit": "08acafc0a4f7e9f596f1bdd6a0d5bd2207806625",
+    "passed": 43, "failed": 0, "skipped": 0, "seconds": 6.75,
+    "junit": "outputs/publication-benchmark-v2-verification/artifact-kit-final.xml",
+    "junit_sha256": "4178701c568197bd254f6965a4a19882dd6dd4b8a4a10f409fb4b0c5c5d32de3",
+    "scope": "Offline artifact/report contracts, strict tracked-summary rendering and explicitly non-startup selected-package environment observation. No new raw audit, scientific calls or inference-server environment attestation."
+  },
   "preserved_earlier_failures": [
     {"junit": "outputs/publication-benchmark-v2-verification/final-artifact-guard.xml", "passed": 24, "failed": 1, "cause": "New artifact guard found the build receipt named the old path-figure revision and omitted a nested generated table. Actual PDF was unchanged; bind the actual r2 image and recursively included table instead of weakening the guard."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical.xml", "passed": 4, "failed": 2, "cause": "Historical software fixture hardcoded seed42 before the new evaluation binding."},

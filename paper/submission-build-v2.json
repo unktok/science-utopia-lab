@@ -3,10 +3,10 @@
   "date": "2026-11-07",
   "status": "working-draft-not-submission-ready",
   "output": "output/pdf/science-utopia-lab-objective-design-draft.pdf",
-  "pdf_sha256": "2aaaab66eec5a25262c007a3c3ae493e76ffbd46c604280becbc7dd065aaf381",
-  "pages": 9,
-  "tex_sha256": "65bd085c29b532e38df58e0db7e2cd4d3920f7df88c6acbe0020d90e5322f79d",
-  "additional_bibliography_sha256": "bac04267249e6335799b2b656bb7626bd9126624a09a9b0317d27b23c2d2a732",
+  "pdf_sha256": "b286ae7e7485f3faccb4ee596e82f558b33a31fc52dc2fa32c96518d358df9fb",
+  "pages": 10,
+  "tex_sha256": "0eb14fc9f4dbbcd708b8a39f1ec254d123a6ffa07ed14d8db34d42042bdd4212",
+  "additional_bibliography_sha256": "6d09b9bed9d3b1683b3790b10e1ca517953dbb50fe2a17c4b4dfa90c04fff857",
   "strong_control_print_figure_manifest_sha256": "7ddb46b8ec9dd5a7471d615c25929c18ec21820bade20c753184458173a9c1bb",
   "build": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
   "tool_versions": {"tectonic": "0.17.0", "poppler_pdftoppm": "26.06.0"},
@@ -20,8 +20,9 @@
     "paper/figures/native-controls-v2-a1-print/strong-controls.png": "7190caa6ccce926a4212cedb98ac694b21038863428ea68644c18fc29160aa57"
   },
   "downloads": 0,
-  "final_tex_warnings": [],
-  "visual_qa": {"renderer": "Poppler pdftoppm", "all_pages_inspected": true, "pages": [1,2,3,4,5,6,7,8,9], "print_figure_label_collisions_fixed": true, "overfull_hash_fixed": true},
-  "evidence": {"feedback_pilot": "research/results/native-feedback-comparison-v1-a1.json", "strong_controls": "research/results/native-benchmark-controls-v2-a1.json", "new_design_freedom_outcomes_included": false},
+  "final_tex_warnings": ["Package inputenc Warning: inputenc package ignored with utf8 based engines."],
+  "layout_or_undefined_reference_warnings": [],
+  "visual_qa": {"renderer": "Poppler pdftoppm", "all_pages_inspected": true, "pages": [1,2,3,4,5,6,7,8,9,10], "print_figure_label_collisions_fixed": true, "overfull_hash_fixed": true},
+  "evidence": {"feedback_pilot": "research/results/native-feedback-comparison-v1-a1.json", "strong_controls": "research/results/native-benchmark-controls-v2-a1.json", "fixed_record_relaxation": "research/results/native-controls-selection-relaxation-v1.json", "environment_observation": "research/results/submission-environment-observed-v2.json", "new_design_freedom_outcomes_included": false},
   "scope": "Completed pilot results and separately labeled prospective comparison; no submission, authorship decision, method superiority or real scientific-policy benefit claimed."
 }
