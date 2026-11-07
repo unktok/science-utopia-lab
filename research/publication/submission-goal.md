@@ -28,7 +28,7 @@
 | --- | --- | --- |
 | S1 完了 | 強い基準制度の実装・同world比較 | [8基準全完走・二回監査](../results/native-benchmark-controls-v2-a1.md)。単純基準で得られる改善を分離 |
 | S2 2系列校正済 | 制度自由度の比較器 | [source別QA](../results/native-design-freedom-v2-verification.json)、実worldの新loss・別seed・2/4年audit。固定b6654adのrun00/run01が各28項目の実校正とcold replay成功。run02は今後fresh校正が必要 |
-| S3 稼働中 | 固定した二目的の有限探索 | PID72837。fresh参照9件完了、探索50/120slot（27完走・10生成失敗・13実行失敗）、15:40UTC snapshot。run00全40提案＋run01の初回10提案が揃い、run01のG1進行中。原source閉監査は未実施 |
+| S3 稼働中 | 固定した二目的の有限探索 | PID72837。fresh参照9件完了、探索51/120slot（28完走・10生成失敗・13実行失敗）、15:48UTC snapshot。run01のT固定graph G1が初期T0から-7へ改善（G0はnull・強い基準とは同点）。次のG1進行中。原source閉監査は未実施 |
 | S4 次 | 選択後の評価・解析 | 未使用seed・条件、paired world比較、機構消融、原点scoreと表示値の区別 |
 | S5 次 | 投稿パッケージと研究評価 | 主張中心の図・原稿・再現資料、全ページQA、未解消事項の明示 |
 

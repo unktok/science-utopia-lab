@@ -1244,3 +1244,53 @@ Shorten STATUS to the milestone and keep detailed cases here. Full remaining
 search, fixed selection/evaluation, two original-source audits, analysis and
 final manuscript/mock review remain required. No source/model/budget/prompt/
 objective changes, slot replacement, new resource or external hash query.
+
+Continuation15:48–15:52UTC: preceding turn yields50-slot evidence and exact
+uniform-policy coupling, not merely a status restatement. Same writer46865 is
+confirmed live. A brief50-slot/no-pending transition is reread rather than
+restarted. At15:48:35 search51/120,28 complete,10 generation failures,
+13 execution failures,evaluation0. Progress SHA256
+2cad7b085b7ba2acdd44c437d2a0e05d20edd72b013d05c9ea8320585bcd44f5.
+Run01 throughput fixed-graph G1 completes T-7,A7/Q22.333333333333336/R21,
+5 active authors/resources620. Its G0 remains a technical null, not T0. The
+separately measured common initial has T0, so this is a first valid post-G0
+candidate beating that initial, while tying the already known strong-rule T-7.
+Do not hide this within-history gain merely because it is not a new pooled
+minimum; equally, do not call it a novel institution or measured feedback
+superiority. Run00's earlier no-G1–G3-gain observation remains scoped to run00.
+
+World native-adaptive-493d911ea2ef17171fa44654-s42;
+request8c020b697dfe05a5172edf5261594d58596e53efcedddfa2a5f7a41c49347ffa;
+checkpoint SHA256
+775505ae8bfd9d68c118c196ee60de1225d18f28aa692b7fa1c50056a55c068c;
+selection source SHA256
+2f2f07da55416b13cb65ba2cdf1fa5e588de90ea39175250d28efce81412d418;
+code-context journal SHA256
+0a5ac39dfbc0d712fbf50cebd733ab000db04441aa16f723ee2e8f2057c3d5d4.
+The actual request has history_length1,observations_length1,
+based_on_observation_id null, and parent_system exactly equal to the initial
+system. Its only own predecessor failed, so there is no earlier valid own
+loss-selected incumbent to revise. Matched-loss feedback is enabled, but this
+sequence alone cannot identify causal use/benefit of loss or technical feedback.
+It is not a host repair or re-evaluation of the failed G0 source.
+
+Only world.selection source changes relative to its parent; declared nodes,
+wiring, schedules, types and initial state do not change. The replacement reads
+conference review dictionaries from observations, computes each nonempty
+review-list mean, and accepts at mean>=0.5. It avoids the prior tensor-scalar
+indexing expression, rather than the host rewriting that expression for it.
+The two source-matching receipts have3 and4 decisions, all accepted, with
+emitted paper/conference ID sets exactly equal to real addressed score records.
+Displayed scores are actual review means [3,3,3] then[3,10/3,10/3,11/3].
+This is realized all-accept behavior, not proof of program equivalence on
+unreviewed or missing-observation cases. The latter branches are unexercised;
+no universal input-validity guarantee or added admission veto is inferred.
+Declared edges remain fixed even though the code now consumes observation
+review data instead of the accept/score tensor values. No new graph component,
+whole-world derivative, recursive learning or better-science claim follows.
+
+The fixed finite writer proceeds to selective fixed-graph G1. No model, source,
+prompt, objective, budget or selection-rule changes; no failed-slot replacement
+or early unused-condition evaluation. Remaining69 slots, selection/evaluation,
+two original-source audits, analyses and final manuscript/mock review remain
+required for the active submission goal.
