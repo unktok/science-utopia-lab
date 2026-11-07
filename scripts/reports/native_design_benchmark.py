@@ -114,6 +114,57 @@ def authoring_by_generation(designer):
     return result
 
 
+def specification_identity_summary(rows,assignments):
+    """Exact audited representations, not semantic novelty or extra samples.
+
+    Generation failures have no submitted candidate, even if a diagnostic
+    placeholder happens to carry an initial-system fingerprint. Execution
+    failures still retain their submitted specification. Never pool their
+    losses, discard repeated forwards or alter selection/cost accounting.
+    """
+    groups={};unsubmitted=[];seen=set()
+    for row in rows:
+        identity=row['row_id'];status=row['status']
+        if not isinstance(identity,str) or not identity or identity in seen:
+            raise ValueError('unique candidate row identities required')
+        seen.add(identity)
+        if not isinstance(status,str) or not status or row['arm'] not in assignments:
+            raise ValueError('audited status and declared arm required')
+        if type(row['physical_forward_completed']) is not bool:
+            raise ValueError('explicit physical forward proof availability required')
+        own=number(row['own_loss'])
+        if status=='generation-failure':
+            if own is not None or row['physical_forward_completed']:
+                raise ValueError('unsubmitted generation failure cannot have a measured forward')
+            unsubmitted.append(identity)
+            continue
+        fingerprint=row['system_fingerprint']
+        if not isinstance(fingerprint,str) or not fingerprint:
+            raise ValueError('submitted candidate needs an audited system fingerprint')
+        groups.setdefault(fingerprint,[]).append(row)
+    members=[]
+    for fingerprint,group in sorted(groups.items()):
+        members.append({'system_fingerprint':fingerprint,'slot_count':len(group),
+            'row_ids':[r['row_id'] for r in group],
+            'runs':sorted({r['run'] for r in group}),
+            'arms':sorted({r['arm'] for r in group}),
+            'objectives':sorted({assignments[r['arm']]['objective'] for r in group}),
+            'status_counts':dict(Counter(r['status'] for r in group)),
+            'rows_with_physical_forward_proof':sum(r['physical_forward_completed'] for r in group),
+            'assigned_loss_available_slots':sum(r['own_loss'] is not None for r in group)})
+    generated=len(rows)-len(unsubmitted)
+    return {'candidate_slots':len(rows),'generation_failure_slots_without_candidate':len(unsubmitted),
+        'unsubmitted_row_ids':unsubmitted,'submitted_candidate_slots':generated,
+        'distinct_submitted_system_fingerprints':len(members),
+        'repeated_submitted_slots_beyond_distinct_fingerprints':generated-len(members),
+        'distinct_systems_with_physical_forward_proof':sum(
+            g['rows_with_physical_forward_proof']>0 for g in members),
+        'groups':members,
+        'identity_basis':'Audited development SystemSpec fingerprints, including the development seed; no semantic equivalence or seed normalization.',
+        'counts_are_not_inventions_or_independent_samples':True,
+        'scores_costs_and_selection_deduplicated':False}
+
+
 def project(plan,audit,*,expected_source):
     checked(plan,SCHEMA);checked(audit,SCHEMA+'.audit')
     if (plan['source_commit']!=expected_source or audit['source_commit']!=expected_source
@@ -235,6 +286,7 @@ def project(plan,audit,*,expected_source):
         'input_audit_content_sha256':audit['content_sha256'],'selection':selection,
         'projection_source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'search_arms':arms,'development_history_summary':histories,'all_candidate_rows':all_rows,
+        'development_specification_identity':specification_identity_summary(all_rows,plan['assignments']),
         'evaluation':evaluation,'paired_vs_all_references':paired,
         'reference_scores':{k:{name:number(v['loss']) for name,v in entry['scores'].items()}
             for k,entry in audit['references'].items()},
