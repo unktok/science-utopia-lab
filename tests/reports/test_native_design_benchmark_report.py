@@ -78,6 +78,8 @@ def test_complete_projection_retains_all_slots_nulls_shared_jobs_and_separate_ho
     assert paired['throughput']['4']['summary']['scheduled']==1  # never pool year2+year4
     assert r['content_sha256']==digest({k:v for k,v in r.items() if k!='content_sha256'})
     assert r['interpretation']['projection_is_not_a_new_raw_audit']
+    assert r['selection']['input_selection_content_sha256']==a['selection']['content_sha256']
+    assert r['selection']['schema'].endswith('.selection-projection')
 
 
 @pytest.mark.parametrize('mutate',[

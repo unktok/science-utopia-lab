@@ -51,9 +51,10 @@ def plot_search(report,output):
             Line2D([0],[0],color='#555',marker='o',ls='none',label='Completed assigned loss'),
             Line2D([0],[0],color='#555',marker='x',ls='none',label='Null trial: marker at top, not a loss')]
         axes[-1].legend(handles=legend,loc='upper left',frameon=False,fontsize=8)
-        axes[-1].text(0,.23,'One development world seed42.\nThree separate controller histories.\n'
+        axes[-1].text(0,.23,'One development world seed 42.\nThree separate controller histories.\n'
             'Lines: best including initial;\npoints: all measured candidates.\n'
-            'No uncertainty band or superiority claim.',transform=axes[-1].transAxes,fontsize=8,va='top')
+            'Coincident paths overlap, no jitter.\nNo uncertainty band or superiority claim.',
+            transform=axes[-1].transAxes,fontsize=8,va='top')
         fig.suptitle('Objective: '+('throughput (-A)' if objective=='throughput' else 'selective production (4A - Q + 0.1R)'),fontsize=12)
         if report.get('classification','').startswith('SCRIPTED'):
             fig.text(.5,.5,'SCRIPTED QA - NOT EXPERIMENTAL RESULTS',ha='center',va='center',
