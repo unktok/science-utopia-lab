@@ -370,3 +370,34 @@ G1 199197b010cd46341234d994e025f30ef91fd43241a389a51307d990a246ce58.
 An initial exact payload comparison was false and is retained as the finding,
 not normalized away. No extra inference or change to frozen source/protocol.
 Full original-source audit and study-level interpretation still await closure.
+
+Continuation11:22–11:31UTC is verified waiting on session46865, followed by
+provisional source/receipt/input inspection. The selective code/graph G1 proposal
+submits after its bounded authoring steps and completes at11:31:07UTC with
+C7.766666666666664, tied with G0. Search15/120 (10 complete,3 generation failures,
+2 execution failures), references9/9 complete, selected-policy evaluations0.
+No changed runtime/source, refilled slot, recalibration or additional experiment.
+
+This proposal changes only world.selection source, leaving27 connections
+unchanged. It reads identities from the score tensor instead of the accept
+tensor and adds an explicit score>0 acceptance guard, rather than the preceding
+unconditional append. It does not emit reject decisions for nonpositive records;
+the observed completion is not proof of correct coverage on all possible inputs.
+All realized inputs pass the guard: scores[3,3,3] at period1 and
+[3.3333333333333335,3.3333333333333335,3.6666666666666665,3] at period2.
+Literal-source-matching receipts contain3/4 accepts,0 rejects. A7/Q22.333333333333336/
+R21 match G0. This criterion is not evidence of optimizing the declared selective
+loss successfully just because the author's comment says it should help.
+G1 source UTF-8 SHA256
+53845e201e619cc4579e4ed5aa7538b1452718702331ced72f822a7ca47a522f;
+code-context file SHA256
+6393a4fe90f92cc3d166c0fede88f2338e5af27b7a9002b75cf5df2fb6be6bdc.
+
+Both worlds have91 ordered scientist request payloads; exact comparison is true,
+and their full wire JSONL files both hash
+edfc0ccafa2fa70d885c0edc64adc76f4dcb721b62b70dcd55c6942b05385b17.
+Unlike the preceding throughput score-display edit, this realized policy change
+does not change the recorded researcher inputs. It is an observed-world
+equivalence, not a global semantic-equivalence or generalization claim.
+These read-only diagnostics do not replace the eventual closed original-source
+audit. Continue the already fixed finite study; the submission goal stays active.
