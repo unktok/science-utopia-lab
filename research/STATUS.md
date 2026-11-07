@@ -27,11 +27,15 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At11:03UTC all9 fresh reference worlds are complete. Search has
-consumed12/120 slots:7 complete,3 parameter-arm generation failures (out-of-domain
+diagnostic. At11:14UTC all9 fresh reference worlds are complete. Search has
+consumed13/120 slots:8 complete,3 parameter-arm generation failures (out-of-domain
 code edits), and2 execution failures (missing paper decisions and a bare-world
 payload instead of a message envelope). G1 has started; its first two consumed
-slots are null, while the selective fixed-graph G1 proposal is being evaluated.
+slots are null, while selective fixed-graph G1 completes at the same loss as G0.
+That candidate changes only source whitespace (equal Python AST); matching
+execution receipts contain3 and5 rejections in periods1/2. This is not a new
+institutional behavior or measured gain. Throughput code/graph G1 has submitted
+and is under researcher-world evaluation.
 The uniform numeric throughput G0 also records-7.
 Throughput fixed-graph and code/graph proposals both record loss-7; selective
 fixed-graph records2.4000000000000004 and selective code/graph records7.766666666666664.

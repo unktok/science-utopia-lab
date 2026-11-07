@@ -321,3 +321,23 @@ are provisional live observations, not a closed study audit, an optimizer
 comparison or a claim about the remaining generations. Existing analysis/figure/
 cost machinery is ready; wait for the fixed finite study and apply it only after
 terminal closure and two exact-original-source audits.
+
+At11:14UTC the same writer session46865 is live, refs9/9 complete, search13/120
+(8 complete,3 generation failures,2 execution failures), evaluations0. Selective
+fixed-graph G1 completes at C2.4000000000000004, tied with its G0. Read-only
+inspection finds exactly one changed candidate path, the world.selection source;
+its Python AST equals G0. This is source-whitespace variation, not a new rule.
+G1 literal source UTF-8 SHA256
+b903c01c375336d7884bc2ee3ff93cf162e0814aec5580860fa502f196fa4f93;
+its code-context file SHA256
+ac23bdec6d2b5ad0bbb40b1ec1e7dd1da32d81cb59ab9094d95bbdb44d1dc800.
+Two literal-source-matching receipts show3/5 rejects and0 accepts at periods1/2.
+This limited live inspection is not a replacement for the eventual closed
+original-source audit. Throughput code/graph G1 has submitted and is evaluating;
+no outcome for it is claimed. The frozen checkout remains clean. No host repair,
+retry/refill, recalibration, prompt/domain change or additional model download.
+
+The resumed offline documentation/artifact check at e3d7264 passes10 tests in
+0.076s with no failures/skips; this is software QA, not new model evidence.
+The user's uncertainty about model origin is retained; no Hugging Face origin
+or conversion recipe is inferred from that reply.
