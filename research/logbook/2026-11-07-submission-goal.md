@@ -2898,3 +2898,87 @@ active, not complete or blocked by expected finite inference waiting.
 Offline document checks pass16 active documents/191 local targets/six original
 snapshots and git diff --check; the through70 snapshot checksum is unchanged.
 These checks make no model, network or scientific-world calls.
+
+### Run02 G2 closes at110: retained-incumbent tuning and equal-loss unequal behavior
+
+The preceding turn records107/108's actual edit-scope failures at24a0861.
+This turn repeatedly confirms actual writer46865 live and advancing researcher
+request journals. At21:26:44UTC progress110/120:56 complete,23 generation
+failures,31 execution failures; reference9/9,evaluation0. Progress SHA256
+7110f50537642662121a2a04843c88e7b078328be5d965e3d7ed98794dd588c1.
+Run02 G2 closes six completions, two generation failures and two execution
+failures. These are controller-history observations on common development
+seed42, not three independent environment replications.
+
+| Run02 G2 arm | Assigned outcome |
+| --- | --- |
+| T LLM numeric | generation null |
+| C LLM numeric | generation null |
+| T fixed graph code | -7 |
+| C fixed graph code | 2.1 |
+| T code and graph | -7 |
+| C code and graph | 2.1 |
+| T technical-only code and graph | execution null |
+| C technical-only code and graph | execution null |
+| T uniform numeric | 0 |
+| C uniform numeric | 2.4000000000000004 |
+
+Slot109 T fixed-code G2 completes T-7,A7/Q22.333333333333336/R21,
+5 active researchers/resources620 and4 context deliveries. Its request parent
+exactly matches G0, not G1: the retained earliest tied incumbent is the actual
+base. Only program thresholds[[3.5],[4.5]] to[[3],[4]] and bias0.5 to1.0 change.
+The literal all-accept selection body is identical to G0/G1. Source-matching
+receipts cover exact3/4 real identities; incoming accept values remain all0,
+but the unchanged body accepts every record with original scalar scores.
+This is another measured tie, not a new algorithm/structure or a sequential
+G1-bias2 toG2-bias1 update. Do not infer all other graph consumers or future
+effects are inert from this unchanged observed decision path.
+
+Request4588fa65756a5833383eb35e4a9247f5a5feac2f5fbb258b2e8e62e9d854f989;
+world native-adaptive-7e167d9998d992d725e274a8-s42;
+selection source SHA25631dc663adc45fa2e752c2139f726a4565b0ae30d99e223348740e45d73e86fda;
+checkpoint SHA2567ce570066389cd9db79b3f8a392a9cc052184ceba10db13b6b1adf16c125a902;
+code journal SHA2563ae23fdcc2dca800c9e62800eec4205642b0ef94ab46a5ac89e6f6154e306dfb;
+period1/2 result SHA25640166ae1fff065e4bf83f4a2d7dd09cf96f7328e9e3a4a0ffe6dba1ad7734f27 /
+ff49e32928103c0a38d01d1ac3e1c6215b15ac51fd6a10b120dac9110505f9ae;
+109-slot progress SHA2564d57eb276eab6568c18596871f0fc1458f250a0bbcf8f0d83fe56f6c01592c5c.
+
+Slot110 C fixed-code G2 first completes in this history: C2.1,A1/Q4/R21,
+six rejected records,5 active researchers/resources640 and4 context deliveries.
+Its parent is initial; G0/G1 remain execution nulls, not invented scalar losses.
+Three selection-source replacements are the actual edits. It catches scalar
+score-indexing TypeError/ValueError/IndexError and sets score_val0, rather than
+correctly reading the scalar. It does read scalar accept signals correctly.
+Period1 has three explicit rejections; period2 has one acceptance at the real
+mean4/accept1 input and three rejections. All seven authored final_score labels
+are0, while measured Q4 comes from the original accepted paper's review mean.
+Both source-matching receipts have exact actual identity coverage. Unexercised
+dummy/empty/misalignment branches are not proven valid by this forward.
+
+Thus102 and110 have exactly equal C2.1 but different measured A/Q:0/0 versus1/4,
+at the same R21. The accepted paper's4 debit and4 original-score credit cancel,
+leaving0.1R=2.1. This is declared-loss arithmetic and an observed outside-metric
+difference, not proof that the policies are semantically equivalent, a new
+optimum, or a causal effect isolated from other source/oracle variation.
+Do not rewrite110 as reject-all, replace Q with its authored zero score, discard
+either outcome as undesirable or invent a post-hoc tie preference. It improves
+the weak initial's measured2.4 but not the reviewer-free reject C0 reference.
+
+Requesta9c91dd52fc949949b94bde4905c9e7ab2a4ef20f468919678ee945c1c0382df;
+world native-adaptive-5be7b69f59a9cf4e06b63a59-s42;
+selection source SHA25614a8aa2862cd648998d625a236c0531d14d95f82ef90d34d306c6c2787082599;
+checkpoint SHA256d9a9446d0049c34ff7416739d5a495ee38e9599e0da2f84c72624b9c83881e73;
+code journal SHA2566013e320731581cf95d9a1b956afba561e96bf4669825321789373f5711d9cf2;
+period1/2 result SHA2569a235dbac9e285b21d16281ed380794728c5375b59af44ef172d8d76a42b0355 /
+e53c3b4186d0052e84df2fe9031f034e8b31207caf359e7ad34af123349a00b9.
+
+No active source/settings/loss/budget/selection or raw evidence change, hidden
+repair/refill, new resource or optional registry egress. Remaining10 G3 slots,
+fixed selected-policy unused-condition evaluation, two original-source audits
+and final analyses/manuscript/PDF/mock review remain required. The goal stays
+active;110/120 is neither study closure nor a fraction of total completion time.
+
+Offline document checks pass16 active documents/191 local targets/six original
+snapshots and git diff --check; the preserved through70 snapshot retains its
+recorded SHA256. These checks make no model/network/world calls and do not
+substitute for the two required closed original-source V2 audits.

@@ -136,6 +136,17 @@ feedback advantage, new institution or real scientific-policy gain. The full
 study and selected-policy unused-condition evaluation remain open; no hidden
 penalty or veto is introduced for the low-activity result.
 
+Live case110 (C fixed-code G2) gives a different behavior with the same raw C2.1:
+A1/Q4/R21 instead of102's A0/Q0/R21. Its receipt shows one original mean4
+paper accepted while authored final_score remains0. The scalar-score indexing
+exception is caught and replaced by0; the actual scalar accept signal1 selects
+that paper. This is not a demonstrated scalar-parser correction. Algebraically,
+4A-Q cancels for this one accepted paper, so both measured rows leave0.1R=2.1.
+Equal objective values do not imply equivalent policies, equal outside metrics
+or equivalent future trajectories. Keep the distinct definitions and all declared
+ties; do not add a preference for either outcome after seeing them. This is a
+consequence of the declared proxy, not a new optimum theorem or causal comparison.
+
 ## 投稿に残る判断
 
 ### 同じseed・同じ制度と、同じoracle実現は別
