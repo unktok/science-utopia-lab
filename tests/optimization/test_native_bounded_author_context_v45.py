@@ -92,6 +92,12 @@ def test_recovery_then_explicit_finish_cold_replay_with_archived_session_read(tm
     assert replay_staged_generation(directory) == result and len(model.calls) == 4
     assert json.loads((directory/'step-01.completed.json').read_text())['status'] == 'rejected'
     assert json.loads(model.calls[2]['prompt'])['000_current_turn']['authoring_workflow']['phase'] == 'recovery'
+    from scripts.analyze_native_staged_search_v15 import _transport, CLASSIFICATION
+    binding = json.loads((directory/'request.json').read_text())
+    for index in range(4):
+        completed = json.loads((directory/f'step-{index:02d}.completed.json').read_text())
+        started = json.loads((directory/f'step-{index:02d}.started.json').read_text())
+        assert _transport(completed, started, binding, CLASSIFICATION)['known_designer_response']
 
 
 def test_archived_steps_and_errors_are_exact_data_and_state_not_mutated():
