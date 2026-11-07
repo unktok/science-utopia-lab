@@ -1,5 +1,10 @@
 # V44: repair authoring failures before claiming institutional optimization
 
+This is the original development/partial-progress ledger. The campaign has
+since ended. See the [subsequent review](2026-11-07-search-design-review.md) for
+terminal results, independent replay and remaining problems; historical live
+statements below are not current process liveness.
+
 ## Local integration and second completed evaluation
 
 Local main fast-forwards to e4d13bc with all verified repairs and evidence.

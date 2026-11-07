@@ -114,6 +114,13 @@ diagnostic: research/results/native-search-context-size-review-v1.json.
   /tmp/science-utopia-search-review-core.log. These are offline software tests,
   not new model-backed validation or evidence of improved optimization.
 
+After committing2b057b2, the same74 checks pass again in22.11s without changing
+HEAD/source during verification. A separate CLI reconstruction of the review
+JSON is byte-identical to the tracked result. Seven local review-document links
+resolve. `git diff86464f6..2b057b2 -- utopia` is empty: this review changes no
+simulator, designer runtime or optimizer kernel. Subsequent additions are
+documentation only; integrate the reviewed branch locally after these checks.
+
 R0 ends here. R1 repair-context work and R2 connection of existing optimization
 interfaces are designed, not implemented by this review. No new long campaign
 is launched as a side effect of a successful offline test. All empirical

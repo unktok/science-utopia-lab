@@ -1,5 +1,10 @@
 # V44 authoring recovery: verified interface, actual search dispatched
 
+Historical interface verification and partial-progress snapshot. The campaign
+has since ended with6 complete evaluations/2 failures across8 slots. The
+[current design review](../search-design-review.md) supersedes live claims below
+without changing their original software/transport evidence or raw artifacts.
+
 Source:60ef56ca2e32634c72817676b8bcc55bc9fcaa45, clean immutable
 experiment-native-authoring-recovery-v44-a4. This report does not claim a loss
 improvement or error-free future model output.
