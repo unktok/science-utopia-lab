@@ -78,6 +78,22 @@ def save(tmp_path, report=None):
     return path
 
 
+def test_retrospective_cross_scores_do_not_relabel_failed_arm_or_change_own_comparison(tmp_path):
+    report = fixture()
+    report['runs']['throughput']['observations'][0]['cross_scores'] = {
+        'throughput': -7., 'efficiency': -12.166666666666668}
+    report['runs']['efficiency']['observations'][0]['cross_scores'] = {
+        'throughput': None, 'efficiency': None}
+    hashed(report)
+    result = summary.summarize_saved_audit(save(tmp_path, report), expected_source=SOURCE)
+    for arm in summary.ARMS:
+        slot = result['arms'][arm]['new_slot']
+        assert slot['retrospective_cross_scores'] == report['runs'][arm]['observations'][0]['cross_scores']
+        assert slot['cross_scores_are_not_original_arm_feedback'] is True
+        assert slot['loss'] == report['runs'][arm]['observations'][0]['loss']
+        assert result['arms'][arm]['comparison'] == report['comparisons'][arm]
+
+
 def test_failure_null_ties_source_ids_unknown_costs_and_no_new_audit_claim(tmp_path):
     path = save(tmp_path)
     before = path.read_bytes()

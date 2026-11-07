@@ -79,6 +79,8 @@ def _arm(run, comparison):
         measurements={key: clone((row.get('metrics') or {}).get(metric)) for key, metric in (
             ('A', 'native.accepted_decisions'), ('Q', 'native.accepted_peer_score_sum'),
             ('R', 'native.review_records'))},
+        retrospective_cross_scores=clone(row.get('cross_scores')),
+        cross_scores_are_not_original_arm_feedback=True,
         new_source_measurement=original.get('status') == 'complete',
         semantic_novelty_or_scientific_benefit_established=False)
     designer = run['designer']
