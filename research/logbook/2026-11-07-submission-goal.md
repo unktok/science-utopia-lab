@@ -545,3 +545,31 @@ All inspections are read-only, with no new inference, host-repaired policy,
 failed-slot refill, coefficient or active-prompt change. Preserve the worse
 point and the full finite comparison. Throughput code/graph G2 is next;
 full original-source audit and final study conclusions still await closure.
+
+Continuation12:30–12:34UTC is verified waiting on live session46865 followed
+by inspection of a new execution failure. The finite monitoring cell3748 ends
+normally when search reaches23; it does not replace the experiment process.
+Throughput code/graph G2 fails with CodeExecutionError at its world output:
+15 complete,4 generation failures,4 execution failures,9/9 references,
+0 selected-policy evaluations. Progress hash
+b3594fff61dd3ca40eca8898bf168fdfdf0f396954fc893f14a81f0f61b4a39c.
+
+This is not the earlier bare-payload error. The proposal binds obs_list to
+context.inputs.observations and returns world:obs_list. These input messages
+already contain payload and runtime provenance, including emitted_period.
+The output validator accepts exactly payload plus optional actor_ids/artifact_ids;
+that extra key alone is sufficient for rejection. The validator file matches
+frozenb6654ad (no diff). Input/output envelope asymmetry is relevant to interface
+usability; this scoped observation neither proves an undocumented source
+rewrite nor establishes the whole interface bug-free. Do not silently strip
+metadata, broaden the active ABI or relabel this historical trial as complete.
+
+World identity native-adaptive-9537127f38ee679f9bd59d30-s42. Literal source
+UTF-8 SHA2565cf96495c2c4ed64934730d3b4bda3d664ba21d343c6e634f44e5552cf321dc1
+matches the parsed content of the actual raw HTTP response at step-12.completed.
+Generation request hash
+5c38fcccb0a3614363dcf4dfb99f550d1f8baa49be1036c5374cfe482ca77b66.
+No loss is measured. Other speculative later failures in that source are not
+substituted for the actual validator exception. No host repair, slot refill,
+new inference outside protocol or active experiment change. Selective code/graph
+G2 is now being authored; continue the same finite study before closed auditing.
