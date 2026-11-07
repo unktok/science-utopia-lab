@@ -2086,3 +2086,60 @@ and frozen b6654ad clean. No active source/settings/loss/budget/selection change
 new resource, hidden repair/refill or optional registry egress. Remaining40
 search slots, fixed unused-condition evaluation, two original-source audits,
 final analyses/manuscript/PDF and mock review still required. Goal active.
+
+### First three run02 outcomes: one simple completion, two rank failures
+
+Previous turn closes run01 and binds fresh run02 readiness to the actual first
+dispatch. This continuation repeatedly re-polls actual writer46865 live.
+Read-only observer90352 reaches83 before900s and exits0. At18:51:31UTC
+search83/120:42 complete,17 generation failures,24 execution failures;
+reference9/9,evaluation0. Progress SHA256
+1c1dc51927bb5bc00945e78eb8e1c6bc3139edb8433b991ad040dad15ada10c2.
+These are the first three run02 G0 slots, not a completed generation/history.
+
+Slot81 T fixed-graph G0 completes T-7,A7/Q22.333333333333336/R21,
+5 active researchers/resources620,4 institutional-context deliveries.
+Only selection source changes, two sequential replacements. The final code
+hardcodes accept for every addressed record while checking accept/score identity
+alignment. Two source-matching receipts cover3/4 actual IDs exactly; all incoming
+acceptance signals are0, yet the authored output accepts all records. This is
+a first-proposal gain against the separately measured weak initial T0, tying
+strong all-accept controls, not feedback learning or a novel structure.
+The empty-record fallback is unexercised; no universal correctness is asserted.
+Request948d0bff1e11a59dcbe147d96766765c7bfa65930f596c80437b92d7e93016b2;
+world native-adaptive-e84eefa393b81812c1fb3ddc-s42;
+selection source SHA25631dc663adc45fa2e752c2139f726a4565b0ae30d99e223348740e45d73e86fda;
+checkpoint SHA25616e8196cec75e3f8f859e3489ca36aad304c8afb91e85eea172b816ee6ea9e23;
+code-context journal SHA256129e044d7d35728f135349e3159bec77fe6c42e5a7c58c40f14c63df4c4df84c.
+
+Slot82 C fixed-graph G0 fails at generated line39, scores['values'][i][0],
+because the score entry is a float. Its comments correctly derive the
+conditional fixed-review cutoff4-score<0, but that does not establish a valid
+implementation or global dynamic optimum. Its literal loop also omits reject
+records and has an empty-cycle fallback; neither is a second observed native
+error because execution stops first on the scalar index. Only source changes,
+three sequential replacements. No measured loss or successful selection receipt.
+Request e8f7dc63bf281b2f54dcac09c668f1b6bd63dd15608d55b95f98ea6e8e316532;
+world native-adaptive-10b4e9d818d429fd617dfab0-s42;
+selection source SHA256410ad7ab44ae3b2487223b78dc9f32ba37d42dcc994e2c1d0cb54290720c498f;
+partial journal SHA256bfae44659a16d00f04c17d70bac639715c847d8503c777cd38f8ffcf6c3ab7fb,
+three preceding successful receipts, not a selection completion.
+
+Slot83 T code-and-graph G0 fails on scores['values'][i][0] in the authored
+final_score expression, generated list-comprehension line6. Although decisions
+are literally accept, the cosmetic score expression raises before a usable
+output is returned. Do not salvage it as a completed all-accept forward or
+assign predicted T-7. Only selection source changes, two replacements; the
+upstream score program is unchanged. The failure remains a technical null,
+not an adverse scientific loss or proof that reject-all is prohibited.
+Request259a0db86617e0ae1ca9a839f9ea430ab83aadb4aca8fe8f1c9ad3212a7e6dbe;
+world native-adaptive-8226bb9cbd0ea2be59535559-s42;
+selection source SHA25635f3a4d18e4f4dac5dda90e5ccbb6b4cb3a9fab501492a6d94933bbfa13437ce;
+partial journal SHA256762807542e9b69eb59d35ec8460cffe6e574632b88bb1b8983e0dc6f7e6efd02,
+three preceding successful receipts, not a selection completion.
+
+No active source, role/model setting, objective, budget, selection or raw output
+changes, hidden candidate repair/refill, new resource use or optional registry
+egress. The actual writer remains live. Remaining37 search slots, fixed
+selection/unused-condition evaluation, two original-source audits, final
+analysis/manuscript/PDF and mock review remain required. Submission goal active.
