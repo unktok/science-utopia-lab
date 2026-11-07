@@ -76,7 +76,8 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
                 or evidence['system_fingerprint']!=spec.fingerprint
                 or evidence['event_stream_hash']!=last['native_system']['event_stream_hash']):
             raise ValueError('completed evidence differs from original terminal checkpoint')
-    response=zero_http_response_proofs(cell,binding,counts,complete=complete,protocol={},classification=RESPONSE_ACTUAL)
+    response=zero_http_response_proofs(cell,binding,counts,complete=complete,protocol={},
+        classification=RESPONSE_ACTUAL,maximum_year=years)
     if response['wire_requests']>config['maximum_http_attempts']:
         raise ValueError('actual HTTP attempts exceeded the declared native budget')
     if any(int(y)>years for y in response['responses_by_physical_year']):

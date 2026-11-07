@@ -104,8 +104,13 @@ def test_evaluation_physical_audit_reads_real_native_checkpoints_at_declared_see
             # constructor; parameterize that fixture input, not the auditor.
             self.args.seed=binding['seed']
             return super().enable_portable_checkpoints(binding,**kwargs)
+    class NonreasoningFixtureHTTP(fixture.FakeHTTPModel):
+        def _build_transport_fields(self,*args,**kwargs):
+            # Keep the historical fixture's scripted vLLM schema/seed lookup;
+            # declare the production non-reasoning setting in its raw payload.
+            return {**super()._build_transport_fields(*args,**kwargs),'reasoning_effort':'none'}
     def factory(candidate,seed,run_id):
-        cell=tmp_path/'worlds'/run_id;model=fixture.FakeHTTPModel(cell,[])
+        cell=tmp_path/'worlds'/run_id;model=NonreasoningFixtureHTTP(cell,[])
         old=model.response_cache.path;model.response_cache.close();old.unlink()
         model.response_cache=CompletedResponseCache(cell/'replies/responses.sqlite',binding=fixture.BINDING)
         model.run_seed=seed;model.enable_thinking=False;model.max_tokens_override=768

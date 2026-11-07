@@ -50,7 +50,8 @@ def read(path):
     return value
 
 
-def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classification,expected_prefixes=None):
+def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classification,expected_prefixes=None,
+        maximum_year=3):
     """An absent journal is lawful only before any recorded scientist request.
 
     This narrow v14 extension does not create an empty raw file or modify the
@@ -59,7 +60,7 @@ def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classifica
     cell = Path(cell)
     if (cell/'wire-requests.jsonl').exists():
         return original_response_proofs(cell,binding,counts,complete=complete,protocol=protocol,
-            classification=classification,expected_prefixes=expected_prefixes)
+            classification=classification,expected_prefixes=expected_prefixes,maximum_year=maximum_year)
     path = cell/'replies/responses.sqlite'
     with sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True) as db:
         bindings = db.execute('SELECT binding FROM metadata').fetchall()
