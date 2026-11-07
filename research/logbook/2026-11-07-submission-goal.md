@@ -2476,3 +2476,63 @@ The offline documentation checker passes16 active documents/189 local targets
 and six original snapshots; git diff --check passes. The separately preserved
 through70 snapshot remains SHA2563360312852c14344e23718ad283ca4053c3930afffbd995dace2bb42bc01865b.
 No model calls, simulator runs or network requests are made by these checks.
+
+### Ninety-seven slots and a separate local release-boundary review
+
+This turn follows concrete outcome/input-proof progress at ad6e756. Actual
+writer46865 is re-polled live, not inferred from a lock or observer. At20:08UTC
+progress97/120:49 complete,19 generation failures,29 execution failures;
+reference9/9,evaluation0. Progress file SHA256
+67841bb102051ece14fb63d7eb2f158c284760c4660c1ec32035a4afa3637040.
+Next T numeric G1 is authoring; no outcome is invented for that pending request.
+
+Slot97 C uniform-numeric G1 completes C8.433333333333332,A7/Q21.666666666666668/
+R21,5 active researchers/resources620 and6 context deliveries. This is worse
+than this arm's G0 C8.1 and initial C2.4000000000000004, not an improvement.
+Its candidate dictionary and six numeric operations exactly match96; controller
+RNG136861321435631163 and candidate fingerprint likewise match. Measured
+A/Q/R and the recorded event-stream hash agree for this pair, but this limited
+comparison is not proof of bitwise-identical raw replies/checkpoints. Retain
+both declared physical forwards, not extra independent policies or a retroactive
+development deduplication. All20 consumed uniform proposals execute.
+
+Requestdb739ef11da70c0d117a9739f81535b48892dfa3c03d8ef22118f576711daa05;
+world native-adaptive-5936ba69f1f3a97ad1f5f555-s42;
+checkpoint SHA256edf3f7c7ac34dd541de9a783167d6129bc474d8a650ddee0d2d3f4216d974a70;
+candidate fingerprint80fe9792000d99a5da20d005efad7024a30fcdec4dc7b2d4a1c8c8ce24fb3292.
+
+During independent researcher inference, perform a read-only local release
+review rather than another model experiment. The PDF skill is read fully and
+used for inspection only: no authoring marker, rebuild, output metadata rewrite
+or new PDF. Poppler pdfinfo/pdfdetach/pdftotext and URL annotations provide
+limited evidence on the existing working PDF, whose SHA256 remains
+0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59.
+There are11 pages, zero embedded files and17 bibliography URL annotations on
+two primary-source hosts. No inspected operator/path literal appears in its
+extracted text or URL annotations. This does not make the preprint anonymous,
+verify every PDF object or replace final visual inspection.
+
+At source ad6e756 a narrow tracked-file inventory covers1922 files. No selected
+cache/model/key suffix or excluded-root filename is found, but134 tracked text
+files up to10MB contain the literal operator path. Record the exact scope,
+per-root counts and matching-filename-list checksum in the existing
+research-readiness review; this is not a complete credential/PII scan. Root
+LICENSE bytes equal local initial commit ec42d18, including its existing
+copyright line. Preserve rather than silently replace attribution, and flag
+upstream coverage before claiming redistribution permission. No legal clearance
+is inferred from one license file, dataset card or an uncertain model origin.
+
+The review now specifies a separate final-result allowlist, immutable original
+evidence and explicit relocation mapping, omitted raw/weight/operator material,
+asset/template provenance, human authorship and actual-cycle checks. It does
+not claim that a reviewer bundle already exists or that35B fresh-machine
+reproduction is solved. It introduces no scientific filter or experiment veto.
+No dependency/model is installed, optional fingerprint egress retried, public
+bundle generated, external service used, upload/push or actual submission made.
+
+Offline docs checks pass16 active documents/191 local targets/six original
+snapshots and a separate readiness-document target check; anchor/remote URL
+validation remain outside that check. git diff --check passes and the through70
+snapshot checksum remains unchanged. The experiment source/settings/objective/
+budget/selection remain untouched;23 search slots, fixed unused-condition
+evaluations, two source audits and final analysis/paper/mock review stay open.

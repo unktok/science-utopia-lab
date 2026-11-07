@@ -158,6 +158,62 @@ fresh oracle実現が異なりうることも明示する。この少数事例�
 十分な裏付けが必要で、計算量だけでは補えない。本試験前後にこの表へ戻って
 主張を吟味し、最終的な投稿判断を行う。
 
+## Local release review: concrete observations, not publication clearance
+
+2026-11-07UTC, integration source ad6e756. This read-only review runs while
+the separate frozen V2 writer remains live; it changes no experiment inputs.
+It does not authorize release, establish license compatibility, complete a
+credential/PII audit, or claim anonymous submission readiness.
+
+The current working PDF has SHA256
+0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59.
+Poppler reports11 pages, zero embedded files, no form/JavaScript and no custom
+metadata or metadata stream. Its17 URL annotations point to arxiv.org(14) or
+proceedings.mlr.press(3); none contains the inspected operator/path literals.
+Extracted text has no `/Users/`, `/home/`, `shiro` or `unktok` literal. These
+checks do not replace visual review, cover every possible identifying string,
+or attest to every PDF object. The source explicitly uses the preprint option
+and a Science Utopia Lab working-draft author block; it is not an anonymous
+submission copy. No PDF bytes, metadata or historical build receipt are edited.
+
+At this source, Git tracks1922 files. A narrow filename check finds no tracked
+files under outputs/, data/, .cache/, .venv/ or tmp/, no .env/.env.* names and
+no .pem/.key/.gguf/.safetensors/.sqlite/.sqlite3/.pth/.pt suffixes. This is not
+proof that every secret, private cache, model format or derived text is absent.
+A literal `/Users/shiro` scan of tracked UTF-8 files up to10MB finds134 files:
+research100, game-ui-v2 20, paper6, scripts2, tests6. The ordered matching
+filename list has SHA256
+5f70af724e647463dbdbfeb5ef1e2b10dba7f0e28be3fd446744fe2430052596.
+An entire checkout or Git history is therefore not an anonymous reviewer bundle.
+Many matches are intentional historical evidence locators; do not rewrite those
+immutable raw/snapshot records to satisfy an anonymity check.
+
+| Material | Verified local observation | Required before any actual release |
+| --- | --- | --- |
+| Source and attribution | README identifies the ScienceUtopia fork; root Apache2.0 LICENSE is unchanged since local initial commit ec42d18 | Preserve upstream attribution and applicable notices. Check the final selected files and upstream terms, not only the root license label |
+| Root license identity | LICENSE SHA2560dc1811264bb76e119d3f58a8e775d79abeb1708c9486d3861354c1688062350 includes the literal copyright line2020 Rémi Louf | Resolve its upstream provenance/coverage before treating that line as this project's authorship or blanket permission for dependencies/data/models; do not silently replace it |
+| Conference template | Bundled neurips_2025.sty retains its original credit header, SHA25667a960f35da6fecb5a0ce0202fa400459f4c8bb6c294f1a3fdd82fbbd39244c2 | Use the selected cycle's actual official template and rules; retain required credits/notices in source. The current2025 preprint style is not future-cycle compliance |
+| Corpus and scientist inputs | Workflow records exact SciEvo/retriever revisions, ordered corpus hash and the limited current-card license observation | Do not bundle literature-derived raw text/author metadata by default. Separately verify redistribution terms for the intended subset; a dataset-card declaration alone is insufficient |
+| Model/server artifacts | Local digests and selected backend hashes are recorded;35B upstream revision/conversion remains unknown | Do not redistribute weights or promise a publicly retrievable exact35B model. Clearly distinguish recorded-summary rebuild, local raw audit and a fresh-machine inference rerun |
+| Game and generated art | Existing asset provenance separates code-authored production SVGs from13 generated concept PNGs not loaded by the runtime manifest | Omit unrelated UI/concept assets from a minimal research bundle; if included, retain provenance and review their terms/metadata separately. Do not present them as empirical evidence |
+| Human/agent provenance | Paper discloses coding-agent assistance and leaves human authorship unresolved | User finalizes human authors/contributions and intended AI-use disclosure; assistance is not independent empirical verification |
+| Operational evidence | Source IDs/checksums are needed for audit; historical locators contain operator paths | Prepare a separate explicit allowlist and verified locator mapping. Keep original evidence unchanged; omit .git, operator configs, caches, weights and unapproved raw archives |
+
+The inspected production-asset provenance file SHA256 is
+3df8c244790e69d5e10bb78abe7da5425a3f94b03a2cad23da16ed9d02493482;
+its authorship statements are repository records, not an independent rights audit.
+No new package, model, external query or generated artwork is used by this review.
+
+After the scientific results close, stage only the necessary paper sources,
+figures, compact measured results, exact-source identifiers, software tests and
+reproduction instructions in a fresh local directory. Inspect that actual
+allowlist for secrets, identifying metadata/links, third-party attribution and
+missing dependencies, then rebuild the staged paper and verify its full rendered
+pages. A checksum inventory is not enough to show that a clean-machine run works.
+State model/raw-data gaps rather than substituting resources or claiming complete
+independent reproduction. External sharing, push/upload and submission still
+require user approval. This packaging review is not a scientific selection veto.
+
 ## 既存surveyメモの扱い
 
 過去の二つの目的メモは、規範的な制約を提案していた。その後のユーザー指示で

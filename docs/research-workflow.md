@@ -304,3 +304,10 @@ anonymous filenames/metadata, operator paths, secrets and generated content.
 Do not include raw caches, model weights, `.env`, operator configs or an entire
 home/Git history by default. Sharing, remote pushing, authorship and actual
 submission still require the user's approval. Local preparation is not release.
+
+The [local release review](../research/publication/research-readiness-review-v2.md#local-release-review-concrete-observations-not-publication-clearance)
+records actual working-PDF metadata/annotations, narrow tracked-file scans,
+upstream attribution/asset boundaries and remaining model/data/anonymous-package
+checks. Those observations are not blanket publication permission or a completed
+secret scan. Prepare a separate explicit allowlist after final results; do not
+anonymize immutable historical evidence in place or distribute the entire checkout.
