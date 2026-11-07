@@ -141,3 +141,26 @@ def test_cli_preserves_existing_outputs_and_never_writes_inside_raw(tmp_path):
     with pytest.raises(SystemExit):analysis.main(argv)
     with pytest.raises(SystemExit):analysis.main(argv[:-1]+[str(root/'not-allowed.json')])
     assert output.read_bytes()==saved
+
+
+def test_new_study_search_reference_and_shared_evaluation_entries_keep_all_nulls(tmp_path):
+    from tests.reports.test_native_design_benchmark_report import fixture as study_fixture
+    # Reuse only explicit synthetic report shapes, NOT empirical audit evidence.
+    root=tmp_path/'raw';_,controls=fixture(root)
+    p,a=study_fixture();write_json_atomic(root/'plan.json',p)
+    source_o=json.loads((root/'controls/legacy/observation.json').read_text())
+    source_proof=controls['proofs']['legacy']
+    for bodies in a['runs'].values():
+        for body in bodies.values():
+            for row in body['observations']:row.update(observation=None,physical_proof=None)
+    for group in ['references','evaluated']:
+        for body in a[group].values():body.update(observation=None,physical_proof=None)
+    first=a['runs']['run-00']['throughput:parameters']['observations'][0]
+    first.update(observation=source_o,physical_proof=source_proof)
+    a['input_inventory']=analysis._inventory(root)
+    a['content_sha256']=digest({k:v for k,v in a.items() if k!='content_sha256'})
+    r=analysis.analyze(root,p,a,expected_source=p['source_commit'])
+    assert len(r['worlds'])==120+9+6  # physical eval jobs, NOT19*6 labels
+    assert sum(w['status']=='complete' for w in r['worlds'].values())==1
+    assert r['worlds']['search:run-00:throughput:parameters:g0']['relaxation'] is not None
+    assert r['worlds']['references:legacy']['relaxation'] is None
