@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from utopia.system.design_patch import digest
+from utopia.utils.data_utils import decode_json
 
 SCHEMA='scienceutopia.native-benchmark-controls.v2.summary'
 
@@ -41,7 +42,8 @@ def plot(summary,output,*,print_layout=False):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    if summary['content_sha256']!=digest({k:v for k,v in summary.items() if k!='content_sha256'}):
+    if (summary.get('schema')!=SCHEMA or summary['content_sha256']!=digest(
+            {k:v for k,v in summary.items() if k!='content_sha256'})):
         raise ValueError('control summary identity differs')
     output=Path(output)
     if output.exists():raise ValueError('fresh figure directory required')
@@ -93,12 +95,19 @@ def plot(summary,output,*,print_layout=False):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--audit',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
-    p.add_argument('--figures',type=Path);a=p.parse_args(argv)
+    inputs=p.add_mutually_exclusive_group(required=True)
+    inputs.add_argument('--audit',type=Path);inputs.add_argument('--summary',type=Path)
+    p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--figures',type=Path);p.add_argument('--print-layout',action='store_true');a=p.parse_args(argv)
     if a.output.exists():p.error('fresh compact summary required')
-    saved=a.audit.read_bytes();summary=summarize(json.loads(saved))
-    if a.figures:plot(summary,a.figures)
-    if a.audit.read_bytes()!=saved:raise ValueError('control audit changed while reporting')
+    source=a.audit if a.audit is not None else a.summary
+    saved=source.read_bytes();value=decode_json(saved.decode(),strict=True,finite_floats=True)
+    summary=summarize(value) if a.audit is not None else value
+    if (summary.get('schema')!=SCHEMA or summary.get('content_sha256')!=digest(
+            {k:v for k,v in summary.items() if k!='content_sha256'})):
+        raise ValueError('exact recorded summary identity required; no raw re-audit claimed')
+    if a.figures:plot(summary,a.figures,print_layout=a.print_layout)
+    if source.read_bytes()!=saved:raise ValueError('control report input changed while reporting')
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(summary,ensure_ascii=False,sort_keys=True,indent=2)+'\n')
     print({'content_sha256':summary['content_sha256'],'completed':summary['completed']});return 0
