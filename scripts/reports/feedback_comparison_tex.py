@@ -38,12 +38,17 @@ def render(data):
         r'\begin{tabular}{@{}lllrr@{}}',r'\toprule',
         r'Design & Generation & Status & $\ell_T$ & $\ell_E$\\',r'\midrule']
     baseline = data['baseline']
+    if baseline['cross_scores']!=baseline['row']['cross_scores']:
+        raise ValueError('baseline row/table cross-scores differ')
     table.append('Shared baseline & -- & '+('complete' if baseline['row']['status']=='complete' else 'failure')
         +' & '+number(baseline['cross_scores']['throughput'])+' & '
         +number(baseline['cross_scores']['efficiency'])+r'\\')
     table.append(r'\midrule')
     for row in rows:
         arm = row['arm']; objective, suffix = arm.split('-',1)
+        if (type(row['generation']) is not int or row['generation'] not in (0,1)
+                or row['row_id'] != f'{arm}:g{row["generation"]}'):
+            raise ValueError('candidate arm/generation/row identity differs')
         if objective not in ('throughput','efficiency') or suffix not in ('loss','technical-only'):
             raise ValueError('undeclared objective/proposal arm')
         if row['status'] not in counts:
@@ -62,7 +67,7 @@ def render(data):
         r'\caption{Same-source development outcomes, scored under both objectives.',
         r'Lower is better. Scores are rounded only for display to three decimals;',
         r'exact values, all ties and nulls remain in the source-bound JSON.',
-        r'A dash is an unmeasured technical failure, not a numerical penalty.',
+        r'A dash is an unavailable outcome or score, not a numerical penalty.',
         r'Cross-scoring reuses the same checkpoint; it is not an independent replicate.}',
         r'\label{tab:pilot-outcomes}',r'\end{table}']
     lines += [f'The budget contains {counts["complete"]} completed candidates, '

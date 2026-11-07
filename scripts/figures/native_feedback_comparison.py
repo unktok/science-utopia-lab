@@ -75,7 +75,7 @@ def render(source, output):
         heat.tick_params(axis='y',length=0,labelsize=8)
         fig.colorbar(image,ax=heat,shrink=.75,pad=.02,label='Loss (separate scale per objective)')
     fig.suptitle('Objective-conditioned institution search: a small development comparison',fontsize=14)
-    fig.supxlabel('One development seed · two proposals / arm · null = technical failure, not a bad numerical score\n'
+    fig.supxlabel('One development seed · two proposals / arm · null = unavailable outcome/score, not a numerical penalty\n'
         f'Source {data["source_commit"][:10]} · descriptive pilot, no method-superiority claim',fontsize=9)
     output.mkdir(parents=True,exist_ok=False)
     for suffix in ('png','svg'):

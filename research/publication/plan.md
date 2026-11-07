@@ -52,25 +52,30 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 **P0：今回着手・実装済み**：出典固定の証拠棚卸しと、
 [比較contract](benchmark-contract-v1.md)を作る。研究者worldもモデルも追加実行しない。
 
-**P1：実装・検証中**：既存NativeAdaptiveDesignCampaignへloss-feedbackの
+**P1：実装・検証済み**：既存NativeAdaptiveDesignCampaignへloss-feedbackの
 有無を比較できる入口を接続する。単にscoresを消すだけでは、incumbent選択、
 候補順、parent、strategy更新から正解が漏れる。最初にこの対照のテストを作る。
 技術的なエラーfeedbackは両群に残し、科学的損失feedbackと区別する。
 制御実装と[有限比較protocol](../protocols/campaigns/native-feedback-comparison-v1-a1.md)
-を作成。完全な実行結果はまだなく、実sourceの検証・校正がdispatchに先行する。
+を作成。固定source2e375c2で28技術校正・冷再生後に有限pilotを開始した。
+実行中の条件は変えず、完全な結果は終了後の原source監査から報告する。
 
-**P2：少数規模で実行**：同一source・共通初期系・二目的・二探索法の
+**P2：少数規模で実行中**：同一source・共通初期系・二目的・二探索法の
 最小比較を回し、全候補、null、費用、探索経路、cross-scoreと作用を保存する。
 この段階の単一seedを統計的な優位性とは呼ばない。
 
 **P3：自由度と一般化**：parameter-only／自由コード固定graph／自由graphを
 同じ条件で比較する。選択を固定してから未使用seed・条件を評価する。
+現在のopen-system初期系は未変更の原制度ではないため、legacy原制度と
+明らかな手作業ルールも対照に含め、弱い初期系だけに勝つ比較にしない。
 効果が出ない場合、予算追加で良い結果を探すのでなく、事前に定めた解析を行う。
 
-**P4：原稿**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
+**P4：原稿を組み直し中**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
 基盤、比較、制度機構の知見を主文へ。失敗履歴・API・source検証は付録へ。
 [主張中心の章立て](../../paper/submission-outline.md)を次稿の正本とする。
 現在の長いworking draftやNeurIPS形式は、投稿準備完了を意味しない。
+[短い新稿](../../paper/submission.tex)は方法・比較中心の構成を実装済みで、
+実験終了・監査後に自動生成の表と図を入れる。旧長稿は保存する。
 
 ## 会議の方針：確認できた事項と判断を分ける
 

@@ -35,7 +35,7 @@ def test_all_literal_rows_nulls_and_hash_caption_without_changing_input():
     assert r'execution failure & \textemdash & \textemdash' in text
 
 
-@pytest.mark.parametrize('kind',['mismatch','missing','duplicate','bool','failure-number'])
+@pytest.mark.parametrize('kind',['mismatch','missing','duplicate','bool','failure-number','generation','baseline'])
 def test_render_rejects_changed_semantics_even_after_rehash(kind):
     value=summary();row=value['candidate_rows'][0]
     if kind=='mismatch':row['loss']=-999.
@@ -43,6 +43,8 @@ def test_render_rejects_changed_semantics_even_after_rehash(kind):
     if kind=='duplicate':value['candidate_rows'][1]=deepcopy(row)
     if kind=='bool':row['cross_scores']['efficiency']=True
     if kind=='failure-number':row['status']='technical-failure'
+    if kind=='generation':row['generation']=True
+    if kind=='baseline':value['baseline']['row']['cross_scores']['throughput']=-123.
     rehash(value)
     with pytest.raises(ValueError):render(value)
 
