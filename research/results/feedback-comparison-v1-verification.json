@@ -1,0 +1,54 @@
+{
+  "schema": "scienceutopia.feedback-comparison-software-verification.v1",
+  "classification": "software-QA-not-scientific-evidence",
+  "date": "2026-11-07",
+  "broad_scope": {
+    "source_commit": "2494e633ab77575277458a868dc6b5202827191d",
+    "directories": ["tests/optimization", "tests/reports", "tests/runtime", "tests/system"],
+    "passed": 2619,
+    "skipped": 3,
+    "failed": 0,
+    "seconds": 894.01,
+    "log": "outputs/feedback-comparison-v1-verification/pytest-authorized.log",
+    "log_sha256": "f0925830705e141e285b85cf98a0795b6856f9fb480e37f274b977c737bd0ced",
+    "junit": "outputs/feedback-comparison-v1-verification/pytest-authorized.xml",
+    "junit_sha256": "9469ba9f48c9d7721080b280c1083cdb1d694b419bdb257f5cc50fd53c3ae76c"
+  },
+  "later_targeted_scope": {
+    "source_commit": "2e375c22793210d3496450a99ca96a86f0f7aecc",
+    "test_files": [
+      "tests/optimization/test_native_feedback_control.py",
+      "tests/optimization/test_native_adaptive_search.py",
+      "tests/optimization/test_native_bounded_author_context_v45.py",
+      "tests/optimization/test_native_designer_contract_v16.py",
+      "tests/reports/test_native_feedback_comparison_driver.py",
+      "tests/reports/test_native_feedback_comparison_analysis.py",
+      "tests/reports/test_native_feedback_comparison_figures.py",
+      "tests/reports/test_repository_docs.py"
+    ],
+    "passed": 114,
+    "skipped": 0,
+    "failed": 0,
+    "seconds": 40.80,
+    "log": "outputs/feedback-comparison-v1-verification/pytest-comparison-final.log",
+    "log_sha256": "4c0872797c030038a4d337f9176c3df5cb39dd1dad60575b4a1b5dfe209703aa",
+    "junit": "outputs/feedback-comparison-v1-verification/pytest-comparison-final.xml",
+    "junit_sha256": "02bc1395d7d202030d5322e83fa0a5a73f26ed87587e922bd77231d717d7d782"
+  },
+  "final_source_exact_blob_check": {"source_commit": "2e375c22793210d3496450a99ca96a86f0f7aecc", "files": 271, "status": "passed"},
+  "initial_restricted_shell_run": {
+    "source_commit": "56a0c67",
+    "status": "interrupted-not-a-full-pass",
+    "passed_before_interrupt": 463,
+    "failed": 2,
+    "errors": 1,
+    "skipped": 5,
+    "cause_of_reported_failures": "permission denied connecting to local Docker socket",
+    "artifacts_preserved": "outputs/feedback-comparison-v1-verification/pytest-56a0c67.*"
+  },
+  "counts_are_additive": false,
+  "broad_suite_ran_on_later_matched_loss_source": false,
+  "real_designer_calibration_established_by_this_receipt": false,
+  "new_scientific_worlds_in_these_checks": 0,
+  "note": "Native software integration checks use the original Simulation lifecycle with explicitly scripted scholar HTTP/corpus. They are not live-LLM scientific results."
+}

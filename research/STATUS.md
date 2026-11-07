@@ -5,7 +5,7 @@ Updated2026-11-07. This page is a concise current-state summary.
 
 ## Actual experiment state
 
-The latest pilot V45 is **closed**. It ran03:24:10–03:41:12UTC on2026-11-07,
+The latest closed pilot V45 ran03:24:10–03:41:12UTC on2026-11-07,
 for17m01.94s, using fixed Qwen3-8B researchers and the approved local35B designer.
 No background experiment is implied by this page.
 
@@ -14,8 +14,17 @@ with six exact historical snapshots. The [publication research plan](publication
 and [comparison contract](publication/benchmark-contract-v1.md) identify the next
 matched studies. The [four-study evidence projection](results/publication-evidence-inventory-v1.json)
 is implemented and tested offline. It starts no model/world and establishes no
-new improvement, matched-method result or submission readiness. Next is the
-loss-feedback/no-feedback comparison implementation, including leakage checks.
+new improvement, matched-method result or submission readiness.
+
+The [feedback comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md)
+is now implemented and prepared at frozen source2e375c2. Real local-designer
+calibration started around05:05UTC; no new scientific world has started at this
+snapshot. It declares eight proposal slots plus one shared baseline, no refill.
+The [software receipt](results/feedback-comparison-v1-verification.json) separates
+the2619/3 broad check at2494e63 from the114 later targeted checks at2e375c2.
+These are software verification, not experimental improvement or a guarantee
+that all generated institutions execute. Raw local locator:
+`outputs/native-feedback-comparison-v1-a1/`.
 
 | Assigned objective | Historical starting best | Own new outcome |
 | --- | ---: | --- |

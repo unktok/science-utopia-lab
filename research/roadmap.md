@@ -10,7 +10,9 @@
 3. 投稿可能な主張と不足する証拠を決め、最初の研究タスクを実装・検証する。
    [投稿研究計画](publication/plan.md)、[比較contract](publication/benchmark-contract-v1.md)、
    [4研究の出典固定解析](results/publication-evidence-inventory-v1.json)まで完了。
-   次はloss-feedback対照の実装であり、新しい比較実験を既に実行したとは扱わない。
+   loss-feedback対照・出典固定監査・経路／cross-score作図も実装済み。
+   [有限pilot](protocols/campaigns/native-feedback-comparison-v1-a1.md)は校正段階で、
+   実装完了を新しい科学的結果と取り違えない。
 
 ## 最優先：研究比較を成立させる
 
