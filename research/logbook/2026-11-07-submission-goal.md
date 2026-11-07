@@ -611,3 +611,29 @@ fsum here gives22.333333333333332 versus22.333333333333336. Preserve the raw
 measured values and label any arithmetic diagnostic separately. This uses no
 new scientist/designer response, generated-code execution or world trajectory;
 full source/physical closure remains deferred until the writer terminates.
+
+Continuation12:49–12:55UTC confirms live session46865. Throughput technical-only
+G2 completes by12:54:41UTC at T-7, A7/Q22.333333333333336/R21, tied with G0/G1.
+Totals25/120,17 complete,4 generation failures,4 execution failures,
+references9/9,selected-policy evaluations0. Progress hash
+554546ca94ad8cb6ce013526e47b685243a7cc35d4e74c103957b4e055d58bc0.
+Monitoring cell3770 exits normally at the changed slot count. No source, budget,
+model/prompt, failure-replacement or additional-inference changes. Selective
+technical-only G2 is being authored. Defer batch mechanism/cost conclusions
+until original-source study closure rather than treat partial outcomes as a
+complete comparison or repeatedly rebuild the paper from live observations.
+
+Separate progress while inference runs: primary-method comparison now includes
+GPTSwarm, after an initial v1 lookup and targeted v3 sections2.1–2.4/3.1 reading.
+Record graph/topology/score-function optimization as prior art, not our invention;
+the scientific-system question and its evidence must carry the contribution.
+Do not inherit an unbiasedness claim outside our own probability/support/null
+contracts. This is scoped reading, not code reproduction or a new experiment.
+The experiment and reviewed PDF/bibliography remain unchanged; include the
+citation in the next substantive manuscript rebuild.
+
+At13725e52e542bd70a8f2665d2a1b5b97676acd56,10 offline documentation/artifact
+checks pass in0.17s, JUnit
+outputs/publication-benchmark-v2-verification/gptswarm-methods-followup.xml SHA256
+a38b4c63510ea5ed4e9f19192097d5b0d0583068ef03ec4a8c34414fd346c3eb.
+This overlapping QA scope is not more scientist trials or scientific evidence.
