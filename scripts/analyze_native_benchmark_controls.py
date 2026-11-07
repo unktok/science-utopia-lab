@@ -12,7 +12,7 @@ from scripts import run_native_benchmark_controls as driver
 from scripts.native_benchmark_source import source_proofs
 from scripts.analyze_native_autonomous_search_v14 import (
     read, _inventory, audit_native_run_v14, partial_physical_proof_v14)
-from utopia.optimization.loss import evaluate_loss
+from utopia.optimization.loss import evaluate_loss, loss_spec_sha256
 from utopia.optimization.native_scientist_load_v38 import replay_load
 from utopia.optimization.native_loaded_roles_v38 import replay_loaded_context
 from utopia.system import SystemSpec
@@ -48,18 +48,24 @@ def analyze(root,source):
                 raise ValueError('control candidate identity differs')
             measurement = o['metadata']['measurements']
             score = {key:evaluate_loss(loss,measurement) for key,loss in plan['losses'].items()}
-            if score != read(directory/'cross-scores.json') or o['loss'] != score['throughput']['loss']:
+            if (score != read(directory/'cross-scores.json') or o['loss'] != score['throughput']['loss']
+                    or o['metadata']['loss_evaluation'] != score['throughput']
+                    or o['metadata']['loss_spec_sha256'] != loss_spec_sha256(plan['losses']['throughput'])
+                    or o['metadata']['world_backend'] != 'native-research-world'
+                    or o['metadata']['system_fingerprint'] != spec.fingerprint):
                 raise ValueError('control score differs from exact measurements')
             cells = sorted((directory/'worlds').glob('*'))
             if len(cells)!=1 or cells[0].name!='control-'+name+'-s42':
                 raise ValueError('control has undeclared/missing physical worlds')
             cell = cells[0];physical.add(cell.resolve())
             purpose='before-native-world:'+cell.name
-            if (not replay_load(read(cell/'role-load-000.started.json'),read(cell/'role-load-000.json'),
-                    provider=plan['scientist'],purpose=purpose)['empty_prompt_load_confirmed']
-                    or not replay_loaded_context(read(cell/'loaded-role-context-000.json'),
-                    expected={'scientist':plan['scientist']},purpose=purpose)):
-                raise ValueError('control scientist load/context differs')
+            load = replay_load(read(cell/'role-load-000.started.json'),read(cell/'role-load-000.json'),
+                provider=plan['scientist'],purpose=purpose)['empty_prompt_load_confirmed']
+            context_path=cell/'loaded-role-context-000.json'
+            context = replay_loaded_context(read(context_path),expected={'scientist':plan['scientist']},
+                purpose=purpose) if context_path.exists() else False
+            if (not load or not context) and o['status']=='complete':
+                raise ValueError('complete control lacks confirmed scientist load/context')
             if o['status']=='complete':
                 if len(o['metadata']['runs'])!=1 or o['metadata']['technical_failures']:
                     raise ValueError('complete control lacks one clean native trajectory')
@@ -69,7 +75,18 @@ def analyze(root,source):
                 if measurement != [proof['measurement']]:
                     raise ValueError('control checkpoint measurement differs')
             elif o['status']=='failed' and o['loss'] is None and not measurement:
-                proof=partial_physical_proof_v14(cell,spec,plan['world'],driver.CLASSIFICATION)
+                if (cell/'replies/responses.sqlite').exists():
+                    if not load or not context:
+                        raise ValueError('native inference lacks a valid preceding load/context')
+                    proof=partial_physical_proof_v14(cell,spec,plan['world'],driver.CLASSIFICATION)
+                else:
+                    if o['metadata']['runs'] or not o['metadata']['technical_failures']:
+                        raise ValueError('pre-inference failure lacks its actual error')
+                    if (cell/'wire-requests.jsonl').exists() or (cell/'code-contexts.jsonl').exists():
+                        raise ValueError('recorded inference/code has no response-cache binding')
+                    proof={'status':'failed-before-response-journal','loss':None,
+                        'scientist_load_confirmed':load,'scientist_context_confirmed':context,
+                        'files':_inventory(cell),'physical_responses':'unknown-not-imputed'}
             else:
                 raise ValueError('control has unknown outcome/null semantics')
             proofs[name]=proof
@@ -77,6 +94,8 @@ def analyze(root,source):
                 'cross_scores':{k:v['loss'] if o['status']=='complete' else None for k,v in score.items()}})
         if {p.resolve() for p in root.glob('controls/*/worlds/*')} != physical:
             raise ValueError('undeclared physical control world')
+        if any(root.rglob('authoring')) or any(root.rglob('generation.json')):
+            raise ValueError('static controls contain an undeclared designer campaign')
         progress={'schema':driver.SCHEMA+'.progress','plan_sha256':plan['content_sha256'],
             'rows':rows,'consumed_slots':8,'terminal':True}
         progress['content_sha256']=digest(progress)
