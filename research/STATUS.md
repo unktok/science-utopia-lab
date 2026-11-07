@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At16:00UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At16:13UTC all9 fresh
 reference worlds are complete. Search has
-consumed53/120 slots:28 complete,10 generation failures,15 execution failures.
-These are all40 slots of run00 plus all10 run01 G0 slots and three G1 slots, not
+consumed55/120 slots:29 complete,10 generation failures,16 execution failures.
+These are all40 slots of run00 plus all10 run01 G0 slots and five G1 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its selective code-and-graph G1 is in flight; selected-policy
+calibration passes and its selective technical-only G1 is in flight; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Run01's
@@ -54,6 +54,11 @@ Run01 C fixed-graph G1 emits one dummy-ID reject for three real submissions,
 failing identity coverage; T code-and-graph G1 calls len() on a scalar acceptance
 value. Both retain null losses. A minimum-cardinality or length guard is not
 proof of real-ID coverage or nested tensor rank, and neither is host-repaired.
+Run01 C code-and-graph G1 completes at C2.4000000000000004,A0/Q0/R24;
+its score>5 rule rejects all3/5 realized records. This recovers execution but
+ties the initial C loss. Its comment claiming zero loss on rejection omits
+the measured review cost. T technical-only G1 fails scalar score indexing;
+its earlier valid G0 remains eligible rather than being erased by this null.
 
 Run01 uniform-numeric T/C G0 complete at-1/2.733333333333334 with the same
 A1/Q3.6666666666666665/R24 vector. Their candidate dictionaries and numeric
@@ -89,6 +94,15 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout
 is not edited. The following separate main changes concern reporting/manuscript.
+
+The closed-audit report now includes exact development-specification identity
+groups, separating submitted slots, repeated representations and generation
+failures without a submitted candidate. Failed submitted code and completed
+forwards missing one loss remain distinct. No scores/costs/selection are
+deduplicated, and fingerprint counts are not institution novelty or independent
+samples.39 focused and74 integrated offline checks pass at their recorded
+sources (overlapping scopes), with the74 repeated on main. This is implemented
+analysis infrastructure, not an actual V2 report or new original-source audit.
 
 The design-freedom pipeline is now integrated: nested domains, in-session
 validation, uniform numeric baseline, selection/evaluation and finite HTTP budgets.

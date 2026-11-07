@@ -109,6 +109,27 @@
     "junit_sha256": "a8ce3809c39a027b71ee7ba2934f73bcacbd4e441842c2e5dd8055ddd763a87c",
     "scope": "Eleven-page PDF/source/data dependency hashes, observed-resource table including cached-token subset, hardware boundaries, token projection and repository docs/evidence guards. No new scientific data."
   },
+  "specification_identity_scope": {
+    "source_commit": "699edd7b309d3da8dcb6874e25e8547a34edb794",
+    "passed": 39, "failed": 0, "skipped": 0, "seconds": 5.95,
+    "junit": "outputs/publication-benchmark-v2-verification/specification-identity-v2.xml",
+    "junit_sha256": "db86777d4dde12dcf451e224076f3b66440dbf8ff3fe630ca53211b60921fa17",
+    "scope": "SCRIPTED closed-audit projection: exact submitted representation identities, cross-objective duplicates, no phantom policy for generation failures, retained execution failures and loss-unavailable physical forwards. No novelty inference, cost/result deduplication or real-study audit."
+  },
+  "integrated_specification_identity_scope": {
+    "source_commit": "2122c4a8c8bc7eebf3b4aca406ade50ddf533c74",
+    "passed": 74, "failed": 0, "skipped": 0, "seconds": 15.25,
+    "junit": "outputs/publication-benchmark-v2-verification/specification-identity-integrated-v2.xml",
+    "junit_sha256": "cc0d299100b339b6675178dd3a7ab115c6a95bb1b1f8a910617f93a9959695c6",
+    "scope": "Offline specification/report/search-figure/evaluation-figure/docs/PDF dependency regression checks in feature worktree; no inference or simulator."
+  },
+  "main_specification_identity_scope": {
+    "source_commit": "2122c4a8c8bc7eebf3b4aca406ade50ddf533c74",
+    "passed": 74, "failed": 0, "skipped": 0, "seconds": 12.97,
+    "junit": "outputs/publication-benchmark-v2-verification/specification-identity-main-v2.xml",
+    "junit_sha256": "3fab6b889f7fe774d79c51e98bc895446ce3a7891c03b3f8074a6b185ade5698",
+    "scope": "Same overlapping offline checks repeated on main after fast-forward integration; not additional scientific evidence or a real V2 report."
+  },
   "preserved_earlier_failures": [
     {"source_commit": "2b1c86da5fcf2ab27123d8ceadf7a6f8173010fc", "junit": "outputs/publication-benchmark-v2-verification/evaluation-figures.xml", "junit_sha256": "584226f4491fe76e04f42b88a62f096a97fdc570c6c25fbdd12e898c627f3e47", "passed": 41, "failed": 1, "cause": "New fixture tried to create a canonical content hash for NaN before entering its expected-rejection assertion. Distinguish canonical JSON rejection from boolean loss rejection; no production guard relaxed."},
     {"junit": "outputs/publication-benchmark-v2-verification/paper-analysis-final.xml", "tests_ran": 0, "exit_code": 4, "cause": "Verification command named nonexistent test_native_design_benchmark.py. Correct path is test_native_design_benchmark_report.py; no test or experiment executed in that attempt."},

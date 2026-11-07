@@ -1342,3 +1342,70 @@ The submission goal remains active; remaining67 slots, fixed-policy unused
 conditions, two source audits, final analyses and manuscript/mock review are
 still required. Directed technical calibration and successful JSON are not
 claims of arbitrary field-rank or semantic identity safety.
+
+Continuation16:03–16:17UTC: prior turn diagnoses dummy-ID and scalar-length
+failures with actual source/receipt scope. Same writer46865 is polled live.
+While it runs, inspect the final reporter for the observed uniform-policy
+duplication: rows retain system_fingerprint but no explicit identity inventory.
+Implement a read-only post-audit inventory on separate branch/worktree
+research/specification-identity-v2, never the active experiment checkout.
+Group exact submitted development fingerprints and retain row IDs/objectives,
+status counts, full-forward proof availability and assigned-loss availability.
+Generation failures count no submitted candidate, even with a diagnostic
+initial-system placeholder; failed submitted sources remain represented.
+Loss-unavailable completed forwards remain physical evidence without invented
+loss. No behavioral equivalence, novelty, independence, score averaging, cost
+deduplication or change to selection follows from grouping.
+
+Source699edd7b309d3da8dcb6874e25e8547a34edb794 passes39 focused synthetic
+checks in5.95s; JUnit specification-identity-v2.xml SHA256
+db86777d4dde12dcf451e224076f3b66440dbf8ff3fe630ca53211b60921fa17.
+After workflow documentation,2122c4a8c8bc7eebf3b4aca406ade50ddf533c74
+passes74 report/figure/docs/PDF dependency checks in15.25s; JUnit
+specification-identity-integrated-v2.xml SHA256
+cc0d299100b339b6675178dd3a7ab115c6a95bb1b1f8a910617f93a9959695c6.
+Fast-forward integrate that exact tested source into main, then repeat the
+same74 offline checks in12.97s; specification-identity-main-v2.xml SHA256
+3fab6b889f7fe774d79c51e98bc895446ce3a7891c03b3f8074a6b185ade5698.
+Scopes overlap, not additive. No inference, simulation or generated mechanism
+execution is launched by these checks. No actual V2 post-audit report is made
+on the running archive. Record source-specific receipts rather than asserting
+the broad suite or live calibration certifies this added postprocessor.
+
+At16:07:55 search54/120,29 complete,10 generation failures,15 execution
+failures,evaluation0. Run01 selective code-and-graph G1 completes
+C2.4000000000000004,A0/Q0/R24,8 rejects,5 active authors/resources615.
+It achieves execution after G0's malformed world envelope, but ties the common
+initial C rather than improving its loss. Only selection source changes;
+19 nodes, wires, schedules, types and initial state remain the parent values.
+The scalar-score>5 rule rejects all3 and5 current addressed records; two
+source-matching receipts have exact real-ID sets and zero accepts. Input scores
+are[3,3,3] then[10/3,3,11/3,10/3,3]. The code's claim that accepting nothing
+guarantees zero loss is contradicted by the retained review term:
+0.1*24=2.4000000000000004 in the recorded arithmetic. Do not change the LossSpec
+to match its prose or confuse technical recovery with numeric improvement.
+
+World native-adaptive-fa6629e20f288d71d42e1875-s42;
+request165e9a00dc2cff5805ea1649a95d17ffddc0961677a525961aab0c4b91b7f52f;
+checkpoint SHA256
+b438678188a33b4bc39ced89d660b7e7f608fad91796489c35fc6c669a0d8733;
+selection source SHA256
+1186a1d8249ccb83310314eda4f03d4d90b07bda297c5400d9308108fc7506db;
+code-context journal SHA256
+34c8e3f45aac8c2dfb3a9c628ebd55db3904be73f3d0bd7f5727279f99a5a48a.
+
+At16:13:33 search55/120,29 complete,10 generation failures,16 execution
+failures,evaluation0; progress SHA256
+dd9b25f69a9ef12c628921d62c234e1f6143012761ff3d372c25bea96f841aa3.
+Run01 throughput technical-only G1 fails on values[i][0] at generated line24,
+again indexing a scalar score. The length guard checks the outer list only.
+World native-adaptive-066c0ecf644dd3d03ecd425a-s42;
+requestff47b41dfe12cab5b3739363f641def109fe9a4e1fb9a25edf63b3465b8a0fd2;
+selection source SHA256
+f3a19e8ecc912869e6061eaca46e0bf38025a37cf108f0eae57a9480ece82b61.
+Its earlier valid G0 T-7 remains eligible; this null is not converted to a
+penalty or used to erase previous valid evidence. The finite writer continues
+with selective technical-only G1. No original-source, model, prompt, objective,
+budget, retry or selection-rule changes, and no optional registry egress.
+The full study, fixed-policy unused conditions, two source audits and final
+analysis/manuscript/mock review remain required for the active goal.
