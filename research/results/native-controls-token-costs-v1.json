@@ -1,0 +1,617 @@
+{
+  "caches": [
+    {
+      "completed_responses": 87,
+      "group": "reference:legacy",
+      "matched_wire_indices_sha256": "459ca44abc60643feff73a215b2ec340b6b1bde94dc81fc0131051bceae92bf1",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/legacy/worlds/control-legacy-s42/replies/responses.sqlite",
+      "sql_sha256": "3e02c5f834f2a62db311b37650f3eb671be11ae73af0e723fd006269a478c991",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 87,
+          "missing_responses": 0,
+          "recorded_sum": 10758
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 87,
+          "missing_responses": 0,
+          "recorded_sum": 8105
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 87,
+          "missing_responses": 0,
+          "recorded_sum": 77809
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 87,
+          "missing_responses": 0,
+          "recorded_sum": 85914
+        }
+      },
+      "wire_inputs": 87,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 91,
+      "group": "reference:open-accept-all",
+      "matched_wire_indices_sha256": "c8b4ea1d116d95ad2819e9fa7c3dc34ac5a757459cf6e0df74fa7234cc41392a",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-accept-all/worlds/control-open-accept-all-s42/replies/responses.sqlite",
+      "sql_sha256": "97be7cbe1df0e45a1ee0256d4322ceae21fd737f9b2c9b6036af365939c9fd32",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 16860
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 8365
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 90339
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 98704
+        }
+      },
+      "wire_inputs": 91,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 71,
+      "group": "reference:open-no-review-accept-all",
+      "matched_wire_indices_sha256": "3f8ba1ba684e8716db420439c0482e269791fcedcaf91d0fb285a0fed7cd468e",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-no-review-accept-all/worlds/control-open-no-review-accept-all-s42/replies/responses.sqlite",
+      "sql_sha256": "16bbc14d7647beacc17081c9c37938a23c31b3ab0372cf8750bbfead38f68c4d",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 71,
+          "missing_responses": 0,
+          "recorded_sum": 15053
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 71,
+          "missing_responses": 0,
+          "recorded_sum": 7287
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 71,
+          "missing_responses": 0,
+          "recorded_sum": 79072
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 71,
+          "missing_responses": 0,
+          "recorded_sum": 86359
+        }
+      },
+      "wire_inputs": 71,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 95,
+      "group": "reference:open-rank-rate",
+      "matched_wire_indices_sha256": "fa64e899e65f490e592b7a80594c114f025c417b3eb25e0eb69d3e400dd86703",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-rank-rate/worlds/control-open-rank-rate-s42/replies/responses.sqlite",
+      "sql_sha256": "28d8c74d76cc05d8221ef075f5aed1fd0d7b0c3cac4084a4f0506e901269296d",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 95,
+          "missing_responses": 0,
+          "recorded_sum": 17338
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 95,
+          "missing_responses": 0,
+          "recorded_sum": 8659
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 95,
+          "missing_responses": 0,
+          "recorded_sum": 93950
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 95,
+          "missing_responses": 0,
+          "recorded_sum": 102609
+        }
+      },
+      "wire_inputs": 95,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 97,
+      "group": "reference:open-reject-all",
+      "matched_wire_indices_sha256": "7dbeb4e78859bdfa565d13940cb742cf2a7125e38cc97297b1cd48cc84562194",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-reject-all/worlds/control-open-reject-all-s42/replies/responses.sqlite",
+      "sql_sha256": "df5aac03872537739c3a68962520344a02facde38ab57174bc17ecde321fb03f",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 16633
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 9265
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 95831
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 105096
+        }
+      },
+      "wire_inputs": 97,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 91,
+      "group": "reference:open-score-3",
+      "matched_wire_indices_sha256": "c8b4ea1d116d95ad2819e9fa7c3dc34ac5a757459cf6e0df74fa7234cc41392a",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-score-3/worlds/control-open-score-3-s42/replies/responses.sqlite",
+      "sql_sha256": "680373edf00d190dd5e9f9535ccc3186ca874febb50c17d55c8d895fc281771a",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 17222
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 8365
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 90339
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 91,
+          "missing_responses": 0,
+          "recorded_sum": 98704
+        }
+      },
+      "wire_inputs": 91,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 97,
+      "group": "reference:open-score-4",
+      "matched_wire_indices_sha256": "7dbeb4e78859bdfa565d13940cb742cf2a7125e38cc97297b1cd48cc84562194",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-score-4/worlds/control-open-score-4-s42/replies/responses.sqlite",
+      "sql_sha256": "7c94eeff8b5dcde73e438ce418352f21c6cc183cac97c48d7814775b357891db",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 16633
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 9265
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 95831
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 105096
+        }
+      },
+      "wire_inputs": 97,
+      "wire_inputs_without_committed_reply": 0
+    },
+    {
+      "completed_responses": 97,
+      "group": "reference:open-seed",
+      "matched_wire_indices_sha256": "7dbeb4e78859bdfa565d13940cb742cf2a7125e38cc97297b1cd48cc84562194",
+      "provider_total_component_disagreements": 0,
+      "relative_path": "controls/open-seed/worlds/control-open-seed-s42/replies/responses.sqlite",
+      "sql_sha256": "5c7bdd8077808b9ef3eaed5e0126c37e079aa6147f1ccb2e73edb537a7375e58",
+      "usage": {
+        "cached_prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 16753
+        },
+        "completion_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 9265
+        },
+        "prompt_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 95831
+        },
+        "total_tokens": {
+          "all_completed_responses_known": true,
+          "invalid_responses": 0,
+          "known_responses": 97,
+          "missing_responses": 0,
+          "recorded_sum": 105096
+        }
+      },
+      "wire_inputs": 97,
+      "wire_inputs_without_committed_reply": 0
+    }
+  ],
+  "classification": "actual-native-strong-control-development-v2",
+  "completed_responses": 726,
+  "content_sha256": "ad9bc6a9b80ef49c41e668d852401cca943019bacf367479f942dae867112c9b",
+  "full_experiment_compute_cost_claimed": false,
+  "groups": {
+    "reference:legacy": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 87,
+        "missing_responses": 0,
+        "recorded_sum": 10758
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 87,
+        "missing_responses": 0,
+        "recorded_sum": 8105
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 87,
+        "missing_responses": 0,
+        "recorded_sum": 77809
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 87,
+        "missing_responses": 0,
+        "recorded_sum": 85914
+      }
+    },
+    "reference:open-accept-all": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 16860
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 8365
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 90339
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 98704
+      }
+    },
+    "reference:open-no-review-accept-all": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 71,
+        "missing_responses": 0,
+        "recorded_sum": 15053
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 71,
+        "missing_responses": 0,
+        "recorded_sum": 7287
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 71,
+        "missing_responses": 0,
+        "recorded_sum": 79072
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 71,
+        "missing_responses": 0,
+        "recorded_sum": 86359
+      }
+    },
+    "reference:open-rank-rate": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 95,
+        "missing_responses": 0,
+        "recorded_sum": 17338
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 95,
+        "missing_responses": 0,
+        "recorded_sum": 8659
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 95,
+        "missing_responses": 0,
+        "recorded_sum": 93950
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 95,
+        "missing_responses": 0,
+        "recorded_sum": 102609
+      }
+    },
+    "reference:open-reject-all": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 16633
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 9265
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 95831
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 105096
+      }
+    },
+    "reference:open-score-3": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 17222
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 8365
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 90339
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 91,
+        "missing_responses": 0,
+        "recorded_sum": 98704
+      }
+    },
+    "reference:open-score-4": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 16633
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 9265
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 95831
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 105096
+      }
+    },
+    "reference:open-seed": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 16753
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 9265
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 95831
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 97,
+        "missing_responses": 0,
+        "recorded_sum": 105096
+      }
+    }
+  },
+  "input_audit_content_sha256": "3a344dcbc71c8300d0844696d44b807d3a5ba0eeca14301b1d50c60dd4656ac1",
+  "input_inventory_sha256": "8e014fb52a33ca824c5bc49b7395174adac38a0614f800cca3617f297938d2c2",
+  "is_new_original_source_audit": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "physical_response_journals": 8,
+  "plan_sha256": "5c5092d58a5752d43ae3e7f71434faf4e17863debc3557d643038b609a89e9b5",
+  "projection_source_sha256": "6f095d4f45cd8003dd7096709cad6bc12a7bffbcc2d29f3f5998b1ebf5f2a38e",
+  "provider_total_component_disagreements": 0,
+  "raw_inventory_unchanged": true,
+  "schema": "scienceutopia.native-scientist-token-costs.v1",
+  "scope": "Scientist committed response usage only, including partial native worlds. Every distinct audited physical journal counts once; identical reply content is not deduplicated across worlds. Failed/pre-journal worlds, uncommitted wire responses, designers, calibration, role loads, model-server caching, retrieval, container/host work, earlier exploration and coding-agent costs are not converted into zero token/FLOP/energy/time/money costs. Prompt counts include provider-reported cached tokens; they are not a count of fresh GPU operations.",
+  "source_commit": "2aa02c3cb4610cde4797744386da67fe851383b0",
+  "unknown_usage_imputed": false,
+  "usage": {
+    "cached_prompt_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 726,
+      "missing_responses": 0,
+      "recorded_sum": 127250
+    },
+    "completion_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 726,
+      "missing_responses": 0,
+      "recorded_sum": 68576
+    },
+    "prompt_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 726,
+      "missing_responses": 0,
+      "recorded_sum": 719002
+    },
+    "total_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 726,
+      "missing_responses": 0,
+      "recorded_sum": 787578
+    }
+  },
+  "wire_inputs": 726,
+  "wire_inputs_without_committed_reply": 0,
+  "wire_only_worlds": []
+}
