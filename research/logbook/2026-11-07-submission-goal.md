@@ -637,3 +637,28 @@ checks pass in0.17s, JUnit
 outputs/publication-benchmark-v2-verification/gptswarm-methods-followup.xml SHA256
 a38b4c63510ea5ed4e9f19192097d5b0d0583068ef03ec4a8c34414fd346c3eb.
 This overlapping QA scope is not more scientist trials or scientific evidence.
+
+Continuation12:56–13:00UTC verifies live session46865. Monitoring cell3774
+finishes normally at search26/120:17 complete,4 generation failures,5 execution
+failures,9/9 references,0 selected-policy evaluations. Progress hash
+24154bc7b76e2cd2ff576185b0c08fe4f6e196a20761b9947a6805a9bc46b7d5.
+Selective technical-only G2 fails inside the generated Python with TypeError:
+'float' object is not subscriptable at line20, values_s[i][0]. It now returns
+the world in a payload envelope, but assumes each score element is a list.
+The connected addressed-selection tensor program emits its scores through a
+column operation, so elements are scalar values. This is a different failure
+from the earlier output-envelope cases. Preserve null and the actual exception.
+
+The caller's scores payload schema is only {type:object}; it does not establish
+the nested values shape. Do not claim schema validation catches arbitrary Python
+field/rank misuse or turn successful directed calibration into free-design
+correctness evidence. Add this precise scope to the readiness review for the
+final manuscript. No unsupported claim that all contracts are fully statically
+typed, or that no host/interface bug can exist, follows from this diagnosis.
+World identity native-adaptive-ea0926ba1a3e5d175717860e-s42; source UTF-8 SHA256
+f3a0c4ca33883ef4e429a396d0f20d8458ad67bf03b3b67dbf0afefc63a1c1bc;
+generation request hash
+8e14702b4cf2529be14c4d410f53dd9da0bd974d2b463fc2e8c4e231ea5894ab.
+No slot refill, host repair, schema broadening/narrowing or prompt change occurs.
+Throughput uniform-numeric G2 is already being evaluated. Keep the finite study
+running and defer full source/physical auditing until terminal closure.

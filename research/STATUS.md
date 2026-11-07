@@ -27,11 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At12:55UTC all9 fresh reference worlds are complete. Search has
-consumed25/120 slots:17 complete,4 parameter-arm generation failures (out-of-domain
-drafts), and4 execution failures (missing paper decisions, two bare-world
-payloads, and forwarding forbidden input metadata). These are all G0/G1 slots
-and the first five G2 slots in run00, not the full study or three environment replicates. G2
+diagnostic. At13:00UTC all9 fresh reference worlds are complete. Search has
+consumed26/120 slots:17 complete,4 parameter-arm generation failures (out-of-domain
+drafts), and5 execution failures (missing paper decisions, two bare-world
+payloads, forbidden input metadata, and indexing a scalar score as a list).
+These are all G0/G1 slots and the first six G2 slots in run00, not the full study
+or three environment replicates. G2
 throughput fixed-graph completes at-7, tied with G0, following its null G1.
 Its declared parent is the measured best G0, not the failed G1: do not infer
 learned error repair or feedback-driven loss gain from recovery alone.
@@ -48,6 +49,9 @@ the integer-review diagnostic gives equal rational Q67/3 and C233/30 despite
 different individual review scores. Keep raw floats and exact selection rules.
 Throughput technical-only G2 also completes at-7, tied with its G0/G1;
 this additional valid proposal is not a measured best-value improvement.
+Selective technical-only G2 raises TypeError at values_s[i][0]: the producer's
+score column supplies scalar elements. This caller's object-only payload schema
+does not statically establish field/rank safety; see the scoped readiness review.
 Remaining G2 authoring continues; selected-policy evaluation remains0.
 
 All four measured code G1 slots tie their own G0; two others fail execution.

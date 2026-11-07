@@ -90,6 +90,20 @@ V2の初期二つのparameter-only提案は、codeを書き換えて範囲違反
 新source・fresh校正で行い、現在の失敗を置換・refillしない。失敗の説明を
 「設計者の能力不足」「runnerのバグ」のどちらかに、因果的な根拠なく断定しない。
 
+## 検証・型契約の範囲
+
+SystemSpecの型付きportと宣言したJSON Schemaの検証は、任意のPython本体の
+型安全性や全入力での実行可能性の証明ではない。V2のselective technical-only G2は
+score列のscalar要素を`values_s[i][0]`として扱い、TypeErrorで停止した。
+この候補のscores入力schemaは`{"type":"object"}`で、fieldのrankまでは制約しない。
+上流programのcolumn操作と、下流コードの仮定を分けて読む必要がある。
+
+この観測から静的検証済み・校正済みを「全ての新制度が動く」と表現しない。
+一方、生成された全Pythonを保守的な限定言語に置換したことにしたり、実行済みの
+失敗をhostが黙って修正したりもしない。実行時の技術的失敗・費用・欠測として
+残し、interfaceの使いやすさと制度の科学的帰結を別々に議論する。
+進行中のABI・schema・promptを変えず、最終原稿でもこの検証範囲を明示する。
+
 ## 投稿に残る判断
 
 現時点の自己点検（外部・独立査読を受けたという意味ではない）：
