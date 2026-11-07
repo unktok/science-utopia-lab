@@ -67,7 +67,9 @@ Historical documents retain their paths and source identities.
 The [complete pre-reset index](index-history-through-v45.md) preserves all507
 lines of links as of5ae3c5c. The
 [pre-reset status ledger](status-history-through-v45.md) preserves all2619
-lines of recorded snapshots. Older statements saying a process is running are
+lines of recorded snapshots. The later348-line status is preserved byte-for-byte
+in the [V2 through70 snapshot](status-history-2026-11-07-v2-through70.md);
+current STATUS records its SHA256. Older statements saying a process is running are
 historical observations, not live heartbeats.
 
 Do not move/delete old records or frozen worktrees to shorten this index.
