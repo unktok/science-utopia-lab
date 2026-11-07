@@ -1,265 +1,54 @@
-# Science Utopia Lab — program map
+# 全体のゴールと証拠の対応
 
-Updated: 2026-11-07
+2026-11-07。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
+[研究目的](../RESEARCH.md) · [直近状態](STATUS.md) · [優先順位](roadmap.md)
 
-## Current: review the search design before another campaign
-
-The [current review](search-design-review.md) maps every original goal to
-implemented boundaries, actual evidence and remaining work. V44 has ended:
-8 slots,6 complete evaluations and2 failures, with no within-arm improvement.
-Its original-source audit replays exactly. Retrospective common-pool scoring
-and independent objective-conditioned search are different experiments; a known
-pool candidate is not a newly invented or improved institution.
-
-Preserve the existing free SystemSpec and original-world oracle, ask/tell,
-canonical loss, conditional gradient estimators and English evidence UI. The
-local LLM editor is one proposer, not the definition of optimization. PriorV13
-has external-author source improvements; recent local automatic-author failures
-do not erase that evidence. Next are bounded context/repair and explicit initial
-evidence integration, not more seeds or a new toy world. No new model/world run
-starts during the review. [Decision0029](decisions/0029-search-review-before-more-autonomous-authoring.md).
-
-## Historical direction and evidence (V14 and earlier)
-
-The [v14 finite slice](milestones/2026-11-03-autonomous-institution-search-v14.md)
-removes manual authoring inbox answers: an exact objective/method/budget drives
-local-Qwen generation, literal edit validation, original-world evaluation and
-own-history redesign using the existing blackbox/nested kernels. Source/ports/
-protocols/graph/processes remain the free design object, not a review menu.
-The existing English Foundry now offers fresh request-bound consent, queue
-submission and provisional live progress; viewing evidence never starts a job.
-
-The [first actual automatic attempt](results/native-autonomous-search-v14-a1.md)
-closes8 charged slots/6 generations/12 designer replies but0 compiled designs,
-0 native worlds and0 researcher replies. Every loss is null. Pointer/type and
-truncation failures are preserved, not replaced. A separate prospective2-slot,
-maximum4-generation-POST engineering QA verifies the revised stable-ID authoring
-interface and actual browser-to-worker path; it does not rewrite a1. Use
-[STATUS](STATUS.md) for its current state and publication receipts. Automated
-useful invention is not yet established, and is not an extra loss-independent
-acceptance test. No scale-up or whole-world Jacobian is required.
-
-The [v13 finite slice](milestones/2026-11-02-nested-free-institution-v13.md)
-connects free outer code/system design to conditional inner optimization in the
-original researcher world. Two exact losses each use two IID G0 design draws,
-one LOO likelihood-ratio update, one updated-G0 forward, then one own-history
-free G1 redesign/forward: eight worlds and592 fresh Qwen replies, no scale-up.
-Losses are `[-7,-7,-6,-10]` and `[-17,-12.5,-10,-18]`. Both post-update draws
-are worse than the prior best; both later free source revisions improve the
-observed own first best. The sources use annual project cycles versus actual
-review allocation informed by own prior reviewer scores. This is proxy-seeking
-development evidence, not scientific benefit, estimator superiority or an
-improved autonomous inventor. The native graph sizes remain17/25 and16/23
-within the two arms; this pilot changes G1 source, not G1 topology.
-
-Independent audit preserves129 raw files, matches227 replay-critical source
-blobs and checks40 source executions,16 complete-plan effects,16 routing events
-and28 actual reviews. Source-controlled native reviewer tasks and full upstream
-plan provenance extend the world without replacing its researchers. The English
-Foundry displays exact nested paths, code, graph and receipts; guarded local
-editing is not dispatch or adoption. [Actual result](results/native-nested-search-v13-a1.md).
-The finite implementation goal is not an assertion that all non-scale research
-questions have been solved. Publication/verification state is recorded in
-[STATUS](STATUS.md).
-
-The preceding [v12 finite slice](milestones/2026-11-02-objective-open-redesign-v12.md)
-closes its native budget: two losses, three own-history generations each,
-six main worlds/565 fresh replies, plus two separate final-control followups/
-180 replies. Throughput `[-10,-10,-10]` and utility `[-1/6,0,-1/6]` select
-different freely authored 17/25 and 16/22 node/wire systems but neither beats
-G0. The milestone-clinic revision executes two native amendments and has a
-worse observed loss, so G2 returns to G0. Independent audit preserves all
-107 main files and all32 followup files; same-checkpoint cross-scores are not
-held-out results. Source/graph freedom is implemented; useful invention is not
-established. Audit/figures, separate estimator forward evaluation and English
-flow/lineage UI are parallel work units, not perpetual background workers.
-There is no population/seed/horizon scale-up. Actual English UI, print-readable
-comparison figure and all-page-reviewed 50-page PDF are also complete; see
-[verification](results/native-objective-redesign-v12-verification.json).
-
-The preceding completed execution slice is
-[v11](milestones/2026-11-02-open-native-estimators-v11.md): free code/protocol/wiring
-design shares an original-native execution boundary with derivative-free and
-conditional expectation-gradient updates. Eight fresh worlds/742 replies
-complete; both loss paths`[.7833333,1.2,1.2,1.2]` retain the first best. G0 LR
-drives G1 actual evaluations; the final prior-control update was saved but not
-native-tested within that closed budget. The separate
-[v12 followup](results/native-control-followup-v12-a1.md) now supplies two fresh
-forward outcomes, not evidence of expected improvement or variance reduction.
-The English v11 UI displays its exact historical audited observations.
-This extends, rather than rewrites, the earlier six-world v10 comparison.
-
-| Parallel work | Shared object | Finite v11 evidence |
-|---|---|---|
-| Open native design | Executable source, protocols, graph and institutional coordinates | Both search methods run the same original native world |
-| Derivative-free feedback | Actual native LossSpec observations | Durable design/evaluate/revise path |
-| Expected-loss estimators | Explicit declared conditional design distribution | Plain LR and prior-frozen corrected control variate with analytical checks |
-| Operational representations | Suitable numerical institution/response computations | Remain an optional route, not a whole-world differentiability requirement |
-| English UI and reporting | Immutable actual observations and source receipts | Latest paths, losses, current/incumbent and physical cost visible |
-
-The first three implementation areas were completed across two coordinated
-backend specialists; a third specialist owns UI export/QA, while root integrates
-protocol, verification and manuscript. A named track is not a claim of a perpetual
-background worker. No native/model experiment remains running after the budget.
-Whole-world differentiability is no longer a completion condition. This does
-not convert a partial representation into an exact native-world derivative.
-
-The preceding structural execution slice is
-[objective-conditioned structure and native-response fidelity v8](milestones/2026-11-02-objective-structure-and-response-v8.md):
-two fixed losses condition free source/graph generation in eight small native
-worlds; actual paths[-9,-9,-10,-10] and[0,0,.4833,.4833] have734 Qwen replies,
-different16--18-node graphs and an unchanged132-file independently audited raw
-inventory. A separate derivative track passes scripted original-world finite-
-path QA, not actual-Qwen fidelity or a native Jacobian. Actual English UI export/
-browser QA and37-page rendered paper verification are complete.
-V7 remains the earlier fixed implementation inventory:
-[non-scale implementation closure v7](milestones/2026-11-02-non-scale-implementation-closure-v7.md).
-The [status page](STATUS.md) is the current execution ledger; old milestones
-remain historical. Population/seed expansion is not the next task.
-
-## Current original-goal map
-
-V7 integration added persistent data-defined entities with actual native actions,
-source-controlled dependency/branch/repetition processes, evolving generated
-mixed design vocabularies and loss-driven designer-strategy updates. Recurrent
-attention/memory/routing backward, actual native parameter projection and
-explicit local-fidelity failure are tested. Joint original-native QA passes;
-the actual four-world pilot, independent audit, real-data English UI and31-page
-paper verification are complete.342 fixed-Qwen replies yield losses
-`[-1.2,-0.2,-0.8,-0.2]`, not a new best. The table separates executable interfaces
-from research success; implementation, live evidence and benefit are not synonyms.
-V8 now adds actual objective-conditioned topology/source changes, all-draw common
-development cross-scores and a response-aware represented derivative; its newer
-evidence is summarized in the first paragraph and the milestone acceptance ledger.
-
-| Original goal | Implemented interface | Evidence already available | Remaining non-scale boundary |
-|---|---|---|---|
-| Change the objective and optimize the scientific system | Versioned LossSpec, separate metrics, durable ask/execute/measure/tell and trace-informed source redesign | Parameter held-out study; v8 count9→10; v13 two original-world nested paths, observed best losses−7→−10 and−17→−18, all draws/cross-scores retained | Richer defensible objectives, scientific discovery and generalization remain unestablished |
-| Invent institutions rather than tune a fixed review template | Arbitrary sandboxed Python, explicit protocols, state, ports and outputs; LLM/external manifests; v14 automatic stable-ID/free-document edit author and bounded journals | Actual prior Qwen-source execution and externally authored institutions; v14 automatic a1 and separate QA fail before compilation, with all nulls retained | Native effect consumers, security/compute limits and actor ontology remain explicit; stable valid automatic local-Qwen authorship is not yet demonstrated |
-| Design system composition, process and relations | SystemSpec nodes/order/wires/latency; persistent typed entities/actions; dependency/guard/repeated custom activities; durable migration | V8/v12 topology changes; v13 actual source-directed reviewer tasks, full pre-amendment plan reconstruction and original default behavior regression | Original corpus/paper laws and annual boundaries remain explicit; trusted capability plugins, not privileged generated source; v12 missing lineage remains historical |
-| Use suitable gradient estimators or optional differentiable representations | Recurrent attention/routing; mixed-design likelihood-ratio and corrected prior-control estimators; learned response boundary/native projection | V13 free outer design plus audited per-arm LOO update and exact updated-distribution native followup; both followups worse than prior best; actual-Qwen response fidelity failure retained | No demonstrated estimator advantage or variance reduction; exact world/LLM Jacobian is optional and unverified, not a project gate |
-| Continually redesign and update the designer | Objective-visible same-society adoption; source/vocabulary generation from outcomes; durable strategy updates | v6 same society/two adoptions/130 replies; v8 loss-informed redesigned source improves count but not utility | Reset-world and same-society evidence differ; a better sampled institution does not prove the designer itself improved |
-| Make the system visible and game-like | English cyberpunk city/replay/editor/adoption plus objective switchyard and source/graph chronicle; v14 exact loss/method/budget, consent-bound local queue and provisional live receipts | V13 eight-world nested Foundry; v14 audited failed drafts and separate actual single browser submission/terminal captures;277 UI tests | Not a complete management game; presentation choreography is not scientific activity; local editing/viewing does not grant compute consent; saved progress is not an independent audit |
-
-The two optimization workflows must not be merged in descriptions: a reset-world
-campaign estimates design quality under an explicit loss; the persistent society
-measures subsequent online intervals after adoption. Likewise, externally authored
-institutional synthesis and finite-factor score-gradient optimization are
-composable interfaces, not a demonstrated self-improving endogenous designer.
-
-![Scientific-system design concept](../paper/figures/program-concept/science-system-design-program.png)
-
-Concept, not completion evidence. [Current editable SVG](../paper/figures/program-concept/science-system-design-program.svg).
-The [earlier progress-map SVG](figures/science-utopia-program-map.svg) is retained as history.
-
-## What this project is trying to do
-
-Treat a complete scientific system as a design object. Evaluation, publication,
-funding, governance, communication, and other mechanisms may be added, removed,
-replaced, parameterized, or eventually rewired. Run candidate systems as
-stochastic simulations and study which institutions emerge as desirable under
-different explicitly chosen objectives.
-
-The central experiment is **metric-conditioned system optimization**:
+## 一本の研究経路
 
 ```text
-choose optimization metric A -> optimize the system -> freeze system A*
-choose optimization metric B -> optimize the system -> freeze system B*
-choose optimization metric C -> optimize the system -> freeze system C*
-                                              |
-                                              v
-                 evaluate A*, B*, C* on the same held-out metric suite
+明示した目的関数                 固定した研究者モデル・コーパス・世界条件
+       ↓                                           ↓
+制度の設計空間 → 提案器 → 技術検査 → 元の研究世界で実行 → 不変の測定記録
+                   ↑                                      ↓
+                   └──── 損失に基づく探索状態更新 ← canonical loss
+                                                          ↓
+                                  評価・解析・原稿・同じ記録を読むゲームUI
 ```
 
-Here, an optimization metric (`LossSpec`) is analogous to a training loss: it
-changes which system the optimizer searches for. A held-out evaluation metric
-(`EvaluationMetricSpec`) is analogous to accuracy, F1, calibration, or a test
-set diagnostic: it is used after candidates are frozen to understand what each
-objective produced. Technical validity and an optional policy decision are
-separate again. Objective resolution is useful QA, but it is not the research
-question by itself.
+目的を変えること、制度を変えること、探索法を変えることは別の操作。
+技術的失敗はnullとして残す。目的ラベルは候補採用のvetoではない。
 
-Accordingly, the central comparison is a matrix: rows are systems obtained by
-optimizing different losses, while columns are shared held-out evaluation
-metrics. A result such as “loss A produced system A*, which scores this way on
-metrics A/B/C” is the intended evidence. Testing whether loss A can reliably
-distinguish two already chosen systems is only supporting measurement QA.
+## 六つの目標
 
-The paper-level claim is deliberately narrower and clearer: v1.1 is the first
-existence proof of the full map above. It is not yet evidence that the baseline
-optimizer is sample-efficient, that each objective yields a distinct design,
-or that the whole mechanism graph has been optimized. These gaps define the
-next experiment rather than being hidden as implementation details.
+| 元の目標 | 実装・実証済みの範囲 | 残る研究上の問題 |
+| --- | --- | --- |
+| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、V45の履歴bank。V12/V13の目的別経路 | 同じ条件・予算での比較、安定した改善、目的依存の制度差の一般化 |
+| 出来合いでない制度を作る | sandboxed Python、typed ports/state、生成IR。外部設計者のV13で実作用と観測改善 | ローカル設計者の信頼性、コード変更と機構上の新規性の区別 |
+| 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用 | パラメータ探索を超える価値の対照比較、信頼境界・世界の単純化の明示 |
+| 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較 | 推定量と対象分布の明示、費用を揃えた実用性。世界全体ADや優位性は未証明 |
+| 継続・再帰的な改善 | 評価→own-history→再設計、別系統のsame-society adoption | 改善手続き・設計者自身の改善は未実証。単なる反復や候補改訂と区別 |
+| ゲーム的体験 | 英語pixel/cyberpunk UI、canonical replay、Foundryと経路の表示 | 経営ゲームとしての体験、人間参加型研究。可視化だけで科学的成功とはしない |
 
-## Historical track snapshot (pre-native milestones)
+## 証拠への入口
 
-The following table and immediate milestone are preserved as the earlier
-planning snapshot, **not current tasks or evidence**. In particular, no numeric
-miniature can substitute for containing and extending the original researcher
-world. Use the current map above and STATUS for decisions.
+- [V45](results/native-warmstart-v45-a1.json)：ローカル設計者、二案提出、一評価完走／一失敗。
+- [V13](results/native-nested-search-v13-a1.md)：外部設計者、自由制度＋条件付き更新、観測改善とproxy攻略。
+- [V12](results/native-objective-redesign-v12-a1.md)：新しい機構と配線の実作用、改善しなかった改訂も保存。
+- [V10](results/native-method-paths-v10-a1.md)：共通履歴を課金した勾配／black-box経路。優位性は示していない。
+- [Parameter/held-out研究](../paper/figures/metric-conditioned/README.md)：初期の制限された探索空間。自由制度の実証と混ぜない。
+- [英語UI](../game-ui-v2/README.md)：同じ証拠を見るインターフェース。
 
-Direction correction (Decision 0025): the original researcher world is a lower
-bound to contain and extend, not an expressiveness ceiling. The new native
-kernel binds open SystemSpec/code/LLM institutions to that live world; numeric
-miniatures cannot substitute for this integration or for native differentiation.
-Compatibility, new-protocol prompt delivery, decision replacement/removal and
-checkpoint QA are implemented. See the native-kernel design/probe documents in
-the index; unconstrained actor behavior, process generality and native gradients
-remain open rather than being counted complete by the older numeric results.
-The separate native Qwen probe now completed: five researchers/four years,
-147 requests, 20 delivered messages and independently verified checkpoint/
-replay/wire evidence. It is an integration result, not new optimized-policy
-evidence; [result](results/native-science-kernel-integration-v1.md).
+## いま動いているもの
 
-| Track | Current state | What is actually finished | Next evidence-producing step |
-|---|---|---|---|
-| Reproducible simulator | operational | local Qwen3-8B, repeated seeds, restart/provenance, longitudinal runs | keep completed v1.1 immutable while designing replicated campaigns |
-| Metric-conditioned optimization | v1.1 complete | 45/45 logical development rows are terminal, three winners were sealed before held-out use, and all 15 common held-out rows completed | keep frozen as the parameter-level baseline; defer scale-up until the miniature whole-system slice works |
-| Evaluation metrics | common suite, report-only semantic instrumentation, prospective objective landscape, and ObjectiveSpec compiler | executable diagnostics now sit beside versioned semantic events, missingness/gaming fixtures, a fail-closed recorder, a source-hash-bound audit of the current LossSpecs, nine metric cards/objective relations, and a constitution that requires governance, stakeholders, time, distribution, uncertainty, trade-offs, Goodhart audit, and measurement evidence before compiling future phase-specific LossSpecs; none changes the three frozen LossSpecs | wire prospective evidence into a separately preregistered campaign, validate constructs/cards, then make and seal the explicit normative ObjectiveSpec choice before compiling a new LossSpec |
-| Whole-system abstraction | first native structural mechanisms beyond the legacy topology | canonical runs feed typed SystemSpec workloads; communication and government overlays have checkpointed causal lineage | freeze a three-plus-family miniature grammar and execute it through a compact model-backed world |
-| Black-box optimization | baseline operational | opaque `ask/tell`, persistent adaptive random search, real result-dependent suggestion | produce one structural result-dependent proposal inside the shared miniature slice |
-| Structural optimization | multiple production vertical slices | government and communication spaces already vary node presence, implementation, edge/fan-out presence, and latency through fingerprint-bound ask/execute/loss/tell boundaries | compose a small subset with evaluation and funding/publication in the shared miniature campaign |
-| Differentiable systems | prospective synthetic-tested v0 | whole-system relaxation, analytic gradient, deterministic projection, and black-box outer validation work on synthetic fixtures | project one differentiable candidate into the same discrete miniature grammar and evaluate it in the same model-backed outer loop |
-| Generated institution programs | recorded numeric miniature | recursively generated rules/custom nodes, graph/latency/order mutation, direct whole-world gradients and exact discrete evaluation ran from clean c035d1d; Qwen generated SignalBoost and initial attributes; frozen-input reproduction passed | extend the fixed numeric feature/effect protocol and connect generated programs to the full original Qwen-agent backend |
-| Generated implementation code | initial model-backed execution recorded; code search incomplete | actual Qwen Python/new schema runs through isolated execution and production PaperTracker, with exact replay/resume; result-conditioned revision fails technically and source-inspection exposes weak memory/actor references | separate protocol/code synthesis and repair, jointly generate producer/consumer protocols, then connect them to live researcher behavior; see the explicit non-scale limitation inventory |
-| Generative lab evidence view | browser-verified | two losses, four selected-system views per loss, programs, graph, six-agent state, search paths and canonical events load from one recorded artifact | connect intervention/branch creation to the city without duplicating transitions in the browser |
-| Game and replay | research arcology, replay, sandbox, branch comparison, and optimization observatory exist | the pixel-art hub already consumes canonical evidence while separating presentation-only choreography | bind the miniature objective, black-box/differentiable lineage, graph differences, world events, and losses into one playable research view |
-| Paper and scientific graphics | held-out result published; narrative revised | automatic evidence slice plus objective-conditioned framing, search-path interpretation, claim boundary, and Suto/Lab contrast | add replicated optimizer comparisons and parameter/mechanism path graphics when new evidence exists |
-| Compute | measured | one local Ollama endpoint at four workers gave only about 1.016x throughput | use independent endpoints/GPUs for material parallel speedup; retain seed isolation |
+ここで列挙した全トラックが永続的にバックグラウンド稼働しているわけではない。
+V45のwriterは終了済み。新しい実験が動く場合は、protocol/source/予算/実行記録を
+[STATUS](STATUS.md)に明示する。準備・実装・実行中・完了・未実証を分ける。
 
-## Historical dependency logic
+## 全体像と一本目の論文を分ける
 
-The project is deliberately not a single linear backlog.
+六つの目標は研究プログラム全体の射程であり、全てを一論文の貢献としない。
+最初の論文の中心は、目的条件付きの自由な制度最適化と、その方法・自由度・
+発見された機構の比較。勾配は利用可能な場合の方法、ゲームは証拠の観察層。
+再帰的自己改善と現実政策への一般化は、現時点では長期課題である。
 
-- The research core now moves from an engineering closed loop to the first
-  comparison of **systems optimized under different objectives**.
-- The system-abstraction track now executes small family-independent mechanism
-  graphs. It next expands from examples to checkpointable production adapters,
-  so the optimizer may change mechanisms and graph structure rather than only
-  eight parameters in one topology.
-- The game track consumes canonical replay; it does not reimplement research
-  logic. It can progress while commit-pinned experiments run elsewhere.
-- The paper/graphics track records claims only after their evidence boundary is
-  clear, but can continuously improve explanatory diagrams and methods text.
-- Differentiable optimization is downstream of a trustworthy simulator target
-  and held-out evaluation suite; otherwise it would optimize an undefined
-  proxy faster.
-
-## Historical immediate milestone (superseded)
-
-Metric-Conditioned Optimization Study v1.1 is complete. The next milestone is
-Miniature Whole-System Design Lab v0, which prioritizes breadth before scale:
-
-1. choose one versioned miniature ObjectiveSpec and its loss/diagnostics;
-2. freeze a small structural grammar with at least three mechanism families;
-3. generate result-dependent black-box and differentiable candidates;
-4. project both into the same discrete SystemSpec validator;
-5. execute them in a short, small-population, model-backed world;
-6. freeze common comparison and canonical replay artifacts;
-7. inspect the objective, search paths, graph differences, world activity, and
-   losses in the game UI.
-
-Only after this works do we increase seeds, optimizer replications, candidate
-budgets, population, or horizon. Model-backed runs remain clean,
-commit-pinned, and separate from active development worktrees.
-
+[以前の全体図](program-map-history-through-v45.md)も原文のまま保持する。
