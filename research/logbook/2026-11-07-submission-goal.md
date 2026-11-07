@@ -2236,3 +2236,74 @@ history. Remaining34 search slots, fixed unused-condition evaluation, two
 original-source audits and final analysis/paper/mock review remain required.
 The goal stays active. No active source, objective, budget, settings or
 selection change, hidden repairs/refills, new resource or optional registry egress.
+
+### Run02 G0 closes at90 search slots
+
+Previous turn records84–86 with actual scalar/missing-score failures and a
+valid but worse C proposal. This continuation repeatedly re-polls writer46865
+live. Observer59065 reaches90 before1200s and exits0, not writer termination.
+At19:29:11UTC search90/120:45 complete,19 generation failures,26 execution
+failures;reference9/9,evaluation0. Progress SHA256
+010ce36989252d25f8bd48718e8c5d5caf0e653c7da1e2d91f0ee5d23e8050dd.
+All10 run02 G0 slots close:4 completions,2 generation failures,4 execution
+failures. First-generation proposals have no own outcome feedback; do not
+call a G0 difference feedback advantage or three histories independent world seeds.
+
+| Run02 G0 arm | Assigned outcome |
+| --- | --- |
+| T LLM numeric | generation null |
+| C LLM numeric | generation null |
+| T fixed graph code | -7 |
+| C fixed graph code | execution null |
+| T code and graph | execution null |
+| C code and graph | execution null |
+| T technical-only code and graph | execution null |
+| C technical-only code and graph | 7.766666666666664 |
+| T uniform numeric | -7 |
+| C uniform numeric | 8.1 |
+
+Slots87/88 uniform T/C G0 both complete A7/Q22/R21,5 active researchers,
+resources620 and8 institutional-context deliveries. T-7 ties the observed strong
+T control; C8.1 is worse than the initial2.4000000000000004 and strong C rule.
+Their candidate dictionaries and controller RNG89563588233378758 are exactly
+equal. They remain two physical forwards, not distinct policies, independent
+environment seeds, or proof of bitwise identity of every raw artifact.
+
+The six numeric values are thresholds3.7505366637656845/0.3938830263615184,
+bias-2.7757840797422864,memory_cost0.09753396096966027,router threshold
+0.28588764031845226,count4. Source/graph/schema/schedule remain unchanged.
+For the T forward, the open-source delegate's unchanged literal body has eight
+source-matching interpreter receipts, four per year, agreeing with its configured
+process count4 and eight recorded context deliveries. This is an actually
+consumed process parameter, not the unconsumed resubmissions count from79.
+It is not a controlled causal estimate of count's effect on Q, a quality gain,
+or a full proof that every delivered message entered a completed scientist input.
+All six coordinates change together and oracle realizations can vary.
+
+T request080cf2c21d3ec376e847b8c9c545f881e9799287902d0c1c67dc3b84b6c8006d;
+world native-adaptive-cb6d9417836c925b90aa29bb-s42;
+checkpoint SHA256603c1bfb631039ea2dcfe4cac50cb10d292c5a1d6981233199db4f0ab2dee218;
+code-context journal SHA2565e3024bfdddca44788771d9f6ede3e3907952a3ac2d9385cc6f1fcb0d0dec87b.
+C request42864ea893b3fdfe031d6f93c8c2484cacc1d85853fc26e4c01d360bd6348df1;
+world native-adaptive-0901d3191047e389f9ea8b37-s42;
+checkpoint SHA2560526a587116da8860478e377d7a1a21ba5b3b97d4b90f6c6c37109d25cc67c1a;
+shared candidate fingerprint
+711d5e370213c9c62ea1c5bb3cab24ac2a8a43aedcb1c1e3008c3ac6a91d4857.
+
+Slot89 T numeric G0 request
+5e3aa2361e75abbbae93b28030a5b9b714aa05eb45eced27d6c0dd4b28069267 and
+slot90 C numeric G0 request
+ae1cf16bc3ae1c6b5d7a690173b9468b663c79635fc4681dccd9bb5e6b037b18
+each exhaust16 actions without valid explicit finish. Both finishes13/15 are
+rejected outside the declared numeric design space;14 is a rejected repeated
+code read with the implementation-checkpoint notice. No native world or loss
+is fabricated for these unsubmitted slots. All18 uniform proposals execute while
+all18 consumed LLM-numeric proposals fail generation; this remains an interface/
+compliance confound rather than intrinsic numeric-space incapacity.
+
+At the90-slot check actual writer46865 is live and frozen b6654ad is clean.
+No active source, model/role setting, loss, budget, selection or raw data change,
+hidden candidate repair/refill, new resource or optional registry egress.
+The last30 run02 G1–G3 slots, fixed selection/unused-condition evaluation, two
+original-source audits and final analyses/manuscript/PDF/mock review remain
+required. The full goal stays active;90/120 is not75% of all goal work or time.
