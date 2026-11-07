@@ -160,6 +160,26 @@ only decision flags. Its minima are not feasible dynamic-policy counterfactuals.
 These reporting tools preserve missing scores and physical-sharing labels;
 they do not rerun worlds, renew calibration or update the proposer.
 
+An arm name specifies permitted edits, not edits that actually occurred.
+For each submitted candidate, the original-source audit retains the complete
+`system` and `lineage.vs_parent`/`lineage.vs_initial`; the compact report preserves
+that lineage. Inspect source hashes, node/edge sets, protocols, configuration,
+schedules and process contracts before describing an outcome as structural
+search. The two baselines answer different questions: a candidate can change
+relative to the initial system but retain its immediate parent's rule.
+
+These literal-change categories overlap: changing Python stored in mechanism
+parameters also changes configuration. Do not add them into a novelty score or
+call every configuration change numeric tuning. The existing lineage covers
+its named fields, not every SystemSpec field or semantic behavior. Actor/artifact
+type or global-invariant changes require inspecting the complete audited specs;
+zero lineage counts alone do not prove equal specifications. Added/removed
+edge sets remain authoritative rather than the convenience rewire count.
+Finally trace the changed field's actual consumer, source-matching execution
+receipt and researcher input/action effects. A source or graph difference alone
+does not establish execution, causal benefit, a new useful institution or
+independent samples; failed/uninstantiated proposals keep their original nulls.
+
 The report's `development_specification_identity` groups submitted development
 rows by their audited `system_fingerprint`. It separates proposal slots,
 generation failures with no submitted candidate, exact representation identities,

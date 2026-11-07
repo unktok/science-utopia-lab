@@ -92,6 +92,14 @@ V2の初期二つのparameter-only提案は、codeを書き換えて範囲違反
 
 ## 検証・型契約の範囲
 
+自由度群の名前は許容する編集範囲であり、実際の構造変更の証拠ではない。
+既存の原source監査は候補の完全なSystemSpecと親／初期系に対するlineageを保持し、
+compact reportもlineageを保存する。コード変更はmechanism parametersの変更にも
+数えられるため、構成変更数とsource変更数を足して発明数にしない。lineageは
+明示したfieldの差分で、actor/artifact typeやglobal invariantを含む全仕様差分の
+完全な代用ではない。完全な仕様、実消費箇所と実行receiptを併せて読み、群名や
+fingerprint変更だけから「構造を最適化できた」「新制度が作用した」と結論しない。
+
 SystemSpecの型付きportと宣言したJSON Schemaの検証は、任意のPython本体の
 型安全性や全入力での実行可能性の証明ではない。V2のselective technical-only G2は
 score列のscalar要素を`values_s[i][0]`として扱い、TypeErrorで停止した。
