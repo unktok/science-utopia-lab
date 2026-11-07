@@ -112,6 +112,30 @@ score列のscalar要素を`values_s[i][0]`として扱い、TypeErrorで停止�
 残し、interfaceの使いやすさと制度の科学的帰結を別々に議論する。
 進行中のABI・schema・promptを変えず、最終原稿でもこの検証範囲を明示する。
 
+### A native information/action path is not yet a causal benefit
+
+V2 live case102 (run02 C code/graph G2) explicitly rejects every real addressed
+paper and stores final_score0. It completes C2.1,A0/Q0/R21 on development
+seed42, below initial C2.4 but above reviewer-free reject C0. Earlier G0/G1
+have execution nulls, not numerical losses to improve upon. The actual edits
+replace selection source; permitted graph freedom is not actual rewiring.
+
+A read-only trace follows native_kernel._apply_decisions into the publication
+commit, PaperTracker.review_history.score and BaseAgent.get_resubmission_prompt.
+Three real year2 wire requests include the year1 score0 history. Each joins one
+committed response with stop termination and a parsed empty resubmitted_papers
+list; checksums and exact locators are in the chronological log. This establishes
+an exercised source-to-scientist-input/action path, not just a changed parameter
+name. It also rules out describing final_score as globally cosmetic solely
+because it is not the direct Q measurement.
+
+It does not isolate the causal effect of score0 on resubmission, review count,
+resources or loss: other source behavior and fresh oracle realizations differ.
+Do not turn this observed development difference into an expected improvement,
+feedback advantage, new institution or real scientific-policy gain. The full
+study and selected-policy unused-condition evaluation remain open; no hidden
+penalty or veto is introduced for the low-activity result.
+
 ## 投稿に残る判断
 
 ### 同じseed・同じ制度と、同じoracle実現は別

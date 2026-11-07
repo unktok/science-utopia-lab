@@ -2666,3 +2666,82 @@ changes, hidden source repair/refill, new resource or optional registry egress.
 Remaining19 search slots, selected-policy unused-condition evaluation, two
 original-source audits and final analyses/manuscript/PDF/mock review remain
 required. The full submission goal stays active, not complete.
+
+### Run02 C code/graph G2: lower development proxy and an exercised information path
+
+The preceding turn records101 with a measured T revision gain. In this turn,
+actual writer46865 is repeatedly confirmed live and researcher HTTP records
+advance. At20:45UTC progress102/120:52 complete,21 generation failures,
+29 execution failures; reference9/9,evaluation0. The count first reaches102
+at20:41:13UTC. Its then-current progress SHA256 is
+49d4d4ab7f509a01bf05e86e7c30dd088f57e323e077f850f6df2335655d341d.
+
+Slot102 C code/graph G2 is this history's first technically complete candidate:
+C2.1,A0/Q0/R21,seven rejected records,5 active researchers/resources640 and
+4 context deliveries. It is lower than weak initial C2.4000000000000004,
+not a numerical improvement over G0/G1 execution nulls. The request parent is
+the fixed initial candidate. It remains worse than the fresh reviewer-free
+reject C0 reference, not evidence of a global optimum, expected gain or a
+scientific-quality/feedback-method advantage.
+
+Five sequential selection-source replacements are the only actual edits.
+The final body rejects every score-addressed real record and assigns
+final_score0.0, preserving the normal world record envelope. Two matching
+interpreter receipts cover exact3/4 real paper/conference IDs, including one
+year2 incoming accept1 at original score4 that the code explicitly rejects.
+No host repair, score-range/merit veto or hidden activity constraint is added.
+Its dummy-ID empty-input and missing-observation branches are unexercised;
+the successful forward does not prove those branches valid.
+
+Requestf8ab9fc57288f88064907a2964213cd3bdcf5e0193819ee57bbf1e34b5f6b237;
+world native-adaptive-1ad026da26d6053ebc13040a-s42;
+selection source SHA25676aa6cb8f73b166370b4de5e0b7563ed5e03fba05a8241ca4f18f590959a655e;
+checkpoint SHA2564adb6f55387a14505ac4574dc018bda3510c57b499e0919eccabcd430db25719;
+code-context journal SHA256c89753b81f619bc0e3617cd951e9ccc920f59cd8269f1e4c71de9e26948c578e;
+period1/2 result SHA2565d9dfc3cc488d2f611b18dd559d741c15a4d0907089ddde2234d4fc4005053e8 /
+201724fc0bc67b090d102d3b2bc404101df7fa3843e2d8a77a5d7454acb9d144.
+
+Read-only source inspection confirms an actual consumer path, with all four
+inspected source files unchanged from frozen b6654ad: native_kernel.py assigns
+the generated final_score to the real paper; simulation publication commit
+passes that paper to PaperTracker; review_history stores its score; the base
+researcher resubmission prompt prints it. No new inference/counterfactual is
+run. This is not an execution of an alternative world or a full live-study audit.
+
+In this completed world, zero-based wire rows40/41/42 are year2 resubmission
+requests. Each contains exactly one actual year1 paper ID and one score0.00
+review-history entry, with no other score line. Exact canonical payload hashes
+all match the wire records. The replies SQLite is opened mode=ro; each input
+joins exactly one outcome=response, with serialized data checksum verified,
+stop termination and directly parsed {resubmitted_papers:[]} (no salvage).
+These are three observed researcher choices not to resubmit, not three new
+independent worlds or a controlled proof of why they declined. A first search
+for a startswith prompt prefix misses the real Important Notes wrapper; a
+corrected full-content check finds all three. No absence claim is made from
+that exploratory reader result.
+
+Wire payload SHA256 in order:
+cbe460b75d8cc099a955f421ad5b126339fc2e5a8b933b6c054fffa70291e57f;
+99b26d906abde65d677b1e1f2dbcfd87dacdc40679a366090e64b0a9810ebcbb;
+f5d91fca00cac59d3308969ce1c1553a93ad62c19c23e356eac7ec842817e407.
+Corresponding committed response-data SHA256:
+f02cf2e4aa94d6d3a97406b12d8ce195b807cc51d703d35a8d2620f3889d973f;
+884cc902b93f113a05a460d2d6863be34155dd60e8d2d6cef37f5ca95d5e0ba3;
+63a8dbf997eb2d23857628a920c87bc0c1e2d98058e03b8c272ffd52fe93f0dd.
+Whole wire-file SHA256fb2c990b61c82375101d2e8c3a6f6198cc909d05c0171332cb591ca8da079f0b;
+replies SQLite SHA256fc00ba796a15bf96cd06555b2f2af7539cfa4d6d10ba210f17a12b6e7d4daa3d.
+Those inspected inputs remain unchanged before/after the read-only joins.
+
+This proves an exercised institutional-record to researcher-input/action path,
+so final_score is not globally inert merely because it is not direct Q. It
+does not isolate score0's causal effect on resubmissions, resources, reviews or
+the0.3 observed loss difference: other source behavior and fresh oracle replies
+differ. Do not retrofit that difference into the objective or scientist weights.
+The live T technical-only G2 is separately generated/executing; no result is
+fabricated for it. Remaining18 search slots, fixed evaluation, two original-source
+audits and final analyses/paper/PDF/mock review remain. The goal stays active.
+
+Offline documentation checks pass16 active documents/191 local targets/six
+original snapshots and the separate readiness-document check. git diff --check
+passes; the separately preserved through70 snapshot retains its recorded SHA256.
+These checks make no model/network/world calls and do not certify full V2 closure.
