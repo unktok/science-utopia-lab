@@ -122,7 +122,7 @@ def specification_identity_summary(rows,assignments):
     failures still retain their submitted specification. Never pool their
     losses, discard repeated forwards or alter selection/cost accounting.
     """
-    groups={};unsubmitted=[];seen=set()
+    groups={};unsubmitted=[];unknown=[];seen=set()
     for row in rows:
         identity=row['row_id'];status=row['status']
         if not isinstance(identity,str) or not identity or identity in seen:
@@ -139,6 +139,13 @@ def specification_identity_summary(rows,assignments):
             unsubmitted.append(identity)
             continue
         fingerprint=row['system_fingerprint']
+        if fingerprint is None:
+            if own is not None or row['physical_forward_completed']:
+                raise ValueError('measured forward requires an audited system fingerprint')
+            # A post-generation draw can fail before creating a SystemSpec.
+            # Keep the attempt, not a fabricated initial policy or duplicate.
+            unknown.append(identity)
+            continue
         if not isinstance(fingerprint,str) or not fingerprint:
             raise ValueError('submitted candidate needs an audited system fingerprint')
         groups.setdefault(fingerprint,[]).append(row)
@@ -153,10 +160,13 @@ def specification_identity_summary(rows,assignments):
             'rows_with_physical_forward_proof':sum(r['physical_forward_completed'] for r in group),
             'assigned_loss_available_slots':sum(r['own_loss'] is not None for r in group)})
     generated=len(rows)-len(unsubmitted)
+    known=generated-len(unknown)
     return {'candidate_slots':len(rows),'generation_failure_slots_without_candidate':len(unsubmitted),
         'unsubmitted_row_ids':unsubmitted,'submitted_candidate_slots':generated,
+        'known_fingerprint_slots':known,'unknown_fingerprint_slots':len(unknown),
+        'unknown_fingerprint_row_ids':unknown,'identity_inventory_complete':not unknown,
         'distinct_submitted_system_fingerprints':len(members),
-        'repeated_submitted_slots_beyond_distinct_fingerprints':generated-len(members),
+        'repeated_known_fingerprint_slots':known-len(members),
         'distinct_systems_with_physical_forward_proof':sum(
             g['rows_with_physical_forward_proof']>0 for g in members),
         'groups':members,

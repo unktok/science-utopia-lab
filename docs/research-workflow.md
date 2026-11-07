@@ -167,6 +167,9 @@ and repeated submitted slots. Runtime failures retain their submitted source
 identity; loss-unavailable complete forwards retain their physical proof without
 inventing a scalar loss. Even a diagnostic initial-system fingerprint on a
 generation-failure row is not counted as a submitted institution.
+If a post-generation draw fails before constructing a SystemSpec, its null
+fingerprint remains explicitly unknown. Such attempts are not fabricated
+policies or known duplicates; known identity counts are labeled incomplete.
 
 These fingerprints include the development seed; this inventory performs no
 seed projection or semantic program-equivalence test. Different fingerprints

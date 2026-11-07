@@ -26,7 +26,8 @@ def test_same_specification_is_grouped_without_hiding_failed_or_missing_loss_row
     assert s['generation_failure_slots_without_candidate']==1
     assert s['unsubmitted_row_ids']==['unsubmitted']
     assert s['distinct_submitted_system_fingerprints']==3
-    assert s['repeated_submitted_slots_beyond_distinct_fingerprints']==2
+    assert s['repeated_known_fingerprint_slots']==2
+    assert s['identity_inventory_complete'] and s['unknown_fingerprint_slots']==0
     assert s['distinct_systems_with_physical_forward_proof']==2
     a,b,c=s['groups']
     assert a['row_ids']==['t','c-failed'] and a['objectives']==['selective','throughput']
@@ -80,7 +81,7 @@ def test_closed_fixture_adds_identity_inventory_without_deduplicating_any_eviden
     assert identity['generation_failure_slots_without_candidate']==30
     assert identity['submitted_candidate_slots']==90
     assert identity['distinct_submitted_system_fingerprints']==1
-    assert identity['repeated_submitted_slots_beyond_distinct_fingerprints']==89
+    assert identity['repeated_known_fingerprint_slots']==89
     assert identity['groups'][0]['slot_count']==90
     assert len(result['evaluation'])==6 and result['logical_evaluation_labels']==19
     assert result['selection']['selected']==audit['selection']['selected']
@@ -89,3 +90,29 @@ def test_closed_fixture_adds_identity_inventory_without_deduplicating_any_eviden
         ['physical_native_worlds','physical_world_directory_count','physical_researcher_responses',
          'physical_wire_requests','recorded_code_executions_including_partial',
          'completed_researcher_model_call_seconds']}
+
+
+def test_post_generation_draw_failure_has_unknown_identity_not_a_phantom_duplicate():
+    rows=[row('known','T','A'),
+        row('no-spec-1','T',None,'technical-failure',None,False),
+        row('no-spec-2','C',None,'technical-failure',None,False)]
+    s=report.specification_identity_summary(rows,ASSIGNMENTS)
+    assert s['submitted_candidate_slots']==3 and s['known_fingerprint_slots']==1
+    assert s['unknown_fingerprint_slots']==2 and not s['identity_inventory_complete']
+    assert s['unknown_fingerprint_row_ids']==['no-spec-1','no-spec-2']
+    assert s['distinct_submitted_system_fingerprints']==1
+    assert s['repeated_known_fingerprint_slots']==0
+    assert s['groups'][0]['row_ids']==['known']
+
+
+def test_closed_projection_retains_legitimate_uninstantiated_draw_failure():
+    plan,audit=fixture()
+    audit['runs']['run-00']['throughput:parameters']['observations'][2]['system_fingerprint']=None
+    hashed(audit)
+    result=report.project(plan,audit,expected_source=plan['source_commit'])
+    assert len(result['all_candidate_rows'])==120
+    identity=result['development_specification_identity']
+    assert identity['known_fingerprint_slots']==119 and identity['unknown_fingerprint_slots']==1
+    assert identity['unknown_fingerprint_row_ids']==['run-00:throughput:parameters:g2']
+    assert identity['repeated_known_fingerprint_slots']==118
+    assert result['all_candidate_rows'][2]['own_loss'] is None
