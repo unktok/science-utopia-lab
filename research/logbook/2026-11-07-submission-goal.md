@@ -2614,3 +2614,55 @@ Offline document-target checks pass16 documents/191 local links/six original
 snapshots, with no inference/network/world calls; git diff --check passes.
 The preserved through70 snapshot SHA256 remains
 3360312852c14344e23718ad283ca4053c3930afffbd995dace2bb42bc01865b.
+
+### First run02 G2 revision improves throughput, still via scalar fallbacks
+
+This continuation follows concrete100-slot lineage/receipt progress at053de5e.
+Actual writer46865 is repeatedly confirmed live; current world request bytes
+also continue advancing during the bounded waits. At20:32:30UTC progress101/120:
+51 complete,21 generation failures,29 execution failures; reference9/9,
+evaluation0. Progress file SHA256
+44d357a17d5b696b6fe7feaf73bf2b4630a6e6bc6c8cb29ab09ba7f97777e481.
+Waiting for this real live finite inference is not a blocker or a reason to
+restart/refill. No other model process is launched for monitoring.
+
+Slot101 T code-and-graph G2 completes T-7,A7/Q23.666666666666668/R21,
+5 active researchers/resources640 and4 context deliveries. Its request parent
+is exactly its G1 candidate, which completed T0 with seven rejected records.
+Thus this history has a measured best-including-initial improvement0 to-7 at
+G2. It ties the observed strong throughput reference, not a global optimum,
+scientific-quality gain or demonstrated advantage over the technical-only arm.
+The matched-loss feedback policy is recorded; an observed revision gain is not
+a causal demonstration that feedback produced it or that inventor weights learned.
+
+Actual edits are three sequential replacements of selection source only; no
+graph rewiring/new mechanism is implied by the arm label. The code still treats
+scores/accept values as lists. Real inputs are scalar score floats and scalar
+zero accept signals in both years. Unlike G1's0/0 fallback, G2 uses score0.0
+and accept1.0 for those scalars, so it accepts every real addressed record and
+stores authored final_score0.0. Two source-matching receipts cover exact3/4
+real paper/conference identities. Original review means are[3,3,3] and four
+11/3 values, which supply measured Q; the authored zero labels do not set Q0.
+Finite score0 passes the existing contract without host repair or a merit veto.
+
+This is not proof that scalar parsing was fixed: it was not. Nor is it a reason
+to discard the technically complete throughput improvement because the author
+misread input representation. The artificial default-ID empty-input branch and
+padding branches are unexercised, so this forward does not validate them.
+Resources/second-year review means also differ, but source changes plus fresh
+oracle realizations do not isolate final_score as their cause or establish
+that native paper labels are globally inert. No new counterfactual is run.
+
+Request5364be674b24a8c95a828fdd2cdff0706bddd5dabc182b0c02cdb580270fc915;
+world native-adaptive-979c73ef6e30b2973446f7f8-s42;
+selection source SHA2568984d100bd160af9c3aa1c1099bfed7b75256c865e8164bbd1922aaf9134a776;
+checkpoint SHA2562709ad21d6c69454b1808d6cdddc5524133caa381538868699b9dc61e27d3b40;
+code-context journal SHA256f8035b57b562fb15068a82fd0ec22180cae1629ef3bc382a23864316d631a692;
+period1/2 result SHA25657a38e67b07f0f1437eea93aad4de9d1e1a5d5ebe39fba8924ebae9f16602cd3 /
+f96dd5bf80e2349c15da14ba768a0a663a28cb7b65dc000fc699c49c5abcdd32.
+
+No active source, model/role settings, loss, budget, selection or raw journal
+changes, hidden source repair/refill, new resource or optional registry egress.
+Remaining19 search slots, selected-policy unused-condition evaluation, two
+original-source audits and final analyses/manuscript/PDF/mock review remain
+required. The full submission goal stays active, not complete.
