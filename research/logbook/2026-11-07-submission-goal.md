@@ -1870,7 +1870,7 @@ not prove equal functions on unseen inputs. The empty-record fallback is not
 exercised. Preserve raw C2.4000000000000004 and the original LossSpec, not a
 claimed zero or a scientific-quality improvement.
 
-Requested37d6467f9fd47556b4d59e6bd7a3c27dd537e152648188faefd4ef19ea941c;
+Request ed37d6467f9fd47556b4d59e6bd7a3c27dd537e152648188faefd4ef19ea941c;
 world native-adaptive-87eb1e5e84a9d892a48c6209-s42;
 selection source SHA256c2d895ebbb420f5e5777514fc1dba8feebc5a1fd8562fe446f7b76e175c8f9d3;
 checkpoint SHA2569162a15301fd18a13a532f770fe83857381630417066f3c85ff7c4726917fc74;
@@ -1881,3 +1881,36 @@ Observer22776 then reaches its900s deadline and exits0 without reaching73.
 The actual writer46865 is separately re-polled live, with no terminal record;
 no restart, refill or active experiment change. The manuscript still excludes
 partial V2 outcomes and the full submission goal remains active.
+
+### Slot73: technical recovery without objective improvement
+
+Previous turn made concrete progress through72 plus exact preservation of the
+long status. This continuation repeatedly re-polls actual writer46865 live;
+read-only observer89259 waits for74 or600s, not an experiment restart.
+At18:01:10UTC search73/120:39 complete,14 generation failures,20 execution
+failures,reference9/9,evaluation0. Run01 throughput technical-only G3 completes
+T0,A0/Q0/R24,8 rejects,5 active researchers/resources635,
+4 institutional-context deliveries. This is a valid numeric zero, not an
+imputed penalty or technical null. Its valid G0 T-7 remains eligible.
+
+Only selection source is replaced, three times. The final code handles scalar
+scores directly, then follows the original acceptance vector when present.
+Two source-matching receipts cover3/5 actual records with exact ID sets;
+acceptance vectors are all0, so all records are rejected. The score-based
+fallback is not used. Input scores are[3,3,3] then[3,11/3,11/3,10/3,3].
+Thus the generated Python avoids G1/G2's scalar-index failure here, but merely
+retains the initial gate behavior rather than improving throughput. This does
+not prove correctness on missing/misaligned/empty inputs or better science.
+The technical-only request has based_on_observation_id=None and retains its
+fixed initial parent by design, not a host bug dropping its better G0.
+
+Request c6b4a329386eb9f82cd34b9248902f92ea954255323ce0db99154fa492fc527e;
+world native-adaptive-1b7b7101b44ea4cee8df1eb4-s42;
+selection source SHA25692f05a2cd4baeab587ccda37ea9a163a4876cae4ac477229aa1066f12b19b87b;
+checkpoint SHA256aa4c4be17e546a09b1685f79a42ff5aacd13cad898ea3030127d7b9d8daaf5d9;
+code-context journal SHA2566f063770f05d02fa21a27a0f681b95fd2590b6c588fe2b48446b108a00506cb5;
+progress SHA256f14dabbb79ea0213b943cb08fc04d06b3efa32c33e9c0e9c6b12624ecead2745.
+No active source, prompt, objective, budget, selection, raw journal or model
+setting changes, hidden repairs/refills, new resource use or optional registry
+query. The finite search/unused-condition evaluation and final audits, analyses,
+manuscript and mock review remain required; the submission goal stays active.
