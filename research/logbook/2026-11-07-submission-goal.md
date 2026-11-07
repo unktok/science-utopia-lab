@@ -1618,3 +1618,33 @@ changes; no statistical variance estimate or unique backend cause is asserted.
 The manuscript/PDF are not rebuilt for partial V2 observations. All120 slots,
 fixed selection/evaluation, twice-repeated original-source audit, full analysis,
 manuscript/figures and final mock review remain required. The goal stays active.
+
+### Slot64: numeric edits do not change the scalar-score contract
+
+At17:02:35UTC search64/120:33 complete,12 generation failures,19 execution
+failures;reference9/9,evaluation0. Read-only observer63561 reaches its64-slot
+milestone and exits normally, while actual writer46865 is re-polled live.
+This is not experiment termination. Main and frozen b6654ad start clean.
+
+Run01 throughput technical-only G2 fails at generated line26:
+len(values[i]) is applied to a float. Unlike its preceding source-only G1,
+this proposal also sets addressed-selection thresholds to[[0.0],[0.0]] and
+bias to0.0, then replaces world.selection source twice. The final source still
+expects a nested score row. The saved tensor program retains scores as column0
+of features; original-source tensor_program.py column uses[:,index] and the
+transport uses.tolist(), preserving scalar vector entries, not an N-by-1 matrix.
+Changing the numeric threshold/bias does not change that rank contract.
+The three preceding successful code receipts do not include a successful
+selection or prove the unexecuted decision/fallback branches. No final native
+measurement or loss exists, and the earlier valid G0 T-7 remains eligible.
+No host source repair, shape coercion, penalty, refill or settings change.
+
+Request48be0b1b9dfe20a835cfaa4b7e4eeda065e3de61626b8542722b02a40849816c;
+world native-adaptive-b821e442ad82f3c376583462-s42;
+system fingerprint656498e70e7ad722cec0c23f546f2c4ac3780a16d53fdb059ac6b7393434f0a0;
+selection source SHA2560b51228dff1a18cc0f0c93a331debd227e861e60ffde0cf5ea2a2fc7407ecefd;
+partial code-context journal SHA256
+1e59e702dc500d01b3ec1300d9d38080309be4658fbb8f766f692e4aa1bf5c60.
+This is a recorded generated-program rank mismatch, not a full runtime audit
+or evidence that numeric parameters caused the failure. The user-authorized
+finite writer proceeds to the next slot; the whole submission goal is not closed.
