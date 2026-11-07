@@ -69,3 +69,117 @@ configuration creates a new campaign revision.
 
 The authoritative research taxonomy and historical mapping are in
 [`research/INDEX.md`](../research/INDEX.md).
+
+## Reproduction tiers for the submission package
+
+These are different tasks, not interchangeable evidence of reproducibility.
+None of the commands below authorizes downloads, external spend or disclosure.
+
+| Tier | What is reproduced | Inputs / boundary |
+| --- | --- | --- |
+| Software QA | Compiler, records, statistics and artifact guards | Scripted fixtures, installed dependencies; no real LLM result |
+| Figure/table rebuild | Recorded scientific summaries and the working PDF | Tracked compact JSON, source, figures and cached TeX resources; not a raw re-audit |
+| Read-only raw audit | Original source, every trial, physical replies/code receipts and checkpoints | Full local raw archive and matching frozen checkout; no new inference/code execution |
+| Independent rerun | Fresh proposed institutions and researcher trajectories | Approved exact model artifacts, corpus, image, backend/context and finite compute; not a failed-slot refill |
+
+### Rebuild a recorded strong-control figure without private caches
+
+From the integration repository root, with the existing approved environment:
+
+```sh
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  .venv/bin/python -m scripts.reports.native_control_summary \
+  --summary research/results/native-benchmark-controls-v2-a1.json \
+  --output tmp/reproduction/controls-r1.json \
+  --figures tmp/reproduction/controls-r1 --print-layout
+```
+
+Both output paths must be fresh. The input summary's source/hash, nulls and ties
+are preserved. New rendering provenance is recorded separately. This does not
+claim the original raw audit was rerun or that independently rendered SVG/PDF
+metadata is byte-identical. It starts no model, downloads no data, and does not
+overwrite manuscript inputs. See the [paper build guide](../paper/README.md)
+and its dependency/visual-QA receipt for the cached PDF build.
+
+### Audit before reporting the V2 study
+
+The current V2 experiment is pinned at
+`b6654adefc42223f9ecc7b4e53c043c879230f68`.
+After its writer is terminal, use that detached source's
+`scripts/analyze_native_design_benchmark.py` with the full raw archive,
+`--expected-source` and a fresh output outside the raw root. Repeat to a second
+fresh audit output and compare them. Do not run its exact-source audit from a
+later integration source or call an in-progress archive complete.
+
+The separately implemented integration modules then project that audit:
+
+```text
+python -m scripts.reports.native_design_benchmark --plan <raw/plan.json> \
+  --audit <closed-full-audit.json> --expected-source <40-hex-commit> --output <fresh-report.json>
+python -m scripts.figures.native_design_benchmark --report <report.json> --output <fresh-figures>
+python -m scripts.reports.native_selection_relaxation --run <raw-root> \
+  --audit <closed-full-audit.json> --expected-source <40-hex-commit> --output <fresh-analysis.json>
+```
+
+Here `python` is a notation for the approved uv-managed project interpreter,
+not Apple Python. The last module fixes realized decisions/reviews and relaxes
+only decision flags. Its minima are not feasible dynamic-policy counterfactuals.
+These reporting tools preserve missing scores and physical-sharing labels;
+they do not rerun worlds, renew calibration or update the proposer.
+
+Raw checkpoints contain original absolute locators. A relocated copy needs an
+explicit verified relocation procedure; do not edit old journals or silently
+rewrite paths to make an audit pass. The compact Git results are not a substitute
+for the full raw archive. No public raw archive has been released by this task.
+
+### Exact resources versus replaceable implementations
+
+The pinned V2 plan binds scientist Qwen3-8B, the separately approved local35B
+designer, image identity and corpus. These are not interchangeable model names.
+The corpus is `Ahren09/SciEvo`, configuration `arxiv`, revision
+`f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6`, CS categories from the plan,
+2016--2019,103107 ordered documents. Ordered corpus SHA256:
+`ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2`.
+The completed S1 checkpoint records retrieval model `thenlper/gte-small`, revision
+`17e1f347d17fe144873b1201da91788898c639cd`; do not substitute the unused
+`all-MiniLM-L6-v2` entry elsewhere in configuration. The pinned native factory
+uses CPU retrieval and source-owned normalization/cache binding.
+
+The scientist digest is
+`500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41`;
+the local designer alias `qwen3.6:35b-mlx-64k` has digest
+`f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8`.
+An alias/digest alone is not a public download or model-conversion recipe.
+That recipe and separate model-server environment remain a reproducibility
+gap to resolve before claiming fresh-machine inference reproduction. A different
+model/backend is a declared new study, not a silent replacement.
+
+The existing sandbox reports image
+`sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833`,
+linux/arm64, under `python:3.11-slim`; the current Docker metadata also reports
+that ID under `RepoDigests`. Remote registry availability has not been verified.
+The executor uses `--pull=never`, no network/host mounts, a read-only filesystem,
+unprivileged user and bounded resources. There is no host-execution fallback.
+
+The [observed environment](../research/results/submission-environment-observed-v2.json)
+records selected package versions at09:45UTC on2026-11-07. It is deliberately
+**not a startup attestation, complete lockfile, or separate inference-server
+environment record**. Its observation command installs/fetches nothing and
+cannot write inside the frozen source or raw root. Current Docker server
+metadata reports29.8.2, likewise an observation rather than a startup claim.
+
+### Release and attribution boundary
+
+Keep the repository's Apache2.0 LICENSE and upstream attribution. The current
+[SciEvo dataset card](https://huggingface.co/datasets/Ahren09/SciEvo) declares
+Apache2.0 and requests citation of
+[Jin et al., SciEvo](https://arxiv.org/abs/2410.09510).
+These live primary pages were checked2026-11-07; the pinned-revision README
+could not be retrieved through that check. This records the card's declaration,
+not a verified blanket permission for every underlying paper or model artifact.
+
+Before a reviewer/public bundle, check source/data/model provenance and terms,
+anonymous filenames/metadata, operator paths, secrets and generated content.
+Do not include raw caches, model weights, `.env`, operator configs or an entire
+home/Git history by default. Sharing, remote pushing, authorship and actual
+submission still require the user's approval. Local preparation is not release.

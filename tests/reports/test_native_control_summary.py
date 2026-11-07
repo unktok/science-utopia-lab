@@ -36,3 +36,23 @@ def test_nulls_and_unknown_costs_remain_missing_not_numerical_penalties():
     s=summarize(d)
     assert s['rows'][0]['metrics'] is None and s['rows'][0]['cross_scores']['throughput'] is None
     assert s['costs']['scientist_responses']=={'known_sum':7,'unknown_rows':['legacy']}
+
+
+def test_tracked_summary_can_render_without_raw_private_cache_or_new_world(tmp_path):
+    import json
+    from scripts.reports.native_control_summary import main
+    value=summarize(fixture());source=tmp_path/'recorded-summary.json';source.write_text(json.dumps(value))
+    output=tmp_path/'copy.json';before=source.read_bytes()
+    argv=['--summary',str(source),'--output',str(output),'--figures',str(tmp_path/'figures'),'--print-layout']
+    assert main(argv)==0
+    assert source.read_bytes()==before and json.loads(output.read_text())==value
+    with pytest.raises(SystemExit):main(argv)
+    value['rows'][0]['cross_scores']['throughput']=-999.;source.write_text(json.dumps(value))
+    with pytest.raises(ValueError,match='identity'):
+        main(['--summary',str(source),'--output',str(tmp_path/'invalid.json')])
+
+
+def test_summary_duplicate_keys_are_not_silently_normalized(tmp_path):
+    from scripts.reports.native_control_summary import main
+    source=tmp_path/'ambiguous.json';source.write_text('{"schema":"x","schema":"y"}')
+    with pytest.raises(ValueError):main(['--summary',str(source),'--output',str(tmp_path/'new.json')])

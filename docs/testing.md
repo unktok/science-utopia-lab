@@ -11,11 +11,29 @@ Run the portable documentation check without models, network or installation:
 .venv/bin/python -m scripts.reports.publication_evidence
 ```
 
-Latest actual native-pilot verification is source-specific: frozen d49cf0b
-passes1682/3 optional skips; later d806a43 passes75 focused integration checks.
-See [current status](../research/STATUS.md) and its linked verification records.
+Current V2 verification is source-specific: sourceea6e12f passes2693/6 optional
+archive skips; later physical/domain/driver/report checks are recorded at their
+own sources in the [V2 receipt](../research/results/native-design-freedom-v2-verification.json).
+The completed S1/V1 and the in-progress V2 scientific results remain separate.
+See [current status](../research/STATUS.md). Earlier d49cf0b1682/3 and d806a4375
+checks below do not certify later sources.
 These are separate scopes, not an additive test total or a certificate for a
 later source. Historical counts below remain unchanged.
+
+Offline submission checks, with existing dependencies:
+
+```sh
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  .venv/bin/python -m pytest tests/reports/test_submission_artifacts.py \
+  tests/reports/test_submission_environment.py tests/reports/test_native_control_summary.py \
+  tests/reports/test_native_design_benchmark_report.py \
+  tests/reports/test_native_selection_relaxation.py -q
+```
+
+These verify reviewed PDF/source/dependency hashes and synthetic reporting
+contracts. They do not re-evaluate real institutions or establish publication
+readiness. [Reproduction tiers](research-workflow.md#reproduction-tiers-for-the-submission-package)
+explain the additional raw/source/model prerequisites.
 
 The evidence projection verifies the pinned V10/V12/V13/V45 report identities.
 It does not import a simulator, execute authored source, contact a model, or
