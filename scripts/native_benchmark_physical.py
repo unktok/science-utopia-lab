@@ -1,7 +1,7 @@
 """Seed/horizon-explicit native physical audit; no model or source execution.
 
-The historical fixed-seed auditors are left unchanged. Reuse their strict
-response/code/domain primitives, with caller-declared environment conditions.
+Historical default horizons are preserved. Reuse strict response/code/domain
+primitives, with caller-declared environment conditions for this study.
 """
 import json
 from pathlib import Path
@@ -39,7 +39,20 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
         raise ValueError('physical SystemSpec differs from declared policy/seed projection')
     paths=sorted(cell.rglob('portable_checkpoint_year_*.json.gz'),
         key=lambda p:int(p.name.split('_year_')[1].split('.')[0]))
-    if not paths:raise ValueError('actual native initial checkpoint required')
+    if not paths:
+        if evidence is not None:raise ValueError('actual native initial checkpoint required')
+        # A factory can fail after creating its empty bound cache but before
+        # the first world checkpoint (e.g. incompatible runtime image). This
+        # is a technical null, not an invented initialized/completed world.
+        response=zero_http_response_proofs(cell,binding,[],complete=False,protocol={},
+            classification=RESPONSE_ACTUAL,maximum_year=years)
+        code=code_proofs(cell,spec,{'events':[]},world,cell.name,complete=False)
+        if response['wire_requests'] or response['researcher_responses'] or code['recorded_executions']:
+            raise ValueError('physical activity without original initial checkpoint')
+        return {'status':'technical-failure-before-initial-checkpoint','seed':seed,'years':years,
+            'through_committed_year':None,'initial_identity':None,'response_proof':response,
+            'code_proof':code,'annual_checkpoints':[],'measurement':None,'checkpoint_sha256':None,
+            'new_model_calls':0,'new_code_executions':0}
     previous_events=[];previous_elapsed=0.;counts=[];annual=[];last=None;initial=None
     for i,path in enumerate(paths):
         state=read_portable_checkpoint(path)

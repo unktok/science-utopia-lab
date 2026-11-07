@@ -1,6 +1,7 @@
 # Matched objective / design-freedom study V2
 
-Prospective research protocol,2026-11-07。Implementation/testing pending; not yet dispatched.
+Prospective research protocol,2026-11-07。Implementation and source-bound QA completed;
+fresh real-designer calibration and production dispatch are still required.
 S2–S4 of the [submission goal](../../publication/submission-goal.md)。
 Runtime source、image、model/backend、corpus、完全なplanは実装・検査後に固定する。
 S1の途中経過や過去V1から生成候補を取り込まない。正の結果を終了条件にしない。
@@ -86,6 +87,9 @@ proposalを仮定しない。各runは別session・別履歴で、他群・他ru
 初期系が選ばれても、failed trialが成功に置換されたとは扱わず、探索改善なしと報告。
 別途、全群・referenceをまたいだpooled loss-only最良も表示し、群labelをvetoにしない。
 各run内bestと初期値からの経路も全て残し、best runだけで方式を評価しない。
+物理world完走と各lossの入力充足は分離する。割当lossが欠測でも、技術失敗がなく
+元checkpointから別lossを測定できる候補は、その別lossのpooled選択から排除しない。
+raw observationのfailed/nullは保存し、割当lossの成功へ書き換えない。
 
 選択manifestをhash固定するまで評価用seedをモデルへ渡さない。
 評価seed案31001/31013/31019/31033/31039は、dispatch前の使用履歴点検を経てplanに
@@ -99,6 +103,11 @@ design原本は不変、評価結果をproposerへ戻さない。
 各五seed・二年に加え、31001の四年条件も各対象1回測る。最大114評価world。
 二年／四年の同seedは独立標本として足さない。search129＋評価114＝最大243world。
 S1の8worldとそのソフトウェアQAは別会計。費用・時間の上限見積りをdispatch時に記す。
+S1は8worldで37m23s（平均4m40s/world）。同ペースを最大243worldと追加二年分へ
+機械的に外挿すると科学者側は約20時間で、author96回・校正・load等は別。
+実運用は概ね1–3日を計画値とし、変更制度の活動量・失敗・backend変動次第で超過しうる。
+これは保証されたwall-time上限ではない。実際の有限上限はworld/POST/token/timeout
+の各宣言予算であり、通信用timeoutを全dispatchで使い切れば計画値を大幅に超える。
 
 ## 解析と研究判断
 

@@ -66,3 +66,18 @@ def test_wrong_http_budget_and_missing_annual_prefix_are_visible_audit_failures(
     # Remove exactly the disposable scripted year3 fixture, not any research record.
     (cell/'simulation/checkpoints/SCRIPTED/portable_checkpoint_year_3.json.gz').unlink()
     with pytest.raises(ValueError,match='annual checkpoint'):audit.physical_proof(cell,s,world=w,seed=31001,years=4,evidence=e)
+
+
+def test_empty_bound_cache_before_initial_checkpoint_is_null_not_a_fabricated_world(tmp_path,monkeypatch):
+    cell=tmp_path/'SCRIPTED-world';s,w,e,_=fixture(cell,monkeypatch)
+    for path in cell.rglob('portable_checkpoint_year_*.json.gz'):path.unlink()  # disposable QA only
+    monkeypatch.setattr(audit,'zero_http_response_proofs',lambda *a,**kw:{'wire_requests':0,'researcher_responses':0})
+    monkeypatch.setattr(audit,'code_proofs',lambda *a,**kw:{'recorded_executions':0})
+    result=audit.physical_proof(cell,s,world=w,seed=31001,years=4)
+    assert result['measurement'] is None and result['initial_identity'] is None
+    assert result['status']=='technical-failure-before-initial-checkpoint'
+    with pytest.raises(ValueError,match='initial checkpoint'):
+        audit.physical_proof(cell,s,world=w,seed=31001,years=4,evidence=e)
+    monkeypatch.setattr(audit,'zero_http_response_proofs',lambda *a,**kw:{'wire_requests':1,'researcher_responses':0})
+    with pytest.raises(ValueError,match='activity without original'):
+        audit.physical_proof(cell,s,world=w,seed=31001,years=4)
