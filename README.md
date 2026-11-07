@@ -25,14 +25,20 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The latest local-author pilot is **closed**, not running. Two submitted
-institutions were dispatched: one native evaluation completed and one failed
-a producer/consumer tensor contract. Retrospective pooled scores are not
-objective-specific, held-out or causal improvements. See the
-[audited result](research/results/native-warmstart-v45-a1.json) and
-[interpretation](research/logbook/2026-11-07-native-warmstart-v45.md).
-Earlier studies, including external-author improvements, remain part of the
-record with their original source and author provenance.
+The current finite [design-freedom comparison](research/protocols/campaigns/native-design-freedom-v2.md)
+is running from a clean, pinned experiment checkout: two objectives, five
+proposal arms, three controller histories and120 candidate slots. Selection
+and unused-condition evaluation follow the complete search. Consult the dated
+[current status](research/STATUS.md) for observed progress; a checked-in statement
+is not a live heartbeat or a completed-study result.
+
+Completed evidence includes the [eight-candidate feedback pilot](research/results/native-feedback-comparison-v1-a1.md)
+and [eight strong-rule controls](research/results/native-benchmark-controls-v2-a1.md),
+with original-source audits. Simple all-accept controls recover the earlier
+proxy minimum; weak-seed improvement alone is not effective invention or better
+science. Earlier studies, including the [V45 pilot](research/results/native-warmstart-v45-a1.json)
+and external-author improvements, retain their original source and provenance.
+No feedback/method superiority or complete conference study is established.
 
 ## Local development
 

@@ -28,9 +28,10 @@ all8 worlds complete, with original/hand-written controls and no designer calls.
 Its print-sized three-objective figure and actual costs now appear in the draft.
 The [design-freedom study](../research/protocols/campaigns/native-design-freedom-v2.md)
 is described separately as a prospective protocol, not completed results.
-The updated11-page PDF was built offline; all pages were rendered again.
-The first ten match the previously inspected page PNGs byte-for-byte, and
-the new eleventh page was visually inspected;
+The updated11-page PDF was built offline; all eleven pages were freshly
+rendered at120dpi and individually visually inspected, following the latest
+related-work and float/appendix layout changes. The earlier byte-reuse check
+describes a prior build, not this latest inspection;
 see [build/QA receipt](submission-build-v2.json). This remains a working draft,
 not a completed or submitted conference study.
 
