@@ -2143,3 +2143,65 @@ changes, hidden candidate repair/refill, new resource use or optional registry
 egress. The actual writer remains live. Remaining37 search slots, fixed
 selection/unused-condition evaluation, two original-source audits, final
 analysis/manuscript/PDF and mock review remain required. Submission goal active.
+
+### Slots84/85 and verified finite observation timeout
+
+Previous turn records81–83 with the actual first-run02 completion and rank
+failures. This continuation repeatedly confirms actual writer46865 live.
+At19:11:43UTC search85/120:42 complete,17 generation failures,26 execution
+failures;reference9/9,evaluation0. Observer8880 reaches its900s observation
+limit without86 and exits0. Re-poll the same actual writer handle: it remains
+live and no writer terminal record exists. An observer deadline is not a
+campaign stop, and no restart/refill is performed.
+
+Slot84 C code-and-graph G0 fails at generated line8:
+scores['values'][i][0] is applied to a float. Its guard tests scalar truthiness,
+not array rank. Only selection source changes, two replacements. The literal
+comment says always accept minimizes a positive+4 coefficient; that comment is
+inconsistent with the fixed minimization arithmetic. It is not an extra merit
+veto or the recorded runtime error: the actual failure is scalar indexing.
+Do not predict an all-accept C loss or manufacture complete measurements.
+Request154adaa3e16be284a0040c8eb497c14bcf20fc9562d207b9cfac44c7d9e4d08a;
+world native-adaptive-d30c01b331ea1a30e594593c-s42;
+selection source SHA2562311a74a85d878d0039f72774a74b522e65236080990aae5639ced4d9e95eddb;
+partial journal SHA2569a9cf8c96c5dac0016979c13d4185e229651c28f47445df9511576b20ff6ce64,
+three preceding successful receipts, not a selection completion.
+84-slot progress SHA256610f5d39f5246cfdc0a5814a8e3087cc25079efb6ce82cba20bdfbeaab754e9a.
+
+Slot85 T technical-only G0 executes its Python body, then fails the native
+decision/score/reference guard. A source-matching period1 receipt shows three
+accept records with exact actual paper/conference IDs, but all lack final_score.
+Original native_kernel._apply_decisions checks finite numeric final_score after
+ID coverage, isolating the missing field rather than inventing an ID failure.
+The source checks an optional decisions input not present in the real input
+ports, then falls back to the actual submitted papers; its default fake-ID
+branch is not exercised. Only selection source changes, two replacements.
+An interpreter receipt is not successful native evaluation, so the loss stays
+null. Do not fill a score, drop the field check or assign predicted T-7.
+
+Request46737a4921904e06a911022b154bab70a9f744558f07ff823b06bc693a7fe22f;
+world native-adaptive-7ba45687d8b0b5f66a1bd441-s42;
+selection source SHA2566263de3b59f66c09ad42334e5940532c7e49800d60fc7f054b0089ec031c7d95;
+code-context journal SHA256c93893270c024e46552ff93ca126671f4c5f57f1fec667ea41b935fa44ae403b,
+four rows including one selection interpreter result;
+that result SHA2561973f83d4baa1dac1ba59d8d95555240f3a88b2bfd9c6ba8d566910b3cc21e33.
+Clarify the earlier word cosmetic for slot83: final_score is not the direct
+accepted-count/Q optimization measurement, but it is still an authored native
+paper-record field. No whole-world inertness or safe automatic omission is
+proven by that separation. Preserve its actual executable contract.
+
+One read-only diagnostic command looked for a relative .venv inside the frozen
+worktree, which has none; no Python ran there. Re-run the receipt reader using
+the approved main interpreter. This local inspection error is not a production
+writer/model failure or a source-bound test pass. No Apple Python is used.
+A separate read-only storage observation around19:01UTC reports427GiB available
+and637MiB for the live study directory. This is observed current filesystem
+usage, not a projected maximum or total-project storage/compute cost; there is
+no immediate capacity pressure, cleanup, deletion or new resource use.
+
+At19:07UTC the next C technical-only candidate is generated and executing;
+no completed outcome is fabricated. No active source, model/role setting, loss,
+budget, selection or raw journal changes, hidden candidate repair/refill or
+optional registry egress. Remaining35 search slots, fixed selection/evaluation,
+two original-source audits and final analysis/manuscript/review remain open.
+The goal stays active; a confirmed live finite wait is not a blocker.
