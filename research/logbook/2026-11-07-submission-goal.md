@@ -2307,3 +2307,84 @@ hidden candidate repair/refill, new resource or optional registry egress.
 The last30 run02 G1–G3 slots, fixed selection/unused-condition evaluation, two
 original-source audits and final analyses/manuscript/PDF/mock review remain
 required. The full goal stays active;90/120 is not75% of all goal work or time.
+
+### Run02 first G1 decisions: coverage failure and valid all-reject outcome
+
+At19:45UTC actual writer46865 remains live, and the frozen b6654ad checkout
+remains clean. Progress92/120:46 complete,19 generation failures,27 execution
+failures; reference9/9,evaluation0. Progress file SHA256
+3ed11d4224ba2efbe92fe709cc74c5dba64c87e9861d4765e11f539e2079da53.
+These are live observations, not closed original-source audits. Observer41000
+is a read-only bounded wait, not another designer or researcher process.
+
+Slot91 C fixed-graph code G1 fails real-submission decision coverage. Its
+authored code reads actual submitted papers/reviews, ranks them and emits only
+the top accepted paper when its mean exceeds0.5. The period1 interpreter result
+contains one real-ID acceptance for three submitted papers, final_score3.0.
+All emitted identities are real, but the complete decision set is absent.
+The native guard stops before applying this set; one authored accept is not
+one native accepted decision or a measured loss. Top-one acceptance is allowed
+when other submitted identities receive explicit reject decisions. Do not
+host-fill those decisions, fabricate penalties or treat this as a merit veto.
+Only selection source changes, two replacements. Other fallback branches are
+not separately established failures.
+
+Request6ecd2e2e0b06f9873fc0ba94dda5013f02837091aa084ce5f5708b6ccc88a2a4;
+world native-adaptive-e1f3e453b98fe7176fadec38-s42;
+selection source SHA2564e457f3e65cc4f7ee781b55ba28de9053b2d4d48a08bf409c66fff97df5eafdc;
+code-context journal SHA256a5439d1d7b97cfbc2ddbaa31b2d22f30d17549fa42bf15d968906e596a9d4a18;
+selection interpreter result SHA256
+d01b3aed007b9cfe9caf872a76c88806ff0cb42db8933a2829f1c506b05b0038.
+
+Slot92 T code-and-graph G1 completes T0,A0/Q0/R21, seven explicit rejections,
+5 active researchers/resources620 and4 institutional-context deliveries. Its
+parent G0 has an execution null, so do not manufacture a numeric parent loss
+or a feedback gain. T0 does not improve the weak initial or the observed strong
+T-7 reference. Two selection-source replacements are the actual edit; permitted
+graph freedom does not mean the graph changed.
+
+The generated code avoids the prior float-index exception by checking for a
+nonempty list and otherwise using0.0. Source-matching receipts show the actual
+score values are scalar floats, [3,3,3] in year1 and[10/3,3,11/3,3] in year2;
+all accept signals are scalar zeros. Both scalar inputs therefore take the
+authored0.0 fallback, with exact3/4 real-ID coverage and final_score0.0.
+This is observed executable behavior, not host repair, an intrinsic inability
+to use scores, or proof that score handling alone causes the rejection:
+the unchanged incoming accept signals are also zero and the code uses an AND.
+Unexercised padding/empty branches have not been validated by these receipts.
+
+Request06ca2fd2679e24166383a00179083b30b0f46816a59f5c3547ebd6bd64394d5b;
+world native-adaptive-1d15932ab1bb9dbc2251259a-s42;
+selection source SHA2568bbd4c0e391af96ef4d89f994efaea8a69a0c7161310dca39b4adc35511a7cd8;
+checkpoint SHA2561d0a925408388afdc7fd0a4fe1b62df5e93dccff94ce5606188dbfb8ee12cefb;
+code-context journal SHA25638b197b1152e79e1824b5e0a6542beecaab33a72052f2370b0b2594dd2fc83b7;
+year1/2 selection result SHA256
+6909166c97dcaddf86e02530bfe888d60142aeef8722306b25afb13fddc64243 /
+7bb5032d04966206b61de733a06909931652c776757464b2db0fc816a451df3f.
+
+No active source, researcher/designer configuration, loss, budget, selection
+or raw data changes, hidden repairs/refills, new resources or optional registry
+egress. Remaining28 search slots, fixed unused-condition evaluation, two
+original-source audits, analyses and final manuscript/PDF/mock review remain
+required. The goal stays active; expected live inference waiting is not blocked.
+
+At19:46:48UTC observer41000 reaches its93-slot target and exits0; actual writer
+46865 is separately re-polled live. This observer exit is not experiment closure.
+Progress93/120:46 complete,19 generation failures,28 execution failures;
+reference9/9,evaluation0. Progress file SHA256
+f7eb95ea3417901d834d76a60db3a616e26e817b8a75ecfb91fcd320aaa4c225.
+Slot93 C code-and-graph G1 generates executable Python with five sequential
+selection-source replacements, but its final body returns decisions=[] for
+three real submissions. The matching period1 interpreter receipt confirms the
+empty list. The graph's required decisions output fails before native application.
+The comment's intent to accept no papers is not forbidden: explicit real-ID
+reject records would represent that policy. Do not equate the empty message
+list with valid all-reject, impute C2.4, or host-complete its output.
+
+Request6ed264910af926797758fd6990e175a8214420561a513e3c69fe23702e46a37a;
+world native-adaptive-c2cec078a2b8419e8d3f1d57-s42;
+selection source SHA25635260706fb18edebb421304a5ec3e8ff9e3bfeb1955a60c1f493fba1dc7d0d1d;
+code-context journal SHA25690a714b5bd5d3955fd8b46b35e9cd28986342481449e1b8510fcb9a530ebdc24;
+selection interpreter result SHA256
+48bee13cd0d44a0e6a054a4837157fe999db1ec63b3999ae91fbe544ac6e8abb.
+Remaining27 search slots and all downstream evaluation/closure work remain.

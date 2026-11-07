@@ -12,7 +12,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
 | V2 readiness | All3 runs pass28 fresh real designer controls and cold replay each;26 exact copies per run remain diagnostic. Run02 first dispatch uses its new certificate at age3.77s |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at19:29UTC:90/120 slots,45 complete,19 generation failures,26 execution failures; run02 G0 closes4 completions,2 generation failures and4 execution failures |
+| V2 search | Running at19:46UTC:93/120 slots,46 complete,19 generation failures,28 execution failures; run02 G1 has one completion and two execution failures so far |
 | Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
 | Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
@@ -40,8 +40,11 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   at G1/G2. Run02 G0 closes10 slots: T fixed-graph and uniform both complete
   at-7; C technical-only/uniform complete at7.77/8.1, worse than initial C2.4;
   the other six slots retain technical nulls. No primary-objective result
-  through90 beats its strong reference.
-  Its G3 yields5 completions,3 generation failures and2 execution failures,
+  through93 beats its strong reference. The first run02 G1 C fixed-code proposal
+  omits decisions for other real submissions and fails coverage; T code/graph
+  executes with all seven rejected, T0, not an improvement. C code/graph emits
+  no decision records for three real submissions, retaining an execution null.
+  Run01 G3 yields5 completions,3 generation failures and2 execution failures,
   without improving any arm's best-including-initial value.
 - All18 uniform-numeric proposals execute; all18 LLM-numeric slots consumed
   so far fail generation. Domain presentation/compliance confounds intrinsic
@@ -72,7 +75,7 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 ## Required work before submission judgment
 
-1. Finish the remaining30 search slots under the current bindings and freshness
+1. Finish the remaining27 search slots under the current bindings and freshness
    guards. Do not refill failures.
 2. Freeze selection/ties, then execute the declared unused-condition evaluations
    without returning their outcomes to search.
