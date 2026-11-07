@@ -59,10 +59,12 @@ def test_even_rehashed_disagreement_cannot_silently_become_a_graph(mutate):
     with pytest.raises(ValueError):figures.panel_data(r)
 
 
-def test_nonfinite_or_boolean_physical_loss_is_not_a_plot_point():
-    for bad in (True,float('nan'),float('inf')):
-        r=sample();r['evaluation'][0]['cross_scores']['throughput']=bad;hashed(r)
-        with pytest.raises(ValueError):figures.panel_data(r)
+@pytest.mark.parametrize('bad',[True,float('nan'),float('inf')])
+def test_nonfinite_or_boolean_physical_loss_is_not_a_plot_point(bad):
+    r=sample();r['evaluation'][0]['cross_scores']['throughput']=bad
+    if type(bad) is bool:hashed(r)  # Boolean JSON hashes, but is not a loss.
+    # Nonfinite JSON cannot even carry the declared canonical content hash.
+    with pytest.raises(ValueError):figures.panel_data(r)
 
 
 def test_missing_pairs_are_never_imputed_or_summarized_as_zero():
