@@ -10,6 +10,7 @@ from utopia.optimization.native_benchmark_controls import control_systems,select
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
 from utopia.system import SystemSpec
 from utopia.system.design_patch import make_patch,digest
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 
 IMAGE='sha256:'+'a'*64
 
@@ -88,6 +89,7 @@ def test_active_prompt_and_archives_expose_exact_domain_in_both_feedback_groups(
     from utopia.optimization.native_staged_author_v15 import initial_draft
     c=campaign(tmp_path,feedback=feedback);r=c._request([],c._strategy_initial(),1)
     assert r['design_space']==c.binding['design_space']
+    assert r['design_space_anchor']==c.initial.to_dict()
     view=json.loads(frame(r,initial_draft(r),[])[0])
     assert view['declared_benchmark_design_space']==r['design_space']
 
@@ -107,6 +109,22 @@ def test_compile_rejects_out_of_domain_proposal_before_any_native_world(tmp_path
     assert replay_campaign(tmp_path,'blackbox').state==c.state
 
 
+def test_staged_validation_reports_domain_violation_before_finish_without_repair(tmp_path):
+    from utopia.optimization.native_staged_author_v15 import initial_draft,transition
+    c=campaign(tmp_path);r=c._request([],c._strategy_initial(),1);state=initial_draft(r)
+    kwargs={'binding_sha256':'b'*64,'provider_binding':{'image_id':IMAGE}}
+    state,receipt=transition(state,{'tool':'edit','operations':[
+        {'op':'add','path':'/metadata/outside','value':1}]},r,**kwargs)
+    assert receipt['ok']
+    before=deepcopy(state)
+    state,receipt=transition(state,{'tool':'validate'},r,**kwargs)
+    assert receipt['ok'] and receipt['result']['valid'] is False
+    assert 'exceeds' in json.dumps(receipt) and state==before
+    clean=initial_draft(r)
+    _,receipt=transition(clean,{'tool':'validate'},r,**kwargs)
+    assert receipt['result']['valid'] is True
+
+
 def test_uniform_parameter_baseline_is_deterministic_legal_and_does_not_mutate_request(tmp_path):
     c=campaign(tmp_path);request=c._request([],c._strategy_initial(),1);before=deepcopy(request)
     a=random_parameter_definition(request)
@@ -123,3 +141,36 @@ def test_omitted_domain_preserves_legacy_binding_and_prompt(tmp_path):
     c=create(tmp_path,mode='blackbox')
     assert 'design_space' not in c.binding
     assert 'design_space' not in c._request([],c._strategy_initial(),1)
+
+
+def test_http_budget_exhaustion_remains_null_after_native_domain_error_handling(
+        tmp_path,monkeypatch,fixed_corpus):
+    # Original Simulation/lifecycle with scripted corpus/HTTP: integration QA,
+    # never a new real-LLM scientific result.
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    from tests.system.test_native_science_kernel import make_sim
+    from utopia.optimization.native_factory import record_native_http
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.optimization.blackbox import Suggestion
+    from utopia.system.native_kernel import NativeScienceKernel,legacy_world_system
+    system=legacy_world_system();wire=tmp_path/'physical-wire.jsonl';models=[]
+    monkeypatch.setitem(fixture.BINDING,'cell',system.fingerprint)
+    def factory(spec,seed,run_id):
+        sim,_=make_sim(tmp_path/'SCRIPTED-world',native=NativeScienceKernel(spec))
+        record_native_http(sim.llm,sim,wire,maximum_attempts=2);models.append(sim.llm)
+        return sim
+    observation=evaluate_native_suggestion(Suggestion('SCRIPTED-budget',system.to_dict(),0,'software-QA'),
+        seeds=[42],simulation_factory=factory,loss_spec=objective_specs()['throughput'])
+    assert observation.status=='failed' and observation.loss is None
+    assert observation.metadata['measurements']==[] and observation.metadata['technical_failures']
+    assert models[0].http_budget_exhausted is True and len(wire.read_text().splitlines())==2
+
+
+def test_unrelated_portable_stop_is_not_reclassified_as_a_completed_null_slot():
+    from utopia.runtime.checkpointing import PortableStop
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.optimization.blackbox import Suggestion
+    def stop(*a):raise PortableStop('SCRIPTED user or unrelated transport stop')
+    with pytest.raises(PortableStop):
+        evaluate_native_suggestion(Suggestion('SCRIPTED-stop',seed().to_dict(),0,'software-QA'),
+            seeds=[42],simulation_factory=stop,loss_spec=objective_specs()['throughput'])

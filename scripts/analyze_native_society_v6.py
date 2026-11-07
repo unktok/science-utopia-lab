@@ -209,7 +209,8 @@ def checkpoint_proofs(session, checkpoints):
     return proofs
 
 
-def response_proofs(cell, binding, counts, *, complete, protocol, classification, expected_prefixes=None):
+def response_proofs(cell, binding, counts, *, complete, protocol, classification, expected_prefixes=None,
+        maximum_year=3):
     """Read SQLite in ro mode; join physical HTTP payloads to committed replies."""
     path = cell / 'replies/responses.sqlite'
     database = sqlite3.connect(path.resolve().as_uri() + '?mode=ro', uri=True)
@@ -237,7 +238,7 @@ def response_proofs(cell, binding, counts, *, complete, protocol, classification
     for row in wires:
         payload = row['payload']
         if (hashlib.sha256(canonical_json(payload).encode()).hexdigest() != row['payload_sha256']
-                or payload['model'] != binding['model'] or type(row['year']) is not int or not 1 <= row['year'] <= 3):
+                or payload['model'] != binding['model'] or type(row['year']) is not int or not 1 <= row['year'] <= maximum_year):
             raise ValueError('actual HTTP payload hash/model/year differs')
         if classification == ACTUAL and (payload.get('max_tokens') != 768 or payload.get('reasoning_effort') != 'none'):
             raise ValueError('actual researcher inference settings changed')

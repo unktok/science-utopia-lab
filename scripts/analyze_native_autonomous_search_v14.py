@@ -28,6 +28,7 @@ from scripts.native_nested_estimator_audit_v13 import conditional_update_proof
 from scripts.native_physical_evidence_v13 import audit_native_run_v13
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign, GeneratedMixedDesign
 from utopia.optimization.native_nested_search import NativeNestedDesignCampaign
+from utopia.optimization.loss import evaluate_loss
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.system.design_patch import pointer, _index, _edit
@@ -49,7 +50,8 @@ def read(path):
     return value
 
 
-def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classification,expected_prefixes=None):
+def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classification,expected_prefixes=None,
+        maximum_year=3):
     """An absent journal is lawful only before any recorded scientist request.
 
     This narrow v14 extension does not create an empty raw file or modify the
@@ -58,7 +60,7 @@ def zero_http_response_proofs(cell,binding,counts,*,complete,protocol,classifica
     cell = Path(cell)
     if (cell/'wire-requests.jsonl').exists():
         return original_response_proofs(cell,binding,counts,complete=complete,protocol=protocol,
-            classification=classification,expected_prefixes=expected_prefixes)
+            classification=classification,expected_prefixes=expected_prefixes,maximum_year=maximum_year)
     path = cell/'replies/responses.sqlite'
     with sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True) as db:
         bindings = db.execute('SELECT binding FROM metadata').fetchall()
@@ -166,15 +168,19 @@ def replay_campaign(directory, method):
 
 
 def audit_native_campaign(directory, *, method, world, classification, loss, initial_system,
-        expected_budget, experiment=EXPERIMENT, campaign_world=None):
+        expected_budget, experiment=EXPERIMENT, campaign_world=None,
+        expected_controller_seed=42, comparison_losses=None):
     """Reconstruct physical evidence below one autonomous runtime directory."""
     directory = Path(directory)
     controller = replay_campaign(directory/'campaign', method)
     binding, state = controller.binding, controller.state
     if (binding['world'] != (campaign_world if campaign_world is not None else world) or binding['loss_spec'] != loss
-            or binding['initial_system'] != initial_system or binding['seed'] != 42 or binding['seeds'] != [42]
+            or binding['initial_system'] != initial_system or binding['seed'] != expected_controller_seed or binding['seeds'] != [42]
             or binding['learning_rate'] != .1):
         raise ValueError('autonomous campaign world/loss/initial/seed binding differs')
+    losses = objective_specs() if comparison_losses is None else comparison_losses
+    if loss['id'] not in losses or losses[loss['id']] != loss:
+        raise ValueError('bound objective is absent from exact comparison loss specifications')
     records, pending = state['records'], state['pending']
     declared, physical, observation_ids = {}, set(), set()
     rows, native, slots, failures, authored = [], [], 0, 0, []
@@ -216,14 +222,22 @@ def audit_native_campaign(directory, *, method, world, classification, loss, ini
                 'lineage': {'vs_parent': design_change(parent, system),
                     'vs_initial': design_change(initial_system, system)} if system else None,
                 'generation_error': record['generation_error'], 'status': 'generation-failure' if draw is None else 'technical-failure',
-                'loss': None, 'own_loss': None, 'cross_scores': {key:None for key in objective_specs()},
+                'loss': None, 'own_loss': None, 'cross_scores': {key:None for key in losses},
                 'metrics': None, 'checkpoint_sha256': None, 'physical_proof': None}
             if observation:
                 if observation['observation_id'] in observation_ids:
                     raise ValueError('native observation reused')
                 observation_ids.add(observation['observation_id'])
             valid = observation and observation['status'] == 'complete' and not observation['metadata'].get('technical_failures')
-            if valid:
+            # Prospective comparison scope: a completed physical forward can
+            # lack its assigned loss inputs while retaining other valid losses.
+            # Preserve legacy semantics when no comparison map is supplied.
+            unavailable = (comparison_losses is not None and observation
+                and observation['status'] == 'failed' and observation['loss'] is None
+                and not observation['metadata'].get('technical_failures')
+                and len(observation['metadata'].get('runs', [])) == 1
+                and len(observation['metadata'].get('measurements', [])) == 1)
+            if valid or unavailable:
                 runs = observation['metadata'].get('runs', [])
                 if len(runs) != 1 or runs[0]['run_id'] in physical or runs[0]['run_id'] not in declared:
                     raise ValueError('native complete draw needs a unique declared world')
@@ -234,12 +248,19 @@ def audit_native_campaign(directory, *, method, world, classification, loss, ini
                 proof['activity_effect_proof'] = activity_effect_proof(cell, declared[evidence['run_id']], evidence['checkpoint_path'])
                 proof['capability_effect_proof'] = capability_effect_proof(cell, declared[evidence['run_id']], evidence['checkpoint_path'])
                 measurement = proof['measurement']
-                evaluations, cross = cross_score_measurement(measurement, objective_specs(), loss['id'], observation['loss'])
+                if unavailable:
+                    evaluations = {key:evaluate_loss(spec,[measurement]) for key,spec in losses.items()}
+                    if evaluations[loss['id']]['status'] == 'complete':
+                        raise ValueError('failed loss status contradicts independently available assigned loss')
+                    cross = {key:value['loss'] if value['status'] == 'complete' else None
+                        for key,value in evaluations.items()}
+                else:
+                    evaluations, cross = cross_score_measurement(measurement, losses, loss['id'], observation['loss'])
                 if ([measurement] != observation['metadata']['measurements']
                         or evaluations[loss['id']] != observation['metadata']['loss_evaluation']
                         or proof['native_loss'] != observation['loss']):
                     raise ValueError('saved autonomous loss differs from native checkpoint')
-                row.update(status='complete', loss=observation['loss'], own_loss=observation['loss'],
+                row.update(status='loss-unavailable' if unavailable else 'complete', loss=observation['loss'], own_loss=observation['loss'],
                     cross_scores=cross, metrics=measurement['metrics'], physical_proof=proof,
                     checkpoint_sha256=proof['checkpoint_sha256'], run_id=evidence['run_id'])
                 physical.add(evidence['run_id'])

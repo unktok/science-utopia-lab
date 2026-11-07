@@ -337,6 +337,7 @@ class NativeAdaptiveDesignCampaign:
                 chosen=chosen, probabilities=probabilities, rng_seed=rng_seed)
             if 'design_space' in self.binding:
                 request['design_space'] = clone(self.binding['design_space'])
+                request['design_space_anchor'] = self.initial.to_dict()
             return request
         if self.binding.get('proposal_feedback') == 'matched-loss':
             from .native_feedback_control import class_only_records
@@ -380,6 +381,7 @@ class NativeAdaptiveDesignCampaign:
                 'native_error_messages_visible': False, 'final_loss_only_selection_unchanged': True}
         if 'design_space' in self.binding:
             request['design_space'] = clone(self.binding['design_space'])
+            request['design_space_anchor'] = self.initial.to_dict()
         return request
 
     def _mixed(self, record):
