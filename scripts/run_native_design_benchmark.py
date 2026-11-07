@@ -102,15 +102,19 @@ def progress(root,plan,*,stage,active=None):
                     'status':'generation-failure' if r['generation_error'] else o['status'] if o else 'unknown',
                     'loss':o['loss'] if o else None})
     result={'schema':spec.SCHEMA+'.progress','plan_sha256':plan['content_sha256'],'stage':stage,
-        'active':active,'consumed_search_slots':len(rows),'rows':rows}
+        'active':active,'consumed_search_slots':len(rows),'rows':rows,
+        'consumed_reference_slots':len(list((Path(root)/'references').glob('*/observation.json'))),
+        'consumed_evaluation_slots':len(list((Path(root)/'evaluation').glob('*/observation.json')))}
     result['content_sha256']=digest(result)
     write_json_atomic(Path(root)/'progress.json',result,sort_keys=True,allow_nan=False)
-    print(json.dumps({k:result[k] for k in ['stage','active','consumed_search_slots']}),flush=True)
+    print(json.dumps({k:result[k] for k in ['stage','active','consumed_reference_slots',
+        'consumed_search_slots','consumed_evaluation_slots']}),flush=True)
     return result
 
 
-def freeze_selection(root,plan):
+def selection_payload(root,plan,*,frozen_utc,campaign_loader=None):
     root=Path(root);rows=[]
+    loader=campaign if campaign_loader is None else campaign_loader
     for name,system in plan['reference_systems'].items():
         o=json.loads((root/'references'/name/'observation.json').read_text())
         rows.append({'row_id':'reference:'+name,'arm':None,'system':system,'status':o['status'],
@@ -118,7 +122,7 @@ def freeze_selection(root,plan):
                 if o['status']=='complete' else None for k,loss in plan['losses'].items()}})
     for run,bindings in plan['campaign_bindings'].items():
         for arm in bindings:
-            c=campaign(root,plan,run,arm)
+            c=loader(root,plan,run,arm)
             if c.state['pending'] or len(c.state['records'])!=plan['generations']:
                 raise ValueError('selection cannot precede every declared search slot')
             for g,r in enumerate(c.state['records']):
@@ -140,8 +144,14 @@ def freeze_selection(root,plan):
     result={'schema':spec.SCHEMA+'.selection','plan_sha256':plan['content_sha256'],
         'selected':selected,'pooled':{k:choose(rows,k) for k in plan['objectives']},
         'all_rows':rows,'reference_systems':plan['reference_systems'],
-        'frozen_utc':datetime.now(timezone.utc).isoformat()}
-    result['content_sha256']=digest(result);save_new(root/'selection.json',result)
+        'frozen_utc':frozen_utc}
+    result['content_sha256']=digest(result)
+    return result
+
+
+def freeze_selection(root,plan):
+    result=selection_payload(root,plan,frozen_utc=datetime.now(timezone.utc).isoformat())
+    save_new(Path(root)/'selection.json',result)
     return result
 
 
