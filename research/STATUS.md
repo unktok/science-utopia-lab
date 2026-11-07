@@ -12,7 +12,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
 | V2 readiness | All3 runs pass28 fresh real designer controls and cold replay each;26 exact copies per run remain diagnostic. Run02 first dispatch uses its new certificate at age3.77s |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at21:54UTC:113/120 slots,59 complete,23 generation failures,31 execution failures; first three run02 G3 slots complete C2.1/T0/C2.4 without new best values |
+| V2 search | Running at22:04UTC:115/120 slots,61 complete,23 generation failures,31 execution failures; run02 G3 uniform completes T-7/C8.43 without a new best |
 | Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
 | Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
@@ -40,7 +40,7 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   at G1/G2. Run02 G0 closes10 slots: T fixed-graph and uniform both complete
   at-7; C technical-only/uniform complete at7.77/8.1, worse than initial C2.4;
   the other six slots retain technical nulls. No primary-objective result
-  through113 beats its strong reference. Run02 G1: T code/graph completes
+  through115 beats its strong reference. Run02 G1: T code/graph completes
   T0, C technical-only completes C2.4, and T uniform ties its G0 at-7; the same
   numeric candidate completes C8.43 on a separate forward. Three
   generated programs fail coverage, empty required decisions or world-record
@@ -61,7 +61,7 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   independent environment replications.
   Run01 G3 yields5 completions,3 generation failures and2 execution failures,
   without improving any arm's best-including-initial value.
-- All22 uniform-numeric proposals execute; all22 LLM-numeric slots consumed
+- All24 uniform-numeric proposals execute; all22 LLM-numeric slots consumed
   so far fail generation. Domain presentation/compliance confounds intrinsic
   expressivity claims. Technical nulls are not measured bad scientific losses.
 - Permitted code/graph freedom is not demonstrated structural invention.
@@ -90,7 +90,7 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 ## Required work before submission judgment
 
-1. Finish the remaining7 search slots under the current bindings and freshness
+1. Finish the remaining5 search slots under the current bindings and freshness
    guards. Do not refill failures.
 2. Freeze selection/ties, then execute the declared unused-condition evaluations
    without returning their outcomes to search.

@@ -3090,3 +3090,59 @@ active; a verified finite inference wait is not a blocker or study closure.
 Offline document checks pass16 active documents/191 local targets/six original
 snapshots and git diff --check; the through70 snapshot retains its recorded
 SHA256. These checks make no model/network/world calls or V2 closure claim.
+
+### Uniform numeric authoring finishes all24 declared development forwards
+
+The preceding turn records113's valid technical-only tie at1052373. This
+continuation repeatedly verifies actual writer46865 live and advancing scientist
+request journals. At22:04:14UTC progress115/120:61 complete,23 generation
+failures,31 execution failures; reference9/9,evaluation0. Progress SHA256
+4bc0447a238937138432c27d51411218c537ce033c6bbebe7528308e64e2da38.
+
+Slot114 T uniform G3 completes T-7, returning from G2 T0 but only tying its
+G0/G1 best and observed strong throughput reference. Slot115 C uniform G3
+completes C8.433333333333332, worse than its initial/G2 C2.4000000000000004.
+Neither improves its best-including-initial value. Both measure A7/
+Q21.666666666666668/R21,5 active researchers/resources620 and6 context
+deliveries. These are valid measured outcomes, not discarded scientific-merit
+failures; chronological rebound is not a new best or feedback learning.
+
+Candidate dictionaries, all six patch operations and controller
+RNG917729175811528411 agree across the two objectives. Their measured metrics
+and recorded event-stream hashes agree, but do not infer byte-identical raw
+replies/checkpoints or independent policy definitions. Both declared physical
+forwards and costs remain. No development deduplication changes the budget.
+Thresholds4.159397030958559/1.440919214591443,bias-3.1577049736768306,
+memory_cost0.04147577929828988,router threshold0.5480786371521842,count3;
+these are numeric replacements, not source/schema/graph invention.
+
+T request664776c26cb45abe367ca3fa67f6b15d3b8ca1d2217dd7c3c9332c8c7d56d3d9;
+world native-adaptive-8a8020b8b7e98c6e878849f3-s42;
+checkpoint SHA2563bb7416c0d662cf15e6f8ae8799883c2edcd461668000310ecbd06d1b89c8345;
+114-slot progress SHA2567b2fb51d5277a0bad31e3387423129fa32b8c0b38d268d7aa3c6ce429814c35a.
+C request77bb17dfe38adc427623637652d45cd38109510ec13f485a7871790e0fb84202;
+world native-adaptive-884c3e800ba99a658ffbbde1-s42;
+checkpoint SHA256180740a3b89efa21f9b60c8bd113e25daa746e6e5a0a9745accb01b9c3cbe52f;
+shared candidate fingerprint
+1a101a5d2c63fe508b68fa4dbb0e0a4288361f1e49c7bc6f12ec9ac7eb3e2969.
+
+A separate read-only state check covers all six completed uniform arm files
+(run00/01/02, throughput/selective). Each has four records, no pending request,
+no generation errors and four complete observations:24 total. The T paths are
+[-7,0,-7,0],[-1,-7,-7,-7],[-7,-7,0,-7]; C paths are
+[8.1,2.4000000000000004,8.1,2.4000000000000004],
+[2.733333333333334,8.433333333333332,8.433333333333332,7.766666666666664],
+[8.1,8.433333333333332,2.4000000000000004,8.433333333333332].
+This checks raw per-arm completion states, not full transport/source closure
+or a new original-source V2 audit. All22 consumed LLM-numeric slots still fail
+generation, so compliance remains separate from intrinsic numeric-space utility.
+
+No active source/model/settings/loss/budget/selection or raw evidence changes,
+hidden repairs/refills, new resources or optional registry egress. Remaining5
+search slots, fixed selected-policy evaluation, two original-source audits and
+final analyses/manuscript/PDF/mock review remain required. The full goal stays
+active; completion of this control arm is not study or submission completion.
+
+Offline checks pass16 active documents/191 local targets/six original snapshots
+and git diff --check; the through70 snapshot SHA256 remains unchanged. These
+checks make no model/network/world calls and do not establish full V2 closure.
