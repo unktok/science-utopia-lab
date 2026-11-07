@@ -791,3 +791,51 @@ Selective technical-only G3 is next. The whole finite study remains live and
 unaudited as a closed study; no loss, source, prompt, model, budget, selection
 rule or trial-replacement change. Full analysis still follows original-source
 closure and selection-fixed unused-condition evaluation.
+
+Continuation14:01–14:15UTC verifies the same live session46865. Monitoring
+cell3805 finishes at selective technical-only G3 execution failure (search35).
+Its declared artifact and graph outputs are exactly decisions/next/world, but
+the literal returned outputs also contain scores/accept. The actual executor
+error reports this exact key-set mismatch. New ports are not intrinsically
+forbidden; a graph/code declaration must agree. Do not add ports on the host or
+silently discard returned values to turn the trial into success. The generated
+reject-all decisions are not themselves a forbidden outcome. Preserve null.
+World identity native-adaptive-730e44e0bffec948f18354d1-s42;
+generation request hash
+436d6eb0d3c92c0af42b0a2c824d8718a0dbbb7a4ef47862e6ce41f5f49b63d4;
+35-slot progress hash
+569da1e385a06f88d28472ec041117d6f7101bc023c7ae760624b96a995ad30e.
+
+By14:15:09UTC throughput uniform-numeric G3 completes at T0, worse than its
+retained-7. Its four own slots are[-7,0,-7,0], all complete, not four independent
+world replicates. Total36/120:22 complete,6 generation failures,8 execution
+failures,9/9 references,0 selected-policy evaluations. Progress hash
+c6f2dcc9761dcd6f5511863bb4177774ac347c63ec032eeb83f7bb5c03c512c2.
+Selective uniform-numeric G3 is running. No runtime, loss, model, prompt, budget,
+selection, slot-replacement or active-source change.
+
+Separate documentation correction at8fc7d4edaacc1f79dd23f899e8df0eb4993e77af:
+the authored-only v14 failure rule does not automatically apply to V2's
+predeclared pool, which also contains the initial reference. If eligible, an
+initial-reference win is no search improvement and never relabels failed
+proposals as successes. Selection still waits for all three histories, not a
+single arm's early failure. Ten offline documentation/artifact checks pass in
+0.09s; JUnit selection-scope-docs.xml SHA256
+b7f2a11a0803fb1c984c14272fe64d0218a9c618ba3d72f006579e1c668cb304.
+This is QA and interpretation, not additional model evidence.
+
+Optional model-reproduction metadata lead: plan five HEAD-only blob checks
+(three ordered local tensor samples, one current-public tensor control and a
+shared-license control), no redirects, no response-body reads,15-second limits,
+three workers. Both small input manifests are checked against their already
+recorded hashes. The restricted14:11:54UTC attempt produces URLError/gaierror
+for all five and observes no HTTP status; this is not upstream404 or proof that
+the blobs are unavailable. The network-enabled attempt is rejected before
+execution by automatic review: local layer fingerprints would be sent to a
+public registry without explicit egress approval. Do not retry through hardcoded
+digests, a different tool or any indirect workaround. Ask the user explicitly
+whether that limited fingerprint disclosure is allowed; the async question is
+pending. No remote response, weight download/replacement, original conversion
+recipe or fresh-machine reproduction is established by this check. The main
+experiment remains authorized, live and unaffected. Record the unknown rather
+than convert this permissions boundary into a scientific failure or global stop.

@@ -27,10 +27,10 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At13:21UTC all9 fresh reference worlds are complete. Search has
-consumed30/120 slots:19 complete,6 generation failures,5 execution failures.
-These are run00's G0–G2 across ten arms, not the full study or three environment
-replicates. G3 selective fixed-graph authoring is in flight; selected-policy
+diagnostic. At14:15UTC all9 fresh reference worlds are complete. Search has
+consumed36/120 slots:22 complete,6 generation failures,8 execution failures.
+These are run00's30 G0–G2 slots plus six G3 slots, not the full study or three
+environment replicates. G3 selective uniform-numeric evaluation is in flight; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 G1/G2 do not improve any arm's best-including-initial value. Uniform numeric
@@ -51,6 +51,12 @@ do not prove field/rank safety; see the
 exact selection rules remain unchanged. This live milestone is not a closed
 original-source audit, a gain over strong controls, a feedback/method comparison
 conclusion or evidence of better science.
+The reproduction guide now distinguishes authored-only selection from V2's
+explicitly initial-eligible pool. A later metadata-only registry availability
+check has no observed remote HTTP result: restricted DNS failed, then automatic
+review rejected local layer-digest egress before execution. That optional check
+awaits explicit user permission; availability remains unknown, not404. No
+workaround, model download/replacement or experiment change is made.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout
