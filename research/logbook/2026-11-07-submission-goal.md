@@ -2388,3 +2388,91 @@ code-context journal SHA25690a714b5bd5d3955fd8b46b35e9cd28986342481449e1b8510fcb
 selection interpreter result SHA256
 48bee13cd0d44a0e6a054a4837157fe999db1ec63b3999ae91fbe544ac6e8abb.
 Remaining27 search slots and all downstream evaluation/closure work remain.
+
+### Run02 G1 through96: malformed world envelope, valid rejection and numeric tie
+
+This turn makes concrete outcome/causal-diagnostic records and repeatedly
+verifies the actual writer46865 live. Read-only observer83704 reaches96 at
+20:02:30UTC and exits0, not writer closure. Progress96/120:48 complete,
+19 generation failures,29 execution failures; reference9/9,evaluation0.
+Progress file SHA25618b4881f055b0e8dd669778d7f94ef14eff78fe65633c0e0134f6961e7d64219.
+
+Slot94 T technical-only G1 generates a function with scalar/list handling and
+real-record selection, but its world output is [obs_in[0]['payload']] rather
+than [{'payload': obs_in[0]['payload']}]. The actual first CodeExecutionError
+rejects this missing record envelope. Its partial code journal has three prior
+rows and no successful selection receipt; do not fabricate that missing row
+or assert later decisions applied. Only selection source changes, two writes.
+It uses14 charged actions, including one rejected repeat read. Static finish
+validity does not prove runtime record validity; no host packaging repair occurs.
+
+The actual step02 read of code/world.selection.py contains the correct wrapped
+world output. Its complete source is retained, JSON-escaped, inside the step03
+prompt. Step03 transport's exact wire checksum, parsed request equality, source
+prompt checksum and message inclusion all verify. HTTP200/done_reason stop is
+recorded. Thus this example was actually sent before rewriting; this is not
+proof that the model understood/retained it, sufficient free-design capacity,
+absence of every interface defect, or an arbitrary-program validity guarantee.
+
+Request3d0867046793530b353f0167d425027676fc67110cdd53cc81b5c4225ab924d6;
+world native-adaptive-75df4afaeb4d11bc720fd21f-s42;
+selection source SHA256e57613ad50ce4e93ea613a70ca3f5330c996f102994dbb7b039f3ca5ce9cdce2;
+partial journal SHA2569793170ace92ff82d30635d32d4167346d8201c5b1e5c0b0ad0278368edb6790.
+Under its authoring/generation-request directory, step02.completed file SHA256
+3a374db454cea1d84572066b638f62455f48f7d57139e65ec25a40b1a3283371;
+step03.started file SHA256d3db5281c88ca590d6fb79355b59c7d28f15d1c16a0ea536247515529331ce98;
+prompt SHA256aa8689d0374f52cfa44eb0372525d57fbb44989ce7dae59ce523ab81cf3a76e2;
+step03.completed file SHA25641c7e82cd3de7fbeb8367968d143d19a3d86b2daf6c5bdf908eef8ebd50278ad;
+request wire SHA256cd223775876a1fe98f24111d0a5397fc36e298e75dbfa4294e6fcfcaec592fe9.
+
+Slot95 C technical-only G1 completes C2.4000000000000004,A0/Q0/R24,
+eight rejections,5 active researchers/resources615 and4 context deliveries.
+Its source explicitly emits reject for every addressed record, uses actual
+scalar final_score values and keeps the world envelope. Source-matching
+period1/2 receipts align exactly3/5 real paper/conference IDs. This demonstrates
+that explicit all-reject is accepted under the contract that rejected slot93's
+empty message list; these are not otherwise controlled identical worlds.
+C ties the weak initial and is worse than the fresh reviewer-free reject C0
+reference. It is lower than this arm's G0 all-accept value, but this technical-only
+arm does not receive its prior scientific outcomes; do not call it feedback
+learning or a G0-to-G1 policy improvement by a trained inventor. Its parent is
+the fixed initial system. Empty-cycle fallback is unexercised here.
+
+Request614a5403352b4c1a8047f6fd8b76094b7c14602c8d3c51bcbc9a1d8b0ce861ae;
+world native-adaptive-bd68d5bef7657fa4c4b9f85d-s42;
+selection source SHA2560ffe3a76d9800221ceadfa781d8b866b9e1ebe34f35492baa3594b4ec388cd8d;
+checkpoint SHA2562c81011eb4de7c20970e59e73fc23b6df87384194ae87ab4ee2d4d11d82e3ab9;
+code journal SHA2560fa5d6b76176f45895c8fbf85aeb7f1ce556ebe24eb37e5c277551d70ecc8bbd;
+period1/2 result SHA256a7ee1e621e14ea9399eb501deab8683a35c333f0f32416831a251a1030a08b49 /
+09f6932b9ee596bec5db172cfb3f02a3d00f656153650825d85d14e38a50d05d.
+
+Slot96 T uniform-numeric G1 completes T-7,A7/Q21.666666666666668/R21,
+5 active researchers/resources620 and6 context deliveries. It ties this arm's
+G0 and the observed strong throughput reference, not a new best or proof of
+global optimality. Its six replacements remain within numeric space; no source,
+graph or schema edit. Thresholds2.0321218102639795/4.5557540871175215,
+bias-1.6667751658692787,memory_cost0.061402437066437256,router threshold
+0.012810796330830154,count3. Multiple coordinates and fresh oracle realizations
+vary together, so differences in Q/context deliveries are not isolated causal
+effects of one parameter. All19 consumed uniform proposals now execute.
+
+Requestd62cf17b14c5c378f93deb2ca9e4b07668f02aa10b582be5b0fcb16c2d40a2d1;
+world native-adaptive-037f37d3219147969c1e63f1-s42;
+checkpoint SHA256de42646adf9d5a7b1e472d2eeb8ec34ac6876eb7608d78b22f60277f4ed8e3d8;
+candidate fingerprint80fe9792000d99a5da20d005efad7024a30fcdec4dc7b2d4a1c8c8ce24fb3292;
+controller RNG136861321435631163.
+
+No active source, settings, loss, budget or selection change, hidden repair,
+refill, new resource or optional registry egress. Remaining24 search slots,
+fixed evaluation, two original-source audits and final analysis/manuscript/PDF/
+mock review remain required; the goal stays active, not complete or blocked.
+
+Both technical-only G1 requests retain the same parent as G0 and explicitly
+bind fixed-initial-system/measured_values_visible=false. For95 the actual
+step00 prompt's projected prior observation has loss_withheld=true,
+measurements_withheld=true and loss_spec_sha256=null. This supports the
+declared information boundary, not a newly exhaustive leakage audit.
+The offline documentation checker passes16 active documents/189 local targets
+and six original snapshots; git diff --check passes. The separately preserved
+through70 snapshot remains SHA2563360312852c14344e23718ad283ca4053c3930afffbd995dace2bb42bc01865b.
+No model calls, simulator runs or network requests are made by these checks.
