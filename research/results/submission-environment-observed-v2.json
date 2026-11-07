@@ -1,0 +1,145 @@
+{
+  "backend_metadata_from_prior_plan_only": {
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+    "ollama_version": "0.33.3"
+  },
+  "complete_environment_lock_claimed": false,
+  "content_sha256": "0c951d87a9303d3321fb38f9acbea3bfbbe6fca778217f6f0fb2317f520db1dd",
+  "downloads": 0,
+  "new_endpoint_requests": 0,
+  "new_inference_requests": 0,
+  "observed_utc": "2026-11-07T09:45:06.157955+00:00",
+  "observer_source_sha256": "f506a8ed69685e01d8dcbcc1a42a69c07ecad6835cdb031a52c9f1b521ddb455",
+  "package_installs": 0,
+  "packages": {
+    "datasets": {
+      "status": "observed-in-this-interpreter",
+      "version": "4.8.4"
+    },
+    "httpx": {
+      "status": "observed-in-this-interpreter",
+      "version": "0.28.1"
+    },
+    "huggingface-hub": {
+      "status": "observed-in-this-interpreter",
+      "version": "0.36.2"
+    },
+    "jsonschema": {
+      "status": "observed-in-this-interpreter",
+      "version": "4.25.1"
+    },
+    "langchain-core": {
+      "status": "observed-in-this-interpreter",
+      "version": "0.3.79"
+    },
+    "matplotlib": {
+      "status": "observed-in-this-interpreter",
+      "version": "3.11.2"
+    },
+    "mlx": {
+      "status": "not-installed-in-this-interpreter",
+      "version": null
+    },
+    "mlx-lm": {
+      "status": "not-installed-in-this-interpreter",
+      "version": null
+    },
+    "networkx": {
+      "status": "observed-in-this-interpreter",
+      "version": "3.4.2"
+    },
+    "numpy": {
+      "status": "observed-in-this-interpreter",
+      "version": "2.4.6"
+    },
+    "openai": {
+      "status": "observed-in-this-interpreter",
+      "version": "2.41.1"
+    },
+    "pandas": {
+      "status": "observed-in-this-interpreter",
+      "version": "2.2.3"
+    },
+    "pip": {
+      "status": "observed-in-this-interpreter",
+      "version": "26.2.2"
+    },
+    "pyarrow": {
+      "status": "observed-in-this-interpreter",
+      "version": "21.0.0"
+    },
+    "pydantic": {
+      "status": "observed-in-this-interpreter",
+      "version": "2.13.3"
+    },
+    "pytest": {
+      "status": "observed-in-this-interpreter",
+      "version": "8.4.1"
+    },
+    "requests": {
+      "status": "observed-in-this-interpreter",
+      "version": "2.34.2"
+    },
+    "scikit-learn": {
+      "status": "observed-in-this-interpreter",
+      "version": "1.7.2"
+    },
+    "scipy": {
+      "status": "observed-in-this-interpreter",
+      "version": "1.17.1"
+    },
+    "sentence-transformers": {
+      "status": "observed-in-this-interpreter",
+      "version": "5.1.2"
+    },
+    "torch": {
+      "status": "observed-in-this-interpreter",
+      "version": "2.9.0"
+    },
+    "tqdm": {
+      "status": "observed-in-this-interpreter",
+      "version": "4.67.1"
+    },
+    "transformers": {
+      "status": "observed-in-this-interpreter",
+      "version": "4.57.3"
+    }
+  },
+  "plan_declared_models": {
+    "designer": {
+      "model": "qwen3.6:35b-mlx-64k",
+      "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8"
+    },
+    "scientist": {
+      "model": "qwen3:8b",
+      "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+    }
+  },
+  "plan_declared_sandbox_image": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+  "plan_sha256": "57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25",
+  "platform": {
+    "logical_cpu_count": 18,
+    "machine": "arm64",
+    "release": "27.0.0",
+    "system": "Darwin"
+  },
+  "python": {
+    "cache_tag": "cpython-311",
+    "implementation": "CPython",
+    "version": "3.11.15"
+  },
+  "schema": "scienceutopia.submission-environment-observation.v1",
+  "scope": "Current observer interpreter only, after dispatch. No hostname, home path, environment secret, direct package URL, operator configuration, model weights or corpus content included. Missing optional packages here do not imply absence in the separate inference service.",
+  "separate_model_server_packages_observed": false,
+  "source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "source_requirements_sha256": {
+    "constraints-linux-py311.txt": "57a6007a2e1611281af45658232f8e7d021c14a35aeab1706731695075f505a0",
+    "requirements-figures.txt": "991a0af3582780614c00b686860bf527e74f71e4d16876c402351ed431d7e4c8",
+    "requirements-optional.txt": "d70bfab776d9172deb17f2b6ab2a98423c37d92ddb15c95489f406a847a74a77",
+    "requirements-test.txt": "59a0239e084f59949168a18fe9c3744f8e951fee6941f0e499a5be22428840f4",
+    "requirements-vllm.txt": "e57197f85f85095a0e511e52a32a24459bfddd3a4b9eb2ac14d7fa4aca63e3af",
+    "requirements.txt": "dd5a811514cdc0433b19cef8b14ee0e85c1a36b1a45d5d71c9ea800d116d7ecc"
+  },
+  "startup_environment_attested": false
+}
