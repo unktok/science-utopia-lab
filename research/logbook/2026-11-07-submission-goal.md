@@ -2745,3 +2745,27 @@ Offline documentation checks pass16 active documents/191 local targets/six
 original snapshots and the separate readiness-document check. git diff --check
 passes; the separately preserved through70 snapshot retains its recorded SHA256.
 These checks make no model/network/world calls and do not certify full V2 closure.
+
+After committing the102-slot information-path trace as7251308, a fresh actual
+writer poll remains live and progress reaches103 by20:47UTC:52 complete,
+21 generation failures,30 execution failures; reference9/9,evaluation0.
+Progress SHA2561a577459749e7a51c2242b5c202e32fcdaa32af492a1f08a7786e6c108495f6e.
+Slot103 T technical-only G2 executes Python but fails the native decision-ID
+coverage guard. Its actual source builds already-enveloped real decisions,
+then returns another payload envelope around each. The matching period1
+receipt contains three outer payloads whose only key is payload; their inner
+IDs align exactly with all three real submissions and inner decisions are all
+accept. The native consumer sees no paper_id at its required level. This is
+an extra-envelope error, not an observed dummy-ID branch or a policy veto.
+No decisions are applied and no A3/T-3/other loss is fabricated. Do not silently
+unwrap this source output. Three replacements affect selection source only.
+
+Request4d7241bae0a3a9f2b10e86c3626aef64a1cd20c3c902be1e1689043b57a6e589;
+world native-adaptive-a836437762a5d18ce7c4660f-s42;
+selection source SHA25663f19518f96a2e0622cdcca616a0c2581c92a2bc81bccb847abe5611081f822a;
+partial journal SHA25616c0ad0a0a83fad70dbe37bd3e890acc89d1f1ca3e99f4c87cc19c1bcfaf1182,
+four rows including one selection interpreter receipt;
+that result SHA256b9b655907409495279faf3da647228e41095b20afce53c42bed5900911f4ce81.
+The full goal remains active, with17 search slots and all later evaluation/
+closure requirements still open. Active source/settings/loss/budget/selection,
+raw data, candidate budget and role resources remain unchanged.
