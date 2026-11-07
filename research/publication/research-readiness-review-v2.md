@@ -210,7 +210,8 @@ finds a separate analysis defect: sorted JSON loses plan/selection mapping order
 needed by the frozen auditor's strict replay. Source-ordered equal-valued
 reconstruction exactly matches saved selection and all90 evaluation jobs without
 changing their hashes or actual policies. A versioned analysis-only correction
-and regressions are required before the two full audits. Do not edit the frozen
+and regressions are implemented in a separate analysis checkout; committed-source
+and fresh-process validation remain required before the two full audits. Do not edit the frozen
 experiment, ignore ordered comparisons or claim the unchanged CLI/full V2 audit
 has passed. The90-job evaluation continues under its existing fixed selection.
 

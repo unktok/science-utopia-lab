@@ -21,6 +21,7 @@ from utopia.optimization.native_scientist_load_v38 import replay_load
 from utopia.system import SystemSpec
 from utopia.system.design_patch import digest
 from utopia.utils.data_utils import write_json_atomic
+from scripts.native_design_audit_order import restore_plan,restore_selection
 
 
 def loaded(path,context,*,provider,purpose,role,allow_unconfirmed=False):
@@ -82,9 +83,9 @@ def analyze(root,source):
                 or usage['valid'] is not True or usage['seeds']!=list(spec.EVALUATION_SEEDS)
                 or usage['errors'] or usage['prior_matching_runs']):
             raise ValueError('evaluation seed history check is absent, failed or unknown')
-        if plan!=spec.build_plan(source=source,scientist=plan['scientist'],designer=plan['designer'],
-                runtime_seed=plan['runtime_seed_binding'],backend=plan['backend'],seed_usage_sha256=usage['content_sha256']):
-            raise ValueError('study plan differs from source-pinned reconstruction')
+        # Sorted JSON preserves values but not the source's declared mapping
+        # chronology. Restore it, preserving exact hashes and every list order.
+        plan=restore_plan(plan,spec=spec,source=source,seed_usage_sha256=usage['content_sha256'])
         start,end=read(root/'writer.started.json'),read(root/'writer.ended.json')
         if (start.get('action')!='all' or start.get('source_commit')!=source or start.get('status')!='started'
                 or end!={**start,'status':'exited','exit_code':0,'ended_utc':end.get('ended_utc')}
@@ -165,8 +166,7 @@ def analyze(root,source):
         selection=read(root/'selection.json')
         def readonly(base,plan,run,arm):
             return replay_campaign(Path(base)/'search'/run/'arms'/arm.replace(':','--')/'campaign','blackbox')
-        if selection!=driver.selection_payload(root,plan,frozen_utc=selection['frozen_utc'],campaign_loader=readonly):
-            raise ValueError('frozen selection differs from all candidates and exact ties')
+        selection=restore_selection(root,selection,plan=plan,driver=driver,campaign_loader=readonly)
         jobs=driver.evaluation_jobs(plan,selection)
         if read(root/'evaluation-plan.json')!={'schema':spec.SCHEMA+'.evaluation-plan',
                 'selection_sha256':selection['content_sha256'],'jobs':jobs}:

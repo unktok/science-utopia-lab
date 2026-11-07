@@ -3402,3 +3402,33 @@ documents/194 local targets/six original snapshots, the separate readiness
 document targets, valid diagnostic JSON and git diff --check. These are not
 full V2 audits. Next bounded implementation is an analysis-only correction and
 regressions in a separate feature worktree; the frozen runtime remains untouched.
+
+### Order-only audit correction implementation; user provenance uncertainty retained
+
+The user's latest reply again does not identify an upstream revision or creation
+command: Hugging Face/Ollama is a tentative lead, not established provenance or
+permission for the pending layer-fingerprint egress. Keep the present35B weights
+and frozen experiment unchanged, with upstream revision/conversion unverified.
+
+Separate branch research/audit-source-order-v2 implements strict equal-valued
+source-order reconstruction. The future direct analyzer restores both mappings;
+the current b6654ad backport instead loads that exact clean checkout's runtime
+and clones the original analyze function with the same code object and all
+original globals except a path-specific reader for plan.json/selection.json.
+Nothing rewrites raw inputs, weakens list chronology or replaces scientific
+outcomes. The explicit receipt binds original source closure, analysis commit
+and adapter/helper bytes. A distinct component mode is not a full audit.
+Closed report projection retains adapter provenance when present; older audit
+fixtures retain their old output shape when it is absent.
+
+First offline unit/observation/report batch:51 passed in13.99s, receipt
+outputs/publication-benchmark-v2-verification/audit-order-unit-first.xml.
+Tests reproduce sorted-JSON failure, require both mapping reconstructions,
+reject resealed score/tie/list/budget/seed-history changes, preserve incomplete
+search rejection and unrelated function guards, protect raw/output paths, and
+retain provenance. These use SCRIPTED inputs, not real inference/full V2 audit.
+Fresh-process orchestration tests over tiny explicitly SCRIPTED Git repositories
+are added but not yet run. Actual source-bound component validation follows a
+clean committed adapter; full audits still await normal closure of all90 jobs.
+At23:00UTC the actual writer46865 remains live, progress records5/90 evaluation
+jobs. No settings, selection, budget, experiment bytes or raw files are changed.

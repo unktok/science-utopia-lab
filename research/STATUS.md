@@ -15,7 +15,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
 | Selected-policy evaluation | Started22:39:08UTC; first job complete by22:44UTC.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
-| Closed V2 audits and results | Not yet available. A JSON mapping-order defect in the frozen audit entrypoint is reproduced; analysis-only correction/regressions are required, without changing the experiment |
+| Closed V2 audits and results | Not yet available. An analysis-only mapping-order correction and regressions are implemented; fresh-process/source-bound validation is pending, without changing the experiment |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
 The actual writer is PID72837, started09:02:10UTC, at clean frozen source
@@ -79,8 +79,9 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 1. Finish the fixed90 unused-condition evaluation jobs without returning results
    to the already closed search or changing selection/ties. Do not refill failures.
-2. Correct the [reproduced audit-order defect](results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
-   in a separate versioned analysis adapter with round-trip/tamper regressions.
+2. Validate the separate versioned analysis adapter for the
+   [reproduced audit-order defect](results/native-design-freedom-v2-audit-order-diagnostic-v1.json),
+   including round-trip/tamper and fresh-process source-isolation regressions.
    Do not edit the frozen checkout, raw plan/selection or suppress chronology checks.
 3. After normal writer closure, run two source-bound audits with the correction
    explicitly recorded; the unmodified frozen CLI has not passed. Apply the integrated

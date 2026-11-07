@@ -312,6 +312,8 @@ def project(plan,audit,*,expected_source):
             'nulls_imputed':False,'method_superiority_established_by_report':False,
             'real_scientific_benefit_established_by_report':False},
         'new_model_calls':0,'new_code_executions':0}
+    if 'analysis_adapter' in audit:
+        result['input_audit_analysis_adapter']=deepcopy(audit['analysis_adapter'])
     result['content_sha256']=digest(result)
     return result
 

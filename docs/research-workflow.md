@@ -138,20 +138,39 @@ and its dependency/visual-QA receipt for the cached PDF build.
 
 The current V2 experiment is pinned at
 `b6654adefc42223f9ecc7b4e53c043c879230f68`.
-After its writer is terminal, use that detached source's
-`scripts/analyze_native_design_benchmark.py` with the full raw archive,
-`--expected-source` and a fresh output outside the raw root. Repeat to a second
-fresh audit output and compare them. Do not run its exact-source audit from a
-later integration source or call an in-progress archive complete.
-
 The120-slot closure exposed a [component-reproduced mapping-order defect](../research/results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
 in that frozen audit entrypoint: sorted JSON preserves values but not the original
 plan/selection dictionary insertion order. Source-ordered reconstruction restores
 the exact saved selection, evaluation jobs and progress-row chronology. Do not
-edit the frozen source/raw files or weaken ordered comparisons. A versioned
-analysis-only adapter and round-trip/tamper regressions are now required before
-the two full audits; the unchanged frozen CLI has not passed. This is not a
-change to the running experiment, candidate selection or evaluation schedule.
+edit the frozen source/raw files or weaken ordered comparisons. The separate
+[order-only adapter](../scripts/audit_native_design_benchmark_order.py) loads the
+original auditor/runtime from a clean pinned checkout. In a private copy of the
+original audit function's globals, only reads of the exact raw plan/selection
+paths are replaced with source-reconstructed, equal-valued dictionaries. Scalar
+types, hashes, all list orders, selected policies and every other original audit
+dependency/guard remain. The receipt records both analysis and experiment source.
+This is not a change to the experiment, selection or evaluation schedule; the
+unchanged frozen CLI has not passed. Fresh-process integration QA is required
+after committing the adapter, before using it for the real closed-study audits.
+
+After confirming the actual writer handle has exited normally, use a clean,
+committed analysis checkout and the approved interpreter to invoke the adapter
+**directly**, not with `-m` or in an already imported Python process:
+
+```text
+python scripts/audit_native_design_benchmark_order.py --run <full-raw-root> \
+  --source-tree <clean-detached-b6654ad-checkout> \
+  --expected-source b6654adefc42223f9ecc7b4e53c043c879230f68 --output <fresh-audit-1.json>
+```
+
+Repeat to a second fresh output and byte-compare them. Outputs must be outside
+the raw and frozen source roots. Normal writer terminal records, exact original
+source closure and raw inventory immutability are checked; do not infer actual
+process termination from a lock or old progress label. `--check-order-only`
+permits a bounded check after all120 search slots close while evaluation runs.
+It checks saved selection/job reconstruction, **not** evaluation observations,
+terminal progress or the full study; its distinct component schema cannot serve
+as a closed-audit input to reporting. It dispatches no model/generated code.
 
 The separately implemented integration modules then project that audit:
 
