@@ -14,6 +14,7 @@ sys.path.insert(0,str(ROOT))
 from scripts import native_design_benchmark_plan as spec
 from scripts.run_native_benchmark_controls import save_new
 from scripts.run_native_warmstart_v45 import campaign_from_binding
+from scripts.native_benchmark_seed_usage import usage_inventory
 from utopia.optimization.blackbox import Suggestion
 from utopia.optimization.loss import evaluate_loss
 from utopia.optimization.native_jobs import pinned_revision
@@ -187,8 +188,18 @@ def prepare(args):
         years=2,corpus_years=4,designer_provider=designer)
     scientist={k:clone(getattr(factory,k)) for k in ('model','model_digest','corpus_sha256','corpus_years','dataset_identity')}
     scientist['image_id']=DockerCodeExecutor().image_id
+    usage_path=args.output/'evaluation-seed-usage.json'
+    if usage_path.exists():
+        usage=json.loads(usage_path.read_text())
+    else:
+        usage=usage_inventory(args.output.parent,spec.EVALUATION_SEEDS)
+        save_new(usage_path,usage)
+    if (usage['content_sha256']!=digest({k:v for k,v in usage.items() if k!='content_sha256'})
+            or usage['valid'] is not True or usage['seeds']!=list(spec.EVALUATION_SEEDS)
+            or usage['errors'] or usage['prior_matching_runs']):
+        raise ValueError('evaluation seeds are previously used or unknown in the checked project journals')
     plan=spec.build_plan(source=source,scientist=scientist,designer=designer,
-        runtime_seed=factory.runtime_seed_binding,backend=backend_binding(designer))
+        runtime_seed=factory.runtime_seed_binding,backend=backend_binding(designer),seed_usage_sha256=usage['content_sha256'])
     if (args.output/'plan.json').exists():
         if json.loads((args.output/'plan.json').read_text())!=plan:raise ValueError('frozen study plan changed')
     else:save_new(args.output/'plan.json',plan)

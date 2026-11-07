@@ -21,7 +21,8 @@ from utopia.system.code_mechanisms import CODE_IMPLEMENTATION, validate_code_art
 from utopia.system.design_patch import clone, digest
 from utopia.utils.data_utils import write_json_atomic
 
-RESERVED_SEEDS = {523, 541, 547, 701, 709, 719, 727, 733}
+RESERVED_SEEDS = {523, 541, 547, 701, 709, 719, 727, 733,
+                  31001, 31013, 31019, 31033, 31039}
 METRICS = {'native.accepted_decisions', 'native.rejected_decisions', 'native.review_records',
            'native.final_active_authors', 'native.final_author_resources', 'native.institutional_context_deliveries'}
 

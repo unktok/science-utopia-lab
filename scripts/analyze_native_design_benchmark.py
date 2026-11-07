@@ -77,8 +77,13 @@ def analyze(root,source):
             'research/objectives/losses/native-joint-v5-throughput.json',
             'research/objectives/losses/native-reviewed-production-efficiency-v13.json'])
         plan=read(root/'plan.json')
+        usage=read(root/'evaluation-seed-usage.json')
+        if (usage['content_sha256']!=digest({k:v for k,v in usage.items() if k!='content_sha256'})
+                or usage['valid'] is not True or usage['seeds']!=list(spec.EVALUATION_SEEDS)
+                or usage['errors'] or usage['prior_matching_runs']):
+            raise ValueError('evaluation seed history check is absent, failed or unknown')
         if plan!=spec.build_plan(source=source,scientist=plan['scientist'],designer=plan['designer'],
-                runtime_seed=plan['runtime_seed_binding'],backend=plan['backend']):
+                runtime_seed=plan['runtime_seed_binding'],backend=plan['backend'],seed_usage_sha256=usage['content_sha256']):
             raise ValueError('study plan differs from source-pinned reconstruction')
         start,end=read(root/'writer.started.json'),read(root/'writer.ended.json')
         if (start.get('action')!='all' or start.get('source_commit')!=source or start.get('status')!='started'

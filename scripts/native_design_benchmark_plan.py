@@ -23,7 +23,7 @@ EVALUATION_SEEDS=(31001,31013,31019,31033,31039)
 GENERATIONS=4
 
 
-def build_plan(*,source,scientist,designer,runtime_seed,backend):
+def build_plan(*,source,scientist,designer,runtime_seed,backend,seed_usage_sha256=None):
     validate_provider_binding(scientist);validate_designer_binding(designer,scientist_binding=scientist)
     if not isinstance(source,str) or len(source)!=40 or any(c not in '0123456789abcdef' for c in source):
         raise ValueError('exact source pin required')
@@ -69,6 +69,7 @@ def build_plan(*,source,scientist,designer,runtime_seed,backend):
         'methods':list(METHODS),'assignments':assignments,'campaign_bindings':bindings,
         'schedules':schedules,'generations':GENERATIONS,
         'reference_systems':{k:v.to_dict() for k,v in references.items()},
+        'evaluation_seed_usage_sha256':seed_usage_sha256,
         'evaluation':{'seeds':list(EVALUATION_SEEDS),'years':[2],
             'extended':[{'seed':EVALUATION_SEEDS[0],'years':4}],
             'maximum_selected_labels':10,'maximum_reference_labels':9,'maximum_physical_worlds':114,
@@ -100,9 +101,8 @@ def policy_identity(system):
 
 def evaluation_design(system,seed):
     from utopia.system import SystemSpec,validate_system_spec
-    from utopia.optimization.native_jobs import RESERVED_SEEDS
-    if type(seed) is not int or seed<0 or seed>=2**31 or seed in RESERVED_SEEDS:
-        raise ValueError('explicit nonhistorical evaluation seed required')
+    if type(seed) is not int or seed not in EVALUATION_SEEDS:
+        raise ValueError('explicit declared nonhistorical evaluation seed required')
     data=deepcopy(system);data['initial_state']['seed']=seed
     result=SystemSpec.from_dict(data);validate_system_spec(result).require_valid()
     if policy_identity(result.to_dict())!=policy_identity(system):
