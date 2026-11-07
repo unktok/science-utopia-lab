@@ -1851,3 +1851,33 @@ generated and executing. Read-only observer22776 waits for73 slots or900s;
 its deadline is not a writer terminal condition. The full finite study, fixed
 selection/evaluation, twice-repeated original-source audits, analyses and final
 paper/mock review remain required. The submission goal stays active.
+
+At17:52:04UTC search72/120:38 complete,14 generation failures,20 execution
+failures;reference9/9,evaluation0. Run01 selective code-and-graph G3 completes
+C2.4000000000000004,A0/Q0/R24,8 rejects,5 active researchers/resources635,
+4 institutional-context deliveries. It is based on valid G1 observation
+native-adaptive-fa6629e20f288d71d42e1875, not G2 (the incumbent tie remains G1).
+Four sequential source replacements affect selection only. The new cutoff is
+score>4 rather than5. The comment now correctly separates fixed current review
+cost from the conditional decision term4-score. Unlike its earlier zero-loss
+claim, this is compatible with the measured positive review cost. Do not infer
+causal feedback learning or global dynamic-policy optimality from that revision.
+
+Two source-matching receipts cover exact3/5 actual records. Scores are[3,3,3]
+then[3,11/3,11/3,10/3,3], all below4, so all are rejected under both cutoffs.
+This is a changed rule with no measured loss gain; equal development loss does
+not prove equal functions on unseen inputs. The empty-record fallback is not
+exercised. Preserve raw C2.4000000000000004 and the original LossSpec, not a
+claimed zero or a scientific-quality improvement.
+
+Requested37d6467f9fd47556b4d59e6bd7a3c27dd537e152648188faefd4ef19ea941c;
+world native-adaptive-87eb1e5e84a9d892a48c6209-s42;
+selection source SHA256c2d895ebbb420f5e5777514fc1dba8feebc5a1fd8562fe446f7b76e175c8f9d3;
+checkpoint SHA2569162a15301fd18a13a532f770fe83857381630417066f3c85ff7c4726917fc74;
+code-context journal SHA256c891d3e203daacb495b6fd528016e3b35851461a76d847a845eeda4a63f38f7c;
+progress SHA25696c1c9c923ab8c9c25f83235c670d624b0bf4a545d74bd2760809f61b9102de9.
+
+Observer22776 then reaches its900s deadline and exits0 without reaching73.
+The actual writer46865 is separately re-polled live, with no terminal record;
+no restart, refill or active experiment change. The manuscript still excludes
+partial V2 outcomes and the full submission goal remains active.

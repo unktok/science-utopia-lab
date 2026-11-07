@@ -12,7 +12,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
 | V2 readiness | Run00/run01 each pass28 fresh real designer controls and cold replay;26 exact copies are diagnostic. Run02 still needs fresh calibration |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at17:44UTC:71/120 slots,37 complete,14 generation failures,20 execution failures |
+| V2 search | Running at17:54UTC:72/120 slots,38 complete,14 generation failures,20 execution failures |
 | Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
 | Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
@@ -36,8 +36,8 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 - S1 hand-written rules recover the earlier proxy minima. Reviewer-free accept-all
   ties observed throughput without review-backed score; this is not better science.
 - V2 run00's later generations do not improve best-including-initial values.
-  Run01 G0–G2 closes30 slots; its first G3 completes at T=-7, tied with G2 and
-  strong observed controls. No primary-objective result through71 beats its
+  Run01 G0–G2 closes30 slots; its first two G3 results are T=-7 and C=2.4,
+  tied with their prior bests. No primary-objective result through72 beats its
   corresponding strong reference.
 - All14 uniform-numeric proposals execute; all14 LLM-numeric proposals fail
   generation so far. Domain presentation/compliance confounds intrinsic
