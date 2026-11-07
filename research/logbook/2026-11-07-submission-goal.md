@@ -2769,3 +2769,32 @@ that result SHA256b9b655907409495279faf3da647228e41095b20afce53c42bed5900911f4ce
 The full goal remains active, with17 search slots and all later evaluation/
 closure requirements still open. Active source/settings/loss/budget/selection,
 raw data, candidate budget and role resources remain unchanged.
+
+### Slot104: first actual scalar-index error, not a measured acceptance policy
+
+The preceding turn commits the102 information-path trace and103 double-envelope
+diagnosis. This turn repeatedly re-polls actual writer46865 live. At20:51:41UTC
+progress104/120:52 complete,21 generation failures,31 execution failures;
+reference9/9,evaluation0. Progress file SHA256
+fa07e18c54040e655cc83be9d583d85f4335bf233eb3b3a75d1f26dac233375b.
+
+Slot104 C technical-only G2 generates executable source, then stops at generated
+line28, scores['values'][i][0], with TypeError: float object is not subscriptable.
+Its guard checks index bounds/list nonemptiness, not the rank of the element;
+it does not prevent this actual scalar error. Only selection source changes,
+two replacements. The partial interpreter journal contains three prior rows
+and no successful selection receipt. Do not fabricate a missing result, infer
+applied accept/reject counts from later code or impute C2.4/another loss.
+The later source intends to add review-mean bias to an acceptance signal, but
+that downstream behavior is not reached in this forward. A technical rejection
+is not a scientific-merit veto. No source unwrapping/rank repair or new candidate
+attempt is inserted by the host; earlier successful programs remain unchanged.
+
+Request77eef36fb3c39231805dfdfc0a93d638b56e0df8ba16ef8987c6bdbf0d773f1f;
+world native-adaptive-d69a491c80a529eb4a19e983-s42;
+selection source SHA256403b15b24b544a0e9e92702c995ced94c26b27675d93a85a631ae64a63570c81;
+partial code-context journal SHA25685ad92bff9d1b56a7b35ac9b9074e92514821ca545175ef32edafc6345cc619c.
+These are live per-case records, not a full original-source closed-study audit.
+Active source/model settings/loss/budget/selection and raw evidence are unchanged;
+remaining16 search slots, fixed evaluation, two original-source audits and final
+analyses/manuscript/PDF/mock review remain required. The goal stays active.
