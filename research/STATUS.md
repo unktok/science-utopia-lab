@@ -27,10 +27,10 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At11:42UTC all9 fresh reference worlds are complete. Search has
-consumed16/120 slots:11 complete,3 parameter-arm generation failures (out-of-domain
-code edits), and2 execution failures (missing paper decisions and a bare-world
-payload instead of a message envelope). G1 has started; its first two consumed
+diagnostic. At11:49UTC all9 fresh reference worlds are complete. Search has
+consumed17/120 slots:11 complete,3 parameter-arm generation failures (out-of-domain
+code edits), and3 execution failures (missing paper decisions and two bare-world
+payloads instead of message envelopes). G1 has started; its first two consumed
 slots are null, while selective fixed-graph G1 completes at the same loss as G0.
 That candidate changes only source whitespace (equal Python AST); matching
 execution receipts contain3 and5 rejections in periods1/2. This is not a new
@@ -46,6 +46,9 @@ request payloads exactly match G0. This is equivalence in this observed world,
 not a claim that the two programs are identical for all possible inputs.
 Throughput technical-only G1 also completes at-7, tied with its G0;
 none of these partial ties establish a feedback advantage or method equivalence.
+Selective technical-only G1 fails with a bare-world output; the model's saved
+literal write matches the executed source. Its loss stays null, not a poor
+numerical score or a host-repaired proposal. Uniform numeric G1 is now in flight.
 The uniform numeric throughput G0 also records-7.
 Throughput fixed-graph and code/graph proposals both record loss-7; selective
 fixed-graph records2.4000000000000004 and selective code/graph records7.766666666666664.

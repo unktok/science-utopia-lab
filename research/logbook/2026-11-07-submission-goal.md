@@ -429,3 +429,29 @@ dfd170ca2a9731023a03f3890f8d7e5d9f879265afc2310a8a99331486f4f2a9.
 These are QA, not additional world samples. Integrate the primary citations
 with the next substantive manuscript rebuild, not by invalidating an existing
 PDF dependency receipt silently.
+
+Continuation11:44–11:50UTC confirms the same live session46865 throughout the
+waits. Selective technical-only G1 closes with execution failure at11:48:57UTC:
+search17/120 (11 complete,3 generation failures,3 execution failures), references
+9/9 complete, evaluations0. Progress hash
+ab881a490eb9b9da3cc7f6b115ca51f7a17694383b4966cd19cc69930d885dcb.
+The next throughput uniform-numeric G1 candidate is under native evaluation.
+
+G1 source outputs world as [context['inputs']['observations'][0]['payload']]
+rather than a payload-enclosed message. The observed CodeExecutionError names
+that malformed world output. Its decisions also remain empty_cycle regardless
+of actual submissions, but do not report a hypothetical later identity-coverage
+error as this observed failure: the earlier output validator stops execution.
+No scientific loss is measured; null remains null. No slot refill or host repair.
+
+World identity native-adaptive-f3bb07d174390839454866af-s42. Literal source
+UTF-8 SHA25678ad70fe47f8694ea503fd9b25096740a4c7e22727ca662ecdb435ffcb9e1f68.
+The same string is present in step11's raw HTTP response content's parsed
+arguments/content, as well as the interpreted output. Generation request hash
+4bace39ddb7f869912f8d1bc575b0f82b050b949c15a17590f50b8ae281e4a4b;
+step-11.completed.json file SHA256
+300fb3752b140c43a8c994d4a05a86a095b23d30f8b61954cb4032017dbbcdaf.
+This observed authored ABI noncompliance is not evidence of a transport rewrite
+or a newly proven runner defect. The diagnostic is scoped, not a claim that
+all possible runner/interface bugs are absent. Keep the frozen source and full
+finite study unchanged; original-source closure/audit still awaits termination.
