@@ -15,6 +15,16 @@ Full raw wire messages and source replay remain in the input audit. Do not feed
 post-study diagnostics into a still-active campaign or manufacture a closed
 audit from a partial live snapshot.
 
+For closed V2 selected-policy evaluation figures, use
+`python -m scripts.figures.native_design_evaluation --report <closed-report.json> --output <fresh-directory>`
+with the approved project interpreter. It emits all reference comparisons and
+separate horizons, not a retrospectively chosen favorable reference. Plotted
+points rejoin the report's physical scores and job identities. Null pairs remain
+outside the numerical axis; diamonds are means of available pairs, not full
+expected losses or confidence intervals. Squares denote the same physical job,
+not independent replication. The complete input report keeps cross-objective
+scores and all missing pairs. SCRIPTED previews are not scientific evidence.
+
 ## Before execution
 
 For model-authored searches, first pass the [finite real-backend interface
