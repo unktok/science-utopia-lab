@@ -26,8 +26,8 @@
 
 | 段階 | 作業 | 閉じるための証拠 |
 | --- | --- | --- |
-| S1 着手 | 強い基準制度の実装・同world比較 | 原制度、open seed、rank/rate、全採択／全却下、score閾値、reviewなしの全候補 |
-| S2 次 | 制度自由度の比較器 | 実際に変更可能なfield、境界違反・null・固定graph検査、fresh designer校正 |
+| S1 完了 | 強い基準制度の実装・同world比較 | [8基準全完走・二回監査](../results/native-benchmark-controls-v2-a1.md)。単純基準で得られる改善を分離 |
+| S2 実装・QA中 | 制度自由度の比較器 | 実際に変更可能なfield、境界違反・null・固定graph検査。fresh designer校正は未実施 |
 | S3 次 | 固定した二目的の有限探索 | 複数独立search run、全経路、loss-only選択、no-feedback対照、物理費用 |
 | S4 次 | 選択後の評価・解析 | 未使用seed・条件、paired world比較、機構消融、原点scoreと表示値の区別 |
 | S5 次 | 投稿パッケージと研究評価 | 主張中心の図・原稿・再現資料、全ページQA、未解消事項の明示 |

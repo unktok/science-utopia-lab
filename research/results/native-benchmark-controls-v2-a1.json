@@ -1,0 +1,448 @@
+{
+  "best": {
+    "efficiency": {
+      "all_tied_names": [
+        "open-accept-all",
+        "open-score-3"
+      ],
+      "loss": -11.833333333333336
+    },
+    "selective": {
+      "all_tied_names": [
+        "open-seed",
+        "open-reject-all",
+        "open-score-4"
+      ],
+      "loss": 2.4000000000000004
+    },
+    "throughput": {
+      "all_tied_names": [
+        "open-accept-all",
+        "open-score-3",
+        "open-no-review-accept-all"
+      ],
+      "loss": -7.0
+    }
+  },
+  "completed": 8,
+  "content_sha256": "7d94f5db85648d5feb211039949cea1947239d35ae08d97fa9ebf3035bb01aa5",
+  "costs": {
+    "code_executions": {
+      "known_sum": 56,
+      "unknown_rows": []
+    },
+    "scientist_responses": {
+      "known_sum": 726,
+      "unknown_rows": []
+    },
+    "wire_requests": {
+      "known_sum": 726,
+      "unknown_rows": []
+    }
+  },
+  "designer_responses": 0,
+  "input_audit_content_sha256": "3a344dcbc71c8300d0844696d44b807d3a5ba0eeca14301b1d50c60dd4656ac1",
+  "new_model_calls": 0,
+  "new_worlds": 0,
+  "nulls_imputed": false,
+  "physical_world_slots": 8,
+  "plan_sha256": "5c5092d58a5752d43ae3e7f71434faf4e17863debc3557d643038b609a89e9b5",
+  "rows": [
+    {
+      "costs": {
+        "code_executions": 0,
+        "scientist_responses": 87,
+        "wire_requests": 87
+      },
+      "cross_scores": {
+        "efficiency": 3.0,
+        "selective": 3.8,
+        "throughput": -2.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 2
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 6.0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 640.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 18
+        }
+      },
+      "name": "legacy",
+      "slot": 0,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 97,
+        "wire_requests": 97
+      },
+      "cross_scores": {
+        "efficiency": 12.0,
+        "selective": 2.4000000000000004,
+        "throughput": 0.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 635.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 8
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 24
+        }
+      },
+      "name": "open-seed",
+      "slot": 1,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 95,
+        "wire_requests": 95
+      },
+      "cross_scores": {
+        "efficiency": 3.833333333333334,
+        "selective": 3.433333333333334,
+        "throughput": -2.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 2
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 6.666666666666666
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 640.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 21
+        }
+      },
+      "name": "open-rank-rate",
+      "slot": 2,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 91,
+        "wire_requests": 91
+      },
+      "cross_scores": {
+        "efficiency": -11.833333333333336,
+        "selective": 7.766666666666664,
+        "throughput": -7.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 7
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 22.333333333333336
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 620.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 21
+        }
+      },
+      "name": "open-accept-all",
+      "slot": 3,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 97,
+        "wire_requests": 97
+      },
+      "cross_scores": {
+        "efficiency": 12.0,
+        "selective": 2.4000000000000004,
+        "throughput": 0.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 635.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 8
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 24
+        }
+      },
+      "name": "open-reject-all",
+      "slot": 4,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 91,
+        "wire_requests": 91
+      },
+      "cross_scores": {
+        "efficiency": -11.833333333333336,
+        "selective": 7.766666666666664,
+        "throughput": -7.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 7
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 22.333333333333336
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 620.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 21
+        }
+      },
+      "name": "open-score-3",
+      "slot": 5,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 97,
+        "wire_requests": 97
+      },
+      "cross_scores": {
+        "efficiency": 12.0,
+        "selective": 2.4000000000000004,
+        "throughput": 0.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 635.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 8
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 24
+        }
+      },
+      "name": "open-score-4",
+      "slot": 6,
+      "status": "complete"
+    },
+    {
+      "costs": {
+        "code_executions": 8,
+        "scientist_responses": 71,
+        "wire_requests": 71
+      },
+      "cross_scores": {
+        "efficiency": 0.0,
+        "selective": 28.0,
+        "throughput": -7.0
+      },
+      "metrics": {
+        "native.accepted_decisions": {
+          "status": "measured",
+          "value": 7
+        },
+        "native.accepted_peer_score_sum": {
+          "status": "measured",
+          "value": 0.0
+        },
+        "native.accepted_unreviewed_decisions": {
+          "status": "measured",
+          "value": 7
+        },
+        "native.final_active_authors": {
+          "status": "measured",
+          "value": 5
+        },
+        "native.final_author_resources": {
+          "status": "measured",
+          "value": 640.0
+        },
+        "native.institutional_context_deliveries": {
+          "status": "measured",
+          "value": 4
+        },
+        "native.rejected_decisions": {
+          "status": "measured",
+          "value": 0
+        },
+        "native.review_records": {
+          "status": "measured",
+          "value": 0
+        }
+      },
+      "name": "open-no-review-accept-all",
+      "slot": 7,
+      "status": "complete"
+    }
+  ],
+  "schema": "scienceutopia.native-benchmark-controls.v2.summary",
+  "scope": "Developer-authored controls, one development seed42, two years; no automatic invention, method superiority or real scientific-quality claim.",
+  "source_commit": "2aa02c3cb4610cde4797744386da67fe851383b0",
+  "wall_seconds": 2243.326007
+}
