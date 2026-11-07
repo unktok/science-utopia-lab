@@ -872,3 +872,66 @@ loss, domain, model, budget, selection or retry policy changes. Full closure,
 selection-fixed evaluation, original-source audits, analyses and manuscript work
 remain required. The optional registry-fingerprint query stays permission-held;
 the user's uncertain HF/Ollama lead is not confirmed origin or egress approval.
+
+Continuation14:36–14:42UTC is verified waiting on the same live writer46865.
+Finite observer3840 completes normally. At14:41:31UTC the last run00 proposal,
+throughput fixed-graph code G3, completes with T-7, A7/Q22.333333333333336/R21.
+World native-adaptive-4b24f80a4611691559993517-s42;
+author request546ca3d1a4e359769a577411288858da5e1b6b928e3a55f986a1f1cb879492b0;
+portable checkpoint SHA256
+345e0d894e0ca5b50c1605cb718b23bb806a8f99436d11a2de2555b2101c39fc.
+Search40/120,24 complete,8 generation failures,8 execution failures;
+references9/9,evaluation0. Progress SHA256
+59733d4cab05fa7bbb40a0e89b78871c2537908ec73b0752c922d797d46181ac.
+
+All40 consumed slots of run00, with displayed C losses rounded in this table:
+
+| Objective / arm | G0 | G1 | G2 | G3 |
+| --- | ---: | ---: | ---: | ---: |
+| T LLM numeric | gen-null | gen-null | gen-null | gen-null |
+| C LLM numeric | gen-null | gen-null | gen-null | gen-null |
+| T fixed-graph code | -7 | exec-null | -7 | -7 |
+| C fixed-graph code | 2.4 | 2.4 | 7.7667 | 2.4 |
+| T code/graph | -7 | -7 | exec-null | exec-null |
+| C code/graph | 7.7667 | 7.7667 | 7.7667† | exec-null |
+| T technical-only | -7 | -7 | -7 | -7 |
+| C technical-only | exec-null | exec-null | exec-null | exec-null |
+| T uniform numeric | -7 | 0 | -7 | 0 |
+| C uniform numeric | 8.1 | 2.4 | 8.1 | 2.4 |
+
+†The earlier raw-float/exact-rational distinction is unchanged. The full study
+requires three controller histories, not three different development-world seeds;
+only run00 is represented here, using world seed42. No G1–G3 arm improves its best-including-initial
+loss. Do not equate tied assigned losses with identical outside metrics or
+scientist inputs. The initial proposal benefits, other outcomes, technical
+nulls and all costs remain visible. No policy selection or unused-condition
+evaluation is authorized early by this one-history milestone.
+
+Run01 starts fresh interface calibration at the same frozen runtime. At14:42:17
+its preflight has6 started/5 completed control receipts and no certificate yet.
+This is not a reused run00 pass, a new certificate or failure. The live writer
+continues its fixed finite procedure; no manual invocation, failed-slot refill,
+runtime/source change or additional experimental resource. Full-study source
+audit and submission-goal completion remain unproven. Separate main-only docs
+QA at59f76ed passes10 checks in0.07s; monitoring-slot39-docs.xml SHA256
+121ee2ba74b41229f71a31dfe5b6a2266a876c02e4f888a07f9b0b87b39beae0.
+
+At14:45:59UTC finite observer3849 observes run01's fresh28/28 technical pass,
+26 exact-copy diagnostic matches, execution-readiness-v39 at frozen
+b6654adefc42223f9ecc7b4e53c043c879230f68. Certificate content SHA256
+234be750d55d77f53220cb95c13195b28911b9522c108306dd6e3a333677ada1;
+file SHA256
+0ad8744c97254e46463e04dc7090cd5098bcf6fbe514ab394ba7ecf976fd838e.
+Writer46865 remains live and proceeds to run01 selective numeric G0, request
+77778a46029eb28e2c2b7a78a05df0ba0290e69ff4533d77514450be59b26f29.
+At14:46:55 its first completed author step is applied, done_reason stop;
+the actual transport binds that fresh certificate, age3.9998929500579834s,
+and runtime0af09e9ee08c0a9e38345e2d077e9328c6c1dddbcf48162e50b113ec48cbb136.
+First completed step file SHA256
+108213bb041a600798639a647edacc16b4fee8594b82fc6d405cf248a9641a8f.
+Frozen writer calls require_certificate (cold replay plus live backend metadata)
+before each model-authored proposal; no second manual calibration is invoked.
+This pass is directed interface evidence, not a guarantee of numeric-domain
+compliance or future free-code correctness. Search counters remain40/120,
+evaluation0; the entire finite study remains active and not original-source
+closed-audited. Run02 will still require its own fresh certificate.

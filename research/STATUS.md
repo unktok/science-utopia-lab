@@ -26,14 +26,16 @@ not labeled a full pass. Frozen-source closure verifies265 files.
 The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
-Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At14:34UTC all9 fresh reference worlds are complete. Search has
-consumed39/120 slots:23 complete,8 generation failures,8 execution failures.
-These are run00's30 G0–G2 slots plus nine G3 slots, not the full study or three
-environment replicates. G3 throughput fixed-graph code is in flight; selected-policy
+Run00 and run01 each pass28 fresh real designer controls and cold replay;
+each has26 exact copies, which remain diagnostic. At14:46UTC all9 fresh
+reference worlds are complete. Search has
+consumed40/120 slots:24 complete,8 generation failures,8 execution failures.
+These are all40 slots of run00, not the full study or three environment
+replicates. Run01's new real-backend calibration passes and its selective
+numeric G0 is being authored; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
-G1/G2 do not improve any arm's best-including-initial value. Uniform numeric
+Run00's G1–G3 do not improve any arm's best-including-initial value. Uniform numeric
 throughput records-7/0/-7/0; selective records8.1/2.4000000000000004/8.1/2.4000000000000004. These
 lower/higher random proposals are not learning evidence. All eight uniform numeric
 slots execute, while all eight LLM numeric slots fail generation. The two G2
