@@ -1,0 +1,17 @@
+{
+  "files": {
+    "feedback-comparison.png": "6951ac9c77000a7d2d1950759ff761e8365047d482caadf0513032ae8e8cb4b6",
+    "feedback-comparison.svg": "04dfe2abd4785a6d1c1acad12ff50e6d3c4ca3d7030010298ccca5d9ab075904",
+    "search-paths.png": "89efd0d430e813c4f1a147b89be0d2bce44e88ac3dca55c5cc856274c0e9f7de",
+    "search-paths.svg": "fb408c308a3d4a99a4c6366825465201b966a40bd21e59bf49997cb8b5de71d5"
+  },
+  "independent_objective_color_scales": true,
+  "input_content_sha256": "928cc83f57d2fc6376097d5f4b5af866e94d39d0d4a7478ed76df6e58331ffbc",
+  "input_file_sha256": "62e789eca03e4c28a23705ef30e076e4e64efeba6b1744f2a6d11b4cf22a0537",
+  "new_model_calls": 0,
+  "new_worlds": 0,
+  "nulls_imputed": false,
+  "plot_source_sha256": "0f81e41564867aae92cee68cbb74bdf3b617ff9db2c7b8cb7803b399dcc41b7e",
+  "schema": "scienceutopia.feedback-comparison-figures.v1",
+  "source_commit": "2e375c22793210d3496450a99ca96a86f0f7aecc"
+}

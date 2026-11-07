@@ -1,0 +1,31 @@
+% Generated from summary 928cc83f57d2fc6376097d5f4b5af866e94d39d0d4a7478ed76df6e58331ffbc
+\paragraph{Observed outcomes.}
+All eight declared candidate slots are retained in Table~\ref{tab:pilot-outcomes}.
+The budget contains 4 completed candidates, 0 generation failures, and 4 execution failures. No failed slot is replaced.
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lllrr@{}}
+\toprule
+Design & Generation & Status & $\ell_T$ & $\ell_E$\\
+\midrule
+Shared baseline & -- & complete & 0.000 & 12.000\\
+\midrule
+Throughput / adaptive & 0 & complete & 0.000 & 12.000\\
+Throughput / adaptive & 1 & execution failure & \textemdash & \textemdash\\
+Throughput / control & 0 & complete & 0.000 & 12.000\\
+Throughput / control & 1 & execution failure & \textemdash & \textemdash\\
+Efficiency / control & 0 & complete & -7.000 & -11.833\\
+Efficiency / control & 1 & execution failure & \textemdash & \textemdash\\
+Efficiency / adaptive & 0 & execution failure & \textemdash & \textemdash\\
+Efficiency / adaptive & 1 & complete & 0.000 & 12.000\\
+\bottomrule
+\end{tabular}
+\caption{Same-source development outcomes, scored under both objectives.
+Lower is better. Scores are rounded only for display to three decimals;
+exact values, all ties and nulls remain in the source-bound JSON.
+A dash is an unavailable outcome or score, not a numerical penalty.
+Cross-scoring reuses the same checkpoint; it is not an independent replicate.}
+\label{tab:pilot-outcomes}
+\end{table}
+These are descriptive observations from one development seed and two generations per arm,
+not evidence of expected improvement, significance, or method superiority.
