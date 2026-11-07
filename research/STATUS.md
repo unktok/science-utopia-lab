@@ -1,6 +1,6 @@
 # Current research status
 
-Updated2026-11-07. This page is a concise current-state summary.
+Updated2026-11-08JST (observations below in UTC). This page is a concise current-state summary.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
 ## Actual experiment state
@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At16:22UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At16:41UTC all9 fresh
 reference worlds are complete. Search has
-consumed57/120 slots:30 complete,10 generation failures,17 execution failures.
-These are all40 slots of run00 plus all10 run01 G0 slots and seven G1 slots, not
+consumed61/120 slots:31 complete,12 generation failures,18 execution failures.
+These are all40 slots of run00 plus all20 run01 G0/G1 slots and one G2 slot, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its selective uniform-numeric G1 is in flight; selected-policy
+calibration passes; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Run01's
@@ -72,7 +72,18 @@ or different environment seeds. Numeric changes can yield intermediate
 acceptance, not only all/none. Neither result improves the already observed
 across-history arm minimum (T-7,C2.4); initial random gains are not feedback learning.
 
-All10 uniform-numeric slots so far execute while all10 LLM-numeric slots fail
+Run01 uniform C G1 completes at8.433333333333332,A7/Q21.666666666666668/R21,
+worse than its G0. Its candidate exactly matches uniform T G1, but its recorded
+scientist replies and final Q differ. A read-only source-bound transport check
+finds five identical initial request payloads and differing first reply reasons;
+those reasons appear in the first differing later input. This is recorded oracle
+variation, not evidence of a policy effect, its unique backend cause, or a full
+original-source audit. Same world seed does not guarantee identical fresh replies.
+Both numeric G1 proposals fail finite generation; all six initial numeric
+coordinates are inside the declared domain. C fixed-graph G2 returns dummy -1
+identities and fails real-ID coverage; its loss remains null.
+
+All12 uniform-numeric slots so far execute while all12 LLM-numeric slots fail
 generation. Raw errors include out-of-domain edits and finite finish/checkpoint
 failures, not measured bad science losses. Other runtime failures include
 scalar score indexing, malformed envelopes and empty/missing real-ID decisions.
@@ -92,7 +103,9 @@ The reproduction guide now distinguishes authored-only selection from V2's
 explicitly initial-eligible pool. A later metadata-only registry availability
 check has no observed remote HTTP result: restricted DNS failed, then automatic
 review rejected local layer-digest egress before execution. That optional check
-awaits explicit user permission; availability remains unknown, not404. No
+awaits explicit user permission; availability remains unknown, not404. The user
+does not know the upstream source; their HF/Ollama suggestion is not verified
+provenance or permission to transmit local fingerprints. No
 workaround, model download/replacement or experiment change is made.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.

@@ -1471,3 +1471,91 @@ No original-source, model, prompt, objective, budget, retry, selection or
 external-egress change. Remaining63 search slots, fixed-policy unused-condition
 evaluation, two original-source audits and final analysis/manuscript/review are
 still required; the submission goal stays active.
+
+### Run01 G1 closed; first G2 and response-variation diagnostic
+
+At2026-11-07T16:41:18UTC search61/120:31 complete,12 generation failures,
+18 execution failures; references9/9, selected-policy evaluation0. Progress
+file SHA2564f82614a402895152daba85aa550628a8134b03132d2ef9e8ee943cdc6119500.
+The writer46865 remains live. Sixty slots closed the first two generations of
+run01, not half the whole submission goal or a wall-time forecast.
+
+| Run01 arm | G0 | G1 |
+| --- | --- | --- |
+| T LLM numeric | generation null | generation null |
+| C LLM numeric | generation null | generation null |
+| T fixed graph code | execution null | -7 |
+| C fixed graph code | execution null | execution null |
+| T code and graph | execution null | execution null |
+| C code and graph | execution null | 2.4000000000000004 |
+| T technical-only code and graph | -7 | execution null |
+| C technical-only code and graph | execution null | execution null |
+| T uniform numeric | -1 | -7 |
+| C uniform numeric | 2.733333333333334 | 8.433333333333332 |
+
+Run01 through G1 has7 completions,4 generation failures and9 execution
+failures. Do not turn a null G0 into zero loss, erase a valid earlier candidate,
+or call best-of-random improvement feedback learning. No new pooled T minimum
+or C improvement over the common initial is observed here.
+
+Slot58 uniform C G1 completes A7/Q21.666666666666668/R21,5 active researchers,
+resources620 and6 institutional-context deliveries. World
+native-adaptive-de5208bdcef9a74a332fcea6-s42; request
+26cbe5344e934bffebf289ec7f78aa772965671ef38fc8aea4f9ca16052836df;
+checkpoint SHA256ed2fcf0df4edb585af5dc9820fb296ad38ab0c67b7d1fb01a263cab818782efa.
+Its exact candidate dictionary equals uniform T G1 and both request RNG seeds
+are210549201504603961. Do not assume the parent-bound patches are identical.
+The T forward has Q22; distinct oracle realizations are retained, not averaged
+or dropped to manufacture equality.
+
+Slots59/60 numeric T/C G1 each exhaust16 actions without valid explicit finish.
+Their actions13/15 attempt finish outside the parameter domain, with a
+checkpoint read at14. Requests respectively
+3a69cc0cd3b303e6363f96d88b3eca588b816780f9bcb3d1c3c009b3e9413bf3 and
+8be4eba4f529ac368263383b03ee351522381184435278834d0eb545506c2c19.
+All six initial coordinates are checked against their exact declared paths,
+bounds and integer flags: selection thresholds3.5/4.5, bias0.5,
+memory_cost0.01, router threshold0.5, source count2; all are in domain.
+The initial anchor is not excluded by the numeric bounds. An earlier authored
+Python threshold9 was a different code constant, not one of these anchor values.
+No projection, range change, host repair or refill is made.
+
+Slot61 C fixed-graph G2 fails exact real-submission identity coverage. Its code
+reads the acceptance/score inputs but ignores the real records and emits one
+reject with paper_id=-1 and conference_id=-1. Minimum cardinality is not real-ID
+coverage; reject-all remains legal when encoded for the actual records.
+World native-adaptive-89251c4a3a737d32514accc5-s42; request
+39d5b164a98826428fbe7ca04372a52c5f0c5d3266c05e5a70b64c66350294f8;
+selection source SHA256
+8bbc3c1c4c7e3bb35f46a96f22e348e6d619622f8024d10531223efbe51793de.
+No successful selection receipt or measured scientific loss is inferred.
+
+Bounded read-only diagnostic compares the two uniform G1 worlds, using
+native_response_prefix._transport at frozen b6654ad with the approved Python,
+not prepare_common_prefix and not new inference. Both serial cache/wire
+sequences validate their bindings, unique identities/payloads, row counts,
+payload/data hashes, models, years, integer seeds and ChatCompletion codec.
+SQLite is opened read-only; four input file hashes remain unchanged.
+T has90 requests/replies, C91. Their first five full payloads are exactly equal;
+the sixth input first differs in messages. The first reply already differs
+semantically only in its parsed reason field. Each reason appears verbatim in
+that world's sixth input's RecentExperiences. Shared first request SHA256
+af89ddf913d9f2e5931bb5f49cbecfbbad2180888fd6a0ab4bf2e362b4cab19d;
+first reply content SHA256 T
+b96efe7dd17543d25c953da909d38fe059a0004268744b1045cc250d3d0165c1 and C
+fa88109c3400c5f7bba26df6a37c9b3050365da744085587bc01b9c459122bb1.
+Wire SHA256 T4b43803668f4136cbbae6467d665d998b7136909c052c783e2f64376cf5035c1,
+C9f8ab8b2164edf5821d1cf84f931755771a0d794d5444bf03dd45a75d72e74d1;
+SQLite SHA256 T07ca49bf3df8a8cfb0030d0255119256f92a5d1d2e828f11d44c915754856001,
+C82ce77c80b57e5fc0f2c3ddc0de287854b47e2be67c28261d3c201d3109ae096.
+This establishes recorded oracle-content variation before the first input
+divergence, not its unique backend cause or the sole cause of the final Q
+difference. Same policy/seed is not bitwise fresh-oracle reproducibility.
+It is not a full original-source audit, a statistical variance estimate, or a
+claim that all clocks/identities/other code paths are bug-free. No experimental
+source, prompt, settings, candidate, selection rule or raw journal is changed.
+
+The user reports not knowing the designer's upstream provenance, suggesting
+HF/Ollama only tentatively. Keep upstream revision/conversion unverified;
+this is not authorization for the pending optional layer-hash registry egress.
+Current weights remain in use; the experiment does not depend on that query.
