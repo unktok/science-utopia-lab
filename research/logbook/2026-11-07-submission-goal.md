@@ -573,3 +573,41 @@ No loss is measured. Other speculative later failures in that source are not
 substituted for the actual validator exception. No host repair, slot refill,
 new inference outside protocol or active experiment change. Selective code/graph
 G2 is now being authored; continue the same finite study before closed auditing.
+
+Continuation12:38–12:44UTC is verified waiting on the same live session46865.
+Monitoring cell3756 ends normally when selective code/graph G2 completes at
+C7.7666666666666675 versus G0's7.766666666666664. Total24/120:16 complete,
+4 generation failures,4 execution failures,9/9 references,0 selected-policy
+evaluations. Progress hash
+64ecdaf49caacc6b2875e4df01509db133ee6ea8f469088489178f289b24347c.
+The next throughput technical-only G2 authoring begins. No source, budget,
+role/model, prompt or trial-replacement changes.
+
+G2 now takes the top5 reviewed papers per selection cycle, rather than G0's
+unconditional accepts. The realized cycles contain3/4 papers, so all7 are
+accepted, with21 reviews. Source comments about reducing already-incurred R
+are not evidence of that effect. Missing rejection decisions for possible
+overflow/unreviewed inputs remain a limitation of the authored program; do not
+turn this observed completion into a universal execution-validity claim.
+
+Read-only numerical diagnosis, not a closed-source study audit: load the two
+completed portable checkpoints with the existing trusted data reader, verify
+all original score values are integers, then recompute rational record means
+using Fraction. G0's means in paper order are[3,3,3,10/3,10/3,11/3,3]; G2's
+are[3,3,3,10/3,10/3,10/3,10/3]. Both give exact Q67/3 and C233/30, with A7/R21.
+Individual scored decision records are NOT identical. Do not claim identical
+scientist trajectories merely because this exact aggregate matches.
+Ordinary float sums are22.333333333333336 versus22.333333333333332;
+the recorded losses differ by3.552713678800501e-15. This is floating-point
+arithmetic on different record means, not evidence of a scientific effect.
+The comparison's exact-float tie/selection rule is not retroactively changed.
+
+G0 checkpoint SHA256
+c6e437bd58c1bc5b06b3c0fd8fc262bd0b5e8e41574fcb20bfd5b1f8f20049e4;
+G2 checkpoint SHA256
+724527a0f5969fd3688a2ead0fad437d3466954924827435f6b9792f64a4f81a.
+Compensated float sums of rounded means are also not exact rational truth:
+fsum here gives22.333333333333332 versus22.333333333333336. Preserve the raw
+measured values and label any arithmetic diagnostic separately. This uses no
+new scientist/designer response, generated-code execution or world trajectory;
+full source/physical closure remains deferred until the writer terminates.
