@@ -23,6 +23,8 @@ Historical documents retain their paths and source identities.
 - [Research charter](charter.md): original motivation and explicit principles.
 - [System abstraction](system-model.md), [optimization](optimization.md).
 - [Software/research workflow](../docs/research-workflow.md).
+- [Explicit paper-rebuild subset](../docs/paper-rebuild-bundle.md):12 paths,
+  tested local offline build; not final-result, anonymous or numerical reproduction.
 
 ## Latest completed evidence
 

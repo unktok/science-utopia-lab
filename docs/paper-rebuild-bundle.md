@@ -5,6 +5,13 @@ The current manuscript is a working draft. Its V2 results remain pending the
 finite experiment and closed-source audits. Do not publish/upload this subset
 or infer anonymous submission, human authorship or redistribution clearance.
 
+At source37e5443 the actual local subset stages and builds offline successfully;
+[verification receipt](../research/results/paper-rebuild-bundle-verification-v1.json).
+All11 new pages were individually inspected, with identical rendered PNG bytes
+and extracted text versus the reviewed original. PDF file bytes differ; no
+unproven claim about the sole cause of that difference is made. This current
+working-draft check must be repeated after final-result manuscript changes.
+
 ## Exact subset and actual scope
 
 The [explicit allowlist](../research/publication/paper-rebuild-allowlist-v1.json)

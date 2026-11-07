@@ -273,6 +273,20 @@ State model/raw-data gaps rather than substituting resources or claiming complet
 independent reproduction. External sharing, push/upload and submission still
 require user approval. This packaging review is not a scientific selection veto.
 
+Later2026-11-07UTC preparation closes one concrete item without claiming final
+release: the [explicit12-path paper-only subset](../../docs/paper-rebuild-bundle.md)
+is staged from clean source37e5443, built with cached/untrusted Tectonic and
+checked on all11 fresh page renders. Text and PNG bytes match the reviewed
+working draft, while PDF bytes differ; [receipt](../results/paper-rebuild-bundle-verification-v1.json).
+No raw/model/operator/Git/game files are included. It is not the final V2
+manuscript, a numerical rerun, an anonymous package, a new-machine build without
+dependencies/cache, or a rights/secret clearance. The final version still needs
+its own allowlist, actual build and review, rather than inheriting this status.
+
+The currently visible [upstream LICENSE](https://github.com/Ahren09/ScienceUtopia/blob/main/LICENSE)
+also contains the unusual2020 Rémi Louf line. This is a bounded provenance
+observation, not a resolved ownership/coverage chain or a reason to change it.
+
 ## 既存surveyメモの扱い
 
 過去の二つの目的メモは、規範的な制約を提案していた。その後のユーザー指示で

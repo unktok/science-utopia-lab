@@ -3499,3 +3499,48 @@ the pinned README and SciEvo pinned/current blob requests fail in the browser.
 No upstream revision, layer-hash egress approval, weights or blanket underlying
 paper redistribution permission is inferred. Earlier failed accesses remain
 failed, not replaced by current-card metadata or a guessed provenance recipe.
+
+### Actual paper-only staging and offline rebuild complete
+
+Clean committed source37e544355eb9be6cde2fdba0169ef0c7a999c56e stages exactly12
+source paths plus generated REBUILD.md/manifest into ignored local outputs.
+32 tests pass in0.12s, including the22 staging tests and10 existing docs/artifact
+checks. Staging manifest content SHA256
+59a6aaaee39f7d06db5eea54d6ccc57daa7326bf696b6ca24518d40048bb2af1,
+file7724754d0365ebb12c2cc45923b4c5ffaf4cb11a8fb50c5566a6207adbf57498.
+No globbed/raw/model/operator/Git/game materials are copied; all12 original
+bytes remain unchanged after actual build. No home path is found by the narrow
+UTF-8 subset scan; this is not a complete secret/anonymity/rights review.
+
+Using the PDF skill, run its artifact-operation marker successfully once before
+the first real PDF authoring command, then Tectonic0.17.0 cache-only/untrusted
+from the staged paper directory. It exits0, downloads0, produces11 pages and
+only the known inputenc notice; no layout/undefined-reference warning. Rebuilt
+PDF488e2141d89de3d4631f37a909691cd220c19c30ef77f0e34e4824783024ea3e
+differs in bytes from original0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59.
+Do not claim sole metadata cause without proving it. Layout-extracted text is
+byte-identical, SHA2562668f740da0d1627b65fedf8756dbcc6ba5418ab62108a6aafa0e53af2ba422b.
+Poppler26.06.0 renders all11 pages anew at120dpi; each was individually viewed,
+and all11 PNGs also match fresh original-PDF render bytes. No new overlap,
+clipping, layout/citation defect is observed. Embedded files0;17 annotation URLs
+all arxiv/PMLR, no form/JavaScript/custom metadata stream. The inspected home/
+operator literals are absent from extracted text, not a universal anonymization
+proof. Compact hashes/scope: research/results/paper-rebuild-bundle-verification-v1.json.
+
+This completes a real current-working-draft paper rebuild check, not the final
+V2 paper or numerical/raw/fresh-inference reproduction. The supplied original
+PDF, its source/old receipt and empirical artifacts are not modified or relabeled.
+Intermediate rebuild/render files remain ignored/local. No upload/push/release,
+authorship choice, new resource or model dispatch is performed. At23:21:43UTC
+the actual writer46865 remains live:8 normal evaluation records and job0008
+started, no ended record. Full finite evaluation, both complete source-bound
+audits, final analyses/figures/manuscript and mock review still remain required.
+
+Final documentation checks now include the new rebuild guide, submission goal
+and research-readiness review in the active checker:19 documents,213 local
+targets,six preserved original snapshots pass. The final32-test batch passes
+in0.08s; earlier committed-source receipt remains unchanged. A test name is
+corrected to describe its actual literal-dependency scope rather than implying
+an unexecuted hash check; actual hash/staging evidence is the separately run
+real CLI and verified receipt. git diff --check passes. The historical through70
+snapshot and original PDF/source/build receipt are unchanged.

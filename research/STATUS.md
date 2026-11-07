@@ -14,7 +14,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 references | All9 fresh same-source reference worlds complete |
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
-| Selected-policy evaluation | Started22:39:08UTC; by23:10UTC six normal observation records are present.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
+| Selected-policy evaluation | Started22:39:08UTC; at23:21UTC8/90 normal observations, job0008 started.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Not yet available. Order-only correction passes74 tests/two byte-identical real-data component replays, without changing the experiment; full audits await normal writer closure |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
@@ -116,6 +116,14 @@ The [local release review](publication/research-readiness-review-v2.md#local-rel
 now records actual PDF/annotation checks and a narrow tracked-file/path inventory.
 This is not full credential/rights clearance or a prepared anonymous bundle;
 final-result packaging and the actual target-cycle checks remain required.
+
+A [12-path paper-only subset](../docs/paper-rebuild-bundle.md) is now actually
+staged and rebuilt offline from clean source37e5443.32 QA checks pass; all11
+newly rendered pages are individually inspected, with text and rendered PNGs
+matching the reviewed working draft. [Scope/hashes](results/paper-rebuild-bundle-verification-v1.json).
+The source/PDF contents remain unchanged, V2 results are not added, and this is
+not numerical/raw reproduction, a clean-machine test without cache, final
+anonymous packaging or rights clearance. Repeat after the final manuscript.
 
 ## Historical records
 

@@ -13,9 +13,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = 'research/results/repository-docs-reset-v1.json'
 DOCUMENTS = ('README.md', 'RESEARCH.md', 'CONTRIBUTING.md', 'docs/README.md',
     'docs/repository.md', 'docs/development.md', 'docs/testing.md',
-    'docs/research-workflow.md', 'research/INDEX.md', 'research/STATUS.md',
+    'docs/research-workflow.md', 'docs/paper-rebuild-bundle.md', 'research/INDEX.md', 'research/STATUS.md',
     'research/roadmap.md', 'research/program-map.md', 'research/publication/plan.md',
     'research/publication/benchmark-contract-v1.md', 'research/publication/related-work.md',
+    'research/publication/submission-goal.md', 'research/publication/research-readiness-review-v2.md',
     'paper/submission-outline.md')
 # Inline code is a separate alternative so a literal `[x](y)` inside it is not
 # a link. A Markdown link whose label contains backticks still starts at '['.

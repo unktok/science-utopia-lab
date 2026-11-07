@@ -1,0 +1,78 @@
+{
+  "schema": "scienceutopia.paper-rebuild-subset-verification.v1",
+  "status": "local-working-draft-rebuild-verified-not-final-submission-package",
+  "observed_utc": "2026-11-07T23:21:00+00:00",
+  "source_commit": "37e544355eb9be6cde2fdba0169ef0c7a999c56e",
+  "source_files_sha256": {
+    "scripts/reports/paper_rebuild_bundle.py": "7874d663f3f154103d451977eb24cdff54569f49b269478fb9f310cb42ecc456",
+    "research/publication/paper-rebuild-allowlist-v1.json": "644442370f5ac03e08c1b3bdc36114421a78b95abd250142f81c3978ddacba3d"
+  },
+  "qa": {
+    "receipt": "outputs/publication-benchmark-v2-verification/paper-bundle-committed-first.xml",
+    "receipt_sha256": "e9d4ba382f78695c62cc37562ec0b83f08c13199f0ba8af3b128168e1ccadebf",
+    "passed": 32,
+    "failures": 0,
+    "errors": 0,
+    "scope": "22 staging/dummy-byte tests plus10 documentation/current-artifact tests; no new inference"
+  },
+  "staging": {
+    "directory": "outputs/paper-rebuild-bundle-v1-37e5443",
+    "explicit_source_paths": 12,
+    "literal_tex_dependency_paths": 9,
+    "manifest_sha256": "7724754d0365ebb12c2cc45923b4c5ffaf4cb11a8fb50c5566a6207adbf57498",
+    "manifest_content_sha256": "59a6aaaee39f7d06db5eea54d6ccc57daa7326bf696b6ca24518d40048bb2af1",
+    "source_byte_checks": "clean committed Git blobs, reviewed build receipt and unchanged source files",
+    "all_12_staged_original_files_unchanged_after_build": true,
+    "raw_model_operator_git_game_materials_included": false,
+    "original_bytes_transformed": false,
+    "limited_utf8_home_path_findings": [],
+    "secret_anonymity_or_rights_clearance_claimed": false
+  },
+  "actual_rebuild": {
+    "directory_within_staging": "tmp/pdfs/rebuild",
+    "command": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates --outdir ../tmp/pdfs/rebuild submission.tex",
+    "working_directory_within_staging": "paper",
+    "exit_code": 0,
+    "tool_versions": {"tectonic": "0.17.0", "poppler": "26.06.0"},
+    "downloads": 0,
+    "original_pdf_sha256": "0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59",
+    "rebuilt_pdf_sha256": "488e2141d89de3d4631f37a909691cd220c19c30ef77f0e34e4824783024ea3e",
+    "pdf_byte_identical": false,
+    "pdf_byte_difference_cause_proven": false,
+    "extracted_layout_text_byte_identical": true,
+    "extracted_layout_text_sha256_each": "2668f740da0d1627b65fedf8756dbcc6ba5418ab62108a6aafa0e53af2ba422b",
+    "rebuild_log_sha256": "59cb92f1bbe994e8e712215506b11c694db21ceebf5bd1b3435b4b891c8e1bdd",
+    "warnings": ["Package inputenc Warning: inputenc package ignored with utf8 based engines."],
+    "layout_or_undefined_reference_warnings": [],
+    "pages": 11,
+    "embedded_files": 0,
+    "javascript_or_form": false,
+    "custom_metadata_or_metadata_stream": false,
+    "url_annotation_domains": {"arxiv.org": 14, "proceedings.mlr.press": 3},
+    "inspected_operator_home_literals_found_in_extracted_text": false,
+    "clean_machine_without_cache_build_claimed": false,
+    "numerical_or_raw_audit_reproduction_claimed": false,
+    "V2_results_added": false
+  },
+  "visual_qa": {
+    "resolution_dpi": 120,
+    "all_pages_newly_rendered_and_individually_inspected": true,
+    "pages": [1,2,3,4,5,6,7,8,9,10,11],
+    "original_and_rebuilt_png_bytes_identical_for_each_page": true,
+    "rebuilt_render_sha256": {
+      "page-01.png": "17677a81bfc97d91f904d51fe643c557b3094d25effd1417f49dbe418f4ed5dc",
+      "page-02.png": "24340f781fe051effbe31ffcbee76051466b0d450fda31989011adabfd131810",
+      "page-03.png": "20de6f14bd4e3d72b305de3408988f702f8b77d7ee093bdc200a56f93622c766",
+      "page-04.png": "c438b5b31ae9d4f1cea96a2187fc249d92fcc7e783113e33357ee36157dc834a",
+      "page-05.png": "ee9001c3c14355c4623c87be00fb75eace24deba36c42cd7a86af2dde3bd1010",
+      "page-06.png": "266015a7762c510f875fe071f4cd62ac151d7b724689e213ef4879b915fd3ece",
+      "page-07.png": "6673ebdc6deb3040915ab82d52f4bbdc90bbeea22992f5fbf1390903164348b6",
+      "page-08.png": "a0bab807cefa0ad7ade65e808f8bc451ea4e9fa49c590587cbb936670262484e",
+      "page-09.png": "95fad35bc7ae116e21a302d22dd2bc8f2c6e07244229916d2fce9c018312b576",
+      "page-10.png": "be5a824ffd1ebaf8efbb370451cad36acceeef4f476e8816a2671d6f988b071e",
+      "page-11.png": "8cafb32522656cc09062f77a3e9809da7937510b97778b4dcf53416e67293ef8"
+    }
+  },
+  "external_sharing_or_submission_performed": false,
+  "human_authorship_or_target_cycle_rules_finalized": false
+}

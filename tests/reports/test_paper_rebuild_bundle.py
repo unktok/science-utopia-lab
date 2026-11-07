@@ -1,7 +1,5 @@
 """Explicit-subset staging QA; dummy document bytes, no PDF creation or inference."""
-from copy import deepcopy
 import json
-from pathlib import Path
 
 import pytest
 
@@ -105,7 +103,7 @@ def test_local_path_findings_are_reported_without_rewriting_historical_source(tm
     assert (output / 'paper/child.tex').read_bytes() == text
 
 
-def test_current_real_allowlist_covers_literal_manuscript_inputs_and_all_hashes_without_staging():
+def test_current_real_allowlist_covers_literal_manuscript_inputs_without_staging():
     root = bundle.ROOT; p = json.loads((root / 'research/publication/paper-rebuild-allowlist-v1.json').read_text())
     bodies = {n: bundle.read_file(root, n) for n in p['files']}
     dependencies = bundle.literal_dependencies(bodies, p['entrypoint'])
