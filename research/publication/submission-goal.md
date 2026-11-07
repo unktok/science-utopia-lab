@@ -27,8 +27,8 @@
 | 段階 | 作業 | 閉じるための証拠 |
 | --- | --- | --- |
 | S1 完了 | 強い基準制度の実装・同world比較 | [8基準全完走・二回監査](../results/native-benchmark-controls-v2-a1.md)。単純基準で得られる改善を分離 |
-| S2 2系列校正済 | 制度自由度の比較器 | [source別QA](../results/native-design-freedom-v2-verification.json)、実worldの新loss・別seed・2/4年audit。固定b6654adのrun00/run01が各28項目の実校正とcold replay成功。run02は今後fresh校正が必要 |
-| S3 稼働中 | 固定した二目的の有限探索 | PID72837。fresh参照9件完了、探索76/120slot（41完走・14生成失敗・21実行失敗）、11月7日18:18UTC snapshot。run01のG0–G2全30件とG3六件が確定。uniformの四世代は両目的とも完走したが既存最良を更新せず。残りrun01四件とrun02全40件、原source閉監査は未実施 |
+| S2 3系列校正済 | 制度自由度の比較器 | [source別QA](../results/native-design-freedom-v2-verification.json)、実worldの新loss・別seed・2/4年audit。固定b6654adの全3系列が各28項目の実校正とcold replay成功。run02初回POSTは新証明書をage3.77sで使用。以後もfreshness guardを維持 |
+| S3 稼働中 | 固定した二目的の有限探索 | PID72837。fresh参照9件完了、探索80/120slot（41完走・17生成失敗・22実行失敗）、11月7日18:38UTC snapshot。run00/run01の各40候補が確定。run02初回提案が進行中。原source閉監査・選択後評価は未実施 |
 | S4 次 | 選択後の評価・解析 | 未使用seed・条件、paired world比較、機構消融、原点scoreと表示値の区別 |
 | S5 次 | 投稿パッケージと研究評価 | 主張中心の図・原稿・再現資料、全ページQA、未解消事項の明示 |
 

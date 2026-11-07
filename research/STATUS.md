@@ -10,9 +10,9 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | Stage | State and evidence |
 | --- | --- |
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
-| V2 readiness | Run00/run01 each pass28 fresh real designer controls and cold replay;26 exact copies are diagnostic. Run02 still needs fresh calibration |
+| V2 readiness | All3 runs pass28 fresh real designer controls and cold replay each;26 exact copies per run remain diagnostic. Run02 first dispatch uses its new certificate at age3.77s |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at18:18UTC:76/120 slots,41 complete,14 generation failures,21 execution failures |
+| V2 search | Running at18:38UTC:80/120 slots,41 complete,17 generation failures,22 execution failures; run02's first proposal is in progress |
 | Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
 | Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
@@ -35,17 +35,13 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   No measured G1 gain or feedback advantage. This is not the untouched legacy institution.
 - S1 hand-written rules recover the earlier proxy minima. Reviewer-free accept-all
   ties observed throughput without review-backed score; this is not better science.
-- V2 run00's later generations do not improve best-including-initial values.
-  Run01 G0–G2 closes30 slots; its first two G3 results are T=-7 and C=2.4,
-  tied with their prior bests. Technical-only T G3 completes at0, worse than its
-  valid G0 -7, which remains eligible. Technical-only C G3 fails empty required
-  decisions output; all four of that run/arm's proposals retain null losses.
-  Run01 uniform T/C histories now close all four generations without a new
-  best after G1/G0 respectively. No primary-objective result through76 beats its
-  corresponding strong reference.
-- All16 uniform-numeric proposals execute; all14 LLM-numeric slots consumed
-  so far fail
-  generation so far. Domain presentation/compliance confounds intrinsic
+- V2 run00/run01 each close all40 slots. Run01 has17 completions,9 generation
+  failures and14 execution failures. Some arms first improve on the weak initial
+  at G1/G2, but no primary-objective result through80 beats its strong reference.
+  Its G3 yields5 completions,3 generation failures and2 execution failures,
+  without improving any arm's best-including-initial value.
+- All16 uniform-numeric proposals execute; all16 LLM-numeric slots consumed
+  so far fail generation. Domain presentation/compliance confounds intrinsic
   expressivity claims. Technical nulls are not measured bad scientific losses.
 - Permitted code/graph freedom is not demonstrated structural invention.
   Inspect actual specifications, consumers and execution receipts. Changed source
@@ -73,7 +69,8 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 ## Required work before submission judgment
 
-1. Finish the declared120 slots, with fresh run02 calibration. Do not refill failures.
+1. Finish the remaining40 search slots under the current bindings and freshness
+   guards. Do not refill failures.
 2. Freeze selection/ties, then execute the declared unused-condition evaluations
    without returning their outcomes to search.
 3. After normal writer closure, run two original-source audits. Apply the integrated

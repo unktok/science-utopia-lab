@@ -1988,3 +1988,101 @@ The actual writer remains live and proceeds to the remaining four run01 slots,
 then requires fresh run02 calibration before its40-slot search. Selected-policy
 evaluation is still0. All final original-source audits, analyses and manuscript/
 mock review remain open; the goal stays active without changing its scope.
+
+### All40 run01 slots closed; fresh run02 readiness and first dispatch
+
+Previous turn completes the uniform histories through76. This continuation
+re-polls actual writer46865 live; read-only observer82140 reaches80 and exits0.
+At18:31:44UTC search80/120:41 complete,17 generation failures,22 execution
+failures;reference9/9,evaluation0. Progress SHA256
+5300d182a16476e6652ef738412132f3ebf420e3fed08d02cedcd3d720079a21.
+Run01 closes17 completions,9 generation failures and14 execution failures.
+
+| Run01 arm | G0 | G1 | G2 | G3 |
+| --- | --- | --- | --- | --- |
+| T LLM numeric | generation null | generation null | generation null | generation null |
+| C LLM numeric | generation null | generation null | generation null | generation null |
+| T fixed graph code | execution null | -7 | -7 | generation null |
+| C fixed graph code | execution null | execution null | execution null | execution null |
+| T code and graph | execution null | execution null | -7 | -7 |
+| C code and graph | execution null | 2.4000000000000004 | 2.4000000000000004 | 2.4000000000000004 |
+| T technical-only code and graph | -7 | execution null | execution null | 0 |
+| C technical-only code and graph | execution null | execution null | execution null | execution null |
+| T uniform numeric | -1 | -7 | -7 | -7 |
+| C uniform numeric | 2.733333333333334 | 8.433333333333332 | 8.433333333333332 | 7.766666666666664 |
+
+G3 has5 completions,3 generation failures,2 execution failures. It does not
+improve an arm's best-including-initial value. Earlier first valid G1/G2 gains
+remain recorded; nulls do not become zero or erase prior valid proposals.
+No primary-objective outcome through80 beats the strong references. All16
+uniform proposals execute while all16 LLM-numeric proposals fail generation;
+this is an end-to-end compliance limitation, not proof of numeric-space incapacity.
+
+Slot77 T numeric G3 request
+0f18fc2ceedbdec317a2d8aaebced3fa06a93c2952cfc22c6b8f92064586e572
+exhausts16 actions. Finishes13/15 fail outside the numeric design space;14 is
+a rejected repeated code read with implementation-checkpoint notice.
+Slot78 C numeric G3 request
+4088ba5abeace9e99bd5de71f224fbbfc06eea09ba20cefb897740001d10f482
+also exhausts16. Its first recorded finish failure is numeric-coordinate bounds,
+not simply a code-path violation: step5 sets thresholds[[-10],[-10]],bias10;
+step9 also writes all-accept selection code. The rationale calls the positive
+coefficient+4 an instruction to maximize acceptance, contrary to the fixed
+minimization arithmetic. This diagnoses inconsistent authored reasoning, not
+a measured loss or unique causal explanation. No value projection/code repair
+or native counterfactual execution is performed.
+
+Slot79 T fixed-graph G3 request
+0948bdae84af137be517eaada159bdcaca9339c615983e39395c911275c932bb
+is another generation failure, not an execution failure. It writes
+nodes/world.resubmissions.json with added parameters.count12,then20,then40,
+and changes selection source. Finishes13/15 exceed the fixed-graph domain;
+16 actions are consumed, no submitted draw or native observation exists.
+A read-only ad hoc inspector initially assumed a nonempty draw and raised
+IndexError; correct the inspection branch using generation_error/draw count.
+That diagnostic failure is not an exception in the actual experiment writer.
+Original-source native_activity_contracts._stage calls
+sim._run_phase_0_resubmissions(year,results) without reading mechanism parameters;
+the native resubmission routine has no consumer for that new count. Do not
+implement the author's prose on the host or claim a working resubmission change.
+This handler-level source observation is not a whole-system effect audit.
+
+Slot80 C fixed-graph G3 request
+9ed9e4866b586f2644f6535e7714fcc1bc0c6beed2e5d74d42b386628077b9ad
+submits but fails CodeExecutionError at world-output envelope validation.
+The literal source returns[observations[0]['payload']] rather than a message
+wrapping that object in payload. It also contains an unexercised dummy reject
+fallback; do not invent a second executed failure or a measured C value.
+World native-adaptive-21bea638aeacc7f81ba93dd0-s42;
+selection source SHA2561cf317385eb7f0febf5e9b63a09d56f13632ef14dc81103b329055f7c2c44274;
+partial journal SHA256719dd5ae4cec5aaf8e55e161c16fdfc5fd4ab586dfc7490c5ace5685d1bd7cad,
+three preceding successful receipts, not a successful selection.
+
+The driver then creates fresh run02 calibration at18:31:40.427751UTC.
+It completes18:34:12.060110UTC:28/28 technical controls,26 exact-copy diagnostics.
+Certificate content SHA256
+4f310cc614ac36cdcc18dc7a6fc274a99551eb9cec8b18e14170f84bc74f8684;
+file SHA25614d7edfa8c62a2f32deaeb274de947c0745d7ed2cd5092d73d0754001a85c71c.
+Scope execution-readiness-v39,profile plain-function-bounded-v45,TTL86400,
+source b6654adefc42223f9ecc7b4e53c043c879230f68. Backend reports
+qwen3.6:35b-mlx-64k,digest
+f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8,
+Ollama0.33.3. No old certificate is reused or failed literal certificate relabeled.
+
+Actual first run02 T fixed-graph G0 request
+948d0bff1e11a59dcbe147d96766765c7bfa65930f596c80437b92d7e93016b2
+starts18:34:15.807359UTC. Its completed step00 transport.preflight records the
+new content hash,controls28,exact copies26,age3.7660269737243652s and
+runtime SHA2560af09e9ee08c0a9e38345e2d077e9328c6c1dddbcf48162e50b113ec48cbb136.
+The unchanged original require_certificate cold-replays literal controls before
+returning that proof; all three planned histories now pass their own fresh
+calibration/cold replay. This remains technical interface evidence, not proof
+of successful free design, context capacity for every history, or scientific merit.
+Step00 started file SHA256
+7fa5df4177523c21be239ca496121a3b08efe4aea311210f9dcffd1c63d8a435;
+completed SHA2566f0ed4a2df14031dc0b6bda3099fc9205ec3a39fe12db36fcf07d3642b2d9a58.
+At18:38:31UTC actual writer46865 remains live,root progress80,evaluation0,
+and frozen b6654ad clean. No active source/settings/loss/budget/selection change,
+new resource, hidden repair/refill or optional registry egress. Remaining40
+search slots, fixed unused-condition evaluation, two original-source audits,
+final analyses/manuscript/PDF and mock review still required. Goal active.
