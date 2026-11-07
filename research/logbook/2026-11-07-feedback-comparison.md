@@ -36,3 +36,16 @@ is resident at04:45UTC. This is not calibration or evidence of generation.
 Pending committed-source regression, real-backend execution-readiness calibration
 and cold replay. No actual comparison result exists at this entry's first commit.
 Keep later source/test identities and outcomes explicit below.
+
+Committed source56a0c67's first broad test invocation was interrupted after
+463 pass/5 skips/2 failures/1 error in93.97s: all three reported problems were
+Docker socket permission denial in the restricted shell. Preserve its log/XML
+under main `outputs/feedback-comparison-v1-verification/pytest-56a0c67.*`;
+this is explicitly NOT a full pass. A separate exact Docker diagnostic confirms
+the permission issue. Re-run with approved local Docker access after the next
+source commit, not a relaxed test/validator.
+
+Before any inference, review also finds two prospective driver bookkeeping
+omissions: include the bounded conversation profile in designer audit settings,
+and implement the already-budgeted explicit designer load/context receipt before
+each proposal. These are fixed before dispatch; no old experiment is rewritten.

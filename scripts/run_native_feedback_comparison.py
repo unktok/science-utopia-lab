@@ -71,6 +71,7 @@ def build_plan(*, source_commit, provider_binding, designer_provider_binding,
         'protocol': PROTOCOL, 'protocol_source_sha256': file_sha256(ROOT/PROTOCOL),
         'readiness_scope': EXECUTION_SCOPE, 'conversation_profile': BOUNDED_AUTHORING,
         'designer': {'max_steps': MAX_STEPS, 'max_tokens': 8192,
+            'conversation_profile': BOUNDED_AUTHORING,
             'decoding': decoding_contracts('staged-v15', conversation_profile=BOUNDED_AUTHORING)},
         'budget': {'generations_per_arm': GENERATIONS, 'maximum_candidate_slots': 8,
             'maximum_baseline_worlds': 1, 'maximum_native_worlds': 9,
@@ -189,6 +190,12 @@ def execute(args):
             c = campaigns[arm]
             if len(c.state['records']) != generation or c.state['pending'] is not None:
                 raise ValueError('comparison does not silently resume/refill already-dispatched slots')
+            purpose = f'before-feedback-comparison:{arm}:g{generation}'
+            directory = args.output/'arms'/arm
+            load_local_role(directory/f'designer-load-{generation}.json', provider=designer,
+                purpose=purpose, role='designer')
+            record_loaded_context(directory/f'designer-context-{generation}.json',
+                expected={'designer': designer}, purpose=purpose)
             author = make_local_role_bound_generator(args.output/'arms'/arm/'authoring',
                 image_id=plan['provider_binding']['image_id'], provider_binding=designer,
                 max_steps=MAX_STEPS, max_tokens=8192, inference_lock=args.output/'inference.lock',

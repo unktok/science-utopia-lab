@@ -22,6 +22,7 @@ def test_exact_four_arm_common_world_budget_and_initial_information(tmp_path):
     assert p['budget']['maximum_native_worlds'] == 9
     assert p['budget']['maximum_candidate_slots'] == 8
     assert p['budget']['maximum_authoring_POSTs'] == 128
+    assert p['designer']['conversation_profile'] == p['conversation_profile']
     assert p['designer']['decoding']['editor']['http_timeout_seconds'] == [10, 900]
     campaigns = driver.make_campaigns(tmp_path, p)
     first = {}
