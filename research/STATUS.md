@@ -27,34 +27,28 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At11:49UTC all9 fresh reference worlds are complete. Search has
-consumed17/120 slots:11 complete,3 parameter-arm generation failures (out-of-domain
-code edits), and3 execution failures (missing paper decisions and two bare-world
-payloads instead of message envelopes). G1 has started; its first two consumed
-slots are null, while selective fixed-graph G1 completes at the same loss as G0.
-That candidate changes only source whitespace (equal Python AST); matching
-execution receipts contain3 and5 rejections in periods1/2. This is not a new
-institutional behavior or measured gain. Throughput code/graph G1 completes at-7,
-also tied. It changes selection code, not the27 connections: all-accept remains,
-while institution-written final_score adds2. Actual reviewer-based Q stays
-22.333333333333336. Live wire inspection shows changed year2 researcher inputs
-containing the changed displayed score; it is not a wholly inert source edit,
-but neither an observed throughput gain nor proof of better science.
-Selective code/graph G1 also ties its G0 at7.766666666666664: its positive-score
-acceptance condition accepts all7 realized papers. All91 ordered scientist
-request payloads exactly match G0. This is equivalence in this observed world,
-not a claim that the two programs are identical for all possible inputs.
-Throughput technical-only G1 also completes at-7, tied with its G0;
-none of these partial ties establish a feedback advantage or method equivalence.
-Selective technical-only G1 fails with a bare-world output; the model's saved
-literal write matches the executed source. Its loss stays null, not a poor
-numerical score or a host-repaired proposal. Uniform numeric G1 is now in flight.
-The uniform numeric throughput G0 also records-7.
-Throughput fixed-graph and code/graph proposals both record loss-7; selective
-fixed-graph records2.4000000000000004 and selective code/graph records7.766666666666664.
-This partial result is not yet a closed audit,
-a gain over the strongest controls or a method comparison. Selected-policy
-evaluation remains0. The writer session is live and the frozen checkout is clean.
+diagnostic. At12:06UTC all9 fresh reference worlds are complete. Search has
+consumed20/120 slots:13 complete,4 parameter-arm generation failures (out-of-domain
+drafts), and3 execution failures (missing paper decisions and two bare-world
+payloads instead of message envelopes). These are all G0/G1 slots in run00,
+not the full study or three environment replicates. G2 throughput fixed-graph
+authoring is now in flight; selected-policy evaluation remains0.
+
+All four measured code G1 slots tie their own G0; two others fail execution.
+Uniform numeric G1 throughput records0, worse than G0's-7; selective records
+2.4000000000000004, lower than G0's8.1 but tied with the fresh initial institution.
+The latter is a lower random proposal, not evidence of feedback-driven learning
+or beating the initial policy. All four uniform numeric slots complete while
+all four LLM numeric slots fail generation; do not infer an inherent limitation
+of the numeric design space from that author/interface compliance difference.
+
+Read-only live traces distinguish whitespace-only edits, changed score displays
+that reach year2 scientist inputs, and a changed positive-score guard whose91
+realized scientist inputs match its parent. Exact source/receipt/wire hashes
+and original failures remain in the [chronological log](logbook/2026-11-07-submission-goal.md).
+These scoped observations do not replace a closed original-source audit, prove
+general semantic equivalence, establish feedback/method superiority or show
+better science. The writer session is live and the frozen checkout is clean.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout

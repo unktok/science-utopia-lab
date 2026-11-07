@@ -455,3 +455,39 @@ This observed authored ABI noncompliance is not evidence of a transport rewrite
 or a newly proven runner defect. The diagnostic is scoped, not a claim that
 all possible runner/interface bugs are absent. Keep the frozen source and full
 finite study unchanged; original-source closure/audit still awaits termination.
+
+Continuation11:51–12:06UTC is verified waiting on session46865 and new numerical
+outcomes. No frozen-source/settings change, restart, new resource, recalibration
+or failed-slot refill. Throughput uniform-numeric G1 completes by11:55:41UTC at
+T0 versus its G0-7: A0/Q0/R24,8 rejects,5 active authors,resources615. Preserve
+this worse measured point; the best-including-initial path is still-7.
+Its definition jointly changes six declared numeric coordinates; do not attribute
+the entire outcome causally to one coordinate without a separate comparison.
+
+Selective uniform-numeric G1 completes by12:02:20UTC at C2.4000000000000004,
+lower than its G0's8.1: A0/Q0/R24,8 rejects,5 active authors,resources635.
+The fresh same-source open-seed reference also has C2.4000000000000004, so this
+is not a gain over the initial institution. The proposal is independent uniform
+sampling, not an observed learning or feedback advantage. No failed point is
+removed and no tie selection rule is changed to favor this proposal.
+
+At12:06:23UTC run00's ten arms have consumed their first two generations:
+search20/120,13 complete,4 generation failures,3 execution failures; references
+9/9 complete, evaluations0. Progress hash
+86bb0801f7db13715a783d5ea1684e5ebea5e356fcdaefc61ddb2e17205e93ca.
+The last G1 throughput LLM-parameter proposal consumes16 author steps; finishes
+at step-13/15 reject a draft outside the declared parameter design space.
+Step-14 is an unexecuted read/plan checkpoint, not another implemented revision.
+The controller's generic ValueError sentinel is not the underlying causal
+diagnosis. Generation request hash
+2b3d8c04d9fcf07a3561295a227b1e6e2f978a0e784e26d6f9c4b236f51e3ffc.
+
+Across this partial run, four uniform numeric slots execute while four LLM
+numeric slots fail generation. This is not evidence that parameter tuning is
+intrinsically unable to express useful policies, nor a clean causal estimate
+of abstract design freedom. Existing interface-presentation caveats remain.
+All four measured code G1 losses tie G0; two code G1 slots fail. Keep the current
+study and its strong-reference comparison intact rather than redesigning it to
+force a positive result. G2 throughput fixed-graph authoring has started.
+Shorten the live STATUS narrative into this milestone summary; all earlier
+case-level hashes, observations and failed diagnostics remain above and in Git.
