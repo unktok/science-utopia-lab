@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At15:48UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At16:00UTC all9 fresh
 reference worlds are complete. Search has
-consumed51/120 slots:28 complete,10 generation failures,13 execution failures.
-These are all40 slots of run00 plus all10 run01 G0 slots and one G1 slot, not
+consumed53/120 slots:28 complete,10 generation failures,15 execution failures.
+These are all40 slots of run00 plus all10 run01 G0 slots and three G1 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its selective fixed-graph code G1 is in flight; selected-policy
+calibration passes and its selective code-and-graph G1 is in flight; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Run01's
@@ -50,6 +50,10 @@ one own failed history. The code reads original review means and accepts at
 threshold0.5; all3/4 realized records are accepted. Wiring is unchanged. Do not
 call this unconditional policy equivalence, causal feedback advantage or an
 improvement over a measured G0 loss (which remains null).
+Run01 C fixed-graph G1 emits one dummy-ID reject for three real submissions,
+failing identity coverage; T code-and-graph G1 calls len() on a scalar acceptance
+value. Both retain null losses. A minimum-cardinality or length guard is not
+proof of real-ID coverage or nested tensor rank, and neither is host-repaired.
 
 Run01 uniform-numeric T/C G0 complete at-1/2.733333333333334 with the same
 A1/Q3.6666666666666665/R24 vector. Their candidate dictionaries and numeric

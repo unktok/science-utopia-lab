@@ -1294,3 +1294,51 @@ prompt, objective, budget or selection-rule changes; no failed-slot replacement
 or early unused-condition evaluation. Remaining69 slots, selection/evaluation,
 two original-source audits, analyses and final manuscript/mock review remain
 required for the active submission goal.
+
+Continuation15:54–16:02UTC: prior turn measures and scopes run01's first valid
+post-G0 gain, rather than equating a null predecessor with loss0. Same writer
+46865 remains live. At15:54:12 search52/120,28 complete,10 generation failures,
+14 execution failures,evaluation0. Run01 selective fixed-graph G1 fails real-ID
+coverage. Its literal-source-matching period1 receipt has three real input
+score records but returns one reject for paper_id/conference_id 'dummy'.
+Unlike G0's zero messages, it now satisfies minimum output cardinality, but
+does not implement rejection of the actual submitted papers. Do not count it
+as legal reject-all, assign its intended-policy loss or replace IDs on the host.
+This is the predeclared native consumer contract, not a normative veto.
+
+World native-adaptive-8d0d10687c2f120c67e9f3f6-s42;
+requestfcb48040c0a7d5fff1fc56177811bfcafea711f18e5fa0dbde716597083c0a38;
+selection source SHA256
+37d193191ac76d727db6dd755e5a69421c5fa5ccc70c85334e198b1efc4ac153;
+source-matching code-context journal SHA256
+964da92f71321533ea4ce1ca77af13482bccedcaf49b58c5ff0ef3cf229918c0.
+The receipt records successful code execution/JSON output, not a complete
+scientific world: native graph consumption subsequently fails.
+
+Finite observer3925 ends normally at15:58:46, search53/120,28 complete,
+10 generation failures,15 execution failures,evaluation0. Run01 throughput
+code-and-graph G1 fails at generated line24 on len(accepts_values[i]), a float.
+The new expression checks a scalar's length before attempting its[0] element;
+that guard is itself invalid. This actual failure is the acceptance signal,
+not the unused fallback's separate score-signal indexing. Do not mislabel
+comments about robust handling as implemented robustness or infer a poor T
+loss. The only changed node is selection;19 nodes, connections, schedules,
+agent/artifact types and initial state equal the request parent.
+
+World native-adaptive-f809f2016b7a7676f4166c6c-s42;
+request9d040d8da069f7575dacbc25603f32a4e72499a4397eb76c7f3017e95a602eda;
+selection source SHA256
+1cac33d91403de808017fc94654eb159faf8931d76715f8c83e9346cf8a20272;
+partial code-context journal SHA256
+d8786f20b13160a280f9258906bea1f223442ed5b5b0df8b7ffa9014b6e3e5bf
+(three preceding successful code receipts, not a successful selection receipt).
+At16:00:34 progress SHA256
+8794c0d12852ba31035fb3f70ecbc50c54a3ce848feb8be0f47eaf8d9de11747.
+
+The fixed writer continues to selective code-and-graph G1. All failures retain
+nulls and their actual generated source; no author target/identity repair,
+refill, changed objective/prompt/source/model or early selection/evaluation.
+The submission goal remains active; remaining67 slots, fixed-policy unused
+conditions, two source audits, final analyses and manuscript/mock review are
+still required. Directed technical calibration and successful JSON are not
+claims of arbitrary field-rank or semantic identity safety.
