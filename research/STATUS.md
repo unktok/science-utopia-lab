@@ -27,10 +27,10 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At17:12UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At17:33UTC all9 fresh
 reference worlds are complete. Search has
-consumed66/120 slots:34 complete,12 generation failures,20 execution failures.
-These are all40 slots of run00 plus all20 run01 G0/G1 slots and six G2 slots, not
+consumed70/120 slots:36 complete,14 generation failures,20 execution failures.
+These are all40 slots of run00 plus all30 run01 G0/G1/G2 slots, not
 the full study or three environment replicates. Run01's new real-backend
 calibration passes; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
@@ -93,8 +93,17 @@ score. C technical-only G2 executes its Python body, then fails required empty
 decisions output for three real submissions; an interpreter receipt is not a
 completed native world. Uniform T G2 completes T-7,A7/Q22/R21, again tying its
 history's best and the strong T reference.
+Uniform C G2 completes C8.433333333333332, again worse than its G0 and initial;
+the paired T/C G2 candidates are exact representations but have distinct Qs.
+Both LLM-numeric G2 slots exhaust16 actions after out-of-domain code edits.
+T fixed-graph G2 completes T-7 from its valid G1 parent, with all3/4 reviewed
+records accepted and authored final_score1; original reviews still determine Q.
+This changes source but does not improve G1 loss or establish semantic
+equivalence on unreviewed/empty inputs. G2 as a whole has5 completions,2 generation
+failures and3 execution failures; T code-and-graph's first valid G2 improves its
+initial T0 but no result here beats the observed strong-rule T value.
 
-All13 uniform-numeric slots so far execute while all12 LLM-numeric slots fail
+All14 uniform-numeric slots so far execute while all14 LLM-numeric slots fail
 generation. Raw errors include out-of-domain edits and finite finish/checkpoint
 failures, not measured bad science losses. Other runtime failures include
 scalar score indexing, malformed envelopes and empty/missing real-ID decisions.

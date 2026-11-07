@@ -1728,3 +1728,70 @@ throughput parameter G2 is authoring. This expected finite inference wait is not
 a blocker. No new implementation, model request, output salvage, audit, source
 change, retry, objective/selection/budget modification or optional registry
 egress is introduced by monitoring. The full submission goal stays active.
+
+### Run01 G2 fully closed at70 search slots
+
+This continuation is verified waiting on actual writer46865, with two completed
+generation failures and one completed forward inspected as they become durable.
+At17:32:47UTC observer43480 reaches its70-slot milestone and exits0; writer46865
+is separately re-polled live. References9/9,search70/120,evaluation0;
+36 complete,14 generation failures,20 execution failures. Progress SHA256
+785ce6b18b4ece700ddea643bfcfced16149e29e1539bef2136221245c489e91.
+Frozen b6654ad remains clean at the17:30 check; no source/settings/selection
+change, host repair, refill, new resource or optional registry query.
+
+| Run01 arm | G0 | G1 | G2 |
+| --- | --- | --- | --- |
+| T LLM numeric | generation null | generation null | generation null |
+| C LLM numeric | generation null | generation null | generation null |
+| T fixed graph code | execution null | -7 | -7 |
+| C fixed graph code | execution null | execution null | execution null |
+| T code and graph | execution null | execution null | -7 |
+| C code and graph | execution null | 2.4000000000000004 | 2.4000000000000004 |
+| T technical-only code and graph | -7 | execution null | execution null |
+| C technical-only code and graph | execution null | execution null | execution null |
+| T uniform numeric | -1 | -7 | -7 |
+| C uniform numeric | 2.733333333333334 | 8.433333333333332 | 8.433333333333332 |
+
+G2 has5 completions,2 generation failures,3 execution failures. Run01 through
+G2 has12 completions,6 generation failures,12 execution failures, not a closed
+controller history or three independent environment seeds. T code-and-graph G2
+is its first valid gain against the separately measured initial T0 after two
+technical nulls; do not claim all arms fail to improve at G2. It ties the strong
+observed T control. No new pooled best below the strong references is observed.
+
+Slots68/69 are numeric T/C G2, requests respectively
+44420ce7bc1097f5a9da8edf4a78ec8fed9fab4df38caad007a6240fe8445d1e and
+99dfb5592afb0ad138527605e57ce8a76eda68ce8b8fde64776ad073947bef19.
+Both exhaust16 actions without valid explicit finish. At13 and15 finish is
+rejected outside the declared numeric domain;14 is a rejected repeated code
+read with the implementation checkpoint notice. T's actual steps4/8 write
+code/world.selection.py; draft edits marked applied are not accepted terminal
+numeric candidates. No native world or measured bad loss is fabricated.
+All14 uniform proposals so far execute, while all14 LLM-numeric proposals fail
+generation. This is an end-to-end interface/compliance confound, not evidence
+that the numeric domain is empty or inherently inferior.
+
+Slot70 T fixed-graph G2 completes T-7,A7/Q22.333333333333336/R21,
+5 active researchers/resources620,4 institutional-context deliveries.
+Request9d0d7fd79423d6b82c8b9615d5e88cf42684a18fd2b6cc215c35a4e40b8abb80
+has two own histories/observations and is based on valid G1 observation
+native-adaptive-493d911ea2ef17171fa44654; parent fingerprint
+dd13f96062ac5e055efc32d02876845b93269fba2d24852f96827175311b19e7.
+Three sequential replacements target only world.selection source. The final
+code iterates original review entries and accepts every entry with authored
+final_score1. Two source-matching receipts accept3/4 actual submissions with
+exact real-ID sets. Original reviews, not those authored scores, produce Q.
+The no-observation/empty-decision fallbacks and submissions lacking reviews
+are unexercised; do not claim universal all-accept equivalence or generalization.
+This is a valid subsequent proposal but no improvement over G1 or strong rules,
+not feedback superiority, gradient learning or structural invention.
+
+World native-adaptive-5388525fbd3b132fb249b5e6-s42;
+selection source SHA256163b1a87eaf7af8a0061f00046ae2026ac34dd1d5644b5252029f016af0fdff6;
+checkpoint SHA2567913161352d813242e52ee6fa549af34892fdf101a79ae7690e845a640891156;
+code-context journal SHA25692aedd441fd68449338494fad6b7c84a2b683ec3749377264fef5ef7668ca5bf.
+Run01 G3, fresh run02 calibration/search, frozen selection/unused-condition
+evaluation, two original-source audits and final analyses/paper/mock review
+remain required. The submission goal stays active; no partial V2 manuscript
+results or closed-study audit are produced during this live milestone.
