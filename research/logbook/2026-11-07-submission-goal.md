@@ -2205,3 +2205,34 @@ budget, selection or raw journal changes, hidden candidate repair/refill or
 optional registry egress. Remaining35 search slots, fixed selection/evaluation,
 two original-source audits and final analysis/manuscript/review remain open.
 The goal stays active; a confirmed live finite wait is not a blocker.
+
+At19:13:10UTC the same writer is live and progress reaches86/120:
+43 complete,17 generation failures,26 execution failures;reference9/9,
+evaluation0. Run02 C technical-only G0 completes C7.766666666666664,
+A7/Q22.333333333333336/R21,5 active researchers/resources620,
+4 institutional-context deliveries. This is a measured loss worse than initial
+C2.4000000000000004, not a technical null or promotion-veto failure.
+
+Only selection source changes, two replacements. The code accepts every
+addressed record and assigns authored final_score10 without reading actual
+score values. Two source-matching receipts cover exact3/4 actual IDs; original
+input review means are[3,3,3] then[10/3,10/3,11/3,3], while all authored scores
+are10. The measured Q uses the original review means, not those labels.
+Thus making the label10 does not directly create Q70 or a measured improvement.
+No score-range or merit veto was added: finite10 passes the native field guard.
+This does not prove the native paper-record field has no future-world effect,
+and does not turn Q into an independent truth verifier. The empty-record
+fallback remains unexercised. Technical-only retains its declared information
+boundary; no loss feedback or host source repair is injected.
+
+Request587335f17ce03a2c7db658fd5ecaf610219304728c3ea40ee4de01c8c39c36c9;
+world native-adaptive-afb741fc2d9f163ce901fc5f-s42;
+selection source SHA256d33987de4994c9f172f06c3e696d7544ebd88dcdb8832b02149d92c9de1dc709;
+checkpoint SHA2568d0f9487a460ad5246548c0a5089b5919291f22f174557d61b8c017c778c1f8d;
+code-context journal SHA25660da4d1effc638fee58f50d3d7f795833653b686675d534402692f583223bfe4;
+progress SHA256c46ce1e492708709dc4ee16fdef22fd7c9cc56b5d7d40826299cb215f3454084.
+These are six G0 outcomes in run02, not a closed generation or controller
+history. Remaining34 search slots, fixed unused-condition evaluation, two
+original-source audits and final analysis/paper/mock review remain required.
+The goal stays active. No active source, objective, budget, settings or
+selection change, hidden repairs/refills, new resource or optional registry egress.

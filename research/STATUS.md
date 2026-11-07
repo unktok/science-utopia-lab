@@ -12,7 +12,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
 | V2 readiness | All3 runs pass28 fresh real designer controls and cold replay each;26 exact copies per run remain diagnostic. Run02 first dispatch uses its new certificate at age3.77s |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at19:12UTC:85/120 slots,42 complete,17 generation failures,26 execution failures; run02 has1 completion and4 execution failures |
+| V2 search | Running at19:15UTC:86/120 slots,43 complete,17 generation failures,26 execution failures; run02 has2 completions and4 execution failures |
 | Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
 | Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
@@ -39,7 +39,9 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   failures and14 execution failures. Some arms first improve on the weak initial
   at G1/G2. Run02's first fixed-graph T proposal completes at-7 by accepting all
   observed records; the next three proposals fail scalar score indexing and the
-  fifth omits required numeric final_score. No primary-objective result through85
+  fifth omits required numeric final_score. Its sixth completes at C7.77 with
+  authored score10, but Q still uses original reviews and the loss is worse
+  than initial C2.4. No primary-objective result through86
   beats its strong reference.
   Its G3 yields5 completions,3 generation failures and2 execution failures,
   without improving any arm's best-including-initial value.
@@ -72,7 +74,7 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 ## Required work before submission judgment
 
-1. Finish the remaining35 search slots under the current bindings and freshness
+1. Finish the remaining34 search slots under the current bindings and freshness
    guards. Do not refill failures.
 2. Freeze selection/ties, then execute the declared unused-condition evaluations
    without returning their outcomes to search.
