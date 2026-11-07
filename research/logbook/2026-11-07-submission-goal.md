@@ -1914,3 +1914,32 @@ No active source, prompt, objective, budget, selection, raw journal or model
 setting changes, hidden repairs/refills, new resource use or optional registry
 query. The finite search/unused-condition evaluation and final audits, analyses,
 manuscript and mock review remain required; the submission goal stays active.
+
+At18:06:11UTC search74/120:39 complete,14 generation failures,21 execution
+failures,reference9/9,evaluation0. Read-only observer89259 reaches74 and exits0
+before its600s deadline; actual writer46865 is separately re-polled live.
+Run01 selective technical-only G3 returns decisions=[] for three actual first-year
+submissions and fails the required-output guard with GraphRuntimeError. Its
+Python has executed: one source-matching selection receipt exists among four
+partial code-context rows. That is not a successful native world or measured
+loss. This first error is required-output cardinality, not an executed ID-coverage
+counterfactual, and reject-all itself remains legal when fully encoded.
+
+Only selection source changes, four sequential replacements. Do not turn an
+empty list into real-ID rejection messages, invent C2.4, or replace the null
+with a penalty. Run01 technical-only paths are now fully observed:
+T[-7,null,null,0],C[null,null,null,null]; initial eligibility and every earlier
+valid candidate remain as declared. These are still one controller history
+on the common development world seed, not completed cross-method conclusions.
+
+Request 7a1d53dbca94a5f62a85fc5fceac886655537646e1815dc462e3c07c40f2ea67;
+world native-adaptive-2e43fdb8ae9b14a4fad65bee-s42;
+selection source SHA25605b172a0a8ef8c7300808bb637964e60cc8d53a35eef25ae7e41796cf7f28225;
+partial code-context journal SHA256
+03565732e4fc6859ab57b96b59e41e0ab1ad22cafbd2350ac03b5df5b6d714a0;
+interpreter result SHA25680b0085ab02d465a05acbb35ea3aab6bddebb61b463985e26414cc3f3f2ae22a;
+progress SHA256774741c0329584ee2ac20c6a7b2f2403e2865b7e2bbf4539f6873a0ab2a441a0.
+At18:06:49UTC the actual writer is live; frozen b6654ad is clean. No active
+source/settings/selection/budget modification or optional registry egress.
+Forty-six search slots, fixed selection/evaluation, two original-source audits
+and the final analysis/manuscript/review still remain. Goal active, not blocked.
