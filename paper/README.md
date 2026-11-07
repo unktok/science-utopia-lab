@@ -1,373 +1,49 @@
-# Working paper
+# Objective-conditioned institution paper
 
-Current direction: [claim-centered submission outline](submission-outline.md)
-and [research/publication plan](../research/publication/plan.md). The long
-`main.tex` below is a historical working draft, not synchronized with every
-later campaign and not submission-ready. Current results live in
-[research/STATUS](../research/STATUS.md); do not treat the older "latest" evidence
-descriptions below as a live status. No PDF or manuscript numbers are regenerated
-by repository housekeeping.
+The current short working draft is [submission.tex](submission.tex), following
+[the claim-centered outline](submission-outline.md) and
+[publication research plan](../research/publication/plan.md).
+It centers the scientific question, executable design space, matched comparison,
+mechanistic analysis and limitations, not the chronological debugging history.
 
-This directory contains the source for the preliminary NeurIPS-style technical
-report. It is a working draft, not a conference submission or acceptance claim.
-The repository vendors the official `neurips_2025.sty` because the NeurIPS 2026
-style bundle was not available when this draft was created.
+The old [main.tex](main.tex), its figures and historical shareable PDF are
+preserved. The previous long README is retained verbatim in the
+[historical manuscript ledger](historical-manuscript.md). Its old experiment
+counts and running-looking statements are historical, not current status.
 
-## Build
+## Evidence and scope
 
-From the repository root:
+The first same-source feedback comparison uses frozen2e375c2, fixed8B
+researchers, the already approved local35B designer, two objectives, two
+proposal policies, and two generations. It is a development pilot, not held-out
+confirmation or a complete conference study. See [current status](../research/STATUS.md)
+and the [prospective protocol](../research/protocols/campaigns/native-feedback-comparison-v1-a1.md).
+At this entry's first revision the run is still executing; result numbers are
+not filled from partial progress or test fixtures.
+
+The result table is generated from the source-bound audit summary rather than
+transcribed. Nulls, all candidates, exact ties and cross-objective selection
+remain in the JSON; rendering rounds numbers only for display. The plotting
+module emits a full dashboard and a separate print-sized path panel. Original-
+source audits must run from the matching frozen checkout, not a later main.
+
+## Build without fetching dependencies
+
+From the repository root, with the existing Tectonic cache:
 
 ```bash
-mkdir -p tmp/pdfs output/pdf
+mkdir -p tmp/pdfs/current output/pdf
 cd paper
-/opt/homebrew/bin/tectonic --keep-logs --keep-intermediates \
-  --outdir ../tmp/pdfs main.tex
-cp ../tmp/pdfs/main.pdf ../output/pdf/science-utopia-lab-working-paper.pdf
+/opt/homebrew/bin/tectonic --only-cached --untrusted --keep-logs \
+  --keep-intermediates --outdir ../tmp/pdfs/current submission.tex
+cp ../tmp/pdfs/current/submission.pdf \
+  ../output/pdf/science-utopia-lab-objective-design-draft.pdf
 ```
 
-The final shareable artifact is
-`output/pdf/science-utopia-lab-working-paper.pdf`. Intermediate files stay under
-`tmp/pdfs/` and are ignored by Git.
+Render every final PDF page with Poppler and visually inspect it before sharing.
+The final PDF location is `output/pdf/science-utopia-lab-objective-design-draft.pdf`;
+build/render intermediates remain ignored under `tmp/pdfs/`.
 
-## Evidence boundary
-
-The latest manuscript adds the actual v15 automatic native-feedback loop.
-Two own-history-separated objectives each complete two original-world
-evaluations at `51d9cbb`: 368 scientist replies, 32 inherited-code executions
-and zero technical failures. Losses are `[-1,-1]` and `[8,8]`; all four
-candidates explicitly retain the exact 19-node/27-wire parent. This is an
-executable local-Qwen finish/evaluate/own-loss/redesign/evaluate connection,
-not new institutional invention, effective feedback use or improvement.
-
-The first staged revision remains a separately budgeted failure: 64 repeated
-inspections, four null slots, no compiled candidate or native world. Both
-revisions have two byte-identical independent audits at their own matching
-historical analysis branches, not a replay through current main. A2 lasts
-39 min 19 s; recorded designer/scientist call sums are 989.67 s / 1275.04 s.
-These intervals and transport durations are not independent additive costs.
-The actual three-panel figure and English desktop/mobile Foundry captures
-preserve retention, nulls, source pins and separate physical accounting.
-Runtime/backend source `51d9cbb` is distinct from display client `2fd6aea`.
-
-Later production code adds trusted-role instruction separation, read-only
-effect-ABI discovery and exact terminal-failure history. Arbitrary work can
-be addressed to the original researchers using their persona, memory and
-fixed model. These extensions have original-world SCRIPTED verification;
-their mere presence does not establish actual Qwen use in a2. The
-[whole-project inventory](../research/milestones/2026-11-03-staged-native-loop-v15.md)
-maps original goals, implementation, actual evidence and remaining boundaries.
-Final source-scoped checks and visual-review hashes are recorded separately
-from actual scientific outcomes. No blanket all-non-scale-research claim.
-
-The final 65-page PDF is built from `d6c10b8`, including updated abstract,
-conclusion and reproducibility statement. All pages are reviewed at75dpi;
-pages1/2/37/41/44/46/47/48/51/52/53/62/63/64/65 are also inspected at150dpi.
-No overfull boxes or undefined references remain. The full software rerun
-passes2422 tests with6 skips at `b50a48c`, separately from the retained failed
-scope and615 final focused passes at `d6c10b8`. The [V15 publication receipt](../research/results/native-staged-search-v15-verification.json)
-binds named sources, unchanged actual raw inventories, matching historical
-analysis commits, figures, UI captures and exact reviewed PDF/render bytes.
-
-The historical v13 manuscript adds the bounded nested institution search:
-two explicit losses, each with two IID G0 design draws, one conditional LOO
-likelihood-ratio update, one exact updated-G0 native forward, and one own-history
-free G1 redesign/forward. All eight original-world runs complete with592 fresh
-Qwen replies and no reuse. Throughput losses are`[-7,-7,-6,-10]` and the new
-illustrative reviewed-production proxy losses are`[-17,-12.5,-10,-18]`.
-Both post-update draws worsen relative to the prior best; both subsequent free
-source revisions improve their observed own first best. No estimator superiority,
-expected improvement, scientific benefit or autonomous-inventor claim follows.
-
-The efficiency redesign uses own-history reviewer scores to allocate one
-eligible reviewer per submission. Actual native review scores remain unchanged
-in definition. This illustrates proxy incentives, not demonstrated quality
-improvement or harm. The exact two LossSpecs, scalar gradients/updates, all
-eight A/Q/R rows, same-checkpoint development cross-scores, source bodies,
-original-world task/plan effects and592-reply cost are retained. Graph sizes
-stay17/25 and16/23 within the arms; G1 changes source, not graph topology.
-The independent audit preserves129 raw files and matches227 source blobs.
-The English Foundry capture is bound to the actual audit, with local editing
-distinct from execution/adoption. World-wide differentiation is not required.
-
-The54-page PDF is built from committed publication source`4ffe576`. Every page
-is rendered/reviewed at75dpi; pages1/2/35/36/37/38/39/40/44/45/52/53/54 are
-also inspected at150dpi. No overfull boxes or undefined references remain;
-cosmetic underfull warnings are retained. Final cross-score labels use bounded
-leaders to the exact unchanged points. Publication-source report tests365 and
-UI tests250/typecheck/build have durable receipts, separately from the2020-pass/
-6-skip full suite at immutable actual runtime source`fdf4d1c`. These overlapping
-scopes are not summed and are not a full-suite claim for the final docs tip.
-[V13 source/artifact verification](../research/results/native-nested-search-v13-verification.json)
-binds the actual audit, unchanged129-file raw inventory,227 source blobs,
-lossless actual UI export, nine captures, figure and exact final PDF bytes.
-
-The historical 50-page v12 paper adds the closed free institutional redesign:
-two exact losses, three own-history generations each, six original-native
-worlds and 565 fresh Qwen replies. Throughput `[-10,-10,-10]` and utility
-`[-1/6,0,-1/6]` select different 17/25 and 16/22 node/wire institutions, but
-neither improves G0. The milestone-clinic revision changes actual project plans
-and Qwen inputs yet has worse observed loss; it is not retained. The actual
-four-panel figure, complete result table and English city/circuit captures are
-audit-bound. Same-checkpoint cross-scores are development reuse, not held-out.
-The separate final-control forward followup adds two native worlds/180 fresh
-replies and losses `[1.05,.55]`, without expected-improvement or variance claims.
-
-Paper source `eb0fdfd` is committed before build. All 50 pages are rendered and
-visually reviewed at 75 dpi; pages 1/2/32/33/34/35/36/38/39/40/47/48/49 are
-also inspected at 150 dpi. No overfull boxes or undefined references remain;
-cosmetic underfull warnings are retained. The source-specific verification
-keeps both failed full regressions and the later clean 1953-pass/6-skip run,
-plus separate final reporting and UI scopes; none are additional world samples.
-[V12 source/artifact verification](../research/results/native-objective-redesign-v12-verification.json)
-binds exact source, audit, export, captures, figure, test receipts and PDF bytes.
-The later UI integer-precision correction changes no screenshot bytes; root
-checks all captures against the committed paper source before retaining this
-reviewed PDF. Unsafe RNG/hash identity integers use tagged exact decimal strings,
-not rounded JavaScript numbers. All native scientific measurements stay intact.
-
-The historical45-page v11 paper adds the actual expected-loss-estimator pilot:
-eight fresh original-native worlds,742 Qwen replies, no replay, and both paths
-`[.7833333,1.2,1.2,1.2]`. No new best is found. The G0 plain-LR update is
-native-tested through G1; the final prior-only corrected-control update is
-saved but not subsequently native-tested within that closed budget. The
-separately budgeted [v12 followup](../research/results/native-control-followup-v12-a1.md)
-now supplies two fresh forward outcomes without an estimator-benefit claim.
-The small authored family contains
-two Python aggregation rules and a cutoff, not autonomous structural invention
-in every generation. The generic source/protocol/wiring API is broader.
-The new actual four-panel graphic and English UI capture are audit-bound.
-
-Final source`8f82554` is committed before build; all45 pages are rendered and
-visually checked, with pages1/2/31/32/33/43/44 enlarged to150dpi. There are no
-overfull boxes or undefined references; cosmetic underfull warnings remain.
-[V11 source/artifact verification](../research/results/native-open-estimators-v11-verification.json)
-retains both the actual-source1806pass/6skip/1concept-hash-failure full run and
-the corrected reporting-source1842pass/6skip run. Later40 reporting and201UI
-checks have distinct overlapping scopes, not additional world samples.
-
-The v8 source reports eight completed original-native worlds/734 Qwen replies:
-count[-9,-9,-10,-10] and reviewed utility[0,0,.4833,.4833]. Actual16--18-node
-systems change code, composition, protocols and wires. All132 raw files remain
-unchanged under independent audit. The response QA is separately and explicitly
-scripted (seven original six-year worlds, no Qwen calls), not whole-world or
-LLM differentiation. It predicts an unused finite loss change with error2.36e-5
-versus24 for frozen responses; its proposed native candidate ties, not improves.
-Earlier partial/incomplete QA failures and historical receipt limitations remain
-in the manuscript and component note.
-
-The v9 actual-Qwen pilot is a separate conditional response-gradient result.
-Six complete original-native worlds share one verified 53-reply actual history
-and contain 186 fresh physical replies. A calibration-fitted local operator
-produces an exact no-op at $\theta=.5$; its unused finite-path error is .08395,
-versus zero for frozen responses. The candidate ties its center. This is a
-negative conditional-fidelity/optimization result, not six independent histories,
-an exact Qwen/native Jacobian, held-out evidence or causal institutional benefit.
-The preserved a1/a2 attempts consumed 228 additional physical replies.
-
-The subsequent v10 comparison executes three new native evaluations per method
-after charging both the same three historical calibration endpoints. Gradient
-coordinates `[.6000,.6488,.7488]` and black-box coordinates
-`[.6500,.7250,.7625]` differ, but both observe loss `[.9000,.8167,.8167]`.
-Both improve over the initial center; neither beats the already known historical
-best at `.8`. The gradient arm consumes raw response traces, the black-box arm
-only coordinates/scalar losses: equal native-evaluation budget is not identical
-oracle capability. All six forwards complete with186 fresh Qwen replies and
-318 historical replays (504 logical responses). Including the shared three
-calibration endpoints and counting the53-call origin once gives332 unique
-supporting physical calls, not total project expenditure. The comparison remains
-one coupled-history development result, without superiority, significance,
-causal benefit or exact native/Qwen differentiation claims. It does not reverse
-the negative v9 fidelity result.
-
-The historical42-page v10 paper is built from committed text and actual figure`ba3678d`.
-All pages are rendered and visually reviewed; pages1/26/28/30/31/34/41 are
-individually enlarged to150dpi. The final label fix changes only page31 pixels,
-which are re-inspected; all other pages match their reviewed renders. No
-overfull boxes or undefined references; cosmetic underfull warnings remain.
-[V10 source/artifact verification](../research/results/native-method-paths-v10-verification.json)
-binds the1772-pass exact native-source regression, separate41/7 reporting scopes,
-independent raw/result audit, actual figure and final PDF. Overlapping checks
-are not additional experimental samples.
-
-The historical40-page v9 PDF is built from committed text`65b671f` and includes both
-actual v9 figures. All40 pages are rendered and visually checked, with new and
-changed pages1/26/27/28/29/32/39 individually inspected at150dpi. There are no
-overfull boxes or undefined references; cosmetic underfull warnings remain.
-[V9 verification](../research/results/native-qwen-response-v9-verification.json)
-binds actual source/runtime regression, final reporting checks, raw inventories,
-figure manifests and PDF. The loop is implemented; its negative/no-op result is
-not an exact Qwen/native Jacobian or an optimization improvement.
-
-The actual v8 UI export is byte-identical to the audit and its desktop/mobile
-browser captures are checked, not fixture images. The historical37-page PDF is built
-from committed text3c2ae4b: all pages rendered/reviewed, new evidence pages
-enlarged, no overfull boxes/undefined references. Cosmetic underfull warnings
-remain. [Verification receipt](../research/results/objective-structure-v8-verification.json)
-binds source/JUnit/figures/export/captures/PDF. V7's31-page PDF below remains
-historical, not falsely described as containing v8 data.
-
-Regenerate structural figures and the guarded result slice without inference:
-
-```sh
-.venv/bin/python scripts/figures/native_objective_structure_v8_methods.py \
-  --output paper/figures/native-objective-structure-v8-methods
-.venv/bin/python scripts/figures/native_objective_structure_v8.py \
-  --report research/results/native-objective-structure-v8-a2.json \
-  --output paper/figures/native-objective-structure-v8
-.venv/bin/python scripts/reports/native_objective_structure_v8_paper_slice.py \
-  --report research/results/native-objective-structure-v8-a2.json \
-  --results-manifest paper/figures/native-objective-structure-v8.manifest.json \
-  --methods-manifest paper/figures/native-objective-structure-v8-methods.manifest.json \
-  --output paper/generated/native-v8/results.tex
-```
-
-These assets are authored at the5.5-inch NeurIPS text width. Separate raw-loss
-axes, exact-row tie identity and source/graph accounting avoid visual or
-selection-based extra objectives. Positive paper-slice roundtrip/schema tests
-supplement the fixture-rejection tests; generated SVG whitespace is normalized
-before output hashes are computed.
-
-Regenerate that labelled QA graphic without inference:
-
-```sh
-.venv/bin/python scripts/figures/native_response_fidelity_v8.py \
-  --report research/results/native-response-fidelity-v8-scripted.json \
-  --output paper/figures/native-response-fidelity-v8
-```
-
-The2026-11-02 v7 draft is31 pages. It includes persistent open entities, explicit
-processes, evolving mixed/native-cost search, operational conditional backward
-and separately tested native projection/fidelity diagnostics. Its new actual
-pilot is four reset worlds/two years/342 fixed-Qwen replies. Losses
-`[-1.2,-0.2,-0.8,-0.2]` do not beat the first incumbent. Revised source really
-executes; a third new option remains unsampled and graph size stays19/27.
-The source author is external Codex, not the fixed researcher Qwen model.
-
-The empirical v7 figure is reproducible without inference:
-
-```bash
-/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.figures.native_open_v7 \
-  --report research/results/native-open-integrated-v7-a2.json \
-  --output paper/figures/native-open-v7
-```
-
-Actual audited inputs/figure assets and English UI screenshots are tracked.
-Every PDF page is rendered and visually inspected; new pages21/22/24/29 receive
-individual inspection. There are no overfull-box/undefined-reference errors;
-cosmetic underfull warnings remain. Exact final PDF and source-specific QA
-hashes are in
-`research/results/non-scale-closure-v7-verification.json`. This replaces neither
-the earlier frozen empirical studies nor the negative native-fidelity results.
-
-Figure1 now describes the whole research program, not just peer-review search:
-explicit objectives, composable parameters/source/mechanisms/protocols/wiring,
-the original researcher ecosystem, black-box/gradient/hybrid search and independent
-evaluation. Its four design freedoms now have integrated miniatures: changing
-values, replacing functions, adding mechanisms/protocols and rewiring the same
-nodes. They compose over one scientific system, not a fixed sequence of stages.
-The game view is not a separate scientific-system component and is not drawn as
-an independent box here; the game-UI screenshots remain in their own section.
-Figure1's curves and layouts are conceptual; empirical figures are separately
-labelled and bound to their actual data.
-Whole-world backpropagation and useful autonomous invention are labelled as
-research targets, not completed results. Rebuild its vector and raster assets
-without inference with:
-
-```bash
-/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.figures.science_system_program
-```
-
-The editable SVG, publication PDF and preview PNG are under
-`paper/figures/program-concept/`. The figure-generation test checks deterministic
-PDF/SVG/PNG output, continuous connector paths, text separation and minimum
-physical-point padding inside panels; final manuscript layout also requires
-rendered visual QA.
-
-The paper reports the first result-dependent engineering campaign, the complete
-Metric-Conditioned Optimization Study v1.1 including its guarded held-out slice,
-and separate small native-world integration/source/wiring/conditional-gradient
-probes. It does not claim a validated science-policy objective, successful useful
-LLM institutional invention, optimizer superiority or full native-world autograd.
-The parameter study remains fixed-topology; later native edits are executable
-but development-only. Update only alongside the cited compact results and hashes.
-
-The native fitting graphic is reproducible without model calls:
-
-```bash
-.venv/bin/python -m scripts.figures.native_design_evidence
-```
-
-The native-foundry image is an actual browser capture of English evidence
-inspection. Its control-room art is schematic, not scientific state. The new
-native-design-job capture separately shows a real edited-design/queue/worker/
-completed-evidence round trip. The Nov1 draft includes failed adaptive source
-revisions and a zero full-native distribution-gradient estimate, not invention
-success or full-world pathwise differentiation. Compact audits and interpretation
-are in `research/results/native-feedback-breadth-v2.md`.
-
-## Objective-conditioned native design v5
-
-The latest draft reports a separately labelled Codex-designer/local-Qwen-
-researcher campaign: five physical worlds,285 responses, actual loss paths
-`[-1,-3,-3]` and`[.70,.45,.45]`. The utility arm's final new two-node protocol
-executes but ties; the deterministic first-best incumbent stays selected.
-The figure shows actual paths, editable-cut node counts and selected graphs.
-The known3.25 charge is prior-informed and the contrast is a development proxy,
-not scientific value, novelty, held-out evidence or whole-system optimality.
-All failed local-Qwen attempts remain separately documented.
-
-Regenerate the empirical figure without inference:
-
-```bash
-.venv/bin/python -m scripts.figures.native_joint_objectives_v5 \
-  --report research/results/native-external-objectives-v5-a1.json \
-  --output paper/figures/native-joint-objectives-v5
-```
-
-The new native resource-transfer capability has scripted six-year lifecycle,
-accounting and restart evidence, not another live optimization experiment.
-Fresh-native REINFORCE is reported separately from offline bank fitting and
-from missing full-world pathwise differentiation. The original-goal capability
-table states concrete remaining semantics, gradient, continual-adoption and
-game gaps. Full Python regression1311 passed/6 skipped at clean`ecd1ae6`;
-later analysis/figure-only changes receive separate focused verification.
-See [current inventory](../research/milestones/2026-11-01-objective-conditioned-design-v5.md).
-
-## Non-scale integration v4
-
-The current draft separately reports the recovered seven-world transition
-experiment, its FAILED native-secant fidelity check, exact offline probability
-fitting over four frozen complete native systems, two failed live joint-region
-generation attempts, durable same-society migration QA and visual graph editing.
-The original failed audit and generation drafts remain preserved; no extra
-native reruns repair their conclusions. Migration/visual/mission QA is labelled
-scripted or fixture-backed, not new scientific experiments. The sandbox mission
-target is an explicit game goal, not scientific-quality scoring.
-
-Generate the new native-fidelity/offline-bank graphic without inference:
-
-```bash
-/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.figures.native_transition_validation
-```
-
-Inputs are the tracked recovered audit, complete frozen native bank and exact
-probability-fitting path. The manifest binds those inputs and the source and
-output hashes. This figure does not imply that bank fitting fixes native
-derivative fidelity or discovers new institutions. See
-`research/milestones/2026-11-01-non-scale-integration-v4.md` for the current
-capability/evidence/gap map.
-
-## Metric-conditioned result boundary
-
-`metric_conditioned_results.tex` is a guarded insertion point for the
-preregistered three-arm study. It includes results only when the generated
-LaTeX fragment and all three PDFs are atomically present under
-`generated/metric-conditioned/`; otherwise the manuscript states that the
-study is incomplete. The one-command analysis and reporting boundary is
-recorded in
-`research/decisions/0010-metric-conditioned-automatic-paper-slice.md`.
-
-Never copy a synthetic preview into the paper directory. The graphics CLI
-requires an explicit synthetic classification, places a warning inside every
-synthetic image, and rejects that classification at the generated paper
-destination.
+The bundled NeurIPS2025 style is a working layout, not compliance with an
+unverified future conference's rules. No authorship, submission, acceptance,
+optimizer-superiority or real scientific-policy claim follows from the format.
