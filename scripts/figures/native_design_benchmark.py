@@ -55,6 +55,9 @@ def plot_search(report,output):
             'Lines: best including initial;\npoints: all measured candidates.\n'
             'No uncertainty band or superiority claim.',transform=axes[-1].transAxes,fontsize=8,va='top')
         fig.suptitle('Objective: '+('throughput (-A)' if objective=='throughput' else 'selective production (4A - Q + 0.1R)'),fontsize=12)
+        if report.get('classification','').startswith('SCRIPTED'):
+            fig.text(.5,.5,'SCRIPTED QA - NOT EXPERIMENTAL RESULTS',ha='center',va='center',
+                rotation=30,color='#a51f2b',alpha=.23,fontsize=19)
         for suffix in ['png','svg']:fig.savefig(output/(objective+'-paths.'+suffix),dpi=180)
         plt.close(fig)
     manifest={'schema':SCHEMA+'.path-figures','input_report_content_sha256':report['content_sha256'],

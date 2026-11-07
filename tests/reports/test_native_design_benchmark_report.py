@@ -14,7 +14,7 @@ def hashed(value):
 
 
 def fixture():
-    p=plan();run_data={}
+    p=plan();p['classification']='SCRIPTED-projection-QA-only';hashed(p);run_data={}
     for run,bindings in p['campaign_bindings'].items():
         run_data[run]={}
         for arm,binding in bindings.items():

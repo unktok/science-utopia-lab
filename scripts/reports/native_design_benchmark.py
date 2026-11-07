@@ -161,7 +161,8 @@ def project(plan,audit,*,expected_source):
     if end['status']!='exited' or end['exit_code']!=0 or wall<0:raise ValueError('writer not closed normally')
     selection={k:deepcopy(v) for k,v in audit['selection'].items() if k not in ('all_rows','reference_systems')}
     selection['projection_omits_unselected_source_bodies']=True
-    result={'schema':SCHEMA+'.report','source_commit':expected_source,'plan_sha256':plan['content_sha256'],
+    result={'schema':SCHEMA+'.report','classification':plan['classification'],
+        'source_commit':expected_source,'plan_sha256':plan['content_sha256'],
         'input_audit_content_sha256':audit['content_sha256'],'selection':selection,
         'search_arms':arms,'development_history_summary':histories,'all_candidate_rows':all_rows,
         'evaluation':evaluation,'paired_vs_all_references':paired,
