@@ -49,3 +49,37 @@ Before any inference, review also finds two prospective driver bookkeeping
 omissions: include the bounded conversation profile in designer audit settings,
 and implement the already-budgeted explicit designer load/context receipt before
 each proposal. These are fixed before dispatch; no old experiment is rewritten.
+
+## Analysis work while the committed broad suite runs
+
+Use a separate `research/feedback-comparison-analysis-v1` checkout based on
+2494e63; do not modify the checkout running source-bound regressions.
+Add a read-only actual-source analyzer reusing existing native checkpoint,
+response, code-effect and staged-author cold-replay helpers. It accounts for
+all four arms, the separate baseline, raw caches, writer/progress, explicit role
+loads and calibration. Summaries retain nulls, full cross-scores, exact ties,
+baseline comparisons and generating-arm-independent pooled loss-only selections.
+Plot paths and per-objective cross-score panels with independent color scales,
+no numerical failure imputation and hash-bound figure inputs/outputs.
+
+Review identifies a potential comparison confound: legacy full feedback also
+exposes detailed native exception strings, while the control exposes classes.
+Add a prospective `matched-loss` policy for this comparison only, matching that
+technical error channel while preserving numeric measurements, adaptive parent
+selection and optimizer feedback. Legacy default `loss` remains byte-compatible.
+The default source in the already-running broad suite is unchanged; later
+matched-policy/analysis validation has its own source and explicit scope.
+
+Dedicated control/context/driver/analysis/figure scope passes30 tests. A further
+successful-original-world test passes separately: two true six-year native
+Simulation lifecycles/checkpoints, with existing scripted corpus/scholar HTTP,
+preserve actual losses internally and withhold them at the next proposal.
+This is software QA, not live-LLM evidence. A combined committed-source scope
+will include both, not add overlapping counts. No generated source is executed
+by the analyzer or plotting module.
+
+Inspect the primary method sections of AMD-LLM, SGA and ScienceUtopia and record
+the [comparison](../publication/method-section-comparison.md). This narrows the
+claimed contribution; generic code evolution and LLM/gradient composition are
+prior art, not our new algorithm. This is targeted section reading, not an
+exhaustive literature review.

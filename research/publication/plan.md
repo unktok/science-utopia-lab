@@ -52,10 +52,12 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 **P0：今回着手・実装済み**：出典固定の証拠棚卸しと、
 [比較contract](benchmark-contract-v1.md)を作る。研究者worldもモデルも追加実行しない。
 
-**P1：次に実装する**：既存NativeAdaptiveDesignCampaignへloss-feedbackの
+**P1：実装・検証中**：既存NativeAdaptiveDesignCampaignへloss-feedbackの
 有無を比較できる入口を接続する。単にscoresを消すだけでは、incumbent選択、
 候補順、parent、strategy更新から正解が漏れる。最初にこの対照のテストを作る。
 技術的なエラーfeedbackは両群に残し、科学的損失feedbackと区別する。
+制御実装と[有限比較protocol](../protocols/campaigns/native-feedback-comparison-v1-a1.md)
+を作成。完全な実行結果はまだなく、実sourceの検証・校正がdispatchに先行する。
 
 **P2：少数規模で実行**：同一source・共通初期系・二目的・二探索法の
 最小比較を回し、全候補、null、費用、探索経路、cross-scoreと作用を保存する。
@@ -93,6 +95,8 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 [初期文献メモ](related-work.md)を参照。この初期調査はabstract/公式解説中心であり、
 唯一性を証明する網羅調査ではない。原論文全文、関連する自動機構設計・LLM社会
 シミュレーション研究との比較を追加してから、新規性の最終表現を決める。
+[対象を絞った本文比較](method-section-comparison.md)は、汎用的なLLMコード探索や
+LLM＋勾配の組合せを新規性として売らないための具体的な差分を記録している。
 
 ## スケール前の終了条件と、未達をどう扱うか
 

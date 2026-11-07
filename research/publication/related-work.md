@@ -3,6 +3,9 @@
 Checked2026-11-07. This is a primary-source scoping note, not an exhaustive
 novelty review. Abstracts/official author explanations establish the distinctions
 below; full-text comparison is still required before submission claims.
+The subsequent [targeted method-section comparison](method-section-comparison.md)
+adds primary-text reading of AMD-LLM, SGA and ScienceUtopia, without claiming an
+exhaustive review.
 
 | Source | Relevant prior contribution | Consequence for this project |
 | --- | --- | --- |

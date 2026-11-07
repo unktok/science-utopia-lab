@@ -6,6 +6,12 @@ or expectation estimator. The default `'loss'` adds no new binding field and
 preserves legacy request/replay values. A changed policy cannot reopen a saved
 campaign. Old experiments and failed certificates are not rewritten.
 
+The prospective comparison's loss-visible arm uses `matched-loss`, which keeps
+losses/measurements/optimizer feedback and loss-selected parents but matches the
+exception-class-only technical error channel. The legacy default `loss` remains
+unchanged. This prevents fuller runtime exception text being a second
+unacknowledged advantage of the feedback arm.
+
 The control uses a fixed initial parent and cost-independent uniform strategy
 selection with chronological own-proposal history. A new allowlisted view
 retains authored definitions/candidates, technical completion and exception

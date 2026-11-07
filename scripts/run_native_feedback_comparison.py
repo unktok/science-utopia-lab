@@ -55,14 +55,13 @@ def build_plan(*, source_commit, provider_binding, designer_provider_binding,
     bindings, assignments = {}, {}
     for arm in ARM_ORDER:
         objective = arm.split('-', 1)[0]
-        feedback = arm[len(objective)+1:]
+        feedback = 'matched-loss' if arm.endswith('-loss') else 'technical-only'
         assignments[arm] = {'objective': objective, 'proposal_feedback': feedback}
         bindings[arm] = {'initial_system': clone(initial_system), 'loss_spec': clone(losses[objective]),
             'world': clone(world), 'seeds': [42], 'strategies': clone(strategy), 'mode': 'blackbox',
             'seed': 42, 'learning_rate': .1, 'strategy_learning_rate': .1,
             'strategy_baseline': 0., 'exploration': .1}
-        if feedback != 'loss':
-            bindings[arm]['proposal_feedback'] = feedback
+        bindings[arm]['proposal_feedback'] = feedback
     plan = {'schema': SCHEMA, 'classification': CLASSIFICATION, 'source_commit': source_commit,
         'provider_binding': clone(provider_binding), 'designer_provider_binding': clone(designer_provider_binding),
         'runtime_seed_binding': clone(runtime_seed_binding), 'initial_system': clone(initial_system),

@@ -17,6 +17,25 @@ def _error(value):
         'message_withheld': True, 'loss_withheld': True}
 
 
+def class_only_records(records):
+    """Match native/compiler error detail in the loss-visible comparison arm.
+
+    Losses, measurements and optimizer reports stay visible in this arm; the
+    technical exception-class channel is identical to the technical-only arm.
+    Caller-authored definitions/code remain literal in both policies.
+    """
+    result = clone(records)
+    for record in result:
+        record['generation_error'] = _error(record['generation_error'])
+        for draw in record['draws']:
+            draw['technical_error'] = _error(draw.get('technical_error'))
+        for observation in record['observations']:
+            if observation is not None:
+                metadata = observation.setdefault('metadata', {})
+                metadata['technical_failures'] = [_error(e) for e in metadata.get('technical_failures', [])]
+    return result
+
+
 def technical_history(records):
     history, observations = [], []
     for generation, record in enumerate(records):

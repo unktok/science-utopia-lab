@@ -20,7 +20,9 @@ experience; this is not a newly preregistered scientific hypothesis.
 
 Two proposal policies per objective:
 
-- `loss`: existing whole-history feedback and loss-selected incumbent parent.
+- `loss` arm (`matched-loss` controller policy): whole-history loss/measurement
+  feedback and loss-selected incumbent parent. Native/compiler error messages
+  are withheld; both arms receive the same exception-class channel.
 - `technical-only`: fixed initial parent; own authored definitions/candidates in
   chronological order; exception classes and technical completion states only.
   No measurements, losses, native error text, raw outcome IDs/hashes, selection
@@ -39,6 +41,9 @@ Exactly two proposal slots/arm; eight total. Generations G0 and G1 each execute
 arms in fixed order: throughput-loss, throughput-technical-only,
 efficiency-technical-only, efficiency-loss. At G0 there is no prior outcome; G1
 is the first feedback comparison. No statistical replication claim.
+G0 proposals are separate designer calls, not a shared proposal or a common
+designer-response prefix. Sharing the world seed does not make their designer
+sampling seeds identical or establish a paired causal effect of scalar feedback.
 
 One fresh baseline native world is measured separately, then the same forward
 measurement vector is scored under both declared objectives. The common world

@@ -256,8 +256,8 @@ class NativeAdaptiveDesignCampaign:
                  strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
                  expectation_estimator=None, initial_evidence=None, proposal_feedback='loss'):
         validate_loss_spec(loss_spec)
-        if (proposal_feedback not in ('loss', 'technical-only')
-                or proposal_feedback == 'technical-only' and
+        if (proposal_feedback not in ('loss', 'matched-loss', 'technical-only')
+                or proposal_feedback != 'loss' and
                 (mode != 'blackbox' or initial_evidence is not None or expectation_estimator is not None)):
             raise ValueError('technical-only proposals require blackbox mode without historical evidence or an estimator')
         if (mode not in {'blackbox', 'score', 'hybrid'} or type(seed) is not int
@@ -330,6 +330,9 @@ class NativeAdaptiveDesignCampaign:
             from .native_feedback_control import technical_request
             return technical_request(self, records, strategy_state, count,
                 chosen=chosen, probabilities=probabilities, rng_seed=rng_seed)
+        if self.binding.get('proposal_feedback') == 'matched-loss':
+            from .native_feedback_control import class_only_records
+            records = class_only_records(records)
         observations = [{'suggestion': d['suggestion'], 'observation': o} for r in records
             for d, o in zip(r['draws'], r['observations']) if d['suggestion'] is not None and o is not None]
         evidence = None
@@ -361,6 +364,12 @@ class NativeAdaptiveDesignCampaign:
                 'unobserved_slots': evidence['unobserved_slots'],
                 'initial_selection': evidence['selection']}
             request['selection'] = select_incumbent(observations)
+        if self.binding.get('proposal_feedback') == 'matched-loss':
+            request['feedback_policy'] = {'name': 'matched-loss',
+                'objective_definition_visible': True, 'measured_values_visible': True,
+                'parent': 'loss-selected-incumbent', 'proposal_order': 'chronological',
+                'strategy_updates': True, 'technical_outcomes_visible': True,
+                'native_error_messages_visible': False, 'final_loss_only_selection_unchanged': True}
         return request
 
     def _mixed(self, record):

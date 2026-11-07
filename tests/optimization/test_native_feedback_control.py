@@ -5,7 +5,7 @@ import json
 import pytest
 
 from tests.optimization.test_native_adaptive_search import (
-    create, fail_factory, tiny_parent, PROVENANCE,
+    create, fail_factory, tiny_parent, PROVENANCE, loss_spec, STRATEGIES,
 )
 from tests.optimization.test_native_bounded_author_context_v45 import frame
 from utopia.optimization.native_bounded_author_context_v45 import archive_entries
@@ -14,6 +14,7 @@ from utopia.optimization.native_feedback_control import technical_history
 from utopia.optimization.native_file_workspace_v35 import file_catalog
 from utopia.optimization.native_staged_author_v15 import initial_draft, transition
 from utopia.system.design_patch import digest, make_patch
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 
 
 def definition(value):
@@ -94,7 +95,7 @@ def test_measured_values_raw_ids_reports_and_error_text_cannot_change_request(tm
 
 
 def test_loss_feedback_parent_really_changes_while_control_parent_is_fixed(tmp_path):
-    full = create(tmp_path/'full', mode='blackbox')
+    full = create(tmp_path/'full', mode='blackbox', proposal_feedback='matched-loss')
     blind = campaign(tmp_path/'blind')
     records = [synthetic_record(full, value=1., cost=-2.), synthetic_record(full, value=2., cost=9.)]
     before = full._request(records, full._strategy_initial(), 1)
@@ -104,6 +105,26 @@ def test_loss_feedback_parent_really_changes_while_control_parent_is_fixed(tmp_p
     assert before['parent_system'] != after['parent_system']
     assert blind._request(records, blind._strategy_initial(), 1) == blind._request(
         changed, blind._strategy_initial(), 1)
+
+
+def test_matched_loss_arm_uses_same_technical_error_channel_but_preserves_losses(tmp_path):
+    full = create(tmp_path/'full', mode='blackbox', proposal_feedback='matched-loss')
+    blind = campaign(tmp_path/'blind')
+    record = synthetic_record(full)
+    record['observations'][0]['metadata']['technical_failures'] = [
+        {'error_type':'ValueError','error':'private native output','loss':None}]
+    record['generation_error'] = {'type':'SyntaxError','message':'private compiler output','loss':None}
+    before = deepcopy(record)
+    a = full._request([record], full._strategy_initial(), 1)
+    b = blind._request([record], blind._strategy_initial(), 1)
+    assert a['observations'][0]['observation']['loss'] == -2.
+    assert 'loss' not in b['observations'][0]['observation']
+    assert a['observations'][0]['observation']['metadata']['technical_failures'] == b[
+        'observations'][0]['observation']['metadata']['technical_failures']
+    assert a['history'][0]['generation_error'] == b['history'][0]['generation_error']
+    assert 'private native output' not in json.dumps(a)
+    assert 'private compiler output' not in json.dumps(a)
+    assert record == before
 
 
 def test_actual_prompt_and_all_virtual_archives_expose_only_control_view(tmp_path):
@@ -179,3 +200,42 @@ def test_failed_native_attempts_reopen_and_read_only_replay_without_refilling(tm
     assert replay_campaign(tmp_path, 'blackbox').state == c.state
     with pytest.raises(ValueError, match='binding changed'):
         create(tmp_path, mode='blackbox')
+
+
+def test_successful_original_native_world_keeps_true_losses_private_across_generations(
+        tmp_path, fixed_corpus, monkeypatch):
+    # Full original six-year phases/checkpoints, with only corpus and scholar
+    # HTTP scripted by the existing fixture. This is NOT a model experiment.
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    from tests.system.test_native_science_kernel import make_sim
+    from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
+    from utopia.system.native_kernel import NativeScienceKernel
+    world = {'source_commit':'SCRIPTED-control-native-QA',
+        'model_digest':fixture.BINDING['model_revision'],
+        'corpus_sha256':fixture.BINDING['corpus_sha256']}
+    def reopen():
+        return NativeAdaptiveDesignCampaign(tmp_path/'campaign',initial_system=tiny_parent(),
+            loss_spec=loss_spec(),seeds=[42],world_binding=world,strategies=STRATEGIES,
+            mode='blackbox',proposal_feedback='technical-only')
+    physical,seen=[],[]
+    def factory(spec,seed,run_id):
+        fixture.seed();physical.append(run_id)
+        monkeypatch.setitem(fixture.BINDING,'cell',spec.fingerprint)
+        monkeypatch.setitem(fixture.BINDING,'science_config',{
+            **fixture.BINDING['science_config'],'source_commit':world['source_commit']})
+        sim,_=make_sim(tmp_path/'runs'/run_id,native=NativeScienceKernel(spec))
+        return sim
+    def author(request):
+        seen.append(deepcopy(request))
+        return definition(request['generation']+1.)
+    for _ in range(2):
+        c=reopen()
+        r=c.advance(simulation_factory=factory,generators={key:author for key in STRATEGIES},count=1)
+        assert r['observations'][0]['status']=='complete'
+        assert isinstance(r['observations'][0]['loss'],float)
+        assert r['observations'][0]['metadata']['measurements']
+    assert len(physical)==len(set(physical))==len(seen)==2
+    assert seen[1]['parent_system']==tiny_parent().to_dict()
+    assert seen[1]['history'][0]['observations'][0]['loss_withheld']
+    assert 'loss' not in seen[1]['observations'][0]['observation']
+    assert reopen().state==c.state
