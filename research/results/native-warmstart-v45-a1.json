@@ -1,0 +1,1037 @@
+{
+  "arms": {
+    "efficiency": {
+      "authoring_generations": [
+        {
+          "counts": {
+            "completed_step_receipts": 14,
+            "dispatch_intents": 14,
+            "interrupted_response_unknown": 0,
+            "known_HTTP_responses": 14,
+            "known_designer_responses": 14,
+            "recorded_POST_attempts": 14,
+            "valid_finished_generations": 1
+          },
+          "definition_sha256": "40cc0cf76bb2d24ed6e085894ef72f1e12259d1fa7dcb97423be9e1a26400b01",
+          "literal_change": {
+            "authored_operation_count": 2,
+            "base_patch_null": false,
+            "compiled_base_document_sha256": "586cf106ba8a9c1f1a0a6c847da6ab407c6bbd473dabde693bc96411e6665429",
+            "compiled_base_nodes": 19,
+            "compiled_base_wires": 27,
+            "exact_document_changed": true,
+            "explicit_exact_parent_retention": false,
+            "graph_contract_excluding_metadata_changed": true,
+            "literal_change_counts": {
+              "edges_added": 0,
+              "edges_removed": 0,
+              "initial_state_changes": 0,
+              "mechanism_configuration_changes": 2,
+              "nodes_added": 0,
+              "nodes_removed": 0,
+              "process_contract_changes": 0,
+              "protocol_changes": 0,
+              "rewired_endpoint_pairs": 0,
+              "same_source_body_renamed_ids": 0,
+              "schedules_added": 0,
+              "schedules_removed": 0,
+              "source_bodies_added": 2,
+              "source_bodies_removed": 2,
+              "source_changes": 2
+            },
+            "parent_document_sha256": "f4670c1cf34525ada2966e757e79b6cc5b26a688d3bfeaf98a8d9bd592a0fb94",
+            "parent_nodes": 19,
+            "parent_wires": 27,
+            "scope": "Literal JSON/graph/source differences, not novelty, usefulness or behavioral equivalence. Excluding metadata is a diagnostic projection; metadata can itself affect runtime.",
+            "successful_edit_fields_steps": 0,
+            "successful_edit_or_splice_steps": 2,
+            "valid_explicit_finish": true
+          },
+          "request_sha256": "ec56342cb63cce3da2e0b1101b69f5fb6ec78e396ff540cd1c9b10bbc9a99f75",
+          "status": "generated",
+          "steps": [
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 0,
+              "tool": "plan",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 1,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 2,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 3,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 4,
+              "tool": "write_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 5,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 6,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 7,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 8,
+              "tool": "write_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 9,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 10,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 11,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "rejected",
+              "step": 12,
+              "tool": "read_file",
+              "transition_errors": [
+                {
+                  "error_sha256": "fa26831e8d24d3035d5dec585c9fdc77d2bfac8216e02902433278245c939e5c",
+                  "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+                  "run_id": null,
+                  "seed": null,
+                  "type": "ValueError"
+                }
+              ]
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "finished",
+              "step": 13,
+              "tool": "finish",
+              "transition_errors": []
+            }
+          ]
+        }
+      ],
+      "comparison": {
+        "historical_best_updated": false,
+        "historical_initial_selection": {
+          "loss": -11.833333333333336,
+          "selected_observation_id": "historical-rescore-f5b8410c3b7825934c2d0ffb564e18fc5ec08125cc053ae76eae98943b478b73",
+          "tied_observation_ids": [
+            "historical-rescore-f5b8410c3b7825934c2d0ffb564e18fc5ec08125cc053ae76eae98943b478b73",
+            "historical-rescore-ecbc8b7f8132a3e9d3d708001380d80ca805a8c968a171132d7d708cf26abf7f",
+            "historical-rescore-f86b4b8889c91618b2b5afc8b0558d4c242e59fd838ac508d7045a74fa3e53af",
+            "historical-rescore-5baa00f53ea4ac95ce2e5fff08a711aa5be15b08734e5db64b54e9b40484f37f"
+          ]
+        },
+        "new_best_loss": null,
+        "new_complete_losses": [],
+        "new_slot_statuses": [
+          "technical-failure"
+        ],
+        "observed_improvement_over_historical": null,
+        "same_source_counterfactual_comparison": false,
+        "source_equivalence_established": false
+      },
+      "designer_cost_measurements": {
+        "completion_tokens": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 1482.0
+        },
+        "model_call_seconds": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 269.0483193723485
+        },
+        "prompt_tokens": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 320823.0
+        },
+        "transport_seconds": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 252.98218604340218
+        }
+      },
+      "designer_counts": {
+        "completed_step_receipts": 14,
+        "dispatch_intents": 14,
+        "generations": 1,
+        "interrupted_response_unknown": 0,
+        "known_HTTP_responses": 14,
+        "known_designer_responses": 14,
+        "new_model_calls": 0,
+        "new_native_probes": 0,
+        "recorded_POST_attempts": 14,
+        "source_execution_on_host": false,
+        "valid_finished_generations": 1
+      },
+      "loss_spec": {
+        "across_seeds": {
+          "aggregation": "mean_plus_population_sd",
+          "dispersion_weight": 0.0,
+          "minimum_valid_runs": 1
+        },
+        "direction": "minimize",
+        "id": "native-reviewed-production-efficiency-v13",
+        "interpretation": "Minimize -Q+0.5*R. Q sums the arithmetic means of ORIGINAL integer-parsed native reviewer overall_score for accepted review-history decisions; institution-written final_score is not used. Unreviewed acceptance contributes zero Q. R counts actual review records, not reviewed papers. The explicit illustrative coefficient 0.5 expresses a review-work preference and is not empirically calibrated scientific value. Zero reviews, reject-all and all-accept remain legal. No hidden quality/fairness/novelty/promotion veto.",
+        "optimization_seed_role": "development",
+        "per_run": {
+          "intercept": 0.0,
+          "terms": [
+            {
+              "coefficient": -1.0,
+              "metric_id": "native.accepted_peer_score_sum",
+              "slice_id": null
+            },
+            {
+              "coefficient": 0.5,
+              "metric_id": "native.review_records",
+              "slice_id": null
+            }
+          ]
+        },
+        "schema": "scienceutopia.loss-spec.v1",
+        "status": "engineering_demo",
+        "version": "1"
+      },
+      "new_slot": {
+        "based_on_observation_id": "historical-rescore-f5b8410c3b7825934c2d0ffb564e18fc5ec08125cc053ae76eae98943b478b73",
+        "checkpoint_sha256": null,
+        "cross_scores_are_not_original_arm_feedback": true,
+        "generation": 0,
+        "generation_error": null,
+        "initial_evidence_sha256": "7f3fbefaeae22b3f8e47f2cd2209968a2621f2826ce7217a488a46c0c6b2b0e5",
+        "literal_lineage": {
+          "vs_initial": {
+            "counts": {
+              "edges_added": 0,
+              "edges_removed": 0,
+              "initial_state_changes": 0,
+              "mechanism_configuration_changes": 2,
+              "nodes_added": 0,
+              "nodes_removed": 0,
+              "process_contract_changes": 0,
+              "protocol_changes": 0,
+              "rewired_endpoint_pairs": 0,
+              "same_source_body_renamed_ids": 0,
+              "schedules_added": 0,
+              "schedules_removed": 0,
+              "source_bodies_added": 2,
+              "source_bodies_removed": 2,
+              "source_changes": 2
+            },
+            "from_fingerprint": "88912a72e5d2f30eace4a595548bcce0ee828bb8e1c40301c438daf13abaa2f4",
+            "same_source_body_renamed_ids": [],
+            "scope": "Literal executable/source/protocol/wiring/process changes; renaming, comments and changed source text do not by themselves establish a new useful algorithm.",
+            "source_bodies_added": [
+              "4b81ce6cd5ce24f4e9c643179834faa1a3bab01e7f9f102e2879763d8cf6d2af",
+              "cd6ba56c3d920ee093ed6b483f5a7194b3a30dbe984f7820882cd45813a03e9a"
+            ],
+            "source_bodies_removed": [
+              "4d2f8cab7ff047b9be492898173e08102a872486b103f1ca55f183b42c1486df",
+              "b1975cd73975090d6786f0c8594e2a3ad56721a7079189d724500496e23b1e6c"
+            ],
+            "source_changes": [
+              {
+                "after_sha256": "cd6ba56c3d920ee093ed6b483f5a7194b3a30dbe984f7820882cd45813a03e9a",
+                "before_sha256": "b1975cd73975090d6786f0c8594e2a3ad56721a7079189d724500496e23b1e6c",
+                "mechanism_id": "native-feature-extractor"
+              },
+              {
+                "after_sha256": "4b81ce6cd5ce24f4e9c643179834faa1a3bab01e7f9f102e2879763d8cf6d2af",
+                "before_sha256": "4d2f8cab7ff047b9be492898173e08102a872486b103f1ca55f183b42c1486df",
+                "mechanism_id": "world.selection"
+              }
+            ],
+            "to_fingerprint": "586cf106ba8a9c1f1a0a6c847da6ab407c6bbd473dabde693bc96411e6665429"
+          },
+          "vs_parent": {
+            "counts": {
+              "edges_added": 0,
+              "edges_removed": 0,
+              "initial_state_changes": 0,
+              "mechanism_configuration_changes": 2,
+              "nodes_added": 0,
+              "nodes_removed": 0,
+              "process_contract_changes": 0,
+              "protocol_changes": 0,
+              "rewired_endpoint_pairs": 0,
+              "same_source_body_renamed_ids": 0,
+              "schedules_added": 0,
+              "schedules_removed": 0,
+              "source_bodies_added": 2,
+              "source_bodies_removed": 2,
+              "source_changes": 2
+            },
+            "from_fingerprint": "f4670c1cf34525ada2966e757e79b6cc5b26a688d3bfeaf98a8d9bd592a0fb94",
+            "same_source_body_renamed_ids": [],
+            "scope": "Literal executable/source/protocol/wiring/process changes; renaming, comments and changed source text do not by themselves establish a new useful algorithm.",
+            "source_bodies_added": [
+              "4b81ce6cd5ce24f4e9c643179834faa1a3bab01e7f9f102e2879763d8cf6d2af",
+              "cd6ba56c3d920ee093ed6b483f5a7194b3a30dbe984f7820882cd45813a03e9a"
+            ],
+            "source_bodies_removed": [
+              "8e2225ba63e39e389a664df2f48f7273ba7685c78ccaecfdc74c27349e245d6c",
+              "b1975cd73975090d6786f0c8594e2a3ad56721a7079189d724500496e23b1e6c"
+            ],
+            "source_changes": [
+              {
+                "after_sha256": "cd6ba56c3d920ee093ed6b483f5a7194b3a30dbe984f7820882cd45813a03e9a",
+                "before_sha256": "b1975cd73975090d6786f0c8594e2a3ad56721a7079189d724500496e23b1e6c",
+                "mechanism_id": "native-feature-extractor"
+              },
+              {
+                "after_sha256": "4b81ce6cd5ce24f4e9c643179834faa1a3bab01e7f9f102e2879763d8cf6d2af",
+                "before_sha256": "8e2225ba63e39e389a664df2f48f7273ba7685c78ccaecfdc74c27349e245d6c",
+                "mechanism_id": "world.selection"
+              }
+            ],
+            "to_fingerprint": "586cf106ba8a9c1f1a0a6c847da6ab407c6bbd473dabde693bc96411e6665429"
+          }
+        },
+        "loss": null,
+        "measurements": {
+          "A": null,
+          "Q": null,
+          "R": null
+        },
+        "new_source_measurement": false,
+        "observation_id": "observation-native-adaptive-b8d9b184246514d636486da8",
+        "original_observation_loss": null,
+        "original_observation_status": "failed",
+        "parent_system_fingerprint": "f4670c1cf34525ada2966e757e79b6cc5b26a688d3bfeaf98a8d9bd592a0fb94",
+        "request_sha256": "ec56342cb63cce3da2e0b1101b69f5fb6ec78e396ff540cd1c9b10bbc9a99f75",
+        "retrospective_cross_scores": {
+          "native-joint-v5-throughput": null,
+          "native-reviewed-production-efficiency-v13": null
+        },
+        "run_id": null,
+        "semantic_novelty_or_scientific_benefit_established": false,
+        "slot": 0,
+        "status": "technical-failure",
+        "system_fingerprint": "586cf106ba8a9c1f1a0a6c847da6ab407c6bbd473dabde693bc96411e6665429",
+        "technical_errors": [
+          {
+            "error_sha256": "98abed4a6a5c20b9bd548bb8fe9f977029b8cd73be5d60a3a6761cef8d42884a",
+            "message": "tensor input shape differs: features",
+            "run_id": "native-adaptive-b8d9b184246514d636486da8-s42",
+            "seed": 42,
+            "type": "ValueError"
+          }
+        ],
+        "version_sha256": "ab66001eeb5d6ac857fe20a638dc674eff3bbedc22df390b0c7ff0b98e9cc2de"
+      },
+      "physical_costs": {
+        "completed_researcher_model_call_seconds": 0,
+        "completed_researcher_responses": 0,
+        "consumed_native_slots": 1,
+        "physical_native_worlds": 0,
+        "physical_researcher_responses": 20,
+        "physical_wire_requests": 20,
+        "physical_world_directory_count": 1,
+        "recorded_code_executions_including_partial": 3,
+        "technical_failures": 1
+      },
+      "physical_response_caches": [
+        {
+          "outcomes": {
+            "response": 20
+          },
+          "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-warmstart-v45-a1/arms/efficiency/worlds/native-adaptive-b8d9b184246514d636486da8-s42/replies/responses.sqlite",
+          "sha256": "58d872fc497c103beb1fc719c24b143bd7f462285fd74840c8091e38bcec7214"
+        }
+      ]
+    },
+    "throughput": {
+      "authoring_generations": [
+        {
+          "counts": {
+            "completed_step_receipts": 14,
+            "dispatch_intents": 14,
+            "interrupted_response_unknown": 0,
+            "known_HTTP_responses": 14,
+            "known_designer_responses": 14,
+            "recorded_POST_attempts": 14,
+            "valid_finished_generations": 1
+          },
+          "definition_sha256": "3c902ae7e244c702eed38692492500b5baa86297c796546d26e87e9f55865ff2",
+          "literal_change": {
+            "authored_operation_count": 4,
+            "base_patch_null": false,
+            "compiled_base_document_sha256": "adee34ba89115a136f4ab2eb337d7b5807287ca302a1350ecb7a5c7cc454dc13",
+            "compiled_base_nodes": 19,
+            "compiled_base_wires": 27,
+            "exact_document_changed": true,
+            "explicit_exact_parent_retention": false,
+            "graph_contract_excluding_metadata_changed": true,
+            "literal_change_counts": {
+              "edges_added": 0,
+              "edges_removed": 0,
+              "initial_state_changes": 0,
+              "mechanism_configuration_changes": 1,
+              "nodes_added": 0,
+              "nodes_removed": 0,
+              "process_contract_changes": 0,
+              "protocol_changes": 0,
+              "rewired_endpoint_pairs": 0,
+              "same_source_body_renamed_ids": 0,
+              "schedules_added": 0,
+              "schedules_removed": 0,
+              "source_bodies_added": 1,
+              "source_bodies_removed": 1,
+              "source_changes": 1
+            },
+            "parent_document_sha256": "f4670c1cf34525ada2966e757e79b6cc5b26a688d3bfeaf98a8d9bd592a0fb94",
+            "parent_nodes": 19,
+            "parent_wires": 27,
+            "scope": "Literal JSON/graph/source differences, not novelty, usefulness or behavioral equivalence. Excluding metadata is a diagnostic projection; metadata can itself affect runtime.",
+            "successful_edit_fields_steps": 0,
+            "successful_edit_or_splice_steps": 4,
+            "valid_explicit_finish": true
+          },
+          "request_sha256": "6eeb449f80d1acdbac61cae3585fa8551ea909b8d0157ae235fdffcd39164e89",
+          "status": "generated",
+          "steps": [
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 0,
+              "tool": "plan",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 1,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 2,
+              "tool": "write_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 3,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 4,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 5,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 6,
+              "tool": "write_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 7,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 8,
+              "tool": "write_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 9,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 10,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 11,
+              "tool": "read_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "applied",
+              "step": 12,
+              "tool": "write_file",
+              "transition_errors": []
+            },
+            {
+              "error": null,
+              "errors": [],
+              "status": "finished",
+              "step": 13,
+              "tool": "finish",
+              "transition_errors": []
+            }
+          ]
+        }
+      ],
+      "comparison": {
+        "historical_best_updated": false,
+        "historical_initial_selection": {
+          "loss": -7.0,
+          "selected_observation_id": "historical-rescore-b406c0523cba1c3e0d9e324c13edafded1af14be9914c6dd1733388edf3574f9",
+          "tied_observation_ids": [
+            "historical-rescore-b406c0523cba1c3e0d9e324c13edafded1af14be9914c6dd1733388edf3574f9",
+            "historical-rescore-706a8124e7deb1e12cd85d8782b31f2c3a93fa7cc19dacd5c1640cf66f83f24d",
+            "historical-rescore-16eeef69d7c22c9703e28901133748e6786a530385b8743ca6c78f3bd8bb60e8",
+            "historical-rescore-f6da0184b08f01256c2d3f20344d2281de6103550706f2b383b61fd12e4dd00d"
+          ]
+        },
+        "new_best_loss": -7.0,
+        "new_complete_losses": [
+          -7.0
+        ],
+        "new_slot_statuses": [
+          "complete"
+        ],
+        "observed_improvement_over_historical": 0.0,
+        "same_source_counterfactual_comparison": false,
+        "source_equivalence_established": false
+      },
+      "designer_cost_measurements": {
+        "completion_tokens": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 2681.0
+        },
+        "model_call_seconds": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 287.46754533424973
+        },
+        "prompt_tokens": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 319496.0
+        },
+        "transport_seconds": {
+          "missing_cost_not_imputed": true,
+          "record_count": 14,
+          "recorded_sum": 269.87359616556205
+        }
+      },
+      "designer_counts": {
+        "completed_step_receipts": 14,
+        "dispatch_intents": 14,
+        "generations": 1,
+        "interrupted_response_unknown": 0,
+        "known_HTTP_responses": 14,
+        "known_designer_responses": 14,
+        "new_model_calls": 0,
+        "new_native_probes": 0,
+        "recorded_POST_attempts": 14,
+        "source_execution_on_host": false,
+        "valid_finished_generations": 1
+      },
+      "loss_spec": {
+        "across_seeds": {
+          "aggregation": "mean_plus_population_sd",
+          "dispersion_weight": 0.0,
+          "minimum_valid_runs": 1
+        },
+        "direction": "minimize",
+        "id": "native-joint-v5-throughput",
+        "interpretation": "Minimize -A, where A is actual accepted review-history decisions. All-accept is legal. This gameable throughput proxy is not scientific value. No hidden fairness, quality, or participation veto.",
+        "optimization_seed_role": "development",
+        "per_run": {
+          "intercept": 0.0,
+          "terms": [
+            {
+              "coefficient": -1.0,
+              "metric_id": "native.accepted_decisions",
+              "slice_id": null
+            }
+          ]
+        },
+        "schema": "scienceutopia.loss-spec.v1",
+        "status": "engineering-proxy-not-scientific-value",
+        "version": "1"
+      },
+      "new_slot": {
+        "based_on_observation_id": "historical-rescore-b406c0523cba1c3e0d9e324c13edafded1af14be9914c6dd1733388edf3574f9",
+        "checkpoint_sha256": "ed4156b33f260f9a6010616736bcb108d664a89e834e16d9491344073b7a97a9",
+        "cross_scores_are_not_original_arm_feedback": true,
+        "generation": 0,
+        "generation_error": null,
+        "initial_evidence_sha256": "7f3fbefaeae22b3f8e47f2cd2209968a2621f2826ce7217a488a46c0c6b2b0e5",
+        "literal_lineage": {
+          "vs_initial": {
+            "counts": {
+              "edges_added": 0,
+              "edges_removed": 0,
+              "initial_state_changes": 0,
+              "mechanism_configuration_changes": 1,
+              "nodes_added": 0,
+              "nodes_removed": 0,
+              "process_contract_changes": 0,
+              "protocol_changes": 0,
+              "rewired_endpoint_pairs": 0,
+              "same_source_body_renamed_ids": 0,
+              "schedules_added": 0,
+              "schedules_removed": 0,
+              "source_bodies_added": 1,
+              "source_bodies_removed": 1,
+              "source_changes": 1
+            },
+            "from_fingerprint": "88912a72e5d2f30eace4a595548bcce0ee828bb8e1c40301c438daf13abaa2f4",
+            "same_source_body_renamed_ids": [],
+            "scope": "Literal executable/source/protocol/wiring/process changes; renaming, comments and changed source text do not by themselves establish a new useful algorithm.",
+            "source_bodies_added": [
+              "2c7e690288f4c20ba129c5632630c2fe6066ee6644671b45c06be17ad2b0353c"
+            ],
+            "source_bodies_removed": [
+              "4d2f8cab7ff047b9be492898173e08102a872486b103f1ca55f183b42c1486df"
+            ],
+            "source_changes": [
+              {
+                "after_sha256": "2c7e690288f4c20ba129c5632630c2fe6066ee6644671b45c06be17ad2b0353c",
+                "before_sha256": "4d2f8cab7ff047b9be492898173e08102a872486b103f1ca55f183b42c1486df",
+                "mechanism_id": "world.selection"
+              }
+            ],
+            "to_fingerprint": "adee34ba89115a136f4ab2eb337d7b5807287ca302a1350ecb7a5c7cc454dc13"
+          },
+          "vs_parent": {
+            "counts": {
+              "edges_added": 0,
+              "edges_removed": 0,
+              "initial_state_changes": 0,
+              "mechanism_configuration_changes": 1,
+              "nodes_added": 0,
+              "nodes_removed": 0,
+              "process_contract_changes": 0,
+              "protocol_changes": 0,
+              "rewired_endpoint_pairs": 0,
+              "same_source_body_renamed_ids": 0,
+              "schedules_added": 0,
+              "schedules_removed": 0,
+              "source_bodies_added": 1,
+              "source_bodies_removed": 1,
+              "source_changes": 1
+            },
+            "from_fingerprint": "f4670c1cf34525ada2966e757e79b6cc5b26a688d3bfeaf98a8d9bd592a0fb94",
+            "same_source_body_renamed_ids": [],
+            "scope": "Literal executable/source/protocol/wiring/process changes; renaming, comments and changed source text do not by themselves establish a new useful algorithm.",
+            "source_bodies_added": [
+              "2c7e690288f4c20ba129c5632630c2fe6066ee6644671b45c06be17ad2b0353c"
+            ],
+            "source_bodies_removed": [
+              "8e2225ba63e39e389a664df2f48f7273ba7685c78ccaecfdc74c27349e245d6c"
+            ],
+            "source_changes": [
+              {
+                "after_sha256": "2c7e690288f4c20ba129c5632630c2fe6066ee6644671b45c06be17ad2b0353c",
+                "before_sha256": "8e2225ba63e39e389a664df2f48f7273ba7685c78ccaecfdc74c27349e245d6c",
+                "mechanism_id": "world.selection"
+              }
+            ],
+            "to_fingerprint": "adee34ba89115a136f4ab2eb337d7b5807287ca302a1350ecb7a5c7cc454dc13"
+          }
+        },
+        "loss": -7.0,
+        "measurements": {
+          "A": {
+            "status": "measured",
+            "value": 7
+          },
+          "Q": {
+            "status": "measured",
+            "value": 22.666666666666668
+          },
+          "R": {
+            "status": "measured",
+            "value": 21
+          }
+        },
+        "new_source_measurement": true,
+        "observation_id": "observation-native-adaptive-15665ce2c532303fb3733954",
+        "original_observation_loss": -7.0,
+        "original_observation_status": "complete",
+        "parent_system_fingerprint": "f4670c1cf34525ada2966e757e79b6cc5b26a688d3bfeaf98a8d9bd592a0fb94",
+        "request_sha256": "6eeb449f80d1acdbac61cae3585fa8551ea909b8d0157ae235fdffcd39164e89",
+        "retrospective_cross_scores": {
+          "native-joint-v5-throughput": -7.0,
+          "native-reviewed-production-efficiency-v13": -12.166666666666668
+        },
+        "run_id": "native-adaptive-15665ce2c532303fb3733954-s42",
+        "semantic_novelty_or_scientific_benefit_established": false,
+        "slot": 0,
+        "status": "complete",
+        "system_fingerprint": "adee34ba89115a136f4ab2eb337d7b5807287ca302a1350ecb7a5c7cc454dc13",
+        "technical_errors": [],
+        "version_sha256": "051459730524b38cc9aca60aed6bc3b785f9c49f711f800114de05a127ae7374"
+      },
+      "physical_costs": {
+        "completed_researcher_model_call_seconds": 330.52568769454956,
+        "completed_researcher_responses": 90,
+        "consumed_native_slots": 1,
+        "physical_native_worlds": 1,
+        "physical_researcher_responses": 90,
+        "physical_wire_requests": 90,
+        "physical_world_directory_count": 1,
+        "recorded_code_executions_including_partial": 8,
+        "technical_failures": 0
+      },
+      "physical_response_caches": [
+        {
+          "outcomes": {
+            "response": 90
+          },
+          "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-warmstart-v45-a1/arms/throughput/worlds/native-adaptive-15665ce2c532303fb3733954-s42/replies/responses.sqlite",
+          "sha256": "f1602daccde60119b62f65b26d946c247e8be9628d77057865d502054002a22b"
+        }
+      ]
+    }
+  },
+  "budget_terminal": true,
+  "calibration_cold_replay": {
+    "age_seconds": 607.8268799781799,
+    "backend": {
+      "model": "qwen3.6:35b-mlx-64k",
+      "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+      "ollama_version": "0.33.3"
+    },
+    "backend_binding_scope": "archived certificate only; no live metadata GET during audit",
+    "backend_metadata_reobserved": false,
+    "certificate_sha256": "2c2876a4c8414ec129575a539125c7edfeae22ada2dee754d8c63d2d1906ef6e",
+    "controls": 28,
+    "conversation_profile": "plain-function-bounded-v45",
+    "exact_copy_matches": 26,
+    "new_model_calls_during_replay": 0,
+    "protocol": "staged-v15",
+    "readiness_scope": "execution-readiness-v39",
+    "runtime_sha256": "f251c38a013c88de556cb6bc4ab1fe76a0f9cf527819969611d926684b89534c"
+  },
+  "calibration_times": {
+    "age_seconds_at_writer_start": 607.8268799781799,
+    "completed_utc": null,
+    "note": "Absolute calibration times are not copied into the full audit; not inferred as zero.",
+    "started_utc": null
+  },
+  "claims": {
+    "causal_institutional_benefit": false,
+    "designer_improvement_established": false,
+    "held_out": false,
+    "historical_initialization_is_not_new_improvement": true,
+    "method_superiority_established": false,
+    "physical_historical_cache_reuse": false,
+    "source_equivalence_established": false
+  },
+  "classification": "actual-native-historical-warm-start-development-v45",
+  "content_sha256": "d5c1f61acbad39df0934566fc8e4d2d4a14bd387dc5f2fee34d1ef1860b72430",
+  "designer_counts": {
+    "completed_step_receipts": 28,
+    "dispatch_intents": 28,
+    "generations": 2,
+    "interrupted_response_unknown": 0,
+    "known_HTTP_responses": 28,
+    "known_designer_responses": 28,
+    "recorded_POST_attempts": 28,
+    "valid_finished_generations": 2
+  },
+  "full_audit": {
+    "content_sha256": "c0506d0a4f1569ff6abb1cad163cb968d36b5f699cc9b26e47b0dbcbeaf5ac28",
+    "file_sha256": "95f9a9cb367a0b1610fd49f6d125462802fdae376223bd0a6167c4c69d7baefa",
+    "input_file_count": 166,
+    "input_inventory_sha256": "b8289b4f21323b39d57dcfce90b65e70d093ba478094bac1f0e1be9c54dbec4c",
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-warmstart-v45-a1-audit.json"
+  },
+  "historical_source_audit": {
+    "analysis_source_sha256": "c17466c81d7ba5473d9e2b71e8ac12d8649a555c4b7406ceae4bd13d07eefbd5",
+    "content_sha256": "18ba247752ad258b6661091c254ef7f4383ea176eee0146fdd8a82fab9ca3366",
+    "original_source_audit_required": true,
+    "raw_inventory_sha256": "52765efa8de1f617f55194f8cacf9e3afab0c38da2a87f3eea470495811b7f3e",
+    "role_bindings": {
+      "designer": {
+        "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "corpus_years": 4,
+        "dataset_identity": {
+          "categories": [
+            "cs.AI",
+            "cs.AR",
+            "cs.CC",
+            "cs.CE",
+            "cs.CG",
+            "cs.CL",
+            "cs.CR",
+            "cs.CY",
+            "cs.DB",
+            "cs.DC",
+            "cs.DL",
+            "cs.DM",
+            "cs.DS",
+            "cs.ET",
+            "cs.FL",
+            "cs.LG",
+            "cs.LO",
+            "cs.NI",
+            "cs.OH",
+            "cs.OS",
+            "cs.PF",
+            "cs.PL",
+            "cs.RO",
+            "cs.SE",
+            "cs.SY"
+          ],
+          "configuration": "arxiv",
+          "dataset": "Ahren09/SciEvo",
+          "normalization": "parallel",
+          "num_years": 4,
+          "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+          "start_year": 2016
+        },
+        "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+        "model": "qwen3.6:35b-mlx-64k",
+        "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8"
+      },
+      "scientist": {
+        "corpus_sha256": "ee4ca9325e5a61a61edc052346f24e94071b631c622193562308ebd054b28fb2",
+        "corpus_years": 4,
+        "dataset_identity": {
+          "categories": [
+            "cs.AI",
+            "cs.AR",
+            "cs.CC",
+            "cs.CE",
+            "cs.CG",
+            "cs.CL",
+            "cs.CR",
+            "cs.CY",
+            "cs.DB",
+            "cs.DC",
+            "cs.DL",
+            "cs.DM",
+            "cs.DS",
+            "cs.ET",
+            "cs.FL",
+            "cs.LG",
+            "cs.LO",
+            "cs.NI",
+            "cs.OH",
+            "cs.OS",
+            "cs.PF",
+            "cs.PL",
+            "cs.RO",
+            "cs.SE",
+            "cs.SY"
+          ],
+          "configuration": "arxiv",
+          "dataset": "Ahren09/SciEvo",
+          "normalization": "parallel",
+          "num_years": 4,
+          "revision": "f80fb38a034b2f763dfcbdd2cd187f5b42ddcce6",
+          "start_year": 2016
+        },
+        "image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+        "model": "qwen3:8b",
+        "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+      }
+    },
+    "source_commit": "60ef56ca2e32634c72817676b8bcc55bc9fcaa45"
+  },
+  "initial_evidence_sha256": "7f3fbefaeae22b3f8e47f2cd2209968a2621f2826ce7217a488a46c0c6b2b0e5",
+  "physical_costs": {
+    "completed_researcher_model_call_seconds": 330.52568769454956,
+    "completed_researcher_responses": 90,
+    "consumed_native_slots": 2,
+    "physical_native_worlds": 1,
+    "physical_researcher_responses": 110,
+    "physical_wire_requests": 110,
+    "physical_world_directory_count": 2,
+    "recorded_code_executions_including_partial": 11,
+    "technical_failures": 1
+  },
+  "plan_sha256": "c7893de44342db04079c157f3ac6836dfd59f703f1b48c5745678d452c990ab0",
+  "projection": {
+    "fresh_raw_or_scientific_audit": false,
+    "helper_source_sha256": "f883a8146c8e0fb9c0eca7c6c99473867d8fdbf39c8d552b148fbea2d311048d",
+    "historical_pooling_is_not_new_improvement": true,
+    "literal_changes_do_not_establish_behavioral_changes": true,
+    "new_code_executions": 0,
+    "new_model_calls": 0,
+    "saved_full_audit_identity_verified": true
+  },
+  "protocol_source_proof": {
+    "research/protocols/campaigns/native-warmstart-v45-a1.md": "7dea6134da3dd2cafbffad7d7f948ead0e468a611766a67ac22244354ead54bd"
+  },
+  "role_loading": {
+    "explicit_empty_prompt_load_POSTs": 4,
+    "loaded_context_observations": [
+      {
+        "path": "loaded-designer-calibration.json",
+        "sha256": "f30d862483a0e1cfef1d7284ed27fd3dd4eac0a36e85fe9813786a8e4673af5d"
+      },
+      {
+        "path": "loaded-scientist-before-run.json",
+        "sha256": "1c40cb66f54f423963479b86505ee7f25083fb7984d8cae27af9ab1c557ad121"
+      },
+      {
+        "path": "arms/efficiency/worlds/native-adaptive-b8d9b184246514d636486da8-s42/loaded-role-context-000.json",
+        "sha256": "7a8d4272d82222e50f36295e14d0337c8656551e371a271a7a69888028488feb"
+      },
+      {
+        "path": "arms/throughput/worlds/native-adaptive-15665ce2c532303fb3733954-s42/loaded-role-context-000.json",
+        "sha256": "19b40132557bdfe918312f1aca036383f73f3f076e5da540c0f26c8f0fbd1835"
+      }
+    ],
+    "loads": [
+      {
+        "path": "role-load-designer-calibration.started.json",
+        "proof": {
+          "empty_prompt_load_confirmed": true,
+          "status": "completed-load"
+        }
+      },
+      {
+        "path": "role-load-scientist-before-run.started.json",
+        "proof": {
+          "empty_prompt_load_confirmed": true,
+          "status": "completed-load"
+        }
+      },
+      {
+        "path": "arms/efficiency/worlds/native-adaptive-b8d9b184246514d636486da8-s42/role-load-000.started.json",
+        "proof": {
+          "empty_prompt_load_confirmed": true,
+          "status": "completed-load"
+        }
+      },
+      {
+        "path": "arms/throughput/worlds/native-adaptive-15665ce2c532303fb3733954-s42/role-load-000.started.json",
+        "proof": {
+          "empty_prompt_load_confirmed": true,
+          "status": "completed-load"
+        }
+      }
+    ],
+    "scientific_generation": false
+  },
+  "schema": "scienceutopia.native-warmstart-audit-summary.v45",
+  "source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da",
+  "status": "budget-complete-with-failures",
+  "writer": {
+    "argv": [
+      "scripts/run_native_warmstart_v45.py",
+      "run",
+      "--execute-authorized",
+      "--output",
+      "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-warmstart-v45-a1",
+      "--data-cache",
+      "/Users/shiro/unktok/dev/science-utopia-lab/.cache/utopia",
+      "--designer-provider-config",
+      "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-designer-roles-v38-provider/operator-config.json",
+      "--historical-audit",
+      "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-authoring-recovery-v44-a4-audit.json"
+    ],
+    "elapsed_seconds": 1021.942513,
+    "ended_utc": "2026-11-07T03:41:12.320487+00:00",
+    "pid": 19662,
+    "started_utc": "2026-11-07T03:24:10.377974+00:00"
+  }
+}

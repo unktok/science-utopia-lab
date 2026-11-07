@@ -2,16 +2,36 @@
 
 Updated: 2026-11-07 JST
 
-## Current: finite R3 forward experiment running after verified R1/R2
+## Current: R1/R2 implemented; finite R3 executed and independently audited
 
-Snapshot2026-11-07T03:24:10Z: the actual two-slot V45 writer has started in
-`outputs/native-warmstart-v45-a1`, from clean detached source
-`d49cf0bebdfa9d85eab91012118904dcff9232da`. Source-bound verification passes
-1682 tests/3 optional historical-diagnostic skips in818.34s. Fresh actual
-calibration passes28/28, with26 exact copies and2 retained diagnostic
-differences; independent network-disabled cold replay also passes. No new
-scientific outcome is available at this snapshot. Liveness is established by
-actual writer/step/world receipts, not this text. Preserve the frozen source.
+V45 is CLOSED, not still running. Two new slots finish2026-11-07T03:41:12Z
+after17m01.94s, from unchanged detached source
+`d49cf0bebdfa9d85eab91012118904dcff9232da`. Both institution definitions are
+submitted and actually dispatched into the original native world. Efficiency
+fails technically (four feature columns versus the unchanged two-column tensor
+consumer), with null loss. Throughput completes two years, loss-7, tied with its
+historical starting best. No assigned-objective best is updated.
+
+[Compact audited results](results/native-warmstart-v45-a1.json) preserve both
+slots, failures, historical ties and costs. The independent full audit and a
+separate original-source replay are byte-identical(content c0506d0a4f1569ff6abb1cad163cb968d36b5f699cc9b26e47b0dbcbeaf5ac28).
+There are2 fresh physical directories(one complete, one partial),110 scientist
+responses,11 institution-code execution receipts and28 known author responses.
+Calibration28 and empty role loads4 are separate. Full pre-dispatch verification
+passes1682/3 optional skips; no capacity/JSON/transport failure occurs in either
+actual free-author session. See the [execution log](logbook/2026-11-07-native-warmstart-v45.md).
+
+After evaluation only, throughput's A7/Q22.666666666666668/R21 scores
+-12.166666666666668 under efficiency, below historical-11.833333333333336.
+That retrospective cross-score is NOT a successful efficiency-arm execution,
+feedback available to it, a same-source controlled improvement or held-out gain.
+
+Prospectively, bounded-profile code read/write receipts now expose literal
+downstream tensor contracts. This advisory does not restrict institutional
+freedom, infer code behavior, repair source or add a veto. It was NOT inserted
+into the active experiment; its next production use requires a fresh source-bound
+certificate. Summary error preservation is also fixed. No replacement world or
+scale-up is dispatched.
 
 The user authorizes execution, parallel implementation and bug fixes after the
 review. New opt-in `plain-function-bounded-v45` bounds active source/wire context
@@ -25,8 +45,8 @@ The [finite V45 protocol](protocols/campaigns/native-warmstart-v45-a1.md)
 declares one new slot per unchanged objective, at most two new native attempts,
 fixed Qwen3-8B researchers and installed local35B author. Runtime is developed
 separately, then frozen before source-bound tests and fresh real calibration.
-Implementation is not an execution result; record actual dispatch and terminal
-receipts before claiming completion or improvement. No scale-up is authorized.
+This completes the planned finite validation, not the scientific claim of a
+reliably improving inventor or objective-specific optimized institution.
 
 ## Completed search-design review (superseded as active work)
 
