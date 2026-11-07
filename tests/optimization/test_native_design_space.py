@@ -10,6 +10,7 @@ from utopia.optimization.native_benchmark_controls import control_systems,select
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
 from utopia.system import SystemSpec
 from utopia.system.design_patch import make_patch,digest
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 
 IMAGE='sha256:'+'a'*64
 
@@ -140,3 +141,26 @@ def test_omitted_domain_preserves_legacy_binding_and_prompt(tmp_path):
     c=create(tmp_path,mode='blackbox')
     assert 'design_space' not in c.binding
     assert 'design_space' not in c._request([],c._strategy_initial(),1)
+
+
+def test_http_budget_exhaustion_remains_null_after_native_domain_error_handling(
+        tmp_path,monkeypatch,fixed_corpus):
+    # Original Simulation/lifecycle with scripted corpus/HTTP: integration QA,
+    # never a new real-LLM scientific result.
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    from tests.system.test_native_science_kernel import make_sim
+    from utopia.optimization.native_factory import record_native_http
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.optimization.blackbox import Suggestion
+    from utopia.system.native_kernel import NativeScienceKernel,legacy_world_system
+    system=legacy_world_system();wire=tmp_path/'physical-wire.jsonl';models=[]
+    monkeypatch.setitem(fixture.BINDING,'cell',system.fingerprint)
+    def factory(spec,seed,run_id):
+        sim,_=make_sim(tmp_path/'SCRIPTED-world',native=NativeScienceKernel(spec))
+        record_native_http(sim.llm,sim,wire,maximum_attempts=2);models.append(sim.llm)
+        return sim
+    observation=evaluate_native_suggestion(Suggestion('SCRIPTED-budget',system.to_dict(),0,'software-QA'),
+        seeds=[42],simulation_factory=factory,loss_spec=objective_specs()['throughput'])
+    assert observation.status=='failed' and observation.loss is None
+    assert observation.metadata['measurements']==[] and observation.metadata['technical_failures']
+    assert models[0].http_budget_exhausted is True and len(wire.read_text().splitlines())==2
