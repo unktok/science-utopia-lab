@@ -401,3 +401,31 @@ does not change the recorded researcher inputs. It is an observed-world
 equivalence, not a global semantic-equivalence or generalization claim.
 These read-only diagnostics do not replace the eventual closed original-source
 audit. Continue the already fixed finite study; the submission goal stays active.
+
+Continuation11:33–11:42UTC is verified waiting on the same live session46865
+plus concrete related-method review. Throughput technical-only G1 completes at
+11:42:36UTC with loss-7, A7/Q22.333333333333336/R21, tied with its G0. Total
+search16/120 (11 complete,3 generation failures,2 execution failures), references
+9/9 complete, evaluations0. Progress content hash
+423a325e3c8b59785f69a5c19c92ecc22c55f1c679b14e5aa729773383724fb3.
+No inference restart, failed-slot refill or protocol/source change. Further
+mechanism analysis and method conclusions still require the closed study audit.
+
+In parallel with serial local inference, inspect the primary HTML methods of
+the two previously abstract-only near neighbors. The targeted scope is recorded
+in method-section-comparison.md: SocialSystemArena v1 sections3.1–3.4,4.1,4.5–5;
+PolicySim v1 sections2.2,3.1 and the2.1.6 training excerpt. This is not an
+independent reproduction, repository audit or exhaustive literature review.
+Update the note to avoid mistaking an institution-topology catalogue for an
+automatic-invention experiment, or reward-predictor gradients for whole-world
+differentiation. Keep our intended scientific-world comparison distinct from
+these established patterns; neither distinction proves novelty or significance.
+The running experiment and reviewed PDF/bibliography are unchanged.
+
+At3dfde2aed41d21ba91375511a4f523a50a44db12,10 offline documentation/artifact
+checks pass in0.10s (overlapping earlier scopes), JUnit
+outputs/publication-benchmark-v2-verification/related-methods-followup.xml SHA256
+dfd170ca2a9731023a03f3890f8d7e5d9f879265afc2310a8a99331486f4f2a9.
+These are QA, not additional world samples. Integrate the primary citations
+with the next substantive manuscript rebuild, not by invalidating an existing
+PDF dependency receipt silently.
