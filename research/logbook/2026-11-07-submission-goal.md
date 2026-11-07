@@ -718,3 +718,16 @@ changes; no failed-slot replacement or new resource. Shorten STATUS to this
 milestone and retain case details here. The full study, selection-fixed unused
 conditions, two original-source audits, final analyses and manuscript remain
 required; keep the submission goal active rather than calling30 slots completion.
+
+Continuation13:27–13:34UTC is verified waiting on live session46865. Monitoring
+cell3788 finishes when selective fixed-graph G3 completes at C2.4000000000000004,
+A0/Q0/R24. This arm now has four records and no pending proposal: losses
+[2.4000000000000004,2.4000000000000004,7.766666666666664,2.4000000000000004].
+It recovers from a worse proposal but does not improve its original best.
+Search31/120,20 complete,6 generation failures,5 execution failures,
+references9/9,evaluations0; progress hash
+beaf5d2748f88975bf43f39f973fe99d90aecd564781fca984674bf37fa241eb.
+The whole study is not terminal; throughput code/graph G3 is being authored.
+Keep STATUS's explicit30-slot milestone concise; this subsequent point and
+automatic raw journals preserve the newer observation without rewriting the
+paper for every slot. No runtime, budget, model, prompt, loss or trial changes.
