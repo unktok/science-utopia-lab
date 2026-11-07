@@ -29,6 +29,13 @@ These are software verification, not experimental improvement or a guarantee
 that all generated institutions execute. Raw local locator:
 `outputs/native-feedback-comparison-v1-a1/`.
 
+The first new candidate completes with loss0.0 after its designer explicitly
+misreads minus-acceptance as minimizing acceptance. The host loss is not
+reversed. A separate [prospective arithmetic-display fix](logbook/2026-11-07-affine-direction-context.md)
+retains coefficient-derived directions in bounded prompts (111 focused checks
+at6424bbf). It is not installed into the active2e375c2 run, nor certified for new
+generation. The fixed-budget comparison continues without replacement slots.
+
 | Assigned objective | Historical starting best | Own new outcome |
 | --- | ---: | --- |
 | Efficiency `-Q+0.5R` | -11.833333333333336 | null: native tensor shape failure |
@@ -65,7 +72,7 @@ an efficiency-arm success, held-out gain or real scientific-policy benefit.
   with separate provenance. They are not evidence that the local designer
   learned to invent institutions.
 
-## Latest software verification and limitations
+## V45 software verification and limitations
 
 Frozen experiment source:
 `d49cf0bebdfa9d85eab91012118904dcff9232da`.

@@ -26,3 +26,11 @@ through all eight slots; the existing certificate is NOT valid for the later
 display source. Any later generation needs a fresh source-bound calibration
 and prospective protocol. Do not refill the poor G0 slot or rewrite it as
 correctly optimized. Whether feedback corrects it at G1 is an empirical outcome.
+
+Prospective source6424bbf5d49bf34b361a0a5062717c7e01917f5e passes111 committed-
+source focused checks in39.82s, covering arithmetic/bounded context, original-
+world scripted success, feedback isolation and mocked calibration/replay.
+Local log/JUnit: main `outputs/feedback-comparison-v1-verification/`
+`pytest-affine-direction-6424bbf.*`. These checks do not establish improved
+real-model objective comprehension and are not added to earlier test totals.
+Merge this source to main only; the live detached experiment stays2e375c2.
