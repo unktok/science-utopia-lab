@@ -39,7 +39,15 @@
     "junit_sha256": "b45d07f3c15d5cf1ad72b2cb43a2b17b4cf2cad685536353a50f87729ee55101",
     "scope": "Same synthetic report/figure contracts after retaining exact behavior-subproof hashes/counts; no source edit or new dispatch in the running experiment."
   },
+  "publication_dependency_guard_scope": {
+    "source_commit": "a838c0ee8deda2922b645181ad49a5a927620a3d",
+    "passed": 25, "failed": 0, "skipped": 0, "seconds": 5.92,
+    "junit": "outputs/publication-benchmark-v2-verification/final-artifact-guard-a2.xml",
+    "junit_sha256": "271e4bc60514e1213505df36984a97893fa1f406a1e86655d9bb5ad8ecf2d725",
+    "scope": "Reviewed PDF/source/figure hashes, recursive generated-table inputs, bibliography keys, repository docs, scientific plot and synthetic study reporting. No PDF rebuild or new experiment."
+  },
   "preserved_earlier_failures": [
+    {"junit": "outputs/publication-benchmark-v2-verification/final-artifact-guard.xml", "passed": 24, "failed": 1, "cause": "New artifact guard found the build receipt named the old path-figure revision and omitted a nested generated table. Actual PDF was unchanged; bind the actual r2 image and recursively included table instead of weakening the guard."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical.xml", "passed": 4, "failed": 2, "cause": "Historical software fixture hardcoded seed42 before the new evaluation binding."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical-a2.xml", "passed": 4, "failed": 2, "cause": "Fixture omitted explicit raw non-reasoning field; inspection additionally found historical HTTP horizon3, prospectively parameterized for four-year evaluation."}
   ],

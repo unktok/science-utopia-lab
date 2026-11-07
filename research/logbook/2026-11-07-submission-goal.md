@@ -82,3 +82,20 @@ It preserves all120 candidates, original nulls, selection ties, all reference
 pairings, explicit policy-shared physical jobs and2/4-year separation. Input
 audit/source/plan and reporter/figure hashes stay distinct. No V2 raw audit or
 scientific report has yet been produced. The experimental checkout is unmodified.
+
+Publication dependency guard: first24 pass/1 failure correctly detects that the
+new build receipt named an old path-figure revision and omitted a nested
+generated table. The PDF itself was not changed. Correct the receipt to the
+actual r2 image/table and recurse through TeX inputs; at a838c0e all25 artifact/
+docs/report checks pass in5.92s. The earlier failed JUnit is retained. Runtime
+of the ongoing experiment is unaffected. At the later check4/9 references are
+closed, all complete; open-reject-all is in flight, search/evaluation remain0.
+
+Next autonomous work: keep the finite b6654ad writer unchanged; inspect actual
+stage/started+observation records, not the last-completed `active` field alone.
+After terminal closure, run two original-source full audits from its detached
+checkout, compare exact outputs/input inventory, then apply the separately
+source-hashed report/figure pipeline. Actual mechanism analysis and manuscript
+claims depend on those results; implementation/test counts do not close the
+submission goal. Do not refill failures, alter losses or increase budgets to
+force a favorable result. Submission/sharing/new paid resources remain unapproved.
