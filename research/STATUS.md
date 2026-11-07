@@ -5,7 +5,24 @@ Updated2026-11-07. This page is a concise current-state summary.
 
 ## Actual experiment state
 
-The latest finite feedback comparison V1 is **closed and original-source audited**.
+The user-authorized autonomous [submission goal](publication/submission-goal.md)
+is active. S1 strong-rule controls are **running**, not completed results.
+The finite8-world writer started2026-11-07T07:49:17UTC, PID64117,
+at frozen source2aa02c3cb4610cde4797744386da67fe851383b0.
+Original five-researcher/two-year world, fixed8B, existing corpus/image;
+no designer calls, no failed-slot refills. See the
+[prospective protocol](protocols/campaigns/native-benchmark-controls-v2-a1.md).
+Raw heartbeat: `outputs/native-benchmark-controls-v2-a1/`; writer log:
+`outputs/publication-benchmark-v2-verification/control-run.log`.
+Initial software checks atc06bc45 pass21 tests with authorized local Docker;
+later audit orchestration at2aa02c3 passes5 focused checks (overlapping counts).
+The first restricted-shell attempt failed on Docker permission and is preserved,
+not labeled a full pass. Frozen-source closure verifies265 files.
+
+Design-freedom enforcement is being developed separately from the running
+experiment. New source is not installed in the frozen controls checkout.
+
+The earlier finite feedback comparison V1 is **closed and original-source audited**.
 It ran05:08:38–06:01:45UTC on2026-11-07 (53m06.77s), at frozen2e375c2,
 with fixed Qwen3-8B researchers and the approved local35B designer.
 No model experiment remains running from this campaign.
