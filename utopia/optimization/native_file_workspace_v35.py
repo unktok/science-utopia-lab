@@ -21,7 +21,7 @@ def _json(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)
 
 
-def _entries(document, request=None, *, conversation_profile='hermes-function-history-v26'):
+def _entries(document, request=None, *, conversation_profile='hermes-function-history-v26', session_steps=None):
     """Derive current literal locations afresh; no name/path inference or cache."""
     entries = {'system.json': {'format': 'json-system', 'value': document, 'path': None}}
     from .native_designer_tools_v25 import tool_specifications
@@ -68,6 +68,10 @@ def _entries(document, request=None, *, conversation_profile='hermes-function-hi
                 **meta, 'format': 'python-source', 'value': artifact['source'],
                 'path': path + '/parameters/code_artifact/source'}
     if request is not None:
+        from .native_designer_tools_v25 import BOUNDED_AUTHORING
+        if conversation_profile == BOUNDED_AUTHORING:
+            from .native_bounded_author_context_v45 import archive_entries
+            entries.update(archive_entries(request, session_steps or []))
         from .native_history_workspace_v37 import history_entries
         entries.update(history_entries(request, _entries))
         parent = request.get('parent_system')
@@ -85,12 +89,13 @@ def _text(entry):
     return entry['value'] if entry['format'] == 'python-source' else _json(entry['value'])
 
 
-def file_catalog(document, *, request=None, conversation_profile='hermes-function-history-v26'):
-    entries, ambiguous = _entries(document, request, conversation_profile=conversation_profile)
+def file_catalog(document, *, request=None, conversation_profile='hermes-function-history-v26', session_steps=None):
+    entries, ambiguous = _entries(document, request, conversation_profile=conversation_profile, session_steps=session_steps)
     files = []
     deferred = 0
     for name, entry in sorted(entries.items()):
-        if name.startswith('history/') and name != 'history/index.json':
+        if ((name.startswith('history/') and name != 'history/index.json')
+                or (name.startswith('archive/') and name != 'archive/index.json')):
             deferred += 1
             continue
         content = _text(entry)
@@ -115,10 +120,10 @@ def file_catalog(document, *, request=None, conversation_profile='hermes-functio
 
 
 def read_file(document, filename, *, offset=0, limit=65536, request=None,
-              conversation_profile='hermes-function-history-v26'):
+              conversation_profile='hermes-function-history-v26', session_steps=None):
     if not isinstance(filename, str):
         raise ValueError('filename must be a literal string')
-    entries, _ = _entries(document, request, conversation_profile=conversation_profile)
+    entries, _ = _entries(document, request, conversation_profile=conversation_profile, session_steps=session_steps)
     if filename not in entries:
         raise ValueError(_missing_name(document, filename,
             'unknown exact virtual filename; inspect the current file catalog'))

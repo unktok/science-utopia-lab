@@ -178,8 +178,8 @@ def _prompt(request, state, steps, provider, expected, protocol, conversation_pr
         if expected.get('tool') == 'finish':
             from .native_staged_author_v15 import FINISH_CONTROL_PREFIX
             system = FINISH_CONTROL_PREFIX + system
-        from .native_designer_tools_v25 import AUTHORING_RECOVERY
-        if conversation_profile == AUTHORING_RECOVERY and expected.get('tool') in (
+        from .native_designer_tools_v25 import RECOVERY_PROFILES
+        if conversation_profile in RECOVERY_PROFILES and expected.get('tool') in (
                 'edit', 'edit_fields', 'write_file'):
             from .native_authoring_recovery_v44 import IMPLEMENT_CONTROL_PREFIX
             system = IMPLEMENT_CONTROL_PREFIX + system
@@ -252,8 +252,8 @@ def planned_cases(request, protocol, conversation_profile=LEGACY_HISTORY):
         'mechanism_id': identity, 'field_updates': [{'field_name': 'family', 'value': clone(value)}]}}
         for index, value in enumerate(VALUES)]
     result = cases(protocol) + field_cases + sequence(state, request)
-    from .native_designer_tools_v25 import AUTHORING_RECOVERY
-    if conversation_profile == AUTHORING_RECOVERY:
+    from .native_designer_tools_v25 import RECOVERY_PROFILES
+    if conversation_profile in RECOVERY_PROFILES:
         result.append({'id': 'sequence-finish-without-notes', 'expected': {'tool': 'finish'}})
     return result
 

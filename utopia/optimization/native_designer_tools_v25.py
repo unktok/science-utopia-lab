@@ -15,7 +15,9 @@ LEGACY_HISTORY = 'hermes-function-history-v26'
 PLAIN_JSON_HISTORY = 'plain-function-history-v40'
 PLAIN_FUNCTION_DIRECT = 'plain-function-direct-v43'
 AUTHORING_RECOVERY = 'plain-function-recovery-v44'
-DIRECT_PROFILES = (PLAIN_FUNCTION_DIRECT, AUTHORING_RECOVERY)
+BOUNDED_AUTHORING = 'plain-function-bounded-v45'
+RECOVERY_PROFILES = (AUTHORING_RECOVERY, BOUNDED_AUTHORING)
+DIRECT_PROFILES = (PLAIN_FUNCTION_DIRECT, *RECOVERY_PROFILES)
 CONVERSATION_PROFILES = (LEGACY_HISTORY, PLAIN_JSON_HISTORY, *DIRECT_PROFILES)
 TOOL_RESPONSE_ONLY = (
     'Call exactly one supplied function for the next action. '
@@ -58,7 +60,7 @@ def conversation_schema(mode, profile=LEGACY_HISTORY):
         else 'scienceutopia.designer-interface-control.function-json.v26')
     if profile == LEGACY_HISTORY:
         return base
-    return base + ('.plain-recovery.v44' if profile == AUTHORING_RECOVERY else
+    return base + ('.plain-bounded.v45' if profile == BOUNDED_AUTHORING else '.plain-recovery.v44' if profile == AUTHORING_RECOVERY else
         '.plain-direct.v43' if profile == PLAIN_FUNCTION_DIRECT else '.plain-history.v40')
 
 CONTROL_TARGET_NOTE = (
@@ -119,20 +121,20 @@ def tool_specifications(*, role=None, conversation_profile=LEGACY_HISTORY):
         fields = TOOL_FIELDS[name]
         parameters = _tool_schema(name, *fields)
         parameters['required'].remove('tool')
-        if conversation_profile == AUTHORING_RECOVERY and name == 'finish':
+        if conversation_profile in RECOVERY_PROFILES and name == 'finish':
             parameters['required'] = []
         del parameters['properties']['tool']
         # Ollama's typed ToolProperty does not retain $ref. Inline the actual
         # shared fields before transport instead of advertising empty argument
         # schemas after the server renders its model template.
         parameters['properties'] = {key: clone(ACTION_FIELDS[key]) for key in parameters['properties']}
-        if conversation_profile == AUTHORING_RECOVERY and name == 'finish':
+        if conversation_profile in RECOVERY_PROFILES and name == 'finish':
             parameters['properties'] = {}
             parameters['additionalProperties'] = True
         result.append({'type': 'function', 'function': {
             'name': name, 'description': ('Explicitly submit the current draft. No required arguments. '
                 'Every argument field is an optional uninterpreted author note, never a system edit.'
-                if conversation_profile == AUTHORING_RECOVERY and name == 'finish' else DESCRIPTIONS[name]),
+                if conversation_profile in RECOVERY_PROFILES and name == 'finish' else DESCRIPTIONS[name]),
             'parameters': parameters}})
     return result
 
@@ -242,7 +244,7 @@ def tool_system_prompt(*, role=None, conversation_profile=LEGACY_HISTORY):
         + response_instruction(conversation_profile)
         + ('\nV44_ACTION_PHASE=' + ('submit' if role == 'finisher' else
             'implementation' if role == 'implementation' else 'general')
-            if conversation_profile == AUTHORING_RECOVERY else ''))
+            if conversation_profile in RECOVERY_PROFILES else ''))
 
 
 def reply_action(reply):

@@ -137,8 +137,8 @@ ACTION_SCHEMA = {'oneOf': [_tool_schema(tool, *fields) for tool, fields in TOOL_
 
 
 def host_action_schema(conversation_profile='hermes-function-history-v26'):
-    from .native_designer_tools_v25 import AUTHORING_RECOVERY
-    if conversation_profile == AUTHORING_RECOVERY:
+    from .native_designer_tools_v25 import RECOVERY_PROFILES
+    if conversation_profile in RECOVERY_PROFILES:
         from .native_authoring_recovery_v44 import action_schema
         return action_schema()
     return ACTION_SCHEMA
@@ -151,8 +151,8 @@ EDITOR_ACTION_SCHEMA = {'oneOf': [_tool_schema(tool, *TOOL_FIELDS[tool]) for too
 
 def call_task(index, max_steps, *, conversation_profile='hermes-function-history-v26', prompt=None):
     """Python-owned task choice, never a world/request string promoted to SYSTEM."""
-    from .native_designer_tools_v25 import AUTHORING_RECOVERY
-    if conversation_profile == AUTHORING_RECOVERY:
+    from .native_designer_tools_v25 import RECOVERY_PROFILES
+    if conversation_profile in RECOVERY_PROFILES:
         from .native_authoring_recovery_v44 import task
         return task(index, max_steps, prompt, planner=PLAN_SYSTEM_PROMPT, general=SYSTEM_PROMPT)
     if index == max_steps - 1:
@@ -161,8 +161,8 @@ def call_task(index, max_steps, *, conversation_profile='hermes-function-history
 
 
 def workflow_phase(prompt, conversation_profile):
-    from .native_designer_tools_v25 import AUTHORING_RECOVERY
-    if conversation_profile == AUTHORING_RECOVERY:
+    from .native_designer_tools_v25 import RECOVERY_PROFILES
+    if conversation_profile in RECOVERY_PROFILES:
         return _strict_json(prompt)['000_current_turn']['authoring_workflow']['phase']
     return None
 
@@ -384,6 +384,7 @@ def protocol_binding():
     from . import native_history_workspace_v37
     from . import native_contract_notices
     from . import native_authoring_recovery_v44
+    from . import native_bounded_author_context_v45
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
         'transport_source_sha256': hashlib.sha256(Path(native_search_generator_v14.__file__).read_bytes()).hexdigest(),
@@ -398,6 +399,7 @@ def protocol_binding():
         'designer_roles_source_sha256': hashlib.sha256(Path(__file__).with_name('native_designer_roles_v38.py').read_bytes()).hexdigest(),
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'recovery_source_sha256': hashlib.sha256(Path(native_authoring_recovery_v44.__file__).read_bytes()).hexdigest(),
+        'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'file_editor_instructions_sha256': digest(FILE_EDITOR_INSTRUCTIONS),
@@ -624,7 +626,7 @@ def _validation(state, request, binding_sha256, provider_binding, rationale='Sta
 
 
 def transition(state, action, request, *, binding_sha256, provider_binding,
-               conversation_profile='hermes-function-history-v26', workflow_phase=None):
+               conversation_profile='hermes-function-history-v26', workflow_phase=None, session_steps=None):
     """Pure deterministic tool interpreter. It never evaluates candidate source.
 
     Returns unchanged state plus an explicit rejection on any technical error.
@@ -638,17 +640,21 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
         'document_after_sha256': digest(state['document']),
         'result': None, 'definition': None, 'errors': []}
     try:
-        from .native_designer_tools_v25 import AUTHORING_RECOVERY
-        recovery_finish = (conversation_profile == AUTHORING_RECOVERY
+        from .native_designer_tools_v25 import RECOVERY_PROFILES, BOUNDED_AUTHORING
+        recovery_finish = (conversation_profile in RECOVERY_PROFILES
             and isinstance(action, dict) and action.get('tool') == 'finish')
-        if (conversation_profile == AUTHORING_RECOVERY and workflow_phase == 'submit'
+        if (conversation_profile in RECOVERY_PROFILES and workflow_phase == 'submit'
                 and isinstance(action, dict) and action.get('tool') != 'finish'):
             raise ValueError('submission checkpoint: this action was NOT executed. '
                 'Explicitly call finish with the current draft; explanation fields are optional notes. '
                 'Only a technically valid explicit submission can produce a candidate.')
         from .native_authoring_recovery_v44 import IMPLEMENTATION_TOOLS
-        if (conversation_profile == AUTHORING_RECOVERY and workflow_phase in ('implementation', 'recovery')
-                and isinstance(action, dict) and action.get('tool') not in IMPLEMENTATION_TOOLS):
+        archive_retrieval = (conversation_profile == BOUNDED_AUTHORING
+            and isinstance(action, dict) and action.get('tool') == 'read_file'
+            and isinstance(action.get('filename'), str) and action['filename'].startswith('archive/'))
+        if (conversation_profile in RECOVERY_PROFILES and workflow_phase in ('implementation', 'recovery')
+                and isinstance(action, dict) and action.get('tool') not in IMPLEMENTATION_TOOLS
+                and not archive_retrieval):
             raise ValueError('implementation checkpoint: this read/plan was NOT executed. '
                 'The exact current system and previous read receipt are already supplied. '
                 'Author a literal implementation action or explicitly finish to retain; '
@@ -698,6 +704,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
             else:
                 value = read_file(current['document'], action['filename'], request=request,
                     conversation_profile=conversation_profile,
+                    session_steps=session_steps,
                     **{k: action[k] for k in ('offset', 'limit') if k in action})
                 content = value.pop('content')
                 record['result'] = {**value, 'resource': ('history' if value.get('source_kind') == 'own-history'
@@ -852,6 +859,11 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
 
 def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
     """Reconstructable bounded context; full request and tool bodies stay archived."""
+    from .native_designer_tools_v25 import BOUNDED_AUTHORING
+    if settings.get('conversation_profile') == BOUNDED_AUTHORING:
+        from .native_bounded_author_context_v45 import build_active_prompt
+        return build_active_prompt(request, state, steps, image_id=image_id,
+            binding_sha256=binding_sha256, settings=settings)
     # Do not expose another arm or silently tail-truncate own outcomes/failures.
     history = _history_view(request)
     history['generation_authoring_failures'] = own_failure_history(request)
@@ -1127,6 +1139,10 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
     as *completed conversational turns*, with current budget at both ends.
     No old reply is dispatched again and no tool action is supplied by the host.
     """
+    from .native_designer_tools_v25 import BOUNDED_AUTHORING
+    if mode == 'author' and conversation_profile == BOUNDED_AUTHORING:
+        from .native_bounded_author_context_v45 import active_conversation
+        return active_conversation(prompt, system_prompt, native_tools=native_tools)
     if mode == 'author' and system_prompt == PLAN_SYSTEM_PROMPT:
         return planning_conversation(prompt, native_tools=native_tools, conversation_profile=conversation_profile)
     if mode == 'interface-control-v16' and system_prompt == PLAN_CONTROL_SYSTEM_PROMPT:
@@ -1318,16 +1334,20 @@ class StagedVocabularyGenerator:
             'max_prompt_bytes': MAX_PROMPT_BYTES, 'max_tool_result_bytes': MAX_RESULT_BYTES,
             'max_draft_bytes': MAX_DRAFT_BYTES, 'max_aggregate_operations': 80, 'native_probes': 0,
             **profile_options(conversation_profile)}
-        from .native_designer_tools_v25 import DIRECT_PROFILES, AUTHORING_RECOVERY
+        from .native_designer_tools_v25 import DIRECT_PROFILES, RECOVERY_PROFILES, BOUNDED_AUTHORING
         if conversation_profile in DIRECT_PROFILES:
             from .native_designer_decoding_v24 import decoding_contracts
             self.settings['designer_decoding'] = decoding_contracts('staged-v15',
                 conversation_profile=conversation_profile)
             if max_tokens != self.settings['designer_decoding']['editor']['max_tokens']:
                 raise ValueError('direct designer profile requires its exact source-owned decoding token budget')
-        if conversation_profile == AUTHORING_RECOVERY:
+        if conversation_profile in RECOVERY_PROFILES:
             if max_steps < 4:
                 raise ValueError('recovery profile needs planning and three reserved submission/recovery calls')
+        if conversation_profile == BOUNDED_AUTHORING:
+            from .native_bounded_author_context_v45 import context_contract
+            self.settings['active_context_contract'] = context_contract()
+            self.settings['max_prompt_bytes'] = context_contract()['max_source_prompt_utf8_bytes']
         self.protocol = protocol_binding()
 
     def __call__(self, request):
@@ -1378,7 +1398,7 @@ class StagedVocabularyGenerator:
             completed_path = directory / f'step-{index:02d}.completed.json'
             prompt = build_prompt(request, state, steps, image_id=self.image_id,
                 binding_sha256=binding['binding_sha256'], settings=self.settings)
-            if len(prompt.encode()) > MAX_PROMPT_BYTES:
+            if len(prompt.encode()) > self.settings['max_prompt_bytes']:
                 break  # Explicit terminal reason below; no model call or truncation.
             if started_path.exists():
                 started = _strict_json(started_path.read_text())
@@ -1393,7 +1413,7 @@ class StagedVocabularyGenerator:
                             'intent without complete receipt consumes a step; no redispatch'}]}
                 else:
                     completed = _verify(_strict_json(completed_path.read_text()))
-                    self._verify_step(completed, started_path, state, request, binding)
+                    self._verify_step(completed, started_path, state, request, binding, session_steps=steps)
             elif saved is not None:
                 break
             else:
@@ -1401,13 +1421,13 @@ class StagedVocabularyGenerator:
                     raise ValueError('orphan staged completed receipt without dispatch intent')
                 started = self._started(binding, index, prompt, state, steps, _utc())
                 write_json_atomic(started_path, started, sort_keys=True, allow_nan=False)
-                completed = self._dispatch(started_path, started, state, request, binding)
+                completed = self._dispatch(started_path, started, state, request, binding, session_steps=steps)
                 completed = _save(completed_path, completed)
             if completed.get('transition') is not None:
                 state, replay = transition(state, completed['model_reply']['output'], request,
                     binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
                     conversation_profile=self.conversation_profile,
-                    workflow_phase=workflow_phase(prompt, self.conversation_profile))
+                    workflow_phase=workflow_phase(prompt, self.conversation_profile), session_steps=steps)
                 if replay != completed['transition']:
                     raise ValueError('saved staged tool result differs from deterministic replay')
             steps.append(completed)
@@ -1432,7 +1452,7 @@ class StagedVocabularyGenerator:
             'previous_steps_sha256': digest(steps), 'started_utc': timestamp, 'dispatch_intent': True,
             'call_role': 'planner' if call_task(index, self.settings['max_steps']) == PLAN_SYSTEM_PROMPT else 'editor'}
 
-    def _dispatch(self, started_path, started, state, request, binding):
+    def _dispatch(self, started_path, started, state, request, binding, *, session_steps=None):
         output, messages, action_transition, errors = None, [], None, []
         status, begin = 'transport-error', time.monotonic()
         try:
@@ -1454,7 +1474,7 @@ class StagedVocabularyGenerator:
             _, action_transition = transition(state, output, request,
                 binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
                 conversation_profile=self.conversation_profile,
-                workflow_phase=workflow_phase(started['prompt'], self.conversation_profile))
+                workflow_phase=workflow_phase(started['prompt'], self.conversation_profile), session_steps=session_steps)
             status = ('finished' if action_transition['definition'] is not None else
                 'applied' if action_transition['ok'] else 'rejected')
         except Exception as error:
@@ -1480,7 +1500,7 @@ class StagedVocabularyGenerator:
             'transition': action_transition, 'errors': errors,
             'model_call_seconds': time.monotonic() - begin, 'ended_utc': _utc()}
 
-    def _verify_step(self, completed, started_path, state, request, binding):
+    def _verify_step(self, completed, started_path, state, request, binding, *, session_steps=None):
         started = _strict_json(started_path.read_text())
         if (completed.get('schema') != STEP or completed.get('binding_sha256') != binding['binding_sha256']
                 or completed.get('step') != started['step']
@@ -1527,7 +1547,7 @@ class StagedVocabularyGenerator:
             _, expected = transition(state, reply['output'], request,
                 binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
                 conversation_profile=self.conversation_profile,
-                workflow_phase=workflow_phase(started['prompt'], self.conversation_profile))
+                workflow_phase=workflow_phase(started['prompt'], self.conversation_profile), session_steps=session_steps)
             status = 'finished' if expected['definition'] is not None else 'applied' if expected['ok'] else 'rejected'
             if completed['transition'] != expected or completed['status'] != status or completed['errors']:
                 raise ValueError('saved staged tool transition/status changed')
@@ -1654,6 +1674,10 @@ class LocalStagedQwenDesignerModel(LocalQwenDesignerModel):
                 self.last_transport.update(response_payload=body,
                     prompt_tokens=body.get('prompt_eval_count'), completion_tokens=body.get('eval_count'),
                     done_reason=body.get('done_reason'))
+                from .native_designer_tools_v25 import BOUNDED_AUTHORING
+                if self.conversation_profile == BOUNDED_AUTHORING:
+                    from .native_bounded_author_context_v45 import capacity_observation
+                    self.last_transport['active_context_observation'] = capacity_observation(payload, body)
                 self.last_messages = [*messages, clone(body['message'])]
                 return action_from_body(body), clone(self.last_messages)
             finally:
