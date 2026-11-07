@@ -73,13 +73,25 @@ resume the same queue rather than resubmitting or resetting its budget.
 5. Commit compact results, hashes, manifests, and interpretation.
 6. Create an annotated result tag after verification.
 
-If all authoring attempts fail, there is no selected institution to freeze or
-evaluate on held-out seeds. Publish the nulls, original drafts, diagnostics,
+For authored-candidates-only campaigns, such as v14, if all authoring attempts
+fail, there is no selected institution to freeze or evaluate on held-out seeds.
+Publish the nulls, original drafts, diagnostics,
 unknown replies and separate designer/scientist costs. A terminal scheduler
 does not imply a compiled design or completed world. An interface correction
 requires a separately prospective source/budget and separate results, never
 repair of historical drafts or hidden replacement trials. See the
 [closed v14 a1 failure](../research/results/native-autonomous-search-v14-a1.md).
+
+The [V2 comparison](../research/protocols/campaigns/native-design-freedom-v2.md)
+has a different predeclared selection pool: all proposals from an arm's three
+histories plus the common initial institution. If that initial reference is
+technically complete and has an available assigned-objective score, it remains
+eligible even when all authored proposals fail. Report its identity as the
+initial reference and no search improvement, not as successful invention or a
+replacement for failed trials. Preserve every original null. If no member of
+the declared pool has an available score, selection remains absent. Final
+selection still waits for all120 search slots; a failed run00 arm alone does
+not decide the result of its later histories or authorize early held-out tests.
 
 ## Parallel development
 
