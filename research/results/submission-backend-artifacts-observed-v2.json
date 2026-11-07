@@ -1,0 +1,38 @@
+{
+  "schema": "scienceutopia.submission-backend-artifact-observation.v1",
+  "observed_utc": "2026-11-07T10:23:17+00:00",
+  "plan_sha256": "57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25",
+  "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "classification": "post-dispatch-read-only-selected-artifact-observation",
+  "process_observation": {
+    "pid": 3355,
+    "executable": "/Applications/Ollama.app/Contents/Resources/ollama",
+    "scope": "Scoped read-only ps observation of the existing daemon, without command arguments or environment. Not a startup attestation or inventory of runner children."
+  },
+  "client_version_observed": "0.33.3",
+  "client_version_warning": "could not connect to a running Ollama instance in the restricted shell",
+  "backend_version_from_prior_plan_only": "0.33.3",
+  "artifact_root": "/Applications/Ollama.app/Contents/Resources",
+  "selected_artifacts": [
+    {"relative_path": "ollama", "bytes": 68981104, "sha256": "75b6b83ab9c06712c7097807c91d2bb86a3ef3dd143d59359a5fbb3314970c0a"},
+    {"relative_path": "llama-server", "bytes": 14509072, "sha256": "a4326e5a5f846e2e469e08f9779339973536c4df6d9e5e6584b207a807b49659"},
+    {"relative_path": "libllama.0.3.0.dylib", "bytes": 3587392, "sha256": "cedbf4eb649deec55ef837d9570b9e13e06a8c8a166cdb5725c225cd001e128d"},
+    {"relative_path": "libggml.0.22.0.dylib", "bytes": 57584, "sha256": "1a74f921b7c0cb0eac79e0c4ac3dc9d6ba2342e91b996aa3451a32edbe497799"},
+    {"relative_path": "mlx_metal_v3/libmlx.dylib", "bytes": 48171424, "sha256": "3144770167945edd3bc766ad5ef014f751c9f4e37dd9745c0ad08ea834af05f7"},
+    {"relative_path": "mlx_metal_v3/libmlxc.dylib", "bytes": 1775216, "sha256": "ee6bb6e571e6547a301a57160cfdbc7d3504c3280645c260557530bb50777d6a"},
+    {"relative_path": "mlx_metal_v3/mlx.metallib", "bytes": 135942944, "sha256": "76162e9d3ad8091dbf4bf37ac099ad2af624ac51baa76482f17d5d88f03dd077"},
+    {"relative_path": "mlx_metal_v4/libmlx.dylib", "bytes": 21746336, "sha256": "70791ba370d43005c6a9e4374a101a72aca1ce396eae8f537208e9e520c81cc9"},
+    {"relative_path": "mlx_metal_v4/libmlxc.dylib", "bytes": 890352, "sha256": "113ebe4f25d70f80376a9336aa0f4dccdcdd8ef2512633650ca95ed32a5cbf6e"},
+    {"relative_path": "mlx_metal_v4/mlx.metallib", "bytes": 182433408, "sha256": "3862a822f53fe7be3b07b6e1374e624c5239de8874169538f66c9104dbf92706"}
+  ],
+  "startup_environment_attested": false,
+  "loaded_library_paths_verified": false,
+  "complete_backend_environment_lock_claimed": false,
+  "upstream_model_revision_or_conversion_recipe_identified": false,
+  "model_weights_hashed_or_copied": false,
+  "new_inference_requests": 0,
+  "downloads_or_package_installs": 0,
+  "backend_reconfiguration_or_process_restart": false,
+  "scope": "Observed selected local native Ollama, llama and MLX/Metal artifacts. Does not identify which bundled MLX variant ran a past or current inference, prove all operating-system dependencies, authenticate an upstream release, or establish public download availability. Missing pip mlx/mlx-lm in the researcher interpreter is not evidence about these native bundled artifacts.",
+  "content_sha256": "3e38376a2fd61e1003e73b0e56c9c3e26b88ceb69647a6a094fb4d74e2c4d9bf"
+}

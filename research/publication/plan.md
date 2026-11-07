@@ -72,7 +72,8 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 効果が出ない場合、予算追加で良い結果を探すのでなく、事前に定めた解析を行う。
 現在は[有限V2 study](../protocols/campaigns/native-design-freedom-v2.md)を固定b6654adで実行中。
 S1の強い8基準は完走・二回監査済み。V2のrun00実校正28項目とcold replayを通過し、
-fresh基準9件は終了、探索3/120slotまで進行。全探索・選択後評価の結果はまだ未確定。
+fresh基準9件は終了、有限探索を実行中。進捗snapshotは[STATUS](../STATUS.md)を参照。
+全探索・選択後評価の結果はまだ未確定。
 
 **P4：原稿を組み直し中**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
 基盤、比較、制度機構の知見を主文へ。失敗履歴・API・source検証は付録へ。

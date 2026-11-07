@@ -175,6 +175,27 @@ That recipe and separate model-server environment remain a reproducibility
 gap to resolve before claiming fresh-machine inference reproduction. A different
 model/backend is a declared new study, not a silent replacement.
 
+The later [selected backend artifact observation](../research/results/submission-backend-artifacts-observed-v2.json)
+records the existing native Ollama daemon executable and ten app-bundled
+Ollama/llama/MLX/Metal file hashes at10:23UTC. Both MLX variants are installed;
+this is not proof of which variant was loaded for an inference, a complete
+server lock or a startup observation. The restricted-shell version command
+reports client0.33.3 but cannot connect; current backend version is not inferred
+from that command. Do not assume that this native app's MLX dependency must be
+a pip package in the researcher interpreter. No server, weights or settings
+were modified. The model's upstream revision/conversion recipe remains unknown.
+
+The [local/public manifest comparison](../research/results/designer-local-public-provenance-v2.json)
+finds the existing64k alias and its local base share995 nonparameter descriptors
+after removing `from` annotations; the added parameter is `num_ctx=65536`, while
+the manifest config also differs. These are descriptor/metadata comparisons,
+not reconstructed historical creation commands or a fresh tensor hash audit.
+The current [public same-name tag](https://ollama.com/library/qwen3.6:35b-mlx)
+has a different manifest and tensor set. Do not silently pull that tag as an exact
+experimental replacement. The local base digest's specific registry query
+returned404; neither an immutable public retrieval path nor its HF origin has
+been established. The user likewise did not have a confirmed origin record.
+
 The existing sandbox reports image
 `sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833`,
 linux/arm64, under `python:3.11-slim`; the current Docker metadata also reports

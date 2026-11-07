@@ -18,7 +18,8 @@
 ## 直近の次の区切り
 
 S1の強い8基準比較は完走・二回監査済み。V2は固定source・有限予算と
-初回の実校正28項目／cold replayを通し、fresh9基準を終了、探索3/120slotまで進行。
+初回の実校正28項目／cold replayを通し、fresh9基準を終了、有限探索を実行中。
+具体的な進捗snapshotは[STATUS](STATUS.md)に集約する。
 [投稿ゴール](publication/submission-goal.md)に沿い、120候補の自由度／feedback比較、
 選択固定後の五world seed＋四年診断、全失敗・経路・作用・費用の解析を閉じる。
 改善や異なる勝者を要求せず、良い結果が出るまでの追加試行へ戻さない。

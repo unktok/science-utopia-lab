@@ -27,10 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At10:00UTC all9 fresh reference worlds are closed. Search has
-consumed3/120 slots:2 generation failures in the parameter-only arms (their code
-edits exceed the declared numeric domain) and1 completed throughput fixed-graph
-code proposal, recorded loss-7. This partial result is not yet a closed audit,
+diagnostic. At10:28UTC all9 fresh reference worlds are complete. Search has
+consumed6/120 slots:2 generation failures in the parameter-only arms (their code
+edits exceed the declared numeric domain) and4 completed code proposals.
+Throughput fixed-graph and code/graph proposals both record loss-7; selective
+fixed-graph records2.4000000000000004 and selective code/graph records7.766666666666664.
+This partial result is not yet a closed audit,
 a gain over the strongest controls or a method comparison. Selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
@@ -124,6 +126,24 @@ report/audit-plan/artifact scopes pass58 checks in13.36s. This is not additional
 model evidence. The [readiness review](publication/research-readiness-review-v2.md)
 also records domain-presentation/compliance as a possible interpretive limitation;
 no active prompt, search restriction or failed candidate is changed.
+
+The all-reference evaluation figure pipeline is integrated separately. It plots
+every raw seed difference, available-pair counts, means and explicit same-job
+markers; missing pairs stay outside the numerical axis. Two/four-year horizons
+are never pooled, and no confidence interval or method-superiority claim is
+invented. At e4f9207,75 offline report/figure/artifact checks pass in14.03s.
+Watermarked synthetic previews were visually inspected; there are no actual
+V2 evaluation figures yet. A [selected native-backend inventory](results/submission-backend-artifacts-observed-v2.json)
+adds current binary/library hashes, not startup or loaded-library attestation.
+
+The [local/public designer provenance comparison](results/designer-local-public-provenance-v2.json)
+confirms the local64k alias shares995 nonparameter descriptors (986 tensors) with
+the local base, excluding `from` annotations; config/parameter metadata differ.
+The current public same-name tag has a different manifest and zero shared tensor
+digests. It is not an exact replacement. The specific public query for the local
+base digest returned404. This does not identify a Hugging Face revision, prove
+historical download origin or close fresh-machine reproduction. No model weights
+are downloaded, rehashed or replaced by this metadata investigation.
 
 While inference runs, a separate analysis feature is completed and integrated:
 closed-audit projection of all120 slots, all reference-paired seed differences,

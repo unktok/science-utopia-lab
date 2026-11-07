@@ -186,3 +186,59 @@ checkpoint proof. An Apache2.0 license-text layer is present (SHA256
 but this is not an authorization to redistribute all model/data artifacts.
 No upstream revision or conversion command is identified; do not claim that
 fresh-machine model reproduction is closed. No model weights are copied or loaded.
+
+Continuation afteracd0f1a is progress, not an unchanged status repetition:
+implement all-reference unused-condition graphics in a separate feature checkout,
+then integrate at e4f9207cd673c9b74385780d6deb038f74718d87. The figure module
+rejoins physical job identities and scores before plotting each raw paired seed,
+retains all9 references, shows available-pair means/counts and shared-job markers,
+and keeps2-year/4-year conditions separate. No null is plotted as a numerical
+penalty or0; no confidence interval or method superiority is claimed. Input
+report hashes, plot data and figure hashes remain separate from experiment source.
+
+Initial2b1c86d check passes41/fails1: a new test hashes NaN before entering its
+expected-error block. Correct the fixture distinction, not production strictJSON.
+Atf3666ac44 tests pass in13.64s; atf835f8a45 pass in12.04s after retaining
+coincident seed markers and adding signed/nonshared-job cases. At e4f9207,
+75 integrated report/figure/artifact/docs checks pass in14.03s. See the source-
+specific verification receipt for JUnit paths and hashes; scopes overlap.
+Synthetic all-reference previews contain a prominent SCRIPTED watermark.
+Positive/negative differences, shared zero, single-seed and unavailable-selection
+layouts were visually inspected. These images are not V2 outcomes and are not
+inserted into the working paper as results.
+
+Read-only inspection of the first two completed fixed-graph proposals traces
+the literal changed world.selection bodies to two matching code receipts at
+periods1/2. Throughput emits7 accepts (A7/Q22.333333333333336/R21, loss-7);
+selective uses a computed-score>=9 rule and emits8 rejects (A0/Q0/R24, C2.4).
+This is not a claim that threshold9 is an unconditional reject policy in every
+possible world, nor a closed original-source audit or feedback-driven gain.
+Throughput source UTF-8 SHA8aed6597cb81d6568538eec984c4b4c6b3fd3453f0bdbc7307a97f931a1682c9;
+code-context file SHAad0ab5d1e18f6871ae9b90f1b58b66f35b2e5440c03fdb43fde7c519ab8479a1.
+Selective source SHAe3d65563e59733ca68c1245bb3f89e28d45b99ceb1956db160a623ed693ddbeb;
+context file SHA15c05bf6f2300d557348e9e1a0e0721543d7b8df647d090866aa8e6a5322956f.
+At10:28UTC search6/120 has4 completed and2 generation-failed slots; refs9/9
+complete, evaluation0. The original exec handle46865 is confirmed live. No
+generated institution, active runtime or protocol is edited, repaired or refilled.
+
+Backend reproduction investigation observes native Ollama PID3355 executable
+and10 selected app-bundled binary/library files twice, recording exact hashes.
+The restricted version command reports client0.33.3 but cannot connect; do not
+call that fresh server-version evidence. Installed MLX v3/v4 artifacts are not a
+proof of which variant is loaded, and observer-pip mlx absence says nothing
+about those native files. No service restart/load/config edit occurs.
+
+The user does not know the exact model origin and suggests HF as a possibility;
+retain that as uncertainty, not confirmed provenance. Local manifests establish
+995 nonparameter descriptor matches (986 tensors) between the local base1b50c6fd
+and usedf3ddc743 alias, ignoring added `from` metadata. Parameter differences add
+num_ctx65536; config descriptors differ too, so do not claim a byte-identical
+manifest or known original creation command. Frozen runtime context stays40960.
+The public current tag page and a219898-byte metadata GET bind current manifest
+4a5e082f2bd34ad799f0924d3ab5af135cf2445a17a42f34b1dfa706aa81f1cb,
+1045 tensor descriptors and no shared tensor hashes with the local base986.
+The exact local-base digest registry query returns404 with0 downloaded bytes.
+That query's failure is not evidence that every historical/alternative source is
+unavailable. No HF checkpoint/conversion recipe or public exact replacement is
+identified. No weights are fetched or modified. Compact tracked observations
+link the primary public page/metadata; raw metadata remains outside Git.

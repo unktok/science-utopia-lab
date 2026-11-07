@@ -74,7 +74,22 @@
     "junit_sha256": "a43a664e830ae7af7a5d4478d6464e69d542766eb788087f483ced3e1373f68f",
     "scope": "Offline paper/report/plan/driver/audit contracts and replay-bound author diagnostics, including malformed/null rejected tool values. Not a closed V2 audit or scientific effect."
   },
+  "evaluation_figure_scope": {
+    "source_commit": "f835f8a048e8761efa4a3e19acfaf9c15a4e3f7e",
+    "passed": 45, "failed": 0, "skipped": 0, "seconds": 12.04,
+    "junit": "outputs/publication-benchmark-v2-verification/evaluation-figures-a3.xml",
+    "junit_sha256": "8a314afcac916744f5c4050b89111cd043daa6073461b0a7080c7a4a94c0a4e1",
+    "scope": "All-reference paired figure contracts, physical-score rejoin, signed differences, unknown pairs, absent selections, shared jobs, separate horizons, file hashes and SCRIPTED watermarks. Not actual evaluation data."
+  },
+  "integrated_evaluation_figure_scope": {
+    "source_commit": "e4f9207cd673c9b74385780d6deb038f74718d87",
+    "passed": 75, "failed": 0, "skipped": 0, "seconds": 14.03,
+    "junit": "outputs/publication-benchmark-v2-verification/evaluation-figures-integrated.xml",
+    "junit_sha256": "3bfa277fde3a2aa9aaeb81100c7a68ddcc93fe7c0f4895414a2b903ed589998e",
+    "scope": "Offline evaluation/search/author-report and paper/environment/selection/summary/docs regression checks after merge. No model calls or original-source V2 audit."
+  },
   "preserved_earlier_failures": [
+    {"source_commit": "2b1c86da5fcf2ab27123d8ceadf7a6f8173010fc", "junit": "outputs/publication-benchmark-v2-verification/evaluation-figures.xml", "junit_sha256": "584226f4491fe76e04f42b88a62f096a97fdc570c6c25fbdd12e898c627f3e47", "passed": 41, "failed": 1, "cause": "New fixture tried to create a canonical content hash for NaN before entering its expected-rejection assertion. Distinguish canonical JSON rejection from boolean loss rejection; no production guard relaxed."},
     {"junit": "outputs/publication-benchmark-v2-verification/paper-analysis-final.xml", "tests_ran": 0, "exit_code": 4, "cause": "Verification command named nonexistent test_native_design_benchmark.py. Correct path is test_native_design_benchmark_report.py; no test or experiment executed in that attempt."},
     {"junit": "outputs/publication-benchmark-v2-verification/final-artifact-guard.xml", "passed": 24, "failed": 1, "cause": "New artifact guard found the build receipt named the old path-figure revision and omitted a nested generated table. Actual PDF was unchanged; bind the actual r2 image and recursively included table instead of weakening the guard."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical.xml", "passed": 4, "failed": 2, "cause": "Historical software fixture hardcoded seed42 before the new evaluation binding."},

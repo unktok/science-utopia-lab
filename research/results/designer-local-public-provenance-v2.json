@@ -1,0 +1,50 @@
+{
+  "schema": "scienceutopia.designer-local-public-provenance.v1",
+  "observed_utc": "2026-11-07T10:28:01+00:00",
+  "plan_sha256": "57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25",
+  "local_used_alias": "qwen3.6:35b-mlx-64k",
+  "local_used_manifest_sha256": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+  "local_base_alias": "qwen3.6:35b-mlx",
+  "local_base_manifest_sha256": "1b50c6fdc2d4f75f94e6c19b49b20051bc6a7e73620d1ccdfc6687ec042ce754",
+  "local_alias_comparison": {
+    "ordered_nonparameter_descriptors_equal_after_omitting_from_annotations": true,
+    "matching_nonparameter_descriptor_count": 995,
+    "matching_tensor_descriptor_count": 986,
+    "tensor_blob_contents_rehashed": false,
+    "base_parameter_blob_sha256": "86eff881e8d2c2b1caa3966ba775d007f76a693d8541d0973b1bd2aab4214a43",
+    "used_parameter_blob_sha256": "442c7d775ec621bf1b6613f8b8c70124dd3a92e131899f8c397dbb6fb614871c",
+    "parameter_values_only_added": {"num_ctx": 65536},
+    "base_config_blob_sha256": "2dacb491745bc7b2a481550d5b44d5737b0bde4ab1bd8f8d360d33e76a65fd3b",
+    "used_config_blob_sha256": "89ee308f87680b1ad4c96b1efaa99a980c5be0bd13d7cc9a3fb02c01fe3a8438",
+    "manifest_configs_are_identical": false,
+    "config_is_not_an_attestation_of_inference_host_architecture": true,
+    "alias_creation_command_or_download_history_identified": false
+  },
+  "public_current_tag": {
+    "page": "https://ollama.com/library/qwen3.6:35b-mlx",
+    "manifest_url": "https://registry.ollama.ai/v2/library/qwen3.6/manifests/35b-mlx",
+    "http_status": 200,
+    "manifest_bytes": 219898,
+    "manifest_sha256": "4a5e082f2bd34ad799f0924d3ab5af135cf2445a17a42f34b1dfa706aa81f1cb",
+    "local_raw_locator": "outputs/publication-benchmark-v2-verification/upstream-currentbase-manifest.json",
+    "layer_descriptors": 1055,
+    "tensor_descriptors": 1045,
+    "shared_layer_digests_with_local_base": 7,
+    "shared_tensor_digests_with_local_base": 0,
+    "same_artifact_as_local_base": false,
+    "tag_must_not_replace_the_experimental_weights": true
+  },
+  "local_base_digest_registry_query": {
+    "url": "https://registry.ollama.ai/v2/library/qwen3.6/manifests/sha256:1b50c6fdc2d4f75f94e6c19b49b20051bc6a7e73620d1ccdfc6687ec042ce754",
+    "http_status": 404,
+    "reported_download_bytes": 0,
+    "scope": "That exact public metadata query did not retrieve the local digest. Does not prove all historical/alternative sources are unavailable."
+  },
+  "hugging_face_repository_or_revision_identified": false,
+  "upstream_conversion_recipe_identified": false,
+  "new_inference_requests": 0,
+  "model_weight_downloads_or_replacements": 0,
+  "metadata_downloads": 1,
+  "scope": "Read-only local manifest/parameter/config comparison and small public registry metadata retrieval. The local used alias shares declared weight/artifact descriptors with the local base, not the current public tag. Tensor descriptor identity is not a fresh verification of tensor-file contents or proof of upstream training/conversion provenance. Runtime author context40960 and generation settings remain those in the frozen study plan, not a silent inheritance of alias defaults.",
+  "content_sha256": "aeda6603b297274ecadc9443b75e3af8cf29bc82edbe89e46e4e8ebf53024ab3"
+}
