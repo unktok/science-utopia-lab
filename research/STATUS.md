@@ -27,20 +27,24 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At14:15UTC all9 fresh reference worlds are complete. Search has
-consumed36/120 slots:22 complete,6 generation failures,8 execution failures.
-These are run00's30 G0–G2 slots plus six G3 slots, not the full study or three
-environment replicates. G3 selective uniform-numeric evaluation is in flight; selected-policy
+diagnostic. At14:34UTC all9 fresh reference worlds are complete. Search has
+consumed39/120 slots:23 complete,8 generation failures,8 execution failures.
+These are run00's30 G0–G2 slots plus nine G3 slots, not the full study or three
+environment replicates. G3 throughput fixed-graph code is in flight; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 G1/G2 do not improve any arm's best-including-initial value. Uniform numeric
-throughput records-7/0/-7; selective records8.1/2.4000000000000004/8.1. These
-lower/higher random proposals are not learning evidence. All six uniform numeric
-slots execute, while all six LLM numeric slots fail generation. The two G2
+throughput records-7/0/-7/0; selective records8.1/2.4000000000000004/8.1/2.4000000000000004. These
+lower/higher random proposals are not learning evidence. All eight uniform numeric
+slots execute, while all eight LLM numeric slots fail generation. The two G2
 failures reject out-of-domain finishes within16 actions; all32 actual posted
 frames retain the exact declared domain, with stop completion signals. This
 does not remove possible presentation/compliance confounding or demonstrate
 an inherent limitation of parameter tuning.
+G3 throughput tries source edits outside the numeric domain; selective proposes
+thresholds1000000 (upper bound5) and bias1000 (upper bound4), and also attempts
+source edits. Both exhaust16 author actions without a valid explicit finish.
+These are design-compliance failures, not measured poor scientific losses.
 
 The [chronological log](logbook/2026-11-07-submission-goal.md) retains the
 G0/G1/G2 table, every earlier snapshot and source/receipt/wire/checkpoint hashes.

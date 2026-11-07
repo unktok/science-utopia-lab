@@ -839,3 +839,36 @@ pending. No remote response, weight download/replacement, original conversion
 recipe or fresh-machine reproduction is established by this check. The main
 experiment remains authorized, live and unaffected. Record the unknown rather
 than convert this permissions boundary into a scientific failure or global stop.
+
+Continuation14:18–14:34UTC verifies the same live writer session46865. The
+finite monitoring cell3817 is stopped by the observer only, not the experiment;
+writer46865 remains live on subsequent polls. Another finite observer3827
+finishes normally. Selective uniform-numeric G3 completes at2.4000000000000004,
+so its four own losses are[8.1,2.4000000000000004,8.1,2.4000000000000004].
+This ties its existing best; it is neither a feedback improvement nor four
+independent world-seed replicates.
+
+Both LLM-numeric G3 proposals fail generation after16 actions. Throughput
+request ca4864a62e36ad5f5adfb6c1fc5c7ca44efb33d8296fd9e8d1be552b097721d8
+writes code/world.selection.py at steps2/4/7/9/11, outside the declared numeric
+domain. Finish steps13/15 reject the draft; step14 is a rejected read at the
+implementation checkpoint. Selective request
+bc5081f492fc3b525e501c5cde8aef40bc23493afe93e4a5ae7bea2e52ce49a0
+writes thresholds1000 then1000000 and bias1000, exceeding declared upper
+bounds5 and4. Step8 also addresses program under the wrong open-source node;
+step9 attempts a source edit. Finish steps13/15 report an out-of-domain numeric
+value. Preserve the literal edits, specific errors and null outcomes; do not
+project into bounds, silently undo source changes, refill slots or infer a
+scientific loss. Eight numeric LLM failures versus eight executing random
+numeric proposals does not establish that numerical design freedom is weak.
+
+At14:34:32UTC search39/120:23 complete,8 generation failures,8 execution
+failures,9/9 references,0 selected-policy evaluations. Progress file SHA256
+ec61d8979980cc3c413720defbb4a662917fedb13fac9f8fe0d53abbb7722289.
+Throughput fixed-graph code G3 has submitted and is executing; this is the last
+slot of run00, not the last slot of the three-history study. Detached source
+b6654adefc42223f9ecc7b4e53c043c879230f68 remains clean. No runtime, prompt,
+loss, domain, model, budget, selection or retry policy changes. Full closure,
+selection-fixed evaluation, original-source audits, analyses and manuscript work
+remain required. The optional registry-fingerprint query stays permission-held;
+the user's uncertain HF/Ollama lead is not confirmed origin or egress approval.
