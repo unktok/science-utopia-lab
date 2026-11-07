@@ -43,9 +43,10 @@ and experiment setup. This is a targeted reading, not a new reproduction or
 independent verification of its empirical/unbiasedness claims. Our estimator's
 support, unknown author probabilities and null-validity limitations must be
 assessed under our own contracts; importing a familiar identity does not close
-them. Cite this neighbor in the next substantive paper rebuild, without changing
-the currently reviewed PDF's bound bibliography or adding a method after V2
-dispatch to force an advantageous comparison.
+them. The2026-11-07 manuscript rebuild now cites this neighbor, using the
+[official ICML proceedings metadata](https://proceedings.mlr.press/v235/zhuge24a.html).
+Its bibliography and PDF receipt are rebuilt together; no method is added after
+V2 dispatch to force an advantageous comparison.
 
 ## Follow-up on the two abstract-only leads
 
@@ -66,6 +67,7 @@ inputs; do not contrast fixed weights with supposedly fixed behavior. No claim
 of greater generality or superiority follows from these method readings.
 
 This follow-up changes neither the running V2 study nor its selected objectives,
-designer information, budgets or failure records. Incorporate these near
-neighbors in the next substantive manuscript revision; do not silently change
-a bibliography bound to an already reviewed PDF without rebuilding its receipt.
+designer information, budgets or failure records. The2026-11-07 manuscript
+rebuild now incorporates these near neighbors with primary-source citations
+and a new reviewed PDF receipt. The preceding working PDF is preserved locally;
+its earlier bibliography binding is not silently relabeled as a new build.

@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At14:46UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At14:53UTC all9 fresh
 reference worlds are complete. Search has
-consumed40/120 slots:24 complete,8 generation failures,8 execution failures.
-These are all40 slots of run00, not the full study or three environment
-replicates. Run01's new real-backend calibration passes and its selective
-numeric G0 is being authored; selected-policy
+consumed41/120 slots:24 complete,9 generation failures,8 execution failures.
+These are all40 slots of run00 plus run01's selective numeric G0 failure, not
+the full study or three environment replicates. Run01's new real-backend
+calibration passes and its throughput fixed-graph code G0 is executing; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Uniform numeric
@@ -128,10 +128,14 @@ The [short manuscript](../paper/submission.tex) now contains the actual all-tria
 table, search paths, source/mechanism interpretation and measured costs.
 This closes a small integration comparison, not the full conference study.
 The updated working PDF also includes the completed S1 strong-rule comparison,
-its print-sized figure and the separately labeled V2 protocol. The11-page version
-also adds resources and responsible interpretation. All pages were rendered:
-the first10 exactly match the previously inspected PNGs, and the new page11 was
-visually inspected. No future V2 outcomes are represented as results.
+its print-sized figure, the separately labeled V2 protocol, resources and
+responsible interpretation. Its latest11-page rebuild incorporates GPTSwarm,
+SocialSystemArena and PolicySim, distinguishing prior graph/social-policy search
+from the proposed scientific-world comparison. It also states that editor/domain
+compliance can confound a pure expressivity interpretation. All11 pages were
+freshly rendered at120dpi and individually visually inspected after fixing float
+spacing and an appendix orphan page. No partial/future V2 outcomes are presented
+as manuscript results. This remains a working draft, not submission readiness.
 
 Read-only S1 [scientist token accounting](results/native-controls-token-costs-v1.json)
 is complete: all726 responses have prompt/completion/total/cached usage, with

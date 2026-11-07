@@ -7,6 +7,7 @@
 \usepackage{url}
 \newcommand{\Sys}{\mathcal{S}}
 \newcommand{\Lab}{\textsc{Science Utopia Lab}}
+\raggedbottom
 \title{Objective-Conditioned Design of Scientific Institutions}
 \author{Science Utopia Lab\\Working research draft, November 7, 2026\\Not submitted; authorship to be finalized}
 
@@ -67,7 +68,8 @@ not established properties of the development comparison.}
 This problem does not become new merely because an LLM writes code. Prior work
 already evolves executable mechanisms against evaluation functions
 \citep{liu2025mechanism}, uses past solutions and values in LLM optimization
-\citep{yang2024opro}, and combines discrete LLM search with differentiable
+\citep{yang2024opro}, optimizes language-agent graph connectivity
+\citep{zhuge2024gptswarm}, and combines discrete LLM search with differentiable
 continuous optimization \citep{ma2024sga}. The intended contribution is an
 executable scientific-system design problem and evidence about how objectives,
 design freedom, and search change the resulting institutions. Establishing that
@@ -371,6 +373,17 @@ model weights are therefore not a distinctive claim about frozen behavior.
 AgentSociety2 supports composable social environments and specification-to-code
 generation \citep{piao2026agentsociety2}. Neither executable social research nor
 free workflow/code generation is unique to this project.
+GPTSwarm optimizes language-agent graph edges with REINFORCE and refines
+node prompts \citep{zhuge2024gptswarm}; graph optimization around
+nondifferentiable LLM calls is therefore prior art, not a new estimator claim.
+SocialSystemArena compares seven historically grounded governance
+specifications and a single-agent reference on a common runtime
+\citep{fei2026institutions}. PolicySim uses simulation feedback and contextual
+bandits to optimize recommendation or exposure actions
+\citep{huang2026policysim}. Our intended distinction is searching the executable
+organizing system of a persistent scientific world, rather than only comparing
+a specified institution catalogue or selecting platform actions. This domain
+distinction does not by itself establish greater generality or performance.
 OPRO already uses evaluated solutions in LLM optimization
 \citep{yang2024opro}, and SGA combines LLM discrete search with differentiable
 continuous optimization \citep{ma2024sga}. Our proposed contribution must be
@@ -384,6 +397,9 @@ experiments. Results cannot by themselves validate science-policy objectives
 or justify deployment. Two generations cannot demonstrate sample efficiency,
 stable autonomous invention, or recursive improvement of the inventor.
 Greater API freedom is not evidence that search exploits it effectively.
+Equal proposal budgets also do not isolate expressivity if restricted domains
+impose different compliance burdens on a general-purpose editor. End-to-end
+search outcomes must be distinguished from the capacity of the design space.
 An executable proposal can also misinterpret the objective's arithmetic;
 technical calibration does not establish mathematical task comprehension.
 Poor proposals remain in the finite budget rather than being repaired or
@@ -440,7 +456,6 @@ and costs are not pooled into this matched comparison. The bundled 2025 style
 is used for a readable working draft, not claimed compliance with an unverified
 future conference's format, anonymity rules, or submission deadline.
 
-\clearpage
 \section{Fixed-record selection relaxation}
 \label{sec:selection-relaxation}
 Freeze the $N$ realized decision records, their original reviewer means $q_i$
@@ -485,7 +500,6 @@ dispatch is not a startup attestation or a record of the separate inference
 service. The local 35B model construction recipe and fresh-machine inference
 reproduction remain unresolved; neither is claimed complete here.
 
-\clearpage
 \section{Resources and responsible interpretation}
 \label{sec:resources-ethics}
 \paragraph{Observed computational resources.}

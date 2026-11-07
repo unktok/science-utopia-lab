@@ -935,3 +935,50 @@ This pass is directed interface evidence, not a guarantee of numeric-domain
 compliance or future free-code correctness. Search counters remain40/120,
 evaluation0; the entire finite study remains active and not original-source
 closed-audited. Run02 will still require its own fresh certificate.
+
+Continuation14:48–14:54UTC: the preceding turn made concrete progress (first
+40 slots closed and fresh run01 calibration/dispatch verified), not merely a
+status restatement. Same writer46865 remains live. At14:53:45UTC search41/120,
+24 complete,9 generation failures,8 execution failures,evaluation0. Run01's
+selective numeric G0 consumes a generation-failure slot; throughput fixed-graph
+code G0 has submitted and is executing. Progress file SHA256
+288575b045d996aab41d0d9210ac06145ebce31dd2e42adf66ffe3d8ccb68de6.
+Do not select or evaluate early, change the frozen protocol, or turn this
+partial milestone into a completed method comparison.
+
+In parallel with serial experiment inference, rebuild the working manuscript's
+prior-art positioning. Recheck GPTSwarm v3 edge-optimization/node-optimization
+sections and its
+[official ICML bibliographic record](https://proceedings.mlr.press/v235/zhuge24a.html),
+[SocialSystemArena v1 methods/evaluation](https://arxiv.org/html/2604.27691v1#S3),
+and [PolicySim v1 intervention/bandit methods](https://arxiv.org/html/2603.19649v1#S3).
+Add primary references to the actual manuscript, not only research notes.
+Explicitly distinguish existing graph/score-function optimization, specified
+institution comparison and platform-action search from the proposed persistent
+scientific-system experiment. No greater generality, superiority, new LR theory
+or exhaustive novelty review follows. Also state that a restricted domain's
+compliance burden under a general editor can confound an expressivity claim;
+no active designer prompt, method or design-domain rule changes.
+
+PDF skill read completely; artifact edit marker succeeds exactly once before
+authoring. Preserve the preceding reviewed PDF locally in
+tmp/pdfs/related-work-v2/prior-working-draft.pdf. Initial12-page build has two
+underfull-vbox warnings and an appendix orphan page; intermediate renders show
+them rather than supplying final QA. Use ragged-bottom text and natural
+appendix flow instead of forced page breaks. Final offline cached Tectonic
+build is11 pages with no layout or undefined-reference warnings; retain the
+harmless inputenc/UTF8 warning. All11 final pages are newly rendered at120dpi
+and individually visually inspected, including references, figure labels,
+tables, equations and appendix transitions. No reuse-by-byte-identity is claimed
+for this revision. No new package/model downloads or experiment inference.
+
+Final PDF SHA256
+0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59;
+TeX3edb1397424e548e98492c76a3a6ce3034cb333fd36ff52f2f3135ac9cd492ea;
+bibliographyc3b9efffad398b91126b0f321baa7d4442644cc0bb4e7c313f8a54a724234920.
+Update the bound build receipt with these exact bytes and fresh visual QA.
+An initial malformed apply_patch hunk is rejected before text edits, then
+corrected; no experiment files are edited. Keep the prior warning history and
+do not claim the first build was clean. Main-only changes remain manuscript/
+documentation; partial V2 outcomes stay out of paper results. Submission
+readiness and the goal remain unproven until full-study closure and evaluation.
