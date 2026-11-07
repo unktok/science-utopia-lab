@@ -1087,3 +1087,43 @@ SHA256 values are respectively
 1341bcf964e888e0424d3b3b0d1b934bbc280c42497cee9e5f7f16f70ea36890 and
 ae24e91e1381661e3be9372b4a6b41bf78281e2775c21a67ae3a2f43f5a2feca.
 Do not overstate this inspection as a replay of the unrecorded failed input.
+
+Continuation15:14–15:22UTC verifies the same live writer46865. Prior turn
+makes concrete source/structure diagnosis progress; this turn first waits on
+the actual live handle. Finite observer3894 ends normally at15:20:05UTC when
+run01 throughput technical-only G0 completes: T-7,A7/Q22.666666666666668/R21,
+five final active authors and resources620. Search46/120,25 complete,
+9 generation failures,12 execution failures,evaluation0. This is run01's first
+measured proposal, not a feedback-driven improvement or a repair of another
+arm. It is its own G0 with no earlier own search result; other arms' failures
+do not provide this control a loss-selected parent. It ties the existing
+throughput minimum. Retain outside Q without changing the primary objective
+or calling this efficiency optimization/better science.
+
+World native-adaptive-b2c606b9f1854e3e59f046ee-s42;
+request7bc0032de6703ea8613dc6cd8650d7b41ff06881a93047a8b91e8e5daa1d7d9c;
+checkpoint SHA256
+22390856364da465109c4476ac1bae12003a03b0330673b2ff2b4b8c97fa48c4;
+selection source SHA256
+86cc64438b2507c5c953d455f5c67269072f8127af3e82cd392656e1a4fe1172;
+code-context journal SHA256
+fa4a6db4fd9e3e61f9fddabbda2e3fd5c2135d8e2f31043822949db482ce73d3.
+The source changes only world.selection;19 nodes, connections, schedules,
+types and initial state match its request parent. Both source-matching
+receipts execute all-accept on actual score-address records:3 in year1 and4
+in year2, with all emitted IDs in their actual input records. The displayed
+final_score is1 throughout; measured Q uses original reviews, not that field.
+The returned world payload is{}, but no explicit graph edge consumes that
+output. Do not infer that the entire researcher world is reset by this return.
+
+Its empty-input fallback invents dummy_paper/dummy_conference IDs. This branch
+is not exercised by these two receipts and has no demonstrated correctness;
+preserve it for fixed-policy unused-condition evaluation, without host repair,
+a new merit veto or claims that all input cases work. Directed calibration
+and a completed trajectory are not a proof of arbitrary Python safety.
+At15:21:37 progress file SHA256
+964f7e9722ae04ff4f340f3886de36044d3e87d4850fc865608b70082f2e8748.
+The finite writer continues to selective technical-only G0. No source, prompt,
+metric, selection rule, budget or resource changes. Full-study closure, two
+source audits, fixed-selection evaluation and final analysis remain required;
+the submission goal is active, not complete or blocked by expected runtime.

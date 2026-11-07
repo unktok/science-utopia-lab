@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At15:11UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At15:21UTC all9 fresh
 reference worlds are complete. Search has
-consumed45/120 slots:24 complete,9 generation failures,12 execution failures.
-These are all40 slots of run00 plus five run01 G0 slots, not
+consumed46/120 slots:25 complete,9 generation failures,12 execution failures.
+These are all40 slots of run00 plus six run01 G0 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its throughput technical-only G0 is being authored; selected-policy
+calibration passes and its selective technical-only G0 is being authored; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Uniform numeric
@@ -54,7 +54,11 @@ loss is imputed and no host repair changes either proposal.
 Run01's code-and-graph T/C G0 proposals also fail: scalar score indexing and a
 bare world payload respectively. Both change only selection source, not nodes,
 wiring or schedules. Available structural freedom is not demonstrated structural
-invention. No run01 proposal has a measured loss at this five-slot snapshot.
+invention. Run01 throughput technical-only G0 now completes at T-7,
+A7/Q22.666666666666668/R21. It changes only selection to all-accept, tying the
+existing T minimum, not demonstrating feedback-driven gain. Two literal-source
+receipts cover3/4 real records; its dummy-ID fallback is unexercised, not validated
+for empty inputs. This first own proposal does not repair the other arms' failures.
 
 The [chronological log](logbook/2026-11-07-submission-goal.md) retains the
 G0/G1/G2 table, every earlier snapshot and source/receipt/wire/checkpoint hashes.
