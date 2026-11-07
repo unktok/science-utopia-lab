@@ -619,6 +619,16 @@ def _validation(state, request, binding_sha256, provider_binding, rationale='Sta
     try:
         definition = compile_draft(state, request, binding_sha256=binding_sha256,
             provider_binding=provider_binding, rationale=rationale)
+        if 'design_space' in request:
+            from .native_design_space import require_candidate_in_space
+            from .native_adaptive_search import GeneratedMixedDesign
+            anchor = SystemSpec.from_dict(request['design_space_anchor'])
+            mixed = GeneratedMixedDesign(SystemSpec.from_dict(request['parent_system']),definition,
+                loss_spec=request['loss_spec'],seed=request['rng_seed'],single_draw_blackbox=True)
+            for draw in mixed.draw(request['count'],version_sha256=digest(definition)):
+                if draw['suggestion'] is not None:
+                    require_candidate_in_space(anchor,SystemSpec.from_dict(draw['suggestion']['candidate']),
+                        request['design_space'])
         if submission_notes is not None:
             definition['provenance']['staged_author']['untrusted_submission_notes'] = clone(submission_notes)
             definition['provenance']['staged_author']['submission_notes_are_non_executable'] = True

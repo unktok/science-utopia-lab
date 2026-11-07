@@ -88,6 +88,7 @@ def test_active_prompt_and_archives_expose_exact_domain_in_both_feedback_groups(
     from utopia.optimization.native_staged_author_v15 import initial_draft
     c=campaign(tmp_path,feedback=feedback);r=c._request([],c._strategy_initial(),1)
     assert r['design_space']==c.binding['design_space']
+    assert r['design_space_anchor']==c.initial.to_dict()
     view=json.loads(frame(r,initial_draft(r),[])[0])
     assert view['declared_benchmark_design_space']==r['design_space']
 
@@ -105,6 +106,22 @@ def test_compile_rejects_out_of_domain_proposal_before_any_native_world(tmp_path
     assert 'exceeds' in r['generation_error']['message']
     from scripts.analyze_native_autonomous_search_v14 import replay_campaign
     assert replay_campaign(tmp_path,'blackbox').state==c.state
+
+
+def test_staged_validation_reports_domain_violation_before_finish_without_repair(tmp_path):
+    from utopia.optimization.native_staged_author_v15 import initial_draft,transition
+    c=campaign(tmp_path);r=c._request([],c._strategy_initial(),1);state=initial_draft(r)
+    kwargs={'binding_sha256':'b'*64,'provider_binding':{'image_id':IMAGE}}
+    state,receipt=transition(state,{'tool':'edit','operations':[
+        {'op':'add','path':'/metadata/outside','value':1}]},r,**kwargs)
+    assert receipt['ok']
+    before=deepcopy(state)
+    state,receipt=transition(state,{'tool':'validate'},r,**kwargs)
+    assert receipt['ok'] and receipt['result']['valid'] is False
+    assert 'exceeds' in json.dumps(receipt) and state==before
+    clean=initial_draft(r)
+    _,receipt=transition(clean,{'tool':'validate'},r,**kwargs)
+    assert receipt['result']['valid'] is True
 
 
 def test_uniform_parameter_baseline_is_deterministic_legal_and_does_not_mutate_request(tmp_path):
