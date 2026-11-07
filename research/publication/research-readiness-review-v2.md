@@ -106,6 +106,23 @@ score列のscalar要素を`values_s[i][0]`として扱い、TypeErrorで停止�
 
 ## 投稿に残る判断
 
+### 同じseed・同じ制度と、同じoracle実現は別
+
+11月7日16:41UTCまでの限定診断では、run01 uniform T/C G1のcandidateが
+完全一致していても、Qは22と21.666666666666668に分かれた。元sourceの
+transport検証を使うread-only点検で、最初の五つの研究者request payloadが
+完全一致し、最初のreplyのreasonが既に異なることを確認した。そのreasonは
+六番目のrequestのRecentExperiencesへ入る。詳細と不変な入力hashは
+[当日の記録](../logbook/2026-11-07-submission-goal.md#run01-g1-closed-first-g2-and-response-variation-diagnostic)
+に残す。これは全試験の閉監査や、特定backend動作を唯一の原因とする診断ではない。
+
+したがってpaired seedという設計は、LLM研究者の全応答を完全に結合した
+counterfactual実験を意味しない。全ての観測を保持し、同一制度の差を制度効果と
+解釈しない。最終解析では指定したworld単位・欠測・物理共有を保ち、同seedの
+fresh oracle実現が異なりうることも明示する。この少数事例から分散を推定したり、
+同一制度の結果を統合・選別してselection値を書き換えたりしない。
+条件や予算を変更する提案ではなく、既定比較を解釈する際の証拠上の限界である。
+
 現時点の自己点検（外部・独立査読を受けたという意味ではない）：
 
 | 論文の要件 | 現状 | 閉じるために必要な証拠 |

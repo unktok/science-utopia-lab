@@ -179,6 +179,15 @@ IDs, losses, native costs and selection/evaluation rules remain unchanged; this
 is not policy filtering or cost deduplication. Apply it only after the complete
 original-source audit, not as a completed-study report on a live archive.
 
+Same-seed pairing does not assert bitwise coupling of fresh researcher-model
+replies. When exact policy identities produce different outcomes, retain both
+physical forwards and inspect the full recorded request/reply boundary before
+attributing a difference to institutional design. Do not silently select,
+average, or replay replacement responses to make fresh trajectories equal.
+Shared evaluation jobs remain one physical observation regardless of how many
+logical labels refer to them. Report the declared world units, missing pairs,
+and this oracle-realization limitation separately.
+
 Raw checkpoints contain original absolute locators. A relocated copy needs an
 explicit verified relocation procedure; do not edit old journals or silently
 rewrite paths to make an audit pass. The compact Git results are not a substitute
