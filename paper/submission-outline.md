@@ -35,6 +35,32 @@ UI illustrates the same canonical evidence and belongs in artifact/demo material
 unless a separate user-study claim is made. Detailed API, renderer corrections,
 source bindings and historical campaigns belong in the appendix/repository.
 
+The [common cross-score plotter](../scripts/figures/native_design_cross_objective.py)
+retains all9 references and10 selected-arm labels in fixed display order, raw
+seed T/C/E scores, explicit nulls/counts and shared policy IDs. It marks an
+initial-reference selection rather than labeling failed authoring as invention.
+Five two-year seeds and the single-seed four-year diagnostic remain separate.
+The existing [all-reference plots](../scripts/figures/native_design_evaluation.py)
+instead show paired differences under each arm's own objective. They answer
+different questions; neither should replace the other or become a cross-loss
+normalized ranking. Until the closed audit/report exists, previews are SCRIPTED
+QA only and must not appear as empirical manuscript results.
+
+## Claims and evidence to join after closure
+
+| Question for the results narrative | Required joined evidence | Interpretation boundary |
+| --- | --- | --- |
+| How does the objective affect the selected institution and outcomes? | Frozen representatives/all exact ties, all-slot paths, common T/C/E raw evaluation and paired reference differences | Different winners are not required. Sharing one policy adds no observations; an initial winner is not an invented replacement |
+| What does greater permitted design freedom add? | All120 attempt outcomes including generation/runtime nulls, actual full-spec edits, matched budgets and selection-fixed evaluations | Interface compliance and effective native execution are part of end-to-end search, not an isolated intrinsic expressivity comparison |
+| What changed researcher behavior? | Edited operative source/graph, exact execution receipts, actual downstream researcher request/action/checkpoint path | Authored prose, names, hashes and an unexercised branch are not behavioral or causal evidence |
+| Does adaptive feedback help? | All own-history generations versus technical-only and uniform controls, including initial outcomes/failures and real costs | The treatment includes incumbent-parent selection, not score display alone; no best-run-only or observed-gain requirement |
+| What does optimization cost and what remains reproducible? | Physical/shared jobs, committed/partial replies, measured/unknown usage, runtime and source-bound audit plus staged paper rebuild | Logical oracle budgets are not equal compute; cached prompt tokens are a subset; PDF rebuilding is not raw/fresh-inference reproduction |
+
+These are analysis/narrative requirements, not new objectives, trial filters or
+post-result selection rules. Final prose and figures must use the closed actual
+evidence and may report negative/tied results; implementation/QA alone does not
+resolve any empirical question in this table.
+
 ## Claims not presently supported
 
 Reliable local autonomous improvement, superiority of free design over matched

@@ -180,6 +180,8 @@ The separately implemented integration modules then project that audit:
 python -m scripts.reports.native_design_benchmark --plan <raw/plan.json> \
   --audit <closed-full-audit.json> --expected-source <40-hex-commit> --output <fresh-report.json>
 python -m scripts.figures.native_design_benchmark --report <report.json> --output <fresh-figures>
+python -m scripts.figures.native_design_evaluation --report <report.json> --output <fresh-paired-figures>
+python -m scripts.figures.native_design_cross_objective --report <report.json> --output <fresh-cross-score-figures>
 python -m scripts.reports.native_selection_relaxation --run <raw-root> \
   --audit <closed-full-audit.json> --expected-source <40-hex-commit> --output <fresh-analysis.json>
 ```
@@ -189,6 +191,15 @@ not Apple Python. The last module fixes realized decisions/reviews and relaxes
 only decision flags. Its minima are not feasible dynamic-policy counterfactuals.
 These reporting tools preserve missing scores and physical-sharing labels;
 they do not rerun worlds, renew calibration or update the proposer.
+
+The paired plotter shows each arm's own loss versus all9 references. The common
+cross-score plotter shows all19 reference/selected labels under T/C/E, raw seed
+values, nulls and available/scheduled counts; E remains diagnostic. It validates
+all three objectives' paired blocks against the physical jobs, marks initial
+selection and shared exact policy identities, and never averages loss scales
+or horizons. Two/four-year panels remain separate. These are projections of a
+closed report, not fresh source audits or new policy evaluations. SCRIPTED
+previews are watermarked and cannot stand in for actual-result figures.
 
 An arm name specifies permitted edits, not edits that actually occurred.
 For each submitted candidate, the original-source audit retains the complete

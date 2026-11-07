@@ -3544,3 +3544,44 @@ corrected to describe its actual literal-dependency scope rather than implying
 an unexecuted hash check; actual hash/staging evidence is the separately run
 real CLI and verified receipt. git diff --check passes. The historical through70
 snapshot and original PDF/source/build receipt are unchanged.
+
+### Common cross-objective evaluation figure: implementation and SCRIPTED QA
+
+The preceding goal turn completes concrete paper-subset staging/offline rebuild
+and full-page QA, integrated at main33e279c. Actual writer46865 is re-polled
+live this turn. At23:30UTC10/90 evaluation records are complete, job0010 is
+running. At23:34:40UTC11 normal observation files are present, with progress
+briefly at10 between writes. No writer.ended record or original handle exit.
+
+Reviewing actual plot code finds that existing evaluation figures show each
+arm's own objective versus every reference, while the common T/C/E cross-score
+overview is still missing. Add scripts/figures/native_design_cross_objective.py
+in a separate feature worktree. It keeps all9 references and10 selected labels,
+all3 losses, raw seed points/nulls/n/N, available-score means, actual job IDs,
+all selected ties, and exact-policy sharing P identifiers. Two-year five-seed
+and four-year single-seed panels stay separate. There is no normalized ranking,
+cross-loss average, fabricated uncertainty, trial refill or new optimization.
+Initial selection is marked explicitly, not relabeled as authored invention.
+The plotting reader cross-checks all three objectives' pair blocks with actual
+physical score/job/sharing records, not only each arm's own loss. A distinct
+policy cannot be hidden behind the initial-selection label, and an extra copy
+of the same exact policy/condition cannot create unapproved physical replicates.
+
+19 initial tests pass, then67 expanded tests, then78 including updated initial-
+sharing, old report/paired-figure, docs and artifact checks pass in22.14s.
+All figure data are clearly SCRIPTED fixtures: these are not90 real outcomes,
+worlds or a full closed audit. The first two local preview directories and
+their source hashes remain unchanged. The second deliberately marked an
+initial label on a distinct synthetic policy, exposing a missing consistency
+check; add its explicit rejection and a self-consistent initial-sharing fixture
+before the final preview. Neither preview is inserted into the manuscript or
+called empirical evidence. No active experiment code or raw result is repaired.
+
+Update the current publication plan's stale run00/search-running snapshot and
+its obsolete advice to use the unmodified frozen analyzer: the validated
+order-only adapter retains the original source/guards and runs only after
+actual normal writer closure for full audits. Add a compact claim/evidence
+join to the manuscript outline, and distinguish own-objective pair figures
+from the common cross-score overview. These are narrative/analysis requirements,
+not objective changes or new scientific vetoes. Empirical conclusions still
+await the full evaluation and both closed audits.

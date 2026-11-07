@@ -71,9 +71,10 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 明らかな手作業ルールも対照に含め、弱い初期系だけに勝つ比較にしない。
 効果が出ない場合、予算追加で良い結果を探すのでなく、事前に定めた解析を行う。
 現在は[有限V2 study](../protocols/campaigns/native-design-freedom-v2.md)を固定b6654adで実行中。
-S1の強い8基準は完走・二回監査済み。V2のrun00実校正28項目とcold replayを通過し、
-fresh基準9件は終了、有限探索を実行中。進捗snapshotは[STATUS](../STATUS.md)を参照。
-全探索・選択後評価の結果はまだ未確定。
+S1の強い8基準は完走・二回監査済み。V2は全3runで各28項目の実校正とcold replayを
+通過し、fresh基準9件と有限探索120slotが終了した。選択を固定し、19logical label／
+15exact policyの90物理評価を実行中。進捗snapshotは[STATUS](../STATUS.md)を参照。
+探索の生記録と全試験の閉監査を区別する。独立評価・全体監査はまだ未完了。
 
 **P4：原稿を組み直し中**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
 基盤、比較、制度機構の知見を主文へ。失敗履歴・API・source検証は付録へ。
@@ -87,9 +88,14 @@ V2部分結果は入れていない。
 
 ## V2が閉じた後の解析
 
-原source checkoutの`analyze_native_design_benchmark.py`で全campaign・実校正・
-role load・physical cache/checkpoint・選択・未使用評価をread-only監査する。
-別のfresh outputへ二度保存し、入力不変と監査一致を確認する。稼働中を完了扱いしない。
+凍結b6654adの監査入口には、sorted JSONで失われたplan/selection辞書順を再構成できない
+分析側の不具合がある。[明示的な順序補正adapter](../../scripts/audit_native_design_benchmark_order.py)
+をcleanな分析checkoutから直接起動し、原sourceの監査関数と依存をcleanな凍結checkout
+から読み込む。[実行手順と検証範囲](../../docs/research-workflow.md#audit-before-reporting-the-v2-study)
+に従い、元の全campaign・実校正・role load・physical cache/checkpoint・選択・未使用評価の
+監査guardは保持する。順序補正は同じ値・hash・リストを復元するだけで、原データや
+選択を変更しない。実writerの正常終了後に別のfresh outputへ二度保存し、入力不変と
+監査一致を確認する。稼働中のcomponent checkや未修正のCLIを全体監査成功としない。
 
 後段の`python -m scripts.reports.native_design_benchmark`はその閉じたauditとplanを
 source/schema/hashで束縛して、120slot、三controller履歴、各五world seedのpaired差、
@@ -112,6 +118,16 @@ jitterせず、方法優位のbandを捏造しない。SCRIPTED QAの図には�
 保存し、元reportのphysical score・job ID・共有・seed順序と差分を再照合する。
 他目的でのcross-scoreは入力reportに残る。この図は各arm自身の目的での比較である。
 初期previewはSCRIPTED QAのwatermark付きで、実測結果として原稿へ入れない。
+
+これに加え`python -m scripts.figures.native_design_cross_objective`は、全9参照と全10
+選択armを共通T/C/Eの三列へ並べる。Eは診断であり、Eのsearchを追加しない。
+二年は五seedのraw lossとavailable-score平均、四年は単一seedの別図とし、数値を
+目的間で正規化・合算・順位化しない。nullは軸外、各cellのn/Nを表示する。P番号は
+同じexact policy／physical jobの共有であり追加反復ではない。初期系の選択は星印で
+明示し、生成失敗を成功した制度発明へ付け替えない。全同点IDとraw job/seed値は
+plot-dataに残す。全三目的のpair blockと実physical scoreを再照合する。方式labelは
+許可された自由度であり、実際にgraphが変わったという主張ではない。最初の描画QAは
+明示的SCRIPTEDで、実結果・不確実性・期待性能を示す図ではない。
 
 ## 会議の方針：確認できた事項と判断を分ける
 
