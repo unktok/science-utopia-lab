@@ -2798,3 +2798,55 @@ These are live per-case records, not a full original-source closed-study audit.
 Active source/model settings/loss/budget/selection and raw evidence are unchanged;
 remaining16 search slots, fixed evaluation, two original-source audits and final
 analyses/manuscript/PDF/mock review remain required. The goal stays active.
+
+### Run02 G2 uniform numeric pair: valid losses without a new best
+
+The preceding turn closes104 and its actual scalar-index diagnosis. This turn
+repeatedly confirms actual writer46865 live; researcher wire records advance
+through two more declared physical forwards. At21:01:46UTC progress106/120:
+54 complete,21 generation failures,31 execution failures; reference9/9,
+evaluation0. Progress file SHA256
+567f3e97e61f17021749fff70d9e18354700755bcee687540a90fe741b5ef6aa.
+
+Slot105 T uniform G2 completes T0, worse than its G0/G1 T-7. Slot106 C uniform
+G2 completes C2.4000000000000004, lower than its G0/G1 values8.1/8.4333 but
+only ties the weak initial. Neither improves the arm's best-including-initial
+value. They are valid measured outcomes, not technical failures or candidates
+to discard. Uniform generation is not evidence of a loss-feedback learning gain.
+Both measure A0/Q0/R24,eight rejected records,5 active researchers/resources615
+and2 context deliveries. No hidden activity/quality/fairness veto is applied.
+
+Candidate dictionaries, the six numeric patch operations and controller
+RNG259148707599330803 exactly agree. Parent fingerprints also agree. Retain
+both physical forwards and their costs; they are not two distinct submitted
+policy definitions or independent environment replicates. Matching measurements
+do not prove identical raw trajectories: their recorded event-stream hashes
+differ. Do not average, replace or retrospectively deduplicate development jobs.
+
+Six numeric replacements: thresholds4.7814839282447075/4.936847288397993,
+bias1.0729115126254651,memory_cost0.03941019686446612,router threshold
+0.7795314963552986,count1. No source/schema/graph change. All22 consumed
+uniform-numeric proposals now execute. All20 consumed LLM-numeric slots still
+fail generation; two valid numeric draws do not remove that compliance confound.
+Multiple coordinates and oracle realizations vary together, so do not attribute
+submission count, resources or context differences to one coordinate alone.
+
+T request8f3e152ee2abc3553b39ae34ed0cc135b5169cac060801c7158d72452a9b8d82;
+world native-adaptive-cc8e861ec14d03ab8186470a-s42;
+checkpoint SHA256d0c90ca943ddc0e703c9b412f68d943b4c9db622b246de772b9293ffb5f487f3;
+105-slot progress SHA25631a2c3eec4777c43b98804f0b43c2aa1db96786285ffff06097c4d4fdab6bb2f.
+C request649e0ef14e1b96c8ef4770498b67f6959277f91d9e741753368b79ad35ee1f5c;
+world native-adaptive-953570e120eba7215b0e4d5a-s42;
+checkpoint SHA256edd5193c3614f3e1f7bef88e2e1354b863c7eac3984f2cbed4521a59e78d609e;
+shared candidate fingerprint
+8fe0c91ee78a17c37fb18068af1747ba7bba22e716d40c6611de395805fa1d7c.
+
+No active source/model settings/loss/budget/selection changes, hidden repair/
+refill, new resource or optional registry egress. Remaining14 search slots,
+selected-policy unused-condition evaluation, two original-source audits and
+final analyses/manuscript/PDF/mock review remain required. The full goal is
+active; this live inference wait is neither experiment closure nor a blocker.
+
+Offline checks pass16 active documents/191 local targets/six original snapshots
+and git diff --check. The preserved through70 snapshot retains its recorded
+SHA256. No model/network/world calls are made by these documentation checks.
