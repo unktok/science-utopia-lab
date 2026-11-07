@@ -129,6 +129,14 @@ plot-dataに残す。全三目的のpair blockと実physical scoreを再照合�
 許可された自由度であり、実際にgraphが変わったという主張ではない。最初の描画QAは
 明示的SCRIPTEDで、実結果・不確実性・期待性能を示す図ではない。
 
+費用は閉監査後に`python -m scripts.reports.native_token_costs`で研究者のcommitted／
+partial応答を、`python -m scripts.reports.native_auxiliary_costs`で設計step・校正・
+明示的なrole loadを別集計する。後者はauthorの監査proofを元stepファイルへ、
+校正を元certificateへ結び直す。既知・未報告・無効値の件数、POST記録と応答不明を
+分ける。native countとtransport別名、重なる時間、同じphysical jobの別labelを足して
+総費用を水増しせず、モデル読み込みの未報告値を0としない。モデルserverのcache、
+retrieval・container・host・coding agent・過去開発の全computeが測れたとはしない。
+
 ## 会議の方針：確認できた事項と判断を分ける
 
 2026-11-07時点、第一候補の方向はNeurIPS/ICMLの通常研究論文。

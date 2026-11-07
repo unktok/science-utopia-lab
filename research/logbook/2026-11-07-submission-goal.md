@@ -3598,3 +3598,41 @@ Compact QA receipt: research/results/native-design-cross-objective-qa-v1.json.
 Doc checker passes19 active documents/219 local targets/six original snapshots.
 No preview enters the empirical manuscript; actual full-audit V2 report/plots
 are still not available. Scientific conditions and finite evaluation stay fixed.
+
+### Auxiliary model-cost accounting, not a new inference campaign
+
+The previous goal turn integrates the common T/C/E figure/78-test SCRIPTED QA
+at maind5fc978. Actual writer46865 is re-polled live this turn; at23:48/23:49UTC
+13 evaluation observations are complete and job0013 is active, no ended record.
+No observer timeout or long four-year job is treated as a missing/failed writer.
+
+Inspect existing cost code rather than assuming all roles are covered. The
+scientist token module handles committed/partial response journals, and the
+author audit preserves per-arm known sums/counts. However calibration and
+empty-prompt load fields plus explicit missingness are not yet joined into the
+publication-level auxiliary accounting. Add a separate closed-audit projection,
+not more model calls or a replacement scientific evaluator. It binds exact raw
+inventory; re-reads author started/completed records, original certificates and
+load intents/completions; checks proof/file/role/POST correspondence; preserves
+failed/interrupted steps and adapter provenance. It reports native/transport
+count aliases and overlapping host/caller/transport/provider timings separately.
+Integer native nanoseconds retain exact precision beyond2**53. A load's single
+host elapsed field is not fabricated as a separate transport measurement.
+
+Known zero, missing and invalid counts remain distinct; an author absent by
+design has zero requests while unreported usage on an actual request remains
+unknown. Do not deduplicate distinct physical records by their identical body
+or infer server receipt from a dispatch intent. Scientist responses, designer
+proposals, controls and loads remain separate categories; these are not FLOPs,
+energy, money, fresh GPU work or all historical/retrieval/container/host costs.
+No cost field becomes a scientific loss or selection veto.
+
+The first26 tests pass; after direct raw author-file joins and load-status checks,
+28 pass. The expanded59-test batch passes in5.20s with scripted auxiliary/raw
+fixtures, existing scientist-token and closed-report checks. It tests resealed
+audit-body tampering against unchanged raw records, missing/integer/Boolean/
+invalid usage, non-imputed loads, POST counts, distinct physical copies, duplicate
+controls, changed inventories and mutation during projection. Raw records and
+failed/missing outcomes are not repaired or deleted by the reader. This QA is
+not a complete V2 cost measurement or original-source audit; actual projection
+must wait for both normal writer closure and a full audited inventory.

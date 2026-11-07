@@ -14,7 +14,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 references | All9 fresh same-source reference worlds complete |
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
-| Selected-policy evaluation | Started22:39:08UTC; at23:34UTC11/90 normal observation records, briefly ahead of progress10 between writes.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
+| Selected-policy evaluation | Started22:39:08UTC; at23:49UTC13/90 normal observation records, job0013 active.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Not yet available. Order-only correction passes74 tests/two byte-identical real-data component replays, without changing the experiment; full audits await normal writer closure |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
@@ -100,6 +100,9 @@ sharing and initial-selection marks alongside the existing own-objective paired
 plots. [78-test/render verification](results/native-design-cross-objective-qa-v1.json)
 is SCRIPTED QA only. The [manuscript evidence map](../paper/submission-outline.md#claims-and-evidence-to-join-after-closure)
 joins the final questions to required actual evidence, not new selection rules.
+The [auxiliary model-cost projection](../scripts/reports/native_auxiliary_costs.py)
+adds proposal/calibration/load usage and explicit missingness alongside the
+scientist-response token module; real V2 cost totals still await closed audits.
 [Reproduction and analysis workflow](../docs/research-workflow.md) separates
 tracked rebuilds, original-source audits and fresh inference.
 

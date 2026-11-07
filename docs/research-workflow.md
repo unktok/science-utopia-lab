@@ -330,6 +330,28 @@ separate; unknown/omitted costs are not zero. Preserve recorded campaign wall
 time without adding overlapping role/runtime/checkpoint durations. This module
 does not alter losses, validate scientific merit or contact a model.
 
+### Auxiliary designer, calibration and role-load costs
+
+For a CLOSED original-source V2 study audit, use the approved interpreter with
+`-m scripts.reports.native_auxiliary_costs --run <raw-root> --plan <plan.json> --audit <full-audit.json> --expected-source <experiment-commit> --output <fresh-output.json>`.
+The [projection](../scripts/reports/native_auxiliary_costs.py) binds the full
+audited inventory before/after; author starts/completions are rejoined to exact
+raw files, calibration costs to the audited certificate, and each role-load
+intent/completion to its declared provider. Failures and interrupted steps are
+retained. Native token counts, transport token aliases, host/caller/transport
+seconds and provider integer nanoseconds have separate units and known/missing/
+invalid counts. Empty author-by-design sets have zero requests; an actual
+request with unreported usage is unknown, even for a confirmed empty-prompt load.
+
+Do not add native/transport token aliases, convert unavailable fields to zero,
+deduplicate separate physical calls by body hash, or add overlapping durations
+into campaign wall time. Native provider counts are not automatically the same
+as the scientist endpoint's OpenAI-style usage/cache accounting, fresh GPU work
+or total project cost. Keep this projection separate from scientist response
+tokens, code/container/retrieval/host work and earlier exploration. It is not a
+new raw audit, model call or world evaluation, and does not assign scientific
+losses or change selection. SCRIPTED QA is not completed V2 cost evidence.
+
 ### Release and attribution boundary
 
 Keep the repository's Apache2.0 LICENSE and upstream attribution. The current
