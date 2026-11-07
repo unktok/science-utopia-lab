@@ -341,3 +341,32 @@ The resumed offline documentation/artifact check at e3d7264 passes10 tests in
 0.076s with no failures/skips; this is software QA, not new model evidence.
 The user's uncertainty about model origin is retained; no Hugging Face origin
 or conversion recipe is inferred from that reply.
+
+This continuation is a verified wait plus new provisional mechanism evidence,
+not a closed study result. Session46865 is confirmed live on each45-second wait.
+At11:19:55UTC throughput code/graph G1 closes at-7: search14/120 (9 complete,
+3 generation failures,2 execution failures), references9/9, evaluations0.
+Only candidate path /mechanisms/7/parameters/code_artifact/source changes;
+connections remain27/27. The new world.selection reconstructs real paper/review
+records, adds2 to its own final_score and still accepts every record. AST is
+different, unlike the preceding selective whitespace-only proposal.
+Source UTF-8 SHA256
+8e1e5e60a42d4fa736da469124a1483372f36d3de07c191ca84c8f960795fca2;
+code-context file SHA256
+393317281f8b7bc73584ac4ae0b2499a2a958af23b32718e648a520d2d279692.
+Two literal-source-matching receipts contain3/4 accepts,0 rejects at years1/2.
+Observed A7/Q22.333333333333336/R21 remain the same as G0. Frozenb6654ad
+native_world._measure_domain explicitly uses actual review_history reviews,
+not authored final_score; native_kernel stores the authored score separately.
+Do not infer better reviews from the authored score increment.
+
+The91 recorded scientist request payloads are not all identical across these
+two policies:23 differ, first at zero-based entry39/year2, where the delivered
+publication text's Average score changes3.00 to5.00. This is evidence of an
+actual downstream researcher-input consumer, not proof that the whole realized
+research trajectory is identical merely because A/Q/R tie. Wire file SHA256s:
+G0 edfc0ccafa2fa70d885c0edc64adc76f4dcb721b62b70dcd55c6942b05385b17;
+G1 199197b010cd46341234d994e025f30ef91fd43241a389a51307d990a246ce58.
+An initial exact payload comparison was false and is retained as the finding,
+not normalized away. No extra inference or change to frozen source/protocol.
+Full original-source audit and study-level interpretation still await closure.
