@@ -387,6 +387,7 @@ def protocol_binding():
     from . import native_bounded_author_context_v45
     from . import native_initial_evidence
     from . import native_feedback_control
+    from . import native_design_space
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
         'transport_source_sha256': hashlib.sha256(Path(native_search_generator_v14.__file__).read_bytes()).hexdigest(),
@@ -404,6 +405,7 @@ def protocol_binding():
         'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
         'initial_evidence_source_sha256': hashlib.sha256(Path(native_initial_evidence.__file__).read_bytes()).hexdigest(),
         'feedback_control_source_sha256': hashlib.sha256(Path(native_feedback_control.__file__).read_bytes()).hexdigest(),
+        'design_space_source_sha256': hashlib.sha256(Path(native_design_space.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'file_editor_instructions_sha256': digest(FILE_EDITOR_INSTRUCTIONS),

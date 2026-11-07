@@ -254,7 +254,7 @@ class NativeAdaptiveDesignCampaign:
     def __init__(self, directory, *, initial_system, loss_spec, seeds, world_binding,
                  strategies, mode='hybrid', seed=42, learning_rate=.1,
                  strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
-                 expectation_estimator=None, initial_evidence=None, proposal_feedback='loss'):
+                 expectation_estimator=None, initial_evidence=None, proposal_feedback='loss', design_space=None):
         validate_loss_spec(loss_spec)
         if (proposal_feedback not in ('loss', 'matched-loss', 'technical-only')
                 or proposal_feedback != 'loss' and
@@ -280,6 +280,11 @@ class NativeAdaptiveDesignCampaign:
         # Omit the default field to preserve exact legacy bindings and replay.
         if proposal_feedback != 'loss':
             self.binding['proposal_feedback'] = proposal_feedback
+        if design_space is not None:
+            from .native_design_space import validate_design_space
+            if mode!='blackbox':
+                raise ValueError('prospective benchmark design-space support is blackbox only')
+            self.binding['design_space'] = validate_design_space(initial_system,design_space)
         if initial_evidence is not None:
             from .native_initial_evidence import validate_initial_evidence
             self.binding['initial_evidence'] = validate_initial_evidence(initial_evidence,
@@ -328,8 +333,11 @@ class NativeAdaptiveDesignCampaign:
         chosen = int(torch.multinomial(probabilities, 1, generator=torch.Generator().manual_seed(rng_seed)))
         if technical_only:
             from .native_feedback_control import technical_request
-            return technical_request(self, records, strategy_state, count,
+            request = technical_request(self, records, strategy_state, count,
                 chosen=chosen, probabilities=probabilities, rng_seed=rng_seed)
+            if 'design_space' in self.binding:
+                request['design_space'] = clone(self.binding['design_space'])
+            return request
         if self.binding.get('proposal_feedback') == 'matched-loss':
             from .native_feedback_control import class_only_records
             records = class_only_records(records)
@@ -370,6 +378,8 @@ class NativeAdaptiveDesignCampaign:
                 'parent': 'loss-selected-incumbent', 'proposal_order': 'chronological',
                 'strategy_updates': True, 'technical_outcomes_visible': True,
                 'native_error_messages_visible': False, 'final_loss_only_selection_unchanged': True}
+        if 'design_space' in self.binding:
+            request['design_space'] = clone(self.binding['design_space'])
         return request
 
     def _mixed(self, record):
@@ -382,6 +392,12 @@ class NativeAdaptiveDesignCampaign:
         draws = mixed.draw(record['request']['count'], version_sha256=record['version_sha256'],
             proposal_start=sum(len(r['draws']) for r in record['request']['history']),
             based_on=record['request']['based_on_observation_id'])
+        if 'design_space' in self.binding:
+            from .native_design_space import require_candidate_in_space
+            for draw in draws:
+                if draw['suggestion'] is not None:
+                    require_candidate_in_space(self.initial,
+                        SystemSpec.from_dict(draw['suggestion']['candidate']),self.binding['design_space'])
         return mixed, draws
 
     def _finish(self, record, strategy_state):
