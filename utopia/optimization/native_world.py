@@ -9,6 +9,7 @@ from .blackbox import Observation, Suggestion
 from .loss import evaluate_loss, loss_spec_sha256, validate_loss_spec
 from utopia.system import SystemSpec, validate_system_spec
 from utopia.system.native_kernel import NativeScienceKernel
+from utopia.runtime.checkpointing import PortableStop
 
 
 def measure_native_world(simulation, *, run_id: str):
@@ -120,6 +121,16 @@ def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
             if checkpoint.exists():
                 from utopia.utils.data_utils import file_sha256
                 evidence[-1].update(checkpoint_path=str(checkpoint.resolve()), checkpoint_sha256=file_sha256(checkpoint))
+        except PortableStop as error:
+            # The journalled model path intentionally wraps transport failures
+            # in BaseException PortableStop. Only our exact declared-budget
+            # cause is a consumed technical null. User stops and unrelated
+            # transport interruptions retain their original stop semantics.
+            from .native_factory import NativeInferenceBudgetExceeded
+            if not isinstance(error.__cause__,NativeInferenceBudgetExceeded):
+                raise
+            failures.append({'run_id':run_id,'seed':seed,
+                'error_type':'NativeInferenceBudgetExceeded','error':str(error)[:2000],'loss':None})
         except Exception as error:
             failures.append({"run_id": run_id, "seed": seed, "error_type": type(error).__name__,
                              "error": str(error)[:2000], "loss": None})

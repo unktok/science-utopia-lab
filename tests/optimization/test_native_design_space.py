@@ -164,3 +164,13 @@ def test_http_budget_exhaustion_remains_null_after_native_domain_error_handling(
     assert observation.status=='failed' and observation.loss is None
     assert observation.metadata['measurements']==[] and observation.metadata['technical_failures']
     assert models[0].http_budget_exhausted is True and len(wire.read_text().splitlines())==2
+
+
+def test_unrelated_portable_stop_is_not_reclassified_as_a_completed_null_slot():
+    from utopia.runtime.checkpointing import PortableStop
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.optimization.blackbox import Suggestion
+    def stop(*a):raise PortableStop('SCRIPTED user or unrelated transport stop')
+    with pytest.raises(PortableStop):
+        evaluate_native_suggestion(Suggestion('SCRIPTED-stop',seed().to_dict(),0,'software-QA'),
+            seeds=[42],simulation_factory=stop,loss_spec=objective_specs()['throughput'])
