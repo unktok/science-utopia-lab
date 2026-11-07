@@ -150,6 +150,10 @@ def replay_campaign(directory, method):
         kwargs.update(strategies=b['strategies'], mode=b['mode'],
             strategy_learning_rate=b['strategy_learning_rate'], strategy_baseline=b['strategy_baseline'],
             exploration=b['exploration'])
+        if 'initial_evidence' in b:
+            # Prospective optional historical initialization. Legacy bindings
+            # pass no extra argument and retain their original replay bytes.
+            kwargs['initial_evidence'] = deepcopy(b['initial_evidence'])
     controller = (ReadOnlyAdaptive if method == 'blackbox' else ReadOnlyNested)(directory, **kwargs)
     if method == 'blackbox' and any(r['request']['count'] != 1 for r in
             state['records'] + ([state['pending']] if state['pending'] else [])):
