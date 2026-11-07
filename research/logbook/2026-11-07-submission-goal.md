@@ -294,3 +294,30 @@ transport rewrite or a proven runner defect. Preserve null and the literal
 source; do not host-repair it, refill the slot or rewrite earlier measurements.
 The full original-source study audit and mechanism/cost conclusions still wait
 for terminal closure; continued waiting is expected, not a blocker.
+
+Monitoring continuation10:52–11:03UTC: previous turn is progress (new actual S1
+cost analysis and verified11-page paper), this turn includes verified waits on
+the specific live exec session46865. Every poll confirms that same session is
+still running; no restart, recalibration, budget change or extra inference is
+initiated. Stage/generation is taken from actual pending campaign/author files,
+not the driver `active` field, which records the last completed slot. Progress
+rows are grouped by campaign, so array[-1] is not necessarily the newest result.
+
+Run00 G1 selective parameters consumes its16 actions and remains generation-
+failure. The last finishes again explicitly reject an out-of-domain draft;
+preserve its raw failure instead of treating the generic controller sentinel
+as a causal diagnosis. Run00 throughput fixed-graph G1 submits, then fails with
+CodeExecutionError: its literal `world` output is `[obs_in[0]['payload']]`, not a
+list of message envelopes with a payload object. The returned all-accept code
+therefore does not become a measured improvement. The partial response journal
+has20 committed replies at the inspection snapshot, not a final audited cost.
+This is observed authored ABI noncompliance; there is no evidence here of host
+rewriting or a new transport defect. No code repair or failed-slot refill occurs.
+
+At11:03:41UTC12/120 slots are consumed (7 complete,3 generation failures,
+2 execution failures), references9/9 complete, evaluations0. The next selective
+fixed-graph G1 candidate has submitted and is under native evaluation. These
+are provisional live observations, not a closed study audit, an optimizer
+comparison or a claim about the remaining generations. Existing analysis/figure/
+cost machinery is ready; wait for the fixed finite study and apply it only after
+terminal closure and two exact-original-source audits.
