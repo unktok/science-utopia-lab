@@ -511,3 +511,37 @@ independent trial; clarify that it is a different candidate in the same adaptive
 history, not an independent statistical sample. Later held-out worlds still
 follow the predeclared selection-before-evaluation boundary. No source, budget,
 model or protocol changes; keep the submission goal active pending the full study.
+
+Continuation12:16–12:27UTC verifies the same live session46865 using bounded
+45-second waits. The monitor's temporary exec cells3736/3737 finish normally;
+they are observers, not replacement experiment writers. Selective fixed-graph
+G2 completes by12:26:54UTC with C7.766666666666664, A7/Q22.333333333333336/R21,
+worse than its G0/G1 C2.4000000000000004. It lowers the acceptance threshold
+from9 to0 and all7 realized records are accepted. Preserve this valid worse
+candidate; its loss is not technical null and the best observed value stays2.4.
+Source UTF-8 SHA256
+0fbc1ded93e60858487db60d1528e7d92ac2237d8f1654a0266f7e34afe3361f.
+Totals22/120,15 complete,4 generation failures,3 execution failures,
+references9/9,selected-policy evaluations0. Progress hash
+284c8dd98c95f7be41cdc434443f62c1a9709685bd583c50b9386fd46b7799fb.
+
+Inspecting the adverse proposal must not start from the controller sentinel or
+assume a supplied-objective bug. The generated code's comments incorrectly
+associate the positive A coefficient with maximizing acceptance. The actual
+archived request has the intended selective LossSpec and minimize direction.
+Decode the prefixed JSON in every actual posted user frame, not just the
+pre-wire request: all14 retain loss hash
+fa77da2338b9c9e200adccb1f929d84ae9b7e066e790d1c9facea967577ac917,
+coefficients A4/Q-1/R0.1, direction minimize, and other-inputs-fixed directions
+A decrease/Q increase/R decrease. All14 provider done_reason values are stop;
+reported prompt counts range13407–21261. No length-stop or missing/reversed
+arithmetic is observed in this scoped check; do not extrapolate to every prompt
+or assert a unique internal cause for the model's reasoning. Coupled-world
+effects must still be evaluated rather than inferred from affine signs alone.
+Generation request hash
+eea78e5aa94ea79a539dcb7b4981ec7ec76e39aadd477763fc8ecfaa455c5791.
+
+All inspections are read-only, with no new inference, host-repaired policy,
+failed-slot refill, coefficient or active-prompt change. Preserve the worse
+point and the full finite comparison. Throughput code/graph G2 is next;
+full original-source audit and final study conclusions still await closure.
