@@ -9,6 +9,7 @@ exhaustive review.
 Its follow-up also inspects the method sections of SocialSystemArena and
 PolicySim, previously recorded only as abstract-level leads. The exact scope
 and implications are retained there; neither is a verified reproduction.
+The later GPTSwarm entry also comes from targeted primary-method reading.
 
 | Source | Relevant prior contribution | Consequence for this project |
 | --- | --- | --- |
@@ -19,6 +20,7 @@ and implications are retained there; neither is a verified reproduction.
 | [FunSearch](https://github.com/google-deepmind/funsearch),2023/2024 | LLM program search paired with an evaluator | Executable-code evolution is established prior art; show the value and difficulty of the institution/world design space |
 | [Interpretable LLM mechanism design](https://arxiv.org/abs/2502.12203),2025 | Mechanisms as generated code, evolved against metrics, with problem-specific fixing | Neither code-as-mechanism nor LLM-generated rules alone is novel. Our whole-system wiring/process freedom and no silent policy repair require direct comparison |
 | [ADAS / Meta Agent Search](https://arxiv.org/html/2408.08435v2#S3),2024/2025 | Code-defined agents/workflows; archive-conditioned generation and validation feedback | Free code/graph search and the space/algorithm/evaluator distinction are established. Do not claim our graph interface is inherently more expressive than general program synthesis |
+| [GPTSwarm](https://arxiv.org/html/2402.16823v3#S2.SS3),2024 | Graph-based agents, REINFORCE edge optimization and node-prompt improvement | Topology optimization without differentiating the full LLM/world is not new; the scientific-system comparison must carry the contribution |
 | [LLM Economist](https://arxiv.org/html/2507.15815v1#S3),2025 | In-context planner optimizes a bounded marginal-tax vector over adapting LLM workers | Fixed model weights and LLM social-policy optimization are not new. Contrast numeric tax actions with our institution code/process domain, without claiming a new generic optimizer |
 | [AgentSociety2](https://arxiv.org/html/2607.11895v2#S3.SS2.SSS3),2026 | Composable social environments and specification-to-code generation, validated before registration | Integration, executable social research and generated environment modules are prior art. Our study must substantiate objective/design-freedom consequences in a persistent research ecosystem |
 

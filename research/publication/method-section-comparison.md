@@ -13,6 +13,7 @@ that our current pilot establishes the proposed differences.
 | [ADAS v2 §2–3](https://arxiv.org/html/2408.08435v2#S3) | A meta-agent programs a forward function, uses an archive and validation scores, with self-reflection and finite error correction | Both general workflow search and separating search space/algorithm/evaluation already exist. Our technical no-refill budget is a comparison contract, not a stronger expressivity or priority claim |
 | [LLM Economist v1 §3](https://arxiv.org/html/2507.15815v1#S3) | Workers and planner adapt through context; the planner emits bounded bracket updates and sees history/best tax vectors | Weight freezing does not prevent behavioral adaptation. Our fixed researcher weights must not be described as frozen scientist behavior; both worlds have endogenous responses to policy |
 | [AgentSociety2 v2 §3.2.1–3.2.4](https://arxiv.org/html/2607.11895v2#S3.SS2.SSS3) | Existing simulators are integrated as modules; requirements become DesignSpec then code, with reviewer/validator steps and a code-generating action router | Generated/composable environments are not unique to this project. Our domain fixes the research-world substrate and measures editable organizing systems rather than claiming arbitrary new social worlds |
+| [GPTSwarm v3 §2.1–2.4,3.1](https://arxiv.org/html/2402.16823v3#S2.SS3) | Parameterized distributions over inter-agent DAG edges use REINFORCE; node prompts also have history-based optimization. Return utility need not be differentiable | Modular agent graphs, topology search and score-function gradients around LLMs are prior art. Substantiate the persistent scientific-institution design problem, not a first gradient-based multi-agent graph |
 
 ## Consequences for the first paper
 
@@ -36,6 +37,15 @@ that our current pilot establishes the proposed differences.
 The first three method patterns above are prior work we build on. Avoid claiming
 “first automatic mechanism invention”, “first LLM+gradient optimization”, or
 “optimized real science” on the basis of our implementation or this small pilot.
+
+The GPTSwarm follow-up first inspected v1, then checked the indicated v3 methods
+and experiment setup. This is a targeted reading, not a new reproduction or
+independent verification of its empirical/unbiasedness claims. Our estimator's
+support, unknown author probabilities and null-validity limitations must be
+assessed under our own contracts; importing a familiar identity does not close
+them. Cite this neighbor in the next substantive paper rebuild, without changing
+the currently reviewed PDF's bound bibliography or adding a method after V2
+dispatch to force an advantageous comparison.
 
 ## Follow-up on the two abstract-only leads
 
