@@ -1,0 +1,18 @@
+{
+  "schema": "scienceutopia.submission-hardware-observation.v1",
+  "observed_utc": "2026-11-07T10:41:45+00:00",
+  "plan_sha256": "57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25",
+  "cpu_brand_string": "Apple M5 Pro",
+  "reported_logical_cpus": 18,
+  "physical_memory_bytes": 68719476736,
+  "physical_memory_gib": 64,
+  "hardware_model_identifier": "Mac17,9",
+  "source_command": "/usr/sbin/sysctl -n machdep.cpu.brand_string hw.memsize hw.ncpu hw.model",
+  "read_twice_values_agree": true,
+  "startup_environment_attested": false,
+  "gpu_utilization_or_energy_measured": false,
+  "new_inference_requests": 0,
+  "configuration_changes": 0,
+  "scope": "Post-dispatch read-only host hardware observation, not a startup record, measurement of model utilization or guarantee of isolated compute. No serial number, UUID, network identity, hostname or environment secrets recorded.",
+  "content_sha256": "734768001c0f94b333e3f0ca960197982e85405f957c3aaf2d5f9c25985c7a5f"
+}
