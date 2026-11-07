@@ -33,7 +33,15 @@ def test_reviewed_pdf_and_complete_source_dependencies_match_receipt():
 
 def test_manuscript_citations_and_included_figures_have_bound_local_inputs():
     receipt=json.loads((ROOT/'paper/submission-build-v2.json').read_text())
-    tex=(ROOT/'paper/submission.tex').read_text()+(ROOT/'paper/submission-results.tex').read_text()
+    pending=['paper/submission.tex'];visited=set();bodies=[]
+    while pending:
+        path=pending.pop()
+        if path in visited:continue
+        visited.add(path);text=(ROOT/path).read_text();bodies.append(text)
+        if path!='paper/submission.tex':assert path in receipt['additional_dependencies'],path
+        for relative in re.findall(r'\\input\{([^}]+)\}',text):
+            pending.append('paper/'+relative+('' if relative.endswith('.tex') else '.tex'))
+    tex='\n'.join(bodies)
     bib=(ROOT/'paper/references.bib').read_text()+(ROOT/'paper/submission-sources.bib').read_text()
     available=set(re.findall(r'@\w+\s*\{\s*([^,\s]+)',bib))
     used={key.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',tex) for key in group.split(',')}
