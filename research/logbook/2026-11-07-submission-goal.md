@@ -2536,3 +2536,81 @@ validation remain outside that check. git diff --check passes and the through70
 snapshot checksum remains unchanged. The experiment source/settings/objective/
 budget/selection remain untouched;23 search slots, fixed unused-condition
 evaluations, two source audits and final analysis/paper/mock review stay open.
+
+### Run02 G1 closes at100, with a parameter-only edit inside a code arm
+
+This continuation follows concrete97-slot/release-review work at c2279db.
+Repeated actual-writer46865 polls remain live. Read-only observer85251 reaches
+its100-slot target at20:23:07UTC and exits0, not experiment termination.
+Progress100/120:50 complete,21 generation failures,29 execution failures;
+reference9/9,evaluation0. Progress file SHA256
+2f53a57eb51deb1d028186bf0484a0ff70fd32cc30c34564f643467acb3ef585.
+Run02 G1 closes five completions, two generation failures and three execution
+failures. No arm improves its best-including-initial value at this generation.
+
+| Run02 G1 arm | Assigned outcome |
+| --- | --- |
+| T LLM numeric | generation null |
+| C LLM numeric | generation null |
+| T fixed graph code | -7 |
+| C fixed graph code | execution null |
+| T code and graph | 0 |
+| C code and graph | execution null |
+| T technical-only code and graph | execution null |
+| C technical-only code and graph | 2.4000000000000004 |
+| T uniform numeric | -7 |
+| C uniform numeric | 8.433333333333332 |
+
+Slots98/99 T/C LLM-numeric each exhaust16 actions without valid explicit
+finish. The general editor accepts intermediate source writes, but the final
+declared numeric-space validator rejects finish13 and15. T writes
+code/world.selection.py at5, with repeated reads4/14 rejected by the existing
+implementation checkpoint. C writes that source at4/6/10, with read14 rejected.
+Both retain zero native observations and null losses; neither a preserved draft
+write nor a rejected finish is a submitted executable institution. Do not refill
+them, invent a poor loss or interpret them as intrinsic numeric expressivity
+failure. All20 consumed uniform-numeric proposals execute, while all20 consumed
+LLM-numeric slots fail generation; the interface/compliance confound remains.
+
+T requestc578366a21d93907d622a795fb7d860e4f188fd7c97b12b11e8cce7374ae939f;
+its step13/15 completed-file SHA256
+7e62783d3d594ac5f8833415d5682d46ef7146dd7d7fdf388df8c8e61e8b36e0 /
+7da08a31e53b738596e76e9c7e1ba5e439e20f146e140ceb095ea4fbd65ae4ed.
+C request567b3806a305d1f3abc162124994b389e5a4744221e5b835bd0435d941fbb9f0;
+its step13/15 completed-file SHA256
+a668fbe29c70ede6239c01a2b1f67dbf4e614513aaf930bbd8e3093d74e81474 /
+709f62ca907342c968e85063bdbc16fc379b5726da3e0ada35ca142b43770eb4.
+These paths are under each arm's authoring/generation-request directory.
+
+Slot100 T fixed-graph code G1 completes T-7,A7/Q22.333333333333336/R21,
+5 active researchers/resources620 and4 context deliveries. Contrary to its arm
+name, its actual patch changes only addressed-selection program bias0.5 to2.0.
+There is no new selection source or graph edit relative to G0: the literal
+all-accept function is identical to81. Source-matching period1/2 receipts cover
+exact3/4 real identities; incoming accept values are all zero, but the preserved
+body ignores those values and accepts each record with its original scalar score.
+This is a measured tie to G0/strong throughput reference, not a new best,
+successful structural invention or a globally inert-bias proof. The observed
+decision path does not establish every other program/state effect. No native
+world is rerun for this inspection and no alternative score is imputed.
+
+Requestb52e4063b3e97f41b6002fff3095a7ba557d36caeb90b80bc031a397c6469eaf;
+world native-adaptive-bed050bf3c30496d88ae53cb-s42;
+selection source SHA25631dc663adc45fa2e752c2139f726a4565b0ae30d99e223348740e45d73e86fda;
+checkpoint SHA256b7c4f80edc12d8cb339c5a915c6fa5611e46db808166acce41f515cee41c7c6d;
+code-context journal SHA2568d81e496a2050c7d192e45b521f1987e433df3c6872093d4f069eb08c4af8cb0;
+period1/2 result SHA256c91073144f9dda5254407de5769bad6165549a1f0f9e96b2255de65ebff4984c /
+891d376c4bc6d0b0453ce9bb329a49478959908d690eea256caaf156ff4f3378.
+
+The result record appears in its arm state before the aggregate counter update;
+re-read progress rather than restarting from that normal between-write interval.
+No active source/settings/loss/budget/selection change, hidden repair/refill,
+new resource or optional registry egress. Remaining20 G2/G3 search slots,
+fixed unused-condition evaluation, two original-source audits and final analyses/
+manuscript/PDF/mock review remain open.100/120 is not a completed study or a
+fraction of total submission-readiness time. The full goal stays active.
+
+Offline document-target checks pass16 documents/191 local links/six original
+snapshots, with no inference/network/world calls; git diff --check passes.
+The preserved through70 snapshot SHA256 remains
+3360312852c14344e23718ad283ca4053c3930afffbd995dace2bb42bc01865b.
