@@ -2,7 +2,48 @@
 
 Updated: 2026-11-07 JST
 
-## V44 repairs verified; actual loss-feedback loop running
+## Current: deliberate search-design review; no new campaign
+
+The user asks to stop and reconsider the research/software design, then work
+thoroughly on that review. [Current review](search-design-review.md) and
+[decision0029](decisions/0029-search-review-before-more-autonomous-authoring.md)
+supersede older live claims below. No new model/world campaign is started.
+
+V44 writer ends2026-11-06T18:23:20Z, about75 minutes after startup. All8 slots
+are consumed:6 evaluation completions,1 native runtime failure and1 generation
+failure. Efficiency is12,12,null,null; throughput -7,-7,-7,-7. Seven authored
+definitions finish successfully, which is not seven successful evaluations.
+There are6 physical world directories including a partial failure,578 physical
+researcher responses and62 designer POSTs. Exact checkpoint reuse means logical
+evaluations must not be called independent fresh worlds. The terminal audit
+finishes, and a new original-source read-only replay reproduces its content hash
+18ba247752ad258b6661091c254ef7f4383ea176eee0146fdd8a82fab9ca3366.
+
+The [offline review table](results/native-search-design-review-v1.json) uses
+existing canonical loss evaluation and archived A/Q/R/cross-scores. Existing
+all-accept outcomes score-11.833333333333336 under efficiency, versus that arm's
+best12. This retrospective pooling is not new improvement or data supplied to
+the original isolated arms. Both objectives prefer the same existing pool
+candidate. PriorV13 external-author source improvements remain distinct from
+the recent local-LLM-author automation failures.
+
+Original-source G3 reconstruction also reproduces245925 internal prompt bytes
+versus199047 undispatched wire bytes at the recovery turn, with14 exact step
+replays/30 unchanged JSON files. The240000-byte guard stops before the renderer
+removes an unused45044-byte workbench. This is not measured model token overflow.
+
+R0 inventory/review/offline checks are complete:74 related tests pass in22.77s,
+the original43MB audit replays byte-identically, and the exact G3 capacity
+diagnostic preserves30 raw JSON files. See the
+[review log](logbook/2026-11-07-search-design-review.md). Next proposed work is
+R1 bounded-context/recovery and R2 connecting existing ask/tell to explicit
+initial evidence, before a separately frozen maximum-two-world forward slice.
+No new optimizer framework or toy substitute world is introduced. Original
+SystemSpec freedom, scientist/world boundary and optional estimator tracks stay.
+
+## Historical V44 snapshot before terminal evaluation (superseded)
+
+### Repairs verified; actual loss-feedback loop was running
 
 Snapshot:2026-11-06T17:34Z. This is a recorded observation, not a heartbeat.
 For current liveness use outputs/native-authoring-recovery-v44-a4/writer.started.json,

@@ -30,7 +30,7 @@
 | Goal | Entry point |
 |---|---|
 | Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
-| Check original goals against implementation, actual evidence and remaining limits | [Current automatic-search milestone](research/milestones/2026-11-03-autonomous-institution-search-v14.md), [nested free-institution milestone](research/milestones/2026-11-02-nested-free-institution-v13.md) and [program map](research/program-map.md) |
+| Check original goals against implementation, actual evidence and remaining limits | [Current search-design review](research/search-design-review.md), [program status](research/STATUS.md), [historical nested free-institution milestone](research/milestones/2026-11-02-nested-free-institution-v13.md) |
 | Set up a development environment | [Development guide](docs/development.md) |
 | Understand the code and data flow | [Architecture](docs/architecture.md) |
 | Make a contribution | [Contributing guide](CONTRIBUTING.md) |

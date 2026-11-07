@@ -1,8 +1,25 @@
 # Science Utopia Lab — program map
 
-Updated: 2026-11-03
+Updated: 2026-11-07
 
-## Current direction: optimization, not mandatory differentiability
+## Current: review the search design before another campaign
+
+The [current review](search-design-review.md) maps every original goal to
+implemented boundaries, actual evidence and remaining work. V44 has ended:
+8 slots,6 complete evaluations and2 failures, with no within-arm improvement.
+Its original-source audit replays exactly. Retrospective common-pool scoring
+and independent objective-conditioned search are different experiments; a known
+pool candidate is not a newly invented or improved institution.
+
+Preserve the existing free SystemSpec and original-world oracle, ask/tell,
+canonical loss, conditional gradient estimators and English evidence UI. The
+local LLM editor is one proposer, not the definition of optimization. PriorV13
+has external-author source improvements; recent local automatic-author failures
+do not erase that evidence. Next are bounded context/repair and explicit initial
+evidence integration, not more seeds or a new toy world. No new model/world run
+starts during the review. [Decision0029](decisions/0029-search-review-before-more-autonomous-authoring.md).
+
+## Historical direction and evidence (V14 and earlier)
 
 The [v14 finite slice](milestones/2026-11-03-autonomous-institution-search-v14.md)
 removes manual authoring inbox answers: an exact objective/method/budget drives
