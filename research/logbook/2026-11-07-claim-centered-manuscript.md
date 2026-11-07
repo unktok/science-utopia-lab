@@ -31,6 +31,22 @@ This PDF precedes later text/citation changes, is NOT a final artifact, and is
 not delivered as an updated empirical paper. Final outcomes/figures wait for
 the original-source terminal audit, followed by fresh build/render/visual QA.
 
+## Final empirical build after closure
+
+The finite run and two byte-identical original-source audits now close the
+empirical include. The final7-page PDF includes all8 candidate outcomes, nulls,
+the actual best-so-far paths, the all-accept program's operation and its
+unexercised placeholder-ID limitation. No measured G1 improvement, feedback
+superiority or independent scientific-quality gain is claimed.
+
+Build at69693cf with cached/untrusted Tectonic; render and visually inspect all
+7 pages at95dpi, plus pages4–5 at150dpi. No overlap/clipping, overfull boxes or
+undefined references observed. One cosmetic underfull-vbox warning remains.
+The PDF skill's full-page visual QA is used, not text extraction alone.
+Preserve the older preliminary build, long manuscript and old shareable PDF.
+The [delivery receipt](../results/native-feedback-comparison-v1-delivery.json)
+records PDF/table/figure/audit hashes and the separate27-test report scope.
+
 Add a pure hash-bound summary-to-TeX table renderer: all8 candidates, baseline,
 statuses, cross-scores, nulls and display-only rounding. Detect own/cross-score
 mislabeling and failure-number substitutions. It is not an independent raw

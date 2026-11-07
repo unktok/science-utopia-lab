@@ -10,6 +10,10 @@ author transitions, measurements, physical responses/code/wires, role loads,
 terminal chronology and calibration cold replay, with unchanged raw inventory.
 Audit content SHA256 is f3741b407f1fb262961bc86e279206263e72da59b686b93407c9d30d3f569c0c.
 
+A second independent invocation of the same read-only frozen-source audit
+produces a byte-identical full report (`outputs/native-feedback-comparison-v1-a1-audit-a2.json`).
+This rechecks the same evidence, not a new scientific replicate.
+
 The [interpreted result](../results/native-feedback-comparison-v1-a1.md) and
 [compact summary](../results/native-feedback-comparison-v1-a1.json) now drive
 the manuscript table and figures, not partial logs or synthetic fixtures.

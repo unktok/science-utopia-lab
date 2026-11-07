@@ -1,0 +1,69 @@
+{
+  "schema": "scienceutopia.feedback-comparison-delivery.v1",
+  "date": "2026-11-07",
+  "experiment_source_commit": "2e375c22793210d3496450a99ca96a86f0f7aecc",
+  "report_artifact_source_commit": "69693cf2541e0514f59da56a4604274dff992f55",
+  "terminal_status": "budget-complete-with-failures",
+  "scientific_slots": {"declared": 8, "completed": 4, "execution_failed": 4, "generation_failed": 0, "refilled": 0},
+  "independent_read_only_audits": {
+    "count": 2,
+    "byte_identical": true,
+    "content_sha256": "f3741b407f1fb262961bc86e279206263e72da59b686b93407c9d30d3f569c0c",
+    "file_sha256": "c35afdf45a21fd6a303989d335c1e52bb8d4e8b377427f8dc8a7485afa4e36fc",
+    "local_files": ["outputs/native-feedback-comparison-v1-a1-audit.json", "outputs/native-feedback-comparison-v1-a1-audit-a2.json"],
+    "new_model_calls": 0,
+    "new_generated_code_executions": 0,
+    "original_source_blobs_verified": 271,
+    "raw_inventory_unchanged": true
+  },
+  "compact_result": {
+    "path": "research/results/native-feedback-comparison-v1-a1.json",
+    "content_sha256": "928cc83f57d2fc6376097d5f4b5af866e94d39d0d4a7478ed76df6e58331ffbc",
+    "file_sha256": "62e789eca03e4c28a23705ef30e076e4e64efeba6b1744f2a6d11b4cf22a0537"
+  },
+  "generated_table": {
+    "path": "paper/generated/feedback-comparison-v1/results.tex",
+    "file_sha256": "7d166c3bf94aadf33c76f67608f898c5ab04a0ac435252e76cfe8121111aeadd"
+  },
+  "figure_manifest": {
+    "path": "paper/figures/feedback-comparison-v1-a1-r2/manifest.json",
+    "file_sha256": "6091f09498510da41cef0a994f8da0f730eae5b591c26885ab2b224a0ef68ff8",
+    "all_images_visually_inspected": true,
+    "earlier_render_preserved": "paper/figures/feedback-comparison-v1-a1/"
+  },
+  "report_software_tests": {
+    "source_commit": "1528dd83585bb65fcc04e0b13a6eb5aac815404e",
+    "test_files": [
+      "tests/reports/test_native_feedback_comparison_driver.py",
+      "tests/reports/test_native_feedback_comparison_analysis.py",
+      "tests/reports/test_native_feedback_comparison_figures.py",
+      "tests/reports/test_feedback_comparison_tex.py",
+      "tests/reports/test_repository_docs.py"
+    ],
+    "passed": 27,
+    "seconds": 2.09,
+    "junit": "outputs/feedback-comparison-v1-verification/pytest-closed-report.xml",
+    "junit_sha256": "a2170d5acc92f83b1c1501d473efb016c1d2d3f716cd477dde06c68611fbc4f3",
+    "counts_additive_with_earlier_suites": false,
+    "full_integration_rerun_on_current_main": false
+  },
+  "document_checks": {"documents": 19, "local_links": 185, "exact_historical_snapshots": 6, "errors": 0, "network_requests": 0},
+  "pdf": {
+    "path": "output/pdf/science-utopia-lab-objective-design-draft.pdf",
+    "sha256": "8ae26aaaaa4609ca7d34594e950c3b12a2a0588b88f7157d6eab01a766c70ff8",
+    "pages": 7,
+    "build": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
+    "all_pages_rendered_and_visually_inspected_dpi": 95,
+    "additional_detail_pages": [4, 5],
+    "detail_dpi": 150,
+    "overfull_or_undefined_reference_warnings": false,
+    "cosmetic_underfull_vbox_warning": true,
+    "old_manuscript_and_shareable_pdf_preserved": true,
+    "conference_submission_ready": false
+  },
+  "prospective_main_changes_are_not_experiment_changes": true,
+  "new_generation_requires_fresh_source_bound_calibration": true,
+  "method_superiority_established": false,
+  "recursive_improvement_established": false,
+  "real_scientific_quality_gain_established": false
+}
