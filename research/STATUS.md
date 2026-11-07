@@ -28,10 +28,11 @@ at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
 diagnostic. At10:00UTC all9 fresh reference worlds are closed. Search has
-consumed2/120 slots, both generation failures in the parameter-only arms;
-their code edits exceed the declared numeric domain. The first throughput
-fixed-graph code proposal has submitted successfully and its researcher world
-is in flight, not yet a completed loss. Selected-policy evaluation remains0.
+consumed3/120 slots:2 generation failures in the parameter-only arms (their code
+edits exceed the declared numeric domain) and1 completed throughput fixed-graph
+code proposal, recorded loss-7. This partial result is not yet a closed audit,
+a gain over the strongest controls or a method comparison. Selected-policy
+evaluation remains0. The writer session is live and the frozen checkout is clean.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout
@@ -116,6 +117,13 @@ explicitly post-dispatch, not a startup attestation or complete environment lock
 recipe and separate model-server environment remain unresolved for fresh-machine
 reproduction; a local alias/digest alone is insufficient. No weights are shared
 or downloaded, and no completed public/anonymous artifact release is claimed.
+
+Closed-study reporting now preserves author-step errors and hashes rather than
+only generic generation failure labels. Atfb5cf4c the integrated offline
+report/audit-plan/artifact scopes pass58 checks in13.36s. This is not additional
+model evidence. The [readiness review](publication/research-readiness-review-v2.md)
+also records domain-presentation/compliance as a possible interpretive limitation;
+no active prompt, search restriction or failed candidate is changed.
 
 While inference runs, a separate analysis feature is completed and integrated:
 closed-audit projection of all120 slots, all reference-paired seed differences,

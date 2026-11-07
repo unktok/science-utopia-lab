@@ -60,7 +60,22 @@
     "junit_sha256": "4178701c568197bd254f6965a4a19882dd6dd4b8a4a10f409fb4b0c5c5d32de3",
     "scope": "Offline artifact/report contracts, strict tracked-summary rendering and explicitly non-startup selected-package environment observation. No new raw audit, scientific calls or inference-server environment attestation."
   },
+  "integrated_paper_analysis_scope": {
+    "source_commit": "4ecbf9306bec8077ecdfda38cb894027380053bf",
+    "passed": 36, "failed": 0, "skipped": 0, "seconds": 6.67,
+    "junit": "outputs/publication-benchmark-v2-verification/paper-analysis-final-a2.xml",
+    "junit_sha256": "7c37d2fdb6c8da8c0153848f43b27fb8e7d6692c59deec8b24b1cd248f4e8bb5",
+    "scope": "Reviewed ten-page paper dependency guard, closed-study projection, selection relaxation, environment observer and offline summary rendering. No model calls."
+  },
+  "integrated_author_evidence_scope": {
+    "source_commit": "fb5cf4c127ea4d42d6f8511157cf297f83f2a8e3",
+    "passed": 58, "failed": 0, "skipped": 0, "seconds": 13.36,
+    "junit": "outputs/publication-benchmark-v2-verification/report-integration-final.xml",
+    "junit_sha256": "a43a664e830ae7af7a5d4478d6464e69d542766eb788087f483ced3e1373f68f",
+    "scope": "Offline paper/report/plan/driver/audit contracts and replay-bound author diagnostics, including malformed/null rejected tool values. Not a closed V2 audit or scientific effect."
+  },
   "preserved_earlier_failures": [
+    {"junit": "outputs/publication-benchmark-v2-verification/paper-analysis-final.xml", "tests_ran": 0, "exit_code": 4, "cause": "Verification command named nonexistent test_native_design_benchmark.py. Correct path is test_native_design_benchmark_report.py; no test or experiment executed in that attempt."},
     {"junit": "outputs/publication-benchmark-v2-verification/final-artifact-guard.xml", "passed": 24, "failed": 1, "cause": "New artifact guard found the build receipt named the old path-figure revision and omitted a nested generated table. Actual PDF was unchanged; bind the actual r2 image and recursively included table instead of weakening the guard."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical.xml", "passed": 4, "failed": 2, "cause": "Historical software fixture hardcoded seed42 before the new evaluation binding."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical-a2.xml", "passed": 4, "failed": 2, "cause": "Fixture omitted explicit raw non-reasoning field; inspection additionally found historical HTTP horizon3, prospectively parameterized for four-year evaluation."}

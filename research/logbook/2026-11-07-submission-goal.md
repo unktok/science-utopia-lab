@@ -143,3 +143,46 @@ visually inspected. A harmless inputenc/UTF-8-engine notice is retained in the
 build receipt; there are no overfull/underfull or undefined-reference notices.
 The prior9-page PDF is preserved under ignored build intermediates. This is a
 working draft, not a submission-ready finding or a completed conference study.
+
+At4ecbf93 the updated paper/artifact/report scopes pass36 in6.67s;
+JUnit paper-analysis-final-a2.xml SHA256
+7c37d2fdb6c8da8c0153848f43b27fb8e7d6692c59deec8b24b1cd248f4e8bb5.
+The earlier invocation named a nonexistent test path and ran0 tests (exit4);
+its original XML is retained, not called an experimental/software-test failure.
+
+The separate author-evidence reporter is committed at58e2d51 and merged after
+50 offline checks in7.59s (JUnit author-evidence-report.xml SHA256
+b117d9d638fcb4ea26b6197041b602770ea9f114f35e85edd48f1e65531f4cc5).
+At integratedfb5cf4c,58 report/artifact/plan/driver/audit checks pass in13.36s;
+JUnit report-integration-final.xml SHA256
+a43a664e830ae7af7a5d4478d6464e69d542766eb788087f483ced3e1373f68f.
+The report joins exact replayed request generations and preserves per-step
+schema/tool errors, null/malformed actions, terminal reasons and content hashes.
+Compiled action IR is explicitly not the raw wire function object. Errors are
+not counted as independent failed candidates, and source writes are not behavior
+or merit evidence. These diagnostics will be applied only after the full audit.
+
+Both parameter failures retain their exact declared domain in all16 bounded
+user-message frames; this was checked by decoding the prefixed JSON value.
+The first ad-hoc check assumed the entire user string was bare JSON and found0;
+the corrected read-only parser handles the actual prefix/suffix without altering
+the raw input. The common system instruction describes arbitrary design and does
+not restate parameter-only restrictions. Record this possible presentation/
+compliance confound; neither omission nor a unique causal root is demonstrated.
+Do not infer that code freedom is inherently superior from numeric noncompliance.
+
+At10:00UTC the first throughput fixed-graph proposal closes with loss-7, bringing
+search to3/120 (1 measured,2 null). At10:09UTC the writer session remains live,
+selected-policy evaluations0, frozen checkout clean. Partial values are not a
+closed audited comparison or a measured gain over strongest controls.
+
+Read-only model provenance check confirms local manifest SHA equals the declared
+f3ddc743 digest. It has996 layer descriptors plus1 config descriptor, totaling
+21909283871 declared bytes. Inspected small config/license blobs match their
+declared SHA256; tensor contents were not rehashed here. Model config declares
+Qwen3_5MoeForConditionalGeneration; the local alias alone is not upstream
+checkpoint proof. An Apache2.0 license-text layer is present (SHA256
+5f3a3c817e78f5b8a4ad2d2c458a3e4b2cce470d6c12642c4eeb12cb8a9bf51d),
+but this is not an authorization to redistribute all model/data artifacts.
+No upstream revision or conversion command is identified; do not claim that
+fresh-machine model reproduction is closed. No model weights are copied or loaded.
