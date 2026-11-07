@@ -1127,3 +1127,57 @@ The finite writer continues to selective technical-only G0. No source, prompt,
 metric, selection rule, budget or resource changes. Full-study closure, two
 source audits, fixed-selection evaluation and final analysis remain required;
 the submission goal is active, not complete or blocked by expected runtime.
+
+Continuation15:24–15:33UTC: preceding turn makes concrete measurement/source/
+unexercised-branch diagnosis progress. Writer46865 is again confirmed live.
+A brief read sees no pending campaign while progress still reads46; a reread
+advances to47. This transition is not terminal evidence and causes no restart.
+At15:25:27 search47/120,25 complete,9 generation failures,13 execution
+failures,evaluation0; progress SHA256
+d56eb20a58f58bf6e7757d9f01b1540144bf673276f5d10375dbc151deb77e8b.
+Selective technical-only G0 submits but fails at values[i][0] on generated
+line34. A length check does not turn a scalar into an indexable row. This
+failure occurs while calculating the displayed score even though its intended
+decision is reject; do not substitute a counterfactual reject-all loss.
+World native-adaptive-2818a14a6932d8b05db85129-s42;
+requesteacf048449689728ad9719c452ab3a22a9adb44747c73e325d6fc8221c7332fd;
+source SHA256
+fc0170df4ee16c52f6a3591960e4d5389564c488635f08b8dd801a38137fe0f2;
+partial code-context journal SHA256
+a3c63002cc496eaecd35ab432f4ed7f145d3a5347e41070e2a8e5aeb43aadb4d
+(three preceding successful receipts, not a successful selection). Only
+world.selection changes;19 nodes, wires, schedules, types and initial state
+match its request parent. This repeats the scalar-rank family, not a new
+measured decline, structural invention or host transport failure.
+
+Finite observer3903 finishes normally at15:30:25 when throughput uniform-numeric
+G0 completes. Search48/120,26 complete,9 generation failures,13 execution
+failures,evaluation0. Its assigned T is-1,A1/Q3.6666666666666665/R24,7 rejects,
+5 final active authors/resources615. This improves the common initial T0 for
+this initial random proposal but is worse than the known T-7; neither a
+feedback gain nor a new best across all arms/reference policies. It witnesses
+an intermediate count in the numeric domain, not a domain restricted to binary
+all-accept/all-reject behavior. The whole comparison remains incomplete.
+
+World native-adaptive-050831341c568cc15f54086a-s42;
+request2242a388dba25a53c9feb23a21aa7ca7a3ac604c295a1f8b81425d7dcd5d4c6a;
+checkpoint SHA256
+b4329eac32a0ff05ff1df553bff6c3fe44543f9cc9634d54143800e1ae9ce822;
+code-context journal SHA256
+69660706be2d27458751b0497da375ac5a2b73fc4a62669551858b644e1bded8.
+The six literal sampled coordinates are addressed-selection thresholds
+[3.4418091194605873,1.8890864341489544],bias0.14428977575415658,
+memory_cost0.0999558941499807,open-memory-router threshold0.876714540456979,
+and open-source count1. The source-matching selection receipts reject all3
+real records in year1, then accept1/reject4 of5 in year2; all emitted IDs are
+actual input IDs. These eight decisions are one longitudinal world, not eight
+independent samples. Multiple coordinates change; do not assign the effect
+to one without an ablation. Uniform generation uses no designer LLM calls,
+but its scientist world still has real inference cost.
+
+At15:31:02 progress SHA256
+dc1f3bd983359ce53bb7de30a7f20f42aaeef8275eea3a35a5bf0a83f6727b53.
+The same finite writer continues with selective uniform-numeric G0, with no
+source, model, prompt, objective, budget, retry or selection change. No early
+unused-condition evaluation or new resource; remaining search, two source
+audits, selection-fixed evaluation, analysis and final manuscript are required.
