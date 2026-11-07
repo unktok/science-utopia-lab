@@ -1648,3 +1648,34 @@ partial code-context journal SHA256
 This is a recorded generated-program rank mismatch, not a full runtime audit
 or evidence that numeric parameters caused the failure. The user-authorized
 finite writer proceeds to the next slot; the whole submission goal is not closed.
+
+At17:07:07UTC search65/120:33 complete,12 generation failures,20 execution
+failures;reference9/9,evaluation0. Run01 selective technical-only G2 executes
+its Python body but returns decisions=[] for three actual submissions. The
+recorded GraphRuntimeError is missing required decisions output, not G1's
+malformed world envelope. One source-matching period1 interpreter receipt exists
+among four code-context rows, but there is no successful whole native forward.
+The source computes local scores_output with literal10s, yet never returns it;
+those local values do not become measured Q or a valid objective improvement.
+No empty decision list is host-converted to real-ID reject decisions.
+
+Request4cafef12e222659989f746952e52215c570bc49cc0f9fc40e41022c1f3daba42;
+world native-adaptive-031bd52c2d65e97b1113ab1c-s42;
+selection source SHA256449678be8fd7b3c21e27b3228a0aab7ec92734f56f3a611b0f912b9a31b9ccfa;
+partial code-context journal SHA256
+aeb2f89112e4e837e3e225178f5e9bdfdb61bcefff1c65c9a98ac494defed31c;
+interpreter result SHA256235a6267613b053baca7d2f9c98b62ac6c6a44d83530dbc576a241b7181ca7dc.
+
+The separate documentation inspection finds stale entrypoints: root README
+still called V45 the latest pilot, RESEARCH described S1 as just starting and
+implied equal total compute, and paper README described a prior ten-page reuse
+check rather than the latest all-eleven-page inspection. Correct these at
+0a9e57e without changing historical snapshots, runtime or the existing PDF.
+Ten offline repository/PDF artifact tests pass in0.09s. The read-only link check
+passes16 active documents/204 local links/six unchanged historical snapshots;
+anchors and remote links are outside its scope. No model/world/network call.
+Read the actual build receipt before updating the QA description: all11 pages
+were freshly rendered at120dpi and inspected in that earlier build. This
+documentation correction is not a new render or a new scientific sample.
+Writer46865 remains live; observer84841 waits for70 slots or600s and does not
+change the campaign. All remaining study/analysis/manuscript requirements stay open.
