@@ -239,11 +239,16 @@ def _certificate_proof(root, plan, terminal):
 def analyze(run, *, expected_source):
     root = Path(run).resolve()
     before = _inventory(root)
+    manifest = (read(root / 'plan.json').get('historical_audit_manifest')
+        if (root / 'plan.json').is_file() else None)
+    external = (Path(manifest['path']), manifest['file_sha256']) if manifest else None
     try:
         return _analyze(root, expected_source=expected_source, inventory=before)
     finally:
         if _inventory(root) != before:
             raise ValueError('raw warm-start evidence changed during read-only audit')
+        if external is not None and file_sha256(external[0]) != external[1]:
+            raise ValueError('original historical audit changed during read-only audit')
 
 
 def _analyze(root, *, expected_source, inventory):

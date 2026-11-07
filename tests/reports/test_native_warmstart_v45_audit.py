@@ -80,6 +80,19 @@ def test_raw_mutation_is_detected_even_when_inner_audit_fails(tmp_path, monkeypa
         audit.analyze(tmp_path, expected_source='a' * 40)
 
 
+def test_external_historical_input_is_checked_after_entire_audit(tmp_path, monkeypatch):
+    donor, root = tmp_path / 'donor.json', tmp_path / 'new-raw'
+    save(donor, {'SCRIPTED': 'original pinned historical input'})
+    save(root / 'plan.json', {'historical_audit_manifest': {
+        'path': str(donor), 'file_sha256': audit.file_sha256(donor)}})
+    def changed(*args, **kwargs):
+        save(donor, {'SCRIPTED': 'changed during later native verification'})
+        return {'status': 'SCRIPTED not a real audit'}
+    monkeypatch.setattr(audit, '_analyze', changed)
+    with pytest.raises(ValueError, match='historical audit changed'):
+        audit.analyze(root, expected_source='a' * 40)
+
+
 def scripted_setup(root, monkeypatch):
     """Only orchestration is scripted; helper truth is tested in its own suite."""
     bank = {'content_sha256': 'historical-bank', 'source_audit': {'source_commit': 'old-source'}}
