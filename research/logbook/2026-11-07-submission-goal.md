@@ -1559,3 +1559,27 @@ The user reports not knowing the designer's upstream provenance, suggesting
 HF/Ollama only tentatively. Keep upstream revision/conversion unverified;
 this is not authorization for the pending optional layer-hash registry egress.
 Current weights remain in use; the experiment does not depend on that query.
+
+At16:49UTC search62/120:32 complete,12 generation failures,18 execution
+failures; references9/9 and evaluation0. Run01 throughput code-and-graph G2
+completes T-7,A7/Q22.333333333333332/R21,5 active researchers/resources620,
+4 institutional-context deliveries. After two own technical nulls this improves
+the separately measured common initial T0, not a measured G0/G1 value. It ties
+strong all-accept controls, not a new pooled optimum or feedback advantage.
+Its two sequential replace operations target only world.selection source;
+the second supersedes the first. No structural/wiring change is submitted.
+Two source-matching selection receipts process3/4 real records with exact
+output identity sets. All score entries are scalar floats, so the author's
+list-only score branch is not taken: the explicit fallback accepts each record
+with authored final_score0.5. Original review means, not those authored scores,
+produce Q. Empty-input/dummy-ID fallback branches remain unexercised.
+
+Request34e7663484cc8a0c11f7577d4dce18d9b0d384c8c6b11811a7f84835fdc2d9db;
+world native-adaptive-42ee93dc0df30ab20c4dfb32-s42;
+selection source SHA256b8fe4bd5b3dc3afc977e05f2821e77387209fdfbba1eb6d749ca3ecb7a86160b;
+checkpoint SHA256f08656d955c037773c55f62c7b8567ceea3ce07c23f9f5caac98f90befeffc36;
+code-context journal SHA256cd73510a2ea2b9308d0488df87972c64b957f803a13875cfcbda06a33152fb5a.
+The61-slot documentation milestone was committed at4a93bc6; three existing
+PDF/source/resource artifact checks pass in0.05s with approved offline Python.
+No PDF rebuild, native audit, inference, source change or external egress was
+performed by those checks. Writer46865 and frozen b6654ad remain unchanged.
