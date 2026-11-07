@@ -119,6 +119,11 @@ It is not that failed arm's success, a controlled same-source policy benefit,
 expected-loss improvement, held-out gain or evidence of a smarter designer.
 The saved audit already computes both canonical cross-scores; the compact
 projection preserves them separately without relabeling losses or comparisons.
+For post-evaluation loss-only pooled ranking, this is the smallest observed
+efficiency value across the old and new data. The candidate remains eligible
+for future selection under either loss: its authoring-arm label is provenance,
+not an extra admission/novelty/merit veto. This ranking does not establish
+source equivalence or change the failed slot's status.
 
 ## Independent audit and observed author capacity
 
@@ -170,3 +175,9 @@ parse/transport `errors[]`; preserve exact typed errors and hashes. Audited
 retrospective cross-scores are now retained distinctly from own-arm feedback.
 The final summary helper passes13 focused tests. No third scientific slot,
 extra free-author probe, hidden repair/re-evaluation or scale-up is dispatched.
+
+Final integration source `d806a430ab095d1237db41dd2dca448e95e7f5b0`
+passes75 focused checks in9.65s; separate JUnit/logs are preserved under
+`outputs/native-consumer-contract-v46-a1-verification`. These cover the
+prospective contract advisory and final publication helper, not a new actual
+backend certificate or new scientific world. The original d49 remains clean.

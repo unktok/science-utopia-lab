@@ -25,6 +25,8 @@ After evaluation only, throughput's A7/Q22.666666666666668/R21 scores
 -12.166666666666668 under efficiency, below historical-11.833333333333336.
 That retrospective cross-score is NOT a successful efficiency-arm execution,
 feedback available to it, a same-source controlled improvement or held-out gain.
+In a post-evaluation loss-only pool it is the new smallest observed efficiency
+value. Its generating-arm label is provenance, not a veto on future selection.
 
 Prospectively, bounded-profile code read/write receipts now expose literal
 downstream tensor contracts. This advisory does not restrict institutional
@@ -32,6 +34,8 @@ freedom, infer code behavior, repair source or add a veto. It was NOT inserted
 into the active experiment; its next production use requires a fresh source-bound
 certificate. Summary error preservation is also fixed. No replacement world or
 scale-up is dispatched.
+Final integration source d806a430ab095d1237db41dd2dca448e95e7f5b0 passes75
+focused checks in9.65s; this is separate from the frozen d49 full verification.
 
 The user authorizes execution, parallel implementation and bug fixes after the
 review. New opt-in `plain-function-bounded-v45` bounds active source/wire context
