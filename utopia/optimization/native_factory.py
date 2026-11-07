@@ -8,6 +8,10 @@ import subprocess
 from utopia.utils.data_utils import write_json_atomic
 
 
+class NativeInferenceBudgetExceeded(RuntimeError):
+    """Declared HTTP attempt budget exhausted; never a scientific loss."""
+
+
 class LocalQwenNativeFactory:
     """Same real native world for every method; per-suggestion caches/outputs.
 
@@ -16,7 +20,7 @@ class LocalQwenNativeFactory:
     """
     def __init__(self, directory, data_cache, *, years=4, model='qwen3:8b', max_tokens=768,
                  experiment_binding=None, allow_dirty=False, corpus_years=None, record_wire=False, record_code=False,
-                 inference_lock=None):
+                 inference_lock=None, maximum_http_attempts=None):
         import requests
         from utopia.utils.paths import project_root
         self.source_root = project_root(__file__)
@@ -38,6 +42,10 @@ class LocalQwenNativeFactory:
         self.record_wire = record_wire
         self.record_code = record_code
         self.inference_lock = Path(inference_lock).resolve() if inference_lock else None
+        if maximum_http_attempts is not None and (type(maximum_http_attempts) is not int
+                or maximum_http_attempts<1 or not record_wire):
+            raise ValueError('HTTP budget requires positive integer attempts and literal wire recording')
+        self.maximum_http_attempts = maximum_http_attempts
         response = requests.get('http://127.0.0.1:11434/api/tags', timeout=10)
         response.raise_for_status()
         self.model_digest = next(m['digest'] for m in response.json()['models'] if m['name'] == model)
@@ -101,6 +109,8 @@ class LocalQwenNativeFactory:
                 'runtime_seed_binding': self.runtime_seed_binding,
                 'lab_inference_serialized': bool(self.inference_lock),
                 'thinking_override': False, 'max_tokens': self.max_tokens, 'experiment': self.experiment_binding}}
+        if self.maximum_http_attempts is not None:
+            binding['science_config']['maximum_http_attempts'] = self.maximum_http_attempts
         model.response_cache = CompletedResponseCache(root / 'replies' / 'responses.sqlite', binding=binding)
         try:
             sim.enable_portable_checkpoints(binding)
@@ -108,7 +118,7 @@ class LocalQwenNativeFactory:
             model.response_cache.close()
             raise
         if self.record_wire:
-            record_native_http(model, sim, root / 'wire-requests.jsonl')
+            record_native_http(model, sim, root / 'wire-requests.jsonl',maximum_attempts=self.maximum_http_attempts)
         if self.inference_lock:
             serialize_native_http(model, self.inference_lock)
         from utopia.system.native_migration import native_execution_nodes
@@ -129,7 +139,7 @@ class LocalQwenNativeFactory:
         return sim
 
 
-def record_native_http(model, simulation, path):
+def record_native_http(model, simulation, path, *, maximum_attempts=None):
     """Record actual cache-miss payloads, never credentials or cache replays.
 
     Raw local evidence only. Existing response journals independently retain
@@ -141,16 +151,22 @@ def record_native_http(model, simulation, path):
     from utopia.runtime.checkpointing import canonical_json
     path = Path(path)
     lock = threading.Lock()
+    attempted = len(path.read_text().splitlines()) if path.exists() else 0
     callback = model.client.chat.completions.create
     def recorded(**payload):
+        nonlocal attempted
         frame = simulation.native_system._frame
         record = {'year': frame['year'] if frame else None,
                   'payload_sha256': hashlib.sha256(canonical_json(payload).encode()).hexdigest(), 'payload': payload}
         with lock:
+            if maximum_attempts is not None and attempted>=maximum_attempts:
+                model.http_budget_exhausted = True
+                raise NativeInferenceBudgetExceeded('declared native HTTP attempt budget exhausted')
             path.parent.mkdir(parents=True, exist_ok=True)
             with path.open('a') as handle:
                 handle.write(json.dumps(record, ensure_ascii=False, allow_nan=False) + '\n')
                 handle.flush()
+            attempted += 1
         return callback(**payload)
     model.client.chat.completions.create = recorded
 

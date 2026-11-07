@@ -25,7 +25,7 @@ Cはnative1–5 review scale上のdebit4／review費用0.1という宣言したt
 - fixed Qwen3-8B researchers、五研究者、二年、development world seed42、四年public corpus。
 - fresh open_native_systemを全armの共通初期系とする。元のlegacyそのものと偽らない。
 - 研究者の重み、retrieval/corpus、世界のbasic adapters、測定・LossSpecは検索対象外。
-- 原制度・rank/rate・全採択／全却下・閾値3/4・reviewなし全採択は手作業対照で別評価。
+- 原制度・rank/rate・全採択／全却下・閾値3/4・reviewなし全採択／全却下は手作業対照で別評価。
   S1の異なるsource実測を新studyのfresh同条件観測として流用しない。
 - 三つの入れ子の設計空間。初期anchorに対して毎回検査し、歴代parentから少しずつ
   制限外へ抜けることを認めない。
@@ -58,8 +58,9 @@ proposalを仮定しない。各runは別session・別履歴で、他群・他ru
 順序はplanで事前固定・回転し、後から良さそうな群を優先しない。
 
 - 2目的×5群×3run×4世代＝**120 candidate slots**。
-- fresh共通初期系1world＋手作業対照7world＝**8 reference slots**。
-- searchとreferenceは最大**128物理world**。同一候補の別slotも別physical評価とし、
+- fresh共通初期系1world＋手作業対照8world＝**9 reference slots**。
+  reviewなし全却下も明示し、無活動・低費用ルールへの勝利を隠さない。
+- searchとreferenceは最大**129物理world**。同一候補の別slotも別physical評価とし、
   成功分だけを残さず、物理／論理費用をそれぞれ数える。
 - LLM candidateは96、author POST最大1536。各run開始時のfresh校正は≤40 POST、
   計≤120 POST。各校正が失敗・staleならその後の生成は停止し、隠れたrefreshをしない。
@@ -68,6 +69,10 @@ proposalを仮定しない。各runは別session・別履歴で、他群・他ru
   技術校正はfree-design成功や科学的理解の保証ではない。
 - 各proposal前designer role load、各world前scientist role load/context確認。
   一つのlocal endpointの実推論は直列。実行中sourceは一切変更しない。
+- 全群共通で二年worldは最大512 scientist HTTP attempts、四年評価は1024。
+  literal wireへ記録したattemptを数え、上限後はdispatchしない。domainが例外を
+  捕捉して年末checkpointを作っても、予算超過worldは測定成功でなくtechnical null。
+  output768token、HTTP120s・既存domain再試行を含む物理費用も別途記録する。
 - 失敗、同点、無変更、良くならない改訂も四世代を消費する。失敗slotの補充なし。
   pendingを隠れて再dispatchしない。writer状態と応答不明はそのまま残す。
 
@@ -87,9 +92,9 @@ proposalを仮定しない。各runは別session・別履歴で、他群・他ru
 seedを分離したfingerprintを保存する。これは再設計ではなく宣言した評価条件変更。
 design原本は不変、評価結果をproposerへ戻さない。
 
-選択10制度＋手作業reference8制度＝最大18対象（同一policyは同一評価を明示共有）。
-各五seed・二年に加え、31001の四年条件も各対象1回測る。最大108評価world。
-二年／四年の同seedは独立標本として足さない。search128＋評価108＝最大236world。
+選択10制度＋手作業reference9制度＝最大19対象（同一policyは同一評価を明示共有）。
+各五seed・二年に加え、31001の四年条件も各対象1回測る。最大114評価world。
+二年／四年の同seedは独立標本として足さない。search129＋評価114＝最大243world。
 S1の8worldとそのソフトウェアQAは別会計。費用・時間の上限見積りをdispatch時に記す。
 
 ## 解析と研究判断

@@ -106,6 +106,12 @@ def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
                     or getattr(sim.llm, "run_seed", None) != seed):
                 raise ValueError("factory native world/model seed differs from the requested replicate")
             sim.run()
+            if getattr(sim.llm,'http_budget_exhausted',False):
+                # Native domain methods can catch ordinary model exceptions.
+                # A completed checkpoint after exhausted inference must not
+                # become a measured successful scientific candidate.
+                from .native_factory import NativeInferenceBudgetExceeded
+                raise NativeInferenceBudgetExceeded('native HTTP attempt budget was exhausted during this trajectory')
             measurement = measure_native_world(sim, run_id=run_id)
             evaluations.append(measurement)
             evidence.append({"run_id": run_id, "seed": seed, "system_fingerprint": spec.fingerprint,
