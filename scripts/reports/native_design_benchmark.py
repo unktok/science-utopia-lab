@@ -4,6 +4,7 @@ No model, code mechanism, simulator or inference endpoint is executed. Keep all
 failed slots, exact ties, shared physical evaluations and missing pairs visible.
 """
 from copy import deepcopy
+from collections import Counter
 from datetime import datetime
 import argparse
 import hashlib
@@ -59,6 +60,60 @@ def physical_summary(proof):
         'full_physical_evidence_retained_in_input_audit':True}
 
 
+def authoring_summary(proof):
+    """Project replayed receipts, not inferred root causes or authored prose.
+
+    Compiled action values may contain arbitrary rejected JSON, including null.
+    The full audit retains raw wire messages; an output here is the audited IR,
+    not a claim that the model sent this exact object on the wire.
+    """
+    rows=[];statuses=Counter();tools=Counter()
+    for index,step in enumerate(proof['completed_records']):
+        if step is None:
+            rows.append({'ordinal':index,'completion_record_available':False})
+            continue
+        reply=step.get('model_reply');reply=reply if isinstance(reply,dict) else {}
+        output=reply.get('output');action=output if isinstance(output,dict) else {}
+        transition=step.get('transition');transition=transition if isinstance(transition,dict) else {}
+        tool=action.get('tool');tool=tool if isinstance(tool,str) else None
+        filename=action.get('filename');filename=filename if isinstance(filename,str) else None
+        status=step.get('status');statuses[status]+=1
+        if tool is not None:tools[tool]+=1
+        before=transition.get('document_before_sha256');after=transition.get('document_after_sha256')
+        rows.append({'ordinal':index,'step':step['step'],'completion_record_available':True,
+            'exact_completed_record_sha256':digest(step),'status':status,
+            'compiled_action_sha256':digest(output),'compiled_tool':tool,'virtual_filename':filename,
+            'step_errors':deepcopy(step.get('errors')),
+            'transition_errors':deepcopy(transition.get('errors')),
+            'transition_ok':transition.get('ok'),
+            'document_hash_changed':before!=after if isinstance(before,str) and isinstance(after,str) else None})
+    result=proof['result'];definition=result.get('definition')
+    failure=definition.get('generation_failure') if isinstance(definition,dict) else None
+    return {'request_sha256':proof['request_sha256'],'exact_full_proof_sha256':digest(proof),
+        'result_status':result['status'],'selected_step':result.get('selected_step'),
+        'terminal_failure_reason':failure.get('reason') if isinstance(failure,dict) else None,
+        'exact_raw_tools_draft_finish_replayed':proof['exact_raw_tools_draft_finish_replayed'],
+        'step_status_counts':dict(statuses),'compiled_tool_counts':dict(tools),'steps':rows,
+        'unknown_step_completions':sum(not row['completion_record_available'] for row in rows),
+        'error_channels_are_not_independent_failed_trials':True,
+        'compiled_action_is_not_raw_wire_function_object':True,
+        'receipt_error_is_not_by_itself_a_causal_explanation':True,
+        'behavioral_change_or_merit_inferred_from_source_edit':False}
+
+
+def authoring_by_generation(designer):
+    if 'proofs' not in designer:return {}  # Absence is unknown, never a fabricated pass.
+    result={}
+    for proof in designer['proofs']:
+        request=proof['request'];generation=request['generation']
+        if (type(generation) is not int or generation<0 or generation in result
+                or proof['request_sha256']!=digest(request)
+                or proof.get('exact_raw_tools_draft_finish_replayed') is not True):
+            raise ValueError('exact replayed unique author request required for diagnostics')
+        result[generation]=authoring_summary(proof)
+    return result
+
+
 def project(plan,audit,*,expected_source):
     checked(plan,SCHEMA);checked(audit,SCHEMA+'.audit')
     if (plan['source_commit']!=expected_source or audit['source_commit']!=expected_source
@@ -82,6 +137,9 @@ def project(plan,audit,*,expected_source):
                     or result['consumed_native_slots']!=plan['generations']
                     or len(result['observations'])!=plan['generations']):
                 raise ValueError('search lacks all declared terminal slots')
+            diagnostics=authoring_by_generation(result.get('designer',{}))
+            if not set(diagnostics)<=set(range(plan['generations'])):
+                raise ValueError('author diagnostics outside declared generations')
             rows=[];incumbent=None
             baseline=number(audit['references']['open-seed']['scores'][assignment['objective']]['loss'])
             incumbent=baseline
@@ -97,6 +155,7 @@ def project(plan,audit,*,expected_source):
                     'own_loss':own,'cross_scores':scores,'best_including_initial_so_far':incumbent,
                     'system_fingerprint':row['system_fingerprint'],'checkpoint_sha256':row['checkpoint_sha256'],
                     'metrics':deepcopy(row['metrics']),'lineage':deepcopy(row['lineage']),
+                    'authoring_diagnostics':diagnostics.get(g),
                     'physical_forward_completed':row['physical_proof'] is not None,
                     'physical_evidence':physical_summary(row['physical_proof'])}
                 rows.append(projected);all_rows.append(projected)
