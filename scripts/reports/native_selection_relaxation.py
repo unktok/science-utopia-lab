@@ -126,14 +126,18 @@ def analyze(root,plan,audit,*,expected_source):
                     or proof['measurement']!=meta['measurements'][0]):
                 raise ValueError('completed checkpoint source/horizon/measurement differs')
             relaxation=fixed_records(saved['paper_tracker']['papers'])
+            audited_losses={};roundoff={}
             for key,loss in plan['losses'].items():
                 actual=evaluate_loss(loss,[proof['measurement']])['loss']
                 observed=relaxation['losses'][key]['observed_loss']
                 if ((actual is None)!=(observed is None) or actual is not None and not math.isclose(
                         actual,observed,rel_tol=1e-12,abs_tol=1e-12)):
                     raise ValueError('fixed-record observed objective differs from audited native measurement')
+                audited_losses[key]=actual
+                roundoff[key]=observed-actual if actual is not None else None
             results[identity]={'status':'complete','checkpoint_relative_path':str(path.relative_to(root)),
                 'checkpoint_sha256':file_sha256(path),'physical_measurement_sha256':digest(proof['measurement']),
+                'audited_observed_losses':audited_losses,'independent_sum_minus_audited_loss':roundoff,
                 'relaxation':relaxation}
         result={'schema':SCHEMA,'source_commit':expected_source,'plan_sha256':plan['content_sha256'],
             'input_audit_content_sha256':audit['content_sha256'],'raw_inventory_sha256':digest(before),
