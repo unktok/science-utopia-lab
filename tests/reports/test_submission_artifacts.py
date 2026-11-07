@@ -48,3 +48,29 @@ def test_manuscript_citations_and_included_figures_have_bound_local_inputs():
     assert used and used<=available
     for relative in re.findall(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}',tex):
         assert 'paper/'+relative in receipt['additional_dependencies']
+
+
+def test_resource_table_uses_tracked_observed_usage_without_imputing_or_adding_cache():
+    tokens=json.loads((ROOT/'research/results/native-controls-token-costs-v1.json').read_text())
+    controls=json.loads((ROOT/'research/results/native-benchmark-controls-v2-a1.json').read_text())
+    tex=(ROOT/'paper/submission.tex').read_text()
+    quantities={
+        'Physical two-year worlds':controls['physical_world_slots'],
+        'Committed scientist responses':tokens['completed_responses'],
+        'Prompt tokens (including cache)':tokens['usage']['prompt_tokens']['recorded_sum'],
+        'Cached prompt tokens (subset)':tokens['usage']['cached_prompt_tokens']['recorded_sum'],
+        'Completion tokens':tokens['usage']['completion_tokens']['recorded_sum'],
+        'Provider-reported total tokens':tokens['usage']['total_tokens']['recorded_sum'],
+        'Recorded institution-code executions':controls['costs']['code_executions']['known_sum']}
+    for label,value in quantities.items():assert label+' & '+format(value,',')+r'\\' in tex
+    assert tokens['completed_responses']==controls['costs']['scientist_responses']['known_sum']
+    assert tokens['wire_inputs_without_committed_reply']==0
+    assert tokens['provider_total_component_disagreements']==0
+    assert all(v['all_completed_responses_known'] and not v['invalid_responses'] for v in tokens['usage'].values())
+    assert tokens['usage']['cached_prompt_tokens']['recorded_sum']<=tokens['usage']['prompt_tokens']['recorded_sum']
+    assert tokens['usage']['total_tokens']['recorded_sum']==sum(tokens['usage'][k]['recorded_sum']
+        for k in ('prompt_tokens','completion_tokens'))  # Never add the cached subset again.
+    hardware=json.loads((ROOT/'research/results/submission-hardware-observed-v2.json').read_text())
+    assert hardware['physical_memory_bytes']==hardware['physical_memory_gib']*1024**3
+    assert hardware['cpu_brand_string'] in tex and f"{hardware['reported_logical_cpus']} logical CPUs" in tex
+    assert not hardware['startup_environment_attested'] and not hardware['gpu_utilization_or_energy_measured']

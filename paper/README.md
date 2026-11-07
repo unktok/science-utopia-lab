@@ -28,7 +28,9 @@ all8 worlds complete, with original/hand-written controls and no designer calls.
 Its print-sized three-objective figure and actual costs now appear in the draft.
 The [design-freedom study](../research/protocols/campaigns/native-design-freedom-v2.md)
 is described separately as a prospective protocol, not completed results.
-The updated10-page PDF was built offline and every page visually checked;
+The updated11-page PDF was built offline; all pages were rendered again.
+The first ten match the previously inspected page PNGs byte-for-byte, and
+the new eleventh page was visually inspected;
 see [build/QA receipt](submission-build-v2.json). This remains a working draft,
 not a completed or submitted conference study.
 
@@ -37,6 +39,11 @@ dynamic institutional-policy optimum. It reports the read-only S1 analysis and
 the remaining resource/reproduction limitations; it does not add V2 partial
 outcomes or a hidden candidate filter. The build receipt preserves the harmless
 UTF-8 engine/inputenc notice and records no layout or undefined-reference warning.
+
+Appendix C reports measured S1 scientist tokens and post-dispatch hardware/
+backend observations, with caching and unmeasured-cost limits. It separates
+proxy/deployment risks, sandbox limits, release review and AI-assistance disclosure
+from optimization constraints. V2 partial outcomes are still not manuscript data.
 
 The result table is generated from the source-bound audit summary rather than
 transcribed. Nulls, all candidates, exact ties and cross-objective selection

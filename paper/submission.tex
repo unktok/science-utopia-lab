@@ -484,4 +484,72 @@ conversion recipe. A selected-package environment observation made after
 dispatch is not a startup attestation or a record of the separate inference
 service. The local 35B model construction recipe and fresh-machine inference
 reproduction remain unresolved; neither is claimed complete here.
+
+\clearpage
+\section{Resources and responsible interpretation}
+\label{sec:resources-ethics}
+\paragraph{Observed computational resources.}
+A post-dispatch observation of the local host reports Apple M5 Pro,
+18 logical CPUs and 64\,GiB memory. This is not a startup attestation or a
+measurement of GPU utilization. The study binds Ollama\,0.33.3; selected native
+Ollama/llama/MLX/Metal artifact hashes are retained separately from the Python
+package observation. Installed libraries do not prove which variant served an
+inference. The local designer's manifest is fixed, but the currently published
+\texttt{qwen3.6:35b-mlx} tag has different tensor descriptors. A same-name
+download is not an exact substitute, and the upstream conversion revision is
+not established. No weights were fetched or replaced during this investigation.
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+S1 strong-rule controls: observed quantity & Value\\
+\midrule
+Physical two-year worlds & 8\\
+Committed scientist responses & 726\\
+Prompt tokens (including cache) & 719,002\\
+Cached prompt tokens (subset) & 127,250\\
+Completion tokens & 68,576\\
+Provider-reported total tokens & 787,578\\
+Explicit scientist role loads & 8\\
+Recorded institution-code executions & 56\\
+Campaign wall time & 37m\,23.326s\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Measured S1 resources, not total project compute.}
+Token counts come from all 726 original committed responses; none of their
+usage fields is missing or invalid, and there are no unmatched wire inputs or
+total/component disagreements. Cached tokens are already included in prompt
+tokens. Role loads and code executions are separate counts, not extra samples.}
+\label{tab:resources}
+\end{table}
+
+The read-only token projection is byte-identical across two runs and verifies
+unchanged inputs against the original-source audit. Provider usage is not a
+measurement of fresh GPU operations, FLOPs, energy or money. Cache use can depend
+on operational order and backend state, not policy alone. Role-load, retrieval,
+container, earlier exploration, software-development and coding-agent costs are
+outside these token totals, not assumed zero. Unknown response usage in future
+runs remains unknown. Cumulative call times and campaign wall time have different
+scopes and are not added as if disjoint intervals.
+
+\paragraph{Interpretation and release risks.}
+These reported experiments recruit no human participants and deploy no policy
+in an actual scientific institution. Researcher agents interact with a
+literature-derived simulation, not independently verified physical experiments.
+Optimizing publication or review proxies can favor biased evaluation, selective
+information, low activity or other undesirable incentives. A loss minimum is not
+a recommendation to implement that institution. Such risks are report-only
+analysis here, not retroactively added selection constraints or reasons to hide
+a measured winner.
+
+Generated code uses the bounded, network-disabled container executor with no
+host-execution fallback; this does not establish immunity to all sandbox or
+kernel vulnerabilities. Raw archives may contain literature-derived text and
+author metadata. Public redistribution, anonymous packaging and model-release
+permissions require separate review; no blanket permission follows from a
+public corpus or a model alias. Coding-agent assistance was used for
+implementation, analysis code and drafting, not treated as independent empirical
+validation. Human authorship and contribution statements remain to be finalized
+before submission.
 \end{document}

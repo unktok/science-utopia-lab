@@ -3,9 +3,9 @@
   "date": "2026-11-07",
   "status": "working-draft-not-submission-ready",
   "output": "output/pdf/science-utopia-lab-objective-design-draft.pdf",
-  "pdf_sha256": "b286ae7e7485f3faccb4ee596e82f558b33a31fc52dc2fa32c96518d358df9fb",
-  "pages": 10,
-  "tex_sha256": "0eb14fc9f4dbbcd708b8a39f1ec254d123a6ffa07ed14d8db34d42042bdd4212",
+  "pdf_sha256": "111d7ee03997cb00667181876b272775e5a984f30595ff4658ab1ed7f0b9850d",
+  "pages": 11,
+  "tex_sha256": "040566642cd2cca958fc9dabc7fca9b3a90a2c6deac7113b0bc258fec445e8bf",
   "additional_bibliography_sha256": "6d09b9bed9d3b1683b3790b10e1ca517953dbb50fe2a17c4b4dfa90c04fff857",
   "strong_control_print_figure_manifest_sha256": "7ddb46b8ec9dd5a7471d615c25929c18ec21820bade20c753184458173a9c1bb",
   "build": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
@@ -17,12 +17,17 @@
     "paper/figures/program-concept/science-system-design-program.pdf": "b15140a8121330b4b8fc94cff96e89dac140c94b2415fc6ff0de7f232dd1108a",
     "paper/generated/feedback-comparison-v1/results.tex": "7d166c3bf94aadf33c76f67608f898c5ab04a0ac435252e76cfe8121111aeadd",
     "paper/figures/feedback-comparison-v1-a1-r2/search-paths.png": "89efd0d430e813c4f1a147b89be0d2bce44e88ac3dca55c5cc856274c0e9f7de",
-    "paper/figures/native-controls-v2-a1-print/strong-controls.png": "7190caa6ccce926a4212cedb98ac694b21038863428ea68644c18fc29160aa57"
+    "paper/figures/native-controls-v2-a1-print/strong-controls.png": "7190caa6ccce926a4212cedb98ac694b21038863428ea68644c18fc29160aa57",
+    "research/results/native-controls-token-costs-v1.json": "35e8b9591a78a6702bbce908e435aeead070cf2aa61f33d911f07d5fda14793e",
+    "research/results/native-benchmark-controls-v2-a1.json": "a85a6cd4953cd8a8b0b0fd7080cb5ab409fbc8ef204ee38b946880a26f6c4b17",
+    "research/results/submission-backend-artifacts-observed-v2.json": "d403a64d2c122f62cc66f5549f30ae0089e4683c342fed28cebb17474570b455",
+    "research/results/designer-local-public-provenance-v2.json": "addc0fdcecc0d6b993b08c0af9c99a99bf3850ea6170c60f4819e7dd16749087",
+    "research/results/submission-hardware-observed-v2.json": "07303a0d20c43f27e036fa421edb8edd9813181f20021473e27e2ae861beb340"
   },
   "downloads": 0,
   "final_tex_warnings": ["Package inputenc Warning: inputenc package ignored with utf8 based engines."],
   "layout_or_undefined_reference_warnings": [],
-  "visual_qa": {"renderer": "Poppler pdftoppm", "all_pages_inspected": true, "pages": [1,2,3,4,5,6,7,8,9,10], "print_figure_label_collisions_fixed": true, "overfull_hash_fixed": true},
-  "evidence": {"feedback_pilot": "research/results/native-feedback-comparison-v1-a1.json", "strong_controls": "research/results/native-benchmark-controls-v2-a1.json", "fixed_record_relaxation": "research/results/native-controls-selection-relaxation-v1.json", "environment_observation": "research/results/submission-environment-observed-v2.json", "new_design_freedom_outcomes_included": false},
+  "visual_qa": {"renderer": "Poppler pdftoppm", "all_pages_inspected": true, "pages": [1,2,3,4,5,6,7,8,9,10,11], "print_figure_label_collisions_fixed": true, "overfull_hash_fixed": true, "pages_1_through_10_review_reused_via_exact_rendered_png_byte_identity": true, "page_11_newly_visually_inspected": true, "all_eleven_pages_rendered_again": true},
+  "evidence": {"feedback_pilot": "research/results/native-feedback-comparison-v1-a1.json", "strong_controls": "research/results/native-benchmark-controls-v2-a1.json", "fixed_record_relaxation": "research/results/native-controls-selection-relaxation-v1.json", "environment_observation": "research/results/submission-environment-observed-v2.json", "scientist_tokens": "research/results/native-controls-token-costs-v1.json", "hardware_observation": "research/results/submission-hardware-observed-v2.json", "new_design_freedom_outcomes_included": false},
   "scope": "Completed pilot results and separately labeled prospective comparison; no submission, authorship decision, method superiority or real scientific-policy benefit claimed."
 }
