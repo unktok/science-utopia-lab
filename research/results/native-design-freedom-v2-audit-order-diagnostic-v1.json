@@ -1,0 +1,42 @@
+{
+  "schema": "scienceutopia.native-design-audit-order-diagnostic.v1",
+  "status": "reproduced-component-defect-analysis-correction-pending",
+  "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "scope": "Read-only original-source component replay over all120 completed search states; not a complete closed-study audit.",
+  "plan_content_sha256": "57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25",
+  "selection_content_sha256": "20b4b8eaab1386b0300032647298925761e08ede345856646e04f25650266a11",
+  "selection_file_sha256": "e71b9e8715e282434fbaff1c9773b7601d74f398e4f562458fe7382ccc4ea6b4",
+  "evaluation_plan_file_sha256": "e1b96a516b35ac862e8c58b661793adee4d52180fd70978b8d91ebb8aa22a1df",
+  "search_records": 120,
+  "saved_selection_rows_including_references": 129,
+  "physical_evaluation_jobs": 90,
+  "logical_evaluation_labels": 19,
+  "exact_policy_identities": 15,
+  "checks": {
+    "sorted_json_plan": {
+      "plan_values_and_content_hash_unchanged": true,
+      "exact_selection_replay_matches": false,
+      "selected_policies_match": true,
+      "exact_evaluation_jobs_match": false,
+      "terminal_search_row_order_matches": false
+    },
+    "source_order_plan_only": {
+      "plan_values_and_content_hash_unchanged": true,
+      "exact_selection_replay_matches": true,
+      "exact_evaluation_jobs_using_parsed_selection_match": false,
+      "terminal_search_row_order_matches": true
+    },
+    "source_order_plan_and_selection": {
+      "plan_values_and_content_hash_unchanged": true,
+      "selection_values_and_content_hash_unchanged": true,
+      "exact_selection_replay_matches": true,
+      "exact_evaluation_jobs_match": true
+    }
+  },
+  "actual_experiment_or_fixed_selection_modified": false,
+  "new_model_calls": 0,
+  "new_generated_code_executions": 0,
+  "corrected_full_audits_completed": 0,
+  "original_frozen_CLI_has_passed": false,
+  "next_action": "Implement and source-bind an explicit analysis-only order-restoration adapter, preserve all original source/raw/chronology guards, regress serialization and tampering, then run two full audits only after normal writer closure."
+}

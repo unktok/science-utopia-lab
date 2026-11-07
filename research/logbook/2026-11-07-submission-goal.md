@@ -3203,3 +3203,202 @@ manuscript/PDF/mock review remain required. The full goal stays active.
 Offline document checks pass16 active documents/191 local targets/six original
 snapshots and git diff --check; the through70 snapshot SHA256 remains unchanged.
 These checks make no model/network/world calls or closed-study audit claim.
+
+### Final fixed-graph completions118/119: ties and a static duplicate program
+
+The preceding turn records116/117's schema/domain failures at f26a5d2.
+Repeated actual-writer46865 polls remain live. By22:21UTC progress118/120:
+62 complete,25 generation failures,31 execution failures; reference9/9,
+evaluation0. The118-slot progress file SHA256 is
+810528cb26f982a18e6ce805e4ad6b889b08a440ce5ae4e3c8524318139ef40a.
+
+Slot118 T fixed-code G3 completes T-7,A7/Q22.333333333333336/R21,
+5 active researchers/resources620 and4 context deliveries. Its parent is the
+retained G0 incumbent, not the immediately previous numeric revision. Three
+selection-source replacements rewrite the list comprehension as a for-loop,
+but both observed batches still accept every exact3/4 real identity and preserve
+supplied scalar scores; incoming accept values are all0 and ignored by this
+body. No graph or numerical-parameter change occurs in this proposal. It is a
+measured tie to G0/G1/G2 and the observed strong T reference, not a new best,
+new selection rule or proof of globally optimal throughput. The empty branch is
+unexercised; don't turn this path-specific observation into an all-input proof.
+
+Requestbde93840b1d1486b93e01ce6f1acf2c99509c9448ad8a971e2c8e83ad4a19297;
+world native-adaptive-1101003d0c98a7ad5f479a1f-s42;
+selection source SHA25630ba61b42fd88d1998b2af1056a774ab7defd110894c4e2ca31b0f1d969d3709;
+checkpoint SHA256feb8a3262a49c38e8bdb0b157020eb229369925394c1e55c6ad79fa66cc96a34;
+code-context journal SHA256f5c99de06aa8c2af5bac7546d77be23e63f9f2a5de275a96a25fdba3f83260bf;
+period1/2 result SHA2565d8880fdbfab53c8a3db72da18914a0deedfcc2266cc29a373f80af10b148814 /
+aee63439f4aa580449b7fb2992bfe600f39cec2588abb79ecf13c9fee7d09593.
+
+At22:29:48UTC progress119/120:63 complete,25 generation failures,
+31 execution failures; reference9/9,evaluation0. Progress SHA256
+6f7c36f8d105c432f5720abe44d887e3c462b5e0f3f1505d818b02f6d36f635a.
+Slot119 C fixed-code G3 completes C2.1,A1/Q4/R21,six rejected records,
+5 active researchers/resources640 and4 context deliveries. It uses its G2
+parent and three selection-source replacements. Both receipts align exact3/4
+real IDs: first-year rejections, then one real mean4/accept1 acceptance and
+three rejections; all authored scores remain0. Scalar-score indexing still
+falls through caught exceptions to0, while scalar accept signals are read.
+The measured original Q4, not the written score0, cancels the accepted-count
+debit4, leaving C2.1. This is a tie, not an improvement on its G2 best or the
+strong reviewer-free reject C0 reference. Unexercised branches remain unproven.
+
+Read-only ast.parse/ast.dump(include_attributes=False) compares G2/G3 source:
+their full parsed trees are equal. Independent in-memory comparison of their
+SystemSpecs after removing only that source string finds every other field
+equal. Thus these source bytes/fingerprints differ without a new operative
+Python AST or other system edit. Preserve both raw definitions, consumed steps
+and physical costs; neither development nor final-selection rules permit an
+ad hoc AST-based deduplication. This static check is not generated-code
+execution, proof of identical fresh LLM replies or a complete program-equivalence
+test across arbitrary inputs/runtime diagnostics.
+
+The G3 comment incorrectly says to maximize accepted decisions under positive
+coefficient4. Its literal algorithm is unchanged, and the actual measured
+loss remains authoritative. Do not substitute author's rationale for executable
+behavior, fabricate objective understanding/feedback learning, or reject a
+technically valid measured candidate on that prose's merits.
+
+Requestea4e513176a50370e2173884dc62127c9844a1abbc7f7caf164d4d55695482d4;
+world native-adaptive-e9410f512c65e687aabd1b70-s42;
+selection source SHA2566f95a2496b311083d4fe2e90faa4226cd4473ba3a2743395c0fabc39a8b2cd4a;
+checkpoint SHA256e2a8a64de115bcdc4966abef961afc3a3ecacd87b6040e1942130e6bb805b8aa;
+code-context journal SHA256e831f1a65e4cc7da3c34f169a5d714893a12872df0937a37dcb531ef0d1f2bda;
+period1/2 result SHA2569d42f9d1661849cbd0f7eed66f21516f41414abf3b5d4e3e256f516fafc55bcf /
+7d5d40d43df9a88138505b3a9e20ae15503a12d73ea8193911a8bcef09a14377.
+
+The fixed driver's read-only source confirms selection.json is written only
+after all120 search slots, evaluation-plan.json links its content hash, and
+evaluation progress counts completed observation files. Before the first
+evaluation observation, a started evaluation job can coexist with stage=search
+and evaluation count0; don't misread that between-write state as non-execution.
+No selection/evaluation artifact exists yet at this observation. The final
+T code/graph G3 is authoring. No active settings/source/loss/budget/selection,
+raw evidence, resources or optional registry egress changes. The full goal stays
+active; full V2 audits must still wait for actual normal writer closure.
+
+### All120 search slots close; selection is frozen and90 evaluation jobs begin
+
+At22:38:55UTC progress120/120:64 complete,25 generation failures,31 execution
+failures; reference9/9,evaluation0. Search progress file SHA256
+3fb2bbd4710fab396507866e88bff86b57347f21505081fdbadc115de6b71ba6.
+Run00 closes24/8/8, run01 17/9/14, run02 23/8/9 (complete/generation-null/
+runtime-null). Run02 G3 has8 completions,2 generation failures,no execution
+failures and no new best-including-initial value in any arm. This is the end
+of declared search, not the entire study, source audit or submission goal.
+
+| Run02 G3 arm | Assigned outcome |
+| --- | --- |
+| T LLM numeric | generation null |
+| C LLM numeric | generation null |
+| T fixed graph code | -7 |
+| C fixed graph code | 2.1 |
+| T code and graph | -7 |
+| C code and graph | 2.1 |
+| T technical-only code and graph | 0 |
+| C technical-only code and graph | 2.4000000000000004 |
+| T uniform numeric | -7 |
+| C uniform numeric | 8.433333333333332 |
+
+Slot120 T code/graph G3 completes T-7,A7/Q23.666666666666668/R21,
+5 active researchers/resources640 and4 context deliveries. The parent is G2;
+three source replacements simplify the final decision to unconditional accept,
+while scalar score inputs still take the authored0 fallback. Exact3/4 real
+identities are accepted, all written scores0; raw review means supply Q, not
+those labels. It ties G2 and the strong observed T reference, not a new best
+or graph invention. The artificial empty-input/default-ID path is unexercised.
+
+Request8b88d1b15ea15643cbbb992061d468aae7d6e3ef5afe4e64d911ae94b7ee38be;
+world native-adaptive-42ca2bd22b77cfb77e43a807-s42;
+selection source SHA2561f4f48be945fc4b9599432f2457690759ccfa9fa22bdc0e3043d63ab49c734af;
+checkpoint SHA25604599495e7e08610f0f3b483519b046013b8bd2fe0d191ad41b36412f75da9ab;
+code journal SHA256ceeec08fed0bbaad4c05fe8b22d318550d5ef56daf5aa52098931bcb0fb2a417;
+period1/2 result SHA2563c201529728d6581827eeca580efbc10b38774ba1228f8f06ca14b1157f9574b /
+f233630c7e6841b48accb76d9da1b492a2a3452ea247f70584235cea1a8b23b6.
+
+Selection is frozen22:38:35.002880UTC, after the last arm record/progress120.
+The saved object retains129 rows (nine references and all120 attempts), all
+exact tied IDs and predeclared first-chronology representatives. Its canonical
+content SHA25620b4b8eaab1386b0300032647298925761e08ede345856646e04f25650266a11
+and plan binding verify. File SHA256
+e71b9e8715e282434fbaff1c9773b7601d74f398e4f562458fe7382ccc4ea6b4.
+
+| Method | T representative / loss / exact ties | C representative / loss / exact ties |
+| --- | --- | --- |
+| LLM numeric | initial /0/1 | initial /2.4000000000000004/1 |
+| fixed-graph code | run00 G0 /-7/9 | run02 G2 /2.1/2 |
+| code and graph | run00 G0 /-7/6 | run02 G2 /2.1/2 |
+| technical-only | run00 G0 /-7/5 | initial /2.4000000000000004/3 |
+| uniform numeric | run00 G0 /-7/8 | initial /2.4000000000000004/4 |
+
+These initial references are explicitly selected as initial, not relabeled as
+successful authored inventions or replacement trials. The separate pooled
+loss-only ranking chooses open-accept-all at T-7 (retaining all ties) and
+open-no-review-reject-all at C0. Search has no better primary development value
+than these strong controls. Unused-condition outcomes have not been returned
+to the closed search or used to change representatives.
+
+The immutable evaluation plan links the selection content hash and contains90
+jobs:15 exact policy identities,19 logical labels,six conditions per policy
+(five unused seeds at2 years and seed31001 at4 years). This is actual fixed
+sharing, not the114-job upper bound. The reference open-seed and four selected
+labels share one policy: T LLM numeric,C LLM numeric,C technical-only,C uniform.
+Do not count their shared physical results as independent samples.
+Evaluation-plan file SHA256
+e1b96a516b35ac862e8c58b661793adee4d52180fd70978b8d91ebb8aa22a1df.
+
+Evaluation0000 (legacy,seed31001,2 years) starts22:39:08.145250UTC, after
+selection. Its started record SHA256
+7b6584ea6f08ad72c94e91cfa157261b46b65218cd5002e29de8e8f79a2b2ecb;
+first complete observation file SHA256
+6fd817782ae4739aad533dd3844bee025d6e402a5f84bf83391257fb45bde2bd.
+By22:44UTC progress is evaluation,1/90 complete, actual writer46865 remains
+live and evaluation0001 has started. Source b6654ad remains clean; no new
+settings, loss, budget, selection, raw data edits, model resources or optional
+registry egress. No complete V2 original-source audit exists yet.
+
+### Proactive audit defect: JSON mapping order must be restored, not ignored
+
+Reading the fixed analyzer before full closure exposes a genuine postprocessing
+defect. save_new serializes sorted JSON dictionaries, but frozen selection,
+evaluation-job and terminal-progress reconstruction iterate dictionary insertion
+order. Parsed plan reference/arm order differs from the fixed source's declared
+order; parsed selection.selected order also differs. Values and canonical
+hashes survive, but strict ordered replay does not. Current original-source
+analyzer uses parsed dictionaries, so its component reconstruction is wrong.
+This is not a changed experiment, corrupted score or bad frozen selection.
+
+Two offline component diagnostics import original b6654ad functions in its clean
+checkout, use all120 closed search states with a read-only loader, and make no
+model calls/generated-source executions/full closed-study audit. Results:
+
+| Input used for pure replay | Exact selection | Same selected policies | Exact evaluation jobs | Search-row chronology |
+| --- | --- | --- | --- | --- |
+| sorted parsed JSON | fails | passes | fails | fails |
+| source-reconstructed equal-valued plan only | passes | passes | fails (parsed selection still reordered) | passes |
+| source-reconstructed equal-valued plan and selection | passes | passes | passes all90 jobs | passes via restored plan |
+
+Both reconstructed objects equal saved values and retain the same canonical
+content hashes. Their source-derived insertion order restores the existing
+ordered lists and physical jobs; it is not permissible to simply ignore order
+or replace saved job IDs. Selected policies/losses/ties remain unchanged.
+Selection/evaluation-plan file hashes are rechecked unchanged above. Record
+the bounded reproduction separately in
+research/results/native-design-freedom-v2-audit-order-diagnostic-v1.json.
+
+The correction still requires a separately versioned analysis adapter/future
+analyzer fix with JSON round-trip and tamper regressions. Preserve the frozen
+checkout and every original source/raw/chronology check, explicitly identify
+the correction and its provenance, and do not claim the unmodified original CLI
+has passed or that component replay is a full audit. Full audits must await
+normal writer closure and run twice to fresh outputs. This is substantive
+parallel work while the same fixed90-job evaluation continues, not a restart,
+failed-slot refill or new scientific experiment. The full goal stays active.
+
+Updated current STATUS/INDEX/workflow distinguish completed search, running
+evaluation and the pending audit correction. Offline checks pass16 active
+documents/194 local targets/six original snapshots, the separate readiness
+document targets, valid diagnostic JSON and git diff --check. These are not
+full V2 audits. Next bounded implementation is an analysis-only correction and
+regressions in a separate feature worktree; the frozen runtime remains untouched.

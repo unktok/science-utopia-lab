@@ -12,9 +12,10 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |
 | V2 readiness | All3 runs pass28 fresh real designer controls and cold replay each;26 exact copies per run remain diagnostic. Run02 first dispatch uses its new certificate at age3.77s |
 | V2 references | All9 fresh same-source reference worlds complete |
-| V2 search | Running at22:12UTC:117/120 slots,61 complete,25 generation failures,31 execution failures; both final LLM-numeric slots fail generation, including actual edit-schema and edit-scope errors |
-| Selected-policy evaluation |0 so far. Fixed selection follows all120 slots, then five unused seeds at2 years and one4-year condition; at most114 worlds |
-| Closed V2 audits and results | Not yet available; live observations are not a full original-source audit |
+| V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
+| Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
+| Selected-policy evaluation | Started22:39:08UTC; first job complete by22:44UTC.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
+| Closed V2 audits and results | Not yet available. A JSON mapping-order defect in the frozen audit entrypoint is reproduced; analysis-only correction/regressions are required, without changing the experiment |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
 The actual writer is PID72837, started09:02:10UTC, at clean frozen source
@@ -35,34 +36,20 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
   No measured G1 gain or feedback advantage. This is not the untouched legacy institution.
 - S1 hand-written rules recover the earlier proxy minima. Reviewer-free accept-all
   ties observed throughput without review-backed score; this is not better science.
-- V2 run00/run01 each close all40 slots. Run01 has17 completions,9 generation
-  failures and14 execution failures. Some arms first improve on the weak initial
-  at G1/G2. Run02 G0 closes10 slots: T fixed-graph and uniform both complete
-  at-7; C technical-only/uniform complete at7.77/8.1, worse than initial C2.4;
-  the other six slots retain technical nulls. No primary-objective result
-  through117 beats its strong reference. Run02 G1: T code/graph completes
-  T0, C technical-only completes C2.4, and T uniform ties its G0 at-7; the same
-  numeric candidate completes C8.43 on a separate forward. Three
-  generated programs fail coverage, empty required decisions or world-record
-  packaging. A valid explicit all-reject program is not vetoed; incomplete
-  decision messages are not silently converted into that policy.
-  T fixed-code changes only bias0.5 to2.0 and keeps the G0 all-accept body;
-  T-7 ties G0. Run02 G1 improves no arm's best-including-initial value.
-  Its first G2 T code/graph revision improves T0 to-7 with all seven accepted,
-  tying the strong reference. Scalar inputs still take authored fallbacks,
-  now accept1/score0: this is not a verified parser fix or feedback superiority.
-  C code/graph first completes at G2, C2.1 versus initial2.4 (not versus a
-  fabricated G1 loss). It rejects all and writes score0; that score appears
-  in three completed year2 researcher resubmission exchanges, all declining
-  resubmission. This traces an information/action path, not its causal loss effect.
-  C fixed-code G2 also completes C2.1, but accepts one paper with original
-  mean4: A1/Q4/R21 versus A0/Q0/R21. Equal loss is not equal behavior.
-  These are controller histories on common development seed42, not
-  independent environment replications.
-  Run01 G3 yields5 completions,3 generation failures and2 execution failures,
-  without improving any arm's best-including-initial value.
+- V2 all three40-slot histories close: run00 complete/generation-null/runtime-null
+  24/8/8, run01 17/9/14, run02 23/8/9. Search uses common development seed42,
+  not three independent environment replications. No search result beats its
+  strong primary reference. T all-accept ties-7; C free-code minima2.1 improve
+  weak initial2.4 but not reviewer-free reject0. These are observed development
+  values, not expected gains or evidence of feedback/optimizer superiority.
+- C2.1 has different observed behaviors: A0/Q0/R21 versus A1/Q4/R21.
+  The code/graph candidate's written score0 enters three actual year2 researcher
+  resubmission exchanges, all declining resubmission. This traces an exercised
+  information/action path, not its isolated causal loss effect. Q still measures
+  original review means, not authored score labels. No G3 arm improves its
+  best-including-initial value within run02.
 - All24 uniform-numeric proposals execute; all24 LLM-numeric slots
-  so far fail generation. Domain presentation/compliance confounds intrinsic
+  fail generation. Domain presentation/compliance confounds intrinsic
   expressivity claims. Technical nulls are not measured bad scientific losses.
 - Permitted code/graph freedom is not demonstrated structural invention.
   Inspect actual specifications, consumers and execution receipts. Changed source
@@ -90,11 +77,13 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 ## Required work before submission judgment
 
-1. Finish the remaining3 search slots under the current bindings and freshness
-   guards. Do not refill failures.
-2. Freeze selection/ties, then execute the declared unused-condition evaluations
-   without returning their outcomes to search.
-3. After normal writer closure, run two original-source audits. Apply the integrated
+1. Finish the fixed90 unused-condition evaluation jobs without returning results
+   to the already closed search or changing selection/ties. Do not refill failures.
+2. Correct the [reproduced audit-order defect](results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
+   in a separate versioned analysis adapter with round-trip/tamper regressions.
+   Do not edit the frozen checkout, raw plan/selection or suppress chronology checks.
+3. After normal writer closure, run two source-bound audits with the correction
+   explicitly recorded; the unmodified frozen CLI has not passed. Apply the integrated
    closed-audit reports/figures: all losses, failures, identities, lineage,
    paired raw outcomes, missingness, physical sharing, mechanisms and measured costs.
 4. Update the claim-centered manuscript/figures, rebuild and inspect every PDF page,

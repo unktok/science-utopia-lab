@@ -205,6 +205,15 @@ fresh oracle実現が異なりうることも明示する。この少数事例�
 十分な裏付けが必要で、計算量だけでは補えない。本試験前後にこの表へ戻って
 主張を吟味し、最終的な投稿判断を行う。
 
+At search closure, the [audit-order diagnostic](../results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
+finds a separate analysis defect: sorted JSON loses plan/selection mapping order
+needed by the frozen auditor's strict replay. Source-ordered equal-valued
+reconstruction exactly matches saved selection and all90 evaluation jobs without
+changing their hashes or actual policies. A versioned analysis-only correction
+and regressions are required before the two full audits. Do not edit the frozen
+experiment, ignore ordered comparisons or claim the unchanged CLI/full V2 audit
+has passed. The90-job evaluation continues under its existing fixed selection.
+
 ## Local release review: concrete observations, not publication clearance
 
 2026-11-07UTC, integration source ad6e756. This read-only review runs while

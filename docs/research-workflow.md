@@ -144,6 +144,15 @@ After its writer is terminal, use that detached source's
 fresh audit output and compare them. Do not run its exact-source audit from a
 later integration source or call an in-progress archive complete.
 
+The120-slot closure exposed a [component-reproduced mapping-order defect](../research/results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
+in that frozen audit entrypoint: sorted JSON preserves values but not the original
+plan/selection dictionary insertion order. Source-ordered reconstruction restores
+the exact saved selection, evaluation jobs and progress-row chronology. Do not
+edit the frozen source/raw files or weaken ordered comparisons. A versioned
+analysis-only adapter and round-trip/tamper regressions are now required before
+the two full audits; the unchanged frozen CLI has not passed. This is not a
+change to the running experiment, candidate selection or evaluation schedule.
+
 The separately implemented integration modules then project that audit:
 
 ```text
