@@ -70,6 +70,9 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 現在のopen-system初期系は未変更の原制度ではないため、legacy原制度と
 明らかな手作業ルールも対照に含め、弱い初期系だけに勝つ比較にしない。
 効果が出ない場合、予算追加で良い結果を探すのでなく、事前に定めた解析を行う。
+現在は[有限V2 study](../protocols/campaigns/native-design-freedom-v2.md)を固定b6654adで実行中。
+S1の強い8基準は完走・二回監査済み。V2のrun00実校正28項目とcold replayを通過し、
+fresh基準評価から開始している。探索・選択後評価の結果はまだ未確定。
 
 **P4：原稿を組み直し中**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
 基盤、比較、制度機構の知見を主文へ。失敗履歴・API・source検証は付録へ。
@@ -77,6 +80,25 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 現在の長いworking draftやNeurIPS形式は、投稿準備完了を意味しない。
 [短い新稿](../../paper/submission.tex)は方法・比較中心の構成を実装済みで、
 監査から自動生成した全候補表・探索経路と実作用の解析を入れた。旧長稿は保存する。
+S1の実測・print用グラフ・V2の前向きprotocolを追加した9ページの版も作成・全ページQA済み。
+
+## V2が閉じた後の解析
+
+原source checkoutの`analyze_native_design_benchmark.py`で全campaign・実校正・
+role load・physical cache/checkpoint・選択・未使用評価をread-only監査する。
+別のfresh outputへ二度保存し、入力不変と監査一致を確認する。稼働中を完了扱いしない。
+
+後段の`python -m scripts.reports.native_design_benchmark`はその閉じたauditとplanを
+source/schema/hashで束縛して、120slot、三controller履歴、各五world seedのpaired差、
+null・共有physical job・別horizon・全費用をprojectionする。これは新raw auditではない。
+同じ制度を19labelで呼んでも追加の独立標本にしない。各参照との比較を全て残し、
+評価結果を見て都合の良い基準だけを選ばない。欠測対を0へ埋めず、available条件付き平均と
+不足数を分ける。四年の単一seed診断を五seed・二年の標本に足さない。
+
+`python -m scripts.figures.native_design_benchmark`はそのreportから全三履歴の
+best-including-initial経路と全完走点・null表示を印刷用に作図する。重なった経路を
+jitterせず、方法優位のbandを捏造しない。SCRIPTED QAの図には明示watermarkを入れる。
+実結果はまだ未生成であり、解析コードのテストは実験結果ではない。
 
 ## 会議の方針：確認できた事項と判断を分ける
 
