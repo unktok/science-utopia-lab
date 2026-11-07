@@ -33,3 +33,24 @@ independent experimental compute and retain measured campaign wall time.
 Official ICML2027 page still says CFP/deadlines forthcoming on this check.
 NeurIPS2026 review criteria inform evidence planning, not next-cycle rules or
 an acceptance guarantee. Source links are in the submission-goal document.
+
+S1 closed08:26:40UTC: all8 baselines complete in2243.326s. Both original-source
+audits are byte-identical; [results](../results/native-benchmark-controls-v2-a1.md)
+separate developer controls from automatic invention. A reviewer-free accept-all
+rule ties the throughput minimum but is unfavorable under the selective proxy.
+
+V2 prospective comparison is integrated after committed-source QA. The broad
+2693/6 check at ea6e12f precedes later focused134 checks at f18d9b5 and17 at
+cbf91cb; see [receipt](../results/native-design-freedom-v2-verification.json).
+Inspection/tests exposed legacy assumptions about controller seed42, the old
+loss map and maximum HTTP year3. Prospective optional parameters retain old
+defaults while supporting the new explicit study. Assigned-loss missingness is
+not a global veto on independently available cross-objective scores.
+Generated policies and old evidence were not repaired or relabeled.
+
+The finite plan declares120 proposal slots,9 reference worlds and at most114
+selection-fixed evaluations. Fresh35B calibration must precede reference/world
+dispatch. No actual new-study dispatch or improvement is claimed at this entry.
+Additional primary-text comparisons cover ADAS, LLM Economist and AgentSociety2;
+whole-workflow code search and social-policy optimization are prior art, not a
+novelty claim for this implementation. Runtime/source stays fixed once pinned.

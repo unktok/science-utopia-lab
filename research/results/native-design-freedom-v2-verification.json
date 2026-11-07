@@ -1,0 +1,37 @@
+{
+  "schema": "scienceutopia.native-design-freedom-software-verification.v2",
+  "classification": "software-QA-not-scientific-evidence",
+  "date": "2026-11-07",
+  "broad_scope": {
+    "source_commit": "ea6e12f58a7940b55e21e636c577804fd5b2c7f7",
+    "directories": ["tests/optimization", "tests/reports", "tests/runtime", "tests/system"],
+    "passed": 2693, "skipped": 6, "failed": 0, "seconds": 1000.86,
+    "junit": "outputs/publication-benchmark-v2-verification/broad-ea6e12f.xml",
+    "junit_sha256": "86d905b446102c4afba94911cc62791965b6ebb5ec18e4ccd8751dead9bc930f",
+    "log_sha256": "a14ec290a39cca8cf02f34f5bb22121b066f341a011a73d23f3d678fb7a81762",
+    "skip_scope": "Six optional historical untracked archive/bank diagnostics; no synthetic replacement for original missing archives."
+  },
+  "later_physical_domain_scope": {
+    "source_commit": "f18d9b5d810820f1905e0c8acc26d78702af649a",
+    "passed": 134, "skipped": 0, "failed": 0, "seconds": 137.32,
+    "junit": "outputs/publication-benchmark-v2-verification/final-physical-domain.xml",
+    "junit_sha256": "2f213532ce4f8aecbb1bc1d62f28b05369329f23b1d80a447737ec6173c9820a",
+    "scope": "Design domains, controller replay, selection/pipeline, new objective and controller seed, original native lifecycle, physical response/code proofs and old autonomous/staged audit regressions; existing authorized Docker, scripted corpus/HTTP."
+  },
+  "final_preinitialization_scope": {
+    "source_commit": "cbf91cbeb2902db0a11d4ec6263498adaf17f305",
+    "passed": 17, "skipped": 0, "failed": 0, "seconds": 7.14,
+    "junit": "outputs/publication-benchmark-v2-verification/final-preinitial-study.xml",
+    "junit_sha256": "f4fae6e57180696e3f72de5e5da944db1ee6d00e10e95b6236631198b6fe4ce3",
+    "scope": "New study/physical pipeline, failed pre-initialization cache handling, successful original Simulation checkpoints at evaluation seed31001 and horizons2/4, reserved seed inventory."
+  },
+  "preserved_earlier_failures": [
+    {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical.xml", "passed": 4, "failed": 2, "cause": "Historical software fixture hardcoded seed42 before the new evaluation binding."},
+    {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical-a2.xml", "passed": 4, "failed": 2, "cause": "Fixture omitted explicit raw non-reasoning field; inspection additionally found historical HTTP horizon3, prospectively parameterized for four-year evaluation."}
+  ],
+  "counts_are_additive": false,
+  "broad_suite_ran_on_final_study_source": false,
+  "real_designer_calibration_established_by_this_receipt": false,
+  "live_scientist_calls_in_these_checks": 0,
+  "note": "Original simulator phases and physical checkpoints are exercised with scripted corpus/HTTP; this verifies software contracts, not scientific improvement or submission readiness."
+}

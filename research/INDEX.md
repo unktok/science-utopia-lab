@@ -7,6 +7,8 @@ Historical documents retain their paths and source identities.
 ## Active orientation
 
 - [Autonomous submission goal](publication/submission-goal.md): milestones and evidence-based completion criteria.
+- [Prospective objective/design-freedom study](protocols/campaigns/native-design-freedom-v2.md)
+  and [source-specific software QA](results/native-design-freedom-v2-verification.json).
 - [Program map](program-map.md): original goals, capabilities and evidence gaps.
 - [Roadmap](roadmap.md): what to do next and why.
 - [Submission research plan](publication/plan.md), [comparison contract](publication/benchmark-contract-v1.md),

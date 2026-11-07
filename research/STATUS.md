@@ -23,13 +23,20 @@ later audit orchestration at2aa02c3 passes5 focused checks (overlapping counts).
 The first restricted-shell attempt failed on Docker permission and is preserved,
 not labeled a full pass. Frozen-source closure verifies265 files.
 
-No scientific model campaign is running at this snapshot. The separate
-design-freedom feature sourceea6e12f is undergoing the broad committed-source
-software checks before a fresh calibration and finite matched study.
-Its nested domains, in-session validation, uniform numeric baseline, frozen
-selection/evaluation pipeline and inference budgets are implemented, not yet
-real-designer-certified at this source. Old S1/V1 certificates cannot certify it.
-The checked checkout's runtime/HEAD stay frozen until this QA closes.
+No scientific model campaign is running at this pre-dispatch snapshot.
+The design-freedom pipeline is now integrated: nested domains, in-session
+validation, uniform numeric baseline, selection/evaluation and finite HTTP budgets.
+Sourceea6e12f passed2693 checks/6 optional archive skips in1000.86s;
+laterf18d9b5 passed134 physical/domain/legacy checks in137.32s;
+finalcbf91cb passed17 study/pre-initialization checks in7.14s (overlapping counts).
+The [software receipt](results/native-design-freedom-v2-verification.json) distinguishes
+sources and preserved failures. Broad checks were not rerun at the final source.
+Original native lifecycle with scripted HTTP/corpus now covers the new selective
+loss, non42 controller seed, and evaluation seed31001 at2/4 years.
+The [prospective study](protocols/campaigns/native-design-freedom-v2.md) fixes
+120 proposal slots,9 fresh references and at most114 selected-policy evaluations.
+New production still requires fresh exact-source real-designer calibration;
+old S1/V1 certificates cannot certify it. It is not a completed scientific comparison.
 
 The earlier finite feedback comparison V1 is **closed and original-source audited**.
 It ran05:08:38–06:01:45UTC on2026-11-07 (53m06.77s), at frozen2e375c2,
