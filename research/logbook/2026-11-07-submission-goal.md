@@ -1698,3 +1698,33 @@ checkpoint SHA25656fb9b27594d99dddcabc04d42e9102894b81e3abcb98f46a98bf0cf5b6a846
 progress SHA256d050c13a83f0c76246f676e625146f9c1f9579c02e99cf737e600c9110f38360.
 The writer continues unchanged to selective uniform G2. This is another finite
 observed forward, not a new independent environment seed or a feedback gain.
+
+### Slot67 and verified waiting, not campaign restart
+
+This continuation follows concrete prior progress:64–66 were observed and
+traced, and stale entry documentation was corrected with ten offline checks.
+Here the actual writer46865 is repeatedly confirmed live. Observer84841 reaches
+its finite600s observation limit around17:16UTC and exits0; this is not writer
+termination. Re-poll the same actual writer handle; no restart or replacement
+process. The active C random G2 wire grows to91 requests and closes normally.
+
+At17:17:56UTC search67/120:35 complete,12 generation failures,20 execution
+failures;reference9/9,evaluation0. Run01 uniform C G2 completes
+C8.433333333333332,A7/Q21.666666666666668/R21,5 active researchers/resources620,
+6 institutional-context deliveries. It ties its own G1, is worse than its G0,
+and does not improve the initial C2.4000000000000004. Exact candidate dictionaries
+and controller RNG670171461250286643 match T random G2, but their recorded Qs
+are21.666666666666668 and22. Retain the distinct measured physical worlds;
+do not infer a policy difference, independent environment seeds, a unique
+backend cause, or a new statistical variance estimate from this pair.
+
+Request44412e30b75bd859c407594f0806510cc75c4ff6abeec261e1e4dcfa19cd4ba8;
+world native-adaptive-a7e8d3c38ffa1549e9cc6038-s42;
+system fingerprintadec00b06c1843838f8a968b664951e5f9c7e030c1d2c139536a6633c05d6d31;
+checkpoint SHA256b94cd184ac0f816c21b6031be9d42f140a0b23a5f6ec08439d8cbf542a074b45;
+progress SHA256f8a683246aa08a455ff39e8d881c2c5cd6d8b90f23511e6d2f2723139c29a98a.
+At17:19:33UTC actual writer46865 still returns live with no terminal record;
+throughput parameter G2 is authoring. This expected finite inference wait is not
+a blocker. No new implementation, model request, output salvage, audit, source
+change, retry, objective/selection/budget modification or optional registry
+egress is introduced by monitoring. The full submission goal stays active.
