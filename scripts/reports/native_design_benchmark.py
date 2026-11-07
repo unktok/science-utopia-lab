@@ -49,6 +49,13 @@ def physical_summary(proof):
             ['recorded_executions','committed_events','ambiguous_native_event_count','one_to_one_physical_execution_proven']},
         'annual_checkpoints':deepcopy(proof.get('annual_checkpoints')),
         'native_counts':deepcopy(proof.get('native_counts')),
+        'mechanistic_receipts':{name:None if name not in proof else {
+            'exact_subproof_sha256':digest(proof[name]),
+            **{key:deepcopy(proof[name][key]) for key in keys if key in proof[name]}}
+            for name,keys in {
+                'context_input_proof':['delivered_recipient_messages','messages_observed_in_completed_model_inputs'],
+                'activity_effect_proof':['effect_event_count','amendment_count','generated_amendment_output_matches'],
+                'capability_effect_proof':['complete_plan_effect_count','routing_event_count','routed_actual_review_count']}.items()},
         'full_physical_evidence_retained_in_input_audit':True}
 
 
