@@ -2850,3 +2850,51 @@ active; this live inference wait is neither experiment closure nor a blocker.
 Offline checks pass16 active documents/191 local targets/six original snapshots
 and git diff --check. The preserved through70 snapshot retains its recorded
 SHA256. No model/network/world calls are made by these documentation checks.
+
+### Run02 numeric G2 authoring closes without submitted policies
+
+The preceding turn verifies105/106, including valid poor numeric outcomes and
+physical identity. This turn repeatedly verifies actual writer46865 live.
+Progress reaches107 at21:06UTC and108 at21:09UTC:54 complete,23 generation
+failures,31 execution failures; reference9/9,evaluation0.108-slot progress SHA256
+f9614748e8150c4e510e19e8a598cf8887736577554a815ea02f0bde4eb9c202.
+No observer timeout, old active label or between-write interval is treated as
+writer termination; the same finite campaign continues.
+
+Slots107/108 T/C LLM-numeric G2 each exhaust16 actions with zero native
+observations. Both finish13/15 are rejected for exceeding the explicitly
+declared parameters design space. Read14 is rejected by the existing
+implementation checkpoint. T edits code/world.selection.py at2/4/6/8/10/12;
+C edits that source at4/6/8/12. Those are preserved draft operations, not
+successful submissions or numerical world outcomes. In particular, the
+generic top-level generation_error is not itself an adequate causal account:
+the observed finish errors and source-file actions establish this edit-scope
+failure, rather than transport loss or a scientific-merit rejection.
+
+T requestbc3867e3ba98039d7a1bcad59007d4a2c23b7bed301e5fa4d3e74511122dc9cb;
+step13/15 completed-file SHA256
+11d8ea2459025bb498ffebf8f10d4ee0ad4f6bdc7058551ab9587e2223a49654 /
+92b86276fc8ada3beabca5e7e5f581a5655bdf893a0e9b75c8d25c79c6232881.
+C request1b07e0b7f1e9c40026237598d605b59195d90e4c6692915416477fa71f600b41;
+step13/15 completed-file SHA256
+e6d0449fe1c13bd3332e9330cd2cdca3cecd7bf49f694208f9f1211562f40a60 /
+3084d642d0d1115611bcc93a6fcf197dda1f2d5e240a920b9a7699c80928b279.
+These paths are within each arm's authoring/generation-request directory.
+
+All22 consumed uniform-numeric proposals execute; all22 consumed LLM-numeric
+slots fail generation. End-to-end generation compliance remains a confound
+for any claim about intrinsic design-space utility. Do not silently constrain/
+repair/restart the active editor to make these historical candidates valid,
+invent their losses, refill slots or call the abstract numeric space incapable.
+Initial-system eligibility at final selection remains the distinct predeclared
+rule, not retroactive success for these failed authored attempts.
+
+No active source/model/settings/objective/budget/selection or raw evidence
+change, new resource or optional registry egress. Remaining12 search slots,
+selected-policy unused-condition evaluation, two original-source audits and
+final analyses/manuscript/PDF/mock review remain required. The full goal remains
+active, not complete or blocked by expected finite inference waiting.
+
+Offline document checks pass16 active documents/191 local targets/six original
+snapshots and git diff --check; the through70 snapshot checksum is unchanged.
+These checks make no model, network or scientific-world calls.
