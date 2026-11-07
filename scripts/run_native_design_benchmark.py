@@ -116,11 +116,17 @@ def progress(root,plan,*,stage,active=None):
 def selection_payload(root,plan,*,frozen_utc,campaign_loader=None):
     root=Path(root);rows=[]
     loader=campaign if campaign_loader is None else campaign_loader
+    def scores(observation):
+        metadata=observation.get('metadata',{}) if observation else {}
+        forward_complete=(bool(observation) and not metadata.get('technical_failures')
+            and len(metadata.get('runs',[]))==1 and len(metadata.get('measurements',[]))==1)
+        return forward_complete,{k:evaluate_loss(loss,metadata['measurements'])['loss']
+            if forward_complete else None for k,loss in plan['losses'].items()}
     for name,system in plan['reference_systems'].items():
         o=json.loads((root/'references'/name/'observation.json').read_text())
+        forward_complete,cross_scores=scores(o)
         rows.append({'row_id':'reference:'+name,'arm':None,'system':system,'status':o['status'],
-            'cross_scores':{k:evaluate_loss(loss,o['metadata']['measurements'])['loss']
-                if o['status']=='complete' else None for k,loss in plan['losses'].items()}})
+            'forward_complete':forward_complete,'cross_scores':cross_scores})
     for run,bindings in plan['campaign_bindings'].items():
         for arm in bindings:
             c=loader(root,plan,run,arm)
@@ -128,12 +134,12 @@ def selection_payload(root,plan,*,frozen_utc,campaign_loader=None):
                 raise ValueError('selection cannot precede every declared search slot')
             for g,r in enumerate(c.state['records']):
                 o=r['observations'][0] if r['observations'] else None
+                forward_complete,cross_scores=scores(o)
                 rows.append({'row_id':run+':'+arm+':g'+str(g),'arm':arm,
                     'system':o['candidate'] if o else None,'status':o['status'] if o else 'generation-failure',
-                    'cross_scores':{k:evaluate_loss(loss,o['metadata']['measurements'])['loss']
-                        if o and o['status']=='complete' else None for k,loss in plan['losses'].items()}})
+                    'forward_complete':forward_complete,'cross_scores':cross_scores})
     def choose(pool,objective):
-        valid=[r for r in pool if r['status']=='complete' and r['cross_scores'][objective] is not None]
+        valid=[r for r in pool if r['forward_complete'] and r['cross_scores'][objective] is not None]
         value=min((r['cross_scores'][objective] for r in valid),default=None)
         tied=[r for r in valid if r['cross_scores'][objective]==value]
         return {'loss':value,'all_tied_row_ids':[r['row_id'] for r in tied],

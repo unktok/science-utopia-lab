@@ -16,7 +16,8 @@ def test_selection_requires_all_slots_and_keeps_nulls_ties_and_raw_definitions(t
         metrics={'native.accepted_decisions':{'status':'measured','value':0},
             'native.accepted_peer_score_sum':{'status':'measured','value':0},
             'native.review_records':{'status':'measured','value':0}}
-        o={'status':'complete','candidate':system,'metadata':{'measurements':[{'run_id':'SCRIPTED','metrics':metrics}]}}
+        o={'status':'complete','candidate':system,'metadata':{'measurements':[{'run_id':'SCRIPTED','metrics':metrics}],
+            'runs':[{'run_id':'SCRIPTED'}],'technical_failures':[]}}
         path=tmp_path/'references'/name/'observation.json';path.parent.mkdir(parents=True);path.write_text(json.dumps(o))
     # Every real controller owns an explicit failed definition, not a host fallback.
     calls=[]
@@ -41,6 +42,25 @@ def test_selection_requires_all_slots_and_keeps_nulls_ties_and_raw_definitions(t
     with pytest.raises(ValueError,match='immutable'):driver.freeze_selection(tmp_path,p)
     changed=deepcopy(s);changed['selected']['throughput:parameters']['loss']=-999.
     with pytest.raises(ValueError,match='exact frozen selection'):driver.evaluation_jobs(p,changed)
+    # Assigned-loss availability is not a cross-objective scientific veto.
+    # Alter only a synthetic projection, never the real controller/raw files.
+    def missing_assigned(base,plan,run,arm):
+        c=driver.campaign(base,plan,run,arm)
+        state=deepcopy(c.state)
+        if run=='run-00' and arm=='selective:code-and-graph':
+            state['records'][0]['observations']=[{'candidate':p['initial_system'],'status':'failed','loss':None,
+                'metadata':{'runs':[{'run_id':'SCRIPTED'}],'technical_failures':[],
+                    'measurements':[{'run_id':'SCRIPTED','metrics':{
+                        'native.accepted_decisions':{'status':'measured','value':17},
+                        'native.accepted_peer_score_sum':{'status':'unavailable','value':None},
+                        'native.review_records':{'status':'measured','value':0}}}]}}]
+        return SimpleNamespace(state=state)
+    projection=driver.selection_payload(tmp_path,p,frozen_utc='SCRIPTED',campaign_loader=missing_assigned)
+    assert projection['pooled']['throughput']['loss']==-17.
+    assert projection['pooled']['throughput']['selected_row_id']=='run-00:selective:code-and-graph:g0'
+    retained=next(r for r in projection['all_rows'] if r['row_id']=='run-00:selective:code-and-graph:g0')
+    assert retained['status']=='failed' and retained['forward_complete']
+    assert retained['cross_scores']['selective'] is None
 
 
 def test_pipeline_freezes_selection_and_evaluation_plan_before_any_evaluation(tmp_path,monkeypatch):

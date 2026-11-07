@@ -101,7 +101,9 @@ def analyze(root,source):
                 assigned=plan['assignments'][arm]
                 result=audit_native_campaign(directory,method='blackbox',world=plan['world'],
                     classification=spec.CLASSIFICATION,loss=plan['losses'][assigned['objective']],
-                    initial_system=plan['initial_system'],expected_budget=4,experiment=plan['experiment'])
+                    initial_system=plan['initial_system'],expected_budget=4,experiment=plan['experiment'],
+                    expected_controller_seed=binding['seed'],
+                    comparison_losses={loss['id']:loss for loss in plan['losses'].values()})
                 if not result['terminal'] or result['consumed_native_slots']!=4:
                     raise ValueError('study arm lacks its four terminal slots')
                 if assigned['method']!='random':
@@ -122,7 +124,7 @@ def analyze(root,source):
                     p=Path(cache['path']).resolve()
                     if p in caches:raise ValueError('physical scientist cache reused across search slots')
                     caches.add(p)
-                complete_ids={r['run_id'] for observation in result['observations'] if observation['status']=='complete'
+                complete_ids={r['run_id'] for observation in result['observations'] if observation['status'] in ('complete','loss-unavailable')
                     for r in observation['observation']['metadata']['runs']}
                 for cell in (directory/'worlds').glob('*'):
                     physical_dirs.add(cell.resolve())

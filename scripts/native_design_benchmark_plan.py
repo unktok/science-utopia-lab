@@ -32,7 +32,7 @@ def build_plan(*,source,scientist,designer,runtime_seed,backend,seed_usage_sha25
         raise ValueError('designer backend/model metadata required')
     references=control_systems(scientist['image_id']);anchor=references['open-seed']
     references['open-no-review-reject-all']=without_review(selection_control(anchor,rule='reject-all'))
-    losses=objective_specs();experiment={'protocol':PROTOCOL,'role':'development-matched-search'}
+    losses=objective_specs();experiment={'protocol':PROTOCOL,'role':'matched-study-common-world'}
     world={**deepcopy(scientist),'source_commit':source,'years':2,
         'runtime_seed_binding':deepcopy(runtime_seed),'experiment':experiment,'classification':CLASSIFICATION}
     bindings={};assignments={}
