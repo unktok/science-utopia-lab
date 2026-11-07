@@ -26,6 +26,8 @@ Historical documents retain their paths and source identities.
   complete, original-source audited twice; developer controls, not automatic invention.
 - [S1 fixed-record relaxation](results/native-controls-selection-relaxation-v1.json):
   read-only loss algebra, not a dynamic-policy optimum or new search outcome.
+- [S1 observed scientist tokens](results/native-controls-token-costs-v1.json):
+  source-bound response usage, not total project compute or fresh GPU operations.
 - [V1 same-source feedback comparison](results/native-feedback-comparison-v1-a1.md):
   all eight slots, four runtime failures, initial all-accept improvement, no measured G1 gain.
 - [V1 compact audit](results/native-feedback-comparison-v1-a1.json) and

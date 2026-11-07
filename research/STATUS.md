@@ -27,9 +27,10 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At10:28UTC all9 fresh reference worlds are complete. Search has
-consumed6/120 slots:2 generation failures in the parameter-only arms (their code
-edits exceed the declared numeric domain) and4 completed code proposals.
+diagnostic. At10:48UTC all9 fresh reference worlds are complete. Search has
+consumed9/120 slots:6 complete,2 parameter-arm generation failures (out-of-domain
+code edits), and1 selective technical-only execution failure (omitted decisions
+for actual nonempty submissions). The uniform numeric throughput G0 also records-7.
 Throughput fixed-graph and code/graph proposals both record loss-7; selective
 fixed-graph records2.4000000000000004 and selective code/graph records7.766666666666664.
 This partial result is not yet a closed audit,
@@ -100,8 +101,24 @@ The [short manuscript](../paper/submission.tex) now contains the actual all-tria
 table, search paths, source/mechanism interpretation and measured costs.
 This closes a small integration comparison, not the full conference study.
 The updated working PDF also includes the completed S1 strong-rule comparison,
-its print-sized figure and the separately labeled V2 protocol. All10 pages were
-visually checked; no future V2 outcomes are represented as results.
+its print-sized figure and the separately labeled V2 protocol. The11-page version
+also adds resources and responsible interpretation. All pages were rendered:
+the first10 exactly match the previously inspected PNGs, and the new page11 was
+visually inspected. No future V2 outcomes are represented as results.
+
+Read-only S1 [scientist token accounting](results/native-controls-token-costs-v1.json)
+is complete: all726 responses have prompt/completion/total/cached usage, with
+719002 prompt tokens (including127250 cached),68576 completion and787578 total.
+Two projections are byte-identical, inputs unchanged, no additional inference.
+Unknown or invalid usage remains explicit; counters are not FLOPs, GPU time,
+energy, money or total-project cost.25 focused checks at1aa0bab and79 integrated
+checks at7b4d573 pass in3.63s/17.36s (overlapping scopes). The updated paper's
+dependency/resource-table guards pass33 checks at92686a3 in1.10s.
+
+A separate post-dispatch [hardware observation](results/submission-hardware-observed-v2.json)
+reports Apple M5 Pro,18 logical CPUs and64GiB memory, not startup/GPU-utilization
+attestation. The appendix distinguishes proxy/deployment risks, sandbox limits,
+release review and coding assistance from optimization constraints.
 
 Read-only fixed-record acceptance analysis is now implemented, exhaustively
 tested on small scripted cases, and applied twice to S1 with byte-identical

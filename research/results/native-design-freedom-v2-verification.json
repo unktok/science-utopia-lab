@@ -88,6 +88,27 @@
     "junit_sha256": "3bfa277fde3a2aa9aaeb81100c7a68ddcc93fe7c0f4895414a2b903ed589998e",
     "scope": "Offline evaluation/search/author-report and paper/environment/selection/summary/docs regression checks after merge. No model calls or original-source V2 audit."
   },
+  "scientist_token_accounting_scope": {
+    "source_commit": "1aa0bab361457e6323bcb5b1f496630de58e4bc5",
+    "passed": 25, "failed": 0, "skipped": 0, "seconds": 3.63,
+    "junit": "outputs/publication-benchmark-v2-verification/native-token-costs.xml",
+    "junit_sha256": "b99917ef2472f2dea4a881d93a6be1af094c465e662d4845a8dbb2ba1942a8c6",
+    "scope": "Source-audited read-only token projection, absent/invalid/zero usage, partial/uncommitted wires, no-cache and empty-cache worlds, distinct physical journals and immutable CLI; scripted QA, no model requests."
+  },
+  "integrated_token_accounting_scope": {
+    "source_commit": "7b4d5734c3ddeccc2a9fc8f6752b0d860c024f65",
+    "passed": 79, "failed": 0, "skipped": 0, "seconds": 17.36,
+    "junit": "outputs/publication-benchmark-v2-verification/native-token-costs-integrated.xml",
+    "junit_sha256": "4cb86e06ab26f4e810080bd17a409a01b81a8a59a6bed8bd57fc4b86b4054556",
+    "scope": "Integrated token/selection/search/evaluation/summary/docs/paper artifact contracts; no inference or original-source V2 audit."
+  },
+  "resource_ethics_paper_scope": {
+    "source_commit": "92686a3c6cc77fb121a7b2bc9f94de0985c0d0da",
+    "passed": 33, "failed": 0, "skipped": 0, "seconds": 1.10,
+    "junit": "outputs/publication-benchmark-v2-verification/paper-resources-ethics.xml",
+    "junit_sha256": "a8ce3809c39a027b71ee7ba2934f73bcacbd4e441842c2e5dd8055ddd763a87c",
+    "scope": "Eleven-page PDF/source/data dependency hashes, observed-resource table including cached-token subset, hardware boundaries, token projection and repository docs/evidence guards. No new scientific data."
+  },
   "preserved_earlier_failures": [
     {"source_commit": "2b1c86da5fcf2ab27123d8ceadf7a6f8173010fc", "junit": "outputs/publication-benchmark-v2-verification/evaluation-figures.xml", "junit_sha256": "584226f4491fe76e04f42b88a62f096a97fdc570c6c25fbdd12e898c627f3e47", "passed": 41, "failed": 1, "cause": "New fixture tried to create a canonical content hash for NaN before entering its expected-rejection assertion. Distinguish canonical JSON rejection from boolean loss rejection; no production guard relaxed."},
     {"junit": "outputs/publication-benchmark-v2-verification/paper-analysis-final.xml", "tests_ran": 0, "exit_code": 4, "cause": "Verification command named nonexistent test_native_design_benchmark.py. Correct path is test_native_design_benchmark_report.py; no test or experiment executed in that attempt."},

@@ -102,7 +102,7 @@ V2の初期二つのparameter-only提案は、codeを書き換えて範囲違反
 | 機構の説明 | V1の全採択はtrace済み | V2選択policyの実消費箇所、実行receipt、研究者入力・行動への作用。source差分だけで代用しない |
 | 一般化と不確実性 | 未使用条件の実評価は未実施 | 選択固定後の五world seed、別horizon、全raw paired差と欠測。小標本から手法優位を断定しない |
 | 再現性 | tracked figure/PDF再構築と原source audit手順あり | 閉V2 audit・compact結果・費用。35B上流revision/変換recipeの不足と匿名配布境界を解消または明確に限定 |
-| 原稿と図 | 十ページworking draft、全ページQA済み | V2実測の反映、最終主張と証拠の対応、対象cycleの形式・匿名性・AI利用・著者資格を公式確認 |
+| 原稿と図 | 十一ページworking draft、render QA済み。資源・リスク・AI補助を追記 | V2実測の反映、最終主張と証拠の対応、対象cycleの形式・匿名性・AI利用・著者資格を公式確認 |
 
 未実証の比較をprotocolやソフトウェアtest数で埋めない。単なる弱いseed超えや
 「自由度を実装した」という記述だけで、top-conference向け研究完成と判定しない。

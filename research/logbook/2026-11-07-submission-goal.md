@@ -242,3 +242,55 @@ That query's failure is not evidence that every historical/alternative source is
 unavailable. No HF checkpoint/conversion recipe or public exact replacement is
 identified. No weights are fetched or modified. Compact tracked observations
 link the primary public page/metadata; raw metadata remains outside Git.
+
+Continuation through10:48UTC makes concrete progress while frozen inference
+continues: native scientist-token projection is implemented at1aa0bab361457e6323bcb5b1f496630de58e4bc5
+and passes25 focused checks in3.63s. It reads only closed, source-audited
+inventories/SQLite/wires, counts distinct physical journals without deduplicating
+identical content, and separates missing/invalid usage, unmatched wires and empty
+observed sets. A reported total/component mismatch is diagnostic, not repaired
+or converted into scientific invalidity. Models/code/containers are not executed.
+
+Applied twice to the two byte-identical original S1 audits:726 responses in8
+physical journals,719002 prompt tokens including127250 cached,68576 completion,
+787578 reported total. All726 usage records are present; no unmatched wires,
+invalid fields or component disagreements. Outputs are byte-identical with
+content hashad9bc6a9b80ef49c41e668d852401cca943019bacf367479f942dae867112c9b,
+file hash35e8b9591a78a6702bbce908e435aeead070cf2aa61f33d911f07d5fda14793e.
+Track the compact projection, not raw caches. This is not a new original-source
+audit and does not add S1 worlds. Cached input tokens are a subset, not an extra
+token bill or a measure of fresh GPU operations; operational cache state can
+confound policy-only compute comparisons. Role loads, retrieval, container,
+historical exploration, software/coding-agent costs are outside this token total,
+not assumed0. At integrated7b4d57379 checks pass in17.36s; source-specific JUnit
+paths/hashes are retained in the verification receipt.
+
+Hardware metadata, read twice with scoped approval after the restricted-shell
+query was denied, reports Apple M5 Pro/18 logical CPUs/68719476736 bytes=64GiB,
+model identifierMac17,9. Record at10:41:45UTC as a post-dispatch observation, not
+startup, GPU utilization, energy or isolated-compute attestation; no serial or
+private machine identifiers are read into the record.
+
+Paper resources/ethics revision is committed at92686a3c6cc77fb121a7b2bc9f94de0985c0d0da
+after offline cached Tectonic build. It is11 pages. All11 pages were rendered;
+pages1–10 are byte-identical to their already visually inspected PNGs, and the
+new resources/risks page11 is inspected directly. No layout/reference warnings;
+the harmless inputenc engine notice is retained. The10-page PDF is preserved
+under ignored intermediates. Exact table numbers and its underlying compact
+data/hardware/backend/provenance hashes are now guarded;33 focused checks pass
+in1.10s. The appendix discusses proxy/deployment risks, container limits,
+release permissions and coding-agent assistance without adding loss constraints.
+No partial V2 results are inserted as final manuscript data.
+
+At10:48UTC the live writer has9/120 search slots (6 complete,2 generation
+failures,1 runtime failure); refs9/9 complete, evaluations0. Uniform numeric
+throughput G0 records-7, so the observed proxy minimum does not establish code
+freedom's necessity. Selective technical-only G0 is authored and executed but
+emits empty_cycle despite three actual paper records, omitting their rejection
+decisions; the native identity-coverage contract rejects it. Its source also
+assumes R=0 when A=0, which is not how the preceding review stage works.
+These are observed authored-program/semantic failures, not evidence of a
+transport rewrite or a proven runner defect. Preserve null and the literal
+source; do not host-repair it, refill the slot or rewrite earlier measurements.
+The full original-source study audit and mechanism/cost conclusions still wait
+for terminal closure; continued waiting is expected, not a blocker.
