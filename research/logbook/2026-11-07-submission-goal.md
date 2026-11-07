@@ -731,3 +731,21 @@ The whole study is not terminal; throughput code/graph G3 is being authored.
 Keep STATUS's explicit30-slot milestone concise; this subsequent point and
 automatic raw journals preserve the newer observation without rewriting the
 paper for every slot. No runtime, budget, model, prompt, loss or trial changes.
+
+Continuation13:35–13:41UTC verifies the same live session46865. Monitoring cell3792
+ends at search32/120 (20 complete,6 generation failures,6 execution failures;
+references9/9,evaluations0). Throughput code/graph G3 fails with generated
+TypeError at line16: scores['values'][i][0] indexes a scalar score. The truthiness
+guard checks zero/nonzero, not whether an element is a list. This repeats the
+scalar/rank failure family already scoped in the readiness review, not the
+previous forwarding-input-metadata error. No new measured loss or improvement.
+The four own slots are[-7,-7,null,null]; they are not four independent worlds.
+World identity native-adaptive-418a80df14f86d2afccbce7d-s42;
+generation request hash
+6cf12c3442727584808eb6eafc07a112436c609496e4a99cde010e97322ed92e;
+progress hash
+7b6c4a241751cebefc90dd40722404b751742c11e918df763a97b2b3f0d33999.
+Do not host-repair the generated function or refill the trial. Selective
+code/graph G3 is being authored, while the whole finite study remains live.
+This observation does not establish new static safety guarantees or close
+the remaining source audit, unused-condition evaluation and manuscript work.
