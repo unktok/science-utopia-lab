@@ -123,3 +123,74 @@ def test_print_history_projection_binds_input_and_does_not_modify_or_impute_null
     assert len(manifest['files'])==4 and manifest['input_report_content_sha256']==r['content_sha256']
     assert (tmp_path/'figures/selective-paths.png').exists()
     with pytest.raises(ValueError,match='fresh'):plot_search(r,tmp_path/'figures')
+
+
+def author_proof(generation=0):
+    request={'generation':generation,'literal_data':'SCRIPTED, not a real request'}
+    return {'request':request,'request_sha256':digest(request),
+        'result':{'status':'generation-failed','selected_step':None,
+            'definition':{'generation_failure':{'reason':'step budget exhausted without valid explicit finish'}}},
+        'exact_raw_tools_draft_finish_replayed':True,
+        'completed_records':[
+            {'step':0,'status':'applied','errors':[],
+                'model_reply':{'output':{'tool':'write_file','filename':'code/SCRIPTED.py','content':'not executed'}},
+                'transition':{'ok':True,'errors':[{'message':'outside SCRIPTED domain'}],
+                    'document_before_sha256':'a'*64,'document_after_sha256':'b'*64}},
+            {'step':1,'status':'invalid-response','errors':[{'type':'ValueError','message':'SCRIPTED JSON failure'}],
+                'model_reply':{'output':None},'transition':None},
+            {'step':2,'status':'rejected','errors':[],
+                'model_reply':{'output':{'tool':'finish'}},
+                'transition':{'ok':False,'errors':[{'message':'outside SCRIPTED domain'}]}},None]}
+
+
+def test_author_diagnostics_keep_exact_error_channels_unknowns_and_not_inferred_merit():
+    p=author_proof();before=deepcopy(p);r=report.authoring_summary(p)
+    assert p==before and r==report.authoring_summary(p)
+    assert r['step_status_counts']=={'applied':1,'invalid-response':1,'rejected':1}
+    assert r['compiled_tool_counts']=={'write_file':1,'finish':1}
+    assert r['steps'][0]['transition_errors']==[{'message':'outside SCRIPTED domain'}]
+    assert r['steps'][0]['document_hash_changed'] is True
+    assert r['steps'][1]['step_errors'][0]['message']=='SCRIPTED JSON failure'
+    assert r['steps'][1]['transition_errors'] is None
+    assert r['steps'][2]['document_hash_changed'] is None
+    assert r['unknown_step_completions']==1 and r['steps'][3]=={'ordinal':3,'completion_record_available':False}
+    assert r['terminal_failure_reason']=='step budget exhausted without valid explicit finish'
+    assert r['exact_full_proof_sha256']==digest(p)
+    assert not r['behavioral_change_or_merit_inferred_from_source_edit']
+
+
+@pytest.mark.parametrize('output',[None,[],[{'tool':'finish'}],1,True,'untrusted',
+    {'tool':[],'filename':{}},{'tool':{'name':'finish'},'filename':7}])
+def test_untrusted_rejected_action_member_types_are_not_assumed_to_be_valid_tools(output):
+    p=author_proof();p['completed_records'][1]['model_reply']['output']=output
+    r=report.authoring_summary(p)['steps'][1]
+    assert r['compiled_tool'] is None and r['virtual_filename'] is None
+    assert r['compiled_action_sha256']==digest(output)
+
+
+def test_author_diagnostics_join_exact_generation_without_replacing_null_loss():
+    p,a=fixture();proof=author_proof(2)
+    a['runs']['run-00']['throughput:parameters']['designer']={'proofs':[proof]};hashed(a)
+    r=report.project(p,a,expected_source=p['source_commit'])
+    rows=r['search_arms']['run-00']['throughput:parameters']['rows']
+    assert rows[0]['authoring_diagnostics'] is None
+    assert rows[2]['own_loss'] is None and rows[2]['status']=='technical-failure'
+    assert rows[2]['authoring_diagnostics']['result_status']=='generation-failed'
+    # The report exposes channels without rewriting the audited native status.
+    assert r['search_arms']['run-00']['throughput:random']['rows'][0]['authoring_diagnostics'] is None
+
+
+@pytest.mark.parametrize('mutate',[
+    lambda p:p.update(request_sha256='wrong'),
+    lambda p:p.update(exact_raw_tools_draft_finish_replayed=False),
+    lambda p:p['request'].update(generation=True),
+])
+def test_author_diagnostics_require_exact_replayed_binding(mutate):
+    p=author_proof();mutate(p)
+    with pytest.raises(ValueError,match='exact replayed'):report.authoring_by_generation({'proofs':[p]})
+
+
+def test_author_diagnostics_do_not_collapse_duplicate_generations():
+    p=author_proof()
+    with pytest.raises(ValueError,match='exact replayed'):
+        report.authoring_by_generation({'proofs':[p,deepcopy(p)]})
