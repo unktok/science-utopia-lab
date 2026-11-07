@@ -160,6 +160,22 @@ only decision flags. Its minima are not feasible dynamic-policy counterfactuals.
 These reporting tools preserve missing scores and physical-sharing labels;
 they do not rerun worlds, renew calibration or update the proposer.
 
+The report's `development_specification_identity` groups submitted development
+rows by their audited `system_fingerprint`. It separates proposal slots,
+generation failures with no submitted candidate, exact representation identities,
+and repeated submitted slots. Runtime failures retain their submitted source
+identity; loss-unavailable complete forwards retain their physical proof without
+inventing a scalar loss. Even a diagnostic initial-system fingerprint on a
+generation-failure row is not counted as a submitted institution.
+
+These fingerprints include the development seed; this inventory performs no
+seed projection or semantic program-equivalence test. Different fingerprints
+are not automatically different scientific mechanisms, and repeated fingerprints
+are not automatically identical trajectories or independent samples. All row
+IDs, losses, native costs and selection/evaluation rules remain unchanged; this
+is not policy filtering or cost deduplication. Apply it only after the complete
+original-source audit, not as a completed-study report on a live archive.
+
 Raw checkpoints contain original absolute locators. A relocated copy needs an
 explicit verified relocation procedure; do not edit old journals or silently
 rewrite paths to make an audit pass. The compact Git results are not a substitute
