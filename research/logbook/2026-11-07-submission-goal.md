@@ -1583,3 +1583,38 @@ The61-slot documentation milestone was committed at4a93bc6; three existing
 PDF/source/resource artifact checks pass in0.05s with approved offline Python.
 No PDF rebuild, native audit, inference, source change or external egress was
 performed by those checks. Writer46865 and frozen b6654ad remain unchanged.
+
+### Same-seed interpretation and slot63
+
+Previous goal turn made concrete progress: committed61-slot evidence and
+the62nd candidate's real fallback/identity trace, not just a status restatement.
+In this continuation actual handle46865 repeatedly returns live; frozen b6654ad
+is clean. A separate finite read-only observer63561 waits for64 slots or600s;
+its timeout is not writer termination. The next C forward's wire journal grows
+from39 to82 to97 requests and its candidate then closes normally.
+
+At16:57:35UTC search63/120:33 complete,12 generation failures,18 execution
+failures,reference9/9,evaluation0. Run01 selective code-and-graph G2 completes
+C2.4000000000000004,A0/Q0/R24,8 rejects,5 active researchers/resources635,
+4 institutional-context deliveries. Three sequential source replacements all
+target world.selection; the final source uses score>5 and real IDs. Two
+source-matching receipts reject all3/5 records with exact input/output ID sets.
+Scores are[3,3,3], then[3,11/3,11/3,10/3,3]. The empty-record fallback is not
+exercised. This again ties initial C and its own G1, not improvement or a
+structure/wiring innovation. The source repeats the false comment that rejecting
+everything guarantees zero loss, overlooking the existing0.1*24 review term.
+Raw measured arithmetic and LossSpec remain unchanged.
+
+Request88cae5e19254c6fbbe0ad36c4cebc9a35cd3040fc36f5ed2aa5eefeca8688b79;
+world native-adaptive-46cb17016b363ec0fb2c8f49-s42;
+selection source SHA2561d850481615b9f47028c942af790d500548e61d6844d1d1d2f846ff0ce4897f7;
+checkpoint SHA256b0c1346f5e9b715f382035e6d8f81401663798fda69cf30a18eca45f04966ad8;
+code-context journal SHA256a367799d42faa4e77fb66b5c7827783d3db2283a993c56f86c0dafe6c59fe1c0.
+
+At615c8af the workflow and readiness review explicitly distinguish paired world
+seeds from bitwise-coupled fresh researcher replies, following the earlier
+same-policy diagnostic. No rule, source, candidate, budget or recorded response
+changes; no statistical variance estimate or unique backend cause is asserted.
+The manuscript/PDF are not rebuilt for partial V2 observations. All120 slots,
+fixed selection/evaluation, twice-repeated original-source audit, full analysis,
+manuscript/figures and final mock review remain required. The goal stays active.

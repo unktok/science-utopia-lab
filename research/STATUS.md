@@ -27,10 +27,10 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At16:41UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At16:58UTC all9 fresh
 reference worlds are complete. Search has
-consumed61/120 slots:31 complete,12 generation failures,18 execution failures.
-These are all40 slots of run00 plus all20 run01 G0/G1 slots and one G2 slot, not
+consumed63/120 slots:33 complete,12 generation failures,18 execution failures.
+These are all40 slots of run00 plus all20 run01 G0/G1 slots and three G2 slots, not
 the full study or three environment replicates. Run01's new real-backend
 calibration passes; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
@@ -82,6 +82,12 @@ original-source audit. Same world seed does not guarantee identical fresh replie
 Both numeric G1 proposals fail finite generation; all six initial numeric
 coordinates are inside the declared domain. C fixed-graph G2 returns dummy -1
 identities and fails real-ID coverage; its loss remains null.
+Run01 T code-and-graph G2 now completes T-7 after two technical nulls. Only
+selection source changes: scalar score inputs take its authored fallback-accept
+branch, not the list-score threshold branch. It ties strong controls. C
+code-and-graph G2 completes C2.4 with all3/5 real records rejected, again tying
+the initial loss. Its comment incorrectly omits existing review costs. Neither
+completion establishes a benefit of structural changes or causal feedback.
 
 All12 uniform-numeric slots so far execute while all12 LLM-numeric slots fail
 generation. Raw errors include out-of-domain edits and finite finish/checkpoint
