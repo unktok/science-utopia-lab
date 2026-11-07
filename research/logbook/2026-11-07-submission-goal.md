@@ -1409,3 +1409,65 @@ with selective technical-only G1. No original-source, model, prompt, objective,
 budget, retry or selection-rule changes, and no optional registry egress.
 The full study, fixed-policy unused conditions, two source audits and final
 analysis/manuscript/mock review remain required for the active goal.
+
+Follow-up16:18–16:24UTC: review the added identity inventory against actual
+auditor/controller semantics, not only green synthetic checks. A draw may
+retain technical_error with suggestion=None when system construction fails;
+the original auditor then has a technical-failure row with system=None and
+fingerprint=None. The initial inventory's all-post-generation-identities-known
+assumption was too strong for that existing branch. No actual V2 report was
+produced with it; earlier39/74 passes remain limited to their tested cases.
+Add explicit known/unknown fingerprint slot counts, unknown row IDs and an
+inventory-completeness flag. Repeat counts include only known identities.
+Keep measured-forward/no-identity contradictions as errors; do not fabricate
+an initial policy, drop the attempt or weaken the original closed-audit gate.
+Add both unit and closed-SCRIPTED-projection regressions for this source-derived
+case. This is a postprocessor correction, not a new experimental failure or
+change to the active benchmark runtime.
+
+After a fast-forward of main's notes into the separate analysis worktree,
+source509a8242a067d4c9ea6356f2f1dace82d06084c8 passes76 offline checks in16.22s;
+specification-identity-unknown-v2.xml SHA256
+4f75b7e52c17d247932001417b8b4435e80b14e7d045b1a9dfff55c28b5c7bc7.
+Fast-forward integrate that exact tested source into main and repeat76 in16.74s;
+specification-identity-unknown-main-v2.xml SHA256
+2d053d269109f5215047bf2dbe40a36595b1a3fe4a263119892c40e760910da4.
+The76 overlap the earlier scopes and are not additional scientific samples.
+No actual live-study identity aggregate, new native audit or model calls are
+produced by these checks. The frozen b6654ad experiment is never edited.
+
+At16:20:24 search56/120,29 complete,10 generation failures,17 execution
+failures,evaluation0. Run01 selective technical-only G1 fails the world-output
+envelope validator: its literal source returns the raw observation payload
+instead of a message wrapping it in payload. The same source also has an empty
+decisions list, but the recorded exception is the envelope error, not an
+executed counterfactual second failure. Loss remains null.
+World native-adaptive-407e71825fdf8eb6f15d42df-s42;
+request6363cbca1eca7cc1c017d0759c1d9195db51281d1d63685202da27f4c729be9c;
+selection source SHA256
+b9d826aafd8e229c1d91522f275e3f3217b098ffa2926adde7ad7937432475cd;
+partial journal SHA256
+b5d35e26c52a367400eb23adcc787d53942b4d6df8a79bdc9d8e746acfd8140a
+(three preceding successful receipts, not a successful selection). The prior
+throughput technical-only G1 partial journal likewise contains three preceding
+receipts, SHA256
+11736f0b02db189a04696b84ea6274b5285e31aaa46ad8486b22efe4b185aec1.
+
+At16:22:26 search57/120,30 complete,10 generation failures,17 execution
+failures,evaluation0; progress SHA256
+c785ad8060b7cd895e631f6fb66deeb4cfed909491d95125e0ee61d16247175f.
+Run01 throughput uniform-numeric G1 completes T-7,A7/Q22/R21,
+5 active authors/resources620,6 institutional-context deliveries. Its own
+losses[-1,-7] improve that history's observed best while tying the known
+strong-rule T-7. Uniform proposals do not learn from losses; this is improved
+best-of-random selection, not feedback, gradient or novel-institution evidence.
+Preserve Q22 rather than treating all T-7 candidates as the same trajectory.
+World native-adaptive-8fac3c0513f9a76af00a4903-s42;
+request8c10faec7aa2ffd5dc168ede76f094736a02221e043c5701a023708a1b13ea54;
+checkpoint SHA256
+7af8f973b88dd2096ec400a2c6a06bd941fc7f2d0b7ea2040d986e9ca0421b5d.
+The same writer46865 remains live and proceeds to selective uniform-numeric G1.
+No original-source, model, prompt, objective, budget, retry, selection or
+external-egress change. Remaining63 search slots, fixed-policy unused-condition
+evaluation, two original-source audits and final analysis/manuscript/review are
+still required; the submission goal stays active.

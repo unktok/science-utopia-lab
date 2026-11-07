@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At16:13UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At16:22UTC all9 fresh
 reference worlds are complete. Search has
-consumed55/120 slots:29 complete,10 generation failures,16 execution failures.
-These are all40 slots of run00 plus all10 run01 G0 slots and five G1 slots, not
+consumed57/120 slots:30 complete,10 generation failures,17 execution failures.
+These are all40 slots of run00 plus all10 run01 G0 slots and seven G1 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its selective technical-only G1 is in flight; selected-policy
+calibration passes and its selective uniform-numeric G1 is in flight; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Run01's
@@ -59,6 +59,10 @@ its score>5 rule rejects all3/5 realized records. This recovers execution but
 ties the initial C loss. Its comment claiming zero loss on rejection omits
 the measured review cost. T technical-only G1 fails scalar score indexing;
 its earlier valid G0 remains eligible rather than being erased by this null.
+Run01 C technical-only G1 fails a bare world output envelope. Uniform T G1
+completes at-7,A7/Q22/R21, improving that random history's-1 to the known-7.
+This is best-of-random improvement, not feedback/gradient learning; outside Q
+remains recorded even when the assigned T ties another policy.
 
 Run01 uniform-numeric T/C G0 complete at-1/2.733333333333334 with the same
 A1/Q3.6666666666666665/R24 vector. Their candidate dictionaries and numeric
@@ -100,8 +104,10 @@ groups, separating submitted slots, repeated representations and generation
 failures without a submitted candidate. Failed submitted code and completed
 forwards missing one loss remain distinct. No scores/costs/selection are
 deduplicated, and fingerprint counts are not institution novelty or independent
-samples.39 focused and74 integrated offline checks pass at their recorded
-sources (overlapping scopes), with the74 repeated on main. This is implemented
+samples. Missing fingerprints after failed instantiation remain explicitly
+unknown, not fabricated policies or repeats.39 focused,74 integrated and76
+later missing-identity checks pass at their recorded sources (overlapping
+scopes), with integrated checks repeated on main. This is implemented
 analysis infrastructure, not an actual V2 report or new original-source audit.
 
 The design-freedom pipeline is now integrated: nested domains, in-session

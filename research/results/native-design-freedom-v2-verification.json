@@ -130,6 +130,20 @@
     "junit_sha256": "3fab6b889f7fe774d79c51e98bc895446ce3a7891c03b3f8074a6b185ade5698",
     "scope": "Same overlapping offline checks repeated on main after fast-forward integration; not additional scientific evidence or a real V2 report."
   },
+  "unknown_specification_identity_scope": {
+    "source_commit": "509a8242a067d4c9ea6356f2f1dace82d06084c8",
+    "passed": 76, "failed": 0, "skipped": 0, "seconds": 16.22,
+    "junit": "outputs/publication-benchmark-v2-verification/specification-identity-unknown-v2.xml",
+    "junit_sha256": "4f75b7e52c17d247932001417b8b4435e80b14e7d045b1a9dfff55c28b5c7bc7",
+    "scope": "Prior source review found that a failed draw can have no instantiated SystemSpec. Preserve those null identities explicitly, count repeats only among known fingerprints, and still reject measured forwards without identities. Synthetic offline report/figure/docs/PDF contracts; no real-study report."
+  },
+  "main_unknown_specification_identity_scope": {
+    "source_commit": "509a8242a067d4c9ea6356f2f1dace82d06084c8",
+    "passed": 76, "failed": 0, "skipped": 0, "seconds": 16.74,
+    "junit": "outputs/publication-benchmark-v2-verification/specification-identity-unknown-main-v2.xml",
+    "junit_sha256": "2d053d269109f5215047bf2dbe40a36595b1a3fe4a263119892c40e760910da4",
+    "scope": "Same overlapping offline checks repeated on main after integrating missing-identity handling. No model calls, original-source audit, selection change or missing-data imputation."
+  },
   "preserved_earlier_failures": [
     {"source_commit": "2b1c86da5fcf2ab27123d8ceadf7a6f8173010fc", "junit": "outputs/publication-benchmark-v2-verification/evaluation-figures.xml", "junit_sha256": "584226f4491fe76e04f42b88a62f096a97fdc570c6c25fbdd12e898c627f3e47", "passed": 41, "failed": 1, "cause": "New fixture tried to create a canonical content hash for NaN before entering its expected-rejection assertion. Distinguish canonical JSON rejection from boolean loss rejection; no production guard relaxed."},
     {"junit": "outputs/publication-benchmark-v2-verification/paper-analysis-final.xml", "tests_ran": 0, "exit_code": 4, "cause": "Verification command named nonexistent test_native_design_benchmark.py. Correct path is test_native_design_benchmark_report.py; no test or experiment executed in that attempt."},
