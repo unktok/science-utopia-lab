@@ -9,6 +9,7 @@ and results. New work uses the forward-only taxonomy below.
 
 ## Current state
 
+- [V45 finite forward execution: bounded authoring, shared historical initialization and independent terminal audit](protocols/campaigns/native-warmstart-v45-a1.md)
 - [Search-design review: original goals, evidence, reuse and finite next steps](search-design-review.md)
 - [Decision0029: review before another autonomous-authoring campaign](decisions/0029-search-review-before-more-autonomous-authoring.md)
 - [Reproducible retrospective objective-selection table; no new inference](results/native-search-design-review-v1.json)

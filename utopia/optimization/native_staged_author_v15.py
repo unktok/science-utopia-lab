@@ -385,6 +385,7 @@ def protocol_binding():
     from . import native_contract_notices
     from . import native_authoring_recovery_v44
     from . import native_bounded_author_context_v45
+    from . import native_initial_evidence
     return {'schema': PROTOCOL, 'source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'compiler_source_sha256': hashlib.sha256(Path(native_authoring_ir.__file__).read_bytes()).hexdigest(),
         'transport_source_sha256': hashlib.sha256(Path(native_search_generator_v14.__file__).read_bytes()).hexdigest(),
@@ -400,6 +401,7 @@ def protocol_binding():
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'recovery_source_sha256': hashlib.sha256(Path(native_authoring_recovery_v44.__file__).read_bytes()).hexdigest(),
         'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
+        'initial_evidence_source_sha256': hashlib.sha256(Path(native_initial_evidence.__file__).read_bytes()).hexdigest(),
         'capability_catalog_source_sha256': hashlib.sha256(Path(native_capability_catalog.__file__).read_bytes()).hexdigest(),
         'action_schema_sha256': digest(ACTION_SCHEMA), 'instructions_sha256': digest(INSTRUCTIONS),
         'file_editor_instructions_sha256': digest(FILE_EDITOR_INSTRUCTIONS),

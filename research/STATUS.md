@@ -2,7 +2,24 @@
 
 Updated: 2026-11-07 JST
 
-## Current: deliberate search-design review; no new campaign
+## Current: implementing R1/R2 and finite R3 forward execution
+
+The user authorizes execution, parallel implementation and bug fixes after the
+review. New opt-in `plain-function-bounded-v45` bounds active source/wire context
+while keeping exact draft, losses, errors and retrievable full archives. Explicit
+initial evidence retains all eight historical slots, failures, ties and original
+provenance; it does not turn old worlds into new executions or physical caches.
+An independent read-only auditor checks the prospective plan, original donor,
+literal authoring, physical native outcomes and terminal budget accounting.
+
+The [finite V45 protocol](protocols/campaigns/native-warmstart-v45-a1.md)
+declares one new slot per unchanged objective, at most two new native attempts,
+fixed Qwen3-8B researchers and installed local35B author. Runtime is developed
+separately, then frozen before source-bound tests and fresh real calibration.
+Implementation is not an execution result; record actual dispatch and terminal
+receipts before claiming completion or improvement. No scale-up is authorized.
+
+## Completed search-design review (superseded as active work)
 
 The user asks to stop and reconsider the research/software design, then work
 thoroughly on that review. [Current review](search-design-review.md) and
