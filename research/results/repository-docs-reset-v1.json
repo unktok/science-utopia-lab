@@ -1,0 +1,15 @@
+{
+  "schema": "scienceutopia.repository-docs-reset.v1",
+  "source_commit": "5ae3c5ccfed5d3b56c551a81c9af88a73419da62",
+  "snapshots": [
+    {"original": "README.md", "snapshot": "README.history-through-v45.md", "sha256": "a273f0714e2232ef35538097974f09e41836d1935bf656bad0a6e63bf305fd67"},
+    {"original": "RESEARCH.md", "snapshot": "RESEARCH.history-through-v45.md", "sha256": "cc2e631c4644a917d2e01a18207c5ed7999c0a61a353c7c4c53d6748798a6468"},
+    {"original": "research/INDEX.md", "snapshot": "research/index-history-through-v45.md", "sha256": "c236e76baa5436b8f2ec7e6cb18f6e9ccb2809e3fd5179844b4a9eac9331e18a"},
+    {"original": "research/STATUS.md", "snapshot": "research/status-history-through-v45.md", "sha256": "21bec6af7fbb90a1b1d1e3f5ff1de4654e3c14777c96d13968e662e31530997e"},
+    {"original": "research/roadmap.md", "snapshot": "research/roadmap-history-through-v45.md", "sha256": "cd0927d625f5147d51a346a63c5fe9682101319fd9fb892313f1ec80d1349600"},
+    {"original": "research/program-map.md", "snapshot": "research/program-map-history-through-v45.md", "sha256": "70c785ad7632b84963f9c4e6deb24abd4668feb760b7296ce7fbe3d589e37be6"}
+  ],
+  "deleted_worktrees": 0,
+  "deleted_raw_artifacts": 0,
+  "deleted_branches": 0
+}

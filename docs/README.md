@@ -5,6 +5,7 @@ record lives separately under [`research/`](../research/INDEX.md).
 
 ## Contributor path
 
+0. [Repository map and forward-only maintenance](repository.md)
 1. [Development setup](development.md)
 2. [Architecture and boundaries](architecture.md)
 3. [Testing](testing.md)

@@ -1,375 +1,72 @@
-<div align="center">
+# Science Utopia Lab
 
-# ScienceUtopia
+Optimize the **system that organizes science**, not the researcher-model weights.
+This research fork extends [ScienceUtopia](https://github.com/Ahren09/ScienceUtopia)
+with executable institutions, editable mechanisms and wiring, objective-conditioned
+search, optional gradient estimators, and an English pixel/cyberpunk evidence UI.
 
-### *A configurable simulation of research, peer review, and scientific funding*
-
-[**Project website**](https://ahren09.github.io/ScienceUtopia/)
-
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.11-3776AB.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.9.0-EE4C2C.svg)](https://pytorch.org/)
-[![Transformers](https://img.shields.io/badge/Transformers-4.57.3-FFD21E.svg)](https://huggingface.co/docs/transformers)
-[![vLLM](https://img.shields.io/badge/vLLM-0.12.0-30A14E.svg)](https://github.com/vllm-project/vllm)
-
-</div>
-
----
-
-> **Science Utopia Lab fork**
->
-> This repository extends the upstream simulator into a research platform for
-> designing and optimizing whole scientific systems. The design object is a
-> typed `SystemSpec`, not peer review alone. Current work includes black-box
-> optimization, mechanism graphs, reproducible campaigns, canonical replay,
-> and a game-like interface. Upstream remains
-> [`Ahren09/ScienceUtopia`](https://github.com/Ahren09/ScienceUtopia).
+The original researcher world is a contained instance, not the limit of the
+design space. Small experiments retain that world; numerical test fixtures are
+not substitutes for scientific evidence.
 
 ## Start here
 
-| Goal | Entry point |
-|---|---|
-| Understand the project and current milestone | [Research overview](RESEARCH.md) and [program status](research/STATUS.md) |
-| Check original goals against implementation, actual evidence and remaining limits | [Current search-design review](research/search-design-review.md), [program status](research/STATUS.md), [historical nested free-institution milestone](research/milestones/2026-11-02-nested-free-institution-v13.md) |
-| Set up a development environment | [Development guide](docs/development.md) |
-| Understand the code and data flow | [Architecture](docs/architecture.md) |
-| Make a contribution | [Contributing guide](CONTRIBUTING.md) |
-| Run the relevant tests | [Testing guide](docs/testing.md) |
-| Plan or execute a research campaign | [Research workflow](docs/research-workflow.md) |
-| Browse technical and upstream documentation | [Documentation index](docs/README.md) |
-| Browse the scientific record | [Research index](research/INDEX.md) |
-| Open the local replay game | [Game UI guide](game-ui/README.md) |
-| Extend the actual researcher world with new institutions | [Native science kernel and limits](research/components/native-science-kernel-v1.md) |
-| Author native institution code, protocols and explicit wiring | [Scoped authoring](research/components/native-scoped-region-authoring-v5.md), [external designer contract](research/components/native-external-manifest-authoring-v5.md) |
-| Extend participants, artifacts, actions and processes in the original world | [Open native domain](research/components/native-open-domain-v7.md), [process execution](research/components/native-process-execution-v7.md), [wrapped adoption/restart](research/components/native-process-migration-validation-v7.md) |
-| Generate evolving mixed designs or inspect conditional/native gradients | [Adaptive search](research/components/native-adaptive-open-search-v7.md), [operational hybrid representations](research/components/native-operational-hybrid-gradients-v7.md) |
-| Explore free institutions with conditional inner optimization | [V13 frozen 2→1→1 protocol](research/protocols/campaigns/native-nested-search-v13.md), [actual eight-world result](research/results/native-nested-search-v13-a1.md), [nested kernel](research/components/native-nested-search-v13.md) |
-| Automatically author institutions from an objective and fixed budget | [Runtime/API](research/components/native-autonomous-search-runtime-v14.md), [stable-ID IR](research/components/native-stable-id-authoring-ir.md), [closed first attempt](research/results/native-autonomous-search-v14-a1.md), [Foundry mission control](game-ui-v2/AUTONOMOUS_SEARCH_V14.md) |
-| Read actual optimization paths and earlier structural cross-scores | [V13 all outcomes and cross-scores](research/results/native-nested-search-v13-a1.md), [earlier free redesign](research/results/native-objective-redesign-v12-a1.md), [gradient/black-box paths](research/results/native-method-paths-v10-a1.md) |
-| Inspect objective-conditioned paths, source, routing and cross-scores | [English nested Institution Foundry](game-ui-v2/NESTED_FOUNDRY_V13.md), [actual pixel-city screenshot](game-ui-v2/screenshots/nested-foundry-v13-actual-qa/nested-foundry-v13-actual-overview.png) |
-| Differentiate a response-aware representation without replacing the native world | [Original-world response-boundary operator and evidence limits](research/components/native-response-boundary-fidelity-v8.md), [scripted QA receipt](research/results/native-response-fidelity-v8-scripted.json) |
-| Run a fixed-loss gradient versus black-box update comparison | [V10 frozen protocol](research/protocols/campaigns/native-method-paths-v10.md), [offline gradient-chain diagnosis](research/results/native-response-gradient-diagnosis-v10.md), [actual independent audit](research/results/native-method-paths-v10-a1.json) |
-| Generate new institution rules and differentiate a miniature world | [Generative Program World](research/components/generative-program-world-v1.md) and [recorded result](research/results/generative-program-world-v1.md) |
+| Question | Canonical document |
+| --- | --- |
+| What are we trying to achieve? | [Research purpose](RESEARCH.md) |
+| What works, and what remains unproven? | [Current status](research/STATUS.md) |
+| Where is the scientific record? | [Research index](research/INDEX.md) |
+| How is the repository organized? | [Repository map](docs/repository.md) |
+| How do I develop or contribute? | [Setup](docs/development.md), [contributing](CONTRIBUTING.md), [tests](docs/testing.md) |
+| What code boundaries must remain separate? | [Architecture](docs/architecture.md) |
+| How do I run a campaign safely? | [Research workflow](docs/research-workflow.md), [designer preflight](docs/designer-preflight.md) |
+| Where are the manuscript and interface? | [Manuscript](paper/README.md), [English game UI](game-ui-v2/README.md) |
 
-The shortest contributor orientation is:
+## Current evidence
 
-```text
-README → docs/README → docs/architecture → research/STATUS
-```
+The latest local-author pilot is **closed**, not running. Two submitted
+institutions were dispatched: one native evaluation completed and one failed
+a producer/consumer tensor contract. Retrospective pooled scores are not
+objective-specific, held-out or causal improvements. See the
+[audited result](research/results/native-warmstart-v45-a1.json) and
+[interpretation](research/logbook/2026-11-07-native-warmstart-v45.md).
+Earlier studies, including external-author improvements, remain part of the
+record with their original source and author provenance.
 
-## Overview
+## Local development
 
-ScienceUtopia models researchers choosing projects, submitting papers, reviewing one another's work, receiving citations, and competing for funding. Language models make structured decisions within an explicit yearly simulation. Researchers retrieve candidate papers from the public [SciEvo dataset](https://huggingface.co/datasets/Ahren09/SciEvo).
-
-This release supports **new experiments**. It contains the simulator, scientific prompts, experiment definitions, numerical estimators, and regression tests. Historical campaign artifacts and their original results are not distributed. Simulation outputs are checkpoints, request audits, manifests, and numerical tables. Optional manuscript renderers live separately in `scripts/figures/`.
-
-The [project website](https://ahren09.github.io/ScienceUtopia/) is a static page in `index.html`, with styles in `assets/css/style.css` and the copy-button script in `assets/js/main.js`. Open `index.html` directly in a browser, or view the GitHub Pages site. No backend, package installation, or frontend build is required. GitHub Pages publishes the root of `main`; `.nojekyll` keeps the files static.
-
-## Highlights
-
-- **Nine experiment families** with configurable models, seeds, endpoints, and output locations.
-- **Scientific mechanisms:** researcher populations, project duration and output, retrieval, conflicts of interest, peer review, citations, funding, and attrition.
-- **Auditable runs:** yearly checkpoints, structured request records, funding evidence, source hashes, and input identities.
-- **Portable data:** public dataset/model revisions and caches tied to their actual inputs.
-- **Numerical analysis:** within-institution contrasts, factorial decompositions, bootstrap intervals, randomization tests, and funding-cutoff estimators.
-
-## Capabilities
-
-| Family | Experiment module | Conditions / purpose |
-| :--- | :--- | :--- |
-| Exploration | `utopia.experiments.exploration` | Research strategies and funding/citation novelty incentives |
-| Scale expansion | `utopia.experiments.scale_expansion` | Project output, budget, reviewer capacity, review policy, and resubmission |
-| Influx | `utopia.experiments.influx_factorial` | Researcher entry × resubmission |
-| Funding feedback | `utopia.experiments.funding_feedback` | Publication and resource feedback mechanisms |
-| Switching propensity | `utopia.experiments.switching_propensity` | Switching probability × distance from research history |
-| Resource size | `utopia.experiments.resource_size` | Resource randomization and institution size |
-| Funding cutoff | `utopia.experiments.funding_cutoff` | Funding-rank cutoffs and application-cost sensitivity |
-| Review replay | `utopia.experiments.review_replay` | Controlled reviewer policies and network information |
-| Project cost | `utopia.experiments.project_cost` | Output × budget with direct output/resubmission fees set to zero |
-
-## Installation
-
-The local inference setup targets **Linux, Python 3.11, and an NVIDIA GPU** compatible with PyTorch's CUDA 12.8 wheels. The example uses an 80 GB GPU, reserves 45% of its memory for vLLM, and runs retrieval on the same GPU. Select a GPU with sufficient free memory. On another machine, adjust the reservation or use `--rag_device cpu`; CPU retrieval takes considerably longer.
-
-Allow approximately **70 GB of free disk space** for the environment, installation cache, model weights, public data, and initial outputs. Put the checkout and caches on a large local volume.
+Use Python 3.11 through the approved project environment or `uv`. On this
+computer, never execute Apple-provided Python/pip. Before fetching packages,
+verify the resolved pip is at least26.2.2; do not install or download models
+merely to read the repository.
 
 ```bash
-# 1) Clone the public repository.
-git clone https://github.com/Ahren09/ScienceUtopia.git
-cd ScienceUtopia
+# Existing environment: documentation checks need no model, GPU or network.
+.venv/bin/python scripts/check_repository_docs.py
 
-# 2) Place caches and the environment on the chosen storage volume.
-export SCIENCEUTOPIA_STORAGE="$PWD/.cache"
-export HF_HOME="$SCIENCEUTOPIA_STORAGE/huggingface"
-export PIP_CACHE_DIR="$SCIENCEUTOPIA_STORAGE/pip"
-export TMPDIR="$SCIENCEUTOPIA_STORAGE/tmp"
-mkdir -p "$HF_HOME" "$PIP_CACHE_DIR" "$TMPDIR"
-
-# 3) Create an isolated Python 3.11 environment.
-python3.11 -m venv "$SCIENCEUTOPIA_STORAGE/env"
-source "$SCIENCEUTOPIA_STORAGE/env/bin/activate"
-
-# 4) Install the simulator, local server, and tests.
-python -m pip install -r requirements-vllm.txt -r requirements-test.txt
-python -m pip check
+# Focused software tests; this does not run a scientific campaign.
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 \
+HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  .venv/bin/python -m pytest tests/reports/test_repository_docs.py -q
 ```
 
-If Python 3.11 is unavailable but Conda is installed, replace step 3 with:
+Installation variants live in the [development guide](docs/development.md).
+The [previous README](README.history-through-v45.md) preserves the mixed
+upstream/Lab instructions exactly as of5ae3c5c, including historical examples;
+it is not the current experiment prescription.
 
-```bash
-# Standard Anaconda installations live here; use the installed Conda executable.
-export PATH="$HOME/anaconda3/bin:$PATH"
-eval "$(conda shell.bash hook)"
-conda create --override-channels -c conda-forge --prefix "$SCIENCEUTOPIA_STORAGE/env" python=3.11 -y
-conda activate "$SCIENCEUTOPIA_STORAGE/env"
-```
+## Reproducibility and collaboration
 
-| File | Purpose |
-| :--- | :--- |
-| `requirements.txt` | Simulator, retrieval, numerical analysis, and endpoint client |
-| `requirements-vllm.txt` | Core plus the local vLLM server |
-| `requirements-optional.txt` | Optional providers and scalar W&B logging |
-| `requirements-test.txt` | Core plus pytest |
-| `requirements-figures.txt` | Core plus optional manuscript plotting |
+- Develop on feature branches; execute long campaigns only from clean,
+  commit-pinned worktrees. Never edit an active or historical experiment tree.
+- Keep loss, technical validity, evaluation metrics and optional adoption policy
+  separate. No hidden fairness, novelty or improvement veto.
+- Track compact results, manifests and source identities; ignore raw
+  `outputs/`, caches, weights and environments.
+- Keep old protocols, outcomes, failures and source-bound certificates unchanged.
+  No certificate from an older source authorizes a new experiment.
+- Entry documents describe current state. Versioned records preserve history.
 
-`constraints-linux-py311.txt` pins the resolved transitive versions for these groups. An existing compatible model endpoint needs only the core requirements. Optional providers require their own credentials; the quick start uses local inference and makes no paid API calls. W&B is disabled by default. If installed and explicitly enabled with `--wandb`, it logs scalars.
-
-### Verify the installation
-
-```bash
-python -c "import torch, vllm, transformers, sentence_transformers; print('torch', torch.__version__, 'CUDA available:', torch.cuda.is_available()); print('vllm', vllm.__version__); print('transformers', transformers.__version__); print('sentence-transformers', sentence_transformers.__version__)"
-python -m utopia --help
-```
-
-Expected versions are PyTorch `2.9.0` (possibly with a CUDA suffix), vLLM `0.12.0`, Transformers `4.57.3`, and Sentence Transformers `5.1.2`. `pip check` must report no broken requirements.
-
-## Quick start
-
-Run these commands from the repository root with the environment activated. This is a genuine **Qwen3-8B simulation with ten researchers, three years, and seed 42**.
-
-### macOS Apple Silicon (Ollama)
-
-vLLM requires Linux/CUDA, but the simulator can use Ollama's OpenAI-compatible API on Apple Silicon. The supplied runner uses Qwen3-8B on Metal, CPU retrieval to avoid unified-memory contention, two institutions, ten researchers, and one simulated year for a local smoke run. Two institutions are the minimum useful topology because reviewers cannot review papers from their own institution.
-
-```bash
-/opt/homebrew/bin/uv venv --python 3.11 --seed .venv
-.venv/bin/pip --version  # must be 26.2.2 or newer on this machine
-/opt/homebrew/bin/uv pip install --python .venv/bin/python -r requirements-test.txt
-ollama pull qwen3:8b
-scripts/run_macos_ollama.sh
-```
-
-The first run downloads the pinned SciEvo data and embedding models. Override the scale with `SCIENCEUTOPIA_YEARS`, `SCIENCEUTOPIA_INSTITUTIONS`, `SCIENCEUTOPIA_CONFERENCES`, and `SCIENCEUTOPIA_BATCH_SIZE`. Ollama runs keep normal manifests and call statistics, but omit the vLLM-specific exact-token request audit because an Ollama tag is not an immutable Hugging Face tokenizer revision. These runs exercise the published simulation mechanics but are not numerically identical to the paper's Linux/vLLM campaigns.
-
-```bash
-# 1) Select an available GPU and unused local port.
-export SCIENCEUTOPIA_GPU="${SCIENCEUTOPIA_GPU:-0}"
-export SCIENCEUTOPIA_PORT="${SCIENCEUTOPIA_PORT:-8000}"
-export CUDA_VISIBLE_DEVICES="$SCIENCEUTOPIA_GPU"
-export OMP_NUM_THREADS=4
-# Runtime IPC needs short paths for both vLLM and the dataset loader.
-# Large downloads and caches remain in HF_HOME and PIP_CACHE_DIR.
-export TMPDIR="$(mktemp -d /tmp/scienceutopia-runtime-XXXXXX)"
-export VLLM_RPC_BASE_PATH="$TMPDIR"
-mkdir -p outputs/logs
-
-# 2) Start the model server. The first launch downloads Qwen3-8B.
-vllm serve Qwen/Qwen3-8B \
-    --revision b968826d9c46dd6066d109eabc6255188de91218 \
-    --host 127.0.0.1 --port "$SCIENCEUTOPIA_PORT" \
-    --dtype bfloat16 --max-model-len 32768 --max-num-seqs 8 \
-    --gpu-memory-utilization 0.45 --enforce-eager \
-    --reasoning-parser qwen3 --seed 42 \
-    > outputs/logs/model-server.log 2>&1 &
-echo $! > outputs/logs/model-server.pid
-
-# 3) Wait for the server (at most 15 minutes).
-python - <<'PY'
-import os, time, urllib.request
-url = f"http://127.0.0.1:{os.environ['SCIENCEUTOPIA_PORT']}/health"
-for _ in range(450):
-    try:
-        with urllib.request.urlopen(url, timeout=2) as response:
-            if response.status == 200:
-                print("Model server ready")
-                break
-    except OSError:
-        pass
-    time.sleep(2)
-else:
-    raise SystemExit("Server did not become ready; read outputs/logs/model-server.log")
-PY
-
-# 4) Run the simulation.
-python -B -m utopia \
-    --model Qwen/Qwen3-8B \
-    --vllm_url "http://127.0.0.1:$SCIENCEUTOPIA_PORT/v1" \
-    --experiment_name exploration_vs_exploitation --experiment_stage smoke \
-    --population_mode university_only \
-    --num_institutions 2 --researchers_per_institution 5 \
-    --num_years 3 --num_conferences 2 --seed 42 --batch_size 8 \
-    --rag_device cuda:0 --log_funding_applications --log_resource_ledger \
-    > outputs/logs/quickstart.log 2>&1
-
-# 5) Validate all three years and produce a numerical report.
-python -m utopia.analysis.release \
-    --run explore_smoke_qwen3_8b_neutral_i2_n10_y3_seed42_costv1_per_paper_resub5_ledger1_acdad001284e \
-    --require-activity --out-dir outputs/docs/quickstart-report
-```
-
-During installation, `TMPDIR` points to the chosen storage volume for package downloads. At runtime, the short `TMPDIR` above prevents Unix-socket path limits in both vLLM and the dataset loader; `VLLM_RPC_BASE_PATH` uses the same directory. `HF_HOME`, `PIP_CACHE_DIR`, generated data caches, and simulation outputs remain on the chosen storage volume. Use these runtime exports for experiment commands too.
-
-The first simulation downloads SciEvo's `arxiv` configuration and builds the retrieval index. This example selects CS papers from 2016–2018 and downloads the small embedding models. Subsequent runs reuse valid caches. Runtime depends on download speed, GPU load, and model response lengths; allow tens of minutes for the full first run.
-
-Inspect `outputs/logs/quickstart.log` for progress. Failed attempts preserve their evidence. Three years and one seed demonstrate execution; they are not a research sweep or an uncertainty estimate across worlds.
-
-### Expected outputs
-
-The experiment ID is `explore_smoke_qwen3_8b_neutral_i2_n10_y3_seed42_costv1_per_paper_resub5_ledger1_acdad001284e`.
-
-- `outputs/checkpoints/<experiment_id>/`: complete yearly JSON checkpoints, population blueprint, funding applications, resource ledgers, and final simulation report.
-- `outputs/docs/<experiment_id>/`: run manifest, JSONL request audit and its closed summary, and numerical exploration tables.
-- `outputs/docs/quickstart-report/`: `report.json`, `yearly.csv`, and `report.md`.
-
-The validation command requires completed years, valid checkpoints, a closed request audit, and nonzero paper/review activity. It rejects visualization files.
-
-The direct simulator resumes from its latest complete yearly checkpoint. Repeating a completed command validates it and exits without starting inference. Experiment drivers require fresh output directories to keep conditions and attempts separate. Select a fresh output location for a new run.
-
-When finished, stop the server started above:
-
-```bash
-kill "$(cat outputs/logs/model-server.pid)"
-```
-
-## Data and models
-
-| Input | Public identity |
-| :--- | :--- |
-| Candidate papers | `Ahren09/SciEvo`, `arxiv` configuration, `train` split |
-| Quick-start model | `Qwen/Qwen3-8B` at `b968826d9c46dd6066d109eabc6255188de91218` |
-| Retrieval encoder | `thenlper/gte-small` at `17e1f347d17fe144873b1201da91788898c639cd` |
-| Distance encoder | `sentence-transformers/all-MiniLM-L6-v2` at `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` |
-
-The SciEvo revision is pinned in `RAGConfig` and exposed as `--dataset-revision`. Use `--start_year` and `--num_years` to select the corpus window. Document caches bind the dataset revision, year selection, filters, and preprocessing. Embedding caches additionally bind document order/content and the embedding model revision.
-
-Set `HF_HOME` for downloads and `--data-cache-dir` (direct simulator) or `--cache-dir` (experiment drivers) for generated caches. These locations are independent of outputs. Git contains no dataset, model weights, private caches, or historical results.
-
-Experiment configs default to Qwen3-32B. Override with `--model Qwen/Qwen3-8B` to use the quick-start server. For another compatible model, provide an immutable `--model-revision` in drivers (`--model_revision` in the direct simulator), and serve that same revision with a 32,768-token context. Changing the model creates a new experiment; results are not expected to match another model's outputs. The request audit uses the selected model's tokenizer.
-
-## Experiments
-
-Study definitions live in `configs/`. All eight simulation drivers accept `--config`, `--cell`, `--all-cells`, `--model`, `--model-revision`, `--seed`, `--num-years`, `--num-institutions`, `--num-conferences`, `--batch-size`, `--vllm-url`, `--rag-device`, `--cache-dir`, `--output-root`, and `--dry-run`. Config files expose additional study settings.
-
-```bash
-# Setup-only previews: no inference or output directories.
-python -m utopia.experiments.exploration --cell neutral --dry-run
-python -m utopia.experiments.scale_expansion --cell S1R1 --dry-run
-python -m utopia.experiments.influx_factorial --cell D --dry-run
-python -m utopia.experiments.funding_feedback --cell P0F0 --dry-run
-python -m utopia.experiments.switching_propensity --initialize --dry-run
-python -m utopia.experiments.resource_size --dry-run
-python -m utopia.experiments.funding_cutoff --dry-run
-python -m utopia.experiments.project_cost --cell S1R1_costcontrol --dry-run
-
-# Launch a fresh exploration world against the running local server.
-python -m utopia.experiments.exploration \
-    --cell neutral --model Qwen/Qwen3-8B --seed 42 \
-    --vllm-url "http://127.0.0.1:$SCIENCEUTOPIA_PORT/v1" \
-    --rag-device cuda:0 --output-root outputs/exploration-seed42
-```
-
-Use one configured seed and an explicit population and time horizon. Keep the same model, source, configuration, data revision, and initial state across paired conditions. Funding feedback and influx use audited, panelized sequential selection; this differs scientifically from a single global funding ranking.
-
-Switching first runs `--initialize` to record treatment-independent first choices. Pass the resulting `initial_choices.json` via `--initial-choices <path>` to every LN/LF/HN/HF condition with the same config and seed. Resource-size populations require a multiple of three institutions. Influx requires a multiple of six institutions and five researchers per institution.
-
-Review replay takes completed simulation outputs as inputs:
-
-```bash
-# Replace SOURCE_RUN_ID with completed experiment IDs under outputs/.
-python -m utopia.experiments.review_replay --run-name study1 \
-    extract --source-run SOURCE_RUN_ID --source_outputs_root outputs
-python -m utopia.experiments.review_replay --run-name study1 --model Qwen/Qwen3-8B \
-    generate --stage smoke --vllm_url "http://127.0.0.1:$SCIENCEUTOPIA_PORT/v1"
-python -m utopia.experiments.review_replay --run-name study1 analyze --stage smoke
-```
-
-Replay needs enough eligible papers per source to satisfy its quotas. Defaults target larger source worlds, not the ten-researcher quick start. `extract --help` exposes quotas and network-study inputs; use `--study network_proximity` for the alternative study.
-
-## Full-text experiments and portable resume
-
-[Full-text usage](docs/fulltext.md) describes the `run-fulltext` interface,
-frozen corpus preparation, response caching, and year-boundary recovery. This
-interface supports the four funding feedback treatments, the RANDOM/TOPIC
-reviewer comparison, and prospective switching experiments.
-
-Annual, failure, and final snapshots are preserved on the server before an
-optional S3 upload. Upload success and independent readback verification are
-recorded separately. Replayed cached responses do not count as new inference.
-Large corpora, response databases, and outputs stay on the compute server or
-in private object storage; Git excludes them. Existing frozen worlds must
-continue with their matching execution source and original budget.
-
-## Numerical analysis
-
-```bash
-# Validate and summarize any completed new simulation.
-python -m utopia.analysis.release --run RUN_ID \
-    --outputs-root outputs --out-dir outputs/docs/my-report
-
-# Supply every paired condition for the selected family and seed.
-python -m utopia.analysis.release --run RUN_A RUN_B RUN_C RUN_D \
-    --family-analysis --out-dir outputs/docs/paired-report
-
-# Dedicated exploration, resource-size, and funding-cutoff estimators.
-python -m utopia.analysis.exploration_cross_seed \
-    --multi_run_prefix exploration_Qwen3-8B_neutral_ \
-    --outputs_dir outputs --out_dir outputs/docs/exploration-analysis
-python -m utopia.analysis.resource_size \
-    --docs-dir outputs/docs/RESOURCE_RUN_ID \
-    --checkpoints-dir outputs/checkpoints/RESOURCE_RUN_ID
-python -m utopia.analysis.funding_cutoff \
-    --run CUTOFF_RUN_ID --outputs-root outputs \
-    --out-dir outputs/docs/funding_cutoff_analysis
-```
-
-The family report supports scale expansion, project cost, influx, funding feedback, and switching comparisons. Resource-size analysis writes numerical results alongside the run's tables. Funding-cutoff analysis needs at least six complete years for its follow-up windows and reports exclusions and sample-size gates. Undefined estimates remain explicitly undefined. Independent simulation seeds are the replication units; researchers and years within one world are not independent worlds.
-
-## Testing
-
-The offline suite uses synthetic data, scripted model responses, and small regression fixtures:
-
-```bash
-PYTHONHASHSEED=0 CUDA_VISIBLE_DEVICES="" HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
-    UTOPIA_ACTUAL_MODULE_TESTS=1 \
-    python -B -m pytest tests -q -m "not integration"
-```
-
-It covers native simulation phases, funding conservation, checkpoint resume, scientific prompts and sampling, structured responses, experiment configuration, cache invalidation, and numerical estimators. It makes no model API calls.
-
-Additional CPU integration tests use the public, pinned MiniLM encoder. After the quick start has downloaded it:
-
-```bash
-CUDA_VISIBLE_DEVICES="" python -B -m pytest tests -q -m integration
-```
-
-The quick-start simulation and `--require-activity` report provide the separate real-model end-to-end check.
-
-## Manuscript figures
-
-Optional renderers consume supplied aggregate statistics and do not launch
-simulations:
-
-```bash
-pip install -r requirements-figures.txt
-python -m scripts.figures.plot_influx_factorial --help
-python -m scripts.figures.plot_resubmission_cascades --help
-python -m scripts.figures.plot_resubmission_difficulty --help
-```
-
-## Acknowledgements
-
-ScienceUtopia builds on [SciEvo](https://huggingface.co/datasets/Ahren09/SciEvo), [Qwen](https://github.com/QwenLM/Qwen3), [vLLM](https://github.com/vllm-project/vllm), [Transformers](https://github.com/huggingface/transformers), [Sentence Transformers](https://github.com/UKPLab/sentence-transformers), [PyTorch](https://pytorch.org/), and the scientific Python ecosystem. Model and dataset licenses apply to those separately downloaded inputs.
-
-## License
-
-Released under the [Apache License 2.0](LICENSE).
+Upstream attribution and the [Apache2.0 license](LICENSE) remain unchanged.
+The [upstream website](https://ahren09.github.io/ScienceUtopia/) describes the
+base simulator, not all claims of this fork.

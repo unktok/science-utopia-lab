@@ -12,6 +12,7 @@ for environment and dependency management:
 
 ```bash
 uv venv --python 3.11 --seed .venv
+.venv/bin/python -m pip --version  # verify at least26.2.2 before package fetching
 uv pip install --python .venv/bin/python -r requirements-test.txt
 .venv/bin/python -m utopia --help
 ```
@@ -101,6 +102,10 @@ baseline are in [docs/testing.md](docs/testing.md).
 
 ## Documentation and research records
 
+- Follow the [repository map](docs/repository.md). Keep entry pages concise;
+  archive exact historical ledgers instead of appending live-looking snapshots.
+- Run `.venv/bin/python scripts/check_repository_docs.py` after changing active
+  document links. It also verifies the preserved snapshot hashes offline.
 - `docs/` explains how to build and work on the software.
 - `research/` is the scientific record: protocols, decisions, runs, compact
   results, interpretation, and literature notes.

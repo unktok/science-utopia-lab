@@ -1,5 +1,20 @@
 # Testing
 
+## Current entry-point and publication checks
+
+Run the portable documentation check without models, network or installation:
+
+```bash
+.venv/bin/python scripts/check_repository_docs.py
+.venv/bin/python -m pytest tests/reports/test_repository_docs.py -q
+```
+
+Latest actual native-pilot verification is source-specific: frozen d49cf0b
+passes1682/3 optional skips; later d806a43 passes75 focused integration checks.
+See [current status](../research/STATUS.md) and its linked verification records.
+These are separate scopes, not an additive test total or a certificate for a
+later source. Historical counts below remain unchanged.
+
 ## Designer interface recurrence prevention — V16
 
 Run `tests/optimization/test_native_designer_contract_v16.py` alongside staged
@@ -15,7 +30,7 @@ multi-turn authoring reliability. Keep literal controls, unforced planning and
 scientific-world effects as separate evidence levels. Retain unsuccessful
 preflights and exact wire bytes; never call interrupted suites full passes.
 
-## Active v8 verification — 2026-11-02
+## Historical v8 verification — 2026-11-02
 
 Clean live source425ec10 full Python suite:1509 passed/6skipped,602.55s.
 The second full suite at clean integration eda6537 passes1587/6skipped in968.70s,
