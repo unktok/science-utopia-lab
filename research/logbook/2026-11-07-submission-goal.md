@@ -702,8 +702,8 @@ Matching T does not imply matching outside outcomes: throughput G0's Q was
 
 Both LLM-numeric G2 generations consume16 author steps; finishes at step-13/15
 reject drafts outside the parameter domain. Their request hashes are
-T2fd84df00dc6015cef37a7fb89f25b2e146b88c2d404edc445ff30c6549e2d54 and
-Cac49816bdc95eb7300dffdd6bedac184a15268504f622782124948d2b1ad77d8.
+T: 2fd84df00dc6015cef37a7fb89f25b2e146b88c2d404edc445ff30c6549e2d54 and
+C: ac49816bdc95eb7300dffdd6bedac184a15268504f622782124948d2b1ad77d8.
 Decode the actual prefixed JSON in the posted frames:16/16 per arm retain the
 exact domain equal to request.design_space, all32 done_reason values are stop.
 Reported input token ranges are12185–19640 and12400–21104. This does not show
