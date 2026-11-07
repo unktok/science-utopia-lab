@@ -95,6 +95,24 @@ V1/S1の単純な初期改善を、これだけで高度な制度発明や反復
 explicit scientist role loadは各world1回で、生成応答と別会計。
 local DockerのソフトウェアQAは研究worldやモデル反復として加算しない。
 
+2026-11-07追加のread-only[トークン集計](native-controls-token-costs-v1.json)は、
+原source監査にhash固定された応答SQLiteを読み、726応答全てのprovider usageを集計。
+prompt719,002、completion68,576、reported total787,578 tokens。
+promptにはprovider報告のcached127,250 tokensを含む。全726件で四項目の値があり、
+欠測・不正型・total/component不一致・未対応wireは0。二回の出力はbyte-identical、
+raw inventory前後不変、新モデル・新制度コード実行は0。
+
+これは完了応答のprovider報告値であり、FLOPs、GPU実行時間、energy、金額、
+新規計算token数の実測ではない。cacheは運用順序・backend状態にも依存するため、
+cached数の差を制度固有の効率差としない。role load、retrieval、container、softwareQA、
+過去探索・coding agentの費用はこの集計に含めず、0とも扱わない。別のcampaignで
+未記録応答やusage欠測がある場合、欠測数とwire差を明示し、値を推定補完しない。
+元の37m23.326sはwriterのwall time、token数は別の尺度であり足し合わせない。
+
+解析source1aa0bab361457e6323bcb5b1f496630de58e4bc5、projection content SHA256
+`ad9bc6a9b80ef49c41e668d852401cca943019bacf367479f942dae867112c9b`。
+これは既存の監査からのcost projectionで、新しい原source監査ではない。
+
 原source `2aa02c3cb4610cde4797744386da67fe851383b0`で二回read-only監査し、
 full reportがbyte-identical。265 source/helper/protocol/loss files、年checkpoint測定、
 code/source/context、response/wire、role/context、writer/progressを検査。

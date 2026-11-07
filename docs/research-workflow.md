@@ -210,6 +210,25 @@ environment record**. Its observation command installs/fetches nothing and
 cannot write inside the frozen source or raw root. Current Docker server
 metadata reports29.8.2, likewise an observation rather than a startup claim.
 
+### Scientist response-token accounting
+
+After a full original-source S1/V2 audit is CLOSED, use the approved project
+interpreter with `-m scripts.reports.native_token_costs --run <raw-root> --plan <plan.json> --audit <full-audit.json> --expected-source <experiment-commit> --output <fresh-output.json>`.
+It verifies the exact audited raw inventory before/after, opens SQLite read-only,
+joins committed replies to ordered wire inputs, and reports prompt/completion/
+reported-total/cached-prompt usage separately. Partial-world journals and wires
+without committed replies remain visible. Missing or invalid usage is not0;
+reported totals are not silently repaired to match components. Distinct physical
+journals are counted separately even when content hashes coincide. This is a
+separately source-hashed projection, not a new original-source audit.
+
+Provider token counts do not measure fresh GPU operations, FLOPs, energy,
+wall time or money. Warm-cache differences can depend on operation order rather
+than policy alone. Designer/calibration/load/host/retrieval/container costs remain
+separate; unknown/omitted costs are not zero. Preserve recorded campaign wall
+time without adding overlapping role/runtime/checkpoint durations. This module
+does not alter losses, validate scientific merit or contact a model.
+
 ### Release and attribution boundary
 
 Keep the repository's Apache2.0 LICENSE and upstream attribution. The current
