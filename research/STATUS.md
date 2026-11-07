@@ -27,48 +27,30 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At13:00UTC all9 fresh reference worlds are complete. Search has
-consumed26/120 slots:17 complete,4 parameter-arm generation failures (out-of-domain
-drafts), and5 execution failures (missing paper decisions, two bare-world
-payloads, forbidden input metadata, and indexing a scalar score as a list).
-These are all G0/G1 slots and the first six G2 slots in run00, not the full study
-or three environment replicates. G2
-throughput fixed-graph completes at-7, tied with G0, following its null G1.
-Its declared parent is the measured best G0, not the failed G1: do not infer
-learned error repair or feedback-driven loss gain from recovery alone.
-Selective fixed-graph G2 completes at7.766666666666664, worse than G0/G1's
-2.4000000000000004, after changing the score threshold9 to0. All14 actual posted
-frames retain the correct selective loss, minimize direction and affine signs;
-this diagnostic finds no supplied sign reversal, not a universal bug-free claim.
-Throughput code/graph G2 fails by returning the full input observation messages:
-payload is present, but their runtime emitted_period field is not an allowed
-output-envelope key. Preserve this distinct ABI failure and its null loss.
-Selective code/graph G2 completes at7.7666666666666675 versus G0's
-7.766666666666664. This is not an exact recorded tie or meaningful gain:
-the integer-review diagnostic gives equal rational Q67/3 and C233/30 despite
-different individual review scores. Keep raw floats and exact selection rules.
-Throughput technical-only G2 also completes at-7, tied with its G0/G1;
-this additional valid proposal is not a measured best-value improvement.
-Selective technical-only G2 raises TypeError at values_s[i][0]: the producer's
-score column supplies scalar elements. This caller's object-only payload schema
-does not statically establish field/rank safety; see the scoped readiness review.
-Remaining G2 authoring continues; selected-policy evaluation remains0.
+diagnostic. At13:21UTC all9 fresh reference worlds are complete. Search has
+consumed30/120 slots:19 complete,6 generation failures,5 execution failures.
+These are run00's G0–G2 across ten arms, not the full study or three environment
+replicates. G3 selective fixed-graph authoring is in flight; selected-policy
+evaluation remains0. The writer session is live and the frozen checkout is clean.
 
-All four measured code G1 slots tie their own G0; two others fail execution.
-Uniform numeric G1 throughput records0, worse than G0's-7; selective records
-2.4000000000000004, lower than G0's8.1 but tied with the fresh initial institution.
-The latter is a lower random proposal, not evidence of feedback-driven learning
-or beating the initial policy. All four uniform numeric slots complete while
-all four LLM numeric slots fail generation; do not infer an inherent limitation
-of the numeric design space from that author/interface compliance difference.
+G1/G2 do not improve any arm's best-including-initial value. Uniform numeric
+throughput records-7/0/-7; selective records8.1/2.4000000000000004/8.1. These
+lower/higher random proposals are not learning evidence. All six uniform numeric
+slots execute, while all six LLM numeric slots fail generation. The two G2
+failures reject out-of-domain finishes within16 actions; all32 actual posted
+frames retain the exact declared domain, with stop completion signals. This
+does not remove possible presentation/compliance confounding or demonstrate
+an inherent limitation of parameter tuning.
 
-Read-only live traces distinguish whitespace-only edits, changed score displays
-that reach year2 scientist inputs, and a changed positive-score guard whose91
-realized scientist inputs match its parent. Exact source/receipt/wire hashes
-and original failures remain in the [chronological log](logbook/2026-11-07-submission-goal.md).
-These scoped observations do not replace a closed original-source audit, prove
-general semantic equivalence, establish feedback/method superiority or show
-better science. The writer session is live and the frozen checkout is clean.
+The [chronological log](logbook/2026-11-07-submission-goal.md) retains the
+G0/G1/G2 table, every earlier snapshot and source/receipt/wire/checkpoint hashes.
+Read-only cases distinguish real scientist-input changes, realized equivalence,
+arithmetic roundoff and distinct ABI/type failures. Object-only payload schemas
+do not prove field/rank safety; see the
+[readiness review](publication/research-readiness-review-v2.md). Raw floats and
+exact selection rules remain unchanged. This live milestone is not a closed
+original-source audit, a gain over strong controls, a feedback/method comparison
+conclusion or evidence of better science.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout

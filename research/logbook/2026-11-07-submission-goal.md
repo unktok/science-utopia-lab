@@ -662,3 +662,59 @@ generation request hash
 No slot refill, host repair, schema broadening/narrowing or prompt change occurs.
 Throughput uniform-numeric G2 is already being evaluated. Keep the finite study
 running and defer full source/physical auditing until terminal closure.
+
+Continuation13:04–13:21UTC is verified waiting on session46865 to the declared
+intermediate milestone, not a smaller replacement goal. Monitoring cells3780/
+3781 finish normally. At13:21:19UTC run00's ten arms have all consumed G0–G2:
+30/120 slots,19 complete,6 generation failures,5 execution failures;
+references9/9,selected-policy evaluations0. Progress hash
+c986fabe28b21d2a1d9a70ddf97b2b9195378bb9144b3a7489813d91d33513dc.
+G3 selective fixed-graph authoring has started; the finite writer is not terminal.
+
+Partial own-objective losses below are shortened for display only. gen-null is
+failure to submit a declared-domain definition; exec-null is an execution failure.
+Neither is a numerical penalty. Canonical raw floats and tie rules are unchanged.
+
+| run00 arm | G0 | G1 | G2 |
+| --- | ---: | ---: | ---: |
+| T LLM numeric | gen-null | gen-null | gen-null |
+| C LLM numeric | gen-null | gen-null | gen-null |
+| T fixed-graph code | -7 | exec-null | -7 |
+| C fixed-graph code | 2.4 | 2.4 | 7.7667 |
+| T code/graph | -7 | -7 | exec-null |
+| C code/graph | 7.7667 | 7.7667 | 7.7667† |
+| T technical-only | -7 | -7 | -7 |
+| C technical-only | exec-null | exec-null | exec-null |
+| T uniform numeric | -7 | 0 | -7 |
+| C uniform numeric | 8.1 | 2.4 | 8.1 |
+
+†G2's7.7666666666666675 is not an exact recorded tie with G0/G1's
+7.766666666666664; the prior rational-arithmetic diagnostic remains separate.
+This table is a live progress projection, not an original-source closed audit,
+an expectation or three independent world replicates. No arm improves its
+best-including-initial value in G1/G2. Different proposal losses/other outcomes
+are not discarded just because an incumbent is retained.
+
+The new uniform numeric G2 worlds both have A7/Q22/R21. Throughput's loss-7
+returns from G1's0 to its existing minimum; selective's8.1 worsens from G1's2.4.
+Matching T does not imply matching outside outcomes: throughput G0's Q was
+22.333333333333336, not22. Do not infer identical trajectories from the T tie.
+
+Both LLM-numeric G2 generations consume16 author steps; finishes at step-13/15
+reject drafts outside the parameter domain. Their request hashes are
+T2fd84df00dc6015cef37a7fb89f25b2e146b88c2d404edc445ff30c6549e2d54 and
+Cac49816bdc95eb7300dffdd6bedac184a15268504f622782124948d2b1ad77d8.
+Decode the actual prefixed JSON in the posted frames:16/16 per arm retain the
+exact domain equal to request.design_space, all32 done_reason values are stop.
+Reported input token ranges are12185–19640 and12400–21104. This does not show
+missing restrictions or a length termination in these two generations; it does
+not isolate prompt presentation as the sole cause or prove an error-free interface.
+Six random-numeric slots executing while six LLM-numeric slots fail is not a
+clean causal estimate of design-space expressivity. Keep that interpretation
+separate from the end-to-end benchmark result.
+
+No runtime/source, prompt, domain, model, budget, calibration or selection-rule
+changes; no failed-slot replacement or new resource. Shorten STATUS to this
+milestone and retain case details here. The full study, selection-fixed unused
+conditions, two original-source audits, final analyses and manuscript remain
+required; keep the submission goal active rather than calling30 slots completion.
