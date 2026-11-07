@@ -970,7 +970,8 @@ build is11 pages with no layout or undefined-reference warnings; retain the
 harmless inputenc/UTF8 warning. All11 final pages are newly rendered at120dpi
 and individually visually inspected, including references, figure labels,
 tables, equations and appendix transitions. No reuse-by-byte-identity is claimed
-for this revision. No new package/model downloads or experiment inference.
+for this revision. No new package/model downloads; the paper revision launches
+no additional model calls or world jobs. The existing finite writer continues.
 
 Final PDF SHA256
 0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59;
@@ -982,3 +983,12 @@ corrected; no experiment files are edited. Keep the prior warning history and
 do not claim the first build was clean. Main-only changes remain manuscript/
 documentation; partial V2 outcomes stay out of paper results. Submission
 readiness and the goal remain unproven until full-study closure and evaluation.
+
+Post-commit paper/resource/documentation QA at
+5bea3ed68e1f0a34d3a0f36d6690e8be1c18338a passes22 tests in4.01s. It checks
+the new PDF/source/bibliography dependency binding, citations and figures,
+tracked resource values, token-accounting fixtures and selected environment
+records; it is not a new native-world audit or empirical validation. JUnit
+paper-related-work-v2.xml SHA256
+27bf3287fdd4e20df4e53061bdcc0965e6dfc3bff1de05b0a5a2a653fd680f3d.
+Writer46865 is polled live again after QA. No experiment restart or source edit.
