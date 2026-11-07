@@ -23,7 +23,17 @@ later audit orchestration at2aa02c3 passes5 focused checks (overlapping counts).
 The first restricted-shell attempt failed on Docker permission and is preserved,
 not labeled a full pass. Frozen-source closure verifies265 files.
 
-No scientific model campaign is running at this pre-dispatch snapshot.
+The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
+at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
+57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
+Run00's28 real designer controls and cold replay pass;26 exact copies remain
+diagnostic. The fixed8B scientist is now executing fresh reference worlds.
+At this snapshot no search proposal or selected-policy evaluation has completed.
+Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
+`outputs/publication-benchmark-v2-verification/study-run.log`.
+Scientist/designer inference remains serialized; the detached experiment checkout
+is not edited. The following separate main changes concern reporting/manuscript.
+
 The design-freedom pipeline is now integrated: nested domains, in-session
 validation, uniform numeric baseline, selection/evaluation and finite HTTP budgets.
 Sourceea6e12f passed2693 checks/6 optional archive skips in1000.86s;
@@ -35,8 +45,8 @@ Original native lifecycle with scripted HTTP/corpus now covers the new selective
 loss, non42 controller seed, and evaluation seed31001 at2/4 years.
 The [prospective study](protocols/campaigns/native-design-freedom-v2.md) fixes
 120 proposal slots,9 fresh references and at most114 selected-policy evaluations.
-New production still requires fresh exact-source real-designer calibration;
-old S1/V1 certificates cannot certify it. It is not a completed scientific comparison.
+Every later search run still requires its own fresh calibration; old S1/V1
+certificates cannot certify it. It is not a completed scientific comparison.
 
 The earlier finite feedback comparison V1 is **closed and original-source audited**.
 It ran05:08:38–06:01:45UTC on2026-11-07 (53m06.77s), at frozen2e375c2,
@@ -83,6 +93,9 @@ See [arithmetic context](logbook/2026-11-07-affine-direction-context.md) and
 The [short manuscript](../paper/submission.tex) now contains the actual all-trial
 table, search paths, source/mechanism interpretation and measured costs.
 This closes a small integration comparison, not the full conference study.
+The updated working PDF also includes the completed S1 strong-rule comparison,
+its print-sized figure and the separately labeled V2 protocol. All9 pages were
+visually checked; no future V2 outcomes are represented as results.
 
 ## Earlier V45 evidence (different source and initialization)
 

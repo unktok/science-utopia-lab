@@ -17,11 +17,12 @@ def fixture():
     d['content_sha256']=digest(d);return d
 
 
-def test_projection_is_exact_and_hash_bound_without_invented_scientific_outcomes(tmp_path):
+@pytest.mark.parametrize('print_layout',[False,True])
+def test_projection_is_exact_and_hash_bound_without_invented_scientific_outcomes(tmp_path,print_layout):
     d=fixture();before=deepcopy(d);s=summarize(d)
     assert d==before and s['completed']==8 and s['wall_seconds']==10
     assert s['best']==d['best'] and s['costs']['scientist_responses']['known_sum']==8
-    plot(s,tmp_path/'figures')
+    plot(s,tmp_path/'figures',print_layout=print_layout)
     assert (tmp_path/'figures'/'manifest.json').exists()
     with pytest.raises(ValueError,match='fresh'):plot(s,tmp_path/'figures')
     d['rows'][0]['cross_scores']['throughput']=-999.

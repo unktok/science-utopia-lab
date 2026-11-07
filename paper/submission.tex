@@ -13,26 +13,25 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-What scientific system is selected when the objective used to organize science
-changes? We study this question by treating institutions as executable programs
-and process graphs inside a persistent researcher ecosystem. The searched
-object is the organizing system, not researcher-model weights or the declared
-objective. Parameters, algorithms, mechanisms, and their wiring are composable
-design freedoms, separate from the choice of optimization method. Black-box
-evaluation and conditional design-distribution gradients can therefore operate
-on the same world without requiring whole-world differentiation. We implement
-durable propose--execute--measure--revise search with separately recorded
-technical validity, optimization loss, and outside evaluation. A finite
-same-source development comparison contrasts adaptive loss feedback with
-technical-only proposals for two explicit objectives. Its information boundary
-prevents loss-selected parents, strategy updates, and outcome-derived hashes
-from leaking into the control. Original-source replay retains all eight
-candidates: four complete and four fail during execution. An initial
-technical-only proposal improves both declared losses by replacing selection
-with all-accept decisions, but no measured second-generation gain or adaptive
-feedback advantage is observed. This small development result motivates
-stronger rule baselines and design-freedom comparisons; it does not establish
-optimizer superiority, autonomous recursive improvement, or real scientific-policy benefit.
+Which scientific system is selected when the organizing objective changes?
+We treat institutions as executable programs and process graphs inside a
+persistent researcher ecosystem. Search changes the organizing system, not
+researcher-model weights or the declared objective. Parameters, algorithms,
+mechanisms and wiring are composable design freedoms, separate from the
+optimization method; whole-world differentiation is unnecessary. We implement
+durable propose--execute--measure--revise search, separating technical validity,
+loss and outside evaluation. A same-source development comparison contrasts
+adaptive feedback with technical-only proposals for two objectives. Of eight
+candidates, four complete and four fail during execution. An initial
+technical-only all-accept proposal improves both losses, but no measured
+second-generation gain or feedback advantage is observed. A subsequent
+eight-rule control study completes every world and numerically recovers those
+proxy scores with hand-written all-accept rules; removing review also ties the
+throughput minimum without review-backed score. Thus weak-seed improvement
+alone is insufficient evidence of effective invention. A fixed protocol next
+compares numeric, code and structural freedom with selection-before-evaluation;
+its outcomes are not yet reported. These pilots establish neither optimizer
+superiority, recursive improvement nor real scientific-policy benefit.
 \end{abstract}
 
 \section{Introduction}
@@ -224,6 +223,95 @@ admission rule; raw received values are preserved.
 
 \input{submission-results}
 
+\section{Strong institutional controls}
+\label{sec:controls}
+The preceding pilot's all-accept proposal raises a basic comparison question:
+does automated search add anything beyond obvious hand-written rules?
+We therefore evaluate eight developer-defined institutions at a separate frozen
+source, retaining the same five-researcher/two-year setting and development
+world seed. All eight physical worlds complete. These are baseline evaluations,
+not automatic invention, independent environment seeds, or a matched comparison
+with the earlier-source pilot.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/native-controls-v2-a1-print/strong-controls.png}
+\caption{\textbf{Strong-rule controls at one development seed.} All eight
+rules complete; smaller values are better. Hatching retains every exact
+minimum in each panel. Each panel uses its own scale. $T=-A$ and $E=-Q+0.5R$
+are the earlier losses; the explicitly exploratory selective proxy is
+$C=4A-Q+0.1R$. Different minima describe different incentives, not scientific
+quality or statistical significance. There are no uncertainty intervals from
+one environment seed.}
+\label{fig:strong-controls}
+\end{figure}
+
+The original quota institution produces $A=2,Q=6,R=18$, while the editable
+seed produces $A=0,Q=0,R=24$. A rank/rate variant of that seed produces
+$A=2,Q=6.667,R=21$. The original and open variants differ in their surrounding
+process as well as selection, so this contrast does not isolate a selection
+algorithm effect. All-accept and score-threshold~3 both produce
+$A=7,Q=22.333,R=21$, giving $T=-7$ and $E=-11.833$. Reject-all and
+score-threshold~4 match the seed's $A=0,Q=0,R=24$. Removing review and accepting
+all still produces $A=7$, but now $Q=R=0$: it ties the throughput minimum
+without any review-backed score. $Q=0$ here follows the declared measurement
+convention; it is not evidence of low or high scientific quality.
+
+The developer all-accept control numerically matches the earlier pilot's best
+$T/E$ scores, but a cross-source coincidence does not establish method
+equivalence. It does establish why weak-seed improvement alone is an inadequate
+research endpoint. The eight controls take 37m23s wall time, 726 recorded
+scientist responses and 56 institution-code executions, with no designer calls.
+Two original-source read-only audits are byte-identical. This closes the
+baseline pilot, not the design-freedom study.
+
+\section{Prospectively fixed design-freedom comparison}
+\label{sec:prospective}
+The next study fixes its objectives, spaces, budgets, chronology and selection
+before dispatch. This section is a protocol, \emph{not experimental results}.
+Its two primary losses are throughput $T=-A$ and selective production
+$C=4A-Q+0.1R$; $E$ remains a cross-score diagnostic. The latter is a declared
+trade-off on the native 1--5 review scale, not a normative scientific-value
+function. Choosing it after development is exploratory. Its coefficients are
+not changed after observing this study's outcomes.
+
+\paragraph{Nested freedoms, separate proposal methods.}
+The numeric space permits six explicitly bounded coordinates in the initial
+system. The fixed-graph code space adds the three existing Python sources,
+including a process delegate, while fixing schemas, ports, nodes, edges and
+schedules. The code-and-graph space permits technically valid organizing-system
+edits, with the environment seed fixed during development and the original
+researcher world, model weights and measurement adapters outside search.
+Domains are checked against the original anchor on every proposal; no sequence
+of small changes escapes the declared numeric/fixed-graph restrictions.
+An out-of-domain literal is retained as a null trial, never projected or repaired.
+
+For each primary objective, we compare LLM proposals in each of the three
+domains, a technical-only code-and-graph control, and uniform numeric proposals
+without designer calls. Three fresh search histories use controller seeds
+42/1031/2063, with four proposals per arm: 120 slots. All development worlds use
+world seed 42; three controller histories are not three environment replicates.
+Nine fresh reference worlds include the original institution, the editable seed,
+and obvious hand rules, including reviewer-free reject-all. No older-source
+baseline world is substituted. There are at most 16 charged author actions per
+LLM proposal, with no failed-slot refills. Each run requires fresh finite
+real-backend calibration. The scientist HTTP caps are 512 per two-year world
+and 1024 per four-year world; a cap-exhausted trajectory retains a technical null.
+
+\paragraph{Selection then unused-condition evaluation.}
+For each arm/objective, selection pools that arm's three histories plus the
+common initial system, retaining all exact ties and choosing the first in a
+fixed chronology for physical evaluation. A separate pooled ranking spans all
+arms and references without a generating-arm veto. Physical completion and
+objective-input availability remain distinct: missing one loss does not erase
+other independently measured losses. Selection is hash-frozen before evaluation
+on five previously unused world seeds at two years, plus one of those seeds
+at four years. Only the declared initial-state seed changes; the policy remains
+fixed. Identical policies share physical evaluation explicitly. The maximum is
+114 evaluation worlds and 243 worlds including development. Longer and shorter
+trajectories at the same seed are not independent samples. All raw values,
+missing pairs and costs must be reported before conclusions about design freedom.
+
 \section{What constitutes a research finding?}
 \label{sec:analysis}
 \paragraph{Objective-conditioned consequences.}
@@ -261,7 +349,14 @@ Automated social policy optimization is established, including learned tax
 design in simulated economies \citep{zheng2020economist}. AMD-LLM evolves code
 mechanisms with a problem-specific fixing process \citep{liu2025mechanism}; our
 no-host-repair contract differs, but that alone establishes no performance
-advantage. OPRO already uses evaluated solutions in LLM optimization
+advantage. ADAS already searches code-defined agentic workflows using an archive
+and evaluation feedback \citep{hu2024adas}. LLM Economist optimizes bounded tax
+actions in context over adapting LLM workers \citep{karten2025economist}; frozen
+model weights are therefore not a distinctive claim about frozen behavior.
+AgentSociety2 supports composable social environments and specification-to-code
+generation \citep{piao2026agentsociety2}. Neither executable social research nor
+free workflow/code generation is unique to this project.
+OPRO already uses evaluated solutions in LLM optimization
 \citep{yang2024opro}, and SGA combines LLM discrete search with differentiable
 continuous optimization \citep{ma2024sga}. Our proposed contribution must be
 supported by scientific-system design comparisons and findings, not by
@@ -291,7 +386,11 @@ their consequences. The comparison and reporting boundary make that question
 testable without requiring whole-world differentiability or discarding failed
 and tied outcomes. The development pilot records a simple initial all-accept
 proposal improving both declared proxies, but no measured iterative gain or
-feedback superiority. Further freedom ablations, stronger rule baselines, unused-condition evaluation,
+feedback superiority. The subsequent strong-rule pilot recovers the earlier
+proxy minimum using simple hand rules. The next comparison therefore fixes
+freedom ablations and selection before unused-condition evaluation. Those results
+and mechanistic evidence are still required; the protocol is not their substitute.
+Further freedom ablations, unused-condition evaluation,
 and mechanistic evidence are necessary before strong empirical or deployment
 claims, and before treating this working draft as a completed conference paper.
 
@@ -310,6 +409,16 @@ and domain measurements, preserves nulls and all candidates, cold-replays the
 calibration, and verifies that raw files do not change. Raw caches are not
 committed to Git. Test counts and local interface calibration are software
 evidence, not additional scientific worlds or proofs of universal reliability.
+
+{\raggedright
+The separate eight-rule pilot uses source
+\texttt{2aa02c3cb4610cde4797744386da67fe851383b0}; its exact full-audit
+content hash is
+\texttt{3a344dcbc71c8300d0844696d44b807d3}\allowbreak\texttt{a5ba0eeca14301b1d50c60dd4656ac1}.
+The prospective design-freedom study is pinned separately at
+\texttt{b6654adefc42223f9ecc7b4e53c043c879230f68}, with an immutable
+plan and a pre-dispatch seed-usage inventory. Its future measurements are not
+pooled with the completed pilots as if generated under a common source.\par}
 
 The historical long manuscript and development studies remain available as
 separate records. Their sources, author provenance, losses, seeds, histories,

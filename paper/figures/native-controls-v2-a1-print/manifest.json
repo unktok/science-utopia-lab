@@ -1,0 +1,13 @@
+{
+  "files": {
+    "strong-controls.png": "7190caa6ccce926a4212cedb98ac694b21038863428ea68644c18fc29160aa57",
+    "strong-controls.svg": "501331cb5c51325490c9b4e2d4822e52fe083ce29ba02044f30a0fae74db4e9e"
+  },
+  "input_content_sha256": "7d94f5db85648d5feb211039949cea1947239d35ae08d97fa9ebf3035bb01aa5",
+  "layout": "print-sized-7.2-inch-font9",
+  "new_model_calls": 0,
+  "new_worlds": 0,
+  "nulls_imputed": false,
+  "plot_source_sha256": "7f1228a15d116b74f64eb1ab69e59d632f1dec014bbf0f26e3706e7c449455ea",
+  "schema": "scienceutopia.native-control-figures.v2"
+}

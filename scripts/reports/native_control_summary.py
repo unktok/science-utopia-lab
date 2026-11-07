@@ -37,7 +37,7 @@ def summarize(audit):
     return result
 
 
-def plot(summary,output):
+def plot(summary,output,*,print_layout=False):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -51,8 +51,11 @@ def plot(summary,output):
         'open-no-review-accept-all':'No review + accept all'}
     titles={'throughput':'Throughput: -A','efficiency':'Reviewed utility: -Q + 0.5R',
         'selective':'Selective production: 4A - Q + 0.1R'}
+    if print_layout:
+        titles={'throughput':'Throughput\n-A','efficiency':'Reviewed utility\n-Q + 0.5R',
+            'selective':'Selective production\n4A - Q + 0.1R'}
     plt.rcParams.update({'font.size':9,'axes.spines.top':False,'axes.spines.right':False,'svg.fonttype':'none'})
-    fig,axes=plt.subplots(1,3,figsize=(12,5.2),layout='constrained',sharey=True)
+    fig,axes=plt.subplots(1,3,figsize=(7.2,3.8) if print_layout else (12,5.2),layout='constrained',sharey=True)
     for ax,key in zip(axes,titles):
         values=[r['cross_scores'][key] for r in summary['rows']]
         known=[v for v in values if v is not None]
@@ -65,15 +68,18 @@ def plot(summary,output):
             best=value==summary['best'][key]['loss']
             ax.barh(y,value,color=color,alpha=.85,height=.62,
                 edgecolor='#111' if best else 'none',linewidth=1.3,hatch='//' if best else None)
-            ax.text(value+(.025*span if value>=0 else -.025*span),y,f'{value:.3f}',va='center',
-                ha='left' if value>=0 else 'right',fontsize=8)
+            inside=print_layout and value<0
+            ax.text(value+(.04*span if inside else .025*span if value>=0 else -.025*span),
+                y,f'{value:.3f}',va='center',ha='left' if inside or value>=0 else 'right',fontsize=8,
+                bbox={'facecolor':'white','alpha':.9,'edgecolor':'none','pad':.7} if inside else None)
         ax.axvline(0,color='#68737d',linewidth=.7);ax.grid(axis='x',alpha=.15)
         ax.set(title=titles[key],xlabel='Loss (lower is better)',yticks=range(len(summary['rows'])))
         ax.set_xlim(min(min(known,default=0),0)-span*.23,max(max(known,default=1),0)+span*.25)
     axes[0].set_yticklabels([labels[r['name']] for r in summary['rows']]);axes[0].invert_yaxis()
-    fig.suptitle('Strong rule baselines in the original researcher world',fontsize=14)
-    fig.supxlabel('Eight developer controls, one development seed, two years. Hatched bars: all exact minimum ties.\n'
-        'Same trajectories cross-scored; independent axis scales. Not an optimizer comparison or scientific-quality measure.',fontsize=9)
+    if not print_layout:
+        fig.suptitle('Strong rule baselines in the original researcher world',fontsize=14)
+        fig.supxlabel('Eight developer controls, one development seed, two years. Hatched bars: all exact minimum ties.\n'
+            'Same trajectories cross-scored; independent axis scales. Not an optimizer comparison or scientific-quality measure.',fontsize=9)
     output.mkdir(parents=True)
     for suffix in ['png','svg']:fig.savefig(output/('strong-controls.'+suffix),dpi=180)
     plt.close(fig)
@@ -81,6 +87,7 @@ def plot(summary,output):
         'plot_source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'files':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(output.iterdir())},
         'new_model_calls':0,'new_worlds':0,'nulls_imputed':False}
+    if print_layout:manifest['layout']='print-sized-7.2-inch-font9'
     (output/'manifest.json').write_text(json.dumps(manifest,sort_keys=True,indent=2)+'\n')
 
 

@@ -54,3 +54,19 @@ dispatch. No actual new-study dispatch or improvement is claimed at this entry.
 Additional primary-text comparisons cover ADAS, LLM Economist and AgentSociety2;
 whole-workflow code search and social-policy optimization are prior art, not a
 novelty claim for this implementation. Runtime/source stays fixed once pinned.
+
+V2 dispatch: detached clean sourceb6654adefc42223f9ecc7b4e53c043c879230f68,
+writerPID72837 started09:02:10.418330UTC. Exact closure verifies278 files;
+frozen plan57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
+Evaluation seed inventory is valid with no prior matching project runs/errors.
+Run00 calibration finishes28/28 controls,26 exact copies (diagnostic), certificate
+760c36e44e95cb1eb738fb89980f873c2e5fe6a83f2932546c7fe5ab79231025.
+Cold replay and current backend metadata check pass without new generation.
+Fresh reference worlds begin; no proposal/evaluation result is claimed here.
+No subagents, external API, model download, push or new resources were used.
+
+While it runs, the working manuscript adds the completed S1 results, print-sized
+strong-control figure, nearest-method citations and the separately marked V2
+prospective protocol. Offline build has9 pages and no TeX warnings; all pages
+visually inspected. [Build receipt](../../paper/submission-build-v2.json) binds
+sources and final PDF; the prior PDF is preserved in ignored build intermediates.

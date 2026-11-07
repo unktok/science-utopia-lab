@@ -23,6 +23,15 @@ including four execution failures, are retained in the [audited result note](../
 The selected initial all-accept proposal improves the declared proxies; no
 second-generation gain, feedback superiority or scientific-quality gain is established.
 
+The subsequent eight-rule baseline pilot is complete and twice source-audited:
+all8 worlds complete, with original/hand-written controls and no designer calls.
+Its print-sized three-objective figure and actual costs now appear in the draft.
+The [design-freedom study](../research/protocols/campaigns/native-design-freedom-v2.md)
+is described separately as a prospective protocol, not completed results.
+The updated9-page PDF was built offline and every page visually checked;
+see [build/QA receipt](submission-build-v2.json). This remains a working draft,
+not a completed or submitted conference study.
+
 The result table is generated from the source-bound audit summary rather than
 transcribed. Nulls, all candidates, exact ties and cross-objective selection
 remain in the JSON; rendering rounds numbers only for display. The plotting
