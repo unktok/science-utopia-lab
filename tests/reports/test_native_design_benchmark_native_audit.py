@@ -99,6 +99,11 @@ def test_evaluation_physical_audit_reads_real_native_checkpoints_at_declared_see
         sim._record_initial_university_count()
     class Five(fixture.SmallRealSimulation):
         initialize_agents=initialize
+        def enable_portable_checkpoints(self,binding,**kwargs):
+            # The historical small fixture hardcodes args.seed=42 in its
+            # constructor; parameterize that fixture input, not the auditor.
+            self.args.seed=binding['seed']
+            return super().enable_portable_checkpoints(binding,**kwargs)
     def factory(candidate,seed,run_id):
         cell=tmp_path/'worlds'/run_id;model=fixture.FakeHTTPModel(cell,[])
         old=model.response_cache.path;model.response_cache.close();old.unlink()
