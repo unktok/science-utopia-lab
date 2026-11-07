@@ -749,3 +749,29 @@ Do not host-repair the generated function or refill the trial. Selective
 code/graph G3 is being authored, while the whole finite study remains live.
 This observation does not establish new static safety guarantees or close
 the remaining source audit, unused-condition evaluation and manuscript work.
+
+Continuation13:42–13:46UTC verifies live session46865; monitoring cell3796 ends
+at search33/120 (20 complete,6 generation failures,7 execution failures;
+references9/9,evaluations0). Selective code/graph G3 fails with GraphRuntimeError:
+native decisions must cover exactly the real submitted paper identities.
+The generated rule emits accept records only for scores>4 and otherwise emits
+empty_cycle, rather than explicit reject records. A literal-source-matching
+receipt at period1 has3 actual records, scores[3,3,3], and exactly one returned
+empty_cycle marker. This is not evidence that reject-all is forbidden or that
+an unattractive scientific outcome was vetoed; missing processing of real IDs
+violates the predeclared native boundary. Do not impute a counterfactual loss.
+
+World identity native-adaptive-71267590974fcc760f73c848-s42;
+source UTF-8 SHA256
+3f8e018f53e2cf43192f6b1e59d82222d6e8b076e24c3c09be3664c1f1f4f28a;
+code-context JSONL SHA256
+f381be23112f9be5da9b22bacd3037e57f997f03d431f59f9d2dd380b16d543b;
+generation request hash
+109d6e6574e35ab03622141379e4d382498d88779c32e3154bc3dd429cbb1a3a;
+progress hash
+f523a4622f7d41c85e15a8ffe5ae65318a68216f9dafffdc94b3cb7a60f9e780.
+The four own slots are[7.766666666666664,7.766666666666664,
+7.7666666666666675,null], not four independent world replicates. No candidate
+repair, new adoption rule, changed objective, retry/refill or active source change.
+The finite writer continues to the next arm. Full-study closure, source audits,
+selection-fixed evaluation, analysis and final manuscript remain required.
