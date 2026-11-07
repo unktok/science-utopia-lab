@@ -3432,3 +3432,37 @@ are added but not yet run. Actual source-bound component validation follows a
 clean committed adapter; full audits still await normal closure of all90 jobs.
 At23:00UTC the actual writer46865 remains live, progress records5/90 evaluation
 jobs. No settings, selection, budget, experiment bytes or raw files are changed.
+
+### Committed correction verification:74 QA passes, two exact real component outputs
+
+Commit07863e0b845b9931e1f788db77520634cfaadd3f is clean before all source-bound
+checks. The expanded74-test batch passes in27.13s, no skipped tests/failures;
+receipt audit-order-committed-first.xml SHA256
+ad18b05c5aac5240ff807de97f7a700ce9ee0f49d6070c17308f2c72c5827577.
+Fresh-process CLI tests use tiny clearly SCRIPTED Git repositories, not the
+native auditor: they verify deterministic full-body orchestration, source
+isolation, retained unrelated observation guards, ordered-job tamper rejection,
+dirty-source/live-writer rejection and the explicitly non-full component mode.
+Existing native-primitive QA uses scripted HTTP/corpus, not fresh LLM inference.
+
+The versioned adapter then runs twice against the real120-slot archive and
+clean b6654ad checkout with --check-order-only. Both exit0 and compare byte-for-byte,
+file SHA2568d877eedd54b133efb6350867cc870c6859063af972762d21e7bbcc2a3e3c02a,
+content370ec7bbd2e759c8e26815f9ad50cbd0de01b5b56f54105cb225d5e5248fbc9f.
+Each verifies278 original source files,43 fixed replay-input files before/after,
+the exact saved selection and90 ordered physical jobs. The wrapper and helper
+have committed byte hashes in the receipt. Raw plan/selection/evaluation-plan
+file hashes remain unchanged; both checkouts are clean. No source guard is
+removed, raw output rewritten, model called or generated mechanism executed.
+Compact scope/hashes: research/results/native-design-freedom-v2-audit-order-verification-v1.json.
+
+Neither check audits evaluation observations, all search physical proofs or
+terminal progress, nor constitutes a full closed-study audit. The unmodified
+frozen CLI is not claimed to pass. Two complete adapted audits still require
+normal actual writer closure, then separate closed report/figure/cost generation.
+By23:10UTC six evaluation observations report complete; progress briefly lags at5
+between writes. The sixth is the legacy4-year diagnostic, with actual wire166
+and portable checkpoint years0–4. Do not interpret it as a sixth independent
+seed. The actual writer46865 remains live with no ended record. A sandboxed ps
+inspection is denied; no permission bypass is used, and live-handle evidence
+does not depend on that command. The finite experiment continues unchanged.

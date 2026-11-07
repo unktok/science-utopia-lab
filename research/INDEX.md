@@ -11,7 +11,8 @@ Historical documents retain their paths and source identities.
   search finished, selected-policy evaluation underway; see current STATUS.
   [Source-specific software QA](results/native-design-freedom-v2-verification.json)
   and the later [audit-order component diagnostic](results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
-  have different scopes; full closed-study audits remain pending.
+  have different scopes. The [order-only correction verification](results/native-design-freedom-v2-audit-order-verification-v1.json)
+  records74 tests/two exact component replays; full closed-study audits remain pending.
 - [Program map](program-map.md): original goals, capabilities and evidence gaps.
 - [Roadmap](roadmap.md): what to do next and why.
 - [Submission research plan](publication/plan.md), [comparison contract](publication/benchmark-contract-v1.md),

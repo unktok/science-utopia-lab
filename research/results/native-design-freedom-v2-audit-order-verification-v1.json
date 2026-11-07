@@ -1,0 +1,52 @@
+{
+  "schema": "scienceutopia.native-design-audit-order-verification.v1",
+  "status": "order-only-component-verified-not-full-study-audit",
+  "observed_utc": "2026-11-07T23:10:00+00:00",
+  "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "analysis_source_commit": "07863e0b845b9931e1f788db77520634cfaadd3f",
+  "analysis_source_files": {
+    "scripts/audit_native_design_benchmark_order.py": "460d4e3e2c955b773828d9c7d21a925ba547d8d8b5474922a6e946eb9291a993",
+    "scripts/native_design_audit_order.py": "c56859bb0832e0180482893c38b3ff3c42557942ec309ba935a675c573fd867e"
+  },
+  "frozen_auditor_sha256": "5d1490e8ed57ecc4efe84436823f5c1df5b36f908d1563e0bb0ad1176a786e45",
+  "qa": {
+    "receipt": "outputs/publication-benchmark-v2-verification/audit-order-committed-first.xml",
+    "receipt_sha256": "ad18b05c5aac5240ff807de97f7a700ce9ee0f49d6070c17308f2c72c5827577",
+    "tests": 74,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "SCRIPTED unit/observation/report/native-primitive QA, isolated fresh-process adapter orchestration, documentation/artifact checks; not a scientific experiment"
+  },
+  "real_component_checks": {
+    "outputs": [
+      "outputs/publication-benchmark-v2-verification/audit-order-component-07863e0-1.json",
+      "outputs/publication-benchmark-v2-verification/audit-order-component-07863e0-2.json"
+    ],
+    "byte_identical": true,
+    "file_sha256_each": "8d877eedd54b133efb6350867cc870c6859063af972762d21e7bbcc2a3e3c02a",
+    "content_sha256_each": "370ec7bbd2e759c8e26815f9ad50cbd0de01b5b56f54105cb225d5e5248fbc9f",
+    "source_files_exactly_verified": 278,
+    "fixed_replay_input_files_hashed_before_and_after": 43,
+    "closed_search_slots": 120,
+    "exactly_reproduced_physical_evaluation_jobs": 90,
+    "plan_values_and_hash_preserved": true,
+    "selection_values_hash_ties_and_chronology_preserved": true,
+    "source_guards_removed": false,
+    "new_model_calls": 0,
+    "new_generated_code_executions": 0
+  },
+  "immutable_raw_file_sha256": {
+    "plan.json": "ec9107d457b9ae1781c424e444b712def3aff68d4a426163d686d722b6d28d1d",
+    "selection.json": "e71b9e8715e282434fbaff1c9773b7601d74f398e4f562458fe7382ccc4ea6b4",
+    "evaluation-plan.json": "e1b96a516b35ac862e8c58b661793adee4d52180fd70978b8d91ebb8aa22a1df"
+  },
+  "limitations": {
+    "full_closed_study_audit_completed": false,
+    "unmodified_frozen_cli_claimed_to_pass": false,
+    "evaluation_observations_audited_by_component_check": false,
+    "terminal_progress_audited_by_component_check": false,
+    "all_search_physical_proofs_audited_by_component_check": false,
+    "requires_actual_normal_writer_closure_before_two_full_audits": true
+  }
+}

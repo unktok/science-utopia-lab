@@ -150,8 +150,10 @@ paths are replaced with source-reconstructed, equal-valued dictionaries. Scalar
 types, hashes, all list orders, selected policies and every other original audit
 dependency/guard remain. The receipt records both analysis and experiment source.
 This is not a change to the experiment, selection or evaluation schedule; the
-unchanged frozen CLI has not passed. Fresh-process integration QA is required
-after committing the adapter, before using it for the real closed-study audits.
+unchanged frozen CLI has not passed. At committed analysis source07863e0,
+74 offline tests and two byte-identical real-data component checks pass;
+[scope and hashes](../research/results/native-design-freedom-v2-audit-order-verification-v1.json).
+This does not replace the two real closed-study audits after all90 jobs finish.
 
 After confirming the actual writer handle has exited normally, use a clean,
 committed analysis checkout and the approved interpreter to invoke the adapter
