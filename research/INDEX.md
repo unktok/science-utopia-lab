@@ -11,6 +11,8 @@ Historical documents retain their paths and source identities.
 - [Submission research plan](publication/plan.md), [comparison contract](publication/benchmark-contract-v1.md),
   [initial related work](publication/related-work.md).
 - [Reproducible four-study evidence inventory](results/publication-evidence-inventory-v1.json).
+- [Feedback control implementation](components/native-feedback-control-v1.md) and
+  [prospective finite comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md).
 - [Research charter](charter.md): original motivation and explicit principles.
 - [System abstraction](system-model.md), [optimization](optimization.md).
 - [Software/research workflow](../docs/research-workflow.md).

@@ -154,6 +154,8 @@ def replay_campaign(directory, method):
             # Prospective optional historical initialization. Legacy bindings
             # pass no extra argument and retain their original replay bytes.
             kwargs['initial_evidence'] = deepcopy(b['initial_evidence'])
+        if 'proposal_feedback' in b:
+            kwargs['proposal_feedback'] = b['proposal_feedback']
     controller = (ReadOnlyAdaptive if method == 'blackbox' else ReadOnlyNested)(directory, **kwargs)
     if method == 'blackbox' and any(r['request']['count'] != 1 for r in
             state['records'] + ([state['pending']] if state['pending'] else [])):

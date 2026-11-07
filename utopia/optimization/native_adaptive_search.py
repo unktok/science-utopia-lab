@@ -254,8 +254,12 @@ class NativeAdaptiveDesignCampaign:
     def __init__(self, directory, *, initial_system, loss_spec, seeds, world_binding,
                  strategies, mode='hybrid', seed=42, learning_rate=.1,
                  strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
-                 expectation_estimator=None, initial_evidence=None):
+                 expectation_estimator=None, initial_evidence=None, proposal_feedback='loss'):
         validate_loss_spec(loss_spec)
+        if (proposal_feedback not in ('loss', 'technical-only')
+                or proposal_feedback == 'technical-only' and
+                (mode != 'blackbox' or initial_evidence is not None or expectation_estimator is not None)):
+            raise ValueError('technical-only proposals require blackbox mode without historical evidence or an estimator')
         if (mode not in {'blackbox', 'score', 'hybrid'} or type(seed) is not int
                 or not seeds or any(type(s) is not int for s in seeds) or len(set(seeds)) != len(seeds)
                 or not isinstance(world_binding, dict) or not world_binding
@@ -273,6 +277,9 @@ class NativeAdaptiveDesignCampaign:
             'mode': mode, 'seed': seed, 'learning_rate': float(learning_rate),
             'strategy_learning_rate': float(strategy_learning_rate), 'strategy_baseline': float(strategy_baseline),
             'exploration': float(exploration)}
+        # Omit the default field to preserve exact legacy bindings and replay.
+        if proposal_feedback != 'loss':
+            self.binding['proposal_feedback'] = proposal_feedback
         if initial_evidence is not None:
             from .native_initial_evidence import validate_initial_evidence
             self.binding['initial_evidence'] = validate_initial_evidence(initial_evidence,
@@ -309,11 +316,20 @@ class NativeAdaptiveDesignCampaign:
         if type(count) is not int or count < (1 if self.binding['mode'] == 'blackbox' else 2):
             raise ValueError('positive black-box batch or at least two score/hybrid draws required')
         ids = sorted(self.binding['strategies'])
+        technical_only = self.binding.get('proposal_feedback') == 'technical-only'
+        if technical_only:
+            # Even an accidentally supplied loss-updated state must not affect
+            # proposal identity, choice probabilities or displayed statistics.
+            strategy_state = self._strategy_initial()
         logits = torch.tensor(strategy_state['logits'], dtype=torch.float64)
         probabilities = (1 - self.binding['exploration']) * logits.softmax(0) + self.binding['exploration'] / len(ids)
         index = len(records)
         rng_seed = int(digest({'seed': self.binding['seed'], 'generation': index})[:15], 16)
         chosen = int(torch.multinomial(probabilities, 1, generator=torch.Generator().manual_seed(rng_seed)))
+        if technical_only:
+            from .native_feedback_control import technical_request
+            return technical_request(self, records, strategy_state, count,
+                chosen=chosen, probabilities=probabilities, rng_seed=rng_seed)
         observations = [{'suggestion': d['suggestion'], 'observation': o} for r in records
             for d, o in zip(r['draws'], r['observations']) if d['suggestion'] is not None and o is not None]
         evidence = None
@@ -370,7 +386,8 @@ class NativeAdaptiveDesignCampaign:
             estimator_context=context)
         before = clone(state)
         outer_gradient = None
-        if report['status'] not in {'not-updated-technical-failure', 'not-updated-estimator-failure'}:
+        if (self.binding.get('proposal_feedback') != 'technical-only'
+                and report['status'] not in {'not-updated-technical-failure', 'not-updated-estimator-failure'}):
             cost = math.fsum(report['losses']) / len(report['losses'])
             key = record['request']['strategy_id']
             stats = state['statistics'][key]
