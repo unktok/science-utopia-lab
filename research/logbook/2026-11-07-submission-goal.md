@@ -775,3 +775,19 @@ The four own slots are[7.766666666666664,7.766666666666664,
 repair, new adoption rule, changed objective, retry/refill or active source change.
 The finite writer continues to the next arm. Full-study closure, source audits,
 selection-fixed evaluation, analysis and final manuscript remain required.
+
+Continuation13:49–13:57UTC verifies live session46865. Monitoring cell3801 ends
+at search34/120 (21 complete,6 generation failures,7 execution failures;
+references9/9,evaluations0). Throughput technical-only G3 completes at-7;
+its four consumed slots all complete at-7 with A7/R21. The outside Q values are
+[22.333333333333336,22.333333333333336,22.333333333333336,22.666666666666668].
+The last Q difference is retained, not called an assigned-loss improvement,
+an efficiency-optimized proposal or verified scientific progress. Equal T does
+not imply identical outside outcomes or scientist trajectories; do not choose a
+post-hoc objective to turn this into a favorable method result.
+Progress hash
+ed3d7b6306fe6ca202a0b2e939d19fdbc8a723209eaf40ebb08353476194973a.
+Selective technical-only G3 is next. The whole finite study remains live and
+unaudited as a closed study; no loss, source, prompt, model, budget, selection
+rule or trial-replacement change. Full analysis still follows original-source
+closure and selection-fixed unused-condition evaluation.
