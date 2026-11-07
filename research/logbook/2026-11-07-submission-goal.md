@@ -3146,3 +3146,60 @@ active; completion of this control arm is not study or submission completion.
 Offline checks pass16 active documents/191 local targets/six original snapshots
 and git diff --check; the through70 snapshot SHA256 remains unchanged. These
 checks make no model/network/world calls and do not establish full V2 closure.
+
+### All24 LLM-numeric slots finish as generation nulls; schema errors are distinct
+
+The preceding turn closes the24 valid uniform-numeric states and records115,
+commit4fb427c. This turn repeatedly confirms actual writer46865 live. Progress
+reaches116 at22:08UTC and117 at22:12:04UTC:61 complete,25 generation failures,
+31 execution failures; reference9/9,evaluation0. Progress SHA256
+c467296116e15ad18fc1f4030e30a7b1bf35e3d93c1c80a57b3aea1e67c05971.
+
+Slot116 T LLM-numeric G3 consumes16 actions without a valid explicit finish,
+but its history is not only the usual source-scope failure. Edit4/6/8 are
+rejected for the undeclared field rationnales; edit5 has undeclared
+field_updates,mechanism_id. Reads7/9/14 of nodes/addressed-selection.json are
+rejected by the existing implementation checkpoint. Source write10 to
+code/world.selection.py is applied to the draft. Finish13/15 then fail the
+declared numeric-space validation. Preserve the schema errors, later source
+escape and exact actions as distinct channels; do not infer that spelling
+alone caused every subsequent failure or that a generic generation_error
+adequately explains the attempt. No native observation or scalar loss exists.
+
+T request471cdc2e7493d8e32aed25bcd15eb78138a473cce9d243b614ec33bc91c711f1;
+edit4 completed-file SHA2561ec79c08ad8e93d8e5202635bb48f7c55382b0c2e52dc6419b62ba2452c255aa;
+edit5 completed-file SHA256dcdac10948469246566b2227a953557397c75707324dd053c962e6c5a208161a;
+finish13/15 completed-file SHA256
+eb3f22f544c73530533e705b4983b60b7dcaee33673bdf5a00a12ba52f31346c /
+404818eb62d84e04d5642b17e9ae48a1dd9209d4299b971a2c38404cac503cf8.
+
+Slot117 C LLM-numeric G3 consumes16 actions with source writes3/7/10 to
+code/world.selection.py; finish13/15 are rejected outside the declared numeric
+space, and read14 is rejected by the implementation checkpoint. There is no
+native observation, inferred poor loss or replacement world. Its general final
+ValueError is retained alongside those concrete tool/transition records.
+
+C requestc0dd0b37b31c9f8249ea6a0bdde157fe1431480ec58fab638d2faa0c4bd91b3d;
+finish13/15 completed-file SHA256
+0598137721c16023e6946c9ab40fde85c0f2632c6c18e061d15fe4894c23aee4 /
+22f96baf20b50c6fc5a5be944fca3c203d39d874ab9aec2451d292770582bae8.
+These locators are within the corresponding arm's authoring/generation-request.
+
+A separate read-only check of all six numeric-LLM arm states verifies four
+records/no pending request each, every generation_error present and every
+native observations list empty:24 total generation nulls. Combined with the
+previous24 uniform completions, this is evidence of current end-to-end
+interface/designer compliance, not intrinsic numeric-space incapacity or a new
+full original-source audit. Do not retroactively broaden action schemas, guess
+misspelled fields, repair drafts or refill attempts. The initial candidate's
+predeclared final-selection eligibility does not turn these attempts into
+successful inventions. Record the confound in the research-readiness review.
+
+No active source/model/settings/loss/budget/selection or raw evidence changes,
+new resource or optional registry egress. Remaining3 search slots, fixed
+selected-policy evaluation, two original-source audits and final analyses/
+manuscript/PDF/mock review remain required. The full goal stays active.
+
+Offline document checks pass16 active documents/191 local targets/six original
+snapshots and git diff --check; the through70 snapshot SHA256 remains unchanged.
+These checks make no model/network/world calls or closed-study audit claim.

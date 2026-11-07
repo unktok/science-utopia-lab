@@ -90,6 +90,18 @@ V2の初期二つのparameter-only提案は、codeを書き換えて範囲違反
 新source・fresh校正で行い、現在の失敗を置換・refillしない。失敗の説明を
 「設計者の能力不足」「runnerのバグ」のどちらかに、因果的な根拠なく断定しない。
 
+By the live117-slot snapshot, all24 LLM-numeric authoring slots have ended in
+generation errors with no native observations, while all24 uniform-numeric
+slots have complete observations in their per-arm records. This is not yet the
+closed original-source V2 audit. Final T numeric G3 also attempts edit actions
+with undeclared fields (rationnales; field_updates/mechanism_id) before switching
+to out-of-domain source editing. Separate those schema rejections from the
+later declared-space finish rejections and from native execution failures.
+The resulting comparison is end-to-end designer/interface behavior, not an
+unconfounded measurement of intrinsic numeric-versus-code expressivity. Preserve
+all nulls and actual costs; do not repair/refill the active campaign or relabel
+the predeclared initial-system selection option as successful numeric invention.
+
 ## 検証・型契約の範囲
 
 自由度群の名前は許容する編集範囲であり、実際の構造変更の証拠ではない。
