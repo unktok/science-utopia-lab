@@ -56,7 +56,7 @@ def test_pipeline_freezes_selection_and_evaluation_plan_before_any_evaluation(tm
         'seed':31001,'years':2}])
     args=SimpleNamespace(output=tmp_path,data_cache=tmp_path/'cache',action='all')
     assert driver.execute(args)==0
-    assert events==['developer-reference']*9+['calibrate','search']*3+['freeze','selection-fixed-evaluation']
+    assert events==['calibrate']+['developer-reference']*9+['search']+['calibrate','search']*2+['freeze','selection-fixed-evaluation']
     assert (tmp_path/'evaluation-plan.json').exists()
 
 

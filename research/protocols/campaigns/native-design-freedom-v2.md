@@ -67,6 +67,9 @@ proposalを仮定しない。各runは別session・別履歴で、他群・他ru
   日数超過等で再校正が必要なら、未実行slot・予算を保持した別明示recordとして扱う。
 - 校正は原source/model/backend/profileでcold replayし、exact-copyは診断に留める。
   技術校正はfree-design成功や科学的理解の保証ではない。
+- 最初のrunの校正をreference9worldより先に行い、interfaceが不適合なまま
+  比較を始めない。referenceの測定は校正・提案へ戻さず、その後のrunは各開始時に
+  別の有限校正を行う。原sourceのcertificateを使っている間にsourceを変えない。
 - 各proposal前designer role load、各world前scientist role load/context確認。
   一つのlocal endpointの実推論は直列。実行中sourceは一切変更しない。
 - 全群共通で二年worldは最大512 scientist HTTP attempts、四年評価は1024。

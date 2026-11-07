@@ -211,13 +211,15 @@ def prepare(args):
 def execute(args):
     plan=prepare(args)
     if args.action=='prepare':return 0
+    first_run=next(iter(plan['campaign_bindings']))
+    first_certificate=calibration(args.output,plan,first_run)
     for name,system in plan['reference_systems'].items():
         evaluate(args.output/'references'/name,plan,identity='reference-'+name,
             system=system,seed=42,years=2,role='developer-reference',data_cache=args.data_cache,
             inference_lock=args.output/'inference.lock')
         progress(args.output,plan,stage='references',active=name)
     for run in plan['campaign_bindings']:
-        certificate=calibration(args.output,plan,run)
+        certificate=first_certificate if run==first_run else calibration(args.output,plan,run)
         search_run(args.output,plan,run,certificate,data_cache=args.data_cache)
     selection=freeze_selection(args.output,plan)
     jobs=evaluation_jobs(plan,selection)
