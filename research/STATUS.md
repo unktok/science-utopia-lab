@@ -27,46 +27,38 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At15:31UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At15:40UTC all9 fresh
 reference worlds are complete. Search has
-consumed48/120 slots:26 complete,9 generation failures,13 execution failures.
-These are all40 slots of run00 plus eight run01 G0 slots, not
+consumed50/120 slots:27 complete,10 generation failures,13 execution failures.
+These are all40 slots of run00 plus all10 run01 G0 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its selective uniform-numeric G0 is executing; selected-policy
+calibration passes and its throughput fixed-graph code G1 is in flight; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
-Run00's G1–G3 do not improve any arm's best-including-initial value. Uniform numeric
-throughput records-7/0/-7/0; selective records8.1/2.4000000000000004/8.1/2.4000000000000004. These
-lower/higher random proposals are not learning evidence. In run00 all eight
-uniform numeric slots execute, while all eight LLM numeric slots fail generation. The two G2
-failures reject out-of-domain finishes within16 actions; all32 actual posted
-frames retain the exact declared domain, with stop completion signals. This
-does not remove possible presentation/compliance confounding or demonstrate
-an inherent limitation of parameter tuning.
-G3 throughput tries source edits outside the numeric domain; selective proposes
-thresholds1000000 (upper bound5) and bias1000 (upper bound4), and also attempts
-source edits. Both exhaust16 author actions without a valid explicit finish.
-These are design-compliance failures, not measured poor scientific losses.
-Run01's fixed-graph T/C G0 proposals fail respectively on scalar score indexing
-and an empty required decisions output. The latter emits no decision for three
-real submissions; rejecting all with explicit IDs remains legal. No scientific
-loss is imputed and no host repair changes either proposal.
-Run01's code-and-graph T/C G0 proposals also fail: scalar score indexing and a
-bare world payload respectively. Both change only selection source, not nodes,
-wiring or schedules. Available structural freedom is not demonstrated structural
-invention. Run01 throughput technical-only G0 now completes at T-7,
-A7/Q22.666666666666668/R21. It changes only selection to all-accept, tying the
-existing T minimum, not demonstrating feedback-driven gain. Two literal-source
-receipts cover3/4 real records; its dummy-ID fallback is unexercised, not validated
-for empty inputs. This first own proposal does not repair the other arms' failures.
-Run01 selective technical-only G0 fails scalar score indexing. Its uniform
-numeric throughput G0 completes at T-1,A1/Q3.6666666666666665/R24, rejecting
-three then accepting one/rejecting four real records across the two years.
-This is intermediate behavior within the numeric domain, not only all/none;
-it is not feedback learning or a gain over the existing T-7 minimum.
+Run00's G1–G3 do not improve any arm's best-including-initial value. Run01's
+initial10 slots comprise3 completions,2 generation failures and5 execution
+failures; its iterative comparison starts next. Throughput technical-only G0
+returns T-7,A7/Q22.666666666666668/R21 with only all-accept selection code changed.
+It ties the known T minimum; its dummy-ID fallback is unexercised, not validated
+for empty inputs. It does not repair the other arms' failures.
+
+Run01 uniform-numeric T/C G0 complete at-1/2.733333333333334 with the same
+A1/Q3.6666666666666665/R24 vector. Their candidate dictionaries and numeric
+patches are exactly identical; a shared controller seed produces the same
+uniform draw. These are two recorded forward worlds, not two distinct policies
+or different environment seeds. Numeric changes can yield intermediate
+acceptance, not only all/none. Neither result improves the already observed
+across-history arm minimum (T-7,C2.4); initial random gains are not feedback learning.
+
+All10 uniform-numeric slots so far execute while all10 LLM-numeric slots fail
+generation. Raw errors include out-of-domain edits and finite finish/checkpoint
+failures, not measured bad science losses. Other runtime failures include
+scalar score indexing, malformed envelopes and empty/missing real-ID decisions.
+Reject-all remains legal when correctly encoded. These failures confound an
+intrinsic expressivity claim; no host repair, projection or refill is made.
 
 The [chronological log](logbook/2026-11-07-submission-goal.md) retains the
-G0/G1/G2 table, every earlier snapshot and source/receipt/wire/checkpoint hashes.
+all40 run00 paths, run01's G0 table, earlier snapshots and source/receipt/wire/checkpoint hashes.
 Read-only cases distinguish real scientist-input changes, realized equivalence,
 arithmetic roundoff and distinct ABI/type failures. Object-only payload schemas
 do not prove field/rank safety; see the

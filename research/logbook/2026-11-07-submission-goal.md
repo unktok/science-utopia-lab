@@ -1181,3 +1181,66 @@ The same finite writer continues with selective uniform-numeric G0, with no
 source, model, prompt, objective, budget, retry or selection change. No early
 unused-condition evaluation or new resource; remaining search, two source
 audits, selection-fixed evaluation, analysis and final manuscript are required.
+
+Continuation15:35–15:44UTC: prior turn yields new intermediate numeric behavior
+and preserves a repeated scalar failure, rather than merely restating status.
+Writer46865 remains live. Finite observer3909 ends normally at50 slots. At
+15:36:41 selective uniform-numeric G0 completes C2.733333333333334,
+A1/Q3.6666666666666665/R24,7 rejects,5 active authors/resources615. This is
+worse than the initial C2.4000000000000004, not an improvement or a numerical
+loss assigned to a failed proposal.
+World native-adaptive-e4ad1a3dcb69824d7cb9cf8d-s42;
+requesteddcdb8ef06ca4366ef37f62d5ff8f9f9770706b95300adc91633029e2e3bdd9;
+checkpoint SHA256
+c7410d89cc6afce133a167bc55e97815586ab80a5881b7b0653f72bedc767e15;
+code-context journal SHA256
+0c5b6c9877da008b0eb103ffeed3fdafddae4c13dfbb131500a93500e01e120d.
+
+Exact dictionary comparison shows its candidate AND numeric patch equal the
+preceding throughput uniform G0. Both requests use rng_seed1045432298947068330.
+Frozen random_parameter_definition initializes random.Random(request.rng_seed)
+and draws the declared coordinates; plan bindings use the same controller seed
+across arms. Coordinate-wise independent uniform sampling does not mean
+independent cross-objective proposal streams. This is implementation-derived
+coupling, not a newly changed sampler. Record two separate development forward
+worlds, one exact specification, with separate costs/IDs; do not call them two
+invented institutions, different world seeds or independent policy discoveries.
+Matching their A/Q/R does not prove equality of every response/trajectory, and
+no full scientist-wire equality is claimed by this comparison. Physical
+evaluation sharing still follows the separately frozen policy identity rule.
+
+At15:40:26 throughput LLM numeric G0 exhausts16 author actions without valid
+finish. Request
+3c82582a2c7aff53a23cc49e1315f177f6dd062a6dd4a8b20e742dfca53ff2c7;
+finish step13 rejects a draft beyond the numeric domain; read_file step14
+hits the implementation checkpoint; write_file step15 hits the explicit-finish
+checkpoint. Those rejected actions are preserved and charged. Do not supply a
+repaired candidate, replace the slot or infer a scientific loss. This is an
+authoring failure, not a real-policy throughput decrease.
+
+All10 run01 initial proposals (each is G0, not iterative improvement):
+
+| Objective / method | Status | Own assigned loss |
+| --- | --- | ---: |
+| T LLM numeric | generation failure | null |
+| C LLM numeric | generation failure | null |
+| T fixed-graph code | execution failure | null |
+| C fixed-graph code | execution failure | null |
+| T code/graph | execution failure | null |
+| C code/graph | execution failure | null |
+| T technical-only | complete | -7 |
+| C technical-only | execution failure | null |
+| T uniform numeric | complete | -1 |
+| C uniform numeric | complete | 2.733333333333334 |
+
+At15:40:45 total50/120,27 complete,10 generation failures,13 execution
+failures,9/9 references,evaluation0. Progress file SHA256
+17b3df19ecf7d6142a2a09405b6ef34c9bc7cc3488912ce19bd6753daa007252.
+Run01 throughput fixed-graph G1 is being authored. All40 run00 plus this
+initial10 are not a completed three-history study. Three completions versus
+run00 G0's seven are descriptive, not a significance/expressivity or causal
+feedback result; G0 calls are separate and have no prior outcome feedback.
+Shorten STATUS to the milestone and keep detailed cases here. Full remaining
+search, fixed selection/evaluation, two original-source audits, analysis and
+final manuscript/mock review remain required. No source/model/budget/prompt/
+objective changes, slot replacement, new resource or external hash query.
