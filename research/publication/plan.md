@@ -101,6 +101,16 @@ best-including-initial経路と全完走点・null表示を印刷用に作図す
 jitterせず、方法優位のbandを捏造しない。SCRIPTED QAの図には明示watermarkを入れる。
 実結果はまだ未生成であり、解析コードのテストは実験結果ではない。
 
+`python -m scripts.figures.native_design_evaluation`は同じclosed reportから、
+各参照制度に対する選択policyのseed別paired差を全て作図する。二つの探索目的を
+別panelとし、数値・固定graph code・code/graph・technical-only・uniform numericを
+同じ順で残す。全9参照、二年五seedと四年単一seedを別figureにする。
+欠測は数値軸の外へ表示し、有効なpairの平均は期待性能や信頼区間と呼ばない。
+同じphysical jobは明示し、追加の独立標本と数えない。plot-data JSONとfigure hashを
+保存し、元reportのphysical score・job ID・共有・seed順序と差分を再照合する。
+他目的でのcross-scoreは入力reportに残る。この図は各arm自身の目的での比較である。
+初期previewはSCRIPTED QAのwatermark付きで、実測結果として原稿へ入れない。
+
 ## 会議の方針：確認できた事項と判断を分ける
 
 2026-11-07時点、第一候補の方向はNeurIPS/ICMLの通常研究論文。
