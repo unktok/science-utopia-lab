@@ -30,7 +30,7 @@ def path_panel(ax, data, objective, *, paper=False):
             marker='o' if policy=='loss' else 's',s=42 if policy=='loss' else 65,zorder=3)
         for g,r in zip(x,arm['rows']):
             if r['status']!='complete':
-                ax.annotate(f'G{g}: null',xy=(g,.03 if policy=='loss' else .13),
+                ax.annotate(f'G{g}: null',xy=(g,.24 if policy=='loss' else .13),
                     xycoords=('data','axes fraction'),color=color,fontsize=9,ha='center')
     baseline=data['baseline']['cross_scores'][objective]
     if baseline is not None:

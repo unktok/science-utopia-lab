@@ -19,6 +19,10 @@ Historical documents retain their paths and source identities.
 
 ## Latest completed evidence
 
+- [V1 same-source feedback comparison](results/native-feedback-comparison-v1-a1.md):
+  all eight slots, four runtime failures, initial all-accept improvement, no measured G1 gain.
+- [V1 compact audit](results/native-feedback-comparison-v1-a1.json) and
+  [short working manuscript](../paper/submission.tex).
 - [V45 compact audit](results/native-warmstart-v45-a1.json).
 - [V45 actual outcomes, error diagnosis and separate fixes](logbook/2026-11-07-native-warmstart-v45.md).
 - [V45 prospective two-slot protocol](protocols/campaigns/native-warmstart-v45-a1.md).

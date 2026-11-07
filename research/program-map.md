@@ -22,7 +22,7 @@
 
 | 元の目標 | 実装・実証済みの範囲 | 残る研究上の問題 |
 | --- | --- | --- |
-| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、V45の履歴bank。V12/V13の目的別経路 | 同じ条件・予算での比較、安定した改善、目的依存の制度差の一般化 |
+| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。V1で二目的×feedback対照を同source完了 | 反復の上積みは未実証。強い基準・自由度対照、目的依存の制度差の一般化 |
 | 出来合いでない制度を作る | sandboxed Python、typed ports/state、生成IR。外部設計者のV13で実作用と観測改善 | ローカル設計者の信頼性、コード変更と機構上の新規性の区別 |
 | 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用 | パラメータ探索を超える価値の対照比較、信頼境界・世界の単純化の明示 |
 | 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較 | 推定量と対象分布の明示、費用を揃えた実用性。世界全体ADや優位性は未証明 |
@@ -31,6 +31,8 @@
 
 ## 証拠への入口
 
+- [V1](results/native-feedback-comparison-v1-a1.md)：ローカル35B、二目的・二群・二世代。
+  全8案提出、4完走／4実行失敗。両目的ともcontrol G0の全採択案が最良、世代1の上積みなし。
 - [V45](results/native-warmstart-v45-a1.json)：ローカル設計者、二案提出、一評価完走／一失敗。
 - [V13](results/native-nested-search-v13-a1.md)：外部設計者、自由制度＋条件付き更新、観測改善とproxy攻略。
 - [V12](results/native-objective-redesign-v12-a1.md)：新しい機構と配線の実作用、改善しなかった改訂も保存。
@@ -41,7 +43,7 @@
 ## いま動いているもの
 
 ここで列挙した全トラックが永続的にバックグラウンド稼働しているわけではない。
-V45のwriterは終了済み。新しい実験が動く場合は、protocol/source/予算/実行記録を
+V1とV45のwriterは終了済み。新しい実験が動く場合は、protocol/source/予算/実行記録を
 [STATUS](STATUS.md)に明示する。準備・実装・実行中・完了・未実証を分ける。
 
 ## 全体像と一本目の論文を分ける

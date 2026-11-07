@@ -18,8 +18,10 @@ researchers, the already approved local35B designer, two objectives, two
 proposal policies, and two generations. It is a development pilot, not held-out
 confirmation or a complete conference study. See [current status](../research/STATUS.md)
 and the [prospective protocol](../research/protocols/campaigns/native-feedback-comparison-v1-a1.md).
-At this entry's first revision the run is still executing; result numbers are
-not filled from partial progress or test fixtures.
+The finite run and original-source audit are complete. All eight candidates,
+including four execution failures, are retained in the [audited result note](../research/results/native-feedback-comparison-v1-a1.md).
+The selected initial all-accept proposal improves the declared proxies; no
+second-generation gain, feedback superiority or scientific-quality gain is established.
 
 The result table is generated from the source-bound audit summary rather than
 transcribed. Nulls, all candidates, exact ties and cross-objective selection

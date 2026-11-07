@@ -26,10 +26,13 @@ technical validity, optimization loss, and outside evaluation. A finite
 same-source development comparison contrasts adaptive loss feedback with
 technical-only proposals for two explicit objectives. Its information boundary
 prevents loss-selected parents, strategy updates, and outcome-derived hashes
-from leaking into the control. This working draft specifies the research
-problem, comparison, and evidence requirements; completed outcomes are reported
-only after original-source replay. The project does not establish optimizer
-superiority, autonomous recursive improvement, or real scientific-policy benefit.
+from leaking into the control. Original-source replay retains all eight
+candidates: four complete and four fail during execution. An initial
+technical-only proposal improves both declared losses by replacing selection
+with all-accept decisions, but no measured second-generation gain or adaptive
+feedback advantage is observed. This small development result motivates
+stronger rule baselines and design-freedom comparisons; it does not establish
+optimizer superiority, autonomous recursive improvement, or real scientific-policy benefit.
 \end{abstract}
 
 \section{Introduction}
@@ -174,8 +177,9 @@ quota-based institution. Both objectives were selected after earlier development
 \begin{equation}
   \ell_T=-A,\qquad \ell_E=-Q+0.5R,
 \end{equation}
-where $A$ counts accepted publication decisions, $Q$ is the existing summed
-reviewed-production proxy, and $R$ counts individual reviews. The exact
+where $A$ counts accepted publication decisions, $Q$ sums the mean original
+reviewer overall score for each accepted decision (zero without reviews), and
+$R$ counts individual reviews. The exact
 versioned LossSpecs and measurement adapters control these definitions. In
 particular, $Q$ is not independently verified scientific quality.
 
@@ -285,7 +289,9 @@ extend beyond parameter tuning to code, mechanisms, and processes. The research
 question is how objectives and design freedom shape the systems discovered and
 their consequences. The comparison and reporting boundary make that question
 testable without requiring whole-world differentiability or discarding failed
-and tied outcomes. Further freedom ablations, unused-condition evaluation,
+and tied outcomes. The development pilot records a simple initial all-accept
+proposal improving both declared proxies, but no measured iterative gain or
+feedback superiority. Further freedom ablations, stronger rule baselines, unused-condition evaluation,
 and mechanistic evidence are necessary before strong empirical or deployment
 claims, and before treating this working draft as a completed conference paper.
 

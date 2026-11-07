@@ -11,8 +11,18 @@
    [投稿研究計画](publication/plan.md)、[比較contract](publication/benchmark-contract-v1.md)、
    [4研究の出典固定解析](results/publication-evidence-inventory-v1.json)まで完了。
    loss-feedback対照・出典固定監査・経路／cross-score作図も実装済み。
-   [有限pilot](protocols/campaigns/native-feedback-comparison-v1-a1.md)は校正を通過して実行中。
-   実装完了を新しい科学的結果と取り違えない。
+   [有限pilot](results/native-feedback-comparison-v1-a1.md)は全8slot・原source監査まで完了。
+   初回全採択案が両目的で最良。世代1の改善やfeedback優位性は示していない。
+   全試行・失敗・経路・機構を短い原稿へ反映した。
+
+## 直近の次の区切り
+
+大量seedへ進む前に、同source・同worldでlegacy原制度、手作業all-accept／
+原selection、parameter-only、free-code、free-graphを比較できる基準を固定する。
+今回の最良案に残る空入力fallbackも、技術契約の境界例として検査する。
+候補の科学コードをhostが補修して成功扱いせず、前向きなinterface説明修正と
+凍結済みの失敗を分離する。目的理解と技術契約の回帰を揃えてから、新sourceの
+有限校正と小規模比較を行う。改善や異なる勝者は終了条件にしない。
 
 ## 最優先：研究比較を成立させる
 

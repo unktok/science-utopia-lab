@@ -57,11 +57,12 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 候補順、parent、strategy更新から正解が漏れる。最初にこの対照のテストを作る。
 技術的なエラーfeedbackは両群に残し、科学的損失feedbackと区別する。
 制御実装と[有限比較protocol](../protocols/campaigns/native-feedback-comparison-v1-a1.md)
-を作成。固定source2e375c2で28技術校正・冷再生後に有限pilotを開始した。
-実行中の条件は変えず、完全な結果は終了後の原source監査から報告する。
+を作成。固定source2e375c2で28技術校正・冷再生後、有限pilotと原source監査まで完了。
+条件変更・失敗補充はせず、[全結果](../results/native-feedback-comparison-v1-a1.md)を保持した。
 
-**P2：少数規模で実行中**：同一source・共通初期系・二目的・二探索法の
+**P2：少数規模の統合比較完了**：同一source・共通初期系・二目的・二探索法の
 最小比較を回し、全候補、null、費用、探索経路、cross-scoreと作用を保存する。
+4完走／4実行失敗。両目的ともcontrolの初回全採択案が最良で、G1の上積みはない。
 この段階の単一seedを統計的な優位性とは呼ばない。
 
 **P3：自由度と一般化**：parameter-only／自由コード固定graph／自由graphを
@@ -75,7 +76,7 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 [主張中心の章立て](../../paper/submission-outline.md)を次稿の正本とする。
 現在の長いworking draftやNeurIPS形式は、投稿準備完了を意味しない。
 [短い新稿](../../paper/submission.tex)は方法・比較中心の構成を実装済みで、
-実験終了・監査後に自動生成の表と図を入れる。旧長稿は保存する。
+監査から自動生成した全候補表・探索経路と実作用の解析を入れた。旧長稿は保存する。
 
 ## 会議の方針：確認できた事項と判断を分ける
 

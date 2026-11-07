@@ -20,3 +20,9 @@ bounded planning-frame tests prevent future prose/runtime mismatch.
 The ongoing comparison remains at2e375c2 for all8 slots. No failure is repaired
 or replaced. This later source needs fresh calibration before future generation;
 passing software tests is not proof that a model will follow the clarified ABI.
+
+Committed source d303136 passes105 focused tests in30.44s, covering the
+literal runtime and bounded authoring frames. Logs/JUnit are retained at
+`outputs/feedback-comparison-v1-verification/pytest-required-output.{log,xml}`.
+The completed2e375c2 comparison preserves the original failure; its calibration
+does not certify d303136 or later main for new generation.

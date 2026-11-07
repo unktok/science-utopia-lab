@@ -5,9 +5,10 @@ Updated2026-11-07. This page is a concise current-state summary.
 
 ## Actual experiment state
 
-The latest closed pilot V45 ran03:24:10–03:41:12UTC on2026-11-07,
-for17m01.94s, using fixed Qwen3-8B researchers and the approved local35B designer.
-No background experiment is implied by this page.
+The latest finite feedback comparison V1 is **closed and original-source audited**.
+It ran05:08:38–06:01:45UTC on2026-11-07 (53m06.77s), at frozen2e375c2,
+with fixed Qwen3-8B researchers and the approved local35B designer.
+No model experiment remains running from this campaign.
 
 Repository entry points and the six original goals have now been reorganized,
 with six exact historical snapshots. The [publication research plan](publication/plan.md)
@@ -17,24 +18,40 @@ is implemented and tested offline. It starts no model/world and establishes no
 new improvement, matched-method result or submission readiness.
 
 The [feedback comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md)
-is now running at frozen source2e375c2, from05:08:38UTC. All28 real local-designer
+completed all eight slots: four measured candidates and four runtime failures,
+plus one separate completed shared baseline. All28 real local-designer
 technical controls and cold replay pass;26/28 exact-copy matches remain a
 diagnostic, not a dispatch veto under execution-readiness-v39. The shared
-baseline started in the original researcher world. It declares eight proposal
-slots plus one shared baseline, no refill; no new candidate result is claimed
-at this snapshot.
+baseline and candidates retain the original researcher lifecycle. No failed
+slot was refilled. [All outcomes and mechanism analysis](results/native-feedback-comparison-v1-a1.md)
+and [compact source-bound JSON](results/native-feedback-comparison-v1-a1.json)
+are the current evidence, not test fixtures or live partial progress.
 The [software receipt](results/feedback-comparison-v1-verification.json) separates
 the2619/3 broad check at2494e63 from the114 later targeted checks at2e375c2.
 These are software verification, not experimental improvement or a guarantee
 that all generated institutions execute. Raw local locator:
 `outputs/native-feedback-comparison-v1-a1/`.
 
-The first new candidate completes with loss0.0 after its designer explicitly
-misreads minus-acceptance as minimizing acceptance. The host loss is not
-reversed. A separate [prospective arithmetic-display fix](logbook/2026-11-07-affine-direction-context.md)
-retains coefficient-derived directions in bounded prompts (111 focused checks
-at6424bbf). It is not installed into the active2e375c2 run, nor certified for new
-generation. The fixed-budget comparison continues without replacement slots.
+The pooled minimum for **both** losses is efficiency-control G0: A7,
+Q22.333333333333336/R21, throughput loss-7 and efficiency loss-11.833333333333336.
+The shared developer seed has A0/Q0/R24 and losses0/12. The candidate changes
+selection to all-accept, not graph/process structure. This initial proposal is
+an observed proxy improvement, not feedback-driven iterative gain, a novel
+algorithm or better science. No measured G1 improvement or feedback advantage
+was demonstrated. The seed is open_native_system, not the untouched original
+quota institution: stronger legacy/manual baselines remain necessary.
+
+Separate prospective fixes explain coefficient-derived directions (111 focused
+checks at6424bbf) and required-output cardinality (105 atd303136), without
+changing the frozen run or its failures. New generation needs fresh calibration.
+See [arithmetic context](logbook/2026-11-07-affine-direction-context.md) and
+[output context](logbook/2026-11-07-required-output-context.md).
+
+The [short manuscript](../paper/submission.tex) now contains the actual all-trial
+table, search paths, source/mechanism interpretation and measured costs.
+This closes a small integration comparison, not the full conference study.
+
+## Earlier V45 evidence (different source and initialization)
 
 | Assigned objective | Historical starting best | Own new outcome |
 | --- | ---: | --- |
@@ -72,7 +89,7 @@ an efficiency-arm success, held-out gain or real scientific-policy benefit.
   with separate provenance. They are not evidence that the local designer
   learned to invent institutions.
 
-## V45 software verification and limitations
+## Earlier V45 verification and limitations
 
 Frozen experiment source:
 `d49cf0bebdfa9d85eab91012118904dcff9232da`.
