@@ -1795,3 +1795,59 @@ Run01 G3, fresh run02 calibration/search, frozen selection/unused-condition
 evaluation, two original-source audits and final analyses/paper/mock review
 remain required. The submission goal stays active; no partial V2 manuscript
 results or closed-study audit are produced during this live milestone.
+
+### Slot71: changed source, unexercised changed decision branch
+
+Previous turn completed the70-slot milestone and G2 table. This continuation
+re-polls actual writer46865 live, without changing frozen b6654ad. At17:41:38UTC
+search71/120:37 complete,14 generation failures,20 execution failures;
+references9/9,evaluation0. Run01 throughput code-and-graph G3 completes
+T-7,A7/Q22.333333333333336/R21,5 active researchers/resources620,
+4 institutional-context deliveries. It ties its valid G2 T-7 and the observed
+strong T controls. Its parent is based on G2 observation
+native-adaptive-42ee93dc0df30ab20c4dfb32, not an unmeasured technical null.
+
+Three sequential replacements affect world.selection source only. In the final
+source the nested-list score branch now always accepts rather than applying
+G2's threshold. However, two source-matching receipts contain scalar float
+scores, so this changed branch is not taken. The unchanged fallback accepts
+all3/4 real records with exact ID coverage and authored final_score0.5.
+Year1 scores[3,3,3],year2[10/3,10/3,11/3,3]. Original review means still define Q.
+Do not infer whole-policy equivalence for all inputs, a causal Q change,
+structural innovation, or feedback advantage from this literal source change.
+Empty-input/dummy-ID and nested-list branches remain unexercised.
+
+Requestd33c9b58888b64231611fbd35e31a06b0be6af8ca91badb00b57accd914c96ac;
+world native-adaptive-08f3dec299ff07a6f913d5b7-s42;
+selection source SHA256cef9b0686468d425b0945c4b661e0b0d6e30ec0e3b15cd5f60fcaf5949fd2cff;
+checkpoint SHA25675f61bbac53f761b05f1ba1e9cd90778e0cd95cc40ed62086ed3ffa0cef0edc1;
+code-context journal SHA2560509f550fe653d2856942857e9598e076d2ffe05fb834ec784f3dab22ece1171.
+
+Read the existing unchanged graph/design-change helpers before considering
+another inventory implementation. Original-source audit rows already retain
+complete system plus lineage.vs_parent/vs_initial; the integrated report
+deep-copies lineage. At1148c1042fa01c2144973f4594dd97206b2e6cc0 clarify its use:
+permitted arm freedom is not observed structural editing; source/configuration
+counts overlap; named-field lineage is not an exhaustive SystemSpec difference
+or proof of execution/benefit. Full specs and physical receipts remain required.
+No duplicate runtime or postprocessor implementation is added.
+
+The current STATUS had grown to348 lines and again mixed current progress with
+older source-specific certificates. Preserve its exact bytes from1148c10 at
+research/status-history-2026-11-07-v2-through70.md, SHA256
+3360312852c14344e23718ad283ca4053c3930afffbd995dace2bb42bc01865b.
+At13e64a9 replace only the current entry with a concise stage table, evidence
+limits and full remaining-goal checklist; link the archive from INDEX. Keep the
+older metric-study compatibility heading/anchor. The original six reset
+snapshots are unchanged; the new348-line snapshot is checked separately by SHA.
+Ten offline repository/PDF-dependency tests pass in0.05s. Link checks pass16
+active documents/189 local targets/six original snapshots, plus a separate
+three-document/45-target check covering the new archive, readiness review and
+paper README. Remote URLs/anchors remain outside that parser's test scope.
+The latest PDF itself is not rebuilt or changed by documentation work.
+
+At17:46:56UTC writer46865 remains live at71, selective code-and-graph G3 is
+generated and executing. Read-only observer22776 waits for73 slots or900s;
+its deadline is not a writer terminal condition. The full finite study, fixed
+selection/evaluation, twice-repeated original-source audits, analyses and final
+paper/mock review remain required. The submission goal stays active.
