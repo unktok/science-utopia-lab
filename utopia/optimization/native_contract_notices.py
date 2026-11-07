@@ -5,7 +5,8 @@ probe. Empty record lists remain legal even if a port schema excludes objects.
 Only explicit root types and literal local context-key reads are diagnosed.
 """
 import ast
-from utopia.system.design_patch import clone
+import json
+from utopia.system.design_patch import clone, digest
 
 JSON_TYPES = frozenset({'null', 'boolean', 'object', 'array', 'number', 'integer', 'string'})
 SCOPE = ('Explicit code-schema root types, original adapter consumption and literal local context-key reads only; '
@@ -161,3 +162,106 @@ def notice_summary(document, *, limit=8):
         'complete': len(notices) <= limit, 'limit': limit,
         'omission': 'Revalidate after edits to inspect remaining notices.' if len(notices) > limit else None,
         'warning_is_not_a_veto': True}
+
+
+def downstream_tensor_contracts(document, producer_position, *, limit=8, max_bytes=8192):
+    """Expose literal direct-edge declarations, never infer a producer's values.
+
+    There is deliberately no source parsing, tensor execution, transitive
+    pass-through assumption, shape inference, compatibility verdict or repair.
+    Positional filenames remain exact even in an invalid/ambiguous draft.
+    """
+    if type(limit) is not int or limit < 1 or type(max_bytes) is not int or max_bytes < 2048:
+        raise ValueError('positive contract count and at least2048 notice bytes required')
+    nodes = document.get('mechanisms') if isinstance(document, dict) else None
+    edges = document.get('connections') if isinstance(document, dict) else None
+    nodes = nodes if isinstance(nodes, list) else []
+    edges = edges if isinstance(edges, list) else []
+    summary = {'schema': 'scienceutopia.declared-downstream-tensor-contracts.v1',
+        'document_sha256': digest(document), 'producer_filename': f'positions/{producer_position}.json',
+        'scope': 'Literal direct outgoing graph edges and program.tensor.v1 input declarations only. '
+            'No transitive forwarding, code output shape, branch reachability, schema satisfiability '
+            'or runtime compatibility is inferred. Read referenced current files for full declarations.',
+        'notices': [], 'total_count': 0, 'included_count': 0, 'omitted_count': 0, 'complete': True,
+        'warning_is_not_a_veto': True, 'changes_validity': False,
+        'authored_value_changed_by_host': False, 'native_execution_performed': False}
+    if (type(producer_position) is not int or not 0 <= producer_position < len(nodes)
+            or not isinstance(nodes[producer_position], dict)):
+        summary['resolution'] = 'producer position is not a current literal mechanism'
+        return summary
+    producer = nodes[producer_position]
+    identity = producer.get('mechanism_id')
+    if not isinstance(identity, str):
+        summary['resolution'] = 'producer has no literal mechanism id; no edge owner inferred'
+        return summary
+    matches = [i for i, n in enumerate(nodes) if isinstance(n, dict) and n.get('mechanism_id') == identity]
+    if len(matches) != 1:
+        summary.update(resolution='ambiguous producer id; no edge owner selected',
+            producer_position_candidates=matches)
+        return summary
+    rows = []
+    for edge_index, edge in enumerate(edges):
+        if not isinstance(edge, dict) or edge.get('source_mechanism') != identity:
+            continue
+        if not all(isinstance(edge.get(k), str) for k in ('source_port', 'target_mechanism', 'target_port')):
+            continue
+        targets = [(i, n) for i, n in enumerate(nodes) if isinstance(n, dict)
+            and n.get('mechanism_id') == edge.get('target_mechanism')]
+        if len(targets) != 1:
+            # Invalid graph ownership belongs to existing technical checks.
+            # Do not pick an arbitrary same-id tensor node for an advisory.
+            continue
+        target_position, target = targets[0]
+        if target.get('implementation') != 'program.tensor.v1' or target.get('version', 1) != 1:
+            continue
+        parameters = target.get('parameters')
+        if not isinstance(parameters, dict):
+            continue
+        program, bindings = parameters.get('program'), parameters.get('input_bindings')
+        if not isinstance(program, dict) or not isinstance(bindings, dict):
+            continue
+        inputs = program.get('inputs')
+        inputs = inputs if isinstance(inputs, dict) else {}
+        bound = [{'tensor_input': key, 'literal_binding': clone(value),
+            'declared_shape_present': key in inputs,
+            **({'declared_shape': clone(inputs[key])} if key in inputs else {})}
+            for key, value in bindings.items() if isinstance(value, dict)
+                and value.get('port') == edge.get('target_port')]
+        outputs, target_inputs = producer.get('outputs'), target.get('inputs')
+        outputs = outputs if isinstance(outputs, list) else []
+        target_inputs = target_inputs if isinstance(target_inputs, list) else []
+        literal = {'connection': clone(edge), 'bound_tensor_inputs': bound,
+            'producer_output_ports': [clone(p) for p in outputs
+                if isinstance(p, dict) and p.get('port_id') == edge.get('source_port')],
+            'consumer_input_ports': [clone(p) for p in target_inputs
+                if isinstance(p, dict) and p.get('port_id') == edge.get('target_port')],
+            'consumer_configuration': {'input_bindings': clone(bindings),
+                'program_inputs': clone(program.get('inputs')),
+                'program_parameters': clone(program.get('parameters'))}}
+        # Large declarations remain retrievable, never partially rewritten.
+        row = {'connection_path': f'/connections/{edge_index}',
+            'consumer_filename': f'positions/{target_position}.json',
+            'consumer_parameters_path': '/parameters',
+            'declaration_sha256': digest(literal), 'declaration_included': True,
+            'declaration': literal,
+            'message': 'The connected tensor adapter reads exactly one incoming frame per binding at its '
+                'literal payload path and checks the declared tensor shape. Producer source edits do not '
+                'update this consumer. Any intended contract/configuration change must be explicitly authored. '
+                'This notice does not prove what the source emits or whether the graph will execute.'}
+        if len(json.dumps(row, ensure_ascii=False, allow_nan=False).encode()) > max_bytes // 2:
+            row.pop('declaration')
+            row.update(declaration_included=False,
+                omission='Whole declaration exceeds advisory byte budget; read consumer_filename and '
+                    'the exact current system/connections entry. No literal string or program was truncated.')
+        rows.append(row)
+    summary['total_count'] = len(rows)
+    for row in rows[:limit]:
+        tentative = {**summary, 'notices': [*summary['notices'], row]}
+        if len(json.dumps(tentative, ensure_ascii=False, allow_nan=False).encode()) > max_bytes - 256:
+            break
+        summary['notices'].append(row)
+    summary.update(included_count=len(summary['notices']),
+        omitted_count=len(rows) - len(summary['notices']), complete=len(rows) == len(summary['notices']))
+    if not summary['complete']:
+        summary['omission'] = 'Additional complete declarations omitted by advisory budget; inspect current graph connections.'
+    return summary

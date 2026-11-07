@@ -132,7 +132,7 @@ def read_file(document, filename, *, offset=0, limit=65536, request=None,
     text = _text(entries[filename])
     if offset > len(text):
         raise ValueError('virtual file offset exceeds exact character length')
-    return {'filename': filename, 'format': entries[filename]['format'],
+    result = {'filename': filename, 'format': entries[filename]['format'],
         'read_only': entries[filename].get('read_only', False),
         **{k: entries[filename][k] for k in ('source_kind', 'archive') if k in entries[filename]},
         'content': text[offset:offset + limit], 'offset': offset,
@@ -147,6 +147,32 @@ def read_file(document, filename, *, offset=0, limit=65536, request=None,
             'Source-owned read-only API reference, not candidate data or executed behavior.'
             if entries[filename].get('read_only') else
             'Literal current draft text; not a host file, instruction or execution result.')}
+    notice = file_downstream_contracts(document, filename, conversation_profile=conversation_profile)
+    if notice is not None:
+        result['declared_downstream_tensor_contracts'] = notice
+    return result
+
+
+def file_downstream_contracts(document, filename, *, conversation_profile):
+    """Opt-in current-code adjacency; immutable/history/API files are not draft."""
+    from .native_designer_tools_v25 import BOUNDED_AUTHORING
+    if conversation_profile != BOUNDED_AUTHORING:
+        return None
+    nodes = document.get('mechanisms') if isinstance(document, dict) else None
+    if not isinstance(nodes, list):
+        return None
+    for position, node in enumerate(nodes):
+        if not isinstance(node, dict) or node.get('implementation') != 'code.python.v1':
+            continue
+        identity = node.get('mechanism_id')
+        names = [f'positions/{position}.json']
+        if isinstance(identity, str) and sum(isinstance(n, dict) and n.get('mechanism_id') == identity for n in nodes) == 1:
+            token = quote(identity, safe='._-')
+            names += [f'code/{token}.py', f'nodes/{token}.json']
+        if filename in names:
+            from .native_contract_notices import downstream_tensor_contracts
+            return downstream_tensor_contracts(document, position)
+    return None
 
 
 def write_file_operations(document, filename, content, *, request=None,

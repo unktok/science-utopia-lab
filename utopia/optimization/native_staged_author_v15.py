@@ -698,6 +698,12 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
                         conversation_profile=conversation_profile, workflow_phase=workflow_phase)
                     resolved.update(tool=tool, virtual_filename=action['filename'],
                         authored_file_action_sha256=digest(action))
+                    if conversation_profile == BOUNDED_AUTHORING and isinstance(resolved.get('result'), dict):
+                        from .native_file_workspace_v35 import file_downstream_contracts
+                        notice = file_downstream_contracts(updated['document'], action['filename'],
+                            conversation_profile=conversation_profile)
+                        if notice is not None:
+                            resolved['result']['declared_downstream_tensor_contracts'] = notice
                     return updated, resolved
                 validation, _ = _validation(current, request, binding_sha256, provider_binding)
                 record['result'] = {'applied_operations': [], 'validation': validation,
@@ -735,7 +741,12 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
             resolved['authored_field_action_sha256'] = digest(action)
             return updated, resolved
         if tool in {'read_file', 'write_file'}:
-            pass  # Complete pure file result above; common receipt binding below.
+            if tool == 'write_file' and conversation_profile == BOUNDED_AUTHORING:
+                from .native_file_workspace_v35 import file_downstream_contracts
+                notice = file_downstream_contracts(current['document'], action['filename'],
+                    conversation_profile=conversation_profile)
+                if notice is not None:
+                    record['result']['declared_downstream_tensor_contracts'] = notice
         elif tool in {'inspect', 'splice'}:
             if 'path' not in action:
                 raise ValueError('inspect/splice requires explicit path; empty path reads root')
