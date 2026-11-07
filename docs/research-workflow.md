@@ -4,6 +4,17 @@ Software development and scientific evidence use related but different
 lifecycles. A passing feature test does not make a research result, and an
 interesting run does not retroactively define a valid protocol.
 
+Closed-study reports also retain compact author-step diagnostics from the
+original-source audit: terminal reason, each status, distinct step/transition
+error channels, virtual filenames and exact record hashes. A rejected compiled
+action may be null or malformed JSON; it is not a validated tool object. These
+diagnostics are evidence locators, not inferred causal labels, independent
+failed trials or scientific-merit criteria. An applied source write is not proof
+of executed behavior; a generic generation failure is not a sufficient diagnosis.
+Full raw wire messages and source replay remain in the input audit. Do not feed
+post-study diagnostics into a still-active campaign or manufacture a closed
+audit from a partial live snapshot.
+
 ## Before execution
 
 For model-authored searches, first pass the [finite real-backend interface
