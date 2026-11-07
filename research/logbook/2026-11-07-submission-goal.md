@@ -2982,3 +2982,69 @@ Offline document checks pass16 active documents/191 local targets/six original
 snapshots and git diff --check; the preserved through70 snapshot retains its
 recorded SHA256. These checks make no model/network/world calls and do not
 substitute for the two required closed original-source V2 audits.
+
+### First run02 G3 completions: an unchanged rejection path and first valid control
+
+The preceding turn closes G2 at110 with actual retained-parent and equal-loss
+unequal-behavior evidence, commit4ae2602. This turn repeatedly verifies actual
+writer46865 live and advancing researcher request journals. At21:45:16UTC
+progress112/120:58 complete,23 generation failures,31 execution failures;
+reference9/9,evaluation0. Progress file SHA256
+4f1ee111c5565d30648ceeded8793facbbbbb147feef766f91d059ec57d3965b.
+Neither new G3 completion improves its best-including-initial assigned value.
+
+Slot111 C code/graph G3 completes C2.1,A0/Q0/R21,seven rejected records,
+5 active researchers/resources640 and4 context deliveries. Its actual parent
+is G2; five sequential replacements change selection source only. The source
+is not byte-identical to G2, but on these two observed batches it still emits
+all-reject/final_score0 with exact3/4 real IDs, even at year2's original mean4/
+accept1 input. This is a measured tie, not a new graph/mechanism or demonstrated
+improvement. Different fingerprints are not automatically distinct observed
+institutional behaviors. The two programs differ in some input/error handling;
+do not assert general semantic equivalence or future trajectory identity.
+The unexercised dummy-ID empty-input branch remains unvalidated.
+
+Requestdcc02f3b69a65be4f3f721fa9cc8df16f80018d4b87a733fa670e28abe636be2;
+world native-adaptive-4de1107c3ce78cb95daaa952-s42;
+selection source SHA256ed5e095755657c0f6253d2b292a1eb709107e3e8d05134a47cae00e89e78b388;
+checkpoint SHA25645625e3f3d744d9abdf1140676780fc1110ec59d24a35b0e1403343286164e8d;
+code-context journal SHA256281ef05e11f8cce761e211edc5708534184c705de18b1dbc83f730eb51467a11;
+period1/2 result SHA2568dd59a35ac3f6a1a8a5f941ff022364e3968e2aba51f6ebd516d9d55131b4bfe /
+00521fac3e704540e95f85365b4c674a93f7e80e8c4888860f8717a81504178a;
+111-slot progress SHA256900e95601efac9140d7486553fc1851c7910c065cfe0355712820e9fe1eafab0.
+
+Slot112 T technical-only G3 first completes in this particular history after
+three execution nulls: T0,A0/Q0/R24,eight rejected records,5 active researchers/
+resources635 and4 context deliveries. It only ties the initial T0; no prior
+null is assigned a numerical loss. Other technical-only histories already have
+valid results, so do not call it the method's first-ever completion. The request
+parent is the fixed initial, not an adopted chain of earlier scientific results.
+Its scientific-loss information boundary remains the declared technical-only
+control; this completion is not feedback advantage or training of inventor weights.
+
+Only selection source changes, two replacements. Two matching receipts show
+direct scalar score/accept handling, exact3/5 real-ID coverage and explicit
+rejections for all-zero actual accept signals. Authored final_score values are
+the actual scalar scores, not the zero-label policy from111. This is observed
+correct handling on these batches, not a proof of all ranks/missing-input cases.
+The broad exception handler and missing/world-empty fallback are unexercised;
+catching an exception does not guarantee that its fallback satisfies the native
+contract. No host repair or hypothetical acceptance/loss is inferred.
+
+Request4268741b9314ba47143dd70e46d10fc9ea287dd53342ea4becadd33007334893;
+world native-adaptive-5518b3dff3c4113521626ab8-s42;
+selection source SHA25693e238f6c9d16343b9be5700c701a780cd39295569d48dbe3d6d2cfcbc7a627e;
+checkpoint SHA256bfe9df384c0d4e105a04eabbaed4cfecc8a2a9d17fa88d9e5bd7390f5c41cbb6;
+code-context journal SHA25659074cd615bdeae358b21c9166bafec5e5e0d93669ac7a1b350c90723aa0fe64;
+period1/2 result SHA256494e036c5917cca433cb4917b039c761f8f47bd8d407a64e17c08c9736ee8991 /
+ef7897a5ef1112d6722a5c83659563efc3da7063c5a1c62015b7e0690fab0a02.
+
+No active source/model/settings/loss/budget/selection or raw evidence change,
+hidden repair/refill, new resource or optional registry egress. Remaining8
+search slots, fixed selected-policy evaluation, two original-source audits and
+final analyses/manuscript/PDF/mock review remain required. The full goal stays
+active; the verified finite wait is not a blocker or a completed submission.
+
+Offline checks pass16 active documents/191 local targets/six original snapshots
+and git diff --check; the preserved through70 snapshot SHA256 is unchanged.
+These checks make no model/network/world calls and do not certify V2 closure.
