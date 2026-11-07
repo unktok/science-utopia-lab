@@ -27,10 +27,10 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At16:58UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At17:12UTC all9 fresh
 reference worlds are complete. Search has
-consumed63/120 slots:33 complete,12 generation failures,18 execution failures.
-These are all40 slots of run00 plus all20 run01 G0/G1 slots and three G2 slots, not
+consumed66/120 slots:34 complete,12 generation failures,20 execution failures.
+These are all40 slots of run00 plus all20 run01 G0/G1 slots and six G2 slots, not
 the full study or three environment replicates. Run01's new real-backend
 calibration passes; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
@@ -88,8 +88,13 @@ branch, not the list-score threshold branch. It ties strong controls. C
 code-and-graph G2 completes C2.4 with all3/5 real records rejected, again tying
 the initial loss. Its comment incorrectly omits existing review costs. Neither
 completion establishes a benefit of structural changes or causal feedback.
+T technical-only G2 changes thresholds/bias but still fails len() on a scalar
+score. C technical-only G2 executes its Python body, then fails required empty
+decisions output for three real submissions; an interpreter receipt is not a
+completed native world. Uniform T G2 completes T-7,A7/Q22/R21, again tying its
+history's best and the strong T reference.
 
-All12 uniform-numeric slots so far execute while all12 LLM-numeric slots fail
+All13 uniform-numeric slots so far execute while all12 LLM-numeric slots fail
 generation. Raw errors include out-of-domain edits and finite finish/checkpoint
 failures, not measured bad science losses. Other runtime failures include
 scalar score indexing, malformed envelopes and empty/missing real-ID decisions.

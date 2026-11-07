@@ -1679,3 +1679,22 @@ were freshly rendered at120dpi and inspected in that earlier build. This
 documentation correction is not a new render or a new scientific sample.
 Writer46865 remains live; observer84841 waits for70 slots or600s and does not
 change the campaign. All remaining study/analysis/manuscript requirements stay open.
+
+At17:11:58UTC search66/120:34 complete,12 generation failures,20 execution
+failures,reference9/9,evaluation0. Run01 uniform throughput G2 completes
+T-7,A7/Q22/R21,5 active researchers/resources620,6 institutional-context
+deliveries. Its history[-1,-7,-7] gains nothing beyond G1 and ties the strong
+all-accept T minimum. All13 uniform proposals so far execute; all12 LLM-numeric
+slots consumed so far have generation nulls. Unequal consumed partial counts
+are not a completed arm comparison or evidence of intrinsic domain superiority.
+
+This G2 replaces the six allowed numeric coordinates with thresholds
+0.5493975540799217/2.5441466675151307,bias1.2640154750981392,
+memory_cost0.07130119345670179,router threshold0.2723255151568288,count3.
+It does not change code, graph, schemas or process schedule.
+Requesta311a927c45583a03f1ff97a77333ecb69daefcf817cc550e98d4c835d1d198f;
+world native-adaptive-54d89dba3cd21ad1742e618c-s42;
+checkpoint SHA25656fb9b27594d99dddcabc04d42e9102894b81e3abcb98f46a98bf0cf5b6a8465;
+progress SHA256d050c13a83f0c76246f676e625146f9c1f9579c02e99cf737e600c9110f38360.
+The writer continues unchanged to selective uniform G2. This is another finite
+observed forward, not a new independent environment seed or a feedback gain.
