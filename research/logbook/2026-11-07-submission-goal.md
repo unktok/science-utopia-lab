@@ -3466,3 +3466,36 @@ and portable checkpoint years0–4. Do not interpret it as a sixth independent
 seed. The actual writer46865 remains live with no ended record. A sandboxed ps
 inspection is denied; no permission bypass is used, and live-handle evidence
 does not depend on that command. The finite experiment continues unchanged.
+
+### Local paper-only rebuild subset implementation, separate from final release
+
+The previous turn makes concrete progress: versioned audit-order repair,
+74 passing QA checks and two exact real component outputs are integrated as
+main68ab582. Actual writer46865 is re-polled live, not inferred from progress.
+At23:17UTC evaluation7/90 has normal complete observations, job0007 is started,
+writer.ended.json absent. No experiment source/settings/selection/budget change.
+
+While the finite evaluation runs, branch research/paper-rebuild-bundle-v1 prepares
+a12-path explicit working-paper source/PDF subset. It stages exact existing
+bytes with build-receipt/Git checks, verifies literal TeX dependencies, excludes
+raw/model/operator/Git/game materials, preserves LICENSE/template credits,
+refuses symlinks/tampered/extra/missing dependencies and existing destinations,
+and detects input mutation. A narrow home-path finding is reported, not scrubbed.
+Its manifest/README explicitly deny anonymous/release/clean-machine/numerical
+reproduction claims. Current results must not be treated as final V2 outcomes.
+
+22 offline staging tests pass in0.06s, receipt
+outputs/publication-benchmark-v2-verification/paper-bundle-unit-first.xml.
+They use dummy document bytes, no PDF creation, inference or model calls.
+Committed-source real staging, offline TeX rebuild and full-page visual review
+remain to be executed; implementation tests alone do not prove the actual bundle.
+
+An ordinary public-primary-source check observes the same2020 Rémi Louf line
+in https://github.com/Ahren09/ScienceUtopia/blob/main/LICENSE and its raw main
+file. This establishes that the unusual line is also in the currently visible
+upstream, not its ownership/coverage or an exact pinned historical blob. Retain
+the local license unchanged. The current thenlper/gte-small card declares MIT;
+the pinned README and SciEvo pinned/current blob requests fail in the browser.
+No upstream revision, layer-hash egress approval, weights or blanket underlying
+paper redistribution permission is inferred. Earlier failed accesses remain
+failed, not replaced by current-card metadata or a guessed provenance recipe.

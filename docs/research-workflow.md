@@ -341,3 +341,9 @@ upstream attribution/asset boundaries and remaining model/data/anonymous-package
 checks. Those observations are not blanket publication permission or a completed
 secret scan. Prepare a separate explicit allowlist after final results; do not
 anonymize immutable historical evidence in place or distribute the entire checkout.
+
+A [paper-only rebuild subset](paper-rebuild-bundle.md) now has an explicit
+12-path allowlist and byte-preserving staging tool. It excludes raw/model/
+operator/Git materials and is deliberately not an anonymous/release-cleared
+package or numerical reproduction. Actual staging/TeX/page checks must be
+recorded separately; repeat them after the final-results manuscript changes.

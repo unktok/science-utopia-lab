@@ -1,0 +1,21 @@
+{
+  "schema": "scienceutopia.paper-rebuild-allowlist.v1",
+  "status": "local-working-draft-not-anonymous-not-release-cleared",
+  "scope": "PDF-source rebuild only; not numerical analysis, original-source audit or fresh inference reproduction",
+  "receipt": "paper/submission-build-v2.json",
+  "entrypoint": "paper/submission.tex",
+  "files": [
+    "LICENSE",
+    "output/pdf/science-utopia-lab-objective-design-draft.pdf",
+    "paper/figures/feedback-comparison-v1-a1-r2/search-paths.png",
+    "paper/figures/native-controls-v2-a1-print/strong-controls.png",
+    "paper/figures/program-concept/science-system-design-program.pdf",
+    "paper/generated/feedback-comparison-v1/results.tex",
+    "paper/neurips_2025.sty",
+    "paper/references.bib",
+    "paper/submission-build-v2.json",
+    "paper/submission-results.tex",
+    "paper/submission-sources.bib",
+    "paper/submission.tex"
+  ]
+}
