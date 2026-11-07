@@ -66,3 +66,58 @@ def test_non42_controller_seed_new_loss_and_successful_native_physical_audit(
     assert (row['observation']['status']=='failed')==missing_assigned_loss
     with pytest.raises(ValueError,match='seed binding'):
         audit.audit_native_campaign(tmp_path,**{**kwargs,'expected_controller_seed':42})
+
+
+@pytest.mark.parametrize('years',[2,4])
+def test_evaluation_physical_audit_reads_real_native_checkpoints_at_declared_seed(
+        tmp_path,monkeypatch,fixed_corpus,years):
+    # Synthetic corpus and scientist HTTP, but actual Simulation, response
+    # journal, native serialization, annual lineage and physical audit helpers.
+    from scripts.native_benchmark_physical import physical_proof
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    from utopia.models.response_cache import CompletedResponseCache
+    from utopia.optimization.native_factory import record_native_http
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.optimization.blackbox import Suggestion
+    from utopia.system.native_kernel import NativeScienceKernel
+    system=legacy_world_system(seed=31001)
+    world={'model':'SCRIPTED-model','model_digest':'SCRIPTED-digest','corpus_sha256':'SCRIPTED-corpus',
+        'source_commit':'a'*40,'runtime_seed_binding':{'python_hash_seed_environment':'42'},
+        'experiment':{'role':'SCRIPTED-common-world'}}
+    config={'source_commit':world['source_commit'],'years':years,'corpus_years':4,
+        'runtime_seed_binding':world['runtime_seed_binding'],'experiment':world['experiment'],
+        'population':{'institutions':5,'per_institution':1,'strategy':'balanced'},
+        'thinking_override':False,'max_tokens':768,'maximum_http_attempts':512 if years==2 else 1024,
+        'lab_inference_serialized':True}
+    for key,value in dict(seed=31001,cell=system.fingerprint,model=world['model'],
+            model_revision=world['model_digest'],corpus_sha256=world['corpus_sha256'],science_config=config).items():
+        monkeypatch.setitem(fixture.BINDING,key,value)
+    def initialize(sim):
+        fixture.SmallRealSimulation.initialize_agents(sim)
+        sim.ecosystem.add_agent(fixture.UniversityResearcher('researcher-4','university-4',
+            funding_level=1000,expertise=[fixture.DIRECTION],llm=sim.llm))
+        sim._record_initial_university_count()
+    class Five(fixture.SmallRealSimulation):
+        initialize_agents=initialize
+    def factory(candidate,seed,run_id):
+        cell=tmp_path/'worlds'/run_id;model=fixture.FakeHTTPModel(cell,[])
+        old=model.response_cache.path;model.response_cache.close();old.unlink()
+        model.response_cache=CompletedResponseCache(cell/'replies/responses.sqlite',binding=fixture.BINDING)
+        model.run_seed=seed;model.enable_thinking=False;model.max_tokens_override=768
+        sim=Five(cell,model);sim.num_years=years;sim.args.seed=seed;sim.args.expected_founders=5
+        sim.rag.document_identity=world['corpus_sha256']
+        sim.native_system=NativeScienceKernel(candidate)
+        sim.enable_portable_checkpoints(fixture.BINDING)
+        record_native_http(model,sim,cell/'wire-requests.jsonl')
+        write_json_atomic(cell/'system.json',candidate.to_dict(),sort_keys=True,allow_nan=False)
+        return sim
+    o=evaluate_native_suggestion(Suggestion('SCRIPTED-eval',system.to_dict(),0,'SCRIPTED-QA'),
+        seeds=[31001],simulation_factory=factory,loss_spec=objective_specs()['throughput'])
+    assert o.status=='complete',o.metadata
+    before=audit._inventory(tmp_path)
+    result=physical_proof(tmp_path/'worlds'/'SCRIPTED-eval-s31001',system,world=world,
+        seed=31001,years=years,evidence=o.metadata['runs'][0])
+    assert result['measurement']==o.metadata['measurements'][0]
+    assert result['status']=='complete' and len(result['annual_checkpoints'])==years
+    assert result['response_proof']['wire_requests']>0
+    assert before==audit._inventory(tmp_path)
