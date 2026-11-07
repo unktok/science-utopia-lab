@@ -17,9 +17,12 @@ is implemented and tested offline. It starts no model/world and establishes no
 new improvement, matched-method result or submission readiness.
 
 The [feedback comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md)
-is now implemented and prepared at frozen source2e375c2. Real local-designer
-calibration started around05:05UTC; no new scientific world has started at this
-snapshot. It declares eight proposal slots plus one shared baseline, no refill.
+is now running at frozen source2e375c2, from05:08:38UTC. All28 real local-designer
+technical controls and cold replay pass;26/28 exact-copy matches remain a
+diagnostic, not a dispatch veto under execution-readiness-v39. The shared
+baseline started in the original researcher world. It declares eight proposal
+slots plus one shared baseline, no refill; no new candidate result is claimed
+at this snapshot.
 The [software receipt](results/feedback-comparison-v1-verification.json) separates
 the2619/3 broad check at2494e63 from the114 later targeted checks at2e375c2.
 These are software verification, not experimental improvement or a guarantee

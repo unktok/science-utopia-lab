@@ -102,3 +102,16 @@ package or corpus download. Its raw plan, action receipts and outputs reside at
 main `outputs/native-feedback-comparison-v1-a1/`. Real execution-readiness
 calibration starts about05:05UTC. No scientific world has started at this
 snapshot. No new paid/external service or automatic certificate retry.
+
+Calibration completes05:07:32UTC with28/28 technical controls passing and26/28
+exact-copy matches. Exact-copy equality remains diagnostic under the user's
+execution-readiness-v39 authorization; no received values or old certificate
+are rewritten. Explicit cold replay succeeds with certificate content
+`25bd23d2fd7c2e6096cf3d1138aeef5fee2b6241871d33f4e43d794c6cb40e03`,
+runtime binding`1467cb30726c3f0342ea3d1a793dfd5a37ce16c93b43e2dcfb15548968ae4500`,
+backend0.33.3 and the declared35B model digest. This is interface evidence,
+not free-design reliability or a scientific result.
+
+The finite run starts05:08:38.465743UTC, PID46042, original source2e375c2.
+The shared baseline is executing the original fixed8B researcher phases.
+Actual per-slot outcomes and independent audit are still pending at this entry.
