@@ -4,6 +4,8 @@ Working claim outline,2026-11-07. This is not a submitted or accepted paper.
 The [research plan](../research/publication/plan.md) controls required evidence.
 The existing long main.tex remains a historical working draft until rewritten;
 its NeurIPS2025 style is not a claim of compliance with a future venue.
+The new [short submission draft](submission.tex) implements this structure;
+its pending empirical section is filled only after original-source audit.
 
 ## Narrative
 

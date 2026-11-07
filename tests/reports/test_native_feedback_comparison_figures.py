@@ -18,11 +18,14 @@ def test_render_nulls_and_ties_without_modifying_input_or_overwriting(tmp_path):
     before=source.read_bytes()
     result=render(source,tmp_path/'SCRIPTED-figures')
     assert source.read_bytes()==before
-    assert set(result['files'])=={'feedback-comparison.png','feedback-comparison.svg'}
+    assert set(result['files'])=={'feedback-comparison.png','feedback-comparison.svg',
+        'search-paths.png','search-paths.svg'}
     assert result['nulls_imputed'] is False and result['independent_objective_color_scales']
     assert result['new_model_calls']==result['new_worlds']==0
     svg=(tmp_path/'SCRIPTED-figures/feedback-comparison.svg').read_text()
     assert 'G0: null' in svg and 'Shared baseline' in svg
+    paper=(tmp_path/'SCRIPTED-figures/search-paths.svg').read_text()
+    assert 'G0: null' in paper and 'Control' in paper and 'Adaptive' in paper
     with pytest.raises(ValueError,match='fresh'):
         render(source,tmp_path/'SCRIPTED-figures')
     value['arms']['throughput-loss']['best_so_far']=[-999.,-999.]
