@@ -138,6 +138,8 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
             'No model or observed data becomes a SYSTEM instruction.'}
     if 'feedback_policy' in request:
         view['proposal_feedback_policy'] = clone(request['feedback_policy'])
+    if 'design_space' in request:
+        view['declared_benchmark_design_space'] = clone(request['design_space'])
     result = compact(view)
     # Never repeatedly cut bodies until a request happens to fit. A large
     # current graph uses the declared on-demand path; remaining oversize is a
