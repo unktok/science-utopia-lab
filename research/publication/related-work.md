@@ -6,6 +6,9 @@ below; full-text comparison is still required before submission claims.
 The subsequent [targeted method-section comparison](method-section-comparison.md)
 adds primary-text reading of AMD-LLM, SGA and ScienceUtopia, without claiming an
 exhaustive review.
+Its follow-up also inspects the method sections of SocialSystemArena and
+PolicySim, previously recorded only as abstract-level leads. The exact scope
+and implications are retained there; neither is a verified reproduction.
 
 | Source | Relevant prior contribution | Consequence for this project |
 | --- | --- | --- |

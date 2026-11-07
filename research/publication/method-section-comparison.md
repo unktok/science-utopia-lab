@@ -37,11 +37,25 @@ The first three method patterns above are prior work we build on. Avoid claiming
 “first automatic mechanism invention”, “first LLM+gradient optimization”, or
 “optimized real science” on the basis of our implementation or this small pilot.
 
-## Additional near-neighbor leads (abstract scope only)
+## Follow-up on the two abstract-only leads
 
-The abstracts of [When Agents Evolve, Institutions Follow](https://arxiv.org/abs/2604.27691)
-and [PolicySim](https://arxiv.org/abs/2603.19649) were checked on2026-11-07.
-The former studies executable multi-agent institution architectures; the latter
-studies feedback-driven intervention search with adapted user simulators.
-Full methods have not yet been compared here. Do not infer automatic institution
-invention from the former's title, or claim priority over either from this note.
+The earlier pass checked abstracts only. On2026-11-07, the following targeted
+primary-text reading extends that scope, without claiming an exhaustive review,
+independent reproduction or repository inspection.
+
+| Source and newly inspected sections | What the method actually does | Consequence for our claims |
+| --- | --- | --- |
+| [When Agents Evolve, Institutions Follow v1 §3.1–3.4,4.1,4.5–5](https://arxiv.org/html/2604.27691v1#S3) | SocialSystemArena represents governance as patterns, roles, stages, transitions and features. It compares seven historically grounded specifications and a single-agent reference; dynamic meta-governance is future work | Executable institution topology and conditional rankings are prior art. Distinguish searching authored scientific-system programs from comparing a specified catalogue; that distinction alone does not establish scientific significance or empirical advantage |
+| [PolicySim v1 §2.2,3.1](https://arxiv.org/html/2603.19649v1#S3), with the §2.1.6 training excerpt | A contextual bandit selects sampled user–post or user–exposure-probability actions using network context and simulation rewards. Neural exploitation/exploration predictors are updated by gradient descent; the user simulator is adapted with SFT/DPO | Simulation-feedback social-policy optimization is prior art, not our invention. Contrast the editable program/process domain with these declared actions. Predictor gradients are not evidence of differentiation through the whole social simulation |
+
+These are scoped distinctions, not a priority result. The first paper must
+still explain what the matched scientific-world experiment teaches beyond
+existing institution comparison and feedback-driven intervention search.
+Our local scientist weights are fixed, but their behavior adapts to institutional
+inputs; do not contrast fixed weights with supposedly fixed behavior. No claim
+of greater generality or superiority follows from these method readings.
+
+This follow-up changes neither the running V2 study nor its selected objectives,
+designer information, budgets or failure records. Incorporate these near
+neighbors in the next substantive manuscript revision; do not silently change
+a bibliography bound to an already reviewed PDF without rebuilding its receipt.
