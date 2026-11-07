@@ -27,12 +27,15 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
-diagnostic. At12:06UTC all9 fresh reference worlds are complete. Search has
-consumed20/120 slots:13 complete,4 parameter-arm generation failures (out-of-domain
+diagnostic. At12:15UTC all9 fresh reference worlds are complete. Search has
+consumed21/120 slots:14 complete,4 parameter-arm generation failures (out-of-domain
 drafts), and3 execution failures (missing paper decisions and two bare-world
-payloads instead of message envelopes). These are all G0/G1 slots in run00,
-not the full study or three environment replicates. G2 throughput fixed-graph
-authoring is now in flight; selected-policy evaluation remains0.
+payloads instead of message envelopes). These are all G0/G1 slots and the first
+G2 slot in run00, not the full study or three environment replicates. G2
+throughput fixed-graph completes at-7, tied with G0, following its null G1.
+Its declared parent is the measured best G0, not the failed G1: do not infer
+learned error repair or feedback-driven loss gain from recovery alone.
+Remaining G2 authoring continues; selected-policy evaluation remains0.
 
 All four measured code G1 slots tie their own G0; two others fail execution.
 Uniform numeric G1 throughput records0, worse than G0's-7; selective records

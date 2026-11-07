@@ -491,3 +491,23 @@ study and its strong-reference comparison intact rather than redesigning it to
 force a positive result. G2 throughput fixed-graph authoring has started.
 Shorten the live STATUS narrative into this milestone summary; all earlier
 case-level hashes, observations and failed diagnostics remain above and in Git.
+
+Continuation12:08–12:15UTC verifies live session46865 throughout the waits.
+At12:15:14UTC throughput fixed-graph G2 completes at T-7, A7/Q22.333333333333336/
+R21, tied with its G0. Totals:21/120 slots,14 complete,4 generation failures,
+3 execution failures,9/9 references,0 selected-policy evaluations. Progress hash
+6a1a4a79d88d88cd21944e5ac6815973979afc0575fb6316a62a2dd1687879ef.
+Its G1 failure is not repaired or replaced. G2's new literal code emits real
+paper identities, accepts every record, uses final_score1.0 and returns the
+world inside the required payload envelope. Measured Q still comes from real
+reviews. Do not infer improved scientific quality from the authored score.
+
+The recorded based_on_observation_id is
+observation-native-adaptive-792e2cd8c893cdaf9d2b7340, exactly G0's observation.
+Thus this observed valid proposal after a failure is not evidence that the
+designer learned a repair from its failed parent: the loss-selected parent is
+the already valid G0. A user update initially called the new execution an
+independent trial; clarify that it is a different candidate in the same adaptive
+history, not an independent statistical sample. Later held-out worlds still
+follow the predeclared selection-before-evaluation boundary. No source, budget,
+model or protocol changes; keep the submission goal active pending the full study.
