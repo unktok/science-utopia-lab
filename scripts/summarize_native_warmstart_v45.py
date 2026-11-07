@@ -93,6 +93,7 @@ def _arm(run, comparison):
             error = step.get('error')
             steps.append({'step': step.get('step', index), 'status': step['status'],
                 'tool': transition.get('tool'), 'error': clone(error),
+                'errors': _errors(step.get('errors', [])),
                 'transition_errors': _errors(transition.get('errors', []))})
         generations.append({'request_sha256': proof['request_sha256'],
             'definition_sha256': proof['definition_sha256'],

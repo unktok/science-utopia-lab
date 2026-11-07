@@ -130,6 +130,19 @@ def test_generation_failure_has_no_candidate_and_is_not_historical_retention(tmp
     assert failed['generation_error']['type'] == 'TestGenerationFailure'
 
 
+def test_parse_transport_error_lists_are_not_silently_dropped(tmp_path):
+    report = fixture()
+    step = report['runs']['efficiency']['designer']['proofs'][0]['completed_records'][0]
+    step.update(status='invalid-response', transition=None,
+        errors=[{'type': 'ValueError', 'message': 'SCRIPTED JSON function arguments malformed',
+                 'diagnostics': {'raw_body_preserved_in_full_audit': True}}])
+    result = summary.summarize_saved_audit(save(tmp_path, hashed(report)), expected_source=SOURCE)
+    recorded = result['arms']['efficiency']['authoring_generations'][0]['steps'][0]
+    assert recorded['status'] == 'invalid-response' and recorded['error'] is None
+    assert recorded['errors'][0]['message'] == 'SCRIPTED JSON function arguments malformed'
+    assert recorded['errors'][0]['error_sha256'] == digest(step['errors'][0])
+
+
 def test_safe_fresh_output_outside_raw_and_full_audit(tmp_path):
     path = save(tmp_path)
     raw = tmp_path / 'raw'
