@@ -27,12 +27,12 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At14:53UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At15:01UTC all9 fresh
 reference worlds are complete. Search has
-consumed41/120 slots:24 complete,9 generation failures,8 execution failures.
-These are all40 slots of run00 plus run01's selective numeric G0 failure, not
+consumed43/120 slots:24 complete,9 generation failures,10 execution failures.
+These are all40 slots of run00 plus three run01 G0 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its throughput fixed-graph code G0 is executing; selected-policy
+calibration passes and its throughput code-and-graph G0 is being authored; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Uniform numeric
@@ -47,6 +47,10 @@ G3 throughput tries source edits outside the numeric domain; selective proposes
 thresholds1000000 (upper bound5) and bias1000 (upper bound4), and also attempts
 source edits. Both exhaust16 author actions without a valid explicit finish.
 These are design-compliance failures, not measured poor scientific losses.
+Run01's fixed-graph T/C G0 proposals fail respectively on scalar score indexing
+and an empty required decisions output. The latter emits no decision for three
+real submissions; rejecting all with explicit IDs remains legal. No scientific
+loss is imputed and no host repair changes either proposal.
 
 The [chronological log](logbook/2026-11-07-submission-goal.md) retains the
 G0/G1/G2 table, every earlier snapshot and source/receipt/wire/checkpoint hashes.

@@ -992,3 +992,48 @@ records; it is not a new native-world audit or empirical validation. JUnit
 paper-related-work-v2.xml SHA256
 27bf3287fdd4e20df4e53061bdcc0965e6dfc3bff1de05b0a5a2a653fd680f3d.
 Writer46865 is polled live again after QA. No experiment restart or source edit.
+
+Continuation14:56–15:02UTC (Nov8 JST): prior turn makes concrete manuscript
+progress, with all-page PDF QA, not an experiment completion claim. Same live
+writer46865 is confirmed at14:56 and during finite observer3880, which finishes
+normally on the next new slot. At14:56:24, search42/120,24 complete,9 generation
+failures,9 execution failures,evaluation0; progress SHA256
+09a81e143ce071b93414d17b972c0245dadabc7a88cea6e2a5414a186dcbcc5c.
+Run01 throughput fixed-graph G0 fails at generated line16:
+scores_values[i][0] indexes a float, consistent with the recorded TypeError.
+The source's length guard does not establish that each value is subscriptable.
+The loss remains null. This is not a measured throughput decline.
+World native-adaptive-86a6c5e71287a6743928a164-s42;
+request6968308638b2cec9b282b633e8ed13264759268a70157e3f67a47d896e9d08cd;
+candidate selection source SHA256
+747a55cdd61547797214c1c0792df105fbd536cb7d8c9e9d145b0847835284fa;
+code-context journal SHA256
+4f43abd3fb9f8e9a075259e948169fac6e3a59b3ffc8aa7705338821ccbf4f97.
+That journal contains three preceding successful code receipts, not a successful
+receipt for the failed selection. Do not relabel the feature extractor receipt
+as a recorded successful selection or claim full failure-input replay here.
+
+At15:01:18 search43/120,24 complete,9 generation failures,10 execution
+failures,evaluation0. Run01 selective fixed-graph G0 returns decisions=[];
+the native graph reports that world.selection emitted no required decisions.
+Its literal-source-matching execution receipt at period1 contains three real
+score records with values[3,3,3], but zero emitted decision records. This is
+different from returning explicit rejects for those IDs or an empty_cycle marker
+when there truly are no submissions. Reject-all is not normatively vetoed;
+the generated institution failed the predeclared output-cardinality/identity
+contract. Do not host-fill rejects, invent a counterfactual C loss, refill the
+slot or change the active ABI.
+World native-adaptive-275ec5dec57206d2ade89de0-s42;
+request5b89d7c0ccb9267d84f3fb94e1289cb2cf8ccc456a5be2200f52e32143be3964;
+candidate selection source SHA256
+735139d6d3169ff360cb85b20af1c7c41aca52405364bc685c55f614e4f4e2a9;
+source-matching code-context journal SHA256
+b34e1cf73eb584fd01812824e407d5bb0ad3e6b8041aca3eeeea8b07856b6369.
+At15:02:56 the43-slot progress file SHA256 is
+fca40a960a0bc968b4fd477e153c453eb5abb79fe1c914c19e9f8c31784e6c9a;
+run01 throughput code-and-graph G0 is being authored.
+All40 run00 plus these three run01 slots are a live partial record, not closed
+original-source evidence or a method/expressivity conclusion. Full study,
+selection-fixed unused-condition evaluation, two audits, analysis and final
+submission assessment remain required. Source b6654ad is unchanged, and the
+optional external model-fingerprint query remains held pending explicit consent.
