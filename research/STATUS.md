@@ -27,18 +27,18 @@ The **design-freedom V2 writer is running**: PID72837, started09:02:10UTC,
 at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00 and run01 each pass28 fresh real designer controls and cold replay;
-each has26 exact copies, which remain diagnostic. At15:01UTC all9 fresh
+each has26 exact copies, which remain diagnostic. At15:11UTC all9 fresh
 reference worlds are complete. Search has
-consumed43/120 slots:24 complete,9 generation failures,10 execution failures.
-These are all40 slots of run00 plus three run01 G0 slots, not
+consumed45/120 slots:24 complete,9 generation failures,12 execution failures.
+These are all40 slots of run00 plus five run01 G0 slots, not
 the full study or three environment replicates. Run01's new real-backend
-calibration passes and its throughput code-and-graph G0 is being authored; selected-policy
+calibration passes and its throughput technical-only G0 is being authored; selected-policy
 evaluation remains0. The writer session is live and the frozen checkout is clean.
 
 Run00's G1–G3 do not improve any arm's best-including-initial value. Uniform numeric
 throughput records-7/0/-7/0; selective records8.1/2.4000000000000004/8.1/2.4000000000000004. These
-lower/higher random proposals are not learning evidence. All eight uniform numeric
-slots execute, while all eight LLM numeric slots fail generation. The two G2
+lower/higher random proposals are not learning evidence. In run00 all eight
+uniform numeric slots execute, while all eight LLM numeric slots fail generation. The two G2
 failures reject out-of-domain finishes within16 actions; all32 actual posted
 frames retain the exact declared domain, with stop completion signals. This
 does not remove possible presentation/compliance confounding or demonstrate
@@ -51,6 +51,10 @@ Run01's fixed-graph T/C G0 proposals fail respectively on scalar score indexing
 and an empty required decisions output. The latter emits no decision for three
 real submissions; rejecting all with explicit IDs remains legal. No scientific
 loss is imputed and no host repair changes either proposal.
+Run01's code-and-graph T/C G0 proposals also fail: scalar score indexing and a
+bare world payload respectively. Both change only selection source, not nodes,
+wiring or schedules. Available structural freedom is not demonstrated structural
+invention. No run01 proposal has a measured loss at this five-slot snapshot.
 
 The [chronological log](logbook/2026-11-07-submission-goal.md) retains the
 G0/G1/G2 table, every earlier snapshot and source/receipt/wire/checkpoint hashes.

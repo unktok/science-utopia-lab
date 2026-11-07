@@ -1037,3 +1037,53 @@ original-source evidence or a method/expressivity conclusion. Full study,
 selection-fixed unused-condition evaluation, two audits, analysis and final
 submission assessment remain required. Source b6654ad is unchanged, and the
 optional external model-fingerprint query remains held pending explicit consent.
+
+Continuation15:04–15:13UTC: previous turn makes concrete progress by verifying
+two new runtime-failure mechanisms and preserving their sources/receipt scope.
+Same writer46865 remains live; finite observers3887/3889 finish normally at
+new slots, not by restarting the experiment. At15:05:49 search44/120,24 complete,
+9 generation failures,11 execution failures,evaluation0. Run01 throughput
+code-and-graph G0 fails on scores['values'][i][0], a float index at generated
+line6. World native-adaptive-bcf5530fa12ef42898aebf29-s42;
+requestcbee0076cf54c5e6c70728b06d83c91e554b0cb820f0f5ab5fec4962303555ca;
+selection source SHA256
+602ecd681919a9d7ec6c676abc0113eaca913490325d00427b0cbfa9463a4e04.
+Compare its submitted system with its request parent: both have19 mechanisms;
+connections, schedules, agent/artifact types and initial state are identical.
+Only world.selection changes. This is not an invented graph/process or a
+measured throughput result merely because the arm allows structural changes.
+
+At15:11:22 search45/120,24 complete,9 generation failures,12 execution
+failures,evaluation0. Run01 selective code-and-graph G0 fails output validation:
+world returns the bare observation payload rather than {'payload': object}.
+World native-adaptive-c0b4dbaccb4e8add7d00afe0-s42;
+request7cb2f680a969bd50b6caa1296c270ee122cfea97581a87c0be83d2ba360a10de;
+selection source SHA256
+e1a685dad6541929c725dff48b1c19c3931a6f2eaf52a203c904c096a15cf2d5.
+This source does generate explicit reject records for addressed papers, but
+the malformed world output prevents a complete measured trajectory. Do not
+host-wrap it, infer a counterfactual loss or treat this as a ban on rejection.
+It likewise changes only selection source; the19 nodes, wiring, schedules,
+types and initial state remain identical to its parent. Its comment about
+avoiding review costs does not implement a review-stage bypass. No review edge
+or process is removed, and the original review phase still precedes selection;
+do not implement that prose on the author's behalf or infer lower review cost.
+
+The first five run01 slots are respectively numeric generation failure, fixed
+code T/C execution failures, and code-and-graph T/C execution failures. No own
+scientific loss is measured in these five; they are not numerical poor losses
+or proof that a wider domain has lower intrinsic capacity. Fixed protocol and
+finite budgets continue unchanged to throughput technical-only G0. No extra
+inference, slot refill, scientific repair or full-study conclusion is introduced
+by this read-only inspection. Keep the submission goal active; all remaining
+search slots, independent evaluation, two source audits and final analysis are
+still required.
+
+At15:13:02 the45-slot progress file SHA256 is
+8cae0cb76e8b16d71a85229d62d2a40b32810b77f899286dbeba229682f00688.
+The T/C code-and-graph partial code-context journals each contain three
+preceding successful receipts, not a successful selection receipt. Their file
+SHA256 values are respectively
+1341bcf964e888e0424d3b3b0d1b934bbc280c42497cee9e5f7f16f70ea36890 and
+ae24e91e1381661e3be9372b4a6b41bf78281e2775c21a67ae3a2f43f5a2feca.
+Do not overstate this inspection as a replay of the unrecorded failed input.
