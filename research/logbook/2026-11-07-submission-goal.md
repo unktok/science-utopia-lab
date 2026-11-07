@@ -3585,3 +3585,16 @@ join to the manuscript outline, and distinguish own-objective pair figures
 from the common cross-score overview. These are narrative/analysis requirements,
 not objective changes or new scientific vetoes. Empirical conclusions still
 await the full evaluation and both closed audits.
+
+Commit9dc41a6dd21bf88b44b98a65013265516047c8f0 is clean for final preview/QA.
+The committed78-test batch passes again in19.55s. Final self-consistent synthetic
+preview has19 labels/two policies/12 jobs, not the real15-policy90-job study.
+Both PNGs are individually viewed: no label/gutter/legend/footnote collision
+is observed; initial T numeric is correctly marked and shares P01 with initial,
+other synthetic selected rows share P02. The watermark remains prominent.
+Final source SHA256d15c9f687aa2df3ae28b01d8da912921d2303bf8b6b48626af08e66b85a33fbf,
+preview manifest content8fc85f8b8ed4266282eb1233dba8e8ea8850c4e17898d4fc3047496a3c68a9ab.
+Compact QA receipt: research/results/native-design-cross-objective-qa-v1.json.
+Doc checker passes19 active documents/219 local targets/six original snapshots.
+No preview enters the empirical manuscript; actual full-audit V2 report/plots
+are still not available. Scientific conditions and finite evaluation stay fixed.

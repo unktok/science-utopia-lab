@@ -97,7 +97,8 @@ there are no completed V2 evaluation figures or actual closed V2 report yet.
 The [common T/C/E plotter](../scripts/figures/native_design_cross_objective.py)
 adds all19 selected/reference labels, raw seeds, explicit missingness/physical
 sharing and initial-selection marks alongside the existing own-objective paired
-plots. Its preview is SCRIPTED QA only. The [manuscript evidence map](../paper/submission-outline.md#claims-and-evidence-to-join-after-closure)
+plots. [78-test/render verification](results/native-design-cross-objective-qa-v1.json)
+is SCRIPTED QA only. The [manuscript evidence map](../paper/submission-outline.md#claims-and-evidence-to-join-after-closure)
 joins the final questions to required actual evidence, not new selection rules.
 [Reproduction and analysis workflow](../docs/research-workflow.md) separates
 tracked rebuilds, original-source audits and fresh inference.

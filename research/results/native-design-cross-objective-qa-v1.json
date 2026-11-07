@@ -1,0 +1,51 @@
+{
+  "schema": "scienceutopia.native-design-cross-objective-qa.v1",
+  "status": "SCRIPTED-renderer-verified-not-empirical-study-results",
+  "analysis_source_commit": "9dc41a6dd21bf88b44b98a65013265516047c8f0",
+  "plot_source_sha256": "d15c9f687aa2df3ae28b01d8da912921d2303bf8b6b48626af08e66b85a33fbf",
+  "qa": {
+    "receipt": "outputs/publication-benchmark-v2-verification/cross-objective-9dc41a6.xml",
+    "receipt_sha256": "82ef190641879f4ad2fb63dfb390da36bee8950fb42e7876de4e0a7d0538dfd0",
+    "passed": 78,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "cross-objective and prior paired/report synthetic tests plus documentation/current manuscript artifact checks; no fresh model calls or native world execution"
+  },
+  "preview": {
+    "directory": "outputs/publication-benchmark-v2-verification/cross-objective-v1-scripted-9dc41a6",
+    "classification": "SCRIPTED-projection-QA-only",
+    "manifest_file_sha256": "3fa05863e15f2c40373cc670799c51bb33498319a5d600f88e5a3f8efd1cbb35",
+    "manifest_content_sha256": "8fc85f8b8ed4266282eb1233dba8e8ea8850c4e17898d4fc3047496a3c68a9ab",
+    "plot_data_content_sha256": "b13fd0252de60b5418902d027fc781c7b0bf44392d1eb5f26c658719ddac02b2",
+    "logical_labels": 19,
+    "synthetic_physical_policies": 2,
+    "synthetic_physical_jobs": 12,
+    "two_year_seeds": [31001,31013,31019,31033,31039],
+    "separate_four_year_diagnostic_seed": 31001,
+    "losses": ["throughput","selective","efficiency"],
+    "rendered_formats": ["png","svg"],
+    "both_pngs_individually_visually_inspected": true,
+    "SCRIPTED_watermark_present": true,
+    "initial_selection_mark_and_actual_shared_policy_consistent": true,
+    "files": {
+      "cross-objective-2y.png": "5986fa1db1e8f4eb078e10bde60335c570ad5f3b797b0d74723412adb71f2847",
+      "cross-objective-2y.svg": "a9c6bc1d12a3ea01bd5fdf52bbb6c0b9986f72cc1b5b18df2480955deb919c25",
+      "cross-objective-4y.png": "a1a1da683a7ade82ddf3d0fdc781da19199db2e5b0ee561cc020d9e5a4c2e4ce",
+      "cross-objective-4y.svg": "5397aeae7932a9c5b027b4617e713516e362b00629ae61ef1896eeb80105dfe0",
+      "plot-data.json": "84bdb3bdb8d9e95d79978631b7d9fb197c71b6a37d1db2c6010df298c013f32c"
+    }
+  },
+  "interpretation": {
+    "technical_missingness_imputed": false,
+    "loss_scales_normalized_or_combined": false,
+    "horizons_pooled": false,
+    "shared_labels_count_as_additional_replication": false,
+    "initial_selection_claimed_as_authored_invention": false,
+    "actual_graph_change_inferred_from_arm_label": false,
+    "complete_real_V2_audit_or_figures_claimed": false,
+    "method_superiority_or_scientific_benefit_claimed": false,
+    "new_model_calls": 0,
+    "new_generated_code_executions": 0
+  }
+}
