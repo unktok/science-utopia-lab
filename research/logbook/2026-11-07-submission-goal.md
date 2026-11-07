@@ -3048,3 +3048,45 @@ active; the verified finite wait is not a blocker or a completed submission.
 Offline checks pass16 active documents/191 local targets/six original snapshots
 and git diff --check; the preserved through70 snapshot SHA256 is unchanged.
 These checks make no model/network/world calls and do not certify V2 closure.
+
+### C technical-only G3 completes at113 without improving its initial value
+
+The preceding turn commits111/112's actual source/receipt evidence as bdfb1c8.
+This turn repeatedly confirms actual writer46865 live and advancing scientist
+request journals. At21:54:05UTC progress113/120:59 complete,23 generation
+failures,31 execution failures; reference9/9,evaluation0. Progress SHA256
+b9898031b6d0bbcf1e7faf73ec3684125163c879f3fa7f859ee1642d852ce530.
+
+Slot113 C technical-only G3 completes C2.4000000000000004,A0/Q0/R24,
+eight rejected records,5 active researchers/resources635 and4 context deliveries.
+It ties this history's G1 and common initial value; G0 was7.766666666666664 and
+G2 an execution null. No G3 best-including-initial gain or feedback advantage is
+inferred. Its parent is the fixed initial system, not an adopted G1 revision;
+the technical-only scientific-loss information boundary remains unchanged.
+
+Only selection source changes, two replacements. It explicitly rejects every
+addressed record while preserving supplied scalar scores. Two source-matching
+period1/2 receipts cover exact3/5 real identities, all actual accept signals0,
+and the emitted final_score values equal the supplied scalar values. This is a
+valid measured policy, not a failure to be removed or a hidden low-activity veto.
+Similar A/Q/R to another candidate does not prove identical raw trajectories or
+an isolated score-label effect; no counterfactual or new oracle call is run.
+The empty-cycle fallback is unexercised, so this forward is not an all-input proof.
+
+Request82c550d0cb4eaacd812c2a07c8887dfb085ed8180cc18164812f1fa6faacc892;
+world native-adaptive-8b0f7ef97a73d49fb67f465c-s42;
+selection source SHA2569bb1fde5bedd196eb80b7608a8d3529d359b8a0b4478ddfb18de2c0aba94991c;
+checkpoint SHA256f2ea2928ef869b88676100a23a4e6727675ed36b338aa7ef84dcd7e002024e84;
+code-context journal SHA256c5c0b7ea93020f595cd2c9565167b84cf74ced5ad3a242f19a8eada06a4f4b73;
+period1/2 result SHA2561a5ad765c13b3b7be0d05fb140cf5da6e5f710133e4840b071c8d0a21475651c /
+a4a0c804af76bfea759fae1572c503d8898578a6d8e6bf105a722a813853488c.
+
+No active source/model/settings/loss/budget/selection or raw evidence changes,
+hidden repairs/refills, new resources or optional registry egress. Remaining7
+search slots, fixed selected-policy evaluation, two original-source audits and
+final analyses/manuscript/PDF/mock review remain required. The full goal remains
+active; a verified finite inference wait is not a blocker or study closure.
+
+Offline document checks pass16 active documents/191 local targets/six original
+snapshots and git diff --check; the through70 snapshot retains its recorded
+SHA256. These checks make no model/network/world calls or V2 closure claim.
