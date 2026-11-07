@@ -16,6 +16,7 @@ Most unit tests require neither a GPU nor a running model server.
 git clone https://github.com/unktok/science-utopia-lab.git
 cd science-utopia-lab
 uv venv --python 3.11 --seed .venv
+.venv/bin/python -m pip --version  # verify at least26.2.2 before fetching packages
 uv pip install --python .venv/bin/python -r requirements-test.txt
 .venv/bin/python -m utopia --help
 ```
@@ -34,16 +35,20 @@ scripts/run_macos_ollama.sh
 Longitudinal runs are expensive. Do not start one to validate a routine code
 change. Use unit tests, a dry run, or a preregistered smoke campaign first.
 
-## Game UI
+## Current game UI and legacy viewer
 
-The current UI is buildless and reads a checked canonical replay payload:
+The current English Phaser/Vite interface is in `game-ui-v2/`. With its Node
+dependencies already installed, use a loopback-only development server:
 
 ```bash
-~/.local/bin/python3 -m http.server 8000 --directory game-ui
+cd game-ui-v2
+npm run dev -- --host 127.0.0.1
 ```
 
-Open <http://127.0.0.1:8000>. Regeneration and validation commands are in
-[`game-ui/README.md`](../game-ui/README.md).
+See the [current UI guide](../game-ui-v2/README.md) for exact evidence/export
+boundaries. This guide does not install Node dependencies or start a server.
+The earlier buildless viewer is retained in
+[`game-ui/`](../game-ui/README.md); it is not the latest Foundry interface.
 
 ## Worktrees
 

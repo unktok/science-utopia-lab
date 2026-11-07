@@ -1,5 +1,13 @@
 # Working paper
 
+Current direction: [claim-centered submission outline](submission-outline.md)
+and [research/publication plan](../research/publication/plan.md). The long
+`main.tex` below is a historical working draft, not synchronized with every
+later campaign and not submission-ready. Current results live in
+[research/STATUS](../research/STATUS.md); do not treat the older "latest" evidence
+descriptions below as a live status. No PDF or manuscript numbers are regenerated
+by repository housekeeping.
+
 This directory contains the source for the preliminary NeurIPS-style technical
 report. It is a working draft, not a conference submission or acceptance claim.
 The repository vendors the official `neurips_2025.sty` because the NeurIPS 2026

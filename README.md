@@ -15,6 +15,7 @@ not substitutes for scientific evidence.
 | --- | --- |
 | What are we trying to achieve? | [Research purpose](RESEARCH.md) |
 | What works, and what remains unproven? | [Current status](research/STATUS.md) |
+| What is the publication strategy and next research task? | [Research plan](research/publication/plan.md), [comparison contract](research/publication/benchmark-contract-v1.md) |
 | Where is the scientific record? | [Research index](research/INDEX.md) |
 | How is the repository organized? | [Repository map](docs/repository.md) |
 | How do I develop or contribute? | [Setup](docs/development.md), [contributing](CONTRIBUTING.md), [tests](docs/testing.md) |

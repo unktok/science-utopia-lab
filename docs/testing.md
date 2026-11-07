@@ -7,6 +7,8 @@ Run the portable documentation check without models, network or installation:
 ```bash
 .venv/bin/python scripts/check_repository_docs.py
 .venv/bin/python -m pytest tests/reports/test_repository_docs.py -q
+.venv/bin/python -m pytest tests/reports/test_publication_evidence.py -q
+.venv/bin/python -m scripts.reports.publication_evidence
 ```
 
 Latest actual native-pilot verification is source-specific: frozen d49cf0b
@@ -14,6 +16,10 @@ passes1682/3 optional skips; later d806a43 passes75 focused integration checks.
 See [current status](../research/STATUS.md) and its linked verification records.
 These are separate scopes, not an additive test total or a certificate for a
 later source. Historical counts below remain unchanged.
+
+The evidence projection verifies the pinned V10/V12/V13/V45 report identities.
+It does not import a simulator, execute authored source, contact a model, or
+establish that different studies form a matched benchmark.
 
 ## Designer interface recurrence prevention — V16
 

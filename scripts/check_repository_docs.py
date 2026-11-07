@@ -14,7 +14,9 @@ MANIFEST = 'research/results/repository-docs-reset-v1.json'
 DOCUMENTS = ('README.md', 'RESEARCH.md', 'CONTRIBUTING.md', 'docs/README.md',
     'docs/repository.md', 'docs/development.md', 'docs/testing.md',
     'docs/research-workflow.md', 'research/INDEX.md', 'research/STATUS.md',
-    'research/roadmap.md', 'research/program-map.md')
+    'research/roadmap.md', 'research/program-map.md', 'research/publication/plan.md',
+    'research/publication/benchmark-contract-v1.md', 'research/publication/related-work.md',
+    'paper/submission-outline.md')
 # Inline code is a separate alternative so a literal `[x](y)` inside it is not
 # a link. A Markdown link whose label contains backticks still starts at '['.
 INLINE = re.compile(r'''(?P<code>`+[^`\n]*`+)|\[[^\]\n]*\]\((?:<(?P<angle>[^>]+)>|(?P<plain>[^\s)]+))(?:\s+["'][^\n]*?["'])?\)''')

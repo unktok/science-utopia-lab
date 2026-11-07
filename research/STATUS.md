@@ -9,6 +9,14 @@ The latest pilot V45 is **closed**. It ran03:24:10–03:41:12UTC on2026-11-07,
 for17m01.94s, using fixed Qwen3-8B researchers and the approved local35B designer.
 No background experiment is implied by this page.
 
+Repository entry points and the six original goals have now been reorganized,
+with six exact historical snapshots. The [publication research plan](publication/plan.md)
+and [comparison contract](publication/benchmark-contract-v1.md) identify the next
+matched studies. The [four-study evidence projection](results/publication-evidence-inventory-v1.json)
+is implemented and tested offline. It starts no model/world and establishes no
+new improvement, matched-method result or submission readiness. Next is the
+loss-feedback/no-feedback comparison implementation, including leakage checks.
+
 | Assigned objective | Historical starting best | Own new outcome |
 | --- | ---: | --- |
 | Efficiency `-Q+0.5R` | -11.833333333333336 | null: native tensor shape failure |

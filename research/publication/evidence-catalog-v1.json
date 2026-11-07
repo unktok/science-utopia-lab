@@ -1,0 +1,10 @@
+{
+  "schema": "scienceutopia.publication-evidence-catalog.v1",
+  "scope": "Four curated native studies; not an exhaustive audit of every project artifact",
+  "cases": [
+    {"id": "v10", "path": "research/results/native-method-paths-v10-a1.json", "schema": "scienceutopia.native-method-paths-audit.v10", "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a", "content_sha256": "b6e221170c36250d60a199c55d34e550f65c6e0d1a87bce18300d1b530aef5b6", "provenance_note": "Conditional numerical proposal comparison, not autonomous institution invention"},
+    {"id": "v12", "path": "research/results/native-objective-redesign-v12-a1.json", "schema": "scienceutopia.native-objective-redesign-independent-audit.v12", "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4", "content_sha256": "c03df804fe46f12f1efec7210f1dba1c624242a8645f9533b698748cc4dfcd5f", "provenance_note": "External self-reported Codex author; authorship not authenticated"},
+    {"id": "v13", "path": "research/results/native-nested-search-v13-a1.json", "schema": "scienceutopia.native-nested-search-independent-audit.v13", "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92", "content_sha256": "abb671726c48e797a0af28b3fff27b49c0b2fb6a79c3adcb0bd6bb7602bf34ba", "provenance_note": "External self-reported Codex author; conditional update and free redesign are separate stages"},
+    {"id": "v45", "path": "research/results/native-warmstart-v45-a1.json", "schema": "scienceutopia.native-warmstart-audit-summary.v45", "source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da", "content_sha256": "d5c1f61acbad39df0934566fc8e4d2d4a14bd387dc5f2fee34d1ef1860b72430", "provenance_note": "Approved installed local35B author; fixed Qwen3-8B scientists; one failed and one completed evaluation"}
+  ]
+}

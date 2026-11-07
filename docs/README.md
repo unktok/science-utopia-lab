@@ -23,6 +23,7 @@ record lives separately under [`research/`](../research/INDEX.md).
 
 ## Research-system foundations
 
+- [Original goals and publication plan](../RESEARCH.md), [evidence and comparison work](../research/publication/plan.md)
 - [Whole-system `SystemSpec`](../research/components/system-spec-graph-v1.md)
 - [Native researcher-world kernel and extension API](../research/components/native-science-kernel-v1.md)
 - [Persistent open participants/artifacts/actions](../research/components/native-open-domain-v7.md)

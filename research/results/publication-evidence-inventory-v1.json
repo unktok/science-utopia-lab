@@ -1,0 +1,1043 @@
+{
+  "cases": [
+    {
+      "arms": {
+        "blackbox": {
+          "all_recorded_observed_best": {
+            "loss": 0.8166666666666665,
+            "tied_row_ids": [
+              "v10:blackbox:2",
+              "v10:blackbox:4",
+              "v10:blackbox:5"
+            ]
+          },
+          "fresh_loss_path": [
+            0.9,
+            0.8166666666666665,
+            0.8166666666666665
+          ],
+          "fresh_observed_best": {
+            "loss": 0.8166666666666665,
+            "tied_row_ids": [
+              "v10:blackbox:4",
+              "v10:blackbox:5"
+            ]
+          },
+          "fresh_status_path": [
+            "complete",
+            "complete",
+            "complete"
+          ],
+          "historical_comparison": null,
+          "historical_references": 3,
+          "loss_id": "native-joint-v5-net-reviewed-utility",
+          "rows": [
+            {
+              "arm": "blackbox",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.9,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "calibration-0",
+              "origin": "shared-historical",
+              "original_historical_source_not_in_row": true,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:blackbox:0",
+              "source_commit": null,
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "blackbox",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.9,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "calibration-1",
+              "origin": "shared-historical",
+              "original_historical_source_not_in_row": true,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:blackbox:1",
+              "source_commit": null,
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "blackbox",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.8166666666666665,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "calibration-2",
+              "origin": "shared-historical",
+              "original_historical_source_not_in_row": true,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:blackbox:2",
+              "source_commit": null,
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "blackbox",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.9,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "blackbox-0",
+              "origin": "fresh",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:blackbox:3",
+              "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "blackbox",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.8166666666666665,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "blackbox-1",
+              "origin": "fresh",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:blackbox:4",
+              "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "blackbox",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.8166666666666665,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "blackbox-2",
+              "origin": "fresh",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:blackbox:5",
+              "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": null
+        },
+        "gradient": {
+          "all_recorded_observed_best": {
+            "loss": 0.8166666666666665,
+            "tied_row_ids": [
+              "v10:gradient:2",
+              "v10:gradient:4",
+              "v10:gradient:5"
+            ]
+          },
+          "fresh_loss_path": [
+            0.9,
+            0.8166666666666665,
+            0.8166666666666665
+          ],
+          "fresh_observed_best": {
+            "loss": 0.8166666666666665,
+            "tied_row_ids": [
+              "v10:gradient:4",
+              "v10:gradient:5"
+            ]
+          },
+          "fresh_status_path": [
+            "complete",
+            "complete",
+            "complete"
+          ],
+          "historical_comparison": null,
+          "historical_references": 3,
+          "loss_id": "native-joint-v5-net-reviewed-utility",
+          "rows": [
+            {
+              "arm": "gradient",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.9,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "calibration-0",
+              "origin": "shared-historical",
+              "original_historical_source_not_in_row": true,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:gradient:0",
+              "source_commit": null,
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "gradient",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.9,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "calibration-1",
+              "origin": "shared-historical",
+              "original_historical_source_not_in_row": true,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:gradient:1",
+              "source_commit": null,
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "gradient",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.8166666666666665,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "calibration-2",
+              "origin": "shared-historical",
+              "original_historical_source_not_in_row": true,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:gradient:2",
+              "source_commit": null,
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "gradient",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.9,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "gradient-0",
+              "origin": "fresh",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:gradient:3",
+              "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "gradient",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.8166666666666665,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "gradient-1",
+              "origin": "fresh",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:gradient:4",
+              "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            },
+            {
+              "arm": "gradient",
+              "checkpoint_sha256": null,
+              "generation": null,
+              "historical_start": null,
+              "loss": 0.8166666666666665,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "gradient-2",
+              "origin": "fresh",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "retrospective_cross_scores": null,
+              "row_id": "v10:gradient:5",
+              "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+              "stage": "numerical-path",
+              "status": "complete",
+              "system_fingerprint": null,
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": null
+        }
+      },
+      "classification": "actual-native-qwen-method-paths-development-v10",
+      "content_sha256": "b6e221170c36250d60a199c55d34e550f65c6e0d1a87bce18300d1b530aef5b6",
+      "file_sha256": "b86a1165f6db8e924f919df2239aa7e10fe5187591d5bc1a2ca709b7ccaf4d50",
+      "id": "v10",
+      "original_claims": {
+        "actual_fixed_weight_Qwen": true,
+        "causal_scientific_benefit": false,
+        "exact_Qwen_Jacobian": false,
+        "full_native_world_autograd": false,
+        "new_model_calls": 0,
+        "new_native_worlds": 0,
+        "optimizer_superiority": false
+      },
+      "path": "research/results/native-method-paths-v10-a1.json",
+      "physical_costs": {
+        "physical_native_worlds": null,
+        "physical_researcher_responses": 186,
+        "replayed_responses": 318
+      },
+      "provenance_note": "Conditional numerical proposal comparison, not autonomous institution invention",
+      "schema": "scienceutopia.native-method-paths-audit.v10",
+      "source_commit": "5ea52a520d7fcfbfeec7fb450ce8122c804cfe4a",
+      "stratum": "v10",
+      "stratum_note": "One archived case; same source alone does not establish matched worlds, budgets or independent samples."
+    },
+    {
+      "arms": {
+        "native-joint-v5-net-reviewed-utility": {
+          "all_recorded_observed_best": {
+            "loss": -0.16666666666666785,
+            "tied_row_ids": [
+              "v12:native-joint-v5-net-reviewed-utility:0",
+              "v12:native-joint-v5-net-reviewed-utility:2"
+            ]
+          },
+          "fresh_loss_path": [
+            -0.16666666666666785,
+            0.0,
+            -0.16666666666666785
+          ],
+          "fresh_observed_best": {
+            "loss": -0.16666666666666785,
+            "tied_row_ids": [
+              "v12:native-joint-v5-net-reviewed-utility:0",
+              "v12:native-joint-v5-net-reviewed-utility:2"
+            ]
+          },
+          "fresh_status_path": [
+            "complete",
+            "complete",
+            "complete"
+          ],
+          "historical_comparison": null,
+          "historical_references": 0,
+          "loss_id": "native-joint-v5-net-reviewed-utility",
+          "rows": [
+            {
+              "arm": "native-joint-v5-net-reviewed-utility",
+              "checkpoint_sha256": "c92b083633a98a757c85ef7fecda856d3e071652fed76397c303d8da5d516dde",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -0.16666666666666785,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "retrospective_cross_scores": {
+                "native-joint-v5-net-reviewed-utility": -0.16666666666666785,
+                "native-joint-v5-throughput": -3.0
+              },
+              "row_id": "v12:native-joint-v5-net-reviewed-utility:0",
+              "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "6d7866880f1ea9689d2fb05bc0983f8b81762f60339d484fcc340693a1f40341",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-net-reviewed-utility",
+              "checkpoint_sha256": "9ed837b05873d5123d0ca09f71002a1a9e84b20bfa6fb0d23ff2e17105d8022e",
+              "generation": 1,
+              "historical_start": null,
+              "loss": 0.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-d9d5fdb494b2602ec95f4bad",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "retrospective_cross_scores": {
+                "native-joint-v5-net-reviewed-utility": 0.0,
+                "native-joint-v5-throughput": -1.0
+              },
+              "row_id": "v12:native-joint-v5-net-reviewed-utility:1",
+              "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "8e0f15488c2acee76c27a94f3439dcee8c6ad4d809a31aa0bd21594bc11beeea",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-net-reviewed-utility",
+              "checkpoint_sha256": "148cdadbcb00fe8f8f6e25bff5c9b40381415112fc205ade440b416ee1a9b95b",
+              "generation": 2,
+              "historical_start": null,
+              "loss": -0.16666666666666785,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-35162a43467bac2d8a247937",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "retrospective_cross_scores": {
+                "native-joint-v5-net-reviewed-utility": -0.16666666666666785,
+                "native-joint-v5-throughput": -3.0
+              },
+              "row_id": "v12:native-joint-v5-net-reviewed-utility:2",
+              "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "6d7866880f1ea9689d2fb05bc0983f8b81762f60339d484fcc340693a1f40341",
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": {
+            "best_loss": -0.16666666666666785,
+            "criterion": "minimum own development loss; earliest exact row only for display; all ties retained",
+            "representative_observation_id": "observation-native-adaptive-7002d8173c0464d0acb463ca",
+            "tie_count": 2
+          }
+        },
+        "native-joint-v5-throughput": {
+          "all_recorded_observed_best": {
+            "loss": -10.0,
+            "tied_row_ids": [
+              "v12:native-joint-v5-throughput:0",
+              "v12:native-joint-v5-throughput:1",
+              "v12:native-joint-v5-throughput:2"
+            ]
+          },
+          "fresh_loss_path": [
+            -10.0,
+            -10.0,
+            -10.0
+          ],
+          "fresh_observed_best": {
+            "loss": -10.0,
+            "tied_row_ids": [
+              "v12:native-joint-v5-throughput:0",
+              "v12:native-joint-v5-throughput:1",
+              "v12:native-joint-v5-throughput:2"
+            ]
+          },
+          "fresh_status_path": [
+            "complete",
+            "complete",
+            "complete"
+          ],
+          "historical_comparison": null,
+          "historical_references": 0,
+          "loss_id": "native-joint-v5-throughput",
+          "rows": [
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "4c71e310a103fab5ade937898166cacbf0cd73b2112106788d1cc7726b8b7bd4",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -10.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "retrospective_cross_scores": {
+                "native-joint-v5-net-reviewed-utility": 2.333333333333332,
+                "native-joint-v5-throughput": -10.0
+              },
+              "row_id": "v12:native-joint-v5-throughput:0",
+              "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "c4d90041d71c176a1bbb677e06381d6bb457c073d8194eb92a78e35160c720b9",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "dc772ce34d72ca9c407f9553b89ac52f4a97d4afb34a1fbb18f5102e1b8d6e3b",
+              "generation": 1,
+              "historical_start": null,
+              "loss": -10.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-43271d64b725be1dfdabe960",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "retrospective_cross_scores": {
+                "native-joint-v5-net-reviewed-utility": 2.333333333333332,
+                "native-joint-v5-throughput": -10.0
+              },
+              "row_id": "v12:native-joint-v5-throughput:1",
+              "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "c4d90041d71c176a1bbb677e06381d6bb457c073d8194eb92a78e35160c720b9",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "120b33770aab49426ac8e95b1d82563e49a7e1b3042042fdc7895e94278b5c4f",
+              "generation": 2,
+              "historical_start": null,
+              "loss": -10.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-2363f975baac47521d90f05d",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "retrospective_cross_scores": {
+                "native-joint-v5-net-reviewed-utility": 2.333333333333332,
+                "native-joint-v5-throughput": -10.0
+              },
+              "row_id": "v12:native-joint-v5-throughput:2",
+              "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "c4d90041d71c176a1bbb677e06381d6bb457c073d8194eb92a78e35160c720b9",
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": {
+            "best_loss": -10.0,
+            "criterion": "minimum own development loss; earliest exact row only for display; all ties retained",
+            "representative_observation_id": "observation-native-adaptive-c92047134ee5c7de9a1dfb8e",
+            "tie_count": 3
+          }
+        }
+      },
+      "classification": "actual-native-qwen-objective-redesign-development-v12",
+      "content_sha256": "c03df804fe46f12f1efec7210f1dba1c624242a8645f9533b698748cc4dfcd5f",
+      "file_sha256": "ca2742aa06ccd8675fcc50b5bc17041d057deb2cfad1357a19e3276d96530b76",
+      "id": "v12",
+      "original_claims": {
+        "causal_institutional_benefit": false,
+        "designer_improvement_established": false,
+        "external_authorship_authenticated": false,
+        "full_native_world_pathwise_autograd": false,
+        "held_out": false,
+        "live_fixed_Qwen_researchers": true,
+        "scientific_value": false,
+        "scripted_researcher_HTTP": false,
+        "variance_reduction_established": false
+      },
+      "path": "research/results/native-objective-redesign-v12-a1.json",
+      "physical_costs": {
+        "physical_native_worlds": 6,
+        "physical_researcher_responses": 565,
+        "replayed_responses": null
+      },
+      "provenance_note": "External self-reported Codex author; authorship not authenticated",
+      "schema": "scienceutopia.native-objective-redesign-independent-audit.v12",
+      "source_commit": "ecab4b45c3ec19458aab1e492213518c855cf2f4",
+      "stratum": "v12",
+      "stratum_note": "One archived case; same source alone does not establish matched worlds, budgets or independent samples."
+    },
+    {
+      "arms": {
+        "native-joint-v5-throughput": {
+          "all_recorded_observed_best": {
+            "loss": -10.0,
+            "tied_row_ids": [
+              "v13:native-joint-v5-throughput:3"
+            ]
+          },
+          "fresh_loss_path": [
+            -7.0,
+            -7.0,
+            -6.0,
+            -10.0
+          ],
+          "fresh_observed_best": {
+            "loss": -10.0,
+            "tied_row_ids": [
+              "v13:native-joint-v5-throughput:3"
+            ]
+          },
+          "fresh_status_path": [
+            "complete",
+            "complete",
+            "complete",
+            "complete"
+          ],
+          "historical_comparison": null,
+          "historical_references": 0,
+          "loss_id": "native-joint-v5-throughput",
+          "rows": [
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "5e267db54ba0462066e2b1417a2f650b809348c7e3669c83b55d52d37603314f",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -7.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-e6727a916dda584e2129a62c",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -7.0,
+                "native-reviewed-production-efficiency-v13": 0.0
+              },
+              "row_id": "v13:native-joint-v5-throughput:0",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "initial-batch",
+              "status": "complete",
+              "system_fingerprint": "1a8dfc835c0af4a9a1cf03282adfd25cf85ce69c8836e59cd39ce5eba59664bd",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "5e06e6094c2e6f2da371bd0b3e3cdb0afbc9b1161a16effc656c54947caa8dbd",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -7.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-f45d1887e9cf6ad3e7227670",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -7.0,
+                "native-reviewed-production-efficiency-v13": 0.0
+              },
+              "row_id": "v13:native-joint-v5-throughput:1",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "initial-batch",
+              "status": "complete",
+              "system_fingerprint": "cb809b827648b79e973f64b15bd92155f83e3c3c951dbddf62f5cce5af29e602",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "df3cdd3487f27de7382022136cd19d3b462d83bed8d6e447addb8c9dc687603b",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -6.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-5e05d06b68bb9e55bc62d8f5",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -6.0,
+                "native-reviewed-production-efficiency-v13": 0.0
+              },
+              "row_id": "v13:native-joint-v5-throughput:2",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "updated-proposal",
+              "status": "complete",
+              "system_fingerprint": "b79fbda5f395136df7f7b79ea3a4d8b517aa385b4923d0671992f57ff2e7b8a8",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-joint-v5-throughput",
+              "checkpoint_sha256": "13db434b4d76c6c14093ee5fb6b7c92574183f775febd4160504bd941f6e2924",
+              "generation": 1,
+              "historical_start": null,
+              "loss": -10.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-de4c8e8be563fad4818beb9d",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -10.0,
+                "native-reviewed-production-efficiency-v13": 0.0
+              },
+              "row_id": "v13:native-joint-v5-throughput:3",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "redesign",
+              "status": "complete",
+              "system_fingerprint": "79a7be3410a2f105e9b6a1d6c18d7398f009d19a06930359e98bad2079647d31",
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": {
+            "best_loss": -10.0,
+            "criterion": "minimum own development loss; earliest exact row only for display; all ties retained",
+            "representative_observation_id": "observation-native-adaptive-de4c8e8be563fad4818beb9d",
+            "tie_count": 1
+          }
+        },
+        "native-reviewed-production-efficiency-v13": {
+          "all_recorded_observed_best": {
+            "loss": -18.0,
+            "tied_row_ids": [
+              "v13:native-reviewed-production-efficiency-v13:3"
+            ]
+          },
+          "fresh_loss_path": [
+            -17.0,
+            -12.5,
+            -10.0,
+            -18.0
+          ],
+          "fresh_observed_best": {
+            "loss": -18.0,
+            "tied_row_ids": [
+              "v13:native-reviewed-production-efficiency-v13:3"
+            ]
+          },
+          "fresh_status_path": [
+            "complete",
+            "complete",
+            "complete",
+            "complete"
+          ],
+          "historical_comparison": null,
+          "historical_references": 0,
+          "loss_id": "native-reviewed-production-efficiency-v13",
+          "rows": [
+            {
+              "arm": "native-reviewed-production-efficiency-v13",
+              "checkpoint_sha256": "661164224fa25c9a607c24f4dafe94102edbc5740b3a78da0e7f08cf1e2f0a2c",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -17.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-89d08e8fbd4f3b459ae8e0cf",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -6.0,
+                "native-reviewed-production-efficiency-v13": -17.0
+              },
+              "row_id": "v13:native-reviewed-production-efficiency-v13:0",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "initial-batch",
+              "status": "complete",
+              "system_fingerprint": "c5462cb60e8809ab9e7be28252094569c45e2b2a343cd69b1971b489f439a6a4",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-reviewed-production-efficiency-v13",
+              "checkpoint_sha256": "e8568034c096ed14e3e749f354fcaa7cd19a256ac21ef13664c539a88b3f742c",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -12.5,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-5efc47d6fa0f7a40645f80b0",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -6.0,
+                "native-reviewed-production-efficiency-v13": -12.5
+              },
+              "row_id": "v13:native-reviewed-production-efficiency-v13:1",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "initial-batch",
+              "status": "complete",
+              "system_fingerprint": "7a9a010cd310bb2dc2243d6df4dd5f4d10b7e790db73929c7193b7e8bb6fe87d",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-reviewed-production-efficiency-v13",
+              "checkpoint_sha256": "51e72108dc1790b6b1e70668c24bd10381b434669329b93d8368fa97c58ae498",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -10.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-4004029b9e0277e46303f4a2",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -6.0,
+                "native-reviewed-production-efficiency-v13": -10.0
+              },
+              "row_id": "v13:native-reviewed-production-efficiency-v13:2",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "updated-proposal",
+              "status": "complete",
+              "system_fingerprint": "351ee3d9a9955df6b4cc28a6ea98a270483a3fefad97876cb69e7fc165c42c12",
+              "technical_errors": []
+            },
+            {
+              "arm": "native-reviewed-production-efficiency-v13",
+              "checkpoint_sha256": "75f8f48be485df7f98f478119fdc11e374a01a6bcd69a63120aa91850bc66867",
+              "generation": 1,
+              "historical_start": null,
+              "loss": -18.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-5755c33f2518b404425e479f",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -6.0,
+                "native-reviewed-production-efficiency-v13": -18.0
+              },
+              "row_id": "v13:native-reviewed-production-efficiency-v13:3",
+              "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+              "stage": "redesign",
+              "status": "complete",
+              "system_fingerprint": "ded5c89ab22825417fecef4fcb7586220c3003c7325942348ce2cb1321cac710",
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": {
+            "best_loss": -18.0,
+            "criterion": "minimum own development loss; earliest exact row only for display; all ties retained",
+            "representative_observation_id": "observation-native-adaptive-5755c33f2518b404425e479f",
+            "tie_count": 1
+          }
+        }
+      },
+      "classification": "actual-native-qwen-nested-search-development-v13",
+      "content_sha256": "abb671726c48e797a0af28b3fff27b49c0b2fb6a79c3adcb0bd6bb7602bf34ba",
+      "file_sha256": "201263f4667fd1ad962d4e885148e3c518fdc72771a2d02d2c07c68e67c9c96a",
+      "id": "v13",
+      "original_claims": {
+        "causal_institutional_benefit": false,
+        "designer_improvement_established": false,
+        "external_authorship_authenticated": false,
+        "full_native_world_pathwise_autograd": false,
+        "held_out": false,
+        "live_fixed_Qwen_researchers": true,
+        "scientific_value": false,
+        "scripted_researcher_HTTP": false,
+        "variance_reduction_established": false
+      },
+      "path": "research/results/native-nested-search-v13-a1.json",
+      "physical_costs": {
+        "physical_native_worlds": 8,
+        "physical_researcher_responses": 592,
+        "replayed_responses": null
+      },
+      "provenance_note": "External self-reported Codex author; conditional update and free redesign are separate stages",
+      "schema": "scienceutopia.native-nested-search-independent-audit.v13",
+      "source_commit": "fdf4d1c16964891e890cabe68d59b2820f462b92",
+      "stratum": "v13",
+      "stratum_note": "One archived case; same source alone does not establish matched worlds, budgets or independent samples."
+    },
+    {
+      "arms": {
+        "efficiency": {
+          "all_recorded_observed_best": {
+            "loss": null,
+            "tied_row_ids": []
+          },
+          "fresh_loss_path": [
+            null
+          ],
+          "fresh_observed_best": {
+            "loss": null,
+            "tied_row_ids": []
+          },
+          "fresh_status_path": [
+            "technical-failure"
+          ],
+          "historical_comparison": {
+            "historical_best_updated": false,
+            "historical_initial_selection": {
+              "loss": -11.833333333333336,
+              "selected_observation_id": "historical-rescore-f5b8410c3b7825934c2d0ffb564e18fc5ec08125cc053ae76eae98943b478b73",
+              "tied_observation_ids": [
+                "historical-rescore-f5b8410c3b7825934c2d0ffb564e18fc5ec08125cc053ae76eae98943b478b73",
+                "historical-rescore-ecbc8b7f8132a3e9d3d708001380d80ca805a8c968a171132d7d708cf26abf7f",
+                "historical-rescore-f86b4b8889c91618b2b5afc8b0558d4c242e59fd838ac508d7045a74fa3e53af",
+                "historical-rescore-5baa00f53ea4ac95ce2e5fff08a711aa5be15b08734e5db64b54e9b40484f37f"
+              ]
+            },
+            "new_best_loss": null,
+            "new_complete_losses": [],
+            "new_slot_statuses": [
+              "technical-failure"
+            ],
+            "observed_improvement_over_historical": null,
+            "same_source_counterfactual_comparison": false,
+            "source_equivalence_established": false
+          },
+          "historical_references": 0,
+          "loss_id": "native-reviewed-production-efficiency-v13",
+          "rows": [
+            {
+              "arm": "efficiency",
+              "checkpoint_sha256": null,
+              "generation": 0,
+              "historical_start": null,
+              "loss": null,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-b8d9b184246514d636486da8",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": null,
+                "native-reviewed-production-efficiency-v13": null
+              },
+              "row_id": "v45:efficiency:0",
+              "source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da",
+              "stage": "development",
+              "status": "technical-failure",
+              "system_fingerprint": "586cf106ba8a9c1f1a0a6c847da6ab407c6bbd473dabde693bc96411e6665429",
+              "technical_errors": [
+                {
+                  "error_sha256": "98abed4a6a5c20b9bd548bb8fe9f977029b8cd73be5d60a3a6761cef8d42884a",
+                  "message": "tensor input shape differs: features",
+                  "run_id": "native-adaptive-b8d9b184246514d636486da8-s42",
+                  "seed": 42,
+                  "type": "ValueError"
+                }
+              ]
+            }
+          ],
+          "saved_selection": null
+        },
+        "throughput": {
+          "all_recorded_observed_best": {
+            "loss": -7.0,
+            "tied_row_ids": [
+              "v45:throughput:0"
+            ]
+          },
+          "fresh_loss_path": [
+            -7.0
+          ],
+          "fresh_observed_best": {
+            "loss": -7.0,
+            "tied_row_ids": [
+              "v45:throughput:0"
+            ]
+          },
+          "fresh_status_path": [
+            "complete"
+          ],
+          "historical_comparison": {
+            "historical_best_updated": false,
+            "historical_initial_selection": {
+              "loss": -7.0,
+              "selected_observation_id": "historical-rescore-b406c0523cba1c3e0d9e324c13edafded1af14be9914c6dd1733388edf3574f9",
+              "tied_observation_ids": [
+                "historical-rescore-b406c0523cba1c3e0d9e324c13edafded1af14be9914c6dd1733388edf3574f9",
+                "historical-rescore-706a8124e7deb1e12cd85d8782b31f2c3a93fa7cc19dacd5c1640cf66f83f24d",
+                "historical-rescore-16eeef69d7c22c9703e28901133748e6786a530385b8743ca6c78f3bd8bb60e8",
+                "historical-rescore-f6da0184b08f01256c2d3f20344d2281de6103550706f2b383b61fd12e4dd00d"
+              ]
+            },
+            "new_best_loss": -7.0,
+            "new_complete_losses": [
+              -7.0
+            ],
+            "new_slot_statuses": [
+              "complete"
+            ],
+            "observed_improvement_over_historical": 0.0,
+            "same_source_counterfactual_comparison": false,
+            "source_equivalence_established": false
+          },
+          "historical_references": 0,
+          "loss_id": "native-joint-v5-throughput",
+          "rows": [
+            {
+              "arm": "throughput",
+              "checkpoint_sha256": "ed4156b33f260f9a6010616736bcb108d664a89e834e16d9491344073b7a97a9",
+              "generation": 0,
+              "historical_start": null,
+              "loss": -7.0,
+              "numeric_loss_is_not_scientific_value": true,
+              "observation_id": "observation-native-adaptive-15665ce2c532303fb3733954",
+              "origin": "new-development-observation",
+              "original_historical_source_not_in_row": false,
+              "report_source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da",
+              "retrospective_cross_scores": {
+                "native-joint-v5-throughput": -7.0,
+                "native-reviewed-production-efficiency-v13": -12.166666666666668
+              },
+              "row_id": "v45:throughput:0",
+              "source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da",
+              "stage": "development",
+              "status": "complete",
+              "system_fingerprint": "adee34ba89115a136f4ab2eb337d7b5807287ca302a1350ecb7a5c7cc454dc13",
+              "technical_errors": []
+            }
+          ],
+          "saved_selection": null
+        }
+      },
+      "classification": "actual-native-historical-warm-start-development-v45",
+      "content_sha256": "d5c1f61acbad39df0934566fc8e4d2d4a14bd387dc5f2fee34d1ef1860b72430",
+      "file_sha256": "98e2d98ded2fc68f8921100805b7250944b5cd10dc4a1e1e3dbc62e588661ee5",
+      "id": "v45",
+      "original_claims": {
+        "causal_institutional_benefit": false,
+        "designer_improvement_established": false,
+        "held_out": false,
+        "historical_initialization_is_not_new_improvement": true,
+        "method_superiority_established": false,
+        "physical_historical_cache_reuse": false,
+        "source_equivalence_established": false
+      },
+      "path": "research/results/native-warmstart-v45-a1.json",
+      "physical_costs": {
+        "completed_researcher_model_call_seconds": 330.52568769454956,
+        "completed_researcher_responses": 90,
+        "consumed_native_slots": 2,
+        "physical_native_worlds": 1,
+        "physical_researcher_responses": 110,
+        "physical_wire_requests": 110,
+        "physical_world_directory_count": 2,
+        "recorded_code_executions_including_partial": 11,
+        "technical_failures": 1
+      },
+      "provenance_note": "Approved installed local35B author; fixed Qwen3-8B scientists; one failed and one completed evaluation",
+      "schema": "scienceutopia.native-warmstart-audit-summary.v45",
+      "source_commit": "d49cf0bebdfa9d85eab91012118904dcff9232da",
+      "stratum": "v45",
+      "stratum_note": "One archived case; same source alone does not establish matched worlds, budgets or independent samples."
+    }
+  ],
+  "catalog_sha256": "72ae4d5566dee5a124ab67bbf81bbea11a52fcd2edc84a43d71bac34af87e395",
+  "content_sha256": "cad3799383f870e80daf272fb7d03c9f829f1d2ca493b08835b64cd105dd6e55",
+  "interpretation": {
+    "candidate_admission_veto_added": false,
+    "complete_project_inventory": false,
+    "conference_acceptance_predicted": false,
+    "cross_source_method_ranking_established": false,
+    "fresh_raw_audit": false,
+    "generated_code_executions": 0,
+    "new_model_calls": 0,
+    "new_world_executions": 0,
+    "numerical_fixtures_are_scientific_results": false
+  },
+  "note": "Open comparisons are research questions for this curated scope, not a merit gate or proof of absence elsewhere.",
+  "open_comparisons": [
+    "Matched free-code/graph search versus parameter-only search under the same objective and oracle budget",
+    "Feedback versus no-feedback proposals with designer and scientist costs separately reported",
+    "Fresh common-source baselines and selected-system evaluation on unused conditions",
+    "Mechanistic analysis of proxy exploitation and whether objective-selected structures differ",
+    "A replicated conditional-estimator comparison if an optimizer claim is made"
+  ],
+  "schema": "scienceutopia.publication-evidence-inventory.v1",
+  "scope": "Four curated native studies; not an exhaustive audit of every project artifact"
+}

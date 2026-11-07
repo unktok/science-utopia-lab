@@ -8,6 +8,9 @@ Historical documents retain their paths and source identities.
 
 - [Program map](program-map.md): original goals, capabilities and evidence gaps.
 - [Roadmap](roadmap.md): what to do next and why.
+- [Submission research plan](publication/plan.md), [comparison contract](publication/benchmark-contract-v1.md),
+  [initial related work](publication/related-work.md).
+- [Reproducible four-study evidence inventory](results/publication-evidence-inventory-v1.json).
 - [Research charter](charter.md): original motivation and explicit principles.
 - [System abstraction](system-model.md), [optimization](optimization.md).
 - [Software/research workflow](../docs/research-workflow.md).
