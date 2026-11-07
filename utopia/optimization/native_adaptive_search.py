@@ -254,7 +254,7 @@ class NativeAdaptiveDesignCampaign:
     def __init__(self, directory, *, initial_system, loss_spec, seeds, world_binding,
                  strategies, mode='hybrid', seed=42, learning_rate=.1,
                  strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
-                 expectation_estimator=None):
+                 expectation_estimator=None, initial_evidence=None):
         validate_loss_spec(loss_spec)
         if (mode not in {'blackbox', 'score', 'hybrid'} or type(seed) is not int
                 or not seeds or any(type(s) is not int for s in seeds) or len(set(seeds)) != len(seeds)
@@ -273,6 +273,10 @@ class NativeAdaptiveDesignCampaign:
             'mode': mode, 'seed': seed, 'learning_rate': float(learning_rate),
             'strategy_learning_rate': float(strategy_learning_rate), 'strategy_baseline': float(strategy_baseline),
             'exploration': float(exploration)}
+        if initial_evidence is not None:
+            from .native_initial_evidence import validate_initial_evidence
+            self.binding['initial_evidence'] = validate_initial_evidence(initial_evidence,
+                target_world=world_binding, target_seeds=seeds)
         if expectation_estimator is not None:
             if (not isinstance(expectation_estimator, dict)
                     or set(expectation_estimator) != {'name', 'ridge'}
@@ -312,10 +316,15 @@ class NativeAdaptiveDesignCampaign:
         chosen = int(torch.multinomial(probabilities, 1, generator=torch.Generator().manual_seed(rng_seed)))
         observations = [{'suggestion': d['suggestion'], 'observation': o} for r in records
             for d, o in zip(r['draws'], r['observations']) if d['suggestion'] is not None and o is not None]
+        evidence = None
+        if 'initial_evidence' in self.binding:
+            from .native_initial_evidence import objective_view
+            evidence = objective_view(self.binding['initial_evidence'], self.loss)
+            observations = evidence['observations'] + observations
         valid = [r for r in observations if r['observation']['status'] == 'complete'
                  and not r['observation']['metadata'].get('technical_failures')]
         incumbent = min(valid, key=lambda r: r['observation']['loss']) if valid else None
-        return {'schema': VOCABULARY, 'generation': index, 'count': count,
+        request = {'schema': VOCABULARY, 'generation': index, 'count': count,
             'parent_system': incumbent['suggestion']['candidate'] if incumbent else self.initial.to_dict(),
             'based_on_observation_id': incumbent['observation']['observation_id'] if incumbent else None,
             'history': self._history(records), 'observations': observations, 'loss_spec': self.loss,
@@ -324,6 +333,19 @@ class NativeAdaptiveDesignCampaign:
             'strategy_state': clone(strategy_state), 'strategy_probabilities': probabilities.tolist(),
             'strategy_log_probability': float(probabilities[chosen].log()), 'rng_seed': rng_seed,
             'binding_sha256': digest(self.binding), 'history_sha256': digest(records)}
+        if evidence is not None:
+            from .native_initial_evidence import select_incumbent
+            request['initial_evidence'] = {
+                'bank_sha256': evidence['bank_sha256'],
+                'source_audit': clone(self.binding['initial_evidence']['source_audit']),
+                'historical_warm_start': True,
+                'source_equivalence_established': False,
+                'physical_cache_reuse_allowed': False,
+                'historical_observation_count': len(evidence['observations']),
+                'unobserved_slots': evidence['unobserved_slots'],
+                'initial_selection': evidence['selection']}
+            request['selection'] = select_incumbent(observations)
+        return request
 
     def _mixed(self, record):
         return GeneratedMixedDesign(SystemSpec.from_dict(record['request']['parent_system']), record['definition'],
