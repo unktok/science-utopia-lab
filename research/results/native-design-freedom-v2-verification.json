@@ -25,6 +25,20 @@
     "junit_sha256": "f4fae6e57180696e3f72de5e5da944db1ee6d00e10e95b6236631198b6fe4ce3",
     "scope": "New study/physical pipeline, failed pre-initialization cache handling, successful original Simulation checkpoints at evaluation seed31001 and horizons2/4, reserved seed inventory."
   },
+  "postdispatch_report_scope": {
+    "source_commit": "3b63ed712782b010f0407fe3bc08e8e00ed7caa6",
+    "passed": 46, "failed": 0, "skipped": 0, "seconds": 11.96,
+    "junit": "outputs/publication-benchmark-v2-verification/final-study-report-a2.xml",
+    "junit_sha256": "e9e6de78de2d77ab00caea8f70c306f47ecd9e0ee0299c75dd520a21f7f0f11d",
+    "scope": "Closed-audit report projection, all candidate slots, all reference pairings, missing scores, explicit policy sharing, separate horizons, print figure hashes and repository evidence/docs regressions. SCRIPTED input only, not new empirical results."
+  },
+  "later_mechanistic_report_scope": {
+    "source_commit": "998f36d6e0794cb4f34ff18808ef5c70fc3c5509",
+    "passed": 13, "failed": 0, "skipped": 0, "seconds": 4.43,
+    "junit": "outputs/publication-benchmark-v2-verification/final-study-report-receipts.xml",
+    "junit_sha256": "b45d07f3c15d5cf1ad72b2cb43a2b17b4cf2cad685536353a50f87729ee55101",
+    "scope": "Same synthetic report/figure contracts after retaining exact behavior-subproof hashes/counts; no source edit or new dispatch in the running experiment."
+  },
   "preserved_earlier_failures": [
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical.xml", "passed": 4, "failed": 2, "cause": "Historical software fixture hardcoded seed42 before the new evaluation binding."},
     {"junit": "outputs/publication-benchmark-v2-verification/evaluation-native-physical-a2.xml", "passed": 4, "failed": 2, "cause": "Fixture omitted explicit raw non-reasoning field; inspection additionally found historical HTTP horizon3, prospectively parameterized for four-year evaluation."}

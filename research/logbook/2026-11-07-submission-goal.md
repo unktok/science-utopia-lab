@@ -70,3 +70,15 @@ strong-control figure, nearest-method citations and the separately marked V2
 prospective protocol. Offline build has9 pages and no TeX warnings; all pages
 visually inspected. [Build receipt](../../paper/submission-build-v2.json) binds
 sources and final PDF; the prior PDF is preserved in ignored build intermediates.
+
+At09:19UTC, reference3/9 closed; open-accept-all is in flight, search/evaluation
+remain0. The frozen writer remains running. The derived raw progress field
+`active` records the last completed slot in this driver; check started-without-
+observation records to identify the current in-flight world, not that label alone.
+
+Separate analysis branch is integrated after46 synthetic projection/figure/
+evidence tests at3b63ed7 and13 later mechanism-count checks at998f36d.
+It preserves all120 candidates, original nulls, selection ties, all reference
+pairings, explicit policy-shared physical jobs and2/4-year separation. Input
+audit/source/plan and reporter/figure hashes stay distinct. No V2 raw audit or
+scientific report has yet been produced. The experimental checkout is unmodified.

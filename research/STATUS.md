@@ -28,7 +28,8 @@ at fixedb6654adefc42223f9ecc7b4e53c043c879230f68. Plan hash
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Run00's28 real designer controls and cold replay pass;26 exact copies remain
 diagnostic. The fixed8B scientist is now executing fresh reference worlds.
-At this snapshot no search proposal or selected-policy evaluation has completed.
+At09:19UTC3/9 references are closed and open-accept-all is in flight;
+no search proposal or selected-policy evaluation has completed.
 Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 `outputs/publication-benchmark-v2-verification/study-run.log`.
 Scientist/designer inference remains serialized; the detached experiment checkout
@@ -96,6 +97,13 @@ This closes a small integration comparison, not the full conference study.
 The updated working PDF also includes the completed S1 strong-rule comparison,
 its print-sized figure and the separately labeled V2 protocol. All9 pages were
 visually checked; no future V2 outcomes are represented as results.
+
+While inference runs, a separate analysis feature is completed and integrated:
+closed-audit projection of all120 slots, all reference-paired seed differences,
+missingness/physical-sharing/horizon separation, costs and behavior receipt counts,
+plus full-history print figures.46 checks at3b63ed7 and13 later checks at998f36d
+pass with synthetic inputs (overlapping scopes). These are not V2 experiment
+results. Synthetic figure previews are visibly watermarked, not manuscript data.
 
 ## Earlier V45 evidence (different source and initialization)
 

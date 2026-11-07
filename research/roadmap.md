@@ -17,12 +17,16 @@
 
 ## 直近の次の区切り
 
-大量seedへ進む前に、同source・同worldでlegacy原制度、手作業all-accept／
-原selection、parameter-only、free-code、free-graphを比較できる基準を固定する。
-今回の最良案に残る空入力fallbackも、技術契約の境界例として検査する。
-候補の科学コードをhostが補修して成功扱いせず、前向きなinterface説明修正と
-凍結済みの失敗を分離する。目的理解と技術契約の回帰を揃えてから、新sourceの
-有限校正と小規模比較を行う。改善や異なる勝者は終了条件にしない。
+S1の強い8基準比較は完走・二回監査済み。V2は固定source・有限予算と
+初回の実校正28項目／cold replayを通し、fresh9基準から実行中。
+[投稿ゴール](publication/submission-goal.md)に沿い、120候補の自由度／feedback比較、
+選択固定後の五world seed＋四年診断、全失敗・経路・作用・費用の解析を閉じる。
+改善や異なる勝者を要求せず、良い結果が出るまでの追加試行へ戻さない。
+実行中checkoutのsourceやprotocolは変えない。
+
+待ち時間には閉じたauditからのpaired解析・全履歴作図を別checkoutで実装・検証し、
+mainへ統合済み。実データへの適用は全runが閉じて原source監査を通ってから。
+原稿はS1実測と前向きV2 protocolを分けた9ページへ更新済みだが、投稿完了ではない。
 
 ## 最優先：研究比較を成立させる
 

@@ -22,7 +22,7 @@
 
 | 元の目標 | 実装・実証済みの範囲 | 残る研究上の問題 |
 | --- | --- | --- |
-| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。V1で二目的×feedback対照を同source完了 | 反復の上積みは未実証。強い基準・自由度対照、目的依存の制度差の一般化 |
+| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。V1完了、S1の強い8基準も完了。V2自由度比較は稼働中 | 反復の上積みは未実証。V2の探索・選択後評価・機構解析を閉じる必要がある |
 | 出来合いでない制度を作る | sandboxed Python、typed ports/state、生成IR。外部設計者のV13で実作用と観測改善 | ローカル設計者の信頼性、コード変更と機構上の新規性の区別 |
 | 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用 | パラメータ探索を超える価値の対照比較、信頼境界・世界の単純化の明示 |
 | 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較 | 推定量と対象分布の明示、費用を揃えた実用性。世界全体ADや優位性は未証明 |
@@ -31,6 +31,10 @@
 
 ## 証拠への入口
 
+- [S1強い基準比較](results/native-benchmark-controls-v2-a1.md)：手作業8制度すべて完走。
+  自動発明の結果でなく、弱いseedへの改善を単純基準への優位性と混同しないための対照。
+- [V2 protocol](protocols/campaigns/native-design-freedom-v2.md)：二目的・五群・三履歴・四世代と
+  選択後評価を固定。初回校正済み、稼働中。未完の結果を実証へ繰り入れない。
 - [V1](results/native-feedback-comparison-v1-a1.md)：ローカル35B、二目的・二群・二世代。
   全8案提出、4完走／4実行失敗。両目的ともcontrol G0の全採択案が最良、世代1の上積みなし。
 - [V45](results/native-warmstart-v45-a1.json)：ローカル設計者、二案提出、一評価完走／一失敗。
