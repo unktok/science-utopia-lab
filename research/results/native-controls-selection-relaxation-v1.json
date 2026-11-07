@@ -1,0 +1,1258 @@
+{
+  "analysis_source_sha256": "a76b2eebfea2d42a06e3310561b7573040a69f26f029bd4b4c3d588182554161",
+  "audit_file_sha256": "8540825985998fe97ef8258e8896a1436a1d6797271646b50612a53ecad68d85",
+  "content_sha256": "765ed31c7ac8ebb3f5ca683901ff961b67b33eeb0fc87784b8e67442d3e6aa90",
+  "input_audit_content_sha256": "3a344dcbc71c8300d0844696d44b807d3a5ba0eeca14301b1d50c60dd4656ac1",
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "new_worlds": 0,
+  "plan_sha256": "5c5092d58a5752d43ae3e7f71434faf4e17863debc3557d643038b609a89e9b5",
+  "projection_is_not_a_new_raw_audit": true,
+  "raw_inventory_sha256": "8e014fb52a33ca824c5bc49b7395174adac38a0614f800cca3617f297938d2c2",
+  "raw_inventory_unchanged": true,
+  "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1",
+  "scope": "Independent algebraic decision-flag relaxation on completed, already source-audited checkpoints. Raw scores and future histories are frozen, not resimulated. No feasibility or causal policy improvement claim.",
+  "source_commit": "2aa02c3cb4610cde4797744386da67fe851383b0",
+  "worlds": {
+    "reference:legacy": {
+      "audited_observed_losses": {
+        "efficiency": 3.0,
+        "selective": 3.8,
+        "throughput": -2.0
+      },
+      "checkpoint_relative_path": "controls/legacy/worlds/control-legacy-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "ed30511c2c486e8876b6c276837f26eb4eb4910e2d130a88826b230a99ecd34f",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 0.0,
+        "selective": 8.881784197001252e-16,
+        "throughput": 0.0
+      },
+      "physical_measurement_sha256": "696658ee898ef3a9e88e77590cc02bfac8f4d741c3d4dc01fa47057403601cd8",
+      "relaxation": {
+        "accepted_decisions": 2,
+        "accepted_peer_score_sum": 6.0,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 6,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 12.0,
+            "fixed_record_minimum": -9.0,
+            "free_tie_ids": [],
+            "observed_loss": 3.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 2.000000000000001,
+            "fixed_record_minimum": 1.8,
+            "free_tie_ids": [],
+            "observed_loss": 3.8000000000000007,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 4.0,
+            "fixed_record_minimum": -6.0,
+            "free_tie_ids": [],
+            "observed_loss": -2.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 18,
+        "rows": [
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1612.04256",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1612.01197",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1708.07575",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1706.01991",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1709.05915",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-accept-all": {
+      "audited_observed_losses": {
+        "efficiency": -11.833333333333336,
+        "selective": 7.766666666666664,
+        "throughput": -7.0
+      },
+      "checkpoint_relative_path": "controls/open-accept-all/worlds/control-open-accept-all-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "d5cc71e927195773ad17376daebeae525069398109a6c3f5e393561e5d891bb9",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 3.552713678800501e-15,
+        "selective": 5.329070518200751e-15,
+        "throughput": 0.0
+      },
+      "physical_measurement_sha256": "47ab7aeddce0cb224d048ac1f8942e886342dbf7946870b33d9b51fe6cf5615b",
+      "relaxation": {
+        "accepted_decisions": 7,
+        "accepted_peer_score_sum": 22.333333333333332,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 7,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": -11.833333333333332,
+            "free_tie_ids": [],
+            "observed_loss": -11.833333333333332,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 5.66666666666667,
+            "fixed_record_minimum": 2.1,
+            "free_tie_ids": [],
+            "observed_loss": 7.766666666666669,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": -7.0,
+            "free_tie_ids": [],
+            "observed_loss": -7.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 21,
+        "rows": [
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1711.07733",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1707.05390",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-no-review-accept-all": {
+      "audited_observed_losses": {
+        "efficiency": 0.0,
+        "selective": 28.0,
+        "throughput": -7.0
+      },
+      "checkpoint_relative_path": "controls/open-no-review-accept-all/worlds/control-open-no-review-accept-all-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "28fb238af360834e5059b3b476eb635ad13f3ef59ebf86074b40bdb49ded4959",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 0.0,
+        "selective": 0.0,
+        "throughput": 0.0
+      },
+      "physical_measurement_sha256": "1eaa26dc0a0a2fab21e418786d73715fc13a685d99e5ef18c5c7b7ff71abb6c6",
+      "relaxation": {
+        "accepted_decisions": 7,
+        "accepted_peer_score_sum": 0.0,
+        "accepted_unreviewed_decisions": 7,
+        "decision_records": 7,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": 0.0,
+            "free_tie_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "observed_loss": 0.0,
+            "required_accept_ids": [],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 28.0,
+            "fixed_record_minimum": 0.0,
+            "free_tie_ids": [],
+            "observed_loss": 28.0,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": -7.0,
+            "free_tie_ids": [],
+            "observed_loss": -7.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 0,
+        "rows": [
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 0,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 0,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 0,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1703.05424",
+            "record_id": "p3:d0",
+            "review_count": 0,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1705.08968",
+            "record_id": "p4:d0",
+            "review_count": 0,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 0,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 0.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 0,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-rank-rate": {
+      "audited_observed_losses": {
+        "efficiency": 3.833333333333334,
+        "selective": 3.433333333333334,
+        "throughput": -2.0
+      },
+      "checkpoint_relative_path": "controls/open-rank-rate/worlds/control-open-rank-rate-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "d6d85c36fd6aca29825a4d6bc7bb801d4e51bccc7316e7d9234314175a8eedd1",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 0.0,
+        "selective": -4.440892098500626e-16,
+        "throughput": 0.0
+      },
+      "physical_measurement_sha256": "7bcb90d8cc1f3b7423605b72b12f9b84a74d4e93331032cb9f08796b626dfc8c",
+      "relaxation": {
+        "accepted_decisions": 2,
+        "accepted_peer_score_sum": 6.666666666666666,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 7,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 16.0,
+            "fixed_record_minimum": -12.166666666666668,
+            "free_tie_ids": [],
+            "observed_loss": 3.833333333333334,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 1.3333333333333335,
+            "fixed_record_minimum": 2.1,
+            "free_tie_ids": [],
+            "observed_loss": 3.4333333333333336,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 5.0,
+            "fixed_record_minimum": -7.0,
+            "free_tie_ids": [],
+            "observed_loss": -2.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 21,
+        "rows": [
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1711.07733",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1705.08968",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-reject-all": {
+      "audited_observed_losses": {
+        "efficiency": 12.0,
+        "selective": 2.4000000000000004,
+        "throughput": 0.0
+      },
+      "checkpoint_relative_path": "controls/open-reject-all/worlds/control-open-reject-all-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "14a03cdc575a038323ac6bebd363b9c565b8950ef8fba7d028ed6925117c2c92",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 0.0,
+        "selective": 0.0,
+        "throughput": -0.0
+      },
+      "physical_measurement_sha256": "1de4e814a3bc0170bc1ca781093dbaff8aaeb8cdbf8f543f0b0f0aaa6dd180c6",
+      "relaxation": {
+        "accepted_decisions": 0,
+        "accepted_peer_score_sum": 0.0,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 8,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 25.666666666666668,
+            "fixed_record_minimum": -13.666666666666668,
+            "free_tie_ids": [],
+            "observed_loss": 12.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": 2.4000000000000004,
+            "free_tie_ids": [],
+            "observed_loss": 2.4000000000000004,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 8.0,
+            "fixed_record_minimum": -8.0,
+            "free_tie_ids": [],
+            "observed_loss": -0.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 24,
+        "rows": [
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d1",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1711.07733",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1705.08968",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-score-3": {
+      "audited_observed_losses": {
+        "efficiency": -11.833333333333336,
+        "selective": 7.766666666666664,
+        "throughput": -7.0
+      },
+      "checkpoint_relative_path": "controls/open-score-3/worlds/control-open-score-3-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "becfb26b88ff440770bb98cc118aebbc661523def221fa2cae27abab57572985",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 3.552713678800501e-15,
+        "selective": 5.329070518200751e-15,
+        "throughput": 0.0
+      },
+      "physical_measurement_sha256": "2907b0692d349dad17a05cd7b2c5a88776270f26562e8461af690e4885d4906d",
+      "relaxation": {
+        "accepted_decisions": 7,
+        "accepted_peer_score_sum": 22.333333333333332,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 7,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": -11.833333333333332,
+            "free_tie_ids": [],
+            "observed_loss": -11.833333333333332,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 5.66666666666667,
+            "fixed_record_minimum": 2.1,
+            "free_tie_ids": [],
+            "observed_loss": 7.766666666666669,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": -7.0,
+            "free_tie_ids": [],
+            "observed_loss": -7.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 21,
+        "rows": [
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1711.07733",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1707.05390",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": true,
+            "mean_original_review_score": 3.0,
+            "original_decision": "accept",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-score-4": {
+      "audited_observed_losses": {
+        "efficiency": 12.0,
+        "selective": 2.4000000000000004,
+        "throughput": 0.0
+      },
+      "checkpoint_relative_path": "controls/open-score-4/worlds/control-open-score-4-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "8319e4baa95c36f2fd963331854d1cc0fbc223d4b96eaeeae307623a42a63982",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 0.0,
+        "selective": 0.0,
+        "throughput": -0.0
+      },
+      "physical_measurement_sha256": "80c5d1897fbbc0c61ebc7940bd9db6e3e4791a022d89831cadb536f5e54c349e",
+      "relaxation": {
+        "accepted_decisions": 0,
+        "accepted_peer_score_sum": 0.0,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 8,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 25.666666666666668,
+            "fixed_record_minimum": -13.666666666666668,
+            "free_tie_ids": [],
+            "observed_loss": 12.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": 2.4000000000000004,
+            "free_tie_ids": [],
+            "observed_loss": 2.4000000000000004,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 8.0,
+            "fixed_record_minimum": -8.0,
+            "free_tie_ids": [],
+            "observed_loss": -0.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 24,
+        "rows": [
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d1",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1711.07733",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1705.08968",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    },
+    "reference:open-seed": {
+      "audited_observed_losses": {
+        "efficiency": 12.0,
+        "selective": 2.4000000000000004,
+        "throughput": 0.0
+      },
+      "checkpoint_relative_path": "controls/open-seed/worlds/control-open-seed-s42/simulation/checkpoints/native-design/portable_checkpoint_year_2.json.gz",
+      "checkpoint_sha256": "7826b09d1c8189fd526ff8ec093d0c48d901f24037e3976eb96ac55a20598be9",
+      "independent_sum_minus_audited_loss": {
+        "efficiency": 0.0,
+        "selective": 0.0,
+        "throughput": -0.0
+      },
+      "physical_measurement_sha256": "deaea441a804f2f1e4ec575d7e594faa8867a8dd8a1363bec5421e7c18dc3686",
+      "relaxation": {
+        "accepted_decisions": 0,
+        "accepted_peer_score_sum": 0.0,
+        "accepted_unreviewed_decisions": 0,
+        "decision_records": 8,
+        "finite_review_scores_outside_declared_1_to_5": [],
+        "losses": {
+          "efficiency": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 25.666666666666668,
+            "fixed_record_minimum": -13.666666666666668,
+            "free_tie_ids": [],
+            "observed_loss": 12.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          },
+          "selective": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 0.0,
+            "fixed_record_minimum": 2.4000000000000004,
+            "free_tie_ids": [],
+            "observed_loss": 2.4000000000000004,
+            "required_accept_ids": [],
+            "required_reject_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "status": "complete"
+          },
+          "throughput": {
+            "all_exact_tie_assignments_represented_without_enumeration": true,
+            "feasible_dynamic_policy_minimum_claimed": false,
+            "fixed_record_gap": 8.0,
+            "fixed_record_minimum": -8.0,
+            "free_tie_ids": [],
+            "observed_loss": -0.0,
+            "required_accept_ids": [
+              "p0:d0",
+              "p0:d1",
+              "p1:d0",
+              "p2:d0",
+              "p3:d0",
+              "p4:d0",
+              "p5:d0",
+              "p6:d0"
+            ],
+            "required_reject_ids": [],
+            "status": "complete"
+          }
+        },
+        "nonstandard_decision_records": 0,
+        "review_records": 24,
+        "rows": [
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1611.04022",
+            "record_id": "p0:d1",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1606.04422",
+            "record_id": "p1:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1605.06523",
+            "record_id": "p2:d0",
+            "review_count": 3,
+            "year": 1
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.0,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1711.07733",
+            "record_id": "p3:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1705.08968",
+            "record_id": "p4:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.6666666666666665,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1712.06567",
+            "record_id": "p5:d0",
+            "review_count": 3,
+            "year": 2
+          },
+          {
+            "accepted": false,
+            "mean_original_review_score": 3.3333333333333335,
+            "original_decision": "reject",
+            "paper_id": "https://arxiv.org/abs/1702.08367",
+            "record_id": "p6:d0",
+            "review_count": 3,
+            "year": 2
+          }
+        ],
+        "schema": "scienceutopia.native-fixed-record-selection-relaxation.v1.records",
+        "scope": "Fix realized records, reviewer replies and total R; independently relax only accept/reject flags. Changes can be dynamically infeasible because decisions change future scientists, submissions and reviews. Not new world outcomes, policy recommendations, an exact expectation or a global optimum.",
+        "unavailable_all_record_means": 0
+      },
+      "status": "complete"
+    }
+  }
+}
