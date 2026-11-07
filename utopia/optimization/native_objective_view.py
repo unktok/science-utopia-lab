@@ -36,6 +36,15 @@ def _across(spec):
         ('aggregation', 'dispersion_weight', 'minimum_valid_runs')}
 
 
+def _direction_terms(spec):
+    """Algebra only: not a prediction of a coupled institution's effect."""
+    return [{**term,
+        'per_run_loss_change_for_one_unit_increase_other_inputs_fixed': term['coefficient'],
+        'metric_change_that_lowers_per_run_loss_other_inputs_fixed': (
+            'increase' if term['coefficient'] < 0 else 'decrease' if term['coefficient'] > 0 else 'none')}
+        for term in _terms(spec)]
+
+
 def loss_arithmetic(spec):
     """Exact computational projection; full LossSpec stays archived and evaluated.
 
@@ -50,6 +59,12 @@ def loss_arithmetic(spec):
         'archived_loss_spec_sha256': loss_spec_sha256(spec), 'direction': spec['direction'],
         'per_run': {'intercept': spec['per_run']['intercept'], 'terms': terms},
         'across_seeds': _across(spec),
+        'quantity_to_minimize': 'the whole aggregate loss, not each input metric separately',
+        'per_run_affine_directions': _direction_terms(spec),
+        'direction_scope': 'Exact affine per-run arithmetic with other inputs fixed. Negative '
+            'coefficients mean increasing that metric lowers per-run loss; positive coefficients '
+            'mean decreasing it lowers per-run loss. Aggregate dispersion and coupled world '
+            'changes must still be evaluated; this is not a predicted policy effect.',
         'measurement_definitions': {identity: NATIVE_MEASUREMENT_DEFINITIONS[identity]
             for identity in identities if identity in NATIVE_MEASUREMENT_DEFINITIONS},
         'metrics_without_text_definition': [identity for identity in identities
@@ -73,11 +88,7 @@ def objective_view(request, state):
     spec = request['loss_spec']
     validate_loss_spec(spec)
     spec_hash = loss_spec_sha256(spec)
-    terms = [{**clone(term),
-        'per_run_loss_change_for_one_unit_increase_other_inputs_fixed': term['coefficient'],
-        'metric_change_that_lowers_per_run_loss_other_inputs_fixed': (
-            'increase' if term['coefficient'] < 0 else 'decrease' if term['coefficient'] > 0 else 'none')}
-        for term in _terms(spec)]
+    terms = _direction_terms(spec)
     observations = []
     for item in request.get('observations', []):
         observation = item.get('observation') or {}
