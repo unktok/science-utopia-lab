@@ -2,7 +2,16 @@
 
 Updated: 2026-11-07 JST
 
-## Current: implementing R1/R2 and finite R3 forward execution
+## Current: finite R3 forward experiment running after verified R1/R2
+
+Snapshot2026-11-07T03:24:10Z: the actual two-slot V45 writer has started in
+`outputs/native-warmstart-v45-a1`, from clean detached source
+`d49cf0bebdfa9d85eab91012118904dcff9232da`. Source-bound verification passes
+1682 tests/3 optional historical-diagnostic skips in818.34s. Fresh actual
+calibration passes28/28, with26 exact copies and2 retained diagnostic
+differences; independent network-disabled cold replay also passes. No new
+scientific outcome is available at this snapshot. Liveness is established by
+actual writer/step/world receipts, not this text. Preserve the frozen source.
 
 The user authorizes execution, parallel implementation and bug fixes after the
 review. New opt-in `plain-function-bounded-v45` bounds active source/wire context

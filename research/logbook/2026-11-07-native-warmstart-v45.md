@@ -45,9 +45,28 @@ through exact archive references. The declared source/wire caps are
 180000/200000 bytes. Actual backend token room remains unmeasured here; only
 real dispatch responses can provide `prompt_eval_count` evidence.
 
-## Pending actual execution
+## Frozen verification and actual dispatch
 
-No model generation or scientific world was executed by these implementation
-checks. Record the frozen source, full verification, real calibration, writer
-receipts and terminal audit here after they actually occur. Do not report a
-running or successful search from implementation readiness alone.
+Clean detached source: `d49cf0bebdfa9d85eab91012118904dcff9232da`.
+Full source-bound software checks pass1682, with3 optional historical-diagnostic
+skips, in818.34s. JUnit/logs are under
+`outputs/native-warmstart-v45-a1-verification`. The skipped checks require
+explicit old V43/V40/E2 archives; actual bank integration checks do run.
+
+Actual source/profile/model-bound calibration passes28/28 controls:26 exact
+copies,2 retained diagnostic differences. Certificate content identity:
+`2c2876a4c8414ec129575a539125c7edfeae22ada2dee754d8c63d2d1906ef6e`.
+Independent network-disabled cold replay passes and268 source blobs match.
+All28 provider envelopes finish normally; observed input7944..13121 tokens,
+known output maximum255. This establishes these controls, not universal free
+generation success or scientific improvement.
+
+Actual two-slot writer dispatched2026-11-07T03:24:10Z in
+`outputs/native-warmstart-v45-a1`. At03:25Z efficiency has completed three
+error-free author calls(plan/read/read). Actual free-author input tokens are
+17091/22416/22016, all below32768, leaving the full8192 requested output
+reservation within40960. Actual wire68940..91509 bytes, source52280..70789.
+These are real free-author observations, not estimates from calibration.
+
+No new scientific loss is available at this snapshot. Record terminal receipts,
+independent physical audit and measured results after they actually occur.
