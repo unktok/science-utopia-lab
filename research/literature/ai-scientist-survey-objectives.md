@@ -1,5 +1,12 @@
 # `ai-scientist-survey` から見た ScienceUtopia の目的関数と評価設計
 
+> **Historical interpretation; not current user requirements.**
+> 本文の「単一scoreで最適化すべきでない」「不許容状態の制約」等は当時の解釈であり、
+> 現在の実験に採用する要件ではない。ユーザーは明示した目的に基づく最適化を求め、
+> 途中で追加された規範的vetoを不要としている。surveyの議論とプロジェクトの実験契約を
+> 混同しない。元の本文・出典は保持する。
+> 正本：[研究目的](../../RESEARCH.md)、[投稿ゴール](../publication/submission-goal.md)。
+
 作成日: 2026-10-24
 調査対象: `t46/ai-scientist-survey`
 固定commit: [`02b437b854e73f1bd8a274399e56167ee05a4400`](https://github.com/t46/ai-scientist-survey/tree/02b437b854e73f1bd8a274399e56167ee05a4400)

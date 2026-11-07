@@ -1,5 +1,12 @@
 # ScienceUtopia の制度最適化における目的関数候補
 
+> **Historical design memo; not the active optimization contract.**
+> 下記の2026-10-24本文にある「制約付き多目的」「採択数を目的にしない」等は、
+> その後のユーザー方針で採用されていない。現在は宣言したLossSpecで候補を順位付けし、
+> 評価指標・技術的失敗・任意の採用方針を分ける。文献上の注意を隠れたvetoとして
+> 復活させない。元の本文は研究史として保持し、出典・測定上の論点だけを参考にする。
+> 正本：[研究目的](../../RESEARCH.md)、[投稿ゴール](../publication/submission-goal.md)。
+
 **Status:** literature-informed design memo v0.1  
 **Date:** 2026-10-24  
 **Scope:** Science of Science、metascience、研究評価、国家科学技術政策の議論を、ScienceUtopia の制度最適化へ接続するための非網羅的な研究メモ。
