@@ -1,0 +1,27 @@
+{
+  "schema": "scienceutopia.native-design-supplemental-inputs.v1",
+  "scope": "Exact compressed closed-audit cost projections, not raw replies or a new audit. Internal/non-anonymous evidence.",
+  "input_audit_content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+  "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "inputs": {
+    "auxiliary": {
+      "file": "auxiliary-costs.json.gz",
+      "archive_sha256": "0c4e62ce5421413279fcaba445ca61e7b2d40a45943b7c138a4dd338365deb55",
+      "uncompressed_bytes": 2542378,
+      "uncompressed_sha256": "6786eb7791f98d716a61293efd32c454c8e0e5a65a58f241dc92ea7bdde0a938",
+      "schema": "scienceutopia.native-auxiliary-model-costs.v1",
+      "content_sha256": "59b72c7f49a61f0b3484de25a6d0101059b5f14798d0c031afefa94d063afc68"
+    },
+    "scientist": {
+      "file": "scientist-token-costs.json.gz",
+      "archive_sha256": "134582671ce2867e05c0a674fb274cf767f269ca2a490c29eee0edc229a80355",
+      "uncompressed_bytes": 392913,
+      "uncompressed_sha256": "c49319df4dacded07146e497375ef555d20223da52df0d1c4fac63c0ff342f7c",
+      "schema": "scienceutopia.native-scientist-token-costs.v1",
+      "content_sha256": "29091c00dac6b20576e1dc03d45318c18118e0d99b9878645b45155bc014f11e"
+    }
+  },
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "public_or_anonymous_release_cleared": false
+}
