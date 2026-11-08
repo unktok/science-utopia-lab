@@ -4112,3 +4112,23 @@ Keep all remaining45 scheduled jobs, including any original failures/nulls;
 do not require positive results or replace a failed slot. Actual normal writer
 closure and both full adapted audits still precede final measured analyses,
 costs, figures, manuscript/PDF, final packaging and research/submission judgment.
+
+### Eight exact policies cover all declared conditions:48/90
+
+Recent goal turns are verified waits through46/47 normal records, with the
+same actual writer46865 live. Previous turn tracks job0047 advancing21/41/56/65
+requests and saving year0–2 checkpoints. This turn polls that handle while
+requests advance92/102/113/127, year3 is saved and the normal observation is
+written. At Nov8 03:09:50UTC progress/normal records agree48/90; job0048 is
+started with1 request, no writer.ended record. Both checkouts are clean before
+this documentation update.
+
+The read-only join of the first48 immutable jobs and normal observations now
+confirms eight exact policies with all five two-year seeds and the separate
+seed31001 four-year diagnostic: the preceding seven plus reviewer-free accept-all.
+Shared initial-selected labels are not extra physical replications. Next is
+reviewer-free reject-all. Evaluation-plan SHA256 remains e1b96a51 (full original
+hash checked) and its bytes remain unchanged after inspection. No restart/refill,
+extra inference, source/model/prompt/loss/selection/budget change or new registry
+query is initiated by analysis. All remaining42 jobs and normal actual writer
+closure, both full adapted audits and final empirical deliverables are pending.
