@@ -551,6 +551,8 @@
   "new_model_calls": 0,
   "new_code_executions": 0,
   "not_total_project_compute": true,
-  "unreviewed_paired_png_count": 36,
+  "paired_png_count": 18,
+  "paired_svg_count": 18,
+  "unreviewed_paired_png_count": 0,
   "publication_or_upload": false
 }

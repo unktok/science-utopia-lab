@@ -1,0 +1,57 @@
+{
+  "schema": "scienceutopia.native-design-v2-manuscript-qa.v1",
+  "date": "2026-11-08",
+  "source_commit": "b5bf44cd18dfafb9910d738789471bfe4050a4d6",
+  "clean_before_and_after_tests": true,
+  "tests": {
+    "passed": 169,
+    "failed": 0,
+    "seconds": 24.01,
+    "xml": "outputs/publication-benchmark-v2-verification/v2-empirical-manuscript-b5bf44c.xml",
+    "xml_sha256": "c0adbdea4ceed97e95686c1885dfe687edbb7c7a9a86854ed5e04ac6cd642af4",
+    "scope": "V2/previous PDF source/asset binding, actual retained counts/ties/raw-score arithmetic, both source-bound table/figure modules, costs, and old paper-rebuild staging. No inference or new scientific observations."
+  },
+  "pdf": {
+    "path": "output/pdf/science-utopia-lab-objective-design-v2-draft.pdf",
+    "sha256": "964c08a7daf5e4a4db96c16001d26e1e1db78d86564554aecb290a8770fb1f17",
+    "pages": 12,
+    "build_receipt": "paper/submission-build-v3.json"
+  },
+  "paired_figure_visual_qa": {
+    "manifest_content_sha256": "0585db460dc6bfe7e8f2008c8dc48c63918773fac725d20e05502ba3ab28d632",
+    "manifest_file_sha256": "c06724d86b1ffd0fbab31ba53e4bd710e9ed5acb9fc1c31ffeb0ea39a181ddcb",
+    "actual_png_hashes": {
+      "legacy-2y.png": "4af69f51d556c68b194e6858bbf871bc98eb09c50440f063aa2c92a2e7fe7b10",
+      "legacy-4y.png": "a77424a5e8586237e4c7439fe48179fd9dde8f1753513ea85f3cf40184f18c54",
+      "open-accept-all-2y.png": "1399613c206c45ec9a80617bad9cf366726550c7b59a706893fcfafa32066da9",
+      "open-accept-all-4y.png": "2e9c9c97990afb1fe94b2173309a3c44318e4ee79520cb835e19a94c1618a2c9",
+      "open-no-review-accept-all-2y.png": "b86fa8d070cee2ce3aff50b9e16e263147c06cf5f96ec0fbbf27574c91632413",
+      "open-no-review-accept-all-4y.png": "9525907c7238ed05e8152c9c13fb576259248a8d603a077ea48e0ae21d8e5633",
+      "open-no-review-reject-all-2y.png": "093393b1852afe2a0f3377e977ce8c0b1cb37914b493a4106e73eb99a5e2c789",
+      "open-no-review-reject-all-4y.png": "504986284c2fd491162f1d81e41238f6738db02f25179f1b63bd24cd57fd43d7",
+      "open-rank-rate-2y.png": "8d75ce39753ce9ffaea279a35b342aebd9e568f6eae4c2bed96b457a251ccfee",
+      "open-rank-rate-4y.png": "e2e91cc103b2ef32702e2fe0321f1fb920d8824ad62175f8981092b59b24acf8",
+      "open-reject-all-2y.png": "4c9c2436a54f82bd7770dcd5a2262d110bdad3ca53c0e9cc4d1c1a9df66ea50b",
+      "open-reject-all-4y.png": "16e9d21bb2d1f5bf407757d6a02bcde90400ae725f0bbfe9dbc864818732ec38",
+      "open-score-3-2y.png": "a0cf0a884c9063f553163beeb50fe3b798366e0231013360d04d6994c9a4a933",
+      "open-score-3-4y.png": "3aa164c2a885fec202316d4aa3ffece1897fa479987534cbc74d8a5333fd2333",
+      "open-score-4-2y.png": "904fdbdb7ad0daa943d35175c3e076a619d9fcc37e59a51e6f2a411122eb0c4c",
+      "open-score-4-4y.png": "94bb140318354ce58f6260067c7d647b70a8dbeca64ed6ad00a587e6e39e1335",
+      "open-seed-2y.png": "f4d6b76547dfc0d273b085d977bd7134c3eb57c4d87424b89af6fab5a9150592",
+      "open-seed-4y.png": "533b5b976eb0b3762fe556ba211fb54a3b801449708138b65b948a645e5b2e78"
+    },
+    "all_pngs_individually_viewed": true,
+    "clipping_overlap_or_broken_labels_found": false,
+    "inventory_correction": "Earlier log/closure prose called the 36 paired PNG/SVG artifacts 36 PNGs. Actual inventory is 18 PNG plus 18 corresponding SVG (9 references x 2 horizons); no extra scientific samples.",
+    "native_svg_files_not_separately_rendered": true,
+    "replication_or_significance_claimed": false
+  },
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "published_or_uploaded": false,
+  "remaining": [
+    "Numerical rebuilding subset and current V2 paper-only staged rebuild",
+    "Rights/license/anonymity and current venue policy review",
+    "Mock review and evidence-based submission judgment"
+  ]
+}

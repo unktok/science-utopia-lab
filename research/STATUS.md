@@ -99,7 +99,8 @@ local-designer learning evidence. See the [full program map](program-map.md).
    explicitly recorded; the unmodified frozen CLI has not passed. Actual
    closed-audit reports/figures/costs are generated. Complete the interpretation
    of all losses, failures, identities, lineage, paired outcomes, physical sharing,
-   mechanisms and measured costs, plus final print-size/paired-figure review.
+   mechanisms and measured costs. Final print-size PDF and all18 paired PNGs
+   are now individually reviewed; [169-check/visual QA](results/native-design-v2-manuscript-qa-v1.json).
 4. The claim-centered V2 manuscript/figures are now built and all12 pages inspected.
    Complete numerical/rebuild packaging, rights/anonymous-release review and final mock review.
    Actual submission, external costs/new resources and authorship require user confirmation.

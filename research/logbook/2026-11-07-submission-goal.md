@@ -4512,3 +4512,24 @@ retained in paper/submission-build-v3.json. No future-cycle compliance, anonymou
 clearance, superiority, graph invention, authorship or actual submission claimed.
 The36 paired-analysis PNGs are still awaiting separate visual review; numerical
 rebuild packaging, rights/anonymity review, mock review and final judgment remain.
+
+### V2 manuscript checks pass; paired inventory correction and visual review
+
+At clean b5bf44cd18dfafb9910d738789471bfe4050a4d6, the combined offline batch
+passes169 checks in24.01s (new V2 and preserved old PDF/assets, report/table/
+figure arithmetic, measured-cost semantics and existing rebuild-staging tests).
+Actual XML SHA256 c0adbdea4ceed97e95686c1885dfe687edbb7c7a9a86854ed5e04ac6cd642af4.
+HEAD/runtime remain unchanged throughout; no tests fail or model calls occur.
+A pre-commit whitespace check had reported one extra blank line at README EOF;
+it was removed in b5bf44c before this batch, not a scientific/runtime defect.
+
+Correct the earlier inventory description: the36 paired artifacts are18 PNG
+and18 corresponding SVG, not36 PNG. They cover9 references x2 horizons, each
+containing both objective panels. All18 actual PNGs are now individually viewed
+with legible labels/legends and no overlap/clipping; exact PNG bytes match the
+existing full-audit-bound figure manifest. SVGs are not separately rendered.
+Record per-PNG hashes and verification scope in
+results/native-design-v2-manuscript-qa-v1.json; update current pending counts
+and compact-paper-evidence hash, without changing the reviewed PDF or raw data.
+Numerical/rebuild packaging, rights/anonymity review, mock review and final
+submission judgment remain; the full goal stays active.
