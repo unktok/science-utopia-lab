@@ -4396,3 +4396,36 @@ exits and exact byte comparison are still required. Repeating the same auditor
 does not establish independent methodological validation or add scientific
 observations. No experiment re-execution, new model calls, extra study slots,
 source change or provisional final-result claim is made.
+
+### First full audit passes; manuscript table projection fills a reporting gap
+
+Actual exec84724 returns exit0 with full audit schema, content SHA256
+eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45.
+Its714MiB output file SHA256 is
+c4399dae873eee21d8ec8de5f4b6231bd48c0f70f7475b9ab836662b1f13843b.
+This is the complete original b6654ad audit body using the explicit order-only
+adapter at clean68ab582, not the unmodified frozen CLI. Second exec22032 is
+still live; two-audit success/exact comparison and empirical projections remain
+pending. No experimental inference is resumed.
+
+Read-only manuscript inspection finds that the current11-page PDF remains
+V1/S1 results plus V2 protocol. V2 path/evaluation figures exist as reporting
+code, but there is no source-derived V2 LaTeX search table. Implement the latter
+in separate native-design-paper-tables-v1 worktree, committed at
+ac4bc8e60f41cb59a3163764d4b52ec4f672a6a5. It rejoins120 distinct rows, all
+three histories, common initial values, assigned cross-scores, null types,
+fixed representatives and all exact chronology ties before display rounding.
+It marks initial selections and SCRIPTED inputs, writes data/TeX/hash manifest
+only to fresh output, and neither audits raw worlds nor changes selection.
+
+Twenty new unit checks pass. First combined batch preserves49 passes/8 fixture
+setup errors because the requested pytest basetemp's parent tmp is absent.
+Create that directory and use fresh basetemp/JUnit paths without changing code:
+57 checks pass in10.57s at the same clean commit. A synthetic one-page table
+is built cached/untrusted and rendered at150dpi; every page is individually
+viewed with no overlap/clipping. Two initial cached-build failures (missing
+default CMR font and times.sty) are preserved; using the existing manuscript's
+rmdefault=ptm resolves the preview without downloads. Hashes/scopes/failures:
+results/native-design-tex-qa-v1.json. These are SCRIPTED software/layout QA,
+not actual V2 outcomes, a final paper/PDF revision or extra scientific samples.
+The frozen experiment and pinned audit checkout remain untouched.

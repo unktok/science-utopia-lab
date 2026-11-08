@@ -1,0 +1,55 @@
+{
+  "schema": "scienceutopia.native-design-manuscript-table-qa.v1",
+  "classification": "SCRIPTED-QA-NOT-EXPERIMENTAL-RESULTS",
+  "analysis_source_commit": "ac4bc8e60f41cb59a3163764d4b52ec4f672a6a5",
+  "projection_source_sha256": "d69b5d21f54524ef480f303c67c6a6bfee18dae85002a74032048a708a65b1f0",
+  "test_source_sha256": "476f03b98f21fbbfba648a94d0594c39c06425e5e76d5d4e1800329d05ac17b0",
+  "verification_worktree_role": "native-design-paper-tables-v1",
+  "tests": {
+    "passed": 57,
+    "seconds_reported": 10.57,
+    "exit_code": 0,
+    "junit_relative_path": "tmp/native-design-tex-qa-v2.xml",
+    "junit_sha256": "f5c39f6cf5055b5bbc53c041434887b3c3472d2182bd0998baea4ebabca6ec56",
+    "scope": ["20 new table regressions", "closed report projection regressions", "repository document and submission artifact checks"],
+    "head_and_tracked_runtime_unchanged_during_checks": true
+  },
+  "preserved_setup_failure": {
+    "junit_relative_path": "tmp/native-design-tex-qa.xml",
+    "junit_sha256": "949d661e12833b15fc791bb02b2b66dbe9fedee90ed6937e898696f858b05988",
+    "passed": 49,
+    "fixture_setup_errors": 8,
+    "reason": "pytest --basetemp parent tmp did not exist before the first fixture setup",
+    "response": "create tmp parent, use a fresh basetemp and JUnit output, repeat identical committed code; do not relabel first result"
+  },
+  "scripted_generated_files": {
+    "search-outcomes.tex": "42239e69ad003bce7c1d51cef05a1a34d702c4e7bb7a994921bc13c5c4eced60",
+    "search-outcomes-data.json": "359197580173e2a81542246625e9c519f4dbef4c7e79349b9f5931df00eca174",
+    "manifest.json": "c0a6ee58a37de043a1ee828e80ebe2c8627e450f399dac1343ec9a8e38ef7f5b"
+  },
+  "visual_check": {
+    "preview_relative_root": "tmp/pdfs/native-design-table-preview",
+    "pages": 1,
+    "render_dpi": 150,
+    "all_pages_individually_viewed": true,
+    "layout_overlap_or_clipping_observed": false,
+    "scripted_qa_label_visible": true,
+    "tectonic_mode": "--only-cached --untrusted --keep-logs --keep-intermediates",
+    "new_downloads": 0,
+    "pdf_sha256": "ecefc71bd71f5e93b9cd4a8aff93f38c1091246d6db964f2d5ba690e87e577df",
+    "png_sha256": "49e656c8f8d6b96456b58b93e3d294ee6086523ee2266790211cafbd9290dd2c",
+    "successful_build_log_sha256": "23052a5517d2cdefa41f49915d7e85b000ba3d641aef2870898c1dd36834ba75",
+    "preserved_missing_cmr_font_log_sha256": "b8de3bbf003ef4be8ae895e3fcc86eb0e1f4b523f2e5ee8c3d4b24404e46e2a7",
+    "preserved_missing_times_sty_log_sha256": "997d4c04dc37627ee72300cfb973e2037607aadb1eb0d797781a715e8b9b7cbf",
+    "resolution": "use the existing manuscript's rmdefault=ptm before T1 encoding, without fetching fonts or packages"
+  },
+  "limits": [
+    "Synthetic table projection and layout QA, not actual V2 results or a full raw audit",
+    "No empirical manuscript source/PDF updated by this verification",
+    "Source-bound final report and both successful full audits remain required for actual-result use",
+    "Table recomputation checks exact selection/ties, not semantic institutional novelty or method superiority"
+  ],
+  "new_model_calls": 0,
+  "new_generated_code_executions": 0,
+  "content_sha256": "bad8f22348018404e9f1abf472b4e336b04bff6ee680c72c111087407f73280e"
+}
