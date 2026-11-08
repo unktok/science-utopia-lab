@@ -4132,3 +4132,17 @@ hash checked) and its bytes remain unchanged after inspection. No restart/refill
 extra inference, source/model/prompt/loss/selection/budget change or new registry
 query is initiated by analysis. All remaining42 jobs and normal actual writer
 closure, both full adapted audits and final empirical deliverables are pending.
+
+### Verified evaluation wait through50 normal observations
+
+Previous goal turn is a verified wait through49 records, with actual handle46865
+live and job0049 started. This turn repeatedly polls that same handle as job0049
+advances25/45/60 requests and completes. Its normal observation exists by Nov8
+03:18:55UTC, briefly ahead of progress49. At03:19:38UTC progress/normal records
+agree50/90; job0050 is active with8 requests, no writer.ended record. Both
+checkouts are clean before this update. Rechecked plan/selection/evaluation-plan
+file hashes remain ec9107d4/e71b9e87/e1b96a51, matching their full original values.
+No restart/refill, extra inference, source/model/prompt/loss/selection/budget
+change or registry query is initiated by analysis. Remaining40 jobs and normal
+actual writer closure, both full adapted audits and final empirical analysis/
+figures/costs/manuscript/package/mock-review work remain required.
