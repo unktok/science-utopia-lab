@@ -4092,3 +4092,23 @@ source/settings/loss/selection/budget change or registry query is initiated by
 analysis. This is verified waiting, not a full raw audit or final result report.
 The fixed90 observations and normal actual writer exit are still required
 before both full adapted audits and empirical analysis/manuscript/package work.
+
+### Half of the fixed physical evaluation jobs:45/90
+
+Previous goal turn is a verified wait through42 records, with actual handle46865
+live and job0042 started. This turn repeatedly polls that same handle while
+job0042 advances35/54 requests and completes; job0043 advances16/30/48/62 and
+completes; job0044 advances10/29/39/60 and completes. Its normal observation is
+present by Nov8 02:49:38UTC, briefly ahead of progress44. At02:50:28UTC progress
+and normal observation count agree45/90; job0045 is active with3 requests and
+no writer.ended record exists. Both checkouts are clean before this update.
+
+Recheck immutable plan/selection/evaluation-plan file SHA256 values: they remain
+ec9107d4/e71b9e87/e1b96a51, matching the complete originally recorded hashes.
+No restart/refill, extra inference, source/model/prompt/loss/selection/budget
+change or new registry query is initiated by analysis. Half the physical
+evaluation jobs are complete, not half of the whole submission research package.
+Keep all remaining45 scheduled jobs, including any original failures/nulls;
+do not require positive results or replace a failed slot. Actual normal writer
+closure and both full adapted audits still precede final measured analyses,
+costs, figures, manuscript/PDF, final packaging and research/submission judgment.
