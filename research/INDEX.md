@@ -8,7 +8,7 @@ Historical documents retain their paths and source identities.
 
 - [Autonomous submission goal](publication/submission-goal.md): milestones and evidence-based completion criteria.
 - [Fixed objective/design-freedom study](protocols/campaigns/native-design-freedom-v2.md):
-  search finished, selected-policy evaluation underway; see current STATUS.
+  search and all90 selected-policy evaluations finished; full audit underway. See current STATUS.
   [Source-specific software QA](results/native-design-freedom-v2-verification.json)
   and the later [audit-order component diagnostic](results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
   have different scopes. The [order-only correction verification](results/native-design-freedom-v2-audit-order-verification-v1.json)

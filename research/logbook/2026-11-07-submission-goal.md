@@ -4339,3 +4339,38 @@ No restart/refill, experiment source/model/prompt/loss/budget/selection change,
 extra inference or registry query is initiated by analysis. Remaining6 jobs,
 actual normal writer closure, both full adapted audits and final empirical
 analysis/figures/costs/manuscript/package/judgment remain required.
+
+### All90 evaluations and the actual writer close normally; first full audit starts
+
+Recent goal turns are verified waits through85/86/87/88/89 normal observations,
+confirming the same live writer46865 and next fixed job. Previous turn tracks
+job0089 through23/37/61/73 requests. This turn observes96/119/129/144 requests;
+at Nov8 06:57:07UTC all90 normal observations exist, briefly ahead of the final
+progress/terminal records. It does not start a full audit at that point.
+
+Writer72837 closes at2026-11-08T06:58:09.115534+00:00. The actual exec handle
+46865 then returns exit_code0. writer.ended exactly matches writer.started
+except the declared normal exit fields, and progress.stage is closed with
+90 consumed evaluation slots. Terminal file SHA256:
+df4aa0b1817401d7900288355823d3b2c0b7674270b5221d867236f4329793d8.
+Writer wall interval is78958.697204s, not measured GPU/energy or whole-project
+compute. Read-only join confirms90 complete observations and15 exact policies,
+each with all six fixed conditions;19 logical labels share those evaluations.
+Evaluation-plan file SHA256 remains original e1b96a51 (full hash checked), with
+unchanged bytes after inspection. No selection, ties, slots or conditions change.
+
+After closure, invoke the full adapter directly in the clean committed analysis
+checkout68ab58250a3b9708982e1848be3c0856c6084dbd, using the approved project
+interpreter and frozen b6654adefc42223f9ecc7b4e53c043c879230f68 source:
+`scripts/audit_native_design_benchmark_order.py --run <raw-root> --source-tree
+<frozen-b6654ad> --expected-source b6654adefc42223f9ecc7b4e53c043c879230f68
+--output outputs/publication-benchmark-v2-verification/native-design-freedom-v2-full-audit-1.json`.
+All paths are absolute in the actual invocation; output is outside raw/frozen
+roots. No check-order-only flag. Adapter/helper hashes match460d4e3e/c56859bb
+(full values checked). Actual audit exec84724 is live with no result yet.
+This is an attempted full audit, not a passed one or an unmodified frozen-CLI
+pass. A second full audit and byte comparison remain required. Main-only docs
+updates do not alter the frozen experiment or pinned analysis checkout.
+No new model/generated-code calls, restart/refill or registry requests. Both
+full audits and final empirical analysis/figures/costs/manuscript/package/
+submission judgment remain required before goal completion.

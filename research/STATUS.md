@@ -14,11 +14,12 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 references | All9 fresh same-source reference worlds complete |
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
-| Selected-policy evaluation | Started Nov7 22:39:08UTC; at Nov8 06:24:36UTC84/90 normal observations, job0084 active with0 requests and actual writer handle still live. All14 preceding exact policies cover all declared conditions; the last selected policy (throughput uniform numeric) accounts for6 scheduled jobs, including the active job.19 logical labels share15 exact policies overall;90 physical jobs, not the114-job upper bound |
-| Closed V2 audits and results | Not yet available. Order-only correction passes74 tests/two byte-identical real-data component replays, without changing the experiment; full audits await normal writer closure |
+| Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
+| Closed V2 audits and results | First full adapted original-source audit now running from clean analysis68ab582; results not yet available. Order-only correction previously passed74 tests/two byte-identical real-data component replays, not full-study audits |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
-The actual writer is PID72837, started09:02:10UTC, at clean frozen source
+The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
+06:58:09UTC, at clean frozen source
 b6654adefc42223f9ecc7b4e53c043c879230f68. Plan SHA256:
 57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25.
 Fixed Qwen3-8B researchers, approved local35B designer, original five-researcher
@@ -84,15 +85,16 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 ## Required work before submission judgment
 
-1. Finish the fixed90 unused-condition evaluation jobs without returning results
-   to the already closed search or changing selection/ties. Do not refill failures.
+1. Execution complete: all90 fixed unused-condition evaluation jobs have normal
+   observations and the actual writer exited0. Selection/ties are unchanged;
+   there were no failed-slot refills. This is not yet full audit completion.
 2. Use the separate versioned analysis adapter for the
    [reproduced audit-order defect](results/native-design-freedom-v2-audit-order-diagnostic-v1.json).
    [Verification](results/native-design-freedom-v2-audit-order-verification-v1.json)
    covers74 tests and two identical order-only component replays, not a full audit.
    Do not edit the frozen checkout, raw plan/selection or suppress chronology checks.
-3. After normal writer closure, run two source-bound audits with the correction
-   explicitly recorded; the unmodified frozen CLI has not passed. Apply the integrated
+3. Run two source-bound audits with the correction explicitly recorded; first
+   now running after verified normal closure. The unmodified frozen CLI has not passed. Apply the integrated
    closed-audit reports/figures: all losses, failures, identities, lineage,
    paired raw outcomes, missingness, physical sharing, mechanisms and measured costs.
 4. Update the claim-centered manuscript/figures, rebuild and inspect every PDF page,
