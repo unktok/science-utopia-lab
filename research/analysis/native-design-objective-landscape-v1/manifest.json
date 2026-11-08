@@ -1,0 +1,19 @@
+{
+  "analysis_content_sha256": "0efa6194154fe186ce58cc12f5fd459f995c288403af3e14b78686b593c7a4a5",
+  "analysis_source_commit": "0cf53668984ec3d62d772f9d70d905411207e246",
+  "content_sha256": "541d7abba2bdc4659eeda28c417e2007d483d3cda5fb025f4844845f6aab5b37",
+  "files": {
+    "analysis.json": "126023f8e05104086dbfee30870efe41c59c5de43a2e94e25972e3eafdc39c41",
+    "observed-objective-map.png": "4d05cdd5f49e8d7021a5b5b5a62b4e9e6db587dc5b32faee973b920e99bec81f",
+    "observed-objective-map.svg": "908cf3dc01add08da25bb59c69f4dba8a4d46454fe341c0aa6fad0debfebf10c"
+  },
+  "input_files": {
+    "research/data/native-design-v2/closed-report.json.gz": "e5763ba6f9bb606efe4338e6c130f326d9bba1090a83c2d13a32558c75cf305d",
+    "research/data/native-design-v2/manifest.json": "514ad56d555976def63e7527740588af03312754fdc52d2c7629c7c65417e7ed"
+  },
+  "input_report_content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732",
+  "new_generated_code_executions": 0,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "schema": "scienceutopia.native-objective-landscape-analysis.v1.files"
+}
