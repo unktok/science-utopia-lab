@@ -4146,3 +4146,25 @@ No restart/refill, extra inference, source/model/prompt/loss/selection/budget
 change or registry query is initiated by analysis. Remaining40 jobs and normal
 actual writer closure, both full adapted audits and final empirical analysis/
 figures/costs/manuscript/package/mock-review work remain required.
+
+### Reference policies' unused two-year conditions complete;53/90 overall
+
+Recent goal turns are verified waits through51/52 observations with actual
+writer46865 live. This turn polls that same handle while job0052 advances
+14/37/54 requests and completes. Its normal observation exists by Nov8
+03:33:37UTC, briefly ahead of progress52. At03:34:32UTC progress/normal records
+agree53/90; job0053 is active with5 requests, started03:34:04.111215UTC at
+seed31001/four years. No writer.ended record exists. Both checkouts are clean
+before this update.
+
+Read-only join of the first53 immutable evaluation jobs and normal observations
+confirms nine exact reference policies each with all five declared two-year
+seeds:45 evaluation worlds. Eight additional four-year diagnostics complete;
+the ninth, reviewer-free reject-all, is now running. Do not pool those horizons
+or count shared initial-selected labels as extra independent replications.
+Evaluation-plan SHA256 remains the original e1b96a51 (full hash checked), and
+bytes are unchanged after inspection. These condition/status checks are not
+the pending full source-bound audit or final scientific scores. No restart/
+refill, extra inference, source/model/prompt/loss/selection/budget change or new
+registry query is initiated by analysis. Remaining37 jobs, actual normal writer
+closure, both full adapted audits and final empirical deliverables remain.
