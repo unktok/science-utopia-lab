@@ -105,8 +105,10 @@ local-designer learning evidence. See the [full program map](program-map.md).
 4. The claim-centered V2 manuscript/figures are now built and all12 pages inspected.
    Numerical/PDF rebuilding passes at clean e3f4ee7. A bounded rights/venue review,
    author-redacted preparation variant and provisional mock review now exist.
-   Finish the named analysis-output audit (per-method cost/outside measurements),
-   and final requirement-by-requirement judgment. Exact author-redacted13-path
+   The named all-trial cross-score/per-method cost/outside-metric supplement now
+   reconstructs successfully; [interpretation](publication/supplemental-analysis-v2.md)
+   and [62-check/actual-render verification](results/native-design-v2-supplement-verification-v1.json).
+   Finish final requirement-by-requirement judgment. Exact author-redacted13-path
    staging/rebuild now passes, including50 checks and all12 rendered-page byte
    comparisons; [verification](results/native-design-v2-review-preparation-verification-v1.json).
    Actual submission, external costs/new resources and authorship require user confirmation.

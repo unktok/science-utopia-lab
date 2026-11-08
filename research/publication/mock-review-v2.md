@@ -15,8 +15,10 @@ significance. This judgment is not a candidate filter, objective change or a
 reason to erase failures.
 
 The material can receive substantive collaborator review, but the completion
-audit still must check named analysis outputs, per-method costs/outside metrics
-and packaging boundaries. This provisional review does not complete the goal.
+audit still must check all requirements and packaging boundaries. The named
+cost/outside-metric presentation gap is now closed by the
+[supplement](supplemental-analysis-v2.md); its new tables do not change the
+scientific significance assessment. This provisional review does not complete the goal.
 
 ## Lens1: technical support
 

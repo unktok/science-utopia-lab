@@ -1,0 +1,11 @@
+arm,scheduled_slots,designer_request_intents,designer_final_signals,designer_host_seconds_known_sum,designer_host_seconds_all_known,native_recorded_responses,native_completed_only_model_seconds,native_recorded_world_directories,native_recorded_code_executions
+throughput:parameters,12,192,192,2497.232836751966,True,0,0.0,0,0
+throughput:code-fixed-graph,12,172,172,2219.05007103784,True,859,2642.802123785019,11,78
+throughput:code-and-graph,12,168,168,2413.359129294986,True,739,2007.408313035965,12,71
+throughput:technical-only,12,168,168,2318.910753214732,True,745,2287.3586871623993,12,73
+throughput:random,12,0,0,0.0,True,1097,3474.1740498542786,12,108
+selective:parameters,12,192,192,2580.8924641688354,True,0,0.0,0,0
+selective:code-fixed-graph,12,168,168,2519.6733234159183,True,682,1985.4775054454803,12,70
+selective:code-and-graph,12,167,166,2770.8218520851806,True,826,2511.1024537086487,12,78
+selective:technical-only,12,160,159,2361.92710596323,True,459,835.8325169086456,12,54
+selective:random,12,0,0,0.0,True,1107,3570.3673861026764,12,108

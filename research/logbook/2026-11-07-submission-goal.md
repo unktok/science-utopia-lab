@@ -4637,3 +4637,46 @@ results/native-design-v2-review-preparation-verification-v1.json. No source/HEAD
 change during the checks and no model/code-world dispatch or external release.
 Named per-method cost/outside-metric presentation and final completion/judgment
 audit remain; the full goal stays active.
+
+### Named analysis outputs: full cross-scores, method costs and outside metrics
+
+Work in v2-analysis-completion-v1 from b3d0221, without changing any frozen
+experiment, source auditor, objective, selection or raw observation. Inspect
+the existing closed projections rather than run another inference campaign.
+Initial bounded jq shape queries incorrectly assume a list/proof step field;
+correct them from actual source keys. These are analysis-query errors, not
+experimental failures or new audit outcomes. Keep raw bodies/costs unchanged.
+
+Retain exact compressed auxiliary and scientist-cost projections (160930 and
+24401 bytes), bound by supplemental-inputs.json. At clean ec134ec,61 tests pass
+1.71s and actual supplement reconstruction exits0. Five figures/four CSVs/full
+numeric JSON bind all120 cross-score rows,30 method/history cells,10 pooled
+method rows,90 physical evaluations and38 label/horizon metric summaries.
+All failed author steps are charged; missing timing is not0. Scientist replies
+include partial worlds; completed-only scientist seconds are explicitly scoped.
+
+At773bfd2f946694351be88a13d823a34f01b08d91, clarify the null-marker wording,
+uniform x=0 tick and full activity axis; add full rendering regression.62 tests
+pass3.30s, actual CLI exits0 into a fresh V2 directory. Numeric supplement
+bytes are identical across both render iterations; all five PNGs are visually
+reviewed (two cross matrices byte-identical to first inspected images, three
+final PNGs newly viewed). Source remains clean throughout.
+
+Actual pooled search costs:1387 designer requests,1385 final response signals,
+19681.867535932688 host model seconds;95 native world directories comprise64
+complete and31 execution-null worlds.25 generation-null slots dispatch no world.
+Recorded search scientist replies6514, institution-code executions640. No
+designer/native/provider/load times are added into a supposed total.
+All64 complete development worlds and all90 physical evaluations end with5
+active original authors; this snapshot gives no observed activity separation,
+not evidence of equal lifetime participation. Outside resource differences
+remain descriptive, not isolated institutional causal benefits or new vetoes.
+
+Retain the actual15 generated files plus manifest under
+paper/generated/native-design-v2-supplement, an interpreted method-cost table
+and all plots in publication/supplemental-analysis-v2.md, with exact QA/source/
+artifact hashes in results/native-design-v2-supplement-verification-v1.json.
+The component-time axis is not end-to-end wall time; only overall writer wall
+is known here. Raw per-trial wall-time allocation is not fabricated.
+No new model/code-world calls, source audit or external release is performed.
+The final requirement-by-requirement audit and submission judgment remain.

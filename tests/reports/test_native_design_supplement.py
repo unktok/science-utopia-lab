@@ -120,3 +120,15 @@ def test_all_five_supplement_panels_render_without_mutating_numbers(tmp_path, da
     assert {p.stem for p in tmp_path.glob('*.png')}==expected
     assert len(list(tmp_path.glob('*.svg')))==5
     assert digest(data)==before
+
+
+def test_retained_actual_supplement_and_all_artifacts_match_manifest(data):
+    path=module.ROOT/'paper/generated/native-design-v2-supplement'
+    manifest=json.loads((path/'manifest.json').read_text())
+    assert manifest['content_sha256']==digest({k:v for k,v in manifest.items() if k!='content_sha256'})
+    assert len(manifest['files'])==15
+    for name,value in manifest['files'].items():
+        assert module.sha((path/name).read_bytes())==value
+    assert json.loads((path/'supplement.json').read_text())==data
+    assert sum(r['native_recorded_responses'] for r in data['pooled_method_costs'])==6514
+    assert sum(r['native_recorded_code_executions'] for r in data['pooled_method_costs'])==640

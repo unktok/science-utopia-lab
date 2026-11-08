@@ -76,7 +76,11 @@ The [author-redacted local draft](submission-v2-anonymous.tex) now has its own
 differs. It is not target-cycle format or full anonymity/release clearance.
 See [release review](../research/publication/release-and-venue-review-v2.md) and
 [provisional mock review](../research/publication/mock-review-v2.md). Named
-analysis outputs still need the completion audit. The13-path author-redacted
+analysis outputs are now covered by the [completed supplemental analysis](../research/publication/supplemental-analysis-v2.md):
+all120 cross-scores, per-method costs, component-time paths and outside native
+measurements. CSV/JSON/PNG/SVG artifacts and rebuilding instructions accompany
+the paper; no original manuscript/PDF values or selections are changed.
+The final completion/judgment audit remains. The13-path author-redacted
 subset now actually stages and builds offline, with identical text and all12
 page PNGs versus the inspected variant; [50-check/staging proof](../research/results/native-design-v2-review-preparation-verification-v1.json).
 Authorship, actual submission and external release require user confirmation.

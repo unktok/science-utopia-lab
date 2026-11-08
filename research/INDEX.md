@@ -23,6 +23,8 @@ Historical documents retain their paths and source identities.
   [initial related work](publication/related-work.md).
 - [V2 rights/venue review](publication/release-and-venue-review-v2.md) and
   [provisional mock review](publication/mock-review-v2.md): self-critique, not independent peer review.
+- [Actual V2 supplemental analysis](publication/supplemental-analysis-v2.md):
+  all-trial cross-scores, method-component costs, activity/resources and raw outside metrics.
 - [Reproducible four-study evidence inventory](results/publication-evidence-inventory-v1.json).
 - [Feedback control implementation](components/native-feedback-control-v1.md) and
   [prospective finite comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md).

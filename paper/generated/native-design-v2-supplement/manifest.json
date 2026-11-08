@@ -1,0 +1,33 @@
+{
+  "analysis_source_commit": "773bfd2f946694351be88a13d823a34f01b08d91",
+  "content_sha256": "ed391bf5eb381d3502608516765bc9fc0f7b5ee4060c726163f7f717e1230410",
+  "files": {
+    "all-cross-scores-selective.png": "3e2ee3b91853f2ab5289bd7d0ed7e50fdfd38ce9646e1bcf0eb4e3d431a95f34",
+    "all-cross-scores-selective.svg": "ce16770b250025ae5b09123074404a51d2bc673713ddfa083435f0f199f9d3ac",
+    "all-cross-scores-throughput.png": "abf56f12fe47670938a28d6ad048b8b14f1f2794d9673ce714aa8d81b394ac77",
+    "all-cross-scores-throughput.svg": "cd95a79a2b5aece31df6e8dcf0a433b6372b1a018c13e2fd2a026d6a9da0852d",
+    "all-search-observations.csv": "172162741e9a1e6f962bb558eed8ec51dbac41609432679af4c20f7031861070",
+    "designer-cost-paths-selective.png": "c75c34bb8bd12dcde5c0c97a735da3a0cbfedd8bd988745dacaade2f636aa366",
+    "designer-cost-paths-selective.svg": "ede31733497bf971d705cb80d14790e459c39c621ed95daa2346ba563b929d83",
+    "designer-cost-paths-throughput.png": "d2d453418f0477aa4d00a34647dd0dd3c63f939e3808faaa2fc78cb9d477ad14",
+    "designer-cost-paths-throughput.svg": "9b9deca12197e9de0a07d0ed35f54d2433aefb624a9eef797cb07e3dffc273ab",
+    "evaluation-physical-observations.csv": "fb3b209d6a21ce6e0be3b24c15385011d46ce5e745f82372c022b73c35ca3d74",
+    "outside-activity-resources-2y.png": "5f31ecfec84a399636d0fd1d8fd771deb41d7c4e5f78fe39ece301b74d5fed5c",
+    "outside-activity-resources-2y.svg": "a68bf4e8db0015ab316dcfe7892e4a3ad26482ff00bb2e7ba6ea4647dbd94386",
+    "per-history-method-costs.csv": "596686e98601f3d8a8790cc3a1d88eb03cca7f139e832e870ed8f3355b920925",
+    "pooled-method-costs.csv": "a0c80ab0b3012818bc65dc86e8bb19b422b7d5d55c3d7dc6cd1af6b87638b5d2",
+    "supplement.json": "222a094248d599069de69e3b78f4212f7d50873d5a1232a9eb8dc0a9b76998c2"
+  },
+  "input_file_sha256": {
+    "research/data/native-design-v2/auxiliary-costs.json.gz": "0c4e62ce5421413279fcaba445ca61e7b2d40a45943b7c138a4dd338365deb55",
+    "research/data/native-design-v2/closed-report.json.gz": "e5763ba6f9bb606efe4338e6c130f326d9bba1090a83c2d13a32558c75cf305d",
+    "research/data/native-design-v2/manifest.json": "514ad56d555976def63e7527740588af03312754fdc52d2c7629c7c65417e7ed",
+    "research/data/native-design-v2/scientist-token-costs.json.gz": "134582671ce2867e05c0a674fb274cf767f269ca2a490c29eee0edc229a80355",
+    "research/data/native-design-v2/supplemental-inputs.json": "1ee60c50b6095604655ab8ea8919e6e65460d4160ae876fe3ec881a364ad7069"
+  },
+  "input_report_content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732",
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "schema": "scienceutopia.native-design-supplement-files.v1",
+  "supplement_content_sha256": "bab2394ee8a4607c98e2609c14a5839ec0635c9affb7c98de5151eed36fb7af6"
+}

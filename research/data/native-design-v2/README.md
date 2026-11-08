@@ -36,3 +36,14 @@ that another LLM inference run would produce the same responses. Full re-audit
 needs the access-controlled raw inventory and pinned order adapter; fresh
 inference additionally needs the models/corpus/backend and has the disclosed
 35B upstream-recipe gap. No archive is uploaded by this command.
+
+The separate supplemental-inputs manifest binds two further exact compressed
+projections: auxiliary costs160930 bytes and scientist tokens24401 bytes.
+They are internal, not an anonymous supplement. With the same environment:
+
+    python -m scripts.reports.native_design_supplement --output <fresh-directory>
+
+This regenerates all-trial cross-score/component-time/outside-metric figures,
+per-history and pooled method-cost tables,90 unique physical evaluation rows
+and all38 label/horizon outside summaries. Unknown costs and scoped timings
+remain separate. [Interpretation and artifact links](../../publication/supplemental-analysis-v2.md).
