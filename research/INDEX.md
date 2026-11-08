@@ -6,6 +6,9 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Next-stage research agenda for discussion](publication/research-agenda-next-stage.md):
+  whole-program questions, existing-data analyses, small mechanism/search experiments,
+  gradients, world validity and scale decisions. A proposal, not a running campaign.
 - [Integrated whole-program manuscript](../paper/integrated.tex) and
   [reviewed37-page PDF](../output/pdf/science-utopia-lab-integrated-working-paper.pdf):
   uncapped synthesis of objectives, abstraction, structural design, gradients,

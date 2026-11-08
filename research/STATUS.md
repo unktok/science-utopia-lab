@@ -3,6 +3,15 @@
 Updated2026-11-08JST. Observations below span2026-11-07/08UTC, not a live heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
+## Next research planning
+
+The [next-stage agenda for discussion](publication/research-agenda-next-stage.md)
+separates whole-program directions, existing-data analysis, mechanism interventions,
+objective-conditioned search and later scale decisions. No new experiment or runtime
+change is started. A direct GitHub read on2026-11-08 finds origin/main at32a8c18,
+with local main ff7e578 ahead421 commits; synchronization is not complete. No push
+is performed. This planning draft does not supersede frozen protocols or evidence.
+
 ## Actual experiment state
 
 The finite [submission-decision goal](publication/submission-goal.md) is closed
