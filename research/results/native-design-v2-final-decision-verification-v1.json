@@ -11,6 +11,18 @@
   "broader_user_aspiration_top_conference_ready_achieved": false,
   "recommendation": "Hold immediate main-conference submission; review a discriminating scientific question before another separately specified study.",
   "original_scientific_results_or_selection_changed": false,
+  "final_package_tests": {
+    "source_commit": "bdb991040abe2d1463a8f962cdb8047ddc52ed8b",
+    "clean_before_and_after": true,
+    "passed": 204,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 26.64,
+    "xml": "outputs/publication-benchmark-v2-verification/v2-final-decision-integrated-v1.xml",
+    "xml_sha256": "dd49b75d897cbb922013eecf01881d332830c0becb6555090ac202ebfe8c7ea2",
+    "documentation_check": {"documents": 23, "local_links": 291, "snapshots": 6, "errors": []},
+    "scope": "Combined source-bound paper/anonymous/table/cost/figure/numerical/supplement checks plus portable document links. Subsequent entry-document and QA-metadata updates do not modify tested runtime or bound scientific artifacts."
+  },
   "validation": {
     "procedure": "Read-only streaming SHA256 of both full audits and every raw file; dictionary equality against original full audit input_inventory; Git HEAD/porcelain pins; exact projection/build/supplement receipt hashes; retained JUnit parsed without rerunning or relabeling it.",
     "full_audit_files_sha256": [

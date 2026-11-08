@@ -14,11 +14,16 @@ Run the portable documentation check without models, network or installation:
 Current V2 verification is source-specific: sourceea6e12f passes2693/6 optional
 archive skips; later physical/domain/driver/report checks are recorded at their
 own sources in the [V2 receipt](../research/results/native-design-freedom-v2-verification.json).
-The completed S1/V1 and the in-progress V2 scientific results remain separate.
+The completed S1/V1 and completed V2 scientific results remain separate.
 See [current status](../research/STATUS.md). Earlier d49cf0b1682/3 and d806a4375
 checks below do not certify later sources.
 These are separate scopes, not an additive test total or a certificate for a
 later source. Historical counts below remain unchanged.
+
+The final V2 artifact/figure/cost/rebuilding/supplement/documentation batch
+passes204 checks at clean bdb9910; the exact command/XML hash is in the
+[final decision verification](../research/results/native-design-v2-final-decision-verification-v1.json).
+This is software QA, not204 scientific worlds or a full-runtime revalidation.
 
 Offline submission checks, with existing dependencies:
 

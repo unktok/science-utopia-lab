@@ -4735,3 +4735,24 @@ clearance is inferred. The approved five registry HEAD checks are not repeated.
 Do not launch a new campaign, push/upload, submit or claim an unattended writer.
 Any next scientific study needs a separately stated question, goal and finite
 protocol, rather than extending this completed run until a favorable result.
+
+At clean bdb991040abe2d1463a8f962cdb8047ddc52ed8b, the offline combined
+artifact/reporting/reproduction batch plus active-document checks passes204
+tests in26.64s, exit0. Actual XML SHA256
+dd49b75d897cbb922013eecf01881d332830c0becb6555090ac202ebfe8c7ea2.
+Standalone document check covers23 entry documents,291 inline local links and
+all6 unchanged historical snapshots, with no errors. HEAD/source stay unchanged
+during these checks. No full-runtime suite or model inference is implied.
+
+Exact combined test command, from v2-final-decision-v1 with the approved main
+environment interpreter:
+
+```sh
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 MPLBACKEND=Agg OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m pytest -q tests/reports/test_native_auxiliary_costs.py tests/reports/test_native_design_benchmark_report.py tests/reports/test_paper_rebuild_bundle.py tests/reports/test_native_design_cross_objective.py tests/reports/test_native_design_tex.py tests/reports/test_native_design_evaluation_figures.py tests/reports/test_native_design_reproduce.py tests/reports/test_native_design_supplement.py tests/reports/test_native_token_costs.py tests/reports/test_native_design_figure.py tests/reports/test_submission_v2_artifacts.py tests/reports/test_submission_anonymous_artifacts.py tests/reports/test_submission_artifacts.py tests/reports/test_repository_docs.py --junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/publication-benchmark-v2-verification/v2-final-decision-integrated-v1.xml
+```
+
+Final navigation sweep finds stale running/incomplete statements in root README,
+RESEARCH, paper README and docs/testing; update only those current entry points.
+Historical ledgers, prospective protocols, sources, PDFs and evidence hashes
+remain unchanged. The source-bound204-case result belongs to bdb9910; do not
+attribute that runtime batch to the later documentation/QA-record commit.

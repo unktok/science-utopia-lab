@@ -26,11 +26,15 @@ not substitutes for scientific evidence.
 ## Current evidence
 
 The current finite [design-freedom comparison](research/protocols/campaigns/native-design-freedom-v2.md)
-is running from a clean, pinned experiment checkout: two objectives, five
-proposal arms, three controller histories and120 candidate slots. Selection
-and unused-condition evaluation follow the complete search. Consult the dated
-[current status](research/STATUS.md) for observed progress; a checked-in statement
-is not a live heartbeat or a completed-study result.
+is complete: two objectives, five proposal arms, three controller histories and
+all120 candidate slots, followed by fixed selection and90 physical unused-
+condition evaluations. Both full audits agree using an explicit order adapter.
+The12-page empirical draft, figures, supplemental analyses and numerical/paper
+rebuilding are available. [Final requirement audit and submission judgment](research/publication/submission-decision-v2.md)
+closes the finite decision package, not the broader research program.
+Immediate main-conference submission is not recommended; top-conference
+readiness, useful structural invention and method superiority are not established.
+There is no remaining writer from this study. See [current status](research/STATUS.md).
 
 Completed evidence includes the [eight-candidate feedback pilot](research/results/native-feedback-comparison-v1-a1.md)
 and [eight strong-rule controls](research/results/native-benchmark-controls-v2-a1.md),
@@ -38,7 +42,7 @@ with original-source audits. Simple all-accept controls recover the earlier
 proxy minimum; weak-seed improvement alone is not effective invention or better
 science. Earlier studies, including the [V45 pilot](research/results/native-warmstart-v45-a1.json)
 and external-author improvements, retain their original source and provenance.
-No feedback/method superiority or complete conference study is established.
+The completed study does not establish feedback/method superiority or conference readiness.
 
 ## Local development
 

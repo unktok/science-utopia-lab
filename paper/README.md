@@ -69,18 +69,20 @@ All18 paired PNGs (9 references, two separate horizons) are also individually
 reviewed; [169-check/visual QA](../research/results/native-design-v2-manuscript-qa-v1.json).
 Numerical and13-path PDF rebuilding are now actually verified;
 [source/hash/scope receipt](../research/results/native-design-v2-reproduction-verification-v1.json).
-Bounded rights/venue review and a provisional mock review now exist; final
-analysis-output audit and an evidence-based submission decision remain.
+Bounded rights/venue review, mock review and the final analysis-output audit
+are complete. The [final submission judgment](../research/publication/submission-decision-v2.md)
+does not recommend immediate main-conference submission: important discriminating
+scientific insight remains weak. The finite package is not top-conference readiness.
 The [author-redacted local draft](submission-v2-anonymous.tex) now has its own
 [build/visual receipt](submission-anonymous-build-v1.json). Only the author block
 differs. It is not target-cycle format or full anonymity/release clearance.
 See [release review](../research/publication/release-and-venue-review-v2.md) and
-[provisional mock review](../research/publication/mock-review-v2.md). Named
+[mock review](../research/publication/mock-review-v2.md). Named
 analysis outputs are now covered by the [completed supplemental analysis](../research/publication/supplemental-analysis-v2.md):
 all120 cross-scores, per-method costs, component-time paths and outside native
 measurements. CSV/JSON/PNG/SVG artifacts and rebuilding instructions accompany
 the paper; no original manuscript/PDF values or selections are changed.
-The final completion/judgment audit remains. The13-path author-redacted
+The final five-requirement audit is documented above. The13-path author-redacted
 subset now actually stages and builds offline, with identical text and all12
 page PNGs versus the inspected variant; [50-check/staging proof](../research/results/native-design-v2-review-preparation-verification-v1.json).
 Authorship, actual submission and external release require user confirmation.
