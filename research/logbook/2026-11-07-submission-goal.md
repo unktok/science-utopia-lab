@@ -4168,3 +4168,26 @@ the pending full source-bound audit or final scientific scores. No restart/
 refill, extra inference, source/model/prompt/loss/selection/budget change or new
 registry query is initiated by analysis. Remaining37 jobs, actual normal writer
 closure, both full adapted audits and final empirical deliverables remain.
+
+### All reference policies cover all declared conditions;54/90 overall
+
+Previous goal turn is a verified wait through53 records; actual writer46865
+is live with job0053 started. This turn polls that same handle while requests
+advance64/79/99/111 and year2/3 checkpoints are saved. Its normal observation
+exists by Nov8 03:41:55UTC, briefly ahead of progress53. At03:43:10UTC progress/
+normal records agree54/90; job0054 is active with9 requests, no writer.ended
+record. Both checkouts are clean before this update.
+
+Join the first54 immutable jobs to their normal observations: all nine exact
+reference policies now cover five two-year seeds plus the separate seed31001
+four-year diagnostic. Evaluation-plan SHA256 still matches original e1b96a51
+(full hash checked), and bytes remain unchanged after inspection. The already
+fixed remaining36 jobs cover six additional selected exact policies; next is
+selected:throughput:code-fixed-graph. Four initial-selected arm labels already
+share open-seed's reference jobs, not new invented replacements or independent
+replications. This is the declared90-job schedule, not a new or expanded study.
+No restart/refill, extra inference, source/model/prompt/loss/selection/budget
+change or registry query is initiated by analysis. All36 remaining jobs
+(including the active one), actual normal writer closure, both full adapted
+audits and final empirical analysis/figures/costs/manuscript/package/judgment
+work remain required. Condition/status joins are not the pending full audit.
