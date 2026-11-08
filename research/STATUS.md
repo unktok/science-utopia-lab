@@ -17,6 +17,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, figures, table and cost/relaxation projections generated. [Closure](results/native-design-freedom-v2-closed-analysis-v1.json); manuscript and numerical/PDF reconstruction now complete, final research/release review remains. Unmodified frozen CLI is not claimed to pass |
 | Manuscript |12-page empirical V2 draft: all120 trials,90 fixed-selection evaluations, actual figures, spec/mechanism/failure analysis and measured response costs. All12 final pages rendered and individually inspected. [Source/build QA](../paper/submission-build-v3.json); submission/release readiness not claimed |
+| Review preparation |Separate author-redacted12-page draft with scientific content unchanged; all pages visually inspected. [Bounded rights/venue review](publication/release-and-venue-review-v2.md), [provisional mock review](publication/mock-review-v2.md). No public/anonymous release clearance or immediate submission recommendation |
 
 The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
 06:58:09UTC, at clean frozen source
@@ -102,8 +103,10 @@ local-designer learning evidence. See the [full program map](program-map.md).
    mechanisms and measured costs. Final print-size PDF and all18 paired PNGs
    are now individually reviewed; [169-check/visual QA](results/native-design-v2-manuscript-qa-v1.json).
 4. The claim-centered V2 manuscript/figures are now built and all12 pages inspected.
-   Numerical/PDF rebuilding now passes at clean e3f4ee7. Complete rights/anonymous-release
-   review, an anonymous preparation variant and final mock review.
+   Numerical/PDF rebuilding passes at clean e3f4ee7. A bounded rights/venue review,
+   author-redacted preparation variant and provisional mock review now exist.
+   Finish the named analysis-output audit (per-method cost/outside measurements),
+   exact anonymous-subset staging and final requirement-by-requirement judgment.
    Actual submission, external costs/new resources and authorship require user confirmation.
 
 The actual closed report and empirical V2 figures/table/cost projections are now
@@ -156,7 +159,9 @@ No weights are downloaded/replaced, and no public raw/anonymous release is claim
 The [local release review](publication/research-readiness-review-v2.md#local-release-review-concrete-observations-not-publication-clearance)
 now records actual PDF/annotation checks and a narrow tracked-file/path inventory.
 This is not full credential/rights clearance or a prepared anonymous bundle;
-final-result packaging and the actual target-cycle checks remain required.
+the separate author-redacted paper-only preparation excludes the full projection.
+The latter contains588 home-path-matching lines and is not an anonymous supplement.
+Actual target-cycle compliance, human authorship and external release remain unapproved.
 
 A preserved [12-path pilot-paper subset](../docs/paper-rebuild-bundle.md) was actually
 staged and rebuilt offline from clean source37e5443.32 QA checks pass; all11

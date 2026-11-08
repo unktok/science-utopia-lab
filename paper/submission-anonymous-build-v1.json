@@ -1,0 +1,87 @@
+{
+  "schema": "scienceutopia.working-paper-build.v3",
+  "date": "2026-11-08",
+  "status": "working-draft-not-submission-ready",
+  "entrypoint": "paper/submission-v2-anonymous.tex",
+  "output": "output/pdf/institution-design-anonymous-draft.pdf",
+  "pdf_sha256": "3d4195176b72760c07c2489ad104e69bf20f5566903b5fae929a88736e234919",
+  "tex_sha256": "4eae2600c428cc2d85ec65f6b680b84b461568560a78ad98a193a70b17b85860",
+  "pages": 12,
+  "additional_bibliography_sha256": "c3b9efffad398b91126b0f321baa7d4442644cc0bb4e7c313f8a54a724234920",
+  "additional_dependencies": {
+    "paper/references.bib": "4b884c79437525071fc9625e9ae1f64e65973eb042192ce1732b9db8a6871b6a",
+    "paper/neurips_2025.sty": "67a960f35da6fecb5a0ce0202fa400459f4c8bb6c294f1a3fdd82fbbd39244c2",
+    "paper/figures/program-concept/science-system-design-program.pdf": "b15140a8121330b4b8fc94cff96e89dac140c94b2415fc6ff0de7f232dd1108a",
+    "paper/generated/native-design-v2/search-outcomes.tex": "0e9269b0df48b83e40f3cb18a647e0aed42bb8ab46d159ca431eeb050a4fbe05",
+    "paper/figures/native-design-v2/throughput-paths.png": "c8c850ce7a906d67a29d72442efeca6adee1b1578a75a6ef07b5c3c060e53114",
+    "paper/figures/native-design-v2/selective-paths.png": "5747849a13a958bcade68f3604784ddf0ba20fec920c766774a3ed85e7064425",
+    "paper/figures/native-design-v2/cross-objective-2y.png": "131fed773ca44d24dd05b77833e4cd93aaadbfd734ee278c4b148ff13e3737f2",
+    "paper/figures/native-design-v2/cross-objective-4y.png": "b630ebd77ab88fd19750bbb77e9c1e10a6b8164ec488144e9b3e1bacfbad2a66"
+  },
+  "author_redaction_only": true,
+  "scientific_source_otherwise_identical_to": "paper/submission-v2.tex",
+  "original_tex_sha256": "2d5b9fc8b777f8f6b96e621fedcaa5dbc9abf3007dba0144594d6fc95eccef0c",
+  "build": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates --outdir ../tmp/pdfs/v2-anonymous-v1 submission-v2-anonymous.tex",
+  "tool_versions": {
+    "tectonic": "0.17.0",
+    "poppler_pdftoppm": "26.06.0"
+  },
+  "downloads": 0,
+  "build_log_sha256": "f9cfa7f323ed252996a5e972ec77fdeb048af37b24609c56e0bb651b35204bec",
+  "final_tex_warnings": [
+    "Package inputenc Warning: inputenc package ignored with utf8 based engines."
+  ],
+  "layout_or_undefined_reference_warnings": [],
+  "visual_qa": {
+    "resolution_dpi": 120,
+    "all_pages_inspected": true,
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "final_page_png_sha256": {
+      "page-01.png": "70383f23c492d1ac66327a939d889f16cd4734fc54773943378f443b35dc2e00",
+      "page-02.png": "073479bb93ca5a0665433e8b3b54e691df940df1b8a3c2c440929c07ce581c2c",
+      "page-03.png": "91dd39b4e31cb4eb32d35f9d70b691b2d68d4256132450263db123c5230f932f",
+      "page-04.png": "b320da85d7327b01c5f8d31d231ee56edacc2a6c28a5281b96c557b3596dccb8",
+      "page-05.png": "89abfd882a7f284d9f8e0b429fa2713788aa2f7a64d416bbeb1fb13e13f4ca7f",
+      "page-06.png": "fdcb72fbd04bb0f927e8069a84368d65f0b620f2064e41725bdf7a3a35602684",
+      "page-07.png": "353b84600d5bd9c292e401485d72dbb35b1bc9a5bfc7272725d3241abfb98983",
+      "page-08.png": "a00f8359fc316ffac56ed1e1b211145f984241e2d2bf0f9dd35d335cbc536f5d",
+      "page-09.png": "65878a2cb3d8f7db54cd264a0966e08ada250be879b9319e03283f9495f23d41",
+      "page-10.png": "23363cdc343a5e0d4bbaee7425962493cca8a18d9928ccbc6f2d135c11e49d94",
+      "page-11.png": "99da8ac75f2e6d3fc146c947de203916a687c3219f453e124c6d06cd9ae894e0",
+      "page-12.png": "f1397d36c84779b7ee7d02ee6fc79a231284c88ef235694bbe3b3f614b9b0773"
+    },
+    "all_twelve_pages_freshly_rendered_and_individually_viewed": true,
+    "only_page_1_pixels_change_from_original": true
+  },
+  "bounded_pdf_checks": {
+    "embedded_files": 0,
+    "form": "none",
+    "javascript": false,
+    "custom_metadata": false,
+    "metadata_stream": false,
+    "URL_annotations": 17,
+    "annotation_host_counts": {
+      "arxiv.org": 14,
+      "proceedings.mlr.press": 3
+    },
+    "URLs_followed": false,
+    "known_project_operator_or_home_path_literals_in_extracted_text": false,
+    "author_field_present": false
+  },
+  "full_secret_rights_or_anonymity_clearance": false,
+  "actual_submission_or_upload": false,
+  "scope": "Author-redacted local review-preparation variant of the exact V2 manuscript, not an approved anonymous submission or target-cycle format. Original draft and immutable numerical archive unchanged."
+}

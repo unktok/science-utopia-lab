@@ -1,0 +1,22 @@
+{
+  "schema": "scienceutopia.paper-rebuild-allowlist.v1",
+  "status": "local-working-draft-not-anonymous-not-release-cleared",
+  "scope": "Author-redacted local paper-only review preparation; status denies full anonymity/release clearance. Excludes original identified TeX, Git history, numerical archive, raw data and weights.",
+  "receipt": "paper/submission-anonymous-build-v1.json",
+  "entrypoint": "paper/submission-v2-anonymous.tex",
+  "files": [
+    "LICENSE",
+    "output/pdf/institution-design-anonymous-draft.pdf",
+    "paper/figures/native-design-v2/cross-objective-2y.png",
+    "paper/figures/native-design-v2/cross-objective-4y.png",
+    "paper/figures/native-design-v2/selective-paths.png",
+    "paper/figures/native-design-v2/throughput-paths.png",
+    "paper/figures/program-concept/science-system-design-program.pdf",
+    "paper/generated/native-design-v2/search-outcomes.tex",
+    "paper/neurips_2025.sty",
+    "paper/references.bib",
+    "paper/submission-anonymous-build-v1.json",
+    "paper/submission-sources.bib",
+    "paper/submission-v2-anonymous.tex"
+  ]
+}

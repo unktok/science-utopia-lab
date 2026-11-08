@@ -71,4 +71,10 @@ Numerical and13-path PDF rebuilding are now actually verified;
 [source/hash/scope receipt](../research/results/native-design-v2-reproduction-verification-v1.json).
 Rights/anonymity checks, an anonymous preparation variant, mock review and an
 evidence-based submission decision remain.
+The [author-redacted local draft](submission-v2-anonymous.tex) now has its own
+[build/visual receipt](submission-anonymous-build-v1.json). Only the author block
+differs. It is not target-cycle format or full anonymity/release clearance.
+See [release review](../research/publication/release-and-venue-review-v2.md) and
+[provisional mock review](../research/publication/mock-review-v2.md). Named
+analysis outputs and exact-subset verification still need the completion audit.
 Authorship, actual submission and external release require user confirmation.

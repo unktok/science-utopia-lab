@@ -4587,3 +4587,40 @@ new numerical-reconstruction batch passes185 tests in25.45s. XML SHA256
 456c307d6457c625da88d87903a5626e5842fd6c5b0056428d142cdc4ca83776.
 HEAD/runtime stay unchanged throughout. This integrates the new47-check scope
 with prior reporting coverage; counts are software checks, not extra worlds.
+
+### Author-redacted paper and local release/venue review
+
+Work separately from clean9d287b7 in v2-submission-review-v1. Original identified
+V2 source/PDF and all numerical/raw evidence remain unchanged. Create the separate
+submission-v2-anonymous.tex with only the author block changed; cached/untrusted
+build exits0,0 downloads,12 pages. Fresh120dpi renders of all12 pages are
+individually viewed; only page1 changes. PDF SHA256
+3d4195176b72760c07c2489ad104e69bf20f5566903b5fae929a88736e234919.
+No layout/undefined warnings; harmless inputenc notice only. Bounded Poppler
+checks show0 embedded files, no form/JS/Author field/metadata stream,17 literature
+annotations (14arxiv/3PMLR) and no known operator/home/project-author text.
+
+Pypdf/pdfplumber are absent in the approved environment; use existing Poppler,
+install nothing. First allowlist preparation correctly stops before file creation
+because the broad previous build receipt also includes two nonliteral numeric
+JSON inputs (15paths rather than13). Explicitly select only the literal PDF
+dependencies; do not weaken byte/dependency guards. This new paper-only subset
+does not include numerical data. The separate known-key-pattern shell check
+first fails on leading-hyphen option parsing; corrected rg -- scan finds no
+matches. The complete numerical report has588 home-path-matching lines, not
+588 distinct secrets. Preserve it as non-anonymous operational evidence.
+
+Recheck official ICML2027 CFP (still pending), NeurIPS2026 handbook/review
+criteria, ICLR2027 past deadline/AI policy and current upstream/dataset/model
+license labels. Record sources/limited observations in
+publication/release-and-venue-review-v2.md, not blanket legal/rights clearance.
+No raw/corpus/weights/Git/game data are in the anonymous paper subset.
+
+The provisional mock review uses three lenses by this one assistant, not
+independent reviewers. It does not recommend immediate main-conference
+submission: general significance beyond prior code/mechanism search and proxy
+algebra remains weak. This is not a demand for positive results or a new
+scientific veto. The completion audit additionally finds named per-method
+cost/outside-measurement presentation needs a finite supplemental pass before
+final judgment. No new experiment, budget, model, external upload or author
+decision is made. Clean-source tests and actual13-path staging are next.
