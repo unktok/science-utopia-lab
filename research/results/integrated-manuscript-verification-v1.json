@@ -1,0 +1,50 @@
+{
+  "schema": "scienceutopia.integrated-manuscript-verification.v1",
+  "date": "2026-11-08",
+  "classification": "REVIEWED-INTEGRATED-RESEARCH-MANUSCRIPT-NOT-NEW-EXPERIMENT",
+  "verification_source_commit": "e69b6ecf0032ea9372b66295b843d0fcdc83b8af",
+  "clean_before_and_after": true,
+  "tests": {
+    "passed": 209,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 29.97,
+    "xml": "outputs/publication-benchmark-v2-verification/integrated-manuscript-v1.xml",
+    "xml_sha256": "e08dc58fd194546c1206eca521332674fd9a6aae0fafd4f11751ee96f3dc8518",
+    "scope": "Five new integrated-manuscript checks plus the existing 204-case reporting/figure/cost/staging/reproduction/documentation batch; not a full simulator suite or scientific replications."
+  },
+  "document_checks": {
+    "documents": 25,
+    "local_links": 332,
+    "historical_snapshots": 6,
+    "errors": []
+  },
+  "build_receipt": "paper/integrated-build-v1.json",
+  "build_receipt_sha256": "9de8dcb36e81eca9e88352bac1c50b38269559d507727930bb02912fa94979f2",
+  "pdf": "output/pdf/science-utopia-lab-integrated-working-paper.pdf",
+  "pdf_sha256": "3f77d91d27ce97dc17a076bd7da764be7a4cb4feafd6a81ab9cd45601d9f19d6",
+  "pages": 37,
+  "figures": 15,
+  "tables": 13,
+  "cited_references": 16,
+  "artificial_page_cap": false,
+  "all_final_pages_rendered_and_reviewed": true,
+  "render_dpi": 90,
+  "zoom_pages_150dpi": [
+    13,
+    30,
+    36
+  ],
+  "unchanged_final_pages_verified_against_previously_viewed_exact_PNG_bytes": true,
+  "layout_or_undefined_warnings": [],
+  "old_manuscripts_PDFs_receipts_preserved": 11,
+  "evidence_input_files_bound": 15,
+  "scientific_data_or_selected_institutions_modified": false,
+  "new_researcher_designer_model_calls": 0,
+  "new_native_code_worlds": 0,
+  "new_raw_audit": false,
+  "actual_submission_push_upload_or_external_release": false,
+  "content_map": "paper/integrated-content-map.md",
+  "chronological_log": "research/logbook/2026-11-08-integrated-manuscript.md",
+  "scope": "Full-program argument restores objective/abstraction/structural/gradient/parameter/UI tracks while separating historical sources, losses, authorship, reused trajectories and unknowns. No method superiority, better science, useful local autonomous invention, independent review, anonymity/rights clearance or venue compliance established by longer writing."
+}

@@ -20,6 +20,8 @@ provenance separated.15 figures/13 tables/16 references; all37 final pages
 reviewed. No new inference or experimental result is introduced. The old
 finite V2 submission decision remains a historical scope, not a reason to
 discard the other research tracks or impose a working-paper page limit.
+[209-check/build/visual verification](results/integrated-manuscript-verification-v1.json)
+records the exact clean source, preserved historical artifacts and final PDF.
 
 | Stage | State and evidence |
 | --- | --- |
@@ -144,7 +146,7 @@ confirmation. See the [final verification receipt](results/native-design-v2-fina
    comparisons; [verification](results/native-design-v2-review-preparation-verification-v1.json).
    Actual submission, external costs/new resources and authorship require user confirmation.
 
-The latest combined artifact/analysis QA passes197 checks at clean aed1e3b;
+The earlier V2-only combined artifact/analysis QA passes197 checks at clean aed1e3b;
 [receipt](results/native-design-v2-supplement-verification-v1.json). It is not a
 scientific replication. Historical receipts below retain their original pending
 items and scopes; the final decision above supersedes those as current status.

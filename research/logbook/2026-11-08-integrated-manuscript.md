@@ -85,3 +85,19 @@ or runtime while those checks execute. Actual results are recorded after the run
 
 No public push/upload, author decision, model change, live experiment, raw
 source audit, human peer review or actual submission is performed.
+
+At clean e69b6ecf0032ea9372b66295b843d0fcdc83b8af, the combined new integrated
+manuscript plus existing V2 artifact/figure/cost/reproduction/document checks
+passes209 tests,0 failures/0 skips in29.97s, actual execution exit0. HEAD and
+tracked bytes remain unchanged through the checks. The standalone document
+check passes25 entry documents/332 inline local links and all6 immutable
+snapshots. These are software checks, not209 worlds or independent studies.
+Exact XML/build/PDF hashes and scope are retained in
+results/integrated-manuscript-verification-v1.json. Later changes only add this
+QA record/current navigation; do not attribute the runtime batch to that tip.
+
+Actual combined command:
+
+```sh
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 MPLBACKEND=Agg OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m pytest -q tests/reports/test_integrated_manuscript.py tests/reports/test_native_auxiliary_costs.py tests/reports/test_native_design_benchmark_report.py tests/reports/test_paper_rebuild_bundle.py tests/reports/test_native_design_cross_objective.py tests/reports/test_native_design_tex.py tests/reports/test_native_design_evaluation_figures.py tests/reports/test_native_design_reproduce.py tests/reports/test_native_design_supplement.py tests/reports/test_native_token_costs.py tests/reports/test_native_design_figure.py tests/reports/test_submission_v2_artifacts.py tests/reports/test_submission_anonymous_artifacts.py tests/reports/test_submission_artifacts.py tests/reports/test_repository_docs.py --junitxml=/Users/shiro/unktok/dev/science-utopia-lab/outputs/publication-benchmark-v2-verification/integrated-manuscript-v1.xml
+```
