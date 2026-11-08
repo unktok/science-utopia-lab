@@ -68,4 +68,3 @@ recipe remains unknown. The 2025 preprint style is not future-cycle compliance.
 Final numerical/rebuild packaging, remaining paired-figure review, rights/
 anonymity checks, mock review and an evidence-based submission decision remain.
 Authorship, actual submission and external release require user confirmation.
-
