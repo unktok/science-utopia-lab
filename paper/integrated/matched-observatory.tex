@@ -35,7 +35,7 @@ restricted arm. The code/graph domain permits structure change but cannot
 change scientist weights, corpus or measurement functions.
 
 All LLM arms use the same approved local 35B designer profile: 16 charged actions,
-8192 output tokens, 40960 context, temperature 0.6, thinking off, 10s connect/900s
+8192 output tokens, 40960 context, temperature 0.6, thinking off, 10\,s connect/900\,s
 read allowances, without hidden transport retry or slot refill. Technical
 errors expose the same exception-class channel. Three fresh controller
 histories, each four generations per arm, give 120 candidate slots. Controller
@@ -149,6 +149,7 @@ giving $C=3.3$, versus initial 6.9 and reviewer-free reject 0. Some equal-throug
 policies differ under $E$. One fresh four-year realization is not another
 five-seed estimate or an isolated method effect.
 
+\FloatBarrier
 \subsection{Mechanisms behind equal scalar losses}
 The development $C=2.1$ selections have different components: code/graph gives
 $A=Q=0,R=21$, whereas fixed-graph gives $A=1,Q=4,R=21$ and $4A-Q$ cancels.
@@ -174,13 +175,14 @@ Unexercised empty-input or dummy-ID branches do not become validated because
 one trajectory completes.
 
 \subsection{Costs and outside metrics}
-The writer's normal execution lasts 78958.697204 s, approximately 21 h 56 min.
-Across the 194 physical response journals, 16043 recorded scientist responses
-contain 17021423 total tokens. Proposal authoring records 1387 requests and
-1385 final-response signals, not 1385 successful candidate submissions.
-Its 19681.867535932688 host model-call seconds are a component, not GPU time
-or an additive end-to-end compute total.293 role loads have unknown native
-usage rather than zero usage. Appendix~\ref{app:costs} separates all scopes.
+The writer completes normally in approximately 21 h 56 min. Across the 194
+physical response journals, 16,043 recorded scientist responses contain
+17,021,423 total tokens. Proposal authoring records 1,387 requests and 1,385
+final-response signals, not 1,385 successful candidate submissions. Its measured
+host model-call time is approximately 19,682 seconds, a component rather than
+GPU time or an additive end-to-end compute total. The 293 role loads have
+unknown native usage rather than zero usage. Appendix~\ref{app:costs} separates
+all scopes.
 
 Search uses 95 world directories: 64 complete and 31 partial runtime-null worlds;
 25 generation-null slots dispatch no native world. All 64 completed development
