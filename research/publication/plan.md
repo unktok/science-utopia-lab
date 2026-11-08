@@ -1,6 +1,6 @@
 # Top-conferenceに向けた研究計画
 
-2026-11-07。投稿・採択を保証する計画ではなく、研究上の問いと必要な証拠を決める。
+2026-11-08更新。投稿・採択を保証する計画ではなく、研究上の問いと必要な証拠を決める。
 [全体の目的](../../RESEARCH.md)と、一本目の論文の主張は区別する。
 
 ## 一本目の中心
@@ -70,21 +70,26 @@ V10/V12/V13/V45のsource/schema/content hashを検証し、全loss経路、失�
 現在のopen-system初期系は未変更の原制度ではないため、legacy原制度と
 明らかな手作業ルールも対照に含め、弱い初期系だけに勝つ比較にしない。
 効果が出ない場合、予算追加で良い結果を探すのでなく、事前に定めた解析を行う。
-現在は[有限V2 study](../protocols/campaigns/native-design-freedom-v2.md)を固定b6654adで実行中。
+現在は[有限V2 study](../protocols/campaigns/native-design-freedom-v2.md)を固定b6654adで完了。
 S1の強い8基準は完走・二回監査済み。V2は全3runで各28項目の実校正とcold replayを
 通過し、fresh基準9件と有限探索120slotが終了した。選択を固定し、19logical label／
-15exact policyの90物理評価を実行中。進捗snapshotは[STATUS](../STATUS.md)を参照。
-探索の生記録と全試験の閉監査を区別する。独立評価・全体監査はまだ未完了。
+15exact policyの90物理評価も全件正常終了し、明示的順序補正adapterによる二回の
+全体監査は同一bytesで一致した。未修正の凍結CLIの成功とは扱わない。
+[閉鎖・projection記録](../results/native-design-freedom-v2-closed-analysis-v1.json)と
+[STATUS](../STATUS.md)を参照。探索・未使用評価・監査を追加の独立反復として混ぜない。
 
-**P4：原稿を組み直し中**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
+**P4：V2実証原稿を作成済み、最終資料・判断は未完了**：開発経緯を主文から外し、図とclaim/evidence対応で構成する。
 基盤、比較、制度機構の知見を主文へ。失敗履歴・API・source検証は付録へ。
 [主張中心の章立て](../../paper/submission-outline.md)を次稿の正本とする。
 現在の長いworking draftやNeurIPS形式は、投稿準備完了を意味しない。
-[短い新稿](../../paper/submission.tex)は方法・比較中心の構成を実装済みで、
-監査から自動生成した全候補表・探索経路と実作用の解析を入れた。旧長稿は保存する。
-S1の実測・print用グラフ・V2の前向きprotocol、固定record選択の代数的解析と
-再現の限界・実測token・資源／倫理面を追加した11ページの版も作成・render QA済み。
-V2部分結果は入れていない。
+[現行V2稿](../../paper/submission-v2.tex)は120試行、90評価、全履歴の経路、共通T/C/E、
+64完走仕様の変更、失敗内訳、実際のrecord→研究者入力→行動経路と費用を記載した。
+12ページ全てを120dpiで再renderし個別目視確認済み。
+[build記録](../../paper/submission-build-v3.json)と[compact証拠](../results/native-design-freedom-v2-paper-evidence-v1.json)
+で出典・数値・図表を固定する。旧11ページのV1/S1稿と旧長稿は変更せず残す。
+実装自由度と実際の構造発明は区別する。数値／source以外のgraph変更は観測されず、
+手法優位は示されていない。残る数値再構築資料、paired図の確認、権利・匿名化、
+模擬査読と投稿判断を終える。良い結果を得るための追加実験を自動で始めない。
 
 ## V2が閉じた後の解析
 
@@ -107,7 +112,7 @@ null・共有physical job・別horizon・全費用をprojectionする。これ�
 `python -m scripts.figures.native_design_benchmark`はそのreportから全三履歴の
 best-including-initial経路と全完走点・null表示を印刷用に作図する。重なった経路を
 jitterせず、方法優位のbandを捏造しない。SCRIPTED QAの図には明示watermarkを入れる。
-実結果はまだ未生成であり、解析コードのテストは実験結果ではない。
+実結果は閉監査から生成済みであり、別の解析コードのテストとは区別する。
 
 `python -m scripts.figures.native_design_evaluation`は同じclosed reportから、
 各参照制度に対する選択policyのseed別paired差を全て作図する。二つの探索目的を

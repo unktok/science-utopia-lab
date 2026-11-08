@@ -1,74 +1,71 @@
 # Objective-conditioned institution paper
 
-The current short working draft is [submission.tex](submission.tex), following
-[the claim-centered outline](submission-outline.md) and
-[publication research plan](../research/publication/plan.md).
-It centers the scientific question, executable design space, matched comparison,
-mechanistic analysis and limitations, not the chronological debugging history.
+The current empirical working draft is [submission-v2.tex](submission-v2.tex);
+[the reviewed 12-page PDF](../output/pdf/science-utopia-lab-objective-design-v2-draft.pdf)
+contains the completed design-freedom study. See [build/visual QA receipt](submission-build-v3.json),
+[claim outline](submission-outline.md), [research plan](../research/publication/plan.md)
+and [current status](../research/STATUS.md). It is not a submitted or release-cleared paper.
 
-The old [main.tex](main.tex), its figures and historical shareable PDF are
-preserved. The previous long README is retained verbatim in the
-[historical manuscript ledger](historical-manuscript.md). Its old experiment
-counts and running-looking statements are historical, not current status.
+## Actual evidence
 
-## Evidence and scope
+V2 uses frozen b6654ad, fixed Qwen3-8B researchers, the approved local 35B
+designer, two declared objectives, five proposal policies and three four-step
+controller histories at one development world seed. All 120 slots are retained:
+64 complete, 25 generation failures and 31 runtime failures. Selection is frozen
+before 90 physical evaluations of 15 exact policies on five unused two-year
+seeds and a separate four-year single-seed diagnostic. Nineteen logical labels
+share those jobs; they are not extra observations.
 
-The first same-source feedback comparison uses frozen2e375c2, fixed8B
-researchers, the already approved local35B designer, two objectives, two
-proposal policies, and two generations. It is a development pilot, not held-out
-confirmation or a complete conference study. See [current status](../research/STATUS.md)
-and the [prospective protocol](../research/protocols/campaigns/native-feedback-comparison-v1-a1.md).
-The finite run and original-source audit are complete. All eight candidates,
-including four execution failures, are retained in the [audited result note](../research/results/native-feedback-comparison-v1-a1.md).
-The selected initial all-accept proposal improves the declared proxies; no
-second-generation gain, feedback superiority or scientific-quality gain is established.
+Both full audits match byte-for-byte using the explicit mapping-order adapter;
+the unmodified frozen CLI is not claimed to pass. [Closure/projection hashes](../research/results/native-design-freedom-v2-closed-analysis-v1.json)
+bind the actual results. [Compact paper evidence](../research/results/native-design-freedom-v2-paper-evidence-v1.json)
+retains the full-audit/spec join, runtime categories and observed response costs.
+No experimental setting, raw record, failed-slot budget or selection is changed.
 
-The subsequent eight-rule baseline pilot is complete and twice source-audited:
-all8 worlds complete, with original/hand-written controls and no designer calls.
-Its print-sized three-objective figure and actual costs now appear in the draft.
-The [design-freedom study](../research/protocols/campaigns/native-design-freedom-v2.md)
-is described separately as a prospective protocol, not completed results.
-The updated11-page PDF was built offline; all eleven pages were freshly
-rendered at120dpi and individually visually inspected, following the latest
-related-work and float/appendix layout changes. The earlier byte-reuse check
-describes a prior build, not this latest inspection;
-see [build/QA receipt](submission-build-v2.json). This remains a working draft,
-not a completed or submitted conference study.
+The paper includes all-history paths, all-attempt outcomes, common T/C/E raw
+evaluation, actual institutional source/consumer/action analysis and measured
+scientist/designer/calibration usage. Throughput selections tie strong hand
+rules; review-cost-sensitive code selections improve the weak editable seed
+but not reviewer-free reject-all. All 64 complete designs change existing
+numeric/source parameters, not declared graph structure. Method superiority,
+useful structural invention, inventor learning and real-policy benefit are
+not demonstrated. Fixed-record loss algebra is not a dynamic-policy bound.
 
-Appendix B now separates the exact fixed-record acceptance relaxation from a
-dynamic institutional-policy optimum. It reports the read-only S1 analysis and
-the remaining resource/reproduction limitations; it does not add V2 partial
-outcomes or a hidden candidate filter. The build receipt preserves the harmless
-UTF-8 engine/inputenc notice and records no layout or undefined-reference warning.
+## Build with the existing cache
 
-Appendix C reports measured S1 scientist tokens and post-dispatch hardware/
-backend observations, with caching and unmeasured-cost limits. It separates
-proxy/deployment risks, sandbox limits, release review and AI-assistance disclosure
-from optimization constraints. V2 partial outcomes are still not manuscript data.
-
-The result table is generated from the source-bound audit summary rather than
-transcribed. Nulls, all candidates, exact ties and cross-objective selection
-remain in the JSON; rendering rounds numbers only for display. The plotting
-module emits a full dashboard and a separate print-sized path panel. Original-
-source audits must run from the matching frozen checkout, not a later main.
-
-## Build without fetching dependencies
-
-From the repository root, with the existing Tectonic cache:
+From the repository root:
 
 ```bash
-mkdir -p tmp/pdfs/current output/pdf
+mkdir -p tmp/pdfs/current-v2 output/pdf
 cd paper
 /opt/homebrew/bin/tectonic --only-cached --untrusted --keep-logs \
-  --keep-intermediates --outdir ../tmp/pdfs/current submission.tex
-cp ../tmp/pdfs/current/submission.pdf \
-  ../output/pdf/science-utopia-lab-objective-design-draft.pdf
+  --keep-intermediates --outdir ../tmp/pdfs/current-v2 submission-v2.tex
+cp ../tmp/pdfs/current-v2/submission-v2.pdf \
+  ../output/pdf/science-utopia-lab-objective-design-v2-draft.pdf
 ```
 
-Render every final PDF page with Poppler and visually inspect it before sharing.
-The final PDF location is `output/pdf/science-utopia-lab-objective-design-draft.pdf`;
-build/render intermediates remain ignored under `tmp/pdfs/`.
+Render every page and inspect it before replacing a reviewed artifact; update
+the V3 receipt with the actual source/output/asset hashes. Current final build
+was rendered at 120dpi and all 12 pages individually inspected. There are no
+layout/undefined-reference warnings; the harmless UTF-8 inputenc notice remains.
+Native-width common-score figures preserve the exact original numerical data.
 
-The bundled NeurIPS2025 style is a working layout, not compliance with an
-unverified future conference's rules. No authorship, submission, acceptance,
-optimizer-superiority or real scientific-policy claim follows from the format.
+This rebuild does not audit raw journals or rerun model inference. Raw/model
+redistribution, license coverage and anonymous packaging require separate
+review. The local 35B digest is retained, but its upstream revision/conversion
+recipe remains unknown. The 2025 preprint style is not future-cycle compliance.
+
+## Preserved historical drafts
+
+- [submission.tex](submission.tex), [its old PDF](../output/pdf/science-utopia-lab-objective-design-draft.pdf)
+  and [V2 build receipt](submission-build-v2.json) retain the earlier 11-page
+  V1/S1 results and prospective V2 protocol byte-for-byte.
+- [main.tex](main.tex), its figures, [historical manuscript ledger](historical-manuscript.md)
+  and historical shareable PDF remain unchanged.
+- Earlier V1/S1 and external-author results are not pooled as matched V2
+  observations. Old running-looking notes are historical, not live heartbeats.
+
+Final numerical/rebuild packaging, remaining paired-figure review, rights/
+anonymity checks, mock review and an evidence-based submission decision remain.
+Authorship, actual submission and external release require user confirmation.
+

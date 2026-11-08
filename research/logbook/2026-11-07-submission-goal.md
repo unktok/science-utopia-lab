@@ -4462,3 +4462,53 @@ The existing empirical manuscript/PDF is still the older V1/S1 draft, not
 updated V2 results. Interpretation, full-spec/consumer/failure joins, compact
 numerical reproduction material, manuscript/PDF, release review, mock review
 and final submission judgment remain required; the active full goal is not complete.
+
+### Empirical V2 manuscript: completed data, full-spec join and print QA
+
+Work only in the separate v2-empirical-manuscript-v1 checkout. Frozen experiment
+b6654ad and analysis adapter68ab582 remain untouched; no model/world or authored
+code is dispatched. Preserve the old11-page submission.tex/PDF/build-v2 receipt.
+Create submission-v2.tex and a separately named12-page empirical PDF with the
+completed120 attempts,90 selection-fixed observations, full paths/nulls/ties,
+common T/C/E scores, actual institutional mechanisms, measured costs and limits.
+V2 rather than the older V1/S1 pilot is now the main empirical narrative.
+
+At b1913f5 add an opt-in5.5in native-width common-score layout, preserving the
+default8.2in renderer and exact plot-data. First24-check batch has23 passes and
+one old renderer-stub error because the added paper keyword is not accepted;
+retain its XML, then explicitly accept/assert paper=False in that isolated stub
+at125ff92. The fresh batch passes24 in8.61s, XML SHA256
+f4b9c5f965b45b29b0b875fa986d7ab0bf669e472eb2d19acbc813d71bf8c941.
+Actual native-width manifest file SHA256093c9ebc810888bcd3145b99496378b8e8d4a2672a8e7d63433f263f2f6d6b18.
+Both new common-score PNGs are individually inspected; numeric data are unchanged.
+At13d0fa5 change only table-caption spacing to seed~42,20 tests pass6.48s;
+actual table manifest file SHA256419247bd68eb0e4f9edd90c67438cf8a74f472174702a480fbd87cb3cdaf6760.
+
+The retained read-only inspection research/analysis/native-design-v2-specs.py
+is committed at463e2b282719781abf7419ba55662a5744afde65, source SHA256
+fa37a966dfb3ec051aba2df7125f3024f03636860eb75ef3e81f91b401be733a.
+A fresh execution exits0, checking the complete audit file SHA before/after,
+all120 row statuses/losses,64 actual specifications,10 frozen representatives
+and every tied ID. All declared nonparameter graph fields remain unchanged;
+40 rows change selection source. Numeric process count changes in20 rows, so
+this is not behavioral equivalence or unchanged runtime process contracts.
+Runtime nulls classify as scalar-shape12,world-envelope7,decision-coverage6,
+missing-port4,extra-port1,invalid-native-reference1. These literal errors are
+not isolated root causes of designer behavior. Earlier exploratory wrong-key
+and over-specific error grouping checks failed without altering any input;
+the retained replay is the corrected actual-source inspection, not host repair.
+Compact source-bound result/costs: results/native-design-freedom-v2-paper-evidence-v1.json.
+
+Cached/untrusted PDF iterations remain ignored under tmp/pdfs/v2-empirical-v1
+through v5. Resolve draft spacing/underfull paragraphs, use native-width score
+figures and move the resources appendix to a coherent new page rather than a
+short final-page fragment. Final v5 is12 pages,748891 bytes, PDF SHA256
+964c08a7daf5e4a4db96c16001d26e1e1db78d86564554aecb290a8770fb1f17.
+All12 final120dpi pages are newly rendered and individually viewed, with no
+overlap/clipping, broken references or over/underfull warnings. Only the harmless
+UTF-8 inputenc notice remains. PDF text contains no /Users paths, SCRIPTED
+markers, TODO/TBD or undefined labels. Build/asset/page hashes and scope are
+retained in paper/submission-build-v3.json. No future-cycle compliance, anonymous
+clearance, superiority, graph invention, authorship or actual submission claimed.
+The36 paired-analysis PNGs are still awaiting separate visual review; numerical
+rebuild packaging, rights/anonymity review, mock review and final judgment remain.

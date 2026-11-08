@@ -1,0 +1,556 @@
+{
+  "schema": "scienceutopia.native-design-v2-paper-evidence.v1",
+  "date": "2026-11-08",
+  "scope": "Compact actual V2 spec/runtime inspection and recorded cost projections; not a new raw audit, causal intervention or fresh inference.",
+  "source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "audit": {
+    "content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+    "file_sha256": "c4399dae873eee21d8ec8de5f4b6231bd48c0f70f7475b9ab836662b1f13843b"
+  },
+  "report": {
+    "content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732",
+    "file_sha256": "94aba0f5029a2a4042f58019fa68b52a28fee135d5644faa7af8ee79b37801ac"
+  },
+  "spec_inspection": {
+    "script": "research/analysis/native-design-v2-specs.py",
+    "script_sha256": "fa37a966dfb3ec051aba2df7125f3024f03636860eb75ef3e81f91b401be733a",
+    "script_commit": "463e2b282719781abf7419ba55662a5744afde65",
+    "replay_exit": 0,
+    "all_trial_status_and_own_loss_rows_rejoined": 120,
+    "complete_specs_rejoined": 64,
+    "outside_mechanisms": {},
+    "node_id_change_rows": [],
+    "node_order_change_rows": [],
+    "nonparameter_node_fields": {},
+    "parameter_changed_row_counts": {
+      "world.selection/parameters/code_artifact/source": 40,
+      "addressed-selection/parameters/program/parameters/bias": 26,
+      "addressed-selection/parameters/program/parameters/memory_cost": 24,
+      "addressed-selection/parameters/program/parameters/thresholds": 25,
+      "open-source/parameters/count": 20,
+      "open-memory-router/parameters/program/parameters/threshold": 24
+    },
+    "selected_representatives_rejoined": 10,
+    "all_exact_tied_ids_rejoined": true,
+    "runtime_failure_counts": {
+      "decision-coverage": 6,
+      "world-envelope": 7,
+      "scalar-shape": 12,
+      "extra-port": 1,
+      "missing-port": 4,
+      "invalid-native-reference": 1
+    },
+    "limitations": [
+      "Changed-leaf counts overlap across rows; arrays compared atomically.",
+      "Declared graph metadata unchanged does not imply behavioral equivalence: process count changes in 20 rows.",
+      "Literal thrown-error categories are not isolated root causes of designer behavior.",
+      "The same full audit is read before/after inspection under its exact file hash; no generated code is executed."
+    ]
+  },
+  "scientist_costs": {
+    "source_content_sha256": "29091c00dac6b20576e1dc03d45318c18118e0d99b9878645b45155bc014f11e",
+    "physical_response_journals": 194,
+    "completed_responses": 16043,
+    "usage": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 16043,
+        "missing_responses": 0,
+        "recorded_sum": 2976386
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 16043,
+        "missing_responses": 0,
+        "recorded_sum": 1473665
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 16043,
+        "missing_responses": 0,
+        "recorded_sum": 15547758
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 16043,
+        "missing_responses": 0,
+        "recorded_sum": 17021423
+      }
+    },
+    "wire_inputs": 16043,
+    "wire_inputs_without_committed_reply": 0,
+    "provider_total_component_disagreements": 0,
+    "unknown_usage_imputed": false
+  },
+  "auxiliary_costs": {
+    "source_content_sha256": "59b72c7f49a61f0b3484de25a6d0101059b5f14798d0c031afefa94d063afc68",
+    "groups": {
+      "designer-calibration": {
+        "completion_record_available": 84,
+        "final_response_reported": 84,
+        "known_HTTP_response": 84,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 499.76783829391934,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 84,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 3819,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 22464,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 808832,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 57552683206,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 570417707,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 434973102543,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 494874972834,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 3819,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 808832,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 84,
+            "missing_records": 0,
+            "recorded_sum": 495.01662862231024,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "within-prompt": 84
+        },
+        "recorded_POST_attempt": 84,
+        "request_intents": 84,
+        "status_counts": {
+          "passed": 84
+        },
+        "unknown_usage_imputed": false
+      },
+      "designer-proposal": {
+        "completion_record_available": 1387,
+        "final_response_reported": 1385,
+        "known_HTTP_response": 1387,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 1387,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 19681.867535932688,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 267057,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 3102175,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 25969867,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 4250319010898,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 20675877863,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 13517140599288,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 17845748678173,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 267057,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 25969867,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 1387,
+            "missing_records": 0,
+            "recorded_sum": 17849.22408003453,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "within-prompt": 1387
+        },
+        "recorded_POST_attempt": 1387,
+        "request_intents": 1387,
+        "status_counts": {
+          "applied": 1144,
+          "finished": 71,
+          "invalid-response": 9,
+          "rejected": 163
+        },
+        "unknown_usage_imputed": false
+      },
+      "role-load-designer": {
+        "completion_record_available": 99,
+        "final_response_reported": 99,
+        "known_HTTP_response": 99,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 99,
+            "missing_records": 0,
+            "recorded_sum": 645.8452515010722,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 99,
+            "recorded_sum": null,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "unknown": 99
+        },
+        "recorded_POST_attempt": 99,
+        "request_intents": 99,
+        "status_counts": {
+          "completed-load": 99
+        },
+        "unknown_usage_imputed": false
+      },
+      "role-load-scientist": {
+        "completion_record_available": 194,
+        "final_response_reported": 194,
+        "known_HTTP_response": 194,
+        "measurements": {
+          "caller_elapsed_seconds": {
+            "all_records_known": true,
+            "invalid_records": 0,
+            "known_records": 194,
+            "missing_records": 0,
+            "recorded_sum": 28.4525742046535,
+            "unit": "seconds"
+          },
+          "host_model_call_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "seconds"
+          },
+          "native_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_cached_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "native_prompt_eval_count": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "provider_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_load_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_prompt_eval_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "provider_total_duration_ns": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer nanoseconds"
+          },
+          "transport_completion_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_prompt_tokens": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "integer count"
+          },
+          "transport_seconds": {
+            "all_records_known": false,
+            "invalid_records": 0,
+            "known_records": 0,
+            "missing_records": 194,
+            "recorded_sum": null,
+            "unit": "seconds"
+          }
+        },
+        "native_cache_subset_counts": {
+          "unknown": 194
+        },
+        "recorded_POST_attempt": 194,
+        "request_intents": 194,
+        "status_counts": {
+          "completed-load": 194
+        },
+        "unknown_usage_imputed": false
+      }
+    },
+    "unknown_usage_imputed": false,
+    "cached_prompt_counts_added_to_input_totals": false,
+    "token_aliases_or_nested_durations_added": false,
+    "full_project_compute_FLOPs_energy_money_or_fresh_GPU_cost_claimed": false
+  },
+  "writer_wall_seconds": 78958.697204,
+  "proposal_and_load_times_are_overlapping_scopes": true,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "not_total_project_compute": true,
+  "unreviewed_paired_png_count": 36,
+  "publication_or_upload": false
+}

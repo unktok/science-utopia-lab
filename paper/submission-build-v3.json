@@ -1,0 +1,92 @@
+{
+  "schema": "scienceutopia.working-paper-build.v3",
+  "date": "2026-11-08",
+  "status": "working-draft-not-submission-ready",
+  "entrypoint": "paper/submission-v2.tex",
+  "output": "output/pdf/science-utopia-lab-objective-design-v2-draft.pdf",
+  "pdf_sha256": "964c08a7daf5e4a4db96c16001d26e1e1db78d86564554aecb290a8770fb1f17",
+  "pages": 12,
+  "tex_sha256": "2d5b9fc8b777f8f6b96e621fedcaa5dbc9abf3007dba0144594d6fc95eccef0c",
+  "additional_bibliography_sha256": "c3b9efffad398b91126b0f321baa7d4442644cc0bb4e7c313f8a54a724234920",
+  "build": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates --outdir ../tmp/pdfs/v2-empirical-v5 submission-v2.tex",
+  "tool_versions": {
+    "tectonic": "0.17.0",
+    "poppler_pdftoppm": "26.06.0"
+  },
+  "downloads": 0,
+  "additional_dependencies": {
+    "research/results/native-design-freedom-v2-paper-evidence-v1.json": "122aa909d3f8524795b334abc36495c294d81ee41ad6033508070063ad3876c0",
+    "paper/references.bib": "4b884c79437525071fc9625e9ae1f64e65973eb042192ce1732b9db8a6871b6a",
+    "paper/neurips_2025.sty": "67a960f35da6fecb5a0ce0202fa400459f4c8bb6c294f1a3fdd82fbbd39244c2",
+    "paper/figures/program-concept/science-system-design-program.pdf": "b15140a8121330b4b8fc94cff96e89dac140c94b2415fc6ff0de7f232dd1108a",
+    "paper/generated/native-design-v2/search-outcomes.tex": "0e9269b0df48b83e40f3cb18a647e0aed42bb8ab46d159ca431eeb050a4fbe05",
+    "paper/generated/native-design-v2/search-outcomes-data.json": "0c65300d2c70af7fc43ebb98f3078372b4d3a5e69629b90d757b5743f79a2127",
+    "paper/generated/native-design-v2/cross-score-data.json": "caf25ffb9b0d25be00055aefa32c02f89dada6a9736a7c22854e87fa22d48ce1",
+    "paper/figures/native-design-v2/throughput-paths.png": "c8c850ce7a906d67a29d72442efeca6adee1b1578a75a6ef07b5c3c060e53114",
+    "paper/figures/native-design-v2/selective-paths.png": "5747849a13a958bcade68f3604784ddf0ba20fec920c766774a3ed85e7064425",
+    "paper/figures/native-design-v2/cross-objective-2y.png": "131fed773ca44d24dd05b77833e4cd93aaadbfd734ee278c4b148ff13e3737f2",
+    "paper/figures/native-design-v2/cross-objective-4y.png": "b630ebd77ab88fd19750bbb77e9c1e10a6b8164ec488144e9b3e1bacfbad2a66",
+    "research/analysis/native-design-v2-specs.py": "fa37a966dfb3ec051aba2df7125f3024f03636860eb75ef3e81f91b401be733a",
+    "research/results/native-design-freedom-v2-closed-analysis-v1.json": "9dbe4a1fba43a258ea884b657f665c93d95d375b73e3fa9ce00f8ddd2b3f67d6",
+    "research/results/submission-hardware-observed-v2.json": "07303a0d20c43f27e036fa421edb8edd9813181f20021473e27e2ae861beb340",
+    "research/results/designer-registry-head-approved-v1.json": "ecbec62bff028ece954c308a5570b50f873cc4d0049e101b072385ff592f7d31"
+  },
+  "analysis_projection_sources": {
+    "scripts/figures/native_design_cross_objective.py": "1df86d0241407fb599dddbcc6b6562519d12ff8f3e207c5749f7b0761b345731",
+    "scripts/reports/native_design_tex.py": "d26309daba6bf2d514bf22c785fd15f70bf48fbc0298af562aace3e6ac5eb76c"
+  },
+  "actual_report_content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732",
+  "full_audit_content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+  "compact_paper_evidence": "research/results/native-design-freedom-v2-paper-evidence-v1.json",
+  "final_tex_warnings": [
+    "Package inputenc Warning: inputenc package ignored with utf8 based engines."
+  ],
+  "layout_or_undefined_reference_warnings": [],
+  "build_log_sha256": "84c356b05df4732fa928c0ad4075ad70a8ef680de417087306acab3916d448a4",
+  "extracted_text_sha256": "2d5effe26f4e58d5e23b061acec97df71a756d29f16c2504326857c93d533dc2",
+  "visual_qa": {
+    "renderer": "Poppler pdftoppm",
+    "resolution_dpi": 120,
+    "all_pages_inspected": true,
+    "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "final_page_png_sha256": {
+      "page-01.png": "af910ed7335a89b101497e6cdd3e9d756636b6d0779564c27cd2cdba4d07fed7",
+      "page-02.png": "073479bb93ca5a0665433e8b3b54e691df940df1b8a3c2c440929c07ce581c2c",
+      "page-03.png": "91dd39b4e31cb4eb32d35f9d70b691b2d68d4256132450263db123c5230f932f",
+      "page-04.png": "b320da85d7327b01c5f8d31d231ee56edacc2a6c28a5281b96c557b3596dccb8",
+      "page-05.png": "89abfd882a7f284d9f8e0b429fa2713788aa2f7a64d416bbeb1fb13e13f4ca7f",
+      "page-06.png": "fdcb72fbd04bb0f927e8069a84368d65f0b620f2064e41725bdf7a3a35602684",
+      "page-07.png": "353b84600d5bd9c292e401485d72dbb35b1bc9a5bfc7272725d3241abfb98983",
+      "page-08.png": "a00f8359fc316ffac56ed1e1b211145f984241e2d2bf0f9dd35d335cbc536f5d",
+      "page-09.png": "65878a2cb3d8f7db54cd264a0966e08ada250be879b9319e03283f9495f23d41",
+      "page-10.png": "23363cdc343a5e0d4bbaee7425962493cca8a18d9928ccbc6f2d135c11e49d94",
+      "page-11.png": "99da8ac75f2e6d3fc146c947de203916a687c3219f453e124c6d06cd9ae894e0",
+      "page-12.png": "f1397d36c84779b7ee7d02ee6fc79a231284c88ef235694bbe3b3f614b9b0773"
+    },
+    "final_build_directory": "tmp/pdfs/v2-empirical-v5",
+    "native_width_common_score_figures": true,
+    "whole_document_newly_rendered_and_individually_viewed": true,
+    "numeric_data_not_changed_by_print_layout": true,
+    "operator_paths_or_scripted_markers_in_pdf_text": false
+  },
+  "previous_draft_preserved": {
+    "entrypoint": "paper/submission.tex",
+    "receipt": "paper/submission-build-v2.json",
+    "output": "output/pdf/science-utopia-lab-objective-design-draft.pdf",
+    "pdf_sha256": "0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59"
+  },
+  "scope": "Completed V2 data, all 120 attempts, 90 unused-condition observations, all exact ties, actual spec/failure inspection and measured response costs. No optimizer superiority, useful graph invention, real-policy benefit, anonymous release clearance, final authorship or actual submission claimed."
+}

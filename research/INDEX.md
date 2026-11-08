@@ -10,7 +10,9 @@ Historical documents retain their paths and source identities.
 - [Fixed objective/design-freedom study](protocols/campaigns/native-design-freedom-v2.md):
   search and all90 selected-policy evaluations finished; both full audits match.
   [Closure/actual projection hashes](results/native-design-freedom-v2-closed-analysis-v1.json).
-  Interpretation, manuscript and final package remain; see current STATUS.
+  [Empirical V2 draft](../paper/submission-v2.tex) and
+  [full-audit/spec/cost evidence](results/native-design-freedom-v2-paper-evidence-v1.json)
+  are now available. Final packaging/review remain; see current STATUS.
   [Source-specific software QA](results/native-design-freedom-v2-verification.json)
   and the later [audit-order component diagnostic](results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
   have different scopes. The [order-only correction verification](results/native-design-freedom-v2-audit-order-verification-v1.json)
@@ -39,7 +41,8 @@ Historical documents retain their paths and source identities.
 - [V1 same-source feedback comparison](results/native-feedback-comparison-v1-a1.md):
   all eight slots, four runtime failures, initial all-accept improvement, no measured G1 gain.
 - [V1 compact audit](results/native-feedback-comparison-v1-a1.json) and
-  [short working manuscript](../paper/submission.tex).
+  [preserved V1/S1 manuscript](../paper/submission.tex); the current empirical
+  draft is [V2](../paper/submission-v2.tex).
 - [V45 compact audit](results/native-warmstart-v45-a1.json).
 - [V45 actual outcomes, error diagnosis and separate fixes](logbook/2026-11-07-native-warmstart-v45.md).
 - [V45 prospective two-slot protocol](protocols/campaigns/native-warmstart-v45-a1.md).

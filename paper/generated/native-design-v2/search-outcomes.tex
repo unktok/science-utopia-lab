@@ -1,0 +1,31 @@
+% Generated from CLOSED report 75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Obj. & Proposal space/control & Meas. & G-null & X-null & M-null & Best & Ties\\
+\midrule
+$T$ & LLM numeric & 0/12 & 12 & 0 & 0 & 0.000$^{\ast}$ & 1\\
+$T$ & LLM code, fixed graph & 9/12 & 1 & 2 & 0 & -7.000 & 9\\
+$T$ & LLM code and graph & 7/12 & 0 & 5 & 0 & -7.000 & 6\\
+$T$ & Technical-only code/graph & 7/12 & 0 & 5 & 0 & -7.000 & 5\\
+$T$ & Uniform numeric & 12/12 & 0 & 0 & 0 & -7.000 & 8\\
+\midrule
+$C$ & LLM numeric & 0/12 & 12 & 0 & 0 & 2.400$^{\ast}$ & 1\\
+$C$ & LLM code, fixed graph & 6/12 & 0 & 6 & 0 & 2.100 & 2\\
+$C$ & LLM code and graph & 8/12 & 0 & 4 & 0 & 2.100 & 2\\
+$C$ & Technical-only code/graph & 3/12 & 0 & 9 & 0 & 2.400$^{\ast}$ & 3\\
+$C$ & Uniform numeric & 12/12 & 0 & 0 & 0 & 2.400$^{\ast}$ & 4\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{All scheduled development attempts.} Each row pools three
+controller histories with four proposals each, all at world seed~42.
+Meas.: available assigned losses; G/X-null: generation/execution failures;
+M-null: completed forward with unavailable assigned loss. Nulls are not penalties.
+Best includes the shared initial system; $\ast$ marks its selection, not an invention.
+Ties count all exact minimizers, including the initial reference when tied.
+Only display values are rounded; selection uses unrounded report values.
+Controller histories are not independent environment replications.
+}
+\label{tab:v2-search-outcomes}
+\end{table}

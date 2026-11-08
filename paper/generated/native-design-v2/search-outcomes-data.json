@@ -1,0 +1,241 @@
+{
+  "classification": "actual-native-design-freedom-study-v2",
+  "content_sha256": "1e12db2e97fd572b66d2b56baeb0884e963fbadc9c7b9e2a54bebc09ae8d8cda",
+  "controller_histories_are_not_environment_replications": true,
+  "counts": {
+    "complete": 64,
+    "generation-failure": 25,
+    "technical-failure": 31
+  },
+  "input_audit_content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+  "input_report_content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732",
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "null_losses_imputed": false,
+  "rows": [
+    {
+      "all_tied_row_ids": [
+        "reference:open-seed"
+      ],
+      "arm": "throughput:parameters",
+      "best_including_initial": 0.0,
+      "display_method": "LLM numeric",
+      "measured_assigned_losses": 0,
+      "objective": "throughput",
+      "scheduled": 12,
+      "selected_initial": true,
+      "selected_row_id": "reference:open-seed",
+      "status_counts": {
+        "complete": 0,
+        "generation-failure": 12,
+        "loss-unavailable": 0,
+        "technical-failure": 0
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "run-00:throughput:code-fixed-graph:g0",
+        "run-00:throughput:code-fixed-graph:g2",
+        "run-00:throughput:code-fixed-graph:g3",
+        "run-01:throughput:code-fixed-graph:g1",
+        "run-01:throughput:code-fixed-graph:g2",
+        "run-02:throughput:code-fixed-graph:g0",
+        "run-02:throughput:code-fixed-graph:g1",
+        "run-02:throughput:code-fixed-graph:g2",
+        "run-02:throughput:code-fixed-graph:g3"
+      ],
+      "arm": "throughput:code-fixed-graph",
+      "best_including_initial": -7.0,
+      "display_method": "LLM code, fixed graph",
+      "measured_assigned_losses": 9,
+      "objective": "throughput",
+      "scheduled": 12,
+      "selected_initial": false,
+      "selected_row_id": "run-00:throughput:code-fixed-graph:g0",
+      "status_counts": {
+        "complete": 9,
+        "generation-failure": 1,
+        "loss-unavailable": 0,
+        "technical-failure": 2
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "run-00:throughput:code-and-graph:g0",
+        "run-00:throughput:code-and-graph:g1",
+        "run-01:throughput:code-and-graph:g2",
+        "run-01:throughput:code-and-graph:g3",
+        "run-02:throughput:code-and-graph:g2",
+        "run-02:throughput:code-and-graph:g3"
+      ],
+      "arm": "throughput:code-and-graph",
+      "best_including_initial": -7.0,
+      "display_method": "LLM code and graph",
+      "measured_assigned_losses": 7,
+      "objective": "throughput",
+      "scheduled": 12,
+      "selected_initial": false,
+      "selected_row_id": "run-00:throughput:code-and-graph:g0",
+      "status_counts": {
+        "complete": 7,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 5
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "run-00:throughput:technical-only:g0",
+        "run-00:throughput:technical-only:g1",
+        "run-00:throughput:technical-only:g2",
+        "run-00:throughput:technical-only:g3",
+        "run-01:throughput:technical-only:g0"
+      ],
+      "arm": "throughput:technical-only",
+      "best_including_initial": -7.0,
+      "display_method": "Technical-only code/graph",
+      "measured_assigned_losses": 7,
+      "objective": "throughput",
+      "scheduled": 12,
+      "selected_initial": false,
+      "selected_row_id": "run-00:throughput:technical-only:g0",
+      "status_counts": {
+        "complete": 7,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 5
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "run-00:throughput:random:g0",
+        "run-00:throughput:random:g2",
+        "run-01:throughput:random:g1",
+        "run-01:throughput:random:g2",
+        "run-01:throughput:random:g3",
+        "run-02:throughput:random:g0",
+        "run-02:throughput:random:g1",
+        "run-02:throughput:random:g3"
+      ],
+      "arm": "throughput:random",
+      "best_including_initial": -7.0,
+      "display_method": "Uniform numeric",
+      "measured_assigned_losses": 12,
+      "objective": "throughput",
+      "scheduled": 12,
+      "selected_initial": false,
+      "selected_row_id": "run-00:throughput:random:g0",
+      "status_counts": {
+        "complete": 12,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 0
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "reference:open-seed"
+      ],
+      "arm": "selective:parameters",
+      "best_including_initial": 2.4000000000000004,
+      "display_method": "LLM numeric",
+      "measured_assigned_losses": 0,
+      "objective": "selective",
+      "scheduled": 12,
+      "selected_initial": true,
+      "selected_row_id": "reference:open-seed",
+      "status_counts": {
+        "complete": 0,
+        "generation-failure": 12,
+        "loss-unavailable": 0,
+        "technical-failure": 0
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "run-02:selective:code-fixed-graph:g2",
+        "run-02:selective:code-fixed-graph:g3"
+      ],
+      "arm": "selective:code-fixed-graph",
+      "best_including_initial": 2.1,
+      "display_method": "LLM code, fixed graph",
+      "measured_assigned_losses": 6,
+      "objective": "selective",
+      "scheduled": 12,
+      "selected_initial": false,
+      "selected_row_id": "run-02:selective:code-fixed-graph:g2",
+      "status_counts": {
+        "complete": 6,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 6
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "run-02:selective:code-and-graph:g2",
+        "run-02:selective:code-and-graph:g3"
+      ],
+      "arm": "selective:code-and-graph",
+      "best_including_initial": 2.1,
+      "display_method": "LLM code and graph",
+      "measured_assigned_losses": 8,
+      "objective": "selective",
+      "scheduled": 12,
+      "selected_initial": false,
+      "selected_row_id": "run-02:selective:code-and-graph:g2",
+      "status_counts": {
+        "complete": 8,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 4
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "reference:open-seed",
+        "run-02:selective:technical-only:g1",
+        "run-02:selective:technical-only:g3"
+      ],
+      "arm": "selective:technical-only",
+      "best_including_initial": 2.4000000000000004,
+      "display_method": "Technical-only code/graph",
+      "measured_assigned_losses": 3,
+      "objective": "selective",
+      "scheduled": 12,
+      "selected_initial": true,
+      "selected_row_id": "reference:open-seed",
+      "status_counts": {
+        "complete": 3,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 9
+      }
+    },
+    {
+      "all_tied_row_ids": [
+        "reference:open-seed",
+        "run-00:selective:random:g1",
+        "run-00:selective:random:g3",
+        "run-02:selective:random:g2"
+      ],
+      "arm": "selective:random",
+      "best_including_initial": 2.4000000000000004,
+      "display_method": "Uniform numeric",
+      "measured_assigned_losses": 12,
+      "objective": "selective",
+      "scheduled": 12,
+      "selected_initial": true,
+      "selected_row_id": "reference:open-seed",
+      "status_counts": {
+        "complete": 12,
+        "generation-failure": 0,
+        "loss-unavailable": 0,
+        "technical-failure": 0
+      }
+    }
+  ],
+  "schema": "scienceutopia.native-design-freedom-study.v2.manuscript-search-table",
+  "selection_recomputed_before_display_rounding": true,
+  "source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68"
+}

@@ -16,7 +16,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
 | Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, search/cross-score/paired figures, table and cost/relaxation projections generated at clean5dcf232. [Closure and artifact hashes](results/native-design-freedom-v2-closed-analysis-v1.json). Interpretation/manuscript/final package remain unfinished; unmodified frozen CLI is not claimed to pass |
-| Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
+| Manuscript |12-page empirical V2 draft: all120 trials,90 fixed-selection evaluations, actual figures, spec/mechanism/failure analysis and measured response costs. All12 final pages rendered and individually inspected. [Source/build QA](../paper/submission-build-v3.json); submission/release readiness not claimed |
 
 The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
 06:58:09UTC, at clean frozen source
@@ -58,10 +58,12 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 - Permitted code/graph freedom is not demonstrated structural invention.
   Inspect actual specifications, consumers and execution receipts. Changed source
   can affect an unexercised branch rather than the observed decisions.
-  A bounded frozen-selection inspection finds only existing numeric/source edits
-  among its64 recorded complete candidates, with no declared graph/process-order
-  changes. This provisional source observation must rejoin the final full audit;
-  it is not a behavioral-equivalence or whole-study audit claim.
+  The retained [full-audit/spec inspection](results/native-design-freedom-v2-paper-evidence-v1.json)
+  rejoins all120 statuses/losses,64 complete specifications,10 representatives
+  and every exact tied ID. It finds only existing numeric/source edits, with no
+  declared node, wiring, node ABI, initial-state or schedule changes. Process
+  count changes in20 candidates: unchanged graph metadata is not behavioral
+  equivalence or an unchanged runtime process contract.
 - Identical candidate/seed/settings can have different recorded researcher replies
   and Q. Paired world seeds do not guarantee perfectly coupled fresh LLM realizations.
 
@@ -98,8 +100,8 @@ local-designer learning evidence. See the [full program map](program-map.md).
    closed-audit reports/figures/costs are generated. Complete the interpretation
    of all losses, failures, identities, lineage, paired outcomes, physical sharing,
    mechanisms and measured costs, plus final print-size/paired-figure review.
-4. Update the claim-centered manuscript/figures, rebuild and inspect every PDF page,
-   complete the reproducibility/rights/anonymous-release review and final mock review.
+4. The claim-centered V2 manuscript/figures are now built and all12 pages inspected.
+   Complete numerical/rebuild packaging, rights/anonymous-release review and final mock review.
    Actual submission, external costs/new resources and authorship require user confirmation.
 
 The actual closed report and empirical V2 figures/table/cost projections are now
@@ -117,7 +119,7 @@ joins the final questions to required actual evidence, not new selection rules.
 The [manuscript table generator](../scripts/reports/native_design_tex.py) now
 rejoins all120 rows and exact frozen ties before display rounding;
 [57-test and one-page visual QA](results/native-design-tex-qa-v1.json) is SCRIPTED;
-the separate actual table is now generated, not yet inserted into the manuscript.
+the separate actual table is generated and inserted into the new V2 manuscript.
 The [auxiliary model-cost projection](../scripts/reports/native_auxiliary_costs.py)
 adds proposal/calibration/load usage and explicit missingness alongside the
 scientist-response token module; [70-test verification](results/native-auxiliary-costs-qa-v1.json)
@@ -131,11 +133,13 @@ tracked rebuilds, original-source audits and fresh inference.
 
 ## Manuscript and reproduction limits
 
-The [working paper](../paper/README.md) includes V1/S1 outcomes, fixed-record loss
-relaxation, related work, resources and responsible interpretation.
-Its latest11-page PDF was built offline, freshly rendered at120dpi and individually
-inspected; [source/visual QA receipt](../paper/submission-build-v2.json).
-Partial V2 observations have not been inserted as final manuscript results.
+The [current working paper](../paper/README.md) includes the completed V2 study,
+all search paths/nulls/ties, common T/C/E evaluation, full-spec and mechanism
+analysis, fixed-record loss algebra and measured response costs. Its12-page PDF
+was built offline, rendered at120dpi and individually inspected;
+[source/visual QA receipt](../paper/submission-build-v3.json).
+The older11-page V1/S1 draft and its V2 build receipt are preserved unchanged.
+No manuscript/PDF completion implies method superiority or submission readiness.
 
 [S1 token accounting](results/native-controls-token-costs-v1.json) is measured,
 not FLOPs/energy/money or total-project compute. Hardware/environment/backend

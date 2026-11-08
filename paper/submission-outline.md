@@ -1,11 +1,11 @@
 # Main-paper outline: objective-conditioned scientific institutions
 
-Working claim outline,2026-11-07. This is not a submitted or accepted paper.
+Working claim outline, updated2026-11-08. This is not a submitted or accepted paper.
 The [research plan](../research/publication/plan.md) controls required evidence.
 The existing long main.tex remains a historical working draft until rewritten;
 its NeurIPS2025 style is not a claim of compliance with a future venue.
-The new [short submission draft](submission.tex) implements this structure;
-its pending empirical section is filled only after original-source audit.
+The [empirical V2 draft](submission-v2.tex) implements this structure using the
+closed full audit. The previous [V1/S1 draft](submission.tex) is preserved.
 
 ## Narrative
 
@@ -17,7 +17,7 @@ its pending empirical section is filled only after original-source audit.
    declared loss, comparable information and compute, separate validity/evaluation.
 4. **Results**: objective-conditioned paths, parameter/free-design contrasts,
    feedback ablation and cross-objective selected-system evaluation. Report ties
-   and negative results; these experiments are not all complete yet.
+   and negative results; the finite V2 experiment and both full audits are complete.
 5. **Mechanistic analysis**: trace changed institutions to actual downstream
    researcher inputs/actions. Explain proxy incentives, costs and failure modes.
 6. **Limits and implications**: no universal scientific-quality metric, small
@@ -43,8 +43,8 @@ Five two-year seeds and the single-seed four-year diagnostic remain separate.
 The existing [all-reference plots](../scripts/figures/native_design_evaluation.py)
 instead show paired differences under each arm's own objective. They answer
 different questions; neither should replace the other or become a cross-loss
-normalized ranking. Until the closed audit/report exists, previews are SCRIPTED
-QA only and must not appear as empirical manuscript results.
+normalized ranking. Actual closed-study data now populate the V2 manuscript;
+the earlier SCRIPTED previews remain software QA, not empirical results.
 
 ## Claims and evidence to join after closure
 
@@ -63,18 +63,18 @@ resolve any empirical question in this table.
 
 ### Permitted freedom versus exercised edits
 
-A bounded read-only inspection of the frozen selection file on Nov8 finds that
+The full-audit-bound read-only inspection on Nov8 finds that
 all64 recorded complete search candidates change only mechanism parameters
 relative to the common initial system. The changed leaves are selection Python
 source or the existing numeric settings; no declared node, edge, node ABI,
 actor/artifact type, invariant, schedule or process-order metadata changes appear.
 All10 selected representatives and every exact tied member are checked separately.
-This is a source-inspection observation, not the pending full original-source
-audit or a behavioral-equivalence result. Rejoin these distinctions to the full
-closed audit before publishing them as results. In particular, code-and-graph
+All120 row statuses/losses and64 specifications now rejoin the closed full audit;
+the retained script and compact result are in the V2 paper-evidence receipt.
+This remains source inspection, not behavioral equivalence. In particular, code-and-graph
 permission is not evidence that this search actually invented a new graph;
 unchanged declared structure does not rule out a changed algorithm or runtime
-state. Do not add a novelty veto, remove ties or dispatch extra attempts to obtain
+state; numeric process count changes in20 candidates. Do not add a novelty veto, remove ties or dispatch extra attempts to obtain
 a more favorable structural result.
 
 The numeric-arm failure interpretation also needs the actual delivered task,
