@@ -3777,3 +3777,16 @@ values. The new analytic cached-count field does not alter those artifacts or
 scientific ranking. All90 conditions, normal actual writer exit, two complete
 adapted audits, actual analyses/figures/costs and final manuscript/package/mock
 review remain required. Goal stays active; no real V2 final report is claimed.
+
+### Verified wait through23 records; next four-year diagnostic advances
+
+Previous goal turn is a verified live wait. This turn re-polls actual writer
+46865 throughout. Job0022 advances41→62 requests and its complete observation
+appears by Nov8 00:39:58UTC, temporarily ahead of progress22. Job0023's actual
+started record binds seed31001,four years,started00:40:27.383472UTC. Its requests
+advance4→28; by00:41:50UTC progress and normal observations agree23/90. Writer
+handle remains live, no ended record. Both checkouts are clean before this
+documentation update. No restart/refill, new experiment, source/prompt/model/
+loss/budget/selection change or optional egress. Long-horizon processing is an
+expected verified wait, not a blocker or additional independent seed. Full90,
+normal writer exit, both complete audits and final empirical deliverables remain.
