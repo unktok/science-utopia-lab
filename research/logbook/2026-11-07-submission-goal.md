@@ -3959,3 +3959,17 @@ terminal failures. No current prompt is repaired, failure reclassified or slot
 refilled. Carry this bounded input evidence into the final full-audit failure
 analysis rather than attributing end-to-end failure to intrinsic parameter-space
 capacity, or declaring the entire interface bug-free.
+
+### Verified evaluation wait through33 normal observations
+
+Previous goal turn is a verified wait through32; actual writer46865 remains
+live. It also rechecks the clean audit analysis checkout at
+68ab58250a3b9708982e1848be3c0856c6084dbd: wrapper/helper hashes remain
+460d4e3e/c56859bb (full recorded hashes unchanged), and the clean experiment
+checkout remains b6654ad. These source checks are readiness, not the full audit.
+This turn polls the same actual handle while job0032 advances23/44/70/86
+requests and completes. At Nov8 01:37:43UTC progress/normal observations agree
+33/90, job0033 is active with8 requests, no writer.ended record exists.
+No restart/refill, extra inference, prompt/model/source/loss/selection/budget
+change or registry egress is initiated. This is expected verified waiting,
+not a blocker; both full audits and final empirical deliverables remain pending.
