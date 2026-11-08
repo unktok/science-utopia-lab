@@ -1,8 +1,8 @@
 # Local paper-rebuild subset
 
 This is preparation for the submission goal, not a final reviewer/public bundle.
-The current manuscript is a working draft. Its V2 results remain pending the
-finite experiment and closed-source audits. Do not publish/upload this subset
+The current empirical V2 manuscript and both full audits are complete, but
+remain a working draft rather than a final reviewer package. Do not publish/upload this subset
 or infer anonymous submission, human authorship or redistribution clearance.
 
 At source37e5443 the actual local subset stages and builds offline successfully;
@@ -10,7 +10,12 @@ At source37e5443 the actual local subset stages and builds offline successfully;
 All11 new pages were individually inspected, with identical rendered PNG bytes
 and extracted text versus the reviewed original. PDF file bytes differ; no
 unproven claim about the sole cause of that difference is made. This current
-working-draft check must be repeated after final-result manuscript changes.
+historical check concerns the old V1/S1 draft, not the new V2 paper.
+
+The new [V2 allowlist](../research/publication/paper-rebuild-allowlist-v2.json)
+has13 exact paths and10 literal TeX dependencies, bound to the V3 build receipt
+and submission-v2.tex. It omits the compressed numerical report and raw worlds.
+The original12-path policy and its earlier verification remain unchanged.
 
 ## Exact subset and actual scope
 
@@ -38,7 +43,7 @@ under ignored outputs; do not use an experiment's raw directory.
 
 ```text
 python -m scripts.reports.paper_rebuild_bundle \
-  --policy research/publication/paper-rebuild-allowlist-v1.json \
+  --policy research/publication/paper-rebuild-allowlist-v2.json \
   --output <fresh-local-staging-directory>
 ```
 

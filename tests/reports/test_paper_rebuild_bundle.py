@@ -110,3 +110,38 @@ def test_current_real_allowlist_covers_literal_manuscript_inputs_without_staging
     assert 'paper/neurips_2025.sty' in dependencies and len(dependencies) == 9
     assert all(not n.startswith(('outputs/', 'data/', 'game-ui-v2/', 'research/results/')) for n in p['files'])
     assert len(p['files']) == 12
+
+
+def test_v3_receipt_uses_its_actual_entrypoint_without_changing_old_contract(tmp_path):
+    root, bodies, p = fixture(tmp_path)
+    old = root / 'paper/submission.tex'; new = root / 'paper/submission-v2.tex'
+    old.rename(new); p['entrypoint'] = 'paper/submission-v2.tex'
+    p['files'] = sorted('paper/submission-v2.tex' if n == 'paper/submission.tex' else n for n in p['files'])
+    receipt_path = root / p['receipt']; receipt = json.loads(receipt_path.read_text())
+    receipt['schema'] = 'scienceutopia.working-paper-build.v3'
+    receipt['entrypoint'] = p['entrypoint']; receipt_path.write_text(json.dumps(receipt))
+    out = tmp_path / 'staged'
+    bundle.stage(root, p, out, source_commit='SCRIPTED')
+    assert 'submission-v2.tex' in (out / 'REBUILD.md').read_text()
+    assert 'rebuild submission.tex' not in (out / 'REBUILD.md').read_text()
+    assert new.read_bytes() == (out / p['entrypoint']).read_bytes()
+
+
+@pytest.mark.parametrize('change', ['unsupported-schema', 'different-entrypoint'])
+def test_v3_does_not_accept_unrecognized_or_mismatched_receipts(tmp_path, change):
+    root, bodies, p = fixture(tmp_path)
+    path = root / p['receipt']; receipt = json.loads(path.read_text())
+    receipt['schema'] = 'unknown' if change == 'unsupported-schema' else 'scienceutopia.working-paper-build.v3'
+    receipt['entrypoint'] = 'paper/different.tex'; path.write_text(json.dumps(receipt))
+    with pytest.raises(ValueError):
+        bundle.stage(root, p, tmp_path / 'staged', source_commit='SCRIPTED')
+    assert not (tmp_path / 'staged').exists()
+
+
+def test_v2_empirical_allowlist_has_all_actual_literal_inputs():
+    root = bundle.ROOT
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-v2.json').read_text())
+    bodies = {n: bundle.read_file(root, n) for n in policy['files']}
+    assert len(bundle.literal_dependencies(bodies, policy['entrypoint'])) == 10
+    assert len(policy['files']) == 13
+    assert all(not n.startswith(('outputs/', 'data/', 'game-ui-v2/', 'research/')) for n in policy['files'])

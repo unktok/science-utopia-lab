@@ -97,8 +97,12 @@ def stage(root, policy, output, *, source_commit):
     # No globbing or recursive source directory copy. Read once and compare later.
     bodies = {relative(name): read_file(root, name) for name in names}
     receipt = json.loads(bodies[policy['receipt']])
-    if receipt.get('schema') != 'scienceutopia.working-paper-build.v2':
+    if receipt.get('schema') not in ('scienceutopia.working-paper-build.v2',
+                                     'scienceutopia.working-paper-build.v3'):
         raise ValueError('bound working-paper build receipt required')
+    if (receipt.get('schema') == 'scienceutopia.working-paper-build.v3'
+            and receipt.get('entrypoint') != policy['entrypoint']):
+        raise ValueError('V3 receipt entrypoint differs from explicit policy')
     expected = {receipt['output']: receipt['pdf_sha256'], policy['entrypoint']: receipt['tex_sha256'],
         'paper/submission-sources.bib': receipt['additional_bibliography_sha256'],
         **receipt['additional_dependencies']}
@@ -127,7 +131,7 @@ def stage(root, policy, output, *, source_commit):
     for name, body in bodies.items():
         target = output / name; target.parent.mkdir(parents=True, exist_ok=True)
         with target.open('xb') as handle: handle.write(body)
-    (output / 'REBUILD.md').write_text(README)
+    (output / 'REBUILD.md').write_text(README.replace('submission.tex', PurePosixPath(policy['entrypoint']).name))
     if any(read_file(root, name) != body for name, body in bodies.items()):
         raise ValueError('source evidence changed while staging; retain incomplete destination for diagnosis')
     manifest['generated_instructions_sha256'] = sha((output / 'REBUILD.md').read_bytes())

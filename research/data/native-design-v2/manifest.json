@@ -1,0 +1,17 @@
+{
+  "schema": "scienceutopia.native-design-numerical-inputs.v1",
+  "classification": "actual-native-design-freedom-study-v2",
+  "archive": "closed-report.json.gz",
+  "archive_sha256": "e5763ba6f9bb606efe4338e6c130f326d9bba1090a83c2d13a32558c75cf305d",
+  "archive_bytes": 712629,
+  "uncompressed_bytes": 7588874,
+  "uncompressed_sha256": "94aba0f5029a2a4042f58019fa68b52a28fee135d5644faa7af8ee79b37801ac",
+  "report_content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732",
+  "audit_content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+  "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "scope": "Byte-preserving gzip -n of the complete closed-audit numerical report projection; not raw caches, complete audit or fresh inference reproduction.",
+  "raw_scientist_reply_journals_or_corpus_files_included": false,
+  "selected_executable_design_sources_included_as_in_report": true,
+  "original_bytes_transformed_after_decompression": false,
+  "public_or_anonymous_release_cleared": false
+}

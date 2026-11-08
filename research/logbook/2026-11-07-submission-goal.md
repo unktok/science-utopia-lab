@@ -4533,3 +4533,24 @@ results/native-design-v2-manuscript-qa-v1.json; update current pending counts
 and compact-paper-evidence hash, without changing the reviewed PDF or raw data.
 Numerical/rebuild packaging, rights/anonymity review, mock review and final
 submission judgment remain; the full goal stays active.
+
+### V2 reproduction implementation (actual replay pending)
+
+Create a separate v2-reproduction-v1 feature checkout from23442e8. Preserve
+the original frozen/audit/report sources and reviewed PDF. Extend the explicit
+paper-only staging tool to accept both old V2 and new V3 build-receipt schemas,
+requiring the V3 entrypoint to match its policy; generated instructions now use
+the actual entrypoint. Add the13-path/10-literal-dependency V2 paper allowlist.
+It remains a local, non-anonymous, non-release-cleared subset.
+
+Retain the complete7588874-byte closed report as a712629-byte deterministic
+gzip archive, not raw caches or the full audit. Exact archive SHA256
+e5763ba6f9bb606efe4338e6c130f326d9bba1090a83c2d13a32558c75cf305d;
+uncompressed SHA25694aba0f5029a2a4042f58019fa68b52a28fee135d5644faa7af8ee79b37801ac.
+New numerical reconstruction code reuses the actual source-bound table/plot
+projectors, rejoins retained table/common-score data and computes loss algebra
+separately from measured A/Q/R. It does not execute generated institutional
+source. Costs are rechecked from retained aggregates, not newly reconstructed
+from raw individual replies. Existing unknowns/nulls/ties remain. Tests and
+actual clean-source numerical/paper rebuilds are required next; implementation
+alone is not replay success or external replication.

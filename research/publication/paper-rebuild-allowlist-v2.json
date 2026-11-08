@@ -1,0 +1,22 @@
+{
+  "schema": "scienceutopia.paper-rebuild-allowlist.v1",
+  "status": "local-working-draft-not-anonymous-not-release-cleared",
+  "scope": "Completed V2 PDF-source rebuild only; not numerical analysis, raw audit, fresh inference or anonymous submission",
+  "receipt": "paper/submission-build-v3.json",
+  "entrypoint": "paper/submission-v2.tex",
+  "files": [
+    "LICENSE",
+    "output/pdf/science-utopia-lab-objective-design-v2-draft.pdf",
+    "paper/figures/native-design-v2/cross-objective-2y.png",
+    "paper/figures/native-design-v2/cross-objective-4y.png",
+    "paper/figures/native-design-v2/selective-paths.png",
+    "paper/figures/native-design-v2/throughput-paths.png",
+    "paper/figures/program-concept/science-system-design-program.pdf",
+    "paper/generated/native-design-v2/search-outcomes.tex",
+    "paper/neurips_2025.sty",
+    "paper/references.bib",
+    "paper/submission-build-v3.json",
+    "paper/submission-sources.bib",
+    "paper/submission-v2.tex"
+  ]
+}
