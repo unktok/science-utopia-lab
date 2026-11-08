@@ -14,7 +14,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 references | All9 fresh same-source reference worlds complete |
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
-| Selected-policy evaluation | Started Nov7 22:39:08UTC; at Nov8 04:16:55UTC60/90 normal observations, job0060 active with3 requests. All9 references and the throughput fixed-graph selection cover all declared conditions; the remaining5 selected exact policies account for30 scheduled jobs, including the active job.19 logical labels share15 exact policies overall;90 physical jobs, not the114-job upper bound |
+| Selected-policy evaluation | Started Nov7 22:39:08UTC; at Nov8 04:35:57UTC64/90 normal observations, job0064 active with3 requests and actual writer handle still live. All9 references and the throughput fixed-graph selection cover all declared conditions;26 scheduled jobs remain, including the active job.19 logical labels share15 exact policies overall;90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Not yet available. Order-only correction passes74 tests/two byte-identical real-data component replays, without changing the experiment; full audits await normal writer closure |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
