@@ -54,6 +54,10 @@ Raw: `outputs/native-design-freedom-v2-a1/`; stdout:
 - Permitted code/graph freedom is not demonstrated structural invention.
   Inspect actual specifications, consumers and execution receipts. Changed source
   can affect an unexercised branch rather than the observed decisions.
+  A bounded frozen-selection inspection finds only existing numeric/source edits
+  among its64 recorded complete candidates, with no declared graph/process-order
+  changes. This provisional source observation must rejoin the final full audit;
+  it is not a behavioral-equivalence or whole-study audit claim.
 - Identical candidate/seed/settings can have different recorded researcher replies
   and Q. Paired world seeds do not guarantee perfectly coupled fresh LLM realizations.
 

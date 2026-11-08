@@ -61,6 +61,22 @@ post-result selection rules. Final prose and figures must use the closed actual
 evidence and may report negative/tied results; implementation/QA alone does not
 resolve any empirical question in this table.
 
+### Permitted freedom versus exercised edits
+
+A bounded read-only inspection of the frozen selection file on Nov8 finds that
+all64 recorded complete search candidates change only mechanism parameters
+relative to the common initial system. The changed leaves are selection Python
+source or the existing numeric settings; no declared node, edge, node ABI,
+actor/artifact type, invariant, schedule or process-order metadata changes appear.
+All10 selected representatives and every exact tied member are checked separately.
+This is a source-inspection observation, not the pending full original-source
+audit or a behavioral-equivalence result. Rejoin these distinctions to the full
+closed audit before publishing them as results. In particular, code-and-graph
+permission is not evidence that this search actually invented a new graph;
+unchanged declared structure does not rule out a changed algorithm or runtime
+state. Do not add a novelty veto, remove ties or dispatch extra attempts to obtain
+a more favorable structural result.
+
 ## Claims not presently supported
 
 Reliable local autonomous improvement, superiority of free design over matched

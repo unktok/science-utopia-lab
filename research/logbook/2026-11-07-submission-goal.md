@@ -3823,3 +3823,49 @@ checkouts are clean before this documentation update. No restart/refill,
 analyst-initiated inference, source/settings/selection/budget changes or optional
 egress. The same finite experiment continues; both full adapted audits and final
 empirical deliverables still require all90 records and normal writer closure.
+
+### Bounded selected-spec inspection: permitted versus exercised freedom
+
+Previous goal turn is a verified wait: actual writer46865 stays live while
+job0027 advances6/26/38 requests. This turn polls that same live handle;
+job0027 advances45/48/65/94 and completes. At Nov8 01:08:00UTC progress and
+normal observation count agree28/90, job0028 is started, no writer.ended record.
+No restart/refill, inference initiated by analysis, source/settings/selection/
+budget change or optional registry egress occurs.
+
+During the wait, read the frozen selection.json with the approved interpreter;
+recheck its bytes after each inspection. File SHA256 remains
+e71b9e8715e282434fbaff1c9773b7601d74f398e4f562458fe7382ccc4ea6b4.
+The129 unique row IDs are9 references plus120 attempts. Compare each complete
+candidate's full declared SystemSpec against reference_systems.open-seed,
+indexing mechanisms by mechanism_id and comparing every other top-level field.
+All64 recorded complete candidates change only mechanisms. Across them, changed
+node leaf paths and affected-row counts are:
+
+- world.selection/parameters/code_artifact/source:40
+- addressed-selection/parameters/program/parameters/bias:26
+- addressed-selection/parameters/program/parameters/memory_cost:24
+- addressed-selection/parameters/program/parameters/thresholds:25
+- open-memory-router/parameters/program/parameters/threshold:24
+- open-source/parameters/count:20
+
+These overlapping counts are not numbers of independent mechanisms or additive
+candidate totals. No node IDs or mechanism-list order, connections, nonparameter
+node contracts, other top-level fields, schedules or process-order metadata
+differ in these64 rows.
+Selection representatives equal the system stored under their exact row IDs.
+All10 representatives and all their declared exact tied members are inspected
+separately: representative code changes are only world.selection's source;
+the uniform-throughput representative changes existing numeric settings;
+the other four representatives are the initial reference. Tied members can add
+numeric changes, not graph, node-ABI, schedule or process-order metadata changes
+in this inspection. A numeric activity-count edit can still change process
+execution; do not call its entire process contract unchanged.
+
+This is bounded literal source inspection of an already frozen search record,
+not the pending complete audit, physical-effect proof, an equivalence theorem,
+or evidence about every unsubmitted/failed draft. In particular, an unchanged
+graph does not imply unchanged algorithms, runtime actors or researcher actions.
+Carry the permitted-versus-exercised distinction into the manuscript evidence
+join after the full audit. Do not silently infer structural invention from the
+arm name, add a novelty filter, remove ties or expand the finite experiment.
