@@ -1,0 +1,5 @@
+# Preserve exact renderer/CSV bytes bound by the supplemental artifact manifest.
+# Matplotlib SVG paths use trailing spaces; Python csv uses standard CRLF rows.
+# Source-file whitespace checks and scientific/source-identity guards are unchanged.
+paper/generated/native-design-v2-supplement/*.svg whitespace=-blank-at-eol
+paper/generated/native-design-v2-supplement/*.csv whitespace=cr-at-eol
