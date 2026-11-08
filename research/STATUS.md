@@ -105,8 +105,9 @@ adds proposal/calibration/load usage and explicit missingness alongside the
 scientist-response token module; [70-test verification](results/native-auxiliary-costs-qa-v1.json)
 is SCRIPTED QA, and real V2 cost totals still await closed audits.
 An additional native cache-count field is now preserved with subset/missingness
-diagnostics; API units are referenced explicitly in the workflow. This changes
-analysis only, not the frozen experiment, losses or candidate selection.
+diagnostics; [79-test and bounded84-record extraction verification](results/native-auxiliary-cache-counts-qa-v1.json)
+is not a full cost report. API units are referenced explicitly in the workflow.
+This changes analysis only, not the frozen experiment, losses or selection.
 [Reproduction and analysis workflow](../docs/research-workflow.md) separates
 tracked rebuilds, original-source audits and fresh inference.
 

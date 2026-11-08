@@ -1,0 +1,47 @@
+{
+  "schema": "scienceutopia.native-auxiliary-cache-counts-qa.v1",
+  "status": "cache-field-projection-verified-not-full-V2-cost-totals",
+  "analysis_source_commit": "6dffed2e6302272772defcd1a204de29a106b6c2",
+  "projection_source_sha256": "cc33ee8ecc7bfb64848d9fb28b9a599f07563941f528d3228bd7e4d3370aa499",
+  "qa": {
+    "receipt": "outputs/publication-benchmark-v2-verification/auxiliary-native-cache-committed.xml",
+    "receipt_sha256": "dec13a93f2d006247f4085eac0aee931e6897b97fe37176e1a4348267573a150",
+    "passed": 79,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "Synthetic auxiliary/scientist-token/report tests and docs/current manuscript checks, not a real native campaign"
+  },
+  "unit_references": {
+    "checked_utc_date": "2026-11-08",
+    "primary_pages": ["https://docs.ollama.com/api/chat", "https://docs.ollama.com/api/generate"],
+    "scope": "Current documented field units/definitions, not exact local-binary accuracy or fresh-GPU attestation"
+  },
+  "bounded_real_field_check": {
+    "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+    "exit_code": 0,
+    "scope": "event/cost_values/summarize extraction from three self-hashed archived calibration certificates only; not control cold replay or full-study audit",
+    "certificate_file_sha256": {
+      "search/run-00/preflight/certificate.json": "d3ef743778d77678bf73260354c0a0fe6d93bfc85d1f48b93a071210cd1e69c4",
+      "search/run-01/preflight/certificate.json": "0ad8744c97254e46463e04dc7090cd5098bcf6fbe514ab394ba7ecf976fd838e",
+      "search/run-02/preflight/certificate.json": "14d7edfa8c62a2f32deaeb274de947c0745d7ed2cd5092d73d0754001a85c71c"
+    },
+    "raw_files_unchanged_before_after": true,
+    "clean_committed_analysis_source_unchanged": true,
+    "extracted_controls": 84,
+    "cached_count_known_records": 84,
+    "cache_subset_status_counts": {"within-prompt": 84},
+    "prompt_and_cached_fields_exactly_preserved": true,
+    "new_model_calls": 0,
+    "new_generated_code_executions": 0
+  },
+  "semantics": {
+    "native_cached_count_preserved": true,
+    "cached_counts_added_to_prompt_totals": false,
+    "missing_cache_inferred_as_zero": false,
+    "provider_subset_disagreement_clipped_or_used_as_scientific_veto": false,
+    "old70_test_receipt_rewritten": false,
+    "real_full_V2_cost_totals_generated": false,
+    "requires_normal_writer_closure_and_complete_original_source_audit": true
+  }
+}

@@ -3743,3 +3743,18 @@ Tests cover cached0/equal/subset/exceeding, missing, Boolean/fractional/negative
 values. Earlier40c95bb70-test receipt remains unchanged with its earlier scope.
 Committed-source checks and bounded real-field extraction are next, without
 claiming full experiment costs before normal writer closure/full audit.
+
+Clean committed6dffed2e6302272772defcd1a204de29a106b6c2 passes79 tests in5.58s,
+XML SHA256dec13a93f2d006247f4085eac0aee931e6897b97fe37176e1a4348267573a150.
+Projection sourcecc33ee8ecc7bfb64848d9fb28b9a599f07563941f528d3228bd7e4d3370aa499.
+Run a bounded real-field component check from that clean source: verify each
+original certificate self-hash/source, extract its84 native prompt/cache fields
+through event/cost_values/summarize, compare literal reported values, and check
+the three file hashes plus analysis HEAD/bytes unchanged before/after. It exits0,
+all84 cached counts remain known/within reported prompt counts. No aggregate
+experiment token/time cost, cold-control replay or full native audit is claimed.
+Original files retain SHA256d3ef7437/0ad8744c/14d7edfa; full hashes and precise
+scope are in research/results/native-auxiliary-cache-counts-qa-v1.json.
+No model calls/generated mechanism executions occur. The active writer is
+independently re-polled live at00:24:35UTC, with19 complete records and job0019
+advancing75 requests. Both full audits and actual cost reporting remain pending.
