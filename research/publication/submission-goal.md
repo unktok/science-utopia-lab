@@ -3,6 +3,11 @@
 2026-11-07。ユーザー依頼：「top conferenceに提出できる所まで」を目指して自律的に進める。
 採択を保証せず、実投稿・著者決定・外部費用・新資源は別途確認する。
 
+2026-11-08区切り：有限の実験・解析・原稿・投稿判断パッケージは完了。
+[五要件の照合と最終判断](submission-decision-v2.md)では、現版の即時本会議投稿を
+推奨しない。「top conferenceに提出できる研究」という最終的な希望を達成したとは
+主張しない。未解決の重要性・識別可能な知見と、権利・著者・cycleの境界を明記する。
+
 ## 研究の中心と終了条件
 
 自由な科学制度の目的条件付き最適化について、目的、設計自由度、feedbackが
@@ -30,7 +35,7 @@
 | S2 3系列校正済 | 制度自由度の比較器 | [source別QA](../results/native-design-freedom-v2-verification.json)、実worldの新loss・別seed・2/4年audit。固定b6654adの全3系列が各28項目の実校正とcold replay成功。run02初回POSTは新証明書をage3.77sで使用。以後もfreshness guardを維持 |
 | S3 探索・閉監査完了 | 固定した二目的の有限探索 | fresh参照9件完了、探索120/120slot（64完走・25生成失敗・31実行失敗）。固定b6654ad、条件変更・補充なし。明示的順序補正で全試験の閉監査2回exit0・完全一致 |
 | S4 評価・原稿反映完了 | 選択後の評価・解析 | 選択をNov7 22:38:35UTCに固定、19ラベル/15制度/90評価すべて正常観測、Nov8 06:58:09UTCにwriter正常終了・実ハンドルexit0・progress closed。clean68ab582の全試験監査2回がbyte一致、source278/raw7038ファイルを検証。実集計・図表・費用・仕様／機構分析を原稿へ反映。[閉鎖記録](../results/native-design-freedom-v2-closed-analysis-v1.json)、[原稿](../../paper/README.md) |
-| S5 仕上げ中 | 投稿パッケージと研究評価 | 完了V2を反映した12ページ稿・全ページQA、713kB集計archiveからの数値／22図再構築、13path PDF再ビルドは実確認済み。権利・匿名化・模擬査読・最終判断は残る |
+| S5 判断完了・投稿は非推奨 | 研究一式と最終点検 | 12ページ稿・全ページQA、集計archiveからの数値／22図再構築、13path identified／author-redacted紙面再ビルド、全cross-score／方法別費用／outside metrics、権利・会議規則点検、自己批評、五要件の最終照合まで完了。公開許可・正式cycle対応・研究的重要性の不足は解消したと扱わない |
 
 S1はまずseed42の8worldで制御を点検する。ここだけで投稿可能とは扱わない。
 後続の目的・seed・予算・解析は各dispatch前に固定する。実行を止めずに
@@ -46,6 +51,6 @@ NeurIPS2026の基準では技術的裏付け、重要性、新規性、明瞭さ
 
 ## 運用
 
-goal toolのactive目標とこの記録を併用する。主文の研究実証と、提出interfaceの
+goal toolの有限目標とこの記録を併用する。主文の研究実証と、提出interfaceの
 保守記録を分離する。current STATUSは閉じた段階／稼働中writer／残る仕事を区別する。
 無人稼働を宣言する場合は実PID・source・有限予算・進捗記録を持つものに限る。

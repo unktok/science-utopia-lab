@@ -1,4 +1,4 @@
-# V2 mock review and provisional submission judgment
+# V2 mock review and submission judgment
 
 2026-11-08. One assistant's self-critique under three review lenses, not three
 independent reviewers, external peer review, human endorsement or an acceptance
@@ -14,11 +14,13 @@ results are not required; renaming the study negative-results does not establish
 significance. This judgment is not a candidate filter, objective change or a
 reason to erase failures.
 
-The material can receive substantive collaborator review, but the completion
-audit still must check all requirements and packaging boundaries. The named
+The material can receive substantive collaborator review. The completed
+[requirement audit and final judgment](submission-decision-v2.md) now covers the
+finite package and its unresolved boundaries. The named
 cost/outside-metric presentation gap is now closed by the
 [supplement](supplemental-analysis-v2.md); its new tables do not change the
-scientific significance assessment. This provisional review does not complete the goal.
+scientific significance assessment. Neither this self-review nor the final
+audit establishes top-conference readiness or independent peer review.
 
 ## Lens1: technical support
 
@@ -93,5 +95,6 @@ or permission to engineer a winner. An important negative finding is legitimate
 if its unexpected scope/causes can be substantiated; no favorable outcome is a gate.
 
 Do not launch calls, switch objectives, add novelty/fairness vetoes, submit,
-upload or contact others based on this mock review. Finish finite analysis and
-the requirement-by-requirement audit, then present evidence and recommendation.
+upload or contact others based on this mock review. The finite analysis and
+requirement-by-requirement audit are now complete; the final recommendation is
+to hold immediate main-conference submission, not to conceal unfavorable results.

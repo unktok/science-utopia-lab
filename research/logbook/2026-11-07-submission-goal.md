@@ -4693,3 +4693,45 @@ paper/anonymous/table/cost/figure/rebuilding/supplement batch passes197 checks
 in26.81s. Actual XML SHA256
 ff18d74d5248d376abd600a58dd4f6840ba68e80f59d15639868a462d98353c4.
 HEAD/runtime remain unchanged during the checks. No new inference is performed.
+
+### Final five-requirement audit and submission judgment
+
+Work in v2-final-decision-v1 from clean main2a4a09c. Inspect the original goal's
+five numbered requirements against the finite protocol, closed experiment,
+manuscript, actual reconstruction, cost/outside-metric supplement and rights/
+venue/self-review records. Do not change the frozen source, selected programs,
+losses, failures or historical receipts. Update current navigation/status,
+program map/roadmap and plan to distinguish the completed finite package from
+unproven scientific claims and the broader top-conference aspiration.
+
+The final read-only evidence check streams both full-audit file SHA256 values,
+hashes all7038 raw files and compares the complete mapping with the original
+audit input_inventory. Both audit files matchc4399dae and the raw mapping is
+identical. Frozen experiment b6654ad and audit adapter68ab582 remain clean at
+their pins. Recheck eight closure projections, three old/current/author-redacted
+build receipts with actual TeX/PDF/additional dependency bytes,15 supplemental
+artifacts, and the retained197-case JUnit with its exact recorded hash.
+The corrected complete check exits0. This is an inventory/binding recheck,
+not a third full audit, new inference, newly run197 tests or independent science.
+
+The first ad-hoc read-only inspection raises TypeError when it treats the
+closure projections' source-commit string as a dictionary row. Correct the
+inspection to read dictionary entries only; the old build-v2 schema uses its
+actual submission.tex default rather than the newer explicit entrypoint key.
+The original inventory had already matched before that query error. Preserve
+the failure in this log/receipt; no evidence, selection or experiment is repaired.
+
+Record the five-requirement matrix, exact results, limits, artifact entry points
+and recommendation in publication/submission-decision-v2.md. The finite
+submission-decision package is complete, but immediate main-conference
+submission is not recommended: important discriminating insight beyond known
+program/mechanism search and simple proxy incentives remains weak. This does
+not impose a positive-outcome requirement or relabel failures. The broader
+request for top-conference-ready research is not claimed fulfilled.
+
+Rights/anonymity,35B conversion provenance, actual target-cycle compliance and
+human authorship remain explicit unresolved boundaries. No full legal/secret
+clearance is inferred. The approved five registry HEAD checks are not repeated.
+Do not launch a new campaign, push/upload, submit or claim an unattended writer.
+Any next scientific study needs a separately stated question, goal and finite
+protocol, rather than extending this completed run until a favorable result.

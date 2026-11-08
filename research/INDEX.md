@@ -6,13 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Final submission judgment and requirement audit](publication/submission-decision-v2.md):
+  finite experiment/analysis/paper package complete; immediate main-conference submission
+  not recommended. The broader top-conference aspiration is not claimed achieved.
 - [Autonomous submission goal](publication/submission-goal.md): milestones and evidence-based completion criteria.
 - [Fixed objective/design-freedom study](protocols/campaigns/native-design-freedom-v2.md):
   search and all90 selected-policy evaluations finished; both full audits match.
   [Closure/actual projection hashes](results/native-design-freedom-v2-closed-analysis-v1.json).
   [Empirical V2 draft](../paper/submission-v2.tex) and
   [full-audit/spec/cost evidence](results/native-design-freedom-v2-paper-evidence-v1.json)
-  are now available. Final packaging/review remain; see current STATUS.
+  are now available. The final decision is documented; see current STATUS.
   [Source-specific software QA](results/native-design-freedom-v2-verification.json)
   and the later [audit-order component diagnostic](results/native-design-freedom-v2-audit-order-diagnostic-v1.json)
   have different scopes. The [order-only correction verification](results/native-design-freedom-v2-audit-order-verification-v1.json)
@@ -22,7 +25,7 @@ Historical documents retain their paths and source identities.
 - [Submission research plan](publication/plan.md), [comparison contract](publication/benchmark-contract-v1.md),
   [initial related work](publication/related-work.md).
 - [V2 rights/venue review](publication/release-and-venue-review-v2.md) and
-  [provisional mock review](publication/mock-review-v2.md): self-critique, not independent peer review.
+  [mock review](publication/mock-review-v2.md): self-critique, not independent peer review.
 - [Actual V2 supplemental analysis](publication/supplemental-analysis-v2.md):
   all-trial cross-scores, method-component costs, activity/resources and raw outside metrics.
 - [Reproducible four-study evidence inventory](results/publication-evidence-inventory-v1.json).

@@ -17,6 +17,8 @@ DOCUMENTS = ('README.md', 'RESEARCH.md', 'CONTRIBUTING.md', 'docs/README.md',
     'research/roadmap.md', 'research/program-map.md', 'research/publication/plan.md',
     'research/publication/benchmark-contract-v1.md', 'research/publication/related-work.md',
     'research/publication/submission-goal.md', 'research/publication/research-readiness-review-v2.md',
+    'research/publication/submission-decision-v2.md', 'research/publication/mock-review-v2.md',
+    'research/publication/release-and-venue-review-v2.md', 'research/publication/supplemental-analysis-v2.md',
     'paper/submission-outline.md')
 # Inline code is a separate alternative so a literal `[x](y)` inside it is not
 # a link. A Markdown link whose label contains backticks still starts at '['.

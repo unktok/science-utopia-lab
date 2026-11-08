@@ -1,0 +1,74 @@
+{
+  "schema": "scienceutopia.native-design-v2-final-decision-verification.v1",
+  "date": "2026-11-08",
+  "classification": "FINITE-SUBMISSION-DECISION-PACKAGE-COMPLETE-NOT-CONFERENCE-READY",
+  "evidence_main_commit": "2a4a09c4e26b2d761fc13879288d49050855980e",
+  "evidence_main_clean_during_check": true,
+  "decision_document": "research/publication/submission-decision-v2.md",
+  "requirement_count": 5,
+  "all_original_requirements_explicitly_assessed": true,
+  "finite_experiment_analysis_manuscript_decision_package_complete": true,
+  "broader_user_aspiration_top_conference_ready_achieved": false,
+  "recommendation": "Hold immediate main-conference submission; review a discriminating scientific question before another separately specified study.",
+  "original_scientific_results_or_selection_changed": false,
+  "validation": {
+    "procedure": "Read-only streaming SHA256 of both full audits and every raw file; dictionary equality against original full audit input_inventory; Git HEAD/porcelain pins; exact projection/build/supplement receipt hashes; retained JUnit parsed without rerunning or relabeling it.",
+    "full_audit_files_sha256": [
+      "c4399dae873eee21d8ec8de5f4b6231bd48c0f70f7475b9ab836662b1f13843b",
+      "c4399dae873eee21d8ec8de5f4b6231bd48c0f70f7475b9ab836662b1f13843b"
+    ],
+    "full_audit_content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+    "raw_files": 7038,
+    "raw_inventory_equal_original_full_audit": true,
+    "experiment_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+    "audit_adapter_commit": "68ab58250a3b9708982e1848be3c0856c6084dbd",
+    "both_pinned_checkouts_clean": true,
+    "closure_projection_bindings_rechecked": 8,
+    "build_receipts_rechecked": [
+      "paper/submission-build-v2.json",
+      "paper/submission-build-v3.json",
+      "paper/submission-anonymous-build-v1.json"
+    ],
+    "PDF_pages": [
+      11,
+      12,
+      12
+    ],
+    "build_tex_pdf_and_additional_dependency_bytes_match": true,
+    "supplement_artifacts_rechecked": 15,
+    "prior_combined_tests": 197,
+    "prior_combined_failures": 0,
+    "prior_xml_sha256": "ff18d74d5248d376abd600a58dd4f6840ba68e80f59d15639868a462d98353c4",
+    "prior_tests_are_not_newly_run_or_independent_scientific_observations": true,
+    "selection_frozen_utc": "2026-11-07T22:38:35.002880+00:00",
+    "read_only_query_failure": "First ad-hoc inspection treated the closure projections' source-commit string as a row and raised TypeError after matching raw inventory. Corrected by reading only dictionary projection entries; legacy v2 build receipt has explicit submission.tex fallback. Full corrected check exited0; no input/evidence/runtime modified."
+  },
+  "inspected_document_sha256": {
+    "research/publication/submission-decision-v2.md": "28824ef59e6446fdb25736f2b9ebb27b6c27bf5f5b20901fc689198bb7386f23",
+    "research/publication/submission-goal.md": "5c97982bf729ba507e0339a7d38e5d90e403f082d744d74d5431649a952c5129",
+    "research/publication/plan.md": "95322cabae6673773df9a7d5aa0ad8d7d01a2151f3fb9d6497349f4b41cde82b",
+    "research/publication/mock-review-v2.md": "1b81857347c6d565fadf92d12b6a4ad7c9227532c5a88ef05b30135a9c87ae91",
+    "research/publication/release-and-venue-review-v2.md": "48e04e68fd07298babfeed83d6171d6de331fe3d36b9c01a08fde19cfa08c3f9",
+    "research/publication/supplemental-analysis-v2.md": "25e92683abe23db895b3e63c9ff8cb8d4b631f78326e84315e4214a5af790dd5",
+    "research/results/native-design-freedom-v2-closed-analysis-v1.json": "9dbe4a1fba43a258ea884b657f665c93d95d375b73e3fa9ce00f8ddd2b3f67d6",
+    "research/results/native-design-v2-reproduction-verification-v1.json": "d3a9c24ad7385511bbfe70ed668f4d0283f4a9d490effc55d42bbdea41bb3c08",
+    "research/results/native-design-v2-review-preparation-verification-v1.json": "f1723d4bc85e68a41b285a56844bb62c8c6b81e526bbe78b7c945806f947c9cb",
+    "research/results/native-design-v2-supplement-verification-v1.json": "df20b3cc7cd6fa216b1f11af8e596fd617ea28bc29064138cf5ca43949dfb5c0"
+  },
+  "unresolved": [
+    "Scientific importance/general insight beyond known program/mechanism search and elementary proxy incentives",
+    "Designer/interface compliance confounds intrinsic design-freedom effects",
+    "Useful automatic structural invention, optimizer or gradient superiority, better science and inventor learning not demonstrated",
+    "35B upstream revision/conversion recipe and fresh-machine inference reproduction",
+    "Final venue/cycle rules and checklist, human authorship/responsibility, anonymity and rights/release clearance"
+  ],
+  "not_required_positive_outcome": true,
+  "no_new_fairness_novelty_or_improvement_candidate_veto": true,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "new_full_raw_audit": false,
+  "new_scientific_replicates": 0,
+  "approved_registry_HEAD_checks_repeated": false,
+  "actual_submission_public_push_upload_or_external_release": false,
+  "no_scientific_writer_remaining_from_this_goal": true
+}

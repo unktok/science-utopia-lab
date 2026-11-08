@@ -5,7 +5,11 @@ Updated2026-11-08JST. Observations below span2026-11-07/08UTC, not a live heartb
 
 ## Actual experiment state
 
-The user-authorized [submission goal](publication/submission-goal.md) is active.
+The finite [submission-decision goal](publication/submission-goal.md) is closed
+with a documented [final judgment](publication/submission-decision-v2.md).
+The broader aspiration of a top-conference-ready research contribution is not
+claimed achieved: immediate main-conference submission is not recommended.
+There is no remaining experiment writer or unattended scientific campaign.
 
 | Stage | State and evidence |
 | --- | --- |
@@ -15,9 +19,9 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
 | Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
-| Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, figures, table and cost/relaxation projections generated. [Closure](results/native-design-freedom-v2-closed-analysis-v1.json); manuscript and numerical/PDF reconstruction now complete, final research/release review remains. Unmodified frozen CLI is not claimed to pass |
+| Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, figures, table and cost/relaxation projections generated. [Closure](results/native-design-freedom-v2-closed-analysis-v1.json); later [final audit/judgment](publication/submission-decision-v2.md) closes the finite package, not release clearance. Unmodified frozen CLI is not claimed to pass |
 | Manuscript |12-page empirical V2 draft: all120 trials,90 fixed-selection evaluations, actual figures, spec/mechanism/failure analysis and measured response costs. All12 final pages rendered and individually inspected. [Source/build QA](../paper/submission-build-v3.json); submission/release readiness not claimed |
-| Review preparation |Separate author-redacted12-page draft with scientific content unchanged; all pages visually inspected. [Bounded rights/venue review](publication/release-and-venue-review-v2.md), [provisional mock review](publication/mock-review-v2.md). No public/anonymous release clearance or immediate submission recommendation |
+| Review preparation |Separate author-redacted12-page draft with scientific content unchanged; all pages visually inspected. [Bounded rights/venue review](publication/release-and-venue-review-v2.md), [mock review](publication/mock-review-v2.md), [final five-requirement audit](publication/submission-decision-v2.md). No public/anonymous release clearance; do not recommend immediate submission |
 
 The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
 06:58:09UTC, at clean frozen source
@@ -86,7 +90,24 @@ No hidden fairness, novelty or improvement veto is added.
 Earlier external-author observations retain separate provenance; they are not
 local-designer learning evidence. See the [full program map](program-map.md).
 
-## Required work before submission judgment
+## Submission judgment and what remains
+
+The [final requirement matrix](publication/submission-decision-v2.md) covers all
+five original criteria, including the completed supplement and actual rebuilding.
+The finite experiment/analysis/manuscript/decision package is complete. Its
+scientific conclusion is limited; no optimizer superiority, useful structural
+invention or improved science is demonstrated. That is not a hidden scientific
+veto or permission to discard failures.
+
+The substantive gap is an important, discriminating finding beyond established
+program/mechanism search and simple proxy incentives. This is not solved by
+formatting, favorable wording or more seeds alone. A new targeted small-scale
+study requires its own question, finite protocol and goal; none is launched here.
+The35B upstream recipe, fresh-machine inference, final authors/cycle and release
+clearance also remain unresolved. Actual submission or new resources require
+confirmation. See the [final verification receipt](results/native-design-v2-final-decision-verification-v1.json).
+
+### Completed package checks
 
 1. Execution complete: all90 fixed unused-condition evaluation jobs have normal
    observations and the actual writer exited0. Selection/ties are unchanged;
@@ -98,7 +119,7 @@ local-designer learning evidence. See the [full program map](program-map.md).
    Do not edit the frozen checkout, raw plan/selection or suppress chronology checks.
 3. Both full source-bound audits exit0 and match exactly with the correction
    explicitly recorded; the unmodified frozen CLI has not passed. Actual
-   closed-audit reports/figures/costs are generated. Complete the interpretation
+   closed-audit reports/figures/costs are generated. Completed interpretation covers
    of all losses, failures, identities, lineage, paired outcomes, physical sharing,
    mechanisms and measured costs. Final print-size PDF and all18 paired PNGs
    are now individually reviewed; [169-check/visual QA](results/native-design-v2-manuscript-qa-v1.json).
@@ -108,10 +129,15 @@ local-designer learning evidence. See the [full program map](program-map.md).
    The named all-trial cross-score/per-method cost/outside-metric supplement now
    reconstructs successfully; [interpretation](publication/supplemental-analysis-v2.md)
    and [62-check/actual-render verification](results/native-design-v2-supplement-verification-v1.json).
-   Finish final requirement-by-requirement judgment. Exact author-redacted13-path
+   The final requirement-by-requirement judgment is now recorded. Exact author-redacted13-path
    staging/rebuild now passes, including50 checks and all12 rendered-page byte
    comparisons; [verification](results/native-design-v2-review-preparation-verification-v1.json).
    Actual submission, external costs/new resources and authorship require user confirmation.
+
+The latest combined artifact/analysis QA passes197 checks at clean aed1e3b;
+[receipt](results/native-design-v2-supplement-verification-v1.json). It is not a
+scientific replication. Historical receipts below retain their original pending
+items and scopes; the final decision above supersedes those as current status.
 
 The actual closed report and empirical V2 figures/table/cost projections are now
 generated; their hashes and remaining visual/interpretation work are in the
