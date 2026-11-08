@@ -3810,3 +3810,16 @@ selection or evaluation-plan change. This is verified ongoing inference, not
 an impasse, completed study audit or scientific-effect finding. Both full
 adapted audits, final empirical analysis/costs/figures/manuscript/package/mock
 review remain after all90 records and normal actual writer closure.
+
+### Verified evaluation wait through26 normal observations
+
+Previous turn is a verified wait through24. This turn repeatedly polls actual
+writer46865 live. Job0024 advances29→39→61→69 requests; by Nov8 00:52:42UTC
+progress/normal records agree25 and job0025 starts. Job0024's year0–2 checkpoints
+are present. Job0025 advances1→23→30→59→71→84 and its complete observation
+appears by00:56:46UTC, briefly ahead of progress25. At00:57:17UTC progress and
+normal records agree26/90; job0026 is started, no writer.ended record. Both
+checkouts are clean before this documentation update. No restart/refill,
+analyst-initiated inference, source/settings/selection/budget changes or optional
+egress. The same finite experiment continues; both full adapted audits and final
+empirical deliverables still require all90 records and normal writer closure.
