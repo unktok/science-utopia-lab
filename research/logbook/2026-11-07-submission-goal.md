@@ -4580,3 +4580,10 @@ The feature HEAD/runtime remain unchanged during tests/staging/numerical/PDF
 checks; frozen b6654ad and adapter68ab582 remain clean. No model, authored code,
 raw re-audit, new machine, package download or external upload is used. Rights,
 anonymity, target-cycle review, mock review and final submission judgment remain.
+
+At clean15785bbde99ab888afcf4bb8389424693c111f11, the combined actual-paper,
+table, search/common/paired figure, scientist/auxiliary cost, paper subset and
+new numerical-reconstruction batch passes185 tests in25.45s. XML SHA256
+456c307d6457c625da88d87903a5626e5842fd6c5b0056428d142cdc4ca83776.
+HEAD/runtime stay unchanged throughout. This integrates the new47-check scope
+with prior reporting coverage; counts are software checks, not extra worlds.

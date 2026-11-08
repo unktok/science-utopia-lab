@@ -29,7 +29,7 @@
 | S1 完了 | 強い基準制度の実装・同world比較 | [8基準全完走・二回監査](../results/native-benchmark-controls-v2-a1.md)。単純基準で得られる改善を分離 |
 | S2 3系列校正済 | 制度自由度の比較器 | [source別QA](../results/native-design-freedom-v2-verification.json)、実worldの新loss・別seed・2/4年audit。固定b6654adの全3系列が各28項目の実校正とcold replay成功。run02初回POSTは新証明書をage3.77sで使用。以後もfreshness guardを維持 |
 | S3 探索・閉監査完了 | 固定した二目的の有限探索 | fresh参照9件完了、探索120/120slot（64完走・25生成失敗・31実行失敗）。固定b6654ad、条件変更・補充なし。明示的順序補正で全試験の閉監査2回exit0・完全一致 |
-| S4 評価終了・解析中 | 選択後の評価・解析 | 選択をNov7 22:38:35UTCに固定、19ラベル/15制度/90評価すべて正常観測、Nov8 06:58:09UTCにwriter正常終了・実ハンドルexit0・progress closed。clean68ab582の全試験監査2回がbyte一致、source278/raw7038ファイルを検証。clean5dcf232で実集計・図表・費用・固定記録分析を生成。詳細解釈と原稿更新は残る。[記録](../results/native-design-freedom-v2-closed-analysis-v1.json) |
+| S4 評価・原稿反映完了 | 選択後の評価・解析 | 選択をNov7 22:38:35UTCに固定、19ラベル/15制度/90評価すべて正常観測、Nov8 06:58:09UTCにwriter正常終了・実ハンドルexit0・progress closed。clean68ab582の全試験監査2回がbyte一致、source278/raw7038ファイルを検証。実集計・図表・費用・仕様／機構分析を原稿へ反映。[閉鎖記録](../results/native-design-freedom-v2-closed-analysis-v1.json)、[原稿](../../paper/README.md) |
 | S5 仕上げ中 | 投稿パッケージと研究評価 | 完了V2を反映した12ページ稿・全ページQA、713kB集計archiveからの数値／22図再構築、13path PDF再ビルドは実確認済み。権利・匿名化・模擬査読・最終判断は残る |
 
 S1はまずseed42の8worldで制御を点検する。ここだけで投稿可能とは扱わない。

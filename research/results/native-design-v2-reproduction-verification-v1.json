@@ -3,6 +3,15 @@
   "date": "2026-11-08",
   "analysis_source_commit": "e3f4ee715ed3b04b1bb779609f71d6cbdabe57d5",
   "clean_source_before_and_after": true,
+  "integration_tests": {
+    "analysis_source_commit": "15785bbde99ab888afcf4bb8389424693c111f11",
+    "clean_source_before_and_after": true,
+    "passed": 185,
+    "failed": 0,
+    "seconds": 25.45,
+    "xml": "outputs/publication-benchmark-v2-verification/v2-reproduction-integrated-v1.xml",
+    "xml_sha256": "456c307d6457c625da88d87903a5626e5842fd6c5b0056428d142cdc4ca83776"
+  },
   "tests": {
     "passed": 47,
     "failed": 0,
