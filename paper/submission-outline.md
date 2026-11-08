@@ -6,6 +6,12 @@ The existing long main.tex remains a historical working draft until rewritten;
 its NeurIPS2025 style is not a claim of compliance with a future venue.
 The [empirical V2 draft](submission-v2.tex) implements this structure using the
 closed full audit. The previous [V1/S1 draft](submission.tex) is preserved.
+The user's later instruction removes an artificial page cap for the working
+research manuscript: [integrated.tex](integrated.tex) is now the complete
+whole-program argument. [Its evidence/editorial map](integrated-content-map.md)
+retains structural, gradient, parameter and UI tracks rather than restricting
+the entire project to the matched V2 study. A venue-specific short version is
+a later derivative, not the only scientific record.
 
 ## Narrative
 

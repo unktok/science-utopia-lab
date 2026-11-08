@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Integrated whole-program manuscript](../paper/integrated.tex) and
+  [reviewed37-page PDF](../output/pdf/science-utopia-lab-integrated-working-paper.pdf):
+  uncapped synthesis of objectives, abstraction, structural design, gradients,
+  matched comparison and game UI; [editorial evidence map](../paper/integrated-content-map.md).
+  Existing studies remain separate; no new inference or superiority claim.
 - [Final submission judgment and requirement audit](publication/submission-decision-v2.md):
   finite experiment/analysis/paper package complete; immediate main-conference submission
   not recommended. The broader top-conference aspiration is not claimed achieved.

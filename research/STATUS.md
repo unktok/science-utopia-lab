@@ -11,6 +11,16 @@ The broader aspiration of a top-conference-ready research contribution is not
 claimed achieved: immediate main-conference submission is not recommended.
 There is no remaining experiment writer or unattended scientific campaign.
 
+After the user's clarification, the main research manuscript is an uncapped
+[integrated37-page paper](../paper/integrated.tex), not only the12-page V2 study.
+[Reviewed PDF](../output/pdf/science-utopia-lab-integrated-working-paper.pdf) and
+[inclusion/evidence map](../paper/integrated-content-map.md) restore the broader
+objective, abstraction, structural, gradient and UI arguments with historical
+provenance separated.15 figures/13 tables/16 references; all37 final pages
+reviewed. No new inference or experimental result is introduced. The old
+finite V2 submission decision remains a historical scope, not a reason to
+discard the other research tracks or impose a working-paper page limit.
+
 | Stage | State and evidence |
 | --- | --- |
 | S1 strong-rule controls | Closed:8/8 complete, twice original-source audited. [Results](results/native-benchmark-controls-v2-a1.md) |

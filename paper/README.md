@@ -1,6 +1,17 @@
 # Objective-conditioned institution paper
 
-The current empirical working draft is [submission-v2.tex](submission-v2.tex);
+The canonical whole-program working manuscript is now [integrated.tex](integrated.tex):
+[reviewed37-page PDF](../output/pdf/science-utopia-lab-integrated-working-paper.pdf),
+15 figures,13 tables and16 cited references, with no artificial page cap.
+It integrates the objective/abstraction/method arguments, parameter held-out
+study, actual structural cases, conditional-gradient experiments, nested design,
+latest matched comparison and English evidence UI. It does not pool their
+different sources or turn feasibility into superiority.
+[Inclusion/exclusion map](integrated-content-map.md) explains the editorial choices;
+[build/evidence/visual binding](integrated-build-v1.json) records the actual artifacts.
+This is a research manuscript, not a submitted, anonymous or release-cleared package.
+
+The narrower empirical study draft remains [submission-v2.tex](submission-v2.tex);
 [the reviewed 12-page PDF](../output/pdf/science-utopia-lab-objective-design-v2-draft.pdf)
 contains the completed design-freedom study. See [build/visual QA receipt](submission-build-v3.json),
 [claim outline](submission-outline.md), [research plan](../research/publication/plan.md)
@@ -31,7 +42,25 @@ numeric/source parameters, not declared graph structure. Method superiority,
 useful structural invention, inventor learning and real-policy benefit are
 not demonstrated. Fixed-record loss algebra is not a dynamic-policy bound.
 
-## Build with the existing cache
+## Build the integrated manuscript with the existing cache
+
+From the repository root, using the existing Tectonic installation:
+
+```sh
+mkdir -p tmp/pdfs/integrated-local
+cd paper
+/opt/homebrew/bin/tectonic --only-cached --untrusted --keep-logs \
+  --keep-intermediates --outdir ../tmp/pdfs/integrated-local integrated.tex
+```
+
+Inspect the newly rendered pages before replacing the reviewed PDF and receipt.
+The actual build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
+of dense figures/provenance. No layout or unresolved-reference warning remains.
+The old paper-only13-path policies still rebuild the narrower V2 draft, not
+this expanded integrated manuscript. Literal source/asset dependencies and
+historical evidence hashes for this manuscript are in its own build receipt.
+
+## Build the narrower V2 draft with the existing cache
 
 From the repository root:
 

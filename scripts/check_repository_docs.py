@@ -19,7 +19,7 @@ DOCUMENTS = ('README.md', 'RESEARCH.md', 'CONTRIBUTING.md', 'docs/README.md',
     'research/publication/submission-goal.md', 'research/publication/research-readiness-review-v2.md',
     'research/publication/submission-decision-v2.md', 'research/publication/mock-review-v2.md',
     'research/publication/release-and-venue-review-v2.md', 'research/publication/supplemental-analysis-v2.md',
-    'paper/submission-outline.md')
+    'paper/submission-outline.md', 'paper/README.md', 'paper/integrated-content-map.md')
 # Inline code is a separate alternative so a literal `[x](y)` inside it is not
 # a link. A Markdown link whose label contains backticks still starts at '['.
 INLINE = re.compile(r'''(?P<code>`+[^`\n]*`+)|\[[^\]\n]*\]\((?:<(?P<angle>[^>]+)>|(?P<plain>[^\s)]+))(?:\s+["'][^\n]*?["'])?\)''')

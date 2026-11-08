@@ -29,8 +29,10 @@ The current finite [design-freedom comparison](research/protocols/campaigns/nati
 is complete: two objectives, five proposal arms, three controller histories and
 all120 candidate slots, followed by fixed selection and90 physical unused-
 condition evaluations. Both full audits agree using an explicit order adapter.
-The12-page empirical draft, figures, supplemental analyses and numerical/paper
-rebuilding are available. [Final requirement audit and submission judgment](research/publication/submission-decision-v2.md)
+An [integrated37-page research manuscript](paper/README.md) now covers the whole
+program without a page cap; the12-page empirical study draft, figures,
+supplemental analyses and numerical/paper rebuilding are also preserved.
+[V2 requirement audit and submission judgment](research/publication/submission-decision-v2.md)
 closes the finite decision package, not the broader research program.
 Immediate main-conference submission is not recommended; top-conference
 readiness, useful structural invention and method superiority are not established.
