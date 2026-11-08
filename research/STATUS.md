@@ -5,6 +5,15 @@ Updated2026-11-08JST. Observations below span2026-11-07/08UTC, not a live heartb
 
 ## Next research planning
 
+The [research-question/decision plan](publication/research-questions-and-decisions.md)
+now connects six tracks to competing explanations and a finite, **unexecuted**
+[pilot draft](protocols/campaigns/objective-system-mechanisms-pilot-draft.md).
+The [actual post-hoc V2 analysis](results/native-design-objective-landscape-v1.md)
+retains all120 statuses and uses64 measured profiles/nine reference-score inversions.
+It reports objective geometry, two same-fingerprint Q differences beyond roundoff,
+and47 numeric finish rejections (43 domain violations/four out-of-range), not new
+optimization success. New model calls, native worlds and authored-code executions:0.
+
 The [next-stage agenda for discussion](publication/research-agenda-next-stage.md)
 separates whole-program directions, existing-data analysis, mechanism interventions,
 objective-conditioned search and later scale decisions. No new experiment or runtime

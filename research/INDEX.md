@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Research questions and next-stage decisions](publication/research-questions-and-decisions.md):
+  six research tracks, competing explanations and claim-specific evidence.
+  [Actual closed-data analysis](results/native-design-objective-landscape-v1.md) and
+  [unexecuted finite pilot draft](protocols/campaigns/objective-system-mechanisms-pilot-draft.md)
+  distinguish post-hoc geometry from new search. No model calls or worlds added.
 - [Next-stage research agenda for discussion](publication/research-agenda-next-stage.md):
   whole-program questions, existing-data analyses, small mechanism/search experiments,
   gradients, world validity and scale decisions. A proposal, not a running campaign.
