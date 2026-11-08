@@ -98,6 +98,9 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 The postprocessors and watermarked synthetic figure checks are implemented;
 there are no completed V2 evaluation figures or actual closed V2 report yet.
+A combined offline integration batch passes217 checks at clean sourcecea6c9e;
+the chronological log records its command/hash. This is software QA, not a
+closed-study audit or additional scientific observations.
 The [common T/C/E plotter](../scripts/figures/native_design_cross_objective.py)
 adds all19 selected/reference labels, raw seeds, explicit missingness/physical
 sharing and initial-selection marks alongside the existing own-objective paired

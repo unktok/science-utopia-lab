@@ -3892,3 +3892,32 @@ energy or total project cost. They exclude the still-last job and are provisiona
 operational timing, not the final closed-study accounting or an independent
 replication analysis. No completion time is imputed from a file mtime. Remaining
 evaluation remains hours-scale; no timing estimate changes the finite protocol.
+
+### Integrated postprocessing QA while the four-year evaluation continues
+
+Previous goal turn is a verified wait; its method-section inspection finds the
+declared V2 objectives/budget/selection boundary consistent with the fixed
+protocol, without inserting partial outcomes into the PDF. This turn continues
+polling the same actual live writer46865. Job0029 advances86/102/128/137/147/
+157/175/194 requests, with year0–3 checkpoints present; at Nov8 01:22:03UTC
+29 normal observations remain complete and no writer.ended record exists.
+An active longer trajectory is not a terminal or blocked process.
+
+At clean committed analysis source
+cea6c9e84a48a8f581c8d9836c80cdce261dfaf3, run the integrated offline batch:
+
+```text
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 MPLBACKEND=Agg OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 .venv/bin/python -m pytest -q tests/reports/test_native_design*.py tests/reports/test_native_auxiliary_costs.py tests/reports/test_native_token_costs.py tests/reports/test_native_selection_relaxation.py tests/reports/test_paper_rebuild_bundle.py tests/reports/test_repository_docs.py tests/reports/test_submission_artifacts.py --junitxml=outputs/publication-benchmark-v2-verification/reporting-integrated-cea6c9e.xml
+```
+
+It exits0:217 passed in43.54s. XML SHA256:
+2aee0a5e08587c5dd09b4bebd48fc32d39db7930a74da11f22616bee4a28ab86.
+HEAD and worktree remain unchanged/clean through completion. This joins the
+previous separate report, order-adapter, figure, identity, token/cache,
+relaxation, paper-subset and document tests at one integration source. It is
+offline software/fixture QA, not217 scientific worlds, a full raw audit, an
+actual V2 cost report, a new PDF build or proof of useful structural invention.
+The fixed experiment checkout is not edited, no extra scientist/designer
+inference is requested, and selection/budgets/settings are unchanged. All90
+evaluation records, normal writer exit, two full adapted audits and actual
+analysis/manuscript/package/mock-review work remain required.
