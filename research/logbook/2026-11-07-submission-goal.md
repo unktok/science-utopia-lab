@@ -4071,3 +4071,24 @@ model/prompt/loss/selection/budget change or further registry query is initiated
 The approved five-request metadata operation is closed, not open-ended authority
 for more queries. This is verified waiting; full90 records and actual normal
 writer closure, both full audits and final empirical deliverables remain required.
+
+### Seven exact policies cover all declared conditions:42/90
+
+Previous turn is a verified wait: live writer46865, job0041 advancing38/61/74/85
+requests and saving year0–2 checkpoints. This turn polls the same actual handle;
+requests advance120/134/151/171/189, year3 is saved and the normal observation
+appears by Nov8 02:35:28UTC, briefly ahead of progress41. At02:36:22UTC progress
+and normal records agree42/90; job0042 is active with6 requests, no writer.ended
+record. Both checkouts are clean before this update.
+
+Read-only join of the first42 immutable jobs and complete observations confirms
+seven exact policies with all five declared two-year seeds plus the separate
+seed31001 four-year diagnostic. These are legacy,open-seed,rank/rate,accept-all,
+reject-all,score-threshold3 and score-threshold4. Shared initial-selected labels
+do not add physical replications. The next policy is reviewer-free accept-all.
+Evaluation-plan SHA256 remains the original e1b96a51 (full hash checked) and
+its bytes are unchanged after inspection. No new inference, restart/refill,
+source/settings/loss/selection/budget change or registry query is initiated by
+analysis. This is verified waiting, not a full raw audit or final result report.
+The fixed90 observations and normal actual writer exit are still required
+before both full adapted audits and empirical analysis/manuscript/package work.
