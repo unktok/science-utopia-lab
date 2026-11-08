@@ -3758,3 +3758,22 @@ scope are in research/results/native-auxiliary-cache-counts-qa-v1.json.
 No model calls/generated mechanism executions occur. The active writer is
 independently re-polled live at00:24:35UTC, with19 complete records and job0019
 advancing75 requests. Both full audits and actual cost reporting remain pending.
+
+### Verified fixed-evaluation wait:22/90 normal records
+
+Previous turn makes concrete progress by integrating the cached-count omission
+fix/79-test QA plus bounded real-field extraction at main39497b7. This turn
+repeatedly polls actual writer handle46865 live, with no ended record. Job0020
+advances14→45→66→77→88 requests and completes by Nov8 00:30:22UTC, briefly
+ahead of progress20. Job0021 starts, advances6→24→33→45→49→85, saves year1,
+and completes by00:35:20UTC. At00:36:30UTC progress/normal records agree22/90;
+job0022 is active with13 requests. This is a verified wait, not an unresolved
+blocker or complete-study conclusion. No new analyst-initiated inference,
+refill/restart/source/settings/loss/selection/budget changes occur.
+
+Both checkouts are clean before this documentation update. Original plan,
+selection and90-job evaluation-plan file hashes still match their recorded
+values. The new analytic cached-count field does not alter those artifacts or
+scientific ranking. All90 conditions, normal actual writer exit, two complete
+adapted audits, actual analyses/figures/costs and final manuscript/package/mock
+review remain required. Goal stays active; no real V2 final report is claimed.
