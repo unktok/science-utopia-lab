@@ -4291,3 +4291,27 @@ No restart/refill, model/source/prompt/loss/budget/selection change, extra
 inference or registry query is initiated by analysis. Remaining18 jobs,
 actual normal writer closure, both full adapted audits and the final empirical
 analysis/figures/costs/manuscript/package/judgment remain required.
+
+### Thirteen exact policies cover every declared condition:78/90
+
+Recent goal turns are verified waits through73/74/75/76/77 normal records,
+each polling the same live writer46865 and confirming the next fixed job.
+Previous turn follows job0077 through23/39/62/77 requests. This turn observes
+99/117/133/151 requests and its normal observation at Nov8 05:52:44UTC. At
+05:53:05UTC progress and normal records agree78/90, job0078 is active with0
+requests, writer46865 is still live and writer.ended is absent.
+
+A read-only join of the first78 immutable jobs to their complete observations
+finds thirteen exact policies with all six declared conditions: nine references,
+both fixed-graph selections and both code-and-graph selections. Each covers
+the five two-year seeds plus the separate seed31001 four-year diagnostic.
+Remaining12 jobs are the throughput technical-only and uniform-numeric
+selections; the next label is selected:throughput:technical-only. This is not
+an extra search, reselection or failed-slot replacement. Evaluation-plan SHA256
+remains e1b96a516b35ac862e8c58b661793adee4d52180fd70978b8d91ebb8aa22a1df;
+its bytes are unchanged after inspection. Condition/status joins are not
+full source-bound audits, structural invention or final scientific results.
+No restart/refill, experiment source/model/prompt/loss/budget/selection change,
+extra inference or registry query is initiated by analysis. Remaining12 jobs,
+actual normal writer closure, both full adapted audits and final empirical
+analysis/figures/costs/manuscript/package/judgment remain required.
