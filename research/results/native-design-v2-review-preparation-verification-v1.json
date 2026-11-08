@@ -1,0 +1,88 @@
+{
+  "schema": "scienceutopia.native-design-v2-review-preparation-verification.v1",
+  "date": "2026-11-08",
+  "analysis_source_commit": "8027f568cc16b0aed7428eab593f716b19530b20",
+  "clean_source_before_and_after": true,
+  "tests": {
+    "passed": 50,
+    "failed": 0,
+    "seconds": 0.88,
+    "xml": "outputs/publication-benchmark-v2-verification/v2-review-preparation-v1.xml",
+    "xml_sha256": "3953a6a08775cfae80d6e54bc2ef1ae04fdac8447e6cc022b22afa03ed725af7"
+  },
+  "author_redacted_pdf": {
+    "path": "output/pdf/institution-design-anonymous-draft.pdf",
+    "sha256": "3d4195176b72760c07c2489ad104e69bf20f5566903b5fae929a88736e234919",
+    "pages": 12,
+    "source_difference": "Only the author block; identified draft/source and numerical archive unchanged.",
+    "build_and_visual_receipt": "paper/submission-anonymous-build-v1.json",
+    "all_12_initial_variant_pages_freshly_rendered_and_individually_viewed": true
+  },
+  "staging": {
+    "policy": "research/publication/paper-rebuild-allowlist-anonymous-v1.json",
+    "output": "outputs/paper-review-preparation-v2-v1",
+    "status": "local-working-draft-not-anonymous-not-release-cleared",
+    "exit_code": 0,
+    "files": 13,
+    "literal_dependencies": 10,
+    "manifest_content_sha256": "c48154d2a9cc110e112a7f98a41448642524b6269278e3c412f090a5fc48ffbd",
+    "manifest_file_sha256": "59584a7db3756dd86637239d505c11b2b87ab81bb7ad543c73d81b53afb46689",
+    "limited_home_path_findings": [],
+    "original_identified_source_or_numerical_archive_included": false,
+    "Git_raw_model_or_game_material_included": false
+  },
+  "staged_rebuild": {
+    "exit_code": 0,
+    "downloads": 0,
+    "build": "tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
+    "actual_directory": "tmp/pdfs/v2-anonymous-staged-v1",
+    "pdf_sha256": "94dc6993670a1f720ac91b3160614248742e747231cf747649030aa533e3af39",
+    "build_log_sha256": "f9cfa7f323ed252996a5e972ec77fdeb048af37b24609c56e0bb651b35204bec",
+    "render_dpi": 120,
+    "all_12_pngs_identical_to_just_inspected_variant": true,
+    "extracted_text_identical": true,
+    "separate_second_visual_view_of_identical_pages_claimed": false,
+    "page_png_sha256": {
+      "page-01.png": "70383f23c492d1ac66327a939d889f16cd4734fc54773943378f443b35dc2e00",
+      "page-02.png": "073479bb93ca5a0665433e8b3b54e691df940df1b8a3c2c440929c07ce581c2c",
+      "page-03.png": "91dd39b4e31cb4eb32d35f9d70b691b2d68d4256132450263db123c5230f932f",
+      "page-04.png": "b320da85d7327b01c5f8d31d231ee56edacc2a6c28a5281b96c557b3596dccb8",
+      "page-05.png": "89abfd882a7f284d9f8e0b429fa2713788aa2f7a64d416bbeb1fb13e13f4ca7f",
+      "page-06.png": "fdcb72fbd04bb0f927e8069a84368d65f0b620f2064e41725bdf7a3a35602684",
+      "page-07.png": "353b84600d5bd9c292e401485d72dbb35b1bc9a5bfc7272725d3241abfb98983",
+      "page-08.png": "a00f8359fc316ffac56ed1e1b211145f984241e2d2bf0f9dd35d335cbc536f5d",
+      "page-09.png": "65878a2cb3d8f7db54cd264a0966e08ada250be879b9319e03283f9495f23d41",
+      "page-10.png": "23363cdc343a5e0d4bbaee7425962493cca8a18d9928ccbc6f2d135c11e49d94",
+      "page-11.png": "99da8ac75f2e6d3fc146c947de203916a687c3219f453e124c6d06cd9ae894e0",
+      "page-12.png": "f1397d36c84779b7ee7d02ee6fc79a231284c88ef235694bbe3b3f614b9b0773"
+    },
+    "PDF_file_bytes_identical": false,
+    "sole_cause_of_binary_difference_claimed": false,
+    "layout_or_undefined_warnings": []
+  },
+  "bounded_release_findings": {
+    "complete_report_home_path_matching_lines": 588,
+    "not_distinct_secrets_or_people": true,
+    "complete_projection_is_anonymous_supplement": false,
+    "known_secret_prefix_pattern_matches": 0,
+    "not_full_secret_or_rights_clearance": true,
+    "PDF_forms_JS_embeddings_or_Author_field": false,
+    "PDF_URL_annotations": 17,
+    "annotation_hosts": [
+      "arxiv.org",
+      "proceedings.mlr.press"
+    ],
+    "URLs_followed": false
+  },
+  "venue_and_rights_review": "research/publication/release-and-venue-review-v2.md",
+  "mock_review": "research/publication/mock-review-v2.md",
+  "mock_review_is_independent_peer_review": false,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "actual_submission_upload_or_external_release": false,
+  "full_goal_complete": false,
+  "remaining": [
+    "Finite per-method cost/outside-metric presentation identified by named-deliverable audit",
+    "Final requirement-by-requirement audit and scientific submission judgment"
+  ]
+}

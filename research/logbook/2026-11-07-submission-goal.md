@@ -4624,3 +4624,16 @@ scientific veto. The completion audit additionally finds named per-method
 cost/outside-measurement presentation needs a finite supplemental pass before
 final judgment. No new experiment, budget, model, external upload or author
 decision is made. Clean-source tests and actual13-path staging are next.
+
+At clean8027f568cc16b0aed7428eab593f716b19530b20,50 tests pass0.88s, actual
+exec exit0; XML SHA2563953a6a08775cfae80d6e54bc2ef1ae04fdac8447e6cc022b22afa03ed725af7.
+Actual stager exits0 with13 paths/10 literal dependencies and no narrow
+home-path findings. Build that exact subset cached/untrusted, exit0; render
+all12 staged pages and compare each to the just-inspected anonymous variant:
+all PNG bytes and same-option extracted text match. PDF bytes differ; sole
+cause not inferred. The12 identical staged renders are not claimed separately
+visually viewed. Record source, PDF/page/staging hashes and bounded checks in
+results/native-design-v2-review-preparation-verification-v1.json. No source/HEAD
+change during the checks and no model/code-world dispatch or external release.
+Named per-method cost/outside-metric presentation and final completion/judgment
+audit remain; the full goal stays active.
