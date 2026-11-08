@@ -3869,3 +3869,26 @@ graph does not imply unchanged algorithms, runtime actors or researcher actions.
 Carry the permitted-versus-exercised distinction into the manuscript evidence
 join after the full audit. Do not silently infer structural invention from the
 arm name, add a novelty filter, remove ties or expand the finite experiment.
+
+### Verified wait through29 observations; provisional dispatch intervals
+
+Previous goal turn adds the bounded declared-edit inspection and manuscript
+interpretation boundary at30d8c90, with10 documentation/artifact checks passing.
+This turn polls the actual live writer46865 throughout. Job0028 advances
+42/59/78/90 requests; by Nov8 01:12:30UTC its complete observation appears,
+temporarily ahead of progress28. At01:13:30UTC progress and normal observations
+agree29/90, job0029 is active with6 requests, and no writer.ended record exists.
+Both checkouts are clean before this documentation update. This is a verified
+wait, not an impasse; no restart, refill, new inference, source/settings/loss/
+selection/budget change or optional egress occurs.
+
+A bounded live snapshot of29 existing started.json records yields28 adjacent
+dispatch-start intervals:24 for two-year worlds, mean4.7269/median4.7466/min3.5228/
+max5.3884 minutes;4 for four-year worlds, mean8.8337/median8.8119/min8.0891/
+max9.6219 minutes. Compute each difference from the recorded ISO UTC starts of
+adjacent job identities and group by the earlier job's declared years. These
+intervals include between-job overhead, not isolated forward time, GPU time,
+energy or total project cost. They exclude the still-last job and are provisional
+operational timing, not the final closed-study accounting or an independent
+replication analysis. No completion time is imputed from a file mtime. Remaining
+evaluation remains hours-scale; no timing estimate changes the finite protocol.
