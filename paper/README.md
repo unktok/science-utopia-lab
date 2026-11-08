@@ -67,6 +67,8 @@ recipe remains unknown. The 2025 preprint style is not future-cycle compliance.
 
 All18 paired PNGs (9 references, two separate horizons) are also individually
 reviewed; [169-check/visual QA](../research/results/native-design-v2-manuscript-qa-v1.json).
-Final numerical/rebuild packaging, rights/
-anonymity checks, mock review and an evidence-based submission decision remain.
+Numerical and13-path PDF rebuilding are now actually verified;
+[source/hash/scope receipt](../research/results/native-design-v2-reproduction-verification-v1.json).
+Rights/anonymity checks, an anonymous preparation variant, mock review and an
+evidence-based submission decision remain.
 Authorship, actual submission and external release require user confirmation.

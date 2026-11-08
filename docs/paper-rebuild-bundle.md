@@ -16,6 +16,9 @@ The new [V2 allowlist](../research/publication/paper-rebuild-allowlist-v2.json)
 has13 exact paths and10 literal TeX dependencies, bound to the V3 build receipt
 and submission-v2.tex. It omits the compressed numerical report and raw worlds.
 The original12-path policy and its earlier verification remain unchanged.
+At clean e3f4ee7 the new V2 subset actually stages/builds offline; all12 new
+rendered pages are individually reviewed and match the original PNG/text bytes.
+PDF bytes differ. [Verification and limits](../research/results/native-design-v2-reproduction-verification-v1.json).
 
 ## Exact subset and actual scope
 

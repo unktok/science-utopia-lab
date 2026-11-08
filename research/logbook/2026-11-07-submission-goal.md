@@ -4554,3 +4554,29 @@ source. Costs are rechecked from retained aggregates, not newly reconstructed
 from raw individual replies. Existing unknowns/nulls/ties remain. Tests and
 actual clean-source numerical/paper rebuilds are required next; implementation
 alone is not replay success or external replication.
+
+### Actual numerical and13-path V2 paper rebuilding succeed
+
+At clean e3f4ee715ed3b04b1bb779609f71d6cbdabe57d5,47 tests pass0.79s;
+XML SHA256 c32c50faf434dc9a1ba865892103739b7f8a2bb9991a669bcf966d8418b14719.
+The real numerical CLI exits0, generating52 files. All120 slots/ties and90
+evaluation jobs rejoin retained data,462 T/C/E values recompute from measured
+A/Q/R with maximum absolute residual0, and22 actual PNGs match prior reviewed
+images exactly. SVG-byte identity is not claimed. Retained aggregate costs,
+not raw individual usage records, are rechecked with missingness/cache scopes.
+Numerical manifest content22740f9c6379387ae3758056b52514b8eb971690b994e18e7e26523db9f2952b.
+
+The real paper stager exits0 with exactly13 reviewed paths/10 literal inputs,
+no narrow home-path findings. Build that subset with cached/untrusted Tectonic,
+exit0 and0 downloads. All12 pages freshly render at120dpi and are individually
+viewed; every PNG matches the original reviewed pages exactly, as does text
+extracted with the same options. New PDF is748892 bytes, not byte-identical to
+the reviewed748891-byte file. Do not infer the sole cause of binary differences.
+Only the original harmless inputenc notice remains. The reviewed PDF is not
+replaced; rebuild artifacts remain ignored. Compact exact scopes/hashes:
+results/native-design-v2-reproduction-verification-v1.json.
+
+The feature HEAD/runtime remain unchanged during tests/staging/numerical/PDF
+checks; frozen b6654ad and adapter68ab582 remain clean. No model, authored code,
+raw re-audit, new machine, package download or external upload is used. Rights,
+anonymity, target-cycle review, mock review and final submission judgment remain.

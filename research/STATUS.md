@@ -15,7 +15,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
 | Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
-| Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, search/cross-score/paired figures, table and cost/relaxation projections generated at clean5dcf232. [Closure and artifact hashes](results/native-design-freedom-v2-closed-analysis-v1.json). Interpretation/manuscript/final package remain unfinished; unmodified frozen CLI is not claimed to pass |
+| Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, figures, table and cost/relaxation projections generated. [Closure](results/native-design-freedom-v2-closed-analysis-v1.json); manuscript and numerical/PDF reconstruction now complete, final research/release review remains. Unmodified frozen CLI is not claimed to pass |
 | Manuscript |12-page empirical V2 draft: all120 trials,90 fixed-selection evaluations, actual figures, spec/mechanism/failure analysis and measured response costs. All12 final pages rendered and individually inspected. [Source/build QA](../paper/submission-build-v3.json); submission/release readiness not claimed |
 
 The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
@@ -102,7 +102,8 @@ local-designer learning evidence. See the [full program map](program-map.md).
    mechanisms and measured costs. Final print-size PDF and all18 paired PNGs
    are now individually reviewed; [169-check/visual QA](results/native-design-v2-manuscript-qa-v1.json).
 4. The claim-centered V2 manuscript/figures are now built and all12 pages inspected.
-   Complete numerical/rebuild packaging, rights/anonymous-release review and final mock review.
+   Numerical/PDF rebuilding now passes at clean e3f4ee7. Complete rights/anonymous-release
+   review, an anonymous preparation variant and final mock review.
    Actual submission, external costs/new resources and authorship require user confirmation.
 
 The actual closed report and empirical V2 figures/table/cost projections are now
@@ -157,13 +158,25 @@ now records actual PDF/annotation checks and a narrow tracked-file/path inventor
 This is not full credential/rights clearance or a prepared anonymous bundle;
 final-result packaging and the actual target-cycle checks remain required.
 
-A [12-path paper-only subset](../docs/paper-rebuild-bundle.md) is now actually
+A preserved [12-path pilot-paper subset](../docs/paper-rebuild-bundle.md) was actually
 staged and rebuilt offline from clean source37e5443.32 QA checks pass; all11
 newly rendered pages are individually inspected, with text and rendered PNGs
 matching the reviewed working draft. [Scope/hashes](results/paper-rebuild-bundle-verification-v1.json).
 The source/PDF contents remain unchanged, V2 results are not added, and this is
 not numerical/raw reproduction, a clean-machine test without cache, final
-anonymous packaging or rights clearance. Repeat after the final manuscript.
+anonymous packaging or rights clearance. This historical check is not V2 evidence.
+
+The [current V2 numerical archive](data/native-design-v2/README.md) now retains
+the exact closed-report bytes in713kB gzip, not raw caches or the full audit.
+At clean e3f4ee7, actual reconstruction rejoins all120 slots/exact ties and90
+evaluations, recomputes462 loss values from measured A/Q/R with zero residual,
+and rebuilds all22 PNGs identically to reviewed originals. Costs are rechecked
+from retained aggregates, not raw individual usage. The new13-path V2 paper-only
+subset also builds offline; all12 newly rendered pages are individually viewed,
+with exact PNG/text equality (not PDF-file equality). [47 checks, actual replay
+hashes and reproduction boundaries](results/native-design-v2-reproduction-verification-v1.json).
+No fresh-machine/cache-free build, fresh inference, external replication,
+anonymous release or rights clearance is established.
 
 ## Historical records
 

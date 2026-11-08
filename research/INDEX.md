@@ -27,8 +27,10 @@ Historical documents retain their paths and source identities.
 - [Research charter](charter.md): original motivation and explicit principles.
 - [System abstraction](system-model.md), [optimization](optimization.md).
 - [Software/research workflow](../docs/research-workflow.md).
-- [Explicit paper-rebuild subset](../docs/paper-rebuild-bundle.md):12 paths,
-  tested local offline build; not final-result, anonymous or numerical reproduction.
+- [V2 numerical rebuilding](data/native-design-v2/README.md) and
+  [actual reproduction verification](results/native-design-v2-reproduction-verification-v1.json).
+- [Explicit paper-rebuild subsets](../docs/paper-rebuild-bundle.md):13-path V2
+  and preserved12-path pilot; tested offline, not anonymous or fresh inference.
 
 ## Latest completed evidence
 
