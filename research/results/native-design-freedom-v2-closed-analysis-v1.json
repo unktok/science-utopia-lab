@@ -1,0 +1,121 @@
+{
+  "schema": "scienceutopia.native-design-freedom-closed-analysis-receipt.v1",
+  "classification": "OBSERVED-CLOSED-STUDY-NOT-SUBMISSION-READINESS",
+  "experiment_source_commit": "b6654adefc42223f9ecc7b4e53c043c879230f68",
+  "plan_content_sha256": "57292c4f3c743c87c1b3fe8a602ed2ed0362c1de903c2a243eb418843a5e2e25",
+  "raw_relative_root": "outputs/native-design-freedom-v2-a1",
+  "analysis_output_relative_root": "outputs/publication-benchmark-v2-verification",
+  "writer": {
+    "actual_exec_handle": 46865,
+    "actual_exit_code": 0,
+    "started_utc": "2026-11-07T09:02:10.418330+00:00",
+    "ended_utc": "2026-11-08T06:58:09.115534+00:00",
+    "wall_seconds": 78958.697204,
+    "terminal_record_matches_start": true,
+    "progress_stage": "closed",
+    "terminal_file_sha256": "df4aa0b1817401d7900288355823d3b2c0b7674270b5221d867236f4329793d8"
+  },
+  "full_audits": {
+    "analysis_source_commit": "68ab58250a3b9708982e1848be3c0856c6084dbd",
+    "analysis_adapter_sha256": "460d4e3e2c955b773828d9c7d21a925ba547d8d8b5474922a6e946eb9291a993",
+    "order_helper_sha256": "c56859bb0832e0180482893c38b3ff3c42557942ec309ba935a675c573fd867e",
+    "exec_handles": [84724, 22032],
+    "actual_exit_codes": [0, 0],
+    "output_names": ["native-design-freedom-v2-full-audit-1.json", "native-design-freedom-v2-full-audit-2.json"],
+    "both_file_sha256": "c4399dae873eee21d8ec8de5f4b6231bd48c0f70f7475b9ab836662b1f13843b",
+    "both_content_sha256": "eb305ac09bc46d68d53b632674095966f3ae9be1307629d450196ec4519b8b45",
+    "cmp_exit_code": 0,
+    "source_proof_status": "verified-exact-source-closure",
+    "source_file_count": 278,
+    "raw_inventory_file_count": 7038,
+    "raw_inventory_unchanged": true,
+    "experiment_and_analysis_checkouts_still_clean_at_expected_commits": true,
+    "order_only_adapter_explicit": true,
+    "unmodified_frozen_CLI_claimed_to_pass": false,
+    "new_model_calls": 0,
+    "new_code_executions": 0,
+    "independent_scientific_replicates_added": 0
+  },
+  "study_counts": {
+    "fresh_development_reference_worlds": 9,
+    "search_slots": 120,
+    "search_complete": 64,
+    "search_generation_nulls": 25,
+    "search_execution_nulls": 31,
+    "physical_evaluation_jobs": 90,
+    "normal_complete_evaluation_jobs": 90,
+    "exact_evaluated_policies": 15,
+    "logical_evaluation_labels": 19,
+    "two_year_seeds": [31001, 31013, 31019, 31033, 31039],
+    "separate_four_year_diagnostic_seed": 31001,
+    "evaluation_plan_file_sha256": "e1b96a516b35ac862e8c58b661793adee4d52180fd70978b8d91ebb8aa22a1df",
+    "selection_unchanged": true,
+    "failed_slot_refills": 0
+  },
+  "projections": {
+    "analysis_source_commit": "5dcf2326c11a98ccf9b5c6b5e3dad1b28a89c772",
+    "closed_report": {
+      "name": "native-design-freedom-v2-closed-report.json",
+      "file_sha256": "94aba0f5029a2a4042f58019fa68b52a28fee135d5644faa7af8ee79b37801ac",
+      "content_sha256": "75f64370d673699553f69c480c93b90c07c2babba70b4f924cbc54438ab9d732"
+    },
+    "scientist_costs": {
+      "name": "native-design-freedom-v2-scientist-token-costs.json",
+      "file_sha256": "c49319df4dacded07146e497375ef555d20223da52df0d1c4fac63c0ff342f7c",
+      "content_sha256": "29091c00dac6b20576e1dc03d45318c18118e0d99b9878645b45155bc014f11e",
+      "completed_scientist_responses": 16043
+    },
+    "auxiliary_costs": {
+      "name": "native-design-freedom-v2-auxiliary-costs.json",
+      "file_sha256": "6786eb7791f98d716a61293efd32c454c8e0e5a65a58f241dc92ea7bdde0a938",
+      "content_sha256": "59b72c7f49a61f0b3484de25a6d0101059b5f14798d0c031afefa94d063afc68",
+      "auxiliary_intents": 1764
+    },
+    "fixed_record_relaxation": {
+      "name": "native-design-freedom-v2-selection-relaxation.json",
+      "file_sha256": "d8c31ee2c045a5f6afc81d422fdebdc80c6d2aa4140904506c234b0b7eced918",
+      "content_sha256": "515571c5612899d6694afa70924dfd0b0715992ac558186e02e1abeb6e6da3d5",
+      "identity_records": 219,
+      "complete_realized_forwards": 163,
+      "unavailable_records_without_complete_forward": 56,
+      "identity_records_are_not_219_new_or_completed_worlds": true,
+      "dynamic_policy_optimum_claimed": false
+    },
+    "search_figure_manifest": {
+      "name": "native-design-freedom-v2-search-figures/manifest.json",
+      "file_sha256": "01f9b423c630d2458fac6baec9cad22711942822054a680221d32ab560c00af5",
+      "content_sha256": "b3521b1ba8c8b2d7461e3602fd929f1a9b5193a0333e6697edabc0389d2d42af"
+    },
+    "cross_objective_figure_manifest": {
+      "name": "native-design-freedom-v2-cross-objective-figures/manifest.json",
+      "file_sha256": "b86c3481a6aefc12122826a07e3fc42abcaeb61684c16b0fa7a373bbc356b872",
+      "content_sha256": "72c4251911f541ad463ad1f6a6fdf2591280bff60c87e27e0d433ccb1de008a2"
+    },
+    "paired_figure_manifest": {
+      "name": "native-design-freedom-v2-paired-figures/manifest.json",
+      "file_sha256": "c06724d86b1ffd0fbab31ba53e4bd710e9ed5acb9fc1c31ffeb0ea39a181ddcb",
+      "content_sha256": "0585db460dc6bfe7e8f2008c8dc48c63918773fac725d20e05502ba3ab28d632"
+    },
+    "manuscript_table_manifest": {
+      "name": "native-design-freedom-v2-manuscript-tables/manifest.json",
+      "file_sha256": "949046a902f463f65dcefe7ed2811be2ca78650a2a62030307fdcb39aded59b8"
+    }
+  },
+  "visual_review": {
+    "actual_core_png_pages_individually_viewed": 4,
+    "core_overlap_or_clipping_observed_at_native_resolution": false,
+    "paired_png_pages_remaining_to_review": 36,
+    "final_print_size_or_manuscript_pdf_review_complete": false
+  },
+  "remaining": [
+    "Complete interpretation, actual edit/consumer/failure/cost joins and compact numerical reproduction artifacts",
+    "Update claim-centered manuscript and empirical figures/tables, then build and inspect every final PDF page",
+    "Complete local reproducibility/rights/anonymous-release review, mock review and submission judgment",
+    "Do not infer independent world replication from controller histories, labels, auditors or horizons",
+    "Do not infer scientific benefit, optimizer superiority or useful structural invention from successful execution"
+  ],
+  "new_model_calls_for_this_analysis": 0,
+  "actual_submission_or_external_release_performed": false,
+  "full_goal_complete": false,
+  "content_sha256": "030561ff7ba74cfef54b35e5ac7b64653d5e69e97c7552b03d43cea40de881ae"
+}

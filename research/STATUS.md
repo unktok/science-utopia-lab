@@ -15,7 +15,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
 | Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
-| Closed V2 audits and results | First full adapted original-source audit exits0 at clean analysis68ab582, content hash eb305ac0; second read-only process remains running. Exact output comparison and final reports are pending. The unmodified frozen CLI is not claimed to pass |
+| Closed V2 audits and results | Both full adapted original-source audits exit0 at clean analysis68ab582; content hash eb305ac0 and complete file bytes match.278 source files/7038 raw files verified. Actual report, search/cross-score/paired figures, table and cost/relaxation projections generated at clean5dcf232. [Closure and artifact hashes](results/native-design-freedom-v2-closed-analysis-v1.json). Interpretation/manuscript/final package remain unfinished; unmodified frozen CLI is not claimed to pass |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
 The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
@@ -87,22 +87,24 @@ local-designer learning evidence. See the [full program map](program-map.md).
 
 1. Execution complete: all90 fixed unused-condition evaluation jobs have normal
    observations and the actual writer exited0. Selection/ties are unchanged;
-   there were no failed-slot refills. This is not yet full audit completion.
+   there were no failed-slot refills. Both full adapted audits now complete.
 2. Use the separate versioned analysis adapter for the
    [reproduced audit-order defect](results/native-design-freedom-v2-audit-order-diagnostic-v1.json).
    [Verification](results/native-design-freedom-v2-audit-order-verification-v1.json)
    covers74 tests and two identical order-only component replays, not a full audit.
    Do not edit the frozen checkout, raw plan/selection or suppress chronology checks.
-3. Finish both source-bound audits with the correction explicitly recorded;
-   first exits0, second remains running after verified normal closure. Exact byte comparison is pending. The unmodified frozen CLI has not passed. Apply the integrated
-   closed-audit reports/figures: all losses, failures, identities, lineage,
-   paired raw outcomes, missingness, physical sharing, mechanisms and measured costs.
+3. Both full source-bound audits exit0 and match exactly with the correction
+   explicitly recorded; the unmodified frozen CLI has not passed. Actual
+   closed-audit reports/figures/costs are generated. Complete the interpretation
+   of all losses, failures, identities, lineage, paired outcomes, physical sharing,
+   mechanisms and measured costs, plus final print-size/paired-figure review.
 4. Update the claim-centered manuscript/figures, rebuild and inspect every PDF page,
    complete the reproducibility/rights/anonymous-release review and final mock review.
    Actual submission, external costs/new resources and authorship require user confirmation.
 
-The postprocessors and watermarked synthetic figure checks are implemented;
-there are no completed V2 evaluation figures or actual closed V2 report yet.
+The actual closed report and empirical V2 figures/table/cost projections are now
+generated; their hashes and remaining visual/interpretation work are in the
+[closure receipt](results/native-design-freedom-v2-closed-analysis-v1.json).
 A combined offline integration batch passes217 checks at clean sourcecea6c9e;
 the chronological log records its command/hash. This is software QA, not a
 closed-study audit or additional scientific observations.
@@ -114,12 +116,12 @@ is SCRIPTED QA only. The [manuscript evidence map](../paper/submission-outline.m
 joins the final questions to required actual evidence, not new selection rules.
 The [manuscript table generator](../scripts/reports/native_design_tex.py) now
 rejoins all120 rows and exact frozen ties before display rounding;
-[57-test and one-page visual QA](results/native-design-tex-qa-v1.json) is SCRIPTED,
-not actual-result table generation or an updated empirical manuscript.
+[57-test and one-page visual QA](results/native-design-tex-qa-v1.json) is SCRIPTED;
+the separate actual table is now generated, not yet inserted into the manuscript.
 The [auxiliary model-cost projection](../scripts/reports/native_auxiliary_costs.py)
 adds proposal/calibration/load usage and explicit missingness alongside the
 scientist-response token module; [70-test verification](results/native-auxiliary-costs-qa-v1.json)
-is SCRIPTED QA, and real V2 cost totals still await closed audits.
+is SCRIPTED QA; the separate actual V2 scientist/auxiliary projections are now generated.
 An additional native cache-count field is now preserved with subset/missingness
 diagnostics; [79-test and bounded84-record extraction verification](results/native-auxiliary-cache-counts-qa-v1.json)
 is not a full cost report. API units are referenced explicitly in the workflow.

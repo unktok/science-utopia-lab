@@ -4429,3 +4429,36 @@ rmdefault=ptm resolves the preview without downloads. Hashes/scopes/failures:
 results/native-design-tex-qa-v1.json. These are SCRIPTED software/layout QA,
 not actual V2 outcomes, a final paper/PDF revision or extra scientific samples.
 The frozen experiment and pinned audit checkout remain untouched.
+
+### Both full audits match; actual closed reports, figures, table and costs generated
+
+Exec22032 returns exit0 with the same full-audit content SHA256 eb305ac0 (full
+hash recorded). At Nov8 07:32:56UTC, cmp exits0 and both714MiB files have SHA256
+c4399dae873eee21d8ec8de5f4b6231bd48c0f70f7475b9ab836662b1f13843b.
+Clean frozen b6654ad and adapter68ab582 checkouts remain at their exact commits.
+The audited source closure contains278 files; raw inventory has7038 files;
+all90 evaluation observations are complete. The adapter remains explicit;
+the unmodified frozen CLI is not claimed to pass. This is deterministic replay
+verification, not extra independent scientific worlds or validation by another method.
+
+While the second repetition runs, project the already successful first audit
+from clean reporting source5dcf2326c11a98ccf9b5c6b5e3dad1b28a89c772 in the
+separate table/reporting worktree. Both audit files subsequently match exactly,
+so these artifacts bind the common full audit. Actual exec57608 report and6987
+scientist costs exit0;96318 auxiliary costs and63102 fixed-record analysis also
+exit0. The scientist projection accounts for16043 completed recorded responses;
+auxiliary accounting has1764 intents, not1764 assumed successful replies.
+Fixed-record output has219 identity entries:163 completed physical forwards
+and56 unavailable entries. It does not describe219 newly executed/completed
+worlds or a dynamic-policy optimum. Unknown usage remains unknown, cache
+subsets are not added again, and no new experimental model/code calls occur.
+
+Generate actual ten-row manuscript table and both search panels, both common
+T/C/E panels and all36 own-objective paired panels. The four core PNGs are
+individually viewed without overlap/clipping at native resolution. The36
+paired PNGs and final print-size/PDF legibility still need review. Exact source,
+artifact/content hashes and scopes: results/native-design-freedom-v2-closed-analysis-v1.json.
+The existing empirical manuscript/PDF is still the older V1/S1 draft, not
+updated V2 results. Interpretation, full-spec/consumer/failure joins, compact
+numerical reproduction material, manuscript/PDF, release review, mock review
+and final submission judgment remain required; the active full goal is not complete.
