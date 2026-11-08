@@ -59,14 +59,14 @@ observable rather than enforce a favorable outcome.
 
 \section{Problem: objectives select organizing systems}
 \label{sec:problem}
-Let $S\in\Sys$ specify an organizing system, $W$ researcher-model weights, $D$
-the literature corpus, $c$ an environmental condition and $\epsilon$ residual
+Let $S\in\Sys $ specify an organizing system, $W$ researcher-model weights, $D$
+the literature corpus, $ c $ an environmental condition and $\epsilon $ residual
 execution/model randomness. The native simulator generates a trajectory
 \begin{equation}
  \tau\sim P(\cdot\mid S,W,D,c),\qquad m=M(\tau).
 \end{equation}
 It contains research directions, projects, papers, review and publication
-records, resources, messages and persistent state. A declared loss $\ell_\lambda$
+records, resources, messages and persistent state. A declared loss $\ell_\lambda $
 defines the design problem
 \begin{equation}
  J_\lambda(S)=\mathbb E_{c,\epsilon}[\ell_\lambda(M(\tau))],\qquad
@@ -88,7 +88,7 @@ An optional adoption policy governs deployment, not the search objective.
 \begin{table}[t]\centering\small
 \caption{Four separate contracts. No substantive veto is implicit.}
 \label{tab:integrated-contracts}
-\begin{tabular}{p{.19\linewidth}p{.49\linewidth}p{.22\linewidth}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.19\linewidth}>{\raggedright\arraybackslash}p{.49\linewidth}>{\raggedright\arraybackslash}p{.22\linewidth}@{}}
 \toprule
 Object & Question answered & Search role \\
 \midrule
@@ -240,7 +240,7 @@ they establish expressive examples and observed redesign, not local-model
 invention or an authenticated independent designer identity.
 
 \subsection{Pathwise derivatives of explicit representations}
-For a supported differentiable institution $u=f_\theta(x)$, a local backward
+For a supported differentiable institution $ u=f_\theta(x)$, a local backward
 pass computes derivatives of that represented mapping. Tensor state and
 explicit routes can carry derivatives through multiple represented operations
 and invocations. Such a derivative is exact for that computation, not for an
@@ -264,13 +264,13 @@ this boundary directly.
 
 \subsection{Expected-loss gradients around an opaque world}
 Let a fixed generated vocabulary $V$ map explicit discrete choices and continuous
-latents $d$ to $S(V,d)$. For a declared distribution $q_\theta(d\mid V)$,
+latents $ d $ to $S(V,d)$. For a declared distribution $ q_\theta(d\mid V)$,
 \begin{equation}
  J_V(\theta)=\mathbb E_{d\sim q_\theta,\,\tau\sim P(\cdot\mid S(V,d))}
  [\ell(M(\tau))].
 \end{equation}
 Under support, integrability and differentiation conditions, and with no
-additional direct $\theta$ dependence of the conditional environment,
+additional direct $\theta $ dependence of the conditional environment,
 \begin{equation}
  \nabla_\theta J_V
  =\mathbb E[(\ell-b)\nabla_\theta\log q_\theta(d\mid V)].
@@ -284,7 +284,7 @@ latents to legal coordinates make the sampled density and executable value
 distinct objects that must both be retained.
 
 For $K$ IID design draws, leave-one-out baselines exclude the scored draw's
-own loss. For a prior-frozen surrogate $c(d)$ with tractable expectation,
+own loss. For a prior-frozen surrogate $ c(d)$ with tractable expectation,
 \begin{equation}
  \nabla_\theta J_V
  =\mathbb E[(\ell-c(d))\nabla_\theta\log q_\theta(d\mid V)]
