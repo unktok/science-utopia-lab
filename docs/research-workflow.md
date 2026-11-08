@@ -182,6 +182,8 @@ python -m scripts.reports.native_design_benchmark --plan <raw/plan.json> \
 python -m scripts.figures.native_design_benchmark --report <report.json> --output <fresh-figures>
 python -m scripts.figures.native_design_evaluation --report <report.json> --output <fresh-paired-figures>
 python -m scripts.figures.native_design_cross_objective --report <report.json> --output <fresh-cross-score-figures>
+python -m scripts.reports.native_design_tex --report <report.json> \
+  --expected-source <40-hex-commit> --output <fresh-manuscript-table-directory>
 python -m scripts.reports.native_selection_relaxation --run <raw-root> \
   --audit <closed-full-audit.json> --expected-source <40-hex-commit> --output <fresh-analysis.json>
 ```
@@ -191,6 +193,13 @@ not Apple Python. The last module fixes realized decisions/reviews and relaxes
 only decision flags. Its minima are not feasible dynamic-policy counterfactuals.
 These reporting tools preserve missing scores and physical-sharing labels;
 they do not rerun worlds, renew calibration or update the proposer.
+
+The manuscript search table rejoins all120 rows, each history's initial value,
+the exact frozen representative and every unrounded tie before formatting.
+It separates generation/execution nulls from unavailable assigned measurements,
+marks an initial-reference selection and retains a SCRIPTED QA label for
+synthetic inputs. The generated JSON/TeX and file manifest are projections of
+the closed report, not independent raw audits or new scientific observations.
 
 The paired plotter shows each arm's own loss versus all9 references. The common
 cross-score plotter shows all19 reference/selected labels under T/C/E, raw seed
