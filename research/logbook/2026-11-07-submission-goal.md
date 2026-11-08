@@ -4169,24 +4169,6 @@ refill, extra inference, source/model/prompt/loss/selection/budget change or new
 registry query is initiated by analysis. Remaining37 jobs, actual normal writer
 closure, both full adapted audits and final empirical deliverables remain.
 
-### Verified evaluation continuation through64 normal observations
-
-On Nov8 the actual writer46865 remains live. This goal turn observes62 normal
-records/job0062 active with78 requests at04:29:05UTC, then63 records and
-job0063 progressing8/28/35/50/73/87 requests. At04:35:57UTC progress and normal
-observations agree64/90; job0064 is active with3 requests and writer.ended
-does not exist. A short gap where an observation is saved before progress and
-the next start is recorded is not treated as a stall or restart condition.
-
-The approved finite registry HEAD operation is already complete and recorded
-separately; no further registry requests are made here. Reporting/outline
-inspection confirms that the final results still need to distinguish permitted
-design freedom from actual specification edits and downstream behavior. This
-inspection adds no scientific observations or full-audit claim. No experiment
-source, prompt, loss, selection, budget or model changes, refills or restarts.
-Remaining26 jobs, actual normal writer closure, both full adapted audits and
-final empirical analysis/figures/costs/manuscript/package/judgment remain.
-
 ### All reference policies cover all declared conditions;54/90 overall
 
 Previous goal turn is a verified wait through53 records; actual writer46865
@@ -4245,3 +4227,21 @@ novelty, better scientific outcomes or a full source-bound audit. No restart/
 refill, extra inference, source/model/prompt/loss/selection/budget change or new
 registry query is initiated by analysis. Remaining30 jobs, actual normal writer
 closure, both full adapted audits and final empirical deliverables remain.
+
+### Verified evaluation continuation through64 normal observations
+
+On Nov8 the actual writer46865 remains live. This goal turn observes62 normal
+records/job0062 active with78 requests at04:29:05UTC, then63 records and
+job0063 progressing8/28/35/50/73/87 requests. At04:35:57UTC progress and normal
+observations agree64/90; job0064 is active with3 requests and writer.ended
+does not exist. A short gap where an observation is saved before progress and
+the next start is recorded is not treated as a stall or restart condition.
+
+The approved finite registry HEAD operation is already complete and recorded
+separately; no further registry requests are made here. Reporting/outline
+inspection confirms that the final results still need to distinguish permitted
+design freedom from actual specification edits and downstream behavior. This
+inspection adds no scientific observations or full-audit claim. No experiment
+source, prompt, loss, selection, budget or model changes, refills or restarts.
+Remaining26 jobs, actual normal writer closure, both full adapted audits and
+final empirical analysis/figures/costs/manuscript/package/judgment remain.
