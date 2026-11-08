@@ -219,7 +219,8 @@ def plot(data, output):
     g = data['coefficient_grid']; xs = g['alphas']; ys = g['betas']
     colors = ['#e8b55b', '#45a8b0', '#5356a8', '#8b8b8b', '#cf74aa']
     cmap = ListedColormap(colors); norm = BoundaryNorm(np.arange(-.5, 5.5), cmap.N)
-    with plt.rc_context({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False}):
+    with plt.rc_context({'font.size': 10, 'axes.spines.top': False, 'axes.spines.right': False,
+                         'svg.hashsalt': 'native-objective-landscape-v1'}):
         fig, axes = plt.subplots(1, 2, figsize=(11.5, 6.1))
         for ax, scope, title in zip(axes, ('references', 'all_observations'),
                                    ('Nine reference observations', 'References + 64 completed search observations')):

@@ -89,7 +89,11 @@ def test_nonfinite_or_boolean_values_reject(profile, alpha, beta):
 
 def test_invalid_saved_measurement_is_not_zero_imputed(report):
     changed = deepcopy(report)
-    next(r for r in changed['all_candidate_rows'] if r['status'] == 'complete')['metrics'][module.KEYS[1]]['status'] = 'unknown'
+    row = next(r for r in changed['all_candidate_rows'] if r['status'] == 'complete')
+    row['metrics'][module.KEYS[1]]['status'] = 'unknown'
+    # Preserve agreement of the two report projections so this fixture reaches
+    # the missing-measurement guard instead of the earlier consistency guard.
+    changed['search_arms'][row['run']][row['arm']]['rows'][row['generation']] = deepcopy(row)
     changed['content_sha256'] = digest({k: v for k, v in changed.items() if k != 'content_sha256'})
     with pytest.raises(ValueError, match='missing measured'):
         module.analyze(changed)
@@ -110,3 +114,6 @@ def test_plot_and_json_keep_data_unchanged(tmp_path, data):
     assert {p.name for p in tmp_path.iterdir()} == {'observed-objective-map.png', 'observed-objective-map.svg'}
     assert digest(data) == before
     assert json.loads(json.dumps(data)) == data
+    first = {p.name: p.read_bytes() for p in tmp_path.iterdir()}
+    module.plot(data, tmp_path)
+    assert first == {p.name: p.read_bytes() for p in tmp_path.iterdir()}
