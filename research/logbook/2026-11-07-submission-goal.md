@@ -4206,3 +4206,24 @@ No restart/refill, extra inference, source/model/prompt/loss/selection/budget
 change or registry query is initiated by analysis. Remaining33 jobs, actual
 normal writer closure, both full adapted audits and final empirical analysis/
 figures/costs/manuscript/package/judgment work remain required.
+
+### Ten exact policies cover all declared conditions:60/90
+
+Recent goal turns are verified waits through58/59 normal records, with actual
+writer46865 live. Previous turn tracks job0059 advancing54/70/82 requests and
+saving year0–2 checkpoints. This turn polls that same handle as requests advance
+128/144/161, year3 is saved and the normal observation is written. At Nov8
+04:16:55UTC progress/normal records agree60/90; job0060 is active with3 requests,
+no writer.ended record. Both checkouts are clean before this update.
+
+Read-only join of the first60 immutable jobs and complete observations confirms
+ten exact policies with all five two-year seeds and the separate seed31001
+four-year diagnostic: nine references plus selected:throughput:code-fixed-graph.
+The already fixed remaining30 jobs span five other selected exact policies;
+next is selected:selective:code-fixed-graph. Evaluation-plan SHA256 remains
+original e1b96a51 (full hash checked), and bytes remain unchanged after inspection.
+Representation identity/condition completion is not useful institutional
+novelty, better scientific outcomes or a full source-bound audit. No restart/
+refill, extra inference, source/model/prompt/loss/selection/budget change or new
+registry query is initiated by analysis. Remaining30 jobs, actual normal writer
+closure, both full adapted audits and final empirical deliverables remain.
