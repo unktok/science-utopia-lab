@@ -4374,3 +4374,25 @@ updates do not alter the frozen experiment or pinned analysis checkout.
 No new model/generated-code calls, restart/refill or registry requests. Both
 full audits and final empirical analysis/figures/costs/manuscript/package/
 submission judgment remain required before goal completion.
+
+### Full audit continuation and separate concurrent second replay
+
+Previous goal turns are verified waits polling first-audit exec84724. A scoped
+read-only process diagnostic confirms PID68081 at elapsed10m33s, CPU time
+10m25.37s,99.8% CPU and1350224KiB RSS. A sandboxed process-list check was
+denied first; the explicitly escalated, audit-command-filtered read succeeds.
+No signal, restart, source edit or generated-code/model dispatch is involved.
+The live audit is doing CPU work, not inferred live from a stale output file.
+
+To avoid serial wall time for two independent fresh-process repetitions of
+the same read-only check, start audit2 from the same clean analysis68ab582,
+same frozen b6654ad and raw root, with a separate fresh output
+`outputs/publication-benchmark-v2-verification/native-design-freedom-v2-full-audit-2.json`.
+All other arguments/environment match the first invocation. Exec22032 and
+exec84724 both confirm live before the07:11:58UTC clock observation. Neither
+has returned a result. Concurrent readers do not alter the experiment or each
+other's output; the source/raw immutability guards stay enabled. Both normal
+exits and exact byte comparison are still required. Repeating the same auditor
+does not establish independent methodological validation or add scientific
+observations. No experiment re-execution, new model calls, extra study slots,
+source change or provisional final-result claim is made.

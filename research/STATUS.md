@@ -15,7 +15,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
 | Selected-policy evaluation | Closed:90/90 normal observations. Writer ended Nov8 06:58:09UTC with matching normal terminal record, actual execution handle exit0 and progress closed. All15 exact policies cover five two-year seeds and the separate seed31001 four-year diagnostic.19 logical labels share15 exact policies;90 physical jobs, not the114-job upper bound |
-| Closed V2 audits and results | First full adapted original-source audit now running from clean analysis68ab582; results not yet available. Order-only correction previously passed74 tests/two byte-identical real-data component replays, not full-study audits |
+| Closed V2 audits and results | Both full adapted original-source audits now running in separate read-only processes from clean analysis68ab582; results not yet available. Order-only correction previously passed74 tests/two byte-identical real-data component replays, not full-study audits |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
 The experiment writer was PID72837, started Nov7 09:02:10UTC and exited0 Nov8
@@ -93,7 +93,7 @@ local-designer learning evidence. See the [full program map](program-map.md).
    [Verification](results/native-design-freedom-v2-audit-order-verification-v1.json)
    covers74 tests and two identical order-only component replays, not a full audit.
    Do not edit the frozen checkout, raw plan/selection or suppress chronology checks.
-3. Run two source-bound audits with the correction explicitly recorded; first
+3. Run two source-bound audits with the correction explicitly recorded; both
    now running after verified normal closure. The unmodified frozen CLI has not passed. Apply the integrated
    closed-audit reports/figures: all losses, failures, identities, lineage,
    paired raw outcomes, missingness, physical sharing, mechanisms and measured costs.
