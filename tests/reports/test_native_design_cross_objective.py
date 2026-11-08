@@ -40,6 +40,21 @@ def initial_and_new_policies():
     return hashed(r)
 
 
+def test_paper_layout_preserves_every_row_point_null_and_sharing(tmp_path):
+    from PIL import Image
+    r = initial_and_new_policies(); before = deepcopy(r)
+    overview = figures.plot_cross_objective(r, tmp_path / 'overview')
+    paper = figures.plot_cross_objective(r, tmp_path / 'paper', paper=True)
+    assert r == before
+    assert overview['layout_profile'] == 'overview-8.2in-v1'
+    assert paper['layout_profile'] == 'paper-5.5in-v1'
+    assert overview['plot_data_content_sha256'] == paper['plot_data_content_sha256']
+    assert (tmp_path / 'overview/plot-data.json').read_bytes() == (tmp_path / 'paper/plot-data.json').read_bytes()
+    for years in (2, 4):
+        with Image.open(tmp_path / f'paper/cross-objective-{years}y.png') as img:
+            assert img.size == (990, 1170)
+
+
 def test_every_policy_all_three_scores_raw_seeds_nulls_and_physical_sharing_remain():
     r = sample(); before = deepcopy(r); data = figures.cross_objective_data(r)
     assert r == before and data == figures.cross_objective_data(r)

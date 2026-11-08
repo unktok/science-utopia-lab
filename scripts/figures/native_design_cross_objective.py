@@ -136,16 +136,19 @@ def cross_objective_data(report):
     return data
 
 
-def _render(panel, data, output):
+def _render(panel, data, output, *, paper=False):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     from matplotlib.lines import Line2D
     with plt.rc_context({'font.size': 8, 'axes.spines.top': False,
                          'axes.spines.right': False, 'svg.fonttype': 'none'}):
-        fig, axes = plt.subplots(1, 3, figsize=(8.2, 7.7), sharey=True)
-        fig.subplots_adjust(left=.265, right=.94, top=.79, bottom=.17, wspace=.55)
-        for ax, loss, title in zip(axes, LOSSES, LOSS_TITLES):
+        fig, axes = plt.subplots(1, 3, figsize=(5.5, 6.5) if paper else (8.2, 7.7), sharey=True)
+        fig.subplots_adjust(left=.30 if paper else .265, right=.94, top=.79,
+                            bottom=.10 if paper else .17, wspace=.7 if paper else .55)
+        titles = ('Throughput\nT = -A', 'Selective\nC = 4A - Q\n+ 0.1R',
+                  'Reviewed utility\n(diagnostic)\nE = -Q + 0.5R') if paper else LOSS_TITLES
+        for ax, loss, title in zip(axes, LOSSES, titles):
             for i, row in enumerate(panel['rows']):
                 cell = row['cells'][loss]
                 if not row['selection_available']:
@@ -165,8 +168,10 @@ def _render(panel, data, output):
                                edgecolors='#222', s=34, lw=.9, zorder=4)
                 ax.text(1.115, i, str(summary['available']) + '/' + str(summary['scheduled']),
                         transform=ax.get_yaxis_transform(), fontsize=6.7, va='center', color='#555')
-            ax.set(title=title, xlabel='Raw loss (lower is better)',
+            ax.set(xlabel='Raw loss\n(lower is better)' if paper else 'Raw loss (lower is better)',
                    yticks=range(len(panel['rows'])), ylim=(len(panel['rows']) - .55, -.55))
+            ax.set_title(title, fontsize=8 if paper else 9.6)
+            if paper: ax.tick_params(axis='both', labelsize=7.3)
             ax.tick_params(axis='y', length=0); ax.grid(axis='x', alpha=.2)
             ax.axhline(8.5, color='#bbb', lw=.8); ax.axhline(13.5, color='#ddd', lw=.8)
             ax.axvline(0, color='#aaa', lw=.6, ls='--')
@@ -175,7 +180,8 @@ def _render(panel, data, output):
         axes[0].set_yticklabels([r['display'] + (' [' + r['physical_group'] + ']' if r['physical_group'] else '')
                                 for r in panel['rows']])
         horizon = 'Five unused seeds / two years' if panel['years'] == 2 else 'Four-year SINGLE-SEED diagnostic'
-        fig.suptitle('Objective-conditioned policies, common cross-scores\n' + horizon, fontsize=12, y=.99)
+        fig.suptitle('Objective-conditioned policies, common cross-scores\n' + horizon,
+                     fontsize=9 if paper else 12, y=.99)
         handles = [Line2D([0], [0], marker='o', color=COLORS[j], ls='none', label='seed ' + str(s))
                    for j, s in enumerate(panel['seeds'])]
         if panel['years'] == 2:
@@ -183,8 +189,9 @@ def _render(panel, data, output):
                                   ls='none', label='Available-score mean'))
         handles.append(Line2D([0], [0], marker='x', color='#555', ls='none', label='Null: outside data axis'))
         fig.legend(handles=handles, loc='upper center', bbox_to_anchor=(.57, .916),
-                   ncol=3, frameon=False, fontsize=7.5)
-        fig.text(.265, .105, 'T/C labels: objective used for search; all rows receive all three scores. E is diagnostic.\n'
+                   ncol=3, frameon=False, fontsize=6.7 if paper else 7.5,
+                   columnspacing=.8 if paper else 2, handletextpad=.3 if paper else .8)
+        if not paper: fig.text(.265, .105, 'T/C labels: objective used for search; all rows receive all three scores. E is diagnostic.\n'
             '[Pxx] identifies shared exact policies/jobs, not additional independent observations.\n'
             'Right gutter: available/scheduled scores. Missing scores are not zero. No confidence intervals.\n'
             'Separate loss scales; no ranking, cross-loss average or two/four-year pooling.\n'
@@ -197,16 +204,17 @@ def _render(panel, data, output):
         plt.close(fig)
 
 
-def plot_cross_objective(report, output):
+def plot_cross_objective(report, output, *, paper=False):
     data = cross_objective_data(report); output = Path(output)
     if output.exists(): raise ValueError('fresh cross-objective figure directory required')
     output.mkdir(parents=True)
-    for panel in data['panels']: _render(panel, data, output)
+    for panel in data['panels']: _render(panel, data, output, paper=paper)
     write_json_atomic(output / 'plot-data.json', data, sort_keys=True, allow_nan=False, indent=2)
     manifest = {'schema': SCHEMA + '.cross-objective-figures',
         'input_report_content_sha256': report['content_sha256'], 'plot_data_content_sha256': data['content_sha256'],
         'plot_source_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'files': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(output.iterdir())},
+        'layout_profile': 'paper-5.5in-v1' if paper else 'overview-8.2in-v1',
         'new_model_calls': 0, 'new_code_executions': 0, 'null_losses_imputed': False}
     manifest['content_sha256'] = digest(manifest)
     write_json_atomic(output / 'manifest.json', manifest, sort_keys=True, allow_nan=False, indent=2)
@@ -217,8 +225,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--paper', action='store_true', help='native 5.5-inch layout; caption must explain sharing, nulls and initial-selection marks')
     args = parser.parse_args(argv); before = args.report.read_bytes()
-    result = plot_cross_objective(decode_json(before.decode(), strict=True, finite_floats=True), args.output)
+    result = plot_cross_objective(decode_json(before.decode(), strict=True, finite_floats=True), args.output, paper=args.paper)
     if args.report.read_bytes() != before: raise ValueError('input report changed during figure rendering')
     print({'content_sha256': result['content_sha256'], 'files': len(result['files'])})
     return 0
