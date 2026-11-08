@@ -3671,3 +3671,18 @@ failed-slot refill, prompt/model/loss/budget/selection change, new resource or
 optional registry egress occurs. All90 observations, normal actual writer exit,
 both complete corrected source-bound audits, actual result/cost figures and final
 manuscript/package/mock review remain required; the submission goal stays active.
+
+### Verified wait continues:17 normal records, separate four-year job active
+
+The previous turn is a verified live wait, not an unresolved blocker. This turn
+again polls actual exec handle46865 throughout; it remains live. Job0015's
+requests advance to85 by Nov8 00:02UTC and its complete record appears by00:03,
+with the expected temporary progress/file-count lag. Job0016 starts, requests
+advance11→40→72→93, and by00:08:22UTC progress/normal observations agree17/90.
+Job0017 is started: open-rank-rate,seed31001,four years. This is a separate
+same-seed horizon diagnostic, not a sixth independent seed. No terminal writer
+record exists and the goal is not closed or blocked. No new simulation/model
+dispatch is initiated by monitoring, producer restarted, slot refilled or
+experiment source/settings/selection/90-job plan changed. Both checkouts remain
+clean before this documentation update. Full evaluation, both adapted complete
+audits, actual analyses and final manuscript/package/mock review still await.
