@@ -4680,3 +4680,16 @@ The component-time axis is not end-to-end wall time; only overall writer wall
 is known here. Raw per-trial wall-time allocation is not fabricated.
 No new model/code-world calls, source audit or external release is performed.
 The final requirement-by-requirement audit and submission judgment remain.
+
+Default git whitespace checking reports renderer-owned SVG path trailing spaces
+and standard csv CRLF endings. Preserve the generated, hash-bound bytes rather
+than silently reformat scientific artifacts. Add exact-directory-only
+.gitattributes settings for those two conventions; source whitespace and
+scientific/source-identity guards remain unchanged. The source diff check then
+passes. This is formatting metadata, not a weakened numerical/runtime verifier.
+
+At clean aed1e3b66b02a227b2fd1a9e1d54031b1819af8d, the combined source-bound
+paper/anonymous/table/cost/figure/rebuilding/supplement batch passes197 checks
+in26.81s. Actual XML SHA256
+ff18d74d5248d376abd600a58dd4f6840ba68e80f59d15639868a462d98353c4.
+HEAD/runtime remain unchanged during the checks. No new inference is performed.
