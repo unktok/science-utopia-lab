@@ -4245,3 +4245,26 @@ inspection adds no scientific observations or full-audit claim. No experiment
 source, prompt, loss, selection, budget or model changes, refills or restarts.
 Remaining26 jobs, actual normal writer closure, both full adapted audits and
 final empirical analysis/figures/costs/manuscript/package/judgment remain.
+
+### Eleven exact policies cover every declared condition:66/90
+
+Previous goal turns are verified waits with writer46865 live through65 normal
+observations and job0065 advancing20/38/60/75 requests. This turn polls that
+same handle as requests advance94/116/130/148. Its normal observation exists
+at Nov8 04:48:34UTC, briefly before progress and the next start update. At
+04:49:03UTC progress and normal observations agree66/90, job0066 is active
+with0 requests, the actual writer handle remains live and writer.ended is absent.
+
+A read-only join of the first66 fixed jobs to their complete observations
+confirms all six conditions for eleven exact policies: nine references and
+both fixed-graph selected policies. Each has five two-year seeds and the
+separate seed31001 four-year diagnostic. The remaining24 scheduled jobs cover
+four other selected exact policies; the next label is
+selected:throughput:code-and-graph. The evaluation-plan file SHA256 remains
+e1b96a516b35ac862e8c58b661793adee4d52180fd70978b8d91ebb8aa22a1df and
+its bytes are unchanged after inspection. These condition/status checks are
+not the full source-bound audit, behavioral equivalence or final scientific
+results. No experiment source/model/prompt/loss/budget/selection change,
+restart/refill, extra inference or registry query is initiated by analysis.
+Remaining24 jobs, actual normal writer closure, both full adapted audits and
+the final empirical analysis/figures/costs/manuscript/package/judgment remain.
