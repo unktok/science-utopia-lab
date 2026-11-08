@@ -4191,3 +4191,18 @@ change or registry query is initiated by analysis. All36 remaining jobs
 (including the active one), actual normal writer closure, both full adapted
 audits and final empirical analysis/figures/costs/manuscript/package/judgment
 work remain required. Condition/status joins are not the pending full audit.
+
+### Verified selected-policy evaluation wait through57 normal observations
+
+Recent goal turns are verified waits through55/56 normal observations, with
+actual writer46865 live. This turn polls the same handle while job0056 advances
+33/48/77/90 requests and completes. At Nov8 03:57:32UTC progress and normal
+observations agree57/90; job0057 is active with4 requests, no writer.ended
+record. Both checkouts are clean before this update. The nine reference policies'
+54 jobs are followed by the same predeclared36 jobs for six other selected
+exact policies; the first three of those36 jobs now complete. This is not a
+new experiment, failed-slot replacement or post-evaluation reselection.
+No restart/refill, extra inference, source/model/prompt/loss/selection/budget
+change or registry query is initiated by analysis. Remaining33 jobs, actual
+normal writer closure, both full adapted audits and final empirical analysis/
+figures/costs/manuscript/package/judgment work remain required.
