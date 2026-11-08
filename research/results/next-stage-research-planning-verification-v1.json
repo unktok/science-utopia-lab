@@ -1,0 +1,53 @@
+{
+  "schema": "scienceutopia.next-stage-research-planning-verification.v1",
+  "date_jst": "2026-11-08",
+  "scope": "Closed-data analysis and prospective research planning, not a new native campaign or conference-readiness claim.",
+  "verification_source_commit": "9906dcabbf3f8eb972eef9cc9bb3605e36e4d549",
+  "analysis_generation_source_commit": "0cf53668984ec3d62d772f9d70d905411207e246",
+  "analysis_content_sha256": "0efa6194154fe186ce58cc12f5fd459f995c288403af3e14b78686b593c7a4a5",
+  "analysis_manifest_content_sha256": "541d7abba2bdc4659eeda28c417e2007d483d3cda5fb025f4844845f6aab5b37",
+  "tests": {
+    "passed": 60,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 11.086,
+    "junit_relative_to_analysis_worktree": "outputs/next-stage-research-planning-verification.xml",
+    "junit_sha256": "4e1e56a3068d5fe36dd1e125d67f9c7eb0f166368865737e8dd948203384e935",
+    "files": [
+      "tests/reports/test_native_objective_landscape.py",
+      "tests/reports/test_native_design_supplement.py",
+      "tests/reports/test_native_design_tex.py",
+      "tests/reports/test_native_design_reproduce.py",
+      "tests/reports/test_integrated_manuscript.py"
+    ],
+    "software_checks_not_scientific_replications": true,
+    "initial_negative_fixture_failure_preserved_in_logbook": true
+  },
+  "independent_clean_cli_rebuilds": {
+    "count": 2,
+    "source_unchanged_during_checks": true,
+    "all_three_artifact_bytes_match_retained": true,
+    "files": {
+      "analysis.json": "126023f8e05104086dbfee30870efe41c59c5de43a2e94e25972e3eafdc39c41",
+      "observed-objective-map.png": "4d05cdd5f49e8d7021a5b5b5a62b4e9e6db587dc5b32faee973b920e99bec81f",
+      "observed-objective-map.svg": "908cf3dc01add08da25bb59c69f4dba8a4d46454fe341c0aa6fad0debfebf10c"
+    },
+    "source_bound_manifests_expected_to_differ_from_original_generation": true,
+    "fresh_model_inference_or_raw_reaudit": false
+  },
+  "final_png_visually_inspected": true,
+  "local_document_links_checked": 136,
+  "missing_local_document_links": 0,
+  "git_diff_check_passed": true,
+  "unchanged_against_commit": "eb41499",
+  "unchanged_tracked_paths": ["paper", "output/pdf", "utopia", "research/data/native-design-v2"],
+  "candidate_status_counts": {"complete": 64, "generation-failure": 25, "technical-failure": 31},
+  "numeric_finish_attempts": 47,
+  "numeric_finish_rejections": {"domain_exceeded": 43, "numeric_out_of_range": 4},
+  "research_protocol_status": "draft-not-executed-source-seeds-references-deadlines-and-final-objectives-not-yet-frozen",
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_generated_institution_executions": 0,
+  "remote_push_upload_or_submission": false
+}

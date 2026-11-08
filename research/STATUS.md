@@ -13,6 +13,9 @@ retains all120 statuses and uses64 measured profiles/nine reference-score invers
 It reports objective geometry, two same-fingerprint Q differences beyond roundoff,
 and47 numeric finish rejections (43 domain violations/four out-of-range), not new
 optimization success. New model calls, native worlds and authored-code executions:0.
+[Verification](results/next-stage-research-planning-verification-v1.json):60 targeted
+checks pass, two clean CLI rebuilds match retained numerical/PNG/SVG bytes,136 local
+document links resolve. The integrated manuscript/PDF and native runtime are unchanged.
 
 The [next-stage agenda for discussion](publication/research-agenda-next-stage.md)
 separates whole-program directions, existing-data analysis, mechanism interventions,

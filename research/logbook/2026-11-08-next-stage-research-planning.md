@@ -61,3 +61,11 @@ survey側への変更や新規raw取得・保存・公開はしていない。
 実験writer・モデルserver・生成制度を新規起動せず、GPUや新モデルを調達せず、push／upload／投稿を行っていない。
 計画の文書化にはwrite-pageスキルを用い、既存repoの文書構造を保った。
 protocolは候補であり、source、seed具体値、参照、loss、期限等の実行前凍結は残る。
+
+## 最終確認
+
+clean source `9906dcabbf3f8eb972eef9cc9bb3605e36e4d549`で、五つのreport／原稿関連test fileの60試験が11.086秒で全pass、failure／error／skipは0。
+同じclean sourceからCLIを二度独立に実行し、analysis JSON、PNG、SVGの全bytesが保存版と一致した。
+136のローカル文書リンクは全件解決。`git diff --check`は正常。
+`eb41499`に対して`paper`、`output/pdf`、`utopia`、`research/data/native-design-v2`のtracked差分は0。
+詳細とJUnit hashは[verification receipt](../results/next-stage-research-planning-verification-v1.json)へ保存した。
