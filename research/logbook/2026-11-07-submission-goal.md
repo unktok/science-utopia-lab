@@ -3973,3 +3973,16 @@ requests and completes. At Nov8 01:37:43UTC progress/normal observations agree
 No restart/refill, extra inference, prompt/model/source/loss/selection/budget
 change or registry egress is initiated. This is expected verified waiting,
 not a blocker; both full audits and final empirical deliverables remain pending.
+
+### Verified fixed evaluation through35 normal observations
+
+Previous turn is a verified wait through34, with actual handle46865 live and
+job0034 started. At Nov8 01:42:44UTC the original plan/selection/evaluation-plan
+file hashes remain ec9107d4/e71b9e87/e1b96a51 (full recorded values unchanged).
+This turn polls that same handle while job0034 advances28/47/78/90 requests
+and completes. At01:47:37UTC progress/normal observations agree35/90 and
+job0035 is started, no writer.ended record. Both checkouts are clean before
+this documentation update. The finite evaluation continues without restart,
+refill, extra inference initiated by analysis, active-source/model/prompt/loss/
+selection/budget changes or registry egress. Full90, normal actual writer exit,
+both full adapted audits and final empirical deliverables remain required.
