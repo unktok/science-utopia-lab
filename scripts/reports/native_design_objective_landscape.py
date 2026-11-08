@@ -11,6 +11,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import statistics
 import subprocess
 
 from scripts.reports.native_design_reproduce import DATA, ROOT, load_report
@@ -184,6 +185,19 @@ def analyze(report, *, alphas=None, betas=None):
             if not unique or abs(unique[-1]-x) > TOL:
                 unique.append(x)
         slices.append({'beta': beta, 'lower_envelope_crossings_alpha': unique})
+    numeric = [r for r in report['all_candidate_rows'] if r['arm'].endswith(':parameters')]
+    steps = [s for r in numeric for s in r['authoring_diagnostics']['steps']]
+    finishes = [s for s in steps if s['compiled_tool'] == 'finish']
+    finish_errors = Counter()
+    for step in finishes:
+        if not isinstance(step['transition_errors'], list):
+            raise ValueError('finish diagnosis requires recorded transition errors')
+        finish_errors.update(e.get('message', '<structured diagnostic without message>')
+                             for e in step['transition_errors'])
+    times = [r['physical_evidence']['annual_checkpoints'][-1]['llm_call_stats']['elapsed_seconds']
+             for r in report['all_candidate_rows'] if r['status'] == 'complete']
+    if any(not finite(v) or v < 0 for v in times):
+        raise ValueError('recorded completed-only scientist times required')
     result = {'schema': SCHEMA, 'classification': 'post-hoc-analysis-of-retained-V2-observations',
         'experiment_source_commit': report['source_commit'],
         'input_report_content_sha256': report['content_sha256'],
@@ -198,7 +212,26 @@ def analyze(report, *, alphas=None, betas=None):
         'envelope_slices': slices, 'same_fingerprint_repeated_observations': repeated,
         'same_fingerprint_different_AQR_beyond_tolerance': sum(
             r['differs_beyond_analysis_tolerance'] for r in repeated),
-        'per_history': per_history, 'new_model_calls': 0, 'new_native_worlds': 0,
+        'per_history': per_history,
+        'numeric_interface_diagnosis': {
+            'slots': len(numeric), 'recorded_steps': len(steps),
+            'terminal_reasons': dict(Counter(r['authoring_diagnostics']['terminal_failure_reason'] for r in numeric)),
+            'finish_attempts': len(finishes), 'finish_status_counts': dict(Counter(s['status'] for s in finishes)),
+            'finish_transition_error_messages': dict(finish_errors),
+            'compiled_tool_counts': dict(Counter(s['compiled_tool'] if s['compiled_tool'] is not None
+                                               else '<unavailable>' for s in steps)),
+            'read_virtual_filename_counts': dict(Counter(s['virtual_filename'] for s in steps
+                                                       if s['compiled_tool'] == 'read_file')),
+            'steps_without_recorded_transition_error_list': sum(not isinstance(s['transition_errors'], list)
+                                                               for s in steps),
+            'multiple_step_errors_are_not_independent_failed_candidates': True,
+            'single_root_cause_established': False},
+        'completed_development_scientist_call_seconds': {
+            'observations': len(times), 'minimum': min(times), 'median': statistics.median(times),
+            'maximum': max(times), 'sum': math.fsum(times),
+            'scope': 'Saved completed-world model-call component only, not end-to-end time or 4-year forecast.',
+            'failures_designer_load_container_and_other_time_excluded': True},
+        'new_model_calls': 0, 'new_native_worlds': 0,
         'new_generated_code_executions': 0, 'held_out_values_used_to_reselect': False,
         'interpretation': ['Finite saved observations, not an optimal policy frontier.',
             'Post-hoc E winners were not E-optimized or selection-fixed for this analysis.',

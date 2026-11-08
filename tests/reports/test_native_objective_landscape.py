@@ -74,6 +74,27 @@ def test_coefficient_cells_are_not_replications(data):
     assert sum(r['declared_graph_change_completed_rows'] for r in data['per_history']) == 0
 
 
+def test_numeric_failures_are_not_misdescribed_as_no_finish_attempts(data):
+    d = data['numeric_interface_diagnosis']
+    assert d['slots'] == 24 and d['recorded_steps'] == 384
+    assert d['finish_attempts'] == 47 and d['finish_status_counts'] == {'rejected': 47}
+    assert d['finish_transition_error_messages'] == {
+        'candidate exceeds the explicitly declared parameters design space': 43,
+        'candidate numeric value outside the declared coordinate domain': 4}
+    assert d['compiled_tool_counts']['read_file'] == 228
+    assert d['read_virtual_filename_counts']['code/world.selection.py'] == 166
+    assert d['steps_without_recorded_transition_error_list'] == 1
+    assert not d['single_root_cause_established']
+
+
+def test_timing_component_is_not_a_new_experiment_time_forecast(data):
+    t = data['completed_development_scientist_call_seconds']
+    assert t['observations'] == 64
+    assert 253 < t['minimum'] < t['median'] < t['maximum'] < 436
+    assert math.isclose(t['sum'], 19314.523036003113)
+    assert t['failures_designer_load_container_and_other_time_excluded']
+
+
 def test_analysis_does_not_mutate_input_or_exact_selection(report):
     before = digest(report)
     module.analyze(report, alphas=[0., 4.], betas=[.1, .5])
