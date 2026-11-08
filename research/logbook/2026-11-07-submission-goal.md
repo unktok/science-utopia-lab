@@ -3921,3 +3921,41 @@ The fixed experiment checkout is not edited, no extra scientist/designer
 inference is requested, and selection/budgets/settings are unchanged. All90
 evaluation records, normal writer exit, two full adapted audits and actual
 analysis/manuscript/package/mock-review work remain required.
+
+### Numeric-domain instructions: bounded initial HTTP-input inspection
+
+Previous turn completes integrated217-test QA and verifies normal evaluation
+records30/90, with job0030 started. This turn repeatedly polls the actual live
+writer46865 while job0030 advances28/63 requests and completes. At Nov8
+01:27:47UTC progress and normal records agree31/90; job0031 is active with11
+requests, no writer.ended record. No restart/refill, source/model/prompt/loss/
+budget/selection change or extra inference is initiated by analysis.
+
+To investigate the interpretation of all24 LLM-numeric generation failures,
+read the original frozen b6654ad context-builder/validator and inspect exactly
+the24 step-00.started/completed pairs under
+search/run-*/arms/*--parameters/authoring/generation-*/. Each source prompt's
+declared_benchmark_design_space equals its exact plan.campaign_bindings entry,
+kind parameters with all six bounded coordinates. Check the completed record's
+started_file_sha256 against actual start bytes; request_wire_sha256 against
+the recorded request_wire_utf8 bytes; decoded wire against request_payload;
+and the JSON view after BOUNDED ACTIVE SESSION DATA against the complete saved
+source prompt. All24 match. Recheck both original files unchanged after each
+inspection. No generated source, calibration or model is executed.
+
+Native response_payload.prompt_eval_count equals transport.prompt_tokens in
+all24 first replies, ranging12145–12411. All24 actual payloads specify
+num_ctx40960, num_predict8192, truncate false; these initial counts plus the
+output reservation fit. This is not a check of every later history-bearing
+call, evidence of no context problem anywhere, or a full cost/source audit.
+
+The common FILE_EDITOR_INSTRUCTIONS in the actual bounded conversation
+advertises arbitrary institutions/code and a general editor; the restrictive
+per-arm contract is delivered in session data. There is no basis here to say
+the numeric contract was missing from these initial HTTP requests. Conversely,
+its presence does not prove salient/unambiguous instructions, mathematical
+comprehension, domain compliance or a unique causal explanation for all24
+terminal failures. No current prompt is repaired, failure reclassified or slot
+refilled. Carry this bounded input evidence into the final full-audit failure
+analysis rather than attributing end-to-end failure to intrinsic parameter-space
+capacity, or declaring the entire interface bug-free.

@@ -77,6 +77,16 @@ unchanged declared structure does not rule out a changed algorithm or runtime
 state. Do not add a novelty veto, remove ties or dispatch extra attempts to obtain
 a more favorable structural result.
 
+The numeric-arm failure interpretation also needs the actual delivered task,
+not only the host's domain validator. A bounded check finds the correct six-field
+contract in all24 initial numeric-arm HTTP payloads, with native initial prompt
+counts12145--12411 and40960/8192 context/output settings without truncation.
+The common SYSTEM protocol still advertises a general-purpose editor, while the
+arm-specific domain is session data. These facts do not show the contract was
+omitted, but do not establish unambiguous salience, later-call capacity, model
+comprehension or an isolated explanation for every terminal failure. Rejoin the
+actual prompts/edits/errors to the full audit before making a final explanation.
+
 ## Claims not presently supported
 
 Reliable local autonomous improvement, superiority of free design over matched
