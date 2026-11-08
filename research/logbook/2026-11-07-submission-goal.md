@@ -3647,3 +3647,27 @@ mutate original audit data. Active docs check19 documents/222 local targets/
 six snapshots. No actual V2 cost report is generated from the live archive.
 Original PDF/source/receipts, source b6654ad and finite scientific conditions
 stay untouched; no model, external account, registry query or new resource use.
+
+### Verified evaluation wait across UTC midnight:15/90 normal records
+
+The previous goal turn makes concrete progress by integrating auxiliary-cost
+projection/70-test QA at mainec4d4bf. This turn deliberately monitors the fixed
+experiment rather than adding search slots or changing its conditions. Actual
+exec handle46865 is repeatedly polled live, including Nov8 00:00:40UTC; no
+writer.ended record exists. Expected serial inference time is not a blocker.
+
+At Nov7 23:55UTC14 normal evaluation records are present and job0014 has41
+wire requests; at23:56 its requests advance to80. By23:57:48 its complete
+observation exists, briefly ahead of progress14 during the normal between-write
+interval. Progress catches up to15 and job0015 starts. Its requests advance
+0→20→45 by Nov8 00:00:40UTC, while the same writer remains live. These are
+observed execution milestones, not a new world, statistical conclusion, complete
+original-source audit or a claim that the in-flight job has finished.
+
+Recheck actual experiment HEAD b6654adefc42223f9ecc7b4e53c043c879230f68 clean.
+Original plan, fixed selection and90-job evaluation-plan file hashes still match
+the previously recorded ec9107d4/e71b9e87/e1b96a51 values. No producer restart,
+failed-slot refill, prompt/model/loss/budget/selection change, new resource or
+optional registry egress occurs. All90 observations, normal actual writer exit,
+both complete corrected source-bound audits, actual result/cost figures and final
+manuscript/package/mock review remain required; the submission goal stays active.

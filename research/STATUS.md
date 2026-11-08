@@ -1,6 +1,6 @@
 # Current research status
 
-Updated2026-11-08JST. Observations below are2026-11-07UTC, not a live heartbeat.
+Updated2026-11-08JST. Observations below span2026-11-07/08UTC, not a live heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
 ## Actual experiment state
@@ -14,7 +14,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 references | All9 fresh same-source reference worlds complete |
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
-| Selected-policy evaluation | Started22:39:08UTC; at23:49UTC13/90 normal observation records, job0013 active.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
+| Selected-policy evaluation | Started Nov7 22:39:08UTC; at Nov8 00:00:40UTC15/90 normal observations, job0015 active with45 recorded researcher requests.19 logical labels share15 exact policies, six conditions each:90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Not yet available. Order-only correction passes74 tests/two byte-identical real-data component replays, without changing the experiment; full audits await normal writer closure |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
