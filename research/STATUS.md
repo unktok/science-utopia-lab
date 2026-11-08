@@ -14,7 +14,7 @@ The user-authorized [submission goal](publication/submission-goal.md) is active.
 | V2 references | All9 fresh same-source reference worlds complete |
 | V2 search | Finished at22:38UTC:120/120 slots,64 complete,25 generation failures,31 execution failures; no failed-slot refills |
 | Fixed selection | Saved22:38:35UTC after all120 slots. All exact ties retained, first declared chronology used; initial-reference selections are not inventions |
-| Selected-policy evaluation | Started Nov7 22:39:08UTC; at Nov8 01:57:02UTC36/90 normal observations, job0036 active with8 requests. Six exact policies cover all declared conditions.19 logical labels share15 exact policies overall;90 physical jobs, not the114-job upper bound |
+| Selected-policy evaluation | Started Nov7 22:39:08UTC; at Nov8 02:14:08UTC39/90 normal observations, job0039 active with37 requests. Six exact policies cover all declared conditions.19 logical labels share15 exact policies overall;90 physical jobs, not the114-job upper bound |
 | Closed V2 audits and results | Not yet available. Order-only correction passes74 tests/two byte-identical real-data component replays, without changing the experiment; full audits await normal writer closure |
 | Manuscript |11-page working draft: V1/S1 results and V2 protocol, not completed V2 results or submission readiness |
 
@@ -133,8 +133,11 @@ Partial V2 observations have not been inserted as final manuscript results.
 not FLOPs/energy/money or total-project compute. Hardware/environment/backend
 inventories are post-dispatch observations, not startup attestations.
 The local35B upstream revision/conversion recipe remains unverified; the public
-same-name tag differs and is not an exact replacement. An optional layer-hash
-registry check awaits explicit egress approval, without blocking this experiment.
+same-name tag differs and is not an exact replacement. After explicit approval,
+[five HEAD-only registry checks](results/designer-registry-head-approved-v1.json)
+return200: three sampled local tensors and two stored-public controls, with
+descriptor-matching advertised sizes. No bodies or redirects are read/followed;
+this does not verify tensor contents, all986 tensors, origin or a conversion recipe.
 No weights are downloaded/replaced, and no public raw/anonymous release is claimed.
 The [local release review](publication/research-readiness-review-v2.md#local-release-review-concrete-observations-not-publication-clearance)
 now records actual PDF/annotation checks and a narrow tracked-file/path inventory.

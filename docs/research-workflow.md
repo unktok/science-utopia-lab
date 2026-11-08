@@ -297,6 +297,19 @@ experimental replacement. The local base digest's specific registry query
 returned404; neither an immutable public retrieval path nor its HF origin has
 been established. The user likewise did not have a confirmed origin record.
 
+Separately, explicit user approval on2026-11-08 permits five HEAD-only checks
+to registry.ollama.ai: the first/midpoint/last local tensor descriptors and two
+stored-public controls. All five return200 with advertised lengths matching the
+stored descriptors; [limited observation](../research/results/designer-registry-head-approved-v1.json).
+No body, redirect or additional request is fetched. Local and public license
+digests differ: a preparation assertion stops before any HTTP call, then the
+second public control uses the stored-public license, not a shared-license claim.
+The raw local archive retains both probe sources and the preparation failure.
+Earlier DNS/permission failures and the different manifest-endpoint404 remain
+unchanged historical observations. Three tensor headers are not all986 tensor
+contents, complete-model public availability, an upstream revision/conversion
+recipe or an independent inference rerun. No weights/settings are replaced.
+
 The existing sandbox reports image
 `sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833`,
 linux/arm64, under `python:3.11-slim`; the current Docker metadata also reports

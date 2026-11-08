@@ -1,0 +1,106 @@
+{
+  "schema": "scienceutopia.designer-registry-head-sample.v1",
+  "observed_utc": "2026-11-08T02:11:37.537819+00:00",
+  "approval": {
+    "date": "2026-11-08",
+    "user_reply": "Ok",
+    "scope": "Three local layer fingerprints and two public controls to registry.ollama.ai; HEAD only, no response bodies."
+  },
+  "host": "registry.ollama.ai",
+  "repository": "library/qwen3.6",
+  "local_manifest_sha256": "1b50c6fdc2d4f75f94e6c19b49b20051bc6a7e73620d1ccdfc6687ec042ce754",
+  "stored_public_manifest_sha256": "4a5e082f2bd34ad799f0924d3ab5af135cf2445a17a42f34b1dfa706aa81f1cb",
+  "local_tensor_descriptor_count": 986,
+  "stored_public_tensor_descriptor_count": 1045,
+  "observations": [
+    {
+      "kind": "local-tensor",
+      "ordered_tensor_index": 0,
+      "requested_descriptor_digest_sha256": "9f97e5e9e1fc73f1540f425d053c3169f94aa4f86fd722d0e72cf154f66f08c7",
+      "http_status": 200,
+      "advertised_content_length": 1017118848,
+      "manifest_descriptor_size": 1017118848,
+      "advertised_length_matches_descriptor": true,
+      "response_content_type": "application/octet-stream",
+      "redirect_location_host": null,
+      "elapsed_seconds": 0.27210558392107487
+    },
+    {
+      "kind": "local-tensor",
+      "ordered_tensor_index": 493,
+      "requested_descriptor_digest_sha256": "66a62edf64d7a33d89e7a74ba087dda4f0b73e86847d61c471bced4756a0204c",
+      "http_status": 200,
+      "advertised_content_length": 65664,
+      "manifest_descriptor_size": 65664,
+      "advertised_length_matches_descriptor": true,
+      "response_content_type": "application/octet-stream",
+      "redirect_location_host": null,
+      "elapsed_seconds": 0.33525283401831985
+    },
+    {
+      "kind": "local-tensor",
+      "ordered_tensor_index": 985,
+      "requested_descriptor_digest_sha256": "58490b11d7e3165948b7bacf91dc9353ba2bd69906f0651ec51302c043f8e309",
+      "http_status": 200,
+      "advertised_content_length": 452986215,
+      "manifest_descriptor_size": 452986215,
+      "advertised_length_matches_descriptor": true,
+      "response_content_type": "application/octet-stream",
+      "redirect_location_host": null,
+      "elapsed_seconds": 0.27960620913654566
+    },
+    {
+      "kind": "public-tensor-control",
+      "ordered_tensor_index": 0,
+      "requested_descriptor_digest_sha256": "affc2d9bfef687bee0bd21c96f58203dd2c5fd5c86136fb38c6ef5c3b33973dc",
+      "http_status": 200,
+      "advertised_content_length": 524452081,
+      "manifest_descriptor_size": 524452081,
+      "advertised_length_matches_descriptor": true,
+      "response_content_type": "application/octet-stream",
+      "redirect_location_host": null,
+      "elapsed_seconds": 0.2956342080142349
+    },
+    {
+      "kind": "public-license-control",
+      "ordered_tensor_index": null,
+      "requested_descriptor_digest_sha256": "a3a8742f641c89601ce3ee41791cdd938ab5fca03e9a78d49817af818c8ab8d6",
+      "http_status": 200,
+      "advertised_content_length": 11343,
+      "manifest_descriptor_size": 11343,
+      "advertised_length_matches_descriptor": true,
+      "response_content_type": "application/octet-stream",
+      "redirect_location_host": null,
+      "elapsed_seconds": 0.2973493339959532
+    }
+  ],
+  "request_count": 5,
+  "workers": 3,
+  "timeout_seconds_per_request": 15,
+  "redirects_followed": 0,
+  "explicit_response_body_reads": 0,
+  "network_retries": 0,
+  "new_inference_requests": 0,
+  "weight_downloads_or_replacements": 0,
+  "input_manifests_unchanged": true,
+  "local_public_license_digest_equal": false,
+  "pre_network_preparation_failure": {
+    "exception": "AssertionError",
+    "assumption": "Local and public license layers were shared",
+    "http_requests_before_failure": 0,
+    "correction": "Use the stored-public license as the second public control; do not label it shared."
+  },
+  "raw_local_archive": {
+    "path": "outputs/publication-benchmark-v2-verification/approved-registry-head-20261108T021137.json",
+    "sha256": "4218ce90ca6ccf1da795924e34016c43fbf35df7e0a7f804cdc5254447829ec9",
+    "individual_layer_identifiers_are_retained_locally_not_in_this_summary": true,
+    "executed_probe_source_sha256": "babaff2ae9f529eed458baba5db1173ab05ba6687f42483f394ae0183e59290a",
+    "failed_preparation_source_sha256": "355ad83be630355860e003c936c6819733f165c3141de7006a7f7f9681698b99"
+  },
+  "scope": "Three sampled local tensor descriptors and two stored-public controls returned HEAD200 with descriptor-matching advertised lengths at this time. No blob content, all986 local tensor blobs, original download/conversion provenance, complete public model availability or fresh-machine inference rerun was verified. Existing failed/DNS/permission records remain historical failures; this is a separately approved metadata observation.",
+  "upstream_revision_identified": false,
+  "conversion_recipe_identified": false,
+  "complete_public_model_availability_verified": false,
+  "sampled_blob_contents_verified": false,
+  "content_sha256": "5d341fa9dd6f1d4fec1fa17e753ed8c609bd93ccf66927500175850a8ba571ae"
+}

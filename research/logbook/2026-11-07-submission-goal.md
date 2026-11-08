@@ -4008,3 +4008,52 @@ replicates. No restart/refill, extra inference, source/settings/loss/budget/
 selection change or registry egress is initiated by analysis. Full90 and normal
 writer closure are still needed before both full audits and final empirical
 analysis/figures/costs/manuscript/package/mock-review work.
+
+### Explicitly approved five-request model metadata check; evaluation continues
+
+The user answers Ok to the pending question authorizing three local layer
+fingerprints and two public controls to registry.ollama.ai, HEAD only. This is
+new explicit egress authority, not inferred from the earlier tentative HF lead.
+Recheck both existing input manifests against their recorded SHA256 values.
+Initial preparation assumes a shared local/public license and raises
+AssertionError before any HTTP call. Inspect the descriptors: license digests
+actually differ. Retain that failure; use the stored-public license as the
+second public control, within the approved two-public-control scope. No secret
+query, alternative host, body fallback, redirect follow or extra target is used.
+
+At Nov8 02:11:37UTC all five requests return200: ordered local tensor indices
+0/493/985 and the stored-public first tensor/license. All advertised lengths
+match their descriptor sizes. There are exactly5 HEAD requests,3 workers,
+15-second timeouts,0 retries/redirects/explicit response-body reads,0 model calls
+and0 weight downloads/replacements. Recheck both manifest byte strings unchanged.
+The compact result is research/results/designer-registry-head-approved-v1.json;
+content SHA2565d341fa9dd6f1d4fec1fa17e753ed8c609bd93ccf66927500175850a8ba571ae.
+Ignored local archive outputs/publication-benchmark-v2-verification/
+approved-registry-head-20261108T021137.json retains the individual descriptors,
+exact executed/failed preparation Python and responses, SHA256
+4218ce90ca6ccf1da795924e34016c43fbf35df7e0a7f804cdc5254447829ec9.
+The compact receipt contains hashes of descriptor identifiers, not those actual
+individual identifiers. No archive or weights are uploaded or publicly shared.
+
+HEAD200 for three local blobs is distinct from the earlier specific manifest
+query's404. Neither proves the origin, all986 tensors/content hashes, a complete
+retrievable model, conversion revision/recipe or fresh-machine inference. Keep
+earlier DNS failures/permission rejection historical, not relabeled successful.
+Current orientation/workflow now distinguish completed limited approval from
+the still-unknown model provenance. The fixed experiment source remains unchanged.
+
+The previous goal turn is a verified wait through38 observations. This turn
+also repeatedly polls actual writer46865 live: job0038 advances19/38/45/67/96
+requests and completes while metadata work proceeds. At02:14:08UTC progress and
+normal records agree39/90, job0039 is active with37 requests, no writer.ended
+record. No campaign restart/refill, new inference, active-source/model/prompt/
+loss/selection/budget change occurs. Both full audits and final deliverables
+remain after the fixed90 evaluations and normal actual writer closure.
+
+Offline receipt verification exits0: canonical compact hash, raw archive hash,
+both executed/failed preparation source hashes and all5 response/descriptor
+joins match; individual layer identifiers are absent from the compact JSON.
+The earlier provenance JSON still matches the existing paper-build receipt.
+Inputs remain unchanged. Ten documentation/artifact checks pass; no further
+HTTP/model request is made by these checks. Actual writer46865 is independently
+re-polled live at02:16:05UTC,39 normal records, job0039 advancing72 requests.

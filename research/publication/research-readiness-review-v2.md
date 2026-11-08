@@ -263,6 +263,16 @@ The inspected production-asset provenance file SHA256 is
 its authorship statements are repository records, not an independent rights audit.
 No new package, model, external query or generated artwork is used by this review.
 
+A separate explicitly approved metadata observation on2026-11-08 checks only
+five registry HEAD requests: [receipt](../results/designer-registry-head-approved-v1.json).
+Three sampled local tensors and two stored-public controls return200 with
+descriptor-matching advertised lengths, without reading bodies or following
+redirects. This does not verify contents, every local layer, complete model
+availability, origin, conversion recipe or redistribution rights. The local
+license is not identical to the public license; the initial shared-license
+assumption is preserved as a pre-network preparation failure. Individual sampled
+layer identifiers remain in the local ignored archive, not the compact receipt.
+
 After the scientific results close, stage only the necessary paper sources,
 figures, compact measured results, exact-source identifiers, software tests and
 reproduction instructions in a fresh local directory. Inspect that actual
