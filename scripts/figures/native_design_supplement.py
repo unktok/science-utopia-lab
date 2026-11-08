@@ -68,11 +68,12 @@ def plot(data, output):
                         ax.plot(x,.94-.07*RUNS.index(run),'x',color=color,
                                 transform=ax.get_xaxis_transform(),ms=5)
             ax.set(title=title,xlabel='Cumulative designer model-call seconds',ylabel='Assigned loss (lower is better)')
+            if method=='random': ax.set_xticks([0])
             ax.grid(alpha=.18)
         axes[-1].axis('off')
         axes[-1].legend(handles=[Line2D([0],[0],color=c,label=r) for r,c in zip(RUNS,colors)],
                         loc='upper left',frameon=False)
-        axes[-1].text(0,.64,'Lines include the shared initial observation.\nDots: measured trials; crosses: nulls outside loss axis.\n'
+        axes[-1].text(0,.64,'Lines include the shared initial observation.\nDots: losses; crosses: axes-relative null markers.\n'
             'All failed authoring steps consume designer time.\nUniform has no designer calls: x=0, not free worlds.\n'
             'Excludes scientist, load, calibration, initial/reference\nand other host time. Not total compute or wall time.\n'
             'Same development seed42; no superiority inference.',va='top',fontsize=8,transform=axes[-1].transAxes)
@@ -94,6 +95,7 @@ def plot(data, output):
                yticklabels=[s['label'].replace('reference:','R | ').replace('selected:','') for s in summaries])
         ax.grid(axis='x',alpha=.2)
     axes[0].invert_yaxis()
+    axes[0].set_xlim(0,5.5);axes[0].set_xticks(range(6))
     fig.suptitle('Outside diagnostics: five unused two-year seeds (fixed selections)')
     fig.supxlabel('Raw seeds: blue31001, orange31013, green31019, red31033, purple31039.\n'
                   'Hollow diamond: descriptive mean, not CI. Shared labels add no replication.\n'

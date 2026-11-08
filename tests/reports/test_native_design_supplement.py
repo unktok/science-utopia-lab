@@ -109,3 +109,14 @@ def test_source_mismatch_or_missing_generation_rejects(inputs):
     rehash(auxiliary)
     with pytest.raises(ValueError,match='four designer'):
         module.project(report,auxiliary,scientist)
+
+
+def test_all_five_supplement_panels_render_without_mutating_numbers(tmp_path, data):
+    from scripts.figures.native_design_supplement import plot
+    before=digest(data)
+    plot(data,tmp_path)
+    expected={'all-cross-scores-throughput','all-cross-scores-selective',
+              'designer-cost-paths-throughput','designer-cost-paths-selective','outside-activity-resources-2y'}
+    assert {p.stem for p in tmp_path.glob('*.png')}==expected
+    assert len(list(tmp_path.glob('*.svg')))==5
+    assert digest(data)==before
