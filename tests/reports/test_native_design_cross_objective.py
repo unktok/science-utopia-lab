@@ -190,6 +190,8 @@ def test_rendered_files_are_watermarked_bound_and_fresh_without_changing_report(
 
 def test_cli_preserves_the_report_and_never_dispatches_a_candidate(tmp_path, monkeypatch):
     r = sample(); source = tmp_path / 'report.json'; source.write_text(json.dumps(r)); before = source.read_bytes()
-    monkeypatch.setattr(figures, '_render', lambda *args: None)
+    calls = []
+    monkeypatch.setattr(figures, '_render', lambda *args, **kwargs: calls.append(kwargs))
     assert figures.main(['--report', str(source), '--output', str(tmp_path / 'figures')]) == 0
+    assert calls == [{'paper': False}, {'paper': False}]
     assert source.read_bytes() == before
