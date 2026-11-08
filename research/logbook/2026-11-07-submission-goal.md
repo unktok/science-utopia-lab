@@ -4057,3 +4057,17 @@ The earlier provenance JSON still matches the existing paper-build receipt.
 Inputs remain unchanged. Ten documentation/artifact checks pass; no further
 HTTP/model request is made by these checks. Actual writer46865 is independently
 re-polled live at02:16:05UTC,39 normal records, job0039 advancing72 requests.
+
+### Verified evaluation wait through41 normal observations
+
+Previous turn is a verified wait through40 records, with the actual writer46865
+live and job0040 started. This turn polls the same handle while job0040 advances
+29/42/60/81/93 requests and completes. At Nov8 02:24:02UTC its normal observation
+exists, briefly ahead of progress40. At02:24:47UTC progress/normal records agree
+41/90; job0041 is active with7 requests, bound by its started record to seed31001,
+four years, start02:24:10.200302UTC. No writer.ended record exists. Both checkouts
+are clean before this update. No restart/refill, extra inference, active-source/
+model/prompt/loss/selection/budget change or further registry query is initiated.
+The approved five-request metadata operation is closed, not open-ended authority
+for more queries. This is verified waiting; full90 records and actual normal
+writer closure, both full audits and final empirical deliverables remain required.
