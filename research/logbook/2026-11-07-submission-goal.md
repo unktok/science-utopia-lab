@@ -3790,3 +3790,23 @@ documentation update. No restart/refill, new experiment, source/prompt/model/
 loss/budget/selection change or optional egress. Long-horizon processing is an
 expected verified wait, not a blocker or additional independent seed. Full90,
 normal writer exit, both complete audits and final empirical deliverables remain.
+
+### Four fixed policies now cover all declared conditions:24/90
+
+Previous goal turn is a verified wait. This turn repeatedly polls the same
+actual exec handle46865 live while job0023 advances63→73→83→105→131→157
+requests. Original annual checkpoints1/2/3/4 are observed. By Nov8 00:48:04UTC
+its complete observation exists, temporarily ahead of progress23; at00:49:01
+progress/normal observations agree24/90 and job0024 is active with6 requests.
+No ended writer record exists. Match observation paths to immutable jobs:
+legacy,open-seed,rank/rate and accept-all each have6 complete declared conditions.
+Initial-selected labels still share open-seed's physical jobs, not extra
+replicates or authored-invention successes. Five unused two-year seeds and the
+separate one-seed four-year diagnostic are not pooled into six independent seeds.
+
+Both main and frozen checkouts are clean before this documentation update.
+No restart/refill, new analyst-initiated model call, source/settings/loss/budget/
+selection or evaluation-plan change. This is verified ongoing inference, not
+an impasse, completed study audit or scientific-effect finding. Both full
+adapted audits, final empirical analysis/costs/figures/manuscript/package/mock
+review remain after all90 records and normal actual writer closure.
