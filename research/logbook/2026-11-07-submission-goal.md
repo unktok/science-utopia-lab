@@ -3986,3 +3986,25 @@ this documentation update. The finite evaluation continues without restart,
 refill, extra inference initiated by analysis, active-source/model/prompt/loss/
 selection/budget changes or registry egress. Full90, normal actual writer exit,
 both full adapted audits and final empirical deliverables remain required.
+
+### Six exact policies cover all declared conditions:36/90
+
+Previous goal turn is a verified live wait: job0035 advances30/56/70/82
+requests and saves year0–2 checkpoints. This turn polls the same actual
+writer46865 live while requests advance120/135/155 and year3 is saved.
+At Nov8 01:56:14UTC the complete observation exists, briefly ahead of progress35.
+At01:57:02UTC progress/normal records agree36/90 and job0036 is active with8
+requests, no writer.ended record. Both checkouts are clean before this update.
+
+Join immutable evaluation-plan jobs0000–0035 to their36 complete observation
+records: six exact policies each cover five declared two-year seeds and the
+separate seed31001 four-year condition. They are legacy,open-seed,rank/rate,
+accept-all,reject-all and score-threshold3. Open-seed still shares its physical
+jobs with the four labels whose initial reference was selected; these are not
+extra samples or successful invented replacements. The next job belongs to
+score-threshold4. The evaluation-plan bytes remain unchanged after inspection.
+Do not pool the five seeds and the same-seed long diagnostic into six independent
+replicates. No restart/refill, extra inference, source/settings/loss/budget/
+selection change or registry egress is initiated by analysis. Full90 and normal
+writer closure are still needed before both full audits and final empirical
+analysis/figures/costs/manuscript/package/mock-review work.
