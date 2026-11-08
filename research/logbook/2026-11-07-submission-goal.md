@@ -3686,3 +3686,29 @@ dispatch is initiated by monitoring, producer restarted, slot refilled or
 experiment source/settings/selection/90-job plan changed. Both checkouts remain
 clean before this documentation update. Full evaluation, both adapted complete
 audits, actual analyses and final manuscript/package/mock review still await.
+
+### First three fixed policies have their six declared conditions:18/90
+
+Previous goal turn is a verified wait. This turn repeatedly polls actual handle
+46865 live while job0017 (rank/rate,31001,four years) advances24→38→70→83→121→
+148→177 recorded requests. Original annual checkpoints1/2/3/4 are observed in
+sequence. By Nov8 00:17:13UTC its complete observation exists, briefly ahead of
+progress17; by00:18:05 progress/normal records agree18/90 and job0018 has started
+with14 requests. No writer.ended record exists; the finite writer remains live.
+
+Join completed observation paths to the immutable evaluation-plan jobs: legacy,
+open-seed and rank/rate each have all6 declared conditions and6 complete records.
+The open-seed jobs also carry the four fixed initial-selected arm labels:
+T numeric,C numeric,C technical-only,C uniform. Those are the same six physical
+jobs, not additional observations or successful invented replacements. Six
+conditions are five unused two-year seeds plus a same-seed four-year diagnostic,
+not six independent seeds. No score/ranking/generalization conclusion is drawn
+from this monitoring milestone or inserted into the empirical manuscript.
+
+A read-only df check reports427GiB available on the current data volume; it is
+an observation, not a startup/resource/remaining-duration guarantee. Both main
+and frozen checkouts are clean before this documentation update. No source/
+settings/selection/budget change, model dispatch initiated by monitoring, failed
+slot refill, new resource or optional fingerprint egress. Full90-job closure,
+actual writer exit, both complete adapted audits and the final research analysis/
+paper/reproduction/mock-review work remain; the goal is active, not blocked.
