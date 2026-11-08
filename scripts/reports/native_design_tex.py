@@ -109,7 +109,7 @@ def render(data):
             str(count['loss-unavailable']), value, str(len(row['all_tied_row_ids']))]) + r'\\')
     lines += [r'\bottomrule', r'\end{tabular}',
         r'\caption{\textbf{All scheduled development attempts.} Each row pools three',
-        r'controller histories with four proposals each, all at world seed42.',
+        r'controller histories with four proposals each, all at world seed~42.',
         r'Meas.: available assigned losses; G/X-null: generation/execution failures;',
         r'M-null: completed forward with unavailable assigned loss. Nulls are not penalties.',
         r'Best includes the shared initial system; $\ast$ marks its selection, not an invention.',
