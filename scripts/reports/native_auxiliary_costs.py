@@ -16,7 +16,8 @@ from utopia.system.design_patch import digest
 from utopia.utils.data_utils import decode_json, file_sha256, write_json_atomic
 
 SCHEMA = 'scienceutopia.native-auxiliary-model-costs.v1'
-FIELDS = {'native_prompt_eval_count': 'integer count', 'native_eval_count': 'integer count',
+FIELDS = {'native_prompt_eval_count': 'integer count', 'native_prompt_eval_cached_count': 'integer count',
+    'native_eval_count': 'integer count',
     'transport_prompt_tokens': 'integer count', 'transport_completion_tokens': 'integer count',
     'provider_total_duration_ns': 'integer nanoseconds', 'provider_load_duration_ns': 'integer nanoseconds',
     'provider_prompt_eval_duration_ns': 'integer nanoseconds', 'provider_eval_duration_ns': 'integer nanoseconds',
@@ -39,6 +40,7 @@ def summarize(events):
     return {'request_intents': len(events),
         **{name: sum(e[name] for e in events) for name in ('completion_record_available',
             'recorded_POST_attempt', 'known_HTTP_response', 'final_response_reported')},
+        'native_cache_subset_counts': dict(Counter(e['native_cache_subset_status'] for e in events)),
         'status_counts': dict(Counter(e['status'] for e in events)), 'measurements': result,
         'unknown_usage_imputed': False}
 
@@ -55,6 +57,7 @@ def cost_values(transport, *, model, host_seconds=None, caller_seconds=None):
     # Keep both reported aliases, but never add or repair them. A missing native
     # count remains missing even for a confirmed empty-prompt role load.
     return deepcopy({'native_prompt_eval_count': body.get('prompt_eval_count'), 'native_eval_count': body.get('eval_count'),
+        'native_prompt_eval_cached_count': body.get('prompt_eval_cached_count'),
         'transport_prompt_tokens': transport.get('prompt_tokens'),
         'transport_completion_tokens': transport.get('completion_tokens'),
         **{'provider_' + key + '_ns': body.get(key) for key in
@@ -65,11 +68,17 @@ def cost_values(transport, *, model, host_seconds=None, caller_seconds=None):
 
 def event(kind, identity, transport, *, model, status, completion=True, host_seconds=None, caller_seconds=None):
     body = transport.get('response_payload'); body = body if isinstance(body, dict) else {}
+    values = cost_values(transport, model=model, host_seconds=host_seconds, caller_seconds=caller_seconds)
+    prompt, cached = values['native_prompt_eval_count'], values['native_prompt_eval_cached_count']
+    # A provider disagreement is reported, not repaired or used as a policy veto.
+    subset = ('invalid' if any(v is not None and (type(v) is not int or v < 0) for v in (prompt, cached)) else
+              'unknown' if prompt is None or cached is None else
+              'within-prompt' if cached <= prompt else 'cached-exceeds-prompt')
     return {'kind': kind, 'identity': identity, 'status': status,
         'completion_record_available': completion, 'recorded_POST_attempt': 'request_payload' in transport,
         'known_HTTP_response': 'http_status' in transport and 'raw_http_response' in transport,
         'final_response_reported': body.get('done') is True and body.get('done_reason') != 'length',
-        'values': cost_values(transport, model=model, host_seconds=host_seconds, caller_seconds=caller_seconds)}
+        'native_cache_subset_status': subset, 'values': values}
 
 
 def analyze(root, plan, audit, *, expected_source):
@@ -187,8 +196,9 @@ def analyze(root, plan, audit, *, expected_source):
             'proposal_runs': proposals, 'calibration_runs': calibrations, 'role_loads': loads, 'groups': groups,
             'events': events, 'raw_inventory_unchanged': True, 'new_model_calls': 0, 'new_code_executions': 0,
             'unknown_usage_imputed': False, 'token_aliases_or_nested_durations_added': False,
+            'cached_prompt_counts_added_to_input_totals': False,
             'full_project_compute_FLOPs_energy_money_or_fresh_GPU_cost_claimed': False,
-            'scope': 'Declared proposal steps, calibration controls and empty-prompt load intents only. Includes failures/unknowns, not just successful designs. Native token fields and transport aliases are separate; durations overlap and are not wall-time summands. Scientist response usage uses the separate native_token_costs projection. Retrieval, containers, host/code-agent work and earlier exploration remain outside these measurements; unreported load usage is unknown, not zero. No actual HTTP server receipt is inferred from a dispatch intent.'}
+            'scope': 'Declared proposal steps, calibration controls and empty-prompt load intents only. Includes failures/unknowns, not just successful designs. Native cached prompt counts are a reported subset, never added to total prompt counts; subset disagreements remain diagnostic. Native token fields and transport aliases are separate; durations overlap and are not wall-time summands. Scientist response usage uses the separate native_token_costs projection. Retrieval, containers, host/code-agent work and earlier exploration remain outside these measurements; unreported load usage is unknown, not zero. No actual HTTP server receipt is inferred from a dispatch intent.'}
         if 'analysis_adapter' in audit: result['input_audit_analysis_adapter'] = deepcopy(audit['analysis_adapter'])
         result['content_sha256'] = digest(result)
         return result

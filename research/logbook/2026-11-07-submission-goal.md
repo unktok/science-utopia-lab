@@ -3712,3 +3712,34 @@ settings/selection/budget change, model dispatch initiated by monitoring, failed
 slot refill, new resource or optional fingerprint egress. Full90-job closure,
 actual writer exit, both complete adapted audits and the final research analysis/
 paper/reproduction/mock-review work remain; the goal is active, not blocked.
+
+### Native cache-count omission found by primary API/unit review
+
+The previous goal turn is a verified wait through18 normal evaluation records.
+This turn polls the same actual writer46865 live; by00:21/00:22UTC19/90 records
+are complete and job0019 is active. No ended record or producer restart.
+
+Read ordinary public primary docs https://docs.ollama.com/api/chat and
+https://docs.ollama.com/api/generate on2026-11-08. They document native duration
+fields in integer nanoseconds and prompt/output/cache counts separately. These
+are current API-unit references, not an exact local-binary/fresh-GPU attestation.
+No local tensor fingerprints or private inputs are sent to these public pages;
+the optional layer-hash registry egress remains unapproved and unattempted.
+
+The review reveals a real analysis omission: new auxiliary accounting preserves
+native prompt/output counts and timings but omits prompt_eval_cached_count.
+Read only metadata of the three closed calibration certificates: all84 archived
+control bodies contain integer prompt/cache/output counts; none of these84
+cached counts exceeds its prompt count. This is a bounded metadata observation,
+not a full V2 cost report, cold control replay or scientific outcome analysis.
+The original body/record/certificate files remain unchanged.
+
+Separate feature adds native_prompt_eval_cached_count and per-event/group
+subset diagnostics. Never add cache to prompt counts, repair a provider
+disagreement, infer absent cache as0 or use this accounting check as a scientific
+veto. Missing/invalid/zero/exceeding counts remain distinct; raw values survive.
+The initial69-test synthetic auxiliary/scientist-token/report batch passes in5.30s.
+Tests cover cached0/equal/subset/exceeding, missing, Boolean/fractional/negative
+values. Earlier40c95bb70-test receipt remains unchanged with its earlier scope.
+Committed-source checks and bounded real-field extraction are next, without
+claiming full experiment costs before normal writer closure/full audit.

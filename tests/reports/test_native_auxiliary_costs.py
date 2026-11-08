@@ -105,6 +105,32 @@ def test_reported_alias_disagreement_and_large_integer_nanoseconds_are_preserved
     assert r['provider_total_duration_ns']['recorded_sum'] == 9007199254740993
 
 
+@pytest.mark.parametrize('cached,expected', [(0, 'within-prompt'), (7, 'within-prompt'),
+    (10, 'within-prompt'), (11, 'cached-exceeds-prompt'), (None, 'unknown'),
+    (True, 'invalid'), (1.5, 'invalid'), (-1, 'invalid')])
+def test_native_cache_field_is_preserved_as_subset_with_explicit_missingness_and_diagnostics(cached, expected):
+    t = transport(); t['response_payload']['prompt_eval_cached_count'] = cached
+    t['raw_http_response'] = json.dumps(t['response_payload'])
+    e = costs.event('SCRIPTED', 'one', t, model='SCRIPTED-designer', status='applied')
+    r = costs.summarize([e])
+    assert e['native_cache_subset_status'] == expected
+    assert r['native_cache_subset_counts'] == {expected: 1}
+    assert r['measurements']['native_prompt_eval_count']['recorded_sum'] == 10  # Never10+cached.
+    field = r['measurements']['native_prompt_eval_cached_count']
+    if expected in ('within-prompt', 'cached-exceeds-prompt'):
+        assert field['recorded_sum'] == cached and field['known_records'] == 1
+    elif expected == 'unknown':
+        assert field['recorded_sum'] is None and field['missing_records'] == 1
+    else:
+        assert field['recorded_sum'] is None and field['invalid_records'] == 1
+
+
+def test_absent_native_cache_field_does_not_become_reported_zero():
+    e = costs.event('SCRIPTED', 'one', transport(), model='SCRIPTED-designer', status='applied')
+    assert e['native_cache_subset_status'] == 'unknown'
+    assert costs.summarize([e])['measurements']['native_prompt_eval_cached_count']['recorded_sum'] is None
+
+
 @pytest.mark.parametrize('bad', [True, -1, 1.5, '4', []])
 def test_invalid_counts_are_not_zero_or_silently_coerced(bad):
     t = transport(prompt=bad)

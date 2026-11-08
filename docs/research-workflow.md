@@ -343,6 +343,16 @@ seconds and provider integer nanoseconds have separate units and known/missing/
 invalid counts. Empty author-by-design sets have zero requests; an actual
 request with unreported usage is unknown, even for a confirmed empty-prompt load.
 
+Unit references checked2026-11-08: the official [chat API](https://docs.ollama.com/api/chat)
+and [generate API](https://docs.ollama.com/api/generate) document native durations
+in nanoseconds and prompt/cache/output counts separately. Preserve the native
+`prompt_eval_cached_count` field as a subset, never an extra addition to prompt
+totals. A cache count greater than prompt count is retained and flagged, not
+silently clipped or used as a scientific candidate veto. Missing cache counts
+stay unknown. These current API descriptions are unit references, not an
+attestation that every local backend report is accurate or measures fresh GPU
+work. Check archived fields rather than inventing them from the live docs.
+
 Do not add native/transport token aliases, convert unavailable fields to zero,
 deduplicate separate physical calls by body hash, or add overlapping durations
 into campaign wall time. Native provider counts are not automatically the same
