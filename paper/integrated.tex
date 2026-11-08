@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[preprint]{neurips_2025}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url,enumitem,placeins}
+\newcommand{\Sys}{\mathcal{S}}
+\newcommand{\Spec}{\textsc{SystemSpec}}
+\newcommand{\code}[1]{\texttt{#1}}
+\raggedbottom
+\setcounter{tocdepth}{2}
+\title{Designing the Systems That Organize Science:\\
+Executable Institutions, Objective-Conditioned Search,\\
+and Gradients Around a Persistent Researcher World}
+\author{Science Utopia Lab\\Integrated research working paper, November 8, 2026\\
+Not submitted; human authorship and affiliations to be finalized}
+\begin{document}
+\maketitle
+\begin{abstract}
+What changes when an objective selects the system that organizes science,
+rather than only a researcher's next action? We develop an executable design
+environment around the persistent ScienceUtopia researcher world. Numerical
+settings, institution algorithms, mechanism composition, information routes and
+activity processes are design objects; researcher-model weights and measurement
+functions remain fixed within each study. Black-box proposals, externally
+authored programs, local LLM design and conditional gradient estimators use
+the same native evaluation boundary. A parameter study selects two designs
+under three objectives and finds descriptive held-out trade-offs without
+stable pairwise superiority. Structural case studies execute new planning and
+feedback mechanisms, including unsuccessful revisions. A nested eight-world
+study connects free source design, likelihood-ratio updating, native
+reevaluation and redesign: neither gradient followup improves its prior best,
+while later externally authored code improves two observed proxy losses.
+The largest matched comparison retains all 120 attempts and 90 selection-fixed
+evaluations; simple hand rules remove apparent gains against a weak seed,
+and no declared graph changes occur among its completed designs. Conditional
+response-model experiments further show that a working backward pass need not
+predict the native world. An English pixel-art interface exposes the same
+canonical evidence. Together these studies establish executable scientific-system
+design and its current empirical limits, not optimizer superiority, validated
+science-policy objectives or reliable autonomous institutional invention.
+\end{abstract}
+
+\paragraph{Reading this manuscript.}
+This integrated working paper develops the whole research argument without a
+conference page cap. The experiments are distinct studies, not one pooled
+benchmark. Sections~\ref{sec:problem}--\ref{sec:search} define the design and
+optimization interfaces; Sections~\ref{sec:parameter}--\ref{sec:matched} present
+complementary evidence; Section~\ref{sec:observatory} describes the interface.
+Appendices retain assumptions, complete case tables, cross-scores and costs.
+Existing short drafts and their source-bound evidence remain unchanged.
+
+\tableofcontents
+\clearpage
+\input{integrated/problem-method}
+\input{integrated/studies}
+\input{integrated/matched-observatory}
+\input{integrated/discussion}
+\FloatBarrier
+\bibliographystyle{plainnat}
+\bibliography{references,submission-sources}
+\clearpage
+\appendix
+\input{integrated/appendices}
+\end{document}
