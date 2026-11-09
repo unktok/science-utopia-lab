@@ -49,6 +49,12 @@ immutable source, raw destinations, observations and remaining tasks.
   returns a world payload without its output envelope; T/code-and-graph emits
   decisions without conference/score fields. Both raw failures remain; no
   slot replacement or change to the active62388a7 conditions is made.
+  The later E/numeric G1 completes with loss−22.6667 versus G0's29.3333.
+  [Original-source completed-cell checks](results/pre-scale-completed-numeric-feedback-v1.json)
+  match both four-year checkpoint measurements and recomputed losses. The
+  generated update changes the router threshold1→0; actual prior loss is present
+  in its recorded request wire. This is one development-history decrease, not
+  new code/graph invention, reliable feedback superiority or unused-seed evidence.
 - The broader source-bound Python verification at cleana377486 passes374/374
   checks in215.56s. The earlier085f87b result335/336 remains a failed source,
   with its original JUnit retained. [Verification receipt](results/pre-scale-completion-software-verification-v1.json)

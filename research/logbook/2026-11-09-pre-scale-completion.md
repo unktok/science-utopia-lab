@@ -584,3 +584,25 @@ The latest clean76816f3 software checkout is reserved separately as
 `science-utopia-lab-experiments/pre-scale-software-qa-v1-a2`; no Docker fleet
 is launched alongside the native scientific writer. The older4259854 failed
 receipt and checkout remain preserved rather than being relabelled as a pass.
+
+## Numeric feedback cell verification and current entry documents
+
+E/numeric G1 completes with A14/Q43.6667/R42 and loss−22.6667, versus
+G0's A2/Q6.6667/R72 and29.3333. The original62388a7 physical proof and loss
+evaluator reproduce both four-year measurements and losses exactly, with
+unchanged cell inventories and no new inference or authored-code execution.
+The actual request wire contains the earlier29.3333; its first reply has only
+a rationale, then the second declared call supplies all six values. The only
+changed coordinate relative to its parent is router threshold1→0. The
+[compact component receipt](../results/pre-scale-completed-numeric-feedback-v1.json)
+does not replace the pending full O/E audit or establish a new institution,
+correct causal rationale, feedback superiority or unused-seed generalization.
+
+The research purpose, whole-program map and roadmap now separate the closed
+older V2 from the active pre-scale study and link current native connection QA.
+The software documentation index points first to the English v2 game and
+actual-record observatory, while retaining the older replay prototype as
+history. Current STATUS links the partial numerical result without claiming
+the study is closed. The25-document check resolves380 local links and verifies
+all six historical snapshot hashes, with no errors or network/model/world calls.
+No scientific source, candidate, loss, budget or selection is changed.

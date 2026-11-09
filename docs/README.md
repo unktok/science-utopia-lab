@@ -16,7 +16,8 @@ record lives separately under [`research/`](../research/INDEX.md).
 ## Product and runtime guides
 
 - [Real-backend designer preflight and production search gate](designer-preflight.md)
-- [Game UI](../game-ui/README.md)
+- [Current English game UI and actual-record observatory](../game-ui-v2/README.md)
+- [Historical buildless replay-viewer prototype](../game-ui/README.md)
 - [Full-text runtime](fulltext.md)
 - [Sequential funding protocol](sequential_funding_protocol.md)
 - [Switching propensity protocol](switching_propensity_protocol.md)
