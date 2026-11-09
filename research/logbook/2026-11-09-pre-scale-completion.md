@@ -261,3 +261,32 @@ All47 affected projection/guard/order checks now pass in7.72s. Passing JUnit:
 The actual full O/E audit is still pending, not claimed established by these tests.
 By the next observation M has2/12 complete and M2 is advancing; this analysis
 correction does not remove or relabel any scientific result.
+
+## Corrected continuation and continuous gradient receipts
+
+At clean`3ba267bee943fec8401c2570ad961960f0678373`, all47 affected checks pass
+again in7.69s. The new analysis checkout `pre-scale-analysis-v1-a2` is immutable.
+Its new waiting scheduler starts02:36:37UTC as PID29845, raw
+`outputs/pre-scale-completion-chain-v1-a2/`. The old exit130 and all scientific
+records are retained. This is not a new attempt at an already consumed O/E slot;
+none has started, and M continues under its original source.
+
+A separate continuous-gradient review finds that `NativeGradientCampaign`
+checked the loss arithmetic for every observation but performed the independent
+native checkpoint join only for discrete policies. A regression using actual
+scripted original-world checkpoints reproduces acceptance of an altered
+replicate seed before the correction. Failure JUnit SHA256:
+`5353b4cdfeec3ed13b50375d765f13aeca7ebd751c1c017054cf56b5236e2869`.
+The prospective fix invokes the same existing receipt checker for continuous
+and discrete policies, before update and during replay. It does not change the
+loss, estimator, sampling distribution or promotion rules. The interruption/
+resume test also rejects altered checkpoint hashes and executed fingerprints.
+
+The first targeted run has17 passed/2 skipped because Docker is not visible in
+the default sandbox; this is not full integration verification. With the existing
+Docker runtime accessible, all19 pass without skips in31.50s. Passing JUnit hash:
+`f5e06a461f59d2e939bfa5acb4dd3386f2eb0cdb0e751dfa4a030156a726cd36`.
+These use scripted HTTP/corpus, not extra live-Qwen studies. Both the215311c
+M source and62388a7 O/E source are unchanged. A broader clean-source regression
+check follows this prospective runtime correction; the prior374-check receipt
+retains its original a377486 source rather than being relabeled.

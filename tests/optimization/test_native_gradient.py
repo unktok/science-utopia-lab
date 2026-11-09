@@ -128,26 +128,40 @@ def test_score_function_updates_from_real_native_lifecycle_losses(tmp_path, fixe
     assert report['mean_after'][0] < report['mean_before'][0]
 
 
-def test_gradient_campaign_retains_completed_draw_across_interruption(tmp_path, fixed_corpus):
-    from tests.runtime.test_portable_checkpoint_integration import seed
+def test_gradient_campaign_retains_completed_draw_across_interruption(tmp_path, fixed_corpus,monkeypatch):
+    from tests.runtime.test_portable_checkpoint_integration import seed,BINDING
     from tests.system.test_native_science_kernel import make_sim
     from utopia.system.native_kernel import NativeScienceKernel
     from utopia.optimization.native_gradient import NativeGradientCampaign
     from utopia.runtime.checkpointing import PortableStop
+    world={'source_commit':'scripted-continuous-native-QA','model_digest':BINDING['model_revision'],
+        'corpus_sha256':BINDING['corpus_sha256'],'years':6}
     calls = []
     def factory(spec, run_seed, run_id):
         calls.append(run_id)
         if len(calls) == 2:
             raise PortableStop('after first committed draw')
+        monkeypatch.setitem(BINDING,'cell',spec.fingerprint)
+        monkeypatch.setitem(BINDING,'science_config',{**BINDING['science_config'],'source_commit':world['source_commit']})
         seed()
         return make_sim(tmp_path / 'runs' / run_id, native=NativeScienceKernel(spec))[0]
     def create():
         return NativeGradientCampaign(tmp_path / 'campaign', optimizer(), loss_spec=loss_spec(), seeds=[42],
-                                      world_binding={'mode': 'native-QA-scripted-transport'})
+                                      world_binding=world)
     campaign = create()
     with pytest.raises(PortableStop):
         campaign.advance(simulation_factory=factory)
     assert len(campaign.state['observations']) == 1
+    # Continuous gradients need the same real receipt checks as discrete ones.
+    # Tamper only a local in-memory copy, never the saved original observation.
+    from copy import deepcopy
+    correct=deepcopy(campaign.state)
+    for field,value in [('seed',43),('checkpoint_sha256','0'*64),('system_fingerprint','0'*64)]:
+        campaign.state=deepcopy(correct)
+        campaign.state['observations'][0]['metadata']['runs'][0][field]=value
+        with pytest.raises(ValueError,match='discrete policy'):
+            campaign._validate()
+    campaign.state=correct
     resumed = create()
     report = resumed.advance(simulation_factory=factory)
     assert report['status'] == 'updated'

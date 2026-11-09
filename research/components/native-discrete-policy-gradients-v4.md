@@ -22,10 +22,17 @@ produce no numerical penalty and suppress the whole batch update rather than
 conditioning on success. A zero/noisy estimate is not rerolled.
 
 The existing durable campaign accepts this policy as well as the older
-Gaussian-logistic score estimator. Successful discrete observations must reopen
+Gaussian-logistic score estimator. Successful continuous and discrete observations must reopen
 their exact checkpoint hash and match source, fixed model, corpus, design and
 replicate seed before any update and on resume. LossSpec is unchanged; no
 fairness, merit, novelty or participation veto is introduced.
+
+The continuous receipt check is added prospectively on2026-11-09. Earlier
+continuous campaigns checked candidate/loss arithmetic but did not themselves
+perform this shared checkpoint join. Historical source-specific records remain
+unchanged; the new checker is not evidence that an older caller performed it.
+Scripted original-world interruption/resume tests reject altered replicate seeds,
+checkpoint hashes and executed design fingerprints before the policy update.
 
 ## Verification and boundaries
 

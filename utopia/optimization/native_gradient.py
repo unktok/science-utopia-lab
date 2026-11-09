@@ -194,9 +194,10 @@ class NativeGradientCampaign:
                     or (observation.status == 'complete') != (evaluated['status'] == 'complete')
                     or observation.loss != (evaluated['loss'] if evaluated['status'] == 'complete' else None)):
                 raise ValueError('native gradient loss/measurement evidence changed')
-            if self.initial['schema'] == 'scienceutopia.native-discrete-policy.v1':
-                from .native_discrete_policy import verify_native_observation
-                verify_native_observation(observation, self.binding['world'], self.seeds)
+            # Continuous and discrete policies use the same actual native
+            # forward. Correct loss arithmetic alone is not physical evidence.
+            from .native_discrete_policy import verify_native_observation
+            verify_native_observation(observation, self.binding['world'], self.seeds)
             return observation
         replayed = self._restore_search(self.initial)
         for report in self.state['reports']:
@@ -236,7 +237,7 @@ class NativeGradientCampaign:
             self.state['observations'].append(observation.to_dict())
             self._save()
         # Reopen newly committed evidence before, not only after, updating a
-        # policy. This also binds discrete draws to their native checkpoints.
+        # policy. Both continuous and discrete draws need native checkpoints.
         self._validate()
         report = search.tell([Observation.from_dict(o) for o in self.state['observations']])
         self.state['reports'].append(report)

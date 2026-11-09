@@ -44,8 +44,10 @@ A finite serialized continuation was waiting at frozen analysis1ac9b4a,
 PID27571, raw `outputs/pre-scale-completion-chain-v1-a1/`. It was deliberately
 stopped while waiting (exit130, no scientific stage/POST) to fix an audit-only
 start/end content-hash comparison; its original terminal record is retained.
-The corrected analysis passes47 focused checks; a new frozen continuation is
-being prepared without changing M or the62388a7 O/E source. It waits for original
+The corrected analysis passes47 focused checks again at clean3ba267b in7.69s.
+The new frozen continuation is waiting as PID29845, started02:36:37UTC, raw
+`outputs/pre-scale-completion-chain-v1-a2/`, without changing M or the62388a7
+O/E source. It waits for original
 M writer16044 to disappear with complete records, requires two matching M audits,
 then runs fresh readiness→search→evaluation→two matching O/E audits. It never
 rerolls a consumed stage; errors stop that chain. A waiting scheduler is not a
@@ -54,6 +56,12 @@ Read-only descriptive M/O/E report/figure generators are implemented;38 focused
 projection/guard/order tests pass at the earlier source. Their real closed-data execution remains
 pending. The latest English snapshot records1/12 M and prepared-only O/E and
 passes9 UI tests plus actual Chrome desktop/mobile/404/tamper verification.
+
+Separate prospective continuous-gradient campaign hardening now applies the
+same native checkpoint/source/model/corpus/seed/design join already used for
+discrete policies, before update and on resume. All19 targeted math/native/Docker
+checks pass without skips. This is not a new live-model gradient result and is
+not backported into either active scientific source.
 
 The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old
