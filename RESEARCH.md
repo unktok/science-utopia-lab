@@ -66,8 +66,10 @@
 ゲームUIを含め、過去と現在のsource・設計者・評価条件を分離して記述する。
 元の37ページ稿は保持している。現在の[41ページのスケールアップ前稿](output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)は、
 新しい情報機構の12世界比較、実入力の確認、selector再生と費用を追加したもの。
-[現在の終了条件](research/pre-scale-completion.md)に沿って、別の凍結sourceで目的別探索を
-実行中である。選択後評価、その最終解析・原稿反映はまだ完了していない。
+[現在の終了条件](research/pre-scale-completion.md)に沿った別sourceの目的別探索は、
+16枠・選択後27物理評価・二回全監査まで閉じた。[実結果と全データ](research/results/pre-scale-search-v1.md)
+は数値feedback更新、強い参照との小さい差、5実行失敗、配線変更なしを含む。
+原稿統合と最終紙面検証を進めており、改善・新構造の勝利を完了条件にしない。
 
 [現在地](research/STATUS.md)と[証拠対応表](research/program-map.md)を正本とする。
 文書、テスト、生成成功、コード差分、実作用、損失改善は別の証拠である。

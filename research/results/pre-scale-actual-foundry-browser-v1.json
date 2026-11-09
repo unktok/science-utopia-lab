@@ -1,0 +1,32 @@
+{
+  "schema": "scienceutopia.pre-scale-foundry-browser-qa.v1",
+  "observed_utc": "2026-11-09T11:44:47.852Z",
+  "story": "Closed-record envelope → explicit same-origin arm → read-only Foundry → source, wiring, years and failures",
+  "synthetic_fixture": false,
+  "actual_export_verified": true,
+  "input_file_sha256": "291bd6b9266cb885a71b468c4ecdd03a4ba5db0442d0fc3ce9c4c8cc7274cfba",
+  "checks": [
+    "explicit selected envelope,exact candidate/node/wire counts,literal code,all committed years and actor counts",
+    "NEXT EXECUTION traverses every recorded event in the selected year; exact mechanism and event text, no replayed computation",
+    "desktop and390px mobile,no overflow,no JavaScript errors,read-only workbench/file controls",
+    "404 and modified envelope fail closed without stale mechanisms",
+    "unknown arm refused,zero writes,zero queue API calls,no old-study fallback"
+  ],
+  "new_model_calls": 0,
+  "simulation_submissions": 0,
+  "independent_scientific_audit": false,
+  "files": {
+    "desktop.png": "11888e6a4e9ce2d3450697b4083bba611992f0530d10e369e6a30b4dc215c030",
+    "mobile.png": "027d0db7fa10f9d84cdd2212e6a13fd498595773973f3929e978fc7b27eb79c6",
+    "mobile-network.png": "a9ee8dd662ee6d62bd43299b3f361ba1beca2c12025baaee624d5d3627a6be47",
+    "mobile-evidence.png": "0f8a3226667e8f821e198664a239f030d9f256adf95ef223f785bd93490d677a"
+  },
+  "mobile_capture": {
+    "document_height": 4642,
+    "viewport_height": 844,
+    "header_count": 1,
+    "deck_count": 1,
+    "scope": "Three actual390x844 viewport captures, not a full-page composite; synthetic-only visible QA annotation."
+  },
+  "passed": true
+}

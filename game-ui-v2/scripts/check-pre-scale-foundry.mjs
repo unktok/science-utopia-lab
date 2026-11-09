@@ -72,6 +72,17 @@ try{
     check(await page.locator('.native-actor').count()===frame.actors.filter(a=>a.can_author).length,'Actor frame differs');
   }
   report.checks.push('explicit selected envelope,exact candidate/node/wire counts,literal code,all committed years and actor counts');
+  const frameYear=Number(await page.locator('#year').inputValue());
+  const executionEvents=first.runs[0].events.filter(e=>e.year===frameYear&&typeof e.provenance.mechanism_id==='string');
+  check(executionEvents.length>0,'Actual year has no execution records to inspect');
+  for(const event of executionEvents){
+    await page.locator('#step').click();
+    const mechanism=event.provenance.mechanism_id;
+    check(await page.locator('#node-name').textContent()===mechanism,'NEXT EXECUTION selects a different mechanism');
+    const expected=first.runs[0].events.filter(e=>e.year===frameYear&&e.provenance.mechanism_id===mechanism);
+    check(await page.locator('#native-events').textContent()===expected.map(e=>JSON.stringify(e,null,2)).join('\n'),'Displayed execution differs from recorded events');
+  }
+  report.checks.push('NEXT EXECUTION traverses every recorded event in the selected year; exact mechanism and event text, no replayed computation');
   check(errors.length===0,'Browser errors: '+errors.join(';'));
   check(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),'Desktop overflow');
   if(synthetic)check((await page.locator('#status').innerText()).includes('SYNTHETIC QA'),'Synthetic view lacks its visible boundary');

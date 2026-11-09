@@ -3,8 +3,10 @@
 The finite T/E study keeps all six fresh reference forwards, all16 candidate
 slots, fixed selections and three-seed evaluations. Reporting uses its completed
 original-source audit, not live progress files. The implemented rebuilding
-path has synthetic software verification; execution on the actual closed O/E
-data remains pending while science continues.
+path has synthetic software verification and now runs on actual closed O/E
+data. [Actual audit/reconstruction](../results/pre-scale-search-closed-verification-v1.json)
+binds16 slots,49 physical worlds,36 logical rows, figures, literal changes and
+costs; [retained paths](../data/pre-scale-search-v1/README.md).
 
 ## Retained observations and policies
 

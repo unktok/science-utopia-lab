@@ -682,3 +682,40 @@ hash. Readback then verifies the originale5053d35 digest and all26 input hashes.
 The failure and correction remain in the verification receipt. The actual
 analysis CLI already serializes directly in Python; no scientific source,
 raw observation or active evaluation condition is changed.
+
+## Scientific closure, quiet regression and actual UI
+
+E ends11:29:22.146712UTC with27/27 normal physical observations, representing36
+logical rows. Owned search/evaluation/scheduler handles return0. Full audits
+end11:32:09/11:35:12 and match complete bytes (d0a8a8a4), content85d4698f,
+inventory89fe1e31,1,859 files/49 worlds. No failed slot is replaced, candidate
+repaired or evaluation fed back into selection. The observer independently
+ends11:29:25 after48 published frames; that is not a full scientific audit.
+
+At clean ed249925, actual report, costs, literal changes and eight-arm Foundry
+export are generated. Two numerical rebuild directories match report/PNG/SVG/CSV;
+retained-path rebuilding succeeds. Costs and8 envelopes/manifest reproduce
+identically. Source edits8; connection/schedule edits0. E/numerical meanE−17.333
+versus reviewed accept-all−16.889 has paired differences−1,−2/3,+1/3, not reliable
+superiority. Failed losses remain unknown; partial-world replies remain charged.
+
+After scientific inference ends, historical4259854 broad33-module QA passes
+438/438 in250.71s. Separate clean ed249925 QA passes559/559 in275.05s across40
+modules. Actual Docker/loopback, unchanged deadlines, no daemon restart/model
+calls. Older437/1 timeout and isolated2-pass diagnostic remain separate;
+specific stall cause is unproven.
+
+Actual Chrome verifies final M12/O16/E27, own-source certificates, references,
+English PC/mobile, auto GET, checksum/404 fail-closed and no writes. Actual
+Foundry checks numerical/failure arms, literal code,21 nodes/29 wires,4 years
+and original errors. The additional NEXT EXECUTION check traverses every event
+in its selected year against exact recorded mechanism/event text; no queue,
+fallback or computation. Real scrolled mobile images are inspected; earlier
+unreliable composite captures remain preserved.
+
+The uncapped manuscript adds complete T/E methods,16 slots,12 label means,
+actual figures, code/failure analysis and costs. Two table checks compare every
+displayed value/selection with retained actual data (2pass0.69s). The41-page PDF
+is preserved under its explicit information-study filename before updating the
+current artifact. Final paper/build/visual QA and nine-row audit follow.
+No scale-up, new model or push.

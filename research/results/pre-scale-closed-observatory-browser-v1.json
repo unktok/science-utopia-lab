@@ -1,0 +1,35 @@
+{
+  "schema": "scienceutopia.pre-scale-browser-qa.v1",
+  "observed_utc": "2026-11-09T11:45:13.344Z",
+  "story": "Recorded journals → same-origin JSON → checksum validation → read-only English UI",
+  "checks": [
+    "all six fresh reference identities,statuses,measured losses and unknowns match actual JSON",
+    "new search-source numerical/staged certificate counts displayed separately from old readiness",
+    "actual data rendered,12 rows,English,desktop no overflow,no JS errors",
+    "390px mobile no overflow and reload below provenance",
+    "actual latest file automatically requested again after30 seconds, without recorded-file fallback",
+    "404 fails closed without stale outcomes",
+    "tampered JSON fails checksum without displaying invented progress",
+    "no write/model/simulation request or silent alternate evidence source"
+  ],
+  "source_mode": "latest",
+  "new_model_calls": 0,
+  "simulation_submissions": 0,
+  "independent_scientific_audit": false,
+  "files": {
+    "desktop.png": "b38ed88dfe11a15d1512632c11a219cc3c7162c962ffcfd0bc6eed0835cef187",
+    "mobile.png": "e72e8b06bb884f5545a55e04305c21e1622d8997ec1e6747a95cdbbd525b7923"
+  },
+  "data_observed_utc": "2026-11-09T11:29:25.514655+00:00",
+  "data_payload_sha256": "aa5288c2aed55c17126917e89c39bb806c403dae0d516c35474e495a7c96d13f",
+  "initial_completed_M_worlds": 12,
+  "completed_reference_ids": [
+    "open-seed",
+    "legacy",
+    "reviewed-accept-all",
+    "no-review-accept-all",
+    "no-review-reject-all",
+    "information-disconnected"
+  ],
+  "passed": true
+}

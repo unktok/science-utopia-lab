@@ -4,8 +4,9 @@
 [研究目的](../RESEARCH.md) · [直近状態](STATUS.md) · [優先順位](roadmap.md)
 
 現在は[スケールアップ前の終了条件](pre-scale-completion.md)を進めている。
-情報経路の12世界比較は解析まで完了し、目的別の数値／code／graph／uniform探索を
-実行中である。選択後評価は探索終了後に行う。過去のV2の完了を、この新しい区切りの完了とは扱わない。
+情報経路の12世界比較と目的別探索16枠・選択後27物理評価・二回全監査が閉じた。
+[実解析](results/pre-scale-search-v1.md)と英語UIの実データ接続も完了。
+最終原稿検証は別の終了条件として残す。
 
 ## 一本の研究経路
 
@@ -26,7 +27,7 @@
 
 | 元の目標 | 実装・実証済みの範囲 | 残る研究上の問題 |
 | --- | --- | --- |
-| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。過去V2の120枠・選択後90評価まで完了。現在は情報機構の12世界比較が閉じ、新しいT/E探索を実行中 | 現在の探索・選択後評価・解析は未完。強い基準への上積み／feedback優位は未実証 |
+| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。過去V2に加え、新T/Eの16枠・27物理評価・全監査・再生成まで閉じた | 二提案／一開発seed・三評価seedの記述的比較。強い基準への安定した上積み／feedback優位は未実証 |
 | 出来合いでない制度を作る | sandboxed Python、typed ports/state、生成IR。外部設計者のV13で実作用と観測改善 | ローカル設計者の信頼性、コード変更と機構上の新規性の区別 |
 | 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用 | パラメータ探索を超える価値の対照比較、信頼境界・世界の単純化の明示 |
 | 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較。現在のM1にも2draw→更新→fresh native forwardと無勾配対照を接続し、scripted研究者・corpusと実Dockerで確認 | live研究者に対する勾配の優位性・費用効率、世界全体ADは未証明 |

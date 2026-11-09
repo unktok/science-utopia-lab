@@ -1,12 +1,45 @@
 # Current research status
 
-Updated2026-11-09JST. M closes12/12 with two matching full audits;
-fresh O/E readiness closes04:11UTC and development search starts.
-Recorded snapshot02:21UTC is preserved; a separate local projection updates
-when journal facts change. Neither file is a live-process heartbeat.
+Updated2026-11-09JST, after11:35UTC closure. M12/12, O16/16 and E27/27
+are closed. Both full O/E audits match complete bytes. No scientific inference
+writer remains. Final paper/build and requirement audit are being completed;
+the earlier running observations below are history, not live heartbeats.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
-## Active pre-scale completion
+## Closed experiments and final integration
+
+- [T/E results](results/pre-scale-search-v1.md):16 submitted proposals,
+  11 complete/five runtime failures, six references and27 complete physical
+  selection-fixed evaluations (36 logical rows). Three unused seeds per policy;
+  selection precedes evaluation. No repair/refill/new scientific calls.
+- [Closed audit and reconstruction](results/pre-scale-search-closed-verification-v1.json):
+  two full audits match, content85d4698f;1,859 raw files/49 physical worlds.
+  [Retained data](data/pre-scale-search-v1/README.md), paths/common-score PNG/SVG,
+  raw components, literal changes and costs rebuild exactly. E/numerical mean
+  E−17.333 vs reviewed accept-all−16.889 is descriptive: paired differences
+  −1,−2/3,+1/3 do not establish superiority. Eight source changes occur;
+  no submitted connections or schedules change.
+- [Quiet regression](results/pre-scale-quiet-regression-verification-v1.json):
+  original4259854 passes438/438; latested249925 passes559/559 across40 modules,
+  actual Docker/loopback, unchanged deadlines, clean immutable checkouts after
+  scientific inference ends. The older437/1 Docker failure remains.
+- Actual eight-arm English Foundry exports and manifest reproduce identically.
+  [Actual-browser checks](results/pre-scale-actual-foundry-browser-v1.json)
+  traverse NEXT EXECUTION against exact recorded events, code/wires/all years,
+  desktop/mobile and zero writes/queue calls. A [separate failure arm](results/pre-scale-actual-foundry-failure-browser-v1.json)
+  retains original errors and unavailable loss. [Final progress view](results/pre-scale-closed-observatory-browser-v1.json)
+  displays M12/O16/E27; its observer ended normally at11:29:25UTC.
+- The manuscript includes all16 slots/all12 evaluation labels, actual figures,
+  code/failure analysis and costs. Latest PDF/build/visual review is the remaining
+  integration step, not another scientific campaign.
+
+The [completion ledger](pre-scale-completion.md) separates engineering completion
+from open empirical questions. Current-native gradient/adoption and independent
+count-verification are implemented with scripted QA, not new Qwen superiority.
+No reliable autonomous topology invention, optimizer superiority, scientific
+truth or policy welfare is claimed. No scale-up, new model, public release or push.
+
+## Earlier observations during this execution (historical)
 
 The [pre-scale ledger](pre-scale-completion.md) is now in execution, not only
 planning. [Current log](logbook/2026-11-09-pre-scale-completion.md) records the

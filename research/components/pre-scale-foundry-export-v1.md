@@ -6,8 +6,11 @@ export connects each development arm to the existing English Institution Foundry
 It exposes the exact code, typed ports, wiring, schedules, committed researcher
 frames and technical failures. It starts no experiment and makes no selection.
 
-Actual closed-study export is still pending the running evaluation and full
-audits. [Verification](../results/pre-scale-foundry-verification-v1.json) separates
+Actual closed-study export now retains all eight envelopes and manifest,
+rebuilding identically. [Actual browser checks](../results/pre-scale-actual-foundry-browser-v1.json)
+include NEXT EXECUTION and exact recorded events; [failure-arm checks](../results/pre-scale-actual-foundry-failure-browser-v1.json)
+retain original errors and unknown loss. The earlier
+[verification](../results/pre-scale-foundry-verification-v1.json) separates
 software checks, one actual completed-cell extraction and synthetic browser QA.
 
 ## Source and data boundaries

@@ -1,0 +1,37 @@
+{
+  "schema": "scienceutopia.pre-scale-quiet-regression-verification.v1",
+  "scientific_native_writer_finished_before_checks": true,
+  "same_historical_source_quiet_check": {
+    "source": "42598540f95336a08acdcdf3b210a31d19bcf21b",
+    "checkout": "pre-scale-software-qa-v1-a1",
+    "source_clean_unchanged": true,
+    "same_original_33_modules_in_original_order": true,
+    "passed": 438,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 250.71,
+    "exit_code": 0,
+    "junit_path": "outputs/pre-scale-quiet-qa-v1/python-junit.xml",
+    "junit_sha256": "a430b482eb180608259bb6d307fb0296bedb12e4000773af2f6d81f29479632c"
+  },
+  "latest_code_quiet_check": {
+    "source": "ed249925b8be96b6f25926417f34dee3c76894fd",
+    "checkout": "pre-scale-software-qa-v1-a4",
+    "source_clean_unchanged": true,
+    "modules": 40,
+    "passed": 559,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 275.05,
+    "exit_code": 0,
+    "junit_path": "outputs/pre-scale-quiet-qa-v1/python-junit.xml",
+    "junit_sha256": "b2a896900c5388b8d0030acd5a82e94b085d63eaa9a6b483be960a853d01fe42"
+  },
+  "environment": "Approved uv CPython3.11 project venv, fixed PYTHONHASHSEED42, CUDA_VISIBLE_DEVICES empty, offline HF/transformers flags, actual Docker/loopback outside restrictive sandbox. This does not describe the earlier MLX inference as CPU-only.",
+  "deadlines_changed": false,
+  "historical_failed_broad_result_rewritten": false,
+  "historical_failed_receipt": "pre-scale-regression-verification-v2.json",
+  "old_docker_stall_specific_cause_proven": false,
+  "new_live_model_calls": 0,
+  "fresh_scientific_replication_or_bug_free_claimed": false
+}

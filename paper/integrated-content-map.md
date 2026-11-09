@@ -10,7 +10,7 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
 | Whole-system question, science-of-science objectives, fixed scientist weights | Main introduction/problem/discussion | Central motivation; do not collapse the project to peer review or V2 |
-| Pre-scale additions, November9 | Separate main section after observatory | Closed-data proxy/interface diagnosis; actual2-case numeric readiness; all12 native information worlds closed and twice original-source audited, complete A/Q/R/input-year table and actual figure, hard-selector replay and measured call components; claim-verification/gradient/adoption connectivity is scripted QA; fresh62388a7 readiness passes and search starts, but selection/evaluation remain unfinished |
+| Pre-scale additions, November9 | Separate main section after observatory | Actual numeric readiness;12 information worlds/full audits/input-year table/selector replay;62388a7 T/E pilot closes16 slots/27 physical evaluations/two full audits, actual paths/common-score figures, all-slot/all-label tables, literal-code/failure/cost analysis and exact rebuilding; current-native claim/gradient/adoption connectivity remains scripted QA |
 | SystemSpec, arbitrary source, types/state/ports, wiring, actors/artifacts and processes | Main design/method; additional contracts in appendix | Explain what is implemented and what remains trusted/native; not permission-as-invention |
 | Loss/validity/evaluation/adoption separation | Main problem and evaluation | Essential interpretation, not hidden substantive vetoes |
 | Ask/tell, LLM program search, conditional distributions and gradient estimators | Main optimization; assumptions in appendix | Continuous method/free-domain axes; existing estimator theory credited |
@@ -48,6 +48,10 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
   selector-diagnostic.json, joined by the closed original-source audit and
   research/results/pre-scale-information-verification-v1.json; current paper
   binding in paper/integrated-pre-scale-build-v2.json.
+- research/data/pre-scale-search-v1/report.json, costs.json, mechanism-changes.json,
+  CSV and figure manifest; full identities in
+  research/results/pre-scale-search-closed-verification-v1.json. Actual closed
+  development Foundry envelopes are separate from unused-seed evaluation data.
 
 ## Non-negotiable distinctions
 
