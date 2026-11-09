@@ -5,6 +5,8 @@ import { webCanonicalHash } from "../src/hash";
 
 const actual = () => JSON.parse(readFileSync(new URL("../public/data/pre-scale-observatory.actual.json", import.meta.url), "utf8"));
 const rehash = async (e: ReturnType<typeof actual>) => { e.web_sha256 = await webCanonicalHash([e.payload]); return e; };
+const references = () => ["open-seed", "legacy", "reviewed-accept-all", "no-review-accept-all", "no-review-reject-all", "information-disconnected"]
+  .map(id => ({ id, seed: 41001, status: "not-dispatched", scores: null, observation_sha256: null }));
 
 describe("pre-scale actual journal projection", () => {
   it("verifies the exported Python/browser checksum and all twelve slots", async () => {
@@ -37,6 +39,27 @@ describe("pre-scale actual journal projection", () => {
   it("rejects changed evidence without a matching checksum", async () => {
     const e = actual(); e.payload.information.worlds[0].scores = { throughput: -999 };
     await expect(validatePreScale(e)).rejects.toThrow("checksum");
+  });
+  it("accepts explicit reference starts and source-specific control counts without scientific scores", async () => {
+    const e = actual(); e.payload.search.reference_worlds = references();
+    e.payload.search.reference_worlds[0].status = "started-no-terminal-observation";
+    e.payload.search.readiness = { numeric: { accepted: 2, total: 2, passed: true, certificate_sha256: "a".repeat(64) },
+      editor: { accepted: 28, total: 28, passed: true, certificate_sha256: "b".repeat(64) } };
+    const p = await validatePreScale(await rehash(e));
+    expect(p.search.reference_worlds).toHaveLength(6);
+    expect(p.search.reference_worlds?.[0]?.scores).toBeNull();
+    expect(p.search.readiness?.editor?.accepted).toBe(28);
+  });
+  it.each(["duplicate-reference", "wrong-seed", "invented-score", "fake-complete", "incomplete-pass", "wrong-total"])("rejects %s in new progress data", async kind => {
+    const e = actual(); e.payload.search.reference_worlds = references();
+    e.payload.search.readiness = { numeric: null, editor: { accepted: 28, total: 28, passed: true, certificate_sha256: "b".repeat(64) } };
+    if (kind === "duplicate-reference") e.payload.search.reference_worlds[1] = structuredClone(e.payload.search.reference_worlds[0]);
+    if (kind === "wrong-seed") e.payload.search.reference_worlds[0].seed = 42;
+    if (kind === "invented-score") e.payload.search.reference_worlds[0].scores = { throughput: 0, efficiency: 0, selective: 0 };
+    if (kind === "fake-complete") e.payload.search.reference_worlds[0].status = "complete";
+    if (kind === "incomplete-pass") e.payload.search.readiness.editor.accepted = 27;
+    if (kind === "wrong-total") e.payload.search.readiness.editor.total = 29;
+    await expect(validatePreScale(await rehash(e))).rejects.toThrow();
   });
   it.each(["fake-complete", "duplicate", "string-seed", "readiness-loss", "early-evaluation", "claim-live"])("rejects %s even with recomputed envelope integrity", async kind => {
     const e = actual();

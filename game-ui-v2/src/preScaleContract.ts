@@ -4,6 +4,13 @@ export interface MechanismRow {
   id: string; condition: string; seed: number; status: string;
   scores: Record<string, number | null> | null; observation_sha256: string | null;
 }
+export interface ReferenceRow {
+  id: string; seed: number; status: string;
+  scores: Record<string, number | null> | null; observation_sha256: string | null;
+}
+export interface ReadinessReceipt {
+  accepted: number; total: number; passed: boolean; certificate_sha256: string;
+}
 export interface PreScaleSnapshot {
   schema: string; observed_utc: string; observation_kind: string; scope: string;
   scientist_model: string; designer_model: string;
@@ -13,6 +20,8 @@ export interface PreScaleSnapshot {
     worlds: MechanismRow[] };
   search: { status: string; source_commit: string | null; selection_fixed: boolean;
     observed_stage?: string | null; stage_error_type?: string | null;
+    reference_worlds?: ReferenceRow[];
+    readiness?: { numeric: ReadinessReceipt | null; editor: ReadinessReceipt | null };
     candidate_slots: { arm: string; generation: number; status: string; loss: number | null }[];
     evaluation_observations: number; evaluation_plan_worlds: number | null };
   boundaries: Record<string, boolean>;
@@ -69,6 +78,29 @@ export async function validatePreScale(envelope: unknown): Promise<PreScaleSnaps
       || !integer(search.evaluation_observations) || Number(search.evaluation_observations) > 36
       || (search.evaluation_plan_worlds !== null && (!integer(search.evaluation_plan_worlds) || Number(search.evaluation_plan_worlds) > 36))) throw new Error("Invalid search/evaluation scope");
   const slots = new Set<string>();
+  if (search.reference_worlds !== undefined) {
+    const names = ["open-seed", "legacy", "reviewed-accept-all", "no-review-accept-all", "no-review-reject-all", "information-disconnected"];
+    const refs = new Set<string>();
+    if (!Array.isArray(search.reference_worlds) || search.reference_worlds.length !== 6) throw new Error("Six declared reference worlds required");
+    for (const r of search.reference_worlds) {
+      if (!object(r) || typeof r.id !== "string" || !names.includes(r.id) || refs.has(r.id) || r.seed !== 41001
+        || !["not-dispatched", "started-no-terminal-observation", "complete", "failed", "invalid"].includes(String(r.status))
+        || !scoresValid(r.scores) || (r.observation_sha256 !== null && !hash(r.observation_sha256))) throw new Error("Invalid reference world");
+      if (r.status === "complete" && (!hash(r.observation_sha256) || r.scores === null
+        || !object(r.scores) || Object.values(r.scores).some(v => v === null))) throw new Error("Complete reference lacks measurements");
+      if (r.status !== "complete" && (r.scores !== null || String(r.status).startsWith("not-") && r.observation_sha256 !== null)) throw new Error("Noncomplete reference cannot acquire a score");
+      refs.add(r.id);
+    }
+  }
+  if (search.readiness !== undefined) {
+    if (!object(search.readiness)) throw new Error("Invalid source-specific readiness");
+    for (const [name, total] of [["numeric", 2], ["editor", 28]] as const) {
+      const r = search.readiness[name];
+      if (r !== null && (!object(r) || !integer(r.accepted) || r.total !== total || Number(r.accepted) > total
+        || typeof r.passed !== "boolean" || !hash(r.certificate_sha256)
+        || r.passed && r.accepted !== total)) throw new Error("Readiness pass/count differs");
+    }
+  }
   const arms = ["throughput", "efficiency"].flatMap(o => ["parameters", "code-fixed-graph", "code-and-graph", "random"].map(m => `${o}:${m}`));
   for (const r of search.candidate_slots) {
     if (!object(r) || !loss(r.loss) || typeof r.arm !== "string" || !arms.includes(r.arm)

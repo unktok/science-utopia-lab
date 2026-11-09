@@ -33,6 +33,28 @@ try{
   report.initial_completed_M_worlds=initialEnvelope.payload.information.worlds.filter(r=>r.status==='complete').length;
   check((await page.locator('body').innerText()).includes(report.data_observed_utc),'Rendered observation date must match its actual JSON response');
   check(await page.locator('tbody tr').count()===12,'All declared mechanism slots must be visible');
+  const references=initialEnvelope.payload.search.reference_worlds;
+  if(references){
+    check(await page.getByRole('heading',{name:'Fresh reference worlds',exact:true}).count()===1,'Reference stage must be visible');
+    check(await page.locator('.reference-worlds article').count()===6,'All six reference records must be visible');
+    const label=v=>v==null?'—':v.toLocaleString('en-US',{maximumFractionDigits:3});
+    for(const r of references){
+      const card=page.locator(`.reference-worlds article[data-reference-id="${r.id}"]`);
+      check(await card.getAttribute('data-status')===r.status,'Reference status must match actual JSON');
+      check((await card.innerText()).includes(`T ${label(r.scores?.throughput)} · E ${label(r.scores?.efficiency)} · C ${label(r.scores?.selective)}`),'Displayed reference losses must match actual measured/unknown data');
+    }
+    report.completed_reference_ids=references.filter(r=>r.status==='complete').map(r=>r.id);
+    report.checks.push('all six fresh reference identities,statuses,measured losses and unknowns match actual JSON');
+  }else check(await page.getByRole('heading',{name:'Fresh reference worlds',exact:true}).count()===0,'Historical file may not invent reference records');
+  const readiness=initialEnvelope.payload.search.readiness;
+  if(readiness){
+    const text=await page.locator('body').innerText();
+    for(const [key,title] of [['numeric','Numeric submissions'],['editor','Staged controls']]){
+      const r=readiness[key];
+      check(text.includes(r?`${title}: ${r.accepted}/${r.total} accepted · ${r.passed?'certificate passed':'certificate did not pass'}`:`${title}: no certificate recorded.`),'Readiness display must match its own search-source certificate');
+    }
+    report.checks.push('new search-source numerical/staged certificate counts displayed separately from old readiness');
+  }
   check(errors.length===0,'Unexpected JavaScript errors: '+errors.join('; '));
   check(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),'Desktop horizontal overflow');
   check(!/[\u3040-\u30ff\u3400-\u9fff]/u.test(await page.locator('body').innerText()),'UI must remain English');

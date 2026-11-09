@@ -36,6 +36,21 @@ function render(p: PreScaleSnapshot, source: "recorded" | "latest"): void {
     const card = el("article", "", "station"); card.append(el("b", letter, "station-code"), el("h2", title), el("strong", count, "counter"), el("p", detail)); steps.append(card);
   }
   app.append(steps);
+  const refs = p.search.reference_worlds;
+  if (refs) {
+    const references = el("section", "", "panel reference-progress");
+    references.append(el("p", "O / FRESH BASELINE FORWARDS", "eyebrow"),
+      el("h2", "Fresh reference worlds"),
+      el("p", `${refs.filter(r => r.status === "complete").length}/6 complete · four years · development seed41001. These precede the16 proposal slots; they are not generated candidates or unused-seed evaluations.`));
+    const cards = el("div", "", "reference-worlds");
+    for (const r of refs) {
+      const card = el("article"); card.dataset.referenceId = r.id; card.dataset.status = r.status;
+      card.append(el("h3", r.id), el("p", statusLabel(r.status)),
+        el("small", `T ${valueLabel(r.scores?.throughput)} · E ${valueLabel(r.scores?.efficiency)} · C ${valueLabel(r.scores?.selective)}`));
+      cards.append(card);
+    }
+    references.append(cards); app.append(references);
+  }
   const grid = el("div", "", "evidence-grid");
   const mechanisms = el("section", "", "panel"); mechanisms.append(el("p", "M / ACTUAL WORLD RECORDS", "eyebrow"), el("h2", "The information switchyard"));
   const routes = el("div", "", "routes");
@@ -60,6 +75,14 @@ function render(p: PreScaleSnapshot, source: "recorded" | "latest"): void {
     const details = el("details"); details.append(el("summary", "Terminal content identity"), el("code", r.result_sha256)); card.append(details); sidebar.append(card);
   }
   sidebar.append(el("h2", "Search and evaluation"), el("p", statusLabel(p.search.status)), el("p", "Every complete/null proposal and exact tie is retained. An initial-system selection is not an invention."));
+  if (p.search.readiness) {
+    sidebar.append(el("h3", "New search source readiness"));
+    for (const [key, label] of [["numeric", "Numeric submissions"], ["editor", "Staged controls"]] as const) {
+      const r = p.search.readiness[key];
+      sidebar.append(el("p", r ? `${label}: ${r.accepted}/${r.total} accepted · ${r.passed ? "certificate passed" : "certificate did not pass"}` : `${label}: no certificate recorded.`));
+    }
+    sidebar.append(el("small", "Technical interface checks only. Directed controls are not scientific outcomes or free-design competence."));
+  }
   if (p.search.observed_stage) sidebar.append(el("p", `Recorded stage: ${p.search.observed_stage}`));
   if (p.search.stage_error_type) sidebar.append(el("p", `Terminal error class: ${p.search.stage_error_type}. See journals for diagnosis.`));
   for (const r of p.search.candidate_slots) sidebar.append(el("p", `${r.arm} / G${r.generation}: ${statusLabel(r.status)} / ${valueLabel(r.loss)}`));
