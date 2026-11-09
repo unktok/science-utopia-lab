@@ -202,6 +202,8 @@ class NativeScienceKernel:
         register_native_domain(self, registry)
         from .native_researcher_work import register_researcher_work
         register_researcher_work(self, registry)
+        from .native_claim_verification import register_native_claim_verification
+        register_native_claim_verification(self, registry)
         from .tensor_program import IMPLEMENTATION as TENSOR_IMPLEMENTATION, tensor_handler
         registry.register(TENSOR_IMPLEMENTATION, 1, tensor_handler)
         from .code_mechanisms import _schema

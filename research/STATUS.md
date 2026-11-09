@@ -1,9 +1,34 @@
 # Current research status
 
-Updated2026-11-08JST. Observations below span2026-11-07/08UTC, not a live heartbeat.
+Updated2026-11-09JST. D/M observation at01:01UTC, not a live heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
-## Next research planning
+## Active pre-scale completion
+
+The [pre-scale ledger](pre-scale-completion.md) is now in execution, not only
+planning. [Current log](logbook/2026-11-09-pre-scale-completion.md) records the
+immutable source, raw destinations, observations and remaining tasks.
+
+- Actual local35B direct numerical readiness:2/2 literal submissions and cold
+  replays pass at source215311c. T explicitly retains the parent; E changes the
+  six coordinates. Two generation POSTs, no native losses; this is not code/graph
+  readiness or an improvement claim.
+- M information-path comparison: first of12 four-year worlds started, with
+  fixed Qwen3-8B and no project amendments. At the observation time the missing
+  four-year corpus embedding index is being built; no world observation is
+  complete. Four scripted original-world/Docker paths and the structural check
+  pass, but are not live-Qwen outcomes.
+- Separate development adds opt-in independently computed native count claims,
+  verification and preserved corrections, connected to actual next-year
+  scientist inputs.19 focused tests pass; no claim of scientific truth.
+- Same-source T/E search and selected-policy evaluation, next-scope gradient/
+  adoption checks, UI/report/manuscript/reproduction remain unfinished.
+
+The old completed V2 experiment and planning-only observations below retain
+their original scope. Statements that no writer is active apply to that old
+package, not the new D/M study. No active experiment source is changed.
+
+## Previous planning and completed V2 package
 
 The [research-question/decision plan](publication/research-questions-and-decisions.md)
 now connects six tracks to competing explanations and a finite, **unexecuted**

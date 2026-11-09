@@ -6,6 +6,10 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Active pre-scale completion](pre-scale-completion.md) and
+  [2026-11-09 execution log](logbook/2026-11-09-pre-scale-completion.md): actual
+  numerical readiness completed, finite M study started, separate native claim
+  verifier development; the full checklist is not complete.
 - [Research questions and next-stage decisions](publication/research-questions-and-decisions.md):
   six research tracks, competing explanations and claim-specific evidence.
   [Actual closed-data analysis](results/native-design-objective-landscape-v1.md) and
