@@ -1,0 +1,838 @@
+{
+  "all_listed_inputs_unchanged": true,
+  "analysis_module_sha256": "156cfda81d75c79f179135eb85b9e7b466784b0674258b8557d489ade35a4b7d",
+  "analysis_source": "4f38c184c84397c427f1e4c0b613a84a59aa3fc9",
+  "authored_comments_are_causal_explanations": false,
+  "content_sha256": "e5053d35b8c28aaaeec1453f88ce7cbc008f4c9a1f74800ff45ec8318f416c7c",
+  "full_original_source_audit": false,
+  "inputs": {
+    "plan.json": "6352ded26010f7cca2b40476eff179e69ac223024103d5d8f76145f5963af98e",
+    "search/run-00/efficiency--code-and-graph/campaign/native-adaptive-state.json": "02ba1b6f045fa00cf23f13984c01858f5047d700f3882d34c564964770dd8f0d",
+    "search/run-00/efficiency--code-and-graph/worlds/native-adaptive-146c41a883be2a42d3de197f-s41001/system.json": "d3840cbf9342926c176a695d85f5ac4b46b1b27d867566f281d9b6d4042ce7fb",
+    "search/run-00/efficiency--code-and-graph/worlds/native-adaptive-2121c5b679ab0cf7758455e9-s41001/system.json": "ae13528d06df47220362416d00646491eebbe98bbb073a568f9da398e19fad58",
+    "search/run-00/efficiency--code-fixed-graph/campaign/native-adaptive-state.json": "de8fb601965822b02b49c37739cff46106c6e9964979b590726546feae185dc9",
+    "search/run-00/efficiency--code-fixed-graph/worlds/native-adaptive-861dc934151ea50b23067a4d-s41001/system.json": "4b7a713ec3af6442dadf8e66f4ed0d2ca2ce224cd0af7750064b5f049ea4ea8d",
+    "search/run-00/efficiency--code-fixed-graph/worlds/native-adaptive-97fa251ac14f759c20cf3adc-s41001/system.json": "d0c21e90de19b76f4e9c76446e27cbf17407926cf315bb4fdcacad9327f2c0ea",
+    "search/run-00/efficiency--parameters/campaign/native-adaptive-state.json": "8675db1d46ecfd6b5dfcb5e3507c0d6ec6bebb9a0f04bd1fefe85c75a458ed0f",
+    "search/run-00/efficiency--parameters/worlds/native-adaptive-0d2c363a8de1c78e14d10962-s41001/system.json": "a3368a6a32a66174e26dce81324a4da0147edd1a015b1ef27420c4ae8b291a76",
+    "search/run-00/efficiency--parameters/worlds/native-adaptive-23fdb104c222044fdb5e29e7-s41001/system.json": "a151945546d338ea5e794641f54c0f82d444200e53db5fc9298037ab517dee88",
+    "search/run-00/efficiency--random/campaign/native-adaptive-state.json": "dea7b55be2adb7765165e7ce86abe67f1c6720196301fa25fa2053139c60c2f4",
+    "search/run-00/efficiency--random/worlds/native-adaptive-5d0a63ca7d9feab3a45a49c3-s41001/system.json": "f14cdf429a8be35eee421bf640f55339527db6b42f59c3ca97ac6e38bc4f1aed",
+    "search/run-00/efficiency--random/worlds/native-adaptive-c781b55640724fd742603ff0-s41001/system.json": "daee53437d331a10961f452c8e29b9cf12ddeb1f7f21042337848304f898c017",
+    "search/run-00/throughput--code-and-graph/campaign/native-adaptive-state.json": "22cf47be204acb655faa5eeda99befc9b77816df5cb3f1d94461d7271853b892",
+    "search/run-00/throughput--code-and-graph/worlds/native-adaptive-65b2720d2e5c2a4a29fcaafd-s41001/system.json": "6cc16427530e29c1766b88bd0feac152b9ab9d9456e4fd37a41f7ee2a092cfff",
+    "search/run-00/throughput--code-and-graph/worlds/native-adaptive-9929e7f5373a003a6a4f81aa-s41001/system.json": "84edd0eae82953beafdc0e5a2d4cbce1be4c9fa846de590ac6c82a0581fd8fd6",
+    "search/run-00/throughput--code-fixed-graph/campaign/native-adaptive-state.json": "c59eaaaa9deb835582322e3efb4e0f3bb4525de6ee7a77d5673d1db2cdb1dfaa",
+    "search/run-00/throughput--code-fixed-graph/worlds/native-adaptive-e63e0c7799e1a39761440c5e-s41001/system.json": "311f27421ec1cd989cc002716c499d126907e4e3195db1adc4eb5b761c46e234",
+    "search/run-00/throughput--code-fixed-graph/worlds/native-adaptive-ec82cb7a33fbeab5ea018480-s41001/system.json": "5400e9adb468723b7a014e488e71188ba7ddccc227144d6872448435f8e58d46",
+    "search/run-00/throughput--parameters/campaign/native-adaptive-state.json": "dab8b65f27dbc739ac5c9f3a0c9a58b24ddcd1dcd01975548097d599036c6cd8",
+    "search/run-00/throughput--parameters/worlds/native-adaptive-ce2687e4f2ddfd7e7a47cc0d-s41001/system.json": "b94b8c3c3a260ba6f45d90f1f7efb86ed2ec45abec0df8df1cf708ea9b07801e",
+    "search/run-00/throughput--parameters/worlds/native-adaptive-fef5b69d74ea169cc7088634-s41001/system.json": "b94b8c3c3a260ba6f45d90f1f7efb86ed2ec45abec0df8df1cf708ea9b07801e",
+    "search/run-00/throughput--random/campaign/native-adaptive-state.json": "e287cfdbbe0282a9b2c8b7b22b3ba06c9db2e3a85cad39866135f9a044e6331f",
+    "search/run-00/throughput--random/worlds/native-adaptive-71961cc8663431521e356eef-s41001/system.json": "f14cdf429a8be35eee421bf640f55339527db6b42f59c3ca97ac6e38bc4f1aed",
+    "search/run-00/throughput--random/worlds/native-adaptive-7a98ba9ae6edb527520041c2-s41001/system.json": "daee53437d331a10961f452c8e29b9cf12ddeb1f7f21042337848304f898c017",
+    "selection.json": "f60c5a36a657c13ba12d08c08f99da23b031e6c4ce519ec136ae6bcdef00dc01"
+  },
+  "new_authored_code_executions": 0,
+  "new_model_calls": 0,
+  "plan_sha256": "db2df5c5e54a68c8201b6b8c460cffa66770ee37da4f7b0d1089c7f5fc7702cb",
+  "raw_root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/pre-scale-search-v1-a1/outputs/pre-scale-search-v1-a1",
+  "rows": [
+    {
+      "arm": "throughput:parameters",
+      "cross_scores": {
+        "efficiency": -22.333333333333336,
+        "selective": 16.866666666666664,
+        "throughput": -14.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "ac6ddb33622a416a5cc79b00272c03a6cb88292e1fde5bbf005da381bdb89913",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b63b1b9125245bb0470311fe17ef764084018ab332a778926072ef6219970603",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "ac6ddb33622a416a5cc79b00272c03a6cb88292e1fde5bbf005da381bdb89913",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b63b1b9125245bb0470311fe17ef764084018ab332a778926072ef6219970603",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": -14.0,
+      "physical_identity": "native-adaptive-ce2687e4f2ddfd7e7a47cc0d",
+      "row_id": "run-00:throughput:parameters:g0",
+      "status": "complete"
+    },
+    {
+      "arm": "efficiency:parameters",
+      "cross_scores": {
+        "efficiency": 29.333333333333336,
+        "selective": 8.533333333333335,
+        "throughput": -2.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "66a99fa9aaad5ba73b81b19a6f298338c882e03871703b1d5f57db5e91c0ebd7",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "a80beea51c44c8f3d9bfdd023813573d4f5a415bcd51ea0e7ae02743b84e23f9",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "66a99fa9aaad5ba73b81b19a6f298338c882e03871703b1d5f57db5e91c0ebd7",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "a80beea51c44c8f3d9bfdd023813573d4f5a415bcd51ea0e7ae02743b84e23f9",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": 29.333333333333336,
+      "physical_identity": "native-adaptive-23fdb104c222044fdb5e29e7",
+      "row_id": "run-00:efficiency:parameters:g0",
+      "status": "complete"
+    },
+    {
+      "arm": "throughput:code-fixed-graph",
+      "cross_scores": {
+        "efficiency": -22.333333333333336,
+        "selective": 16.866666666666664,
+        "throughput": -14.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d96f0ff1e403768ff089689d6071285cfa563e8a90fde18c2e622bc31812cd71",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "c1a4ba57f844f0b6f9703783ce4db208fc715527c4915bde5cc6b04b875bf8d8",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d96f0ff1e403768ff089689d6071285cfa563e8a90fde18c2e622bc31812cd71",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "c1a4ba57f844f0b6f9703783ce4db208fc715527c4915bde5cc6b04b875bf8d8",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": -14.0,
+      "physical_identity": "native-adaptive-e63e0c7799e1a39761440c5e",
+      "row_id": "run-00:throughput:code-fixed-graph:g0",
+      "status": "complete"
+    },
+    {
+      "arm": "efficiency:code-fixed-graph",
+      "cross_scores": {
+        "efficiency": null,
+        "selective": null,
+        "throughput": null
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "ac9da3f0fe1d7865aae56284ad55e72062e1a03cad619845b524ba70a5fc33fc",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "ee9065ceebb13054a5bc1641cf87dec6cde17fbcfab040dbb8f7e1f5e5857e7d",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "ac9da3f0fe1d7865aae56284ad55e72062e1a03cad619845b524ba70a5fc33fc",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "ee9065ceebb13054a5bc1641cf87dec6cde17fbcfab040dbb8f7e1f5e5857e7d",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": null,
+      "physical_identity": "native-adaptive-861dc934151ea50b23067a4d",
+      "row_id": "run-00:efficiency:code-fixed-graph:g0",
+      "status": "failed"
+    },
+    {
+      "arm": "throughput:code-and-graph",
+      "cross_scores": {
+        "efficiency": null,
+        "selective": null,
+        "throughput": null
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "30dadbfda75115cc365902a9cc8bf8bf6c1cb8a1424978a68d974e208ecde0c0",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "2193e0b7d078560468ecf2e9cb5eda92bb3a598d7d3ea460302dcad2d24c4f44",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "30dadbfda75115cc365902a9cc8bf8bf6c1cb8a1424978a68d974e208ecde0c0",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "2193e0b7d078560468ecf2e9cb5eda92bb3a598d7d3ea460302dcad2d24c4f44",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": null,
+      "physical_identity": "native-adaptive-9929e7f5373a003a6a4f81aa",
+      "row_id": "run-00:throughput:code-and-graph:g0",
+      "status": "failed"
+    },
+    {
+      "arm": "efficiency:code-and-graph",
+      "cross_scores": {
+        "efficiency": 27.0,
+        "selective": 5.4,
+        "throughput": 0.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d3ced75eac8498aa86e9a7a610039817b3fed5111efe447ba3c1fbb0e209a7e4",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "605564d50d0ea0b53380b9082a188d29fcf29dbfcf301412c86a3572b7425fe0",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d3ced75eac8498aa86e9a7a610039817b3fed5111efe447ba3c1fbb0e209a7e4",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "605564d50d0ea0b53380b9082a188d29fcf29dbfcf301412c86a3572b7425fe0",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": 27.0,
+      "physical_identity": "native-adaptive-2121c5b679ab0cf7758455e9",
+      "row_id": "run-00:efficiency:code-and-graph:g0",
+      "status": "complete"
+    },
+    {
+      "arm": "throughput:random",
+      "cross_scores": {
+        "efficiency": 43.5,
+        "selective": 8.700000000000001,
+        "throughput": 0.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d6a20d867ba4b2df44ac5caa4e2f28e1d451bcfb8d6774744079ec7059197e65",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b7be48d7b72ac04ae2a10bea27aa6ffc9bb697927bc4efa34e55f9375103326b",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d6a20d867ba4b2df44ac5caa4e2f28e1d451bcfb8d6774744079ec7059197e65",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b7be48d7b72ac04ae2a10bea27aa6ffc9bb697927bc4efa34e55f9375103326b",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": 0.0,
+      "physical_identity": "native-adaptive-71961cc8663431521e356eef",
+      "row_id": "run-00:throughput:random:g0",
+      "status": "complete"
+    },
+    {
+      "arm": "efficiency:random",
+      "cross_scores": {
+        "efficiency": 43.5,
+        "selective": 8.700000000000001,
+        "throughput": 0.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d6a20d867ba4b2df44ac5caa4e2f28e1d451bcfb8d6774744079ec7059197e65",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b7be48d7b72ac04ae2a10bea27aa6ffc9bb697927bc4efa34e55f9375103326b",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "d6a20d867ba4b2df44ac5caa4e2f28e1d451bcfb8d6774744079ec7059197e65",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b7be48d7b72ac04ae2a10bea27aa6ffc9bb697927bc4efa34e55f9375103326b",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 0,
+      "own_loss": 43.5,
+      "physical_identity": "native-adaptive-5d0a63ca7d9feab3a45a49c3",
+      "row_id": "run-00:efficiency:random:g0",
+      "status": "complete"
+    },
+    {
+      "arm": "efficiency:parameters",
+      "cross_scores": {
+        "efficiency": -22.666666666666664,
+        "selective": 16.533333333333335,
+        "throughput": -14.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "1c75713c119afda3e416793a5517e7d1125bde37c5a0d6a77323c70d466a4665",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "7ae6e966d539716a3b464a64ed389985b3bcdd8b5b4059fe9758db0c1a43ba0e",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "66a99fa9aaad5ba73b81b19a6f298338c882e03871703b1d5f57db5e91c0ebd7",
+        "candidate_sha256": "1c75713c119afda3e416793a5517e7d1125bde37c5a0d6a77323c70d466a4665",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 1
+        },
+        "changed_mechanism_ids": [
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "a1b7aca28a8eef6e0594bf7c535d5de547829c71daa074211bb87fece982126f",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": -22.666666666666664,
+      "physical_identity": "native-adaptive-0d2c363a8de1c78e14d10962",
+      "row_id": "run-00:efficiency:parameters:g1",
+      "status": "complete"
+    },
+    {
+      "arm": "throughput:code-fixed-graph",
+      "cross_scores": {
+        "efficiency": null,
+        "selective": null,
+        "throughput": null
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "0971e49dd33ad7d9b9a5e9a46c745fcb7cfe2eac90125e5c1465427c84698400",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "695891677320f2b147cf306b979381fbe3f69eb27b9c29ef63e7c45e1f61bd23",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "d96f0ff1e403768ff089689d6071285cfa563e8a90fde18c2e622bc31812cd71",
+        "candidate_sha256": "0971e49dd33ad7d9b9a5e9a46c745fcb7cfe2eac90125e5c1465427c84698400",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "7e077564e82714ffba1cb704dd1d8d2c95ac7ec8f6cc0cc4ba824883632caa4f",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": null,
+      "physical_identity": "native-adaptive-ec82cb7a33fbeab5ea018480",
+      "row_id": "run-00:throughput:code-fixed-graph:g1",
+      "status": "failed"
+    },
+    {
+      "arm": "efficiency:code-fixed-graph",
+      "cross_scores": {
+        "efficiency": null,
+        "selective": null,
+        "throughput": null
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "73c8181f8d8036585ff4dcb41650665dc0727af1669a18782532facd9f76e2af",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "699fc27e5b3ba713e066af498cbfbecf8cfd6df3a7ced2ebd905a2f11d71ef71",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "73c8181f8d8036585ff4dcb41650665dc0727af1669a18782532facd9f76e2af",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "699fc27e5b3ba713e066af498cbfbecf8cfd6df3a7ced2ebd905a2f11d71ef71",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": null,
+      "physical_identity": "native-adaptive-97fa251ac14f759c20cf3adc",
+      "row_id": "run-00:efficiency:code-fixed-graph:g1",
+      "status": "failed"
+    },
+    {
+      "arm": "throughput:code-and-graph",
+      "cross_scores": {
+        "efficiency": null,
+        "selective": null,
+        "throughput": null
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "25633c2c0dc5c907278a431a3d3c9035b9305d4fa68ac5843954ef0010e9dc08",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "afcf344259fb9e2fd1d7ae1f393d94c8946766cacc7046e21061e6992a153f32",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "25633c2c0dc5c907278a431a3d3c9035b9305d4fa68ac5843954ef0010e9dc08",
+        "changed_mechanism_categories": {
+          "literal-source": 1
+        },
+        "changed_mechanism_ids": [
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "afcf344259fb9e2fd1d7ae1f393d94c8946766cacc7046e21061e6992a153f32",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": null,
+      "physical_identity": "native-adaptive-65b2720d2e5c2a4a29fcaafd",
+      "row_id": "run-00:throughput:code-and-graph:g1",
+      "status": "failed"
+    },
+    {
+      "arm": "efficiency:code-and-graph",
+      "cross_scores": {
+        "efficiency": 43.5,
+        "selective": 8.700000000000001,
+        "throughput": 0.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "8b87ee1a4338dede64f305a4b68b57badc7826abbfb14219d699e09b72380fdb",
+        "changed_mechanism_categories": {
+          "literal-source": 1,
+          "parameter-or-program": 3
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "828ba2dca70ba1814eff1b5e6cbc2fb9602aeb7ab6abb56ee2b7bb75fb34fc9d",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "d3ced75eac8498aa86e9a7a610039817b3fed5111efe447ba3c1fbb0e209a7e4",
+        "candidate_sha256": "8b87ee1a4338dede64f305a4b68b57badc7826abbfb14219d699e09b72380fdb",
+        "changed_mechanism_categories": {
+          "literal-source": 1,
+          "parameter-or-program": 3
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "world.selection"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "8c8563d114132f488bc0952ad99c9691563c1e107ca767c07afd35a0039c031d",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": 43.5,
+      "physical_identity": "native-adaptive-146c41a883be2a42d3de197f",
+      "row_id": "run-00:efficiency:code-and-graph:g1",
+      "status": "complete"
+    },
+    {
+      "arm": "throughput:random",
+      "cross_scores": {
+        "efficiency": 34.666666666666664,
+        "selective": 9.066666666666666,
+        "throughput": -2.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "7b592bf690ef69f9e10b480f6a800032a60cc07022e5e394785880a0d74e4244",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "f64b3dec731b0b444d6dec221ea1f98a4b774e321aee7009c6eeb9e321f9152d",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "d6a20d867ba4b2df44ac5caa4e2f28e1d451bcfb8d6774744079ec7059197e65",
+        "candidate_sha256": "7b592bf690ef69f9e10b480f6a800032a60cc07022e5e394785880a0d74e4244",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "02091b94f2a9acbfc25b8f1eb34124f351914ad9ab429c410eb22db444e84da5",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": -2.0,
+      "physical_identity": "native-adaptive-7a98ba9ae6edb527520041c2",
+      "row_id": "run-00:throughput:random:g1",
+      "status": "complete"
+    },
+    {
+      "arm": "efficiency:random",
+      "cross_scores": {
+        "efficiency": 34.666666666666664,
+        "selective": 9.066666666666666,
+        "throughput": -2.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "7b592bf690ef69f9e10b480f6a800032a60cc07022e5e394785880a0d74e4244",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "f64b3dec731b0b444d6dec221ea1f98a4b774e321aee7009c6eeb9e321f9152d",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "d6a20d867ba4b2df44ac5caa4e2f28e1d451bcfb8d6774744079ec7059197e65",
+        "candidate_sha256": "7b592bf690ef69f9e10b480f6a800032a60cc07022e5e394785880a0d74e4244",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "02091b94f2a9acbfc25b8f1eb34124f351914ad9ab429c410eb22db444e84da5",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": 34.666666666666664,
+      "physical_identity": "native-adaptive-c781b55640724fd742603ff0",
+      "row_id": "run-00:efficiency:random:g1",
+      "status": "complete"
+    },
+    {
+      "arm": "throughput:parameters",
+      "cross_scores": {
+        "efficiency": -22.333333333333336,
+        "selective": 16.866666666666664,
+        "throughput": -14.0
+      },
+      "from_common_initial": {
+        "baseline_sha256": "db54f83ed3a8a608643900fa7eef45a984a0667b0119868533923e39537ed681",
+        "candidate_sha256": "ac6ddb33622a416a5cc79b00272c03a6cb88292e1fde5bbf005da381bdb89913",
+        "changed_mechanism_categories": {
+          "parameter-or-program": 6
+        },
+        "changed_mechanism_ids": [
+          "addressed-selection",
+          "information-office",
+          "open-memory-router"
+        ],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "b63b1b9125245bb0470311fe17ef764084018ab332a778926072ef6219970603",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "from_recorded_request_parent": {
+        "baseline_sha256": "ac6ddb33622a416a5cc79b00272c03a6cb88292e1fde5bbf005da381bdb89913",
+        "candidate_sha256": "ac6ddb33622a416a5cc79b00272c03a6cb88292e1fde5bbf005da381bdb89913",
+        "changed_mechanism_categories": {},
+        "changed_mechanism_ids": [],
+        "changed_nonmechanism_sections": [],
+        "connections_literal_changed": false,
+        "literal_difference_content_sha256": "038a9a39ab34c7aadb4ca05832ba657cf157caa965f5eaf8fea553b5d63b7413",
+        "node_order_changed": false,
+        "nodes_added": [],
+        "nodes_removed": [],
+        "schedules_literal_changed": false
+      },
+      "generation": 1,
+      "own_loss": -14.0,
+      "physical_identity": "native-adaptive-fef5b69d74ea169cc7088634",
+      "row_id": "run-00:throughput:parameters:g1",
+      "status": "complete"
+    }
+  ],
+  "schema": "scienceutopia.pre-scale-literal-policy-diagnostic.v1",
+  "scientific_source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+  "scope": "Sixteen terminal development submissions only; exact selection/campaign/system joins and declared input-file hashes, NOT full raw physical audit or pending unused-seed evaluation.",
+  "selection_content_sha256": "cb6956d66b93c6d8cc80712cadfd672ac447e0b74b2ba092b24384acad66241a",
+  "selection_file_sha256": "f60c5a36a657c13ba12d08c08f99da23b031e6c4ce519ec136ae6bcdef00dc01",
+  "selection_frozen_utc": "2026-11-09T07:47:45.739110+00:00",
+  "semantic_novelty_or_effect_inferred": false,
+  "slot_status_counts": {
+    "complete": 11,
+    "failed": 5
+  },
+  "slots_with_changed_literal_connections": 0,
+  "slots_with_changed_literal_schedules": 0,
+  "slots_with_changed_literal_sources": 8,
+  "submitted_slots": 16,
+  "unused_seed_evaluation_closed": false
+}

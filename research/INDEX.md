@@ -61,6 +61,10 @@ Historical documents retain their paths and source identities.
   all-slot paths, exact source/measurement joins, selection-fixed common-score
   figure, retained nulls/shared jobs and physical component CSV.41 synthetic
   software checks pass; actual closed O/E execution is still pending.
+  [Literal institution changes](results/pre-scale-mechanism-analysis-verification-v1.json)
+  add71 clean report/rebuild/export checks and a separate16-submission diagnostic:
+  eight source changes, no literal connection/schedule changes. Actual full
+  O/E projection is still pending; allowed design freedom is not realized novelty.
 - [Closed-record institution Foundry export](components/pre-scale-foundry-export-v1.md):
   actual code, ports, wiring, committed researcher frames and technical failures
   from a closed original-source audit.57 Python/349 UI checks and synthetic

@@ -146,6 +146,16 @@ still running and no evaluation outcome is returned to search.
 The chain continues toward both full original-source audits; final interpretation
 and actual closed-data exports remain pending.
 
+At clean4f38c18,71 report/rebuild/export checks pass in37.18s, including30
+literal institution-change checks. The separate
+[terminal-development diagnostic](results/pre-scale-literal-policy-diagnostic-v1.json)
+matches26 unchanged selection/campaign/submitted-system files. All16 submissions
+retain the initial graph connections and schedules; eight rewrite source.
+Their code-and-graph arm label therefore denotes allowed freedom, not observed
+rewiring. Actual request-parent comparisons are kept separately from common
+initial comparisons. This is not the pending full physical O/E audit, causal
+effect evidence or a new selection; no scientific setting or candidate changes.
+
 The [closed-record Foundry adapter](components/pre-scale-foundry-export-v1.md)
 connects all eight development arms to the existing code/wiring/year/failure
 inspector without initializing a queue. [Verification](results/pre-scale-foundry-verification-v1.json)

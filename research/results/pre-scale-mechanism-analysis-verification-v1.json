@@ -1,0 +1,66 @@
+{
+  "schema": "scienceutopia.pre-scale-mechanism-analysis-verification.v1",
+  "source_commit": "4f38c184c84397c427f1e4c0b613a84a59aa3fc9",
+  "clean_source_at_test_start_and_end": true,
+  "analysis_module_sha256": "156cfda81d75c79f179135eb85b9e7b466784b0674258b8557d489ade35a4b7d",
+  "test_module_sha256": "dec9aead062bb38449db78c9e5561e636e9f25d6d100e2811e4a9459ac7e06e4",
+  "python": {
+    "passed": 71,
+    "failed": 0,
+    "seconds": 37.18,
+    "modules": [
+      "tests/reports/test_pre_scale_mechanism_changes.py",
+      "tests/reports/test_pre_scale_search_report.py",
+      "tests/reports/test_pre_scale_search_reproduce.py",
+      "tests/reports/test_pre_scale_foundry_export.py"
+    ],
+    "new_analysis_checks": 30,
+    "junit": "outputs/pre-scale-mechanism-analysis-qa-v1/clean-junit.xml",
+    "junit_sha256": "482a25903019ecff6481357c42390b65e45c705947e008f1db057db5cf68bf11",
+    "interpreter": "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "environment": {
+      "PYTHONHASHSEED": "42",
+      "CUDA_VISIBLE_DEVICES": "",
+      "HF_HUB_OFFLINE": "1",
+      "HF_DATASETS_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "scope": "Literal source/parameter/interface/node/wire/order changes, missing/null/empty values, absent versus submitted failed candidates, exact retained-policy identities, non-execution and reproducible read-only CLI; existing report/rebuild/export checks. No Docker fleet or new inference."
+  },
+  "earlier_precommit": {
+    "passed": 27,
+    "failed": 0,
+    "seconds": 11.43,
+    "junit": "outputs/pre-scale-mechanism-analysis-qa-v1/precommit-junit.xml",
+    "scope": "Precommit smaller test version, not the source-bound final 30 new checks."
+  },
+  "actual_development_diagnostic": {
+    "path": "research/results/pre-scale-literal-policy-diagnostic-v1.json",
+    "content_sha256": "e5053d35b8c28aaaeec1453f88ce7cbc008f4c9a1f74800ff45ec8318f416c7c",
+    "joined_immutable_input_files": 26,
+    "submitted_slots": 16,
+    "changed_literal_source_slots": 8,
+    "changed_literal_connection_slots": 0,
+    "changed_literal_schedule_slots": 0,
+    "all_listed_inputs_unchanged": true,
+    "full_original_source_audit": false,
+    "scope": "Frozen selection, eight completed campaign states and sixteen submitted physical system files only; actual request-parent and common-initial literal differences. Not full physical audit or pending unused-seed outcomes."
+  },
+  "actual_closed_report_projection": "pending evaluation and matching full original-source audits",
+  "retained_diagnostic_readback": {
+    "first_result": "failed-content-hash",
+    "error": "ValueError: numeric journal content changed",
+    "cause": "The manual cross-language presentation step decoded and re-serialized Python JSON through JavaScript, coercing integral floating-point values such as -14.0 to -14. This altered the content-hash representation, not the underlying raw scientific files.",
+    "correction": "Preserve the exact original Python JSON output through apply_patch, including numeric spellings; do not re-serialize hash-bound numerical records through JavaScript.",
+    "final_result": "passed-content-hash-and-26-input-file-checks",
+    "final_content_sha256": "e5053d35b8c28aaaeec1453f88ce7cbc008f4c9a1f74800ff45ec8318f416c7c",
+    "scientific_raw_files_changed": false,
+    "analysis_cli_uses_python_serialization_already": true
+  },
+  "scientific_settings_changed": false,
+  "new_model_calls": 0,
+  "new_authored_code_executions": 0,
+  "semantic_novelty_or_improvement_inferred": false,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}

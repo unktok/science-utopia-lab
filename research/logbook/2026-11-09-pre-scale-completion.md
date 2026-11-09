@@ -644,3 +644,41 @@ at07:47:57.582056UTC. The frozen evaluation plan has27 physical jobs for36
 logical label/seed rows. No selected policy is modified, no failed slot is
 replaced and no evaluation feedback is returned to search. Full E/audits,
 results, actual UI export, paper integration and quiet-window QA remain.
+
+## Literal submitted institution changes
+
+While the unchanged selected-policy evaluation continues, a read-only change
+projection separates literal source, parameter/program and interface changes
+from nodes, connections, schedules and other system sections. It compares each
+submitted candidate with the common initial, not a guessed proposal parent;
+null submissions and submitted runtime failures remain distinct. Typed parsing
+does not execute code or provide a new structural/execution certificate.
+
+At clean4f38c18,71 checks across four analysis/report/rebuild/export modules
+pass in37.18s, including30 new change-analysis checks. The earlier precommit
+27-check receipt is retained separately. Missing/null/empty fields, deleted
+nodes/wires, duplicate node IDs, wrapper source, order-only changes and a
+repeatable CLI are tested. See the
+[source/hash/scope receipt](../results/pre-scale-mechanism-analysis-verification-v1.json).
+
+The separate [actual development diagnostic](../results/pre-scale-literal-policy-diagnostic-v1.json)
+joins frozen selection, all eight terminal campaign states and all16 submitted
+physical SystemSpecs, with26 unchanged file hashes. It records both common
+initial and actual request-parent differences. Eight slots change source;
+none changes literal connections or schedules. Therefore this pilot does not
+demonstrate newly invented topology merely because an arm permits graph edits.
+The successful T/code G0 source always accepts; E/code-and-graph G0 rejects
+with a literal zero final score, and G1 implements an average-score threshold.
+Those descriptions concern source rules, not a verified isolated causal effect.
+In particular, comments claiming rejection avoids already-completed reviewing
+are not accepted as explanations. Original full physical audits, evaluation,
+closed-report projection and final interpretation remain pending.
+
+The first retained-diagnostic readback rejects its content hash. The manual
+presentation step had re-serialized Python JSON through JavaScript, changing
+integral floating-point spellings such as−14.0 to−14. The file is corrected by
+preserving the original Python JSON text, not changing the expected content
+hash. Readback then verifies the originale5053d35 digest and all26 input hashes.
+The failure and correction remain in the verification receipt. The actual
+analysis CLI already serializes directly in Python; no scientific source,
+raw observation or active evaluation condition is changed.

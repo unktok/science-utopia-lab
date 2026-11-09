@@ -94,3 +94,13 @@ assigned loss, exact physical sharing and byte-identical synthetic rebuilding.
 Synthetic plotting checks are labelled SYNTHETIC QA and kept in ignored QA
 outputs, not the manuscript or scientific result inventory. Actual O/E
 reporting and its final visual/data review remain required after closure.
+
+The [literal-change verification](../results/pre-scale-mechanism-analysis-verification-v1.json)
+records71 clean-source passing checks across the new analysis and existing
+report/rebuild/export modules. Its separate
+[development diagnostic](../results/pre-scale-literal-policy-diagnostic-v1.json)
+joins26 immutable input files: frozen selection, eight terminal campaign
+states and sixteen physical SystemSpecs. All16 submitted candidates preserve
+the common initial's literal connections and schedules; eight change source.
+Those checks preserve runtime failures and actual request-parent differences,
+but do not replace the pending full physical audit or unused-seed evaluation.
