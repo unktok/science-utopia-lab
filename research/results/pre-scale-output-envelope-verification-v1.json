@@ -1,0 +1,68 @@
+{
+  "schema": "scienceutopia.pre-scale-output-envelope-verification.v1",
+  "verified_clean_source": "481e2b3ae0589638b383b0a634de0350371cdd5b",
+  "notice_module_sha256": "9e02a044cfde41775e584afb3f1de22fd8fb06f92acb957495dbe1c5422ffc95",
+  "new_test_module_sha256": "8d92b8d9a1d96a82f5cb4c1f187f356862e49e6bed4e8ddb76e377abfad2f139",
+  "checks": {
+    "passed": 108,
+    "failed": 0,
+    "seconds": 13.50,
+    "modules": 6,
+    "junit": "outputs/pre-scale-output-envelope-qa-v1/clean-junit.xml",
+    "junit_sha256": "b195e535d3b9e5e0621427c9913185f19aa9dd387813d1dad1d9984a326d8e20",
+    "scope": "Offline literal syntax, data contract, staged-editor/non-veto behavior and cold replay, including scripted native phases; not a live model or Docker campaign."
+  },
+  "preserved_unsuccessful_check": {
+    "passed": 107,
+    "failed": 1,
+    "seconds": 13.18,
+    "cause": "Invocation omitted required CPU/offline environment; native fixture stopped at CUDA_VISIBLE_DEVICES assertion before running its world.",
+    "junit": "outputs/pre-scale-output-envelope-qa-v1/initial-junit.xml",
+    "junit_sha256": "1e3f30d2ff558f4c1bb28c778312c56445ab78b403f5e0d02ce395770927f06b"
+  },
+  "coverage": [
+    "Single local alias or literal input-payload read used directly as an output-list item",
+    "Existing result validator rejects the observed malformed data shape, without source execution",
+    "Explicit record envelope and empty output lists do not trigger this advice",
+    "Opaque helpers and reassigned aliases are not inferred",
+    "Input payload already carrying a valid record envelope remains legal despite conditional advice",
+    "Renamed entry argument, custom ports and process delegate preserve exact ownership",
+    "Static validation and explicit submission remain legal; no repair or veto",
+    "Cold replay retains original journals and makes no extra model calls",
+    "Actual frozen E candidate source and failure remain unchanged"
+  ],
+  "actual_observation": {
+    "scientific_source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+    "references_complete": 6,
+    "consumed_slots": 5,
+    "completed_slots": 3,
+    "failed_slots": 2,
+    "search_and_evaluation_closed": false,
+    "efficiency_code_fixed_graph_g0": {
+      "generation_error": null,
+      "status": "failed",
+      "loss": null,
+      "error_type": "CodeExecutionError",
+      "cause": "Generated world output contains an input payload directly, not a record envelope containing payload.",
+      "system_file_sha256": "4b7a713ec3af6442dadf8e66f4ed0d2ca2ce224cd0af7750064b5f049ea4ea8d"
+    },
+    "throughput_code_and_graph_g0": {
+      "generation_error": null,
+      "status": "failed",
+      "loss": null,
+      "error_type": "GraphRuntimeError",
+      "cause": "Two generated decisions have paper_id/decision only, lacking conference_id and finite final_score; the native consumer rejects them.",
+      "system_file_sha256": "84edd0eae82953beafdc0e5a2d4cbce1be4c9fa846de590ac6c82a0581fd8fd6"
+    }
+  },
+  "warning_is_not_a_veto": true,
+  "general_type_dataflow_or_reachability_proof": false,
+  "host_wrap_repair_or_fallback": false,
+  "active_scientific_source_prompt_loss_budget_or_selection_changed": false,
+  "failed_slots_replaced": false,
+  "new_model_calls_from_this_verification": 0,
+  "new_scientific_worlds_from_this_verification": 0,
+  "fresh_source_bound_readiness_required_before_future_native_use": true,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}

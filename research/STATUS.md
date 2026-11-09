@@ -44,6 +44,11 @@ immutable source, raw destinations, observations and remaining tasks.
   At the04:37UTC recorded observation, open-seed and legacy references are
   complete (2/6), and reviewed-accept-all has started. Reference worlds precede
   the16 proposal slots; a started record alone is not liveness evidence.
+  By06:02UTC, all six references and five proposal slots are recorded: three
+  proposals execute and two fail with unavailable loss. E/code-fixed-graph
+  returns a world payload without its output envelope; T/code-and-graph emits
+  decisions without conference/score fields. Both raw failures remain; no
+  slot replacement or change to the active62388a7 conditions is made.
 - The broader source-bound Python verification at cleana377486 passes374/374
   checks in215.56s. The earlier085f87b result335/336 remains a failed source,
   with its original JUnit retained. [Verification receipt](results/pre-scale-completion-software-verification-v1.json)
@@ -87,6 +92,16 @@ same native checkpoint/source/model/corpus/seed/design join already used for
 discrete policies, before update and on resume. All19 targeted math/native/Docker
 checks pass without skips. This is not a new live-model gradient result and is
 not backported into either active scientific source.
+
+Separate prospective authoring advice now identifies literal input payloads
+returned directly inside output lists. It is conditional, non-veto advice,
+not a type proof, code execution or automatic wrapping. At clean481e2b3,
+[108 focused checks pass](results/pre-scale-output-envelope-verification-v1.json),
+including exact source preservation, legal explicit finish, intentional
+already-enveloped payloads and cold replay without extra model calls. The
+active experiment does not use this later source; any future native use needs
+its own fresh source-bound readiness. The original broad4259854 QA below is
+not evidence for this later runtime change.
 
 The later clean4259854 broad check has437 passed/1 failed (Docker execution and
 cleanup timeout); it is **not** a fully passing source receipt. At the same

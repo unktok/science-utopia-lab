@@ -543,3 +543,34 @@ complete with T−14/E0/C56 and measured Q0 under the simulator's current metric
 the displayed zero is therefore recorded, not an unavailable value replaced
 by zero. The actual observer remains live and preserves its original rules.
 These partial reference facts are not an optimization or final comparison result.
+
+## Native proposal failures and separate prospective advice
+
+At06:02UTC, the actual62388a7 search has six references and five consumed
+proposal slots: three complete, two failed, no evaluation yet. The execution
+handle for the serialized chain remains live. E/code-fixed-graph G0 is submitted
+and compiled, but its generated `world: [observations_in]` lacks the required
+record envelope. The code executor rejects the result after the first review
+phase; the partial world, replies, costs and unavailable loss remain intact.
+T/code-and-graph G0 also submits and executes code, but the resulting two
+decision payloads contain only paper_id/decision. The native consumer requires
+conference_id and a finite final_score, so it rejects the batch. This is not
+evidence of worse objective performance or of transport corruption.
+
+Prospective481e2b3 adds a read-only syntax advisory for direct input payloads
+and singly assigned local aliases in literal output lists. It never wraps the
+payload, rejects submission, infers opaque helper behavior or executes source.
+An input payload can intentionally already be a valid output envelope; that
+case stays legal. The active62388a7 source and its model frames are unchanged,
+and failed slots are not replaced. Later native use requires fresh readiness.
+
+The first new unit invocation fails one fixture because the test action omits
+its required rationale; the fixture is corrected without weakening submission
+validation. The subsequent broader invocation has107 passes/one failure because
+the required CPU/offline environment was omitted; its original JUnit is retained.
+At clean481e2b3 with the declared environment, all108 focused checks pass in
+13.50s. Actual E source/failure bytes remain unchanged. The exact
+[verification receipt](../results/pre-scale-output-envelope-verification-v1.json)
+separates this software evidence from the still-running scientific study.
+The pending quiet-window check must also cover the latest runtime rather than
+silently attributing the older4259854 receipt to new code.
