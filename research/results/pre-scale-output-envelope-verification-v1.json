@@ -56,6 +56,37 @@
     }
   },
   "warning_is_not_a_veto": true,
+  "unchanged_original_source_partial_world_diagnostic": {
+    "execution_source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+    "exit_code": 0,
+    "cells_checked": 2,
+    "scope": "Original physical_proof accepts both completed failure cells as partial-or-technical-failure. This is not the pending full search/evaluation audit.",
+    "cell_inventory_unchanged_during_check": true,
+    "cells": [
+      {
+        "identity": "native-adaptive-861dc934151ea50b23067a4d-s41001",
+        "raw_files": 10,
+        "raw_inventory_sha256": "07376e1476206319a629a90209ddf716ce640a7666e2820c75187bb55ee8becd",
+        "proof_sha256": "2ceeaaa10a4ce4932c25afb95e3a5903dcc66e8afb17c59eaf3e587f05e9759a",
+        "through_committed_year": 0,
+        "researcher_responses": 15,
+        "uncheckpointed_responses": 15,
+        "measurement": null
+      },
+      {
+        "identity": "native-adaptive-9929e7f5373a003a6a4f81aa-s41001",
+        "raw_files": 10,
+        "raw_inventory_sha256": "2f69c85ae9482eb4872f6b79c050874160b96578d95119b761b5abf040eb6276",
+        "proof_sha256": "214572feed301be4457a9d9db70646baae997fd3727743434d08a66dd8adf859",
+        "through_committed_year": 0,
+        "researcher_responses": 15,
+        "uncheckpointed_responses": 15,
+        "measurement": null
+      }
+    ],
+    "new_model_calls": 0,
+    "new_code_executions": 0
+  },
   "general_type_dataflow_or_reachability_proof": false,
   "host_wrap_repair_or_fallback": false,
   "active_scientific_source_prompt_loss_budget_or_selection_changed": false,

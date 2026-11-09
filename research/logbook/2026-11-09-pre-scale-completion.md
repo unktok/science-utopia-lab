@@ -574,3 +574,13 @@ At clean481e2b3 with the declared environment, all108 focused checks pass in
 separates this software evidence from the still-running scientific study.
 The pending quiet-window check must also cover the latest runtime rather than
 silently attributing the older4259854 receipt to new code.
+
+The unchanged62388a7 `physical_proof` also checks both failed cells offline
+with exit0 and unchanged per-cell inventories. Each retains15 actual scientist
+responses before the first annual commit, no completed-year measurement and
+an explicit partial-or-technical-failure proof. These component checks make no
+new model/code calls and do not replace the still-pending full O/E audit.
+The latest clean76816f3 software checkout is reserved separately as
+`science-utopia-lab-experiments/pre-scale-software-qa-v1-a2`; no Docker fleet
+is launched alongside the native scientific writer. The older4259854 failed
+receipt and checkout remain preserved rather than being relabelled as a pass.
