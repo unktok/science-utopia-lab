@@ -1,6 +1,6 @@
 # Current research status
 
-Updated2026-11-09JST. D/M observation at01:01UTC, not a live heartbeat.
+Updated2026-11-09JST. D/M observation at02:21UTC, not a live heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
 ## Active pre-scale completion
@@ -13,11 +13,12 @@ immutable source, raw destinations, observations and remaining tasks.
   replays pass at source215311c. T explicitly retains the parent; E changes the
   six coordinates. Two generation POSTs, no native losses; this is not code/graph
   readiness or an improvement claim.
-- M information-path comparison: first of12 four-year worlds started, with
-  fixed Qwen3-8B and no project amendments. At the observation time the missing
-  four-year corpus embedding index is being built; no world observation is
-  complete. Four scripted original-world/Docker paths and the structural check
-  pass, but are not live-Qwen outcomes.
+- M information-path comparison:1/12 four-year worlds complete and the next
+  started, with fixed Qwen3-8B and no project amendments. Initial corpus index
+  construction is finished and later retrieval uses the cache. Completed M0
+  records226 scientist responses/739.281 cumulative call seconds; this excludes
+  index/role/code/host time and is not an end-to-end forecast. Full-study original
+  audit and interpretation remain pending.
 - Separate development adds opt-in independently computed native count claims,
   verification and preserved corrections, connected to actual next-year
   scientist inputs.19 focused tests pass; no claim of scientific truth.
@@ -38,6 +39,17 @@ immutable source, raw destinations, observations and remaining tasks.
   the previous37-page artifact remains unchanged.
 - M closure/audit/analysis, fresh same-source T/E search and selected-policy
   evaluation, final actual-record exports and result/manuscript update remain.
+
+A finite serialized continuation is now waiting at frozen analysis1ac9b4a,
+PID27571, raw `outputs/pre-scale-completion-chain-v1-a1/`. It waits for original
+M writer16044 to disappear with complete records, requires two matching M audits,
+then runs fresh readiness→search→evaluation→two matching O/E audits. It never
+rerolls a consumed stage; errors stop that chain. A waiting scheduler is not a
+second inference writer. Actual M and O/E experiment sources remain unchanged.
+Read-only descriptive M/O/E report/figure generators are implemented;38 focused
+projection/guard/order tests pass. Their real closed-data execution remains
+pending. The latest English snapshot records1/12 M and prepared-only O/E and
+passes9 UI tests plus actual Chrome desktop/mobile/404/tamper verification.
 
 The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old

@@ -188,3 +188,30 @@ before any designer role load. It does not infer the original process exit code
 from process disappearance, does not retry a consumed stage, and stops on errors.
 Eighteen focused synthetic guard/order tests pass in3.44s; no new scientific
 observations or local-model readiness certificate is inferred from those tests.
+
+## Continuation launched; first complete world
+
+The unchanged1ac9b4a analysis checkout passes the18 focused tests again in4.66s
+before dispatch. At2026-11-09T02:15:36UTC the finite continuation starts as
+PID27571 (`outputs/pre-scale-completion-chain-v1-a1/` in main). It is waiting,
+not running another model. Its raw start record retains script hashes, original
+writer identity and the6-hour waiting allowance. No extra native world is added.
+
+At02:21UTC actual M records show1/12 complete (`M0-s41001`) and M1 started.
+The original M0 checkpoint records226 first-attempt scientist replies, no recorded
+retries/failures,228603 prompt tokens/19632 completion tokens and739.280975s
+cumulative call time. These are observed components, excluding the initial CPU
+embedding build, role/code/retrieval/host overhead. This is not an audited M
+effect or an end-to-end timing estimate. Later worlds now hit the saved corpus
+index. The actual UI snapshot hash is
+`d7d1f987fdd99fb56b14f721a76d6218d803e31658a74c0bf02eb5777586d4dc`.
+All9 UI tests and actual Chrome desktop/mobile/404/tamper checks pass; the new
+screen captures/receipt are in `game-ui-v2/screenshots/pre-scale-observatory-first-world-qa/`.
+
+Closed-audit-only M and O/E report/print-figure generators are added separately.
+They preserve every slot, explicit null, actual consumer year and shared physical
+evaluation identity. Three paired seeds stay descriptive; the reports do not
+infer scientific/optimizer benefit. Combined38 projection/guard/order tests
+pass in7.32s using explicitly synthetic cases. No synthetic fixture is copied
+into research results or paper figures. Actual report generation still awaits
+closed original-source audits; the active goal is not marked complete.

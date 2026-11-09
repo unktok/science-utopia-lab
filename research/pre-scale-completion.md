@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | 提出と実行期限 | 数値専用のliteral提出、既存自由code/graph、期限・中断・再生を実backendとscripted native consumerで確認 | 数値2/2実backend・cold replay成功。code/graphは次source確認が残る |
 | 目的と測定 | T/Eを小規模対象、Cとraw成分を診断とし、law固定domain・seed・参照・選択・費用を実行前に固定 | D/M凍結済み。O/Eはclean62388a7でprepare済み、推論未dispatch |
-| 情報機構 | 元worldでM0/M1/M2/M3を作り、経路と実入力を確認し、有限の小規模比較を実行・解析 | scripted経路5件pass。source215311cで12world開始、初回索引構築中 |
+| 情報機構 | 元worldでM0/M1/M2/M3を作り、経路と実入力を確認し、有限の小規模比較を実行・解析 | scripted native経路pass。source215311cで1/12world完走・次条件開始、初回索引構築完了 |
 | 自由制度の閉ループ | 同じsourceで数値／code／graph／uniformの目的別pilot、選択固定、未使用条件評価を閉じる | 新経路・有限58world上限・全tie/null・評価前freezeを実装。新source実backend readinessと実行が残る |
 | 勾配の接続 | 明示した設計分布とnative評価の対応、更新後のforward、無勾配対照を有限scopeで確認 | 現M1上で2draw→更新→fresh native forward・無勾配対照の4world接続QA pass。scripted HTTP／corpusであり新Qwen優位性ではない |
 | 継続社会 | 元worldのcheckpointから実際に制度を導入し、state・資源・memory・pending情報の保持を検証 | 現M3上で変更・元社会保持・queue保持・再構築・継続がpass。scripted QA |
