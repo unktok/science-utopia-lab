@@ -10,10 +10,10 @@ from utopia.system.tensor_program import execute_tensor_program
 from utopia.system.design_patch import digest
 
 
-def fixture(*,empty=False):
+def fixture(*,empty=False,score_at_threshold=False):
     program=addressed_selection_program();state={'accepted_so_far':0.};frames=[]
     for year in range(1,5):
-        raw=[] if empty else [[3.,3.],[11./3.,3.]]
+        raw=[] if empty else ([[4.,3.]] if score_at_threshold else [[3.,3.],[11./3.,3.]])
         inputs={'features':torch.tensor(raw,dtype=torch.float64).reshape(-1,2)}
         out,after=execute_tensor_program(program,inputs,
             state={k:torch.tensor(v,dtype=torch.float64) for k,v in state.items()},hard=True)
@@ -36,6 +36,19 @@ def test_empty_years_are_not_evidence_of_threshold_rejection():
     p,f=fixture(empty=True);r=selector_statistics(p,f)
     assert r['empty_record_set'] and r['score_range'] is None
     assert not r['every_observed_record_strictly_below_threshold'] and not r['all_observed_accept_outputs_zero']
+
+
+def test_threshold_equality_accepts_once_then_preserves_memory_penalty():
+    p,f=fixture(score_at_threshold=True);r=selector_statistics(p,f)
+    assert r['recorded_accept_output_sum']==1.
+    assert r['selected_effective_threshold_range']==[4.,4.01]
+    assert r['margin_range'][1]==0.
+    assert not r['every_observed_record_strictly_below_threshold'] and not r['all_observed_accept_outputs_zero']
+
+
+def test_first_frame_cannot_start_from_an_invented_memory():
+    p,f=fixture();f[0]['trace']['state_before']['accepted_so_far']=1.
+    with pytest.raises(ValueError,match='original initial memory'):selector_statistics(p,f)
 
 
 @pytest.mark.parametrize('target',['outputs','state_after','state_before','year','program'])

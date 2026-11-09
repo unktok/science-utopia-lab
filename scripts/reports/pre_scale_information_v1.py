@@ -113,8 +113,8 @@ def render(report,output):
                 y=row['first_direction_input_year']
                 if y is None:ax.text(i+(j-1)*.14,.25,'×',ha='center',color=colors[i],fontsize=9)
                 else:ax.scatter([i+(j-1)*.14],[y],s=19,color=colors[i])
-        ax.set(title='First dossier in direction input',xticks=range(4),xticklabels=CONDITIONS,
-            yticks=range(1,5),ylim=(0,4.5),xlabel='×: none observed in four years',ylabel='Actual native year')
+        ax.set(title='First history in input',xticks=range(4),xticklabels=CONDITIONS,
+            yticks=range(1,5),ylim=(0,4.5),xlabel='×: no history observed',ylabel='Actual native year')
         fig.subplots_adjust(left=.07,right=.99,bottom=.23,top=.84,wspace=.42)
         for ext in ('png','svg'):
             fig.savefig(output/('information-comparison.'+ext),dpi=240,
