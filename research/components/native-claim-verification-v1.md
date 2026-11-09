@@ -16,12 +16,17 @@ institutional intervention; registration alone does not run the verifier.
 The verifier reads the actual simulation's paper archive and review histories,
 not a candidate-supplied observation or declared measurement. It records the
 literal assertion, computed count, evidence hash and boolean consistency result.
+An actual native publication-completion marker, not the calendar number alone,
+is required for claims about the current year. The read-only capability catalog
+exposes its exact typed input, actual validators and explicit non-truth scope.
 A correction has a new claim ID, names its predecessor and must concern the same
 metric and interval. Both records remain; the successor binds the predecessor's
 verdict hash. Malformed batches fail before state changes. Retained verification
 state is recomputed against actual records, so a seeded `matches=true` flag
 cannot bypass checking. Claims about future periods and unsupported quantities
 are rejected, not assigned invented scientific scores.
+The ABI bounds one invocation at256 claims and retained history at4096 records;
+overflow fails atomically, never silently discards old false claims.
 
 The scripted integration test uses the original six-year `Simulation`, real
 networkless Docker code execution, and scripted corpus/model responses. A code

@@ -66,3 +66,25 @@ def test_all_actual_pre_delivery_payloads_match_across_information_edges_and_hos
     assert snapshots[0]['first_year']
     assert all(s['first_year']==snapshots[0]['first_year'] for s in snapshots[1:])
     assert all(s['raw_events']!=snapshots[0]['raw_events'] for s in snapshots[1:])
+
+
+@pytest.mark.parametrize('condition',['M0','M1','M2','M3'])
+@pytest.mark.parametrize('duration',[2,3])
+def test_original_long_projects_empty_cycles_and_next_eligible_direction_are_supported(
+        tmp_path,fixed_corpus,monkeypatch,condition,duration):
+    from tests.runtime import test_portable_checkpoint_integration as fixture
+    monkeypatch.setattr(fixture,'DIRECTION',next(d for d in fixture.AVAILABLE_DIRECTIONS if d.years==duration))
+    kernel=NativeScienceKernel(information_system(IMAGE,condition=condition),code_executor=DockerCodeExecutor(IMAGE))
+    sim,calls=make_sim(tmp_path/condition,native=kernel)
+    try:
+        sim.run()
+        assert all(r['decisions']=={'total_accepted':0,'total_rejected':0} for r in sim.yearly_results[:duration-1])
+        assert kernel.last_year==6 and sim.paper_tracker.papers_by_id
+        # Arrival in context does not force a new scientific project/LLM call.
+        # With three-year projects both immediate/delayed mail can first enter
+        # the next eligible direction choice in year4, not necessarily year2/3.
+        observed=[ctx[1] for (ctx,_,_),payload in calls if ctx[0]=='phase1_directions'
+            and 'native-research-history-dossier-v1' in json.dumps(payload)]
+        if condition=='M0':assert not observed
+        else:assert min(observed)==duration+1
+    finally:sim.llm.response_cache.close()

@@ -315,6 +315,9 @@ class NativeScienceKernel:
             self._apply_decisions(context)
             sim._commit_conference_decisions(year, results)
             sim.wandb_logger.log_phase(year, 4, results, sim)
+            # Trusted execution marker for opt-in completed-interval verifiers.
+            # Not included in the native observation, prompts or checkpoints.
+            frame['publication_committed_through_year']=year
         elif stage == "citation-potential":
             sim._assign_citation_potential(year)
         elif stage == "funding":

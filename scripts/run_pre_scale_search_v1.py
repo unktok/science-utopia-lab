@@ -10,7 +10,6 @@ import json
 import os
 from pathlib import Path
 
-from scripts.run_native_design_benchmark import selection_payload
 from scripts.native_design_benchmark_plan import policy_identity
 from scripts.native_benchmark_seed_usage import usage_inventory
 from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
@@ -39,6 +38,13 @@ OBJECTIVES=('throughput','efficiency')
 METHODS=('parameters','code-fixed-graph','code-and-graph','random')
 EVALUATION_SEEDS=(51001,51011,51017)
 SEED=41001
+ENVIRONMENT={'PYTHONHASHSEED':'42','CUDA_VISIBLE_DEVICES':'','HF_HUB_OFFLINE':'1',
+             'HF_DATASETS_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1'}
+
+
+def require_environment():
+    if any(os.environ.get(k)!=v for k,v in ENVIRONMENT.items()):
+        raise ValueError('launch with fixed Python/CUDA and offline corpus/model environment before any dispatch')
 
 
 def campaign(root,plan,run,arm):
@@ -83,8 +89,10 @@ def build_plan(*,source,scientist,designer,backend,data_cache,seed_usage):
         'protocol':PROTOCOL,'protocol_sha256':file_sha256(ROOT/PROTOCOL),'scientist':clone(scientist),
         'designer':clone(designer),'backend':clone(backend),'data_cache':str(Path(data_cache).resolve()),
         'world':world,'experiment':experiment,'losses':losses,'objectives':list(OBJECTIVES),
+        'launch_environment':clone(ENVIRONMENT),
         'methods':list(METHODS),'assignments':assignments,'campaign_bindings':{'run-00':bindings},
         'schedule':schedule,'generations':2,'reference_systems':references,
+        'reference_order':list(references),'arm_order':list(bindings),
         'evaluation':{'seeds':list(EVALUATION_SEEDS),'years':4,'maximum_physical_worlds':36,
             'reference_labels':['open-seed','reviewed-accept-all','no-review-accept-all','no-review-reject-all'],
             'seed_usage':[r['content_sha256'] for r in seed_usage]},
@@ -107,6 +115,7 @@ def prepare(args):
     source=pinned_revision(ROOT)
     if args.output.exists():raise ValueError('fresh output destination required')
     old=checked(json.loads(args.operator_binding_plan.read_text()))
+    if not Path(old['data_cache']).is_dir():raise ValueError('existing explicitly bound offline data cache required')
     usages=[usage_inventory(p,EVALUATION_SEEDS) for p in args.seed_usage_root]
     plan=build_plan(source=source,scientist=old['scientist'],designer=old['designer'],
         backend=backend_binding(old['designer']),data_cache=old['data_cache'],seed_usage=usages)
@@ -144,6 +153,9 @@ def readiness(root,plan):
     result=bounded_editor(root/'editor-readiness',kind='calibration',request=req,provider=plan['designer'],
         source_commit=plan['source_commit'],maximum_posts=count,inference_lock=root/'inference.lock')
     if not result['passed']:raise ValueError('editor readiness failed; no production or replacement')
+    cert=checked(json.loads((root/'editor-readiness/calibration/certificate.json').read_text()))
+    if cert['plan']['backend']!=plan['backend'] or cert['plan']['runtime']!=plan['runtime']:
+        raise ValueError('editor backend/runtime differs from the prospective search plan')
 
 
 def observe(root,plan,identity,system,seed,role):
@@ -165,7 +177,7 @@ def observe(root,plan,identity,system,seed,role):
 
 def progress(root,plan,stage,active=None):
     rows=[]
-    for arm in plan['assignments']:
+    for arm in plan['arm_order']:
         c=campaign(root,plan,'run-00',arm)
         for g,r in enumerate(c.state['records']):
             o=r['observations'][0] if r['observations'] else None
@@ -178,8 +190,49 @@ def progress(root,plan,stage,active=None):
     print(json.dumps({k:v for k,v in payload.items() if k!='search_slots'}),flush=True)
 
 
+def selection_payload(root,plan,*,frozen_utc,campaign_loader=campaign):
+    """Tie order is explicit dispatch chronology, never JSON mapping order."""
+    root=Path(root);rows=[];controllers={}
+    def row(identity,arm,system,observation):
+        metadata=(observation or {}).get('metadata',{})
+        forward=(bool(observation) and not metadata.get('technical_failures')
+            and len(metadata.get('runs',[]))==1 and len(metadata.get('measurements',[]))==1)
+        return {'row_id':identity,'arm':arm,'system':clone(system),
+            'status':observation['status'] if observation else 'generation-failure',
+            'forward_complete':forward,'cross_scores':{k:evaluate_loss(v,metadata['measurements'])['loss']
+                if forward else None for k,v in plan['losses'].items()}}
+    for name in plan['reference_order']:
+        o=json.loads((root/'references'/name/'observation.json').read_text())
+        rows.append(row('reference:'+name,None,plan['reference_systems'][name],o))
+    for arm in plan['arm_order']:
+        c=campaign_loader(root,plan,'run-00',arm)
+        if c.state['pending'] or len(c.state['records'])!=plan['generations']:
+            raise ValueError('selection cannot precede every declared search slot')
+        controllers[arm]=c
+    for slot in plan['schedule']:
+        arm,g=slot['arm'],slot['generation'];r=controllers[arm].state['records'][g]
+        o=r['observations'][0] if r['observations'] else None
+        rows.append(row('run-00:'+arm+':g'+str(g),arm,o['candidate'] if o else None,o))
+    def choose(pool,objective):
+        valid=[r for r in pool if r['forward_complete'] and r['cross_scores'][objective] is not None]
+        best=min((r['cross_scores'][objective] for r in valid),default=None)
+        tied=[r for r in valid if r['cross_scores'][objective]==best]
+        return {'loss':best,'all_tied_row_ids':[r['row_id'] for r in tied],
+            'selected_row_id':tied[0]['row_id'] if tied else None,
+            'system':clone(tied[0]['system']) if tied else None,
+            'policy_sha256':policy_identity(tied[0]['system']) if tied else None}
+    selected={arm:choose([r for r in rows if r['arm']==arm or r['row_id']=='reference:open-seed'],
+        plan['assignments'][arm]['objective']) for arm in plan['arm_order']}
+    result={'schema':SCHEMA+'.selection','plan_sha256':plan['content_sha256'],
+        'selected':selected,'pooled':{k:choose(rows,k) for k in plan['objectives']},'all_rows':rows,
+        'reference_systems':plan['reference_systems'],'frozen_utc':frozen_utc}
+    result['content_sha256']=digest(result)
+    return result
+
+
 def search(root,plan):
-    for name,system in plan['reference_systems'].items():
+    for name in plan['reference_order']:
+        system=plan['reference_systems'][name]
         o=observe(root/'references'/name,plan,'reference-'+name,system,SEED,'developer-reference')
         progress(root,plan,'references',name)
         if o['status']!='complete':raise ValueError('reference failed; stop and preserve this source')
@@ -249,6 +302,7 @@ def main():
     parser.add_argument('--operator-binding-plan',type=Path)
     parser.add_argument('--seed-usage-root',type=Path,action='append',default=[])
     args=parser.parse_args();args.output=args.output.resolve()
+    require_environment()
     if args.stage=='prepare':
         if not args.seed_usage_root:raise ValueError('explicit project raw roots required for unused-seed check')
         prepare(args);return

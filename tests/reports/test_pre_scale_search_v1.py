@@ -1,6 +1,7 @@
 """Pure prospective pipeline QA. No live models or scientific observations."""
 from copy import deepcopy
 import json
+from types import SimpleNamespace
 
 import pytest
 
@@ -80,8 +81,38 @@ def test_evaluation_requires_frozen_selection_and_writes_plan_before_any_world(t
     with pytest.raises(ValueError,match='immutable'):driver.evaluate(tmp_path,p)
 
 
+def test_pooled_exact_ties_follow_dispatch_schedule_not_sorted_json_or_arm_group_order(tmp_path):
+    p=plan();references(tmp_path,p)
+    def loader(root,p,run,arm):
+        records=[]
+        for g in range(2):
+            if (arm,g) in [('efficiency:parameters',0),('throughput:parameters',1)]:
+                metrics={k:{'status':'measured','value':v} for k,v in [
+                    ('native.accepted_decisions',5),('native.accepted_peer_score_sum',10),('native.review_records',3)]}
+                o={'candidate':p['reference_systems']['open-seed'],'status':'complete','metadata':{
+                    'technical_failures':[],'runs':[{'run_id':'SCRIPTED'}],
+                    'measurements':[{'run_id':'SCRIPTED','metrics':metrics}]}}
+            else:o=None
+            records.append({'generation_error':None if o else {'SCRIPTED':True},'observations':[o] if o else []})
+        return SimpleNamespace(state={'pending':None,'records':records})
+    first=driver.selection_payload(tmp_path,p,frozen_utc='SCRIPTED',campaign_loader=loader)
+    serialized=json.loads(json.dumps(p,sort_keys=True))
+    second=driver.selection_payload(tmp_path,serialized,frozen_utc='SCRIPTED',campaign_loader=loader)
+    assert first==second
+    assert first['pooled']['throughput']['all_tied_row_ids']==[
+        'run-00:efficiency:parameters:g0','run-00:throughput:parameters:g1']
+    assert first['pooled']['throughput']['selected_row_id']=='run-00:efficiency:parameters:g0'
+
+
 def test_technical_unknowns_are_not_fresh_world_retries(tmp_path):
     p=plan();p['_output']=str(tmp_path)
     driver.save(tmp_path/'started.json',{'SCRIPTED':'unknown previous dispatch'})
     with pytest.raises(ValueError,match='already consumed'):
         driver.observe(tmp_path,p,'x',p['reference_systems']['open-seed'],41001,'SCRIPTED')
+
+
+def test_environment_is_checked_before_expensive_author_or_world_dispatch(monkeypatch):
+    for k,v in driver.ENVIRONMENT.items():monkeypatch.setenv(k,v)
+    driver.require_environment()
+    monkeypatch.delenv('HF_HUB_OFFLINE')
+    with pytest.raises(ValueError,match='before any dispatch'):driver.require_environment()

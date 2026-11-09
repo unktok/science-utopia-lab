@@ -335,6 +335,9 @@ def test_actual_open_native_parent_initial_context_is_small_without_dropping_los
         settings={'max_steps': 16})
     assert len(prompt.encode()) < 40_000
     assert len(draft_summary(state)['mechanisms']) == len(body['parent_system']['mechanisms'])
+    parsed=json.loads(prompt)
+    assert json.loads(json.dumps(parsed,ensure_ascii=False))==parsed
+    assert parsed['native_effect_abi_index']['coverage']['silent_size_truncation'] is False
 
 
 @pytest.mark.parametrize('field', ['definition', 'status', 'draft_sha256', 'selected_step', 'steps'])

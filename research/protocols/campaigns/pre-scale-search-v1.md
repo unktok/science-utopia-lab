@@ -44,6 +44,11 @@ measurements and errors/classes are fed back. No other arm, M observation or
 future evaluation is exposed. The fresh common initial is compared at final
 selection, not inserted as fictitious pre-first-proposal evidence.
 
+`reference_order`, `arm_order` and the actual generation schedule are frozen as
+lists. Exact-tie selection follows reference dispatch then that schedule, never
+the iteration order of a JSON object or an arm-grouped reconstruction. A sorted
+JSON save/reload must reproduce the same selection and every tied ID.
+
 Six fresh development references precede search: M1 editable initial, untouched
 legacy, reviewed accept-all, reviewer-free accept-all, reviewer-free reject-all,
 and information-disconnected M0. These are handwritten controls, not discovered

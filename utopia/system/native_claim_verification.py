@@ -17,6 +17,8 @@ CLAIM = 'native-world-count-claim-v1'
 VERDICT = 'native-world-count-verification-v1'
 METRICS = ('accepted-decisions', 'rejected-decisions', 'review-records')
 EVENT = 'native.system.claim_verified'
+MAX_CLAIMS_PER_INVOCATION=256
+MAX_RETAINED_CLAIMS=4096
 
 
 def attach_claim_verifier(spec, *, source, source_port, verifier='claim-verifier',
@@ -52,6 +54,9 @@ def evaluate_claim(kernel, claim, *, year):
             or claim['asserted_value'] < 0
             or claim['supersedes'] is not None and not isinstance(claim['supersedes'],str)):
         raise GraphRuntimeError('literal typed claim about a completed native interval required')
+    committed=max(kernel.last_year,(kernel._frame or {}).get('publication_committed_through_year',kernel.last_year))
+    if claim['through_year']>committed:
+        raise GraphRuntimeError('claim interval has not completed actual native publication')
     # Read the real simulator, NOT an authored "world" input or declared result.
     records = []
     for paper in kernel._simulation.paper_tracker.papers_by_id.values():
@@ -80,8 +85,8 @@ def evaluate_claim(kernel, claim, *, year):
 
 def validated_records(kernel, records, *, year):
     """Do not accept a designer-seeded state containing a fabricated verdict."""
-    if not isinstance(records,dict):
-        raise GraphRuntimeError('verification record state must be an object')
+    if not isinstance(records,dict) or len(records)>MAX_RETAINED_CLAIMS:
+        raise GraphRuntimeError('verification record state must be an object within the declared record budget')
     verified={};pending=dict(records)
     while pending:
         progressed=False
@@ -112,6 +117,8 @@ def verify_claims(kernel,context):
     if kernel._frame is None or kernel._frame['year']!=context.period:
         raise GraphRuntimeError('claim verification requires the current native year')
     state=deepcopy(dict(context.state))
+    if len(context.inputs.get('claims',()))>MAX_CLAIMS_PER_INVOCATION:
+        raise GraphRuntimeError('claim batch exceeds the declared verification budget')
     saved=validated_records(kernel,state.get('records',{}),year=context.period)
     prepared=[]; seen=set()
     for value in context.inputs.get('claims',()):
@@ -138,6 +145,8 @@ def verify_claims(kernel,context):
             raise GraphRuntimeError('verification recipients must be actual native researchers')
         prepared.append((identity,verdict,value))
     # All validation occurs before the returned next_state is committed.
+    if len(saved)+len(prepared)>MAX_RETAINED_CLAIMS:
+        raise GraphRuntimeError('new claims exceed retained verification budget; history is never silently dropped')
     outputs=[];events=[]
     for identity,verdict,value in prepared:
         saved[identity]=verdict

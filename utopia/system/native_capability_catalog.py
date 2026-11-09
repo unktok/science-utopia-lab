@@ -19,6 +19,7 @@ CATALOG_IMPLEMENTATIONS = {
     'native.domain.commands.v1': 'Apply explicitly granted typed actor/artifact/state/native-effect commands.',
     'native.process.activity.v1': 'Run an explicitly authored registered delegate under bounded data-driven process control.',
     'code.python.v1': 'Run arbitrary authored Python in the pinned isolated no-network executor.',
+    'native.world.claim-verification.v1': 'Independently check a completed native count assertion; preserve false claims and corrections.',
 }
 
 
@@ -217,8 +218,38 @@ def _code():
         'schema_scope': 'literal artifact/port/source ABI; no source template or algorithm supplied'}
 
 
+def _claims():
+    from .native_claim_verification import (IMPLEMENTATION,CLAIM,VERDICT,METRICS,
+        evaluate_claim,verify_claims,validated_records,MAX_CLAIMS_PER_INVOCATION,MAX_RETAINED_CLAIMS)
+    identity={'type':'string','minLength':1,'maxLength':200}
+    return {'implementation':IMPLEMENTATION,'version':1,
+        'ports':{'inputs':[{'port_id':'claims','channel':'artifact','artifact_type':CLAIM,'required':False}],
+            'outputs':[{'port_id':'verifications','channel':'artifact','artifact_type':VERDICT,'required':False}]},
+        'parameters':'No policy parameters read; source-defined metric counts and actual native evidence are authoritative.',
+        'request_shape_schema':_object({'schema':{'const':CLAIM},'claim_id':identity,
+            'metric':{'enum':list(METRICS)},'after_year':{'type':'integer','minimum':0},
+            'through_year':{'type':'integer','minimum':1},'asserted_value':{'type':'integer','minimum':0},
+            'supersedes':{'anyOf':[{'type':'null'},identity]}}),
+        'semantic_constraints':['Counts/years must be Python ints, never bool or float.',
+            'after_year < through_year <= actual completed native publication year; future/partial intervals reject.',
+            'actual causal input lineage required; supplied recipients must be actual researchers; duplicate batch identities reject.',
+            'Only actual native paper/review histories determine the computed count; no authored world or truth flag.',
+            'Corrections name a retained predecessor for the same metric/interval; old records and hashes persist.',
+            'Every retained verdict is recomputed against native evidence; all validation precedes returned state commit.'],
+        'author_choices':['arbitrary claim identity','one explicit count metric and completed interval',
+            'literal nonnegative asserted value','optional predecessor','arbitrary producer and delivery graph'],
+        'cost':{'scientist_model_calls':0,'native_record_scan':'completed interval records per assertion',
+            'max_claims_per_invocation':MAX_CLAIMS_PER_INVOCATION,'max_retained_claims':MAX_RETAINED_CLAIMS,
+            'overflow':'technical error; no partial commit or silent history discard'},
+        'privilege':{'granted':['emit independent count-consistency verdict data and preserved correction history'],
+            'not_granted':['scientific truth of a paper','publish knowledge','assign a loss or promotion policy',
+                'alter native evidence','execute authored host code']},
+        'validators':[_source(evaluate_claim),_source(verify_claims),_source(validated_records)],
+        'schema_scope':'shape plus actual publication/identity/state semantic checks, not an external science oracle'}
+
+
 def native_capability_catalog():
-    cards = [_work(), _transfers(), _domain(), _process(), _code()]
+    cards = [_work(), _transfers(), _domain(), _process(), _code(), _claims()]
     registered = _registered()
     registry_sources = {_source(handler)['path']: _source(handler)
         for handler in registered.values()}

@@ -123,3 +123,29 @@ and all scientist settings are unchanged. At the later process observation,
 600/1612 batches have completed, with estimated remaining setup roughly40--50
 minutes. This is not a total experiment forecast. No second model role is
 loaded while that original world is active.
+
+## Broad-source review and prospective corrections
+
+At clean085f87b the broader Python batch reports335 passed/1 failed in169.54s.
+The preserved JUnit file is `outputs/pre-scale-completion-qa/python-junit.xml`;
+that source is **not** relabeled fully passing. Adding the registered verifier
+grows the legacy initial open-parent prompt to40224 UTF-8 bytes, above its40000
+QA cap. The fix changes JSON presentation whitespace only, not any decoded value
+or scientific string, and measures37967 bytes while preserving the complete
+ABI index. A detailed verifier ABI card is now discoverable; its validator
+requires actual publication completion for current-year claims and explicit
+batch/history resource bounds. No old/source-specific certificate is reused.
+
+Before O/E dispatch, review also replaces an arm-grouped pooled tie order with
+explicit `reference_order` and actual `schedule` lists. A new cross-arm/G0--G1
+tie regression proves identical selection after sorted-JSON save/reload. No
+existing selection or outcome is changed. The launch environment and staged
+readiness backend/runtime are checked before the expensive next stages.
+
+Eight additional scripted original-world cases cover all four information
+conditions with two/three-year projects, including empty publication cycles.
+All pass. With three-year projects, both immediate/delayed messages can first
+enter a next eligible direction choice in year4: calendar arrival and actual
+consumer invocation are not the same fact. The frozen M protocol/source is
+unchanged; its live analysis must report actual input years instead of imposing
+the one-year scripted fixture's year2/3 as a universal native-world guarantee.

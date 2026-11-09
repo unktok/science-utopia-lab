@@ -962,7 +962,7 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
                 'omitted literal bodies are explicitly marked, never silently truncated',
             'prior_provider_raw_transport': 'omitted from prompt; exact journal preserved',
             'silent_size_truncation': False}, 'zzz_next_action': control},
-        ensure_ascii=False, sort_keys=True, allow_nan=False)
+        ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))
 
 
 def turn_control(state, steps, *, max_steps):

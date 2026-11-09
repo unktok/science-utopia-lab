@@ -19,7 +19,7 @@ def fixture():
         {'year':2,'decision':'reject','reviews':[{'overall_score':2}]}])
     kernel._simulation=SimpleNamespace(paper_tracker=SimpleNamespace(papers_by_id={paper.id:paper}),
         ecosystem=SimpleNamespace(agent_population={'researcher':SimpleNamespace(can_author=True)}))
-    kernel._frame={'year':2}
+    kernel._frame={'year':2,'publication_committed_through_year':2}
     node=MechanismSpec('independent-verifier',MechanismFamily.CUSTOM,IMPLEMENTATION,
         inputs=(PortSpec('claims',ChannelKind.ARTIFACT,CLAIM,required=False),),
         outputs=(PortSpec('verifications',ChannelKind.ARTIFACT,VERDICT,required=False),))
@@ -107,6 +107,27 @@ def test_count_evidence_projects_only_native_operational_time_without_mutating_l
     assert first==second and review['review_time']==987654.
     review['reason']='A genuinely different scientific statement'
     assert evaluate_claim(kernel,claim(value=1),year=2)['evidence_sha256']!=first['evidence_sha256']
+
+
+def test_current_period_is_not_a_completed_interval_before_actual_publication():
+    kernel,_=fixture();kernel.last_year=1;kernel._frame={'year':2}
+    assert evaluate_claim(kernel,claim(value=1),year=2)['matches_native_records']
+    with pytest.raises(GraphRuntimeError,match='not completed actual'):
+        evaluate_claim(kernel,claim(value=1,through_year=2),year=2)
+    kernel._frame['publication_committed_through_year']=2
+    assert evaluate_claim(kernel,claim(value=1,through_year=2),year=2)['matches_native_records']
+
+
+def test_untrusted_batches_and_history_have_explicit_resource_bounds_without_truncation():
+    from utopia.system.native_claim_verification import MAX_CLAIMS_PER_INVOCATION,MAX_RETAINED_CLAIMS
+    kernel,ctx=fixture()
+    with pytest.raises(GraphRuntimeError,match='verification budget'):
+        verify_claims(kernel,replace(ctx,inputs={'claims':tuple(delivered(claim(str(i),1))
+            for i in range(MAX_CLAIMS_PER_INVOCATION+1))}))
+    state={'records':{str(i):{} for i in range(MAX_RETAINED_CLAIMS+1)}}
+    with pytest.raises(GraphRuntimeError,match='record budget'):
+        verify_claims(kernel,replace(ctx,state=state))
+    assert len(state['records'])==MAX_RETAINED_CLAIMS+1
 
 
 CLAIM_SOURCE='''def step(context):

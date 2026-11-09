@@ -78,6 +78,17 @@ def test_cards_bind_actual_validator_files_and_do_not_instantiate_policies_or_ta
     assert 'default' not in json.dumps(catalog['cards'][IMPLEMENTATION])
 
 
+def test_completed_count_verifier_is_discoverable_with_actual_typed_input_and_no_truth_privilege():
+    from utopia.system.native_claim_verification import IMPLEMENTATION as CLAIM_VERIFIER,CLAIM
+    card=native_capability_catalog()['cards'][CLAIM_VERIFIER]
+    sample={'schema':CLAIM,'claim_id':'authored-count','metric':'review-records',
+        'after_year':0,'through_year':1,'asserted_value':0,'supersedes':None}
+    Draft202012Validator(card['request_shape_schema']).validate(sample)
+    assert 'scientific truth of a paper' in card['privilege']['not_granted']
+    with pytest.raises(ValidationError):
+        Draft202012Validator(card['request_shape_schema']).validate({**sample,'matches_native_records':True})
+
+
 def test_researcher_work_card_matches_actual_exact_node_ports_and_parameter_contract():
     card = native_capability_catalog()['cards'][IMPLEMENTATION]
     node = work_node()
