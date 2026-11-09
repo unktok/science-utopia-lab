@@ -1,0 +1,88 @@
+{
+  "analysis_adapter_sha256": "8edf91f9c7113addbbb55e054b42bba14ba142ae1f40445677adec67ab24e8af",
+  "cells": [
+    {
+      "completed_dossier_inputs": 0,
+      "first_direction_input_year": null,
+      "id": "M0-s41001",
+      "independent_measurement_matches": true,
+      "initial_direction_payload_hashes": [
+        "24118dd0711ac0198a348ffc6d4e5310d66ca9660e6a9ab9a39fdd295362d78a",
+        "c426b6b5c53244d24f34b81b4da4dd017ff151b5fe4f50c0645943657408d161",
+        "ce1de6d0f37e4faace1b08321f2f77c0d1d311a5d87884fa8e00393e2ba9a9ac",
+        "e0d95f95f2d1c2cfc97d84b01200252d389864a4bf8cf1a8513561b1a6b3b717",
+        "eab898be1d0432b3361921f15189791048f25327b390d548752ac54626164439"
+      ],
+      "physical_proof_sha256": "e28e7e143ee99591f5a5f24d8cde2b69e6b096c376b092a213d56f543086651e",
+      "raw_cell_inventory_sha256": "fb386c7c6ab80d9c3a45c62a2a657852a5d630e34b781e01da8e6fa02b3e1d8d",
+      "recipient_attribution_counts": {}
+    },
+    {
+      "completed_dossier_inputs": 33,
+      "first_direction_input_year": 2,
+      "id": "M1-s41001",
+      "independent_measurement_matches": true,
+      "initial_direction_payload_hashes": [
+        "24118dd0711ac0198a348ffc6d4e5310d66ca9660e6a9ab9a39fdd295362d78a",
+        "c426b6b5c53244d24f34b81b4da4dd017ff151b5fe4f50c0645943657408d161",
+        "ce1de6d0f37e4faace1b08321f2f77c0d1d311a5d87884fa8e00393e2ba9a9ac",
+        "e0d95f95f2d1c2cfc97d84b01200252d389864a4bf8cf1a8513561b1a6b3b717",
+        "eab898be1d0432b3361921f15189791048f25327b390d548752ac54626164439"
+      ],
+      "physical_proof_sha256": "57829b9f2dbd32d6e381c10cf6d47d9d4fbe70583424bc1c924661b05952814e",
+      "raw_cell_inventory_sha256": "35b0040f22f12952608e98f27305875a563d36860aa9475e2b08868622dcd17e",
+      "recipient_attribution_counts": {
+        "ambiguous-rendered-prefix": 6,
+        "unique-rendered-prefix": 27
+      }
+    },
+    {
+      "completed_dossier_inputs": 33,
+      "first_direction_input_year": 2,
+      "id": "M2-s41001",
+      "independent_measurement_matches": true,
+      "initial_direction_payload_hashes": [
+        "24118dd0711ac0198a348ffc6d4e5310d66ca9660e6a9ab9a39fdd295362d78a",
+        "c426b6b5c53244d24f34b81b4da4dd017ff151b5fe4f50c0645943657408d161",
+        "ce1de6d0f37e4faace1b08321f2f77c0d1d311a5d87884fa8e00393e2ba9a9ac",
+        "e0d95f95f2d1c2cfc97d84b01200252d389864a4bf8cf1a8513561b1a6b3b717",
+        "eab898be1d0432b3361921f15189791048f25327b390d548752ac54626164439"
+      ],
+      "physical_proof_sha256": "7b4d61f4715e08041e7b75f379e59cb2f2e44c2967e23418051da9a5744e685d",
+      "raw_cell_inventory_sha256": "cec76950139bf9bae0eef4bb1ce32a26bcb1dbce849ebbcb29b49b2cf0327606",
+      "recipient_attribution_counts": {
+        "ambiguous-rendered-prefix": 33
+      }
+    },
+    {
+      "completed_dossier_inputs": 21,
+      "first_direction_input_year": 3,
+      "id": "M3-s41001",
+      "independent_measurement_matches": true,
+      "initial_direction_payload_hashes": [
+        "24118dd0711ac0198a348ffc6d4e5310d66ca9660e6a9ab9a39fdd295362d78a",
+        "c426b6b5c53244d24f34b81b4da4dd017ff151b5fe4f50c0645943657408d161",
+        "ce1de6d0f37e4faace1b08321f2f77c0d1d311a5d87884fa8e00393e2ba9a9ac",
+        "e0d95f95f2d1c2cfc97d84b01200252d389864a4bf8cf1a8513561b1a6b3b717",
+        "eab898be1d0432b3361921f15189791048f25327b390d548752ac54626164439"
+      ],
+      "physical_proof_sha256": "2b71a70f07f0367df1362ebe2c668e67eea596a1a54b28bbc5e5bb92dabb4e6c",
+      "raw_cell_inventory_sha256": "cc2e304a31052e3b87e1f69fb9d784ed290080806c133a34f41ffe412e426839",
+      "recipient_attribution_counts": {
+        "ambiguous-rendered-prefix": 3,
+        "unique-rendered-prefix": 18
+      }
+    }
+  ],
+  "content_sha256": "c76ee75ec4988e2c24bb88918515ed3f8656826f3e92ada79000c5f329775cec",
+  "full_study_audit": false,
+  "initial_direction_payload_multisets_equal": true,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "plan_sha256": "4cee42037e0942c896dbfad57360be35554565f503336c7ead75d28319396123",
+  "prior_diagnostic_sha256": "48f8a9945d928f1c9c817c13169963f256b368276a6539dd839477849bc8af3e",
+  "schema": "scienceutopia.pre-scale-completed-cell-diagnostic.v1",
+  "scope": "First development seed, four closed conditions only, while later M slots continue. Not a full M audit, a source-specific readiness certificate or scientific benefit evidence.",
+  "source_closure_sha256": "78ce7966fd789d6399fe0a28b59f17ac07a9a189d91d15ac4c4727e5ebe739eb",
+  "source_commit": "215311cdbc4c8cb3a1e1136aa17d5f9744bb1d7f"
+}

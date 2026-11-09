@@ -314,3 +314,34 @@ keeps the scopes distinct.
 Original M remains live and reaches3/12 completed observations. Its runtime,
 inputs, budgets and source are unchanged. The corrected waiting chain also
 remains live at its original handle and has not dispatched O/E inference.
+
+## Original runtime diagnostic of completed first seed
+
+At the03:11UTC observation, all four seed41001 conditions and the next seed's
+M0 are complete (5/12 total), while the remaining declared conditions continue.
+A separate read-only diagnostic uses the unchanged
+215311c native libraries, driver/source closure and original checkpoints. It
+does not bypass the full auditor's closed-study requirement: its own explicit
+scope is four completed cells, not the12-world full M audit. No models, worlds
+or generated code execute. Every cell inventory is unchanged before/after.
+
+Independent native measurements match the four recorded observations. The five
+first-year direction-request payload hashes are identical across M0/M1/M2/M3.
+The actual rendered dossier first enters a direction input in year2 for M1/M2
+and year3 for delayed M3; none is present in M0. M1 has33 completed dossier-bearing
+inputs (27 uniquely matched recipient prefixes/six ambiguous), M2 has33 (all
+ambiguous across recipients with identical shared histories), and M3 has21
+(18 unique/three ambiguous). These are rendered-input occurrences, not evidence
+of beneficial interpretation, full noise coupling or scientific improvement.
+
+The [compact four-cell diagnostic](../results/pre-scale-completed-cell-diagnostic-v2.json)
+has content hash`c76ee75ec4988e2c24bb88918515ed3f8656826f3e92ada79000c5f329775cec`.
+It retains the preceding three-cell diagnostic hash, exact original source and
+adapter identities, physical-proof/inventory hashes and every attribution count.
+Actual full-study audit, all-seed interpretation and M/O/E reporting remain
+pending. No active source, objective, selection or budget is changed.
+
+Five lightweight tests pass in0.64s for the consumer fixtures and retained
+diagnostic integrity/scope. The golden year2/3 observations are explicitly
+seed41001-bound, not rules for other project durations or seeds. The full
+M audit still refuses an unclosed study; no partial proof is relabeled as full.

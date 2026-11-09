@@ -1,6 +1,7 @@
 # Current research status
 
-Updated2026-11-09JST. D/M observation at02:21UTC, not a live heartbeat.
+Updated2026-11-09JST. Latest M observation at03:11UTC:5/12 complete;
+the UI snapshot below is still explicitly dated02:21UTC. Not a live heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
 ## Active pre-scale completion
@@ -13,12 +14,18 @@ immutable source, raw destinations, observations and remaining tasks.
   replays pass at source215311c. T explicitly retains the parent; E changes the
   six coordinates. Two generation POSTs, no native losses; this is not code/graph
   readiness or an improvement claim.
-- M information-path comparison:1/12 four-year worlds complete and the next
+- M information-path comparison:5/12 four-year worlds complete and the next
   started, with fixed Qwen3-8B and no project amendments. Initial corpus index
   construction is finished and later retrieval uses the cache. Completed M0
   records226 scientist responses/739.281 cumulative call seconds; this excludes
   index/role/code/host time and is not an end-to-end forecast. Full-study original
   audit and interpretation remain pending.
+- The [first-seed closed-cell diagnostic](results/pre-scale-completed-cell-diagnostic-v2.json)
+  independently matches all four completed worlds' measurements at unchanged
+  original215311c. All five initial direction payloads match across conditions.
+  Subsequent actual direction inputs first contain dossiers in year2 (M1/M2),
+  year3 (M3), and never M0. Ambiguous rendered recipient prefixes remain explicit;
+  this is not the12-world full audit or a benefit claim.
 - Separate development adds opt-in independently computed native count claims,
   verification and preserved corrections, connected to actual next-year
   scientist inputs.19 focused tests pass; no claim of scientific truth.

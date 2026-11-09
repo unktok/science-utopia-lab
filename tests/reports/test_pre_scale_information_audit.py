@@ -1,4 +1,7 @@
-"""Read-only consumer proof QA, with synthetic input/cache fixtures only."""
+"""Synthetic consumer QA plus retained first-seed diagnostic integrity.
+
+No test here substitutes for a closed full-study original-source audit.
+"""
 import json
 from pathlib import Path
 import sqlite3
@@ -58,3 +61,20 @@ def test_running_study_is_rejected_before_audit_or_subprocess_dispatch(tmp_path,
         '--frozen-source',str(tmp_path)])
     monkeypatch.setattr('subprocess.run',lambda *a,**kw:pytest.fail('must not launch a partial audit'))
     with pytest.raises(ValueError,match='not closed'):main()
+
+
+def test_retained_first_seed_diagnostic_is_not_mislabeled_as_full_study_evidence():
+    # These are retained observations for seed41001, not universal timing rules.
+    from utopia.optimization.native_numeric_designer import checked
+    root=Path(__file__).resolve().parents[2]
+    d=checked(json.loads((root/'research/results/pre-scale-completed-cell-diagnostic-v2.json').read_text()))
+    assert d['source_commit']=='215311cdbc4c8cb3a1e1136aa17d5f9744bb1d7f'
+    assert not d['full_study_audit'] and d['new_model_calls']==d['new_code_executions']==0
+    cells={r['id']:r for r in d['cells']}
+    assert set(cells)=={c+'-s41001' for c in ('M0','M1','M2','M3')}
+    assert [cells[c+'-s41001']['first_direction_input_year'] for c in ('M0','M1','M2','M3')]==[None,2,2,3]
+    assert d['initial_direction_payload_multisets_equal']
+    initial=cells['M0-s41001']['initial_direction_payload_hashes']
+    assert len(initial)==5 and all(r['initial_direction_payload_hashes']==initial for r in cells.values())
+    assert all(r['completed_dossier_inputs']==sum(r['recipient_attribution_counts'].values()) for r in cells.values())
+    assert cells['M2-s41001']['recipient_attribution_counts']=={'ambiguous-rendered-prefix':33}
