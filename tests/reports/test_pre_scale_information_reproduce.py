@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from scripts.reports.pre_scale_information_reproduce_v1 import DATA,validate,table_body
+from scripts.reports.pre_scale_information_reproduce_v1 import DATA,validate,table_body,table_tabular
 from utopia.system.design_patch import digest
 
 
@@ -19,6 +19,12 @@ def test_all_retained_worlds_and_table_are_recomputed():
     assert len(report['rows'])==12 and len(report['paired_differences'])==9
     assert body.count('\\\\')==12
     assert '41011&M3&1&4&45&-1&18.5&3\\\\' in body
+
+
+def test_generated_table_can_be_input_outside_the_alignment():
+    table=table_tabular(retained())
+    assert table.startswith('\\begin{tabular}') and table.endswith('\\end{tabular}\n')
+    assert table_body(retained()) in table and table.count('\\bottomrule')==1
 
 
 @pytest.mark.parametrize('part',['loss','mean','pair','missing','seed','year'])

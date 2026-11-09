@@ -74,6 +74,12 @@ def table_body(report):
     return '\n'.join(lines)+'\n'
 
 
+def table_tabular(report):
+    return '\n'.join([r'\begin{tabular}{@{}llrrrrrr@{}}',r'\toprule',
+        r'Seed & Condition & $A$ & $Q$ & $R$ & $-A$ & $-Q+0.5R$ & First input year\\',
+        r'\midrule',table_body(report).rstrip(),r'\bottomrule',r'\end{tabular}'])+'\n'
+
+
 def reproduce(output):
     if output.exists() or output.resolve().is_relative_to(DATA):raise ValueError('fresh separate output required')
     report=validate(json.loads((DATA/'report.json').read_text()))
@@ -91,6 +97,7 @@ def reproduce(output):
     for name in inputs:
         if file_sha256(output/name)!=manifest['files'][name]:raise ValueError('rebuilt numerical/figure bytes differ')
     (output/'table-body.tex').write_text(table_body(report))
+    (output/'table-tabular.tex').write_text(table_tabular(report))
     result={'schema':'scienceutopia.pre-scale-information-reproduction.v1',
         'input_report_sha256':report['content_sha256'],'original_audit_sha256':report['audit_sha256'],
         'all_twelve_worlds':True,'losses_means_paired_differences_recomputed':True,
