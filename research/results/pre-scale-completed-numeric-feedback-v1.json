@@ -1,0 +1,80 @@
+{
+  "schema": "scienceutopia.pre-scale-completed-numeric-feedback.v1",
+  "observed_utc": "2026-11-09T06:46:19+00:00",
+  "scope": "Two completed E/numeric development cells checked with the unchanged original physical_proof and evaluate_loss. Not the pending full O/E audit, fixed selection or unused-seed evaluation.",
+  "scientific_source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+  "plan_sha256": "db2df5c5e54a68c8201b6b8c460cffa66770ee37da4f7b0d1089c7f5fc7702cb",
+  "raw_root": "science-utopia-lab-experiments/pre-scale-search-v1-a1/outputs/pre-scale-search-v1-a1",
+  "arm": "efficiency:parameters",
+  "development_seed": 41001,
+  "loss": "-Q + 0.5*R; Q is actual original review-score sum on accepted review-history decisions, R actual review-record count",
+  "original_source_component_checks_exit_code": 0,
+  "original_measurements_and_loss_recomputed_exactly": true,
+  "per_cell_raw_inventories_unchanged": true,
+  "cells": [
+    {
+      "generation": 0,
+      "identity": "native-adaptive-23fdb104c222044fdb5e29e7-s41001",
+      "status": "complete",
+      "physical_status": "complete",
+      "through_committed_year": 4,
+      "A": 2,
+      "Q": 6.666666666666666,
+      "R": 72,
+      "loss": 29.333333333333336,
+      "system_fingerprint": "66a99fa9aaad5ba73b81b19a6f298338c882e03871703b1d5f57db5e91c0ebd7",
+      "raw_files": 23,
+      "raw_inventory_sha256": "d58ffc71a45deb767be31f86a2b964389c173aeee705558f422182e151ecc655",
+      "physical_proof_sha256": "3e503cac2a7d5dcec34af326de50cd46b4b5b445f3c8e588dcba71b660e3b026"
+    },
+    {
+      "generation": 1,
+      "identity": "native-adaptive-0d2c363a8de1c78e14d10962-s41001",
+      "status": "complete",
+      "physical_status": "complete",
+      "through_committed_year": 4,
+      "A": 14,
+      "Q": 43.666666666666664,
+      "R": 42,
+      "loss": -22.666666666666664,
+      "system_fingerprint": "1c75713c119afda3e416793a5517e7d1125bde37c5a0d6a77323c70d466a4665",
+      "raw_files": 23,
+      "raw_inventory_sha256": "a954baf24bd247cbf0f5a9eaeafcf7d4d4f6c5b444f7fc72077bf549cef025d8",
+      "physical_proof_sha256": "fe35240143b4c5913264113533adc7bc178fc17a766f8cb99fef3fbfcd6b4f13"
+    }
+  ],
+  "feedback": {
+    "request_sha256": "e6ff7d98f3605d422209d0306e5861f041f883d037f99e23f01d941872bc5c54",
+    "first_call_request_wire_sha256": "124be8f33a304ef8ec6c3d39fc2e199fd7725f49b18aa3ed02ed8074051b9c2c",
+    "wire_decodes_to_recorded_payload": true,
+    "actual_prior_loss_present_in_user_message_and_http_transport_wire": 29.333333333333336,
+    "first_call_error": "exact literal numeric submission and author rationale required",
+    "first_call_received_literal_keys": ["rationale"],
+    "second_call_error": null,
+    "second_call_received_literal_keys": ["rationale", "values"],
+    "terminal_status": "submitted",
+    "host_added_missing_coordinate_values": false,
+    "declared_maximum_calls": 2,
+    "calls_used": 2,
+    "only_changed_coordinate_from_parent": {
+      "id": "coordinate-4",
+      "path": "/mechanisms/18/parameters/program/parameters/threshold",
+      "before": 1.0,
+      "after": 0.0
+    }
+  },
+  "interpretation": {
+    "lower_observed_development_loss_after_feedback": true,
+    "numerical_parameter_change_not_new_code_or_graph_invention": true,
+    "authored_rationale_verified_as_causal_explanation": false,
+    "feedback_superiority_or_repeatable_generalization_established": false,
+    "unused_seed_evaluation_complete": false,
+    "all_search_and_evaluation_closed": false,
+    "new_scientific_discovery_or_welfare_established": false
+  },
+  "new_model_calls_from_component_checks": 0,
+  "new_authored_code_executions_from_component_checks": 0,
+  "scientific_settings_or_failed_slots_changed": false,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}
