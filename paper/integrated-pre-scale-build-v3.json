@@ -1,0 +1,71 @@
+{
+  "schema": "scienceutopia.integrated-pre-scale-paper-build.v3",
+  "tex_and_asset_source": "9b165e379b85f2559817cd02a7388e4311b0d731",
+  "source_clean_during_build_and_rebuild": true,
+  "output": "output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf",
+  "pdf_sha256": "d98abe72b4d86a225830a66e23c3627c3446f0a1e6af35e40778209953d40142",
+  "pages": 44,
+  "figures": 19,
+  "tables": 17,
+  "build": "Tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
+  "second_clean_build_text_identical": true,
+  "binary_pdf_identity_between_builds_claimed": false,
+  "text_sha256": "d506fcbdd3ecc3a5ed554f8f6dee007cd00f47861af01b82d10982ad0d26a54e",
+  "final_log_sha256": "70f159b40cbe12732e44537c9130377d0384c0bac372b397b7b56287c9bc9ea6",
+  "overfull_underfull_or_unresolved_references": 0,
+  "unresolved_question_mark_pairs": 0,
+  "off_page_text_words": 0,
+  "benign_notices": ["UTF-8 engine ignores inputenc", "Two retained h floats adjusted to ht"],
+  "visual_review": {
+    "all_final_pages_reviewed": true,
+    "all_pages_contact_dpi": 85,
+    "individual_pages_at_110dpi": [25, 26, 27, 28, 29, 30, 31],
+    "review_directory": "tmp/pdfs/integrated-search-final-v2/",
+    "final_directory": "tmp/pdfs/integrated-search-final-v3/",
+    "final_version_change": "Only page31 PNG differs from all44 already-reviewed v2 pages; final page31 visually reviewed separately at85dpi. Other43 final page PNGs byte-identical. Conclusion explicitly closes the actual pilot.",
+    "result": "All-slot and all-label tables, both real-data figures, costs, scopes, conclusion and appendix fit; no unresolved reference or off-page word."
+  },
+  "retained_prior_artifacts": {
+    "information_41_page_pdf": "output/pdf/science-utopia-lab-integrated-pre-scale-information-41p.pdf",
+    "information_41_page_sha256": "87a579c86c280e464598d625729e2be1f1f0ff7cd673565a9373dd30f39b0dbb",
+    "prior_receipt_unchanged": "paper/integrated-pre-scale-build-v2.json",
+    "unchanged_37_page_pdf": "output/pdf/science-utopia-lab-integrated-working-paper.pdf",
+    "unchanged_37_page_sha256": "3f77d91d27ce97dc17a076bd7da764be7a4cb4feafd6a81ab9cd45601d9f19d6"
+  },
+  "intermediate_diagnostics": [
+    "Initial output directory absent: Tectonic exits1 before building; destination created explicitly.",
+    "A later staging command used repository-relative paths from paper cwd and failed before staging; preliminary build retained as final-v1, not claimed clean-source. Root-level explicit staging/commit precede final-v2/v3 builds.",
+    "BBox diagnostic initially tried absent lxml; no package installed. Repeated with Python standard-library ElementTree and Poppler XML, yielding zero off-page words."
+  ],
+  "actual_report_verification": {
+    "clean_source": "dc1ced8c9328d665724dcf88765573ba0e9f59a1",
+    "passed": 73,
+    "failed": 0,
+    "seconds": 33.66,
+    "junit_path": "outputs/pre-scale-search-closed-v1/clean-report-junit.xml",
+    "junit_sha256": "d71383dc689788e1a4b63854e60bc53bcb1a98d86d94c60da287bb491b702412",
+    "modules": 5,
+    "manuscript_table_checks": 2,
+    "scope": "Closed-report, numerical reconstruction, literal changes, Foundry export and exact manuscript table values; separate from559-check native regression."
+  },
+  "scientific_scope": {
+    "M": "12/12, original-source full audits match, full descriptive results retained.",
+    "O_E": "16 slots,11 complete/five runtime failures;27 normal evaluation jobs/36 logical rows; matching full audits, all-source/code/failure/cost projections and exact rebuilding.",
+    "gradient_adoption_and_verification": "Implemented current-native connections tested with scripted HTTP/corpus and actual Docker. Not fresh Qwen gradient superiority, recursive inventor improvement or scientific truth verification.",
+    "reliable_optimizer_advantage_claimed": false,
+    "new_calls_from_analysis_or_manuscript": 0,
+    "top_conference_readiness_or_release_clearance_claimed": false
+  },
+  "final_document_checks": {
+    "active_documents": 25,
+    "active_local_links": 405,
+    "historical_snapshot_hashes": 6,
+    "additional_documents": 8,
+    "additional_local_links": 50,
+    "documentation_and_manuscript_tests_passed": 9,
+    "seconds": 0.73,
+    "junit_sha256": "7d65138a69999a672dc442d1f43d9262f7c64a3d4bcb5e123d6a7b42388a6b4c",
+    "scope": "Final edited documentation/content before commit, not another clean-source native runtime check. Overlapping link/check scopes are not independent evidence."
+  },
+  "external_upload_or_push": false
+}

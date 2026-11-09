@@ -2,7 +2,7 @@
 
 Updated2026-11-09JST, after11:35UTC closure. M12/12, O16/16 and E27/27
 are closed. Both full O/E audits match complete bytes. No scientific inference
-writer remains. Final paper/build and requirement audit are being completed;
+writer remains. Final44-page paper/build and nine-row requirement audit pass;
 the earlier running observations below are history, not live heartbeats.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
@@ -30,8 +30,13 @@ the earlier running observations below are history, not live heartbeats.
   retains original errors and unavailable loss. [Final progress view](results/pre-scale-closed-observatory-browser-v1.json)
   displays M12/O16/E27; its observer ended normally at11:29:25UTC.
 - The manuscript includes all16 slots/all12 evaluation labels, actual figures,
-  code/failure analysis and costs. Latest PDF/build/visual review is the remaining
-  integration step, not another scientific campaign.
+  code/failure analysis and costs. [44-page PDF/build/visual review](../paper/integrated-pre-scale-build-v3.json)
+  passes:19 figures/17 tables, all pages inspected, second-build text identical,
+  zero off-page words or unresolved references. Prior41/37-page artifacts remain.
+
+**The finite pre-scale goal is complete:9/9.**
+[Final requirement audit and remaining research questions](results/pre-scale-completion-final-audit-v1.md).
+This is not a claim that the whole research program or submission goal is achieved.
 
 The [completion ledger](pre-scale-completion.md) separates engineering completion
 from open empirical questions. Current-native gradient/adoption and independent

@@ -719,3 +719,26 @@ displayed value/selection with retained actual data (2pass0.69s). The41-page PDF
 is preserved under its explicit information-study filename before updating the
 current artifact. Final paper/build/visual QA and nine-row audit follow.
 No scale-up, new model or push.
+
+## Final paper and requirement closure
+
+Clean9b165e3 builds the44-page manuscript twice with cached/untrusted Tectonic;
+extracted text is identical. All44 rendered pages are inspected, new pages25--31
+also at110dpi. The conclusion update changes only page31's PNG; other43 final
+PNGs match the already-inspected version exactly. Final PDF d98abe72, text
+d506fcbd,19 figures/17 tables, zero off-page words/unresolved references or
+overfull/underfull warnings. Old41-page87a579c8 is retained explicitly; the
+earlier37-page artifact is unchanged. Intermediate directory/staging and absent
+lxml diagnostic errors are recorded, not relabelled clean successes.
+
+The clean dc1ced8 report/manuscript subset passes73 checks in33.66s. Nine-row
+requirement audit closes the finite pre-scale goal without claiming invention
+superiority, world autograd, scientific truth or recursive inventor improvement.
+All scientific sources remain unchanged; only local Git integration follows.
+There is no active scientific campaign to continue after this closure.
+
+Final documentation checks:25 active documents/405 local links and six original
+snapshot hashes pass. Eight additional package/audit documents resolve50 links;
+9 documentation/manuscript checks pass in0.73s (JUnit7d65138a). Actual report,
+cost/change/figure content hashes, eight Foundry file hashes, current/old PDF
+identities and both complete full-audit files are rechecked successfully.

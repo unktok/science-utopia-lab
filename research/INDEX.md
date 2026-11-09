@@ -10,7 +10,8 @@ Historical documents retain their paths and source identities.
   [2026-11-09 execution log](logbook/2026-11-09-pre-scale-completion.md): actual
   M closes12/12 with matching full audits and [complete descriptive results](results/pre-scale-information-v1.md),
   O16/16 and E27/27 now close with matching full audits and [actual T/E results](results/pre-scale-search-v1.md).
-  Final paper integration and requirement audit remain.
+  [Final nine-row audit](results/pre-scale-completion-final-audit-v1.md) closes
+  this finite goal; research superiority and release are not claimed.
 - [Research questions and next-stage decisions](publication/research-questions-and-decisions.md):
   six research tracks, competing explanations and claim-specific evidence.
   [Actual closed-data analysis](results/native-design-objective-landscape-v1.md) and
@@ -20,12 +21,13 @@ Historical documents retain their paths and source identities.
   whole-program questions, existing-data analyses, small mechanism/search experiments,
   gradients, world validity and scale decisions. A proposal, not a running campaign.
 - [Integrated whole-program manuscript](../paper/integrated.tex) and
-  [reviewed41-page pre-scale PDF](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf):
+  [reviewed44-page pre-scale PDF](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf):
   uncapped synthesis of objectives, abstraction, structural design, gradients,
   matched comparison and game UI; [editorial evidence map](../paper/integrated-content-map.md).
   Existing studies remain separate; the closed12-world information comparison
   and new numerical readiness are not superiority claims. The earlier37-page
-  artifact is preserved. [Current PDF and42-check/rebuild verification](../paper/integrated-pre-scale-build-v2.json).
+  artifact is preserved, as is the information-only41-page PDF.
+  [Current PDF,73-check and rebuild verification](../paper/integrated-pre-scale-build-v3.json).
   [Historical39-page software/build/visual verification](results/pre-scale-completion-software-verification-v1.json)
   records374 Python checks,320 frontend checks and actual browser verification.
   [Current reference/readiness display](results/pre-scale-observatory-reference-verification-v1.json)

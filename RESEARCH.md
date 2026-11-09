@@ -64,12 +64,13 @@
 研究全体の原稿は、ページ数で先に削らない[統合稿](paper/integrated.tex)へ
 まとめ直した。目的関数、抽象化、構造変更、条件付き勾配、過去の実作用、最新比較、
 ゲームUIを含め、過去と現在のsource・設計者・評価条件を分離して記述する。
-元の37ページ稿は保持している。現在の[41ページのスケールアップ前稿](output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)は、
-新しい情報機構の12世界比較、実入力の確認、selector再生と費用を追加したもの。
+元の37ページ稿と情報比較の41ページ稿は保持している。現在の[44ページの統合稿](output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)は、
+12世界の情報比較と、目的別探索・選択後評価・実コード・費用・限界を含む。
 [現在の終了条件](research/pre-scale-completion.md)に沿った別sourceの目的別探索は、
 16枠・選択後27物理評価・二回全監査まで閉じた。[実結果と全データ](research/results/pre-scale-search-v1.md)
 は数値feedback更新、強い参照との小さい差、5実行失敗、配線変更なしを含む。
-原稿統合と最終紙面検証を進めており、改善・新構造の勝利を完了条件にしない。
+[原稿・UI・再現を含む九項目の最終監査](research/results/pre-scale-completion-final-audit-v1.md)も完了。
+改善・新構造の勝利を完了条件にせず、未実証の研究課題は残す。
 
 [現在地](research/STATUS.md)と[証拠対応表](research/program-map.md)を正本とする。
 文書、テスト、生成成功、コード差分、実作用、損失改善は別の証拠である。
