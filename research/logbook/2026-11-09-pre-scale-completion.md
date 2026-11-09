@@ -379,3 +379,25 @@ and `game-ui-v2/screenshots/pre-scale-observatory-latest-qa/`. Their latest imag
 is an actual7/12 observation, not a synthetic fixture or full-study result.
 The helper is pinned before starting the long observer; real periodic operation
 is verified separately from these synthetic clock tests/browser checks.
+
+At clean2ce33d6 the14 helper tests pass again in0.72s. The long observer starts
+03:38:12UTC as PID39338, own execution handle33797, using an immutable helper
+checkout and a separate status journal under main/outputs. Its ignored data
+target belongs to the development UI, not either scientific source. The initial
+one-off browser snapshot is moved recoverably into the observer output folder;
+the committed historical snapshot is untouched. No scientific slot is retried.
+
+Real periodic operation is then verified: unchanged polls preserve the original
+03:38:12 data date; at poll9, actual M completion changes8→9 and the observer
+publishes a second frame at03:42:13. A separate actual Chrome check consumes the
+watcher's produced file, matches its displayed observation date/checksum and8/12
+initial count, verifies automatic GET after30 seconds and rejects404/tamper
+without fallback or write requests. Its screenshots/receipt are retained under
+`game-ui-v2/screenshots/pre-scale-observatory-watcher-qa/` and bound by the
+[compact verification](../results/pre-scale-observatory-periodic-verification-v1.json).
+The standalone browser checker now also records the exact initial data/date;
+this analysis/UI change does not modify the frozen helper or either experiment.
+
+M is9/12 complete, the original writer and corrected continuation remain live,
+and O/E inference is still undispatched. The larger4259854 Docker regression
+recheck stays pending for a quiet window; the UI checks do not replace it.

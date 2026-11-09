@@ -1,7 +1,8 @@
 # Current research status
 
-Updated2026-11-09JST. Latest M observation at03:11UTC:5/12 complete;
-the UI snapshot below is still explicitly dated02:21UTC. Not a live heartbeat.
+Updated2026-11-09JST. Latest M observation at03:42UTC:9/12 complete.
+Recorded snapshot02:21UTC is preserved; a separate local projection updates
+when journal facts change. Neither file is a live-process heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
 
 ## Active pre-scale completion
@@ -14,7 +15,7 @@ immutable source, raw destinations, observations and remaining tasks.
   replays pass at source215311c. T explicitly retains the parent; E changes the
   six coordinates. Two generation POSTs, no native losses; this is not code/graph
   readiness or an improvement claim.
-- M information-path comparison:5/12 four-year worlds complete and the next
+- M information-path comparison:9/12 four-year worlds complete and the next
   started, with fixed Qwen3-8B and no project amendments. Initial corpus index
   construction is finished and later retrieval uses the cache. Completed M0
   records226 scientist responses/739.281 cumulative call seconds; this excludes
@@ -82,6 +83,16 @@ complete at the later observation; the original runtime/settings are unchanged.
 The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old
 package, not the new D/M study. No active experiment source is changed.
+
+The [periodic read-only observation](results/pre-scale-observatory-periodic-verification-v1.json)
+now runs at frozen2ce33d6 as PID39338, separate from both scientific writers.
+It projects actual M/O/E journals every30 seconds, but changes the data date
+only when recorded facts change. The explicit local mode is
+`http://127.0.0.1:4181/pre-scale.html?source=latest`; recorded mode is separate.
+At poll10 it has published two frames (8→9 completed M worlds). Actual Chrome
+verifies its produced JSON→rendered date, PC/mobile, auto GET,404/tamper and
+no hidden fallback/write requests. All325 UI tests and14 clean helper tests
+pass. This does not resolve the separate4259854 broad Docker timeout/recheck.
 
 ## Previous planning and completed V2 package
 

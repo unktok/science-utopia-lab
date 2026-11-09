@@ -24,8 +24,14 @@ try{
   const errors=[];page.on('pageerror',e=>errors.push(String(e)));
   const evidenceRequests=[];let writes=0;
   page.on('request',r=>{if(/\/data\/pre-scale-observatory\./.test(r.url()))evidenceRequests.push(r.url());if(r.method()!=='GET')writes++;});
+  const initialReply=page.waitForResponse(r=>r.url().endsWith(`/data/pre-scale-observatory.${evidenceFile}.json`));
   await page.goto(base+'/pre-scale.html?source='+source);
   await page.getByRole('heading',{name:'Before the scale jump'}).waitFor();
+  const initialEnvelope=await (await initialReply).json();
+  report.data_observed_utc=initialEnvelope.payload.observed_utc;
+  report.data_payload_sha256=initialEnvelope.payload_sha256;
+  report.initial_completed_M_worlds=initialEnvelope.payload.information.worlds.filter(r=>r.status==='complete').length;
+  check((await page.locator('body').innerText()).includes(report.data_observed_utc),'Rendered observation date must match its actual JSON response');
   check(await page.locator('tbody tr').count()===12,'All declared mechanism slots must be visible');
   check(errors.length===0,'Unexpected JavaScript errors: '+errors.join('; '));
   check(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),'Desktop horizontal overflow');

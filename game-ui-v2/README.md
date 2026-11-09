@@ -397,8 +397,6 @@ also exposed through a keyboard-operable semantic DOM mirror.
 The minimap occupies the upper-right of the logical canvas. Canvas state is
 mirrored to semantic buttons for keyboard and screen-reader navigation.
 
-## Architecture boundary
-
 ## Timestamped pre scale progress
 
 `pre-scale.html?source=recorded` opens the committed historical snapshot.
@@ -417,7 +415,7 @@ source, distinct from the search source and its required fresh readiness.
 From a clean pinned helper checkout, with explicit actual run paths:
 
 ```sh
-python -m scripts.watch_pre_scale_observatory \
+/absolute/path/to/project/.venv/bin/python -m scripts.watch_pre_scale_observatory \
   --information-run /absolute/path/to/information-run \
   --search-run /absolute/path/to/search-run \
   --output /absolute/path/to/game-ui-v2/public/data/pre-scale-observatory.latest.json \

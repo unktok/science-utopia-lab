@@ -1,0 +1,25 @@
+{
+  "schema": "scienceutopia.pre-scale-browser-qa.v1",
+  "observed_utc": "2026-11-09T03:41:04.901Z",
+  "story": "Recorded journals → same-origin JSON → checksum validation → read-only English UI",
+  "checks": [
+    "actual data rendered,12 rows,English,desktop no overflow,no JS errors",
+    "390px mobile no overflow and reload below provenance",
+    "actual latest file automatically requested again after30 seconds, without recorded-file fallback",
+    "404 fails closed without stale outcomes",
+    "tampered JSON fails checksum without displaying invented progress",
+    "no write/model/simulation request or silent alternate evidence source"
+  ],
+  "source_mode": "latest",
+  "new_model_calls": 0,
+  "simulation_submissions": 0,
+  "independent_scientific_audit": false,
+  "files": {
+    "desktop.png": "14f1504f200c2b924b0bb016945c611378072d35e49365a49de9d6e732f53048",
+    "mobile.png": "26c0e5a378eabf7ef86b3c64194f98561bf0d78a1d9e4f34965a2b0698663697"
+  },
+  "data_observed_utc": "2026-11-09T03:38:12.781398+00:00",
+  "data_payload_sha256": "a7b8fbfab2445febf034c1a1879860fc9f7f337e300ea615cc260a0b5ba64c5b",
+  "initial_completed_M_worlds": 8,
+  "passed": true
+}

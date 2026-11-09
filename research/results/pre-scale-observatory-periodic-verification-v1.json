@@ -1,0 +1,41 @@
+{
+  "schema": "scienceutopia.pre-scale-observatory-periodic-verification.v1",
+  "helper_source_commit": "2ce33d69ce5234902f97321aef8c957c64cd5267",
+  "helper_clean_pinned_tests": {"passed": 14, "failed": 0, "seconds": 0.72, "scope": "Projection and finite watcher with synthetic clocks; not model inference or full-study audit"},
+  "frontend": {
+    "passed": 325, "failed": 0, "files": 33, "seconds": 2.89,
+    "source_state": "Edited application bytes later committed as2ce33d6, before commit; no clean-source frontend execution claim",
+    "typecheck": "passed", "build": "passed",
+    "preserved_initial_attempt": "Default sandbox324 passed/1 failed with listen EPERM on the own local HTTP fixture; permission-enabled325 pass, no deadline change"
+  },
+  "browser": {
+    "recorded_receipt": "game-ui-v2/screenshots/pre-scale-observatory-modes-qa-v2/verification.json",
+    "recorded_receipt_sha256": "24fec3abc9d210a76df946e658a09352f2dcb60c414b0736121294117c1e4d63",
+    "initial_latest_receipt": "game-ui-v2/screenshots/pre-scale-observatory-latest-qa/verification.json",
+    "initial_latest_receipt_sha256": "8faad2d26ce7d86063001f66cec029e8ae1bce04c8fa9e557b999be43dbef1d7",
+    "real_watcher_receipt": "game-ui-v2/screenshots/pre-scale-observatory-watcher-qa/verification.json",
+    "real_watcher_receipt_sha256": "e950e25152d21dada40b192ea0851d3425a383990f8e8c722ba84550f542b902",
+    "final_browser_checker_sha256": "318fda07f75e5385705416700886c07d2d953edcb452b5ee6a7d1b5623021682",
+    "real_watcher_observed_data_utc": "2026-11-09T03:38:12.781398+00:00",
+    "real_watcher_data_payload_sha256": "a7b8fbfab2445febf034c1a1879860fc9f7f337e300ea615cc260a0b5ba64c5b",
+    "real_watcher_initial_M_completed": 8,
+    "checks": ["Actual periodic producer JSON reaches browser with its same observation date", "Desktop/mobile English twelve-row display", "Actual30-second local GET poll", "404/tamper clears outcomes", "No silent recorded fallback", "Zero write requests"],
+    "scope": "Same-origin read-only observation story; not scientific validity, liveness or causal benefit"
+  },
+  "actual_periodic_operation": {
+    "watch_pid": 39338, "started_utc": "2026-11-09T03:38:12.764985+00:00",
+    "interval_seconds": 30, "maximum_seconds": 86400,
+    "status_path": "outputs/pre-scale-observatory-watch-v1-a1/last-status.json",
+    "confirmed_live_execution_handle": 33797,
+    "observed_poll": 10, "published_frames": 2,
+    "later_data_observed_utc": "2026-11-09T03:42:13.032749+00:00",
+    "later_data_payload_sha256": "6aa543a9314849ff9066168bae34655c4303a852bc0c4c9fbd25173cbe2b49a7",
+    "later_M_completed": 9,
+    "unchanged_polls_do_not_refresh_data_timestamp": true,
+    "liveness_inferred_from_status_file": false
+  },
+  "scientific_sources_changed": false,
+  "new_model_calls": 0,
+  "independent_scientific_audit": false,
+  "research_goal_complete": false
+}
