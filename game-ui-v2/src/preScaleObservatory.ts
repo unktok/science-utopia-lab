@@ -1,5 +1,6 @@
 import "./preScaleObservatory.css";
 import { validatePreScale, valueLabel, statusLabel, snapshotSource, type PreScaleSnapshot } from "./preScaleContract";
+import { PRE_SCALE_ARMS } from "./preScaleFoundry";
 
 const app = document.querySelector<HTMLElement>("#app")!;
 const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text = "", cls = ""): HTMLElementTagNameMap[K] => {
@@ -86,6 +87,11 @@ function render(p: PreScaleSnapshot, source: "recorded" | "latest"): void {
   if (p.search.observed_stage) sidebar.append(el("p", `Recorded stage: ${p.search.observed_stage}`));
   if (p.search.stage_error_type) sidebar.append(el("p", `Terminal error class: ${p.search.stage_error_type}. See journals for diagnosis.`));
   for (const r of p.search.candidate_slots) sidebar.append(el("p", `${r.arm} / G${r.generation}: ${statusLabel(r.status)} / ${valueLabel(r.loss)}`));
+  if (p.search.status === "recorded-closed") {
+    sidebar.append(el("h3", "Inspect development institutions"),
+      el("p", "Open the original code, wiring, schedules and committed researcher-year records in the read-only Foundry. A closed-audit export is required; missing files stay unavailable. These are development records, not unused-seed generalization."));
+    for (const arm of PRE_SCALE_ARMS) sidebar.append(link(`${arm} →`, `./native.html?pre-scale-arm=${encodeURIComponent(arm)}`));
+  }
   sidebar.append(link("Earlier method evidence →", "./method-observatory.html")); grid.append(sidebar); app.append(grid);
   const footer = el("footer"); footer.append(el("p", "SOURCE BOUNDARY / Different source pins are different evidence scopes."), el("p", "Information study and the submission receipts above:"), el("code", p.information.source_commit));
   if (p.search.source_commit) footer.append(el("p", "Search/evaluation, with its own fresh readiness:"), el("code", p.search.source_commit));

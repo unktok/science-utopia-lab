@@ -5,6 +5,7 @@ import { initializeNativeJobs } from "./nativeJobs";
 import { initializeNativeDesignGraph } from "./nativeDesignGraphView";
 import { initializeNativeSearch } from './nativeSearchView';
 import { parseExactDraft } from './foundryBranch';
+import { parsePreScaleFoundry, preScaleFoundryArm, preScaleFoundryFile } from './preScaleFoundry';
 
 const el = <T extends HTMLElement>(id: string): T => {
   const item = document.getElementById(id); if (!item) throw new Error(`Missing native UI element ${id}`); return item as T;
@@ -12,6 +13,7 @@ const el = <T extends HTMLElement>(id: string): T => {
 const escape = (value: unknown): string => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const candidate = el<HTMLSelectElement>("candidate"), year = el<HTMLSelectElement>("year");
 let lab: NativeLab, selected = "", execution = -1;
+const preScaleMode = new URLSearchParams(location.search).has("pre-scale-arm");
 const selectedSystem = (): NativeCandidate => { const row = lab.systems[Number(candidate.value)]; if (!row) throw new Error("Missing selected system"); return row; };
 const image = (node: NativeNode): string => ({ research: "institution-lab.svg", population: "institution-lab.svg", funding: "institution-funding.svg", evaluation: "system-evaluation.svg", publication: "system-publication.svg", communication: "system-government.svg" }[node.family] || "system-government.svg");
 
@@ -62,9 +64,17 @@ function render(): void {
   el("native-actors").innerHTML = frame ? frame.actors.filter(a => a.can_author).map((actor, i) => `<article class="native-actor"><i class="native-person" aria-hidden="true"></i><b>RESEARCHER ${String(i + 1).padStart(2, "0")}</b><span>${escape(actor.id)}</span><strong>${actor.resources.toFixed(1)} RESOURCES</strong><span>${actor.is_active ? "ACTIVE" : "INACTIVE"} / YEAR ${frame.year}</span></article>`).join("") : "No completed researcher snapshot.";
   const metrics = system.runs.length ? ` <div><small>ACTUAL MODEL</small><b>${escape(lab.source.world.model)}</b></div><div><small>OBSERVED PAPERS / YEAR ${frame?.year ?? "—"}</small><b>${frame?.paper_count ?? "—"}</b></div>` : "";
   el("native-metrics").innerHTML = `<div class="primary"><small>ACTUAL NATIVE LOSS</small><b>${system.native_loss === null ? "NO VALID LOSS" : system.native_loss.toFixed(3)}</b></div>${metrics}`;
+  document.getElementById("native-failures")?.remove();
+  if (system.technical_failures.length) {
+    const details = document.createElement("details"), summary = document.createElement("summary"), body = document.createElement("pre");
+    details.id = "native-failures"; details.className = "native-failure-details";
+    summary.textContent = "TECHNICAL FAILURE RECORDS / NO IMPUTED LOSS";
+    body.textContent = JSON.stringify(system.technical_failures, null, 2);
+    details.append(summary, body); el("native-metrics").insertAdjacentElement("afterend", details);
+  }
   el("fingerprint").textContent = `SYSTEM ${system.system_fingerprint}`;
   el("native-path").replaceChildren(...lab.systems.map((row, i) => {
-    const line = document.createElement("div"); line.className = "native-path-row"; line.textContent = `${String(i + 1).padStart(2, "0")}  ${row.status.toUpperCase()}  NATIVE LOSS ${row.native_loss ?? "null"}  / +${row.difference.nodes_added.length} nodes · ${row.difference.nodes_changed.length} replaced`; return line;
+    const line = document.createElement("div"); line.className = "native-path-row"; line.textContent = `${row.evidence_label ?? String(i + 1).padStart(2, "0")}  ${row.status.toUpperCase()}  NATIVE LOSS ${row.native_loss ?? "null"}  / +${row.difference.nodes_added.length} nodes · ${row.difference.nodes_changed.length} replaced`; return line;
   }));
   const fit = lab.relaxation;
   el("native-gradient").textContent = fit ? `CONDITIONAL SOFT FIT  ${fit.history[0]?.conditional_soft_loss.toFixed(4)} → ${fit.history.at(-1)?.conditional_soft_loss.toFixed(4)}\n${fit.scope}\nLLM WEIGHTS FIXED / FULL-WORLD AUTOGRAD: NO` : "No soft fitting was performed in this run.\nLLM WEIGHTS FIXED / FULL-WORLD AUTOGRAD: NO";
@@ -81,11 +91,11 @@ function choose(): void {
 }
 
 async function load(value: unknown): Promise<void> {
-  lab = await parseNativeLab(value);
-  el("status").textContent = "HASH VERIFIED / NATIVE DEVELOPMENT EVIDENCE";
+  lab = preScaleMode ? await parsePreScaleFoundry(value, preScaleFoundryArm(location.search)!) : await parseNativeLab(value);
+  el("status").textContent = preScaleMode ? "HASH VERIFIED / PRE-SCALE DEVELOPMENT RECORDS / READ ONLY" : "HASH VERIFIED / NATIVE DEVELOPMENT EVIDENCE";
   el("error").hidden = true;
   el("source").textContent = `SOURCE ${lab.source.world.source_commit.slice(0, 12)} / ${lab.source.world.years} NATIVE YEARS / READ-ONLY EVIDENCE`;
-  candidate.replaceChildren(...lab.systems.map((row, i) => new Option(`${i + 1}. ${i ? "REVISED DESIGN" : "INITIAL DESIGN"} / LOSS ${row.native_loss ?? "null"}`, String(i))));
+  candidate.replaceChildren(...lab.systems.map((row, i) => new Option(`${row.evidence_label ?? `${i + 1}. ${i ? "REVISED DESIGN" : "INITIAL DESIGN"}`} / LOSS ${row.native_loss ?? "null"}`, String(i))));
   choose();
 }
 function failure(error: unknown): void { el("error").hidden = false; el("error").textContent = String(error); el("status").textContent = "EVIDENCE LOAD FAILED"; }
@@ -99,7 +109,21 @@ el("step").addEventListener("click", () => {
 });
 el<HTMLInputElement>("load").addEventListener("change", async event => { try { const file = (event.target as HTMLInputElement).files?.[0]; if (file) await load(JSON.parse(await file.text())); } catch (error) { failure(error); } });
 new ResizeObserver(drawEdges).observe(el("native-graph"));
-initializeNativeDesignGraph(el<HTMLTextAreaElement>("design-system"));
-initializeNativeJobs(() => parseExactDraft(selectedSystem().system_spec_json), load);
-initializeNativeSearch();
-fetch("./data/native-design-lab-v1.json").then(response => { if (!response.ok) throw new Error("Use LOAD RUN to select native execution evidence."); return response.json(); }).then(load).catch(failure);
+if (preScaleMode) {
+  el("design-console").hidden = true;
+  el<HTMLInputElement>("load").disabled = true;
+  el<HTMLInputElement>("load").closest("label")?.setAttribute("hidden", "");
+  void (async () => {
+    try {
+      const arm = preScaleFoundryArm(location.search)!;
+      const response = await fetch(preScaleFoundryFile(arm), { cache: "no-store", signal: AbortSignal.timeout(10_000) });
+      if (!response.ok) throw new Error(`Closed-audit Foundry export unavailable (${response.status}). No older study is substituted.`);
+      await load(await response.json());
+    } catch (error) { failure(error); }
+  })();
+} else {
+  initializeNativeDesignGraph(el<HTMLTextAreaElement>("design-system"));
+  initializeNativeJobs(() => parseExactDraft(selectedSystem().system_spec_json), load);
+  initializeNativeSearch();
+  fetch("./data/native-design-lab-v1.json").then(response => { if (!response.ok) throw new Error("Use LOAD RUN to select native execution evidence."); return response.json(); }).then(load).catch(failure);
+}

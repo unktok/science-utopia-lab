@@ -1,7 +1,7 @@
 export type NativeNode = { mechanism_id: string; family: string; implementation: string; parameters: Record<string, any>; inputs: { port_id: string }[]; outputs: { port_id: string }[] };
 export type NativeSpec = { mechanisms: NativeNode[]; connections: { source_mechanism: string; source_port: string; target_mechanism: string; target_port: string; channel: string; latency: number }[]; schedules: { mechanism_id: string; phase: number }[] };
 export type NativeRun = { seed: number; frames: { year: number; paper_count: number; actors: { id: string; type: string; resources: number; is_active: boolean; can_author: boolean }[] }[]; events: { year: number; phase: number; event_type: string; provenance: Record<string, any>; payload: Record<string, any> }[] };
-export type NativeCandidate = { suggestion_id: string; system_fingerprint: string; system_spec_json: string; spec: NativeSpec; status: "complete" | "failed"; native_loss: number | null; technical_failures: unknown[]; runs: NativeRun[]; difference: { nodes_added: string[]; nodes_changed: string[]; nodes_removed: string[] } };
+export type NativeCandidate = { suggestion_id: string; evidence_label?: string; system_fingerprint: string; system_spec_json: string; spec: NativeSpec; status: "complete" | "failed"; native_loss: number | null; technical_failures: unknown[]; runs: NativeRun[]; difference: { nodes_added: string[]; nodes_changed: string[]; nodes_removed: string[] } };
 export type NativeLab = { schema: string; source: { world: { source_commit: string; years: number; model: string }; loss_spec_sha256: string }; systems: NativeCandidate[]; relaxation: null | { history: { step: number; conditional_soft_loss: number }[]; scope: string }; interpretation: Record<string, unknown> };
 
 export async function shaText(text: string): Promise<string> {
@@ -15,6 +15,8 @@ export async function parseNativeLab(value: unknown): Promise<NativeLab> {
   if (lab.schema !== "scienceutopia.native-design-lab.v1" || lab.interpretation.full_native_world_autograd !== false || lab.interpretation.model_weights_trained !== false || lab.interpretation.live_player_intervention !== false) throw new Error("Unsupported native/gradient/intervention claim");
   if (!Array.isArray(lab.systems) || !lab.systems.length) throw new Error("Missing actual native systems");
   for (const system of lab.systems) {
+    if (!Array.isArray(system.technical_failures)) throw new Error("Missing native technical-failure records");
+    if (system.evidence_label !== undefined && (typeof system.evidence_label !== "string" || !system.evidence_label.trim() || system.evidence_label.length > 200)) throw new Error("Invalid native evidence label");
     if (typeof system.system_spec_json !== "string" || await shaText(system.system_spec_json) !== system.system_fingerprint) throw new Error("Native SystemSpec fingerprint mismatch");
     system.spec = JSON.parse(system.system_spec_json) as NativeSpec;
     const ids = new Set(system.spec.mechanisms.map(n => n.mechanism_id));
