@@ -164,3 +164,27 @@ The same receipt binds the unchanged frontend/browser artifacts and reviewed
 At the next actual writer observation the first-use embedding index has reached
 1541/1612 batches (about96%). Native M source/settings remain unchanged. No O/E
 inference is dispatched while the first M world is still active.
+
+## Prospective O/E source fixed, analysis-only continuation
+
+The verified development commits are fast-forwarded into localmain62388a7
+(cached origin is433 commits behind; no network push). A new detached clean
+experiment checkout is pinned at
+`62388a74d071a3a4fdc8cc309c2807422f96223f`, under
+`science-utopia-lab-experiments/pre-scale-search-v1-a1`.
+Metadata-only prepare finishes with zero generation calls. Plan content hash:
+`db2df5c5e54a68c8201b6b8c460cffa66770ee37da4f7b0d1089c7f5fc7702cb`.
+Three explicitly scoped raw-output inventories find no prior scientific use of
+51001/51011/51017. No current M outcome enters the new arm histories.
+
+An analysis-only O/E adapter is implemented after this freeze; it runs the
+unchanged original62388a7 native libraries, reconstructs plan/authoring/selection,
+independently checks native checkpoints and cross-scores, and preserves shared
+evaluation labels without treating them as extra independent samples. It will
+not audit a live writer. Its actual full closed-study execution is still pending.
+The new scheduler waits for the original M writer PID16044 to disappear and a
+complete M record to exist, then requires two matching original-source audits
+before any designer role load. It does not infer the original process exit code
+from process disappearance, does not retry a consumed stage, and stops on errors.
+Eighteen focused synthetic guard/order tests pass in3.44s; no new scientific
+observations or local-model readiness certificate is inferred from those tests.

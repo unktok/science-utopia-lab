@@ -25,7 +25,8 @@ immutable source, raw destinations, observations and remaining tasks.
   connections now pass scripted original-world/Docker tests. New live-model
   gradient advantage or recursive self-improvement is not claimed.
 - The T/E runner, explicit fixed-production pilot domain, bounded staged editor,
-  all-slot selection and evaluation ordering are implemented, not dispatched.
+  all-slot selection and evaluation ordering are implemented. Clean62388a7
+  metadata-only prepare is complete; no O/E inference has been dispatched.
   Fresh source-specific readiness still precedes any O/E production.
 - The broader source-bound Python verification at cleana377486 passes374/374
   checks in215.56s. The earlier085f87b result335/336 remains a failed source,
