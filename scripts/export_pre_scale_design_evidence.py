@@ -35,6 +35,8 @@ def cell_run(cell, world, *, years):
     proof = world['physical_proof']; spec = SystemSpec.from_dict(world['system'])
     annual = proof.get('annual_checkpoints', [])
     if not annual:
+        if proof['status'] == 'complete':
+            raise ValueError('complete physical trajectory lacks committed annual evidence')
         return []  # No fabricated actors/events for a year-zero failure.
     directory = Path(cell) / 'simulation/checkpoints/native-design'
     frames = []; last_events = []

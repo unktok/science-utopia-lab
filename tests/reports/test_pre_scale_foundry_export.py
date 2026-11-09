@@ -96,6 +96,13 @@ def test_partial_failure_has_no_fabricated_year_or_actor_frame(tmp_path):
     assert not (tmp_path/'not-created').exists()
 
 
+def test_complete_claim_without_annual_evidence_is_rejected(tmp_path):
+    world = {'system': plan()['reference_systems']['open-seed'],
+        'physical_proof': {'status': 'complete', 'annual_checkpoints': []}}
+    with pytest.raises(ValueError, match='lacks committed annual evidence'):
+        exporter.cell_run(tmp_path/'not-created', world, years=4)
+
+
 def test_submitted_failed_candidate_keeps_its_source_and_exact_error_without_fabricated_activity(tmp_path, monkeypatch):
     root = tmp_path/'SYNTHETIC'; p, audit = inputs(root, monkeypatch)
     arm = 'throughput:parameters'; identity = 'SYNTHETIC-failed-candidate'

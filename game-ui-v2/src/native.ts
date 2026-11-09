@@ -92,7 +92,9 @@ function choose(): void {
 
 async function load(value: unknown): Promise<void> {
   lab = preScaleMode ? await parsePreScaleFoundry(value, preScaleFoundryArm(location.search)!) : await parseNativeLab(value);
-  el("status").textContent = preScaleMode ? "HASH VERIFIED / PRE-SCALE DEVELOPMENT RECORDS / READ ONLY" : "HASH VERIFIED / NATIVE DEVELOPMENT EVIDENCE";
+  el("status").textContent = lab.interpretation.synthetic_fixture_not_scientific_evidence === true
+    ? "SYNTHETIC QA / NOT SCIENTIFIC EVIDENCE / READ ONLY"
+    : preScaleMode ? "HASH VERIFIED / PRE-SCALE DEVELOPMENT RECORDS / READ ONLY" : "HASH VERIFIED / NATIVE DEVELOPMENT EVIDENCE";
   el("error").hidden = true;
   el("source").textContent = `SOURCE ${lab.source.world.source_commit.slice(0, 12)} / ${lab.source.world.years} NATIVE YEARS / READ-ONLY EVIDENCE`;
   candidate.replaceChildren(...lab.systems.map((row, i) => new Option(`${row.evidence_label ?? `${i + 1}. ${i ? "REVISED DESIGN" : "INITIAL DESIGN"}`} / LOSS ${row.native_loss ?? "null"}`, String(i))));
