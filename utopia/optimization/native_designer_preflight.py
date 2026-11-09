@@ -291,7 +291,7 @@ def _check_intermediate_source(state, case_id, request, provider, *, scope):
 
 
 def run_calibration(directory, *, request, provider, protocol='staged-v15', source_commit='SCRIPTED-unpinned-test',
-                    scope=LITERAL_SCOPE, conversation_profile=LEGACY_HISTORY):
+                    scope=LITERAL_SCOPE, conversation_profile=LEGACY_HISTORY, session_wrapper=None):
     from .native_staged_author_v15 import initial_draft, LocalStagedQwenDesignerModel
     from .native_search_generator_v14 import LocalQwenDesignerModel
     _check_scope(scope, protocol)
@@ -320,6 +320,8 @@ def run_calibration(directory, *, request, provider, protocol='staged-v15', sour
     model = model_type(provider,
         inference_lock=directory.parent / 'interface-calibration.lock',
         **({'conversation_mode': 'interface-control-v16', **profile} if protocol == 'staged-v15' else {}))
+    if session_wrapper is not None:
+        model.session=session_wrapper(model.session)
     state, steps, records = initial_draft(request), [], []
     for case in plan['cases']:
         # Typed controls are independent. The six-step sequence is continuous.

@@ -22,6 +22,7 @@ export default defineConfig({
         methodObservatory: resolve(__dirname, "method-observatory.html"),
         openEstimators: resolve(__dirname, "native-open-estimators.html"),
         openRedesign: resolve(__dirname, "native-objective-redesign.html"),
+        preScale: resolve(__dirname, "pre-scale.html"),
       },
     },
   },

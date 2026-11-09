@@ -46,3 +46,23 @@ def test_real_original_world_requests_receive_only_declared_history(tmp_path,fix
         assert bool(events)==(first_year is not None)
     finally:
         sim.llm.response_cache.close()
+
+
+def test_all_actual_pre_delivery_payloads_match_across_information_edges_and_host_clocks(
+        tmp_path,fixed_corpus,monkeypatch):
+    from tests.runtime.test_portable_checkpoint_integration import seed,BINDING
+    snapshots=[]
+    for i,condition in enumerate(('M0','M1','M2','M3')):
+        monkeypatch.setattr('time.time',lambda i=i:1234567890.+i*86400.)
+        seed();spec=information_system(IMAGE,condition=condition)
+        monkeypatch.setitem(BINDING,'cell',spec.fingerprint)
+        kernel=NativeScienceKernel(spec,code_executor=DockerCodeExecutor(IMAGE))
+        sim,calls=make_sim(tmp_path/condition,native=kernel);sim.num_years=2
+        try:
+            sim.run()
+            snapshots.append({'first_year':[deepcopy((ctx,payload)) for ctx,payload in calls if ctx[0][1]==1],
+                'raw_events':[e.to_dict() for e in kernel.events]})
+        finally:sim.llm.response_cache.close()
+    assert snapshots[0]['first_year']
+    assert all(s['first_year']==snapshots[0]['first_year'] for s in snapshots[1:])
+    assert all(s['raw_events']!=snapshots[0]['raw_events'] for s in snapshots[1:])

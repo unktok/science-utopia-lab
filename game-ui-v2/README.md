@@ -7,6 +7,23 @@ browser.
 
 ## Current status
 
+The read-only `/pre-scale.html` observatory displays the new D/M journal snapshot
+and prospective T/E search/evaluation stages. It distinguishes a consumed start
+without an observation from a live process, preserves unknown losses as dashes,
+and verifies the Python/browser content checksum. It starts no experiment.
+Export a fresh timestamped observation without inference:
+
+```sh
+.venv/bin/python -m scripts.export_pre_scale_observatory \
+  --information-run /absolute/path/to/frozen/information-run \
+  --output game-ui-v2/public/data/pre-scale-observatory.actual.json
+```
+
+Run that module command from the repository root with its approved Python
+environment, not from this subdirectory. Add `--search-run` only once an actual
+new-source search plan exists. A copied readiness pass does not become a search
+improvement, and the snapshot is not an independent original-source audit.
+
 The completed actual v10 parameter/loss paths are now available in
 `/method-observatory.html`, linked from the v8 structural switchyard. Read-only
 charts keep current draws separate from the historical incumbent, and actual

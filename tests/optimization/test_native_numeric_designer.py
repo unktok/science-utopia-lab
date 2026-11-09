@@ -79,10 +79,14 @@ def test_two_invalid_proposals_do_not_become_baseline(tmp_path,monkeypatch):
 def test_incomplete_worker_never_retries_or_fabricates_response(tmp_path,monkeypatch):
     author,req,calls=fixture(tmp_path,monkeypatch,[valid])
     monkeypatch.setattr(module,'run_bounded',lambda *a,**k:{'timed_out':True,'returncode':-15})
-    assert author(req) is None and not calls
+    with pytest.raises(module.NumericCompletionUnknown):author(req)
+    assert not calls
     root=author.directory/('generation-'+module.digest(req))
     assert len(list(root.glob('*.intent.json')))==1 and not list(root.glob('*.http.json'))
     assert module.replay_numeric(root)['status']=='failed'
+    assert module.replay_numeric(root)['completion_unknown']
+    with pytest.raises(module.NumericCompletionUnknown):author(req)
+    assert not calls
 
 
 def test_actual_campaign_needs_numeric_certificate(tmp_path,monkeypatch):

@@ -75,3 +75,51 @@ Next unfinished items include the same-source purpose-conditioned search and
 fixed-selection evaluation, the new-scope gradient/adoption connection checks,
 actual-record UI/reporting, and updated manuscript/reproduction. Nothing here
 declares the full pre-scale checklist complete.
+
+## Subsequent development and verification, through01:32UTC
+
+- The combined source1610a11 regression passes122 checks in67.80 seconds,
+  including original-world, migration, estimator and numerical-submission paths.
+- Subsequent focused native QA passes28 checks in59.64 seconds: count claims,
+  actual information delivery and pre-treatment full payload equality under
+  different clocks, plus current-system gradient and same-society connections.
+  The M1 score-function test executes two actual native draws, updated-mean
+  forward and a no-gradient control, with scripted HTTP/corpus. The M3 test
+  preserves actual society/RNG/mechanism state and queued delayed messages
+  across an information-office change. These are not new live Qwen studies.
+- The new numerical unknown-completion path propagates a stop before another
+  role. The free staged editor now has an owned-worker1200-second wall bound,
+  durable exact wire before POST, no following dispatch after unknown HTTP,
+  preserved partial journals and read-only terminal replay. Existing editor
+  semantics and historical failed certificates are unchanged. Mocked worker,
+  timeout, domain and future search/evaluation ordering tests pass; actual
+  new-source general-editor readiness remains unexecuted.
+- The prospective T/E runner implements16 slots, six references and up to36
+  selected-policy evaluation worlds, with all exact ties/nulls preserved. An
+  opt-in fixed-production domain prevents direct project/calendar/accounting
+  shortcuts without an extra loss/novelty/fairness gate. It does not reduce the
+  global free-system API. No O/E world has been dispatched.
+- The English pre-scale observatory exports actual D/M journal facts without
+  claiming liveness or inventing missing losses. All320 frontend tests pass;
+  the actual Chrome browser verifies desktop/mobile,12 rows,404 failure and
+  checksum-tamper refusal. The first Playwright default launch failed because
+  its expected browser revision was absent; existing Chrome was used, without
+  downloading a browser. Browser QA and screenshots are retained under
+  `game-ui-v2/screenshots/pre-scale-observatory-qa/`.
+- The manuscript includes the closed-data objective map at print-size labels,
+  numeric readiness, actual M started status, prospective O/E, native count
+  verification and explicit QA/scientific boundaries. It builds39 pages; old
+ 37-page PDF hash remains `3f77d91d27ce97dc17a076bd7da764be7a4cb4feafd6a81ab9cd45601d9f19d6`.
+  New draft hash: `586a8d9838d81ed0156541bd788a78d00d799c25c3e82ebc91c7f230dc31abb4`.
+  No existing empirical result or old PDF is overwritten.
+- A new explicit read-only M audit adapter runs native imports in the unchanged
+  original experiment checkout. It refuses an unclosed study before dispatch.
+  Its rendered-context proof preserves v30 aliasing and ambiguous M2 recipient
+  attribution instead of searching for raw audit hashes. Four synthetic input/
+  guard tests pass; the actual12-world audit has not run.
+
+M remains in first-use CPU embedding setup at its original source; the source
+and all scientist settings are unchanged. At the later process observation,
+600/1612 batches have completed, with estimated remaining setup roughly40--50
+minutes. This is not a total experiment forecast. No second model role is
+loaded while that original world is active.

@@ -68,14 +68,20 @@ def make_design_space(anchor,kind):
 
 
 def validate_design_space(anchor,contract):
-    if (not isinstance(contract,dict) or set(contract)!={'schema','kind','anchor_sha256',
-            'numeric_coordinates','code_paths','scope','violation_policy'}
+    fields={'schema','kind','anchor_sha256','numeric_coordinates','code_paths','scope','violation_policy'}
+    allowed=(fields,fields|{'world_law_scope'})
+    if (not isinstance(contract,dict) or set(contract) not in allowed
             or contract['schema']!=SCHEMA or contract['kind'] not in KINDS
             or contract['anchor_sha256']!=digest(anchor.to_dict())
             or not isinstance(contract['numeric_coordinates'],list) or not isinstance(contract['scope'],str)
             or not isinstance(contract['violation_policy'],str)
             or contract['code_paths']!=source_paths(anchor.to_dict())):
         raise ValueError('exact benchmark design-space/anchor contract required')
+    if 'world_law_scope' in contract:
+        from .native_fixed_production_domain import SCOPE,require_fixed_production
+        if contract['world_law_scope']!=SCOPE:
+            raise ValueError('unknown explicit world-law scope')
+        require_fixed_production(anchor,anchor)
     index={n.mechanism_id:i for i,n in enumerate(anchor.mechanisms)};seen=set()
     for c in contract['numeric_coordinates']:
         if (not isinstance(c,dict) or set(c)!={'mechanism_id','path','lower','upper','integer'}
@@ -99,6 +105,9 @@ def require_candidate_in_space(anchor,candidate,contract):
     original,current=anchor.to_dict(),candidate.to_dict()
     if current['initial_state'].get('seed')!=original['initial_state'].get('seed'):
         raise ValueError('candidate changes the fixed experimental world seed')
+    if 'world_law_scope' in contract:
+        from .native_fixed_production_domain import require_fixed_production
+        require_fixed_production(anchor,candidate)
     if contract['kind']=='code-and-graph':return
     masked_original,masked_current=clone(original),clone(current)
     index={n.mechanism_id:i for i,n in enumerate(anchor.mechanisms)}

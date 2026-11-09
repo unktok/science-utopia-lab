@@ -63,7 +63,7 @@ def require_plan(root):
     return plan
 
 
-def numeric_calibration(root,plan):
+def numeric_calibration(root,plan,*,request_factory=None):
     directory=root/'numeric-readiness'
     if directory.exists():
         raise ValueError('finite numeric calibration cannot be redispatched')
@@ -79,7 +79,8 @@ def numeric_calibration(root,plan):
             loss_spec=plan['losses'][objective],seeds=[42],world_binding={'source_commit':plan['source_commit'],
                 **plan['scientist'],'years':4},strategies={'numeric':{'method':'direct-literal-numeric'}},
             mode='blackbox',design_space=information_design_space(anchor,'parameters'))
-        request=c._request([],c._strategy_initial(),1)
+        request=(request_factory(objective) if request_factory is not None
+                 else c._request([],c._strategy_initial(),1))
         definition=author(request)
         path=author.directory/('generation-'+digest(request)); replay=replay_numeric(path)
         valid=definition is not None and replay['definition']==definition

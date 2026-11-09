@@ -83,11 +83,15 @@ def information_system(image_id, *, condition='M1', seed=42):
     return base
 
 
-def information_design_space(anchor, kind):
+def information_design_space(anchor, kind, *, fixed_production=False):
     contract = make_design_space(anchor, kind)
     # Replace the old example's now-inert repetition coordinate with a value
     # the dossier source actually consumes. This is a new prospective domain.
     contract['numeric_coordinates'][-1] = {'mechanism_id':'information-office',
         'path':'/parameters/max_records', 'lower':0., 'upper':6., 'integer':True}
+    if fixed_production:
+        from utopia.optimization.native_fixed_production_domain import SCOPE,scope_description
+        contract['world_law_scope']=SCOPE
+        contract['scope']+=' '+scope_description(anchor)
     validate_design_space(anchor, contract)
     return contract

@@ -21,8 +21,18 @@ immutable source, raw destinations, observations and remaining tasks.
 - Separate development adds opt-in independently computed native count claims,
   verification and preserved corrections, connected to actual next-year
   scientist inputs.19 focused tests pass; no claim of scientific truth.
-- Same-source T/E search and selected-policy evaluation, next-scope gradient/
-  adoption checks, UI/report/manuscript/reproduction remain unfinished.
+- Current M1 score-update/updated-forward/no-gradient and M3 continuity/queue
+  connections now pass scripted original-world/Docker tests. New live-model
+  gradient advantage or recursive self-improvement is not claimed.
+- The T/E runner, explicit fixed-production pilot domain, bounded staged editor,
+  all-slot selection and evaluation ordering are implemented, not dispatched.
+  Fresh source-specific readiness still precedes any O/E production.
+- The actual-record English observatory passes320 frontend checks and browser
+  desktop/mobile/404/tamper verification. The separate39-page pre-scale manuscript
+  adds the measured readiness, closed-data figure and explicit unfinished stages;
+  the previous37-page artifact remains unchanged.
+- M closure/audit/analysis, fresh same-source T/E search and selected-policy
+  evaluation, final actual-record exports and result/manuscript update remain.
 
 The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old

@@ -10,6 +10,7 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
 | Whole-system question, science-of-science objectives, fixed scientist weights | Main introduction/problem/discussion | Central motivation; do not collapse the project to peer review or V2 |
+| Pre-scale additions, November9 | Separate main section after observatory | Closed-data proxy/interface diagnosis; actual2-case numeric readiness; native information study started but no terminal outcome; new claim-verification/gradient/adoption connectivity is scripted QA; search/evaluation implemented but unexecuted |
 | SystemSpec, arbitrary source, types/state/ports, wiring, actors/artifacts and processes | Main design/method; additional contracts in appendix | Explain what is implemented and what remains trusted/native; not permission-as-invention |
 | Loss/validity/evaluation/adoption separation | Main problem and evaluation | Essential interpretation, not hidden substantive vetoes |
 | Ask/tell, LLM program search, conditional distributions and gradient estimators | Main optimization; assumptions in appendix | Continuous method/free-domain axes; existing estimator theory credited |

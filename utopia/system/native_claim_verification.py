@@ -57,8 +57,14 @@ def evaluate_claim(kernel, claim, *, year):
     for paper in kernel._simulation.paper_tracker.papers_by_id.values():
         for review in paper.review_history:
             if claim['after_year'] < review['year'] <= claim['through_year']:
+                # Keep native operational wall times in the original ledger,
+                # but do not make this count-evidence identity depend on them.
+                # Only the source-owned top-level review_time is projected;
+                # arbitrary scientific text/timestamps remain literal.
+                reviews=[{k:deepcopy(v) for k,v in item.items() if k!='review_time'}
+                         for item in review.get('reviews',[])]
                 records.append({'paper_id':paper.id,'year':review['year'],
-                    'decision':review.get('decision'), 'reviews':deepcopy(review.get('reviews',[]))})
+                    'decision':review.get('decision'), 'reviews':reviews})
     if claim['metric']=='accepted-decisions':
         expected = sum(r['decision']=='accept' for r in records)
     elif claim['metric']=='rejected-decisions':

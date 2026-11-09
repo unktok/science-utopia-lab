@@ -1,14 +1,19 @@
 # Objective-conditioned institution paper
 
 The canonical whole-program working manuscript is now [integrated.tex](integrated.tex):
-[reviewed37-page PDF](../output/pdf/science-utopia-lab-integrated-working-paper.pdf),
-15 figures,13 tables and16 cited references, with no artificial page cap.
+[39-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf),
+16 figures,14 tables and16 cited references, with no artificial page cap.
 It integrates the objective/abstraction/method arguments, parameter held-out
 study, actual structural cases, conditional-gradient experiments, nested design,
 latest matched comparison and English evidence UI. It does not pool their
 different sources or turn feasibility into superiority.
 [Inclusion/exclusion map](integrated-content-map.md) explains the editorial choices;
-[build/evidence/visual binding](integrated-build-v1.json) records the actual artifacts.
+[historical37-page build/evidence/visual binding](integrated-build-v1.json) records
+the preserved older artifact, not the new draft. The new pre-scale section
+separates actual numeric readiness, scripted connection QA, the started M study
+and the implemented but unexecuted T/E search. It adds no unobserved optimization
+gain. Its current source-bound final verification is recorded with the pre-scale
+work, not silently substituted into the old receipt.
 This is a research manuscript, not a submitted, anonymous or release-cleared package.
 
 The narrower empirical study draft remains [submission-v2.tex](submission-v2.tex);
@@ -54,7 +59,7 @@ cd paper
 ```
 
 Inspect the newly rendered pages before replacing the reviewed PDF and receipt.
-The actual build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
+The preserved older build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
 of dense figures/provenance. No layout or unresolved-reference warning remains.
 The old paper-only13-path policies still rebuild the narrower V2 draft, not
 this expanded integrated manuscript. Literal source/asset dependencies and

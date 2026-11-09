@@ -97,6 +97,18 @@ def test_seeded_state_cannot_forge_a_matching_verdict_and_skip_verification():
         verify_claims(kernel,replace(ctx,state=forged,inputs={'claims':(delivered(claim()),)}))
 
 
+def test_count_evidence_projects_only_native_operational_time_without_mutating_ledger():
+    kernel,_=fixture();paper=kernel._simulation.paper_tracker.papers_by_id['actual-paper']
+    review=paper.review_history[0]['reviews'][0]
+    review.update(review_time=12345.,reason='Scientific timestamp 2026-11-09 stays literal')
+    first=evaluate_claim(kernel,claim(value=1),year=2)
+    review['review_time']=987654.
+    second=evaluate_claim(kernel,claim(value=1),year=2)
+    assert first==second and review['review_time']==987654.
+    review['reason']='A genuinely different scientific statement'
+    assert evaluate_claim(kernel,claim(value=1),year=2)['evidence_sha256']!=first['evidence_sha256']
+
+
 CLAIM_SOURCE='''def step(context):
     year=context['period']
     state=context['state']

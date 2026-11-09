@@ -29,6 +29,10 @@ TASK = ('Choose literal values for all declared numeric coordinates to minimize 
         'literally: no clipping, type coercion, repair or automatic baseline fallback occurs.')
 
 
+class NumericCompletionUnknown(BaseException):
+    """Stop orchestration, including other roles, after an unknown dispatch."""
+
+
 def checked(value):
     if value.get('content_sha256') != digest({k:v for k,v in value.items() if k != 'content_sha256'}):
         raise ValueError('numeric journal content changed')
@@ -49,11 +53,12 @@ def worker(intent_path, response_path):
     session = requests.Session(); session.trust_env = False
     transport = {'endpoint': ENDPOINT, 'network_retries': 0}
     result = {'schema': SCHEMA+'.http', 'intent_sha256': intent['content_sha256']}
-    begin = time.monotonic()
+    begin = time.monotonic(); dispatched=False
     try:
         actual = backend_binding(intent['provider'], session)
         if actual != intent['backend']:
             raise ValueError('local model/backend differs from frozen numeric binding')
+        dispatched=True
         response = post(session, ENDPOINT, intent['payload'], intent['response_schema'], transport,
                         timeout=tuple(intent['http_timeout_seconds']))
         transport.update(http_status=response.status_code, raw_http_response=response.text)
@@ -66,7 +71,12 @@ def worker(intent_path, response_path):
             raise ValueError('complete final local response required; HTTP200 is insufficient')
         result['literal_submission'] = decode_json(body['message']['content'], strict=True, finite_floats=True)
     except Exception as error:
-        result['error'] = {'type': type(error).__name__, 'message': str(error)}
+        unknown=(dispatched and isinstance(error,(requests.Timeout,requests.ConnectionError)))
+        if (dispatched and transport.get('http_status')==200
+                and transport.get('response_payload',{}).get('done') is not True):
+            unknown=True
+        result['error'] = {'type': 'CompletionUnknown' if unknown else type(error).__name__,
+                           'cause_type':type(error).__name__, 'message': str(error)}
     result.update(transport=transport, elapsed_seconds=time.monotonic()-begin)
     save(response_path, result)
 
@@ -102,7 +112,9 @@ class NumericDesigner:
                 saved = checked(json.loads((root/'binding.json').read_text()))
                 if {k:v for k,v in saved.items() if k != 'content_sha256'} != binding:
                     raise ValueError('numeric source/model/request/settings changed')
-                return replay_numeric(root)['definition']
+                replayed=replay_numeric(root)
+                if replayed.get('completion_unknown'):raise NumericCompletionUnknown('prior numeric completion unknown')
+                return replayed['definition']
             binding = save(root/'binding.json', binding)
             begin = time.monotonic(); steps = []; feedback = None; definition = None
             for i in range(self.settings['max_calls']):
@@ -151,9 +163,12 @@ class NumericDesigner:
                     break
                 # Explicit semantic repair, charged in the original two-call budget.
                 feedback = {'literal_submission': body.get('literal_submission'), 'error': error}
+            unknown=any((checked(json.loads((root/f'call-{i}.result.json').read_text())).get('error') or {}).get('type')
+                =='CompletionUnknown' for i in range(len(steps)))
             save(root/'result.json', {'schema': SCHEMA+'.result', 'binding_sha256': binding['content_sha256'],
                 'steps': steps, 'definition': definition, 'status': 'submitted' if definition is not None else 'failed',
-                'new_native_worlds': 0, 'implicit_retention': False})
+                'new_native_worlds': 0, 'implicit_retention': False,'completion_unknown':unknown})
+            if unknown:raise NumericCompletionUnknown('numeric dispatch completion unknown; stop before another role')
             return clone(definition)
 
 
@@ -161,7 +176,7 @@ def replay_numeric(root):
     root = Path(root); binding = checked(json.loads((root/'binding.json').read_text()))
     if binding['runtime'] != runtime_binding():
         raise ValueError('numeric replay source differs')
-    result = checked(json.loads((root/'result.json').read_text())); definition = None
+    result = checked(json.loads((root/'result.json').read_text())); definition = None;unknown=False
     if result['binding_sha256'] != binding['content_sha256']:
         raise ValueError('numeric terminal binding differs')
     for i, identity in enumerate(result['steps']):
@@ -171,6 +186,7 @@ def replay_numeric(root):
                 or intent['binding_sha256'] != binding['content_sha256']
                 or intent['request_wire'] != wire_record(intent['payload'], intent['response_schema'])):
             raise ValueError('numeric step journal changed')
+        unknown=unknown or (step.get('error') or {}).get('type')=='CompletionUnknown'
         if step['definition'] is not None:
             raw = checked(json.loads((root/f'call-{i}.http.json').read_text()))
             wire = raw['transport']['request_wire_utf8']
@@ -179,12 +195,18 @@ def replay_numeric(root):
             body = decode_json(raw['transport']['raw_http_response'], strict=True, finite_floats=True)
             if body != raw['transport']['response_payload']:
                 raise ValueError('numeric raw response differs')
+            if (body.get('done') is not True or body.get('done_reason')!='stop'
+                    or body.get('model')!=binding['provider']['model']
+                    or step['execution']['timed_out'] or raw.get('error') is not None):
+                raise ValueError('numeric recorded submission lacks a final provider response')
             literal = decode_json(body['message']['content'], strict=True, finite_floats=True)
             if literal != raw['literal_submission'] or compile_submission(binding['request'], literal) != step['definition']:
                 raise ValueError('numeric literal submission/definition differs')
             definition = step['definition']
     if result['definition'] != definition or result['status'] != ('submitted' if definition else 'failed'):
         raise ValueError('numeric terminal result differs from raw replay')
+    if result.get('completion_unknown') is not unknown:
+        raise ValueError('numeric terminal completion status differs from raw steps')
     return result
 
 
