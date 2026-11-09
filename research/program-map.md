@@ -1,7 +1,11 @@
 # 全体のゴールと証拠の対応
 
-2026-11-08更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
+2026-11-09更新。目的は「自由に設計できる科学制度を、利用できる評価・勾配で最適化する」こと。
 [研究目的](../RESEARCH.md) · [直近状態](STATUS.md) · [優先順位](roadmap.md)
+
+現在は[スケールアップ前の終了条件](pre-scale-completion.md)を進めている。
+情報経路の12世界比較は解析まで完了し、目的別の数値／code／graph／uniform探索を
+実行中である。選択後評価は探索終了後に行う。過去のV2の完了を、この新しい区切りの完了とは扱わない。
 
 ## 一本の研究経路
 
@@ -22,15 +26,28 @@
 
 | 元の目標 | 実装・実証済みの範囲 | 残る研究上の問題 |
 | --- | --- | --- |
-| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。V1/S1完了、V2は二目的×五群の120枠・選択後90評価・全解析・原稿まで完了 | 強い基準への上積み／feedback優位は未実証。現版は即時本会議投稿非推奨 |
+| 目的別に科学システムを最適化 | LossSpec、ask/tell、own-history再設計、履歴bank。過去V2の120枠・選択後90評価まで完了。現在は情報機構の12世界比較が閉じ、新しいT/E探索を実行中 | 現在の探索・選択後評価・解析は未完。強い基準への上積み／feedback優位は未実証 |
 | 出来合いでない制度を作る | sandboxed Python、typed ports/state、生成IR。外部設計者のV13で実作用と観測改善 | ローカル設計者の信頼性、コード変更と機構上の新規性の区別 |
 | 構成・関係・プロセスを自由にする | SystemSpec、node/edge/protocol編集、actor/artifact、guard/repetition。V12で新機構の実作用 | パラメータ探索を超える価値の対照比較、信頼境界・世界の単純化の明示 |
-| 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較 | 推定量と対象分布の明示、費用を揃えた実用性。世界全体ADや優位性は未証明 |
-| 継続・再帰的な改善 | 評価→own-history→再設計、別系統のsame-society adoption | 改善手続き・設計者自身の改善は未実証。単なる反復や候補改訂と区別 |
-| ゲーム的体験 | 英語pixel/cyberpunk UI、canonical replay、Foundryと経路の表示 | 経営ゲームとしての体験、人間参加型研究。可視化だけで科学的成功とはしない |
+| 勾配を利用する | 条件付きLR/LOO/control variate、tensor/局所表現、V10の実経路比較。現在のM1にも2draw→更新→fresh native forwardと無勾配対照を接続し、scripted研究者・corpusと実Dockerで確認 | live研究者に対する勾配の優位性・費用効率、世界全体ADは未証明 |
+| 継続・再帰的な改善 | 評価→own-history→再設計、same-society adoption。現在の遅延情報M3でも、制度変更後の研究者・論文・資源・memory・待機中情報・RNG保持と継続をscripted QAで確認 | live研究者での制度導入効果、改善手続き・設計者自身の改善は未実証 |
+| ゲーム的体験 | 英語pixel/cyberpunk UI、canonical replay、Foundryと経路の表示。実M/O/E記録の時点付き観測画面も実装・ブラウザ確認済み | 現在の探索／評価の最終exportは未完。経営ゲームとしての体験、人間参加型研究は長期課題 |
 
 ## 証拠への入口
 
+- [現在の情報機構比較](results/pre-scale-information-v1.md)：M0/M1/M2/M3×3seed、
+  元の研究者世界で12/12完走。実入力・全監査・selector再生・費用・図・数値再構築まで完了。
+- [現在のT/E有限protocol](protocols/campaigns/pre-scale-search-v1.md)：
+  16提案枠・6参照、選択固定後の3未使用seed評価。新sourceで数値2件・staged28件の提出確認後に実行。
+  全失敗・null・同点を保持し、改善が出るまでの補充はしない。
+- [現在の接続QA](../tests/optimization/test_pre_scale_native_connections.py)：
+  勾配更新後のforwardと、遅延情報を保持する継続社会への導入を元simulatorで検証。
+  [ソフトウェア検証の出典と限界](results/pre-scale-regression-verification-v2.json)に
+  広域437pass/1failと同sourceの単独2passを分けて保持し、静穏時の最終広域確認は未完。
+- [検証可能な活動の実装](../utopia/system/native_claim_verification.py)と
+  [元世界への接続テスト](../tests/system/test_native_claim_verification.py)：
+  実際のnative記録から独立に件数を計算し、誤った主張と訂正を両方残して研究者入力へ接続。
+  科学論文の真偽判定や新しい研究課題の自動発見ではない。
 - [S1強い基準比較](results/native-benchmark-controls-v2-a1.md)：手作業8制度すべて完走。
   自動発明の結果でなく、弱いseedへの改善を単純基準への優位性と混同しないための対照。
 - [V2 protocol](protocols/campaigns/native-design-freedom-v2.md)：二目的・五群・三履歴・四世代と
@@ -47,10 +64,13 @@
 
 ## いま動いているもの
 
-ここで列挙した全トラックが永続的にバックグラウンド稼働しているわけではない。
-V1、V45、V2のwriterは終了済み。今回の有限投稿判断パッケージに未終了の実験はない。
-新しい実験が動く場合は、protocol/source/予算/実行記録を
-[STATUS](STATUS.md)に明示する。準備・実装・実行中・完了・未実証を分ける。
+V1、V45、V2のwriterは終了済み。現在のM比較も閉じているが、別の凍結sourceで
+T/E探索→選択固定→評価→全監査を行う直列writerは動いている。
+別プロセスは実記録を読むUI用の観測だけを行い、追加の科学推論を起動しない。
+勾配・継続社会・検証活動の接続実装はQA済みであり、それぞれが別のlive実験を
+永続的に走らせているわけではない。時点付きの状態と出典は[STATUS](STATUS.md)、
+残る終了条件は[現在の台帳](pre-scale-completion.md)に分ける。記録ファイルだけで
+プロセスの生存を主張せず、原稿とUIの最終反映まで今回のゴールは完了としない。
 
 ## 全体像と一本目の論文を分ける
 
