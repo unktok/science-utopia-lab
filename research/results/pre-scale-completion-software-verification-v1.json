@@ -1,0 +1,58 @@
+{
+  "schema": "scienceutopia.pre-scale-completion-software-verification.v1",
+  "verified_source_commit": "a377486cfc355003cac0e9cc633d4225fd830513",
+  "source_worktree_clean_during_tests": true,
+  "python": {
+    "interpreter": "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python",
+    "environment": {"PYTHONHASHSEED": "42", "CUDA_VISIBLE_DEVICES": ""},
+    "passed": 374,
+    "failed": 0,
+    "seconds": 215.56,
+    "junit_path": "outputs/pre-scale-completion-qa/python-junit-v2.xml",
+    "junit_sha256": "315d23a548fd4491b2260c62661bac8bc742bb966d992e4e93aecd21f769eb49",
+    "scope": "26 explicitly selected native system, authoring, optimizer and report test modules; not the entire repository suite",
+    "preserved_prior_failure": {
+      "source": "085f87b",
+      "passed": 335,
+      "failed": 1,
+      "junit_path": "outputs/pre-scale-completion-qa/python-junit.xml",
+      "junit_sha256": "d0b9589f6a6eca432af4b1559fc93c699b650b66bf27350164d8cff1045051a3",
+      "cause": "Initial prompt reached40224 UTF-8 bytes, beyond40000; prospective whitespace-only JSON presentation now37967 bytes without dropping decoded contents."
+    }
+  },
+  "frontend": {
+    "tested_source": "085f87b",
+    "files_unchanged_at_verified_source": true,
+    "passed": 320,
+    "test_files": 33,
+    "typecheck": "passed",
+    "build": "passed",
+    "browser_receipt": "game-ui-v2/screenshots/pre-scale-observatory-qa/verification.json",
+    "browser_receipt_sha256": "a2e708d840f3e7f98848a067a8848f1de68b792fb9b29dfd14576aa7c8180f70",
+    "actual_browser": "Existing Chrome through Playwright; no browser download",
+    "scope": "Actual same-origin snapshot render,12 slots, English, desktop/mobile overflow,404 and checksum-tamper failure; not model liveness or independent scientific audit"
+  },
+  "paper": {
+    "tex_source_commit": "085f87b",
+    "tex_and_assets_unchanged_at_verified_source": true,
+    "pdf": "output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf",
+    "pdf_sha256": "586a8d9838d81ed0156541bd788a78d00d799c25c3e82ebc91c7f230dc31abb4",
+    "pages": 39,
+    "build": "Tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
+    "rebuild_text_identical": true,
+    "all_final_pages_reviewed": true,
+    "visual_review": "All39 pages at85dpi contact sheets, new pages22--27 individually at100dpi; print map labels checked",
+    "layout_or_unresolved_reference_warnings": 0,
+    "figure_rebuild": "All three retained print-map PNG/SVG/manifest files byte-identical",
+    "preserved_old_pdf_sha256": "3f77d91d27ce97dc17a076bd7da764be7a4cb4feafd6a81ab9cd45601d9f19d6",
+    "scope": "Working manuscript software/build/visual verification; not new scientific outcomes, anonymous release or venue acceptance"
+  },
+  "scientific_stage_limits": {
+    "M": "Original215311c source still executing its finite12-world study; no complete-world result at last observation",
+    "O_E": "Runner implemented and tested, not dispatched; fresh exact-source real-backend readiness remains mandatory",
+    "gradient_and_continuation": "Current information-system connections tested with scripted researcher HTTP/corpus and actual native world/Docker; not fresh live-model gradient superiority",
+    "claim_verification": "Independently computed native archival count claims/corrections; not scientific paper truth or realistic laboratory validation"
+  },
+  "goal_complete": false,
+  "public_push": false
+}

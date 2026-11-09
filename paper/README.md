@@ -13,7 +13,8 @@ the preserved older artifact, not the new draft. The new pre-scale section
 separates actual numeric readiness, scripted connection QA, the started M study
 and the implemented but unexecuted T/E search. It adds no unobserved optimization
 gain. Its current source-bound final verification is recorded with the pre-scale
-work, not silently substituted into the old receipt.
+work, not silently substituted into the old receipt:
+[pre-scale verification](../research/results/pre-scale-completion-software-verification-v1.json).
 This is a research manuscript, not a submitted, anonymous or release-cleared package.
 
 The narrower empirical study draft remains [submission-v2.tex](submission-v2.tex);

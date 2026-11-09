@@ -27,6 +27,10 @@ immutable source, raw destinations, observations and remaining tasks.
 - The T/E runner, explicit fixed-production pilot domain, bounded staged editor,
   all-slot selection and evaluation ordering are implemented, not dispatched.
   Fresh source-specific readiness still precedes any O/E production.
+- The broader source-bound Python verification at cleana377486 passes374/374
+  checks in215.56s. The earlier085f87b result335/336 remains a failed source,
+  with its original JUnit retained. [Verification receipt](results/pre-scale-completion-software-verification-v1.json)
+  separates software QA from pending live-model evidence.
 - The actual-record English observatory passes320 frontend checks and browser
   desktop/mobile/404/tamper verification. The separate39-page pre-scale manuscript
   adds the measured readiness, closed-data figure and explicit unfinished stages;

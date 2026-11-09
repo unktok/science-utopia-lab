@@ -149,3 +149,18 @@ enter a next eligible direction choice in year4: calendar arrival and actual
 consumer invocation are not the same fact. The frozen M protocol/source is
 unchanged; its live analysis must report actual input years instead of imposing
 the one-year scripted fixture's year2/3 as a universal native-world guarantee.
+
+## Clean-source regression closure
+
+The26-module broad Python check completes at clean
+`a377486cfc355003cac0e9cc633d4225fd830513`:374 passed,0 failed,215.56s.
+The source and HEAD were unchanged throughout. Both the new passing JUnit and
+the prior085f87b failing JUnit remain intact with hashes in the
+[compact verification receipt](../results/pre-scale-completion-software-verification-v1.json).
+This closes that software correction, not M/O/E or the active research goal.
+The same receipt binds the unchanged frontend/browser artifacts and reviewed
+39-page manuscript. No fresh backend certificate is inferred from tests.
+
+At the next actual writer observation the first-use embedding index has reached
+1541/1612 batches (about96%). Native M source/settings remain unchanged. No O/E
+inference is dispatched while the first M world is still active.
