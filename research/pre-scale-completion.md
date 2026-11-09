@@ -6,10 +6,10 @@
 
 | 項目 | 終了条件 | 現在 |
 | --- | --- | --- |
-| 提出と実行期限 | 数値専用のliteral提出、既存自由code/graph、期限・中断・再生を実backendとscripted native consumerで確認 | 数値2/2実backend・cold replay成功。code/graphは次source確認が残る |
-| 目的と測定 | T/Eを小規模対象、Cとraw成分を診断とし、law固定domain・seed・参照・選択・費用を実行前に固定 | D/M凍結済み。O/Eはclean62388a7でprepare済み、推論未dispatch |
-| 情報機構 | 元worldでM0/M1/M2/M3を作り、経路と実入力を確認し、有限の小規模比較を実行・解析 | scripted native経路pass。source215311cで5/12world完走。初seed4条件の実入力と独立測定を部分点検、全体監査・解析は未完 |
-| 自由制度の閉ループ | 同じsourceで数値／code／graph／uniformの目的別pilot、選択固定、未使用条件評価を閉じる | 新経路・有限58world上限・全tie/null・評価前freezeを実装。新source実backend readinessと実行が残る |
+| 提出と実行期限 | 数値専用のliteral提出、既存自由code/graph、期限・中断・再生を実backendとscripted native consumerで確認 | 元数値2/2に加え、次source62388a7でも数値2件・staged28件・cold replay成功。生成の一般的信頼性とは別 |
+| 目的と測定 | T/Eを小規模対象、Cとraw成分を診断とし、law固定domain・seed・参照・選択・費用を実行前に固定 | D/M凍結済み。O/Eもclean62388a7で凍結、fresh readiness後04:11UTCに探索開始 |
+| 情報機構 | 元worldでM0/M1/M2/M3を作り、経路と実入力を確認し、有限の小規模比較を実行・解析 | 12/12完走。原source全監査2回一致・実入力・全A/Q/R・selector再生・費用・図・retained-data再生成まで完了。3seedの記述的比較 |
+| 自由制度の閉ループ | 同じsourceで数値／code／graph／uniformの目的別pilot、選択固定、未使用条件評価を閉じる | 新経路・有限58world上限・全tie/null・評価前freezeを実装。新source実backend readiness成功、実験は探索段階 |
 | 勾配の接続 | 明示した設計分布とnative評価の対応、更新後のforward、無勾配対照を有限scopeで確認 | 現M1上で2draw→更新→fresh native forward・無勾配対照の4world接続QA pass。scripted HTTP／corpusであり新Qwen優位性ではない |
 | 継続社会 | 元worldのcheckpointから実際に制度を導入し、state・資源・memory・pending情報の保持を検証 | 現M3上で変更・元社会保持・queue保持・再構築・継続がpass。scripted QA |
 | 検証可能な活動 | 既存worldを包含する、実際の計算・検証・訂正記録とconsumerの最小拡張。科学的発見の主張とは分ける | 独立native count検証・訂正・実入力・時計非依存を実装。科学論文の真偽判定ではない |

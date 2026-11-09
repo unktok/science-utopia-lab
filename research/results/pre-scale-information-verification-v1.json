@@ -1,0 +1,66 @@
+{
+  "schema": "scienceutopia.pre-scale-information-verification.v1",
+  "experiment_source": "215311cdbc4c8cb3a1e1136aa17d5f9744bb1d7f",
+  "plan_sha256": "4cee42037e0942c896dbfad57360be35554565f503336c7ead75d28319396123",
+  "normal_closure_sha256": "ef26cc7b2b735630e4ad85050ef1a2fbfd7b60997f0ad6c304d3cf622e4ff3c8",
+  "original_writer_absent": true,
+  "original_writer_exit_status": null,
+  "exit_status_scope": "The live handle is no longer retrievable; closure and complete records are independently audited. Do not invent a process exit code.",
+  "full_audits": {
+    "adapter_source": "3ba267bee943fec8401c2570ad961960f0678373",
+    "exit_codes": [0, 0],
+    "content_sha256": "73658208283b002bc297f6f1ba0a4f59fd1257bf3509b2eae7a227da8c6b57e4",
+    "complete_file_sha256": "850cea98c6635b8477aa7342e9884991fefe340fdb9faddda0b113b641e247dd",
+    "byte_identical": true,
+    "raw_inventory_sha256": "8e9d34545fc4f01e39ccf871bd1e6bbeb8e1b9ddf13bff2c92544732a095add0",
+    "raw_directory": "outputs/pre-scale-completion-chain-v1-a2/",
+    "all_twelve_worlds": true,
+    "all_first_direction_payload_multisets_equal_within_seed": true
+  },
+  "projections": {
+    "report_content_sha256": "38017a46b937c8aa74a3755d5bd82d22e25ac758f1fba17560ed4db1081e50d7",
+    "cost_content_sha256": "ebf4379644e562e1252ffa10f98dac01d26b77394a260bc404478f3ba3d96770",
+    "selector_content_sha256": "77a282b3191df67af44a497ed895b90b5ef2721d79ba09cf58a13e6797a2550d",
+    "two_original_audit_projections_byte_identical": true,
+    "selector_frames_replayed": 48,
+    "initial_memory_and_inter_year_memory_verified": true,
+    "selector_replay_uses_original_source": true,
+    "counterfactual_intervention": false
+  },
+  "retained_data_rebuild": {
+    "clean_source": "35cbe6ec0bdb1cea84ec4c942d3cad840f74d68f",
+    "two_rebuilds_identical": true,
+    "receipt_content_sha256": "a1d67c506edc801ff26a521f822c97e42ca8f307cc739280e81767bd88dac3de",
+    "report_png_svg_identical": true,
+    "individual_scores_recomputed": 36,
+    "paired_differences_recomputed": 9,
+    "table_body_sha256": "53b64f46ab431328309dad45dfb0c84bb63cc5058fd521eb1465e2adcc070c0a",
+    "raw_audit_repeated_by_numerical_rebuild": false
+  },
+  "focused_software_checks": {
+    "clean_source": "35cbe6ec0bdb1cea84ec4c942d3cad840f74d68f",
+    "passed": 41,
+    "failed": 0,
+    "seconds": 0.79,
+    "modules": 6,
+    "junit_path": "outputs/pre-scale-information-qa-v1/junit.xml",
+    "junit_sha256": "56573d3867f645a5c2bb7762ff5135a98290adb96d06872539c6e9b810bc486f",
+    "scope": "Selector trace, closed audit, information report, component costs, chain guards and retained-data numerical rebuilding. Not the broad native Docker regression."
+  },
+  "next_study_observation": {
+    "source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+    "readiness_ended_utc": "2026-11-09T04:11:03.872316+00:00",
+    "numeric_cases_passed": 2,
+    "numeric_certificate_sha256": "21e310349c3beefc29ea0085061cdcf391e80eccbc7ee73d92d08f1c19907afd",
+    "staged_controls_passed": 28,
+    "staged_certificate_sha256": "43d42d9efc511c32b9f2c32d958c32d8b977b11db125b6eaf5df0fdb5e5034e0",
+    "search_started_utc": "2026-11-09T04:11:04.782321+00:00",
+    "search_or_evaluation_complete": false,
+    "scope": "Observed source-specific technical readiness, not the pending full search audit or institutional improvement."
+  },
+  "new_model_calls_from_analysis": 0,
+  "new_native_worlds_from_analysis": 0,
+  "scientific_or_optimizer_advantage_claimed": false,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}

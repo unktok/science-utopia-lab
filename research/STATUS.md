@@ -1,6 +1,7 @@
 # Current research status
 
-Updated2026-11-09JST. Latest M observation at03:42UTC:9/12 complete.
+Updated2026-11-09JST. M closes12/12 with two matching full audits;
+fresh O/E readiness closes04:11UTC and development search starts.
 Recorded snapshot02:21UTC is preserved; a separate local projection updates
 when journal facts change. Neither file is a live-process heartbeat.
 [Purpose](../RESEARCH.md) · [Program map](program-map.md) · [Research index](INDEX.md)
@@ -15,12 +16,14 @@ immutable source, raw destinations, observations and remaining tasks.
   replays pass at source215311c. T explicitly retains the parent; E changes the
   six coordinates. Two generation POSTs, no native losses; this is not code/graph
   readiness or an improvement claim.
-- M information-path comparison:9/12 four-year worlds complete and the next
-  started, with fixed Qwen3-8B and no project amendments. Initial corpus index
-  construction is finished and later retrieval uses the cache. Completed M0
-  records226 scientist responses/739.281 cumulative call seconds; this excludes
-  index/role/code/host time and is not an end-to-end forecast. Full-study original
-  audit and interpretation remain pending.
+- M information-path comparison:12/12 four-year worlds complete, with fixed
+  Qwen3-8B and no project amendments. Two original215311c-source full audits
+  match byte for byte (content73658208). [Complete results](results/pre-scale-information-v1.md)
+  retain all A/Q/R, actual input years, paired differences, selector replay and
+  component costs. Mean T losses are0/0/0/−1/3 and E28/29.5/29.5/27⅔ for
+  M0/M1/M2/M3; three development seeds do not establish a reliable advantage.
+  Scientist usage totals2248 responses/2,185,747 input/202,556 output tokens;
+  6938.423 cumulative call seconds exclude index/load/code/host time.
 - The [first-seed closed-cell diagnostic](results/pre-scale-completed-cell-diagnostic-v2.json)
   independently matches all four completed worlds' measurements at unchanged
   original215311c. All five initial direction payloads match across conditions.
@@ -33,10 +36,11 @@ immutable source, raw destinations, observations and remaining tasks.
 - Current M1 score-update/updated-forward/no-gradient and M3 continuity/queue
   connections now pass scripted original-world/Docker tests. New live-model
   gradient advantage or recursive self-improvement is not claimed.
-- The T/E runner, explicit fixed-production pilot domain, bounded staged editor,
-  all-slot selection and evaluation ordering are implemented. Clean62388a7
-  metadata-only prepare is complete; no O/E inference has been dispatched.
-  Fresh source-specific readiness still precedes any O/E production.
+- The unchanged62388a7 T/E source passes fresh source-specific readiness:
+  two numerical cases and all28 staged-editor controls, with cold replay.
+  Readiness closes04:11:03UTC; reference/development search starts04:11:04UTC.
+  The declared16 proposal slots plus six references, fixed selection and up to36
+  unused-seed evaluations are not yet closed; no new optimizer result is claimed.
 - The broader source-bound Python verification at cleana377486 passes374/374
   checks in215.56s. The earlier085f87b result335/336 remains a failed source,
   with its original JUnit retained. [Verification receipt](results/pre-scale-completion-software-verification-v1.json)
@@ -45,25 +49,27 @@ immutable source, raw destinations, observations and remaining tasks.
   desktop/mobile/404/tamper verification. The separate39-page pre-scale manuscript
   adds the measured readiness, closed-data figure and explicit unfinished stages;
   the previous37-page artifact remains unchanged.
-- M closure/audit/analysis, fresh same-source T/E search and selected-policy
-  evaluation, final actual-record exports and result/manuscript update remain.
+- T/E search and selected-policy evaluation, their full audits/analysis, final
+  actual-record exports/manuscript update and quiet-window broad QA remain.
 
 A finite serialized continuation was waiting at frozen analysis1ac9b4a,
 PID27571, raw `outputs/pre-scale-completion-chain-v1-a1/`. It was deliberately
 stopped while waiting (exit130, no scientific stage/POST) to fix an audit-only
 start/end content-hash comparison; its original terminal record is retained.
 The corrected analysis passes47 focused checks again at clean3ba267b in7.69s.
-The new frozen continuation is waiting as PID29845, started02:36:37UTC, raw
+The new frozen continuation is live as PID29845, started02:36:37UTC, raw
 `outputs/pre-scale-completion-chain-v1-a2/`, without changing M or the62388a7
-O/E source. It waits for original
-M writer16044 to disappear with complete records, requires two matching M audits,
-then runs fresh readiness→search→evaluation→two matching O/E audits. It never
+O/E source. Original M writer16044 is now absent with complete records; both M
+audits exit0 at04:06:22/04:07:02UTC and match exactly. The chain passes fresh
+readiness and is in search; evaluation→two matching O/E audits follow. It never
 rerolls a consumed stage; errors stop that chain. A waiting scheduler is not a
 second inference writer. Actual M and O/E experiment sources remain unchanged.
-Read-only descriptive M/O/E report/figure generators are implemented;38 focused
-projection/guard/order tests pass at the earlier source. Their real closed-data execution remains
-pending. The latest English snapshot records1/12 M and prepared-only O/E and
-passes9 UI tests plus actual Chrome desktop/mobile/404/tamper verification.
+Read-only M reports, costs, original hard-selector replay and figures are now
+generated twice with identical bytes. Retained-data rebuilding also matches
+report/PNG/SVG and recomputes all36 cross-scores, means and nine paired
+differences;41 focused checks pass at clean35cbe6e. The historical English
+snapshot still records1/12 M/prepared O/E; separate periodic latest mode now
+records12/12 and the actual search-stage start. Neither is a heartbeat.
 
 Separate prospective continuous-gradient campaign hardening now applies the
 same native checkpoint/source/model/corpus/seed/design join already used for
@@ -77,8 +83,8 @@ source and unchanged deadlines, the two isolated native connection checks then
 pass in35.39s. [Exact scope and retained failure](results/pre-scale-regression-verification-v2.json).
 The specific infrastructure stall cause remains unproven. A separate immutable
 4259854 QA checkout is reserved for a quiet-window broad recheck; do not repeat
-large Docker fleets alongside the native scientific writer. Actual M has3/12
-complete at the later observation; the original runtime/settings are unchanged.
+large Docker fleets alongside the native scientific writer. Both scientific
+sources and their declared runtime/settings remain unchanged.
 
 The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old
@@ -89,7 +95,7 @@ now runs at frozen2ce33d6 as PID39338, separate from both scientific writers.
 It projects actual M/O/E journals every30 seconds, but changes the data date
 only when recorded facts change. The explicit local mode is
 `http://127.0.0.1:4181/pre-scale.html?source=latest`; recorded mode is separate.
-At poll10 it has published two frames (8→9 completed M worlds). Actual Chrome
+It has published the M closure and subsequent O/E stage changes. Actual Chrome
 verifies its produced JSON→rendered date, PC/mobile, auto GET,404/tamper and
 no hidden fallback/write requests. All325 UI tests and14 clean helper tests
 pass. This does not resolve the separate4259854 broad Docker timeout/recheck.

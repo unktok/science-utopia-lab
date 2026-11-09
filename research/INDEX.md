@@ -8,8 +8,8 @@ Historical documents retain their paths and source identities.
 
 - [Active pre-scale completion](pre-scale-completion.md) and
   [2026-11-09 execution log](logbook/2026-11-09-pre-scale-completion.md): actual
-  numerical readiness completed, finite M study started, separate native claim
-  verifier development; the full checklist is not complete.
+  M closes12/12 with matching full audits and [complete descriptive results](results/pre-scale-information-v1.md),
+  fresh O/E readiness passes and search begins; the full checklist is not complete.
 - [Research questions and next-stage decisions](publication/research-questions-and-decisions.md):
   six research tracks, competing explanations and claim-specific evidence.
   [Actual closed-data analysis](results/native-design-objective-landscape-v1.md) and
@@ -51,7 +51,8 @@ Historical documents retain their paths and source identities.
 - [Reproducible four-study evidence inventory](results/publication-evidence-inventory-v1.json).
 - [Pre-scale closed-audit cost projection](../scripts/reports/pre_scale_costs_v1.py):
   separate scientist/designer/readiness/load usage; missing counts and overlapping
-  aliases remain explicit. Full M/O/E cost reports await closed original-source audits.
+  aliases remain explicit. [Actual M costs](data/pre-scale-information-v1/costs.json)
+  follow its closed original-source audit; O/E costs still await closure.
 - [Feedback control implementation](components/native-feedback-control-v1.md) and
   [prospective finite comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md).
 - [Research charter](charter.md): original motivation and explicit principles.

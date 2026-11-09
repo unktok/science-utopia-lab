@@ -401,3 +401,44 @@ this analysis/UI change does not modify the frozen helper or either experiment.
 M is9/12 complete, the original writer and corrected continuation remain live,
 and O/E inference is still undispatched. The larger4259854 Docker regression
 recheck stays pending for a quiet window; the UI checks do not replace it.
+
+## Information study closure and objective search start
+
+The M writer is now absent and all12 normal observations are bound by closure
+ef26cc7b. Its execution handle is no longer retrievable; no exit code is
+invented. Both full original-source audits finish normally at04:06:22 and
+04:07:02UTC, with identical473315-byte outputs/content73658208. Each uses
+the unmodified215311c runtime, independently recomputes native metrics and
+verifies the retained source, responses, code/checkpoints, input path and raw
+inventory. All five initial direction payloads match across four conditions
+within each of the three seeds. No active source or budget is amended.
+
+Closed M report/figures, costs and original hard-selector trace replay are
+generated twice and match exactly. All48 annual traces replay, including the
+one boundary-equality acceptance and its memory update in M3/41011; the other
+11 worlds' actual scores are below their exercised threshold. An exploratory
+read command initially looked for a mechanism_id on the event rather than its
+recorded program hash and raised KeyError; this was the diagnostic reader,
+not an experiment failure or a reason to alter native execution. The final
+reader validates original program, initial/inter-year memory, recorded inputs,
+outputs and full native A/R coverage. Synthetic tests cover empty years,
+threshold equality and corrupted traces without fabricating positive outcomes.
+
+The complete retained report includes all12 A/Q/R values, nine paired
+differences, resources, actual input years and component costs. New lightweight
+rebuilding checks36 cross-scores, condition means and paired differences from
+retained observations, regenerates exact report/PNG/SVG and the table body,
+and does not pretend to repeat the omitted raw audit. Two clean35cbe6e rebuilds
+match;41 tests pass in0.79s at that unchanged clean source. The first figure's
+long right-panel title clipped at the image boundary; shortened labels fix the
+print layout, with unchanged numerical data. Both attempts remain in ignored
+outputs. [Verification identities](../results/pre-scale-information-verification-v1.json)
+and [interpretation](../results/pre-scale-information-v1.md) retain exact scope.
+
+The serialized chain then runs new62388a7 readiness from04:07:03 to04:11:03UTC.
+Both numerical cases and all28 staged controls pass, with cold replay; this
+does not promise general free-design competence. The declared reference/search
+stage starts04:11:04UTC, before any fixed selection or unused-seed evaluation.
+The live periodic UI records the M closure and actual search-stage start,
+separately from its unchanged historical1/12 snapshot. Full search/evaluation
+results, their audits/reporting and quiet-window broad QA remain unfinished.
