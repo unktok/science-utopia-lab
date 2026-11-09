@@ -1,0 +1,70 @@
+{
+  "schema": "scienceutopia.pre-scale-foundry-verification.v1",
+  "backend_verified_clean_source": "3e42e9de2a6098dded4b5a244615147d4305fa8d",
+  "backend_module_sha256": "014677fe741697520ad3f67667d5065c1bdd80ac48ab62cf0fa83ad4d4cdc5f4",
+  "python": {
+    "passed": 57,
+    "failed": 0,
+    "seconds": 31.06,
+    "modules": 5,
+    "junit": "outputs/pre-scale-foundry-qa-v1/clean-python-junit.xml",
+    "junit_sha256": "73fc823c80aed9040ce67cc1974e52b6fc7cbdae63ce6600ebc72ef08a578bbd",
+    "scope": "Closed-study export guards, original report/reproduction/audit/driver checks, synthetic frames and one optional actual completed-cell frame extraction. Not native Docker or new live inference."
+  },
+  "frontend": {
+    "verified_clean_source": "1d3ae7f682e3a3b43fcdf9f61078f10d323ea119",
+    "passed": 349,
+    "failed": 0,
+    "test_files": 34,
+    "seconds": 2.36,
+    "typecheck": "passed",
+    "build": "passed",
+    "retained_build_warning": "Existing Phaser/replay chunk exceeds500kB",
+    "contract_module_sha256": "093b0008f0a6e54223ece7ca91db59e994c723ff6c7e5f236b957aa17a70f968",
+    "native_view_module_sha256": "38d53cf86bef78676eb44c95a9b9efe21cd0d62115f478d83f05fcee689d3df9",
+    "preserved_restricted_run": "347pass/1 timeout with listen EPERM on loopback; repeated outside the filesystem/network sandbox at unchanged test deadline, first348pass and finally349pass after the unperformed-fit guard."
+  },
+  "browser": {
+    "verified_clean_source": "2ca2a5546cd4d90b5000361a202286f460ec191b",
+    "checker_sha256": "3c8672d152da04e42dd8a07520ddb69a898755c7edfc904886447d6a39d9f120",
+    "passed": true,
+    "synthetic_fixture": true,
+    "actual_closed_export_verified": false,
+    "receipt": "outputs/pre-scale-foundry-qa-v1/SYNTHETIC-viewport-capture/verification.json",
+    "receipt_sha256": "e2871f4626fd39cc2a580279cf680fba90185a94c8f627a3299de543fe772295",
+    "checks": [
+      "Explicit same-origin arm and literal SystemSpec/source; exact node/wire counts",
+      "Committed-year selection and actor counts; failed policy retains unavailable loss and no invented frame",
+      "Exact untrusted failure text is displayed, never interpreted as HTML/source",
+      "Read-only workbench/file controls; no writes, queue API calls or old-study fallback",
+      "404, changed envelope and unknown arm fail closed",
+      "Desktop and390px mobile; one actual DOM header/deck; three actual scrolled mobile viewport captures"
+    ],
+    "screenshots": {
+      "desktop.png": "ae0e228aecf4f04ea166b1ff5a30c25c546e76e73a49de06368abf320b28a0ac",
+      "mobile.png": "685a15042b7cdec9a7d0ad324c9c9e1115b9b5c956ec6a5c6346729a4d8f8205",
+      "mobile-network.png": "c0e2874fcd57c7dfc52c5bcfcd0dceea9a6886caa7e03b4721da71598acafdb5",
+      "mobile-evidence.png": "ef8574092f9479d528c5a744e7981a389ec57349fbe3073306c7604e9337dfef"
+    },
+    "preserved_issues": [
+      "The first synthetic fixture retained an unrelated historical soft fit. Exporter already emitted null; the browser now also rejects any nonnull fit in this study channel.",
+      "Earlier long mobile full-page PNG repeated viewport tiles. DOM contained one header/deck and scrolled viewport images were correct. Cause remains unproven; old images/reports preserved, new deliverable uses viewport captures."
+    ]
+  },
+  "scientific_state": {
+    "source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+    "search_slots_closed": 16,
+    "search_stage_handle_exit_code": 0,
+    "search_ended_utc": "2026-11-09T07:47:56.951813+00:00",
+    "selection_frozen_utc": "2026-11-09T07:47:45.739110+00:00",
+    "evaluation_started_utc": "2026-11-09T07:47:57.582056+00:00",
+    "planned_physical_evaluation_worlds": 27,
+    "logical_evaluation_rows": 36,
+    "full_evaluation_audits_and_actual_foundry_export_complete": false
+  },
+  "scientific_source_prompt_loss_budget_selection_or_failed_slots_changed": false,
+  "new_model_calls_from_this_verification": 0,
+  "new_authored_code_executions_from_this_verification": 0,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}

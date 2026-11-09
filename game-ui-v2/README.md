@@ -11,6 +11,13 @@ The read-only `/pre-scale.html` observatory displays actual D/M journals and
 the separate T/E reference/search/evaluation stages. It distinguishes a consumed start
 without an observation from a live process, preserves unknown losses as dashes,
 and verifies the Python/browser content checksum. It starts no experiment.
+After the whole O/E study and original-source audit close, the
+[pre-scale Foundry export](../research/components/pre-scale-foundry-export-v1.md)
+opens each arm's literal code, wiring, committed researcher frames and failures
+at `/native.html?pre-scale-arm=efficiency%3Aparameters`. This channel is read
+only, refuses older-study fallback and initializes no experiment API. The actual
+closed-study export still awaits evaluation/audits; current browser QA uses
+explicitly labelled synthetic data.
 Export a fresh timestamped observation without inference:
 
 ```sh

@@ -61,6 +61,10 @@ Historical documents retain their paths and source identities.
   all-slot paths, exact source/measurement joins, selection-fixed common-score
   figure, retained nulls/shared jobs and physical component CSV.41 synthetic
   software checks pass; actual closed O/E execution is still pending.
+- [Closed-record institution Foundry export](components/pre-scale-foundry-export-v1.md):
+  actual code, ports, wiring, committed researcher frames and technical failures
+  from a closed original-source audit.57 Python/349 UI checks and synthetic
+  Chrome QA pass; actual study export remains pending its evaluation/full audits.
 - [Feedback control implementation](components/native-feedback-control-v1.md) and
   [prospective finite comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md).
 - [Research charter](charter.md): original motivation and explicit principles.

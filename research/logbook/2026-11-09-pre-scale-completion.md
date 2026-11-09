@@ -606,3 +606,41 @@ history. Current STATUS links the partial numerical result without claiming
 the study is closed. The25-document check resolves380 local links and verifies
 all six historical snapshot hashes, with no errors or network/model/world calls.
 No scientific source, candidate, loss, budget or selection is changed.
+
+## Closed record Foundry adapter and search closure
+
+The current observatory showed progress/losses but linked only to older native
+study inspection. A separate closed-audit export now joins each of eight arms
+to its actual parent/candidate source, typed graph, original annual frames and
+technical failures. It refuses absent closure, wrong source/plan/inventory,
+changed frames and missing complete-year evidence. Unsubmitted and year-zero
+failures acquire no invented policy or researcher activity. The browser's
+explicit arm channel is read only, starts no queue API and never substitutes
+the old default study. Actual export still awaits the running E/full audits.
+
+Initial new test fixtures omitted their initial hash and synthetic annual
+timing fields; the fixtures were corrected without weakening runtime checks.
+The first frontend frame fixture contained only two years; it now explicitly
+creates four SYNTHETIC QA frames. At clean3e42e9d,57 Python checks pass in31.06s,
+including unchanged actual completed-cell extraction, not a new live experiment.
+A restricted frontend invocation has347pass/1 loopback EPERM timeout. At the
+same deadline outside that sandbox it passes348, then349 in2.36s after a new
+scope guard, at clean1d3ae7f. Typecheck/build pass with the original chunk warning.
+
+Synthetic Chrome checks source/wire/year/failure data and zero writes/fallback.
+Manual inspection catches an unrelated old soft fit in the first test fixture;
+the exporter already emits null, and the new browser contract rejects such a
+fit. A later long mobile PNG repeats the top viewport despite one header/deck
+in DOM. Its cause remains unproven. The new capture script checks real scrolling
+and saves three390×844 viewport images, all visibly SYNTHETIC QA. These and the
+desktop view are inspected; prior artifacts remain preserved, not relabelled.
+[Source/hash/scope receipt](../results/pre-scale-foundry-verification-v1.json)
+and [actual-use instructions](../components/pre-scale-foundry-export-v1.md)
+separate software verification from the pending actual full-study export.
+
+The unchanged native search finishes16/16 and its owned execution handle reports
+exit0 at07:47:56.951813UTC. Selection is fixed at07:47:45.739110UTC, then E starts
+at07:47:57.582056UTC. The frozen evaluation plan has27 physical jobs for36
+logical label/seed rows. No selected policy is modified, no failed slot is
+replaced and no evaluation feedback is returned to search. Full E/audits,
+results, actual UI export, paper integration and quiet-window QA remain.

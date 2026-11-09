@@ -137,6 +137,24 @@ no hidden fallback/write requests and old-snapshot compatibility. All332 UI
 tests and28 clean helper tests pass. This does not resolve the separate4259854
 broad Docker timeout/recheck or complete scientific search/evaluation.
 
+The search stage now exits0 at07:47:56UTC after16/16 consumed slots. Selection
+freezes07:47:45UTC; evaluation starts07:47:57UTC with27 physical worlds for36
+logical label/seed rows. Shared exact policies are not extra independent worlds.
+All16 slots retain11 complete observations and five technical failures. The
+first selected-policy evaluation is now recorded complete; the remainder is
+still running and no evaluation outcome is returned to search.
+The chain continues toward both full original-source audits; final interpretation
+and actual closed-data exports remain pending.
+
+The [closed-record Foundry adapter](components/pre-scale-foundry-export-v1.md)
+connects all eight development arms to the existing code/wiring/year/failure
+inspector without initializing a queue. [Verification](results/pre-scale-foundry-verification-v1.json)
+records57 Python and349 UI checks, typecheck/build and synthetic Chrome QA,
+plus one actual completed-cell extraction. It rejects unrelated soft-fit data
+and preserves unavailable losses. Long mobile composite captures were unreliable;
+verified scrolled viewport images replace them, with the cause unproven and
+earlier files retained. This does not claim an actual closed O/E export yet.
+
 ## Previous planning and completed V2 package
 
 The [research-question/decision plan](publication/research-questions-and-decisions.md)
