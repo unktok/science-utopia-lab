@@ -1,0 +1,44 @@
+{
+  "schema": "scienceutopia.pre-scale-regression-verification.v2",
+  "runtime_source_commit": "42598540f95336a08acdcdf3b210a31d19bcf21b",
+  "source_clean_and_unchanged_during_broad_and_isolated_checks": true,
+  "broad_check": {
+    "test_modules": 33,
+    "passed": 437,
+    "failed": 1,
+    "seconds": 333.85,
+    "junit_path": "outputs/pre-scale-completion-qa/python-junit-v3.xml",
+    "junit_sha256": "af7f01c9fa57b370891330405a1b224f5eaedef2ee76b9270582a40cf855f925",
+    "failed_test": "tests/optimization/test_pre_scale_native_connections.py::test_current_delayed_information_society_migrates_without_losing_native_state_or_pending_mail",
+    "observed_exception": "CodeExecutionError: container wall-time limit exceeded; secondary owned-container cleanup docker rm -f timed out after10 seconds",
+    "subsequent_read_only_diagnostic": "The exact owned container no longer exists; Docker29.8.2 responds in0.023 seconds. No daemon restart, deadline change, container deletion or scientific-world retry was performed.",
+    "root_cause": "Docker execution/cleanup timeout observed. The specific cause of the temporary stall is not established.",
+    "fully_passing_suite_claimed": false
+  },
+  "same_source_isolated_connection_diagnostic": {
+    "passed": 2,
+    "failed": 0,
+    "seconds": 35.39,
+    "junit_path": "outputs/pre-scale-completion-qa/native-connections-isolated-v1.xml",
+    "junit_sha256": "3b631ba30ecf11aaec4c5f962eae5a3da3ab4e3e53964e5b8e67f0062141e3c7",
+    "settings_and_deadlines_changed": false,
+    "scope": "One explicit diagnostic rerun of the two scripted native connection tests, not a replacement for the failed broad result or any scientific campaign."
+  },
+  "targeted_continuous_discrete_native_gradient_check": {
+    "passed": 19,
+    "skipped": 0,
+    "seconds": 31.50,
+    "junit_sha256": "f5e06a461f59d2e939bfa5acb4dd3386f2eb0cdb0e751dfa4a030156a726cd36",
+    "execution_source_state": "Prospective edited bytes later committed as4259854; not a clean4259854 source-bound execution. Both modules also pass in the later broad check.",
+    "scope": "Scripted HTTP/corpus, actual native lifecycle and Docker; rejects wrong replicate, checkpoint and executed design before continuous/discrete updates. Not a new live-model effect."
+  },
+  "corrected_analysis_source_commit": "3ba267bee943fec8401c2570ad961960f0678373",
+  "corrected_analysis_clean_checks": {"passed": 47, "failed": 0, "seconds": 7.69},
+  "scientific_sources_unchanged": {
+    "M": "215311cdbc4c8cb3a1e1136aa17d5f9744bb1d7f",
+    "O_E": "62388a74d071a3a4fdc8cc309c2807422f96223f"
+  },
+  "remaining_software_verification": "One quiet-window broad check at the separate clean4259854 QA checkout, without overlapping the long native scientific writer. Preserve both old failures and new results.",
+  "new_live_model_calls_from_checks": 0,
+  "active_research_goal_complete": false
+}

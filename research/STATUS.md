@@ -63,6 +63,15 @@ discrete policies, before update and on resume. All19 targeted math/native/Docke
 checks pass without skips. This is not a new live-model gradient result and is
 not backported into either active scientific source.
 
+The later clean4259854 broad check has437 passed/1 failed (Docker execution and
+cleanup timeout); it is **not** a fully passing source receipt. At the same
+source and unchanged deadlines, the two isolated native connection checks then
+pass in35.39s. [Exact scope and retained failure](results/pre-scale-regression-verification-v2.json).
+The specific infrastructure stall cause remains unproven. A separate immutable
+4259854 QA checkout is reserved for a quiet-window broad recheck; do not repeat
+large Docker fleets alongside the native scientific writer. Actual M has3/12
+complete at the later observation; the original runtime/settings are unchanged.
+
 The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old
 package, not the new D/M study. No active experiment source is changed.

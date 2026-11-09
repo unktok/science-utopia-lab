@@ -290,3 +290,27 @@ These use scripted HTTP/corpus, not extra live-Qwen studies. Both the215311c
 M source and62388a7 O/E source are unchanged. A broader clean-source regression
 check follows this prospective runtime correction; the prior374-check receipt
 retains its original a377486 source rather than being relabeled.
+
+## Broad regression timeout and isolated diagnostic
+
+At clean4259854, the33-module check ends with437 passed/1 failed in333.85s.
+The failure is the delayed native society test, during its first-year isolated
+information-office execution, before migration: container wall-time exceeded,
+followed by a10-second timeout attempting owned-container cleanup. JUnit SHA256:
+`af7f01c9fa57b370891330405a1b224f5eaedef2ee76b9270582a40cf855f925`.
+The exact container is subsequently absent; Docker29.8.2 responds normally in
+0.023s. No deletion, daemon restart, timeout increase or scientific-world retry
+is performed. The underlying reason for that stall is not established.
+
+One explicitly declared isolated diagnostic reruns only the two native
+connection tests at the same clean source/settings/deadlines. Both pass in35.39s.
+This does not replace the437/1 result with a fictitious438/0 suite. A separate
+clean detached4259854 checkout, `pre-scale-software-qa-v1-a1`, is reserved for
+one quiet-window broad check after the scientific writer, rather than continuing
+large container fleets alongside it. The compact
+[verification record](../results/pre-scale-regression-verification-v2.json)
+keeps the scopes distinct.
+
+Original M remains live and reaches3/12 completed observations. Its runtime,
+inputs, budgets and source are unchanged. The corrected waiting chain also
+remains live at its original handle and has not dispatched O/E inference.
