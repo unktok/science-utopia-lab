@@ -3,14 +3,16 @@
 No schema satisfiability solver, source evaluation, candidate repair or native
 probe. Empty record lists remain legal for optional graph outputs even if a
 payload schema excludes objects; required graph outputs must emit a record.
-Only explicit root types and literal local context-key reads are diagnosed.
+Only explicit root types, literal local context-key reads and potential direct
+input-payload passthrough are diagnosed. None proves runtime behavior.
 """
 import ast
 import json
 from utopia.system.design_patch import clone, digest
 
 JSON_TYPES = frozenset({'null', 'boolean', 'object', 'array', 'number', 'integer', 'string'})
-SCOPE = ('Explicit code-schema root types, original adapter consumption and literal local context-key reads only; '
+SCOPE = ('Explicit code-schema root types, original adapter consumption, literal local context-key reads '
+    'and potential direct input-payload passthrough only; '
     'no general dataflow/reachability proof, schema satisfiability, factor enumeration or native execution.')
 STAGE_PARAMETER_RULE = (
     'Original native.phase.*.v1 stages and native.activity.*.v1 '
@@ -68,6 +70,61 @@ def _missing_literal_reads(artifact, parameters):
         if isinstance(available, dict) and key not in available:
             missing.add((namespace, key))
     return sorted(missing)
+
+
+def _direct_payload_passthrough(artifact):
+    """Conservative syntactic advisory, not type/dataflow/reachability proof.
+
+    An input payload may itself intentionally carry a complete output envelope.
+    Such a program stays legal; no value is wrapped, rewritten or executed here.
+    Only direct literal input reads or singly assigned top-level aliases used
+    inside a literal output list are reported. Opaque helpers remain unknown.
+    """
+    source=artifact.get('source')
+    if not isinstance(source,str):return []
+    try:tree=ast.parse(source)
+    except (SyntaxError,ValueError,TypeError,RecursionError,MemoryError):return []
+    entries=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='step']
+    if len(entries)!=1:return []
+    entry=entries[0];parameters=entry.args.posonlyargs+entry.args.args
+    if len(parameters)!=1:return []
+    context_name=parameters[0].arg
+    def input_port(node):
+        path=[]
+        while isinstance(node,ast.Subscript) and isinstance(node.slice,ast.Constant):
+            path.append(node.slice.value);node=node.value
+        path.reverse()
+        if (isinstance(node,ast.Name) and node.id==context_name and len(path)==4
+                and path[0]=='inputs' and isinstance(path[1],str)
+                and type(path[2]) is int and path[2]>=0 and path[3]=='payload'):
+            return path[1]
+        return None
+    stores={}
+    for node in ast.walk(entry):
+        if isinstance(node,ast.Name) and isinstance(node.ctx,ast.Store):stores[node.id]=stores.get(node.id,0)+1
+    aliases={}
+    for statement in entry.body:
+        if (isinstance(statement,ast.Assign) and len(statement.targets)==1
+                and isinstance(statement.targets[0],ast.Name)):
+            name=statement.targets[0].id;port=input_port(statement.value)
+            if port is not None and stores.get(name)==1:aliases[name]=port
+    outputs=artifact.get('outputs');inputs=artifact.get('inputs')
+    if not isinstance(outputs,dict) or not isinstance(inputs,dict):return []
+    found=set()
+    for statement in ast.walk(entry):
+        if not isinstance(statement,ast.Return) or not isinstance(statement.value,ast.Dict):continue
+        for key,value in zip(statement.value.keys,statement.value.values):
+            if not (isinstance(key,ast.Constant) and key.value=='outputs' and isinstance(value,ast.Dict)):continue
+            for port,records in zip(value.keys,value.values):
+                if not (isinstance(port,ast.Constant) and isinstance(port.value,str)
+                        and port.value in outputs and isinstance(records,ast.List)):continue
+                for item in records.elts:
+                    name=item.id if isinstance(item,ast.Name) else None
+                    source_port=aliases.get(name) if name is not None else input_port(item)
+                    if source_port in inputs:
+                        found.add((statement.lineno,port.value,source_port,name or ''))
+    return [{'line':line,'output_port':port,'input_port':source_port,'payload_variable':name or None}
+        for line,port,source_port,name in sorted(found)]
 
 
 def contract_notices(document):
@@ -128,6 +185,18 @@ def contract_notices(document):
                 'scope': 'Potential syntactic read only; no reachability, context rebinding or exception-handling proof.',
                 'changes_validity': False, 'authored_value_changed_by_host': False,
                 'native_execution_performed': False})
+        for passthrough in _direct_payload_passthrough(artifact):
+            notices.append({'code':'potential-input-payload-without-output-envelope',
+                'mechanism_id':owner,'executed_mechanism_id':node.get('mechanism_id'),
+                'path':base+'/source',**passthrough,
+                'message':'A literal output list directly contains an input payload or a singly assigned alias. '
+                    'Each emitted record must be an object containing payload, with only optional actor_ids/artifact_ids. '
+                    'If you intend to emit this payload as data, explicitly author its record envelope, for example '
+                    "[{'payload': value}]. An input payload already containing a valid envelope may instead be intentional. "
+                    'No authored source or value has been wrapped, repaired or changed.',
+                'scope':'Potential local syntax only, not proof of runtime type, context binding, reachability or failure. '
+                    'No helper or general alias/dataflow inference, native probe or code execution.',
+                'changes_validity':False,'authored_value_changed_by_host':False,'native_execution_performed':False})
         schemas = []
         for direction in ('inputs', 'outputs'):
             ports = artifact.get(direction)
