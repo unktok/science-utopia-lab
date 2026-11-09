@@ -57,6 +57,10 @@ Historical documents retain their paths and source identities.
   separate scientist/designer/readiness/load usage; missing counts and overlapping
   aliases remain explicit. [Actual M costs](data/pre-scale-information-v1/costs.json)
   follow its closed original-source audit; O/E costs still await closure.
+- [Closed T/E reporting and numerical rebuilding](components/pre-scale-search-reporting-v1.md):
+  all-slot paths, exact source/measurement joins, selection-fixed common-score
+  figure, retained nulls/shared jobs and physical component CSV.41 synthetic
+  software checks pass; actual closed O/E execution is still pending.
 - [Feedback control implementation](components/native-feedback-control-v1.md) and
   [prospective finite comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md).
 - [Research charter](charter.md): original motivation and explicit principles.

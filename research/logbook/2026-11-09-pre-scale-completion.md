@@ -510,3 +510,36 @@ by the [verification receipt](../results/pre-scale-observatory-reference-verific
 The serialized scientific chain remains live by its execution handle, still
 in its declared reference/search stage. The broader quiet-window QA remains
 pending while actual scientific worlds continue.
+
+## Closed O E reporting and retained data rebuilding
+
+While the finite native writer continues, the report projection now retains
+all exact policy sources by hash, raw checkpoint measurements/statuses,
+authoring records when available, and development-to-physical joins in the
+original audit's order. Repeated specifications are not guessed into matches.
+A completed physical trajectory can have an unavailable assigned objective;
+the other observed components remain available rather than becoming an erased
+runtime null or an imputed zero. Separate synthetic cases verify this boundary.
+
+The report adds a selection-fixed common T/E/C figure alongside the two
+objective-conditioned paths. Three seed points, available counts and separate
+physical/logical totals prevent shared labels from inflating sample sizes.
+The retained-data command independently recomputes available A/Q/R cross-scores,
+all paths, exact per-arm and pooled ties, selected policies, seed-only physical
+sharing, descriptive summaries and all paired differences. It regenerates
+exact report/four figure bytes and an explicit-status physical component CSV,
+without a model, simulator or authored-code execution.
+
+At cleanf632d81,41 checks pass in17.19s. A synthetic chart was initially
+inspected without an in-image synthetic label; all subsequent synthetic QA
+rendering explicitly prints SYNTHETIC QA. These plots remain in ignored QA
+directories, not the manuscript/scientific result inventory. The source-bound
+[verification receipt](../results/pre-scale-search-reporting-verification-v1.json)
+does not claim actual closed-data success; that run still awaits O/E closure
+and matching full audits. No active source, prompt, budget or selection changes.
+
+The actual reference count reaches5/6. The no-review accept-all reference is
+complete with T−14/E0/C56 and measured Q0 under the simulator's current metric;
+the displayed zero is therefore recorded, not an unavailable value replaced
+by zero. The actual observer remains live and preserves its original rules.
+These partial reference facts are not an optimization or final comparison result.

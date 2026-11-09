@@ -1,0 +1,47 @@
+{
+  "schema": "scienceutopia.pre-scale-search-reporting-verification.v1",
+  "verified_clean_source": "f632d81f74fcf041fa763dad6b95910d99dbb8a9",
+  "report_module_sha256": "c7580851289e71c27a8adc062eb04e02a2f3c0ca26ff9ff1128c10fcf60c67e3",
+  "reproduction_module_sha256": "44aaa7486498cc8a6f7ce8d09e1d670af834db686639fefbbeadbe002fd20dc7",
+  "software_checks": {
+    "passed": 41,
+    "failed": 0,
+    "seconds": 17.19,
+    "modules": 4,
+    "junit": "outputs/pre-scale-search-report-qa-v1/python-junit-clean.xml",
+    "junit_sha256": "c4dbede4be18697a829aade4731c269d0a1dcf7ab3ffa3fc316fd67c87942c62",
+    "scope": "Prospective search/report/audit guards and synthetic retained-data numerical/figure rebuilding, not actual O/E outcomes or full native Docker QA."
+  },
+  "coverage": [
+    "All16 consumed candidate slots and six references; original physical-world ordering and system/seed/score joins",
+    "Initial final-comparison option not claimed exposed before first proposal",
+    "Available T/E/C scores independently recomputed from retained measured A/Q/R",
+    "Every exact per-arm and pooled tie, first declared selection and best-so-far path",
+    "Unsubmitted null versus completed or failed forward; no hidden replacements",
+    "Completed physical world with unavailable assigned loss preserves its other raw metrics",
+    "Selected policy and seed-only evaluation projection; logical labels do not inflate physical job counts",
+    "All means, availability counts and paired-reference differences recomputed",
+    "Synthetic report and four PNG/SVG figure files rebuild byte identically",
+    "Physical-world CSV preserves missing values and metric statuses; no zero imputation"
+  ],
+  "graphics": {
+    "optimization_paths": "Two objectives/four methods, two slots each, retained null markers and initial comparison",
+    "common_evaluation": "All selection-fixed labels, three unused seeds, common T/E/C; right-edge availability counts and explicit physical/logical totals",
+    "synthetic_figures_labelled": true,
+    "synthetic_figures_location": "outputs/pre-scale-search-report-qa-v1/SYNTHETIC-labelled/",
+    "synthetic_figures_added_to_paper": false,
+    "actual_closed_data_rendered": false
+  },
+  "actual_study_status_at_verification": {
+    "source": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+    "observed_reference_count": 5,
+    "reference_total": 6,
+    "search_and_evaluation_closed": false,
+    "actual_report_and_retained_data_rebuild": "Pending matching full audits after actual closure"
+  },
+  "active_experiment_source_prompt_loss_budget_or_selection_changed": false,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}

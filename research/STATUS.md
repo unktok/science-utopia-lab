@@ -75,6 +75,13 @@ differences;41 focused checks pass at clean35cbe6e. The historical English
 snapshot still records1/12 M/prepared O/E; separate periodic latest mode now
 records12/12 and the actual search-stage start. Neither is a heartbeat.
 
+[O/E report/rebuild support](components/pre-scale-search-reporting-v1.md) now
+retains exact executable policies, raw measurement statuses and original
+physical joins; it generates paths plus a selection-fixed common T/E/C view.
+All41 clean-source synthetic report/audit/reproduction checks pass, including
+completed physics with an unavailable assigned loss. This is software QA;
+actual closed-data reporting still waits for the running study and full audits.
+
 Separate prospective continuous-gradient campaign hardening now applies the
 same native checkpoint/source/model/corpus/seed/design join already used for
 discrete policies, before update and on resume. All19 targeted math/native/Docker
