@@ -4,16 +4,20 @@ import json
 
 import pytest
 
-from scripts.audit_pre_scale_search_v1 import actual_policy_order,main,stage_receipt
+from scripts.audit_pre_scale_search_v1 import actual_policy_order,forward_evidence,main,stage_receipt
 from scripts.run_pre_scale_search_v1 import evaluation_jobs
 from tests.reports.test_pre_scale_search_v1 import plan
 from utopia.system.design_patch import digest
 
 
+def saved(value):return {**value,'content_sha256':digest(value)}
+
+
 def closed_stage(root,stage='search'):
     start={'stage':stage,'plan_sha256':'a'*64,'pid':123,
         'schema':'scienceutopia.pre-scale-search.v1.stage-start','started_utc':'2026-11-09T00:00:00+00:00'}
-    end={**start,'status':'closed','ended_utc':'2026-11-09T00:01:00+00:00'}
+    end=saved({**start,'status':'closed','ended_utc':'2026-11-09T00:01:00+00:00'})
+    start=saved(start)
     (root/(stage+'.started.json')).write_text(json.dumps(start))
     (root/(stage+'.ended.json')).write_text(json.dumps(end))
     return start,end
@@ -23,8 +27,27 @@ def test_normal_stage_requires_matching_exact_start_and_finite_chronology(tmp_pa
     start,end=closed_stage(tmp_path)
     assert stage_receipt(tmp_path,'search','a'*64)=={'started':start,'ended':end}
     for changes in ({'pid':124},{'status':'stopped'},{'ended_utc':'2026-11-08T00:00:00+00:00'}):
-        (tmp_path/'search.ended.json').write_text(json.dumps({**end,**changes}))
+        core={k:v for k,v in end.items() if k!='content_sha256'}
+        (tmp_path/'search.ended.json').write_text(json.dumps(saved({**core,**changes})))
         with pytest.raises(ValueError,match='closure'):stage_receipt(tmp_path,'search','a'*64)
+
+
+def test_corrupted_stage_hash_is_rejected_before_interpreting_a_closed_status(tmp_path):
+    _,end=closed_stage(tmp_path)
+    (tmp_path/'search.ended.json').write_text(json.dumps({**end,'content_sha256':'0'*64}))
+    with pytest.raises(ValueError,match='content changed'):stage_receipt(tmp_path,'search','a'*64)
+
+
+def test_unavailable_objective_does_not_erase_a_complete_native_forward():
+    o={'status':'failed','loss':None,'metadata':{'runs':[{'actual':'receipt'}],
+        'measurements':[{'actual':'measured-other-metrics'}],'technical_failures':[]}}
+    assert forward_evidence(o)
+    assert not forward_evidence({'status':'failed','loss':None,
+        'metadata':{'runs':[],'measurements':[],'technical_failures':[{'technical':'failure'}]}})
+    with pytest.raises(ValueError,match='imputed'):
+        forward_evidence({**o,'loss':0.})
+    with pytest.raises(ValueError,match='ambiguous'):
+        forward_evidence({**o,'metadata':{**o['metadata'],'runs':[]}})
 
 
 def selection_and_jobs():

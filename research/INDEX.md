@@ -49,6 +49,9 @@ Historical documents retain their paths and source identities.
 - [Actual V2 supplemental analysis](publication/supplemental-analysis-v2.md):
   all-trial cross-scores, method-component costs, activity/resources and raw outside metrics.
 - [Reproducible four-study evidence inventory](results/publication-evidence-inventory-v1.json).
+- [Pre-scale closed-audit cost projection](../scripts/reports/pre_scale_costs_v1.py):
+  separate scientist/designer/readiness/load usage; missing counts and overlapping
+  aliases remain explicit. Full M/O/E cost reports await closed original-source audits.
 - [Feedback control implementation](components/native-feedback-control-v1.md) and
   [prospective finite comparison](protocols/campaigns/native-feedback-comparison-v1-a1.md).
 - [Research charter](charter.md): original motivation and explicit principles.

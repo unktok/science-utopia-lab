@@ -215,3 +215,49 @@ infer scientific/optimizer benefit. Combined38 projection/guard/order tests
 pass in7.32s using explicitly synthetic cases. No synthetic fixture is copied
 into research results or paper figures. Actual report generation still awaits
 closed original-source audits; the active goal is not marked complete.
+
+## Costs of every model role
+
+The read-only cost projection now handles M and O/E numeric submissions, staged
+wire dispatches, scientific response journals and empty-prompt role loads. It
+requires the original closed audit, exact unchanged raw inventory and normal
+scientific closure. It counts each staged wire once rather than adding its
+duplicate certificate representation. Missing usage remains unknown; native and
+transport token aliases and nested elapsed times are not added. Recorded prompt
+cache tokens remain a subset diagnostic, not extra input computation. Seven
+focused synthetic cases pass after the closure guard is tightened.
+
+A read-only component check of the two existing D replies at215311c observes
+6536 provider prompt tokens,1278 provider output tokens, reported cached input0,
+and21.028206s recorded caller time. Both final provider envelopes are present.
+This is a cost projection of those two records only, not a new readiness
+certificate, a full M audit, or end-to-end experiment duration. New model calls0.
+Full-study cost projections remain pending until M and O/E close and are audited.
+Original M execution and the waiting continuation are confirmed live through
+their existing execution handles; neither source nor settings are changed.
+
+## Audit stage record correction before expensive search
+
+Actual driver stage records have independent content hashes for start and end.
+The first adapter compared the start hash itself with the end hash as though
+it were a retained dispatch field. The original synthetic stage fixture omitted
+both hashes and therefore missed the incompatibility. Replacing that fixture
+with the actual saved-record shape reproduces one failure, retained as
+`outputs/pre-scale-completion-qa/stage-hash-regression-before.xml`, SHA256
+`b98ce265f41c71797d1c8a21536dfaf463cd57d1f250f6d4c8ddc0c09d04b830`.
+The correction verifies each hash separately, then compares unchanged dispatch
+fields and end status/time. No hash guard is weakened. A corrupt-hash regression
+and a complete-physics/unavailable-objective case are also added; missing
+assigned loss does not erase the actual completed world or become zero.
+
+At02:32:26UTC only the owned waiting scheduler27571 receives SIGINT. Its execution
+handle reports exit130 and durable terminal `stopped/waiting-for-M/steps=[]`.
+The search root has zero stage starts. Original M writer16044 is not signalled,
+and both scientific sources remain unchanged. The next continuation will use a
+fresh analysis checkout/output, not retry a consumed scientific stage.
+All47 affected projection/guard/order checks now pass in7.72s. Passing JUnit:
+`outputs/pre-scale-completion-qa/analysis-guards-v2.xml`, SHA256
+`f215e90068a6ba995f452e9cdfdf73791a6296610dbcbdc29d7c13b3bdfcd0cf`.
+The actual full O/E audit is still pending, not claimed established by these tests.
+By the next observation M has2/12 complete and M2 is advancing; this analysis
+correction does not remove or relabel any scientific result.

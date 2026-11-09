@@ -15,13 +15,29 @@ import sys
 
 
 def stage_receipt(root, stage, plan_sha):
-    start=json.loads((root/(stage+'.started.json')).read_text())
-    end=json.loads((root/(stage+'.ended.json')).read_text())
+    from utopia.optimization.native_numeric_designer import checked
+    start=checked(json.loads((root/(stage+'.started.json')).read_text()))
+    end=checked(json.loads((root/(stage+'.ended.json')).read_text()))
+    start_core={k:v for k,v in start.items() if k!='content_sha256'}
+    end_core={k:v for k,v in end.items() if k!='content_sha256'}
     if (start.get('stage')!=stage or start.get('plan_sha256')!=plan_sha
-            or end!={**start,'status':'closed','ended_utc':end.get('ended_utc')}
+            or end_core!={**start_core,'status':'closed','ended_utc':end.get('ended_utc')}
             or datetime.fromisoformat(end['ended_utc'])<datetime.fromisoformat(start['started_utc'])):
         raise ValueError('normal exact-stage closure required: '+stage)
     return {'started':start,'ended':end}
+
+
+def forward_evidence(observation):
+    """A complete world can have an unavailable objective; do not erase it."""
+    m=observation['metadata'];runs=m['runs'];measurements=m['measurements']
+    if observation['status']=='complete' and observation['loss'] is None:
+        raise ValueError('complete observation cannot have a missing loss')
+    if observation['status']=='failed' and observation['loss'] is not None:
+        raise ValueError('failed objective cannot have an imputed loss')
+    if observation['status'] not in ('complete','failed'):raise ValueError('invalid terminal native observation')
+    if len(runs)==1 and len(measurements)==1 and not m['technical_failures']:return True
+    if observation['status']=='failed' and not runs and not measurements:return False
+    raise ValueError('ambiguous physical forward/null evidence')
 
 
 def actual_policy_order(plan, selection, jobs):
@@ -139,6 +155,8 @@ def worker(root,output):
             if role=='selection-fixed-evaluation' and datetime.fromisoformat(started['started_utc'])<datetime.fromisoformat(selection['frozen_utc']):
                 raise ValueError('evaluation precedes fixed selection')
         if (o['suggestion_id']!=identity or o['candidate']!=system
+                or o['metadata']['system_fingerprint']!=spec.fingerprint
+                or o['metadata']['world_backend']!='native-research-world'
                 or o['metadata']['loss_spec_sha256']!=loss_spec_sha256(plan['losses'][loss_name])):
             raise ValueError('native observation identity/policy/loss differs')
         cell=directory/'worlds'/(identity+'-s'+str(seed));expected_cells.add(cell.resolve())
@@ -149,10 +167,8 @@ def worker(root,output):
             expected_caches.add(cache.resolve())
         gate=loaded(cell/'role-load-000.json',cell/'loaded-role-context-000.json',provider=plan['scientist'],
             purpose='before-native-world:'+cell.name,role='scientist',allow_unconfirmed=o['status']=='failed')
-        if o['status']=='complete':
-            verify_native_observation(Observation.from_dict(o),plan['world'],[seed])
-            if len(o['metadata']['runs'])!=1 or o['metadata']['technical_failures']:
-                raise ValueError('complete world has missing/failed evidence')
+        if forward_evidence(o):
+            if o['status']=='complete':verify_native_observation(Observation.from_dict(o),plan['world'],[seed])
             proof=physical_proof(cell,spec,world=plan['world'],seed=seed,years=4,evidence=o['metadata']['runs'][0])
             if o['metadata']['measurements']!=[proof['measurement']]:raise ValueError('checkpoint measurement differs')
         elif o['status']=='failed' and o['loss'] is None and not o['metadata']['measurements']:
@@ -161,7 +177,9 @@ def worker(root,output):
         else:raise ValueError('invalid terminal world/null semantics')
         if 'context_input_proof' in proof:proof['legacy_literal_context_probe']=proof.pop('context_input_proof')
         scores={k:evaluate_loss(v,o['metadata']['measurements']) for k,v in plan['losses'].items()}
-        if o['loss']!=scores[loss_name]['loss']:raise ValueError('loss differs from raw components')
+        if (o['loss']!=scores[loss_name]['loss'] or o['metadata']['loss_evaluation']!=scores[loss_name]
+                or (o['status']=='complete')!=(scores[loss_name]['status']=='complete')):
+            raise ValueError('loss/status differs from raw components')
         if standalone:
             recorded=read(directory/'cross-scores.json');recorded.pop('content_sha256')
             if recorded!=scores:raise ValueError('recorded cross-scores differ')

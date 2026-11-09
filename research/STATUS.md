@@ -40,14 +40,18 @@ immutable source, raw destinations, observations and remaining tasks.
 - M closure/audit/analysis, fresh same-source T/E search and selected-policy
   evaluation, final actual-record exports and result/manuscript update remain.
 
-A finite serialized continuation is now waiting at frozen analysis1ac9b4a,
-PID27571, raw `outputs/pre-scale-completion-chain-v1-a1/`. It waits for original
+A finite serialized continuation was waiting at frozen analysis1ac9b4a,
+PID27571, raw `outputs/pre-scale-completion-chain-v1-a1/`. It was deliberately
+stopped while waiting (exit130, no scientific stage/POST) to fix an audit-only
+start/end content-hash comparison; its original terminal record is retained.
+The corrected analysis passes47 focused checks; a new frozen continuation is
+being prepared without changing M or the62388a7 O/E source. It waits for original
 M writer16044 to disappear with complete records, requires two matching M audits,
 then runs fresh readiness→search→evaluation→two matching O/E audits. It never
 rerolls a consumed stage; errors stop that chain. A waiting scheduler is not a
 second inference writer. Actual M and O/E experiment sources remain unchanged.
 Read-only descriptive M/O/E report/figure generators are implemented;38 focused
-projection/guard/order tests pass. Their real closed-data execution remains
+projection/guard/order tests pass at the earlier source. Their real closed-data execution remains
 pending. The latest English snapshot records1/12 M and prepared-only O/E and
 passes9 UI tests plus actual Chrome desktop/mobile/404/tamper verification.
 
