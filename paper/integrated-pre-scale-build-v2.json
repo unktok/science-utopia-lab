@@ -1,0 +1,57 @@
+{
+  "schema": "scienceutopia.integrated-pre-scale-paper-build.v2",
+  "tex_and_asset_source": "9826d26764b00148df5a9f097eca127ee2a9b94f",
+  "source_clean_during_build_and_rebuild": true,
+  "output": "output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf",
+  "pdf_sha256": "87a579c86c280e464598d625729e2be1f1f0ff7cd673565a9373dd30f39b0dbb",
+  "pages": 41,
+  "figures": 17,
+  "tables": 15,
+  "build": "Tectonic --only-cached --untrusted --keep-logs --keep-intermediates",
+  "second_clean_build_text_identical": true,
+  "text_sha256": "ddb9ecabaddc9d6e478ee327a0a462661ba5f37e73d3170522cdea42b15574f1",
+  "final_log_sha256": "5e8e800b09f211d2f4d0fff90b456cdc4ebc26e2de828b521ac6fa8f58317943",
+  "overfull_underfull_or_unresolved_references": 0,
+  "unresolved_question_mark_pairs": 0,
+  "off_page_text_words": 0,
+  "benign_notices": ["UTF-8 engine ignores inputenc", "Two retained h floats adjusted to ht"],
+  "visual_review": {
+    "all_final_pages_reviewed": true,
+    "all_pages_contact_dpi": 85,
+    "individual_pages_at_110dpi": [22, 23, 24, 25, 26, 27, 28],
+    "review_directory": "tmp/pdfs/integrated-information-v3/",
+    "result": "All12 data rows, figure panels, captions and section transitions fit; complete conclusion no longer split into a few isolated lines."
+  },
+  "retained_prior_artifacts": {
+    "prior_39_page_pdf_sha256": "586a8d9838d81ed0156541bd788a78d00d799c25c3e82ebc91c7f230dc31abb4",
+    "prior_39_page_retention": "Earlier committed artifact and source-bound receipt remain in Git history; current pre-scale working PDF advances to41 pages.",
+    "unchanged_37_page_pdf": "output/pdf/science-utopia-lab-integrated-working-paper.pdf",
+    "unchanged_37_page_sha256": "3f77d91d27ce97dc17a076bd7da764be7a4cb4feafd6a81ab9cd45601d9f19d6",
+    "failed_table_input_build_source": "0039c5f",
+    "failed_build_log": "outputs/pre-scale-information-paper-qa-v1/failed-0039c5f.log",
+    "failed_build_log_sha256": "17dca9007e789fa0e8c19d056a7faca0a641c85113d4409c5651c8d148b86dbc",
+    "failed_build_cause": "Misplaced noalign after input of row-only generated body inside tabular. Generate the complete tabular and input it outside the alignment. Scientific measurements unchanged."
+  },
+  "retained_numerical_rebuild": {
+    "source": "96475b891bec6e3123fa3a427c11ec4f5b107770",
+    "report_png_svg_unchanged": true,
+    "receipt_content_sha256": "e98d5f8acd5d5671fd2a0821b451b5f67f185b9cce01f7affaa44e1cd52e7188",
+    "table_tabular_sha256": "1628cb0ece0139a3fadb0f6245b42be872e9eb3b065236feca69c7e0d3bcb677",
+    "targeted_tests_passed": 42,
+    "targeted_tests_failed": 0,
+    "targeted_tests_seconds": 1.15,
+    "junit_path": "outputs/pre-scale-information-qa-v2/junit.xml",
+    "junit_sha256": "f58a71613bead7e2534387c88d3b8ca9c3f7b8e0b53d9a6237f01dfd72c9722b",
+    "retained_cost_selector_report_source_audit_and_twelve_A_R_joins": "passed"
+  },
+  "scientific_scope": {
+    "M": "12/12 closed and twice full original-source audited; descriptive three-seed outcomes, actual consumer inputs and original hard-selector replay.",
+    "O_E": "Fresh62388a7 numerical and28 staged controls passed; development references/search executing. Selection/evaluation not closed.",
+    "gradient_adoption_and_claim_verification": "Current-native software connection tests, not fresh Qwen gradient advantage or scientific truth verification.",
+    "new_calls_from_analysis_or_manuscript": 0,
+    "optimizer_advantage_or_top_conference_readiness_claimed": false
+  },
+  "broad_native_regression_recheck_complete": false,
+  "pre_scale_goal_complete": false,
+  "external_upload_or_push": false
+}

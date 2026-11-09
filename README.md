@@ -29,7 +29,7 @@ The current finite [design-freedom comparison](research/protocols/campaigns/nati
 is complete: two objectives, five proposal arms, three controller histories and
 all120 candidate slots, followed by fixed selection and90 physical unused-
 condition evaluations. Both full audits agree using an explicit order adapter.
-An [integrated37-page research manuscript](paper/README.md) now covers the whole
+An [integrated41-page research manuscript](paper/README.md) now covers the whole
 program without a page cap; the12-page empirical study draft, figures,
 supplemental analyses and numerical/paper rebuilding are also preserved.
 [V2 requirement audit and submission judgment](research/publication/submission-decision-v2.md)
@@ -37,6 +37,13 @@ closes the finite decision package, not the broader research program.
 Immediate main-conference submission is not recommended; top-conference
 readiness, useful structural invention and method superiority are not established.
 There is no remaining writer from this study. See [current status](research/STATUS.md).
+
+The separate [pre-scale completion](research/pre-scale-completion.md) remains
+active: all12 information-intervention worlds close with matching full audits,
+[complete descriptive analysis](research/results/pre-scale-information-v1.md)
+and reproducible numerical figures. Fresh numerical/staged author readiness
+passes at the new source; the finite T/E reference/search stage is executing.
+Its selected-policy evaluation and final integration checks are not yet closed.
 
 Completed evidence includes the [eight-candidate feedback pilot](research/results/native-feedback-comparison-v1-a1.md)
 and [eight strong-rule controls](research/results/native-benchmark-controls-v2-a1.md),

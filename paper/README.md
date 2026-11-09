@@ -1,8 +1,8 @@
 # Objective-conditioned institution paper
 
 The canonical whole-program working manuscript is now [integrated.tex](integrated.tex):
-[39-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf),
-16 figures,14 tables and16 cited references, with no artificial page cap.
+[41-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf),
+17 figures,15 tables and16 cited references, with no artificial page cap.
 It integrates the objective/abstraction/method arguments, parameter held-out
 study, actual structural cases, conditional-gradient experiments, nested design,
 latest matched comparison and English evidence UI. It does not pool their
@@ -10,11 +10,13 @@ different sources or turn feasibility into superiority.
 [Inclusion/exclusion map](integrated-content-map.md) explains the editorial choices;
 [historical37-page build/evidence/visual binding](integrated-build-v1.json) records
 the preserved older artifact, not the new draft. The new pre-scale section
-separates actual numeric readiness, scripted connection QA, the started M study
-and the implemented but unexecuted T/E search. It adds no unobserved optimization
-gain. Its current source-bound final verification is recorded with the pre-scale
-work, not silently substituted into the old receipt:
-[pre-scale verification](../research/results/pre-scale-completion-software-verification-v1.json).
+separates actual numeric readiness, scripted connection QA, the closed12-world
+M study and newly started T/E search. Complete A/Q/R and input-year table,
+actual descriptive figure, original hard-selector replay and measured call
+components now accompany M; selection/evaluation remain unfinished. It adds
+no unobserved optimization gain. [Current41-page build and visual QA](integrated-pre-scale-build-v2.json)
+and [closed M scientific verification](../research/results/pre-scale-information-verification-v1.json)
+are separate from the preserved [earlier39-page receipt](../research/results/pre-scale-completion-software-verification-v1.json).
 This is a research manuscript, not a submitted, anonymous or release-cleared package.
 
 The narrower empirical study draft remains [submission-v2.tex](submission-v2.tex);

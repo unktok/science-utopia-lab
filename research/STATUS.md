@@ -45,10 +45,11 @@ immutable source, raw destinations, observations and remaining tasks.
   checks in215.56s. The earlier085f87b result335/336 remains a failed source,
   with its original JUnit retained. [Verification receipt](results/pre-scale-completion-software-verification-v1.json)
   separates software QA from pending live-model evidence.
-- The actual-record English observatory passes320 frontend checks and browser
-  desktop/mobile/404/tamper verification. The separate39-page pre-scale manuscript
-  adds the measured readiness, closed-data figure and explicit unfinished stages;
-  the previous37-page artifact remains unchanged.
+- The actual-record English observatory passes325 frontend checks and browser
+  desktop/mobile/404/tamper verification. The separate41-page pre-scale manuscript
+  includes all12 M rows, actual figure, selector replay and costs, while leaving
+  T/E search/evaluation unfinished. [Current PDF/build/visual verification](../paper/integrated-pre-scale-build-v2.json)
+  retains the earlier39-page identity; the37-page artifact remains unchanged.
 - T/E search and selected-policy evaluation, their full audits/analysis, final
   actual-record exports/manuscript update and quiet-window broad QA remain.
 

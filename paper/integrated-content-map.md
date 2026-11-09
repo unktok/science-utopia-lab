@@ -44,6 +44,10 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
   native-design-freedom-v2-closed-analysis-v1.json, and exact retained V2 archive.
 - paper/generated/native-design-v2-supplement/manifest.json and supplement.json.
 - research/publication/method-section-comparison.md and scoped primary literature.
+- research/data/pre-scale-information-v1/report.json, costs.json and
+  selector-diagnostic.json, joined by the closed original-source audit and
+  research/results/pre-scale-information-verification-v1.json; current paper
+  binding in paper/integrated-pre-scale-build-v2.json.
 
 ## Non-negotiable distinctions
 

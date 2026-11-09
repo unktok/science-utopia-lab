@@ -442,3 +442,32 @@ stage starts04:11:04UTC, before any fixed selection or unused-seed evaluation.
 The live periodic UI records the M closure and actual search-stage start,
 separately from its unchanged historical1/12 snapshot. Full search/evaluation
 results, their audits/reporting and quiet-window broad QA remain unfinished.
+
+## Information results in the integrated manuscript
+
+The current pre-scale working PDF advances39→41 pages, with17 figures,
+15 tables and no page cap. It includes all12 individual A/Q/R/T/E/input-year
+rows and the actual three-panel figure, with descriptive paired differences,
+the original hard-selector explanation and separated call components. The
+abstract, limitations and reproduction appendix distinguish closed M from
+ongoing O/E and scripted gradient/adoption/claim-verification connections.
+The previous37-page PDF is unchanged; the prior39-page PDF and its receipt
+remain in committed history with exact old hash.
+
+The first0039c5f TeX build fails at noalign after a row-only generated body is
+input inside tabular. Its original log is retained under main/outputs, hash
+17dca900. The prospective generator emits the complete tabular and inputs it
+outside that alignment instead; no scientific values change. At clean96475b8,
+all42 related tests pass in1.15s; the numerical/PNG/SVG bytes remain unchanged.
+The full generated table and bare rows have their own recorded hashes.
+
+Two cached/untrusted builds at clean9826d26 succeed with identical extracted
+text. All41 final pages are reviewed on85dpi labelled sheets, pages22–28
+individually at110dpi. The conclusion is moved as a complete section instead
+of leaving its final lines alone on a page. There are no overfull/underfull,
+unresolved references, question-mark pairs or off-page text words; only the
+retained inputenc and h→ht notices remain. [Current paper binding](../../paper/integrated-pre-scale-build-v2.json)
+records final PDF87a579c8 and scopes the older failures/results separately.
+The25-document repository checker resolves362 local links with no error,
+network call, model call or scientific world. This does not replace the still
+pending quiet-window broad Docker check or complete the pre-scale goal.

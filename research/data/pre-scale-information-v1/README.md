@@ -29,7 +29,7 @@ approved uv-managed project interpreter:
 
 The command recomputes all36 T/E/C cross-scores, condition means and nine
 paired differences from retained measurements, then regenerates identical
-report/PNG/SVG bytes and the twelve-row manuscript table body. It performs no
+report/PNG/SVG bytes and the twelve-row manuscript table body/full tabular. It performs no
 model call, native world, generated-code execution, dependency download or
 original raw audit. Full re-audit requires the original raw inventory and the
 pinned original-source audit adapter; numerical rebuilding is not fresh model

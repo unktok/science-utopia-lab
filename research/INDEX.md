@@ -19,11 +19,12 @@ Historical documents retain their paths and source identities.
   whole-program questions, existing-data analyses, small mechanism/search experiments,
   gradients, world validity and scale decisions. A proposal, not a running campaign.
 - [Integrated whole-program manuscript](../paper/integrated.tex) and
-  [reviewed39-page pre-scale PDF](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf):
+  [reviewed41-page pre-scale PDF](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf):
   uncapped synthesis of objectives, abstraction, structural design, gradients,
   matched comparison and game UI; [editorial evidence map](../paper/integrated-content-map.md).
-  Existing studies remain separate; new numerical readiness and prospective
-  work are not superiority claims. The earlier37-page artifact is preserved.
+  Existing studies remain separate; the closed12-world information comparison
+  and new numerical readiness are not superiority claims. The earlier37-page
+  artifact is preserved. [Current PDF and42-check/rebuild verification](../paper/integrated-pre-scale-build-v2.json).
   [Source-bound software/build/visual verification](results/pre-scale-completion-software-verification-v1.json)
   records374 Python checks,320 frontend checks and actual browser verification.
 - [Final submission judgment and requirement audit](publication/submission-decision-v2.md):

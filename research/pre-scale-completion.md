@@ -14,7 +14,7 @@
 | 継続社会 | 元worldのcheckpointから実際に制度を導入し、state・資源・memory・pending情報の保持を検証 | 現M3上で変更・元社会保持・queue保持・再構築・継続がpass。scripted QA |
 | 検証可能な活動 | 既存worldを包含する、実際の計算・検証・訂正記録とconsumerの最小拡張。科学的発見の主張とは分ける | 独立native count検証・訂正・実入力・時計非依存を実装。科学論文の真偽判定ではない |
 | UI | 実験の実記録と制度・経路・失敗を英語UIで見られ、未実行draftと区別できる | 英語pre-scale observatory・実記録snapshot・checksum・PC/スマホ・404/改竄拒否確認済み。今後の実結果exportが残る |
-| 分析・原稿・再現 | 全試行・費用・作用・限界を記録、図と原稿へ反映、生成・検証を再現する | 原稿39p・紙面用既知目的図・未実行/QA/実測の区別を反映。M原source read-only audit adapter実装、実データ閉鎖後の監査・結果分析が残る |
+| 分析・原稿・再現 | 全試行・費用・作用・限界を記録、図と原稿へ反映、生成・検証を再現する | M全監査・分析・費用・図・全12行表と原稿41pを更新。数値と図の再生成・42関連test・全紙面QA成功。O/E結果の統合と静穏時の広域QAが残る |
 
 O/Eの計画hashは`db2df5c5e54a68c8201b6b8c460cffa66770ee37da4f7b0d1089c7f5fc7702cb`。
 明示したmain/outputs、実験worktree群、開発worktree群の読み取り専用seed使用検査では、
