@@ -1,0 +1,21 @@
+{
+  "schema": "scienceutopia.pre-scale-browser-qa.v1",
+  "observed_utc": "2026-11-09T03:32:31.630Z",
+  "story": "Recorded journals → same-origin JSON → checksum validation → read-only English UI",
+  "checks": [
+    "actual data rendered,12 rows,English,desktop no overflow,no JS errors",
+    "390px mobile no overflow and reload below provenance",
+    "404 fails closed without stale outcomes",
+    "tampered JSON fails checksum without displaying invented progress",
+    "no write/model/simulation request or silent alternate evidence source"
+  ],
+  "source_mode": "recorded",
+  "new_model_calls": 0,
+  "simulation_submissions": 0,
+  "independent_scientific_audit": false,
+  "files": {
+    "desktop.png": "16f84da74d2a35681bea2148dcabb5a63bce8a58cd4544a51dabe7199f709aab",
+    "mobile.png": "5a05eaabcbd0f012d7e6228341b7a40e1a20c80f6db0692c5d929483aa8f01bb"
+  },
+  "passed": true
+}

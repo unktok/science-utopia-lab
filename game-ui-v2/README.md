@@ -399,6 +399,43 @@ mirrored to semantic buttons for keyboard and screen-reader navigation.
 
 ## Architecture boundary
 
+## Timestamped pre scale progress
+
+`pre-scale.html?source=recorded` opens the committed historical snapshot.
+`pre-scale.html?source=latest` explicitly selects a separate local journal
+projection and checks that file every30 seconds. A missing/tampered file clears
+the displayed outcomes; it never silently loads the older recorded file.
+The page makes only same-origin read requests and starts no model or experiment.
+
+The optional finite watcher reads the immutable M/O/E journals and publishes
+only changed recorded facts. Its observation date does not refresh on unchanged
+polls, and neither a dated projection nor a stage-start record proves that a
+scientific process is live. Completed, stopped and started-without-terminal
+stage records are displayed separately. Readiness receipts retain their own
+source, distinct from the search source and its required fresh readiness.
+
+From a clean pinned helper checkout, with explicit actual run paths:
+
+```sh
+python -m scripts.watch_pre_scale_observatory \
+  --information-run /absolute/path/to/information-run \
+  --search-run /absolute/path/to/search-run \
+  --output /absolute/path/to/game-ui-v2/public/data/pre-scale-observatory.latest.json \
+  --status-output /absolute/path/to/outputs/observer/last-status.json \
+  --interval 30 --maximum-seconds 86400
+```
+
+Use the approved project interpreter, never Apple-provided Python. Both output
+targets must be fresh and outside the scientific run directories. Keep the
+status journal outside `public/` to avoid unnecessary development-server reloads.
+The watcher stops on integrity errors, three consecutive incomplete file
+publications, the finite deadline, or both scientific completion records;
+completion records are not full audits. It leaves scientific writers untouched.
+The local projection/lock are ignored by Git. Treat them as local observation
+files, not reviewed release artifacts; static builds can copy public files.
+
+## Replay architecture boundary
+
 `src/replay.ts` validates and joins canonical entities with versioned visual
 placements, actions, and flows. `src/ArcologyScene.ts` renders only validated
 entities and choreography. Frame selection, actor position, workstation

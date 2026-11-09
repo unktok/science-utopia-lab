@@ -12,6 +12,7 @@ export interface PreScaleSnapshot {
       scientific_loss: null; retained_parent_explicitly: boolean | null }[];
     worlds: MechanismRow[] };
   search: { status: string; source_commit: string | null; selection_fixed: boolean;
+    observed_stage?: string | null; stage_error_type?: string | null;
     candidate_slots: { arm: string; generation: number; status: string; loss: number | null }[];
     evaluation_observations: number; evaluation_plan_worlds: number | null };
   boundaries: Record<string, boolean>;
@@ -21,6 +22,12 @@ const hash = (x: unknown, size = 64): x is string => typeof x === "string" && ne
 const loss = (x: unknown) => x === null || (typeof x === "number" && Number.isFinite(x));
 const integer = (x: unknown) => typeof x === "number" && Number.isSafeInteger(x) && x >= 0;
 const scoresValid = (x: unknown): boolean => x === null || object(x) && ["throughput", "efficiency", "selective"].every(k => loss(x[k]));
+
+export function snapshotSource(search: string): "recorded" | "latest" {
+  const source = new URLSearchParams(search).get("source") ?? "recorded";
+  if (source !== "recorded" && source !== "latest") throw new Error("Unknown snapshot source; only local recorded/latest files are allowed");
+  return source;
+}
 
 export async function validatePreScale(envelope: unknown): Promise<PreScaleSnapshot> {
   if (!object(envelope) || envelope.schema !== "scienceutopia.pre-scale-observatory.v1.envelope"
@@ -56,13 +63,26 @@ export async function validatePreScale(envelope: unknown): Promise<PreScaleSnaps
         || (r.retained_parent_explicitly !== null && typeof r.retained_parent_explicitly !== "boolean")) throw new Error("Readiness is not a scientific outcome");
   }
   const search = p.search;
-  if (!["not-dispatched", "prepared-no-stage-terminal", "recorded-closed"].includes(String(search.status))
+  if (!["not-dispatched", "prepared-no-stage-terminal", "stage-started-no-terminal", "stage-stopped", "stage-closed", "recorded-closed"].includes(String(search.status))
       || (search.source_commit !== null && !hash(search.source_commit, 40)) || typeof search.selection_fixed !== "boolean"
       || !Array.isArray(search.candidate_slots) || search.candidate_slots.length > 16
       || !integer(search.evaluation_observations) || Number(search.evaluation_observations) > 36
       || (search.evaluation_plan_worlds !== null && (!integer(search.evaluation_plan_worlds) || Number(search.evaluation_plan_worlds) > 36))) throw new Error("Invalid search/evaluation scope");
-  for (const r of search.candidate_slots) if (!object(r) || !loss(r.loss) || typeof r.arm !== "string"
-    || typeof r.generation !== "number" || ![0, 1].includes(r.generation) || typeof r.status !== "string") throw new Error("Invalid search slot");
+  const slots = new Set<string>();
+  const arms = ["throughput", "efficiency"].flatMap(o => ["parameters", "code-fixed-graph", "code-and-graph", "random"].map(m => `${o}:${m}`));
+  for (const r of search.candidate_slots) {
+    if (!object(r) || !loss(r.loss) || typeof r.arm !== "string" || !arms.includes(r.arm)
+      || typeof r.generation !== "number" || ![0, 1].includes(r.generation)
+      || !["complete", "failed", "invalid", "generation-failure", "unknown"].includes(String(r.status))) throw new Error("Invalid search slot");
+    const key = `${r.arm}:${r.generation}`;
+    if (slots.has(key) || (r.status === "complete" ? r.loss === null : r.loss !== null)) throw new Error("Duplicated or inconsistent search outcome");
+    slots.add(key);
+  }
+  if (search.observed_stage !== undefined && search.observed_stage !== null
+    && !["readiness", "search", "evaluation"].includes(String(search.observed_stage))) throw new Error("Invalid recorded stage");
+  if (search.stage_error_type !== undefined && search.stage_error_type !== null && typeof search.stage_error_type !== "string") throw new Error("Invalid recorded stage error");
+  if (["stage-started-no-terminal", "stage-stopped", "stage-closed"].includes(String(search.status))
+    && !["readiness", "search", "evaluation"].includes(String(search.observed_stage))) throw new Error("Stage status lacks its recorded stage");
   if ((Number(search.evaluation_observations) > 0 || search.evaluation_plan_worlds !== null) && !search.selection_fixed) throw new Error("Evaluation precedes frozen selection");
   return p as unknown as PreScaleSnapshot;
 }
@@ -70,6 +90,8 @@ export async function validatePreScale(envelope: unknown): Promise<PreScaleSnaps
 export const valueLabel = (x: number | null | undefined): string => x == null ? "—" : x.toLocaleString("en-US", { maximumFractionDigits: 3 });
 export const statusLabel = (status: string): string => ({
   "not-dispatched": "Not dispatched", "started-no-terminal-observation": "Started · completion unverified",
-  complete: "Observation complete", failed: "Technical failure", invalid: "Invalid observation",
+  complete: "Observation complete", failed: "Failed observation", invalid: "Invalid observation",
   submitted: "Literal submission", "generation-failure": "Generation failure",
+  "prepared-no-stage-terminal": "Prepared · no stage started", "recorded-closed": "Scientific completion recorded",
+  "stage-started-no-terminal": "Stage started · completion unverified", "stage-stopped": "Stage stopped", "stage-closed": "Stage completed",
 }[status] ?? status);

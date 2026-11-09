@@ -1,5 +1,5 @@
 import "./preScaleObservatory.css";
-import { validatePreScale, valueLabel, statusLabel, type PreScaleSnapshot } from "./preScaleContract";
+import { validatePreScale, valueLabel, statusLabel, snapshotSource, type PreScaleSnapshot } from "./preScaleContract";
 
 const app = document.querySelector<HTMLElement>("#app")!;
 const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text = "", cls = ""): HTMLElementTagNameMap[K] => {
@@ -7,10 +7,10 @@ const el = <K extends keyof HTMLElementTagNameMap>(tag: K, text = "", cls = ""):
 };
 const link = (label: string, href: string) => { const a = el("a", label); a.href = href; return a; };
 
-function render(p: PreScaleSnapshot): void {
+function render(p: PreScaleSnapshot, source: "recorded" | "latest"): void {
   app.replaceChildren();
   const rail = el("nav", "", "truth-rail"); rail.setAttribute("aria-label", "Evidence boundary and navigation");
-  rail.append(link("← ARCOLOGY", "./hub.html"), el("span", "RECORDED SNAPSHOT · NOT A LIVE HEARTBEAT"), link("INSTITUTION FOUNDRY →", "./native.html"));
+  rail.append(link("← ARCOLOGY", "./hub.html"), el("span", `${source === "latest" ? "LOCAL JOURNAL PROJECTION" : "RECORDED SNAPSHOT"} · NOT A LIVE HEARTBEAT`), link("INSTITUTION FOUNDRY →", "./native.html"));
   const header = el("header"); const icon = el("img"); icon.src = "./assets/noctiluca/production/institution-lab.svg";
   icon.alt = "Research institution icon, presentation only";
   const titles = el("div"); titles.append(el("p", "NOCTILUCA / RESEARCH CONTROL", "eyebrow"), el("h1", "Before the scale jump"),
@@ -20,6 +20,9 @@ function render(p: PreScaleSnapshot): void {
   boundary.append(el("strong", "Observed " + p.observed_utc), el("p", "Viewing this page starts no experiment. “Started” is not proof of a running process. A dash is unknown, never zero."),
     el("small", `${p.scientist_model} researchers / ${p.designer_model} designer · native world · no weight training`));
   const refresh = el("button", "RELOAD SNAPSHOT"); refresh.addEventListener("click", () => { void load(); }); boundary.append(refresh);
+  const choices = el("p"); choices.append(link("RECORDED FILE", "./pre-scale.html?source=recorded"), el("span", " / "),
+    link("LOCAL UPDATES", "./pre-scale.html?source=latest"));
+  boundary.append(choices, el("small", source === "latest" ? "Checks the local projection file every30 seconds. Its date changes only when recorded facts change. No fallback to older evidence." : "A committed historical snapshot. Local updates use a separate, explicitly selected file."));
   app.append(rail, header, boundary);
 
   const completed = p.information.worlds.filter(r => r.status === "complete").length;
@@ -27,7 +30,7 @@ function render(p: PreScaleSnapshot): void {
   for (const [letter, title, count, detail] of [
     ["D", "Submission", `${p.information.numeric_readiness.filter(r => r.status === "submitted").length}/2`, "Numeric readiness only. No scientific loss."],
     ["M", "Information paths", `${completed}/12`, "Four conditions · three development seeds · four years."],
-    ["O", "Objective → system", `${p.search.candidate_slots.length}/16`, "T/E × numeric / code / graph / uniform × two generations."],
+    ["O", "Objective → system", `${p.search.candidate_slots.length}/16`, "Terminal slots · T/E × numeric / code / graph / uniform × two generations."],
     ["E", "Selection fixed", `${p.search.evaluation_observations}/${p.search.evaluation_plan_worlds ?? "≤36"}`, p.search.selection_fixed ? "Frozen selection recorded. No evaluation feedback." : "Not yet frozen. Evaluation cannot select a new winner."],
   ]) {
     const card = el("article", "", "station"); card.append(el("b", letter, "station-code"), el("h2", title), el("strong", count, "counter"), el("p", detail)); steps.append(card);
@@ -57,19 +60,32 @@ function render(p: PreScaleSnapshot): void {
     const details = el("details"); details.append(el("summary", "Terminal content identity"), el("code", r.result_sha256)); card.append(details); sidebar.append(card);
   }
   sidebar.append(el("h2", "Search and evaluation"), el("p", statusLabel(p.search.status)), el("p", "Every complete/null proposal and exact tie is retained. An initial-system selection is not an invention."));
+  if (p.search.observed_stage) sidebar.append(el("p", `Recorded stage: ${p.search.observed_stage}`));
+  if (p.search.stage_error_type) sidebar.append(el("p", `Terminal error class: ${p.search.stage_error_type}. See journals for diagnosis.`));
   for (const r of p.search.candidate_slots) sidebar.append(el("p", `${r.arm} / G${r.generation}: ${statusLabel(r.status)} / ${valueLabel(r.loss)}`));
   sidebar.append(link("Earlier method evidence →", "./method-observatory.html")); grid.append(sidebar); app.append(grid);
-  const footer = el("footer"); footer.append(el("p", "SOURCE BOUNDARY / Different source pins are different evidence scopes."), el("code", p.information.source_commit),
-    el("p", "A source-specific readiness pass is not an optimizer win, autonomous institutional invention, full-world differentiation or scientific truth.")); app.append(footer);
+  const footer = el("footer"); footer.append(el("p", "SOURCE BOUNDARY / Different source pins are different evidence scopes."), el("p", "Information study and the submission receipts above:"), el("code", p.information.source_commit));
+  if (p.search.source_commit) footer.append(el("p", "Search/evaluation, with its own fresh readiness:"), el("code", p.search.source_commit));
+  footer.append(el("p", "A source-specific readiness pass is not an optimizer win, autonomous institutional invention, full-world differentiation or scientific truth.")); app.append(footer);
 }
 
+let busy = false, renderedHash: string | null = null;
 async function load(): Promise<void> {
+  if (busy) return;
+  busy = true;
   try {
-    const response = await fetch("./data/pre-scale-observatory.actual.json", { cache: "no-store" });
+    const source = snapshotSource(location.search);
+    const file = source === "latest" ? "latest" : "actual";
+    const response = await fetch(`./data/pre-scale-observatory.${file}.json`, { cache: "no-store", signal: AbortSignal.timeout(10_000) });
     if (!response.ok) throw new Error(`Evidence snapshot unavailable (${response.status})`);
-    render(await validatePreScale(await response.json()));
+    const envelope = await response.json(); const p = await validatePreScale(envelope);
+    if (renderedHash !== envelope.web_sha256) { render(p, source); renderedHash = envelope.web_sha256; }
   } catch (error) {
-    app.replaceChildren(el("h1", "Evidence unavailable"), el("p", String(error)), el("p", "No outcomes, progress or running-process state are inferred."), link("← ARCOLOGY", "./hub.html"));
+    renderedHash = null;
+    app.replaceChildren(el("h1", "Evidence unavailable"), el("p", String(error)), el("p", "No outcomes, progress or running-process state are inferred."), link("Choose the recorded historical file →", "./pre-scale.html?source=recorded"), link("← ARCOLOGY", "./hub.html"));
+  } finally {
+    busy = false;
   }
 }
 void load();
+if (new URLSearchParams(location.search).get("source") === "latest") window.setInterval(() => { void load(); }, 30_000);

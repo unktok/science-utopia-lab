@@ -20,3 +20,5 @@ wandb/
 .DS_Store
 .idea/
 .vscode/
+/game-ui-v2/public/data/pre-scale-observatory.latest.json
+/game-ui-v2/public/data/pre-scale-observatory.latest.json.lock

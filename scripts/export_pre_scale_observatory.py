@@ -20,6 +20,28 @@ def read(path):
     return checked(json.loads(Path(path).read_text()))
 
 
+def stage_projection(root,plan):
+    """Stage journals describe recorded dispatch/completion, never liveness."""
+    result={'observed_stage':None,'stage_error_type':None,'status':'prepared-no-stage-terminal'}
+    for stage in ('readiness','search','evaluation'):
+        path=root/(stage+'.started.json');end_path=root/(stage+'.ended.json')
+        if end_path.exists() and not path.exists():raise ValueError('stage end without its dispatch record')
+        if not path.exists():continue
+        start=read(path)
+        if start['stage']!=stage or start['plan_sha256']!=plan['content_sha256']:
+            raise ValueError('stage dispatch plan differs')
+        result.update(observed_stage=stage,status='stage-started-no-terminal',stage_error_type=None)
+        if not end_path.exists():continue
+        end=read(end_path)
+        if (any(end.get(k)!=v for k,v in start.items() if k!='content_sha256')
+                or end['status'] not in ('closed','stopped')
+                or datetime.fromisoformat(end['ended_utc'])<datetime.fromisoformat(start['started_utc'])):
+            raise ValueError('stage completion differs from original dispatch')
+        result.update(status='stage-closed' if end['status']=='closed' else 'stage-stopped',
+            stage_error_type=end.get('error_type') if end['status']=='stopped' else None)
+    return result
+
+
 def project(information_run,*,search_run=None,observed_utc=None):
     root=Path(information_run);plan=read(root/'plan.json')
     if plan.get('schema')!='scienceutopia.pre-scale-pilot.v1.plan':
@@ -65,13 +87,13 @@ def project(information_run,*,search_run=None,observed_utc=None):
             if file_sha256(root/relative)!=identity:raise ValueError('closed observation changed')
         if len(complete['all_observation_file_sha256'])!=12 or any(r['status']!='complete' for r in rows):
             raise ValueError('mechanism closure does not cover all normal observations')
-    search={'status':'not-dispatched','source_commit':None,'candidate_slots':[],
+    search={'status':'not-dispatched','observed_stage':None,'stage_error_type':None,'source_commit':None,'candidate_slots':[],
         'selection_fixed':False,'evaluation_observations':0,'evaluation_plan_worlds':None}
     if search_run is not None:
         other=Path(search_run);p=read(other/'plan.json')
         if p.get('schema')!='scienceutopia.pre-scale-search.v1.plan':raise ValueError('explicit search plan required')
-        search.update(status='prepared-no-stage-terminal',source_commit=p['source_commit'])
-        for arm in p['assignments']:
+        search.update(stage_projection(other,p),source_commit=p['source_commit'])
+        for arm in p['arm_order']:
             path=other/'search'/'run-00'/arm.replace(':','--')/'campaign/native-adaptive-state.json'
             if not path.exists():continue
             state=json.loads(path.read_text())

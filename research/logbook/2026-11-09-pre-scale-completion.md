@@ -345,3 +345,37 @@ Five lightweight tests pass in0.64s for the consumer fixtures and retained
 diagnostic integrity/scope. The golden year2/3 observations are explicitly
 seed41001-bound, not rules for other project durations or seeds. The full
 M audit still refuses an unclosed study; no partial proof is relabeled as full.
+
+## Periodic read only progress display
+
+The new watcher publishes a separate ignored local file, not the retained
+historical snapshot. It writes only when recorded facts change, with a30-second
+poll and a24-hour finite allowance. It dispatches no model, world or code
+mechanism, never modifies scientific raw records, and keeps its own status
+journal separate from scientific liveness. Missing multi-file publications are
+not converted into empty outcomes; persistent missing records/integrity errors
+stop the observer. The actual scientific scheduler and source bindings remain
+unchanged.
+
+The viewer explicitly selects recorded/latest files, has no arbitrary URL input,
+and does not silently fall back after404 or checksum failure. New stage-record
+projection prevents a started/stopped/completed search stage remaining labelled
+"prepared". Duplicate candidate slots and fabricated numerical failed losses
+are rejected. The two readiness/search source pins remain distinct in the UI.
+Fourteen Python projection/watch tests pass. All325 UI tests pass with loopback
+test permissions, and typecheck/build pass. The first default-sandbox full UI
+run has324 pass/1 fail plus `listen EPERM` on its own local HTTP test server;
+the permission-enabled pass does not relabel that initial attempt.
+
+The first browser QA stops because `.boundary small` now matches two elements;
+the partial image is retained in ignored
+`outputs/pre-scale-observatory-watch-qa/browser-before-selector-fix/`.
+The corrected selector checks the model-provenance element. Actual Chrome
+recorded and latest modes then pass desktop/mobile, twelve rows,404/tamper
+refusal and zero write requests. Latest mode is observed requesting its actual
+local data again after30 seconds, without recorded-file fallback. Receipts and
+screenshots are in `game-ui-v2/screenshots/pre-scale-observatory-modes-qa-v2/`
+and `game-ui-v2/screenshots/pre-scale-observatory-latest-qa/`. Their latest image
+is an actual7/12 observation, not a synthetic fixture or full-study result.
+The helper is pinned before starting the long observer; real periodic operation
+is verified separately from these synthetic clock tests/browser checks.

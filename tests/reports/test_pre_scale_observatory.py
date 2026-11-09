@@ -40,3 +40,29 @@ def test_cross_source_numeric_certificate_is_rejected(tmp_path):
     save(tmp_path/'numeric-readiness/certificate.json',{'provider':p['designer'],
         'runtime':{'SCRIPTED':'different-source'},'cases':[]})
     with pytest.raises(ValueError,match='source/model'):project(tmp_path)
+
+
+@pytest.mark.parametrize('terminal',[None,'closed','stopped'])
+def test_actual_hashed_stage_records_are_not_stuck_in_prepared_state(tmp_path,terminal):
+    fixture(tmp_path/'M');search=tmp_path/'O'
+    p=save(search/'plan.json',{'schema':'scienceutopia.pre-scale-search.v1.plan',
+        'source_commit':'b'*40,'arm_order':[]})
+    start={'stage':'readiness','plan_sha256':p['content_sha256'],'pid':123,
+        'started_utc':'2026-11-09T00:00:00+00:00'}
+    save(search/'readiness.started.json',start)
+    if terminal:
+        save(search/'readiness.ended.json',{**start,'status':terminal,
+            'ended_utc':'2026-11-09T00:01:00+00:00',**({'error_type':'SCRIPTEDError','error':'synthetic failure'} if terminal=='stopped' else {})})
+    data=project(tmp_path/'M',search_run=search)['payload']['search']
+    assert data['status']==('stage-started-no-terminal' if terminal is None else 'stage-closed' if terminal=='closed' else 'stage-stopped')
+    assert data['observed_stage']=='readiness'
+    assert data['stage_error_type']==('SCRIPTEDError' if terminal=='stopped' else None)
+
+
+def test_stage_end_cannot_rebind_its_dispatch(tmp_path):
+    fixture(tmp_path/'M');search=tmp_path/'O'
+    p=save(search/'plan.json',{'schema':'scienceutopia.pre-scale-search.v1.plan','source_commit':'b'*40,'arm_order':[]})
+    start={'stage':'readiness','plan_sha256':p['content_sha256'],'pid':123,'started_utc':'2026-11-09T00:00:00+00:00'}
+    save(search/'readiness.started.json',start)
+    save(search/'readiness.ended.json',{**start,'pid':999,'status':'closed','ended_utc':'2026-11-09T00:01:00+00:00'})
+    with pytest.raises(ValueError,match='completion differs'):project(tmp_path/'M',search_run=search)
