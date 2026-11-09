@@ -78,7 +78,25 @@ try{
   await page.screenshot({path:join(out,'desktop.png'),fullPage:true});
   await page.setViewportSize({width:390,height:844});
   check(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),'Mobile overflow');
-  await page.screenshot({path:join(out,'mobile.png'),fullPage:true});
+  report.mobile_capture=await page.evaluate(()=>({document_height:document.documentElement.scrollHeight,
+    viewport_height:innerHeight,header_count:document.querySelectorAll('.top').length,
+    deck_count:document.querySelectorAll('.foundry-deck').length}));
+  check(report.mobile_capture.header_count===1&&report.mobile_capture.deck_count===1,'Mobile DOM duplicates its header or deck');
+  // Long full-page mobile captures repeated viewport tiles in this Chrome run.
+  // Keep genuine viewport screenshots instead; never deliver the repeated image.
+  if(synthetic)await page.evaluate(()=>{
+    const badge=document.createElement('div');badge.textContent='SYNTHETIC QA / NO SCIENTIFIC RESULT';
+    badge.style.cssText='position:fixed;bottom:6px;right:6px;z-index:99999;background:#17263a;color:#bde4de;padding:5px;font:8px monospace;pointer-events:none';
+    document.body.append(badge);
+  });
+  await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:join(out,'mobile.png'),fullPage:false});
+  await page.evaluate(()=>document.getElementById('native-graph').scrollIntoView({block:'start'}));
+  await page.screenshot({path:join(out,'mobile-network.png'),fullPage:false});
+  await page.evaluate(()=>document.querySelector('.evidence').scrollIntoView({block:'start'}));
+  check(await page.evaluate(()=>scrollY>0&&document.querySelector('.top').getBoundingClientRect().bottom<0),'Mobile viewport did not scroll past its original header');
+  await page.screenshot({path:join(out,'mobile-evidence.png'),fullPage:false});
+  report.mobile_capture.scope='Three actual390x844 viewport captures, not a full-page composite; synthetic-only visible QA annotation.';
   report.checks.push('desktop and390px mobile,no overflow,no JavaScript errors,read-only workbench/file controls');
   const failed=payload.systems.findIndex(row=>row.status==='failed');
   if(failed>=0){
@@ -104,6 +122,6 @@ try{
   check(errors.length===0,'Unhandled browser failure');
   report.checks.push('unknown arm refused,zero writes,zero queue API calls,no old-study fallback');report.passed=true;
 }finally{await browser.close();}
-for(const name of ['desktop.png','mobile.png'])report.files[name]=sha(await readFile(join(out,name)));
+for(const name of ['desktop.png','mobile.png','mobile-network.png','mobile-evidence.png'])report.files[name]=sha(await readFile(join(out,name)));
 await writeFile(join(out,'verification.json'),JSON.stringify(report,null,2)+'\n');
 process.stdout.write(JSON.stringify(report)+'\n');
