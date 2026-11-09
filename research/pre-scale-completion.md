@@ -13,7 +13,7 @@
 | 勾配の接続 | 明示した設計分布とnative評価の対応、更新後のforward、無勾配対照を有限scopeで確認 | 現M1上で2draw→更新→fresh native forward・無勾配対照の4world接続QA pass。scripted HTTP／corpusであり新Qwen優位性ではない |
 | 継続社会 | 元worldのcheckpointから実際に制度を導入し、state・資源・memory・pending情報の保持を検証 | 現M3上で変更・元社会保持・queue保持・再構築・継続がpass。scripted QA |
 | 検証可能な活動 | 既存worldを包含する、実際の計算・検証・訂正記録とconsumerの最小拡張。科学的発見の主張とは分ける | 独立native count検証・訂正・実入力・時計非依存を実装。科学論文の真偽判定ではない |
-| UI | 実験の実記録と制度・経路・失敗を英語UIで見られ、未実行draftと区別できる | 英語pre-scale observatory・実記録snapshot・checksum・PC/スマホ・404/改竄拒否確認済み。今後の実結果exportが残る |
+| UI | 実験の実記録と制度・経路・失敗を英語UIで見られ、未実行draftと区別できる | 実M12/12・参照6条件の状態・新source提出確認を表示。332 UI/28 helper test・実Chrome PC/スマホ・自動GET・欠損/改竄拒否・旧snapshot互換を確認。探索/評価の最終結果exportは残る |
 | 分析・原稿・再現 | 全試行・費用・作用・限界を記録、図と原稿へ反映、生成・検証を再現する | M全監査・分析・費用・図・全12行表と原稿41pを更新。数値と図の再生成・42関連test・全紙面QA成功。O/E結果の統合と静穏時の広域QAが残る |
 
 O/Eの計画hashは`db2df5c5e54a68c8201b6b8c460cffa66770ee37da4f7b0d1089c7f5fc7702cb`。

@@ -1,0 +1,59 @@
+{
+  "schema": "scienceutopia.pre-scale-observatory-reference-verification.v1",
+  "verified_clean_source": "d7e49ae5dc6f41cd81b9caaa37e830c4f0c67b89",
+  "scope": "Actual reference/readiness journals to source-bound projection to read-only English browser display; not a full scientific audit, inference writer or optimizer result.",
+  "python": {
+    "passed": 28,
+    "failed": 0,
+    "seconds": 0.75,
+    "junit": "outputs/pre-scale-observatory-reference-qa-v1/python-junit-clean.xml",
+    "junit_sha256": "9ad38ef6c604c6ddac473c9a177cf4963adfa1d78fbfc8308c9cd914a731f2f2",
+    "coverage": "Declared six references, actual start/system/seed join, zero versus unknown, orphan terminals, own-source readiness counts, failed certificates, watcher non-heartbeat dates and finite/error stops.",
+    "initial_development_failures": "Nine newly written negative fixtures attempted to overwrite immutable journals; create the changed fixture before its first save. Immutable-save and production guards remain unchanged. An earlier wrong test-module filename ran no tests."
+  },
+  "frontend": {
+    "test_files": 33,
+    "passed": 332,
+    "failed": 0,
+    "seconds": 2.36,
+    "typecheck": "passed",
+    "build": "passed; existing large Phaser chunk notice retained",
+    "initial_typecheck_failure": "New test needed optional chaining on its possibly missing first reference row; fixed without relaxing the data contract."
+  },
+  "browser": {
+    "engine": "Existing local Chrome via Playwright; no download",
+    "checker_sha256": "926b6a5e697aa3db56a380ebf1b7c423cc7bafe9ef93bcf01194f9a512715352",
+    "latest_receipt": "game-ui-v2/screenshots/pre-scale-observatory-reference-qa/verification.json",
+    "latest_receipt_sha256": "6747a4ceabbbbc173be06d121e5f74fdc442d0b7cce58ac9461a6046648510a1",
+    "recorded_receipt": "game-ui-v2/screenshots/pre-scale-observatory-reference-historical-qa/verification.json",
+    "recorded_receipt_sha256": "86807377282cc9eacf353d34f1aa88497d3330fe2f758e9b621cc043176dc4f5",
+    "actual_latest_date": "2026-11-09T04:37:11.718627+00:00",
+    "actual_latest_payload_sha256": "fd330c32951f8868f81ee108f21ac8eff8ec146f52ebbf113dab70bbcc2315b1",
+    "M_complete": 12,
+    "reference_complete_ids": ["open-seed", "legacy"],
+    "search_source_numeric_submissions": "2/2",
+    "search_source_staged_controls": "28/28",
+    "checks": ["All six actual reference identities/statuses/losses/unknowns match rendered cards", "Readiness has its own search-source scope", "Desktop and390px mobile without horizontal overflow or JavaScript errors", "Actual local GET repeated after30 seconds", "404 clears prior outcomes", "Tampered JSON rejected", "No write request or hidden recorded-file fallback", "Original historical1/12 snapshot still renders without invented reference data"]
+  },
+  "observer_upgrade": {
+    "old_source": "2ce33d6",
+    "old_pid": 39338,
+    "old_stop": "Owned command identity checked before intentional SIGINT; exit130, science writers untouched",
+    "old_terminal_utc": "2026-11-09T04:36:48.918821+00:00",
+    "old_terminal_content_sha256": "cd1bb808c2989375ff0abc43a2fc910546dbfe349ee65daf11a9ea88b043ade8",
+    "old_final_frame": "outputs/pre-scale-observatory-watch-v1-a1/final-frame-before-upgrade.json",
+    "old_final_frame_sha256": "16ae89fd372b09d8f9eb49ab7e97b664368442a942a4c47c37a8f1ecc932c86e",
+    "new_source": "d7e49ae5dc6f41cd81b9caaa37e830c4f0c67b89",
+    "new_pid": 52317,
+    "new_start_utc": "2026-11-09T04:37:11.658305+00:00",
+    "new_status": "outputs/pre-scale-observatory-watch-v1-a2/last-status.json",
+    "maximum_seconds": 86400,
+    "interval_seconds": 30,
+    "unchanged_polls_preserve_data_date_observed": true,
+    "scientific_source_or_stage_restarted": false
+  },
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "pre_scale_goal_complete": false,
+  "public_push": false
+}

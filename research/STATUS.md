@@ -41,11 +41,14 @@ immutable source, raw destinations, observations and remaining tasks.
   Readiness closes04:11:03UTC; reference/development search starts04:11:04UTC.
   The declared16 proposal slots plus six references, fixed selection and up to36
   unused-seed evaluations are not yet closed; no new optimizer result is claimed.
+  At the04:37UTC recorded observation, open-seed and legacy references are
+  complete (2/6), and reviewed-accept-all has started. Reference worlds precede
+  the16 proposal slots; a started record alone is not liveness evidence.
 - The broader source-bound Python verification at cleana377486 passes374/374
   checks in215.56s. The earlier085f87b result335/336 remains a failed source,
   with its original JUnit retained. [Verification receipt](results/pre-scale-completion-software-verification-v1.json)
   separates software QA from pending live-model evidence.
-- The actual-record English observatory passes325 frontend checks and browser
+- The actual-record English observatory passes332 frontend checks and browser
   desktop/mobile/404/tamper verification. The separate41-page pre-scale manuscript
   includes all12 M rows, actual figure, selector replay and costs, while leaving
   T/E search/evaluation unfinished. [Current PDF/build/visual verification](../paper/integrated-pre-scale-build-v2.json)
@@ -91,15 +94,20 @@ The old completed V2 experiment and planning-only observations below retain
 their original scope. Statements that no writer is active apply to that old
 package, not the new D/M study. No active experiment source is changed.
 
-The [periodic read-only observation](results/pre-scale-observatory-periodic-verification-v1.json)
-now runs at frozen2ce33d6 as PID39338, separate from both scientific writers.
+The [initial periodic read-only observation](results/pre-scale-observatory-periodic-verification-v1.json)
+at frozen2ce33d6/PID39338 is deliberately stopped04:36:48UTC (exit130) to
+upgrade only the display helper. Its final frame and terminal record remain
+in the original observer directory. The [new observer](results/pre-scale-observatory-reference-verification-v1.json)
+runs at frozend7e49ae/PID52317 from04:37:11UTC, separate from scientific writers.
 It projects actual M/O/E journals every30 seconds, but changes the data date
 only when recorded facts change. The explicit local mode is
 `http://127.0.0.1:4181/pre-scale.html?source=latest`; recorded mode is separate.
-It has published the M closure and subsequent O/E stage changes. Actual Chrome
-verifies its produced JSON→rendered date, PC/mobile, auto GET,404/tamper and
-no hidden fallback/write requests. All325 UI tests and14 clean helper tests
-pass. This does not resolve the separate4259854 broad Docker timeout/recheck.
+Its new projection includes all six reference states and the search source's
+own2/2 numerical and28/28 staged control receipts. Actual Chrome verifies
+produced JSON→rendered date/reference scores, PC/mobile, auto GET,404/tamper,
+no hidden fallback/write requests and old-snapshot compatibility. All332 UI
+tests and28 clean helper tests pass. This does not resolve the separate4259854
+broad Docker timeout/recheck or complete scientific search/evaluation.
 
 ## Previous planning and completed V2 package
 

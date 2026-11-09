@@ -471,3 +471,42 @@ records final PDF87a579c8 and scopes the older failures/results separately.
 The25-document repository checker resolves362 local links with no error,
 network call, model call or scientific world. This does not replace the still
 pending quiet-window broad Docker check or complete the pre-scale goal.
+
+## Actual reference and readiness progress in the UI
+
+The previous projection exposed search-stage start but omitted the six fresh
+reference forwards. Actual Chrome confirms12 M rows and no reference panel.
+The new read-only exporter rejoins each reference intent to its declared
+system/seed and preserves not-dispatched, started, complete and failed states.
+Only real terminal cross-scores become numbers. New-source numerical/staged
+certificates retain their own model/runtime/source binding and declared2/28
+control counts; the earlier M readiness remains separate. These views are
+neither a scientific audit nor evidence of free-design competence.
+
+An initial test command names a nonexistent watcher module and runs no tests.
+Nine new negative fixtures then fail because they try to overwrite immutable
+journals; changed synthetic fixtures now exist before their first save, without
+weakening production immutability. An initial strict typecheck catches optional
+access to the first reference in a test; optional chaining is corrected.
+At cleand7e49ae,28 helper tests pass in0.75s and all332 UI checks in2.36s.
+Typecheck/build pass, with the retained Phaser chunk-size notice. No native
+experiment source, prompt, loss, budget, observation or stage is changed.
+
+The owned old observer command is checked before intentional SIGINT to39338.
+Its execution handle returns130 and dated watch-stopped/KeyboardInterrupt at
+04:36:48UTC. Its final data frame is recoverably moved to the old observer's
+raw output directory. New immutable helperd7e49ae starts04:37:11UTC as52317,
+same read-only30-second/24-hour allowance, with fresh status output. Only the
+display helper changes; no scientist/designer stage is restarted or duplicated.
+
+Actual latest-mode Chrome consumes the new observer's frame: M12/12,
+open-seed/legacy complete, reviewed-accept-all started, three other references
+not dispatched, numeric2/2 and staged28/28. All six IDs/statuses and displayed
+T/E/C or unknowns match that actual response. PC/mobile show no overflow or
+JavaScript error; real automatic GET,404 clearing, checksum tamper refusal and
+zero writes/fallback pass. Recorded mode separately remains the original1/12
+snapshot, without fabricated reference data. Screenshots and hashes are bound
+by the [verification receipt](../results/pre-scale-observatory-reference-verification-v1.json).
+The serialized scientific chain remains live by its execution handle, still
+in its declared reference/search stage. The broader quiet-window QA remains
+pending while actual scientific worlds continue.

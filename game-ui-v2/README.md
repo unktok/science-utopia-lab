@@ -7,8 +7,8 @@ browser.
 
 ## Current status
 
-The read-only `/pre-scale.html` observatory displays the new D/M journal snapshot
-and prospective T/E search/evaluation stages. It distinguishes a consumed start
+The read-only `/pre-scale.html` observatory displays actual D/M journals and
+the separate T/E reference/search/evaluation stages. It distinguishes a consumed start
 without an observation from a live process, preserves unknown losses as dashes,
 and verifies the Python/browser content checksum. It starts no experiment.
 Export a fresh timestamped observation without inference:
@@ -411,6 +411,14 @@ polls, and neither a dated projection nor a stage-start record proves that a
 scientific process is live. Completed, stopped and started-without-terminal
 stage records are displayed separately. Readiness receipts retain their own
 source, distinct from the search source and its required fresh readiness.
+
+New projections show all six fresh reference worlds before the16 proposal slots,
+with their declared system/seed binding, actual terminal losses and explicit
+unknowns. Search-source numerical and staged controls are shown separately
+from the earlier information-study numerical receipts. Older projections
+without those fields remain historical snapshots; the browser does not invent
+missing reference results. [Actual source-bound verification](../research/results/pre-scale-observatory-reference-verification-v1.json)
+covers both modes and the finite observer upgrade, without restarting science.
 
 From a clean pinned helper checkout, with explicit actual run paths:
 

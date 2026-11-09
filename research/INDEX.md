@@ -25,8 +25,11 @@ Historical documents retain their paths and source identities.
   Existing studies remain separate; the closed12-world information comparison
   and new numerical readiness are not superiority claims. The earlier37-page
   artifact is preserved. [Current PDF and42-check/rebuild verification](../paper/integrated-pre-scale-build-v2.json).
-  [Source-bound software/build/visual verification](results/pre-scale-completion-software-verification-v1.json)
+  [Historical39-page software/build/visual verification](results/pre-scale-completion-software-verification-v1.json)
   records374 Python checks,320 frontend checks and actual browser verification.
+  [Current reference/readiness display](results/pre-scale-observatory-reference-verification-v1.json)
+  joins the six reference forwards to actual journal states;332 UI and28 helper
+  checks, real latest/historical Chrome verification, no scientific restart.
 - [Final submission judgment and requirement audit](publication/submission-decision-v2.md):
   finite experiment/analysis/paper package complete; immediate main-conference submission
   not recommended. The broader top-conference aspiration is not claimed achieved.
