@@ -18,8 +18,13 @@ def fixture(root):
         for _ in range(2):c.advance(simulation_factory=forbidden,
             generators={p['assignments'][arm]['strategy']:lambda request:None},count=1)
     s=selection_payload(root,p,frozen_utc='SCRIPTED',campaign_loader=campaign);jobs=evaluation_jobs(p,s)
-    worlds=[{'identity':j['identity'],'role':'selection-fixed-evaluation','seed':j['seed'],
-        'status':'complete','scores':{'throughput':0,'efficiency':0,'selective':0},'physical_proof':{}} for j in jobs]
+    proof={'status':'complete','measurement':{'metrics':{name:{'status':'measured','value':0}
+        for name in ('native.accepted_decisions','native.accepted_peer_score_sum','native.review_records')}}}
+    worlds=[{'identity':'reference-'+name,'role':'developer-reference','seed':41001,
+        'system':system,'status':'complete','scores':{'throughput':0,'efficiency':0,'selective':0},'physical_proof':deepcopy(proof)}
+        for name,system in p['reference_systems'].items()]
+    worlds.extend({'identity':j['identity'],'role':'selection-fixed-evaluation','seed':j['seed'],
+        'system':j['system'],'status':'complete','scores':{'throughput':0,'efficiency':0,'selective':0},'physical_proof':deepcopy(proof)} for j in jobs)
     a={'schema':'scienceutopia.pre-scale-search-audit.v1','source_commit':'a'*40,'plan_sha256':p['content_sha256'],
         'selection':s,'worlds':worlds,'logical_evaluation':actual_policy_order(p,s,jobs)}
     a['content_sha256']=digest(a);return a
@@ -44,6 +49,7 @@ def test_all_null_slots_and_shared_evaluation_stay_visible_without_invented_impr
 def test_unavailable_initial_efficiency_is_not_imputed_or_compared_as_zero(tmp_path):
     a=fixture(tmp_path)
     next(r for r in a['selection']['all_rows'] if r['row_id']=='reference:open-seed')['cross_scores']['efficiency']=None
+    next(r for r in a['worlds'] if r['identity']=='reference-open-seed')['scores']['efficiency']=None
     for arm,v in a['selection']['selected'].items():
         if arm.startswith('efficiency:'):v['loss']=None
     r=summarize(rehash(a))
@@ -60,3 +66,13 @@ def test_inconsistent_results_cannot_be_projected(problem,tmp_path):
     if problem=='fabricated-loss':
         next(r for r in a['selection']['all_rows'] if r['arm'] is not None)['cross_scores']['throughput']=-5
     with pytest.raises(ValueError):summarize(rehash(a))
+
+
+@pytest.mark.parametrize('part',['reference-order','system','seed','scores'])
+def test_development_rows_cannot_be_joined_to_wrong_or_reordered_physical_worlds(tmp_path,part):
+    a=fixture(tmp_path)
+    if part=='reference-order':a['worlds'][0],a['worlds'][1]=a['worlds'][1],a['worlds'][0]
+    if part=='system':a['worlds'][0]['system']={'SCRIPTED':'wrong system'}
+    if part=='seed':a['worlds'][0]['seed']=42
+    if part=='scores':a['worlds'][0]['scores']['throughput']=-10
+    with pytest.raises(ValueError,match='original physical world'):summarize(rehash(a))

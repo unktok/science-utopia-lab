@@ -19,6 +19,26 @@ OBJECTIVES=('throughput','efficiency')
 METHODS=('parameters','code-fixed-graph','code-and-graph','random')
 
 
+def development_bindings(rows,worlds):
+    """Join exact original audit arrival order, never match repeated specs by guess."""
+    forwards=iter(w for w in worlds if w['role']!='selection-fixed-evaluation');result={}
+    for row in rows:
+        if row['status']=='generation-failure':
+            if row['system'] is not None or row['forward_complete']:raise ValueError('unsubmitted slot has a forward/system')
+            result[row['row_id']]=None;continue
+        world=next(forwards,None)
+        role='developer-reference' if row['arm'] is None else 'search:'+row['arm']
+        if (world is None or world['role']!=role or world['seed']!=41001
+                or world['status']!=row['status'] or world['system']!=row['system']
+                or world['scores']!=row['cross_scores']):
+            raise ValueError('development row differs from ordered original physical world')
+        if row['arm'] is None and world['identity']!='reference-'+row['row_id'].removeprefix('reference:'):
+            raise ValueError('reference identity differs from ordered original physical world')
+        result[row['row_id']]=world['identity']
+    if next(forwards,None) is not None:raise ValueError('unaccounted development physical world')
+    return result
+
+
 def summarize(audit):
     checked(audit)
     if audit['schema']!='scienceutopia.pre-scale-search-audit.v1':
@@ -29,6 +49,7 @@ def summarize(audit):
         raise ValueError('all six reference and sixteen candidate rows required')
     expected={o+':'+m for o in OBJECTIVES for m in METHODS}
     if set(selection['selected'])!=expected:raise ValueError('every objective/method selection required')
+    physical_bindings=development_bindings(rows,audit['worlds'])
     paths={};slots=[]
     for arm in sorted(expected):
         objective,method=arm.split(':',1)
@@ -83,11 +104,20 @@ def summarize(audit):
     result={'schema':'scienceutopia.pre-scale-search-report.v1','audit_sha256':audit['content_sha256'],
         'source_commit':audit['source_commit'],'plan_sha256':audit['plan_sha256'],
         'search_slots':slots,'status_counts':dict(Counter(r['status'] for r in slots)),
+        'development_world_bindings':physical_bindings,
+        'systems_by_sha256':{digest(system):deepcopy(system) for system in
+            [row['system'] for row in rows if row['system'] is not None]+[w['system'] for w in audit['worlds']]},
+        'authoring':deepcopy(audit.get('authoring')),
+        'selection_pooled':deepcopy(selection['pooled']),'selection_frozen_utc':selection['frozen_utc'],
         'optimization_paths':paths,'references':[r for r in rows if r['arm'] is None],
         'evaluation_rows':evaluation,'evaluation_summary':summaries,'paired_reference_differences':paired,
         'physical_evaluation_worlds':len({r['physical_job'] for r in evaluation}),
         'logical_evaluation_rows':len(evaluation),'worlds':[
             {'identity':r['identity'],'role':r['role'],'seed':r['seed'],'status':r['status'],'scores':r['scores'],
+             'system_sha256':digest(r['system']),
+             'physical_forward_status':r['physical_proof'].get('status'),
+             'measurement':deepcopy(r['physical_proof'].get('measurement')),
+             'checkpoint_sha256':r['physical_proof'].get('checkpoint_sha256'),
              'scientist_call_component_seconds':sum(v['interval_llm_elapsed_seconds'] for v in
                 r['physical_proof'].get('annual_checkpoints',[])) if r['physical_proof'].get('annual_checkpoints') else None}
             for r in audit['worlds']],
@@ -111,22 +141,67 @@ def render(report,output):
             'svg.hashsalt':'pre-scale-search-v1'}):
         fig,axes=plt.subplots(1,2,figsize=(6.7,2.9))
         for ax,objective,title in zip(axes,OBJECTIVES,('T: throughput objective','E: efficiency objective')):
+            any_available=False
             for method,color in zip(METHODS,colors):
                 path=report['optimization_paths'][objective+':'+method]
-                ax.plot([0,1,2],[path['initial_comparison_loss']]+[
-                    r['best_including_initial_for_final_comparison'] for r in path['candidate_slots']],
+                values=[path['initial_comparison_loss']]+[
+                    r['best_including_initial_for_final_comparison'] for r in path['candidate_slots']]
+                any_available=any_available or any(v is not None for v in values)
+                ax.plot([0,1,2],values,
                     color=color,marker='o',ms=3,label=method)
                 for i,r in enumerate(path['candidate_slots'],1):
                     if r['own_loss'] is None and r['best_including_initial_for_final_comparison'] is not None:ax.annotate('×',(i,r['best_including_initial_for_final_comparison']),
                         xytext=(0,6),textcoords='offset points',ha='center',color=color)
             ax.set(title=title,xlabel='Consumed candidate slots',ylabel='Best own loss incl. initial',xticks=[0,1,2])
+            if not any_available:
+                ax.set_yticks([]);ax.text(.5,.55,'No available losses',transform=ax.transAxes,ha='center')
         handles,labels=axes[0].get_legend_handles_labels()
+        if report.get('figure_scope'):fig.suptitle(report['figure_scope'],fontsize=9)
         fig.legend(handles,labels,loc='lower center',ncol=2,frameon=False,fontsize=8)
         fig.subplots_adjust(left=.09,right=.99,top=.86,bottom=.32,wspace=.3)
         for ext in ('png','svg'):
             fig.savefig(output/('objective-conditioned-paths.'+ext),dpi=240,
                 metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)
+        render_evaluation(report,output)
+
+
+def render_evaluation(report,output):
+    """Common-score views keep shared labels, unknowns and physical counts explicit."""
+    import matplotlib.pyplot as plt
+    labels=list(report['evaluation_summary']);seeds=(51001,51011,51017)
+    colors=('#198d91','#bc8037','#7861a5');lookup={(r['label'],r['seed']):r for r in report['evaluation_rows']}
+    fig,axes=plt.subplots(1,3,figsize=(8.0,max(3.6,.27*len(labels)+1.25)),sharey=True)
+    for ax,key,title in zip(axes,('throughput','efficiency','selective'),('T: −A','E: −Q + 0.5R','C: 4A − Q + 0.1R')):
+        known=[r['scores'][key] for r in report['evaluation_rows'] if r['scores'][key] is not None]
+        low,high=(min(known),max(known)) if known else (-1.,1.)
+        span=max(high-low,1.);ax.set_xlim(low-.12*span,high+.45*span)
+        for i,label in enumerate(labels):
+            available=0
+            for j,(seed,color) in enumerate(zip(seeds,colors)):
+                value=lookup[label,seed]['scores'][key]
+                if value is not None:
+                    ax.scatter([value],[i+(j-1)*.16],color=color,s=15,label=str(seed) if i==0 else None);available+=1
+            ax.text(.98,i,f'{available}/3',transform=ax.get_yaxis_transform(),ha='right',va='center',fontsize=7,color='#666666')
+        if not known:ax.set_xticks([])
+        ax.set(title=title,xlabel='Lower proxy loss is better',yticks=range(len(labels)),ylim=(len(labels)-.4,-.6))
+        ax.grid(axis='y',color='#eeeeee',lw=.5);ax.set_axisbelow(True)
+    def label_text(value):
+        return value.replace('reference:','Ref · ').replace('selected:throughput:','T · ').replace('selected:efficiency:','E · ')
+    axes[0].set_yticklabels([label_text(v) for v in labels],fontsize=7.5)
+    # An empty first row must not remove declared seed colors from the legend.
+    from matplotlib.lines import Line2D
+    handles=[Line2D([],[],color=c,marker='o',ls='',ms=4,label=str(seed)) for seed,c in zip(seeds,colors)]
+    fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.055),ncol=3,frameon=False,fontsize=8)
+    fig.text(.5,.025,'Right-edge counts: available / 3. Missing values are not plotted; labels can share worlds.',
+        ha='center',fontsize=7.5,color='#666666')
+    prefix=report.get('figure_scope','')
+    fig.suptitle((prefix+' · ' if prefix else '')+f'Fixed selection · {report["logical_evaluation_rows"]} label/seed rows share {report["physical_evaluation_worlds"]} physical worlds',fontsize=9)
+    fig.subplots_adjust(left=.25,right=.99,bottom=.2,top=.85,wspace=.25)
+    for ext in ('png','svg'):
+        fig.savefig(output/('selection-fixed-common-scores.'+ext),dpi=240,
+            metadata={'Date':None} if ext=='svg' else None)
+    plt.close(fig)
 
 
 def main():
