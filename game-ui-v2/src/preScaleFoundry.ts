@@ -24,7 +24,7 @@ export async function parsePreScaleFoundry(value: unknown, arm: string): Promise
   if (lab.source.world.source_commit !== PRE_SCALE_SOURCE || lab.source.world.years !== 4
     || lab.source.world.model !== "qwen3:8b" || boundary.scope !== PRE_SCALE_FOUNDRY_SCOPE
     || boundary.plan_sha256 !== PRE_SCALE_PLAN || boundary.pre_scale_arm !== arm
-    || boundary.development_only !== true || boundary.selection_is_not_recomputed_by_viewer !== true
+    || boundary.development_only !== true || boundary.selection_is_not_recomputed_by_viewer !== true || lab.relaxation !== null
     || typeof boundary.original_audit_content_sha256 !== "string"
     || !/^[0-9a-f]{64}$/.test(boundary.original_audit_content_sha256)
     || lab.systems.some(row => typeof row.evidence_label !== "string" || !row.evidence_label.trim())) {

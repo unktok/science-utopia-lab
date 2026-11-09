@@ -15,6 +15,7 @@ let evidence,inputHash=null;
 if(synthetic){
   evidence=JSON.parse(await readFile(new URL('../public/data/native-design-lab-v1.json',import.meta.url),'utf8'));
   const data=JSON.parse(evidence.payload_json);
+  data.relaxation=null;
   Object.assign(data.source.world,{source_commit:'62388a74d071a3a4fdc8cc309c2807422f96223f',years:4,model:'qwen3:8b'});
   Object.assign(data.interpretation,{pre_scale_arm:arm,
     plan_sha256:'db2df5c5e54a68c8201b6b8c460cffa66770ee37da4f7b0d1089c7f5fc7702cb',

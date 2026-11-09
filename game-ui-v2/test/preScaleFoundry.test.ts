@@ -14,6 +14,7 @@ const seal = (data: any) => {
 };
 function synthetic(edit: (data: any) => void = () => {}): any {
   const data = JSON.parse(oldEnvelope().payload_json);
+  data.relaxation = null;
   data.source.world = { ...data.source.world, source_commit: PRE_SCALE_SOURCE, years: 4, model: "qwen3:8b" };
   Object.assign(data.interpretation, { pre_scale_arm: "efficiency:parameters", plan_sha256: PRE_SCALE_PLAN,
     scope: PRE_SCALE_FOUNDRY_SCOPE, development_only: true, selection_is_not_recomputed_by_viewer: true,
@@ -53,7 +54,7 @@ describe("pre-scale closed-record Foundry channel", () => {
     await expect(parsePreScaleFoundry(oldEnvelope(), "efficiency:parameters")).rejects.toThrow();
   });
   it.each(["source", "plan", "arm", "horizon", "model", "audit", "scope", "selection", "label",
-    "seed", "year", "short-complete"])("rejects correctly rehashed %s mismatch", async kind => {
+    "seed", "year", "short-complete", "unperformed-fit"])("rejects correctly rehashed %s mismatch", async kind => {
     const value = synthetic(data => {
       if (kind === "source") data.source.world.source_commit = "0".repeat(40);
       if (kind === "plan") data.interpretation.plan_sha256 = "0".repeat(64);
@@ -67,6 +68,7 @@ describe("pre-scale closed-record Foundry channel", () => {
       if (kind === "seed") data.systems[0].runs[0].seed = 51001;
       if (kind === "year") data.systems[0].runs[0].frames[0].year = 2;
       if (kind === "short-complete") data.systems[0].runs[0].frames.pop();
+      if (kind === "unperformed-fit") data.relaxation = { history: [], scope: "SYNTHETIC unperformed fit" };
     });
     await expect(parsePreScaleFoundry(value, "efficiency:parameters")).rejects.toThrow();
   });
