@@ -105,4 +105,6 @@ joins26 immutable input files: frozen selection, eight terminal campaign
 states and sixteen physical SystemSpecs. All16 submitted candidates preserve
 the common initial's literal connections and schedules; eight change source.
 Those checks preserve runtime failures and actual request-parent differences,
-but do not replace the pending full physical audit or unused-seed evaluation.
+but did not replace the then-pending full physical audit or unused-seed
+evaluation. Those later close independently in the actual full-study receipt
+linked above; the earlier diagnostic is not retroactively relabelled.
