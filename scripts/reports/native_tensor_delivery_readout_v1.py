@@ -36,6 +36,17 @@ def closed_record(root,objective,generation):
     return record
 
 
+def probe_owners(step):
+    """Use explicit probe pointers; identical source is not node attribution."""
+    result={}
+    tests=step.get('transition',{}).get('result',{}).get('component_feedback',{}).get('tests',[])
+    for test in tests:
+        for value in test['results']:
+            match=re.fullmatch('/component_probe_records/([0-9]+)',value['exact_step_probe_pointer'])
+            if match:result.setdefault(int(match[1]),set()).add(test['node_id'])
+    return {key:sorted(value) for key,value in result.items()}
+
+
 def export(args):
     root=args.run.resolve();out=args.output.resolve();frozen=args.frozen_source.resolve();reader=git_binding(ROOT)
     if out.exists() or out.is_relative_to(root) or out.is_relative_to(frozen):raise ValueError('fresh external diagnostic output required')
@@ -61,14 +72,16 @@ def export(args):
     if len(artifacts)!=1:raise ValueError('unique literal final producer artifact required')
     artifact_sha=sha(artifacts[0]);inner=generation/'authoring'/('generation-'+record['request_sha256']);rows=[]
     for path in sorted(inner.glob('step-*.completed.json')):
-        step=checked(json.loads(path.read_text()))
+        step=checked(json.loads(path.read_text()));owners=probe_owners(step)
         for index,probe in enumerate(step.get('component_probe_records',[])):
             received=probe['terminal'];same=sha(probe['intent']['artifact'])==artifact_sha
+            attributed=owners.get(index,[])==[args.producer]
             row={'step':step['step'],'probe_in_step':index,'fixture_id':probe['intent']['fixture_id'],
                 'actual_probe_status':received['status'],'probe_artifact_sha256':sha(probe['intent']['artifact']),
+                'explicit_probe_producer_ids':owners.get(index,[]),'unambiguous_producer_match':attributed,
                 'final_producer_artifact_match':same,'diagnostic':None}
-            if same and received['status']=='returned':row['diagnostic']=diagnose(system,args.producer,received['result'])
-            else:row['not_assessed_reason']='different-producer-artifact-or-nonreturned-probe'
+            if same and attributed and received['status']=='returned':row['diagnostic']=diagnose(system,args.producer,received['result'])
+            else:row['not_assessed_reason']='different-artifact-nonreturned-or-not-uniquely-attributed-probe'
             rows.append(row)
     result={'schema':SCHEMA,'scientific_source_commit':scientific,'analysis_source_commit':reader,
         'plan_sha256':plan['content_sha256'],'objective':args.objective,'generation':args.generation,
