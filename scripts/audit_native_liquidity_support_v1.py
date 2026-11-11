@@ -83,6 +83,7 @@ def worker(root,output):
         result={'schema':'scienceutopia.native-liquidity-support-audit.v1','source_commit':p['source_commit'],
             'plan_sha256':p['content_sha256'],'source_proof':source,'closure':{'started':start,'terminal':end},
             'worlds':worlds,'raw_inventory_sha256':digest(before),'raw_files':len(before),
+            'analysis_adapter_sha256':file_sha256(Path(__file__)),
             'new_model_calls':0,'new_code_executions':0,'policy_selection':False,'publication_ready':False}
         result['content_sha256']=digest(result);write_json_atomic(output,result,sort_keys=True,allow_nan=False)
         print(json.dumps({'audit':str(output),'worlds':4,'content_sha256':result['content_sha256']}))
