@@ -263,3 +263,9 @@ replay SHAは`c51a59cfb2ccb4246865fc9078d15b3a4e8bf828a6c3fb92bb631bc1c2c5cf7c`�
 追加container／LLMは0。自動code修復、全native failure再現、発明やloss改善の結果ではない。
 この結果からモデルtool側は「単一empty fixtureを通れば安全」ではなく、事前に固定した
 empty／nonempty・複数年のsuiteを選べるようにする。新institutionをgolden出力へ同一化しない。
+
+固定候補30worldが終わった後の有限read-only chainを追加。writer59964の正常終了とPID不在を
+最大24時間待ち、元f1f8ddf sourceのcold audit二回、実費用projection二回を比較する。
+科学writerの再起動／再試行／推論／欠けたterminalの生成は持たず、stoppedならchainも停止。
+図・原稿・科学的解釈とpublication-ready判定は、その後の根拠に一致する作業として残す。
+新旧chainの12 scripted checksが0.04秒でpass。次に別のimmutable analysis checkoutで待機させる。
