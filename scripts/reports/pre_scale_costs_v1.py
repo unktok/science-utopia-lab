@@ -23,7 +23,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-fixed-candidate-evaluation-audit.v1',
         'scienceutopia.native-code-tested-loop-audit.v1',
         'scienceutopia.native-liquidity-support-audit.v1',
-        'scienceutopia.native-objective-instrument-loop-audit.v1')
+        'scienceutopia.native-objective-instrument-loop-audit.v1',
+        'scienceutopia.native-objective-fixed-evaluation-audit.v1')
 
 
 def classify_numeric(relative):
@@ -156,7 +157,7 @@ def analyze(root,plan,audit):
     if before!=_inventory(root):raise ValueError('raw evidence changed during cost projection')
     if stopped:
         result['scientific_termination']='stopped; no held-out evaluation or successful scientific closure'
-    if audit['schema']==AUDITS[7]:
+    if audit['schema'] in AUDITS[7:9]:
         critic=audit['observer']
         result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
             'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],
