@@ -43,6 +43,68 @@ SOURCE = '''def step(context):
     return {'outputs':{'dossiers':outputs}, 'state':{'last_year':year, 'records_seen':len(papers)}}
 '''
 
+# A simple same-authority comparator, not an invented institution. The literal
+# message is independent of the observation except for actual recipient IDs.
+# Moving its receiver therefore does not also move its observation/producer.
+INSTRUCTION_PROTOCOL = 'native-developer-static-instruction-v1'
+INSTRUCTION_SOURCE = '''def step(context):
+    outputs = []
+    if context['period'] == context['parameters']['first_period']:
+        world = context['inputs']['world'][0]['payload']
+        for actor in world['ecosystem']['agents']:
+            if actor['can_author']:
+                outputs.append({'actor_ids':[actor['id']], 'payload':{
+                    'schema':'native-developer-static-instruction-v1',
+                    'instruction':context['parameters']['instruction']}})
+    return {'outputs':{'messages':outputs}, 'state':{'last_period':context['period']}}
+'''
+
+
+def instruction_control(anchor, image_id, *, instruction, delivery_phase,
+                        connected=True, first_period=1):
+    """Add one literal message to original authors, with explicit delivery time.
+
+    All variants retain the same producer, initial observation and code. Only
+    the receiver schedule or delivery edge changes. No project/resource/paper
+    effect is granted, and no interpretation of the instruction is implemented
+    by the host. Off/on or early/late outcomes require fresh native evaluation;
+    this builder does not measure them or claim a pure mediation estimand.
+    """
+    if (not isinstance(instruction, str) or not instruction.strip()
+            or len(instruction.encode('utf-8')) > 8192):
+        raise ValueError('explicit nonblank instruction of at most8192 UTF-8 bytes required')
+    if type(connected) is not bool or type(first_period) is not int or first_period < 1:
+        raise ValueError('explicit connection and positive first period required')
+    validate_system_spec(anchor).require_valid()
+    phases = {s.mechanism_id:s.phase for s in anchor.schedules}
+    producer_phase = phases['world.open'] + 1
+    if type(delivery_phase) is not int or not producer_phase < delivery_phase < phases['world.close']:
+        raise ValueError('delivery must follow the opening producer and precede native close')
+    producer, receiver = 'developer-instruction-office', 'developer-instruction-receiver'
+    if (any(n.mechanism_id in (producer, receiver) for n in anchor.mechanisms)
+            or any(t.artifact_type_id == INSTRUCTION_PROTOCOL for t in anchor.artifact_types)):
+        raise ValueError('fresh instruction control identities required')
+    node = MechanismSpec(producer, MechanismFamily.CUSTOM, 'code.python.v1',
+        inputs=(PortSpec('world', ChannelKind.ARTIFACT, WORLD_ARTIFACT),),
+        outputs=(PortSpec('messages', ChannelKind.ARTIFACT, INSTRUCTION_PROTOCOL, required=False),),
+        parameters={'runtime_image_id':image_id, 'instruction':instruction, 'first_period':first_period,
+            'code_artifact':{'schema':CODE_SCHEMA,
+                'label':'Developer static instruction comparator, not discovered institution',
+                'source':INSTRUCTION_SOURCE, 'inputs':{'world':{'type':'object'}},
+                'outputs':{'messages':{'type':'object'}}, 'state_schema':{'type':'object'}}})
+    result = replace(anchor,
+        artifact_types=(*anchor.artifact_types, ArtifactTypeSpec(INSTRUCTION_PROTOCOL)),
+        mechanisms=(*anchor.mechanisms, node),
+        schedules=(*anchor.schedules, ScheduleSpec(producer, producer_phase)),
+        connections=(*anchor.connections, ConnectionSpec('world.open','world',producer,'world',ChannelKind.ARTIFACT)))
+    result = add_context_receiver(result, source=producer, source_port='messages',
+        receiver=receiver, phase=delivery_phase)
+    if not connected:
+        result = replace(result, connections=tuple(e for e in result.connections
+            if e.target_mechanism != receiver))
+    validate_system_spec(result).require_valid()
+    return result
+
 
 def information_system(image_id, *, condition='M1', seed=42):
     if condition not in ('M0', 'M1', 'M2', 'M3'):
