@@ -1,5 +1,30 @@
 # Current research status
 
+## November11 research stage
+
+The [new research plan](publication/institution-causal-design-plan.md) separates
+actual information/action opportunities from graph syntax and proposal difficulty.
+[First implementation and native connection checks](results/institution-causal-design-v1.md)
+pass173/173 at clean446cd29. The new explicit routing scope allows the existing
+typed review-work mechanism without redefining the old fixed-production-v1.
+Opt-in operational-order context travels through real campaign requests,
+bounded editor reads, finish and cold replay.
+
+Three hand-authored native controls at two host clocks verify actual review
+tasks4/8/8 in year1, equal pre-review input/batch within each clock, and later
+submission counts8/8/4. Original Simulation/Docker run with scripted researcher
+HTTP/corpus. This is not a live-Qwen invention result or a new optimizer ranking.
+The first169pass/1fail check is preserved; its only batch differences were raw
+submission times, controlled within each pair and tested again at another clock.
+
+Next: freeze the two request histories and exact new source, fresh real-backend
+readiness, then at most8 actual authoring sessions comparing operational-order
+context on/off. No new live-model study is currently running. The previous
+44-page PDF and completed experiments below remain unchanged. New top-conference
+research claims have not yet been established.
+
+## Completed November9 pre-scale package
+
 Updated2026-11-09JST, after11:35UTC closure. M12/12, O16/16 and E27/27
 are closed. Both full O/E audits match complete bytes. No scientific inference
 writer remains. Final44-page paper/build and nine-row requirement audit pass;

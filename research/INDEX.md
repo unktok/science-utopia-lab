@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Causal institution design research plan](publication/institution-causal-design-plan.md):
+  distinguish fixed-family limits, information/action access and representation/search.
+  [First implementation and native connection evidence](results/institution-causal-design-v1.md)
+  adds an explicit review-routing domain and opt-in phase-order authoring context.
+  173 clean-source checks pass; real-LLM comparison and new closed-loop study
+  are not yet started. This is the next research stage, not another claim of9/9 completion.
+  [November11 log](logbook/2026-11-11-institution-causal-design.md).
+
 - [Active pre-scale completion](pre-scale-completion.md) and
   [2026-11-09 execution log](logbook/2026-11-09-pre-scale-completion.md): actual
   M closes12/12 with matching full audits and [complete descriptive results](results/pre-scale-information-v1.md),

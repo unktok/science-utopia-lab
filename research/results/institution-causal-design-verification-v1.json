@@ -1,0 +1,70 @@
+{
+  "schema": "scienceutopia.institution-causal-design-verification.v1",
+  "verified_source": "446cd298d767a5122bf6b10b98f0b367f2a21fdc",
+  "source_clean_unchanged_during_checks": true,
+  "checks": {
+    "modules": 9,
+    "passed": 173,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 55.52,
+    "exit_code": 0,
+    "junit_path": "outputs/institution-causal-design-v1/clean-integration-v3.xml",
+    "junit_sha256": "bde49fba2125b05f0772488fd58a0b41f890347bbf5ec47e2019f20d2cfb257b",
+    "environment": "Approved project uv CPython, PYTHONHASHSEED42, CUDA_VISIBLE_DEVICES empty, offline HF/transformers flags; actual Docker/loopback permitted. Scripted HTTP/corpus, no local LLM calls."
+  },
+  "preserved_failed_check": {
+    "source": "28d5991c76c3a20b0b20c4bf03c92c827264924c",
+    "passed": 169,
+    "failed": 1,
+    "seconds": 49.38,
+    "junit_path": "outputs/institution-causal-design-v1/clean-integration.xml",
+    "junit_sha256": "f024d2a977eb5de43c8a9c73c0927d4b0d3942ae7aa98aee8d4bc41dd2fb2200",
+    "retained_failed_worlds": "outputs/institution-causal-design-v1/failed-native-control-28d5991/",
+    "exact_difference": "First-year review batches differ only in actual submission_time fields; pre-review model payloads already match.",
+    "correction": "Fix the paired fixture clock within each contrast and repeat at a second clock; preserve raw fields. No scientific source repair, deleted timestamp, deadline extension or historical relabeling."
+  },
+  "intermediate_check": {
+    "source": "bf2d202cd9af796604adc6d88c690b6da51335b5",
+    "passed": 171,
+    "failed": 0,
+    "seconds": 54.92,
+    "junit_sha256": "7081ae3930801d6797a0784d01f2e8dc7c44b6a83ac11bdd4e2add7808f7753b"
+  },
+  "native_controls": {
+    "researchers_per_fixture": 4,
+    "years_per_fixture": 2,
+    "conditions": 3,
+    "host_clocks": [1234567890.0, 1234654290.0],
+    "independent_scientific_replicates_claimed": false,
+    "pre_review_requests_and_actual_batches_equal_within_clock": true,
+    "first_year_review_counts": [4, 8, 8],
+    "second_year_submission_counts": [8, 8, 4],
+    "two_year_A_Q_R": [[0, 0.0, 12], [0, 0.0, 24], [8, 32.0, 16]],
+    "all_real_native_task_identity_receipts_rechecked": true,
+    "raw_receipts": [
+      {"path": "outputs/institution-causal-design-v1/verified-native-controls/clock-0.json", "file_sha256": "d6d998013db8066d1a4cd13e67de9c2127cceb11a51c6a86f6d37933f37fef98", "content_sha256": "f5bcacd9eefa0b70f71aae2748948fc3914f1ccfefab0eb2e3af8717847d4c40"},
+      {"path": "outputs/institution-causal-design-v1/verified-native-controls/clock-1.json", "file_sha256": "21452050e82f687b5737b81fa79c5ea15c57118f510fe0e691652708253ca591", "content_sha256": "d5c7dcc431dc61ff4a085933b89aab0b98ef362ce27a95e134005d1c288b303f"}
+    ]
+  },
+  "actual_operational_order_export": {
+    "source": "bf2d202cd9af796604adc6d88c690b6da51335b5",
+    "input": "research/data/native-causal-design-v1/initial-system.json",
+    "output": "research/data/native-causal-design-v1/operational-order.json",
+    "content_sha256": "8b4590a8fed3bcd50377fd4826707b776de6dd565e6bc4720b96084eae96b0e3",
+    "file_sha256": "637cb008b15e664c9b6e0704389e83c0cd8291ad2648374601a371b4691b9de2",
+    "two_independent_outputs_and_retained_input_rebuild_byte_identical": true,
+    "original_source_audit_repeated": false
+  },
+  "scope": {
+    "old_domain_and_scientific_records_redefined": false,
+    "old_v1_rejection_reproduced_new_explicit_v2_acceptance_tested": true,
+    "arbitrary_code_effect_or_complete_causal_dag_inferred": false,
+    "real_bounded_author_read_finish_and_cold_replay_tested": true,
+    "new_real_llm_assay_started": false,
+    "new_local_llm_calls": 0,
+    "automatic_invention_or_optimizer_superiority_claimed": false,
+    "whole_research_goal_or_conference_readiness_achieved": false,
+    "new_model_service_cost_or_external_push": false
+  }
+}
