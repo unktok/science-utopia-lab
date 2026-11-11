@@ -21,10 +21,11 @@ def inputs(tmp,monkeypatch):
         recorder.path=cell/'code-contexts.jsonl';recorder.attempts_path=cell/'code-contexts.jsonl.attempts.jsonl'
         recorder.binding={'source_commit':source,'system_fingerprint':'SCRIPTED-'+ref,'run_id':cell.name}
         mechanisms=[]
-        for i,node in enumerate(NODES):
+        for i,node in enumerate((*NODES,'SCRIPTED intrinsic native handler')):
             a={**artifact,'label':'SCRIPTED-'+node};c={**context,'period':i+1}
             recorder.execute(a,c)
-            mechanisms.append(SimpleNamespace(mechanism_id=node,parameters={'code_artifact':a}))
+            if node in NODES:
+                mechanisms.append(SimpleNamespace(mechanism_id=node,parameters={'code_artifact':a}))
         rows=[json.loads(line) for line in recorder.path.read_text().splitlines()]
         physical=[{'index':i,'bundle_sha256':r['bundle_sha256'],'year':r['context']['period'],
             'attribution':'unique-event-match','matching_event_ids':['SCRIPTED-'+str(i)]} for i,r in enumerate(rows)]

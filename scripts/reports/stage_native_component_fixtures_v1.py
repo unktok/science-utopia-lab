@@ -47,6 +47,7 @@ def stage(run, audit_path, output):
         physical={r['index']:r for r in proof['physical_records']}
         if len(rows)!=proof['recorded_executions'] or len(physical)!=len(rows):
             raise ValueError('developer component execution count differs')
+        selected_nodes=set()
         for i,row in enumerate(rows):
             expected={'source_commit':p['source_commit'],'system_fingerprint':spec.fingerprint,'run_id':cell.name}
             receipt=physical[i]
@@ -55,11 +56,16 @@ def stage(run, audit_path, output):
                     or receipt['year']!=row['context']['period']):
                 raise ValueError('component input has no exact uniquely attributed native execution')
             nodes=[n.mechanism_id for n in spec.mechanisms if n.parameters.get('code_artifact')==row['artifact']]
+            # Intrinsic native handlers can delegate their own container code
+            # without storing code_artifact on a graph node. They are outside
+            # this two-node bank, not evidence of an ambiguous selected node.
+            if not any(node in NODES for node in nodes):continue
             if len(nodes)!=1:raise ValueError('component artifact has ambiguous node identity')
-            if nodes[0] not in NODES:continue
+            selected_nodes.add(nodes[0])
             records.append(row);origins.append({'bundle_sha256':row['bundle_sha256'],'node_id':nodes[0],
                 'reference':reference,'seed':w['seed'],'year':row['context']['period'],
                 'code_file_sha256':proof['code_contexts_sha256'],'native_event_id':receipt['matching_event_ids'][0]})
+        if selected_nodes!=set(NODES):raise ValueError('a requested native component has no exact recorded input')
     if (before!=_inventory(run) or file_sha256(audit_path)!=audit_hash or pinned_revision(source)!=p['source_commit']):
         raise ValueError('historical source/audit/raw changed while staging component fixtures')
     save(output,{'schema':'scienceutopia.native-component-fixtures.v1','source_commit':p['source_commit'],

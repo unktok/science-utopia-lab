@@ -224,3 +224,12 @@ host修復・policy置換・新native lossはない。cold replayはcontainerを
 trueでimplementation checkpointも複数回発生していることを確認した。「document byte上限で
 実装phaseに全く入れない」という仮説はこのデータに当てはまらず、その理由でguardを変更しない。
 既存自己履歴とsource読取だけでは実contextに対する実行テストの代替にならない。
+
+5aaecdfのclean関連48/48pass（6.94秒）の後、実fixture stage a1は
+`component artifact has ambiguous node identity`で停止。model／container／新worldは0。
+original nativeのphase10 intrinsic handlerも内部でcode実行をdelegateし、そのartifactは
+graph node.parameters.code_artifactには直接格納されていない。全recordを直接code nodeへ
+逆引きしようとしたstagerが、対象外のこの正規実行を誤ってambiguousと扱っていた。
+対象2nodeに一致するrecordだけを選び、その中の一意性と各nodeの非欠落を要求するよう修正。
+対象外の全physical recordも原auditとのhash／event attribution確認は維持し、native本体は変更しない。
+intrinsic handlerを含むscripted fixtureを回帰へ追加。失敗a1は空の出力directoryのまま保持する。
