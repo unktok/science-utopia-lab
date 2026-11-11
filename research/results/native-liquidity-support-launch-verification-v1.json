@@ -1,0 +1,23 @@
+{
+  "schema": "scienceutopia.native-liquidity-support-launch-verification.v1",
+  "scientific_source_commit": "78844a0dd1f096f9e1c99d494659eebd143dc109",
+  "plan_content_sha256": "71d9f6ade1fa032e572cc1cd18eb8c5771c6c26fc8ed6c7423e8662a54a061d8",
+  "plan_file_sha256": "5e48213fcc1f4a9805be6a127fcb51bb17133351f80e55ed5e089c047735539e",
+  "start_content_sha256": "2c32a4f390a45cc22266853743f8e102e435a31c8d485a0899cb4fd829493300",
+  "started_utc": "2026-11-11T18:00:19.523734+00:00",
+  "writer_pid": 319,
+  "writer_session": 87352,
+  "saved_plan_reconstruction_passed": true,
+  "clean_source_tests": {"passed": 41, "failed": 0, "elapsed_seconds": 9.07,
+    "junit_file_sha256": "854b1274ba7133dbe5ff24eceedc11d3ccb588ced2f7d0a12cfcbe522102d425"},
+  "analysis_source_commit": "2d4cecf9416d7be3b7c7b8f3b58603ca13e77037",
+  "analysis_started_utc": "2026-11-11T18:05:57.374870+00:00",
+  "analysis_session": 40471,
+  "analysis_clean_source_tests": {"passed": 33, "failed": 0, "elapsed_seconds": 5.36,
+    "junit_file_sha256": "602ca3f0368e643f68c06d69a6ddb7841384ca1a229ddf97e6783d1483bf753c"},
+  "finite_native_worlds": 4,
+  "new_designer_generation_calls": 0,
+  "held_out_evaluation": false,
+  "policy_optimization": false,
+  "publication_ready": false
+}

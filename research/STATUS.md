@@ -2,6 +2,20 @@
 
 ## Active publication-ready goal
 
+**November12 03:20JST / November11 18:20UTC:** the four-world resource assay
+is live at frozen78844a0; the last completed progress boundary is2/4 at18:13UTC,
+with resource-60-connected executing. The writer continues updating native
+researcher activity. The separate2d4cecf continuation waits for normal closure,
+then performs two cold audits and cost readouts, without new inference.
+[Launch and source-bound verification](results/native-liquidity-support-launch-verification-v1.json).
+These are developer controls, not an invented or optimized resource policy.
+
+The [additional measurement contract](components/native-adaptive-measurement-contract-v1.md)
+now reaches native adaptive loss evaluation, next-proposal feedback and cold
+reopening.68 checks pass at224ab92; researcher and critic replies are scripted
+in this connection test. No new objective-conditioned actual-model search has
+been run with it. Publication milestone R2 remains open.
+
 **November12 02:40JST / November11 17:40UTC:** all76 fixed-content panels
 finish normally17:39:09UTC:228/228 literal ratings, no missing panel. Two cold
 exports atf98360e match all six files, and the actual PNG is inspected.

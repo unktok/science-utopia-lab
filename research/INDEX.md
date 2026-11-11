@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Live four-world resource assay](protocols/campaigns/native-liquidity-support-v1.md)
+  and [actual launch verification](results/native-liquidity-support-launch-verification-v1.json):
+  frozen78844a0,2/4 completed at the18:13UTC boundary, next world active.
+  Developer connected/disconnected controls, not optimization or held-out study.
+  [Additional measurement in adaptive search](components/native-adaptive-measurement-contract-v1.md)
+  passes68 scripted/native checks; new actual-model objective search remains next.
+
 - [Closed fixed-content readout](results/native-common-content-readout-v1.md),
   [data and actual figure](data/native-common-content-readout-v1/README.md),
   [closure verification](results/native-common-content-readout-closed-verification-v1.json):

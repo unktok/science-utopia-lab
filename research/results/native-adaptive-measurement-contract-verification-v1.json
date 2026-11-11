@@ -1,0 +1,12 @@
+{
+  "schema": "scienceutopia.native-adaptive-measurement-contract-verification.v1",
+  "source_commit": "224ab9222118bb1cfc77792d6bc14c7cb92a6341",
+  "clean_source_tests": {"passed": 68, "failed": 0, "elapsed_seconds": 38.68,
+    "junit_path": "outputs/native-adaptive-measurement-contract-clean-qa-a1.xml",
+    "junit_file_sha256": "7b7f6af35d6fb73fde9dcdc3da049061b12e3b7816ca3557839299024d2305f6"},
+  "researcher_and_critic_responses": "scripted test responses in original native Simulation",
+  "actual_model_objective_optimization": false,
+  "active_experiment_hot_patched": false,
+  "observer_accuracy_established": false,
+  "publication_ready": false
+}

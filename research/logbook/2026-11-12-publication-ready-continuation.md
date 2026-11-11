@@ -54,3 +54,26 @@ session57926を起動。writer77538の正常終了待ち、推論を起動しな
 15:33:25.793203UTCを確認。長めだった026も終わっており、停止とは判断しない。
 全件閉鎖後の二回audit／cost／図表と、次七worldの同手順が接続済み。
 科学的に重要な主結果、原稿への統合、publication-ready判定はまだ残る。
+
+## Resource opportunity and adaptive observation
+
+03:20JST /18:20UTC: the original-world resource control assay starts at18:00:19UTC
+from clean78844a0 after41 checks. Actual plan reconstruction passes; the bound
+plan, start, tests and separate2d4cecf analysis source are recorded in the launch
+receipt. Four finite developer worlds vary original initial endowment30/60 and
+one conserving-transfer delivery edge. At the18:13 boundary,2/4 are complete and
+the third is live. No designer calls, failed-slot replacement or hot patching.
+
+At separate224ab92 the native adaptive loop accepts an operator-declared
+measurement instrument, evaluates its additional loss and returns it to the
+next institution proposal. Clean68-check run passes38.68s. A preliminary test
+exposed a closure-variable shadowing bug, fixed before the clean run; a later
+failure was an assertion's wrong history nesting. Original native execution with
+scripted critic/researcher replies verifies feedback and cold retention, not an
+actual-model optimized policy. The active78844a0 run is unchanged.
+
+The completed fixed-content readout remains a separate retrospective instrument
+study:76 panels/228 replies,2 negative/20 zero/54 positive contributions under
+the predeclared center3. It does not retroactively change T/E or establish truth.
+The next main study must explain a consequential objective-conditioned system
+difference against strong same-authority rules; additional QA cannot close R2.
