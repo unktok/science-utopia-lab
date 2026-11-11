@@ -383,3 +383,23 @@ These are dated writer records before the normal final independent audits;
 the eight-slot study, selected policy and unused evaluation remain unfinished.
 No active source or objective changes. Main/remote synchronization through
 c7a1802 is confirmed by ls-remote; the current scientific source remains61a1753.
+
+## Actual content turnover behind the reference objective tie
+
+The stopped first study's complete audited references support a more precise
+explanation than net publication counts. At reused61001, connected and
+disconnected reviewed-all share three year/paper/content occurrences. There
+are four connected-only and two disconnected-only occurrences, not two added
+papers atop a common five. Their side-only centered utility sums both equal1;
+the common three sum to3. Whole-world counts7/5 and score sums25/19 therefore
+give T difference−2 but U difference0 at the declared center3.
+
+Reader8b675cf reads original537514a observations already covered by two matching
+stopped audits, checks original inventory and scores and performs no inference
+or generated code execution. All four actual exported files match twice and
+the real PNG is reviewed. The first unit failure is test dictionary aliasing;
+the corrected15 checks pass0.66s without weakening score consistency. Both QA
+receipts are retained. Full data and interpretation are saved under
+research/data/native-content-overlap-v1 and research/results/native-content-overlap-v1.md.
+No loss, adoption or active source is changed. Conditional center sensitivity
+6−2c is not a new optimized objective or causal paper effect. R2 remains open.

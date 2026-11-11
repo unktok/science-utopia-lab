@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Content turnover explains an objective tie](results/native-content-overlap-v1.md):
+  audited reference worlds have7 versus5 accepted occurrences but both utility4;
+  three shared, four connected-only and two disconnected-only records. Exact
+  multiset decomposition and all four actual export files agree twice. This
+  describes the historical references, not invented policies or causal mediation.
 - [Current objective search and result boundaries](STATUS.md): corrected61a1753
   completes five references and its first throughput candidate at21:33UTC:
   T=−7/U=−4, tied with connected accept-all; content-utility:g0 readiness follows.
