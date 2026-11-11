@@ -29,7 +29,8 @@ and do not establish real container or model behavior.
 The staging script reads the unchanged original671436a source and the full
 stopped-prefix audit. It selects only completed developer references:
 open-seed, reviewed accept-all and typed one-reviewer accept-all, all seed61001.
-The initial bank covers `world.selection` and `native-feature-extractor` in
+The [actual staged bank](../data/native-component-fixtures-v1/README.md) covers24
+inputs for `world.selection` and `native-feature-extractor` in
 their actual recorded years. Bundle hashes, source/system/run identity,
 unique native-event attribution and the complete historical raw inventory
 must match. No unused-evaluation world is read and no failed-call input is
@@ -52,3 +53,15 @@ The model-facing editor does not yet advertise or call this API. Connecting
 the tool, its literal cold replay and fresh real-backend readiness is next;
 no new institution or optimization benefit follows from this component alone.
 The live fixed-candidate evaluation remains unchanged at frozenf1f8ddf.
+
+## Finite real container diagnostic
+
+A separate three-call diagnostic fixes one actual developer selector input:
+open-seed, seed61001, year1. It tests the original artifact, retained T/fixed
+G1 selector, and retained E/fixed G0 selector, in that order. These two failed
+submissions are selected before this diagnostic, not after observing new results.
+The original pinned local image and15-second executor limit remain in force.
+If the baseline does not return, stop without replacement; otherwise preserve
+both candidate results even if the expected failure is not exercised. There
+are no LLM calls, new scientific worlds or source repair. Reproducing a code
+exception on one recorded input is not reproducing the full original world.

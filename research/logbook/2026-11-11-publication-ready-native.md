@@ -233,3 +233,19 @@ graph node.parameters.code_artifactには直接格納されていない。全rec
 対象2nodeに一致するrecordだけを選び、その中の一意性と各nodeの非欠落を要求するよう修正。
 対象外の全physical recordも原auditとのhash／event attribution確認は維持し、native本体は変更しない。
 intrinsic handlerを含むscripted fixtureを回帰へ追加。失敗a1は空の出力directoryのまま保持する。
+
+a54a776307b0cf608dead42a76d4897a172fa5c2で実stage a2/a3が両方成功し、
+fixtures.json／summary.jsonのbytesも一致。24入力（selector12、feature-extractor12）、
+三つの開発参照×四年、全てseed61001。new model/container/worldは0。
+raw bank SHA256は`01dc82787c86d3b4d5db1a229183b2f93d23ccbbee7797fa04baf1ef33ca2f08`、
+summary file SHA256は`e45b7810464fb8dd3ef51c7e5a9dc2553954a374fdbf68fe2b6763600095a2a3`、
+summary contentは`5ad39187bf99f0cab7dfc0939025dad0aa682f7feb33087986ddd9e3ea2e1f18`。
+3.9MBのraw contextはignored outputに残し、9.5KBのsource/event manifestをGitへ保持。
+これは実source-bound入力の確認であり、設計者がtoolを使った／自己debugしたという結果ではない。
+
+次のcontainer確認は3callだけを事前固定する。元open-seedのyear1 selector実入力一つへ、
+baseline、元T固定code G1のfloat失敗source、元E固定code G0のenvelope失敗sourceを順に適用。
+baselineが失敗したら停止、候補が期待どおり失敗しなくてもfixtureやsourceを変えて補充しない。
+caller自身もcodeを修復せず、元の入力・source・出力／例外を保持する。
+元の全world失敗の再現、LLM自己debug、損失改善の検証とは別のcomponent診断。
+入力選択とAPI／stageの17 scripted QAは0.89秒でpass。
