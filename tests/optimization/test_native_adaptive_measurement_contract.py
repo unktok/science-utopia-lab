@@ -103,6 +103,14 @@ def test_real_native_reference_receipt_reaches_new_proposal_and_cold_campaign_wi
     assert requests[0]['developer_reference_context']['summary'][0]['loss']==pairs[0]['observation']['loss']
     assert len(c.state['records'])==2 and c.binding['development_references']==bank
     assert replay_campaign(c.directory,'blackbox').state==c.state
+    from scripts.native_observer_physical_v1 import ColdObserver,reconstruct_measurement
+    from scripts.audit_native_objective_v5 import checkpoint_measurements
+    from utopia.runtime.checkpointing import read_portable_checkpoint
+    cold=ColdObserver(observer.root,instrument)
+    for record in c.state['records']:
+        observed=record['observations'][0];run=observed['metadata']['runs'][0]
+        base=checkpoint_measurements(run['checkpoint_path'],run['run_id'],run['system_fingerprint'])
+        assert reconstruct_measurement(read_portable_checkpoint(run['checkpoint_path']),base,cold)==observed['metadata']['measurements'][0]
 
 
 def test_inert_declared_instrument_preserves_every_original_scientist_request(tmp_path,fixed_corpus,monkeypatch):

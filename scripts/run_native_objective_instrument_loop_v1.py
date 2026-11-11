@@ -176,10 +176,11 @@ def campaign(root,p,objective,context):
         seed=p['optimizer_seed'],design_space=p['design_space'],development_references=context)
 
 
-def selection(root,p,context,*,frozen_utc=None):
+def selection(root,p,context,*,frozen_utc=None,campaign_loader=None):
     selected={}
+    load=campaign if campaign_loader is None else campaign_loader
     for objective in p['objectives']:
-        c=campaign(root,p,objective,context)
+        c=load(root,p,objective,context)
         if c.state['pending'] is not None or len(c.state['records'])!=4:raise ValueError('eight terminal proposal slots required')
         pool=[o for r in c.state['records'] for o in r['observations'] if o and o['status']=='complete' and o['loss'] is not None]
         best=min((o['loss'] for o in pool),default=None);ties=[o for o in pool if o['loss']==best]
@@ -209,6 +210,8 @@ def run(root):
                 stage='references';progress(root,stage,label);pairs.append(observe(root,p,label,observer));completed+=1;require_plan(root)
             context=build_context(pairs,world=p['world'],seeds=[SEED],loss_spec=p['losses']['throughput'])
             save(root/'developer-reference-context.json',{k:v for k,v in context.items() if k!='content_sha256'})
+            save(root/'developer-reference-context-ready.json',{'context_sha256':context['content_sha256'],
+                'complete_references':5,'completed_utc':utc()})
             for slot in p['schedule']:
                 objective,g=slot['objective'],slot['generation'];c=campaign(root,p,objective,context)
                 if c.state['pending'] is not None or len(c.state['records'])!=g:raise ValueError('consumed/pending proposal cannot be redispatched')

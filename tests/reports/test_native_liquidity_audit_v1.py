@@ -72,5 +72,5 @@ def test_changed_checkpoint_bytes_are_not_accepted_from_cached_annual_proof(tmp_
 
 def test_cost_adapter_adds_new_scope_without_relabeling_older_audits():
     from scripts.reports.pre_scale_costs_v1 import AUDITS
-    assert AUDITS[-1]=='scienceutopia.native-liquidity-support-audit.v1'
+    assert AUDITS[6]=='scienceutopia.native-liquidity-support-audit.v1'
     assert AUDITS[5]=='scienceutopia.native-code-tested-loop-audit.v1'

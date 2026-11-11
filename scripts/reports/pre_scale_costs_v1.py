@@ -13,7 +13,7 @@ from scripts.reports.native_auxiliary_costs import event,summarize as summarize_
 from scripts.reports.native_token_costs import cache_usage,summarize as summarize_tokens
 from utopia.optimization.native_numeric_designer import checked
 from utopia.optimization.native_scientist_load_v38 import replay_load
-from utopia.system.design_patch import digest
+from utopia.system.design_patch import digest,clone
 from utopia.utils.data_utils import decode_json,file_sha256,write_json_atomic
 
 SCHEMA='scienceutopia.pre-scale-cost-components.v1'
@@ -22,7 +22,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-institution-loop-stopped-audit.v1',
         'scienceutopia.native-fixed-candidate-evaluation-audit.v1',
         'scienceutopia.native-code-tested-loop-audit.v1',
-        'scienceutopia.native-liquidity-support-audit.v1')
+        'scienceutopia.native-liquidity-support-audit.v1',
+        'scienceutopia.native-objective-instrument-loop-audit.v1')
 
 
 def classify_numeric(relative):
@@ -155,6 +156,12 @@ def analyze(root,plan,audit):
     if before!=_inventory(root):raise ValueError('raw evidence changed during cost projection')
     if stopped:
         result['scientific_termination']='stopped; no held-out evaluation or successful scientific closure'
+    if audit['schema']==AUDITS[7]:
+        critic=audit['observer']
+        result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
+            'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],
+            'usage':clone(critic['usage']),'overlap_with_native_response_caches':False,
+            'scope':'Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.'}
     result['content_sha256']=digest(result)
     return result
 
