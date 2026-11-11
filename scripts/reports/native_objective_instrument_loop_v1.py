@@ -158,17 +158,22 @@ def render(report,output):
             ax.annotate(group['group'],(group['T'],group['U']),xytext=(5,5),textcoords='offset points',fontsize=8)
         ax.set(xlabel='Count loss T (lower is better)',ylabel='Content utility loss U (lower is better)',
             title='Exact coordinates; all tied labels retained')
+        from matplotlib.ticker import MaxNLocator
+        ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+        if len({g['T'] for g in groups})==1:ax.set_xlim(groups[0]['T']-.5,groups[0]['T']+.5)
+        if len({g['U'] for g in groups})==1:ax.set_ylim(groups[0]['U']-.5,groups[0]['U']+.5)
         ax.grid(color='#ededed');key.axis('off')
         import textwrap
         cells=[[g['group'],f"{g['T']:g}",f"{g['U']:g}",textwrap.fill(', '.join(g['labels']),30)] for g in groups]
         if cells:
+            heights=[.065]+[.065+.032*(len(c[3].splitlines())-1) for c in cells]
+            height=min(.70,sum(heights))
             table=key.table(cellText=cells,colLabels=['Point','T','U','World labels'],
-                colWidths=[.13,.15,.15,.57],loc='upper left',cellLoc='left')
+                colWidths=[.13,.15,.15,.57],bbox=(0,1-height,1,height),cellLoc='left')
             table.auto_set_font_size(False);table.set_fontsize(7)
             for (i,j),cell in table.get_celld().items():
                 cell.set_edgecolor('#d8dee5');cell.set_linewidth(.5)
-                lines=1 if i==0 else len(cells[i-1][3].splitlines())
-                cell.set_height(.065+.032*(lines-1))
+                cell.set_height(heights[i])
                 if i==0:cell.set_facecolor('#edf2f5')
         reference_key='\n'.join(textwrap.fill('R'+str(i+1)+' = '+r['label'],70) for i,r in enumerate(report['references']))
         footer=reference_key+'\nT/U labels = own-objective proposal generation; no coordinate jitter.'
