@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Publication-ready autonomous goal](publication/publication-ready-v3.md): reopened explicitly November11.
+  [New native closed-loop protocol](protocols/campaigns/native-institution-loop-v1.md)
+  and [execution log](logbook/2026-11-11-publication-ready-native.md).
+  New source, unchanged T/E, strong routing controls, twelve finite proposals;
+  not yet a running experiment or a conference-ready result.
+
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.
   [First implementation and native connection evidence](results/institution-causal-design-v1.md)

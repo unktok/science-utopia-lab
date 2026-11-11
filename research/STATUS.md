@@ -1,5 +1,18 @@
 # Current research status
 
+## Active publication-ready goal
+
+November11: the user explicitly requested autonomous continuation until the
+project is publication-ready for a top conference. The goal is active, not
+achieved by the earlier engineering packages. [Current milestones](publication/publication-ready-v3.md)
+and [execution log](logbook/2026-11-11-publication-ready-native.md).
+The [new native closed-loop pilot](protocols/campaigns/native-institution-loop-v1.md)
+fixes T/E, three design domains, twelve proposals, eight strong references
+including typed review-work controls, and selection-fixed unused evaluation.
+It is being prepared at a separate source; no new world has been dispatched yet.
+Its finite53-world ceiling is not a guarantee of an important positive result or
+publication readiness. No new paid/remote model, public submission or push.
+
 ## November11 research stage
 
 The [new research plan](publication/institution-causal-design-plan.md) separates
