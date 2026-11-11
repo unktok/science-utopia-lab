@@ -69,7 +69,10 @@ def test_actual_pdf_text_has_the_correct_author_glyph_and_no_unresolved_referenc
     viewed = unicodedata.normalize('NFC',text.decode())
     assert 'Katy Börner' in viewed and 'Katy B"orner' not in viewed
     assert '??' not in viewed
-    assert 'What finite searches and fixed-policy comparisons estimate' in re.sub(r'\s+',' ',viewed)
+    # Poppler preserves TeX's fi ligature; the exact extracted bytes are already
+    # hashed above. Normalize typography only for this readable-heading check.
+    heading_text = unicodedata.normalize('NFKC',viewed)
+    assert 'What finite searches and fixed-policy comparisons estimate' in re.sub(r'\s+',' ',heading_text)
 
 
 def test_three_actual_staged_manifests_match_every_exact_historical_blob():
