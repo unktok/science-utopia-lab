@@ -74,3 +74,9 @@
   the certificate API with a richer mock dictionary and infer compatibility.
   Calibration can declare an execution mode without executing its components;
   proposal-only configuration guards must not prevent that calibration.
+- `native_numeric_designer.save` seals its input and reserves top-level
+  `content_sha256` for the journal itself. Do not reseal a public API's already
+  sealed return value without removing that checksum first; verify the saved
+  result equals the original. Name a paper's content hash separately. Exercise
+  the actual observer/audit return type through runner retention and cold read,
+  not just a fake unsealed dictionary.
