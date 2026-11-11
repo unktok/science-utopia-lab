@@ -5,7 +5,7 @@ from scripts.reports.native_content_overlap_v1 import overlap
 
 def row(identity,score,year=1):
     return {'year':year,'paper_id':identity,'rating':{'status':'measured','content_sha256':identity,
-        'ratings':[{'score':score}]*3,'mean_score':float(score)}}
+        'ratings':[{'score':score} for _ in range(3)],'mean_score':float(score)}}
 
 
 def test_net_two_records_is_not_two_added_papers_or_a_changed_objective():

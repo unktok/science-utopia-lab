@@ -86,6 +86,7 @@ def analyze(plan,audit,observations,left_label,right_label):
 
 
 def render(report,out):
+    import textwrap
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -96,8 +97,18 @@ def render(report,out):
             shared=data['common'][metric];unique=[data['left_only'][metric],data['right_only'][metric]]
             ax.bar([0,1],[shared,shared],color='#c6cdd5',label='Shared record occurrences',width=.55)
             ax.bar([0,1],unique,bottom=shared,color=['#087f8c','#b47835'],width=.55)
-            for i,v in enumerate(unique):ax.text(i,shared+v+.08,f'{shared+v:g}',ha='center',va='bottom')
-            ax.set(title=title,xticks=[0,1],xticklabels=['Connected','Disconnected'],ylim=(0,max(shared+v for v in unique)*1.22+0.2))
+            totals=[shared+v for v in unique];low=min(0,shared,*totals);high=max(0,shared,*totals)
+            margin=max(.2,.18*(high-low))
+            for i,v in enumerate(unique):
+                ax.text(i,shared+v+margin*.18,f'{shared+v:g}',ha='center',va='bottom')
+                if shared:ax.text(i,shared/2,f'{shared:g}',ha='center',va='center',fontsize=7)
+                if v:ax.text(i,shared+v/2,f'{v:g}',ha='center',va='center',color='white',fontsize=7)
+            ax.set(title=title,xticks=[0,1],xticklabels=[textwrap.fill(s.replace('reviewed-all-',''),23) for s in labels],
+                ylim=(0 if metric=='occurrences' else low-margin,high+margin))
+            if metric=='occurrences':
+                from matplotlib.ticker import MaxNLocator
+                ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+            else:ax.axhline(0,color='#9aa3ad',lw=.7)
             ax.grid(axis='y',color='#eeeeee');ax.set_axisbelow(True)
         axes[0].legend(fontsize=6,loc='upper left')
         fig.suptitle('Different record sets can have equal objective value',fontsize=11)
