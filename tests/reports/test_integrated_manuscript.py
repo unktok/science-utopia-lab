@@ -17,8 +17,13 @@ def sha(name):
     return hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
 
 
+def historical(name):
+    """The v1 receipt binds its own source, not a later editable manuscript."""
+    return subprocess.check_output(['git','show',receipt()['source_commit']+':'+name],cwd=ROOT)
+
+
 def manuscript():
-    return '\n'.join((ROOT / n).read_text() for n in receipt()['source_files'])
+    return '\n'.join(historical(n).decode() for n in receipt()['source_files'])
 
 
 def test_integrated_sources_assets_evidence_and_preserved_history():
@@ -30,7 +35,8 @@ def test_integrated_sources_assets_evidence_and_preserved_history():
         assert r[group]
         for name, expected in r[group].items():
             assert (ROOT / name).resolve().is_relative_to(ROOT)
-            assert sha(name) == expected, name
+            observed=sha(name) if group=='preserved_files' else hashlib.sha256(historical(name)).hexdigest()
+            assert observed == expected, name
     assert sha(r['output']) == r['pdf_sha256']
     assert r['new_model_calls'] == r['new_code_world_executions'] == 0
     assert not r['new_raw_audit']
@@ -49,7 +55,7 @@ def test_recursive_inputs_figures_citations_and_crossreferences_are_closed():
     labels = re.findall(r'\\label\{([^}]+)\}', body)
     assert len(labels) == len(set(labels))
     assert set(re.findall(r'\\ref\{([^}]+)\}', body)) <= set(labels)
-    bib = (ROOT / 'paper/references.bib').read_text() + (ROOT / 'paper/submission-sources.bib').read_text()
+    bib = historical('paper/references.bib').decode() + historical('paper/submission-sources.bib').decode()
     keys = set(re.findall(r'@\w+\s*\{\s*([^,\s]+)', bib))
     cited = {k.strip() for g in re.findall(r'\\cite\w*\{([^}]+)\}', body) for k in g.split(',')}
     assert cited <= keys and len(cited) == r['cited_references']

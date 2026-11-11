@@ -153,6 +153,16 @@ native observation contract. Omitting review requires a compatible downstream
 decision consumer; the host does not invent missing reviews or silently repair
 the publication rule.
 
+Graph syntax and operational authority are different. An arbitrary program
+with the same observations, state and invocation opportunities may implement
+several mechanisms inside one policy. Conversely, a program invoked only
+after review cannot undo the reviews already performed in that period.
+Comparisons must therefore specify available observations, effects and
+execution times, not only node count or the label ``free graph.'' A restricted
+parameter family can lack an operation even when another code representation
+could express it. Section~\ref{sec:design-diagnostics} examines these boundaries
+without claiming that graph syntax is universally necessary.
+
 \subsection{Containment of the original researcher world}
 \code{NativeScienceKernel} executes specifications against the original
 Simulation lifecycle. Default nodes delegate to its phase methods rather than

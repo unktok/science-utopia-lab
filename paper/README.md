@@ -1,20 +1,25 @@
 # Objective-conditioned institution paper
 
 The canonical whole-program working manuscript is now [integrated.tex](integrated.tex):
-[41-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf),
-17 figures,15 tables and16 cited references, with no artificial page cap.
+[reviewed44-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf),
+19 figures and17 tables, with no artificial page cap. The November11 source
+adds an authoring/measurement diagnostic section; its new PDF and source-bound
+visual verification are being prepared without replacing this reviewed artifact.
 It integrates the objective/abstraction/method arguments, parameter held-out
 study, actual structural cases, conditional-gradient experiments, nested design,
 latest matched comparison and English evidence UI. It does not pool their
 different sources or turn feasibility into superiority.
 [Inclusion/exclusion map](integrated-content-map.md) explains the editorial choices;
 [historical37-page build/evidence/visual binding](integrated-build-v1.json) records
-the preserved older artifact, not the new draft. The new pre-scale section
-separates actual numeric readiness, scripted connection QA, the closed12-world
-M study and newly started T/E search. Complete A/Q/R and input-year table,
-actual descriptive figure, original hard-selector replay and measured call
-components now accompany M; selection/evaluation remain unfinished. It adds
-no unobserved optimization gain. [Current41-page build and visual QA](integrated-pre-scale-build-v2.json)
+the preserved older artifact, not the new draft. The pre-scale sections
+separate actual numeric readiness, scripted connection QA, the closed12-world
+M study and closed62388a7 T/E search/evaluation. Complete A/Q/R, input-year
+table, all proposal/evaluation rows, actual figures, literal changes and costs
+accompany them. The new671436a loop is a different, running experiment, not a
+completed result here. November11 adds all eight separate authoring sessions
+and partial native-input probes, plus fixed-record review-panel readouts;
+none is a new candidate loss or truth measure.
+[Current44-page build and visual QA](integrated-pre-scale-build-v3.json)
 and [closed M scientific verification](../research/results/pre-scale-information-verification-v1.json)
 are separate from the preserved [earlier39-page receipt](../research/results/pre-scale-completion-software-verification-v1.json).
 This is a research manuscript, not a submitted, anonymous or release-cleared package.
