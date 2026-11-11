@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 02:20JST / November11 17:20UTC:** the original code-tested loop
+is in its fourth/final proposal T/G1 (optimization entered17:17:09UTC).
+Read-only audit and report continuations remain closure-gated. No four-slot
+closure, final selection, automatic repair or stronger-policy improvement is
+claimed from this heartbeat.
+
+The [fixed-content retrospective readout](protocols/campaigns/native-common-content-readout-v1.md)
+is frozen separately at2dd042e: all76 previously staged contents, three critic
+seeds, at most228 local8B POSTs including the first nine-response interface
+check. Session80334 starts17:19:16UTC and **waits for the current independent
+report to close**; no real rating has been dispatched at this start observation.
+[Verification](results/native-common-content-readout-prelaunch-verification-v1.json)
+records actual saved-plan reconstruction and full scripted observer retention.
+This supports choosing a meaningful future objective, not a new hidden metric,
+held-out study, independent truth judgment or main-conference result.
+
 **November12 02:08JST / November11 17:08UTC:** the original93076b4 writer is
 still in E/G1 native execution. A separate frozen8bb712f
 [all-slot/actual-probe report continuation](components/native-code-tested-loop-report-v1.md)

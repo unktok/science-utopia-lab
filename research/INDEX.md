@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Finite fixed-content retrospective readout](protocols/campaigns/native-common-content-readout-v1.md)
+  and [source/plan verification](results/native-common-content-readout-prelaunch-verification-v1.json):
+  all76 historical contents/228 maximum local8B replies, first9 as technical
+  interface check. Frozen2dd042e/session80334 starts17:19UTC in closure wait,
+  not actual scoring. No new world, current-loss change or policy reselection.
+
 - [All-slot actual code-test trajectory report](components/native-code-tested-loop-report-v1.md):
   identifier-based world/proposal joins, literal edits, actual per-fixture code
   transitions, retained nulls/all ties and deterministic figures.75 clean checks

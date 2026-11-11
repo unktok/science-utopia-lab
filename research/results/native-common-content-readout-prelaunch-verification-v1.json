@@ -1,0 +1,54 @@
+{
+  "schema": "scienceutopia.native-common-content-readout-prelaunch-verification.v1",
+  "experiment_source_commit": "2dd042e396627df99a42e3256f010d0d703b80b0",
+  "plan_content_sha256": "b9362297af8622e84ec4ba6b7fc8d778f375ee637d8d541259dfa8e24ad205cb",
+  "plan_file_sha256": "e8e9638645ffb972674b892612289d25d6b7921f532d3137968a21ddc63242cd",
+  "contract_content_sha256": "13ef3ebbf05251ed94912654d1927694778a33341d421e806db4aac67e627d3a",
+  "input_file_sha256": "498e84d713ab9ba4e23636a98618d58e9e97ab8741c6350c0f0e44f590bca419",
+  "clean_experiment_source_checks": {
+    "passed": 61,
+    "failed": 0,
+    "skipped": 1,
+    "seconds": 10.81,
+    "junit_file_sha256": "a01bc32889c0ffd58805252337f3b204531fb54f504b98a3cbf409a022e21ad6",
+    "skip": "Optional first-authoring trace helper saw two session directories after G1 began, not a missing original record. This reporting regression had passed in the earlier clean 75-check suite."
+  },
+  "later_identity_addressed_checks": {
+    "source_commit": "20754da",
+    "runtime_modified": false,
+    "passed": 79,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 17.20,
+    "junit_file_sha256": "7c59727086eb5efdea4f5d70648aaf7454db2609b2fee21c9569f22bb9916207",
+    "scope": "Tests now identify the actual first session by request generation, including its persistent-view reconstruction. Not a different experiment source."
+  },
+  "full_real_observer_api_scripted_boundary": {
+    "scripted_physical_replies": 228,
+    "unique_literal_requests": 228,
+    "cold_audit_equals_saved_result": true,
+    "cached_replay_new_replies": 0,
+    "actual_model_inference": false
+  },
+  "actual_saved_plan_roundtrip_verified": true,
+  "backend_metadata_read": {
+    "model": "qwen3:8b",
+    "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "ollama_version": "0.33.3"
+  },
+  "actual_start_utc": "2026-11-11T17:19:16.684585+00:00",
+  "session_id": 80334,
+  "start_content_sha256": "709873237faa9edea7f26b5043b81a397d35e61e6fb105bd14eb638e5e86e34e",
+  "observed_stage_at_start": "await-code-tested-report",
+  "contents": 76,
+  "critics_per_content": 3,
+  "maximum_physical_POSTs": 228,
+  "initial_real_interface_check_upper_bound_POSTs": 9,
+  "initial_real_interface_check_completed": false,
+  "new_model_calls_at_start_observation": 0,
+  "new_native_worlds": 0,
+  "existing_experiment_modified": false,
+  "original_objective_or_selection_changed": false,
+  "retrospective_development_only": true,
+  "publication_ready": false
+}

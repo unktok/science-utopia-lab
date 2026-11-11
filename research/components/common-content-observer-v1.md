@@ -72,3 +72,19 @@ clean af294b7で45 pass／3 skip、同じ3件を実Dockerで再確認して3 pas
 [保持資料と再生成](../data/common-content-observer-v1/README.md)。
 実モデルでの互換性、rubricの挙動、閉鎖済み成果への採点、目的別の新しい探索は、まだ実行していない。
 現pilotの全結果を閉じて解釈した後、必要な科学的対照と有限予算を決める。
+
+## November12の有限実検証の準備
+
+[別protocol](../protocols/campaigns/native-common-content-readout-v1.md)で、保持済み全76内容を
+hash順／3critic、最大228POSTへ固定した。最初の3内容／最大9POSTは実際の入力での
+technical interface checkであり、どの1〜5点も型と完了条件を満たせば通る。
+現93076b4の正常終了・独立監査・二重reportの閉鎖を待ち、その後だけ既存8Bへ要求する。
+現在のT/Eや選択を変更せず、過去の採択集合の別条件の意見を読む。新しい最適化ではない。
+
+[Prelaunch記録](../results/native-common-content-readout-prelaunch-verification-v1.json)は
+source2dd042e、実backend metadataとsaved plan再構築を保持する。clean source61pass/1skip、
+optional actual-sessionの世代識別を直した後の79pass/0skipを区別する。
+本物のCommonContentObserver APIを通る228件のscripted応答とcold監査／cache再読も検査した。
+この経路で、既にsealedなauditの二重sealを実推論前に検出し、retained値をcold値と照合する
+修正を加えた。失敗JUnitも保持。これらは実Qwen採点ではない。
+17:19:16UTC/session80334はまだ前段の終了待ちであり、実interface checkや採点完了とは呼ばない。

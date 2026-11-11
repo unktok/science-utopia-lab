@@ -69,3 +69,17 @@ raw prompt、cacheの共有単位、有限呼出数、未使用評価の扱い�
 制度名、探索loss、設計者の説明、採択済みというlabelをobserverへ与えない。
 同じartifactの再観測を独立標本として増やさず、欠測を補充・0埋めしない。
 現段階ではこの追加観測をdispatchしていない。
+
+## November12: blind採点だけでは主結果にならない
+
+[Reward Hacking Challenges Oversight of Autonomous Research Agents](https://arxiv.org/html/2609.28614v1)
+の§1–3.1は、研究artifactだけのreview、trajectory review、別実行での検証を区別している。
+論文自身も機構判定panelを独立検証済みground truthとは呼ばず、LLM panel間の共有誤りを限界に挙げる。
+[More Convincing, Not More Correct](https://arxiv.org/html/2607.05904v1)の§1–4は、
+candidateを見たjudgeとhidden exact-match anchorを区別する。数式の独立性条件があるため、
+複数seedのabstract採点を、そのまま独立した正解検証の結果へ置き換えることはできない。
+両資料のコード実行・報告値の再現は今回していない。
+
+従って以下は自分たちの研究判断：追加blind採点は、次の目的が何を識別するかの有限診断に使う。
+採点器の導入だけ、あるいは別採点との相違だけを新規性・reward hacking・科学の改善とは呼ばない。
+中心は引き続き、自由に設計した制度が宣言目的の下でどの作用と持続的帰結を実現するかである。

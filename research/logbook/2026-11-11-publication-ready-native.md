@@ -441,3 +441,27 @@ JUnit SHA256 `a670dce1f77fd875c17186b27dc8efb9ed18371d7366d777576a4c63b428b5f3`�
 同source別worktreeで17:08:41.415269UTC/session53506を開始。
 現在の93076b4と08f671b独立監査の正常終了を待ち、二回実export/全byte照合。
 failed stageは保持し再試行しない。actual図の目視と原稿反映、R2主結果はまだ残る。
+
+### 17:19UTC: fixed-content instrument finite actual-use preparation
+
+既存76内容の全件を別protocolで固定、3critic/228POST、最初3内容/9POSTはdesired scoreを
+要求しない実interface check。その結果も全件readoutへ再利用し再dispatchしない。
+本物のobserver API＋scripted228replyを通したQAで、runnerがalready-sealed auditを
+再sealする保存不備を検出。cold値からchecksumを除いて保存し、saved==coldを照合。
+paper content hashもreserved journal checksumと別名へ分離。runtime guardは緩めない。
+初回QA6pass/2failはtest Counterへkeysでなくdictを渡した不備、次9pass/1failは上の実保存不備。
+修正後10pass。全失敗JUnitはignored outputsへ保持し、実backendにはまだ要求していない。
+
+clean2dd042e396627df99a42e3256f010d0d703b80b0で61pass/1skip（10.81秒）、JUnit hashは
+`a01bc32889c0ffd58805252337f3b204531fb54f504b98a3cbf409a022e21ad6`。
+skipはoptional first-session helperがG1開始後に2directoryを見ていたため。
+generation==0の実requestで識別するtest-only修正20754da後79/79pass（17.20秒）、
+JUnit hash `7c59727086eb5efdea4f5d70648aaf7454db2609b2fee21c9569f22bb9916207`。
+experiment runtimeは2ddのまま。local metadata GETの初回はsandbox接続権限で失敗しplan未作成。
+続くplan確認/runもplan不存在で終了、全てPOST前。local access付き同prepareでmetadata照合し、
+saved planの再構築成功後だけrun開始。科学要求のretry／補充はない。
+
+17:19:16.684585UTC/session80334は現93076b4と08f671b監査／8bb712f report正常終了待ち。
+plan content b9362297af8622e84ec4ba6b7fc8d778f375ee637d8d541259dfa8e24ad205cb。
+source、old input file hash、固定rubric、全content順、budget、共通inference lockを保持。
+新native world／current objective変更0、実採点の完了は未主張。
