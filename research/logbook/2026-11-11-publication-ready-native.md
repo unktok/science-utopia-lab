@@ -184,3 +184,17 @@ source/runtime/jobs検査で起動前に停止した。started.json、native wor
 明示arm_orderを保存し、そのlist順にのみselectedを走査するよう修正。
 実際のsave→read→require_plan、およびJSON roundtrip後のjob一致を回帰に追加した。
 a1のplan／sourceは書き換えず、新sourceで別prepareする。制度候補の補充ではない。
+
+f1f8ddf4813f2252ab0a54b3f69c4f3f25c1eb9eでclean関連80/80pass（19.84秒）、
+JUnit SHA256は`14c4c9cef6db16d23a1b0bca0701e4bd850cabc4021c49091fd0d6c332284057`。
+a1の原sourceをread-onlyで診断しsource_equal/runtime_equal=true、jobs_equal=falseを確認。
+最初の違いはevaluation-018で、元T数値から保存後E固定codeへ順が変わっていた。
+sourceやbackendの書換え／候補の修復ではなく、明示順序を欠いたrunnerのバグだった。
+
+別worktree`native-fixed-candidate-evaluation-v1-a2`を同sourceへ凍結。
+prepareと実saved-plan guardが通り、11:25:10.241405UTCにPID59964/session62719で開始。
+plan content SHA256は`1f35f65be17077fa37451ff48df5d8c75a16b9f08885bf2aa8a3a0830e618c14`。
+元rawと科学writer lockを保持し、fresh seed inventoryもdispatch前に再確認した。
+最初の世界でQwen3-8Bのresearch direction5件と資金申請の実応答を観測。
+候補固定4label＋参照6label×3seed=30実world。追加designer生成は0。
+原pilotの終端はstoppedのまま。publication-ready、method優位性、制度発明は主張しない。

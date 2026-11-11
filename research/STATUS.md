@@ -2,8 +2,7 @@
 
 ## Active publication-ready goal
 
-**November11 10:50:27UTC: the native pilot stopped, and neither scientific
-inference nor the closure/report chain is currently running.** At unchanged
+**November11 10:50:27UTC: the original native pilot stopped.** At unchanged
 671436a, all eight references and eleven of twelve proposal slots terminated:
 five complete worlds, six technical nulls. The last T/numeric proposal was not
 submitted. Its fresh numeric calibration's E case received a final HTTP200
@@ -20,7 +19,15 @@ is prepared in code/protocol: four available arms, six references, three unused
 seeds, at most30 physical worlds and zero designer-generation POSTs. Failed-only
 arms have no selected policy. This cannot be called completion of the original
 study, reuse a failed designer certificate, invent a missing candidate, or replace an
-arm with a baseline. It has not yet dispatched. Optional component tests for future model-authored code
+arm with a baseline. The first evaluation preparation (d2b6651) stopped before
+any world on a JSON-order reconstruction bug. Its plan remains unchanged.
+The corrected sourcef1f8ddf passes80/80 related checks and the actual saved-plan
+guard. **The separate evaluation a2 started11:25:10UTC, PID59964/session62719**;
+actual Qwen3-8B direction and funding responses were observed. Its frozen plan
+content is1f35f65b,30 jobs. This is a dated start observation, not a heartbeat.
+[Stopped-study audit/cost summary](results/native-loop-stopped-prefix-verification-v1.json)
+keeps the original failure and1796 scientist replies/428 auxiliary intents.
+Optional component tests for future model-authored code
 must remain separate from native losses and preserve the full design freedom.
 
 November11: the user explicitly requested autonomous continuation until the

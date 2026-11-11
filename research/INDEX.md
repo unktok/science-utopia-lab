@@ -16,6 +16,9 @@ Historical documents retain their paths and source identities.
   eight references, eleven submitted slots (five complete/six null), no held-out
   evaluation. The d11e431 closure chain also stopped, without inference or retry.
   The exact stopped prefix is being audited separately; it is not normal closure.
+  [Two matching stopped audits and cost projections](results/native-loop-stopped-prefix-verification-v1.json)
+  now verify19 worlds. The separate fixed-submission evaluation starts11:25:10UTC
+  at frozenf1f8ddf after80 checks; zero new designer-generation POSTs.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.
