@@ -1,0 +1,40 @@
+{
+  "schema": "scienceutopia.native-objective-instrument-launch-verification.v1",
+  "scientific_source_commit": "537514a7ad775a7c84e9a2e3a8de2cd9e7aa5d84",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-objective-instrument-loop-v1-a1/outputs/native-objective-instrument-loop-v1-a1",
+  "plan_content_sha256": "37fc14069a55d5a26b4a2811e3b11fd4a48aa5f09a36edc711e8a603a33c509a",
+  "plan_file_sha256": "7d287e315d65dc057c51868ac780365240996bfcc17c8af54b836c2ef3414453",
+  "actual_saved_plan_reconstruction": true,
+  "writer_pid": 8469,
+  "writer_session": 33505,
+  "started_utc": "2026-11-11T19:41:35.838316+00:00",
+  "start_file_sha256": "ea652abd6b81cefecd9df16997239a2f521c30e543f95b7dbd3d7214932a8bf5",
+  "observed_initial_stage": "references:reviewed-all-connected",
+  "clean_tests": {
+    "passed": 118,
+    "seconds": 47.31,
+    "receipt": "outputs/native-objective-instrument-launch-clean-qa-a1.xml",
+    "file_sha256": "e1c6f77b5f8b0fe5ee60d25fb549de1b2ba979b1d3ac49f8219d909752acdb3b"
+  },
+  "unused_evaluation_seeds": [64101, 64107, 64113],
+  "seed_usage_receipts": [
+    {"root": "science-utopia-lab", "checked_bindings": 315, "prior_matches": 0, "errors": 0, "content_sha256": "88f65e6b7250827a78b81f4382e2cdf700734e2f4d64741f73af4ec16dd75a90"},
+    {"root": "science-utopia-lab-experiments", "checked_bindings": 209, "prior_matches": 0, "errors": 0, "content_sha256": "1aac96cf4ed704eb831329f1871492b211a2d84bded372e2057c3ea9625d472e"},
+    {"root": "science-utopia-lab-worktrees", "checked_bindings": 550, "prior_matches": 0, "errors": 0, "content_sha256": "0dd25d5e41808fcda847b808c6e32a083f5c35287cbd5b3c9feca96b5e1efbf1"}
+  ],
+  "analysis": {
+    "source_commit": "537514a7ad775a7c84e9a2e3a8de2cd9e7aa5d84",
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-objective-instrument-analysis-v1-a1/outputs/native-objective-instrument-analysis-v1-a1",
+    "session": 29257,
+    "initial_stage": "await-objective-instrument-normal-closure",
+    "maximum_wait_seconds": 86400,
+    "two_independent_audits_and_costs_after_normal_closure": true,
+    "new_inference_allowed": false
+  },
+  "development_native_worlds_upper_bound": 13,
+  "candidate_slots": 8,
+  "completed_search_claimed": false,
+  "held_out_evaluation_claimed": false,
+  "scientific_superiority_claimed": false,
+  "publication_ready": false
+}

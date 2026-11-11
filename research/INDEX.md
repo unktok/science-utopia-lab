@@ -9,8 +9,9 @@ Historical documents retain their paths and source identities.
 - [Next objective-conditioned native experiment specification](protocols/campaigns/native-objective-instrument-loop-v1.md):
   T count versus fixed-content utility, strong initial rule, five common
   references/eight proposals, at most13 development and21 later fixed-policy
-  evaluation worlds. Runner, common-reference context, cold audit and finite
-  closure are implemented; actual launch/unused-seed checks remain. The actual
+  evaluation worlds. Frozen537514a starts19:41UTC after118 checks, actual saved
+  plan reconstruction and three-root unused-seed checks. Separate cold analysis
+  waits for normal closure; [launch binding](results/native-objective-instrument-launch-verification-v1.json). The actual
   editing parent minimizes the objective over shared references/own history.
   No hidden participation or novelty veto.
 

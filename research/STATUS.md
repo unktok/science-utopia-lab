@@ -2,16 +2,26 @@
 
 ## Active publication-ready goal
 
-**Next launch:** the [objective-conditioned protocol](protocols/campaigns/native-objective-instrument-loop-v1.md)
+**November12 04:41JST / November11 19:41UTC:** the
+[objective-conditioned experiment](protocols/campaigns/native-objective-instrument-loop-v1.md)
+is actually running at frozen537514a, writer8469/session33505. Initial stage is
+reviewed-all-connected reference execution.118 launch checks pass47.31s;
+actual saved-plan reconstruction and three-root seed inventory pass. Separate
+frozen analysis/session29257 waits for normal closure before two audits/costs.
+[Exact launch receipt](results/native-objective-instrument-launch-verification-v1.json).
+No candidate improvement or held-out result is claimed from a launch.
+
+The [objective-conditioned protocol](protocols/campaigns/native-objective-instrument-loop-v1.md)
 specifies count T versus fixed-content utility U, five measured common references,
 eight proposal slots and a separate selection-frozen comparison. The source-bound
 runner, cold native/critic audit, finite closure, separate cost accounting and
 actual reference-bearing designer context are implemented. The actual first
 editing parent can differ by objective; it is not automatically a final candidate.
 The [resource fixture bank](data/native-resource-component-fixtures-v2/README.md)
-has48 actual inputs and12 matching original container executions. Clean-source
-launch tests and the unused-seed inventory remain before dispatch. No new
-objective-conditioned model search is running at this observation.
+has48 actual inputs and12 matching original container executions. Both objectives
+enter the real adaptive loss, with original fixed researchers and fresh blind
+critic measurements. Selection-frozen evaluation and the important research
+answer remain ahead; publication readiness remains open.
 
 **November12 03:42JST / November11 18:42UTC:** all four resource-control worlds
 close normally18:29:23UTC; two independent audits/costs close18:30:14UTC. Two

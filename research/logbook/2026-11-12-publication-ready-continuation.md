@@ -167,3 +167,21 @@ backend0.33.3. The explicit future evaluation seeds64101,64107,64113 must pass
 the actual three-root usage inventory before development dispatch. At this
 implementation entry no new objective-search inference is yet running; launch
 needs the final clean-source tests, saved plan and actual start receipt.
+
+## Actual objective-conditioned launch
+
+Clean537514a passes118 checks in47.31s before scientific checkout creation.
+The actual saved plan reconstructs exactly. Prospective seed receipts inspect
+315,209 and550 response-cache bindings across main, experiments and worktrees,
+respectively; all three future seeds64101/64107/64113 have no matches or errors
+within that declared scope. No inference is used in preparation.
+
+Actual writer8469/session33505 starts19:41:35.838316UTC on November11
+(04:41JST November12), first reviewed-all-connected native reference active.
+Plan content37fc1406 and file7d287e31 are fully bound in the retained launch
+receipt. Separate same-source analysis/session29257 starts its finite24-hour
+normal-closure wait, with no inference or retry, before double audit/cost.
+Feature development can now continue independently without changing either
+frozen source. This launch is not eight-slot closure, improvement, unused-seed
+evaluation or publication readiness. The54-page PDF remains the last closed
+evidence snapshot until new audited science is available.
