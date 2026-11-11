@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Prospective persistent code-test observations](components/native-post-edit-feedback-v1.md)
+  and [exact verification](results/native-persistent-component-observation-verification-v1.json):
+  the first real session delivered errors once, then lost them after a read.
+  A separate version-bound view retains current-code observations without
+  executing or vetoing anything;113 clean checks and the actual unsent-frame
+  reconstruction pass. No proven causal effect or model repair gain. The live
+ 93076b4 four-slot loop remains unchanged and reaches E/G1 readiness16:59UTC.
+
 - [Latest integrated working paper](../output/pdf/science-utopia-lab-integrated-fixed-evaluation-working-paper.pdf)
   and [its own build/evidence binding](../paper/integrated-fixed-evaluation-build-v1.json):
   November12,52 pages/22 figures/21 tables. Adds the actual closed30-world

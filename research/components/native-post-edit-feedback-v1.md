@@ -78,3 +78,33 @@ All control frames carry the declaration. A complete scripted HTTP calibration
 and real role-factory/transport repair session now exercise this boundary without
 a mocked certificate or model class. The earlier195 checks did not cover this
 whole boundary and are not proof that it was correct then.
+
+## Prospective persistent observation view (November12)
+
+The first real93076b4 authoring session closes fourteen steps. Its first four
+fixed-input probes return; a later literal edit raises four `CodeExecutionError`s
+for a missing output payload envelope. The actual next request contains those
+errors. After a subsequent read, the actual final request contains neither the
+error text nor type. The original bounded contract delivered the preceding
+action's feedback, not persistent current-code diagnostics. This establishes
+an availability gap, not that the gap caused the model's failed submission.
+The final native candidate fails with null loss; its source is not repaired.
+
+The separate prospective2b37efc implementation adds
+`persistent_component_diagnostics` only to the declared post-edit mode. Each
+observation is bound to its exact code-artifact hash. The view distinguishes a
+tested current artifact, an untested later edit, an absent/ambiguous artifact,
+and a reverted previously tested version. Most-recent-suite and current-version
+observations are separate. Compact results retain exact archive/hash pointers
+and a marked error prefix of at most256 characters; full errors remain archived.
+Rebuilding the view executes no code or model and adds no finish veto, automatic
+repair, baseline fallback or merit constraint.
+
+[Verification](../results/native-persistent-component-observation-verification-v1.json)
+binds113 passing clean-source checks (42.13s), scripted version/revert cases and
+the actual fourteen-step archive. The unsent new rendering preserves all four
+last errors after the same read, with the same literal draft. Source-bound cold
+replay under original93076b4 also succeeds; all thirty inspected input files are
+unchanged. The new view's real-backend token capacity and effect on model repair
+or native loss are not measured. The live four-slot93076b4 experiment is not
+hot-patched: a later experiment requires its own fresh runtime-bound calibration.

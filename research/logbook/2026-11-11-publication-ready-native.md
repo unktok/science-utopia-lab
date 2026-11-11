@@ -402,3 +402,25 @@ R2をコード提出率だけの問題にしないため、既存のlossの識�
 content SHA256は`50860495ea4d0dbe096d87d5cca3f8edf02b95f5431e7f7abe67320ca0c38675`。
 四つの解析／欠測回帰が0.64秒でpass。原raw全監査の再実行、new world／model呼出は0。
 cohortは過去閉鎖reportだけであり、進行中620xxの結果を使っていない。
+
+### 16:59UTC: actual error availability and prospective version-bound view
+
+93076b4のT/G0は14stepで提出、native実行はCodeExecutionError/null loss。
+初回の4probeはreturned、後のsource編集は4probeともmissing payload envelopeでraised。
+実際のstep12 wireにはエラー本文/typeがあるが、read後のstep13最終wireにはない。
+前actionだけをbounded表示することによるavailability gapであり、失敗の因果原因とは未証明。
+original sourceのcold replayは成功し、definition/response hashesをcompact receiptへ保持。
+
+別feature2b37efcでpersistent_component_diagnosticsをopt-in表示へ追加。
+exact code hash別に現在版の観測と直近実行を分け、未テスト編集、同一版へのrevert、
+node削除/重複を区別。error prefix256文字とexact archive pointerを表示。
+new model/probe、host修復、finish vetoは0。現93076b4のsource/planは一切変更しない。
+actual14stepから同一draftを復元し、unsent new frameで最後の4errorが保持されることを確認。
+30input filesは前後hash一致。実backendのtoken余裕／修復率やloss改善は未測定。
+
+予備QA a1は20pass/1fail（test assertionの誤配置）、a2は22pass/1fail
+（回帰testのworkflow_phase import先誤り）。両JUnitを保持しruntime guardは緩めず修正。
+a3は23pass、a4は25pass。commit後の広域6moduleは113/113pass（42.13秒）、
+JUnit SHA256 `80d08b7e9f91e8acc79033c6a3af4b67f8c5585523de3752d0fd1c3ea700699e`。
+これはsoftware checksで科学sample数ではない。将来の実使用はfresh runtime校正が必要。
+16:59UTCにwriter91390はE/G0を終えE/G1 readinessへ進んだ。未閉鎖cohortを完了扱いしない。

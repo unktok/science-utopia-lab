@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 01:59JST / November11 16:59UTC:** session91390 completes E/G0
+execution and enters E/G1 readiness. The frozen93076b4 experiment continues
+unchanged. Its first T/G0 author submits a later code version after four actual
+component errors; native execution fails and loss is null. No successful repair
+or improvement is inferred from the earlier four returned probes.
+
+An exact request inspection finds the errors in the next call but absent from
+the final call after another read. The separate prospective2b37efc
+[persistent observation view](components/native-post-edit-feedback-v1.md)
+keeps results attached to exact current code, including untested edits and
+reversions.113 clean-source checks pass; the actual archive reconstructs the
+same draft with all four errors visible in an unsent rendering. No new model
+call, native execution, causal explanation or success-rate improvement is
+claimed. The active source, protocol and four-slot budget remain unchanged;
+any future use needs fresh source-bound real calibration.
+
 **November12 01:34JST / November11 16:34UTC:** the new code-tested loop has
 completed all three native references and entered its first T/code-and-graph
 proposal at16:32:31UTC. Session91390 is confirmed live. No closed candidate,

@@ -1,0 +1,98 @@
+{
+  "schema": "scienceutopia.native-persistent-component-observation-verification.v1",
+  "prospective_source_commit": "2b37efc3992cb3a84ed1680cf3ae91e2a1823bac",
+  "scientific_source_commit": "93076b477b023a6bcb78cac5568fcbe795fa9a52",
+  "scope": "One closed actual authoring session and an unsent prospective rendering, not closure of the four-slot native study or a causal explanation of failure.",
+  "original_source_cold_replay": {
+    "executed_successfully": true,
+    "definition_sha256": "1ce700f447988fbd98c1c56c51bda4939f563cc7f9e0aa6acb1039f0d0d5d6f2",
+    "staged_response_content_sha256": "0f989f71165908ecec01c5ee5b3e9fa530e3a848e5ea5067931c9a31cc1748a5",
+    "new_model_calls": 0,
+    "new_code_executions": 0
+  },
+  "staged_steps": 14,
+  "component_testing": {
+    "contract_sha256": "50e626de14d489f2c6d8b06afb29f7e1bb17f37527e30da06666bd22e301427a",
+    "new_model_calls_from_tests": 0,
+    "new_native_worlds": 0,
+    "probe_attempts": 8,
+    "raised": 4,
+    "returned": 4,
+    "veto_on_finish": false
+  },
+  "last_bad_edit_step": 11,
+  "recorded_next_call_delivery": [
+    {
+      "step": 12,
+      "request_wire_sha256": "f69b5838909721e64553ca38e9a7ca4a2bbc686abeabc1bbc16600de11f4dac3",
+      "component_error_text_present": true,
+      "component_error_type_present": true
+    },
+    {
+      "step": 13,
+      "request_wire_sha256": "6fc5ede5c1050f0644f8fe89d4e14924e387dc43b1e1f44887de34289c30b442",
+      "component_error_text_present": false,
+      "component_error_type_present": false
+    }
+  ],
+  "first_completed_suite_returned": 4,
+  "second_completed_suite_raised": 4,
+  "new_view": {
+    "all_four_last_failures_preserved_after_read": true,
+    "test_applicability": "same-current-artifact",
+    "same_literal_draft_sha256": "eae3407945788fc1a71eb2bea5bfc4f2101f89a51603816f062abb95b1e17fde",
+    "rendered_prompt_utf8_bytes": 93085,
+    "rendered_prompt_sha256": "afdcc61e7c6fcc6e340e5dd11ff23816384e0481ee68fd799f933a3518d84a1d",
+    "renderer_was_sent_to_real_model": false,
+    "backend_token_capacity_measured": false,
+    "veto_on_finish": false,
+    "new_probe_attempts": 0
+  },
+  "input_files_unchanged": true,
+  "input_relative_file_hashes": {
+    "request.json": "c3eb260fae065670852e065fc65fa48f134fe2b85612d875ac0c8d91d69cd5d7",
+    "response.json": "286ebb369369831e69d0a43faa96c64d3e296b49ee270256316bb5e9f8556cff",
+    "step-00.started.json": "767e7d8c34ceb94ce7432259d57f00ca6252be3ee8438b8633ff645503872927",
+    "step-00.completed.json": "685e63a8ee87976bbf9e522174215b176d85c795c1959d991b9dd4502c806708",
+    "step-01.started.json": "1387adc6f9dcf5a9d81234fc735799a462b68cee53a2be4d2c9df31b9db2ddaa",
+    "step-01.completed.json": "060b2e4674d111605d11e057ae3cdc28b50a4228857ffb44a023ed05db564186",
+    "step-02.started.json": "66b92c1a9f8dcd9c900b7878d23827525529214765bdcdfbd7248ab743f5a242",
+    "step-02.completed.json": "362aba8df7424ff031f2f71d36f7431f91f94839b8232b2be19ef3ece70532ed",
+    "step-03.started.json": "c629f1397a94c7d4f020c8bccca1753d67dbbae699a5c54d98bb1e798f02c17c",
+    "step-03.completed.json": "1b8bccdbcd85c2be9e9c1cff7379d8c4e10dd9add57e58b0059d3669fc4594f9",
+    "step-04.started.json": "0ce7ab25641b9ffed9606710f917d84fcf575139c160c16ddf45a845f634620e",
+    "step-04.completed.json": "72909a6fefcfe0e9e74d962c38d896a1adfe42c53de1cdf9dd5278cb578cc6fd",
+    "step-05.started.json": "c0fe42fa98744cf2ba92047c5190bd75583fad8f5075775cd20345d9dc93e415",
+    "step-05.completed.json": "64f1ebbc78e357fd5173585312e248681e9c9159868a2a05357a9024fd962e00",
+    "step-06.started.json": "f444494e9626ad18f127e445da6301c76cdec400c688bd6754fe39b7c1933dae",
+    "step-06.completed.json": "d31e5f86eece6a4a6c4d643abc29cebbd0e68c6dc9620a26d10829635c38fde0",
+    "step-07.started.json": "ee0ed4ca622d0f403e7b41070ee3a50cd68ca3c3e547a5250d920083ee99a5a1",
+    "step-07.completed.json": "8341b5f12121e2539839e5293b459dc579d73b074ea0f2e4ed937cd68b044bfa",
+    "step-08.started.json": "5048570315a5d507747fc501fd795267ab6148b1223dfbf4a870d3a82a010e5d",
+    "step-08.completed.json": "6a07e395a09930a5dbf402dc4f8bc3006b407d61b4f2b93d9c2c8bcd05ebc425",
+    "step-09.started.json": "6e2aed19c28802ef23ca81e8244e21b26cc2ece21e167e84ae27fb7c344ec399",
+    "step-09.completed.json": "c4cf5f385b7a08594ae246cd8d0ed45f159501bb6f48ec3c2024474055fcfaec",
+    "step-10.started.json": "833e66f23d250a47a168bb870bee285afad17332a8469ecf249b2d47816cda85",
+    "step-10.completed.json": "78a61050cffa4fe58c31fc5651579411471296b793829c1468a97c9802e1f19e",
+    "step-11.started.json": "c83502c90960558514b05e166c1b115c3a388726d331cddadb0ea4b47a543215",
+    "step-11.completed.json": "2c34000704bd2fa7ffad30eaff67fc5cf644f01af207a667f68ca0270aac4fb1",
+    "step-12.started.json": "f3f1a767834885a387f37a9c2b6e7a969a077815818ab2a01fd3705784e80cd6",
+    "step-12.completed.json": "3e395a40817f629d4494d6ced275d23461d3b5ec1be52293e8059e803985eec7",
+    "step-13.started.json": "d74c668daf5d9031ce083d91998a5dc42ee3433e1a16ecbd049d15e0bf4c0939",
+    "step-13.completed.json": "46a4fc2c65dd01683d36cb02fe16fa032e4b648a4f6826233dea9470337b0585"
+  },
+  "clean_source_checks": {
+    "passed": 113,
+    "failed": 0,
+    "seconds": 42.13,
+    "junit_file_sha256": "80d08b7e9f91e8acc79033c6a3af4b67f8c5585523de3752d0fd1c3ea700699e"
+  },
+  "native_candidate_status_observed": "failed",
+  "native_candidate_loss": null,
+  "native_full_physical_audit_repeated": false,
+  "causal_effect_on_submission_or_loss_demonstrated": false,
+  "active_experiment_source_modified": false,
+  "new_real_model_calls_from_analysis": 0,
+  "new_real_code_executions_from_analysis": 0,
+  "publication_ready": false
+}
