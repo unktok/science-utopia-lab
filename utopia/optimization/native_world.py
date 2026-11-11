@@ -80,7 +80,8 @@ def _measure_domain(simulation, *, run_id, after_year):
 
 
 def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
-                                simulation_factory: Callable, loss_spec: dict):
+                                simulation_factory: Callable, loss_spec: dict,
+                                measurement_adapter: Callable | None = None):
     """Execute a complete SystemSpec in the actual Simulation, then measure loss.
 
     The factory owns isolated paths, model/cache/fidelity and subclass plugins.
@@ -90,6 +91,8 @@ def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
     """
     from utopia.simulation import Simulation
     validate_loss_spec(loss_spec)
+    if measurement_adapter is not None and not callable(measurement_adapter):
+        raise ValueError('measurement adapter must be trusted callable orchestration, never candidate data')
     if not seeds or any(type(s) is not int for s in seeds) or len(set(seeds)) != len(seeds):
         raise ValueError("native evaluation requires distinct integer seeds")
     spec = SystemSpec.from_dict(suggestion.candidate)
@@ -114,13 +117,25 @@ def evaluate_native_suggestion(suggestion: Suggestion, *, seeds: Sequence[int],
                 from .native_factory import NativeInferenceBudgetExceeded
                 raise NativeInferenceBudgetExceeded('native HTTP attempt budget was exhausted during this trajectory')
             measurement = measure_native_world(sim, run_id=run_id)
-            evaluations.append(measurement)
             evidence.append({"run_id": run_id, "seed": seed, "system_fingerprint": spec.fingerprint,
                              "event_stream_hash": sim.native_system.to_dict()["event_stream_hash"]})
             checkpoint = Path(sim.output_dir) / f'portable_checkpoint_year_{sim.num_years}.json.gz'
             if checkpoint.exists():
                 from utopia.utils.data_utils import file_sha256
                 evidence[-1].update(checkpoint_path=str(checkpoint.resolve()), checkpoint_sha256=file_sha256(checkpoint))
+            if measurement_adapter is not None:
+                from copy import deepcopy
+                from utopia.system.design_patch import digest
+                original = deepcopy(measurement)
+                measurement = measurement_adapter(sim, deepcopy(original))
+                if (not isinstance(measurement, dict) or not isinstance(measurement.get('metrics'), dict)
+                        or any(k not in measurement or digest(measurement[k]) != digest(v)
+                            for k, v in original.items() if k != 'metrics')
+                        or any(k not in measurement['metrics'] or digest(measurement['metrics'][k]) != digest(v)
+                            for k, v in original['metrics'].items())):
+                    raise ValueError('measurement adapter must retain every native measurement and identity exactly')
+                digest(measurement)  # New metadata/metrics must also be finite literal JSON.
+            evaluations.append(measurement)
         except PortableStop as error:
             # The journalled model path intentionally wraps transport failures
             # in BaseException PortableStop. Only our exact declared-budget
