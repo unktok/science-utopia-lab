@@ -2,6 +2,13 @@
 
 ## Active publication-ready goal
 
+**November12 07:23JST / November11 22:23UTC:** the writer closes its fourth
+proposal slot and moves to T/g2 readiness at22:22:46UTC. T/g0 and T/g1 both
+complete at−7; U/g0 is null and U/g1 completes at−4. Four of eight proposal
+slots are closed, three complete and one failed. No improvement over the
+connected accept-all reference is observed so far; four slots and all fixed
+unused evaluation remain. The new optional diagnosis is not active science.
+
 **November12 07:19JST / November11 22:19UTC:** three of eight proposal slots
 are closed: T/g0 completes at−7, U/g0 has a shape-related null and U/g1 completes
 at−4. U/g1 literally submits its unchanged best reference, not a repaired or

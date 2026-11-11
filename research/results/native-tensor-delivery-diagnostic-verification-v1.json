@@ -34,6 +34,12 @@
       "junit_file_sha256": "07fca242c2f68a2e52b37779fdb34e833091b84f9501f7939b0638ee114c5a1f"
     }
   ],
+  "post_retention_verification": {
+    "source_commit": "43e7b2f",
+    "scope": "full scripted feedback/outer paths plus actual retained readout integrity; no new scientific worlds",
+    "passed": 62, "failed": 0, "elapsed_seconds": 48.12,
+    "junit_file_sha256": "ff87991531d2ff94747989819401863ff0b6380c7a61bfa15170d5b77064f664"
+  },
   "test_scopes_overlap_and_are_not_scientific_replications": true,
   "retained_failures": [
     {"scope": "readout test collection", "source_commit": "3a5de71", "passed": 15, "errors": 1,

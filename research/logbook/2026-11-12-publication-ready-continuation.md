@@ -490,3 +490,19 @@ Evidence, exact receipt hashes and reproduction are retained under
 research/data/native-tensor-delivery-diagnostic-v1 and
 research/results/native-tensor-delivery-diagnostic-verification-v1.json.
 The55-page reviewed PDF remains unchanged; R2 and publication readiness stay open.
+
+Post-retention feedback/readout checks at43e7b2f pass62 in48.12s; JUnit SHA256
+`ff87991531d2ff94747989819401863ff0b6380c7a61bfa15170d5b77064f664`.
+This includes exact portable report integrity and all scripted optional-mode
+outer boundaries, not a fresh actual-model certificate. At22:22:46UTC the
+original writer closes T/g1 at−7 and enters T/g2 readiness. Four of eight
+proposal slots are closed: three native completions and one null. All observed
+complete own losses still tie the connected accept-all reference. The remaining
+four slots and all fixed unused evaluation are pending.
+
+RESEARCH.md now links the actual55-page snapshot and current publication-ready
+goal rather than calling the historical47-page/finite package current. It
+explicitly separates global project freedom from the active pilot's fixed
+production/project domain and corrects its old running30-world evaluation
+description to normal closed historical evidence. This is documentation
+alignment, not an expansion of current scientific authority or a new result.
