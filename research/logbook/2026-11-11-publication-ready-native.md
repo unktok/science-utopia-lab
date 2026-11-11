@@ -207,3 +207,20 @@ raised／pendingからremote実行完了を推定せず、旧rawの欠落を後�
 mocked executorのみの10チェックが0.69秒でpass。新しいcontainer／LLM／native world実行は0。
 実scientist worldでの回帰と設計者toolへの統合はまだであり、これだけで発明精度の改善としない。
 live固定候補評価のf1f8ddfには適用しない。
+
+5cc8493のclean sourceでrecorder／physical proof／元native Simulationのzero-code経路／
+固定候補evaluationを合わせ35/35pass（6.69秒）。実Qwen応答・新container実行ではなく、
+scripted元Simulationとmock executorの範囲。試験中もsource／HEADを固定した。
+
+別API `NativeComponentLab`は任意のliteral code artifactを記録済みcontextで試し、
+原関数と同じ結果を要求せず、JSON契約と実行receiptだけを検証する。image／timeout／
+最大8probeを固定し、invalid fixtureも課金枠として消費、pending時は再dispatchしない。
+host修復・policy置換・新native lossはない。cold replayはcontainerを再実行しない。
+元671436aの監査済み開発参照3種、selector／feature-extractorの実入力をstageするguardも追加。
+未使用620xx worldには触れない。mockのみ24/24pass（0.81秒）。モデルtool接続前であり、
+これを実LLM自己debug完了とは表示しない。実入力stageとtool接続を次へ進める。
+
+なお、今回8code sessionの全実promptを読み、step1以降はliteral_current_system_includedが
+trueでimplementation checkpointも複数回発生していることを確認した。「document byte上限で
+実装phaseに全く入れない」という仮説はこのデータに当てはまらず、その理由でguardを変更しない。
+既存自己履歴とsource読取だけでは実contextに対する実行テストの代替にならない。
