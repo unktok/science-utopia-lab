@@ -60,3 +60,11 @@ decoder contract. The failed test receipt remains retained. The live30-world
 fixed-candidate evaluation stays unchanged at sourcef1f8ddf. Actual local35B
 readiness and a finite self-debugging assay must run at the new clean source,
 after the active scientist run releases local inference resources.
+
+[Clean-source regression](../results/native-post-edit-feedback-verification-v1.json)
+at56e2331 passes195/195 checks in199.90 seconds, including original native
+Simulation with scripted researcher HTTP/corpus and actual Docker, full
+scientist-payload clock/identity guards, old editor/readiness and new feedback
+paths. The first run's178 pass/17 Docker-permission failures are retained; the
+second run changes access permission, not source or tests. These are software
+checks, not195 scientific observations.

@@ -64,7 +64,7 @@
 研究全体の原稿は、ページ数で先に削らない[統合稿](paper/integrated.tex)へ
 まとめ直した。目的関数、抽象化、構造変更、条件付き勾配、過去の実作用、最新比較、
 ゲームUIを含め、過去と現在のsource・設計者・評価条件を分離して記述する。
-元の37ページ稿と情報比較の41ページ稿は保持している。現在の[44ページの統合稿](output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)は、
+元の37ページ稿と情報比較の41ページ稿、44ページ稿は保持している。現在の[47ページの統合稿](output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf)は、
 12世界の情報比較と、目的別探索・選択後評価・実コード・費用・限界を含む。
 [現在の終了条件](research/pre-scale-completion.md)に沿った別sourceの目的別探索は、
 16枠・選択後27物理評価・二回全監査まで閉じた。[実結果と全データ](research/results/pre-scale-search-v1.md)
@@ -80,7 +80,10 @@
 [具体的な次段階の研究設計](research/publication/institution-causal-design-plan.md)では、
 固定パラメータ族の限界、情報・操作・時点の変更、同じ権限を持つ表現の探索を分ける。
 実行順序を設計者へ提示する経路と、新しい明示domainのnative接続は実装・検証した。
-実LLM比較と新しい閉ループ実験はまだ開始しておらず、[その現在地](research/results/institution-causal-design-v1.md)を記録している。
+実LLMの八session診断は閉鎖済み。別のnative閉ループpilotは19worldで停止し、
+11提出の5完走／6技術nullと1未提出を保持した。成功した提出の候補固定・未使用seed評価は
+別実験として進行中であり、停止した探索の完了や手法優位性へ言い換えない。
+sourceとdated progressは[現在地](research/STATUS.md)を参照する。
 
 単に元論文の介入実験を繰り返すのでも、特定のLLMに提出させることでもない。
 目的の違い、設計自由度、探索法の違いが、発見する科学システムとその帰結に

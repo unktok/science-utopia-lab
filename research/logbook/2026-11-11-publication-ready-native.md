@@ -290,3 +290,10 @@ bounded workerとrole bindingを合わせたQAは42/42pass（60.92秒）。
 3fail/19pass。runtime guardを緩めず、未実行finish一件を使うfixtureへ修正。
 これらはfake backend/executorの検証で、実35Bの自己修復や新native lossとは数えない。
 実モデルcalibration／有限assayはlocal inferenceを共用する現30world終了後に行う。
+
+clean56e2331bcfaf29a23b2a22e12637b672c9888be9で広域12moduleを固定実行。
+初回は178pass/17fail、全17件が既存Docker socketのpermission denied。
+source／HEAD／検査を変えずDocker access付きで同じsuiteを実行し195/195pass（199.90秒）。
+JUnit SHA256は`ba0e44917a4c28cedc0fc0b004f766279658a579281613b1d2d7d2fde265490f`。
+元Simulation/scripted研究者とcorpus／実Docker、全scientist payloadの時計・identity回帰も含む。
+実Qwen／designer生成0。初回の失敗JUnitも保持し、別科学sample数へ足さない。
