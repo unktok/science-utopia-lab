@@ -40,3 +40,19 @@ def test_exact_three_position_fraction_and_inconsistent_cache_are_distinct():
 def test_invalid_literal_rating_never_becomes_zero_utility(bad):
     a=row('a',3);a['rating']['ratings'][0]['score']=bad
     with pytest.raises(ValueError):overlap([a],[])
+
+
+def test_actual_retained_export_and_figure_hashes_keep_stopped_reference_scope():
+    import json
+    from pathlib import Path
+    from utopia.optimization.native_numeric_designer import checked
+    from utopia.utils.data_utils import file_sha256
+    root=Path(__file__).resolve().parents[2]/'research/data/native-content-overlap-v1'
+    report=checked(json.loads((root/'report.json').read_text()))
+    manifest=checked(json.loads((root/'manifest.json').read_text()))
+    assert all(file_sha256(root/name)==value for name,value in manifest['files'].items())
+    assert report['content_sha256']==manifest['report_content_sha256']=='b6e993f61e7fed0502810e41091658b9326bd0ff1e8a20d87e5e0e2151abb271'
+    assert report['scope']=='stopped-development-reference-diagnostic'
+    assert not any(report[k] for k in ('loss_changed','selection_changed','causal_mediation_claimed','publication_ready'))
+    r=report['overlap'];assert (r['common']['occurrences'],r['left_only']['occurrences'],r['right_only']['occurrences'])==(3,4,2)
+    assert r['left']['centered_utility_sum']==r['right']['centered_utility_sum']==4.
