@@ -10,13 +10,14 @@ from urllib.parse import urlparse
 import pytest
 
 from scripts.reports.paper_rebuild_bundle import literal_dependencies
+from scripts.reports.historical_paper_sources import historical_source
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def test_author_redaction_changes_no_scientific_source_or_assets():
-    source = (ROOT / 'paper/submission-v2.tex').read_text()
-    redacted = (ROOT / 'paper/submission-v2-anonymous.tex').read_text()
+    source = historical_source('paper/submission-anonymous-build-v1.json','paper/submission-v2.tex').decode()
+    redacted = historical_source('paper/submission-anonymous-build-v1.json','paper/submission-v2-anonymous.tex').decode()
     remove = lambda body: re.sub(r'\\author\{[^\n]+\}\n', '', body)
     assert source != redacted and remove(source) == remove(redacted)
     assert 'Anonymous authors' in redacted and 'Not submitted' in redacted
@@ -26,13 +27,16 @@ def test_author_redaction_changes_no_scientific_source_or_assets():
     assert receipt['visual_qa']['all_pages_inspected']
     for name, digest in {receipt['entrypoint']: receipt['tex_sha256'], receipt['output']: receipt['pdf_sha256'],
                          'paper/submission-v2.tex': receipt['original_tex_sha256'], **receipt['additional_dependencies']}.items():
-        assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
+        body = (ROOT / name).read_bytes() if name == receipt['output'] else historical_source(
+            'paper/submission-anonymous-build-v1.json',name)
+        assert hashlib.sha256(body).hexdigest() == digest, name
 
 
 def test_finite_paper_subset_keeps_attribution_and_omits_identified_source_and_numeric_archive():
     policy = json.loads((ROOT / 'research/publication/paper-rebuild-allowlist-anonymous-v1.json').read_text())
     assert len(policy['files']) == 13 and policy['files'] == sorted(set(policy['files']))
-    bodies = {name: (ROOT / name).read_bytes() for name in policy['files']}
+    bodies = {name: historical_source('paper/submission-anonymous-build-v1.json',name)
+        for name in policy['files']}
     assert len(literal_dependencies(bodies, policy['entrypoint'])) == 10
     assert 'LICENSE' in bodies and 'paper/neurips_2025.sty' in bodies
     assert 'paper/submission-v2.tex' not in bodies

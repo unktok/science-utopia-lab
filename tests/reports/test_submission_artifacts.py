@@ -6,6 +6,8 @@ import re
 import shutil
 import subprocess
 
+from scripts.reports.historical_paper_sources import historical_source
+
 ROOT=Path(__file__).resolve().parents[2]
 
 
@@ -24,7 +26,9 @@ def test_reviewed_pdf_and_complete_source_dependencies_match_receipt():
     for relative,expected in assets.items():
         target=(ROOT/relative).resolve()
         assert target.is_relative_to(ROOT) and target.is_file()
-        assert sha(target)==expected,relative
+        observed = sha(target) if relative == receipt['output'] else hashlib.sha256(
+            historical_source('paper/submission-build-v2.json',relative)).hexdigest()
+        assert observed==expected,relative
     info=shutil.which('pdfinfo')
     if info:
         text=subprocess.check_output([info,str(ROOT/receipt['output'])],text=True)
@@ -37,12 +41,13 @@ def test_manuscript_citations_and_included_figures_have_bound_local_inputs():
     while pending:
         path=pending.pop()
         if path in visited:continue
-        visited.add(path);text=(ROOT/path).read_text();bodies.append(text)
+        visited.add(path);text=historical_source('paper/submission-build-v2.json',path).decode();bodies.append(text)
         if path!='paper/submission.tex':assert path in receipt['additional_dependencies'],path
         for relative in re.findall(r'\\input\{([^}]+)\}',text):
             pending.append('paper/'+relative+('' if relative.endswith('.tex') else '.tex'))
     tex='\n'.join(bodies)
-    bib=(ROOT/'paper/references.bib').read_text()+(ROOT/'paper/submission-sources.bib').read_text()
+    bib=''.join(historical_source('paper/submission-build-v2.json',p).decode()
+        for p in ('paper/references.bib','paper/submission-sources.bib'))
     available=set(re.findall(r'@\w+\s*\{\s*([^,\s]+)',bib))
     used={key.strip() for group in re.findall(r'\\cite\w*\{([^}]+)\}',tex) for key in group.split(',')}
     assert used and used<=available

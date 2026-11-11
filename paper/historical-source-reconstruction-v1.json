@@ -1,0 +1,14 @@
+{
+  "schema": "scienceutopia.historical-paper-source-reconstruction.v1",
+  "scope": "Exact receipt-bound byte reconstruction, not attestation of the originally unrecorded build commit",
+  "original_build_commit_attested": false,
+  "reconstruction_commit": "8027f568cc16b0aed7428eab593f716b19530b20",
+  "extra_files": {
+    "LICENSE": "0dc1811264bb76e119d3f58a8e775d79abeb1708c9486d3861354c1688062350"
+  },
+  "receipts": {
+    "paper/submission-build-v2.json": "a57614921393599c93c1de7e9bd25b0b44372baf0237527f5ce78b1eb1b326bf",
+    "paper/submission-build-v3.json": "2007fedcb8e2b8c07a63772db4ca37d2b1b4bb79e028ee21dedd7dcdeab1099a",
+    "paper/submission-anonymous-build-v1.json": "a91ac13b6219b3fd8893edceba97bfff7392b17173ac2d3f1b6e9289101a84e7"
+  }
+}

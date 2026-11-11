@@ -8,6 +8,8 @@ import subprocess
 
 import pytest
 
+from scripts.reports.historical_paper_sources import historical_source
+
 ROOT = Path(__file__).resolve().parents[2]
 
 
@@ -34,7 +36,9 @@ def test_v2_reviewed_source_pdf_and_dependencies_match():
                 **receipt['additional_dependencies'], **receipt['analysis_projection_sources']}
     for name, digest in expected.items():
         assert (ROOT / name).resolve().is_relative_to(ROOT)
-        assert sha(name) == digest, name
+        observed = sha(name) if name == receipt['output'] else hashlib.sha256(
+            historical_source('paper/submission-build-v3.json',name)).hexdigest()
+        assert observed == digest, name
     old = receipt['previous_draft_preserved']
     assert sha(old['output']) == old['pdf_sha256']
     info = shutil.which('pdfinfo')
@@ -50,13 +54,14 @@ def test_v2_literal_dependencies_and_citations_are_bound():
         name = pending.pop()
         if name in visited:
             continue
-        visited.add(name); body = (ROOT / name).read_text(); bodies.append(body)
+        visited.add(name); body = historical_source('paper/submission-build-v3.json',name).decode(); bodies.append(body)
         if name != receipt['entrypoint']:
             assert name in receipt['additional_dependencies']
         pending += ['paper/' + p + ('' if p.endswith('.tex') else '.tex')
                     for p in re.findall(r'\\input\{([^}]+)\}', body)]
     tex = '\n'.join(bodies)
-    bib = (ROOT / 'paper/references.bib').read_text() + (ROOT / 'paper/submission-sources.bib').read_text()
+    bib = ''.join(historical_source('paper/submission-build-v3.json',p).decode()
+        for p in ('paper/references.bib','paper/submission-sources.bib'))
     available = set(re.findall(r'@\w+\s*\{\s*([^,\s]+)', bib))
     used = {k.strip() for g in re.findall(r'\\cite\w*\{([^}]+)\}', tex) for k in g.split(',')}
     assert used and used <= available

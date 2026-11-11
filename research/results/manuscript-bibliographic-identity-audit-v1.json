@@ -1,0 +1,58 @@
+{
+  "schema": "scienceutopia.manuscript-bibliographic-identity-audit.v1",
+  "checked_date_JST": "2026-11-12",
+  "scope": "Primary-record bibliographic identity and publication-status check, not a full claim-by-claim review or independent reproduction of cited results",
+  "bibliography_file_sha256": {
+    "paper/references.bib": "29e0732ea36784bbb6667973ff7070309e3b4bd93696cde21a9dd02193a7c1a6",
+    "paper/submission-sources.bib": "ec4a5bf59c57be3fde384326d2fc598bc4ba64811feb245715567f20a541cea1"
+  },
+  "checked_fields": ["title identity", "listed leading authors", "publication or original preprint year"],
+  "primary_records": {
+    "jin2026scienceutopia": "https://arxiv.org/abs/2610.01257v1",
+    "jin2024scievo": "https://arxiv.org/abs/2410.09510v2",
+    "fortunato2018science": "https://muriteams.cs.ucsb.edu/publications/1082",
+    "hicks2015leiden": "https://www.leidenmanifesto.org/",
+    "liu2025mechanism": "https://arxiv.org/abs/2502.12203v1",
+    "yang2024opro": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/3339f19c5fcee3ad74502947a32be9e6-Abstract-Conference.html",
+    "ma2024sga": "https://proceedings.mlr.press/v235/ma24m.html",
+    "zheng2020economist": "https://arxiv.org/abs/2004.13332v1",
+    "hu2024adas": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/36b7acf6f6010652b3f2a433774a66fe-Abstract-Conference.html",
+    "karten2025economist": "https://arxiv.org/abs/2507.15815v1",
+    "piao2026agentsociety2": "https://arxiv.org/abs/2607.11895v2",
+    "zhuge2024gptswarm": "https://proceedings.mlr.press/v235/zhuge24a.html",
+    "fei2026institutions": "https://arxiv.org/abs/2604.27691v1",
+    "huang2026policysim": "https://arxiv.org/abs/2603.19649v1",
+    "zhang2024aflow": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/5492ecbce4439401798dcd2c90be94cd-Abstract-Conference.html",
+    "feng2026adapt": "https://arxiv.org/abs/2610.30851v1",
+    "cadet2026mining": "https://arxiv.org/abs/2610.31709v1",
+    "braganeto2026community": "https://arxiv.org/abs/2603.21344v1",
+    "oyama2026macc": "https://ifaamas.org/Proceedings/aamas2026/pdfs/JLGE7606.pdf",
+    "asaria2026society": "https://arxiv.org/abs/2610.10468v1",
+    "chung2025station": "https://arxiv.org/abs/2511.06309v1",
+    "xin2026eurekagent": "https://arxiv.org/abs/2606.13662v1",
+    "parmas2021unified": "https://proceedings.mlr.press/v130/parmas21a.html",
+    "parmas2022proppo": "https://papers.neurips.cc/paper_files/paper/2022/hash/bbc9d480a8257889d2af88983e8b126a-Abstract-Conference.html",
+    "parmas2023composite": "https://proceedings.mlr.press/v202/parmas23a.html"
+  },
+  "publication_metadata_updates": {
+    "yang2024opro": {"year": 2024, "venue": "ICLR", "change": "Use official conference record URL"},
+    "ma2024sga": {"year": 2024, "venue": "ICML", "volume": 235, "pages": "33940--33962", "change": "Replace preprint-only entry with proceedings"},
+    "hu2024adas": {"year": 2025, "venue": "ICLR", "change": "Use published year and proceedings while retaining stable citation key"},
+    "zhang2024aflow": {"year": 2025, "venue": "ICLR", "change": "Use published year, proceedings and printed Xiong-Hui author spelling"},
+    "oyama2026macc": {"year": 2026, "venue": "AAMAS Blue Sky Ideas", "pages": "3900--3904", "doi": "10.65109/JLGE7606", "change": "Use actual official proceedings PDF; confirm existing DOI, track and pages"}
+  },
+  "primary_claim_spot_checks": [
+    {"url": "https://arxiv.org/html/2604.27691v1", "scope": "Section3 identifies SocialSystemArena and executable governance specifications"},
+    {"url": "https://arxiv.org/html/2607.11895v2", "scope": "Section3.2.3 describes requirements to design specification to code; this is not a new priority claim for our platform"}
+  ],
+  "access_limits": [
+    "Nature/Science direct pages and Crossref API were unavailable through this reader; authors' official Leiden and UCSB project records supply identity/context, not a claimed new reading of the complete publisher text.",
+    "The OpenReview forum presented a browser challenge; official ICLR proceedings and the accessible official paper PDF supplied the publication record instead.",
+    "An unrelated arXiv lookup1803.01337 was discarded and is not a bibliography entry or evidence for Science of science."
+  ],
+  "all_cited_methods_independently_reproduced": false,
+  "all_related_work_claims_fully_reaudited": false,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "publication_ready": false
+}

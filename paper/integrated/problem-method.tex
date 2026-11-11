@@ -178,6 +178,10 @@ These are engineering containment tests, not new Qwen experiments. The live
 studies below separately use fixed local Qwen3-8B scientists and actual
 literature-grounded native forwards. They are small local settings, not a
 reproduction of the source paper's reported Qwen3-32B configuration.
+The local four-year literature subset contains 103,107 CS records from 2016--2019,
+drawn from SciEvo~\citep{jin2024scievo}. Corpus and retrieval identities are
+bound separately from the researcher model; a local run is not a replication
+of the source paper's model scale or full experimental population.
 
 The extension is conservative, not unlimited. Generated code cannot import
 arbitrary host objects, change researcher weights, rewrite a measurement or
@@ -323,4 +327,62 @@ A point-mass design or retaining the incumbent is legal. Section~\ref{sec:nested
 executes this outer-design/inner-update composition in the original world.
 It is an application of existing search and estimation ideas, not a new
 theory of differentiable program synthesis.
+
+\subsection{What finite searches and fixed-policy comparisons estimate}
+\label{sec:finite-estimands}
+Let $\mathcal C_{\lambda mh}$ be the declared eligible candidate pool for
+objective $\lambda$, proposal method $m$ and design history $h$. Eligibility
+here means the protocol's selection pool, not a hidden scientific-merit test.
+After development, retain the entire observed minimum set
+\begin{equation}
+ \mathcal B_{\lambda mh}=
+ \mathop{\mathrm{arg\,min}}_{S\in\mathcal C_{\lambda mh}^{\mathrm{complete}}}
+ \widehat L^{\mathrm{dev}}_\lambda(S),
+ \label{eq:finite-minimum-set}
+\end{equation}
+and apply only the predeclared tie rule to choose an evaluation specification
+$S^*_{\lambda mh}$. Equal losses do not establish equivalent programs or
+identical trajectories. An initial/reference policy belongs to the pool only
+when that protocol makes it eligible; submitting an unchanged reference is
+legal but is not new invention. An empty eligible complete pool leaves an
+unavailable selection, not an automatically substituted baseline.
+
+For a fixed selected policy and an explicit reference $S_0$, the common-condition
+comparison is
+\begin{equation}
+ \Delta_{\lambda mh}(c)=
+ L_\lambda(S^*_{\lambda mh};c)-L_\lambda(S_0;c).
+ \label{eq:reference-relative-loss}
+\end{equation}
+Negative values favor the selected policy under that same objective. Different
+losses need not have comparable units, so comparing the magnitudes of T and U
+is not a method ranking. A common world seed names a matched environmental
+condition, not identical residual LLM randomness after two policies generate
+different requests. Pairing is therefore by declared condition and actual
+observations, not by an assumption that every stochastic event is shared.
+
+Variation over unused $c$ characterizes the already selected policy. Variation
+over independently repeated $h$ is also needed for an expected claim about the
+search procedure that selects it. More evaluation seeds for one selected
+specification do not become more independent optimization histories. Pooling
+several development histories into one winner likewise yields one selected
+policy per arm, not one held-out result per history. Different source snapshots,
+design domains, horizons and observers below are not pooled into a method
+effect.
+
+A technical null in either member makes that pair's loss difference unavailable.
+All attempted, failed and unattempted slots remain visible with their actual
+costs. Reporting loss only for completed pairs is conditional evidence and
+must accompany coverage; it is not an unconditional end-to-end risk estimate.
+No retrospective failure penalty is introduced to obtain a numerical ranking.
+Cross-objective scores reuse a trajectory's measurements when available;
+they are not additional world samples. Cached judgments of identical content
+similarly remain the same physical opinions, not independent replications.
+
+The objective-to-system question includes both its selected outcomes and its
+path: literal revisions, exercised effects, native consequences and cost.
+Different objectives may return overlapping minimum sets. If the objective
+also changes a loss-selected editing parent, the contrast concerns the entire
+objective-conditioned search, not scalar feedback alone with the parent held
+fixed. None of these definitions requires different winners or a positive gain.
 \FloatBarrier
