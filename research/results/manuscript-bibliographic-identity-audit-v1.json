@@ -3,7 +3,7 @@
   "checked_date_JST": "2026-11-12",
   "scope": "Primary-record bibliographic identity and publication-status check, not a full claim-by-claim review or independent reproduction of cited results",
   "bibliography_file_sha256": {
-    "paper/references.bib": "29e0732ea36784bbb6667973ff7070309e3b4bd93696cde21a9dd02193a7c1a6",
+    "paper/references.bib": "bdf8dadece57d657ad84ce0d5f677a1aec5b13aee834cc4db0938f70bd9dc0b3",
     "paper/submission-sources.bib": "2ebadd09bc064a9e0a6dcc4e1189672b2bea82b32e40c1c0a1d100159e9181b0"
   },
   "checked_fields": ["title identity", "listed leading authors", "publication or original preprint year"],
@@ -50,6 +50,7 @@
     "The OpenReview forum presented a browser challenge; official ICLR proceedings and the accessible official paper PDF supplied the publication record instead.",
     "An unrelated arXiv lookup1803.01337 was discarded and is not a bibliography entry or evidence for Science of science."
   ],
+  "visual_typography_correction": "Restore the missing LaTeX umlaut escape in Katy Börner; the earlier PDF printed a literal quote.",
   "all_cited_methods_independently_reproduced": false,
   "all_related_work_claims_fully_reaudited": false,
   "new_model_calls": 0,

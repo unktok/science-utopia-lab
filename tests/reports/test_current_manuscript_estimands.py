@@ -48,3 +48,9 @@ def test_finite_estimands_retain_ties_nulls_selection_units_and_original_world()
         assert marker in text
     assert 'SciEvo~\\citep{jin2024scievo}' in text
     assert 'No retrospective failure penalty' in text
+
+
+def test_bibliographic_accent_is_not_printed_as_a_literal_quote():
+    bib = (ROOT/'paper/references.bib').read_text()
+    assert r'B{\"o}rner' in bib
+    assert 'B{"o}rner' not in bib
