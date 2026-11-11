@@ -121,14 +121,16 @@ def test_unaccounted_json_journal_is_not_ignored_by_saved_bounded_result(tmp_pat
     with pytest.raises(ValueError,match='unaccounted JSON'):module.replay(tmp_path)
 
 
-def test_worker_component_adapter_is_exactly_bound_and_pending_is_preserved(tmp_path,monkeypatch):
+@pytest.mark.parametrize('extended',[False,True])
+def test_worker_component_adapter_is_exactly_bound_and_pending_is_preserved(tmp_path,monkeypatch,extended):
     from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,finish
     import utopia.optimization.native_jobs as jobs
     import utopia.optimization.native_designer_roles_v38 as roles
     import utopia.optimization.native_scientist_load_v38 as loads
     import utopia.system.code_mechanisms as code
     from utopia.optimization.native_component_lab_v1 import ComponentProbePending
-    gen,model,body,calls=fixture(tmp_path/'fixture',[source_action(BAD),finish()])
+    options={'extended':True,'reference':'resource-30-connected','maximum_probes':64} if extended else {}
+    gen,model,body,calls=fixture(tmp_path/'fixture',[source_action(BAD),finish()],**options)
     adapter=gen.edit_feedback;seen=[]
     monkeypatch.setattr(jobs,'pinned_revision',lambda root:'c'*40)
     monkeypatch.setattr(loads,'load_local_role',lambda *a,**kw:None)
@@ -165,7 +167,8 @@ def test_declared_component_contract_without_bank_stops_before_model_role_load(t
     assert not (tmp_path/'wire').exists()
 
 
-def test_actual_calibration_worker_declares_feedback_without_executing_components(tmp_path,monkeypatch):
+@pytest.mark.parametrize('extended',[False,True])
+def test_actual_calibration_worker_declares_feedback_without_executing_components(tmp_path,monkeypatch,extended):
     # Complete scripted transport calibration, not a mocked passed certificate.
     # Calibration describes the production mode but must never run its code.
     from tests.optimization.test_native_post_edit_feedback_v1 import fixture,finish
@@ -173,7 +176,8 @@ def test_actual_calibration_worker_declares_feedback_without_executing_component
     import utopia.optimization.native_jobs as jobs
     import utopia.optimization.native_scientist_load_v38 as loads
     from utopia.optimization.native_designer_preflight import require_certificate,EXECUTION_SCOPE
-    gen,model,body,calls=fixture(tmp_path/'fixture',[finish()])
+    options={'extended':True,'reference':'resource-30-connected','maximum_probes':64} if extended else {}
+    gen,model,body,calls=fixture(tmp_path/'fixture',[finish()],**options)
     monkeypatch.setattr(jobs,'pinned_revision',lambda root:'c'*40)
     monkeypatch.setattr(loads,'load_local_role',lambda *a,**kw:None)
     monkeypatch.setattr('requests.Session',ScriptedSession);ScriptedSession.calls=[]
@@ -194,7 +198,8 @@ def test_actual_calibration_worker_declares_feedback_without_executing_component
         assert 'OPTIONAL COMPONENT TESTS ARE DECLARED' in module.checked(json.loads(path.read_text()))['wire_utf8']
 
 
-def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch):
+@pytest.mark.parametrize('extended',[False,True])
+def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended):
     # No mocked certificate summary or model class: actual role/factory/transport
     # implementations, with an explicitly scripted HTTP server and executor.
     from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,GOOD,finish
@@ -204,10 +209,13 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     from utopia.optimization.native_designer_preflight import run_calibration,EXECUTION_SCOPE
     from utopia.optimization.native_designer_tools_v25 import function_data
     from utopia.optimization.native_staged_author_v15 import replay_staged_generation
-    gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()])
+    options={'extended':True,'reference':'resource-30-connected','maximum_probes':64} if extended else {}
+    gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()],**options)
     binding=designer_binding();binding['image_id']=gen.image_id
     actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
-        source_action(BAD),source_action(GOOD),finish()]
+        source_action(BAD),source_action(GOOD)]
+    if extended:actions.extend([source_action(BAD),source_action(GOOD)])
+    actions.append(finish())
     class Session(ScriptedSession):
         calls=[];production=[]
         def get(self,url,**kwargs):
@@ -231,9 +239,10 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
         conversation_profile=module.BOUNDED_AUTHORING,edit_feedback=gen.edit_feedback)
     result=author(body)
     assert result is not None and 'generation_failure' not in result
-    assert len(Session.production)==4 and len(probes)==8
+    expected_calls,expected_probes=(6,16) if extended else (4,8)
+    assert len(Session.production)==expected_calls and len(probes)==expected_probes
     assert 'SCRIPTED-BAD-FLOAT' in json.dumps(Session.production[2])
     assert not unused.calls
     directory=next((tmp_path/'author').glob('generation-*'))
     assert replay_staged_generation(directory)==result
-    assert len(Session.production)==4 and len(probes)==8
+    assert len(Session.production)==expected_calls and len(probes)==expected_probes

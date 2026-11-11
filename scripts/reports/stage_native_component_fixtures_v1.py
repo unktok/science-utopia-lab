@@ -12,9 +12,13 @@ import sys
 
 REFERENCES = ('open-seed','reviewed-accept-all','routed-one-accept-all')
 NODES = ('world.selection','native-feature-extractor')
+LIQUIDITY_SCOPE='liquidity-four-world-v2'
+LEGACY_SCOPE='historical-three-references-v1'
+LIQUIDITY_REFERENCES=('resource-30-disconnected','resource-30-connected','resource-60-connected','resource-60-disconnected')
+LIQUIDITY_NODES=(*NODES,'developer-liquidity-director')
 
 
-def stage(run, audit_path, output):
+def stage(run, audit_path, output,*,scope=LEGACY_SCOPE):
     from scripts.analyze_native_open_v7 import _inventory
     from utopia.optimization.native_code_trace import validate_record
     from utopia.optimization.native_jobs import pinned_revision
@@ -27,19 +31,28 @@ def stage(run, audit_path, output):
         raise ValueError('fresh fixture output outside historical source/raw required')
     audit_hash=file_sha256(audit_path);a=checked(json.loads(Path(audit_path).read_text()))
     p=checked(json.loads((run/'plan.json').read_text()));before=_inventory(run)
-    if (a['schema']!='scienceutopia.native-institution-loop-stopped-audit.v1'
+    if scope not in (LEGACY_SCOPE,LIQUIDITY_SCOPE):raise ValueError('explicit developer staging scope required')
+    liquidity=scope==LIQUIDITY_SCOPE
+    references=LIQUIDITY_REFERENCES if liquidity else REFERENCES
+    nodes_requested=LIQUIDITY_NODES if liquidity else NODES
+    expected_schema='scienceutopia.native-liquidity-support-audit.v1' if liquidity else 'scienceutopia.native-institution-loop-stopped-audit.v1'
+    if (a['schema']!=expected_schema
             or p['source_commit']!=pinned_revision(source) or a['source_commit']!=p['source_commit']
             or a['plan_sha256']!=p['content_sha256'] or digest(before)!=a['raw_inventory_sha256']
-            or a['closure']['terminal']['status']!='stopped'
+            or a['closure']['terminal']['status']!=('closed' if liquidity else 'stopped')
             or a['source_proof']['status']!='verified-exact-source-closure'):
         raise ValueError('exact audited historical developer prefix required')
+    if liquidity and (len(a['worlds'])!=4 or a['closure']['terminal']['complete_worlds']!=4
+            or {j['identity'] for j in p['jobs']}!=set(references)):
+        raise ValueError('exact four normally closed developer resource worlds required')
     records=[];origins=[]
-    for reference in REFERENCES:
-        identity='reference-'+reference
-        matches=[w for w in a['worlds'] if w['identity']==identity and w['role']=='developer-reference']
+    for reference in references:
+        identity=reference if liquidity else 'reference-'+reference
+        role='developer-liquidity-control' if liquidity else 'developer-reference'
+        matches=[w for w in a['worlds'] if w['identity']==identity and w['role']==role]
         if len(matches)!=1 or matches[0]['status']!='complete':raise ValueError('complete developer reference required')
         w=matches[0];spec=SystemSpec.from_dict(w['system']);proof=w['physical_proof']['code_proof']
-        cell=run/'references'/reference/'worlds'/(identity+'-s'+str(w['seed']));path=cell/'code-contexts.jsonl'
+        cell=run/('worlds-by-job' if liquidity else 'references')/reference/'worlds'/(identity+'-s'+str(w['seed']));path=cell/'code-contexts.jsonl'
         if (w['seed']!=61001 or proof['one_to_one_physical_execution_proven'] is not True
                 or file_sha256(path)!=proof['code_contexts_sha256']):
             raise ValueError('developer input file differs from original physical proof')
@@ -59,27 +72,33 @@ def stage(run, audit_path, output):
             # Intrinsic native handlers can delegate their own container code
             # without storing code_artifact on a graph node. They are outside
             # this two-node bank, not evidence of an ambiguous selected node.
-            if not any(node in NODES for node in nodes):continue
+            if not any(node in nodes_requested for node in nodes):continue
             if len(nodes)!=1:raise ValueError('component artifact has ambiguous node identity')
             selected_nodes.add(nodes[0])
             records.append(row);origins.append({'bundle_sha256':row['bundle_sha256'],'node_id':nodes[0],
                 'reference':reference,'seed':w['seed'],'year':row['context']['period'],
                 'code_file_sha256':proof['code_contexts_sha256'],'native_event_id':receipt['matching_event_ids'][0]})
-        if selected_nodes!=set(NODES):raise ValueError('a requested native component has no exact recorded input')
+        if selected_nodes!=set(nodes_requested):raise ValueError('a requested native component has no exact recorded input')
+        if liquidity and any(sorted(o['year'] for o in origins if o['reference']==reference and o['node_id']==node)!=[1,2,3,4]
+                for node in nodes_requested):raise ValueError('four exact yearly resource contexts per node required')
     if (before!=_inventory(run) or file_sha256(audit_path)!=audit_hash or pinned_revision(source)!=p['source_commit']):
         raise ValueError('historical source/audit/raw changed while staging component fixtures')
-    save(output,{'schema':'scienceutopia.native-component-fixtures.v1','source_commit':p['source_commit'],
+    result={'schema':'scienceutopia.native-component-fixtures.v1','source_commit':p['source_commit'],
         'historical_audit_content_sha256':a['content_sha256'],'historical_audit_file_sha256':audit_hash,
-        'raw_inventory_sha256':a['raw_inventory_sha256'],'references':list(REFERENCES),'nodes':list(NODES),
+        'raw_inventory_sha256':a['raw_inventory_sha256'],'references':list(references),'nodes':list(nodes_requested),
         'records':records,'origins':origins,'new_model_calls':0,'new_code_executions':0,
-        'scope':'Exact successful developer component inputs, not failed-call reconstructions, new worlds or held-out data'})
+        'scope':'Exact successful developer component inputs, not failed-call reconstructions, new worlds or held-out data'}
+    if liquidity:
+        result.update(post_edit_reference='resource-30-connected',post_edit_probe_scope='declared-sixtyfour-v2')
+    save(output,result)
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ('run','audit','output'):p.add_argument('--'+name,type=Path,required=True)
-    p.add_argument('--frozen-source',type=Path);p.add_argument('--worker',action='store_true');a=p.parse_args()
-    if a.worker:stage(a.run,a.audit,a.output);return
+    p.add_argument('--frozen-source',type=Path);p.add_argument('--worker',action='store_true')
+    p.add_argument('--scope',choices=(LEGACY_SCOPE,LIQUIDITY_SCOPE),default=LEGACY_SCOPE);a=p.parse_args()
+    if a.worker:stage(a.run,a.audit,a.output,scope=a.scope);return
     from utopia.optimization.native_component_lab_v1 import fixture_bank
     from utopia.optimization.native_jobs import pinned_revision
     from utopia.optimization.native_numeric_designer import checked,save
@@ -93,6 +112,7 @@ def main():
         'import runpy,sys; sys.path.insert(0,sys.argv.pop(1)); runpy.run_path(sys.argv.pop(1),run_name="__main__")',
         str(a.frozen_source.resolve()),str(Path(__file__).resolve()),'--worker',
         '--run',str(a.run.resolve()),'--audit',str(a.audit.resolve()),'--output',str((a.output/'fixtures.json').resolve())]
+    if a.scope!=LEGACY_SCOPE:command.extend(['--scope',a.scope])
     result=subprocess.run(command,cwd=a.frozen_source.resolve(),env={**os.environ,'PYTHONHASHSEED':'42'},timeout=900,check=False)
     if result.returncode:raise SystemExit(result.returncode)
     bank=checked(json.loads((a.output/'fixtures.json').read_text()));fixtures=fixture_bank(bank['records'])
@@ -105,6 +125,8 @@ def main():
         'node_counts':{n:sum(r['node_id']==n for r in bank['origins']) for n in bank['nodes']},
         'fixture_origins':bank['origins'],'new_model_calls':0,'new_code_executions':0,
         'designer_tool_connected':False,'real_component_probe_executed':False}
+    if a.scope!=LEGACY_SCOPE:summary.update(staging_scope=a.scope,post_edit_reference=bank['post_edit_reference'],
+        post_edit_probe_scope=bank['post_edit_probe_scope'])
     saved=save(a.output/'summary.json',summary)
     print(json.dumps({k:saved[k] for k in ('content_sha256','recorded_inputs','unique_fixtures','node_counts',
         'new_model_calls','new_code_executions')}),flush=True)

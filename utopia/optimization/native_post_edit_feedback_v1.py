@@ -8,7 +8,8 @@ import json
 from pathlib import Path
 from types import SimpleNamespace
 
-from utopia.optimization.native_component_lab_v1 import NativeComponentLab,ComponentProbePending,fixture_bank
+from utopia.optimization.native_component_lab_v1 import (NativeComponentLab,ComponentProbePending,fixture_bank,
+    validate_probe_budget,LEGACY_PROBE_SCOPE)
 from utopia.optimization.native_numeric_designer import checked,save
 from utopia.system.code_mechanisms import sha,validate_code_artifact
 from utopia.system.design_patch import clone,digest
@@ -101,10 +102,16 @@ def persistent_diagnostics(document,steps):
 class NativePostEditFeedback:
     def __init__(self,bank,*,executor,source_commit,maximum_probes=8):
         checked(bank);fixture_bank(bank['records'])
+        self.probe_scope=bank.get('post_edit_probe_scope',LEGACY_PROBE_SCOPE)
+        validate_probe_budget(maximum_probes,self.probe_scope)
+        reference=bank.get('post_edit_reference','open-seed')
+        if (not isinstance(reference,str) or not reference or
+                ('post_edit_reference' in bank and reference not in bank.get('references',[]))):
+            raise ValueError('explicit actual developer fixture reference required')
         self.bank=clone(bank);self.executor=executor;self.source_commit=source_commit
         self.maximum_probes=maximum_probes;self.suites={}
         for node in bank['nodes']:
-            origins=[o for o in bank['origins'] if o['node_id']==node and o['reference']=='open-seed']
+            origins=[o for o in bank['origins'] if o['node_id']==node and o['reference']==reference]
             origins.sort(key=lambda o:o['year'])
             ids=['fixture-'+o['bundle_sha256'] for o in origins]
             if not ids or len(ids)>4 or len(set(ids))!=len(ids):
@@ -115,9 +122,11 @@ class NativePostEditFeedback:
             'image_id':executor.image_id,'executor_timeout_seconds':executor.timeout,
             'suites':clone(self.suites),'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'fixture_summary':[{'fixture_id':'fixture-'+o['bundle_sha256'],'node_id':o['node_id'],
-                'year':o['year'],'reference':o['reference']} for o in bank['origins'] if o['reference']=='open-seed'],
+                'year':o['year'],'reference':o['reference']} for o in bank['origins'] if o['reference']==reference],
             'lab_source_sha256':hashlib.sha256(Path(__file__).with_name('native_component_lab_v1.py').read_bytes()).hexdigest(),
             'veto_on_test_failure':False,'source_repair':False,'new_native_worlds':0,'new_model_calls':0}
+        if 'post_edit_reference' in bank:self.contract['fixture_reference']=reference
+        if self.probe_scope!=LEGACY_PROBE_SCOPE:self.contract['budget_scope']=self.probe_scope
 
     def declare_request(self,request):
         result=clone(request)
@@ -135,7 +144,7 @@ class NativePostEditFeedback:
         lab=NativeComponentLab(lab_path,records=self.bank['records'],
             provenance={'scope':'post-edit developer component diagnostics, not native loss',
                 'bank_content_sha256':self.bank['content_sha256']},executor=self.executor,
-            source_commit=self.source_commit,maximum_probes=self.maximum_probes)
+            source_commit=self.source_commit,maximum_probes=self.maximum_probes,budget_scope=self.probe_scope)
         return BoundFeedback(self,lab)
 
     @classmethod

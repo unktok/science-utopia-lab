@@ -36,13 +36,23 @@ def fixture_bank(records):
     return result
 
 
+LEGACY_PROBE_SCOPE='legacy-eight-v1'
+EXTENDED_PROBE_SCOPE='declared-sixtyfour-v2'
+
+
+def validate_probe_budget(maximum_probes,scope=LEGACY_PROBE_SCOPE):
+    bounds={LEGACY_PROBE_SCOPE:8,EXTENDED_PROBE_SCOPE:64}
+    if not isinstance(scope,str) or scope not in bounds or type(maximum_probes) is not int or not 1<=maximum_probes<=bounds[scope]:
+        raise ValueError('finite component budget differs from explicit scope; no refills')
+
+
 class NativeComponentLab:
-    def __init__(self, directory, *, records, provenance, executor, source_commit, maximum_probes=8):
+    def __init__(self, directory, *, records, provenance, executor, source_commit, maximum_probes=8,
+                 budget_scope=LEGACY_PROBE_SCOPE):
         if (not isinstance(source_commit, str) or len(source_commit) != 40
                 or any(c not in '0123456789abcdef' for c in source_commit)):
             raise ValueError('full component-lab source required')
-        if type(maximum_probes) is not int or not 1 <= maximum_probes <= 8:
-            raise ValueError('finite component budget must be1..8; no refills')
+        validate_probe_budget(maximum_probes,budget_scope)
         if not isinstance(provenance, dict) or not provenance:
             raise ValueError('explicit fixture provenance required')
         if (type(executor.timeout) not in (int,float) or not math.isfinite(executor.timeout)
@@ -56,6 +66,7 @@ class NativeComponentLab:
             'executor_timeout_seconds':executor.timeout,
             'source_execution_on_host':False, 'new_native_worlds':0, 'new_model_calls':0,
             'scope':'single component on literal developer fixtures; no scientific loss or golden-output gate'}
+        if budget_scope!=LEGACY_PROBE_SCOPE:core['budget_scope']=budget_scope
         path = self.directory/'contract.json'
         if path.exists():
             self.contract = checked(json.loads(path.read_text()))

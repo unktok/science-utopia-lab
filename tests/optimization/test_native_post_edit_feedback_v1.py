@@ -16,7 +16,8 @@ BAD="def step(context):\n    raise TypeError('SCRIPTED-BAD-FLOAT')\n"
 GOOD="def step(context):\n    return {'outputs': {}, 'state': {'fixed': True}}\n"
 
 
-def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes-function-history-v26',large=False,maximum_steps=None):
+def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes-function-history-v26',large=False,maximum_steps=None,
+            maximum_probes=8,reference='open-seed',extended=False):
     body=request();artifact=body['parent_system']['mechanisms'][0]['parameters']['code_artifact']
     records=[];origins=[]
     for year in range(1,5):
@@ -27,9 +28,11 @@ def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes
             'artifact':clone(artifact),'context':context,'result':result,
             'receipt':{'image_id':IMAGE,'artifact_sha256':sha(artifact),'context_sha256':sha(context),'result_sha256':sha(result)}}
         row['bundle_sha256']=sha(row);records.append(row)
-        origins.append({'bundle_sha256':row['bundle_sha256'],'node_id':ALPHA,'year':year,'reference':'open-seed'})
+        origins.append({'bundle_sha256':row['bundle_sha256'],'node_id':ALPHA,'year':year,'reference':reference})
     bank={'schema':'scienceutopia.native-component-fixtures.v1','nodes':[ALPHA],'records':records,
         'origins':origins,'scope':'SCRIPTED; no real native input, model, or container execution'}
+    if reference!='open-seed':bank.update(references=[reference],post_edit_reference=reference)
+    if extended:bank['post_edit_probe_scope']='declared-sixtyfour-v2'
     bank['content_sha256']=digest(bank);calls=[]
     def execute(a,c):
         calls.append((clone(a),clone(c)))
@@ -37,7 +40,8 @@ def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes
         if 'SCRIPTED-BAD-FLOAT' in a['source']:raise TypeError('SCRIPTED-BAD-FLOAT')
         result={'outputs':{},'state':{'fixed':True,**({'large':'研究者\\n\n' * 12000} if large else {})}}
         return CodeExecution(result,{'image_id':IMAGE,'artifact_sha256':sha(a),'context_sha256':sha(c),'result_sha256':sha(result)})
-    feedback=NativePostEditFeedback(bank,executor=SimpleNamespace(image_id=IMAGE,timeout=15.,execute=execute),source_commit='c'*40)
+    feedback=NativePostEditFeedback(bank,executor=SimpleNamespace(image_id=IMAGE,timeout=15.,execute=execute),
+        source_commit='c'*40,maximum_probes=maximum_probes)
     body=feedback.declare_request(body)
     model=model_class(actions)
     generator=StagedVocabularyGenerator(model,tmp_path,image_id=IMAGE,provider_binding=BINDING,

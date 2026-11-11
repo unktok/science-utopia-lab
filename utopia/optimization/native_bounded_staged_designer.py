@@ -83,9 +83,11 @@ def worker(intent_path,result_path):
             if intent['kind']!='proposal':raise ValueError('component execution is proposal-only')
             from .native_post_edit_feedback_v1 import NativePostEditFeedback
             from utopia.system.code_mechanisms import DockerCodeExecutor
+            declaration=(intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')
+            if not isinstance(declaration,dict):raise ValueError('explicit component request contract required')
             feedback=NativePostEditFeedback(intent['post_edit_component_bank'],
                 executor=DockerCodeExecutor(image=intent['provider']['image_id'],timeout=15.),
-                source_commit=intent['source_commit'],maximum_probes=8)
+                source_commit=intent['source_commit'],maximum_probes=declaration.get('maximum_probe_attempts'))
             if (intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')!=feedback.contract:
                 raise ValueError('bounded component bank differs from declared request contract')
         if (intent['kind']=='proposal' and feedback is None

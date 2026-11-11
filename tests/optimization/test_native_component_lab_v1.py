@@ -90,3 +90,16 @@ def test_cold_replay_rejects_receipt_corruption_and_unaccounted_results(tmp_path
 @pytest.mark.parametrize('budget',[0,9,True,1.5])
 def test_probe_budget_is_finite_and_not_coerced(tmp_path,budget):
     with pytest.raises(ValueError,match='finite component budget'):fixture(tmp_path,maximum_probes=budget)
+
+
+def test_extended_budget_is_explicit_and_cannot_refill_or_relabel_a_legacy_contract(tmp_path):
+    lab,a,c,bundle,seen=fixture(tmp_path,maximum_probes=1)
+    args=dict(records=[bundle],provenance={'kind':'scripted fixture, NOT a native audit'},executor=lab.executor,
+        source_commit='a'*40,maximum_probes=64,budget_scope='declared-sixtyfour-v2')
+    with pytest.raises(ValueError,match='budget changed'):NativeComponentLab(lab.directory,**args)
+    extended=NativeComponentLab(tmp_path/'extended',**args);key=next(iter(extended.fixtures))
+    for _ in range(9):extended.probe(a,key)
+    assert len(extended.replay())==len(seen)==9
+    assert NativeComponentLab(tmp_path/'extended',**args).replay()==extended.replay()
+    with pytest.raises(ValueError,match='finite component budget'):
+        NativeComponentLab(tmp_path/'invalid',**{**args,'maximum_probes':65})
