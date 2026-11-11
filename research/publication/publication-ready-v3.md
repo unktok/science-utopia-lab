@@ -4,6 +4,13 @@
 goal toolにも同じ目標を設定した。以前の有限パッケージ完了と、研究の投稿準備完了を分ける。
 現時点は主会議readyではなく、旧稿の自己評価を変えない。
 
+November12 05:10JST更新：新しいT（論文数）／U（固定内容評価）別の制度探索は
+凍結537514aで実行中。比較用5制度のうち4件が完了し、最後の切断対照を実行している。
+新候補の改善や選択後評価はまだ結果待ちである。
+[実際の起動と未使用seed確認](../results/native-objective-instrument-launch-verification-v1.json)、
+[独立監査・全slot解析・固定評価への継続](../components/native-objective-fixed-evaluation-v1.md)
+を接続済み。これらはR1/R4の実装上の進展で、R2の研究上の答えを先取りしない。
+
 ## 主張の中心
 
 **何を目的に最適化すると、どの情報・操作・時点を持つ制度が選ばれ、継続する研究者世界がどう変わるか。**
@@ -24,7 +31,7 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
 | R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 671436aは停止、19world/全slot保持。[別の固定候補評価](../results/native-fixed-evaluation-v1.md)は30/30終了、独立監査／費用／実図二回一致。[93076b4 code-tested loop](../results/native-code-tested-loop-v1.md)も全4候補／7worldを閉鎖、監査／費用／actual export二回一致。E二件は全採択と同点、T二件はnull。新主結果の選択後評価は未達 |
-| R2 | 重要で識別可能な研究上の答えと対照 | 未達。同権限の単体code、切断・遅延等の必要な比較を効果に応じて凍結 |
+| R2 | 重要で識別可能な研究上の答えと対照 | 未達。4資源worldは元世界の資金移転経路が帰結を変える開発者対照を示すが、新制度の発明ではない。新T/U探索の実際の変更と強い参照との差を確認し、主張する作用に必要な単体code・切断・遅延等を結果に応じて別途凍結 |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
 | R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 既存各研究には存在。新主結果に対応する更新が必要 |
 | R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [54ページ統合稿](../../paper/integrated-native-resource-build-v1.json)へ閉鎖したcode-tested loop、228固定採点、4資源worldと実図を追加。二回build・全頁layout確認、52頁以前も保持。新主結果に基づく投稿本文は未達 |
@@ -44,12 +51,14 @@ November12追記：93076b4の[四候補code-tested loop](../results/native-code-
 全件閉鎖した。E二候補はreviewed accept-allと同点で、one-reviewer参照に劣る。
 T二候補はtechnical null、全四件ともselection sourceのみで配線変更なし。
 二回監査／費用／actual report一致はR4の進展だが、R2を満たさない。
-次の[全76内容の固定採点](../protocols/campaigns/native-common-content-readout-v1.md)は
-実interface check後に実行中。別条件の意見を読む有限診断であり、目的変更・新探索・
-truth oracle・重要な新規性の実証を先取りしない。
+その後の[全76内容の固定採点](../results/native-common-content-readout-v1.md)も
+76panel／228応答で正常終了した。中心3の効用に負・零・正の支持があるという
+有限診断であり、truth oracleや新しい制度探索ではない。
+[4資源world](../results/native-liquidity-support-v1.md)も全80 founder-yearを照合して閉鎖した。
+これらを受けて、新T/U探索を別protocolへ凍結した。旧T/Eは遡及変更しない。
 
-現在のpilotの未使用評価はまだ始まっていない段階で、次の判断順序を定める。
-今の目的、候補枠、参照、選択方法は変えない。
+次の判断順序は探索前に定めた方針で、新T/U探索とその固定評価にも適用する。
+稼働中の目的、候補枠、参照、選択方法は変えない。
 
 1. 全候補の提出、実行、実consumer、損失、費用を結合し、何が実際に変わったかを確認する。
    自由度を使わない場合もそのまま結果として残す。接続バグは停止記録を保って修正し、

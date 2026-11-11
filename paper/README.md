@@ -1,29 +1,47 @@
 # Objective-conditioned institution paper
 
-The canonical whole-program working manuscript is now [integrated.tex](integrated.tex):
-[reviewed47-page integrated draft](../output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf),
-20 figures and18 tables, with no artificial page cap. November11 adds an
-authoring/measurement diagnostic section, with [separate source/build/visual binding](integrated-diagnostics-build-v1.json).
-The [prior44-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)
-and its receipt remain unchanged.
-It integrates the objective/abstraction/method arguments, parameter held-out
-study, actual structural cases, conditional-gradient experiments, nested design,
-latest matched comparison and English evidence UI. It does not pool their
-different sources or turn feasibility into superiority.
+The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
+The latest reviewed artifact is the
+[54-page integrated draft](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf),
+with25 figures and21 tables and no artificial page cap.
+Its [source, evidence, build and visual binding](integrated-native-resource-build-v1.json)
+records two cache-only builds and the review of all54 page layouts.
+
+It retains the objective/abstraction/method argument, parameter held-out study,
+actual structural cases, conditional-gradient experiments, nested design,
+matched local comparison and English evidence UI. The latest additions are
+the closed four-slot code-tested loop,228 fixed-content critic replies and
+four developer resource-control worlds. Direct institutional precedents are
+credited. Different sources remain separate; execution, opinions and developer
+controls are not relabeled as autonomous institutional invention or optimizer
+superiority.
+
+The new count-versus-fixed-content objective-conditioned search is running
+separately at frozen537514a. It and its gated unused-seed evaluation are not
+completed evidence in this PDF. [Current research status](../research/STATUS.md)
+and [evaluation/analysis design](../research/components/native-objective-fixed-evaluation-v1.md)
+describe that boundary. The important main result and publication-ready
+judgment remain open; this is not a submitted, anonymous or release-cleared paper.
+
+The prior52-page,49-page,
+[47-page diagnostic draft](../output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf)
+and [44-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)
+remain unchanged, each with its own historical receipt.
 [Inclusion/exclusion map](integrated-content-map.md) explains the editorial choices;
 [historical37-page build/evidence/visual binding](integrated-build-v1.json) records
 the preserved older artifact, not the new draft. The pre-scale sections
 separate actual numeric readiness, scripted connection QA, the closed12-world
 M study and closed62388a7 T/E search/evaluation. Complete A/Q/R, input-year
 table, all proposal/evaluation rows, actual figures, literal changes and costs
-accompany them. The new671436a loop is a different, running experiment, not a
-completed result here. November11 adds all eight separate authoring sessions
+accompany them. The different671436a loop later stops; its separate30-world
+fixed-submission evaluation closes without a strong-control advantage.
+November11 adds all eight separate authoring sessions
 and partial native-input probes, plus fixed-record review-panel readouts;
 none is a new candidate loss or truth measure.
 [Prior44-page build and visual QA](integrated-pre-scale-build-v3.json)
 and [closed M scientific verification](../research/results/pre-scale-information-verification-v1.json)
 are separate from the preserved [earlier39-page receipt](../research/results/pre-scale-completion-software-verification-v1.json).
-This is a research manuscript, not a submitted, anonymous or release-cleared package.
+Those earlier build receipts describe their own snapshots, not the latest PDF.
 
 The narrower empirical study draft remains [submission-v2.tex](submission-v2.tex);
 [the reviewed 12-page PDF](../output/pdf/science-utopia-lab-objective-design-v2-draft.pdf)

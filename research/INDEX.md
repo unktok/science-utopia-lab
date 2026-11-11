@@ -40,7 +40,13 @@ Historical documents retain their paths and source identities.
   includes all three newly closed studies and direct institutional precedents;
   all old tracks and priorPDFs retained. R2 and publication readiness remain open.
 
-- [Live four-world resource assay](protocols/campaigns/native-liquidity-support-v1.md)
+## Earlier checkpoints and retained studies
+
+The dated observations below preserve earlier execution boundaries. Words such
+as running, live or next describe their own historical checkpoint, not current
+process state. The active orientation above and STATUS.md take precedence.
+
+- [Earlier live four-world resource assay](protocols/campaigns/native-liquidity-support-v1.md)
   and [actual launch verification](results/native-liquidity-support-launch-verification-v1.json):
   frozen78844a0,2/4 completed at the18:13UTC boundary, next world active.
   Developer connected/disconnected controls, not optimization or held-out study.
