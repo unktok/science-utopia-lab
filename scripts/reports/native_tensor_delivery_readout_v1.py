@@ -39,7 +39,10 @@ def closed_record(root,objective,generation):
 def probe_owners(step):
     """Use explicit probe pointers; identical source is not node attribution."""
     result={}
-    tests=step.get('transition',{}).get('result',{}).get('component_feedback',{}).get('tests',[])
+    transition=step.get('transition') if isinstance(step,dict) else None
+    value=transition.get('result') if isinstance(transition,dict) else None
+    feedback=value.get('component_feedback') if isinstance(value,dict) else None
+    tests=feedback.get('tests',[]) if isinstance(feedback,dict) else []
     for test in tests:
         for value in test['results']:
             match=re.fullmatch('/component_probe_records/([0-9]+)',value['exact_step_probe_pointer'])
