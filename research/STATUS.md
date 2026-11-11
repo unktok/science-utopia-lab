@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+**November11 14:28UTC:** the separate fixed-policy evaluation has20/30 completed
+worlds (progress14:23:34UTC, activeevaluation-020). Its sourcef1f8ddf remains
+unchanged. The a123aff read-only audit/cost chain and cd383cc report chain wait
+separately; the latter starts13:55:14UTC/session5365 after73 clean checks and
+will rebuild all figures twice only after normal closure. No interim evaluation
+loss has been added to designer development.
+
+The [code-tested native closed loop](protocols/campaigns/native-code-tested-loop-v1.md)
+is prepared at frozen93076b4 after146/146 clean checks and actual saved-plan
+reconstruction. Its process starts14:28:45UTC, PID77538/session91390, explicitly
+**waiting for the current evaluation and independent audit/cost chain**. It has
+not dispatched a new calibration, designer or scientist request at this start
+observation. The finite ceiling is four own-history proposals (T0/E0/E1/T1),
+three fresh strong references/seven native worlds, at most32 optional component
+attempts.61001 is reused developer data, not held-out evidence. New real-mode
+readiness precedes each proposal; no component pass gate, fallback or failed-slot
+replacement. [Source, QA and plan binding](results/native-code-tested-loop-prelaunch-verification-v1.json).
+The important identified main-study result and publication-ready verdict remain
+open; waiting processes and passed software checks do not close them.
+
 **November11 10:50:27UTC: the original native pilot stopped.** At unchanged
 671436a, all eight references and eleven of twelve proposal slots terminated:
 five complete worlds, six technical nulls. The last T/numeric proposal was not
@@ -15,7 +35,7 @@ stopped on scientific status `stopped`. The publication goal remains active.
 Two original-source stopped-prefix audits now agree byte for byte
 (content15f042d6,19 physical worlds,2162 raw files). A
 [separate fixed-submission evaluation](protocols/campaigns/native-fixed-candidate-evaluation-v1.md)
-is prepared in code/protocol: four available arms, six references, three unused
+is running: four available arms, six references, three unused
 seeds, at most30 physical worlds and zero designer-generation POSTs. Failed-only
 arms have no selected policy. This cannot be called completion of the original
 study, reuse a failed designer certificate, invent a missing candidate, or replace an

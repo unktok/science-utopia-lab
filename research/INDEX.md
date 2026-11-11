@@ -26,6 +26,10 @@ Historical documents retain their paths and source identities.
   [Separate fixed-policy reporting](components/native-fixed-evaluation-report-v1.md)
   retains every failed/unsubmitted slot and unavailable arm; its actual figures
   wait for closed independent audits, not interim scores.
+  [Code-tested native loop](protocols/campaigns/native-code-tested-loop-v1.md)
+  is separately frozen at93076b4: four proposals/seven-world ceiling,146 clean
+  checks, actual saved-plan guard. Its14:28UTC process waits for the previous
+  study's independent closure; new real-mode readiness/inference has not started.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.

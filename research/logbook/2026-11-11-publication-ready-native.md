@@ -344,3 +344,17 @@ component bankは元の開発入力だけ、最大8probe/提案。新620xx結果
 runner、閉鎖時source-bound監査、既存cost projectionへの明示scopeを実装中。
 saved-plan JSON roundtrip、四つのnull枠、pending完了で次群を止める回帰等が通る。
 これはまだ新モデル推論の開始観測ではない。
+
+clean93076b477b023a6bcb78cac5568fcbe795fa9a52で新loop、既存cost/audit、実public
+校正API／role、旧mode、候補固定evaluation/reportを合わせ146/146pass（82.90秒）。
+JUnit SHA256は`825da646e78cc8e14a6d27ae5770e7a5ba79e5628d0f36aae0845f98fe3893bc`。
+同sourceの新worktree`native-code-tested-loop-v1-a1`で、既存local backendへのGETと
+実bank/hash照合だけを行うprepareが成功。実saved-planのrequire guardも通った。
+plan content SHA256は`8b818742271f1ea5f38bc02e4700fcb0b4752ba056f4ebb3909a99619d35fdb4`、
+file SHA256は`70ac3c016a31a7455bc764ac6d3eed2588fdefe039a0ff556915f7547e532e7b`。
+
+14:28:45.968131UTCにPID77538/session91390で新loop processを起動。
+stageはwaiting-for-preceding-closureで、旧30worldの実科学writerとa123aff独立audit/costが
+正常終了するまで推論は0。新modeのfresh実backend校正、LLM自己debug、native改善は
+この起動観測では未実施。旧評価progressは14:23:34UTC時点で20/30完了。
+三つのread-only／待機processを、三つの実科学実験が並行推論中とは呼ばない。

@@ -1,0 +1,46 @@
+{
+  "schema": "scienceutopia.native-code-tested-loop-prelaunch-verification.v1",
+  "component_full_path_qa": {
+    "source_commit": "58bc16d8ed1976a45308d55e297768989d94a36a",
+    "junit_file_sha256": "f2618833f9329345797c65b7ec94a99708a42075753e2c79d098f932b97d150d",
+    "passed": 244,
+    "seconds": 209.92,
+    "clean_source": true,
+    "actual_role_factory_and_certificate_api_with_scripted_http": true,
+    "original_simulation_with_scripted_scientist_http_and_real_docker": true
+  },
+  "loop_prelaunch_qa": {
+    "source_commit": "93076b477b023a6bcb78cac5568fcbe795fa9a52",
+    "junit": "outputs/native-code-tested-loop-clean-qa-a1.xml",
+    "junit_file_sha256": "825da646e78cc8e14a6d27ae5770e7a5ba79e5628d0f36aae0845f98fe3893bc",
+    "passed": 146,
+    "seconds": 82.90,
+    "clean_source": true,
+    "overlapping_regression_suites_not_independent_scientific_samples": true
+  },
+  "prepared_plan": {
+    "content_sha256": "8b818742271f1ea5f38bc02e4700fcb0b4752ba056f4ebb3909a99619d35fdb4",
+    "file_sha256": "70ac3c016a31a7455bc764ac6d3eed2588fdefe039a0ff556915f7547e532e7b",
+    "actual_saved_plan_require_guard_passed": true,
+    "candidate_slots": 4,
+    "native_worlds_upper_bound": 7,
+    "development_seed_reused": 61001,
+    "held_out_evaluation_in_this_plan": false
+  },
+  "dated_process_start": {
+    "started_utc": "2026-11-11T14:28:45.968131+00:00",
+    "pid": 77538,
+    "session": 91390,
+    "stage": "waiting-for-preceding-closure",
+    "new_designer_calls_at_this_observation": 0,
+    "new_scientist_worlds_at_this_observation": 0,
+    "requires_current_fixed_evaluation_and_independent_audit_cost_normal_closure": true
+  },
+  "limits": {
+    "real_model_readiness_for_new_mode_still_required": true,
+    "real_model_self_debugging_demonstrated": false,
+    "new_loop_native_cold_audit_not_yet_available": true,
+    "feedback_or_optimizer_superiority": false,
+    "publication_ready": false
+  }
+}
