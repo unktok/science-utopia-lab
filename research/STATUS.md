@@ -2,6 +2,15 @@
 
 ## Active publication-ready goal
 
+**November12 05:00JST / November11 20:00UTC:** development has completed two of
+five common references and is executing no-review-all-connected. No candidate
+has yet been submitted. The separate development report is waiting atbb4ff48;
+the frozen2ee835a evaluation continuation waits for normal development and
+two matching audits before any evaluation inference. Evaluation/report code
+passes64 related checks at9adf0ab; no fixed evaluation or new policy superiority
+is claimed. [Execution and analysis design](components/native-objective-fixed-evaluation-v1.md)
+and [source/test/continuation receipt](results/native-objective-analysis-continuation-verification-v1.json).
+
 **November12 04:41JST / November11 19:41UTC:** the
 [objective-conditioned experiment](protocols/campaigns/native-objective-instrument-loop-v1.md)
 is actually running at frozen537514a, writer8469/session33505. Initial stage is

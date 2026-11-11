@@ -185,3 +185,35 @@ Feature development can now continue independently without changing either
 frozen source. This launch is not eight-slot closure, improvement, unused-seed
 evaluation or publication readiness. The54-page PDF remains the last closed
 evidence snapshot until new audited science is available.
+
+## All-slot analysis and frozen-policy continuation
+
+Development reaches its second completed reference19:55:51UTC and begins
+no-review-all-connected;21 critic results so far reflect shared exact contents,
+not21 new independent panels per world. The original537514a source is unchanged.
+Atbb4ff48,22 checks exercise actual all-null export retention and both old/new
+report finish APIs. The actual report continuation/session34141 starts
+19:54:50UTC and waits for the existing audit/cost chain before two exports.
+
+The new fixed evaluation preserves the whole original selected submissions,
+all ties and failed-only arms, rechecks predeclared seeds and deduplicates only
+literal policies modulo the initial seed. Scientist and fixed critic costs stay
+separate. Atc108d68 the first26-pass/two-failure test run mutates a nonexistent
+test parameters field; corrected to actual initial_state at6215d71,34 checks
+pass. The failed receipt remains retained. No old or live record is repaired.
+
+The all-slot development report passes49 checks at235d649, then real export/
+continuation checks22 atbb4ff48. At2ee835a,55 checks pass12.86s. A separately
+frozen evaluation and continuation source are created, and actual session45593
+starts19:57:08UTC. It waits for normal audited development, then automatically
+prepares, runs at most21 evaluation worlds without authoring, and performs two
+cold audits/cost readouts. Preparation failure, unknown completion or a failed
+stage stops without a retry. Its actual start receipt is bound in Git.
+
+The fixed-evaluation report implementation at9adf0ab passes64 related checks
+in19.60s. Mocked-physical cold joins and actual double-export APIs preserve all
+policy/seed rows, aliases, technical nulls and unavailable arms; paired missing
+losses stay null, never zero. These overlapping test sets are not summed as
+independent evidence. The actual fixed report is not launched before its plan
+and audit start exist. Main research claim, unused-seed results, actual figure
+inspection, manuscript integration and final publication judgment remain open.

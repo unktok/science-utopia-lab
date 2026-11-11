@@ -1,0 +1,41 @@
+{
+  "schema": "scienceutopia.native-objective-analysis-continuation-verification.v1",
+  "scientific_source_commit": "537514a7ad775a7c84e9a2e3a8de2cd9e7aa5d84",
+  "development_report": {
+    "source_commit": "bb4ff48f3db3f28d35a8887b1893387028f217f9",
+    "session": 34141,
+    "started_utc": "2026-11-11T19:54:50.954377+00:00",
+    "start_content_sha256": "c9e723a4176cf912de0e95cab5a219240c4e926ef19a524c5c515101fb1d6264",
+    "observed_stage": "await-audit-and-cost-closure",
+    "new_inference_allowed": false,
+    "two_exports_and_all_bytes_comparison": true
+  },
+  "evaluation_continuation": {
+    "source_commit": "2ee835adf6d15da3396d98f50c4786f232bf24cd",
+    "session": 45593,
+    "started_utc": "2026-11-11T19:57:08.137408+00:00",
+    "start_content_sha256": "4e3abdcd50dca3f4174fc121ea10a5f1672165695ec0d560deebb93e94b21c46",
+    "observed_stage": "await-closed-development-audits",
+    "evaluation_dispatched_at_observation": false,
+    "maximum_wait_seconds": 86400,
+    "maximum_evaluation_process_seconds": 86400,
+    "maximum_physical_worlds": 21,
+    "designer_generation_POSTs": 0,
+    "replace_failed_slots": false,
+    "retry_failed_stages": false
+  },
+  "software_checks": [
+    {"source_commit": "c108d68", "receipt": "outputs/native-objective-fixed-evaluation-clean-qa-a1.xml", "file_sha256": "503af837e27fcf53d619f7da3bb68dc9f8eb8c37a255947bc85193ab96e5b59a", "passed": 26, "failed": 2, "cause": "Scripted test policy mutation named nonexistent top-level parameters; corrected prospectively without changing active science."},
+    {"source_commit": "6215d71", "receipt": "outputs/native-objective-fixed-evaluation-clean-qa-a2.xml", "file_sha256": "106639975f8b28136b7b6570dc91fb7c2364cab8fed13aab85d16bedd56cdf81", "passed": 34, "failed": 0},
+    {"source_commit": "235d649", "receipt": "outputs/native-objective-instrument-report-clean-qa-a1.xml", "file_sha256": "331228cbc587778039c024fd21fbf56a2441672be5653a09eaf1eaad4f5d0cc6", "passed": 49, "failed": 0},
+    {"source_commit": "bb4ff48", "receipt": "outputs/native-objective-report-retention-clean-qa-a1.xml", "file_sha256": "6e09a521b3781acf4b72fc8237350d0848427eaa5ecf93ec001febdae3d63288", "passed": 22, "failed": 0},
+    {"source_commit": "2ee835a", "receipt": "outputs/native-objective-evaluation-continuation-clean-qa-a1.xml", "file_sha256": "15a783c9325b271f0441d4df5d6ee3ee6046d45fcc6a5df4a4f197a4f7b88652", "passed": 55, "failed": 0},
+    {"source_commit": "9adf0abc5dc777eed93528488fd832f97e2d378c", "receipt": "outputs/native-objective-fixed-report-clean-qa-a1.xml", "file_sha256": "ae767ea4f1becff97670de9dc19e5535467091b1908285569b55dad1487266b6", "passed": 64, "failed": 0}
+  ],
+  "software_check_sets_overlap": true,
+  "scripted_or_mocked_connections_are_not_scientific_results": true,
+  "closed_search_claimed": false,
+  "new_policy_advantage_claimed": false,
+  "held_out_evaluation_claimed": false,
+  "publication_ready": false
+}

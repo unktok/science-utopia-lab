@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Frozen objective evaluation and all-slot analyses](components/native-objective-fixed-evaluation-v1.md):
+  the actual development reaches2/5 references by20:00UTC. Separate development
+  report and fixed-policy evaluation continuations wait for original normal
+  audit closure; neither modifies active science or replaces failed slots.
+  The evaluation/paired-report implementation passes64 related checks;
+  [actual bindings](results/native-objective-analysis-continuation-verification-v1.json).
+
 - [Next objective-conditioned native experiment specification](protocols/campaigns/native-objective-instrument-loop-v1.md):
   T count versus fixed-content utility, strong initial rule, five common
   references/eight proposals, at most13 development and21 later fixed-policy
