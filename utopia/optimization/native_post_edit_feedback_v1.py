@@ -46,6 +46,58 @@ def consumed(steps):
     return total
 
 
+def persistent_diagnostics(document,steps):
+    """Retain code-version-specific test observations across unrelated reads.
+
+    This is a compact projection of existing records, never another probe or
+    a finish gate. A later untested edit must not inherit an older pass/fail.
+    Full error/context bodies remain in the exact read-only step archive.
+    """
+    latest={};tested={};by_artifact={}
+    for index,step in enumerate(steps):
+        transition=step.get('transition')
+        if not isinstance(transition,dict):continue
+        result=transition.get('result')
+        feedback=result.get('component_feedback') if isinstance(result,dict) else None
+        if not isinstance(feedback,dict):continue
+        for ordinal,test in enumerate(feedback.get('tests',[])):
+            node=test['node_id'];entry={'step':step['step'],'status':test['status'],
+                'artifact_sha256':test.get('artifact_sha256'),
+                'exact_archive_filename':f'archive/steps/{index:02d}.json',
+                'json_pointer':f'/transition/result/component_feedback/tests/{ordinal}',
+                'test_value_sha256':digest(test),
+                'validation_error_type':test.get('error_type'),
+                'validation_error_excerpt':test['error'][:256] if isinstance(test.get('error'),str) else None,
+                'results':[{k:clone(value[k]) for k in
+                    ('fixture_id','status','error_type','full_error_sha256','reply_content_sha256','result_sha256')}
+                    | {'error_excerpt':None if value['error_excerpt'] is None else value['error_excerpt'][:256],
+                       'display_excerpt_is_partial':value.get('error_is_excerpt',False) or (
+                           value['error_excerpt'] is not None and len(value['error_excerpt'])>256),
+                       'display_excerpt_limit_characters':256}
+                    for value in test['results']]}
+            latest[node]=entry
+            if test['status']=='tested':
+                tested[node]=entry
+                by_artifact[node,test['artifact_sha256']]=entry
+    current=code_nodes(document);rows=[]
+    for node,notice in sorted(latest.items()):
+        artifacts=current.get(node,[])
+        current_hash=sha(artifacts[0]) if len(artifacts)==1 else None
+        last=tested.get(node)
+        applicable=by_artifact.get((node,current_hash))
+        applicability=('code-artifact-not-present' if node not in current else
+            'no-unique-current-artifact' if current_hash is None else
+            'same-current-artifact' if applicable is not None else
+            'current-artifact-untested')
+        rows.append({'node_id':node,'current_artifact_sha256':current_hash,
+            'test_applicability':applicability,'latest_component_notice':{k:v for k,v in notice.items() if k!='results'},
+            'current_artifact_observed_suite':applicable,'most_recent_executed_suite':last})
+    return {'schema':SCHEMA+'.persistent-observations.v1','components':rows,
+        'scope':'Observed developer-fixture results tied to literal artifact hashes. '
+            'An old suite is not a result for later untested code or the native trajectory.',
+        'new_probe_attempts':0,'source_repair':False,'veto_on_finish':False}
+
+
 class NativePostEditFeedback:
     def __init__(self,bank,*,executor,source_commit,maximum_probes=8):
         checked(bank);fixture_bank(bank['records'])

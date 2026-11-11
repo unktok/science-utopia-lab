@@ -16,7 +16,7 @@ BAD="def step(context):\n    raise TypeError('SCRIPTED-BAD-FLOAT')\n"
 GOOD="def step(context):\n    return {'outputs': {}, 'state': {'fixed': True}}\n"
 
 
-def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes-function-history-v26',large=False):
+def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes-function-history-v26',large=False,maximum_steps=None):
     body=request();artifact=body['parent_system']['mechanisms'][0]['parameters']['code_artifact']
     records=[];origins=[]
     for year in range(1,5):
@@ -41,7 +41,7 @@ def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes
     body=feedback.declare_request(body)
     model=model_class(actions)
     generator=StagedVocabularyGenerator(model,tmp_path,image_id=IMAGE,provider_binding=BINDING,
-        max_steps=max(8,len(actions)) if profile!='hermes-function-history-v26' else len(actions),
+        max_steps=maximum_steps if maximum_steps is not None else max(8,len(actions)) if profile!='hermes-function-history-v26' else len(actions),
         max_tokens=8192 if profile!='hermes-function-history-v26' else 2048,
         conversation_profile=profile,edit_feedback=feedback)
     return generator,model,body,calls
@@ -85,6 +85,119 @@ def test_component_error_reaches_next_model_call_before_literal_repair_and_cold_
     assert body['parent_system']==request()['parent_system']
     assert replay_staged_generation(directory(tmp_path))==result
     assert len(model.calls)==3 and len(calls)==8
+
+
+def test_bounded_component_error_survives_two_reads_and_updates_after_literal_repair(tmp_path):
+    from tests.optimization.test_native_bounded_author_context_v45 import Model as BoundedModel
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
+        source_action(BAD),{'tool':'read_file','filename':'system.json'},
+        {'tool':'read_file','filename':'system.json'},source_action(GOOD),{'tool':'finish'}]
+    gen,model,body,calls=fixture(tmp_path,actions,model_class=BoundedModel,
+        profile=BOUNDED_AUTHORING,maximum_steps=16)
+    result=gen(body)
+    for index in (2,3,4):
+        data=json.loads(model.calls[index]['prompt'])['persistent_component_diagnostics']
+        row=data['components'][0]
+        assert row['test_applicability']=='same-current-artifact'
+        assert all(r['status']=='raised' for r in row['most_recent_executed_suite']['results'])
+        assert 'SCRIPTED-BAD-FLOAT' in json.dumps(data)
+    final=json.loads(model.calls[5]['prompt'])['persistent_component_diagnostics']['components'][0]
+    assert final['test_applicability']=='same-current-artifact'
+    assert all(r['status']=='returned' for r in final['most_recent_executed_suite']['results'])
+    assert len(calls)==8 and replay_staged_generation(directory(tmp_path))==result
+    assert not json.loads(model.calls[5]['prompt'])['persistent_component_diagnostics']['veto_on_finish']
+
+
+def test_later_untested_edit_cannot_inherit_old_component_pass(tmp_path):
+    from tests.optimization.test_native_bounded_author_context_v45 import Model as BoundedModel
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
+        source_action(BAD),source_action(GOOD),source_action(GOOD+'# untested change\n'),
+        {'tool':'read_file','filename':'system.json'},{'tool':'finish'}]
+    gen,model,body,calls=fixture(tmp_path,actions,model_class=BoundedModel,
+        profile=BOUNDED_AUTHORING,maximum_steps=16)
+    result=gen(body)
+    for index in (4,5):
+        row=json.loads(model.calls[index]['prompt'])['persistent_component_diagnostics']['components'][0]
+        assert row['test_applicability']=='current-artifact-untested'
+        assert row['latest_component_notice']['status']=='not-run-budget-exhausted'
+        assert row['most_recent_executed_suite']['artifact_sha256']!=row['current_artifact_sha256']
+    assert len(calls)==8 and replay_staged_generation(directory(tmp_path))==result
+
+
+def test_persistent_failure_display_does_not_veto_explicit_finish(tmp_path):
+    from tests.optimization.test_native_bounded_author_context_v45 import Model as BoundedModel
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
+        source_action(BAD),{'tool':'read_file','filename':'system.json'},{'tool':'finish'}]
+    gen,model,body,calls=fixture(tmp_path,actions,model_class=BoundedModel,
+        profile=BOUNDED_AUTHORING,maximum_steps=16)
+    result=gen(body)
+    row=json.loads(model.calls[-1]['prompt'])['persistent_component_diagnostics']['components'][0]
+    assert all(r['status']=='raised' for r in row['most_recent_executed_suite']['results'])
+    assert result['base_patch']['operations'][0]['value']==BAD
+    assert replay_staged_generation(directory(tmp_path))==result and len(calls)==4
+
+
+def test_reverted_exact_artifact_keeps_its_earlier_failure_not_the_latest_other_version_pass(tmp_path):
+    from tests.optimization.test_native_bounded_author_context_v45 import Model as BoundedModel
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
+        source_action(BAD),source_action(GOOD),source_action(BAD),{'tool':'finish'}]
+    gen,model,body,calls=fixture(tmp_path,actions,model_class=BoundedModel,
+        profile=BOUNDED_AUTHORING,maximum_steps=16)
+    result=gen(body)
+    row=json.loads(model.calls[-1]['prompt'])['persistent_component_diagnostics']['components'][0]
+    assert row['test_applicability']=='same-current-artifact'
+    assert row['latest_component_notice']['status']=='not-run-budget-exhausted'
+    assert all(r['status']=='raised' for r in row['current_artifact_observed_suite']['results'])
+    assert all(r['status']=='returned' for r in row['most_recent_executed_suite']['results'])
+    assert row['current_artifact_observed_suite']['step']<row['most_recent_executed_suite']['step']
+    assert len(calls)==8 and replay_staged_generation(directory(tmp_path))==result
+
+
+def test_missing_or_ambiguous_current_artifact_cannot_inherit_a_test_pass(tmp_path):
+    from utopia.optimization.native_post_edit_feedback_v1 import persistent_diagnostics
+    gen,model,body,calls=fixture(tmp_path,[source_action(GOOD),finish()]);gen(body)
+    step=json.loads((directory(tmp_path)/'step-00.completed.json').read_text())
+    row=persistent_diagnostics({'mechanisms':['malformed']},[step])['components'][0]
+    assert row['test_applicability']=='code-artifact-not-present'
+    document=clone(body['parent_system']);document['mechanisms']*=2
+    row=persistent_diagnostics(document,[step])['components'][0]
+    assert row['test_applicability']=='no-unique-current-artifact'
+    assert row['current_artifact_observed_suite'] is None
+
+
+def test_actual_first_proposal_failure_remains_visible_after_its_recorded_read():
+    from pathlib import Path
+    from utopia.optimization.native_staged_author_v15 import initial_draft,transition,build_prompt,workflow_phase
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    root=Path('/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-code-tested-loop-v1-a1/outputs/native-code-tested-loop-v1-a1/search/run-00/throughput--code-and-graph/authoring')
+    dirs=list(root.glob('generation-*/authoring/generation-*'))
+    if len(dirs)!=1:pytest.skip('optional actual local authoring archive absent')
+    d=dirs[0]
+    if not (d/'response.json').exists():pytest.skip('optional actual authoring is not closed')
+    binding=json.loads((d/'request.json').read_text());body=binding['request'];state=initial_draft(body);steps=[]
+    for index in range(13):
+        item=json.loads((d/f'step-{index:02d}.completed.json').read_text())
+        started=json.loads((d/f'step-{index:02d}.started.json').read_text())
+        state,receipt=transition(state,item['model_reply']['output'],body,
+            binding_sha256=binding['binding_sha256'],provider_binding=binding['provider_binding'],
+            conversation_profile=BOUNDED_AUTHORING,workflow_phase=workflow_phase(started['prompt'],BOUNDED_AUTHORING),session_steps=steps)
+        steps.append(item)
+    old=json.loads((d/'step-13.started.json').read_text())
+    assert old['draft_sha256']==digest(state)
+    assert 'invalid generated result' not in old['prompt']
+    prompt=build_prompt(body,state,steps,image_id=binding['image_id'],
+        binding_sha256=binding['binding_sha256'],settings=binding['settings'])
+    data=json.loads(prompt)['persistent_component_diagnostics']
+    row=next(r for r in data['components'] if r['node_id']=='world.selection')
+    assert row['test_applicability']=='same-current-artifact'
+    assert len(row['most_recent_executed_suite']['results'])==4
+    assert all(r['status']=='raised' for r in row['most_recent_executed_suite']['results'])
+    assert 'invalid generated result' in prompt
+    assert len(prompt.encode())<=180000
 
 
 def test_failed_component_tests_do_not_veto_finish_or_restore_baseline_source(tmp_path):
