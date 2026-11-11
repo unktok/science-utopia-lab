@@ -16,8 +16,11 @@ credited. Different sources remain separate; execution, opinions and developer
 controls are not relabeled as autonomous institutional invention or optimizer
 superiority.
 
-The new count-versus-fixed-content objective-conditioned search is running
-separately at frozen537514a. It and its gated unused-seed evaluation are not
+The first count-versus-fixed-content search at537514a stops at an outer replay
+budget bug after a submitted inner definition, without a candidate world.
+Two stopped audits/cost views retain it. A separately frozen61a1753 study runs
+with the complete declared contract guard corrected and the stop recorded.
+It and its gated unused-seed evaluation are not
 completed evidence in this PDF. [Current research status](../research/STATUS.md)
 and [evaluation/analysis design](../research/components/native-objective-fixed-evaluation-v1.md)
 describe that boundary. The important main result and publication-ready

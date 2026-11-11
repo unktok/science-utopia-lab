@@ -6,8 +6,21 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Corrected objective study and retained initial stop](results/native-objective-budget-stop-and-corrected-launch-v1.json):
+  original537514a stops at the first outer replay despite a submitted inner
+  definition. Two stopped audits/costs match; full-contract correction has70
+  launch checks. Separate61a1753 starts20:37UTC with the prior stop retained,
+  unused seeds rechecked and no historical observation import.1/5 references
+  completes by20:46UTC; no new policy loss/selection is claimed.
+- [Native source, consumer and resource traces](components/native-institution-effect-trace-v1.md):
+  actual80 code calls/80 founder-years reconstructed twice, including wrapped
+  delegates and exact original rendered context in completed inputs. Report
+  only; raw-envelope mismatches are not evidence of absent scientific content.
+
 - [Frozen objective evaluation and all-slot analyses](components/native-objective-fixed-evaluation-v1.md):
-  the actual development reaches3/5 references by20:07UTC. Separate development
+  the first development reaches3/5 references by20:07UTC, then stops at20:26UTC.
+  Its subsequent chains stop without evaluation. The corrected study above
+  has separate continuations. Separate development
   report and fixed-policy evaluation continuations wait for original normal
   audit closure; neither modifies active science or replaces failed slots.
   The full connection suite passes171 checks; a separately frozen35-check
@@ -17,9 +30,9 @@ Historical documents retain their paths and source identities.
 - [Next objective-conditioned native experiment specification](protocols/campaigns/native-objective-instrument-loop-v1.md):
   T count versus fixed-content utility, strong initial rule, five common
   references/eight proposals, at most13 development and21 later fixed-policy
-  evaluation worlds. Frozen537514a starts19:41UTC after118 checks, actual saved
-  plan reconstruction and three-root unused-seed checks. Separate cold analysis
-  waits for normal closure; [launch binding](results/native-objective-instrument-launch-verification-v1.json). The actual
+  evaluation worlds. The original537514a [launch binding](results/native-objective-instrument-launch-verification-v1.json)
+  remains historical, not completion; the corrected-source run uses the same
+  objective meanings with an explicit prior-stop record. The actual
   editing parent minimizes the objective over shared references/own history.
   No hidden participation or novelty veto.
 

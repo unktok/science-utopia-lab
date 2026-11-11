@@ -1,5 +1,13 @@
 # Fixed evaluation and analysis for objective conditioned institutions
 
+Current boundary: the first537514a study stops at an outer replay budget bug
+before any candidate world. Its audit/evaluation/report continuations stop,
+not wait for a nonexistent normal closure. A separately frozen61a1753 study
+starts20:37UTC, keeps the prior stop in its plan and imports no old observations.
+[Exact original stop, correction and actual launch](../results/native-objective-budget-stop-and-corrected-launch-v1.json).
+The sequence below specifies the normal-closure path; its historical starts
+are not claims that the first study completed it.
+
 The development experiment optimizes the institution, not the researchers or
 the measurement definition. T minimizes negative accepted decision count;
 U minimizes negative fixed content utility. Both use the same original native

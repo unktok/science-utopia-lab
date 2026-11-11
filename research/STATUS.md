@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November12 05:47JST / November11 20:47UTC:** the original537514a run stops
+20:26:34UTC after five references,28 readiness replies,13 proposal replies and
+eight returned probes. Its inner worker submits, but the outer replay incorrectly
+hardcodes8 instead of the declared64; no candidate world or selection exists.
+Two original-source stopped-prefix audits and two cost views match. The new
+outer-boundary regression reproduces the bug; the full-contract correction and
+70 launch checks pass. A **separate** frozen61a1753 study starts20:37:48UTC,
+retains the stop in its plan, rechecks unused seeds and imports no old observations.
+Writer13220/session92866 is live; its first reference closes20:46:28UTC and the
+second is active. New audit/report/evaluation continuations are closure-gated.
+[Exact stop, correction, costs and launch](results/native-objective-budget-stop-and-corrected-launch-v1.json).
+
+[Native effect traces](components/native-institution-effect-trace-v1.md) now
+reconstruct80 code calls and80 founder-year ledgers from the closed resource
+controls twice. Original rendered context, unlike raw envelope matching, is
+found in actual completed requests. This is report-only evidence, not a new
+policy gain or completion of publication milestoneR2.
+
 **November12 05:07JST / November11 20:07UTC:** development reaches3/5 reference
 completions, with no-review-reject-all-connected currently executing. Frozen
 scientific source537514a remains unchanged. The full separate connection suite

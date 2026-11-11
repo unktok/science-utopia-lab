@@ -234,3 +234,79 @@ closure. It then reads the real evaluation plan and its two audits for double
 export. It never fabricates a plan, starts inference or retries a stopped chain.
 The source and receipt hashes are added to the existing verification record.
 The original537514a scientific writer remains untouched throughout.
+
+## Manuscript navigation and cold effect traces
+
+Read-only PDF inspection confirms the retained54-page artifact and actual
+title/abstract/contents. No PDF authoring operation occurs in this continuation.
+The paper README had still selected the47-page snapshot; it now points first
+to the reviewed54-page artifact and its own binding. Old drafts remain intact.
+The research index separates historical running-looking checkpoints from the
+active orientation. Source d98cfdd passes19 entrypoint/manuscript checks.
+
+A cold reader joins actual code inputs/results to declared nodes, source hashes,
+received inputs and founder ledgers. Its first unit equality test incorrectly
+compares recreated runtime objects (one failure/five passes), corrected to
+canonical native sections. The first actual resource read at ebc3984 then finds
+a real direct-only node lookup error for a wrapped delegate and stops. Neither
+changes any scientific source, candidate or raw record. At d49bcc5 the native
+delegate resolver and explicit ambiguous-event attribution pass8 checks; two
+actual three-file resource exports match, covering80 code calls/16 annual
+boundaries/80 founder-years without new inference or code execution.
+
+The historical context proof matches a complete raw envelope literally, whereas
+the native prompt aliases only opaque audit references. Zero raw matches does
+not mean zero scientific content in model inputs. The prospective reader keeps
+that old proof and separately uses the original institutional_context_prompt on
+actual stored prefixes. At0df3044,9 checks pass. Under reader56d55a6/original
+scientific source78844a0, two actual exports again match: rendered content for
+14/20 delivered recipient messages in base30/disconnected and15/20 elsewhere
+appears in14 and19 unique completed payloads. This proves content presence,
+not unique actor attribution, interpretation, benefit or absence when unmatched.
+
+## Actual outer replay failure and correction
+
+The original537514a writer8469 stops20:26:34.056943UTC. All five references
+are completed. Real readiness28/28
+passes, and the first author submits after13 replies and eight returned probes.
+The actual worker, request and settings agree on the full64-attempt contract
+5bc72f5e. The outer replay alone still tests maximum_probe_attempts==8. It raises
+before the controller adopts the definition or evaluates a native candidate.
+The original terminal, pending record and every raw artifact remain unchanged.
+All four normal-closure-gated continuations then stop without new evaluation.
+
+At3c653fb, the newly extended regression reproduces this exact error across
+actual outer execute -> worker -> staged submission -> public outer replay:
+three cases pass and the extended/outer case fails. Previous171-check coverage
+had stopped at the role factory/inner replay and did not cover that boundary.
+The correction ea3c3db reconstructs and compares the complete declared contract,
+preserving legacy8 and opt-in64 rather than removing validation.47 checks pass
+22.97s. At61a1753,70 relevant connection/launch checks pass28.96s. AGENTS.md now
+requires the outer successful-terminal path for new optional modes/budgets.
+These are scoped checks, never a promise that the whole system is bug-free.
+
+The separate56d55a6 stopped-prefix auditor runs under the unmodified537514a
+checkout. Two audits match, explicitly preserving five reference worlds,
+one pending proposal, seven unattempted slots, no candidate world, no selection
+and no evaluation. Original inner staged replay matches the worker definition
+3062bde6; it is retained as an unadopted, unevaluated artifact, not repaired or
+promoted to a completed policy. Two cost views match:570 scientist replies,
+519611 input/58970 output tokens,87490 cached input tokens as a subset;28
+readiness and13 proposal POSTs;33 separate critic POSTs with14940 input/4671
+output tokens. Seven empty-prompt model loads have unknown token usage.
+
+## Separate corrected-source launch
+
+The corrected61a1753 study prepares from a fresh clean checkout with the old
+stop's exact plan/terminal hashes recorded in prior_technical_stops. It imports
+no old developer observations and preserves the same T/U meanings,5 references,
+8 new slots and at most13 new native worlds. The actual saved plan reconstructs;
+the three-root seed checks again have no64101/64107/64113 matches. The old study
+is not resumed, refilled or relabeled, and its failed authoring cost is not free.
+
+New writer13220/session92866 starts20:37:48.179326UTC. Separate same-source
+analysis/session16114, development report/session15061, fixed evaluation
+continuation/session25775 and fixed-report waiter/session83919 are started and
+closure-gated. The new first reference finishes20:46:28UTC, second active.
+No new selected system, objective-conditioned improvement or main-conference
+readiness is claimed. The original system optimization goal and R2 remain open.

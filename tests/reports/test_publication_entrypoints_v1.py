@@ -40,3 +40,14 @@ def test_current_reader_links_exist_and_readiness_is_not_claimed_by_finished_qa(
     assert '| R2 |' in plan and 'R2の研究上の答えを先取りしない' in plan
     assert '76panel／228応答で正常終了' in plan
     assert '稼働中の目的、候補枠、参照、選択方法は変えない' in plan
+
+
+def test_stopped_definition_stays_literal_unadopted_and_unevaluated():
+    from utopia.system.design_patch import digest
+    value=json.loads((ROOT/'research/data/native-objective-initial-stop-v1/submitted-definition.json').read_text())
+    evidence=json.loads((ROOT/'research/results/native-objective-budget-stop-and-corrected-launch-v1.json').read_text())
+    assert digest(value['definition'])==value['definition_sha256']==evidence['stopped_original']['submitted_inner_definition_sha256']
+    assert not value['source_repaired'] and not value['controller_adopted']
+    assert value['native_loss'] is None and value['candidate_native_worlds']==0
+    assert value['scientific_source_commit']==evidence['stopped_original']['source_commit']
+    assert evidence['corrected_source_study']['prior_stop_in_plan'] and evidence['stopped_original']['selected_policy'] is None
