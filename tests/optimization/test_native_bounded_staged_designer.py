@@ -199,7 +199,8 @@ def test_actual_calibration_worker_declares_feedback_without_executing_component
 
 
 @pytest.mark.parametrize('extended',[False,True])
-def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended):
+@pytest.mark.parametrize('outer_boundary',[False,True])
+def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended,outer_boundary):
     # No mocked certificate summary or model class: actual role/factory/transport
     # implementations, with an explicitly scripted HTTP server and executor.
     from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,GOOD,finish
@@ -233,19 +234,37 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
                     'content':json.dumps(function_data(action)),
                     **({'thinking':'SCRIPTED planner evidence'} if payload['think'] else {})}})
     monkeypatch.setattr('requests.Session',Session)
-    run_calibration(tmp_path/'calibration',request=body,provider=binding,scope=EXECUTION_SCOPE,
-        conversation_profile=module.BOUNDED_AUTHORING)
-    author=make_local_role_bound_generator(tmp_path/'author',image_id=gen.image_id,
-        provider_binding=binding,max_steps=16,max_tokens=8192,
-        preflight_certificate=tmp_path/'calibration/certificate.json',readiness_scope=EXECUTION_SCOPE,
-        conversation_profile=module.BOUNDED_AUTHORING,edit_feedback=gen.edit_feedback)
-    result=author(body)
+    if outer_boundary:
+        import utopia.optimization.native_jobs as jobs
+        import utopia.optimization.native_scientist_load_v38 as loads
+        import utopia.system.code_mechanisms as code
+        monkeypatch.setattr(jobs,'pinned_revision',lambda root:'c'*40)
+        monkeypatch.setattr(loads,'load_local_role',lambda *a,**kw:None)
+        monkeypatch.setattr(code,'DockerCodeExecutor',lambda **kw:gen.edit_feedback.executor)
+        def execute_worker(argv,**kwargs):
+            module.worker(argv[-2],argv[-1]);return {'timed_out':False,'returncode':0}
+        monkeypatch.setattr(module,'run_bounded',execute_worker)
+        calibrated=module.execute(tmp_path/'outer-calibration',kind='calibration',request=body,
+            provider=binding,source_commit='c'*40,maximum_posts=40)
+        assert calibrated['passed']
+        result=module.execute(tmp_path/'outer-proposal',kind='proposal',request=body,
+            provider=binding,source_commit='c'*40,certificate=tmp_path/'outer-calibration/calibration/certificate.json',
+            post_edit_bank=gen.edit_feedback.bank)
+        directory=next((tmp_path/'outer-proposal/authoring').glob('generation-*'))
+    else:
+        run_calibration(tmp_path/'calibration',request=body,provider=binding,scope=EXECUTION_SCOPE,
+            conversation_profile=module.BOUNDED_AUTHORING)
+        author=make_local_role_bound_generator(tmp_path/'author',image_id=gen.image_id,
+            provider_binding=binding,max_steps=16,max_tokens=8192,
+            preflight_certificate=tmp_path/'calibration/certificate.json',readiness_scope=EXECUTION_SCOPE,
+            conversation_profile=module.BOUNDED_AUTHORING,edit_feedback=gen.edit_feedback)
+        result=author(body);directory=next((tmp_path/'author').glob('generation-*'))
     assert result is not None and 'generation_failure' not in result
     expected_calls,expected_probes=(6,16) if extended else (4,8)
     assert len(Session.production)==expected_calls and len(probes)==expected_probes
     assert 'SCRIPTED-BAD-FLOAT' in json.dumps(Session.production[2])
     if extended:assert 'SCRIPTED common strong reference' in json.dumps(Session.production[0])
     assert not unused.calls
-    directory=next((tmp_path/'author').glob('generation-*'))
     assert replay_staged_generation(directory)==result
+    if outer_boundary:assert module.replay(tmp_path/'outer-proposal')==result
     assert len(Session.production)==expected_calls and len(probes)==expected_probes
