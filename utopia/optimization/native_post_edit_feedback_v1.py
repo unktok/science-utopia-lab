@@ -75,6 +75,11 @@ def persistent_diagnostics(document,steps):
                        'display_excerpt_is_partial':value.get('error_is_excerpt',False) or (
                            value['error_excerpt'] is not None and len(value['error_excerpt'])>256),
                        'display_excerpt_limit_characters':256}
+                    | ({'tensor_delivery_diagnostic':clone(value['tensor_delivery_diagnostic']),
+                        'diagnostic_document_applicability':('same-current-document'
+                            if value['tensor_delivery_diagnostic']['document_sha256']==digest(document)
+                            else 'different-document-not-current-consumer-proof')}
+                        if 'tensor_delivery_diagnostic' in value else {})
                     for value in test['results']]}
             latest[node]=entry
             if test['status']=='tested':
@@ -109,6 +114,12 @@ class NativePostEditFeedback:
                 ('post_edit_reference' in bank and reference not in bank.get('references',[]))):
             raise ValueError('explicit actual developer fixture reference required')
         self.bank=clone(bank);self.executor=executor;self.source_commit=source_commit
+        self.tensor_delivery_scope=None
+        if 'post_edit_tensor_delivery_scope' in bank:
+            from .native_tensor_delivery_diagnostics_v1 import SCOPE
+            if bank['post_edit_tensor_delivery_scope']!=SCOPE:
+                raise ValueError('unknown explicit tensor-delivery diagnostic scope')
+            self.tensor_delivery_scope=SCOPE
         self.maximum_probes=maximum_probes;self.suites={}
         for node in bank['nodes']:
             origins=[o for o in bank['origins'] if o['node_id']==node and o['reference']==reference]
@@ -127,6 +138,11 @@ class NativePostEditFeedback:
             'veto_on_test_failure':False,'source_repair':False,'new_native_worlds':0,'new_model_calls':0}
         if 'post_edit_reference' in bank:self.contract['fixture_reference']=reference
         if self.probe_scope!=LEGACY_PROBE_SCOPE:self.contract['budget_scope']=self.probe_scope
+        if self.tensor_delivery_scope is not None:
+            from .native_tensor_delivery_diagnostics_v1 import source_hashes,NOTE as DELIVERY_NOTE
+            self.contract['tensor_delivery_diagnostics']={'scope':self.tensor_delivery_scope,
+                'source_sha256':source_hashes(),'note':DELIVERY_NOTE,'veto_on_finish':False,
+                'new_model_calls':0,'new_native_worlds':0,'new_tensor_body_executions':0}
 
     def declare_request(self,request):
         result=clone(request)
@@ -216,6 +232,9 @@ class BoundFeedback:
                     'full_error_sha256':None if full_error is None else digest(full_error),
                     'result_sha256':sha(reply['result']) if reply['status']=='returned' else None,
                     'exact_step_probe_pointer':f'/component_probe_records/{cursor-offset}'})
+                if self.owner.tensor_delivery_scope is not None and reply['status']=='returned':
+                    from .native_tensor_delivery_diagnostics_v1 import diagnose
+                    entry['results'][-1]['tensor_delivery_diagnostic']=diagnose(after['document'],node,reply['result'])
                 cursor+=1
         result=clone(receipt)
         result['result']['component_feedback']={'schema':SCHEMA,'probe_offset':offset,

@@ -171,6 +171,23 @@ def _match(scores, *, hard, temperature, iterations):
     return value.exp()
 
 
+def tensor_input_from_payload(payload, path, shape):
+    """Original native payload conversion, shared with non-executing diagnostics."""
+    from .design_patch import read_pointer
+    value = torch.tensor(read_pointer(payload, path), dtype=torch.float64)
+    if value.numel() == 0 and -1 in shape:
+        value = value.reshape([0 if d == -1 else d for d in shape])
+    return value
+
+
+def validate_tensor_input(value, name, shape):
+    """Check a declared input only; never evaluate an authored tensor program."""
+    value = _bounded(value)
+    if value.ndim != len(shape) or any(d != -1 and d != actual for d, actual in zip(shape, value.shape)):
+        raise ValueError('tensor input shape differs: ' + name)
+    return value
+
+
 def execute_tensor_program(program, inputs: Mapping[str, torch.Tensor], *, parameters=None,
                            state=None, hard=False, temperature=1.0):
     """One program, hard operational interpretation or explicit soft relaxation.
@@ -187,9 +204,7 @@ def execute_tensor_program(program, inputs: Mapping[str, torch.Tensor], *, param
     anchor = next(iter(inputs.values()), torch.tensor(0., dtype=torch.float64))
     env = {}
     for name, shape in program['inputs'].items():
-        value = _bounded(inputs[name])
-        if value.ndim != len(shape) or any(d != -1 and d != actual for d, actual in zip(shape, value.shape)):
-            raise ValueError('tensor input shape differs: ' + name)
+        value = validate_tensor_input(inputs[name], name, shape)
         env['input:' + name] = value
     for group, supplied in (('parameters', parameters), ('state', state)):
         if supplied is not None and set(supplied) != set(program[group]):
@@ -270,16 +285,13 @@ def tensor_handler(context):
     if set(bindings) != set(program['inputs']) or set(program['outputs']) != {p.port_id for p in context.mechanism.outputs}:
         raise ValueError('tensor program and graph bindings differ')
     inputs, records, actor_ids, artifact_ids, sources = {}, None, [], [], {}
-    from .design_patch import read_pointer
     for name, binding in bindings.items():
         delivered = context.inputs[binding['port']]
         if len(delivered) != 1:
             raise ValueError('tensor input requires exactly one frame; aggregate explicitly upstream')
         item = delivered[0]
-        value = torch.tensor(read_pointer(item.payload, binding['path']), dtype=torch.float64)
         shape = program['inputs'][name]
-        if value.numel() == 0 and -1 in shape:
-            value = value.reshape([0 if d == -1 else d for d in shape])
+        value = tensor_input_from_payload(item.payload, binding['path'], shape)
         inputs[name] = value
         sources[name] = {'mechanism': item.source_mechanism, 'port': item.source_port,
                          'period': item.emitted_period, 'path': binding['path']}

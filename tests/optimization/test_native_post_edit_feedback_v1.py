@@ -17,7 +17,7 @@ GOOD="def step(context):\n    return {'outputs': {}, 'state': {'fixed': True}}\n
 
 
 def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes-function-history-v26',large=False,maximum_steps=None,
-            maximum_probes=8,reference='open-seed',extended=False):
+            maximum_probes=8,reference='open-seed',extended=False,tensor_delivery=False):
     body=request();artifact=body['parent_system']['mechanisms'][0]['parameters']['code_artifact']
     records=[];origins=[]
     for year in range(1,5):
@@ -33,6 +33,7 @@ def fixture(tmp_path,actions,*,interrupt=False,model_class=Model,profile='hermes
         'origins':origins,'scope':'SCRIPTED; no real native input, model, or container execution'}
     if reference!='open-seed':bank.update(references=[reference],post_edit_reference=reference)
     if extended:bank['post_edit_probe_scope']='declared-sixtyfour-v2'
+    if tensor_delivery:bank['post_edit_tensor_delivery_scope']='recorded-direct-tensor-inputs-v1'
     bank['content_sha256']=digest(bank);calls=[]
     def execute(a,c):
         calls.append((clone(a),clone(c)))

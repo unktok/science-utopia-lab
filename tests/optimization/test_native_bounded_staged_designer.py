@@ -200,7 +200,8 @@ def test_actual_calibration_worker_declares_feedback_without_executing_component
 
 @pytest.mark.parametrize('extended',[False,True])
 @pytest.mark.parametrize('outer_boundary',[False,True])
-def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended,outer_boundary):
+@pytest.mark.parametrize('tensor_delivery',[False,True])
+def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch,extended,outer_boundary,tensor_delivery):
     # No mocked certificate summary or model class: actual role/factory/transport
     # implementations, with an explicitly scripted HTTP server and executor.
     from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,GOOD,finish
@@ -211,7 +212,7 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     from utopia.optimization.native_designer_tools_v25 import function_data
     from utopia.optimization.native_staged_author_v15 import replay_staged_generation
     options={'extended':True,'reference':'resource-30-connected','maximum_probes':64} if extended else {}
-    gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()],**options)
+    gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()],tensor_delivery=tensor_delivery,**options)
     if extended:
         body['developer_reference_context']={'summary':[{'reference':'SCRIPTED common strong reference','loss':-17.25}]}
     binding=designer_binding();binding['image_id']=gen.image_id
@@ -265,6 +266,10 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     assert 'SCRIPTED-BAD-FLOAT' in json.dumps(Session.production[2])
     if extended:assert 'SCRIPTED common strong reference' in json.dumps(Session.production[0])
     assert not unused.calls
+    if tensor_delivery:
+        assert body['strategy_provenance']['post_edit_component_contract']['tensor_delivery_diagnostics']['scope']=='recorded-direct-tensor-inputs-v1'
+        assert 'compatible-recorded-input' not in json.dumps(Session.production[2])  # This fixture has no tensor consumer.
+        assert 'new_tensor_body_executions' in json.dumps(Session.production[2])
     assert replay_staged_generation(directory)==result
     if outer_boundary:assert module.replay(tmp_path/'outer-proposal')==result
     assert len(Session.production)==expected_calls and len(probes)==expected_probes
