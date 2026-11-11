@@ -30,6 +30,16 @@ keeps the original failure and1796 scientist replies/428 auxiliary intents.
 Optional component tests for future model-authored code
 must remain separate from native losses and preserve the full design freedom.
 
+Developer-side [component lab](components/native-component-lab-v1.md) now binds
+24 exact old-native inputs (three references, two components, four years;
+all development seed61001). Two original-source staging runs reproduce both
+bank and retained origin manifest. The [three fixed real-container checks](results/native-component-lab-real-diagnostic-v1.json)
+reproduce the baseline output and detect one old envelope error; the old
+float-index error does not fire on the empty paper batch. No call was refilled.
+Two new-process cold replays agree without code execution. Model-facing
+self-test/repair is not connected yet; there is no new LLM invention or loss
+improvement from this diagnostic. The live30-world source is unchanged.
+
 November11: the user explicitly requested autonomous continuation until the
 project is publication-ready for a top conference. The goal is active, not
 achieved by the earlier engineering packages. [Current milestones](publication/publication-ready-v3.md)

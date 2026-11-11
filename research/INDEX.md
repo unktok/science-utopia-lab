@@ -19,6 +19,9 @@ Historical documents retain their paths and source identities.
   [Two matching stopped audits and cost projections](results/native-loop-stopped-prefix-verification-v1.json)
   now verify19 worlds. The separate fixed-submission evaluation starts11:25:10UTC
   at frozenf1f8ddf after80 checks; zero new designer-generation POSTs.
+  [Developer component lab](components/native-component-lab-v1.md) stages24 actual
+  old-native inputs and retains a three-call real-container diagnostic, including
+  one unexercised historical failure. Model-facing self-test integration remains next.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.

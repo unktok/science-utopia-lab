@@ -50,7 +50,7 @@ The API and staging guards pass24 fake-executor checks. The native attempt
 recorder and existing physical/simulation guards separately pass35 checks at
 5cc8493. These suites overlap and are not independent scientific samples.
 The model-facing editor does not yet advertise or call this API. Connecting
-the tool, its literal cold replay and fresh real-backend readiness is next;
+the model-facing tool and fresh real-model readiness is next;
 no new institution or optimization benefit follows from this component alone.
 The live fixed-candidate evaluation remains unchanged at frozenf1f8ddf.
 
@@ -65,3 +65,12 @@ If the baseline does not return, stop without replacement; otherwise preserve
 both candidate results even if the expected failure is not exercised. There
 are no LLM calls, new scientific worlds or source repair. Reproducing a code
 exception on one recorded input is not reproducing the full original world.
+
+[Actual three-call result](../results/native-component-lab-real-diagnostic-v1.json)
+at clean3c0ba8c: the baseline returns the exact historical output; the retained
+record-envelope failure raises; the retained float-index failure returns on
+this empty paper batch. Its faulty `values[i][0]` expression is inside the
+unentered record loop. No replacement input was tried. Two new-process cold
+replays agree, with execution explicitly disabled. The source corpus and active
+evaluation are unchanged. Future model-facing tests need a predeclared suite
+covering empty and nonempty native states, not a one-input pass/fail promise.

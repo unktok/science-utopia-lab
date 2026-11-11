@@ -1,0 +1,42 @@
+{
+  "schema": "scienceutopia.native-component-lab-real-diagnostic-verification.v1",
+  "source_commit": "3c0ba8c33009bb05327129f5625848c89028cc14",
+  "output": "outputs/native-component-lab-real-diagnostic-a1",
+  "raw_summary_file_sha256": "b10fe6c8a4e72e864082a51f87da853b0481b43a5d416b9344f7d7da47331d91",
+  "raw_summary_content_sha256": "78c7657a965805df43c573a38dedf678f1ddc7ee198ce69ea600e261fa545aec",
+  "fixture_bank_file_sha256": "01dc82787c86d3b4d5db1a229183b2f93d23ccbbee7797fa04baf1ef33ca2f08",
+  "fixture_scope": "actual open-seed developer world, seed61001, year1 selector input; empty records and score values",
+  "predeclared_container_calls": 3,
+  "actual_container_calls": 3,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "results": [
+    {
+      "label": "baseline",
+      "status": "returned",
+      "artifact_sha256": "011f9a5e718bf1870b20492ab01c9738680afd17887adc39398563b22fe3d4ac",
+      "result_content_sha256": "335c816b8f43f356c79ee68c0e146bd42be21e7d2e6de48dde81bafb20be75e3",
+      "matches_original_output": true
+    },
+    {
+      "label": "retained T fixed-graph G1 float-input failure",
+      "status": "returned",
+      "artifact_sha256": "723d303bbe70e2a99ada2cf3492b0f0e1c14c1e7d78dffa5df6f5ca8fccbd49f",
+      "result_content_sha256": "cd8eea4a0d37dcaf36a96764e7e558497d2c58bd55360d51b3bbc396092690b8",
+      "historical_failure_exercised_here": false
+    },
+    {
+      "label": "retained E fixed-graph G0 record-envelope failure",
+      "status": "raised",
+      "artifact_sha256": "b13dfd6ba1de428950f536b774da3a48675649d4f1d15ccfd17b482bcb781cdb",
+      "result_content_sha256": "ce15b16db10499e8fc6fcb5463d49a0fa931a0e669ef2cb9849c2ae908cf0e16",
+      "error_type": "CodeExecutionError",
+      "record_envelope_error_detected": true
+    }
+  ],
+  "two_fresh_process_cold_replays": {"exit_codes": [0, 0], "new_container_calls": 0, "matching_sha256": "c51a59cfb2ccb4246865fc9078d15b3a4e8bf828a6c3fb92bb631bc1c2c5cf7c"},
+  "whole_native_failure_reproduced": false,
+  "model_self_debug_demonstrated": false,
+  "new_optimization_improvement_demonstrated": false,
+  "scope": "Three fixed component-only calls. One historical failure is not exercised on the empty paper batch; no replacement fixture/call/source was added. A successful component test does not certify another input or a whole native trajectory. Main evaluation stays at frozenf1f8ddf."
+}

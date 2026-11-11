@@ -249,3 +249,17 @@ baselineが失敗したら停止、候補が期待どおり失敗しなくても
 caller自身もcodeを修復せず、元の入力・source・出力／例外を保持する。
 元の全world失敗の再現、LLM自己debug、損失改善の検証とは別のcomponent診断。
 入力選択とAPI／stageの17 scripted QAは0.89秒でpass。
+
+3c0ba8c33009bb05327129f5625848c89028cc14で実container3callを完了。
+statusはreturned／returned／raised。baselineは過去出力hashを再現した。
+E旧envelope欠落はCodeExecutionErrorとして検出、T旧float添字は今回発火しなかった。
+この入力ではscores.recordsとscores.valuesが空で、sourceの`values[i][0]`を含むloopに入らない。
+従って「古い失敗2件を両方再現」とは書かず、事前3callのまま閉じ、追加fixtureで補充しない。
+各caller観測時間は0.236／0.191／0.199秒。LLM応答費用や新world時間ではない。
+summary contentは`78c7657a965805df43c573a38dedf678f1ddc7ee198ce69ea600e261fa545aec`。
+
+別の二つのfresh Python processで、execute禁止executorを与えたcold replayが共にexit0。
+replay SHAは`c51a59cfb2ccb4246865fc9078d15b3a4e8bf828a6c3fb92bb631bc1c2c5cf7c`で一致し、
+追加container／LLMは0。自動code修復、全native failure再現、発明やloss改善の結果ではない。
+この結果からモデルtool側は「単一empty fixtureを通れば安全」ではなく、事前に固定した
+empty／nonempty・複数年のsuiteを選べるようにする。新institutionをgolden出力へ同一化しない。
