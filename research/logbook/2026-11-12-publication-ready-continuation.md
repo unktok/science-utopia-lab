@@ -110,3 +110,20 @@ objective-conditioned native design experiment, not additional seeds for these
 controls or an unchanged T/E feasibility repeat. A new instrument's adaptive
 connection is ready in software, but its actual-model search and unused
 comparison have not yet been run. Publication goal and milestoneR2 remain open.
+
+## Next objective experiment specification and synchronization
+
+After snapshot tests3/3 pass, main fast-forwards to965611f and normal GitHub
+push succeeds to the existingunktok/science-utopia-lab remote. Original raw
+responses and weights are not added. The54-page reviewed PDF is included.
+
+A prospective T-versus-fixed-content-U experiment is specified separately:
+strong reviewed-all/connected starting rule, five explicit strong references,
+four proposals per objective, no forced divergence/rewiring or merit veto.
+At most13 development worlds and21 separately selected-policy evaluation
+worlds are planned; no actual dispatch, seed holdout proof or frozen plan is
+claimed. The required new resource-context fixture bank and literal reference
+prompt retention are implementation work. The existing bounded worker hardcodes
+8 component probes, so a new allowance must actually reach and bind that worker,
+not merely appear in protocol metadata. The newU LossSpec does not change any
+historical study's T/E or recategorize blind opinions as scientific truth.

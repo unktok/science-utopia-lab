@@ -2,6 +2,13 @@
 
 ## Active publication-ready goal
 
+**Next implementation:** the [new objective-conditioned protocol](protocols/campaigns/native-objective-instrument-loop-v1.md)
+now specifies count T versus fixed-content utility U, a strong starting rule,
+five references/eight proposal slots and a separate selection-frozen comparison.
+It is not yet a frozen executable plan. Resource component fixtures, the
+actual reference-bearing designer prompt, worker probe budget, source-bound
+runner/auditor and unused-seed inventory are next. No inference is running.
+
 **November12 03:42JST / November11 18:42UTC:** all four resource-control worlds
 close normally18:29:23UTC; two independent audits/costs close18:30:14UTC. Two
 actual seven-file reports match. [Results](results/native-liquidity-support-v1.md):

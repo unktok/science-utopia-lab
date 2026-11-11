@@ -1,0 +1,13 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "native-common-content-utility-v1",
+  "version": "1",
+  "status": "abstract-based-fixed-model-preference-not-scientific-truth",
+  "optimization_seed_role": "development",
+  "direction": "minimize",
+  "per_run": {"intercept": 0.0, "terms": [
+    {"metric_id": "native.common_content_utility_sum", "slice_id": null, "coefficient": -1.0}
+  ]},
+  "across_seeds": {"aggregation": "mean_plus_population_sd", "dispersion_weight": 0.0, "minimum_valid_runs": 1},
+  "interpretation": "Minimize minus the sum of (fixed common content panel mean - 3) over actual accepted decision records. The observer contract fixes rubric, model, pooling and budget separately. This is an abstract-based preference, not truth. All-accept, all-reject and review removal are legal. No hidden participation, fairness or structural novelty veto."
+}
