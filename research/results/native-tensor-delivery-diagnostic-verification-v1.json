@@ -1,0 +1,66 @@
+{
+  "schema": "scienceutopia.native-tensor-delivery-diagnostic-verification.v1",
+  "status": "prospective-opt-in-interface-and-retrospective-readout-not-actual-model-benefit",
+  "active_scientific_source_unchanged": "61a1753cb6edd2a8d098b5b063eb0ba9f6138890",
+  "enabled_in_active_study": false,
+  "bank_opt_in_field": "post_edit_tensor_delivery_scope",
+  "bank_opt_in_value": "recorded-direct-tensor-inputs-v1",
+  "source_repair": false,
+  "veto_on_finish": false,
+  "probe_or_model_allowance_increased": false,
+  "verification": [
+    {
+      "scope": "scripted calibration, actual role factory, worker, outer execute/replay and version-specific feedback; legacy eight and explicit sixtyfour",
+      "source_commit": "86e4ea0c5a9f3882593c99db54df332ef190fb55",
+      "passed": 86, "failed": 0, "elapsed_seconds": 41.92,
+      "junit_file_sha256": "1c4166af81aa641329663fa662bbebdbb439f799cc070c0e1a581d00a3413ab2"
+    },
+    {
+      "scope": "native, tensor and hybrid regression; one default-permission container-access skip",
+      "source_commit": "6abd65e99d5b6e9e3e1858a552b4922222eda4cd",
+      "passed": 53, "failed": 0, "skipped": 1, "elapsed_seconds": 34.04,
+      "junit_file_sha256": "c35ebfdd96099d19a3a0e4212b530c698a9e0b270c0cc6ef73d969839f8e8211"
+    },
+    {
+      "scope": "actual original six-year world and real existing no-network container, scripted responsive scientist HTTP, recurrent backward/projection/fresh reactions/fidelity/reload",
+      "source_commit": "6574fe21ca14f55d52a49ae068d269024fde1ee4",
+      "passed": 1, "failed": 0, "skipped": 0, "elapsed_seconds": 29.83,
+      "junit_file_sha256": "3428a1815b0876fb4b91ed6606f3485d875d2a8f3d0727d3f980e014786e1679"
+    },
+    {
+      "scope": "complete scripted double-export boundary including null finish result; input diagnostic tests",
+      "source_commit": "6574fe21ca14f55d52a49ae068d269024fde1ee4",
+      "passed": 16, "failed": 0, "elapsed_seconds": 5.43,
+      "junit_file_sha256": "07fca242c2f68a2e52b37779fdb34e833091b84f9501f7939b0638ee114c5a1f"
+    }
+  ],
+  "test_scopes_overlap_and_are_not_scientific_replications": true,
+  "retained_failures": [
+    {"scope": "readout test collection", "source_commit": "3a5de71", "passed": 15, "errors": 1,
+     "cause": "A fixture-row helper named test was collected as a test requiring nonexistent fixtures.",
+     "junit_file_sha256": "57a024dd86666024b0d5eea22e41e5c76032890f52f76b13272fb88d403f588d"},
+    {"scope": "first actual retrospective reader", "source_commit": "7a2985a39c7ddb71cb09684f9d7588e4af1f09c7", "exit_code": 1,
+     "cause": "Valid null terminal transition/result was not handled by the first metadata reader.",
+     "scientific_source_or_feedback_changed": false, "output_fabricated": false}
+  ],
+  "actual_readout": {
+    "analysis_source_commit": "6574fe21ca14f55d52a49ae068d269024fde1ee4",
+    "objective": "content-utility", "generation": 0,
+    "original_cold_authoring_replay": true,
+    "original_native_world_audit": false,
+    "two_reports_and_manifests_byte_identical": true,
+    "original_probe_calls_retained": 8,
+    "same_final_artifact_probes": 4,
+    "compatible_empty_input": 1,
+    "incompatible_nonempty_inputs": 3,
+    "original_record_and_archive_unchanged": true,
+    "diagnostic_presented_to_original_designer": false,
+    "report_content_sha256": "607bcc371f76f58aafbf3fd8b0ffd7c8ea69d3133182aafa39cb81c40b655f02",
+    "report_file_sha256": "7b45c90fef9a6dcfa5fbd53d728ef2f83794d66acb1a7a355e0e2df28fbafe5e",
+    "manifest_file_sha256": "ccb17b45fef01f1b2fc7cc10d3258709f2c52486295a02f79d2aa302fa59dd46",
+    "new_model_calls": 0, "new_source_executions": 0, "new_tensor_body_executions": 0, "new_native_worlds": 0
+  },
+  "actual_model_readiness_for_future_enabled_study": "required before dispatch, not yet performed",
+  "actual_model_repair_or_optimization_benefit_claimed": false,
+  "publication_ready": false
+}

@@ -52,3 +52,24 @@ def test_two_actual_export_boundaries_accept_null_finish_results_without_rewriti
     report=module.checked(json.loads((out/'one/report.json').read_text()))
     assert report['probes'][0]['diagnostic']['rows'][0]['status']=='incompatible-recorded-input'
     assert not report['presented_to_original_designer'] and not report['is_original_native_world_audit']
+
+
+def test_retained_actual_readout_keeps_all_probes_but_never_reuses_a_different_artifact():
+    import json
+    from pathlib import Path
+    from utopia.optimization.native_numeric_designer import checked
+    from utopia.utils.data_utils import file_sha256
+    root=Path(__file__).resolve().parents[2]/'research/data/native-tensor-delivery-diagnostic-v1'
+    report=checked(json.loads((root/'report.json').read_text()));manifest=checked(json.loads((root/'manifest.json').read_text()))
+    assert file_sha256(root/'report.json')==manifest['report_file_sha256']=='7b45c90fef9a6dcfa5fbd53d728ef2f83794d66acb1a7a355e0e2df28fbafe5e'
+    assert report['content_sha256']=='607bcc371f76f58aafbf3fd8b0ffd7c8ea69d3133182aafa39cb81c40b655f02'
+    assert len(report['probes'])==report['original_probe_calls']==8 and report['final_artifact_probes']==4
+    final=[r for r in report['probes'] if r['final_producer_artifact_match']]
+    assert all(r['unambiguous_producer_match'] and r['actual_probe_status']=='returned' for r in final)
+    values=[v for r in final for v in r['diagnostic']['rows']]
+    assert [v['observed_shape'] for v in values]==[[0,2],[2,3],[3,3],[2,3]]
+    assert sum(v['status']=='incompatible-recorded-input' for v in values)==3
+    assert all(r['diagnostic'] is None for r in report['probes'] if not r['final_producer_artifact_match'])
+    assert not any(report[k] for k in ('presented_to_original_designer','original_feedback_or_verdicts_rewritten',
+        'is_original_native_world_audit','loss_changed','publication_ready'))
+    assert report['new_model_calls']==report['new_source_executions']==report['new_tensor_body_executions']==0

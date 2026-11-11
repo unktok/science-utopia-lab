@@ -447,3 +447,46 @@ the downstream tensor contract. The unchanged worker remains in U/g1 authoring
 at21:55UTC, with two closed proposal slots (one native complete, one null),
 six remaining slots and no study terminal. The independent readers remain
 closure-gated. No new paid service, model download or conference submission.
+
+## Original controller continuation and non-veto tensor-delivery diagnostics
+
+At22:19UTC the original61a1753 writer/session92866 remains live in T/g1 native
+execution. Three slots are closed: T/g0−7, U/g0 shape-related null, U/g1−4.
+The actual U/g1 candidate has no changed paths from its selected reference
+parent. Its request includes the U/g0 error, but identity submission is not
+repair of the failed code or new institutional invention. The study and
+selection-fixed evaluation are still unfinished.
+
+Future opt-in bank scope recorded-direct-tensor-inputs-v1 adds a read-only
+comparison of actual component replies and direct tensor input declarations.
+It shares original payload conversion/empty-batch handling with the adapter,
+does not execute tensor bodies or authored Python, and has no loss/finish gate.
+The request binds helper/adapter/notice source hashes. Persistence is tied to
+the document as well as producer artifact, so changed consumers make old
+diagnostics explicitly stale. Unassessed fan-in, delay and ambiguous owners
+are not converted into passes. The active scientific source/bank is unchanged.
+
+At86e4ea0,86 scripted calibration/role/worker/outer-replay checks pass41.92s.
+Native/tensor/hybrid regression at6abd65e has53 passes and one container-access
+skip. The skipped six-year native recurrent-gradient/fresh-reaction/reload
+case is then really run with the existing isolated container at6574fe2 and
+passes29.83s. Scientist HTTP remains scripted; no model call, image download
+or method advantage is inferred. Scopes overlap and are not summed as trials.
+
+The first reader helper is mistakenly collected as a test:15pass/1setup error.
+Its rename fixes discovery. The first actual7a2985a readout then stops on a
+valid null finish result, before creating an output; no science is restarted.
+The corrected6574fe2 reader adds a complete double-export regression with
+that terminal shape;16 checks pass5.43s. Actual original-source authoring
+replay and two new readouts match. Eight original probes stay listed. Four
+match the final producer artifact93859a8b: empty0x2 is compatible; nonempty
+2x3,3x3,2x3 fail the unchanged dynamic-by2 declaration. Earlier-artifact probes
+are not reused as final-code evidence. The closed record/archive are unchanged.
+
+The new retrospective diagnosis was never given to that original designer.
+The enabled future mode still requires fresh real-model readiness before any
+scientific dispatch. Actual detection is not a demonstrated repair benefit.
+Evidence, exact receipt hashes and reproduction are retained under
+research/data/native-tensor-delivery-diagnostic-v1 and
+research/results/native-tensor-delivery-diagnostic-verification-v1.json.
+The55-page reviewed PDF remains unchanged; R2 and publication readiness stay open.

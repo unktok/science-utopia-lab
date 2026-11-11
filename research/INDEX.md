@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual recorded-output and tensor-consumer diagnostics](components/native-recorded-tensor-delivery-diagnostics-v1.md):
+  the final U/g0 artifact's four existing replies reveal one empty compatible
+  case and three nonempty shape mismatches. Two original-source-cold readouts
+  agree without historical feedback changes or inference. The prospective
+  non-veto opt-in interface is not applied to the active61a1753 study.
 - [Content turnover explains an objective tie](results/native-content-overlap-v1.md):
   audited reference worlds have7 versus5 accepted occurrences but both utility4;
   three shared, four connected-only and two disconnected-only records. Exact
@@ -13,7 +18,8 @@ Historical documents retain their paths and source identities.
   describes the historical references, not invented policies or causal mediation.
 - [Current objective search and result boundaries](STATUS.md): corrected61a1753
   completes five references and its first throughput candidate at21:33UTC:
-  T=−7/U=−4, tied with connected accept-all; content-utility:g0 readiness follows.
+  T=−7/U=−4, tied with connected accept-all. U/g0 later fails; U/g1 submits
+  its unchanged reference and completes at−4; T/g1 is live at22:19UTC.
   Additional source/consumer/resource continuations are waiting, not completed
   results. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
   retain all ties without reselecting policies or modifying current losses.

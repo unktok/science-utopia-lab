@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+**November12 07:19JST / November11 22:19UTC:** three of eight proposal slots
+are closed: T/g0 completes at−7, U/g0 has a shape-related null and U/g1 completes
+at−4. U/g1 literally submits its unchanged best reference, not a repaired or
+invented program. T/g1 is executing; the frozen writer/session92866 is live.
+The study, fixed selections and unused evaluation are not yet closed.
+
+A separate [recorded-output diagnostic](components/native-recorded-tensor-delivery-diagnostics-v1.md)
+is implemented for future opt-in studies. Two actual readouts of U/g0 find
+three incompatible nonempty outputs and one compatible empty batch for the
+same final artifact, preserving all eight original probes. They replay the
+original authoring source and leave both the closed record and archive unchanged.
+The active experiment does not acquire this new diagnostic. Scripted outer
+boundary checks and a real-container/synthetic-HTTP native regression pass;
+neither establishes actual-model repair or closes publication milestoneR2.
+
 **November12 06:54JST / November11 21:54UTC:** the native writer continues
 with content-utility:g1 authoring. T/g0 completes at−7; U/g0 fails with null
 loss after changing feature output from two columns to three without updating
