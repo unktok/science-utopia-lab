@@ -96,6 +96,16 @@ def test_two_static_scientific_figures_are_byte_deterministic(tmp_path,monkeypat
     assert {p.name for p in one.iterdir()}=={'objective-loss-paths.png','objective-loss-paths.svg','objective-cross-scores.png','objective-cross-scores.svg'}
 
 
+def test_tied_coordinate_labels_and_unavailable_slots_are_neither_lost_nor_jittered(tmp_path,monkeypatch):
+    p,a,records,traces=evidence(tmp_path,monkeypatch);report=module.summarize(p,a,records,traces)
+    groups,unavailable=module.cross_score_groups(report)
+    assert len(groups)==1 and (groups[0]['T'],groups[0]['U'])==(-2.,-1.)
+    labels=groups[0]['labels']+unavailable
+    assert len(labels)==13 and len(set(labels))==13
+    assert set(unavailable)=={'T0','U0'}
+    assert groups[0]['labels'][:5]==['R1','R2','R3','R4','R5']
+
+
 def test_real_export_boundary_handles_all_missing_worker_terminals_twice(tmp_path,monkeypatch):
     from types import SimpleNamespace
     from scripts.analyze_native_open_v7 import _inventory

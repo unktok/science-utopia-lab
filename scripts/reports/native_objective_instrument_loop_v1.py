@@ -112,6 +112,20 @@ def summarize(plan,audit,records,traces):
     result['content_sha256']=digest(result);return result
 
 
+def cross_score_groups(report):
+    """Group exact coordinates for display without jittering or dropping ties."""
+    rows=[{'label':'R'+str(i+1),'scores':r['scores']} for i,r in enumerate(report['references'])]
+    rows.extend({'label':('T' if r['objective']=='throughput' else 'U')+str(r['generation']),
+        'scores':r['cross_scores']} for r in report['slots'])
+    by={};unavailable=[]
+    for r in rows:
+        coordinate=tuple(r['scores'][o] for o in ('throughput','content-utility'))
+        if any(v is None for v in coordinate):unavailable.append(r['label'])
+        else:by.setdefault(coordinate,[]).append(r['label'])
+    return ([{'group':'G'+str(i+1),'T':point[0],'U':point[1],'labels':labels}
+        for i,(point,labels) in enumerate(sorted(by.items()))],unavailable)
+
+
 def render(report,output):
     import math
     import matplotlib
@@ -137,19 +151,31 @@ def render(report,output):
         fig.tight_layout(rect=(0,0,1,.94))
         for ext in ('png','svg'):fig.savefig(output/('objective-loss-paths.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)
-        fig,ax=plt.subplots(figsize=(6,4.2))
-        for reference,color in zip(report['references'],colors):
-            scores=reference['scores'];ax.scatter(scores['throughput'],scores['content-utility'],marker='s',s=45,color=color,label=reference['label'])
-        for objective,marker,color in [('throughput','o','#087f8c'),('content-utility','^','#8d4db3')]:
-            rows=[r for r in report['slots'] if r['objective']==objective and all(v is not None for v in r['cross_scores'].values())]
-            for r in rows:
-                scores=r['cross_scores'];ax.scatter(scores['throughput'],scores['content-utility'],marker=marker,s=35,color=color)
-                ax.annotate(('T' if objective=='throughput' else 'U')+str(r['generation']),
-                    (scores['throughput'],scores['content-utility']),xytext=(5,5),textcoords='offset points',fontsize=7)
-            ax.scatter([],[],marker=marker,color=color,label=objective+' proposals')
+        fig,(ax,key)=plt.subplots(1,2,figsize=(10,4.7),gridspec_kw={'width_ratios':[1,.95]})
+        groups,unavailable=cross_score_groups(report)
+        for group in groups:
+            ax.scatter(group['T'],group['U'],marker='o',s=45,color='#087f8c',zorder=3)
+            ax.annotate(group['group'],(group['T'],group['U']),xytext=(5,5),textcoords='offset points',fontsize=8)
         ax.set(xlabel='Count loss T (lower is better)',ylabel='Content utility loss U (lower is better)',
-            title='Both fixed criteria on the same completed worlds')
-        ax.grid(color='#ededed');ax.legend(fontsize=6.5);fig.tight_layout()
+            title='Exact coordinates; all tied labels retained')
+        ax.grid(color='#ededed');key.axis('off')
+        import textwrap
+        cells=[[g['group'],f"{g['T']:g}",f"{g['U']:g}",textwrap.fill(', '.join(g['labels']),30)] for g in groups]
+        if cells:
+            table=key.table(cellText=cells,colLabels=['Point','T','U','World labels'],
+                colWidths=[.13,.15,.15,.57],loc='upper left',cellLoc='left')
+            table.auto_set_font_size(False);table.set_fontsize(7)
+            for (i,j),cell in table.get_celld().items():
+                cell.set_edgecolor('#d8dee5');cell.set_linewidth(.5)
+                lines=1 if i==0 else len(cells[i-1][3].splitlines())
+                cell.set_height(.065+.032*(lines-1))
+                if i==0:cell.set_facecolor('#edf2f5')
+        reference_key='\n'.join(textwrap.fill('R'+str(i+1)+' = '+r['label'],70) for i,r in enumerate(report['references']))
+        footer=reference_key+'\nT/U labels = own-objective proposal generation; no coordinate jitter.'
+        if unavailable:footer+='\nUnavailable cross-score: '+', '.join(unavailable)
+        fig.text(.53,.04,footer,ha='left',va='bottom',fontsize=6.5,linespacing=1.35)
+        fig.suptitle('Both fixed criteria on the same completed native worlds',fontsize=10)
+        fig.tight_layout(rect=(0,.04,1,.94))
         for ext in ('png','svg'):fig.savefig(output/('objective-cross-scores.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)
 
