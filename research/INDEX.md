@@ -6,6 +6,15 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed fixed-content readout](results/native-common-content-readout-v1.md),
+  [data and actual figure](data/native-common-content-readout-v1/README.md),
+  [closure verification](results/native-common-content-readout-closed-verification-v1.json):
+ 76 complete panels/228 replies and two identical cold exports; two negative,
+ 20 zero and54 positive centered content contributions. Fixed model opinion,
+  not truth or a new optimized-policy result. A separate
+  [four-world resource support protocol](protocols/campaigns/native-liquidity-support-v1.md)
+  is in implementation, not yet live at the dated17:40UTC observation.
+
 - [Closed code-tested native loop](results/native-code-tested-loop-v1.md),
   [retained data/figures](data/native-code-tested-loop-v1/README.md) and
   [closure verification](results/native-code-tested-loop-closed-verification-v1.json):

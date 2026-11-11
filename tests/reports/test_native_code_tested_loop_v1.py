@@ -125,7 +125,7 @@ def test_auditor_rejects_nonclosed_loop_before_starting_original_source_worker(t
 
 def test_cost_adapter_recognizes_new_exact_closed_audit_without_relabeling_old_scopes():
     from scripts.reports.pre_scale_costs_v1 import AUDITS
-    assert AUDITS[-1]=='scienceutopia.native-code-tested-loop-audit.v1'
+    assert AUDITS[5]=='scienceutopia.native-code-tested-loop-audit.v1'
     assert AUDITS[3]=='scienceutopia.native-institution-loop-stopped-audit.v1'
     assert AUDITS[4]=='scienceutopia.native-fixed-candidate-evaluation-audit.v1'
 

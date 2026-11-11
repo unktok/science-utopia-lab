@@ -493,3 +493,38 @@ sourcef98360eのcold readout reportはscripted本物observer APIと二回export�
 raw criticを再構築したauditから各pooled scoreへ突合し、44world/263decision/76content/228criticを
 区別。欠測sumはnull、resealed derivativeだけの架空ratingは拒否。実cold集計はclosure後に残す。
 研究R2は未達であり、現T/Eをそのまま大規模化せず次の意味ある問いへ進む。
+
+### 17:39UTC: real fixed-content readout closes
+
+2dd042eの全76panel/228replyが17:39:09.097274UTCに正常終了、欠測0。
+元f98360eの独立cold export二回は全6file byte一致、report content c1c36fc6/file36531edd。
+raw HTTPからのcold auditはretained値と一致。平均点は2×2内容、3×20、3⅓×5、3⅔×1、4×48。
+literal228scoreは2×6、3×71、4×151。70panel同点、6panel range1。
+predeclared utility score−3は負2/零20/正54内容。これは固定条件の別意見のsupportであり、
+新lossでの最適化、independent truth、reward hacking、policy re-selectionは未主張。
+263decision/44完走worldの全sumを保持し、元5partialは除外のまま。
+実101340input/32493output、unknown0、HTTP elapsed合計859.568秒。
+実PNGを目視、data/CSV/PNG/SVGを保持。新PDFはまだ作らず52頁snapshotは不変。
+
+### Native initial-resource support and prospective four-world assay
+
+元Simulationのinitial_funding/profile/ledgerをoperator-owned条件としてfactoryへ接続。
+Noneは元argvとbinding fieldsを維持。cacheへexplicit条件をbindし、cold physical proofは
+actual founder ID/resources/initial_funding/resource_band/is_activeと原seeded blueprintを照合。
+初回QA9pass/3failはnative initialize_agentsを呼ばずempty populationを検査したtest不備。
+修正後12pass、物理audit回帰含め16pass。clean7c6c5ccで63/63pass（18.12秒）、JUnit SHA256
+`55e5400630d72cdf7d0f83c1dd80469a3e662d39158f2e1e66868a8e5330f40c`。
+元研究活動、費用、grant、activationの法則は変更しない。
+
+hand liquidity controlは同一producer/receiver/source/scheduleを保ちdelivery edge一件のみon/off。
+actual submission後/cost前にwhole-unit保存的移転を実行。六年の元phases＋scripted HTTP/corpus＋
+実Docker検査3/3pass（5.55秒）、ledger residualと最初の方向選択の全payload一致／後続入力変化を確認。
+JUnit SHA256 `5c346d9e0111a8ea24fe3fd4a02ac893c4beeea8ec77364dd8a8e0ec0d311cb1`。
+これは実Qwenの効果ではない。新protocolはbase30/60×on/off、4world、61001開発seed再利用、
+各1024scientistHTTP/7200秒、designer-generation0。実source・saved plan凍結前にはdispatchしない。
+目的は継続性/資源の作用supportの確認で、目的別新制度発明やR2結果に言い換えない。
+
+新resource auditの予備QAは16pass/2fail。test fixtureのSimpleNamespaceにledger初期化用get_typeが
+なかったため、実native update_resourcesを持つ既存Actor fixtureへ変更。guardを緩めず18pass。
+typed年度ledger再構築と二回cold出力一致、checkpoint改変拒否を通した。
+旧cost audit scopeは位置を維持してnew schemaを追加。実四世界／監査の起動は次の検証後。

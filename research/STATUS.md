@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+**November12 02:40JST / November11 17:40UTC:** all76 fixed-content panels
+finish normally17:39:09UTC:228/228 literal ratings, no missing panel. Two cold
+exports atf98360e match all six files, and the actual PNG is inspected.
+[Readout](results/native-common-content-readout-v1.md): panel means are2 for
+two contents,3 for20, between3 and4 for six, and4 for48. The predeclared
+`score−3` utility therefore has negative, zero and positive contributions.
+These are fixed abstract-based opinions, not scientific truth or new objective
+optimization. [Retained projections](data/native-common-content-readout-v1/README.md)
+and [closure proof](results/native-common-content-readout-closed-verification-v1.json)
+preserve all44 completed historical-world sums and263 decision occurrences.
+
+An optional [native initial-resource connection](components/native-initial-resource-conditions-v1.md)
+passes63 clean checks. A separately prospective
+[four-world resource support assay](protocols/campaigns/native-liquidity-support-v1.md)
+tests whether pre-cost conserving transfers offer a consequential action under
+two initial endowments. Source/tests and cold audit are being prepared; no new
+resource world has started at this observation. This is not a scale-up of T/E,
+an automatically invented policy or closure of the important-main-result gap.
+
 **November12 02:28JST / November11 17:28UTC:** the code-tested experiment
 closes normally17:22:44UTC; two original-source audits/costs close17:24:25UTC,
 and two identical seven-file actual exports close17:24:30UTC.

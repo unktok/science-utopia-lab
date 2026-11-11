@@ -21,7 +21,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-institution-loop-audit.v1',
         'scienceutopia.native-institution-loop-stopped-audit.v1',
         'scienceutopia.native-fixed-candidate-evaluation-audit.v1',
-        'scienceutopia.native-code-tested-loop-audit.v1')
+        'scienceutopia.native-code-tested-loop-audit.v1',
+        'scienceutopia.native-liquidity-support-audit.v1')
 
 
 def classify_numeric(relative):
