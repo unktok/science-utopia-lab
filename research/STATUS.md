@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+**November12 03:42JST / November11 18:42UTC:** all four resource-control worlds
+close normally18:29:23UTC; two independent audits/costs close18:30:14UTC. Two
+actual seven-file reports match. [Results](results/native-liquidity-support-v1.md):
+at base30, the delivery edge changes final active founders4→5 and accepted
+decisions5→7, while final resources360→350. At base60 both arms have5 active,
+7 accepted and500 resources. All80 founder-year ledgers reconcile. This is
+developer action support at one reused seed, not optimization or new invention.
+
+The [new integrated PDF](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf)
+contains54 pages/25 figures/21 tables, adding the closed code-tested loop,
+228 fixed-content ratings and four resource worlds. Two cached builds/text
+agree; all54 page layouts and detailed changed pages are inspected, without
+off-page words or unresolved references. [Source and build binding](../paper/integrated-native-resource-build-v1.json).
+The old52-page and earlier PDFs remain unchanged. Direct institutional
+[precedents](literature/scientific-institutions-direct-precedents-2026-11-12.md)
+are added rather than claiming the broad concept as first. No scientific
+inference is currently running after these normal closures. The important
+objective-conditioned main result, frozen unused comparison and final ready
+judgment remain open; publication-ready goal stays active.
+
 **November12 03:20JST / November11 18:20UTC:** the four-world resource assay
 is live at frozen78844a0; the last completed progress boundary is2/4 at18:13UTC,
 with resource-60-connected executing. The writer continues updating native

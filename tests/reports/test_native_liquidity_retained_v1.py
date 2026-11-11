@@ -1,6 +1,8 @@
 """Retained real resource projections, no raw-world or model dependency."""
 import json
+import hashlib
 from pathlib import Path
+import subprocess
 
 from utopia.optimization.native_numeric_designer import checked
 from utopia.utils.data_utils import file_sha256
@@ -36,3 +38,19 @@ def test_manuscript_retains_actual_closed_studies_and_distinguishes_objective_se
             'native-liquidity-support-v1/resource-controls.png'):
         assert 'figures/'+path in text and (ROOT/'paper/figures'/path).is_file()
     assert 'Actual-model\nsearch under a new objective remains a separate experiment.' in text
+
+
+def test_new_pdf_binds_actual_committed_sources_and_preserves_previous_snapshot():
+    r=json.loads((ROOT/'paper/integrated-native-resource-build-v1.json').read_text())
+    assert file_sha256(ROOT/r['output'])==r['pdf_sha256']
+    original=lambda name:subprocess.check_output(['git','show',r['source_commit']+':'+name],cwd=ROOT)
+    base=json.loads(original(r['dependency_manifest_base']))
+    for name,group in r['dependency_groups'].items():
+        paths=base[name]['files']+group['additional_files']
+        values={p:hashlib.sha256(original(p)).hexdigest() for p in paths}
+        assert hashlib.sha256(json.dumps(values,sort_keys=True,separators=(',',':')).encode()).hexdigest()==group['manifest_sha256']
+    for name,sha in r['preserved_files'].items():assert file_sha256(ROOT/name)==sha
+    assert (r['pages'],r['figures'],r['tables'])==(54,25,21)
+    assert r['visual_review']['pages_reviewed_for_layout']==54
+    assert r['build']['exit_codes']==[0,0] and r['build']['text_identical']
+    assert not r['build']['off_page_text_words'] and not r['scientific_scope']['publication_ready']

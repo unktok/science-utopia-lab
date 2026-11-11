@@ -6,6 +6,18 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed resource controls](results/native-liquidity-support-v1.md),
+  [portable data](data/native-liquidity-support-v1/README.md) and
+  [closure verification](results/native-liquidity-support-closed-verification-v1.json):
+  four complete native worlds, all80 founder-year ledgers, two matching cold
+  audits/costs and two matching seven-file exports. Base30 activity/output
+  change, base60 aggregate outcomes do not. One reused seed; developer control,
+  not an automatically invented policy. No inference remains live.
+- [Latest54-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf)
+  and [build/visual binding](../paper/integrated-native-resource-build-v1.json):
+  includes all three newly closed studies and direct institutional precedents;
+  all old tracks and priorPDFs retained. R2 and publication readiness remain open.
+
 - [Live four-world resource assay](protocols/campaigns/native-liquidity-support-v1.md)
   and [actual launch verification](results/native-liquidity-support-launch-verification-v1.json):
   frozen78844a0,2/4 completed at the18:13UTC boundary, next world active.

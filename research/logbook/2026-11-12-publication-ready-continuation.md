@@ -77,3 +77,36 @@ study:76 panels/228 replies,2 negative/20 zero/54 positive contributions under
 the predeclared center3. It does not retroactively change T/E or establish truth.
 The next main study must explain a consequential objective-conditioned system
 difference against strong same-authority rules; additional QA cannot close R2.
+
+## Closed resource study and integrated manuscript
+
+The4-world writer closes18:29:23.988736UTC, and independent two-audit/two-cost
+analysis closes18:30:14.770061UTC. Report sourcee708bcb runs twice and produces
+seven identical files. All80 actor-year ledger residuals are zero. Base30
+connected/disconnected outcomes are A7/5, final active5/4 and resources350/360;
+base60 both finish A7, active5, resources500. Transfers are14events/154units and
+14events/184units respectively, not minted funds. The initial five full payloads
+match in both pairs. Exact base30 inspection also matches their initial five
+response messages and finds the next funding request's real resource field
+differs. This does not independently identify every downstream mediator.
+
+Sourcee1c2d2a passes23 report/audit/cost checks, including two real cold exports
+from scripted proof primitives. A preliminary combined invocation names a
+nonexistent test file and runs zero checks; its receipt is preserved, not counted
+as a pass. Actual resource report/figure bytes are retained in Git.
+
+PDF skill's authoring marker runs exactly once before manuscript edits.
+Clean sourcee37af5e passes16 retained-evidence/manuscript checks. Two cache-only
+Tectonic0.17 builds succeed with identical extracted text; newPDF has54pages,
+25figures and21tables. All54 rendered page layouts are inspected in six contact
+sheets, with detailed new text/figures at34/36/37/38. Bbox scan finds no off-page
+words and no unresolved references; the two old h→ht and inputenc notices remain
+benign. The earlier52-page PDF is unchanged. No native world/model inference is
+created by integration. The four directly relevant institutional precedents are
+read in primary HTML and added to related work; their concepts are not ours.
+
+No scientific inference remains active at this closure. The next work is a new
+objective-conditioned native design experiment, not additional seeds for these
+controls or an unchanged T/E feasibility repeat. A new instrument's adaptive
+connection is ready in software, but its actual-model search and unused
+comparison have not yet been run. Publication goal and milestoneR2 remain open.

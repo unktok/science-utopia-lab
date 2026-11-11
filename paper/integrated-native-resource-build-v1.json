@@ -1,0 +1,54 @@
+{
+  "schema": "scienceutopia.integrated-native-resource-paper-build.v1",
+  "status": "integrated-working-manuscript-not-submitted-not-release-cleared",
+  "source_commit": "e37af5e45cd3a9b100e94504a5b82bdf608112c6",
+  "entrypoint": "paper/integrated.tex",
+  "output": "output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf",
+  "pdf_sha256": "8c60850e7c137a1869a2fa9a82dade26e4e0f0d2e6fe1f798bf86ab98509749a",
+  "pages": 54,
+  "figures": 25,
+  "tables": 21,
+  "artificial_page_cap": false,
+  "tracked_sources_clean_during_both_builds_and_checks": true,
+  "build": {
+    "engine": "Tectonic 0.17.0",
+    "flags": "--only-cached --untrusted --keep-logs --keep-intermediates",
+    "first_directory": "tmp/pdfs/integrated-native-resource-v1",
+    "second_directory": "tmp/pdfs/integrated-native-resource-rebuild-v1",
+    "exit_codes": [0,0],
+    "downloads": 0,
+    "text_identical": true,
+    "text_sha256": "bf31c659a499c683677133a304fcb4cc5a82b78dc4f6c30085e9747b8cf5bd87",
+    "binary_pdf_identity_claimed": false,
+    "first_log_sha256": "085ac7b0585294b8a027a47fd4c8c9acacc4bc42b3e5a1ac1e3c99f95c0c00a2",
+    "second_log_sha256": "085ac7b0585294b8a027a47fd4c8c9acacc4bc42b3e5a1ac1e3c99f95c0c00a2",
+    "layout_or_undefined_reference_warnings": 0,
+    "off_page_text_words": 0,
+    "off_page_scan": "Poppler pdftotext -bbox XML page/word bounds",
+    "unresolved_question_mark_pairs": 0,
+    "benign_notices": ["UTF8 engine ignores inputenc","Two retained h floats adjusted to ht"]
+  },
+  "dependency_manifest_base": "paper/integrated-fixed-evaluation-build-v1.json",
+  "dependency_manifest_rule": "Each group's base files from the source-commit version of dependency_manifest_base, followed by additional_files. Hash compact sorted JSON mapping each path to its source-commit file SHA256.",
+  "dependency_groups": {
+    "source_files": {"additional_files":[],"manifest_sha256":"94f08621ba5f9c8255584d611f27265b0b17a2337e917507a302551dbecbb79e"},
+    "figure_files": {
+      "additional_files":["paper/figures/native-code-tested-loop-v1/component-observations.png","paper/figures/native-common-content-readout-v1/fixed-content-ratings.png","paper/figures/native-liquidity-support-v1/resource-controls.png"],
+      "manifest_sha256":"418bc5176e5b37ef42d1485e215e33249b856cdd78b74d4492ff580c4d6e16a4"},
+    "support_files": {"additional_files":[],"manifest_sha256":"488f8c4c8ae043eafc25516a3d88cd959d3b754b6c51c2374e63622bf9a1418f"},
+    "evidence_files": {
+      "additional_files":["research/results/native-code-tested-loop-closed-verification-v1.json","research/results/native-common-content-readout-closed-verification-v1.json","research/results/native-liquidity-support-closed-verification-v1.json","research/data/native-liquidity-support-v1/manifest.json"],
+      "manifest_sha256":"ead3e6b64cee58d9db636bbe9de8381ff368fd8c6b1ae2c184f59c3e348f70a7"}
+  },
+  "tests":{"source_commit":"e37af5e45cd3a9b100e94504a5b82bdf608112c6","passed":16,"failed":0,"elapsed_seconds":4.74,
+    "junit_file_sha256":"a016e90be45a14e333eda247133adfb2e5fcabcf0e9891156e470d1ea9f4ee74"},
+  "visual_review":{"pages_reviewed_for_layout":54,"all_final_pages_rendered":true,
+    "all_final_contact_sheets_inspected":true,"new_text_and_figures_detailed_review_pages":[34,36,37,38],
+    "clipped_or_overlapping_content_observed":false},
+  "preserved_files":{
+    "output/pdf/science-utopia-lab-integrated-fixed-evaluation-working-paper.pdf":"cbd79586fc8c211ab07b2604fdac94000e870f440be1beff55c263ae7a16c939"},
+  "scientific_scope":{"new_model_calls_from_manuscript":0,"new_native_worlds_from_manuscript":0,
+    "code_tested_loop_physical_worlds":7,"complete_fixed_content_ratings":228,"developer_resource_worlds":4,
+    "new_objective_actual_model_optimization_claimed":false,"automatic_invention_claimed":false,
+    "scientific_truth_claimed":false,"publication_ready":false}
+}
