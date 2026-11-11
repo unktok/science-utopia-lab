@@ -52,8 +52,9 @@ def test_trace_uses_real_ledger_reconciliation_and_distinguishes_received_model_
     monkeypatch.setattr(module,'checkpoint',lambda *a:clone(state));r=module.trace_world(tmp_path,world,'SCRIPTED-source')
     assert r['annual'][0]['active_founders']==5 and r['annual'][0]['total_founder_resources']==150.
     assert all(a['residual']==0 for a in r['annual'][0]['all_author_ledger'])
-    assert r['received_context_proof']['delivered_recipient_messages']==2
-    assert r['received_context_proof']['messages_observed_in_completed_model_inputs']==1
+    assert r['legacy_raw_envelope_substring_proof']['delivered_recipient_messages']==2
+    assert r['legacy_raw_envelope_substring_proof']['messages_observed_in_completed_model_inputs']==1
+    assert r['original_model_facing_context_proof'] is None
     assert r['code_attempts'] is None and not r['causal_mechanism_effect_identified']
     state['ecosystem_data']['agents'][0]['resources']=31.
     with pytest.raises(ValueError,match='residual'):module.trace_world(tmp_path,world,'SCRIPTED-source')
@@ -97,3 +98,28 @@ def test_wrapped_code_delegate_is_resolved_and_ambiguous_copies_are_not_greedily
     assert all(c['committed_node_ids']==[ALPHA] for c in r['code_calls'])
     proof['code_proof']['physical_records'][0]['matching_event_ids']=[]
     with pytest.raises(ValueError,match='attribution differ'):module.trace_world(tmp_path,world,'SCRIPTED-source')
+
+
+def test_literal_original_formatter_recovers_alpha_aliased_inputs_without_rewriting_raw_or_claiming_actor_identity(tmp_path):
+    import sqlite3
+    from types import SimpleNamespace
+    from utopia.system.native_kernel import institutional_context_prompt
+    from utopia.system.design_patch import digest,clone
+    messages=[{'message_id':'opaque-source-reference-'+str(i),'source':'SCRIPTED-office','received_year':i+1,
+        'emitted_year':i+1,'input_event_ids':['opaque-event-'+str(i)],'payload':{'scientific_value':100+i}} for i in range(2)]
+    state={'ecosystem_data':{'agents':[{'id':'SCRIPTED-actor','institutional_context':clone(messages)}]},
+        'native_system':{'events':[{'event_type':'native.system.context_delivered','actor_ids':['SCRIPTED-actor'],
+            'payload':{'message':clone(m)}} for m in messages]}}
+    (tmp_path/'replies').mkdir()
+    known={'messages':[{'role':'user','content':'SCRIPTED personality'+institutional_context_prompt(SimpleNamespace(institutional_context=messages[:1]))}]}
+    unknown={'messages':[{'role':'user','content':institutional_context_prompt(SimpleNamespace(institutional_context=messages))}]}
+    with sqlite3.connect(tmp_path/'replies/responses.sqlite') as db:
+        db.execute('CREATE TABLE replies (payload_sha TEXT, outcome TEXT)')
+        db.execute('INSERT INTO replies VALUES (?, ?)',(digest(known),'response'))
+    (tmp_path/'wire-requests.jsonl').write_text('\n'.join(json.dumps({'year':i+2,'payload':v,'payload_sha256':digest(v)}) for i,v in enumerate((known,unknown))))
+    before=clone(state);r=module.rendered_context_proof(tmp_path,state)
+    assert r['delivered_recipient_messages']==2 and r['delivered_messages_with_rendered_content_in_completed_inputs']==1
+    assert [v['rendered_content_present_in_completed_request'] for v in r['all_stored_messages']]==[True,False]
+    assert json.dumps(messages[0],sort_keys=True) not in known['messages'][0]['content']
+    assert r['unique_matching_completed_payloads']==1 and state==before
+    assert 'not unique actor attribution' in r['scope'] and 'proof of absence when unmatched' in r['scope']

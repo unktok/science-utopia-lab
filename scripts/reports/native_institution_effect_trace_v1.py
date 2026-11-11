@@ -10,6 +10,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sqlite3
 from types import SimpleNamespace
 
 from scripts.analyze_native_open_v7 import _inventory
@@ -28,6 +29,51 @@ SCOPES={
     'objective-development':'scienceutopia.native-objective-instrument-loop-audit.v1',
     'fixed-evaluation':'scienceutopia.native-objective-fixed-evaluation-audit.v1',
     'resource-controls-diagnostic':'scienceutopia.native-liquidity-support-audit.v1'}
+
+
+def rendered_context_proof(cell,state):
+    """Exact original model-facing prefix, not an arbitrary raw-envelope match.
+
+    Matching shows that the original rendered content occurs in a completed
+    request. Shared content does not identify a unique actor or independent call.
+    """
+    from utopia.system.native_kernel import institutional_context_prompt
+    from utopia.system.model_provenance_view import provenance_view
+    with sqlite3.connect((cell/'replies/responses.sqlite').resolve().as_uri()+'?mode=ro',uri=True) as db:
+        completed={r[0] for r in db.execute("SELECT payload_sha FROM replies WHERE outcome='response'")}
+    wires=[json.loads(line) for line in (cell/'wire-requests.jsonl').read_text().splitlines()]
+    if any(digest(w['payload'])!=w['payload_sha256'] for w in wires):raise ValueError('literal HTTP payload hash differs')
+    agents={a['id']:a for a in state['ecosystem_data']['agents']};rows=[];prefixes=[]
+    for actor,a in agents.items():
+        messages=a.get('institutional_context',[]);found={i:set() for i in range(len(messages))}
+        for n in range(1,len(messages)+1):
+            prefix=messages[:n];rendered=institutional_context_prompt(SimpleNamespace(institutional_context=prefix))
+            view,inverse=provenance_view(prefix)
+            matches=sorted({w['payload_sha256'] for w in wires if w['payload_sha256'] in completed
+                and any(isinstance(m.get('content'),str) and rendered in m['content'] for m in w['payload'].get('messages',[]))})
+            for i in range(n):found[i].update(matches)
+            prefixes.append({'actor_id':actor,'messages_in_prefix':n,'raw_prefix_sha256':digest(prefix),
+                'original_rendered_utf8_sha256':hashlib.sha256(rendered.encode()).hexdigest(),
+                'model_view_sha256':digest(view),'inverse_alias_map_sha256':digest(inverse),
+                'matching_completed_payload_sha256s':matches})
+        for i,message in enumerate(messages):
+            rows.append({'actor_id':actor,'message_id':message['message_id'],'source':message.get('source'),
+                'received_year':message['received_year'],'literal_message_sha256':digest(message),
+                'rendered_content_present_in_completed_request':bool(found[i]),
+                'matching_completed_payload_sha256s':sorted(found[i])})
+    delivered=[]
+    for e in state['native_system']['events']:
+        if e['event_type']=='native.system.context_delivered':
+            for actor in e['actor_ids']:
+                message=e['payload']['message'];stored=[m for m in agents[actor].get('institutional_context',[]) if m['message_id']==message['message_id']]
+                if stored!=[message]:raise ValueError('actual delivered message not retained literally')
+                delivered.append((actor,message['message_id']))
+    if len(delivered)!=len(set(delivered)):raise ValueError('duplicate delivered recipient message')
+    return {'delivered_recipient_messages':len(delivered),'all_stored_messages':rows,'original_rendered_prefixes':prefixes,
+        'delivered_messages_with_rendered_content_in_completed_inputs':sum(r['rendered_content_present_in_completed_request']
+            for r in rows if (r['actor_id'],r['message_id']) in set(delivered)),
+        'unique_matching_completed_payloads':len({p for r in rows for p in r['matching_completed_payload_sha256s']}),
+        'scope':'Exact original institutional_context_prompt on actual stored prefixes, with source-defined audit aliases only. Scientific payloads remain literal. A match is content-presence evidence, not unique actor attribution, independent calls, interpretation, causal benefit or proof of absence when unmatched.'}
 
 
 def checkpoint(cell,item,system):
@@ -111,12 +157,14 @@ def trace_world(cell,world,source):
     if set(events)!={identity for c in calls for identity in c['matching_event_ids']}:
         raise ValueError('committed code event without a recorded physical call')
     context=proof.get('context_input_proof')
+    rendered=None if last is None or not (cell/'replies/responses.sqlite').is_file() else rendered_context_proof(cell,last)
     return {'identity':world['identity'],'role':world['role'],'seed':world['seed'],'status':world['status'],
         'system_sha256':digest(system),'annual':annual,'code_calls':calls,
         'code_attempts':None if attempts is None else [{'status':a['status'],
             'intent_sha256':a['intent']['content_sha256'],'terminal':clone(a['terminal'])} for a in attempts],
         'uncommitted_recorded_bundles':[c['bundle_sha256'] for c in calls if not c['matching_event_ids']],
-        'received_context_proof':clone(context),'connections':clone(system['connections']),'schedules':clone(system['schedules']),
+        'legacy_raw_envelope_substring_proof':clone(context),'original_model_facing_context_proof':rendered,
+        'connections':clone(system['connections']),'schedules':clone(system['schedules']),
         'code_nodes':[{ 'node_id':k,'artifact_sha256':digest(n.parameters['code_artifact']),
             'source_utf8_sha256':hashlib.sha256(n.parameters['code_artifact']['source'].encode()).hexdigest(),
             'declared_wrapper_implementation':next(m.implementation for m in spec.mechanisms if m.mechanism_id==k),
