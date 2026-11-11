@@ -10,10 +10,12 @@ Historical documents retain their paths and source identities.
   [New native closed-loop protocol](protocols/campaigns/native-institution-loop-v1.md)
   and [execution log](logbook/2026-11-11-publication-ready-native.md).
   New source, unchanged T/E, strong routing controls, twelve finite proposals;
-  running at frozen671436a after fresh28/28 editor and2/2 numeric readiness;
+  launched at frozen671436a after fresh28/28 editor and2/2 numeric readiness;
   first native reference starts08:20UTC. Not a conference-ready result.
-  A read-only closure→duplicate audit/cost/figure chain is waiting at d11e431;
-  its completion will still require interpretation and a main-study decision.
+  Stopped10:50:27UTC at the final numeric-readiness length termination:
+  eight references, eleven submitted slots (five complete/six null), no held-out
+  evaluation. The d11e431 closure chain also stopped, without inference or retry.
+  The exact stopped prefix is being audited separately; it is not normal closure.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.

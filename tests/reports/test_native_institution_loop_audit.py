@@ -6,7 +6,7 @@ from types import SimpleNamespace
 import pytest
 
 from scripts.audit_native_institution_loop_v1 import (
-    closed_state, epoch, main, readiness_schedule, request_at, require_age)
+    closed_state, epoch, main, readiness_schedule, request_at, require_age, stopped_state)
 from tests.reports.test_native_institution_loop_v1 import plan
 from utopia.optimization.native_numeric_designer import save
 
@@ -105,3 +105,55 @@ def test_no_audit_dispatch_for_a_running_or_stopped_study(tmp_path, monkeypatch,
         '--frozen-source',str(tmp_path)])
     monkeypatch.setattr('subprocess.run',lambda *a,**k:pytest.fail('never start closed audit'))
     with pytest.raises(ValueError): main()
+
+
+def stopped_fixture(root):
+    p, cs, progress = fixture(root)
+    final = p['schedule'][-1]
+    cs[final['arm']].state['records'].pop()
+    progress.update(stage='stopped', active='ValueError', evaluation_observations=0,
+        candidate_slots=[r for r in progress['candidate_slots']
+            if (r['arm'], r['generation']) != (final['arm'], final['generation'])])
+    (root/'progress.json').write_text(json.dumps(progress))
+    (root/'terminal.json').unlink()
+    save(root/'terminal.json', {'schema':p['schema'].removesuffix('.plan')+'.terminal',
+        'status':'stopped', 'error_type':'ValueError',
+        'error':'fresh numeric readiness failed; stop without replacement',
+        'ended_utc':'2026-11-11T01:00:01+00:00'})
+    return p, cs, progress
+
+
+def test_stopped_prefix_preserves_all_nulls_and_does_not_select_or_close(tmp_path):
+    p, cs, progress = stopped_fixture(tmp_path)
+    proof = stopped_state(tmp_path, p, cs)
+    assert proof['scientific_study_closed'] is False
+    assert proof['submitted_slots'] == 11 and proof['unsubmitted_slots'] == 1
+    assert proof['next_unsubmitted_slot'] == p['schedule'][-1]
+    assert proof['progress'] == progress
+    assert all(r['loss'] is None for r in progress['candidate_slots'])
+    with pytest.raises(ValueError, match='closure'): closed_state(tmp_path, p, cs, 0)
+
+
+@pytest.mark.parametrize('name', ['selection.json','evaluation-plan.json','evaluation/unplanned/observation.json'])
+def test_stopped_prefix_cannot_hide_poststop_selection_or_evaluation(tmp_path, name):
+    p, cs, _ = stopped_fixture(tmp_path)
+    target = tmp_path/name; target.parent.mkdir(parents=True, exist_ok=True); target.write_text('{}')
+    with pytest.raises(ValueError, match='unstarted evaluation'): stopped_state(tmp_path, p, cs)
+
+
+def test_stopped_prefix_rejects_a_pending_dispatch_or_nonprefix(tmp_path):
+    p, cs, _ = stopped_fixture(tmp_path)
+    cs[p['arm_order'][0]].state['pending'] = {'SCRIPTED':True}
+    with pytest.raises(ValueError, match='no pending'): stopped_state(tmp_path, p, cs)
+    cs[p['arm_order'][0]].state['pending'] = None
+    cs[p['arm_order'][1]].state['records'].pop()
+    with pytest.raises(ValueError, match='chronological prefix'): stopped_state(tmp_path, p, cs)
+
+
+@pytest.mark.parametrize('field,value', [('error','unknown transport'), ('status','closed'),
+    ('error_type','CompletionUnknown')])
+def test_stopped_prefix_never_accepts_other_failure_classes(tmp_path, field, value):
+    p, cs, _ = stopped_fixture(tmp_path)
+    end = json.loads((tmp_path/'terminal.json').read_text()); end[field] = value
+    end.pop('content_sha256'); (tmp_path/'terminal.json').unlink(); save(tmp_path/'terminal.json', end)
+    with pytest.raises(ValueError, match='known numeric-readiness stop'): stopped_state(tmp_path, p, cs)

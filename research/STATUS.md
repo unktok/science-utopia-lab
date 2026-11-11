@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November11 10:50:27UTC: the native pilot stopped, and neither scientific
+inference nor the closure/report chain is currently running.** At unchanged
+671436a, all eight references and eleven of twelve proposal slots terminated:
+five complete worlds, six technical nulls. The last T/numeric proposal was not
+submitted. Its fresh numeric calibration's E case received a final HTTP200
+envelope with `done=true`, `done_reason=length`, and8192 output tokens, not a
+complete literal submission. This is a known length termination, not an
+unknown still-running request. No candidate was salvaged or replaced, no
+selection was frozen, and no held-out world ran. The read-only chain correctly
+stopped on scientific status `stopped`. The publication goal remains active.
+
+Next: audit the exact stopped prefix, including failed readiness and all null
+worlds. A separate prospective evaluation of the already fixed submissions may
+use still-unused seeds, but cannot be called completion of the original study,
+reuse a failed designer certificate, invent a missing candidate, or replace an
+arm with a baseline. Optional component tests for future model-authored code
+must remain separate from native losses and preserve the full design freedom.
+
 November11: the user explicitly requested autonomous continuation until the
 project is publication-ready for a top conference. The goal is active, not
 achieved by the earlier engineering packages. [Current milestones](publication/publication-ready-v3.md)
@@ -9,7 +27,7 @@ and [execution log](logbook/2026-11-11-publication-ready-native.md).
 The [new native closed-loop pilot](protocols/campaigns/native-institution-loop-v1.md)
 fixes T/E, three design domains, twelve proposals, eight strong references
 including typed review-work controls, and selection-fixed unused evaluation.
-It is running at frozen671436a in experiment `native-institution-loop-v1-a3`:
+It was launched at frozen671436a in experiment `native-institution-loop-v1-a3`:
 fresh real editor28/28 and numeric2/2 readiness pass; the first native reference
 world starts08:20UTC. PID37093 was observed executing original Qwen researcher
 requests, not merely waiting in a scheduler. This is a dated observation, not a

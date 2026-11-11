@@ -81,7 +81,57 @@ def closed_state(root, plan, controllers, evaluation_count):
     return {'started': start, 'terminal': end, 'progress': progress}
 
 
-def worker(root, output):
+def stopped_state(root, plan, controllers):
+    """Identify an exact terminated prefix, not a successful shortened study.
+
+    This deliberately supports only a numeric-readiness stop before the next
+    proposal. It cannot bless pending dispatches, failed scientific closure or
+    post-hoc selection/evaluation written into the original run.
+    """
+    from utopia.optimization.native_numeric_designer import checked
+    root = Path(root)
+    read = lambda name: checked(json.loads((root/name).read_text()))
+    start, end = read('started.json'), read('terminal.json')
+    progress = json.loads((root/'progress.json').read_text())
+    schema = plan['schema'].removesuffix('.plan')
+    if (start['schema'] != schema+'.start' or start['plan_sha256'] != plan['content_sha256']
+            or end['schema'] != schema+'.terminal' or end['status'] != 'stopped'
+            or end.get('error_type') != 'ValueError'
+            or end.get('error') != 'fresh numeric readiness failed; stop without replacement'
+            or set(end) != {'schema', 'status', 'error_type', 'error', 'ended_utc', 'content_sha256'}
+            or epoch(end['ended_utc']) < epoch(start['started_utc'])):
+        raise ValueError('explicit known numeric-readiness stop required')
+    counts = {a: len(c.state['records']) for a, c in controllers.items()}
+    n = sum(counts.values())
+    if not 0 < n < len(plan['schedule']) or any(c.state['pending'] is not None for c in controllers.values()):
+        raise ValueError('stopped audit requires a finite prefix with no pending proposal')
+    prefix = plan['schedule'][:n]
+    if counts != {a: sum(s['arm'] == a for s in prefix) for a in plan['arm_order']}:
+        raise ValueError('stopped records are not the declared chronological prefix')
+    next_slot = plan['schedule'][n]
+    if plan['assignments'][next_slot['arm']]['method'] != 'parameters':
+        raise ValueError('stopped slot does not have numeric readiness')
+    rows = []
+    for arm in plan['arm_order']:
+        for g, record in enumerate(controllers[arm].state['records']):
+            o = record['observations'][0] if record['observations'] else None
+            rows.append({'arm': arm, 'generation': g,
+                'status': 'generation-failure' if record['generation_error'] else o['status'] if o else 'unknown',
+                'loss': o['loss'] if o else None})
+    expected = {'schema': schema+'.progress', 'stage': 'stopped', 'active': end['error_type'],
+        'candidate_slots': rows, 'writer_pid': start['pid'],
+        'reference_observations': len(plan['reference_order']), 'evaluation_observations': 0,
+        'observed_utc': progress.get('observed_utc')}
+    if (progress != expected or not epoch(start['started_utc']) <= epoch(progress['observed_utc']) <= epoch(end['ended_utc'])
+            or any((root/p).exists() for p in ('selection.json', 'evaluation-plan.json'))
+            or ((root/'evaluation').exists() and any((root/'evaluation').iterdir()))):
+        raise ValueError('stopped progress or unstarted evaluation differs')
+    return {'started': start, 'terminal': end, 'progress': progress,
+        'submitted_slots': n, 'unsubmitted_slots': len(plan['schedule'])-n,
+        'next_unsubmitted_slot': next_slot, 'scientific_study_closed': False}
+
+
+def worker(root, output, *, stopped=False):
     from scripts import run_native_institution_loop_v1 as driver
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_autonomous_search_v14 import replay_campaign
@@ -130,20 +180,24 @@ def worker(root, output):
             if c.binding != expected:
                 raise ValueError('campaign binding differs')
             controllers[arm] = c
-        selection = read(root/'selection.json')
-        reconstructed = driver.selection_payload(root, plan, frozen_utc=selection['frozen_utc'],
-            campaign_loader=lambda base, p, run, arm: controllers[arm])
-        reconstructed['schema'] = driver.SCHEMA+'.selection'
-        reconstructed['content_sha256'] = digest({k:v for k,v in reconstructed.items() if k != 'content_sha256'})
-        if reconstructed != selection:
-            raise ValueError('selection differs from all original candidates/ties/order')
-        jobs = driver.evaluation_jobs(plan, selection)
-        evaluation = read(root/'evaluation-plan.json')
-        if {k:v for k,v in evaluation.items() if k != 'content_sha256'} != {
-                'schema':driver.SCHEMA+'.evaluation-plan', 'selection_sha256':selection['content_sha256'], 'jobs':jobs}:
-            raise ValueError('evaluation manifest differs from selection')
-        closure = closed_state(root, plan, controllers, len(jobs))
-        logical = actual_policy_order(plan, selection, jobs)
+        if stopped:
+            closure = stopped_state(root, plan, controllers)
+            selection, jobs, logical = None, [], []
+        else:
+            selection = read(root/'selection.json')
+            reconstructed = driver.selection_payload(root, plan, frozen_utc=selection['frozen_utc'],
+                campaign_loader=lambda base, p, run, arm: controllers[arm])
+            reconstructed['schema'] = driver.SCHEMA+'.selection'
+            reconstructed['content_sha256'] = digest({k:v for k,v in reconstructed.items() if k != 'content_sha256'})
+            if reconstructed != selection:
+                raise ValueError('selection differs from all original candidates/ties/order')
+            jobs = driver.evaluation_jobs(plan, selection)
+            evaluation = read(root/'evaluation-plan.json')
+            if {k:v for k,v in evaluation.items() if k != 'content_sha256'} != {
+                    'schema':driver.SCHEMA+'.evaluation-plan', 'selection_sha256':selection['content_sha256'], 'jobs':jobs}:
+                raise ValueError('evaluation manifest differs from selection')
+            closure = closed_state(root, plan, controllers, len(jobs))
+            logical = actual_policy_order(plan, selection, jobs)
         expected_authors, expected_cells, expected_caches = set(), set(), set()
         numeric_certs, editor_certs, readiness = {}, {}, []
 
@@ -161,11 +215,15 @@ def worker(root, output):
                         'digest':plan['designer']['model_digest']}]})
                 raise ValueError('offline metadata adapter cannot dispatch')
 
-        for target, numeric, counts, arm in readiness_schedule(plan):
+        stages = list(readiness_schedule(plan))
+        if stopped:
+            stages = stages[:2+closure['submitted_slots']+1]
+        for stage_index, (target, numeric, counts, arm) in enumerate(stages):
             base = root/target
+            failed_readiness = stopped and stage_index == len(stages)-1
             if numeric:
                 cert = read(base/'numeric-readiness/certificate.json')
-                if (not cert['passed'] or cert['unattempted_cases'] or cert['provider'] != plan['designer']
+                if (cert['passed'] is not (not failed_readiness) or cert['unattempted_cases'] or cert['provider'] != plan['designer']
                         or cert['backend'] != plan['backend'] or cert['runtime'] != plan['runtime']
                         or [v['objective'] for v in cert['cases']] != plan['objectives']):
                     raise ValueError('numeric readiness differs from exact source/roles/objectives')
@@ -173,7 +231,8 @@ def worker(root, output):
                     directory = base/case['journal_relative']; expected_authors.add(directory.resolve())
                     result = replay_numeric(directory); binding = read(directory/'binding.json')
                     key = case['objective']+':parameters'
-                    if (not case['submitted'] or result['definition'] is None
+                    if (case['submitted'] is not (result['definition'] is not None)
+                            or (not failed_readiness and not case['submitted'])
                             or binding['request'] != request_at(controllers[key], counts[key])
                             or binding['provider'] != plan['designer'] or binding['backend'] != plan['backend']
                             or binding['runtime'] != plan['runtime'] or binding['calibration'] is not True
@@ -244,7 +303,7 @@ def worker(root, output):
         for name in plan['reference_order']:
             physical(root/'references'/name, 'reference-'+name, plan['reference_systems'][name], driver.SEED, 'developer-reference')
         authoring = []
-        for slot in plan['schedule']:
+        for slot in plan['schedule'][:closure['submitted_slots']] if stopped else plan['schedule']:
             arm, g = slot['arm'], slot['generation']; record = controllers[arm].state['records'][g]
             directory = root/'search/run-00'/arm.replace(':', '--')
             generation = directory/'authoring'/('generation-'+record['request_sha256'])
@@ -283,10 +342,11 @@ def worker(root, output):
         if expected_authors != actual_authors: raise ValueError('unaccounted authoring journal')
         if {p.name for p in (root/'references').iterdir()} != set(plan['reference_order']):
             raise ValueError('unaccounted reference slot')
-        if {p.name for p in (root/'evaluation').iterdir()} != {j['identity'] for j in jobs}:
+        if ({p.name for p in (root/'evaluation').iterdir()} if (root/'evaluation').exists() else set()) != {j['identity'] for j in jobs}:
             raise ValueError('unaccounted evaluation slot')
         if before != _inventory(root): raise ValueError('raw study changed during read-only audit')
-        result = {'schema':'scienceutopia.native-institution-loop-audit.v1', 'source_commit':plan['source_commit'],
+        result = {'schema':('scienceutopia.native-institution-loop-stopped-audit.v1' if stopped else
+                'scienceutopia.native-institution-loop-audit.v1'), 'source_commit':plan['source_commit'],
             'plan_sha256':plan['content_sha256'], 'source_proof':sources, 'closure':closure, 'worlds':worlds,
             'authoring':authoring, 'selection':selection, 'logical_evaluation':logical, 'readiness':readiness,
             'raw_inventory_sha256':digest(before), 'raw_files':len(before),
@@ -302,16 +362,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run', type=Path, required=True); parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--frozen-source', type=Path); parser.add_argument('--worker', action='store_true')
+    parser.add_argument('--stopped-prefix', action='store_true',
+        help='Audit the exact numeric-readiness stop, never relabel it as normal closure')
     args = parser.parse_args()
-    if args.worker: worker(args.run, args.output); return
+    if args.worker: worker(args.run, args.output, stopped=args.stopped_prefix); return
     if args.frozen_source is None or not (args.run/'terminal.json').exists():
         raise ValueError('closed study and explicit frozen source required; never audit a live writer')
-    if json.loads((args.run/'terminal.json').read_text()).get('status') != 'closed':
+    wanted = 'stopped' if args.stopped_prefix else 'closed'
+    if json.loads((args.run/'terminal.json').read_text()).get('status') != wanted:
         raise ValueError('stopped study is not closed scientific evidence')
     script = Path(__file__).resolve(); before = hashlib.sha256(script.read_bytes()).hexdigest()
     command = [sys.executable, '-c',
         'import runpy,sys; sys.path.insert(0,sys.argv.pop(1)); runpy.run_path(sys.argv.pop(1),run_name="__main__")',
         str(args.frozen_source.resolve()), str(script), '--worker', '--run', str(args.run.resolve()), '--output', str(args.output.resolve())]
+    if args.stopped_prefix: command.append('--stopped-prefix')
     result = subprocess.run(command, cwd=args.frozen_source.resolve(), env={**os.environ, 'PYTHONHASHSEED':'42'}, timeout=1800, check=False)
     if hashlib.sha256(script.read_bytes()).hexdigest() != before: raise ValueError('analysis adapter changed during audit')
     if result.returncode: raise SystemExit(result.returncode)

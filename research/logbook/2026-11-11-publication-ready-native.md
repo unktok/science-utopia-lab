@@ -128,3 +128,29 @@ G1は固定予算内で自身の失敗を受け取れるが、枠の補充／新
 abstractのみだった比較メモを対象節付きへ更新した。全履歴保存、構造と実装不良の分離、
 LLMと勾配の併用そのものを初出と主張しない。47頁稿はそれ以前のsourceへ固定して保持し、
 新しい主比較が閉じた後の科学的解釈と関連研究更新へ反映する。
+
+## 10時50分UTCの停止と次の実験の区別
+
+実writer37093/session52939は10:50:27UTCにexit1、read-only chain40332/session48610も
+科学terminalがstoppedであることを検出してexit1となった。どちらも継続中とは表示しない。
+元671436aとrawは変更しない。8参照、11候補提出のうち5complete/6技術null、評価0。
+残ったT数値G1を補充・再提出せず、失敗certificateは失敗のまま保持する。
+
+最後のfresh数値readinessはTが形式エラー後の予算内2回目で提出完了、Eが1回目で
+`done=true,done_reason=length,eval_count=8192`を返した。raw assistant contentは1960文字、
+prompt_eval_count4306、HTTP200。token数をcontent文字数から推測せず、provider値を保持する。
+Eはrequired literal submissionを完了せず、証明書passed=false。通信timeout／未知完了ではない。
+certificate content SHA256は`3691acbdf2047af7d05b885858b798c82c13fb89e23ede4735f71174054922a8`、
+terminal content SHA256は`945883e54bc43fa049c7a7dfa6dd25af31f5b669fd361c6342ed741852bb7f8d`。
+
+生成codeの6失敗は3件float添字、1件features KeyError、2件world record envelope欠落。
+任意sourceを許した8枠のうち、実行完了はT固定graph G0とE固定graph G1の2枠。
+前者はtensor parameter置換、後者はsource変更を行う。許容した自由度と実際の変更を区別する。
+これらをhostが自動修理するのでなく、将来の有限authoring内で実入力のcomponent testを
+設計者自身が利用できる仕組みを検討する。native lossの追加oracleとは分ける。
+
+停止prefix専用の監査scopeを追加した。通常のclosed監査は変更せず停止runを拒否する。
+新scopeは既知の数値readiness停止・予定順のprefix・pendingなし・選択／評価なしを要求し、
+失敗readinessもliteral replayする。synthetic24チェックは4.17秒でpass。
+これにより失敗を成功closedへ変えず、既に得た候補の再構築と別評価protocolを準備する。
+別評価を行う場合は11提出と欠けた1枠をそのまま固定し、新候補生成・baseline代入を行わない。
