@@ -68,3 +68,22 @@ copy校正の通過は自由提案の理解・成功や損失改善を示すも�
 その時点で存在した他目的の履歴prefix、実dispatch時の校正age、全null、selection前後、
 shared physical jobを検証する。科学モデル呼出・生成codeの再実行はしない。
 26 synthetic guardsが3.91秒でpass。実閉鎖データの全auditはまだ実行していない。
+
+08:27:18UTCにopen-seed参照が四年完了、08:34:09UTCにlegacyも完了。
+前者のA/Q/Rは2/8/42、T=-2、E=13。これは初期参照で、探索による改善ではない。
+別interpreterで両completed cellのoriginal-source physical proofをreplayし、
+model/corpus/source、全応答、初期〜四年checkpoint、measurementの一致を確認した。
+open-seedのcheckpoint SHA256=`0e70be0f32b7351c69347c397a21a94e001e73e37ad1494084f3f829370b6560`、
+proof content SHA256=`4a569c2c30f47694ed9b9f632dc9d5d92caac21a9b079389fe2c0a7ee5206c8a`。
+legacyはそれぞれ`13d49de310f6c149fbb6d5913286648fb859d9b4bad1a944eff6f7fa3ec1e35c`、
+`8d6d383b5ca9d1e6bb5c49c3b6781bef3041060c0fe12348d6ed4571e0480126`。
+これは二つのcompleted cellのみの診断であり、全pilotの閉鎖監査ではない。
+
+解析source c50f0cfでは新旧のreport/cost/audit等132件が36.73秒でpass。
+三method、seed62001/62011/62017の新図、全12候補／8参照、logicalとphysicalの共有を
+synthetic dataで検証した。以前のreport schema／seed／図の既定値は維持して回帰した。
+追加したread-only後処理chainは科学writerの消失と正常terminalを両方要求し、
+全audit・費用・図を二回再構築して比較する。推論や科学worldの再dispatch機能は持たない。
+chainの初回4pass/1failはテスト用時計に必要な三回目の値がなくStopIterationとなったfixtureミス。
+時計fixtureだけを修正して5/5pass。停止・timeout・PID再利用・図の差のguardは弱めていない。
+このchain自身の完了もpublication-ready判定には使わない。
