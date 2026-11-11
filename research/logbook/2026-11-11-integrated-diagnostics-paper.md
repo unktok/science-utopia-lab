@@ -28,3 +28,11 @@ preliminary buildはcached/untrusted Tectonic0.17.0で48頁。
 これはdirty sourceの事前組版確認であり、clean-source最終buildの証拠には数えない。
 最終source固定後、別名PDF、二回buildのtext一致、全頁renderと目視を行う。
 旧44／41／37頁PDFとreceiptは変更せず、新稿も投稿readyを意味しない。
+
+clean92b6484で二回のcached buildはtext SHA256
+`eda5701599c16476b5298d2b65b0f34893e765a56b7aa8d3ee25a8bb8ca36414`で一致。
+48頁全contactと新sectionの個別renderを目視し、bboxのoff-page wordは0。
+新table／図は判読可能だが、目次末尾だけでほぼ空の1頁が生じたため、
+目次だけsmallへ変更して再buildする。48頁v1のrender／logも保持し、最終PDFとはしない。
+最終data/prose checksは10 pass、2.22秒。09:44UTCには候補3/12完了、
+E固定graphコードG0のfresh readiness中。sourceと実験条件は変えていない。
