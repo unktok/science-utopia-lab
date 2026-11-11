@@ -86,7 +86,7 @@ def test_panel_counts_are_decision_records_and_fixed_readouts_not_new_worlds():
     assert not report['independent_samples_inferred_from_subsets']
     text = (ROOT / 'paper/integrated/design-diagnostics.tex').read_text()
     for boundary in ('not six valid whole institutions', 'not confidence',
-                     'not actual reading', 'not counted here as a',
+                     'not actual reading', 'treated separately',
                      'adds no new loss', 'actually performed'):
         assert boundary in text
 

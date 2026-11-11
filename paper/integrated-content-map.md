@@ -9,7 +9,8 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
-| November11 authoring/measurement diagnostics | Separate main section after pre-scale studies | All eight actual local35B submissions, four-input partial probes and measured costs; distinguish static validity, native execution and effects. Optional order files were unread. Fixed-record panel readouts reconstruct44 completed/five partial old worlds; actual retained figure, not new losses, reviewer interventions or independent quality. Running671436a is not a completed result |
+| November12 native execution and objective support | New main section after authoring diagnostics | Stopped671436a: all12 slots, five complete/six technical null/one unsubmitted,19 physical worlds and costs. Separate f1f8ddf fixed-submission evaluation is not completion of the old campaign. Actual post-edit self-repair remains an empirical question. Conditional T/E algebra and176 saved annual checkpoints/880 actor states distinguish objective support from optimizer failure; no new loss or hidden constraint |
+| November11 authoring/measurement diagnostics | Separate main section after pre-scale studies | All eight actual local35B submissions, four-input partial probes and measured costs; distinguish static validity, native execution and effects. Optional order files were unread. Fixed-record panel readouts reconstruct44 completed/five partial old worlds; actual retained figure, not new losses, reviewer interventions or independent quality. Later671436a is treated separately |
 | Whole-system question, science-of-science objectives, fixed scientist weights | Main introduction/problem/discussion | Central motivation; do not collapse the project to peer review or V2 |
 | Pre-scale additions, November9 | Separate main section after observatory | Actual numeric readiness;12 information worlds/full audits/input-year table/selector replay;62388a7 T/E pilot closes16 slots/27 physical evaluations/two full audits, actual paths/common-score figures, all-slot/all-label tables, literal-code/failure/cost analysis and exact rebuilding; current-native claim/gradient/adoption connectivity remains scripted QA |
 | SystemSpec, arbitrary source, types/state/ports, wiring, actors/artifacts and processes | Main design/method; additional contracts in appendix | Explain what is implemented and what remains trusted/native; not permission-as-invention |
@@ -32,6 +33,16 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- research/results/native-loop-stopped-prefix-verification-v1.json retains the
+  stopped source, all-slot counts, exact two-audit agreement and reported costs.
+  It is not a normal closure receipt or an unused-seed result.
+- research/data/native-resource-support-v1/summary.json and
+  research/results/native-resource-support-verification-v1.json bind annual
+  numeric vectors to original62388a7 checkpoints. Annual boundaries do not
+  identify within-year minima or exclude transient exits.
+- research/results/native-objective-support-screen-v1.json and
+  research/publication/native-objective-support-and-next-question.md distinguish
+  conditional incentives and observed support from global optimality.
 - research/data/causal-authoring-assay-v1/{audit,policies,fixed-record-probe,costs,manifest}.json
   and research/results/causal-authoring-assay-v1.md. Assay a2fb13c and partial
   probe bda0406 remain distinct source scopes.

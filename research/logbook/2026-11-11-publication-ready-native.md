@@ -1,5 +1,20 @@
 # 投稿準備ゴールの再開とnative閉ループ
 
+## November12の原稿更新準備
+
+15:38:49UTCに別固定候補評価は28/30完了、evaluation-028へ進行。
+code-testedの新writerは依然として前実験の独立監査closure待ち。
+実行中source・候補・予算・lossを変更せず、原稿へ閉じた証拠を統合する。
+新節は停止した671436aの全12枠／19world、原literalな6失敗、既知の
+length termination、別評価との区別、component feedbackの実装と未実証の境界、
+条件付きT/Eの全採択誘因、旧44worldの176年次checkpoint／880actor観測を扱う。
+本文の表をretained numeric vectorsから再計算する回帰を含め30件が3.32秒でpass。
+draft PDFの初回cache-only buildは51ページ、layout警告／未解決参照なし。
+これはまだ最終PDFの全ページ目視検証・新source二回build receiptではない。
+AFlow、ADAPT、Mining MAS Workflows、AI Scientific Communityの公式arXiv metadataを
+再確認し、trajectory保存やexecution feedback等を独自発明としない関連研究を追加。
+原47頁と旧build receiptは一切変更しない。主会議ready判定は未達のまま。
+
 ユーザーはtop conferenceへpublication-readyになるまでの自律継続を依頼。
 新しいgoal toolをactiveにし、[研究目標](../publication/publication-ready-v3.md)と
 [次の有限protocol](../protocols/campaigns/native-institution-loop-v1.md)を作成した。
