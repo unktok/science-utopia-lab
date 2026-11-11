@@ -33,6 +33,15 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- Closed61a1753 objective-conditioned development: eight submissions, six
+  native completions/two nulls, thirteen physical attempts including five
+  references. Main native-loop section includes all-slot table, actual loss
+  paths, shared strong-control scores and observed input classes. Exact
+  report/cost/effect/preference/request-class exports are retained under
+  research/data/native-objective-instrument-loop-v1. The source now includes
+  this closed development; the reviewed56-page PDF predates this addition.
+  Its live18-world fixed evaluation is explicitly unfinished, not a main
+  result or evidence for advantage. Rebuild/review after final integration.
 - November12 finite-estimand revision: problem-method.tex defines eligible and
   complete candidate sets, all observed minima, predeclared selection ties and
   paired reference-relative loss within each objective. Evaluation seeds are

@@ -643,7 +643,9 @@ after a first text-patch transfer fails the exact-byte check. No failed transfer
 is committed as verified evidence, and no scientific raw file is changed.
 
 At clean cd1989a,37 retained-data/request/preference/effect/report checks pass
-10.51s. This overlaps prior checks, not additional scientific trials. Compact
+10.51s. JUnit SHA256:
+086b122f6974c89865c0f312d12807d5fbf050a511d689c8f9d6245e2e0986bc.
+This overlaps prior checks, not additional scientific trials. Compact
 data and exact16 independent-output comparisons are retained under
 research/data/native-objective-instrument-loop-v1 and its closure receipt.
 
