@@ -29,3 +29,30 @@ retained inputからの再生成も同一バイト。raw full auditや新native�
 既存44ページPDFは変更しない。新しい科学的結果を得る前に原稿の主張を強くしない。
 次は二つのrequest履歴とsourceを固定し、fresh readiness後の最大8 authoring session比較。
 現時点では未dispatchであり、実験が裏で動いているとは報告しない。新サービス・モデル・課金・pushなし。
+
+## 後続の実モデル診断開始
+
+上の未dispatchは初回実装時点の記録。ユーザーの自律継続依頼を受け、
+[8セッションの有限protocol](../protocols/campaigns/causal-authoring-assay-v1.md)と実行器を
+clean `a2fb13caab1169c5ff6f07119f7689db28ed888f` で固定した。
+独立experiment worktree `causal-authoring-assay-v1-a1` を使い、元実験は変更しない。
+新規の停止・再dispatch拒否・履歴保持等6件と既存経路を合わせ27件がpass（2.79秒）。
+
+plan file SHA256は`2047a9d9b24595b4b336249c1a421c9bb826b6ca148b9d3306083ba9e3220ac2`、
+content digestは`d18fb45f7d5d3bb5598e21d401fa2798da3d168425f0cd379abb087742b93bad`。
+T/Eの旧code-and-graph G0/G1 requestをそのまま履歴として固定し、両群とも新domainを使う。
+元world_bindingと履歴値を新sourceの実測値へ付け替えず、両sourceの区別をモデルにも表示する。
+説明条件でrequest-bindingとdecode seedも変わりうるため、共通乱数・確証的な効果量とは呼ばない。
+
+新実モデルreadinessを説明条件別に29件ずつ開始。説明なし29件は通過。
+完全コピー差2件は原文・解釈を保存した診断で、実行可能性は通過した。
+この時点では説明あり側を実行中で、本比較の成績はまだない。
+研究者推論・native worldはこのprotocolでは0、新サービス・課金・pushなし。
+
+実行中、capability一覧にはreview-routingの実装identityはあるが詳細cardがないことを確認した。
+実験checkoutは変更せず、開発側にsnapshot／routingの入出力・hash・適格性・lineage・
+再実行禁止・空taskの契約cardを追加。既知の制度コード、割当アルゴリズム、
+自動配線は与えず、実validatorとの対応を検証する。
+これは今回の未発明の原因同定ではない。`a2fb13c`の8件へは遡及適用しない。
+将来このcatalogを使う実モデル実験には別sourceのfresh readinessが必要。
+catalog単体28件pass（1.95秒）。

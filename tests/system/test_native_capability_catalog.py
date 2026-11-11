@@ -89,6 +89,43 @@ def test_completed_count_verifier_is_discoverable_with_actual_typed_input_and_no
         Draft202012Validator(card['request_shape_schema']).validate({**sample,'matches_native_records':True})
 
 
+def test_review_routing_contract_is_discoverable_and_matches_real_command_validation():
+    from tests.system.test_native_review_routing_v13 import unit_batch
+    from utopia.system.native_review_routing import REVIEW, SNAPSHOT, validate_routing_plan
+    from utopia.system.code_mechanisms import sha
+    catalog = native_capability_catalog()
+    sim, batch, plan = unit_batch()
+    card = catalog['cards'][REVIEW]
+    Draft202012Validator(card['batch_shape_schema']).validate(batch)
+    Draft202012Validator(catalog['cards'][SNAPSHOT]['response_shape_schema']).validate(batch)
+    Draft202012Validator(card['request_shape_schema']).validate(plan)
+    assert validate_routing_plan(sim, 1, batch, plan)['p'][0].id == 'b'
+    # Card hash contract describes the exact real interpreter hash, not a recipe.
+    encoded = json.dumps(batch, sort_keys=True, separators=(',', ':'),
+                         ensure_ascii=False, allow_nan=False).encode('utf-8')
+    assert hashlib.sha256(encoded).hexdigest() == plan['batch_sha256'] == sha(batch)
+    assert 'policy' not in card and 'source' not in card
+    assert 'No routing algorithm' in card['schema_scope']
+    bad = clone(plan); bad['tasks'][0]['extra'] = 'not permitted'
+    with pytest.raises(ValidationError):
+        Draft202012Validator(card['request_shape_schema']).validate(bad)
+    with pytest.raises(GraphRuntimeError):
+        validate_routing_plan(sim, 1, batch, bad)
+
+
+def test_review_routing_shape_does_not_claim_semantic_eligibility_or_year_validation():
+    from tests.system.test_native_review_routing_v13 import unit_batch
+    from utopia.system.native_review_routing import REVIEW, validate_routing_plan
+    card = native_capability_catalog()['cards'][REVIEW]
+    sim, batch, plan = unit_batch()
+    plan['tasks'][0]['reviewer_id'] = 'unknown'
+    Draft202012Validator(card['request_shape_schema']).validate(plan)
+    with pytest.raises(GraphRuntimeError):
+        validate_routing_plan(sim, 1, batch, plan)
+    assert 'duplicate triples' in ' '.join(card['semantic_constraints'])
+    assert 'not bool/float' in ' '.join(card['semantic_constraints'])
+
+
 def test_researcher_work_card_matches_actual_exact_node_ports_and_parameter_contract():
     card = native_capability_catalog()['cards'][IMPLEMENTATION]
     node = work_node()

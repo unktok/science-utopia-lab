@@ -20,6 +20,8 @@ CATALOG_IMPLEMENTATIONS = {
     'native.process.activity.v1': 'Run an explicitly authored registered delegate under bounded data-driven process control.',
     'code.python.v1': 'Run arbitrary authored Python in the pinned isolated no-network executor.',
     'native.world.claim-verification.v1': 'Independently check a completed native count assertion; preserve false claims and corrections.',
+    'native.world.review-inputs.v13': 'Expose actual current submissions and original reviewer eligibility without choosing a policy.',
+    'native.phase.review.with-routing.v13': 'Execute exactly an institution-authored eligible review-task plan in the original native world.',
 }
 
 
@@ -248,8 +250,63 @@ def _claims():
         'schema_scope':'shape plus actual publication/identity/state semantic checks, not an external science oracle'}
 
 
+def _review_routing():
+    from .native_review_routing import (BATCH, PLAN, SNAPSHOT, REVIEW, STATE,
+        review_input_batch, validate_routing_plan, validate_routing_state, register_review_routing)
+    identity = {'type': 'string', 'minLength': 1}
+    plan = _object({'schema': {'const': PLAN}, 'year': {'type': 'integer'},
+        'batch_sha256': {'type': 'string'}, 'tasks': {'type': 'array', 'items': _object({
+            'conference_id': identity, 'paper_id': identity, 'reviewer_id': identity})}})
+    batch = _object({'schema': {'const': BATCH}, 'year': {'type': 'integer'},
+        'papers': {'type': 'array', 'items': _object({'conference_id': identity,
+            'paper_id': identity, 'paper': {'type': 'object'},
+            'eligible_reviewer_ids': {'type': 'array', 'items': identity}})}})
+    shared = {'version': 1, 'parameters': 'No policy parameters are consumed by these handlers.',
+        'integration': 'Author every node, artifact type, port, connection and schedule explicitly. '
+            'Read the current graph: snapshot and arbitrary producer must precede the original review. '
+            'Do not copy numeric phases from another graph; no automatic wiring or policy is supplied.',
+        'schema_scope': 'Shape descriptions plus separately stated runtime identity/lineage checks; '
+            'actual validators are authoritative. No routing algorithm or example policy provided.'}
+    snapshot = {**shared, 'implementation': SNAPSHOT,
+        'ports': {'inputs': 'Explicit world dependency from the current native costs stage.',
+            'outputs': [{'port_id': 'batch', 'channel': 'artifact', 'artifact_type': BATCH, 'required': True}]},
+        'response_shape_schema': batch,
+        'semantic_constraints': ['Exact actual conference/paper/year identities with globally unique paper IDs.',
+            'Eligibility is original can_review with paper-author and conflict-of-interest exclusions.',
+            'No model calls, RNG, decisions or review scores are produced.'],
+        'cost': {'scientist_model_calls': 0},
+        'privilege': {'granted': ['read current actual submissions and eligible reviewer identities'],
+            'not_granted': ['create papers or reviewers', 'alter projects', 'assign review scores']},
+        'validators': [_source(review_input_batch), _source(register_review_routing)]}
+    review = {**shared, 'implementation': REVIEW,
+        'ports': {'inputs': [
+            {'port_id': 'batch', 'channel': 'artifact', 'artifact_type': BATCH, 'required': True},
+            {'port_id': 'routing', 'channel': 'artifact', 'artifact_type': PLAN, 'required': True}],
+            'inherited': 'Retain the original review phase completion dependency and next/world outputs.'},
+        'request_shape_schema': plan,
+        'batch_shape_schema': batch,
+        'batch_hash_encoding': 'SHA256 of exact batch encoded as UTF-8 JSON with sort_keys=True, '
+            'separators=(comma,colon), ensure_ascii=False, allow_nan=False.',
+        'semantic_constraints': ['Exactly one batch and one routing value with causal lineage in the current period.',
+            'Batch must equal the actual current native submissions and original eligibility in full.',
+            'year must be Python int (not bool/float) and equal current native year; batch_sha256 must match.',
+            'Every task names an actual conference/paper and eligible reviewer; duplicate triples reject.',
+            'Empty tasks and papers without reviews are legal; no raw review is fabricated.',
+            'Legacy selection may reject missing reviews; choose a compatible explicit selection if needed.',
+            'Cannot repeat or rewind an already committed review year; persistent state is receipt-bound.'],
+        'state_contract': {'schema': STATE, 'fields': ['schema', 'last_period', 'receipt_sha256']},
+        'author_choices': ['arbitrary task set and order within actual eligibility',
+            'arbitrary producer code, information paths and institutional schedules within declared design space'],
+        'cost': {'scientist_model_calls': 'actual original review tasks; record physical batch requests and tokens separately'},
+        'privilege': {'granted': ['change actual native review assignment and work'],
+            'not_granted': ['fabricate scores', 'accept papers automatically', 'overwrite projects',
+                'override the experiment design-space or native world accounting']},
+        'validators': [_source(validate_routing_plan), _source(validate_routing_state), _source(register_review_routing)]}
+    return [snapshot, review]
+
+
 def native_capability_catalog():
-    cards = [_work(), _transfers(), _domain(), _process(), _code(), _claims()]
+    cards = [_work(), _transfers(), _domain(), _process(), _code(), _claims(), *_review_routing()]
     registered = _registered()
     registry_sources = {_source(handler)['path']: _source(handler)
         for handler in registered.values()}
