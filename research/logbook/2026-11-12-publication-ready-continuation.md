@@ -683,3 +683,19 @@ late worlds keep existing native laws and T/U meanings and need no new designer.
 They are a developer action-support comparator, not new optimization or an
 assumed positive result. Current641xx science is untouched; fresh implementation,
 verification and the prior evaluation's normal closure remain required.
+
+The new table join at3bfdad2 first reports20pass/1failure: its startswith
+filter also collects a prose line beginning T/g3. The source table itself has
+eight rows. Restricting the reader to actual ampersand-separated cells fixes
+that false positive without changing data or TeX. The batched merge/push
+commands had already proceeded after printing the failed test result; this
+ordering error is not a verified-pass checkpoint. Subsequent merges/pushes
+must wait for an explicitly inspected successful final exit, not fall through
+a diagnostic tool response. At12c2f99 all21 source/retention checks pass7.17s;
+JUnit SHA256:173dfa0c3fef5f36714764abc539c99672226e02b4b8d28b4896109f80cc90bd.
+All prior failed JUnits remain under local ignored outputs. Science is unchanged.
+
+At23:52:12UTC two of the18 fixed-policy worlds have actual complete observations
+and evaluation-002 is executing. No terminal is present; the existing writer
+and closure-gated report/effect continuations remain responsible for the rest.
+No partial evaluation scores enter the prospective instruction message choice.
