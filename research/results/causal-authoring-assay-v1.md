@@ -89,6 +89,8 @@ clean f98f725のAPI/native整合性78件、clean3156365のinline／履歴／edit
 保存入力probeの37件と完全literal exportの3件もpass。
 exportは当初、数値変更をsource-onlyで表せないため出力前に停止した。
 guardを外さず、数値も含む完全patchを出す方式へ変更し、全candidate fingerprintを再構成した。
+最終clean22f1ac8では13module／217件が57.30秒でpass。
+[source別検証記録](causal-authoring-assay-verification-v1.json)にhashと範囲を保持した。
 
 ## 次に進む研究
 

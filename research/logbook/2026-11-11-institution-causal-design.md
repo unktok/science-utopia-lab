@@ -85,3 +85,8 @@ source-only compact exportは数値案を表せないため保存前に停止し
 chatとは別の空load10回も保持し、未報告token countsを0へ補完しない。
 旧PDFと旧実験は変更しない。新しい世界のloss比較、勾配の有効性、制度発明、top conference到達は未実証。
 全実モデルwriterは終了。次のlive閉ループはまだ開始していない。
+
+最終clean22f1ac8で13module／217pass、57.30秒。
+JUnit SHA256=`6a3a87c37d1df4f0768bb8de3924b3ae07f5f7439e7e44618c3ee23aab2f6cd6`。
+8文書／185 local links、manifest内4file hashも検証した。
+結果・source別QA・新表示の未実証範囲を明記してローカルmainへ統合する。remote pushはしていない。

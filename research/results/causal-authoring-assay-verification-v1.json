@@ -75,6 +75,17 @@
     "all_eight_candidate_fingerprints_reconstructed": true,
     "raw_logs_in_git": false
   },
+  "final_integration": {
+    "source_commit": "22f1ac8af03b6979380ab7686f7539d8dfbf37dc",
+    "passed": 217,
+    "seconds": 57.30,
+    "junit_sha256": "6a3a87c37d1df4f0768bb8de3924b3ae07f5f7439e7e44618c3ee23aab2f6cd6",
+    "modules": 13,
+    "new_model_inference": 0,
+    "documentation_files": 8,
+    "verified_local_links": 185,
+    "verified_manifest_file_hashes": 4
+  },
   "claims": {
     "objective_conditioned_native_loss_improvement": false,
     "context_effect_established": false,
