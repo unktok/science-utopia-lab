@@ -31,3 +31,10 @@ E数値は通常査読全採択と小さなmixed差、1人査読全採択には�
 graph全滅の二armへpolicyを捏造しない。重要な主会議結果の不足をseed数やQA数で
 埋めたことにせず、次の主研究の作用／観測／時点の識別へ持ち越す。
 49頁PDFはこの閉鎖前snapshotとして保持し、新実図の原稿への統合は次に行う。
+
+bb86366a910ae70f39898b02e9f77643b20c759cでretained reportの数値を再検算し、
+別二processでreport／CSV／4図の6filesを全て原物とbyte一致で再構築した。
+二reproduction receiptも一致、file SHA25648cc53599769e036ff3d1902b1ce8e3a108fd4f05c855f0dc526daf1d693f468。
+同clean sourceの37件は14.40秒でpass。実行code・world・LLMは追加なし。
+前段のcode-tested実校正はall_controls_passed=true／28recordsであることを原certificateから確認。
+native参照open-seedは継続中で、candidate未生成のままというscopeを維持する。

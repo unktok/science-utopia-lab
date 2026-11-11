@@ -85,4 +85,7 @@ tests also expose and fix dictionary-order differences after saving/loading
 JSON: report display/CSV order is explicit. No raw data, policy, score, failed
 record or scientific source is repaired. The original stopped report stays
 stopped. The [portable data instructions](../data/native-fixed-evaluation-v1/README.md)
-separate numerical rebuilding from full raw verification.
+separate numerical rebuilding from full raw verification. Two independent
+actual retained-data rebuilds now reproduce all six outputs byte for byte;
+[their verification](native-fixed-evaluation-portable-verification-v1.json)
+records37 clean-source checks and no new model, world or authored-code execution.

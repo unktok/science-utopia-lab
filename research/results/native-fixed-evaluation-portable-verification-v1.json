@@ -1,0 +1,28 @@
+{
+  "schema": "scienceutopia.native-fixed-evaluation-portable-verification.v1",
+  "source_commit": "bb86366a910ae70f39898b02e9f77643b20c759c",
+  "independent_process_rebuilds": 2,
+  "all_six_outputs_byte_identical_to_retained_originals": true,
+  "reproduction_receipts_byte_identical": true,
+  "reproduction_receipt_file_sha256": "48cc53599769e036ff3d1902b1ce8e3a108fd4f05c855f0dc526daf1d693f468",
+  "report_content_sha256": "be3ee6a39bf578f94094706734857b97ab283f3d15db09affb2aa214d1acbc87",
+  "files": {
+    "physical-components.csv": "f78d6508f947af93cbbe840de30a40d8ac08e6273eb029487d4d50670c792d6c",
+    "report.json": "033ee3ddc1945bf685b94ea883f6b225c167d5e6862a9cd8df0c36ad25e433e9",
+    "selection-fixed-common-scores.png": "b258ba6e0313ab3f0f23d490327de8bd77b3224e6c7d24ff3cde2cd8e776b5ef",
+    "selection-fixed-common-scores.svg": "6c39e6eeab0f6c677b6fe8526f752b787cf29d027893473f119d2f7db0c8f7cc",
+    "stopped-search-paths.png": "3267e00f8ba8b52bcf2a2567b795d65ff3aecd2054b9d1af0463bd990c065e03",
+    "stopped-search-paths.svg": "1eee186bf026a70da2728c793556b2bf3e34257f380b21709165e958ceb930f7"
+  },
+  "clean_source_checks": {
+    "passed": 37,
+    "failed": 0,
+    "seconds": 14.4,
+    "junit_file_sha256": "5533d48f26774455a9be6abf34a82eedb8c9ffec4350b78f27cf3f5b089771d9"
+  },
+  "raw_audit_repeated": false,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_code_executions": 0,
+  "executable_policy_recovery_or_publication_readiness_claimed": false
+}

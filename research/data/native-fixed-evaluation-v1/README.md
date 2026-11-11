@@ -9,8 +9,9 @@ slot. No baseline is substituted for an unavailable policy.
 
 `report.json` retains all slots, ties, physical joins, A/Q/R measurements and
 paired differences. `costs.json` is the exact independent cost projection;
-`manifest.json` binds these numerical outputs' report and figure identities to
-the original full audit. Raw prompts and the large audit remain local and are
+`manifest.json` binds the report, CSV and figures to the original full audit.
+The closure receipt separately binds the exact cost file. Raw prompts and the
+large audit remain local and are
 not included. The executable institutions cannot be recovered from policy
 hashes alone. This data subset is not a release-cleared raw reproduction bundle.
 
@@ -29,6 +30,8 @@ selection ties, score arithmetic, availability, shared physical joins, summaries
 and all paired differences; it rebuilds the report, CSV and four PNG/SVG files
 byte for byte. It calls no model, Simulation or authored code. This is numerical
 reconstruction, not another full raw audit or fresh stochastic replication.
+Two independent actual rebuilds already reproduce all six files and matching
+[receipts](../../results/native-fixed-evaluation-portable-verification-v1.json).
 
 The two source-bound full audits and cost projections are byte-identical.
 Two corrected-source report exports also match. The first reporting source
