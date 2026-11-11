@@ -310,3 +310,13 @@ continuation/session25775 and fixed-report waiter/session83919 are started and
 closure-gated. The new first reference finishes20:46:28UTC, second active.
 No new selected system, objective-conditioned improvement or main-conference
 readiness is claimed. The original system optimization goal and R2 remain open.
+
+The first portable definition export fails its canonical digest regression
+(44 checks pass/one fails): an intermediate JavaScript JSON roundtrip renders
+the model's untrusted note loss_achieved=-7.0 as integer -7. Its source code is
+unchanged, but the typed definition hash must still agree. The export is
+replaced through the original Python-serialized text without a JavaScript
+numeric roundtrip; its full definition hash now equals3062bde6 exactly. The
+original raw artifact and scientific sources are never modified. This export
+is not consumed by the corrected study. The note's assertion of optimality is
+the model's untrusted claim, not an independently evaluated candidate loss.
