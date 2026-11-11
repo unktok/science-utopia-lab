@@ -195,7 +195,8 @@ def export(args):
         'interpretation':{'report_only':True,'new_model_calls':0,'new_code_executions':0,'new_native_worlds':0,
             'loss_or_selection_changed':False,'causal_mechanism_effect_identified':False,
             'annual_boundaries_are_within_year_minima':False,'publication_ready':False}}
-    if before!=_inventory(root) or inputs!={str(p):file_sha256(p) for p in paths}:raise ValueError('trace inputs changed')
+    if (before!=_inventory(root) or inputs!={str(p):file_sha256(p) for p in paths}
+            or pinned_revision(source)!=plan['source_commit']):raise ValueError('trace inputs or scientific source changed')
     out.mkdir(parents=True);save(out/'report.json',result)
     rows=[{'world':w['identity'],'role':w['role'],'status':w['status'],'seed':w['seed'],
         **{k:y[k] for k in ('year','active_founders','total_founder_resources','minimum_founder_resources','transferred_units')}}

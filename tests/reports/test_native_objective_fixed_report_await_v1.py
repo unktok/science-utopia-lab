@@ -17,7 +17,8 @@ def test_wait_is_finite_and_stopped_chain_does_not_become_closure(tmp_path):
 
 
 @pytest.mark.parametrize('fail',[None,'chain','export','source'])
-def test_future_plan_is_only_read_after_bound_chain_closes(tmp_path,monkeypatch,fail):
+@pytest.mark.parametrize('trace',[False,True])
+def test_future_plan_is_only_read_after_bound_chain_closes(tmp_path,monkeypatch,fail,trace):
     chain=tmp_path/'chain';chain.mkdir();raw=tmp_path/'future-evaluation';frozen=tmp_path/'frozen'
     save(chain/'started.json',{'schema':'scienceutopia.native-objective-evaluation-continuation.v1',
         'source_commit':'a'*40,'evaluation_output':str(raw),'evaluation_source':str(frozen)})
@@ -32,14 +33,19 @@ def test_future_plan_is_only_read_after_bound_chain_closes(tmp_path,monkeypatch,
     monkeypatch.setattr(module,'wait_chain',wait)
     def finish(args):
         calls.append(args);assert args.analysis==chain/'audits'
+        if trace:assert args.scope=='fixed-evaluation' and args.frozen_source==frozen
         if fail=='export':raise ValueError('SCRIPTED report failed')
         args.output.mkdir();save(args.output/'ended.json',{'status':'closed'})
         if fail=='source':monkeypatch.setattr(module,'git_binding',lambda p:'b'*40)
     monkeypatch.setattr(module,'finish',finish);args=SimpleNamespace(continuation=chain,output=tmp_path/'out')
+    if trace:
+        from scripts import await_native_institution_effect_trace_v1 as wrapper
+        monkeypatch.setattr(wrapper,'finish_trace',finish);run=wrapper.run
+    else:run=module.run
     if fail:
-        with pytest.raises(ValueError):module.run(args)
-    else:module.run(args)
+        with pytest.raises(ValueError):run(args)
+    else:run(args)
     assert len(calls)==(0 if fail=='chain' else 1)
     end=json.loads((args.output/'ended.json').read_text());assert end['status']==('stopped' if fail else 'closed')
     if not fail:assert not end['visual_review_complete'] and not end['publication_ready']
-    with pytest.raises(ValueError):module.run(args)
+    with pytest.raises(ValueError):run(args)

@@ -17,7 +17,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def run(args,*,plan_schema='scienceutopia.native-code-tested-loop.v1.plan',
         preceding_schema='scienceutopia.code-tested-loop-finish.v1',
         continuation_schema='scienceutopia.code-tested-report-finish.v1',
-        report_module='scripts.reports.native_code_tested_loop_v1'):
+        report_module='scripts.reports.native_code_tested_loop_v1',report_extra_arguments=()):
     root=args.run.resolve();analysis=args.analysis.resolve();out=args.output.resolve();source=git_binding(ROOT)
     plan=checked(json.loads((root/'plan.json').read_text()));start=json.loads((analysis/'started.json').read_text())
     if (out.exists() or out.is_relative_to(root) or out.is_relative_to(analysis)
@@ -31,7 +31,8 @@ def run(args,*,plan_schema='scienceutopia.native-code-tested-loop.v1.plan',
         'analysis_source_commit':source,'scientific_source_commit':plan['source_commit'],
         'preceding_analysis':str(analysis),'plan_file_sha256':plan_hash,
         'started_utc':datetime.now(timezone.utc).isoformat(),'maximum_wait_seconds':86400,
-        'new_inference_allowed':False,'retry_failed_stages':False})
+        'new_inference_allowed':False,'retry_failed_stages':False,
+        **({'report_module':report_module,'report_extra_arguments':list(report_extra_arguments)} if report_extra_arguments else {})})
     stage='await-audit-and-cost-closure';steps=[]
     try:
         print(json.dumps({'stage':stage,'new_model_calls':0}),flush=True)
@@ -43,7 +44,7 @@ def run(args,*,plan_schema='scienceutopia.native-code-tested-loop.v1.plan',
             stage='report-'+str(i)
             argv=[sys.executable,'-m',report_module,'--run',str(root),
                 '--audit-one',str(analysis/'audit-1.json'),'--audit-two',str(analysis/'audit-2.json'),
-                '--output',str(out/stage)]
+                '--output',str(out/stage),*report_extra_arguments]
             save(out/(stage+'.started.json'),{'command':argv})
             with (out/(stage+'.log')).open('x') as log:
                 result=subprocess.run(argv,cwd=ROOT,env={**os.environ,'PYTHONHASHSEED':'42'},

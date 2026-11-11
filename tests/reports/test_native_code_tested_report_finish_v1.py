@@ -10,10 +10,10 @@ from utopia.optimization.native_numeric_designer import save
 
 
 @pytest.mark.parametrize('fail',[None,'closure','report-1','report-2','different-bytes'])
-@pytest.mark.parametrize('variant',['legacy','objective','fixed-objective'])
+@pytest.mark.parametrize('variant',['legacy','objective','fixed-objective','development-trace','evaluation-trace'])
 def test_exact_analysis_chain_two_exports_or_stop_without_retry(tmp_path,monkeypatch,fail,variant):
-    objective=variant=='objective'
-    fixed=variant=='fixed-objective'
+    objective=variant in ('objective','development-trace')
+    fixed=variant in ('fixed-objective','evaluation-trace');trace=variant.endswith('-trace')
     plan_schema=('scienceutopia.native-objective-fixed-evaluation.v1.plan' if fixed else
         'scienceutopia.native-objective-instrument-loop.v1.plan' if objective else 'scienceutopia.native-code-tested-loop.v1.plan')
     preceding_schema=('scienceutopia.native-objective-fixed-evaluation-finish.v1' if fixed else
@@ -30,8 +30,11 @@ def test_exact_analysis_chain_two_exports_or_stop_without_retry(tmp_path,monkeyp
         return {'audit_file_sha256':'c'*64,'cost_file_sha256':'d'*64}
     monkeypatch.setattr(module,'wait_analysis',wait)
     def execute(argv,**kwargs):
-        assert argv[2]==('scripts.reports.native_objective_fixed_evaluation_v1' if fixed else
+        assert argv[2]==('scripts.reports.native_institution_effect_trace_v1' if trace else 'scripts.reports.native_objective_fixed_evaluation_v1' if fixed else
             'scripts.reports.native_objective_instrument_loop_v1' if objective else 'scripts.reports.native_code_tested_loop_v1')
+        if trace:
+            assert argv[argv.index('--frozen-source')+1]==str((tmp_path/'scientific').resolve())
+            assert argv[argv.index('--scope')+1]==('fixed-evaluation' if fixed else 'objective-development')
         d=Path(argv[argv.index('--output')+1]);calls.append(d.name)
         assert (d.parent/(d.name+'.started.json')).exists()
         if fail==d.name:return SimpleNamespace(returncode=2)
@@ -39,7 +42,10 @@ def test_exact_analysis_chain_two_exports_or_stop_without_retry(tmp_path,monkeyp
         return SimpleNamespace(returncode=0)
     monkeypatch.setattr(module.subprocess,'run',execute)
     args=SimpleNamespace(run=raw,analysis=analysis,output=tmp_path/'out')
-    if fixed:
+    if trace:
+        from scripts.finish_native_institution_effect_trace_v1 import run
+        args.frozen_source=tmp_path/'scientific';args.scope='fixed-evaluation' if fixed else 'objective-development'
+    elif fixed:
         from scripts.finish_native_objective_fixed_report_v1 import run
     elif objective:
         from scripts.finish_native_objective_instrument_report_v1 import run

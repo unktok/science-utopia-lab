@@ -24,7 +24,7 @@ def wait_chain(directory,*,clock=time.monotonic,poll=time.sleep,seconds=172800):
         poll(15)
 
 
-def run(args):
+def run(args,*,finish_function=None,await_schema='scienceutopia.native-objective-fixed-report-await.v1'):
     out=args.output.resolve();chain=args.continuation.resolve();source=git_binding(ROOT)
     start=checked(json.loads((chain/'started.json').read_text()));run=Path(start['evaluation_output'])
     frozen=Path(start['evaluation_source']);start_hash=sha(chain/'started.json')
@@ -32,7 +32,7 @@ def run(args):
             or start['schema']!='scienceutopia.native-objective-evaluation-continuation.v1'
             or git_binding(frozen)!=start['source_commit']):
         raise ValueError('fresh external report and exact existing evaluation continuation required')
-    out.mkdir(parents=True);save(out/'started.json',{'schema':'scienceutopia.native-objective-fixed-report-await.v1',
+    out.mkdir(parents=True);save(out/'started.json',{'schema':await_schema,
         'source_commit':source,'continuation_start_file_sha256':start_hash,'continuation':str(chain),
         'evaluation_source_commit':start['source_commit'],'started_utc':datetime.now(timezone.utc).isoformat(),
         'maximum_wait_seconds':172800,'new_inference_allowed':False,'retry_failed_stages':False})
@@ -48,7 +48,9 @@ def run(args):
             'evaluation_plan_file_sha256':end['evaluation_plan_file_sha256']})
         stage='two-independent-exports'
         from types import SimpleNamespace
-        finish(SimpleNamespace(run=run,analysis=chain/'audits',output=out/'exports'))
+        callback=finish if finish_function is None else finish_function
+        callback(SimpleNamespace(run=run,analysis=chain/'audits',output=out/'exports',
+            frozen_source=frozen,scope='fixed-evaluation'))
         if (sha(chain/'started.json')!=start_hash or json.loads((chain/'ended.json').read_text())!=end
                 or git_binding(ROOT)!=source or git_binding(frozen)!=start['source_commit']):
             raise ValueError('evaluation or source changed during report')
