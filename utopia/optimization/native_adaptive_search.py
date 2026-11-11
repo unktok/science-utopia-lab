@@ -507,6 +507,10 @@ class NativeAdaptiveDesignCampaign:
                 or (observation.status == 'complete') != (evaluated['status'] == 'complete')):
             raise ValueError('native observation/measurement/loss/design changed')
         verify_native_observation(observation, self.binding['world'], self.binding['seeds'])
+        declared=self.binding['world'].get('measurement_adapter_contract')
+        if declared is not None and any(m.get('measurement_adapter_contract_sha256')!=digest(declared)
+                for m in observation.metadata.get('measurements',[])):
+            raise ValueError('native additional-measurement orchestration contract differs')
 
     def _validate(self):
         if (set(self.state) != {'schema', 'binding', 'records', 'pending'} or self.state['schema'] != SCHEMA
@@ -565,13 +569,33 @@ class NativeAdaptiveDesignCampaign:
                 raise ValueError('pending generation already has an update')
         return strategy
 
-    def advance(self, *, simulation_factory, generators, count=2):
+    def advance(self, *, simulation_factory, generators, count=2,
+                measurement_adapter=None,measurement_contract=None):
         """Generate once per saved request; execute/resume draws, then commit tell.
 
         Generators take the complete exact request dictionary. External inbox
         waits preserve it. Invalid vocabularies/draws get null costs and are not
         repaired/resampled; a later explicit advance generates a new version.
+        An optional measurement callback is trusted orchestration, never a
+        function supplied by candidate JSON. Its contract must already be in
+        world_binding; its stamp is provenance, not an audit of the instrument.
         """
+        declared=self.binding['world'].get('measurement_adapter_contract')
+        if measurement_adapter is None:
+            if declared is not None or measurement_contract is not None:
+                raise ValueError('declared measurement instrument requires its trusted adapter')
+            measurement_options={}
+        else:
+            if (not callable(measurement_adapter) or declared is None or measurement_contract is None
+                    or digest(declared)!=digest(measurement_contract)):
+                raise ValueError('exact predeclared measurement contract and trusted callable required')
+            instrument_identity=digest(declared)
+            def adapt(simulation,base):
+                value=measurement_adapter(simulation,base)
+                if not isinstance(value,dict) or value.get('measurement_adapter_contract_sha256',instrument_identity)!=instrument_identity:
+                    raise ValueError('measurement adapter result or contract stamp differs')
+                return {**value,'measurement_adapter_contract_sha256':instrument_identity}
+            measurement_options={'measurement_adapter':adapt}
         if type(count) is not int or count < (1 if self.binding['mode'] == 'blackbox' else 2):
             raise ValueError('positive black-box batch or at least two draws required for score/hybrid')
         strategy = self._validate()
@@ -608,7 +632,7 @@ class NativeAdaptiveDesignCampaign:
             self._save()
         for draw in record['draws'][len(record['observations']):]:
             observation = (evaluate_native_suggestion(Suggestion.from_dict(draw['suggestion']),
-                seeds=self.binding['seeds'], simulation_factory=simulation_factory, loss_spec=self.loss).to_dict()
+                seeds=self.binding['seeds'], simulation_factory=simulation_factory, loss_spec=self.loss,**measurement_options).to_dict()
                 if draw['suggestion'] is not None else None)
             if draw['suggestion'] is not None:
                 self._check_observation(observation, draw)
