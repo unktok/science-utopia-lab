@@ -19,7 +19,7 @@ OBJECTIVES=('throughput','efficiency')
 METHODS=('parameters','code-fixed-graph','code-and-graph','random')
 
 
-def development_bindings(rows,worlds):
+def development_bindings(rows,worlds,*,seed=41001):
     """Join exact original audit arrival order, never match repeated specs by guess."""
     forwards=iter(w for w in worlds if w['role']!='selection-fixed-evaluation');result={}
     for row in rows:
@@ -28,7 +28,7 @@ def development_bindings(rows,worlds):
             result[row['row_id']]=None;continue
         world=next(forwards,None)
         role='developer-reference' if row['arm'] is None else 'search:'+row['arm']
-        if (world is None or world['role']!=role or world['seed']!=41001
+        if (world is None or world['role']!=role or world['seed']!=seed
                 or world['status']!=row['status'] or world['system']!=row['system']
                 or world['scores']!=row['cross_scores']):
             raise ValueError('development row differs from ordered original physical world')
@@ -39,17 +39,35 @@ def development_bindings(rows,worlds):
     return result
 
 
-def summarize(audit):
+def summarize(audit,*,plan=None):
     checked(audit)
-    if audit['schema']!='scienceutopia.pre-scale-search-audit.v1':
+    native=audit['schema']=='scienceutopia.native-institution-loop-audit.v1'
+    if native:
+        if plan is None:raise ValueError('native loop requires its exact frozen plan')
+        checked(plan)
+        if (plan['schema']!='scienceutopia.native-institution-loop.v1.plan'
+                or plan['source_commit']!=audit['source_commit'] or plan['content_sha256']!=audit['plan_sha256']
+                or audit.get('closure',{}).get('terminal',{}).get('status')!='closed'
+                or audit.get('source_proof',{}).get('status')!='verified-exact-source-closure'
+                or audit.get('new_model_calls')!=0 or audit.get('new_code_executions')!=0):
+            raise ValueError('matching closed original-source native loop audit required')
+        methods=tuple(plan['methods']);seed=61001;seeds=plan['evaluation']['seeds']
+        references=plan['evaluation']['reference_labels'];row_count=20
+        if (methods!=('parameters','code-fixed-graph','code-and-graph') or seeds!=[62001,62011,62017]
+                or len(plan['reference_order'])!=8 or len(plan['schedule'])!=12):
+            raise ValueError('native loop frozen finite design differs')
+    elif audit['schema']=='scienceutopia.pre-scale-search-audit.v1' and plan is None:
+        methods=METHODS;seed=41001;seeds=[51001,51011,51017];row_count=22
+        references=('open-seed','reviewed-accept-all','no-review-accept-all','no-review-reject-all')
+    else:
         raise ValueError('closed original-source search/evaluation audit required')
     selection=audit['selection'];rows=selection['all_rows']
     initial=next(r for r in rows if r['row_id']=='reference:open-seed')
-    if len(rows)!=22 or len({r['row_id'] for r in rows})!=22:
-        raise ValueError('all six reference and sixteen candidate rows required')
-    expected={o+':'+m for o in OBJECTIVES for m in METHODS}
+    if len(rows)!=row_count or len({r['row_id'] for r in rows})!=row_count:
+        raise ValueError('all declared reference and candidate rows required')
+    expected={o+':'+m for o in OBJECTIVES for m in methods}
     if set(selection['selected'])!=expected:raise ValueError('every objective/method selection required')
-    physical_bindings=development_bindings(rows,audit['worlds'])
+    physical_bindings=development_bindings(rows,audit['worlds'],seed=seed)
     paths={};slots=[]
     for arm in sorted(expected):
         objective,method=arm.split(':',1)
@@ -88,20 +106,20 @@ def summarize(audit):
     labels=sorted({r['label'] for r in evaluation});summaries={}
     for label in labels:
         subset=[r for r in evaluation if r['label']==label]
-        if sorted(r['seed'] for r in subset)!=[51001,51011,51017]:raise ValueError('three declared evaluation seeds required')
+        if sorted(r['seed'] for r in subset)!=seeds:raise ValueError('three declared evaluation seeds required')
         summaries[label]={k:descriptive([{'value':number(r['scores'][k])} for r in subset],'value')
             for k in ('throughput','efficiency','selective')}
     paired=[]
     for row in evaluation:
         if not row['label'].startswith('selected:'):continue
-        for reference in ('open-seed','reviewed-accept-all','no-review-accept-all','no-review-reject-all'):
+        for reference in references:
             other=next((r for r in evaluation if r['label']=='reference:'+reference and r['seed']==row['seed']),None)
             if other is None:raise ValueError('missing predeclared evaluation reference')
             paired.append({'label':row['label'],'reference':reference,'seed':row['seed'],
                 'shared_same_physical_job':row['physical_job']==other['physical_job'],
                 'differences':{k:None if row['scores'][k] is None or other['scores'][k] is None else
                     row['scores'][k]-other['scores'][k] for k in ('throughput','efficiency','selective')}})
-    result={'schema':'scienceutopia.pre-scale-search-report.v1','audit_sha256':audit['content_sha256'],
+    result={'schema':'scienceutopia.native-institution-loop-report.v1' if native else 'scienceutopia.pre-scale-search-report.v1','audit_sha256':audit['content_sha256'],
         'source_commit':audit['source_commit'],'plan_sha256':audit['plan_sha256'],
         'search_slots':slots,'status_counts':dict(Counter(r['status'] for r in slots)),
         'development_world_bindings':physical_bindings,
@@ -128,6 +146,9 @@ def summarize(audit):
             'Scientist call intervals exclude readiness, designer calls, role loads, retrieval and other host overhead.',
             'A changed source/specification or lower proxy loss is not automatically useful institutional invention or scientific progress.'],
         'new_model_calls':0,'new_native_worlds':0,'scientific_goal_complete':False}
+    if native:
+        result.update(methods=list(methods),evaluation_seeds=list(seeds),
+            figure_scope='Native routing-v2 pilot; not a method-superiority study')
     result['content_sha256']=digest(result)
     return result
 
@@ -142,7 +163,7 @@ def render(report,output):
         fig,axes=plt.subplots(1,2,figsize=(6.7,2.9))
         for ax,objective,title in zip(axes,OBJECTIVES,('T: throughput objective','E: efficiency objective')):
             any_available=False
-            for method,color in zip(METHODS,colors):
+            for method,color in zip(report.get('methods',METHODS),colors):
                 path=report['optimization_paths'][objective+':'+method]
                 values=[path['initial_comparison_loss']]+[
                     r['best_including_initial_for_final_comparison'] for r in path['candidate_slots']]
@@ -169,7 +190,7 @@ def render(report,output):
 def render_evaluation(report,output):
     """Common-score views keep shared labels, unknowns and physical counts explicit."""
     import matplotlib.pyplot as plt
-    labels=list(report['evaluation_summary']);seeds=(51001,51011,51017)
+    labels=list(report['evaluation_summary']);seeds=report.get('evaluation_seeds',(51001,51011,51017))
     colors=('#198d91','#bc8037','#7861a5');lookup={(r['label'],r['seed']):r for r in report['evaluation_rows']}
     fig,axes=plt.subplots(1,3,figsize=(8.0,max(3.6,.27*len(labels)+1.25)),sharey=True)
     for ax,key,title in zip(axes,('throughput','efficiency','selective'),('T: −A','E: −Q + 0.5R','C: 4A − Q + 0.1R')):
@@ -206,16 +227,19 @@ def render_evaluation(report,output):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--audit',type=Path,required=True)
-    p.add_argument('--output',type=Path,required=True);args=p.parse_args()
+    p.add_argument('--output',type=Path,required=True);p.add_argument('--plan',type=Path);args=p.parse_args()
     if args.output.exists():raise ValueError('fresh report destination required')
-    original=file_sha256(args.audit);report=summarize(json.loads(args.audit.read_text()))
+    original=file_sha256(args.audit);plan_hash=file_sha256(args.plan) if args.plan else None
+    report=summarize(json.loads(args.audit.read_text()),plan=json.loads(args.plan.read_text()) if args.plan else None)
     args.output.mkdir(parents=True);write_json_atomic(args.output/'report.json',report,sort_keys=True,allow_nan=False)
     render(report,args.output)
     if file_sha256(args.audit)!=original:raise ValueError('audit changed during projection')
+    if args.plan and file_sha256(args.plan)!=plan_hash:raise ValueError('plan changed during projection')
     manifest={'schema':'scienceutopia.pre-scale-search-figures.v1','input_file_sha256':original,
         'report_content_sha256':report['content_sha256'],
         'files':{p.name:file_sha256(p) for p in sorted(args.output.iterdir()) if p.is_file()},
         'new_model_calls':0,'new_native_worlds':0}
+    if args.plan:manifest['plan_file_sha256']=plan_hash
     write_json_atomic(args.output/'manifest.json',{**manifest,'content_sha256':digest(manifest)},sort_keys=True,allow_nan=False)
     print(json.dumps({'output':str(args.output),'report':report['content_sha256'],'new_model_calls':0}))
 

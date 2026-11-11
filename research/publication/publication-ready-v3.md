@@ -16,6 +16,8 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 [SGA](https://arxiv.org/abs/2405.09783)はLLMとsimulationの離散／連続最適化を扱う。
 これらの抽象や一般的組合せ自体を自分たちの発明にしない。
 本文・対応するbaselineの比較は、主張に即した詳細を読み直して補強する。
+[確認した節・近接する2026年の研究・測定上の論点](../literature/institution-optimization-nearest-work-2026-11-11.md)を
+別に記録した。近接手法との差をdomain名だけで主張せず、Qのpanelも制度依存であることを解析へ残す。
 
 ## 完了に必要なもの
 
