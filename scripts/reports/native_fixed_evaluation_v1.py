@@ -82,15 +82,21 @@ def summarize(plan,audit,original,origin):
                         for k in objectives}})
     submitted=[w for w in origin['worlds'] if w['role'].startswith('search:')]
     attempts=plan['fixed_selection']['all_attempts'];schedule=original['schedule'];slots=[]
+    # The stopped audit retains campaign records grouped by arm, whereas its
+    # physical worlds follow dispatch chronology. Join explicit slot keys;
+    # never zip two arrays with different legitimate serialization orders.
+    attempt_by_slot={(a['arm'],a['generation']):a for a in attempts}
     if (len(submitted)!=len(attempts) or len(attempts)+plan['fixed_selection']['unsubmitted_slots']!=len(schedule)
             or plan['fixed_selection']['unsubmitted_slots']!=1
-            or plan['fixed_selection']['missing_slot']!=schedule[-1]):
+            or plan['fixed_selection']['missing_slot']!=schedule[-1]
+            or len(attempt_by_slot)!=len(attempts)
+            or set(attempt_by_slot)!={(s['arm'],s['generation']) for s in schedule[:len(submitted)]}):
         raise ValueError('complete chronological stopped-prefix slots required')
     for i,slot in enumerate(schedule):
         row={**clone(slot),'slot_index':i,'loss':None,'physical_job':None,
             'status':'not-submitted','cross_scores':{k:None for k in objectives},'changed_paths':None}
         if i<len(attempts):
-            a,w=attempts[i],submitted[i];objective=original['assignments'][slot['arm']]['objective']
+            a,w=attempt_by_slot[slot['arm'],slot['generation']],submitted[i];objective=original['assignments'][slot['arm']]['objective']
             if (any(a[k]!=slot[k] for k in ('arm','generation')) or a['status']!=w['status']
                     or w['role']!='search:'+slot['arm'] or a['loss']!=w['scores'][objective]):
                 raise ValueError('stopped attempt differs from original chronological world')
@@ -107,6 +113,7 @@ def summarize(plan,audit,original,origin):
             for arm,choice in plan['fixed_selection']['selected'].items()},
         'physical_worlds':worlds,'evaluation_rows':logical,'evaluation_summary':summary,
         'paired_reference_differences':paired,'evaluation_seeds':clone(seeds),
+        'evaluation_label_order':labels,'score_order':list(objectives),
         'physical_evaluation_worlds':len(worlds),'logical_evaluation_rows':len(logical),
         'unavailable_label_seed_rows':sum(r['physical_job'] is None for r in logical),
         'figure_scope':'Separate fixed-policy evaluation',

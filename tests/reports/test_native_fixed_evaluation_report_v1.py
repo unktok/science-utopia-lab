@@ -51,6 +51,22 @@ def test_all_slots_missing_arms_paired_scores_and_shared_jobs_remain_visible():
     assert not r['interpretation']['baseline_fallback']
 
 
+def test_actual_auditor_arm_grouped_records_join_chronological_worlds_by_slot():
+    p,a,o,b=fixture()
+    b['closure']['progress']['candidate_slots'].sort(key=lambda s:(s['arm'],s['generation']))
+    seal(b);p['origin_audit_content_sha256']=b['content_sha256']
+    p['fixed_selection']=driver.fixed_selection(o,b);seal(p)
+    a.update(plan_sha256=p['content_sha256'],origin_audit_content_sha256=b['content_sha256'],
+             fixed_selection=clone(p['fixed_selection']));seal(a)
+    r=module.summarize(p,a,o,b)
+    assert [(s['arm'],s['generation']) for s in r['search_slots']]==[(s['arm'],s['generation']) for s in o['schedule']]
+    assert r['search_slots'][-1]['status']=='not-submitted'
+    # Duplicate keys may not overwrite a different declared slot.
+    p['fixed_selection']['all_attempts'][1]=clone(p['fixed_selection']['all_attempts'][0]);seal(p)
+    a['fixed_selection']=clone(p['fixed_selection']);a['plan_sha256']=p['content_sha256'];seal(a)
+    with pytest.raises(ValueError):module.summarize(p,a,o,b)
+
+
 @pytest.mark.parametrize('change', ['closure','plan','origin','extra-world','score','label','measurement','system-id','role'])
 def test_closed_report_rejects_changed_bindings_counts_and_literal_measurements(change):
     p,a,o,b=fixture()

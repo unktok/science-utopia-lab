@@ -190,7 +190,7 @@ def render(report,output):
 def render_evaluation(report,output):
     """Common-score views keep shared labels, unknowns and physical counts explicit."""
     import matplotlib.pyplot as plt
-    labels=list(report['evaluation_summary']);seeds=report.get('evaluation_seeds',(51001,51011,51017))
+    labels=report.get('evaluation_label_order',list(report['evaluation_summary']));seeds=report.get('evaluation_seeds',(51001,51011,51017))
     colors=('#198d91','#bc8037','#7861a5');lookup={(r['label'],r['seed']):r for r in report['evaluation_rows']}
     fig,axes=plt.subplots(1,3,figsize=(8.0,max(3.6,.27*len(labels)+1.25)),sharey=True)
     for ax,key,title in zip(axes,('throughput','efficiency','selective'),('T: −A','E: −Q + 0.5R','C: 4A − Q + 0.1R')):
