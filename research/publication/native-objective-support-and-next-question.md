@@ -44,6 +44,16 @@ Totals and endpoint counts do not identify individual minima or transient exits.
 These44 physical outcomes also are not44 independent optimizer histories;
 conditioning on completion is not a method-level success estimate.
 
+An [original-source annual readout](../data/native-resource-support-v1/README.md)
+then verifies all176 saved annual checkpoints against the full audit. All880
+actor-boundary observations are active. Across actors and worlds, individual
+year-end minima are90,75,55,30 for years1--4; the overall maximum is300.
+Every recorded initial-funding field is100. The minimum at one year need not
+belong to the same actor or world as the next year's minimum. The old resource
+event ledger was disabled, so these data still do not establish within-year
+minima or exclude temporary inactivity. Two source-bound readouts and two
+portable numeric exports agree byte for byte.
+
 ## Implications for the next main study
 
 Execution feedback addresses whether a proposed program runs. It does not by
@@ -52,7 +62,7 @@ seven-world code-tested development loop therefore has a finite feasibility
 role, not an automatic claim to close publication milestone R2.
 
 Before a larger main comparison, inspect actual per-actor resource and project
-trajectories, not only final aggregates, and identify a genuinely consequential
+trajectories, including intra-year records where available, and identify a genuinely consequential
 information/action/timing opportunity. Candidate questions include how freely
 authored resource-sharing and information systems respond differently to output
 and activity objectives under explicitly varied initial endowments or horizons.
