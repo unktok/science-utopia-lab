@@ -306,3 +306,24 @@ scoreはcheckpointのliteral A/Q/Rから再計算し、全参照とのpaired差�
 続くCLI試験の一回は不存在のtest filenameを指定し0件実行、ファイル名を確認して再実行。
 new report/chain/既存reportの32checkが13.55秒でpass。新native world／LLM呼出は0。
 13:49:25UTCの科学progressは16/30完了、evaluation-016実行中。
+
+clean cd383cc6467c9531b059ed26091c6d203639427dでreport／旧reproducer／evaluation
+関連73/73pass（29.69秒）、JUnit SHA256は
+`38977a3217456a34e28e130ed7a22367a9aa0fd91621248548ebf2a89e6ed24f`。
+同sourceの別analysis worktreeで13:55:14.203804UTC、session5365にreport chainを起動。
+既存a123aff監査・cost chainの正常終了を待ち、実データreport二回生成／全byte比較を行う。
+新しいmodel／world／candidate選択はない。実図の目視と原稿への解釈は終了後へ残す。
+
+post-edit modeの起動経路点検で、proposal向けbank必須guardがcalibrationにも掛かる不備を
+実モデル使用前に発見した。calibrationではmodeを宣言するだけでprobe実行しないよう分離。
+更にactual calibration workerからcold certificateへ通す新回帰で、factoryが
+require_certificateのsummaryをfull certificateだと仮定していた不備を発見。
+以前のfactory unit mockが実APIにはないplanを返していたため、195checkには検出力がなかった。
+verifierから検証済みdeclared contractをsummaryへ明示し、factoryはその値を比較する。
+全calibration frameにも宣言を含める。候補実行前であり、既存実験の修正・補充はない。
+
+失敗JUnit a1（22pass/1fail、summaryへのplan access）とa2（42pass/1fail、control frame宣言欠落）
+を保持。a3は43pass。続けて、mock cert／mock model classを使わず実role/factory/transportで
+scripted HTTP calibration→実cert検証→BAD code→返却error→literal GOOD code→finish→cold replay
+を通し、関連44/44pass（20.49秒）。fake HTTP／executorであり、実35Bの能力実証ではない。
+同種の境界誤認を防ぐため、実公開APIを使う全経路検証をAGENTSへ追記した。

@@ -68,3 +68,13 @@ scientist-payload clock/identity guards, old editor/readiness and new feedback
 paths. The first run's178 pass/17 Docker-permission failures are retained; the
 second run changes access permission, not source or tests. These are software
 checks, not195 scientific observations.
+
+Subsequent full-path inspection found two integration gaps before any real-model
+use: the proposal-only bank guard also rejected calibration, and the role factory
+expected a full certificate where the public verifier returns a validated summary.
+Calibration now declares the mode without executing probes, and the verifier
+returns its validated declared contract for the production factory to compare.
+All control frames carry the declaration. A complete scripted HTTP calibration
+and real role-factory/transport repair session now exercise this boundary without
+a mocked certificate or model class. The earlier195 checks did not cover this
+whole boundary and are not proof that it was correct then.

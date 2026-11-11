@@ -68,3 +68,9 @@
   and missing keys, not only the immediate rejection. Retain exact raw actions,
   errors and charged steps; never fabricate a missing terminal journal during
   analysis or call a limited component diagnostic a successful original audit.
+- New optional designer modes need a scripted full-path check through the
+  calibration worker, cold certificate's actual public return type, production
+  role factory, next feedback-bearing prompt and cold replay. Do not replace
+  the certificate API with a richer mock dictionary and infer compatibility.
+  Calibration can declare an execution mode without executing its components;
+  proposal-only configuration guards must not prevent that calibration.

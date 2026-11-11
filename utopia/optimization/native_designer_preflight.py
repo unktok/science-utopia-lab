@@ -154,8 +154,15 @@ def _prompt(request, state, steps, provider, expected, protocol, conversation_pr
             settings.update(profile_options(conversation_profile))
         return build_prompt(request, state, steps, image_id=provider['image_id'],
             binding_sha256=digest(request), settings=settings), PLAN_CONTROL_SYSTEM_PROMPT
-    prompt = json.dumps({'document': state['document'], 'completed_steps': steps,
-        'image_id': provider['image_id'], 'response_schema': _schema(protocol)},
+    view={'document': state['document'], 'completed_steps': steps,
+        'image_id': provider['image_id'], 'response_schema': _schema(protocol)}
+    component=(request.get('strategy_provenance') or {}).get('post_edit_component_contract')
+    if component is not None:
+        from .native_post_edit_feedback_v1 import SCHEMA as COMPONENT_SCHEMA
+        if protocol!='staged-v15' or not isinstance(component,dict) or component.get('schema')!=COMPONENT_SCHEMA:
+            raise ValueError('explicit staged post-edit calibration contract required')
+        view['declared_post_edit_component_tests']=clone(component)
+    prompt = json.dumps(view,
         ensure_ascii=False, sort_keys=True, allow_nan=False)
     from .native_designer_tools_v25 import TOOL_RESPONSE_ONLY, CONTROL_TARGET_NOTE, function_data
     target = (json.dumps(function_data(expected), ensure_ascii=False, allow_nan=False, separators=(',', ':')) if protocol == 'staged-v15' else
@@ -483,6 +490,8 @@ def require_certificate(path, provider, *, protocol, session=None, now=None, sco
         steps.append({'step': len(steps), 'status': 'applied', 'model_reply': {'output': action_output},
             'transition': receipt})
     return {'certificate_sha256': certificate['content_sha256'], 'controls': len(records),
+        **({'post_edit_component_contract':clone(plan['request']['strategy_provenance']['post_edit_component_contract'])}
+           if (plan['request'].get('strategy_provenance') or {}).get('post_edit_component_contract') is not None else {}),
         **({'readiness_scope': scope, 'exact_copy_matches': sum(
             row['copy_diagnostic']['exact_match'] for row in records)} if scope == EXECUTION_SCOPE else {}),
         'age_seconds': age, 'protocol': protocol, 'backend': clone(plan['backend']),

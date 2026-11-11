@@ -163,3 +163,77 @@ def test_declared_component_contract_without_bank_stops_before_model_role_load(t
     result=module.checked(json.loads((tmp_path/'worker-result.json').read_text()))
     assert result['error_type']=='ValueError' and 'no configured bank' in result['error']
     assert not (tmp_path/'wire').exists()
+
+
+def test_actual_calibration_worker_declares_feedback_without_executing_components(tmp_path,monkeypatch):
+    # Complete scripted transport calibration, not a mocked passed certificate.
+    # Calibration describes the production mode but must never run its code.
+    from tests.optimization.test_native_post_edit_feedback_v1 import fixture,finish
+    from tests.optimization.test_native_designer_contract_v16 import ScriptedSession
+    import utopia.optimization.native_jobs as jobs
+    import utopia.optimization.native_scientist_load_v38 as loads
+    from utopia.optimization.native_designer_preflight import require_certificate,EXECUTION_SCOPE
+    gen,model,body,calls=fixture(tmp_path/'fixture',[finish()])
+    monkeypatch.setattr(jobs,'pinned_revision',lambda root:'c'*40)
+    monkeypatch.setattr(loads,'load_local_role',lambda *a,**kw:None)
+    monkeypatch.setattr('requests.Session',ScriptedSession);ScriptedSession.calls=[]
+    module.save(tmp_path/'intent.json',{'kind':'calibration','request':body,
+        'provider':gen.provider_binding,'runtime':module.runtime_binding(),'source_commit':'c'*40,
+        'maximum_posts':40,'certificate':None})
+    module.worker(tmp_path/'intent.json',tmp_path/'worker-result.json')
+    result=module.checked(json.loads((tmp_path/'worker-result.json').read_text()))
+    assert result.get('passed'),result
+    certificate=require_certificate(tmp_path/'calibration/certificate.json',gen.provider_binding,
+        protocol='staged-v15',scope=EXECUTION_SCOPE,conversation_profile=module.BOUNDED_AUTHORING)
+    retained=module.checked(json.loads((tmp_path/'calibration/certificate.json').read_text()))
+    assert retained['plan']['request']==body
+    assert certificate['post_edit_component_contract']==gen.edit_feedback.contract
+    assert len(ScriptedSession.calls)==certificate['controls']
+    assert not calls and not model.calls and not (tmp_path/'component-lab').exists()
+    for path in (tmp_path/'wire').glob('dispatch-*.intent.json'):
+        assert 'OPTIONAL COMPONENT TESTS ARE DECLARED' in module.checked(json.loads(path.read_text()))['wire_utf8']
+
+
+def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_feedback(tmp_path,monkeypatch):
+    # No mocked certificate summary or model class: actual role/factory/transport
+    # implementations, with an explicitly scripted HTTP server and executor.
+    from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,GOOD,finish
+    from tests.optimization.test_native_designer_contract_v16 import ScriptedSession,Response
+    from tests.optimization.test_native_designer_roles_v38 import designer_binding
+    from utopia.optimization.native_designer_roles_v38 import make_local_role_bound_generator
+    from utopia.optimization.native_designer_preflight import run_calibration,EXECUTION_SCOPE
+    from utopia.optimization.native_designer_tools_v25 import function_data
+    from utopia.optimization.native_staged_author_v15 import replay_staged_generation
+    gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()])
+    binding=designer_binding();binding['image_id']=gen.image_id
+    actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
+        source_action(BAD),source_action(GOOD),finish()]
+    class Session(ScriptedSession):
+        calls=[];production=[]
+        def get(self,url,**kwargs):
+            if url.endswith('/version'):return Response({'version':'SCRIPTED-not-actual'})
+            return Response({'models':[{'name':binding['model'],'digest':binding['model_digest']}]})
+        def post(self,url,**kwargs):
+            payload=json.loads(kwargs['data']);system=payload['messages'][0]['content']
+            if 'TRUSTED INTERFACE CALIBRATION TASK' in system:
+                result=super().post(url,**kwargs).json();result['model']=binding['model'];return Response(result)
+            action=actions[len(self.production)];self.production.append(payload);self.calls.append(payload)
+            return Response({'model':binding['model'],'done':True,'done_reason':'stop',
+                'prompt_eval_count':120,'eval_count':12,'message':{'role':'assistant',
+                    'content':json.dumps(function_data(action)),
+                    **({'thinking':'SCRIPTED planner evidence'} if payload['think'] else {})}})
+    monkeypatch.setattr('requests.Session',Session)
+    run_calibration(tmp_path/'calibration',request=body,provider=binding,scope=EXECUTION_SCOPE,
+        conversation_profile=module.BOUNDED_AUTHORING)
+    author=make_local_role_bound_generator(tmp_path/'author',image_id=gen.image_id,
+        provider_binding=binding,max_steps=16,max_tokens=8192,
+        preflight_certificate=tmp_path/'calibration/certificate.json',readiness_scope=EXECUTION_SCOPE,
+        conversation_profile=module.BOUNDED_AUTHORING,edit_feedback=gen.edit_feedback)
+    result=author(body)
+    assert result is not None and 'generation_failure' not in result
+    assert len(Session.production)==4 and len(probes)==8
+    assert 'SCRIPTED-BAD-FLOAT' in json.dumps(Session.production[2])
+    assert not unused.calls
+    directory=next((tmp_path/'author').glob('generation-*'))
+    assert replay_staged_generation(directory)==result
+    assert len(Session.production)==4 and len(probes)==8

@@ -88,7 +88,8 @@ def worker(intent_path,result_path):
                 source_commit=intent['source_commit'],maximum_probes=8)
             if (intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')!=feedback.contract:
                 raise ValueError('bounded component bank differs from declared request contract')
-        if feedback is None and (intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract') is not None:
+        if (intent['kind']=='proposal' and feedback is None
+                and (intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract') is not None):
             raise ValueError('declared component feedback has no configured bank; no role load or dispatch')
         load_local_role(root/'designer-load.json',provider=intent['provider'],role='designer',
                         purpose='bounded-staged-'+intent['kind'])

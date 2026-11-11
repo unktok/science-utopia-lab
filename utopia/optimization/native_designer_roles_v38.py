@@ -156,7 +156,7 @@ def make_local_role_bound_generator(directory, *, image_id, provider_binding,
     certificate=require_certificate(preflight_certificate, provider_binding, protocol='staged-v15', scope=readiness_scope,
         **profile)
     if edit_feedback is not None:
-        declared=(certificate['plan']['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')
+        declared=certificate.get('post_edit_component_contract')
         if declared!=edit_feedback.contract:
             raise ValueError('fresh readiness request must declare the exact post-edit component contract')
     return StagedVocabularyGenerator(LocalRoleBoundDesignerModel(provider_binding,

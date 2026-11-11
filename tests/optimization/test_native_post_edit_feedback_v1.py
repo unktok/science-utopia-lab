@@ -58,7 +58,7 @@ def test_role_factory_requires_exact_readiness_contract_before_constructing_mode
     from utopia.optimization import native_designer_preflight as preflight
     gen,model,body,calls=fixture(tmp_path,[finish()])
     declaration=gen.edit_feedback.contract if declared=='exact' else declared
-    certificate={'plan':{'request':{'strategy_provenance':{'post_edit_component_contract':declaration}}}}
+    certificate={'post_edit_component_contract':declaration}
     seen=[]
     monkeypatch.setattr(roles,'validate_designer_binding',lambda x:None)
     monkeypatch.setattr(preflight,'require_certificate',lambda *a,**kw:certificate)
