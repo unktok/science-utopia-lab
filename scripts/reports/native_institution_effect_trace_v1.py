@@ -19,6 +19,7 @@ from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_numeric_designer import checked,save
 from utopia.runtime.checkpointing import read_portable_checkpoint
 from utopia.system import SystemSpec
+from utopia.system.native_migration import native_execution_nodes
 from utopia.system.design_patch import clone,digest
 from utopia.utils.data_utils import file_sha256
 
@@ -75,36 +76,53 @@ def trace_world(cell,world,source):
     path=cell/'code-contexts.jsonl'
     rows=[validate_record(json.loads(line)) for line in path.read_text().splitlines()] if path.exists() else []
     if any(r['binding']!=binding for r in rows):raise ValueError('native code input source/system/run differs')
-    remaining=list(enumerate(rows));calls=[];mechanisms={m['mechanism_id']:m for m in system['mechanisms']}
-    for e in ([] if last is None else last['native_system']['events']):
-        if e['event_type']!='generated.code_executed':continue
-        node=e['provenance']['mechanism_id'];declared=mechanisms[node]['parameters']['code_artifact']
-        match=next(((i,r) for i,r in remaining if all(r['receipt'].get(k)==v for k,v in e['payload'].items())
-            and r['artifact']==declared and r['context']['period']==e['year'] and r['context']['phase']==e['phase']),None)
-        if match is None:raise ValueError('committed code event has no exact received input/result bundle')
-        remaining.remove(match);i,r=match
+    if last is None and proof.get('checkpoint_sha256'):
+        initial=list(cell.rglob('portable_checkpoint_year_0.json.gz'))
+        if len(initial)!=1 or file_sha256(initial[0])!=proof['checkpoint_sha256']:raise ValueError('original partial initial checkpoint required')
+        last=read_portable_checkpoint(initial[0])
+    calls=[];nodes={n.mechanism_id:n for n in native_execution_nodes(spec) if n.implementation=='code.python.v1'}
+    events={e['event_id']:e for e in ([] if last is None else last['native_system']['events']) if e['event_type']=='generated.code_executed'}
+    code=proof.get('code_proof',{})
+    if rows and (code.get('recorded_executions')!=len(rows) or len(code.get('physical_records',[]))!=len(rows)):
+        raise ValueError('original physical code proof required for all recorded calls')
+    for i,r in enumerate(rows):
+        active=[n for n in nodes.values() if n.parameters['code_artifact']==r['artifact']
+            and n.parameters['runtime_image_id']==r['receipt']['image_id']
+            and {k:v for k,v in n.parameters.items() if k not in ('code_artifact','runtime_image_id')}==r['context']['parameters']]
+        matching=[identity for identity,e in events.items() if e['provenance']['mechanism_id'] in {n.mechanism_id for n in active}
+            and e['year']==r['context']['period'] and all(e['payload'].get(k)==r['receipt'][k]
+                for k in ('image_id','artifact_sha256','context_sha256','result_sha256'))]
+        physical=code['physical_records'][i]
+        if (not active or physical['index']!=i or physical['bundle_sha256']!=r['bundle_sha256']
+                or physical['year']!=r['context']['period'] or physical['matching_event_ids']!=matching):
+            raise ValueError('literal active/delegated source and physical event attribution differ')
         inputs=[{'port':port,'source_mechanism':v['source_mechanism'],'emitted_period':v['emitted_period'],
             'payload_sha256':digest(v['payload']),'actor_ids':clone(v['actor_ids']),'artifact_ids':clone(v['artifact_ids'])}
             for port,values in r['context']['inputs'].items() for v in values]
-        calls.append({'node_id':node,'year':e['year'],'phase':e['phase'],'event_id':e['event_id'],
+        calls.append({'possible_declared_node_ids':[n.mechanism_id for n in active],
+            'committed_node_ids':sorted({events[k]['provenance']['mechanism_id'] for k in matching}),
+            'year':r['context']['period'],'context_phase':r['context']['phase'],
+            'matching_event_ids':matching,'attribution':physical['attribution'],
             'bundle_sha256':r['bundle_sha256'],'bundle_ordinal':i,'source_utf8_sha256':hashlib.sha256(r['artifact']['source'].encode()).hexdigest(),
             'artifact_sha256':r['receipt']['artifact_sha256'],'input_context_sha256':r['receipt']['context_sha256'],
             'result_sha256':r['receipt']['result_sha256'],'inputs_received':inputs,
             'output_counts':{k:len(v) for k,v in r['result']['outputs'].items()}})
     attempts=recorded_attempts(path,binding=binding) if path.with_name(path.name+'.attempts.jsonl').exists() else None
-    if world['status']=='complete' and remaining:raise ValueError('completed world has uncommitted recorded code calls')
+    if set(events)!={identity for c in calls for identity in c['matching_event_ids']}:
+        raise ValueError('committed code event without a recorded physical call')
     context=proof.get('context_input_proof')
     return {'identity':world['identity'],'role':world['role'],'seed':world['seed'],'status':world['status'],
         'system_sha256':digest(system),'annual':annual,'code_calls':calls,
         'code_attempts':None if attempts is None else [{'status':a['status'],
             'intent_sha256':a['intent']['content_sha256'],'terminal':clone(a['terminal'])} for a in attempts],
-        'uncommitted_recorded_bundles':[{'ordinal':i,'bundle_sha256':r['bundle_sha256'],
-            'artifact_sha256':r['receipt']['artifact_sha256'],'period':r['context']['period']} for i,r in remaining],
+        'uncommitted_recorded_bundles':[c['bundle_sha256'] for c in calls if not c['matching_event_ids']],
         'received_context_proof':clone(context),'connections':clone(system['connections']),'schedules':clone(system['schedules']),
-        'code_nodes':[{ 'node_id':k,'artifact_sha256':digest(m['parameters']['code_artifact']),
-            'source_utf8_sha256':hashlib.sha256(m['parameters']['code_artifact']['source'].encode()).hexdigest(),
-            'committed_native_invocations':sum(c['node_id']==k for c in calls)}
-            for k,m in mechanisms.items() if m['implementation']=='code.python.v1'],
+        'code_nodes':[{ 'node_id':k,'artifact_sha256':digest(n.parameters['code_artifact']),
+            'source_utf8_sha256':hashlib.sha256(n.parameters['code_artifact']['source'].encode()).hexdigest(),
+            'declared_wrapper_implementation':next(m.implementation for m in spec.mechanisms if m.mechanism_id==k),
+            'committed_code_events':sum(e['provenance']['mechanism_id']==k for e in events.values()),
+            'uniquely_attributed_physical_calls':sum(c['committed_node_ids']==[k] and c['attribution']=='unique-event-match' for c in calls)}
+            for k,n in nodes.items()],
         'causal_mechanism_effect_identified':False,'partial_boundaries_are_not_completed_outcomes':world['status']!='complete'}
 
 
@@ -141,7 +159,7 @@ def export(args):
         'report_file_sha256':file_sha256(out/'report.json'),'annual_file_sha256':file_sha256(out/'annual-boundaries.csv'),
         'adapter_file_sha256':file_sha256(Path(__file__)),'new_model_calls':0,'new_code_executions':0})
     print(json.dumps({'scope':args.scope,'worlds':len(worlds),'annual_boundaries':len(rows),
-        'committed_code_calls':sum(len(w['code_calls']) for w in worlds)}))
+        'recorded_code_calls':sum(len(w['code_calls']) for w in worlds)}))
 
 
 def main():

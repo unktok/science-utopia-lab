@@ -57,3 +57,43 @@ def test_trace_uses_real_ledger_reconciliation_and_distinguishes_received_model_
     assert r['code_attempts'] is None and not r['causal_mechanism_effect_identified']
     state['ecosystem_data']['agents'][0]['resources']=31.
     with pytest.raises(ValueError,match='residual'):module.trace_world(tmp_path,world,'SCRIPTED-source')
+
+
+@pytest.mark.parametrize('copies',[1,2])
+def test_wrapped_code_delegate_is_resolved_and_ambiguous_copies_are_not_greedily_attributed(tmp_path,monkeypatch,copies):
+    from dataclasses import replace
+    from types import SimpleNamespace
+    from tests.optimization.test_native_authoring_ir import parent,ALPHA
+    from utopia.system import ScheduleSpec
+    from utopia.system.native_process import controlled_activity
+    from utopia.system.design_patch import clone,digest
+    from utopia.funding.accounting import ResourceLedger
+    original=parent();delegate=original.mechanisms[0];wrapper=controlled_activity(delegate)
+    spec=replace(original,mechanisms=(wrapper,),schedules=(ScheduleSpec(ALPHA,130),))
+    actors={f'a{i}':SimpleNamespace(id=f'a{i}',can_author=True,resources=30.,is_active=True,get_type=lambda:'SCRIPTED') for i in range(5)}
+    ledger=ResourceLedger();ledger.start_year(1,actors);ledger.close_year(1,actors)
+    context={'period':1,'phase':130,'random_seed':42,'parameters':{'gain':.5},'state':{},'inputs':{}}
+    artifact=clone(delegate.parameters['code_artifact']);result={'outputs':{},'state':{}}
+    receipt={'image_id':delegate.parameters['runtime_image_id'],'artifact_sha256':digest(artifact),
+        'context_sha256':digest(context),'result_sha256':digest(result)}
+    row={'schema':'scienceutopia.native-code-input.v1',
+        'binding':{'source_commit':'SCRIPTED-source','system_fingerprint':spec.fingerprint,'run_id':tmp_path.name},
+        'artifact':artifact,'context':context,'result':result,'receipt':receipt};row['bundle_sha256']=digest(row)
+    (tmp_path/'code-contexts.jsonl').write_text((json.dumps(row)+'\n')*copies)
+    event={'event_id':'SCRIPTED-code-event','event_type':'generated.code_executed','year':1,'phase':130,
+        'provenance':{'mechanism_id':ALPHA},'payload':receipt}
+    state={'ecosystem_data':{'agents':[{'id':a.id,'can_author':True,'resources':a.resources,'is_active':a.is_active} for a in actors.values()]},
+        'resource_ledger':ledger.to_dict(),'native_system':{'events':[event]}}
+    proof={'status':'complete','world_conditions_proof':{'actual_author_resources':{k:30. for k in actors}},
+        'annual_checkpoints':[{'year':1,'checkpoint_sha256':'SCRIPTED hash'}],
+        'code_proof':{'recorded_executions':copies,'physical_records':[{'index':i,'year':1,
+            'bundle_sha256':row['bundle_sha256'],'matching_event_ids':['SCRIPTED-code-event'],
+            'attribution':'unique-event-match' if copies==1 else 'ambiguous-physical-attempt'} for i in range(copies)]}}
+    world={'identity':'SCRIPTED-world','role':'search:throughput','seed':42,'status':'complete','system':spec.to_dict(),'physical_proof':proof}
+    monkeypatch.setattr(module,'checkpoint',lambda *a:clone(state));r=module.trace_world(tmp_path,world,'SCRIPTED-source')
+    assert len(r['code_calls'])==copies and r['code_nodes'][0]['declared_wrapper_implementation']=='native.process.activity.v1'
+    assert r['code_nodes'][0]['committed_code_events']==1
+    assert r['code_nodes'][0]['uniquely_attributed_physical_calls']==(1 if copies==1 else 0)
+    assert all(c['committed_node_ids']==[ALPHA] for c in r['code_calls'])
+    proof['code_proof']['physical_records'][0]['matching_event_ids']=[]
+    with pytest.raises(ValueError,match='attribution differ'):module.trace_world(tmp_path,world,'SCRIPTED-source')
