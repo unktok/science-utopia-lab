@@ -180,8 +180,15 @@ def replay(directory):
             raise ValueError('bounded staged settings differ from actual journal')
         component=binding['settings'].get('post_edit_component_tests')
         if 'post_edit_component_bank' in intent:
-            if (component is None or component['bank_content_sha256']!=intent['post_edit_component_bank']['content_sha256']
-                    or component['source_commit']!=intent['source_commit'] or component['maximum_probe_attempts']!=8):
+            from types import SimpleNamespace
+            from .native_post_edit_feedback_v1 import NativePostEditFeedback
+            declaration=(intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')
+            if not isinstance(declaration,dict):raise ValueError('explicit cold component request contract required')
+            def forbidden(*a,**k):raise AssertionError('bounded cold replay cannot execute component code')
+            expected=NativePostEditFeedback(intent['post_edit_component_bank'],
+                executor=SimpleNamespace(image_id=intent['provider']['image_id'],timeout=15.,execute=forbidden),
+                source_commit=intent['source_commit'],maximum_probes=declaration.get('maximum_probe_attempts')).contract
+            if component!=expected or declaration!=expected:
                 raise ValueError('bounded post-edit configuration differs from bank/source/budget')
         elif component is not None:raise ValueError('undeclared component tests in bounded worker')
         definition=replay_staged_generation(generation,

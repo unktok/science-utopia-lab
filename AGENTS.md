@@ -74,6 +74,11 @@
   the certificate API with a richer mock dictionary and infer compatibility.
   Calibration can declare an execution mode without executing its components;
   proposal-only configuration guards must not prevent that calibration.
+- The outer bounded `execute` and its public `replay` are distinct from the
+  role factory and inner staged replay. Optional modes/budgets must traverse
+  all of them in a scripted successful terminal test before real dispatch.
+  Cold guards reconstruct the complete declared bank/source/executor/budget
+  contract; do not duplicate a historical numeric allowance in a second layer.
 - `native_numeric_designer.save` seals its input and reserves top-level
   `content_sha256` for the journal itself. Do not reseal a public API's already
   sealed return value without removing that checksum first; verify the saved
