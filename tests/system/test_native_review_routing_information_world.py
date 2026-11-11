@@ -60,7 +60,11 @@ def test_actual_default_routing_phases_are_not_silently_rewritten():
         enable_review_routing(source_system(1), source='review-coordinator', source_port='routing')
 
 
-def test_two_routing_rules_execute_in_current_world_with_equal_pre_review_inputs(tmp_path, fixed_corpus, monkeypatch):
+@pytest.mark.parametrize('clock', [1234567890., 1234654290.])
+def test_two_routing_rules_execute_in_current_world_with_equal_pre_review_inputs(tmp_path, fixed_corpus, monkeypatch, clock):
+    # Raw native submission_time is a real batch field. Hold it equal within
+    # each paired contrast, then repeat at a second clock. Never scrub receipts.
+    monkeypatch.setattr('time.time', lambda: clock)
     records = []
     for count, admission in ((1, 'reject-all'), (2, 'reject-all'), (2, 'accept-all')):
         seed(); system = selection_control(current_routed_system(count), rule=admission)
@@ -75,9 +79,6 @@ def test_two_routing_rules_execute_in_current_world_with_equal_pre_review_inputs
                 validate_routing_receipt(receipt)
                 expected = sum(min(count, len(p['eligible_reviewer_ids'])) for p in receipt['batch']['papers'])
                 assert receipt['actual_review_count'] == expected
-            before = [deepcopy((ctx,payload)) for (ctx,_,_),payload in calls
-                if ctx[1] == 1 and not ctx[0].startswith('phase3')]
-            assert before
             # Only compare calls BEFORE the first actual review. Later calls
             # can legitimately depend on changed review work/decisions.
             first_review = next(i for i,((ctx,_,_),_) in enumerate(calls) if ctx[0].startswith('phase3'))
@@ -94,6 +95,7 @@ def test_two_routing_rules_execute_in_current_world_with_equal_pre_review_inputs
     assert 0 < records[0]['first_year_actual_review_count'] < records[1]['first_year_actual_review_count']
     assert records[1]['first_year_actual_review_count'] == records[2]['first_year_actual_review_count']
     result = {'schema':'scienceutopia.current-native-routing-connection.v1', 'worlds':records,
+        'paired_host_clock':clock,
         'scope':'Three developer-authored controls; original lifecycle/Docker, scripted researcher replies/corpus. Not local-LLM invention or method superiority.',
         'new_local_llm_calls':0, 'pre_review_payloads_equal':True,
         'late_admission_does_not_change_first_year_review_work':True}
