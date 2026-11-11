@@ -16,6 +16,9 @@ existing continuation/session25775. It evaluates both fixed selections and
 five controls on64101/64107/64113 without further design. Literal identity
 merges U/g1 and its reference:18 physical worlds,21 logical label/seed pairs.
 The evaluation is not complete. The publication-ready goal remains active.
+The working TeX now includes this closed development and its actual loss paths;
+the reviewed56-page PDF below predates that new section. Its source receipt is
+not rewritten to pretend the newer working text has already been rendered.
 
 Read-only exports also reconstruct236 code calls,45 annual boundaries and225
 founder-boundary states. Eleven complete worlds have nine observed T minima
@@ -24,6 +27,13 @@ share the reviewed reference's exact129 full model inputs and response choices;
 two others change inputs/choices but still tie losses. Observed input classes
 are not world/program equivalence or independent optimizer histories. All
 actual reports are exported twice and their figures visually reviewed.
+
+A [next instruction/timing assay](protocols/campaigns/native-instruction-timing-support-v1.md)
+is prospectively specified, not launched or queued. It retains the native world
+and tests one literal advice message at early/late/cut delivery, with unchanged
+T/U. Native topic choices resolve to catalog durations; there is no free duration
+field to overwrite. Its three-world budget is separate and must wait for current
+fixed evaluation closure and its own source-bound implementation/verification.
 
 **November12 08:18JST / November11 23:18UTC:** seven of eight proposal slots
 are closed. T/g0--g2 complete at−7; U/g0 is null and U/g1--g3 complete at−4.

@@ -667,3 +667,19 @@ The actual evaluation log advances through native inference, not merely a
 waiting process. It is not closed or an improvement result. Goal remains active;
 the56-page snapshot predates these newly retained development results and does
 not silently claim them. Publication milestonesR2/R3/R5/R6 remain open.
+
+The subsequent working TeX now adds all eight61a1753 proposals, the actual
+loss-path figure, strong-rule scores, exact-input classes and measured costs.
+It explicitly calls the fixed evaluation unfinished; the56-page PDF/receipt
+remain their old verified bytes until a later full render. Nineteen existing
+source/retention checks at666dfc9 pass6.90s before the new source-to-table tests.
+
+The next small information/timing question is specified prospectively, not
+launched or automatically queued. Original build_direction_prompt exposes
+catalog durations, while ResearchDirectionSelection has no duration output.
+Thus the literal short-project advice can only influence an eligible topic
+choice, not invent a new duration or bypass production. The planned cut/early/
+late worlds keep existing native laws and T/U meanings and need no new designer.
+They are a developer action-support comparator, not new optimization or an
+assumed positive result. Current641xx science is untouched; fresh implementation,
+verification and the prior evaluation's normal closure remain required.
