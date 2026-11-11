@@ -17,6 +17,31 @@ from utopia.optimization.native_code_trace import validate_record
 from utopia.utils.data_utils import file_sha256
 
 
+def initial_world_conditions_proof(state,conditions,seed):
+    """Verify actual founder records, not just declared configuration metadata."""
+    from utopia.optimization.native_factory import checked_world_conditions
+    from utopia.simulation import build_population_blueprint
+    from utopia.system.design_patch import digest
+    conditions=checked_world_conditions(conditions)
+    if conditions is None:raise ValueError('explicit initial conditions required')
+    blueprint=build_population_blueprint(5,1,seed,strategy_mix=['balanced'],
+        resource_profile=conditions['population_resource_profile'],base_funding=conditions['initial_funding'])
+    expected={r['researcher_name']:{'resources':r['initial_funding'],'initial_funding':r['initial_funding'],
+        'resource_band':r['resource_band'],'is_active':True} for r in blueprint}
+    authors=[a for a in state['ecosystem_data']['agents'] if a['can_author']]
+    actual={a['id']:{k:a.get(k) for k in ('resources','initial_funding','resource_band','is_active')} for a in authors}
+    if len(actual)!=len(authors) or actual!=expected:
+        raise ValueError('actual native initial resource population differs from conditions')
+    logging=conditions['log_resource_ledger']
+    if (state['project_cost_policy']['log_resource_ledger'] is not logging
+            or ('resource_ledger' in state)!=logging):
+        raise ValueError('actual native initial ledger differs from conditions')
+    return {'conditions':conditions,'actual_author_records_sha256':digest(actual),
+        'actual_initial_total':sum(a['resources'] for a in actual.values()),
+        'actual_author_resources':{k:v['resources'] for k,v in sorted(actual.items())},
+        'ledger_present':logging,'new_model_calls':0,'new_code_executions':0}
+
+
 def code_attempt_proof(cell,spec,world):
     """Absent historical journals are unknown, not zero failed attempts."""
     cell=Path(cell);path=cell/'code-contexts.jsonl.attempts.jsonl'
@@ -37,6 +62,10 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
         records=db.execute('SELECT binding FROM metadata').fetchall()
     if len(records)!=1:raise ValueError('one immutable native response binding required')
     binding=json.loads(records[0][0]);config=binding['science_config']
+    from utopia.optimization.native_factory import checked_world_conditions
+    conditions=checked_world_conditions(world.get('world_conditions'))
+    if config.get('world_conditions')!=conditions or ('world_conditions' in config)!=(conditions is not None):
+        raise ValueError('physical initial world-condition binding differs')
     if (binding['cell']!=spec.fingerprint or binding['seed']!=seed
             or binding['model']!=world['model'] or binding['model_revision']!=world['model_digest']
             or binding['corpus_sha256']!=world['corpus_sha256']
@@ -118,6 +147,8 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
         'response_proof':response,'code_proof':code,'annual_checkpoints':annual,
         'measurement':checkpoint_measurements(paths[-1],cell.name,spec.fingerprint) if complete else None,
         'checkpoint_sha256':file_sha256(paths[-1]),'new_model_calls':0,'new_code_executions':0}
+    if conditions is not None:
+        proof['world_conditions_proof']=initial_world_conditions_proof(initial,conditions,seed)
     if complete:
         authors=[a for a in initial['ecosystem_data']['agents'] if a['can_author']]
         if len(authors)!=5:raise ValueError('actual original population is not five researchers')

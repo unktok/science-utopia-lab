@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 from pathlib import Path
+from copy import deepcopy
+import math
 import os
 import subprocess
 
@@ -12,6 +14,24 @@ class NativeInferenceBudgetExceeded(RuntimeError):
     """Declared HTTP attempt budget exhausted; never a scientific loss."""
 
 
+def checked_world_conditions(value):
+    """Explicit operator-owned initial conditions, not candidate instructions.
+
+    None preserves historical arguments/bindings. Original Simulation owns the
+    population blueprint, costs, grants, activation and ledger semantics.
+    """
+    if value is None:return None
+    if (not isinstance(value,dict) or set(value)!={'schema','initial_funding',
+            'population_resource_profile','log_resource_ledger'}
+            or value['schema']!='scienceutopia.native-world-conditions.v1'
+            or type(value['initial_funding']) not in (int,float)
+            or not math.isfinite(value['initial_funding']) or value['initial_funding']<=0
+            or value['population_resource_profile'] not in ('equal','balanced_two_band')
+            or type(value['log_resource_ledger']) is not bool):
+        raise ValueError('explicit finite positive native initial-resource conditions required')
+    return deepcopy(value)
+
+
 class LocalQwenNativeFactory:
     """Same real native world for every method; per-suggestion caches/outputs.
 
@@ -20,7 +40,8 @@ class LocalQwenNativeFactory:
     """
     def __init__(self, directory, data_cache, *, years=4, model='qwen3:8b', max_tokens=768,
                  experiment_binding=None, allow_dirty=False, corpus_years=None, record_wire=False, record_code=False,
-                 inference_lock=None, maximum_http_attempts=None):
+                 inference_lock=None, maximum_http_attempts=None, world_conditions=None):
+        self.world_conditions=checked_world_conditions(world_conditions)
         import requests
         from utopia.utils.paths import project_root
         self.source_root = project_root(__file__)
@@ -81,7 +102,7 @@ class LocalQwenNativeFactory:
                 raise ValueError('run path already belongs to another native design')
         else:
             write_json_atomic(system_path, spec.to_dict(), sort_keys=True, allow_nan=False)
-        args = parse_arguments([
+        arguments = [
             '--model', self.model, '--vllm_url', 'http://127.0.0.1:11434/v1', '--api-backend', 'ollama',
             '--num_years', str(self.years), '--seed', str(seed), '--population_mode', 'university_only',
             '--num_institutions', '5', '--researchers_per_institution', '1', '--num_conferences', '1',
@@ -89,7 +110,12 @@ class LocalQwenNativeFactory:
             '--funding_allocation_mode', 'fixed', '--experiment_name', 'default_native_design',
             '--output-dir', str(root / 'simulation'), '--data-cache-dir', str(self.data_cache),
             '--science-system-spec', str(system_path), '--rag_device', 'cpu', '--batch_size', '1', '--max_retries', '2',
-        ], create_dirs=True)
+        ]
+        if self.world_conditions is not None:
+            arguments.extend(['--initial_funding',str(self.world_conditions['initial_funding']),
+                '--population_resource_profile',self.world_conditions['population_resource_profile']])
+            if self.world_conditions['log_resource_ledger']:arguments.append('--log_resource_ledger')
+        args = parse_arguments(arguments, create_dirs=True)
         args.rag_corpus_years = self.corpus_years
         model = VLLMServerModel(self.model, base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
             max_concurrent_requests=1, run_seed=seed, model_revision=self.model_digest,
@@ -111,6 +137,8 @@ class LocalQwenNativeFactory:
                 'thinking_override': False, 'max_tokens': self.max_tokens, 'experiment': self.experiment_binding}}
         if self.maximum_http_attempts is not None:
             binding['science_config']['maximum_http_attempts'] = self.maximum_http_attempts
+        if self.world_conditions is not None:
+            binding['science_config']['world_conditions']=deepcopy(self.world_conditions)
         model.response_cache = CompletedResponseCache(root / 'replies' / 'responses.sqlite', binding=binding)
         try:
             sim.enable_portable_checkpoints(binding)

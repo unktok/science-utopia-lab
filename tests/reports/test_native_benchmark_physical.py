@@ -81,3 +81,31 @@ def test_empty_bound_cache_before_initial_checkpoint_is_null_not_a_fabricated_wo
     monkeypatch.setattr(audit,'zero_http_response_proofs',lambda *a,**kw:{'wire_requests':1,'researcher_responses':0})
     with pytest.raises(ValueError,match='activity without original'):
         audit.physical_proof(cell,s,world=w,seed=31001,years=4)
+
+
+def test_optional_world_conditions_bind_cache_and_actual_founder_records(tmp_path,monkeypatch):
+    from utopia.simulation import build_population_blueprint
+    cell=tmp_path/'SCRIPTED-world';s,w,e,states=fixture(cell,monkeypatch)
+    conditions={'schema':'scienceutopia.native-world-conditions.v1','initial_funding':60.,
+        'population_resource_profile':'balanced_two_band','log_resource_ledger':True}
+    w['world_conditions']=conditions
+    with pytest.raises(ValueError,match='world-condition binding'):
+        audit.physical_proof(cell,s,world=w,seed=31001,years=4,evidence=e)
+    initial=states['portable_checkpoint_year_0.json.gz'];binding=initial['portable']['contract']['binding']
+    binding['science_config']['world_conditions']=deepcopy(conditions)
+    with sqlite3.connect(cell/'replies/responses.sqlite') as db:
+        db.execute('UPDATE metadata SET binding=?',(json.dumps(binding),))
+    # Metadata is insufficient: the actual actors must match the original blueprint.
+    with pytest.raises(ValueError,match='actual native initial resource population'):
+        audit.physical_proof(cell,s,world=w,seed=31001,years=4,evidence=e)
+    blueprint=build_population_blueprint(5,1,31001,strategy_mix=['balanced'],
+        resource_profile='balanced_two_band',base_funding=60.)
+    initial['ecosystem_data']['agents']=[{'id':r['researcher_name'],'can_author':True,
+        'resources':r['initial_funding'],'initial_funding':r['initial_funding'],
+        'resource_band':r['resource_band'],'is_active':True} for r in blueprint]
+    initial['project_cost_policy']={'log_resource_ledger':True};initial['resource_ledger']={}
+    result=audit.physical_proof(cell,s,world=w,seed=31001,years=4,evidence=e)
+    assert result['world_conditions_proof']['actual_initial_total']==300.
+    initial['ecosystem_data']['agents'][0]['resources']+=1
+    with pytest.raises(ValueError,match='actual native initial resource population'):
+        audit.physical_proof(cell,s,world=w,seed=31001,years=4,evidence=e)
