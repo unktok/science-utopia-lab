@@ -1,0 +1,30 @@
+{
+  "schema": "scienceutopia.native-code-tested-report-prelaunch-verification.v1",
+  "analysis_source_commit": "8bb712fea2d3e357a5fa430af289ba5b9425ab97",
+  "scientific_source_commit": "93076b477b023a6bcb78cac5568fcbe795fa9a52",
+  "scientific_plan_file_sha256": "70ac3c016a31a7455bc764ac6d3eed2588fdefe039a0ff556915f7547e532e7b",
+  "clean_source_checks": {
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 35.17,
+    "junit_file_sha256": "a670dce1f77fd875c17186b27dc8efb9ed18371d7366d777576a4c63b428b5f3"
+  },
+  "actual_continuation_started_utc": "2026-11-11T17:08:41.415269+00:00",
+  "session_id": 53506,
+  "continuation_start_content_sha256": "782238a1c5edb74830af0ab7e88b9454e943f7112c88b955e6f054dc7d0e361c",
+  "maximum_wait_seconds": 86400,
+  "gate": "Normal scientific closure, writer absence, two original-source audits and costs retained by the separate 08f671b chain.",
+  "planned_read_only_outputs": [
+    "report.json", "slots.csv", "manifest.json",
+    "development-loss-paths.png", "development-loss-paths.svg",
+    "component-observations.png", "component-observations.svg"
+  ],
+  "two_actual_exports_completed": false,
+  "synthetic_two_export_byte_comparison_passed": true,
+  "actual_first_closed_authoring_trace_checked": true,
+  "current_native_world_or_model_dispatches": 0,
+  "failed_stage_retries": false,
+  "visual_review_completed": false,
+  "publication_ready": false
+}

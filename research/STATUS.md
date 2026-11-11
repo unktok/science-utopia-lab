@@ -2,6 +2,14 @@
 
 ## Active publication-ready goal
 
+**November12 02:08JST / November11 17:08UTC:** the original93076b4 writer is
+still in E/G1 native execution. A separate frozen8bb712f
+[all-slot/actual-probe report continuation](components/native-code-tested-loop-report-v1.md)
+starts17:08:41UTC/session53506 after75 clean-source checks (35.17s). It waits for
+the existing independent audit/cost chain, then exports all seven files twice
+and compares bytes. No inference, source patching, retries or scientific slot
+replacement. This is prepared postprocessing, not a new closed research result.
+
 **November12 01:59JST / November11 16:59UTC:** session91390 completes E/G0
 execution and enters E/G1 readiness. The frozen93076b4 experiment continues
 unchanged. Its first T/G0 author submits a later code version after four actual

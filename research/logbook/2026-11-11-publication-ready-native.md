@@ -424,3 +424,20 @@ a3は23pass、a4は25pass。commit後の広域6moduleは113/113pass（42.13秒�
 JUnit SHA256 `80d08b7e9f91e8acc79033c6a3af4b67f8c5585523de3752d0fd1c3ea700699e`。
 これはsoftware checksで科学sample数ではない。将来の実使用はfresh runtime校正が必要。
 16:59UTCにwriter91390はE/G0を終えE/G1 readinessへ進んだ。未閉鎖cohortを完了扱いしない。
+
+### 17:08UTC: separately frozen all-slot report continuation
+
+actual four-slot traceのreport/CSV/PNG/SVGを実装。slot keyとphysical identityで結合し、
+JSON array順には依存しない。全tie/null/unsubmittedを残す。same fixture別codeの
+raised-to-returned等を数えるが、自動的に自己修復/全世界valid/損失改善とは呼ばない。
+failed native worldのpartial measurementを完成lossへ使わない。
+二つのoriginal-source auditとraw inventoryが一致した後だけstep archiveを読む。
+full input hashes/inventoryも生成前後で比較。LLM/code/native実行0。
+
+予備QA a1 15pass、a2 17pass、a3 22pass。synthetic complete exportの全7fileは
+二回byte一致、actual first14stepも8probe/returned-to-raised4件と一致。
+clean8bb712fea2d3e357a5fa430af289ba5b9425ab97で既存経路含め75/75pass（35.17秒）。
+JUnit SHA256 `a670dce1f77fd875c17186b27dc8efb9ed18371d7366d777576a4c63b428b5f3`。
+同source別worktreeで17:08:41.415269UTC/session53506を開始。
+現在の93076b4と08f671b独立監査の正常終了を待ち、二回実export/全byte照合。
+failed stageは保持し再試行しない。actual図の目視と原稿反映、R2主結果はまだ残る。

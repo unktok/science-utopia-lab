@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [All-slot actual code-test trajectory report](components/native-code-tested-loop-report-v1.md):
+  identifier-based world/proposal joins, literal edits, actual per-fixture code
+  transitions, retained nulls/all ties and deterministic figures.75 clean checks
+  pass; frozen8bb712f/session53506 waits for the original93076b4 closure and
+  independent08f671b audits/costs. No new inference or closed-report claim yet.
+
 - [Prospective persistent code-test observations](components/native-post-edit-feedback-v1.md)
   and [exact verification](results/native-persistent-component-observation-verification-v1.json):
   the first real session delivered errors once, then lost them after a read.
