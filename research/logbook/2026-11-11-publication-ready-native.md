@@ -333,3 +333,14 @@ JUnit SHA256は`f2618833f9329345797c65b7ec94a99708a42075753e2c79d098f932b97d150d
 actual校正worker／summary API／role factoryのscripted全経路、新旧report・reproducer、
 元native Simulation・実Docker・全scientist payload回帰を含む。実model推論0。
 元の195checkの範囲限界を遡及消去せず、今回の境界修正と新sourceを別に保持する。
+
+次の[code-tested loop protocol](../protocols/campaigns/native-code-tested-loop-v1.md)を
+14:10UTC以前に固定。T/E unchanged、code-and-graph二群×二世代、T0/E0/E1/T1、
+fresh参照三つと候補四つの最大七native world。61001は明示的な開発再利用で未使用とは呼ばない。
+component bankは元の開発入力だけ、最大8probe/提案。新620xx結果は入力へ渡さない。
+実行前に現f1f8ddf科学writerとa123aff独立audit/costの正常終了を待つ。
+各提案のfresh実backend校正、literal提出→元世界測定→own-history改訂を繋ぎ、
+失敗枠／基準へのfallback／component pass gateは入れない。今回の改善からfeedback一般の優位性は推定しない。
+runner、閉鎖時source-bound監査、既存cost projectionへの明示scopeを実装中。
+saved-plan JSON roundtrip、四つのnull枠、pending完了で次群を止める回帰等が通る。
+これはまだ新モデル推論の開始観測ではない。
