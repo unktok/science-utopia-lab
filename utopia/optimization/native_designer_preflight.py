@@ -148,8 +148,12 @@ def control_string_whitespace_notice(expected):
 def _prompt(request, state, steps, provider, expected, protocol, conversation_profile=LEGACY_HISTORY):
     if protocol == 'staged-v15' and expected.get('tool') == 'plan':
         from .native_staged_author_v15 import build_prompt, PLAN_CONTROL_SYSTEM_PROMPT
+        from .native_designer_tools_v25 import BOUNDED_AUTHORING
+        settings = {'max_steps': STAGED_MAX_STEPS}
+        if conversation_profile == BOUNDED_AUTHORING:
+            settings.update(profile_options(conversation_profile))
         return build_prompt(request, state, steps, image_id=provider['image_id'],
-            binding_sha256=digest(request), settings={'max_steps': STAGED_MAX_STEPS}), PLAN_CONTROL_SYSTEM_PROMPT
+            binding_sha256=digest(request), settings=settings), PLAN_CONTROL_SYSTEM_PROMPT
     prompt = json.dumps({'document': state['document'], 'completed_steps': steps,
         'image_id': provider['image_id'], 'response_schema': _schema(protocol)},
         ensure_ascii=False, sort_keys=True, allow_nan=False)

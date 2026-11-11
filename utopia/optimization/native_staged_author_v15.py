@@ -1103,12 +1103,19 @@ def native_call_task(system_prompt, *, conversation_profile='hermes-function-his
 def planning_conversation(prompt, *, control=False, native_tools=False,
                           conversation_profile='hermes-function-history-v26'):
     data = _strict_json(prompt)
-    context = {key: clone(data[key]) for key in ('optimization_task_view',
-        'generation', 'planning_system_structure', 'remaining_calls_including_this_one')}
-    context['own_trial_feedback'] = clone(data['own_trial_feedback'])
-    from .native_objective_view import loss_arithmetic, wire_objective_view
-    context['loss_arithmetic'] = loss_arithmetic(data['exact_loss_spec'])
-    context['optimization_task_view'] = wire_objective_view(context['optimization_task_view'])
+    from .native_designer_tools_v25 import BOUNDED_AUTHORING
+    if conversation_profile == BOUNDED_AUTHORING:
+        # The bounded author has a different source-owned data schema. Keep
+        # its exact planning view, including prospective inline order evidence,
+        # while retaining the independent trusted COPY task for calibration.
+        context = clone(data)
+    else:
+        context = {key: clone(data[key]) for key in ('optimization_task_view',
+            'generation', 'planning_system_structure', 'remaining_calls_including_this_one')}
+        context['own_trial_feedback'] = clone(data['own_trial_feedback'])
+        from .native_objective_view import loss_arithmetic, wire_objective_view
+        context['loss_arithmetic'] = loss_arithmetic(data['exact_loss_spec'])
+        context['optimization_task_view'] = wire_objective_view(context['optimization_task_view'])
     if not native_tools:
         context['response_schema'] = clone(PLAN_ACTION_SCHEMA)
     context['current_parent_source_supplied'] = False

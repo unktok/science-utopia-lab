@@ -106,3 +106,23 @@ def test_numeric_readiness_creates_fresh_parent_before_calibration(tmp_path,monk
         save(root/'numeric-readiness/certificate.json',{'passed':True})
     monkeypatch.setattr(driver,'numeric_calibration',calibration)
     driver.readiness(tmp_path,p,request={},numeric=True,target=target)
+
+
+def test_actual_loop_request_passes_entire_scripted_editor_gate_and_cold_replay(tmp_path,monkeypatch):
+    from tests.optimization import test_native_designer_contract_v16 as transport
+    from utopia.optimization import native_designer_preflight as preflight
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    p=plan();c=driver.campaign(tmp_path,p,'run-00','throughput:code-and-graph')
+    body=c._request([],c._strategy_initial(),1)
+    monkeypatch.setattr(transport,'BINDING',p['designer'])
+    monkeypatch.setattr('requests.Session',transport.ScriptedSession)
+    transport.ScriptedSession.calls=[]
+    certificate=preflight.run_calibration(tmp_path/'controls',request=body,provider=p['designer'],
+        scope=preflight.EXECUTION_SCOPE,conversation_profile=BOUNDED_AUTHORING)
+    assert certificate['all_controls_passed']
+    preflight.require_certificate(tmp_path/'controls/certificate.json',p['designer'],
+        protocol='staged-v15',scope=preflight.EXECUTION_SCOPE,conversation_profile=BOUNDED_AUTHORING)
+    planner=next(r for r in certificate['records'] if r['intent']['id']=='sequence-plan')
+    messages=planner['transport']['request_payload']['messages']
+    assert 'operational_order_context' in messages[1]['content']
+    assert 'Do not optimize or invent' in messages[0]['content']

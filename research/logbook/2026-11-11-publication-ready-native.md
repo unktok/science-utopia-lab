@@ -29,3 +29,22 @@ clean4851aceで56件pass／39.90秒。3raw rootsのseed scanを含むa1 planをp
 別pathである点を修正。共通lockを校正全体で保持するようにし、競合取得拒否の回帰を追加。
 a1はprepared-onlyとして保持し、変更したsourceを新しいa2 checkout/planへ固定する。
 古いplanのsourceや失敗記録を変更せず、まだモデル生成・科学worldは0。
+
+## 新sourceの初回readinessで停止した不具合
+
+a2/clean234044fの56件は40.07秒でpassし、3roots合計1014 response journalに
+dev/held-out seedの使用がないことを確認した。plan file SHA256は
+`626679045f77e48126ba2a3b543be828bc10e89d34aa6387bea5cb69abeee87a`。
+08:04:22UTCにPID35444で実readinessを開始したが、08:05:45UTCに停止。
+16 typed controlsのHTTP応答は全て完了し、次のsequence-planの送信前に
+`inline causal context requires bounded authoring profile`が発生した。
+科学world、候補生成、数値校正への後続呼出は0。a2は停止のまま保持する。
+terminal file SHA256=`ab2666a72846bb5154ac0b90b12f2fb4890e35fd7f87462e08c384a336eaa2ed`。
+
+原因は、実production plannerのv45表示を検証した一方、校正器のplan分岐が
+profileをbuild_promptへ渡さず、planning_conversationも旧schemaのkeyを読んでいたこと。
+新たなreadonly表示に対するこちらの接続バグであり、生成案やモデルの誤答ではない。
+両分岐を直し、実campaign requestをそのままscripted backendの全校正とcold replayへ通す回帰を追加。
+file/inline/旧既定を区別する17件が14.19秒でpass。
+copy taskのSYSTEMは維持し、loss最適化とcopyを混ぜず、旧証明書・停止成否を変更しない。
+修正sourceを新a3へ固定して再開する。新source校正の費用もa2の16応答と分けて保持する。

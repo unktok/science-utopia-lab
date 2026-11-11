@@ -118,15 +118,19 @@ def test_archived_steps_and_errors_are_exact_data_and_state_not_mutated():
     assert recovery_read['ok']  # Archive omission must not make retrieval illegal.
 
 
-def test_scripted_calibration_bound_profile_and_cold_replay(tmp_path, monkeypatch):
+@pytest.mark.parametrize('presentation', [None, 'file', 'inline'])
+def test_scripted_calibration_bound_profile_and_cold_replay(tmp_path, monkeypatch, presentation):
     from tests.optimization.test_native_designer_contract_v16 import ScriptedSession
     from utopia.optimization import native_designer_preflight as preflight
     monkeypatch.setattr('requests.Session', ScriptedSession)
     ScriptedSession.calls = []
-    certificate = preflight.run_calibration(tmp_path/'controls', request=request(), provider=BINDING,
+    body = request()
+    if presentation is not None:
+        body.update(causal_design_context=True, causal_design_presentation=presentation)
+    certificate = preflight.run_calibration(tmp_path/'controls', request=body, provider=BINDING,
         scope=preflight.EXECUTION_SCOPE, conversation_profile=PROFILE)
     assert certificate['all_controls_passed']
-    assert len(certificate['records']) == len(preflight.planned_cases(request(), 'staged-v15', PROFILE))
+    assert len(certificate['records']) == len(preflight.planned_cases(body, 'staged-v15', PROFILE))
     preflight.require_certificate(tmp_path/'controls'/'certificate.json', BINDING,
         protocol='staged-v15', scope=preflight.EXECUTION_SCOPE, conversation_profile=PROFILE)
     with pytest.raises(ValueError):
