@@ -23,3 +23,9 @@ fresh source・inline条件で初回readinessを行い、各proposal前にもfre
 純粋なorchestration8件がpass（5.56秒）。新しい実モデル・native worldはまだ未dispatch。
 seed61001/62001/62011/62017の使用確認と、実Simulation/Dockerのscripted接続検証を進める。
 外部モデル・費用・公開投稿・pushなし。
+
+clean4851aceで56件pass／39.90秒。3raw rootsのseed scanを含むa1 planをprepareしたが、
+モデルdispatch前の最終確認で、再利用numeric校正器の内側lockとcampaign共通lockが
+別pathである点を修正。共通lockを校正全体で保持するようにし、競合取得拒否の回帰を追加。
+a1はprepared-onlyとして保持し、変更したsourceを新しいa2 checkout/planへ固定する。
+古いplanのsourceや失敗記録を変更せず、まだモデル生成・科学worldは0。

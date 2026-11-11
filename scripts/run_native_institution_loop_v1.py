@@ -140,7 +140,12 @@ def readiness(root, plan, *, request, numeric, target):
             # Both explicit objective cases at this exact source/domain.
             c = campaign(root, plan, 'run-00', objective+':parameters')
             return c._request(c.state['records'], c._validate(), 1)
-        numeric_calibration(target, parameters, request_factory=request_for)
+        # The reused calibrator has its own inner per-session lock. Also hold
+        # this campaign's shared lock across loading AND every calibration call
+        # so it cannot overlap a scientist/editor using the outer lock.
+        with (root/'inference.lock').open('a') as inference:
+            fcntl.flock(inference, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            numeric_calibration(target, parameters, request_factory=request_for)
         cert = target/'numeric-readiness/certificate.json'
         if not read(cert)['passed']:
             raise ValueError('fresh numeric readiness failed; stop without replacement')

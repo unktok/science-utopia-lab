@@ -96,7 +96,11 @@ def test_all_generation_nulls_are_charged_then_selection_is_frozen_before_evalua
 def test_numeric_readiness_creates_fresh_parent_before_calibration(tmp_path,monkeypatch):
     p=plan();target=tmp_path/'new-parent'
     def calibration(root,parameters,request_factory):
+        import fcntl
         assert root.is_dir()
+        with (tmp_path/'inference.lock').open('a') as competitor:
+            with pytest.raises(BlockingIOError):
+                fcntl.flock(competitor,fcntl.LOCK_EX|fcntl.LOCK_NB)
         assert all(request_factory(o)['strategy_provenance']['causal_design_presentation']=='inline'
                    for o in driver.OBJECTIVES)
         save(root/'numeric-readiness/certificate.json',{'passed':True})
