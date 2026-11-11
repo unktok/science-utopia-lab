@@ -36,3 +36,18 @@ Kernel cold restoreが四年分のrouting命令／native task／state receiptを
 作用権限と表現、内生測定と外側観測、独立設計履歴を分けて別protocolへ凍結する。
 独立truthの活動拡張を考える際、ScienceWorld/CausalGame等の一次公開資料も探索したが、
 既存課題の詳細採用や新benchmark構築・追加モデル呼出は行っていない。
+
+clean f44a143でpanel、元／新report、原componentの再構築、機構差分、loop・監査・後処理・costを
+まとめた120件が44.78秒でpass。JUnit file SHA256は
+`28a2ef4b41a34644dda81cd0550b28535be69a956042f43c3e51047f80a8d781`。
+analysisと保持dataはmainへfast-forward統合した。科学671436a、待機d11e431は変更せず、pushなし。
+
+09:12UTCに参照8/8終了、fresh校正を通ってT/numerical G0を提出。
+閾値2値を0、biasを−4、memory_costを0へ変更し、他2座標を保持するliteral案である。
+09:20UTCに4年worldがcomplete、A7/Q21.667/R21、T−7を得た。
+初期T−2より低い開発観測だが、手作業のreviewed accept-all T−7と同値。
+新制度の自動発明や安定した優位性として数えない。
+原sourceのread-only campaign／numeric authoring／full physical proofを再生して測定一致を確認した。
+このT subtreeのbefore/after inventoryは同一だった。後日のG1が追加される全armを凍結したという意味ではない。
+compact receiptは`results/native-loop-first-numeric-diagnostic-v1.json`。
+E/numerical G0へ進行し、未使用seed評価はまだ未開始。publication-ready goalは引き続きactive。
