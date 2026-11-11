@@ -269,3 +269,24 @@ empty／nonempty・複数年のsuiteを選べるようにする。新institution
 科学writerの再起動／再試行／推論／欠けたterminalの生成は持たず、stoppedならchainも停止。
 図・原稿・科学的解釈とpublication-ready判定は、その後の根拠に一致する作業として残す。
 新旧chainの12 scripted checksが0.04秒でpass。次に別のimmutable analysis checkoutで待機させる。
+
+read-only chainはa123aff8d37a5b5e9e1d938ecb72e5769325bfc6で12:18:37.619011UTCに
+開始、session46822。clean24/24pass（1.34秒）、JUnit SHA256は
+`bea079a8fa59708d23c9694a3d9253db956555617d85b0a510bdb7e95cb7a261`。
+13:29:32UTCの科学progressは14/30 complete、evaluation-014実行中。
+
+post-edit adapterを開発側に接続。既存literal toolのcode変更後、固定open-seed61001の
+四年contextを実行し、次promptへエラーとexact archive pointerを返す。最大8probe、
+15秒/container。失敗によるfinish veto、原sourceへの復元、自動修復、loss変更はしない。
+new/unconfigured interfaceは未試験のまま許す。完全結果はstep archiveへ保持し、
+大きな本文をactive promptへ反復挿入しない。pendingは次のmodel call前に停止。
+fresh certificateには同一contractが必要で、旧certを流用できない。
+
+scripted session QA a1は63pass、bounded shape追加a2は71pass/1fail。
+feedback NOTEが最終V44 action markerを押し下げたため、既存decoderが正規actionを読めなかった。
+NOTEをmarkerより前へ移動しa3は72/72pass（17.66秒）。raw結果は保持。
+bounded workerとrole bindingを合わせたQAは42/42pass（60.92秒）。
+追加したfresh-contract回帰の初回は、test helperへ空action listを渡してmax_steps=0にしたため
+3fail/19pass。runtime guardを緩めず、未実行finish一件を使うfixtureへ修正。
+これらはfake backend/executorの検証で、実35Bの自己修復や新native lossとは数えない。
+実モデルcalibration／有限assayはlocal inferenceを共用する現30world終了後に行う。

@@ -78,6 +78,18 @@ def worker(intent_path,result_path):
         if (intent['runtime']!=runtime_binding()
                 or intent['source_commit']!=pinned_revision(Path(__file__).resolve().parents[2])):
             raise ValueError('bounded editor clean source/runtime changed')
+        feedback=None
+        if 'post_edit_component_bank' in intent:
+            if intent['kind']!='proposal':raise ValueError('component execution is proposal-only')
+            from .native_post_edit_feedback_v1 import NativePostEditFeedback
+            from utopia.system.code_mechanisms import DockerCodeExecutor
+            feedback=NativePostEditFeedback(intent['post_edit_component_bank'],
+                executor=DockerCodeExecutor(image=intent['provider']['image_id'],timeout=15.),
+                source_commit=intent['source_commit'],maximum_probes=8)
+            if (intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')!=feedback.contract:
+                raise ValueError('bounded component bank differs from declared request contract')
+        if feedback is None and (intent['request'].get('strategy_provenance') or {}).get('post_edit_component_contract') is not None:
+            raise ValueError('declared component feedback has no configured bank; no role load or dispatch')
         load_local_role(root/'designer-load.json',provider=intent['provider'],role='designer',
                         purpose='bounded-staged-'+intent['kind'])
         wrap=lambda session:DurableSession(session,root/'wire',maximum_posts=intent['maximum_posts'])
@@ -90,7 +102,8 @@ def worker(intent_path,result_path):
             generator=make_local_role_bound_generator(root/'authoring',image_id=intent['provider']['image_id'],
                 provider_binding=intent['provider'],max_steps=16,max_tokens=8192,
                 preflight_certificate=intent['certificate'],readiness_scope=EXECUTION_SCOPE,
-                conversation_profile=BOUNDED_AUTHORING,inference_lock=root/'worker-inference.lock')
+                conversation_profile=BOUNDED_AUTHORING,inference_lock=root/'worker-inference.lock',
+                **({'edit_feedback':feedback} if feedback is not None else {}))
             generator.model.session=wrap(generator.model.session)
             definition=generator(intent['request'])
             result.update(definition=definition,submitted=definition is not None)
@@ -98,12 +111,14 @@ def worker(intent_path,result_path):
     except BaseException as error:
         result.update(error_type=type(error).__name__,error=str(error),
                       completion_unknown=isinstance(error,CompletionUnknown))
+        from .native_component_lab_v1 import ComponentProbePending
+        if isinstance(error,ComponentProbePending):result['component_probe_pending']=True
     result['elapsed_seconds']=time.monotonic()-begin
     save(result_path,result)
 
 
 def execute(directory,*,kind,request,provider,source_commit,certificate=None,
-            seconds=1200,maximum_posts=16,inference_lock=None):
+            seconds=1200,maximum_posts=16,inference_lock=None,post_edit_bank=None):
     root=Path(directory);root.mkdir(parents=True,exist_ok=True)
     lock_path=Path(inference_lock) if inference_lock else root/'inference.lock'
     lock_path.parent.mkdir(parents=True,exist_ok=True)
@@ -111,6 +126,9 @@ def execute(directory,*,kind,request,provider,source_commit,certificate=None,
         'runtime':runtime_binding(),'source_commit':source_commit,'certificate':str(Path(certificate).resolve()) if certificate else None,
         'seconds':seconds,'maximum_posts':maximum_posts,'max_steps':16,'max_tokens':8192,
         'conversation_profile':BOUNDED_AUTHORING}
+    if post_edit_bank is not None:
+        if kind!='proposal':raise ValueError('component bank execution is proposal-only; readiness declares its contract')
+        checked(post_edit_bank);core['post_edit_component_bank']=clone(post_edit_bank)
     if (kind not in ('calibration','proposal') or type(seconds) not in (int,float)
             or not 1<=seconds<=1800 or type(maximum_posts) is not int or not 1<=maximum_posts<=40):
         raise ValueError('finite trusted editor task/budget required')
@@ -136,6 +154,8 @@ def replay(directory):
     result=checked(json.loads((root/'result.json').read_text()))
     if intent['runtime']!=runtime_binding() or result['intent_sha256']!=intent['content_sha256']:
         raise ValueError('bounded editor runtime/intent mismatch')
+    actual={str(p.relative_to(root)):file_sha256(p) for p in sorted(root.rglob('*.json')) if p!=root/'result.json'}
+    if actual!=result['files']:raise ValueError('bounded editor has changed or unaccounted JSON journals')
     for relative,identity in result['files'].items():
         if file_sha256(root/relative)!=identity:raise ValueError('bounded editor raw journal changed')
     if result['execution']['timed_out'] or not result['worker_result_exists']:
@@ -143,6 +163,9 @@ def replay(directory):
     response=checked(json.loads((root/'worker-result.json').read_text()))
     if response['intent_sha256']!=intent['content_sha256']:raise ValueError('worker intent mismatch')
     if response.get('completion_unknown'):raise CompletionUnknown(response['error'])
+    if response.get('component_probe_pending'):
+        from .native_component_lab_v1 import ComponentProbePending
+        raise ComponentProbePending(response['error'])
     if response.get('error_type'):raise ValueError(response['error_type']+': '+response['error'])
     if intent['kind']=='proposal':
         from .native_staged_author_v15 import replay_staged_generation
@@ -152,6 +175,12 @@ def replay(directory):
                 or binding['settings']['max_tokens']!=intent['max_tokens']
                 or binding['settings']['conversation_profile']!=intent['conversation_profile']):
             raise ValueError('bounded staged settings differ from actual journal')
+        component=binding['settings'].get('post_edit_component_tests')
+        if 'post_edit_component_bank' in intent:
+            if (component is None or component['bank_content_sha256']!=intent['post_edit_component_bank']['content_sha256']
+                    or component['source_commit']!=intent['source_commit'] or component['maximum_probe_attempts']!=8):
+                raise ValueError('bounded post-edit configuration differs from bank/source/budget')
+        elif component is not None:raise ValueError('undeclared component tests in bounded worker')
         definition=replay_staged_generation(generation,
             expected_request=intent['request'],expected_provider_binding=intent['provider'])
         if definition!=response['definition']:raise ValueError('bounded staged definition differs from cold replay')
@@ -160,13 +189,15 @@ def replay(directory):
 
 
 class BoundedStagedDesigner:
-    def __init__(self,directory,*,provider,source_commit,certificate,inference_lock):
+    def __init__(self,directory,*,provider,source_commit,certificate,inference_lock,post_edit_bank=None):
         self.directory=Path(directory);self.provider=provider;self.source=source_commit
         self.certificate=certificate;self.lock=inference_lock
+        self.post_edit_bank=clone(post_edit_bank)
 
     def __call__(self,request):
         return execute(self.directory/('generation-'+digest(request)),kind='proposal',request=request,
-            provider=self.provider,source_commit=self.source,certificate=self.certificate,inference_lock=self.lock)
+            provider=self.provider,source_commit=self.source,certificate=self.certificate,inference_lock=self.lock,
+            **({'post_edit_bank':self.post_edit_bank} if self.post_edit_bank is not None else {}))
 
 
 if __name__=='__main__':

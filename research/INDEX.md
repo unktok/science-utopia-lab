@@ -21,7 +21,8 @@ Historical documents retain their paths and source identities.
   at frozenf1f8ddf after80 checks; zero new designer-generation POSTs.
   [Developer component lab](components/native-component-lab-v1.md) stages24 actual
   old-native inputs and retains a three-call real-container diagnostic, including
-  one unexercised historical failure. Model-facing self-test integration remains next.
+  one unexercised historical failure. [Post-edit feedback](components/native-post-edit-feedback-v1.md)
+  now connects the editor through scripted tests; actual35B self-debugging remains next.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.
@@ -33,7 +34,7 @@ Historical documents retain their paths and source identities.
   Inline order context and complete routing ABI cards are prospective, software-tested additions.
   The new native pilot stopped before evaluation. A
   [separate fixed-submission evaluation](protocols/campaigns/native-fixed-candidate-evaluation-v1.md)
-  is being prepared from its exact audited prefix; failed-only arms receive no fallback policy.
+  is running from its exact audited prefix; failed-only arms receive no fallback policy.
   This is not another claim of9/9 completion.
   [November11 log](logbook/2026-11-11-institution-causal-design.md).
 

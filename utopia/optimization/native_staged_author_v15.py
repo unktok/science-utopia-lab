@@ -416,6 +416,8 @@ def protocol_binding():
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'recovery_source_sha256': hashlib.sha256(Path(native_authoring_recovery_v44.__file__).read_bytes()).hexdigest(),
         'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
+        'post_edit_feedback_source_sha256': hashlib.sha256(Path(__file__).with_name('native_post_edit_feedback_v1.py').read_bytes()).hexdigest(),
+        'component_lab_source_sha256': hashlib.sha256(Path(__file__).with_name('native_component_lab_v1.py').read_bytes()).hexdigest(),
         'initial_evidence_source_sha256': hashlib.sha256(Path(native_initial_evidence.__file__).read_bytes()).hexdigest(),
         'feedback_control_source_sha256': hashlib.sha256(Path(native_feedback_control.__file__).read_bytes()).hexdigest(),
         'design_space_source_sha256': hashlib.sha256(Path(native_design_space.__file__).read_bytes()).hexdigest(),
@@ -528,6 +530,17 @@ def step_errors(step):
     for error in validation.get('errors', []):
         if error not in errors:
             errors.append(clone(error))
+    feedback=result.get('component_feedback') if isinstance(result,dict) else None
+    tests=feedback.get('tests',[]) if isinstance(feedback,dict) else []
+    for ti,test in enumerate(tests if isinstance(tests,list) else []):
+        if not isinstance(test,dict):continue
+        for ri,item in enumerate(test.get('results',[]) if isinstance(test.get('results'),list) else []):
+            if not isinstance(item,dict) or item.get('status')!='raised':continue
+            errors.append({'type':'ComponentTestDiagnostic','error_type':item['error_type'],
+                'message':item['error_excerpt'],'message_is_excerpt':item['error_is_excerpt'],
+                'full_message_sha256':item['full_error_sha256'],
+                'exact_step_error_pointer':item['exact_step_probe_pointer']+'/terminal/error',
+                'node_id':test['node_id'],'fixture_id':item['fixture_id'],'veto_on_finish':False})
     return errors
 
 
@@ -898,7 +911,7 @@ def transition(state, action, request, *, binding_sha256, provider_binding,
         return clone(state), record
 
 
-def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
+def _build_prompt_base(request, state, steps, *, image_id, binding_sha256, settings):
     """Reconstructable bounded context; full request and tool bodies stay archived."""
     from .native_designer_tools_v25 import BOUNDED_AUTHORING
     if settings.get('conversation_profile') == BOUNDED_AUTHORING:
@@ -979,6 +992,19 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
             'prior_provider_raw_transport': 'omitted from prompt; exact journal preserved',
             'silent_size_truncation': False}, 'zzz_next_action': control},
         ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(',', ':'))
+
+
+def build_prompt(request,state,steps,*,image_id,binding_sha256,settings):
+    text=_build_prompt_base(request,state,steps,image_id=image_id,binding_sha256=binding_sha256,settings=settings)
+    provenance=request.get('strategy_provenance') or {}
+    contract=provenance.get('post_edit_component_contract') if isinstance(provenance,dict) else None
+    if contract is not None:
+        from .native_post_edit_feedback_v1 import SCHEMA
+        if not isinstance(contract,dict) or contract.get('schema')!=SCHEMA:
+            raise ValueError('explicit source-owned post-edit contract required')
+        view=_strict_json(text);view['declared_post_edit_component_tests']=clone(contract)
+        text=json.dumps(view,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(',',':'))
+    return text
 
 
 def turn_control(state, steps, *, max_steps):
@@ -1153,6 +1179,11 @@ def build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fal
     check_conversation_profile(conversation_profile)
     messages = _build_conversation(prompt, system_prompt, mode=mode, native_tools=native_tools,
         conversation_profile=conversation_profile)
+    # Keep the source-owned action-phase marker emitted by tool_system_prompt
+    # as the final SYSTEM line for direct/recovery decoding.
+    if _strict_json(prompt).get('declared_post_edit_component_tests') is not None:
+        from .native_post_edit_feedback_v1 import NOTE
+        messages[0]['content'] += '\n\n' + NOTE
     if native_tools:
         from .native_designer_tools_v25 import tool_system_prompt
         from .native_authoring_recovery_v44 import IMPLEMENT_TASK, RECOVER_TASK, IMPLEMENT_CONTROL_PREFIX
@@ -1367,7 +1398,8 @@ def _build_conversation(prompt, system_prompt, *, mode='author', native_tools=Fa
 class StagedVocabularyGenerator:
     """One generator call -> bounded durable tool session -> old mixed definition."""
     def __init__(self, model, directory, *, image_id, provider_binding,
-                 max_steps=12, max_tokens=2048, conversation_profile='hermes-function-history-v26'):
+                 max_steps=12, max_tokens=2048, conversation_profile='hermes-function-history-v26',
+                 edit_feedback=None):
         from .native_designer_tools_v25 import check_conversation_profile, profile_options
         self.conversation_profile = check_conversation_profile(conversation_profile)
         if getattr(model, 'conversation_profile', conversation_profile) != conversation_profile:
@@ -1400,6 +1432,13 @@ class StagedVocabularyGenerator:
             self.settings['active_context_contract'] = context_contract()
             self.settings['max_prompt_bytes'] = context_contract()['max_source_prompt_utf8_bytes']
         self.protocol = protocol_binding()
+        self.edit_feedback=edit_feedback
+        self._bound_edit_feedback=None
+        if edit_feedback is not None:
+            from .native_post_edit_feedback_v1 import NativePostEditFeedback
+            if not isinstance(edit_feedback,NativePostEditFeedback) or edit_feedback.contract['image_id']!=image_id:
+                raise ValueError('explicit compatible post-edit feedback adapter required')
+            self.settings['post_edit_component_tests']=clone(edit_feedback.contract)
 
     def __call__(self, request):
         directory = self.directory / ('generation-' + digest(request))
@@ -1414,6 +1453,10 @@ class StagedVocabularyGenerator:
     def _binding(self, request):
         if self.protocol != protocol_binding():
             raise ValueError('staged author protocol source/schema changed after construction')
+        provenance=request.get('strategy_provenance') or {}
+        declared=provenance.get('post_edit_component_contract') if isinstance(provenance,dict) else None
+        configured=self.settings.get('post_edit_component_tests')
+        if declared!=configured:raise ValueError('declared and configured post-edit feedback differ')
         value = {'schema': REQUEST, 'request': clone(request), 'request_sha256': digest(request),
             'provider_binding': clone(self.provider_binding), 'image_id': self.image_id,
             'settings': clone(self.settings), 'authoring_protocol': clone(self.protocol)}
@@ -1430,6 +1473,8 @@ class StagedVocabularyGenerator:
             write_json_atomic(path, binding, sort_keys=True, allow_nan=False)
         result_path = directory / 'response.json'
         saved = _verify(_strict_json(result_path.read_text())) if result_path.exists() else None
+        self._bound_edit_feedback=(self.edit_feedback.bind(directory,read_only=saved is not None)
+            if self.edit_feedback is not None else None)
         started_indices = []
         for file in directory.glob('step-*.json'):
             match = re.fullmatch(r'step-(\d{2})\.(started|completed)\.json', file.name)
@@ -1449,6 +1494,10 @@ class StagedVocabularyGenerator:
             completed_path = directory / f'step-{index:02d}.completed.json'
             prompt = build_prompt(request, state, steps, image_id=self.image_id,
                 binding_sha256=binding['binding_sha256'], settings=self.settings)
+            if self.edit_feedback is not None:
+                document=_strict_json(prompt)
+                document['declared_post_edit_component_tests']=clone(self.settings['post_edit_component_tests'])
+                prompt=json.dumps(document,sort_keys=True,ensure_ascii=False,allow_nan=False,separators=(',',':'))
             if len(prompt.encode()) > self.settings['max_prompt_bytes']:
                 break  # Explicit terminal reason below; no model call or truncation.
             if started_path.exists():
@@ -1471,14 +1520,18 @@ class StagedVocabularyGenerator:
                 if completed_path.exists():
                     raise ValueError('orphan staged completed receipt without dispatch intent')
                 started = self._started(binding, index, prompt, state, steps, _utc())
+                if self._bound_edit_feedback is not None:self._bound_edit_feedback.check_prefix(steps)
                 write_json_atomic(started_path, started, sort_keys=True, allow_nan=False)
                 completed = self._dispatch(started_path, started, state, request, binding, session_steps=steps)
                 completed = _save(completed_path, completed)
             if completed.get('transition') is not None:
+                before_state=state
                 state, replay = transition(state, completed['model_reply']['output'], request,
                     binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
                     conversation_profile=self.conversation_profile,
                     workflow_phase=workflow_phase(prompt, self.conversation_profile), session_steps=steps)
+                if self._bound_edit_feedback is not None:
+                    replay=self._bound_edit_feedback.enrich(before_state,state,replay,steps=steps,dispatch=False)
                 if replay != completed['transition']:
                     raise ValueError('saved staged tool result differs from deterministic replay')
             steps.append(completed)
@@ -1522,10 +1575,13 @@ class StagedVocabularyGenerator:
             if digest(reply_action({'messages': messages,
                     'transport': getattr(self.model, 'last_transport', {})})) != digest(output):
                 raise ValueError('parsed tool output differs from exact raw model response')
-            _, action_transition = transition(state, output, request,
+            updated, action_transition = transition(state, output, request,
                 binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
                 conversation_profile=self.conversation_profile,
                 workflow_phase=workflow_phase(started['prompt'], self.conversation_profile), session_steps=session_steps)
+            if self._bound_edit_feedback is not None:
+                action_transition=self._bound_edit_feedback.enrich(state,updated,action_transition,
+                    steps=session_steps,dispatch=True)
             status = ('finished' if action_transition['definition'] is not None else
                 'applied' if action_transition['ok'] else 'rejected')
         except Exception as error:
@@ -1544,12 +1600,16 @@ class StagedVocabularyGenerator:
                 output = None  # Raw messages remain exact; no finite replacement.
             if not messages:
                 messages = clone(getattr(self.model, 'last_messages', []))
-        return {'schema': STEP, 'binding_sha256': binding['binding_sha256'], 'step': started['step'],
+        completed={'schema': STEP, 'binding_sha256': binding['binding_sha256'], 'step': started['step'],
             'started_file_sha256': _sha_file(started_path), 'status': status,
             'model_reply': {'output': clone(output), 'messages': clone(messages),
                 'transport': clone(getattr(self.model, 'last_transport', {}))},
             'transition': action_transition, 'errors': errors,
             'model_call_seconds': time.monotonic() - begin, 'ended_utc': _utc()}
+        if self._bound_edit_feedback is not None and action_transition is not None:
+            raw=self._bound_edit_feedback.raw_records(action_transition)
+            if raw:completed['component_probe_records']=raw
+        return completed
 
     def _verify_step(self, completed, started_path, state, request, binding, *, session_steps=None):
         started = _strict_json(started_path.read_text())
@@ -1595,10 +1655,14 @@ class StagedVocabularyGenerator:
             from .native_designer_tools_v25 import reply_action
             if digest(reply_action(reply)) != digest(reply['output']):
                 raise ValueError('saved staged raw action differs from parsed response')
-            _, expected = transition(state, reply['output'], request,
+            updated, expected = transition(state, reply['output'], request,
                 binding_sha256=binding['binding_sha256'], provider_binding=self.provider_binding,
                 conversation_profile=self.conversation_profile,
                 workflow_phase=workflow_phase(started['prompt'], self.conversation_profile), session_steps=session_steps)
+            if self._bound_edit_feedback is not None:
+                expected=self._bound_edit_feedback.enrich(state,updated,expected,steps=session_steps,dispatch=False)
+                if completed.get('component_probe_records',[])!=self._bound_edit_feedback.raw_records(expected):
+                    raise ValueError('saved exact component probe archive changed')
             status = 'finished' if expected['definition'] is not None else 'applied' if expected['ok'] else 'rejected'
             if completed['transition'] != expected or completed['status'] != status or completed['errors']:
                 raise ValueError('saved staged tool transition/status changed')
@@ -1620,6 +1684,7 @@ class StagedVocabularyGenerator:
                 raise ValueError('saved invalid staged response is actually a valid raw action')
 
     def _result(self, directory, binding, state, steps):
+        if self._bound_edit_feedback is not None:self._bound_edit_feedback.check_prefix(steps)
         finished = bool(steps and steps[-1]['status'] == 'finished')
         receipts = []
         for index, item in enumerate(steps):
@@ -1651,6 +1716,12 @@ class StagedVocabularyGenerator:
             'definition': definition, 'selected_step': len(steps) - 1 if finished else None,
             'steps': receipts, 'draft_sha256': digest(state),
             'source_execution_on_host': False, 'native_probes': 0}
+        if self._bound_edit_feedback is not None:
+            probes=self._bound_edit_feedback.lab.replay()
+            result['component_testing']={'contract_sha256':digest(self.settings['post_edit_component_tests']),
+                'probe_attempts':len(probes),'returned':sum(p['terminal']['status']=='returned' for p in probes),
+                'raised':sum(p['terminal']['status']=='raised' for p in probes),
+                'veto_on_finish':False,'new_native_worlds':0,'new_model_calls_from_tests':0}
         result['content_sha256'] = digest(result)
         return result
 
@@ -1852,5 +1923,12 @@ def replay_staged_generation(directory, *, expected_request=None, expected_provi
     generator = StagedVocabularyGenerator(NoDispatch(), path.parent, image_id=binding['image_id'],
         provider_binding=binding['provider_binding'], max_steps=binding['settings']['max_steps'],
         max_tokens=binding['settings']['max_tokens'],
-        conversation_profile=binding['settings'].get('conversation_profile', 'hermes-function-history-v26'))
+        conversation_profile=binding['settings'].get('conversation_profile', 'hermes-function-history-v26'),
+        edit_feedback=(_cold_edit_feedback(path,binding['settings']['post_edit_component_tests'])
+            if 'post_edit_component_tests' in binding['settings'] else None))
     return generator._run(path, binding['request'])
+
+
+def _cold_edit_feedback(path,contract):
+    from .native_post_edit_feedback_v1 import NativePostEditFeedback
+    return NativePostEditFeedback.cold(path,contract)

@@ -36,9 +36,17 @@ all development seed61001). Two original-source staging runs reproduce both
 bank and retained origin manifest. The [three fixed real-container checks](results/native-component-lab-real-diagnostic-v1.json)
 reproduce the baseline output and detect one old envelope error; the old
 float-index error does not fire on the empty paper batch. No call was refilled.
-Two new-process cold replays agree without code execution. Model-facing
-self-test/repair is not connected yet; there is no new LLM invention or loss
-improvement from this diagnostic. The live30-world source is unchanged.
+Two new-process cold replays agree without code execution. The optional
+[post-edit feedback adapter](components/native-post-edit-feedback-v1.md) now
+connects literal edits to fixed multi-year tests and errors to the next designer
+prompt. Scripted checks cover explicit repair and cold replay, not actual35B
+self-debugging or native loss improvement. The live30-world source is unchanged.
+
+At13:29:32UTC the fixed evaluation records14/30 complete jobs and active
+evaluation-014. The read-only continuation started12:18:37UTC at frozena123aff,
+session46822, after24/24 clean checks (1.34s). It waits for normal scientific
+closure and writer absence before two original-source audits and cost projections;
+it cannot restart inference. These are dated observations, not live heartbeats.
 
 November11: the user explicitly requested autonomous continuation until the
 project is publication-ready for a top conference. The goal is active, not

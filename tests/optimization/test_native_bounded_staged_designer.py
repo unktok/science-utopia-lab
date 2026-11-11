@@ -95,3 +95,71 @@ def test_real_worker_wiring_records_post_before_dispatch_and_stops_unknown(tmp_p
         assert result['completion_unknown'] and result['error_type']=='CompletionUnknown'
         assert 'definition' not in result
     else:assert result['submitted'] and result['definition']=={'SCRIPTED':'literal definition'}
+
+
+def test_component_pending_stops_the_outer_worker_without_becoming_a_semantic_retry(tmp_path,monkeypatch):
+    from utopia.optimization.native_component_lab_v1 import ComponentProbePending
+    calls=[]
+    def run(argv,**kwargs):
+        calls.append(argv);intent=module.checked(json.loads((tmp_path/'intent.json').read_text()))
+        module.save(tmp_path/'worker-result.json',{'intent_sha256':intent['content_sha256'],
+            'error_type':'ComponentProbePending','error':'SCRIPTED component pending',
+            'completion_unknown':False,'component_probe_pending':True})
+        return {'timed_out':False,'returncode':0}
+    monkeypatch.setattr(module,'run_bounded',run)
+    for _ in range(2):
+        with pytest.raises(ComponentProbePending):
+            module.execute(tmp_path,kind='proposal',request={},provider={},source_commit='SCRIPTED')
+    assert len(calls)==1
+
+
+def test_unaccounted_json_journal_is_not_ignored_by_saved_bounded_result(tmp_path,monkeypatch):
+    monkeypatch.setattr(module,'run_bounded',lambda *a,**k:{'timed_out':True,'returncode':-15})
+    with pytest.raises(module.CompletionUnknown):
+        module.execute(tmp_path,kind='proposal',request={},provider={},source_commit='SCRIPTED')
+    module.save(tmp_path/'unaccounted-dispatch.json',{'SCRIPTED':'not in terminal inventory'})
+    with pytest.raises(ValueError,match='unaccounted JSON'):module.replay(tmp_path)
+
+
+def test_worker_component_adapter_is_exactly_bound_and_pending_is_preserved(tmp_path,monkeypatch):
+    from tests.optimization.test_native_post_edit_feedback_v1 import fixture,source_action,BAD,finish
+    import utopia.optimization.native_jobs as jobs
+    import utopia.optimization.native_designer_roles_v38 as roles
+    import utopia.optimization.native_scientist_load_v38 as loads
+    import utopia.system.code_mechanisms as code
+    from utopia.optimization.native_component_lab_v1 import ComponentProbePending
+    gen,model,body,calls=fixture(tmp_path/'fixture',[source_action(BAD),finish()])
+    adapter=gen.edit_feedback;seen=[]
+    monkeypatch.setattr(jobs,'pinned_revision',lambda root:'c'*40)
+    monkeypatch.setattr(loads,'load_local_role',lambda *a,**kw:None)
+    monkeypatch.setattr(code,'DockerCodeExecutor',lambda **kw:adapter.executor)
+    class Generator:
+        model=SimpleNamespace(session=object())
+        def __call__(self,request):raise ComponentProbePending('SCRIPTED worker pending')
+    def make(*args,**kwargs):
+        seen.append(kwargs['edit_feedback'].contract);return Generator()
+    monkeypatch.setattr(roles,'make_local_role_bound_generator',make)
+    module.save(tmp_path/'intent.json',{'kind':'proposal','request':body,
+        'provider':{'image_id':adapter.executor.image_id},'runtime':module.runtime_binding(),
+        'source_commit':'c'*40,'maximum_posts':16,'certificate':'SCRIPTED',
+        'post_edit_component_bank':adapter.bank})
+    module.worker(tmp_path/'intent.json',tmp_path/'worker-result.json')
+    result=module.checked(json.loads((tmp_path/'worker-result.json').read_text()))
+    assert seen==[adapter.contract] and result['component_probe_pending']
+    assert not result['completion_unknown'] and not calls and not model.calls
+
+
+def test_declared_component_contract_without_bank_stops_before_model_role_load(tmp_path,monkeypatch):
+    import utopia.optimization.native_jobs as jobs
+    import utopia.optimization.native_scientist_load_v38 as loads
+    monkeypatch.setattr(jobs,'pinned_revision',lambda root:'c'*40)
+    def forbidden(*a,**kw):raise AssertionError('no role load before binding check')
+    monkeypatch.setattr(loads,'load_local_role',forbidden)
+    module.save(tmp_path/'intent.json',{'kind':'proposal',
+        'request':{'strategy_provenance':{'post_edit_component_contract':{'SCRIPTED':True}}},
+        'provider':{},'runtime':module.runtime_binding(),'source_commit':'c'*40,
+        'maximum_posts':16,'certificate':'SCRIPTED'})
+    module.worker(tmp_path/'intent.json',tmp_path/'worker-result.json')
+    result=module.checked(json.loads((tmp_path/'worker-result.json').read_text()))
+    assert result['error_type']=='ValueError' and 'no configured bank' in result['error']
+    assert not (tmp_path/'wire').exists()

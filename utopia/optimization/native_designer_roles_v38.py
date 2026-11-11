@@ -149,14 +149,19 @@ def staged_model_type(provider):
 def make_local_role_bound_generator(directory, *, image_id, provider_binding,
                                     max_steps, max_tokens, inference_lock=None,
                                     preflight_certificate=None, readiness_scope='literal-controls-v16',
-                                    conversation_profile=LEGACY_HISTORY):
+                                    conversation_profile=LEGACY_HISTORY,edit_feedback=None):
     from .native_designer_preflight import require_certificate
     validate_designer_binding(provider_binding)
     profile = profile_options(conversation_profile)
-    require_certificate(preflight_certificate, provider_binding, protocol='staged-v15', scope=readiness_scope,
+    certificate=require_certificate(preflight_certificate, provider_binding, protocol='staged-v15', scope=readiness_scope,
         **profile)
+    if edit_feedback is not None:
+        declared=(certificate['plan']['request'].get('strategy_provenance') or {}).get('post_edit_component_contract')
+        if declared!=edit_feedback.contract:
+            raise ValueError('fresh readiness request must declare the exact post-edit component contract')
     return StagedVocabularyGenerator(LocalRoleBoundDesignerModel(provider_binding,
         inference_lock=inference_lock, preflight_certificate=preflight_certificate,
         readiness_scope=readiness_scope, **profile),
         directory, image_id=image_id, provider_binding=provider_binding,
-        max_steps=max_steps, max_tokens=max_tokens, **profile)
+        max_steps=max_steps, max_tokens=max_tokens, **profile,
+        **({'edit_feedback':edit_feedback} if edit_feedback is not None else {}))

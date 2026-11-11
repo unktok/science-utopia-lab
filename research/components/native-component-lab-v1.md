@@ -49,8 +49,9 @@ not source audits: the staging attribution is necessary for a native claim.
 The API and staging guards pass24 fake-executor checks. The native attempt
 recorder and existing physical/simulation guards separately pass35 checks at
 5cc8493. These suites overlap and are not independent scientific samples.
-The model-facing editor does not yet advertise or call this API. Connecting
-the model-facing tool and fresh real-model readiness is next;
+The [optional post-edit adapter](native-post-edit-feedback-v1.md) now connects
+the lab to the model-facing editor, with scripted repair-loop and cold-replay
+checks. Fresh real-model readiness and the actual finite assay remain next;
 no new institution or optimization benefit follows from this component alone.
 The live fixed-candidate evaluation remains unchanged at frozenf1f8ddf.
 
