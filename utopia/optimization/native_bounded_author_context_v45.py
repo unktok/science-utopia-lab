@@ -140,6 +140,11 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
         view['proposal_feedback_policy'] = clone(request['feedback_policy'])
     if 'design_space' in request:
         view['declared_benchmark_design_space'] = clone(request['design_space'])
+    from .native_causal_design import PRESENTATION, context_fields, describe
+    if context_fields(request).get(PRESENTATION) == 'inline':
+        # Present before planning, without requiring an extra read action. This
+        # is explicit current graph evidence, not a supplied policy or outcome.
+        view['operational_order_context'] = describe(state['document'])
     result = compact(view)
     # Never repeatedly cut bodies until a request happens to fit. A large
     # current graph uses the declared on-demand path; remaining oversize is a

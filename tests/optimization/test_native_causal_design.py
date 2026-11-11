@@ -131,6 +131,48 @@ def test_bounded_author_reads_advice_and_cold_replays_without_new_actions(tmp_pa
 SCHEMA_NAME = 'scienceutopia.native-causal-design.v1'
 
 
+def test_prospective_inline_context_is_explicit_visible_before_plan_and_rederived(tmp_path):
+    from utopia.optimization.native_causal_design import PRESENTATION, context_fields
+    from utopia.optimization.native_staged_author_v15 import StagedVocabularyGenerator, build_prompt, initial_draft
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    from tests.optimization.test_native_authoring_ir import request, BINDING, IMAGE as TEST_IMAGE
+    from tests.optimization.test_native_staged_author_v15 import Model
+    body = request(); body[OPTION] = True
+    generator = StagedVocabularyGenerator(Model([]), tmp_path/'author', image_id=TEST_IMAGE,
+        provider_binding=BINDING, max_steps=8, max_tokens=8192, conversation_profile=BOUNDED_AUTHORING)
+    state = initial_draft(body)
+    def prompt():
+        return json.loads(build_prompt(body, state, [], image_id=TEST_IMAGE,
+            binding_sha256='SCRIPTED', settings=generator.settings))
+    assert 'operational_order_context' not in prompt()  # old availability-only behavior unchanged
+    body[PRESENTATION] = 'inline'
+    first = prompt()['operational_order_context']
+    assert first == describe(state['document'])
+    assert first['new_model_calls'] == first['new_code_executions'] == 0
+    state['document']['connections'].append({'source_mechanism':'missing', 'source_port':'out',
+        'target_mechanism':'missing', 'target_port':'in', 'channel':'artifact', 'latency':0})
+    assert prompt()['operational_order_context']['status'] == 'invalid-draft'
+    with pytest.raises(ValueError, match='requires bounded'):
+        build_prompt(body, state, [], image_id=TEST_IMAGE, binding_sha256='SCRIPTED', settings={})
+    with pytest.raises(ValueError): context_fields({PRESENTATION: 'inline'})
+    with pytest.raises(ValueError): context_fields({OPTION: True, PRESENTATION: 'guess'})
+
+
+@pytest.mark.parametrize('feedback', ['loss', 'matched-loss', 'technical-only'])
+def test_inline_presentation_flows_through_real_campaign_and_cannot_change_on_resume(tmp_path, feedback):
+    from utopia.optimization.native_causal_design import PRESENTATION
+    from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
+    from utopia.optimization.native_benchmark_controls import objective_specs
+    def campaign(mode):
+        return NativeAdaptiveDesignCampaign(tmp_path/'campaign', initial_system=anchor(),
+            loss_spec=objective_specs()['efficiency'], seeds=[42], mode='blackbox',
+            world_binding={'source_commit':'SCRIPTED','model_digest':'SCRIPTED','corpus_sha256':'SCRIPTED'},
+            strategies={'local':{OPTION: True, PRESENTATION: mode}}, proposal_feedback=feedback)
+    c = campaign('inline'); body = c._request([], c._strategy_initial(), 1)
+    assert body[PRESENTATION] == 'inline' and body[OPTION] is True
+    with pytest.raises(ValueError): campaign('file')
+
+
 def test_read_only_cli_rebuilds_identically_and_refuses_overwrite(tmp_path, monkeypatch):
     from scripts.reports.native_causal_design_v1 import main
     system = tmp_path/'system.json'; system.write_text(json.dumps(anchor().to_dict()))

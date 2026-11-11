@@ -375,6 +375,8 @@ CAUSAL_GUIDANCE = """
 If reference/causal-design.json is present, it provides the current declared
 phase order and typed review-routing window. Read it before claiming an edit
 changes earlier native work. It does not prove arbitrary code semantics.
+In an explicitly inline session, operational_order_context already contains
+that current evidence before planning; no extra file read is required.
 Keeping the graph unchanged is legal; a new node or wire is not a fitness goal.
 """
 INSTRUCTIONS += CAUSAL_GUIDANCE
@@ -903,6 +905,9 @@ def build_prompt(request, state, steps, *, image_id, binding_sha256, settings):
         from .native_bounded_author_context_v45 import build_active_prompt
         return build_active_prompt(request, state, steps, image_id=image_id,
             binding_sha256=binding_sha256, settings=settings)
+    from .native_causal_design import PRESENTATION, context_fields
+    if context_fields(request).get(PRESENTATION) == 'inline':
+        raise ValueError('inline causal context requires bounded authoring profile')
     # Do not expose another arm or silently tail-truncate own outcomes/failures.
     history = _history_view(request)
     history['generation_authoring_failures'] = own_failure_history(request)

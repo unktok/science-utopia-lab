@@ -10,7 +10,22 @@ from utopia.system.design_patch import digest
 SCHEMA = 'scienceutopia.native-causal-design.v1'
 FILENAME = 'reference/causal-design.json'
 OPTION = 'causal_design_context'
+PRESENTATION = 'causal_design_presentation'
 REVIEWS = {'native.phase.review.v1', 'native.phase.review.with-routing.v13'}
+
+
+def context_fields(provenance):
+    """Explicit future presentation; absent/file retains the original assay ABI."""
+    flag = provenance.get(OPTION, False)
+    if type(flag) is not bool:
+        raise ValueError('causal design context must be an explicit boolean')
+    mode = provenance.get(PRESENTATION, 'file')
+    if mode not in ('file', 'inline') or PRESENTATION in provenance and not flag:
+        raise ValueError('causal presentation requires enabled context and file/inline mode')
+    result = {OPTION: True} if flag else {}
+    if PRESENTATION in provenance:
+        result[PRESENTATION] = mode
+    return result
 
 
 def describe(document):
