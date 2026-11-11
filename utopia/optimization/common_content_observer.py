@@ -5,6 +5,7 @@ rule. A prospective study must bind its rubric, local model, budget and cache
 before use. Nothing here changes the live native-institution-loop experiment.
 """
 from copy import deepcopy
+from contextlib import contextmanager
 from datetime import datetime, timezone
 import fcntl
 import hashlib
@@ -154,6 +155,7 @@ class LocalObserverBackend:
         self.inference_lock = Path(inference_lock)
         import requests
         self.session = requests.Session(); self.session.trust_env = False
+        self._leased = False
 
     def verify(self, contract):
         from .native_jobs import pinned_revision
@@ -164,14 +166,24 @@ class LocalObserverBackend:
         if backend_binding(contract['provider'], self.session) != contract['backend']:
             raise ValueError('observer backend differs from frozen contract')
 
-    def __call__(self, wire, timeout):
+    @contextmanager
+    def lease(self, contract):
         self.inference_lock.parent.mkdir(parents=True, exist_ok=True)
         with self.inference_lock.open('a') as lock:
-            # No concurrent observer reload or overlapping model dispatch.
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            response = self.session.post(ENDPOINT, data=wire.encode('utf-8'),
-                headers={'Content-Type': 'application/json'}, timeout=tuple(timeout))
-            return {'http_status': response.status_code, 'raw_http_response': response.text}
+            self.verify(contract)  # Before intent: a busy lease is NOT an unknown POST.
+            self._leased = True
+            try:
+                yield self
+            finally:
+                self._leased = False
+
+    def __call__(self, wire, timeout):
+        if not self._leased:
+            raise ValueError('local observer POST requires its verified inference lease')
+        response = self.session.post(ENDPOINT, data=wire.encode('utf-8'),
+            headers={'Content-Type': 'application/json'}, timeout=tuple(timeout))
+        return {'http_status': response.status_code, 'raw_http_response': response.text}
 
 
 class CommonContentObserver:
@@ -209,57 +221,8 @@ class CommonContentObserver:
                     result = self._replay(key, value, critic)
                 else:
                     self._available()
-                    self.backend.verify(self.contract)  # read-only checks, before any POST intent
-                    intent = save(base.with_suffix('.intent.json'), {'schema': SCHEMA + '.intent',
-                        'key': key, 'contract_sha256': self.contract['content_sha256'],
-                        'content': value, 'critic': critic, 'payload': payload, 'wire': wire,
-                        'endpoint': ENDPOINT, 'http_timeout_seconds': self.contract['http_timeout_seconds'],
-                        'network_retries': 0, 'semantic_retries': 0,
-                        'started_utc': datetime.now(timezone.utc).isoformat()})
-                    started = time.monotonic()
-                    result = {'schema': SCHEMA + '.result', 'intent_sha256': intent['content_sha256'],
-                        'status': 'completion-unknown', 'rating': None,
-                        'prompt_tokens': None, 'output_tokens': None}
-                    try:
-                        try:
-                            received = self.backend(wire['request_wire_utf8'], self.contract['http_timeout_seconds'])
-                        except Exception as error:
-                            save(base.with_suffix('.http.json'), {'schema': SCHEMA + '.http',
-                                'intent_sha256': intent['content_sha256'],
-                                'error_type': type(error).__name__, 'error': str(error),
-                                'http_elapsed_seconds': time.monotonic() - started})
-                            raise
-                        if (not isinstance(received, dict) or set(received) != {'http_status', 'raw_http_response'}
-                                or type(received['http_status']) is not int
-                                or not isinstance(received['raw_http_response'], str)):
-                            raise ObserverCompletionUnknown('transport did not return the literal HTTP envelope')
-                        save(base.with_suffix('.http.json'), {'schema': SCHEMA + '.http',
-                            'intent_sha256': intent['content_sha256'], **received,
-                            'http_elapsed_seconds': time.monotonic() - started})
-                        result.update(received)
-                        if received['http_status'] != 200:
-                            result.update(status='failed', error='non-200 observer response')
-                        else:
-                            try:
-                                body = decode_json(received['raw_http_response'], strict=True, finite_floats=True)
-                            except (ValueError, TypeError) as error:
-                                raise ObserverCompletionUnknown('unreadable final observer envelope') from error
-                            if not isinstance(body, dict) or body.get('done') is not True:
-                                raise ObserverCompletionUnknown('nonfinal observer envelope')
-                            result['status'] = 'failed'  # confirmed complete, even if content is invalid
-                            for target, field in (('prompt_tokens', 'prompt_eval_count'), ('output_tokens', 'eval_count')):
-                                count = body.get(field)
-                                result[target] = count if type(count) is int and count >= 0 else None
-                            result['rating'] = decode_rating(received['raw_http_response'], model=payload['model'])
-                            result['status'] = 'complete'
-                    except ObserverCompletionUnknown as error:
-                        result['error'] = str(error)
-                    except Exception as error:
-                        # An exception while transport is unresolved may follow a POST.
-                        # Do not turn it into a known semantic failure or retry it.
-                        result['error'] = type(error).__name__ + ': ' + str(error)
-                    result['elapsed_seconds'] = time.monotonic() - started
-                    result = save(result_path, result)
+                    with self.backend.lease(self.contract):
+                        self._dispatch(base, key, value, critic, payload, wire)
                     result = self._replay(key, value, critic)
                 if result['status'] == 'completion-unknown':
                     raise ObserverCompletionUnknown(result.get('error', 'observer completion unknown'))
@@ -270,6 +233,59 @@ class CommonContentObserver:
             'mean_score': math.fsum(a['score'] for a in answers) / len(answers) if complete else None,
             'ratings': deepcopy(answers), 'physical_result_sha256': records,
             'critic_errors_independent': False}
+
+    def _dispatch(self, base, key, value, critic, payload, wire):
+        # Called only while the writer and model leases are owned.
+        intent = save(base.with_suffix('.intent.json'), {'schema': SCHEMA + '.intent',
+            'key': key, 'contract_sha256': self.contract['content_sha256'],
+            'content': value, 'critic': critic, 'payload': payload, 'wire': wire,
+            'endpoint': ENDPOINT, 'http_timeout_seconds': self.contract['http_timeout_seconds'],
+            'network_retries': 0, 'semantic_retries': 0,
+            'started_utc': datetime.now(timezone.utc).isoformat()})
+        started = time.monotonic()
+        result = {'schema': SCHEMA + '.result', 'intent_sha256': intent['content_sha256'],
+            'status': 'completion-unknown', 'rating': None,
+            'prompt_tokens': None, 'output_tokens': None}
+        try:
+            try:
+                received = self.backend(wire['request_wire_utf8'], self.contract['http_timeout_seconds'])
+            except Exception as error:
+                save(base.with_suffix('.http.json'), {'schema': SCHEMA + '.http',
+                    'intent_sha256': intent['content_sha256'],
+                    'error_type': type(error).__name__, 'error': str(error),
+                    'http_elapsed_seconds': time.monotonic() - started})
+                raise
+            if (not isinstance(received, dict) or set(received) != {'http_status', 'raw_http_response'}
+                    or type(received['http_status']) is not int
+                    or not isinstance(received['raw_http_response'], str)):
+                raise ObserverCompletionUnknown('transport did not return the literal HTTP envelope')
+            save(base.with_suffix('.http.json'), {'schema': SCHEMA + '.http',
+                'intent_sha256': intent['content_sha256'], **received,
+                'http_elapsed_seconds': time.monotonic() - started})
+            result.update(received)
+            if received['http_status'] != 200:
+                result.update(status='failed', error='non-200 observer response')
+            else:
+                try:
+                    body = decode_json(received['raw_http_response'], strict=True, finite_floats=True)
+                except (ValueError, TypeError) as error:
+                    raise ObserverCompletionUnknown('unreadable final observer envelope') from error
+                if not isinstance(body, dict) or body.get('done') is not True:
+                    raise ObserverCompletionUnknown('nonfinal observer envelope')
+                result['status'] = 'failed'  # confirmed complete, even if content is invalid
+                for target, field in (('prompt_tokens', 'prompt_eval_count'), ('output_tokens', 'eval_count')):
+                    count = body.get(field)
+                    result[target] = count if type(count) is int and count >= 0 else None
+                result['rating'] = decode_rating(received['raw_http_response'], model=payload['model'])
+                result['status'] = 'complete'
+        except ObserverCompletionUnknown as error:
+            result['error'] = str(error)
+        except Exception as error:
+            # An exception while transport is unresolved may follow a POST.
+            # Do not turn it into a known semantic failure or retry it.
+            result['error'] = type(error).__name__ + ': ' + str(error)
+        result['elapsed_seconds'] = time.monotonic() - started
+        save(base.with_suffix('.result.json'), result)
 
     def _read_intent(self, key, value, critic):
         expected_key, payload, wire = request_for(self.contract, value, critic)

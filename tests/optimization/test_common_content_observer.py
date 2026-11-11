@@ -1,5 +1,6 @@
 """Instrument QA; scripted scores are never new scientific quality evidence."""
 from copy import deepcopy
+from contextlib import contextmanager
 import json
 from pathlib import Path
 from types import SimpleNamespace
@@ -38,6 +39,11 @@ class Backend:
 
     def verify(self, spec):
         self.checks += 1
+
+    @contextmanager
+    def lease(self, spec):
+        self.verify(spec)
+        yield self
 
     def __call__(self, wire, timeout):
         self.calls.append((wire, timeout))
@@ -192,6 +198,40 @@ def test_audit_rejects_orphan_response_omission(tmp_path):
     (tmp_path / 'requests' / 'orphan.http.json').write_text('{}')
     with pytest.raises(ValueError, match='orphan'):
         observer.audit()
+
+
+def test_busy_inference_lease_fails_before_any_post_intent(tmp_path):
+    import fcntl
+    from utopia.optimization.common_content_observer import LocalObserverBackend
+    lock = tmp_path / 'inference.lock'
+    backend = LocalObserverBackend(inference_lock=lock)
+    observer = CommonContentObserver(tmp_path / 'observer', contract(), backend=backend)
+    with lock.open('a') as occupied:
+        fcntl.flock(occupied, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        with pytest.raises(BlockingIOError):
+            observer.rate(PAPER)
+    assert list((observer.root / 'requests').glob('*')) == []
+    assert observer.audit()['dispatch_intents'] == 0
+
+
+def test_native_unknown_critic_completion_stops_before_the_next_world(tmp_path, fixed_corpus):
+    from tests.runtime.test_portable_checkpoint_integration import seed
+    from tests.system.test_native_science_kernel import make_sim
+    from tests.optimization.test_native_world import loss_spec
+    from utopia.optimization.blackbox import Suggestion
+    from utopia.optimization.native_world import evaluate_native_suggestion
+    from utopia.system.native_kernel import NativeScienceKernel, legacy_world_system
+    backend = Backend([TimeoutError('SCRIPTED unknown')])
+    observer = CommonContentObserver(tmp_path / 'observer', contract(), backend=backend)
+    worlds = []
+    def factory(spec, world_seed, run_id):
+        worlds.append(world_seed); seed()
+        return make_sim(tmp_path / run_id, native=NativeScienceKernel(spec))[0]
+    with pytest.raises(ObserverCompletionUnknown):
+        evaluate_native_suggestion(Suggestion('SCRIPTED-unknown', legacy_world_system().to_dict(), 0, 'QA'),
+            seeds=[42, 43], simulation_factory=factory, loss_spec=loss_spec('native.common_content_utility_sum'),
+            measurement_adapter=observer.measure)
+    assert worlds == [42] and len(backend.calls) == 1
 
 
 @pytest.mark.parametrize('field', ['status', 'prompt_tokens', 'rating'])
