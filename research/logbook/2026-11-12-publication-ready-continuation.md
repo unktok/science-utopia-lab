@@ -403,3 +403,35 @@ receipts are retained. Full data and interpretation are saved under
 research/data/native-content-overlap-v1 and research/results/native-content-overlap-v1.md.
 No loss, adoption or active source is changed. Conditional center sensitivity
 6−2c is not a new optimized objective or causal paper effect. R2 remains open.
+
+## Revised integrated manuscript and current second objective
+
+The55-page/26-figure/21-table integrated PDF now includes the exact historical
+reference overlap, preference-set boundary and conditional sensitivity, with
+all earlier body sections retained. The abstract is reorganized around the
+research question rather than a chronology of interfaces. Final build source
+2011319 stays clean during both cached Tectonic builds and22 tests (6.59s).
+Both builds exit0 and produce identical extracted text/logs; PDF binary
+identity is not assumed. All55 final layouts are reviewed in five sheets,
+plus detailed title/new pages1/37/38. All21457 Poppler word coordinate tags
+are accounted for, with zero out-of-page words and unresolved reference pairs.
+The original54-page artifact remains byte-identical. New receipt:
+paper/integrated-content-overlap-build-v1.json.
+
+The first layout draft leaves a reading-guide orphan page; reducing abstract
+chronology fixes the title flow, not an artificial page cap. An intermediate
+build runs after a relative git-add path error; it is retained only as an
+unqualified temporary build. The final two builds start after the correct
+commit. A direct XML parser rejects a control glyph in Poppler text, so the
+final coordinate scanner accounts for every page/word attribute without
+discarding text or pretending recovery parsed all words. These authoring
+events do not modify scientific records or create new inference.
+
+The live corrected study has T/g0 complete at−7 and U/g0 failed/null with
+tensor input shape differs: features. Literal source adds a third bias column
+to native-feature-extractor while the receiving addressed-selection contract
+stays two-column. Eight component probes return but do not validate downstream
+tensor shapes. This is an authored cross-component inconsistency, not the old
+outer replay budget bug. The actual U/g1 readiness intent contains the exact
+failure; the authoring stage starts21:50:42UTC. No host repair or refill.
+Publication readiness, important resultR2 and unused fixed evaluation remain open.

@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 06:54JST / November11 21:54UTC:** the native writer continues
+with content-utility:g1 authoring. T/g0 completes at−7; U/g0 fails with null
+loss after changing feature output from two columns to three without updating
+the receiving tensor declaration. Its exact error is present in the actual
+next readiness request; no host repair, substituted score or replaced slot.
+These are live controller records before final independent closure.
+
+The [new55-page integrated PDF](../output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf)
+adds the independently audited historical reference overlap:7/5 accepted
+occurrences, equal utility4, with3 shared/4 connected-only/2 disconnected-only.
+Its abstract now leads with the research argument. Two cached builds/text
+match; all55 layouts and detailed pages1/37/38 are reviewed, with no clipping,
+unresolved references or layout warnings. [Exact source/build receipt](../paper/integrated-content-overlap-build-v1.json).
+The prior54-page PDF remains unchanged. This is a descriptive addition, not
+completion of the live search, independent optimizer replication or R2.
+
 **November12 06:35JST / November11 21:35UTC:** the corrected study's first
 throughput candidate completes its native world and returns T=−7, U=−4,
 7 accepted decisions,21 reviews,5 final active founders and350 final resources.

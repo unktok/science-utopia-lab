@@ -2,16 +2,22 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
-[54-page integrated draft](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf),
-with25 figures and21 tables and no artificial page cap.
-Its [source, evidence, build and visual binding](integrated-native-resource-build-v1.json)
-records two cache-only builds and the review of all54 page layouts.
+[55-page integrated draft](../output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf),
+with26 figures and21 tables and no artificial page cap.
+Its [source, evidence, build and visual binding](integrated-content-overlap-build-v1.json)
+records two cache-only builds and the review of all55 page layouts.
 
 It retains the objective/abstraction/method argument, parameter held-out study,
 actual structural cases, conditional-gradient experiments, nested design,
 matched local comparison and English evidence UI. The latest additions are
-the closed four-slot code-tested loop,228 fixed-content critic replies and
-four developer resource-control worlds. Direct institutional precedents are
+the closed four-slot code-tested loop,228 fixed-content critic replies,
+four developer resource-control worlds and an exact accepted-record overlap
+analysis from the first stopped objective study's completed references.
+The latter has7 versus5 accepted decisions but equal utility4, with3 shared,
+4 connected-only and2 disconnected-only occurrences. Its new real-data figure
+and conditional arithmetic do not establish causal mediation or optimization
+success. The abstract is reorganized around the research argument; all prior
+body sections remain. Direct institutional precedents are
 credited. Different sources remain separate; execution, opinions and developer
 controls are not relabeled as autonomous institutional invention or optimizer
 superiority.
@@ -26,7 +32,8 @@ and [evaluation/analysis design](../research/components/native-objective-fixed-e
 describe that boundary. The important main result and publication-ready
 judgment remain open; this is not a submitted, anonymous or release-cleared paper.
 
-The prior52-page,49-page,
+The prior [54-page resource draft](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf),
+its [own source-specific receipt](integrated-native-resource-build-v1.json),52-page,49-page,
 [47-page diagnostic draft](../output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf)
 and [44-page pre-scale draft](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf)
 remain unchanged, each with its own historical receipt.

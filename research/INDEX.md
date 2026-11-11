@@ -59,10 +59,11 @@ Historical documents retain their paths and source identities.
   audits/costs and two matching seven-file exports. Base30 activity/output
   change, base60 aggregate outcomes do not. One reused seed; developer control,
   not an automatically invented policy. No inference remains live.
-- [Latest54-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf)
-  and [build/visual binding](../paper/integrated-native-resource-build-v1.json):
-  includes all three newly closed studies and direct institutional precedents;
-  all old tracks and priorPDFs retained. R2 and publication readiness remain open.
+- [Latest55-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf)
+  and [build/visual binding](../paper/integrated-content-overlap-build-v1.json):
+  retains all old tracks and adds the actual content-turnover figure and objective
+  decomposition. Two cache-only builds/text agree; all55 page layouts are reviewed.
+  The prior54-page PDF remains unchanged. R2 and publication readiness stay open.
 
 ## Earlier checkpoints and retained studies
 

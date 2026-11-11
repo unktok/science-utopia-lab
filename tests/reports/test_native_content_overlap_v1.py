@@ -56,3 +56,26 @@ def test_actual_retained_export_and_figure_hashes_keep_stopped_reference_scope()
     assert not any(report[k] for k in ('loss_changed','selection_changed','causal_mediation_claimed','publication_ready'))
     r=report['overlap'];assert (r['common']['occurrences'],r['left_only']['occurrences'],r['right_only']['occurrences'])==(3,4,2)
     assert r['left']['centered_utility_sum']==r['right']['centered_utility_sum']==4.
+
+
+def test_integrated_pdf_preserves_prior_snapshot_and_binds_actual_build_source():
+    import hashlib
+    import json
+    from pathlib import Path
+    import subprocess
+    from utopia.utils.data_utils import file_sha256
+    root=Path(__file__).resolve().parents[2]
+    r=json.loads((root/'paper/integrated-content-overlap-build-v1.json').read_text())
+    assert file_sha256(root/r['output'])==r['pdf_sha256']
+    for name,value in r['preserved_files'].items():assert file_sha256(root/name)==value
+    original=lambda name:subprocess.check_output(['git','show',r['source_commit']+':'+name],cwd=root)
+    for name in ('source_files','figure_files','support_files','evidence_files'):
+        values={p:hashlib.sha256(original(p)).hexdigest() for p in r[name]['files']}
+        assert hashlib.sha256(json.dumps(values,sort_keys=True,separators=(',',':')).encode()).hexdigest()==r[name]['manifest_sha256']
+    assert (r['pages'],r['figures'],r['tables'])==(55,26,21)
+    assert r['visual_review']['pages_reviewed_for_layout']==55 and r['build']['text_identical']
+    assert r['build']['exit_codes']==[0,0] and r['build']['bbox_word_tags_accounted']==21457
+    assert r['build']['off_page_text_words']==r['build']['unresolved_question_mark_pairs']==0
+    assert not r['scientific_scope']['publication_ready'] and not r['scientific_scope']['ongoing_corrected_search_counted_as_completed']
+    assert r['scientific_scope']['historical_completed_developer_references']==5
+    assert file_sha256(root/'paper/figures/native-content-overlap-v1/content-overlap.png')==file_sha256(root/'research/data/native-content-overlap-v1/content-overlap.png')
