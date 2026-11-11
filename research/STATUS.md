@@ -2,6 +2,15 @@
 
 ## Active publication-ready goal
 
+**November12 06:32JST / November11 21:32UTC:** the first corrected-study
+throughput definition is submitted, passes the actual outer cold replay and
+enters original native researcher execution. Its first candidate loss is still
+pending. This real transition is narrower than completion or improvement.
+A separate display-report waiter at509d510/session93616 waits for normal
+audits. It keeps coincident T/U points exact and every tied label readable;
+the old source-bound report waiter is preserved unchanged. Scripted one-point
+and13-point layouts are visually inspected, not presented as scientific data.
+
 **November12 06:22JST / November11 21:22UTC:** the corrected61a1753 study
 completes all five common reference worlds and enters its first actual
 throughput proposal after fresh readiness. The authoritative writer/session92866

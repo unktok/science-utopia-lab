@@ -351,3 +351,22 @@ preferences, strong-reference differences and action/resource paths must come
 from the closed native study and unused evaluation, not from QA counts or
 prototype completion. No extra candidate-generation experiment is launched
 while this source-bound study is active.
+
+## First actual corrected candidate and figure tie handling
+
+The first throughput definition now submits and traverses the previously failing
+outer replay into the original native simulation. At21:32UTC its native world
+is still live and no completed candidate loss is available. This actual-model
+boundary is not inferred from the scripted70-check launch certificate.
+
+Display-reader509d510/session93616 starts21:32:14UTC from a separate frozen
+checkout, waiting for normal development audit/cost closure. It exports the
+same all-slot scientific report twice with a readable exact-coordinate table;
+the original61a1753 watcher is unchanged. A thirteen-coordinate stress layout
+and a one-coordinate/all-tie layout are visually reviewed with scripted data.
+Final13 report checks pass9.29s. No synthetic layout enters manuscript evidence.
+The frozen scientific writer, objectives and proposal schedule are unchanged.
+
+Main is pushed through8398967 and remote hash equality is confirmed. The first
+ordinary push is blocked by sandbox DNS; the authorized network-enabled push
+succeeds. This is a repository synchronization event, not a scientific retry.
