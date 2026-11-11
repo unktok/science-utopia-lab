@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Current objective search and result boundaries](STATUS.md): corrected61a1753
+  completes five references and enters first throughput authoring at21:19UTC.
+  Additional source/consumer/resource continuations are waiting, not completed
+  results. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
+  retain all ties without reselecting policies or modifying current losses.
 - [Corrected objective study and retained initial stop](results/native-objective-budget-stop-and-corrected-launch-v1.json):
   original537514a stops at the first outer replay despite a submitted inner
   definition. Two stopped audits/costs match; full-contract correction has70

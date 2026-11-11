@@ -48,3 +48,26 @@ failures remain recorded, and the final nine focused checks pass. These are
 analysis-reader corrections, not repairs of scientific programs or new
 objective-conditioned optimization results. The T/U study's own traces require
 its appropriate independent audit, not this resource-control diagnostic scope.
+
+## Normal closure continuations
+
+Reader0b03e51 connects the existing independent development and fixed-evaluation
+audit/cost closures to two actual exports and full byte comparison. The
+development waiter starts21:07:09UTC/session96387 in
+native-effect-development-v1-a2; the evaluation waiter starts21:07:10UTC/session1434
+in native-effect-fixed-v1-a2. Scientific source61a1753 remains unchanged. Their
+initial stages are audit closure and finite evaluation-chain closure,
+respectively; neither stage is a completed trace or a new model call.
+
+The development wait is finite24h and the fixed-evaluation wait48h. Failed
+science, failed audits or differing exports stop the chain without retry or
+source repair. The future evaluation plan is read only after the bound chain
+creates and closes it. The shared source-bound continuation tests pass62 checks
+in15.27s, including both scopes and legacy reports. JUnit SHA256:
+`a4c7451a5e10ba57f5a2bf6ccd9460d68a2e063007a42ec4f6e288446602aa2d`.
+
+A pre-initial partial world may contain zero known completed responses and no
+wire journal. That absence is retained as zero observed responses, not filled
+with a synthetic file. A known response without its actual wire journal still
+raises. Completed scientific outcomes and partially retained states remain
+distinct in both scopes.

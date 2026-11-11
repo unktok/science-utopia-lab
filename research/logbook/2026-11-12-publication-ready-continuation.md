@@ -320,3 +320,34 @@ numeric roundtrip; its full definition hash now equals3062bde6 exactly. The
 original raw artifact and scientific sources are never modified. This export
 is not consumed by the corrected study. The note's assertion of optimality is
 the model's untrusted claim, not an independently evaluated candidate loss.
+
+## 21:22UTC actual authoring and separate explanatory analyses
+
+The corrected61a1753 study finishes all five references, then fresh readiness,
+and enters throughput:g0 optimization at21:19:24UTC. Writer92866 is still live
+at21:22UTC. No candidate native loss, submitted-system selection or improvement
+is inferred from this transition. Active objectives, reference context, source
+and finite schedule remain unchanged.
+
+Reader0b03e51 starts two inference-free source/consumer/resource continuations
+at21:07UTC: development96387 and future fixed evaluation1434. Each waits for
+the exact existing normal audit/cost chain, exports twice and compares all
+bytes. Shared regressions pass62 checks in15.27s. Zero-response partial worlds
+can lack a wire log without fabricating one; known replies without actual logs
+remain errors. These continuations are waiting, not completed explanations.
+
+Reader1aab3be exports the stopped first study's audited reference preferences
+twice. Both report and manifest match byte-for-byte; the retained report hash
+is5389bb77, content120f178c. T's observed minimum set has three physical worlds,
+U's four, overlapping in three; the ten pairs have3 joint ties,4 same-direction
+strict preferences and3 U-only ties. Strict conflict count is0. This finite
+diagnostic cannot establish a global optimum or change the current losses.
+The common completed pool excludes missing/failed rows without imputation,
+keeps each world seed separate and does not reselect submitted policies.
+34 report/regression checks pass11.968s; scripted inputs are not native evidence.
+
+Publication milestoneR2 remains open. Actual generated mechanisms, objective
+preferences, strong-reference differences and action/resource paths must come
+from the closed native study and unused evaluation, not from QA counts or
+prototype completion. No extra candidate-generation experiment is launched
+while this source-bound study is active.

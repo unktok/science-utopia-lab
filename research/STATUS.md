@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November12 06:22JST / November11 21:22UTC:** the corrected61a1753 study
+completes all five common reference worlds and enters its first actual
+throughput proposal after fresh readiness. The authoritative writer/session92866
+is live; no new candidate-world loss or frozen selection is yet available.
+Separate development and fixed-evaluation effect-trace continuations now wait
+at reader0b03e51, alongside the existing audit/report/evaluation chains. They
+will reconstruct actual source, consumer inputs and resource ledgers twice,
+without new inference or changes to active science.
+
+The stopped first study's five audited reference losses are also exported
+twice as [observed preference sets](data/native-objective-initial-stop-v1/preference-report.json).
+T has three tied observed minima and U four; the three overlap. Ten physical
+pairs contain three joint ties, four same-direction strict preferences and
+three U-only ties, not a strict T/U preference reversal. These are historical
+reference diagnostics, not completed optimization, global optima or evidence
+for changing the current objectives. The report-only arithmetic retains all
+ties and missing outcomes and cannot reselect or veto a scientific candidate.
+
 **November12 05:47JST / November11 20:47UTC:** the original537514a run stops
 20:26:34UTC after five references,28 readiness replies,13 proposal replies and
 eight returned probes. Its inner worker submits, but the outer replay incorrectly
