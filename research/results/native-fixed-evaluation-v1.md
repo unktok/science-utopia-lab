@@ -51,8 +51,9 @@ Both actual figures were visually inspected with no observed clipping/overlap.
 
 ## Interpretation and next research question
 
-The available selected policies improve substantially over the initial weak
-threshold institution but do not beat the newly authorized simple controls.
+The numerical selections and E fixed-graph selection improve substantially
+over the initial weak threshold institution; T fixed-graph does not. None
+beats the newly authorized simple controls on its assigned objective.
 For E, the one-reviewer control has less actual review work and a slightly
 different recorded Q. This is not a retrospective saving of already performed
 reviews, nor evidence of better scientific truth. At equal A and R, differences
