@@ -327,3 +327,9 @@ verifierから検証済みdeclared contractをsummaryへ明示し、factoryは�
 scripted HTTP calibration→実cert検証→BAD code→返却error→literal GOOD code→finish→cold replay
 を通し、関連44/44pass（20.49秒）。fake HTTP／executorであり、実35Bの能力実証ではない。
 同種の境界誤認を防ぐため、実公開APIを使う全経路検証をAGENTSへ追記した。
+
+clean58bc16d8ed1976a45308d55e297768989d94a36aで16module、244/244pass（209.92秒）。
+JUnit SHA256は`f2618833f9329345797c65b7ec94a99708a42075753e2c79d098f932b97d150d`。
+actual校正worker／summary API／role factoryのscripted全経路、新旧report・reproducer、
+元native Simulation・実Docker・全scientist payload回帰を含む。実model推論0。
+元の195checkの範囲限界を遡及消去せず、今回の境界修正と新sourceを別に保持する。
