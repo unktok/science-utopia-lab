@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November12 05:07JST / November11 20:07UTC:** development reaches3/5 reference
+completions, with no-review-reject-all-connected currently executing. Frozen
+scientific source537514a remains unchanged. The full separate connection suite
+passes171 checks in76.89s. The fixed-evaluation report watcher now also waits at
+22d4f33/session56705 after35 checks, without creating its future plan or invoking
+models. Thus actual development, both audit/report paths and the normal-closure
+gated fixed evaluation are connected; successful science is not inferred from
+that connection. New candidates, closed selection and unused evaluation remain
+pending. The publication-ready goal stays active.
+
 **November12 05:00JST / November11 20:00UTC:** development has completed two of
 five common references and is executing no-review-all-connected. No candidate
 has yet been submitted. The separate development report is waiting atbb4ff48;

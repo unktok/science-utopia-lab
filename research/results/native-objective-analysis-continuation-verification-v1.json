@@ -33,6 +33,26 @@
     {"source_commit": "9adf0abc5dc777eed93528488fd832f97e2d378c", "receipt": "outputs/native-objective-fixed-report-clean-qa-a1.xml", "file_sha256": "ae767ea4f1becff97670de9dc19e5535467091b1908285569b55dad1487266b6", "passed": 64, "failed": 0}
   ],
   "software_check_sets_overlap": true,
+  "full_connection_check": {
+    "source_commit": "7eb99bf567107b5b89bb57ecd34966f31fe2b0aa",
+    "passed": 171,
+    "failed": 0,
+    "seconds": 76.89,
+    "receipt": "outputs/native-objective-full-connection-clean-qa-a1.xml",
+    "file_sha256": "8967b7ad93372e525487cb0302e9138a62e168253ae50bf416240698ca7f7b9e"
+  },
+  "fixed_report_watcher": {
+    "source_commit": "22d4f33938a6fe8a4cf116a97f818c81ff27048b",
+    "session": 56705,
+    "started_utc": "2026-11-11T20:07:14.880588+00:00",
+    "start_content_sha256": "95d547b8bc27087ab7f13b36234904266ef0e7ccc81c42297fc63673bbebded7",
+    "observed_stage": "await-finite-evaluation-chain",
+    "maximum_wait_seconds": 172800,
+    "new_inference_allowed": false,
+    "passed_checks": 35,
+    "receipt": "outputs/native-objective-fixed-report-await-clean-qa-a2.xml",
+    "receipt_file_sha256": "4fe4b0ba2a426b596ef288add34580d1796907b569f228e5c8c7025155f9854a"
+  },
   "scripted_or_mocked_connections_are_not_scientific_results": true,
   "closed_search_claimed": false,
   "new_policy_advantage_claimed": false,

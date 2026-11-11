@@ -217,3 +217,20 @@ losses stay null, never zero. These overlapping test sets are not summed as
 independent evidence. The actual fixed report is not launched before its plan
 and audit start exist. Main research claim, unused-seed results, actual figure
 inspection, manuscript integration and final publication judgment remain open.
+
+## Complete connection regression and report waiting
+
+At7eb99bf, the combined suite passes171 checks in76.89s, including original
+native worlds with scripted replies, optional component modes, references,
+saved plans, audits/costs, all-null export retention and fixed evaluation.
+At20:03UTC development closes its third reference and enters the fourth;
+the20:07 observation has3/5 completed references and no scientific terminal.
+
+The future fixed-report watcher passes30 checks at928407d, then35 at22d4f33
+after exercising the actual fixed-report finish wrapper as well as old/new
+development variants. Actual session56705 starts20:07:14.880588UTC at frozen
+22d4f33, a finite48-hour wait for the existing evaluation continuation's normal
+closure. It then reads the real evaluation plan and its two audits for double
+export. It never fabricates a plan, starts inference or retries a stopped chain.
+The source and receipt hashes are added to the existing verification record.
+The original537514a scientific writer remains untouched throughout.

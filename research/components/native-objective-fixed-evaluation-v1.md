@@ -42,6 +42,8 @@ These sets overlap and are not summed as independent evidence. They use
 scripted model replies or mocked physical proof where named; they are not
 actual-model superiority or publication readiness.
 
+The complete original/native, optional-code-test, objective, evaluation,
+audit/cost and report connection suite passes171 checks at7eb99bf in76.89s.
 The first fixed-evaluation test invocation atc108d68 has26 passes/two failures:
 its test mutates a nonexistent top-level parameters field. The test is corrected
 to an actual initial-state extension, and the failed receipt is retained.
@@ -53,7 +55,11 @@ continuation already waiting. The development report continuation starts
 it has not dispatched evaluation at this observation. Its preparation and
 execution need the original normal audit closure. The fixed-evaluation report
 implementation is ready at9adf0ab but is not yet launched because its actual
-evaluation plan and audit start do not yet exist.
+evaluation plan and audit start do not yet exist. A separate22d4f33 watcher
+starts20:07UTC/session56705 after35 checks. It waits for the existing finite
+evaluation chain to close, then uses its actual plan and audits for two exports.
+It creates neither a missing plan nor a scientific result and dispatches no
+inference. A stopped chain stops the report; its finite wait is48 hours.
 
 The latest54-page PDF remains the last closed-evidence manuscript snapshot.
 New figures must be produced from actual audited results and visually inspected
