@@ -17,6 +17,19 @@ from utopia.optimization.native_code_trace import validate_record
 from utopia.utils.data_utils import file_sha256
 
 
+def code_attempt_proof(cell,spec,world):
+    """Absent historical journals are unknown, not zero failed attempts."""
+    cell=Path(cell);path=cell/'code-contexts.jsonl.attempts.jsonl'
+    if not path.exists():return None
+    from utopia.optimization.native_code_trace import recorded_attempts
+    attempts=recorded_attempts(cell/'code-contexts.jsonl',binding={
+        'source_commit':world['source_commit'],'system_fingerprint':spec.fingerprint,'run_id':cell.name})
+    return {'file_sha256':file_sha256(path),
+        'counts':{k:sum(a['status']==k for a in attempts) for k in ('returned','raised','pending')},
+        'remote_completion_inferred':False,
+        'unreturned_intents':[a['intent']['content_sha256'] for a in attempts if a['status']!='returned']}
+
+
 def physical_proof(cell,spec,*,world,seed,years,evidence=None):
     cell=Path(cell).resolve();cache=cell/'replies/responses.sqlite'
     if not cache.is_file():raise ValueError('physical proof requires the actual response binding')
@@ -47,6 +60,8 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
         response=zero_http_response_proofs(cell,binding,[],complete=False,protocol={},
             classification=RESPONSE_ACTUAL,maximum_year=years)
         code=code_proofs(cell,spec,{'events':[]},world,cell.name,complete=False)
+        attempts=code_attempt_proof(cell,spec,world)
+        if attempts is not None:code['attempt_journal']=attempts
         if response['wire_requests'] or response['researcher_responses'] or code['recorded_executions']:
             raise ValueError('physical activity without original initial checkpoint')
         return {'status':'technical-failure-before-initial-checkpoint','seed':seed,'years':years,
@@ -96,6 +111,8 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
     if any(int(y)>years for y in response['responses_by_physical_year']):
         raise ValueError('physical request exceeds the declared world horizon')
     code=code_proofs(cell,spec,last['native_system'],world,cell.name,complete=complete)
+    attempts=code_attempt_proof(cell,spec,world)
+    if attempts is not None:code['attempt_journal']=attempts
     proof={'status':'complete' if complete else 'partial-or-technical-failure','seed':seed,'years':years,
         'through_committed_year':last['year'],'initial_identity':physical_initial_identity(initial),
         'response_proof':response,'code_proof':code,'annual_checkpoints':annual,

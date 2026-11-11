@@ -198,3 +198,12 @@ plan content SHA256は`1f35f65be17077fa37451ff48df5d8c75a16b9f08885bf2aa8a3a0830
 最初の世界でQwen3-8Bのresearch direction5件と資金申請の実応答を観測。
 候補固定4label＋参照6label×3seed=30実world。追加designer生成は0。
 原pilotの終端はstoppedのまま。publication-ready、method優位性、制度発明は主張しない。
+
+開発側へcode実行attemptの別journalを追加した。既存recorderはdelegate成功後にのみ
+contextを保存していたため、元6失敗のtrigger入力は当該journalに残っていない。
+新実装は実行前にexact artifact/contextをfsyncし、returned／raisedを別eventで記録する。
+成功時のlegacy bundle形式は保持し、cold replayはそのbijectionも検証する。
+raised／pendingからremote実行完了を推定せず、旧rawの欠落を後で埋めない。
+mocked executorのみの10チェックが0.69秒でpass。新しいcontainer／LLM／native world実行は0。
+実scientist worldでの回帰と設計者toolへの統合はまだであり、これだけで発明精度の改善としない。
+live固定候補評価のf1f8ddfには適用しない。

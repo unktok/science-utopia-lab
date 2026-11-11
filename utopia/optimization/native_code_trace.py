@@ -2,12 +2,16 @@
 
 Raw contexts stay local. Each complete container execution is bound to the
 source, graph, run, artifact and actual inputs/outputs independently of labels.
+Prospective attempt journals also preserve exact inputs before delegation;
+historical successful-only journals are never retroactively completed.
 """
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import threading
+import uuid
 
 from utopia.system.code_mechanisms import sha, validate_code_artifact, validate_code_result, validate_context
 from utopia.system.design_patch import clone
@@ -20,20 +24,93 @@ class RecordingCodeExecutor:
         if not self.binding or set(self.binding) != {'source_commit', 'system_fingerprint', 'run_id'}:
             raise ValueError('exact source/system/run recording binding required')
         self.lock = threading.Lock()
+        self.attempts_path = self.path.with_name(self.path.name + '.attempts.jsonl')
 
-    def execute(self, artifact, context):
-        execution = self.executor.execute(artifact, context)
-        row = {'schema': 'scienceutopia.native-code-input.v1', 'binding': self.binding,
-               'artifact': clone(artifact), 'context': clone(context),
-               'result': clone(execution.result), 'receipt': clone(execution.receipt)}
-        row['bundle_sha256'] = sha(row)
-        validate_record(row)
+    def _append(self, path, row):
+        # The intent reaches disk before delegated container execution. An I/O
+        # error stops dispatch rather than running an unrecorded component.
         with self.lock:
-            self.path.parent.mkdir(parents=True, exist_ok=True)
-            with self.path.open('a') as stream:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with path.open('a') as stream:
                 stream.write(json.dumps(row, sort_keys=True, ensure_ascii=False, allow_nan=False) + '\n')
                 stream.flush()
+                os.fsync(stream.fileno())
+
+    def _attempt(self, value):
+        row = {'schema': 'scienceutopia.native-code-attempt.v1', **value}
+        row['content_sha256'] = sha(row)
+        self._append(self.attempts_path, row)
+        return row
+
+    def execute(self, artifact, context):
+        intent = self._attempt({'kind': 'intent', 'binding': clone(self.binding),
+            'nonce': uuid.uuid4().hex, 'artifact': clone(artifact), 'context': clone(context)})
+        try:
+            execution = self.executor.execute(artifact, context)
+            row = {'schema': 'scienceutopia.native-code-input.v1', 'binding': clone(self.binding),
+                   'artifact': clone(intent['artifact']), 'context': clone(intent['context']),
+                   'result': clone(execution.result), 'receipt': clone(execution.receipt)}
+            row['bundle_sha256'] = sha(row)
+            validate_record(row)
+            self._append(self.path, row)
+        except BaseException as error:
+            # "raised" describes the executor API, not a claim that a remote
+            # timed-out container completed or was cancelled successfully.
+            self._attempt({'kind': 'raised', 'intent_sha256': intent['content_sha256'],
+                'error_type': type(error).__name__, 'error': str(error),
+                'remote_completion_inferred': False})
+            raise
+        self._attempt({'kind': 'returned', 'intent_sha256': intent['content_sha256'],
+            'bundle_sha256': row['bundle_sha256']})
         return execution
+
+
+def recorded_attempts(path, *, binding):
+    """Cold-check inputs including raised/pending calls; never fill a terminal.
+
+    Successful legacy bundles remain unchanged and are joined bijectively to
+    returned events. Failed/pending inputs are literal data, not valid contracts
+    or proof of execution/cancellation. Historical logs lacking this journal
+    cannot be reconstructed by this function.
+    """
+    path = Path(path); journal = path.with_name(path.name + '.attempts.jsonl')
+    intents, terminals = {}, {}
+    for line in journal.read_text().splitlines():
+        r = json.loads(line)
+        if (r.get('schema') != 'scienceutopia.native-code-attempt.v1'
+                or r.get('content_sha256') != sha({k:v for k,v in r.items() if k != 'content_sha256'})):
+            raise ValueError('native code-attempt journal hash/schema mismatch')
+        if r.get('kind') == 'intent':
+            if (set(r) != {'schema','kind','binding','nonce','artifact','context','content_sha256'}
+                    or r['binding'] != binding or not isinstance(r['nonce'], str) or not r['nonce']
+                    or r['content_sha256'] in intents):
+                raise ValueError('native code-attempt intent/binding differs')
+            intents[r['content_sha256']] = r
+        elif r.get('kind') in ('returned','raised'):
+            identity = r.get('intent_sha256')
+            keys = ({'bundle_sha256'} if r['kind'] == 'returned' else
+                    {'error_type','error','remote_completion_inferred'})
+            if (set(r) != {'schema','kind','intent_sha256','content_sha256',*keys}
+                    or identity not in intents or identity in terminals
+                    or (r['kind'] == 'raised' and (r['remote_completion_inferred'] is not False
+                        or not isinstance(r['error_type'], str) or not isinstance(r['error'], str)))):
+                raise ValueError('native code-attempt terminal/origin differs')
+            terminals[identity] = r
+        else:
+            raise ValueError('unknown native code-attempt event')
+    bundles = [validate_record(json.loads(line)) for line in path.read_text().splitlines()] if path.exists() else []
+    remaining = list(bundles); result = []
+    for identity, intent in intents.items():
+        terminal = terminals.get(identity)
+        if terminal is not None and terminal['kind'] == 'returned':
+            index = next((i for i,b in enumerate(remaining) if b['bundle_sha256'] == terminal['bundle_sha256']
+                and b['binding'] == binding and b['artifact'] == intent['artifact'] and b['context'] == intent['context']), None)
+            if index is None: raise ValueError('returned code attempt has no exact legacy execution bundle')
+            remaining.pop(index)
+        result.append({'intent': intent, 'terminal': terminal,
+            'status': 'pending' if terminal is None else terminal['kind']})
+    if remaining: raise ValueError('legacy execution bundle has no returned code attempt')
+    return result
 
 
 def validate_record(row):
