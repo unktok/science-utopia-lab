@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Native-execution integrated working paper](../output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf)
+  and [source/build/visual binding](../paper/integrated-native-execution-build-v1.json):
+  November12,49 pages,20 figures/20 tables; retains earlier studies and adds all
+  stopped671436a slots/costs, the optional execution-feedback boundary and annual
+  resource/activity support. Two cached builds/text match; all49 pages reviewed.
+  The ongoing separate evaluation is not counted as completed. The47-page
+  diagnostic snapshot and earlier PDFs remain unchanged. Not publication ready.
+
 - [Publication-ready autonomous goal](publication/publication-ready-v3.md): reopened explicitly November11.
   [New native closed-loop protocol](protocols/campaigns/native-institution-loop-v1.md)
   and [execution log](logbook/2026-11-11-publication-ready-native.md).

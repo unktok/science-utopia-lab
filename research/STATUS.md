@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+The [November12 integrated native-execution snapshot](../output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf)
+now has49 pages/20 figures/20 tables. It retains the whole earlier program and
+adds the stopped pilot's twelve slots/costs, execution-feedback implementation,
+conditional T/E incentives and the source-bound annual actor vectors. Two
+cache-only builds have identical extracted text; all49 pages and the new
+tables/equation are visually reviewed, with no off-page words or unresolved
+references. [Exact source/build receipt](../paper/integrated-native-execution-build-v1.json).
+The source-bound30 checks pass. The old47-page PDF and receipts are preserved.
+The current fixed evaluation is still treated as running, not a closed result;
+the important main-study result and publication readiness remain open.
+
 **November12 00:33JST / November11 15:33UTC:** the fixed evaluation has27/30
 complete jobs and has begun evaluation-027. Writer59964 is alive; its new cell's
 wire journal updates at15:33:25UTC. The next93076b4 loop remains closure-gated,

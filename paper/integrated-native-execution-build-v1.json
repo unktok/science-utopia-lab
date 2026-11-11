@@ -1,0 +1,182 @@
+{
+  "schema": "scienceutopia.integrated-native-execution-paper-build.v1",
+  "status": "integrated-working-manuscript-not-submitted-not-release-cleared",
+  "source_commit": "dcb694f32004fa116bc7cf64a7138e395abb7c02",
+  "entrypoint": "paper/integrated.tex",
+  "output": "output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf",
+  "pdf_sha256": "be3758ccaadcf5705af870402efc40d2566231205d35f93558545d5eded6e2d6",
+  "pages": 49,
+  "figures": 20,
+  "tables": 20,
+  "artificial_page_cap": false,
+  "tracked_sources_clean_during_both_builds_and_checks": true,
+  "build": {
+    "engine": "Tectonic 0.17.0",
+    "flags": "--only-cached --untrusted --keep-logs --keep-intermediates",
+    "first_directory": "tmp/pdfs/integrated-native-final-v7",
+    "second_directory": "tmp/pdfs/integrated-native-rebuild-v7",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "downloads": 0,
+    "text_identical": true,
+    "text_sha256": "8b9ae72e89c637f5fb6c1a724358b000a1e8b4ab4b70fac98ce5c58a27227758",
+    "binary_pdf_identity_claimed": false,
+    "first_log_sha256": "0cc1190330d73698c09653d405d70f2cd0b0509672e4ff8277b687f646f9f1e4",
+    "second_log_sha256": "0cc1190330d73698c09653d405d70f2cd0b0509672e4ff8277b687f646f9f1e4",
+    "layout_or_undefined_reference_warnings": 0,
+    "off_page_text_words": 0,
+    "off_page_scan": "Poppler pdftotext -bbox, XML page/word bounds; not pdfplumber",
+    "unresolved_question_mark_pairs": 0,
+    "benign_notices": [
+      "UTF8 engine ignores inputenc",
+      "Two retained h floats adjusted to ht"
+    ]
+  },
+  "source_files": {
+    "manifest_sha256": "ff279660944894fbbd7f33edbd45906b62a3e3b1102bc009a29027c4c88ff291",
+    "files": [
+      "paper/generated/native-design-v2/search-outcomes.tex",
+      "paper/integrated.tex",
+      "paper/integrated/appendices.tex",
+      "paper/integrated/design-diagnostics.tex",
+      "paper/integrated/discussion.tex",
+      "paper/integrated/matched-observatory.tex",
+      "paper/integrated/native-loop.tex",
+      "paper/integrated/pre-scale-search.tex",
+      "paper/integrated/pre-scale.tex",
+      "paper/integrated/problem-method.tex",
+      "paper/integrated/studies.tex",
+      "research/data/pre-scale-information-v1/table-tabular.tex"
+    ]
+  },
+  "figure_files": {
+    "manifest_sha256": "f44b98a56e5dbb3cedfe77f492d8062cadea18eda1949c1ac822e6331716fed1",
+    "files": [
+      "game-ui-v2/screenshots/nested-foundry-v13-actual-qa/nested-foundry-v13-actual-overview.png",
+      "paper/figures/native-design-v2/cross-objective-2y.png",
+      "paper/figures/native-design-v2/cross-objective-4y.png",
+      "paper/figures/native-design-v2/selective-paths.png",
+      "paper/figures/native-design-v2/throughput-paths.png",
+      "paper/figures/native-nested-search-v13-a1.png",
+      "paper/figures/native-panel-sensitivity-v1/fixed-panel-readout.png",
+      "paper/figures/native-qwen-response-v9-a3-landscape.png",
+      "paper/figures/pre-scale-information-v1/information-comparison.png",
+      "paper/figures/pre-scale-search-v1/objective-conditioned-paths.png",
+      "paper/figures/pre-scale-search-v1/selection-fixed-common-scores.png",
+      "paper/figures/pre-scale/observed-objective-map-print.png",
+      "paper/figures/program-concept/science-system-design-program.pdf",
+      "paper/generated/metric-conditioned/figures/metric-conditioned-cross-evaluation.pdf",
+      "paper/generated/metric-conditioned/figures/metric-conditioned-objective-trajectories.pdf",
+      "paper/generated/native-design-v2-supplement/all-cross-scores-selective.png",
+      "paper/generated/native-design-v2-supplement/all-cross-scores-throughput.png",
+      "paper/generated/native-design-v2-supplement/designer-cost-paths-selective.png",
+      "paper/generated/native-design-v2-supplement/designer-cost-paths-throughput.png",
+      "paper/generated/native-design-v2-supplement/outside-activity-resources-2y.png"
+    ]
+  },
+  "support_files": {
+    "manifest_sha256": "adefd67cf90452e7ae10cebc4c5f84c43f5ff9cc2e7fd98899a98790407372b6",
+    "files": [
+      "paper/integrated-content-map.md",
+      "paper/neurips_2025.sty",
+      "paper/references.bib",
+      "paper/submission-sources.bib"
+    ]
+  },
+  "evidence_files": {
+    "manifest_sha256": "881f9f516d3457c523445fed5b7bbccbd7103536dce9b3fa0df8ed53ef6fb977",
+    "files": [
+      "paper/figures/native-panel-sensitivity-v1/manifest.json",
+      "paper/generated/metric-conditioned/metric-conditioned-paper-slice.json",
+      "paper/generated/native-design-v2-supplement/manifest.json",
+      "paper/generated/native-design-v2-supplement/supplement.json",
+      "paper/generated/native-design-v2/cross-score-data.json",
+      "paper/generated/native-design-v2/search-outcomes-data.json",
+      "research/data/causal-authoring-assay-v1/audit.json",
+      "research/data/causal-authoring-assay-v1/costs.json",
+      "research/data/causal-authoring-assay-v1/fixed-record-probe.json",
+      "research/data/causal-authoring-assay-v1/manifest.json",
+      "research/data/causal-authoring-assay-v1/policies.json",
+      "research/data/native-causal-design-v1/initial-system.json",
+      "research/data/native-panel-sensitivity-v1/report.json",
+      "research/data/native-resource-support-v1/summary.json",
+      "research/data/pre-scale-information-v1/costs.json",
+      "research/data/pre-scale-information-v1/manifest.json",
+      "research/data/pre-scale-information-v1/report.json",
+      "research/data/pre-scale-information-v1/selector-diagnostic.json",
+      "research/data/pre-scale-search-v1/costs.json",
+      "research/data/pre-scale-search-v1/manifest.json",
+      "research/data/pre-scale-search-v1/mechanism-changes.json",
+      "research/data/pre-scale-search-v1/report.json",
+      "research/results/causal-authoring-assay-v1.md",
+      "research/results/metric-conditioned-heldout-v1-1.md",
+      "research/results/native-component-lab-real-diagnostic-v1.json",
+      "research/results/native-control-followup-v12-a1.json",
+      "research/results/native-design-freedom-v2-closed-analysis-v1.json",
+      "research/results/native-design-freedom-v2-paper-evidence-v1.json",
+      "research/results/native-loop-stopped-prefix-verification-v1.json",
+      "research/results/native-method-paths-v10-a1.json",
+      "research/results/native-nested-search-v13-a1.json",
+      "research/results/native-objective-redesign-v12-a1.json",
+      "research/results/native-objective-structure-v8-a2.json",
+      "research/results/native-objective-support-screen-v1.json",
+      "research/results/native-open-estimators-v11-a1.json",
+      "research/results/native-panel-sensitivity-v1.md",
+      "research/results/native-post-edit-feedback-verification-v1.json",
+      "research/results/native-qwen-response-v9-a3.json",
+      "research/results/native-resource-support-verification-v1.json",
+      "research/results/pre-scale-information-verification-v1.json",
+      "research/results/pre-scale-search-closed-verification-v1.json"
+    ]
+  },
+  "manifest_encoding": "SHA256 of UTF8 json.dumps(path_to_file_sha256, sort_keys=True, separators=(comma, colon)); repository-relative paths",
+  "preserved_files": {
+    "output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf": "d98abe72b4d86a225830a66e23c3627c3446f0a1e6af35e40778209953d40142",
+    "output/pdf/science-utopia-lab-integrated-pre-scale-information-41p.pdf": "87a579c86c280e464598d625729e2be1f1f0ff7cd673565a9373dd30f39b0dbb",
+    "output/pdf/science-utopia-lab-integrated-working-paper.pdf": "3f77d91d27ce97dc17a076bd7da764be7a4cb4feafd6a81ab9cd45601d9f19d6",
+    "output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf": "26832b71d69680b552b4ec9b0b104c2d5537e17583aebfc5a87f0e094812fb1d"
+  },
+  "visual_review": {
+    "all_final_pages_reviewed": true,
+    "pages_reviewed": 49,
+    "all_pages_contact_dpi": 85,
+    "new_tables_and_equation_individually_reviewed_at_125dpi": [
+      30,
+      31,
+      32
+    ],
+    "page_png_manifest_sha256": "9483cf82546ce151a223306186ece7fb457ff6efde1a249bc3d1c192a46a9877",
+    "result": "All49 pages inspected in five contact sheets; new slots/resource tables and equation individually checked. Concise major-section contents and full-depth PDF bookmarks retain navigation; no observed clipping/overlap."
+  },
+  "clean_source_qa": {
+    "source_commit": "dcb694f32004fa116bc7cf64a7138e395abb7c02",
+    "passed": 30,
+    "failed": 0,
+    "seconds": 3.68,
+    "junit_path": "outputs/integrated-native-final-source-qa-a1.xml",
+    "junit_sha256": "57ec994b0a4e01743e90fc66e397a31fcde5a26815c5fd533867fb727bd2b59f"
+  },
+  "retained_failed_build": {
+    "source_commit": "d6010fb",
+    "first_directory": "tmp/pdfs/integrated-native-final-v5",
+    "second_directory": "tmp/pdfs/integrated-native-rebuild-v5",
+    "exit_codes": [
+      1,
+      1
+    ],
+    "cause": "8.5-point contents requested unavailable cached cmr8 metrics; no dependency/network download. Later final source uses existing small font and concise contents."
+  },
+  "scientific_scope": {
+    "new_model_calls_from_manuscript": 0,
+    "new_candidate_worlds_or_losses_from_manuscript": 0,
+    "stopped671436a_counted_as_normal_closure": false,
+    "ongoing_f1f8ddf_evaluation_counted_as_completed": false,
+    "post_edit_actual35B_self_repair_claimed": false,
+    "resource_boundaries_establish_within_year_minima": false,
+    "conditional_accept_all_proved_global_optimum": false,
+    "important_new_main_conference_result_or_publication_readiness_claimed": false
+  },
+  "external_upload_or_push": false
+}

@@ -15,6 +15,18 @@ AFlow、ADAPT、Mining MAS Workflows、AI Scientific Communityの公式arXiv met
 再確認し、trajectory保存やexecution feedback等を独自発明としない関連研究を追加。
 原47頁と旧build receiptは一切変更しない。主会議ready判定は未達のまま。
 
+最終source dcb694f32004fa116bc7cf64a7138e395abb7c02で49ページ版を二回cache-only
+buildし、抽出text SHA256=8b9ae72e89c637f5fb6c1a724358b000a1e8b4ab4b70fac98ce5c58a27227758
+が一致。PDF SHA256=be3758ccaadcf5705af870402efc40d2566231205d35f93558545d5eded6e2d6。
+20figures／20tables、全49頁を5contact sheetsで確認、新表と式の30–32頁を125dpiでも確認。
+Poppler bbox XMLのpage/word boundsにoff-page0、未解決参照0、layout警告0。
+pdfplumberはvenvに無いため使用せず、追加installなし。目次font8.5pt試行はcache内cmr8が
+なくexit1、元logsを保持。最終版は既存small fontの主要section目次＋詳細PDF bookmarksにし、
+本文を削らずほぼ空白の目次頁を除いた。source-bound30件3.68秒、retained PDF／manifestを
+追加照合する14件2.63秒pass。旧47頁も含む4PDFのbytesは不変。
+15:53:56UTC観測では固定候補評価29/30、evaluation-029実行中。
+新code-tested writerと両後処理chainはclosure待機。科学lossや候補を原稿作成で追加しない。
+
 ユーザーはtop conferenceへpublication-readyになるまでの自律継続を依頼。
 新しいgoal toolをactiveにし、[研究目標](../publication/publication-ready-v3.md)と
 [次の有限protocol](../protocols/campaigns/native-institution-loop-v1.md)を作成した。

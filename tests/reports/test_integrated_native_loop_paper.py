@@ -2,6 +2,8 @@
 import json
 from pathlib import Path
 import re
+import hashlib
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -64,3 +66,23 @@ def test_new_section_references_are_closed_without_dropping_old_sections():
     bib = (ROOT / 'paper/submission-sources.bib').read_text()
     for key in ('zhang2024aflow', 'feng2026adapt', 'cadet2026mining', 'braganeto2026community'):
         assert key in text and '{' + key + ',' in bib
+
+
+def test_reviewed_snapshot_keeps_original_pdf_and_exact_source_boundaries():
+    r = load('paper/integrated-native-execution-build-v1.json')
+    assert r['schema'] == 'scienceutopia.integrated-native-execution-paper-build.v1'
+    sha = lambda b: hashlib.sha256(b).hexdigest()
+    assert sha((ROOT / r['output']).read_bytes()) == r['pdf_sha256']
+    for name, expected in r['preserved_files'].items():
+        assert sha((ROOT / name).read_bytes()) == expected
+    for group in ('source_files', 'figure_files', 'support_files', 'evidence_files'):
+        values = {name: sha(subprocess.check_output(
+            ['git', 'show', r['source_commit'] + ':' + name], cwd=ROOT))
+            for name in r[group]['files']}
+        assert sha(json.dumps(values, sort_keys=True, separators=(',', ':')).encode()) == r[group]['manifest_sha256']
+    assert r['pages'] == r['visual_review']['pages_reviewed'] == 49
+    assert r['build']['exit_codes'] == [0, 0] and r['build']['text_identical']
+    assert not r['build']['off_page_text_words']
+    assert all(value is False for key, value in r['scientific_scope'].items()
+               if key not in ('new_model_calls_from_manuscript', 'new_candidate_worlds_or_losses_from_manuscript'))
+    assert r['scientific_scope']['new_model_calls_from_manuscript'] == 0
