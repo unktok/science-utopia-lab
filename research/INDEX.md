@@ -10,8 +10,11 @@ Historical documents retain their paths and source identities.
   distinguish fixed-family limits, information/action access and representation/search.
   [First implementation and native connection evidence](results/institution-causal-design-v1.md)
   adds an explicit review-routing domain and opt-in phase-order authoring context.
-  173 clean-source checks pass; real-LLM comparison and new closed-loop study
-  are not yet started. This is the next research stage, not another claim of9/9 completion.
+  [Eight-session actual-model diagnostic and fixed-input execution](results/causal-authoring-assay-v1.md)
+  now close with two identical cold audits.8/8 static-valid, seven source edits/one numeric edit,
+  one runtime-exception and one empty-decision candidate in partial probes; no new native losses.
+  Inline order context and complete routing ABI cards are prospective, software-tested additions.
+  The new native closed-loop study is not yet started. This is not another claim of9/9 completion.
   [November11 log](logbook/2026-11-11-institution-causal-design.md).
 
 - [Active pre-scale completion](pre-scale-completion.md) and

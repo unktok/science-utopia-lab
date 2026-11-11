@@ -17,9 +17,16 @@ HTTP/corpus. This is not a live-Qwen invention result or a new optimizer ranking
 The first169pass/1fail check is preserved; its only batch differences were raw
 submission times, controlled within each pair and tested again at another clock.
 
-Next: freeze the two request histories and exact new source, fresh real-backend
-readiness, then at most8 actual authoring sessions comparing operational-order
-context on/off. No new live-model study is currently running. The previous
+The [eight-session actual-model diagnostic](results/causal-authoring-assay-v1.md)
+is now closed:8/8 static-valid submissions, identical original-source cold audits,
+seven selector-source edits and one upstream numeric edit; no wiring/schedule changes.
+Four-frame partial Docker probes preserve one runtime-exception candidate and one
+empty-decision candidate. The numeric candidate's changed upstream was not executed
+by that partial probe. No new candidate loss or native world was measured.
+Optional order/capability reference files were not read. Prospective inline order
+context and detailed routing ABI cards are implemented and software-tested, not
+live-model validated. Next is a separately frozen native closed-loop comparison,
+not a refill of these eight sessions. No live-model writer is currently running. The previous
 44-page PDF and completed experiments below remain unchanged. New top-conference
 research claims have not yet been established.
 

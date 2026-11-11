@@ -56,3 +56,32 @@ T/Eの旧code-and-graph G0/G1 requestをそのまま履歴として固定し、�
 これは今回の未発明の原因同定ではない。`a2fb13c`の8件へは遡及適用しない。
 将来このcatalogを使う実モデル実験には別sourceのfresh readinessが必要。
 catalog単体28件pass（1.95秒）。
+
+## 8枠の閉鎖と実入力診断
+
+06:22:08〜06:53:10UTC（15:22〜15:53JST）、約31分でreadiness58 chat＋authoring110 chatが閉じた。
+8/8が最終提出・静的有効。5回の途中action rejectionも枠内で保持し、補充なし。
+元source cold audit2回のSHAはともに`77c06be4f650ecb8f0120d13c524580c59253171a9b852517951f851a6d5a270`。
+コード7案とルーター数値1案、配線・schedule変更0。任意順序fileを読んだ案0。
+
+新しいnative worldは作らず、別protocol/bda0406で元コード4回の完全再実行と
+8候補×4固定入力の部分実行を終えた。例外4回、empty_cycleによる被覆失敗4回を保持。
+数値案の上流変更はこのprobeでは実行していない。6制度が世界全体で正しいとの判定ではない。
+E実履歴／説明なしのfinal_score底上げは、元査読値を使うQを増やさない。
+モデルの説明・source変更・実関数出力・native lossを別に記録した。
+
+計画時に順序を直接見せる明示inlineオプションを別source3156365へ実装。
+失敗した初回unit fixture（connectionなしのfixtureのindex0を参照）は修正し、
+元のfile方式の挙動と再開拘束を保って158件pass。今回の8枠への変更・再試行はない。
+inlineの実モデル品質はまだ測っていない。新しいABI cardと共に次回fresh readinessが必要。
+
+source-only compact exportは数値案を表せないため保存前に停止した。
+全literal patchを保持する方式へ修正し、数値のみ／数値＋codeの回帰を追加、3件pass。
+5 JSONのexportは保持データ＋独立再構築2回で全て同一バイト、全candidate fingerprintが一致。
+「全8件がコード変更」という途中報告を訂正し、数値案の部分probe限界を明記した。
+
+[結果](../results/causal-authoring-assay-v1.md)・[source別検証](../results/causal-authoring-assay-verification-v1.json)・
+[保持データ](../data/causal-authoring-assay-v1/README.md)へまとめた。
+chatとは別の空load10回も保持し、未報告token countsを0へ補完しない。
+旧PDFと旧実験は変更しない。新しい世界のloss比較、勾配の有効性、制度発明、top conference到達は未実証。
+全実モデルwriterは終了。次のlive閉ループはまだ開始していない。

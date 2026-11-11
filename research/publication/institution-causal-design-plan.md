@@ -70,7 +70,10 @@ source別・説明条件別にfresh readinessを行い、完了不明なら次�
 
 技術的有効性、実際のedit、実入力・taskへの作用、説明と実作用の対応、token／時間を別々に報告する。
 この段階の目的は、過去の不成功がどこで生じたかを検証すること。lossの勝者や異なるgraphの強制ではない。
-新しいlocal-LLM比較はまだ開始していない。request履歴とsourceを固定するまではdispatchしない。
+初版時点では未dispatchだった。この[8 session診断と部分実行](../results/causal-authoring-assay-v1.md)は
+source／履歴を固定後に完了した。任意説明fileは読まれず、8提出のうち7件はcode、1件は数値の変更。
+新しいworld lossは測っていない。次回用の計画時inline表示と詳細ABI cardは別sourceに実装し、
+今回へ遡及適用しない。第三段階の新しいlive closed-loop protocolはまだ凍結・開始していない。
 
 ## 第三段階 目的別の閉ループと機構比較
 

@@ -1,0 +1,85 @@
+{
+  "schema": "scienceutopia.causal-authoring-verification.v1",
+  "date": "2026-11-11",
+  "assay": {
+    "source_commit": "a2fb13caab1169c5ff6f07119f7689db28ed888f",
+    "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/causal-authoring-assay-v1-a1/outputs/causal-authoring-assay-v1-a1",
+    "plan_file_sha256": "2047a9d9b24595b4b336249c1a421c9bb826b6ca148b9d3306083ba9e3220ac2",
+    "cold_audits_byte_identical": true,
+    "cold_audit_file_sha256": "77c06be4f650ecb8f0120d13c524580c59253171a9b852517951f851a6d5a270",
+    "static_valid_submissions": 8,
+    "source_edits": 7,
+    "upstream_numeric_edits": 1,
+    "wiring_changes": 0,
+    "schedule_changes": 0,
+    "optional_order_file_read_sessions": 0,
+    "readiness_conditions": 2,
+    "readiness_controls_each": 29,
+    "readiness_copy_differences_each": 2,
+    "chat_posts": 168,
+    "separate_empty_prompt_loads": 10,
+    "empty_load_token_counts_unreported": true,
+    "new_scientist_inference": 0,
+    "new_native_worlds": 0,
+    "new_candidate_losses": 0
+  },
+  "fixed_record_probe": {
+    "source_commit": "bda040641adc5038d6d63762a3affb1b76f2be28",
+    "root": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/causal-authoring-record-probe-v1-a1/outputs/causal-authoring-record-probe-v1-a1",
+    "plan_file_sha256": "d9a13cad1e3c07d4661593570c68cba0784f38d83463773bb110835aea5d0658",
+    "report_file_sha256": "a314e0eac34edbb3746fd0ada8ae39e1c5156d5367fce8630d594e1557101744",
+    "original_container_exact_replays": 4,
+    "candidate_container_executions": 32,
+    "function_completed": 28,
+    "exact_paper_identity_coverage": 24,
+    "runtime_exception_candidate": "efficiency-h0-on",
+    "empty_decision_candidate": "throughput-h1-on",
+    "numeric_candidate_upstream_not_executed": "efficiency-h0-off",
+    "whole_native_policy_validation": false
+  },
+  "software_checks": [
+    {
+      "source_commit": "a2fb13caab1169c5ff6f07119f7689db28ed888f",
+      "scope": "finite assay, existing bounded worker and causal context",
+      "passed": 27,
+      "seconds": 2.79,
+      "junit_sha256": "662130bfe8ca5cfec1e39b18e51c74a0c7f418e0ad3e5dbbbb78ee4b7abf7bed"
+    },
+    {
+      "source_commit": "f98f725c3dd8a47029fdb7fb3ff26572c07b38e8",
+      "scope": "routing ABI cards and actual Simulation/networkless Docker with scripted scientists",
+      "passed": 78,
+      "seconds": 28.17,
+      "junit_sha256": "f8a1598ed6f46fc86ba6e7fda7b2dddc5ee4acf8b82017711969dabc8b794322"
+    },
+    {
+      "source_commit": "bda040641adc5038d6d63762a3affb1b76f2be28",
+      "scope": "fixed-record probe, bounded assay, capability catalogue",
+      "passed": 37,
+      "seconds": 2.07,
+      "junit_sha256": "df502d24c38bbce905a13619f928e5b3e311a756741dad0c4450d73a6eb0d690"
+    },
+    {
+      "source_commit": "31563651a1b19f2b48926801325161dd8bf214c9",
+      "scope": "prospective inline context, immutable campaign, bounded/history/editor replay and cards",
+      "passed": 158,
+      "seconds": 36.76,
+      "junit_sha256": "58a9945a0b9f612879377fd65bfd3d4455652a6208f94f93a4cfaac3ed8a6009",
+      "real_model_inline_validation": false
+    }
+  ],
+  "retained_exports": {
+    "directory": "research/data/causal-authoring-assay-v1",
+    "three_exports_each_byte_identical": true,
+    "files_each_export": 5,
+    "all_eight_candidate_fingerprints_reconstructed": true,
+    "raw_logs_in_git": false
+  },
+  "claims": {
+    "objective_conditioned_native_loss_improvement": false,
+    "context_effect_established": false,
+    "new_institution_or_wiring_invention": false,
+    "top_conference_ready": false,
+    "old_experiments_or_pdf_modified": false
+  }
+}
