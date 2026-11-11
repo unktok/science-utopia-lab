@@ -14,17 +14,20 @@ from utopia.optimization.native_numeric_designer import checked,save
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def run(args):
+def run(args,*,plan_schema='scienceutopia.native-code-tested-loop.v1.plan',
+        preceding_schema='scienceutopia.code-tested-loop-finish.v1',
+        continuation_schema='scienceutopia.code-tested-report-finish.v1',
+        report_module='scripts.reports.native_code_tested_loop_v1'):
     root=args.run.resolve();analysis=args.analysis.resolve();out=args.output.resolve();source=git_binding(ROOT)
     plan=checked(json.loads((root/'plan.json').read_text()));start=json.loads((analysis/'started.json').read_text())
     if (out.exists() or out.is_relative_to(root) or out.is_relative_to(analysis)
-            or plan['schema']!='scienceutopia.native-code-tested-loop.v1.plan'
-            or start['schema']!='scienceutopia.code-tested-loop-finish.v1'
+            or plan['schema']!=plan_schema
+            or start['schema']!=preceding_schema
             or start['scientific_source_commit']!=plan['source_commit']
             or start['plan_file_sha256']!=sha(root/'plan.json')):
         raise ValueError('exact original run/analysis and fresh external output required')
     plan_hash=sha(root/'plan.json');out.mkdir(parents=True)
-    save(out/'started.json',{'schema':'scienceutopia.code-tested-report-finish.v1',
+    save(out/'started.json',{'schema':continuation_schema,
         'analysis_source_commit':source,'scientific_source_commit':plan['source_commit'],
         'preceding_analysis':str(analysis),'plan_file_sha256':plan_hash,
         'started_utc':datetime.now(timezone.utc).isoformat(),'maximum_wait_seconds':86400,
@@ -38,7 +41,7 @@ def run(args):
             'audit_file_sha256':closed['audit_file_sha256'],'cost_file_sha256':closed['cost_file_sha256']})
         for i in (1,2):
             stage='report-'+str(i)
-            argv=[sys.executable,'-m','scripts.reports.native_code_tested_loop_v1','--run',str(root),
+            argv=[sys.executable,'-m',report_module,'--run',str(root),
                 '--audit-one',str(analysis/'audit-1.json'),'--audit-two',str(analysis/'audit-2.json'),
                 '--output',str(out/stage)]
             save(out/(stage+'.started.json'),{'command':argv})
