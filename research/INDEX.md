@@ -10,7 +10,8 @@ Historical documents retain their paths and source identities.
   [New native closed-loop protocol](protocols/campaigns/native-institution-loop-v1.md)
   and [execution log](logbook/2026-11-11-publication-ready-native.md).
   New source, unchanged T/E, strong routing controls, twelve finite proposals;
-  not yet a running experiment or a conference-ready result.
+  running at frozen671436a after fresh28/28 editor and2/2 numeric readiness;
+  first native reference starts08:20UTC. Not a conference-ready result.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.
@@ -20,7 +21,8 @@ Historical documents retain their paths and source identities.
   now close with two identical cold audits.8/8 static-valid, seven source edits/one numeric edit,
   one runtime-exception and one empty-decision candidate in partial probes; no new native losses.
   Inline order context and complete routing ABI cards are prospective, software-tested additions.
-  The new native closed-loop study is not yet started. This is not another claim of9/9 completion.
+  The new native closed-loop study is running; no new search/evaluation conclusion yet.
+  This is not another claim of9/9 completion.
   [November11 log](logbook/2026-11-11-institution-causal-design.md).
 
 - [Active pre-scale completion](pre-scale-completion.md) and

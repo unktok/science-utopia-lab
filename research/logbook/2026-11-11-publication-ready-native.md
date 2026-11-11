@@ -48,3 +48,23 @@ profileをbuild_promptへ渡さず、planning_conversationも旧schemaのkeyを�
 file/inline/旧既定を区別する17件が14.19秒でpass。
 copy taskのSYSTEMは維持し、loss最適化とcopyを混ぜず、旧証明書・停止成否を変更しない。
 修正sourceを新a3へ固定して再開する。新source校正の費用もa2の16応答と分けて保持する。
+
+## 修正sourceの実校正を通過し、native worldへ
+
+clean671436ad207688dc230596e8d0c4a8f5f1a87d76で183件pass／64.39秒。
+JUnit file SHA256=`fbc994fb39476287393b0152a41071724cd225f08923b695ebba7782137e16da`。
+新しいimmutable checkoutは`science-utopia-lab-experiments/native-institution-loop-v1-a3`、
+rawはその`outputs/native-institution-loop-v1-a3/`。
+plan file SHA256=`c563c0b15554ad5a03040397954ff9474f7b22692000c133ad68de5c57618022`、
+content SHA256=`ae486b90ce3ada4b4aeee7bb8af06fa01c2018f30ef4dd8431c1110bf2f94d2b`。
+08:17:03UTC／PID37093で開始。actual editor28/28の全controlsとcold replayがpass、
+numeric T/Eともliteral提案・replayがpassし、08:20:00UTCからopen-seed参照worldに入った。
+08:22UTCには元のSimulationで研究方向、資金申請・評価のQwen呼出が進行。
+copy校正の通過は自由提案の理解・成功や損失改善を示すものではない。
+使用seed・目的・予算・失敗停止条件を変更せず、そのまま有限実験を継続する。
+
+待ち時間には別branch上で新閉ループ専用のcold auditorを実装。
+凍結sourceを先頭に置いた別interpreterでnative libraryを読み、各proposalのfresh校正、
+その時点で存在した他目的の履歴prefix、実dispatch時の校正age、全null、selection前後、
+shared physical jobを検証する。科学モデル呼出・生成codeの再実行はしない。
+26 synthetic guardsが3.91秒でpass。実閉鎖データの全auditはまだ実行していない。

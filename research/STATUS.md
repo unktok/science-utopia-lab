@@ -9,7 +9,13 @@ and [execution log](logbook/2026-11-11-publication-ready-native.md).
 The [new native closed-loop pilot](protocols/campaigns/native-institution-loop-v1.md)
 fixes T/E, three design domains, twelve proposals, eight strong references
 including typed review-work controls, and selection-fixed unused evaluation.
-It is being prepared at a separate source; no new world has been dispatched yet.
+It is running at frozen671436a in experiment `native-institution-loop-v1-a3`:
+fresh real editor28/28 and numeric2/2 readiness pass; the first native reference
+world starts08:20UTC. PID37093 was observed executing original Qwen researcher
+requests, not merely waiting in a scheduler. This is a dated observation, not a
+live heartbeat. The earliera2 stops before any world on a calibration-schema bug;
+its16 completed control responses and failure stay unchanged. Full-path scripted
+calibration/cold replay regressions and183 checks pass at the corrected source.
 Its finite53-world ceiling is not a guarantee of an important positive result or
 publication readiness. No new paid/remote model, public submission or push.
 
@@ -36,10 +42,11 @@ seven selector-source edits and one upstream numeric edit; no wiring/schedule ch
 Four-frame partial Docker probes preserve one runtime-exception candidate and one
 empty-decision candidate. The numeric candidate's changed upstream was not executed
 by that partial probe. No new candidate loss or native world was measured.
-Optional order/capability reference files were not read. Prospective inline order
-context and detailed routing ABI cards are implemented and software-tested, not
-live-model validated. Next is a separately frozen native closed-loop comparison,
-not a refill of these eight sessions. No live-model writer is currently running. The previous
+Optional order/capability reference files were not read. Inline order context
+and detailed routing ABI cards are implemented; fresh copy controls now pass at
+the new source, not yet evidence of free-design comprehension. The separately
+frozen native closed-loop comparison above is running, not a refill of these
+eight sessions. The previous
 44-page PDF and completed experiments below remain unchanged. New top-conference
 research claims have not yet been established.
 

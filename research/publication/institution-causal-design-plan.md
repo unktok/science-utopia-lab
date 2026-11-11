@@ -73,7 +73,9 @@ source別・説明条件別にfresh readinessを行い、完了不明なら次�
 初版時点では未dispatchだった。この[8 session診断と部分実行](../results/causal-authoring-assay-v1.md)は
 source／履歴を固定後に完了した。任意説明fileは読まれず、8提出のうち7件はcode、1件は数値の変更。
 新しいworld lossは測っていない。次回用の計画時inline表示と詳細ABI cardは別sourceに実装し、
-今回へ遡及適用しない。第三段階の新しいlive closed-loop protocolはまだ凍結・開始していない。
+今回へ遡及適用しない。第三段階は別の[新protocol](../protocols/campaigns/native-institution-loop-v1.md)を
+671436aへ凍結し、fresh28/28＋2/2校正通過後08:20UTCにnative参照worldを開始した。
+全search/evaluation結果や重要な研究知見が得られたという意味ではない。
 
 ## 第三段階 目的別の閉ループと機構比較
 

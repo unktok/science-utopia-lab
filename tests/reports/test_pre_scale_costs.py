@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from scripts.reports.pre_scale_costs_v1 import analyze,numeric_event,staged_event
+from scripts.reports.pre_scale_costs_v1 import analyze,numeric_event,staged_event,classify_numeric,classify_staged
 from scripts.reports.native_auxiliary_costs import summarize
 from scripts.analyze_native_open_v7 import _inventory
 from utopia.system.design_patch import digest
@@ -98,3 +98,24 @@ def test_projection_binds_exact_audited_raw_bytes_without_writing_them(tmp_path)
 def test_live_or_source_mismatched_audit_is_rejected_before_raw_read(tmp_path):
     p,a=empty_audit(tmp_path);a['schema']='live-progress';a=hashed({k:v for k,v in a.items() if k!='content_sha256'})
     with pytest.raises(ValueError,match='closed original-source'):analyze(tmp_path,p,a)
+
+
+def test_per_proposal_and_initial_readiness_are_not_counted_as_free_design():
+    for prefix in ('initial-readiness/', 'search/run-00/efficiency--parameters/readiness-1/'):
+        assert classify_numeric(prefix+'numeric-readiness/authoring/generation-X/call-0.intent.json')=='numeric-readiness'
+        assert classify_staged(prefix+'editor-readiness/wire/dispatch-000.intent.json')=='editor-readiness'
+    assert classify_numeric('search/run-00/T/authoring/generation-X/call-0.intent.json')=='numeric-proposal'
+    assert classify_staged('search/run-00/T/authoring/generation-X/wire/dispatch-000.intent.json')=='staged-proposal'
+
+
+def test_native_loop_costs_cannot_treat_a_stopped_or_mismatched_terminal_as_closed(tmp_path):
+    from utopia.optimization.native_numeric_designer import save
+    p,_=empty_audit(tmp_path)
+    start=save(tmp_path/'started.json',{'plan_sha256':p['content_sha256']})
+    terminal=save(tmp_path/'terminal.json',{'status':'stopped'})
+    inventory=_inventory(tmp_path)
+    audit=hashed({'schema':'scienceutopia.native-institution-loop-audit.v1','source_commit':p['source_commit'],
+        'plan_sha256':p['content_sha256'],'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),
+        'source_proof':{'status':'verified-exact-source-closure'},'new_model_calls':0,'new_code_executions':0,
+        'closure':{'started':start,'terminal':terminal}})
+    with pytest.raises(ValueError,match='loop closure'): analyze(tmp_path,p,audit)

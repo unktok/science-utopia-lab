@@ -1,4 +1,4 @@
-"""Closed-audit cost components for M and O/E, including every model role.
+"""Closed-audit cost components for native studies, including every model role.
 
 Read-only journals, no inference. Counts are provider-reported usage, not fresh
 GPU work or monetary cost. Native/transport aliases and nested times stay apart.
@@ -17,15 +17,16 @@ from utopia.system.design_patch import digest
 from utopia.utils.data_utils import decode_json,file_sha256,write_json_atomic
 
 SCHEMA='scienceutopia.pre-scale-cost-components.v1'
-AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-search-audit.v1')
+AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-search-audit.v1',
+        'scienceutopia.native-institution-loop-audit.v1')
 
 
 def classify_numeric(relative):
-    return 'numeric-readiness' if Path(relative).parts[0]=='numeric-readiness' else 'numeric-proposal'
+    return 'numeric-readiness' if 'numeric-readiness' in Path(relative).parts else 'numeric-proposal'
 
 
 def classify_staged(relative):
-    return 'editor-readiness' if Path(relative).parts[0]=='editor-readiness' else 'staged-proposal'
+    return 'editor-readiness' if 'editor-readiness' in Path(relative).parts else 'staged-proposal'
 
 
 def numeric_event(relative,intent,response,*,model):
@@ -75,20 +76,27 @@ def analyze(root,plan,audit):
             or plan['content_sha256']!=audit['plan_sha256']
             or audit.get('source_proof',{}).get('status')!='verified-exact-source-closure'
             or audit['new_model_calls']!=0 or audit['new_code_executions']!=0):
-        raise ValueError('matching closed original-source M or O/E audit required')
+        raise ValueError('matching closed original-source native study audit required')
     before=_inventory(root)
     if digest(before)!=audit['raw_inventory_sha256'] or len(before)!=audit['raw_files']:
         raise ValueError('raw inventory changed from closed original-source audit')
-    closure_name='mechanisms-complete.json' if audit['schema']==AUDITS[0] else 'complete.json'
+    closure_name=('mechanisms-complete.json' if audit['schema']==AUDITS[0]
+                  else 'terminal.json' if audit['schema']==AUDITS[2] else 'complete.json')
     if closure_name not in before:raise ValueError('normal scientific closure required before cost projection')
     closure=checked(json.loads((root/closure_name).read_text()))
-    if closure['plan_sha256']!=plan['content_sha256']:raise ValueError('closure plan differs')
+    if audit['schema']==AUDITS[2]:
+        start=checked(json.loads((root/'started.json').read_text()))
+        if (closure.get('status')!='closed' or audit.get('closure',{}).get('terminal')!=closure
+                or audit['closure'].get('started')!=start
+                or start['plan_sha256']!=plan['content_sha256']):
+            raise ValueError('native loop closure differs from exact cold audit')
+    elif closure['plan_sha256']!=plan['content_sha256']:raise ValueError('closure plan differs')
     if audit['schema']==AUDITS[0]:
         if closure['slots']!=12 or len(closure['all_observation_file_sha256'])!=12 or len(audit['rows'])!=12:
             raise ValueError('all twelve closed mechanism slots required')
         if any(before.get(name)!=identity for name,identity in closure['all_observation_file_sha256'].items()):
             raise ValueError('closed mechanism observations differ')
-    elif closure['selection_sha256']!=audit['selection']['content_sha256']:
+    elif audit['schema']==AUDITS[1] and closure['selection_sha256']!=audit['selection']['content_sha256']:
         raise ValueError('closed O/E selection differs')
     def read(relative,hashed=True):
         if relative not in before:raise ValueError('unaudited cost record')
