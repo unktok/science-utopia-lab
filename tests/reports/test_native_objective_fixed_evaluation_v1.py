@@ -42,7 +42,7 @@ def test_preserves_all_five_controls_null_arm_and_selected_ties_without_reselect
         assert 'selected:content-utility' not in job['labels']
     selected=[j for j in p['jobs'] if 'selected:throughput' in j['labels']]
     assert len(selected)==3 and all('reference:reviewed-all-connected' in j['labels'] for j in selected)
-    c=clone(p);c['fixed_selection']['selected']['throughput']['system']['parameters']['SCRIPTED-new']=1
+    c=clone(p);c['fixed_selection']['selected']['throughput']['system']['initial_state']['SCRIPTED-new']=1
     assert len(module.jobs_for(c))==18  # Only exact literal equality deduplicates.
     old=original['observer_contract'];new=p['observer_contract']
     assert {k:v for k,v in old.items() if k not in ('source_commit','content_sha256')}=={
@@ -55,7 +55,7 @@ def test_rejects_changed_science_or_fabricated_selection(tmp_path,monkeypatch,ch
     if change=='stopped':a['closure']['terminal']['status']='stopped'
     elif change=='wrong-source':a['source_commit']='f'*40
     elif change=='reference-fallback':a['selection']['baseline_fallback']=True
-    elif change=='changed-system':a['selection']['selected']['throughput']['system']['parameters']['SCRIPTED-new']=1
+    elif change=='changed-system':a['selection']['selected']['throughput']['system']['initial_state']['SCRIPTED-new']=1
     elif change=='tie-missing':a['selection']['selected']['throughput']['all_tied_ids'].pop()
     elif change=='consumed-seed':usages[0]['prior_matching_runs']=[{'SCRIPTED':'used'}]
     else:backend={**backend,'ollama_version':'changed'}
