@@ -9,12 +9,12 @@ The four resource controls establish a consequential native action at base30;
 the fixed-content readout establishes support for a separately declared preference.
 Neither supplies the answer to this new optimization question.
 
-This is the prospective implementation specification, **not a frozen launch
-plan or a running experiment**. Dispatch requires the source-bound runner,
-actual saved-plan reconstruction, original-input test bank, calibrated designer,
-auditor and untouched evaluation-seed check below. The next implementation work
-is these connections, not additional source/metric brainstorming or more seeds
-for the completed developer assay.
+The source-bound runner, additional-observer cold audit, finite closure and
+cost paths are implemented. The original-input bank contains48 recorded inputs;
+12 original component executions match their recorded outputs. This protocol
+is not itself a frozen launch plan. Dispatch still requires a clean source,
+actual saved-plan reconstruction and untouched evaluation-seed inventory;
+each generation then requires its own fresh real designer certificate.
 
 ## Question and hypotheses
 
@@ -42,9 +42,15 @@ bound to actual founder proof. Development seed61001 is reused and named as such
 Researcher and designer weights remain fixed; use only the existing local35B
 designer, pinned no-network executor and offline data.
 
-Both searches start from reviewed accept-all with the developer whole-unit
-liquidity program connected. Starting from a strong rule avoids making a weak
-initial threshold the main comparator. Within the explicit fixed-production,
+Both searches have the same reviewed accept-all design anchor with the
+developer whole-unit liquidity program connected. The actual first and later
+editing parent minimizes the assigned loss across the five common measured
+references and that arm's own completed history. Consequently the objectives
+can have different first parents. This is an end-to-end objective-conditioned
+search, not a controlled comparison holding the editing parent fixed. Choosing
+an existing reference is not a newly invented rule, and a reference cannot
+become the final selection without an explicit submitted candidate.
+Within the explicit fixed-production,
 review-routing design domain, arbitrary institutional code, state, mechanisms,
 entities, edges, protocols and institutional schedules remain editable. New
 resource/selection/information mechanisms need not resemble this starting rule.
@@ -82,9 +88,11 @@ The original-input component bank must include successful recorded selection,
 information-feature and pre-cost liquidity contexts from the fully audited
 developer worlds, including empty cycles. Test exact edited code in the existing
 container, persist observed errors with code versions, and declare the finite
-probe budget in the actual worker contract. The prior worker hardcodes8 probes;
-budget support must be changed prospectively and tested before a new value is
-claimed. Passing fixtures never vetoes or guarantees whole-world execution;
+probe budget in the actual worker contract. The default legacy scope remains8
+probes. This prospective worker explicitly opts into64 attempts per proposal;
+the calibration-to-production path and cold replay are tested with more than8
+observations. Results remain attached to the exact current code through later
+reads. Passing fixtures never vetoes or guarantees whole-world execution;
 unconfigured interfaces stay legal. No host source repair or hidden retry.
 
 Use a fresh policy-blind three-position common observer for all development
@@ -103,9 +111,9 @@ with no completed policy stays unavailable; no seed/reference fallback. Freeze
 the whole selected literal system, not only its favorable parameter values.
 
 A separate evaluation then compares both available fixed selections and all five
-controls at three world seeds unused in every checked project raw root: at most21
-worlds. Choose and inventory the explicit seed IDs before dispatching development;
-do not choose them after seeing search trajectories. The same source, corpus,
+controls at three world seeds64101,64107,64113, required to be unused in every
+checked project raw root: at most21 worlds. Inventory these explicit IDs before
+dispatching development, not after seeing search trajectories. The same source, corpus,
 world laws, endowment and observer definition remain fixed. Changing initial
 endowment is a later robustness question, not another unused seed.
 

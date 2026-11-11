@@ -2,12 +2,16 @@
 
 ## Active publication-ready goal
 
-**Next implementation:** the [new objective-conditioned protocol](protocols/campaigns/native-objective-instrument-loop-v1.md)
-now specifies count T versus fixed-content utility U, a strong starting rule,
-five references/eight proposal slots and a separate selection-frozen comparison.
-It is not yet a frozen executable plan. Resource component fixtures, the
-actual reference-bearing designer prompt, worker probe budget, source-bound
-runner/auditor and unused-seed inventory are next. No inference is running.
+**Next launch:** the [objective-conditioned protocol](protocols/campaigns/native-objective-instrument-loop-v1.md)
+specifies count T versus fixed-content utility U, five measured common references,
+eight proposal slots and a separate selection-frozen comparison. The source-bound
+runner, cold native/critic audit, finite closure, separate cost accounting and
+actual reference-bearing designer context are implemented. The actual first
+editing parent can differ by objective; it is not automatically a final candidate.
+The [resource fixture bank](data/native-resource-component-fixtures-v2/README.md)
+has48 actual inputs and12 matching original container executions. Clean-source
+launch tests and the unused-seed inventory remain before dispatch. No new
+objective-conditioned model search is running at this observation.
 
 **November12 03:42JST / November11 18:42UTC:** all four resource-control worlds
 close normally18:29:23UTC; two independent audits/costs close18:30:14UTC. Two

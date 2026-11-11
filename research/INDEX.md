@@ -9,8 +9,15 @@ Historical documents retain their paths and source identities.
 - [Next objective-conditioned native experiment specification](protocols/campaigns/native-objective-instrument-loop-v1.md):
   T count versus fixed-content utility, strong initial rule, five common
   references/eight proposals, at most13 development and21 later fixed-policy
-  evaluation worlds. Runner/bank/unused-seed checks still need implementation;
-  no launch or frozen plan is claimed. No hidden participation or novelty veto.
+  evaluation worlds. Runner, common-reference context, cold audit and finite
+  closure are implemented; actual launch/unused-seed checks remain. The actual
+  editing parent minimizes the objective over shared references/own history.
+  No hidden participation or novelty veto.
+
+- [Resource component bank and execution support](data/native-resource-component-fixtures-v2/README.md):
+ 48 exact old-native inputs,12 matching original container executions, no new
+  model calls. The opt-in worker permits64 code-test attempts; the old8-attempt
+  scope is unchanged. This is connection evidence, not new policy improvement.
 
 - [Closed resource controls](results/native-liquidity-support-v1.md),
   [portable data](data/native-liquidity-support-v1/README.md) and

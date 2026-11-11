@@ -127,3 +127,43 @@ prompt retention are implementation work. The existing bounded worker hardcodes
 8 component probes, so a new allowance must actually reach and bind that worker,
 not merely appear in protocol metadata. The newU LossSpec does not change any
 historical study's T/E or recategorize blind opinions as scientific truth.
+
+## Objective loop implementation and actual component support
+
+At827f841, two exact resource-bank stagings agree:48 inputs from four original
+worlds, three actual institutions and all four years, including empty cycles.
+At the separate frozen23b8715 diagnostic, all12 predeclared original component
+executions match recorded outputs; a separate cold replay dispatches nothing.
+The retained bank summary and README bind the raw hashes. There are no new
+research worlds or model calls in these diagnostics.
+
+The opt-in64-attempt scope reaches the actual bounded worker; the default8
+scope is preserved. Scripted checks exercise calibration certificate retention,
+production factory,16 component observations, next prompt and cold replay.
+Actual-model source-bound calibration is still required at each new generation.
+Common measured reference context now reaches both campaign parenting and the
+literal designer frame; large non-metric critic metadata is archived without
+changing scalar losses or observed metrics. First parents can differ by assigned
+loss, so this is not a controlled identical-parent comparison. Final selection
+still uses only each arm's own explicit submitted candidates.
+
+Source09dadbc passes40 checks;36b7a23 passes15 driver checks;1fc356c passes42
+audit/closure/cost/reference checks. Source8652044 passes25 additional saved-plan,
+context-binding and separate-critic-cost checks in2.625s. Earlier sources pass
+50 and68 checks respectively. All receipts remain under outputs; source-bound
+checks start clean and finish before further edits. Scripted/native tests do
+not establish actual-model improvement or close publication milestoneR2.
+
+The new driver bounds development at five references/eight candidate slots,
+uses fixed T and U,64 optional probes per proposal and fresh3000-POST observer
+cache. The cold auditor reconstructs both physical native execution and the
+additional measurements from original accepted papers and literal critic
+responses. The finish path requires normal writer closure before two independent
+audits/cost projections. Native scientist and additional critic tokens remain
+separate, including unknown usage. No current code change edits a frozen run.
+
+Read-only backend metadata confirms the original8B and35B model digests at
+backend0.33.3. The explicit future evaluation seeds64101,64107,64113 must pass
+the actual three-root usage inventory before development dispatch. At this
+implementation entry no new objective-search inference is yet running; launch
+needs the final clean-source tests, saved plan and actual start receipt.
