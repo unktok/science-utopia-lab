@@ -87,3 +87,17 @@ synthetic dataで検証した。以前のreport schema／seed／図の既定値�
 chainの初回4pass/1failはテスト用時計に必要な三回目の値がなくStopIterationとなったfixtureミス。
 時計fixtureだけを修正して5/5pass。停止・timeout・PID再利用・図の差のguardは弱めていない。
 このchain自身の完了もpublication-ready判定には使わない。
+
+chainの全段階をscripted subprocessで通す二条件（正常／初回audit失敗）も追加し、
+7/7pass。science再起動なし、失敗後の次段階なし、consumed出力の再使用拒否を確認。
+clean d11e4314d4c409f005ccbe3ce5e4d0c5f392c66fの別analysis checkoutで39件が6.96秒でpassし、
+08:40:42UTCにPID40332でread-only待機を開始した。
+rawは`science-utopia-lab-experiments/native-institution-loop-analysis-v1-a1/outputs/native-institution-loop-analysis-v1-a1/`。
+最大待機24時間で、科学writer／sourceには一切手を入れない。科学writerはPID37093のまま。
+その時点では参照3/8完了、no-review-accept-all実行中。候補search／選択後評価はまだ未開始。
+
+待機後の可搬な再構築も別開発sourceに追加。全A/Q/Rと欠測statusからcross-scoreを再計算し、
+全候補順序、tie、選択policy、labelと実worldの共有、図4fileのbytesを確認できる。
+literalなsource／node／wire／schedule差分の抽出も新12枠へ対応。
+新旧の合計64 synthetic report/rebuild/changeチェックが32.20秒でpass。
+これは凍結d11e431の待機chainへ遡及変更せず、閉鎖後に追加で適用する。

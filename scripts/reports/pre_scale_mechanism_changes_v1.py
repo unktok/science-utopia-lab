@@ -90,16 +90,20 @@ def describe(before, after):
 
 def project(report):
     checked(report)
-    if report.get('schema') != 'scienceutopia.pre-scale-search-report.v1':
+    native=report.get('schema')=='scienceutopia.native-institution-loop-report.v1'
+    methods=tuple(report.get('methods',())) if native else METHODS
+    if native and methods!=('parameters','code-fixed-graph','code-and-graph'):
+        raise ValueError('native loop methods differ')
+    if not native and report.get('schema') != 'scienceutopia.pre-scale-search-report.v1':
         raise ValueError('closed pre-scale report required')
     initial, = [r for r in report['references'] if r['row_id'] == 'reference:open-seed']
     baseline = initial['system']; systems = report['systems_by_sha256']
     if any(digest(system) != key for key, system in systems.items()) or systems.get(digest(baseline)) != baseline:
         raise ValueError('exact retained policy identities required')
-    expected = {f'run-00:{o}:{m}:g{g}' for o in OBJECTIVES for m in METHODS for g in (0, 1)}
+    expected = {f'run-00:{o}:{m}:g{g}' for o in OBJECTIVES for m in methods for g in (0, 1)}
     slots = report['search_slots']
-    if len(slots) != 16 or {r['row_id'] for r in slots} != expected:
-        raise ValueError('all sixteen distinct declared slots required')
+    if len(slots) != 4*len(methods) or {r['row_id'] for r in slots} != expected:
+        raise ValueError('all distinct declared slots required')
     rows = []
     for slot in slots:
         if slot['row_id'] != f"run-00:{slot['arm']}:g{slot['generation']}":
@@ -115,7 +119,7 @@ def project(report):
             difference = describe(baseline, systems[fingerprint])
         rows.append({'row_id': slot['row_id'], 'arm': slot['arm'], 'status': slot['status'],
             'own_loss': slot['own_loss'], 'difference_from_common_initial': difference})
-    result = {'schema': 'scienceutopia.pre-scale-mechanism-changes.v1',
+    result = {'schema': 'scienceutopia.native-institution-loop-mechanism-changes.v1' if native else 'scienceutopia.pre-scale-mechanism-changes.v1',
         'input_report_content_sha256': report['content_sha256'], 'source_commit': report['source_commit'],
         'plan_sha256': report['plan_sha256'], 'baseline_row_id': initial['row_id'], 'rows': rows,
         'comparison_basis': 'Literal common initial, NOT inferred request parent or semantic graph equivalence.',

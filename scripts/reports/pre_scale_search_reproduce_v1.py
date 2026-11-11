@@ -50,7 +50,18 @@ def measurement_scores(world):
 
 def validate(report):
     checked(report)
-    if report['schema']!='scienceutopia.pre-scale-search-report.v1':raise ValueError('closed search report required')
+    native=report['schema']=='scienceutopia.native-institution-loop-report.v1'
+    if native:
+        methods=('parameters','code-fixed-graph','code-and-graph');seed=61001
+        seeds=(62001,62011,62017)
+        references=('open-seed','legacy','reviewed-accept-all','no-review-accept-all',
+            'no-review-reject-all','routed-one-accept-all','routed-two-accept-all','routed-one-reject-all')
+        eval_references=('legacy','reviewed-accept-all','no-review-accept-all','routed-one-accept-all','routed-two-accept-all')
+        if report.get('methods')!=list(methods) or report.get('evaluation_seeds')!=list(seeds):
+            raise ValueError('native loop declared methods/seeds differ')
+    elif report['schema']=='scienceutopia.pre-scale-search-report.v1':
+        methods,seed,seeds,references,eval_references=METHODS,41001,SEEDS,REFERENCES,EVAL_REFERENCES
+    else:raise ValueError('closed search report required')
     systems=report['systems_by_sha256']
     if any(digest(v)!=k for k,v in systems.items()):raise ValueError('retained executable system identity differs')
     worlds={w['identity']:w for w in report['worlds']}
@@ -61,15 +72,15 @@ def validate(report):
         assigned=world['role'].split(':')[1] if world['role'].startswith('search:') else 'throughput'
         if world['status']=='complete' and world['scores'][assigned] is None:raise ValueError('complete assigned result lacks its loss')
     refs={r['row_id']:r for r in report['references']}
-    if set(refs)!={'reference:'+r for r in REFERENCES}:raise ValueError('all six development references required')
-    initial=refs['reference:open-seed'];slots=report['search_slots'];arms=[o+':'+m for m in METHODS for o in OBJECTIVES]
+    if set(refs)!={'reference:'+r for r in references}:raise ValueError('all declared development references required')
+    initial=refs['reference:open-seed'];slots=report['search_slots'];arms=[o+':'+m for m in methods for o in OBJECTIVES]
     order=[(arm,g) for g in range(2) for arm in arms[g:]+arms[:g]]
-    if len(slots)!=16 or [(r['arm'],r['generation']) for r in slots]!=order:
-        raise ValueError('all sixteen slots in declared dispatch order required')
+    if len(slots)!=2*len(arms) or [(r['arm'],r['generation']) for r in slots]!=order:
+        raise ValueError('all slots in declared dispatch order required')
     if report['status_counts']!=dict(Counter(r['status'] for r in slots)):
         raise ValueError('all-slot status counts differ')
     rows={**refs,**{r['row_id']:r for r in slots}}
-    if len(rows)!=22 or set(report['development_world_bindings'])!=set(rows):raise ValueError('complete development/physical join required')
+    if len(rows)!=len(references)+2*len(arms) or set(report['development_world_bindings'])!=set(rows):raise ValueError('complete development/physical join required')
     used=[]
     for identity,row in rows.items():
         if type(row['forward_complete']) is not bool or row['status'] not in ('complete','failed','invalid','generation-failure'):
@@ -82,10 +93,10 @@ def validate(report):
         world=worlds[job];used.append(job)
         system_sha=digest(row['system']) if row['arm'] is None else row['system_sha256']
         role='developer-reference' if row['arm'] is None else 'search:'+row['arm']
-        if world['role']!=role or world['seed']!=41001 or world['system_sha256']!=system_sha or world['scores']!=row['cross_scores']:
+        if world['role']!=role or world['seed']!=seed or world['system_sha256']!=system_sha or world['scores']!=row['cross_scores']:
             raise ValueError('retained development world/score differs')
     if len(set(used))!=len(used):raise ValueError('development forwards shared without declaration')
-    if set(report['optimization_paths'])!=set(arms):raise ValueError('all eight optimization paths required')
+    if set(report['optimization_paths'])!=set(arms):raise ValueError('all declared optimization paths required')
     for arm,path in report['optimization_paths'].items():
         objective=arm.split(':')[0];best=number(initial['cross_scores'][objective]);pool=[initial]
         ordered=[r for r in slots if r['arm']==arm]
@@ -125,9 +136,9 @@ def validate(report):
                 or selection['policy_sha256']!=(policy_identity(system) if system is not None else None)):
             raise ValueError('pooled selection/ties differ from global dispatch order')
     evaluation=report['evaluation_rows'];lookup={(r['label'],r['seed']):r for r in evaluation}
-    labels={'reference:'+r for r in EVAL_REFERENCES}|{'selected:'+arm for arm,path in report['optimization_paths'].items()
+    labels={'reference:'+r for r in eval_references}|{'selected:'+arm for arm,path in report['optimization_paths'].items()
         if path['fixed_selection']['system'] is not None}
-    if len(lookup)!=len(evaluation) or set(lookup)!={(label,s) for label in labels for s in SEEDS}:
+    if len(lookup)!=len(evaluation) or set(lookup)!={(label,s) for label in labels for s in seeds}:
         raise ValueError('logical labels and three unused seeds differ')
     physical=set()
     for row in evaluation:
@@ -140,12 +151,12 @@ def validate(report):
             raise ValueError('logical evaluation changes its physical policy, seed or scores')
     if (report['physical_evaluation_worlds']!=len(physical) or report['logical_evaluation_rows']!=len(evaluation)
             or set(worlds)!=set(used)|physical):raise ValueError('physical or logical evaluation counts differ')
-    summaries={label:{k:descriptive([{'value':lookup[label,s]['scores'][k]} for s in SEEDS],'value') for k in SCORES} for label in sorted(labels)}
+    summaries={label:{k:descriptive([{'value':lookup[label,s]['scores'][k]} for s in seeds],'value') for k in SCORES} for label in sorted(labels)}
     if summaries!=report['evaluation_summary']:raise ValueError('evaluation summaries differ from retained physical observations')
     pairs=[]
     for row in evaluation:
         if not row['label'].startswith('selected:'):continue
-        for ref in EVAL_REFERENCES:
+        for ref in eval_references:
             other=lookup['reference:'+ref,row['seed']]
             pairs.append({'label':row['label'],'reference':ref,'seed':row['seed'],
                 'shared_same_physical_job':row['physical_job']==other['physical_job'],
@@ -184,7 +195,7 @@ def reproduce(report_path,manifest_path,figures,output):
         raise ValueError('rebuilt report/figure bytes differ')
     (output/'world-components.csv').write_text(world_csv(report),newline='')
     if any(file_sha256(p)!=sha for p,sha in original.items()):raise ValueError('retained input changed during rebuild')
-    result={'schema':'scienceutopia.pre-scale-search-reproduction.v1','input_report_sha256':report['content_sha256'],
+    result={'schema':'scienceutopia.native-institution-loop-reproduction.v1' if report['schema']=='scienceutopia.native-institution-loop-report.v1' else 'scienceutopia.pre-scale-search-reproduction.v1','input_report_sha256':report['content_sha256'],
         'original_audit_sha256':report['audit_sha256'],'all_slots_selection_ties_and_shared_jobs_rechecked':True,
         'raw_available_cross_scores_recomputed':sum(v is not None for w in report['worlds'] for v in w['scores'].values()),
         'report_and_four_figure_files_byte_identical':True,'raw_audit_repeated':False,

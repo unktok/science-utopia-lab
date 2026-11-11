@@ -12,6 +12,8 @@ Historical documents retain their paths and source identities.
   New source, unchanged T/E, strong routing controls, twelve finite proposals;
   running at frozen671436a after fresh28/28 editor and2/2 numeric readiness;
   first native reference starts08:20UTC. Not a conference-ready result.
+  A read-only closure→duplicate audit/cost/figure chain is waiting at d11e431;
+  its completion will still require interpretation and a main-study decision.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.
