@@ -71,6 +71,14 @@ def test_protocol_collision_is_not_silently_reused():
         instruction_control(base, IMAGE, instruction=INSTRUCTION, delivery_phase=2)
 
 
+def test_ambiguous_native_opening_is_not_silently_chosen():
+    from utopia.system import ScheduleSpec
+    base = anchor()
+    base = replace(base, schedules=(*base.schedules, ScheduleSpec('world.open',3)))
+    with pytest.raises(ValueError, match='one explicit native opening'):
+        instruction_control(base, IMAGE, instruction=INSTRUCTION, delivery_phase=5)
+
+
 def test_real_container_native_delivery_timing_and_inert_full_request_equality(
         tmp_path, fixed_corpus, monkeypatch):
     executor = DockerCodeExecutor(IMAGE)
@@ -119,3 +127,37 @@ def test_real_container_native_delivery_timing_and_inert_full_request_equality(
     assert [r['result_sha256'] for r in snapshots['off']['code']] == [
         r['result_sha256'] for r in snapshots['early']['code']] == [
         r['result_sha256'] for r in snapshots['late']['code']]
+
+
+def test_real_container_once_only_instruction_survives_original_cold_restart(
+        tmp_path, fixed_corpus, monkeypatch):
+    from tests.runtime.test_portable_checkpoint_integration import science_snapshot
+    from utopia.runtime.checkpointing import PortableStop
+    monkeypatch.setattr('time.time', lambda:1234567890.)
+    executor = DockerCodeExecutor(IMAGE)
+    spec = build(first_period=3, delivery_phase=235)
+    reference, _ = make_sim(tmp_path/'reference', native=NativeScienceKernel(spec,code_executor=executor))
+    try:
+        reference.run()
+        expected = science_snapshot(reference)
+        seed()
+        stopped, _ = make_sim(tmp_path/'resume',
+            native=NativeScienceKernel(spec,code_executor=executor), after_effects=True)
+        try:
+            with pytest.raises(PortableStop):
+                stopped.run()
+        finally:
+            stopped.llm.response_cache.close()
+        resumed, _ = make_sim(tmp_path/'resume',native=NativeScienceKernel(spec,code_executor=executor))
+        try:
+            resumed.run()
+            assert science_snapshot(resumed) == expected
+            assert resumed.native_system.to_dict() == reference.native_system.to_dict()
+            messages = [e for e in resumed.native_system.events
+                if e.event_type == 'native.system.context_delivered'
+                and e.payload['message']['source'] == 'developer-instruction-office']
+            assert len(messages) == 4 and all(e.year == 3 for e in messages)
+        finally:
+            resumed.llm.response_cache.close()
+    finally:
+        reference.llm.response_cache.close()
