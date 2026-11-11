@@ -15,6 +15,7 @@ def worker(root, output):
     from scripts.analyze_native_design_benchmark import loaded
     from scripts.native_benchmark_physical import physical_proof
     from scripts.native_benchmark_source import source_proofs
+    from scripts.audit_native_institution_loop_v1 import epoch
     from utopia.optimization.blackbox import Observation
     from utopia.optimization.native_discrete_policy import verify_native_observation
     from utopia.optimization.loss import evaluate_loss, loss_spec_sha256
@@ -42,6 +43,17 @@ def worker(root, output):
                 or end['completed_jobs'] != len(p['jobs'])
                 or set(end) != {'schema','status','ended_utc','completed_jobs','content_sha256'}):
             raise ValueError('normal separate evaluation closure required')
+        if epoch(end['ended_utc']) < epoch(start['started_utc']):
+            raise ValueError('evaluation end precedes frozen plan start')
+        usage_paths = sorted(root.glob('seed-usage-*.json'))
+        if [read(v)['content_sha256'] for v in usage_paths] != p['evaluation']['seed_usage']:
+            raise ValueError('seed-usage receipts differ from frozen plan')
+        for path in usage_paths:
+            before_dispatch = read(root/('pre-dispatch-'+path.name)); prepared = read(path)
+            if (not before_dispatch['valid'] or before_dispatch['errors'] or before_dispatch['prior_matching_runs']
+                    or before_dispatch['root'] != prepared['root'] or before_dispatch['seeds'] != list(driver.SEEDS)
+                    or epoch(before_dispatch['checked_utc']) > epoch(start['started_utc'])):
+                raise ValueError('evaluation seed check was missing, late or not unused')
         proof = source_proofs(driver.ROOT, p['source_commit'], scripts=[
             'scripts/run_native_fixed_candidate_evaluation_v1.py',
             'scripts/native_benchmark_physical.py', 'scripts/run_pre_scale_search_v1.py'],
@@ -52,6 +64,8 @@ def worker(root, output):
             if (dispatched['identity'], dispatched['system'], dispatched['seed'], dispatched['role']) != (
                     job['identity'], job['system'], job['seed'], 'selection-fixed-evaluation'):
                 raise ValueError('world differs from frozen evaluation job')
+            if not epoch(start['started_utc']) <= epoch(dispatched['started_utc']) <= epoch(end['ended_utc']):
+                raise ValueError('world dispatch precedes fixed plan or follows closure')
             spec = SystemSpec.from_dict(job['system']); o = read(directory/'observation.json')
             if (o['status'] != 'complete' or o['suggestion_id'] != job['identity']
                     or o['candidate'] != job['system'] or o['metadata']['system_fingerprint'] != spec.fingerprint

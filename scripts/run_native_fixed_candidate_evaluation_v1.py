@@ -81,6 +81,7 @@ def build_plan(original, audit, *, source, origin, usages):
         'scientist': clone(original['scientist']), 'designer': clone(original['designer']),
         'data_cache': original['data_cache'], 'world': world, 'experiment': experiment,
         'losses': clone(original['losses']), 'objectives': ['throughput', 'efficiency'],
+        'arm_order': list(original['arm_order']),
         'fixed_selection': selection, 'reference_systems': selection['reference_systems'],
         'evaluation': {'seeds': list(SEEDS), 'reference_labels': list(REFERENCES),
             'maximum_physical_worlds': 30, 'seed_usage': [u['content_sha256'] for u in usages]},
@@ -100,7 +101,7 @@ def jobs_for(plan):
     projection = {k:v for k,v in plan.items() if k not in ('content_sha256','jobs')}
     projection['content_sha256'] = digest(projection)
     selection = {'plan_sha256':projection['content_sha256'],
-        'selected':plan['fixed_selection']['selected']}
+        'selected':{arm:plan['fixed_selection']['selected'][arm] for arm in plan['arm_order']}}
     selection['content_sha256'] = digest(selection)
     return evaluation_jobs(projection, selection)
 

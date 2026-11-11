@@ -170,3 +170,17 @@ open-seedを含む6参照と3つの未使用seed、上限30world、designer生�
 要求する既存helperへhashなしの一時objectを渡していた実装ミス。元helperのguardを弱めず、
 projection入力とselectionの両方を正しくhashして修正。再実行49/49pass、6.83秒。
 初回JUnitも保持。元の19worldや候補の修正・追加はない。
+
+clean d2b6651では関連79/79pass（19.69秒）。停止実験の費用projection二回も一致し、
+1796 scientist応答（1,615,207input/181,308output tokens）、428auxiliary intentsとなる。
+内訳はeditor readiness256、staged proposal112、numeric readiness13、numeric proposal3、
+designer load25、scientist load19。費用content SHAは
+`e80b30b27ff6a03a8d45ea27748f49de8d26de163c12b8259044d45178567d4b`。
+重複alias／nested時間は足さず、未知load使用量を0へしない。
+
+別evaluation a1をd2b6651でprepareし、30job／候補固定planを保存したが、runの
+source/runtime/jobs検査で起動前に停止した。started.json、native world、model POSTはいずれも0。
+保存時のsort_keysがselected辞書の順を変え、job projectionが辞書順に依存していた実装ミス。
+明示arm_orderを保存し、そのlist順にのみselectedを走査するよう修正。
+実際のsave→read→require_plan、およびJSON roundtrip後のjob一致を回帰に追加した。
+a1のplan／sourceは書き換えず、新sourceで別prepareする。制度候補の補充ではない。

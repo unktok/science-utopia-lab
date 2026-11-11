@@ -1,5 +1,6 @@
 """Finite evaluation orchestration QA; never real model/scientific results."""
 from copy import deepcopy
+import json
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -83,6 +84,17 @@ def test_plan_deduplicates_only_exact_policies_and_preserves_all_logical_labels(
         assert j['system']['initial_state']['seed']==j['seed']
         assert driver.policy_identity(j['system'])==j['policy_sha256']
     assert driver.jobs_for(b)==b['jobs']
+    assert driver.jobs_for(json.loads(json.dumps(b,sort_keys=True)))==b['jobs']
+
+
+def test_actual_saved_plan_rebuild_survives_json_sorting_and_detects_changed_jobs(tmp_path,monkeypatch):
+    p,a,u=inputs();b=driver.build_plan(p,a,source='c'*40,origin={},usages=u)
+    saved=save(tmp_path/'plan.json',b)
+    monkeypatch.setattr(driver,'pinned_revision',lambda root:'c'*40)
+    assert driver.require_plan(tmp_path)==saved
+    altered=deepcopy(b);altered['jobs'][0]['labels']=['not the frozen policy']
+    (tmp_path/'plan.json').unlink();save(tmp_path/'plan.json',altered)
+    with pytest.raises(ValueError,match='jobs changed'):driver.require_plan(tmp_path)
 
 
 @pytest.mark.parametrize('change',[{'valid':False},{'prior_matching_runs':[{'seed':62001}]},
