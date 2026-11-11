@@ -36,3 +36,14 @@ clean92b6484で二回のcached buildはtext SHA256
 目次だけsmallへ変更して再buildする。48頁v1のrender／logも保持し、最終PDFとはしない。
 最終data/prose checksは10 pass、2.22秒。09:44UTCには候補3/12完了、
 E固定graphコードG0のfresh readiness中。sourceと実験条件は変えていない。
+
+clean d4ea1a2でfinal-v2／rebuild-v2を実行し、47頁のtextが一致。
+text SHA256=`11ff4fa76240ae700bfbfb714aa52b08905233fb9fb47a9f8f8571a0c517b136`、
+PDF SHA256=`26832b71d69680b552b4ec9b0b104c2d5537e17583aebfc5a87f0e094812fb1d`。
+20図／18表、全47頁contactと新table／図の120dpi renderを目視。
+off-page word0、未定義参照0、overfull／underfull0、二つの旧h→ht noticeのみ。
+別名`science-utopia-lab-integrated-diagnostics-working-paper.pdf`へ保存した。
+旧44／41／37頁hashは一致し、旧receiptを変更していない。
+11 recursive TeX／20図／4support／35evidenceのpath→SHA mapを別receiptへbindした。
+clean-source QAは25 pass/1.98秒、build後のsource閉包とPDF同一性を含むQAは27 pass/3.17秒。
+原稿更新から新しい科学結果やpublication-readyを主張しない。

@@ -44,6 +44,14 @@ Two raw/source-bound reads agree, as do retained data and actual PNG/SVG.
 It fixes each world's accepted set and actual R; it is not a rerouting experiment,
 avoided cost, independent quality or an added objective/adoption constraint.
 
+The [November11 integrated47-page manuscript](../output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf)
+now retains those diagnostics alongside the whole earlier program. Its separate
+[source/20-figure/18-table/evidence/build binding](../paper/integrated-diagnostics-build-v1.json)
+records two clean cached builds with identical text, all47 pages visually reviewed,
+zero off-page words and no unresolved reference. The old44/41/37-page artifacts
+remain byte-identical. This is working-manuscript progress, not publication readiness;
+the in-progress671436a comparison is not counted as completed in it.
+
 ## November11 research stage
 
 The [new research plan](publication/institution-causal-design-plan.md) separates

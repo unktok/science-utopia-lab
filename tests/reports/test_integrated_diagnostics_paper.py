@@ -1,6 +1,11 @@
 """Bind manuscript diagnostics to retained observations, not live runs."""
+import hashlib
 import json
 from pathlib import Path
+import posixpath
+import re
+import shutil
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -84,3 +89,61 @@ def test_panel_counts_are_decision_records_and_fixed_readouts_not_new_worlds():
                      'not actual reading', 'not counted here as a',
                      'adds no new loss', 'actually performed'):
         assert boundary in text
+
+
+def test_new_build_binds_its_own_source_assets_and_evidence_without_rewriting_history():
+    receipt = load('paper/integrated-diagnostics-build-v1.json')
+    assert receipt['schema'] == 'scienceutopia.integrated-diagnostics-paper-build.v1'
+    assert not receipt['artificial_page_cap']
+    original = {}
+    for group in ('source_files', 'figure_files', 'support_files', 'evidence_files'):
+        files = receipt[group]['files']
+        assert len(files) == len(set(files))
+        hashes = {}
+        for name in files:
+            assert name == posixpath.normpath(name) and not name.startswith(('/', '../'))
+            data = subprocess.check_output(['git', 'show', receipt['source_commit'] + ':' + name], cwd=ROOT)
+            hashes[name] = hashlib.sha256(data).hexdigest()
+            if group == 'source_files':
+                original[name] = data.decode()
+        observed = hashlib.sha256(json.dumps(hashes, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        assert observed == receipt[group]['manifest_sha256'], group
+    visited = set(); pending = [receipt['entrypoint']]
+    while pending:
+        name = pending.pop()
+        if name in visited:
+            continue
+        visited.add(name)
+        pending.extend(posixpath.normpath('paper/' + path + ('' if path.endswith('.tex') else '.tex'))
+                       for path in re.findall(r'\\input\{([^}]+)\}', original[name]))
+    assert visited == set(original)
+    body = '\n'.join(original.values())
+    figures = re.findall(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', body)
+    assert len(figures) == receipt['figures'] == 20
+    assert {posixpath.normpath('paper/' + name) for name in figures} == set(receipt['figure_files']['files'])
+    assert body.count('\\begin{table}') == receipt['tables'] == 18
+    labels = re.findall(r'\\label\{([^}]+)\}', body)
+    assert len(labels) == len(set(labels))
+    assert set(re.findall(r'\\ref\{([^}]+)\}', body)) <= set(labels)
+    assert '\\label{sec:design-diagnostics}' in body
+    assert receipt['build']['text_identical'] and receipt['build']['exit_codes'] == [0, 0]
+    assert receipt['build']['downloads'] == receipt['build']['off_page_text_words'] == 0
+    for name, expected in receipt['preserved_files'].items():
+        assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected
+    assert not receipt['scientific_scope']['ongoing671436a_comparison_counted_as_completed']
+
+
+def test_reviewed_new_pdf_is_the_exact_separate_artifact():
+    receipt = load('paper/integrated-diagnostics-build-v1.json')
+    pdf = ROOT / receipt['output']
+    assert hashlib.sha256(pdf.read_bytes()).hexdigest() == receipt['pdf_sha256']
+    assert receipt['visual_review']['all_final_pages_reviewed']
+    assert receipt['visual_review']['pages_reviewed'] == receipt['pages'] == 47
+    if shutil.which('pdfinfo'):
+        info = subprocess.check_output(['pdfinfo', str(pdf)], text=True)
+        assert re.search(r'^Pages:\s+47$', info, re.M)
+    if shutil.which('pdftotext'):
+        data = subprocess.check_output(['pdftotext', str(pdf), '-'])
+        assert hashlib.sha256(data).hexdigest() == receipt['build']['text_sha256']
+        assert b'??' not in data and b'ZZPROTECTED' not in data
+        assert b'Authority, authoring and measurement diagnostics' in data

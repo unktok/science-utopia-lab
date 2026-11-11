@@ -49,13 +49,15 @@ Historical documents retain their paths and source identities.
   whole-program questions, existing-data analyses, small mechanism/search experiments,
   gradients, world validity and scale decisions. A proposal, not a running campaign.
 - [Integrated whole-program manuscript](../paper/integrated.tex) and
-  [reviewed44-page pre-scale PDF](../output/pdf/science-utopia-lab-integrated-pre-scale-working-paper.pdf):
+  [reviewed47-page PDF](../output/pdf/science-utopia-lab-integrated-diagnostics-working-paper.pdf):
   uncapped synthesis of objectives, abstraction, structural design, gradients,
   matched comparison and game UI; [editorial evidence map](../paper/integrated-content-map.md).
+  November11 adds all eight closed authoring submissions/partial probes and the
+  actual fixed-panel readout figure, with [its own build/evidence binding](../paper/integrated-diagnostics-build-v1.json).
   Existing studies remain separate; the closed12-world information comparison
   and new numerical readiness are not superiority claims. The earlier37-page
-  artifact is preserved, as is the information-only41-page PDF.
-  [Current PDF,73-check and rebuild verification](../paper/integrated-pre-scale-build-v3.json).
+  artifact is preserved, as are the information-only41-page and closed44-page PDFs.
+  [Prior44-page PDF,73-check and rebuild verification](../paper/integrated-pre-scale-build-v3.json).
   [Historical39-page software/build/visual verification](results/pre-scale-completion-software-verification-v1.json)
   records374 Python checks,320 frontend checks and actual browser verification.
   [Current reference/readiness display](results/pre-scale-observatory-reference-verification-v1.json)
