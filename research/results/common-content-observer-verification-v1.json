@@ -1,0 +1,57 @@
+{
+  "schema": "scienceutopia.common-content-observer-verification.v1",
+  "source_commit": "af294b70ccfcac9b13d2bcdee3b3111785a34f31",
+  "tracked_source_clean_and_head_unchanged_during_checks": true,
+  "native_connection_and_regression": {
+    "passed": 45,
+    "skipped": 3,
+    "seconds": 7.63,
+    "junit_sha256": "2d018f29ed5e1605e1af8e2205afe115fcebf94b1a4be2dd6f3147b5ce30a424",
+    "junit_path": "outputs/common-content-observer-final-clean-qa.xml",
+    "scope": "Optional criterion on original Simulation with scripted researcher/corpus/critic; default native evaluator, loss, original objective and content staging checks. Not fresh model inference or a whole-repository regression."
+  },
+  "previously_skipped_isolated_runtime_regression": {
+    "passed": 3,
+    "skipped": 0,
+    "seconds": 20.85,
+    "junit_sha256": "2c7ce68cd66db508f8dfaf1ce096cbd922f7a2a0e85f972c11a53d8d646c6c48",
+    "junit_path": "outputs/common-content-observer-clean-docker-regression.xml",
+    "scope": "Same three existing native relaxation cases, rerun with local Docker access; scripted scientist/corpus, actual isolated code. Not three independent science replications."
+  },
+  "historical_input_staging": {
+    "scientific_source_commit": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+    "historical_full_audit_content_sha256": "85d4698ff09dd6cfbfe8b83790f8ae28dbf27072de9853184adc1db4334b92d1",
+    "full_raw_audit_repeated": false,
+    "completed_checkpoints_read_and_hash_checked": 44,
+    "partial_worlds_skipped": 5,
+    "accepted_decision_records": 263,
+    "unique_contents": 76,
+    "eligible_unique_contents": 76,
+    "unavailable_unique_contents": 0,
+    "minimum_complete_request_utf8_bytes": 1449,
+    "maximum_complete_request_utf8_bytes": 3232,
+    "three_critic_posts_for_all_eligible_contents_upper_bound": 228,
+    "two_independent_staging_runs_all_bytes_identical": true,
+    "raw_contents_file_sha256": "498e84d713ab9ba4e23636a98618d58e9e97ab8741c6350c0f0e44f590bca419",
+    "summary_file_sha256": "d6640c4671833bc45bd1876d2059f976be23edcef2b5c086a5c1927ca4d631b2",
+    "summary_content_sha256": "ef8043a0fc464338e90999d4b1ce7fec239766751ddb368050ae01c3b938f935",
+    "contract_file_sha256": "35bd449a76bd503a048a98e06b8ac3fd37d0d9fd92edba29bd03dd2cff408ace",
+    "scope": "Exact original-source checkpoint reads and current instrument's complete-input preflight. Not critic score, token-capacity certification, actual-model readiness, a review intervention or new loss optimization."
+  },
+  "invariants": [
+    "Existing native measurements and run/system identity cannot be overwritten by the trusted optional extension.",
+    "Fixed content/rubric/model/critic has the same request across policy labels and administrative source IDs or budgets.",
+    "Raw UTF8 precedes dispatch; HTTP raw precedes interpretation; cold status/rating/usage reconstruction checks both.",
+    "Inference lease precedes POST intent; a busy lease creates no false unknown physical dispatch.",
+    "Unknown completion stops subsequent model dispatch and the next native world; missing/invalid scores remain unavailable.",
+    "Zero accepted decisions is an empty measured sum, without a hidden activity or adoption veto.",
+    "Native checkpoint evidence survives a later measurement failure; cached ratings are not additional physical replies."
+  ],
+  "new_live_model_posts": 0,
+  "new_scientific_native_worlds": 0,
+  "existing671436a_experiment_modified": false,
+  "existingd11e431_analysis_modified": false,
+  "scientific_truth_or_independent_error_claimed": false,
+  "new_objective_comparison_or_publication_readiness_claimed": false,
+  "external_upload_or_push": false
+}

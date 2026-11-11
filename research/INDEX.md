@@ -140,6 +140,11 @@ Historical documents retain their paths and source identities.
 
 ## Stable technical entry points
 
+- [固定条件の内容採点器](components/common-content-observer-v1.md): optional native
+  measurement hook、blind content cache、unknown停止、分離したcost audit。
+  [検証と実入力準備](results/common-content-observer-verification-v1.json)は元世界のscripted接続と
+  旧44世界の263 decision／76内容まで。新critic採点や新目的での最適化結果はまだない。
+
 | Capability | Entry |
 | --- | --- |
 | Whole scientific system | [SystemSpec](components/system-spec-graph-v1.md), [native kernel](components/native-science-kernel-v1.md) |

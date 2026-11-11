@@ -26,3 +26,23 @@ native/budget testsは25 pass/4.41秒、raw HTTP保存とcold status/cost検査�
 明示escalationで取得。推論・load・downloadはしていない。現在の35B-mlxと8Bのほかに
 35B-A3B Q6の既存aliasがあるが、モデルを切り替えていない。
 現在はthink-offの固定protocolであり、今の失敗がthinking設定のせいだったとは断定しない。
+
+clean af294b7のfinal QAは45 pass/3 skip/7.63秒。同じ既存3 Docker caseを
+権限付きで再確認し3 pass/20.85秒。元のskipもJUnitも変更していない。
+source/HEADは両検査と実入力準備の前後で不変。
+busy inference lockでintentすら作らないこと、observer完了不明で次のseedのworldを
+作らないことも検証した。実LLMは呼んでいない。
+
+af294b7のstaging scriptは、元62388a7 readerで44完了checkpointを読み、全hash／spec／年／Aを
+旧full auditへjoin。5途中worldは保持してskipし、263採択decisionを取り出した。
+76種類のcontentがあり、3criticの全要求は1449〜3232 UTF8 bytes、全件上限内。
+必要な物理POST上限は228だが、新採点は0で、token容量やモデル互換性の証明ではない。
+二回のcontents／contract／staging JSONはすべてcmp一致。
+summary content SHA256=`ef8043a0fc464338e90999d4b1ce7fec239766751ddb368050ae01c3b938f935`。
+原文付きcontentsはignored outputsにだけ保持し、content hash／wire hashと数のsummaryをGitへ保持。
+1859 raw全体のfull auditを反復したという意味ではなく、旧監査にbindしたcheckpoint読出しの検査。
+
+進行中pilotは10:32:53UTCにE固定graph G1が−11.166666666666668でcomplete。
+初回の出力envelope失敗に対し、モデル自身が固定されたG1で有効な案を提出・実行した。
+host修復や失敗の補充ではない。手作業のreviewed全acceptや数値Eと同値で、優位性は主張しない。
+候補9/12枠終了（5完了／4失敗）、T code-and-graph G1へ進行。未使用評価はまだ開始前。

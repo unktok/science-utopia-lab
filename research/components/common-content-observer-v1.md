@@ -66,5 +66,9 @@ cache利用を新しい応答として数えず、未報告token数はunknownの
 scripted採点器を使う元Simulationの接続、損失計算、低い予算での欠測、未知完了での停止、
 内容だけのprompt、運用IDに依存しない入力、cold replayを検証する。
 scripted scoreを実際の品質評価や改善として報告しない。
+clean af294b7で45 pass／3 skip、同じ3件を実Dockerで再確認して3 pass。
+さらに元62388a7の44完了checkpointから263採択decision／76内容を読出し、
+全文の要求1449〜3232 bytesが全件上限内となった。二回の準備出力が一致する。
+[保持資料と再生成](../data/common-content-observer-v1/README.md)。
 実モデルでの互換性、rubricの挙動、閉鎖済み成果への採点、目的別の新しい探索は、まだ実行していない。
 現pilotの全結果を閉じて解釈した後、必要な科学的対照と有限予算を決める。

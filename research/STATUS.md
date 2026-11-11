@@ -54,6 +54,16 @@ the in-progress671436a comparison is not counted as completed in it.
 
 ## November11 research stage
 
+A separate [common-content observer](components/common-content-observer-v1.md)
+now adds optional fixed-condition ratings after the original Simulation, without
+overwriting native A/Q/R or identity. Native connection/regression passes45
+checks plus the three separately rerun real-Docker cases at cleanaf294b7.
+[Actual input staging](data/common-content-observer-v1/README.md) reconstructs
+263 accepted decisions/76 distinct contents from44 old completed checkpoints;
+all full inputs fit the explicit byte bound and both staging runs agree.
+There are no actual critic scores, new model POSTs or new objective-conditioned
+search results from this work. The current671436a experiment is unchanged.
+
 The [new research plan](publication/institution-causal-design-plan.md) separates
 actual information/action opportunities from graph syntax and proposal difficulty.
 [First implementation and native connection checks](results/institution-causal-design-v1.md)
