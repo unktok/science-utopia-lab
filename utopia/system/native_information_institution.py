@@ -76,10 +76,14 @@ def instruction_control(anchor, image_id, *, instruction, delivery_phase,
     if type(connected) is not bool or type(first_period) is not int or first_period < 1:
         raise ValueError('explicit connection and positive first period required')
     validate_system_spec(anchor).require_valid()
-    phases = {s.mechanism_id:s.phase for s in anchor.schedules}
-    producer_phase = phases['world.open'] + 1
-    if type(delivery_phase) is not int or not producer_phase < delivery_phase < phases['world.close']:
-        raise ValueError('delivery must follow the opening producer and precede native close')
+    opening = [s.phase for s in anchor.schedules if s.mechanism_id == 'world.open']
+    if len(opening) != 1:
+        raise ValueError('one explicit native opening schedule required')
+    producer_phase = opening[0] + 1
+    # Native close is not the graph/year checkpoint: the existing history
+    # office intentionally runs after it. Do not impose a new chronology law.
+    if type(delivery_phase) is not int or delivery_phase <= producer_phase:
+        raise ValueError('delivery must follow the opening producer')
     producer, receiver = 'developer-instruction-office', 'developer-instruction-receiver'
     if (any(n.mechanism_id in (producer, receiver) for n in anchor.mechanisms)
             or any(t.artifact_type_id == INSTRUCTION_PROTOCOL for t in anchor.artifact_types)):

@@ -50,7 +50,7 @@ def test_variants_keep_the_literal_producer_and_original_production_laws():
     {'instruction':''}, {'instruction':'  '}, {'instruction':None},
     {'instruction':'あ' * 2731}, {'connected':1}, {'first_period':True},
     {'first_period':0}, {'first_period':1.5}, {'delivery_phase':True},
-    {'delivery_phase':1}, {'delivery_phase':240}, {'delivery_phase':-2},
+    {'delivery_phase':1}, {'delivery_phase':0}, {'delivery_phase':-2},
 ])
 def test_invalid_explicit_contract_is_rejected_without_execution(options):
     with pytest.raises(ValueError):
@@ -96,7 +96,7 @@ def test_real_container_native_delivery_timing_and_inert_full_request_equality(
             snapshots[name] = {'calls':deepcopy(calls), 'directions':directions,
                 'messages':[deepcopy(e.payload['message']) for e in events],
                 'code':[e.payload for e in kernel.events if e.event_type == 'generated.code_executed'
-                    and e.mechanism_id == 'developer-instruction-office']}
+                    and e.provenance['mechanism_id'] == 'developer-instruction-office']}
         finally:
             sim.llm.response_cache.close()
     assert snapshots['base']['calls']
