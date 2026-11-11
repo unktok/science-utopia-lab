@@ -506,3 +506,49 @@ explicitly separates global project freedom from the active pilot's fixed
 production/project domain and corrects its old running30-world evaluation
 description to normal closed historical evidence. This is documentation
 alignment, not an expansion of current scientific authority or a new result.
+
+## A simple same-authority information comparator, not another live study
+
+At22:51UTC the original61a1753 writer is live in U/g2 execution. Its five
+closed slots are T/g0--g2 at−7, U/g0 failed/null and U/g1 at−4. All completed
+own losses still tie the corresponding connected reference. T/g0--g2 modify
+selection source only, not edges/schedules. These observations do not replace
+the pending cold audit or establish source-semantic equality of the candidates.
+The original audit, fixed-evaluation and additional report/effect continuations
+remain live and closure-gated; no new writer is started or failed slot refilled.
+
+For a later meaningful comparison, instruction_control adds an ordinary static
+message producer plus original native context receiver. The same producer/code/
+opening input can deliver early, late or not at all; no host project amendment,
+new researcher or production-law change is supplied. A one-period emission
+persists in native context without an annual re-injection requirement. Message
+text and any scientific assay remain unfrozen: no instruction or condition is
+added to current development or fixed evaluation.
+
+The firstf7f04ad static check has22pass/1fail because a proposed pre-close
+limit incorrectly equates native close with the graph checkpoint. The actual
+anchor already has post-close information phases; d89f5b3 removes that invented
+restriction. Static checks pass23, and the actual isolated-container/two-year
+boundary case passes15.72s. A later full run at253bfb6 has39pass/1fail: the
+shared validator correctly rejects a duplicate schedule before the later helper
+error required by a test regex. Only that expectation changes. Final clean
+63ae983 has40pass124.05s, including actual six-year interruption/cold restart,
+existing dossier information cases and fixed-production guards. All five
+JUnit files and both original source blobs are independently hash-checked;
+the machine receipt preserves the failures and overlapping scopes.
+
+Actual container execution uses the already present pinned networkless image,
+without host mounts or downloads. HTTP/corpus are scripted. Full model inputs
+match the untouched anchor under disconnection despite varied host clocks and
+audit identities. One-time instructions affect the declared direction input
+boundary in the fixture and do not duplicate on restart. This is not actual
+Qwen effectiveness, scientific improvement, or completion ofR2.
+
+The next-question note now explicitly rejects a different form of goal drift:
+an independent scientific-truth oracle is conditional on a correctness claim,
+not a new acceptance veto on optimizing declared preferences. Reading the local
+ai-scientist-survey topic map and endpoint/benchmark notes leads to primary
+ScienceAgentBench/CORE-Bench documentation and evaluator inspection. Their
+endpoints and environments are not silently adopted, and no survey asset,
+task dataset, dependency or model is changed. The current manuscript stays at
+its verified55-page snapshot; publication-ready goal remains active.

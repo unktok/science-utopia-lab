@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November12 07:51JST / November11 22:51UTC:** five of eight proposal slots
+are closed: all three T/g0--g2 complete at−7, U/g0 is null, and U/g1 completes
+at−4. U/g2 has reached actual native execution; the original writer/session92866
+remains live. Completed own losses still tie their strong reference; no new
+advantage, frozen selection or unused-evaluation result is claimed. T edits
+observed so far replace selection source without changing edges or schedules.
+These are live controller observations, not the final independent cold audit.
+
+A [prospective static-instruction comparator](components/native-static-instruction-controls-v1.md)
+now passes40 original-world/container checks, including all-input equality
+under disconnection and six-year cold restart. It separates literal message
+production from delivery timing, preserving native laws. Scientist HTTP/corpus
+are scripted: actual-Qwen effectiveness is not established and no additional
+scientific assay has started. Neither this comparator nor the earlier optional
+tensor-delivery diagnosis enters the active61a1753 study. The [next-question note](publication/native-objective-support-and-next-question.md)
+also makes explicit that scientific truth is not a new blanket acceptance gate
+for optimization under declared preferences.
+
 **November12 07:23JST / November11 22:23UTC:** the writer closes its fourth
 proposal slot and moves to T/g2 readiness at22:22:46UTC. T/g0 and T/g1 both
 complete at−7; U/g0 is null and U/g1 completes at−4. Four of eight proposal

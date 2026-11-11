@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Static-instruction timing comparator](components/native-static-instruction-controls-v1.md):
+  same literal producer with early/late/cut delivery. Forty original-world and
+  actual-container checks include full request equality and cold restart;
+  HTTP/corpus remain scripted. Future comparison support, not a live assay,
+  discovered institution or modification of the active study.
 - [Actual recorded-output and tensor-consumer diagnostics](components/native-recorded-tensor-delivery-diagnostics-v1.md):
   the final U/g0 artifact's four existing replies reveal one empty compatible
   case and three nonempty shape mismatches. Two original-source-cold readouts
@@ -20,7 +25,8 @@ Historical documents retain their paths and source identities.
   completes five references and its first throughput candidate at21:33UTC:
   T=−7/U=−4, tied with connected accept-all. U/g0 later fails; U/g1 submits
   its unchanged reference and completes at−4. T/g1 later completes at−7;
-  four of eight slots close, and T/g2 readiness starts22:22UTC.
+  T/g2 subsequently completes at−7, so five of eight slots close and U/g2
+  enters native execution by22:49UTC. Still no observed strong-reference advantage.
   Additional source/consumer/resource continuations are waiting, not completed
   results. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
   retain all ties without reselecting policies or modifying current losses.

@@ -1,0 +1,63 @@
+{
+  "schema": "scienceutopia.native-static-instruction-controls.verification.v1",
+  "classification": "original-native-software-connection-with-scripted-HTTP-and-corpus",
+  "source_commit": "63ae983519a5331469af1ce78f6b1309601b925d",
+  "runtime_file": "utopia/system/native_information_institution.py",
+  "runtime_file_sha256": "d4f85391b1f61d3faf39803c12af27fe6ba8a133c465af5ee3aec2098f11a82e",
+  "test_file": "tests/system/test_native_instruction_control.py",
+  "test_file_sha256": "738dbfdebed93622894343b06f0760f9acca6ea3e03c27f383e32efdec1c0bb2",
+  "container_image_id": "sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833",
+  "final_qa": {
+    "junit_path": "outputs/native-instruction-control-native-qa-a2.xml",
+    "junit_sha256": "388d3042edad23b42026254414009e4b1c6eb0b9c180442f0648202c94283698",
+    "passed": 40,
+    "failed": 0,
+    "seconds": 124.05,
+    "exit_code": 0,
+    "scope": [
+      "tests/system/test_native_instruction_control.py",
+      "tests/system/test_native_information_institution.py",
+      "tests/optimization/test_native_fixed_production_domain.py"
+    ]
+  },
+  "earlier_checks_overlap_final_scope": true,
+  "earlier_qa": [
+    {
+      "source_prefix": "f7f04ad",
+      "junit_path": "outputs/native-instruction-control-static-qa-a1.xml",
+      "junit_sha256": "3a080e5a304c3b6e2016fdbc7772f3092b353b7efd6d3258f710a8c0d763684b",
+      "passed": 22,
+      "failed": 1,
+      "cause": "Initial builder incorrectly treated native close as the end of graph execution and rejected a legal late receiver. The existing graph boundary, not a new timing law, is used after correction."
+    },
+    {
+      "source_prefix": "d89f5b3",
+      "junit_path": "outputs/native-instruction-control-static-qa-a2.xml",
+      "junit_sha256": "55c952d46bb3105aa4a13e1c5d6a2f704f52d34187080e99ee7bd5c6483d44fa",
+      "passed": 23,
+      "failed": 0
+    },
+    {
+      "source_prefix": "d89f5b3",
+      "junit_path": "outputs/native-instruction-control-container-qa-a1.xml",
+      "junit_sha256": "9bdf3b7287aa96ee0c116472ed962b0d83565134d351dbef2bf44f38cceff070",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 15.72
+    },
+    {
+      "source_prefix": "253bfb6",
+      "junit_path": "outputs/native-instruction-control-native-qa-a1.xml",
+      "junit_sha256": "573672b0eab98c3e1b353e61e6ba59435f27290bb3ecbd818a2ec8838b792f89",
+      "passed": 39,
+      "failed": 1,
+      "seconds": 103.13,
+      "cause": "The duplicate-schedule test required a later helper error string, but the shared validator correctly rejected the invalid graph first. Only the test expectation changed; native runtime bytes remained unchanged."
+    }
+  ],
+  "new_model_calls": 0,
+  "scientific_instruction_assay_run": false,
+  "active_study_changed": false,
+  "actual_Qwen_effect_or_loss_improvement_claimed": false,
+  "publication_ready": false
+}

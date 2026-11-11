@@ -71,6 +71,14 @@ Those are environment conditions, not hidden fairness constraints or a numerical
 replacement world. Resource conservation is an execution law, while any social
 preference belongs in the declared loss.
 
+An additional [static-instruction timing comparator](../components/native-static-instruction-controls-v1.md)
+now implements one simple same-authority alternative. It can deliver the same
+literal policy advice before or after native research choices, or compute it
+without delivery. Original-world/container QA verifies the real input boundary
+and cold restart, not actual-Qwen effectiveness. It has not been inserted into
+the current61a1753 experiment or its frozen five-control evaluation. A later
+assay needs its own prospective messages, conditions and finite budget.
+
 Compare generated institutions against strong simple policies with the same
 actual authority. Do not make graph changes mandatory, artificially remove a
 capable single-program baseline, or choose conditions merely to force different
@@ -79,3 +87,44 @@ budgets and evaluation splits. None is frozen by this memo. The current620xx
 results remain outside the code-tested designer inputs. The main-study choice
 must integrate the closed actual comparisons rather than repeat an unchanged
 weak question at larger scale.
+
+## Do not turn scientific truth into a new blanket completion gate
+
+The project optimizes explicitly declared preferences over scientific systems.
+A fixed-content opinion is a valid declared preference even though it is not
+scientific truth. Lack of a correctness oracle must limit a corresponding
+claim; it does not invalidate every institutional optimization question or
+justify adding an undeclared merit constraint. A main paper can study the
+consequences and limitations of such preferences without claiming better
+real-world science. Its importance still has to be established by the actual
+question, controls and evidence, not a requirement that some desired winner appear.
+
+Adding independently executable scientific activities is therefore conditional:
+it is needed if the question concerns verified task performance or correctness,
+not an automatic prerequisite for every publication-ready version of this
+project. First inspect the current closed search and opportunities within the
+original world. Do not replace that world or launch a new benchmark merely to
+avoid reporting ties or limited improvement.
+
+For that optional extension, November12 primary-source reading yields concrete
+design cautions, not an adopted dataset. [ScienceAgentBench](https://github.com/OSU-NLP-Group/ScienceAgentBench)
+targets self-contained scientific programs and announces a revised verified
+split in2026; its documented visualization evaluation can use a model judge.
+The [actual direct evaluator](https://raw.githubusercontent.com/OSU-NLP-Group/ScienceAgentBench/main/run_eval.py)
+also installs task-specific dependencies. It is not a drop-in deterministic
+truth oracle for the current networkless standard-library container.
+[CORE-Bench](https://github.com/siegelz/core-bench) targets computational
+reproduction from supplied research code, which is a different endpoint from
+new scientific discovery. The local ai-scientist-survey benchmark and endpoint
+notes helped locate these distinctions; they are not substituted for primary
+task/evaluator evidence. No survey files, datasets, environments or model
+weights were changed or downloaded for this reading. A future integration must
+pin actual task/evaluator revisions, rights, execution isolation, task splits,
+resource accounting and solver controls before dispatch.
+
+The [ICML2026 main-track reviewer instructions](https://icml.cc/Conferences/2026/ReviewerInstructions)
+separate technical soundness, presentation, significance and originality;
+an insight using existing methods can contribute without a new optimizer.
+Our inference is to assess those dimensions separately rather than convert QA
+counts, more simulations or a larger PDF into a readiness score. This does not
+select a submission venue or assert an unannounced future deadline.
