@@ -119,3 +119,20 @@ def test_native_loop_costs_cannot_treat_a_stopped_or_mismatched_terminal_as_clos
         'source_proof':{'status':'verified-exact-source-closure'},'new_model_calls':0,'new_code_executions':0,
         'closure':{'started':start,'terminal':terminal}})
     with pytest.raises(ValueError,match='loop closure'): analyze(tmp_path,p,audit)
+
+
+def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_path):
+    from utopia.optimization.native_numeric_designer import save
+    p,_=empty_audit(tmp_path)
+    start=save(tmp_path/'started.json',{'plan_sha256':p['content_sha256']})
+    terminal=save(tmp_path/'terminal.json',{'status':'stopped'})
+    inventory=_inventory(tmp_path)
+    a=hashed({'schema':'scienceutopia.native-institution-loop-stopped-audit.v1','source_commit':p['source_commit'],
+        'plan_sha256':p['content_sha256'],'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),
+        'source_proof':{'status':'verified-exact-source-closure'},'new_model_calls':0,'new_code_executions':0,
+        'closure':{'started':start,'terminal':terminal,'scientific_study_closed':False},
+        'selection':None,'logical_evaluation':[]})
+    # Reaches the missing-cache guard, without inventing any successful world.
+    with pytest.raises(ValueError,match='original scientist response journals'): analyze(tmp_path,p,a)
+    a['selection']={'invented':'not legal'};a=hashed({k:v for k,v in a.items() if k!='content_sha256'})
+    with pytest.raises(ValueError,match='stopped costs'): analyze(tmp_path,p,a)

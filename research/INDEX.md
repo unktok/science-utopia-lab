@@ -25,7 +25,9 @@ Historical documents retain their paths and source identities.
   now close with two identical cold audits.8/8 static-valid, seven source edits/one numeric edit,
   one runtime-exception and one empty-decision candidate in partial probes; no new native losses.
   Inline order context and complete routing ABI cards are prospective, software-tested additions.
-  The new native closed-loop study is running; no new search/evaluation conclusion yet.
+  The new native pilot stopped before evaluation. A
+  [separate fixed-submission evaluation](protocols/campaigns/native-fixed-candidate-evaluation-v1.md)
+  is being prepared from its exact audited prefix; failed-only arms receive no fallback policy.
   This is not another claim of9/9 completion.
   [November11 log](logbook/2026-11-11-institution-causal-design.md).
 

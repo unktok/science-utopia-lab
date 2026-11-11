@@ -18,7 +18,9 @@ from utopia.utils.data_utils import decode_json,file_sha256,write_json_atomic
 
 SCHEMA='scienceutopia.pre-scale-cost-components.v1'
 AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-search-audit.v1',
-        'scienceutopia.native-institution-loop-audit.v1')
+        'scienceutopia.native-institution-loop-audit.v1',
+        'scienceutopia.native-institution-loop-stopped-audit.v1',
+        'scienceutopia.native-fixed-candidate-evaluation-audit.v1')
 
 
 def classify_numeric(relative):
@@ -80,16 +82,20 @@ def analyze(root,plan,audit):
     before=_inventory(root)
     if digest(before)!=audit['raw_inventory_sha256'] or len(before)!=audit['raw_files']:
         raise ValueError('raw inventory changed from closed original-source audit')
+    stopped = audit['schema']==AUDITS[3]
     closure_name=('mechanisms-complete.json' if audit['schema']==AUDITS[0]
-                  else 'terminal.json' if audit['schema']==AUDITS[2] else 'complete.json')
+                  else 'terminal.json' if audit['schema'] in AUDITS[2:] else 'complete.json')
     if closure_name not in before:raise ValueError('normal scientific closure required before cost projection')
     closure=checked(json.loads((root/closure_name).read_text()))
-    if audit['schema']==AUDITS[2]:
+    if audit['schema'] in AUDITS[2:]:
         start=checked(json.loads((root/'started.json').read_text()))
-        if (closure.get('status')!='closed' or audit.get('closure',{}).get('terminal')!=closure
+        if (closure.get('status')!=('stopped' if stopped else 'closed') or audit.get('closure',{}).get('terminal')!=closure
                 or audit['closure'].get('started')!=start
                 or start['plan_sha256']!=plan['content_sha256']):
             raise ValueError('native loop closure differs from exact cold audit')
+        if stopped and (audit['closure'].get('scientific_study_closed') is not False
+                or audit.get('selection') is not None or audit.get('logical_evaluation') != []):
+            raise ValueError('stopped costs cannot imply successful selection or scientific closure')
     elif closure['plan_sha256']!=plan['content_sha256']:raise ValueError('closure plan differs')
     if audit['schema']==AUDITS[0]:
         if closure['slots']!=12 or len(closure['all_observation_file_sha256'])!=12 or len(audit['rows'])!=12:
@@ -145,6 +151,8 @@ def analyze(root,plan,audit):
         'scope':'Provider usage, recorded HTTP/caller timing and empty-prompt load records. Native cached prompt counts are a reported subset, not added input tokens. Transport/native aliases and nested duration fields overlap and are never summed. Retrieval/indexing, sandbox, host and code-agent work remain outside measured call components. An intent is not authenticated server receipt.',
         'new_model_calls':0,'new_code_executions':0}
     if before!=_inventory(root):raise ValueError('raw evidence changed during cost projection')
+    if stopped:
+        result['scientific_termination']='stopped; no held-out evaluation or successful scientific closure'
     result['content_sha256']=digest(result)
     return result
 

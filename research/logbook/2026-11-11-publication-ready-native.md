@@ -154,3 +154,19 @@ terminal content SHA256は`945883e54bc43fa049c7a7dfa6dd25af31f5b669fd361c6342ed7
 失敗readinessもliteral replayする。synthetic24チェックは4.17秒でpass。
 これにより失敗を成功closedへ変えず、既に得た候補の再構築と別評価protocolを準備する。
 別評価を行う場合は11提出と欠けた1枠をそのまま固定し、新候補生成・baseline代入を行わない。
+
+停止prefixの原source監査を二回実施し、45,294,018bytesの出力が完全一致した。
+content SHA256は`15f042d65d55fffb2c4e750038f88ba25fb74ecce6f953cf5b590902c4019b46`。
+19実world、2162raw files、11authoring、14readiness scopeを検証し、推論も生成source実行も追加しない。
+出力は開発worktreeの`outputs/native-loop-stopped-prefix-a1.json`と`-a2.json`。
+
+別の固定候補評価protocol／runner／cold auditorを追加した。元runのresume機能は持たず、
+既存4枠の完了候補だけから最小loss・最初のtieを選び、全滅した2枠は選択なしとする。
+open-seedを含む6参照と3つの未使用seed、上限30world、designer生成POST0。
+元のsource/rawをwriter lockとinventoryで保持し、候補・job・lossを応答前に固定する。
+まだ実験はdispatchしていない。
+
+初回synthetic QAは44pass/5fail。再利用job projectionが、selectionのcontent hashを
+要求する既存helperへhashなしの一時objectを渡していた実装ミス。元helperのguardを弱めず、
+projection入力とselectionの両方を正しくhashして修正。再実行49/49pass、6.83秒。
+初回JUnitも保持。元の19worldや候補の修正・追加はない。

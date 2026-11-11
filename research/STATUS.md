@@ -13,11 +13,14 @@ unknown still-running request. No candidate was salvaged or replaced, no
 selection was frozen, and no held-out world ran. The read-only chain correctly
 stopped on scientific status `stopped`. The publication goal remains active.
 
-Next: audit the exact stopped prefix, including failed readiness and all null
-worlds. A separate prospective evaluation of the already fixed submissions may
-use still-unused seeds, but cannot be called completion of the original study,
-reuse a failed designer certificate, invent a missing candidate, or replace an
-arm with a baseline. Optional component tests for future model-authored code
+Two original-source stopped-prefix audits now agree byte for byte
+(content15f042d6,19 physical worlds,2162 raw files). A
+[separate fixed-submission evaluation](protocols/campaigns/native-fixed-candidate-evaluation-v1.md)
+is prepared in code/protocol: four available arms, six references, three unused
+seeds, at most30 physical worlds and zero designer-generation POSTs. Failed-only
+arms have no selected policy. This cannot be called completion of the original
+study, reuse a failed designer certificate, invent a missing candidate, or replace an
+arm with a baseline. It has not yet dispatched. Optional component tests for future model-authored code
 must remain separate from native losses and preserve the full design freedom.
 
 November11: the user explicitly requested autonomous continuation until the
