@@ -105,3 +105,38 @@ def test_actual_campaign_request_binds_opt_in_context_and_preserves_resume(tmp_p
     again = campaign(enabled)
     assert again._request([], again._strategy_initial(), 1) == request
     with pytest.raises(ValueError): campaign(not enabled)
+
+
+def test_bounded_author_reads_advice_and_cold_replays_without_new_actions(tmp_path):
+    from tests.optimization.test_native_authoring_ir import request, BINDING, IMAGE as TEST_IMAGE
+    from tests.optimization.test_native_planning_author_v22 import PLAN
+    from tests.optimization.test_native_staged_author_v15 import Model
+    from utopia.optimization.native_staged_author_v15 import StagedVocabularyGenerator, replay_staged_generation
+    from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
+    body = request(); body[OPTION] = True
+    model = Model([PLAN, {'tool':'read_file', 'filename':FILENAME},
+        {'tool':'finish', 'rationale':'SCRIPTED explicit parent retention, not an improvement'}])
+    generator = StagedVocabularyGenerator(model, tmp_path/'author', image_id=TEST_IMAGE,
+        provider_binding=BINDING, max_steps=8, max_tokens=8192, conversation_profile=BOUNDED_AUTHORING)
+    definition = generator(body)
+    assert 'generation_failure' not in definition and len(model.calls) == 3
+    assert FILENAME in model.calls[0]['prompt']
+    directory = next((tmp_path/'author').glob('generation-*'))
+    assert replay_staged_generation(directory) == definition
+    assert generator(body) == definition and len(model.calls) == 3
+    completed = json.loads((directory/'step-01.completed.json').read_text())
+    assert completed['status'] == 'applied' and SCHEMA_NAME in json.dumps(completed)
+
+
+SCHEMA_NAME = 'scienceutopia.native-causal-design.v1'
+
+
+def test_read_only_cli_rebuilds_identically_and_refuses_overwrite(tmp_path, monkeypatch):
+    from scripts.reports.native_causal_design_v1 import main
+    system = tmp_path/'system.json'; system.write_text(json.dumps(anchor().to_dict()))
+    outputs = [tmp_path/'one.json', tmp_path/'two.json']
+    for output in outputs:
+        monkeypatch.setattr('sys.argv', ['report', '--system',str(system),'--output',str(output)])
+        main()
+    assert outputs[0].read_bytes() == outputs[1].read_bytes()
+    with pytest.raises(ValueError, match='fresh'): main()
