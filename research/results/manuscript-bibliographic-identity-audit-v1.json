@@ -4,7 +4,7 @@
   "scope": "Primary-record bibliographic identity and publication-status check, not a full claim-by-claim review or independent reproduction of cited results",
   "bibliography_file_sha256": {
     "paper/references.bib": "29e0732ea36784bbb6667973ff7070309e3b4bd93696cde21a9dd02193a7c1a6",
-    "paper/submission-sources.bib": "ec4a5bf59c57be3fde384326d2fc598bc4ba64811feb245715567f20a541cea1"
+    "paper/submission-sources.bib": "2ebadd09bc064a9e0a6dcc4e1189672b2bea82b32e40c1c0a1d100159e9181b0"
   },
   "checked_fields": ["title identity", "listed leading authors", "publication or original preprint year"],
   "primary_records": {

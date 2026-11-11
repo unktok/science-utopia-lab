@@ -333,10 +333,11 @@ theory of differentiable program synthesis.
 Let $\mathcal C_{\lambda mh}$ be the declared eligible candidate pool for
 objective $\lambda$, proposal method $m$ and design history $h$. Eligibility
 here means the protocol's selection pool, not a hidden scientific-merit test.
-After development, retain the entire observed minimum set
+Write $\mathcal V_{\lambda mh}\subseteq\mathcal C_{\lambda mh}$ for the
+complete eligible designs. After development, retain the entire observed minimum set
 \begin{equation}
  \mathcal B_{\lambda mh}=
- \mathop{\mathrm{arg\,min}}_{S\in\mathcal C_{\lambda mh}^{\mathrm{complete}}}
+ \mathop{\mathrm{arg\,min}}_{S\in\mathcal V_{\lambda mh}}
  \widehat L^{\mathrm{dev}}_\lambda(S),
  \label{eq:finite-minimum-set}
 \end{equation}
