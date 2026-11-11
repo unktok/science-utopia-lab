@@ -16,6 +16,28 @@ is not itself a frozen launch plan. Dispatch still requires a clean source,
 actual saved-plan reconstruction and untouched evaluation-seed inventory;
 each generation then requires its own fresh real designer certificate.
 
+## Stopped first attempt and prospective corrected-source study
+
+The first actual source537514a stops normally as a technical failure at
+20:26:34UTC November11, after all five reference worlds,28 actual readiness
+replies,13 proposal replies and eight returned component probes. The inner
+authoring worker submits a literal definition, but the outer replay still
+requires a hardcoded8 rather than the declared64. No proposed policy reaches
+a native world, no selection is produced and no unused evaluation is dispatched.
+All raw definitions, costs and the pending controller record remain unchanged.
+
+The outer-boundary scripted regression reproduces this exact error before
+the correction. The correction reconstructs the full declared bank/source/
+executor/budget contract, preserving old8-scope checks rather than bypassing
+validation. The next study has a new clean source and fresh finite five-reference,
+eight-proposal budget under the same T/U meanings and world conditions. It
+records the stopped original explicitly in its plan; no old measurements enter
+its developer context. The original pending proposal is not refilled, completed
+or silently counted as a successful submission. Report the stopped13-response
+authoring session as well as every new session, and do not pool distinct sources
+as independent completed optimizer histories. No retry depends on scientific
+loss or produces a desired winner.
+
 ## Question and hypotheses
 
 When the same designer can change scientific institutions, how does replacing

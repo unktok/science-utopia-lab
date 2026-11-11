@@ -76,6 +76,23 @@ def test_plan_has_explicit_new_criterion_common_authority_probe_budget_and_finit
     assert [s['objective'] for s in p['schedule']]==['throughput','content-utility','content-utility','throughput']*2
 
 
+def test_prior_technical_stop_is_retained_but_never_becomes_a_development_observation(tmp_path,monkeypatch):
+    p=plan(tmp_path,monkeypatch);old=tmp_path/'prior-stopped'
+    module.save(old/'plan.json',{'schema':module.SCHEMA+'.plan','source_commit':'b'*40})
+    module.save(old/'terminal.json',{'status':'stopped','error_type':'ValueError','error':'SCRIPTED cold guard mismatch'})
+    p['prior_technical_stops']=[{'run':str(old),'source_commit':'b'*40,
+        'plan_file_sha256':module.file_sha256(old/'plan.json'),'terminal_file_sha256':module.file_sha256(old/'terminal.json'),
+        'error_type':'ValueError','error':'SCRIPTED cold guard mismatch'}]
+    kwargs=dict(source=p['source_commit'],backend=p['backend'],observer_backend=p['observer_contract']['backend'],
+        bank=p['component_bank'],bank_file_hash=p['component_bank_file_sha256'],support=p['component_support'],seed_usage=[usage()])
+    rebuilt=module.build_plan(p,**kwargs)
+    assert rebuilt['prior_technical_stops']==p['prior_technical_stops']
+    assert rebuilt['prior_evidence_reused_as_development_observations'] is False
+    assert len(rebuilt['reference_order'])==5 and len(rebuilt['schedule'])==8
+    p['prior_technical_stops'][0]['error']='rewritten failure'
+    with pytest.raises(ValueError,match='prior stopped'):module.build_plan(p,**kwargs)
+
+
 def test_actual_saved_plan_reconstructs_and_rejects_a_declared_budget_that_does_not_reach_worker(tmp_path,monkeypatch):
     p=plan(tmp_path,monkeypatch);out=tmp_path/'prepared';out.mkdir()
     module.save(out/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})

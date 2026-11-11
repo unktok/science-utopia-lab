@@ -80,7 +80,7 @@ def build_plan(operator,*,source,backend,observer_backend,bank,bank_file_hash,su
         'world_conditions':{'schema':'scienceutopia.native-world-conditions.v1','initial_funding':30,
             'population_resource_profile':'balanced_two_band','log_resource_ledger':True},
         'measurement_adapter_contract':observer,'classification':'actual-native-objective-instrument-loop-v1'}
-    return {'schema':SCHEMA+'.plan','source_commit':source,'runtime':runtime_binding(),
+    result={'schema':SCHEMA+'.plan','source_commit':source,'runtime':runtime_binding(),
         'protocol':PROTOCOL,'protocol_sha256':file_sha256(ROOT/PROTOCOL),'launch_environment':clone(ENVIRONMENT),
         'scientist':clone(operator['scientist']),'designer':clone(operator['designer']),'backend':clone(backend),
         'data_cache':operator['data_cache'],'world':world,'experiment':experiment,'observer_contract':observer,
@@ -101,6 +101,16 @@ def build_plan(operator,*,source,backend,observer_backend,bank,bank_file_hash,su
             'readiness_sessions':8,'readiness_POSTs_per_session':40,'readiness_seconds':1200,
             'proposal_POSTs_per_session':16,'proposal_seconds':1800,'component_attempts_per_proposal':64,
             'replace_failed_slots':False},'development_seed_reused':True,'publication_ready':False}
+    if operator.get('prior_technical_stops'):
+        for entry in operator['prior_technical_stops']:
+            old=Path(entry['run']);prior=read(old/'plan.json');terminal=read(old/'terminal.json')
+            if (file_sha256(old/'plan.json')!=entry['plan_file_sha256'] or file_sha256(old/'terminal.json')!=entry['terminal_file_sha256']
+                    or prior['schema']!=SCHEMA+'.plan' or prior['source_commit']!=entry['source_commit']
+                    or terminal['status']!='stopped' or terminal['error_type']!=entry['error_type']
+                    or terminal['error']!=entry['error']):raise ValueError('literal prior stopped run differs')
+        result['prior_technical_stops']=clone(operator['prior_technical_stops'])
+        result['prior_evidence_reused_as_development_observations']=False
+    return result
 
 
 def require_plan(root):
@@ -123,6 +133,13 @@ def prepare(args):
     require_environment();source=pinned_revision(ROOT)
     if args.output.exists():raise ValueError('fresh objective experiment required')
     operator=read(args.operator_plan);bank=read(args.bank)
+    if getattr(args,'prior_stopped_run',None):
+        operator['prior_technical_stops']=[]
+        for path in args.prior_stopped_run:
+            old=read(path/'plan.json');terminal=read(path/'terminal.json')
+            operator['prior_technical_stops'].append({'run':str(path.resolve()),'source_commit':old['source_commit'],
+                'plan_file_sha256':file_sha256(path/'plan.json'),'terminal_file_sha256':file_sha256(path/'terminal.json'),
+                'error_type':terminal.get('error_type'),'error':terminal.get('error')})
     if not Path(operator['data_cache']).is_dir() or not args.seed_usage_root:raise ValueError('existing data and explicit seed-usage roots required')
     support={'directory':str(args.component_support.resolve()),'summary_file_sha256':file_sha256(args.component_support/'summary.json'),
         'plan_file_sha256':file_sha256(args.component_support/'plan.json')}
@@ -241,7 +258,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=('prepare','run'))
     p.add_argument('--output',type=Path,required=True)
     for name in ('operator-plan','bank','component-support'):p.add_argument('--'+name,type=Path)
-    p.add_argument('--seed-usage-root',type=Path,action='append');a=p.parse_args();a.output=a.output.resolve()
+    p.add_argument('--seed-usage-root',type=Path,action='append')
+    p.add_argument('--prior-stopped-run',type=Path,action='append');a=p.parse_args();a.output=a.output.resolve()
     if a.stage=='prepare':
         if a.operator_plan is None or a.bank is None or a.component_support is None:p.error('explicit existing inputs required')
         prepare(a)
