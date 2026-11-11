@@ -41,7 +41,9 @@ def rendered_context_proof(cell,state):
     from utopia.system.model_provenance_view import provenance_view
     with sqlite3.connect((cell/'replies/responses.sqlite').resolve().as_uri()+'?mode=ro',uri=True) as db:
         completed={r[0] for r in db.execute("SELECT payload_sha FROM replies WHERE outcome='response'")}
-    wires=[json.loads(line) for line in (cell/'wire-requests.jsonl').read_text().splitlines()]
+    wire_path=cell/'wire-requests.jsonl'
+    if not wire_path.is_file() and completed:raise ValueError('completed scientist replies without original wire journal')
+    wires=[json.loads(line) for line in wire_path.read_text().splitlines()] if wire_path.is_file() else []
     if any(digest(w['payload'])!=w['payload_sha256'] for w in wires):raise ValueError('literal HTTP payload hash differs')
     agents={a['id']:a for a in state['ecosystem_data']['agents']};rows=[];prefixes=[]
     for actor,a in agents.items():

@@ -123,3 +123,15 @@ def test_literal_original_formatter_recovers_alpha_aliased_inputs_without_rewrit
     assert json.dumps(messages[0],sort_keys=True) not in known['messages'][0]['content']
     assert r['unique_matching_completed_payloads']==1 and state==before
     assert 'not unique actor attribution' in r['scope'] and 'proof of absence when unmatched' in r['scope']
+
+
+def test_zero_response_partial_world_may_lack_wire_log_but_known_reply_may_not(tmp_path):
+    import sqlite3
+    (tmp_path/'replies').mkdir()
+    with sqlite3.connect(tmp_path/'replies/responses.sqlite') as db:
+        db.execute('CREATE TABLE replies (payload_sha TEXT, outcome TEXT)')
+    state={'ecosystem_data':{'agents':[]},'native_system':{'events':[]}}
+    proof=module.rendered_context_proof(tmp_path,state)
+    assert proof['unique_matching_completed_payloads']==0 and proof['all_stored_messages']==[]
+    with sqlite3.connect(tmp_path/'replies/responses.sqlite') as db:db.execute("INSERT INTO replies VALUES ('SCRIPTED', 'response')")
+    with pytest.raises(ValueError,match='without original wire'):module.rendered_context_proof(tmp_path,state)
