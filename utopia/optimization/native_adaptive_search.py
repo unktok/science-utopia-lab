@@ -270,6 +270,9 @@ class NativeAdaptiveDesignCampaign:
                 or not _finite(strategy_learning_rate) or strategy_learning_rate <= 0
                 or not _finite(strategy_baseline) or not _finite(exploration) or not 0 < exploration <= 1):
             raise ValueError('explicit strategy provenance, source/model/corpus/seeds and finite optimizer settings required')
+        from .native_causal_design import OPTION
+        if any(OPTION in v and type(v[OPTION]) is not bool for v in strategies.values()):
+            raise ValueError('causal design context must be an explicit boolean')
         self.directory, self.initial, self.loss = Path(directory), initial_system, clone(loss_spec)
         self.path = self.directory / 'native-adaptive-state.json'
         self.binding = {'initial_system': initial_system.to_dict(), 'loss_spec': clone(loss_spec),
@@ -331,6 +334,10 @@ class NativeAdaptiveDesignCampaign:
         index = len(records)
         rng_seed = int(digest({'seed': self.binding['seed'], 'generation': index})[:15], 16)
         chosen = int(torch.multinomial(probabilities, 1, generator=torch.Generator().manual_seed(rng_seed)))
+        from .native_causal_design import OPTION
+        context_flag = self.binding['strategies'][ids[chosen]].get(OPTION, False)
+        if type(context_flag) is not bool:
+            raise ValueError('causal design context must be an explicit boolean')
         if technical_only:
             from .native_feedback_control import technical_request
             request = technical_request(self, records, strategy_state, count,
@@ -338,6 +345,8 @@ class NativeAdaptiveDesignCampaign:
             if 'design_space' in self.binding:
                 request['design_space'] = clone(self.binding['design_space'])
                 request['design_space_anchor'] = self.initial.to_dict()
+            if context_flag:
+                request[OPTION] = True
             return request
         if self.binding.get('proposal_feedback') == 'matched-loss':
             from .native_feedback_control import class_only_records
@@ -382,6 +391,8 @@ class NativeAdaptiveDesignCampaign:
         if 'design_space' in self.binding:
             request['design_space'] = clone(self.binding['design_space'])
             request['design_space_anchor'] = self.initial.to_dict()
+        if context_flag:
+            request[OPTION] = True
         return request
 
     def _mixed(self, record):

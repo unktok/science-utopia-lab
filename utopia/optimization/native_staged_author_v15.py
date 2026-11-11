@@ -371,6 +371,16 @@ code points, including line feeds, quotes and backslashes; no extra encoding.
 """
 
 
+CAUSAL_GUIDANCE = """
+If reference/causal-design.json is present, it provides the current declared
+phase order and typed review-routing window. Read it before claiming an edit
+changes earlier native work. It does not prove arbitrary code semantics.
+Keeping the graph unchanged is legal; a new node or wire is not a fitness goal.
+"""
+INSTRUCTIONS += CAUSAL_GUIDANCE
+FILE_EDITOR_INSTRUCTIONS += CAUSAL_GUIDANCE
+
+
 def protocol_binding():
     from . import native_authoring_ir, native_search_generator_v14
     from . import native_designer_wire
@@ -398,6 +408,7 @@ def protocol_binding():
         'literal_workbench_source_sha256': hashlib.sha256(Path(native_literal_workbench_v27.__file__).read_bytes()).hexdigest(),
         'field_addressing_source_sha256': hashlib.sha256(Path(native_field_addressing_v28.__file__).read_bytes()).hexdigest(),
         'file_workspace_source_sha256': hashlib.sha256(Path(native_file_workspace_v35.__file__).read_bytes()).hexdigest(),
+        'causal_design_source_sha256': hashlib.sha256(Path(__file__).with_name('native_causal_design.py').read_bytes()).hexdigest(),
         'history_workspace_source_sha256': hashlib.sha256(Path(native_history_workspace_v37.__file__).read_bytes()).hexdigest(),
         'designer_roles_source_sha256': hashlib.sha256(Path(__file__).with_name('native_designer_roles_v38.py').read_bytes()).hexdigest(),
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),

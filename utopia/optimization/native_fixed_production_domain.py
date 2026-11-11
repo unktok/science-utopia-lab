@@ -7,27 +7,55 @@ from collections import Counter
 from utopia.system.native_migration import native_execution_nodes
 
 SCOPE='fixed-native-production-v1'
+ROUTING_SCOPE='fixed-native-production-review-routing-v2'
 FREE_NATIVE={'native.phase.review.v1','native.phase.selection.v1'}
 
 
-def fixed_nodes(anchor):
+def free_native(scope):
+    if scope == SCOPE:
+        return FREE_NATIVE
+    if scope == ROUTING_SCOPE:
+        from utopia.system.native_review_routing import REVIEW
+        return FREE_NATIVE | {REVIEW}
+    raise ValueError('unknown explicit world-law scope')
+
+
+def allow_review_routing(anchor, contract):
+    """Explicit prospective domain version, not an implicit repair of v1."""
+    from .native_design_space import validate_design_space
+    from utopia.system.design_patch import clone
+    validate_design_space(anchor, contract)
+    if contract.get('world_law_scope') != SCOPE:
+        raise ValueError('explicit fixed-production-v1 starting domain required')
+    updated = clone(contract)
+    updated['world_law_scope'] = ROUTING_SCOPE
+    updated['scope'] = contract['scope'] + ' ' + scope_description(anchor, scope=ROUTING_SCOPE)
+    validate_design_space(anchor, updated)
+    return updated
+
+
+def fixed_nodes(anchor, *, scope=SCOPE):
     return {n.mechanism_id:n for n in anchor.mechanisms
         if n.implementation.startswith(('native.phase.','native.activity.'))
-        and n.implementation not in FREE_NATIVE}
+        and n.implementation not in free_native(scope)}
 
 
-def scope_description(anchor):
+def scope_description(anchor, *, scope=SCOPE):
     return ('This prospective pilot fixes these native production/calendar/accounting nodes '
-        'and their schedules: '+', '.join(sorted(fixed_nodes(anchor)))+'. '
+        'and their schedules: '+', '.join(sorted(fixed_nodes(anchor, scope=scope)))+'. '
         'Do not duplicate/wrap those effects, replace base-plan origins, add plan-amendment '
         'authority, grant native.project, or change the pinned code image. '
         'Other institutional code, entities, protocols, memory, wiring and institutional '
         'schedules may change. Review removal and all-accept/all-reject selection are legal. '
-        'This is an explicit design domain, not an outcome, novelty or fairness veto.')
+        'This is an explicit design domain, not an outcome, novelty or fairness veto.'
+        + (' The existing typed native review-routing implementation is also allowed; '
+           'it executes actual eligible review tasks and does not replace research production.'
+           if scope == ROUTING_SCOPE else ''))
 
 
-def require_fixed_production(anchor,candidate):
-    protected=fixed_nodes(anchor)
+def require_fixed_production(anchor,candidate, *, scope=SCOPE):
+    free=free_native(scope)
+    protected=fixed_nodes(anchor, scope=scope)
     nodes={n.mechanism_id:n for n in candidate.mechanisms}
     for identity,node in protected.items():
         if nodes.get(identity)!=node:
@@ -40,7 +68,7 @@ def require_fixed_production(anchor,candidate):
     # protected native effect under another ID or wrapped delegate.
     for node in native_execution_nodes(candidate):
         if (node.implementation.startswith(('native.phase.','native.activity.'))
-                and node.implementation not in FREE_NATIVE
+                and node.implementation not in free
                 and protected.get(node.mechanism_id)!=node):
             raise ValueError('pilot cannot duplicate or replace native production effects')
         grants=node.parameters.get('capabilities')

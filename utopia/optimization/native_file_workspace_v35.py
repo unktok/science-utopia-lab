@@ -68,6 +68,11 @@ def _entries(document, request=None, *, conversation_profile='hermes-function-hi
                 **meta, 'format': 'python-source', 'value': artifact['source'],
                 'path': path + '/parameters/code_artifact/source'}
     if request is not None:
+        from .native_causal_design import OPTION, FILENAME, describe
+        if request.get(OPTION) is True:
+            entries[FILENAME] = {'format': 'json-reference', 'read_only': True,
+                'value': describe(document), 'path': None,
+                'source_kind': 'declared-operational-order-not-code-effect-proof'}
         from .native_designer_tools_v25 import BOUNDED_AUTHORING
         if conversation_profile == BOUNDED_AUTHORING:
             from .native_bounded_author_context_v45 import archive_entries
