@@ -8,7 +8,8 @@ ROOT = Path(__file__).resolve().parents[2]
 def test_all_new_source_table_rows_match_actual_submissions_and_probes():
     r = json.loads((ROOT/'research/data/native-objective-instrument-loop-v1/report.json').read_text())
     text = (ROOT/'paper/integrated/native-loop.tex').read_text()
-    rows = [line for line in text.splitlines() if line.startswith(('T/g','U/g'))]
+    rows = [line for line in text.splitlines()
+            if line.startswith(('T/g','U/g')) and ' & ' in line]
     assert len(rows) == len(r['slots']) == 8
     for line, slot in zip(rows, r['slots']):
         fields = [x.strip().rstrip('\\') for x in line.split('&')]
