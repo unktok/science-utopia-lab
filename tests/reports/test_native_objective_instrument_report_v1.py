@@ -94,3 +94,30 @@ def test_two_static_scientific_figures_are_byte_deterministic(tmp_path,monkeypat
     one,two=tmp_path/'one',tmp_path/'two';one.mkdir();two.mkdir();module.render(r,one);module.render(r,two)
     assert {p.name:p.read_bytes() for p in one.iterdir()}=={p.name:p.read_bytes() for p in two.iterdir()}
     assert {p.name for p in one.iterdir()}=={'objective-loss-paths.png','objective-loss-paths.svg','objective-cross-scores.png','objective-cross-scores.svg'}
+
+
+def test_real_export_boundary_handles_all_missing_worker_terminals_twice(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    from scripts.analyze_native_open_v7 import _inventory
+    p,a,records,traces=evidence(tmp_path,monkeypatch);root=tmp_path/'raw';root.mkdir()
+    a['worlds']=[w for w in a['worlds'] if w['role']=='developer-reference']
+    for objective in p['objectives']:
+        state=[]
+        for g in range(4):
+            r=records[objective,g];r.update(definition=None,draws=[],observations=[],
+                generation_error={'type':'ValueError','message':'SCRIPTED no worker terminal','loss':None})
+            state.append(r);author=next(v for v in a['authoring'] if (v['objective'],v['generation'])==(objective,g))
+            directory=root/'search'/objective/'authoring'/('generation-'+r['request_sha256']);directory.mkdir(parents=True)
+            author.update(raw_directory=str(directory),definition=None,generation_error=clone(r['generation_error']),component_testing=None)
+        module.save(root/'search'/objective/'campaign/native-adaptive-state.json',{'pending':None,'records':state})
+        a['selection']['selected'][objective]={'loss':None,'all_tied_ids':[],'selected_id':None,'system':None,'completed_submissions':0}
+    module.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
+    a['raw_inventory_sha256']=digest(_inventory(root));seal(a)
+    paths=[tmp_path/'audit-one.json',tmp_path/'audit-two.json']
+    for path in paths:module.save(path,{k:v for k,v in a.items() if k!='content_sha256'})
+    outputs=[tmp_path/'export-one',tmp_path/'export-two'];before=_inventory(root)
+    for out in outputs:module.export(SimpleNamespace(run=root,audit_one=paths[0],audit_two=paths[1],output=out))
+    assert before==_inventory(root)
+    assert {f.name:f.read_bytes() for f in outputs[0].iterdir()}=={f.name:f.read_bytes() for f in outputs[1].iterdir()}
+    report=module.checked(__import__('json').loads((outputs[0]/'report.json').read_text()))
+    assert len(report['slots'])==8 and all(r['status']=='generation-failure' for r in report['slots'])
