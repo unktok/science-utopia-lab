@@ -465,3 +465,31 @@ saved planの再構築成功後だけrun開始。科学要求のretry／補充�
 plan content b9362297af8622e84ec4ba6b7fc8d778f375ee637d8d541259dfa8e24ad205cb。
 source、old input file hash、固定rubric、全content順、budget、共通inference lockを保持。
 新native world／current objective変更0、実採点の完了は未主張。
+
+### 17:24UTC: code-tested four-slot normal closure and actual report
+
+元93076b4は17:22:44.547998UTCに全4slotを終了。7physical worldsは参照3complete、
+E二件complete、T二件technical null。T G0はmissing payload envelope、T G1は
+GraphRuntimeError（empty cycle requires explicit empty decision batch）。後者の8probeは
+旧codeでreturnedだが、予算消費後に編集されたfinal版は未テスト。hostで修復しない。
+E二件はともに−11.166666666666668でreviewed accept-all同点、one-reviewer−18.5に劣る。
+Tに完成policyはなくfallbackなし。4/4selection sourceだけ変更しnode/connection/schedule変更0。
+実32probeは28returned/4raised、same fixture別codeのraised-to-returnedは0。
+全14step×4のrecordを保持し、repair/structural invention/feedback superiorityを主張しない。
+
+08f671bのoriginal-source監査二回と費用二回はbyte一致、17:24:25.095286UTCに閉鎖。
+audit content631ad803、raw993files/inventory7f8c38dc。8bb712fの実7file export二回も
+byte一致し17:24:30.431493UTCに閉鎖。report content0af8d1b8、file99f9ff8b。
+PNG二枚を目視、table/results/READMEとdata/figuresを保持した。PDFはまだ新規buildせず、
+旧52頁のdated snapshotを保持。二つのretained integrity/interpretation checksが0.89秒でpass、
+JUnit SHA256 `f74429c72c6996ea543065885685bb7141a81684c5b48c333602d589b312a866`。
+費用はscientist663reply、600856input/66114output、cached110645はinputのsubset。
+別にreadiness114、proposal56、designer load8、scientist load7。load tokenはunknown。
+
+閉鎖を受けた2dd042e observerは最初3panel/9responseのreal interface checkを通過し、
+全76内容へ進行。17:30UTCに29/76のstatus measuredを確認、途中score値は次のlossに利用しない。
+sourcef98360eのcold readout reportはscripted本物observer APIと二回exportを含む61pass
+（16.80秒）、JUnit SHA256 `baa381e67c897122d3b430272a3c1c82593ec9d6f83b94ed331ab47c587a3774`。
+raw criticを再構築したauditから各pooled scoreへ突合し、44world/263decision/76content/228criticを
+区別。欠測sumはnull、resealed derivativeだけの架空ratingは拒否。実cold集計はclosure後に残す。
+研究R2は未達であり、現T/Eをそのまま大規模化せず次の意味ある問いへ進む。

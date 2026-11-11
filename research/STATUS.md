@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+**November12 02:28JST / November11 17:28UTC:** the code-tested experiment
+closes normally17:22:44UTC; two original-source audits/costs close17:24:25UTC,
+and two identical seven-file actual exports close17:24:30UTC.
+[All four results](results/native-code-tested-loop-v1.md): both T proposals have
+technical nulls; both E proposals complete at−11.1667, match reviewed accept-all
+and lose to the one-reviewer control (−18.5). All four edit only selection code;
+no nodes, wiring or schedules change.32 probes return28/raise4, with no observed
+raised-to-returned code transition. Three final artifacts are untested after
+the declared probe budget is exhausted. No source repair or slot replacement.
+[Portable projections](data/native-code-tested-loop-v1/README.md) and
+[closure proof](results/native-code-tested-loop-closed-verification-v1.json) are
+retained; actual PNGs inspected, not yet integrated into a new PDF.
+
+The separate2dd042e content readout has now passed its real first-three-panel
+interface check and proceeds through all fixed historical contents. It uses
+only the existing local8B and no new native worlds. No final distribution or
+new objective comparison is claimed while it runs. Publication milestone R2
+remains open: finite feasibility closure is not a strong new research answer.
+
 **November12 02:20JST / November11 17:20UTC:** the original code-tested loop
 is in its fourth/final proposal T/G1 (optimization entered17:17:09UTC).
 Read-only audit and report continuations remain closure-gated. No four-slot

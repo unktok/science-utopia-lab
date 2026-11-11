@@ -1,0 +1,24 @@
+{
+  "schema": "scienceutopia.native-common-content-cold-report-prelaunch-verification.v1",
+  "analysis_source_commit": "f98360e25d392107799c202458c4abaa3bf0d6c0",
+  "observer_source_commit": "2dd042e396627df99a42e3256f010d0d703b80b0",
+  "clean_source_checks": {
+    "passed": 61,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 16.80,
+    "junit_file_sha256": "baa381e67c897122d3b430272a3c1c82593ec9d6f83b94ed331ab47c587a3774"
+  },
+  "synthetic_two_exports_all_six_files_identical": true,
+  "literal_real_observer_API_journals_scripted": true,
+  "cold_audit_exact_match_checked": true,
+  "unavailable_world_sums_remain_null": true,
+  "resealed_derived_rating_without_raw_support_rejected": true,
+  "interface_check_order_and_literal_ratings_verified": true,
+  "new_model_calls_from_analysis": 0,
+  "new_native_worlds_from_analysis": 0,
+  "actual_readout_closed": false,
+  "actual_cold_reports_exported": false,
+  "scientific_truth_claimed": false,
+  "publication_ready": false
+}

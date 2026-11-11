@@ -1,0 +1,5 @@
+slot_index,arm,generation,objective,status,loss,physical_job,connections_changed,schedules_changed,probe_attempts,returned,raised
+0,throughput:code-and-graph,0,throughput,failed,,native-adaptive-694f816f384179d736d7b351,False,False,8,4,4
+1,efficiency:code-and-graph,0,efficiency,complete,-11.166666666666668,native-adaptive-71b2f6140ae5478822344bf3,False,False,8,8,0
+2,efficiency:code-and-graph,1,efficiency,complete,-11.166666666666668,native-adaptive-f4e3ccc2d15ac99f0d971763,False,False,8,8,0
+3,throughput:code-and-graph,1,throughput,failed,,native-adaptive-f95dae9e577df3397ba65d37,False,False,8,8,0

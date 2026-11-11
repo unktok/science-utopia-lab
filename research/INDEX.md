@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed code-tested native loop](results/native-code-tested-loop-v1.md),
+  [retained data/figures](data/native-code-tested-loop-v1/README.md) and
+  [closure verification](results/native-code-tested-loop-closed-verification-v1.json):
+  four programs submitted, two E completions/two T technical nulls; no structural
+  change or strong-reference advantage. Original audits/costs and seven-file
+  actual exports match twice. The fixed-content readout now runs after its
+  actual three-panel interface check; not a new optimized-policy result.
+
 - [Finite fixed-content retrospective readout](protocols/campaigns/native-common-content-readout-v1.md)
   and [source/plan verification](results/native-common-content-readout-prelaunch-verification-v1.json):
   all76 historical contents/228 maximum local8B replies, first9 as technical

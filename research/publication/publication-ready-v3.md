@@ -23,7 +23,7 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
-| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | [有限pilot](../protocols/campaigns/native-institution-loop-v1.md)は671436aで停止。19world監査一致、5complete/6null/1未提出を保持。[別の固定候補評価](../results/native-fixed-evaluation-v1.md)はf1f8ddfで30/30終了し独立監査／費用／実図二回一致。元実験の完了へ言い換えない。新code-tested loopは実校正を通過しnative参照を開始 |
+| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 671436aは停止、19world/全slot保持。[別の固定候補評価](../results/native-fixed-evaluation-v1.md)は30/30終了、独立監査／費用／実図二回一致。[93076b4 code-tested loop](../results/native-code-tested-loop-v1.md)も全4候補／7worldを閉鎖、監査／費用／actual export二回一致。E二件は全採択と同点、T二件はnull。新主結果の選択後評価は未達 |
 | R2 | 重要で識別可能な研究上の答えと対照 | 未達。同権限の単体code、切断・遅延等の必要な比較を効果に応じて凍結 |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
 | R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 既存各研究には存在。新主結果に対応する更新が必要 |
@@ -39,6 +39,14 @@ seed数やQA数だけを増やしてR2を閉じない。単発の改善、意図
 失敗を補充して望んだ結果を探し続けるのではなく、各有限protocolの結果を閉じて次の問いを決める。
 
 ## Pilot後の研究判断
+
+November12追記：93076b4の[四候補code-tested loop](../results/native-code-tested-loop-v1.md)も
+全件閉鎖した。E二候補はreviewed accept-allと同点で、one-reviewer参照に劣る。
+T二候補はtechnical null、全四件ともselection sourceのみで配線変更なし。
+二回監査／費用／actual report一致はR4の進展だが、R2を満たさない。
+次の[全76内容の固定採点](../protocols/campaigns/native-common-content-readout-v1.md)は
+実interface check後に実行中。別条件の意見を読む有限診断であり、目的変更・新探索・
+truth oracle・重要な新規性の実証を先取りしない。
 
 現在のpilotの未使用評価はまだ始まっていない段階で、次の判断順序を定める。
 今の目的、候補枠、参照、選択方法は変えない。
