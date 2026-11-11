@@ -13,6 +13,11 @@ from utopia.system import SystemSpec
 from utopia.system.design_patch import clone,digest
 
 
+def usage():
+    body={'valid':True,'errors':[],'prior_matching_runs':[],'seeds':list(module.EVALUATION_SEEDS)}
+    return {**body,'content_sha256':digest(body)}
+
+
 def plan(tmp_path,monkeypatch):
     gen,unused,request,calls=fixture(tmp_path/'fixture',[finish()],extended=True,
         reference='resource-30-connected',maximum_probes=64)
@@ -31,8 +36,7 @@ def plan(tmp_path,monkeypatch):
         observer_backend={**{k:operator['scientist'][k] for k in ('model','model_digest')},'ollama_version':'SCRIPTED'},
         bank=bank,bank_file_hash='SCRIPTED-bank-file',support={'directory':str(support),
             'plan_file_sha256':module.file_sha256(support/'plan.json'),'summary_file_sha256':module.file_sha256(support/'summary.json')},
-        seed_usage=[{'valid':True,'errors':[],'prior_matching_runs':[],
-            'seeds':list(module.EVALUATION_SEEDS),'content_sha256':'SCRIPTED-usage'}])
+        seed_usage=[usage()])
     return {**p,'content_sha256':digest(p)}
 
 
@@ -70,6 +74,17 @@ def test_plan_has_explicit_new_criterion_common_authority_probe_budget_and_finit
     assert p['budget']['development_native_worlds_upper_bound']==13 and p['evaluation']['native_worlds_upper_bound']==21
     assert len(p['reference_order'])==5 and len(p['schedule'])==8 and not p['budget']['replace_failed_slots']
     assert [s['objective'] for s in p['schedule']]==['throughput','content-utility','content-utility','throughput']*2
+
+
+def test_actual_saved_plan_reconstructs_and_rejects_a_declared_budget_that_does_not_reach_worker(tmp_path,monkeypatch):
+    p=plan(tmp_path,monkeypatch);out=tmp_path/'prepared';out.mkdir()
+    module.save(out/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
+    module.save(out/'evaluation-seed-usage-00.json',{k:v for k,v in usage().items() if k!='content_sha256'})
+    monkeypatch.setattr(module,'pinned_revision',lambda root:'c'*40)
+    assert module.require_plan(out)==p
+    p['post_edit_contract']['maximum_probe_attempts']=8
+    (out/'plan.json').unlink();module.save(out/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
+    with pytest.raises(ValueError,match='reconstruction differs'):module.require_plan(out)
 
 
 def test_all_eight_generation_nulls_close_without_native_or_reference_fallback_and_preserve_public_observer_audit(tmp_path,monkeypatch):

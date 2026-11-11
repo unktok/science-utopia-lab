@@ -136,3 +136,30 @@ def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_p
     with pytest.raises(ValueError,match='original scientist response journals'): analyze(tmp_path,p,a)
     a['selection']={'invented':'not legal'};a=hashed({k:v for k,v in a.items() if k!='content_sha256'})
     with pytest.raises(ValueError,match='stopped costs'): analyze(tmp_path,p,a)
+
+
+def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usage(tmp_path):
+    from tests.reports.test_native_token_costs import cache
+    from tests.optimization.test_common_content_observer import contract,Backend,PAPER
+    from utopia.optimization.common_content_observer import CommonContentObserver
+    from utopia.optimization.native_numeric_designer import save
+    p=hashed({'source_commit':'a'*40,'scientist':{'model':'SCRIPTED','model_digest':'b'*64,'corpus_sha256':'c'*64},
+        'designer':{'model':'SCRIPTED-designer'}})
+    cache(tmp_path,p,'references/known/worlds/known/replies/responses.sqlite',[
+        {'prompt_tokens':3,'completion_tokens':4,'total_tokens':7},None])
+    observer=CommonContentObserver(tmp_path/'observer',contract(),backend=Backend());observer.rate(PAPER)
+    critic=observer.audit()
+    start=save(tmp_path/'started.json',{'plan_sha256':p['content_sha256']})
+    end=save(tmp_path/'terminal.json',{'status':'closed'});inventory=_inventory(tmp_path)
+    a=hashed({'schema':'scienceutopia.native-objective-instrument-loop-audit.v1','source_commit':p['source_commit'],
+        'plan_sha256':p['content_sha256'],'source_proof':{'status':'verified-exact-source-closure'},
+        'new_model_calls':0,'new_code_executions':0,'closure':{'started':start,'terminal':end},
+        'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),'observer':critic})
+    result=analyze(tmp_path,p,a)
+    assert result['scientist']['completed_responses']==2
+    assert result['scientist']['provider_usage']['prompt_tokens']['recorded_sum']==3
+    assert result['scientist']['provider_usage']['prompt_tokens']['missing_responses']==1
+    common=result['common_content_observer']
+    assert common['physical_requests']==3 and common['usage']['prompt_tokens']['known_sum']==213
+    assert common['usage']['output_tokens']['known_sum']==27 and not common['overlap_with_native_response_caches']
+    assert _inventory(tmp_path)==inventory

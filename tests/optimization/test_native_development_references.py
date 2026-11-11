@@ -36,7 +36,7 @@ def test_objective_specific_best_known_reference_enters_parent_without_becoming_
     assert bank==before
 
 
-@pytest.mark.parametrize('damage',['world','seeds','loss','duplicate','journal-envelope'])
+@pytest.mark.parametrize('damage',['world','seeds','loss','duplicate','journal-envelope','fingerprint','measurement-id'])
 def test_changed_or_misbound_common_references_are_not_silently_imported(monkeypatch,damage):
     bank=context(monkeypatch)
     if damage=='world':
@@ -48,5 +48,7 @@ def test_changed_or_misbound_common_references_are_not_silently_imported(monkeyp
     if damage=='loss':bank['pairs'][0]['observation']['loss']=999.
     if damage=='duplicate':bank['pairs'][1]=clone(bank['pairs'][0])
     if damage=='journal-envelope':bank['pairs'][0]['observation']['content_sha256']='not a canonical observation'
+    if damage=='fingerprint':bank['pairs'][0]['observation']['metadata']['system_fingerprint']='another system'
+    if damage=='measurement-id':bank['pairs'][0]['observation']['metadata']['measurements'][0]['run_id']='another world'
     bank['content_sha256']=digest({k:v for k,v in bank.items() if k!='content_sha256'})
     with pytest.raises(ValueError):validate_context(bank)

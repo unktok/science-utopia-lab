@@ -3,6 +3,7 @@ from .blackbox import Observation,Suggestion
 from .loss import evaluate_loss,validate_loss_spec,loss_spec_sha256
 from .native_discrete_policy import verify_native_observation
 from .native_numeric_designer import checked
+from utopia.system import SystemSpec
 from utopia.system.design_patch import clone,digest
 
 SCHEMA='scienceutopia.native-development-references.v1'
@@ -30,9 +31,13 @@ def validate_context(context,*,target_world=None,target_seeds=None):
             raise ValueError('canonical native reference pairs required without journal envelopes')
         if suggestion.suggestion_id in seen:raise ValueError('duplicate developer reference identity')
         seen.add(suggestion.suggestion_id);m=observation.metadata
+        fingerprint=SystemSpec.from_dict(suggestion.candidate).fingerprint
         evaluated=evaluate_loss(context['original_loss_spec'],m['measurements'])
         if (observation.status!='complete' or observation.suggestion_id!=suggestion.suggestion_id
                 or observation.candidate!=suggestion.candidate or m.get('technical_failures')
+                or m.get('world_backend')!='native-research-world' or m.get('system_fingerprint')!=fingerprint
+                or {v['run_id'] for v in m['runs']}!={v['run_id'] for v in m['measurements']}
+                or any(v.get('system_fingerprint')!=fingerprint for v in m['measurements'])
                 or evaluated['status']!='complete' or evaluated['loss']!=observation.loss
                 or evaluated!=m['loss_evaluation']
                 or m['loss_spec_sha256']!=loss_spec_sha256(context['original_loss_spec'])):
