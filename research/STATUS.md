@@ -2,6 +2,13 @@
 
 ## Active publication-ready goal
 
+**November12 00:55JST / November11 15:55UTC:** fixed evaluation is29/30
+complete, activeevaluation-029. Writer59964 remains alive (4h30m elapsed);
+the active wire journal updates15:55:05UTC. The next code-tested loop still
+waits for normal independent closure, without concurrent model inference.
+Three read-only audit/report continuations remain separately gated. Current
+inference source, selection, losses and budgets have not changed.
+
 The [November12 integrated native-execution snapshot](../output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf)
 now has49 pages/20 figures/20 tables. It retains the whole earlier program and
 adds the stopped pilot's twelve slots/costs, execution-feedback implementation,

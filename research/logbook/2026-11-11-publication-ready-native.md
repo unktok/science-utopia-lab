@@ -25,7 +25,9 @@ pdfplumberはvenvに無いため使用せず、追加installなし。目次font8
 本文を削らずほぼ空白の目次頁を除いた。source-bound30件3.68秒、retained PDF／manifestを
 追加照合する14件2.63秒pass。旧47頁も含む4PDFのbytesは不変。
 15:53:56UTC観測では固定候補評価29/30、evaluation-029実行中。
-新code-tested writerと両後処理chainはclosure待機。科学lossや候補を原稿作成で追加しない。
+新code-tested writerと三つのread-only後処理chainはそれぞれclosure待機。
+15:55UTCにはwriter59964の生存と最終cellの15:55:05UTC wire更新も確認。
+科学lossや候補を原稿作成で追加しない。
 
 ユーザーはtop conferenceへpublication-readyになるまでの自律継続を依頼。
 新しいgoal toolをactiveにし、[研究目標](../publication/publication-ready-v3.md)と
