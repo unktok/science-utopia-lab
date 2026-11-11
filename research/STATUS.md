@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 00:33JST / November11 15:33UTC:** the fixed evaluation has27/30
+complete jobs and has begun evaluation-027. Writer59964 is alive; its new cell's
+wire journal updates at15:33:25UTC. The next93076b4 loop remains closure-gated,
+not concurrently inferring. Its own read-only postprocessing chain starts
+15:31:54UTC at frozen08f671b/session57926, after55 clean checks (4.84s), and
+waits for writer77538 to exit normally before two source-bound audits and costs.
+The earlier start observations below are history, not current heartbeats.
+
+[Objective support analysis](publication/native-objective-support-and-next-question.md)
+now includes two original-source annual readouts of the old44 complete worlds:
+176 saved boundaries/880 actor states, all active at those boundaries, individual
+year-end resources30--300. The [portable numeric vectors](data/native-resource-support-v1/README.md)
+rebuild exactly and join the old final measurements;17 focused checks pass.
+This does not establish within-year minima or resource sufficiency, choose a new
+loss, or use ongoing620xx results. The main-study importance gap remains open.
+
 **November11 14:28UTC:** the separate fixed-policy evaluation has20/30 completed
 worlds (progress14:23:34UTC, activeevaluation-020). Its sourcef1f8ddf remains
 unchanged. The a123aff read-only audit/cost chain and cd383cc report chain wait

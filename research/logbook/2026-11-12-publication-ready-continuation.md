@@ -42,3 +42,15 @@ raw checkoutやmodel重みを持たない共同研究者も、保持された数
 これはanalysis側overlayで、待機中93076b4の科学source・条件を変更していない。
 chain停止／PID再利用／失敗stageの非retryを含む20scripted checkが4.43秒でpass。
 November11 15:17UTCの科学progressは26/30完了、evaluation-026実行中。
+
+clean08f671bc49eb50895d9940c954634fa6e4971cccでchain／新旧closed-state／cost／
+numeric dataの55/55pass（4.84秒）。JUnit SHA256は
+`28a7c1eb0c8cc97628327f5f58c9ace50ba014571bd9f294258d1a095e2f4c81`。
+同sourceの別worktree`native-code-tested-analysis-v1-a1`で15:31:54.135090UTCに
+session57926を起動。writer77538の正常終了待ち、推論を起動しない。
+元93076b4とF1 writerのsource／HEADは変更せず、analysis overlayだけを分離した。
+
+15:33UTCに旧writer59964の生存、27/30完了と新evaluation-027のwire更新
+15:33:25.793203UTCを確認。長めだった026も終わっており、停止とは判断しない。
+全件閉鎖後の二回audit／cost／図表と、次七worldの同手順が接続済み。
+科学的に重要な主結果、原稿への統合、publication-ready判定はまだ残る。
