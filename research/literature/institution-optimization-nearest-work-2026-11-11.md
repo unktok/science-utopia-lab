@@ -12,13 +12,27 @@ HTMLの確認節とabstractだけの確認を分け、未読の実験設定を�
 | [AMD-LLM v1](https://arxiv.org/html/2502.12203v1)、abstract／導入 | 制度codeの生成と進化、問題別fixingでの設計要件充足 | 自分たちのno-host-repairを優位性にしない。lossとは別の制約を黙って追加しないという実験上の選択である |
 | [LLM Economist v1](https://arxiv.org/html/2507.15815v1)、§1–2 | 労働者と税率plannerの二層in-context適応、持続的な社会の政策最適化 | 固定重みLLMの社会で制度を最適化するというだけでは新規性にならない。科学制度という対象差だけでも不足 |
 | [AFlow](https://arxiv.org/html/2410.10762v1)、§1 | code workflow、既定operator、MCTSと実行feedback | 新たなoptimizerを主張する場合は対応する強い探索対照が必要。今の2世代pilotをその比較の代わりにしない |
-| [ADAPT for Science](https://arxiv.org/abs/2610.30851)、abstractのみ | 科学設計の探索先と探索手続きの共適応、未使用topologyでの比較を報告 | 手続き自身の改良まで主張する場合の近接研究。今回の制度探索を設計者の自己改善へ言い換えない |
-| [Mining the Design Space of Multi-Agent Workflows](https://arxiv.org/abs/2610.31709)、abstractのみ | 全探索経路の保存と、未使用search上でのworkflow原則の検証を報告 | trajectoryを残し分析するだけでは新規性にならない。発見した制度上の関係を独立な設計履歴で検証する |
-| [The AI Scientific Community](https://arxiv.org/abs/2603.21344)、abstractのみ | virtual lab swarm、情報流やfitness等の概念設計。実装は開発中と明記 | 自由な科学共同体というvision自体を最初と主張しない。実行と目的別帰結で差を示す |
+| [ADAPT for Science](https://arxiv.org/html/2610.30851v1)、§3.1–3.6、§4.5–5、付録D.17–19 | 科学設計の探索先と探索手続きの共適応。凍結手続きを未使用topologyへ実行し、開始点／optimizer／guidanceの対照を報告 | 手続き自身の改良まで主張する場合の近接研究。今回の制度探索を設計者の自己改善へ言い換えない |
+| [Mining the Design Space of Multi-Agent Workflows](https://arxiv.org/html/2610.31709v1)、§III-B–V-B、付録A-A–A-C | 実装能力と構造効果の交絡、全探索経路、search単位の分割、決定的puzzle検証。観測的なpolicy条件付きestimandと明記 | trajectoryを残すだけでは新規性にならない。未使用searchで再現した関連も、単独の因果介入とは違う |
+| [The AI Scientific Community](https://arxiv.org/html/2603.21344v1)、全文§1–8 | virtual lab swarm、情報流やfitness等の概念設計。実装は開発中と明記 | 自由な科学共同体というvision自体を最初と主張しない。実行と目的別帰結で差を示す |
 
 上の「必要」は自分たちの研究設計上の判断であり、各論文の著者が述べた要件ではない。
-最後の三件は2026年の近接資料として追加した候補であり、全手法・コード・全実験の比較を済ませていない。
+最後の三件は初回にはabstractのみだった。09:53UTC頃から上記HTMLの該当節を読み、
+同日更新した。コード実行や全付録の監査、報告結果の独立再現はしていない。
 OpenReviewのfacility-location論文候補は今回ページを取得できなかったため、その内容や採択を根拠にしない。
+
+## 追加読解からの研究判断
+
+ADAPTの対象は固定された物理評価での探索手続きであり、制度が観測panelを変更できる
+今回の問題と同一ではない。ただし「LLMと勾配を併用」「手続きを実行feedbackで変更」だけを
+新規性とする余地はない。Mining論文も実装不良と構造効果を分けており、この問題を
+今回初めて発見したとは言えない。6 operatorへ限定する解決は、任意制度codeを残す
+こちらの目的とは自由度が違う。これらは自分たちの比較設計上の判断である。
+AI Scientific Communityは実行済みの有効性比較としてではなく、先行する構想として扱う。
+
+したがって、少数モデルの失敗集や保存基盤から主結果を作らず、現pilotの全結果を閉じた上で、
+制度の操作／時点と目的が生む持続的な帰結という識別可能な答えへ進む。
+新しい少数制御実験が必要なら、その問いと有限予算を固定してから実行する。
 
 ## いま主結果として採用しないもの
 

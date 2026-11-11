@@ -101,3 +101,30 @@ rawは`science-utopia-lab-experiments/native-institution-loop-analysis-v1-a1/out
 literalなsource／node／wire／schedule差分の抽出も新12枠へ対応。
 新旧の合計64 synthetic report/rebuild/changeチェックが32.20秒でpass。
 これは凍結d11e431の待機chainへ遡及変更せず、閉鎖後に追加で適用する。
+
+## 09:52UTC観測：4候補の結果と1つの生成code失敗
+
+session52939と48610は継続し、sourceを再起動／変更していない。
+参照8/8の後、T数値G0=-7、E数値G0=-11.166666666666668、
+T固定graph G0=-2がcomplete。E固定graph G0は技術的失敗でloss=null。
+T code-and-graph G0のfresh readinessを経て、新しいauthoringに進んだ。
+全pilotのcold auditは閉鎖後であり、ここは進行中stateのdated observationである。
+
+T固定graph候補の最終patchは3回のaddressed-selection置換で、最終的にbias4、
+thresholds0/0、memory_cost0となる。任意codeを許すmethod labelを、実際にsourceや
+graphを変更したという結果へ言い換えない。初期よりT損失が下がったとも主張しない。
+
+E固定graphは提出／compileを通過し、元native worldで生成関数を実行した。
+実例外は`outputs['world']`に必要な`{'payload': object}` envelopeがないこと。
+受信source自身に`'world': [observations[0]['payload']]`とあるため、実行器が
+有効なrecordを勝手に壊した証拠はなく、この観測は生成された関数の契約違反と整合する。
+source全体／全運用がbug-freeという意味ではない。例外は原rawに保持し、hostで包み直さない。
+authoring response content SHA256は
+`90c8b3f2312fd44ed814aecc9503aa80d714a982fcf16b68bd743973ac00c839`、
+observationは`observation-native-adaptive-97df5e66ef462728cea78a54`。
+G1は固定予算内で自身の失敗を受け取れるが、枠の補充／新しいbaselineへのfallbackはしない。
+
+待ち時間にADAPT／Mining MAS Workflows／AI Scientific Communityの一次HTMLを追加読解し、
+abstractのみだった比較メモを対象節付きへ更新した。全履歴保存、構造と実装不良の分離、
+LLMと勾配の併用そのものを初出と主張しない。47頁稿はそれ以前のsourceへ固定して保持し、
+新しい主比較が閉じた後の科学的解釈と関連研究更新へ反映する。
