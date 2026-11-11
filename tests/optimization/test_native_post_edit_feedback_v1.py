@@ -174,7 +174,8 @@ def test_actual_first_proposal_failure_remains_visible_after_its_recorded_read()
     from utopia.optimization.native_staged_author_v15 import initial_draft,transition,build_prompt,workflow_phase
     from utopia.optimization.native_designer_tools_v25 import BOUNDED_AUTHORING
     root=Path('/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-code-tested-loop-v1-a1/outputs/native-code-tested-loop-v1-a1/search/run-00/throughput--code-and-graph/authoring')
-    dirs=list(root.glob('generation-*/authoring/generation-*'))
+    dirs=[d for d in root.glob('generation-*/authoring/generation-*')
+        if (d/'request.json').is_file() and json.loads((d/'request.json').read_text())['request']['generation']==0]
     if len(dirs)!=1:pytest.skip('optional actual local authoring archive absent')
     d=dirs[0]
     if not (d/'response.json').exists():pytest.skip('optional actual authoring is not closed')

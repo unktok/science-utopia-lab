@@ -121,7 +121,8 @@ def test_actual_step_format_tracks_same_fixture_later_code_without_causal_repair
 
 def test_recorded_actual_closed_first_authoring_summary_does_not_run_code_or_model():
     root=Path('/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-code-tested-loop-v1-a1/outputs/native-code-tested-loop-v1-a1')
-    dirs=list((root/'search/run-00/throughput--code-and-graph/authoring').glob('generation-*/authoring/generation-*'))
+    dirs=[d for d in (root/'search/run-00/throughput--code-and-graph/authoring').glob('generation-*/authoring/generation-*')
+        if (d/'request.json').is_file() and json.loads((d/'request.json').read_text())['request']['generation']==0]
     if len(dirs)!=1 or not (dirs[0]/'response.json').exists():pytest.skip('optional closed local first session absent')
     d=dirs[0];steps=[json.loads(p.read_text()) for p in sorted(d.glob('step-*.completed.json'))]
     response=json.loads((d/'response.json').read_text())
