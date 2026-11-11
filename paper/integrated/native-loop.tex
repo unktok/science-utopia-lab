@@ -8,7 +8,8 @@ The loss definitions remain unchanged; no participation, novelty or fairness
 condition is added to the optimizer's acceptance criteria.
 
 \subsection{A stopped routing-authority campaign}
-The new campaign retains the original five fixed Qwen3-8B researchers, the
+The new campaign retains the original five author-capable agents, fixed
+Qwen3-8B researcher weights, the other native agents, the
 SciEvo literature and four-year Simulation. It crosses T/E with numerical,
 fixed-graph source and code-and-graph design. Two proposals per arm and eight
 references are declared in advance. The references include original reviewed
@@ -53,6 +54,16 @@ structural freedom was exercised successfully. The six execution failures
 are three float-index errors, two missing output envelopes and one missing
 feature-key error. Their literal programs remain unmodified.
 
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/native-fixed-evaluation-paper-v1/stopped-search-paths.png}
+\caption{\textbf{Every original proposal slot.} Dots are completed candidates'
+assigned development loss; lines retain the best completed submitted value.
+Failed calls and the final unsubmitted slot have no numerical loss. The
+initial policy is not a fallback. These are two-step histories, not repeated
+independent searches or unused-seed estimates.}
+\label{fig:native-stopped-paths}
+\end{figure}
+
 The nineteen worlds produce 1796 completed scientist responses, with
 1,615,207 reported input and 181,308 output tokens. Separate auxiliary records
 contain 256 editor-readiness, 112 staged-proposal, 13 numerical-readiness and
@@ -72,10 +83,75 @@ has no policy and no score; it does not inherit the seed or a hand reference.
 
 This study evaluates policies available after a stopped prefix. It cannot
 complete the missing proposal, establish an equal-budget method comparison or
-turn three evaluation seeds into independent design histories. Its results
-are integrated only after its own scientific terminal and independent cold
-audits close. The new development loop described below does not receive these
-unused-seed losses.
+turn three evaluation seeds into independent design histories. All thirty
+physical worlds now complete; two original-source cold audits and two cost
+projections agree exactly. Table~\ref{tab:native-fixed-evaluation} and
+Figure~\ref{fig:native-fixed-evaluation} retain all selected-policy labels,
+including both unavailable arms. The new development loop described below
+does not receive these unused-seed losses.
+
+\begin{table}[htbp]\centering\small
+\caption{Separate fixed-submission evaluation: three-seed means. A counts
+accepted decision records, Q sums their original mean review scores and R
+counts actual reviews. Lower T/E is better. No policy exists for the two
+unavailable arms; their entries are not zero or baseline values.}
+\label{tab:native-fixed-evaluation}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule Policy & A & Q & R & T & E\\\midrule
+Initial seed & .667 & 2.667 & 65 & $-.667$ & 29.833\\
+Legacy & 5.333 & 18.778 & 53 & $-5.333$ & 7.722\\
+Reviewed / all & 10.333 & 33 & 31 & $-10.333$ & $-17.500$\\
+No review / all & 10.333 & 0 & 0 & $-10.333$ & 0\\
+One reviewer / all & 10.333 & 33.333 & 10.333 & $-10.333$ & $-28.167$\\
+Two reviewers / all & 10.333 & 32.833 & 20.667 & $-10.333$ & $-22.500$\\\midrule
+T / numeric & 10.333 & 33 & 31 & $-10.333$ & $-17.500$\\
+E / numeric & 10.333 & 33.667 & 31 & $-10.333$ & $-18.167$\\
+T / fixed code & .667 & 2.667 & 65 & $-.667$ & 29.833\\
+E / fixed code & 10.333 & 33 & 31 & $-10.333$ & $-17.500$\\
+T / code and graph & -- & -- & -- & -- & --\\
+E / code and graph & -- & -- & -- & -- & --\\\bottomrule
+\end{tabular}\end{table}
+
+The T numerical selection ties every accept-all reference's throughput:
+A is 6, 8 and 17 on the three seeds. The E numerical selection's paired E
+difference from reviewed accept-all is $+0.667$, $-0.667$ and $-2.000$. Its mean
+advantage is therefore 0.667 loss units, not a stable gain established by
+three seeds. Against one-reviewer accept-all, the same differences are
+$+8.667$, $+7.000$ and $+14.333$, all worse. The E fixed-code selection matches
+reviewed accept-all's measured A/Q/R on each seed, whereas the T fixed-code
+selection matches the initial seed. Equal summary measurements do not prove
+source equivalence or identical complete trajectories. Thirty actual jobs
+remain thirty jobs, not additional replications from matching labels.
+
+The one-reviewer reference changes actual work: its mean R is 10.333 versus
+31 for reviewed accept-all, while mean Q is 33.333 versus 33. This is not
+removing already performed reviews or establishing better scientific truth.
+Routing controls use the full domain's authority; their advantage over a
+restricted numerical arm is not an isolated effect of graph syntax or search.
+The selected E numerical policy's different Q at the same A/R does not
+identify the cause of its small score difference. The unoptimized selective
+cross-score remains available in the retained report, not another optimized arm.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/native-fixed-evaluation-paper-v1/fixed-submission-comparison.png}
+\caption{\textbf{Fixed submissions on unused seeds.} Each colored dot is an
+actual world at seed 62001, 62011 or 62017, not a confidence interval. The
+upper six rows are references, the lower six selected-arm labels. ``All''
+means accept all; Route 1/2 assigns one/two actual reviewers. Both graph arms
+remain unavailable. No selected policy beats the newly authorized simple
+controls on its assigned objective in these observations.}
+\label{fig:native-fixed-evaluation}
+\end{figure}
+
+This separate evaluation takes 16,496.75 seconds (about 4 h 35 min), including
+4590 completed scientist responses with 4,923,237 reported input and 426,066
+output tokens. The 784,809 cached input tokens are a subset, not additional
+input; thirty explicit scientist loads have unknown token usage. No new
+designer proposal is generated. Two portable reconstructions also reproduce
+the report, CSV and original four PNG/SVG files byte for byte, without another
+raw audit, model call or authored-code execution. A reporting-only join error
+is preserved as an earlier stopped analysis: arm-grouped candidate records
+must be joined by identity to dispatch-ordered worlds, not zipped by position.
 
 \subsection{Execution feedback without host repair}
 The execution failures motivate an optional component-testing interface, not
@@ -107,8 +183,10 @@ repair its code or improve a native objective.
 
 A new finite development campaign declares four own-history proposals,
 three fresh strong references and a seven-world ceiling. Its calibration
-declares this optional mode without executing component code. It waits for
-the preceding evaluation's independent closure before any model inference.
+declares this optional mode without executing component code. After the
+preceding evaluation's independent closure, its real calibration passes all
+28 controls and native reference execution begins. Candidate outcomes are
+not counted here before the separate campaign closes.
 The reused development seed is not held out. Successful closure, self-repair
 and objective improvement remain separate empirical questions.
 

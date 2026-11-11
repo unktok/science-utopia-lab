@@ -49,6 +49,35 @@ def test_paper_resource_table_rebuilds_each_row_from_saved_actor_vectors():
     assert 'within-year minima' in text and 'different actors' in text
 
 
+def test_unused_evaluation_paper_table_matches_every_retained_policy_mean():
+    r = load('research/data/native-fixed-evaluation-v1/report.json')
+    text = (ROOT / 'paper/integrated/native-loop.tex').read_text()
+    expected = [
+        ('reference:open-seed', 'Initial seed'), ('reference:legacy', 'Legacy'),
+        ('reference:reviewed-accept-all', 'Reviewed / all'),
+        ('reference:no-review-accept-all', 'No review / all'),
+        ('reference:routed-one-accept-all', 'One reviewer / all'),
+        ('reference:routed-two-accept-all', 'Two reviewers / all'),
+        ('selected:throughput:parameters', 'T / numeric'),
+        ('selected:efficiency:parameters', 'E / numeric'),
+        ('selected:throughput:code-fixed-graph', 'T / fixed code'),
+        ('selected:efficiency:code-fixed-graph', 'E / fixed code')]
+    worlds = {w['physical_job']: w for w in r['physical_worlds']}
+    for label, name in expected:
+        row = next(line for line in text.splitlines() if line.startswith(name + ' &'))
+        # Keep displayed rounding separate from the retained exact values.
+        numbers = [float(x) for x in re.findall(r'(?<![A-Za-z])[-+]?\d*\.\d+|(?<![A-Za-z])[-+]?\d+', row)]
+        observations = [worlds[x['physical_job']] for x in r['evaluation_rows'] if x['label'] == label]
+        means = [sum(w['measurement']['metrics']['native.' + k]['value'] for w in observations) / 3
+                 for k in ('accepted_decisions', 'accepted_peer_score_sum', 'review_records')]
+        means += [r['evaluation_summary'][label][k]['mean'] for k in ('throughput', 'efficiency')]
+        assert len(numbers) == len(means) == 5
+        assert all(abs(a - b) < .00051 for a, b in zip(numbers, means))
+    assert 'T / code and graph & -- & -- & -- & -- & --' in text
+    assert 'E / code and graph & -- & -- & -- & -- & --' in text
+    assert 'not an isolated effect of graph syntax or search' in text
+
+
 def test_new_section_references_are_closed_without_dropping_old_sections():
     entry = (ROOT / 'paper/integrated.tex').read_text()
     assert '\\input{integrated/native-loop}' in entry

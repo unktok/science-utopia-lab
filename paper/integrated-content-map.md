@@ -9,7 +9,7 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
-| November12 native execution and objective support | New main section after authoring diagnostics | Stopped671436a: all12 slots, five complete/six technical null/one unsubmitted,19 physical worlds and costs. Separate f1f8ddf fixed-submission evaluation is not completion of the old campaign. Actual post-edit self-repair remains an empirical question. Conditional T/E algebra and176 saved annual checkpoints/880 actor states distinguish objective support from optimizer failure; no new loss or hidden constraint |
+| November12 native execution and objective support | New main section after authoring diagnostics | Stopped671436a: all12 slots, five complete/six technical null/one unsubmitted,19 physical worlds and costs. Separate f1f8ddf now closes30 fixed-submission evaluations, retaining two unavailable graph arms; actual table, print-sized per-seed comparison and all-slot paths. This is not completion of the old campaign or an isolated effect of representation/search. Real28-control readiness for post-edit mode passes, but actual self-repair remains an empirical question. Conditional T/E algebra and176 annual checkpoints/880 actor states distinguish objective support from optimizer failure; no new loss or hidden constraint |
 | November11 authoring/measurement diagnostics | Separate main section after pre-scale studies | All eight actual local35B submissions, four-input partial probes and measured costs; distinguish static validity, native execution and effects. Optional order files were unread. Fixed-record panel readouts reconstruct44 completed/five partial old worlds; actual retained figure, not new losses, reviewer interventions or independent quality. Later671436a is treated separately |
 | Whole-system question, science-of-science objectives, fixed scientist weights | Main introduction/problem/discussion | Central motivation; do not collapse the project to peer review or V2 |
 | Pre-scale additions, November9 | Separate main section after observatory | Actual numeric readiness;12 information worlds/full audits/input-year table/selector replay;62388a7 T/E pilot closes16 slots/27 physical evaluations/two full audits, actual paths/common-score figures, all-slot/all-label tables, literal-code/failure/cost analysis and exact rebuilding; current-native claim/gradient/adoption connectivity remains scripted QA |
@@ -33,6 +33,14 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- research/data/native-fixed-evaluation-v1/{report,costs,manifest}.json,
+  physical-components.csv and research/results/native-fixed-evaluation-v1.md.
+  Two full original-source audits, two cost/readout exports and two portable
+  reconstructions agree. Source-bound closure/reconstruction receipts remain
+  separate from the older stopped search and its failed initial report.
+- paper/figures/native-fixed-evaluation-paper-v1/manifest.json binds two
+  print-sized views to the complete original report. T/E appear in the main
+  plot; descriptive C remains in the full retained original figure/report.
 - research/results/native-loop-stopped-prefix-verification-v1.json retains the
   stopped source, all-slot counts, exact two-audit agreement and reported costs.
   It is not a normal closure receipt or an unused-seed result.
