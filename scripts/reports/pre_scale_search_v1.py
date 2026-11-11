@@ -214,10 +214,10 @@ def render_evaluation(report,output):
     from matplotlib.lines import Line2D
     handles=[Line2D([],[],color=c,marker='o',ls='',ms=4,label=str(seed)) for seed,c in zip(seeds,colors)]
     fig.legend(handles=handles,loc='lower center',bbox_to_anchor=(.5,.055),ncol=3,frameon=False,fontsize=8)
-    fig.text(.5,.025,'Right-edge counts: available / 3. Missing values are not plotted; labels can share worlds.',
+    fig.text(.5,.025,report.get('evaluation_footer','Right-edge counts: available / 3. Missing values are not plotted; labels can share worlds.'),
         ha='center',fontsize=7.5,color='#666666')
     prefix=report.get('figure_scope','')
-    fig.suptitle((prefix+' · ' if prefix else '')+f'Fixed selection · {report["logical_evaluation_rows"]} label/seed rows share {report["physical_evaluation_worlds"]} physical worlds',fontsize=9)
+    fig.suptitle(report.get('evaluation_title',(prefix+' · ' if prefix else '')+f'Fixed selection · {report["logical_evaluation_rows"]} label/seed rows share {report["physical_evaluation_worlds"]} physical worlds'),fontsize=9)
     fig.subplots_adjust(left=.25,right=.99,bottom=.2,top=.85,wspace=.25)
     for ext in ('png','svg'):
         fig.savefig(output/('selection-fixed-common-scores.'+ext),dpi=240,

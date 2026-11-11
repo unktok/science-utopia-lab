@@ -297,3 +297,12 @@ source／HEAD／検査を変えずDocker access付きで同じsuiteを実行し1
 JUnit SHA256は`ba0e44917a4c28cedc0fc0b004f766279658a579281613b1d2d7d2fde265490f`。
 元Simulation/scripted研究者とcorpus／実Docker、全scientist payloadの時計・identity回帰も含む。
 実Qwen／designer生成0。初回の失敗JUnitも保持し、別科学sample数へ足さない。
+
+候補固定評価用のportable reportとread-only後段chainを追加。元12slot／全ties、
+二つのpolicyなしarmの6seed-row、共有physical jobを残し、閉鎖audit二回一致後だけ生成する。
+scoreはcheckpointのliteral A/Q/Rから再計算し、全参照とのpaired差を保持する。
+模擬データの図を内部previewし、実結果と明確に区別した。
+初回10pass/1failはSVG IDの非決定性で、plotting hash saltを宣言して解消。
+続くCLI試験の一回は不存在のtest filenameを指定し0件実行、ファイル名を確認して再実行。
+new report/chain/既存reportの32checkが13.55秒でpass。新native world／LLM呼出は0。
+13:49:25UTCの科学progressは16/30完了、evaluation-016実行中。

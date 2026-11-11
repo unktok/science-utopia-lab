@@ -23,6 +23,9 @@ Historical documents retain their paths and source identities.
   old-native inputs and retains a three-call real-container diagnostic, including
   one unexercised historical failure. [Post-edit feedback](components/native-post-edit-feedback-v1.md)
   now connects the editor through scripted tests; actual35B self-debugging remains next.
+  [Separate fixed-policy reporting](components/native-fixed-evaluation-report-v1.md)
+  retains every failed/unsubmitted slot and unavailable arm; its actual figures
+  wait for closed independent audits, not interim scores.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.
