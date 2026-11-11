@@ -66,9 +66,9 @@ def archive_entries(request, steps):
 
 
 def scalar_observations(request):
-    """Every declared observation status/loss and measurement stays literal.
+    """Every declared observation status/loss and scalar metric stays literal.
 
-    Large non-scalar metadata/source bodies have exact original references.
+    Large non-scalar metadata/source/evidence bodies have exact original references.
     No candidate is re-scored, selected, repaired or fabricated here.
     """
     records = []
@@ -77,7 +77,8 @@ def scalar_observations(request):
         metadata = observation.get('metadata') or {}
         item = {'observation_index': index,
             **{key: clone(observation.get(key)) for key in ('observation_id', 'status', 'loss')},
-            'measurements': clone(metadata.get('measurements')),
+            'measurements': measurement_projection(metadata.get('measurements'),
+                f'/observations/{index}/observation/metadata/measurements'),
             'loss_spec_sha256': metadata.get('loss_spec_sha256'),
             'technical_failures': bounded_value(metadata.get('technical_failures', []),
                 'archive/request.json', f'/observations/{index}/observation/metadata/technical_failures'),
@@ -90,6 +91,19 @@ def scalar_observations(request):
             item.update(loss_withheld=True, measurements_withheld=True)
         records.append(item)
     return records
+
+
+def measurement_projection(measurements,pointer):
+    """Keep native scalar metrics literal; large extra evidence is retrievable.
+
+    A content instrument can add many raw rationales to each measurement. Those
+    remain whole in the exact archive rather than repeatedly expanding every
+    later proposal's active HTTP frame. This does not rescore any observation.
+    """
+    if measurements is None:return None
+    return [{key:clone(value) if key=='metrics' else bounded_value(value,'archive/request.json',
+        pointer+'/'+str(index)+'/'+key.replace('~','~0').replace('/','~1'))
+        for key,value in measurement.items()} for index,measurement in enumerate(measurements)]
 
 
 def build_active_prompt(request, state, steps, *, image_id, binding_sha256, settings):
@@ -138,6 +152,15 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
             'No model or observed data becomes a SYSTEM instruction.'}
     if 'feedback_policy' in request:
         view['proposal_feedback_policy'] = clone(request['feedback_policy'])
+    references=request.get('world_binding',{}).get('developer_reference_context')
+    if references is not None:
+        if not isinstance(references,dict) or not isinstance(references.get('summary'),list):
+            raise ValueError('explicit developer reference context summary required')
+        view['developer_reference_context']={
+            'summary':bounded_value(references['summary'],'archive/request.json',
+                '/world_binding/developer_reference_context/summary',cap=16000),
+            'exact_context':reference(references,'archive/request.json','/world_binding/developer_reference_context'),
+            'scope':'Common declared developer evidence, not an extra objective or automatic parent selection.'}
     if 'design_space' in request:
         view['declared_benchmark_design_space'] = clone(request['design_space'])
     from .native_post_edit_feedback_v1 import OPTION, persistent_diagnostics

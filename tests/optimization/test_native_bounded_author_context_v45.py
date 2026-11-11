@@ -76,6 +76,35 @@ def test_actual_wire_budget_separate_from_source_and_token_evidence():
             max_tokens=8192, temperature=.6, conversation_profile=PROFILE)
 
 
+def test_large_common_content_rationales_do_not_hide_literal_loss_or_metrics_and_remain_exact():
+    body=request();rationale={'ratings':[{'rationale':'SCRIPTED exact opinion '+('研究者'*9000)}]*3}
+    metrics={'native.common_content_utility_sum':{'status':'measured','value':-2.5}}
+    body['observations']=[{'observation':{'observation_id':'SCRIPTED','status':'complete','loss':2.5,
+        'metadata':{'measurements':[{'run_id':'SCRIPTED','metrics':metrics,'common_content_observer':rationale}]}}}]
+    before=deepcopy(body);prompt,messages=frame(body,initial_draft(body),[]);data=json.loads(prompt)
+    item=data['own_observations'][0]
+    assert item['loss']==2.5 and item['measurements'][0]['metrics']==metrics
+    ref=item['measurements'][0]['common_content_observer']
+    assert ref['value_sha256']==digest(rationale) and not ref['literal_body_included']
+    assert ref['json_pointer']=='/observations/0/observation/metadata/measurements/0/common_content_observer'
+    assert archive_entries(body,[])['archive/request.json']['value']==before and body==before
+    assert len(prompt.encode())<MAX_SOURCE_PROMPT_BYTES
+    assert 'SCRIPTED exact opinion' not in json.dumps(messages)
+
+
+def test_common_reference_scores_reach_actual_active_messages_without_adopting_reference_source():
+    body=request();parent=deepcopy(body['parent_system'])
+    context={'summary':[{'reference':'SCRIPTED strong policy','T':-7.,'U':-2.5}],
+        'systems':[{'source':'SCRIPTED exact developer source '*10000}]}
+    body.setdefault('world_binding',{})['developer_reference_context']=context
+    prompt,messages=frame(body,initial_draft(body),[]);view=json.loads(prompt)['developer_reference_context']
+    assert view['summary']==context['summary'] and view['exact_context']['value_sha256']==digest(context)
+    assert 'SCRIPTED strong policy' in json.dumps(messages) and '-2.5' in json.dumps(messages)
+    assert 'SCRIPTED exact developer source' not in json.dumps(messages)
+    assert archive_entries(body,[])['archive/request.json']['value']['world_binding']['developer_reference_context']==context
+    assert body['parent_system']==parent
+
+
 def test_recovery_then_explicit_finish_cold_replay_with_archived_session_read(tmp_path):
     actions = [{'tool': 'plan', 'objective_reasoning': 'SCRIPTED', 'design_intent': 'SCRIPTED'},
         {'tool': 'read_file', 'filename': 'archive/steps/00.json', 'limit': 2000},

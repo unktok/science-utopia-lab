@@ -56,6 +56,17 @@ def finish():return {'tool':'finish','rationale':'SCRIPTED explicit submission'}
 def directory(root):return next(root.glob('generation-*'))
 
 
+@pytest.mark.parametrize('budget',[0,65,True,'64',None])
+def test_extended_declared_budget_rejects_invalid_values_before_any_model_call(tmp_path,budget):
+    with pytest.raises(ValueError,match='finite component budget'):
+        fixture(tmp_path,[finish()],extended=True,maximum_probes=budget,reference='resource-30-connected')
+
+
+def test_old_fixture_bank_does_not_implicitly_acquire_a_larger_budget(tmp_path):
+    with pytest.raises(ValueError,match='finite component budget'):
+        fixture(tmp_path,[finish()],maximum_probes=64)
+
+
 @pytest.mark.parametrize('declared',[None,{'SCRIPTED':'different contract'},'exact'])
 def test_role_factory_requires_exact_readiness_contract_before_constructing_model(tmp_path,monkeypatch,declared):
     from utopia.optimization import native_designer_roles_v38 as roles
