@@ -211,6 +211,8 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     from utopia.optimization.native_staged_author_v15 import replay_staged_generation
     options={'extended':True,'reference':'resource-30-connected','maximum_probes':64} if extended else {}
     gen,unused,body,probes=fixture(tmp_path/'fixture',[finish()],**options)
+    if extended:
+        body['developer_reference_context']={'summary':[{'reference':'SCRIPTED common strong reference','loss':-17.25}]}
     binding=designer_binding();binding['image_id']=gen.image_id
     actions=[{'tool':'plan','objective_reasoning':'SCRIPTED','design_intent':'SCRIPTED'},
         source_action(BAD),source_action(GOOD)]
@@ -242,6 +244,7 @@ def test_real_role_factory_consumes_real_scripted_certificate_and_repairs_with_f
     expected_calls,expected_probes=(6,16) if extended else (4,8)
     assert len(Session.production)==expected_calls and len(probes)==expected_probes
     assert 'SCRIPTED-BAD-FLOAT' in json.dumps(Session.production[2])
+    if extended:assert 'SCRIPTED common strong reference' in json.dumps(Session.production[0])
     assert not unused.calls
     directory=next((tmp_path/'author').glob('generation-*'))
     assert replay_staged_generation(directory)==result

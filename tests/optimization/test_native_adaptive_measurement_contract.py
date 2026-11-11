@@ -12,12 +12,13 @@ from utopia.system.native_kernel import legacy_world_system,NativeScienceKernel
 from utopia.system.design_patch import clone,digest
 
 
-def campaign(path,instrument=None,*,metric='native.common_content_utility_sum'):
+def campaign(path,instrument=None,*,metric='native.common_content_utility_sum',references=None):
     world={'source_commit':'adaptive-measurement-SCRIPTED-QA','model_digest':BINDING['model_revision'],
         'corpus_sha256':BINDING['corpus_sha256']}
     if instrument is not None:world['measurement_adapter_contract']=clone(instrument)
     return NativeAdaptiveDesignCampaign(path,initial_system=legacy_world_system(),loss_spec=loss_spec(metric),
-        seeds=[42],world_binding=world,strategies={'invent':PROVENANCE},mode='blackbox',seed=42)
+        seeds=[42],world_binding=world,strategies={'invent':PROVENANCE},mode='blackbox',seed=42,
+        development_references=references)
 
 
 @pytest.mark.parametrize('kind',['missing','wrong','undeclared','not-callable'])
@@ -77,6 +78,31 @@ def test_unknown_critic_stops_the_actual_adaptive_batch_before_its_next_world(tm
             generators={'invent':lambda r:{'base_patch':None,'factors':[],'continuous':[],'provenance':PROVENANCE}})
     assert len(worlds)==1 and len(backend.calls)==1
     assert not c.state['records'] and c.state['pending']['observations']==[]
+
+
+def test_real_native_reference_receipt_reaches_new_proposal_and_cold_campaign_without_becoming_own_result(tmp_path,fixed_corpus,monkeypatch):
+    from utopia.optimization.native_development_references import build_context
+    from scripts.analyze_native_autonomous_search_v14 import replay_campaign
+    instrument=contract(maximum_posts=144);observer=CommonContentObserver(tmp_path/'observer',instrument,backend=Backend())
+    c=campaign(tmp_path/'baseline',instrument)
+    def factory(spec,world_seed,run_id):
+        seed();monkeypatch.setitem(BINDING,'cell',spec.fingerprint)
+        monkeypatch.setitem(BINDING,'science_config',{**BINDING['science_config'],'source_commit':c.binding['world']['source_commit']})
+        return make_sim(tmp_path/'worlds'/run_id,native=NativeScienceKernel(spec))[0]
+    definition=lambda r:{'base_patch':None,'factors':[],'continuous':[],'provenance':PROVENANCE}
+    c.advance(simulation_factory=factory,generators={'invent':definition},count=1,
+        measurement_adapter=observer.measure,measurement_contract=instrument)
+    original=c.state['records'][0]
+    pairs=[{'suggestion':clone(original['draws'][0]['suggestion']),'observation':clone(original['observations'][0])}]
+    bank=build_context(pairs,world=c.binding['world'],seeds=[42],loss_spec=c.loss)
+    c=campaign(tmp_path/'new',instrument,references=bank);requests=[]
+    def generate(r):requests.append(clone(r));return definition(r)
+    for _ in range(2):c.advance(simulation_factory=factory,generators={'invent':generate},count=1,
+        measurement_adapter=observer.measure,measurement_contract=instrument)
+    assert len(requests[0]['observations'])==1 and len(requests[1]['observations'])==2
+    assert requests[0]['developer_reference_context']['summary'][0]['loss']==pairs[0]['observation']['loss']
+    assert len(c.state['records'])==2 and c.binding['development_references']==bank
+    assert replay_campaign(c.directory,'blackbox').state==c.state
 
 
 def test_inert_declared_instrument_preserves_every_original_scientist_request(tmp_path,fixed_corpus,monkeypatch):

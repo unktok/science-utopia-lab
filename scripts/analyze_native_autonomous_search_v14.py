@@ -160,6 +160,8 @@ def replay_campaign(directory, method):
             kwargs['proposal_feedback'] = b['proposal_feedback']
         if 'design_space' in b:
             kwargs['design_space'] = b['design_space']
+        if 'development_references' in b:
+            kwargs['development_references'] = deepcopy(b['development_references'])
     controller = (ReadOnlyAdaptive if method == 'blackbox' else ReadOnlyNested)(directory, **kwargs)
     if method == 'blackbox' and any(r['request']['count'] != 1 for r in
             state['records'] + ([state['pending']] if state['pending'] else [])):

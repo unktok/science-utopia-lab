@@ -152,14 +152,15 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
             'No model or observed data becomes a SYSTEM instruction.'}
     if 'feedback_policy' in request:
         view['proposal_feedback_policy'] = clone(request['feedback_policy'])
-    references=request.get('world_binding',{}).get('developer_reference_context')
+    references=request.get('developer_reference_context',request.get('world_binding',{}).get('developer_reference_context'))
     if references is not None:
         if not isinstance(references,dict) or not isinstance(references.get('summary'),list):
             raise ValueError('explicit developer reference context summary required')
+        pointer='/developer_reference_context' if 'developer_reference_context' in request else '/world_binding/developer_reference_context'
         view['developer_reference_context']={
             'summary':bounded_value(references['summary'],'archive/request.json',
-                '/world_binding/developer_reference_context/summary',cap=16000),
-            'exact_context':reference(references,'archive/request.json','/world_binding/developer_reference_context'),
+                pointer+'/summary',cap=16000),
+            'exact_context':reference(references,'archive/request.json',pointer),
             'scope':'Common declared developer evidence, not an extra objective or automatic parent selection.'}
     if 'design_space' in request:
         view['declared_benchmark_design_space'] = clone(request['design_space'])

@@ -254,7 +254,8 @@ class NativeAdaptiveDesignCampaign:
     def __init__(self, directory, *, initial_system, loss_spec, seeds, world_binding,
                  strategies, mode='hybrid', seed=42, learning_rate=.1,
                  strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
-                 expectation_estimator=None, initial_evidence=None, proposal_feedback='loss', design_space=None):
+                 expectation_estimator=None, initial_evidence=None, proposal_feedback='loss', design_space=None,
+                 development_references=None):
         validate_loss_spec(loss_spec)
         if (proposal_feedback not in ('loss', 'matched-loss', 'technical-only')
                 or proposal_feedback != 'loss' and
@@ -292,6 +293,12 @@ class NativeAdaptiveDesignCampaign:
             from .native_initial_evidence import validate_initial_evidence
             self.binding['initial_evidence'] = validate_initial_evidence(initial_evidence,
                 target_world=world_binding, target_seeds=seeds)
+        if development_references is not None:
+            if mode!='blackbox' or proposal_feedback!='loss' or initial_evidence is not None:
+                raise ValueError('development references require explicit loss-visible blackbox without historical import')
+            from .native_development_references import validate_context
+            self.binding['development_references']=validate_context(development_references,
+                target_world=world_binding,target_seeds=seeds)
         if expectation_estimator is not None:
             if (not isinstance(expectation_estimator, dict)
                     or set(expectation_estimator) != {'name', 'ridge'}
@@ -355,6 +362,11 @@ class NativeAdaptiveDesignCampaign:
             from .native_initial_evidence import objective_view
             evidence = objective_view(self.binding['initial_evidence'], self.loss)
             observations = evidence['observations'] + observations
+        developer_context=None
+        if 'development_references' in self.binding:
+            from .native_development_references import objective_view as developer_view
+            common=developer_view(self.binding['development_references'],self.loss)
+            observations=common['observations']+observations;developer_context=common['context']
         valid = [r for r in observations if r['observation']['status'] == 'complete'
                  and not r['observation']['metadata'].get('technical_failures')]
         incumbent = min(valid, key=lambda r: r['observation']['loss']) if valid else None
@@ -367,6 +379,7 @@ class NativeAdaptiveDesignCampaign:
             'strategy_state': clone(strategy_state), 'strategy_probabilities': probabilities.tolist(),
             'strategy_log_probability': float(probabilities[chosen].log()), 'rng_seed': rng_seed,
             'binding_sha256': digest(self.binding), 'history_sha256': digest(records)}
+        if developer_context is not None:request['developer_reference_context']=developer_context
         if evidence is not None:
             from .native_initial_evidence import select_incumbent
             request['initial_evidence'] = {
