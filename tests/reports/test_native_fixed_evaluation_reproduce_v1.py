@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -56,3 +57,16 @@ def test_all_six_outputs_rebuild_without_raw_audits_or_world_execution(tmp_path)
     assert not result['new_native_worlds'] and not result['executable_policy_reconstructed_from_hash']
     with pytest.raises(ValueError, match='fresh independent'):
         module.reproduce(args.output / 'report.json', manifest, args.output, tmp_path / 'rebuild')
+
+
+def test_retained_actual_closed_matrix_has_no_fallback_or_imputed_graph_results():
+    root = Path(__file__).resolve().parents[2]
+    r = module.validate(json.loads((root / 'research/data/native-fixed-evaluation-v1/report.json').read_text()))
+    assert r['physical_evaluation_worlds'] == 30 and r['logical_evaluation_rows'] == 36
+    assert r['unavailable_label_seed_rows'] == 6
+    assert sum(s['status'] == 'complete' for s in r['search_slots']) == 5
+    assert sum(s['status'] == 'failed' for s in r['search_slots']) == 6
+    assert sum(s['status'] == 'not-submitted' for s in r['search_slots']) == 1
+    pairs = [p for p in r['paired_reference_differences'] if p['label'] == 'selected:efficiency:parameters'
+             and p['reference'] == 'routed-one-accept-all']
+    assert len(pairs) == 3 and all(p['differences']['efficiency'] > 0 for p in pairs)

@@ -118,14 +118,17 @@ def components_csv(r):
 
 
 def reproduce(report, manifest, figures, output):
-    if output.exists() or output.resolve().is_relative_to(figures.resolve()):
+    if (output.exists() or output.resolve().is_relative_to(figures.resolve())
+            or output.resolve().is_relative_to(report.parent.resolve())):
         raise ValueError('fresh independent output required')
     r = validate(json.loads(report.read_text())); m = checked(json.loads(manifest.read_text()))
+    def original(name):
+        return report if name == 'report.json' else report.parent / name if name == 'physical-components.csv' else figures / name
     if (m['schema'] != SCHEMA + '.portable.v1' or m['report_content_sha256'] != r['content_sha256']
             or set(m['files']) != set(FILES) or file_sha256(report) != m['files']['report.json']
-            or any(file_sha256(figures / n) != m['files'][n] for n in FILES if n != 'report.json')):
+            or any(file_sha256(original(n)) != m['files'][n] for n in FILES)):
         raise ValueError('exact portable report/CSV/figure binding required')
-    before = {p: file_sha256(p) for p in (report, manifest, *(figures / n for n in FILES if n != 'report.json'))}
+    before = {p: file_sha256(p) for p in (manifest, *(original(n) for n in FILES))}
     output.mkdir(parents=True)
     save(output / 'report.json', {k: v for k, v in r.items() if k != 'content_sha256'})
     render_paths(r, output)

@@ -1,0 +1,87 @@
+{
+  "schema": "scienceutopia.native-fixed-evaluation-closed-verification.v1",
+  "scientific_source_commit": "f1f8ddf4813f2252ab0a54b3f69c4f3f25c1eb9e",
+  "audit_source_commit": "a123aff8d37a5b5e9e1d938ecb72e5769325bfc6",
+  "report_source_commit": "a434cf84275fa6d2d16bfa76ba36b0d7112b503f",
+  "scientific_terminal": {
+    "completed_jobs": 30,
+    "content_sha256": "75bf38586b542dcf579d7af3e30ce37664ca6914a9ef997070e96bf6e5d54a5a",
+    "ended_utc": "2026-11-11T16:00:06.991810+00:00",
+    "schema": "scienceutopia.native-fixed-candidate-evaluation.v1.terminal",
+    "status": "closed"
+  },
+  "observed_campaign_wall_seconds": 16496.750405,
+  "physical_evaluation_worlds": 30,
+  "logical_rows": 36,
+  "unavailable_arm_seed_rows": 6,
+  "original_search_status": "stopped",
+  "all_original_proposal_slots": 12,
+  "independent_audits_byte_identical": true,
+  "audit_file_sha256": "f061823e8445c3573913b2bcbb243ed09d651d08bcb85b5d9cacc8fa7e63b268",
+  "audit_content_sha256": "65b76951b4586cfb5ed45a3538329760cbaaf3b956f90928762bfcf240c48b05",
+  "raw_inventory_sha256": "93e84e73d620f6191e2ef0c7dde7d225e973be3d2d638d0b4cd8a071590d8952",
+  "independent_cost_projections_byte_identical": true,
+  "cost_file_sha256": "1b710fe10539e9f2381d2a96e940c0fcc71c2cfd8311e7d0ff426a5879a8cd12",
+  "cost_content_sha256": "b2c4cb03e4a0ca0d9b52167bbbe0cb6e18d5114ebfad3cce8da2eb682a54ebdb",
+  "two_report_exports_byte_identical": true,
+  "report_content_sha256": "be3ee6a39bf578f94094706734857b97ab283f3d15db09affb2aa214d1acbc87",
+  "report_file_sha256": "033ee3ddc1945bf685b94ea883f6b225c167d5e6862a9cd8df0c36ad25e433e9",
+  "scientist_completed_responses": 4590,
+  "scientist_provider_usage": {
+    "cached_prompt_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 4590,
+      "missing_responses": 0,
+      "recorded_sum": 784809
+    },
+    "completion_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 4590,
+      "missing_responses": 0,
+      "recorded_sum": 426066
+    },
+    "prompt_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 4590,
+      "missing_responses": 0,
+      "recorded_sum": 4923237
+    },
+    "total_tokens": {
+      "all_completed_responses_known": true,
+      "invalid_responses": 0,
+      "known_responses": 4590,
+      "missing_responses": 0,
+      "recorded_sum": 5349303
+    }
+  },
+  "scientist_wire_inputs_without_committed_reply": 0,
+  "auxiliary_request_intents": {
+    "load-scientist": 30
+  },
+  "visual_review": {
+    "actual_common_score_and_stopped_path_png_inspected": true,
+    "observed_overlap_or_clipping": false
+  },
+  "clean_report_checks": {
+    "passed": 67,
+    "failed": 0,
+    "seconds": 46.47,
+    "junit_file_sha256": "c1e4a3314c1e0c776c205fc5a7df217fe38ea63b60d48c6e3b1abc2affab69af"
+  },
+  "earlier_failed_report": {
+    "source_commit": "cd383cc6467c9531b059ed26091c6d203639427d",
+    "stage": "report-1",
+    "status": "stopped",
+    "cause": "Arm-grouped audit attempts were zipped against dispatch-chronological world records. Corrected join uses unique arm/generation keys; original data and failure retained."
+  },
+  "scope": {
+    "new_designer_generation_POSTs": 0,
+    "new_model_calls_in_analyses": 0,
+    "original_stopped_study_completed": false,
+    "independent_optimizer_replication": false,
+    "scientific_truth_or_publication_readiness_claimed": false
+  }
+}

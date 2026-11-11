@@ -6,6 +6,15 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed separate fixed-submission evaluation](results/native-fixed-evaluation-v1.md)
+  and [portable report, costs and rebuilding](data/native-fixed-evaluation-v1/README.md):
+ 30/30 physical worlds, two matching audits/costs, two matching corrected-source
+  figure exports. Both failed-only graph arms stay unavailable. Selected T
+  ties accept-all; selected E loses to the one-reviewer control on all three
+  seeds. The next code-tested loop passes fresh real readiness and begins its
+  native references. This does not complete the old stopped search or establish
+  autonomous institutional invention/publication readiness.
+
 - [Native-execution integrated working paper](../output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf)
   and [source/build/visual binding](../paper/integrated-native-execution-build-v1.json):
   November12,49 pages,20 figures/20 tables; retains earlier studies and adds all

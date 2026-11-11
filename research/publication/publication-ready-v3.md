@@ -23,7 +23,7 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
-| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | [有限pilot](../protocols/campaigns/native-institution-loop-v1.md)は671436aで停止。19worldの監査二回一致、11提出の5complete/6null、1未提出を保持。[別の固定候補評価](../protocols/campaigns/native-fixed-candidate-evaluation-v1.md)をf1f8ddfで11:25:10UTC開始。元実験の完了へ言い換えない |
+| R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | [有限pilot](../protocols/campaigns/native-institution-loop-v1.md)は671436aで停止。19world監査一致、5complete/6null/1未提出を保持。[別の固定候補評価](../results/native-fixed-evaluation-v1.md)はf1f8ddfで30/30終了し独立監査／費用／実図二回一致。元実験の完了へ言い換えない。新code-tested loopは実校正を通過しnative参照を開始 |
 | R2 | 重要で識別可能な研究上の答えと対照 | 未達。同権限の単体code、切断・遅延等の必要な比較を効果に応じて凍結 |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
 | R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 既存各研究には存在。新主結果に対応する更新が必要 |

@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 / November11 16:08UTC:** all30 fixed evaluations close normally
+at16:00:06UTC. Two original-source audits and cost projections match and close
+16:03:09UTC. The first report stops on an arm-order join error; corrected
+a434cf8 passes67 checks and closes two identical actual report/figure exports
+16:08:25UTC. [Complete results and interpretation](results/native-fixed-evaluation-v1.md)
+retain all12 original slots and both unavailable graph arms. Numerical T ties
+accept-all's throughput; numerical E is worse than one-reviewer accept-all on
+all three seeds. The30 physical worlds are not optimizer replications.
+
+The next93076b4 experiment passes its real-mode editor calibration and begins
+the open-seed native reference at16:06:43UTC; session91390 is live. No new
+candidate or actual self-repair result is claimed yet. Its original source,
+four-slot/seven-world ceiling and unchanged T/E remain fixed. The49-page PDF
+below predates this closed evaluation; manuscript integration of the new actual
+figures is next. Publication importance/readiness remains unresolved.
+
 **November12 00:55JST / November11 15:55UTC:** fixed evaluation is29/30
 complete, activeevaluation-029. Writer59964 remains alive (4h30m elapsed);
 the active wire journal updates15:55:05UTC. The next code-tested loop still

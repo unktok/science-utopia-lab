@@ -33,5 +33,11 @@ Synthetic QA exercises missing policies, shared worlds, measurement and binding
 tampering, chronological failures, deterministic PNG/SVG/CSV rebuilding and finite
 continuation failure paths. The first rendering test exposed random SVG IDs in
 the reused renderer; an explicit plotting hash salt fixes byte reproducibility.
-The original failed receipt is retained. Layout previews use synthetic values,
-not current experiment results. The actual report has not yet been generated.
+The original failed receipt is retained. Earlier layout previews use synthetic
+values, not experiment results. The actual30-world report now closes at a434cf8
+with two identical exports and inspected PNGs. The first cd383cc export stopped
+because it zipped arm-grouped attempts with chronological physical worlds.
+Explicit arm/generation joins correct the analysis without changing the data.
+Saved-JSON rebuilding also fixes explicit figure-label and CSV-score order.
+The [retained actual results](../results/native-fixed-evaluation-v1.md) separate
+numerical reconstruction from the two full original-source raw audits.

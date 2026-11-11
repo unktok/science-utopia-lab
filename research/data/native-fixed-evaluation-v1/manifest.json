@@ -1,0 +1,19 @@
+{
+  "schema": "scienceutopia.native-fixed-evaluation-report.v1.portable.v1",
+  "report_content_sha256": "be3ee6a39bf578f94094706734857b97ab283f3d15db09affb2aa214d1acbc87",
+  "files": {
+    "report.json": "033ee3ddc1945bf685b94ea883f6b225c167d5e6862a9cd8df0c36ad25e433e9",
+    "physical-components.csv": "f78d6508f947af93cbbe840de30a40d8ac08e6273eb029487d4d50670c792d6c",
+    "stopped-search-paths.png": "3267e00f8ba8b52bcf2a2567b795d65ff3aecd2054b9d1af0463bd990c065e03",
+    "stopped-search-paths.svg": "1eee186bf026a70da2728c793556b2bf3e34257f380b21709165e958ceb930f7",
+    "selection-fixed-common-scores.png": "b258ba6e0313ab3f0f23d490327de8bd77b3224e6c7d24ff3cde2cd8e776b5ef",
+    "selection-fixed-common-scores.svg": "6c39e6eeab0f6c677b6fe8526f752b787cf29d027893473f119d2f7db0c8f7cc"
+  },
+  "scientific_source_commit": "f1f8ddf4813f2252ab0a54b3f69c4f3f25c1eb9e",
+  "report_source_commit": "a434cf84275fa6d2d16bfa76ba36b0d7112b503f",
+  "full_evaluation_audit_content_sha256": "65b76951b4586cfb5ed45a3538329760cbaaf3b956f90928762bfcf240c48b05",
+  "full_evaluation_audit_file_sha256": "f061823e8445c3573913b2bcbb243ed09d651d08bcb85b5d9cacc8fa7e63b268",
+  "raw_export_manifest_file_sha256": "aa24af6cfba8ef3acf378c8b24b2700c276af9838e23b83dbeec2c9e55e85af9",
+  "scope": "Portable numerical/figure reconstruction, not independent raw verification or executable policy recovery from hashes.",
+  "content_sha256": "cab7b1735f0de23a19acb3cbc1d2ba4ecf8b66cd958a8c4163bdc5f7d120459a"
+}
