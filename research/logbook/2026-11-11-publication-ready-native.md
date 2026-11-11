@@ -358,3 +358,18 @@ stageはwaiting-for-preceding-closureで、旧30worldの実科学writerとa123af
 正常終了するまで推論は0。新modeのfresh実backend校正、LLM自己debug、native改善は
 この起動観測では未実施。旧評価progressは14:23:34UTC時点で20/30完了。
 三つのread-only／待機processを、三つの実科学実験が並行推論中とは呼ばない。
+
+R2をコード提出率だけの問題にしないため、既存のlossの識別範囲も点検した。
+査読結果・review workload・将来への影響を固定し、各q_iが非負ならT/Eは共に全採択を
+条件付きで好む。これはdynamic世界の全体最適性ではなく、同じ受理ruleが選ばれる理由の一部。
+過去62388a7の保持reportから完走44world／非完走5をそのまま抽出すると、
+最終active authorsは44/44で5、総最終resourcesは540〜780。単独の終端活動stockは
+この観測済み完走集合を識別しないが、個人の資源十分性／途中退出／全制度での不変性は示さない。
+新しいlossや制約は選んでいない。次の重要な制度／情報／資源／時点の研究質問を考える材料。
+
+`scripts.reports.native_objective_support_v1`で保持reportから独立に二回生成。
+両outputとretained JSONのbytesが一致、file SHA256は
+`6f87cf48ef52591133c8d9b7762b0ea0eac8adeb581a2a91097a538f7818c231`、
+content SHA256は`50860495ea4d0dbe096d87d5cca3f8edf02b95f5431e7f7abe67320ca0c38675`。
+四つの解析／欠測回帰が0.64秒でpass。原raw全監査の再実行、new world／model呼出は0。
+cohortは過去閉鎖reportだけであり、進行中620xxの結果を使っていない。

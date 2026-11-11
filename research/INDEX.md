@@ -30,6 +30,10 @@ Historical documents retain their paths and source identities.
   is separately frozen at93076b4: four proposals/seven-world ceiling,146 clean
   checks, actual saved-plan guard. Its14:28UTC process waits for the previous
   study's independent closure; new real-mode readiness/inference has not started.
+  [Objective support and the next main question](publication/native-objective-support-and-next-question.md)
+  separates the conditional accept-all incentive of T/E from dynamic effects;
+  the retained old44 complete worlds all end with5 active authors. This is a
+  descriptive screen and planning input, not a new loss or policy result.
 
 - [Causal institution design research plan](publication/institution-causal-design-plan.md):
   distinguish fixed-family limits, information/action access and representation/search.

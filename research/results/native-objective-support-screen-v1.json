@@ -1,0 +1,382 @@
+{
+  "completed_worlds": 44,
+  "content_sha256": "50860495ea4d0dbe096d87d5cca3f8edf02b95f5431e7f7abe67320ca0c38675",
+  "excluded_noncomplete_worlds": 5,
+  "final_active_authors_distribution": {
+    "5": 44
+  },
+  "input_content_sha256": "4d3fcb7e0a187201f9e37372bc598301aa62dccbd899a96a728061ea814416e6",
+  "input_file_sha256": "5bc6758159b9f6c58340770a66e81b24801815c19ec12a81865a7b5a3e659f10",
+  "input_report": "research/data/pre-scale-search-v1/report.json",
+  "original_audit_content_sha256": "85d4698ff09dd6cfbfe8b83790f8ae28dbf27072de9853184adc1db4334b92d1",
+  "original_source_commit": "62388a74d071a3a4fdc8cc309c2807422f96223f",
+  "physical_worlds": 49,
+  "rows": [
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 545.0,
+      "identity": "reference-open-seed",
+      "role": "developer-reference",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 575.0,
+      "identity": "reference-legacy",
+      "role": "developer-reference",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 640.0,
+      "identity": "reference-reviewed-accept-all",
+      "role": "developer-reference",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 620.0,
+      "identity": "reference-no-review-accept-all",
+      "role": "developer-reference",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 580.0,
+      "identity": "reference-no-review-reject-all",
+      "role": "developer-reference",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 540.0,
+      "identity": "reference-information-disconnected",
+      "role": "developer-reference",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 640.0,
+      "identity": "native-adaptive-ce2687e4f2ddfd7e7a47cc0d",
+      "role": "search:throughput:parameters",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 550.0,
+      "identity": "native-adaptive-23fdb104c222044fdb5e29e7",
+      "role": "search:efficiency:parameters",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 640.0,
+      "identity": "native-adaptive-e63e0c7799e1a39761440c5e",
+      "role": "search:throughput:code-fixed-graph",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 580.0,
+      "identity": "native-adaptive-2121c5b679ab0cf7758455e9",
+      "role": "search:efficiency:code-and-graph",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 545.0,
+      "identity": "native-adaptive-71961cc8663431521e356eef",
+      "role": "search:throughput:random",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 545.0,
+      "identity": "native-adaptive-5d0a63ca7d9feab3a45a49c3",
+      "role": "search:efficiency:random",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 620.0,
+      "identity": "native-adaptive-0d2c363a8de1c78e14d10962",
+      "role": "search:efficiency:parameters",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 545.0,
+      "identity": "native-adaptive-146c41a883be2a42d3de197f",
+      "role": "search:efficiency:code-and-graph",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 550.0,
+      "identity": "native-adaptive-7a98ba9ae6edb527520041c2",
+      "role": "search:throughput:random",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 550.0,
+      "identity": "native-adaptive-c781b55640724fd742603ff0",
+      "role": "search:efficiency:random",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 640.0,
+      "identity": "native-adaptive-fef5b69d74ea169cc7088634",
+      "role": "search:throughput:parameters",
+      "seed": 41001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 555.0,
+      "identity": "evaluation-000",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 615.0,
+      "identity": "evaluation-001",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 755.0,
+      "identity": "evaluation-002",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 680.0,
+      "identity": "evaluation-003",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 700.0,
+      "identity": "evaluation-004",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 780.0,
+      "identity": "evaluation-005",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 640.0,
+      "identity": "evaluation-006",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 680.0,
+      "identity": "evaluation-007",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 780.0,
+      "identity": "evaluation-008",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 660.0,
+      "identity": "evaluation-009",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 670.0,
+      "identity": "evaluation-010",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 775.0,
+      "identity": "evaluation-011",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 660.0,
+      "identity": "evaluation-012",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 690.0,
+      "identity": "evaluation-013",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 775.0,
+      "identity": "evaluation-014",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 640.0,
+      "identity": "evaluation-015",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 700.0,
+      "identity": "evaluation-016",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 780.0,
+      "identity": "evaluation-017",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 585.0,
+      "identity": "evaluation-018",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 615.0,
+      "identity": "evaluation-019",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 755.0,
+      "identity": "evaluation-020",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 680.0,
+      "identity": "evaluation-021",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 700.0,
+      "identity": "evaluation-022",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 780.0,
+      "identity": "evaluation-023",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 680.0,
+      "identity": "evaluation-024",
+      "role": "selection-fixed-evaluation",
+      "seed": 51001,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 700.0,
+      "identity": "evaluation-025",
+      "role": "selection-fixed-evaluation",
+      "seed": 51011,
+      "status": "complete"
+    },
+    {
+      "final_active_authors": 5,
+      "final_author_resources": 780.0,
+      "identity": "evaluation-026",
+      "role": "selection-fixed-evaluation",
+      "seed": 51017,
+      "status": "complete"
+    }
+  ],
+  "schema": "scienceutopia.native-objective-support-screen.v1",
+  "scope": {
+    "conditioned_on_completed_worlds": true,
+    "independent_optimizer_replicates_claimed": false,
+    "new_independent_audit": false,
+    "new_loss_selected": false,
+    "new_model_calls": 0,
+    "new_worlds": 0,
+    "transient_dropout_and_individual_resource_floors_not_identified": true
+  },
+  "total_final_author_resources_range": [
+    540.0,
+    780.0
+  ]
+}
