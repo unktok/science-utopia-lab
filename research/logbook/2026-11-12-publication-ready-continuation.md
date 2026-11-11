@@ -435,3 +435,15 @@ tensor shapes. This is an authored cross-component inconsistency, not the old
 outer replay budget bug. The actual U/g1 readiness intent contains the exact
 failure; the authoring stage starts21:50:42UTC. No host repair or refill.
 Publication readiness, important resultR2 and unused fixed evaluation remain open.
+
+Post-retention verification atbb70f06 passes26 checks in5.87s, including all
+new PDF dependencies read from its exact build source2011319, the preserved
+54-page hash, actual figure/data agreement and scope boundaries. JUnit SHA256:
+`d83c08028971a9f00c23a875cfae0d63c63b712edf0b75bfaab55a44b0d43374`.
+These overlap the build checks and are not additional scientific samples.
+The completed U/g0 component trace also binds its final artifact93859a8b to
+four returned probes at step10; the same-artifact observations do not exercise
+the downstream tensor contract. The unchanged worker remains in U/g1 authoring
+at21:55UTC, with two closed proposal slots (one native complete, one null),
+six remaining slots and no study terminal. The independent readers remain
+closure-gated. No new paid service, model download or conference submission.
