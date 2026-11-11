@@ -16,7 +16,8 @@ def inputs():
         'year':1,'decision_index':0,'content':{'title':'SCRIPTED title '+str(i%76),
             'abstract':'SCRIPTED abstract','topics':['SCRIPTED-topic']}} for i in range(263)]
     body={'scientific_source_commit':'62388a74d071a3a4fdc8cc309c2807422f96223f',
-        'worlds':[{'identity':'SCRIPTED-world-'+str(i)} for i in range(44)],
+        'worlds':[{'identity':'SCRIPTED-world-'+str(i),'seed':61001,
+            'accepted_decisions':sum(r['physical_world']=='SCRIPTED-world-'+str(i) for r in rows)} for i in range(44)],
         'skipped_partial_worlds':[{'SCRIPTED':i} for i in range(5)],'accepted_decisions':rows}
     return {**body,'content_sha256':digest(body)}
 
