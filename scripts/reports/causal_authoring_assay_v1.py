@@ -9,7 +9,7 @@ import shutil
 
 from utopia.optimization.native_numeric_designer import checked, save
 from utopia.system import SystemSpec
-from utopia.system.design_patch import clone
+from utopia.system.design_patch import clone, digest, make_patch, apply_design_patch
 from utopia.utils.data_utils import file_sha256
 
 
@@ -26,6 +26,32 @@ def usage(rows):
         'unknown_http_durations': sum(r.get('elapsed_seconds') is None for r in rows),
         'length_terminated_responses': sum(r.get('done_reason') == 'length' for r in rows),
         'nonfinal_responses': sum(r.get('done') is not True for r in rows)}
+
+
+def literal_patch(base, candidate):
+    """Retain ALL literal edits, including upstream parameters, not only code."""
+    def walk(left, right, path=''):
+        if isinstance(left, dict) and isinstance(right, dict):
+            result = []
+            for key in sorted(set(left) | set(right)):
+                child = path+'/'+key.replace('~','~0').replace('/','~1')
+                if key not in right:
+                    result.append({'op':'remove','path':child})
+                elif key not in left:
+                    result.append({'op':'add','path':child,'value':clone(right[key])})
+                else:
+                    result.extend(walk(left[key], right[key], child))
+            return result
+        if isinstance(left, list) and isinstance(right, list) and len(left) == len(right):
+            return [p for i, (a, b) in enumerate(zip(left, right)) for p in walk(a, b, path+'/'+str(i))]
+        return [] if digest(left) == digest(right) else [{'op':'replace','path':path,'value':clone(right)}]
+    operations = walk(base.to_dict(), candidate.to_dict())
+    if not operations:
+        return None
+    patch = make_patch(base, operations, rationale='Literal complete candidate export, not an executed policy evaluation')
+    if apply_design_patch(base, patch).fingerprint != candidate.fingerprint:
+        raise ValueError('literal candidate reconstruction differs')
+    return patch
 
 
 def export(root, audit_one, audit_two, probe, base_system, output):
@@ -60,13 +86,9 @@ def export(root, audit_one, audit_two, probe, base_system, output):
             system = SystemSpec.from_dict(candidate['system'])
             node = next(n for n in system.mechanisms if n.mechanism_id == 'world.selection')
             source = node.parameters['code_artifact']['source']
-            rebuilt = clone(base.to_dict())
-            target = next(n for n in rebuilt['mechanisms'] if n['mechanism_id'] == 'world.selection')
-            target['parameters']['code_artifact']['source'] = source
-            if SystemSpec.from_dict(rebuilt).fingerprint != system.fingerprint:
-                raise ValueError('compact source-only reconstruction cannot describe whole candidate')
             row.update(candidate_sha256=system.fingerprint, selection_source=source,
-                selection_source_utf8_sha256=hashlib.sha256(source.encode()).hexdigest())
+                selection_source_utf8_sha256=hashlib.sha256(source.encode()).hexdigest(),
+                complete_literal_patch=literal_patch(base, system))
         rows.append(row)
     loads = [checked(read(p)) for p in sorted(root.glob('readiness/*/designer-load.json'))
              + sorted(root.glob('sessions/*/designer-load.json'))]
