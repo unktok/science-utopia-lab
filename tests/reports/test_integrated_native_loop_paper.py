@@ -115,3 +115,26 @@ def test_reviewed_snapshot_keeps_original_pdf_and_exact_source_boundaries():
     assert all(value is False for key, value in r['scientific_scope'].items()
                if key not in ('new_model_calls_from_manuscript', 'new_candidate_worlds_or_losses_from_manuscript'))
     assert r['scientific_scope']['new_model_calls_from_manuscript'] == 0
+
+
+def test_closed_evaluation_snapshot_binds_all_figures_without_completing_other_studies():
+    r = load('paper/integrated-fixed-evaluation-build-v1.json')
+    sha = lambda b: hashlib.sha256(b).hexdigest()
+    assert sha((ROOT / r['output']).read_bytes()) == r['pdf_sha256']
+    for name, expected in r['preserved_files'].items():
+        assert sha((ROOT / name).read_bytes()) == expected
+    for group in ('source_files', 'figure_files', 'support_files', 'evidence_files'):
+        values = {name: sha(subprocess.check_output(
+            ['git', 'show', r['source_commit'] + ':' + name], cwd=ROOT))
+            for name in r[group]['files']}
+        assert sha(json.dumps(values, sort_keys=True, separators=(',', ':')).encode()) == r[group]['manifest_sha256']
+    assert (r['pages'], r['figures'], r['tables']) == (52, 22, 21)
+    assert r['visual_review']['all_final_pages_reviewed'] and r['visual_review']['pages_reviewed'] == 52
+    assert r['build']['text_identical'] and r['build']['exit_codes'] == [0, 0]
+    assert not r['build']['layout_or_undefined_reference_warnings']
+    assert not r['build']['off_page_text_words']
+    assert r['scientific_scope']['closed_physical_evaluations'] == 30
+    assert r['scientific_scope']['original_search_remains_stopped']
+    assert not r['scientific_scope']['ongoing93076b4_counted_as_completed']
+    assert not r['scientific_scope']['actual_code_self_repair_claimed']
+    assert not r['scientific_scope']['scientific_truth_or_publication_readiness_claimed']

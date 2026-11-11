@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+**November12 01:34JST / November11 16:34UTC:** the new code-tested loop has
+completed all three native references and entered its first T/code-and-graph
+proposal at16:32:31UTC. Session91390 is confirmed live. No closed candidate,
+actual code self-repair or improved loss is claimed yet; frozen93076b4 and
+its original four-slot/seven-world budget remain unchanged.
+
+The [latest integrated manuscript](../output/pdf/science-utopia-lab-integrated-fixed-evaluation-working-paper.pdf)
+now includes the closed30-world evaluation:52 pages,22 figures and21 tables.
+It retains the full earlier program, all12 stopped search slots and both
+unavailable arms; new print-sized figures show actual per-seed scores and paths.
+The numerical-only/full-routing authority difference is explicit, not an
+isolated method-effect claim. [Source/build/visual binding](../paper/integrated-fixed-evaluation-build-v1.json):
+two cache-only builds/text agree, all52 page images reviewed, no clipping,
+off-page words or unresolved references.30 clean-source checks and17 retained
+snapshot checks pass. Old49/47-page and earlier PDFs remain unchanged. Important
+main-study evidence and publication readiness are still unresolved.
+
 **November12 / November11 16:08UTC:** all30 fixed evaluations close normally
 at16:00:06UTC. Two original-source audits and cost projections match and close
 16:03:09UTC. The first report stops on an arm-order join error; corrected

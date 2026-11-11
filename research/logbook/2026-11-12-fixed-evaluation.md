@@ -38,3 +38,23 @@ bb86366a910ae70f39898b02e9f77643b20c759cでretained reportの数値を再検算�
 同clean sourceの37件は14.40秒でpass。実行code・world・LLMは追加なし。
 前段のcode-tested実校正はall_controls_passed=true／28recordsであることを原certificateから確認。
 native参照open-seedは継続中で、candidate未生成のままというscopeを維持する。
+
+## 閉じた評価を統合した原稿
+
+source3d792153851821b5a9f74e6b029246ab76c10e14で52頁／22図／21表へ更新。
+10観測policyの全A/Q/R/T/E平均をretained reportから照合するtestと、2欠測armの
+明示行を追加。T/Eの二目的図を本文幅に合わせて描き直し、全12枠pathも文字を拡大。
+初回の最下行labelが軸に近い配置はylimを明示して直し、actual export二回一致。
+初回draftのunderfull warningはinline数値列の改行可能な書式へ直して解消。
+比較図が次の節の途中へ入らないようFloatBarrierを追加し、頁数を無理に抑えない。
+
+cache-only build二回の抽出textは一致。全52頁画像を確認し、新表／図の31–34頁は
+125dpiでも確認。30頁は前iterationで目視した画像とbyte一致、残る22頁を最終版で再確認。
+off-page words／layout／未解決参照は0。原49／47頁を含む5PDFのbytesを保持した。
+PDF SHA256=cbd79586fc8c211ab07b2604fdac94000e870f440be1beff55c263ae7a16c939。
+30 clean-source checksは19.81秒、retained snapshotの17件は6.12秒でpass。
+R2の重要性と投稿ready判定は未達のまま。原稿作成によるmodel/world追加は0。
+
+16:34UTC時点で新93076b4は全3参照を終え、16:32:31UTCからT/code-and-graph G0の
+authoringに入った。session91390は実応答を伴ってlive。candidateの完了、自己修復、
+改善はまだ主張しない。08f671bのread-only監査待機はこの新実験の閉鎖を待つ。

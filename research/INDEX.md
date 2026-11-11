@@ -6,6 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Latest integrated working paper](../output/pdf/science-utopia-lab-integrated-fixed-evaluation-working-paper.pdf)
+  and [its own build/evidence binding](../paper/integrated-fixed-evaluation-build-v1.json):
+  November12,52 pages/22 figures/21 tables. Adds the actual closed30-world
+  fixed-policy comparison, readable seed-by-seed plot, stopped paths and all-arm
+  table without dropping earlier tracks. Distinct authority is not a method
+  effect; failed arms are not baseline policies. All final pages reviewed,
+  two cached builds/text agree. Earlier snapshots remain unchanged; not
+  publication ready. The next code-tested loop completes three references and
+  begins T/code-and-graph authoring at16:32:31UTC.
+
 - [Closed separate fixed-submission evaluation](results/native-fixed-evaluation-v1.md)
   and [portable report, costs and rebuilding](data/native-fixed-evaluation-v1/README.md):
  30/30 physical worlds, two matching audits/costs, two matching corrected-source
@@ -15,12 +25,12 @@ Historical documents retain their paths and source identities.
   native references. This does not complete the old stopped search or establish
   autonomous institutional invention/publication readiness.
 
-- [Native-execution integrated working paper](../output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf)
+- [Earlier native-execution integrated working paper](../output/pdf/science-utopia-lab-integrated-native-execution-working-paper.pdf)
   and [source/build/visual binding](../paper/integrated-native-execution-build-v1.json):
   November12,49 pages,20 figures/20 tables; retains earlier studies and adds all
   stopped671436a slots/costs, the optional execution-feedback boundary and annual
   resource/activity support. Two cached builds/text match; all49 pages reviewed.
-  The ongoing separate evaluation is not counted as completed. The47-page
+  At that snapshot the separate evaluation was still ongoing. The47-page
   diagnostic snapshot and earlier PDFs remain unchanged. Not publication ready.
 
 - [Publication-ready autonomous goal](publication/publication-ready-v3.md): reopened explicitly November11.
@@ -41,12 +51,13 @@ Historical documents retain their paths and source identities.
   one unexercised historical failure. [Post-edit feedback](components/native-post-edit-feedback-v1.md)
   now connects the editor through scripted tests; actual35B self-debugging remains next.
   [Separate fixed-policy reporting](components/native-fixed-evaluation-report-v1.md)
-  retains every failed/unsubmitted slot and unavailable arm; its actual figures
-  wait for closed independent audits, not interim scores.
+  retains every failed/unsubmitted slot and unavailable arm; actual figures
+  now follow two closed independent audits, never interim-score selection.
   [Code-tested native loop](protocols/campaigns/native-code-tested-loop-v1.md)
   is separately frozen at93076b4: four proposals/seven-world ceiling,146 clean
-  checks, actual saved-plan guard. Its14:28UTC process waits for the previous
-  study's independent closure; new real-mode readiness/inference has not started.
+  checks, actual saved-plan guard. After its initial14:28UTC wait, real-mode
+  readiness passes28 controls; three references close and first proposal
+  authoring begins16:32:31UTC. No closed candidate is claimed at this observation.
   [Objective support and the next main question](publication/native-objective-support-and-next-question.md)
   separates the conditional accept-all incentive of T/E from dynamic effects;
   the retained old44 complete worlds all end with5 active authors. This is a
@@ -62,7 +73,7 @@ Historical documents retain their paths and source identities.
   Inline order context and complete routing ABI cards are prospective, software-tested additions.
   The new native pilot stopped before evaluation. A
   [separate fixed-submission evaluation](protocols/campaigns/native-fixed-candidate-evaluation-v1.md)
-  is running from its exact audited prefix; failed-only arms receive no fallback policy.
+  now closes from its exact audited prefix; failed-only arms receive no fallback policy.
   This is not another claim of9/9 completion.
   [November11 log](logbook/2026-11-11-institution-causal-design.md).
 
