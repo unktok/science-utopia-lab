@@ -24,7 +24,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-code-tested-loop-audit.v1',
         'scienceutopia.native-liquidity-support-audit.v1',
         'scienceutopia.native-objective-instrument-loop-audit.v1',
-        'scienceutopia.native-objective-fixed-evaluation-audit.v1')
+        'scienceutopia.native-objective-fixed-evaluation-audit.v1',
+        'scienceutopia.native-objective-initial-stop-audit.v1')
 
 
 def classify_numeric(relative):
@@ -86,7 +87,7 @@ def analyze(root,plan,audit):
     before=_inventory(root)
     if digest(before)!=audit['raw_inventory_sha256'] or len(before)!=audit['raw_files']:
         raise ValueError('raw inventory changed from closed original-source audit')
-    stopped = audit['schema']==AUDITS[3]
+    stopped = audit['schema'] in (AUDITS[3],AUDITS[9])
     closure_name=('mechanisms-complete.json' if audit['schema']==AUDITS[0]
                   else 'terminal.json' if audit['schema'] in AUDITS[2:] else 'complete.json')
     if closure_name not in before:raise ValueError('normal scientific closure required before cost projection')
@@ -157,7 +158,7 @@ def analyze(root,plan,audit):
     if before!=_inventory(root):raise ValueError('raw evidence changed during cost projection')
     if stopped:
         result['scientific_termination']='stopped; no held-out evaluation or successful scientific closure'
-    if audit['schema'] in AUDITS[7:9]:
+    if audit['schema'] in AUDITS[7:10]:
         critic=audit['observer']
         result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
             'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],

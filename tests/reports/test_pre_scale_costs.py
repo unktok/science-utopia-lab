@@ -121,13 +121,15 @@ def test_native_loop_costs_cannot_treat_a_stopped_or_mismatched_terminal_as_clos
     with pytest.raises(ValueError,match='loop closure'): analyze(tmp_path,p,audit)
 
 
-def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_path):
+@pytest.mark.parametrize('schema',['scienceutopia.native-institution-loop-stopped-audit.v1',
+    'scienceutopia.native-objective-initial-stop-audit.v1'])
+def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_path,schema):
     from utopia.optimization.native_numeric_designer import save
     p,_=empty_audit(tmp_path)
     start=save(tmp_path/'started.json',{'plan_sha256':p['content_sha256']})
     terminal=save(tmp_path/'terminal.json',{'status':'stopped'})
     inventory=_inventory(tmp_path)
-    a=hashed({'schema':'scienceutopia.native-institution-loop-stopped-audit.v1','source_commit':p['source_commit'],
+    a=hashed({'schema':schema,'source_commit':p['source_commit'],
         'plan_sha256':p['content_sha256'],'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),
         'source_proof':{'status':'verified-exact-source-closure'},'new_model_calls':0,'new_code_executions':0,
         'closure':{'started':start,'terminal':terminal,'scientific_study_closed':False},
@@ -138,7 +140,8 @@ def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_p
     with pytest.raises(ValueError,match='stopped costs'): analyze(tmp_path,p,a)
 
 
-def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usage(tmp_path):
+@pytest.mark.parametrize('stopped',[False,True])
+def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usage(tmp_path,stopped):
     from tests.reports.test_native_token_costs import cache
     from tests.optimization.test_common_content_observer import contract,Backend,PAPER
     from utopia.optimization.common_content_observer import CommonContentObserver
@@ -150,11 +153,12 @@ def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usag
     observer=CommonContentObserver(tmp_path/'observer',contract(),backend=Backend());observer.rate(PAPER)
     critic=observer.audit()
     start=save(tmp_path/'started.json',{'plan_sha256':p['content_sha256']})
-    end=save(tmp_path/'terminal.json',{'status':'closed'});inventory=_inventory(tmp_path)
-    a=hashed({'schema':'scienceutopia.native-objective-instrument-loop-audit.v1','source_commit':p['source_commit'],
+    end=save(tmp_path/'terminal.json',{'status':'stopped' if stopped else 'closed'});inventory=_inventory(tmp_path)
+    a=hashed({'schema':'scienceutopia.native-objective-initial-stop-audit.v1' if stopped else 'scienceutopia.native-objective-instrument-loop-audit.v1','source_commit':p['source_commit'],
         'plan_sha256':p['content_sha256'],'source_proof':{'status':'verified-exact-source-closure'},
-        'new_model_calls':0,'new_code_executions':0,'closure':{'started':start,'terminal':end},
-        'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),'observer':critic})
+        'new_model_calls':0,'new_code_executions':0,'closure':{'started':start,'terminal':end,'scientific_study_closed':False} if stopped else {'started':start,'terminal':end},
+        'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),'observer':critic,
+        **({'selection':None,'logical_evaluation':[]} if stopped else {})})
     result=analyze(tmp_path,p,a)
     assert result['scientist']['completed_responses']==2
     assert result['scientist']['provider_usage']['prompt_tokens']['recorded_sum']==3
@@ -163,3 +167,4 @@ def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usag
     assert common['physical_requests']==3 and common['usage']['prompt_tokens']['known_sum']==213
     assert common['usage']['output_tokens']['known_sum']==27 and not common['overlap_with_native_response_caches']
     assert _inventory(tmp_path)==inventory
+    if stopped:assert result['scientific_termination'].startswith('stopped;')
