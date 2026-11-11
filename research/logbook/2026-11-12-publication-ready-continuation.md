@@ -599,3 +599,69 @@ The56-page/26-figure/21-table snapshot retains all earlier scientific tracks;
 the55-page and earlier PDFs are unchanged. The separate build receipt binds
 every dependency to7f8a39b. Editorial and reconstruction work advancesR4/R5,
 not R2, actual scientific replication or publication readiness.
+
+## Corrected native development closes; fixed-policy evaluation starts
+
+The original61a1753 writer/session92866 exits0 with a normal terminal at
+23:23:36.891324UTC. All eight proposals submit; six complete and U/g0/T/g3
+have technical nulls. T/g3's authored empty-cycle sentinel includes a decision
+field and fails the original contract. It is not the earlier outer-replay bug.
+All52 component probes return on the exact submitted edited artifacts, but
+whole-world contracts are not thereby certified. No candidate code is repaired.
+
+At23:27:35UTC both original-source audits and both costs close with byte
+agreement. Audit file SHA256:b8d4a569467ba5732343ad3442628a198424667b3ecde89ee8e6e8801c393ff2;
+cost file SHA256:e3a54109b9730a36f1ccbcdf2dbdb6039fb3f021a765a83fc5170ef159b73be1.
+All six complete candidates have T−7/U−4 and no changed nodes/edges/schedules.
+Earliest own ties select T/g0 and U/g1, retaining all three ties each. U/g1
+is an unchanged submitted reference, not autonomous invention or host fallback.
+
+Report509d510, effect reader0b03e51 and preference reader1aab3be all export
+twice with actual byte agreement. Both actual loss/cross-score figures are
+visually reviewed; all coincident labels and both nulls remain visible.
+Eleven complete worlds yield nine observed T minima/ten U minima,36 jointly
+tied physical pairs,10 same strict preferences and nine U-only ties. This
+is descriptive within-seed geometry, not independent replication or global
+optimality. The effect reader reconstructs236 calls/45 boundaries/225 founder
+states, retaining seven uncommitted code bundles across the two failures.
+
+New read-only request reader764e2f4 verifies exact full scientist payloads and
+ordered committed response choices, with no text scrubbing. Its32 scoped
+unit/report checks pass9.68s; JUnit SHA256:
+4d27610f365f14b61ef24febfa95c9967b23ae3572b68e32ebd3273258429bcd.
+Two actual exports from that clean frozen reader match. Four completed candidates
+and the reviewed reference share all129 literal payloads and response choices;
+T/g0/T/g2 change both sequences while still tying the same scalar scores.
+Full provider bodies are not identical in the shared-input class. Observed
+classes are not world equivalence, causal benefit or grounds for deduplication.
+
+An initial local copy of the1.24MB effect report is truncated by tool-output
+limits and fails its original hash/JSON parse. Reading exact200000-byte chunks
+recovers the unchanged original file; its final hash matches the independent
+source export. Generated CSV artifacts are copied byte-for-byte to retain CRLF
+after a first text-patch transfer fails the exact-byte check. No failed transfer
+is committed as verified evidence, and no scientific raw file is changed.
+
+At clean cd1989a,37 retained-data/request/preference/effect/report checks pass
+10.51s. This overlaps prior checks, not additional scientific trials. Compact
+data and exact16 independent-output comparisons are retained under
+research/data/native-objective-instrument-loop-v1 and its closure receipt.
+
+The earlier PDF retention check atbef5e51 has43pass/1failure because the readable
+heading test overlooks Poppler's fi ligature, not because the exact PDF/text
+hashes differ. NFKC is used only for that heading assertion; byte/glyph checks
+remain exact. At a4fa229 all44 pass6.30s; JUnit SHA256:
+99b909d0070c3549d38647f1bd7fa6203d046a2e57987b004ff49bcc70c2621e.
+The56-page source-bound PDF and every earlier snapshot remain unchanged.
+That manuscript update is merged/pushed to main and remote main is independently
+confirmed ata4fa229681649ff7fc8c91ffa011aef6a07c47a9 before this new retention.
+
+At23:28:04UTC the existing gated continuation actually starts fixed evaluation
+writer48462. Plan content2f70f69b84b9829efb77cd1b7a98969b83b6ebfa01c38c884234f6633b65704d
+freezes both selected programs plus five controls on64101/64107/64113. Literal
+identity between U/g1 and its reference yields18 physical worlds/21 logical
+label-seed comparisons. No new designer or scientific setting is introduced.
+The actual evaluation log advances through native inference, not merely a
+waiting process. It is not closed or an improvement result. Goal remains active;
+the56-page snapshot predates these newly retained development results and does
+not silently claim them. Publication milestonesR2/R3/R5/R6 remain open.

@@ -2,6 +2,29 @@
 
 ## Active publication-ready goal
 
+**November12 08:28JST / November11 23:28UTC:** the61a1753 development is now
+normally closed, with two matching original-source audits and cost projections.
+All eight candidates submit; six complete and U/g0/T/g3 have technical nulls.
+All six completions have T=−7/U=−4, tying strong connected accept-all controls.
+No node, edge or schedule change is generated. Earliest own ties select T/g0
+and U/g1; the latter literally submits its unchanged reference. The [complete result](results/native-objective-instrument-loop-v1.md)
+and [exact data/closure](data/native-objective-instrument-loop-v1/README.md) retain
+all52 returned component probes, both failures and measured costs.
+
+The frozen evaluation actually starts at23:28:04UTC, writer48462 under the
+existing continuation/session25775. It evaluates both fixed selections and
+five controls on64101/64107/64113 without further design. Literal identity
+merges U/g1 and its reference:18 physical worlds,21 logical label/seed pairs.
+The evaluation is not complete. The publication-ready goal remains active.
+
+Read-only exports also reconstruct236 code calls,45 annual boundaries and225
+founder-boundary states. Eleven complete worlds have nine observed T minima
+and ten U minima, with no strict preference reversal. Four completed proposals
+share the reviewed reference's exact129 full model inputs and response choices;
+two others change inputs/choices but still tie losses. Observed input classes
+are not world/program equivalence or independent optimizer histories. All
+actual reports are exported twice and their figures visually reviewed.
+
 **November12 08:18JST / November11 23:18UTC:** seven of eight proposal slots
 are closed. T/g0--g2 complete at−7; U/g0 is null and U/g1--g3 complete at−4.
 The final T/g3 enters native execution after fresh readiness; the original

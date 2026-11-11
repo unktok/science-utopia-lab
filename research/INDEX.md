@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed T/U institutional development](results/native-objective-instrument-loop-v1.md)
+  and [all-slot data, costs and exact input classes](data/native-objective-instrument-loop-v1/README.md):
+  eight actual proposals, six complete/two null, no structural changes and no
+  strong-reference advantage. Original audits/costs and later actual readouts
+  agree twice. Fixed unused evaluation starts23:28UTC on64101/64107/64113:
+  18 physical worlds after literal policy deduplication, not yet a closed result.
 - [Static-instruction timing comparator](components/native-static-instruction-controls-v1.md):
   same literal producer with early/late/cut delivery. Forty original-world and
   actual-container checks include full request equality and cold restart;
@@ -21,16 +27,11 @@ Historical documents retain their paths and source identities.
   three shared, four connected-only and two disconnected-only records. Exact
   multiset decomposition and all four actual export files agree twice. This
   describes the historical references, not invented policies or causal mediation.
-- [Current objective search and result boundaries](STATUS.md): corrected61a1753
-  completes five references and its first throughput candidate at21:33UTC:
-  T=−7/U=−4, tied with connected accept-all. U/g0 later fails; U/g1 submits
-  its unchanged reference and completes at−4. T/g1 later completes at−7;
-  T/g2 subsequently completes at−7. By23:18UTC seven of eight slots close:
-  U/g2 and U/g3 also complete at−4, and final T/g3 enters native execution.
-  Still no observed strong-reference advantage or final independent closure.
-  Additional source/consumer/resource continuations are waiting, not completed
-  results. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
-  retain all ties without reselecting policies or modifying current losses.
+- [Current execution checkpoint](STATUS.md) distinguishes the closed corrected
+  development from its live fixed evaluation. The original technical stop is
+  not relabeled. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
+  remain separate from the newly closed development geometry; no reselection
+  or loss change is made by either descriptive readout.
 - [Corrected objective study and retained initial stop](results/native-objective-budget-stop-and-corrected-launch-v1.json):
   original537514a stops at the first outer replay despite a submitted inner
   definition. Two stopped audits/costs match; full-contract correction has70
@@ -45,9 +46,9 @@ Historical documents retain their paths and source identities.
 - [Frozen objective evaluation and all-slot analyses](components/native-objective-fixed-evaluation-v1.md):
   the first development reaches3/5 references by20:07UTC, then stops at20:26UTC.
   Its subsequent chains stop without evaluation. The corrected study above
-  has separate continuations. Separate development
-  report and fixed-policy evaluation continuations wait for original normal
-  audit closure; neither modifies active science or replaces failed slots.
+  closes normally and its separate evaluation begins after matching audits.
+  Its development report/effect readers are now closed; fixed-result readers
+  remain closure-gated. None modifies active science or replaces failed slots.
   The full connection suite passes171 checks; a separately frozen35-check
   fixed-report watcher also waits for the actual evaluation plan/audit closure.
   [actual bindings](results/native-objective-analysis-continuation-verification-v1.json).
