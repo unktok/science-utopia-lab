@@ -33,6 +33,18 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- Closed93076b4 code-tested loop: all four proposals, seven native worlds and
+  actual32 probes. Include observed failures and untested final edits, not an
+  improvement or repair-success claim. Retained native-code-tested-loop-v1 data.
+- Closed fixed-content readout: all76 panels/228 literal replies and actual
+  distribution figure. Same-model abstract opinions, not truth or a new search.
+- Closed four-world resource support: all80 founder-year states, transfer and
+  ledger proofs, actual activity/output/resource curves. Developer control only,
+  one reused seed, different loss optima not established.
+- Closest additional institutional precedents: MACC, Society of Researchers,
+  Station and EurekAgent. Conceptual institutions and verified tasks are not
+  priority claims for this project.
+
 - research/data/native-fixed-evaluation-v1/{report,costs,manifest}.json,
   physical-components.csv and research/results/native-fixed-evaluation-v1.md.
   Two full original-source audits, two cost/readout exports and two portable

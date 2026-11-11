@@ -1,0 +1,5 @@
+identity,initial_funding,condition,accepted_decisions,accepted_peer_score_sum,review_records,final_active_founders,annual_active_founder_boundary_sum,final_resources
+resource-30-disconnected,30,disconnected,5,15.666666666666666,15,4,16,360.0
+resource-30-connected,30,connected,7,22.333333333333332,21,5,20,350.0
+resource-60-connected,60,connected,7,22.333333333333332,21,5,20,500.0
+resource-60-disconnected,60,disconnected,7,22.333333333333332,21,5,20,500.0
