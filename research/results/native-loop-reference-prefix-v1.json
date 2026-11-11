@@ -1,0 +1,32 @@
+{
+  "schema": "scienceutopia.native-loop-reference-prefix-diagnostic.v1",
+  "source_commit": "671436ad207688dc230596e8d0c4a8f5f1a87d76",
+  "seed": 61001,
+  "years": 4,
+  "scope": "Two completed hand-reference worlds only, not the full closed-pilot audit or automatic invention",
+  "observed_pre_first_review_payloads": 28,
+  "first_review_year": 2,
+  "first_pre_review_payload_mismatch": null,
+  "prefix_payload_sha256": "b4f614868a854edd311e11dd3cd3cd4c20f2b0c6ab88c9b64ac889952be40b91",
+  "literal_payload_comparison": true,
+  "clock_fields_scrubbed": false,
+  "response_or_randomness_coupling_inferred": false,
+  "reviewed_accept_all": {
+    "wire_file_sha256": "ceccca45a4a241f8193224db5f6fed24ef3abfb77a46bbc77673aa4885831cca",
+    "A": 7,
+    "Q": 21.666666666666668,
+    "R": 21
+  },
+  "routed_one_accept_all": {
+    "wire_file_sha256": "84420b52a8823775ae6fbea10b2212955c6f930b263cfe6a082454c883297f9e",
+    "A": 7,
+    "Q": 22.0,
+    "R": 7,
+    "checkpoint_sha256": "9b6137c9abac2ac674c3ec402d2e35c58c77afaa119344b229edb5474f6ef7fd",
+    "physical_proof_content_sha256": "d961c5c27a064284078b3e67fa458819c6b8fe408a28ca89fe4cbd2a508d1d64",
+    "routing_receipts_restored_and_checked": 4
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_authored_code_executions": 0
+}

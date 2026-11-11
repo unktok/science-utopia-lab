@@ -22,7 +22,22 @@ At08:40UTC, three reference worlds are complete and the fourth is executing.
 A separate read-only continuation at frozend11e431/PID40332 waits for scientific
 closure, then runs two cold audits, two cost projections and two figure builds
 with byte comparison. It never starts/retries inference; waiting is not a second
-scientific writer. The finite publication goal remains active beyond this pilot.
+scientific writer. The publication goal remains active beyond this pilot.
+
+At09:05UTC, seven references are complete. The typed one-reviewer/all-accept
+control has A7/Q22/R7 versus A7/Q21.667/R21 for original-review/all-accept.
+[Completed-reference prefix check](results/native-loop-reference-prefix-v1.json)
+finds the first28 actual scientist payloads equal before first review in year2;
+the original-source physical proof restores/checks its routing receipts. These
+are hand-reference/development observations, not automatic invention or a
+causal method ranking. Search/evaluation have not yet started at this snapshot.
+
+[New fixed-record panel diagnostic](results/native-panel-sensitivity-v1.md)
+reconstructs the old closed T/E study, not this live pilot:44 completed worlds,
+five retained partial failures,217 reviewed and46 unreviewed accepted decisions.
+Two raw/source-bound reads agree, as do retained data and actual PNG/SVG.
+It fixes each world's accepted set and actual R; it is not a rerouting experiment,
+avoided cost, independent quality or an added objective/adoption constraint.
 
 ## November11 research stage
 

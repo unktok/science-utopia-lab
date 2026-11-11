@@ -27,6 +27,13 @@ Historical documents retain their paths and source identities.
   This is not another claim of9/9 completion.
   [November11 log](logbook/2026-11-11-institution-causal-design.md).
 
+- [Fixed-record panel readout sensitivity](results/native-panel-sensitivity-v1.md):
+  original-source reconstruction of44 completed old T/E worlds; same accepted
+  sets and actual review costs, no new policy or world.217 reviewed decision
+  records, with nonzero one-score readout envelopes in24 worlds; two rebuilds
+  and actual PNG/SVG agree. This motivates separating endogenous ratings from
+  independent observation, not a new quality metric or a veto on the live pilot.
+
 - [Active pre-scale completion](pre-scale-completion.md) and
   [2026-11-09 execution log](logbook/2026-11-09-pre-scale-completion.md): actual
   M closes12/12 with matching full audits and [complete descriptive results](results/pre-scale-information-v1.md),

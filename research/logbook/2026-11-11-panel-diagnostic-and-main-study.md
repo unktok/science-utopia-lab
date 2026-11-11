@@ -1,0 +1,38 @@
+# Panel測定の追加分析と主比較の判断
+
+前goal turnは、新runtime校正の修正、native writerの開始、実行済み参照と
+read-only後処理の接続というprogressだった。このturnの開始時には既存session52939と48610を
+pollし、前者の新しいQwen応答進行と後者の生存を確認した。再起動はしていない。
+
+原稿のPDF skillとMarkdown proseのwrite-page skillを読み、既存research書式を維持。
+44ページPDF、本文の問題設定・native包含・構造・勾配・V2・T/E・議論を点検した。
+原稿は既にQの内生性を述べているため、単なる言い換えを新規性とせず、固定記録を実際に解析した。
+PDFは変更していない。今の主会議ready未達は文章やQA数の不足だけでは解決しない。
+
+新analysis adapterはclean65d498eで固定。元62388a7 checkoutを先頭にした別interpreterで
+全raw inventory1859 fileを元full-audit85d4698fと照合し、49世界のうち44完了checkpointの
+A/Q/Rを再構築。5途中失敗を補充せず、217査読付き／46査読なし採択decisionを保持した。
+記録済みpanelの各k-subset平均を列挙し、元採否と実Rを固定する計算に限定した。
+これは新しい制度の実行や品質測定ではなく、最大値の事前実現可能性も仮定しない。
+
+二回のreportは同一、保持した三回目もcmpで一致。
+content SHA256=`73d3df0c0bd0e0183775cb0cfd12dc0585cf0904fdb48294b3caf758eeb6aa6d`、
+file SHA256=`c3bd1b9c6e0db8809a0d9fd0cac8707ff9d329eae7adb7090b9b6f22ba8de20c`。
+24世界でk1のQ読出し幅が非零だが、世界・artifactを独立な母集団標本として比率推論しない。
+15の算術／欠測／exact-label physical joinテストpass。PNG/SVG二回一致、実PNGを目視した。
+PNG SHA256=`3c2125b10f1ad7ce0651ed8a9ac2eaa75997aaa175852de5844f8abfe500c8ad`、
+SVG SHA256=`eefb184eb5422444496b07714ae76e080f573ce2cc3b88d7bb1f6d12220a329c`。
+
+同時進行の新native pilotは09:05UTCに参照7/8まで進行、まだ候補searchなし。
+routing1/all-acceptの原source physical proofはpassし、四年checkpoint SHA256は
+`9b6137c9abac2ac674c3ec402d2e35c58c77afaa119344b229edb5474f6ef7fd`。
+元review/all-acceptと比較した、最初のreviewまでの28 actual payloadは逐語的に一致。
+prefix SHA256=`b4f614868a854edd311e11dd3cd3cd4c20f2b0c6ab88c9b64ac889952be40b91`。
+raw時刻のscrubなし。これは観測したprefixの一致であり、以後の応答や乱数の完全couplingを保証しない。
+Kernel cold restoreが四年分のrouting命令／native task／state receiptを検査することもsourceで確認した。
+
+次の主比較の判断順を、現pilotの未使用評価前にpublication-ready-v3へ追記した。
+現目的と予算は変えず、単純解しか出ない場合も結果を保持する。必要な次の問いは、
+作用権限と表現、内生測定と外側観測、独立設計履歴を分けて別protocolへ凍結する。
+独立truthの活動拡張を考える際、ScienceWorld/CausalGame等の一次公開資料も探索したが、
+既存課題の詳細採用や新benchmark構築・追加モデル呼出は行っていない。
