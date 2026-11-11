@@ -75,7 +75,9 @@ def test_ambiguous_native_opening_is_not_silently_chosen():
     from utopia.system import ScheduleSpec
     base = anchor()
     base = replace(base, schedules=(*base.schedules, ScheduleSpec('world.open',3)))
-    with pytest.raises(ValueError, match='one explicit native opening'):
+    # The shared SystemSpec validator rejects duplicates even before this
+    # helper's own single-opening check. Do not require a later error path.
+    with pytest.raises(ValueError, match='scheduled more than once'):
         instruction_control(base, IMAGE, instruction=INSTRUCTION, delivery_phase=5)
 
 
