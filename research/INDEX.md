@@ -25,8 +25,9 @@ Historical documents retain their paths and source identities.
   completes five references and its first throughput candidate at21:33UTC:
   T=−7/U=−4, tied with connected accept-all. U/g0 later fails; U/g1 submits
   its unchanged reference and completes at−4. T/g1 later completes at−7;
-  T/g2 subsequently completes at−7, so five of eight slots close and U/g2
-  enters native execution by22:49UTC. Still no observed strong-reference advantage.
+  T/g2 subsequently completes at−7. By23:18UTC seven of eight slots close:
+  U/g2 and U/g3 also complete at−4, and final T/g3 enters native execution.
+  Still no observed strong-reference advantage or final independent closure.
   Additional source/consumer/resource continuations are waiting, not completed
   results. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
   retain all ties without reselecting policies or modifying current losses.
@@ -72,11 +73,14 @@ Historical documents retain their paths and source identities.
   audits/costs and two matching seven-file exports. Base30 activity/output
   change, base60 aggregate outcomes do not. One reused seed; developer control,
   not an automatically invented policy. No inference remains live.
-- [Latest55-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf)
-  and [build/visual binding](../paper/integrated-content-overlap-build-v1.json):
-  retains all old tracks and adds the actual content-turnover figure and objective
-  decomposition. Two cache-only builds/text agree; all55 page layouts are reviewed.
-  The prior54-page PDF remains unchanged. R2 and publication readiness stay open.
+- [Latest56-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-estimands-working-paper.pdf)
+  and [build/visual binding](../paper/integrated-estimands-build-v1.json):
+  retains all old tracks, adds finite-search estimands and checks the identities
+  of all25 cited records against primary bibliographic sources. Two cache-only
+  builds/text agree; all56 layouts are reviewed. The prior55-page PDF remains
+  unchanged. [Historical short-draft input reconstruction](data/historical-paper-reconstruction-v1/README.md)
+  stages12/13/13 exact files without changing old receipts. R2 and publication
+  readiness stay open; editorial/source QA is not empirical replication.
 
 ## Earlier checkpoints and retained studies
 

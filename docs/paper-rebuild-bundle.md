@@ -1,7 +1,8 @@
 # Local paper-rebuild subset
 
-This is preparation for the submission goal, not a final reviewer/public bundle.
-The current empirical V2 manuscript and both full audits are complete, but
+This page documents the historical11/12-page short-draft subsets, not a final
+reviewer/public bundle. The latest [integrated manuscript](../paper/integrated-estimands-build-v1.json)
+has its own source and56-page PDF. The historical empirical V2 manuscript and both full audits are complete, but
 remain a working draft rather than a final reviewer package. Do not publish/upload this subset
 or infer anonymous submission, human authorship or redistribution clearance.
 
@@ -37,6 +38,25 @@ The dependency parser handles current literal inputs, figures, bibliographies
 and the local style. It is not a general TeX parser or a proof of TeX safety.
 The actual build must use Tectonic's untrusted and offline/cache-only flags.
 
+## Recover the historical input version
+
+The shared bibliographies have changed since these short drafts were built.
+Do not compare their old receipt hashes with today's working files or overwrite
+an old receipt to make that check pass. The [reconstruction index](../paper/historical-source-reconstruction-v1.json)
+identifies commit8027f568cc16b0aed7428eab593f716b19530b20, which supplies every
+recorded input byte for all three variants. The old receipts did not record a
+build commit; this is exact byte reconstruction, not original-build attestation.
+
+Create a fresh detached worktree at that commit, then run its unchanged staging
+tool with the corresponding v1, v2 or anonymous-v1 allowlist. November12 actual
+staging succeeds with12/13/13 files and the [retained manifests](../research/data/historical-paper-reconstruction-v1/README.md).
+No old TeX build or model inference is added by that extraction.
+
+```text
+git worktree add --detach <fresh-historical-checkout> 8027f568cc16b0aed7428eab593f716b19530b20
+cd <fresh-historical-checkout>
+```
+
 ## Stage and rebuild
 
 Use the approved uv-managed project interpreter, never Apple Python. The real
@@ -45,7 +65,7 @@ or HEAD during the check. Choose a fresh destination outside this checkout or
 under ignored outputs; do not use an experiment's raw directory.
 
 ```text
-python -m scripts.reports.paper_rebuild_bundle \
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
   --policy research/publication/paper-rebuild-allowlist-v2.json \
   --output <fresh-local-staging-directory>
 ```

@@ -1,0 +1,43 @@
+{
+  "content_sha256": "ce2efb26937cbccbe0073acfdd697649be8eac0912e7697fb4de8073ad1c07f7",
+  "entrypoint": "paper/submission-v2.tex",
+  "files": {
+    "LICENSE": "0dc1811264bb76e119d3f58a8e775d79abeb1708c9486d3861354c1688062350",
+    "output/pdf/science-utopia-lab-objective-design-v2-draft.pdf": "964c08a7daf5e4a4db96c16001d26e1e1db78d86564554aecb290a8770fb1f17",
+    "paper/figures/native-design-v2/cross-objective-2y.png": "131fed773ca44d24dd05b77833e4cd93aaadbfd734ee278c4b148ff13e3737f2",
+    "paper/figures/native-design-v2/cross-objective-4y.png": "b630ebd77ab88fd19750bbb77e9c1e10a6b8164ec488144e9b3e1bacfbad2a66",
+    "paper/figures/native-design-v2/selective-paths.png": "5747849a13a958bcade68f3604784ddf0ba20fec920c766774a3ed85e7064425",
+    "paper/figures/native-design-v2/throughput-paths.png": "c8c850ce7a906d67a29d72442efeca6adee1b1578a75a6ef07b5c3c060e53114",
+    "paper/figures/program-concept/science-system-design-program.pdf": "b15140a8121330b4b8fc94cff96e89dac140c94b2415fc6ff0de7f232dd1108a",
+    "paper/generated/native-design-v2/search-outcomes.tex": "0e9269b0df48b83e40f3cb18a647e0aed42bb8ab46d159ca431eeb050a4fbe05",
+    "paper/neurips_2025.sty": "67a960f35da6fecb5a0ce0202fa400459f4c8bb6c294f1a3fdd82fbbd39244c2",
+    "paper/references.bib": "4b884c79437525071fc9625e9ae1f64e65973eb042192ce1732b9db8a6871b6a",
+    "paper/submission-build-v3.json": "2007fedcb8e2b8c07a63772db4ca37d2b1b4bb79e028ee21dedd7dcdeab1099a",
+    "paper/submission-sources.bib": "c3b9efffad398b91126b0f321baa7d4442644cc0bb4e7c313f8a54a724234920",
+    "paper/submission-v2.tex": "2d5b9fc8b777f8f6b96e621fedcaa5dbc9abf3007dba0144594d6fc95eccef0c"
+  },
+  "generated_instructions_sha256": "d5dac246ed74aa86971910b51faec7863fbb5bc10d6f5668b530534c9966ff62",
+  "limited_text_scan_findings": [],
+  "literal_tex_dependencies": [
+    "paper/figures/native-design-v2/cross-objective-2y.png",
+    "paper/figures/native-design-v2/cross-objective-4y.png",
+    "paper/figures/native-design-v2/selective-paths.png",
+    "paper/figures/native-design-v2/throughput-paths.png",
+    "paper/figures/program-concept/science-system-design-program.pdf",
+    "paper/generated/native-design-v2/search-outcomes.tex",
+    "paper/neurips_2025.sty",
+    "paper/references.bib",
+    "paper/submission-sources.bib",
+    "paper/submission-v2.tex"
+  ],
+  "new_model_calls": 0,
+  "numerical_reproduction_or_clean_machine_build_claimed": false,
+  "original_bytes_transformed": false,
+  "published_or_uploaded": false,
+  "raw_or_model_data_included": false,
+  "scan_is_not_secret_or_anonymity_clearance": true,
+  "schema": "scienceutopia.paper-rebuild-bundle.v1",
+  "scope": "Completed V2 PDF-source rebuild only; not numerical analysis, raw audit, fresh inference or anonymous submission",
+  "source_commit": "8027f568cc16b0aed7428eab593f716b19530b20",
+  "status": "local-working-draft-not-anonymous-not-release-cleared"
+}

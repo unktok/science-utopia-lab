@@ -552,3 +552,50 @@ ScienceAgentBench/CORE-Bench documentation and evaluator inspection. Their
 endpoints and environments are not silently adopted, and no survey asset,
 task dataset, dependency or model is changed. The current manuscript stays at
 its verified55-page snapshot; publication-ready goal remains active.
+
+## Finite estimands, primary bibliography and exact historical inputs
+
+At23:18UTC the original61a1753 controller closes seven of eight slots:
+T/g0--g2 at−7, U/g0 null and U/g1--g3 at−4. Final T/g3 enters native
+execution; session92866 remains live at23:22UTC. These are live controller
+observations, not final cold audits. No improvement, selected-policy evaluation
+or important new resultR2 is claimed. No active science setting is changed.
+
+The integrated paper now explicitly defines the finite eligible/completed sets,
+all observed minima and paired reference-relative loss within an objective.
+Evaluation seeds of fixed selected programs are not independent optimizer
+histories, nulls receive no invented penalty and objective-specific editing
+parents are part of the end-to-end search. These definitions are not new
+estimator theory or additional experimental samples.
+
+All25 cited records are checked for bibliographic identity against primary
+records. Official publication metadata for OPRO, SGA, ADAS, AFlow and MACC are
+corrected; protected names and author spellings are preserved. Access limits
+and the distinction from a full literature-claim audit remain in
+research/results/manuscript-bibliographic-identity-audit-v1.json.
+
+Historical short-draft tests previously compared fixed old receipts with a
+changing shared bibliography. The new reader verifies exact original hashes
+against Git blobs without rewriting those receipts or PDFs. A clean detached
+checkout8027f56 actually runs the unchanged staging CLI for all three variants:
+12/13/13 files, exit0 each. The raw manifest texts are retained byte-for-byte.
+The old receipts did not record build commits: exact reconstruction is not
+attestation of the original build, fresh TeX reproduction or model inference.
+
+The first469cf50 PDF attempt fails on cached cmr5.pfb after nested tiny math
+text; this failure/log is retained. Defining the completed candidate set
+separately avoids that font dependency, with no downloads. Readable official
+proceedings links remove long-URL underfull boxes. A subsequent full review
+discovers the old malformed Börner umlaut escape, corrected at7f8a39b.
+
+At clean7f8a39b,40 source checks pass5.30s. JUnit SHA256:
+64e3d061d933045b152096e485c18d6ef5bbb6b11e02fbac0a1d1ad7e2777e0e.
+Two cache-only untrusted Tectonic builds exit0 with identical extracted text
+and logs. All56 final layouts are reviewed, including detailed pages8/43/44;
+all22027 word coordinate tags are accounted for, with zero off-page words,
+unresolved references or layout warnings. Final PDF SHA256:
+876fcf4f5119ed3a2ea06ee6a6ec586879c2c67fade57e589d3a498f70e20d14.
+The56-page/26-figure/21-table snapshot retains all earlier scientific tracks;
+the55-page and earlier PDFs are unchanged. The separate build receipt binds
+every dependency to7f8a39b. Editorial and reconstruction work advancesR4/R5,
+not R2, actual scientific replication or publication readiness.

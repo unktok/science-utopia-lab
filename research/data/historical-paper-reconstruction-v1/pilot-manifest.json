@@ -1,0 +1,41 @@
+{
+  "content_sha256": "047e764efa1b6c79ac2a6a2a8965a283cd3c6a0a9da175698eeda5d319844f80",
+  "entrypoint": "paper/submission.tex",
+  "files": {
+    "LICENSE": "0dc1811264bb76e119d3f58a8e775d79abeb1708c9486d3861354c1688062350",
+    "output/pdf/science-utopia-lab-objective-design-draft.pdf": "0511e6c08b86743329e0e5aa90dbab68f3ba627638774b7a1780344050cade59",
+    "paper/figures/feedback-comparison-v1-a1-r2/search-paths.png": "89efd0d430e813c4f1a147b89be0d2bce44e88ac3dca55c5cc856274c0e9f7de",
+    "paper/figures/native-controls-v2-a1-print/strong-controls.png": "7190caa6ccce926a4212cedb98ac694b21038863428ea68644c18fc29160aa57",
+    "paper/figures/program-concept/science-system-design-program.pdf": "b15140a8121330b4b8fc94cff96e89dac140c94b2415fc6ff0de7f232dd1108a",
+    "paper/generated/feedback-comparison-v1/results.tex": "7d166c3bf94aadf33c76f67608f898c5ab04a0ac435252e76cfe8121111aeadd",
+    "paper/neurips_2025.sty": "67a960f35da6fecb5a0ce0202fa400459f4c8bb6c294f1a3fdd82fbbd39244c2",
+    "paper/references.bib": "4b884c79437525071fc9625e9ae1f64e65973eb042192ce1732b9db8a6871b6a",
+    "paper/submission-build-v2.json": "a57614921393599c93c1de7e9bd25b0b44372baf0237527f5ce78b1eb1b326bf",
+    "paper/submission-results.tex": "5763fc62940bdd9a4c8994c9db314bd842339004c87642fd30134130e2084ee6",
+    "paper/submission-sources.bib": "c3b9efffad398b91126b0f321baa7d4442644cc0bb4e7c313f8a54a724234920",
+    "paper/submission.tex": "3edb1397424e548e98492c76a3a6ce3034cb333fd36ff52f2f3135ac9cd492ea"
+  },
+  "generated_instructions_sha256": "9d331fe7a57312acb2117cfd1847ef9f06363129d81454d1d73c0f752dbb9166",
+  "limited_text_scan_findings": [],
+  "literal_tex_dependencies": [
+    "paper/figures/feedback-comparison-v1-a1-r2/search-paths.png",
+    "paper/figures/native-controls-v2-a1-print/strong-controls.png",
+    "paper/figures/program-concept/science-system-design-program.pdf",
+    "paper/generated/feedback-comparison-v1/results.tex",
+    "paper/neurips_2025.sty",
+    "paper/references.bib",
+    "paper/submission-results.tex",
+    "paper/submission-sources.bib",
+    "paper/submission.tex"
+  ],
+  "new_model_calls": 0,
+  "numerical_reproduction_or_clean_machine_build_claimed": false,
+  "original_bytes_transformed": false,
+  "published_or_uploaded": false,
+  "raw_or_model_data_included": false,
+  "scan_is_not_secret_or_anonymity_clearance": true,
+  "schema": "scienceutopia.paper-rebuild-bundle.v1",
+  "scope": "PDF-source rebuild only; not numerical analysis, original-source audit or fresh inference reproduction",
+  "source_commit": "8027f568cc16b0aed7428eab593f716b19530b20",
+  "status": "local-working-draft-not-anonymous-not-release-cleared"
+}

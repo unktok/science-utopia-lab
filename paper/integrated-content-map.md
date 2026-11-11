@@ -33,6 +33,17 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- November12 finite-estimand revision: problem-method.tex defines eligible and
+  complete candidate sets, all observed minima, predeclared selection ties and
+  paired reference-relative loss within each objective. Evaluation seeds are
+  not independent optimizer histories; technical nulls do not receive invented
+  losses. No new empirical counts or live-study results enter this revision.
+  The25-record bibliographic identity audit checks primary metadata, not every
+  literature claim. The56-page build is bound to7f8a39b, with all prior tracks,
+  26 figures/21 tables and two identical extracted texts. Historical short-draft
+  dependency tests now read checksum-matched Git blobs instead of the changing
+  shared bibliography; exact12/13/13-file staging does not attest original
+  build commits or numerically reproduce the science.
 - Closed93076b4 code-tested loop: all four proposals, seven native worlds and
   actual32 probes. Include observed failures and untested final edits, not an
   improvement or repair-success claim. Retained native-code-tested-loop-v1 data.

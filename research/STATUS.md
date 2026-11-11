@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+**November12 08:18JST / November11 23:18UTC:** seven of eight proposal slots
+are closed. T/g0--g2 complete at−7; U/g0 is null and U/g1--g3 complete at−4.
+The final T/g3 enters native execution after fresh readiness; the original
+writer/session92866 remains live at the23:22UTC observation. Completed own
+losses still tie their connected strong reference. Final cold audits, frozen
+selection and unused evaluation remain pending; no improvement is claimed.
+
+The [new56-page integrated PDF](../output/pdf/science-utopia-lab-integrated-estimands-working-paper.pdf)
+adds explicit finite-search estimands, complete tie sets, failed-slot coverage
+and the distinction between fixed-policy evaluation and independent search
+histories. All25 cited records receive a primary-source identity check, not a
+full claim-by-claim literature audit. Two cached builds and extracted text/logs
+agree; all56 layouts are reviewed with zero off-page words or unresolved
+references. [Exact build/source binding](../paper/integrated-estimands-build-v1.json).
+The55-page and earlier PDFs remain unchanged. Three historical short-draft
+subsets also stage successfully from hash-matched Git inputs (12/13/13 files),
+without rewriting receipts or claiming attestation of the original build commit.
+These are manuscript/reconstruction advances, not completion of R2 or new science.
+
 **November12 07:51JST / November11 22:51UTC:** five of eight proposal slots
 are closed: all three T/g0--g2 complete at−7, U/g0 is null, and U/g1 completes
 at−4. U/g2 has reached actual native execution; the original writer/session92866

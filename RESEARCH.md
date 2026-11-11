@@ -76,10 +76,12 @@
 研究全体の原稿は、ページ数で先に削らない[統合稿](paper/integrated.tex)へ
 まとめ直した。目的関数、抽象化、構造変更、条件付き勾配、過去の実作用、最新比較、
 ゲームUIを含め、過去と現在のsource・設計者・評価条件を分離して記述する。
-元の37・41・44・47・49・52・54ページ稿は保持している。
-現在の[55ページ統合稿](output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf)は、
+元の37・41・44・47・49・52・54・55ページ稿は保持している。
+現在の[56ページ統合稿](output/pdf/science-utopia-lab-integrated-estimands-working-paper.pdf)は、
 元の全トラックに、閉鎖したコード実行実験、内容採点、資源対照、採択集合の入れ替わりを
-説明する実図を加えた。進行中のT/U探索は完了した主結果へ合算しない。
+説明する実図を加えた。有限探索で何を推定するか、同点集合・失敗枠・固定制度の評価と
+探索履歴の独立反復の違いも明記した。全25引用の書誌同定と二回build・全頁layoutを確認したが、
+進行中のT/U探索は完了した主結果へ合算しない。
 [以前の有限パッケージの終了条件](research/pre-scale-completion.md)に沿った別sourceの目的別探索は、
 16枠・選択後27物理評価・二回全監査まで閉じた。[実結果と全データ](research/results/pre-scale-search-v1.md)
 は数値feedback更新、強い参照との小さい差、5実行失敗、配線変更なしを含む。
