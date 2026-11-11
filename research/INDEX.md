@@ -7,7 +7,8 @@ Historical documents retain their paths and source identities.
 ## Active orientation
 
 - [Current objective search and result boundaries](STATUS.md): corrected61a1753
-  completes five references and enters first throughput authoring at21:19UTC.
+  completes five references and its first throughput candidate at21:33UTC:
+  T=−7/U=−4, tied with connected accept-all; content-utility:g0 readiness follows.
   Additional source/consumer/resource continuations are waiting, not completed
   results. [Historical reference preference sets](data/native-objective-initial-stop-v1/README.md)
   retain all ties without reselecting policies or modifying current losses.

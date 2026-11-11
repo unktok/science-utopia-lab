@@ -2,6 +2,15 @@
 
 ## Active publication-ready goal
 
+**November12 06:35JST / November11 21:35UTC:** the corrected study's first
+throughput candidate completes its native world and returns T=−7, U=−4,
+7 accepted decisions,21 reviews,5 final active founders and350 final resources.
+These are live writer observations, not yet the final independent cold audit.
+The first candidate ties the connected accept-all reference; no improvement
+is claimed. The writer has advanced to fresh content-utility:g0 readiness,
+with seven of eight proposal slots still ahead. Normal study closure and
+fixed-policy unused evaluation remain pending; goal remains active.
+
 **November12 06:32JST / November11 21:32UTC:** the first corrected-study
 throughput definition is submitted, passes the actual outer cold replay and
 enters original native researcher execution. Its first candidate loss is still

@@ -370,3 +370,16 @@ The frozen scientific writer, objectives and proposal schedule are unchanged.
 Main is pushed through8398967 and remote hash equality is confirmed. The first
 ordinary push is blocked by sandbox DNS; the authorized network-enabled push
 succeeds. This is a repository synchronization event, not a scientific retry.
+
+## 21:35UTC first native candidate loss and continued authoring
+
+The live controller retains one completed throughput record, no pending T
+record and no generation error. Request66ad2b18, suggestion
+native-adaptive-f7dcc0a70afbd5ef30daa21f, system3e3714d0: T=−7 with7 acceptances,
+U=−4 from fixed-content utility4,21 reviews,5 final active founders and350
+resources. It ties the connected accept-all reference, not a scientific
+improvement. The writer moves to content-utility:g0 readiness at21:33:22UTC.
+These are dated writer records before the normal final independent audits;
+the eight-slot study, selected policy and unused evaluation remain unfinished.
+No active source or objective changes. Main/remote synchronization through
+c7a1802 is confirmed by ls-remote; the current scientific source remains61a1753.

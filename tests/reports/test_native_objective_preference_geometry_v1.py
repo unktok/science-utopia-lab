@@ -38,3 +38,23 @@ def test_all_unavailable_does_not_acquire_a_best_policy_or_zero_loss():
     [row('bad',float('nan'),1.)],[row('bad',1.,1.,seed=True)]])
 def test_invalid_loss_or_duplicate_physical_identity_is_not_silently_deduplicated(rows):
     with pytest.raises(ValueError):geometry(rows,['T','U'])
+
+
+def test_retained_stopped_reference_export_preserves_original_hashes_and_scope():
+    import json
+    from pathlib import Path
+    from utopia.optimization.native_numeric_designer import checked
+    from utopia.utils.data_utils import file_sha256
+    root=Path(__file__).resolve().parents[2]/'research/data/native-objective-initial-stop-v1'
+    report=checked(json.loads((root/'preference-report.json').read_text()))
+    manifest=checked(json.loads((root/'preference-manifest.json').read_text()))
+    assert file_sha256(root/'preference-report.json')==manifest['report_file_sha256']=='5389bb7782e3acc575c4e62c86b9e825e91edadffd1bbb5e4bbb0749b4e846f7'
+    assert report['content_sha256']==manifest['report_content_sha256']=='120f178c6b35384d95f09e08f36f7f674d259bea64f3f3c0baf35af8306ef999'
+    assert report['scope']=='stopped-development-reference-diagnostic'
+    assert not report['frozen_selection_changed'] and not report['publication_ready']
+    assert report['new_model_calls']==report['new_code_executions']==0
+    group,=report['geometry']['by_world_seed'];pair,=group['objective_pairs']
+    assert group['seed']==61001 and group['common_completed_rows']==5
+    assert len(group['observed_minima']['throughput']['all_tied_physical_ids'])==3
+    assert len(group['observed_minima']['content-utility']['all_tied_physical_ids'])==4
+    assert pair['pair_counts']['strict-conflict']==0 and pair['pair_counts']['tie-only-second']==3
