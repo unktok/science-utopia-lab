@@ -1,7 +1,7 @@
 {
   "schema": "scienceutopia.native-resource-support-verification.v1",
   "reader_source_commit": "1e9028518d3aa1efff9a87921bb2def6b555f4d5",
-  "packer_source_commit": "b687405",
+  "packer_source_commit": "b68740590b5bda98acdc9965ee4c8f5f39fbda6f",
   "scientific_source_commit": "62388a74d071a3a4fdc8cc309c2807422f96223f",
   "historical_full_audit_content_sha256": "85d4698ff09dd6cfbfe8b83790f8ae28dbf27072de9853184adc1db4334b92d1",
   "historical_full_audit_file_sha256": "d0a8a8a46f1598cbb4915f88ed3b5cf43ab74dd82869aa83d0d3f67fe79dc777",

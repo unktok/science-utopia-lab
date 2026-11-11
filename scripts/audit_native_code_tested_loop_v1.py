@@ -41,6 +41,10 @@ def worker(root,output):
             raise ValueError('normal code-tested loop closure required')
         prior=read(root/'preceding-closed.json')['terminal']
         if prior['status']!='closed':raise ValueError('preceding science/audit did not close')
+        previous=Path(p['preceding_analysis']['directory'])
+        if not (previous/'ended.json').is_file():raise ValueError('preceding closure no longer retained')
+        from scripts.finish_native_fixed_evaluation_report_v1 import wait_analysis
+        if wait_analysis(previous)!=prior:raise ValueError('preceding independent closure differs')
         source=source_proofs(driver.ROOT,p['source_commit'],scripts=[
             'scripts/run_native_code_tested_loop_v1.py','scripts/native_benchmark_physical.py',
             'scripts/run_native_institution_loop_v1.py','scripts/run_pre_scale_search_v1.py'],
@@ -113,6 +117,8 @@ def worker(root,output):
             if (cert['plan']['request']!=request_at(c,g) or cert['plan']['backend']!=p['backend']
                     or cert['plan']['runtime']!=p['runtime'] or proof['post_edit_component_contract']!=p['post_edit_contract']):
                 raise ValueError('fresh readiness differs from source/request/mode')
+            if cert['plan']['created_epoch']<epoch(prior['ended_utc']):
+                raise ValueError('new readiness precedes the independent prior closure')
             readiness.append({'arm':arm,'generation':g,'certificate':cert,'cold_proof':proof})
             generation=directory/'authoring'/('generation-'+record['request_sha256']);expected_authors.add(generation.resolve())
             definition=replay(generation);intent=read(generation/'intent.json')

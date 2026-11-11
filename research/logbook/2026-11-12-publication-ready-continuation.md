@@ -32,3 +32,13 @@ source同一性・vector順・aggregate整合性・0資源やinactiveの非補�
 これはR2の問いを選ぶための観測範囲の点検で、lossや公平性制約を追加したものではない。
 PDFスキルを読んで既存47頁稿のabstractと設計診断節をread-onlyで確認。
 現在の実験を完了結果と書かず、原稿の更新・新PDF作成は閉鎖後の根拠と対応させる。
+
+保持した全数値vectorをGit内の旧reportへ再joinする回帰も追加し、17/17pass（0.80秒）。
+全44worldのyear4総資源／active countと、四年分のcount／極値を復元できた。
+raw checkoutやmodel重みを持たない共同研究者も、保持された数値の整合性を検査できる。
+
+新七worldの終了後にも、writer不在→原source cold audit二回→cost二回を行う有限chainを追加。
+前段a123affの実閉鎖／audit／costの保持bytesと、新校正の開始時刻の順もcoldで確認する。
+これはanalysis側overlayで、待機中93076b4の科学source・条件を変更していない。
+chain停止／PID再利用／失敗stageの非retryを含む20scripted checkが4.43秒でpass。
+November11 15:17UTCの科学progressは26/30完了、evaluation-026実行中。
