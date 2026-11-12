@@ -145,6 +145,7 @@ def _object(properties):
 
 
 def default_actions():
+    from .native_catalog_planning import ACTION as CATALOG_PROJECT, apply_catalog_project
     registry = NativeActionRegistry()
     string, obj, refs = {'type': 'string'}, {'type': 'object'}, {'type': 'array', 'items': {'type': 'string'}}
     revision = {'type': 'integer', 'minimum': 0}
@@ -158,6 +159,7 @@ def default_actions():
         'state.put': (_object({'key': string, 'value': {}, 'expected_revision': {'type': ['integer', 'null'], 'minimum': 0}}), _put_state),
         'native.context': (_object({'actor_ids': refs, 'content': obj, 'artifact_ids': refs}), _native_context),
         'native.project': (_object({'assignment': obj}), _native_project),
+        CATALOG_PROJECT: (_object({'assignment': obj}), apply_catalog_project),
         'native.transfer': (_object({'from_actor': string, 'to_actor': string, 'amount': {'type': 'number'}}), _native_transfer),
     }
     for name, (schema, handler) in actions.items():

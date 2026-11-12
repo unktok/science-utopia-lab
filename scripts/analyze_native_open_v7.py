@@ -218,7 +218,7 @@ def domain_proofs(saved, kernel, code_rows=None):
                     raise ValueError('domain context command did not persist in the actual researcher state')
                 context_proofs.append({'command_key': receipt['command_key'], 'actor_id': actor,
                     'received_year': receipt['received_year'], 'message_sha256': digest(exact[0])})
-        elif command['action'] == 'native.project':
+        elif command['action'] in ('native.project', 'native.catalog-project.v1'):
             assignment = command['payload']['assignment']
             effects = [e for e in native['events'] if e['event_type'] == 'native.domain.project_applied'
                 and e['year'] == receipt['received_year'] and e['payload'].get('command_key') == receipt['command_key']]
@@ -227,8 +227,26 @@ def domain_proofs(saved, kernel, code_rows=None):
             if (len(effects) != 1 or assignment['actor_id'] not in native_ids
                     or effects[0]['payload']['assignment'] != assignment):
                 raise ValueError('domain project lacks its actual native effect event')
-            projects.append({'command_key': receipt['command_key'], 'actor_id': assignment['actor_id'],
-                'year': receipt['received_year'], 'assignment_sha256': digest(assignment), 'event_id': effects[0]['event_id']})
+            project = {'command_key': receipt['command_key'], 'actor_id': assignment['actor_id'],
+                'year': receipt['received_year'], 'assignment_sha256': digest(assignment), 'event_id': effects[0]['event_id']}
+            if command['action'] == 'native.catalog-project.v1':
+                from utopia.system.native_catalog_planning import EVENT, catalog_contract, validate_catalog_assignment
+                validations = [e for e in native['events'] if e['event_type'] == EVENT
+                    and e['year'] == receipt['received_year']
+                    and e['payload'].get('command_key') == receipt['command_key']]
+                if len(validations) != 1:
+                    raise ValueError('catalog project lacks unique original native validation event')
+                payload = validations[0]['payload']; catalog = catalog_contract()
+                actor = payload['eligible_actor_before']
+                if (payload['assignment'] != assignment or actor['id'] != assignment['actor_id']
+                        or actor['expertise'] != agents[actor['id']]['expertise']
+                        or payload['catalog_sha256'] != catalog['directions_sha256']
+                        or payload['shortest_or_merit_rule_enforced'] is not False):
+                    raise ValueError('original catalog validation and immutable native expertise differ')
+                validate_catalog_assignment(assignment, actor, year=receipt['received_year'], catalog=catalog)
+                project['catalog_validation'] = {'event_id': validations[0]['event_id'],
+                    'catalog_sha256': payload['catalog_sha256'], 'eligible_actor_before_sha256': digest(actor)}
+            projects.append(project)
     processes = [e for e in native['events'] if e['event_type'] in {'native.process.completed', 'native.process.skipped'}]
     for event in processes:
         node = next(n for n in kernel.spec.mechanisms if n.mechanism_id == event['provenance']['mechanism_id'])

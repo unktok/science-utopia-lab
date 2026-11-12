@@ -211,6 +211,7 @@ def _information():
 
 
 def _domain():
+    from .native_catalog_planning import apply_catalog_project, validate_catalog_assignment
     from .native_open_domain import (IMPLEMENTATION, STATE_ARTIFACT, COMMAND_SCHEMA,
         default_actions, register_native_domain, apply_domain_commands)
     actions = default_actions()
@@ -230,11 +231,14 @@ def _domain():
         'semantic_constraints': ['explicit source principal/role/action grants and actual lineage required',
             'actor/artifact identities/types/revisions/references checked against actual persistent world state',
             'native project/context/transfer actions retain their own original-world semantic constraints',
+            'native.catalog-project.v1 requires a legacy active idle author, an actual displayed expertise topic '
+            'and its exact original catalog content/duration; filtered exploration candidates are unsupported in v1',
             'schemas describe data; generated code never becomes a trusted host handler'],
         'cost': {'scientist_model_calls': 0, 'resources': 'only explicitly granted conserving native transfer effect'},
         'privilege': {'granted': ['only the explicitly declared action capability grants'],
             'not_granted': ['register arbitrary host Python', 'silently invent new native privilege', 'bypass schema/identity checks']},
-        'validators': [_source(register_native_domain), _source(apply_domain_commands)],
+        'validators': [_source(register_native_domain), _source(apply_domain_commands),
+            _source(apply_catalog_project), _source(validate_catalog_assignment)],
         'schema_scope': 'actual registered action payload schemas; command envelope and semantic checks remain explicit'}
 
 

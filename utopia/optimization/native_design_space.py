@@ -78,8 +78,8 @@ def validate_design_space(anchor,contract):
             or contract['code_paths']!=source_paths(anchor.to_dict())):
         raise ValueError('exact benchmark design-space/anchor contract required')
     if 'world_law_scope' in contract:
-        from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,require_fixed_production
-        if contract['world_law_scope'] not in (SCOPE, ROUTING_SCOPE):
+        from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
+        if contract['world_law_scope'] not in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
             raise ValueError('unknown explicit world-law scope')
         require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
     index={n.mechanism_id:i for i,n in enumerate(anchor.mechanisms)};seen=set()
