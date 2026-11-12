@@ -21,8 +21,18 @@ def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
         tmp_path, fixed_corpus, monkeypatch, papers):
     install_transport(monkeypatch); calls = []
     class Provider(FakeHTTPModel):
+        def batch_completions(self, executor, requests, *, seed_ctx, attempt):
+            # Actual Ollama requests retain top-level seed throughout the
+            # production cache/audit. Only this scripted provider's context
+            # lookup adapts the older vLLM-only fixture convention.
+            for idx, payload in requests:
+                self.contexts[payload['seed']] = (seed_ctx, idx, attempt)
+            return super(FakeHTTPModel, self).batch_completions(
+                executor, requests, seed_ctx=seed_ctx, attempt=attempt)
+
         def reply(self, **payload):
-            result = super().reply(**payload)
+            fixture_payload = dict(payload, extra_body={'seed': payload['seed']})
+            result = super().reply(**fixture_payload)
             if self.context[0][0] == 'phase2_submissions' and papers == 2:
                 # The scripted provider emits a legal partial list, not host
                 # repair of an actual model reply or forced use of the cap.
