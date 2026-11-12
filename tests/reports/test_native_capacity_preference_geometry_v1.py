@@ -1,5 +1,7 @@
 """SCRIPTED score geometry, never extra native-world or optimization evidence."""
 import json
+import hashlib
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -125,3 +127,17 @@ def test_one_shot_finish_uses_existing_strict_capacity_closure_contract(monkeypa
         'preceding_schema':'scienceutopia.native-capacity-objective-loop-finish.v1',
         'continuation_schema':'scienceutopia.native-capacity-preference-geometry-finish.v1',
         'report_module':'scripts.reports.native_capacity_preference_geometry_v1'})]
+
+
+def test_retained_launch_is_actual_wait_not_a_completed_scientific_geometry():
+    root=Path(__file__).resolve().parents[2]
+    r=module.checked(json.loads((root/'research/results/native-capacity-geometry-launch-verification-v1.json').read_text()))
+    start=module.checked(r['started'])
+    assert start['analysis_source_commit']==r['reader_source_commit']=='3fff226536a24d1313725f11594899cffeee088b'
+    assert start['scientific_source_commit']==r['scientific_source_commit']=='16cfdcef2151e01365c1fc2bea3f5cc928954220'
+    assert hashlib.sha256((json.dumps(start,sort_keys=True,allow_nan=False)+'\n').encode()).hexdigest()==r['started_file_sha256']
+    assert start['maximum_wait_seconds']==86400 and not start['new_inference_allowed']
+    assert not start['retry_failed_stages']
+    assert r['final_tests']['final_exit_code_observed']==0 and r['final_tests']['passed']==45
+    assert not r['actual_geometry_created'] and not r['interior_objective_optimization']
+    assert not r['candidate_reselection'] and not r['new_native_worlds'] and not r['publication_ready']
