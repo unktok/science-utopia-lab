@@ -16,10 +16,20 @@ from utopia.utils.data_utils import file_sha256
 SCHEMA='scienceutopia.native-objective-instrument-report.v1'
 
 
-def summarize(plan,audit,records,traces):
+def summarize(plan,audit,records,traces,*,study='count-content-v1'):
     checked(plan);checked(audit)
-    if (plan['schema']!='scienceutopia.native-objective-instrument-loop.v1.plan'
-            or audit['schema']!='scienceutopia.native-objective-instrument-loop-audit.v1'
+    if study=='count-content-v1':
+        plan_schema='scienceutopia.native-objective-instrument-loop.v1.plan'
+        audit_schema='scienceutopia.native-objective-instrument-loop-audit.v1'
+        contract_key='observer_contract';count=8;schema=SCHEMA
+    elif study=='capacity-v1':
+        plan_schema='scienceutopia.native-capacity-objective-loop.v1.plan'
+        audit_schema='scienceutopia.native-capacity-objective-loop-audit.v1'
+        contract_key='measurement_contract';count=4;schema='scienceutopia.native-capacity-objective-report.v1'
+        if plan['objectives']!=['throughput','founder-activity'] or plan['generations']!=2:
+            raise ValueError('exact prospective two-objective/four-slot capacity scope required')
+    else:raise ValueError('explicit supported development study required')
+    if (plan['schema']!=plan_schema or audit['schema']!=audit_schema
             or audit['source_commit']!=plan['source_commit'] or audit['plan_sha256']!=plan['content_sha256']
             or audit['closure']['terminal']['status']!='closed' or audit['held_out_evaluation']
             or audit['source_proof']['status']!='verified-exact-source-closure'
@@ -27,9 +37,9 @@ def summarize(plan,audit,records,traces):
     keys={(s['objective'],s['generation']) for s in plan['schedule']}
     authors={(a['objective'],a['generation']):a for a in audit['authoring']}
     worlds={w['identity']:w for w in audit['worlds']}
-    if (len(keys)!=8 or len(keys)!=len(plan['schedule']) or set(records)!=keys or set(traces)!=keys
+    if (len(keys)!=count or len(keys)!=len(plan['schedule']) or set(records)!=keys or set(traces)!=keys
             or set(authors)!=keys or len(authors)!=len(audit['authoring']) or len(worlds)!=len(audit['worlds'])):
-        raise ValueError('exact eight slots and unique author/world identities required')
+        raise ValueError('exact scheduled slots and unique author/world identities required')
     observations={p['suggestion']['suggestion_id']:p['observation'] for p in audit['developer_references']['pairs']}
     for r in records.values():
         for o in r['observations']:
@@ -45,7 +55,7 @@ def summarize(plan,audit,records,traces):
             if len(measurements)!=1 or base is None:raise ValueError('unique physically completed world required')
             m=measurements[0]
             if (m['system_fingerprint']!=SystemSpec.from_dict(w['system']).fingerprint
-                    or m.get('measurement_adapter_contract_sha256')!=digest(plan['observer_contract'])
+                    or m.get('measurement_adapter_contract_sha256')!=digest(plan[contract_key])
                     or any(m.get(k)!=v for k,v in base.items() if k!='metrics')
                     or any(m['metrics'].get(k)!=v for k,v in base['metrics'].items())):
                 raise ValueError('original base or additional measurement binding differs')
@@ -103,7 +113,7 @@ def summarize(plan,audit,records,traces):
         if expected!=audit['selection']['selected'][objective]:raise ValueError('frozen own-submission selection differs')
         selections[objective]={k:clone(v) for k,v in expected.items() if k!='system'}
         selections[objective]['loss_minus_each_reference']={r['label']:None if best is None else best-r['scores'][objective] for r in references}
-    result={'schema':SCHEMA,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
+    result={'schema':schema,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
         'audit_sha256':audit['content_sha256'],'score_order':clone(plan['objectives']),'references':references,
         'slots':slots,'physical_worlds':physical,'frozen_selection':selections,
         'interpretation':{'development_seed_reused':True,'identical_first_editing_parent_control':False,
@@ -115,14 +125,15 @@ def summarize(plan,audit,records,traces):
 def cross_score_groups(report):
     """Group exact coordinates for display without jittering or dropping ties."""
     rows=[{'label':'R'+str(i+1),'scores':r['scores']} for i,r in enumerate(report['references'])]
-    rows.extend({'label':('T' if r['objective']=='throughput' else 'U')+str(r['generation']),
+    second=report['score_order'][1];letter='P' if second=='founder-activity' else 'U'
+    rows.extend({'label':('T' if r['objective']=='throughput' else letter)+str(r['generation']),
         'scores':r['cross_scores']} for r in report['slots'])
     by={};unavailable=[]
     for r in rows:
-        coordinate=tuple(r['scores'][o] for o in ('throughput','content-utility'))
+        coordinate=tuple(r['scores'][o] for o in report['score_order'])
         if any(v is None for v in coordinate):unavailable.append(r['label'])
         else:by.setdefault(coordinate,[]).append(r['label'])
-    return ([{'group':'G'+str(i+1),'T':point[0],'U':point[1],'labels':labels}
+    return ([{'group':'G'+str(i+1),'T':point[0],letter:point[1],'labels':labels}
         for i,(point,labels) in enumerate(sorted(by.items()))],unavailable)
 
 
@@ -132,7 +143,8 @@ def render(report,output):
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     colors=['#596b84','#b47835','#9c5d8a','#a9444a','#75914a']
-    with plt.rc_context({'font.size':8,'axes.spines.top':False,'axes.spines.right':False,'svg.hashsalt':SCHEMA}):
+    letter='P' if report['score_order'][1]=='founder-activity' else 'U'
+    with plt.rc_context({'font.size':8,'axes.spines.top':False,'axes.spines.right':False,'svg.hashsalt':report['schema']}):
         fig,axes=plt.subplots(1,2,figsize=(9,3.7))
         for ax,objective in zip(axes,report['score_order']):
             for reference,color in zip(report['references'],colors):
@@ -145,30 +157,34 @@ def render(report,output):
                     best=r['loss'] if best is None else min(best,r['loss'])
                 path.append(math.nan if best is None else best)
             ax.plot([r['generation'] for r in rows],path,color='#087f8c',label='Best submitted loss')
-            ax.set(title=objective,xlabel='Proposal generation',ylabel='Assigned loss (lower is better)',xticks=[0,1,2,3],xlim=(-.3,3.3))
+            generations=[r['generation'] for r in rows]
+            ax.set(title=objective,xlabel='Proposal generation',ylabel='Assigned loss (lower is better)',
+                xticks=generations,xlim=(-.3,max(generations)+.3))
             ax.grid(axis='y',color='#ededed');ax.legend(fontsize=5.8,loc='best')
-        fig.suptitle('Objective-conditioned native development: all eight slots, reused seed61001',fontsize=10)
+        count='eight' if len(report['slots'])==8 else str(len(report['slots']))
+        fig.suptitle('Objective-conditioned native development: all '+count+' slots, reused seed61001',fontsize=10)
         fig.tight_layout(rect=(0,0,1,.94))
         for ext in ('png','svg'):fig.savefig(output/('objective-loss-paths.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)
         fig,(ax,key)=plt.subplots(1,2,figsize=(10,4.7),gridspec_kw={'width_ratios':[1,.95]})
         groups,unavailable=cross_score_groups(report)
         for group in groups:
-            ax.scatter(group['T'],group['U'],marker='o',s=45,color='#087f8c',zorder=3)
-            ax.annotate(group['group'],(group['T'],group['U']),xytext=(5,5),textcoords='offset points',fontsize=8)
-        ax.set(xlabel='Count loss T (lower is better)',ylabel='Content utility loss U (lower is better)',
+            ax.scatter(group['T'],group[letter],marker='o',s=45,color='#087f8c',zorder=3)
+            ax.annotate(group['group'],(group['T'],group[letter]),xytext=(5,5),textcoords='offset points',fontsize=8)
+        ylabel='Founder-activity loss P (lower is better)' if letter=='P' else 'Content utility loss U (lower is better)'
+        ax.set(xlabel='Count loss T (lower is better)',ylabel=ylabel,
             title='Exact coordinates; all tied labels retained')
         from matplotlib.ticker import MaxNLocator
         ax.xaxis.set_major_locator(MaxNLocator(integer=True))
         if len({g['T'] for g in groups})==1:ax.set_xlim(groups[0]['T']-.5,groups[0]['T']+.5)
-        if len({g['U'] for g in groups})==1:ax.set_ylim(groups[0]['U']-.5,groups[0]['U']+.5)
+        if len({g[letter] for g in groups})==1:ax.set_ylim(groups[0][letter]-.5,groups[0][letter]+.5)
         ax.grid(color='#ededed');key.axis('off')
         import textwrap
-        cells=[[g['group'],f"{g['T']:g}",f"{g['U']:g}",textwrap.fill(', '.join(g['labels']),30)] for g in groups]
+        cells=[[g['group'],f"{g['T']:g}",f"{g[letter]:g}",textwrap.fill(', '.join(g['labels']),30)] for g in groups]
         if cells:
             heights=[.065]+[.065+.032*(len(c[3].splitlines())-1) for c in cells]
             height=min(.70,sum(heights))
-            table=key.table(cellText=cells,colLabels=['Point','T','U','World labels'],
+            table=key.table(cellText=cells,colLabels=['Point','T',letter,'World labels'],
                 colWidths=[.13,.15,.15,.57],bbox=(0,1-height,1,height),cellLoc='left')
             table.auto_set_font_size(False);table.set_fontsize(7)
             for (i,j),cell in table.get_celld().items():
@@ -176,7 +192,7 @@ def render(report,output):
                 cell.set_height(heights[i])
                 if i==0:cell.set_facecolor('#edf2f5')
         reference_key='\n'.join(textwrap.fill('R'+str(i+1)+' = '+r['label'],70) for i,r in enumerate(report['references']))
-        footer=reference_key+'\nT/U labels = own-objective proposal generation; no coordinate jitter.'
+        footer=reference_key+'\nT/'+letter+' labels = own-objective proposal generation; no coordinate jitter.'
         if unavailable:footer+='\nUnavailable cross-score: '+', '.join(unavailable)
         fig.text(.53,.04,footer,ha='left',va='bottom',fontsize=6.5,linespacing=1.35)
         fig.suptitle('Both fixed criteria on the same completed native worlds',fontsize=10)
@@ -185,7 +201,7 @@ def render(report,output):
         plt.close(fig)
 
 
-def export(args):
+def export(args,*,study='count-content-v1'):
     root=Path(args.run).resolve();output=Path(args.output).resolve();paths=[Path(args.audit_one),Path(args.audit_two),root/'plan.json']
     if output.exists() or output.is_relative_to(root):raise ValueError('fresh report outside scientific raw required')
     if paths[0].read_bytes()!=paths[1].read_bytes():raise ValueError('two original-source audits differ')
@@ -211,7 +227,7 @@ def export(args):
             if a['component_testing'] is not None or a['generation_error'] is None:raise ValueError('missing terminal without retained generation failure')
             traces[key]={'component_testing':None,'terminal_response_missing':True,
                 'events':[],'completed_steps':None,'drawn_candidate_artifact_observations':None}
-    report=summarize(plan,audit,records,traces)
+    report=summarize(plan,audit,records,traces,study=study)
     if before!=_inventory(root) or input_hashes!={str(p):file_sha256(p) for p in paths}:raise ValueError('raw report inputs changed')
     output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'});render(report,output)
     fields=['slot_index','objective','generation','status','loss','physical_job','parent_differs_from_design_anchor',
@@ -221,7 +237,7 @@ def export(args):
         for r in report['slots']:
             component=r['component_trace']['component_testing']
             w.writerow({**{k:r[k] for k in fields if k in r},**{k:None if component is None else component[k] for k in fields[-3:]}})
-    save(output/'manifest.json',{'schema':SCHEMA+'.export','inputs':input_hashes,'raw_inventory_sha256':digest(before),
+    save(output/'manifest.json',{'schema':report['schema']+'.export','inputs':input_hashes,'raw_inventory_sha256':digest(before),
         'report_content_sha256':report['content_sha256'],'files':{p.name:file_sha256(p) for p in sorted(output.iterdir())},
         'new_model_calls':0,'new_code_executions':0})
     print(json.dumps({'slots':len(report['slots']),'physical_worlds':len(report['physical_worlds']),
