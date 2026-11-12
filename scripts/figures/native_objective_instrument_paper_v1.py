@@ -34,7 +34,9 @@ def render(report,out):
                          'svg.hashsalt':'native-objective-instrument-paper-v1'}):
         fig,axes=plt.subplots(1,2,figsize=(6.6,2.8))
         for ax,objective,title in zip(axes,('throughput','content-utility'),('Count objective T','Content objective U')):
-            for (loss,labels),color in zip(reference_groups(report,objective),('#746c93','#b77b35','#778a6a')):
+            colors={'R1':'#746c93','R2':'#596b84','R3':'#687b86','R4':'#778a6a','R5':'#b77b35'}
+            for loss,labels in reference_groups(report,objective):
+                color=colors[labels[0]]
                 ax.axhline(loss,color=color,lw=1.1,ls='--',label=', '.join(labels),zorder=1)
             rows=sorted((r for r in report['slots'] if r['objective']==objective),key=lambda r:r['generation'])
             best=None;path=[]
@@ -49,7 +51,7 @@ def render(report,out):
             ax.plot([r['generation'] for r in rows],path,color='#087f8c',lw=1.5,label='Best submitted',zorder=3)
             ax.set(title=title,xlabel='Proposal generation',ylabel='Assigned loss (lower is better)',
                    xticks=[0,1,2,3],xlim=(-.3,3.3))
-            ax.margins(y=.16);ax.grid(axis='y',color='#eceff1',lw=.7)
+            ax.margins(y=.16);ax.set_axisbelow(True);ax.grid(axis='y',color='#eceff1',lw=.7)
             ax.legend(fontsize=8,loc='center right',framealpha=.95,handlelength=1.8)
         fig.tight_layout(pad=.5,w_pad=1.1)
         for ext in ('png','svg'):
