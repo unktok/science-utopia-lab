@@ -6,6 +6,8 @@ from scripts.finish_native_code_tested_report_v1 import run as finish
 
 
 SCOPES={
+    'capacity-objective-development':('scienceutopia.native-capacity-objective-loop.v1.plan',
+        'scienceutopia.native-capacity-objective-loop-finish.v1'),
     'objective-development':('scienceutopia.native-objective-instrument-loop.v1.plan',
         'scienceutopia.native-objective-instrument-loop-finish.v1'),
     'fixed-evaluation':('scienceutopia.native-objective-fixed-evaluation.v1.plan',

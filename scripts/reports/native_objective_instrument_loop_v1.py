@@ -197,6 +197,7 @@ def render(report,output):
         fig.text(.53,.04,footer,ha='left',va='bottom',fontsize=6.5,linespacing=1.35)
         fig.suptitle('Both fixed criteria on the same completed native worlds',fontsize=10)
         fig.tight_layout(rect=(0,.04,1,.94))
+        if letter=='P':fig.subplots_adjust(wspace=.35)  # keep rightmost tick clear of the literal key
         for ext in ('png','svg'):fig.savefig(output/('objective-cross-scores.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)
 
