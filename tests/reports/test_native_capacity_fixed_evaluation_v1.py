@@ -80,7 +80,9 @@ def test_changed_selection_instrument_and_unused_seed_fail_closed(tmp_path,monke
 def setup(tmp_path,monkeypatch):
     _,_,p=evidence(tmp_path/'inputs',monkeypatch)
     root=tmp_path/'evaluation';root.mkdir();origin=tmp_path/'origin';origin.mkdir();(origin/'writer.lock').touch()
-    p['origin']={'run':str(origin)};u=usage(p['evaluation']['seeds']);p['evaluation']['seed_usage']=[u['content_sha256']];seal(p)
+    inventory=tmp_path/'journal-root';inventory.mkdir()
+    p['origin']={'run':str(origin)};u=usage(p['evaluation']['seeds']);u['root']=str(inventory);seal(u)
+    p['evaluation']['seed_usage']=[u['content_sha256']];seal(p)
     module.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
     module.save(root/'seed-usage-00.json',{k:v for k,v in u.items() if k!='content_sha256'})
     monkeypatch.setattr(module,'require_environment',lambda:None)
@@ -116,6 +118,11 @@ def test_predispatch_usage_change_blocks_before_started_and_inference(tmp_path,m
     monkeypatch.setattr(module,'observe',lambda *a:pytest.fail('used seed cannot dispatch'))
     with pytest.raises(ValueError,match='consumed after preparation'):module.run(root)
     assert not (root/'started.json').exists()
+
+
+def test_missing_inventory_root_is_unknown_not_unused(tmp_path):
+    with pytest.raises(ValueError,match='existing explicit'):
+        module.seed_usage(tmp_path/'not-an-existing-project-root',[67101])
 
 
 def test_observe_uses_actual_sealed_observation_and_both_null_cross_scores(tmp_path,monkeypatch):

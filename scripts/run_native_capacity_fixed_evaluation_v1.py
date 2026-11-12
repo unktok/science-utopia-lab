@@ -29,6 +29,12 @@ INSTRUMENT='utopia/optimization/native_active_founders.py'
 def read(path):return checked(json.loads(Path(path).read_text()))
 
 
+def seed_usage(root,seeds):
+    if not Path(root).is_dir():
+        raise ValueError('existing explicit seed-inventory root required')
+    return usage_inventory(root,seeds)
+
+
 def build_plan(original,audit,*,source,origin,usages,seeds):
     selection=fixed_selection(original,audit,study='capacity-v1')
     if (original['objectives']!=list(OBJECTIVES) or original['held_out_evaluation']
@@ -103,7 +109,7 @@ def prepare(args):
         'audit_files':{str(path.resolve()):file_sha256(path) for path in (args.audit_one,args.audit_two)}}
     with (args.origin_run/'writer.lock').open('r') as owner:
         fcntl.flock(owner,fcntl.LOCK_EX|fcntl.LOCK_NB);original,audit=origin_evidence(origin)
-        usages=[usage_inventory(path,args.evaluation_seed) for path in args.seed_usage_root]
+        usages=[seed_usage(path,args.evaluation_seed) for path in args.seed_usage_root]
         p=build_plan(original,audit,source=source,origin=origin,usages=usages,seeds=args.evaluation_seed)
         args.output.mkdir(parents=True)
         for i,u in enumerate(usages):save(args.output/f'seed-usage-{i:02d}.json',{k:v for k,v in u.items() if k!='content_sha256'})
@@ -131,7 +137,7 @@ def run(root):
         for handle in (owner,origin_owner):fcntl.flock(handle,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if (root/'started.json').exists():raise ValueError('consumed evaluation; no redispatch')
         for i in range(len(p['evaluation']['seed_usage'])):
-            old=read(root/f'seed-usage-{i:02d}.json');usage=usage_inventory(old['root'],p['evaluation']['seeds'])
+            old=read(root/f'seed-usage-{i:02d}.json');usage=seed_usage(old['root'],p['evaluation']['seeds'])
             if not usage['valid']:raise ValueError('evaluation seed consumed after preparation')
             save(root/f'pre-dispatch-seed-usage-{i:02d}.json',{k:v for k,v in usage.items() if k!='content_sha256'})
         save(root/'started.json',{'schema':SCHEMA+'.start','pid':os.getpid(),
