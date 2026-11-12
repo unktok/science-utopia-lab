@@ -33,3 +33,8 @@ incorrect filename. The corrected actual-source success paths are separate
 records. A SCRIPTED check is not counted as a real policy trial. The reviewed
 64-page manuscript remains unchanged until this experiment has closed data;
 the publication-ready goal, important research answer and replication remain open.
+
+Final retention, unchanged64-page manuscript and historical-catalog checks pass
+44 in6.32s at2460cc3. Active-document validation passes25 documents,613 local
+links and six historical snapshots. Neither check executes a new scientific
+world or changes the frozen writer/readers.
