@@ -47,3 +47,18 @@ integration check and fresh actual local35B readiness are still required before
 dispatch. No actual capacity campaign has started at this document checkpoint.
 The full cold-join unit primitives are mocked; actual physical forward/backward
 reconstruction is tested separately and by the nine-world integration above.
+
+## Actual source-bound launch
+
+At16cfdcef2151e01365c1fc2bea3f5cc928954220 the complete128-check connection,
+original-native/cold reconstruction, controller/audit/finish/cost, old-study and
+PDF-retention scope passes68.02s, zero skips/errors/failures. Final exit0 is
+observed before freezing two clean science/analysis worktrees.
+
+The actual nine-world pilot starts03:01:39.621882UTC onNovember12, writer84531,
+session10035, in initial real local35B readiness. No certificate pass, reference
+completion, proposed institution or new loss improvement is established at
+launch. Separate read-only session13098 waits for normal closure before double
+original audits/costs. [Exact binding](../results/native-capacity-objective-launch-verification-v1.json).
+Neither running worktree is edited. Current T/U and timing-control results are
+normally closed and are not restarted or imported as pilot observations.

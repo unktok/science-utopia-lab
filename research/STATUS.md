@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 12:02JST / 03:02UTC:** the new finite T/P pilot actually starts at
+03:01:39.621882UTC, writer84531/session10035, from clean frozen16cfdcef.
+It is in initial actual local35B execution readiness; no calibration pass,
+native reference completion, candidate or improvement is claimed yet. Its
+maximum is five developer rules+four own slots, with unchanged fixed Qwen3-8B
+scientists. [Launch/source/budgets](results/native-capacity-objective-launch-verification-v1.json).
+The final source-bound128 checks pass68.02s with final exit0 observed before
+freeze/dispatch. No prior loss enters the new development context.
+
+Separate frozen read-only session13098 waits for normal closure, then performs
+two original audits/cost projections. Its first pre-output launcher probe was
+denied ps permission; corrected process-inspection permission starts the
+monitor without restarting science or editing an existing monitor journal.
+All previous studies are closed; only this new pilot/monitor are active.
+The publication-ready goal remains active and unachieved.
+
 **November12 12:00JST / 03:00UTC:** all three advice controls close normally at
 02:39:30UTC; double original audits/costs, all exports and repeated figures
 close by02:40:45UTC. [Actual result](results/native-instruction-timing-v1.md):
