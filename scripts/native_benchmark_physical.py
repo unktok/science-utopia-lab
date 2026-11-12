@@ -36,10 +36,21 @@ def initial_world_conditions_proof(state,conditions,seed):
     if (state['project_cost_policy']['log_resource_ledger'] is not logging
             or ('resource_ledger' in state)!=logging):
         raise ValueError('actual native initial ledger differs from conditions')
-    return {'conditions':conditions,'actual_author_records_sha256':digest(actual),
+    proof={'conditions':conditions,'actual_author_records_sha256':digest(actual),
         'actual_initial_total':sum(a['resources'] for a in actual.values()),
         'actual_author_resources':{k:v['resources'] for k,v in sorted(actual.items())},
         'ledger_present':logging,'new_model_calls':0,'new_code_executions':0}
+    if conditions['schema']=='scienceutopia.native-world-conditions.v2':
+        capacity={k:conditions[k] for k in ('papers_per_project','funding_budget_mode','funding_budget_slots_frac')}
+        actual_simulation=state['portable']['contract']['simulation']
+        if (any(actual_simulation.get(k)!=v for k,v in capacity.items())
+                or state['project_cost_policy']['papers_per_project']!=capacity['papers_per_project']
+                or state['initial_university_count']!=5 or state['initial_industry_count']!=0):
+            raise ValueError('actual native initial production/funding capacity differs from conditions')
+        proof['actual_native_capacity']=capacity
+        proof['fixed_annual_slot_cap']=(None if capacity['funding_budget_mode']=='track'
+            else int(round(capacity['funding_budget_slots_frac']*state['initial_university_count'])))
+    return proof
 
 
 def code_attempt_proof(cell,spec,world):

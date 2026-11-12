@@ -115,3 +115,58 @@ def test_invalid_operator_conditions_reject_before_any_model_or_corpus_access(tm
     monkeypatch.setattr('requests.get',lambda *a,**k:pytest.fail('no backend access'))
     with pytest.raises(ValueError,match='initial-resource conditions'):
         LocalQwenNativeFactory(tmp_path/'runs',tmp_path/'cache',world_conditions=bad)
+
+
+def capacity_conditions(**changes):
+    return {'schema':'scienceutopia.native-world-conditions.v2','initial_funding':30.,
+        'population_resource_profile':'balanced_two_band','log_resource_ledger':True,
+        'papers_per_project':2,'funding_budget_mode':'fixed','funding_budget_slots_frac':.2,**changes}
+
+
+def test_capacity_conditions_use_only_original_cli_and_preserve_v1_argument_bytes():
+    from utopia.optimization.native_factory import world_condition_arguments
+    v1={k:v for k,v in capacity_conditions().items()
+        if k not in ('papers_per_project','funding_budget_mode','funding_budget_slots_frac')}
+    v1['schema']='scienceutopia.native-world-conditions.v1'
+    expected=['--initial_funding','30.0','--population_resource_profile','balanced_two_band','--log_resource_ledger']
+    assert world_condition_arguments(None)==[]
+    assert world_condition_arguments(v1)==expected
+    assert world_condition_arguments(capacity_conditions())==expected+[
+        '--papers_per_project','2','--funding_budget_mode','fixed','--funding_budget_slots_frac','0.2']
+
+
+@pytest.mark.parametrize('changes',[
+    {'papers_per_project':0},{'papers_per_project':True},{'papers_per_project':1.5},
+    {'funding_budget_mode':'other'},{'funding_budget_slots_frac':None},
+    {'funding_budget_slots_frac':0},{'funding_budget_slots_frac':True},
+    {'funding_budget_slots_frac':float('inf')},{'funding_budget_slots_frac':1.01},
+    {'funding_budget_mode':'track','funding_budget_slots_frac':.2},
+    {'invented_unchecked_world_flag':True}])
+def test_bad_capacity_rejects_before_backend_access(tmp_path,monkeypatch,changes):
+    monkeypatch.setattr('requests.get',lambda *a,**k:pytest.fail('no backend access'))
+    with pytest.raises(ValueError):
+        LocalQwenNativeFactory(tmp_path/'runs',tmp_path/'cache',world_conditions=capacity_conditions(**changes))
+
+
+@pytest.mark.parametrize('papers',[1,2])
+@pytest.mark.parametrize('mode',['track','fixed'])
+def test_capacity_reaches_original_simulation_and_actual_initial_checkpoint(tmp_path,fixed_corpus,monkeypatch,papers,mode):
+    from copy import deepcopy
+    from scripts.native_benchmark_physical import initial_world_conditions_proof
+    install_transport(monkeypatch)
+    conditions=capacity_conditions(papers_per_project=papers,funding_budget_mode=mode,
+        funding_budget_slots_frac=.2 if mode=='fixed' else None)
+    factory=LocalQwenNativeFactory(tmp_path/'runs',tmp_path/'cache',allow_dirty=True,world_conditions=conditions)
+    sim=factory(legacy_world_system(),42,'capacity-condition-probe')
+    try:
+        sim.initialize_agents();sim.resource_ledger.start_year(1,sim.ecosystem.agent_population)
+        state=sim.capture_checkpoint_state(0,phase=0)
+        proof=initial_world_conditions_proof(state,conditions,42)
+        assert sim.papers_per_project==papers and sim.funding_budget_mode==mode
+        assert sim.cost_policy['legacy_effective_per_paper_cost']==0
+        assert proof['fixed_annual_slot_cap']==(1 if mode=='fixed' else None)
+        assert proof['actual_native_capacity']['papers_per_project']==papers
+        assert sim.llm.response_cache.binding['science_config']['world_conditions']==conditions
+        altered=deepcopy(state);altered['portable']['contract']['simulation']['papers_per_project']=99
+        with pytest.raises(ValueError,match='capacity differs'):initial_world_conditions_proof(altered,conditions,42)
+    finally:sim.llm.response_cache.close()

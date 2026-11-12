@@ -21,15 +21,40 @@ def checked_world_conditions(value):
     population blueprint, costs, grants, activation and ledger semantics.
     """
     if value is None:return None
-    if (not isinstance(value,dict) or set(value)!={'schema','initial_funding',
-            'population_resource_profile','log_resource_ledger'}
-            or value['schema']!='scienceutopia.native-world-conditions.v1'
+    base={'schema','initial_funding','population_resource_profile','log_resource_ledger'}
+    capacity={'papers_per_project','funding_budget_mode','funding_budget_slots_frac'}
+    if (not isinstance(value,dict) or value.get('schema') not in
+            ('scienceutopia.native-world-conditions.v1','scienceutopia.native-world-conditions.v2')
+            or set(value)!=(base | capacity if value.get('schema')=='scienceutopia.native-world-conditions.v2' else base)
             or type(value['initial_funding']) not in (int,float)
             or not math.isfinite(value['initial_funding']) or value['initial_funding']<=0
             or value['population_resource_profile'] not in ('equal','balanced_two_band')
             or type(value['log_resource_ledger']) is not bool):
         raise ValueError('explicit finite positive native initial-resource conditions required')
+    if value['schema']=='scienceutopia.native-world-conditions.v2':
+        fraction=value['funding_budget_slots_frac']
+        if (type(value['papers_per_project']) is not int or value['papers_per_project']<1
+                or value['funding_budget_mode'] not in ('track','fixed')
+                or (value['funding_budget_mode']=='track' and fraction is not None)
+                or (value['funding_budget_mode']=='fixed' and
+                    (type(fraction) not in (int,float) or not math.isfinite(fraction) or not 0<fraction<=1))):
+            raise ValueError('explicit native production/funding-capacity conditions required')
     return deepcopy(value)
+
+
+def world_condition_arguments(value):
+    """Original CLI knobs only; v1's exact argument sequence stays unchanged."""
+    value=checked_world_conditions(value)
+    if value is None:return []
+    result=['--initial_funding',str(value['initial_funding']),
+            '--population_resource_profile',value['population_resource_profile']]
+    if value['log_resource_ledger']:result.append('--log_resource_ledger')
+    if value['schema']=='scienceutopia.native-world-conditions.v2':
+        result.extend(['--papers_per_project',str(value['papers_per_project']),
+                       '--funding_budget_mode',value['funding_budget_mode']])
+        if value['funding_budget_slots_frac'] is not None:
+            result.extend(['--funding_budget_slots_frac',str(value['funding_budget_slots_frac'])])
+    return result
 
 
 class LocalQwenNativeFactory:
@@ -111,10 +136,7 @@ class LocalQwenNativeFactory:
             '--output-dir', str(root / 'simulation'), '--data-cache-dir', str(self.data_cache),
             '--science-system-spec', str(system_path), '--rag_device', 'cpu', '--batch_size', '1', '--max_retries', '2',
         ]
-        if self.world_conditions is not None:
-            arguments.extend(['--initial_funding',str(self.world_conditions['initial_funding']),
-                '--population_resource_profile',self.world_conditions['population_resource_profile']])
-            if self.world_conditions['log_resource_ledger']:arguments.append('--log_resource_ledger')
+        arguments.extend(world_condition_arguments(self.world_conditions))
         args = parse_arguments(arguments, create_dirs=True)
         args.rag_corpus_years = self.corpus_years
         model = VLLMServerModel(self.model, base_url='http://127.0.0.1:11434/v1', server_backend='ollama',
