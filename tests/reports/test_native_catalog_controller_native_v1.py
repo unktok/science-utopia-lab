@@ -11,6 +11,7 @@ from scripts import run_native_catalog_actuation_v1 as driver
 from scripts import audit_native_catalog_actuation_v1 as audit
 from scripts.reports.pre_scale_costs_v1 import analyze as costs
 from scripts.reports.native_catalog_actuation_v1 import export as choice_export
+from scripts.reports.native_catalog_actuation_summary_v1 import summarize
 from scripts.reports.native_institution_effect_trace_v1 import export as effect_export
 from scripts.reports.native_observed_request_classes_v1 import export as request_export
 from tests.reports.test_native_catalog_actuation_v1 import evidence, seal
@@ -83,6 +84,9 @@ def test_production_run_original_checkpoint_measurement_actual_auditor_and_costs
         report = driver.read(paths_out[0] / 'report.json')
         assert len(report['worlds']) == 3
         if label == 'choices':
+            summary = summarize(report)
+            assert len(summary['annual_project_states']) == 60
+            assert len(summary['founder_ids']) == 5
             assert report['worlds'][0]['direction_requests']
             assert not report['worlds'][2]['direction_requests']
             assert report['worlds'][2]['catalog_project_effects']
