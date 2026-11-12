@@ -819,3 +819,21 @@ It cannot dispatch science or run a designer. It exports twice after closure,
 stops on failed/changed inputs, and still requires real-data visual review and
 interpretation. At00:49:57UTC the original fixed evaluation has7/18 complete
 observations and no failed slots/terminal. No partial scores are inspected.
+
+## Conditional preference geometry of the complete development archive
+
+The closed11 completed worlds reduce to three observed score vectors:
+(A,Q)=(7,25) for nine worlds, (5,19) for one and (0,0) for one. Both null
+attempts remain outside the lower envelope. Exact rational arithmetic on the
+literal exported decimals gives boundaries3 and19/5 for the hypothetical
+fixed-record loss cA−Q over1≤c≤5. The nonoptimal line crossing25/7 is not a
+lower-envelope transition. The actual optimized center3 lies at a tie between
+the connected/disconnected observations. This is descriptive objective geometry,
+not optimization under a new loss, new policy selection or a global optimum.
+
+At26497ee,11 checks pass1.09s, and two real four-file exports agree byte for
+byte. All output bytes and original report hashes are retained with the
+read-only recipe. The initial axis label was too long and the legend covered
+lines; the final actual-data PNG is reviewed after those fixes. The58-page
+paper is not relabeled to include this subsequent addition. Current641xx
+science, literal T/U definitions and queued5925d5b controls remain unchanged.

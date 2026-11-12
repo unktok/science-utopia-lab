@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Conditional preference regions of the completed archive](results/native-preference-regions-v1.md):
+  all11 complete worlds yield three exact score lines, with observed-bank
+  boundaries at3 and19/5. Two nulls remain outside the envelope. This explains
+  the current center3 tie; it neither adopts a new objective nor optimizes or
+  reselects policies. Two actual numeric/figure exports agree; PNG is reviewed.
 - [Instruction timing analysis and figure continuation](components/native-instruction-timing-summary-v1.md):
   request-attempt CSV, unknown/ambiguous choice cells at actual native years,
   unchanged T/U and annual project/resource summaries. Frozen d2a3391 passes32
