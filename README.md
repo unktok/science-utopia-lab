@@ -25,12 +25,37 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
+The [latest reviewed integrated manuscript](paper/README.md) is59 pages,
+with28 figures and23 tables. It preserves the whole research program and prior
+drafts without an artificial page cap; paper length is not publication readiness.
+
+The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
+retains all eight own submissions: six native completions and two technical
+nulls. Its [selection-fixed evaluation](research/results/native-objective-fixed-evaluation-v1.md)
+closes18 actual worlds/21 logical cells on three unused seeds. Publication-count
+selections tie strong connected accept-all rules; content-score differences
+against reviewer-free accept-all are mixed. Evaluation seeds are not independent
+optimizer histories. The [three closed advice-timing controls](research/results/native-instruction-timing-v1.md)
+establish delivery to model inputs but no topic/duration or T/U gain here;
+full inputs, replies and some resource trajectories differ. This newer result
+postdates the reviewed PDF.
+
+A separate [finite T/P pilot](research/components/native-capacity-objective-loop-v1.md)
+is running from a frozen source: five common developer rules and four own
+proposal slots, with fixed Qwen3-8B researchers and actual initial35B readiness
+passing all28 controls. P measures initial-founder active annual boundaries;
+it is an explicit alternative objective, not a hidden constraint on T.
+[Current status](research/STATUS.md) is the authority for live progress and
+closure-gated readouts. New invention, stable strong-rule advantage and
+publication readiness remain unestablished.
+
+Earlier completed evidence remains available:
+
 The current finite [design-freedom comparison](research/protocols/campaigns/native-design-freedom-v2.md)
 is complete: two objectives, five proposal arms, three controller histories and
 all120 candidate slots, followed by fixed selection and90 physical unused-
 condition evaluations. Both full audits agree using an explicit order adapter.
-An [integrated41-page research manuscript](paper/README.md) now covers the whole
-program without a page cap; the12-page empirical study draft, figures,
+The historical12-page empirical study draft, figures,
 supplemental analyses and numerical/paper rebuilding are also preserved.
 [V2 requirement audit and submission judgment](research/publication/submission-decision-v2.md)
 closes the finite decision package, not the broader research program.
@@ -38,12 +63,13 @@ Immediate main-conference submission is not recommended; top-conference
 readiness, useful structural invention and method superiority are not established.
 There is no remaining writer from this study. See [current status](research/STATUS.md).
 
-The separate [pre-scale completion](research/pre-scale-completion.md) remains
-active: all12 information-intervention worlds close with matching full audits,
+The earlier [pre-scale completion](research/pre-scale-completion.md) is closed:
+all12 information-intervention worlds close with matching full audits,
 [complete descriptive analysis](research/results/pre-scale-information-v1.md)
 and reproducible numerical figures. Fresh numerical/staged author readiness
-passes at the new source; the finite T/E reference/search stage is executing.
-Its selected-policy evaluation and final integration checks are not yet closed.
+passes at its source; the finite T/E search, selected-policy evaluation and
+final integration checks are closed. These historical studies are not the
+currently active T/P pilot.
 
 Completed evidence includes the [eight-candidate feedback pilot](research/results/native-feedback-comparison-v1-a1.md)
 and [eight strong-rule controls](research/results/native-benchmark-controls-v2-a1.md),

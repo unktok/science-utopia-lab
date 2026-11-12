@@ -33,14 +33,19 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- Latest reviewed59-page PDF: closed61a1753 development plus all18 physical/
+  21 logical fixed T/U evaluation cells, actual costs and print-readable
+  all-seed comparison. All59 layouts and two cache-only builds are checked;
+  integrated-objective-evaluation-build-v1.json binds this snapshot. The newer
+  closed advice-timing controls and active T/P pilot postdate this artifact.
 - Closed61a1753 objective-conditioned development: eight submissions, six
   native completions/two nulls, thirteen physical attempts including five
   references. Main native-loop section includes all-slot table, actual loss
   paths, shared strong-control scores and observed input classes. Exact
   report/cost/effect/preference/request-class exports are retained under
   research/data/native-objective-instrument-loop-v1. The reviewed58-page PDF includes this closed development.
-  Its live18-world fixed evaluation is explicitly unfinished, not a main
-  result or evidence for advantage. All58 layouts are verified, with a print-sized
+  At that historical58-page snapshot its18-world fixed evaluation was unfinished,
+  not a result or evidence for advantage. All58 layouts were verified, with a print-sized
   exact-reference-tie figure and preserved older PDF snapshots.
 - November12 finite-estimand revision: problem-method.tex defines eligible and
   complete candidate sets, all observed minima, predeclared selection ties and

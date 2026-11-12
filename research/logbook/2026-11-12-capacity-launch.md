@@ -37,3 +37,24 @@ and two cost projections. The first launcher probe was denied /bin/ps before
 creating monitor output. Its permission-corrected launch does not restart or
 alter science or resume a consumed monitor. Retain that distinction in the
 launch receipt. Publication readiness/R2/R3/R6 remain open; the goal is active.
+
+## Native founder/export verification and entry-document reconciliation
+
+At source13225d0 the existing full nine-native-world scripted integration now
+also uses actual effect and exact scientist-input export APIs across all nine
+worlds, retaining all five original founder rows and matching annual active
+flags to the measured P. Final result:1 pass88.04s, final exit0 observed;
+JUnit outputs/native-capacity-native-views-qa-a1.xml. Scientist/designer HTTP,
+corpus and role attestations are scripted; no actual-model result is inferred.
+
+The suspected attrition/export mismatch was refuted, not fixed:
+Ecosystem.remove_agent preserves the row and sets is_active=False. Its existing
+missing-row accounting guard remains unchanged. No reader or scientist process
+was stopped, no native rule changed and no active tree edited. Preserve this
+distinction instead of presenting a premature hypothesis as a found runtime bug.
+
+Entry documents had stale41/55/58-page and active T/U descriptions. Update
+them to the reviewed59-page snapshot, closed T/U evaluation and subsequent
+closed timing controls, with the separate live T/P study clearly identified.
+Historical PDF receipts and raw records remain untouched. Fifth reference is
+active at03:37:02UTC; no own proposal or new improvement is claimed.

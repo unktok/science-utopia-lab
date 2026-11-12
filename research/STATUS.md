@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+**November12 12:40JST / 03:40UTC:** the live pilot has reached its fifth
+common reference, reviewed-all-completion-priority (progress03:37:02UTC).
+No own proposal/improvement is claimed. The original writer and all four
+closure-gated continuations remain in place; no active source is edited.
+Main/GitHub were verified at86ce6f5 before the present documentation update.
+
+Canonical README/paper/purpose/plan entries now distinguish the reviewed59-page
+PDF, closed18/21 T/U evaluation, closed three timing controls and separate live
+T/P pilot. A source13225d0 nine-native-world scripted integration additionally
+checks real effect and full-input exporters, initial-founder retention and
+P reconstruction:1 pass88.04s, final exit0 observed. This is software evidence,
+not another actual-model study. Native removal sets is_active=False and keeps
+the founder row; the earlier suspected missing-founder exporter defect was
+refuted by the implementation and test, not repaired. No process was stopped
+and no missing-row accounting guard was weakened. Publication readiness remains
+open; current finite evidence has not established stable strong-rule superiority.
+
 **November12 12:24JST / 03:24UTC:** actual initial35B execution calibration
 passes all28 controls at source16cfdcef (certificate content4a208d9a); the pilot
 has two complete common references and is running no-review-all-equalization.

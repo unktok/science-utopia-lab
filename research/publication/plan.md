@@ -1,10 +1,15 @@
 # Top-conferenceに向けた研究計画
 
-2026-11-08更新。投稿・採択を保証する計画ではなく、研究上の問いと必要な証拠を決める。
+2026-11-08立案、11月12日に入口情報を更新。以下の段階・不足は立案時の記録を含む。
+現行の終了条件は[publication-ready v3](publication-ready-v3.md)、
+実験の稼働・完了状況は[STATUS](../STATUS.md)を正本とする。
+投稿・採択を保証する計画ではなく、研究上の問いと必要な証拠を決める。
 [全体の目的](../../RESEARCH.md)と、一本目の論文の主張は区別する。
 
 原稿方針の更新：研究内容を先にページ数で削らず、
-[37ページの統合原稿](../../paper/integrated.tex)を全体の正本とする。
+[統合原稿](../../paper/integrated.tex)を全体の正本とする。
+最新の確認済みPDFは[59ページ版](../../paper/README.md)であり、
+[対応するビルド記録](../../paper/integrated-objective-evaluation-build-v1.json)を持つ。
 構造・勾配・目的別parameter・UIを含め、科学的に残す内容と重複した開発記録を
 [編集／証拠対応表](../../paper/integrated-content-map.md)で区別した。
 投稿先確定後に焦点と正式規則に沿った投稿版を切り出す。旧12ページ稿と過去の
