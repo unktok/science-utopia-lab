@@ -19,7 +19,7 @@ def test_all_new_source_table_rows_match_actual_submissions_and_probes():
         assert fields[2] == ('--' if slot['loss'] is None else '$'+str(int(slot['loss']))+'$')
         assert int(fields[-1].split('\\')[0]) == slot['component_trace']['component_testing']['probe_attempts']
     assert 'sec:native-content-search' in text
-    assert 'figures/native-objective-instrument-loop-v1/objective-loss-paths.png' in text
+    assert 'figures/native-objective-instrument-paper-v1/loss-paths.png' in text
     assert 'not program-equivalence classes' in text
     assert 'no closed held-out result' in text
 

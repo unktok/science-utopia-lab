@@ -489,11 +489,13 @@ not a host fallback. Figure~\ref{fig:native-content-search-paths} retains every
 slot, including the first unavailable U value and final T failure.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{figures/native-objective-instrument-loop-v1/objective-loss-paths.png}
+\includegraphics[width=\linewidth]{figures/native-objective-instrument-paper-v1/loss-paths.png}
 \caption{\textbf{A completed loss-conditioned search can still tie strong rules.}
 Both own-history paths and all five common references use the declared T/U
-losses. Coincident reference lines retain their labels; null proposals receive
-no invented score. These are one history per objective at a reused seed, not
+losses. Coincident reference lines retain all labels: R1 is reviewed accept-all,
+R2 one-reviewer accept-all, R3 no-review accept-all, R4 no-review reject-all
+(all connected); R5 is reviewed accept-all with liquidity disconnected.
+Null proposals receive no invented score. These are one history per objective at a reused seed, not
 independent search replications or unused-condition performance.}
 \label{fig:native-content-search-paths}
 \end{figure}
