@@ -56,3 +56,27 @@ validation passes25 files,615 local links and the same six unchanged snapshots.
 At06:29UTC the original writerPID15986 is confirmed live in the information
 arm; cut has its original completed four-year checkpoint and observation.
 No partial result is used to redesign the remaining assignment arm.
+
+The original writer normally closes06:42:23.96UTC. All three actual worlds
+complete; original audits and costs agree twice and close06:43:09UTC. All
+four export chains close by06:43:54UTC and every terminal session exit0 is
+observed. Cut is T=-12/P=-15; concrete advice and assignment each T=-18/P=-16.
+All ten actual advice choices match their own actor/year agenda. Assignment
+instead has ten validated native effects and zero original direction calls.
+Both actual figures are reviewed; compact choices/effects/inputs/costs and
+all60 actor-year project states are retained with the
+[closed receipt](../results/native-catalog-actuation-closed-verification-v1.json).
+There are496 scientist replies, no proposal/critic calls and three load POSTs
+with unknown token usage. This supports a consequential planning path on the
+reused seed, not autonomous invention or objective separation: both losses
+improve together. No new experiment is dispatched from partial values.
+
+In parallel, the integrated PDF subset tool gains explicit source-manifest
+support, preserving old short-draft policies.33 tests pass and an actual clean
+ef104f33 CLI stages51 exact files. A cache-only untrusted build reproduces
+all64 reviewed page PNGs and exact extracted text; binary PDF bytes differ.
+Fresh visual spot checks cover pages1 and43.37 retention/regression checks
+pass6.60s before this scientific-data retention. The
+[separate rebuild receipt](../results/integrated-capacity-rebuild-subset-verification-v1.json)
+does not claim numerical or inference reproduction. The64-page manuscript
+itself remains unchanged and still needs the new closed result integrated.

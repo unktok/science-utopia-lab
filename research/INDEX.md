@@ -6,17 +6,15 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Closure-gated catalog figures and literal project table](components/native-catalog-summary-v1.md):
-  frozenb0cbbb8 summary session85420 waits for original double choice export.
-  Loss/activity and common-founder project-state views, missingness handling,
-  35 integrated native checks and reviewed SCRIPTED smoke layouts are ready;
-  no actual scientific figure or new completed outcome is claimed.
-- [Running original-world catalog actuation controls](components/native-catalog-actuation-v1.md):
-  frozen60563d8 starts06:11UTC, cut/information/project, three fresh worlds,
-  unchanged native production and T/P, no designer/critic or refill.80
-  runner/native checks and35 readout checks pass with SCRIPTED communication;
-  real effects are pending. Original double audit/cost and three independent
-  double readouts are connected and waiting. Old catalog/source records stay fixed.
+- [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
+  all3 actual worlds and original double audits/costs/readouts close. Cut
+  hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
+  Ten advice choices match the actual agenda; ten native assignments replace
+  original planning calls. Both actual figures and all496 replies/costs are
+  retained. Useful developer support, not automatic invention or held-out evidence.
+- [Integrated manuscript rebuild subset](../docs/paper-rebuild-bundle.md):
+  51 exact files stage/build offline; text and all64 rendered page images
+  match the reviewed draft. No raw/model data, new numerical audit or release clearance.
 - [Reviewed64-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
   and [build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
   all prior tracks plus the closed T/P pilot, actual paths/geometry, complete

@@ -2,6 +2,20 @@
 
 ## Active publication-ready goal
 
+**November12 06:42UTC normal closure:** all three
+[catalog actuation controls](results/native-catalog-actuation-v1.md) complete.
+Double original audits/costs close06:43:09UTC; three double readouts and two
+matching figure exports close by06:43:54UTC. All original handles exit0;
+no inference from this comparison remains live. Cut has T=-12/P=-15,
+concrete advice and assignment each T=-18/P=-16. Advice's ten actual choices
+match its own agenda; assignment has ten validated effects and zero original
+direction calls. All496 scientist replies/costs and both reviewed actual
+figures are retained. This is a useful developer intervention on one reused
+seed, not objective-conditioned invention or held-out evidence. Both losses
+still improve together. Next is strong same-authority planning/allocation
+comparisons and a separately frozen free search; the64-page manuscript has
+not yet incorporated this new closed result. R2/R3/R6 remain open.
+
 **November12 06:27UTC:** frozenb0cbbb8
 [catalog figure/table continuation](components/native-catalog-summary-v1.md)
 is actually started in session85420 and waits for the existing normal double

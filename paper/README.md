@@ -122,9 +122,12 @@ cd paper
 Inspect the newly rendered pages before replacing the reviewed PDF and receipt.
 The preserved older build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
 of dense figures/provenance. No layout or unresolved-reference warning remains.
-The old paper-only13-path policies still rebuild the narrower V2 draft, not
-this expanded integrated manuscript. Literal source/asset dependencies and
-historical evidence hashes for this manuscript are in its own build receipt.
+The old paper-only13-path policies still rebuild the narrower V2 draft. The
+[new51-file integrated subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
+rebuilds this expanded manuscript without raw/model data: its cached local
+build matches reviewed text and all64 rendered page images. See the
+[instructions and limits](../docs/paper-rebuild-bundle.md) and
+[source-bound verification](../research/results/integrated-capacity-rebuild-subset-verification-v1.json).
 
 ## Build the narrower V2 draft with the existing cache
 

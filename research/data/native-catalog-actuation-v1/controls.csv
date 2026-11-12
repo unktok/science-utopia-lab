@@ -1,0 +1,4 @@
+condition,status,seed,throughput,founder-activity,physical_wire_requests,committed_responses,direction_requests,advisory_direction_inputs,catalog_project_effects
+cut,complete,61001,-12.0,-15.0,148,148,9,0,0
+information,complete,61001,-18.0,-16.0,180,180,10,10,0
+project,complete,61001,-18.0,-16.0,168,168,0,0,10

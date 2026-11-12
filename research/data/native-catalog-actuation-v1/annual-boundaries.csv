@@ -1,0 +1,13 @@
+world,role,status,seed,year,active_founders,total_founder_resources,minimum_founder_resources,transferred_units
+catalog-cut,developer-catalog-actuation-control,complete,61001,1,5,120.0,11.0,12.0
+catalog-cut,developer-catalog-actuation-control,complete,61001,2,5,90.0,11.0,13.0
+catalog-cut,developer-catalog-actuation-control,complete,61001,3,3,60.0,1.0,14.0
+catalog-cut,developer-catalog-actuation-control,complete,61001,4,2,50.0,1.0,5.0
+catalog-information,developer-catalog-actuation-control,complete,61001,1,5,120.0,11.0,12.0
+catalog-information,developer-catalog-actuation-control,complete,61001,2,5,90.0,11.0,13.0
+catalog-information,developer-catalog-actuation-control,complete,61001,3,4,60.0,1.0,5.0
+catalog-information,developer-catalog-actuation-control,complete,61001,4,2,40.0,1.0,0.0
+catalog-project,developer-catalog-actuation-control,complete,61001,1,5,120.0,11.0,12.0
+catalog-project,developer-catalog-actuation-control,complete,61001,2,5,90.0,11.0,13.0
+catalog-project,developer-catalog-actuation-control,complete,61001,3,4,60.0,1.0,5.0
+catalog-project,developer-catalog-actuation-control,complete,61001,4,2,40.0,1.0,0.0

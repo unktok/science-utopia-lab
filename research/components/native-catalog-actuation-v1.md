@@ -3,7 +3,9 @@
 The original scientist world now supports institutionally assigned research
 projects without rewriting project duration or native production. A separate
 three-condition developer experiment starts November12 at06:11:09UTC from
-frozen60563d8b107dc184a4ca02935e0d6ec9bc8674eb. Its result is pending.
+frozen60563d8b107dc184a4ca02935e0d6ec9bc8674eb. All three conditions now
+close with matching double original audits/costs and exports; the
+[closed result](../results/native-catalog-actuation-v1.md) reports all arms.
 
 ## What the capability changes
 

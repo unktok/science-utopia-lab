@@ -4,8 +4,10 @@ The closed catalog comparison will be summarized in two complementary views:
 T/P losses with saved founder activity, and actual project duration/start/end
 states for the same five founder identities across all three conditions.
 The source is b0cbbb85772693d4c5774d73d9e39624edcada10. Its reader starts
-at06:26UTC and waits for the already-running choice double export; no actual
-scientific figure is available yet.
+at06:26UTC and closes06:43:54UTC after the original choice double export.
+Both actual figures are now reviewed and retained with the
+[closed result](../results/native-catalog-actuation-v1.md); the earlier smoke
+figures remain separately labelled SCRIPTED.
 
 ## Data and interpretation
 

@@ -1,8 +1,38 @@
-# Local paper-rebuild subset
+# Local manuscript rebuild subsets
 
-This page documents the historical11/12-page short-draft subsets, not a final
-reviewer/public bundle. The latest [integrated manuscript](../paper/integrated-estimands-build-v1.json)
-has its own source and56-page PDF. The historical empirical V2 manuscript and both full audits are complete, but
+The latest [reviewed integrated manuscript](../paper/integrated-capacity-authority-build-v1.json)
+has64 pages. Its [explicit51-file subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
+now stages and builds using only the existing TeX cache. Extracted text and
+all64 rendered90dpi page PNGs match the reviewed artifact; pages1 and43 also
+receive fresh visual spot checks. PDF binary bytes differ. The
+[verification receipt](../research/results/integrated-capacity-rebuild-subset-verification-v1.json)
+records the actual source, inventory and checks. This is a local PDF rebuild,
+not numerical recomputation, a raw audit, an independent model rerun or a
+release-cleared reviewer package.
+
+Use the approved project interpreter from a clean committed checkout and a
+fresh destination. To recover this exact64-page snapshot after later manuscript
+edits, use a detached checkout of ef104f33f14b408fc48201757cff794a3db3c3b9;
+do not overwrite its receipt or weaken a changed-input rejection:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Follow the staged REBUILD.md from its paper directory. The51 files contain
+the literal manuscript dependencies, including its UI screenshot and printed
+table, the upstream template/notices, original reviewed PDF and build receipt.
+No raw worlds, model weights, private replies or numerical-analysis runtime
+are copied. The new receipt adapter reconstructs original source/figure/support
+hashes from the recorded Git commit and allows only literal normalized
+repository-local parent inputs. It does not relax the old short-draft policies.
+
+## Historical short drafts
+
+The following11/12-page subsets retain their original identities. The
+historical empirical V2 manuscript and both full audits are complete, but
 remain a working draft rather than a final reviewer package. Do not publish/upload this subset
 or infer anonymous submission, human authorship or redistribution clearance.
 
