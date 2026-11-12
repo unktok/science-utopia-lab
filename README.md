@@ -25,8 +25,8 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is61 pages,
-with29 figures and24 tables. It preserves the whole research program and prior
+The [latest reviewed integrated manuscript](paper/README.md) is64 pages,
+with31 figures and25 tables. It preserves the whole research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
@@ -40,11 +40,15 @@ establish delivery to model inputs but no topic/duration or T/U gain here;
 full inputs, replies and some resource trajectories differ. These controls and
 a direct executable-governance precedent now enter the reviewed PDF.
 
-A separate [finite T/P pilot](research/components/native-capacity-objective-loop-v1.md)
-is running from a frozen source: five common developer rules and four own
-proposal slots, with fixed Qwen3-8B researchers and actual initial35B readiness
-passing all28 controls. P measures initial-founder active annual boundaries;
-it is an explicit alternative objective, not a hidden constraint on T.
+A separate [finite T/P pilot](research/results/native-capacity-objective-loop-v1.md)
+normally closes five developer references and four own submissions: three
+complete/one technical null. All complete own programs tie strong allocation
+rules atT=−12/P=−15, without changing wiring. Its full data, failures, costs
+and two actual figures enter the latest PDF. P measures initial-founder
+active annual boundaries, not a hidden constraint on T. The prepared fixed
+evaluation is not dispatched to enlarge this flat comparison. Next is a
+[separate planning-authority comparison](research/publication/native-planning-authority-next-study-v1.md),
+not yet an executing experiment or a change to the closed study.
 [Current status](research/STATUS.md) is the authority for live progress and
 closure-gated readouts. New invention, stable strong-rule advantage and
 publication readiness remain unestablished.

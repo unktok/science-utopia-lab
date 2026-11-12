@@ -2,12 +2,13 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
-[61-page integrated draft](../output/pdf/science-utopia-lab-integrated-advice-working-paper.pdf),
-with29 figures and24 tables and no artificial page cap.
-Its [source, evidence, build and visual binding](integrated-advice-build-v1.json)
-records two cache-only builds and the review of all61 page layouts, with
-150dpi detail review of the new table/figure pages42--43. A one-entry contents
-orphan in the preliminary62-page build is removed without shrinking body text.
+[64-page integrated draft](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf),
+with31 figures and25 tables and no artificial page cap.
+Its [source, evidence, build and visual binding](integrated-capacity-authority-build-v1.json)
+records two cache-only builds, all64 page layouts and150dpi detail review of
+pages43--46. The reading guide is placed below the contents to avoid an orphan
+front page without deleting text. The61-page advice draft and every earlier
+PDF/receipt are preserved.
 
 It retains the objective/abstraction/method argument, parameter held-out study,
 actual structural cases, conditional-gradient experiments, nested design,
@@ -40,8 +41,13 @@ now enter this PDF: actual0/10,10/10,5/10 input delivery but identical selected
 topics/durations and T/U; complete model inputs/replies and some resources
 differ. The direct Institutional AI precedent is cited at its inspected v1,
 without a graph-artifact or screened-selection priority claim. The separate
-[T/P pilot](../research/components/native-capacity-objective-loop-v1.md)
-is active, not completed paper evidence. [Current research status](../research/STATUS.md)
+[closed T/P pilot](../research/results/native-capacity-objective-loop-v1.md)
+also enters this PDF: five references, four own submissions, three completions
+tying strong allocation rules atT=−12/P=−15 and one virtual-source transfer
+failure. Exact observed paths and T/P geometry do not establish a generated
+advantage or a global optimum. The planning-authority restriction is explicit;
+the prepared unused-seed evaluation is not dispatched for this flat pilot.
+[Current research status](../research/STATUS.md)
 and [evaluation/analysis design](../research/components/native-objective-fixed-evaluation-v1.md)
 describe that boundary. The important main result and publication-ready
 judgment remain open; this is not a submitted, anonymous or release-cleared paper.

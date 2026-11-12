@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+**November12 14:40JST / 05:40UTC:** the closed capacity result now enters the
+[reviewed64-page integrated manuscript](../paper/integrated-capacity-authority-build-v1.json)
+with31 figures/25 tables/26 references. Two cache-only builds/text/logs agree;
+all64 layouts are checked, new43--46 pages at150dpi and changed47--49 pages
+reviewed, zero off-page words or layout/unresolved-reference warnings. The
+earlier61-page advice PDF and preliminary64-page preclarification snapshot
+retain their own bytes/receipts. No scientific source or completed loss is
+changed by these edits. The new chapter includes every reference/slot, the
+actual flat paths, conditional T/P envelope, invalid transfer and measured costs.
+
+Next is a [separate native planning-authority comparison](publication/native-planning-authority-next-study-v1.md),
+not a seed expansion of this pilot. The current fixed-production domain
+explicitly forbids native.project; broader existing planning mechanisms must
+be connected in a named new scope without changing original production laws
+or faking shorter projects. The note specifies at most three future developer
+controls, not a running experiment or generated-institution advantage. Exact
+protocol, catalog/consumer checks and full-path QA precede new dispatch.
+R2/R3/R6 and the publication-ready goal remain open.
+
 **November12 14:18JST / 05:18UTC:** the frozen16cfdcef T/P pilot normally
 closes05:13:34UTC with all four own submissions, three complete/one technical
 null and all five common references complete. Two original audits/costs close

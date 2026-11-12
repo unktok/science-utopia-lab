@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Reviewed64-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
+  and [build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
+  all prior tracks plus the closed T/P pilot, actual paths/geometry, complete
+  table, failure and costs. Both cache-only builds/text/logs agree, all64
+  layouts and new43--46 pages at150dpi are checked; old PDFs remain unchanged.
+  The fixed planning-authority scope is explicit. The
+  [next planning-authority comparison](publication/native-planning-authority-next-study-v1.md)
+  is a design, not another running study or automatic-invention result.
 - [Closed capacity T/P search](results/native-capacity-objective-loop-v1.md)
   and [all slots, effects, inputs, geometry and costs](data/native-capacity-objective-loop-v1/README.md):
   all four programs submit, three complete and tie the strong allocation
@@ -13,7 +21,7 @@ Historical documents retain their paths and source identities.
   Original double audits/costs and four double exports agree; three figures
   are reviewed. No wiring change, objective separation or generated-rule
   advantage. The prepared unused-seed evaluation is not dispatched for this
-  flat pilot. The61-page PDF remains its earlier preserved snapshot.
+  flat pilot. The new64-page PDF includes the closed result;61-page stays fixed.
 - [Prospective fixed T/P evaluation path](components/native-capacity-fixed-evaluation-v1.md):
   literal selection, exact P, unused-seed guards and native/cold/cost/effect/input
   APIs are connected. Ten original-world scripted forwards and90 integration

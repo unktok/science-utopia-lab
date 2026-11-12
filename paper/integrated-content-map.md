@@ -33,6 +33,13 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- Latest reviewed64-page PDF adds the closed capacity T/P search, all nine
+  attempts, three own completions/one null, strong-rule ties, actual paths and
+  conditional geometry, exact inputs, failed virtual-source command and costs.
+  Fixed planning authority is explicit; no generated advantage or interior
+  optimization is inferred. integrated-capacity-authority-build-v1.json binds
+  two cached builds/text/logs, all64 layouts and150dpi pages43--46. The old
+  61-page advice PDF and every older artifact retain their own exact receipts.
 - Latest reviewed61-page PDF additionally includes all three closed advice
   controls, their actual delivery/choice figure, all-condition table and costs;
   no complete behavioral-equivalence or general instruction-null claim. The
