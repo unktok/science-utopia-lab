@@ -12,9 +12,9 @@ research cost remains 10 when an active researcher has a working project;
 the original per-paper flow has no direct submission debit. Neither a paper
 fee nor a new resource law is activated to force a trade-off.
 
-Alongside $T=-A$, let $I_{iy}$ be one exactly when founder $i$ is author-capable
-and has \code{is\_active}=true at the end of year $y$, and zero otherwise.
-Define the separate loss
+Alongside $T=-A$, define $I_{iy}=1$ when initial founder $i$ is author-capable
+and active at the end of year $y$, and zero otherwise. Activity here means
+the saved native \code{is\_active} flag. The separate loss is
 \[
  P=-\sum_{y=1}^{4}\sum_{i\in F} I_{iy},
 \]
