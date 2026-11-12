@@ -36,7 +36,11 @@ That successful QA executes ten original five-founder/four-year worlds at
 two SCRIPTED unused seeds, real isolated code, actual native journals and P,
 real plan reconstruction/source/physical cold proof, two cold exports and
 actual public score/effect/input/cost APIs. The corpus/provider, original
-development-origin attestation and role-load identity are mocked explicitly.
+development-origin attestation, role-load identity and unused-inventory receipt
+are mocked. The four-item list in the compact receipt is not exhaustive; the
+bound test source makes the synthetic inventory explicit. Non-use in the actual
+project's journals is not certified by that native fixture. Inventory failure
+guards have separate unit coverage, and must run for any actual future dispatch.
 It does not attest real-Qwen optimization or independent optimizer histories.
 Both generated SCRIPTED plots are inspected. At486e3da the final90 controller,
 join, tampering, report, continuation, legacy and preserved-PDF checks pass

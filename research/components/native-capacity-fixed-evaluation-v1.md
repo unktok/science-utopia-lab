@@ -38,7 +38,12 @@ native journals, real plan reconstruction, source/physical proofs, P, both cold
 exports and actual score/effect/input/cost APIs pass in83.26s (final exit0 observed).
 The corpus/HTTP provider, original development attestation and model-load
 identity are SCRIPTED; this is not actual-Qwen optimization or scientific
-unused-seed evidence. An earlier unprivileged QA run records ten explicit
+unused-seed evidence. This native fixture also supplies a synthetic unused-
+inventory receipt; it does not independently attest the seeds' non-use across
+real project journals. Missing-root, consumed-seed and dispatch-time checks
+have separate unit coverage. The receipt's four-item mocked list is not an
+exhaustive enumeration of fixture substitutions; the exact test source is bound.
+An earlier unprivileged QA run records ten explicit
 container-socket permission nulls and fails the success assertion. A separate
 permission-corrected software run uses unchanged source; no scientific study
 is retried, refilled or edited. Original checks remain strict.
