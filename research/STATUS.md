@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November12 06:27UTC:** frozenb0cbbb8
+[catalog figure/table continuation](components/native-catalog-summary-v1.md)
+is actually started in session85420 and waits for the existing normal double
+choice export.35 integrated checks pass81.80s through three original native
+four-year worlds with SCRIPTED communication and actual checkpoint/cold/reader
+paths. Separate smoke layouts are visually reviewed, not scientific results.
+The real experiment remains in its second information arm; its conditions,
+source and both T/P losses are unchanged. No new inference is dispatched by
+this continuation. The64-page PDF and publication-ready judgment stay unchanged.
+
 **November12 06:11UTC scientific start:** a separate three-condition
 [catalog planning actuation experiment](components/native-catalog-actuation-v1.md)
 is actually running at frozen60563d8. It keeps original native production,

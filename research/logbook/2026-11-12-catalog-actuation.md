@@ -38,3 +38,21 @@ Final retention, unchanged64-page manuscript and historical-catalog checks pass
 44 in6.32s at2460cc3. Active-document validation passes25 documents,613 local
 links and six historical snapshots. Neither check executes a new scientific
 world or changes the frozen writer/readers.
+
+The next goal turn is concrete progress, not an experiment restart: source
+b0cbbb85772693d4c5774d73d9e39624edcada10 adds a strict summary and two
+figure views fed by the real cold choice API.19 unit checks pass1.66s and35
+integrated checks pass81.80s with SCRIPTED model/corpus/role attestations.
+Loss/activity and actual project-state smoke PNGs are visually inspected;
+those fake-data images stay out of scientific results. Summary session85420
+starts and waits for the original choice double export. It will write twice
+and require byte equality. The [component](../components/native-catalog-summary-v1.md)
+and [receipt](../results/native-catalog-summary-preparation-v1.json) preserve
+the actual start, exact source and verification scope. The scientific writer,
+three-condition budget and all prior frozen readers remain unchanged.
+
+Summary retention/source/missingness checks pass23 in1.82s. Active-document
+validation passes25 files,615 local links and the same six unchanged snapshots.
+At06:29UTC the original writerPID15986 is confirmed live in the information
+arm; cut has its original completed four-year checkpoint and observation.
+No partial result is used to redesign the remaining assignment arm.

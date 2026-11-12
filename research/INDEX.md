@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closure-gated catalog figures and literal project table](components/native-catalog-summary-v1.md):
+  frozenb0cbbb8 summary session85420 waits for original double choice export.
+  Loss/activity and common-founder project-state views, missingness handling,
+  35 integrated native checks and reviewed SCRIPTED smoke layouts are ready;
+  no actual scientific figure or new completed outcome is claimed.
 - [Running original-world catalog actuation controls](components/native-catalog-actuation-v1.md):
   frozen60563d8 starts06:11UTC, cut/information/project, three fresh worlds,
   unchanged native production and T/P, no designer/critic or refill.80
