@@ -33,8 +33,8 @@ def test_manuscript_costs_join_original_closed_usage_and_timing():
     assert costs['scientist']['provider_usage']['completion_tokens']['recorded_sum'] == 38542
     assert costs['common_content_observer']['physical_requests'] == 39
     text = (ROOT/'paper/integrated/native-advice.tex').read_text()
-    assert '389 scientist replies with360734 input and38542 output' in text
-    assert 'uses39 separate requests' in text
+    assert '389 scientist replies with 360734 input and 38542 output' in text
+    assert 'uses 39 separate requests' in text
     assert 'Tokenless model-load costs remain unknown' in text
 
 
