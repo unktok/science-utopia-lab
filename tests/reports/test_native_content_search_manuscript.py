@@ -21,7 +21,9 @@ def test_all_new_source_table_rows_match_actual_submissions_and_probes():
     assert 'sec:native-content-search' in text
     assert 'figures/native-objective-instrument-paper-v1/loss-paths.png' in text
     assert 'not program-equivalence classes' in text
-    assert 'no closed held-out result' in text
+    assert 'All eighteen complete normally' in text
+    assert 'tab:native-tu-fixed' in text and 'fig:native-tu-fixed' in text
+    assert 'independent optimizer replications' in text
 
 
 def test_previous_pdf_receipt_is_not_rewritten_for_the_new_reviewed_snapshot():
