@@ -32,6 +32,10 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
         p['world'][key] = clone(getattr(probe, key))
         if key in p['scientist']: p['scientist'][key] = clone(getattr(probe, key))
     p['source_commit'] = probe.source_commit
+    # This fixture rebinds to its actual committed source after constructing a
+    # SCRIPTED plan. Carry that source into the real component contract too.
+    p['post_edit_contract'] = driver.feedback_for(p['component_bank'], p['source_commit'], IMAGE).contract
+    p['strategies']['local-designer'][driver.TEST_OPTION] = clone(p['post_edit_contract'])
     p['world']['classification'] = 'SCRIPTED-fourteen-native-world-planning-integration'
     p['observer_contract'] = make_contract(source_commit=p['source_commit'],
         provider={k: p['scientist'][k] for k in ('model', 'model_digest')},

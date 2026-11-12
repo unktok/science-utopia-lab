@@ -19,7 +19,7 @@ def seal(value):
 
 def plan(tmp_path, monkeypatch, image_override=None):
     operator = capacity_plan(tmp_path / 'operator', monkeypatch, image_override=image_override)
-    support = tmp_path / 'support'; support.mkdir()
+    support = tmp_path / 'support'; support.mkdir(parents=True)
     driver.save(support / 'plan.json', {'bank_file_sha256': operator['component_bank_file_sha256']})
     driver.save(support / 'summary.json', {'status': 'closed', 'observations': [{'original_result_matches': True}] * 12})
     operator['component_support'] = {'directory': str(support),
