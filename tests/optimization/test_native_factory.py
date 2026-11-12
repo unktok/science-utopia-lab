@@ -153,15 +153,22 @@ def test_bad_capacity_rejects_before_backend_access(tmp_path,monkeypatch,changes
 def test_capacity_reaches_original_simulation_and_actual_initial_checkpoint(tmp_path,fixed_corpus,monkeypatch,papers,mode):
     from copy import deepcopy
     from scripts.native_benchmark_physical import initial_world_conditions_proof
+    from utopia.runtime.checkpointing import PortableStop, read_portable_checkpoint
     install_transport(monkeypatch)
     conditions=capacity_conditions(papers_per_project=papers,funding_budget_mode=mode,
         funding_budget_slots_frac=.2 if mode=='fixed' else None)
     factory=LocalQwenNativeFactory(tmp_path/'runs',tmp_path/'cache',allow_dirty=True,world_conditions=conditions)
     sim=factory(legacy_world_system(),42,'capacity-condition-probe')
     try:
-        sim.initialize_agents();sim.initialize_conferences()
-        sim.resource_ledger.start_year(1,sim.ecosystem.agent_population)
-        state=sim.capture_checkpoint_state(0,phase=0)
+        saved=[]
+        def stop_at_original_initial_checkpoint(path):
+            saved.append(path)
+            raise PortableStop('SCRIPTED stop after real initial lifecycle, before model calls')
+        sim.args.checkpoint_callback=stop_at_original_initial_checkpoint
+        with pytest.raises(PortableStop):sim.run()
+        assert len(saved)==1
+        state=read_portable_checkpoint(saved[0])
+        assert state['year']==0 and state['phase']==0
         proof=initial_world_conditions_proof(state,conditions,42)
         assert sim.papers_per_project==papers and sim.funding_budget_mode==mode
         assert sim.cost_policy['legacy_effective_per_paper_cost']==0
