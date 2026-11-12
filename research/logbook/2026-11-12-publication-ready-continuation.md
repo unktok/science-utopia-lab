@@ -907,3 +907,12 @@ sent. Earlier35B thinking/full-output evidence is retained, not retried merely
 because a later plan is unpersuasive. The original native evaluation reaches
 12/18 complete with no failures at the01:21UTC checkpoint; its writer and the
 two queued downstream readers remain responsible for the rest.
+
+At c7331df the retained-plan and information-discovery receipts also pass their
+literal source/hash/numeric tests. The expanded125-check scope closes exit0 in
+27.90s with no failures/skips/errors; scopes overlap, not125 new scientific
+trials. At01:32:39UTC the fixed evaluation has13/18 complete observations,
+zero failures, active evaluation-013 and no terminal. Actual live handles25775,
+83919,1434,53563 and32479 are revalidated. No held-out scalar values are read
+for the new diagnostics or future design. The goal remains active; current
+work advances R4/usability and leaves the substantive research comparison open.

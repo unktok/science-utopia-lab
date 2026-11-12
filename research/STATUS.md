@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November12 10:32JST / 01:32UTC:**13/18 fixed evaluation worlds have actual
+complete observations, zero failures and no terminal; evaluation-013 is active.
+The original evaluation25775, fixed-report83919, effect1434, control53563 and
+summary32479 handles all answer live polls. The control assay remains waiting,
+not a new scientific result. Main/GitHub match11e731d before this new integration.
+
+The [eight literal first plans](results/native-designer-initial-plans-v1.md)
+are joined to their original audited requests, final edits and outcomes; both
+actual exports match. Every initial target concerns the existing selection/
+feature chain. This is path evidence, not a causal diagnosis of the designer.
+Future [information-interface discovery](components/native-capability-discovery-v15.md#november12-information-interface-extension)
+now documents existing opening observations and arbitrary addressed delivery.
+There is no new native privilege, predefined policy or change to active sources.
+125 source/author/native-contract/retention checks pass27.90s. The58-page paper
+remains its existing reviewed snapshot, not a claim to contain later readouts.
+R2/R3/R6 and publication readiness remain open; the goal is not redefined around
+these software/readout completions.
+
 **November12 10:01JST / 01:01UTC:** the actual fixed evaluation reaches9/18
 completed observations, zero failed observations and evaluation-009 executing;
 no terminal is present. [Observed preference regions](results/native-preference-regions-v1.md)
