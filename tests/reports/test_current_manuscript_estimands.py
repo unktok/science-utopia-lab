@@ -20,10 +20,13 @@ def bodies():
 
 
 def test_current_citations_have_explicit_primary_identity_checks_not_invented_reproduction():
-    audit = json.loads((ROOT/'research/results/manuscript-bibliographic-identity-audit-v1.json').read_text())
+    audit = json.loads((ROOT/'research/results/manuscript-bibliographic-identity-audit-v2.json').read_text())
+    prior_path = ROOT / audit['prior_audit']
+    assert hashlib.sha256(prior_path.read_bytes()).hexdigest() == audit['prior_audit_file_sha256']
+    prior = json.loads(prior_path.read_text())
     cited = {k.strip() for t in bodies().values()
         for g in re.findall(r'\\cite\w*\{([^}]+)\}',t) for k in g.split(',')}
-    assert cited == set(audit['primary_records'])
+    assert cited == set(prior['primary_records']) | set(audit['additional_primary_records'])
     for name, digest in audit['bibliography_file_sha256'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest() == digest
     assert not audit['all_cited_methods_independently_reproduced']

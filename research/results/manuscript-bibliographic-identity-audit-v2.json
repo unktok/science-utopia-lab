@@ -1,0 +1,27 @@
+{
+  "schema": "scienceutopia.manuscript-bibliographic-identity-audit.v2",
+  "checked_date_JST": "2026-11-12",
+  "scope": "Add one primary-record identity and targeted implementation comparison to the preserved v1 checks; not a fresh rereading of every prior paper or independent reproduction",
+  "prior_audit": "research/results/manuscript-bibliographic-identity-audit-v1.json",
+  "prior_audit_file_sha256": "6cacb65a38021f9191d15848f8815ea0e8269ba9c86e848391038f12fe502d8f",
+  "bibliography_file_sha256": {
+    "paper/references.bib": "bdf8dadece57d657ad84ce0d5f677a1aec5b13aee834cc4db0938f70bd9dc0b3",
+    "paper/submission-sources.bib": "22c6656e56450ede28803a3e7d57700ee75ed511ee77511c9918a0a7db2bd9bc"
+  },
+  "additional_primary_records": {
+    "bracale2026institutional": "https://arxiv.org/abs/2601.11369v1"
+  },
+  "checked_fields": ["exact title", "all nine listed authors", "original preprint year", "explicit inspected version"],
+  "targeted_method_reading": {
+    "url": "https://arxiv.org/html/2601.11369v1",
+    "sections": ["4.2", "6.2", "6.2.3", "6.3"],
+    "note": "research/publication/institutional-neighbors-method-followup-v1.md",
+    "boundary": "Inspected executable manifest/policy/logging and screened selection at fixed topology; no field-wide absence or priority inference"
+  },
+  "version_note": "The unversioned abstract now resolves to v2; the manuscript cites the explicitly inspected January16 v1, not an asserted new reading of v2.",
+  "all_cited_methods_independently_reproduced": false,
+  "all_related_work_claims_fully_reaudited": false,
+  "new_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "publication_ready": false
+}
