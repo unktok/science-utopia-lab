@@ -6,6 +6,7 @@ not a general TeX dependency parser, rights/secret clearance or anonymous bundle
 import argparse
 import hashlib
 import json
+import posixpath
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
@@ -61,7 +62,7 @@ def read_file(root, name):
     return path.read_bytes()
 
 
-def literal_dependencies(bodies, entrypoint):
+def literal_dependencies(bodies, entrypoint, *, repository_parent_inputs=False):
     """Verify this manuscript's literal inputs/figures/bibs/local style, not all TeX."""
     paper = PurePosixPath(entrypoint).parent; pending = [entrypoint]; found = set()
     while pending:
@@ -76,12 +77,44 @@ def literal_dependencies(bodies, entrypoint):
                 item = item.strip()
                 suffix = {'input': '.tex', 'include': '.tex', 'bibliography': '.bib', 'usepackage': '.sty'}.get(command)
                 target = str(paper / (item + suffix if suffix and not item.endswith(suffix) else item))
+                if repository_parent_inputs:
+                    target = posixpath.normpath(target)
                 relative(target)
                 if command == 'usepackage' and target not in bodies: continue  # Cached external package.
                 if target not in bodies: raise ValueError('missing allowlisted TeX dependency: ' + target)
                 if command in ('input', 'include'): pending.append(target)
                 else: found.add(target)
     return sorted(found)
+
+
+def integrated_expected(root, receipt, entrypoint):
+    """Reconstruct the exact source/figure/support manifests of an integrated build.
+
+    No historical code or TeX is executed. Evidence/raw files are not silently
+    included; the literal dependency list and explicit policy still select files.
+    """
+    from utopia.optimization.native_numeric_designer import checked
+    checked(receipt)
+    source = receipt['source_commit']
+    if (not isinstance(source, str) or not re.fullmatch('[0-9a-f]{40}', source)
+            or receipt['entrypoint'] != entrypoint):
+        raise ValueError('exact integrated build source and entrypoint required')
+    expected = {receipt['output']: receipt['pdf_sha256']}
+    for group in ('source_files', 'figure_files', 'support_files'):
+        names = receipt[group]['files']
+        if not isinstance(names, list) or names != sorted(set(names)):
+            raise ValueError('exact ordered unique integrated manifest required')
+        hashes = {relative(name): sha(subprocess.check_output(
+            ['git', '-C', str(root), 'show', source + ':' + relative(name)])) for name in names}
+        manifest = json.dumps(hashes, sort_keys=True, separators=(',', ':')).encode()
+        if sha(manifest) != receipt[group]['manifest_sha256']:
+            raise ValueError('integrated build source manifest differs: ' + group)
+        for name, value in hashes.items():
+            if name in expected and expected[name] != value:
+                raise ValueError('conflicting integrated source manifest')
+            expected[name] = value
+    if entrypoint not in expected: raise ValueError('integrated entrypoint absent from original source manifest')
+    return expected
 
 
 def stage(root, policy, output, *, source_commit):
@@ -97,13 +130,15 @@ def stage(root, policy, output, *, source_commit):
     # No globbing or recursive source directory copy. Read once and compare later.
     bodies = {relative(name): read_file(root, name) for name in names}
     receipt = json.loads(bodies[policy['receipt']])
+    integrated = receipt.get('schema') == 'scienceutopia.integrated-capacity-authority-build.v1'
     if receipt.get('schema') not in ('scienceutopia.working-paper-build.v2',
-                                     'scienceutopia.working-paper-build.v3'):
+                                     'scienceutopia.working-paper-build.v3') and not integrated:
         raise ValueError('bound working-paper build receipt required')
     if (receipt.get('schema') == 'scienceutopia.working-paper-build.v3'
             and receipt.get('entrypoint') != policy['entrypoint']):
         raise ValueError('V3 receipt entrypoint differs from explicit policy')
-    expected = {receipt['output']: receipt['pdf_sha256'], policy['entrypoint']: receipt['tex_sha256'],
+    expected = integrated_expected(root, receipt, policy['entrypoint']) if integrated else {
+        receipt['output']: receipt['pdf_sha256'], policy['entrypoint']: receipt['tex_sha256'],
         'paper/submission-sources.bib': receipt['additional_bibliography_sha256'],
         **receipt['additional_dependencies']}
     for name, body in bodies.items():
@@ -111,7 +146,7 @@ def stage(root, policy, output, *, source_commit):
             raise ValueError('allowlisted file is unbound or changed from reviewed receipt: ' + name)
     if not {'LICENSE', receipt['output'], policy['receipt'], 'paper/neurips_2025.sty'} <= set(names):
         raise ValueError('license, template, reviewed PDF and receipt must be retained')
-    dependencies = literal_dependencies(bodies, policy['entrypoint'])
+    dependencies = literal_dependencies(bodies, policy['entrypoint'], repository_parent_inputs=integrated)
     findings = []
     for name, body in bodies.items():
         try: text = body.decode('utf-8')
@@ -127,11 +162,22 @@ def stage(root, policy, output, *, source_commit):
         'raw_or_model_data_included': False, 'original_bytes_transformed': False,
         'numerical_reproduction_or_clean_machine_build_claimed': False,
         'new_model_calls': 0, 'published_or_uploaded': False}
+    if integrated:
+        manifest.update(original_build_source_commit=receipt['source_commit'],
+                        original_build_receipt_schema=receipt['schema'])
     output.mkdir(parents=True, exist_ok=False)
     for name, body in bodies.items():
         target = output / name; target.parent.mkdir(parents=True, exist_ok=True)
         with target.open('xb') as handle: handle.write(body)
-    (output / 'REBUILD.md').write_text(README.replace('submission.tex', PurePosixPath(policy['entrypoint']).name))
+    instructions = README.replace('submission.tex', PurePosixPath(policy['entrypoint']).name)
+    if integrated:
+        instructions = instructions.replace('No data, weights, raw replies, operator settings,\n'
+            'Git history, game assets or numerical-analysis runtime are bundled.',
+            'Only the explicitly listed manuscript inputs and illustrations are included,\n'
+            'including the paper\'s UI screenshot. Raw worlds, weights, raw replies, operator\n'
+            'settings, Git history, unlisted game assets and numerical-analysis runtime\n'
+            'are not bundled.')
+    (output / 'REBUILD.md').write_text(instructions)
     if any(read_file(root, name) != body for name, body in bodies.items()):
         raise ValueError('source evidence changed while staging; retain incomplete destination for diagnosis')
     manifest['generated_instructions_sha256'] = sha((output / 'REBUILD.md').read_bytes())

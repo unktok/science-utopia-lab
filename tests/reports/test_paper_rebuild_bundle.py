@@ -145,3 +145,50 @@ def test_v2_empirical_allowlist_has_all_actual_literal_inputs():
     assert len(bundle.literal_dependencies(bodies, policy['entrypoint'])) == 10
     assert len(policy['files']) == 13
     assert all(not n.startswith(('outputs/', 'data/', 'game-ui-v2/', 'research/')) for n in policy['files'])
+
+
+def test_integrated_policy_stages_only_reviewed_manuscript_dependencies(tmp_path):
+    root = bundle.ROOT
+    p = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json').read_text())
+    r = bundle.stage(root, p, tmp_path / 'subset', source_commit='SCRIPTED-staging-source')
+    assert len(r['files']) == 51 and len(r['literal_tex_dependencies']) == 48
+    assert r['original_build_source_commit'] == '9063d6f06d5993cf23e8e8fca2aa2c845184b811'
+    assert 'research/data/pre-scale-information-v1/table-tabular.tex' in r['literal_tex_dependencies']
+    assert sum(n.endswith('.png') for n in r['files']) == 28
+    assert not any(n.startswith(('outputs/', 'data/cache/')) for n in r['files'])
+    instructions = (tmp_path / 'subset/REBUILD.md').read_text()
+    assert 'integrated.tex' in instructions and 'UI screenshot' in instructions
+    assert 'unlisted game assets' in instructions and not r['published_or_uploaded']
+
+
+@pytest.mark.parametrize('change', ['source', 'manifest', 'entrypoint', 'changed-input', 'missing-parent-input'])
+def test_integrated_original_receipt_and_literal_parent_inputs_cannot_be_weakened(tmp_path, change, monkeypatch):
+    from copy import deepcopy
+    from utopia.system.design_patch import digest
+    root = bundle.ROOT
+    p = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json').read_text())
+    read = bundle.read_file
+    def modified(base, name):
+        body = read(base, name)
+        if name == p['receipt']:
+            r = deepcopy(json.loads(body))
+            if change == 'source': r['source_commit'] = 'bad'
+            elif change == 'manifest': r['figure_files']['manifest_sha256'] = '0' * 64
+            elif change == 'entrypoint': r['entrypoint'] = 'paper/wrong.tex'
+            r.pop('content_sha256'); r['content_sha256'] = digest(r)
+            return json.dumps(r).encode()
+        if change == 'changed-input' and name == 'paper/integrated.tex': return body + b'\nSCRIPTED changed input'
+        return body
+    monkeypatch.setattr(bundle, 'read_file', modified)
+    if change == 'missing-parent-input': p['files'].remove('research/data/pre-scale-information-v1/table-tabular.tex')
+    with pytest.raises(ValueError): bundle.stage(root, p, tmp_path / 'subset', source_commit='SCRIPTED')
+    assert not (tmp_path / 'subset').exists()
+
+
+def test_repository_parent_inputs_are_explicit_and_cannot_escape_root():
+    bodies = {'paper/main.tex': b'\\input{../research/table}', 'research/table.tex': b'SCRIPTED table'}
+    with pytest.raises(ValueError): bundle.literal_dependencies(bodies, 'paper/main.tex')
+    assert bundle.literal_dependencies(bodies, 'paper/main.tex', repository_parent_inputs=True) == sorted(bodies)
+    for content in (b'\\input{../../outside}', b'\\input{/private/outside}'):
+        with pytest.raises(ValueError):
+            bundle.literal_dependencies({'paper/main.tex': content}, 'paper/main.tex', repository_parent_inputs=True)
