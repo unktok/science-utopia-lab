@@ -5,10 +5,14 @@ Docker controls, frozen-source reconstruction, checkpoints and losses are real
 software paths. This is not an actual-Qwen actuation result.
 """
 from pathlib import Path
+from types import SimpleNamespace
 
 from scripts import run_native_catalog_actuation_v1 as driver
 from scripts import audit_native_catalog_actuation_v1 as audit
 from scripts.reports.pre_scale_costs_v1 import analyze as costs
+from scripts.reports.native_catalog_actuation_v1 import export as choice_export
+from scripts.reports.native_institution_effect_trace_v1 import export as effect_export
+from scripts.reports.native_observed_request_classes_v1 import export as request_export
 from tests.reports.test_native_catalog_actuation_v1 import evidence, seal
 from tests.reports.test_native_capacity_full_path_v1 import install_scripted_provider
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
@@ -68,3 +72,18 @@ def test_production_run_original_checkpoint_measurement_actual_auditor_and_costs
     assert len(projected['scientist']['physical_response_caches']) == 3
     assert projected['scientist']['completed_responses'] > 0
     assert not projected['auxiliary']['events'] and 'common_content_observer' not in projected
+    for label, export in [('choices', choice_export), ('effects', effect_export), ('requests', request_export)]:
+        paths_out = [tmp_path / (label + '-one'), tmp_path / (label + '-two')]
+        for out in paths_out:
+            args = SimpleNamespace(run=root, audit_one=paths[0], audit_two=paths[1], output=out,
+                frozen_source=driver.ROOT, scope='catalog-actuation-controls')
+            export(args)
+        assert {f.name: f.read_bytes() for f in paths_out[0].iterdir()} == {
+            f.name: f.read_bytes() for f in paths_out[1].iterdir()}
+        report = driver.read(paths_out[0] / 'report.json')
+        assert len(report['worlds']) == 3
+        if label == 'choices':
+            assert report['worlds'][0]['direction_requests']
+            assert not report['worlds'][2]['direction_requests']
+            assert report['worlds'][2]['catalog_project_effects']
+            assert all(r['literal_instruction_present'] for r in report['worlds'][1]['direction_requests'])

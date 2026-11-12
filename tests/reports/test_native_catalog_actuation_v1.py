@@ -6,6 +6,7 @@ import pytest
 
 from scripts import run_native_catalog_actuation_v1 as driver
 from scripts import finish_native_catalog_actuation_v1 as finish
+from scripts import finish_native_catalog_readouts_v1 as readouts
 from tests.reports.test_native_capacity_objective_loop_v1 import plan as original_plan
 from utopia.optimization.native_bounded_staged_designer import CompletionUnknown
 from utopia.system.design_patch import clone, digest
@@ -95,3 +96,13 @@ def test_finish_connects_original_reader_and_writer_without_new_inference(monkey
     finish.run(SimpleNamespace())
     assert calls[0]['audit_module'] == 'scripts.audit_native_catalog_actuation_v1'
     assert calls[0]['writer_command'] == 'scripts.run_native_catalog_actuation_v1 run'
+
+
+@pytest.mark.parametrize('kind', ['choices', 'effects', 'requests'])
+def test_readout_waits_for_actual_original_closure_and_explicit_scope(tmp_path, monkeypatch, kind):
+    calls = []
+    monkeypatch.setattr(readouts, 'finish', lambda args, **kw: calls.append(kw))
+    readouts.run(SimpleNamespace(kind=kind, frozen_source=tmp_path))
+    assert calls[0]['preceding_schema'] == 'scienceutopia.native-catalog-actuation-finish.v1'
+    assert calls[0]['continuation_schema'] == 'scienceutopia.native-catalog-' + kind + '-finish.v1'
+    if kind == 'effects': assert 'catalog-actuation-controls' in calls[0]['report_extra_arguments']
