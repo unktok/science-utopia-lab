@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Literal first plans versus actual edits and outcomes](results/native-designer-initial-plans-v1.md):
+  every one of the eight local sessions initially targets the seeded selection/
+  feature chain; final graphs stay unchanged. Exact first actions join original
+  audited request identities, with two byte-identical exports. No causal claim
+  about model cognition, capability documentation or a prospective remedy.
 - [Prospective native information interface discovery](components/native-capability-discovery-v15.md#november12-information-interface-extension):
   detailed opening observations and arbitrary context delivery are now readable
   through the existing inspect API, without new privileges or policy templates.

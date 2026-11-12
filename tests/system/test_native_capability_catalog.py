@@ -286,3 +286,25 @@ def test_observation_shape_on_original_native_years(tmp_path, fixed_corpus, monk
         assert {s['year'] for s in observed} == set(range(1, 7))
     finally:
         sim.llm.response_cache.close()
+
+
+def test_retained_information_extension_is_bound_to_actual_old_source_and_current_contract():
+    import ast
+    import subprocess
+    from utopia.optimization.native_numeric_designer import checked
+    root = Path(__file__).resolve().parents[2]
+    r = checked(json.loads((root/'research/results/native-information-capability-discovery-v1.json').read_text()))
+    old = subprocess.check_output(['git', 'show', r['prior_scientific_source_commit']+
+                                   ':utopia/system/native_capability_catalog.py'], cwd=root)
+    assert hashlib.sha256(old).hexdigest() == r['prior_catalog_source_sha256']
+    # Parse this original data source; never import/execute historical code.
+    fields = next(ast.literal_eval(n.value) for n in ast.parse(old).body
+        if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'CATALOG_IMPLEMENTATIONS' for t in n.targets))
+    assert all(identity not in fields for identity in r['new_detailed_implementations'])
+    catalog = native_capability_catalog(); index = catalog['index']
+    assert catalog['content_sha256'] == r['catalog_content_sha256']
+    assert len(catalog['cards']) == r['detailed_cards'] == 10
+    assert len(index['implementations']) == r['index_implementations'] == 36
+    assert len(json.dumps(catalog).encode()) == r['full_catalog_json_bytes']
+    assert r['verification']['passed'] == 89 and not r['actual_qwen_discovery_or_benefit_demonstrated']
+    assert not r['new_native_privileges'] and r['new_campaign_requires_fresh_source_bound_readiness']

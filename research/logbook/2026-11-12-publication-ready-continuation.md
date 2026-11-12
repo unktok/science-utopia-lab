@@ -881,3 +881,29 @@ default registrations and one conditional code implementation. It remains
 called. The active61a1753/5925d5b/d2a3391 sources stay untouched. Future real
 authoring still needs fresh source/model/backend-bound readiness and actual
 native loss evaluation. This advances discoverability/R4, not invention or R2.
+
+## Literal first plans joined to realized systems
+
+At c492ab6,118 plan/catalog/author/bounded-context/readiness checks pass20.79s
+with an explicitly observed exit0. Reader c492 then reopens the exact closed
+development plan/report and both original audits, checks the full raw inventory
+before/after and joins each request hash to its actual first planner action.
+All eight initial target lists concern the existing selection/feature chain;
+the literal plan text is retained, not interpreted as true bottleneck analysis.
+Final edit fields and six complete/two null outcomes stay separate. Two actual
+two-file exports agree, with original hashes and every identity preserved.
+
+These observations do not explain why the designer concentrated on that chain.
+They distinguish expressivity, initial intent and realized change, without
+making rewiring or positive improvement a condition for accepting proposals.
+The discoverability extension is not credited with any actual-model remedy.
+The current58-page PDF retains its original binding and does not pretend to
+contain this subsequent path readout.
+
+A read-only local model-list GET confirms only existing aliases; the initial
+sandbox connection failure is not a server/science failure, and the escalated
+GET succeeds. No model is loaded, replaced or downloaded and no inference is
+sent. Earlier35B thinking/full-output evidence is retained, not retried merely
+because a later plan is unpersuasive. The original native evaluation reaches
+12/18 complete with no failures at the01:21UTC checkpoint; its writer and the
+two queued downstream readers remain responsible for the rest.
