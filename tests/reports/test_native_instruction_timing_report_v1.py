@@ -6,6 +6,9 @@ import sqlite3
 import pytest
 
 from scripts.reports.native_instruction_timing_v1 import direction_input, native_history, completed_pairs
+from scripts.reports import native_instruction_timing_v1 as module
+from tests.reports.test_native_instruction_timing_support_v1 import prospective_plan
+from utopia.optimization.native_numeric_designer import save, checked
 from utopia.system.design_patch import digest
 
 MESSAGE='SCRIPTED advice, not an actual research condition'
@@ -95,3 +98,34 @@ def test_ordered_actual_sqlite_pair_api_retains_uncommitted_inputs(tmp_path):
     assert len(wires)==3 and list(replies)==[0,2]
     with sqlite3.connect(tmp_path/'replies/responses.sqlite') as db:db.execute("UPDATE replies SET data_sha='wrong'")
     with pytest.raises(ValueError,match='response body'):completed_pairs(tmp_path)
+
+
+def test_full_export_api_keeps_three_cases_and_literal_sealed_outputs(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    p=prospective_plan();root=tmp_path/'raw';root.mkdir();save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
+    worlds=[];states={}
+    for job in p['jobs']:
+        cell=root/'controls'/job['identity']/'worlds'/(job['identity']+'-s61001');(cell/'replies').mkdir(parents=True)
+        with sqlite3.connect(cell/'replies/responses.sqlite') as db:
+            db.execute('CREATE TABLE replies (payload_sha TEXT,outcome TEXT,data TEXT,data_sha TEXT)')
+        (cell/'wire-requests.jsonl').write_text('')
+        for year in (1,2,3,4):states[cell.name,year]={'year':year,'ecosystem_data':{'agents':[]}}
+        worlds.append({**job,'status':'complete','scores':{'throughput':0,'content-utility':0},
+            'loaded':{'context':str(cell/'loaded-role-context-000.json')},
+            'physical_proof':{'annual_checkpoints':[{'year':year,'SCRIPTED':'decoder mocked'} for year in (1,2,3,4)]}})
+    a={'schema':'scienceutopia.native-instruction-timing-support-audit.v1','source_commit':p['source_commit'],
+        'plan_sha256':p['content_sha256'],'closure':{'terminal':{'status':'closed'}},
+        'source_proof':{'status':'verified-exact-source-closure','SCRIPTED':True},
+        'new_model_calls':0,'new_code_executions':0,'worlds':worlds,
+        'raw_inventory_sha256':digest(module._inventory(root))}
+    one,two=tmp_path/'audit-one.json',tmp_path/'audit-two.json';save(one,a);save(two,a)
+    monkeypatch.setattr(module,'pinned_revision',lambda *args:p['source_commit'])
+    monkeypatch.setattr(module,'checkpoint',lambda cell,item,system:states[cell.name,item['year']])
+    before=module._inventory(root)
+    for name in ('export-one','export-two'):
+        module.export(SimpleNamespace(run=root,audit_one=one,audit_two=two,output=tmp_path/name))
+    assert (tmp_path/'export-one/report.json').read_bytes()==(tmp_path/'export-two/report.json').read_bytes()
+    report=checked(json.loads((tmp_path/'export-one/report.json').read_text()))
+    assert len(report['worlds'])==3 and all(w['direction_requests']==[] for w in report['worlds'])
+    assert not report['policy_selection'] and not report['new_model_calls']
+    assert module._inventory(root)==before
