@@ -288,7 +288,7 @@ def test_observation_shape_on_original_native_years(tmp_path, fixed_corpus, monk
         sim.llm.response_cache.close()
 
 
-def test_retained_information_extension_is_bound_to_actual_old_source_and_current_contract():
+def test_retained_information_extension_is_bound_to_actual_old_source_and_literal_catalog():
     import ast
     import subprocess
     from utopia.optimization.native_numeric_designer import checked
@@ -301,10 +301,43 @@ def test_retained_information_extension_is_bound_to_actual_old_source_and_curren
     fields = next(ast.literal_eval(n.value) for n in ast.parse(old).body
         if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'CATALOG_IMPLEMENTATIONS' for t in n.targets))
     assert all(identity not in fields for identity in r['new_detailed_implementations'])
-    catalog = native_capability_catalog(); index = catalog['index']
+    # A later native capability legitimately changes the current API. Rebuild
+    # this historical receipt from its exact retained original-source export,
+    # not from whatever implementations are installed today.
+    catalog = checked(json.loads((root/'research/data/native-information-capability-discovery-v1/catalog.json').read_text()))
+    index = catalog['index']
     assert catalog['content_sha256'] == r['catalog_content_sha256']
     assert len(catalog['cards']) == r['detailed_cards'] == 10
     assert len(index['implementations']) == r['index_implementations'] == 36
     assert len(json.dumps(catalog).encode()) == r['full_catalog_json_bytes']
+    frozen_catalog_source = subprocess.check_output(['git', 'show', r['analysis_source_commit']+
+        ':utopia/system/native_capability_catalog.py'], cwd=root)
+    assert hashlib.sha256(frozen_catalog_source).hexdigest() == catalog['catalog_source_sha256']
+    sources = {}
+    def visit(value):
+        if isinstance(value, dict):
+            if set(('path', 'sha256', 'callable')) <= set(value):
+                assert value['path'] not in sources or sources[value['path']] == value['sha256']
+                sources[value['path']] = value['sha256']
+            for item in value.values():
+                visit(item)
+        elif isinstance(value, list):
+            for item in value:
+                visit(item)
+    visit(catalog)
+    assert sources
+    for name, expected in sources.items():
+        blob = subprocess.check_output(['git', 'show', r['analysis_source_commit']+':'+name], cwd=root)
+        assert hashlib.sha256(blob).hexdigest() == expected
     assert r['verification']['passed'] == 89 and not r['actual_qwen_discovery_or_benefit_demonstrated']
     assert not r['new_native_privileges'] and r['new_campaign_requires_fresh_source_bound_readiness']
+
+
+def test_current_catalog_exposes_catalog_project_without_a_shortest_policy_or_old_domain_bypass():
+    from utopia.system.native_catalog_planning import ACTION
+    catalog = native_capability_catalog()
+    domain = catalog['cards']['native.domain.commands.v1']
+    assert ACTION in domain['action_payload_schemas']
+    assert domain['action_payload_schemas'][ACTION]['required'] == ['assignment']
+    assert any('exact original catalog content/duration' in s for s in domain['semantic_constraints'])
+    assert any(v['path'] == 'utopia/system/native_catalog_planning.py' for v in domain['validators'])
