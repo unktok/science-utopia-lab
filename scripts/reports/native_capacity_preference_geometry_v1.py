@@ -4,6 +4,7 @@ import csv
 from fractions import Fraction
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 from scripts.reports.native_preference_regions_v1 import exact, regions
 from utopia.optimization.native_jobs import pinned_revision
@@ -151,10 +152,31 @@ def export(args):
         'score_groups':len(summary['curves']),'new_optimization':False}))
 
 
+def export_from_audits(args):
+    """Rebuild the strict source report before projecting its literal scores."""
+    from scripts.reports.native_capacity_objective_loop_v1 import export as source_export
+    output=args.output.resolve()
+    if output.exists():
+        raise ValueError('fresh separate output required')
+    source_export(SimpleNamespace(run=args.run,audit_one=args.audit_one,
+        audit_two=args.audit_two,output=output/'source-report'))
+    export(SimpleNamespace(report=output/'source-report/report.json',output=output/'geometry'))
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--report',type=Path,required=True);parser.add_argument('--output',type=Path,required=True)
-    export(parser.parse_args())
+    mode=parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument('--report',type=Path);mode.add_argument('--run',type=Path)
+    for key in ('audit-one','audit-two'):parser.add_argument('--'+key,type=Path)
+    parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
+    if args.run is not None:
+        if args.audit_one is None or args.audit_two is None:
+            parser.error('raw mode requires two exact original audits')
+        export_from_audits(args)
+    else:
+        if args.audit_one is not None or args.audit_two is not None:
+            parser.error('report and raw-audit modes are separate')
+        export(args)
 
 
 if __name__=='__main__':main()

@@ -95,3 +95,33 @@ def test_two_actual_png_svg_csv_exports_agree_and_keep_source_report(tmp_path,mo
         summary=module.checked(json.loads((out/'summary.json').read_text()))
         assert not summary['new_native_worlds'] and not summary['publication_ready']
     assert inventories[0]==inventories[1] and path.read_bytes()==before
+
+
+def test_raw_adapter_uses_the_actual_sealed_source_report_api(tmp_path,monkeypatch):
+    from scripts.reports import native_capacity_objective_loop_v1 as source
+    monkeypatch.setattr(module,'pinned_revision',lambda _:'d'*40)
+    calls=[]
+    def source_export(args):
+        calls.append(args)
+        module.save(args.output/'report.json',{k:v for k,v in report().items() if k!='content_sha256'})
+    monkeypatch.setattr(source,'export',source_export)
+    args=SimpleNamespace(run=tmp_path/'raw',audit_one=tmp_path/'audit-one.json',
+        audit_two=tmp_path/'audit-two.json',output=tmp_path/'out')
+    module.export_from_audits(args)
+    assert len(calls)==1 and calls[0].run==args.run
+    assert (calls[0].audit_one,calls[0].audit_two)==(args.audit_one,args.audit_two)
+    original=module.checked(json.loads((args.output/'source-report/report.json').read_text()))
+    projected=module.checked(json.loads((args.output/'geometry/summary.json').read_text()))
+    assert projected['original_report_content_sha256']==original['content_sha256']
+    with pytest.raises(ValueError,match='fresh'):module.export_from_audits(args)
+
+
+def test_one_shot_finish_uses_existing_strict_capacity_closure_contract(monkeypatch):
+    from scripts import finish_native_capacity_preference_geometry_v1 as finish
+    seen=[];monkeypatch.setattr(finish,'finish',lambda args,**kwargs:seen.append((args,kwargs)))
+    args=SimpleNamespace(run='SCRIPTED',analysis='SCRIPTED',output='SCRIPTED')
+    finish.run(args)
+    assert seen==[(args,{'plan_schema':'scienceutopia.native-capacity-objective-loop.v1.plan',
+        'preceding_schema':'scienceutopia.native-capacity-objective-loop-finish.v1',
+        'continuation_schema':'scienceutopia.native-capacity-preference-geometry-finish.v1',
+        'report_module':'scripts.reports.native_capacity_preference_geometry_v1'})]
