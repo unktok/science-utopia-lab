@@ -18,10 +18,7 @@ from utopia.system.native_resource_transfers import EVENT
 from utopia.utils.data_utils import file_sha256
 
 
-@pytest.mark.parametrize('papers', [1, 2])
-@pytest.mark.parametrize('allocation', [None, 'reserve-proximity', 'completion-priority'])
-def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
-        tmp_path, fixed_corpus, monkeypatch, papers, allocation):
+def install_scripted_provider(tmp_path, monkeypatch, papers):
     install_transport(monkeypatch); calls = []
     class Provider(FakeHTTPModel):
         def batch_completions(self, executor, requests, *, seed_ctx, attempt):
@@ -50,6 +47,14 @@ def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
         value.thinking_override = False; value.enable_thinking = False; value.server_backend = 'ollama'
         return value
     monkeypatch.setattr('utopia.models.models.VLLMServerModel', model)
+    return calls
+
+
+@pytest.mark.parametrize('papers', [1, 2])
+@pytest.mark.parametrize('allocation', [None, 'reserve-proximity', 'completion-priority'])
+def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
+        tmp_path, fixed_corpus, monkeypatch, papers, allocation):
+    install_scripted_provider(tmp_path, monkeypatch, papers)
     conditions = capacity_conditions(papers_per_project=papers)
     experiment = {'protocol': 'SCRIPTED-capacity-full-native-path'}
     factory = LocalQwenNativeFactory(tmp_path/'runs', tmp_path/'cache', years=4, corpus_years=4,
