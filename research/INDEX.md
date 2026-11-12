@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Reviewed59-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-objective-evaluation-working-paper.pdf)
+  and [source/build/layout binding](../paper/integrated-objective-evaluation-build-v1.json):
+  adds all closed18/21 fixed T/U comparisons, actual costs and print-readable
+  all-seed figure. Two cache-only builds/text/logs agree, all59 layouts and new
+  page41 at150dpi reviewed, zero clipping/unresolved references. All earlier
+  PDFs/tracks retained. Reporting completion is not a publication-ready verdict.
 - [Closed fixed T/U evaluation](results/native-objective-fixed-evaluation-v1.md)
   and [all-seed data/costs/effects](data/native-objective-fixed-evaluation-v1/README.md):
   18 actual worlds/21 logical cells, matching double original cold closure and

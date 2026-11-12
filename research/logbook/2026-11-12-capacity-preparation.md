@@ -27,3 +27,22 @@ capacity optimization or designer readiness certificate exists yet. Exact
 reference systems, finite execution/audit contract and real readiness remain
 before dispatch. The study must answer a meaningful objective-to-institution
 question, not count tests or run unchanged comparisons until they win.
+
+## Closed fixed evaluation integrated into a reviewed manuscript
+
+Atc08bd351714166d5237143ba30efba9af5913f6a the current manuscript includes all
+18 physical/21 logical T/U evaluation cells, each comparator and exact costs.
+A print-size figure is rendered twice from the actual public report; all
+six source table rows are checked against original scores, not hand-asserted
+conclusions. Sixteen source/retention checks pass3.22s. The first renderer
+attempt used an incorrect guessed schema name, rejected before output; its
+successor imports the actual schema and regresses the literal public artifact.
+
+Two cached/untrusted Tectonic builds agree in text and logs. All59 page layouts
+are reviewed, with fresh150dpi detail at newpage41. There are28figures/23tables,
+25references,23521 bbox word tags and zero off-page words, unresolved references
+or layout warnings. Poppler bbox output contains a character invalid in XML;
+HTMLParser counts every actual word tag instead of dropping invalid text.
+All prior PDFs keep their original bytes. The new59-page receipt binds this
+exact source, not later runtime edits. Timing controls remain a separate live
+experiment, and stable strong-rule advantage/R2/R3/R6 remain open.
