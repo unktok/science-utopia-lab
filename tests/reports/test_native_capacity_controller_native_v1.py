@@ -5,6 +5,7 @@ reference context, loss feedback and cold physical proofs are not mocked.
 This is software integration, not evidence about actual Qwen policy design.
 """
 from pathlib import Path
+from types import SimpleNamespace
 
 from scripts import run_native_capacity_objective_loop_v1 as driver
 from scripts.native_benchmark_physical import physical_proof
@@ -48,7 +49,9 @@ def test_real_references_two_objective_histories_feedback_selection_and_nine_col
         return {'base_patch':None,'factors':[],'continuous':[],
             'provenance':{'kind':'SCRIPTED-explicit-identity-not-LLM-invention'}}
     monkeypatch.setattr(driver,'execute',generate)
-    root=tmp_path/'study';root.mkdir();driver.run(root)
+    root=tmp_path/'study';root.mkdir()
+    driver.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
+    driver.run(root)
     assert driver.read(root/'terminal.json')['status']=='closed'
     assert len(gates)==5 and len(requests)==4
     assert [len(r['history']) for r in requests]==[0,0,1,1]
@@ -66,6 +69,7 @@ def test_real_references_two_objective_histories_feedback_selection_and_nine_col
         c=driver.campaign(root,p,objective,driver.read(root/'developer-reference-context.json'))
         observations.extend(o for r in c.state['records'] for o in r['observations'])
     assert len(observations)==9
+    audited_worlds=[]
     for observation in observations:
         m=observation['metadata'];assert observation['status']=='complete' and len(m['runs'])==1
         evidence=m['runs'][0];checkpoint=Path(evidence['checkpoint_path']);cell=checkpoint.parent
@@ -79,3 +83,31 @@ def test_real_references_two_objective_histories_feedback_selection_and_nine_col
             [checkpoint.parent/f'portable_checkpoint_year_{y}.json.gz' for y in range(5)]),
             'measurement_adapter_contract_sha256':digest(p['measurement_contract'])}
         assert m['measurements']==[measured]
+        from scripts.reports.native_institution_effect_trace_v1 import trace_world
+        world={'identity':observation['suggestion_id'],'role':'SCRIPTED-native-controller',
+            'seed':driver.SEED,'system':observation['candidate'],'status':'complete','physical_proof':proof,
+            # The views use only this path's parent; role/calibration identity
+            # is explicitly mocked in this software fixture, not attested here.
+            'loaded':{'context':str(cell/'SCRIPTED-loaded-context.json')}}
+        trace=trace_world(cell,world,p['source_commit'])
+        assert len(trace['annual'])==4
+        assert sum(y['active_founders'] for y in trace['annual'])==measured['metrics'][driver.METRIC]['value']
+        assert all(len(y['founders'])==5 for y in trace['annual'])  # attrition is inactivity, not deletion
+        audited_worlds.append(world)
+    # Exercise the actual public readout boundary, not just the primitive.
+    # The audit source/role attestations here are MOCKED; all physical proofs,
+    # native states, ledger/code attribution and readout files above are real.
+    from scripts.analyze_native_open_v7 import _inventory
+    from scripts.reports.native_institution_effect_trace_v1 import export as effects
+    from scripts.reports.native_observed_request_classes_v1 import export as request_classes
+    audits=[tmp_path/'SCRIPTED-audit-one.json',tmp_path/'SCRIPTED-audit-two.json']
+    body={'schema':'scienceutopia.native-capacity-objective-loop-audit.v1','source_commit':p['source_commit'],
+        'plan_sha256':p['content_sha256'],'closure':{'terminal':driver.read(root/'terminal.json')},
+        'source_proof':{'status':'verified-exact-source-closure','SCRIPTED':'not independently attested'},
+        'raw_inventory_sha256':digest(_inventory(root)),'new_model_calls':0,'new_code_executions':0,'worlds':audited_worlds}
+    for path in audits:driver.save(path,body)
+    args=SimpleNamespace(run=root,audit_one=audits[0],audit_two=audits[1],
+        output=tmp_path/'effects',frozen_source=driver.ROOT,scope='capacity-objective-development')
+    effects(args);args.output=tmp_path/'request-classes';request_classes(args)
+    assert len(driver.read(tmp_path/'effects/report.json')['worlds'])==9
+    assert len(driver.read(tmp_path/'request-classes/report.json')['worlds'])==9
