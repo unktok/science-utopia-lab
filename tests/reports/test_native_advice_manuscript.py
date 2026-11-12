@@ -22,7 +22,7 @@ def test_advice_section_uses_all_closed_conditions_without_claiming_equivalence(
                      'complete ordered model-input and literal-response sequences differ',
                      'not establish general instruction ineffectiveness',
                      'there are no designer proposals', 'not add an adoption'):
-        assert boundary.lower() in text.lower()
+        assert boundary.lower() in ' '.join(text.lower().split())
     assert r'\input{integrated/native-advice}' in (ROOT/'paper/integrated.tex').read_text()
 
 
