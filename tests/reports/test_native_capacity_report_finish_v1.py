@@ -16,6 +16,7 @@ def test_exact_capacity_scopes_double_export_or_stop_without_retry(tmp_path,monk
     save(raw/'plan.json',{'schema':'scienceutopia.native-capacity-objective-loop.v1.plan','source_commit':'a'*40})
     save(analysis/'started.json',{'schema':'scienceutopia.native-capacity-objective-loop-finish.v1',
         'scientific_source_commit':'a'*40,'plan_file_sha256':core.sha(raw/'plan.json')})
+    (analysis/'ended.json').write_text('SCRIPTED closed; wait primitive mocked below')
     monkeypatch.setattr(core,'git_binding',lambda root:'b'*40)
     def wait(directory):
         if failure=='closure':raise ValueError('SCRIPTED stopped original chain')
