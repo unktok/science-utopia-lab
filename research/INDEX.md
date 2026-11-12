@@ -25,11 +25,12 @@ Historical documents retain their paths and source identities.
   Final-source checks pass; the actual initial local35B calibration passes all28
   controls and the frozen pilot is running its common references. Own proposals
   and improvement are not yet established; see STATUS for the live boundary.
-- [Reviewed59-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-objective-evaluation-working-paper.pdf)
-  and [source/build/layout binding](../paper/integrated-objective-evaluation-build-v1.json):
-  adds all closed18/21 fixed T/U comparisons, actual costs and print-readable
-  all-seed figure. Two cache-only builds/text/logs agree, all59 layouts and new
-  page41 at150dpi reviewed, zero clipping/unresolved references. All earlier
+- [Reviewed61-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-advice-working-paper.pdf)
+  and [source/build/layout binding](../paper/integrated-advice-build-v1.json):
+  retains all closed18/21 fixed T/U comparisons and adds the three closed advice
+  controls, actual input/choice figure, table and costs, plus direct governance
+  prior art. Two cache-only builds/text/logs agree, all61 layouts and new
+  pages42--43 at150dpi reviewed, zero clipping/unresolved references. All earlier
   PDFs/tracks retained. Reporting completion is not a publication-ready verdict.
 - [Closed fixed T/U evaluation](results/native-objective-fixed-evaluation-v1.md)
   and [all-seed data/costs/effects](data/native-objective-fixed-evaluation-v1/README.md):

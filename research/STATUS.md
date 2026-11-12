@@ -2,6 +2,18 @@
 
 ## Active publication-ready goal
 
+**November12 12:48JST / 03:48UTC:** the reviewed integrated draft is now
+[61 pages/29 figures/24 tables/26 references](../paper/integrated-advice-build-v1.json).
+All three closed advice controls enter with their actual delivery/choice
+figure, complete table, distinct full-input/resource histories and costs.
+Direct executable-governance prior art is cited at the inspected v1. Two
+cached builds have identical text/logs; all61 layouts and new pages42--43 at
+150dpi are reviewed, with24397 word tags accounted and none off-page. The
+preliminary contents orphan is removed; body text and prior PDFs are preserved.
+20 manuscript/identity/closed-data/old-PDF/doc checks pass4.53s at4ad81b9 before
+this artifact retention. The T/P pilot remains on its fifth reference, not
+completed invention or an improvement claim. R2/R3/R6 and goal remain open.
+
 **November12 12:40JST / 03:40UTC:** the live pilot has reached its fifth
 common reference, reviewed-all-completion-priority (progress03:37:02UTC).
 No own proposal/improvement is claimed. The original writer and all four

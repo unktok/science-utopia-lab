@@ -2,10 +2,12 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
-[59-page integrated draft](../output/pdf/science-utopia-lab-integrated-objective-evaluation-working-paper.pdf),
-with28 figures and23 tables and no artificial page cap.
-Its [source, evidence, build and visual binding](integrated-objective-evaluation-build-v1.json)
-records two cache-only builds and the review of all59 page layouts.
+[61-page integrated draft](../output/pdf/science-utopia-lab-integrated-advice-working-paper.pdf),
+with29 figures and24 tables and no artificial page cap.
+Its [source, evidence, build and visual binding](integrated-advice-build-v1.json)
+records two cache-only builds and the review of all61 page layouts, with
+150dpi detail review of the new table/figure pages42--43. A one-entry contents
+orphan in the preliminary62-page build is removed without shrinking body text.
 
 It retains the objective/abstraction/method argument, parameter held-out study,
 actual structural cases, conditional-gradient experiments, nested design,
@@ -33,14 +35,20 @@ costs. T ties strong connected accept-all rules; cross-U differences against
 reviewer-free accept-all are mixed. U-selected literally retains a reference.
 This is not independent optimizer replication or stable strong-rule superiority.
 
-The subsequently closed [three advice-timing controls](../research/results/native-instruction-timing-v1.md)
-postdate this PDF. The separate [T/P pilot](../research/components/native-capacity-objective-loop-v1.md)
+The closed [three advice-timing controls](../research/results/native-instruction-timing-v1.md)
+now enter this PDF: actual0/10,10/10,5/10 input delivery but identical selected
+topics/durations and T/U; complete model inputs/replies and some resources
+differ. The direct Institutional AI precedent is cited at its inspected v1,
+without a graph-artifact or screened-selection priority claim. The separate
+[T/P pilot](../research/components/native-capacity-objective-loop-v1.md)
 is active, not completed paper evidence. [Current research status](../research/STATUS.md)
 and [evaluation/analysis design](../research/components/native-objective-fixed-evaluation-v1.md)
 describe that boundary. The important main result and publication-ready
 judgment remain open; this is not a submitted, anonymous or release-cleared paper.
 
-The prior [55-page content-overlap draft](../output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf)
+The prior [59-page fixed T/U draft](../output/pdf/science-utopia-lab-integrated-objective-evaluation-working-paper.pdf)
+and [its receipt](integrated-objective-evaluation-build-v1.json),
+[55-page content-overlap draft](../output/pdf/science-utopia-lab-integrated-content-overlap-working-paper.pdf)
 and [its receipt](integrated-content-overlap-build-v1.json),
 [54-page resource draft](../output/pdf/science-utopia-lab-integrated-native-resource-working-paper.pdf),
 its [own source-specific receipt](integrated-native-resource-build-v1.json),52-page,49-page,

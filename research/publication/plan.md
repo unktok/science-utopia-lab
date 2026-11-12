@@ -8,8 +8,8 @@
 
 原稿方針の更新：研究内容を先にページ数で削らず、
 [統合原稿](../../paper/integrated.tex)を全体の正本とする。
-最新の確認済みPDFは[59ページ版](../../paper/README.md)であり、
-[対応するビルド記録](../../paper/integrated-objective-evaluation-build-v1.json)を持つ。
+最新の確認済みPDFは[61ページ版](../../paper/README.md)であり、
+[対応するビルド記録](../../paper/integrated-advice-build-v1.json)を持つ。
 構造・勾配・目的別parameter・UIを含め、科学的に残す内容と重複した開発記録を
 [編集／証拠対応表](../../paper/integrated-content-map.md)で区別した。
 投稿先確定後に焦点と正式規則に沿った投稿版を切り出す。旧12ページ稿と過去の

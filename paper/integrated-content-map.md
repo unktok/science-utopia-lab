@@ -33,7 +33,14 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
-- Latest reviewed59-page PDF: closed61a1753 development plus all18 physical/
+- Latest reviewed61-page PDF additionally includes all three closed advice
+  controls, their actual delivery/choice figure, all-condition table and costs;
+  no complete behavioral-equivalence or general instruction-null claim. The
+  directly related Institutional AI manifest/policy/screening implementation
+  is credited at its inspected v1. integrated-advice-build-v1.json binds two
+  cached builds, all61 layouts and150dpi new pages42--43. The live T/P pilot is
+  not a completed result. Previous59-page PDF and all older receipts stay fixed.
+- Previous reviewed59-page PDF: closed61a1753 development plus all18 physical/
   21 logical fixed T/U evaluation cells, actual costs and print-readable
   all-seed comparison. All59 layouts and two cache-only builds are checked;
   integrated-objective-evaluation-build-v1.json binds this snapshot. The newer

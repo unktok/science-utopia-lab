@@ -4,6 +4,13 @@
 goal toolにも同じ目標を設定した。以前の有限パッケージ完了と、研究の投稿準備完了を分ける。
 現時点は主会議readyではなく、旧稿の自己評価を変えない。
 
+November12 12:48JST更新：[61頁統合稿](../../paper/integrated-advice-build-v1.json)へ
+閉鎖した助言3対照を全条件・実入力／行動の区別・実費用とともに追加した。
+直接近いInstitutional AIも引用し、graph artifact／制度選択自体を新規性にしない。
+二回cached build／text／log一致・全61頁／新42--43頁150dpiを確認し、旧稿は保持。
+別の有限T/P探索は実際の初期35B校正28/28通過後、5本目の共通参照を実行中。
+R4/R5の更新であり、重要なR2、独立反復R3、最終R6はまだ未達である。
+
 November12 11:30JST更新：[固定T/U評価](../results/native-objective-fixed-evaluation-v1.md)は
 18実world／21logical比較を正常閉鎖し、二回元source監査・費用・全結果／作用exportが一致。
 Tは強い全採択と全3seedで同点、Uの差は比較相手でmixed、U選択はliteral参照保持。

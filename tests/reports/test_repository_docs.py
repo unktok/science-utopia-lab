@@ -65,17 +65,17 @@ def test_inline_parser_reports_real_line_number():
 
 
 def test_front_doors_distinguish_reviewed_snapshot_closed_and_live_studies():
-    receipt = json.loads((ROOT / 'paper/integrated-objective-evaluation-build-v1.json').read_text())
+    receipt = json.loads((ROOT / 'paper/integrated-advice-build-v1.json').read_text())
     assert receipt  # The artifact binding must exist, not just the prose link.
     for name in ('README.md', 'paper/README.md', 'RESEARCH.md'):
         value = (ROOT / name).read_text()
-        assert '59' in value
+        assert str(receipt['pages']) in value
         assert 'native-capacity-objective-loop-v1.md' in value or 'T/P' in value
         assert 'research/STATUS.md' in value
     paper = (ROOT / 'paper/README.md').read_text()
-    assert 'integrated-objective-evaluation-build-v1.json' in paper
+    assert 'integrated-advice-build-v1.json' in paper
     assert '18 physical worlds/21 logical cells' in paper
-    assert 'postdate this PDF' in paper
+    assert 'now enter this PDF' in paper
     assert 'not a submitted, anonymous or release-cleared paper' in paper
     readme = (ROOT / 'README.md').read_text()
     assert 'integrated41-page' not in readme

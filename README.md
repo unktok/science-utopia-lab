@@ -25,8 +25,8 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is59 pages,
-with28 figures and23 tables. It preserves the whole research program and prior
+The [latest reviewed integrated manuscript](paper/README.md) is61 pages,
+with29 figures and24 tables. It preserves the whole research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
@@ -37,8 +37,8 @@ selections tie strong connected accept-all rules; content-score differences
 against reviewer-free accept-all are mixed. Evaluation seeds are not independent
 optimizer histories. The [three closed advice-timing controls](research/results/native-instruction-timing-v1.md)
 establish delivery to model inputs but no topic/duration or T/U gain here;
-full inputs, replies and some resource trajectories differ. This newer result
-postdates the reviewed PDF.
+full inputs, replies and some resource trajectories differ. These controls and
+a direct executable-governance precedent now enter the reviewed PDF.
 
 A separate [finite T/P pilot](research/components/native-capacity-objective-loop-v1.md)
 is running from a frozen source: five common developer rules and four own

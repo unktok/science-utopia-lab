@@ -1,5 +1,12 @@
 # Native capacity and objective conditioned institutional optimization
 
+November12 status note: the design below records the earlier prospective
+reasoning. The separately frozen [exact nine-world protocol](../protocols/campaigns/native-capacity-objective-loop-v1.md)
+and [actual launch](../results/native-capacity-objective-launch-verification-v1.json)
+now exist: five references, four own slots and initial real28-control readiness
+passed. See [STATUS](../STATUS.md) for execution. The preparation-only statements
+below are historical, not the current dispatch status or scientific completion.
+
 This is the next-study design, not a dispatched experiment or a change to the
 live T/U study. Its question is whether a freely authored organizing system
 changes the relationship between output and saved researcher activity under
