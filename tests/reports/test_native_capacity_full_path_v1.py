@@ -13,12 +13,15 @@ from utopia.optimization.native_factory import LocalQwenNativeFactory
 from utopia.optimization.native_active_founders import measure, METRIC
 from utopia.optimization.native_world import measure_native_world
 from utopia.system.native_kernel import legacy_world_system
+from utopia.system.native_capacity_controls import capacity_allocation_control
+from utopia.system.native_resource_transfers import EVENT
 from utopia.utils.data_utils import file_sha256
 
 
 @pytest.mark.parametrize('papers', [1, 2])
+@pytest.mark.parametrize('allocation', [None, 'reserve-proximity', 'completion-priority'])
 def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
-        tmp_path, fixed_corpus, monkeypatch, papers):
+        tmp_path, fixed_corpus, monkeypatch, papers, allocation):
     install_transport(monkeypatch); calls = []
     class Provider(FakeHTTPModel):
         def batch_completions(self, executor, requests, *, seed_ctx, attempt):
@@ -50,9 +53,13 @@ def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
     conditions = capacity_conditions(papers_per_project=papers)
     experiment = {'protocol': 'SCRIPTED-capacity-full-native-path'}
     factory = LocalQwenNativeFactory(tmp_path/'runs', tmp_path/'cache', years=4, corpus_years=4,
-        record_wire=True, maximum_http_attempts=1024, inference_lock=tmp_path/'inference.lock',
+        record_wire=True, record_code=True, maximum_http_attempts=1024, inference_lock=tmp_path/'inference.lock',
         allow_dirty=True, world_conditions=conditions, experiment_binding=experiment)
-    spec = legacy_world_system(seed=42); sim = factory(spec, 42, 'scripted-capacity-forward')
+    spec = legacy_world_system(seed=42)
+    if allocation is not None:
+        spec = capacity_allocation_control(spec,
+            'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833', rule=allocation)
+    sim = factory(spec, 42, 'scripted-capacity-forward')
     sim.llm.sim = sim
     try:
         sim.run()
@@ -79,5 +86,13 @@ def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
         assert proof['status'] == 'complete' and len(proof['annual_checkpoints']) == 4
         assert proof['world_conditions_proof']['fixed_annual_slot_cap'] == 1
         assert proof['measurement'] == base
+        transfers = [e for e in sim.native_system.events if e.event_type == EVENT]
+        if allocation is not None:
+            assert transfers
+        for event in transfers:
+            p = event.payload
+            assert sum(p['balances_before'].values()) == sum(p['balances_after'].values())
+            assert p['actual_debit'] == p['actual_credit'] > 0
+        sim.resource_ledger.reconcile(4, sim.ecosystem.agent_population, require_closed=True)
     finally:
         sim.llm.response_cache.close()
