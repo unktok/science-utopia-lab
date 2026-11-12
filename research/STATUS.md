@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+**November12 06:11UTC scientific start:** a separate three-condition
+[catalog planning actuation experiment](components/native-catalog-actuation-v1.md)
+is actually running at frozen60563d8. It keeps original native production,
+Qwen3-8B and both T/P losses, and compares no effect, advice and legal native
+assignment under one common agenda rule and allocation parent. This is a
+developer mechanism comparison, not generated invention or seed expansion.
+Writer15986/session88115 starts with cut; result pending. Analysis25856 waits
+for normal closure to run two original audits/costs. Independent frozen
+c75d6c4 readers53906/85755/65480 wait for the same closure.80 runner/native
+checks and35 reader checks pass, with SCRIPTED scientist HTTP/corpus/role
+attestations. The [preparation receipt](results/native-catalog-actuation-preparation-v1.json)
+preserves prior QA failures and the exact reconstructed historical catalog.
+No active experiment source, old domain or old completed score is altered.
+The reviewed64-page PDF is unchanged; R2/R3/R6 and the goal remain open.
+
 **November12 14:40JST / 05:40UTC:** the closed capacity result now enters the
 [reviewed64-page integrated manuscript](../paper/integrated-capacity-authority-build-v1.json)
 with31 figures/25 tables/26 references. Two cache-only builds/text/logs agree;

@@ -6,14 +6,20 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Running original-world catalog actuation controls](components/native-catalog-actuation-v1.md):
+  frozen60563d8 starts06:11UTC, cut/information/project, three fresh worlds,
+  unchanged native production and T/P, no designer/critic or refill.80
+  runner/native checks and35 readout checks pass with SCRIPTED communication;
+  real effects are pending. Original double audit/cost and three independent
+  double readouts are connected and waiting. Old catalog/source records stay fixed.
 - [Reviewed64-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
   and [build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
   all prior tracks plus the closed T/P pilot, actual paths/geometry, complete
   table, failure and costs. Both cache-only builds/text/logs agree, all64
   layouts and new43--46 pages at150dpi are checked; old PDFs remain unchanged.
   The fixed planning-authority scope is explicit. The
-  [next planning-authority comparison](publication/native-planning-authority-next-study-v1.md)
-  is a design, not another running study or automatic-invention result.
+  [planning-authority rationale](publication/native-planning-authority-next-study-v1.md)
+  leads to the separate running developer comparison above, not automatic invention.
 - [Closed capacity T/P search](results/native-capacity-objective-loop-v1.md)
   and [all slots, effects, inputs, geometry and costs](data/native-capacity-objective-loop-v1/README.md):
   all four programs submit, three complete and tie the strong allocation
