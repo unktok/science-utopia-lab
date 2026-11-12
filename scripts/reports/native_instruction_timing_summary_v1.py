@@ -136,8 +136,10 @@ def render(summary, output):
 
         cells, labels = [], []
         for w in summary['worlds']:
-            authors = sorted({a['id'] for s in w['annual'] for a in s['project_states']})
             records = [r for r in summary['decisions'] if r['identity'] == w['identity']]
+            authors = sorted({a['id'] for s in w['annual'] for a in s['project_states']} |
+                             {r['matching_actual_memory_actor_ids'][0] for r in records
+                              if r['unique_actor_attribution']})
             if any(not r['unique_actor_attribution'] for r in records):
                 authors.append(None)
             for index, actor in enumerate(authors, 1):

@@ -100,3 +100,29 @@ def test_actual_double_export_is_byte_deterministic_and_has_all_rows(tmp_path, m
         module.export(SimpleNamespace(one=inputs/'one.json', two=inputs/'one.json', output=tmp_path/'bad'))
     with pytest.raises(ValueError, match='fresh separate'):
         module.export(SimpleNamespace(one=inputs/'one.json', two=inputs/'two.json', output=inputs/'nested'))
+
+
+def test_five_actor_layout_keeps_multiple_and_unknown_attempts(tmp_path):
+    r = report()
+    for w in r['worlds']:
+        example = w['direction_requests'][0]; w['direction_requests'] = []
+        for state in w['annual']:
+            state['authors'] = [{**state['authors'][0], 'id': 'SCRIPTED actor '+str(i)} for i in range(5)]
+        for i in range(5):
+            for year in (1, 3):
+                w['direction_requests'].append({**example, 'wire_index': len(w['direction_requests']),
+                    'year': year, 'matching_actual_memory_actor_ids': ['SCRIPTED actor '+str(i)],
+                    'selected_catalog_duration_years': i % 3+1,
+                    'literal_instruction_present': w['condition'] == 'early' or
+                        (w['condition'] == 'late' and year == 3)})
+        # Multiple attempts at one native actor/year do not become extra years.
+        w['direction_requests'].append({**w['direction_requests'][0], 'wire_index': 20,
+            'selected_catalog_duration_years': None, 'selected_is_shortest_displayed': None})
+        w['direction_requests'].append({**example, 'wire_index': 21,
+            'selected_catalog_duration_years': None, 'selected_is_shortest_displayed': None,
+            'unique_actor_attribution': False, 'matching_actual_memory_actor_ids': []})
+    summary = module.summarize(reseal(r)); module.render(summary, tmp_path)
+    assert len(summary['decisions']) == 36
+    svg = (tmp_path/'choice-years.svg').read_text()
+    assert '1, ?' in svg and 'unattributed' in svg and 'actor 5' in svg
+    assert 'actor 6' not in svg
