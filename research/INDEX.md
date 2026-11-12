@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed capacity T/P search](results/native-capacity-objective-loop-v1.md)
+  and [all slots, effects, inputs, geometry and costs](data/native-capacity-objective-loop-v1/README.md):
+  all four programs submit, three complete and tie the strong allocation
+  controls atT=−12/P=−15; one attempts an invalid virtual-source transfer.
+  Original double audits/costs and four double exports agree; three figures
+  are reviewed. No wiring change, objective separation or generated-rule
+  advantage. The prepared unused-seed evaluation is not dispatched for this
+  flat pilot. The61-page PDF remains its earlier preserved snapshot.
 - [Prospective fixed T/P evaluation path](components/native-capacity-fixed-evaluation-v1.md):
   literal selection, exact P, unused-seed guards and native/cold/cost/effect/input
   APIs are connected. Ten original-world scripted forwards and90 integration

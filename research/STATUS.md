@@ -2,6 +2,32 @@
 
 ## Active publication-ready goal
 
+**November12 14:18JST / 05:18UTC:** the frozen16cfdcef T/P pilot normally
+closes05:13:34UTC with all four own submissions, three complete/one technical
+null and all five common references complete. Two original audits/costs close
+05:17:05UTC; all four double reader exports close by05:17:51UTC. No inference
+remains live from this pilot. [All actual results](results/native-capacity-objective-loop-v1.md)
+and [literal bytes/source/failure binding](results/native-capacity-objective-closed-verification-v1.json)
+retain nine attempts,172 code calls and34 committed annual boundaries.
+
+All complete own programs have T=−12/P=−15, tying reserve-proximity and
+completion-priority. None changes nodes/wires/schedules. P/g1 emits two year3
+transfers of10 from nonexistent `system`; the conserving receiver rejects
+them, with missing completed losses retained. Four successful historical
+component returns for the final artifact did not certify that native path.
+P/g0/T/g1 and both strong controls share full ordered scientist inputs/choices
+on this history; T/g0 has changed inputs despite equal losses. Three actual
+figures are visually reviewed. The observed archive has one dominating score
+group across all raw-unit nonnegative T/P mixtures, not a global Pareto claim.
+
+The prepared fixed-policy evaluation is **not dispatched for this flat pilot**:
+no unused seed is selected or scored, no slot refilled, no objective changed
+to force a winner. Next is substantive source/behavior analysis and manuscript
+integration, then a distinct finite question separating search/interface
+limitations from world/objective incentives. The preserved61-page PDF is not
+relabelled as containing this newer result. R2/R3/R6 and the active
+publication-ready goal remain open.
+
 **November12 13:30JST / 04:30UTC:** T/g0 is an actually completed observation;
 P/g0 has submitted its literal institution and reached two saved native annual
 checkpoints. No scores or winner are inferred from this progress. The original

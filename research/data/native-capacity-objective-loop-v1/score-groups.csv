@@ -1,0 +1,9 @@
+group,T,P,pareto,linear_supported,identity,role,system_sha256
+G1,-12,-15,True,True,native-adaptive-38e879f7d6ef5b3449ee528e,search:throughput,eeb5378cd9aaf1a8926a5ee50a6779810a2ceb8acce33325229705fa3ebd0489
+G1,-12,-15,True,True,native-adaptive-599fe4a64525109f4c356269,search:throughput,db5405ab2affae63b35bfcd85a6da7fa14981e38db0aeb19732f32818d2bcae6
+G1,-12,-15,True,True,native-adaptive-bae9b09003c3fcb7764b8c8f,search:founder-activity,ced6812b232e3db2fce8e7418ad4d2c495aee874f8c38e3f4b1b912c269d5434
+G1,-12,-15,True,True,reference-reviewed-all-completion-priority,developer-reference,de0c8fe1cb1ae0b95ee452f08bb8ec22dd5cf1fd9490bfb7a420480db20f439f
+G1,-12,-15,True,True,reference-reviewed-all-reserve-proximity,developer-reference,7297f19401fe23949641f4843a118eccfc7feca2222b4d6207e3025a9bb7d952
+G2,-10,-12,False,False,reference-no-review-all-equalization,developer-reference,c28103fcc17eeab2bb2518b12ada63a007a70672f710e637789714f3bfe44bc4
+G2,-10,-12,False,False,reference-reviewed-all-equalization,developer-reference,99232fb0b81741903a6b5ae9536543c22792ee68e60517d9249ca5b846be1169
+G2,-10,-12,False,False,reference-reviewed-all-transfer-cut,developer-reference,2097a9f1ba56bd1870a27fb343c685f2650d81f9ac9562663df17af8b350a5d8
