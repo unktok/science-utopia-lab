@@ -60,16 +60,20 @@ def from_states(states):
         'new_model_calls': 0, 'new_code_executions': 0}
 
 
-def measure(simulation, base):
-    """Append this explicit metric to an already completed native measurement."""
-    root = Path(simulation.output_dir)
-    paths = [root/f'portable_checkpoint_year_{year}.json.gz' for year in range(simulation.num_years+1)]
+def measure_from_checkpoints(base, paths):
+    """Same instrument for live completion and cold read-only reconstruction.
+
+    Physical source/world/response audits remain separate prerequisites for
+    scientific use. This helper neither executes a simulation nor certifies it.
+    """
+    from utopia.system import SystemSpec
+    paths = [Path(p) for p in paths]
+    if len({p.name for p in paths}) != len(paths):
+        raise ValueError('distinct original annual checkpoint names required')
     hashes = {p.name: file_sha256(p) for p in paths}
     states = [read_portable_checkpoint(p) for p in paths]
     result = from_states(states)
-    if (simulation.native_system.last_year != simulation.num_years
-            or simulation.native_system.spec.to_dict() != states[-1]['native_system']['spec']
-            or base['system_fingerprint'] != simulation.native_system.spec.fingerprint
+    if (base['system_fingerprint'] != SystemSpec.from_dict(states[-1]['native_system']['spec']).fingerprint
             or METRIC in base['metrics'] or 'active_founder_boundary_instrument' in base):
         raise ValueError('completed literal native system and new nonoverwriting instrument required')
     if hashes != {p.name: file_sha256(p) for p in paths}:
@@ -77,4 +81,17 @@ def measure(simulation, base):
     output = deepcopy(base)
     output['metrics'][METRIC] = {'status': 'measured', 'value': result['value']}
     output['active_founder_boundary_instrument'] = {**result, 'checkpoint_sha256s': hashes}
+    return output
+
+
+def measure(simulation, base):
+    """Append this explicit metric to an already completed native measurement."""
+    if (simulation.native_system.last_year != simulation.num_years
+            or base['system_fingerprint'] != simulation.native_system.spec.fingerprint):
+        raise ValueError('completed literal native simulation required')
+    root = Path(simulation.output_dir)
+    paths = [root/f'portable_checkpoint_year_{year}.json.gz' for year in range(simulation.num_years+1)]
+    output = measure_from_checkpoints(base, paths)
+    if output['active_founder_boundary_instrument']['system_sha256'] != digest(simulation.native_system.spec.to_dict()):
+        raise ValueError('live native system differs from original saved trajectory')
     return output

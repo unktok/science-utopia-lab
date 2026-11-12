@@ -10,7 +10,7 @@ import pytest
 from tests.optimization.test_native_factory import install_transport, capacity_conditions
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus, FakeHTTPModel
 from utopia.optimization.native_factory import LocalQwenNativeFactory
-from utopia.optimization.native_active_founders import measure, METRIC
+from utopia.optimization.native_active_founders import measure, measure_from_checkpoints, METRIC
 from utopia.optimization.native_world import measure_native_world
 from utopia.system.native_kernel import legacy_world_system
 from utopia.system.native_capacity_controls import capacity_allocation_control
@@ -86,6 +86,8 @@ def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
         assert proof['status'] == 'complete' and len(proof['annual_checkpoints']) == 4
         assert proof['world_conditions_proof']['fixed_annual_slot_cap'] == 1
         assert proof['measurement'] == base
+        annual_paths = [Path(sim.output_dir)/f'portable_checkpoint_year_{y}.json.gz' for y in range(5)]
+        assert measure_from_checkpoints(proof['measurement'], annual_paths) == measured
         transfers = [e for e in sim.native_system.events if e.event_type == EVENT]
         if allocation is not None:
             assert transfers

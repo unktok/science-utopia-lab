@@ -3,7 +3,7 @@ from copy import deepcopy
 import pytest
 
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
-from utopia.optimization.native_active_founders import from_states, measure, METRIC
+from utopia.optimization.native_active_founders import from_states, measure, measure_from_checkpoints, METRIC
 from utopia.system.design_patch import digest
 
 
@@ -79,5 +79,12 @@ def test_real_original_native_states_append_metric_without_changing_other_measur
                   for y in range(sim.num_years+1)]
         assert output['metrics'][METRIC]['value'] == from_states(actual)['value'] == 24
         assert len(output['active_founder_boundary_instrument']['checkpoint_sha256s']) == 7
+        paths = [Path(sim.output_dir)/f'portable_checkpoint_year_{y}.json.gz' for y in range(sim.num_years+1)]
+        assert measure_from_checkpoints(base, paths) == output
+        with pytest.raises(ValueError, match='distinct'):
+            measure_from_checkpoints(base, [paths[0], paths[0]])
+        wrong = deepcopy(base); wrong['system_fingerprint'] = 'SCRIPTED-wrong-system'
+        with pytest.raises(ValueError, match='literal native system'):
+            measure_from_checkpoints(wrong, paths)
         with pytest.raises(ValueError, match='nonoverwriting'): measure(sim, output)
     finally: sim.llm.response_cache.close()

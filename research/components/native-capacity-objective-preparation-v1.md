@@ -38,6 +38,22 @@ These are software verification records, not failed/filled scientific slots.
 
 ## Remaining before dispatch
 
+The next two same-authority developer rules are also implemented as ordinary
+isolated code, not privileged host allocation: `reserve-proximity` uses
+whole-unit surplus above an explicit21-unit reserve to fully rescue affordable
+actors nearest that reserve, while `completion-priority` orders actual native
+project end dates first. Both retain the exact equalizer's existing wires,
+schedule and conserving transfer receiver.21 is a developer policy parameter,
+not a new physical law, fairness constraint or guaranteed optimum. The designer
+is not restricted to either rule. At91a81da,25 checks pass15.56s, including
+both caps and both actual code rules through original5-founder/4-year native
+Simulation, response/wire journals, conservation ledger and cold physical
+proof. HTTP/corpus are scripted; no actual-model advantage is established.
+
+The activity instrument now also offers read-only checkpoint reconstruction
+using the same literal implementation as live measurement. It does not replace
+the separate full physical source/response audit or replay any authored code.
+
 Freeze the exact same-authority reference algorithms, loss-to-history mapping,
 finite driver/audit contract and budgets. Pass fresh actual local35B execution
 readiness at that final source. Run the finite T/P study without host repair,
