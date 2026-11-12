@@ -119,10 +119,10 @@ def render(summary, output):
             ax.text(c, .98, ' c='+format(c, '.6g'), transform=ax.get_xaxis_transform(), va='top', fontsize=8)
         ax.axvline(3, color='#333333', ls='--', lw=.9, label='Actual optimized center c=3')
         ax.set(xlim=(1, 5), xlabel='Hypothetical content-score center c',
-            ylabel='Conditional loss on the same observed records',
+            ylabel='Conditional loss (fixed records)',
             title='Preference regions of the completed observed archive')
         ax.set_axisbelow(True); ax.grid(axis='y', color='#edf0f2')
-        ax.legend(loc='lower left', fontsize=8, framealpha=.95)
+        ax.legend(loc='upper left', fontsize=8, framealpha=.95)
         fig.text(.02, .02, f'{summary["complete_observed_worlds"]} completed observed worlds; '
             f'{len(summary["failed_world_ids"])} technical nulls excluded without imputation. No new optimization.', fontsize=7.5)
         fig.tight_layout(rect=(0, .06, 1, 1))
