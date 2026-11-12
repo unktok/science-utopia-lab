@@ -140,12 +140,16 @@ def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_p
     with pytest.raises(ValueError,match='stopped costs'): analyze(tmp_path,p,a)
 
 
-@pytest.mark.parametrize('stopped',[False,True])
-def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usage(tmp_path,stopped):
+@pytest.mark.parametrize('schema',[
+    'scienceutopia.native-objective-instrument-loop-audit.v1',
+    'scienceutopia.native-objective-initial-stop-audit.v1',
+    'scienceutopia.native-instruction-timing-support-audit.v1'])
+def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usage(tmp_path,schema):
     from tests.reports.test_native_token_costs import cache
     from tests.optimization.test_common_content_observer import contract,Backend,PAPER
     from utopia.optimization.common_content_observer import CommonContentObserver
     from utopia.optimization.native_numeric_designer import save
+    stopped=schema=='scienceutopia.native-objective-initial-stop-audit.v1'
     p=hashed({'source_commit':'a'*40,'scientist':{'model':'SCRIPTED','model_digest':'b'*64,'corpus_sha256':'c'*64},
         'designer':{'model':'SCRIPTED-designer'}})
     cache(tmp_path,p,'references/known/worlds/known/replies/responses.sqlite',[
@@ -154,7 +158,7 @@ def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usag
     critic=observer.audit()
     start=save(tmp_path/'started.json',{'plan_sha256':p['content_sha256']})
     end=save(tmp_path/'terminal.json',{'status':'stopped' if stopped else 'closed'});inventory=_inventory(tmp_path)
-    a=hashed({'schema':'scienceutopia.native-objective-initial-stop-audit.v1' if stopped else 'scienceutopia.native-objective-instrument-loop-audit.v1','source_commit':p['source_commit'],
+    a=hashed({'schema':schema,'source_commit':p['source_commit'],
         'plan_sha256':p['content_sha256'],'source_proof':{'status':'verified-exact-source-closure'},
         'new_model_calls':0,'new_code_executions':0,'closure':{'started':start,'terminal':end,'scientific_study_closed':False} if stopped else {'started':start,'terminal':end},
         'raw_inventory_sha256':digest(inventory),'raw_files':len(inventory),'observer':critic,
