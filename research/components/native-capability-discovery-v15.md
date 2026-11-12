@@ -15,7 +15,7 @@ handler. An empty graph is important: constructing the registry of a candidate
 containing code could otherwise create a Docker executor. Conditional
 `code.python.v1` registration is explicitly listed without constructing one.
 Each identity says whether it has a detailed contract or is identifier-only.
-The current source yields34 default registrations plus the conditional code ID.
+The November12 source yields35 default registrations plus the conditional code ID.
 
 Detailed cards cover:
 
@@ -27,9 +27,17 @@ Detailed cards cover:
   explicit role grants and persistent/native effect boundaries.
 - `native.process.activity.v1`: explicit bounded delegate/control/iteration ABI.
 - `code.python.v1`: arbitrary literal source, ports/state and isolated runtime ABI.
+- `native.world.claim-verification.v1`: completed native count-assertion checks,
+  not an independent scientific-truth verifier.
+- `native.world.review-inputs.v13` and `native.phase.review.with-routing.v13`:
+  actual current submissions/eligibility and authored eligible review tasks.
+- `native.phase.open.v1`: the actual post-opening world observation, including
+  native agents, projects, resources and in-flight paper state.
+- `native.world.researcher-context.v1`: arbitrary addressed institutional
+  information delivered to original researchers without forcing their actions.
 
 Every other registered identity remains visible, but its full interface is
-explicitly **not** supplied by this first detailed-card slice. Operator-specific
+explicitly **not** supplied by these ten detailed cards. Operator-specific
 `registry_extension` plugins, live actor/artifact identities and world data are
 also excluded. Coverage and omissions are emitted as data; unknown contracts
 are not invented. Native phase laws and trusted privilege boundaries are not
@@ -105,3 +113,35 @@ or native-handler invocation. Author integration tests discover the unseeded
 researcher-work capability and replay its receipt without mutation or inference.
 This prospective implementation is not relabelled as used in frozen a1/a2 and
 does not establish actual-Qwen use or beneficial new scientific institutions.
+
+## November12 information interface extension
+
+The closed61a1753 source indexes the opening/context implementation identities
+without detailed cards for those two interfaces. That source is unchanged.
+The prospective397b49b cards expose actual existing ports, top-level observation
+shape, arbitrary JSON delivery envelopes, real recipient requirements and
+storage/consumption/timing boundaries. There is no new trusted effect, message
+algorithm, recommended topic, node, wire or validity requirement.
+
+An author can inspect `/cards/native.phase.open.v1` and
+`/cards/native.world.researcher-context.v1`, then explicitly create its own
+protocol, computation and routes. The code envelope requires actual actor IDs;
+its payload does not require an `instruction` key or a predetermined institution
+vocabulary. Observations are post-stage records, not automatically refreshed
+live state. A later message cannot retroactively change an earlier decision.
+Context storage, presence in a later eligible native prompt, researcher choice
+and completed output remain separate evidence. Not every model call consumes
+this stored context; the actual source/consumer trace is still required.
+
+The actual prospective catalog is42453 JSON bytes and the index10774 bytes,
+within the unchanged45KB/20KB caps, with26 identities still identifier-only.
+All89 checks pass9.04s, including actual original-Simulation observations at
+78 phase boundaries over six years with scripted HTTP/corpus, arbitrary native
+context delivery and public author inspect/replay. [Exact verification](../results/native-information-capability-discovery-v1.json).
+The first run had a missing pytest fixture import and an invalid uppercase
+scripted SystemSpec ID; those test setup errors are corrected, not passes.
+
+This change repairs a concrete discoverability limitation, not a proven cause
+of earlier author behavior. Existing61a1753 evaluation and5925d5b controls stay
+frozen. Any new actual-model design campaign needs its own clean source-bound
+real-backend readiness check; these software results do not replace it.

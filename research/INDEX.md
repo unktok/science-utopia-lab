@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Prospective native information interface discovery](components/native-capability-discovery-v15.md#november12-information-interface-extension):
+  detailed opening observations and arbitrary context delivery are now readable
+  through the existing inspect API, without new privileges or policy templates.
+ 89 scripted/native checks pass; no actual-Qwen discovery benefit or cause of
+  earlier author behavior is inferred. Existing frozen science is unchanged.
 - [Conditional preference regions of the completed archive](results/native-preference-regions-v1.md):
   all11 complete worlds yield three exact score lines, with observed-bank
   boundaries at3 and19/5. Two nulls remain outside the envelope. This explains

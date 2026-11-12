@@ -847,3 +847,37 @@ checks3.66s, also with an explicitly observed exit0. At01:01:32UTC,9/18 fixed
 evaluation observations are complete and none has failed; evaluation-009 is
 executing with no terminal. The preference analysis uses only closed development
 data, not these partial held-out outcomes. No new scientific dispatch is added.
+
+## Prospective discovery of existing information interfaces
+
+The previous goal turn made concrete progress: integrated the reviewed58-page
+working paper, retained actual preference-region analysis and connected a live
+read-only summary continuation. It did not close the publication goal. This
+turn first revalidates evaluation25775, control queue53563 and summary32479 by
+their actual live handles, then finds10/18 fixed evaluation worlds complete
+at01:12UTC, with evaluation-010 active and no terminal/failures.
+
+Read-only inspection of61a1753's exact catalog source finds that opening and
+researcher-context identities have no detailed cards. This is an interface
+coverage fact, not a causal diagnosis of why eight local proposals did not
+rewire. The two newly documented interfaces already existed and already had
+execution consumers. Future authors can now inspect their actual ports,
+arbitrary payload/recipient contract, observation timing and persistence,
+without receiving a default policy or new native privilege.
+
+At708d052 the first89-check scope has87pass/one failure/one setup error: the
+new test's uppercase SystemSpec ID is illegal and its corpus fixture was not
+imported. The old catalog and author checks pass. Correcting only that test
+setup at397b49b yields89pass in9.04s with zero skips/errors/failures and an
+explicit final exit0. The actual six-year native fixture produces78 post-stage
+observations satisfying the card, while scientist HTTP/corpus remain scripted.
+The real delivery handler and public inspect/replay API are tested separately.
+The exact source, old-source hash, output coverage and JUnit are retained.
+
+The catalog now has10 detailed cards among36 indexed identities, with35 actual
+default registrations and one conditional code implementation. It remains
+42453 JSON bytes versus the existing45KB cap; its index is10774 bytes versus
+20KB. No cap is enlarged, source truncated, new privilege installed or model
+called. The active61a1753/5925d5b/d2a3391 sources stay untouched. Future real
+authoring still needs fresh source/model/backend-bound readiness and actual
+native loss evaluation. This advances discoverability/R4, not invention or R2.

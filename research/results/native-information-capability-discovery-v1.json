@@ -1,0 +1,39 @@
+{
+  "schema": "scienceutopia.native-information-capability-discovery.v1",
+  "analysis_source_commit": "397b49b34ae2ceede833ddb4f79dbeca4968ca10",
+  "prior_scientific_source_commit": "61a1753cb6edd2a8d098b5b063eb0ba9f6138890",
+  "prior_catalog_source_sha256": "17d52be6fe025e115e24815fded237079e6efae405fba7b34b99218c84cf8dd1",
+  "new_detailed_implementations": [
+    "native.phase.open.v1",
+    "native.world.researcher-context.v1"
+  ],
+  "prior_detailed_coverage": {
+    "native.phase.open.v1": false,
+    "native.world.researcher-context.v1": false
+  },
+  "catalog_content_sha256": "b0217e94c5633c4f4b8cb888eec0c2bcde1a308910389e043b3d1fa1d886ffd0",
+  "index_implementations": 36,
+  "default_registrations": 35,
+  "detailed_cards": 10,
+  "identifier_only_implementations": 26,
+  "full_catalog_json_bytes": 42453,
+  "index_json_bytes": 10774,
+  "verification": {
+    "tests": 89,
+    "passed": 89,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 9.04,
+    "junit_sha256": "3fdfdadd240c705d9e169fdd2d19fa1fa2c9c3d229e1fe1b70d85ed1b1540ab5",
+    "scope": "Scripted author inspect/replay and catalog contracts, including 78 actual original-Simulation post-stage observation shapes over six years. Scientist HTTP and corpus are scripted. Actual native delivery handler accepts arbitrary addressed JSON and rejects missing/unknown recipients and repeated message identity."
+  },
+  "new_native_privileges": false,
+  "new_policy_algorithms": false,
+  "new_model_calls": 0,
+  "actual_qwen_discovery_or_benefit_demonstrated": false,
+  "active_science_changed": false,
+  "new_campaign_requires_fresh_source_bound_readiness": true,
+  "publication_ready": false,
+  "content_sha256": "f0d03c55945c846911c49bb7187b94f4b5d9e4528090bb75e7f5d62d9a59cfbe"
+}
