@@ -55,6 +55,21 @@ def allow_catalog_planning(anchor, contract):
     return updated
 
 
+def catalog_planning_design_space(anchor, kind):
+    """Explicitly create v3 for an anchor already granting catalog planning.
+
+    Passing such an anchor through the old fixed-production constructor must
+    still fail. No temporary v1/v2 claim or implicit guard removal is used.
+    """
+    from utopia.system.native_information_institution import information_design_space
+    from .native_design_space import validate_design_space
+    contract = information_design_space(anchor, kind, fixed_production=False)
+    contract['world_law_scope'] = CATALOG_PLANNING_SCOPE
+    contract['scope'] += ' ' + scope_description(anchor, scope=CATALOG_PLANNING_SCOPE)
+    validate_design_space(anchor, contract)
+    return contract
+
+
 def scope_description(anchor, *, scope=SCOPE):
     return ('This prospective pilot fixes these native production/calendar/accounting nodes '
         'and their schedules: '+', '.join(sorted(fixed_nodes(anchor, scope=scope)))+'. '

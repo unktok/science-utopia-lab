@@ -19,12 +19,13 @@ from utopia.system import SystemSpec
 from utopia.system.design_patch import clone,digest
 
 
-def setup(tmp_path,monkeypatch):
-    p=plan(tmp_path,monkeypatch);root=tmp_path/'raw';root.mkdir();(root/'writer.lock').touch()
+def setup(tmp_path,monkeypatch,*,plan_factory=plan,driver_module=driver,initial_readiness=False):
+    driver=driver_module
+    p=plan_factory(tmp_path,monkeypatch);root=tmp_path/'raw';root.mkdir();(root/'writer.lock').touch()
     driver.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
     driver.save(root/'started.json',{'schema':driver.SCHEMA+'.start','plan_sha256':p['content_sha256'],
         'started_utc':'2026-11-11T18:00:00+00:00'})
-    driver.save(root/'terminal.json',{'schema':driver.SCHEMA+'.terminal','status':'closed','complete_references':5,
+    driver.save(root/'terminal.json',{'schema':driver.SCHEMA+'.terminal','status':'closed','complete_references':len(p['reference_order']),
         'ended_utc':'2026-11-11T18:04:00+00:00'})
     observer=CommonContentObserver(root/'observer',p['observer_contract'],backend=None);proofs={};states={}
     from scripts.native_observer_physical_v1 import reconstruct_measurement
@@ -54,11 +55,11 @@ def setup(tmp_path,monkeypatch):
     context={'SCRIPTED':'mocked common reference validator'};context['content_sha256']=digest(context)
     driver.save(root/'developer-reference-context.json',{k:v for k,v in context.items() if k!='content_sha256'})
     driver.save(root/'developer-reference-context-ready.json',{'context_sha256':context['content_sha256'],
-        'complete_references':5,'completed_utc':'2026-11-11T18:01:00+00:00'})
+        'complete_references':len(p['reference_order']),'completed_utc':'2026-11-11T18:01:00+00:00'})
     controllers={}
     for objective in p['objectives']:
         records=[]
-        for g in range(4):
+        for g in range(p['generations']):
             request={'SCRIPTED':'request','generation':g};request_sha=digest(request)
             records.append({'request':request,'request_sha256':request_sha,'definition':None,
                 'generation_error':{'type':'ValueError','message':'SCRIPTED expected worker error','loss':None},
@@ -78,6 +79,19 @@ def setup(tmp_path,monkeypatch):
         controllers[objective]=SimpleNamespace(binding=binding,state={'pending':None,'records':records})
     driver.save(root/'selection.json',driver.selection(root,p,context,frozen_utc='2026-11-11T18:04:00+00:00',
         campaign_loader=lambda r,p,o,c:controllers[o]))
+    if initial_readiness:
+        request={'SCRIPTED':'initial planning request'}
+        binding={'initial_system':p['initial_system'],'loss_spec':p['losses']['throughput'],
+            'world':p['world'],'seeds':[61001],'strategies':p['strategies'],'mode':'blackbox',
+            'seed':p['optimizer_seed'],'learning_rate':.1,'strategy_learning_rate':.1,
+            'strategy_baseline':0.,'exploration':.1,'design_space':p['design_space']}
+        controllers['initial-readiness']=SimpleNamespace(binding=binding,
+            state={'pending':None,'records':[]},prototype_request=request)
+        base=root/'initial-readiness/editor-readiness'
+        driver.save(base/'calibration/certificate.json',{'plan':{'request':request,'backend':p['backend'],'runtime':p['runtime'],
+            'created_epoch':datetime.fromisoformat('2026-11-11T18:00:00+00:00').timestamp()},
+            'completed_epoch':datetime.fromisoformat('2026-11-11T18:00:00.5+00:00').timestamp()})
+        driver.save(base/'wire/dispatch-000.intent.json',{'SCRIPTED':'not actual initial readiness'})
     monkeypatch.setattr(driver,'require_plan',lambda root:p)
     monkeypatch.setattr('scripts.native_benchmark_source.source_proofs',lambda *a,**k:{'status':'verified-exact-source-closure','SCRIPTED':True})
     monkeypatch.setattr('scripts.native_benchmark_physical.physical_proof',lambda cell,*a,**k:proofs[cell.name])
@@ -85,7 +99,8 @@ def setup(tmp_path,monkeypatch):
     monkeypatch.setattr('utopia.runtime.checkpointing.read_portable_checkpoint',lambda path:states[str(path)])
     monkeypatch.setattr('utopia.optimization.native_development_references.build_context',lambda *a,**k:context)
     monkeypatch.setattr('scripts.analyze_native_autonomous_search_v14.replay_campaign',lambda directory,method:controllers[directory.parent.name])
-    monkeypatch.setattr('scripts.audit_native_institution_loop_v1.request_at',lambda c,g:c.state['records'][g]['request'])
+    monkeypatch.setattr('scripts.audit_native_institution_loop_v1.request_at',lambda c,g:
+        c.prototype_request if hasattr(c,'prototype_request') else c.state['records'][g]['request'])
     monkeypatch.setattr('utopia.optimization.native_designer_preflight.require_certificate',lambda *a,**k:{'post_edit_component_contract':p['post_edit_contract']})
     def replay(directory):
         if directory.name=='editor-readiness':return None

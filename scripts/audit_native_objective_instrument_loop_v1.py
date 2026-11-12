@@ -8,8 +8,19 @@ import subprocess
 import sys
 
 
-def worker(root,output):
-    from scripts import run_native_objective_instrument_loop_v1 as driver
+def worker(root,output,*,study='objective-v1'):
+    if study == 'objective-v1':
+        from scripts import run_native_objective_instrument_loop_v1 as driver
+        reference_count, generation_count = 5, 4
+        audit_schema = 'scienceutopia.native-objective-instrument-loop-audit.v1'
+        driver_script = 'scripts/run_native_objective_instrument_loop_v1.py'
+    elif study == 'planning-v1':
+        from scripts import run_native_planning_objective_loop_v1 as driver
+        reference_count, generation_count = 8, 3
+        audit_schema = 'scienceutopia.native-planning-objective-loop-audit.v1'
+        driver_script = 'scripts/run_native_planning_objective_loop_v1.py'
+    else:
+        raise ValueError('explicit known original-source study required')
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_autonomous_search_v14 import replay_campaign
     from scripts.audit_native_institution_loop_v1 import request_at,require_age,epoch
@@ -34,11 +45,13 @@ def worker(root,output):
         fcntl.flock(owner,fcntl.LOCK_EX|fcntl.LOCK_NB)
         before=_inventory(root);p=driver.require_plan(root);start=read(root/'started.json');end=read(root/'terminal.json')
         if (start['schema']!=driver.SCHEMA+'.start' or end['schema']!=driver.SCHEMA+'.terminal'
-                or start['plan_sha256']!=p['content_sha256'] or end['status']!='closed' or end['complete_references']!=5
+                or start['plan_sha256']!=p['content_sha256'] or end['status']!='closed' or end['complete_references']!=reference_count
                 or epoch(end['ended_utc'])<epoch(start['started_utc'])):
             raise ValueError('normal exact objective-loop closure required')
-        source=source_proofs(driver.ROOT,p['source_commit'],scripts=['scripts/run_native_objective_instrument_loop_v1.py',
-            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py'],
+        scripts=[driver_script,'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+        if study == 'planning-v1': scripts += ['scripts/audit_native_planning_objective_loop_v1.py',
+            'scripts/audit_native_objective_instrument_loop_v1.py']
+        source=source_proofs(driver.ROOT,p['source_commit'],scripts=scripts,
             resources=[driver.PROTOCOL,driver.BANK_MANIFEST,driver.CONTENT_LOSS])
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
         if observer_audit!=read(root/'observer-audit.json'):raise ValueError('literal observer cold audit differs')
@@ -97,7 +110,7 @@ def worker(root,output):
         context=build_context(pairs,world=p['world'],seeds=[driver.SEED],loss_spec=p['losses']['throughput'])
         if context!=read(root/'developer-reference-context.json'):raise ValueError('common developer evidence differs')
         ready=read(root/'developer-reference-context-ready.json')
-        if ready['context_sha256']!=context['content_sha256'] or ready['complete_references']!=5:
+        if ready['context_sha256']!=context['content_sha256'] or ready['complete_references']!=reference_count:
             raise ValueError('developer reference availability differs')
         controllers={}
         for objective in p['objectives']:
@@ -106,7 +119,7 @@ def worker(root,output):
                 'world':p['world'],'seeds':[driver.SEED],'strategies':p['strategies'],'mode':'blackbox',
                 'seed':p['optimizer_seed'],'learning_rate':.1,'strategy_learning_rate':.1,
                 'strategy_baseline':0.,'exploration':.1,'design_space':p['design_space'],'development_references':context}
-            if c.binding!=expected or c.state['pending'] is not None or len(c.state['records'])!=4:
+            if c.binding!=expected or c.state['pending'] is not None or len(c.state['records'])!=generation_count:
                 raise ValueError('exact common-context campaign and four terminal own slots required')
             controllers[objective]=c
         selected=read(root/'selection.json')
@@ -123,7 +136,28 @@ def worker(root,output):
                 if url.endswith('/api/version'):return Reply({'version':p['backend']['ollama_version']})
                 if url.endswith('/api/tags'):return Reply({'models':[{'name':p['designer']['model'],'digest':p['designer']['model_digest']}]})
                 raise ValueError('cold metadata adapter cannot dispatch')
-        readiness=[];authoring=[];calibration_wires=set()
+        readiness=[];authoring=[];calibration_wires=set();initial_readiness=None
+        if study == 'planning-v1':
+            prototype=replay_campaign(root/'initial-readiness/campaign','blackbox')
+            expected={'initial_system':p['initial_system'],'loss_spec':p['losses']['throughput'],
+                'world':p['world'],'seeds':[driver.SEED],'strategies':p['strategies'],'mode':'blackbox',
+                'seed':p['optimizer_seed'],'learning_rate':.1,'strategy_learning_rate':.1,
+                'strategy_baseline':0.,'exploration':.1,'design_space':p['design_space']}
+            if prototype.binding!=expected or prototype.state['records'] or prototype.state['pending'] is not None:
+                raise ValueError('empty source-bound planning prototype required')
+            base=root/'initial-readiness/editor-readiness';replay(base)
+            cert=read(base/'calibration/certificate.json')
+            cp=require_certificate(base/'calibration/certificate.json',p['designer'],protocol='staged-v15',session=Backend(),
+                now=cert['completed_epoch'],scope=EXECUTION_SCOPE,conversation_profile=BOUNDED_AUTHORING)
+            if (cert['plan']['request']!=request_at(prototype,0) or cert['plan']['backend']!=p['backend']
+                    or cert['plan']['runtime']!=p['runtime'] or cp['post_edit_component_contract']!=p['post_edit_contract']
+                    or cert['plan']['created_epoch']<epoch(start['started_utc'])):
+                raise ValueError('fresh initial planning readiness differs')
+            for label in p['reference_order']:
+                dispatched=read(root/'references'/label/'started.json')
+                if epoch(dispatched['started_utc'])<cert['completed_epoch']:
+                    raise ValueError('planning reference predates initial readiness')
+            calibration_wires.add(base/'wire');initial_readiness={'certificate':cert,'cold_proof':cp}
         for slot in p['schedule']:
             objective,g=slot['objective'],slot['generation'];c=controllers[objective];record=c.state['records'][g]
             directory=root/'search'/objective;base=directory/f'readiness-{g}'/'editor-readiness'
@@ -169,12 +203,13 @@ def worker(root,output):
         if not calibration_wires<=actual_wires<=calibration_wires|{v/'wire' for v in expected_authors}:
             raise ValueError('unaccounted designer dispatch directory')
         if before!=_inventory(root):raise ValueError('raw objective study changed during cold proof')
-        result={'schema':'scienceutopia.native-objective-instrument-loop-audit.v1','source_commit':p['source_commit'],
+        result={'schema':audit_schema,'source_commit':p['source_commit'],
             'plan_sha256':p['content_sha256'],'source_proof':source,'closure':{'started':start,'terminal':end},
             'selection':selected,'worlds':worlds,'observer':observer_audit,'developer_references':context,
             'readiness':readiness,'authoring':authoring,'raw_inventory_sha256':digest(before),'raw_files':len(before),
             'analysis_adapter_sha256':file_sha256(Path(__file__)),'new_model_calls':0,'new_code_executions':0,
             'held_out_evaluation':False,'scientific_truth_measured':False,'publication_ready':False}
+        if study == 'planning-v1': result['initial_readiness']=initial_readiness
         result['content_sha256']=digest(result);write_json_atomic(output,result,sort_keys=True,allow_nan=False)
         print(json.dumps({'audit':str(output),'worlds':len(worlds),'content_sha256':result['content_sha256']}))
 
