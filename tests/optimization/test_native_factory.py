@@ -159,7 +159,8 @@ def test_capacity_reaches_original_simulation_and_actual_initial_checkpoint(tmp_
     factory=LocalQwenNativeFactory(tmp_path/'runs',tmp_path/'cache',allow_dirty=True,world_conditions=conditions)
     sim=factory(legacy_world_system(),42,'capacity-condition-probe')
     try:
-        sim.initialize_agents();sim.resource_ledger.start_year(1,sim.ecosystem.agent_population)
+        sim.initialize_agents();sim.initialize_conferences()
+        sim.resource_ledger.start_year(1,sim.ecosystem.agent_population)
         state=sim.capture_checkpoint_state(0,phase=0)
         proof=initial_world_conditions_proof(state,conditions,42)
         assert sim.papers_per_project==papers and sim.funding_budget_mode==mode
