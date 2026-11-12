@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+**November12 13:03JST / 04:03UTC:** all five common T/P references complete.
+The first actual history-bearing T/g0 readiness passes28/28 (certificate
+content89a24d4a); its literal submitted institution is now in native execution,
+with the first saved annual checkpoint present. No partial candidate loss or
+improvement is reported or used for redesign. Original writer10035 continues.
+
+The reviewed61-page PDF and its source-bound retention are integrated/pushed;
+27 final preservation/manuscript checks pass7.42s at6acd007. Main/remote were
+verified at6acd007 before this new reader package. Preliminary QA failures were
+test line-wrapping/printed ligature assertions, corrected without changing data
+or old PDF hashes. A fourth [closed-archive reader](components/native-capacity-preference-geometry-v1.md)
+actually starts04:02:25UTC at frozen3fff226/session87783 after45 checks pass9.86s.
+It waits for the same normal double-audit/cost closure; exact raw-unit Pareto/
+linear-mixture diagnostics are not interior-objective optimization. The smoke
+figure is SCRIPTED, not a new actual result. All live science/readers stay frozen.
+R2/R3/R6 and publication readiness remain open.
+
 **November12 12:48JST / 03:48UTC:** the reviewed integrated draft is now
 [61 pages/29 figures/24 tables/26 references](../paper/integrated-advice-build-v1.json).
 All three closed advice controls enter with their actual delivery/choice

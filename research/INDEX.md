@@ -6,6 +6,10 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Observed T/P Pareto and linear-preference readout](components/native-capacity-preference-geometry-v1.md):
+  frozen3fff226 starts a fourth closure-gated reader;45 checks pass. Exact score
+  ties, nulls and nonconvex frontier points remain visible, without optimizing
+  an interior loss, changing the pilot or claiming an actual trade-off yet.
 - [Capacity all-slot/effect/input readers](components/native-capacity-readouts-v1.md):
   frozen524cdaa passes72 checks and actually starts three closure-gated readers;
   no new inference or completed result. T/P labels, unavailable slots, full ties
