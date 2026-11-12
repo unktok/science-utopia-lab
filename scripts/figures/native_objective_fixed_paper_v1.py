@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 
+from scripts.reports.native_objective_fixed_evaluation_v1 import SCHEMA as REPORT_SCHEMA
 from utopia.optimization.native_numeric_designer import checked, save
 from utopia.utils.data_utils import file_sha256
 
@@ -14,7 +15,7 @@ LABELS = ['Reviewed all + transfer', 'One-reviewer all + transfer', 'No-review a
 
 def export(report, output):
     before = file_sha256(report); r = checked(json.loads(report.read_text()))
-    if (r['schema'] != 'scienceutopia.native-objective-fixed-evaluation-report.v1'
+    if (r['schema'] != REPORT_SCHEMA
             or len(r['labels']) != 7 or r['seeds'] != [64101, 64107, 64113]
             or len(r['logical_rows']) != 21 or len(r['physical_worlds']) != 18
             or output.exists()):
