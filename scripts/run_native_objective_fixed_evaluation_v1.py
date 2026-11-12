@@ -27,11 +27,18 @@ PROTOCOL='research/protocols/campaigns/native-objective-fixed-evaluation-v1.md'
 def read(path):return checked(json.loads(Path(path).read_text()))
 
 
-def fixed_selection(original,audit):
+def fixed_selection(original,audit,*,study='count-content-v1'):
     checked(original);checked(audit)
+    if study=='count-content-v1':
+        plan_schema='scienceutopia.native-objective-instrument-loop.v1.plan'
+        audit_schema='scienceutopia.native-objective-instrument-loop-audit.v1'
+    elif study=='capacity-v1':
+        plan_schema='scienceutopia.native-capacity-objective-loop.v1.plan'
+        audit_schema='scienceutopia.native-capacity-objective-loop-audit.v1'
+    else:raise ValueError('explicit supported fixed-selection study required')
     selection=audit['selection'];checked(selection)
-    if (original['schema']!='scienceutopia.native-objective-instrument-loop.v1.plan'
-            or audit['schema']!='scienceutopia.native-objective-instrument-loop-audit.v1'
+    if (original['schema']!=plan_schema
+            or audit['schema']!=audit_schema
             or audit['source_commit']!=original['source_commit'] or audit['plan_sha256']!=original['content_sha256']
             or audit['closure']['terminal']['status']!='closed'
             or audit['source_proof']['status']!='verified-exact-source-closure'
