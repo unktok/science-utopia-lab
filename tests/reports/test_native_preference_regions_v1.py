@@ -58,3 +58,15 @@ def test_actual_figure_exports_agree_without_mutating_retained_report(tmp_path, 
         out = tmp_path/name; module.export(SimpleNamespace(report=REPORT, output=out))
         inventories.append({p.name: module.file_sha256(p) for p in out.iterdir()})
     assert inventories[0] == inventories[1] and REPORT.read_bytes() == before
+
+
+def test_retained_original_exports_are_bound_and_reconstruct_numerically():
+    base = ROOT/'research/data/native-preference-regions-v1'
+    manifest = module.checked(json.loads((base/'manifest.json').read_text()))
+    assert manifest['analysis_source_commit'] == '26497eef3589e13ef95fdfee167b946e39455012'
+    assert manifest['report_file_sha256'] == module.file_sha256(REPORT)
+    assert set(manifest['files']) == {'summary.json', 'preference-regions.png', 'preference-regions.svg'}
+    assert all(module.file_sha256(base/name) == value for name, value in manifest['files'].items())
+    retained = module.checked(json.loads((base/'summary.json').read_text()))
+    assert {k: v for k, v in retained.items() if k != 'content_sha256'} == module.summarize(json.loads(REPORT.read_text()))
+    assert retained['family']['actual_optimized_center'] == '3'
