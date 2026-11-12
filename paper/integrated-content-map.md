@@ -38,8 +38,7 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
   references. Main native-loop section includes all-slot table, actual loss
   paths, shared strong-control scores and observed input classes. Exact
   report/cost/effect/preference/request-class exports are retained under
-  research/data/native-objective-instrument-loop-v1. The source now includes
-  this closed development; the reviewed58-page PDF includes this closed development.
+  research/data/native-objective-instrument-loop-v1. The reviewed58-page PDF includes this closed development.
   Its live18-world fixed evaluation is explicitly unfinished, not a main
   result or evidence for advantage. All58 layouts are verified, with a print-sized
   exact-reference-tie figure and preserved older PDF snapshots.

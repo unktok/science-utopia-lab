@@ -761,3 +761,38 @@ refill, source repair or fabricated closure. At launch the future assay plan
 does not exist. Current fixed evaluation has4/18 complete observations and is
 executing evaluation-004. No partial score enters the new condition selection.
 The publication-ready goal remains active, with R2/R3/R5/R6 still open.
+
+## Reviewed complete development manuscript
+
+The preparation retention scope at0bd2ac0 passes65 checks in14.64s
+(JUnit61bc836c81c7a4463565c036eafd30c9ac7beb2e2ff4c5a51092c6f8518f3794).
+These overlap the earlier connection scopes; none is a new scientific trial.
+
+The new58-page integrated PDF now includes every closed61a1753 proposal,
+six completions/two nulls, exact input classes, measured costs and the unchanged
+strong-reference ties. All earlier tracks remain. The final source is
+4b31842c60e1f88d6c3ac9759cb006651f2310ac, not a revision of the old56-page
+receipt. Two cache-only builds have identical extracted text and logs; there
+are27 figures,22 tables,25 references,23111 word tags, zero off-page words,
+unresolved references or overfull/underfull warnings. All58 initial layouts
+were inspected. Only39/40 change in the final render; the other56 page PNGs
+are byte-identical, and final39/40 receive fresh150dpi inspection.
+
+The original loss-path exports remain unchanged. A separate print-sized view
+groups coincident references with explicit labels at their literal coordinates,
+without score jitter or omitted nulls. Two exports atd4b4cbb agree. The two
+missing word spaces found in review are corrected in final source4b31842.
+Its52 manuscript/source checks pass14.58s (JUnit
+1d2732f28bc4668c2dfa0e7b66e3c970090de40467e579ddfccaa9452c45de79).
+
+The actual retained PDF SHA256 is
+717ae13c34a566cabe20b86f138c5519e3020f6189dc658dadb5ee05e2d3397f.
+At a299d35, all55 retention/source/artifact checks pass15.148s with zero skips,
+errors or failures (JUnit
+cc50baca6e7885baf99f9934725709e5022064572173939240dbf2358d5dc0b5).
+The earlier session handle is no longer available; this pass is confirmed from
+its completed JUnit, not a claimed newly observed process exit. No science is
+closed by these editorial checks. At00:43UTC the original evaluation remains
+6/18 complete, with no terminal; original continuation25775 and queued control
+continuation53563 both answer live session polls. No control plan has been
+dispatched and no partial fixed-evaluation scores enter new design.
