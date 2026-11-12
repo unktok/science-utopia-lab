@@ -33,7 +33,8 @@ Keep five original university Qwen3-8B researchers, other native agents,
 the103107-record2016--2019 corpus, four native years, base30 balanced_two_band
 resources, actual project durations and native costs. Do not replace them with
 a numerical resource game. The primary pilot condition is papers_per_project2,
-funding_budget_mode fixed and funding_budget_slots_frac.2. All algorithms in
+funding_budget_mode fixed and funding_budget_slots_frac.2. The two-paper setting
+is an upper bound: a legal partial submission need not fill it. All algorithms in
 that comparison receive the same condition; none may mint resources, replace
 scientist weights or rewrite native production laws. Existing authored code,
 entities, information routes, conserving transfers and institutional schedules
@@ -103,6 +104,20 @@ policy evaluation and independent optimizer histories remain different units.
 If it is flat or all failures, close that result with its causes/support; do
 not expand the same study until it produces a preferred winner or silently
 activate a per-paper expense to force a trade-off.
+
+## Implemented preparation, not scientific completion
+
+Versioned world conditions v2 expose the three existing native capacity flags;
+v1 preserves its original arguments. The cold physical proof checks the literal
+conditions in every annual checkpoint, including original project-cost policy
+and initial population. No fee or production rule is added. The independent
+founder-boundary instrument and prospective P LossSpec are implemented without
+changing any active T/U campaign. Original five-founder/four-year factories
+at both one/two-paper caps complete through the real checkpoint, cache, wire
+and cold-proof path with scripted HTTP/corpus. This is engineering evidence,
+not an actual-Qwen effect. Source309de52 passes159 integration checks, including
+existing isolated-container timing controls. No new capacity campaign driver,
+exact reference bank, real-designer certificate or scientific result exists yet.
 
 The substantive answer, not this design memo or implementation tests, must
 support the main paper. Keep the full integrated manuscript and existing

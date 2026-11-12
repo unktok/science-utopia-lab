@@ -6,6 +6,15 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Native capacity conditions and separate activity objective](components/native-capacity-objective-preparation-v1.md)
+  and [next-study design](publication/native-capacity-optimization-design-v1.md):
+  preserve native physics, expose existing fixed award/output caps and implement
+  explicit founder-boundary loss P without adding a constraint to T/U.159 checks
+  pass; researcher HTTP/corpus in full-path tests are scripted, not new science.
+- [Permission-only instruction preparation stop](results/native-instruction-timing-permission-stop-v1.md):
+  a1 stops before any control plan/inference; separate same-source a2 actually
+  starts02:15:34UTC under corrected launcher permissions. Original stopped
+  records are retained. No failed scientific slot is replaced.
 - [Literal first plans versus actual edits and outcomes](results/native-designer-initial-plans-v1.md):
   every one of the eight local sessions initially targets the seeded selection/
   feature chain; final graphs stay unchanged. Exact first actions join original

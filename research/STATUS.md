@@ -2,6 +2,28 @@
 
 ## Active publication-ready goal
 
+**November12 11:20JST / 02:20UTC:** all18 selection-fixed native worlds complete
+normally; the original continuation closes02:12UTC after matching double cold
+audits/costs. Both fixed-result and effect exports also close normally twice.
+T-selected publication counts tie all three connected accept-all controls on
+all three unused seeds. Its cross-objective content differences are mixed
+against no-review accept-all; U-selected is literally the reviewed reference.
+This is not independent optimizer replication or a stable strong-rule advantage.
+Actual files/figures are being retained; the58-page PDF remains its older snapshot.
+
+The next three-control chain stops in preparation on sandbox denial of a local
+backend GET, before any plan/scientist POST. That record is retained, not resumed.
+A separately recorded permission-corrected a2 launch starts at02:15:34UTC and
+actually enters instruction-cut; session45620 is its continuation. Its separate
+summary98404 waits. [Exact distinction](results/native-instruction-timing-permission-stop-v1.md).
+No failed scientific slot is refilled.
+
+[Native capacity/P preparation](components/native-capacity-objective-preparation-v1.md)
+passes159 source-bound checks, including original five-founder/four-year cold
+proofs with scripted HTTP and existing actual-container controls. It introduces
+no new native fee, scientist model or hidden constraint. The next T/P pilot is
+still a design, not a dispatched optimization or scientific result. Goal active.
+
 **November12 10:32JST / 01:32UTC:**13/18 fixed evaluation worlds have actual
 complete observations, zero failures and no terminal; evaluation-013 is active.
 The original evaluation25775, fixed-report83919, effect1434, control53563 and
