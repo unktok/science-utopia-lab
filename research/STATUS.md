@@ -2,6 +2,14 @@
 
 ## Active publication-ready goal
 
+**November12 13:30JST / 04:30UTC:** T/g0 is an actually completed observation;
+P/g0 has submitted its literal institution and reached two saved native annual
+checkpoints. No scores or winner are inferred from this progress. The original
+writer and normal-closure audit/readers continue; there is no new scientific
+dispatch. Final preparation/retention checks pass40 in36.02s atf667c5f, including
+308 original Git source bindings. Main integration of the prospective evaluator
+does not alter the frozen live16cfdcef pilot or its losses/budget.
+
 **November12 13:25JST / 04:25UTC:** T/g0 has finished native execution and the
 pilot is generating P/g0 after its actual history-bearing readiness. Original
 writer10035 is unchanged; no partial losses are used for redesign or reported

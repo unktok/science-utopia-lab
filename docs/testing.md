@@ -1,5 +1,33 @@
 # Testing
 
+## Current native T/P evaluation checks
+
+The [fixed T/P preparation receipt](../research/results/native-capacity-fixed-evaluation-preparation-v1.json)
+separates software checks from actual-model outcomes. Its ten native forwards
+use SCRIPTED HTTP/corpus and mocked development-origin/model-load attestations,
+while exercising real native simulation, isolated code, checkpoint measurement,
+cold source/physical proof and public score/effect/input/cost exports. They are
+not ten Qwen experiments or independent optimizer histories.
+
+Without model calls or Docker, run the controller/join/continuation tests:
+
+```sh
+PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES='' HF_HUB_OFFLINE=1 HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  .venv/bin/python -m pytest tests/reports/test_native_capacity_fixed_evaluation_v1.py \
+  tests/reports/test_native_capacity_fixed_evaluation_audit_v1.py \
+  tests/reports/test_native_capacity_fixed_report_v1.py \
+  tests/reports/test_native_capacity_fixed_finish_v1.py -q
+```
+
+`tests/reports/test_native_capacity_fixed_native_v1.py` additionally needs the
+existing pinned Python container image and access to the local Docker socket.
+It does not download an image or call a real LLM. A socket permission failure
+is a failed software test, not evidence of a scientific candidate's merit.
+Commit runtime changes first and keep runtime bytes and HEAD fixed until the
+final source-bound test exits. Run tests in a development worktree, never in
+an active/frozen experiment checkout. Passing these tests does not replace a
+fresh actual designer calibration for a new authoring campaign.
+
 ## Current entry-point and publication checks
 
 Run the portable documentation check without models, network or installation:
