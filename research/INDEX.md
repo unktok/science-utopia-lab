@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Prospective fixed T/P evaluation path](components/native-capacity-fixed-evaluation-v1.md):
+  literal selection, exact P, unused-seed guards and native/cold/cost/effect/input
+  APIs are connected. Ten original-world scripted forwards and90 integration
+  checks pass; no actual unused-seed experiment is dispatched yet.
+- [November12 official venue/AI-use readiness check](publication/venue-and-ai-readiness-2026-11-12.md):
+  ICML2027 dates and AI/contribution policies now visible; CFP/style still pending.
+  No venue choice, human sign-off, anonymity clearance or public submission.
 - [Observed T/P Pareto and linear-preference readout](components/native-capacity-preference-geometry-v1.md):
   frozen3fff226 starts a fourth closure-gated reader;45 checks pass. Exact score
   ties, nulls and nonconvex frontier points remain visible, without optimizing

@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+**November12 13:25JST / 04:25UTC:** T/g0 has finished native execution and the
+pilot is generating P/g0 after its actual history-bearing readiness. Original
+writer10035 is unchanged; no partial losses are used for redesign or reported
+as improvement. All four analysis readers remain separate from inference.
+
+The [prospective fixed T/P evaluator](components/native-capacity-fixed-evaluation-v1.md)
+now connects literal selection, unchanged P/source, unused-seed checks, original
+native/cold proof, all paired score exports and cost/effect/input APIs. A ten-
+original-world/two-seed SCRIPTED integration passes83.26s at e69af0c; final90
+checks pass27.19s at486e3da. An earlier Docker-socket permission QA failure is
+retained separately; no scientific run or slot is restarted/refilled. Both
+smoke plots are reviewed, not actual-Qwen figures. No unused-seed experiment
+is dispatched or selected from partial pilot outcomes.
+
+An [official November12 venue/AI-policy check](publication/venue-and-ai-readiness-2026-11-12.md)
+updates the old planning snapshot: ICML2027 dates and AI/contribution policies
+are available, while CFP/author style remain pending. No venue choice, human
+sign-off, release or submission is implied. The61-page paper remains unchanged;
+R2/R3/R6 and publication-ready goal stay open.
+
 **November12 13:03JST / 04:03UTC:** all five common T/P references complete.
 The first actual history-bearing T/g0 readiness passes28/28 (certificate
 content89a24d4a); its literal submitted institution is now in native execution,
