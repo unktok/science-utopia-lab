@@ -14,10 +14,20 @@ from utopia.utils.data_utils import file_sha256
 SCHEMA='scienceutopia.native-objective-fixed-report.v1'
 
 
-def summarize(plan,audit):
+def summarize(plan,audit,*,study='count-content-v1'):
     checked(plan);checked(audit)
-    if (plan['schema']!='scienceutopia.native-objective-fixed-evaluation.v1.plan'
-            or audit['schema']!='scienceutopia.native-objective-fixed-evaluation-audit.v1'
+    if study=='count-content-v1':
+        plan_schema='scienceutopia.native-objective-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-objective-fixed-evaluation-audit.v1';schema=SCHEMA
+    elif study=='capacity-v1':
+        plan_schema='scienceutopia.native-capacity-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-capacity-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-capacity-fixed-report.v1'
+        if plan['objectives']!=['throughput','founder-activity']:
+            raise ValueError('literal T/P objectives required')
+    else:raise ValueError('explicit supported fixed-report study required')
+    if (plan['schema']!=plan_schema
+            or audit['schema']!=audit_schema
             or audit['source_commit']!=plan['source_commit'] or audit['plan_sha256']!=plan['content_sha256']
             or audit['closure']['terminal']['status']!='closed' or audit['closure']['terminal']['completed_jobs']!=len(plan['jobs'])
             or audit['source_proof']['status']!='verified-exact-source-closure' or not audit['held_out_world_seeds']
@@ -55,7 +65,7 @@ def summarize(plan,audit):
                 paired.append({'label':label,'reference':reference,'seed':seed,'physical_job':a['physical_job'],
                     'reference_physical_job':b['physical_job'],'same_physical_job':a['physical_job'] is not None and a['physical_job']==b['physical_job'],
                     'differences':{k:None if a['scores'][k] is None or b['scores'][k] is None else a['scores'][k]-b['scores'][k] for k in plan['losses']}})
-    result={'schema':SCHEMA,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
+    result={'schema':schema,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
         'audit_sha256':audit['content_sha256'],'origin_audit_content_sha256':plan['origin_audit_content_sha256'],
         'score_order':clone(plan['objectives']),'seeds':clone(plan['evaluation']['seeds']),
         'labels':labels,'reference_labels':clone(plan['evaluation']['reference_labels']),
@@ -72,7 +82,7 @@ def render(report,output):
     import matplotlib.pyplot as plt
     colors=['#087f8c','#9c5d8a','#b47835'];positions={label:i for i,label in enumerate(report['labels'])}
     short=lambda s:s.replace('reference:','').replace('selected:','Selected ').replace('-connected',' + resource').replace('-disconnected',' - resource')
-    with plt.rc_context({'font.size':8,'axes.spines.top':False,'axes.spines.right':False,'svg.hashsalt':SCHEMA}):
+    with plt.rc_context({'font.size':8,'axes.spines.top':False,'axes.spines.right':False,'svg.hashsalt':report['schema']}):
         fig,axes=plt.subplots(1,2,figsize=(10,4.2))
         for ax,objective in zip(axes,report['score_order']):
             for ordinal,(seed,color) in enumerate(zip(report['seeds'],colors)):
@@ -111,14 +121,14 @@ def render(report,output):
         plt.close(fig)
 
 
-def export(args):
+def export(args,*,study='count-content-v1'):
     root=Path(args.run).resolve();output=Path(args.output).resolve();paths=[Path(args.audit_one),Path(args.audit_two),root/'plan.json']
     if output.exists() or output.is_relative_to(root):raise ValueError('fresh report outside scientific raw required')
     if paths[0].read_bytes()!=paths[1].read_bytes():raise ValueError('two original-source evaluation audits differ')
     before=_inventory(root);audit=checked(json.loads(paths[0].read_text()));plan=checked(json.loads(paths[2].read_text()))
     inputs={str(p):file_sha256(p) for p in paths}
     if digest(before)!=audit['raw_inventory_sha256']:raise ValueError('evaluation raw differs from audit')
-    report=summarize(plan,audit)
+    report=summarize(plan,audit,study=study)
     if before!=_inventory(root) or inputs!={str(p):file_sha256(p) for p in paths}:raise ValueError('evaluation report inputs changed')
     output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'});render(report,output)
     for name,rows,fields,nested in [('logical-scores',report['logical_rows'],['label','seed','physical_job','status'],'scores'),
@@ -126,7 +136,7 @@ def export(args):
         with (output/(name+'.csv')).open('x',newline='') as f:
             writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
             for r in rows:writer.writerow({**{k:r[k] for k in fields},**r[nested]})
-    save(output/'manifest.json',{'schema':SCHEMA+'.export','inputs':inputs,'raw_inventory_sha256':digest(before),
+    save(output/'manifest.json',{'schema':report['schema']+'.export','inputs':inputs,'raw_inventory_sha256':digest(before),
         'report_content_sha256':report['content_sha256'],'files':{p.name:file_sha256(p) for p in sorted(output.iterdir())},
         'new_model_calls':0,'new_code_executions':0})
     print(json.dumps({'physical_worlds':len(report['physical_worlds']),'logical_rows':len(report['logical_rows']),

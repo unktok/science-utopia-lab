@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = 'scienceutopia.native-observed-request-classes.v1'
 AUDITS = {
     'scienceutopia.native-capacity-objective-loop-audit.v1',
+    'scienceutopia.native-capacity-fixed-evaluation-audit.v1',
     'scienceutopia.native-instruction-timing-support-audit.v1',
     'scienceutopia.native-objective-instrument-loop-audit.v1',
     'scienceutopia.native-objective-fixed-evaluation-audit.v1',
