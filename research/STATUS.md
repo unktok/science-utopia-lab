@@ -2,6 +2,18 @@
 
 ## Active publication-ready goal
 
+**November12 10:01JST / 01:01UTC:** the actual fixed evaluation reaches9/18
+completed observations, zero failed observations and evaluation-009 executing;
+no terminal is present. [Observed preference regions](results/native-preference-regions-v1.md)
+are now retained from the closed development only: center3 is a conditional
+tie boundary, with another observed-bank boundary at19/5. This is a fixed-record
+explanation, not optimization under a new objective or a change to the live
+selection. Both technical nulls remain outside the envelope. Two actual exports
+agree and the final figure is reviewed. The58-page PDF remains its own earlier
+snapshot, not a claim to contain this subsequent addition. Main/GitHub were
+verified at12aeedb after the control-summary package; the present preference
+analysis still needs its final integration. The goal remains active.
+
 **November12 09:51JST / 00:51UTC:** seven of18 selection-fixed native worlds
 have complete observations, none has failed and evaluation-007 is executing.
 No terminal is present. The three-control scientific chain remains queued.

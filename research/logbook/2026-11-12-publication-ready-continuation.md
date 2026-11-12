@@ -837,3 +837,13 @@ read-only recipe. The initial axis label was too long and the legend covered
 lines; the final actual-data PNG is reviewed after those fixes. The58-page
 paper is not relabeled to include this subsequent addition. Current641xx
 science, literal T/U definitions and queued5925d5b controls remain unchanged.
+
+At12aeedb,37 summary/continuation/manuscript-retention checks pass4.89s and
+the final exit0 is inspected before main integration. Push and ls-remote agree
+at12aeedb445e766c106cdc38ef0046281f1e396fc. The real figure reader32479,
+control queue53563 and original evaluation continuation25775 all answer live
+session polls. The new preference retention scope at ebd4a48 later passes35
+checks3.66s, also with an explicitly observed exit0. At01:01:32UTC,9/18 fixed
+evaluation observations are complete and none has failed; evaluation-009 is
+executing with no terminal. The preference analysis uses only closed development
+data, not these partial held-out outcomes. No new scientific dispatch is added.
