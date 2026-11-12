@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed fixed T/U evaluation](results/native-objective-fixed-evaluation-v1.md)
+  and [all-seed data/costs/effects](data/native-objective-fixed-evaluation-v1/README.md):
+  18 actual worlds/21 logical cells, matching double original cold closure and
+  exports. T ties strong all-accept rules on all three unused seeds; cross-U
+  differences are mixed. U retains its literal reference. Both figures reviewed;
+  independent optimizer replication and publication readiness remain open.
 - [Native capacity conditions and separate activity objective](components/native-capacity-objective-preparation-v1.md)
   and [next-study design](publication/native-capacity-optimization-design-v1.md):
   preserve native physics, expose existing fixed award/output caps and implement
