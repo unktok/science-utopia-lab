@@ -20,7 +20,7 @@ from utopia.system.design_patch import clone, digest
 
 
 def setup(tmp_path,monkeypatch):
-    p=plan(tmp_path/'inputs',monkeypatch);root=tmp_path/'run';root.mkdir()
+    p=plan(tmp_path/'inputs',monkeypatch);root=tmp_path/'run';root.mkdir();(root/'writer.lock').touch()
     driver.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
     driver.save(root/'started.json',{'schema':driver.SCHEMA+'.start','plan_sha256':p['content_sha256'],
         'started_utc':'2026-11-12T01:00:00+00:00','pid':123})
