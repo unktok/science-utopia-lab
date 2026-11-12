@@ -15,6 +15,7 @@ from utopia.system.native_researcher_work import (
     IMPLEMENTATION, REQUEST, RESPONSE, validate_work_node, validate_work_request,
 )
 from utopia.system.runtime import GraphRuntimeError, DeliveredValue
+from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 
 
 def work_request():
@@ -249,7 +250,7 @@ def test_opening_observation_card_matches_literal_existing_ports_without_new_eff
 def test_documented_delivery_uses_real_handler_and_preserves_arbitrary_payload():
     from types import SimpleNamespace
     from utopia.system.native_kernel import CONTEXT_RECEIVER, institutional_context_prompt
-    kernel = NativeScienceKernel(SystemSpec('SCRIPTED-only-delivery', 1))
+    kernel = NativeScienceKernel(SystemSpec('scripted-only-delivery', 1))
     actor = SimpleNamespace(can_author=True, institutional_context=[])
     kernel._simulation = SimpleNamespace(ecosystem=SimpleNamespace(agent_population={'existing': actor}))
     payload = {'not-a-catalogue-policy': {'arbitrary': ['literal', 3]}}
