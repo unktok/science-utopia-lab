@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Capacity all-slot/effect/input readers](components/native-capacity-readouts-v1.md):
+  frozen524cdaa passes72 checks and actually starts three closure-gated readers;
+  no new inference or completed result. T/P labels, unavailable slots, full ties
+  and old T/U semantics remain separate.
+- [Direct institutional neighbors: method follow-up](publication/institutional-neighbors-method-followup-v1.md):
+  targeted primary-text reading of Society of Researchers and Institutional AI
+  narrows priority claims. Not independent reproduction or a new empirical win.
 - [Closed advice-timing result](results/native-instruction-timing-v1.md):
   all three native controls/audits/exports close normally; actual advice reaches
   researcher inputs but topic/duration choices and T/U do not improve. Full

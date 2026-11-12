@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+**November12 12:24JST / 03:24UTC:** actual initial35B execution calibration
+passes all28 controls at source16cfdcef (certificate content4a208d9a); the pilot
+has two complete common references and is running no-review-all-equalization.
+No proposal or candidate improvement is claimed yet. Frozen read-only524cdaa
+starts [three closure-gated readers](components/native-capacity-readouts-v1.md)
+for all-slot figures, native effects and exact model inputs.72 final checks pass
+17.77s; none is an additional scientific trial. Original sessions10035/13098
+remain the science/normal-audit pair. No running source is edited.
+
+Main/GitHub match8acd41b after the59-page manuscript and actual pilot launch
+package. The newer reader package is awaiting verified integration. A targeted
+[primary-method comparison](publication/institutional-neighbors-method-followup-v1.md)
+also narrows institutional-graph/optimization priority claims; it does not change
+active losses or substitute related-work prose for R2. Goal remains active.
+
 **November12 12:02JST / 03:02UTC:** the new finite T/P pilot actually starts at
 03:01:39.621882UTC, writer84531/session10035, from clean frozen16cfdcef.
 It is in initial actual local35B execution readiness; no calibration pass,
