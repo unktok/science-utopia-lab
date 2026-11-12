@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+**November12 09:36JST / 00:36UTC:** six of18 selection-fixed native worlds
+now have actual complete observations, with evaluation-006 executing and no
+terminal. Original session25775 remains live. The additional three-control
+assay is still waiting at source5925d5b/session53563 for normal parent closure;
+no new advice world is dispatched.
+
+The [new58-page integrated PDF](../output/pdf/science-utopia-lab-integrated-content-search-working-paper.pdf)
+now includes the normally closed eight-proposal T/U development, all six
+completions/two nulls, exact-input analysis and measured costs. A print-sized
+figure keeps all coincident references and failures readable without changing
+losses. Two cached builds/text/logs agree; all58 layouts are checked, including
+fresh150dpi pages39/40. No clipping or unresolved references. [Exact binding](../paper/integrated-content-search-build-v1.json).
+The56-page and earlier PDFs remain unchanged. Live fixed evaluation and the
+unexecuted advice assay remain separate, and publication readiness is open.
+
 **November12 09:21JST / 00:21UTC:** the existing fixed-policy evaluation has
 four complete observations out of18 and is executing evaluation-004. Original
 continuation/session25775 is live. No partial evaluation scores enter design.

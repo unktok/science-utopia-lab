@@ -24,9 +24,9 @@ def test_all_new_source_table_rows_match_actual_submissions_and_probes():
     assert 'no closed held-out result' in text
 
 
-def test_published_pdf_receipt_is_not_rewritten_for_unbuilt_working_source():
+def test_previous_pdf_receipt_is_not_rewritten_for_the_new_reviewed_snapshot():
     r = json.loads((ROOT/'paper/integrated-estimands-build-v1.json').read_text())
     assert r['source_commit'] == '7f8a39bf9dbf87a4bb6f88911e575937ae64ce4c'
     assert r['pages'] == 56 and r['figures'] == 26 and r['tables'] == 21
     content_map = (ROOT/'paper/integrated-content-map.md').read_text()
-    assert 'reviewed56-page PDF predates this addition' in content_map
+    assert 'reviewed58-page PDF includes this closed development' in content_map

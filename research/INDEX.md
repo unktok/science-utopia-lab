@@ -79,11 +79,12 @@ Historical documents retain their paths and source identities.
   audits/costs and two matching seven-file exports. Base30 activity/output
   change, base60 aggregate outcomes do not. One reused seed; developer control,
   not an automatically invented policy. No inference remains live.
-- [Latest56-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-estimands-working-paper.pdf)
-  and [build/visual binding](../paper/integrated-estimands-build-v1.json):
+- [Latest58-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-content-search-working-paper.pdf)
+  and [build/visual binding](../paper/integrated-content-search-build-v1.json):
   retains all old tracks, adds finite-search estimands and checks the identities
   of all25 cited records against primary bibliographic sources. Two cache-only
-  builds/text agree; all56 layouts are reviewed. The prior55-page PDF remains
+  builds/text agree; all58 layouts are reviewed, now including all eight closed
+  T/U proposals, actual input classes and a print-readable path figure. The prior56-page PDF remains
   unchanged. [Historical short-draft input reconstruction](data/historical-paper-reconstruction-v1/README.md)
   stages12/13/13 exact files without changing old receipts. R2 and publication
   readiness stay open; editorial/source QA is not empirical replication.
