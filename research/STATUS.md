@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November12 12:00JST / 03:00UTC:** all three advice controls close normally at
+02:39:30UTC; double original audits/costs, all exports and repeated figures
+close by02:40:45UTC. [Actual result](results/native-instruction-timing-v1.md):
+literal advice reaches0/10,10/10,5/10 direction inputs, but selected topics/
+catalog durations and T=−7/U=−4 remain equal. Full model inputs/replies and
+some resource trajectories differ, so this is not complete behavioral equality.
+Both actual figures are reviewed and all literal data retained. No inference
+from the old study is still running; a1's permission stop stays stopped.
+
+The [reviewed59-page PDF](../paper/integrated-objective-evaluation-build-v1.json)
+includes the completed18-world fixed T/U evaluation, not this newer advice
+result. All59 layouts/two cached builds and23 preservation checks pass. A new
+[finite nine-world T/P driver/auditor](components/native-capacity-objective-loop-v1.md)
+is implemented. A complete nine-original-world success path passes47.52s with
+scripted scientist/designer HTTP; it is not actual optimization evidence or
+real readiness. Final integration and actual source-bound local35B calibration
+remain before the new pilot dispatch. Publication readiness remains open.
+
 **November12 11:20JST / 02:20UTC:** all18 selection-fixed native worlds complete
 normally; the original continuation closes02:12UTC after matching double cold
 audits/costs. Both fixed-result and effect exports also close normally twice.

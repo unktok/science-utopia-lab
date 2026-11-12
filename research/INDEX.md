@@ -6,6 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed advice-timing result](results/native-instruction-timing-v1.md):
+  all three native controls/audits/exports close normally; actual advice reaches
+  researcher inputs but topic/duration choices and T/U do not improve. Full
+  inputs/replies/resources are not identical. Both figures reviewed; literal
+  data/costs retained. A developer contrast, not optimization or general null.
+- [Next nine-world T/P driver and auditor](components/native-capacity-objective-loop-v1.md):
+  initial/history-bound readiness, five common strong rules, four own proposals,
+  no critic calls, own-only ties and original checkpoint loss reconstruction.
+  Full nine-native-world success path uses scripted scientist/designer HTTP.
+  Final-source checks and actual local35B calibration remain before dispatch.
 - [Reviewed59-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-objective-evaluation-working-paper.pdf)
   and [source/build/layout binding](../paper/integrated-objective-evaluation-build-v1.json):
   adds all closed18/21 fixed T/U comparisons, actual costs and print-readable
