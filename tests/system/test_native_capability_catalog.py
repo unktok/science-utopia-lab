@@ -229,3 +229,59 @@ def test_code_card_describes_actual_artifact_fields_without_source_template():
     assert set(card['parameter_fields']['code_artifact']) == set(artifact)
     assert 'source template' in card['schema_scope']
     assert set(card['execution_ABI']['context_keys']) == {'period', 'phase', 'random_seed', 'parameters', 'state', 'inputs'}
+
+
+def test_opening_observation_card_matches_literal_existing_ports_without_new_effect():
+    from utopia.system.native_kernel import legacy_world_system, CONTEXT_RECEIVER
+    catalog = native_capability_catalog()
+    original = legacy_world_system().to_dict()
+    opening = next(n for n in original['mechanisms'] if n['implementation'] == 'native.phase.open.v1')
+    assert catalog['cards']['native.phase.open.v1']['ports']['outputs'] == opening['outputs']
+    card = catalog['cards'][CONTEXT_RECEIVER]
+    assert card['ports']['outputs'] == []
+    sample = {'payload': {'arbitrary-protocol': {'hypotheses': ['literal content']}}, 'actor_ids': ['existing']}
+    Draft202012Validator(card['producer_code_envelope_shape_schema']).validate(sample)
+    assert 'instruction' not in card['producer_code_envelope_shape_schema']['properties']['payload']
+    with pytest.raises(ValidationError):
+        Draft202012Validator(card['producer_code_envelope_shape_schema']).validate({'payload': {}, 'actor_ids': []})
+
+
+def test_documented_delivery_uses_real_handler_and_preserves_arbitrary_payload():
+    from types import SimpleNamespace
+    from utopia.system.native_kernel import CONTEXT_RECEIVER, institutional_context_prompt
+    kernel = NativeScienceKernel(SystemSpec('SCRIPTED-only-delivery', 1))
+    actor = SimpleNamespace(can_author=True, institutional_context=[])
+    kernel._simulation = SimpleNamespace(ecosystem=SimpleNamespace(agent_population={'existing': actor}))
+    payload = {'not-a-catalogue-policy': {'arbitrary': ['literal', 3]}}
+    value = DeliveredValue(ChannelKind.ARTIFACT, 'SCRIPTED-new-protocol', payload,
+        ('existing',), (), ('actual-scripted-lineage',), 'unseeded-producer', 'out', 1, 1)
+    context = SimpleNamespace(inputs={'any-port': (value,)}, period=1)
+    card = native_capability_catalog()['cards'][CONTEXT_RECEIVER]
+    Draft202012Validator(card['producer_code_envelope_shape_schema']).validate({'payload': payload, 'actor_ids': ['existing']})
+    result = kernel._receive_context(context)
+    assert not result.outputs and len(result.events) == 1
+    assert actor.institutional_context[0]['payload'] == payload
+    assert result.events[0].event_type == 'native.system.context_delivered'
+    assert 'literal' in institutional_context_prompt(actor)
+    with pytest.raises(GraphRuntimeError, match='already delivered'): kernel._receive_context(context)
+    for ids in ((), ('unknown',)):
+        bad = replace(value, actor_ids=ids)
+        with pytest.raises(GraphRuntimeError): kernel._receive_context(SimpleNamespace(inputs={'any': (bad,)}, period=2))
+
+
+def test_observation_shape_on_original_native_years(tmp_path, fixed_corpus, monkeypatch):
+    from tests.system.test_native_science_kernel import make_sim
+    from utopia.system.native_kernel import legacy_world_system
+    schema = native_capability_catalog()['cards']['native.phase.open.v1']['response_shape_schema']
+    original = NativeScienceKernel.observation; observed = []
+    def capture(self):
+        result = original(self); observed.append(result); return result
+    monkeypatch.setattr(NativeScienceKernel, 'observation', capture)
+    sim, _ = make_sim(tmp_path/'native-observations', native=NativeScienceKernel(legacy_world_system()))
+    try:
+        sim.run()
+        assert len(observed) == 13*6
+        for value in observed: Draft202012Validator(schema).validate(value)
+        assert {s['year'] for s in observed} == set(range(1, 7))
+    finally:
+        sim.llm.response_cache.close()

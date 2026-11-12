@@ -22,6 +22,8 @@ CATALOG_IMPLEMENTATIONS = {
     'native.world.claim-verification.v1': 'Independently check a completed native count assertion; preserve false claims and corrections.',
     'native.world.review-inputs.v13': 'Expose actual current submissions and original reviewer eligibility without choosing a policy.',
     'native.phase.review.with-routing.v13': 'Execute exactly an institution-authored eligible review-task plan in the original native world.',
+    'native.phase.open.v1': 'Run the original native year opening and expose its actual post-opening world observation.',
+    'native.world.researcher-context.v1': 'Deliver arbitrary addressed institutional records to original researchers without choosing their actions.',
 }
 
 
@@ -146,6 +148,66 @@ def _transfers():
             'not_granted': ['resource minting', 'implicit transfer selection', 'actor creation']},
         'validators': [_source(_command), _source(apply_native_resource_transfers)],
         'schema_scope': 'shape schema plus semantic checks; no allocation algorithm supplied'}
+
+
+def _information():
+    from .native_kernel import NativeScienceKernel, CONTEXT_RECEIVER, legacy_world_system
+    # These are the actual existing producer ports, not a new snapshot effect.
+    outputs = next(n['outputs'] for n in legacy_world_system().to_dict()['mechanisms']
+                   if n['implementation'] == 'native.phase.open.v1')
+    observation = _object({'schema': {'const': 'scienceutopia.native-world-observation.v1'},
+        'year': {'type': 'integer', 'minimum': 1}, 'ecosystem': {'type': 'object'},
+        'papers': {'type': 'object'}, 'conferences': {'type': 'object'},
+        'year_results': {'type': 'object'}, 'extension_state': {'type': 'object'}})
+    observation['properties'].update({'system_spec': {'type': 'object'},
+        'system_fingerprint': {'type': 'string'}, 'open_domain': {'type': 'object'}})
+    opening = {'implementation': 'native.phase.open.v1', 'version': 1,
+        'ports': {'inputs': 'handler reads no incoming values; declared graph dependencies still apply',
+                  'outputs': outputs},
+        'parameters': 'no institution policy parameter is read by the original opening handler',
+        'response_shape_schema': observation,
+        'observation_fields': {'ecosystem.agents': 'actual serialized agents, including id, can_author, is_active, resources, project_start_year, project_end_year and newest_direction',
+            'papers': 'actual current paper-tracker serialization',
+            'conferences': 'actual conferences, including in-flight submitted_papers',
+            'extension_state': 'saved graph mechanism states, not an evaluator or private cache',
+            'system_spec': 'only if expose_system_spec metadata explicitly enables self-description',
+            'open_domain': 'only if actual open-domain state exists'},
+        'semantic_constraints': ['Runs original _setup_year and _start_native_government_year before observation.',
+            'The graph must invoke the original opening exactly as its world-law scope permits.',
+            'Other native phases also emit their own post-stage world observations; an opening snapshot is not refreshed by waiting.',
+            'Author code chooses what to compute, where to route it and when a later consumer runs.',
+            'A future model decision cannot be retroactively changed by a later message.'],
+        'cost': {'scientist_model_calls': 'original native opening semantics, not a new free model-query endpoint'},
+        'privilege': {'granted': ['observe the actual post-opening native world'],
+            'not_granted': ['private losses or observer caches', 'new arbitrary snapshots at any time',
+                'changing native production/calendar laws', 'automatic messages or wires']},
+        'validators': [_source(NativeScienceKernel.observation), _source(NativeScienceKernel)],
+        'schema_scope': 'top-level observation shape and literal existing ports; nested domain semantics remain native, not a policy recipe'}
+    envelope = _object({'payload': {'type': 'object'},
+        'actor_ids': {'type': 'array', 'minItems': 1,
+                      'items': {'type': 'string', 'minLength': 1}}})
+    envelope['properties']['artifact_ids'] = {'type': 'array', 'items': {'type': 'string', 'minLength': 1}}
+    delivery = {'implementation': CONTEXT_RECEIVER, 'version': 1,
+        'ports': {'inputs': 'any explicitly declared compatible input ports; all delivered values are consumed',
+            'outputs': [], 'optional_unused_output_declarations': 'handler emits no values; required output ports cannot be satisfied'},
+        'parameters': 'no policy parameter, instruction template or prescribed payload key is read',
+        'producer_code_envelope_shape_schema': envelope,
+        'semantic_constraints': ['Payload is an arbitrary finite JSON object; no instruction/topic/policy vocabulary is required.',
+            'Nonempty explicit actor_ids must name actual existing author-capable actors.',
+            'Graph/runtime supplies causal source, emitted period and lineage; generated code cannot forge these fields.',
+            'A delivered record is appended to actual institutional_context and emits native.system.context_delivered.',
+            'Repeated message identity raises; no rollback of earlier applied messages in a failed batch is promised.',
+            'The original institutional_context_prompt renders stored context for native consumers that call it; not every possible model call is such a consumer.',
+            'Schedule and latency are authored graph choices. Late delivery is legal and may only affect later eligible decisions.',
+            'Receiver/delivery, prompt presence, chosen action and improved outcome are separate observations.'],
+        'persistence': 'stored actor context survives native checkpoint/restart; a one-time producer need not emit every year',
+        'cost': {'scientist_model_calls': 0, 'later_input_tokens': 'changed researcher requests retain their actual inference cost'},
+        'privilege': {'granted': ['append arbitrary addressed institutional information to original researcher context'],
+            'not_granted': ['force obedience', 'overwrite projects', 'fabricate scores or paper acceptance',
+                'change weights/personas', 'automatically register a new native action']},
+        'validators': [_source(NativeScienceKernel._receive_context)],
+        'schema_scope': 'isolated-code output envelope shape plus separately listed native recipient/delivery semantics; no policy algorithm supplied'}
+    return [opening, delivery]
 
 
 def _domain():
@@ -306,7 +368,7 @@ def _review_routing():
 
 
 def native_capability_catalog():
-    cards = [_work(), _transfers(), _domain(), _process(), _code(), _claims(), *_review_routing()]
+    cards = [_work(), _transfers(), _domain(), _process(), _code(), _claims(), *_review_routing(), *_information()]
     registered = _registered()
     registry_sources = {_source(handler)['path']: _source(handler)
         for handler in registered.values()}

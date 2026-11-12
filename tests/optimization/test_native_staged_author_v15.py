@@ -608,6 +608,17 @@ def test_capability_inspection_and_prompt_catalogue_cold_replay_remain_source_bo
     assert 'capability_catalog_source_sha256' in protocol_binding()
 
 
+def test_actual_inspect_discovers_information_consumers_without_seeding_a_policy():
+    state = initial_draft(request())
+    for identity in ('native.phase.open.v1', 'native.world.researcher-context.v1'):
+        same, observed = apply(state, {'tool': 'inspect', 'resource': 'capabilities',
+            'path': '/cards/'+identity})
+        assert same == state and observed['ok']
+        assert observed['result']['value']['implementation'] == identity
+        assert observed['definition'] is None
+        assert observed['draft_before_sha256'] == observed['draft_after_sha256']
+
+
 def test_staged_dialogue_transport_is_one_exact_hermes_loopback_post(monkeypatch):
     calls = []
     class Response:
