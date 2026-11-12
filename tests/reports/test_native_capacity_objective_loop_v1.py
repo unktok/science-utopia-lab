@@ -12,11 +12,21 @@ from utopia.system import SystemSpec
 from utopia.system.design_patch import clone, digest
 
 
-def plan(tmp_path, monkeypatch):
+def plan(tmp_path, monkeypatch, *, image_override=None):
     gen,_,_,_ = fixture(tmp_path/'fixture',[finish()],extended=True,
         reference='resource-30-connected',maximum_probes=64)
-    bank=gen.edit_feedback.bank; operator=operator_plan()
-    operator['scientist']['image_id']=operator['designer']['image_id']=gen.image_id
+    bank=clone(gen.edit_feedback.bank); operator=operator_plan()
+    image=gen.image_id if image_override is None else image_override
+    if image_override is not None:
+        # This is a newly constructed SCRIPTED bank, not historical evidence.
+        # Rebuild its own bundle/origin identities for the actual test executor.
+        changes={}
+        for row in bank['records']:
+            old=row.pop('bundle_sha256');row['receipt']['image_id']=image
+            row['bundle_sha256']=digest(row);changes[old]=row['bundle_sha256']
+        for origin in bank['origins']:origin['bundle_sha256']=changes[origin['bundle_sha256']]
+        bank.pop('content_sha256');bank['content_sha256']=digest(bank)
+    operator['scientist']['image_id']=operator['designer']['image_id']=image
     real=module.read
     def read(path):
         if Path(path)==module.ROOT/module.BANK_MANIFEST:

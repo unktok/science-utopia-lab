@@ -18,7 +18,8 @@ from utopia.system.design_patch import clone, digest
 
 
 def test_real_references_two_objective_histories_feedback_selection_and_nine_cold_worlds(tmp_path,fixed_corpus,monkeypatch):
-    p=plan(tmp_path/'inputs',monkeypatch)
+    p=plan(tmp_path/'inputs',monkeypatch,
+        image_override='sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833')
     install_scripted_provider(tmp_path/'provider',monkeypatch,2)
     # The declared scientific binding in this software fixture is explicitly
     # its real scripted transport/corpus binding, not the installed Qwen digest.
@@ -35,6 +36,7 @@ def test_real_references_two_objective_histories_feedback_selection_and_nine_col
         p['world'][key]=clone(getattr(probe,key))
     p['world']['classification']='SCRIPTED-nine-world-controller-native-integration'
     p['source_commit']=probe.source_commit
+    p['measurement_contract']['source_commit']=probe.source_commit
     p={k:v for k,v in p.items() if k!='content_sha256'};p['content_sha256']=digest(p)
     monkeypatch.setattr(driver,'require_environment',lambda:None)
     monkeypatch.setattr(driver,'require_plan',lambda root:p)
@@ -66,7 +68,7 @@ def test_real_references_two_objective_histories_feedback_selection_and_nine_col
     assert len(observations)==9
     for observation in observations:
         m=observation['metadata'];assert observation['status']=='complete' and len(m['runs'])==1
-        evidence=m['runs'][0];checkpoint=Path(evidence['checkpoint_path']);cell=checkpoint.parents[3]
+        evidence=m['runs'][0];checkpoint=Path(evidence['checkpoint_path']);cell=checkpoint.parent
         # Resolve by actual cache location, never guessed layout depth.
         while not (cell/'replies/responses.sqlite').is_file():
             assert cell.is_relative_to(root)
