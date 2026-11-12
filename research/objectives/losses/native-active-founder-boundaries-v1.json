@@ -1,0 +1,20 @@
+{
+  "schema": "scienceutopia.loss-spec.v1",
+  "id": "native-active-founder-boundaries-v1",
+  "version": "1",
+  "status": "prospective-engineering-proxy-not-adopted-by-current-campaigns",
+  "optimization_seed_role": "development",
+  "direction": "minimize",
+  "per_run": {
+    "intercept": 0.0,
+    "terms": [
+      {"metric_id": "native.active_founder_boundary_sum", "slice_id": null, "coefficient": -1.0}
+    ]
+  },
+  "across_seeds": {
+    "aggregation": "mean_plus_population_sd",
+    "dispersion_weight": 0.0,
+    "minimum_valid_runs": 1
+  },
+  "interpretation": "Minimize minus the sum of original founder author-capability and native is_active indicators at saved year-end boundaries1..Y. Year0 is excluded; extra created actors do not enlarge the initial cohort. This is a literal native activity-state preference, not actual research work, continuous survival time, resource sufficiency or scientific quality. No hidden positive-resource, fairness, novelty or adoption veto. Current T/U campaigns and selections are unchanged."
+}

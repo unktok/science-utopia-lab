@@ -17,6 +17,21 @@ from utopia.optimization.native_code_trace import validate_record
 from utopia.utils.data_utils import file_sha256
 
 
+def native_capacity_conditions_proof(state,conditions):
+    """Actual checkpoint runtime fields, not only the declared response binding."""
+    from utopia.optimization.native_factory import checked_world_conditions
+    conditions=checked_world_conditions(conditions)
+    if conditions is None or conditions['schema']!='scienceutopia.native-world-conditions.v2':
+        raise ValueError('explicit native capacity condition scope required')
+    capacity={k:conditions[k] for k in ('papers_per_project','funding_budget_mode','funding_budget_slots_frac')}
+    actual_simulation=state['portable']['contract']['simulation']
+    if (any(actual_simulation.get(k)!=v for k,v in capacity.items())
+            or state['project_cost_policy']['papers_per_project']!=capacity['papers_per_project']
+            or state['initial_university_count']!=5 or state['initial_industry_count']!=0):
+        raise ValueError('actual native initial production/funding capacity differs from conditions')
+    return capacity
+
+
 def initial_world_conditions_proof(state,conditions,seed):
     """Verify actual founder records, not just declared configuration metadata."""
     from utopia.optimization.native_factory import checked_world_conditions
@@ -41,12 +56,7 @@ def initial_world_conditions_proof(state,conditions,seed):
         'actual_author_resources':{k:v['resources'] for k,v in sorted(actual.items())},
         'ledger_present':logging,'new_model_calls':0,'new_code_executions':0}
     if conditions['schema']=='scienceutopia.native-world-conditions.v2':
-        capacity={k:conditions[k] for k in ('papers_per_project','funding_budget_mode','funding_budget_slots_frac')}
-        actual_simulation=state['portable']['contract']['simulation']
-        if (any(actual_simulation.get(k)!=v for k,v in capacity.items())
-                or state['project_cost_policy']['papers_per_project']!=capacity['papers_per_project']
-                or state['initial_university_count']!=5 or state['initial_industry_count']!=0):
-            raise ValueError('actual native initial production/funding capacity differs from conditions')
+        capacity=native_capacity_conditions_proof(state,conditions)
         proof['actual_native_capacity']=capacity
         proof['fixed_annual_slot_cap']=(None if capacity['funding_budget_mode']=='track'
             else int(round(capacity['funding_budget_slots_frac']*state['initial_university_count'])))
@@ -119,6 +129,8 @@ def physical_proof(cell,spec,*,world,seed,years,evidence=None):
                 or state['portable']['contract']['model_revision']!=binding['model_revision']
                 or state['rag']['ordered_documents_sha256']!=world['corpus_sha256']):
             raise ValueError('native annual checkpoint lineage differs')
+        if conditions is not None and conditions['schema']=='scienceutopia.native-world-conditions.v2':
+            native_capacity_conditions_proof(state,conditions)
         kernel=NativeScienceKernel(spec,checkpoint=state['native_system'])
         if kernel.design_history:raise ValueError('fresh evaluation unexpectedly migrated its design')
         events=state['native_system']['events']

@@ -25,6 +25,18 @@ def test_original_cohort_year0_exclusion_and_native_flags_not_resources():
     assert r['annual'][0]['founders'][0]['counted_active']  # no hidden resource threshold
 
 
+def test_prospective_loss_is_explicit_one_metric_not_an_extra_social_veto():
+    from pathlib import Path
+    from utopia.optimization.loss import load_loss_spec, evaluate_loss
+    root = Path(__file__).resolve().parents[2]
+    loss = load_loss_spec(root/'research/objectives/losses/native-active-founder-boundaries-v1.json')
+    assert loss['per_run']['terms'] == [{'metric_id': METRIC, 'slice_id': None, 'coefficient': -1.0}]
+    result = evaluate_loss(loss, [{'run_id': 'SCRIPTED-state-count',
+        'metrics': {METRIC: {'status': 'measured', 'value': from_states(states())['value']}}}])
+    assert result['loss'] == -4.0
+    assert 'not-adopted' in loss['status']
+
+
 def test_new_actors_and_absent_original_founders_keep_explicit_meaning():
     source = states()
     source[1]['ecosystem_data']['agents'].append({'id': 'SCRIPTED-new', 'can_author': True, 'is_active': True})
