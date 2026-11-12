@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import unicodedata
 
 from utopia.optimization.native_numeric_designer import checked
 
@@ -49,7 +50,7 @@ def test_literal_build_source_assets_and_pdf_text_match_the_frozen_snapshot():
     assert src.count(r'\begin{table}') == 24
     pdf = subprocess.check_output(['pdftotext',str(ROOT/r['output']),'-'])
     assert hashlib.sha256(pdf).hexdigest() == r['build']['text_sha256']
-    text = re.sub(r'\s+',' ',pdf.decode())
+    text = re.sub(r'\s+',' ',unicodedata.normalize('NFKC', pdf.decode()))
     for marker in ('All 30 direction requests','389 scientist replies with 360734 input',
                    'not establish general instruction ineffectiveness',
                    'complete ordered model-input and literal-response sequences differ',
