@@ -90,6 +90,14 @@ saved plan from its declared configuration in a clean frozen worktree. The
 original-world/container instruction tests must pass at the prospective source;
 their scripted HTTP is connection evidence, not actual-Qwen effectiveness.
 
+The one-shot continuation waits at most86400s for both preceding audits/costs,
+then allows1800s preparation,28800s for the three-control process and9000s for
+its separate double audit/cost chain. Each subsequent read-only export has
+1800s and is repeated exactly twice for byte comparison, never to select a
+favorable result. These are outer operational bounds, not enlarged native-world
+or model-call budgets. A stopped or timed-out stage stops the continuation;
+it does not redispatch the same world or edit an existing terminal.
+
 ## Required analysis and next decision
 
 Cold audit each literal original world, including source, native execution,
