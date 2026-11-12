@@ -102,7 +102,7 @@ def test_integrated_argument_keeps_actual_null_and_no_fixed_evaluation():
     entry = (ROOT / 'paper/integrated.tex').read_text()
     text = (ROOT / 'paper/integrated/native-capacity.tex').read_text()
     assert '\\input{integrated/native-capacity}' in entry
-    assert 'nonexistent actor\\code{system}' in text
+    assert 'nonexistent actor \\code{system}' in text
     assert 'not dispatched for this flat pilot' in text.replace('\n', ' ')
     assert 'not an additional constraint on T' in text
     assert '172 code calls' in text and '34 committed annual boundaries' in text
