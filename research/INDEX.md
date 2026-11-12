@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Instruction timing analysis and figure continuation](components/native-instruction-timing-summary-v1.md):
+  request-attempt CSV, unknown/ambiguous choice cells at actual native years,
+  unchanged T/U and annual project/resource summaries. Frozen d2a3391 passes32
+  software checks; separate session32479 waits for original closed control
+  exports. Layout QA uses scripted data, not results or new scientific trials.
 - [Instruction timing controls and waiting continuation](components/native-instruction-timing-support-v1.md):
   three prospective cut/early/late controls at frozen5925d5b, with unchanged
   native laws and T/U. Source-bound62 connection/40 original-world checks pass;

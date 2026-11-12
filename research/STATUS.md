@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+**November12 09:51JST / 00:51UTC:** seven of18 selection-fixed native worlds
+have complete observations, none has failed and evaluation-007 is executing.
+No terminal is present. The three-control scientific chain remains queued.
+A separate [read-only table/figure chain](components/native-instruction-timing-summary-v1.md)
+starts at frozen d2a3391/session32479 and waits for its normal closure. The new
+software scope passes32 tests with actual deterministic CSV/PNG/SVG IO;
+scripted layout images are not experimental evidence. No model call, loss
+change or candidate reselection is added. Main/GitHub match88efbc3 after
+the reviewed58-page package is pushed; the newer analysis package is separate
+until its verified integration. R2/R3/R6 and publication readiness remain open.
+
 **November12 09:36JST / 00:36UTC:** six of18 selection-fixed native worlds
 now have actual complete observations, with evaluation-006 executing and no
 terminal. Original session25775 remains live. The additional three-control

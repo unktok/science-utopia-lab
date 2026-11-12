@@ -796,3 +796,26 @@ closed by these editorial checks. At00:43UTC the original evaluation remains
 6/18 complete, with no terminal; original continuation25775 and queued control
 continuation53563 both answer live session polls. No control plan has been
 dispatched and no partial fixed-evaluation scores enter new design.
+
+At88efbc3 the exact55-check manuscript/retention suite is rerun and its final
+process exit0 is observed:55pass in19.13s. Only then is main fast-forwarded.
+The sandbox push fails DNS; the authorized escalated push succeeds and an
+independent ls-remote returns88efbc3a613f8ac0adbfff03ceb1156680cef87d.
+
+## Read-only control figures connected before scientific closure
+
+Atd2a3391,32 software checks pass2.32s, with actual double CSV/PNG/SVG export
+and public sealed control/plain audit closure APIs. All attempt indices,
+unknown durations, unlisted related topics, repeated attempts, ambiguous
+attribution and separate memory/annual units remain visible. The figures show
+actual native-year cells without time jitter and signed unchanged T/U values.
+The scripted five-actor36-attempt layout and zero/nonzero panels are visually
+inspected; these are not native science results or paper figures. The
+JUnit hash and actual launch binding are retained in the component note.
+
+The clean detached reader starts at00:51:31UTC/session32479 and waits for the
+existing5925d5b control chain's all-nine-stage closure and double outputs.
+It cannot dispatch science or run a designer. It exports twice after closure,
+stops on failed/changed inputs, and still requires real-data visual review and
+interpretation. At00:49:57UTC the original fixed evaluation has7/18 complete
+observations and no failed slots/terminal. No partial scores are inspected.
