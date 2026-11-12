@@ -4,6 +4,7 @@ from types import SimpleNamespace
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
 from tests.system.test_native_science_kernel import make_sim
 from utopia.agents.base_agent import SimulationAgent
+from utopia.agents.conference import ConferenceSystem
 from utopia.optimization.native_active_founders import from_states
 from utopia.simulation import Simulation
 
@@ -12,6 +13,7 @@ def test_native_cost_and_funding_closure_flags_are_not_positive_resource_counts(
     sim,calls=make_sim(tmp_path/'semantic-unit')
     try:
         sim.initialize_agents()
+        sim.conference_system=ConferenceSystem([])  # actual empty statistics object for this unit call
         authors=sorted(sim.ecosystem.get_available_authors(),key=lambda a:a.id)
         assert len(authors)==4
         for actor,balance in zip(authors,(0,10,11,20)):
