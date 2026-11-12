@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November12 09:21JST / 00:21UTC:** the existing fixed-policy evaluation has
+four complete observations out of18 and is executing evaluation-004. Original
+continuation/session25775 is live. No partial evaluation scores enter design.
+The new [instruction/timing controls](components/native-instruction-timing-support-v1.md)
+are implemented at frozen5925d5b;62 connection checks and40 original-world/
+container checks pass. An actual old-native compatibility read correctly joins
+ten direction calls/30 displayed alternatives to recorded researcher memories,
+without inference or a new intervention result.
+
+A new one-shot continuation/session53563 actually starts00:21UTC and waits for
+the current fixed evaluation's normal two-audit/cost closure. It has not created
+the future assay plan or dispatched any of its three worlds. Separate frozen
+scientific/analysis worktrees preserve current61a1753 science. The [exact receipt](results/native-instruction-timing-preparation-verification-v1.json)
+binds the source, tests, literal message and waiting handle. This advances
+implementation/R4, not demonstrated advice effectiveness, optimization or R2.
+
 **November12 08:28JST / November11 23:28UTC:** the61a1753 development is now
 normally closed, with two matching original-source audits and cost projections.
 All eight candidates submit; six complete and U/g0/T/g3 have technical nulls.
@@ -28,12 +44,10 @@ two others change inputs/choices but still tie losses. Observed input classes
 are not world/program equivalence or independent optimizer histories. All
 actual reports are exported twice and their figures visually reviewed.
 
-A [next instruction/timing assay](protocols/campaigns/native-instruction-timing-support-v1.md)
-is prospectively specified, not launched or queued. It retains the native world
-and tests one literal advice message at early/late/cut delivery, with unchanged
-T/U. Native topic choices resolve to catalog durations; there is no free duration
-field to overwrite. Its three-world budget is separate and must wait for current
-fixed evaluation closure and its own source-bound implementation/verification.
+The [next instruction/timing assay](protocols/campaigns/native-instruction-timing-support-v1.md)
+was only specified at this earlier checkpoint. Its newer implementation and
+actual closure-gated waiting continuation are described above; its three-world
+scientific execution has still not begun.
 
 **November12 08:18JST / November11 23:18UTC:** seven of eight proposal slots
 are closed. T/g0--g2 complete at−7; U/g0 is null and U/g1--g3 complete at−4.

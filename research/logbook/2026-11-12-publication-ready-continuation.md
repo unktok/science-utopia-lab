@@ -699,3 +699,65 @@ At23:52:12UTC two of the18 fixed-policy worlds have actual complete observations
 and evaluation-002 is executing. No terminal is present; the existing writer
 and closure-gated report/effect continuations remain responsible for the rest.
 No partial evaluation scores enter the prospective instruction message choice.
+
+## Instruction timing execution and actual native choice readout
+
+The previous goal turn made progress: closed all eight development slots,
+retained the real audits/costs/choices, updated the manuscript source and
+launched the selection-fixed evaluation. It did not complete the publication
+goal. This continuation keeps that scope and original61a1753 science intact.
+
+The new finite controls preserve the same native population, corpus, four-year
+production, initial endowment, liquidity and declared T/U. One literal advice
+message is either cut, received at phase2 or received at phase235. Research
+duration remains the original selected topic's catalog value, not a field the
+host can overwrite. The comparison is a developer action/timing comparator,
+not optimized invention, a new loss or a guaranteed improvement.
+
+The driver reconstructs all message/spec/budget values from the declared prior
+fixed evaluation and current source. It requires matching original prior
+audits/costs and raw inventory. The cold audit checks original native execution
+and literal observer/cross-score measurements; separate costs retain critic
+and role-load usage. Existing effects/request readers gain one explicit new
+audit scope without changing legacy scientific protocols.
+
+The preceding closure chain's started/ended files are plain orchestration JSON,
+unlike sealed native save results. This return-type distinction is caught
+while implementing the gate, before dispatch. The regression invokes the actual
+plain save helper and requires explicit hashes instead of inventing a checksum.
+The first QA command names a nonexistent test file and collects zero tests;
+its exit4/JUnit remain recorded, not a pass. Subsequent43,48,28,61 and62-check
+scopes pass at their own committed sources. They overlap and are not summed.
+
+The final5925d5b source passes62 connection/readout/cost checks in8.99s and
+40 original-Simulation/real existing-container checks in128.21s, with no skips.
+The latter includes full cut-input equality despite changed audit identities/
+clocks and actual six-year interruption/cold restart, with scripted HTTP/corpus.
+It does not establish actual-Qwen instruction compliance. All exact source and
+JUnit hashes are retained in the new preparation verification receipt.
+
+At c275e0e, the new choice parser is also applied read-only to the actual
+earlier reviewed-all-connected reference. The original two audits agree;
+the complete raw inventory is checked before and after. All129 committed
+responses are retained. Ten direction requests/replies parse,30 displayed
+durations agree with the byte-identical original catalog and all ten choices
+match one original actor memory each. No instruction is present in these old
+inputs, and no model/code execution or new scientific loss is added.
+The compact actual-record receipt preserves this compatibility scope.
+
+Two clean detached worktrees are frozen at5925d5b7d77bf7f13406730420022986e3fdac1f:
+native-instruction-timing-support-v1-a1 and native-instruction-timing-continuation-v1-a1.
+A pure metadata build using the actual original operator parameters passes,
+without bypassing the normal-parent gate or saving a scientific plan. The
+literal instruction UTF-8 SHA256 is
+87cc7a1b214a1161a4119ad55c4ca1318ea2ed9641b855a97433c014438ba518.
+
+The actual one-shot continuation starts00:21:00.808188UTC/session53563 in
+await-original-fixed-evaluation-audits, with zero new model calls. It waits for
+the existing parent, then prepares at most three native controls, produces two
+original-source audits/costs and exports choices/effects/requests twice each.
+Its outer bounds are declared in the protocol; failures stop without retry,
+refill, source repair or fabricated closure. At launch the future assay plan
+does not exist. Current fixed evaluation has4/18 complete observations and is
+executing evaluation-004. No partial score enters the new condition selection.
+The publication-ready goal remains active, with R2/R3/R5/R6 still open.

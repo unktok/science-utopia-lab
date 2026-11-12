@@ -1,0 +1,136 @@
+{
+  "actual_original_record_parser_check": {
+    "assay_effectiveness_claimed": false,
+    "content_sha256": "814f9cb53d17866f6a5f66166941fbeef3fb7fbe1917e54902f6c8cc49c815d0",
+    "direction_requests": 10,
+    "file_sha256": "cf894f4f15c1b336b14e5a681bbe354c0c89230c9b40821b15497bffc9c228f9",
+    "new_model_calls": 0,
+    "path": "research/results/native-instruction-parser-actual-record-check-v1.json",
+    "uniquely_memory_matched": 10
+  },
+  "budget": {
+    "control_process_seconds": 28800,
+    "designer_POSTs": 0,
+    "native_worlds": 3,
+    "observer_POSTs": 1000,
+    "previous_closure_wait_seconds": 86400,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_safe_point_seconds": 7200
+  },
+  "content_sha256": "6cd1bfd865f50f662cf02680331f834b037064e2e9f5afe0735c089bebdbfe15",
+  "continuation": {
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-instruction-timing-continuation-v1-a1/outputs/native-instruction-timing-continuation-v1-a1",
+    "new_control_world_dispatched": false,
+    "new_scientific_plan_created": false,
+    "source_commit": "5925d5b7d77bf7f13406730420022986e3fdac1f",
+    "stage_at_checkpoint": "await-original-fixed-evaluation-audits",
+    "started_content_sha256": "7e45763b78467ddf6a2fe8ca27d91ccfd8028a9f07c1c41d038d040a93e5e0d4",
+    "started_file_sha256": "99e06560cd2eb3670ac8680fad2ac4308ad3cd8acf7f39af5888ec11800a4dc2",
+    "started_utc": "2026-11-12T00:21:00.808188+00:00",
+    "tool_session_id": 53563
+  },
+  "instruction_utf8_sha256": "87cc7a1b214a1161a4119ad55c4ca1318ea2ed9641b855a97433c014438ba518",
+  "overlapping_test_scopes_are_not_summed_as_trials": true,
+  "prospective_controls": [
+    "instruction-cut",
+    "instruction-early",
+    "instruction-late"
+  ],
+  "schema": "scienceutopia.native-instruction-timing-preparation-verification.v1",
+  "scope": {
+    "actual_advice_effectiveness_demonstrated": false,
+    "container_fixture_code_runs_are_not_new_scientific_worlds": true,
+    "new_model_authored_candidate_executions_in_verification": 0,
+    "new_model_calls_in_verification": 0,
+    "optimizer_comparison": false,
+    "publication_ready": false,
+    "strong_policy_advantage_demonstrated": false
+  },
+  "source_commit": "5925d5b7d77bf7f13406730420022986e3fdac1f",
+  "test_runs": [
+    {
+      "exit_code": 4,
+      "failures_or_errors": 0,
+      "file_sha256": "0ce860cceec65a738c9b1076b559150d1773d826155ccaf711eada58a10b4767",
+      "path": "outputs/native-instruction-timing-driver-qa-a1.xml",
+      "scope": "no checks collected; wrong test filename",
+      "skips": 0,
+      "source_commit": "6949c3a71ec6e04824d4e62fb4f02b913c0040ff",
+      "test_cases": 0
+    },
+    {
+      "exit_code": 0,
+      "failures_or_errors": 0,
+      "file_sha256": "6e4906c0c74832a004fbb85e3bd61bb0d611046ba2c7775668a10e5e88097da4",
+      "path": "outputs/native-instruction-timing-driver-qa-a2.xml",
+      "scope": "scripted orchestration/readout/contract regressions; not model effectiveness",
+      "skips": 0,
+      "source_commit": "6949c3a71ec6e04824d4e62fb4f02b913c0040ff",
+      "test_cases": 43
+    },
+    {
+      "exit_code": 0,
+      "failures_or_errors": 0,
+      "file_sha256": "2b6a6d304927cdd447eaf1073d5c250764e92ac68fd2144c005dd7decec47c65",
+      "path": "outputs/native-instruction-timing-joined-qa-a1.xml",
+      "scope": "scripted orchestration/readout/contract regressions; not model effectiveness",
+      "skips": 0,
+      "source_commit": "b6eddf3a8c09b255387c2ad8d5cc090f29b666c0",
+      "test_cases": 48
+    },
+    {
+      "exit_code": 0,
+      "failures_or_errors": 0,
+      "file_sha256": "f7d3fdcd55d9fff0f99fd7fe0975e108447294dbc78f446758ca648552043740",
+      "path": "outputs/native-instruction-timing-choice-qa-a1.xml",
+      "scope": "scripted orchestration/readout/contract regressions; not model effectiveness",
+      "skips": 0,
+      "source_commit": "51390f77a737f70bbde89ecc77aea493d3c4f241",
+      "test_cases": 28
+    },
+    {
+      "exit_code": 0,
+      "failures_or_errors": 0,
+      "file_sha256": "09f02375b181e06d4010f449480f4f107f1e84a4a167fdd6564aaa2ca8e70d7a",
+      "path": "outputs/native-instruction-timing-connection-qa-a1.xml",
+      "scope": "scripted orchestration/readout/contract regressions; not model effectiveness",
+      "skips": 0,
+      "source_commit": "c275e0e75b46978ce23f9502920e2eae5de2ae05",
+      "test_cases": 61
+    },
+    {
+      "exit_code": 0,
+      "failures_or_errors": 0,
+      "file_sha256": "398e4bdbbc0447ce03129a01121a144baba8b5dd04025854e6eb7da4f2527200",
+      "path": "outputs/native-instruction-timing-connection-qa-a2.xml",
+      "scope": "scripted orchestration/readout/contract regressions; not model effectiveness",
+      "skips": 0,
+      "source_commit": "5925d5b7d77bf7f13406730420022986e3fdac1f",
+      "test_cases": 62
+    },
+    {
+      "exit_code": 0,
+      "failures_or_errors": 0,
+      "file_sha256": "ba88e10f815d8017502ec551374b2d7e2e6eaad2e612474a93625f718c1464d1",
+      "path": "outputs/native-instruction-timing-original-world-qa-a1.xml",
+      "scope": "original Simulation, existing isolated container, scripted HTTP/corpus",
+      "skips": 0,
+      "source_commit": "5925d5b7d77bf7f13406730420022986e3fdac1f",
+      "test_cases": 40
+    }
+  ],
+  "tested_core_files": {
+    "research/protocols/campaigns/native-instruction-timing-support-v1.md": "915cf4ddfe15083ffe79fc3e358dc414bdb47f27955f3c3ec5c1ea3d12893028",
+    "scripts/audit_native_instruction_timing_support_v1.py": "5069fad35bb881eb9274e800195a86339ef1e96eef97ec3640ee3a3dcd1db1d9",
+    "scripts/continue_native_instruction_timing_v1.py": "f3fad85b5fc747e1ec7710c445db0f6de14ed6dfd9dc97d649a2399c0380d5e1",
+    "scripts/finish_native_instruction_timing_v1.py": "1d969b29cf3ee3e726f5e6b5dd95f91452408410784ede8d90e64d5ca3ae14c3",
+    "scripts/reports/native_institution_effect_trace_v1.py": "6d6910f4df82fd950f5f17186ef19c1113efa4eb83c104ef954d816e3bb606ab",
+    "scripts/reports/native_instruction_timing_v1.py": "3a5329a99fdad01aed556737b1b0e02eab1ba9f3422891a38d88eed2f1726cff",
+    "scripts/reports/native_observed_request_classes_v1.py": "f7f723360a970fcd776ef1a1a037aad7a005c5776ee61b580ca9c72263ce0f01",
+    "scripts/reports/pre_scale_costs_v1.py": "ee6be4d37dd5e56b65b9e6bf2d3acbf4fc3edbd55472af83004321201293fbb2",
+    "scripts/run_native_instruction_timing_support_v1.py": "64ba7be0e55129a2dce6e44a52f1dcd50ed21cd27457b04419ac28698d409d76",
+    "utopia/agents/research_direction.py": "ed0198b0782e339135a16817af7588db671efa3ac95c402e2436670bf1656ad0",
+    "utopia/optimization/common_content_observer.py": "894ab04b7ddaafc4931fe81f526b54e6f8a3ee40a9321811fb0f558233615c1c",
+    "utopia/system/native_information_institution.py": "d4f85391b1f61d3faf39803c12af27fe6ba8a133c465af5ee3aec2098f11a82e"
+  }
+}

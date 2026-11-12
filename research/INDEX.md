@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Instruction timing controls and waiting continuation](components/native-instruction-timing-support-v1.md):
+  three prospective cut/early/late controls at frozen5925d5b, with unchanged
+  native laws and T/U. Source-bound62 connection/40 original-world checks pass;
+  an actual old-record parser check joins ten direction calls. Session53563
+  waits for the current fixed evaluation, with no new control inference yet.
 - [Closed T/U institutional development](results/native-objective-instrument-loop-v1.md)
   and [all-slot data, costs and exact input classes](data/native-objective-instrument-loop-v1/README.md):
   eight actual proposals, six complete/two null, no structural changes and no
