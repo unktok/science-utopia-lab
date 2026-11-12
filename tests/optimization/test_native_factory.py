@@ -164,7 +164,7 @@ def test_capacity_reaches_original_simulation_and_actual_initial_checkpoint(tmp_
         def stop_at_original_initial_checkpoint(path):
             saved.append(path)
             raise PortableStop('SCRIPTED stop after real initial lifecycle, before model calls')
-        sim.args.checkpoint_callback=stop_at_original_initial_checkpoint
+        sim.checkpoint_callback=stop_at_original_initial_checkpoint
         with pytest.raises(PortableStop):sim.run()
         assert len(saved)==1
         state=read_portable_checkpoint(saved[0])

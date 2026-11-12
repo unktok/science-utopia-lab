@@ -24,8 +24,8 @@ def from_states(states):
     by_year = []
     for year, state in enumerate(states):
         if (type(state['year']) is not int or state['year'] != year
-                or state['phase'] != (0 if year == 0 else 5)
-                or state['native_system']['last_year'] != year
+                or type(state['phase']) is not int or state['phase'] != (0 if year == 0 else 5)
+                or type(state['native_system']['last_year']) is not int or state['native_system']['last_year'] != year
                 or state['native_system']['spec'] != spec
                 or state['portable']['contract']['binding'] != binding):
             raise ValueError('complete fresh fixed-spec native trajectory and binding required')
