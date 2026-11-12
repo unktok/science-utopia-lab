@@ -74,7 +74,8 @@ def test_actual_capacity_factory_four_years_measurement_and_original_cold_proof(
             'runtime_seed_binding': factory.runtime_seed_binding, 'experiment': experiment,
             'world_conditions': conditions,
             'image_id': 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833'}
-        proof = physical_proof(path.parent.parent, spec, world=world, seed=42, years=4, evidence=evidence)
+        proof = physical_proof(tmp_path/'runs'/'scripted-capacity-forward', spec,
+            world=world, seed=42, years=4, evidence=evidence)
         assert proof['status'] == 'complete' and len(proof['annual_checkpoints']) == 4
         assert proof['world_conditions_proof']['fixed_annual_slot_cap'] == 1
         assert proof['measurement'] == base
