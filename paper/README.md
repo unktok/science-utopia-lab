@@ -1,17 +1,20 @@
 # Objective-conditioned institution paper
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
-**Source ahead of PDF, November14:** the working source now includes the closed
-[conditional reserve-command analysis](integrated/native-reserve-response.tex),
-its existing real-data figure and complete original year3 ledger table. These
-are240 component calls on four recorded inputs, not240 scientist worlds,
-alternative loss observations or a numeric optimum. The new source has not
-yet been built or visually checked in PDF form: heavy build/render work is
-deferred while actual numeric inference is active. The69-page reviewed artifact
-below is unchanged and does **not** contain this addition. No new PDF is
-delivered or publication readiness claimed by the source edit.
-
 The latest reviewed artifact is the
+[73-page integrated draft](../output/pdf/science-utopia-lab-integrated-native-numeric-working-paper.pdf),
+with38 figures,30 tables and26 references, without an artificial page cap.
+The [build/source/visual receipt](integrated-native-numeric-build-v1.json)
+binds two cache-only builds with identical text/logs, all73 reviewed layouts,
+fresh150dpi details on pages1--3/6/51--54, and30,304 in-page text words.
+It adds the closed240-call conditional reserve diagnostic and realized ledger,
+then all six completed numeric-comparator worlds, costs and full input classes.
+The improving own U path never beats the known reference incumbent; neither
+numeric superiority nor global optimality is claimed. The new workflow path's
+SCRIPTED proof is explicitly not a real-model workflow experiment.
+All26 listed historical PDFs/receipts retain their original bytes.
+
+The previous
 [69-page integrated draft](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf),
 with36 figures and27 tables and no artificial page cap.
 Its [source, evidence, build and visual binding](integrated-planning-search-build-v1.json)
