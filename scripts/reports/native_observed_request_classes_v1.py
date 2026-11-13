@@ -14,6 +14,8 @@ from utopia.utils.data_utils import file_sha256
 ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = 'scienceutopia.native-observed-request-classes.v1'
 AUDITS = {
+    'scienceutopia.native-parameter-comparator-audit.v1',
+    'scienceutopia.native-workflow-objective-loop-audit.v1',
     'scienceutopia.native-joint-fixed-evaluation-audit.v1',
     'scienceutopia.native-planning-fixed-evaluation-audit.v1',
     'scienceutopia.native-planning-objective-loop-audit.v1',
@@ -25,6 +27,31 @@ AUDITS = {
     'scienceutopia.native-objective-instrument-loop-audit.v1',
     'scienceutopia.native-objective-fixed-evaluation-audit.v1',
 }
+
+
+def world_seed(root, plan, audit, world):
+    """Numeric v1 records seed in its original sealed dispatch, not audit row.
+
+    Read that actual contract instead of assuming61001 or changing an old
+    audit. It remains available even for a failure before any response cache.
+    """
+    if audit['schema'] != 'scienceutopia.native-parameter-comparator-audit.v1':
+        return world['seed']
+    objective, generation = world['objective'], world['generation']
+    if (plan['schema'] != 'scienceutopia.native-parameter-comparator.v1.plan'
+            or objective not in plan['objectives'] or type(generation) is not int
+            or not 0 <= generation < plan['generations']):
+        raise ValueError('original numeric slot identity required for observed request seed')
+    path = Path(root) / 'search' / objective / ('generation-' + str(generation)) / 'started.json'
+    start = checked(json.loads(path.read_text()))
+    if (start['plan_sha256'] != plan['content_sha256'] or start['objective'] != objective
+            or start['generation'] != generation or start['suggestion']['suggestion_id'] != world['identity']
+            or start['suggestion']['candidate'] != world['system'] or type(start['seed']) is not int):
+        raise ValueError('observed numeric request seed differs from original dispatch')
+    physical = world.get('physical_proof')
+    if isinstance(physical, dict) and 'seed' in physical and physical['seed'] != start['seed']:
+        raise ValueError('numeric cold physical seed differs from original dispatch')
+    return start['seed']
 
 
 def sequence(wires, replies):
@@ -110,7 +137,7 @@ def export(args):
         if cache.exists():
             with sqlite3.connect(cache.resolve().as_uri()+'?mode=ro', uri=True) as db:
                 replies = db.execute('SELECT payload_sha,outcome,data,data_sha FROM replies ORDER BY rowid').fetchall()
-        rows.append({'identity': w['identity'], 'seed': w['seed'], 'status': w['status'],
+        rows.append({'identity': w['identity'], 'seed': world_seed(root, plan, audit, w), 'status': w['status'],
                      'requests': sequence(wires, replies)})
     result = {
         'schema': SCHEMA, 'analysis_source_commit': source,

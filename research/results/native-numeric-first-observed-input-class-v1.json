@@ -1,0 +1,48 @@
+{
+  "schema": "scienceutopia.native-numeric-first-observed-input-class.v1",
+  "classification": "partial-readonly-complete-slots-not-normal-full-study-cold-audit",
+  "scientific_source_commit": "04d0c3e3b5660a858f8241231e83b2ff679b9c25",
+  "scientific_plan_content_sha256": "4019c9a01b24d1c460e144d17d3d40cf67ee8a0b7bb1e2929c8da54ff566cc23",
+  "actual_read_exec_session": 19917,
+  "actual_read_exit_code": 0,
+  "observed_common_input_sequence_sha256": "97c4e7f46cfa7adcdb9f0cf5e7648c662e12411ee9c2ccc85141885ee50e7af2",
+  "observed_common_literal_response_choices_sha256": "04cf67ef6ba68a976a3f4287d7cf7471a1d7520eef38e3d8e02bcb24618c2e18",
+  "worlds": [
+    {
+      "objective": "throughput",
+      "generation": 0,
+      "reserve_units": 3,
+      "status": "complete",
+      "losses": {"throughput": -12.0, "content-utility": -7.0},
+      "wire_requests": 133,
+      "committed_responses": 133,
+      "wire_inputs_without_committed_reply": 0,
+      "allocation_commands_by_year": [0, 0, 0, 0],
+      "ordered_full_provider_body_hashes_sha256": "898d2410ec461c4d4638beb08c7d5efff9c4ee2d9e10441bed70f501720df3d1"
+    },
+    {
+      "objective": "throughput",
+      "generation": 1,
+      "reserve_units": 10,
+      "status": "complete",
+      "losses": {"throughput": -12.0, "content-utility": -7.0},
+      "wire_requests": 133,
+      "committed_responses": 133,
+      "wire_inputs_without_committed_reply": 0,
+      "allocation_commands_by_year": [0, 0, 0, 0],
+      "ordered_full_provider_body_hashes_sha256": "e68efb0aead9942ad0fee06ec5b451fefa790b38587842e16ca1aaf788835483",
+      "cross_scores_file_sha256": "02e81c1e9f16d88a18b7271efd22b8ccc81c504ebab341d85f84801dbdc4dad8"
+    }
+  ],
+  "first_old_R2_and_numeric_T0_initial_population_blueprint_sha256": "66180d65841e5d604db8454792306c35b13779d62f80242cbe1408ae0b2cdc18",
+  "full_provider_envelopes_identical": false,
+  "request_text_scrubbed": false,
+  "all_native_states_or_programs_equivalent_claimed": false,
+  "future_world_deduplication_authorized": false,
+  "new_model_calls": 0,
+  "new_code_executions": 0,
+  "optimizer_feedback_changed": false,
+  "full_study_audit_available_at_snapshot": false,
+  "scientific_improvement_claimed": false,
+  "publication_ready": false
+}

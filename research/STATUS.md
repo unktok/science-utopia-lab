@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 07:33JST (November13 22:33UTC)
+### Current overview: November14 07:44JST (November13 22:44UTC)
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -18,8 +18,12 @@ no stopped-presentation feedback. Dispatcher58460/scientific writer58730 are
 observed live. Throughput:g0/reserve3 completes all four years with T=-12/U=-7,
 worse than its original reserve21 anchor's T=-18. Content-utility:g0/reserve13
 starts at21:58:33UTC and completes T=-12/U=-8. U:g1/reserve27 then completes
-T=-14/U=-9.333333333333332 at22:22UTC. Three of six new slots are complete;
-T:g1/reserve10 is running. No final selection or cold full-study audit exists.
+T=-14/U=-9.333333333333332 at22:22UTC. T:g1/reserve10 completes T=-12/U=-7
+at22:38UTC. Four of six new slots are complete; T:g2/reserve12 is running.
+T0/T1 have the same133 full scientist inputs and literal reply choices, with
+zero actual transfer commands in each of their four years; this partial
+readout is not full-study closure or global policy equivalence.
+No final selection or cold full-study audit exists.
 The U own-output path improves, but no completed numeric candidate improves
 its original assigned-loss anchor. The old unknown is not resolved.
 
@@ -27,7 +31,7 @@ its original assigned-loss anchor. The old unknown is not resolved.
 | --- | --- | --- |
 | Original planning search |14 real worlds, matching audits/analyses; no own gain | Important distinct scientific answer, independent replication |
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
-| Numeric comparator |Independent first dispatch;3/6 slots complete; latest reserve27 T=-14/U=-9.3333 |Running T:g1/reserve10; no final trajectory or audit yet |
+| Numeric comparator |Independent first dispatch;4/6 slots complete; T0/T1 share observed133-input/choice sequences |Running T:g2/reserve12; no final trajectory or audit yet |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
 | New workflow experiment |[Final7-world/28-checkpoint SCRIPTED v1 proof and real readonly prepare](components/native-workflow-objective-loop-v1.md); v2 prerequisite37 checks; complete readout13 checks; frozen3b912d17; deferred QA waiter87205 |New binding/report native proof waits for numeric closure; original8-world plan stays unused; no automatic scientific dispatch |
 | Manuscript |69-page verified artifact retained; source adds closed240-call reserve response/actual ledger with4 light checks |New PDF build/visual QA deferred; important main claim, R2/R3/R6 and final readiness judgment |

@@ -3,7 +3,8 @@ import json
 
 import pytest
 
-from scripts.reports.native_observed_request_classes_v1 import groups, sequence
+from scripts.reports.native_observed_request_classes_v1 import groups, sequence, world_seed, AUDITS
+from utopia.optimization.native_numeric_designer import save
 from utopia.system.design_patch import digest
 
 
@@ -56,3 +57,39 @@ def test_failed_prefixes_and_different_world_seeds_are_not_pooled():
     assert [r['physical_ids'] for r in g] == [['a'], ['b']]
     with pytest.raises(ValueError, match='unique physical'):
         groups(rows+[rows[0]])
+
+
+def numeric_dispatch(tmp_path, *, seed=777):
+    p = {'schema': 'scienceutopia.native-parameter-comparator.v1.plan', 'content_sha256': 'a' * 64,
+        'objectives': ['throughput', 'content-utility'], 'generations': 3}
+    a = {'schema': 'scienceutopia.native-parameter-comparator-audit.v1'}
+    w = {'identity': 'original', 'objective': 'throughput', 'generation': 1, 'system': {'SCRIPTED': True},
+        'physical_proof': {'seed': seed}}
+    path = tmp_path / 'search/throughput/generation-1/started.json'
+    save(path, {'plan_sha256': p['content_sha256'], 'objective': w['objective'], 'generation': w['generation'],
+        'suggestion': {'suggestion_id': w['identity'], 'candidate': w['system']}, 'seed': seed})
+    return p, a, w
+
+
+def test_numeric_seed_uses_actual_sealed_original_dispatch_not_a_hardcoded_default(tmp_path):
+    p, a, w = numeric_dispatch(tmp_path)
+    assert world_seed(tmp_path, p, a, w) == 777
+    w['physical_proof'] = {'status': 'pre-response-journal-failure'}
+    assert world_seed(tmp_path, p, a, w) == 777
+    assert 'scienceutopia.native-workflow-objective-loop-audit.v1' in AUDITS
+    assert world_seed(tmp_path, p, {'schema': 'scienceutopia.native-workflow-objective-loop-audit.v1'},
+        {'seed': 991}) == 991
+
+
+@pytest.mark.parametrize('case', ['unknown-objective', 'wrong-generation', 'wrong-system',
+    'wrong-identity', 'wrong-plan', 'physical-seed', 'missing-dispatch'])
+def test_numeric_seed_does_not_fabricate_missing_or_mismatched_evidence(tmp_path, case):
+    p, a, w = numeric_dispatch(tmp_path)
+    if case == 'unknown-objective': w['objective'] = '../untrusted'
+    elif case == 'wrong-generation': w['generation'] = True
+    elif case == 'wrong-system': w['system'] = {'changed': True}
+    elif case == 'wrong-identity': w['identity'] = 'other'
+    elif case == 'wrong-plan': p['content_sha256'] = 'b' * 64
+    elif case == 'physical-seed': w['physical_proof']['seed'] = 61001
+    elif case == 'missing-dispatch': (tmp_path / 'search/throughput/generation-1/started.json').unlink()
+    with pytest.raises((ValueError, FileNotFoundError)): world_seed(tmp_path, p, a, w)

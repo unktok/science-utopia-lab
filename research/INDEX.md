@@ -17,8 +17,14 @@ Historical documents retain their paths and source identities.
   [First numeric world](logbook/2026-11-14-numeric-first-world.md): reserve3
   completes T=-12/U=-7, worse than the T=-18 anchor, with earlier attrition;
   Later U:g0/reserve13 completes T=-12/U=-8 and U:g1/reserve27 completes
-  T=-14/U=-9.3333; T:g1/reserve10 is running. These are partial trajectories,
+  T=-14/U=-9.3333; T:g1/reserve10 completes T=-12/U=-7 and T:g2/reserve12
+  is running. These are partial trajectories,
   not a final audit or improvement over the best-known reference.
+  [Observed input classes](logbook/2026-11-14-numeric-observed-input-classes.md)
+  show T0/T1 have identical133 full requests/literal reply choices, despite
+  different reserves; all eight actual allocation returns request no transfer.
+  No global equivalence or future job merging is inferred. The final reader
+  now handles original numeric dispatch seeds and workflow audits explicitly.
 - [Current presentation stop and workflow preparation](logbook/2026-11-14-workflow-preparation-and-presentation-stop.md):
   original writer stops on a1200s unknown readiness completion at20:54UTC;
   analysis/numeric continuation stop without dispatch or fabricated closure.
