@@ -132,3 +132,20 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
     for name in ('objective-loss-paths.svg', 'objective-cross-scores.svg'):
         svg = (outputs[0] / name).read_text()
         assert all('R' + str(i) + ' = ' + label in svg for i, label in enumerate(p['reference_order'], 1))
+    # Real cold subprocesses resolve decoder/consumer code from the original
+    # committed source, not the parent test's mocked checkpoint/HTTP functions.
+    import subprocess
+    import sys
+    for name, extra in (
+            ('native_planning_choice_trace_v1', ('--frozen-source', str(driver.ROOT))),
+            ('native_institution_effect_trace_v1', ('--frozen-source', str(driver.ROOT), '--scope', 'planning-objective-development')),
+            ('native_observed_request_classes_v1', ())):
+        copies = [tmp_path / (name + '-one'), tmp_path / (name + '-two')]
+        for out in copies:
+            subprocess.run([sys.executable, '-m', 'scripts.reports.' + name, '--run', str(root),
+                '--audit-one', str(paths[0]), '--audit-two', str(paths[1]), '--output', str(out), *extra],
+                cwd=driver.ROOT, check=True, capture_output=True, text=True, timeout=1800)
+        assert {f.name: f.read_bytes() for f in copies[0].iterdir()} == {f.name: f.read_bytes() for f in copies[1].iterdir()}
+        rows = driver.read(copies[0] / 'report.json')['worlds']
+        assert len(rows) == 14
+    assert _inventory(root) == before
