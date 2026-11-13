@@ -1,0 +1,95 @@
+{
+  "schema": "scienceutopia.native-workflow-domain.v4.verification",
+  "classification": "SCRIPTED-software-evidence-not-scientific-improvement",
+  "observed_date_utc": "2026-11-13",
+  "implementation_source": "855aada9b114b72c697a861dcf1f00133fb1cbec",
+  "new_real_model_calls": 0,
+  "actual_scientific_worlds_dispatched": 0,
+  "active_experiment_sources_modified": false,
+  "old_v3_domain_relaxed": false,
+  "original_instance_full_scientist_payload_equality": true,
+  "structure_control_changes": {"schedules": 3, "edges": 5, "nodes": 0, "sources": 0, "numeric_parameters": 0},
+  "checks": [
+    {
+      "source_commit": "27f7b34d6ba92650896f439a7c41621338d1dd8f",
+      "scope": "manual-production-factory-original-noop-timing-control",
+      "exec_session": 74535,
+      "observed_exit_code": 0,
+      "pytest_seconds": 92.71,
+      "native_software_worlds": 3,
+      "annual_checkpoints": 12,
+      "raw_verification": "outputs/native-workflow-full-path-v4-a1/test_original_instance_noop_an0/verification.json",
+      "raw_verification_sha256": "1eb6573fdc4901f7a4b9af92edcffad8f6bed2860bc79ecc032f54f457639ce0"
+    },
+    {
+      "source_commit": "855aada9b114b72c697a861dcf1f00133fb1cbec",
+      "scope": "existing-blackbox-campaign-native-world-loss-feedback-cold-reopen",
+      "exec_session": 27080,
+      "observed_exit_code": 0,
+      "pytest_seconds": 75.06,
+      "native_software_worlds": 3,
+      "annual_checkpoints": 12,
+      "effect_witnesses_per_world": 48,
+      "code_returns_per_world": 24,
+      "matching_cold_physical_reads_per_world": 2,
+      "raw_verification": "outputs/native-workflow-full-path-v4-a2/test_original_instance_noop_an0/verification.json",
+      "raw_verification_sha256": "df29153f2b82c753d352d9a2e02736bb7a4627255daea6b82320db6e3204d834",
+      "losses_replayed_and_visible_in_next_request": true,
+      "original_blackbox_campaign_cold_reopens": true,
+      "runs": {
+        "original": {
+          "system_fingerprint": "afbe6626fbad76ff65cf0a6a8875d6e68cc1853378d3d41f1d87c6f0c7bce8d2",
+          "scientist_request_count": 93,
+          "scientist_requests_sha256": "aec8bbc6208903cf88f943f6816f1a818309459e133bff769d774841ba10e343",
+          "checkpoint_sha256": "7efaf6e95857689448ef627d7c07a7d1c8b8d7ec956a5a4ecfec03c8cbb3016e",
+          "SCRIPTED_fixture_loss": -8.0
+        },
+        "literal-noop": {
+          "system_fingerprint": "afbe6626fbad76ff65cf0a6a8875d6e68cc1853378d3d41f1d87c6f0c7bce8d2",
+          "scientist_request_count": 93,
+          "scientist_requests_sha256": "aec8bbc6208903cf88f943f6816f1a818309459e133bff769d774841ba10e343",
+          "checkpoint_sha256": "2b7e450a4186f8d60babdffc7f0fac638a73ca21bfc2644d574af8bb86cef516",
+          "SCRIPTED_fixture_loss": -8.0
+        },
+        "post-funding-cost": {
+          "system_fingerprint": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+          "scientist_request_count": 110,
+          "scientist_requests_sha256": "44cf3c69e17ca1798a4d1691f71176b5071c51fd48f722eafb00b6f46754df43",
+          "checkpoint_sha256": "398dcfd4663a7622bf539932cf6ffce28bf78cff3be0faa5b121feb50a2effa8",
+          "SCRIPTED_fixture_loss": -10.0
+        }
+      }
+    }
+  ],
+  "read_only_next_request": {
+    "exec_session": 9135,
+    "observed_exit_code": 0,
+    "generation": 3,
+    "complete_observations": 3,
+    "selected_parent_fingerprint": "51a8ed61bffdf6054cdabf126fac3be6dcdebf95fe530b11ee8a78a0b3a49bd5",
+    "SCRIPTED_selected_parent_loss": -10.0,
+    "request_sha256": "e7f57856942cc5b0175c7b1f9ee88e0ddff36d06fd07ab77300d3afb5316c499",
+    "new_model_calls": 0,
+    "new_native_worlds": 0
+  },
+  "regression_scope": {
+    "exec_session": 84294,
+    "observed_exit_code": 0,
+    "tests": 73,
+    "pytest_seconds": 85.94,
+    "files": ["tests/optimization/test_native_workflow_domain_v4.py", "tests/optimization/test_native_fixed_production_domain.py", "tests/optimization/test_native_design_space.py", "tests/optimization/test_native_adaptive_search.py"],
+    "scopes_overlap_not_independent_experiments": true
+  },
+  "source_comparison": {
+    "original_source": "30e3f5faa0b72af8c861a320f6c88a47c9e03168",
+    "unchanged_original_utopia_python_files": 264,
+    "changed_original_utopia_python_files": ["utopia/optimization/native_design_space.py"],
+    "change_role": "explicit new optimizer-domain branch; old scopes retain old guards",
+    "unchanged_file_inventory_sha256": "2218fa717b10b6b9e4071f4bd66d1ce47f426983b159177162da95b5a5ce76a9",
+    "global_semantic_equivalence_claimed": false
+  },
+  "autonomous_invention_shown": false,
+  "real_Qwen_loss_improvement_shown": false,
+  "held_out_scientific_evaluation": false,
+  "publication_ready": false
+}

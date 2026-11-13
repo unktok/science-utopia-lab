@@ -6,13 +6,22 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Editable native workflows](components/native-workflow-domain-v4.md): new v4
+  scope frees native phase order while retaining original effect contracts and
+  typed plan/paper origins. It is connected to the existing whole-graph loss
+  loop; three SCRIPTED production worlds/12 checkpoints pass with cold physical
+  reads, exact no-op scientist payloads, scalar feedback and campaign reopening.
+  Arbitrary institutional source/nodes/wires remain available, not a preset menu.
+  Real objective-conditioned structural invention/improvement is still unproven;
+  the old active fixed-calendar studies are not modified.
 - [Conditional reserve-command response](components/native-reserve-command-response-v1.md):
   analyze the operative allocation component on four original native input
   frames, without alternative world simulation, loss ranking or new feedback.
   All240 actual calls complete and both figure bytes rebuild from CSV. The
   [workflow-order question](publication/workflow-ordering-research-question-v1.md)
   identifies a missing process-design comparison outside the current fixed-calendar
-  pilot; it is not implemented or scientifically dispatched by this analysis.
+  pilot. The separate v4 software path is now implemented; no new workflow
+  scientific experiment is dispatched by this analysis or its SCRIPTED check.
 - [First complete own presentation world](logbook/2026-11-14-parent-first-complete-own.md):
   four-year U/literal:g0 has T=-18/U=-13.333333333333332, tied with the best
   fresh reference. One selection-source leaf changes, without new graph/wiring.

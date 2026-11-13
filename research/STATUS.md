@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+**November14 native workflow authority implemented:** a separate
+[v4 domain](components/native-workflow-domain-v4.md) now accepts whole-SystemSpec
+institutional code/nodes/wires and native schedule changes without weakening
+the old fixed-calendar studies. An exact three-phase/five-edge hand control
+keeps all native implementations and numeric parameters literal. At855aada9,
+the existing black-box campaign completes three SCRIPTED four-year production
+worlds/12 checkpoints in75.06s, with native ledger reconciliation,48 protected
+effect witnesses per world, matching paired cold physical reads, next-request
+loss feedback and cold campaign reopening. Baseline/no-op full scientist
+requests agree exactly. A separate73-check regression passes85.94s. The
+[receipt](results/native-workflow-domain-v4-verification.json) distinguishes
+this from actual Qwen inference, an optimizing inventor or scientific gain.
+No new scientific world, unused seed or69-page PDF rebuild is dispatched here.
+Existing presentation writer and numeric queue remain unchanged and live.
+
 **November14 matched first U observations:** U/control:g0 also completes with
 U=-13.333333333333332, matching U/literal:g0 and the best fresh reference.
 At19:38:11UTC the writer enters T/literal:g0 readiness. Three own slots are

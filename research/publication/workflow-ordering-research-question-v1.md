@@ -1,9 +1,15 @@
 # Next discriminating question: institutional workflow timing
 
-This is a research-design note, not an implemented new domain, a scientific
-protocol, an evaluation seed choice or authority to mutate an active study.
+The original entry is a research-design note, not a scientific protocol,
+an evaluation seed choice or authority to mutate an active study.
 The publication-ready goal remains open. Existing presentation/numeric studies
 keep their exact sources, domains and budgets.
+
+**Implementation update:** the separate
+[v4 domain and original-world software path](../components/native-workflow-domain-v4.md)
+are now implemented and verified at855aada9. This does not retroactively turn
+the original note into a dispatched scientific study. Real workflow design
+and improvement remain open; the scope below motivated the new implementation.
 
 ## What the completed analysis establishes
 
