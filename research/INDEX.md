@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Current presentation stop and workflow preparation](logbook/2026-11-14-workflow-preparation-and-presentation-stop.md):
+  original writer stops on a1200s unknown readiness completion at20:54UTC;
+  analysis/numeric continuation stop without dispatch or fabricated closure.
+  The [new finite workflow engine](components/native-workflow-objective-loop-v1.md)
+  passes7 SCRIPTED worlds/28 checkpoints and double audits/costs, and actual
+  readonly preparation pins its8-world plan. That plan is not dispatched or
+  automatically queued: its original normal-closure prerequisite is unsatisfied.
+  Backend quiescence observation does not resolve the original missing reply.
 - [Editable native workflows](components/native-workflow-domain-v4.md): new v4
   scope frees native phase order while retaining original effect contracts and
   typed plan/paper origins. It is connected to the existing whole-graph loss

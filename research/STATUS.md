@@ -2,6 +2,32 @@
 
 ## Active publication-ready goal
 
+### Current overview: November14 06:20JST (November13 21:20UTC)
+
+**Not publication-ready. The original presentation experiment is stopped, not
+still running.** Its terminal records20:54:18UTC, an unknown response after a
+1200s readiness allowance. Eight references and4/12 own slots finalized;
+three own completions tie their assigned-loss best reference and one own
+native execution failed. No final selection or normal full-study audit exists.
+The old analysis and numeric coordinator stop as declared; numeric science
+has not started. See the [stop record](logbook/2026-11-14-workflow-preparation-and-presentation-stop.md).
+
+| Track | Completed | Still open |
+| --- | --- | --- |
+| Original planning search |14 real worlds, matching audits/analyses; no own gain | Important distinct scientific answer, independent replication |
+| Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
+| Numeric comparator |Prepared finite6-world plan | Never dispatched; original prerequisite stopped |
+| Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
+| New workflow experiment |[Final7-world/28-checkpoint SCRIPTED proof and real readonly prepare](components/native-workflow-objective-loop-v1.md) |8-world plan not dispatched; original prerequisite now unsatisfied; no automatic queue registered |
+| Manuscript |69-page integrated working paper and verified rebuild retained | New scientific closure, focused main claim, R2/R3/R6 and final readiness judgment |
+
+No new actual model inference, backend restart or old experiment repair is
+performed in this update. Readonly metadata reports no resident models; it
+does not resolve the missing old HTTP completion. A separate prospective
+post-stop continuation needs explicit review/recording, not silent resumption.
+
+### Retained dated snapshots (historical, not current liveness)
+
 **November14 native workflow authority implemented:** a separate
 [v4 domain](components/native-workflow-domain-v4.md) now accepts whole-SystemSpec
 institutional code/nodes/wires and native schedule changes without weakening

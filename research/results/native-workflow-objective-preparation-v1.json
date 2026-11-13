@@ -1,0 +1,59 @@
+{
+  "schema": "scienceutopia.native-workflow-objective-preparation.v1",
+  "classification": "software-proof-and-real-readonly-preparation-not-scientific-gain",
+  "final_runtime_source": "2c7ec07f02202a878795a3b0de5740f3f5ee129a",
+  "full_path": {
+    "original_exec_session": 92594,
+    "observed_exit_code": 0,
+    "pytest_seconds": 236.29,
+    "junit": "outputs/native-workflow-objective-full-path-v1-a5.xml",
+    "junit_sha256": "e27fd30a50e012badef829c697176e20c64e9fea7a87150dddf11860965a1242",
+    "actual_owned_worker_processes": 13,
+    "native_SCRIPTED_worlds": 7,
+    "annual_checkpoints": 28,
+    "consumed_own_slots": 6,
+    "unrefilled_known_invalid_slots": 1,
+    "maximum_wire_utf8_bytes": 97057,
+    "new_actual_model_calls": 0,
+    "matching_cold_audit_file_sha256": "2590c921caed61a88613a087a70fedca613106f50f8ae46ac39ef8c4408c2eb7",
+    "matching_cost_content_sha256": "e768bb283505d789c8eb0cd5a58fdf4de24fde2b5201b3f4313cb712aa2d09a6",
+    "original_verification_file": "outputs/native-workflow-objective-full-path-v1-a5/test_bounded_workflow_designer0/verification.json",
+    "original_verification_file_sha256": "a6ddda3b36e1952ed054da81a103c2791dd9f23afb36f99e586c2b330d4eb937",
+    "origin_prerequisite_HTTP_and_corpus_are_explicit_fixtures": true
+  },
+  "retained_failed_checks": [
+    {"junit": "outputs/native-workflow-objective-tests-v1-a1.xml", "sha256": "1dbb3a77dfb5aec061d1e1934f995e3b673bfc3ca2646d10ed1d87d190b3a1a6", "tests": 34, "failures": 1, "reason": "unit plan fixture lacked its required checksum"},
+    {"junit": "outputs/native-workflow-objective-full-path-v1-a1.xml", "sha256": "959ca1d83e85b92b3642cc049bcacdeef2c7dfc942a4bcf807df9bff49bb91e4", "source": "8d64fc28", "reason": "runner omitted explicit measurement_contract keyword; original guard stopped before own proposal"},
+    {"junit": "outputs/native-workflow-objective-full-path-v1-a2.xml", "sha256": "34a8273f38fc5e982614636d986a4248bbf402a62ca3b5d3ae3aa27c4372ece7", "source": "d5f0f7cb", "reason": "test audit output was inside source worktree; original output guard retained"},
+    {"junit": "outputs/native-workflow-objective-full-path-v1-a3.xml", "sha256": "81f27c75e913f202ed5fdb35f7bc06783fadd2271b21c416a0577d60ff71ad8d", "source": "e344035a", "reason": "caller resealed an already-sealed public observer audit; original invalid record not rewritten"}
+  ],
+  "other_passing_overlapping_checks": [
+    {"junit": "outputs/native-workflow-objective-full-path-v1-a4.xml", "sha256": "cd3568b3eeee7224bb07dd50fecd6d9336d0d26b0e844f4bb9db9e6de4bbeb7d", "source": "98a21f578483072fbf72d63fff89365ee3840a98", "tests": 1, "seconds": 226.408},
+    {"junit": "outputs/native-workflow-objective-regression-v1-a2.xml", "sha256": "dca65593637c0e1bc889314454de4b1f4132000c491fff816363801728cae76d", "tests": 93, "seconds": 30.269},
+    {"junit": "outputs/native-workflow-objective-runner-tests-v1-a6.xml", "sha256": "eff4512598f0db32b845acbbb95f8e9e5027bfbb674e1191f3e4173ba3e0ca1a", "tests": 13, "seconds": 8.841}
+  ],
+  "actual_preparation": {
+    "original_exec_session": 67504,
+    "observed_exit_code": 0,
+    "frozen_source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-objective-loop-v1-a2",
+    "raw_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-objective-loop-v1-a2/outputs/native-workflow-objective-loop-v1-a2",
+    "plan_content_sha256": "4dbb5e0b0842a151cff5936012cced686c9be1cce2b0966cc76e55356ae1c9d9",
+    "plan_file_sha256": "96cfe466d330a50b3534c350d1bdb278f9f33c5aa7d188f434b195a611dc63ac",
+    "literal_original_source_files": 264,
+    "declared_author_domain_source_exclusions": 4,
+    "maximum_native_worlds": 8,
+    "new_inference_POSTs": 0,
+    "started_json_exists": false,
+    "automated_continuation_registered": false,
+    "first_prepare_exit_code": 1,
+    "first_prepare_source": "98a21f578483072fbf72d63fff89365ee3840a98",
+    "first_prepare_reason": "original chain uses exclusive unsealed JSON, not sealed scientific journal API",
+    "first_prepare_output_created": false,
+    "original_chain_records_modified": false,
+    "original_prerequisite_now_stopped_not_satisfied": true
+  },
+  "scientific_improvement_or_invention_shown": false,
+  "new_unused_scientific_evaluation": false,
+  "research_goal_complete": false,
+  "publication_ready": false
+}
