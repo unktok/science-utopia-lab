@@ -52,6 +52,15 @@
     "original_chain_records_modified": false,
     "original_prerequisite_now_stopped_not_satisfied": true
   },
+  "main_integration_regression": {
+    "source_commit": "d5e3e7b88d1341f81dcd1fb9cb80eeca7f7395aa",
+    "original_exec_session": 74346,
+    "observed_exit_code": 0,
+    "tests": 94,
+    "pytest_seconds": 26.07,
+    "junit_file": "/Users/shiro/unktok/dev/science-utopia-lab/outputs/native-workflow-main-regression-v1-a1.xml",
+    "overlaps_previous_test_scopes": true
+  },
   "scientific_improvement_or_invention_shown": false,
   "new_unused_scientific_evaluation": false,
   "research_goal_complete": false,

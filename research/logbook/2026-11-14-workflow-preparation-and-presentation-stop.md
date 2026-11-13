@@ -91,3 +91,11 @@ automatically resumed. Do not refill the old presentation study, weaken its
 normal-closure guard, or claim that a new experiment repairs its unknown
 outcome. The ready backend interface and retained complete native software
 paths allow further scoped progress without rewriting the original study.
+
+Main integration d5e3e7b8 is directly verified at the GitHub main ref after
+push. Its94-check regression exits0 after26.07s (session74346), overlapping
+the prior unit scopes rather than adding scientific trials. Project AGENTS
+now requires hardware-resource separation for independent heavy QA versus
+real inference, not just Git worktree isolation. This is a prospective
+operational correction, not proof that contention caused the original timeout
+or a guarantee that no future error can occur.

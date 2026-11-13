@@ -14,6 +14,14 @@
 - A clean-source check also rejects untracked retention artifacts. Wait for the
   original check process to exit before copying data/figures into its worktree;
   asynchronous launch is not completion. Stage artifacts elsewhere if needed.
+- Worktree isolation is not hardware isolation. Do not start independent heavy
+  CPU/Docker full-path QA, bulk embeddings or video encoding while real model
+  inference is active, unless that concurrent resource profile is explicitly
+  declared in the experiment. Use light documentation/read-only work in parallel.
+  The experiment's own native CPU/sandbox phases remain part of its protocol.
+  Do not pause/kill a scientific job to make room for QA. Shared-resource timing
+  is not a dedicated model-speed benchmark, and contention must not be ruled
+  out without measurements when diagnosing an inference timeout.
 - Declare finite designer connect/read time allowances before dispatch and
   record them even on transport failure. For non-streaming reasoning, check
   their suitability for the declared output budget; a read timeout is not a
