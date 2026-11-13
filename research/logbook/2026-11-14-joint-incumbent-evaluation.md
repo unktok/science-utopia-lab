@@ -34,3 +34,21 @@ No actual unused-world scientific evaluation or new model call is dispatched.
 Commit the read-only runtime before actual freeze/report CLI verification.
 The scientific writer remains at its unchanged source30e3f5fa; U/literal:g0
 is still authoring at this snapshot, with no completed own loss for that arm.
+
+At clean6bf47ffd all four actual CLI calls exit0 in3.34/3.44/3.61/3.61s.
+Freeze bundles are equal on two files; report bundles on six. Original O
+contrasts are unchanged, and frozen aliases are byte-identical across stages.
+Retain the explicit SCRIPTED report/CSV example and input scope in an immutable
+verification record. The32 rows point into six existing physical jobs of the
+prior18, not32 independent worlds. Seven retention/empty-consumer checks also
+pass1.44s. No original native audit or world execution is newly performed.
+
+While the science writer remains live, U/literal:g0 invalid actions0/8 also
+show nominal token-reservation mismatch. A separate two-frame diagnostic
+retains37658/43200 reported input counts,40960 requested context and8192
+reserved output. This is not proof of actual backend input truncation or a
+completed comparative scientific result. The active experiment stays fixed.
+
+The literal worker later submits normally after1172.5243s/14 actions while
+its native evaluation remains pending. Preserve that distinction from two
+rejected intermediate replies and from the earlier T/control native failure.

@@ -6,10 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Live free-design frame capacity](logbook/2026-11-14-parent-free-frame-capacity.md):
+  two invalid U/literal:g0 replies exceed the nominal full-output reservation;
+  preserve actual counts and distinguish output length, JSON validity and
+  unverified backend input truncation. The unchanged generation is pending.
 - [Known incumbents in joint fixed-policy evaluation](components/native-joint-incumbent-evaluation-v1.md):
   freeze development-only K/O aliases before evaluation; every target is already
   covered by the existing bank. Preserve original own selections, all nulls and
   physical sharing, including worse or failed unused-world incumbent outcomes.
+  Four real CLI calls at6bf47ffd agree on the retained SCRIPTED example;
+  no actual unused-world scientific evaluation is dispatched.
 - [First presentation proposal's empty-cycle diagnosis](logbook/2026-11-14-parent-empty-cycle-diagnosis.md):
   actual submission succeeds but native year1 fails on an extra decision field
   in the empty marker. Exact cold sandbox replay and unchanged consumer

@@ -52,3 +52,18 @@ manifest. Inputs and clean analysis source are hashed and checked unchanged.
 This consumes previously closed projections, not a new raw audit or scientific
 evaluation. Unit/export verification and actual scientific evaluation remain
 separate; no evaluation seed is chosen and no model call is added here.
+
+## Completed software readout verification
+
+At clean6bf47ffd, all four actual `freeze`/`report` CLI calls exit0. The two
+freeze bundles match on two files and the report bundles on six. Frozen alias
+bytes remain identical across stages and O contrasts equal the original joint
+contrasts. The input joint report is the prior18-world SCRIPTED native fixture;
+its companion development reports are synthetic interface projections, not
+recovered original author histories. No native world is rerun by this check.
+The [retained software example](../data/native-joint-incumbent-preparation-v1/README.md)
+and [verification](../results/native-joint-incumbent-preparation-verification-v1.json)
+retain32 alias rows/32 contrasts/two missing O rows pointing into six existing
+physical jobs, not extra independent worlds. The expanded47 checks pass57.26s;
+seven later retention/consumer checks pass1.44s. These overlapping test scopes
+are not independent scientific evidence or actual unused-world evaluation.

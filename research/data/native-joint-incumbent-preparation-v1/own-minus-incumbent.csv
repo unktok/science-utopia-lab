@@ -1,0 +1,17 @@
+history,seed,left_physical_job,right_physical_job,same_physical_job,throughput,content-utility
+planning:throughput,81701,evaluation-002,evaluation-002,True,0.0,0.0
+planning:throughput,81707,evaluation-003,evaluation-003,True,0.0,0.0
+planning:content-utility,81701,evaluation-012,evaluation-012,True,0.0,0.0
+planning:content-utility,81707,evaluation-013,evaluation-013,True,0.0,0.0
+presentation:throughput-control,81701,evaluation-002,evaluation-002,True,0.0,0.0
+presentation:throughput-control,81707,evaluation-003,evaluation-003,True,0.0,0.0
+presentation:content-utility-literal,81701,evaluation-012,evaluation-012,True,0.0,0.0
+presentation:content-utility-literal,81707,evaluation-013,evaluation-013,True,0.0,0.0
+presentation:content-utility-control,81701,evaluation-012,evaluation-012,True,0.0,0.0
+presentation:content-utility-control,81707,evaluation-013,evaluation-013,True,0.0,0.0
+presentation:throughput-literal,81701,evaluation-002,evaluation-002,True,0.0,0.0
+presentation:throughput-literal,81707,evaluation-003,evaluation-003,True,0.0,0.0
+numeric:throughput,81701,evaluation-016,evaluation-002,False,0.0,0.0
+numeric:throughput,81707,evaluation-017,evaluation-003,False,0.0,0.0
+numeric:content-utility,81701,,evaluation-012,False,,
+numeric:content-utility,81707,,evaluation-013,False,,

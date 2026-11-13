@@ -2,6 +2,18 @@
 
 ## Active publication-ready goal
 
+**November14 live free-frame capacity evidence:** U/literal:g0 has a
+length-limited initial reply (37658 input/8192 output), followed by a separate
+stop-final but malformed tool call with43200 reported input tokens. Both ask
+for40960 context/8192 output, so the existing reservation diagnostic is false.
+The [exact two-frame record](logbook/2026-11-14-parent-free-frame-capacity.md)
+does not prove actual input truncation, backend option semantics or that a
+larger budget would fix free design. Do not infer capacity from directed
+readiness or mutate the active protocol. The worker subsequently submits after
+1172.5243s/14 actions, so these invalid replies are not a failed entire
+generation. Its native loss is still pending. No scientific gain or completed
+presentation comparison is claimed. Ten existing context regressions pass23.40s.
+
 **November14 joint incumbent alias preparation:** the
 [read-only K/O evaluation layer](components/native-joint-incumbent-evaluation-v1.md)
 freezes development-only targets before unused-world evaluation, then copies
@@ -9,8 +21,11 @@ their already covered outcomes without additional jobs. Original own choices,
 all nulls and both eight-contrast readouts remain literal. The47-check
 SCRIPTED selection/reader/export scope passes57.26s, including an own policy
 that beats K only on the unused world and a failed K that must not be rescued.
-Actual clean-source CLI verification on the retained SCRIPTED report remains
-separate; no actual evaluation seed, model call or scientific gain is added.
+At clean6bf47ffd all four actual CLI calls pass, matching both two-file freeze
+and six-file report bundles. The [retained SCRIPTED example](data/native-joint-incumbent-preparation-v1/README.md)
+and proof separate reused18-world fixture evidence from synthetic development
+projections and seven later retention checks. No actual evaluation seed,
+new native world, model call or scientific gain is added.
 
 **November14 first own presentation result and diagnosis:** all eight fresh
 references are complete. The first T/control policy is generated and submitted,
