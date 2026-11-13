@@ -25,15 +25,21 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is69 pages,
-with36 figures and27 tables. It preserves the whole research program and prior
+The [latest reviewed integrated manuscript](paper/README.md) is73 pages,
+with38 figures and30 tables. Its62-file minimal source rebuild matches the
+text and all73 reviewed page images. It preserves the research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
 
 The [parent-presentation comparison](research/components/native-parent-presentation-loop-v1.md)
-now starts a separate finite20-world study from frozen30e3f5fa. Its corrected
-SCRIPTED full path passes through20 worlds and all cold readouts; actual
-designer calibration precedes any scientific comparison. See
-[current status](research/STATUS.md) for measured progress, not the software-test scores.
+is stopped with its exact partial records and unknown completion preserved.
+The separate [numeric comparator](research/data/native-parameter-comparator-v1/README.md)
+closes all six actual worlds with matching cold audits, costs and reports;
+no own policy improves the known reference incumbent. The new
+[workflow-v2 experiment](research/results/native-workflow-v2-first-dispatch-v1.json)
+starts23:52:27UTC on November13 from a clean frozen source/unused plan.
+Initial real-backend readiness passes and the first fresh R7 reference begins;
+two references/six own slots are the finite upper bound, not completed results.
+See [current status](research/STATUS.md) for liveness, not software-test scores.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
 retains all eight own submissions: six native completions and two technical
@@ -61,7 +67,8 @@ not automatic invention. A separate [free planning T/U study](research/results/n
 now closes all eight references and six own proposals, with matching double
 audits/costs and five double exports. Every own assigned loss ties its best
 reference; all edits are selection source only. This later closure now enters
-the69-page PDF with a complete14-condition table and three print-sized figures.
+the preserved69-page PDF and latest73-page version with a complete14-condition
+table and three print-sized figures.
 The [fixed-policy evaluation path](research/components/native-planning-fixed-evaluation-v1.md)
 is software-verified; no new evaluation seed list or actual inference is yet
 dispatched by that preparation.

@@ -1,6 +1,32 @@
 # Local manuscript rebuild subsets
 
-## Current planning search manuscript
+## Current native numeric manuscript
+
+The [reviewed73-page draft](../paper/integrated-native-numeric-build-v1.json)
+has38 figures,30 tables and26 references. Its
+[explicit62-file subset](../research/publication/paper-rebuild-allowlist-integrated-native-numeric-v1.json)
+stages at clean61da3a25 and builds using only the existing cache. Actual default-
+mode extracted text and all73 rendered90dpi page PNGs match the reviewed draft.
+The [verification](../research/results/integrated-native-numeric-rebuild-subset-verification-v1.json)
+retains source/page/file hashes and an earlier mismatched extraction-mode check;
+the layout-mode text is preserved, not overwritten to hide that QA error.
+No PDF source or scientific outcome was changed to make the comparison pass.
+PDF binary bytes differ. There are59 literal dependencies plus LICENSE,
+reviewed PDF and receipt. This is not fresh inference, numerical/raw
+reproduction, clean-machine installation, release clearance or readiness.
+
+From that exact clean checkout and a fresh staging destination:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-native-numeric-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Follow staged REBUILD.md; create its exact output parent before Tectonic runs.
+Later live manuscript edits must not overwrite this frozen source identity.
+
+## Preserved planning search manuscript
 
 The [reviewed69-page planning search draft](../paper/integrated-planning-search-build-v1.json)
 has a verified full-checkout cached build, source/evidence manifests and visual

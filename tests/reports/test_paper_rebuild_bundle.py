@@ -228,8 +228,10 @@ def test_catalog_policy_stages_all_66_page_literal_inputs_without_old_pdf_substi
     assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']
 
 
-def test_planning_search_policy_stages_current_69_page_inputs_not_older_pdf(tmp_path):
-    root = bundle.ROOT
+def test_planning_search_policy_stages_historical_69_page_inputs_not_live_tex(tmp_path):
+    root = historical_integrated_root(tmp_path,
+        source='f4d0fe576fa1b5487ade490b7c0f7281a7d32b54',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-planning-search-v1.json')
     policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-planning-search-v1.json').read_text())
     report = bundle.stage(root, policy, tmp_path/'planning-subset', source_commit='SCRIPTED-staging-source')
     assert len(report['files']) == 58 and len(report['literal_tex_dependencies']) == 55
@@ -238,4 +240,17 @@ def test_planning_search_policy_stages_current_69_page_inputs_not_older_pdf(tmp_
     assert sum(n.endswith('.png') for n in report['files']) == 33
     assert 'output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf' in report['files']
     assert 'output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf' not in report['files']
+    assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']
+
+
+def test_native_numeric_policy_stages_reviewed_73_page_inputs(tmp_path):
+    root = bundle.ROOT
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-native-numeric-v1.json').read_text())
+    report = bundle.stage(root, policy, tmp_path / 'native-numeric-subset', source_commit='SCRIPTED-staging-source')
+    assert len(report['files']) == 62 and len(report['literal_tex_dependencies']) == 59
+    assert report['original_build_source_commit'] == '3d8e10541b8b1bbce07b4250289643097d354de4'
+    assert {'paper/integrated/native-numeric-comparator.tex', 'paper/integrated/native-reserve-response.tex'} <= set(report['literal_tex_dependencies'])
+    assert sum(n.endswith('.png') for n in report['files']) == 35
+    assert 'output/pdf/science-utopia-lab-integrated-native-numeric-working-paper.pdf' in report['files']
+    assert 'output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf' not in report['files']
     assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']

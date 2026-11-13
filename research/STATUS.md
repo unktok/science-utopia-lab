@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 08:53JST (November13 23:53UTC)
+### Current overview: November14 08:58JST (November13 23:58UTC)
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -27,12 +27,14 @@ choices. See the [closed data](data/native-parameter-comparator-v1/README.md).
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
 | Numeric comparator |All6 real worlds/slots close; double audits/costs/reports and input/incumbent exports match |No incumbent gain; independent scope and important scientific answer remain open |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
-| New workflow experiment |[Actual first dispatch](results/native-workflow-v2-first-dispatch-v1.json) starts23:52:27UTC from frozen3b912d17/planed85d848; session70493/PID21985 and actual local35B runner observed live |Initial real-backend readiness running, not yet passed at this snapshot; zero fresh reference/own worlds scored; old2c7ec07f plan unchanged/unused |
+| New workflow experiment |[Actual first dispatch](results/native-workflow-v2-first-dispatch-v1.json) starts23:52:27UTC from frozen3b912d17/planed85d848; initial real-backend readiness now passes, references/R7-original begins23:53:19UTC |First fresh four-year control is executing, year2 submissions observed; zero complete fresh reference/own-world scores yet; old2c7ec07f plan unchanged/unused |
 | Manuscript |[73-page reviewed artifact](../paper/integrated-native-numeric-build-v1.json),38 figures/30 tables/26 references, all pages reviewed;62-file minimal rebuild matches text and all73 page PNGs |Important main claim, independent evidence R2/R3/R6 and final readiness judgment |
 
 The new real inference is running, not merely queued: original started.json
 and first request intent are retained, process21985 and the local35B runner
-are observed directly. No heavy PDF/native-QA process overlaps its dispatch.
+are observed directly. Initial certificate passed=true, with copy equality
+diagnostic rather than a veto. The directed pass is not free-design capacity
+evidence. No heavy PDF/native-QA process overlaps its dispatch.
 Two fresh shared controls then six own T/U slots are the unchanged upper bound,
 with original scientist/effect code and exact losses. A failed readiness or
 unknown completion stops; no repair/refill or merit veto is introduced.
@@ -44,6 +46,10 @@ in the first subset verification is retained, then matching default-mode
 extraction and all73 original PNG bytes verify the actual rebuild. This is
 document reproduction, not fresh science or a clean-machine claim. The
 publication-ready goal remains active and incomplete.
+The [prospective mechanism readout](publication/native-workflow-mechanism-readout-v1.md)
+fixes interpretation of changed timing, actual charges/attrition and stage-time
+versus end-year summaries before any completed control score. It adds no loss
+constraint or new scientific dispatch.
 
 ### Retained dated snapshots (historical, not current liveness)
 
