@@ -34,7 +34,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-planning-fixed-evaluation-audit.v1',
         'scienceutopia.native-parent-presentation-loop-audit.v1',
         'scienceutopia.native-parameter-comparator-audit.v1',
-        'scienceutopia.native-joint-fixed-evaluation-audit.v1')
+        'scienceutopia.native-joint-fixed-evaluation-audit.v1',
+        'scienceutopia.native-workflow-objective-loop-audit.v1')
 
 
 def classify_numeric(relative):
@@ -43,6 +44,24 @@ def classify_numeric(relative):
 
 def classify_staged(relative):
     return 'editor-readiness' if 'editor-readiness' in Path(relative).parts else 'staged-proposal'
+
+
+def workflow_event(relative,intent,response,*,model):
+    checked(intent)
+    if intent['provider']['model']!=model:raise ValueError('workflow cost provider differs')
+    if response is not None:
+        checked(response)
+        if response['intent_sha256']!=intent['content_sha256']:
+            raise ValueError('workflow cost response/intent differs')
+    transport={} if response is None else clone(response['transport'])
+    if 'request_wire_utf8' in transport:
+        if transport['request_wire_utf8']!=intent['request_wire']['request_wire_utf8']:
+            raise ValueError('workflow cost wire differs from intent')
+        transport['request_payload']=clone(intent['payload'])
+    kind='workflow-readiness' if Path(relative).parent.name.startswith('calibration-') else 'workflow-proposal'
+    return event(kind,relative,transport,model=model,
+        status='response-unknown' if response is None else 'error' if response.get('error') else 'http-recorded',
+        completion=response is not None,caller_seconds=None if response is None else response.get('elapsed_seconds'))
 
 
 def numeric_event(relative,intent,response,*,model):
@@ -128,6 +147,13 @@ def analyze(root,plan,audit):
             values=cache_usage(root/relative,plan);usage.extend(values.pop('values'))
             caches.append({'path':relative,'file_sha256':before[relative],**values})
             seen_wire.add(str(Path(relative).parent.parent/'wire-requests.jsonl'))
+        elif Path(relative).name=='call.intent.json':
+            intent=read(relative)
+            if intent.get('schema')!='scienceutopia.local-workflow-designer.v1.intent':
+                raise ValueError('unknown workflow-shaped cost intent')
+            response_name=str(Path(relative).with_name('call.http.json'))
+            events.append(workflow_event(relative,intent,read(response_name) if response_name in before else None,
+                model=plan['designer']['model']))
         elif Path(relative).name.startswith('call-') and relative.endswith('.intent.json'):
             response_name=relative.removesuffix('.intent.json')+'.http.json'
             events.append(numeric_event(relative,read(relative),read(response_name) if response_name in before else None,
@@ -173,7 +199,8 @@ def analyze(root,plan,audit):
             'scienceutopia.native-planning-fixed-evaluation-audit.v1',
             'scienceutopia.native-parent-presentation-loop-audit.v1',
             'scienceutopia.native-parameter-comparator-audit.v1',
-            'scienceutopia.native-joint-fixed-evaluation-audit.v1'):
+            'scienceutopia.native-joint-fixed-evaluation-audit.v1',
+            'scienceutopia.native-workflow-objective-loop-audit.v1'):
         critic=audit['observer']
         result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
             'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],
