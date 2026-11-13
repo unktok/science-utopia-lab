@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November13 11:24UTC first submitted design:** throughput:g0 completes
+14 editor steps including finish. The public bounded worker retains a submitted
+definition and exits0 in413.75s, without timeout or redispatch; its original
+native-world scientist wire journal is now growing. This is the first own
+candidate's real forward execution, not a completed loss or improvement.
+The first history-bound readiness certificate independently records28/28
+controls passed. The signed-content preparation/old-evidence retention batch
+passes35 checks6.61s. The unchanged experiment and six downstream readers
+continue; normal study audit closure and the full research goal remain pending.
+
 **November13 first own design and content analysis:** throughput:g0 passes
 its history-bound calibration and enters actual optimization11:15:29UTC.
 Completed editor steps appear, but no submitted own outcome, final selection
