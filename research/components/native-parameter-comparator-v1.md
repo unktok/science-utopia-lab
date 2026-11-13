@@ -53,6 +53,9 @@ U's is reviewer-free assignment/reserve21. The
 [preparation receipt](../results/native-parameter-comparator-preparation-verification-v1.json)
 binds these facts and does **not** claim an actual numeric trajectory/gain.
 An82-check regression scope passes39.501s, including finite scheduling failures.
+The [actual queued continuation](../results/native-parameter-comparator-queued-verification-v1.json)
+starts16:41:32UTC from frozen15dbb074, PID65620, waiting for the ongoing
+study and double audits; the numeric run remains unconsumed at that snapshot.
 
 Three proposals, one history per objective and a reused development seed do
 not establish convergence, a global numerical optimum, independent optimizer

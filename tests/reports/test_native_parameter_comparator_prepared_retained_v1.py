@@ -31,3 +31,19 @@ def test_numeric_component_protocol_and_log_links_are_portable():
         'research/protocols/campaigns/native-parameter-comparator-v1.md',
         'research/logbook/2026-11-14-native-parameter-comparator.md'), manifest=None)
     assert result['status'] == 'passed', result['errors']
+
+
+def test_queued_continuation_retains_a_separate_source_and_pending_scientific_status():
+    p = checked(json.loads((ROOT / 'research/results/native-parameter-comparator-preparation-verification-v1.json').read_text()))
+    q = checked(json.loads((ROOT / 'research/results/native-parameter-comparator-queued-verification-v1.json').read_text()))
+    start = q['queue_started']
+    assert q['preparation_content_sha256'] == p['content_sha256']
+    assert start['numeric_source_commit'] == p['scientific_source_commit']
+    assert start['numeric_plan_file_sha256'] == p['plan_file_sha256']
+    assert start['analysis_source_commit'] == '15dbb07493b35e0dfc8a9049026c503cdd70ecac'
+    assert start['analysis_source_commit'] != start['numeric_source_commit']
+    assert start['pid'] == 65620 and start['wait_writer_pid'] == 11716 and start['wait_analysis_pid'] == 15957
+    assert start['maximum_new_native_worlds'] == 6 and not start['automatic_retries']
+    assert start['new_inference_allowed_only_after_upstream_normal_double_audit']
+    assert q['stage'] == 'wait-upstream-science' and not q['new_numeric_study_dispatched']
+    assert not q['new_numeric_scientific_worlds'] and not q['publication_ready']

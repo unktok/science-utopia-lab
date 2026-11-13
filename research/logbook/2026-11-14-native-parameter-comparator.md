@@ -68,3 +68,14 @@ checks1.13s. The repository documentation checker passes25 documents/687
 local links/six snapshots without model/network/world calls. The prospective
 coordinator must run from another frozen source so ongoing science and future
 numeric run04d0c3e3 are not changed by main-branch documentation updates.
+
+At16:41:32.619875UTC the actual continuation starts from clean detached
+15dbb074, PID65620/original exec session36071. Numeric science remains
+unconsumed at frozen04d0c3e3. The [queued snapshot](../results/native-parameter-comparator-queued-verification-v1.json)
+binds the original start/plan and the immutable preparation proof. Direct ps
+confirms writer11716, analysis15957, four readout waiters and coordinator65620
+live; no claim is made that waiting analysis is already computing final results.
+The parent-presentation study now has three scored references, with its fourth
+active, and no own outcome yet. This resource-coordination dependency changes
+neither study's scientific plan or loss. Numeric execution and interpretation,
+unused evaluation/replication and the actual publication claim remain pending.
