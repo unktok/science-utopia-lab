@@ -6,7 +6,11 @@ and reader now support the independently dispatched numeric study without
 retargeting this original frozen plan. A new plan will retain the exact R7,
 controls, scientific budgets and losses; numeric winners/feedback are not
 silently imported across policy families. The23 lightweight prerequisite
-checks pass9.33s. The new-binding committed-source native full-path check is
+checks pass9.33s; the committed combined new/legacy scope passes37 checks
+in37.81s and the actual live numeric public binding is read successfully.
+These are overlapping software scopes, not scientific trials. The
+[receipt](../results/native-workflow-independent-prerequisite-v2.json) keeps
+their exact scope and source identities. The new-binding native full-path check is
 still pending, deferred until real numeric inference finishes. There is no
 new workflow dispatch or automatic queue at this snapshot.
 

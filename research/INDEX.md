@@ -25,6 +25,12 @@ Historical documents retain their paths and source identities.
   readonly preparation pins its8-world plan. That plan is not dispatched or
   automatically queued: its original normal-closure prerequisite is unsatisfied.
   Backend quiescence observation does not resolve the original missing reply.
+- [Prospective independent-numeric workflow eligibility](logbook/2026-11-14-workflow-independent-prerequisite-v2.md):
+  a separate binding preserves the stopped old plan and will require the new
+  numeric study's normal seven-stage closure before any workflow inference.
+  The37 light new/legacy checks and actual read-only field binding pass;
+  native full-path QA is deferred until current inference finishes. It imports
+  no numeric winner/feedback and does not queue or dispatch workflow science.
 - [Editable native workflows](components/native-workflow-domain-v4.md): new v4
   scope frees native phase order while retaining original effect contracts and
   typed plan/paper origins. It is connected to the existing whole-graph loss

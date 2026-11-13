@@ -16,6 +16,8 @@ import pytest
 from scripts import run_native_workflow_objective_loop_v1 as driver
 from scripts import audit_native_workflow_objective_loop_v1 as audit
 from scripts.reports.pre_scale_costs_v1 import analyze as costs
+from scripts.reports.native_workflow_objective_loop_v1 import export as workflow_report
+from scripts.finish_native_institution_loop_v1 import same_files
 from tests.reports.test_native_planning_objective_loop_v1 import plan, seal
 from tests.reports.test_native_capacity_full_path_v1 import install_scripted_provider
 from tests.runtime.test_portable_checkpoint_integration import fixed_corpus
@@ -148,6 +150,11 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     groups = cost_reports[0]['auxiliary']['groups']
     assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind'] == 'workflow-readiness']) == 7
     assert len([e for e in cost_reports[0]['auxiliary']['events'] if e['kind'] == 'workflow-proposal']) == 6
+    reports = [workflow_report(SimpleNamespace(run=root, audit_one=audit_paths[0], audit_two=audit_paths[1],
+        output=audit_directory / ('report-' + str(i)))) for i in (1, 2)]
+    assert reports[0] == reports[1] and reports[0]['consumed_own_slots'] == 6
+    assert sum(row['loss'] is None for row in reports[0]['slots']) == 1
+    report_files = same_files(audit_directory / 'report-1', audit_directory / 'report-2')
     assert _inventory(root) == before
     write_json_atomic(tmp_path / 'verification.json', {'schema': 'scienceutopia.native-workflow-objective-software-check.v1',
         'classification': 'SCRIPTED-HTTP-corpus-origin-and-prerequisite-fixtures', 'source_commit': probe.source_commit,
@@ -158,4 +165,5 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         'original_cold_audit_directory': str(audit_directory),
         'matching_original_cold_audit_sha256': file_sha256(audit_paths[0]),
         'matching_cost_content_sha256': cost_reports[0]['content_sha256'],
+        'matching_report_files': report_files,
         'actual_invention_or_scientific_gain_claimed': False}, sort_keys=True)

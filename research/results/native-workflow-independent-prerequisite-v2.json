@@ -1,0 +1,50 @@
+{
+  "schema": "scienceutopia.native-workflow-independent-prerequisite.v2.verification",
+  "classification": "prospective-readonly-eligibility-not-native-full-path-or-scientific-dispatch",
+  "source_commit": "6695b2daec64fa8b02f280a388f97129aea2c2db",
+  "source_commit_scope": "committed second prerequisite unit run, before the later all-slot report implementation",
+  "protocol": "research/protocols/campaigns/native-workflow-after-independent-numeric-v2.md",
+  "protocol_sha256": "7af267fdb3c5a4de5c4ee05192d47a4ca0c67db3178102c2f2bb07594b751ee1",
+  "unit_checks": [
+    {
+      "session": 72165,
+      "observed_exit_code": 0,
+      "tests": 23,
+      "seconds": 9.33,
+      "source_was_committed_at_start": false,
+      "junit": "outputs/native-workflow-independent-prerequisite-v2-units-a1.xml",
+      "junit_sha256": "4b2098fd811e2d0a3ac011911f8cda23ba545e44bb26eab4e2768277109552ca"
+    },
+    {
+      "session": 88794,
+      "observed_exit_code": 0,
+      "tests": 37,
+      "seconds": 37.81,
+      "source_was_committed_at_start": true,
+      "junit": "outputs/native-workflow-independent-prerequisite-v2-units-a2.xml",
+      "junit_sha256": "6c5c3d5855abd343b84ab1a4548316692ce3dac2450680e63e14791c70eeb78b"
+    }
+  ],
+  "unit_scopes_overlap_not_independent_scientific_experiments": true,
+  "actual_readonly_binding_check": {
+    "exit_code": 0,
+    "dispatcher_source_commit": "ce1e1033ef4a945deaf7d82e18e31263f0292dd6",
+    "dispatcher_plan_file_sha256": "49806e8f99539bfabf45b4b0680467253bfdac7317fc48bd471e4e6b47bd7c53",
+    "dispatcher_start_file_sha256": "82a98179c3aa99da9ea1c0400ab60fde3d24e1755c0f681e4368f768e1255c09",
+    "numeric_source_commit": "04d0c3e3b5660a858f8241231e83b2ff679b9c25",
+    "numeric_plan_content_sha256": "4019c9a01b24d1c460e144d17d3d40cf67ee8a0b7bb1e2929c8da54ff566cc23",
+    "numeric_start_file_sha256": "21f76d2e8ebd4bc5a41db8d56b92440af296a5986539dacf579a98ecf2535fff",
+    "new_inference_POSTs": 0,
+    "numeric_closure_claimed": false,
+    "numeric_feedback_imported": false,
+    "old_study_reclassified_or_resumed": false
+  },
+  "new_binding_native_full_path": "pending-until-current-real-inference-finishes",
+  "new_actual_workflow_plan_prepared": false,
+  "new_actual_workflow_scientific_dispatch": false,
+  "automatic_workflow_queue_registered": false,
+  "original_2c7ec07f_plan_changed": false,
+  "scientific_improvement_claimed": false,
+  "publication_ready": false,
+  "research_goal_complete": false
+}

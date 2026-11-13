@@ -44,6 +44,16 @@ closure, source/start/plan drift, unequal reports/costs/audits, wrong audit
 source/plan, missing worlds and invented old-response resolution. They are
 not actual numeric closure, native scientific trials or a workflow gain.
 
+After committing at6695b2da, the combined new/legacy unit scope passes37 tests
+in37.81s (session88794, observed exit0). No inference/Docker native worlds are
+run by these lightweight source/serialization/eligibility checks. An actual
+read-only public binding call also exits0 against the still-live independent
+numeric dispatch, preserving its ce1e1033/04d0c3e3 identities and original
+4019c9a0 scientific plan. That verifies actual field/format compatibility,
+not numeric closure or permission to start overlapping inference.
+The [receipt](../results/native-workflow-independent-prerequisite-v2.json)
+pins both unit XML files and the exact actual source/plan/start hashes.
+
 The full native software test now has a separate independent-numeric-v2
 case. It must run after committing and after real numeric inference ends,
 through the actual public prerequisite (not a mocked successful closure),
@@ -55,3 +65,15 @@ plan/dispatch or automatic queue is claimed until that obligation is met.
 The full publication-ready goal remains active; meaningful main claim,
 independent scope, actual structural search and final critical judgment are
 not replaced by a scheduler test count.
+
+## Analysis path prepared while numeric inference continues
+
+A [complete structural readout](../components/native-workflow-objective-readout-v1.md)
+now joins all consumed slots to original audited native worlds, literal phase/
+edge changes, both assigned/cross losses and separate best-known/best-own paths.
+It keeps all-null output null and does not substitute the best reference.
+Twelve light analysis units pass2.37s; a read-only actual call on the previously
+retained a5 SCRIPTED archive yields7 worlds/6 slots/1 null, without new inference,
+sandbox calls or rendering. Neither proves a new full native path or a real gain.
+The deferred committed-source full test now also requires byte-identical double
+reports/CSV/figures/manifests after both cold audits/costs.
