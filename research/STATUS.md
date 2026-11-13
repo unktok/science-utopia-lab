@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+**November13 12:15:06UTC third own observation:** U:g1 completes with
+T=-18/U=-13.333333333333332 and no generation or technical failure. Its
+assigned loss equals U:g0 and the best fresh reference. The feedback-bearing
+request has one own history record, but the actual editing parent is again
+reference-assignment-reserve21-no-review-all, not the literal U:g0 program.
+One mechanism6 source field changes; this is not a structural or improvement
+claim. The checkpoint bytes match the observation's original hash. Three
+of six own slots are complete, and the unchanged writer advances to T:g1
+readiness with all six downstream processes live. No new objective, retry,
+replacement, final selection or full-study audit is introduced.
+
 **November13 11:54:07UTC first T/U pair:** both generation0 proposals
 complete native execution and content measurement. Their cross-losses are
 T0:(T=-18,U=-10.333333333333332) and U0:(T=-18,U=-13.333333333333332).

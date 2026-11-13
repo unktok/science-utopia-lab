@@ -86,3 +86,25 @@ not evidence that the designer weights or design procedure improve.
 Main integration also passes12 snapshot/documentation checks with exit0 in
 0.85s. The repository checker passes25 documents/655 links/six preserved
 snapshots. No actual scientific source or completed raw observation is changed.
+
+## First feedback bearing U redesign
+
+At12:15:06UTC U:g1 completes with T=-18/U=-13.333333333333332. Its campaign
+record has no generation error and the actual observation has no technical
+failure. The final native checkpoint bytes match the hash stored with that
+observation. The same writer advances to T:g1 readiness; three of six own
+slots are complete and all six closure-gated analysis processes remain live.
+
+The request contains one own history record, but its editing parent again
+matches `reference-assignment-reserve21-no-review-all`. This is a new proposal
+with previous feedback, not a direct edit of the U:g0 program. Its literal
+change from that parent is mechanism6's code-artifact source. It ties U:g0
+and the strongest U reference under the assigned loss. No beneficial new
+mechanism, structural advantage or designer learning follows from that result.
+
+The source observation is `native-adaptive-5eda97605f6c4f8a25c16663`, retained
+at `search/content-utility/campaign/native-adaptive-state.json`, record1, in
+the unchanged original8cd6157 study. The two older partial snapshots remain
+unchanged; the complete all-slot cold audit and export still wait for normal
+study closure. No additional partial scientific experiment, inferred terminal,
+repair, replacement or loss change is made during this verified wait.

@@ -37,6 +37,9 @@ Historical documents retain their paths and source identities.
   closes by11:54UTC at(-18,-10.3333…) and(-18,-13.3333…). Each ties its best
   assigned-objective reference and starts from a different editing parent;
   their U gap is not an isolated edit/label effect. U:g1 readiness follows.
+  U:g1 completes12:15UTC atT=-18/U=-13.3333…, tying its previous own loss
+  and the same strong reference. Its history is used, but its editing parent
+  remains the common reference. Three own slots remain; T:g1 readiness follows.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
