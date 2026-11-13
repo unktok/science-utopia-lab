@@ -2,6 +2,18 @@
 
 ## Active publication-ready goal
 
+**November13 11:34:10UTC first own loss:** throughput:g0 completes its
+four-year native world and fixed-content measurement, with assigned T=-18
+(18 accepted decision records). This ties the best freshly executed references,
+not an improvement over the editing parent. Its literal change is one mechanism
+source field; connections and schedules are unchanged. The
+[partial observation snapshot](results/native-planning-first-own-progress-v1.json)
+binds the first observation, original loss/checkpoint, parent/candidate hashes
+and all eight fresh reference T values. It is not a full-study audit or frozen
+selection. The unchanged live writer enters content-utility:g0 readiness;
+five own slots and normal study closure remain pending. No new inference,
+candidate repair or objective change is made for this snapshot.
+
 **November13 11:24UTC first submitted design:** throughput:g0 completes
 14 editor steps including finish. The public bounded worker retains a submitted
 definition and exits0 in413.75s, without timeout or redispatch; its original

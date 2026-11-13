@@ -86,3 +86,21 @@ Its28 real controls pass in about280s and the outer worker exits0. Writer86474
 (session13312) reaches the first reference09:53:10UTC; original-source analysis
 90157 waits for normal closure. This is no longer a readiness-only wait, but
 there is no own submission, score or improvement at this observation.
+
+## First complete own observation
+
+By11:34:10UTC November13, throughput:g0 finishes its four-year native world
+and fixed-content measurement. Its assigned T=-18 represents18 accepted
+decision records. The best fresh common references also haveT=-18, so this
+first result does not establish a gain over those strong controls. The literal
+candidate changes one mechanism source field relative to its editing parent;
+connections and schedules remain. A source difference alone is not evidence
+of a new effective mechanism.
+
+The [partial snapshot](../results/native-planning-first-own-progress-v1.json)
+binds the exact request/observation, declared loss, completed checkpoint,
+parent/candidate hashes and all eight fresh reference T values. The first
+observation remains inside the original campaign state; no raw record is
+rewritten. The snapshot does not create the normal final terminal, cold audit,
+own selection or unused-seed outcome. Content-utility:g0 enters readiness next;
+the five other slots and full normal closure are pending at that observation.

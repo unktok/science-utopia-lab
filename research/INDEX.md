@@ -28,7 +28,11 @@ Historical documents retain their paths and source identities.
   and75 final regression checks pass; they are not actual-model results.
   The [second attempt](results/native-planning-objective-second-launch-verification-v1.json)
   actually starts09:48UTC November13, passes28/28 real initial controls and
-  advances to the first reference09:53UTC. No own result is claimed yet.
+  advances to the first reference09:53UTC. The
+  [first own observation](results/native-planning-first-own-progress-v1.json)
+  completes by11:34UTC atT=-18, tying the best fresh controls; one source field
+  changes, with no connection/schedule change. U:g0 readiness follows. This
+  ongoing-study snapshot is not a full audit, final selection or invention gain.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
