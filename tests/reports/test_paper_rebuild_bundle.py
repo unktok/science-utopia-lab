@@ -211,3 +211,17 @@ def test_repository_parent_inputs_are_explicit_and_cannot_escape_root():
     for content in (b'\\input{../../outside}', b'\\input{/private/outside}'):
         with pytest.raises(ValueError):
             bundle.literal_dependencies({'paper/main.tex': content}, 'paper/main.tex', repository_parent_inputs=True)
+
+
+def test_catalog_policy_stages_all_66_page_literal_inputs_without_old_pdf_substitution(tmp_path):
+    root = bundle.ROOT
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json').read_text())
+    report = bundle.stage(root, policy, tmp_path / 'catalog-subset', source_commit='SCRIPTED-staging-source')
+    assert len(report['files']) == 54 and len(report['literal_tex_dependencies']) == 51
+    assert report['original_build_source_commit'] == '5c7d3de618aa4c9aa04739a6ef70161b94239fef'
+    assert report['original_build_receipt_schema'] == 'scienceutopia.integrated-catalog-planning-build.v1'
+    assert 'paper/integrated/native-catalog.tex' in report['literal_tex_dependencies']
+    assert 'output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf' in report['files']
+    assert 'output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf' not in report['files']
+    assert sum(n.endswith('.png') for n in report['files']) == 30
+    assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']

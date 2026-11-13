@@ -130,7 +130,8 @@ def stage(root, policy, output, *, source_commit):
     # No globbing or recursive source directory copy. Read once and compare later.
     bodies = {relative(name): read_file(root, name) for name in names}
     receipt = json.loads(bodies[policy['receipt']])
-    integrated = receipt.get('schema') == 'scienceutopia.integrated-capacity-authority-build.v1'
+    integrated = receipt.get('schema') in ('scienceutopia.integrated-capacity-authority-build.v1',
+                                         'scienceutopia.integrated-catalog-planning-build.v1')
     if receipt.get('schema') not in ('scienceutopia.working-paper-build.v2',
                                      'scienceutopia.working-paper-build.v3') and not integrated:
         raise ValueError('bound working-paper build receipt required')

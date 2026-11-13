@@ -1,4 +1,5 @@
 """Actual source/subset/PDF identity evidence, not new scientific inference."""
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -31,10 +32,11 @@ def test_actual_integrated_subset_rebuild_retains_scopes_and_reviewed_page_ident
         # A later manuscript may legitimately change its live TeX. This receipt
         # binds the exact earlier staging commit, not today's editable draft.
         blob = subprocess.check_output(['git', 'show', r['staging_source_commit'] + ':' + name], cwd=ROOT)
-        import hashlib
         assert hashlib.sha256(blob).hexdigest() == expected
     source = subprocess.check_output(['git', 'show', r['staging_source_commit'] + ':scripts/reports/paper_rebuild_bundle.py'], cwd=ROOT)
-    assert source == (ROOT / 'scripts/reports/paper_rebuild_bundle.py').read_bytes()
+    # Bind the actually used historical staging implementation, not a later
+    # adapter that may support another explicitly named reviewed manuscript.
+    assert hashlib.sha256(source).hexdigest() == '8a9c4ded3ef3043918cbb99ef6427f42933270f799d5f8c28720d7232e21fa92'
 
 
 def test_rebuild_instructions_and_unchanged_historical_paths_remain_portable():
