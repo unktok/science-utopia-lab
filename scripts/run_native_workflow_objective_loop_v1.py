@@ -165,6 +165,14 @@ def measurement(p, observer):
     return apply
 
 
+def retain_observer_audit(root, observer):
+    """Preserve the actual already-sealed public return, not a second seal."""
+    original = checked(observer.audit())
+    saved = save(root / 'observer-audit.json', {k: v for k, v in original.items() if k != 'content_sha256'})
+    if saved != original: raise ValueError('workflow observer public audit changed during retention')
+    return saved
+
+
 def selection(root, p, context):
     selected = {}
     for objective in p['objectives']:
@@ -231,7 +239,7 @@ def run(root):
                     measurement_contract=p['observer_contract'])
                 consumed += 1; observations += sum(o is not None for o in record['observations']); require_plan(root)
             save(root / 'selection.json', selection(root, p, context))
-            save(root / 'observer-audit.json', observer.audit()); status = stage = 'closed'; progress(root, stage, None)
+            retain_observer_audit(root, observer); status = stage = 'closed'; progress(root, stage, None)
         except BaseException as error:
             save(root / 'terminal.json', {'schema': SCHEMA + '.terminal', 'status': status, 'stage': stage,
                 'consumed_slots': consumed, 'observations': observations, 'ended_utc': utc(),

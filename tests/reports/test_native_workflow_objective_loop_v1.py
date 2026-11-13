@@ -82,6 +82,16 @@ def test_cold_auditor_never_writes_inside_scientific_source_even_under_ignored_o
         worker(tmp_path / 'raw', driver.ROOT / 'outputs/forbidden-source-local-audit.json')
 
 
+def test_actual_public_observer_audit_is_retained_without_resealing(tmp_path, monkeypatch):
+    from utopia.optimization.common_content_observer import CommonContentObserver
+    p, _, _, _ = setup(tmp_path, monkeypatch)
+    observer = CommonContentObserver(tmp_path / 'observer', p['observer_contract'], backend=SimpleNamespace())
+    original = observer.audit()
+    root = tmp_path / 'retained'; root.mkdir()
+    assert driver.retain_observer_audit(root, observer) == original
+    assert driver.read(root / 'observer-audit.json') == original
+
+
 def test_prerequisite_rejection_occurs_before_any_study_start_or_author(tmp_path, monkeypatch):
     root = tmp_path / 'run'; root.mkdir()
     monkeypatch.setattr(driver, 'require_environment', lambda: None)
