@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November13 12:39:55UTC fourth own observation:** T:g1 completes with
+T=-18/U=-11.333333333333332, no generation error and no technical failure.
+It ties the previous own T and strongest fresh T references. Its feedback
+history has one own record, while its actual editing parent remains
+reference-advice-reserve21-all. One mechanism7 source field changes, without
+connection/schedule changes. The final checkpoint bytes match the original
+observation hash. Four of six slots are evaluated; the unchanged writer
+advances to T:g2 readiness, followed by the last U:g2 slot. Normal study
+closure, final selection and original cold audits remain pending.
+
 **November13 12:29UTC fourth submitted design:** T:g1's bounded worker
 submits a definition and exits0 in492.65s, without timeout or redispatch.
 Its second throughput native-world wire journal is present. Three own slots

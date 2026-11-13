@@ -143,3 +143,24 @@ The reference-minimum/partial-observation/documentation checks pass13 tests
 with exit0 in1.05s after this interpretation clarification. The baseline-set
 intersection is computed from the unchanged sealed first-pair snapshot;
 no new scientific observation, loss, selection rule or numerical result is made.
+
+## Completed T redesign and final generations
+
+At12:39:55UTC T:g1 completes with T=-18/U=-11.333333333333332, no generation
+error and no technical failure. Its assigned T ties T:g0 and the best fresh
+reference; its outside U differs from T:g0 but is not an extra objective or
+adoption criterion. The request contains one own history record, and the
+editing parent still matches `reference-advice-reserve21-all`.
+
+Only mechanism7's code-artifact source differs from that parent; connections
+and schedules remain. The observation is
+`native-adaptive-069fea462ce717f8ad1618bc`, retained in throughput campaign
+record1 at the unchanged8cd6157 run. Its completed native checkpoint bytes
+match the original observation hash. This is another actual feedback-bearing
+proposal/evaluation, not an assigned-loss improvement or independent replication.
+
+Four of the six own slots are now evaluated. The original writer enters
+T:g2 readiness; the final two declared slots are T:g2 and U:g2. All six
+normal-closure analysis processes remain live. No candidate, metric, source,
+slot allowance, parent-selection rule or old snapshot is changed; the full
+study's normal terminal, frozen selection and cold audit are still pending.
