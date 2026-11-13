@@ -58,8 +58,8 @@ processes, not a new experimental dispatch. Four of the six own slots remain.
 
 The best fresh reference hasT=-18 for the first objective and
 U=-13.333333333333332 for the second. Both own proposals tie those respective
-values. The T editing parent has U=-11.333333333333332, so its own edit
-retains assigned T while worsening the outside U diagnostic by1. That is
+values. The T editing parent has U=-11.333333333333332; the submitted candidate
+has the same assigned T and an observed outside U loss higher by1. That is
 not a violation or extra veto: U is not that branch's assigned objective.
 The U edit retains its assigned parent loss. The observed difference between
 the two candidates therefore cannot be attributed solely to the code edits
@@ -82,3 +82,7 @@ history-bound U:g1 readiness to actual optimization. The new pending request
 contains one prior history record and the previous U observation, alongside
 the common references. This is an actual feedback-bearing next generation,
 not evidence that the designer weights or design procedure improve.
+
+Main integration also passes12 snapshot/documentation checks with exit0 in
+0.85s. The repository checker passes25 documents/655 links/six preserved
+snapshots. No actual scientific source or completed raw observation is changed.
