@@ -26,8 +26,14 @@ Historical documents retain their paths and source identities.
 - [Integrated manuscript rebuild subset](../docs/paper-rebuild-bundle.md):
   51 exact files stage/build offline; text and all64 rendered page images
   match the reviewed draft. No raw/model data, new numerical audit or release clearance.
-- [Reviewed64-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
-  and [build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
+- [Reviewed66-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf)
+  and [build/layout/source binding](../paper/integrated-catalog-planning-build-v1.json):
+  the complete three-arm agenda intervention, two actual figures, all choices,
+  losses and costs now join every earlier track. All66 layouts and detailed
+  pages1/46--49 are reviewed; both cached builds/text/logs agree. The new free
+  planning study is not counted as complete. All older artifacts are preserved.
+- [Preserved64-page capacity manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
+  and [its own build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
   all prior tracks plus the closed T/P pilot, actual paths/geometry, complete
   table, failure and costs. Both cache-only builds/text/logs agree, all64
   layouts and new43--46 pages at150dpi are checked; old PDFs remain unchanged.

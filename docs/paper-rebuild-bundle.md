@@ -1,6 +1,6 @@
 # Local manuscript rebuild subsets
 
-The latest [reviewed integrated manuscript](../paper/integrated-capacity-authority-build-v1.json)
+The [reviewed capacity snapshot](../paper/integrated-capacity-authority-build-v1.json)
 has64 pages. Its [explicit51-file subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
 now stages and builds using only the existing TeX cache. Extracted text and
 all64 rendered90dpi page PNGs match the reviewed artifact; pages1 and43 also
@@ -9,6 +9,13 @@ receive fresh visual spot checks. PDF binary bytes differ. The
 records the actual source, inventory and checks. This is a local PDF rebuild,
 not numerical recomputation, a raw audit, an independent model rerun or a
 release-cleared reviewer package.
+
+The later [66-page catalog planning draft](../paper/integrated-catalog-planning-build-v1.json)
+has its own reviewed build and preserved PDF. It does not reuse this older
+allowlist as if live TeX still matched. Historical staging tests reconstruct
+the exact old Git files; they continue to reject altered dependencies. A
+separate updated subset must be verified before claiming that newer draft's
+minimal bundle rebuilds.
 
 Use the approved project interpreter from a clean committed checkout and a
 fresh destination. To recover this exact64-page snapshot after later manuscript

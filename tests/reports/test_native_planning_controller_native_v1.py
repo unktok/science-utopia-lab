@@ -116,3 +116,19 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
     assert len(costs['scientist']['physical_response_caches']) == 14
     assert costs['common_content_observer']['physical_requests'] == proof['observer']['dispatch_intents']
     assert costs['common_content_observer']['physical_requests'] > 0
+    # Exercise the actual closed reader API, not a fabricated report fixture.
+    from types import SimpleNamespace
+    from scripts.reports.native_planning_objective_loop_v1 import export
+    from scripts.analyze_native_open_v7 import _inventory
+    before = _inventory(root)
+    outputs = [tmp_path / 'report-one', tmp_path / 'report-two']
+    for out in outputs:
+        export(SimpleNamespace(run=root, audit_one=paths[0], audit_two=paths[1], output=out))
+    assert _inventory(root) == before
+    assert {f.name: f.read_bytes() for f in outputs[0].iterdir()} == {f.name: f.read_bytes() for f in outputs[1].iterdir()}
+    report = driver.read(outputs[0] / 'report.json')
+    assert len(report['references']) == 8 and len(report['slots']) == 6 and len(report['physical_worlds']) == 14
+    assert len(report['frozen_selection']['throughput']['all_tied_ids']) == 3
+    for name in ('objective-loss-paths.svg', 'objective-cross-scores.svg'):
+        svg = (outputs[0] / name).read_text()
+        assert all('R' + str(i) + ' = ' + label in svg for i, label in enumerate(p['reference_order'], 1))

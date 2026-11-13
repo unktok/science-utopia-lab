@@ -2,13 +2,22 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
-[64-page integrated draft](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf),
-with31 figures and25 tables and no artificial page cap.
-Its [source, evidence, build and visual binding](integrated-capacity-authority-build-v1.json)
-records two cache-only builds, all64 page layouts and150dpi detail review of
-pages43--46. The reading guide is placed below the contents to avoid an orphan
-front page without deleting text. The61-page advice draft and every earlier
-PDF/receipt are preserved.
+[66-page integrated draft](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf),
+with33 figures and26 tables and no artificial page cap.
+Its [source, evidence, build and visual binding](integrated-catalog-planning-build-v1.json)
+records two cache-only builds, identical text/logs, all66 reviewed layouts and
+150dpi detail review of pages1/46--49. The complete three-arm catalog planning
+comparison now joins the earlier studies, with both actual figures, all choices,
+losses and costs. The earlier64-page capacity draft,61-page advice draft and
+every older PDF/receipt retain their original bytes and source identities.
+
+Concrete advice and legal assignment each yield18 accepted decision records
+versus12 with no agenda effect on one reused development seed. All ten advisory
+choices match their actual agendas; direct assignment instead has ten validated
+effects and no original planning calls. These are developer policies, not
+automatic invention or objective-specific superiority. The new free T/U
+planning search is not counted as complete; the first pre-science service
+interruption and unknown costs remain separate from its new finite attempt.
 
 It retains the objective/abstraction/method argument, parameter held-out study,
 actual structural cases, conditional-gradient experiments, nested design,
@@ -123,9 +132,10 @@ Inspect the newly rendered pages before replacing the reviewed PDF and receipt.
 The preserved older build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
 of dense figures/provenance. No layout or unresolved-reference warning remains.
 The old paper-only13-path policies still rebuild the narrower V2 draft. The
-[new51-file integrated subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
-rebuilds this expanded manuscript without raw/model data: its cached local
-build matches reviewed text and all64 rendered page images. See the
+[earlier51-file integrated subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
+rebuilds the preserved64-page capacity snapshot without raw/model data, not
+the later editable66-page manuscript. Use its exact recorded checkout; its
+cached local build matches reviewed text and all64 rendered page images. See the
 [instructions and limits](../docs/paper-rebuild-bundle.md) and
 [source-bound verification](../research/results/integrated-capacity-rebuild-subset-verification-v1.json).
 

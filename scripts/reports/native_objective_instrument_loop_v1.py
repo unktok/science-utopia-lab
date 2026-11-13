@@ -22,6 +22,15 @@ def summarize(plan,audit,records,traces,*,study='count-content-v1'):
         plan_schema='scienceutopia.native-objective-instrument-loop.v1.plan'
         audit_schema='scienceutopia.native-objective-instrument-loop-audit.v1'
         contract_key='observer_contract';count=8;schema=SCHEMA
+    elif study=='planning-v1':
+        from utopia.system.native_planning_controls import ORDER
+        plan_schema='scienceutopia.native-planning-objective-loop.v1.plan'
+        audit_schema='scienceutopia.native-planning-objective-loop-audit.v1'
+        contract_key='observer_contract';count=6;schema='scienceutopia.native-planning-objective-report.v1'
+        if (plan['objectives']!=['throughput','content-utility'] or plan['generations']!=3
+                or plan['reference_order']!=list(ORDER) or not audit.get('initial_readiness')
+                or len(audit.get('readiness',[]))!=6):
+            raise ValueError('exact eight-reference/six-slot planning scope and original readiness required')
     elif study=='capacity-v1':
         plan_schema='scienceutopia.native-capacity-objective-loop.v1.plan'
         audit_schema='scienceutopia.native-capacity-objective-loop-audit.v1'
@@ -202,7 +211,7 @@ def render(report,output):
         plt.close(fig)
 
 
-def export(args,*,study='count-content-v1'):
+def export(args,*,study='count-content-v1',renderer=None):
     root=Path(args.run).resolve();output=Path(args.output).resolve();paths=[Path(args.audit_one),Path(args.audit_two),root/'plan.json']
     if output.exists() or output.is_relative_to(root):raise ValueError('fresh report outside scientific raw required')
     if paths[0].read_bytes()!=paths[1].read_bytes():raise ValueError('two original-source audits differ')
@@ -230,7 +239,7 @@ def export(args,*,study='count-content-v1'):
                 'events':[],'completed_steps':None,'drawn_candidate_artifact_observations':None}
     report=summarize(plan,audit,records,traces,study=study)
     if before!=_inventory(root) or input_hashes!={str(p):file_sha256(p) for p in paths}:raise ValueError('raw report inputs changed')
-    output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'});render(report,output)
+    output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'});(render if renderer is None else renderer)(report,output)
     fields=['slot_index','objective','generation','status','loss','physical_job','parent_differs_from_design_anchor',
         'connections_changed','schedules_changed','probe_attempts','returned','raised']
     with (output/'slots.csv').open('x',newline='') as f:
