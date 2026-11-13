@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+**November14 operative reserve response:** the original R7 allocation artifact
+completes240 isolated calls on four unchanged historical native inputs, varying
+only the already declared reserve1--60. Reserve21 exactly reproduces every
+original component return. The [actual command response](data/native-reserve-command-response-v1/README.md)
+has19/17/15/8 distinct outputs and is nonmonotonic. Commands are not new native
+transfer commitments or loss observations. A separate original ledger join
+traces the inherited positive-balance<=10 attrition rule; it is not an added
+fairness/promotion gate. No new model/world or optimizer feedback is dispatched.
+The original experiment remains in U/control:g0 optimization, with source and
+protocol unchanged. The original69-page PDF is not newly rebuilt here.
+
 **November14 first complete own presentation world:** U/literal:g0 completes
 all four native years with T=-18/U=-13.333333333333332 and18 accepted decisions.
 Recomputation on all eight fresh references confirms zero U improvement over

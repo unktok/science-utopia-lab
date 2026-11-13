@@ -33,3 +33,33 @@ input preservation, malformed transfers, disjoint equal-output intervals,
 complete240-call mock output and first-failure/no-retry retention. This is not
 actual sandbox evidence. Commit before the original-data execution and retain
 its own command completion, image, raw-input hashes and scope separately.
+
+The actual240 conditional Docker calls at clean056f9914 close19:12:17UTC;
+the original reserve21 returns match in every year. All60 reserve values
+yield19/17/15/8 exact command outputs on the four recorded inputs. The viewed
+two-panel figure preserves their nonmonotonic response and states explicitly
+that commands are not alternate-world outcomes or losses.
+
+The original source reveals a specific inherited attrition rule: after grants,
+active authors with positive balance<=10 are removed. This is not an author's
+LLM decision or a newly added participation constraint. Actual year3 ledger
+records join the requested1/4-unit transfers exactly. The five founders open
+at90 total, pay50 annual costs, receive20 grants and close at60, with zero
+residuals; the1-unit nonwinner becomes inactive, while the1-unit award recipient
+closes at21 and remains active. The source and ledger byte hashes are retained.
+This explains this actual path, not outcomes under other reserve parameters.
+
+The first CSV-only figure rebuild attempt (session23225) correctly fails its
+initial clean-source guard: generated retention directories were copied before
+the asynchronous check acquired source binding. No runtime bytes/HEAD or
+primary240-call execution changed, and no figure was rebuilt in that attempt.
+Preserve its error separately; do not relax the clean guard or relabel it as a
+pass. Strengthen AGENTS phase guidance, commit retention first, then use a
+fresh rebuild directory and await process exit before any new worktree writes.
+
+The first retained-data regression scope has13 passes/one fixture failure in
+3.39s: its injected timeout executor lacks the newly checked `image_id` public
+attribute and never reaches the intended timeout. Preserve that JUnit. Add the
+real attribute to the mock and a separate wrong-image rejection regression;
+do not weaken the runtime image check. The actual240 calls already used and
+verified the original image and are unaffected by this mock correction.

@@ -102,7 +102,7 @@ def test_complete_mock_profile_keeps_full_input_bytes_except_one_parameter(tmp_p
 def test_failed_execution_stops_once_without_making_a_completed_report(tmp_path, monkeypatch):
     args, _, _ = setup(tmp_path, monkeypatch); calls = []
     class Fails:
-        def __init__(self, **kw): pass
+        def __init__(self, image, **kw): self.image_id = image
         def execute(self, *a): calls.append(1); raise TimeoutError('SCRIPTED component timeout')
     monkeypatch.setattr(module, 'DockerCodeExecutor', Fails)
     with pytest.raises(TimeoutError): module.run(args)
@@ -111,3 +111,13 @@ def test_failed_execution_stops_once_without_making_a_completed_report(tmp_path,
     assert end['attempted_component_executions'] == 1 and end['completed_component_executions'] == 0
     assert not (args.output / 'report.json').exists()
     assert len(list((args.output / 'calls').glob('*.started.json'))) == 1
+
+
+def test_wrong_execution_image_is_not_used_even_for_a_conditional_diagnostic(tmp_path, monkeypatch):
+    args, _, _ = setup(tmp_path, monkeypatch)
+    class Wrong:
+        def __init__(self, **kw): self.image_id = 'sha256:' + 'f' * 64
+        def execute(self, *a): pytest.fail('wrong image must never execute')
+    monkeypatch.setattr(module, 'DockerCodeExecutor', Wrong)
+    with pytest.raises(ValueError, match='execution image differs'): module.run(args)
+    assert not args.output.exists()

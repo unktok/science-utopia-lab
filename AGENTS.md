@@ -11,6 +11,9 @@
 - Full integration checks that compare runtime bytes with Git HEAD must start
   after committing runtime changes. Do not change runtime or HEAD during those
   checks. Preserve failed source-bound results instead of weakening the guard.
+- A clean-source check also rejects untracked retention artifacts. Wait for the
+  original check process to exit before copying data/figures into its worktree;
+  asynchronous launch is not completion. Stage artifacts elsewhere if needed.
 - Declare finite designer connect/read time allowances before dispatch and
   record them even on transport failure. For non-streaming reasoning, check
   their suitability for the declared output budget; a read timeout is not a

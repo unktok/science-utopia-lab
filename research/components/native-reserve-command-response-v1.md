@@ -28,3 +28,13 @@ Do not sum them into an alternative world or rank institutions by transferred
 funds. Equal commands on these four inputs do not imply global policy
 equivalence or authorize sharing future native jobs. This supports interpretation
 of the search space, not a generated gain or a substitute scientist world.
+
+The actual240-call run closes normally at clean056f9914, with the original
+reserve21 results reproduced. Exact command-output counts across60 values are
+19/17/15/8 for the four historical inputs. The
+[retained rows and figure](../data/native-reserve-command-response-v1/README.md)
+show a nonmonotonic year3 response:18 requests15 units/3 recipients,19 requests10/2,
+and26 requests none. No performance optimum follows from this diagnostic.
+The separately retained original year3 ledger matches the reserve21 commands
+and the native post-award positive-balance<=10 attrition rule. That rule is
+inherited world behavior, not an added optimization veto or fairness floor.
