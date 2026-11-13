@@ -49,6 +49,12 @@ with the closed three-control result and separately running free planning
 study. No old receipt, artifact or experimental record is rewritten. The
 failed JUnit file remains distinct from the corrected verification.
 
+The corrected retention batch passes34 checks with exit0 in5.74s. The
+new preparation receipt and source-file hashes, existing launch/readout
+receipts, reviewed PDF/rebuild package, costs and repository links all pass
+in that scope. This does not rerun the16-world native test at the later
+documentation-only commit; its evidence remains bound to f5e9d1f.
+
 ## Current scientific boundary
 
 At11:01:44UTC November13 the original experiment reaches its eighth common
