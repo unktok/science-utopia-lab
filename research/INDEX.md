@@ -6,6 +6,30 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Current status](STATUS.md): November14 08:53JST; the publication-ready goal
+  remains incomplete. Original presentation study stays stopped; the separate
+  numeric study closes all six native worlds with no incumbent improvement.
+- [Actual workflow-v2 first dispatch](results/native-workflow-v2-first-dispatch-v1.json):
+  starts23:52:27UTC at frozen3b912d17/planed85d848, session70493/PID21985.
+  Initial local35B readiness is live, not passed in that snapshot. Two fresh
+  controls/six own slots are the fixed upper bound; no model-world result yet.
+- [Complete numeric data](data/native-parameter-comparator-v1/README.md):
+  two matching original audits/costs/reports and full input/incumbent readouts,
+  all six slots and null-free closure,664 scientist replies,93 critic requests.
+- [Reviewed73-page manuscript](../paper/integrated-native-numeric-build-v1.json):
+  all earlier meaningful tracks plus reserve diagnostic and full numeric result;
+  [actual minimal rebuild](results/integrated-native-numeric-rebuild-subset-verification-v1.json)
+  matches the text and all73 page images. This is not publication readiness.
+- [Main scientific question and outcome branches](publication/native-workflow-main-claim-decision-v1.md):
+  observe the finite timing search, explain actual effects, then decide the
+  important comparison and independent/unused evaluation without refilling a loss.
+
+## Earlier navigation snapshots (historical, not current liveness)
+
+These links retain intermediate observations and plans. Any "running", "waiting"
+or "not dispatched" wording below describes that earlier linked snapshot,
+not a current process claim; use the active orientation and STATUS above.
+
 - [Closed numeric comparator](data/native-parameter-comparator-v1/README.md):
   all6 actual worlds, both original audits/costs/reports and two additional
   input/incumbent readouts agree. Best own T=-12/U=-10 remains worse than the

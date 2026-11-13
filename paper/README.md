@@ -13,6 +13,11 @@ The improving own U path never beats the known reference incumbent; neither
 numeric superiority nor global optimality is claimed. The new workflow path's
 SCRIPTED proof is explicitly not a real-model workflow experiment.
 All26 listed historical PDFs/receipts retain their original bytes.
+The [new62-file minimal subset](../research/publication/paper-rebuild-allowlist-integrated-native-numeric-v1.json)
+has now actually rebuilt the same text and all73 page images;
+[verification](../research/results/integrated-native-numeric-rebuild-subset-verification-v1.json).
+This is a cached local document rebuild, not raw numerical reproduction,
+independent inference, clean-machine setup or publication readiness.
 
 The previous
 [69-page integrated draft](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf),

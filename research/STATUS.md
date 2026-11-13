@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 08:24JST (November13 23:24UTC)
+### Current overview: November14 08:53JST (November13 23:53UTC)
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -27,18 +27,23 @@ choices. See the [closed data](data/native-parameter-comparator-v1/README.md).
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
 | Numeric comparator |All6 real worlds/slots close; double audits/costs/reports and input/incumbent exports match |No incumbent gain; independent scope and important scientific answer remain open |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
-| New workflow experiment |[New v2 proof/prepare](results/native-workflow-v2-preparation-v1.json):7 SCRIPTED worlds/28 checkpoints,13 actual bounded mock-HTTP workers, double audits/costs/7-file reports; actual zero-inference8-world prepare |Not yet scientifically started; old2c7ec07f plan unchanged/unused; setup-only failed QA retained |
-| Manuscript |69-page verified artifact retained; source adds closed240-call reserve diagnostic and full6-world numeric result with print-scale graphics |New PDF build/visual QA underway; important main claim, R2/R3/R6 and final readiness judgment |
+| New workflow experiment |[Actual first dispatch](results/native-workflow-v2-first-dispatch-v1.json) starts23:52:27UTC from frozen3b912d17/planed85d848; session70493/PID21985 and actual local35B runner observed live |Initial real-backend readiness running, not yet passed at this snapshot; zero fresh reference/own worlds scored; old2c7ec07f plan unchanged/unused |
+| Manuscript |[73-page reviewed artifact](../paper/integrated-native-numeric-build-v1.json),38 figures/30 tables/26 references, all pages reviewed;62-file minimal rebuild matches text and all73 page PNGs |Important main claim, independent evidence R2/R3/R6 and final readiness judgment |
 
-No actual inference remains running at this snapshot. The deferred QA waiter
-correctly waits for normal numeric closure and both process absences, then its
-first test setup fails because fresh outputs/ did not exist. No native/model
-work started in that failed attempt. A new explicit a2 attempt creates the
-exact parent/fresh paths without editing frozen code: session78763 exits0 in
-180.21s. Both diagnostic PNGs are inspected. Actual prepare session3017 exits0
-with zero inference and planed85d848 at clean3b912d17. This does not resolve
-the historical unknown, resume old science, prove real-model capacity/gain,
-or make the publication-ready goal complete.
+The new real inference is running, not merely queued: original started.json
+and first request intent are retained, process21985 and the local35B runner
+are observed directly. No heavy PDF/native-QA process overlaps its dispatch.
+Two fresh shared controls then six own T/U slots are the unchanged upper bound,
+with original scientist/effect code and exact losses. A failed readiness or
+unknown completion stops; no repair/refill or merit veto is introduced.
+The [preparation receipt](results/native-workflow-v2-preparation-v1.json)
+preserves the earlier setup-only QA failure and the fresh180.21s software proof.
+Neither that proof nor actual launch establishes model-authored improvement.
+The manuscript work completes before inference: a text-extraction-mode mismatch
+in the first subset verification is retained, then matching default-mode
+extraction and all73 original PNG bytes verify the actual rebuild. This is
+document reproduction, not fresh science or a clean-machine claim. The
+publication-ready goal remains active and incomplete.
 
 ### Retained dated snapshots (historical, not current liveness)
 
