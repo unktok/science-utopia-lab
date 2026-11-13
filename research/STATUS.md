@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 07:44JST (November13 22:44UTC)
+### Current overview: November14 08:24JST (November13 23:24UTC)
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -11,43 +11,34 @@ three own completions tie their assigned-loss best reference and one own
 native execution failed. No final selection or normal full-study audit exists.
 The old analysis and numeric coordinator stop as declared. See the
 [stop record](logbook/2026-11-14-workflow-preparation-and-presentation-stop.md).
-The previously unconsumed numeric science now starts independently under a
-[new prospective dispatcher](components/native-parameter-post-stop-dispatch-v1.md):
-original source04d0c3e3, unchanged six-world plan, closed planning bank only,
-no stopped-presentation feedback. Dispatcher58460/scientific writer58730 are
-observed live. Throughput:g0/reserve3 completes all four years with T=-12/U=-7,
-worse than its original reserve21 anchor's T=-18. Content-utility:g0/reserve13
-starts at21:58:33UTC and completes T=-12/U=-8. U:g1/reserve27 then completes
-T=-14/U=-9.333333333333332 at22:22UTC. T:g1/reserve10 completes T=-12/U=-7
-at22:38UTC. Four of six new slots are complete; T:g2/reserve12 is running.
-T0/T1 have the same133 full scientist inputs and literal reply choices, with
-zero actual transfer commands in each of their four years; this partial
-readout is not full-study closure or global policy equivalence.
-No final selection or cold full-study audit exists.
-The U own-output path improves, but no completed numeric candidate improves
-its original assigned-loss anchor. The old unknown is not resolved.
+The independent numeric comparator now closes normally: six original native
+worlds finish23:04:53UTC; two cold audits/costs/reports agree, and dispatcher
+session53557 exits0 at23:09:55UTC. Original source04d0c3e3/plan4019c9a0,
+closed planning feedback only and all old stop/unknown records stay literal.
+T reserves3/10/12 all yield T=-12/U=-7; U reserves13/27/25 yield assigned
+U=-8/-9.333333333333332/-10. No assigned incumbent improves over T=-18 and
+U=-13.333333333333332. Two complete additional readout pairs agree: six worlds
+form four input classes; all three T histories share133 full inputs/reply
+choices. See the [closed data](data/native-parameter-comparator-v1/README.md).
 
 | Track | Completed | Still open |
 | --- | --- | --- |
 | Original planning search |14 real worlds, matching audits/analyses; no own gain | Important distinct scientific answer, independent replication |
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
-| Numeric comparator |Independent first dispatch;4/6 slots complete; T0/T1 share observed133-input/choice sequences |Running T:g2/reserve12; no final trajectory or audit yet |
+| Numeric comparator |All6 real worlds/slots close; double audits/costs/reports and input/incumbent exports match |No incumbent gain; independent scope and important scientific answer remain open |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
-| New workflow experiment |[Final7-world/28-checkpoint SCRIPTED v1 proof and real readonly prepare](components/native-workflow-objective-loop-v1.md); v2 prerequisite37 checks; complete readout13 checks; frozen3b912d17; deferred QA waiter87205 |New binding/report native proof waits for numeric closure; original8-world plan stays unused; no automatic scientific dispatch |
-| Manuscript |69-page verified artifact retained; source adds closed240-call reserve response/actual ledger with4 light checks |New PDF build/visual QA deferred; important main claim, R2/R3/R6 and final readiness judgment |
+| New workflow experiment |[New v2 proof/prepare](results/native-workflow-v2-preparation-v1.json):7 SCRIPTED worlds/28 checkpoints,13 actual bounded mock-HTTP workers, double audits/costs/7-file reports; actual zero-inference8-world prepare |Not yet scientifically started; old2c7ec07f plan unchanged/unused; setup-only failed QA retained |
+| Manuscript |69-page verified artifact retained; source adds closed240-call reserve diagnostic and full6-world numeric result with print-scale graphics |New PDF build/visual QA underway; important main claim, R2/R3/R6 and final readiness judgment |
 
-The new numeric experiment performs its ordinary fresh8B role loads/inference;
-no backend restart or old experiment repair is performed. Two prior empty
-residency observations30s apart do not resolve the old missing HTTP completion.
-Heavy independent QA is not run during this actual inference. The new dispatcher
-connects normal numeric closure to its original double audits/costs/reports;
-failure never triggers a scientific retry or automatic workflow dispatch.
-The separate [deferred QA waiter](results/native-workflow-v2-deferred-qa-launch-v1.json)
-is actually live (session63329/PID87205), reading the same original processes.
-It starts one zero-model SCRIPTED native check only after normal numeric
-closure and both process absences; it cannot launch real workflow science.
-The [source-only manuscript update](logbook/2026-11-14-reserve-manuscript-and-deferred-qa.md)
-does not change or newly deliver the69-page PDF.
+No actual inference remains running at this snapshot. The deferred QA waiter
+correctly waits for normal numeric closure and both process absences, then its
+first test setup fails because fresh outputs/ did not exist. No native/model
+work started in that failed attempt. A new explicit a2 attempt creates the
+exact parent/fresh paths without editing frozen code: session78763 exits0 in
+180.21s. Both diagnostic PNGs are inspected. Actual prepare session3017 exits0
+with zero inference and planed85d848 at clean3b912d17. This does not resolve
+the historical unknown, resume old science, prove real-model capacity/gain,
+or make the publication-ready goal complete.
 
 ### Retained dated snapshots (historical, not current liveness)
 

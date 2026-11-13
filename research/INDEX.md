@@ -6,7 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Independent first numeric dispatch](components/native-parameter-post-stop-dispatch-v1.md):
+- [Closed numeric comparator](data/native-parameter-comparator-v1/README.md):
+  all6 actual worlds, both original audits/costs/reports and two additional
+  input/incumbent readouts agree. Best own T=-12/U=-10 remains worse than the
+  known T=-18/U=-13.3333. Three T programs share133 full input/reply sequences;
+  all6 form4 input classes. [Closure](results/native-parameter-comparator-closed-v1.json)
+  retains actual664 scientist replies/93 critic requests and the79m7s science
+  interval, not a dedicated speed benchmark or an optimizer-replication result.
+  The earlier [independent first dispatch](components/native-parameter-post-stop-dispatch-v1.md)
   the original six-world numeric plan starts from04d0c3e3 after a separately
   declared stopped-study review and two fresh empty-backend observations.
   It uses the closed14-world bank, not stopped partial feedback; old unknown
@@ -47,6 +54,13 @@ Historical documents retain their paths and source identities.
   now waits in session63329/PID87205; it can run one SCRIPTED check after the
   original normal closure, not dispatch workflow science. The same note records
   source-only manuscript additions while the reviewed69-page PDF stays fixed.
+- [Workflow-v2 software closure and actual preparation](results/native-workflow-v2-preparation-v1.json):
+  after real numeric closure, a missing outputs parent stops the first QA before
+  test-body/model/world execution. That error is retained; a fresh explicit
+  a2 attempt leaves frozen3b912d17 code unchanged and passes7 SCRIPTED worlds,
+  28 checkpoints,13 bounded workers and double7-file reports in180.21s.
+  Actual prepare exits0 with no inference and a new8-world planed85d848.
+  No actual model-authored workflow result is claimed.
 - [Editable native workflows](components/native-workflow-domain-v4.md): new v4
   scope frees native phase order while retaining original effect contracts and
   typed plan/paper origins. It is connected to the existing whole-graph loss
