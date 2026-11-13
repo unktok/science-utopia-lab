@@ -6,6 +6,17 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Independent first numeric dispatch](components/native-parameter-post-stop-dispatch-v1.md):
+  the original six-world numeric plan starts from04d0c3e3 after a separately
+  declared stopped-study review and two fresh empty-backend observations.
+  It uses the closed14-world bank, not stopped partial feedback; old unknown
+  outcomes/chain remain unchanged. Actual writer58730 evaluates reserve3 as
+  the first ask. [Launch/limitations](logbook/2026-11-14-first-independent-numeric-dispatch.md)
+  distinguish real inference from28 mocked scheduler checks, with no heavy
+  concurrent QA, scientific retry or automatic workflow dispatch.
+  [First numeric world](logbook/2026-11-14-numeric-first-world.md): reserve3
+  completes T=-12/U=-7, worse than the T=-18 anchor, with earlier attrition;
+  U:g0/reserve13 is running. This is a partial trajectory, not final audit.
 - [Current presentation stop and workflow preparation](logbook/2026-11-14-workflow-preparation-and-presentation-stop.md):
   original writer stops on a1200s unknown readiness completion at20:54UTC;
   analysis/numeric continuation stop without dispatch or fabricated closure.

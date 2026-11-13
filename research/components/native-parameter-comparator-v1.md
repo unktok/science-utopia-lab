@@ -1,5 +1,13 @@
 # Native parameter-only comparator
 
+**November14 actual first dispatch:** the old presentation-dependent scheduler
+stopped before any numeric science. A separate
+[prospective post-stop dispatcher](native-parameter-post-stop-dispatch-v1.md)
+now starts the same previously unused04d0c3e3 six-world plan, after original
+bank/source validation, absent retired PIDs and two fresh empty-backend
+observations. Old unknown/stop records remain untouched. This is actual
+numeric execution, not yet a completed trajectory or improvement.
+
 This is an explicit small-budget comparator for free-program optimization,
 not a replacement of the wider scientific-system design goal. Its
 [protocol](../protocols/campaigns/native-parameter-comparator-v1.md) reuses the
