@@ -2,6 +2,15 @@
 
 ## Active publication-ready goal
 
+**November14 incumbent readout implementation:** the
+[read-only K/O path](components/native-optimization-incumbents-v1.md) separates
+best-known optimization loss from best generated own loss for planning,
+presentation and numeric reports. It preserves original selections, all ties,
+failed consumed slots and source identities. Initial27 checks pass3.81s;
+actual double CLI projection and normal-closure waiting are still to verify.
+At17:48:13UTC the live presentation writer enters throughput-control:g0
+optimization after all eight fresh references; no own loss/gain is claimed yet.
+
 **November14 joint unused-condition evaluation preparation:** a
 [three-origin fixed-policy path](components/native-joint-fixed-evaluation-v1.md)
 retains8 controls plus8 own-selection labels, all ties/nulls, both T/U and

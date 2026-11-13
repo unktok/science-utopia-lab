@@ -18,6 +18,8 @@ Historical documents retain their paths and source identities.
   retain both optimization and own-submission readouts, without rewriting old
   selections or presenting a strong reference as an invented improvement.
   The closed planning pilot has K=O for both T/U and zero generated gain.
+  A separate [read-only implementation and finite continuation](components/native-optimization-incumbents-v1.md)
+  now preserves both paths/ties/nulls without rewriting original selections.
 - [Finite native reserve comparator](components/native-parameter-comparator-v1.md):
   a six-world parameter-only continuation reuses the closed planning pilot's
   audited common bank and literal objective-selected initial parents. Original
