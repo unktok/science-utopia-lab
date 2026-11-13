@@ -65,7 +65,7 @@ def test_inline_parser_reports_real_line_number():
 
 
 def test_front_doors_distinguish_reviewed_snapshot_closed_and_live_studies():
-    receipt = json.loads((ROOT / 'paper/integrated-catalog-planning-build-v1.json').read_text())
+    receipt = json.loads((ROOT / 'paper/integrated-planning-search-build-v1.json').read_text())
     # Bind the current artifact, not an old page-count marker accidentally
     # appearing in a historical paragraph. Earlier receipts remain unchanged.
     assert hashlib.sha256((ROOT / receipt['output']).read_bytes()).hexdigest() == receipt['pdf_sha256']
@@ -75,6 +75,7 @@ def test_front_doors_distinguish_reviewed_snapshot_closed_and_live_studies():
         assert 'native-capacity-objective-loop-v1.md' in value or 'T/P' in value
         assert 'research/STATUS.md' in value
     paper = (ROOT / 'paper/README.md').read_text()
+    assert 'integrated-planning-search-build-v1.json' in paper
     assert 'integrated-catalog-planning-build-v1.json' in paper
     assert '18 physical worlds/21 logical cells' in paper
     assert 'now enter this PDF' in paper

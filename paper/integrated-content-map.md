@@ -9,6 +9,7 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
+| November13 closed free planning study | New main section after the three catalog controls; abstract, discussion and conclusion | All8 references/6 proposals complete and tie strong own-objective controls. Complete14-condition table and three print-sized figures retain exact score points,216 accepted occurrences/54 contents, actual input classes, consumers and costs. No claimed generated advantage, strict preference conflict, independent optimizer replication or unused evaluation. Every older body track stays |
 | November12 native execution and objective support | New main section after authoring diagnostics | Stopped671436a: all12 slots, five complete/six technical null/one unsubmitted,19 physical worlds and costs. Separate f1f8ddf now closes30 fixed-submission evaluations, retaining two unavailable graph arms; actual table, print-sized per-seed comparison and all-slot paths. This is not completion of the old campaign or an isolated effect of representation/search. Real28-control readiness for post-edit mode passes, but actual self-repair remains an empirical question. Conditional T/E algebra and176 annual checkpoints/880 actor states distinguish objective support from optimizer failure; no new loss or hidden constraint |
 | November11 authoring/measurement diagnostics | Separate main section after pre-scale studies | All eight actual local35B submissions, four-input partial probes and measured costs; distinguish static validity, native execution and effects. Optional order files were unread. Fixed-record panel readouts reconstruct44 completed/five partial old worlds; actual retained figure, not new losses, reviewer interventions or independent quality. Later671436a is treated separately |
 | Whole-system question, science-of-science objectives, fixed scientist weights | Main introduction/problem/discussion | Central motivation; do not collapse the project to peer review or V2 |
@@ -33,6 +34,13 @@ Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
 ## Evidence inputs
 
+- Reviewed69-page planning-search PDF: all previous tracks plus the closed
+  fourteen-world free planning study,36 figures/27 tables/26 references. Two
+  cache-only builds have identical text/logs, all69 layouts and150dpi pages1--3
+  and48--52 are reviewed; the reading guide no longer creates a spill page.
+  integrated-planning-search-build-v1.json binds source78e469a5 and preserves
+  the66-page catalog snapshot and every predecessor. The new minimal rebuild
+  subset and research readiness remain unverified.
 - Latest reviewed64-page PDF adds the closed capacity T/P search, all nine
   attempts, three own completions/one null, strong-rule ties, actual paths and
   conditional geometry, exact inputs, failed virtual-source command and costs.

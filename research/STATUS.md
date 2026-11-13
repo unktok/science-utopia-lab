@@ -2,6 +2,18 @@
 
 ## Active publication-ready goal
 
+**November13 integrated planning search manuscript:** the reviewed69-page
+[new PDF](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)
+includes the complete14-world study, all reference/own scores and ties, three
+print-sized figures, actual consumer/input distinctions, signed content and
+measured costs. Abstract, discussion and conclusion agree with the null gain.
+The [build receipt](../paper/integrated-planning-search-build-v1.json) binds
+clean78e469a5,36 figures/27 tables/26 references, two cached builds with matching
+text/logs, all69 layouts and150dpi pages1--3/48--52. All28302 word boxes are
+accounted for, without off-page words or unresolved/layout warnings. The old
+66-page artifact and all predecessors stay fixed. New minimal reconstruction
+and R2/R3/R6 remain open; neither manuscript volume nor QA establishes readiness.
+
 **November13 13:31:44UTC normal study and analysis closure:** all8 references
 and6 own proposals complete at13:25:23UTC. Original double audits/costs agree
 by13:30:38UTC; all five double reader exports agree by13:31:44UTC. Writer and

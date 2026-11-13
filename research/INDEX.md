@@ -29,7 +29,8 @@ Historical documents retain their paths and source identities.
   preserve all scores, plans, effects, costs and three reviewed figures.
   The first pre-science stop and old partial snapshots remain unchanged.
   No new unused-seed evaluation, independent optimizer replication or generated
-  advantage is claimed; manuscript integration and R2/R3/R6 remain open.
+  advantage is claimed. The reviewed69-page draft includes this closure;
+  R2/R3/R6 and its new minimal rebuild subset remain open.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
@@ -51,12 +52,12 @@ Historical documents retain their paths and source identities.
   Actual choices31541/effects17156/requests22974 all close by13:31:44UTC;
   both exports agree for each. They retain336 code calls/56 annual boundaries
   and eight observed input classes. Absent developer marker is not absent information.
-- [Reviewed66-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf)
-  and [build/layout/source binding](../paper/integrated-catalog-planning-build-v1.json):
-  the complete three-arm agenda intervention, two actual figures, all choices,
-  losses and costs now join every earlier track. All66 layouts and detailed
-  pages1/46--49 are reviewed; both cached builds/text/logs agree. The new free
-  planning study's later closure is not yet integrated. All older artifacts are preserved.
+- [Reviewed69-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)
+  and [build/layout/source binding](../paper/integrated-planning-search-build-v1.json):
+  all14 planning worlds, complete table, three print-sized figures, actual
+  consumers/inputs/content support and costs join every earlier track.
+  All69 layouts and150dpi pages1--3/48--52 are reviewed; cached text/logs agree.
+  Old66-page and earlier artifacts remain fixed; new minimal subset is pending.
 - [Preserved64-page capacity manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
   and [its own build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
   all prior tracks plus the closed T/P pilot, actual paths/geometry, complete

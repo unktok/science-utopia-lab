@@ -25,8 +25,8 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is66 pages,
-with33 figures and26 tables. It preserves the whole research program and prior
+The [latest reviewed integrated manuscript](paper/README.md) is69 pages,
+with36 figures and27 tables. It preserves the whole research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
@@ -50,12 +50,12 @@ evaluation is not dispatched to enlarge this flat comparison. The subsequent
 [three planning controls](research/results/native-catalog-actuation-v1.md)
 close with18 accepted decisions for concrete advice and legal catalog assignment,
 versus12 for the cut control on one reused seed. Their actual choices, effects,
-costs and two figures enter the66-page draft. These are developer policies,
+costs and two figures enter the preserved66-page draft. These are developer policies,
 not automatic invention. A separate [free planning T/U study](research/results/native-planning-objective-loop-v1.md)
 now closes all eight references and six own proposals, with matching double
 audits/costs and five double exports. Every own assigned loss ties its best
-reference; all edits are selection source only. This later closure and its
-three actual figures are not yet integrated into the PDF.
+reference; all edits are selection source only. This later closure now enters
+the69-page PDF with a complete14-condition table and three print-sized figures.
 The [fixed-policy evaluation path](research/components/native-planning-fixed-evaluation-v1.md)
 is software-verified; no new evaluation seed list or actual inference is yet
 dispatched by that preparation.

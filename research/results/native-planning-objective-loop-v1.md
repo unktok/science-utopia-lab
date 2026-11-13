@@ -128,6 +128,8 @@ institution or generated-policy advantage. Additional flat evaluations cannot
 by themselves explain the narrow explored neighborhood. The next research
 decision must distinguish objective support, effective action choices and
 proposal presentation/capability before expanding independent histories or
-running the prepared selection-fixed unused-seed evaluator. The integrated
-PDF still needs this closed result; R2/R3/R6 and publication readiness remain
-open. No new seed or follow-up study is dispatched by this report.
+running the prepared selection-fixed unused-seed evaluator. The
+[reviewed69-page PDF](../../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)
+now includes this closed result and its three print-sized figures. R2/R3/R6,
+the new minimal rebuild subset and publication readiness remain open. No new
+seed or follow-up study is dispatched by this report.

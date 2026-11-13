@@ -1,6 +1,13 @@
 # Local manuscript rebuild subsets
 
-## Latest catalog planning manuscript
+## Current planning search manuscript
+
+The [reviewed69-page planning search draft](../paper/integrated-planning-search-build-v1.json)
+has a verified full-checkout cached build, source/evidence manifests and visual
+review. Its new minimal rebuild subset is not yet verified. The subsets below
+remain proofs of their own older snapshots, not of the new69-page artifact.
+
+## Preserved catalog planning manuscript
 
 The [reviewed66-page draft](../paper/integrated-catalog-planning-build-v1.json)
 now has its own [explicit54-file subset](../research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json).

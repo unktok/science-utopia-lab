@@ -2,23 +2,28 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
-[66-page integrated draft](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf),
-with33 figures and26 tables and no artificial page cap.
-Its [source, evidence, build and visual binding](integrated-catalog-planning-build-v1.json)
-records two cache-only builds, identical text/logs, all66 reviewed layouts and
-150dpi detail review of pages1/46--49. The complete three-arm catalog planning
-comparison now joins the earlier studies, with both actual figures, all choices,
-losses and costs. The earlier64-page capacity draft,61-page advice draft and
-every older PDF/receipt retain their original bytes and source identities.
+[69-page integrated draft](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf),
+with36 figures and27 tables and no artificial page cap.
+Its [source, evidence, build and visual binding](integrated-planning-search-build-v1.json)
+records two cache-only builds, identical text/logs, all69 reviewed layouts and
+150dpi detail review of pages1--3/48--52. The complete fourteen-world planning
+search now joins every earlier track: all8 references/6 proposals, own-only
+ties, actual input/consumer analysis, signed content and measured costs.
+Three print-sized figures retain exact coordinates and every observed tie.
+The [66-page catalog snapshot](integrated-catalog-planning-build-v1.json),
+64-page capacity draft,61-page advice draft and all older PDFs/receipts keep
+their original bytes. The new minimal rebuild subset is not yet verified;
+the older54-file package continues to reconstruct its own66-page snapshot.
 
 Concrete advice and legal assignment each yield18 accepted decision records
 versus12 with no agenda effect on one reused development seed. All ten advisory
 choices match their actual agendas; direct assignment instead has ten validated
 effects and no original planning calls. These are developer policies, not
 automatic invention or objective-specific superiority. The later free T/U
-planning search has now closed all14 worlds and double analyses, but its
+planning search has now closed all14 worlds and double analyses; its
 [closed result](../research/results/native-planning-objective-loop-v1.md) is
-not yet integrated into this PDF. The first pre-science service interruption
+included in this PDF. Every generated assigned loss ties its strongest
+reference; all changes remain selection source only. The first pre-science service interruption
 and unknown costs remain separate from that completed finite attempt.
 
 It retains the objective/abstraction/method argument, parameter held-out study,
