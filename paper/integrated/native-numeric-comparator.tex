@@ -10,9 +10,10 @@ four years, world seed 61001 and all original T/U measurements remain literal.
 Only the already consumed integer reserve may vary from 1 to 60; code, nodes,
 wiring, schedules and other parameters cannot change in this family.
 
-The first tied best reference supplies each warm start: R2/advisory/reviewed
-for T, and R7/assignment/no-review for U, each with reserve 21. The existing
-adaptive random search at seed 68011 draws one initial uniform proposal per
+The earliest tied best reference supplies each warm start. T starts from
+advisory R2 with review; U starts from assignment-based R7 without review.
+Both use reserve 21. The existing adaptive random search at seed 68011
+draws one initial uniform proposal per
 objective, then bounded mutations around its best measured system, with
 mutation scale 0.2 and the existing decay. Three own slots per objective run
 in order T0, U0, U1, T1, T2, U2. No designer LLM or readiness call generates these
