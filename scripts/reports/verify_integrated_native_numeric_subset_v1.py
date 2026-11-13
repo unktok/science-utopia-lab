@@ -35,7 +35,10 @@ def main():
         if sha(subset / name) != value:
             raise ValueError('staged artifact changed: ' + name)
     build = subset / 'tmp/pdfs/rebuild'
-    if sha(build / 'integrated.txt') != original['build']['text_sha256']:
+    # Match the original plain pdftotext invocation. Preserve the independent
+    # layout-mode extraction rather than overwriting it to satisfy this check.
+    plain_text = build / 'integrated-plain.txt'
+    if sha(plain_text) != original['build']['text_sha256']:
         raise ValueError('actual rebuilt text differs')
     log = (build / 'integrated.log').read_text()
     if re.search(r'Overfull|Underfull|undefined|LaTeX Warning:.*Reference', log):
@@ -50,7 +53,12 @@ def main():
         'original_reviewed_pdf_sha256': original['pdf_sha256'],
         'rebuilt_pdf_sha256': sha(build / 'integrated.pdf'),
         'binary_pdf_identical': sha(build / 'integrated.pdf') == original['pdf_sha256'],
-        'rebuilt_text_sha256': sha(build / 'integrated.txt'),
+        'rebuilt_text_sha256': sha(plain_text),
+        'text_extraction_mode': 'pdftotext default, matching the original build',
+        'earlier_verification_attempt': {'status': 'failed-before-receipt',
+            'source_commit': 'fb546bb5', 'error': 'actual rebuilt text differs',
+            'cause': 'layout-mode extraction compared with original default-mode text',
+            'original_layout_text_preserved': True, 'actual_page_images_already_match': 73},
         'all_73_rendered_PNGs_byte_identical_to_reviewed': True, 'page_png_sha256': pages,
         'layout_or_undefined_reference_warnings': 0, 'cache_only_untrusted_build_exit_code': 0,
         'new_downloads': 0, 'new_model_calls': 0, 'raw_audit_repeated': False,
