@@ -38,8 +38,15 @@ def fixed_selection(original,audit,*,study='count-content-v1'):
     elif study=='capacity-v1':
         plan_schema='scienceutopia.native-capacity-objective-loop.v1.plan'
         audit_schema='scienceutopia.native-capacity-objective-loop-audit.v1'
+    elif study=='parent-presentation-v1':
+        plan_schema='scienceutopia.native-parent-presentation-loop.v1.plan'
+        audit_schema='scienceutopia.native-parent-presentation-loop-audit.v1'
+    elif study=='parameter-comparator-v1':
+        plan_schema='scienceutopia.native-parameter-comparator.v1.plan'
+        audit_schema='scienceutopia.native-parameter-comparator-audit.v1'
     else:raise ValueError('explicit supported fixed-selection study required')
     selection=audit['selection'];checked(selection)
+    keys=original['arm_order'] if study=='parent-presentation-v1' else original['objectives']
     if (original['schema']!=plan_schema
             or audit['schema']!=audit_schema
             or audit['source_commit']!=original['source_commit'] or audit['plan_sha256']!=original['content_sha256']
@@ -47,16 +54,20 @@ def fixed_selection(original,audit,*,study='count-content-v1'):
             or audit['source_proof']['status']!='verified-exact-source-closure'
             or audit['new_model_calls'] or audit['new_code_executions'] or audit['held_out_evaluation']
             or selection['plan_sha256']!=original['content_sha256'] or selection['baseline_fallback']
-            or selection['held_out_evaluation'] or set(selection['selected'])!=set(original['objectives'])):
+            or selection['held_out_evaluation'] or set(selection['selected'])!=set(keys)):
         raise ValueError('exact closed development and frozen own-submission selection required')
     for objective,s in selection['selected'].items():
-        pool=[w for w in audit['worlds'] if w['role']=='search:'+objective and w['status']=='complete'
-            and w['scores'][objective] is not None]
+        criterion=original['arms'][objective]['objective'] if study=='parent-presentation-v1' else objective
+        def belongs(w):
+            return (w['role']=='numeric-own-proposal' and w['objective']==objective
+                if study=='parameter-comparator-v1' else w['role']=='search:'+objective)
+        pool=[w for w in audit['worlds'] if belongs(w) and w['status']=='complete'
+            and w['scores'][criterion] is not None]
         # The original full audit proves chronological first-tie selection.
         # Here preserve that sealed result, independently checking its pool.
         if len(pool)!=s['completed_submissions']:raise ValueError('selected pool differs from original submissions')
-        best=min((w['scores'][objective] for w in pool),default=None)
-        ids={w['identity'] for w in pool if w['scores'][objective]==best}
+        best=min((w['scores'][criterion] for w in pool),default=None)
+        ids={w['identity'] for w in pool if w['scores'][criterion]==best}
         chosen=next((w for w in pool if w['identity']==s['selected_id']),None)
         if (s['loss']!=best or set(s['all_tied_ids'])!=ids or len(s['all_tied_ids'])!=len(ids)
                 or s['selected_id']!=(s['all_tied_ids'][0] if ids else None)
@@ -68,7 +79,16 @@ def fixed_selection(original,audit,*,study='count-content-v1'):
 def jobs_for(p):
     projection={k:v for k,v in p.items() if k not in ('jobs','content_sha256')}
     projection['content_sha256']=digest(projection)
-    selected={'plan_sha256':projection['content_sha256'],'selected':clone(p['fixed_selection']['selected'])}
+    selected_policies=clone(p['fixed_selection']['selected'])
+    if p.get('schema')=='scienceutopia.native-joint-fixed-evaluation.v1.plan':
+        # JSON object order is not durable. This explicit new-study order also
+        # determines label lists on shared physical jobs. Historical studies
+        # retain their original source/semantics; do not rewrite their jobs.
+        order=p['selection_order']
+        if len(order)!=len(set(order)) or set(order)!=set(selected_policies):
+            raise ValueError('literal unique joint selection order required')
+        selected_policies={key:selected_policies[key] for key in order}
+    selected={'plan_sha256':projection['content_sha256'],'selected':selected_policies}
     selected['content_sha256']=digest(selected)
     return evaluation_jobs(projection,selected)
 

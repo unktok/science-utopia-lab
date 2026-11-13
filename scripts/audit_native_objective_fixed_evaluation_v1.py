@@ -22,6 +22,13 @@ def worker(root,output,*,study='count-content-v1'):
             'scripts/audit_native_planning_fixed_evaluation_v1.py',
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    elif study=='joint-v1':
+        from scripts import run_native_joint_fixed_evaluation_v1 as driver
+        audit_schema='scienceutopia.native-joint-fixed-evaluation-audit.v1'
+        source_scripts=['scripts/run_native_joint_fixed_evaluation_v1.py',
+            'scripts/audit_native_joint_fixed_evaluation_v1.py',
+            'scripts/audit_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
     else:raise ValueError('explicit known fixed-evaluation study required')
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_design_benchmark import loaded

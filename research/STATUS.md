@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November14 joint unused-condition evaluation preparation:** a
+[three-origin fixed-policy path](components/native-joint-fixed-evaluation-v1.md)
+retains8 controls plus8 own-selection labels, all ties/nulls, both T/U and
+eight predeclared contrasts without reselection. Exact literal sharing alone
+can save runs. The new sorted-JSON shared-label ordering issue is corrected
+in the joint branch with a targeted roundtrip/report regression, without
+editing old studies. No actual evaluation seed or new inference is chosen;
+full native software verification is pending, and the scientific dispatch
+decision remains after interpreting the ongoing finite studies.
+
 **November14 01:41JST finite continuation queued:** numeric source04d0c3e3
 and coordinator source15dbb074 remain separate clean frozen worktrees. At
 16:41:32UTC, coordinator65620 starts waiting for original writer11716 and

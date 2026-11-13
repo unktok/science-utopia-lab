@@ -33,7 +33,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-planning-objective-loop-audit.v1',
         'scienceutopia.native-planning-fixed-evaluation-audit.v1',
         'scienceutopia.native-parent-presentation-loop-audit.v1',
-        'scienceutopia.native-parameter-comparator-audit.v1')
+        'scienceutopia.native-parameter-comparator-audit.v1',
+        'scienceutopia.native-joint-fixed-evaluation-audit.v1')
 
 
 def classify_numeric(relative):
@@ -171,7 +172,8 @@ def analyze(root,plan,audit):
             'scienceutopia.native-planning-objective-loop-audit.v1',
             'scienceutopia.native-planning-fixed-evaluation-audit.v1',
             'scienceutopia.native-parent-presentation-loop-audit.v1',
-            'scienceutopia.native-parameter-comparator-audit.v1'):
+            'scienceutopia.native-parameter-comparator-audit.v1',
+            'scienceutopia.native-joint-fixed-evaluation-audit.v1'):
         critic=audit['observer']
         result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
             'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],

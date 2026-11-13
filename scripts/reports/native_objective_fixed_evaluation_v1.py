@@ -33,6 +33,18 @@ def summarize(plan,audit,*,study='count-content-v1'):
         if (plan['objectives']!=['throughput','content-utility']
                 or plan['evaluation']['reference_labels']!=list(ORDER)):
             raise ValueError('literal planning T/U objectives and all eight controls required')
+    elif study=='joint-v1':
+        plan_schema='scienceutopia.native-joint-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-joint-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-joint-fixed-report.v1'
+        from utopia.system.native_planning_controls import ORDER
+        from scripts.run_native_joint_fixed_evaluation_v1 import contrasts_for
+        if (plan['objectives']!=['throughput','content-utility'] or plan['evaluation']['reference_labels']!=list(ORDER)
+                or len(plan['selection_order'])!=8 or len(set(plan['selection_order']))!=8
+                or set(plan['selection_order'])!=set(plan['fixed_selection']['selected'])
+                or set(plan['selection_definitions'])!=set(plan['selection_order'])
+                or plan['contrasts']!=contrasts_for()):
+            raise ValueError('all eight frozen own labels, common references and declared contrasts required')
     else:raise ValueError('explicit supported fixed-report study required')
     if (plan['schema']!=plan_schema
             or audit['schema']!=audit_schema
@@ -45,7 +57,8 @@ def summarize(plan,audit,*,study='count-content-v1'):
     worlds={w['identity']:w for w in audit['worlds']}
     if len(worlds)!=len(audit['worlds']) or set(worlds)!={j['identity'] for j in plan['jobs']}:
         raise ValueError('exact unique physical evaluation jobs required')
-    labels=['reference:'+r for r in plan['evaluation']['reference_labels']]+['selected:'+o for o in plan['objectives']]
+    selected_keys=plan['selection_order'] if study=='joint-v1' else plan['objectives']
+    labels=['reference:'+r for r in plan['evaluation']['reference_labels']]+['selected:'+o for o in selected_keys]
     physical=[];logical=[]
     for job in plan['jobs']:
         w=worlds[job['identity']]
@@ -65,7 +78,7 @@ def summarize(plan,audit,*,study='count-content-v1'):
     if len(by)!=len(logical) or set(by)!={(label,seed) for label in labels for seed in plan['evaluation']['seeds']}:
         raise ValueError('every logical policy and seed must appear exactly once')
     logical=[by[label,seed] for label in labels for seed in plan['evaluation']['seeds']];paired=[]
-    for objective in plan['objectives']:
+    for objective in selected_keys:
         label='selected:'+objective
         for reference in plan['evaluation']['reference_labels']:
             for seed in plan['evaluation']['seeds']:
@@ -81,6 +94,19 @@ def summarize(plan,audit,*,study='count-content-v1'):
         'interpretation':{'candidate_reselection':False,'baseline_fallback':False,'independent_optimizer_replications':False,
             'new_literature_or_independent_critic_errors':False,'scientific_truth':False,'publication_ready':False,
             'missing_losses_imputed':False,'new_model_calls':0,'new_code_executions':0}}
+    if study=='joint-v1':
+        contrasts=[]
+        for definition in plan['contrasts']:
+            for seed in plan['evaluation']['seeds']:
+                a,b=by['selected:'+definition['left'],seed],by['selected:'+definition['right'],seed]
+                contrasts.append({**clone(definition),'seed':seed,'left_physical_job':a['physical_job'],
+                    'right_physical_job':b['physical_job'],
+                    'same_physical_job':a['physical_job'] is not None and a['physical_job']==b['physical_job'],
+                    'differences':{k:None if a['scores'][k] is None or b['scores'][k] is None else a['scores'][k]-b['scores'][k]
+                        for k in plan['losses']}})
+        result.update(selection_order=clone(selected_keys),selection_definitions=clone(plan['selection_definitions']),
+            contrast_definitions=clone(plan['contrasts']),fixed_policy_contrasts=contrasts,
+            data_identity=clone(plan['scientist']['dataset_identity']))
     result['content_sha256']=digest(result);return result
 
 
@@ -130,7 +156,7 @@ def render(report,output):
         plt.close(fig)
 
 
-def export(args,*,study='count-content-v1'):
+def export(args,*,study='count-content-v1',renderer=None):
     root=Path(args.run).resolve();output=Path(args.output).resolve();paths=[Path(args.audit_one),Path(args.audit_two),root/'plan.json']
     if output.exists() or output.is_relative_to(root):raise ValueError('fresh report outside scientific raw required')
     if paths[0].read_bytes()!=paths[1].read_bytes():raise ValueError('two original-source evaluation audits differ')
@@ -139,12 +165,18 @@ def export(args,*,study='count-content-v1'):
     if digest(before)!=audit['raw_inventory_sha256']:raise ValueError('evaluation raw differs from audit')
     report=summarize(plan,audit,study=study)
     if before!=_inventory(root) or inputs!={str(p):file_sha256(p) for p in paths}:raise ValueError('evaluation report inputs changed')
-    output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'});render(report,output)
+    output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'})
+    (render if renderer is None else renderer)(report,output)
     for name,rows,fields,nested in [('logical-scores',report['logical_rows'],['label','seed','physical_job','status'],'scores'),
             ('paired-differences',report['paired_differences'],['label','reference','seed','physical_job','reference_physical_job','same_physical_job'],'differences')]:
         with (output/(name+'.csv')).open('x',newline='') as f:
             writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
             for r in rows:writer.writerow({**{k:r[k] for k in fields},**r[nested]})
+    if study=='joint-v1':
+        fields=['id','kind','left','right','seed','left_physical_job','right_physical_job','same_physical_job']
+        with (output/'fixed-contrasts.csv').open('x',newline='') as f:
+            writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
+            for r in report['fixed_policy_contrasts']:writer.writerow({**{k:r[k] for k in fields},**r['differences']})
     save(output/'manifest.json',{'schema':report['schema']+'.export','inputs':inputs,'raw_inventory_sha256':digest(before),
         'report_content_sha256':report['content_sha256'],'files':{p.name:file_sha256(p) for p in sorted(output.iterdir())},
         'new_model_calls':0,'new_code_executions':0})

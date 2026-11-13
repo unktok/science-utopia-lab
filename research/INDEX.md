@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Joint selection-fixed evaluation preparation](components/native-joint-fixed-evaluation-v1.md):
+  all8 common references plus8 literal own-selection labels from planning,
+  presentation and numeric studies are retained, including null pools and exact
+  policy sharing. Both loss cross-scores and eight contrasts are declared.
+  No actual evaluation seeds are chosen or dispatched; original studies stay
+  frozen and the useful finite evaluation question remains to be decided.
 - [Finite native reserve comparator](components/native-parameter-comparator-v1.md):
   a six-world parameter-only continuation reuses the closed planning pilot's
   audited common bank and literal objective-selected initial parents. Original
