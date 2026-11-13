@@ -6,6 +6,10 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First presentation proposal's empty-cycle diagnosis](logbook/2026-11-14-parent-empty-cycle-diagnosis.md):
+  actual submission succeeds but native year1 fails on an extra decision field
+  in the empty marker. Exact cold sandbox replay and unchanged consumer
+  reproduce this mismatch; loss remains null and the active study is unchanged.
 - [Joint selection-fixed evaluation preparation](components/native-joint-fixed-evaluation-v1.md):
   all8 common references plus8 literal own-selection labels from planning,
   presentation and numeric studies are retained, including null pools and exact
@@ -20,6 +24,9 @@ Historical documents retain their paths and source identities.
   The closed planning pilot has K=O for both T/U and zero generated gain.
   A separate [read-only implementation and finite continuation](components/native-optimization-incumbents-v1.md)
   now preserves both paths/ties/nulls without rewriting original selections.
+  [Two actual closed-data exports](data/native-planning-incumbents-v1/README.md)
+  match at a61ab4ab; both T/U curves have zero generated gain. Live read-only
+  waiters cover the ongoing studies after their normal original closure.
 - [Finite native reserve comparator](components/native-parameter-comparator-v1.md):
   a six-world parameter-only continuation reuses the closed planning pilot's
   audited common bank and literal objective-selected initial parents. Original

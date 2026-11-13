@@ -45,3 +45,26 @@ cost separate, and preserve condition colors across the balanced arm order.
 The expanded28-check scope passes5.51s, including condition-color identity
 across panels. Commit the analysis runtime before two real closed-report CLI
 exports and preserve their exact analysis/scientific source distinction.
+
+At committed a61ab4ab, both actual closed-pilot CLI processes directly exit0;
+all five files match and the old report inputs remain unchanged. The report
+content hash is50a3e2405421a5b0f50bfea988cc68853b38940452c530fea6bcd813afbc3b3e.
+Both figure panels are visually inspected, including legends, zero-own point,
+exact overlapping values and readable axes. Retain the generated data and
+figures separately, not a manually rewritten scalar summary.
+
+Two finite read-only waiters start18:09UTC at the same frozen analysis source:
+42254/session75920 for presentation score producer17743, and
+42291/session83288 for numeric coordinator65620. Both are directly verified
+live and add no inference. Their original producers and science continue at
+unchanged pinned sources. Original failure/null selections remain unchanged.
+The first actual T/control generation has meanwhile submitted and failed on
+the exact empty-marker contract, retained separately in its diagnosis.
+
+The final retention/consumer scope passes35 checks in4.57s. Actual data/figure
+copies match every hash in the original five-file export; the tracked result
+matches the old closed report's exact projection. These counts overlap with
+the earlier28 checks and are not summed as independent evidence. The sealed
+verification retains both XML hashes, exact exports, inspected figure hash,
+two original session exits and direct live waiter identities. No current PDF
+or unused-seed scientific evaluation is newly produced.

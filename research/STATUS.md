@@ -2,14 +2,29 @@
 
 ## Active publication-ready goal
 
+**November14 first own presentation result and diagnosis:** all eight fresh
+references are complete. The first T/control policy is generated and submitted,
+but its actual native execution fails in year1: its empty-cycle decision
+payload adds `decision:accept` to the required exact empty marker. The
+[retained diagnosis](logbook/2026-11-14-parent-empty-cycle-diagnosis.md) binds
+the logged source/context/result and one identical cold sandbox replay; the
+unchanged consumer reproduces the error. This slot has loss=null, not a
+numerical penalty or an improvement. No source repair/retry/refill occurs.
+The writer advances at18:03:47UTC to U/literal:g0 readiness; original science
+and queued numeric continuation remain live. This identifies one authored
+contract mismatch, not absence of all software defects.
+
 **November14 incumbent readout implementation:** the
 [read-only K/O path](components/native-optimization-incumbents-v1.md) separates
 best-known optimization loss from best generated own loss for planning,
 presentation and numeric reports. It preserves original selections, all ties,
-failed consumed slots and source identities. Initial27 checks pass3.81s;
-actual double CLI projection and normal-closure waiting are still to verify.
-At17:48:13UTC the live presentation writer enters throughput-control:g0
-optimization after all eight fresh references; no own loss/gain is claimed yet.
+failed consumed slots and source identities. Expanded28 checks pass5.51s;
+two actual closed-pilot CLI exports at a61ab4ab agree on all five files.
+The [retained data/figure](data/native-planning-incumbents-v1/README.md) keep
+both trajectories flat: no generated improvement on either loss. Two live
+read-only continuations wait for the existing presentation and numeric double
+reports without inference or changed original selections. The full69-page
+PDF is unchanged; these additions are not a new scientific gain or readiness.
 
 **November14 joint unused-condition evaluation preparation:** a
 [three-origin fixed-policy path](components/native-joint-fixed-evaluation-v1.md)
