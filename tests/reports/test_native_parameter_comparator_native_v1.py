@@ -51,6 +51,7 @@ def test_original_reference_context_six_numeric_worlds_real_roles_cold_audits_an
     for key in ('model', 'model_digest', 'corpus_sha256', 'dataset_identity', 'runtime_seed_binding', 'source_commit'):
         original['world'][key] = clone(getattr(probe, key))
         if key in original['scientist']: original['scientist'][key] = clone(getattr(probe, key))
+        if key in ('corpus_sha256', 'dataset_identity'): original['designer'][key] = clone(getattr(probe, key))
     original['source_commit'] = probe.source_commit; original['data_cache'] = str(tmp_path / 'cache')
     original['world']['classification'] = 'SCRIPTED-original-reference-worlds'
     original['observer_contract'] = make_contract(source_commit=probe.source_commit,
