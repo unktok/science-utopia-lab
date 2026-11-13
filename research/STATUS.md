@@ -2,6 +2,32 @@
 
 ## Active publication-ready goal
 
+**November13 10:17:56UTC live boundary:** the unchanged second attempt reaches
+its third common reference, assignment-reserve21-all, after cut and advice.
+No own proposal or new optimized improvement is available yet. Writer86474,
+normal-closure analysis90157 and all-slot reader23077 remain separate frozen
+processes. These progress indicators are not completed original study audits.
+
+**November13 manuscript and analysis closure preparation:** the
+[reviewed66-page integrated draft](../paper/integrated-catalog-planning-build-v1.json)
+now contains the closed three-arm concrete agenda result, two actual figures,
+complete table, losses, choices and costs. Two cache-only builds/text/logs
+agree; all66 layouts and detailed pages1/46--49 are reviewed, with no off-page
+words or layout/unresolved-reference warnings. Its new54-file minimal package
+also rebuilds: text and all66 rendered page images match exactly. All older
+PDFs/receipts stay fixed; no top-conference readiness is inferred.
+
+The [planning all-slot reader preparation](results/native-planning-objective-readouts-preparation-v1.json)
+passes a337.15s committed780aa95 integration:14 native worlds with SCRIPTED
+HTTP,56 checkpoints, actual calibration/role/outer APIs, double cold audits,
+one cost view and two identical seven-file reports. The first test launcher
+incorrectly puts temporary audits inside the source; its guard refusal and
+data remain, with no source/guard change in the corrected rerun.93 broader
+regressions pass49.33s. Actual frozen reader23077 starts10:14:47UTC and waits
+for normal scientific double audit/cost closure without inference or retry.
+The real second attempt remains in reference science, not an own result or
+generated improvement. Important R2/R3/R6 and the full goal remain open.
+
 **November13 09:53UTC:** the prospectively declared second attempt starts
 09:48:29UTC at the same frozen8cd6157 source and with a byte-identical sealed
 plan. Its actual initial readiness passes all28 controls and exits0; the

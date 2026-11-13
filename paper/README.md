@@ -132,6 +132,10 @@ Inspect the newly rendered pages before replacing the reviewed PDF and receipt.
 The preserved older build uses source5fcf2b7,37 pages reviewed at90dpi, plus150dpi checks
 of dense figures/provenance. No layout or unresolved-reference warning remains.
 The old paper-only13-path policies still rebuild the narrower V2 draft. The
+[new54-file catalog subset](../research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json)
+rebuilds the reviewed66-page draft without raw/model data. Its actual cached
+build matches the reviewed text and all66 page PNGs; [verification](../research/results/integrated-catalog-rebuild-subset-verification-v1.json)
+binds the exact staging checkout and tool. The
 [earlier51-file integrated subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
 rebuilds the preserved64-page capacity snapshot without raw/model data, not
 the later editable66-page manuscript. Use its exact recorded checkout; its

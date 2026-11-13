@@ -1,5 +1,34 @@
 # Local manuscript rebuild subsets
 
+## Latest catalog planning manuscript
+
+The [reviewed66-page draft](../paper/integrated-catalog-planning-build-v1.json)
+now has its own [explicit54-file subset](../research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json).
+At clean e4bd2c767b13b0eb0342fc75d37de39331d0bfbb, the actual CLI stages
+those exact files and Tectonic builds with only the existing cache. Extracted
+text and all66 rendered90dpi page images match the reviewed artifact; pages1
+and47 receive fresh visual spot checks. PDF bytes differ. The
+[verification](../research/results/integrated-catalog-rebuild-subset-verification-v1.json)
+retains exact source/manifest/tool hashes and every page hash. It is not a
+numerical rerun, raw-data audit, anonymous package or release clearance.
+
+Use that exact clean checkout to recover this snapshot after future edits:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+The54 files include51 literal dependencies, LICENSE, the original reviewed
+PDF and its receipt. Only explicit manuscript inputs, illustrations, the UI
+screenshot and printed table are included; no raw worlds, weights, replies or
+numerical-analysis runtime are bundled. Follow the staged REBUILD.md and keep
+the cache-only/untrusted build flags. This does not prove an offline build on
+a fresh machine without the needed TeX cache.
+
+## Preserved capacity manuscript
+
 The [reviewed capacity snapshot](../paper/integrated-capacity-authority-build-v1.json)
 has64 pages. Its [explicit51-file subset](../research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json)
 now stages and builds using only the existing TeX cache. Extracted text and
@@ -10,12 +39,10 @@ records the actual source, inventory and checks. This is a local PDF rebuild,
 not numerical recomputation, a raw audit, an independent model rerun or a
 release-cleared reviewer package.
 
-The later [66-page catalog planning draft](../paper/integrated-catalog-planning-build-v1.json)
-has its own reviewed build and preserved PDF. It does not reuse this older
-allowlist as if live TeX still matched. Historical staging tests reconstruct
-the exact old Git files; they continue to reject altered dependencies. A
-separate updated subset must be verified before claiming that newer draft's
-minimal bundle rebuilds.
+The later66-page draft does not reuse this older allowlist as if live TeX
+still matched. Historical staging tests reconstruct the exact old Git files
+and continue to reject altered dependencies. Each snapshot keeps its own
+PDF, source and minimal-subset verification.
 
 Use the approved project interpreter from a clean committed checkout and a
 fresh destination. To recover this exact64-page snapshot after later manuscript

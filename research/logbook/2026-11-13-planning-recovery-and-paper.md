@@ -82,3 +82,32 @@ institution answer, appropriate independent histories/selection-fixed unused
 evaluation, complete final analyses and critical submission judgment remain
 open. No security-update settings, shared service configuration, paid service,
 new model or public submission is changed.
+
+## Full reader verification and minimal new manuscript package
+
+The extended test's first launcher uses --basetemp inside the repository.
+All14 SCRIPTED-HTTP native worlds close, but the original audit refuses an
+output inside scientific source. Its197.38s failure is retained. The exact
+same committed780aa95 source is rerun with standard external pytest paths;
+it passes337.15s, including56 checkpoints, real bounded authoring, two original
+audits, one cost projection and two identical seven-file exports. Null/complete
+smoke plots are visually reviewed.93 broader source/report/manuscript tests
+pass49.33s. A clean frozen780aa95 reader actually starts10:14:47UTC in23077
+and waits for normal double audit/cost closure. No scientific result is inferred.
+
+While that source stays frozen, a separate worktree extends the explicit
+manuscript adapter for the new reviewed schema. At clean
+e4bd2c767b13b0eb0342fc75d37de39331d0bfbb,38 staging/retention checks pass19.16s.
+The actual CLI stages54 exact files/51 literal dependencies and an offline
+untrusted Tectonic build exits0. Text and all66 page PNGs match the reviewed
+draft exactly; pages1/47 receive fresh visual checks. PDF bytes differ, without
+an unverified sole-cause claim. The [new subset receipt](../results/integrated-catalog-rebuild-subset-verification-v1.json)
+preserves source/tool/policy/manifests and page hashes. Older short/capacity
+policies and receipts remain unchanged. The paper-only subset is not a raw
+audit, numerical rerun, fresh-machine cache proof or release clearance.
+
+Final new/old paper, staging, launch and reader-retention tests pass52 in26.23s.
+The entry-document checker passes25 documents/638 local links/six snapshots;
+the four newly edited notes separately pass16 local links. At10:17:56UTC the
+real writer advances to the third reference, direct assignment, after cut and
+advice. This is not an own candidate or a cold-audited complete study result.

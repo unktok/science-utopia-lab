@@ -26,3 +26,21 @@ native/cold APIs, with model HTTP still explicitly scripted. Tests are not
 scientific results. The reader source must be committed before source-bound
 integration and frozen before waiting for the actual study. Actual effect,
 project-choice and full-input analyses remain separate readouts to connect.
+
+## Verified source and actual continuation
+
+At780aa95bf456ead4f011501223390612d18264d0, the full14-world integration
+passes337.15s through56 annual checkpoints, two original audits, one cost
+projection and two byte-identical seven-file exports. It uses actual bounded
+calibration/authoring/native/cold interfaces with SCRIPTED model HTTP, not
+actual scientific outcomes. Both smoke plots are visually reviewed.93 broader
+regressions pass49.33s. The [preparation receipt](../results/native-planning-objective-readouts-preparation-v1.json)
+preserves all sources, counts, output hashes and the earlier launcher failure:
+an in-repository temporary directory correctly triggers the outside-source
+audit guard; the rerun uses standard external pytest paths without changing
+the source or guard.
+
+The actual frozen continuation starts10:14:47UTC November13 in session23077.
+It waits for the second attempt's normal double audit/cost closure. It does
+not reinterpret the stopped first attempt or claim an actual closed report
+before that closure exists.

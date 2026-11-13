@@ -24,8 +24,15 @@ Historical documents retain their paths and source identities.
   original planning calls. Both actual figures and all496 replies/costs are
   retained. Useful developer support, not automatic invention or held-out evidence.
 - [Integrated manuscript rebuild subset](../docs/paper-rebuild-bundle.md):
-  51 exact files stage/build offline; text and all64 rendered page images
-  match the reviewed draft. No raw/model data, new numerical audit or release clearance.
+  54 exact files stage/build offline; text and all66 rendered page images
+  match the reviewed catalog planning draft. The old51-file/64-page package
+  and its receipt remain fixed. No raw/model data, numerical rerun or release clearance.
+- [Complete planning search readouts](components/native-planning-objective-readouts-v1.md):
+  frozen780aa95 passes337.15s through14 SCRIPTED-HTTP native worlds, actual
+  calibration/authoring,56 checkpoints, double cold audits and two identical
+  seven-file exports. All8 controls/6 slots/nulls/ties remain. Actual reader
+  session23077 starts10:14:47UTC and waits for normal audit/cost closure;
+  no completed actual study report is claimed yet.
 - [Reviewed66-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf)
   and [build/layout/source binding](../paper/integrated-catalog-planning-build-v1.json):
   the complete three-arm agenda intervention, two actual figures, all choices,
