@@ -1,5 +1,8 @@
 """Offline input projection guards with SCRIPTED source, never model inference."""
 from copy import deepcopy
+import hashlib
+import json
+from pathlib import Path
 
 import pytest
 
@@ -55,3 +58,27 @@ def test_changed_inputs_do_not_pass_as_historical_identity(tmp_path, part):
     if part == 'step': started['step'] = 1
     with pytest.raises(ValueError):
         project(binding, started, source='c'*40)
+
+
+def test_retained_actual_six_request_projections_are_not_backend_readiness():
+    from utopia.optimization.native_numeric_designer import checked
+    path = Path(__file__).resolve().parents[2]/'research/data/native-parent-presentation-preparation-v1/preparation.json'
+    assert hashlib.sha256(path.read_bytes()).hexdigest() == '23e68351aba2b4e283f7ea81c8dca88a1f785fcc7a6c08dc4989ca740dd14ef6'
+    value = checked(json.loads(path.read_text()))
+    assert value['analysis_source_commit'] == 'bdfdb710582de4efd6bc81f30670e1b654631f9e'
+    assert len(value['slots']) == 6
+    assert {(r['objective'], r['generation']) for r in value['slots']} == {
+        (o, g) for o in ('throughput', 'content-utility') for g in range(3)}
+    for row in value['slots']:
+        assert row['projections']['control']['historical_control_prompt_identical']
+        treatment = row['projections']['literal']
+        assert treatment['literal_parent_included']
+        assert treatment['capacity']['observed_prompt_eval_count'] is None
+        assert treatment['capacity']['full_output_reservation_fits_observed_prompt'] is None
+        assert 159603 <= treatment['capacity']['actual_wire_utf8_bytes'] <= 166754
+        expected = -18. if row['objective'] == 'throughput' else -13.333333333333332
+        assert treatment['planning_parent_evidence']['selected_observation']['loss'] == expected
+    for key in ('new_model_calls', 'new_code_executions', 'new_native_worlds',
+                'backend_token_capacity_verified', 'actual_backend_readiness_verified',
+                'new_experiment_dispatched', 'publication_ready'):
+        assert not value[key]

@@ -10,6 +10,10 @@ SCRIPTED checks, including calibration API and cold author replay. This is
 preparation, not actual backend readiness, a dispatched study or evidence that
 presentation caused the old narrow search. Its proposed20-world comparison
 still needs executable source-bound orchestration and actual initial certificates.
+Two offline exports at cleanbdfdb710 now agree: all six original control
+prompts reproduce byte-exactly; hypothetical treatment wires occupy159,603--166,754
+UTF-8 bytes, within200,000. Exact parent losses remainT=-18/U=-13.3333….
+No backend tokens, model output, new loss or actual readiness is inferred.
 
 **November13 integrated planning search manuscript:** the reviewed69-page
 [new PDF](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)

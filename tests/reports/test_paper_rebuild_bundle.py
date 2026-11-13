@@ -147,7 +147,8 @@ def test_v2_empirical_allowlist_has_all_actual_literal_inputs():
     assert all(not n.startswith(('outputs/', 'data/', 'game-ui-v2/', 'research/')) for n in policy['files'])
 
 
-def historical_integrated_root(tmp_path):
+def historical_integrated_root(tmp_path, *, source='ef104f33f14b408fc48201757cff794a3db3c3b9',
+                               policy_path='research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json'):
     """Materialize only the earlier allowlist; never amend its frozen receipt.
 
     A shared local clone permits the real source-manifest git-show checks. No
@@ -155,9 +156,7 @@ def historical_integrated_root(tmp_path):
     """
     import subprocess
     root = tmp_path / 'historical-source'
-    source = 'ef104f33f14b408fc48201757cff794a3db3c3b9'
     subprocess.run(['git', 'clone', '--shared', '--no-checkout', '--quiet', str(bundle.ROOT), str(root)], check=True)
-    policy_path = 'research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json'
     policy = json.loads(subprocess.check_output(['git', 'show', source + ':' + policy_path], cwd=bundle.ROOT))
     for name in [*policy['files'], policy_path]:
         destination = root / name
@@ -214,7 +213,9 @@ def test_repository_parent_inputs_are_explicit_and_cannot_escape_root():
 
 
 def test_catalog_policy_stages_all_66_page_literal_inputs_without_old_pdf_substitution(tmp_path):
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path,
+        source='e4bd2c767b13b0eb0342fc75d37de39331d0bfbb',
+        policy_path='research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json')
     policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-catalog-v1.json').read_text())
     report = bundle.stage(root, policy, tmp_path / 'catalog-subset', source_commit='SCRIPTED-staging-source')
     assert len(report['files']) == 54 and len(report['literal_tex_dependencies']) == 51
@@ -224,4 +225,17 @@ def test_catalog_policy_stages_all_66_page_literal_inputs_without_old_pdf_substi
     assert 'output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf' in report['files']
     assert 'output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf' not in report['files']
     assert sum(n.endswith('.png') for n in report['files']) == 30
+    assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']
+
+
+def test_planning_search_policy_stages_current_69_page_inputs_not_older_pdf(tmp_path):
+    root = bundle.ROOT
+    policy = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-planning-search-v1.json').read_text())
+    report = bundle.stage(root, policy, tmp_path/'planning-subset', source_commit='SCRIPTED-staging-source')
+    assert len(report['files']) == 58 and len(report['literal_tex_dependencies']) == 55
+    assert report['original_build_source_commit'] == '78e469a50694943f4f191b81a4158fc53749501b'
+    assert 'paper/integrated/native-planning-search.tex' in report['literal_tex_dependencies']
+    assert sum(n.endswith('.png') for n in report['files']) == 33
+    assert 'output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf' in report['files']
+    assert 'output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf' not in report['files']
     assert not report['published_or_uploaded'] and not report['raw_or_model_data_included']
