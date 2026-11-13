@@ -40,6 +40,15 @@ corpus, origin/seed inventory and load attestations are fixtures, not real
 model evaluations. The two actual generated plots are visually checked.
 Raw outputs remain outside Git in a task-specific external temporary directory.
 
+The first final-retention batch has33 passes and one failure: an older
+repository-front-door test still demands the61-page advice receipt, while the
+unchanged README still advertises64 pages and an unstarted planning comparison.
+The current paper entry already points to the reviewed66-page catalog draft.
+The test now binds that exact PDF hash and current receipt; README is reconciled
+with the closed three-control result and separately running free planning
+study. No old receipt, artifact or experimental record is rewritten. The
+failed JUnit file remains distinct from the corrected verification.
+
 ## Current scientific boundary
 
 At11:01:44UTC November13 the original experiment reaches its eighth common

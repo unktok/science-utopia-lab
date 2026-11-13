@@ -65,18 +65,23 @@ def test_inline_parser_reports_real_line_number():
 
 
 def test_front_doors_distinguish_reviewed_snapshot_closed_and_live_studies():
-    receipt = json.loads((ROOT / 'paper/integrated-advice-build-v1.json').read_text())
-    assert receipt  # The artifact binding must exist, not just the prose link.
+    receipt = json.loads((ROOT / 'paper/integrated-catalog-planning-build-v1.json').read_text())
+    # Bind the current artifact, not an old page-count marker accidentally
+    # appearing in a historical paragraph. Earlier receipts remain unchanged.
+    assert hashlib.sha256((ROOT / receipt['output']).read_bytes()).hexdigest() == receipt['pdf_sha256']
     for name in ('README.md', 'paper/README.md', 'RESEARCH.md'):
         value = (ROOT / name).read_text()
         assert str(receipt['pages']) in value
         assert 'native-capacity-objective-loop-v1.md' in value or 'T/P' in value
         assert 'research/STATUS.md' in value
     paper = (ROOT / 'paper/README.md').read_text()
-    assert 'integrated-advice-build-v1.json' in paper
+    assert 'integrated-catalog-planning-build-v1.json' in paper
     assert '18 physical worlds/21 logical cells' in paper
     assert 'now enter this PDF' in paper
     assert 'not a submitted, anonymous or release-cleared paper' in paper
     readme = (ROOT / 'README.md').read_text()
     assert 'integrated41-page' not in readme
     assert 'Its selected-policy evaluation and final integration checks are not yet closed' not in readme
+    assert 'native-planning-objective-loop-v1.md' in readme
+    assert 'native-catalog-actuation-v1.md' in readme
+    assert 'not yet an executing experiment' not in readme

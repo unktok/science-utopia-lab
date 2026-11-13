@@ -1,6 +1,28 @@
 # Testing
 
-## Current native T/P evaluation checks
+## Current planning evaluation checks
+
+The [planning preparation receipt](../research/results/native-planning-fixed-preparation-v1.json)
+binds the16-native-world/64-checkpoint full path, double audits/reports and
+three cold readers. Model HTTP, corpus and original-run/load/seed attestations
+are SCRIPTED fixtures. This verifies software rather than real model outcomes;
+no scientific evaluation seeds have been chosen by that preparation.
+
+```sh
+CUDA_VISIBLE_DEVICES='' PYTHONHASHSEED=42 HF_HUB_OFFLINE=1 \
+HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  .venv/bin/python -m pytest tests/reports/test_native_planning_fixed_evaluation_v1.py \
+  tests/reports/test_native_planning_fixed_audit_v1.py \
+  tests/reports/test_native_planning_fixed_report_v1.py \
+  tests/reports/test_native_planning_fixed_retained_v1.py -q
+```
+
+The heavier `tests/reports/test_native_planning_fixed_native_v1.py` also needs
+the existing pinned Docker image. Commit runtime changes before its
+source-bound checks and use a fresh external task-specific temporary directory;
+do not put cold audits inside the source or alter HEAD during the check.
+
+## Earlier native T/P evaluation checks
 
 The [fixed T/P preparation receipt](../research/results/native-capacity-fixed-evaluation-preparation-v1.json)
 separates software checks from actual-model outcomes. Its ten native forwards

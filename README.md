@@ -25,8 +25,8 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is64 pages,
-with31 figures and25 tables. It preserves the whole research program and prior
+The [latest reviewed integrated manuscript](paper/README.md) is66 pages,
+with33 figures and26 tables. It preserves the whole research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
@@ -46,16 +46,23 @@ complete/one technical null. All complete own programs tie strong allocation
 rules atT=−12/P=−15, without changing wiring. Its full data, failures, costs
 and two actual figures enter the latest PDF. P measures initial-founder
 active annual boundaries, not a hidden constraint on T. The prepared fixed
-evaluation is not dispatched to enlarge this flat comparison. Next is a
-[separate planning-authority comparison](research/publication/native-planning-authority-next-study-v1.md),
-not yet an executing experiment or a change to the closed study.
+evaluation is not dispatched to enlarge this flat comparison. The subsequent
+[three planning controls](research/results/native-catalog-actuation-v1.md)
+close with18 accepted decisions for concrete advice and legal catalog assignment,
+versus12 for the cut control on one reused seed. Their actual choices, effects,
+costs and two figures enter the66-page draft. These are developer policies,
+not automatic invention. A separate [free planning T/U study](research/components/native-planning-objective-loop-v1.md)
+is now running at its frozen source, with eight strong common references and
+six own proposal slots. The [fixed-policy evaluation path](research/components/native-planning-fixed-evaluation-v1.md)
+is software-verified; no new evaluation seed list or actual inference is yet
+dispatched by that preparation.
 [Current status](research/STATUS.md) is the authority for live progress and
 closure-gated readouts. New invention, stable strong-rule advantage and
 publication readiness remain unestablished.
 
 Earlier completed evidence remains available:
 
-The current finite [design-freedom comparison](research/protocols/campaigns/native-design-freedom-v2.md)
+The earlier finite [design-freedom comparison](research/protocols/campaigns/native-design-freedom-v2.md)
 is complete: two objectives, five proposal arms, three controller histories and
 all120 candidate slots, followed by fixed selection and90 physical unused-
 condition evaluations. Both full audits agree using an explicit order adapter.
@@ -73,7 +80,7 @@ all12 information-intervention worlds close with matching full audits,
 and reproducible numerical figures. Fresh numerical/staged author readiness
 passes at its source; the finite T/E search, selected-policy evaluation and
 final integration checks are closed. These historical studies are not the
-currently active T/P pilot.
+currently active planning T/U pilot.
 
 Completed evidence includes the [eight-candidate feedback pilot](research/results/native-feedback-comparison-v1-a1.md)
 and [eight strong-rule controls](research/results/native-benchmark-controls-v2-a1.md),
