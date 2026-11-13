@@ -38,3 +38,10 @@ and26 requests none. No performance optimum follows from this diagnostic.
 The separately retained original year3 ledger matches the reserve21 commands
 and the native post-award positive-balance<=10 attrition rule. That rule is
 inherited world behavior, not an added optimization veto or fairness floor.
+The final15 command/retention checks pass3.80s. A CSV-only figure rebuild at
+cleana4244f71 reproduces both original PNG/SVG bytes without Docker or model
+calls. The first premature rebuild's clean-source failure and a corrected
+mock-image regression are retained, not erased. The
+[verification receipt](../results/native-reserve-response-verification-v1.json)
+checks all480 actual attempt/completion journals, original inputs and figure
+identity. These are analysis/reproduction scopes, not additional scientist worlds.

@@ -63,3 +63,18 @@ attribute and never reaches the intended timeout. Preserve that JUnit. Add the
 real attribute to the mock and a separate wrong-image rejection regression;
 do not weaken the runtime image check. The actual240 calls already used and
 verified the original image and are unaffected by this mock correction.
+
+The corrected15-test scope passes3.80s. After committing retention at a4244f71,
+the fresh CSV-only rebuild (session58886) exits0 and reconstructs both original
+figure hashes; no source/worktree writes occur before its exit. The verification
+retains both attempts, all480 actual execution journals and zero new worlds.
+Across the four fixed input frames there are23 distinct tuples of command
+outputs among60 reserve values;38 values request nothing on all four. This is
+conditional on these recorded states, not global policy equivalence or a
+license to deduplicate native worlds.
+
+The [next research question](../publication/workflow-ordering-research-question-v1.md)
+separates this completed analysis from the still-unimplemented workflow-order
+comparison. Current v3 fixes native cost/funding schedules; timing freedom
+needs a new explicit domain and original native tests, not silent relaxation
+of the running study or a claim that source-only results exhaust graph design.

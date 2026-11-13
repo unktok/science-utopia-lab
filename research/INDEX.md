@@ -9,6 +9,10 @@ Historical documents retain their paths and source identities.
 - [Conditional reserve-command response](components/native-reserve-command-response-v1.md):
   analyze the operative allocation component on four original native input
   frames, without alternative world simulation, loss ranking or new feedback.
+  All240 actual calls complete and both figure bytes rebuild from CSV. The
+  [workflow-order question](publication/workflow-ordering-research-question-v1.md)
+  identifies a missing process-design comparison outside the current fixed-calendar
+  pilot; it is not implemented or scientifically dispatched by this analysis.
 - [First complete own presentation world](logbook/2026-11-14-parent-first-complete-own.md):
   four-year U/literal:g0 has T=-18/U=-13.333333333333332, tied with the best
   fresh reference. One selection-source leaf changes, without new graph/wiring.
