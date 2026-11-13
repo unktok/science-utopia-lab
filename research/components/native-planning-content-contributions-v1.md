@@ -43,4 +43,7 @@ The real read-only continuation starts11:21:03UTC November13 from that
 separate frozen source, session64639/PID21153. It waits for normal original
 planning double-audit/cost closure, exports twice and compares every file.
 It cannot run inference, repair a proposal, repeat a failed stage or select
-a different candidate. Its actual scientific report is still pending.
+a different candidate. The actual double export closes13:30:59UTC with all12
+files identical. The [closed study](../results/native-planning-objective-loop-v1.md)
+retains216 accepted occurrences/54 unique contents, all positive or zero,
+and the actual reviewed figure. These are original opinions, not truth.

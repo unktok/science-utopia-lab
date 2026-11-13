@@ -1,5 +1,10 @@
 # Planning choices institutional consumers and complete model inputs
 
+The actual three reader pairs now close13:31:44UTC November13 after matching
+original audits/costs. The [closed result](../results/native-planning-objective-loop-v1.md)
+retains336 code calls,56 annual boundaries, all choices and eight exact input
+classes. The launch and SCRIPTED preparation below remain their own evidence.
+
 The free planning T/U study needs more than a score table. These readouts
 separate submitted code, committed effects, information actually received by
 the fixed researcher model, literal choices, saved native projects/resources
@@ -78,6 +83,6 @@ report. The actual cold CLIs still must run against that original source after
 normal study/audit closure.
 
 One frozen reader checkout starts choices31541, effects17156 and requests22974
-on November13. Each waits for the same scientific double audit/cost closure,
-without additional model calls, retries or candidate changes. No actual new
-study effect or input class is claimed before closure.
+on November13. Each waits for the same scientific double audit/cost closure
+and then exports twice without additional model calls, retries or candidate
+changes. All three sessions are now observed to exit0 with identical exports.

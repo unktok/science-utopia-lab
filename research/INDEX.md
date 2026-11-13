@@ -7,45 +7,29 @@ Historical documents retain their paths and source identities.
 ## Active orientation
 
 - [Signed accepted-content contributions](components/native-planning-content-contributions-v1.md):
-  the original T/U losses and every decision occurrence stay fixed.40 checks
-  pass; two real reader CLIs agree on12 files from the existing14-world
-  SCRIPTED fixture, with no new world execution. Rational explanations never
-  replace operational float losses or ties. Actual frozen7d6e82f3 reader64639
-  starts11:21UTC and waits for normal double audit/cost closure, without inference.
+  the actual double export closes13:30:59UTC November13, retaining216 accepted
+  occurrences/54 unique contents, all positive or zero. Rational explanations
+  never replace operational float losses or ties. The earlier SCRIPTED proof
+  remains separate; no rerating, candidate reselection or causal mediation claim.
 - [Fixed planning evaluation preparation](components/native-planning-fixed-evaluation-v1.md):
   sixteen SCRIPTED-HTTP native worlds/64 checkpoints pass at committedf5e9d1f,
   with double original audits, complete reports, three cold mechanism readers
   and costs.98 regression checks pass. All eight references, missing own pools
   and exact policy sharing remain explicit. No real evaluation seeds are chosen
-  or dispatched; close the current study and decide the useful question first.
-- [New free planning T/U pilot](components/native-planning-objective-loop-v1.md):
-  frozen8cd6157 starts07:26UTC November12 and stops07:30UTC in initial
-  readiness when Ollama receives a termination signal. No science starts;
-  no readiness pass or candidate is claimed. The stopped attempt and23 known
-  responses/one unknown remain intact. A separately recorded one-attempt
-  continuation keeps eight strong references, six own slots and unchanged T/U,
-  production and budgets. P is not a constraint.14-world SCRIPTED integration
-  and75 final regression checks pass; they are not actual-model results.
-  The [second attempt](results/native-planning-objective-second-launch-verification-v1.json)
-  actually starts09:48UTC November13, passes28/28 real initial controls and
-  advances to the first reference09:53UTC. The
-  [first own observation](results/native-planning-first-own-progress-v1.json)
-  completes by11:34UTC atT=-18, tying the best fresh controls; one source field
-  changes, with no connection/schedule change. U:g0 readiness follows. This
-  ongoing-study snapshot is not a full audit, final selection or invention gain.
-  The [first T/U pair](results/native-planning-first-pair-progress-v1.json)
-  closes by11:54UTC at(-18,-10.3333…) and(-18,-13.3333…). Each ties its best
-  assigned-objective reference and starts from a different editing parent;
-  their U gap includes objective-conditioned parent selection, not an isolated
-  edit gain. U:g1 readiness follows.
-  U:g1 completes12:15UTC atT=-18/U=-13.3333…, tying its previous own loss
-  and the same strong reference. Its history is used, but its editing parent
-  remains the common reference. Three own slots remain; T:g1 readiness follows.
-  T:g1 completes12:39UTC atT=-18/U=-11.3333…, with no technical failure or
-  assigned-loss gain. Four own slots are evaluated; final T:g2 readiness follows.
-  T:g2 completes13:04UTC atT=-18/U=-10.3333…, again tied in its assigned loss,
-  with no generation/technical error. Five slots are evaluated; final U:g2
-  readiness follows. Final selection and normal cold audits remain pending.
+  or dispatched; the development study is now closed, but a useful fixed-policy
+  question must still be chosen before any new finite evaluation.
+- [Closed free planning T/U pilot](results/native-planning-objective-loop-v1.md):
+  all8 references and6 own proposals complete at13:25UTC November13. Double
+  original audits/costs and five double exports close by13:31UTC. Every own
+  assigned loss ties its best reference; all edits are selection source only.
+  Own-only earliest ties select T0/U0. Eight exact full-input classes distinguish
+  retention from equal losses; all216 signed content occurrences are retained.
+  [Data](data/native-planning-objective-loop-v1/README.md) and
+  [closure receipt](results/native-planning-objective-closed-verification-v1.json)
+  preserve all scores, plans, effects, costs and three reviewed figures.
+  The first pre-science stop and old partial snapshots remain unchanged.
+  No new unused-seed evaluation, independent optimizer replication or generated
+  advantage is claimed; manuscript integration and R2/R3/R6 remain open.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
@@ -59,21 +43,20 @@ Historical documents retain their paths and source identities.
 - [Complete planning search readouts](components/native-planning-objective-readouts-v1.md):
   frozen780aa95 passes337.15s through14 SCRIPTED-HTTP native worlds, actual
   calibration/authoring,56 checkpoints, double cold audits and two identical
-  seven-file exports. All8 controls/6 slots/nulls/ties remain. Actual reader
-  session23077 starts10:14:47UTC and waits for normal audit/cost closure;
-  no completed actual study report is claimed yet.
+  seven-file exports. Actual reader23077 now closes13:31UTC with two identical
+  seven-file exports from the actual14-world study, including every tie.
 - [Planning choices, institutional effects and complete model inputs](components/native-planning-mechanism-readouts-v1.md):
   frozenefc8931 passes320.06s through14 SCRIPTED-HTTP native worlds and all
   three cold CLIs twice, alongside the double original audits and score report.
-  Choices31541/effects17156/requests22974 actually start and wait for normal
-  double audit/cost closure; no new inference, repaired candidate or complete
-  actual study report is inferred. Absent developer marker is not absent information.
+  Actual choices31541/effects17156/requests22974 all close by13:31:44UTC;
+  both exports agree for each. They retain336 code calls/56 annual boundaries
+  and eight observed input classes. Absent developer marker is not absent information.
 - [Reviewed66-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf)
   and [build/layout/source binding](../paper/integrated-catalog-planning-build-v1.json):
   the complete three-arm agenda intervention, two actual figures, all choices,
   losses and costs now join every earlier track. All66 layouts and detailed
   pages1/46--49 are reviewed; both cached builds/text/logs agree. The new free
-  planning study is not counted as complete. All older artifacts are preserved.
+  planning study's later closure is not yet integrated. All older artifacts are preserved.
 - [Preserved64-page capacity manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
   and [its own build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
   all prior tracks plus the closed T/P pilot, actual paths/geometry, complete

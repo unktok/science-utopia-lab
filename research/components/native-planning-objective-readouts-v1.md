@@ -43,4 +43,8 @@ the source or guard.
 The actual frozen continuation starts10:14:47UTC November13 in session23077.
 It waits for the second attempt's normal double audit/cost closure. It does
 not reinterpret the stopped first attempt or claim an actual closed report
-before that closure exists.
+before that closure exists. The actual pair closes13:31UTC with seven files
+byte-identical, including all8 references and6 completed own slots. Both plots
+are visually reviewed and retained with the
+[closed result](../results/native-planning-objective-loop-v1.md). Session23077
+exits0; no new inference, reselection or publication-ready claim is introduced.

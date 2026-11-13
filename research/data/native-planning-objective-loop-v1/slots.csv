@@ -1,0 +1,7 @@
+slot_index,objective,generation,status,loss,physical_job,parent_differs_from_design_anchor,connections_changed,schedules_changed,probe_attempts,returned,raised
+0,throughput,0,complete,-18.0,native-adaptive-d548b0de7dd069ea38b30a4c,True,False,False,4,4,0
+1,content-utility,0,complete,-13.333333333333332,native-adaptive-8a2e63bef510c15603d0d083,True,False,False,12,12,0
+2,content-utility,1,complete,-13.333333333333332,native-adaptive-5eda97605f6c4f8a25c16663,True,False,False,12,12,0
+3,throughput,1,complete,-18.0,native-adaptive-069fea462ce717f8ad1618bc,True,False,False,12,12,0
+4,throughput,2,complete,-18.0,native-adaptive-d00832cd2375d848541793d7,True,False,False,12,12,0
+5,content-utility,2,complete,-13.333333333333332,native-adaptive-6b80487d1da63173d45adf55,True,False,False,12,12,0

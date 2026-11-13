@@ -1,5 +1,13 @@
 # Free planning and allocation optimization under T and U
 
+The [second actual study is now closed](../results/native-planning-objective-loop-v1.md):
+all14 worlds complete13:25UTC November13, with matching original double audits,
+costs and five double reader exports by13:31UTC. All six own proposals tie
+their strongest assigned-loss references and edit selection source only.
+The [closure receipt](../results/native-planning-objective-closed-verification-v1.json)
+preserves all evidence. The dated setup and partial observations below remain
+historical; no new unused-seed evaluation or publication-ready claim follows.
+
 The first finite native study starts November12 at07:26:40UTC from
 8cd61578b94d86dd0cf2ff3b0e581d9a2698fc0f and stops at07:30:43UTC during
 initial readiness. Ollama receives a termination signal during the24th POST;

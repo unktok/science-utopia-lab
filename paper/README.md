@@ -15,9 +15,11 @@ Concrete advice and legal assignment each yield18 accepted decision records
 versus12 with no agenda effect on one reused development seed. All ten advisory
 choices match their actual agendas; direct assignment instead has ten validated
 effects and no original planning calls. These are developer policies, not
-automatic invention or objective-specific superiority. The new free T/U
-planning search is not counted as complete; the first pre-science service
-interruption and unknown costs remain separate from its new finite attempt.
+automatic invention or objective-specific superiority. The later free T/U
+planning search has now closed all14 worlds and double analyses, but its
+[closed result](../research/results/native-planning-objective-loop-v1.md) is
+not yet integrated into this PDF. The first pre-science service interruption
+and unknown costs remain separate from that completed finite attempt.
 
 It retains the objective/abstraction/method argument, parameter held-out study,
 actual structural cases, conditional-gradient experiments, nested design,

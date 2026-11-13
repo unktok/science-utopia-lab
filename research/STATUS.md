@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+**November13 13:31:44UTC normal study and analysis closure:** all8 references
+and6 own proposals complete at13:25:23UTC. Original double audits/costs agree
+by13:30:38UTC; all five double reader exports agree by13:31:44UTC. Writer and
+all six analysis sessions exit0. The [closed result](results/native-planning-objective-loop-v1.md),
+[all data](data/native-planning-objective-loop-v1/README.md) and
+[receipt](results/native-planning-objective-closed-verification-v1.json) retain
+every slot, own-only selection/tie, first plan, cost and three reviewed figures.
+All own assigned losses tie the best fresh reference; every edit remains in
+selection source. U0/U1/U2 share complete scientist inputs with their no-review
+assignment parent; T1 matches its advice parent, while T0/T2 match each other
+but not that parent.216 accepted occurrences/54 contents have positive or zero
+fixed utility, with no observed strict T/U preference conflict in the14-world
+archive. These are development findings, not independent replication, global
+optima or generated-policy advantage. No inference remains live from this
+study. The66-page PDF still needs the closure; R2/R3/R6 and the full goal remain open.
+
 **November13 13:04:01UTC fifth own observation:** T:g2 completes with
 T=-18/U=-10.333333333333332, no generation error and no technical failure.
 Its two-record feedback history again edits the advice/reserve21 common

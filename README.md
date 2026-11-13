@@ -51,9 +51,12 @@ evaluation is not dispatched to enlarge this flat comparison. The subsequent
 close with18 accepted decisions for concrete advice and legal catalog assignment,
 versus12 for the cut control on one reused seed. Their actual choices, effects,
 costs and two figures enter the66-page draft. These are developer policies,
-not automatic invention. A separate [free planning T/U study](research/components/native-planning-objective-loop-v1.md)
-is now running at its frozen source, with eight strong common references and
-six own proposal slots. The [fixed-policy evaluation path](research/components/native-planning-fixed-evaluation-v1.md)
+not automatic invention. A separate [free planning T/U study](research/results/native-planning-objective-loop-v1.md)
+now closes all eight references and six own proposals, with matching double
+audits/costs and five double exports. Every own assigned loss ties its best
+reference; all edits are selection source only. This later closure and its
+three actual figures are not yet integrated into the PDF.
+The [fixed-policy evaluation path](research/components/native-planning-fixed-evaluation-v1.md)
 is software-verified; no new evaluation seed list or actual inference is yet
 dispatched by that preparation.
 [Current status](research/STATUS.md) is the authority for live progress and
@@ -80,7 +83,7 @@ all12 information-intervention worlds close with matching full audits,
 and reproducible numerical figures. Fresh numerical/staged author readiness
 passes at its source; the finite T/E search, selected-policy evaluation and
 final integration checks are closed. These historical studies are not the
-currently active planning T/U pilot.
+separately closed planning T/U pilot.
 
 Completed evidence includes the [eight-candidate feedback pilot](research/results/native-feedback-comparison-v1-a1.md)
 and [eight strong-rule controls](research/results/native-benchmark-controls-v2-a1.md),
