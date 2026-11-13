@@ -1,0 +1,51 @@
+{
+  "ended_utc": "2026-11-13T23:09:55.072166+00:00",
+  "old_unknown_resolved": false,
+  "publication_ready": false,
+  "report_files": {
+    "all-slots.csv": "9b71bfeb4a73f22d0fa2151df9be61e7416f3cc042d709c53cae0d596572d76a",
+    "numeric-free-paths.png": "e58116bf9ae345c8d721fc73608498faa55ffa24f63a93a54f42a31f2dbd6168",
+    "numeric-free-paths.svg": "4c11e1b733524cc39f8ffa2658c43808a3613afcc54b7c2f2700d4dea9ccc508",
+    "report.json": "c5dcdbedf34b6c6d8b698a4a3fe691c4887fd983c7685bff03c5e6d8b2a5ca62"
+  },
+  "research_goal_complete": false,
+  "science_restarted": false,
+  "status": "closed",
+  "steps": [
+    {
+      "ended_utc": "2026-11-13T23:04:54.652339+00:00",
+      "exit_code": 0,
+      "stage": "numeric-run"
+    },
+    {
+      "ended_utc": "2026-11-13T23:06:42.536311+00:00",
+      "exit_code": 0,
+      "stage": "audit-1"
+    },
+    {
+      "ended_utc": "2026-11-13T23:09:00.842455+00:00",
+      "exit_code": 0,
+      "stage": "audit-2"
+    },
+    {
+      "ended_utc": "2026-11-13T23:09:05.228476+00:00",
+      "exit_code": 0,
+      "stage": "costs-1"
+    },
+    {
+      "ended_utc": "2026-11-13T23:09:28.686852+00:00",
+      "exit_code": 0,
+      "stage": "report-1"
+    },
+    {
+      "ended_utc": "2026-11-13T23:09:32.404054+00:00",
+      "exit_code": 0,
+      "stage": "costs-2"
+    },
+    {
+      "ended_utc": "2026-11-13T23:09:54.223694+00:00",
+      "exit_code": 0,
+      "stage": "report-2"
+    }
+  ]
+}
