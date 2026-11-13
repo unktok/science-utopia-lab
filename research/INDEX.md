@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Signed accepted-content contributions](components/native-planning-content-contributions-v1.md):
+  the original T/U losses and every decision occurrence stay fixed.40 checks
+  pass; two real reader CLIs agree on12 files from the existing14-world
+  SCRIPTED fixture, with no new world execution. Rational explanations never
+  replace operational float losses or ties. Actual frozen7d6e82f3 reader64639
+  starts11:21UTC and waits for normal double audit/cost closure, without inference.
 - [Fixed planning evaluation preparation](components/native-planning-fixed-evaluation-v1.md):
   sixteen SCRIPTED-HTTP native worlds/64 checkpoints pass at committedf5e9d1f,
   with double original audits, complete reports, three cold mechanism readers

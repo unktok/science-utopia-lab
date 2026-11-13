@@ -2,6 +2,19 @@
 
 ## Active publication-ready goal
 
+**November13 first own design and content analysis:** throughput:g0 passes
+its history-bound calibration and enters actual optimization11:15:29UTC.
+Completed editor steps appear, but no submitted own outcome, final selection
+or normal study closure is established yet. The
+[signed content reader](components/native-planning-content-contributions-v1.md)
+checks every occurrence, original floating-point scores, rational explanations
+and observed preferences.40 regressions pass6.47s; two real CLIs reproduce12
+files from the existing14-world SCRIPTED fixture without new native execution.
+Both positive-only and mixed-sign/null plots are reviewed. Actual frozen
+7d6e82f3 continuation64639 starts11:21UTC and waits for original normal double
+audit/cost closure. No additional scientific inference, changed loss or
+publication-ready claim follows from this preparation.
+
 **November13 11:09:52UTC live transition:** all eight fresh reference
 observations have status complete. The unchanged writer advances to
 readiness for throughput:g0, the first own-design slot. Writer86474 and all
