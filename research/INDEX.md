@@ -6,14 +6,19 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Parent presentation comparison](publication/native-parent-presentation-study-v1.md):
-  the next finite design contrasts the existing structure-only first planner
-  with exact parent source and its own observation, preserving T/U and all
-  institutional freedoms. An opt-in implementation and114 SCRIPTED checks
-  are complete. Two [offline exports](data/native-parent-presentation-preparation-v1/preparation.json)
-  agree on every actual six-request projection; all original first prompts
-  reproduce exactly and treatment wires fit the byte ceiling. Real-backend
-  token capacity is unverified; no new model experiment or improvement is claimed.
+- [Live parent presentation comparison](components/native-parent-presentation-loop-v1.md):
+  frozen30e3f5fa starts November14 00:16JST with two actual initial designer
+  calibrations required before any scientific reference. Four T/U by
+  control/literal histories have12 own slots, eight shared fresh references
+  and at most20 native worlds. The corrected SCRIPTED full path passes614.34s
+  through20 worlds/80 checkpoints, two original audits/costs and repeated
+  score/choice/effect/full-input exports. Failed figure-label verification is
+  retained separately. [Launch](results/native-parent-presentation-launch-verification-v1.json),
+  [protocol](protocols/campaigns/native-parent-presentation-loop-v1.md) and
+  [design](publication/native-parent-presentation-study-v1.md) distinguish
+  software proof, actual readiness and future scientific losses. Two
+  [offline input exports](data/native-parent-presentation-preparation-v1/preparation.json)
+  also preserve six exact historical controls; they are not backend evidence.
 - [Signed accepted-content contributions](components/native-planning-content-contributions-v1.md):
   the actual double export closes13:30:59UTC November13, retaining216 accepted
   occurrences/54 unique contents, all positive or zero. Rational explanations

@@ -15,7 +15,7 @@ not substitutes for scientific evidence.
 | --- | --- |
 | What are we trying to achieve? | [Research purpose](RESEARCH.md) |
 | What works, and what remains unproven? | [Current status](research/STATUS.md) |
-| What is the publication strategy and next research task? | [Research plan](research/publication/plan.md), [comparison contract](research/publication/benchmark-contract-v1.md) |
+| What is the publication strategy and next research task? | [Active publication goal](research/publication/publication-ready-v3.md), [original comparison contract](research/publication/benchmark-contract-v1.md) |
 | Where is the scientific record? | [Research index](research/INDEX.md) |
 | How is the repository organized? | [Repository map](docs/repository.md) |
 | How do I develop or contribute? | [Setup](docs/development.md), [contributing](CONTRIBUTING.md), [tests](docs/testing.md) |
@@ -28,6 +28,12 @@ not substitutes for scientific evidence.
 The [latest reviewed integrated manuscript](paper/README.md) is69 pages,
 with36 figures and27 tables. It preserves the whole research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
+
+The [parent-presentation comparison](research/components/native-parent-presentation-loop-v1.md)
+now starts a separate finite20-world study from frozen30e3f5fa. Its corrected
+SCRIPTED full path passes through20 worlds and all cold readouts; actual
+designer calibration precedes any scientific comparison. See
+[current status](research/STATUS.md) for measured progress, not the software-test scores.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
 retains all eight own submissions: six native completions and two technical

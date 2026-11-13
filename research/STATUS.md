@@ -2,18 +2,25 @@
 
 ## Active publication-ready goal
 
-**Next research comparison:** [literal parent presentation](publication/native-parent-presentation-study-v1.md)
-keeps T/U, native scientist behavior and free source/graph authority unchanged,
-contrasting the existing structural first-plan view with the exact selected
-parent and its already recorded loss. The optional implementation has114
-SCRIPTED checks, including calibration API and cold author replay. This is
-preparation, not actual backend readiness, a dispatched study or evidence that
-presentation caused the old narrow search. Its proposed20-world comparison
-still needs executable source-bound orchestration and actual initial certificates.
-Two offline exports at cleanbdfdb710 now agree: all six original control
-prompts reproduce byte-exactly; hypothetical treatment wires occupy159,603--166,754
-UTF-8 bytes, within200,000. Exact parent losses remainT=-18/U=-13.3333….
-No backend tokens, model output, new loss or actual readiness is inferred.
+**November14 00:16JST actual launch:** [parent presentation comparison](components/native-parent-presentation-loop-v1.md)
+starts from clean frozen30e3f5fa, writer11716. Two actual initial editor
+calibrations precede all eight fresh references; the launch snapshot is in
+the control calibration, with neither initial certificate yet complete.
+T/U, scientist world and free source/graph authority remain common. Four
+separate histories have12 own slots and at most20 worlds, with no refill,
+repair, hidden novelty/gain gate or automatic baseline substitution.
+The [launch receipt](results/native-parent-presentation-launch-verification-v1.json)
+binds plan/start and distinguishes the successful614.34s SCRIPTED20-world/
+80-checkpoint full path from actual model evidence. The failed first figure
+test and old14-world493.47s pass remain separate. Two cold audits/costs and
+four double readouts are connected after normal closure. No actual scientific
+loss, independent optimizer replication or held-out result is claimed yet.
+
+At15:26UTC, the actual control initial calibration completes28/28;
+certificate file hash1934e380e59c45587cbdaaab87bdea8d07634f10f1cc2b287c7684c880c30ef3.
+The unchanged writer advances to literal initial readiness. This is one
+technical gate, not both completed gates or a scientific loss. The launch
+receipt intentionally retains its earlier pending snapshot.
 
 **November13 integrated planning search manuscript:** the reviewed69-page
 [new PDF](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)

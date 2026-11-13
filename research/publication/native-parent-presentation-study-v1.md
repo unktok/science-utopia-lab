@@ -1,5 +1,12 @@
 # Test parent presentation in objective conditioned institution search
 
+Implementation update: the [finite native runner and cold readouts](../components/native-parent-presentation-loop-v1.md)
+pass a corrected614.34s SCRIPTED20-world full-path test. The actual experiment
+starts at November14 00:16JST from frozen30e3f5fa and first enters real initial
+calibration. The [launch receipt](../results/native-parent-presentation-launch-verification-v1.json)
+does not claim completed actual readiness or scientific effects. The design
+below defines the comparison; it is not rewritten in response to partial outcomes.
+
 The closed planning study establishes an executable native search, but all
 six submitted edits target selection from parents already accepting every
 paper. It does not establish whether parent presentation, loss incentives,
