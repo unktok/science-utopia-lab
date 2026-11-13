@@ -43,6 +43,9 @@ Historical documents retain their paths and source identities.
   remains the common reference. Three own slots remain; T:g1 readiness follows.
   T:g1 completes12:39UTC atT=-18/U=-11.3333…, with no technical failure or
   assigned-loss gain. Four own slots are evaluated; final T:g2 readiness follows.
+  T:g2 completes13:04UTC atT=-18/U=-10.3333…, again tied in its assigned loss,
+  with no generation/technical error. Five slots are evaluated; final U:g2
+  readiness follows. Final selection and normal cold audits remain pending.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.

@@ -202,3 +202,26 @@ normal six-slot closure, inspect the final two proposals and actual consumers
 before choosing a finite mechanism or presentation intervention. Do not add a
 novelty requirement, reject valid retention, change this study's prompts or
 expand its slots to obtain a desired new institution.
+
+## Fifth completed proposal and last readiness
+
+At13:04:01UTC, T:g2 completes atT=-18/U=-10.333333333333332 without a
+generation error or technical failure. Its two-record own history again starts
+from `reference-advice-reserve21-all`. Only mechanism7's source changes:
+unconditional acceptance with final_score1.0; connections and schedules remain.
+This repeats the first T observation's measured losses on the reused61001
+development seed, not an independent world replication or assigned-loss gain.
+
+The observation is `native-adaptive-d00832cd2375d848541793d7`, throughput
+campaign record2, with request hash
+`c5b2f1b4e59e45c13a15f95452e2c543369611b38e7e2f8f9036dfa4901679c0`.
+Its final checkpoint file hash
+`0930507eb4bb663c64c6327ec746c135aea5e01ff085b9ed075f52389d416011`
+matches the original observation. The writer enters the final U:g2 readiness;
+five own slots are evaluated, with all six closure-gated readers still live.
+Full-study selection, audits and the publication decision remain open.
+
+The literal-edit note passes five partial-evidence/documentation checks in
+0.87s on the feature branch and0.63s on main; the repository checker passes
+25 documents/656 local links/six snapshots. Maineea8039e is verified on GitHub.
+These checks and documentation changes do not modify the running8cd6157 source.

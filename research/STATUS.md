@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November13 13:04:01UTC fifth own observation:** T:g2 completes with
+T=-18/U=-10.333333333333332, no generation error and no technical failure.
+Its two-record feedback history again edits the advice/reserve21 common
+reference, changing only selection source to accept-all with final_score1.0;
+connections and schedules remain unchanged. The completed checkpoint bytes
+match the observation hash. Five of six own slots are evaluated. The unchanged
+writer enters the final U:g2 readiness; all six normal-closure analysis
+processes remain live. Full study closure, own selection and cold audits are
+still pending. Repeated development scores are not independent world replications.
+
 **November13 13:01UTC live execution and literal edits:** the fifth proposal
 T:g2 reaches native year3; four own observations remain complete and the last
 U:g2 slot is not yet run. Writer86474 and all six closure-gated readers are
