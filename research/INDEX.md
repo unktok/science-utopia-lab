@@ -10,8 +10,14 @@ Historical documents retain their paths and source identities.
   all8 common references plus8 literal own-selection labels from planning,
   presentation and numeric studies are retained, including null pools and exact
   policy sharing. Both loss cross-scores and eight contrasts are declared.
+  The clean2f70116c SCRIPTED full path passes18 native worlds/72 checkpoints,
+  double audits/costs/nine-file reports and three cold readers twice each.
   No actual evaluation seeds are chosen or dispatched; original studies stay
   frozen and the useful finite evaluation question remains to be decided.
+- [Best-known incumbent versus generated output](publication/optimization-incumbent-vs-generated-output-v1.md):
+  retain both optimization and own-submission readouts, without rewriting old
+  selections or presenting a strong reference as an invented improvement.
+  The closed planning pilot has K=O for both T/U and zero generated gain.
 - [Finite native reserve comparator](components/native-parameter-comparator-v1.md):
   a six-world parameter-only continuation reuses the closed planning pilot's
   audited common bank and literal objective-selected initial parents. Original

@@ -6,11 +6,16 @@
 [three-origin fixed-policy path](components/native-joint-fixed-evaluation-v1.md)
 retains8 controls plus8 own-selection labels, all ties/nulls, both T/U and
 eight predeclared contrasts without reselection. Exact literal sharing alone
-can save runs. The new sorted-JSON shared-label ordering issue is corrected
-in the joint branch with a targeted roundtrip/report regression, without
-editing old studies. No actual evaluation seed or new inference is chosen;
-full native software verification is pending, and the scientific dispatch
-decision remains after interpreting the ongoing finite studies.
+can save runs. The clean2f70116c full path passes635.08s through18 SCRIPTED
+native worlds/72 annual checkpoints, original role/factory/receipt replay,
+double audit/cost/nine-file reports and three cold readers twice each. Both
+cost CLIs match and both figures are visually checked. The
+[software proof](results/native-joint-fixed-evaluation-preparation-verification-v1.json)
+is not actual evaluation. No actual evaluation seed or new inference is chosen;
+the scientific dispatch decision remains after interpreting the ongoing studies.
+The [incumbent/generated-output distinction](publication/optimization-incumbent-vs-generated-output-v1.md)
+keeps original own selections while reporting best-known optimization values
+including the measured references; the closed pilot has zero generated gain.
 
 **November14 01:41JST finite continuation queued:** numeric source04d0c3e3
 and coordinator source15dbb074 remain separate clean frozen worktrees. At

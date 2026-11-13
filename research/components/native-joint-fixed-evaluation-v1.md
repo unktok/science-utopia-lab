@@ -57,3 +57,24 @@ and the full reader path check it. An inventory root disappearing after
 preparation also blocks start instead of being mistaken for an empty unused
 directory. The source-pinned native full-path check remains required before
 any actual evaluation dispatch; its SCRIPTED results are software evidence.
+
+## Completed software verification, not an actual evaluation
+
+At clean committed2f70116c the full path exits0 in635.08s through18 native
+worlds/72 annual checkpoints with SCRIPTED HTTP/data/origin/unused-root
+fixtures. The production role factory and original receipt replay, native
+consumer execution, two original read-only worker audits, two equal nine-file
+score/contrast exports, six cold reader CLI invocations (three readers twice)
+and two equal cost projections all pass. The separate real cost CLIs also
+match, retaining2545 SCRIPTED scientist replies and18 load intents.
+Both figures are visually reviewed and watermarked as software QA.
+
+The [immutable preparation proof](../results/native-joint-fixed-evaluation-preparation-verification-v1.json)
+binds source, JUnit, report/readout hashes, missing pools and actual command
+completion. The copied fixture is not a claimed relocated replay proof.
+No actual evaluation seed is chosen, no scientific evaluation plan is prepared
+and no actual model/world evaluation is dispatched. The useful scientific
+comparison and finite actual seed list remain to decide after the ongoing
+studies. The [incumbent/generated-output note](../publication/optimization-incumbent-vs-generated-output-v1.md)
+also separates best-known optimization performance from generated submissions
+without rewriting any original selection or adding simulation.
