@@ -62,3 +62,21 @@ def test_each_reader_waits_for_normal_original_double_audit_cost_closure(tmp_pat
     finish.run(SimpleNamespace(kind=kind,frozen_source=tmp_path))
     assert calls[0]['preceding_schema'] == 'scienceutopia.native-parent-presentation-loop-finish.v1'
     assert calls[0]['report_extra_arguments'][-len(expected):] == expected if expected else True
+
+
+def test_both_figures_retain_all_eight_reference_labels_and_twelve_slot_labels(tmp_path):
+    from scripts.reports.native_parent_presentation_loop_v1 import render
+    from scripts.run_native_parent_presentation_loop_v1 import ARM_ORDER
+    from utopia.system.native_planning_controls import ORDER
+    references = [{'label':name,'scores':{'throughput':-float(i),'content-utility':-float(i)/3}}
+                  for i,name in enumerate(ORDER)]
+    slots = [{'objective':o,'presentation':p,'generation':g,'loss':-float(g),
+              'cross_scores':{'throughput':-float(g),'content-utility':-float(g)/3}}
+             for o in ('throughput','content-utility') for p in ('control','literal') for g in range(3)]
+    render({'schema':'SCRIPTED-render-only','slots':slots,'references':references,
+            'score_order':['throughput','content-utility'],'arm_order':list(ARM_ORDER)},tmp_path)
+    for name in ('objective-loss-paths.svg','objective-cross-scores.svg'):
+        svg = (tmp_path/name).read_text()
+        assert all('R'+str(i+1)+' = '+label in svg for i,label in enumerate(ORDER))
+    svg = (tmp_path/'objective-cross-scores.svg').read_text()
+    assert all(prefix+str(g) in svg for prefix in ('TC','TL','UC','UL') for g in range(3))

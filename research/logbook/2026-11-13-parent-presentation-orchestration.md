@@ -31,3 +31,21 @@ The corrected selected scope passes50 checks26.04s. These checks overlap the
 earlier scopes and are not pooled as scientific trials. The full-path check
 will use actual native mechanics and Docker code execution with explicitly
 SCRIPTED scientist/designer/critic HTTP, small corpus and role attestations.
+
+At clean8d3c45a7, the separate selected regression scope passes83 checks36.46s.
+The existing14-world full path passes493.47s. The new20-world path fails after
+732.51s at the figure-key assertion: all20 worlds and80 annual checkpoints,
+both original audits, cost projection and two identical score exports have
+completed, but the new loss-path plot does not print the eight reference
+identity labels. The test correctly rejects that omission; the following
+three cold mechanism CLIs have not run in that attempt. Retain the failed
+JUnit record and raw fixture, fix the renderer rather than remove the label
+assertion, and add a cheap independent render regression before rerunning
+the complete committed-source test. None of these are actual model results.
+
+The renderer now prints every reference identity below the loss panels, with
+space reserved for the key. An independent cheap rendering regression checks
+all eight identities in both SVGs and all twelve own-slot labels in the exact
+cross-score display. The selected47-check scope passes17.35s before committing
+the fix and starting a fresh full-path verification. The failed first run is
+not relabelled as a pass or reused as a completed full-path test.

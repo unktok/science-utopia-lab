@@ -48,7 +48,7 @@ def render(report, output):
     palette = {'control': '#087f8c', 'literal': '#b47835'}
     with plt.rc_context({'font.size': 8, 'svg.hashsalt': report['schema'],
                         'axes.spines.top': False, 'axes.spines.right': False}):
-        fig, axes = plt.subplots(1, 2, figsize=(10, 5.2))
+        fig, axes = plt.subplots(1, 2, figsize=(10, 6.2))
         for ax, objective in zip(axes, report['score_order']):
             for i, ref in enumerate(report['references']):
                 ax.axhline(ref['scores'][objective], color='#b4bac1', ls='--', lw=.7,
@@ -72,9 +72,12 @@ def render(report, output):
                 xticks=[0,1,2], xlim=(-.3,2.3))
             ax.grid(axis='y', color='#ededed'); ax.legend(fontsize=7)
         fig.suptitle('First-planner parent presentation: every assigned loss and own best', fontsize=10)
-        fig.text(.06, .025, 'One development history per objective/presentation; shared fresh references. '
+        fig.text(.06, .235, 'One development history per objective/presentation; shared fresh references. '
                  'Equal points overlap; no jitter or independent-replication claim.', fontsize=7)
-        fig.tight_layout(rect=(0,.06,1,.94))
+        reference_key = ['R'+str(i+1)+' = '+r['label'] for i,r in enumerate(report['references'])]
+        for x, labels in ((.06,reference_key[:4]),(.55,reference_key[4:])):
+            fig.text(x,.045,'\n'.join(labels),va='bottom',fontsize=6.5,linespacing=1.5)
+        fig.tight_layout(rect=(0,.28,1,.94))
         for ext in ('png','svg'):
             fig.savefig(output/('objective-loss-paths.'+ext), dpi=200,
                 metadata={'Date':None} if ext == 'svg' else None)
