@@ -2,6 +2,27 @@
 
 ## Active publication-ready goal
 
+**November13 10:37:16UTC live boundary:** the unchanged writer reaches the
+fifth common reference, assignment-equalization-all, after the first four.
+There is still no own candidate or selection to report. All four downstream
+readout families wait for the original normal double audit/cost closure;
+none consumes a partial score to change the study.54 final mechanism/launch/
+old-subset/manuscript retention checks pass18.82s; these are not scientific
+replications. Important R2/R3/R6 and the full goal remain open.
+
+**November13 mechanism readouts:** three additional frozenefc8931
+[choice/effect/full-input continuations](components/native-planning-mechanism-readouts-v1.md)
+are actually started in31541/17156/22974 and wait for the same second-attempt
+normal double audit/cost closure. A320.06s source-bound14-native-world test
+passes through real calibration/authoring,56 checkpoints, two original audits,
+two score reports and every new reader CLI twice, with model HTTP explicitly
+SCRIPTED.39 regression checks pass17.25s. Original8cd6157 decoder/choice/ledger
+bytes and consumer-function ASTs match tested interfaces. These are technical
+proofs, not completed actual mechanism results. The known-marker test covers
+only the developer agenda; generated information mechanisms need not keep it.
+The scientific writer reaches its fourth reference, reserve10, at10:29:35UTC;
+no own candidate or generated improvement is yet established.
+
 **November13 10:17:56UTC live boundary:** the unchanged second attempt reaches
 its third common reference, assignment-reserve21-all, after cut and advice.
 No own proposal or new optimized improvement is available yet. Writer86474,

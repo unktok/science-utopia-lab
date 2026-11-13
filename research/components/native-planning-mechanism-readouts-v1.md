@@ -56,5 +56,28 @@ also exercise partial worlds, ambiguous memories, missing wires, changed
 catalogs and each continuation scope. The first invariance fixture uses a
 JSON clone of an integer-keyed analyst map and fails because keys become
 strings; a type-preserving deep copy corrects the fixture, not the reader or
-its guards. The actual integration result and actual reader launches remain
-to be recorded. Software fixtures are not scientific outcomes.
+its guards. The actual integration and launches are recorded below. Software
+fixtures are not scientific outcomes.
+
+## Verified implementation and running continuations
+
+At efc89316e91e4c1f94aaf2b98036fddf909a423e, the committed14-world integration
+passes320.06s: actual bounded authoring,56 native annual checkpoints, two
+matching original cold audits, the full score report twice, and each of these
+three cold reader CLIs twice. Choice/effect/request exports respectively have
+three/three/two identical files, retaining all14 fixture worlds. Model HTTP
+remains SCRIPTED.39 source/reader/old-profile/manuscript checks pass17.25s.
+The [preparation receipt](../results/native-planning-mechanism-readouts-preparation-v1.json)
+binds source files, output hashes, QA failure and the actual waiting jobs.
+
+The original8cd6157 scientific source remains untouched. Its choice parser,
+checkpoint decoder, ledger, system model and canonical JSON files are byte-
+identical to the tested interfaces; checkpoint/consumer-trace functions have
+identical ASTs. This compatibility check is not a completed actual scientific
+report. The actual cold CLIs still must run against that original source after
+normal study/audit closure.
+
+One frozen reader checkout starts choices31541, effects17156 and requests22974
+on November13. Each waits for the same scientific double audit/cost closure,
+without additional model calls, retries or candidate changes. No actual new
+study effect or input class is claimed before closure.

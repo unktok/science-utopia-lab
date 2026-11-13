@@ -33,6 +33,12 @@ Historical documents retain their paths and source identities.
   seven-file exports. All8 controls/6 slots/nulls/ties remain. Actual reader
   session23077 starts10:14:47UTC and waits for normal audit/cost closure;
   no completed actual study report is claimed yet.
+- [Planning choices, institutional effects and complete model inputs](components/native-planning-mechanism-readouts-v1.md):
+  frozenefc8931 passes320.06s through14 SCRIPTED-HTTP native worlds and all
+  three cold CLIs twice, alongside the double original audits and score report.
+  Choices31541/effects17156/requests22974 actually start and wait for normal
+  double audit/cost closure; no new inference, repaired candidate or complete
+  actual study report is inferred. Absent developer marker is not absent information.
 - [Reviewed66-page integrated manuscript](../output/pdf/science-utopia-lab-integrated-catalog-planning-working-paper.pdf)
   and [build/layout/source binding](../paper/integrated-catalog-planning-build-v1.json):
   the complete three-arm agenda intervention, two actual figures, all choices,

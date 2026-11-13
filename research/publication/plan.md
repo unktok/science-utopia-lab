@@ -8,17 +8,21 @@
 
 原稿方針の更新：研究内容を先にページ数で削らず、
 [統合原稿](../../paper/integrated.tex)を全体の正本とする。
-最新の確認済みPDFは[64ページ版](../../paper/README.md)であり、
-[対応するビルド記録](../../paper/integrated-capacity-authority-build-v1.json)を持つ。
+最新の確認済みPDFは[66ページ版](../../paper/README.md)であり、
+[対応するビルド記録](../../paper/integrated-catalog-planning-build-v1.json)を持つ。
 構造・勾配・目的別parameter・UIを含め、科学的に残す内容と重複した開発記録を
 [編集／証拠対応表](../../paper/integrated-content-map.md)で区別した。
 投稿先確定後に焦点と正式規則に沿った投稿版を切り出す。旧12ページ稿と過去の
 投稿判断は別scopeで保存し、統合だけで重要性・優位性が実証されたとは扱わない。
 
 最新T/P pilotも全4提出・3完走／1nullで閉鎖し、完走案は強い配分ルールと同点だった。
-固定seed評価を機械的に追加せず、[計画権限を分けた次の小規模比較](native-planning-authority-next-study-v1.md)
-を設計する。旧探索はnative.projectを許可しない限定domainであり、元世界全体の
-不可能性や自由な制度の最適解を示したとは解釈しない。次の比較はまだ実行前である。
+固定seed評価を機械的に追加せず、[計画権限を分けた小規模比較](../results/native-catalog-actuation-v1.md)
+を実行・監査した。切断・具体的助言・合法なカタログ割当の3条件が完走し、採択決定数は
+12対18対18だった。手作り制度の作用確認であり、自動発明ではない。旧探索は
+native.projectを許可しない限定domainで、元世界全体の不可能性や最適解ではない。
+現在はこの強い対照も含む[有限の自由計画T/U探索](../components/native-planning-objective-loop-v1.md)
+が実行中。既存のT/Uを変えず、活動Pを制約にせず、8参照と6候補を区別して残す。
+停止した最初の事前校正は保存し、同条件の別試行を完了扱いにしない。
 
 ## 一本目の中心
 
