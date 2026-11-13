@@ -68,3 +68,12 @@ The [preparation receipt](../results/native-planning-fixed-preparation-v1.json)
 and [component description](../components/native-planning-fixed-evaluation-v1.md)
 record the connected software boundary. The next scientific action depends
 on all actual development results, not on whether an additional runner exists.
+
+After integration,44 main checks finish with exit0 in29.47s. The documentation
+checker passes25 documents/649 links/six historical snapshots. Push and remote
+ref inspection agree at b655867ccf401e53e9a42a02f5b826d32a2605e8. The original
+frozen8cd6157 checkout remains clean and unchanged. At11:09:52UTC all eight
+reference observations are complete and the live writer enters readiness for
+throughput:g0. All five downstream processes remain live and wait for original
+normal closure; no own proposal or final scientific audit is inferred from
+this transition. The publication-ready objective stays active.

@@ -2,6 +2,15 @@
 
 ## Active publication-ready goal
 
+**November13 11:09:52UTC live transition:** all eight fresh reference
+observations have status complete. The unchanged writer advances to
+readiness for throughput:g0, the first own-design slot. Writer86474 and all
+five closure-gated analysis processes are verified live; there is no normal
+terminal or completed own submission yet. The fixed-evaluation preparation
+is integrated on main,44 main checks pass29.47s, and GitHub matches b655867.
+This is a calibration-stage transition, not generated improvement or final
+study audit closure. No additional evaluation inference is dispatched.
+
 **November13 fixed planning evaluation preparation:** the
 [new connected path](components/native-planning-fixed-evaluation-v1.md) passes
 16 native worlds/64 checkpoints in160.64s at clean committedf5e9d1f. Two
