@@ -26,6 +26,24 @@ PLAN_PORTS = frozenset((('research-plan-effects', 'plans'),
 MUTATORS = frozenset(('native.domain.commands.v1', 'native.world.resource-transfers.v1'))
 
 
+def workflow_design_space(anchor):
+    """Explicit whole-graph domain for the existing loss-feedback campaign.
+
+    No old scope is widened or relabelled. Candidate sources, institutions and
+    connections are not selected from the hand-designed timing example.
+    """
+    from .native_design_space import make_design_space, validate_design_space
+    contract = make_design_space(anchor, 'code-and-graph')
+    contract['world_law_scope'] = SCOPE
+    contract['scope'] += (' Native effect contracts, initial state, actual plan/paper origins and pinned code image'
+        ' stay fixed; schedules are NOT fixed. All nodes run once annually with current data before its'
+        ' zero-latency consumer, explicit delayed memory, native opening first and ledger close after effects.'
+        ' New institutional code/nodes/protocols/wires remain possible. Catalog project assignments retain'
+        ' their native content/duration; no extra native production or arbitrary project reassignment.'
+        ' Technical invalidity is null, never a numeric penalty or scientific-merit veto.')
+    return validate_design_space(anchor, contract)
+
+
 def execution_order(spec):
     """Actual annual runner order; descriptive metadata is not authority."""
     validate_system_spec(spec).require_valid()
@@ -107,7 +125,9 @@ def require_workflow_candidate(anchor, candidate, *, structure_only=False):
     if any(rank[identity] >= close for identity in protected if identity != stages['close']):
         raise ValueError('native effects must finish before the annual ledger closes')
     for outer, delegate in zip(candidate.mechanisms, actual):
-        if delegate.implementation in MUTATORS and rank[outer.mechanism_id] >= close:
+        mutates = (delegate.implementation in MUTATORS
+            or delegate.implementation.startswith(('native.phase.', 'native.activity.')))
+        if mutates and outer.mechanism_id != stages['close'] and rank[outer.mechanism_id] >= close:
             raise ValueError('native mutation must execute before the annual ledger closes')
     if structure_only:
         base, proposed = anchor.to_dict(), candidate.to_dict()

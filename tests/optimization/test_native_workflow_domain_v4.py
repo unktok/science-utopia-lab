@@ -8,7 +8,7 @@ from utopia.optimization.native_fixed_production_domain import (
     CATALOG_PLANNING_SCOPE, require_fixed_production)
 from utopia.optimization.native_workflow_domain_v4 import (
     CORE_STAGES, PHASE_EVENT, PLAN_EVENT, edit_workflow, execution_order,
-    post_funding_cost_control, require_workflow_candidate, verify_workflow_interval)
+    post_funding_cost_control, require_workflow_candidate, verify_workflow_interval, workflow_design_space)
 from utopia.replay.events import EventEnvelope
 from utopia.system import ScheduleSpec, SystemSpec
 from utopia.system.native_planning_controls import planning_controls
@@ -39,6 +39,36 @@ def test_original_instance_literal_noop_and_real_three_phase_five_edge_contrast(
     # Old domain must remain fixed-calendar, not be relabelled retrospectively.
     with pytest.raises(ValueError, match='schedule'):
         require_fixed_production(anchor, changed, scope=CATALOG_PLANNING_SCOPE)
+
+
+def test_new_domain_traverses_existing_optimizer_design_space_without_weakening_v3(anchor):
+    from utopia.optimization.native_design_space import require_candidate_in_space, validate_design_space
+    from utopia.optimization.native_fixed_production_domain import catalog_planning_design_space
+    space = workflow_design_space(anchor)
+    assert space['world_law_scope'] == 'fixed-native-effects-workflow-v4'
+    assert validate_design_space(anchor, space) == space
+    candidate = post_funding_cost_control(anchor)
+    require_candidate_in_space(anchor, candidate, space)
+    old = catalog_planning_design_space(anchor, 'code-and-graph')
+    with pytest.raises(ValueError, match='schedule'):
+        require_candidate_in_space(anchor, candidate, old)
+    bad = replace(candidate, initial_state={'seed': 999})
+    with pytest.raises(ValueError, match='seed'):
+        require_candidate_in_space(anchor, bad, space)
+
+
+def test_free_native_review_may_be_added_but_not_after_ledger_close(anchor):
+    from utopia.system.native_kernel import legacy_world_system
+    review = next(n for n in legacy_world_system().mechanisms if n.mechanism_id == 'world.review')
+    edge = replace(anchor.connections[0], target_mechanism='world.review')
+    candidate = replace(anchor, mechanisms=(*anchor.mechanisms, review),
+        schedules=(*anchor.schedules, ScheduleSpec('world.review', 90)),
+        connections=(*anchor.connections, edge))
+    assert require_workflow_candidate(anchor, candidate)
+    candidate = replace(candidate, schedules=tuple(replace(s, phase=210)
+        if s.mechanism_id == 'world.review' else s for s in candidate.schedules))
+    with pytest.raises(ValueError, match='ledger closes'):
+        require_workflow_candidate(anchor, candidate)
 
 
 def test_whole_graph_accepts_new_institution_and_source_but_not_as_structure_only(anchor):
@@ -124,6 +154,9 @@ def test_editor_never_guesses_missing_or_repeated_edges_or_rescales(anchor):
     for rewires in ([(replace(edge, latency=1), edge)], [(edge, edge), (edge, edge)]):
         with pytest.raises(ValueError, match='exact unused'):
             edit_workflow(anchor, phase_updates={}, rewires=rewires)
+    fabricated = replace(edge, latency=1)
+    with pytest.raises(ValueError, match='exact unused'):
+        edit_workflow(anchor, phase_updates={}, rewires=[(edge, fabricated), (fabricated, edge)])
     cramped = replace(anchor, schedules=tuple(replace(s, phase=163)
         if s.mechanism_id == 'world.communication' else s for s in anchor.schedules))
     with pytest.raises(ValueError, match='never rescale'):

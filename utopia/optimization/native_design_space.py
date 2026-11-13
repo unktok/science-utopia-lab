@@ -79,9 +79,13 @@ def validate_design_space(anchor,contract):
         raise ValueError('exact benchmark design-space/anchor contract required')
     if 'world_law_scope' in contract:
         from .native_fixed_production_domain import SCOPE,ROUTING_SCOPE,CATALOG_PLANNING_SCOPE,require_fixed_production
-        if contract['world_law_scope'] not in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+        from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+        if contract['world_law_scope'] == WORKFLOW_SCOPE:
+            require_workflow_candidate(anchor,anchor)
+        elif contract['world_law_scope'] in (SCOPE, ROUTING_SCOPE, CATALOG_PLANNING_SCOPE):
+            require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
+        else:
             raise ValueError('unknown explicit world-law scope')
-        require_fixed_production(anchor,anchor,scope=contract['world_law_scope'])
     index={n.mechanism_id:i for i,n in enumerate(anchor.mechanisms)};seen=set()
     for c in contract['numeric_coordinates']:
         if (not isinstance(c,dict) or set(c)!={'mechanism_id','path','lower','upper','integer'}
@@ -107,7 +111,11 @@ def require_candidate_in_space(anchor,candidate,contract):
         raise ValueError('candidate changes the fixed experimental world seed')
     if 'world_law_scope' in contract:
         from .native_fixed_production_domain import require_fixed_production
-        require_fixed_production(anchor,candidate,scope=contract['world_law_scope'])
+        from .native_workflow_domain_v4 import SCOPE as WORKFLOW_SCOPE, require_workflow_candidate
+        if contract['world_law_scope'] == WORKFLOW_SCOPE:
+            require_workflow_candidate(anchor,candidate)
+        else:
+            require_fixed_production(anchor,candidate,scope=contract['world_law_scope'])
     if contract['kind']=='code-and-graph':return
     masked_original,masked_current=clone(original),clone(current)
     index={n.mechanism_id:i for i,n in enumerate(anchor.mechanisms)}
