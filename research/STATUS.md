@@ -2,6 +2,19 @@
 
 ## Active publication-ready goal
 
+**Both actual initial presentations pass:** control and literal each complete
+28/28, with56 complete provider envelopes and matching cold public worker/
+certificate replays. [Readiness evidence](results/native-parent-presentation-initial-readiness-verification-v1.json)
+retains maxima23156/27727 reported prompt tokens; each fits the8192 reserved
+output inside40960 context for these controls. The original writer enters
+fresh reference execution at15:40:43UTC without source/plan change. This is
+not a guarantee about later authored histories or a scientific loss/gain.
+
+**Parallel numerical comparator preparation:** the [native parameter adapter](publication/native-parameter-baseline-preparation-v1.md)
+uses existing operative fields and scalar feedback without replacing the
+researcher world.77 SCRIPTED checks pass; existing six-coordinate domains
+stay fixed. No new numerical experiment, bounds or seed is dispatched.
+
 **November14 00:16JST actual launch:** [parent presentation comparison](components/native-parent-presentation-loop-v1.md)
 starts from clean frozen30e3f5fa, writer11716. Two actual initial editor
 calibrations precede all eight fresh references; the launch snapshot is in

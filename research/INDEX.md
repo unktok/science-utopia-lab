@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Native numerical comparator preparation](publication/native-parameter-baseline-preparation-v1.md):
+  a complete-SystemSpec numeric adapter and space-bound wrapper around existing
+  adaptive random search are implemented. Existing reserve_units has a real
+  native consumer; legacy six-axis domains are not silently expanded.77
+  SCRIPTED interface checks pass. Family/bounds/warm-start/budget and an actual
+  finite native comparator remain to freeze; no new numeric study is dispatched.
 - [Live parent presentation comparison](components/native-parent-presentation-loop-v1.md):
   frozen30e3f5fa starts November14 00:16JST with two actual initial designer
   calibrations required before any scientific reference. Four T/U by
@@ -19,6 +25,10 @@ Historical documents retain their paths and source identities.
   software proof, actual readiness and future scientific losses. Two
   [offline input exports](data/native-parent-presentation-preparation-v1/preparation.json)
   also preserve six exact historical controls; they are not backend evidence.
+  Both actual initial calibrations now pass28/28 and cold public replay;
+  [readiness proof](results/native-parent-presentation-initial-readiness-verification-v1.json)
+  records measured maxima23156/27727 prompt tokens and complete envelopes.
+  The unchanged writer enters fresh reference worlds, not own conclusions yet.
 - [Signed accepted-content contributions](components/native-planning-content-contributions-v1.md):
   the actual double export closes13:30:59UTC November13, retaining216 accepted
   occurrences/54 unique contents, all positive or zero. Rational explanations
