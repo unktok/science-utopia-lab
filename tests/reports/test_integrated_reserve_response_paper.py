@@ -72,6 +72,11 @@ def test_existing_real_figure_is_bound_and_old_reviewed_pdf_is_unchanged():
     assert old['pages'] == 69 and hashlib.sha256((ROOT / old['output']).read_bytes()).hexdigest() == old['pdf_sha256']
     assert 'Source ahead of PDF' in (ROOT / 'paper/README.md').read_text()
     assert '\\input{integrated/native-reserve-response}' in (ROOT / 'paper/integrated.tex').read_text()
+    printed = checked(json.loads((ROOT / 'paper/figures/native-reserve-paper-v1/manifest.json').read_text()))
+    assert printed['figure_width_inches'] == 5.5 and printed['tick_and_legend_font_points'] == 8
+    assert printed['csv_file_sha256'] == hashlib.sha256((DATA / 'response.csv').read_bytes()).hexdigest()
+    for name, expected in printed['files'].items():
+        assert hashlib.sha256((ROOT / 'paper/figures/native-reserve-paper-v1' / name).read_bytes()).hexdigest() == expected
     text = SECTION.read_text(); assert all(ord(c) < 128 for c in text)
     labels = re.findall(r'\\label\{([^}]+)\}', text)
     assert len(labels) == len(set(labels)) == 4

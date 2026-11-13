@@ -14,6 +14,11 @@
 - A clean-source check also rejects untracked retention artifacts. Wait for the
   original check process to exit before copying data/figures into its worktree;
   asynchronous launch is not completion. Stage artifacts elsewhere if needed.
+- Fresh worktrees may have no ignored `outputs/` directory. Before launching
+  pytest with an explicit fresh `--basetemp`, create its exact parent directory
+  and verify the basetemp/JUnit targets are unused. JUnit may create that parent
+  only after tmp_path setup has already failed. Preserve such setup failures;
+  do not silently overwrite an earlier output or count them as scientific runs.
 - Worktree isolation is not hardware isolation. Do not start independent heavy
   CPU/Docker full-path QA, bulk embeddings or video encoding while real model
   inference is active, unless that concurrent resource profile is explicitly
