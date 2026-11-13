@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Fixed planning evaluation preparation](components/native-planning-fixed-evaluation-v1.md):
+  sixteen SCRIPTED-HTTP native worlds/64 checkpoints pass at committedf5e9d1f,
+  with double original audits, complete reports, three cold mechanism readers
+  and costs.98 regression checks pass. All eight references, missing own pools
+  and exact policy sharing remain explicit. No real evaluation seeds are chosen
+  or dispatched; close the current study and decide the useful question first.
 - [New free planning T/U pilot](components/native-planning-objective-loop-v1.md):
   frozen8cd6157 starts07:26UTC November12 and stops07:30UTC in initial
   readiness when Ollama receives a termination signal. No science starts;

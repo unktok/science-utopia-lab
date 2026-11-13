@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+**November13 fixed planning evaluation preparation:** the
+[new connected path](components/native-planning-fixed-evaluation-v1.md) passes
+16 native worlds/64 checkpoints in160.64s at clean committedf5e9d1f. Two
+original audits, score exports, cold choices/effects/inputs and costs agree;
+98 regression checks pass63.85s. HTTP/corpus/origin/seed/load attestations are
+explicitly SCRIPTED, not actual evaluation outcomes. No scientific seeds or
+new study are selected/dispatched. All eight strong controls and literal own
+selections/nulls remain. At11:01:44UTC the original live writer advances to
+its eighth reference, no-review reject; own results and normal closure remain
+pending. Important R2/R3/R6 and the full publication-ready goal remain open.
+
 **November13 10:37:16UTC live boundary:** the unchanged writer reaches the
 fifth common reference, assignment-equalization-all, after the first four.
 There is still no own candidate or selection to report. All four downstream
