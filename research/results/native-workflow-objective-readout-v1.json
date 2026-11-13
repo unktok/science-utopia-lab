@@ -1,0 +1,48 @@
+{
+  "schema": "scienceutopia.native-workflow-objective-readout.v1.verification",
+  "classification": "light-analysis-checks-and-existing-SCRIPTED-archive-read-not-native-full-path",
+  "source_commit": "3b912d179ef262e54f92e53b2286b4714bd12bdb",
+  "unit_checks": [
+    {
+      "session": 37349,
+      "exit_code": 0,
+      "tests": 12,
+      "seconds": 2.37,
+      "source_committed_at_start": false,
+      "junit": "outputs/native-workflow-objective-report-v1-units-a1.xml",
+      "junit_sha256": "e9e9aeea6b9005a5524f2fa5242b49eb68da7772f79dd4ebf56373ed4e1d90cb"
+    },
+    {
+      "session": 73493,
+      "exit_code": 0,
+      "tests": 13,
+      "seconds": 2.45,
+      "source_committed_at_start": true,
+      "junit": "outputs/native-workflow-objective-report-v1-units-a2.xml",
+      "junit_sha256": "3a73fae2f41234a8089e6107959fbd7ceb011be9b14f196c31aea0420ac10a1f"
+    }
+  ],
+  "unit_scopes_overlap": true,
+  "existing_SCRIPTED_archive_read": {
+    "classification": "summary-only-reuse-of-prior-software-evidence-not-new-worlds",
+    "archive_source_commit": "2c7ec07f02202a878795a3b0de5740f3f5ee129a",
+    "archive_verification_sha256": "a6ddda3b36e1952ed054da81a103c2791dd9f23afb36f99e586c2b330d4eb937",
+    "exit_code": 0,
+    "physical_software_worlds_read": 7,
+    "own_slots_read": 6,
+    "generation_nulls_retained": 1,
+    "new_model_calls": 0,
+    "new_code_executions": 0,
+    "figures_rendered_in_this_check": false
+  },
+  "frozen_next_source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-objective-loop-v2-a1",
+  "frozen_worktree_creation_session": 91031,
+  "frozen_worktree_creation_exit_code": 0,
+  "new_binding_native_full_path": "pending-until-numeric-dispatcher-normal-closure",
+  "new_double_export_and_visual_QA": "pending",
+  "new_actual_workflow_plan_prepared": false,
+  "new_actual_workflow_dispatched": false,
+  "scientific_improvement_claimed": false,
+  "publication_ready": false,
+  "research_goal_complete": false
+}

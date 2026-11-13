@@ -31,6 +31,10 @@ Historical documents retain their paths and source identities.
   The37 light new/legacy checks and actual read-only field binding pass;
   native full-path QA is deferred until current inference finishes. It imports
   no numeric winner/feedback and does not queue or dispatch workflow science.
+  The [complete structural readout](components/native-workflow-objective-readout-v1.md)
+  preserves exact phase/edge changes, nulls and distinct best-known/best-own
+  curves;13 light units pass. Its new source3b912d17 is frozen but unused,
+  awaiting the native double-audit/report proof after numeric closure.
 - [Editable native workflows](components/native-workflow-domain-v4.md): new v4
   scope frees native phase order while retaining original effect contracts and
   typed plan/paper origins. It is connected to the existing whole-graph loss

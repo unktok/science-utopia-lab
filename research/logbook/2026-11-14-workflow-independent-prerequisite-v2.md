@@ -77,3 +77,21 @@ retained a5 SCRIPTED archive yields7 worlds/6 slots/1 null, without new inferenc
 sandbox calls or rendering. Neither proves a new full native path or a real gain.
 The deferred committed-source full test now also requires byte-identical double
 reports/CSV/figures/manifests after both cold audits/costs.
+
+At committed3b912d17 all13 final readout units pass2.45s (session73493, exit0).
+The native-failure case remains a physical failed world rather than being
+merged with a generation null; the incumbent does not become an own success.
+The complete source is frozen, clean and unused at
+`science-utopia-lab-experiments/native-workflow-objective-loop-v2-a1`
+(worktree session91031, exit0). No plan/start/model call exists there yet.
+
+Next, after the actual numeric dispatcher closes/ends and its original
+processes are absent, run only the committed full-native case
+`tests/reports/test_native_workflow_objective_loop_native_v1.py -k independent-numeric-v2`
+from that frozen source with the approved Python and declared offline/seed
+environment, separate output/basetemp and actual owned process completion.
+Preserve any failure and fix in a new source rather than altering this frozen
+one or bypassing its source/physical guards. On success, visually inspect
+the original double report figures; only then prepare a fresh workflow plan
+using `--after-numeric-dispatch` with the actual newly closed predecessor.
+The old2c7ec07f plan remains unused and unchanged throughout.

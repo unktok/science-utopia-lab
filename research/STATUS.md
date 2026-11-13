@@ -2,7 +2,7 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 07:02JST (November13 22:02UTC)
+### Current overview: November14 07:19JST (November13 22:19UTC)
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
@@ -17,16 +17,18 @@ original source04d0c3e3, unchanged six-world plan, closed planning bank only,
 no stopped-presentation feedback. Dispatcher58460/scientific writer58730 are
 observed live. Throughput:g0/reserve3 completes all four years with T=-12/U=-7,
 worse than its original reserve21 anchor's T=-18. Content-utility:g0/reserve13
-starts at21:58:33UTC. One of six new slots is complete; no final selection or
-cold full-study audit exists. The old unknown is not resolved.
+starts at21:58:33UTC and completes T=-12/U=-8. Two of six new slots are
+complete; U:g1/reserve27 is running from22:06:32UTC. No final selection or
+cold full-study audit exists. Neither completed numeric candidate improves
+its original assigned-loss anchor. The old unknown is not resolved.
 
 | Track | Completed | Still open |
 | --- | --- | --- |
 | Original planning search |14 real worlds, matching audits/analyses; no own gain | Important distinct scientific answer, independent replication |
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
-| Numeric comparator |Independent first dispatch; original6-world plan unchanged; first world T=-12/U=-7 |Running U:g0/reserve13; no final trajectory or audit yet |
+| Numeric comparator |Independent first dispatch;2/6 slots complete: reserve3 T=-12/U=-7; reserve13 T=-12/U=-8 |Running U:g1/reserve27; no final trajectory or audit yet |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
-| New workflow experiment |[Final7-world/28-checkpoint SCRIPTED v1 proof and real readonly prepare](components/native-workflow-objective-loop-v1.md); separate v2 prerequisite reader/23 light checks |Original8-world plan stays unused with unsatisfied prerequisite; new binding still needs native full-path proof after numeric inference; no automatic queue |
+| New workflow experiment |[Final7-world/28-checkpoint SCRIPTED v1 proof and real readonly prepare](components/native-workflow-objective-loop-v1.md); v2 prerequisite37 checks; complete readout13 checks; new source frozen3b912d17 |Original8-world plan stays unused with unsatisfied prerequisite; new binding/report still need native full-path proof after numeric closure; no automatic queue |
 | Manuscript |69-page integrated working paper and verified rebuild retained | New scientific closure, focused main claim, R2/R3/R6 and final readiness judgment |
 
 The new numeric experiment performs its ordinary fresh8B role loads/inference;

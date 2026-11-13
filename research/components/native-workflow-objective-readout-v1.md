@@ -24,8 +24,10 @@ does not manufacture uncertainty intervals or independent optimizer histories.
 
 ## Current verification scope
 
-Twelve arithmetic/retention units pass2.37s; the added native-failure retention
-case remains to be included in the next committed unit run. A separate actual
+Twelve arithmetic/retention units pass2.37s; after commit3b912d17, all13 units
+including native-failure retention pass2.45s (original session73493, exit0).
+The [receipt](../results/native-workflow-objective-readout-v1.json) pins the
+overlapping scopes and exact source. A separate actual
 read-only call on the already retained a5 SCRIPTED native software archive
 successfully summarizes7 worlds,6 own slots and1 known generation null.
 This is format compatibility with existing software evidence, not fresh science,
