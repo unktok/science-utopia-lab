@@ -47,6 +47,25 @@ def test_explicit_eight_world_domain_and_literal_plan_reconstruction(tmp_path, m
         driver.require_plan(other)
 
 
+def test_batched_source_check_reads_actual_git_blobs_and_rechecks_local_bytes(monkeypatch):
+    import hashlib
+    import subprocess
+    source = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=driver.ROOT, text=True).strip()
+    proof = driver.native_sources(source)
+    assert len(proof['literal_files']) > 200
+    for name in ('utopia/optimization/native_factory.py', 'utopia/system/native_kernel.py',
+            'scripts/native_benchmark_physical.py'):
+        raw = subprocess.check_output(['git', 'show', source + ':' + name], cwd=driver.ROOT)
+        assert proof['literal_files'][name] == hashlib.sha256(raw).hexdigest()
+    read_bytes = Path.read_bytes
+    def changed(path):
+        raw = read_bytes(path)
+        return raw + b'\n# injected local drift\n' if path == driver.ROOT / 'utopia/optimization/native_factory.py' else raw
+    monkeypatch.setattr(Path, 'read_bytes', changed)
+    with pytest.raises(ValueError, match='source differs'):
+        driver.native_sources(source)
+
+
 def test_no_reference_fallback_when_all_own_generations_are_null(tmp_path, monkeypatch):
     p, _, _, _ = setup(tmp_path, monkeypatch)
     seal(p)
@@ -66,6 +85,40 @@ def test_prerequisite_rejection_occurs_before_any_study_start_or_author(tmp_path
     monkeypatch.setattr(driver, 'WorkflowDesigner', lambda *a, **k: pytest.fail('must not construct an author'))
     with pytest.raises(ValueError, match='still active'): driver.run(root)
     assert not list(root.iterdir())
+
+
+def test_runner_forwards_the_actual_trusted_measurement_contract_to_advance(tmp_path, monkeypatch):
+    p, _, _, _ = setup(tmp_path, monkeypatch); seal(p)
+    root = tmp_path / 'run'; root.mkdir(); seen = []
+    class StopAfterContractCheck(BaseException): pass
+    class Campaign:
+        state = {'pending': None, 'records': []}
+        def _validate(self): return {}
+        def _request(self, *a): return {'SCRIPTED': 'unit request, no actual author/certificate'}
+        def advance(self, **kwargs):
+            assert kwargs['measurement_contract'] == p['observer_contract']
+            assert callable(kwargs['measurement_adapter']) and kwargs['count'] == 1
+            seen.append('exact-contract-forwarded')
+            raise StopAfterContractCheck()
+    monkeypatch.setattr(driver, 'require_environment', lambda: None)
+    monkeypatch.setattr(driver, 'require_plan', lambda root: p)
+    monkeypatch.setattr(driver, 'require_prerequisite', lambda p: {})
+    monkeypatch.setattr(driver, 'campaign', lambda *a, **k: Campaign())
+    monkeypatch.setattr(driver, 'WorkflowDesigner', lambda *a, **k: SimpleNamespace(
+        calibrate=lambda *a: tmp_path / 'SCRIPTED-certificate-not-used-by-unit-advance'))
+    monkeypatch.setattr(driver, 'CommonContentObserver', lambda *a, **k: SimpleNamespace())
+    monkeypatch.setattr(driver, 'LocalObserverBackend', lambda **k: None)
+    monkeypatch.setattr(driver, 'factory_for', lambda *a: lambda *a: pytest.fail('no native world in unit fixture'))
+    monkeypatch.setattr(driver, 'measurement', lambda *a: lambda *a: pytest.fail('no measurement in unit fixture'))
+    monkeypatch.setattr(driver, 'build_context', lambda *a, **k: {})
+    def observed(s, **kwargs):
+        return SimpleNamespace(to_dict=lambda: {'status': 'complete', 'metadata': {'measurements': [{
+            'metrics': {'native.accepted_decisions': {'status': 'measured', 'value': 1},
+                'native.common_content_utility_sum': {'status': 'measured', 'value': 1}}}]}})
+    monkeypatch.setattr(driver, 'evaluate_native_suggestion', observed)
+    with pytest.raises(StopAfterContractCheck): driver.run(root)
+    assert seen == ['exact-contract-forwarded']
+    assert driver.read(root / 'terminal.json')['status'] == 'stopped'
 
 
 @pytest.mark.parametrize('bad', ['active', 'stopped', 'unequal-audit', 'unequal-cost', 'unequal-report'])

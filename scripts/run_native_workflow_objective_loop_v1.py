@@ -36,20 +36,32 @@ def read(path): return checked(json.loads(Path(path).read_text()))
 
 def native_sources(source):
     import hashlib
+    import io
     import subprocess
     exclusions = (*AUTHOR_ONLY_DIFFERENCES, 'utopia/optimization/native_design_space.py')
     names = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', source, '--', 'utopia'],
         cwd=ROOT, text=True).splitlines()
     names += ['scripts/run_native_objective_instrument_loop_v1.py',
         'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py']
-    files = {}
-    for name in sorted(set(names)):
-        if not name.endswith('.py') or name in exclusions: continue
-        raw = subprocess.check_output(['git', 'show', source + ':' + name], cwd=ROOT)
+    names = [n for n in sorted(set(names)) if n.endswith('.py') and n not in exclusions]
+    # Read the same immutable Git blobs in one subprocess. Recheck actual local
+    # bytes on every call; do not cache a prior clean-source verdict.
+    batch = subprocess.run(['git', 'cat-file', '--batch'], cwd=ROOT,
+        input=''.join(source + ':' + n + '\n' for n in names).encode(),
+        stdout=subprocess.PIPE, check=True).stdout
+    stream = io.BytesIO(batch); files = {}
+    for name in names:
+        header = stream.readline().split()
+        if len(header) != 3 or header[1] != b'blob':
+            raise ValueError('original source Git blob is missing or not a file: ' + name)
+        size = int(header[2]); raw = stream.read(size)
+        if len(raw) != size or stream.read(1) != b'\n':
+            raise ValueError('original source Git batch framing differs')
         path = ROOT / name
         if path.is_symlink() or not path.is_file() or path.read_bytes() != raw:
             raise ValueError('original scientist/effect source differs: ' + name)
         files[name] = hashlib.sha256(raw).hexdigest()
+    if stream.read(): raise ValueError('unconsumed original source Git batch bytes')
     return {'original_source': source, 'literal_files': files, 'author_domain_only_exclusions': list(exclusions),
         'exclusion_role': 'designer context/transport or explicit design-domain guard, not native science',
         'global_semantic_equivalence_claimed': False}
@@ -215,7 +227,8 @@ def run(root):
                     return generation_definition(author.execute(req, purpose='proposal', certificate=certificate))
                 stage = 'optimization'; progress(root, stage, objective + ':g' + str(generation))
                 record = c.advance(simulation_factory=factory_for(directory / 'worlds', p, root),
-                    generators={'local-workflow-designer': generate}, count=1, measurement_adapter=measurement(p, observer))
+                    generators={'local-workflow-designer': generate}, count=1, measurement_adapter=measurement(p, observer),
+                    measurement_contract=p['observer_contract'])
                 consumed += 1; observations += sum(o is not None for o in record['observations']); require_plan(root)
             save(root / 'selection.json', selection(root, p, context))
             save(root / 'observer-audit.json', observer.audit()); status = stage = 'closed'; progress(root, stage, None)
