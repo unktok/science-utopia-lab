@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+**November13 13:01UTC live execution and literal edits:** the fifth proposal
+T:g2 reaches native year3; four own observations remain complete and the last
+U:g2 slot is not yet run. Writer86474 and all six closure-gated readers are
+verified live. The four completed source diffs all rewrite `world.selection`
+to explicit accept-all from parents already configured accept-all; T:g0 also
+changes `final_score` to1.0, so whole-world equivalence is not inferred. The
+[literal edit and planner comparison](logbook/2026-11-13-planning-first-completed-design.md#literal-selection-edits-and-proposed-explanations)
+separates this narrow explored neighborhood from untested planning/allocation
+changes and possible parent misunderstanding. Current scientific source,
+prompts, losses and finite slots stay unchanged; full closure/audits are pending.
+
 **November13 12:39:55UTC fourth own observation:** T:g1 completes with
 T=-18/U=-11.333333333333332, no generation error and no technical failure.
 It ties the previous own T and strongest fresh T references. Its feedback

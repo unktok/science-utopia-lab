@@ -164,3 +164,41 @@ T:g2 readiness; the final two declared slots are T:g2 and U:g2. All six
 normal-closure analysis processes remain live. No candidate, metric, source,
 slot allowance, parent-selection rule or old snapshot is changed; the full
 study's normal terminal, frozen selection and cold audit are still pending.
+
+## Literal selection edits and proposed explanations
+
+At13:01UTC, the fifth proposal T:g2 is executing with native checkpoints
+through year3. The four completed records permit a more precise description
+than “one source field changed.” All four edit `world.selection`; none edits
+the actual planning or allocation code. Each replaces the parent's conditional
+accept-all/threshold expression with an unconditional accept decision. Their
+actual editing parents already have `control_rule=accept-all`.
+
+T:g0 also replaces the recorded mean review score with `final_score=1.0`.
+T:g1 retains the mean calculation. Both U proposals retain the mean calculation,
+with U:g0 using `r.get('overall_score', 0.0)` instead of direct indexing. These
+are literal code comparisons, not a proof of complete behavioral equivalence.
+In particular, a changed final score can reach downstream native processing;
+the T:g0 outside-U difference must not be dismissed as an inert source edit.
+The normal cold effect/input readers remain the appropriate next evidence.
+
+The successful first planner actions of all four proposals target selection
+or its adjacent feature/scoring nodes. They describe recovering the observed
+best reference scores. Some rationales incorrectly hypothesize that the current
+parent still rejects papers or still runs review; U:g1 even calls -8.0 the
+current baseline although its parent matches the -13.333333333333332 reference.
+These are the author's stored hypotheses, not defects or facts supplied by
+the host. The exact requests retain `based_on_observation_id`, `parent_system`
+and the complete reference observations; the active prompt provides observation
+summaries and read-only retrieval of the exact request. No missing historical
+outcome or transport corruption is established by the mistaken rationale.
+
+This narrows the interpretation of the partial null gain: the observed search
+has so far rewritten an already all-accept selector, rather than tested many
+distinct planning or allocation institutions. It does not identify why the
+designer chose that neighborhood. Parent presentation, editable-file ordering,
+loss incentives and proposal capability remain competing explanations. After
+normal six-slot closure, inspect the final two proposals and actual consumers
+before choosing a finite mechanism or presentation intervention. Do not add a
+novelty requirement, reject valid retention, change this study's prompts or
+expand its slots to obtain a desired new institution.
