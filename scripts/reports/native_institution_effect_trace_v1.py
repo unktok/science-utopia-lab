@@ -28,6 +28,7 @@ SCHEMA='scienceutopia.native-institution-effect-trace.v1'
 SCOPES={
     'planning-fixed-evaluation':'scienceutopia.native-planning-fixed-evaluation-audit.v1',
     'planning-objective-development':'scienceutopia.native-planning-objective-loop-audit.v1',
+    'parent-presentation-development':'scienceutopia.native-parent-presentation-loop-audit.v1',
     'catalog-actuation-controls':'scienceutopia.native-catalog-actuation-audit.v1',
     'capacity-objective-development':'scienceutopia.native-capacity-objective-loop-audit.v1',
     'capacity-fixed-evaluation':'scienceutopia.native-capacity-fixed-evaluation-audit.v1',

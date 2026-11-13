@@ -16,6 +16,7 @@ SCHEMA = 'scienceutopia.native-observed-request-classes.v1'
 AUDITS = {
     'scienceutopia.native-planning-fixed-evaluation-audit.v1',
     'scienceutopia.native-planning-objective-loop-audit.v1',
+    'scienceutopia.native-parent-presentation-loop-audit.v1',
     'scienceutopia.native-catalog-actuation-audit.v1',
     'scienceutopia.native-capacity-objective-loop-audit.v1',
     'scienceutopia.native-capacity-fixed-evaluation-audit.v1',

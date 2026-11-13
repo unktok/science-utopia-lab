@@ -25,6 +25,11 @@ IMAGE = 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833
 
 
 def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_path, fixed_corpus, monkeypatch):
+    return run_native_controller_case(tmp_path, fixed_corpus, monkeypatch)
+
+
+def run_native_controller_case(tmp_path, fixed_corpus, monkeypatch, *, driver=driver, audit=audit,
+                               plan=plan, presentation=False):
     p, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, IMAGE)
     install_scripted_provider(tmp_path / 'provider', monkeypatch, 2)
     probe = LocalQwenNativeFactory(tmp_path / 'probe', tmp_path / 'cache', years=4, corpus_years=4, allow_dirty=True)
@@ -36,11 +41,14 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
     # SCRIPTED plan. Carry that source into the real component contract too.
     p['post_edit_contract'] = driver.feedback_for(p['component_bank'], p['source_commit'], IMAGE).contract
     p['strategies']['local-designer'][driver.TEST_OPTION] = clone(p['post_edit_contract'])
-    p['world']['classification'] = 'SCRIPTED-fourteen-native-world-planning-integration'
+    for strategy in p.get('strategies_by_presentation', {}).values():
+        strategy['local-designer'][driver.TEST_OPTION] = clone(p['post_edit_contract'])
+    p['world']['classification'] = ('SCRIPTED-twenty-native-world-presentation-integration' if presentation
+                                  else 'SCRIPTED-fourteen-native-world-planning-integration')
     p['observer_contract'] = make_contract(source_commit=p['source_commit'],
         provider={k: p['scientist'][k] for k in ('model', 'model_digest')},
         backend={**{k: p['scientist'][k] for k in ('model', 'model_digest')}, 'ollama_version': 'SCRIPTED'},
-        maximum_posts=1500, critics=3)
+        maximum_posts=3000 if presentation else 1500, critics=3)
     p['world']['measurement_adapter_contract'] = clone(p['observer_contract']); seal(p)
     origin = Path(p['origin']['run']); origin.mkdir(); (origin / 'writer.lock').touch()
     root = tmp_path / 'study'; root.mkdir()
@@ -108,17 +116,23 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
     paths = [tmp_path / 'audit-one.json', tmp_path / 'audit-two.json']
     for path in paths: audit.worker(root, path)
     assert paths[0].read_bytes() == paths[1].read_bytes()
-    proof = driver.read(paths[0]); assert len(proof['worlds']) == 14
-    assert len(proof['readiness']) == 6 and proof['initial_readiness']
+    world_count, own_count = (20,12) if presentation else (14,6)
+    proof = driver.read(paths[0]); assert len(proof['worlds']) == world_count
+    assert len(proof['readiness']) == own_count and proof['initial_readiness']
+    if presentation:
+        assert set(proof['initial_readiness']) == {'control','literal'}
+        assert {r['arm'] for r in proof['readiness']} == set(p['arms'])
     assert all(w['status'] == 'complete' for w in proof['worlds'])
     assert all(len(w['physical_proof']['annual_checkpoints']) == 4 for w in proof['worlds'])
     costs = cost_projection(root, p, proof)
-    assert len(costs['scientist']['physical_response_caches']) == 14
+    assert len(costs['scientist']['physical_response_caches']) == world_count
     assert costs['common_content_observer']['physical_requests'] == proof['observer']['dispatch_intents']
     assert costs['common_content_observer']['physical_requests'] > 0
     # Exercise the actual closed reader API, not a fabricated report fixture.
     from types import SimpleNamespace
     from scripts.reports.native_planning_objective_loop_v1 import export
+    if presentation:
+        from scripts.reports.native_parent_presentation_loop_v1 import export
     from scripts.analyze_native_open_v7 import _inventory
     before = _inventory(root)
     outputs = [tmp_path / 'report-one', tmp_path / 'report-two']
@@ -127,8 +141,9 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
     assert _inventory(root) == before
     assert {f.name: f.read_bytes() for f in outputs[0].iterdir()} == {f.name: f.read_bytes() for f in outputs[1].iterdir()}
     report = driver.read(outputs[0] / 'report.json')
-    assert len(report['references']) == 8 and len(report['slots']) == 6 and len(report['physical_worlds']) == 14
-    assert len(report['frozen_selection']['throughput']['all_tied_ids']) == 3
+    assert len(report['references']) == 8 and len(report['slots']) == own_count and len(report['physical_worlds']) == world_count
+    for key in (p['arm_order'] if presentation else ['throughput']):
+        assert len(report['frozen_selection'][key]['all_tied_ids']) == 3
     for name in ('objective-loss-paths.svg', 'objective-cross-scores.svg'):
         svg = (outputs[0] / name).read_text()
         assert all('R' + str(i) + ' = ' + label in svg for i, label in enumerate(p['reference_order'], 1))
@@ -137,8 +152,10 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
     import subprocess
     import sys
     for name, extra in (
-            ('native_planning_choice_trace_v1', ('--frozen-source', str(driver.ROOT))),
-            ('native_institution_effect_trace_v1', ('--frozen-source', str(driver.ROOT), '--scope', 'planning-objective-development')),
+            ('native_planning_choice_trace_v1', ('--frozen-source', str(driver.ROOT),
+                *(('--study','parent-presentation') if presentation else ()))),
+            ('native_institution_effect_trace_v1', ('--frozen-source', str(driver.ROOT), '--scope',
+                'parent-presentation-development' if presentation else 'planning-objective-development')),
             ('native_observed_request_classes_v1', ())):
         copies = [tmp_path / (name + '-one'), tmp_path / (name + '-two')]
         for out in copies:
@@ -147,5 +164,5 @@ def test_full_original_world_controller_bounded_editor_cold_audit_and_costs(tmp_
                 cwd=driver.ROOT, check=True, capture_output=True, text=True, timeout=1800)
         assert {f.name: f.read_bytes() for f in copies[0].iterdir()} == {f.name: f.read_bytes() for f in copies[1].iterdir()}
         rows = driver.read(copies[0] / 'report.json')['worlds']
-        assert len(rows) == 14
+        assert len(rows) == world_count
     assert _inventory(root) == before

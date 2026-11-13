@@ -19,6 +19,11 @@ def worker(root,output,*,study='objective-v1'):
         reference_count, generation_count = 8, 3
         audit_schema = 'scienceutopia.native-planning-objective-loop-audit.v1'
         driver_script = 'scripts/run_native_planning_objective_loop_v1.py'
+    elif study == 'parent-presentation-v1':
+        from scripts import run_native_parent_presentation_loop_v1 as driver
+        reference_count, generation_count = 8, 3
+        audit_schema = 'scienceutopia.native-parent-presentation-loop-audit.v1'
+        driver_script = 'scripts/run_native_parent_presentation_loop_v1.py'
     else:
         raise ValueError('explicit known original-source study required')
     from scripts.analyze_native_open_v7 import _inventory
@@ -49,10 +54,13 @@ def worker(root,output,*,study='objective-v1'):
                 or epoch(end['ended_utc'])<epoch(start['started_utc'])):
             raise ValueError('normal exact objective-loop closure required')
         scripts=[driver_script,'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
-        if study == 'planning-v1': scripts += ['scripts/audit_native_planning_objective_loop_v1.py',
+        if study in ('planning-v1', 'parent-presentation-v1'): scripts += ['scripts/audit_native_planning_objective_loop_v1.py',
             'scripts/audit_native_objective_instrument_loop_v1.py']
-        source=source_proofs(driver.ROOT,p['source_commit'],scripts=scripts,
-            resources=[driver.PROTOCOL,driver.BANK_MANIFEST,driver.CONTENT_LOSS])
+        if study == 'parent-presentation-v1':
+            scripts += ['scripts/audit_native_parent_presentation_loop_v1.py']
+        resources=[driver.PROTOCOL,driver.BANK_MANIFEST,driver.CONTENT_LOSS]
+        if study == 'parent-presentation-v1': resources.append(driver.MOTIVATION)
+        source=source_proofs(driver.ROOT,p['source_commit'],scripts=scripts,resources=resources)
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
         if observer_audit!=read(root/'observer-audit.json'):raise ValueError('literal observer cold audit differs')
         expected_cells=set();expected_caches=set();expected_authors=set();eligible_critic_keys=set();worlds=[];pairs=[]
@@ -112,16 +120,23 @@ def worker(root,output,*,study='objective-v1'):
         ready=read(root/'developer-reference-context-ready.json')
         if ready['context_sha256']!=context['content_sha256'] or ready['complete_references']!=reference_count:
             raise ValueError('developer reference availability differs')
+        presentation_study = study == 'parent-presentation-v1'
+        campaign_order = p['arm_order'] if presentation_study else p['objectives']
+        def objective_for(arm): return p['arms'][arm]['objective'] if presentation_study else arm
+        def strategies_for(arm):
+            return (p['strategies_by_presentation'][p['arms'][arm]['presentation']]
+                    if presentation_study else p['strategies'])
         controllers={}
-        for objective in p['objectives']:
-            c=replay_campaign(root/'search'/objective/'campaign','blackbox')
+        for arm in campaign_order:
+            objective=objective_for(arm)
+            c=replay_campaign(root/'search'/arm/'campaign','blackbox')
             expected={'initial_system':p['initial_system'],'loss_spec':p['losses'][objective],
-                'world':p['world'],'seeds':[driver.SEED],'strategies':p['strategies'],'mode':'blackbox',
+                'world':p['world'],'seeds':[driver.SEED],'strategies':strategies_for(arm),'mode':'blackbox',
                 'seed':p['optimizer_seed'],'learning_rate':.1,'strategy_learning_rate':.1,
                 'strategy_baseline':0.,'exploration':.1,'design_space':p['design_space'],'development_references':context}
             if c.binding!=expected or c.state['pending'] is not None or len(c.state['records'])!=generation_count:
                 raise ValueError('exact common-context campaign and four terminal own slots required')
-            controllers[objective]=c
+            controllers[arm]=c
         selected=read(root/'selection.json')
         expected=driver.selection(root,p,context,frozen_utc=selected['frozen_utc'],campaign_loader=lambda r,p,o,c:controllers[o])
         if expected!={k:v for k,v in selected.items() if k!='content_sha256'}:raise ValueError('own-submission selection/ties differ')
@@ -137,15 +152,20 @@ def worker(root,output,*,study='objective-v1'):
                 if url.endswith('/api/tags'):return Reply({'models':[{'name':p['designer']['model'],'digest':p['designer']['model_digest']}]})
                 raise ValueError('cold metadata adapter cannot dispatch')
         readiness=[];authoring=[];calibration_wires=set();initial_readiness=None
-        if study == 'planning-v1':
-            prototype=replay_campaign(root/'initial-readiness/campaign','blackbox')
+        initial_modes = p['presentations'] if presentation_study else [None] if study == 'planning-v1' else []
+        if presentation_study: initial_readiness = {}
+        for presentation in initial_modes:
+            initial_directory = root/'initial-readiness'
+            if presentation is not None: initial_directory = initial_directory/presentation
+            prototype=replay_campaign(initial_directory/'campaign','blackbox')
             expected={'initial_system':p['initial_system'],'loss_spec':p['losses']['throughput'],
-                'world':p['world'],'seeds':[driver.SEED],'strategies':p['strategies'],'mode':'blackbox',
+                'world':p['world'],'seeds':[driver.SEED],
+                'strategies':strategies_for('throughput-'+presentation) if presentation_study else p['strategies'],'mode':'blackbox',
                 'seed':p['optimizer_seed'],'learning_rate':.1,'strategy_learning_rate':.1,
                 'strategy_baseline':0.,'exploration':.1,'design_space':p['design_space']}
             if prototype.binding!=expected or prototype.state['records'] or prototype.state['pending'] is not None:
                 raise ValueError('empty source-bound planning prototype required')
-            base=root/'initial-readiness/editor-readiness';replay(base)
+            base=initial_directory/'editor-readiness';replay(base)
             cert=read(base/'calibration/certificate.json')
             cp=require_certificate(base/'calibration/certificate.json',p['designer'],protocol='staged-v15',session=Backend(),
                 now=cert['completed_epoch'],scope=EXECUTION_SCOPE,conversation_profile=BOUNDED_AUTHORING)
@@ -157,10 +177,14 @@ def worker(root,output,*,study='objective-v1'):
                 dispatched=read(root/'references'/label/'started.json')
                 if epoch(dispatched['started_utc'])<cert['completed_epoch']:
                     raise ValueError('planning reference predates initial readiness')
-            calibration_wires.add(base/'wire');initial_readiness={'certificate':cert,'cold_proof':cp}
+            calibration_wires.add(base/'wire')
+            proof={'certificate':cert,'cold_proof':cp}
+            if presentation_study: initial_readiness[presentation]=proof
+            else: initial_readiness=proof
         for slot in p['schedule']:
-            objective,g=slot['objective'],slot['generation'];c=controllers[objective];record=c.state['records'][g]
-            directory=root/'search'/objective;base=directory/f'readiness-{g}'/'editor-readiness'
+            objective,g=slot['objective'],slot['generation'];arm=slot['arm'] if presentation_study else objective
+            c=controllers[arm];record=c.state['records'][g]
+            directory=root/'search'/arm;base=directory/f'readiness-{g}'/'editor-readiness'
             replay(base);cert=read(base/'calibration/certificate.json')
             cp=require_certificate(base/'calibration/certificate.json',p['designer'],protocol='staged-v15',session=Backend(),
                 now=cert['completed_epoch'],scope=EXECUTION_SCOPE,conversation_profile=BOUNDED_AUTHORING)
@@ -168,7 +192,8 @@ def worker(root,output,*,study='objective-v1'):
                     or cert['plan']['runtime']!=p['runtime'] or cp['post_edit_component_contract']!=p['post_edit_contract']
                     or cert['plan']['created_epoch']<epoch(ready['completed_utc'])):
                 raise ValueError('fresh readiness differs from actual history/reference/mode')
-            readiness.append({'objective':objective,'generation':g,'certificate':cert,'cold_proof':cp})
+            readiness.append({'objective':objective,'generation':g,'certificate':cert,'cold_proof':cp,
+                **({'arm':arm,'presentation':slot['presentation']} if presentation_study else {})})
             calibration_wires.add(base/'wire')
             generation=directory/'authoring'/('generation-'+record['request_sha256']);expected_authors.add(generation)
             wrapper_error=None
@@ -188,10 +213,11 @@ def worker(root,output,*,study='objective-v1'):
             staged=read(responses[0]) if responses else None
             authoring.append({'objective':objective,'generation':g,'request_sha256':record['request_sha256'],
                 'definition':record['definition'],'generation_error':record['generation_error'],'wrapper_error':wrapper_error,
-                'component_testing':None if staged is None else staged['component_testing'],'raw_directory':str(generation)})
+                'component_testing':None if staged is None else staged['component_testing'],'raw_directory':str(generation),
+                **({'arm':arm,'presentation':slot['presentation']} if presentation_study else {})})
             for draw,o in zip(record['draws'],record['observations']):
                 if o is not None and draw['suggestion'] is not None:
-                    physical(directory,draw['suggestion']['suggestion_id'],o['candidate'],'search:'+objective,observation=o,objective=objective)
+                    physical(directory,draw['suggestion']['suggestion_id'],o['candidate'],'search:'+arm,observation=o,objective=objective)
         actual_critic_keys={r['key'] for r in observer_audit['rows']}
         if not actual_critic_keys<=eligible_critic_keys:raise ValueError('critic request has no accepted native content')
         if (expected_cells!={v.resolve() for v in root.glob('**/worlds/*') if v.is_dir()}
@@ -209,7 +235,7 @@ def worker(root,output,*,study='objective-v1'):
             'readiness':readiness,'authoring':authoring,'raw_inventory_sha256':digest(before),'raw_files':len(before),
             'analysis_adapter_sha256':file_sha256(Path(__file__)),'new_model_calls':0,'new_code_executions':0,
             'held_out_evaluation':False,'scientific_truth_measured':False,'publication_ready':False}
-        if study == 'planning-v1': result['initial_readiness']=initial_readiness
+        if study in ('planning-v1', 'parent-presentation-v1'): result['initial_readiness']=initial_readiness
         result['content_sha256']=digest(result);write_json_atomic(output,result,sort_keys=True,allow_nan=False)
         print(json.dumps({'audit':str(output),'worlds':len(worlds),'content_sha256':result['content_sha256']}))
 

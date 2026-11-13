@@ -72,6 +72,14 @@ def export(args):
         if (plan['generations'] != 3 or len(plan['reference_order']) != 8 or len(audit['authoring']) != 6
                 or not {'reference-' + n for n in plan['reference_order']} <= {w['identity'] for w in audit['worlds']}):
             raise ValueError('all original planning references and own slots required')
+    elif study == 'parent-presentation':
+        plan_schema = 'scienceutopia.native-parent-presentation-loop.v1.plan'
+        audit_schema = 'scienceutopia.native-parent-presentation-loop-audit.v1'
+        schema = 'scienceutopia.native-parent-presentation-choice-trace.v1'
+        if (plan['generations'] != 3 or len(plan['reference_order']) != 8 or len(audit['authoring']) != 12
+                or len(plan['arms']) != 4 or set(audit['initial_readiness']) != {'control','literal'}
+                or not {'reference-'+n for n in plan['reference_order']} <= {w['identity'] for w in audit['worlds']}):
+            raise ValueError('all original presentation references and twelve own slots required')
     elif study == 'fixed-evaluation':
         # Reconstruct every logical label, exact submitted system, null and
         # seed join through the same strict all-policy score reader.
@@ -134,7 +142,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('run', 'frozen-source', 'audit-one', 'audit-two', 'output'):
         parser.add_argument('--' + key, type=Path, required=True)
-    parser.add_argument('--study', choices=('development', 'fixed-evaluation'), default='development')
+    parser.add_argument('--study', choices=('development', 'fixed-evaluation', 'parent-presentation'), default='development')
     args = parser.parse_args()
     import os, subprocess, sys
     if os.environ.get('SCIENCE_UTOPIA_COLD_PLANNING_CHOICES_WORKER') == '1': export(args); return

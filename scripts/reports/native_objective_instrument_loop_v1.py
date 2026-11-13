@@ -18,6 +18,7 @@ SCHEMA='scienceutopia.native-objective-instrument-report.v1'
 
 def summarize(plan,audit,records,traces,*,study='count-content-v1'):
     checked(plan);checked(audit)
+    presentation_study = study == 'parent-presentation-v1'
     if study=='count-content-v1':
         plan_schema='scienceutopia.native-objective-instrument-loop.v1.plan'
         audit_schema='scienceutopia.native-objective-instrument-loop-audit.v1'
@@ -37,14 +38,26 @@ def summarize(plan,audit,records,traces,*,study='count-content-v1'):
         contract_key='measurement_contract';count=4;schema='scienceutopia.native-capacity-objective-report.v1'
         if plan['objectives']!=['throughput','founder-activity'] or plan['generations']!=2:
             raise ValueError('exact prospective two-objective/four-slot capacity scope required')
+    elif presentation_study:
+        from scripts.run_native_parent_presentation_loop_v1 import ARM_ORDER, PRESENTATIONS
+        from utopia.system.native_planning_controls import ORDER
+        plan_schema='scienceutopia.native-parent-presentation-loop.v1.plan'
+        audit_schema='scienceutopia.native-parent-presentation-loop-audit.v1'
+        contract_key='observer_contract';count=12;schema='scienceutopia.native-parent-presentation-report.v1'
+        if (plan['objectives']!=['throughput','content-utility'] or plan['generations']!=3
+                or plan['reference_order']!=list(ORDER) or plan['arm_order']!=list(ARM_ORDER)
+                or set(audit.get('initial_readiness',{}))!=set(PRESENTATIONS)
+                or len(audit.get('readiness',[]))!=12):
+            raise ValueError('exact four-history/twelve-slot presentation scope required')
     else:raise ValueError('explicit supported development study required')
     if (plan['schema']!=plan_schema or audit['schema']!=audit_schema
             or audit['source_commit']!=plan['source_commit'] or audit['plan_sha256']!=plan['content_sha256']
             or audit['closure']['terminal']['status']!='closed' or audit['held_out_evaluation']
             or audit['source_proof']['status']!='verified-exact-source-closure'
             or audit['new_model_calls'] or audit['new_code_executions']):raise ValueError('matching closed development audit required')
-    keys={(s['objective'],s['generation']) for s in plan['schedule']}
-    authors={(a['objective'],a['generation']):a for a in audit['authoring']}
+    def slot_key(row): return (row['arm'] if presentation_study else row['objective'], row['generation'])
+    keys={slot_key(s) for s in plan['schedule']}
+    authors={slot_key(a):a for a in audit['authoring']}
     worlds={w['identity']:w for w in audit['worlds']}
     if (len(keys)!=count or len(keys)!=len(plan['schedule']) or set(records)!=keys or set(traces)!=keys
             or set(authors)!=keys or len(authors)!=len(audit['authoring']) or len(worlds)!=len(audit['worlds'])):
@@ -81,10 +94,10 @@ def summarize(plan,audit,records,traces,*,study='count-content-v1'):
         references.append({'label':label,'physical_job':identity,'scores':clone(w['scores'])})
     slots=[]
     for index,s in enumerate(plan['schedule']):
-        key=s['objective'],s['generation'];r=records[key];a=authors[key];request=r['request'];trace=traces[key]
+        key=slot_key(s);objective=s['objective'];r=records[key];a=authors[key];request=r['request'];trace=traces[key]
         if (a['request_sha256']!=r['request_sha256'] or digest(request)!=r['request_sha256']
                 or a['definition']!=r['definition'] or a['generation_error']!=r['generation_error']
-                or request['generation']!=key[1] or request['loss_spec']!=plan['losses'][key[0]]
+                or request['generation']!=key[1] or request['loss_spec']!=plan['losses'][objective]
                 or a['component_testing']!=trace['component_testing']):raise ValueError('actual author request/definition/trace differs')
         summary=request['developer_reference_context']
         if summary['context_sha256']!=audit['developer_references']['content_sha256']:
@@ -99,11 +112,13 @@ def summarize(plan,audit,records,traces,*,study='count-content-v1'):
             'loss':None,'cross_scores':{k:None for k in plan['losses']},'changed_paths_from_parent':None,
             'changed_paths_from_anchor':None,'connections_changed':None,'schedules_changed':None,
             'nodes_added':None,'nodes_removed':None,'component_trace':clone(trace)}
+        if presentation_study:
+            row['first_planner_trace'] = clone(trace.get('first_planner_trace'))
         values=[o for o in r['observations'] if o is not None]
         if len(values)>1:raise ValueError('at most one original observation per own slot')
         if values:
             o=values[0];identity=o['suggestion_id'];w=worlds[identity]
-            if identity in used or w['role']!='search:'+key[0] or o['loss']!=w['scores'][key[0]]:
+            if identity in used or w['role']!='search:'+key[0] or o['loss']!=w['scores'][objective]:
                 raise ValueError('slot does not identify unique original own world')
             used.add(identity);system=w['system'];old={m['mechanism_id'] for m in parent['mechanisms']};new={m['mechanism_id'] for m in system['mechanisms']}
             row.update(status=o['status'],physical_job=identity,loss=o['loss'],cross_scores=clone(w['scores']),
@@ -114,20 +129,28 @@ def summarize(plan,audit,records,traces,*,study='count-content-v1'):
         slots.append(row)
     if used!=set(worlds):raise ValueError('unaccounted native world')
     selections={}
-    for objective in plan['objectives']:
-        rows=sorted((r for r in slots if r['objective']==objective and r['status']=='complete' and r['loss'] is not None),key=lambda r:r['generation'])
+    for arm in plan['arm_order'] if presentation_study else plan['objectives']:
+        objective=plan['arms'][arm]['objective'] if presentation_study else arm
+        rows=sorted((r for r in slots if (r['arm']==arm if presentation_study else r['objective']==objective)
+            and r['status']=='complete' and r['loss'] is not None),key=lambda r:r['generation'])
         best=min((r['loss'] for r in rows),default=None);ties=[r['physical_job'] for r in rows if r['loss']==best]
         expected={'loss':best,'all_tied_ids':ties,'selected_id':ties[0] if ties else None,
             'system':worlds[ties[0]]['system'] if ties else None,'completed_submissions':len(rows)}
-        if expected!=audit['selection']['selected'][objective]:raise ValueError('frozen own-submission selection differs')
-        selections[objective]={k:clone(v) for k,v in expected.items() if k!='system'}
-        selections[objective]['loss_minus_each_reference']={r['label']:None if best is None else best-r['scores'][objective] for r in references}
+        if expected!=audit['selection']['selected'][arm]:raise ValueError('frozen own-submission selection differs')
+        selections[arm]={k:clone(v) for k,v in expected.items() if k!='system'}
+        selections[arm]['loss_minus_each_reference']={r['label']:None if best is None else best-r['scores'][objective] for r in references}
     result={'schema':schema,'source_commit':plan['source_commit'],'plan_sha256':plan['content_sha256'],
         'audit_sha256':audit['content_sha256'],'score_order':clone(plan['objectives']),'references':references,
         'slots':slots,'physical_worlds':physical,'frozen_selection':selections,
         'interpretation':{'development_seed_reused':True,'identical_first_editing_parent_control':False,
             'independent_optimizer_replication':False,'held_out_evaluation':False,'scientific_truth':False,
             'new_model_calls':0,'new_code_executions':0,'publication_ready':False}}
+    if presentation_study:
+        result.update(arm_order=clone(plan['arm_order']), arms=clone(plan['arms']))
+        result['interpretation']['identical_first_editing_parent_control'] = all(
+            len({r['parent_system_sha256'] for r in slots if r['objective']==objective and r['generation']==0})==1
+            for objective in plan['objectives'])
+        result['interpretation']['isolated_source_visibility_or_reasoning_effect_identified'] = False
     result['content_sha256']=digest(result);return result
 
 
@@ -135,7 +158,8 @@ def cross_score_groups(report):
     """Group exact coordinates for display without jittering or dropping ties."""
     rows=[{'label':'R'+str(i+1),'scores':r['scores']} for i,r in enumerate(report['references'])]
     second=report['score_order'][1];letter='P' if second=='founder-activity' else 'U'
-    rows.extend({'label':('T' if r['objective']=='throughput' else letter)+str(r['generation']),
+    rows.extend({'label':('T' if r['objective']=='throughput' else letter)
+        +({'control':'C','literal':'L'}[r['presentation']] if 'presentation' in r else '')+str(r['generation']),
         'scores':r['cross_scores']} for r in report['slots'])
     by={};unavailable=[]
     for r in rows:
@@ -219,20 +243,24 @@ def export(args,*,study='count-content-v1',renderer=None):
     input_hashes={str(p):file_sha256(p) for p in paths}
     if digest(before)!=audit['raw_inventory_sha256']:raise ValueError('raw inventory differs from independent audit')
     records={};traces={}
-    for objective in plan['objectives']:
-        state=json.loads((root/'search'/objective/'campaign/native-adaptive-state.json').read_text())
+    presentation_study = study == 'parent-presentation-v1'
+    for arm in plan['arm_order'] if presentation_study else plan['objectives']:
+        state=json.loads((root/'search'/arm/'campaign/native-adaptive-state.json').read_text())
         if state['pending'] is not None:raise ValueError('pending campaign')
-        for g,r in enumerate(state['records']):records[objective,g]=r
+        for g,r in enumerate(state['records']):records[arm,g]=r
     for a in audit['authoring']:
         directory=Path(a['raw_directory']).resolve()
         if not directory.is_relative_to(root):raise ValueError('authoring archive outside audited raw')
-        responses=list((directory/'authoring').glob('generation-*/response.json'));key=a['objective'],a['generation']
+        responses=list((directory/'authoring').glob('generation-*/response.json'));key=(a['arm'] if presentation_study else a['objective']),a['generation']
         if len(responses)>1:raise ValueError('ambiguous staged terminal')
         if responses:
             response=checked(json.loads(responses[0].read_text()));inner=responses[0].parent
             steps=[checked(json.loads(p.read_text())) for p in sorted(inner.glob('step-*.completed.json'))]
             r=records[key];candidate=r['draws'][0]['suggestion']['candidate'] if r['draws'] and r['draws'][0]['suggestion'] else None
             traces[key]=component_trace(steps,response,candidate)
+            if presentation_study:
+                from scripts.reports.native_parent_presentation_loop_v1 import first_planner_trace
+                traces[key]['first_planner_trace'] = first_planner_trace(r['request'],inner,steps)
         else:
             if a['component_testing'] is not None or a['generation_error'] is None:raise ValueError('missing terminal without retained generation failure')
             traces[key]={'component_testing':None,'terminal_response_missing':True,
@@ -242,6 +270,7 @@ def export(args,*,study='count-content-v1',renderer=None):
     output.mkdir(parents=True);save(output/'report.json',{k:v for k,v in report.items() if k!='content_sha256'});(render if renderer is None else renderer)(report,output)
     fields=['slot_index','objective','generation','status','loss','physical_job','parent_differs_from_design_anchor',
         'connections_changed','schedules_changed','probe_attempts','returned','raised']
+    if presentation_study: fields = ['arm','presentation']+fields
     with (output/'slots.csv').open('x',newline='') as f:
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader()
         for r in report['slots']:
