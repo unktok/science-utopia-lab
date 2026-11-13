@@ -49,3 +49,16 @@ At the later direct read, the U/literal worker has `submitted:true` after
 1172.5243s inside the worker and14 actions. Its native evaluation is still
 pending. The two invalid actions therefore did not prevent eventual submission;
 do not describe them as a failed entire generation or as its proven sole cause.
+
+The native observation subsequently completes: T=-18/U=-13.333333333333332,
+exactly tied with the best fresh U reference. See the
+[first completed own-policy snapshot](2026-11-14-parent-first-complete-own.md).
+
+A later read-only `ollama show --parameters` observes the35B alias default
+`num_ctx=65536`. The current model-list lookup initially shows8B at40960.
+A finite no-inference observer then stops on a10s metadata GET timeout after
+one retained poll; its session exits1 and the failure is preserved, not retried
+or interpreted as the science writer stopping. The
+[metadata receipt](../results/native-parent-backend-context-metadata-v1.json)
+does **not** attest to an active35B context length or to earlier input retention.
+Alias defaults, requested options and actual runtime limits remain distinct.

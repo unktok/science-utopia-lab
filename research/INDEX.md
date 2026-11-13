@@ -6,6 +6,10 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First complete own presentation world](logbook/2026-11-14-parent-first-complete-own.md):
+  four-year U/literal:g0 has T=-18/U=-13.333333333333332, tied with the best
+  fresh reference. One selection-source leaf changes, without new graph/wiring.
+  This partial live result is not the final study audit or a generated gain.
 - [Live free-design frame capacity](logbook/2026-11-14-parent-free-frame-capacity.md):
   two invalid U/literal:g0 replies exceed the nominal full-output reservation;
   preserve actual counts and distinguish output length, JSON validity and

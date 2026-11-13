@@ -2,6 +2,17 @@
 
 ## Active publication-ready goal
 
+**November14 first complete own presentation world:** U/literal:g0 completes
+all four native years with T=-18/U=-13.333333333333332 and18 accepted decisions.
+Recomputation on all eight fresh references confirms zero U improvement over
+their minimum. The [partial snapshot](logbook/2026-11-14-parent-first-complete-own.md)
+keeps this apart from T/control:g0's native failure and a final study audit.
+Only R7's selection source changes; no new mechanism/wiring is observed.
+Two of twelve own slots are finalized (one complete, one failure). At18:48:16UTC
+the unchanged writer enters U/control:g0 readiness; the other ten remain open.
+The alias default is65536, but the later metadata observer times out without
+attesting active35B context; no truncation cause or backend restart is claimed.
+
 **November14 live free-frame capacity evidence:** U/literal:g0 has a
 length-limited initial reply (37658 input/8192 output), followed by a separate
 stop-final but malformed tool call with43200 reported input tokens. Both ask
