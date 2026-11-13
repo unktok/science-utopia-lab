@@ -23,7 +23,7 @@ from utopia.optimization.native_workflow_domain_v4 import (
 from utopia.optimization.native_world import evaluate_native_suggestion
 from utopia.system import SystemSpec
 from utopia.system.design_patch import clone, digest
-from utopia.utils.data_utils import file_sha256
+from utopia.utils.data_utils import file_sha256, decode_json
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = 'scienceutopia.native-workflow-objective-loop.v1'
@@ -68,7 +68,11 @@ def native_sources(source):
 
 
 def prerequisite_binding(directory):
-    directory = Path(directory).resolve(); start = read(directory / 'started.json')
+    # The original chain's public save() is exclusive plain JSON, not the
+    # sealed scientific journal API. Bind its exact bytes instead of inventing
+    # a missing checksum or changing that historical orchestration record.
+    directory = Path(directory).resolve()
+    start = decode_json((directory / 'started.json').read_text(), strict=True, finite_floats=True)
     if start['schema'] != 'scienceutopia.native-parameter-comparator-chain.v1':
         raise ValueError('explicit original numeric continuation required')
     return {'directory': str(directory), 'started_file_sha256': file_sha256(directory / 'started.json'),
@@ -81,8 +85,10 @@ def require_prerequisite(binding):
     root = Path(binding['directory'])
     if prerequisite_binding(root) != binding:
         raise ValueError('frozen prerequisite binding differs')
-    end = read(root / 'ended.json')
-    if (end['status'] != 'closed' or len(end['steps']) != 7 or any(s['exit_code'] for s in end['steps'])
+    end = decode_json((root / 'ended.json').read_text(), strict=True, finite_floats=True)
+    expected_stages = ['numeric-run', 'audit-1', 'audit-2', 'costs-1', 'report-1', 'costs-2', 'report-2']
+    if (end['status'] != 'closed' or [s['stage'] for s in end['steps']] != expected_stages
+            or any(s['exit_code'] for s in end['steps'])
             or process_identity(binding['pid']) is not None):
         raise ValueError('numeric continuation is not normally closed and absent; no workflow inference')
     audits = [read(root / ('audit-' + str(i) + '.json')) for i in (1, 2)]

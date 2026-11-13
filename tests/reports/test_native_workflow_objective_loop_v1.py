@@ -137,10 +137,11 @@ def test_runner_forwards_the_actual_trusted_measurement_contract_to_advance(tmp_
     assert driver.read(root / 'terminal.json')['status'] == 'stopped'
 
 
-@pytest.mark.parametrize('bad', ['active', 'stopped', 'unequal-audit', 'unequal-cost', 'unequal-report'])
+@pytest.mark.parametrize('bad', [None, 'active', 'stopped', 'unequal-audit', 'unequal-cost', 'unequal-report'])
 def test_queue_guard_requires_absence_and_original_matching_normal_closure(tmp_path, monkeypatch, bad):
+    from scripts.run_pre_scale_completion_chain_v1 import save as actual_chain_save
     root = tmp_path / 'chain'; root.mkdir()
-    driver.save(root / 'started.json', {'schema': 'scienceutopia.native-parameter-comparator-chain.v1',
+    actual_chain_save(root / 'started.json', {'schema': 'scienceutopia.native-parameter-comparator-chain.v1',
         'pid': 12345, 'numeric_source_commit': 'a' * 40})
     binding = driver.prerequisite_binding(root)
     audit = {'schema': 'scienceutopia.native-parameter-comparator-audit.v1', 'source_commit': 'a' * 40,
@@ -150,7 +151,8 @@ def test_queue_guard_requires_absence_and_original_matching_normal_closure(tmp_p
         (root / ('costs-' + str(i) + '.json')).write_text('{}')
         report = root / ('report-' + str(i)); report.mkdir(); (report / 'data.txt').write_text('SCRIPTED')
     files = same_files(root / 'report-1', root / 'report-2')
-    end = {'status': 'closed', 'steps': [{'exit_code': 0}] * 7, 'report_files': files}
+    end = {'status': 'closed', 'steps': [{'stage': name, 'exit_code': 0} for name in (
+        'numeric-run', 'audit-1', 'audit-2', 'costs-1', 'report-1', 'costs-2', 'report-2')], 'report_files': files}
     monkeypatch.setattr('scripts.run_pre_scale_completion_chain_v1.process_identity', lambda pid: None)
     if bad == 'active':
         monkeypatch.setattr('scripts.run_pre_scale_completion_chain_v1.process_identity', lambda pid: 'original active process')
@@ -159,6 +161,9 @@ def test_queue_guard_requires_absence_and_original_matching_normal_closure(tmp_p
         path = root / 'audit-2.json'; changed = clone(audit); changed['source_commit'] = 'b' * 40
         path.write_text(json.dumps(seal(changed)))
     elif bad == 'unequal-cost': (root / 'costs-2.json').write_text('{"changed":true}')
-    else: (root / 'report-2/data.txt').write_text('changed')
-    driver.save(root / 'ended.json', end)
-    with pytest.raises(ValueError): driver.require_prerequisite(binding)
+    elif bad == 'unequal-report': (root / 'report-2/data.txt').write_text('changed')
+    actual_chain_save(root / 'ended.json', end)
+    if bad is None:
+        assert driver.require_prerequisite(binding)['audit_content_sha256'] == driver.read(root / 'audit-1.json')['content_sha256']
+    else:
+        with pytest.raises(ValueError): driver.require_prerequisite(binding)
