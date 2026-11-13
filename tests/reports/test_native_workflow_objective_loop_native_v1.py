@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import tempfile
 from types import SimpleNamespace
 
 from scripts import run_native_workflow_objective_loop_v1 as driver
@@ -122,7 +123,12 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     u2 = [c for c in calls if c['purpose'] == 'proposal' and c['request']['generation'] == 2
         and c['request']['loss_spec']['id'] == original['losses']['content-utility']['id']][0]
     assert u2['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission']['phase_updates'] == {'world.costs': 999}
-    audit_paths = [tmp_path / 'audit-one.json', tmp_path / 'audit-two.json']
+    # Explicit --basetemp may be inside ignored source outputs. Original cold
+    # auditors correctly forbid writing anywhere in that source worktree.
+    # Retain audit exports in a separate temporary directory, not by weakening
+    # the production guard or modifying any completed raw journal.
+    audit_directory = Path(tempfile.mkdtemp(prefix='science-utopia-workflow-audit-', dir='/private/tmp'))
+    audit_paths = [audit_directory / 'audit-one.json', audit_directory / 'audit-two.json']
     from scripts.analyze_native_open_v7 import _inventory
     before = _inventory(root)
     for path in audit_paths: audit.worker(root, path)
@@ -140,6 +146,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         'actual_bounded_HTTP_worker_calls': len(calls), 'new_model_calls': 0, 'native_software_worlds': 7,
         'annual_checkpoints': 28, 'known_invalid_slots_preserved': 1, 'consumed_own_slots': 6,
         'maximum_actual_wire_utf8_bytes': max(c['wire_utf8_bytes'] for c in calls),
+        'original_cold_audit_directory': str(audit_directory),
         'matching_original_cold_audit_sha256': file_sha256(audit_paths[0]),
         'matching_cost_content_sha256': cost_reports[0]['content_sha256'],
         'actual_invention_or_scientific_gain_claimed': False}, sort_keys=True)

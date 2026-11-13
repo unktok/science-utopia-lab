@@ -76,6 +76,12 @@ def test_no_reference_fallback_when_all_own_generations_are_null(tmp_path, monke
     assert all(r['system'] is None and r['loss'] is None and not r['all_tied_ids'] for r in result['selected'].values())
 
 
+def test_cold_auditor_never_writes_inside_scientific_source_even_under_ignored_outputs(tmp_path):
+    from scripts.audit_native_workflow_objective_loop_v1 import worker
+    with pytest.raises(ValueError, match='outside raw/source'):
+        worker(tmp_path / 'raw', driver.ROOT / 'outputs/forbidden-source-local-audit.json')
+
+
 def test_prerequisite_rejection_occurs_before_any_study_start_or_author(tmp_path, monkeypatch):
     root = tmp_path / 'run'; root.mkdir()
     monkeypatch.setattr(driver, 'require_environment', lambda: None)
