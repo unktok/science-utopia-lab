@@ -104,3 +104,14 @@ observation remains inside the original campaign state; no raw record is
 rewritten. The snapshot does not create the normal final terminal, cold audit,
 own selection or unused-seed outcome. Content-utility:g0 enters readiness next;
 the five other slots and full normal closure are pending at that observation.
+
+By11:54:07UTC, the first U proposal also completes. The two generation0
+cross-losses are(-18,-10.333333333333332) for T and
+(-18,-13.333333333333332) for U. Both tie their strongest common reference
+under their assigned objective. Their editing parents are different: advice
+for T and reviewer-free assignment for U. The own edit does not improve its
+assigned parent loss in either case. Thus the cross-U difference is not an
+identified effect of the code edit or assigned objective alone. The
+[partial pair snapshot](../results/native-planning-first-pair-progress-v1.json)
+keeps these distinctions and all eight reference cross-scores. U:g1 readiness
+is next; four own slots and final normal closure remain pending.

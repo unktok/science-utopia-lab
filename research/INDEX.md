@@ -33,6 +33,10 @@ Historical documents retain their paths and source identities.
   completes by11:34UTC atT=-18, tying the best fresh controls; one source field
   changes, with no connection/schedule change. U:g0 readiness follows. This
   ongoing-study snapshot is not a full audit, final selection or invention gain.
+  The [first T/U pair](results/native-planning-first-pair-progress-v1.json)
+  closes by11:54UTC at(-18,-10.3333…) and(-18,-13.3333…). Each ties its best
+  assigned-objective reference and starts from a different editing parent;
+  their U gap is not an isolated edit/label effect. U:g1 readiness follows.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.

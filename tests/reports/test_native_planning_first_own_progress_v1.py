@@ -39,3 +39,27 @@ def test_partial_observation_links_are_portable():
         'research/components/native-planning-objective-loop-v1.md',
         'research/logbook/2026-11-13-planning-first-completed-design.md'),manifest=None)
     assert result['status']=='passed',result['errors']
+
+
+def test_first_pair_keeps_both_assigned_ties_and_different_parents():
+    r=checked(json.loads((ROOT/'research/results/native-planning-first-pair-progress-v1.json').read_text()))
+    assert r['scientific_source_commit']=='8cd61578b94d86dd0cf2ff3b0e581d9a2698fc0f'
+    t,u=r['own']
+    assert [w['objective'] for w in r['own']]==['throughput','content-utility']
+    assert t['scores']=={'throughput':-18.,'content-utility':-10.333333333333332}
+    assert u['scores']=={'throughput':-18.,'content-utility':-13.333333333333332}
+    assert t['parent_matching_reference_ids']==['reference-advice-reserve21-all']
+    assert u['parent_matching_reference_ids']==['reference-assignment-reserve21-no-review-all']
+    for w in r['own']:
+        assert w['status']=='complete' and w['generation']==0 and w['world_seed']==61001
+        best=min(v['scores'][w['objective']] for v in r['fresh_reference_cross_scores'])
+        assert w['assigned_loss']==best==w['parent_scores'][w['objective']]
+        assert w['assigned_loss_minus_best_fresh_reference']==0
+        assert not w['connections_changed'] and not w['schedules_changed']
+    assert t['scores']['content-utility']-t['parent_scores']['content-utility']==1.
+    assert len(r['fresh_reference_cross_scores'])==8
+    assert r['next_stage_at_observation']['active']=='content-utility:g1'
+    assert not any(r[k] for k in ('first_editing_parents_identical','own_edits_improved_assigned_parent_loss',
+        'study_normal_terminal_present','final_study_audit_completed','final_selection_made',
+        'new_inference_by_snapshot','loss_or_candidate_changed_by_snapshot',
+        'beneficial_invention_or_causal_effect_claimed','publication_ready'))

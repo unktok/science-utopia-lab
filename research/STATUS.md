@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+**November13 11:54:07UTC first T/U pair:** both generation0 proposals
+complete native execution and content measurement. Their cross-losses are
+T0:(T=-18,U=-10.333333333333332) and U0:(T=-18,U=-13.333333333333332).
+Each ties the best fresh reference under its own assigned objective. The
+editing parents differ: T starts from advice/reserve21, U from reviewer-free
+assignment/reserve21. The difference between their U scores therefore is
+not an identified effect of their own edits or objective label alone. One
+source field changes in each, with no connection/schedule change. The
+[partial pair snapshot](results/native-planning-first-pair-progress-v1.json)
+preserves both observations, all reference cross-scores and exact parents;
+it is not final selection, normal study audit or invention gain. The original
+writer enters U:g1 readiness with four slots remaining, without host repair,
+new loss or extra inference from this snapshot.
+
+At11:59:51UTC the original writer advances from U:g1 readiness to actual
+optimization. The first-pair/old-launch/content/documentation retention scope
+passes19 checks0.97s; these are not additional scientific trials.
+
 **November13 11:34:10UTC first own loss:** throughput:g0 completes its
 four-year native world and fixed-content measurement, with assigned T=-18
 (18 accepted decision records). This ties the best freshly executed references,
