@@ -80,6 +80,15 @@
     "files": ["tests/optimization/test_native_workflow_domain_v4.py", "tests/optimization/test_native_fixed_production_domain.py", "tests/optimization/test_native_design_space.py", "tests/optimization/test_native_adaptive_search.py"],
     "scopes_overlap_not_independent_experiments": true
   },
+  "post_integration_regression": {
+    "source_commit": "11bc59a79d99b13b5eab51cc924746767bede7ad",
+    "exec_session": 25537,
+    "observed_exit_code": 0,
+    "tests": 58,
+    "pytest_seconds": 18.16,
+    "files": ["tests/optimization/test_native_workflow_domain_v4.py", "tests/optimization/test_native_design_space.py", "tests/optimization/test_native_fixed_production_domain.py"],
+    "scopes_overlap_not_independent_experiments": true
+  },
   "source_comparison": {
     "original_source": "30e3f5faa0b72af8c861a320f6c88a47c9e03168",
     "unchanged_original_utopia_python_files": 264,

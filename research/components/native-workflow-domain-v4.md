@@ -90,6 +90,20 @@ selects the -10 fixture parent, with zero dispatch. The broad73-check regression
 scope passes85.94s and preserves old domains and existing estimator behavior.
 These scopes overlap and must not be added as independent experiments.
 
+The main fast-forward to11bc59a7 is followed by58 passing workflow/old-domain
+checks in18.16s. This is an integration regression, not another native-world
+experiment. To reproduce the native software check at its recorded source,
+use the installed project virtualenv, fixed environment and a **fresh** output
+directory (never reuse/delete the original evidence):
+
+```sh
+PYTHONHASHSEED=42 CUDA_VISIBLE_DEVICES= HF_HUB_OFFLINE=1 HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 .venv/bin/python -m pytest -q tests/reports/test_native_workflow_full_path_v4.py --basetemp=outputs/native-workflow-full-path-v4-new-check
+```
+
+The test requires the already pinned local Docker image. It needs no backend
+generation or model download. In a feature worktree without its own virtualenv,
+point the command at the existing main-worktree virtualenv, as in the receipts.
+
 ## Next empirical work, not yet dispatched
 
 Use this real graph authority in a finite objective-conditioned structure

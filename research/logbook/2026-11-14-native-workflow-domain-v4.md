@@ -40,6 +40,14 @@ rebuild is claimed. Original scientist/activity/ledger source is unchanged;
 of265 Python files present at the current frozen study's source,264 match
 literally and one optimizer-domain guard adds the separate branch.
 
+Main fast-forwards to11bc59a7 and the GitHub main ref is directly verified at
+that commit after push. Post-integration58-check regression exits0 after18.16s
+(session25537). At20:18:28UTC the original writer11716, audit15957,
+score17743, K/O waiters42254/42291 and numeric coordinator65620 are all live.
+The fourth own slot's author has submitted after1661.5401s at20:14UTC;
+its native world has committed year1, but no final loss is available. It is
+not a stalled generation, another completed result or authorization to retry.
+
 Remaining: real finite objective-conditioned structural proposals and loss
 selection in this expanded domain, strong controls, normally closed studies,
 fixed unused evaluation and a substantive scientific claim. The currently
