@@ -2,6 +2,33 @@
 
 ## Active publication-ready goal
 
+**November13 stop diagnosis:** the new planning T/U attempt did not keep
+running. Its terminal closes stopped at07:30:43UTC November12, before any
+reference world or own proposal. The24th initial-readiness POST loses its
+connection while Ollama logs SIGINT/SIGTERM and restarts. The sender is not
+known. The [immutable stop receipt](results/native-planning-prestudy-stop-verification-v1.json)
+retains23 complete replies, one unknown, known token costs and exact service
+log lines. Writer/analysis processes and old handles are absent; analysis has
+no normal closure. No fake terminal/audit, salvaged response or retry is added
+to the original run. A [prospective single second attempt](protocols/campaigns/native-planning-prestudy-continuation-v1.md)
+keeps the exact scientific source, objectives, controls and finite budgets,
+requiring fresh readiness. It is not yet started at this note. Latest closed
+scientific result remains the three-arm12-versus18 developer comparison;
+objective-conditioned invention, replication and publication readiness remain open.
+
+**November12 07:26UTC scientific start:** the new
+[free planning T/U pilot](components/native-planning-objective-loop-v1.md)
+starts at frozen8cd6157, writer27648/session49431, in real local35B initial
+readiness. There are eight fresh same-authority references and six own slots,
+fixed Qwen3-8B and unchanged native capacity/production. Existing T/U meanings
+are retained; P is a diagnostic, not a constraint. The14-world SCRIPTED test
+passes245.43s through actual calibration/role/outer execute/replay APIs, all56
+native annual checkpoints, double cold audits and costs. Final75 checks pass
+34.47s. [Launch/source/QA failures](results/native-planning-objective-launch-verification-v1.json)
+are retained. Analysis60434 waits for normal original double audit/cost closure.
+No actual readiness pass, own generated program or gain is claimed yet. The
+64-page paper still needs the closed agenda result; R2/R3/R6 remain open.
+
 **November12 06:42UTC normal closure:** all three
 [catalog actuation controls](results/native-catalog-actuation-v1.md) complete.
 Double original audits/costs close06:43:09UTC; three double readouts and two

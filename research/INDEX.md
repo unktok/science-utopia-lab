@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [New free planning T/U pilot](components/native-planning-objective-loop-v1.md):
+  frozen8cd6157 starts07:26UTC November12 and stops07:30UTC in initial
+  readiness when Ollama receives a termination signal. No science starts;
+  no readiness pass or candidate is claimed. The stopped attempt and23 known
+  responses/one unknown remain intact. A separately recorded one-attempt
+  continuation keeps eight strong references, six own slots and unchanged T/U,
+  production and budgets. P is not a constraint.14-world SCRIPTED integration
+  and75 final regression checks pass; they are not actual-model results.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
@@ -22,7 +30,7 @@ Historical documents retain their paths and source identities.
   layouts and new43--46 pages at150dpi are checked; old PDFs remain unchanged.
   The fixed planning-authority scope is explicit. The
   [planning-authority rationale](publication/native-planning-authority-next-study-v1.md)
-  leads to the separate running developer comparison above, not automatic invention.
+  leads to the separately closed developer comparison above, not automatic invention.
 - [Closed capacity T/P search](results/native-capacity-objective-loop-v1.md)
   and [all slots, effects, inputs, geometry and costs](data/native-capacity-objective-loop-v1/README.md):
   all four programs submit, three complete and tie the strong allocation
