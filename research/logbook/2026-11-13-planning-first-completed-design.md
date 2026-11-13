@@ -62,8 +62,9 @@ values. The T editing parent has U=-11.333333333333332; the submitted candidate
 has the same assigned T and an observed outside U loss higher by1. That is
 not a violation or extra veto: U is not that branch's assigned objective.
 The U edit retains its assigned parent loss. The observed difference between
-the two candidates therefore cannot be attributed solely to the code edits
-or objective labels; their initial parents already differ.
+the two candidates does not isolate a gain from their code edits. Their
+different initial parents are part of the declared objective-conditioned
+procedure; they do not invalidate an end-to-end comparison of that procedure.
 
 The U candidate changes only
 `/mechanisms/6/parameters/code_artifact/source`, whereas T changes the
@@ -108,3 +109,37 @@ the unchanged original8cd6157 study. The two older partial snapshots remain
 unchanged; the complete all-slot cold audit and export still wait for normal
 study closure. No additional partial scientific experiment, inferred terminal,
 repair, replacement or loss change is made during this verified wait.
+
+## End to end optimization and isolated edit effects
+
+Parent selection is itself driven by the assigned loss over the common
+reference bank. It belongs to the procedure the project intends to study.
+Different parents are therefore not a new exclusion criterion for comparing
+objective-conditioned optimization. A matched-parent contrast is useful if
+the claim concerns the edit stage alone; it is not required merely to observe
+which institutions a complete declared procedure returns.
+
+This clarifies the earlier phrase about not identifying an objective-label
+effect alone. The two first outputs are valid observations of the whole
+procedure, but one history per objective does not estimate its general
+expected effect, and retaining the parent loss does not show an edit advantage.
+The original numeric results, snapshots, model inputs and selection rules
+remain unchanged. No extra methodological veto is added.
+
+In the eight fresh references, four programs tie for minimum T=-18. The
+single minimum-U reference is reviewer-free assignment, which also belongs
+to that T-minimum set. The reference minima overlap even though the procedure's
+first editing parents differ. Thus the first cross-U gap is not evidence
+of an unavoidable count-versus-content trade-off. This finite baseline fact
+does not establish a global optimum or constrain later generated programs.
+
+By12:29UTC the T:g1 worker submits and exits0 in492.65s, with no timeout or
+redispatch, and the second throughput native-world wire journal appears.
+There are three evaluated own slots, one additional submitted slot running,
+and two not yet run. The original writer and all six analysis continuations
+remain live. No new finished T:g1 loss or normal full-study audit is claimed.
+
+The reference-minimum/partial-observation/documentation checks pass13 tests
+with exit0 in1.05s after this interpretation clarification. The baseline-set
+intersection is computed from the unchanged sealed first-pair snapshot;
+no new scientific observation, loss, selection rule or numerical result is made.

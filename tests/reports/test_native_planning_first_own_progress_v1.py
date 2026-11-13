@@ -63,3 +63,17 @@ def test_first_pair_keeps_both_assigned_ties_and_different_parents():
         'study_normal_terminal_present','final_study_audit_completed','final_selection_made',
         'new_inference_by_snapshot','loss_or_candidate_changed_by_snapshot',
         'beneficial_invention_or_causal_effect_claimed','publication_ready'))
+
+
+def test_reference_minima_overlap_despite_different_objective_conditioned_parents():
+    r=checked(json.loads((ROOT/'research/results/native-planning-first-pair-progress-v1.json').read_text()))
+    refs=r['fresh_reference_cross_scores']
+    minima={o:{v['identity'] for v in refs if v['scores'][o]==min(w['scores'][o] for w in refs)}
+            for o in ('throughput','content-utility')}
+    common='reference-assignment-reserve21-no-review-all'
+    assert len(minima['throughput'])==4 and minima['content-utility']=={common}
+    assert minima['throughput'] & minima['content-utility']=={common}
+    t,u=r['own']
+    assert t['parent_matching_reference_ids'][0] in minima['throughput']
+    assert u['parent_matching_reference_ids'][0] in minima['content-utility']
+    assert t['parent_matching_reference_ids']!=u['parent_matching_reference_ids']

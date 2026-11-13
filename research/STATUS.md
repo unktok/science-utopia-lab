@@ -2,6 +2,14 @@
 
 ## Active publication-ready goal
 
+**November13 12:29UTC fourth submitted design:** T:g1's bounded worker
+submits a definition and exits0 in492.65s, without timeout or redispatch.
+Its second throughput native-world wire journal is present. Three own slots
+are evaluated, the fourth is in native execution, and two are not yet run.
+No new completed loss or overall study closure is inferred. The research
+notes distinguish the declared end-to-end objective-conditioned procedure,
+including parent selection, from an isolated effect of the generated edit.
+
 **November13 12:15:06UTC third own observation:** U:g1 completes with
 T=-18/U=-13.333333333333332 and no generation or technical failure. Its
 assigned loss equals U:g0 and the best fresh reference. The feedback-bearing
@@ -18,8 +26,9 @@ complete native execution and content measurement. Their cross-losses are
 T0:(T=-18,U=-10.333333333333332) and U0:(T=-18,U=-13.333333333333332).
 Each ties the best fresh reference under its own assigned objective. The
 editing parents differ: T starts from advice/reserve21, U from reviewer-free
-assignment/reserve21. The difference between their U scores therefore is
-not an identified effect of their own edits or objective label alone. One
+assignment/reserve21. That parent choice is part of the declared objective-
+conditioned procedure, not a reason to exclude the end-to-end comparison.
+The U gap does not isolate an improvement caused by their own edits. One
 source field changes in each, with no connection/schedule change. The
 [partial pair snapshot](results/native-planning-first-pair-progress-v1.json)
 preserves both observations, all reference cross-scores and exact parents;

@@ -110,8 +110,17 @@ cross-losses are(-18,-10.333333333333332) for T and
 (-18,-13.333333333333332) for U. Both tie their strongest common reference
 under their assigned objective. Their editing parents are different: advice
 for T and reviewer-free assignment for U. The own edit does not improve its
-assigned parent loss in either case. Thus the cross-U difference is not an
-identified effect of the code edit or assigned objective alone. The
+assigned parent loss in either case. Choosing a parent according to the loss
+is part of the end-to-end optimization procedure. Its observed output can be
+compared across objectives without requiring identical parents; the cross-U
+difference does not isolate an advantage of the generated edit itself. The
 [partial pair snapshot](../results/native-planning-first-pair-progress-v1.json)
 keeps these distinctions and all eight reference cross-scores. U:g1 readiness
 is next; four own slots and final normal closure remain pending.
+
+Among these eight fresh references, reviewer-free assignment minimizes both
+recorded T and recorded U. Different first selected programs therefore do
+not by themselves establish an unavoidable T/U trade-off. This is a fact
+about the finite reference pool, not a global bound or a prediction about
+later generated programs. Independent histories and fixed-policy evaluations
+support broader claims separately.

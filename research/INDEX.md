@@ -36,7 +36,8 @@ Historical documents retain their paths and source identities.
   The [first T/U pair](results/native-planning-first-pair-progress-v1.json)
   closes by11:54UTC at(-18,-10.3333…) and(-18,-13.3333…). Each ties its best
   assigned-objective reference and starts from a different editing parent;
-  their U gap is not an isolated edit/label effect. U:g1 readiness follows.
+  their U gap includes objective-conditioned parent selection, not an isolated
+  edit gain. U:g1 readiness follows.
   U:g1 completes12:15UTC atT=-18/U=-13.3333…, tying its previous own loss
   and the same strong reference. Its history is used, but its editing parent
   remains the common reference. Three own slots remain; T:g1 readiness follows.
