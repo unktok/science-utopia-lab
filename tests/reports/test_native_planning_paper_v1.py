@@ -75,3 +75,12 @@ def test_paper_keeps_observed_input_classes_costs_and_unfinished_claims():
         'not useful automatic', 'no unused seed is chosen'):
         assert marker in text
     assert 'three U programs preserve' in (ROOT / 'paper/integrated/discussion.tex').read_text()
+
+
+def test_reading_guide_stays_with_body_instead_of_creating_a_spill_page():
+    entry = (ROOT / 'paper/integrated.tex').read_text()
+    toc_end = entry.index(r'\endgroup')
+    guide = entry.index(r'\paragraph{Reading this manuscript.}')
+    body = entry.index(r'\input{integrated/problem-method}')
+    assert entry.index(r'\clearpage', toc_end) < guide < body
+    assert r'\clearpage' not in entry[guide:body]
