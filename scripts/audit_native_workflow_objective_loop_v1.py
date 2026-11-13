@@ -39,7 +39,8 @@ def worker(root, output):
             raise ValueError('normally closed exact six-slot workflow study required')
         source = source_proofs(driver.ROOT, p['source_commit'], scripts=[
             'scripts/run_native_workflow_objective_loop_v1.py', 'scripts/audit_native_workflow_objective_loop_v1.py',
-            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'], resources=[driver.PROTOCOL])
+            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'],
+            resources=[driver.PROTOCOL] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else []))
         anchor = SystemSpec.from_dict(p['initial_system'])
         observer = ColdObserver(root / 'observer', p['observer_contract']); observer_audit = observer.audit()
         if observer_audit != read(root / 'observer-audit.json'): raise ValueError('original critic audit differs')

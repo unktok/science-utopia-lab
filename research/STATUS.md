@@ -26,7 +26,7 @@ cold full-study audit exists. The old unknown is not resolved.
 | Presentation comparison |8 references,4 own slots, literal partial records | Stopped; do not refill or call complete |
 | Numeric comparator |Independent first dispatch; original6-world plan unchanged; first world T=-12/U=-7 |Running U:g0/reserve13; no final trajectory or audit yet |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
-| New workflow experiment |[Final7-world/28-checkpoint SCRIPTED proof and real readonly prepare](components/native-workflow-objective-loop-v1.md) |8-world plan not dispatched; original prerequisite now unsatisfied; no automatic queue registered |
+| New workflow experiment |[Final7-world/28-checkpoint SCRIPTED v1 proof and real readonly prepare](components/native-workflow-objective-loop-v1.md); separate v2 prerequisite reader/23 light checks |Original8-world plan stays unused with unsatisfied prerequisite; new binding still needs native full-path proof after numeric inference; no automatic queue |
 | Manuscript |69-page integrated working paper and verified rebuild retained | New scientific closure, focused main claim, R2/R3/R6 and final readiness judgment |
 
 The new numeric experiment performs its ordinary fresh8B role loads/inference;

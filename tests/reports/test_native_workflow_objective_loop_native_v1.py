@@ -11,6 +11,7 @@ from pathlib import Path
 import shutil
 import tempfile
 from types import SimpleNamespace
+import pytest
 
 from scripts import run_native_workflow_objective_loop_v1 as driver
 from scripts import audit_native_workflow_objective_loop_v1 as audit
@@ -31,7 +32,9 @@ from utopia.utils.data_utils import write_json_atomic, file_sha256
 IMAGE = 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833'
 
 
-def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit(tmp_path, fixed_corpus, monkeypatch):
+@pytest.mark.parametrize('prerequisite_kind', ['legacy-scripted', 'independent-numeric-v2'])
+def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit(
+        tmp_path, fixed_corpus, monkeypatch, prerequisite_kind):
     original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, IMAGE)
     install_scripted_provider(tmp_path / 'provider', monkeypatch, 2)
     monkeypatch.setattr('requests.get', lambda *a, **k: SimpleNamespace(raise_for_status=lambda: None,
@@ -64,6 +67,10 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         'source_commit': probe.source_commit, 'SCRIPTED': 'original upstream closure is a named fixture'})
     prerequisite = {'directory': str(tmp_path / 'SCRIPTED-chain'),
         'SCRIPTED': 'numeric chain closure is mocked; no real closure claim'}
+    if prerequisite_kind == 'independent-numeric-v2':
+        from tests.reports.native_workflow_prerequisite_fixture_v2 import scripted_predecessor
+        directory = scripted_predecessor(tmp_path / 'SCRIPTED-predecessor')
+        prerequisite = driver.prerequisite_binding(directory)
     origin = {'SCRIPTED': 'not a real archived-study attestation'}
     backend = {k: original['designer'][k] for k in ('model', 'model_digest')}; backend['ollama_version'] = 'SCRIPTED'
     p = driver.build_plan(original, upstream, source=probe.source_commit, origin=origin,
@@ -71,8 +78,9 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         sources=driver.native_sources(probe.source_commit))
     root = tmp_path / 'run'; root.mkdir(); driver.save(root / 'plan.json', p)
     monkeypatch.setattr(driver, 'origin_evidence', lambda origin: (original, upstream))
-    monkeypatch.setattr(driver, 'prerequisite_binding', lambda directory: clone(prerequisite))
-    monkeypatch.setattr(driver, 'require_prerequisite', lambda binding: {'SCRIPTED': 'no actual chain is closed here'})
+    if prerequisite_kind == 'legacy-scripted':
+        monkeypatch.setattr(driver, 'prerequisite_binding', lambda directory: clone(prerequisite))
+        monkeypatch.setattr(driver, 'require_prerequisite', lambda binding: {'SCRIPTED': 'no actual chain is closed here'})
     real_make = LocalRoleBoundNativeFactory.__call__
     def make(self, *a, **kw):
         sim = real_make(self, *a, **kw); sim.llm.sim = sim; return sim
@@ -143,6 +151,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     assert _inventory(root) == before
     write_json_atomic(tmp_path / 'verification.json', {'schema': 'scienceutopia.native-workflow-objective-software-check.v1',
         'classification': 'SCRIPTED-HTTP-corpus-origin-and-prerequisite-fixtures', 'source_commit': probe.source_commit,
+        'prerequisite_kind': prerequisite_kind,
         'actual_bounded_HTTP_worker_calls': len(calls), 'new_model_calls': 0, 'native_software_worlds': 7,
         'annual_checkpoints': 28, 'known_invalid_slots_preserved': 1, 'consumed_own_slots': 6,
         'maximum_actual_wire_utf8_bytes': max(c['wire_utf8_bytes'] for c in calls),

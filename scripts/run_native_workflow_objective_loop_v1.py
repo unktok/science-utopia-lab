@@ -73,6 +73,9 @@ def prerequisite_binding(directory):
     # a missing checksum or changing that historical orchestration record.
     directory = Path(directory).resolve()
     start = decode_json((directory / 'started.json').read_text(), strict=True, finite_floats=True)
+    if start['schema'] == 'scienceutopia.native-parameter-post-stop-dispatch.v1':
+        from scripts.native_workflow_numeric_prerequisite_v2 import binding
+        return binding(directory)
     if start['schema'] != 'scienceutopia.native-parameter-comparator-chain.v1':
         raise ValueError('explicit original numeric continuation required')
     return {'directory': str(directory), 'started_file_sha256': file_sha256(directory / 'started.json'),
@@ -80,6 +83,9 @@ def prerequisite_binding(directory):
 
 
 def require_prerequisite(binding):
+    if binding.get('schema') == 'scienceutopia.native-workflow-numeric-prerequisite.v2':
+        from scripts.native_workflow_numeric_prerequisite_v2 import require_closed
+        return require_closed(binding)
     from scripts.finish_native_institution_loop_v1 import same_files
     from scripts.run_pre_scale_completion_chain_v1 import process_identity
     root = Path(binding['directory'])
@@ -119,7 +125,7 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
     experiment = {'protocol': PROTOCOL, 'role': 'objective-conditioned-native-workflow-design'}
     world = {**clone(original['world']), 'source_commit': source, 'experiment': experiment,
         'measurement_adapter_contract': observer, 'classification': 'actual-native-workflow-objective-loop-v1'}
-    return {'schema': SCHEMA + '.plan', 'source_commit': source, 'runtime': runtime_binding(),
+    result = {'schema': SCHEMA + '.plan', 'source_commit': source, 'runtime': runtime_binding(),
         'protocol': PROTOCOL, 'protocol_sha256': file_sha256(ROOT / PROTOCOL), 'origin': clone(origin),
         'origin_audit_content_sha256': audit['content_sha256'], 'original_native_sources': sources,
         'prerequisite': clone(prerequisite), 'launch_environment': clone(ENVIRONMENT),
@@ -138,6 +144,10 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
             'readiness_sessions': 7, 'proposal_POSTs_per_session': 1, 'replace_failed_slots': False},
         'held_out_evaluation': False, 'independent_optimizer_replications': False,
         'structural_freedom_causal_effect_claimed': False, 'publication_ready': False}
+    if prerequisite.get('schema') == 'scienceutopia.native-workflow-numeric-prerequisite.v2':
+        from scripts.native_workflow_numeric_prerequisite_v2 import PROTOCOL as eligibility
+        result['eligibility_protocol'] = {'path': eligibility, 'sha256': file_sha256(ROOT / eligibility)}
+    return result
 
 
 def require_plan(root):
@@ -264,7 +274,8 @@ def prepare(args):
         'audit_files': {str(v.resolve()): file_sha256(v) for v in (args.audit_one, args.audit_two)}}
     original, audit = origin_evidence(origin)
     p = build_plan(original, audit, source=source, origin=origin, backend=backend_binding(original['designer']),
-        observer_backend=backend_binding(original['scientist']), prerequisite=prerequisite_binding(args.after_numeric_chain),
+        observer_backend=backend_binding(original['scientist']),
+        prerequisite=prerequisite_binding(args.after_numeric_chain or args.after_numeric_dispatch),
         sources=native_sources(original['source_commit']))
     args.output.mkdir(parents=True); save(args.output / 'plan.json', p); require_plan(args.output)
     print(json.dumps({'prepared_source': source, 'native_worlds_upper_bound': 8, 'new_model_POSTs': 0}), flush=True)
@@ -273,8 +284,11 @@ def prepare(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__); sub = parser.add_subparsers(dest='command', required=True)
     p = sub.add_parser('prepare')
-    for name in ('origin-run', 'origin-source', 'audit-one', 'audit-two', 'after-numeric-chain'):
+    for name in ('origin-run', 'origin-source', 'audit-one', 'audit-two'):
         p.add_argument('--' + name, type=Path, required=True)
+    after = p.add_mutually_exclusive_group(required=True)
+    after.add_argument('--after-numeric-chain', type=Path)
+    after.add_argument('--after-numeric-dispatch', type=Path)
     p.add_argument('--output', type=Path, required=True)
     p = sub.add_parser('run'); p.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()

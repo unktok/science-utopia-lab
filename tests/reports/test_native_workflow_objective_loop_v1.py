@@ -167,3 +167,17 @@ def test_queue_guard_requires_absence_and_original_matching_normal_closure(tmp_p
         assert driver.require_prerequisite(binding)['audit_content_sha256'] == driver.read(root / 'audit-1.json')['content_sha256']
     else:
         with pytest.raises(ValueError): driver.require_prerequisite(binding)
+
+
+def test_independent_numeric_route_preserves_r7_and_all_scientific_fields(tmp_path, monkeypatch):
+    from tests.reports.native_workflow_prerequisite_fixture_v2 import scripted_predecessor
+    p, original, audit, sources = setup(tmp_path / 'workflow', monkeypatch)
+    root = scripted_predecessor(tmp_path / 'SCRIPTED-numeric')
+    prerequisite = driver.prerequisite_binding(root)
+    other = driver.build_plan(original, audit, source=p['source_commit'], origin=p['origin'],
+        backend=p['backend'], observer_backend=p['observer_contract']['backend'],
+        prerequisite=prerequisite, sources=sources)
+    assert {k: v for k, v in other.items() if k not in ('prerequisite', 'eligibility_protocol')} == {
+        k: v for k, v in p.items() if k != 'prerequisite'}
+    assert driver.require_prerequisite(prerequisite)['numeric_feedback_imported'] is False
+    assert other['eligibility_protocol']['path'].endswith('independent-numeric-v2.md')

@@ -1,5 +1,15 @@
 # Loss-conditioned native workflow experiment: prepared, not dispatched
 
+**Prospective continuation, November14:** a separate
+[v2 eligibility protocol](../protocols/campaigns/native-workflow-after-independent-numeric-v2.md)
+and reader now support the independently dispatched numeric study without
+retargeting this original frozen plan. A new plan will retain the exact R7,
+controls, scientific budgets and losses; numeric winners/feedback are not
+silently imported across policy families. The23 lightweight prerequisite
+checks pass9.33s. The new-binding committed-source native full-path check is
+still pending, deferred until real numeric inference finishes. There is no
+new workflow dispatch or automatic queue at this snapshot.
+
 The [finite protocol](../protocols/campaigns/native-workflow-objective-loop-v1.md)
 and source-bound runner/cold auditor are implemented at
 `2c7ec07f02202a878795a3b0de5740f3f5ee129a`. This is progress toward the full
