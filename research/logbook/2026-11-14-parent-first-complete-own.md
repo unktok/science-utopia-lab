@@ -34,3 +34,13 @@ of twelve own slots now have finalized observations (one failure, one complete);
 the other ten remain uncompleted. Existing downstream readers wait for normal
 study closure; numeric comparison has not yet dispatched. No original source,
 loss, budget, candidate or selection is modified by this read-only snapshot.
+
+At the later direct read, U/control:g0 also has a complete observation with
+assigned U=-13.333333333333332, equal to U/literal:g0 and the best fresh U
+reference. Its author worker submits in1480.3845s, but these timings are not
+an isolated performance comparison. At19:38:11UTC the writer advances to
+T/literal:g0 readiness. Three own slots now have finalized observations: two
+complete reference ties and the first T/control native failure; nine remain
+uncompleted. This partial U comparison is not a final original-source audit,
+an independent optimizer replication or evidence of presentation superiority.
+Do not rewrite the earlier two-slot sealed snapshot's timestamp or contents.

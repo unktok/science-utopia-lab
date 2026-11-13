@@ -2,6 +2,13 @@
 
 ## Active publication-ready goal
 
+**November14 matched first U observations:** U/control:g0 also completes with
+U=-13.333333333333332, matching U/literal:g0 and the best fresh reference.
+At19:38:11UTC the writer enters T/literal:g0 readiness. Three own slots are
+finalized (two complete ties, one native failure); nine remain open. This
+partial pair is not independent optimizer replication, a final cold audit,
+presentation superiority or generated improvement. All active sources remain fixed.
+
 **November14 operative reserve response:** the original R7 allocation artifact
 completes240 isolated calls on four unchanged historical native inputs, varying
 only the already declared reserve1--60. Reserve21 exactly reproduces every
