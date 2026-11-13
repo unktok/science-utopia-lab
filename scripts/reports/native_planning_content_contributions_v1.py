@@ -123,11 +123,14 @@ def render(report, output):
         axes[1].set(title='Signed fixed-content contributions', ylabel='Recorded utility sum (U = -sum)')
         complete = [w for w in worlds if w['status'] == 'complete']
         axes[0].set_ylim(0, max(1, 1.12 * max((sum(w['sign_counts'].values()) for w in complete), default=0)))
+        from matplotlib.ticker import MaxNLocator
+        axes[0].yaxis.set_major_locator(MaxNLocator(integer=True))
         low = min((w['recorded_utility_by_sign']['negative'] for w in complete), default=0)
         high = max((w['recorded_utility_by_sign']['positive'] for w in complete), default=0)
         axes[1].set_ylim(min(0, 1.12 * low), max(1, 1.12 * high))
         for ax in axes:
-            ax.set(xticks=range(len(worlds)), xticklabels=[w['label'] for w in worlds]); ax.axhline(0, color='#8c96a2', lw=.8)
+            ax.set(xticks=range(len(worlds)), xticklabels=[w['label'] for w in worlds], xlim=(-.6, len(worlds)-.4))
+            ax.axhline(0, color='#8c96a2', lw=.8)
             ax.grid(axis='y', color='#eeeeee'); ax.set_axisbelow(True)
         from matplotlib.patches import Patch
         fig.legend(handles=[Patch(color=c, label=s+' centered content opinion') for s, c in colors.items()],
