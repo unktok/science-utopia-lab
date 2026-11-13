@@ -8,8 +8,14 @@ six additional native worlds, three own numeric proposals per T/U, and reuse
 of the prior closed pilot's exact eight-reference bank. Initial parents match
 the prior free method's first loss-selected parents; only the existing reserve
 changes within1--60. No host consumer/repair/fallback or hidden loss gate is
-added. Runner and deterministic cold/native auditor are being verified before
-dispatch. This is a post-hoc small-budget comparator, not unused evaluation,
+added. Runner and deterministic cold/native auditor pass the271.576s
+SCRIPTED14-world/56-checkpoint path at committed04d0c3e3. Actual prepare
+validates the original audited bank and265 unchanged native/source files with
+zero model calls. The [preparation proof](results/native-parameter-comparator-preparation-verification-v1.json)
+retains both QA attempts, two matching cost CLIs and repeated figure/data
+exports. A finite non-overlapping continuation is implemented; numeric
+scientific dispatch has not happened at this snapshot.
+This is a post-hoc small-budget comparator, not unused evaluation,
 an exhaustive numeric optimum or a completed scientific result. The isolated
 consumer [receipt](results/native-parameter-space-preparation-verification-v1.json)
 retains seven passing tests/four sandbox executions and no model calls.

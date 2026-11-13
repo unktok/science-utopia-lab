@@ -6,17 +6,20 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Finite native reserve comparator protocol](protocols/campaigns/native-parameter-comparator-v1.md):
+- [Finite native reserve comparator](components/native-parameter-comparator-v1.md):
   a six-world parameter-only continuation reuses the closed planning pilot's
   audited common bank and literal objective-selected initial parents. Original
-  native code remains fixed; reserve1--60 alone changes. Runner/cold ask-tell
-  audit are in preparation, with no new numeric scientific dispatch or gain.
+  native code remains fixed; reserve1--60 alone changes. The SCRIPTED full path
+  passes14 native worlds/56 checkpoints, actual prepare validates the original
+  audited bank with zero model calls, and a finite non-overlapping continuation
+  is implemented. Preparation is not numeric scientific dispatch or gain.
 - [Native numerical comparator preparation](publication/native-parameter-baseline-preparation-v1.md):
   a complete-SystemSpec numeric adapter and space-bound wrapper around existing
   adaptive random search are implemented. Existing reserve_units has a real
   native consumer; legacy six-axis domains are not silently expanded.77
-  SCRIPTED interface checks pass. Family/bounds/warm-start/budget and an actual
-  finite native comparator remain to freeze; no new numeric study is dispatched.
+  SCRIPTED interface checks pass. The separate finite reserve protocol now
+  fixes its family/bounds/warm-start/budget, not a converged numerical optimum.
+  No numeric study has started at the preparation snapshot.
 - [Live parent presentation comparison](components/native-parent-presentation-loop-v1.md):
   frozen30e3f5fa starts November14 00:16JST with two actual initial designer
   calibrations required before any scientific reference. Four T/U by

@@ -59,6 +59,15 @@ prospective scientific range.
 
 ## Decisions required before a scientific comparator
 
+The subsequent [finite reserve protocol](../protocols/campaigns/native-parameter-comparator-v1.md)
+now fixes one explicit small-budget continuation: use the closed planning
+pilot's same objective-selected common reference, reserve1--60, one uniform
+proposal then existing adaptive mutations, three own slots per objective.
+It reuses the audited bank rather than silently calling historical results
+fresh. The [implemented path and verification](../components/native-parameter-comparator-v1.md)
+distinguish this resolved prospective choice from the broader requirements
+below; it does not establish convergence or a globally strong comparator.
+
 Declare which system family or families are numeric seeds. A parameter-only
 domain freezes its nonnumeric architecture: copying the best arbitrary common
 reference into an incompatible anchor is not a valid numeric edit. Either
