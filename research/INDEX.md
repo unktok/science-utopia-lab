@@ -14,6 +14,9 @@ Historical documents retain their paths and source identities.
   continuation keeps eight strong references, six own slots and unchanged T/U,
   production and budgets. P is not a constraint.14-world SCRIPTED integration
   and75 final regression checks pass; they are not actual-model results.
+  The [second attempt](results/native-planning-objective-second-launch-verification-v1.json)
+  actually starts09:48UTC November13, passes28/28 real initial controls and
+  advances to the first reference09:53UTC. No own result is claimed yet.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.

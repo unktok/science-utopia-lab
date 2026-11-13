@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November13 09:53UTC:** the prospectively declared second attempt starts
+09:48:29UTC at the same frozen8cd6157 source and with a byte-identical sealed
+plan. Its actual initial readiness passes all28 controls and exits0; the
+original writer86474/session13312 advances to fresh reference cut-reserve21-all.
+Separate same-source analysis90157 waits for normal closure. The
+[second launch receipt](results/native-planning-objective-second-launch-verification-v1.json)
+binds actual source/plan/start/certificate and the prior stopped receipt.
+The stopped first calibration is not resumed or salvaged; there is no third
+automatic attempt. No own candidate loss or improvement is claimed yet.
+
 **November13 stop diagnosis:** the new planning T/U attempt did not keep
 running. Its terminal closes stopped at07:30:43UTC November12, before any
 reference world or own proposal. The24th initial-readiness POST loses its

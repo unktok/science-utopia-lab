@@ -46,3 +46,18 @@ def test_termination_is_not_a_loss_or_a_successful_certificate():
     assert any('500' in s and '16:30:42' in s for s in r['local_service_evidence']['server_exact_lines'])
     assert any('Listening' in s and '16:30:43.853' in s for s in r['local_service_evidence']['server_exact_lines'])
     assert not any(r[k] for k in ('readiness_pass_claimed', 'selection_exists', 'retry_or_output_salvage_performed', 'publication_ready', 'new_model_calls'))
+
+
+def test_separate_attempt_uses_same_plan_and_actual_successful_initial_worker():
+    r = receipt('native-planning-objective-second-launch-verification-v1.json')
+    first = receipt('native-planning-objective-launch-verification-v1.json')
+    assert r['plan_content_sha256'] == first['plan_content_sha256']
+    assert r['plan_file_sha256'] == first['plan_file_sha256']
+    assert r['plan_identical_to_stopped_attempt'] and r['original_source_and_protocol_unchanged']
+    assert r['readiness_all_controls_passed'] and r['readiness_cases'] == 28
+    worker = checked(r['readiness_worker'])
+    assert worker['passed'] and worker['certificate_sha256'] == r['readiness_certificate_file_sha256']
+    assert r['actual_progress_at_receipt']['stage'] == 'references'
+    assert r['start']['pid'] == 86474 and r['writer_session'] == 13312
+    assert not r['prior_response_salvage'] and r['failed_scientific_slots_replaced'] == 0
+    assert not r['publication_ready'] and not r['new_independent_optimizer_replication']

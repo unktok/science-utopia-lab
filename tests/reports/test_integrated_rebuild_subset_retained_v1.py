@@ -28,7 +28,11 @@ def test_actual_integrated_subset_rebuild_retains_scopes_and_reviewed_page_ident
             'new_model_calls', 'published_or_uploaded', 'anonymous_or_release_clearance', 'publication_ready'):
         assert not r[name]
     for name, expected in subset['files'].items():
-        assert file_sha256(ROOT / name) == expected
+        # A later manuscript may legitimately change its live TeX. This receipt
+        # binds the exact earlier staging commit, not today's editable draft.
+        blob = subprocess.check_output(['git', 'show', r['staging_source_commit'] + ':' + name], cwd=ROOT)
+        import hashlib
+        assert hashlib.sha256(blob).hexdigest() == expected
     source = subprocess.check_output(['git', 'show', r['staging_source_commit'] + ':scripts/reports/paper_rebuild_bundle.py'], cwd=ROOT)
     assert source == (ROOT / 'scripts/reports/paper_rebuild_bundle.py').read_bytes()
 

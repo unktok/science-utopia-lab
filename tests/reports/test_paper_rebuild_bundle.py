@@ -147,8 +147,27 @@ def test_v2_empirical_allowlist_has_all_actual_literal_inputs():
     assert all(not n.startswith(('outputs/', 'data/', 'game-ui-v2/', 'research/')) for n in policy['files'])
 
 
+def historical_integrated_root(tmp_path):
+    """Materialize only the earlier allowlist; never amend its frozen receipt.
+
+    A shared local clone permits the real source-manifest git-show checks. No
+    network, historical code, TeX or scientific runtime is executed here.
+    """
+    import subprocess
+    root = tmp_path / 'historical-source'
+    source = 'ef104f33f14b408fc48201757cff794a3db3c3b9'
+    subprocess.run(['git', 'clone', '--shared', '--no-checkout', '--quiet', str(bundle.ROOT), str(root)], check=True)
+    policy_path = 'research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json'
+    policy = json.loads(subprocess.check_output(['git', 'show', source + ':' + policy_path], cwd=bundle.ROOT))
+    for name in [*policy['files'], policy_path]:
+        destination = root / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(subprocess.check_output(['git', 'show', source + ':' + name], cwd=bundle.ROOT))
+    return root
+
+
 def test_integrated_policy_stages_only_reviewed_manuscript_dependencies(tmp_path):
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path)
     p = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json').read_text())
     r = bundle.stage(root, p, tmp_path / 'subset', source_commit='SCRIPTED-staging-source')
     assert len(r['files']) == 51 and len(r['literal_tex_dependencies']) == 48
@@ -165,7 +184,7 @@ def test_integrated_policy_stages_only_reviewed_manuscript_dependencies(tmp_path
 def test_integrated_original_receipt_and_literal_parent_inputs_cannot_be_weakened(tmp_path, change, monkeypatch):
     from copy import deepcopy
     from utopia.system.design_patch import digest
-    root = bundle.ROOT
+    root = historical_integrated_root(tmp_path)
     p = json.loads((root / 'research/publication/paper-rebuild-allowlist-integrated-capacity-v1.json').read_text())
     read = bundle.read_file
     def modified(base, name):

@@ -79,3 +79,10 @@ old observations or promise uninterrupted service. The scientific ceiling stays
 the all-slot/cross-loss/effect readers and the earlier closed agenda manuscript
 integration remain useful work. The important objective-to-institution answer,
 independent confirmation and final submission judgment remain open.
+
+The [actual second launch](../results/native-planning-objective-second-launch-verification-v1.json)
+starts09:48:29UTC November13 at unchanged8cd6157 with the same sealed plan.
+Its28 real controls pass in about280s and the outer worker exits0. Writer86474
+(session13312) reaches the first reference09:53:10UTC; original-source analysis
+90157 waits for normal closure. This is no longer a readiness-only wait, but
+there is no own submission, score or improvement at this observation.
