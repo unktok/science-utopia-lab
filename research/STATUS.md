@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+**November14 joint incumbent alias preparation:** the
+[read-only K/O evaluation layer](components/native-joint-incumbent-evaluation-v1.md)
+freezes development-only targets before unused-world evaluation, then copies
+their already covered outcomes without additional jobs. Original own choices,
+all nulls and both eight-contrast readouts remain literal. The47-check
+SCRIPTED selection/reader/export scope passes57.26s, including an own policy
+that beats K only on the unused world and a failed K that must not be rescued.
+Actual clean-source CLI verification on the retained SCRIPTED report remains
+separate; no actual evaluation seed, model call or scientific gain is added.
+
 **November14 first own presentation result and diagnosis:** all eight fresh
 references are complete. The first T/control policy is generated and submitted,
 but its actual native execution fails in year1: its empty-cycle decision

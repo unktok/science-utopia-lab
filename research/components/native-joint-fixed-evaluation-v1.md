@@ -78,3 +78,11 @@ comparison and finite actual seed list remain to decide after the ongoing
 studies. The [incumbent/generated-output note](../publication/optimization-incumbent-vs-generated-output-v1.md)
 also separates best-known optimization performance from generated submissions
 without rewriting any original selection or adding simulation.
+
+The separate [development-only incumbent alias layer](native-joint-incumbent-evaluation-v1.md)
+freezes K/O targets from closed development reports and the prepared joint plan
+before unused evaluation, then copies their existing outcomes. All required
+targets are already covered by this bank. This does not modify the original
+eight own-selection labels, add worlds, evaluate every tied program or reselect
+from unused scores. Its software checks are separate from this source-pinned
+native preparation and from any future actual evaluation.
