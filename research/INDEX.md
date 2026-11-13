@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Parent presentation comparison](publication/native-parent-presentation-study-v1.md):
+  the next finite design contrasts the existing structure-only first planner
+  with exact parent source and its own observation, preserving T/U and all
+  institutional freedoms. An opt-in implementation and114 SCRIPTED checks
+  are complete; original-request offline projection and real-backend capacity
+  remain to verify. No new model experiment or improvement is claimed.
 - [Signed accepted-content contributions](components/native-planning-content-contributions-v1.md):
   the actual double export closes13:30:59UTC November13, retaining216 accepted
   occurrences/54 unique contents, all positive or zero. Rational explanations

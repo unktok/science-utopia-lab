@@ -2,6 +2,15 @@
 
 ## Active publication-ready goal
 
+**Next research comparison:** [literal parent presentation](publication/native-parent-presentation-study-v1.md)
+keeps T/U, native scientist behavior and free source/graph authority unchanged,
+contrasting the existing structural first-plan view with the exact selected
+parent and its already recorded loss. The optional implementation has114
+SCRIPTED checks, including calibration API and cold author replay. This is
+preparation, not actual backend readiness, a dispatched study or evidence that
+presentation caused the old narrow search. Its proposed20-world comparison
+still needs executable source-bound orchestration and actual initial certificates.
+
 **November13 integrated planning search manuscript:** the reviewed69-page
 [new PDF](../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)
 includes the complete14-world study, all reference/own scores and ties, three
