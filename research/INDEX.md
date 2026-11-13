@@ -16,7 +16,9 @@ Historical documents retain their paths and source identities.
   concurrent QA, scientific retry or automatic workflow dispatch.
   [First numeric world](logbook/2026-11-14-numeric-first-world.md): reserve3
   completes T=-12/U=-7, worse than the T=-18 anchor, with earlier attrition;
-  U:g0/reserve13 is running. This is a partial trajectory, not final audit.
+  Later U:g0/reserve13 completes T=-12/U=-8 and U:g1/reserve27 completes
+  T=-14/U=-9.3333; T:g1/reserve10 is running. These are partial trajectories,
+  not a final audit or improvement over the best-known reference.
 - [Current presentation stop and workflow preparation](logbook/2026-11-14-workflow-preparation-and-presentation-stop.md):
   original writer stops on a1200s unknown readiness completion at20:54UTC;
   analysis/numeric continuation stop without dispatch or fabricated closure.
@@ -35,6 +37,10 @@ Historical documents retain their paths and source identities.
   preserves exact phase/edge changes, nulls and distinct best-known/best-own
   curves;13 light units pass. Its new source3b912d17 is frozen but unused,
   awaiting the native double-audit/report proof after numeric closure.
+  [Actual deferred QA](logbook/2026-11-14-reserve-manuscript-and-deferred-qa.md)
+  now waits in session63329/PID87205; it can run one SCRIPTED check after the
+  original normal closure, not dispatch workflow science. The same note records
+  source-only manuscript additions while the reviewed69-page PDF stays fixed.
 - [Editable native workflows](components/native-workflow-domain-v4.md): new v4
   scope frees native phase order while retaining original effect contracts and
   typed plan/paper origins. It is connected to the existing whole-graph loss
