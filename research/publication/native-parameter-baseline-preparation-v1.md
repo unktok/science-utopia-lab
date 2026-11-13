@@ -48,6 +48,15 @@ checks expand that to67/13.51s and77/14.18s. These scopes overlap. A separate
 isolated consumer test is provided to check that the emitted actual native
 program's commands change while its resource total is conserved.
 
+At committed9031064a, that isolated check and its older capacity-rule controls
+pass seven tests in2.508s: four actual sandbox executions, without model calls.
+Reserve20 sends2 units to `soon`; reserve21 sends1 to `near`, from the same
+synthetic62-unit input. Both conserve62. This is consumer evidence, not a
+completed scientist trajectory or an observed loss improvement. The
+[immutable preparation receipt](../results/native-parameter-space-preparation-verification-v1.json)
+retains exact source/JUnit hashes and separates the fixture bounds from any
+prospective scientific range.
+
 ## Decisions required before a scientific comparator
 
 Declare which system family or families are numeric seeds. A parameter-only

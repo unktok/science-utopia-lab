@@ -156,6 +156,27 @@ class NativeParameterOptimizer:
     def tell(self, observations):
         self._optimizer.tell(observations)
 
+    def warm_start(self, observation):
+        """Import one declared measured anchor before any proposals.
+
+        This is a reference, not an own proposal or a new evaluator call. The
+        campaign must verify its original native evidence and assigned loss.
+        The existing serialized optimizer supports a known incumbent; no
+        fabricated pending suggestion or synthetic evaluator response is used.
+        """
+        from .blackbox import Observation, AdaptiveRandomSearch, canonical_json
+        state = self._optimizer.state_dict()
+        if state['proposal_index'] or state['pending'] or state['observations'] or state['seen_candidates']:
+            raise ValueError('warm start only before the first proposal')
+        if not isinstance(observation, Observation) or observation.status != 'complete':
+            raise ValueError('one complete declared native reference required')
+        self._space.validate(observation.candidate)
+        if digest(observation.candidate) != digest(self._space.binding['anchor']):
+            raise ValueError('warm start must be the literal numeric-space anchor')
+        state['observations'] = [observation.to_dict()]
+        state['seen_candidates'] = [canonical_json(observation.candidate)]
+        self._optimizer = AdaptiveRandomSearch.from_state(self._space, state)
+
     def state_dict(self):
         # Unsealed, so it can be passed once to the existing journal save API.
         return {'schema':self.SCHEMA, 'space_binding':self._space.binding,

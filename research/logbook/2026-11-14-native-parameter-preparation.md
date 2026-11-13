@@ -34,3 +34,10 @@ unlisted raw fields rather than preserve the submitted full JSON. The new
 93-check scope passes16.74s; the document checker passes25 documents/683 local
 links/six snapshots. These overlapping scopes use no actual model inference.
 Commit the new adapter before the isolated actual-consumer check.
+
+The subsequent seven-test actual-consumer scope exits0 in2.508s at committed
+9031064a. Four sandbox executions include two numeric variants: reserve20
+transfers2 to `soon`, reserve21 transfers1 to `near`; both conserve62 units.
+The [preparation receipt](../results/native-parameter-space-preparation-verification-v1.json)
+retains this synthetic-frame evidence, overlapping unit scopes and source
+hashes. It does not claim a new numeric scientific study or gain.
