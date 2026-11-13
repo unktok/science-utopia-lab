@@ -70,7 +70,7 @@ def test_paper_keeps_observed_input_classes_costs_and_unfinished_claims():
     for marker in ('All six programs submit and complete', 'No reference fallback',
         '91 pairs', '36 tie only in T', 'eight exact observed-input classes',
         '336', '56 committed annual boundaries', '216 accepted occurrences',
-        '54 unique contents', '13,014.325s', '2,196,668', '194,184', '368,423',
+        '54 unique contents', '13,014.325 seconds', '2,196,668', '194,184', '368,423',
         '162 critic POSTs', '86 POSTs', '200 POSTs', 'unknown token usage',
         'not useful automatic', 'no unused seed is chosen'):
         assert marker in text
