@@ -113,7 +113,8 @@ Pは初期研究者の年末稼働flagを
 全36図・27表・26引用、二回cached build／本文／log一致と全69頁の配置を確認し、
 冒頭1--3頁と追加48--52頁を150dpiでも確認した。旧66頁以下のPDF・receiptは保持する。
 直接近いgovernance研究も引用し、一般的なgraph／制度探索の優先性を主張しない。
-旧66頁の54ファイル最小再構築は固有のsnapshotとして検証済みだが、新69頁の最小再構築は未完了。
+新69頁も58ファイルからcached再構築し、本文と全69頁画像の一致を
+[検証済み](research/results/integrated-planning-search-rebuild-subset-verification-v1.json)。旧66頁の54ファイル再構築は固有のsnapshotとして保持する。
 形式的な原稿更新やページ数を、主会議に十分な研究結果の実証とは扱わない。
 [以前の有限パッケージの終了条件](research/pre-scale-completion.md)に沿った別sourceの目的別探索は、
 16枠・選択後27物理評価・二回全監査まで閉じた。[実結果と全データ](research/results/pre-scale-search-v1.md)

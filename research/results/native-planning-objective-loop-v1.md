@@ -130,6 +130,7 @@ decision must distinguish objective support, effective action choices and
 proposal presentation/capability before expanding independent histories or
 running the prepared selection-fixed unused-seed evaluator. The
 [reviewed69-page PDF](../../output/pdf/science-utopia-lab-integrated-planning-search-working-paper.pdf)
-now includes this closed result and its three print-sized figures. R2/R3/R6,
-the new minimal rebuild subset and publication readiness remain open. No new
+now includes this closed result and its three print-sized figures; its58-file
+subset also reconstructs identical text and all69 page images. R2/R3/R6 and
+publication readiness remain open. No new
 seed or follow-up study is dispatched by this report.

@@ -38,7 +38,7 @@ Historical documents retain their paths and source identities.
   The first pre-science stop and old partial snapshots remain unchanged.
   No new unused-seed evaluation, independent optimizer replication or generated
   advantage is claimed. The reviewed69-page draft includes this closure;
-  R2/R3/R6 and its new minimal rebuild subset remain open.
+  R2/R3/R6 remain open; its own58-file minimal rebuild is now verified.
 - [Closed native catalog actuation comparison](results/native-catalog-actuation-v1.md):
   all3 actual worlds and original double audits/costs/readouts close. Cut
   hasT=-12/P=-15; concrete advice and direct assignment each haveT=-18/P=-16.
@@ -46,9 +46,10 @@ Historical documents retain their paths and source identities.
   original planning calls. Both actual figures and all496 replies/costs are
   retained. Useful developer support, not automatic invention or held-out evidence.
 - [Integrated manuscript rebuild subset](../docs/paper-rebuild-bundle.md):
-  54 exact files stage/build offline; text and all66 rendered page images
-  match the reviewed catalog planning draft. The old51-file/64-page package
-  and its receipt remain fixed. No raw/model data, numerical rerun or release clearance.
+  58 exact files stage/build offline; text and all69 rendered page images
+  match the reviewed planning-search draft. The old54-file/66-page and
+  51-file/64-page packages and receipts remain fixed. No raw/model data,
+  numerical rerun or release clearance.
 - [Complete planning search readouts](components/native-planning-objective-readouts-v1.md):
   frozen780aa95 passes337.15s through14 SCRIPTED-HTTP native worlds, actual
   calibration/authoring,56 checkpoints, double cold audits and two identical
@@ -65,7 +66,8 @@ Historical documents retain their paths and source identities.
   all14 planning worlds, complete table, three print-sized figures, actual
   consumers/inputs/content support and costs join every earlier track.
   All69 layouts and150dpi pages1--3/48--52 are reviewed; cached text/logs agree.
-  Old66-page and earlier artifacts remain fixed; new minimal subset is pending.
+  Old66-page and earlier artifacts remain fixed; the new58-file subset also
+  rebuilds with identical text and all69 page images.
 - [Preserved64-page capacity manuscript](../output/pdf/science-utopia-lab-integrated-capacity-authority-working-paper.pdf)
   and [its own build/layout/source binding](../paper/integrated-capacity-authority-build-v1.json):
   all prior tracks plus the closed T/P pilot, actual paths/geometry, complete

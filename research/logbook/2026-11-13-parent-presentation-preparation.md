@@ -50,3 +50,22 @@ The corrected and expanded scope passes153 checks35.30s. The document checker
 passes25 documents/667 local links/six snapshots with no network/model calls.
 The new58-file allowlist is preparation only until its actual clean-source CLI
 and cache-only PDF rebuild are observed; staging tests are not that build.
+
+At cleanf4d0fe57, the actual CLI stages58 files/55 literal dependencies and
+exits0. Its manifest content is`d88d86432627fb3ef98f0a94edd087cd849f8f3ff3287beaa0e390243e97134e`.
+The first build exits1 before TeX because the output directory was created
+relative to `paper/` instead of its parent. Creating the intended staging-root
+directory fixes that operational error; unchanged source/flags build with
+exit0 using only the existing cache. Rendering exits0. Text and all69 page
+PNG bytes match the reviewed PDF, while binary PDF bytes differ. Page1/48
+are freshly inspected without clipping/overlap. The [new receipt](../results/integrated-planning-search-rebuild-subset-verification-v1.json)
+records both build attempts, every file/page hash and the limited rebuild
+scope. No raw audit, numerical inference, submission or ready judgment follows.
+
+After retention and current front-door changes,38 focused checks pass14.78s;
+the document checker passes25 documents/672 local links/six snapshots.
+The next implementation task is the finite two-presentation/four-history
+runner and its original cold audit, including production role factory,
+bounded execute/replay and feedback-bearing requests. The actual backend
+certificates and20-world study remain unstarted. Do not count this optional
+view, calibration mocks or paper rebuild as the missing scientific answer.

@@ -12,8 +12,9 @@ ties, actual input/consumer analysis, signed content and measured costs.
 Three print-sized figures retain exact coordinates and every observed tie.
 The [66-page catalog snapshot](integrated-catalog-planning-build-v1.json),
 64-page capacity draft,61-page advice draft and all older PDFs/receipts keep
-their original bytes. The new minimal rebuild subset is not yet verified;
-the older54-file package continues to reconstruct its own66-page snapshot.
+their original bytes. The new58-file minimal subset reconstructs the69-page
+draft with identical text and all69 page images; [verification](../research/results/integrated-planning-search-rebuild-subset-verification-v1.json).
+The older54-file package continues to reconstruct its own66-page snapshot.
 
 Concrete advice and legal assignment each yield18 accepted decision records
 versus12 with no agenda effect on one reused development seed. All ten advisory

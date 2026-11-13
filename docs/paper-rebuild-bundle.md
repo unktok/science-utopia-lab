@@ -4,8 +4,26 @@
 
 The [reviewed69-page planning search draft](../paper/integrated-planning-search-build-v1.json)
 has a verified full-checkout cached build, source/evidence manifests and visual
-review. Its new minimal rebuild subset is not yet verified. The subsets below
-remain proofs of their own older snapshots, not of the new69-page artifact.
+review. Its [explicit58-file subset](../research/publication/paper-rebuild-allowlist-integrated-planning-search-v1.json)
+also stages from cleanf4d0fe576fa1b5487ade490b7c0f7281a7d32b54 and builds
+with only the existing cache. Extracted text and all69 rendered90dpi page
+images match the reviewed artifact; pages1 and48 receive fresh visual checks.
+The [verification](../research/results/integrated-planning-search-rebuild-subset-verification-v1.json)
+retains every file/page hash and the first missing-output-directory build error,
+followed by a successful unchanged-source build. PDF binary bytes differ.
+The58 files include55 literal dependencies, LICENSE, reviewed PDF and receipt.
+This is not numerical/raw reproduction, fresh inference or release clearance.
+Use that exact checkout and a fresh destination:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-planning-search-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Follow REBUILD.md and create the indicated output directory relative to the
+staging root before building. The subsets below remain proofs of their own
+older snapshots; none is silently substituted for the new69-page artifact.
 
 ## Preserved catalog planning manuscript
 

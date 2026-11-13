@@ -24,8 +24,9 @@ The [build receipt](../paper/integrated-planning-search-build-v1.json) binds
 clean78e469a5,36 figures/27 tables/26 references, two cached builds with matching
 text/logs, all69 layouts and150dpi pages1--3/48--52. All28302 word boxes are
 accounted for, without off-page words or unresolved/layout warnings. The old
-66-page artifact and all predecessors stay fixed. New minimal reconstruction
-and R2/R3/R6 remain open; neither manuscript volume nor QA establishes readiness.
+66-page artifact and all predecessors stay fixed. The [new58-file subset](results/integrated-planning-search-rebuild-subset-verification-v1.json)
+also reconstructs the exact text and all69 reviewed page PNGs, with fresh
+page1/48 checks. R2/R3/R6 remain open; manuscript volume and QA do not establish readiness.
 
 **November13 13:31:44UTC normal study and analysis closure:** all8 references
 and6 own proposals complete at13:25:23UTC. Original double audits/costs agree
