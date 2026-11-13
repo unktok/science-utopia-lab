@@ -30,7 +30,8 @@ AUDITS=('scienceutopia.pre-scale-information-audit.v1','scienceutopia.pre-scale-
         'scienceutopia.native-capacity-objective-loop-audit.v1',
         'scienceutopia.native-capacity-fixed-evaluation-audit.v1',
         'scienceutopia.native-catalog-actuation-audit.v1',
-        'scienceutopia.native-planning-objective-loop-audit.v1')
+        'scienceutopia.native-planning-objective-loop-audit.v1',
+        'scienceutopia.native-planning-fixed-evaluation-audit.v1')
 
 
 def classify_numeric(relative):
@@ -165,7 +166,8 @@ def analyze(root,plan,audit):
         result['scientific_termination']='stopped; no held-out evaluation or successful scientific closure'
     if audit['schema'] in AUDITS[7:10] or audit['schema'] in (
             'scienceutopia.native-instruction-timing-support-audit.v1',
-            'scienceutopia.native-planning-objective-loop-audit.v1'):
+            'scienceutopia.native-planning-objective-loop-audit.v1',
+            'scienceutopia.native-planning-fixed-evaluation-audit.v1'):
         critic=audit['observer']
         result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
             'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],

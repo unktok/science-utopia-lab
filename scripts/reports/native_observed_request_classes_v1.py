@@ -14,6 +14,7 @@ from utopia.utils.data_utils import file_sha256
 ROOT = Path(__file__).resolve().parents[2]
 SCHEMA = 'scienceutopia.native-observed-request-classes.v1'
 AUDITS = {
+    'scienceutopia.native-planning-fixed-evaluation-audit.v1',
     'scienceutopia.native-planning-objective-loop-audit.v1',
     'scienceutopia.native-catalog-actuation-audit.v1',
     'scienceutopia.native-capacity-objective-loop-audit.v1',

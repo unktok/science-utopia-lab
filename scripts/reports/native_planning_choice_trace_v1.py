@@ -64,16 +64,31 @@ def export(args):
     if paths[1].read_bytes() != paths[2].read_bytes(): raise ValueError('matching original double audits required')
     hashes = {str(p): file_sha256(p) for p in paths}; before = _inventory(root)
     plan, audit = [checked(json.loads(p.read_text())) for p in paths[:2]]
-    if (plan['schema'] != 'scienceutopia.native-planning-objective-loop.v1.plan'
-            or audit['schema'] != 'scienceutopia.native-planning-objective-loop-audit.v1'
+    study = getattr(args, 'study', 'development')
+    if study == 'development':
+        plan_schema = 'scienceutopia.native-planning-objective-loop.v1.plan'
+        audit_schema = 'scienceutopia.native-planning-objective-loop-audit.v1'
+        schema = SCHEMA
+        if (plan['generations'] != 3 or len(plan['reference_order']) != 8 or len(audit['authoring']) != 6
+                or not {'reference-' + n for n in plan['reference_order']} <= {w['identity'] for w in audit['worlds']}):
+            raise ValueError('all original planning references and own slots required')
+    elif study == 'fixed-evaluation':
+        # Reconstruct every logical label, exact submitted system, null and
+        # seed join through the same strict all-policy score reader.
+        from scripts.reports.native_objective_fixed_evaluation_v1 import summarize
+        summarize(plan, audit, study='planning-v1')
+        plan_schema = 'scienceutopia.native-planning-fixed-evaluation.v1.plan'
+        audit_schema = 'scienceutopia.native-planning-fixed-evaluation-audit.v1'
+        schema = 'scienceutopia.native-planning-fixed-choice-trace.v1'
+    else: raise ValueError('explicit supported planning trace study required')
+    if (plan['schema'] != plan_schema
+            or audit['schema'] != audit_schema
             or audit['source_commit'] != plan['source_commit'] or pinned_revision(frozen) != plan['source_commit']
             or audit['plan_sha256'] != plan['content_sha256'] or audit['closure']['terminal']['status'] != 'closed'
             or audit['source_proof']['status'] != 'verified-exact-source-closure'
             or digest(before) != audit['raw_inventory_sha256'] or audit['new_model_calls'] or audit['new_code_executions']
-            or plan['objectives'] != ['throughput', 'content-utility'] or plan['generations'] != 3
-            or len(plan['reference_order']) != 8 or len(audit['authoring']) != 6
-            or len({w['identity'] for w in audit['worlds']}) != len(audit['worlds'])
-            or not {'reference-' + n for n in plan['reference_order']} <= {w['identity'] for w in audit['worlds']}):
+            or plan['objectives'] != ['throughput', 'content-utility']
+            or len({w['identity'] for w in audit['worlds']}) != len(audit['worlds'])):
         raise ValueError('complete original planning source/audit/raw and all declared references/slots required')
     rows = plan['catalog']['directions']
     if (len({r['topic'] for r in rows}) != len(rows) or digest(rows) != plan['catalog']['directions_sha256']):
@@ -83,7 +98,7 @@ def export(args):
         cells = [p for p in root.glob('**/worlds/' + world['identity'] + '-s' + str(world['seed'])) if p.is_dir()]
         if len(cells) != 1: raise ValueError('unique original audited world directory required')
         worlds.append(summarize_world(cells[0], world, catalog))
-    result = {'schema': SCHEMA, 'analysis_source_commit': reader_source,
+    result = {'schema': schema, 'analysis_source_commit': reader_source,
         'scientific_source_commit': plan['source_commit'], 'plan_sha256': plan['content_sha256'],
         'audit_content_sha256': audit['content_sha256'], 'raw_inventory_sha256': digest(before),
         'catalog': plan['catalog'], 'worlds': worlds,
@@ -109,7 +124,7 @@ def export(args):
                         'year': year['year'], 'actor_id': actor['id'],
                         **{k: actor[k] for k in ('is_active', 'resources', 'project_start_year', 'project_end_year')},
                         'newest_direction_json': json.dumps(actor['newest_direction'], sort_keys=True, ensure_ascii=False)})
-    save(out / 'manifest.json', {'schema': SCHEMA + '.export', 'inputs': hashes,
+    save(out / 'manifest.json', {'schema': schema + '.export', 'inputs': hashes,
         'analysis_source_commit': reader_source, 'adapter_file_sha256': file_sha256(Path(__file__)),
         'files': {p.name: file_sha256(p) for p in sorted(out.iterdir())}, 'new_model_calls': 0, 'new_code_executions': 0})
     print(json.dumps({'worlds': len(worlds), 'direction_requests': sum(len(w['direction_requests']) for w in worlds)}))
@@ -119,6 +134,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ('run', 'frozen-source', 'audit-one', 'audit-two', 'output'):
         parser.add_argument('--' + key, type=Path, required=True)
+    parser.add_argument('--study', choices=('development', 'fixed-evaluation'), default='development')
     args = parser.parse_args()
     import os, subprocess, sys
     if os.environ.get('SCIENCE_UTOPIA_COLD_PLANNING_CHOICES_WORKER') == '1': export(args); return

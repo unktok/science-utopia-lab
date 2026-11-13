@@ -32,6 +32,9 @@ def fixed_selection(original,audit,*,study='count-content-v1'):
     if study=='count-content-v1':
         plan_schema='scienceutopia.native-objective-instrument-loop.v1.plan'
         audit_schema='scienceutopia.native-objective-instrument-loop-audit.v1'
+    elif study=='planning-v1':
+        plan_schema='scienceutopia.native-planning-objective-loop.v1.plan'
+        audit_schema='scienceutopia.native-planning-objective-loop-audit.v1'
     elif study=='capacity-v1':
         plan_schema='scienceutopia.native-capacity-objective-loop.v1.plan'
         audit_schema='scienceutopia.native-capacity-objective-loop-audit.v1'

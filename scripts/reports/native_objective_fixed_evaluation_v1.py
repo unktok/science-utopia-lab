@@ -25,6 +25,14 @@ def summarize(plan,audit,*,study='count-content-v1'):
         schema='scienceutopia.native-capacity-fixed-report.v1'
         if plan['objectives']!=['throughput','founder-activity']:
             raise ValueError('literal T/P objectives required')
+    elif study=='planning-v1':
+        plan_schema='scienceutopia.native-planning-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-planning-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-planning-fixed-report.v1'
+        from utopia.system.native_planning_controls import ORDER
+        if (plan['objectives']!=['throughput','content-utility']
+                or plan['evaluation']['reference_labels']!=list(ORDER)):
+            raise ValueError('literal planning T/U objectives and all eight controls required')
     else:raise ValueError('explicit supported fixed-report study required')
     if (plan['schema']!=plan_schema
             or audit['schema']!=audit_schema
@@ -97,7 +105,8 @@ def render(report,output):
                 xticklabels=[short(s) for s in report['labels']]);ax.tick_params(axis='x',labelrotation=60)
             for tick in ax.get_xticklabels():tick.set_ha('right')
             ax.grid(axis='y',color='#ededed');ax.legend(title='World seed',fontsize=6,title_fontsize=7)
-        fig.suptitle('Frozen submitted policies and five controls: unused world seeds, no reselection',fontsize=10)
+        count = 'eight' if report['schema']=='scienceutopia.native-planning-fixed-report.v1' else 'five'
+        fig.suptitle('Frozen submitted policies and '+count+' controls: unused world seeds, no reselection',fontsize=10)
         fig.tight_layout(rect=(0,0,1,.94))
         for ext in ('png','svg'):fig.savefig(output/('fixed-policy-seed-scores.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
         plt.close(fig)

@@ -8,8 +8,21 @@ import subprocess
 import sys
 
 
-def worker(root,output):
-    from scripts import run_native_objective_fixed_evaluation_v1 as driver
+def worker(root,output,*,study='count-content-v1'):
+    if study=='count-content-v1':
+        from scripts import run_native_objective_fixed_evaluation_v1 as driver
+        audit_schema='scienceutopia.native-objective-fixed-evaluation-audit.v1'
+        source_scripts=['scripts/run_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    elif study=='planning-v1':
+        from scripts import run_native_planning_fixed_evaluation_v1 as driver
+        audit_schema='scienceutopia.native-planning-fixed-evaluation-audit.v1'
+        source_scripts=['scripts/run_native_planning_fixed_evaluation_v1.py',
+            'scripts/run_native_objective_fixed_evaluation_v1.py',
+            'scripts/audit_native_planning_fixed_evaluation_v1.py',
+            'scripts/audit_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    else:raise ValueError('explicit known fixed-evaluation study required')
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_design_benchmark import loaded
     from scripts.native_benchmark_physical import physical_proof
@@ -40,9 +53,7 @@ def worker(root,output):
                     or dispatched['root']!=prepared['root'] or dispatched['seeds']!=p['evaluation']['seeds']
                     or not epoch(prepared['checked_utc'])<=epoch(dispatched['checked_utc'])<=epoch(start['started_utc'])):
                 raise ValueError('literal pre-dispatch unused-seed proof differs')
-        source=source_proofs(driver.ROOT,p['source_commit'],scripts=[
-            'scripts/run_native_objective_fixed_evaluation_v1.py','scripts/native_benchmark_physical.py',
-            'scripts/native_observer_physical_v1.py'],resources=[driver.PROTOCOL])
+        source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=[driver.PROTOCOL])
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
         if observer_audit!=read(root/'observer-audit.json'):raise ValueError('literal observer audit differs')
         cells=set();caches=set();keys=set();worlds=[]
@@ -92,7 +103,7 @@ def worker(root,output):
         progress=json.loads((root/'progress.json').read_text())
         if progress['stage']!='closed' or progress['active'] is not None:raise ValueError('fixed evaluation final progress differs')
         if before!=_inventory(root):raise ValueError('raw evaluation changed during cold proof')
-        result={'schema':'scienceutopia.native-objective-fixed-evaluation-audit.v1','source_commit':p['source_commit'],
+        result={'schema':audit_schema,'source_commit':p['source_commit'],
             'plan_sha256':p['content_sha256'],'source_proof':source,'closure':{'started':start,'terminal':end},
             'origin_audit_content_sha256':p['origin_audit_content_sha256'],'fixed_selection':p['fixed_selection'],
             'worlds':worlds,'observer':observer_audit,'raw_inventory_sha256':digest(before),'raw_files':len(before),

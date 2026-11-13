@@ -13,19 +13,24 @@ from utopia.system import SystemSpec
 from utopia.system.design_patch import clone
 
 
-def setup(tmp_path,monkeypatch):
-    original,old,p=evidence(tmp_path,monkeypatch);root=tmp_path/'raw';root.mkdir();(root/'writer.lock').touch()
+def setup(tmp_path,monkeypatch,*,planning=False):
+    if planning:
+        from scripts import run_native_planning_fixed_evaluation_v1 as fixture_driver
+        from tests.reports.test_native_planning_fixed_evaluation_v1 import evidence as fixture_evidence
+    else:
+        fixture_driver,fixture_evidence=driver,evidence
+    original,old,p=fixture_evidence(tmp_path,monkeypatch);root=tmp_path/'raw';root.mkdir();(root/'writer.lock').touch()
     usage={'valid':True,'errors':[],'prior_matching_runs':[],'root':'SCRIPTED-root',
         'seeds':p['evaluation']['seeds'],'checked_utc':'2026-11-11T18:01:00+00:00'};seal(usage)
     p['evaluation']['seed_usage']=[usage['content_sha256']];seal(p)
     for name in ('seed-usage-00.json','pre-dispatch-seed-usage-00.json'):
-        driver.save(root/name,{k:v for k,v in usage.items() if k!='content_sha256'})
-    driver.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
-    driver.save(root/'started.json',{'schema':driver.SCHEMA+'.start','plan_sha256':p['content_sha256'],
+        fixture_driver.save(root/name,{k:v for k,v in usage.items() if k!='content_sha256'})
+    fixture_driver.save(root/'plan.json',{k:v for k,v in p.items() if k!='content_sha256'})
+    fixture_driver.save(root/'started.json',{'schema':fixture_driver.SCHEMA+'.start','plan_sha256':p['content_sha256'],
         'started_utc':'2026-11-11T18:02:00+00:00'})
-    driver.save(root/'terminal.json',{'schema':driver.SCHEMA+'.terminal','status':'closed','completed_jobs':len(p['jobs']),
+    fixture_driver.save(root/'terminal.json',{'schema':fixture_driver.SCHEMA+'.terminal','status':'closed','completed_jobs':len(p['jobs']),
         'ended_utc':'2026-11-11T18:05:00+00:00'})
-    driver.progress(root,'closed');observer=CommonContentObserver(root/'observer',p['observer_contract'],backend=None)
+    fixture_driver.progress(root,'closed');observer=CommonContentObserver(root/'observer',p['observer_contract'],backend=None)
     states={};proofs={}
     for index,job in enumerate(p['jobs']):
         directory=root/'evaluation'/job['identity'];cell=directory/'worlds'/(job['identity']+'-s'+str(job['seed']))
@@ -48,11 +53,11 @@ def setup(tmp_path,monkeypatch):
                 'runs':[{'checkpoint_path':str(checkpoint)}],'measurements':measurements,
                 'technical_failures':[{'SCRIPTED':'completed world, missing critic measurement'}] if failed else []}).to_dict()
         suggestion=Suggestion(job['identity'],job['system'],0,'selection-fixed-evaluation')
-        driver.save(directory/'started.json',{**clone(job),'suggestion':suggestion.to_dict(),'started_utc':'2026-11-11T18:03:00+00:00'})
-        driver.save(directory/'observation.json',o);driver.save(directory/'cross-scores.json',scores)
+        fixture_driver.save(directory/'started.json',{**clone(job),'suggestion':suggestion.to_dict(),'started_utc':'2026-11-11T18:03:00+00:00'})
+        fixture_driver.save(directory/'observation.json',o);fixture_driver.save(directory/'cross-scores.json',scores)
         states[str(checkpoint)]=state;proofs[cell.name]={'status':'complete','measurement':base,'SCRIPTED':True}
-    a=observer.audit();driver.save(root/'observer-audit.json',{k:v for k,v in a.items() if k!='content_sha256'})
-    monkeypatch.setattr(driver,'require_plan',lambda root:p)
+    a=observer.audit();fixture_driver.save(root/'observer-audit.json',{k:v for k,v in a.items() if k!='content_sha256'})
+    monkeypatch.setattr(fixture_driver,'require_plan',lambda root:p)
     monkeypatch.setattr('scripts.native_benchmark_source.source_proofs',lambda *a,**k:{'status':'verified-exact-source-closure','SCRIPTED':True})
     monkeypatch.setattr('scripts.native_benchmark_physical.physical_proof',lambda cell,*a,**k:proofs[cell.name])
     monkeypatch.setattr('scripts.analyze_native_design_benchmark.loaded',lambda *a,**k:{'confirmed':True,'SCRIPTED':True})

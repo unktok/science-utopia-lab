@@ -26,6 +26,7 @@ from utopia.utils.data_utils import file_sha256
 
 SCHEMA='scienceutopia.native-institution-effect-trace.v1'
 SCOPES={
+    'planning-fixed-evaluation':'scienceutopia.native-planning-fixed-evaluation-audit.v1',
     'planning-objective-development':'scienceutopia.native-planning-objective-loop-audit.v1',
     'catalog-actuation-controls':'scienceutopia.native-catalog-actuation-audit.v1',
     'capacity-objective-development':'scienceutopia.native-capacity-objective-loop-audit.v1',
