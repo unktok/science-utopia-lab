@@ -2,6 +2,32 @@
 
 ## Active publication-ready goal
 
+### November14 12:34JST: actual output-mode assay closes; free design hits output cap
+
+Original writer89324 exits0 at03:25:23UTC; cold replay19400 exits0 and exactly
+reconstructs all four calls. Schema/nonthinking returns an invalid graph;
+JSON/thinking and schema/thinking both return valid calibration controls on
+the retained failed-history frame. Copy equality is diagnostic, not a veto.
+Predeclared priority chooses schema/thinking. Its one free call returns known
+done_reason=length at8192 output tokens,29444 thinking characters and zero final
+content. There is no submitted graph to salvage, no new native world/loss,
+no production certificate, no reopened stopped study and no invention claim.
+[Actual compact result](results/native-workflow-output-mode-assay-v1.json).
+
+The previous conservative resource wait completes, but its immediate stricter
+preflight sees a new CPU job and does not dispatch. The inspected NumPy/SciPy
+job is then explicitly allowed under the separately declared shared-CPU note.
+Two new observed loads105.8%/110.8% and free+inactive49.70/49.81GB, empty endpoint
+and no unclassified Python/inference executable precede actual dispatch. No
+other project's work is stopped or changed; no exclusive lease/speed claim.
+
+The next [one-shot capacity probe](protocols/campaigns/workflow-thinking-capacity-probe-v1.md)
+is implemented and five SCRIPTED tests pass24.97s, but not real-model dispatched
+at this snapshot. It changes only output8192→16384 on the same free frame;
+prior measured input23862 leaves714 tokens under40960 context. It permits just
+one call, no scientific worlds, no further expansion/refill or automatic science.
+This diagnoses final-output capacity; it does not make the research publication-ready.
+
 ### November14 12:08JST: completed controls now have separate cold physical proofs
 
 Two actual original-source runs56902/15776 exit0 and yield byte-identical

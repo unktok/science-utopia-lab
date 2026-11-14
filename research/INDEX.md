@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual output-mode assay](results/native-workflow-output-mode-assay-v1.json):
+  four local calls normally finish and original cold replay agrees. Two thinking
+  calibrations compile; the only free call spends8192 tokens in thinking and
+  returns no final content. No native world/loss or production certificate.
+  A separately bounded16384-output capacity probe is implemented/tested, not
+  a repaired old slot or a currently completed free-invention result.
+
 - [Stopped-study completed-control cold proofs](results/native-workflow-v3-stopped-controls-cold-proof-v1.json):
   two actual byte-identical original-source reads validate both controls'
   physical scientist/critic/checkpoint/loss/ledger evidence. They do not create

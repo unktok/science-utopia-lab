@@ -53,8 +53,9 @@ operator-profile study, not resumption/refill of the stopped study or independen
 optimizer replication. [It subsequently stops](research/results/native-workflow-v3-stop-and-control-contrast-v1.json)
 after two complete controls: hand timing T=-20/U=-15.3333 versus R7=-18/-13.3333.
 Two known own-generation failures and then a failed calibration yield no own
-native policy or gain. The finite output-mode diagnosis is implemented and
-SCRIPTED tested, but not yet real-model run;
+native policy or gain. The actual four-call output-mode diagnosis closes:
+two thinking calibrations compile, but the free call hits8192 tokens without
+final content. A separate one-call output-capacity probe is prepared;
 no original slot, loss or failed certificate is changed.
 See [current status](research/STATUS.md) for liveness, not software-test scores.
 
