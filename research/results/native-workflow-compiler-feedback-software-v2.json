@@ -1,0 +1,56 @@
+{
+  "schema": "scienceutopia.native-workflow-compiler-feedback-software.v2",
+  "classification": "SCRIPTED-production-path-verification-not-scientific-improvement",
+  "source_commit": "7f1fc61f98e4f09d235879c8ccfd4e57714b9d79",
+  "profile": "compiler-feedback-thinking-v2",
+  "unit_tests": {
+    "output": "outputs/native-workflow-feedback-profile-tests-v2-a4",
+    "passed": 36,
+    "deselected": 1,
+    "seconds": 14.12,
+    "junit_sha256": "98696503ce7f3e702ff6f3ba18b5010d670b202b5797fe0e9a95832f20da5a93"
+  },
+  "native_full_path": {
+    "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-qa-v2-a2",
+    "output": "outputs/native-workflow-feedback-native-v2-a2",
+    "original_session": 26481,
+    "original_session_now_absent": true,
+    "completion_evidence": "final JUnit with two passes, two normal terminal journals, verification artifact and no observed remaining test process; do not reconstruct an unavailable direct exit receipt",
+    "passed": 2,
+    "errors_failures_skipped": 0,
+    "seconds": 162.157,
+    "junit_sha256": "94131093ce41a9de940a6f4f2ce80305d09e616d6ceb95a509132dd0666a794f",
+    "verification_file_sha256": "7f3dda49b8f501b50ab01963a83e32480be2f53d65bea3d4ee0ce902a7e38e90",
+    "development_worlds": 7,
+    "fixed_evaluation_worlds": 2,
+    "known_proposal_nulls_preserved": 1,
+    "consumed_proposal_slots": 6,
+    "fixed_selection_unchanged": true,
+    "two_cold_audits_costs_reports_and_three_mechanism_exports_match": true,
+    "fixed_audit_sha256": "5cf49ce889947196e4c0ca344c84738b842488a8aadaf0f87ee33a1942a041a9",
+    "fixed_cost_content_sha256": "4d7edbf9f8af491742d38aa5614474f95e201c0cc8cfb5903db351d25c36c547",
+    "new_real_model_calls": 0,
+    "scripted_HTTP_corpus_and_upstream_provenance": true,
+    "scientific_held_out_seed_chosen": false
+  },
+  "retained_prior_failures": [
+    {
+      "output": "outputs/native-workflow-feedback-profile-tests-v2-a1",
+      "passed": 34,
+      "failed": 1,
+      "cause": "sandbox denied process identity observation; original guard retained"
+    },
+    {
+      "source_commit": "95f5396d",
+      "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-qa-v2-a1",
+      "output": "outputs/native-workflow-feedback-native-v2-a1",
+      "cause": "feedback reader assumed recursive prior request present in actual projected campaign history; KeyError request",
+      "correction": "diagnose at the original exact-parent result boundary, retain validated diagnostic with failure, consume it through actual campaign history projection",
+      "scientific_record_modified": false
+    }
+  ],
+  "losses_or_original_scientist_sources_changed": false,
+  "new_merit_veto_or_graph_repair": false,
+  "scientific_gain_proved": false,
+  "publication_ready": false
+}

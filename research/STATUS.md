@@ -2,6 +2,30 @@
 
 ## Active publication-ready goal
 
+### November14: compiler feedback now passes the actual software path; fresh science prepared
+
+At7f1fc61f,36 focused checks and the final2-case native integration test pass.
+The latter runs9 SCRIPTED native worlds through actual role factories, bounded
+HTTP worker/public certificate, known proposal failure, next feedback-bearing
+prompt, losses, normal closure, fixed selection and two matching cold audits/
+costs/reports plus mechanism exports. It uses no real model inference and
+does not demonstrate institutional improvement.
+[Proof and retained earlier failures](results/native-workflow-compiler-feedback-software-v2.json).
+
+The real history projection exposed and now regresses an integration defect:
+it has no recursive prior request. Exact-parent diagnostics are instead saved
+with the original failed result and carried to the next proposal. No raw graph
+is repaired, and losses/compiler/native scientist sources remain unchanged.
+
+Fresh science/analysis worktrees are pinned to7f1fc61f and the new plan is
+277b1831f311e994b2480e15e5ec95e3125784fbaae396329fdce8082d754ff0.
+It keeps2 controls,6 own slots and8-world maximum, local35B designer and8B
+scientists. Prepare exits0 with no inference POST. Fresh host-resource checks
+and real readiness precede dispatch; this paragraph alone is not a liveness
+claim. Older stopped studies are not resumed. Important own-system comparison,
+independent/unused evaluation and final publication judgment remain open.
+[Chronology](logbook/2026-11-14-compiler-feedback-native-path.md).
+
 ### November14 13:07JST: capacity probe closes; updated75-page paper is reviewed
 
 Writer81425 exits0 at03:43:23UTC; cold reader54522 exits0. The single16384-output

@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Compiler-feedback production-path proof](results/native-workflow-compiler-feedback-software-v2.json):
+  36 focused checks plus9 SCRIPTED native worlds through original factories,
+  failed-proposal feedback, normal closure, fixed selection and matching cold
+  readers. Zero real-model calls; fresh7f1fc61f scientific plan is prepared,
+  not yet evidence of invention/gain. [Latest chronology](logbook/2026-11-14-compiler-feedback-native-path.md).
+
 - [Closed capacity probe](results/native-workflow-thinking-capacity-probe-v1.json):
   one larger fixed allowance returns final JSON but violates four causal edges.
   Both technical probes are terminal; no new scientific world/loss or certificate.
@@ -20,17 +26,17 @@ Historical documents retain their paths and source identities.
   four local calls normally finish and original cold replay agrees. Two thinking
   calibrations compile; the only free call spends8192 tokens in thinking and
   returns no final content. No native world/loss or production certificate.
-  A separately bounded16384-output capacity probe is implemented/tested, not
-  a repaired old slot or a currently completed free-invention result.
+  The separately bounded16384-output capacity probe has since closed as linked
+  above; neither diagnostic repairs an old slot or establishes free invention.
 
 - [Stopped-study completed-control cold proofs](results/native-workflow-v3-stopped-controls-cold-proof-v1.json):
   two actual byte-identical original-source reads validate both controls'
   physical scientist/critic/checkpoint/loss/ledger evidence. They do not create
   normal optimization closure or own selection. Annual data distinguish the
   hand timing/routing contrast from added aggregate grant income. The separate
-  output-mode assay is prepared at frozena1987ca3 but awaits a resource window.
+  output-mode assay subsequently closes at frozena1987ca3, as linked above.
 
-- [Current status](STATUS.md): November14 11:50JST; the publication-ready goal
+- [Current status](STATUS.md): latest compiler-feedback preparation first; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
 - [Workflow-v3 stop and completed-control contrast](results/native-workflow-v3-stop-and-control-contrast-v1.json):
