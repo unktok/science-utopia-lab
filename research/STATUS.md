@@ -7,12 +7,14 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
-Latest22:32:15UTC observation: original82259/PID8708 remains live. Both fresh
-references normally complete: R7 T=-18/U=-13.333333333333332, comparison-only
-hand T=-20/U=-15.333333333333332. At22:30:54UTC the unchanged driver advances
-to scalar::throughput:g0 exact-request readiness. Two of two references and
-zero of12 own slots have completed; no own loss or optimization improvement
-yet. Exact reference and first-readiness hashes are in the dispatch log below.
+Latest22:50:56UTC observation: original82259/PID8708 remains live. Both fresh
+references complete: R7 T=-18/U=-13.333333333333332, comparison-only hand
+T=-20/U=-15.333333333333332. First scalar::throughput:g0 passes28-case actual
+readiness and explicitly submits at22:47:20UTC after14 steps/eight component
+returns. Only selection source changes, no new node/wire/schedule. Its original
+native world now runs with year1 checkpoint present. Zero of12 own outcomes
+are complete; no own loss or improvement yet. The existing read-checkpoint
+rejection and exact source/evidence hashes are retained in the dispatch log.
 
 After actual two-frame capacity closes, separately declared scientific resource
 observations pass and original82259 launches the prepareda5be8d31 public driver

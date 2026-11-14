@@ -58,6 +58,51 @@ own slot has completed or been refilled.75 common-panel result records exist
 at reference closure; do not substitute an older study's93-call count merely
 because the two loss values match. Whole raw/cost audit still waits for closure.
 
+## First new-study own submission, not yet a native loss
+
+The scalar::throughput:g0 exact-request certificate passes all28 controls
+(certificate file SHA256
+`90ca3d73cd3ac3c5f9d99394f90b32f427873b5575749951ef6569955dd5abfc`).
+The unmodified writer enters free optimization at22:39:29UTC. Its real initial
+system prompt permits arbitrary source, parameters, nodes, ports, connections,
+schedules and processes; the wire kind is proposal, not a directed copy control.
+Actual wire allowance remains16 total calls; no fixed14-action script is inferred
+from the observed count. The author explicitly finishes at step13,
+22:47:20.046148UTC. Response status generated, content
+`aebe9838d572027627971846fa932f5731e5029658a74ab55e2d98d0e2b087eb`, file SHA256
+`506126817b1d8d4626ca6272794513204f10b7110cd48cb9fe1899a1302514a8`.
+
+The complete14-step prefix contains one plan, ten read attempts (nine applied,
+one rejected), two source writes and explicit finish. Each write tests four
+original R7 world.selection fixtures: eight charged returns, zero raised, no
+test model/native calls. Only four returns apply to the final source version;
+these are not eight independent world evaluations or a loss improvement.
+
+Step12's repeated read of code/world.selection.py is rejected by the existing
+implementation checkpoint. Source inspection confirms it activates after three
+inspections since a draft change only when the exact current system is supplied;
+the reserve also requires an explicit finish. This is an existing authoring-
+policy restriction, not a transport failure or proof of an API defect. It can
+shape search behavior, and there is no isolated evidence that it causes this
+candidate's eventual outcome. No running guard, prompt or budget is changed.
+The host does not finish or repair the proposal on the author's behalf.
+
+The submitted graph changes only world.selection source: no added/removed node,
+wire or schedule. Its AST differs from R7. The function still accepts every
+listed submission, replaces calculated review scores with0 and additionally
+checks an optional other_conferences field. No new producer of that field is
+authored. These static facts do not establish an operated new route, identical
+researcher histories or an optimization effect; await native inputs and losses.
+Submitted system file SHA256
+`e8ad732588b89335073e371ec12aa3f03738f07358c50c7adb66c153c0c30d87`.
+
+The actual native evaluation is
+search/scalar/throughput/worlds/native-adaptive-23cb2be8479e6447b6ee3e5c-s61001.
+At22:50:56UTC originalPID8708 remains live; initial and year1 checkpoints are
+present, no whole-study terminal or completed own outcome exists. This is the
+first own submission of the new matched study, not the first executable own
+institution of the project. Preserve the earlier closed studies separately.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
