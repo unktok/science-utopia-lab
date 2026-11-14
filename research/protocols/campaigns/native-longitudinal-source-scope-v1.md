@@ -20,8 +20,9 @@ literal base bytes except four explicit author/presentation modules:
 
 These four are not ignored: record both baseline and new committed SHA256
 values and require the checkout's exact new bytes. The sole added utopia
-module is native_longitudinal_feedback_v1.py, also exact-source-bound. Any
-other module addition/deletion, inherited scientist/effect/measurement-consumer
+module is native_longitudinal_feedback_v1.py, also exact-source-bound.
+The new declaration helper itself and this protocol are exact-source-bound.
+Any other module addition/deletion, inherited scientist/effect/measurement-consumer
 change, source/HEAD mismatch or local-byte/symlink substitution rejects the
 declaration. The already present projection/columnar helpers retain base bytes.
 

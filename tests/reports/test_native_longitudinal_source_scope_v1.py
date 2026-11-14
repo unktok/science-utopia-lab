@@ -28,7 +28,7 @@ def tree(tmp_path, monkeypatch):
         path = root/name; path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text('# SCRIPTED original '+name+'\n')
     monkeypatch.setattr(scope, 'BASE', commit(root, 'SCRIPTED baseline'))
-    for name in [*scope.AUTHOR_ROLES, *scope.ADDED_ROLES, scope.PROTOCOL]:
+    for name in [*scope.AUTHOR_ROLES, *scope.ADDED_ROLES, scope.PROTOCOL, scope.GUARD]:
         path = root/name; path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text('# SCRIPTED prospective '+name+'\n')
     source = commit(root, 'SCRIPTED author changes')
@@ -53,7 +53,7 @@ def test_explicit_author_changes_are_bound_not_silently_excluded(tree):
 
 
 @pytest.mark.parametrize('change', ['scientist', 'measurement-consumer', 'physical-script',
-    'undeclared-addition', 'undeclared-deletion', 'dirty-author', 'dirty-protocol', 'symlink', 'stale-head'])
+    'undeclared-addition', 'undeclared-deletion', 'dirty-author', 'dirty-protocol', 'dirty-guard', 'symlink', 'stale-head'])
 def test_undeclared_science_source_or_checkout_changes_fail_visibly(tree, change):
     root, source, native, consumer = tree
     if change in ('scientist', 'measurement-consumer', 'physical-script'):
@@ -71,6 +71,8 @@ def test_undeclared_science_source_or_checkout_changes_fail_visibly(tree, change
         (root/next(iter(scope.AUTHOR_ROLES))).write_text('# SCRIPTED uncommitted author\n')
     elif change == 'dirty-protocol':
         (root/scope.PROTOCOL).write_text('# SCRIPTED uncommitted protocol\n')
+    elif change == 'dirty-guard':
+        (root/scope.GUARD).write_text('# SCRIPTED uncommitted source guard\n')
     elif change == 'symlink':
         path = root/next(iter(scope.ADDED_ROLES))
         target = root/'same-bytes'; target.write_bytes(path.read_bytes())

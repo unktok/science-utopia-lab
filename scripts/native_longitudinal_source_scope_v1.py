@@ -18,6 +18,7 @@ from utopia.system.design_patch import clone, digest
 SCHEMA = 'scienceutopia.native-longitudinal-source-scope.v1'
 BASE = 'f47270b967fa167d59df759bebe7b6b104b383d3'
 PROTOCOL = 'research/protocols/campaigns/native-longitudinal-source-scope-v1.md'
+GUARD = 'scripts/native_longitudinal_source_scope_v1.py'
 AUTHOR_ROLES = {
     'utopia/optimization/native_adaptive_search.py':
         'Opt-in optimizer binding and request projection, not a researcher or world transition',
@@ -79,7 +80,7 @@ def source_scope(root, *, source_commit):
     if not set(AUTHOR_ROLES) <= before:
         raise ValueError('declared author modules missing from actual staged baseline')
     baseline = _blobs(root, BASE, before | set(EXTRA_NATIVE_FILES))
-    current = _blobs(root, source_commit, after | set(EXTRA_NATIVE_FILES) | {PROTOCOL})
+    current = _blobs(root, source_commit, after | set(EXTRA_NATIVE_FILES) | {PROTOCOL, GUARD})
     unchanged, edited = {}, {}
     sha = lambda body: hashlib.sha256(body).hexdigest()
     for name, raw in baseline.items():
@@ -98,6 +99,7 @@ def source_scope(root, *, source_commit):
     result = {'schema': SCHEMA, 'base_native_source_commit': BASE,
         'prospective_source_commit': source_commit,
         'protocol': {'path': PROTOCOL, 'sha256': sha(current[PROTOCOL])},
+        'guard': {'path': GUARD, 'sha256': sha(current[GUARD])},
         'unchanged_native_files': unchanged, 'declared_author_modules': edited,
         'added_author_modules': {n: {'role': role, 'sha256': sha(current[n])}
             for n, role in ADDED_ROLES.items()},
