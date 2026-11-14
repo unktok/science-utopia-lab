@@ -207,3 +207,35 @@ PDF update, alongside actual closed comparison outcomes. Do not rebuild/render
 or run independent heavy QA during the current scientific inference. The next
 manuscript must not describe the present coupled histories as independent
 optimizer replications or SciMARS/ADAPT performance comparisons.
+
+## Possible exploration follow-up, contingent on the full comparison
+
+The first two new-study own submissions still edit selection source only and
+tie R7; this prefix cannot settle why or justify changing the active protocol.
+If the normally closed twelve-slot analysis confirms concentration on a gate
+that is already permissive, inspect that search-allocation explanation before
+another identical search or automatic seed/model scale-up. Do not infer it
+from final loss equality alone: use submitted code, actual consumers, author
+reads/probes and complete scientist-input/choice classes.
+
+One candidate follow-up is an explicitly declared proposal strategy over edit
+regions (for example code, allocation, process timing and wiring), with known
+sampling probabilities and loss-informed selection of the next proposal region.
+The author still supplies its complete actual implementation. Such a hint or
+proposal distribution would be an optimization-method choice, not a hidden
+requirement that a valid candidate change a node/wire, improve a loss or satisfy
+fairness. Preserve the same technical acceptance rules and report every draw,
+null and cost. Do not seed the hint with the hand's complete policy or call its
+rediscovery independent invention. No policy library or missing consumer should
+be filled in by the host. This is not yet implemented, selected or dispatched.
+
+Keep the scientific losses fixed if pursuing that question. A gradient of the
+proposal distribution would require its own declared estimand and assumptions;
+the current native gradient implementations expressly stop on undefined losses
+rather than renormalizing over successful executions. Do not silently change
+that contract, invent failure losses, label an observed-complete update unbiased
+for free LLM code, or train the frozen researchers. Black-box strategy selection
+can be considered without requiring a differentiable world. First check existing
+implementations/prior methods and the completed evidence; this paragraph is not
+a new algorithm contribution, an evidence-producing result, an active experiment
+amendment or permission to skip the remaining current slots/frozen evaluation.

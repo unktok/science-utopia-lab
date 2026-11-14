@@ -7,6 +7,13 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Latest committed prefix: two of12 own slots complete. Both scalar T0 and
+parent-trajectory U0 have T=-18/U=-13.333333333333332, tying fresh R7 and worse
+than the hand by2 on each loss, without technical failures. Original82259
+continues at23:26:21UTC into scalar::content-utility:g0 exact-request readiness.
+No gain, completed matched study or causal information-effect conclusion is
+claimed. The older one-slot snapshots below retain their observed times.
+
 First scalar::throughput:g0 now completes all four native years and measurement:
 T=-18/U=-13.333333333333332, tying fresh R7 and worse than the hand's
 -20/-15.333333333333332. No technical failure or optimization improvement is

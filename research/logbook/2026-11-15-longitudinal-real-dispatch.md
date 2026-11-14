@@ -211,6 +211,24 @@ own loss, with eleven outcomes remaining including this live world. No running
 source, guard, goal, model, loss or budget is changed. End-to-end costs and
 all-history interpretation wait for the existing normal-closure continuation.
 
+## Second complete own outcome; third original slot begins readiness
+
+Parent-trajectory::content-utility:g0 normally completes and commits record
+`6ea862fab3da65f69e78296466e9e0a747416e0977f81fbccb135376bc99a064`,
+observation`bde31c0c25a49e6000a5824163e693d9f7e5cd438f252af7a000ed4dac792513`.
+Assigned U=-13.333333333333332; the original T evaluator on the same completed
+measurement gives-18. Technical failures are empty. Both scores tie fresh R7
+and are worse than the hand by2. There is no optimization improvement in this
+slot, no replacement and no second own policy/class selected from these data.
+
+The original writer proceeds at23:26:21.498917UTC to scalar::content-utility:g0
+exact-request readiness. Two of12 own slots have completed. Original82259 is
+polled live after transition with no whole-study terminal. Common-panel result
+count is still75, but no second-candidate full-input/choice equality is inferred
+from this or equal losses. All-history independent readouts remain pending.
+The two completed slots also differ in objective and information condition;
+their equality does not establish a causal information effect or its absence.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
