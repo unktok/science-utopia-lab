@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First staged-study R7 completes](results/native-open-staged-institution-first-reference-v1.json):
+  T=-18/U=-13.3333 and115 full scientist inputs/choices equal prior R7. The
+  hand control now runs; no own policy result or full-study closure. The new
+  construction continuation52529 separately waits at frozen0f3c2e55.
+
 - [Construction-to-native outcome readout](components/native-workflow-construction-readout-v1.md):
   optional post-closure reader joins all six staged paths/component results/
   final artifact applicability to original native losses/nulls/selection.

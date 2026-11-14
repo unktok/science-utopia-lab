@@ -1,0 +1,93 @@
+{
+  "construction_readout": {
+    "JSON_only_checks": 27,
+    "actual_export_completed": false,
+    "check_exit_code": 0,
+    "check_junit": "outputs/workflow-construction-trace-routing-v1-a1/junit.xml",
+    "check_junit_sha256": "fce906703cc87717add5312b0c6d91457950b240bed37c87128b60d71a97ec99",
+    "check_seconds": 1.55,
+    "new_model_calls": 0,
+    "session": 52529,
+    "source_commit": "0f3c2e5527ae7a960898ac92d6154a9eb8838e54",
+    "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-construction-readouts-v1-a1",
+    "started_content_sha256": "5207eac5b72e44df585f16dab8ddf7dea50465469e73c7f0ce251721a18b22ad",
+    "status": "await-original-audit-and-cost-closure"
+  },
+  "content_sha256": "234ee3d1b498d47c1da3696527ad8d4df3deb383b14a5ea24890995acfeaebcc",
+  "fresh_reference_skipped_or_reused": false,
+  "new_gain_claimed": false,
+  "new_reference": {
+    "input_files_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/cross-scores.json": "102791e7d17e845580221b9c5eeb54d09eb0644f1b512dfe56e6dc4babbce524",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/observation.json": "8f344abb700e52bf35d7ab349fe9c480cbcbee283f236baaaf81df05520d72ec",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "3a53f9ee0f46c2256bd29ae0ab85308f18854c3d95b5fcd2333b0f06585583db",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+    },
+    "requests": {
+      "completed_responses": 115,
+      "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_full_provider_body_hashes_sha256": "7bc13748bd4fded2cb4499c241334df57909a28ffc18d9513a090f5831aaac5e",
+      "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+      "wire_inputs_without_committed_reply": 0,
+      "wire_requests": 115
+    },
+    "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+    "scores": {
+      "content-utility": -13.333333333333332,
+      "throughput": -18.0
+    },
+    "status": "complete"
+  },
+  "no_input_or_response_text_scrubbed": true,
+  "observed_utc": "2026-11-14T14:01:46.484065+00:00",
+  "original_records_changed": false,
+  "own_scientific_result_yet": false,
+  "plan_content_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "prior_v3_reference": {
+    "input_files_sha256": {
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/cross-scores.json": "102791e7d17e845580221b9c5eeb54d09eb0644f1b512dfe56e6dc4babbce524",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/observation.json": "0e33ed599876681b2e9e5f0b45ec0997a93b7b982d85effe38ee9b6affebb69c",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "00f703504c007f5c7e5fd875c8b3bc4d45c913e4a525d34db01c9beedb743ce0",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+    },
+    "requests": {
+      "completed_responses": 115,
+      "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_full_provider_body_hashes_sha256": "3d6d661fc1b964d380052840f44b944eb5adc04d0dca7b76ee2fd52fc99453e8",
+      "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+      "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+      "wire_inputs_without_committed_reply": 0,
+      "wire_requests": 115
+    },
+    "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-institution-objective-loop-v3-a1/outputs/native-open-institution-objective-loop-v3-a1",
+    "scores": {
+      "content-utility": -13.333333333333332,
+      "throughput": -18.0
+    },
+    "status": "complete"
+  },
+  "publication_ready": false,
+  "reference_systems_literal_equal": true,
+  "request_comparison": {
+    "ordered_completed_request_payload_sha256": true,
+    "ordered_full_provider_body_hashes_sha256": false,
+    "ordered_full_request_payload_sha256": true,
+    "ordered_literal_response_choices_sha256": true
+  },
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-staged-institution-first-reference.v1",
+  "scope": "Completed first R7 cell and literal saved inputs/choices only. Whole-study original cold audit is pending. The strong hand is running; no own staged institutional outcome exists.",
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "whole_study_closed": false,
+  "writer": {
+    "current_progress": {
+      "active": "post-funding-cost",
+      "observed_utc": "2026-11-14T13:59:32.814188+00:00",
+      "stage": "references"
+    },
+    "observed_live": true,
+    "pid": 32780,
+    "session": 79701
+  }
+}

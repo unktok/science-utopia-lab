@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+### November14 22:59JST: first staged-study reference completes; construction reader waits separately
+
+Original writer79701/PID32780 completes R7 at T=-18/U=-13.3333 and advances
+to post-funding-cost. All115 literal scientist inputs and response choices
+equal the previous v3 R7, without scrubbing; full provider bodies are compared
+separately. This is a fresh actually executed cell, not reused measurements,
+whole-study cold closure, a new own policy or an improvement. [Exact prefix](results/native-open-staged-institution-first-reference-v1.json).
+
+A separate post-closure [construction-path reader](components/native-workflow-construction-readout-v1.md)
+joins proposal edits/component histories/final artifact applicability to native
+status, both losses and frozen selection.27 JSON-only checks pass in1.55s;
+the first helper-collection setup error stays separately retained. Its actual
+continuation52529 runs from clean0f3c2e55 in a new frozen analysis worktree and
+waits for the original paired audit/cost closure. The original five readers
+and scientificf47270b9 source remain untouched. No actual construction export,
+LLM revision/gain or publication readiness is claimed by these software checks.
+
 ### November14 22:43JST: actual28-case readiness passes; first original R7 world runs
 
 The real35B initial certificate reports28/28 controls passed, all HTTP200/final

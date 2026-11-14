@@ -28,3 +28,21 @@ wait for the original paired audit/cost closure. Do not edit the original
 scientific or analysis worktrees to install this reader. Its real-study export
 and meaningful empirical conclusions remain pending; this software result
 does not close main-track significance or independent-evidence requirements.
+
+## Actual separate reader and first-reference completion
+
+Worktree88705 exits0 at0f3c2e5527ae7a960898ac92d6154a9eb8838e54.
+Construction continuation52529 actually starts13:58:07UTC and is confirmed
+live waiting for the original f47270b9 audit/cost chain. It performs no export
+while science is running and changes neither original worktree. The original
+five read-only continuations remain separate, not restarted or replaced.
+
+Writer79701 completes R7 and advances13:59:32UTC to post-funding-cost. Its
+actual saved scores are T=-18/U=-13.333333333333332. A lightweight read-only
+comparison of the two completed R7 cells finds115 scientist replies with
+exactly equal ordered full request payloads and literal choices; no text or
+IDs are scrubbed. Original observation/cross-score/wire/cache bytes remain
+unchanged during the comparison. This does not license skipping a fresh
+control, claiming whole-study audit closure or inferring an own-method gain.
+The literal systems and full provider-envelope comparison are retained
+separately in the exact first-reference record.
