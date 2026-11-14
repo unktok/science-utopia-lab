@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Matched12-path construction and finite closure analysis](components/native-longitudinal-postprocessing-v1.md):
+  four arm/objective histories remain distinct in the staged edit/probe trace.
+  Source-frozen read-only continuations wait for the original scientific writer
+  to end normally, then perform paired audits/costs and five paired readouts.
+  23 JSON-only checks pass; no new inference, completed analysis or gain yet.
+
 - [Actual longitudinal comparison dispatched](logbook/2026-11-15-longitudinal-real-dispatch.md):
   original82259 starts unchangeda5be8d31 after two independent scientific
   resource observations. Its own28-case initial actual calibration passes and

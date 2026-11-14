@@ -20,6 +20,15 @@ no match/error, checked during initial calibration rather than at preparation;
 repeat before fixed evaluation. R2/R3/R5/R6 remain open. Older entries below
 are dated snapshots, not current liveness or current undispatched status.
 
+Subsequent22:10:30UTC observation: original PID8708 is still live and R7 has
+three annual checkpoints, with the final year running. Separate read-only
+continuations96847/PID16713 and93735/PID16931 are actually live at frozen
+analysis38ea9d38: after normal original closure only, double cold/cost, then
+five paired readouts. No postprocessing or new model inference from these
+waiters has occurred yet. A 12-slot arm-specific construction reader is added
+and23 JSON-only tests pass, not another native scientific/full QA proof.
+[Analysis scope and invariants](components/native-longitudinal-postprocessing-v1.md).
+
 ### Earlier November15: new64k SCRIPTED full native/cold/fixed path passes
 
 Subsequent actual capacity diagnostic39363 exits0 at frozen7daa1665, preserving

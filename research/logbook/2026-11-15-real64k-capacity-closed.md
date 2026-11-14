@@ -25,6 +25,14 @@ model benchmarks, execution-readiness certificates or scientific improvements.
 Local-template counts were two tokens smaller; rendering equivalence is not
 claimed. Old40k preparations/failures and scientifica5be8d31 remain unchanged.
 
+A read-only post-diagnostic /api/ps snapshot at21:49:26UTC reports40960 as the
+loaded runner's context_length, after the explicit empty load requested40960;
+the two individual chat payloads requested65536 and returned the above input
+counts. Do not equate that model-list field with independently verified
+per-chat attention/window allocation or claim full8192-token output was
+actually generated. The retained pass is exactly the predeclared final-stop
+and reported-input-plus-requested-reservation test for these two literal calls.
+
 Next: fresh independently declared scientific resource admission and the
 comparison's own exact-request readiness, then the12-slot/two-reference study.
 The capacity-only resource record does not itself authorize scientific dispatch.
