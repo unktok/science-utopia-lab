@@ -78,3 +78,29 @@ def test_nonzero_realized_fee_and_grant_are_not_confused_with_conserving_transfe
     assert result['all_author_cashflows']['annual_research_cost'] == 10
     assert result['all_author_cashflows']['grant_income'] == 0
     assert result['all_author_opening_resources'] - 10 == result['all_author_closing_resources']
+
+
+@pytest.mark.parametrize('scope', ['workflow-objective-development', 'planning-objective-development'])
+def test_cold_child_resolves_paths_in_callers_directory_not_frozen_checkout(tmp_path, monkeypatch, scope):
+    import subprocess
+    import sys
+    from pathlib import Path
+    from scripts.reports import native_institution_effect_trace_v1 as module
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv('SCIENCE_UTOPIA_COLD_EFFECT_TRACE_WORKER', raising=False)
+    paths = {'run': 'raw', 'frozen-source': 'science', 'audit-one': 'audits/one.json',
+        'audit-two': 'audits/two.json', 'output': 'outputs/new-trace'}
+    monkeypatch.setattr(sys, 'argv', ['trace', *[v for k, value in paths.items()
+        for v in ('--' + k, value)], '--scope', scope])
+    calls = []
+    def execute(argv, **kwargs):
+        calls.append(argv)
+        for key, value in paths.items():
+            assert argv[argv.index('--' + key) + 1] == str((tmp_path / value).resolve())
+        assert kwargs['cwd'] == tmp_path / 'science'
+        assert argv[argv.index('--scope') + 1] == scope
+        assert not Path(argv[argv.index('--output') + 1]).is_relative_to(kwargs['cwd'])
+        return SimpleNamespace(returncode=0)
+    monkeypatch.setattr(subprocess, 'run', execute)
+    module.main()
+    assert len(calls) == 1

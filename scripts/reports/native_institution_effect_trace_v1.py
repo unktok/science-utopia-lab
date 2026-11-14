@@ -263,13 +263,21 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for key in ('run','frozen-source','audit-one','audit-two','output'):p.add_argument('--'+key,type=Path,required=True)
     p.add_argument('--scope',choices=tuple(SCOPES),required=True);a=p.parse_args()
+    # Resolve relative caller paths before the cold child changes to the
+    # original scientific checkout. Never reinterpret its output as a write
+    # inside that frozen source or loosen the worker's outside-source guard.
+    keys = ('run', 'frozen-source', 'audit-one', 'audit-two', 'output')
+    for key in keys:
+        name = key.replace('-', '_'); setattr(a, name, getattr(a, name).resolve())
     # The original scientific implementation decodes and reconciles its own
     # records; the external reader source is pinned separately by its manifest.
     import os,subprocess,sys
     if os.environ.get('SCIENCE_UTOPIA_COLD_EFFECT_TRACE_WORKER')=='1':export(a);return
     result=subprocess.run([sys.executable,'-c',
         'import runpy,sys;sys.path.insert(0,sys.argv.pop(1));runpy.run_path(sys.argv.pop(1),run_name="__main__")',
-        str(a.frozen_source.resolve()),str(Path(__file__).resolve()),*sys.argv[1:]],cwd=a.frozen_source,
+        str(a.frozen_source),str(Path(__file__).resolve()),
+        *[value for key in keys for value in ('--' + key, str(getattr(a, key.replace('-', '_'))))],
+        '--scope',a.scope],cwd=a.frozen_source,
         env={**os.environ,'PYTHONHASHSEED':'42','SCIENCE_UTOPIA_COLD_EFFECT_TRACE_WORKER':'1'},timeout=1800,check=False)
     if result.returncode:raise SystemExit(result.returncode)
 
