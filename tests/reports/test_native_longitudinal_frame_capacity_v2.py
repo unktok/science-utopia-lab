@@ -54,6 +54,23 @@ def test_retained_offline_counts_are_not_backend_capacity_or_gain():
         assert p[key] is False
 
 
+def test_retained64k_scope_and_derived_preparation_are_not_backend_or_full_native_proof():
+    from pathlib import Path
+    from utopia.optimization.native_numeric_designer import checked
+    p=checked(json.loads((Path(__file__).resolve().parents[2]/'research/results/native-longitudinal-64k-preflight-prepared-v1.json').read_text()))
+    assert p['source_commit']=='a5be8d3103854368a4bc6ba4c13eff7552e9dd15'
+    assert p['scope_schema']=='scienceutopia.native-longitudinal-source-scope.v2'
+    assert p['unchanged_native_files']==272 and len(p['declared_author_modules'])==5
+    assert not p['files_silently_excluded'] and not p['legacy_guard_modified']
+    assert p['actual_legacy_guard_rejected_prospective_optimizer']
+    assert p['capacity_prepare_exit_code']==0 and p['same_literal_messages_and_other_payload_values']
+    assert len(p['capacity_frames'])==2 and p['new_model_POSTs']==0
+    assert all(f['changed_fields']=={'/options/num_ctx':[40960,65536]} for f in p['capacity_frames'])
+    for key in ('capacity_started','new64k_native_cold_proof','real64k_backend_capacity_proved',
+                'actual_request_readiness_proved','scientific_comparison_dispatched','scientific_gain_claimed','publication_ready'):
+        assert p[key] is False
+
+
 def test_shared_real_journal_worker_uses_v2_plan_and_actual_wire_context(tmp_path,monkeypatch):
     frames = [v2.derived_frame(frame(a)) for a in base.ARMS]; posted=[]
     p={'schema':v2.SCHEMA+'.plan','provider':{},'backend':{},'frames':frames}

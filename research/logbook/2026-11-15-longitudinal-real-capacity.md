@@ -102,3 +102,45 @@ contexts/scientist load, old40k measurement, actual v2 public module handoff,
 bounded calibration/cold replay, source classifications and report primitives.
 This is not yet the required new full native/cold proof or actual64k backend
 capacity. Those remain pending at commit time.
+
+## Actual source declaration and new frozen software check
+
+At cleana5be8d3103854368a4bc6ba4c13eff7552e9dd15, two actual source_scope
+reads agree at contentf732b386e3d61f1692d62cade002a283b04ce472252ca45776d8e7412e8746cd.
+There are272 inherited literal files and five separately baseline/new-hash-
+bound author modules. The old workflow guard actually rejects the prospective
+native_adaptive_search.py against8cd61578, without its exclusions being edited.
+[Exact prepared scope/capacity record](../results/native-longitudinal-64k-preflight-prepared-v1.json).
+This is not a full native/cold or semantic-equivalence proof.
+
+Separate frozena5be8d31 native-longitudinal-software-64k-v1-a1 starts full
+SCRIPTED test96173, with fresh basetemp/JUnit destinations. Do not edit that
+worktree's tracked/untracked sources or HEAD while the original process runs.
+It uses the original component evidence and actual bounded/Docker/native/cold/
+fixed APIs, not actual model inference. Before launch, one host-wide snapshot
+sees658 processes/625.1% CPU, no Ollama-loaded model and small external Python
+workers/coordinators. This is not a passing scientific resource profile, a
+guarantee about other jobs or proof of any timeout cause. This work starts no
+real model inference during the heavy QA; all its time/null guards remain.
+The latest observed prefix commits two of12 own slots; original handle96173
+is confirmed live. Full closure/results remain pending.
+
+Separate a5be8d31 native-longitudinal-frame-capacity-v2-a1 preparation15277
+actually exits0. Its plan content is
+a60fe6750c6889c3f690dfce5921732c38ae23af26a00fceae45c229678b8fd6.
+Each derived frame differs only at options.num_ctx40960->65536; all message
+strings/tools/seeds/output/options otherwise survive literal parsed equality.
+No capacity started file or model POST exists. Heavy QA must close before fresh
+resources and actual capacity inference. The branch is pushed, not merged.
+
+Main's separate documentation-onlye6e87b48 warns collaborators not to treat the
+old prepared40k plan as ready and links this prospective source/measurement.
+The old scientific/diagnostic plans remain untouched; no writer is started.
+
+Seven final v2/retention checks92389 actually exit0 in1.24s. The full
+SCRIPTED native test96173 remains running at six committed own records,
+not a completed software proof. No actual64k inference or scientific dispatch
+has occurred. Larger context alone does not establish inference speed or that
+every16-call interaction fits the original1800s session allowance; inspect
+actual capacity-call elapsed times and exact-request readiness before deciding
+on scientific dispatch, without changing an active source or refilling slots.

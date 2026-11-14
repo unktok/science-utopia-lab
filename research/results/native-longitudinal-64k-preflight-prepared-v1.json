@@ -1,0 +1,85 @@
+{
+  "schema": "scienceutopia.native-longitudinal-64k-preflight-prepared.v1",
+  "source_commit": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15",
+  "scope_schema": "scienceutopia.native-longitudinal-source-scope.v2",
+  "scope_content_sha256": "f732b386e3d61f1692d62cade002a283b04ce472252ca45776d8e7412e8746cd",
+  "scope_file": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-longitudinal-64k-scope-v2-a1.json",
+  "scope_file_sha256": "efef6b20b639de3fc713ec6a8e4d711485b2cf5efb9ced663ce46a7824d90cf3",
+  "unchanged_native_files": 272,
+  "declared_author_modules": {
+    "utopia/optimization/native_adaptive_search.py": {
+      "base_sha256": "029681ea4120a84ec1d61610360434ab8fd4cf4914b40c60e2cab09ea1c94ed7",
+      "literal_changed": true,
+      "prospective_sha256": "0d91da0e29bab157dc55ccb700d173a97c6a0bb0406f02b66a85bee32d7db6bd",
+      "role": "Opt-in optimizer binding and request projection, not a researcher or world transition"
+    },
+    "utopia/optimization/native_bounded_author_context_v45.py": {
+      "base_sha256": "4d1c327dc7edb1dc7afe4401c028efb14f6fe08e55a658970d1c32ab541ff292",
+      "literal_changed": true,
+      "prospective_sha256": "5c970df9e04770f0f2623359f2438f69bebe921939aa79f20c18a28c7698f2e9",
+      "role": "Inline designer presentation of the explicitly selected parent trajectory"
+    },
+    "utopia/optimization/native_designer_decoding_v24.py": {
+      "base_sha256": "a5120a369e395c3409e0efda4e62051b0743f8f5afb97fc7817041e07cdfb901",
+      "literal_changed": true,
+      "prospective_sha256": "63ba888261b4b64a1f580c63b0e33025c85329088476475c5b779e2970a7cdae",
+      "role": "Declared common 65536-token bounded designer context, not scientist inference or world transitions"
+    },
+    "utopia/optimization/native_objective_view.py": {
+      "base_sha256": "8fdf230f7293a60de2f0c8642b3fcdf2874a65126e81b2392626625bc39790e9",
+      "literal_changed": true,
+      "prospective_sha256": "16c27b82adf63ea0bcdd336f4b2954ca6f69e2352933e8fb1a2e57f45a2ec59a",
+      "role": "Source-owned descriptions of existing common-content measurement arithmetic"
+    },
+    "utopia/optimization/native_staged_author_v15.py": {
+      "base_sha256": "25368fddce5fbda2509f09ca76d0823b83d625b08e58cf6027dbcbf44d31248e",
+      "literal_changed": true,
+      "prospective_sha256": "9601bd3b21e54066d362d6beb9e2362f3ab580aef877f31f97b510900eed03e7",
+      "role": "Optional rationale schema and exact designer component-source bindings"
+    }
+  },
+  "files_silently_excluded": [],
+  "legacy_guard_modified": false,
+  "actual_legacy_guard_rejected_prospective_optimizer": true,
+  "capacity_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-frame-capacity-v2-a1/outputs/native-longitudinal-frame-capacity-v2-a1",
+  "capacity_plan_content_sha256": "a60fe6750c6889c3f690dfce5921732c38ae23af26a00fceae45c229678b8fd6",
+  "capacity_plan_file_sha256": "a7f31e5f311af91d7266cd3e489c0703d12b729a557bcef3c0443fbfb6099751",
+  "capacity_prepare_session": 15277,
+  "capacity_prepare_exit_code": 0,
+  "capacity_frames": [
+    {
+      "arm": "scalar",
+      "original_wire_sha256": "09d1d1635781833d6197137d33030c99a6a0b153e5557667087e4367b5b8b5fc",
+      "derived_wire_sha256": "02fe9195294483d86e30a0d40ecd5616bc787df62e8a738bc660c7d195082f08",
+      "changed_fields": {
+        "/options/num_ctx": [
+          40960,
+          65536
+        ]
+      },
+      "wire_utf8_bytes": 151448
+    },
+    {
+      "arm": "parent-trajectory",
+      "original_wire_sha256": "39f87061209eb1fb81994bbf4586c9701300da5093bf89fd0f21906fbef84872",
+      "derived_wire_sha256": "75b2fd388a8fbcc4a6dd7dad0349bb1b510d361c5bfe88ffd64b71d0f7c3df37",
+      "changed_fields": {
+        "/options/num_ctx": [
+          40960,
+          65536
+        ]
+      },
+      "wire_utf8_bytes": 164885
+    }
+  ],
+  "same_literal_messages_and_other_payload_values": true,
+  "capacity_started": false,
+  "new_model_POSTs": 0,
+  "new64k_native_cold_proof": false,
+  "real64k_backend_capacity_proved": false,
+  "actual_request_readiness_proved": false,
+  "scientific_comparison_dispatched": false,
+  "scientific_gain_claimed": false,
+  "publication_ready": false,
+  "content_sha256": "58dbc36ad37e2c5e11a8b1f351d017373ef698cd31bfaeb33e255a2700a41e3d"
+}
