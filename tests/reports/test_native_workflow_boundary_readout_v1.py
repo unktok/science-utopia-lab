@@ -14,9 +14,13 @@ def event(stage, phase, *, year=1):
         'payload': {'stage': stage, 'observation_sha256': 'a' * 64}}
 
 
+def actor(identity, resources, active=True):
+    return SimpleNamespace(id=identity, can_author=True, resources=resources,
+        is_active=active, get_type=lambda: 'SCRIPTED-author')
+
+
 def test_literal_order_and_real_ledger_keep_zero_inactive_author_and_actual_charges():
-    actors = {'a': SimpleNamespace(id='a', can_author=True, resources=30., is_active=True),
-              'b': SimpleNamespace(id='b', can_author=True, resources=0., is_active=False)}
+    actors = {'a': actor('a', 30.), 'b': actor('b', 0., False)}
     ledger = ResourceLedger(); ledger.start_year(1, actors)
     rows = ledger.close_year(1, actors)
     events = [event('open', 0), event('funding', 160), event('costs', 163), event('close', 180)]
@@ -62,7 +66,7 @@ def test_missing_or_corrupted_witness_is_not_reconstructed_from_a_schedule(chang
 
 
 def test_nonzero_realized_fee_and_grant_are_not_confused_with_conserving_transfers():
-    actors = {'a': SimpleNamespace(id='a', can_author=True, resources=30., is_active=True)}
+    actors = {'a': actor('a', 30.)}
     ledger = ResourceLedger(); ledger.start_year(1, actors)
     # Exercise the ledger's own prepare/record contract, not a synthetic total.
     intent = ledger.prepare(actors['a'], -10., category='annual_research_cost', year=1)
