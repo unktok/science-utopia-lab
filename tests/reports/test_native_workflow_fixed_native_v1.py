@@ -64,7 +64,8 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     for i, usage in enumerate(usages):
         driver.save(root / f'seed-usage-{i:02}.json', {k: v for k, v in usage.items() if k != 'content_sha256'})
     driver.save(root / 'plan.json', p); p = driver.require_plan(root)
-    assert len(p['jobs']) == 2  # Two controls; exact submitted policies share their actual identities.
+    expected_jobs = 3 if designer_profile == development.OPEN_IR_MODE else 2
+    assert len(p['jobs']) == expected_jobs  # Exact submitted policies alone share actual identities.
     monkeypatch.setattr(common, 'LocalObserverBackend', development.LocalObserverBackend)
     real_measure = driver.measure_with; invoked = []
     def measured(observer, contract):
@@ -78,15 +79,15 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     monkeypatch.setattr(driver, 'measure_with', measured)
     driver.run(root)
     end = driver.read(root / 'terminal.json')
-    assert end['status'] == 'closed' and end['completed_jobs'] == 2
-    assert len(invoked) == 2
-    assert len(list(root.rglob('scientist-transport.json'))) == 2
+    assert end['status'] == 'closed' and end['completed_jobs'] == expected_jobs
+    assert len(invoked) == expected_jobs
+    assert len(list(root.rglob('scientist-transport.json'))) == expected_jobs
     external = Path(tempfile.mkdtemp(prefix='science-utopia-workflow-fixed-cold-', dir='/private/tmp'))
     audit_paths = [external / 'audit-one.json', external / 'audit-two.json']; before = _inventory(root)
     for path in audit_paths: auditor.worker(root, path)
     assert audit_paths[0].read_bytes() == audit_paths[1].read_bytes()
     proof = driver.read(audit_paths[0])
-    assert [w['status'] for w in proof['worlds']] == ['failed', 'complete']
+    assert [w['status'] for w in proof['worlds']] == ['failed'] + ['complete'] * (expected_jobs - 1)
     assert all(len(w['physical_proof']['annual_checkpoints']) == 4 for w in proof['worlds'])
     assert proof['fixed_selection'] == old_audit['selection']
     cost_reports = [costs(root, p, driver.read(path)) for path in audit_paths]
@@ -118,8 +119,9 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
         'classification': 'SCRIPTED-HTTP-corpus-and-upstream-origin-not-scientific-evaluation',
         'source_commit': p['source_commit'], 'new_model_calls': 0,
         'designer_profile': designer_profile, 'explicit_software_fixture_policy': software_fixtures,
-        'development_native_software_worlds': 7, 'additional_native_software_worlds': 2,
-        'additional_annual_checkpoints': 8, 'transport_application_records': 2,
+        'development_native_software_worlds': 7, 'additional_native_software_worlds': expected_jobs,
+        'additional_annual_checkpoints': 4 * expected_jobs, 'transport_application_records': expected_jobs,
+        'active_authored_scientist_input_change': verification.get('active_authored_scientist_input_change'),
         'known_nulls_preserved': 1, 'fixed_selection_unchanged': True,
         'original_cold_audit_directory': str(external),
         'matching_audit_sha256': file_sha256(audit_paths[0]),
@@ -132,3 +134,8 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
 def test_explicit_seed_software_policy_native_handoff_and_cold_audits(tmp_path, fixed_corpus, monkeypatch):
     test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch,
         development.FEEDBACK_MODE, software_fixtures=True)
+
+
+def test_open_institution_native_active_consumer_and_fixed_handoff(tmp_path, fixed_corpus, monkeypatch):
+    test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_path, fixed_corpus, monkeypatch,
+        development.OPEN_IR_MODE)

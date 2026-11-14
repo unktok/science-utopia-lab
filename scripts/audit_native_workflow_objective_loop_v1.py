@@ -37,10 +37,14 @@ def worker(root, output):
                 or end['stage'] != 'closed' or end['consumed_slots'] != 6
                 or epoch(end['ended_utc']) < epoch(start['started_utc'])):
             raise ValueError('normally closed exact six-slot workflow study required')
+        author_sources = (['utopia/optimization/native_open_workflow_submission_v1.py',
+            'utopia/optimization/native_workflow_designer_v1.py',
+            'utopia/optimization/native_authoring_ir.py',
+            'utopia/optimization/native_search_generator_v14.py'] if driver.open_institutions(p) else [])
         source = source_proofs(driver.ROOT, p['source_commit'], scripts=[
             'scripts/run_native_workflow_objective_loop_v1.py', 'scripts/audit_native_workflow_objective_loop_v1.py',
-            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'],
-            resources=[driver.PROTOCOL] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else [])
+            'scripts/native_benchmark_physical.py', 'scripts/native_observer_physical_v1.py'] + author_sources,
+            resources=[p['protocol']] + ([p['eligibility_protocol']['path']] if 'eligibility_protocol' in p else [])
                 + ([p['operational_protocol']['path']] if 'operational_protocol' in p else [])
                 + ([p['author_profile_protocol']['path']] if 'author_profile_protocol' in p else []))
         anchor = SystemSpec.from_dict(p['initial_system'])
@@ -69,7 +73,8 @@ def worker(root, output):
         if initial.state['records'] or initial.state['pending']: raise ValueError('initial readiness dispatched science')
         author(root / 'initial-readiness/author', initial._request([], initial._validate(), 1))
         def physical(directory, suggestion, o, objective, role):
-            spec = SystemSpec.from_dict(suggestion['candidate']); require_workflow_candidate(anchor, spec, structure_only=True)
+            spec = SystemSpec.from_dict(suggestion['candidate'])
+            require_workflow_candidate(anchor, spec, structure_only=not driver.open_institutions(p))
             m = o['metadata']; identity = suggestion['suggestion_id']
             if (o['candidate'] != suggestion['candidate'] or o['suggestion_id'] != identity
                     or o['observation_id'] != 'observation-' + identity or m['system_fingerprint'] != spec.fingerprint
@@ -119,7 +124,7 @@ def worker(root, output):
             if o['status'] != 'complete' or literal(read(directory / 'cross-scores.json')) != scores:
                 raise ValueError('normally closed workflow references must be complete')
             pairs.append({'suggestion': s, 'observation': Observation.from_dict(o).to_dict()})
-        context = build_context(pairs, world=p['world'], seeds=[driver.SEED], loss_spec=p['losses']['throughput'])
+        context = driver.reference_context(p, pairs)
         if context != read(root / 'developer-reference-context.json'): raise ValueError('workflow common bank differs')
         campaigns = {}
         for objective in p['objectives']:

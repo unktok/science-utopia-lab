@@ -74,7 +74,7 @@ def worker(root,output,*,study='count-content-v1'):
                 from scripts.native_benchmark_seed_usage import require_inventory_policy
                 for receipt in (prepared, dispatched):
                     require_inventory_policy(receipt, p['seed_software_exclusions'])
-        resources=[driver.PROTOCOL]
+        resources=[p['protocol']]
         if study == 'workflow-v1' and 'seed_software_exclusions' in p:
             source_scripts.append('scripts/native_benchmark_seed_usage.py')
             resources.append(p['seed_inventory_protocol']['path'])

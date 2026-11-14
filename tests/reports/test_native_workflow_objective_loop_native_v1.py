@@ -37,7 +37,7 @@ IMAGE = 'sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833
 
 @pytest.mark.parametrize('prerequisite_kind', ['legacy-scripted', 'independent-numeric-v2'])
 @pytest.mark.parametrize('scientist_profile', ['legacy', 'read900'])
-@pytest.mark.parametrize('designer_profile', ['legacy', author_module.FEEDBACK_MODE])
+@pytest.mark.parametrize('designer_profile', ['legacy', author_module.FEEDBACK_MODE, author_module.OPEN_IR_MODE])
 def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_cold_audit(
         tmp_path, fixed_corpus, monkeypatch, prerequisite_kind, scientist_profile, designer_profile):
     original, _, _, _ = plan(tmp_path / 'inputs', monkeypatch, IMAGE)
@@ -123,8 +123,16 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         if binding['purpose'] == 'calibration':
             submission = body['control_submission']
         elif req['generation'] == 1 and req['loss_spec']['id'] == original['losses']['content-utility']['id']:
-            submission = {'phase_updates': {'world.costs': 999}, 'remove_connections': [],
-                'add_connections': [], 'rationale': 'SCRIPTED invalid graph; consume exactly once'}
+            if designer_profile == author_module.OPEN_IR_MODE:
+                cost = next(i for i, s in enumerate(parent.schedules) if s.mechanism_id == 'world.costs')
+                submission = {'operations': [{'op': 'replace', 'path': '/schedules/' + str(cost) + '/phase', 'value': 999}],
+                    'factors': [], 'continuous': [], 'rationale': 'SCRIPTED invalid open graph; consume exactly once'}
+            else:
+                submission = {'phase_updates': {'world.costs': 999}, 'remove_connections': [],
+                    'add_connections': [], 'rationale': 'SCRIPTED invalid graph; consume exactly once'}
+        elif designer_profile == author_module.OPEN_IR_MODE:
+            from tests.reports.native_open_workflow_fixture_v1 import authored_program
+            submission = authored_program(req)
         else:
             anchor = SystemSpec.from_dict(req['design_space_anchor']); target = post_funding_cost_control(anchor)
             phase_by_id = {s.mechanism_id: s.phase for s in parent.schedules}
@@ -136,7 +144,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         fixture = tmp_path / ('child-http-' + str(len(calls)) + '.json')
         write_json_atomic(fixture, {'provider': p['designer'], 'literal_submission': submission,
             'expected_request_wire_utf8': intent['request_wire']['request_wire_utf8']})
-        calls.append({'purpose': binding['purpose'], 'request': clone(req), 'context': body['context'],
+        calls.append({'purpose': binding['purpose'], 'request': clone(req), 'context': body.get('context', body),
             'submission': clone(submission), 'wire_utf8_bytes': len(intent['request_wire']['request_wire_utf8'].encode())})
         return run_bounded(argv, **kwargs, env={**os.environ, 'PYTHONPATH': str(child_path),
             'SCIENCE_UTOPIA_WORKFLOW_HTTP_FIXTURE': str(fixture)})
@@ -149,8 +157,17 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     assert len(calls) == 13 and sum(c['purpose'] == 'proposal' for c in calls) == 6
     u2 = [c for c in calls if c['purpose'] == 'proposal' and c['request']['generation'] == 2
         and c['request']['loss_spec']['id'] == original['losses']['content-utility']['id']][0]
-    assert u2['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission']['phase_updates'] == {'world.costs': 999}
-    if designer_profile != 'legacy':
+    if designer_profile == author_module.OPEN_IR_MODE:
+        first_free = next(c for c in calls if c['purpose'] == 'proposal')
+        assert first_free['request']['parent_system'] == p['reference_systems']['R7-original']
+        assert len(first_free['request']['observations']) == 1
+        assert first_free['request']['observations'][0]['suggestion']['suggestion_id'] == 'workflow-reference-r7-original'
+        failures = u2['context']['own_history']['generation_authoring_failures']
+        assert len(failures) == 1 and failures[0]['technical_errors']
+        assert failures[0]['failed_ir_receipts'][0]['raw_ir_available']
+    else:
+        assert u2['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission']['phase_updates'] == {'world.costs': 999}
+    if designer_profile == author_module.FEEDBACK_MODE:
         intent_paths = list((root / 'search/content-utility/authoring').glob('proposal-*/call.intent.json'))
         u2_intent = next(driver.read(path) for path in intent_paths
             if driver.read(path.parent / 'binding.json')['request']['generation'] == 2)
@@ -169,6 +186,19 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
     assert audit_paths[0].read_bytes() == audit_paths[1].read_bytes()
     proof = driver.read(audit_paths[0]); assert len(proof['worlds']) == 7
     assert all(len(w['physical_proof']['annual_checkpoints']) == 4 for w in proof['worlds'])
+    active_input_change = None
+    if designer_profile == author_module.OPEN_IR_MODE:
+        from scripts.reports.native_instruction_timing_v1 import completed_pairs
+        hand = root / 'references/post-funding-cost/worlds/workflow-reference-post-funding-cost-s61001'
+        own = next(w for w in proof['worlds'] if w['role'] == 'workflow-own-proposal' and w['objective'] == 'throughput')
+        cell = root / 'search/throughput/worlds' / (own['identity'] + '-s61001')
+        def observed_inputs(directory):
+            wires, replies = completed_pairs(directory)
+            return {'ordered_full_request_payload_sha256': digest([w['payload'] for w in wires]),
+                'wire_requests': len(wires), 'completed_responses': len(replies)}
+        old, new = observed_inputs(hand), observed_inputs(cell)
+        assert old['ordered_full_request_payload_sha256'] != new['ordered_full_request_payload_sha256']
+        active_input_change = {'hand': old, 'authored': new, 'full_scientist_inputs_changed': True}
     transport_paths = list(root.rglob('scientist-transport.json'))
     assert len(transport_paths) == (7 if scientist_profile=='read900' else 0)
     assert all(driver.read(path)['applied']['http_timeout_seconds']['read']==900 for path in transport_paths)
@@ -181,6 +211,9 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         output=audit_directory / ('report-' + str(i)))) for i in (1, 2)]
     assert reports[0] == reports[1] and reports[0]['consumed_own_slots'] == 6
     assert sum(row['loss'] is None for row in reports[0]['slots']) == 1
+    if designer_profile == author_module.OPEN_IR_MODE:
+        changes = [r['graph_from_parent'] for r in reports[0]['slots'] if r['status'] == 'complete']
+        assert all(d['source_edits'] and d['added_nodes'] for d in changes)
     report_files = same_files(audit_directory / 'report-1', audit_directory / 'report-2')
     assert _inventory(root) == before
     write_json_atomic(tmp_path / 'verification.json', {'schema': 'scienceutopia.native-workflow-objective-software-check.v1',
@@ -188,6 +221,7 @@ def test_bounded_workflow_designer_seven_native_worlds_known_null_and_double_col
         'prerequisite_kind': prerequisite_kind,
         'scientist_profile': scientist_profile,
         'designer_profile': designer_profile,
+        'active_authored_scientist_input_change': active_input_change,
         'actual_transport_application_records': len(transport_paths),
         'actual_bounded_HTTP_worker_calls': len(calls), 'new_model_calls': 0, 'native_software_worlds': 7,
         'annual_checkpoints': 28, 'known_invalid_slots_preserved': 1, 'consumed_own_slots': 6,

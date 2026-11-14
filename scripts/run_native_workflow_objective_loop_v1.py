@@ -1,4 +1,4 @@
-"""Finite structural workflow design in the original native scientist world."""
+"""Finite original-world design with explicit structural/open-institution scopes."""
 import argparse
 import fcntl
 import json
@@ -18,7 +18,7 @@ from utopia.optimization.native_designer_preflight import backend_binding, runti
 from utopia.optimization.native_jobs import pinned_revision
 from utopia.optimization.native_numeric_designer import checked, save
 from utopia.optimization.native_workflow_designer_v1 import (
-    WorkflowDesigner, SETTINGS, generation_definition, settings_for, FEEDBACK_MODE, FEEDBACK_PROTOCOL)
+    WorkflowDesigner, SETTINGS, generation_definition, settings_for, FEEDBACK_MODE, FEEDBACK_PROTOCOL, OPEN_IR_MODE)
 from utopia.optimization.native_workflow_domain_v4 import (
     workflow_design_space, post_funding_cost_control, verify_workflow_interval)
 from utopia.optimization.native_world import evaluate_native_suggestion
@@ -29,10 +29,33 @@ from utopia.utils.data_utils import file_sha256, decode_json
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = 'scienceutopia.native-workflow-objective-loop.v1'
 PROTOCOL = 'research/protocols/campaigns/native-workflow-objective-loop-v1.md'
+OPEN_PROTOCOL = 'research/protocols/campaigns/native-open-workflow-objective-loop-v1.md'
+OPEN_SCOPE = 'literal-open-institutions-code-and-graph-v1'
 SEED = 61001
 
 
 def read(path): return checked(json.loads(Path(path).read_text()))
+
+
+def open_institutions(plan):
+    if plan.get('designer_mode') != OPEN_IR_MODE:
+        return False
+    if plan.get('authoring_scope') != OPEN_SCOPE or plan.get('protocol') != OPEN_PROTOCOL:
+        raise ValueError('explicit open-institution study scope/protocol required')
+    return True
+
+
+def reference_context(plan, pairs):
+    """Comparison-only controls are measured, but never optimizer feedback."""
+    visible = plan.get('optimizer_reference_labels', plan['reference_order'])
+    if open_institutions(plan) and visible != ['R7-original']:
+        raise ValueError('open-institution pilot exposes only its declared original reference')
+    expected = ['workflow-reference-' + label.lower() for label in plan['reference_order']]
+    if [pair['suggestion']['suggestion_id'] for pair in pairs] != expected:
+        raise ValueError('complete ordered comparison references required before feedback separation')
+    identities = {'workflow-reference-' + label.lower() for label in visible}
+    selected = [pair for pair in pairs if pair['suggestion']['suggestion_id'] in identities]
+    return build_context(selected, world=plan['world'], seeds=[SEED], loss_spec=plan['losses']['throughput'])
 
 
 def native_sources(source):
@@ -124,20 +147,26 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
     for key in original['observer_contract']:
         if key not in ('source_commit', 'content_sha256') and original['observer_contract'][key] != observer[key]:
             raise ValueError('original common content observer changed')
-    experiment = {'protocol': PROTOCOL, 'role': 'objective-conditioned-native-workflow-design'}
+    opened = designer_mode == OPEN_IR_MODE
+    protocol = OPEN_PROTOCOL if opened else PROTOCOL
+    experiment = {'protocol': protocol, 'role': ('objective-conditioned-native-open-institution-design'
+        if opened else 'objective-conditioned-native-workflow-design')}
     world = {**clone(original['world']), 'source_commit': source, 'experiment': experiment,
-        'measurement_adapter_contract': observer, 'classification': 'actual-native-workflow-objective-loop-v1'}
+        'measurement_adapter_contract': observer, 'classification': ('actual-native-open-workflow-objective-loop-v1'
+            if opened else 'actual-native-workflow-objective-loop-v1')}
     result = {'schema': SCHEMA + '.plan', 'source_commit': source, 'runtime': runtime_binding(),
-        'protocol': PROTOCOL, 'protocol_sha256': file_sha256(ROOT / PROTOCOL), 'origin': clone(origin),
+        'protocol': protocol, 'protocol_sha256': file_sha256(ROOT / protocol), 'origin': clone(origin),
         'origin_audit_content_sha256': audit['content_sha256'], 'original_native_sources': sources,
         'prerequisite': clone(prerequisite), 'launch_environment': clone(ENVIRONMENT),
         **{k: clone(original[k]) for k in ('scientist', 'designer', 'data_cache', 'losses', 'catalog')},
         'backend': clone(backend), 'world': world, 'experiment': experiment, 'observer_contract': observer,
         'initial_system': anchor.to_dict(), 'design_space': workflow_design_space(anchor),
-        'authoring_scope': 'literal-existing-institutions-workflow-only', 'author_settings': settings_for(designer_mode),
+        'authoring_scope': OPEN_SCOPE if opened else 'literal-existing-institutions-workflow-only',
+        'author_settings': settings_for(designer_mode),
         'reference_order': list(refs), 'reference_systems': refs,
         'objectives': clone(original['objectives']), 'generations': 3, 'optimizer_seed': 68011,
-        'strategies': {'local-workflow-designer': {'protocol': PROTOCOL, 'method': 'literal-local-workflow-submission'}},
+        'strategies': {'local-workflow-designer': {'protocol': protocol,
+            'method': 'literal-stable-id-open-institution' if opened else 'literal-local-workflow-submission'}},
         'schedule': [{'objective': o, 'generation': g} for g in range(3)
             for o in (original['objectives'] if g % 2 == 0 else original['objectives'][::-1])],
         'budget': {'fresh_reference_worlds': 2, 'candidate_slots': 6, 'native_worlds_upper_bound': 8,
@@ -148,8 +177,12 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend, pr
         'structural_freedom_causal_effect_claimed': False, 'publication_ready': False}
     if designer_mode is not None:
         result['designer_mode'] = designer_mode
-        result['author_profile_protocol'] = {'path': FEEDBACK_PROTOCOL,
-            'sha256': file_sha256(ROOT / FEEDBACK_PROTOCOL)}
+        profile_protocol = settings_for(designer_mode)['open_protocol'] if opened else FEEDBACK_PROTOCOL
+        result['author_profile_protocol'] = {'path': profile_protocol,
+            'sha256': file_sha256(ROOT / profile_protocol)}
+    if opened:
+        result['optimizer_reference_labels'] = ['R7-original']
+        result['comparison_only_reference_labels'] = ['post-funding-cost']
     if prerequisite.get('schema') == 'scienceutopia.native-workflow-numeric-prerequisite.v2':
         from scripts.native_workflow_numeric_prerequisite_v2 import PROTOCOL as eligibility
         result['eligibility_protocol'] = {'path': eligibility, 'sha256': file_sha256(ROOT / eligibility)}
@@ -258,7 +291,7 @@ def run(root):
                 save(directory / 'cross-scores.json', {k: evaluate_loss(v, o['metadata']['measurements']) for k, v in p['losses'].items()})
                 if o['status'] != 'complete': raise ValueError('workflow reference failed; no refill')
                 pairs.append({'suggestion': s.to_dict(), 'observation': o}); observations += 1; require_plan(root)
-            context = build_context(pairs, world=p['world'], seeds=[SEED], loss_spec=p['losses']['throughput'])
+            context = reference_context(p, pairs)
             save(root / 'developer-reference-context.json', {k: v for k, v in context.items() if k != 'content_sha256'})
             for slot in p['schedule']:
                 objective, generation = slot['objective'], slot['generation']
@@ -319,7 +352,7 @@ def main():
     after.add_argument('--after-numeric-dispatch', type=Path)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--scientist-read-timeout-seconds', type=int, choices=(900,))
-    p.add_argument('--designer-mode', choices=(FEEDBACK_MODE,))
+    p.add_argument('--designer-mode', choices=(FEEDBACK_MODE, OPEN_IR_MODE))
     p = sub.add_parser('run'); p.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'prepare': prepare(args)

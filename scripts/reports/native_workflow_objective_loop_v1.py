@@ -3,6 +3,7 @@ import argparse
 from collections import Counter
 import csv
 import json
+import hashlib
 from pathlib import Path
 
 from scripts.analyze_native_open_v7 import _inventory
@@ -14,27 +15,58 @@ from utopia.utils.data_utils import file_sha256
 SCHEMA = 'scienceutopia.native-workflow-objective-report.v1'
 
 
-def graph_change(before, after):
+def graph_change(before, after, *, allow_institution_edits=False):
     """Literal phase and multiset edge changes, never an inferred policy effect."""
     fields = lambda spec: {k: v for k, v in spec.items() if k not in ('connections', 'schedules')}
-    if fields(before) != fields(after):
+    if fields(before) != fields(after) and not allow_institution_edits:
         raise ValueError('audited structural-only policy changes source, parameters or other fields')
     phases = lambda spec: {s['mechanism_id']: s['phase'] for s in spec['schedules']}
     old, new = phases(before), phases(after)
     schedule_fields = lambda spec: {s['mechanism_id']: {k: v for k, v in s.items() if k != 'phase'}
         for s in spec['schedules']}
-    if (set(old) != set(new) or len(old) != len(before['schedules'])
-            or len(new) != len(after['schedules']) or schedule_fields(before) != schedule_fields(after)):
+    if (len(old) != len(before['schedules']) or len(new) != len(after['schedules'])
+            or (not allow_institution_edits and (set(old) != set(new)
+                or schedule_fields(before) != schedule_fields(after)))):
         raise ValueError('workflow node schedules/triggers differ')
     encode = lambda e: json.dumps(e, sort_keys=True, separators=(',', ':'), allow_nan=False)
     a, b = [Counter(encode(e) for e in spec['connections']) for spec in (before, after)]
-    return {'phase_updates': {k: {'before': old[k], 'after': new[k]} for k in sorted(old) if old[k] != new[k]},
+    result = {'phase_updates': {k: {'before': old[k], 'after': new[k]} for k in sorted(set(old) & set(new)) if old[k] != new[k]},
         'removed_connections': [json.loads(e) for e in sorted((a - b).elements())],
         'added_connections': [json.loads(e) for e in sorted((b - a).elements())],
-        'source_parameters_nodes_unchanged': True}
+        'source_parameters_nodes_unchanged': fields(before) == fields(after)}
+    if allow_institution_edits:
+        old_nodes = {n['mechanism_id']: n for n in before['mechanisms']}
+        new_nodes = {n['mechanism_id']: n for n in after['mechanisms']}
+        if len(old_nodes) != len(before['mechanisms']) or len(new_nodes) != len(after['mechanisms']):
+            raise ValueError('unique mechanism identities required in open-institution readout')
+        result['added_nodes'] = {k: digest(new_nodes[k]) for k in sorted(set(new_nodes) - set(old_nodes))}
+        result['removed_nodes'] = {k: digest(old_nodes[k]) for k in sorted(set(old_nodes) - set(new_nodes))}
+        result['changed_mechanisms'] = {k: {'before_sha256': digest(old_nodes[k]),
+            'after_sha256': digest(new_nodes[k]), 'changed_fields': sorted(f for f in set(old_nodes[k]) | set(new_nodes[k])
+                if old_nodes[k].get(f) != new_nodes[k].get(f))}
+            for k in sorted(set(old_nodes) & set(new_nodes)) if old_nodes[k] != new_nodes[k]}
+        def source(node):
+            if node and node.get('implementation') == 'native.process.activity.v1':
+                node = node['parameters']['delegate']
+            value = (node.get('parameters', {}).get('code_artifact', {}).get('source')
+                if node and node.get('implementation') == 'code.python.v1' else None)
+            return None if value is None else hashlib.sha256(value.encode()).hexdigest()
+        result['source_edits'] = {k: {'before_source_utf8_sha256': source(old_nodes.get(k)),
+            'after_source_utf8_sha256': source(new_nodes.get(k))}
+            for k in sorted(set(old_nodes) | set(new_nodes)) if source(old_nodes.get(k)) != source(new_nodes.get(k))}
+        result['changed_system_fields'] = {k: {'before_sha256': digest(before.get(k)),
+            'after_sha256': digest(after.get(k))} for k in sorted(set(before) | set(after))
+            if k not in ('mechanisms', 'schedules', 'connections') and before.get(k) != after.get(k)}
+        result['added_schedules'] = {s['mechanism_id']: clone(s) for s in after['schedules'] if s['mechanism_id'] not in old}
+        result['removed_schedules'] = {s['mechanism_id']: clone(s) for s in before['schedules'] if s['mechanism_id'] not in new}
+    return result
 
 
 def summarize(p, audit, records):
+    from scripts.run_native_workflow_objective_loop_v1 import open_institutions
+    opened = open_institutions(p)
+    visible_references = p.get('optimizer_reference_labels', p['reference_order'])
+    change = lambda before, after: graph_change(before, after, allow_institution_edits=opened)
     if (p['schema'] != 'scienceutopia.native-workflow-objective-loop.v1.plan'
             or audit['schema'] != 'scienceutopia.native-workflow-objective-loop-audit.v1'
             or audit['source_commit'] != p['source_commit'] or audit['plan_sha256'] != p['content_sha256']
@@ -52,7 +84,8 @@ def summarize(p, audit, records):
             raise ValueError('workflow reference identity/system differs')
         used.add(identity)
         references.append({'label': label, 'physical_job': identity, 'status': w['status'],
-            'scores': clone(w['scores']), 'graph_from_anchor': graph_change(p['initial_system'], w['system'])})
+            'scores': clone(w['scores']), 'graph_from_anchor': change(p['initial_system'], w['system']),
+            **({'optimizer_visible': label in visible_references} if opened else {})})
     if set(records) != {(s['objective'], s['generation']) for s in p['schedule']}:
         raise ValueError('all six original structural slots required')
     for index, slot in enumerate(p['schedule']):
@@ -77,8 +110,8 @@ def summarize(p, audit, records):
                 raise ValueError('workflow own world differs from original audited slot')
             used.add(identity)
             row.update(status=o['status'], physical_job=identity, loss=o['loss'], cross_scores=clone(w['scores']),
-                graph_from_parent=graph_change(parent, w['system']),
-                graph_from_anchor=graph_change(p['initial_system'], w['system']))
+                graph_from_parent=change(parent, w['system']),
+                graph_from_anchor=change(p['initial_system'], w['system']))
         elif r['generation_error'] is None and not any(d.get('technical_error') for d in r['draws']):
             raise ValueError('missing workflow observation without a retained technical null')
         slots.append(row)
@@ -86,7 +119,7 @@ def summarize(p, audit, records):
     paths = {}
     for objective in p['objectives']:
         rows = [r for r in slots if r['objective'] == objective]
-        own, known = None, min(r['scores'][objective] for r in references)
+        own, known = None, min(r['scores'][objective] for r in references if r['label'] in visible_references)
         values = []
         for r in rows:
             if r['status'] == 'complete':
@@ -101,6 +134,8 @@ def summarize(p, audit, records):
             raise ValueError('workflow own-only selection changed or a reference was substituted')
         paths[objective] = values
     return {'schema': SCHEMA, 'source_commit': p['source_commit'], 'plan_sha256': p['content_sha256'],
+        **({'authoring_scope': p['authoring_scope'], 'optimizer_reference_labels': clone(visible_references),
+            'best_known_scope': 'Only optimizer-visible reference and own outcomes; comparison-only hand control remains separately reported'} if opened else {}),
         'audit_content_sha256': audit['content_sha256'], 'score_order': clone(p['objectives']),
         'references': references, 'slots': slots, 'loss_paths': paths, 'selection': clone(audit['selection']),
         'physical_worlds': len(worlds), 'consumed_own_slots': len(slots),
@@ -133,6 +168,8 @@ def export(args):
     render(saved, output)
     fields = ['slot_index', 'objective', 'generation', 'status', 'physical_job', 'loss', 'throughput',
         'content-utility', 'changed_phases', 'removed_edges', 'added_edges']
+    from scripts.run_native_workflow_objective_loop_v1 import open_institutions
+    if open_institutions(p): fields += ['added_nodes', 'removed_nodes', 'source_edits', 'changed_mechanisms']
     with (output / 'slots.csv').open('x', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields, lineterminator='\n'); writer.writeheader()
         for row in report['slots']:
@@ -140,7 +177,9 @@ def export(args):
             writer.writerow({**{k: row[k] for k in fields if k in row}, **row['cross_scores'],
                 **{k: None if diff is None else len(diff[v]) for k, v in (
                     ('changed_phases', 'phase_updates'), ('removed_edges', 'removed_connections'),
-                    ('added_edges', 'added_connections'))}})
+                    ('added_edges', 'added_connections'))},
+                **{k: None if diff is None else len(diff[k]) for k in (
+                    'added_nodes', 'removed_nodes', 'source_edits', 'changed_mechanisms') if k in fields}})
     save(output / 'manifest.json', {'schema': SCHEMA + '.export', 'inputs': hashes,
         'raw_inventory_sha256': digest(before), 'report_content_sha256': saved['content_sha256'],
         'files': {f.name: file_sha256(f) for f in sorted(output.iterdir()) if f.is_file()},

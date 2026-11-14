@@ -12,7 +12,7 @@ from scripts.analyze_native_open_v7 import _inventory
 from scripts.native_benchmark_seed_usage import usage_inventory, software_fixture_policy, require_inventory_policy
 from scripts.run_native_objective_fixed_evaluation_v1 import fixed_selection, jobs_for, run as run_shared
 from scripts.run_native_objective_instrument_loop_v1 import measure_with, utc
-from scripts.run_native_workflow_objective_loop_v1 import scientist_factory, native_sources
+from scripts.run_native_workflow_objective_loop_v1 import scientist_factory, native_sources, open_institutions, OPEN_SCOPE
 from scripts.run_pre_scale_search_v1 import require_environment
 from utopia.optimization.blackbox import Suggestion
 from utopia.optimization.common_content_observer import make_contract
@@ -29,6 +29,7 @@ from utopia.utils.data_utils import file_sha256
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = 'scienceutopia.native-workflow-fixed-evaluation.v1'
 PROTOCOL = 'research/protocols/campaigns/native-workflow-fixed-evaluation-v1.md'
+OPEN_PROTOCOL = 'research/protocols/campaigns/native-open-workflow-fixed-evaluation-v1.md'
 SEED_SOFTWARE_PROTOCOL = 'research/protocols/campaigns/native-workflow-feedback-fixed-evaluation-v3.md'
 REFERENCES = ['R7-original', 'post-funding-cost']
 
@@ -47,6 +48,8 @@ def interval(plan, system, events, seed):
 
 def build_plan(original, audit, *, source, origin, usages, seeds, observer_backend, source_proof,
         software_exclusions=None):
+    opened = open_institutions(original)
+    protocol = OPEN_PROTOCOL if opened else PROTOCOL
     selected = fixed_selection(original, audit, study='workflow-v1')
     if (original['objectives'] != ['throughput', 'content-utility'] or original['generations'] != 3
             or original['reference_order'] != REFERENCES or original['held_out_evaluation']
@@ -64,15 +67,16 @@ def build_plan(original, audit, *, source, origin, usages, seeds, observer_backe
     if {k: v for k, v in original['observer_contract'].items() if k not in ignore} != {
             k: v for k, v in observer.items() if k not in ignore}:
         raise ValueError('fixed native content observer changed')
-    experiment = {'protocol': PROTOCOL, 'role': 'selection-frozen-workflow-evaluation'}
+    experiment = {'protocol': protocol, 'role': 'selection-frozen-workflow-evaluation'}
     result = {'schema': SCHEMA + '.plan', 'source_commit': source, 'runtime': runtime_binding(),
-        'protocol': PROTOCOL, 'protocol_sha256': file_sha256(ROOT / PROTOCOL), 'origin': clone(origin),
+        'protocol': protocol, 'protocol_sha256': file_sha256(ROOT / protocol), 'origin': clone(origin),
         'origin_audit_content_sha256': audit['content_sha256'],
         'origin_selection_sha256': selected['content_sha256'], 'original_native_sources': clone(source_proof),
         **{k: clone(original[k]) for k in ('scientist', 'designer', 'data_cache', 'losses', 'objectives', 'catalog', 'initial_system')},
         'fixed_selection': selected, 'reference_systems': clone(original['reference_systems']),
         'world': {**clone(original['world']), 'source_commit': source, 'experiment': experiment,
-            'measurement_adapter_contract': observer, 'classification': 'actual-native-workflow-fixed-evaluation-v1'},
+            'measurement_adapter_contract': observer, 'classification': ('actual-native-open-workflow-fixed-evaluation-v1'
+                if opened else 'actual-native-workflow-fixed-evaluation-v1')},
         'experiment': experiment, 'observer_contract': observer,
         'evaluation': {'seeds': clone(seeds), 'reference_labels': clone(REFERENCES),
             'maximum_physical_worlds': 4 * len(seeds), 'seed_usage': [u['content_sha256'] for u in usages]},
@@ -80,6 +84,7 @@ def build_plan(original, audit, *, source, origin, usages, seeds, observer_backe
             'observer_POSTs_upper_bound': 3000, 'designer_generation_POSTs': 0, 'replace_failed_slots': False},
         'claims': {'independent_optimizer_replications': False, 'scientific_truth': False,
             'publication_ready': False, 'candidate_reselection': False, 'new_institution_design': False}}
+    if opened: result['origin_authoring_scope'] = OPEN_SCOPE
     if software_exclusions is not None:
         policy = software_fixture_policy(software_exclusions)
         for u in usages: require_inventory_policy(u, policy)
@@ -96,7 +101,7 @@ def build_plan(original, audit, *, source, origin, usages, seeds, observer_backe
         result['operational_protocol'] = clone(original['operational_protocol'])
     result['jobs'] = jobs_for(result)
     for job in result['jobs']:
-        require_workflow_candidate(seeded_anchor(result, job['seed']), SystemSpec.from_dict(job['system']), structure_only=True)
+        require_workflow_candidate(seeded_anchor(result, job['seed']), SystemSpec.from_dict(job['system']), structure_only=not opened)
     return result
 
 
