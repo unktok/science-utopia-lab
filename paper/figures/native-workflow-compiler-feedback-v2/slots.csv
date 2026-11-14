@@ -1,0 +1,7 @@
+slot_index,objective,generation,status,physical_job,loss,throughput,content-utility,changed_phases,removed_edges,added_edges
+0,throughput,0,complete,native-adaptive-1e04ec5851409ebdb6a097c3,-20.0,-20.0,-15.333333333333332,3,0,0
+1,content-utility,0,complete,native-adaptive-b8d4731685627e04d73f77ad,-15.333333333333332,-20.0,-15.333333333333332,0,0,0
+2,content-utility,1,generation-null,,,,,,,
+3,throughput,1,complete,native-adaptive-ad403fc8e09a9668fda58cb5,-20.0,-20.0,-15.333333333333332,0,0,0
+4,throughput,2,generation-null,,,,,,,
+5,content-utility,2,complete,native-adaptive-bce26ed78e0b36fd1ce68095,-15.333333333333332,-20.0,-15.333333333333332,1,0,0

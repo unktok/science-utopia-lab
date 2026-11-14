@@ -21,7 +21,11 @@ def command(*args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--allowed-external-python-argument', action='append', default=[])
+    parser.add_argument('--allowance-note')
     args = parser.parse_args()
+    if args.allowed_external_python_argument and not args.allowance_note:
+        raise ValueError('explicit inspected-process allowance note required')
     if args.output.exists():
         raise ValueError('fresh resource output required')
     args.output.mkdir(parents=True)
@@ -31,6 +35,7 @@ def main():
         '/Users/shiro/unktok/dev/anchor-lab/.venv/bin/python way/instruments/rhm/ilc_sweep.py --v 8 --s 3 --L 3 4 5 6 --m 8 --grammars 10 --method cocluster_bp --p0 50 --eta 0.05 --pmax 2000000 --out lines/line-20261114-03/results --tag noise_coclusterbp_L',
         '/Users/shiro/unktok/dev/anchor-lab/.venv/bin/python way/instruments/rhm/ilc_sweep.py --v 8 --s 3 --L 5 --m 6 8 12 16 24 --grammars 10 --method cocluster_bp --p0 50 --eta 0.05 --pmax 2000000 --out lines/line-20261114-03/results --tag noise_coclusterbp_m',
     }
+    allowed_python_arguments.update(args.allowed_external_python_argument)
     save(args.output / 'started.json', {
         'schema': 'scienceutopia.native-feedback-resource-observation.v2',
         'started_utc': datetime.now(timezone.utc).isoformat(), 'pid': os.getpid(),
@@ -38,6 +43,7 @@ def main():
         'minimum_free_plus_inactive_bytes': 38 * 1024**3,
         'allowed_external_python_arguments': sorted(allowed_python_arguments),
         'allowed_CPU_job_note': 'Previously inspected NumPy/SciPy CPU sweep; no job is changed.',
+        'additional_exact_argument_allowance_note': args.allowance_note,
         'scientific_dispatch_allowed': False, 'new_inference_POSTs': 0,
         'exclusive_lease_proved': False, 'other_jobs_may_start_later': True,
     })

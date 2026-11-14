@@ -173,3 +173,35 @@ Initial38 tests pass19.17s; the following49 pass27.90s before final protocol-
 source binding additions. Final source-pinned focused/native validation remains
 required. The original seed1858637637, frozen own selection, losses and model
 roles do not change; this repair is not a favorable-outcome or novelty filter.
+
+At clean2133ffc0 in a separate QA worktree,31092 exits0:49 focused checks pass
+26.61s and the full optional-policy native handoff passes136.58s. Its actual
+verification retains7 development+2 evaluation SCRIPTED native worlds,
+unchanged selection,2 cold audits/costs/reports and3 double mechanism exports.
+No actual endpoint inference or scientific seed result is claimed. Original
+QA source/HEAD stay frozen. The compact software proof preserves JUnit hashes.
+
+New separate v3 science/analysis worktrees freeze2133ffc0. Prepare38181 exits0
+with plan797c83282b2eeaf86d5ad37b2c03508cb5c0775c992e85c7e59b0eec9d2304cf
+(file160ecfb5b648dde34dcdf7879edbe6da31423373a71624cf72dc3fd0deda6896).
+All3 inventories are valid with315/347/663 readable bindings, zero errors or
+matching1858637637, and0/0/72 exact-file software exemptions. Three physical
+jobs represent all four frozen labels: U0 is literally the hand control;
+T0 is a separate policy despite observed development-input equality. No
+scientific dispatch is inferred from preparation.
+
+Actual resource observation at the frozen analysis source stops before
+inference: CPU230.9%, free+inactive43.985GiB, and one unclassified process23619.
+Read-only inspection of that other project's frozen residence entrypoint and
+executor shows bounded trusted CPU recurrence tasks, zero model calls and an
+idle wait loop. Do not infer exclusive resources from its0.0% sample. Add only
+an optional exact-argument allowance with an explicit inspection note, keeping
+all default unknown-process/CPU/memory/loaded-model checks. Three SCRIPTED
+resource tests pass0.56s; fresh actual two-sample confirmation is still needed.
+No other project's data, code or process is changed.
+
+The closed-study figure exporter exits0 and its two previously inspected plots
+are retained in paper/figures/native-workflow-compiler-feedback-v2. Manuscript
+source adds all six outcomes, exact scientist-input retention, failure feedback
+and cost/headroom limits, without rewriting the older stopped study. The
+existing75-page PDF/receipt remain unchanged; updated-source PDF is pending.

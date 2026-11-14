@@ -2,6 +2,30 @@
 
 ## Active publication-ready goal
 
+### November14 15:44JST: fixed evaluation prepares three jobs; actual resource allowance is reviewed
+
+Frozen2133ffc0 passes49 focused checks and the9-world SCRIPTED native handoff
+(7 development+2 fixed worlds), including the real optional inventory hook and
+double cold audits/costs/reports/readouts. All31092 processes exit0 before
+retention. [Software proof](results/native-workflow-seed-policy-software-v3.json).
+New v3 prepare38181 exits0 at2133ffc0 with plan797c8328 and seed1858637637.
+All3 inventories pass:315/347/663 readable bindings,0 matches/errors and
+0/0/72 explicit reviewed nonproduction exclusions, separate from legacy skips.
+There are3 jobs: R7, hand+U-selected, T-selected. This is literal identity
+sharing, not observed-behavior deduplication. No scientific inference yet.
+
+First resource check stops before inference on an unclassified Python command.
+Read-only inspection identifies a frozen other-project residence diagnostic:
+bounded trusted CPU recurrence tasks and explicit zero model calls. The new
+optional exact-argument allowance requires a retained inspection note; default
+unknown-process stopping and all CPU/memory/model checks remain. Three light
+resource tests pass. Other work is not stopped/modified and no exclusive lease
+is claimed. Two fresh real samples remain required.
+
+The closed development's full table, objective-path figure, behavioral-retention
+analysis and actual costs are now in manuscript source. Current reviewed PDF
+is still the75-page version; a new PDF has not yet been built from that update.
+
 ### November14 15:38JST: closed study/readouts verified; unused evaluation preparation stops on fixtures
 
 All original continuations exit0: two audits, costs, objective reports and each

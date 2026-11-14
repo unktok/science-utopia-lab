@@ -1,0 +1,72 @@
+{
+  "schema": "scienceutopia.native-seed-fixture-policy-software-proof.v1",
+  "source_commit": "2133ffc0",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-seed-policy-qa-v3-a1",
+  "session": 31092,
+  "exit_code": 0,
+  "light": {
+    "tests": 49,
+    "seconds": 26.61,
+    "junit": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-seed-policy-qa-v3-a1/outputs/seed-policy-v3-light-a1/junit.xml",
+    "junit_sha256": "e7393f81ba5a522771532a68e6c92b736376421c000ff2b3d414e8146794b625"
+  },
+  "native": {
+    "tests": 1,
+    "seconds": 136.58,
+    "junit": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-seed-policy-qa-v3-a1/outputs/seed-policy-v3-native-a1/junit.xml",
+    "junit_sha256": "b68e1b79008bd1265bd1904452c6b2dfee2dde507848820602c036fb3f209b26",
+    "verification_file_sha256": "d0e9e26e272222bd0414322aab29555944f7e712abfb203daf1594893901cbb8",
+    "actual_verification": {
+      "additional_annual_checkpoints": 8,
+      "additional_native_software_worlds": 2,
+      "classification": "SCRIPTED-HTTP-corpus-and-upstream-origin-not-scientific-evaluation",
+      "designer_profile": "compiler-feedback-thinking-v2",
+      "development_native_software_worlds": 7,
+      "explicit_software_fixture_policy": true,
+      "fixed_selection_unchanged": true,
+      "known_nulls_preserved": 1,
+      "matching_audit_sha256": "68da3a41db9372e8bd74494ebbbeeba55d0584e99e936636f78595cb47ae74dc",
+      "matching_cost_content_sha256": "2f4f35d13066e4f6f42ee3c8fac514f4e0996a0d29fdfcab762232cb984a1a37",
+      "matching_mechanism_readout_files": {
+        "native_institution_effect_trace_v1": {
+          "annual-boundaries.csv": "db2375f6973fba38c4ee23b5f3fd7bb03b38c2afab0a712ed70674bec976bf3d",
+          "manifest.json": "e47a754a432dc565f23583602f74b7b4965e1b32b2df0f0f3fcf380cb0c851f0",
+          "report.json": "9ee68e48cb6f9bf82c9879810d1a36eb33faaa8ec632e86398ee74f88ce771b8"
+        },
+        "native_observed_request_classes_v1": {
+          "manifest.json": "b1bc0878f06846cf773b97c3590e08ab3c3bce652eba36859b0e32d32d81bc8a",
+          "report.json": "20abc2ece6055819bb43d61c1ab6d5c6c26917b1150d8ca3c387fc7d3aa091cf"
+        },
+        "native_planning_choice_trace_v1": {
+          "annual-project-states.csv": "1b377e85f834ad3c1c5621dec7b4b1d905d3d4d8792a6d70be4d9cea548c07d6",
+          "manifest.json": "89ea57eba89ccebada84c7ff1b8d8715523d106a69047e83be35bf6ec062a291",
+          "report.json": "ad714fb5df4b624122a88855d14454d8d796a67027e451895f2175c9cfed8001"
+        }
+      },
+      "matching_report_files": {
+        "fixed-policy-paired-differences.png": "0188c04fdea402855684ce6c983ac60c21b5e87170bed00e56fa4bd7f6952716",
+        "fixed-policy-paired-differences.svg": "948d22ae49b817261d0bb130d6683c51e9c20949c125fcfc41d7ebf7a0b891f9",
+        "fixed-policy-seed-scores.png": "963f495475590b8b85b312704364a87d6b8c3887dc37eaa462b5d6b3421d0dd9",
+        "fixed-policy-seed-scores.svg": "30ddb17f502563c5f03fd57a798bbc0189b95da6d0ca875e5a89bf61e723a2ff",
+        "logical-scores.csv": "4b5606c747cb8036141615c49389b3224edf153c3ba8cff787aafec322c41b26",
+        "manifest.json": "202309791099e4d05b7a68ce80d12627b7ce8c9dc1394fe962368986dcd74412",
+        "objective-choice-differences.csv": "f318d7251958f68277ff114c71515cd58c09e5abcfde3db239f3a73f06378131",
+        "paired-differences.csv": "f6fdc1bacbe9d6f7827e9479239ae72eca830d43846fd56f66fef9129200caaf",
+        "report.json": "05f829502430835f647075479fcd55a398b9b0832ee1ba332f839d5e791a6e99"
+      },
+      "new_model_calls": 0,
+      "original_cold_audit_directory": "/private/tmp/science-utopia-workflow-fixed-cold-yutjvipv",
+      "publication_ready": false,
+      "schema": "scienceutopia.native-workflow-fixed-software-check.v1",
+      "scientific_gain_claimed": false,
+      "source_commit": "2133ffc02810820607983db499fc66dc6d207f17",
+      "transport_application_records": 2
+    }
+  },
+  "scientific_inference_POSTs": 0,
+  "scientific_seeds_evaluated": 0,
+  "old_failed_preparation_relabelled": false,
+  "software_only": true,
+  "publication_ready": false,
+  "content_sha256": "ccda314d4a1efa613d9bd07a5d7a710e0955be8d90a042d2ba395cbdfd39470f"
+}
