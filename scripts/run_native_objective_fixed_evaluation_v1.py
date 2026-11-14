@@ -90,11 +90,12 @@ def jobs_for(p):
     projection={k:v for k,v in p.items() if k not in ('jobs','content_sha256')}
     projection['content_sha256']=digest(projection)
     selected_policies=clone(p['fixed_selection']['selected'])
-    if p.get('schema')=='scienceutopia.native-joint-fixed-evaluation.v1.plan':
+    if p.get('schema') in ('scienceutopia.native-joint-fixed-evaluation.v1.plan',
+            'scienceutopia.native-workflow-fixed-evaluation.v1.plan'):
         # JSON object order is not durable. This explicit new-study order also
         # determines label lists on shared physical jobs. Historical studies
         # retain their original source/semantics; do not rewrite their jobs.
-        order=p['selection_order']
+        order=p['objectives'] if p['schema']=='scienceutopia.native-workflow-fixed-evaluation.v1.plan' else p['selection_order']
         if len(order)!=len(set(order)) or set(order)!=set(selected_policies):
             raise ValueError('literal unique joint selection order required')
         selected_policies={key:selected_policies[key] for key in order}
@@ -190,9 +191,12 @@ def observe(root,p,job,observer):
     save(directory/'cross-scores.json',{k:evaluate_loss(v,o['metadata']['measurements']) for k,v in p['losses'].items()})
 
 
-def run(root):
+def run(root, *, require_plan_fn=None, observe_fn=None, schema=None):
     from scripts.run_native_objective_instrument_loop_v1 import utc
-    require_environment();p=require_plan(root)
+    ensure = require_plan if require_plan_fn is None else require_plan_fn
+    dispatch = observe if observe_fn is None else observe_fn
+    actual_schema = SCHEMA if schema is None else schema
+    require_environment();p=ensure(root)
     with (root/'writer.lock').open('a') as owner,(Path(p['origin']['run'])/'writer.lock').open('r') as origin_owner:
         for h in (owner,origin_owner):fcntl.flock(h,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if (root/'started.json').exists():raise ValueError('consumed evaluation; no redispatch')
@@ -200,19 +204,19 @@ def run(root):
             old=read(root/f'seed-usage-{i:02d}.json');u=usage_inventory(old['root'],p['evaluation']['seeds'])
             if not u['valid']:raise ValueError('evaluation seeds consumed after preparation')
             save(root/f'pre-dispatch-seed-usage-{i:02d}.json',{k:v for k,v in u.items() if k!='content_sha256'})
-        save(root/'started.json',{'schema':SCHEMA+'.start','pid':os.getpid(),'plan_sha256':p['content_sha256'],'started_utc':utc()})
+        save(root/'started.json',{'schema':actual_schema+'.start','pid':os.getpid(),'plan_sha256':p['content_sha256'],'started_utc':utc()})
         status='stopped';completed=0;error={}
         try:
             observer=CommonContentObserver(root/'observer',p['observer_contract'],backend=LocalObserverBackend(inference_lock=root/'inference.lock'))
             for job in p['jobs']:
-                progress(root,'evaluation',job['identity']);observe(root,p,job,observer);completed+=1;require_plan(root)
+                progress(root,'evaluation',job['identity']);dispatch(root,p,job,observer);completed+=1;ensure(root)
             a=observer.audit();save(root/'observer-audit.json',{k:v for k,v in a.items() if k!='content_sha256'})
             if read(root/'observer-audit.json')!=a:raise ValueError('saved observer audit differs')
             status='closed';progress(root,'closed')
         except BaseException as e:
             error={'error_type':type(e).__name__,'error':str(e)};raise
         finally:
-            save(root/'terminal.json',{'schema':SCHEMA+'.terminal','status':status,'completed_jobs':completed,
+            save(root/'terminal.json',{'schema':actual_schema+'.terminal','status':status,'completed_jobs':completed,
                 'ended_utc':utc(),'held_out_world_seeds':True,'publication_ready':False,**error})
 
 

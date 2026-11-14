@@ -45,6 +45,13 @@ def summarize(plan,audit,*,study='count-content-v1'):
                 or set(plan['selection_definitions'])!=set(plan['selection_order'])
                 or plan['contrasts']!=contrasts_for()):
             raise ValueError('all eight frozen own labels, common references and declared contrasts required')
+    elif study=='workflow-v1':
+        plan_schema='scienceutopia.native-workflow-fixed-evaluation.v1.plan'
+        audit_schema='scienceutopia.native-workflow-fixed-evaluation-audit.v1'
+        schema='scienceutopia.native-workflow-fixed-report.v1'
+        from scripts.run_native_workflow_fixed_evaluation_v1 import REFERENCES
+        if plan['objectives']!=['throughput','content-utility'] or plan['evaluation']['reference_labels']!=REFERENCES:
+            raise ValueError('literal workflow T/U objectives and both controls required')
     else:raise ValueError('explicit supported fixed-report study required')
     if (plan['schema']!=plan_schema
             or audit['schema']!=audit_schema
@@ -107,6 +114,16 @@ def summarize(plan,audit,*,study='count-content-v1'):
         result.update(selection_order=clone(selected_keys),selection_definitions=clone(plan['selection_definitions']),
             contrast_definitions=clone(plan['contrasts']),fixed_policy_contrasts=contrasts,
             data_identity=clone(plan['scientist']['dataset_identity']))
+    if study=='workflow-v1':
+        result['objective_choice_differences']=[]
+        for seed in plan['evaluation']['seeds']:
+            a,b=by['selected:throughput',seed],by['selected:content-utility',seed]
+            result['objective_choice_differences'].append({'seed':seed,
+                'left':'selected:throughput','right':'selected:content-utility',
+                'left_physical_job':a['physical_job'],'right_physical_job':b['physical_job'],
+                'same_physical_job':a['physical_job'] is not None and a['physical_job']==b['physical_job'],
+                'differences':{k:None if a['scores'][k] is None or b['scores'][k] is None
+                    else a['scores'][k]-b['scores'][k] for k in plan['losses']}})
     result['content_sha256']=digest(result);return result
 
 
@@ -131,7 +148,8 @@ def render(report,output):
                 xticklabels=[short(s) for s in report['labels']]);ax.tick_params(axis='x',labelrotation=60)
             for tick in ax.get_xticklabels():tick.set_ha('right')
             ax.grid(axis='y',color='#ededed');ax.legend(title='World seed',fontsize=6,title_fontsize=7)
-        count = 'eight' if report['schema']=='scienceutopia.native-planning-fixed-report.v1' else 'five'
+        count = ('two' if report['schema']=='scienceutopia.native-workflow-fixed-report.v1' else
+            'eight' if report['schema']=='scienceutopia.native-planning-fixed-report.v1' else 'five')
         fig.suptitle('Frozen submitted policies and '+count+' controls: unused world seeds, no reselection',fontsize=10)
         fig.tight_layout(rect=(0,0,1,.94))
         for ext in ('png','svg'):fig.savefig(output/('fixed-policy-seed-scores.'+ext),dpi=200,metadata={'Date':None} if ext=='svg' else None)
@@ -177,6 +195,11 @@ def export(args,*,study='count-content-v1',renderer=None):
         with (output/'fixed-contrasts.csv').open('x',newline='') as f:
             writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
             for r in report['fixed_policy_contrasts']:writer.writerow({**{k:r[k] for k in fields},**r['differences']})
+    if study=='workflow-v1':
+        fields=['seed','left','right','left_physical_job','right_physical_job','same_physical_job']
+        with (output/'objective-choice-differences.csv').open('x',newline='') as f:
+            writer=csv.DictWriter(f,fieldnames=fields+report['score_order']);writer.writeheader()
+            for r in report['objective_choice_differences']:writer.writerow({**{k:r[k] for k in fields},**r['differences']})
     save(output/'manifest.json',{'schema':report['schema']+'.export','inputs':inputs,'raw_inventory_sha256':digest(before),
         'report_content_sha256':report['content_sha256'],'files':{p.name:file_sha256(p) for p in sorted(output.iterdir())},
         'new_model_calls':0,'new_code_executions':0})

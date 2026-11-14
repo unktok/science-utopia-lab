@@ -29,6 +29,16 @@ def worker(root,output,*,study='count-content-v1'):
             'scripts/audit_native_joint_fixed_evaluation_v1.py',
             'scripts/audit_native_objective_fixed_evaluation_v1.py',
             'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
+    elif study=='workflow-v1':
+        from scripts import run_native_workflow_fixed_evaluation_v1 as driver
+        audit_schema='scienceutopia.native-workflow-fixed-evaluation-audit.v1'
+        source_scripts=['scripts/run_native_workflow_fixed_evaluation_v1.py',
+            'scripts/run_native_objective_fixed_evaluation_v1.py',
+            'scripts/run_native_workflow_objective_loop_v1.py',
+            'scripts/run_native_objective_instrument_loop_v1.py',
+            'scripts/audit_native_workflow_fixed_evaluation_v1.py',
+            'scripts/audit_native_objective_fixed_evaluation_v1.py',
+            'scripts/native_benchmark_physical.py','scripts/native_observer_physical_v1.py']
     else:raise ValueError('explicit known fixed-evaluation study required')
     from scripts.analyze_native_open_v7 import _inventory
     from scripts.analyze_native_design_benchmark import loaded
@@ -60,7 +70,10 @@ def worker(root,output,*,study='count-content-v1'):
                     or dispatched['root']!=prepared['root'] or dispatched['seeds']!=p['evaluation']['seeds']
                     or not epoch(prepared['checked_utc'])<=epoch(dispatched['checked_utc'])<=epoch(start['started_utc'])):
                 raise ValueError('literal pre-dispatch unused-seed proof differs')
-        source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=[driver.PROTOCOL])
+        resources=[driver.PROTOCOL]
+        if study=='workflow-v1' and 'operational_protocol' in p:
+            resources.append(p['operational_protocol']['path'])
+        source=source_proofs(driver.ROOT,p['source_commit'],scripts=source_scripts,resources=resources)
         observer=ColdObserver(root/'observer',p['observer_contract']);observer_audit=observer.audit()
         if observer_audit!=read(root/'observer-audit.json'):raise ValueError('literal observer audit differs')
         cells=set();caches=set();keys=set();worlds=[]
@@ -76,6 +89,9 @@ def worker(root,output,*,study='count-content-v1'):
                     or m['loss_spec_sha256']!=loss_spec_sha256(p['losses']['throughput'])):
                 raise ValueError('fixed native observation identity/loss differs')
             cell=directory/'worlds'/(job['identity']+'-s'+str(job['seed']));cells.add(cell)
+            if study=='workflow-v1':
+                from utopia.optimization.native_scientist_transport_v1 import require_cell_transport
+                require_cell_transport(cell,p,spec,seed=job['seed'],failed=o['status']=='failed')
             cache=cell/'replies/responses.sqlite'
             if cache.exists():caches.add(cache)
             gate=loaded(cell/'role-load-000.json',cell/'loaded-role-context-000.json',provider=p['scientist'],
@@ -87,6 +103,9 @@ def worker(root,output,*,study='count-content-v1'):
                 state=read_portable_checkpoint(runs[0]['checkpoint_path']);keys.update(accepted_request_keys(state,p['observer_contract']))
                 if measurements:
                     rebuilt=reconstruct_measurement(state,proof['measurement'],observer)
+                    if study=='workflow-v1':
+                        rebuilt={**rebuilt,'native_workflow_interval':driver.interval(
+                            p,spec,state['native_system']['events'],job['seed'])}
                     if measurements!=[rebuilt] or m['technical_failures']:raise ValueError('literal additional measurement differs')
                     verify_native_observation(Observation.from_dict(o),p['world'],[job['seed']])
                 elif o['status']!='failed' or not m['technical_failures']:raise ValueError('missing observer measurement without failure')
