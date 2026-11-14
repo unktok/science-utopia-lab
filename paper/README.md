@@ -2,6 +2,20 @@
 
 The canonical whole-program working manuscript is [integrated.tex](integrated.tex).
 The latest reviewed artifact is the
+[75-page integrated draft](../output/pdf/science-utopia-lab-integrated-workflow-controls-working-paper.pdf),
+with39 figures,31 tables and26 references, without an artificial page cap.
+[Source/build/visual evidence](integrated-workflow-controls-build-v1.json)
+binds two cached builds with identical text/logs, all75 reviewed final layouts
+and fresh150dpi first/new-section details. The new section retains both
+completed workflow controls and their actual annual paths, equal aggregate
+grants, joint timing/routing caveat, stopped own search and actual output-mode/
+capacity failures. It does not turn hand gains or valid calibration into
+autonomous invention. All28 historical PDF/receipt files remain unchanged.
+The current75-page minimal subset has not yet been rebuilt; the older73-page
+subset's verified status applies only to that older artifact. This manuscript
+update is not a publication-readiness judgment.
+
+The preceding reviewed artifact is the
 [73-page integrated draft](../output/pdf/science-utopia-lab-integrated-native-numeric-working-paper.pdf),
 with38 figures,30 tables and26 references, without an artificial page cap.
 The [build/source/visual receipt](integrated-native-numeric-build-v1.json)

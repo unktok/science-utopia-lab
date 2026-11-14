@@ -2,6 +2,36 @@
 
 ## Active publication-ready goal
 
+### November14 13:07JST: capacity probe closes; updated75-page paper is reviewed
+
+Writer81425 exits0 at03:43:23UTC; cold reader54522 exits0. The single16384-output
+probe returns final JSON after23862 input/12563 output tokens, with the earlier
+thinking as an exact prefix. It is still invalid: selection40 precedes four
+connected producers70/100/110/120. No graph repair, further output expansion,
+new world/loss, old-study refill or production certificate follows.
+[Actual evidence](results/native-workflow-thinking-capacity-probe-v1.json).
+Both technical experiments are now terminal; no Science Utopia model inference
+or automatic scientific dispatch remains running at this snapshot.
+
+The [reviewed75-page working paper](../paper/integrated-workflow-controls-build-v1.json)
+adds the actual control table/annual figure and honest designer boundaries,
+retaining39 figures/31 tables/26 references. Two cached untrusted builds have
+identical text/logs,31474 in-page words and no unresolved references; all75
+final layouts are reviewed, with fresh150dpi details. Prior28 PDF/receipt files
+remain unchanged. This is not publication readiness or a new inference result.
+The updated minimal subset is not yet independently rebuilt.
+
+[Next authoring decision](publication/native-workflow-next-authoring-decision-v1.md)
+stops blind budget expansion and specifies finite compiler-feedback proposals.
+An explanatory helper is implemented and checked on the real retained failure;
+it gives all four causal-edge witnesses without changing the original compiler,
+graph or admission criteria. It is not yet connected to a real LLM/new native
+campaign. The previous feedback test's R7-versus-hand fixture mismatch remains
+recorded, not presented as a scientific or compiler fix. The actual system-
+invention/optimization result and independent validation remain open.
+Five corrected-fixture feedback tests pass2.30s; they are static software
+evidence, not a tested LLM feedback loop or an executed institution.
+
 ### November14 12:34JST: actual output-mode assay closes; free design hits output cap
 
 Original writer89324 exits0 at03:25:23UTC; cold replay19400 exits0 and exactly

@@ -1,5 +1,34 @@
 # Actual workflow output-mode diagnostic and finite capacity followup
 
+## Later actual followup and manuscript closure
+
+The one-call capacity probe at e2dce8c5 normally ends03:43:23UTC, not a timeout:
+12563 output tokens produce928 final characters. Original cold replay54522
+agrees. The8192-token thinking text is an exact prefix, but the literal graph
+puts selection40 before four connected producers70/100/110/120. No new graph
+is repaired/executed and no further token increase occurs under these protocols.
+The first preflight ends before inference at CPU242.6%; a separate finite
+resource observation retains two low checks118.6/123.2% and dispatches just the
+one new call. Other projects stay untouched; shared timing is not a benchmark.
+
+The completed scientific controls and both actual technical outcomes now enter
+the75-page integrated working paper, with an actual annual-path figure and
+explicit joint timing/routing interpretation. Final TeX source173d2e34,
+two cached builds/a7/a8 and all final visual pages are retained by the new
+build receipt. An initial wrong-cwd prebuild error produces no PDF; a3/a4 and
+a5/a6 preserve earlier paragraph layouts, then a7/a8 remove the section-tail
+spill. The old28 PDF/receipt files retain their bytes. This is document and
+analysis progress, not a publication-ready or automatic-invention result.
+
+An unchanged-compiler explanatory feedback helper reproduces the four literal
+causal witnesses on actual retained input. Its first SCRIPTED fixture wrongly
+uses R7 instead of the actual hand parent, so costs80 appears rather than
+submission70. That failed JUnit remains at workflow-feedback-tests-v1-a1;
+the fixture is corrected, not the compiler/scientific graph. The helper has
+not yet been used in an LLM proposal or scientific loop.
+
+## Earlier prospective snapshot before the followup
+
 The previous goal turn made implementation/cold-reference-analysis progress
 and verified a live resource wait. This continuation verifies that waiter,
 retains its completed window and failed stricter preflight, and executes the

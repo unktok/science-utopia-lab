@@ -25,9 +25,11 @@ not substitutes for scientific evidence.
 
 ## Current evidence
 
-The [latest reviewed integrated manuscript](paper/README.md) is73 pages,
-with38 figures and30 tables. Its62-file minimal source rebuild matches the
-text and all73 reviewed page images. It preserves the research program and prior
+The [latest reviewed integrated manuscript](paper/README.md) is75 pages,
+with39 figures and31 tables. Its two cached builds have matching text/logs and
+all75 final layouts are reviewed. The earlier73-page artifact's62-file minimal
+rebuild remains verified; the75-page minimal subset is not yet rebuilt.
+It preserves the research program and prior
 drafts without an artificial page cap; paper length is not publication readiness.
 
 The [parent-presentation comparison](research/components/native-parent-presentation-loop-v1.md)
@@ -55,7 +57,10 @@ after two complete controls: hand timing T=-20/U=-15.3333 versus R7=-18/-13.3333
 Two known own-generation failures and then a failed calibration yield no own
 native policy or gain. The actual four-call output-mode diagnosis closes:
 two thinking calibrations compile, but the free call hits8192 tokens without
-final content. A separate one-call output-capacity probe is prepared;
+final content. The separate one-call16384-output probe does return final JSON,
+but its literal graph violates four causal edges; neither probe runs science.
+The reviewed75-page integrated manuscript retains these limits and both actual
+completed workflow controls;
 no original slot, loss or failed certificate is changed.
 See [current status](research/STATUS.md) for liveness, not software-test scores.
 

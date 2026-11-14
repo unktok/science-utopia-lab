@@ -5,11 +5,22 @@ artificial page cap; exclude genuinely uninformative work, not whole tracks.
 The new integrated.tex is a research working manuscript, not a submitted paper.
 Old main.tex, submission.tex, submission-v2.tex and bound PDFs stay unchanged.
 
+Latest November14 artifact: the reviewed75-page workflow-controls manuscript
+keeps every earlier meaningful track and adds two completed native control
+cells with an actual annual-path figure. It separately records the stopped
+automatic search and five actual interface/capacity calls without claiming
+invention or new scientific losses. Its source/build/visual binding is
+[retained here](integrated-workflow-controls-build-v1.json); the latest minimal
+subset has not yet been rebuilt. The earlier73-page verified subset stays
+valid only for its own artifact.
+
 ## Editorial decisions
 
 | Material | Placement | Reason and evidence boundary |
 | --- | --- | --- |
-| November14 conditional reserve-command diagnostic | New source main section after closed planning; PDF integration pending while actual inference runs |240 unchanged sandbox-component calls on four fixed native inputs, exact original reserve21 replay,19/17/15/8 command outputs and23 joint signatures. Existing real figure, nonmonotone command table and all5 original year3 founder ledger records. No new native world, loss frontier, inferred alternate trajectory, optimizer feedback or invented improvement. The reviewed69-page PDF stays unchanged until a later safe verified build |
+| November14 workflow control contrast | Main native-workflow section, actual table/annual figure, abstract/discussion | Two completed developer cells inside a stopped search:18→20 accepted decisions, equal80 actual grant units, different activity/resources and routing/timing. Double original-source physical/critic/ledger reads agree. Not isolated fee-order causality, automatic invention, independent replication or a closed optimizer study |
+| November14 actual output-mode/capacity probes | Brief designer-boundary subsection, full raw record in repository | Thinking controls compile but free outputs hit8192 tokens or violate four causal edges after a16384 allowance. Five actual local calls, zero new scientist worlds/losses. Do not treat interface debugging as the main research contribution |
+| November14 conditional reserve-command diagnostic | Included main section after closed planning in73- and75-page PDFs |240 unchanged sandbox-component calls on four fixed native inputs, exact original reserve21 replay,19/17/15/8 command outputs and23 joint signatures. Existing real figure, nonmonotone command table and all5 original year3 founder ledger records. No new native world, loss frontier, inferred alternate trajectory, optimizer feedback or invented improvement. Historical69-page PDF stays unchanged |
 | November13 closed free planning study | New main section after the three catalog controls; abstract, discussion and conclusion | All8 references/6 proposals complete and tie strong own-objective controls. Complete14-condition table and three print-sized figures retain exact score points,216 accepted occurrences/54 contents, actual input classes, consumers and costs. No claimed generated advantage, strict preference conflict, independent optimizer replication or unused evaluation. Every older body track stays |
 | November12 native execution and objective support | New main section after authoring diagnostics | Stopped671436a: all12 slots, five complete/six technical null/one unsubmitted,19 physical worlds and costs. Separate f1f8ddf now closes30 fixed-submission evaluations, retaining two unavailable graph arms; actual table, print-sized per-seed comparison and all-slot paths. This is not completion of the old campaign or an isolated effect of representation/search. Real28-control readiness for post-edit mode passes, but actual self-repair remains an empirical question. Conditional T/E algebra and176 annual checkpoints/880 actor states distinguish objective support from optimizer failure; no new loss or hidden constraint |
 | November11 authoring/measurement diagnostics | Separate main section after pre-scale studies | All eight actual local35B submissions, four-input partial probes and measured costs; distinguish static validity, native execution and effects. Optional order files were unread. Fixed-record panel readouts reconstruct44 completed/five partial old worlds; actual retained figure, not new losses, reviewer interventions or independent quality. Later671436a is treated separately |

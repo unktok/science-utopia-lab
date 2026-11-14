@@ -6,6 +6,16 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Closed capacity probe](results/native-workflow-thinking-capacity-probe-v1.json):
+  one larger fixed allowance returns final JSON but violates four causal edges.
+  Both technical probes are terminal; no new scientific world/loss or certificate.
+  [Next method decision](publication/native-workflow-next-authoring-decision-v1.md)
+  defines finite compiler-feedback proposals, not more blind budget expansion.
+- [Reviewed75-page integrated manuscript](../paper/integrated-workflow-controls-build-v1.json):
+  all prior meaningful tracks plus the operated hand-control contrast and
+  actual designer limits; all75 final layouts reviewed, two matching cached
+  texts/logs. This is not publication readiness; latest minimal rebuild remains.
+
 - [Actual output-mode assay](results/native-workflow-output-mode-assay-v1.json):
   four local calls normally finish and original cold replay agrees. Two thinking
   calibrations compile; the only free call spends8192 tokens in thinking and
