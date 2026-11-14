@@ -37,3 +37,33 @@ here is not hardware isolation. Do not start frozen unused evaluation while
 these analysis exports/visual review or the scientific writer are incomplete.
 Successful postprocessing does not establish improvement, independent optimizer
 replication, an important main-track claim or publication readiness.
+
+## Additional search-allocation reader (November15)
+
+`scripts.reports.native_longitudinal_search_allocation_v1` joins the original
+twelve raw step journals to the paired, closed matched-construction exports
+and original-source cold audits. It separates proposed filenames/JSON paths,
+applied read receipts, host-mapped edit targets, literal draft/document changes,
+and retained technical errors. The four arm/objective histories remain distinct.
+Untrusted malformed model JSON is never treated as an executable tool, a path to
+open, or a valid edit. Host edit locations are not proof of native consumption;
+read counts or final-source concentration alone do not establish causal search
+bias. Terminal absence keeps final call totals unknown, not zero-imputed.
+
+The separate `scripts.finish_native_longitudinal_allocation_v1` waits finitely
+for the exact plan/source/audit-chain-bound construction continuation, then
+uses the existing audit/cost engine to export JSON/CSV twice and compare every
+byte. It retains a stopped sidecar on failure, never restarts/refills science,
+and cannot dispatch models or execute authored code. It must run from its own
+clean pinned analysis worktree; the already-active38ea9d38 analysis source is
+not amended. Normal original closure, paired exports, interpretation/visual
+review and a fresh unused-seed inventory still precede frozen evaluation.
+
+The initial reader-only check passes16 JSON-only cases in13.03s. The first
+combined wrapper check has37 passes and one fixture-setup failure: a synthetic
+test attempted to overwrite an immutable journal before exercising its guard.
+The fixture now creates the intentionally mismatched terminal initially,
+without weakening immutability. The next combined check passes38 in19.29s.
+An additional explicit wrong-audit-chain regression brings the final combined
+check to39 passes in9.07s. These are software checks, not completed real
+allocation analysis, independent science evidence, or publication readiness.
