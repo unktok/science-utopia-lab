@@ -27,6 +27,11 @@ parent-trajectory U readiness now passes28 cases and free authoring starts at
 23:06:54UTC. Its actual first model wire contains R7's four annual trace records;
 both initial histories expose R7 only and no other arm's own outcome. This is
 input-exposure compliance, not understanding or an information-effect result.
+The second slot now explicitly submits at23:16:28UTC after14 steps/eight probe
+returns and enters its original native world. A misspelled extra field and a
+read-checkpoint rejection remain charged; the author continues with a valid
+write, without host repair. Only selection source changes. One own outcome is
+complete, a second is running; no second loss or improvement is claimed.
 
 After actual two-frame capacity closes, separately declared scientific resource
 observations pass and original82259 launches the prepareda5be8d31 public driver

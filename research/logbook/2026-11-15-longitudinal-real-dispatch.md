@@ -181,6 +181,36 @@ benefit. At the observed prefix the U author has begun code editing; no second
 submitted/native outcome is claimed. Source, finite budget and separate histories
 remain unchanged while the original writer and read-only waiters continue.
 
+## Trajectory-U0 explicitly submits and enters native execution
+
+The second original own slot explicitly finishes at23:16:28.381940UTC. Its
+14-step complete journal includes one plan, nine read attempts (eight applied,
+one implementation-checkpoint rejection), two applied source-file writes,
+one rejected legacy edit and finish. Step8's edit has an unknown optional-looking
+field spelled exactly rationnale; the declared schema rejects it before any
+operation. Step9 requests a repeated current selection source during the
+implementation phase and is also rejected. Both are charged and retained.
+Step10 is the author's own valid source write, not a host correction, silent
+annotation stripping, network retry, candidate refill or altered schema.
+
+All eight component attempts return (four per source version), zero raised;
+only the final four apply to the submitted version. Staged response status is
+generated, content
+`48c2084e875cd02c5628819b36755f101e206bbf0c92a4fa5645a8f1b32505c1`,
+file SHA256`4df0d5d6cd11779fb1aa1dd4ffed3ecfbff6753e3c9ac4a688f8fb382c4e45b0`.
+The graph changes only world.selection source. No node, connection, schedule
+or root field changes; submitted system SHA256
+`344544f6b221d59e7c08470e31899a6726cc7eeeba907bdbf6f946b50c1e264e`.
+Static source edits and returned probes still are not native effect/gain evidence.
+
+Its original native world is
+search/parent-trajectory/content-utility/worlds/native-adaptive-4f9e9def8d3f3f653dc88499-s61001.
+The initial checkpoint and actual year1 scientist activity are present. Original
+session82259 remains running; the first scalar-T0 is still the only completed
+own loss, with eleven outcomes remaining including this live world. No running
+source, guard, goal, model, loss or budget is changed. End-to-end costs and
+all-history interpretation wait for the existing normal-closure continuation.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
