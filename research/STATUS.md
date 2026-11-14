@@ -2,6 +2,43 @@
 
 ## Active publication-ready goal
 
+### November14 17:00JST: unused evaluation and active open-institution native proof close
+
+Original writer30142 exits0 after all3 physical jobs on the predeclared unused
+seed1858637637; four labels share only exact literal identity. R7 has
+T=-32/U=-24.666666666666668; hand, T-selected and U-selected have T=-36/U=-26.
+Both selected labels tie the strong hand and each other. U-selected is the hand
+literal; the separate T-selected phase alias has identical full scientist
+inputs and literal choices to the hand. This is not autonomous invention,
+objective-dependent effective differentiation or independent optimizer replication.
+All five original continuations exit0 and double audit/score/choice/effect/
+request exports agree. [Complete closure](results/native-workflow-feedback-fixed-closed-v3.json).
+
+The evaluation has503 complete scientist replies and123 separate critic calls;
+science wall time2867.393s. A reporting-only study-name allowlist omitted the
+critic component from the old cost export, not from the original audit/loss.
+The corrected role-presence reader passes30 cases, including all19 supported
+native audit families, and two new cost exports match while retaining the old
+files. Scientist and auxiliary components remain exactly equal to the original.
+
+The optional open-institutions-ir-v1 scope now traverses the real bounded
+worker/public certificate, native code/node/port/protocol/wire execution,
+own-history error feedback, loss loop, cold audits and selection-fixed evaluator.
+Frozen75813efe passes its10-world SCRIPTED integration in137.62s, session56012
+exit0, with40 annual checkpoints, real Docker/code execution and zero real-model
+calls. An explicitly authored planning office changes downstream full scientist
+inputs; it is not merely an inert added node. [Original attempts and proof](results/native-open-workflow-native-software-v1.json).
+The earlier a1 assertion failure remains retained; a2 also passes. Final a3
+adds an original-critic-audit/cost binding regression. No scientific failure is
+repaired or relabeled.
+
+No real-model writer remains active at this snapshot. Next: finish source-bound
+paper/PDF retention, then prepare/calibrate/dispatch the new finite open scope
+under fresh resource observations. The strong hand is comparison-only in that
+prospective scope, not an optimizer parent. Real free invention, a useful
+objective-to-system result, appropriate independent evidence and final main-track
+readiness remain unachieved. Earlier sections below are dated historical snapshots.
+
 ### November14 16:08JST: one unused control completes; open-institution author API is prepared
 
 Original writer30142 remains live and advances to evaluation-001 at07:01:48UTC.

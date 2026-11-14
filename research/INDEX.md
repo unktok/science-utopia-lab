@@ -6,6 +6,27 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Current status](STATUS.md): the structural feedback study and its unused
+  evaluation are closed; no actual inference writer is active at this snapshot.
+  Own selections tie the strong hand on both objectives, not a new discovery.
+- [Complete unused-condition comparison](results/native-workflow-feedback-fixed-closed-v3.json):
+  all3 physical worlds/four frozen labels, matching double cold readouts,
+  503 scientist replies and123 critic calls, with the corrected cost supplement
+  and the original omitted-component export both preserved.
+- [Active open-institution native software proof](results/native-open-workflow-native-software-v1.json):
+  arbitrary authored code/node/wire changes reach actual scientist inputs;
+  10 SCRIPTED native worlds,40 checkpoints, zero real-model calls. All failed
+  and passing attempts remain separate. Actual calibration/free invention is next.
+- [Open author component and boundaries](components/native-open-workflow-authoring-v1.md),
+  [finite prospective study](protocols/campaigns/native-open-workflow-objective-loop-v1.md)
+  and [full integrated source](../paper/integrated.tex). The new PDF is pending;
+  the reviewed75-page artifact remains preserved, not silently updated.
+
+## November14 earlier navigation snapshots (not current liveness)
+
+The following entries retain their original intermediate observations. Use the
+active orientation above and the latest dated STATUS entry for current state.
+
 - [Prospective open code/mechanism/graph author](components/native-open-workflow-authoring-v1.md):
   the existing arbitrary Stable-ID compiler now connects to the bounded
   one-POST API/certificate/replay path. Light tests cover new code/nodes/wires

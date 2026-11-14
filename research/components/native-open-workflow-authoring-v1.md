@@ -1,8 +1,10 @@
 # Open-institution IR over the bounded workflow author
 
-Status: optional API implemented and light SCRIPTED tests pass. No real-model
-calibration/proposal, new native code/world execution, scientific campaign,
-own improvement or publication readiness is established for this mode.
+Status: optional API and explicit wider study/audit/report/fixed handoff are
+implemented. Frozen75813efe passes a10-world SCRIPTED native integration,
+including actual sandbox code execution and changed full scientist inputs.
+No real-model calibration/proposal, scientific campaign, own improvement or
+publication readiness is established for this mode.
 
 The closed structural-only study's four own completions all reproduce the hand
 control's full scientist input/choice sequence. That interface cannot change
@@ -56,18 +58,28 @@ The wire cap remains140000 bytes; genuinely oversized parents stop before HTTP.
 No prior scientific prompt, failed slot, selected policy or active evaluation
 is changed. Settings/protocol/adapter source hashes bind the optional new mode.
 
-## Remaining connection before another scientific run
+## Native connection and remaining scientific work
 
-The structural-only study runner, cold audit, graph-change report and fixed-
-evaluation scope do not yet admit this new mode end-to-end. They must explicitly
-account for authored code/parameters/new nodes/protocols, not weaken an old
-structural-only check or mislabel an old study. After current inference ends,
-freeze the new source and exercise the outer bounded worker, original native
-role/source execution, feedback/loss loop, all nulls, double cold proofs and
-selection-fixed handoff. A separate finite study protocol and real backend
-calibration precede any new scientific calls. It remains necessary to design
-an important empirical comparison rather than count interface tests as a result.
-The native proof must include an active consumer that changes an actual
-scientist input/action (for example an authored catalog-planning institution
-feeding the existing native actuator). A passive added memory office alone
-does not prove that wider institutional authority reaches the scientist world.
+The new mode has an explicit code-and-graph authoring scope/protocol. Original
+structural-only checks remain strict by default. The graph readout now records
+source changes, added/removed nodes and mechanisms, protocols and schedules;
+the fixed evaluator preserves whole chosen literals. Both controls are measured,
+but only R7 is optimizer feedback/parent; the strong hand remains comparison-only.
+This prospective information change is not an isolated expressivity ablation.
+
+The final frozen-source integration runs7 development+3 fixed native worlds,
+40 annual checkpoints and13 actual bounded HTTP worker fixture calls. It
+replaces the catalog director with explicit new longest-duration Python code,
+rewires its input/output and reaches the existing original-world actuator.
+The full scientist inputs differ from the hand (100 vs110 scripted responses).
+This is an intentionally prescribed software fixture, not an LLM discovery or
+a beneficial scientific intervention. Known generation/measurement nulls,
+normal closure and double cold readers are exercised with zero real-model
+calls. The final check binds critic costs to the original observer audit.
+[Original failing a1 and passing a2/a3](../results/native-open-workflow-native-software-v1.json).
+
+The scientific finite study is separately declared. Actual source/model/backend-
+bound calibration and free proposals remain unexecuted; light request byte fit
+and the native scripted proof are not real model context-capacity evidence.
+An important empirical objective-to-system comparison and independent evidence
+are still needed, not more interface tests counted as scientific success.

@@ -1,0 +1,288 @@
+{
+  "classification": "normally-closed-real-native-unused-condition-comparison-with-no-own-advantage",
+  "common_content_observer_cost": {
+    "input_observer_audit_content_sha256": "ad347c2ebc8d9a24868e98ff7cc46ea99ce5433c21fd0fe9c1cdb98e669cd31e",
+    "known_terminal_attempts": 123,
+    "overlap_with_native_response_caches": false,
+    "physical_requests": 123,
+    "scope": "Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.",
+    "usage": {
+      "http_elapsed_seconds": {
+        "known_sum": 519.4757284547668,
+        "unknown_attempts": 0
+      },
+      "output_tokens": {
+        "known_sum": 18046,
+        "unknown_attempts": 0
+      },
+      "prompt_tokens": {
+        "known_sum": 55617,
+        "unknown_attempts": 0
+      }
+    }
+  },
+  "complete_observed_input_classes": [
+    {
+      "all_full_provider_bodies_equal": true,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "b77ae7fdac679ead6d3ce474838f94d3d816824a633fad7968c18fba83f0455e",
+      "physical_ids": [
+        "evaluation-000"
+      ],
+      "seed": 1858637637
+    },
+    {
+      "all_full_provider_bodies_equal": false,
+      "all_literal_response_choices_equal": true,
+      "full_request_sequence_sha256": "d4062040781aff3643e074740e956adb48dd756802bc919e1a7ff881399e5739",
+      "physical_ids": [
+        "evaluation-001",
+        "evaluation-002"
+      ],
+      "seed": 1858637637
+    }
+  ],
+  "corrected_cost_exports": {
+    "content_sha256": "cdd742917c850f16711bac539dbb78fe55a339bab2f2246ab63def52311ece94",
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-workflow-fixed-cost-correction-v1-a1",
+    "file_sha256": "df74fdf25a99120b0a2904dda939a70867b7fe468ab1bbc51328373f33e8a50e",
+    "reader_commit": "47a20c43",
+    "reader_module_sha256": "fcb110acb1c75571dd0d3f1adc67889c8c64b2846f53585f3e091027681a3c75",
+    "scientist_and_auxiliary_components_equal_original": true,
+    "two_exports_identical": true
+  },
+  "frozen_development_selection_sha256": "4a7711a70a73d4e668580804a55e121d2e5b2c2a4e357006c7862a6587733c14",
+  "independent_optimizer_replication": false,
+  "interpretation": [
+    "Two objective-selected labels tie the hand control and each other on this single unused seed.",
+    "The U-selected literal is the hand control; shared physical identity is not an independent success.",
+    "The separately executed T-selected phase alias has identical full scientist inputs and literal choices to the hand on the observed history.",
+    "Count and content-opinion proxy losses are not evidence of scientific truth.",
+    "Original negative/failed studies, raw logs, losses and frozen selections remain unchanged."
+  ],
+  "logical_rows": [
+    {
+      "label": "reference:R7-original",
+      "physical_job": "evaluation-000",
+      "scores": {
+        "content-utility": -24.666666666666668,
+        "throughput": -32.0
+      },
+      "seed": 1858637637,
+      "status": "complete"
+    },
+    {
+      "label": "reference:post-funding-cost",
+      "physical_job": "evaluation-001",
+      "scores": {
+        "content-utility": -26.0,
+        "throughput": -36.0
+      },
+      "seed": 1858637637,
+      "status": "complete"
+    },
+    {
+      "label": "selected:throughput",
+      "physical_job": "evaluation-002",
+      "scores": {
+        "content-utility": -26.0,
+        "throughput": -36.0
+      },
+      "seed": 1858637637,
+      "status": "complete"
+    },
+    {
+      "label": "selected:content-utility",
+      "physical_job": "evaluation-001",
+      "scores": {
+        "content-utility": -26.0,
+        "throughput": -36.0
+      },
+      "seed": 1858637637,
+      "status": "complete"
+    }
+  ],
+  "new_designer_calls": 0,
+  "objective_choice_differences": [
+    {
+      "differences": {
+        "content-utility": 0.0,
+        "throughput": 0.0
+      },
+      "left": "selected:throughput",
+      "left_physical_job": "evaluation-002",
+      "right": "selected:content-utility",
+      "right_physical_job": "evaluation-001",
+      "same_physical_job": false,
+      "seed": 1858637637
+    }
+  ],
+  "original_cost_exports": {
+    "common_observer_component_omitted": true,
+    "content_sha256": "268698339ccd9b8a49f29d742597e1ca6ca2d4ba037f64c397f7e076f1cbab4d",
+    "file_sha256": "35c642dd30691c814bcc12e9adff4e34f6e2626dff44c7a7293def41a2b5059e",
+    "original_files_preserved": true
+  },
+  "original_double_audit": {
+    "content_sha256": "fae63b9d833c0605cf1ba87ce4df09e332e0d105ed85026b9653c2d6933502d6",
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1/outputs/native-workflow-feedback-fixed-audit-v3-a1",
+    "file_sha256": "4ba6148a07b79af557d0543cf35e5bd15fe4381d5b25f377652405d451821550"
+  },
+  "own_advantage_over_hand": false,
+  "paired_differences": [
+    {
+      "differences": {
+        "content-utility": -1.3333333333333321,
+        "throughput": -4.0
+      },
+      "label": "selected:throughput",
+      "physical_job": "evaluation-002",
+      "reference": "R7-original",
+      "reference_physical_job": "evaluation-000",
+      "same_physical_job": false,
+      "seed": 1858637637
+    },
+    {
+      "differences": {
+        "content-utility": 0.0,
+        "throughput": 0.0
+      },
+      "label": "selected:throughput",
+      "physical_job": "evaluation-002",
+      "reference": "post-funding-cost",
+      "reference_physical_job": "evaluation-001",
+      "same_physical_job": false,
+      "seed": 1858637637
+    },
+    {
+      "differences": {
+        "content-utility": -1.3333333333333321,
+        "throughput": -4.0
+      },
+      "label": "selected:content-utility",
+      "physical_job": "evaluation-001",
+      "reference": "R7-original",
+      "reference_physical_job": "evaluation-000",
+      "same_physical_job": false,
+      "seed": 1858637637
+    },
+    {
+      "differences": {
+        "content-utility": 0.0,
+        "throughput": 0.0
+      },
+      "label": "selected:content-utility",
+      "physical_job": "evaluation-001",
+      "reference": "post-funding-cost",
+      "reference_physical_job": "evaluation-001",
+      "same_physical_job": true,
+      "seed": 1858637637
+    }
+  ],
+  "physical_worlds": 3,
+  "plan_content_sha256": "797c83282b2eeaf86d5ad37b2c03508cb5c0775c992e85c7e59b0eec9d2304cf",
+  "plan_file_sha256": "160ecfb5b648dde34dcdf7879edbe6da31423373a71624cf72dc3fd0deda6896",
+  "publication_ready": false,
+  "readouts": {
+    "choices": {
+      "content_sha256": "886cc6b93749124a13426fd4542bf726d50e991963a48fab7f6091fe44f47c0a",
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1/outputs/native-workflow-feedback-fixed-choices-v3-a1",
+      "double_export_file_sha256": {
+        "annual-project-states.csv": "e34ab46ef1f70957ff6b340d737c2e7469352a0f7894534c88e7b9d569803627",
+        "manifest.json": "97cc1357a99623fc2b322d5571264d1361cd1175f7c151e8b7247990972831f1",
+        "report.json": "6ea358d65db42f69bcae88f0980ab4cfdf3b0a8c684aaae5bda36d71d2d8e386"
+      }
+    },
+    "effects": {
+      "content_sha256": "4772142264faa1b9c8f889f0ea6c316fc6191c6ddc1d64c4647c2b3654d8af24",
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1/outputs/native-workflow-feedback-fixed-effects-v3-a1",
+      "double_export_file_sha256": {
+        "annual-boundaries.csv": "409f644393d252e40e52ca4664b80babcc0183d0c2b2c2b889e6a0ed7ff8cb0b",
+        "manifest.json": "0a8de1dcc220e7d59c3d6a9fd7b8d6342d949f1e27c58a8566be66d33c67de1c",
+        "report.json": "c49ea262c014887d4dbc8e52cdb0a075528d1be811b3eaf77333888151e95ccd"
+      }
+    },
+    "report": {
+      "content_sha256": "8dbe5e8769c45dd045e41bd31d4523a490e1dc15a0cd1867f6f43c5eb4f69355",
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1/outputs/native-workflow-feedback-fixed-report-v3-a1",
+      "double_export_file_sha256": {
+        "fixed-policy-paired-differences.png": "7b7f26014f677247840b045388bdb2217d90b1223068f2ec0e62560c0c2263ce",
+        "fixed-policy-paired-differences.svg": "79260db9e94af931a1c5cd4c4f72da5b6da1760b0cca3c861f8e319410b51801",
+        "fixed-policy-seed-scores.png": "f867f5b604063446b1e5f5187081c90f434e7e3df47b61b6885c5bc1a3ac46d6",
+        "fixed-policy-seed-scores.svg": "cfb75265f710d588193e6e1c1fd0f19b736a2565b5c8205845dcddaff32ababb",
+        "logical-scores.csv": "b846a10e6050a4c995195d63c6ef358d8532d8742f0d1478118001d96d909135",
+        "manifest.json": "4d265aa3f813d40a6032254edfeb85a55c344e1e1f1a50df11296d096824a225",
+        "objective-choice-differences.csv": "1db67e0e223d7383241bcc6613e358ab8405f641b9d0ad479a65d141eded74fc",
+        "paired-differences.csv": "5cd1d53b84d14e25e1d44497add050287f447593ef4475f71bad7edbb32a367a",
+        "report.json": "fe63b0a50954ccd51efcff3d6042ca0fc1aeb63cd3b29f90cbce17a0dc519c08"
+      }
+    },
+    "requests": {
+      "content_sha256": "5c7aa36e265459c3b2f2d63a7fb42bb2bbdbfcec462da8875801c8f153d36299",
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-analysis-v3-a1/outputs/native-workflow-feedback-fixed-requests-v3-a1",
+      "double_export_file_sha256": {
+        "manifest.json": "86319a6fa4af337e910b68d76bf2652be418262405f4abaff388f71fdfa3accf",
+        "report.json": "d5f8d8b7f0b134480c853545c40e82e38de5c8de3626a912f08fcdce7d8905c9"
+      }
+    }
+  },
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-v3-a1/outputs/native-workflow-feedback-fixed-evaluation-v3-a1",
+  "schema": "scienceutopia.native-workflow-feedback-fixed-closed.v3",
+  "scientific_source_commit": "2133ffc02810820607983db499fc66dc6d207f17",
+  "scientist_cost": {
+    "completed_responses": 503,
+    "provider_usage": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 503,
+        "missing_responses": 0,
+        "recorded_sum": 114488
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 503,
+        "missing_responses": 0,
+        "recorded_sum": 46319
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 503,
+        "missing_responses": 0,
+        "recorded_sum": 761779
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 503,
+        "missing_responses": 0,
+        "recorded_sum": 808098
+      }
+    },
+    "wire_inputs_without_committed_reply": 0
+  },
+  "successful_own_wiring_change": false,
+  "terminal": {
+    "completed_jobs": 3,
+    "content_sha256": "cb8f93e985300c72500a20e6713175bea42502cc4b9f94757d94d7d54c35a23a",
+    "ended_utc": "2026-11-14T07:32:14.924367+00:00",
+    "held_out_world_seeds": true,
+    "publication_ready": false,
+    "schema": "scienceutopia.native-workflow-fixed-evaluation.v1.terminal",
+    "status": "closed"
+  },
+  "terminal_file_sha256": "ce81f7a94d475092d37b1c5e5307047e8c3c4a6639aa4a758b6b2b6bdeb03f44",
+  "unused_seeds": [
+    1858637637
+  ],
+  "writer": {
+    "elapsed_wall_seconds": 2867.392623,
+    "ended_utc": "2026-11-14T07:32:14.924367+00:00",
+    "exit_code": 0,
+    "session": 30142,
+    "started_utc": "2026-11-14T06:44:27.531744+00:00"
+  },
+  "content_sha256": "3506e9f65a789baf58ea4d3339a449f0cc10a1b281f84d86dcdff5fc716c8fca"
+}
