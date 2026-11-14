@@ -2,6 +2,15 @@
 
 ## November15 actual staged-study decision update
 
+The [next-evidence decision](native-staged-next-evidence-decision-v1.md) now
+selects the already proposed observation-access comparison for implementation,
+not automatic dispatch or another identical larger search. A newly checked
+direct precedent, [El et al.2025](https://arxiv.org/html/2510.06711v1), already
+studies behavioral redundancy, context curation and design economics in
+question-answering agents. Our native input/choice classes are a different
+diagnostic, not a priority claim or identified cause. Keep broader freedom and
+all original goals; do not replace R2 with this note or an infrastructure pass.
+
 The [complete six-slot staged study](../results/native-open-staged-institution-closed-v1.md)
 now closes with all eight native worlds and byte-matching paired original
 readouts.84 actual designer steps and64 returned component probes show an

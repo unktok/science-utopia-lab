@@ -11,8 +11,10 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の統合稿は[81ページの原稿記録](paper/integrated-open-institutions-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-open-institutions-working-paper.pdf)。
+最新の確認済み統合PDFは[82ページの原稿記録](paper/integrated-staged-construction-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-staged-construction-working-paper.pdf)。
+その後の実staged6候補の結果・図表・費用はLaTeX sourceへ追記済みだが、
+実行中の固定評価が終了するまで新しいPDF build／目視は未実施である。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
 ## 最初からやりたかったこと
@@ -58,6 +60,18 @@
 世界全体での最適値も区別する。
 
 ## 現在の到達点
+
+2026年11月15日：実staged探索は全6自己枠・両対照を含む8世界を完走した。
+[全結果・費用](research/results/native-open-staged-institution-closed-v1.md)：
+5案はR7と同点、1案は研究agendaと実入力を変えたが内容効用は悪化した。
+新node／配線や強い手作業対照への自己優位は未実証で、主会議readyではない。
+選択済み制度を変更せず、事前宣言seed1891355522で3物理worldの固定評価を実行中。
+[最初の完走](research/results/native-open-staged-fixed-first-completion-v1.json)は
+原制度と完全同一の自己U案を兼ね、T=-32/U=-28.6667。全比較は未完了である。
+[次の証拠の設計](research/publication/native-staged-next-evidence-decision-v1.md)は
+同じ自由制度空間での時系列観測情報の比較を選ぶが、未実装部分や検証を飛ばして起動しない。
+
+以下は日付付きの過去の到達点であり、現在の稼働状態の正本ではない。
 
 2026年11月14日13:40JST時点：[新しいcompiler-feedback実験](research/results/native-workflow-compiler-feedback-dispatch-v2.json)
 を固定source7f1fc61fで実際に開始した。ローカル35B設計者の初期校正を通過し、

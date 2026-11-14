@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First fixed completion](results/native-open-staged-fixed-first-completion-v1.json):
+  R7/identical selected U0 T=-32/U=-28.6667; first of three physical jobs,
+  not completed control comparison. [Next evidence decision](publication/native-staged-next-evidence-decision-v1.md)
+  fixes the scientific question before implementing the longitudinal-information
+  comparison and explicitly accounts for prior meta-agent redundancy/cost work.
+
 - [Actual staged study closed, no own advantage](results/native-open-staged-institution-closed-v1.md):
   six complete proposals/eight worlds,84 steps/64 returned probes; five ties,
   one worsening, no new nodes/wires. Double audits/costs/all exports agree.

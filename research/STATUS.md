@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November15 02:57JST: first fixed world completes; hand evaluation begins
+
+Original writer19682/PID43744 completes evaluation-000 at T=-32/U=-28.6667
+with161 scientist responses, then starts evaluation-001 at17:57:54UTC. The
+first job represents R7 and the literally identical selected U0, not two
+independent worlds or a newly invented gain. [Sealed first-completion snapshot](results/native-open-staged-fixed-first-completion-v1.json).
+The other two physical jobs and original whole-run readouts remain incomplete;
+do not reselect or conclude a control advantage from this prefix.
+
+[Next evidence decision](publication/native-staged-next-evidence-decision-v1.md)
+selects the earlier prospective longitudinal-observation comparison for
+implementation, not immediate14-world dispatch or more identical search.
+A checked primary behavioral-redundancy/cost precedent is added to manuscript
+source. New institution/program representation and behavioral collapse are
+not standalone priority claims. Actual trace-author integration and full frame/
+native/cold/readiness proofs remain necessary. Current fixed science stays
+unchanged; main-track significance/independent evidence/readiness remain open.
+
 ### November15 02:34JST: development closes without gain; fixed evaluation starts
 
 All six actual staged proposals/eight native worlds complete. Original double

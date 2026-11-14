@@ -57,6 +57,15 @@ def test_actual_staged_figure_is_the_original_paired_export_not_a_new_simulation
     assert 'one development history without independent error bars' in body
 
 
+def test_behavioral_redundancy_precedent_is_cited_without_a_priority_or_cause_claim():
+    sources = [(ROOT/'paper'/name).read_text() for name in ('references.bib', 'submission-sources.bib')]
+    assert sum(body.count('{el2025inefficiencies,') for body in sources) == 1
+    body = (ROOT/'paper/integrated/discussion.tex').read_text()
+    assert r'\citet{el2025inefficiencies}' in body
+    assert 'not a priority claim' in body
+    assert 'do not establish the cause of our local stagnation' in body
+
+
 def test_reference_absence_correction_is_explicit_and_old_receipt_preserved():
     note = (ROOT/'research/publication/novelty-addendum-programmatic-institutions-v1.md').read_text()
     assert 'AMD-LLM already appears' in note and 'earlier statement' in note

@@ -70,3 +70,19 @@ def test_report_and_cost_scopes_do_not_become_publication_or_replication_claims(
                 'own_advantage_over_hand_observed', 'unused_evaluation_completed',
                 'independent_optimizer_replication', 'scientific_truth_demonstrated', 'publication_ready'):
         assert not r['interpretation'][key]
+
+
+def test_first_fixed_completion_is_literal_sharing_and_not_whole_run_closure():
+    p = ROOT/'research/results/native-open-staged-fixed-first-completion-v1.json'
+    r = checked(json.loads(p.read_text()))
+    assert r['seed'] == 1891355522 and r['completed_job'] == 'evaluation-000'
+    assert r['labels'] == ['reference:R7-original', 'selected:content-utility']
+    assert r['literal_policy_identity_sharing_only']
+    assert r['cross_scores'] == {'throughput': -32., 'content-utility': -28.666666666666668}
+    assert r['scientist_completed_responses'] == 161
+    assert r['completed_physical_jobs_at_snapshot'] == 1 and r['total_physical_jobs'] == 3
+    assert r['observed_progress']['active'] == 'evaluation-001'
+    assert not r['whole_fixed_evaluation_complete'] and not r['whole_original_cold_audit_complete']
+    assert not r['terminal_present_at_snapshot'] and not r['own_improvement_or_advantage_claimed']
+    assert r['new_designer_POSTs'] == r['new_model_calls_by_this_reader'] == 0
+    assert not r['publication_ready']

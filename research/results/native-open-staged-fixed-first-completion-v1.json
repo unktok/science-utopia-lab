@@ -1,0 +1,44 @@
+{
+  "completed_job": "evaluation-000",
+  "completed_physical_jobs_at_snapshot": 1,
+  "content_sha256": "600919ab994f80080fb7df6c2603f3ea7008ac886a91e3f09cafaab9566e4bec",
+  "cross_scores": {
+    "content-utility": -28.666666666666668,
+    "throughput": -32.0
+  },
+  "job_started_utc": "2026-11-14T17:34:33.650751+00:00",
+  "labels": [
+    "reference:R7-original",
+    "selected:content-utility"
+  ],
+  "literal_policy_identity_sharing_only": true,
+  "new_designer_POSTs": 0,
+  "new_model_calls_by_this_reader": 0,
+  "observed_progress": {
+    "active": "evaluation-001",
+    "observed_utc": "2026-11-14T17:57:54.721828+00:00",
+    "stage": "evaluation"
+  },
+  "observed_utc": "2026-11-14T18:03:22.479623+00:00",
+  "original_files_sha256": {
+    "cross-scores.json": "884eb459e8ee8cf4c8c9da9a7140b0bc3a7f7969f4bdbbedff5d1054e66cd3a3",
+    "observation.json": "a5dac5ae0c13b3bdcf1d724152a0865e1dc7b42dcca5598b9ed0e0775cd9d98a",
+    "responses.sqlite": "d4212f1a1984642175623d435777686f0efb498bda9285e60145c0e679b42387",
+    "started.json": "6ff3bbfb632bc464cde47f545b67f2b06fd5a467913ed545400f8f68b4567d66"
+  },
+  "own_improvement_or_advantage_claimed": false,
+  "plan_sha256": "5c0d3e4a206c9817f4e9378df08cea26eeb480a4f45b1602fde4f7b931e27f98",
+  "policy_sha256": "7bf7360011f3d4889bd5b5845514c14e5d1eb75276a071abc56be353ae0edad5",
+  "publication_ready": false,
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-fixed-evaluation-v1-a1/outputs/native-open-staged-fixed-evaluation-v1-a2",
+  "schema": "scienceutopia.staged-fixed-first-completion.v1",
+  "scientist_completed_responses": 161,
+  "scope": "First original observation/cross-score only. U-selected is exactly R7 and shares this physical job; not a new institution, completed control comparison, independent optimizer replication or whole-run cold closure.",
+  "seed": 1891355522,
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "status": "complete",
+  "terminal_present_at_snapshot": false,
+  "total_physical_jobs": 3,
+  "whole_fixed_evaluation_complete": false,
+  "whole_original_cold_audit_complete": false
+}
