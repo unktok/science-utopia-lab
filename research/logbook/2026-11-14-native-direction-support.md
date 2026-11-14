@@ -46,3 +46,23 @@ observation shows throughput:g0 readiness28/28 and optimization beginning
 free design, not a claim that it has finished, repaired source or improved
 the scientific loss. The support finding remains a simulator/adapter diagnostic,
 not a substitute main-track contribution. No PDF rebuild runs during science.
+
+## First actual staged proposal finishes and enters the original native world
+
+At14:31UTC the original session has14 completed steps, explicit finish13 and
+two applied selection-source versions. Both receive four real probes, eight
+returned/zero raised. Step12 is a retained tool-schema rejection of overlong
+optional rationale, not a failed component execution. The model explicitly
+finishes the existing valid draft; no annotation stripping, source salvage,
+repair, fallback or redispatch occurs. All subsequent source reads match the
+last accepted code, ruling out a stale read in this observed sequence, not
+proving that every interface path is bug-free. Repeated reads remain visible.
+
+Lightweight actual terminal-session projection39055 exits0 and accepts its
+real step/response/candidate formats through the existing component_trace and
+graph_change. Four same-fixture comparisons are returned-to-returned; output
+hashes agree between the two tested versions. The final current artifact is
+the tested step8 code. No nodes/wires/phases change and no native completion
+or gain follows from that. Original writer79701 is observed executing this
+T0 in the actual scientist world, with its own loss still pending. Exact stable
+proposal inputs/readbacks/controls are retained in a separate prefix record.

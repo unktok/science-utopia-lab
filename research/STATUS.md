@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+### November14 23:31JST: first actual staged institution submitted; native T0 world runs
+
+The local35B author finishes T0 at step13 after14 steps, two applied source
+writes and eight real component probes (all returned). One overlong optional
+rationale is a retained rejected step; the author explicitly finishes the
+already valid last draft, without host repair/salvage/fallback. Source reads
+after edits return the correct current version. Original writer79701 advances
+into this proposal's Qwen3-8B native world. No own loss is complete yet.
+[Actual construction/compile/native-start prefix](results/native-open-staged-first-construction-v1.md).
+
+Only selection source changes; no node/wire/phase change. The two tested
+versions agree on their four saved input outputs, not a whole-world or parent
+equivalence proof. There is no demonstrated component error repair or gain.
+The original paired audits/costs/reports and separate construction reader still
+wait for normal whole-study closure. Continue the finite actual search rather
+than counting component success as publication readiness.
+
 ### November14 23:21JST: both controls complete; first actual staged proposal starts
 
 Writer79701/PID32780 completes the hand at T=-20/U=-15.3333 after R7=-18/

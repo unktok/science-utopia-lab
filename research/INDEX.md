@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First actual staged proposal submitted](results/native-open-staged-first-construction-v1.md):
+ 14 steps/eight real probes, explicit finish after a retained annotation
+ rejection; the original native T0 world now runs. Only selection source
+ changes, not graph structure. No own loss, repair or advantage is claimed yet.
+
 - [Actual initial direction-support analysis](publication/native-direction-support-headroom-v1.md):
   two source-pinned exports agree. Core-only catalog assignment has a
   duration-only envelope20, while original legacy core+related choices give36.
