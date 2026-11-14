@@ -10,7 +10,7 @@ from utopia.system.design_patch import clone, digest
 SCHEMA = 'scienceutopia.native-objective-view.v21'
 
 # Measurement definitions, not candidate institutions or extra objectives.
-# These describe remeasure_native_endpoint's existing checkpoint arithmetic.
+# These describe existing native endpoint and common-content observer arithmetic.
 NATIVE_MEASUREMENT_DEFINITIONS = {
     'native.accepted_decisions': 'Count review-history decisions whose decision is accept.',
     'native.rejected_decisions': 'Count review-history decisions whose decision is reject.',
@@ -23,6 +23,14 @@ NATIVE_MEASUREMENT_DEFINITIONS = {
     'native.final_active_authors': 'Count final author-capable agents whose is_active value is true.',
     'native.final_author_resources': 'Sum final resources of all author-capable agents.',
     'native.institutional_context_deliveries': 'Count native.system.context_delivered kernel events.',
+    'native.common_content_score_sum': 'For each accepted native decision occurrence, use the fixed common '
+        'content panel arithmetic mean rating of original title, abstract and topics. Sum those means, '
+        'preserving repeated accepted records. Native reviewer overall_score and institution-written '
+        'final_score are not inputs; this is an abstract-based opinion, not scientific truth.',
+    'native.common_content_utility_sum': 'For each accepted native decision occurrence, use the fixed common '
+        'content panel arithmetic mean rating of original title, abstract and topics; subtract 3 from '
+        'each mean before summing, preserving repeated accepted records. Native reviewer overall_score '
+        'and institution-written final_score are not inputs; this is an abstract-based opinion, not scientific truth.',
 }
 
 

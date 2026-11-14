@@ -1,0 +1,204 @@
+{
+  "actual_history_request_sha256": "c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8",
+  "actual_new_backend_readiness_obtained": false,
+  "applied_to_active_study": false,
+  "branch": "fix/native-common-metric-semantics-v1",
+  "content_sha256": "769a9cd78e8b8e34ca25f9373fee450c7975e705def555f6e110666ea8605d9a",
+  "full_native_integration_verified": false,
+  "maximum_reprojected_contract_wire_utf8_bytes": 155130,
+  "merged_to_main": false,
+  "new_backend_token_count": null,
+  "new_code_executions": 0,
+  "new_full_output_reservation_fits_context": null,
+  "new_measurement_definitions": {
+    "native.common_content_utility_sum": "For each accepted native decision occurrence, use the fixed common content panel arithmetic mean rating of original title, abstract and topics; subtract 3 from each mean before summing, preserving repeated accepted records. Native reviewer overall_score and institution-written final_score are not inputs; this is an abstract-based opinion, not scientific truth."
+  },
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_protocol_binding": {
+    "action_schema_sha256": "e42ad78742972e4f1cf79c9f15fc97801c5dcbb1f5d820f5ba28250d10009ee3",
+    "bounded_context_source_sha256": "4d1c327dc7edb1dc7afe4401c028efb14f6fe08e55a658970d1c32ab541ff292",
+    "capability_catalog_source_sha256": "90f7604525f3406d9e9a34908673732dcb706d58ac4d47b218d4331151369c18",
+    "causal_design_source_sha256": "ac7f1624a6bfba3aa07dd2283b2912b85906aa6d377405e5d1307346d71b1f89",
+    "compiler_source_sha256": "4cc337d1d2d326b28a6e5bc5ef747a549183b2402fcfbfdf94905538919846fe",
+    "component_lab_source_sha256": "1f98293fcce381dada3345882379a47625d9222ac85d78f0fcba68aee3aeddd0",
+    "contract_notice_source_sha256": "9e02a044cfde41775e584afb3f1de22fd8fb06f92acb957495dbe1c5422ffc95",
+    "decoding_source_sha256": "a5120a369e395c3409e0efda4e62051b0743f8f5afb97fc7817041e07cdfb901",
+    "design_space_source_sha256": "40c146929be81909b494138bd5d698e6673b7b0e3866db6d22f7a787a55bc09e",
+    "designer_roles_source_sha256": "6372335b0be452e60fd67a26626c1c3d302dfbaed5a7d67eaceb46fe2fbf48de",
+    "feedback_control_source_sha256": "83b7df11727f28585e9d3983e677c14d521baa127c45922b90a60eb97e341a15",
+    "field_addressing_source_sha256": "b84c1faf81b1b8b668262f9a95d34ecc48efdef8c76f94e7ddbcdbb27ad597e6",
+    "file_editor_instructions_sha256": "bb2f8e439064cd6ed79f3ef3359f56802c2a6e539e145151183f18bd5b46897f",
+    "file_workspace_source_sha256": "a31cb36bebaa7ebaacdc50a901a68648da19dc206a29fc9bf3cf3fe6b8c14906",
+    "history_workspace_source_sha256": "8b29b127d47d0b9867b97f823ddb6936b9817ff7b26fc7b3b61c043b47a6718b",
+    "initial_evidence_source_sha256": "2652aeb55771e6d9546c3ef18776080dd9ef7b30ae1b2c7ffca1d0dd1eebc9b4",
+    "instructions_sha256": "7196cf1a5704a23679c6952436f17cafd28f27854b9e53e05c2ac2b6961b4dd7",
+    "literal_workbench_source_sha256": "5effc71645a641ef6723ca74946c14b3d2f9686baa624814d6792b30490c70e7",
+    "native_probes": 0,
+    "native_tool_source_sha256": "cebc65ce0faea5d3d4e0d20824898ac06d8726263fbf1e2ca041c8b0e3a83943",
+    "objective_view_source_sha256": "16c27b82adf63ea0bcdd336f4b2954ca6f69e2352933e8fb1a2e57f45a2ec59a",
+    "own_feedback_source_sha256": "ff89e230a61588af28c0543c854e21a631b6cc21d2dfa796b39f96de9754cb94",
+    "parent_evidence_source_sha256": "a10c264aa72917e29f7863d6a44af1831f6a7fef54947863b5d44de30be9ff06",
+    "post_edit_feedback_source_sha256": "3a32f05f7294812bf1bdd46ef09b45514ce1d8a2446899b77ae9f2393daa25d7",
+    "recovery_source_sha256": "3193d3110d0136aef92eabceb34e259997bcbb3331b278e47df799014c191ebb",
+    "schema": "scienceutopia.staged-author.v15",
+    "source_execution_on_host": false,
+    "source_sha256": "13d6aeef3b6727be9f7663468b6cc8047abc75ad9cdb41bdbef7a20c74c5eb1e",
+    "tool_advertisement_profile": "file-primary-with-on-demand-own-history.v37",
+    "transport_source_sha256": "bfa0ebd4378dfda2d893474f1c3373c3baeeb12027bc9ecdf1ab45082c7de254",
+    "wire_source_sha256": "e066b0814f81af4e1111171baf40c767d1ae7b73ea54f058648d0b3da589357e"
+  },
+  "observed_utc": "2026-11-14T17:12:41.206618+00:00",
+  "original_input_files_sha256": {
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/authoring/generation-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/request.json": "a7cbc45fbd5e42444bea7fa697999e24573ee3c55869380daf5abc729315d7cb",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-000.intent.json": "12e2ea518afd22841260d235c62f11f1a14a9635a7bd9b6dccf1e871defca3da",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-001.intent.json": "a516e208ab6a3e39b76ce908adb428dc5564ac1fa54a0629fc5f42ddcf672fae",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-002.intent.json": "01f25892aba576d13d7a1d5c0e97cf258c1b91d9e12b90e0993dc398a9c92401",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-003.intent.json": "fc339817d973ba7fb730f39e93dbc014dfa4e5d9023cb46e4bd5227e58f4ec3a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-004.intent.json": "440f51a30b59cc7540a5be093e0329fa5a11a2d6ab5ee3d95d29e534879213e3",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-005.intent.json": "c503b32a27698c1946187af5b59c67a68f3a9479f1f1e29d651db21d449a3eaf",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-006.intent.json": "c8c0ad9b5895db7364db089ad723c3339e0422c127aa9d20f064207020b609e4",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-007.intent.json": "1df429ba5a20d10c914d996d9b1f90793c87bd3b7215162e7b9112e2fa276afe",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-008.intent.json": "45a71ba90cef5ad681f6d6206658d5b5633aa3b72f11469ae1eb1cc87d61b52c",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-009.intent.json": "1eec987f7d78d1b33dffe00330629917c7eb6be6475e9b0d5b0e69ae97f6557a",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-010.intent.json": "62f5390f89fceacdebb3a1ba49e14bbcb57c3359811311dca82e4809f97777b8",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-011.intent.json": "b914445fd55e33c6ce237fac7242a809f834cd84e9850732008620910030bf98",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-012.intent.json": "de759770e54e474f5205b9da5dbc3d61e56ad427fd91241de7358d1751ac6085",
+    "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/content-utility/authoring/proposal-c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8/editor-session/wire/dispatch-013.intent.json": "051847a8a0df38e5361568a5956b44d8ae146eb7c4f821f4b43c4ceb8e33bfe3"
+  },
+  "original_inputs_or_losses_modified": false,
+  "original_scientific_source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "per_frame_added_contract_wire_utf8_bytes": [
+    367
+  ],
+  "publication_ready": false,
+  "rationale_branch_merged": false,
+  "schema": "scienceutopia.native-common-metric-semantics-verification.v1",
+  "scientific_improvement_claimed": false,
+  "scope": "A read-only static substitution of only loss_arithmetic on14 saved U1 frames. Not complete new public production-frame reconstruction, dispatch, a new scientific result, proof of token capacity, cause of past behavior or institutional improvement. All future full-source integration/cold replay and actual readiness remain required.",
+  "static_loss_view_only_reprojections": [
+    {
+      "dispatch": "dispatch-000.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 83296,
+      "original_contract_wire_utf8_bytes": 82929,
+      "original_intent_content_sha256": "cf6e1fc278df7fa433f77d148f48d1b074a7bf5de8abc8758c38f1d9aa0d4817",
+      "reprojected_source_view_utf8_bytes": 64112
+    },
+    {
+      "dispatch": "dispatch-001.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 136960,
+      "original_contract_wire_utf8_bytes": 136593,
+      "original_intent_content_sha256": "79642e9320d185fd9b301764156974f672cffe0d57bc89c4a037355fe455f19f",
+      "reprojected_source_view_utf8_bytes": 110848
+    },
+    {
+      "dispatch": "dispatch-002.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 138100,
+      "original_contract_wire_utf8_bytes": 137733,
+      "original_intent_content_sha256": "b31ec0fe09d3f564e8fab239f25b745887ae1de58ac0dd2ebc62956422cc46ec",
+      "reprojected_source_view_utf8_bytes": 111863
+    },
+    {
+      "dispatch": "dispatch-003.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 151987,
+      "original_contract_wire_utf8_bytes": 151620,
+      "original_intent_content_sha256": "3dc6bed0d3679876bb910f48f23e0e8b84589d48dddc1f64efdcb02e0bb55a6f",
+      "reprojected_source_view_utf8_bytes": 125073
+    },
+    {
+      "dispatch": "dispatch-004.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 149653,
+      "original_contract_wire_utf8_bytes": 149286,
+      "original_intent_content_sha256": "7400f3b187d13f734e9f052e53a1b4704ea4acdc146fd666b5add81656409c73",
+      "reprojected_source_view_utf8_bytes": 122872
+    },
+    {
+      "dispatch": "dispatch-005.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 152637,
+      "original_contract_wire_utf8_bytes": 152270,
+      "original_intent_content_sha256": "103f29dcbab2f989f5a1e786ac15c13a57b60da2d3911c4e42dc9483d4de0aaf",
+      "reprojected_source_view_utf8_bytes": 125656
+    },
+    {
+      "dispatch": "dispatch-006.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 149757,
+      "original_contract_wire_utf8_bytes": 149390,
+      "original_intent_content_sha256": "55ce479b2e58b01f47fc6e177880e16eabbcb78122851242c03e949efb7ef01d",
+      "reprojected_source_view_utf8_bytes": 122930
+    },
+    {
+      "dispatch": "dispatch-007.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 153578,
+      "original_contract_wire_utf8_bytes": 153211,
+      "original_intent_content_sha256": "358c3f99ea0339ef380dd993edfc03d941817a247da789f98a3e2960160fb523",
+      "reprojected_source_view_utf8_bytes": 126527
+    },
+    {
+      "dispatch": "dispatch-008.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 150696,
+      "original_contract_wire_utf8_bytes": 150329,
+      "original_intent_content_sha256": "bb17be118d4930c79ca404eb3fcf913630bbf0f0015a9287dd7e6a3338b7475c",
+      "reprojected_source_view_utf8_bytes": 123801
+    },
+    {
+      "dispatch": "dispatch-009.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 151410,
+      "original_contract_wire_utf8_bytes": 151043,
+      "original_intent_content_sha256": "7fc9a4a6eed9758a6b1706c65a13433654c54b3eb12fe620cdc50f2fed38ffaf",
+      "reprojected_source_view_utf8_bytes": 124475
+    },
+    {
+      "dispatch": "dispatch-010.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 151803,
+      "original_contract_wire_utf8_bytes": 151436,
+      "original_intent_content_sha256": "537507c94db0d2966032e9745edf9d897637b27198485851d38761064194f0df",
+      "reprojected_source_view_utf8_bytes": 124835
+    },
+    {
+      "dispatch": "dispatch-011.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 155130,
+      "original_contract_wire_utf8_bytes": 154763,
+      "original_intent_content_sha256": "0b631b0352135c78006ad6eb9b77fdcdd77c9e860e919a306663260e78dd0d57",
+      "reprojected_source_view_utf8_bytes": 127943
+    },
+    {
+      "dispatch": "dispatch-012.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 152248,
+      "original_contract_wire_utf8_bytes": 151881,
+      "original_intent_content_sha256": "9ea8353f7501293fa8d6fa67642a692b22a56b1a6d3330323f8acabc61c552f9",
+      "reprojected_source_view_utf8_bytes": 125217
+    },
+    {
+      "dispatch": "dispatch-013.intent",
+      "loss_arithmetic_except_definition_coverage_identical": true,
+      "loss_view_only_reprojected_contract_wire_utf8_bytes": 148507,
+      "original_contract_wire_utf8_bytes": 148140,
+      "original_intent_content_sha256": "f1e20f0b5f0b18fc25a84f56a305d8ceea30bfcd81a0f6d565adec6effb4f524",
+      "reprojected_source_view_utf8_bytes": 125837
+    }
+  ],
+  "unchanged_loss_spec_sha256": "37205a64c692bd77a64ddf6a5bdb3843fdbeff3f8e47382b1d59c2ddc92d5867",
+  "unit_tests": {
+    "exit_code": 0,
+    "junit_path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/common-metric-semantics-unit-v1-a1/junit.xml",
+    "junit_sha256": "24ada0b4f5cf44504587c5464e6ecd9b29d489e341609a2784bec1aa0dc7457f",
+    "pytest_reported_seconds": 2.48,
+    "scope": "SCRIPTED description/contract/arithmetic/missingness/message/archive checks, not native production or real backend capacity.",
+    "session": 50357,
+    "tests": 37
+  },
+  "verification_source_commit": "5136bb7a08bd94d6be28478b439ac714f184cab7"
+}
