@@ -92,6 +92,10 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
     assert proof['fixed_selection'] == old_audit['selection']
     cost_reports = [costs(root, p, driver.read(path)) for path in audit_paths]
     assert cost_reports[0] == cost_reports[1]
+    common_cost = cost_reports[0]['common_content_observer']
+    assert common_cost['input_observer_audit_content_sha256'] == proof['observer']['content_sha256']
+    assert common_cost['physical_requests'] == proof['observer']['dispatch_intents']
+    assert common_cost['usage'] == proof['observer']['usage']
     assert not any(e['kind'] in ('workflow-readiness', 'workflow-proposal')
         for e in cost_reports[0]['auxiliary']['events'])
     for i in (1, 2):
@@ -126,6 +130,8 @@ def test_real_native_workflow_handoff_known_null_and_double_cold_readers(tmp_pat
         'original_cold_audit_directory': str(external),
         'matching_audit_sha256': file_sha256(audit_paths[0]),
         'matching_cost_content_sha256': cost_reports[0]['content_sha256'],
+        'common_observer_physical_requests': common_cost['physical_requests'],
+        'common_observer_cost_bound_to_original_audit': True,
         'matching_report_files': report_files, 'scientific_gain_claimed': False,
         'matching_mechanism_readout_files': readout_files,
         'publication_ready': False}, sort_keys=True)
