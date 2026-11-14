@@ -2,6 +2,7 @@
 import json
 
 import pytest
+from jsonschema import Draft202012Validator
 
 from tests.optimization.test_native_workflow_designer_v1 import install, PROVIDER, BACKEND
 from tests.optimization.test_native_workflow_submission_v1 import request
@@ -20,6 +21,48 @@ def author_at(path, monkeypatch, replies):
 
 
 def control(body): return body['control_submission']
+
+
+def test_transport_schema_keeps_open_json_objects_and_canonical_ir_validation():
+    from utopia.optimization.native_authoring_ir import OUTPUT_SCHEMA
+    original = clone(OUTPUT_SCHEMA)
+    wire = ir.transport_schema(original)
+    assert original == OUTPUT_SCHEMA and wire != original
+    choice = wire['properties']['factors']['items']['properties']['choices']['items']
+    assert choice['properties']['provenance']['additionalProperties'] is True
+    assert choice['properties']['provenance']['minProperties'] == 1
+    assert wire['additionalProperties'] is False
+    for op in wire['properties']['operations']['items']['oneOf']:
+        assert op['additionalProperties'] is False
+        if 'value' in op['properties']:
+            assert op['properties']['value']['additionalProperties'] is True
+    canonical = Draft202012Validator(original); projected = Draft202012Validator(wire)
+    for operand in (None, True, 7, 1.25, 'source string', [], [1, {'nested': [False, None]}],
+            {}, {'arbitrary': {'source': 'def step(context): return {}', 'ports': ['x']}}):
+        value = {'operations': [{'op': 'add', 'path': '/metadata/probe', 'value': operand}],
+            'factors': [], 'continuous': [], 'rationale': 'SCRIPTED complete literal'}
+        assert canonical.is_valid(value) and projected.is_valid(value)
+        value['unexpected-root-field'] = 1
+        assert not canonical.is_valid(value) and not projected.is_valid(value)
+    for provenance in ({}, {'chosen_by': 'SCRIPTED', 'arbitrary': [1, None, {'code': 'x'}]}):
+        value = {'operations': [], 'continuous': [], 'rationale': 'SCRIPTED factor',
+            'factors': [{'id': 'f', 'kind': 'categorical', 'choices': [
+                {'id': name, 'operations': [], 'provenance': clone(provenance)} for name in ('a', 'b')]}]}
+        assert canonical.is_valid(value) == projected.is_valid(value) == bool(provenance)
+
+
+def test_actual_payload_uses_explicit_defaults_but_preserves_canonical_prompt_schema(tmp_path):
+    req = request(tmp_path / 'campaign')
+    value, schema, wire = ir.payload({'request': req, 'provider': PROVIDER, 'purpose': 'calibration',
+        'settings': engine.settings_for(engine.OPEN_IR_MODE)})
+    body = json.loads(value['messages'][1]['content'])
+    from utopia.optimization.native_authoring_ir import OUTPUT_SCHEMA
+    assert body['response_schema'] == OUTPUT_SCHEMA
+    assert schema == value['format'] == ir.transport_schema(OUTPUT_SCHEMA)
+    assert body['transport_schema_projection']['canonical_schema_sha256'] == digest(OUTPUT_SCHEMA)
+    assert body['transport_schema_projection']['wire_schema_sha256'] == digest(schema)
+    assert body['control_submission'] == ir.control_submission(req, PROVIDER)
+    assert body['parent_system'] == req['parent_system']
 
 
 def institution(req):

@@ -53,6 +53,25 @@ structured compiler diagnostics and hashes in the normal own-history format.
 Unknown completion stops further inference. Cold replay reconstructs the same
 payload, returned literal and compile result, without redispatch or repair.
 
+## Explicit JSON Schema defaults on the wire
+
+The first actual b0db5916 calibration stops with a known HTTP400 grammar
+rejection before any proposal/world. Its valid canonical schema permits a
+nonempty arbitrary provenance object, but the backend treats omitted
+additionalProperties as false and rejects minProperties=1 with no declared
+keys. The generic JSON operand's object branch would also be silently narrowed.
+
+A separate fixed source spells out additionalProperties=true wherever the
+canonical schema permits objects and leaves this keyword absent. Already
+explicit false or typed schemas remain exact. This is the JSON Schema default,
+not relaxed host validation or a new institution menu. Every scalar, array,
+nested object, source string and arbitrary provenance key remains available.
+The prompt retains the canonical schema and separately names/hashes its wire
+projection. Canonical IR/compiler/domain checks are unchanged and no output is
+rewritten. Old raw payloads, certificates and the stopped campaign remain
+immutable. Fresh calibration and a separately identified finite v2 run are
+required; the failed original call is not retried in place.
+
 ## Evidence required before a new scientific run
 
 Light API/compiler/worker regressions are not enough. After the active inference

@@ -18,6 +18,25 @@ MODE = 'open-institutions-ir-v1'
 PROTOCOL = 'research/protocols/campaigns/native-open-workflow-authoring-v1.md'
 
 
+def transport_schema(schema):
+    """Spell out JSON Schema's open-object default for the local grammar backend.
+
+    llama.cpp's grammar converter defaults objects to closed, unlike JSON Schema.
+    In particular {type: object, minProperties: 1} otherwise fails before model
+    output, and arbitrary literal operands can silently become empty objects.
+    This changes no canonical IR validation/authority and never touches replies.
+    """
+    if isinstance(schema, list):
+        return [transport_schema(item) for item in schema]
+    if not isinstance(schema, dict):
+        return schema
+    result = {key: transport_schema(value) for key, value in schema.items()}
+    kind = schema.get('type')
+    if kind == 'object' or isinstance(kind, list) and 'object' in kind:
+        result.setdefault('additionalProperties', True)
+    return result
+
+
 def bound_systems(request):
     contract = request.get('design_space')
     if (not isinstance(contract, dict) or contract.get('kind') != 'code-and-graph'
@@ -112,7 +131,13 @@ def payload(binding):
             'must still compile in the explicit native domain. This is not free-design evidence.')
     elif binding['purpose'] != 'proposal':
         raise ValueError('explicit calibration/proposal purpose required')
-    schema = clone(protocol.output_schema)
+    schema = transport_schema(protocol.output_schema)
+    body['transport_schema_projection'] = {
+        'kind': 'explicit-json-schema-open-object-defaults-v1',
+        'canonical_schema_sha256': digest(protocol.output_schema),
+        'wire_schema_sha256': digest(schema),
+        'canonical_host_validation_unchanged': True,
+        'literal_output_repaired': False}
     value = {'model': binding['provider']['model'], 'stream': False, 'think': True,
         'format': schema, 'truncate': False, 'shift': False,
         'messages': [{'role': 'system', 'content': task}, {'role': 'user', 'content':

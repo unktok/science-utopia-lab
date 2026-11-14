@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+### November14 17:16JST: first open calibration stops on a known backend schema incompatibility
+
+Writer33499/PID43426 exits1 after one58.912s HTTP call. The literal provider
+error rejects a nonempty provenance object because its grammar compiler treats
+omitted additionalProperties as false. There is no model-authored final IR,
+free proposal, scientific world or loss; model usage is unknown, not zero.
+All five continuations exit1 without fake audits/closure. Two original-source
+cold replays agree and raw files remain unchanged.
+[Exact stop](results/native-open-institution-initial-stop-v1.json).
+
+The prospective correction makes the canonical JSON Schema open-object defaults
+explicit on the wire, including arbitrary code/node operand objects. Host IR
+schema, compiler, design freedom, losses and old profiles are unchanged.31
+focused cases pass18.09s, including arbitrary nested values/provenance and
+actual payload/canonical-schema separation. A fresh frozen native proof and
+real calibration precede a new finite v2 identity; no original retry/refill.
+[Declared correction](protocols/campaigns/native-open-institution-grammar-correction-v2.md).
+No real inference is currently active. The reviewed78-page paper remains the
+pre-dispatch snapshot, not a claim that this later calibration passed.
+
 ### November14 17:12JST: reviewed full PDF retained; open-institution study prepared
 
 The new78-page integrated PDF/receipt at manuscript source385d8a49 retains all
