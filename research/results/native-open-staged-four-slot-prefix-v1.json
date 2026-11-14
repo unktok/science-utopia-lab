@@ -1,0 +1,238 @@
+{
+  "T1": {
+    "component_testing": {
+      "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+      "new_model_calls_from_tests": 0,
+      "new_native_worlds": 0,
+      "probe_attempts": 4,
+      "raised": 0,
+      "returned": 4,
+      "veto_on_finish": false
+    },
+    "literal_graph_change_from_parent": {
+      "added_connections": [],
+      "added_nodes": {},
+      "added_schedules": {},
+      "changed_mechanisms": {
+        "world.selection": {
+          "after_sha256": "fb7162bc896b813e02ef00f4ef426aaf41945e46ebd544efee6b450f2823b509",
+          "before_sha256": "8ec3afcfdc14f63ddd4294d0a98407a7cfde52e18e064882514dcfef41eda8b6",
+          "changed_fields": [
+            "parameters"
+          ]
+        }
+      },
+      "changed_system_fields": {},
+      "phase_updates": {},
+      "removed_connections": [],
+      "removed_nodes": {},
+      "removed_schedules": {},
+      "source_edits": {
+        "world.selection": {
+          "after_source_utf8_sha256": "8b3d69c7623528eec090708e2fb42338571cd2a072f0abeabf0cabb291dbf044",
+          "before_source_utf8_sha256": "a50fa85afb7764ff9009d8a53dd133ab7fff94c24a83a13a5abd3859c4ce08f6"
+        }
+      },
+      "source_parameters_nodes_unchanged": false
+    },
+    "literal_scientist_traces": [
+      {
+        "input_file_sha256": {
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/replies/responses.sqlite": "3a53f9ee0f46c2256bd29ae0ab85308f18854c3d95b5fcd2333b0f06585583db",
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/references/R7-original/worlds/workflow-reference-r7-original-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+        },
+        "label": "R7-original",
+        "requests": {
+          "completed_responses": 115,
+          "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+          "ordered_full_provider_body_hashes_sha256": "7bc13748bd4fded2cb4499c241334df57909a28ffc18d9513a090f5831aaac5e",
+          "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+          "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+          "wire_inputs_without_committed_reply": 0,
+          "wire_requests": 115
+        }
+      },
+      {
+        "input_file_sha256": {
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/worlds/native-adaptive-a2d5e0721762cbfd44cad5ba-s61001/replies/responses.sqlite": "e7a82bb19f9a4fe947df290ea5090e7a5b39f4f982ae480b4fb2c587eb49fabf",
+          "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/worlds/native-adaptive-a2d5e0721762cbfd44cad5ba-s61001/wire-requests.jsonl": "49dea0b7a1e73f013bf784959e68ca1ff0b7e48e94924919188850f5b0f5e978"
+        },
+        "label": "T1",
+        "requests": {
+          "completed_responses": 115,
+          "ordered_completed_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+          "ordered_full_provider_body_hashes_sha256": "c348734b314a0c3662ed78ba87e7d5a736106b5dab39a5fa94c6b43122a6829f",
+          "ordered_full_request_payload_sha256": "40fb533cd8d41f2d9a7196edb996b4f8368ee26eb6e68bc786b2082758e6d3cb",
+          "ordered_literal_response_choices_sha256": "f7e9561783fb5d19bce41ae3b0e6e6cfd041834da8a76b4121b27ff3b6d4b586",
+          "wire_inputs_without_committed_reply": 0,
+          "wire_requests": 115
+        }
+      }
+    ],
+    "model_steps": 14,
+    "request_and_choice_comparison_with_R7": {
+      "ordered_full_provider_body_hashes_sha256": false,
+      "ordered_full_request_payload_sha256": true,
+      "ordered_literal_response_choices_sha256": true
+    },
+    "scope": "Parsed-source AST equality and exact observed full input/choice equality do not prove program equivalence or permit future physical-world sharing without literal policy identity.",
+    "source_AST_equals_R7": true,
+    "step_status_counts": {
+      "applied": 8,
+      "finished": 1,
+      "rejected": 5
+    },
+    "technical_rejections": [
+      {
+        "errors": [
+          {
+            "message": "tool schema: $.rationale: invalid maxLength (actual JSON type string)",
+            "message_character_limit": 4000,
+            "type": "ValueError"
+          }
+        ],
+        "step": 4
+      },
+      {
+        "errors": [
+          {
+            "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+            "message_character_limit": 4000,
+            "type": "ValueError"
+          }
+        ],
+        "step": 5
+      },
+      {
+        "errors": [
+          {
+            "message": "tool schema: $.rationale: invalid maxLength (actual JSON type string)",
+            "message_character_limit": 4000,
+            "type": "ValueError"
+          }
+        ],
+        "step": 10
+      },
+      {
+        "errors": [
+          {
+            "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+            "message_character_limit": 4000,
+            "type": "ValueError"
+          }
+        ],
+        "step": 11
+      },
+      {
+        "errors": [
+          {
+            "message": "implementation checkpoint: this read/plan was NOT executed. The exact current system and previous read receipt are already supplied. Author a literal implementation action or explicitly finish to retain; an explanation alone does not change the institution.",
+            "message_character_limit": 4000,
+            "type": "ValueError"
+          }
+        ],
+        "step": 12
+      }
+    ],
+    "tool_counts": {
+      "finish": 1,
+      "plan": 1,
+      "read_file": 9,
+      "write_file": 3
+    }
+  },
+  "analysis_source_commit": "90dac623",
+  "candidate_repaired_or_refilled": false,
+  "completed_native_worlds_at_snapshot": 6,
+  "completed_own_slots_at_snapshot": 4,
+  "content_sha256": "bcd7ab2680f4ebf2e859ab955e181bd5c45a89efedeba88ceabe59f0808349ab",
+  "fixed_unused_evaluation_complete": false,
+  "full_study_cold_audit_complete": false,
+  "future_rationale_fix": {
+    "actual_rejected_actions_schema_checked": 3,
+    "applied_to_active_study": false,
+    "branch": "fix/native-author-note-budget-v1",
+    "full_native_integration_pending": true,
+    "head_commit": "825793567b61f1f36169761ac946056e4d2244d7",
+    "implementation_commit": "2daffd8a4d399583e5cbffa29b033565a56c3542",
+    "merged_to_main": false,
+    "verified_unit_tests": 25
+  },
+  "loss_changed": false,
+  "no_text_ID_or_clock_scrubbing": true,
+  "observed_utc": "2026-11-14T16:17:44.626658+00:00",
+  "plan_content_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "publication_ready": false,
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-staged-four-slot-prefix.v1",
+  "scope": "Four normally observed native completions, not normally closed whole-study evidence. Full original-source audit/cost/all-slot exports, frozen own selection and the prospective unused-condition evaluation remain pending. Preserve technical rejections and unfavorable slots; future schema development is separate.",
+  "slots_in_original_schedule_order": [
+    {
+      "assigned_loss": -18.0,
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 0,
+      "generation_record_sha256": "2a58713dc4de4be47f2f13a9b55b82a0052b18437da74875210375263bc0e8f1",
+      "objective": "throughput",
+      "observation_sha256": "be71cb46a911110c28b49460a5dcfc3e3f7db7d89ab9b5bf819fd1c8c713d6a1",
+      "request_sha256": "9f4399eaadb888d0ad6147069cdfaaa883e8e88eb3cb61a90d920c2f06313017",
+      "status": "complete",
+      "suggestion_id": "native-adaptive-a7d6d1561ad006ce3aed5cfa"
+    },
+    {
+      "assigned_loss": -13.333333333333332,
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 0,
+      "generation_record_sha256": "6aff4a6b46dbad505d0f6383f6cdd21ebedd7faf198cd04423337fe2f64316ae",
+      "objective": "content-utility",
+      "observation_sha256": "f8d4498a70393c065ea8a91756e7b9dac3d75c8f7c0d041fe2308d568a6765a6",
+      "request_sha256": "f0048d4ddc2cd8911835fec8d25b6da28b7e3164a5d429193d60233bbe6fa8d6",
+      "status": "complete",
+      "suggestion_id": "native-adaptive-31041c0814053ecdbfe350e6"
+    },
+    {
+      "assigned_loss": -12.0,
+      "cross_scores": {
+        "content-utility": -12.0,
+        "throughput": -18.0
+      },
+      "generation": 1,
+      "generation_record_sha256": "f577c41edee57b383586fea09ae91f50b10b59a99f39ccc6f5bf6d46c5ab9f95",
+      "objective": "content-utility",
+      "observation_sha256": "d2a1314558e7840a08fe8e41777c43c63faee37bf6cc3764d9b2948632988b1c",
+      "request_sha256": "c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8",
+      "status": "complete",
+      "suggestion_id": "native-adaptive-60b58ed203152f4648db8e25"
+    },
+    {
+      "assigned_loss": -18.0,
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 1,
+      "generation_record_sha256": "5b2a89886ac91a9154a4681e43d9f98ebdb998aaae922c79b0bb17499680bbe2",
+      "objective": "throughput",
+      "observation_sha256": "f3d4802be7f29001af52f79aad1a760a25aa84a716d9fee8f2b5adafb3b9923c",
+      "request_sha256": "40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05",
+      "status": "complete",
+      "suggestion_id": "native-adaptive-a2d5e0721762cbfd44cad5ba"
+    }
+  ],
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "total_declared_own_slots": 6,
+  "writer": {
+    "current_progress": {
+      "active": "throughput:g2",
+      "observed_utc": "2026-11-14T16:15:57.590823+00:00",
+      "stage": "readiness"
+    },
+    "pid": 32780,
+    "session": 79701
+  }
+}

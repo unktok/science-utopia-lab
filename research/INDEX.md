@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Four actual staged slots complete](results/native-open-staged-four-slot-prefix-v1.md):
+  T1 returns -18/-13.3333 with115 full scientist inputs/choices equal R7,
+  four returned probes and five retained technical rejections. Four of six own
+  slots complete; T2 readiness begins, no own advantage or whole-study closure.
+  The future rationale-cap fix is separately pushed, not merged/applied; its
+  25 light checks do not replace native integration/readiness or scientific gains.
+
 - [Staged U1 operates an agenda change, but worsens utility](results/native-open-staged-first-operative-agenda-v1.md):
   T=-18/U=-12. Four source writes share one AST;16 real probes return. A
   changed topic reaches the23rd scientist input. Twelve shared accepted

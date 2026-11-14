@@ -117,3 +117,28 @@ def test_operated_agenda_change_keeps_worse_utility_and_objective_specific_refer
     assert not r['host_source_repair'] and not r['component_error_repair_demonstrated']
     assert not r['full_study_cold_audit_complete'] and not r['unused_evaluation_complete']
     assert not r['publication_ready']
+
+
+def test_four_slot_prefix_keeps_valid_tie_rejections_and_future_fix_separate():
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-four-slot-prefix-v1.json').read_text()))
+    slots = r['slots_in_original_schedule_order']
+    assert [(s['objective'], s['generation']) for s in slots] == [
+        ('throughput', 0), ('content-utility', 0), ('content-utility', 1), ('throughput', 1)]
+    assert [s['assigned_loss'] for s in slots] == [-18., -13.333333333333332, -12., -18.]
+    assert all(s['status'] == 'complete' and s['assigned_loss'] == s['cross_scores'][s['objective']] for s in slots)
+    t = r['T1']
+    assert t['model_steps'] == 14 and t['step_status_counts'] == {'applied': 8, 'rejected': 5, 'finished': 1}
+    assert [x['step'] for x in t['technical_rejections']] == [4, 5, 10, 11, 12]
+    assert t['component_testing']['probe_attempts'] == t['component_testing']['returned'] == 4
+    assert t['source_AST_equals_R7']
+    assert all(x['requests']['completed_responses'] == 115 for x in t['literal_scientist_traces'])
+    assert t['request_and_choice_comparison_with_R7']['ordered_full_request_payload_sha256']
+    assert t['request_and_choice_comparison_with_R7']['ordered_literal_response_choices_sha256']
+    assert r['completed_own_slots_at_snapshot'] == 4 and r['total_declared_own_slots'] == 6
+    future = r['future_rationale_fix']
+    assert future['verified_unit_tests'] == 25 and future['actual_rejected_actions_schema_checked'] == 3
+    assert not future['merged_to_main'] and not future['applied_to_active_study']
+    assert future['full_native_integration_pending']
+    assert not r['candidate_repaired_or_refilled'] and not r['loss_changed']
+    assert not r['full_study_cold_audit_complete'] and not r['fixed_unused_evaluation_complete']
+    assert not r['publication_ready']

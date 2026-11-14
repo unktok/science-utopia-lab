@@ -2,6 +2,23 @@
 
 ## Active publication-ready goal
 
+### November15 01:15JST: four own slots complete; T1 ties R7, T2 readiness starts
+
+Writer79701 completes T1 at T=-18/U=-13.3333; all115 full scientist inputs
+and literal choices equal R7. Its submitted selection AST also equals R7.
+Four component probes return. Fourteen authoring steps retain five rejections
+(two rationale-length, three implementation-checkpoint reads), not host repairs.
+[Four-slot table, exact evidence and future-only fix boundary](results/native-open-staged-four-slot-prefix-v1.md).
+
+At16:15:57UTC, the unchanged writer advances to throughput:g2 readiness.
+Four of six own slots/six physical worlds complete, no own advantage. Full
+original-source audit/costs/selection/unused evaluation remain pending.
+Separately, fix/native-author-note-budget-v1 is pushed at82579356:25 light
+checks and three actual-action schema checks support a future rationale-cap
+removal only. Not merged to main/applied here; full native integration and real
+readiness under that future contract remain necessary. The old failures stay
+failed. The82-page reviewed PDF predates these actual staged results.
+
 ### November15 00:45JST: staged U1 changes actual native input; utility worsens
 
 Writer79701 completes the third own slot at T=-18/U=-12, worse than R7's
