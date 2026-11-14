@@ -6,9 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 09:52JST; the publication-ready goal
+- [Current status](STATUS.md): November14 10:20JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
+- [Workflow-only fixed evaluation preparation](results/native-workflow-fixed-evaluation-preparation-v1.json):
+  literal own/control handoff, unused-seed runner, cold audit/cost/report and
+  both-objective contrasts implemented at365facef;45 light plus50 regression
+  checks pass. Native proof is collected but not run, and no real seed or
+  scientific dispatch is chosen. Existing transport waiter remains separate.
 - [Actual workflow-v2 first dispatch](results/native-workflow-v2-first-dispatch-v1.json):
   starts23:52:27UTC at frozen3b912d17/planed85d848, session70493/PID21985.
   Initial35B readiness subsequently passes, but first R7/year2 funding stops on

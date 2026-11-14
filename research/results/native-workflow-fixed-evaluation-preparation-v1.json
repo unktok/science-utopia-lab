@@ -1,0 +1,87 @@
+{
+  "schema": "scienceutopia.native-workflow-fixed-evaluation-preparation.v1",
+  "classification": "software-handoff-and-light-checks-not-scientific-evaluation",
+  "implementation_commit": "365facef7197cdfd55b80a9b2f15f377a79b9bae",
+  "implemented": [
+    "independent workflow-only normal-closure origin and literal own selection handoff",
+    "two fixed controls and T/U own labels, one to three explicit unused seeds, exact-policy job sharing only",
+    "native seeded-anchor interval measurement and cold transport/source/checkpoint/critic/loss reconstruction",
+    "both loss scores, every paired own/control contrast, objective-choice contrast and literal nulls",
+    "finite double-audit/cost and double-report continuation adapters without retries"
+  ],
+  "light_check_results": {
+    "path": "/private/tmp/science-utopia-workflow-fixed-light-v1-a5.5SebEi/junit.xml",
+    "sha256": "fa671bc1ff626c68f1b3da915aed4c3f64f8fe6086a03a4c0534c60d10468f5e",
+    "passed": 45,
+    "failed": 0,
+    "seconds": 49.97,
+    "scope": "Working-tree light checks before implementation commit, including SCRIPTED physical primitives; not clean-source native proof. No rendering, real models or actual native worlds."
+  },
+  "existing_path_regression": {
+    "path": "/private/tmp/science-utopia-workflow-fixed-regression-v1-a1.P2mJji/junit.xml",
+    "sha256": "4d61ead3612ac42d41a538afedab8090ba7b79a564f763f8219451194cdf9d32",
+    "passed": 50,
+    "failed": 0,
+    "deselected": 2,
+    "seconds": 55.64,
+    "scope": "Existing objective/planning fixed-evaluation runner, cold primitive and summary checks. Heavy export/render tests explicitly deselected; no original study results relabelled."
+  },
+  "earlier_failed_checks_retained": [
+    {
+      "path": "outputs/workflow-fixed-light-v1-a1/junit.xml",
+      "sha256": "a8a609f6f7a5f48b64126d945a7ace3631d20d7a1b6e1a07fb6aaa89ba4291cb",
+      "failed": 22,
+      "passed": 12,
+      "cause": "SCRIPTED source proof named the upstream planning source instead of the workflow origin; fixture corrected, guard retained"
+    },
+    {
+      "path": "outputs/workflow-fixed-light-v1-a2/junit.xml",
+      "sha256": "bf2ae8f9d0c03bcf7ddd09472f8823a44aa74babedddbd4b7c9bdf7b6ca3fe48",
+      "failed": 1,
+      "passed": 18,
+      "cause": "Mutation test used nonexistent edges instead of actual SystemSpec connections; fixture corrected"
+    },
+    {
+      "path": "outputs/workflow-fixed-light-v1-a3/junit.xml",
+      "sha256": "7ff435f47b7151f260ac38d528fbf7a783220a8488b882cc57aa2f900ed0ac09",
+      "failed": 1,
+      "passed": 23,
+      "cause": "SCRIPTED nonzero accepted count contradicted empty retained paper list; fixture corrected, observer consistency retained"
+    },
+    {
+      "path": "outputs/workflow-fixed-light-v1-a4/junit.xml",
+      "sha256": "6c9a1d58167e3241b922e28f35c7917158b986d8d40d305a9e4558260354b739",
+      "failed": 1,
+      "passed": 24,
+      "cause": "Explicit basetemp inside source made cold export target forbidden; fresh external temporary parent used without weakening the production guard"
+    }
+  ],
+  "native_full_path_test": {
+    "path": "tests/reports/test_native_workflow_fixed_native_v1.py",
+    "collection_exit_code": 0,
+    "collected": 1,
+    "executed": false,
+    "scope": "Prepared nine-world SCRIPTED development-to-evaluation proof, with actual factories and cold readers plus known runtime null; not yet run. All-null handoff separately light-tested, not a completed all-null native proof."
+  },
+  "live_resource_wait": {
+    "source_commit": "6625d8e342f69ff4ed21f79ebe5333718220607a",
+    "exec_session": 11803,
+    "pid": 60886,
+    "unchanged": true,
+    "only_queued_task": "previous scientist900 seven-world SCRIPTED transport proof, not new fixed evaluation or scientific inference",
+    "observed_utc": "2026-11-14T01:19:59.648207+00:00",
+    "known_external_batch_pid": 26258,
+    "known_external_pid_absent": false,
+    "host_total_cpu_percent": 954.6,
+    "exclusive_resource_lease_proved": false
+  },
+  "new_real_model_calls": 0,
+  "new_scientific_worlds": 0,
+  "scientific_evaluation_seeds_chosen": false,
+  "real_evaluation_prepared_or_dispatched": false,
+  "native_full_path_verified": false,
+  "old_stopped_studies_resumed_or_refilled": false,
+  "manuscript_or_pdf_updated": false,
+  "publication_ready": false,
+  "research_goal_complete": false
+}

@@ -2,7 +2,20 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 09:52JST (November14 00:52UTC)
+### Current overview: November14 10:20JST (November14 01:20UTC)
+
+**Workflow-only frozen evaluation is now implemented, not natively verified.**
+At365facef the new independent handoff no longer depends on stopped other
+studies: it still requires a normally closed workflow origin, both cold audits
+and literal own selection. Both controls, T/U selections, all nulls, both loss
+scores, paired control differences and objective-choice differences stay explicit.
+45 light checks and50 old-path regressions pass; two heavy exports are not run.
+Four earlier fixture/test-placement failures are retained in the
+[preparation receipt](results/native-workflow-fixed-evaluation-preparation-v1.json).
+The nine-world SCRIPTED integration test is collected but unexecuted; all-null
+native coverage also remains open. No actual evaluation seeds are chosen.
+Live waiter11803 remains on unchanged6625d8e3, not this new code; latest inspected
+01:19:59UTC CPU954.6%, exact external batch26258 still present, QA not started.
 
 **New workflow inference is now stopped, not running.** Session70493 exits1;
 its original terminal at00:07:27UTC records PortableStop/APITimeoutError in
@@ -60,7 +73,7 @@ choices. See the [closed data](data/native-parameter-comparator-v1/README.md).
 | Numeric comparator |All6 real worlds/slots close; double audits/costs/reports and input/incumbent exports match |No incumbent gain; independent scope and important scientific answer remain open |
 | Workflow freedom |v4 graph domain and loss loop; finite structural interface/runner/auditor | Actual model-authored workflow search and empirical claims |
 | New workflow experiment |Initial real35B readiness passes; original stopped prefix,48 scientist replies, matching49-input/48-choice historical prefix and unknown final response retained |Stopped on scientist120s transport during first reference/year2 funding; zero complete fresh scores/own slots; no repair/refill or normal-closure claim |
-| Workflow analysis/evaluation handoff |Finite closure/report adapters; phase/end-year cashflow reader actually double-exports7 prior SCRIPTED worlds/28 checkpoints/308 phase witnesses identically; literal fixed-selection handoff |No actual-Qwen completed-study phase/ledger result or complete workflow unused-world evaluator/native proof; no evaluation seeds chosen |
+| Workflow analysis/evaluation handoff |Phase/end-year reader double-exports7 prior SCRIPTED worlds/28 checkpoints/308 phase witnesses; new independent workflow-only evaluator/auditor/cost/report adapters;45 light and50 regression checks pass |No actual-Qwen completed-study phase/ledger result or source-bound native proof of new evaluator; all-null native coverage open; no evaluation seeds chosen |
 | Prospective scientist transport |Explicit900s read profile wired through plan/production/cold audit; unchanged original264-file source read; real SDK timeout/body/no-retry units |Source-bound full native SCRIPTED proof waits on observed external CPU batch; no new scientific dispatch |
 | Manuscript |[73-page reviewed artifact](../paper/integrated-native-numeric-build-v1.json),38 figures/30 tables/26 references, all pages reviewed;62-file minimal rebuild matches text and all73 page PNGs |Important main claim, independent evidence R2/R3/R6 and final readiness judgment |
 
