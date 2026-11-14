@@ -6,9 +6,19 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 10:40JST; the publication-ready goal
+- [Current status](STATUS.md): November14 11:04JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
+- [Workflow-v3 actual first dispatch and completed software proofs](results/native-workflow-v3-dispatch-and-software-proof-v1.json):
+  seven-world transport and both fixed-evaluation native tests now pass. New
+  real writer8676/PID2886 runs at6625d8e3/plan60d8758d after two fresh resource
+  observations; initial35B readiness passes, first R7 year1 checkpoint exists,
+  no complete fresh score yet. Audit/cost15408 and report87576 actually wait.
+  Old stopped studies stay stopped; no scientific held-out seed is chosen.
+
+The preparation receipts below retain their earlier scopes/statuses. Their
+"unexecuted"/"waiting" wording predates the actual dispatch linked above.
+
 - [Workflow-only fixed evaluation preparation](results/native-workflow-fixed-evaluation-preparation-v1.json):
   literal own/control handoff, unused-seed runner, cold audit/cost/report and
   both-objective contrasts implemented at365facef;45 light plus50 regression

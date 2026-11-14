@@ -43,10 +43,14 @@ in year2 funding on a scientist transport timeout. The
 matches49 requests/48 committed replies with a previous closed R7 run; the last
 response and its cost remain unknown. Zero complete fresh worlds/own slots;
 the planned two references/six own slots are not achieved outcomes or refilled.
-An [explicit prospective scientist900 transport profile](research/results/native-workflow-scientist-transport-v3-preparation-v1.json)
-is wired and light-tested without changing original world files or payloads.
-Its source-bound full native software check waits for an observed CPU resource
-window; it is not a resumed scientific experiment or evidence of improvement.
+An [explicit scientist900 transport profile](research/results/native-workflow-scientist-transport-v3-preparation-v1.json)
+preserves original world files and scientist payloads. Its seven-world native
+software proof now passes, as do separate fixed-evaluation handoff/all-null
+proofs. [Workflow-v3 actually starts](research/results/native-workflow-v3-dispatch-and-software-proof-v1.json)
+at01:58:07UTC on November14 after fresh resource checks; initial35B readiness
+passes and the first Qwen3-8B reference is underway. This is a new finite
+operator-profile study, not resumption/refill of the stopped study, independent
+optimizer replication or institutional improvement. Closed actual results remain pending.
 See [current status](research/STATUS.md) for liveness, not software-test scores.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)

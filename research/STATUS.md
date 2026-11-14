@@ -2,7 +2,45 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 10:40JST (November14 01:40UTC)
+### Current overview: November14 11:04JST (November14 02:04UTC)
+
+**Actual workflow-v3 inference is running, not merely waiting for resources.**
+Writer session8676/PID2886 starts01:58:07UTC at frozen6625d8e3 with plan
+`60d8758d...`. Initial real35B readiness passes; R7-original starts01:58:33UTC.
+At02:03:37UTC its year1 checkpoint exists but no complete first-world observation
+is present. Actual scientist SDK2.41.1 records read900/retries0 and unchanged
+payload/client/callback. Two controls plus six own slots are finite upper bounds,
+not achieved results. Scientist/designer, losses, controls and other scientific
+settings match the stopped-v2 plan. Old stopped/unknown records are not resumed,
+refilled or resolved. [Proof and launch](results/native-workflow-v3-dispatch-and-software-proof-v1.json)
+and the [log](logbook/2026-11-14-scientist900-native-proof-and-dispatch.md) bind the evidence.
+
+The earlier resource waiter ends normally, then the two fixed-evaluation tests
+also pass: seven-world transport proof at6625d8e3, separate nine-world handoff
+and two-world all-null fixture atcc1b230c, with double cold audits/costs/reports
+and actual mechanism exports. These are SCRIPTED software worlds, not scientific
+observations or independent optimizer histories. Two recorded preflight snapshots
+find empty backend/old jobs absent and CPU18.9%/157.7%,30s apart. An earlier
+failed one-off preflight is retained without reconstructing its missing value.
+Other low-CPU processes remain; no exclusive resource lease is claimed.
+
+| Current track | Verified state | Still required |
+| --- | --- | --- |
+| Workflow-v3 real experiment | Live8676; initial readiness and first-year checkpoint; native900 application recorded | Finish finite controls/own slots; normal cold audit and actual losses/effects |
+| Read-only continuations | Live15408 audit/cost and87576 report handles wait at cleancc1b230c | Run only after normal preceding closure; no failure retry |
+| Workflow fixed evaluation | Native handoff/runtime-null/all-null and all readout software proofs pass | Normally closed actual origin, fixed own selections and explicit unused seeds; no scientific evaluation dispatched |
+| Earlier planning/numeric studies |14 and6 real worlds normally close; all audits/readouts retained | No incumbent improvement; not a new distinct main claim or independent replication |
+| Earlier presentation/workflow-v2 | Both remain stopped; literal partials and unknown responses retained | Never reclassify, refill or infer an institutional impossibility from transport stops |
+| Mechanism identification | Four legal static timing corners, exact endpoints, routing caveat documented | No factorial world dispatched; pure timing effect not identified |
+| Manuscript | Reviewed73-page artifact,38 figures/30 tables/26 references and minimal rebuild retained | Important R2 answer, independent R3 evidence, focused final paper/R6 judgment |
+
+**Not publication-ready.** The active goal remains incomplete. No new generated
+institution or loss improvement is established by the current live prefix.
+Independent heavy native QA, bulk embeddings, PDF/video rendering are not run
+alongside real inference. Next priority is the finite actual trajectory and its
+closed analysis rather than additional implementation/test-count scaffolding.
+
+### Preparation snapshots as of10:40JST (historical, not current liveness)
 
 **Prospective mechanism contrasts are statically validated, not dispatched.**
 Sourcee67de592 derives four legal liquidity/cost timing graphs, retaining exact
