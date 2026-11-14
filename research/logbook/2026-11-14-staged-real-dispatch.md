@@ -44,3 +44,19 @@ freeze own selection, then check unused conditions before fixed evaluation.
 Success of directed controls, component tests or a complete candidate alone
 does not establish useful invention, an isolated diagnostic effect or main-
 track significance. No hidden novelty/improvement gate or loss change is added.
+
+## Initial real certificate passes; R7 native execution starts
+
+At13:43:45UTC the actual initial certificate closes28/28 directed controls,
+all HTTP200/final stop, in517.062s. Actual writer79701 advances13:43:50UTC
+to R7-original. Original corpus/retrieval and Qwen3-8B funding/research activity
+are observed, not a new own institutional result. The compact actual certificate
+summary is retained separately. An attempted unprivileged process-zero probe
+was sandbox-denied before retention; an authorized read-only ps lookup then
+confirms the original PID, without signalling it or redispatching science.
+
+The prospective fixed-evaluation seed1891355522 is derived from the immutable
+development-plan hash before any own proposal outcome, not chosen for a win.
+It is not yet inventoried, prepared or run. The declared one-condition/four-
+logical-label handoff keeps original losses/selection and at most four physical
+worlds, with no designer calls or substitution for missing own choices.

@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual28-case readiness passes; R7 world starts](results/native-open-staged-institution-initial-readiness-v1.json):
+  original Qwen3-8B world now runs after local35B controls, not free invention
+  or an own gain. [One prospective fixed condition](protocols/campaigns/native-open-staged-fixed-evaluation-v1.md)
+  is declared before own outcomes; unused status/evaluation remain unverified.
+
 - [Actually started staged study](results/native-open-staged-institution-dispatch-v1.json):
   writer79701/PID32780 starts from frozenf47270b9 after two passing resource
   observations. Initial actual35B directed readiness is in progress; no own

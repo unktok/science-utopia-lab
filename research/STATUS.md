@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+### November14 22:43JST: actual28-case readiness passes; first original R7 world runs
+
+The real35B initial certificate reports28/28 controls passed, all HTTP200/final
+stop responses, after517.062s. Copy equality is diagnostic, not a veto.
+The actual writer79701/PID32780 advances to R7-original; original Qwen3-8B
+funding/research work is in progress. No own policy or measured result yet.
+[Initial readiness and first-reference snapshot](results/native-open-staged-institution-initial-readiness-v1.json).
+No actual free-design repair, important institutional gain or publication
+readiness follows from these directed controls. Heavy independent QA stays off.
+
+Before own outcomes, a [finite one-condition fixed-evaluation note](protocols/campaigns/native-open-staged-fixed-evaluation-v1.md)
+declares1891355522 from the immutable development-plan hash. It is not yet
+verified unused or dispatched. Normal closure/frozen own selection, original
+paired readouts, fresh inventories/resources remain necessary before evaluation.
+
 ### November14 22:39JST: actual staged study starts; initial real readiness still in progress
 
 After the unchanged a7 resource check passes both30s-separated samples
