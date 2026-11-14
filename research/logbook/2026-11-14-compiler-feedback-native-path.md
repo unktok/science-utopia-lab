@@ -64,3 +64,13 @@ project-root inventories and normal development closure; any collision stops
 this plan rather than silently changing the seed. Evaluate available own outputs
 whether or not they beat controls, with explicit missing labels and all paired
 cross-scores. This is not independent optimizer replication or a new loss veto.
+
+## First completed real reference
+
+At04:52:08UTC, R7 completes T=-18/U=-13.333333333333332, no technical failure,
+and the writer actually advances to the hand control. A0.89s read-only call to
+the original7f1fc61f sequence reader checks115 exact wire payloads and committed
+literal response choices against the prior completed R7. Both sequences match;
+provider envelopes differ and remain raw. There is no extra inference, source
+repair or whole-study audit claimed. [Hashes and scope](../results/native-workflow-compiler-feedback-first-reference-v2.json).
+No own proposal/loss has yet been observed at this snapshot.

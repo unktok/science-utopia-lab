@@ -6,6 +6,11 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First compiler-feedback reference](results/native-workflow-compiler-feedback-first-reference-v2.json):
+  R7 completes T=-18/U=-13.3333;115 full scientist inputs/choices equal prior
+  R7. The hand control starts04:52:08UTC, no own loss yet. Same-seed retention
+  is not optimizer replication or automatic invention.
+
 - [Actual compiler-feedback dispatch](results/native-workflow-compiler-feedback-dispatch-v2.json):
   writer39932/PID9167 starts04:38:48UTC, initial real35B readiness passes and
   R7's original native scientist world runs. Two read-only continuations wait.
@@ -45,7 +50,7 @@ Historical documents retain their paths and source identities.
   hand timing/routing contrast from added aggregate grant income. The separate
   output-mode assay subsequently closes at frozena1987ca3, as linked above.
 
-- [Current status](STATUS.md): latest compiler-feedback preparation first; the publication-ready goal
+- [Current status](STATUS.md): latest compiler-feedback execution first; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
 - [Workflow-v3 stop and completed-control contrast](results/native-workflow-v3-stop-and-control-contrast-v1.json):

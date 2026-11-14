@@ -2,6 +2,22 @@
 
 ## Active publication-ready goal
 
+### November14 13:52JST: first compiler-feedback reference completes; second is running
+
+The first R7 reference completes with T=-18/U=-13.333333333333332 and no
+technical failures. All115 full scientist request payloads and literal response
+choices equal the prior completed R7; raw provider envelopes differ and remain
+unaltered. This is same-seed control retention, not independent evidence of gain.
+Writer39932/PID9167 advances to post-funding-cost at04:52:08UTC; both read-only
+continuations remain separate. No own slot/loss/selection yet.
+[Actual prefix and comparison scope](results/native-workflow-compiler-feedback-first-reference-v2.json).
+
+In parallel, the75-page manuscript's64-file subset stages at cleanbaa85e34,
+manifestcd0f7053, with3 light checks passing. The TeX build/render/complete PNG
+comparison has deliberately not run alongside inference; source extraction
+alone is not a PDF rebuild proof. Current research purpose/map/roadmap now
+distinguish this live run from retained older stopped/unstarted snapshots.
+
 ### November14 13:40JST: fresh real compiler-feedback study is running
 
 Writer39932/PID9167 actually starts04:38:48UTC at clean7f1fc61f/plan277b1831.
