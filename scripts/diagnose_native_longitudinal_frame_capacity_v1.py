@@ -126,9 +126,10 @@ def result_from_http(frame, record):
         'returned_action_executed': False}
 
 
-def worker(root):
+def worker(root, *, require_plan_fn=None):
     import requests
-    p = require_plan(root); results = []
+    p = (require_plan if require_plan_fn is None else require_plan_fn)(root); results = []
+    schema = p.get('schema', SCHEMA+'.plan').removesuffix('.plan')
     try:
         session = requests.Session(); session.trust_env = False
         load_local_role(root/'designer-load.json', provider=p['provider'], role='designer',
@@ -143,7 +144,7 @@ def worker(root):
             results.append(result_from_http(frame, raw))
             save(root/f'frame-{len(results)-1}.json', results[-1])
     except BaseException as error:
-        save(root/'worker-terminal.json', {'schema': SCHEMA+'.worker-terminal', 'results': results,
+        save(root/'worker-terminal.json', {'schema': schema+'.worker-terminal', 'results': results,
             'status': 'stopped', 'error_type': type(error).__name__, 'error': str(error),
             'completion_unknown': (isinstance(error, CompletionUnknown)
                 or ((root/'designer-load.started.json').exists()
@@ -151,23 +152,24 @@ def worker(root):
                          or not read(root/'designer-load.json')['valid_empty_prompt_load']))),
             'no_retry': True})
         raise
-    save(root/'worker-terminal.json', {'schema': SCHEMA+'.worker-terminal', 'results': results,
+    save(root/'worker-terminal.json', {'schema': schema+'.worker-terminal', 'results': results,
         'status': 'closed-diagnostic-only', 'no_retry': True, 'completion_unknown': False,
         'two_literal_frames_supported': all(r['capacity_supported_for_this_literal_frame'] for r in results),
         'production_certificate_issued': False, 'scientific_dispatch_authorized': False})
 
 
-def run(root, resources):
-    p = require_plan(root); evidence = require_resources(resources)
+def run(root, resources, *, require_plan_fn=None, worker_module=MODULE):
+    p = (require_plan if require_plan_fn is None else require_plan_fn)(root); evidence = require_resources(resources)
+    schema = p.get('schema', SCHEMA+'.plan').removesuffix('.plan')
     with (root/'writer.lock').open('a') as owner:
         fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if (root/'started.json').exists(): raise ValueError('diagnostic already attempted; never redispatch')
-        save(root/'started.json', {'schema': SCHEMA+'.started', 'plan_sha256': p['content_sha256'],
+        save(root/'started.json', {'schema': schema+'.started', 'plan_sha256': p['content_sha256'],
             'pid': os.getpid(), 'resource_files': evidence, 'started_utc': datetime.now(timezone.utc).isoformat()})
-        execution = run_bounded([sys.executable, '-m', MODULE, 'worker', '--output', str(root)],
+        execution = run_bounded([sys.executable, '-m', worker_module, 'worker', '--output', str(root)],
             seconds=p['worker_wall_seconds'], cwd=ROOT)
         terminal = read(root/'worker-terminal.json') if (root/'worker-terminal.json').exists() else None
-        save(root/'terminal.json', {'schema': SCHEMA+'.terminal', 'execution': execution,
+        save(root/'terminal.json', {'schema': schema+'.terminal', 'execution': execution,
             'worker_terminal': terminal, 'source_commit': p['source_commit'],
             'status': 'closed-diagnostic-only' if terminal and execution['returncode'] == 0 else 'stopped',
             'redispatch_allowed': False, 'scientific_worlds': 0, 'actions_executed': 0,

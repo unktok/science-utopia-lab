@@ -48,6 +48,14 @@ Unknown completion stops. Known generation/native failures consume slots with
 unavailable loss, without retries, repairs, refills or baseline fallback.
 No novelty, diversity, fairness or improvement admission criterion is added.
 
+Prospective64k amendment: bounded designer context is65536 in both arms, with
+the same8192 output reservation. Original world/scientists, proposal counts,
+losses, authority and all raw prompt contents are unchanged. This follows the
+observed local-tokenizer37296/44320-token later-frame inputs that do not fit
+the old40960 context plus output reservation. Old prepared85520c4d is not
+started or edited. A new source/plan and actual native/cold/backend proofs are
+required; this is not population/seed/model scale-up or a measured benefit.
+
 Selection is own-only minimum loss with chronological first tie, separately
 for all four histories. Retain every null, literal program, actual effect,
 full scientist-input/choice class and cost. Loss equality is not program

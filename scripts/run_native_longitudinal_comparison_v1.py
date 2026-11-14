@@ -70,7 +70,7 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend,
     require_scope(declaration, ROOT, source_commit=source)
     inherited = {'original_source': original['source_commit'],
         'comparison_base': declaration['base_native_source_commit'],
-        'method': 'explicit-prospective-longitudinal-author-source-scope-v1',
+        'method': 'explicit-prospective-longitudinal-author-source-scope-v2',
         'declaration': clone(declaration), 'legacy_original_guard_reused': False}
     p = base.build_plan(original, audit, source=source, origin=origin, backend=backend,
         observer_backend=observer_backend, prerequisite=prerequisite, sources=inherited,
@@ -92,6 +92,8 @@ def build_plan(original, audit, *, source, origin, backend, observer_backend,
         designer_POSTs_upper_bound=13*config['calibration_maximum_posts']+12*config['proposal_maximum_posts'],
         component_probes_upper_bound=12*config['maximum_component_probes'])
     p['comparison'] = {'information_only': True, 'worlds_shared_only_for_references': True,
+        'designer_context_tokens_both_arms': 65536, 'designer_output_tokens_both_arms': 8192,
+        'context_revision': 'matched-bounded-author-64k-v1',
         'cross_arm_own_feedback': False, 'hand_reference_visible': False,
         'baseline_keeps_original_diagnostics_and_probes': True,
         'same_optimizer_seed_is_not_independent_replication': True,

@@ -23,8 +23,9 @@ def context_contract():
     return {'schema': 'scienceutopia.bounded-author-context.v45',
         'max_source_prompt_utf8_bytes': MAX_SOURCE_PROMPT_BYTES,
         'max_actual_wire_utf8_bytes': MAX_WIRE_BYTES,
-        'context_tokens': 40960, 'reserved_output_tokens': 8192,
-        'maximum_observed_prompt_tokens': 32768,
+        'context_tokens': 65536, 'reserved_output_tokens': 8192,
+        'maximum_observed_prompt_tokens': 57344,
+        'prospective_context_revision': 'matched-bounded-author-64k-v1',
         'byte_to_token_conversion': None,
         'token_capacity_evidence': 'Backend prompt_eval_count is measured per actual call; bytes are not token capacity evidence.',
         'automatic_context_truncation': False, 'source_repair': False,
@@ -230,9 +231,13 @@ def check_wire_budget(payload):
 def capacity_observation(payload, body=None):
     """Diagnostic measurements, never a guessed tokenizer or repaired response."""
     count = (body or {}).get('prompt_eval_count')
-    return {**check_wire_budget(payload), 'context_tokens': 40960,
-        'reserved_output_tokens': 8192, 'observed_prompt_eval_count': count,
+    options = payload.get('options', {})
+    context, reserved = options.get('num_ctx'), options.get('num_predict')
+    if type(context) is not int or type(reserved) is not int or not 0 < reserved <= context:
+        raise ValueError('literal positive wire context/output token budgets required')
+    return {**check_wire_budget(payload), 'context_tokens': context,
+        'reserved_output_tokens': reserved, 'observed_prompt_eval_count': count,
         'full_output_reservation_fits_observed_prompt': (
-            count + 8192 <= 40960 if type(count) is int and count >= 0 else None),
+            count + reserved <= context if type(count) is int and count >= 0 else None),
         'token_capacity_is_measured': type(count) is int and count >= 0,
         'backend_truncation_requested': False}

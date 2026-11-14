@@ -1,8 +1,8 @@
 """Prospective, explicit author changes over the actual staged native source.
 
 This does not weaken the legacy workflow source guard. Every existing native
-module except four named author/observation-presentation modules must retain
-the actual staged source bytes. Those four and the one added projection helper
+module except five named author/observation-presentation/decoding modules must retain
+the actual staged source bytes. Those five and the one added projection helper
 are bound to their new exact committed bytes, not ignored. Runner/cold source
 closure, model calibration and scientific effects remain separate obligations.
 """
@@ -15,7 +15,7 @@ import subprocess
 from utopia.optimization.native_numeric_designer import checked
 from utopia.system.design_patch import clone, digest
 
-SCHEMA = 'scienceutopia.native-longitudinal-source-scope.v1'
+SCHEMA = 'scienceutopia.native-longitudinal-source-scope.v2'
 BASE = 'f47270b967fa167d59df759bebe7b6b104b383d3'
 PROTOCOL = 'research/protocols/campaigns/native-longitudinal-source-scope-v1.md'
 GUARD = 'scripts/native_longitudinal_source_scope_v1.py'
@@ -28,6 +28,8 @@ AUTHOR_ROLES = {
         'Source-owned descriptions of existing common-content measurement arithmetic',
     'utopia/optimization/native_staged_author_v15.py':
         'Optional rationale schema and exact designer component-source bindings',
+    'utopia/optimization/native_designer_decoding_v24.py':
+        'Declared common 65536-token bounded designer context, not scientist inference or world transitions',
 }
 ADDED_ROLES = {
     'utopia/optimization/native_longitudinal_feedback_v1.py':

@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+### November15 prospective64k branch: offline later-frame overflow found before inference
+
+The new capacity preparation at clean6b20f7ae has no started model worker.
+Three resource observations reject before any POST as external CPU workloads
+exceed the unchanged ceiling. Read-only analysis of digest-verified used-model
+tokenizer/template artifacts finds37296/44320 input tokens for the two full
+late-history SCRIPTED frames; with8192 output they exceed40960 despite fitting
+the byte limit. Two exports agree. [Exact offline counts and limitations](results/native-longitudinal-offline-token-counts-v1.json).
+These are not actual backend counts, a prior-failure cause or a real gain.
+
+The separate prospective branch now declares65536 bounded-designer context
+in both arms, preserving literal data,8192 output, scientists/world/losses,
+proposal counts and code/wiring authority. Scope v2 explicitly binds a fifth
+author-only decoding module; all272 remaining native modules stay literal.
+Old85520c4d/6b20f7ae plans remain undispatched/unmodified, not silently upgraded.
+51 and17 targeted software tests pass (overlapping sets), not a new full native
+proof. New frozen source/plan, native/cold proof, actual capacity/readiness and
+fresh resource observations remain required. This branch is not merged yet.
+Main-track significance/independent evidence/focused paper/readiness remain open.
+
 ### November15: integration merged/pushed; finite real comparison plan prepared only
 
 The optional author corrections, actual longitudinal runner/cold/fixed/readout

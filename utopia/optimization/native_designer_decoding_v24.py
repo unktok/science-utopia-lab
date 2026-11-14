@@ -27,7 +27,8 @@ def decoding_contract(protocol, *, role=None, conversation_profile=LEGACY_HISTOR
             'context_policy': {'truncate': False, 'shift': False},
             'max_tokens': STAGED_MAX_TOKENS,
             'temperature': STAGED_PLANNER_TEMPERATURE if role == 'planner' else STAGED_EDITOR_TEMPERATURE,
-            'sampling_options': {'num_ctx': STAGED_CONTEXT_TOKENS, 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
+            'sampling_options': {'num_ctx': (65536 if conversation_profile == BOUNDED_AUTHORING
+                else STAGED_CONTEXT_TOKENS), 'top_p': .95, 'top_k': 20, 'min_p': 0.0},
             'token_accounting': 'Backend eval_count is retained as reported; no thinking/final split is imputed.'}
         if conversation_profile in RECOVERY_PROFILES:
             result['backend_format_policy'] = 'Generic JSON; host-enforced V44 workflow; all finish arguments are archived non-executable notes'

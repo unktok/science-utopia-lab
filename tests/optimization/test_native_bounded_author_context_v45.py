@@ -68,7 +68,11 @@ def test_actual_wire_budget_separate_from_source_and_token_evidence():
     assert measured['full_output_reservation_fits_observed_prompt'] is True
     assert measured['actual_wire_utf8_bytes'] <= MAX_WIRE_BYTES
     assert capacity_observation(payload)['full_output_reservation_fits_observed_prompt'] is None
-    assert capacity_observation(payload, {'prompt_eval_count': 32769})[
+    assert payload['options']['num_ctx'] == measured['context_tokens'] == 65536
+    assert capacity_observation(payload, {'prompt_eval_count': 57345})[
+        'full_output_reservation_fits_observed_prompt'] is False
+    historical = deepcopy(payload); historical['options']['num_ctx'] = 40960
+    assert capacity_observation(historical, {'prompt_eval_count': 32769})[
         'full_output_reservation_fits_observed_prompt'] is False
     with pytest.raises(ValueError, match='actual designer wire'):
         designer_payload('staged-v15', BINDING, [{'role': 'system',
