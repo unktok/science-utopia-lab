@@ -23,7 +23,10 @@ all115 ordered full scientist payloads and literal choices match, with all
 replies committed; full provider bodies differ. This is scoped observed-history
 invariance, not global equivalence or the still-pending whole-study cold audit.
 Original24137 exits0, no model/world/source/selection change. The second
-parent-trajectory U request-bound readiness continues in original82259.
+parent-trajectory U readiness now passes28 cases and free authoring starts at
+23:06:54UTC. Its actual first model wire contains R7's four annual trace records;
+both initial histories expose R7 only and no other arm's own outcome. This is
+input-exposure compliance, not understanding or an information-effect result.
 
 After actual two-frame capacity closes, separately declared scientific resource
 observations pass and original82259 launches the prepareda5be8d31 public driver

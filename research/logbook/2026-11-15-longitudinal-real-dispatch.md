@@ -153,6 +153,34 @@ equal losses alone. It does not establish equality of every internal state,
 all possible worlds, whole-study cold validity or all remaining proposals.
 The paired normal-closure audits and all-history readouts remain required.
 
+## First actual trajectory-arm author input, no effect claim
+
+Parent-trajectory::content-utility:g0 passes its28 actual readiness controls
+(certificate SHA256
+`5f6b5f021b03b9393d144d1621b5991582ccc1b5cb87a933972902fd1f85fb15`)
+and the original driver enters optimization at23:06:54.456885UTC.
+Its first actual proposal HTTP reply completes final stop. The retained literal
+wire intent SHA256 is
+`061cdbd9e71253fc439da70d35256457bdf30ced594ac8f9248c2d5fe5c92851`.
+
+Direct parsing of the first two proposal wires confirms the intended exposure:
+scalar T has zero inline active-parent traces,80899 wire bytes,19620 backend
+input tokens; parent-trajectory U has one R7 parent run, four columnar annual
+records,95093 bytes,26750 input tokens. Both request65536 context/8192 output
+and complete stop; observed outputs are487/354 tokens. Their request histories
+are empty and optimizer-visible observation IDs contain only the same fresh
+R7, not the hand or the other arm's own candidate. The trajectory wire names
+the R7 run and includes recorded phases, author/resources, production/decision
+counts and project commands. Exact archive access remains separately indexed.
+
+These are different objectives as well as information arms: neither the token
+difference nor any later two-slot outcome is an isolated causal trace effect.
+Presence in a transmitted body is not evidence of the model understanding or
+using it, field-level physical truth, a full cold reconstruction or an optimizer
+benefit. At the observed prefix the U author has begun code editing; no second
+submitted/native outcome is claimed. Source, finite budget and separate histories
+remain unchanged while the original writer and read-only waiters continue.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
