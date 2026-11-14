@@ -2,7 +2,23 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 08:58JST (November13 23:58UTC)
+### Current overview: November14 09:12JST (November14 00:12UTC)
+
+**New workflow inference is now stopped, not running.** Session70493 exits1;
+its original terminal at00:07:27UTC records PortableStop/APITimeoutError in
+references, zero complete observations and zero consumed own slots. The first
+R7 world stops during year2 funding evaluation:49 literal requests,48 committed
+replies, no response for the last request. All49 inputs and48 literal reply
+choices match the corresponding prefix of the prior successfully closed R7
+world; the missing request previously returned321 tokens on1329 input tokens.
+That historical reply does not resolve or replace the new unknown response.
+Both finite read-only continuations also stop with zero audit/report steps,
+as required; no normal audit, selection or improvement is fabricated.
+Separate active MLX inference and CPU jobs from other projects are observed
+on the same host. Competition is a plausible timing factor, not a proved
+cause. No other project's job or the consumed workflow plan is changed.
+The remaining overview below describes the immediately preceding running
+snapshot, not current liveness, until the complete stop diagnosis is retained.
 
 **Not publication-ready. The original presentation experiment is stopped, not
 still running.** Its terminal records20:54:18UTC, an unknown response after a
