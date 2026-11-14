@@ -44,7 +44,7 @@ class Session:
         assert url == 'http://127.0.0.1:11434/api/chat' and kwargs['timeout'] == (10,900)
         assert payload['model'] == provider['model']
         system = payload['messages'][0]['content']
-        if 'TRUSTED INTERFACE CALIBRATION TASK' in system:
+        if FIXTURE['purpose'] == 'calibration':
             from utopia.optimization import native_designer_preflight as preflight
             target = system.split('nothing is executed or adopted.\n')[1]
             if target.startswith(preflight.CONTROL_JSON_BEGIN):
