@@ -94,7 +94,10 @@ ACTION_FIELDS = {
         'factors': {'type': 'array', 'maxItems': 12, 'items': FACTOR},
         'continuous': {'type': 'array', 'maxItems': 12, 'items': COORDINATE},
         'logits': {'type': 'object', 'additionalProperties': {'type': 'array', 'items': {'type': 'number'}}},
-        'rationale': {'type': 'string', 'minLength': 1, 'maxLength': 4096},
+        # Opaque, separately archived author text. Existing response/session
+        # budgets bound its size; a per-note ceiling must not veto a code edit.
+        # Historical source-bound journals retain their original schema.
+        'rationale': {'type': 'string', 'minLength': 1},
         'provenance': {'type': 'object', 'maxProperties': 16},
         'objective_reasoning': {'type': 'string', 'minLength': 1, 'maxLength': 4096},
         'design_intent': {'type': 'string', 'minLength': 1, 'maxLength': 8192},
