@@ -35,7 +35,9 @@ novelty/improvement constraint to force the desired conclusion.
 
 The reviewed81-page PDF already includes AMD-LLM, but is not silently relabelled
 as containing the newly added2022 reference or subsequent staged-construction
-status. Current LaTeX adds that reference and makes programmatic-design priority
-boundaries explicit. A new build/visual receipt is still required. R2/R3/R6
+status. The separately retained82-page artifact now adds that reference and
+makes programmatic-design priority boundaries explicit; its actual two-build,
+all-page visual and68-file rebuild evidence is linked in `paper/README.md`.
+These are manuscript checks, not a new contribution result. R2/R3/R6
 remain open. The old note's mistaken two-missing-reference claim remains
 visible in Git history and this correction, not a changed old PDF/receipt.

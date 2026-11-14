@@ -1,0 +1,122 @@
+{
+  "analysis_source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "budget": {
+    "candidate_slots": 6,
+    "component_probes_upper_bound": 384,
+    "designer_POSTs_upper_bound": 376,
+    "designer_session_wall_seconds": 1800,
+    "fresh_reference_worlds": 2,
+    "native_worlds_upper_bound": 8,
+    "observer_POSTs_upper_bound": 1500,
+    "proposal_POSTs_per_session": 16,
+    "readiness_POSTs_per_session": 40,
+    "readiness_sessions": 7,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "classification": "actual-staged-initial-readiness-running-not-own-result",
+  "component_bank_content_sha256": "e281b346b07324981846a32627d658fa489c511ddfa654e5d7e54cee559a1861",
+  "content_sha256": "4b355e58ff7cc87d8e004a949796d04015fbb0389820dfe444a0bfb40fc1c4ff",
+  "designer": "qwen3.6:35b-mlx-64k",
+  "initial_readiness_snapshot": {
+    "directed_completed_cases": 15,
+    "full_calibration_pass_not_yet_claimed": true,
+    "received_wire_replies": 15
+  },
+  "new_paid_external_services": false,
+  "no_failed_slot_refill": true,
+  "observed_utc": "2026-11-14T13:39:40.789488+00:00",
+  "optimizer_visible_references": [
+    "R7-original"
+  ],
+  "own_scientific_result_yet": false,
+  "plan_content_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "plan_file_sha256": "6c1f97530ea7c5704fb418d69106a7d624a93799fd2a0d19535d4602a411ba06",
+  "publication_ready": false,
+  "read_only_continuations": {
+    "audit": {
+      "ended_file_present": false,
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-audit-v1-a1",
+      "session": 8480,
+      "started_file_sha256": "611fe68423b7a8d7235ba2ad9291bb97d1117b1d1513a02662d5bfdaf974b727"
+    },
+    "choices": {
+      "ended_file_present": false,
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-choices-v1-a1",
+      "session": 37685,
+      "started_file_sha256": "38a34288d5e95b69187ca195253095cac313a532088a4054b88a879903fa3dc4"
+    },
+    "effects": {
+      "ended_file_present": false,
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-effects-v1-a1",
+      "session": 45081,
+      "started_file_sha256": "f5c4f964b284bff6773605060999a503de3b70a2a27f397507b68338e4c0a6b6"
+    },
+    "report": {
+      "ended_file_present": false,
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-report-v1-a1",
+      "session": 2298,
+      "started_file_sha256": "5e2e4d0ec674bcaf1178baa34e76301d6ce786e33ca4019b1272e74c540a8d6f"
+    },
+    "requests": {
+      "ended_file_present": false,
+      "output": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-requests-v1-a1",
+      "session": 97245,
+      "started_file_sha256": "2b697bd4696cddf2961ccf1ff7d2c6e4da81207cc4a3ce92044d90a491d044c0"
+    }
+  },
+  "resources": {
+    "cpu_percent": [
+      155.1,
+      205.29999999999998
+    ],
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a7",
+    "exclusive_lease_proved": false,
+    "exit_code": 0,
+    "free_plus_inactive_GiB": [
+      44.13435363769531,
+      44.2816162109375
+    ],
+    "maximum_total_cpu_percent": 250,
+    "minimum_free_plus_inactive_GiB": 38,
+    "observer_import_settle_seconds": 3,
+    "other_projects_changed": false,
+    "prior_failed_resource_outputs": [
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a1",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a2",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a3",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a4",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a5",
+      "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-resources-v1-a6"
+    ],
+    "sample_file_sha256": [
+      "12e51740afc360cfbdee894d1e68335f4d4cbd00328d9b068a553eae02773be5",
+      "76fd524e12a6278d86e4a2db987af465c10bd1562a2424bf2b5e29e8ae694e50"
+    ],
+    "session": 11891,
+    "started_file_sha256": "1f8a70611ff6ceec3088bcada3d4b81213be28d279c8e202c80727af59e918d1",
+    "thresholds_changed": false,
+    "two_samples_interval_seconds": 30,
+    "unclassified_processes": [
+      [],
+      []
+    ]
+  },
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "schema": "scienceutopia.native-open-staged-institution-dispatch.v1",
+  "scientific_gain_claimed": false,
+  "scientists_fixed": "qwen3:8b",
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "source_directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1",
+  "unused_condition_inventory_still_required": true,
+  "whole_study_closed": false,
+  "writer": {
+    "observed_live": true,
+    "observed_process_identity": "/Users/shiro/unktok/dev/science-utopia-lab/.venv/bin/python -m scripts.run_native_workflow_objective_loop_v1 run --output outputs/native-open-staged-institution-objective-loop-v1-a1",
+    "pid": 32780,
+    "session": 79701,
+    "started_utc": "2026-11-14T13:34:53.311328+00:00",
+    "terminal_file_present": false
+  }
+}

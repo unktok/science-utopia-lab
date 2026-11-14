@@ -2,6 +2,28 @@
 
 ## Active publication-ready goal
 
+### November14 22:39JST: actual staged study starts; initial real readiness still in progress
+
+After the unchanged a7 resource check passes both30s-separated samples
+(CPU155.1/205.3%,44.13/44.28GiB free+inactive, no unclassified Python/model
+processes), writer79701/PID32780 starts at13:34:53UTC from cleanf47270b9.
+The source, real corpus, original Qwen3-8B researchers, local35B designer,
+losses/controls/six-slot budget remain frozen. This is now an actual live
+inference campaign, not just its prepared plan. At13:39:40UTC its initial
+directed readiness has15 completed cases/replies, not a full certificate or
+own scientific result. Five original-source read-only continuations are live
+and wait for normal closure before paired audit/cost/result/mechanism exports.
+[Exact actual dispatch/resources/process snapshot](results/native-open-staged-institution-dispatch-v1.json).
+
+The sixth failed observation is retained. The seventh pauses3s after imports
+before applying the unchanged observer/thresholds; raw observer CPU stays
+included. Only current exact arguments of read-inspected CPU controllers are
+allowed, not a blanket Python exception or proof of an exclusive lease. No
+other project is stopped/changed. No independent heavy QA or PDF rendering
+continues during this inference. Important gain/independent evidence/main-track
+readiness remain open. Freeze own selection only after normal closure, then
+inventory unused conditions before actual fixed evaluation.
+
 ### November14:82-page priority/software update reviewed; next actual study still not dispatched
 
 At manuscript source40ea7d68, both cached/untrusted builds exit0. All82 final

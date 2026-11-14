@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actually started staged study](results/native-open-staged-institution-dispatch-v1.json):
+  writer79701/PID32780 starts from frozenf47270b9 after two passing resource
+  observations. Initial actual35B directed readiness is in progress; no own
+  scientific result or complete certificate yet. Five read-only continuations
+  are live and wait for normal closure. Preparation-only entries below are
+  earlier dated observations, not current liveness.
+
 - [Reviewed82-page priority/software update](../paper/integrated-staged-construction-build-v1.json):
   all82 layouts inspected and two actual builds' text/logs/page pixels agree.
   Retains42 figures/36 tables, adds only one reference (ALA2022); AMD-LLM was
