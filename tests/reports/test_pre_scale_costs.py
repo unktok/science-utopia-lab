@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from scripts.reports.pre_scale_costs_v1 import analyze,numeric_event,staged_event,classify_numeric,classify_staged
+from scripts.reports.pre_scale_costs_v1 import AUDITS,analyze,numeric_event,staged_event,classify_numeric,classify_staged
 from scripts.reports.native_auxiliary_costs import summarize
 from scripts.analyze_native_open_v7 import _inventory
 from utopia.system.design_patch import digest
@@ -140,16 +140,14 @@ def test_stopped_audit_cost_scope_cannot_imply_selection_or_normal_closure(tmp_p
     with pytest.raises(ValueError,match='stopped costs'): analyze(tmp_path,p,a)
 
 
-@pytest.mark.parametrize('schema',[
-    'scienceutopia.native-objective-instrument-loop-audit.v1',
-    'scienceutopia.native-objective-initial-stop-audit.v1',
-    'scienceutopia.native-instruction-timing-support-audit.v1'])
+@pytest.mark.parametrize('schema',AUDITS[2:])
 def test_new_content_critic_posts_are_not_lost_or_added_to_native_scientist_usage(tmp_path,schema):
     from tests.reports.test_native_token_costs import cache
     from tests.optimization.test_common_content_observer import contract,Backend,PAPER
     from utopia.optimization.common_content_observer import CommonContentObserver
     from utopia.optimization.native_numeric_designer import save
-    stopped=schema=='scienceutopia.native-objective-initial-stop-audit.v1'
+    stopped=schema in ('scienceutopia.native-institution-loop-stopped-audit.v1',
+        'scienceutopia.native-objective-initial-stop-audit.v1')
     p=hashed({'source_commit':'a'*40,'scientist':{'model':'SCRIPTED','model_digest':'b'*64,'corpus_sha256':'c'*64},
         'designer':{'model':'SCRIPTED-designer'}})
     cache(tmp_path,p,'references/known/worlds/known/replies/responses.sqlite',[

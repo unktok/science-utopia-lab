@@ -194,14 +194,11 @@ def analyze(root,plan,audit):
     if before!=_inventory(root):raise ValueError('raw evidence changed during cost projection')
     if stopped:
         result['scientific_termination']='stopped; no held-out evaluation or successful scientific closure'
-    if audit['schema'] in AUDITS[7:10] or audit['schema'] in (
-            'scienceutopia.native-instruction-timing-support-audit.v1',
-            'scienceutopia.native-planning-objective-loop-audit.v1',
-            'scienceutopia.native-planning-fixed-evaluation-audit.v1',
-            'scienceutopia.native-parent-presentation-loop-audit.v1',
-            'scienceutopia.native-parameter-comparator-audit.v1',
-            'scienceutopia.native-joint-fixed-evaluation-audit.v1',
-            'scienceutopia.native-workflow-objective-loop-audit.v1'):
+    # The original cold audit is authoritative about role presence. A second
+    # study-name allowlist silently omitted critics for newer study families.
+    # Keep old frozen exports unchanged; new projections include every audited
+    # common observer instead of guessing that unlisted study names have none.
+    if 'observer' in audit:
         critic=audit['observer']
         result['common_content_observer']={'input_observer_audit_content_sha256':critic['content_sha256'],
             'physical_requests':critic['dispatch_intents'],'known_terminal_attempts':critic['known_terminal_attempts'],
