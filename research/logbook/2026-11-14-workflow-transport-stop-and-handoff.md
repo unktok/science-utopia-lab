@@ -86,3 +86,28 @@ salvage its missing reply or blame institutional design for transport failure.
 Future host checks must cover direct MLX and host-wide CPU, not merely this
 project's command names. Main claim, independent evidence and final readiness
 remain open; the reviewed73-page artifact is unchanged in this goal turn.
+
+## Actual read-only workflow boundary CLI on retained SCRIPTED data
+
+Without new inference, worlds, Docker calls or rendering, the new reader is
+then exercised on the seven already completed SCRIPTED fixture worlds from
+the earlier native proof. Its first CLI session77616 fails before output:
+the parent forwards a relative output, which the cold child resolves under
+its frozen source cwd. The existing outside-source guard correctly rejects
+that path. Do not weaken the guard or edit the scientific worktree.
+
+At f58231e9 the parent instead resolves every path in its caller cwd before
+switching to the cold original-source child. New workflow and legacy-scope
+path tests give14 passing pure checks3.46s. Two new actual CLI sessions74105/
+25949 exit0 and all three output files match exactly. They decode seven
+retained SCRIPTED worlds/28 annual checkpoints/308 actual native phase
+witnesses/168 already recorded code calls and reconciled cashflows. In the
+first saved boundary, actual cost50, grant20 and transfer legs12/12 remain
+separate, rather than assuming a nominal cost or creating resources.
+
+Original raw/source3b912d17 and both old cold audits remain unchanged. The
+paired outputs are under ignored outputs/native-workflow-effect-readout-
+SCRIPTED-v1-a2 and -a3; their hashes and retained first failure are in the
+verification above. This is an actual reader/format proof on software data,
+not new researcher-model execution, a completed stopped study, useful timing
+invention, causal interpretation or held-out scientific evaluation.
