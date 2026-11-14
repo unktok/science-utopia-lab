@@ -158,8 +158,9 @@ def worker(root, *, require_plan_fn=None):
         'production_certificate_issued': False, 'scientific_dispatch_authorized': False})
 
 
-def run(root, resources, *, require_plan_fn=None, worker_module=MODULE):
-    p = (require_plan if require_plan_fn is None else require_plan_fn)(root); evidence = require_resources(resources)
+def run(root, resources, *, require_plan_fn=None, worker_module=MODULE, resource_check_fn=None):
+    p = (require_plan if require_plan_fn is None else require_plan_fn)(root)
+    evidence = (require_resources if resource_check_fn is None else resource_check_fn)(resources)
     schema = p.get('schema', SCHEMA+'.plan').removesuffix('.plan')
     with (root/'writer.lock').open('a') as owner:
         fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB)
