@@ -128,3 +128,40 @@ preserve old payloads. It must distinguish centered opinions from raw scores,
 written institutional final_score from independent panel input, and direct
 measurement from possible downstream behavioral effects. It must not supply a
 winning institution, force different winners or require a beneficial result.
+
+## Construction reliability is a prerequisite, not an information effect
+
+The closed v3 leaves five of six proposals without a scientific loss. It is
+therefore premature to attribute nonimprovement uniquely to scalar observation
+access or dispatch the14-world comparison unchanged. Any prospective method
+change must first distinguish an author constructing invalid programs from a
+valid institution's scientific consequences. A directed copy certificate does
+not test that ability, as all seven directed calls already passed here.
+
+A candidate next author interface is a finite draft/compile/step-test/revise/
+submit interaction. Reuse the existing staged editor and post-edit execution
+contracts where applicable; do not silently add repairs to the one-shot path.
+The designer, not the host, must write every revision. Declare draft/tool/model
+budgets, test provenance, all unsuccessful drafts and terminal rules before
+dispatch. A probe does not supply a native loss. New mechanisms lacking an
+applicable archived input remain untested, not assumed valid or beneficial.
+An author may retain its parent or submit an untested/worse valid system.
+Do not refill a final scientific slot merely because it fails.
+
+Both arms of a later information comparison would need the same construction
+interface, truthful metric definitions, authority and budgets. Only the trace
+access intervention would differ. R7-only development evidence may be exposed;
+the strong hand and unused conditions remain outside both author banks. The
+current prototype's approximately14KB lossless view fits R7-only additions to
+six old frames, not arbitrary future own histories or measured token capacity.
+On-demand fixed-record access or a separately declared semantic projection may
+be preferable; neither is implemented by the existing codec. No source-size
+or context limit is silently enlarged to pass this prerequisite.
+
+Finally, the observed complete points show no strict T/U conflict: their
+accepted centered opinions are all nonnegative and the hand dominates the two
+other points. That is not global alignment or permission to tune an objective
+until winners differ. A useful new comparison must identify which allowed
+information/action/process change matters and what objective support is
+actually observed, rather than counting technical success as a main-track
+answer. This interface idea is a candidate, not a dispatched new experiment.

@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from utopia.optimization.native_numeric_designer import checked
+from utopia.utils.data_utils import file_sha256
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -166,3 +167,13 @@ def test_manuscript_retains_closed_open_nulls_and_does_not_invent_missing_select
     assert 'Its remaining control, own results and normal\nclosure remain pending' not in source
     abstract = (ROOT / 'paper/integrated.tex').read_text()
     assert 'three generation\nnulls, two runtime nulls and one completed selector' in abstract
+
+
+def test_open_closed_local_figure_and_data_bytes_match_original_double_report():
+    result = load('native-open-institution-closed-v3.json')
+    for name, expected in result['matching_report_files']['report'].items():
+        folder = 'paper/figures' if name.endswith(('.png', '.svg')) else 'research/data'
+        assert file_sha256(ROOT / folder / 'native-open-institution-v3' / name) == expected
+    tex = (ROOT / 'paper/integrated/native-workflow-feedback.tex').read_text()
+    assert 'figures/native-open-institution-v3/objective-loss-paths.png' in tex
+    assert 'annotations, not numerical loss penalties' in tex

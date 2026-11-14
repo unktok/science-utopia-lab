@@ -55,6 +55,37 @@ unchanged; the hand is not to become optimizer-visible.
 
 ## Reproduce a bounded read
 
+### Lossless columnar prototype, still not an author feature
+
+The optional native_trajectory_columnar_v1 codec retains all selected projection
+fields and literal values, but labels table columns once across annual rows.
+Assignments, repeated decision/command records, chronological row order, booleans,
+integer/float distinctions and original projection hashes roundtrip exactly.
+Inconsistent row fields fail rather than being dropped or filled. This is data
+integrity, not independent physical audit or authority to disclose a bank.
+
+The three actual old exports shrink24743/24874/24743 to13753/13825/13753 JSON
+UTF-8 bytes. The codec plus original projection tests pass29 cases; adding the
+actual export boundary and current manuscript checks gives40 passes7.17s.
+No model, generated mechanism or new native world executes. A read-only preview
+of attaching only the new v3 R7 trajectory to its six original free-call frames
+is within the old140000-byte limit (116869--123426 bytes). This is not measured
+token fit, full own-history fit, an implemented author profile, or permission
+to attach the hand/unused-condition trajectory. Current model prompts stay
+unchanged. Future integration must verify allowed data, exact public contracts,
+full history-bearing frames, source/cold reconstruction and native execution.
+
+The first preview's request_sha256 field mistakenly contains the parent's label.
+Its byte counts/input-file hashes remain retained, but that mislabeled field
+must not be treated as a hash; a separate corrected readout is required before
+using request identities. No historical scientist/designer wire is changed.
+
+`scripts.reports.native_trajectory_columnar_v1` reads an existing sealed
+projection export, verifies codec roundtrip and before/after source/input bytes,
+and writes only to a fresh destination outside the declared evidence root.
+It explicitly reports model-context fit, author connection, bank authorization
+and full physical audit as unproved. No independent scientific result follows.
+
 `scripts/reports/native_trajectory_projection_v1.py` verifies the original file
 and reader-source hashes before/after the read, exports to a fresh path outside
 the explicitly declared scientific evidence root, and retains the sealed
