@@ -64,6 +64,17 @@
 
 ## 現在の到達点
 
+2026年11月15日08:54JSTの確認：native世界での新しい目的2種×観測情報2条件の
+比較は実行中。自己提案12枠のうち3枠の評価が完了し、すべてR7と同点で、強い
+手設計対照には劣る。3枠目は変更を適用できず、明示的に元制度を保持した。
+4枠目の実request校正へ進んでいる。[実dispatch記録](research/logbook/2026-11-15-longitudinal-real-dispatch.md)。
+実runner／cold／固定評価を含むSCRIPTED通し検証と実backend容量確認を経て開始したが、
+それは実探索の改善や独立反復の証拠ではない。後続の元source二重監査・費用・readoutは
+別の固定sourceで正常閉鎖待ち。実験source／目的／モデル／予算は途中変更しない。
+新しい配線・強い対照への安定優位・目的別の有効制度の発見・主会議readyは未実証。
+
+### 先に完了したstaged研究（以下はその時点の履歴）
+
 2026年11月15日：実staged探索は全6自己枠・両対照を含む8世界を完走した。
 [全結果・費用](research/results/native-open-staged-institution-closed-v1.md)：
 5案はR7と同点、1案は研究agendaと実入力を変えたが内容効用は悪化した。

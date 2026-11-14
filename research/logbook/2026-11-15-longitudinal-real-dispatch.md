@@ -236,6 +236,60 @@ with chronological first ties remain the frozen-selection rule. Its14-world
 upper bound is not14 independent optimizer replications. Comparison improvement
 and publication readiness remain unproved.
 
+## Third own outcome closes; separate search-allocation continuation
+
+At23:53:49.342433UTC, unchanged original82259 advances to
+parent-trajectory::throughput:g0 readiness after completing scalar U0. The
+third own request remains
+`272a43bb82516e3fc10e744dca8e780ae398bbbdc6d430e878bd2d6db74163ab`.
+It explicitly finishes at23:43:29.163200UTC. The complete14-step prefix has
+one plan, ten read attempts (three applied/seven rejected), one rejected edit,
+one invalid response and one explicit finish. No literal write/edit is applied
+and no component probe is attempted/returned. Step4 fails the declared call
+format (`name` and `arguments` required); step6 contains unexpected `rationnal`.
+Both remain charged. Read-checkpoint rejections are retained, not removed or
+turned into successful operations. These local observed failures do not prove
+the whole interface bug-free or that information access caused the behavior.
+
+The submitted candidate is literally equal to both its supplied parent and
+fresh R7, with full-system digest
+`afbe6626fbad76ff65cf0a6a8875d6e68cc1853378d3d41f1d87c6f0c7bce8d2`.
+This is the author's explicit retention, not automatic host fallback, invention
+or an effective institutional change. The original native world nevertheless
+runs all four years under the declared same-source protocol; it is not skipped
+or merged after observing identity. Observation has no technical failures,
+U=-13.333333333333332 and cross-score T=-18 using the unchanged evaluator on
+its original measurements. It ties R7 and loses to the hand by2 on each loss.
+Record digest
+`ed9c28ac13b303206248695110a1a4a6c6e27b99f04d8b14dbdfe2cc263c93db`;
+observation digest
+`8d932c83523d44bc06033d0b139a3faea96caae2e5906894818f7a3ac184c5e1`.
+Response content
+`b68778d0f5b60908ef9d5f415a234d47f67fea2be993e6b7734e13f9151c64c5`,
+fileSHA`92d555dfd51fd3e84911b5f2720ff48cd2c1c8bcfb50dbc4cb1c9edda4dcecea`.
+No full scientist-input/choice equality is newly inferred from literal policy
+identity or equal losses. The whole-study audits/readouts remain pending.
+
+A separate JSON-only allocation reader and finite waiter are frozen at
+`ecbe2b73578dd936506027c135d27c6ef64c6e44` in
+`science-utopia-lab-experiments/native-longitudinal-allocation-64k-v1-a1`.
+Original97668/PID5620 starts23:55:44.368884UTC and is polled live waiting for
+the original construction continuation; maximum wait86400s, no new inference.
+Output `outputs/native-longitudinal-allocation-v1-a1-wait` retains the wait
+binding; later paired readouts use `outputs/native-longitudinal-allocation-v1-a1`.
+It waits for the existing38ea9d38 source's paired construction outputs, then
+joins all12 raw step journals to original-source audits and exports twice.
+It distinguishes proposed targets from actual host edits and preserves top-
+level transport/parse errors separately from action-transition errors. There
+is no model/world execution, loss/selection change or automated scientific
+retry. Its39 JSON-only checks pass after one retained synthetic setup failure;
+this is not a completed real readout or independent research evidence.
+
+Three of12 own outcomes now complete without a gain. The remaining original
+slots, paired closure/cost/readouts, interpretation/visual review, fresh unused
+inventory, frozen evaluation and main-track importance judgment remain open.
+Neither an extra reader nor another unchanged own outcome closes R2/R3/R5/R6.
+
 ## Reserved evaluation seed inventory and timing deviation
 
 An additional read-only inventory of seed676047151 closes in original54987,

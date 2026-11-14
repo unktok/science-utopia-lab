@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- Latest checked progress: three of12 own slots complete, all tie R7; scalar U0
+  explicitly retains its literal parent after charged invalid/rejected actions.
+  The fourth slot is in request readiness. [Actual dispatch log](logbook/2026-11-15-longitudinal-real-dispatch.md)
+  and [current status](STATUS.md) distinguish this from the older snapshots below.
+  A separate pinned search-allocation continuation is actually waiting for
+  closed paired construction exports;39 JSON-only tests pass, not real analysis
+  or scientific gain. [Reader scope](components/native-longitudinal-postprocessing-v1.md).
+
 - [Matched12-path construction and finite closure analysis](components/native-longitudinal-postprocessing-v1.md):
   four arm/objective histories remain distinct in the staged edit/probe trace.
   Source-frozen read-only continuations wait for the original scientific writer

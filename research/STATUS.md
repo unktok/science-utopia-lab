@@ -7,7 +7,24 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
-Latest committed prefix: two of12 own slots complete. Both scalar T0 and
+Latest observed prefix at23:54UTC: three of12 own slots complete. Scalar U0
+returns T=-18/U=-13.333333333333332 with no technical world failures. Its
+submitted system is literally the R7 parent, after14 charged steps, zero probes,
+one invalid response and eight rejected actions; this is explicit retention,
+not invention, host repair, a fallback or improvement. Original82259 remains
+live and advances at23:53:49UTC to parent-trajectory::throughput:g0 readiness.
+The prior two-slot snapshots below retain their original observation times.
+
+Separate search-allocation code/finite continuation is committed atecbe2b73;
+39 JSON-only checks pass in9.07s after a retained fixture-setup failure. It
+separates untrusted proposed addresses, actual host edits, reads and errors.
+Original97668/PID5620 is observed live waiting in its own clean pinned analysis
+worktree; it will export twice only after the existing paired construction
+chain closes. The two original38ea9d38 waiters and scientifica5be8d31 source
+stay unchanged. No completed allocation result, information benefit, independent
+optimizer replication, new native QA, gain or publication readiness is claimed.
+
+Earlier committed prefix: two of12 own slots complete. Both scalar T0 and
 parent-trajectory U0 have T=-18/U=-13.333333333333332, tying fresh R7 and worse
 than the hand by2 on each loss, without technical failures. Original82259
 continues at23:26:21UTC into scalar::content-utility:g0 exact-request readiness.

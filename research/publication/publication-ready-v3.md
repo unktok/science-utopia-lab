@@ -7,6 +7,15 @@ goal toolにも同じ目標を設定した。以前の有限パッケージ完�
 現在の実行状態の正本は[STATUS](../STATUS.md)、根拠への入口は[INDEX](../INDEX.md)。
 このページは目標・必要要件と日付付き履歴であり、古い「実行中／全閉鎖」は現在の生存確認ではない。
 
+November15 08:54JSTの新snapshot：目的2種×観測情報2条件のnative比較を固定a5be8d31で
+実行中。自己12枠中3枠が評価を完了し、すべてR7と同点・手設計対照より劣る。
+3枠目は明示的な元制度保持であり、発明や改善ではない。4枠目の実request校正へ進む。
+元source二重監査／費用／readoutは別固定sourceで待機中。追加の探索配分readerも
+39 JSON-only検証を経て別sourceで実際に待機しているが、研究上の答えはまだ出ていない。
+現時点の確認済み統合稿は[85頁のartifact](../../paper/integrated-staged-actual-build-v1.json)、
+[71-file実再構築](../results/integrated-staged-actual-rebuild-subset-verification-v1.json)を保持。
+新比較と最近の先行研究確認はまだそのPDFに反映していない。R2/R3/R5/R6は引き続き未達。
+
 November15 02:34JST以降のsnapshot：staged実探索は全6自己枠・8世界を完走し、
 元sourceの二回監査／費用と5種readoutが一致した。84設計step・64部品probeで、
 5案はR7と同点、研究agendaを実際に変えた1案は効用悪化。新node／配線や自己優位はない。
@@ -242,10 +251,10 @@ November12 05:47JST更新：新しいT（論文数）／U（固定内容評価�
 | 段階 | 必要な成果 | 現状 |
 | --- | --- | --- |
 | R1 | 作用権限と目的を固定したnative閉ループ、強い新権限の参照、選択後評価 | 実行可能。61a1753は全8提案・13物理試行を正常閉鎖、二回監査／費用一致。6完走は強い参照と同点、2null。固定選択＋対照の641xx評価も18物理worldで正常閉鎖。研究上の重要性はR2で別判断 |
-| R2 | 重要で識別可能な研究上の答えと対照 | 未達。先行する構造／open-code探索と未使用評価に強い手作り制度への優位性はない。最新staged研究は3/6自己枠完走で、U1の生成agenda規則が実入力・内容を変えるが効用は悪化。これは単なるfingerprint差より強い作用証拠であって、重要な答え／安定優位性の証明ではない。新制度・肯定的改善を科学的候補の必須条件にせず、情報・権限・探索を同時変更した比較を単独因果効果にしない |
+| R2 | 重要で識別可能な研究上の答えと対照 | 未達。完了したstaged6枠と選択固定の未使用評価は自己優位なし。新しい12枠の観測情報比較は3枠完了、すべてR7と同点で手設計対照より劣る。先のagenda変更は実入力・内容を変えたが効用悪化。これらは重要な答え／安定優位性の証明ではない。新制度・改善を候補の必須条件にせず、違う目的・情報条件の2枠だけで因果効果を主張しない |
 | R3 | 精度と範囲を支える独立反復・追加条件 | 未達。pilotの変動と意味のある差から有限予算を定める |
-| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 先行する閉鎖研究の二回元監査・費用・全枠／作用readoutと、停止研究の限定証拠を保持。最新staged研究は3枠の構築／native／目的別cross-score／全入力prefixを保存し、U1の12共有＋各側6採択による4/3悪化を再構成。全6枠の正常閉監査・費用・選択と全解析は固定sourceの後続6処理が待機中。prefix、部品probe、独立worldを同じ標本数にしない |
-| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [最新確認済み82ページ稿](../../paper/integrated-staged-construction-build-v1.json)と[68-file実再構築](../results/integrated-staged-construction-rebuild-subset-verification-v1.json)を保持。全頁本文／画像は一致、binary PDF同一とはしない。今回のstaged実測とsupport解析はこのPDFより後で、統合／新build／全頁確認は未実施。中心結果に基づく投稿本文も未達。過去の78／81頁稿を含む全artifactを保持し、旧PDFの検証を新sourceへ流用しない |
+| R4 | 再構築可能な全候補・失敗・費用・作用の解析、主張に直結する図表 | 先行staged6枠・固定評価の二回元監査／費用／全readoutを保持。新12枠研究は3枠の構築／native／cross-scoreを保存し、全閉鎖後の元監査／費用／5readoutと追加探索配分readerが別固定sourceで待機中。新研究の全候補解析・図の解釈は未完了。prefix、部品probe、独立worldを同じ標本数にしない |
+| R5 | 内容を削り過ぎない統合稿と、焦点の明確な投稿本文・付録・検証済みPDF | [最新確認済み85ページ稿](../../paper/integrated-staged-actual-build-v1.json)と[71-file実再構築](../results/integrated-staged-actual-rebuild-subset-verification-v1.json)を保持。staged実6枠と固定評価を含み、全頁本文／画像は一致、binary PDF同一とはしない。新12枠比較と最近の先行研究確認は未反映。中心結果に基づく投稿本文も未達。過去の全artifactを保持し、旧PDFの検証を新sourceへ流用しない |
 | R6 | 技術・重要性・先行研究・再現性を批判的に点検した最終ready判定 | 未達。肯定／否定いずれも重要な答えが必要 |
 
 seed数やQA数だけを増やしてR2を閉じない。単発の改善、意図した新nodeの生成、
