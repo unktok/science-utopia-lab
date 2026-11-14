@@ -11,10 +11,13 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の確認済み統合PDFは[82ページの原稿記録](paper/integrated-staged-construction-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-staged-construction-working-paper.pdf)。
-その後の実staged6候補の結果・図表・費用はLaTeX sourceへ追記済みだが、
-実行中の固定評価が終了するまで新しいPDF build／目視は未実施である。
+最新の確認済み統合PDFは[85ページの原稿記録](paper/integrated-staged-actual-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-staged-actual-working-paper.pdf)。
+実staged6候補と全固定評価の結果・図表・費用を含む。2回のcached buildの本文・log・
+全85ページの画像が一致し、全紙面と概念図・新結果ページの拡大表示を目視確認した。
+必要な71ファイルだけの[実再構築](research/results/integrated-staged-actual-rebuild-subset-verification-v1.json)
+でも本文と全85ページの画像が一致した（PDFバイナリ自体は異なる）。
+原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
 ## 最初からやりたかったこと
@@ -65,11 +68,14 @@
 [全結果・費用](research/results/native-open-staged-institution-closed-v1.md)：
 5案はR7と同点、1案は研究agendaと実入力を変えたが内容効用は悪化した。
 新node／配線や強い手作業対照への自己優位は未実証で、主会議readyではない。
-選択済み制度を変更せず、事前宣言seed1891355522で3物理worldの固定評価を実行中。
-[最初の完走](research/results/native-open-staged-fixed-first-completion-v1.json)は
-原制度と完全同一の自己U案を兼ね、T=-32/U=-28.6667。全比較は未完了である。
+選択済み制度を変更せず、事前宣言seed1891355522で3物理worldの固定評価も完了した。
+[全固定評価](research/results/native-open-staged-fixed-closed-v1.md)では
+自己T/U案とも原制度と同点のT=-32/U=-28.6667で、手設計対照の-36/-31に劣る。
+原sourceの二重監査・費用・全exportの照合まで終了し、実験・readerは現在走っていない。
 [次の証拠の設計](research/publication/native-staged-next-evidence-decision-v1.md)は
-同じ自由制度空間での時系列観測情報の比較を選ぶが、未実装部分や検証を飛ばして起動しない。
+同じ自由制度空間での時系列観測情報の比較を選ぶ。別branchで観測の追加・提示経路と
+72件の軽量検証まで実装したが、実runner／cold監査／実LLM校正の接続は未達である。
+未実装部分や検証を飛ばして起動しない。
 
 以下は日付付きの過去の到達点であり、現在の稼働状態の正本ではない。
 

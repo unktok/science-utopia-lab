@@ -2,6 +2,57 @@
 
 ## Active publication-ready goal
 
+### November15: minimal actual-result paper reconstruction verified
+
+The explicit71-file subset actually rebuilds with cached/untrusted Tectonic,
+without raw worlds, model calls or downloads. Default text and all85 rendered
+page PNGs match the reviewed original; PDF binary bytes differ. The original
+PDF/receipt remain unchanged. [Sealed reconstruction proof](results/integrated-staged-actual-rebuild-subset-verification-v1.json).
+This is local PDF-source reproduction, not a clean-machine or numerical/science
+replication. The next scientific work remains full longitudinal-access runner/
+cold/calibration integration, not automatic redispatch or identical scale-up.
+The final targeted source/retention/subset set passes25 checks in8.74s;
+this remains limited paper/record QA, not full runtime integration.
+
+### November15: actual-result manuscript reviewed; no new science
+
+The new[85-page integrated paper](../paper/integrated-staged-actual-build-v1.json)
+contains complete staged development/fixed results,44 figures,38 tables and28
+references. Two actual cached/untrusted builds have identical text/logs and
+all85 page images; all pages are visually inspected, with fresh150dpi checks
+of first/concept/new-result pages. No clipping, unresolved references or TeX
+layout warnings are observed. The old82-page artifact/receipt remain byte-
+unchanged.24 targeted source/retention/subset checks pass, not full runtime QA.
+The new71-file reconstruction policy is prepared; an actual subset rebuild
+remains pending. No new model calls or new institutional gain is claimed.
+Future longitudinal runtime remains unmerged and incomplete as described below.
+R2/R3/R5 focused contribution/R6 remain open despite the current full manuscript.
+
+### November15 03:45JST: fixed evaluation and all original readouts close
+
+All three physical worlds/four frozen labels complete at unchangedf47270b9.
+Both own selections tie R7 at T=-32/U=-28.6667 and lose to the hand's
+-36/-31. Separate R7/T0 worlds have identical161 full scientist inputs and
+literal choices; raw provider bodies differ. Original double audits/costs
+and every paired result/choice/effect/request export agree. Writer19682 and
+handoff41278 actually exit0; no current scientific inference or reader remains
+live. [Complete outcomes, physical costs and boundaries](results/native-open-staged-fixed-closed-v1.md).
+
+Future branch `feat/native-longitudinal-feedback-v1` atb1219237 adds optional
+checkpoint trajectory attachment and author/request/archive projections;
+72 light checks and a historical initial-frame fixture pass. It is not merged,
+not enabled by the real runner, and not a real feedback-effect result. Full
+source-scoped native/cold/calibration integration remains required. Both
+future arms retain existing diagnostics/probe access: `scalar` is not a
+number-only strawman baseline.
+
+Current manuscript source includes all actual development/fixed tables,
+original plots, input-class evidence and physical costs.19 source/retention
+checks pass; new TeX build/render/visual review remains pending. The previously
+reviewed82-page PDF is preserved, not relabeled current. R2 significance,
+R3 independent evidence, R5 focused/current paper and R6 final readiness remain
+open. Dated entries below are historical snapshots, not current liveness.
+
 ### November15 02:57JST: first fixed world completes; hand evaluation begins
 
 Original writer19682/PID43744 completes evaluation-000 at T=-32/U=-28.6667

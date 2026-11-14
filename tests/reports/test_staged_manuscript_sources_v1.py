@@ -38,8 +38,23 @@ def test_actual_staged_results_remain_distinct_from_software_and_unused_scores()
     assert 'worsens by $4/3$' in body
     assert '937 complete' in body and '1,117,688 prompt and 98,457 completion' in body
     assert 'not independent optimizer replications' in body
-    assert 'has started but is not complete' in body
+    assert 'normally closes all three worlds' in body
     assert 'not proof that a target was absent' in body
+
+
+def test_staged_unused_results_and_direction_support_limits_are_in_the_body():
+    import hashlib
+    import json
+    from utopia.optimization.native_numeric_designer import checked
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-fixed-closed-v1.json').read_text()))
+    figure = ROOT/'paper/figures/native-staged-fixed-v1/report.json'
+    assert hashlib.sha256(figure.read_bytes()).hexdigest() == r['readouts']['report']['report_file_sha256']
+    body = (ROOT/'paper/integrated/native-staged-construction.tex').read_text()
+    for literal in ('498 completed responses', '757,983 prompt and 44,296 completion',
+                    '132 physical calls', '3,381.233 seconds', 'same ordered 161 full scientist',
+                    'corresponding relaxation 36', 'not an', 'global optimum'):
+        assert literal in body
+    assert 'figures/native-staged-fixed-v1/fixed-policy-seed-scores.png' in body
 
 
 def test_actual_staged_figure_is_the_original_paired_export_not_a_new_simulation():
