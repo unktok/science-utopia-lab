@@ -60,7 +60,10 @@ The existing ResourceLedger stores closed annual opening/closing resources,
 active flags, all collected category amounts and unexplained residuals for
 each original author. Native events record actual annual phase order. Portable
 checkpoints retain those data alongside real projects and paper origins.
-These are available sources, not an already connected author feature.
+These are available sources, not an already connected author feature. The
+[read-only projection prototype](../components/native-trajectory-projection-v1.md)
+now parses completed original checkpoints and reconciles the actual annual
+ledger, but has no author/measurement connection or demonstrated frame fit.
 
 A new optional measurement/author/cold-reader profile would need to project:
 
@@ -99,3 +102,24 @@ Technical submission gains alone are not scientific-system gains. A modest
 pilot, whichever direction, still needs evidence appropriate to any important
 main-track claim. This note is not a completion criterion, hidden merit veto,
 new objective or a replacement for the actual unfinished research goal.
+
+## November14 execution evidence constrains the next decision
+
+Five slots of the current scalar v3 are terminal with no own completion:
+three invalid IR submissions and two runtime failures. Its final U2 actually
+submits legal acceptance code with final_score100 and is executing. Its prose
+claims that written scores directly improve common-panel utility, which is not
+the measurement implementation. The actual frame retains the correct panel
+formula in exact_loss_spec, while its separate loss_arithmetic view has an
+empty measurement_definitions map for the newer common-content metric. This
+is a descriptive information gap, not proof that it caused a failed proposal
+or that the actual loss is wrong. No active prompt or measurement is amended.
+
+After closure, evaluate technical construction, metric understanding and
+observation access separately; do not automatically launch the14-world design
+above merely because it is written. If a prospective common-panel definition
+card is added, give the same truthful definitions to both matched arms and
+preserve old payloads. It must distinguish centered opinions from raw scores,
+written institutional final_score from independent panel input, and direct
+measurement from possible downstream behavioral effects. It must not supply a
+winning institution, force different winners or require a beneficial result.
