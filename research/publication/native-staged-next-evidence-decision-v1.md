@@ -158,3 +158,52 @@ the game interface in the full project scope. This selected comparison is an
 evidence-producing step, not a narrower definition of the overall goal. R2
 importance, R3 appropriate independent evidence, R5 focused/current manuscript
 and R6 final readiness remain open.
+
+## November15 primary-source positioning addendum, before new own outcomes
+
+The comparison above is now actually running at unchangeda5be8d31 after the
+separately declared uniform64k change, full SCRIPTED native/cold/fixed proof,
+two real late-frame capacity calls and its own28-case initial readiness.
+Fresh R7 is complete; the hand comparison is still running, with no new own
+proposal outcome. This addendum changes no running plan, prompt, loss, budget,
+selection rule or evaluated system.
+
+A fresh primary-source check identifies a missing close precedent:
+[Wu and Liu, SciMARS v1, submitted November9, sections3.2--3.7 and4.2--4.3](https://arxiv.org/html/2611.12552v1).
+It separates role, coordination and optional memory-policy edits, probes them,
+composes/selects a harness and keeps evidence in a shared graph. Adaptation is
+task-local; its meta-controller is not rewritten. It includes scientific replay,
+a digital twin and other agent benchmarks. These are author-reported results,
+not our reproduction. Neither evidence-informed scientific harness revision nor
+separating evidence contents from retrieval policy is a first contribution here.
+
+Our current intervention exposes extra native parent trajectories to the
+institution author; it does not optimize the researchers' memory service.
+Accordingly it is NOT a reproduction or matched comparison of SciMARS memory
+adaptation. The possible distinction is the loss-conditioned organizing system
+of a persistent research society and its measured institutional consequences,
+not a new generic propose/probe/edit loop. That is a setting distinction,
+not yet evidence of scientific importance or a field-wide priority claim.
+
+[ADAPT for Science v1, sections3.4--3.6](https://arxiv.org/html/2610.30851v1)
+already evolves scientific search procedures with execution feedback and tests
+frozen procedures on excluded detector topologies. It is already cited in our
+paper. More context, code generation or a differentiable option alone therefore
+does not resolve our importance gap. The original
+[Science Utopia v1](https://arxiv.org/abs/2610.01257v1) also remains the inherited
+world/intervention precedent, not a baseline we have outperformed in realism.
+
+The publication question stays objective -> generated institution -> actually
+consumed mechanism -> native consequences -> assigned loss and unused outcome.
+Do not replace it with interface validity or information-access success rates.
+If the four histories choose the same systems, retain that result rather than
+requiring an invented topology or trade-off. A useful new mechanism would need
+a separately declared same-actuation/route/timing contrast before causal credit;
+a null still requires a substantive explanation, not automatic scale-up.
+
+The reviewed85-page PDF is unchanged and does not yet cite SciMARS. Add the
+verified reference and this narrower positioning at the next complete source/
+PDF update, alongside actual closed comparison outcomes. Do not rebuild/render
+or run independent heavy QA during the current scientific inference. The next
+manuscript must not describe the present coupled histories as independent
+optimizer replications or SciMARS/ADAPT performance comparisons.
