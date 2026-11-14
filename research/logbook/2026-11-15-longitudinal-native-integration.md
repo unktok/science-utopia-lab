@@ -153,3 +153,37 @@ permission, session97166 actually exits0:61 reader/retention/plan/legacy tests
 pass in31.33s. No full native run or real-model readiness is inferred from this
 targeted set. The prospective full-test assertion change has not been rerun as
 a new whole study, and the historical a1/a2 JUnits remain failed.
+
+## Integration and real-plan preparation, not scientific dispatch
+
+After both writers actually exit, featurece1b6d60 is pushed, fast-forwarded to
+main and main push98995 actually exits0. No PR is created. A separate clean
+detached worktree native-longitudinal-comparison-v1-a1 pins85520c4d, the actual
+native/cold/handoff-tested source. Git diff85520c4d..ce1b6d60 under utopia/scripts
+contains only the two plot readers; production/native/cold/optimizer code is
+unchanged. Integrated docs/tests and plot-only fixes are not retroactively
+part of the old software proof. Frozen older scientific roots are untouched.
+
+Initial metadata-only preparation19283 exits1 because the large component
+bank was copied through truncated tool output, leaving an invalid JSON file.
+There is no scientific started file, inference POST or created plan. Preserve
+that file and its hash. Re-extract the same original sealed bank using the
+apply_patch executable on its full local2,749,769-byte compact serialization,
+without a lossy tool-output transfer. The new v2 file decodes to the exact
+original bank, content e281b346b07324981846a32627d658fa489c511ddfa654e5d7e54cee559a1861.
+Preparation69825 then actually exits0. The new prepared plan is sealed at
+a02e6d8349cdf752a88a8f97d2b9790c5d4afe84f5b1087f1aa1300227f47764.
+[Exact preparation record](../results/native-longitudinal-comparison-prepared-v1.json).
+
+Only local metadata GETs occur. There is no new scientific writer or model
+inference, no real capacity/readiness/resource pass and no proof yet of the
+reserved unused condition. Fresh host observation after heavy QA sees151%
+aggregate CPU rather than the earlier443%; other Python coordinators/CPU
+workers are still present. Read-only cwd/executable/RSS/source inspections
+identify their roles, not an exclusive lease or permanent absence of future
+model activity. No other project is changed or stopped. Real frame/capacity
+and resource checks remain the next concrete actions, not another identical
+own-slot software rerun or immediate scaling of the completed null study.
+
+Final main retention/figure/scope set63878 actually exits0:11passed/5.04s.
+It is limited record/layout QA, not another full native or actual-model pass.

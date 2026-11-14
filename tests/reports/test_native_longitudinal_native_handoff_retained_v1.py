@@ -44,3 +44,22 @@ def test_software_closure_never_claims_real_capacity_gain_or_readiness():
         assert p[key] is False
     assert p['new_real_model_calls'] == v['new_model_calls'] == 0
     assert v['fixed_fixture_seed'] == 72101 and not v['scientific_reserved_seed_used']
+
+
+def test_prepared_real_plan_is_not_a_started_scientific_comparison():
+    p = checked(json.loads((ROOT/'research/results/native-longitudinal-comparison-prepared-v1.json').read_text()))
+    assert p['source_commit'] == '85520c4dac89c33a9c5f41bc7407737a7af83500'
+    assert p['arms'] == ['scalar', 'parent-trajectory']
+    assert p['objectives'] == ['throughput', 'content-utility']
+    assert p['own_proposals'] == p['budget']['candidate_slots'] == 12
+    assert p['budget']['native_worlds_upper_bound'] == 14
+    assert p['budget']['designer_POSTs_upper_bound'] == 712
+    assert not p['budget']['replace_failed_slots']
+    assert p['reserved_unused_seeds'] == [676047151] and not p['unused_status_verified']
+    assert p['component_bank_matches_original_literal_parsed_value']
+    assert p['prior_truncated_transfer']['preserved']
+    assert p['preparation_actual_exit_code'] == 0 and p['new_inference_POSTs'] == 0
+    for key in ('scientific_started_file_exists', 'real_backend_token_capacity_proved',
+                'real_request_readiness_proved', 'fresh_shared_resource_profile_passed',
+                'scientific_comparison_dispatched', 'scientific_gain_claimed', 'publication_ready'):
+        assert p[key] is False

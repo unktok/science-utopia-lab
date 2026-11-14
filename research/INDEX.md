@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Finite real comparison prepared, not dispatched](results/native-longitudinal-comparison-prepared-v1.json):
+  source85520c4d, two losses/two information arms,12 own slots/two references.
+  Full implementation/evidence is now integrated and pushed atce1b6d60;
+  old scientific sources stay unchanged. Real capacity/resource/readiness and
+  actual scientific consequences are still unproved. No writer is started.
+
 - [Longitudinal native/frozen-handoff software proof](results/native-longitudinal-native-handoff-software-v1.json):
   all12 SCRIPTED own slots, preserved generation/native nulls, matching double
   cold audits,25 bounded session replays and full costs. Separate continuation

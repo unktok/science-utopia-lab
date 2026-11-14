@@ -2,6 +2,24 @@
 
 ## Active publication-ready goal
 
+### November15: integration merged/pushed; finite real comparison plan prepared only
+
+The optional author corrections, actual longitudinal runner/cold/fixed/readout
+paths and preserved software evidence are integrated into main and pushed at
+ce1b6d60. This does not modify any older frozen scientific worktree. A separate
+clean85520c4d worktree now holds the literally reconstructed plan: two original
+losses, two information arms/four isolated histories,12 own slots/two fresh
+references, at most14 development worlds and712 designer POSTs. The original
+R7 component bank matches exactly. [Prepared plan and boundaries](results/native-longitudinal-comparison-prepared-v1.json).
+Preparation69825 actually exits0, with zero inference POSTs and no started
+scientific writer. Source85520c4d matches the full software proof; only two
+plot-reader files differ in integratedce1b6d60, verified by actual Git diff.
+
+Real later-frame/token checks, fresh resource observations and request-bound
+readiness remain next. Local model metadata alone is not capacity or readiness.
+Reserved676047151 is declared, not yet proved unused. No new own institution,
+loss, information benefit or main-track R2/R3/R5/R6 completion is claimed.
+
 ### November15: longitudinal native/cold/frozen handoff exercised, no new real-model study
 
 At clean85520c4d, the new matched runner actually processes all12 SCRIPTED
@@ -25,7 +43,8 @@ this is not measured backend token capacity. A long fixed-plot title found at
 visual review is corrected separately, without changing raw/audits/scores.
 Next: finite real-backend frame/capacity check, fresh host observations and exact
 request-bound readiness before the prospectively declared scientific comparison.
-No actual comparison is prepared/dispatched. Main-track R2/R3/R5/R6 remain open.
+At this software snapshot no actual comparison was prepared/dispatched;
+the subsequent prepared-only state is recorded above. R2/R3/R5/R6 remain open.
 
 ### November15: prospective author-source scope verified on a separate branch
 

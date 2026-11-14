@@ -1,0 +1,67 @@
+{
+  "schema": "scienceutopia.native-longitudinal-comparison-prepared.v1",
+  "source_commit": "85520c4dac89c33a9c5f41bc7407737a7af83500",
+  "frozen_source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-v1-a1",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-v1-a1/outputs/native-longitudinal-comparison-v1-a1",
+  "plan_file_sha256": "d90539763c511719829f9cbacb8962e7f3b10782bc91d0a0c6d3edfff891ac77",
+  "plan_content_sha256": "a02e6d8349cdf752a88a8f97d2b9790c5d4afe84f5b1087f1aa1300227f47764",
+  "source_scope_content_sha256": "72407142162955528b93d6577150531fad5891c08b1eaf5001c739559b333b0f",
+  "inherited_native_files": 273,
+  "arms": [
+    "scalar",
+    "parent-trajectory"
+  ],
+  "objectives": [
+    "throughput",
+    "content-utility"
+  ],
+  "own_proposals": 12,
+  "budget": {
+    "candidate_slots": 12,
+    "component_probes_upper_bound": 768,
+    "designer_POSTs_upper_bound": 712,
+    "designer_session_wall_seconds": 1800,
+    "fresh_reference_worlds": 2,
+    "native_worlds_upper_bound": 14,
+    "observer_POSTs_upper_bound": 1500,
+    "proposal_POSTs_per_session": 16,
+    "readiness_POSTs_per_session": 40,
+    "readiness_sessions": 13,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "reserved_unused_seeds": [
+    676047151
+  ],
+  "unused_status_verified": false,
+  "backend": {
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+    "ollama_version": "0.33.3"
+  },
+  "component_bank_content_sha256": "e281b346b07324981846a32627d658fa489c511ddfa654e5d7e54cee559a1861",
+  "component_bank_file": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-v1-a1/outputs/original-r7-component-bank-v2.json",
+  "component_bank_file_sha256": "52e703b5e6f07707b57f69730b4d779403dd3d0286a91ae6bc83124c9bca5462",
+  "component_bank_matches_original_literal_parsed_value": true,
+  "component_bank_origin_plan": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/plan.json",
+  "component_bank_origin_plan_file_sha256": "6c1f97530ea7c5704fb418d69106a7d624a93799fd2a0d19535d4602a411ba06",
+  "prior_truncated_transfer": {
+    "path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-v1-a1/outputs/original-r7-component-bank.json",
+    "sha256": "43e9f1b6b84b421b0bad2c3ce774ecd8c0328bb5d6a68f3c7a56a140ec0b47be",
+    "preserved": true,
+    "preparation_session_exit_code": 1,
+    "scientific_inference_POSTs": 0
+  },
+  "preparation_session": 69825,
+  "preparation_actual_exit_code": 0,
+  "scientific_started_file_exists": false,
+  "real_backend_token_capacity_proved": false,
+  "real_request_readiness_proved": false,
+  "fresh_shared_resource_profile_passed": false,
+  "scientific_comparison_dispatched": false,
+  "new_inference_POSTs": 0,
+  "scientific_gain_claimed": false,
+  "publication_ready": false,
+  "content_sha256": "9995ae8396f52259fa6190e71876fc3ba286322f52d37469d84334b8273c48bb"
+}
