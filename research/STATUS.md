@@ -7,6 +7,13 @@ not live-process checks.
 
 ### November15: actual matched comparison starts at unchangeda5be8d31
 
+Latest22:19:21UTC observation: original82259/PID8708 remains live. The first
+reference R7 completes all four years and fixed-content scoring: T=-18,
+U=-13.333333333333332. The comparison-only post-funding-cost world starts
+normally at22:18:28UTC. One of two references and zero of12 own slots have
+completed; no new own loss, information effect or improvement is claimed.
+Exact first-reference hashes are in the linked dispatch log below.
+
 After actual two-frame capacity closes, separately declared scientific resource
 observations pass and original82259 launches the prepareda5be8d31 public driver
 at21:53:15UTC/06:53:15JST. Its own28-case actual initial request-bound calibration

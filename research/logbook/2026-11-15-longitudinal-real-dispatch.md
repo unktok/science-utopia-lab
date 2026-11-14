@@ -27,6 +27,21 @@ response journal present; its started file SHA256 is
 PID8708 remains live. No completed reference loss, own proposal, full comparison
 or institutional gain is claimed at this snapshot.
 
+First actual reference subsequently closes normally. R7-original has all four
+annual native checkpoints, completed observation and both assigned scores:
+T=-18 and U=-13.333333333333332 (lower is better). These match earlier baseline
+values but do not prove identical full requests/choices or independent optimizer
+replication. There are54 completed common-panel request records at this point.
+Observation content`dc12c2b097081fd1a6968513dd3a22b5ab1aef551f1c8c9087bf173276482044`,
+file SHA256`bf847638f7d851071b0f9f5316481e16c778afd3efd822bdfcb75f394f2ec8a8`;
+cross-scores file SHA256
+`102791e7d17e845580221b9c5eeb54d09eb0644f1b512dfe56e6dc4babbce524`.
+The next comparison-only post-funding-cost reference actually starts at
+22:18:28.792349UTC (started file SHA256
+`c657f44ed0614ae6c03798ea5d5a2edffb0c4bd63013afa99d03bd9cb7942618`).
+OriginalPID8708 remains live at22:19:21UTC; whole comparison has no terminal.
+There are still zero own outcomes and no claimed optimization improvement.
+
 The study remains two losses/two information arms,12 own slots/two references,
 no cross-arm own feedback, no hidden admission criterion, no new seed/model/
 population scale-up, no failed-slot refill or model-output repair. Own minima
