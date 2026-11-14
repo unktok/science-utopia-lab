@@ -1,6 +1,7 @@
 """Finite resource-window wait -> one SCRIPTED native check, never real science.
 
-The criteria observe one known external inference PID and host-wide CPU only.
+The criteria observe one known external workload PID and host-wide CPU only
+(for example, an inference process or the parent of a queued CPU batch).
 They are not a global GPU lease or proof that no other job can start later.
 Other processes are never stopped, signalled, configured or reprioritized.
 """
