@@ -28,6 +28,15 @@ not full native science QA. The71-file policy stages only68 literal TeX
 dependencies, LICENSE, the reviewed PDF and its receipt. Actual reconstruction
 is the next check; software staging alone cannot certify it.
 
+Follow-up: staging53779 exits0 at clean9362223f, with71 exact allowlisted
+inputs/68 literal dependencies. Actual cached/untrusted subset TeX build,
+default/bbox text and all-page90dpi render87362 exit0. Unchanged source verifier
+then exits0 and records
+`research/results/integrated-staged-actual-rebuild-subset-verification-v1.json`:
+all85 page PNGs and default extracted text match the reviewed original; binary
+PDF bytes differ. No raw audit, new model call, numerical recomputation,
+clean-machine rebuild, upload, anonymity/release clearance or readiness follows.
+
 The scientific result remains unfavorable: neither selected system improves
 R7 or beats the hand on the single unused condition. Exact R7/T0 scientist
 input/choice equality is diagnostic, not global policy equivalence. Historical

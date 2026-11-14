@@ -2,6 +2,16 @@
 
 ## Active publication-ready goal
 
+### November15 04:02JST: minimal actual-result paper reconstruction verified
+
+The explicit71-file subset actually rebuilds with cached/untrusted Tectonic,
+without raw worlds, model calls or downloads. Default text and all85 rendered
+page PNGs match the reviewed original; PDF binary bytes differ. The original
+PDF/receipt remain unchanged. [Sealed reconstruction proof](results/integrated-staged-actual-rebuild-subset-verification-v1.json).
+This is local PDF-source reproduction, not a clean-machine or numerical/science
+replication. The next scientific work remains full longitudinal-access runner/
+cold/calibration integration, not automatic redispatch or identical scale-up.
+
 ### November15 03:55JST: actual-result manuscript reviewed; no new science
 
 The new[85-page integrated paper](../paper/integrated-staged-actual-build-v1.json)

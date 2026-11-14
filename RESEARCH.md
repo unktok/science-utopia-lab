@@ -15,6 +15,8 @@
 と[PDF](output/pdf/science-utopia-lab-integrated-staged-actual-working-paper.pdf)。
 実staged6候補と全固定評価の結果・図表・費用を含む。2回のcached buildの本文・log・
 全85ページの画像が一致し、全紙面と概念図・新結果ページの拡大表示を目視確認した。
+必要な71ファイルだけの[実再構築](research/results/integrated-staged-actual-rebuild-subset-verification-v1.json)
+でも本文と全85ページの画像が一致した（PDFバイナリ自体は異なる）。
 原稿再構築は研究結果の独立再現ではなく、主会議readyの根拠の代わりではない。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 

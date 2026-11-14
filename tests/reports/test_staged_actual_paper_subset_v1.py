@@ -51,3 +51,23 @@ def test_changed_actual_result_input_cannot_inherit_reviewed_receipt(tmp_path, m
     with pytest.raises(ValueError, match='changed from reviewed receipt'):
         bundle.stage(bundle.ROOT, policy, tmp_path/'subset', source_commit='SCRIPTED')
     assert not (tmp_path/'subset').exists()
+
+
+def test_actual_subset_rebuild_matches_all_pages_without_new_science():
+    root = bundle.ROOT
+    r = checked(json.loads((root/'research/results/integrated-staged-actual-rebuild-subset-verification-v1.json').read_text()))
+    original = checked(json.loads((root/'paper/integrated-staged-actual-build-v1.json').read_text()))
+    assert r['original_receipt_content_sha256'] == original['content_sha256']
+    assert (r['input_files'], r['literal_dependencies'], r['pages']) == (71, 68, 85)
+    assert r['cache_only_untrusted_actual_build_exit_code'] == 0
+    assert r['all_staged_input_bytes_unchanged']
+    assert r['all_rendered_page_pixels_match_reviewed_original']
+    assert r['page_png_sha256'] == original['visual_review']['page_png_sha256']
+    assert r['rebuilt_default_pdftotext_sha256'] == original['build']['text_sha256']
+    assert not r['binary_pdf_identical']
+    for key in ('new_downloads', 'new_model_calls', 'off_page_text_words'):
+        assert r[key] == 0
+    for key in ('raw_audit_repeated', 'independent_inference_rerun', 'numerical_results_recomputed',
+                'clean_machine_build_claimed', 'original_pdf_or_receipt_overwritten',
+                'published_or_uploaded', 'anonymous_or_release_clearance', 'publication_ready'):
+        assert not r[key]

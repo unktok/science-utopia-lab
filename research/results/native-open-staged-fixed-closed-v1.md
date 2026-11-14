@@ -61,5 +61,8 @@ The current unused seed/outcomes must not enter any future optimizer bank.
 The [next evidence decision](../publication/native-staged-next-evidence-decision-v1.md)
 selects a same-authority longitudinal-feedback comparison, not more identical
 search or an automatic scale-up. Its prototype is not a completed real study.
-The old82-page PDF predates these outcomes; updated LaTeX and original exported
-plots require a new separately rendered/checked artifact before delivery.
+The old82-page PDF predates these outcomes. The new separately
+[reviewed85-page artifact](../../paper/integrated-staged-actual-build-v1.json)
+now includes them and preserves the old version. Its
+[actual71-file reconstruction](integrated-staged-actual-rebuild-subset-verification-v1.json)
+matches text/all85 page images, not binary PDF bytes or new scientific inference.

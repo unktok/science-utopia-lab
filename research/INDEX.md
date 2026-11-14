@@ -11,6 +11,8 @@ Historical documents retain their paths and source identities.
   44 figures/38 tables/28 references. Two actual builds agree in text/logs/all
   page images; every layout is inspected. Old PDFs remain unchanged. This is
   not new inference, independent scientific replication or main-track readiness.
+  [Actual71-file reconstruction](results/integrated-staged-actual-rebuild-subset-verification-v1.json)
+  also matches text and all85 page images; PDF binary bytes differ.
 
 - [Complete actual staged unused evaluation](results/native-open-staged-fixed-closed-v1.md):
   all three physical worlds/four labels and original paired readouts close.
