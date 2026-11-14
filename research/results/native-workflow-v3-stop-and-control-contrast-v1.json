@@ -1,0 +1,62 @@
+{
+  "schema": "scienceutopia.native-workflow-v3-stop-and-control-contrast.v1",
+  "classification": "two-complete-reference-cells-known-authoring-failures-and-stopped-study-not-normal-closure",
+  "source_commit": "6625d8e342f69ff4ed21f79ebe5333718220607a",
+  "plan_content_sha256": "60d8758db8f273a34753b0049d7156c62ae1a72b412b28a8b1683358740d1dd7",
+  "writer_exec_session": 8676,
+  "observed_writer_exit_code": 1,
+  "terminal": {
+    "status": "stopped",
+    "stage": "readiness",
+    "ended_utc": "2026-11-14T02:32:51.243856+00:00",
+    "consumed_own_slots": 2,
+    "complete_reference_observations": 2,
+    "complete_own_observations": 0,
+    "terminal_file_sha256": "1ef01a1dd8cb8c5bff65aa8f3505558acb533d9420e38914353ccf21591372c4"
+  },
+  "committed_reference_scores": [
+    {"label": "R7-original", "status": "complete", "T": -18.0, "U": -13.333333333333332,
+     "active_authors": 2, "author_resource_stock": 40.0,
+     "observation_sha256": "9a72efd1b5b35e49f89e97655725451ab2d21dc2608c69f0421f206e6c352443"},
+    {"label": "post-funding-cost", "status": "complete", "T": -20.0, "U": -15.333333333333332,
+     "active_authors": 5, "author_resource_stock": 30.0,
+     "observation_sha256": "37d8adf7cc8f6ddf3f8594ed6435dfbe66e4f85ab38019b5240913415eceb6d5",
+     "cross_scores_sha256": "1399e7857d474b54297ca171558565fda901a16e901df612f54461495f945f6c"}
+  ],
+  "hand_minus_original_loss_difference": {"T": -2.0, "U": -2.0},
+  "difference_scope": "One fixed condition's joint timing/observation policy contrast, not an isolated cost-order effect, independent replication or automatic invention. Activity/resource values are diagnostics, never extra objective terms or vetoes. No normal full-study or stopped-study physical audit has yet been claimed.",
+  "known_failures": [
+    {"role": "throughput:g0 proposal", "error": "Invalid SystemSpec: connections[30]: duplicates an existing graph edge",
+     "result_content_sha256": "2fa26909a6006d7fd63ea3b6d5a9c336f05e725afcbe9b2fc7f01af3fdb39c1a",
+     "result_file_sha256": "844387d1b9218d0217478e2b179e7bc356f9f99aa815732c57ddd8d5eb4854a8"},
+    {"role": "content-utility:g0 proposal", "error": "Additional properties are not allowed ('rationality' was unexpected)",
+     "result_content_sha256": "3e5e25b1ce036a6dcb231873bae9948be06ce4aa6197f6c49f08d093d44b1c37",
+     "result_file_sha256": "738699e32deb9029799165807441b6789850d2321c3572683316c2858cb44882"},
+    {"role": "content-utility:g1 calibration", "error": "Repeated graph edges and missing required costs/after and liquidity/world inputs",
+     "result_content_sha256": "707fe5c4e189731aa742432a7bfcb2f9c9a25c9eb08c93621da6f2139a4c0241",
+     "result_file_sha256": "4dd61157c1f99aa58b95ea83096cefa35443f0e23d5319a95c22c485d41b0710",
+     "certificate_file_sha256": "bd275807de7106752fced8ea0fe77e9739541767e57e21a5a824c350bc2512ab",
+     "copy_equal_diagnostic": false, "copy_is_dispatch_veto": false,
+     "input_tokens": 26527, "output_tokens": 2709, "done": true, "done_reason": "stop", "thinking_chars": 0}
+  ],
+  "original_public_replay": {"exec_session": 77155, "observed_exit_code": 0, "matching_original_failures": 3, "new_model_calls": 0, "new_code_executions": 0},
+  "failed_calibration_observation": {
+    "format": "json", "think": false,
+    "schema_was_in_prompt_not_format_parameter": true,
+    "prior_failed_submission_was_present_in_history": true,
+    "returned_added_edges_equal_prior_failed_proposal": true,
+    "returned_removed_edges_equal_prior_failed_proposal": true,
+    "returned_rationale_text_equal_prior_failed_proposals_rationality": true,
+    "requested_control_was_different": true,
+    "network_or_client_payload_corruption_observed": false,
+    "general_model_incapability_or_backend_bug_proved": false
+  },
+  "continuations": {"audit_cost_exec_session": 15408, "report_exec_session": 87576,
+    "observed_exit_codes": [1, 1], "statuses": ["stopped", "stopped"], "completed_steps": [0, 0]},
+  "retained_first_reference_comparison": "research/results/native-workflow-v3-first-reference-v1.json",
+  "new_study_selection_or_heldout_results": null,
+  "old_or_new_stopped_study_refilled": false,
+  "scientific_losses_imputed_for_unexecuted_candidates": false,
+  "publication_ready": false,
+  "research_goal_complete": false
+}

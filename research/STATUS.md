@@ -2,7 +2,48 @@
 
 ## Active publication-ready goal
 
-### Current overview: November14 11:04JST (November14 02:04UTC)
+### Current overview: November14 11:50JST (November14 02:50UTC)
+
+**Workflow-v3 is stopped, not still running.** Original writer8676 exits1 at
+02:32:51UTC during U:g1 calibration. Two references complete normally:
+R7 T=-18/U=-13.3333 and hand timing T=-20/U=-15.3333. Two own slots are consumed
+as known generation failures, zero own native worlds/selection. The hand's
+two-loss difference is not automatic invention, an isolated timing effect or
+independent replication. [Stop and control contrast](results/native-workflow-v3-stop-and-control-contrast-v1.json)
+preserves all fields. Both continuations15408/87576 exit1 with zero steps;
+normal full-study audits/costs/reports are not fabricated.
+
+Original public replay reproduces T:g0's duplicate edge, U:g0's wrong property
+and U:g1's invalid graph. The failed calibration returns the previous failed
+proposal's exact edge lists/explanation, not its different supplied control.
+It is a known final response, not a transport timeout. Actual format is JSON
+mode with think=false, not API-level schema-constrained decoding. No observed
+network/client rewriting or global backend/model-incapability conclusion is
+claimed. The [next output-mode assay](protocols/campaigns/workflow-designer-output-mode-assay-v1.md)
+is implemented and SCRIPTED-unit tested, but real-model unexecuted: at most four changed-mode local
+designer calls, no scientist worlds or old-study repair. The active publication
+goal remains incomplete; R2/R3/R6 and actual own-system comparison remain open.
+
+At11:59JST the finite assay/legacy designer tests pass17/17 in27.34s. They use
+the actual shared HTTP worker and original compiler against a SCRIPTED endpoint,
+covering HTTP400, length/unknown termination, exact payloads, no refill/resume
+and cold replay/tampering. These are not real model/backend compatibility or
+scientific improvements. Source freezing and resource/backend checks precede
+the finite actual calls; no scientific experiment is silently queued.
+
+### Earlier11:13JST live-prefix snapshot (historical, not current liveness)
+
+**First real reference completes; the second is running.** Writer8676 remains
+live and advances to post-funding-cost at02:13:08UTC. R7-original has a sealed
+complete observation with no technical failures, T=-18/U=-13.333333333333332.
+This is1/2 controls and0/6 own slots, not institutional improvement or full
+study closure. A light read-only comparison of completed R7 cells finds all115
+full ordered scientist payloads and115 literal reply choices equal to the prior
+closed R7; full provider envelopes differ and are retained. No new calls, input
+scrubbing, global equivalence or old unknown-response recovery is claimed.
+[First-reference evidence](results/native-workflow-v3-first-reference-v1.json)
+binds the observation, scores and original/new files. Normal audit/cost and
+report continuations are still waiting; active source/plan/losses stay literal.
 
 **Actual workflow-v3 inference is running, not merely waiting for resources.**
 Writer session8676/PID2886 starts01:58:07UTC at frozen6625d8e3 with plan
@@ -26,7 +67,7 @@ Other low-CPU processes remain; no exclusive resource lease is claimed.
 
 | Current track | Verified state | Still required |
 | --- | --- | --- |
-| Workflow-v3 real experiment | Live8676; initial readiness and first-year checkpoint; native900 application recorded | Finish finite controls/own slots; normal cold audit and actual losses/effects |
+| Workflow-v3 real experiment | Live8676;1/2 controls complete, R7 T=-18/U=-13.3333;0/6 own slots, second control active | Finish finite controls/own slots; normal cold audit and actual losses/effects |
 | Read-only continuations | Live15408 audit/cost and87576 report handles wait at cleancc1b230c | Run only after normal preceding closure; no failure retry |
 | Workflow fixed evaluation | Native handoff/runtime-null/all-null and all readout software proofs pass | Normally closed actual origin, fixed own selections and explicit unused seeds; no scientific evaluation dispatched |
 | Earlier planning/numeric studies |14 and6 real worlds normally close; all audits/readouts retained | No incumbent improvement; not a new distinct main claim or independent replication |

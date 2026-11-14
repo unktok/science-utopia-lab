@@ -6,15 +6,30 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
-- [Current status](STATUS.md): November14 11:04JST; the publication-ready goal
+- [Current status](STATUS.md): November14 11:50JST; the publication-ready goal
   remains incomplete. Original presentation study stays stopped; the separate
   numeric study closes all six native worlds with no incumbent improvement.
+- [Workflow-v3 stop and completed-control contrast](results/native-workflow-v3-stop-and-control-contrast-v1.json):
+  writer8676 and both continuations are terminal, not live. Both controls
+  complete; the hand timing policy has T=-20/U=-15.3333 versus R7=-18/-13.3333.
+  Two own generations fail and U:g1 calibration stops the study. Original cold
+  replay reproduces literal model errors. The finite schema/thinking assay is
+  implemented/SCRIPTED tested but real-model unexecuted; no stopped slot is
+  repaired/refilled and no own gain is shown.
+
+The live-prefix entries below are historical snapshots before that stop.
+
 - [Workflow-v3 actual first dispatch and completed software proofs](results/native-workflow-v3-dispatch-and-software-proof-v1.json):
   seven-world transport and both fixed-evaluation native tests now pass. New
   real writer8676/PID2886 runs at6625d8e3/plan60d8758d after two fresh resource
   observations; initial35B readiness passes, first R7 year1 checkpoint exists,
   no complete fresh score yet. Audit/cost15408 and report87576 actually wait.
   Old stopped studies stay stopped; no scientific held-out seed is chosen.
+- [First actual workflow-v3 reference](results/native-workflow-v3-first-reference-v1.json):
+  R7 completes T=-18/U=-13.3333 without technical failures, then the hand timing
+  control starts.115 full scientist payloads/literal reply choices equal the
+  prior closed R7; provider envelopes differ. This is1/2 references,0/6 own
+  slots, not new improvement or a normal whole-study audit.
 
 The preparation receipts below retain their earlier scopes/statuses. Their
 "unexecuted"/"waiting" wording predates the actual dispatch linked above.

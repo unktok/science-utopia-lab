@@ -49,8 +49,12 @@ software proof now passes, as do separate fixed-evaluation handoff/all-null
 proofs. [Workflow-v3 actually starts](research/results/native-workflow-v3-dispatch-and-software-proof-v1.json)
 at01:58:07UTC on November14 after fresh resource checks; initial35B readiness
 passes and the first Qwen3-8B reference is underway. This is a new finite
-operator-profile study, not resumption/refill of the stopped study, independent
-optimizer replication or institutional improvement. Closed actual results remain pending.
+operator-profile study, not resumption/refill of the stopped study or independent
+optimizer replication. [It subsequently stops](research/results/native-workflow-v3-stop-and-control-contrast-v1.json)
+after two complete controls: hand timing T=-20/U=-15.3333 versus R7=-18/-13.3333.
+Two known own-generation failures and then a failed calibration yield no own
+native policy or gain. The finite output-mode diagnosis is designed, not run;
+no original slot, loss or failed certificate is changed.
 See [current status](research/STATUS.md) for liveness, not software-test scores.
 
 The [closed T/U development](research/data/native-objective-instrument-loop-v1/README.md)
