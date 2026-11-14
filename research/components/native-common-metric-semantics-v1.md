@@ -18,11 +18,21 @@ coverage. Old frozen prompts/audits keep their original contents and meaning.
 
 Light SCRIPTED checks cover definition coverage, agreement with the unchanged
 observer contract, loss/missing-value preservation, bounded actual-message
-placement, registry-prose separation and archive preservation. Tests are pending
-at the initial implementation commit. No new inference, code probe or native
-world is dispatched. More text bytes are not proof of token capacity or better
-design decisions; test actual history-bearing frames/full production/cold replay
-and obtain finite real readiness before future designer dispatch.
+placement, registry-prose separation and archive preservation. Actual session
+50357 exits0 at committed5136bb7a:37 checks pass in2.48s. No new inference,
+code probe or native world is dispatched.
+
+A read-only static replacement of only loss_arithmetic on all14 saved U1
+frames preserves every other arithmetic field and original input file. The
+normalized wire sizes grow367 bytes each, maximum155130 bytes, within the
+existing200000-byte limit. This is not complete new production-frame
+reconstruction or proof of token capacity. New backend token counts/full-output
+reservation fit remain unknown; no old prompt is rewritten or redispatched.
+[Sealed checks, exact original inputs and limited static projections](../results/native-common-metric-semantics-verification-v1.json).
+
+Before future designer dispatch, test the actual history-bearing full public
+production/calibration/cold-replay path and obtain finite real readiness. More
+text bytes or passing software checks are not better institutional decisions.
 
 Keep this future change off main and out of the current study/fixed evaluation.
 The separate rationale-ceiling branch is a different unmerged change; neither
