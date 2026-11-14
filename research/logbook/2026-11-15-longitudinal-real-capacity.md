@@ -173,3 +173,24 @@ CPU cores and64GiB memory: the old250% profile is a conservative observational
 condition, not a statement that383% means the whole machine is saturated.
 This work still sends no model POST and does not silently relax that profile.
 Further resource policy/measurement, actual capacity and readiness remain next.
+
+Final full-path retention set51928 actually exits0:8passed/1.46s. The feature
+is merged with main's documentation-only capacity warning, retaining both dated
+snapshots and marking older entries as historical rather than live checks.
+The feature pushes successfully and main fast-forwards to8358e4c5. No frozen
+source changes; the actual tested/scientific candidate remainsa5be8d31, not an
+unverified replacement source. Source/verification/capacity records remain
+distinct. No pull request is created or public submission attempted.
+
+Main's final targeted capacity/retention/figure set17484 actually exits0:
+25passed/5.27s. Separate actual64k native-longitudinal-comparison-64k-v1-a1
+pins the same testeda5be8d31. Preparation51816 actually exits0, reconstructs
+the original planning/component evidence and original two losses, and actually
+verifies the numeric predecessor is closed. It performs only metadata GETs;
+no model POST or scientific started file exists. The old40k plan is not edited.
+[Exact prepared-only scientific plan](../results/native-longitudinal-64k-scientific-plan-prepared-v1.json).
+Actual capacity/resource/readiness and unused-status proof remain unachieved;
+the project goal is still active and not reduced to a passing software package.
+
+Final prepared-plan boundary set15140 actually exits0:9passed/1.18s. This is
+light record/diagnostic QA, not another native run or model-capacity proof.

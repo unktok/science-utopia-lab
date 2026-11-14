@@ -7,6 +7,12 @@ not live-process checks.
 
 ### November15: new64k SCRIPTED full native/cold/fixed path passes
 
+The implementation and retained evidence are now integrated in main at8358e4c5;
+all actual scientific/diagnostic worktrees keep their separate frozen sources.
+The matching actual64k comparison plan is prepared in its owna5be8d31
+worktree, with original numeric prerequisite actually verified closed and
+zero inference POSTs. [Prepared-only scientific plan](results/native-longitudinal-64k-scientific-plan-prepared-v1.json).
+
 At frozena5be8d31, original96173 actually exits0 after934.66s. All12 own
 slots close with the prescribed generation null retained; all13 native worlds
 complete/52 annual boundaries. All25 bounded sessions and443 actual SCRIPTED

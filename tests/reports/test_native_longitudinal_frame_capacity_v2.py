@@ -92,6 +92,23 @@ def test_new_full64k_software_path_retains_original_failures_and_has_no_real_cap
         assert p[key] is False
 
 
+def test_scientific64k_plan_is_prepared_at_tested_source_not_dispatched():
+    from pathlib import Path
+    from utopia.optimization.native_numeric_designer import checked
+    p=checked(json.loads((Path(__file__).resolve().parents[2]/'research/results/native-longitudinal-64k-scientific-plan-prepared-v1.json').read_text()))
+    assert p['source_commit']=='a5be8d3103854368a4bc6ba4c13eff7552e9dd15'
+    assert p['inherited_native_files']==272 and p['source_scope_schema'].endswith('.v2')
+    assert p['comparison']['designer_context_tokens_both_arms']==65536
+    assert p['comparison']['designer_output_tokens_both_arms']==8192
+    assert p['objectives']==['throughput','content-utility'] and len(p['arms'])==2
+    assert p['budget']['candidate_slots']==12 and p['budget']['native_worlds_upper_bound']==14
+    assert p['original_numeric_prerequisite_actually_verified_closed'] and p['preparation_actual_exit_code']==0
+    assert p['new_model_POSTs']==0 and not p['unused_status_verified']
+    for key in ('scientific_started_file_exists','actual64k_backend_capacity_proved','actual_request_readiness_proved',
+                'fresh_shared_resource_profile_passed','scientific_comparison_dispatched','scientific_gain_claimed','publication_ready'):
+        assert p[key] is False
+
+
 def test_shared_real_journal_worker_uses_v2_plan_and_actual_wire_context(tmp_path,monkeypatch):
     frames = [v2.derived_frame(frame(a)) for a in base.ARMS]; posted=[]
     p={'schema':v2.SCHEMA+'.plan','provider':{},'backend':{},'frames':frames}

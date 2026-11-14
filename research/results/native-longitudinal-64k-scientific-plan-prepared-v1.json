@@ -1,0 +1,69 @@
+{
+  "schema": "scienceutopia.native-longitudinal-64k-scientific-plan-prepared.v1",
+  "source_commit": "a5be8d3103854368a4bc6ba4c13eff7552e9dd15",
+  "frozen_source": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-64k-v1-a1",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-longitudinal-comparison-64k-v1-a1/outputs/native-longitudinal-comparison-64k-v1-a1",
+  "plan_file_sha256": "f2a12bf41b8cd0ff790f441c2db2cdb2b2082828210c86c1ac9808f860a13d3e",
+  "plan_content_sha256": "2ed9e4690fde917b0e042e2c9abe9d2325e197f95a92ae2c7c5895a635e9e148",
+  "source_scope_content_sha256": "f732b386e3d61f1692d62cade002a283b04ce472252ca45776d8e7412e8746cd",
+  "source_scope_schema": "scienceutopia.native-longitudinal-source-scope.v2",
+  "inherited_native_files": 272,
+  "comparison": {
+    "automatic_truncation": false,
+    "baseline_keeps_original_diagnostics_and_probes": true,
+    "context_revision": "matched-bounded-author-64k-v1",
+    "cross_arm_own_feedback": false,
+    "designer_context_tokens_both_arms": 65536,
+    "designer_output_tokens_both_arms": 8192,
+    "hand_reference_visible": false,
+    "information_only": true,
+    "require_improvement_or_novelty": false,
+    "same_optimizer_seed_is_not_independent_replication": true,
+    "worlds_shared_only_for_references": true
+  },
+  "arms": [
+    "scalar",
+    "parent-trajectory"
+  ],
+  "objectives": [
+    "throughput",
+    "content-utility"
+  ],
+  "budget": {
+    "candidate_slots": 12,
+    "component_probes_upper_bound": 768,
+    "designer_POSTs_upper_bound": 712,
+    "designer_session_wall_seconds": 1800,
+    "fresh_reference_worlds": 2,
+    "native_worlds_upper_bound": 14,
+    "observer_POSTs_upper_bound": 1500,
+    "proposal_POSTs_per_session": 16,
+    "readiness_POSTs_per_session": 40,
+    "readiness_sessions": 13,
+    "replace_failed_slots": false,
+    "scientist_HTTP_attempts_per_world": 1024,
+    "world_wall_seconds": 7200
+  },
+  "reserved_unused_seeds": [
+    676047151
+  ],
+  "unused_status_verified": false,
+  "backend": {
+    "model": "qwen3.6:35b-mlx-64k",
+    "model_digest": "f3ddc74319e42fad1cce455555e9f6864372665bcf9f0578b600f554787cbcc8",
+    "ollama_version": "0.33.3"
+  },
+  "component_bank_content_sha256": "e281b346b07324981846a32627d658fa489c511ddfa654e5d7e54cee559a1861",
+  "original_numeric_prerequisite_actually_verified_closed": true,
+  "preparation_session": 51816,
+  "preparation_actual_exit_code": 0,
+  "scientific_started_file_exists": false,
+  "new_model_POSTs": 0,
+  "actual64k_backend_capacity_proved": false,
+  "actual_request_readiness_proved": false,
+  "fresh_shared_resource_profile_passed": false,
+  "scientific_comparison_dispatched": false,
+  "scientific_gain_claimed": false,
+  "publication_ready": false,
+  "content_sha256": "5672f8cec14793fc9bfc4f497f524a0917c7f302e9ac233343c9e7d63ec74659"
+}
