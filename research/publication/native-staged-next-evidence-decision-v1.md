@@ -3,8 +3,8 @@
 November15. This updates the existing
 [observation-access study design](native-open-observability-comparison-design-v1.md),
 not a new scientific dispatch, larger search authorization, patched old study,
-changed loss or claim of publication readiness. The current frozen unused
-evaluation must finish with its original readouts. Its seed1891355522 and
+changed loss or claim of publication readiness. The frozen unused evaluation
+has now closed with its original readouts. Its seed1891355522 and
 outcomes stay outside every future optimizer's development bank.
 
 ## Why another identical search is not the next question
@@ -41,7 +41,7 @@ diversity, failure logging, Python institutions or an archive as our invention.
 
 Test whether giving the same open institution author time-resolved native
 resource/production/process records changes its submitted institutions and
-their consequences, relative to scalar feedback, under fixed objectives and
+their consequences, relative to the existing feedback baseline, under fixed objectives and
 the same permitted code/node/wiring/process space.
 
 This is a prospective information intervention, not a promise that richer
@@ -49,6 +49,22 @@ observations help, a comparison of scalar versus differentiable worlds, or a
 requirement to return different systems for T and U. The target is still the
 system selected under each loss. The scientist world is retained, not replaced
 with an easier numerical model. New rules and graphs remain legal in both arms.
+
+Baseline clarification from the retained actual request: the implementation
+label `scalar` does not mean only a number is available. The original archive
+already contains common-panel bodies and workflow execution-order witnesses;
+configured staged probes return historical R7 contexts. Keep all those original
+fields/capabilities in both arms. Test the additional parent-specific longitudinal
+accounting/production representation, not a claim that phase order or every
+resource observation was otherwise inaccessible. The presentation/retrieval
+package does not isolate a single information field's causal effect.
+
+Future branch `feat/native-longitudinal-feedback-v1` atb1219237 implements
+optional completed-checkpoint attachment and author/request/archive projections,
+with72 light checks and a historical initial-frame fixture. The real runner
+does not yet enable it. Full source-scoped native/cold/calibration integration,
+later-frame/token-capacity checks and the matched controller remain necessary.
+This prototype is not a newly dispatched scientific comparison or its outcome.
 
 The important possible answer is about which longitudinal observations connect
 an institution proposal to persistent scientific consequences. A mere increase

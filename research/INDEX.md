@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Complete actual staged unused evaluation](results/native-open-staged-fixed-closed-v1.md):
+  all three physical worlds/four labels and original paired readouts close.
+  Both own selections tie R7 and lose to the hand on both losses. No current
+  experiment/reader remains live; no gain or main-track readiness is claimed.
+  Updated manuscript source awaits a separately built/reviewed PDF.
+
 - [First fixed completion](results/native-open-staged-fixed-first-completion-v1.json):
   R7/identical selected U0 T=-32/U=-28.6667; first of three physical jobs,
   not completed control comparison. [Next evidence decision](publication/native-staged-next-evidence-decision-v1.md)

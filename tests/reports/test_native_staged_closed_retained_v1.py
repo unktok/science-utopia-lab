@@ -86,3 +86,44 @@ def test_first_fixed_completion_is_literal_sharing_and_not_whole_run_closure():
     assert not r['terminal_present_at_snapshot'] and not r['own_improvement_or_advantage_claimed']
     assert r['new_designer_POSTs'] == r['new_model_calls_by_this_reader'] == 0
     assert not r['publication_ready']
+
+
+def test_complete_fixed_evaluation_preserves_all_labels_and_unfavorable_scores():
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-fixed-closed-v1.json').read_text()))
+    dev = evidence()
+    assert r['origin_audit_content_sha256'] == dev['audit']['content_sha256']
+    assert r['unused_seeds'] == [1891355522]
+    assert r['terminal']['status'] == 'closed' and r['terminal']['completed_jobs'] == 3
+    assert r['physical_worlds'] == 3 and r['logical_labels'] == 4
+    rows = {x['label']: x for x in r['logical_rows']}
+    assert set(rows) == {'reference:R7-original', 'reference:post-funding-cost',
+        'selected:throughput', 'selected:content-utility'}
+    assert all(x['status'] == 'complete' for x in rows.values())
+    for label in ('selected:throughput', 'selected:content-utility'):
+        assert rows[label]['scores'] == rows['reference:R7-original']['scores'] == {
+            'throughput': -32., 'content-utility': -28.666666666666668}
+    assert rows['reference:post-funding-cost']['scores'] == {'throughput': -36., 'content-utility': -31.}
+    assert rows['selected:content-utility']['physical_job'] == rows['reference:R7-original']['physical_job']
+    assert rows['selected:throughput']['physical_job'] != rows['reference:R7-original']['physical_job']
+    assert all(code == 0 for code in r['audit']['continuation_exit_codes'].values())
+    assert r['audit']['two_original_audits_identical'] and r['audit']['two_cost_exports_identical']
+    assert all(x['all_export_files_byte_identical'] for x in r['readouts'].values())
+    assert r['new_designer_generation_POSTs'] == 0
+    assert not r['own_improvement_over_R7_observed'] and not r['own_advantage_over_hand_observed']
+    assert not r['independent_optimizer_replication'] and not r['publication_ready']
+
+
+def test_fixed_input_classes_and_costs_are_physical_not_duplicated_logical_labels():
+    r = checked(json.loads((ROOT/'research/results/native-open-staged-fixed-closed-v1.json').read_text()))
+    assert len(r['complete_observed_input_classes']) == 2
+    shared = next(x for x in r['complete_observed_input_classes'] if len(x['physical_ids']) == 2)
+    assert shared['physical_ids'] == ['evaluation-000', 'evaluation-002']
+    assert shared['all_literal_response_choices_equal'] and not shared['all_full_provider_bodies_equal']
+    assert [w['requests']['completed_responses'] for w in r['request_worlds']] == [161, 176, 161]
+    costs = r['costs']
+    assert costs['scientist_completed_responses'] == 498
+    assert costs['scientist_wire_inputs_without_committed_reply'] == 0
+    assert costs['scientist_provider_usage']['prompt_tokens']['recorded_sum'] == 757983
+    assert costs['scientist_provider_usage']['completion_tokens']['recorded_sum'] == 44296
+    assert costs['common_content_observer']['physical_requests'] == 132
+    assert not costs['aliases_or_nested_durations_added']

@@ -1,0 +1,5 @@
+label,seed,physical_job,status,throughput,content-utility
+reference:R7-original,1891355522,evaluation-000,complete,-32.0,-28.666666666666668
+reference:post-funding-cost,1891355522,evaluation-001,complete,-36.0,-31.0
+selected:throughput,1891355522,evaluation-002,complete,-32.0,-28.666666666666668
+selected:content-utility,1891355522,evaluation-000,complete,-32.0,-28.666666666666668
