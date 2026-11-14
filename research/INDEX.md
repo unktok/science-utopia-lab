@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Staged author in the actual native campaign and fixed handoff](components/native-open-workflow-staged-campaign-v1.md):
+  ten SCRIPTED native worlds,48 real component probes, original cold audit/cost/
+  report and fixed mechanism readouts. Full software integration is verified;
+  real backend readiness, free construction and scientific gains are not.
+  [Direct programmatic-mechanism prior-work addendum](publication/novelty-addendum-programmatic-institutions-v1.md)
+  narrows unsupported novelty claims without changing the research goal or loss.
+
 - [Full-workflow staged component software connection](components/native-open-workflow-staged-component-connection-v1.md):
   R7-only20 actual inputs, original T0 failure in real containers, SCRIPTED
   correction/new node/wires and public outer/inner cold replay. No actual LLM

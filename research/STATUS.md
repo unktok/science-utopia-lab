@@ -2,6 +2,27 @@
 
 ## Active publication-ready goal
 
+### November14: staged mode now traverses the full native campaign and fixed handoff in software
+
+At clean5c986464,21902 exits0 after454.92s. The explicit new mode passes the
+actual runner/campaign/public bounded worker/production factory,48 real
+component probes, seven development and three fixed native software worlds,
+40 checkpoints and matching double original-source audits/costs/reports plus
+fixed mechanism/choice/input readouts. Every HTTP/corpus/upstream closure is
+SCRIPTED: zero actual model calls, not autonomous correction or improvement.
+Original malformed fixture/count assumptions remain separately preserved.
+[Full evidence](results/native-open-workflow-staged-native-software-v1.json),
+[implemented path and next real boundary](components/native-open-workflow-staged-campaign-v1.md).
+The plan declares376/384 conservative designer/probe maxima, not13 one-shot
+calls, with request-dependent readiness counts and unchanged six own slots,
+two controls, original world/losses and non-veto diagnostics. Native science
+still matches264 original source files. Actual free-model calibration and
+optimization have not started; no real inference job is live from this work.
+The81-page reviewed PDF stays unchanged. [Closest-work claim addendum](publication/novelty-addendum-programmatic-institutions-v1.md)
+also identifies two missing direct references for its next consolidated update.
+Main-track significance, appropriate independent evidence and final readiness
+remain unachieved; source/tests/record counts are not their substitutes.
+
 ### November14 21:18JST: full-workflow staged component SOFTWARE connection verified
 
 The new explicit R7-only scope stages20 uniquely attributed original inputs
