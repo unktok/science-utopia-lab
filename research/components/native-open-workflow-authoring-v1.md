@@ -50,6 +50,8 @@ With that prospective profile, all six retrospective calibration frames are
 current parent is unchanged in every frame. No measured model token fit,
 latency or free-design capacity is inferred from byte counts. A final light
 suite has23 passes32.91s, including explicit scalar/hash/raw-preservation checks.
+The same23 cases rerun after committing9c6fc8a0 and pass18.30s, session47122
+exit0. [Exact module/test hashes and scope](../results/native-open-workflow-author-light-v1.json).
 The wire cap remains140000 bytes; genuinely oversized parents stop before HTTP.
 No prior scientific prompt, failed slot, selected policy or active evaluation
 is changed. Settings/protocol/adapter source hashes bind the optional new mode.
@@ -65,3 +67,7 @@ role/source execution, feedback/loss loop, all nulls, double cold proofs and
 selection-fixed handoff. A separate finite study protocol and real backend
 calibration precede any new scientific calls. It remains necessary to design
 an important empirical comparison rather than count interface tests as a result.
+The native proof must include an active consumer that changes an actual
+scientist input/action (for example an authored catalog-planning institution
+feeding the existing native actuator). A passive added memory office alone
+does not prove that wider institutional authority reaches the scientist world.

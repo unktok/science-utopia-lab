@@ -1,0 +1,68 @@
+{
+  "schema": "scienceutopia.open-workflow-ir-author-light-proof.v1",
+  "source_commit": "9c6fc8a050ba2cab474ceb973ee8561d3f3558de",
+  "session": 47122,
+  "exit_code": 0,
+  "tests": 23,
+  "seconds": 18.3,
+  "junit_file": "outputs/open-workflow-ir-light-v1-a4/junit.xml",
+  "junit_sha256": "8e5a2668e2735a41860670347e169ff5c1734541fb8bde9669d0156579a5ccf0",
+  "source_files": {
+    "utopia/optimization/native_open_workflow_submission_v1.py": "851ab9bfc7009be412d3b692768ec210aa0dc4d2cc237c057418e286c4558911",
+    "utopia/optimization/native_workflow_designer_v1.py": "04fd0b231285c694c80bf38953c1c9b1c425650ee5f5b6bbf37e4072a6e8927e",
+    "tests/optimization/test_native_open_workflow_author_v1.py": "7eede960189b3f223a71a5f621b8dc2e45429384c5977ad6eb59bb6b736f2fa6",
+    "research/protocols/campaigns/native-open-workflow-authoring-v1.md": "a15d8e354fa06e02dc26af4dad22b16d4907d6fabdf6954fed2d8f889336c1d7"
+  },
+  "scope": [
+    "actual shared HTTP worker function with mocked requests and in-process run_bounded fixture",
+    "public calibration certificate and cold replay",
+    "literal two-code-node plus new protocol/wire compilation",
+    "invalid-IR own-history projection and next prompt",
+    "all own scalar metrics and raw-measurement hashes preserved",
+    "oversize input stops before dispatch",
+    "legacy and compiler-feedback profile regressions"
+  ],
+  "earlier_light_scopes": [
+    {
+      "output": "outputs/open-workflow-ir-light-v1-a1",
+      "passed": 18,
+      "failed": 4,
+      "reason": "derived per-field path catalogue makes the frame exceed140000 bytes; no dispatch"
+    },
+    {
+      "output": "outputs/open-workflow-ir-light-v1-a2",
+      "passed": 22,
+      "failed": 0,
+      "seconds": 40.85
+    },
+    {
+      "output": "outputs/open-workflow-ir-light-v1-a3",
+      "passed": 23,
+      "failed": 0,
+      "seconds": 32.91
+    }
+  ],
+  "retrospective_original_request_calibration_wire_bytes": {
+    "throughput": [
+      103919,
+      106819,
+      109726
+    ],
+    "content-utility": [
+      104089,
+      107047,
+      107646
+    ]
+  },
+  "retrospective_scope": "Read-only reconstruction of six closed development requests, not new scientific data or token-capacity evidence",
+  "maximum_wire_bytes": 140000,
+  "model_token_capacity_measured": false,
+  "real_inference_POSTs": 0,
+  "native_worlds": 0,
+  "Docker_executions": 0,
+  "outer_bounded_subprocess_verified_for_new_mode": false,
+  "structural_only_study_runner_accepts_mode": false,
+  "new_mode_scientific_comparison_or_improvement": false,
+  "publication_ready": false,
+  "content_sha256": "5c6c1ea17d546e7e21e186aaf43443072c98819c874622048750392838c6f26b"
+}

@@ -2,10 +2,11 @@
 
 ## Active publication-ready goal
 
-### November14 16:10JST: one unused control completes; open-institution author API is prepared
+### November14 16:08JST: one unused control completes; open-institution author API is prepared
 
 Original writer30142 remains live and advances to evaluation-001 at07:01:48UTC.
 The first R7 unused-condition world completes T=-32/U=-24.666666666666668.
+[Original prefix and score hashes](results/native-workflow-feedback-fixed-first-reference-v3.json).
 It is not a comparison with development scores or an own improvement. The
 hand+U-selected and separate T-selected physical worlds are still unfinished.
 No final original audit or normally closed evaluation is inferred.
@@ -20,6 +21,8 @@ oversized attempts are preserved and corrected as declared projections, not
 loss/graph repair. [Scope and remaining native wiring](components/native-open-workflow-authoring-v1.md).
 The structural-only runner/audit/report/fixed handoff do not yet admit the
 wider mode. Heavy native QA and PDF rebuilding remain deferred during inference.
+The23-case API/legacy regression also reruns after commit9c6fc8a0 and passes
+18.30s;47122 exits0 before retention. [Exact light scope](results/native-open-workflow-author-light-v1.json).
 
 ### November14 15:46JST: selection-fixed unused evaluation is actually running
 

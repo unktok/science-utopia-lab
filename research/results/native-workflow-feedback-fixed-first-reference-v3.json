@@ -1,0 +1,32 @@
+{
+  "schema": "scienceutopia.workflow-fixed-first-reference.v3",
+  "classification": "completed-first-reference-prefix-not-final-evaluation-audit",
+  "source_commit": "2133ffc02810820607983db499fc66dc6d207f17",
+  "plan_content_sha256": "797c83282b2eeaf86d5ad37b2c03508cb5c0775c992e85c7e59b0eec9d2304cf",
+  "run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-workflow-feedback-fixed-evaluation-v3-a1/outputs/native-workflow-feedback-fixed-evaluation-v3-a1",
+  "writer_session": 30142,
+  "writer_pid": 87075,
+  "physical_job": "evaluation-000",
+  "logical_labels": [
+    "reference:R7-original"
+  ],
+  "seed": 1858637637,
+  "observation_file_sha256": "69e03fed0baec6f15e9a1252a129e357c2ed3f975525f48e7198159aaa5e4d9f",
+  "cross_scores_file_sha256": "3b371fe6863ef471d92a43c7cd4df964fca967869326dbbda9ac810501a21aaf",
+  "scores": {
+    "content-utility": -24.666666666666668,
+    "throughput": -32
+  },
+  "technical_failures": [],
+  "next_stage": {
+    "active": "evaluation-001",
+    "observed_utc": "2026-11-14T07:01:48.170445+00:00"
+  },
+  "normally_closed_whole_evaluation": false,
+  "original_full_cold_audit_complete": false,
+  "new_own_improvement_shown": false,
+  "comparison_to_different_development_seed_valid": false,
+  "independent_optimizer_replication": false,
+  "publication_ready": false,
+  "content_sha256": "ccb0218af18a7c65ce0338e4ea870f705ce1a69027a979201c3da00db71ca3f7"
+}
