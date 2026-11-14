@@ -55,3 +55,12 @@ analysis source. They cannot generate models or turn a stop into normal closure.
 The current software proof, profile and notes are merged to main and pushed at
 7b770d95. Live scientific/analysis sources remain7f1fc61f and are never edited.
 [Exact dispatch bounds and evidence](../results/native-workflow-compiler-feedback-dispatch-v2.json).
+
+While R7 progresses into year2 and before any own proposal/score, prospectively
+fix one unused-condition candidate seed1858637637 from a public literal hash
+rule in the [fixed-evaluation note](../protocols/campaigns/native-workflow-feedback-fixed-evaluation-v2.md).
+No inventory or evaluation dispatch has yet occurred. Require all three raw
+project-root inventories and normal development closure; any collision stops
+this plan rather than silently changing the seed. Evaluate available own outputs
+whether or not they beat controls, with explicit missing labels and all paired
+cross-scores. This is not independent optimizer replication or a new loss veto.

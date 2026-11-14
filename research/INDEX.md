@@ -10,6 +10,10 @@ Historical documents retain their paths and source identities.
   writer39932/PID9167 starts04:38:48UTC, initial real35B readiness passes and
   R7's original native scientist world runs. Two read-only continuations wait.
   No complete new score/own proposal at this snapshot; old stops stay stopped.
+- [Prospective selection-fixed followup](protocols/campaigns/native-workflow-feedback-fixed-evaluation-v2.md):
+  one hash-derived seed declared before own proposal results; unused-inventory
+  proof and normal development closure still required. No evaluation dispatch
+  or independent optimizer replication is implied.
 
 - [Compiler-feedback production-path proof](results/native-workflow-compiler-feedback-software-v2.json):
   36 focused checks plus9 SCRIPTED native worlds through original factories,
