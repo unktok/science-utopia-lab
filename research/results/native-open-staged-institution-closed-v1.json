@@ -1,0 +1,397 @@
+{
+  "audit": {
+    "content_sha256": "8d8507ab4c91449b339488297e16d708731da50046fa73a37a2f6b5526e7501a",
+    "cost_file_sha256": "321253964065c8b0a34536eefec362cec7d1fb5f064b3fc514cc570a2a1364c4",
+    "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-audit-v1-a1",
+    "double_audit_bytes_equal": true,
+    "double_cost_bytes_equal": true,
+    "file_sha256": "07a16abe32435aff0748051ffa70952b8232e611a4f743669b6bf4696247f567"
+  },
+  "construction_counts": {
+    "known_probe_attempts": 64,
+    "raised": 0,
+    "recorded_model_steps": 84,
+    "returned": 64,
+    "sessions_missing_component_summary": 0
+  },
+  "content_sha256": "30274ee97ffa11e07529baec2497d176ebe420fc0f5b0c025a1cc0a9901c672c",
+  "costs": {
+    "aliases_or_nested_durations_added": false,
+    "auxiliary_group_counts": {
+      "editor-readiness": {
+        "completion_record_available": 200,
+        "final_response_reported": 200,
+        "known_HTTP_response": 200,
+        "native_cache_subset_counts": {
+          "within-prompt": 200
+        },
+        "recorded_POST_attempt": 200,
+        "request_intents": 200,
+        "status_counts": {
+          "http-recorded": 200
+        },
+        "unknown_usage_imputed": false
+      },
+      "load-designer": {
+        "completion_record_available": 13,
+        "final_response_reported": 13,
+        "known_HTTP_response": 13,
+        "native_cache_subset_counts": {
+          "unknown": 13
+        },
+        "recorded_POST_attempt": 13,
+        "request_intents": 13,
+        "status_counts": {
+          "completed-load": 13
+        },
+        "unknown_usage_imputed": false
+      },
+      "load-scientist": {
+        "completion_record_available": 8,
+        "final_response_reported": 8,
+        "known_HTTP_response": 8,
+        "native_cache_subset_counts": {
+          "unknown": 8
+        },
+        "recorded_POST_attempt": 8,
+        "request_intents": 8,
+        "status_counts": {
+          "completed-load": 8
+        },
+        "unknown_usage_imputed": false
+      },
+      "staged-proposal": {
+        "completion_record_available": 84,
+        "final_response_reported": 84,
+        "known_HTTP_response": 84,
+        "native_cache_subset_counts": {
+          "within-prompt": 84
+        },
+        "recorded_POST_attempt": 84,
+        "request_intents": 84,
+        "status_counts": {
+          "http-recorded": 84
+        },
+        "unknown_usage_imputed": false
+      }
+    },
+    "common_content_observer": {
+      "input_observer_audit_content_sha256": "518573e398fb6e2c8c3deab125b96556afa54c48ae9dc4554bd7e3b629a710c4",
+      "known_terminal_attempts": 93,
+      "overlap_with_native_response_caches": false,
+      "physical_requests": 93,
+      "scope": "Separate fixed-content critic POSTs; repeated content cache hits are not additional physical ratings.",
+      "usage": {
+        "http_elapsed_seconds": {
+          "known_sum": 480.2505300815683,
+          "unknown_attempts": 0
+        },
+        "output_tokens": {
+          "known_sum": 14144,
+          "unknown_attempts": 0
+        },
+        "prompt_tokens": {
+          "known_sum": 45420,
+          "unknown_attempts": 0
+        }
+      }
+    },
+    "scientist_completed_responses": 937,
+    "scientist_provider_usage": {
+      "cached_prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 937,
+        "missing_responses": 0,
+        "recorded_sum": 190032
+      },
+      "completion_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 937,
+        "missing_responses": 0,
+        "recorded_sum": 98457
+      },
+      "prompt_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 937,
+        "missing_responses": 0,
+        "recorded_sum": 1117688
+      },
+      "total_tokens": {
+        "all_completed_responses_known": true,
+        "invalid_responses": 0,
+        "known_responses": 937,
+        "missing_responses": 0,
+        "recorded_sum": 1216145
+      }
+    },
+    "scientist_wire_inputs_without_committed_reply": 0
+  },
+  "ended_utc": "2026-11-14T17:18:07.491293+00:00",
+  "interpretation": {
+    "actual_operative_change": "U1 changes native research agenda and full scientist input, worsening utility; other five own outcomes tie R7.",
+    "all_six_native_slots_complete": true,
+    "automatic_error_repair_demonstrated": false,
+    "independent_optimizer_replication": false,
+    "interface_fixes": "Future rationale-budget and metric-semantics branches remain separate; no repair or input change applied to this closed study.",
+    "new_node_or_wiring_authored": false,
+    "own_advantage_over_hand_observed": false,
+    "own_improvement_over_R7_observed": false,
+    "publication_ready": false,
+    "scientific_truth_demonstrated": false,
+    "unused_evaluation_completed": false
+  },
+  "plan_sha256": "e13294a1e3e6ba29b918ed6019b7a428825b9227a80534a894ed049c10f8e2ca",
+  "raw_run": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1",
+  "readouts": {
+    "choices": {
+      "all_export_files_byte_identical": true,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-choices-v1-a1",
+      "ended_file_sha256": "bef1f9cee5cdfb50fa0d40dd19b99c91c31b5afa2b8dcecb372372d01a50ffef",
+      "report_file_sha256": "802acde2d4a48f79b9868b2e79cfb9d4d30f587ae95a477bdc3b2782e9639971"
+    },
+    "construction": {
+      "all_export_files_byte_identical": true,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-construction-readouts-v1-a1/outputs/native-open-staged-construction-readouts-v1-a1",
+      "ended_file_sha256": "6784573027b23215b3da9b4d7b3ae896f7db111c48e2cab116cb1ac305d2ca53",
+      "report_file_sha256": "c2c03b8c05d97fb9f10473bfbd8636e6159a9f520760ebd2c96ed36b89f65ba1"
+    },
+    "effects": {
+      "all_export_files_byte_identical": true,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-effects-v1-a1",
+      "ended_file_sha256": "994928d0e74b97cde6002546471272161e51ddf5df78d15ff99042d36e0339dd",
+      "report_file_sha256": "7bdaa2e8cf42e95ee8a2d4440f03c412d09db7a523d70c53d6c8eeb5e944a59a"
+    },
+    "report": {
+      "all_export_files_byte_identical": true,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-report-v1-a1",
+      "ended_file_sha256": "03e12d3ece049c430cf4bba3d7a5062ce4306c92c74ed34a7913e8c8029495a2",
+      "report_file_sha256": "2b4cfcd7a3984e0a350ade9e63aea4d801dd19448a0901ac8a3b83115fb76b74"
+    },
+    "requests": {
+      "all_export_files_byte_identical": true,
+      "directory": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-analysis-v1-a1/outputs/native-open-staged-institution-objective-requests-v1-a1",
+      "ended_file_sha256": "60fedbdaa43c5538fcffa5b900381ac1a90c584cc8ea339634c3794b4ecbb756",
+      "report_file_sha256": "1fe891c4d0c9c2ad8bfc75ca217898298acd4d65ba34bcf5700549bf50b4b2b2"
+    }
+  },
+  "recorded_writer_wall_seconds": 13394.179965,
+  "references": [
+    {
+      "label": "R7-original",
+      "optimizer_visible": true,
+      "scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "status": "complete"
+    },
+    {
+      "label": "post-funding-cost",
+      "optimizer_visible": false,
+      "scores": {
+        "content-utility": -15.333333333333332,
+        "throughput": -20.0
+      },
+      "status": "complete"
+    }
+  ],
+  "schema": "scienceutopia.staged-native-development-closed.v1",
+  "selection": {
+    "content-utility": {
+      "all_tied_ids": [
+        "native-adaptive-31041c0814053ecdbfe350e6",
+        "native-adaptive-d5663672fea02709d8dd029e"
+      ],
+      "loss": -13.333333333333332,
+      "selected_id": "native-adaptive-31041c0814053ecdbfe350e6"
+    },
+    "throughput": {
+      "all_tied_ids": [
+        "native-adaptive-a7d6d1561ad006ce3aed5cfa",
+        "native-adaptive-a2d5e0721762cbfd44cad5ba",
+        "native-adaptive-46718f7d59d3a3b5c60ca35d"
+      ],
+      "loss": -18.0,
+      "selected_id": "native-adaptive-a7d6d1561ad006ce3aed5cfa"
+    }
+  },
+  "selection_content_sha256": "00450032ae1d71a9d5f6c02d35fa2e813bda057a85eec44de27b8ea7463ebf7d",
+  "slots": [
+    {
+      "added_connections": 0,
+      "added_nodes": 0,
+      "completed_author_steps": 14,
+      "component_testing": {
+        "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 8,
+        "raised": 0,
+        "returned": 8,
+        "veto_on_finish": false
+      },
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 0,
+      "objective": "throughput",
+      "physical_job": "native-adaptive-a7d6d1561ad006ce3aed5cfa",
+      "request_sha256": "9f4399eaadb888d0ad6147069cdfaaa883e8e88eb3cb61a90d920c2f06313017",
+      "slot_index": 0,
+      "source_edits_from_anchor": [
+        "world.selection"
+      ],
+      "status": "complete"
+    },
+    {
+      "added_connections": 0,
+      "added_nodes": 0,
+      "completed_author_steps": 14,
+      "component_testing": {
+        "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 0,
+        "raised": 0,
+        "returned": 0,
+        "veto_on_finish": false
+      },
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 0,
+      "objective": "content-utility",
+      "physical_job": "native-adaptive-31041c0814053ecdbfe350e6",
+      "request_sha256": "f0048d4ddc2cd8911835fec8d25b6da28b7e3164a5d429193d60233bbe6fa8d6",
+      "slot_index": 1,
+      "source_edits_from_anchor": [],
+      "status": "complete"
+    },
+    {
+      "added_connections": 0,
+      "added_nodes": 0,
+      "completed_author_steps": 14,
+      "component_testing": {
+        "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 16,
+        "raised": 0,
+        "returned": 16,
+        "veto_on_finish": false
+      },
+      "cross_scores": {
+        "content-utility": -12.0,
+        "throughput": -18.0
+      },
+      "generation": 1,
+      "objective": "content-utility",
+      "physical_job": "native-adaptive-60b58ed203152f4648db8e25",
+      "request_sha256": "c3e0b7f946b400e80d04842dbc8d7c293ea861c0bc563a4729fce63d72d646d8",
+      "slot_index": 2,
+      "source_edits_from_anchor": [
+        "developer-catalog-agenda"
+      ],
+      "status": "complete"
+    },
+    {
+      "added_connections": 0,
+      "added_nodes": 0,
+      "completed_author_steps": 14,
+      "component_testing": {
+        "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 4,
+        "raised": 0,
+        "returned": 4,
+        "veto_on_finish": false
+      },
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 1,
+      "objective": "throughput",
+      "physical_job": "native-adaptive-a2d5e0721762cbfd44cad5ba",
+      "request_sha256": "40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05",
+      "slot_index": 3,
+      "source_edits_from_anchor": [
+        "world.selection"
+      ],
+      "status": "complete"
+    },
+    {
+      "added_connections": 0,
+      "added_nodes": 0,
+      "completed_author_steps": 14,
+      "component_testing": {
+        "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 20,
+        "raised": 0,
+        "returned": 20,
+        "veto_on_finish": false
+      },
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 2,
+      "objective": "throughput",
+      "physical_job": "native-adaptive-46718f7d59d3a3b5c60ca35d",
+      "request_sha256": "5d1a1af756112032a48874eadc59992cb239ab46467d3ba427dc258f5aea39ef",
+      "slot_index": 4,
+      "source_edits_from_anchor": [
+        "world.selection"
+      ],
+      "status": "complete"
+    },
+    {
+      "added_connections": 0,
+      "added_nodes": 0,
+      "completed_author_steps": 14,
+      "component_testing": {
+        "contract_sha256": "3ee8a829acb2e91a0d55bc22e10d4ff607488aa92c4048631ad43eb321b74ece",
+        "new_model_calls_from_tests": 0,
+        "new_native_worlds": 0,
+        "probe_attempts": 16,
+        "raised": 0,
+        "returned": 16,
+        "veto_on_finish": false
+      },
+      "cross_scores": {
+        "content-utility": -13.333333333333332,
+        "throughput": -18.0
+      },
+      "generation": 2,
+      "objective": "content-utility",
+      "physical_job": "native-adaptive-d5663672fea02709d8dd029e",
+      "request_sha256": "666c278317e32da4971181464cb6a8380824c7d2c2243d28c2aeb7ff3b19cc21",
+      "slot_index": 5,
+      "source_edits_from_anchor": [
+        "world.selection"
+      ],
+      "status": "complete"
+    }
+  ],
+  "source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "started_utc": "2026-11-14T13:34:53.311328+00:00",
+  "terminal": {
+    "consumed_slots": 6,
+    "content_sha256": "b95c23aa876e176db98c047ef4b2d75ce35f8cddab57e3025135f4b27f3d4e8d",
+    "ended_utc": "2026-11-14T17:18:07.491293+00:00",
+    "no_retry": true,
+    "observations": 8,
+    "schema": "scienceutopia.native-workflow-objective-loop.v1.terminal",
+    "stage": "closed",
+    "status": "closed"
+  },
+  "wall_scope": "Observed shared-host campaign interval, not dedicated inference speed or summed component timings."
+}

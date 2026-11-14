@@ -1,5 +1,26 @@
 # What the workflow pilot can contribute, and what it cannot
 
+## November15 actual staged-study decision update
+
+The [complete six-slot staged study](../results/native-open-staged-institution-closed-v1.md)
+now closes with all eight native worlds and byte-matching paired original
+readouts.84 actual designer steps and64 returned component probes show an
+operated agenda edit that worsens content utility, five baseline ties, no
+newly authored nodes/wires and no advantage over the hand timing control.
+The earlier SCRIPTED correction/new-wiring proof is software capability, not
+an actual invention result. This does not establish an important main-track
+answer, prove graph design useless or justify automatic scale-up.
+
+The prior unused-seed declaration is honored with frozen T0/U0/R7/hand;
+three literal-distinct physical policies start on1891355522 without new design.
+Its results are not yet complete. Explicitly retain the future interface fixes
+as unapplied: better inline metric information and removing an optional-note
+cap are sensible prospective corrections, not demonstrated causes or an
+excuse to repair this study. A next study needs a discriminating scientific
+question and fixed information/authority/cost comparisons before further
+inference. Current significance, independent evidence and manuscript gates
+remain open. The text below records earlier decisions and dated observations.
+
 November14 research-design update while the finite numeric experiment is live.
 It changes no loss, proposal budget, current source or selection policy. A
 publishable main result remains unproved. The previous goal turn was progress:

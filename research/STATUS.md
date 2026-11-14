@@ -2,6 +2,28 @@
 
 ## Active publication-ready goal
 
+### November15 02:34JST: development closes without gain; fixed evaluation starts
+
+All six actual staged proposals/eight native worlds complete. Original double
+audits/costs and five paired exports agree. The84 author steps/64 returned
+component probes yield five R7 ties, one U worsening, no new node/wire and no
+own advantage over the hand. T0/U0 are selected by the unchanged own-only
+minimum/first-tie rule. [Closed results, costs and limits](results/native-open-staged-institution-closed-v1.md).
+
+Fixed writer19682/PID43744 starts17:34:33UTC on predeclared seed1891355522:
+four logical labels/three literal-distinct physical policies, zero new design.
+Both preparation and immediate pre-dispatch inventories find no seed overlap;
+fresh two-sample resource observations pass. Original sourcef47270b9 stays
+unchanged. Readonly handoff41278 waits for its exact normal closure, then
+runs original double audits/costs/results/mechanism exports. No fixed result
+or publication readiness yet. [Attempts, locators and dispatch](logbook/2026-11-15-staged-closure-and-fixed-dispatch.md).
+
+Future rationale-budget/metric-semantics fixes are pushed separately, not
+merged/applied; full native integration/readiness remains required. The reviewed
+82-page PDF predates actual staged outcomes. R2 important claim, R3 independent
+evidence, R5 current focused manuscript and R6 final readiness remain open.
+Earlier entries below are dated snapshots, not current liveness.
+
 ### November15 01:48JST: T2 completes; final U2 starts; definition coverage inspected
 
 T2 returns T=-18/U=-13.3333 and all115 full scientist inputs/choices equal

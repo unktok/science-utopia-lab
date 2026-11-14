@@ -6,6 +6,14 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Actual staged study closed, no own advantage](results/native-open-staged-institution-closed-v1.md):
+  six complete proposals/eight worlds,84 steps/64 returned probes; five ties,
+  one worsening, no new nodes/wires. Double audits/costs/all exports agree.
+  [Fixed dispatch](logbook/2026-11-15-staged-closure-and-fixed-dispatch.md)
+  now evaluates three literal-distinct policies on predeclared unused1891355522,
+  without redesign/reselection. Older entries below retain historical snapshots;
+  the reviewed82-page PDF does not yet include these actual results.
+
 - [Five staged native slots complete; final U2 begins](logbook/2026-11-15-final-slot-and-definition-coverage.md):
   T2 ties R7 on both losses/full inputs/choices. Its complete journal and
   final summary reconcile20 probes; earlier partial-count commentary is
