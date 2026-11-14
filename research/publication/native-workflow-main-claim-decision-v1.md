@@ -90,3 +90,51 @@ variation and feasible expense, not from a desire for significance. The main
 paper must state one important supported answer and its limits. The broader
 integrated manuscript keeps the other genuine research tracks without counting
 their heterogeneous software checks as independent empirical support.
+
+## November14 first-own observation: distinguish phase labels, order and behavior
+
+The new compiler-feedback study is not closed, but its first own T0 world
+completes. [Original prefix](../results/native-workflow-compiler-feedback-first-own-v2.json)
+returns T=-20/U=-15.3333, equal to its selected hand parent, with127 exact
+scientist payloads and literal reply choices equal. It changes three phase
+integers, not connections or the actual total annual order. Different graph
+fingerprints and edited phase fields are therefore not new behavioral authority
+or improvement here. The author's claim that the parent had causal violations
+is unsupported: the actual wire contains correct parent phases161/162/163 and
+separately labeled historical anchor phases78/79/80. Do not repair the received
+proposal, blame transport mixing without evidence or deduplicate later worlds
+from this observed equality. This one valid completion is not reliable invention.
+
+### A production-envelope check before interpreting missing count improvement
+
+The original year0 checkpoint, file SHA256
+de5dbf00a6825b00e2d70b8378cdc62017d6330fdfcf2893d6d5015d643027f9,
+contains five original authors, all idle at start0/end0. Each has minimum
+displayed expertise duration2: respectively mathematical_software/distributed_systems,
+software_engineering, performance_analysis, software_engineering/distributed_systems/
+evolutionary_computation, and social_networks/operating_systems. The native
+world declares2 outputs per completed project and a4-year horizon. Under
+serial noninterrupted catalog projects, no new authors, no extra production
+and at most one accepted occurrence per produced output, the elementary
+envelope is `2 * sum_i floor(4 / d_i) = 20`.
+
+This is a **conditional production envelope**, not yet a theorem about every
+legal graph or the broader system-design framework. Native submission handling
+does slice responses to remaining requested outputs and requires maturity in
+the current year; catalog assignment preserves the real duration and refuses
+ongoing-project replacement. However, before calling a count optimum proved,
+check all relevant actuation, resubmission/repeated-acceptance and measured
+decision-occurrence paths against those assumptions. Do not confuse distinct
+produced contents with the declared decision-occurrence metric, and do not
+generalize this seed's expertise durations to unused initializations.
+
+The hand's20 counts already attain this conditional envelope. Therefore do
+not design a scale-up around a promise that more repeats must beat its count.
+Determine whether the tested legal authority leaves any relevant headroom.
+U is not determined by count alone: it also depends on selected content and
+fixed critic opinions. Neither stronger U nor a T/U conflict is promised.
+After normal closure, choose the next scientifically important comparison from
+actual authority, objective support and observed behavior, including the wider
+code/mechanism/composition freedom; do not substitute a simpler world or change
+losses to force a win. None of this adds a new admission/promotion veto, changes
+the running study, repairs a candidate or refills its finite proposal budget.

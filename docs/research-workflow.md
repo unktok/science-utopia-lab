@@ -319,6 +319,20 @@ unchanged historical observations. Three tensor headers are not all986 tensor
 contents, complete-model public availability, an upstream revision/conversion
 recipe or an independent inference rerun. No weights/settings are replaced.
 
+November14 read-only recheck, during the compiler-feedback experiment: the
+[public tag page](https://ollama.com/library/qwen3.6:35b-mlx) still displays
+prefix4a5e082f2bd3 and1045 tensors, not the installed986-tensor base. This is
+a page-prefix observation, not a new complete registry-manifest verification.
+The installed3,686-byte model config is hash-verified as
+93a4693fa9d8392fbfccd4b3c9873f4bfdcb14fdede978b123d07d19675efe99.
+It has architecture `Qwen3_5MoeForConditionalGeneration` and no recorded
+`_name_or_path`/`_commit_hash`/conversion recipe. Architecture-family naming
+alone does not identify the weight release or prove a mislabeled model.
+The local HF cache has corpus/retrieval entries, not a designer-model snapshot.
+Public model-family search does not recover the exact local upstream revision.
+No additional layer fingerprint is sent, no registry HEAD probe repeated,
+no weight read/rehash/download and no model/runtime change follows this check.
+
 The existing sandbox reports image
 `sha256:c5cd0ef1703ee77e4a056f51695d2d73b17d9bf07b167763058c0802105f8833`,
 linux/arm64, under `python:3.11-slim`; the current Docker metadata also reports

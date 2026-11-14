@@ -6,6 +6,13 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [First actual own workflow completion](results/native-workflow-compiler-feedback-first-own-v2.json):
+  T0 completes T=-20/U=-15.3333, tying its parent. Three phase-label edits leave
+  order/edges unchanged and all127 scientist inputs/choices match the hand.
+  U0 begins; no full closure, automatic gain, new wiring or final selection.
+  [Interpretation/headroom check](publication/native-workflow-main-claim-decision-v1.md#november14-first-own-observation-distinguish-phase-labels-order-and-behavior)
+  is not a global optimum or new merit gate.
+
 - [First compiler-feedback reference](results/native-workflow-compiler-feedback-first-reference-v2.json):
   R7 completes T=-18/U=-13.3333;115 full scientist inputs/choices equal prior
   R7. The hand control starts04:52:08UTC, no own loss yet. Same-seed retention

@@ -74,3 +74,40 @@ literal response choices against the prior completed R7. Both sequences match;
 provider envelopes differ and remain raw. There is no extra inference, source
 repair or whole-study audit claimed. [Hashes and scope](../results/native-workflow-compiler-feedback-first-reference-v2.json).
 No own proposal/loss has yet been observed at this snapshot.
+
+## First actual own completion and interpretation
+
+Both fresh controls complete with the prior T/U values. First free T0 returns
+known done_reason=stop after23947 input/8330 output tokens, with27060 thinking
+and1022 final characters. Its literal three phase changes compile and its native
+world completes. At05:15:45UTC the writer advances to U0 readiness. T0 scores
+T=-20/U=-15.3333, no technical failures, equal to the hand parent. A2.53s
+original-source readonly sequence join finds all127 complete payloads/choices
+equal; full provider envelopes differ and remain raw. [First-own proof](../results/native-workflow-compiler-feedback-first-own-v2.json).
+
+The actual total annual order and connections are unchanged, despite a new
+fingerprint. The claimed parent causal violations use historical anchor phases,
+not the correctly labeled actual parent values in the received wire. Inspection
+does not find parent/anchor mixing by the host. Do not attribute global bug-free
+status or a unique cognitive cause from this local check, or repair its rationale.
+
+A separate readonly original-year0 check finds all five original authors'
+minimum expertise duration2. The conditional2*sum floor(4/d_i)=20 production
+envelope is recorded in the main-claim note, with explicit serial/one-acceptance/
+no-extra-production assumptions. It is not a theorem for every allowed graph,
+decision occurrence or new world seed. This changes interpretation of headroom,
+not the frozen losses, allowed effects, budget or continuation.
+
+Read-only public/model metadata recheck still does not recover the exact local
+HF revision/conversion. The public tag page displays4a5e082f2bd3/1045 tensors;
+the installed base has986. Its small config is hash-verified but carries only
+architecture-family metadata, not a revision. No new fingerprint query, weight
+rehash/download/replacement or inference is performed for this investigation.
+
+U0's new calibration also passes. Its one free reply explicitly retains the
+parent with empty edits, and the native world actually starts. Its claim that
+the utility objective depends only on acceptance count and is already minimal
+is not established: U uses content-dependent fixed critic scores. Retention is
+legal; no host novelty or improvement veto is added. At05:21UTC the world is
+still running, not a second completed own score or independent optimization
+history. Both read-only continuations still await the original writer.

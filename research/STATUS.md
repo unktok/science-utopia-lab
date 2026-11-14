@@ -2,6 +2,26 @@
 
 ## Active publication-ready goal
 
+### November14 14:22JST: first own completes; the first U proposal is also executing
+
+T0 completes T=-20/U=-15.333333333333332 with no technical failures. Both
+scores tie its hand parent. Its3 changed phase integers leave connections and
+the actual total annual order unchanged; all127 full scientist payloads and
+literal reply choices equal the hand reference, while provider envelopes differ.
+The actual wire's parent phases are correct; the author's claimed parent
+violation is unsupported. Do not count a graph hash/phase edit as invention.
+[Actual record, counts and hashes](results/native-workflow-compiler-feedback-first-own-v2.json).
+
+Writer39932 advances to U0 readiness at05:15:45UTC; that is1/6 own slots and
+3 complete physical worlds, not full study closure/selection or unused evaluation.
+U0 subsequently passes its own calibration and submits explicit empty edits;
+its native world is now running. Two proposals are submitted, one world still
+pending. Exact parent retention is legal, not new invention or an optimum proof.
+No hidden novelty/improvement criterion is added. The
+[main-claim interpretation](publication/native-workflow-main-claim-decision-v1.md#november14-first-own-observation-distinguish-phase-labels-order-and-behavior)
+also records a conditional production-envelope check before assuming more
+repetitions must beat a strong count control. It is not a global optimum proof.
+
 ### November14 13:52JST: first compiler-feedback reference completes; second is running
 
 The first R7 reference completes with T=-18/U=-13.333333333333332 and no
