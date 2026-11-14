@@ -1,0 +1,137 @@
+{
+  "actual_old_sessions_replayed": false,
+  "actual_rejected_cases": [
+    {
+      "literal_action_mutated": false,
+      "literal_action_sha256": "1cb85aaa16d44b4526088f7421709a34e133f5049e517dec9edd3f6f7130ef1b",
+      "literal_code_utf8_sha256": "1f006706164a543f0dcf1570033face1f1a6e270d1383d0c3091178b35987e43",
+      "new_schema_accepts_same_literal_action": true,
+      "old_bound_schema_rejects_only_rationale_maxLength": true,
+      "original_errors": [
+        {
+          "message": "tool schema: $.rationale: invalid maxLength (actual JSON type string)",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "original_request_file_sha256": "9324c3c49cbc12971f70c71fd851bae5cb440913a9a5e5bff84a3fa948c5ec2c",
+      "original_status": "rejected",
+      "original_step_content_sha256": "7a741e9d2a8d7b45629fddd20d2c46bc53c0fc19140723a79721cec2ddb1a2ae",
+      "original_step_file_sha256": "690805a0f9cd3ae41bcb21aefb226041f71632cfb27fa71e38765ba6e02b8b94",
+      "original_step_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/authoring/proposal-9f4399eaadb888d0ad6147069cdfaaa883e8e88eb3cb61a90d920c2f06313017/editor-session/authoring/generation-9f4399eaadb888d0ad6147069cdfaaa883e8e88eb3cb61a90d920c2f06313017/step-12.completed.json",
+      "rationale_characters": 16081,
+      "request_sha256": "9f4399eaadb888d0ad6147069cdfaaa883e8e88eb3cb61a90d920c2f06313017",
+      "step": 12
+    },
+    {
+      "literal_action_mutated": false,
+      "literal_action_sha256": "bd89c1a8a66748dd0ac7d0dc31b28b563b5f87c7564fb0a65af16b6c8abef2c2",
+      "literal_code_utf8_sha256": "944e4bb3ab43c2d6abca14891f1b181d786ff02430ab699979b26d4fb8993c56",
+      "new_schema_accepts_same_literal_action": true,
+      "old_bound_schema_rejects_only_rationale_maxLength": true,
+      "original_errors": [
+        {
+          "message": "tool schema: $.rationale: invalid maxLength (actual JSON type string)",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "original_request_file_sha256": "e0cf61f8e774b10be1520fc96b96bb74bdaafbb05eb981a2e0766acc10333d68",
+      "original_status": "rejected",
+      "original_step_content_sha256": "f217bc50e4a68f6171fec9199fe60eb6eddf9ffa3c39cd7177870824a327c0b7",
+      "original_step_file_sha256": "5a687a013a366f71d3b5ea25fd311b74b78dd7400bb9e38ad23e14b74df50766",
+      "original_step_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/authoring/proposal-40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05/editor-session/authoring/generation-40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05/step-04.completed.json",
+      "rationale_characters": 6642,
+      "request_sha256": "40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05",
+      "step": 4
+    },
+    {
+      "literal_action_mutated": false,
+      "literal_action_sha256": "2d57ae41df7295ad84a320e3ba3afa6d2750147da0e09a02c870a04cb9eb26be",
+      "literal_code_utf8_sha256": "b9c852e02b1eaab594df742bf721dc60dbf78b6a3264457db5765bc20d81037e",
+      "new_schema_accepts_same_literal_action": true,
+      "old_bound_schema_rejects_only_rationale_maxLength": true,
+      "original_errors": [
+        {
+          "message": "tool schema: $.rationale: invalid maxLength (actual JSON type string)",
+          "message_character_limit": 4000,
+          "type": "ValueError"
+        }
+      ],
+      "original_request_file_sha256": "e0cf61f8e774b10be1520fc96b96bb74bdaafbb05eb981a2e0766acc10333d68",
+      "original_status": "rejected",
+      "original_step_content_sha256": "1b1f6f550d8bf746e396f5d5b341e6239b2413a2533c6dec8f21bb0924cd1086",
+      "original_step_file_sha256": "8b0fc3b54f4b0300aac4409f0705a23dd42ade181a6ae76a3420290a52896e45",
+      "original_step_path": "/Users/shiro/unktok/dev/science-utopia-lab-experiments/native-open-staged-institution-objective-loop-v1-a1/outputs/native-open-staged-institution-objective-loop-v1-a1/search/throughput/authoring/proposal-40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05/editor-session/authoring/generation-40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05/step-10.completed.json",
+      "rationale_characters": 6154,
+      "request_sha256": "40cff0a3bcb3802e8a80ab373616102272d583e607988c83ef6b7bdc5e224d05",
+      "step": 10
+    }
+  ],
+  "branch": "fix/native-author-note-budget-v1",
+  "content_sha256": "0910cbb29fe8a18c05b03df8128d68d9a2d3edbffb38094dac899725fa15d8db",
+  "current_study_source_or_contract_modified": false,
+  "full_native_integration_verified": false,
+  "historical_status_or_loss_modified": false,
+  "merged_to_main": false,
+  "new_action_schema_sha256": "e113a8b01a12b061087636d21be485adcb864c103c07c20bf6d9de9b6581cea1",
+  "new_backend_readiness_obtained": false,
+  "new_code_executions": 0,
+  "new_model_calls": 0,
+  "new_native_worlds": 0,
+  "new_protocol_binding": {
+    "action_schema_sha256": "e113a8b01a12b061087636d21be485adcb864c103c07c20bf6d9de9b6581cea1",
+    "bounded_context_source_sha256": "4d1c327dc7edb1dc7afe4401c028efb14f6fe08e55a658970d1c32ab541ff292",
+    "capability_catalog_source_sha256": "90f7604525f3406d9e9a34908673732dcb706d58ac4d47b218d4331151369c18",
+    "causal_design_source_sha256": "ac7f1624a6bfba3aa07dd2283b2912b85906aa6d377405e5d1307346d71b1f89",
+    "compiler_source_sha256": "4cc337d1d2d326b28a6e5bc5ef747a549183b2402fcfbfdf94905538919846fe",
+    "component_lab_source_sha256": "1f98293fcce381dada3345882379a47625d9222ac85d78f0fcba68aee3aeddd0",
+    "contract_notice_source_sha256": "9e02a044cfde41775e584afb3f1de22fd8fb06f92acb957495dbe1c5422ffc95",
+    "decoding_source_sha256": "a5120a369e395c3409e0efda4e62051b0743f8f5afb97fc7817041e07cdfb901",
+    "design_space_source_sha256": "40c146929be81909b494138bd5d698e6673b7b0e3866db6d22f7a787a55bc09e",
+    "designer_roles_source_sha256": "6372335b0be452e60fd67a26626c1c3d302dfbaed5a7d67eaceb46fe2fbf48de",
+    "feedback_control_source_sha256": "83b7df11727f28585e9d3983e677c14d521baa127c45922b90a60eb97e341a15",
+    "field_addressing_source_sha256": "b84c1faf81b1b8b668262f9a95d34ecc48efdef8c76f94e7ddbcdbb27ad597e6",
+    "file_editor_instructions_sha256": "bb2f8e439064cd6ed79f3ef3359f56802c2a6e539e145151183f18bd5b46897f",
+    "file_workspace_source_sha256": "a31cb36bebaa7ebaacdc50a901a68648da19dc206a29fc9bf3cf3fe6b8c14906",
+    "history_workspace_source_sha256": "8b29b127d47d0b9867b97f823ddb6936b9817ff7b26fc7b3b61c043b47a6718b",
+    "initial_evidence_source_sha256": "2652aeb55771e6d9546c3ef18776080dd9ef7b30ae1b2c7ffca1d0dd1eebc9b4",
+    "instructions_sha256": "7196cf1a5704a23679c6952436f17cafd28f27854b9e53e05c2ac2b6961b4dd7",
+    "literal_workbench_source_sha256": "5effc71645a641ef6723ca74946c14b3d2f9686baa624814d6792b30490c70e7",
+    "native_probes": 0,
+    "native_tool_source_sha256": "cebc65ce0faea5d3d4e0d20824898ac06d8726263fbf1e2ca041c8b0e3a83943",
+    "own_feedback_source_sha256": "ff89e230a61588af28c0543c854e21a631b6cc21d2dfa796b39f96de9754cb94",
+    "parent_evidence_source_sha256": "a10c264aa72917e29f7863d6a44af1831f6a7fef54947863b5d44de30be9ff06",
+    "post_edit_feedback_source_sha256": "3a32f05f7294812bf1bdd46ef09b45514ce1d8a2446899b77ae9f2393daa25d7",
+    "recovery_source_sha256": "3193d3110d0136aef92eabceb34e259997bcbb3331b278e47df799014c191ebb",
+    "schema": "scienceutopia.staged-author.v15",
+    "source_execution_on_host": false,
+    "source_sha256": "3daf7bf1f7b805d0525f1981151f8be5708c40b7bc251b57efe21fea34f4aa44",
+    "tool_advertisement_profile": "file-primary-with-on-demand-own-history.v37",
+    "transport_source_sha256": "bfa0ebd4378dfda2d893474f1c3373c3baeeb12027bc9ecdf1ab45082c7de254",
+    "wire_source_sha256": "e066b0814f81af4e1111171baf40c767d1ae7b73ea54f058648d0b3da589357e"
+  },
+  "observed_utc": "2026-11-14T16:14:27.783431+00:00",
+  "old_action_schema_sha256": "e42ad78742972e4f1cf79c9f15fc97801c5dcbb1f5d820f5ba28250d10009ee3",
+  "old_scientific_source_commit": "f47270b967fa167d59df759bebe7b6b104b383d3",
+  "publication_ready": false,
+  "retention_first_attempt": {
+    "cause": "Incorrectly used numeric checked() for a non-sealed staged request envelope. No patch emitted or saved. Corrected by validating its actual REQUEST schema, literal request digest and step binding; no record repaired.",
+    "exit_code": 1,
+    "session": 43310
+  },
+  "schema": "scienceutopia.native-author-rationale-budget-verification.v1",
+  "scientific_improvement_claimed": false,
+  "scope": "Prospective non-executable rationale ceiling removal. Actual failed parsed actions are checked without mutation against their original bound schema and the future schema; they are not resubmitted, executed, repaired or relabelled. Other operative validation and existing budgets remain. Future dispatch needs complete frozen integration and actual readiness.",
+  "unit_tests": {
+    "exit_code": 0,
+    "junit_path": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/author-rationale-budget-unit-v1-a1/junit.xml",
+    "junit_sha256": "10e094c3a181e09cc20f27a987159d6e5d171b004054534f60384fd0b043012f",
+    "network_and_code_execution_forbidden_in_new_tests": true,
+    "pytest_reported_seconds": 9.18,
+    "scope": "SCRIPTED JSON interpreter/schema/explicit-finish/cold replay; not public outer native integration or actual designer calibration.",
+    "session": 12120,
+    "tests": 25
+  },
+  "verification_source_commit": "2daffd8a4d399583e5cbffa29b033565a56c3542"
+}

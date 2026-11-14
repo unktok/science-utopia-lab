@@ -20,8 +20,18 @@ not a different loss, new institutional authority or an unrecorded retry.
 Light SCRIPTED tests cover4096/4097/16384-character notes, exact string/source
 preservation, sender/host schemas, unchanged rejection of invalid operative
 arguments and unknown keys, and edit/explicit-finish/cold replay without code
-execution or network. They are not actual designer readiness or a full native
-campaign proof. Test execution is pending at this initial implementation commit.
+execution or network. Actual session12120 exits0:25 tests pass in9.18s at
+committed2daffd8a. Three original rejected actions, with rationale lengths
+16081/6642/6154, fail solely the bound old ceiling but validate under the new
+schema without changing any action field. Their original statuses stay rejected.
+[Sealed tests and actual-action check](../results/native-author-rationale-budget-verification-v1.json).
+These checks are not actual designer readiness or a full native campaign proof.
+
+The first retention helper incorrectly sends an unsealed staged REQUEST envelope
+to the numeric-journal checksum checker and stops before saving. Its correction
+checks the actual schema family, request digest and step binding instead. No
+historical request, action, receipt or loss is rewritten. The failed helper and
+limited verification scope remain explicit in the sealed record.
 
 Keep this change off main and out of the live experiment. Before any future
 designer dispatch, commit/freeze the prospective source and complete the public
