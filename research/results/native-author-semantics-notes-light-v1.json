@@ -1,0 +1,86 @@
+{
+  "actual_backend_readiness_complete": false,
+  "actual_test_session": 45092,
+  "applied_to_active_science": false,
+  "combined_staged_protocol": {
+    "action_schema_sha256": "e113a8b01a12b061087636d21be485adcb864c103c07c20bf6d9de9b6581cea1",
+    "bounded_context_source_sha256": "4d1c327dc7edb1dc7afe4401c028efb14f6fe08e55a658970d1c32ab541ff292",
+    "capability_catalog_source_sha256": "90f7604525f3406d9e9a34908673732dcb706d58ac4d47b218d4331151369c18",
+    "causal_design_source_sha256": "ac7f1624a6bfba3aa07dd2283b2912b85906aa6d377405e5d1307346d71b1f89",
+    "compiler_source_sha256": "4cc337d1d2d326b28a6e5bc5ef747a549183b2402fcfbfdf94905538919846fe",
+    "component_lab_source_sha256": "1f98293fcce381dada3345882379a47625d9222ac85d78f0fcba68aee3aeddd0",
+    "contract_notice_source_sha256": "9e02a044cfde41775e584afb3f1de22fd8fb06f92acb957495dbe1c5422ffc95",
+    "decoding_source_sha256": "a5120a369e395c3409e0efda4e62051b0743f8f5afb97fc7817041e07cdfb901",
+    "design_space_source_sha256": "40c146929be81909b494138bd5d698e6673b7b0e3866db6d22f7a787a55bc09e",
+    "designer_roles_source_sha256": "6372335b0be452e60fd67a26626c1c3d302dfbaed5a7d67eaceb46fe2fbf48de",
+    "feedback_control_source_sha256": "83b7df11727f28585e9d3983e677c14d521baa127c45922b90a60eb97e341a15",
+    "field_addressing_source_sha256": "b84c1faf81b1b8b668262f9a95d34ecc48efdef8c76f94e7ddbcdbb27ad597e6",
+    "file_editor_instructions_sha256": "bb2f8e439064cd6ed79f3ef3359f56802c2a6e539e145151183f18bd5b46897f",
+    "file_workspace_source_sha256": "a31cb36bebaa7ebaacdc50a901a68648da19dc206a29fc9bf3cf3fe6b8c14906",
+    "history_workspace_source_sha256": "8b29b127d47d0b9867b97f823ddb6936b9817ff7b26fc7b3b61c043b47a6718b",
+    "initial_evidence_source_sha256": "2652aeb55771e6d9546c3ef18776080dd9ef7b30ae1b2c7ffca1d0dd1eebc9b4",
+    "instructions_sha256": "7196cf1a5704a23679c6952436f17cafd28f27854b9e53e05c2ac2b6961b4dd7",
+    "literal_workbench_source_sha256": "5effc71645a641ef6723ca74946c14b3d2f9686baa624814d6792b30490c70e7",
+    "native_probes": 0,
+    "native_tool_source_sha256": "cebc65ce0faea5d3d4e0d20824898ac06d8726263fbf1e2ca041c8b0e3a83943",
+    "objective_view_source_sha256": "16c27b82adf63ea0bcdd336f4b2954ca6f69e2352933e8fb1a2e57f45a2ec59a",
+    "own_feedback_source_sha256": "ff89e230a61588af28c0543c854e21a631b6cc21d2dfa796b39f96de9754cb94",
+    "parent_evidence_source_sha256": "a10c264aa72917e29f7863d6a44af1831f6a7fef54947863b5d44de30be9ff06",
+    "post_edit_feedback_source_sha256": "3a32f05f7294812bf1bdd46ef09b45514ce1d8a2446899b77ae9f2393daa25d7",
+    "recovery_source_sha256": "3193d3110d0136aef92eabceb34e259997bcbb3331b278e47df799014c191ebb",
+    "schema": "scienceutopia.staged-author.v15",
+    "source_execution_on_host": false,
+    "source_sha256": "d715dc341d2e9afdbff21339c04b418a61f099d41b0c69c33dc59a952ccc1baa",
+    "tool_advertisement_profile": "file-primary-with-on-demand-own-history.v37",
+    "transport_source_sha256": "bfa0ebd4378dfda2d893474f1c3373c3baeeb12027bc9ecdf1ab45082c7de254",
+    "wire_source_sha256": "e066b0814f81af4e1111171baf40c767d1ae7b73ea54f058648d0b3da589357e"
+  },
+  "content_sha256": "782e38b837042aca9dcf5e15fd03e38a0b2a4f3bbd3c93786228a40365cc5853",
+  "earlier_combined_light_runs": [
+    {
+      "seconds": 3.4,
+      "session": 26684,
+      "tests": 48
+    },
+    {
+      "seconds": 4.67,
+      "session": 41274,
+      "tests": 49
+    }
+  ],
+  "exit_code": 0,
+  "full_native_integration_complete": false,
+  "junit_file": "/Users/shiro/unktok/dev/science-utopia-lab-worktrees/publication-ready-native-v1/outputs/native-author-semantics-notes-light-v1-a1/junit.xml",
+  "junit_file_sha256": "71482cfe01aa62baeb42126139aaba30434c762197c4a5ed445a648a908eed44",
+  "junit_summary": {
+    "errors": "0",
+    "failures": "0",
+    "hostname": "flower-man.local",
+    "name": "pytest",
+    "skipped": "0",
+    "tests": "49",
+    "time": "5.642",
+    "timestamp": "2026-11-15T02:51:28.257333+09:00"
+  },
+  "merged_to_main": false,
+  "publication_ready": false,
+  "schema": "scienceutopia.native-author-semantics-notes-light.v1",
+  "scope": "JSON/static SCRIPTED bounded editor interaction only. Not public outer native campaign integration, a model readiness/token capacity certificate, original study repair or scientific improvement.",
+  "scripted_interaction": {
+    "author_steps": 3,
+    "cold_replay_equal": true,
+    "explicit_finish": true,
+    "inline_utility_in_every_active_frame": true,
+    "literal_action_and_archive_preserved": true,
+    "long_note_characters": 16081,
+    "new_code_executions": 0,
+    "new_native_worlds": 0,
+    "new_network_calls": 0
+  },
+  "source_commit": "d73ff9d49e5d65d5687a5e0f58442203695662d5",
+  "source_files": {
+    "tests/optimization/test_native_author_semantics_notes_combined_v1.py": "68d246d78b2c11749b9ed0240803f1a8d446900140c8fc727eb753bef38d1823",
+    "utopia/optimization/native_objective_view.py": "16c27b82adf63ea0bcdd336f4b2954ca6f69e2352933e8fb1a2e57f45a2ec59a",
+    "utopia/optimization/native_staged_author_v15.py": "d715dc341d2e9afdbff21339c04b418a61f099d41b0c69c33dc59a952ccc1baa"
+  }
+}

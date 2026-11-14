@@ -94,7 +94,10 @@ ACTION_FIELDS = {
         'factors': {'type': 'array', 'maxItems': 12, 'items': FACTOR},
         'continuous': {'type': 'array', 'maxItems': 12, 'items': COORDINATE},
         'logits': {'type': 'object', 'additionalProperties': {'type': 'array', 'items': {'type': 'number'}}},
-        'rationale': {'type': 'string', 'minLength': 1, 'maxLength': 4096},
+        # Opaque, separately archived author text. Existing response/session
+        # budgets bound its size; a per-note ceiling must not veto a code edit.
+        # Historical source-bound journals retain their original schema.
+        'rationale': {'type': 'string', 'minLength': 1},
         'provenance': {'type': 'object', 'maxProperties': 16},
         'objective_reasoning': {'type': 'string', 'minLength': 1, 'maxLength': 4096},
         'design_intent': {'type': 'string', 'minLength': 1, 'maxLength': 8192},
@@ -395,6 +398,7 @@ def protocol_binding():
     from . import native_file_workspace_v35
     from . import native_history_workspace_v37
     from . import native_contract_notices
+    from . import native_objective_view
     from . import native_authoring_recovery_v44
     from . import native_bounded_author_context_v45
     from . import native_parent_evidence_v46
@@ -415,6 +419,7 @@ def protocol_binding():
         'history_workspace_source_sha256': hashlib.sha256(Path(native_history_workspace_v37.__file__).read_bytes()).hexdigest(),
         'designer_roles_source_sha256': hashlib.sha256(Path(__file__).with_name('native_designer_roles_v38.py').read_bytes()).hexdigest(),
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
+        'objective_view_source_sha256': hashlib.sha256(Path(native_objective_view.__file__).read_bytes()).hexdigest(),
         'recovery_source_sha256': hashlib.sha256(Path(native_authoring_recovery_v44.__file__).read_bytes()).hexdigest(),
         'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
         'parent_evidence_source_sha256': hashlib.sha256(Path(native_parent_evidence_v46.__file__).read_bytes()).hexdigest(),
