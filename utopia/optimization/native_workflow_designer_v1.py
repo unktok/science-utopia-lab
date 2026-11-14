@@ -61,7 +61,6 @@ def recognized_settings(value):
 
 
 def compiler_feedback(request):
-    from scripts.native_workflow_submission_feedback_v1 import diagnose
     rows = []
     for record in request.get('history', []):
         if not record.get('generation_error'): continue
@@ -70,14 +69,17 @@ def compiler_feedback(request):
         row = {'request_sha256': record['request_sha256'],
             'recorded_generation_error': clone(record['generation_error']), 'compiler_feedback': None}
         if failure is not None:
-            row['recorded_submission_failure'] = clone(failure)
-            if failure['literal_submission'] is not None:
-                previous = record['request']
-                if digest(previous) != record['request_sha256']:
-                    raise ValueError('previous workflow request differs from its consumed history')
-                # Diagnose against that proposal's actual parent, not today's
-                # selected parent. No graph/code, raw error or scalar is fixed.
-                row['compiler_feedback'] = diagnose(previous, failure['literal_submission'])
+            row['submission_journal_sha256'] = failure.get('journal_sha256')
+            feedback = failure.get('compiler_feedback')
+            if feedback is not None:
+                if (feedback['request_sha256'] != record['request_sha256']
+                        or feedback['literal_submission_sha256'] != digest(failure['literal_submission'])
+                        or feedback['graph_repaired'] is not False or feedback['new_admission_rule'] is not False):
+                    raise ValueError('stored compiler feedback differs from the consumed literal proposal')
+                row['compiler_feedback'] = clone(feedback)
+            elif failure['literal_submission'] is not None:
+                row['compiler_feedback_unavailable'] = ('Earlier interface did not retain a parent-bound '
+                    'diagnostic; original failure remains visible, never guessed from the current parent.')
         rows.append(row)
     return rows
 
@@ -96,6 +98,12 @@ def _payload(binding):
     elif purpose != 'proposal':
         raise ValueError('explicit workflow calibration/proposal purpose required')
     if settings.get('profile') == FEEDBACK_MODE:
+        # Keep the literal submission/error once in the original context and
+        # its new explanatory diagnostic once in the separate feedback view.
+        # Neither raw values nor old journals are changed by this projection.
+        for row in context['consumed_generation_nulls']:
+            if isinstance(row['literal_submission_failure'], dict):
+                row['literal_submission_failure'].pop('compiler_feedback', None)
         body['consumed_proposal_compiler_feedback'] = compiler_feedback(request)
         body['causal_order_contract'] = ('For every zero-latency connection, the producer phase must be '
             'strictly smaller than the consumer phase. Unmentioned phases keep their actual parent values. '
@@ -161,12 +169,19 @@ def _outcome(binding, intent, execution, raw):
                 definition = compile_submission(binding['request'], literal)
             except Exception as e:
                 error = {'type': type(e).__name__, 'message': str(e)[:4000]}
-    return {'definition': definition, 'literal_submission': literal, 'technical_error': error,
+    result = {'definition': definition, 'literal_submission': literal, 'technical_error': error,
         'completion_unknown': error is not None and error.get('type') == 'CompletionUnknown',
         'status': 'submitted' if definition is not None else 'failed',
         'shared_raw_transport_schema': transport_schema,
         'new_native_worlds': 0, 'new_model_POSTs_upper_bound': 1,
         'implicit_retention': False, 'source_repair': False, 'retry_or_refill': False}
+    if binding.get('settings', {}).get('profile') == FEEDBACK_MODE:
+        # Campaign history deliberately omits recursive prior requests. Retain
+        # exact-parent feedback while the actual binding is available; cold
+        # replay reconstructs it from that original received JSON and request.
+        from scripts.native_workflow_submission_feedback_v1 import diagnose
+        result['compiler_feedback'] = diagnose(binding['request'], literal) if literal is not None and error is not None else None
+    return result
 
 
 def replay_workflow(root):
@@ -206,8 +221,10 @@ def generation_definition(result):
         raise WorkflowCompletionUnknown('workflow completion unknown; stop before another inference role')
     if result['definition'] is not None:
         return clone(result['definition'])
-    return {'workflow_submission_failure': {'literal_submission': clone(result['literal_submission']),
-        'error': clone(result['technical_error']), 'journal_sha256': result['content_sha256']}}
+    failure = {'literal_submission': clone(result['literal_submission']),
+        'error': clone(result['technical_error']), 'journal_sha256': result['content_sha256']}
+    if 'compiler_feedback' in result: failure['compiler_feedback'] = clone(result['compiler_feedback'])
+    return {'workflow_submission_failure': failure}
 
 
 class WorkflowDesigner:

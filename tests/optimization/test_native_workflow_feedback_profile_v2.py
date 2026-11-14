@@ -23,9 +23,11 @@ def author_at(path, monkeypatch, replies):
 
 
 def history_for(req, result):
-    return {'request': clone(req), 'request_sha256': digest(req),
+    from utopia.optimization.native_adaptive_search import NativeAdaptiveDesignCampaign
+    record = {'request': clone(req), 'request_sha256': digest(req), 'version_sha256': None,
         'generation_error': {'type': 'ValueError', 'message': 'SCRIPTED consumed null', 'loss': None},
-        'definition': module.generation_definition(result)}
+        'definition': module.generation_definition(result), 'draws': [], 'observations': [], 'report': {}}
+    return NativeAdaptiveDesignCampaign._history([record])[0]
 
 
 def test_profile_actual_worker_certificate_failed_slot_next_parent_feedback_and_replay(tmp_path, monkeypatch):
@@ -48,10 +50,10 @@ def test_profile_actual_worker_certificate_failed_slot_next_parent_feedback_and_
     assert all(p['options']['num_ctx'] == 57344 and p['options']['num_predict'] == 16384 for p in calls)
     body = json.loads(calls[-1]['messages'][1]['content'])
     feedback = body['consumed_proposal_compiler_feedback'][0]
-    assert feedback['recorded_submission_failure']['literal_submission'] == bad
     assert [r['source_phase'] for r in feedback['compiler_feedback']['causal_order_witnesses']] == [70, 100, 110, 120]
     assert not feedback['compiler_feedback']['graph_repaired']
     assert body['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission'] == bad
+    assert 'compiler_feedback' not in body['context']['consumed_generation_nulls'][0]['literal_submission_failure']
     for r in (req, next_req):
         for purpose in ('calibration', 'proposal'):
             root = author.directory / (purpose + '-' + digest(r))
@@ -72,16 +74,30 @@ def test_profile_certificate_cannot_be_used_as_legacy_or_different_request(tmp_p
 
 @pytest.mark.parametrize('literal', [None, {'phase_updates': []}, {'rationality': 'wrong'}, 9])
 def test_next_prompt_keeps_malformed_or_missing_literal_without_inventing_a_graph(tmp_path, literal):
+    from scripts.native_workflow_submission_feedback_v1 import diagnose
     req = request(tmp_path / 'c'); next_req = clone(req); next_req['generation'] += 1
     next_req['history'] = [{'request': clone(req), 'request_sha256': digest(req),
         'generation_error': {'type': 'ValueError', 'message': 'SCRIPTED consumed failure'},
         'definition': {'workflow_submission_failure': {'literal_submission': literal,
             'error': {'type': 'ValueError', 'message': 'SCRIPTED exact original error'}, 'journal_sha256': 'a' * 64}}}]
+    next_req['history'][0]['definition']['workflow_submission_failure']['compiler_feedback'] = (
+        None if literal is None else diagnose(req, literal))
+    next_req['history'][0].pop('request')
     p, _, _ = module._payload({'request': next_req, 'purpose': 'proposal',
         'provider': PROVIDER, 'settings': module.settings_for(module.FEEDBACK_MODE)})
     row = json.loads(p['messages'][1]['content'])['consumed_proposal_compiler_feedback'][0]
-    assert row['recorded_submission_failure']['literal_submission'] == literal
+    assert json.loads(p['messages'][1]['content'])['context']['consumed_generation_nulls'][0]['literal_submission_failure']['literal_submission'] == literal
     assert (row['compiler_feedback'] is None) == (literal is None)
+
+
+def test_legacy_failure_without_retained_parent_is_exposed_not_reinterpreted(tmp_path):
+    req = request(tmp_path / 'c'); req['history'] = [{'request_sha256': 'a' * 64,
+        'generation_error': {'message': 'SCRIPTED old-interface failure'},
+        'definition': {'workflow_submission_failure': {'literal_submission': {'rationality': 'wrong'},
+            'error': {'message': 'SCRIPTED original error'}}}}]
+    feedback = module.compiler_feedback(req)[0]
+    assert feedback['compiler_feedback'] is None and feedback['compiler_feedback_unavailable']
+    assert req['history'][0]['definition']['workflow_submission_failure']['literal_submission'] == {'rationality': 'wrong'}
 
 
 def test_oversize_feedback_stops_before_any_worker_without_truncation(tmp_path, monkeypatch):

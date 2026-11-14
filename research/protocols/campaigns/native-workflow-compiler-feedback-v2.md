@@ -27,7 +27,17 @@ The new feedback gives exact schema paths and actual zero-latency producer/
 consumer phase witnesses. It invokes the unchanged public compiler, does not
 repair/coerce a value, and is not a second completeness/admission validator.
 A transport/length failure with no literal JSON has no invented graph
-diagnosis. Bind the explanatory adapter's actual file SHA in profile settings.
+diagnosis. Compute exact-parent feedback at the original result boundary, when
+the full binding is available, and retain it in the failed definition. The
+campaign's real history projection omits recursive prior requests; consume
+that retained diagnostic with request/submission SHA checks. Old interfaces
+without such a diagnostic retain their raw failure and explicit unavailability,
+not a guessed parent. Cold original-result replay recomputes the feedback.
+Bind the explanatory adapter's actual file SHA in profile settings.
+Expose the new diagnostic only once in its separate feedback view; the legacy
+context still carries the exact model literal, original error and journal SHA.
+Do not repeat the new host diagnostic recursively inside that legacy failure
+projection. Complete diagnostics remain in the original result/failed definition.
 
 Add an explicit causal-order reminder: unmentioned phases retain parent
 values, zero-latency producers must precede consumers, and every incoming and
