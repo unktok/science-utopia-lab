@@ -399,6 +399,7 @@ def protocol_binding():
     from . import native_history_workspace_v37
     from . import native_contract_notices
     from . import native_objective_view
+    from . import native_longitudinal_feedback_v1
     from . import native_authoring_recovery_v44
     from . import native_bounded_author_context_v45
     from . import native_parent_evidence_v46
@@ -420,6 +421,7 @@ def protocol_binding():
         'designer_roles_source_sha256': hashlib.sha256(Path(__file__).with_name('native_designer_roles_v38.py').read_bytes()).hexdigest(),
         'contract_notice_source_sha256': hashlib.sha256(Path(native_contract_notices.__file__).read_bytes()).hexdigest(),
         'objective_view_source_sha256': hashlib.sha256(Path(native_objective_view.__file__).read_bytes()).hexdigest(),
+        'longitudinal_access_source_sha256': hashlib.sha256(Path(native_longitudinal_feedback_v1.__file__).read_bytes()).hexdigest(),
         'recovery_source_sha256': hashlib.sha256(Path(native_authoring_recovery_v44.__file__).read_bytes()).hexdigest(),
         'bounded_context_source_sha256': hashlib.sha256(Path(native_bounded_author_context_v45.__file__).read_bytes()).hexdigest(),
         'parent_evidence_source_sha256': hashlib.sha256(Path(native_parent_evidence_v46.__file__).read_bytes()).hexdigest(),

@@ -255,7 +255,7 @@ class NativeAdaptiveDesignCampaign:
                  strategies, mode='hybrid', seed=42, learning_rate=.1,
                  strategy_learning_rate=.1, strategy_baseline=0., exploration=.1,
                  expectation_estimator=None, initial_evidence=None, proposal_feedback='loss', design_space=None,
-                 development_references=None):
+                 development_references=None, longitudinal_access=None):
         validate_loss_spec(loss_spec)
         if (proposal_feedback not in ('loss', 'matched-loss', 'technical-only')
                 or proposal_feedback != 'loss' and
@@ -307,6 +307,18 @@ class NativeAdaptiveDesignCampaign:
                     or mode == 'blackbox'):
                 raise ValueError('explicit supported expectation estimator/ridge and score mode required')
             self.binding['expectation_estimator'] = clone(expectation_estimator)
+        if longitudinal_access is not None:
+            from .native_longitudinal_feedback_v1 import validate_contract
+            access = validate_contract(longitudinal_access)
+            if (mode != 'blackbox' or proposal_feedback != 'loss' or initial_evidence is not None
+                    or access['source_commit'] != world_binding['source_commit']
+                    or access['seeds'] != list(seeds)):
+                raise ValueError('longitudinal comparison needs exact loss-visible blackbox world/seeds without historical import')
+            actual_refs = ([] if development_references is None else [
+                pair['suggestion']['suggestion_id'] for pair in development_references['pairs']])
+            if access['reference_ids'] != actual_refs:
+                raise ValueError('longitudinal optimizer-visible reference list differs')
+            self.binding['longitudinal_access'] = access
         self.binding_sha256 = digest(self.binding)
         if self.path.exists():
             self.state = json.loads(self.path.read_text())
@@ -402,6 +414,12 @@ class NativeAdaptiveDesignCampaign:
             request['design_space'] = clone(self.binding['design_space'])
             request['design_space_anchor'] = self.initial.to_dict()
         request.update(context)
+        if 'longitudinal_access' in self.binding:
+            from .native_longitudinal_feedback_v1 import request_view
+            reference_ids = ([] if developer_context is None else [
+                pair['observation']['observation_id'] for pair in common['observations']])
+            request = request_view(request, self.binding['longitudinal_access'],
+                reference_observation_ids=reference_ids)
         return request
 
     def _mixed(self, record):

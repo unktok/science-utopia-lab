@@ -164,6 +164,11 @@ def build_active_prompt(request, state, steps, *, image_id, binding_sha256, sett
         view['planning_parent_evidence'] = describe_parent(request)
     if 'feedback_policy' in request:
         view['proposal_feedback_policy'] = clone(request['feedback_policy'])
+    from .native_longitudinal_feedback_v1 import VIEW as TRAJECTORY_VIEW, active_view
+    if TRAJECTORY_VIEW in request:
+        # The intervention always exposes the selected parent's fixed fields,
+        # not a size-dependent subset. Ordinary wire/token limits still apply.
+        view[TRAJECTORY_VIEW] = active_view(request)
     references=request.get('developer_reference_context',request.get('world_binding',{}).get('developer_reference_context'))
     if references is not None:
         if not isinstance(references,dict) or not isinstance(references.get('summary'),list):
