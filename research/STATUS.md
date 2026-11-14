@@ -2,6 +2,25 @@
 
 ## Active publication-ready goal
 
+### November14 21:18JST: full-workflow staged component SOFTWARE connection verified
+
+The new explicit R7-only scope stages20 uniquely attributed original inputs
+across five editable code nodes and four years, with all469 original raw files
+unchanged. At clean4c4d6e0b, two opt-in real-container cases73345 exit0: original
+T0 payload errors reach the next prompt; an explicitly SCRIPTED rewrite and a
+new node/wire/schedule compile; both public bounded/inner cold replays agree.
+All12 passing-attempt component probes and the separate failed software
+fixture's12 probes are retained. No host repair or failed-test finish veto is
+added.37 earlier light staging/post-edit checks pass.
+[Exact verification](results/native-open-workflow-staged-component-connection-v1.json),
+[scope and reproduction](components/native-open-workflow-staged-component-connection-v1.md).
+The HTTP author and child boundary are SCRIPTED, not an actual LLM repair,
+whole native execution, readiness or improvement result. The newly compiled
+node is not executed by this check. Next bind the staged mode/bank into a
+prospective actual campaign, original-source audit/costs and frozen handoff,
+with a fresh actual backend certificate before any real dispatch. No new
+scientific inference campaign is live; publication-ready remains unachieved.
+
 ### November14: actual81-page minimal reconstruction complete; construction connection next
 
 The explicit68-file subset (65 literal dependencies plus LICENSE, reviewed PDF

@@ -45,3 +45,38 @@ and exclude both hand and unused-condition inputs. An empty-cycle consumer
 check is a separate boundary from a returned component. Current tests are
 not yet connected to this wider designer/native campaign; that is subsequent
 implementation, not an already demonstrated self-repair or improvement.
+
+## Actual wider workflow component connection,21:18JST
+
+Explicit newscope `open-workflow-r7-v1` now stages the20 actual R7 inputs and
+their unique native event IDs at2f0a2f45; original469 raw files still equal the
+original closed audit. Five initial SCRIPTED negative cases accidentally tried
+overwriting immutable temporary fixture journals. Those original a1 failures
+are retained; correcting only temporary fixture construction leads to35/37
+passing a2/a3 light cases. No scientific input/journal is repaired.
+
+The opt-in full-workflow proof starts at97c3931b and exits1 in35.33s. Its SCRIPTED
+archive/step indexes and newly authored node ID/ports were wrong; the production
+validator correctly rejects them. All12 real Docker probes and exact journals
+remain in `outputs/open-workflow-post-edit-v1-a2`. This is not a model-caused
+scientific failure and is not silently removed from the verification.
+
+Corrected fixture4c4d6e0b starts from clean HEAD. Actual process73345 exits0 in
+42.87s: two cases,12 real probes (eight original missing-payload errors, four
+returns of the explicitly prescribed original code). The original error is
+visible in the next prompt; failing fixtures do not veto finish. A prescribed
+new node and wires/schedule compile within the full native workflow domain;
+public outer and inner cold replay agree. HTTP replies and trusted process
+boundary remain SCRIPTED:54 calibration/nine proposal replies, no actual model
+calls or new native worlds, no claim of model repair, new-node execution,
+scientific advantage or deadline supervision.
+
+[Exact retained evidence](../results/native-open-workflow-staged-component-connection-v1.json)
+and [the next campaign-level boundary](../components/native-open-workflow-staged-component-connection-v1.md)
+separate this real component connection from not-yet-implemented prospective
+campaign/audit/cost/frozen-handoff integration. The publication goal stays open.
+
+Final light regression99818 exits0:45 retained-evidence, fixture-staging,
+public bounded-author and open-workflow scope cases pass in33.45s. Its JUnit
+remains `outputs/open-workflow-staged-retention-v1-a1/junit.xml`; these are
+software checks, not45 native worlds or extra model-authored candidates.

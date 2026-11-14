@@ -6,6 +6,12 @@ Historical documents retain their paths and source identities.
 
 ## Active orientation
 
+- [Full-workflow staged component software connection](components/native-open-workflow-staged-component-connection-v1.md):
+  R7-only20 actual inputs, original T0 failure in real containers, SCRIPTED
+  correction/new node/wires and public outer/inner cold replay. No actual LLM
+  correction, new native world or gain. Actual campaign/audit/cost/handoff
+  connection and fresh real calibration are still required.
+
 - [Latest reviewed81-page working manuscript](../paper/integrated-open-institutions-build-v1.json):
   all meaningful tracks,42 figures/36 tables, complete real open-code and unused
   results without an advantage claim. Actual two cached builds/all-page pixels
