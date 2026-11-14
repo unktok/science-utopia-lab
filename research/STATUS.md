@@ -2,6 +2,21 @@
 
 ## Active publication-ready goal
 
+### November14: actual81-page minimal reconstruction complete; construction connection next
+
+The explicit68-file subset (65 literal dependencies plus LICENSE, reviewed PDF
+and receipt) now builds successfully with cached/untrusted Tectonic. Extracted
+text and all81 rendered page hashes equal the reviewed original; all staged
+inputs remain unchanged. PDF binary bytes differ.45 staging/tamper checks and
+11 subsequent retention/content checks pass, not new scientific samples.
+[Exact reconstruction evidence](results/integrated-open-institutions-rebuild-subset-verification-v1.json).
+This is not a clean-machine build, numerical reproduction or main-track readiness.
+The closed inference campaigns remain terminal. Next connect the existing
+literal staged editor and non-veto component tests to the broader workflow
+author, using only uniquely attributed R7 developer inputs, not hand-control
+or unused-evaluation data. That connection and useful automatic invention are
+not yet demonstrated. [Work log](logbook/2026-11-14-open-paper-subset-and-construction.md).
+
 ### November14 20:40JST: complete current working PDF reviewed; publication goal still open
 
 The new81-page working PDF at manuscript sourcef344c77e retains all previous

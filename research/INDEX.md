@@ -9,8 +9,10 @@ Historical documents retain their paths and source identities.
 - [Latest reviewed81-page working manuscript](../paper/integrated-open-institutions-build-v1.json):
   all meaningful tracks,42 figures/36 tables, complete real open-code and unused
   results without an advantage claim. Actual two cached builds/all-page pixels
-  agree and all layouts are inspected. Old artifacts are preserved. The new
-  minimal subset and main-track readiness remain unfinished.
+  agree and all layouts are inspected. Old artifacts are preserved.
+  [Actual68-file minimal reconstruction](results/integrated-open-institutions-rebuild-subset-verification-v1.json)
+  also matches extracted text and all81 rendered page hashes; binary PDF bytes
+  differ. Main-track readiness remains unfinished.
 
 - [Closed unused comparison](results/native-open-institution-fixed-closed-v1.json):
   all three physical policies complete; R7 T=-30/U=-25, hand -32/-26, own U
@@ -21,7 +23,7 @@ Historical documents retain their paths and source identities.
   exact fixed-record replacement explains the development utility difference;
   all56 accepted opinions are nonnegative, without a global alignment claim.
   The lossless trace codec is preparation, not a connected author or new study.
-  Complete working source is updated; a new PDF build/review is next.
+  Complete working source is reflected in the reviewed81-page PDF above.
 
 The following dispatch/source observations are dated history, not current liveness.
 

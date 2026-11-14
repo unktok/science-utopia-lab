@@ -7,10 +7,28 @@ has42 figures,36 tables and26 references at sourcef344c77e342d302e6fb1ce04840157
 Two full-checkout cached builds have identical text/logs and all81 rendered
 page images; all layouts and new-result details are inspected. The source
 includes the complete unfavorable open-code/unused comparison and preserves
-all earlier meaningful tracks. Its own minimal rebuild subset is **not yet
-staged/rebuilt/verified**. Do not substitute the old78-page policy or change
-old receipts to claim it is. This working paper is not main-track ready,
+all earlier meaningful tracks. Its [explicit68-file subset](../research/publication/paper-rebuild-allowlist-integrated-open-institutions-v1.json)
+now stages at clean3c06deda and actually builds with the existing TeX cache.
+Extracted text and all81 rendered90dpi pages match the reviewed original;
+[exact verification](../research/results/integrated-open-institutions-rebuild-subset-verification-v1.json).
+Binary PDF bytes differ; no sole cause is identified. The original PDF/receipt
+remain unchanged. Do not substitute the old78-page policy or amend old hashes.
+This working paper is not main-track ready,
 anonymous, fresh-inference reproduced or cleared for external redistribution.
+
+Use a clean checkout containing the exact current literal manuscript and policy:
+
+```text
+<approved-project-python> -m scripts.reports.paper_rebuild_bundle \
+  --policy research/publication/paper-rebuild-allowlist-integrated-open-institutions-v1.json \
+  --output <fresh-local-staging-directory>
+```
+
+Follow staged REBUILD.md, including creation of the exact output parent. The68
+files contain65 literal dependencies plus LICENSE, reviewed PDF and its receipt;
+no raw worlds, weights, replies, unlisted game assets or analysis runtime are
+copied. Later TeX changes must use their own source/receipt, not weaken this
+artifact's explicit changed-input rejection.
 
 ## Preserved78-page feedback manuscript
 

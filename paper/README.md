@@ -12,7 +12,10 @@ body research track. The stopped open-code prefix, all six normally closed
 v3 slots, accepted-content decomposition, missing T selection and unfavorable
 three-policy unused comparison are retained, with all actual costs and nulls.
 No generation/measurement failure is silently replaced or counted as a loss.
-The new minimal rebuild subset is not yet verified. This is a complete updated
+The [explicit68-file subset](../research/publication/paper-rebuild-allowlist-integrated-open-institutions-v1.json)
+has now actually rebuilt with identical extracted text and all81 page images,
+using the existing TeX cache; [verification](../research/results/integrated-open-institutions-rebuild-subset-verification-v1.json).
+The PDF binary bytes differ; no sole cause is asserted. This is a complete updated
 working paper, not a main-track-ready claim, anonymous release or fresh
 inference reproduction. The scientific source is frozen separately from later
 navigation and retention updates; preserve its receipt and use its own inputs.

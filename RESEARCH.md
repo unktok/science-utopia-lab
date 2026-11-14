@@ -11,8 +11,8 @@
 さらに簡単な数値世界へ置き換える理由でもない。
 
 現在の実行状態・達成範囲は[STATUS](research/STATUS.md)を参照する。
-最新の統合稿は[78ページの原稿記録](paper/integrated-workflow-feedback-build-v1.json)
-と[PDF](output/pdf/science-utopia-lab-integrated-workflow-feedback-working-paper.pdf)。
+最新の統合稿は[81ページの原稿記録](paper/integrated-open-institutions-build-v1.json)
+と[PDF](output/pdf/science-utopia-lab-integrated-open-institutions-working-paper.pdf)。
 以前の稿は履歴として保存しており、下記の過去の到達点や原稿リンクは最新状態ではない。
 
 ## 最初からやりたかったこと

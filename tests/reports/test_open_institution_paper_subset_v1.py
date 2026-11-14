@@ -49,3 +49,18 @@ def test_altered_open_manuscript_input_still_fails_before_destination(tmp_path, 
         bundle.stage(root, policy, tmp_path / 'changed-subset', source_commit='SCRIPTED')
     assert (root / policy['receipt']).read_bytes() == receipt
     assert not (tmp_path / 'changed-subset').exists()
+
+
+def test_actual_subset_rebuild_retains_all81_reviewed_pixels_without_fresh_inference():
+    from utopia.optimization.native_numeric_designer import checked
+    proof = checked(json.loads((bundle.ROOT / 'research/results/integrated-open-institutions-rebuild-subset-verification-v1.json').read_text()))
+    original = checked(json.loads((bundle.ROOT / 'paper/integrated-open-institutions-build-v1.json').read_text()))
+    assert proof['subset']['files'] == 68 and proof['subset']['literal_dependencies'] == 65
+    assert proof['subset']['all_staged_input_bytes_unchanged']
+    assert proof['original_receipt_content_sha256'] == original['content_sha256']
+    assert proof['render']['page_png_sha256'] == original['visual_review']['page_png_sha256']
+    assert proof['render']['pages'] == 81 and proof['render']['all_page_pixels_match_reviewed_original']
+    assert proof['text']['identical_to_reviewed_original'] and proof['actual_build']['exit_code'] == 0
+    assert proof['actual_build']['existing_TeX_cache_required']
+    assert not proof['fresh_inference_or_clean_machine_build_claimed']
+    assert not proof['original_PDF_or_receipt_overwritten'] and not proof['publication_ready']
